@@ -1,0 +1,4 @@
+snowflake*
+*.pyc
+*.lprof
+.directory

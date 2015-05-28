@@ -1,0 +1,1502 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1063</width>
+    <height>696</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <item>
+     <widget class="QTabWidget" name="tabMain">
+      <property name="currentIndex">
+       <number>6</number>
+      </property>
+      <property name="documentMode">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="tab_3">
+       <attribute name="title">
+        <string>Aperçu</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string>Résumé</string>
+       </attribute>
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <item>
+         <widget class="QTabWidget" name="tabSummary">
+          <property name="tabPosition">
+           <enum>QTabWidget::West</enum>
+          </property>
+          <property name="currentIndex">
+           <number>0</number>
+          </property>
+          <widget class="QWidget" name="tab_14">
+           <attribute name="title">
+            <string>Une phrase</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="verticalLayout_5">
+            <item>
+             <widget class="QLabel" name="label">
+              <property name="text">
+               <string>Résumé en une phrase</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPlainTextEdit" name="txtSummarySentance">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="lblSummaryWCSentance">
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="verticalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnStepTwo">
+              <property name="text">
+               <string>Suivant</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tab_13">
+           <attribute name="title">
+            <string>Un paragraphe</string>
+           </attribute>
+           <layout class="QHBoxLayout" name="horizontalLayout_4">
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout">
+              <item>
+               <widget class="QLabel" name="label_21">
+                <property name="text">
+                 <string>Résumé en une phrase</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPlainTextEdit" name="txtSummarySentance_2">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="verticalSpacer_3">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="Line" name="line">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_2">
+              <item>
+               <widget class="QLabel" name="label_2">
+                <property name="text">
+                 <string>Résumé en un paragraphe</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPlainTextEdit" name="txtSummaryPara"/>
+              </item>
+              <item>
+               <widget class="QLabel" name="lblSummaryWCPara">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="verticalSpacer">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>264</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btnStepThree">
+                <property name="text">
+                 <string>Suivant</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tabWidgetPage1">
+           <attribute name="title">
+            <string>Une page</string>
+           </attribute>
+           <layout class="QHBoxLayout" name="horizontalLayout_7">
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_6">
+              <item>
+               <widget class="QLabel" name="label_22">
+                <property name="text">
+                 <string>Résumé en un paragraphe</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPlainTextEdit" name="txtSummaryPara_2">
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="verticalSpacer_4">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>264</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btnStepFive">
+                <property name="text">
+                 <string>Suivant</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="Line" name="line_2">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_3">
+              <item>
+               <widget class="QLabel" name="label_17">
+                <property name="text">
+                 <string>Écrire chaque phrase du paragraphe précédent en une paragraphe.</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPlainTextEdit" name="txtSummaryPage"/>
+              </item>
+              <item>
+               <widget class="QLabel" name="lblSummaryWCPage">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tabWidgetPage2">
+           <attribute name="title">
+            <string>4 pages</string>
+           </attribute>
+           <layout class="QHBoxLayout" name="horizontalLayout_8">
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_7">
+              <item>
+               <widget class="QLabel" name="label_23">
+                <property name="text">
+                 <string>Résumé en 1 page</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPlainTextEdit" name="txtSummaryPage_2">
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="plainText">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btnStepSeven">
+                <property name="text">
+                 <string>Suivant</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="Line" name="line_3">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_4">
+              <item>
+               <widget class="QLabel" name="label_20">
+                <property name="text">
+                 <string>Résumé complet</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPlainTextEdit" name="txtSummaryFull"/>
+              </item>
+              <item>
+               <widget class="QLabel" name="lblSummaryWCFull">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_2">
+       <attribute name="title">
+        <string>Personnages</string>
+       </attribute>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QSplitter" name="splitterPersos">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="childrenCollapsible">
+           <bool>false</bool>
+          </property>
+          <widget class="QGroupBox" name="groupBox">
+           <property name="title">
+            <string>Noms</string>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_8">
+            <item>
+             <widget class="QListWidget" name="listWidget">
+              <item>
+               <property name="text">
+                <string>Perso 1</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Perso 2</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Perso 3</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_14">
+              <item>
+               <widget class="QPushButton" name="pushButton_7">
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset theme="list-add">
+                  <normaloff/>
+                 </iconset>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_9">
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset theme="list-remove">
+                  <normaloff/>
+                 </iconset>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="lineEdit_8">
+                <property name="placeholderText">
+                 <string>Filter</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QTabWidget" name="tabPersos">
+           <property name="currentIndex">
+            <number>0</number>
+           </property>
+           <widget class="QWidget" name="infos">
+            <attribute name="title">
+             <string>Informations générales</string>
+            </attribute>
+            <layout class="QFormLayout" name="formLayout">
+             <property name="fieldGrowthPolicy">
+              <enum>QFormLayout::ExpandingFieldsGrow</enum>
+             </property>
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_3">
+               <property name="text">
+                <string>Nom</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QLineEdit" name="lineEdit_2"/>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="label_18">
+               <property name="text">
+                <string>Importance</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="label_4">
+               <property name="text">
+                <string>Motivation</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QPlainTextEdit" name="plainTextEdit_2"/>
+             </item>
+             <item row="3" column="0">
+              <widget class="QLabel" name="label_5">
+               <property name="text">
+                <string>Goal</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="1">
+              <widget class="QPlainTextEdit" name="plainTextEdit_3"/>
+             </item>
+             <item row="4" column="0">
+              <widget class="QLabel" name="label_6">
+               <property name="text">
+                <string>Conflit</string>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="1">
+              <widget class="QPlainTextEdit" name="plainTextEdit_4"/>
+             </item>
+             <item row="5" column="0">
+              <widget class="QLabel" name="label_7">
+               <property name="text">
+                <string>Epiphanie</string>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="1">
+              <widget class="QPlainTextEdit" name="plainTextEdit_5"/>
+             </item>
+             <item row="6" column="0">
+              <widget class="QLabel" name="label_24">
+               <property name="text">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Résumé&lt;br/&gt;une phrase&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+              </widget>
+             </item>
+             <item row="6" column="1">
+              <widget class="QPlainTextEdit" name="plainTextEdit_20"/>
+             </item>
+             <item row="7" column="0">
+              <widget class="QLabel" name="label_8">
+               <property name="text">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Résumé&lt;br/&gt;un paragraphe&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+              </widget>
+             </item>
+             <item row="7" column="1">
+              <widget class="QPlainTextEdit" name="plainTextEdit_6"/>
+             </item>
+             <item row="8" column="1">
+              <layout class="QHBoxLayout" name="horizontalLayout_21">
+               <item>
+                <spacer name="horizontalSpacer_3">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QPushButton" name="btnStepFour">
+                 <property name="text">
+                  <string>Suivant</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item row="1" column="1">
+              <widget class="sldImportance" name="sldPersoImportance" native="true">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+           <widget class="QWidget" name="tab_11">
+            <attribute name="title">
+             <string>Résumé</string>
+            </attribute>
+            <layout class="QVBoxLayout" name="verticalLayout_17">
+             <item>
+              <widget class="QPlainTextEdit" name="plainTextEdit_14"/>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_22">
+               <item>
+                <spacer name="horizontalSpacer_4">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QPushButton" name="btnStepSix">
+                 <property name="text">
+                  <string>Suivant</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+           <widget class="QWidget" name="tab_12">
+            <attribute name="title">
+             <string>Informations détaillées</string>
+            </attribute>
+            <layout class="QVBoxLayout" name="verticalLayout_9">
+             <item>
+              <widget class="QTreeWidget" name="treeWidget">
+               <property name="textElideMode">
+                <enum>Qt::ElideNone</enum>
+               </property>
+               <property name="rootIsDecorated">
+                <bool>false</bool>
+               </property>
+               <property name="itemsExpandable">
+                <bool>false</bool>
+               </property>
+               <property name="wordWrap">
+                <bool>true</bool>
+               </property>
+               <column>
+                <property name="text">
+                 <string>Caractéristique</string>
+                </property>
+               </column>
+               <column>
+                <property name="text">
+                 <string>Valeur</string>
+                </property>
+               </column>
+               <item>
+                <property name="text">
+                 <string>Date de naissance</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Âge</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Ethnicité</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Évolution</string>
+                </property>
+                <property name="text">
+                 <string>asdkha sdlkajshd lkajshd asdkha sdlkajshd lkajshd asdkha sdlkajshd lkajshd asdkha sdlkajshd lkajshd asdkha sdlkajshd lkajshd asdkha sdlkajshd lkajshd </string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>New Item</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>New Item</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>New Item</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_9">
+               <item>
+                <widget class="QPushButton" name="pushButton">
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset theme="list-add">
+                   <normaloff/>
+                  </iconset>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="pushButton_3">
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset theme="dialog-warning">
+                   <normaloff/>
+                  </iconset>
+                 </property>
+                 <property name="checkable">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="pushButton_2">
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset theme="list-remove">
+                   <normaloff/>
+                  </iconset>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineEdit">
+                 <property name="placeholderText">
+                  <string>Filter</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_5">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QPushButton" name="btnStepEight">
+                 <property name="text">
+                  <string>Suivant</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+       <zorder>splitterPersos</zorder>
+       <zorder>btnStepFour</zorder>
+      </widget>
+      <widget class="QWidget" name="tab_4">
+       <attribute name="title">
+        <string>Intrigues</string>
+       </attribute>
+       <layout class="QHBoxLayout" name="horizontalLayout_13">
+        <item>
+         <widget class="QSplitter" name="splitterPlot">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="childrenCollapsible">
+           <bool>false</bool>
+          </property>
+          <widget class="QGroupBox" name="groupBox_2">
+           <property name="title">
+            <string>Intrigues</string>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_10">
+            <item>
+             <widget class="QListWidget" name="listWidget_3">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <item>
+               <property name="text">
+                <string>Principale</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Autre intrigue</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Autre intrigue</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_15">
+              <item>
+               <widget class="QPushButton" name="pushButton_8">
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset theme="list-add">
+                  <normaloff/>
+                 </iconset>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_11">
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset theme="list-remove">
+                  <normaloff/>
+                 </iconset>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="lineEdit_7">
+                <property name="placeholderText">
+                 <string>Filter</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QTabWidget" name="tabPlot">
+           <property name="currentIndex">
+            <number>0</number>
+           </property>
+           <widget class="QWidget" name="infos_2">
+            <attribute name="title">
+             <string>Informations générales</string>
+            </attribute>
+            <layout class="QFormLayout" name="formLayout_2">
+             <property name="fieldGrowthPolicy">
+              <enum>QFormLayout::ExpandingFieldsGrow</enum>
+             </property>
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_25">
+               <property name="text">
+                <string>Intrigue</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QLineEdit" name="lineEdit_5"/>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="label_31">
+               <property name="text">
+                <string>Importance</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="label_26">
+               <property name="text">
+                <string>Perso(s)</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0">
+              <widget class="QLabel" name="label_27">
+               <property name="text">
+                <string>Promesses</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="1">
+              <widget class="QPlainTextEdit" name="plainTextEdit_22"/>
+             </item>
+             <item row="4" column="0">
+              <widget class="QLabel" name="label_28">
+               <property name="text">
+                <string>Résultat</string>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="1">
+              <widget class="QPlainTextEdit" name="plainTextEdit_23"/>
+             </item>
+             <item row="2" column="1">
+              <layout class="QVBoxLayout" name="verticalLayout_12">
+               <item>
+                <widget class="QListWidget" name="listWidget_4">
+                 <property name="flow">
+                  <enum>QListView::LeftToRight</enum>
+                 </property>
+                 <property name="isWrapping" stdset="0">
+                  <bool>true</bool>
+                 </property>
+                 <item>
+                  <property name="text">
+                   <string>Albert</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Sylvestre</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Gentiana</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_16">
+                 <item>
+                  <widget class="QPushButton" name="pushButton_10">
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="icon">
+                    <iconset theme="list-add">
+                     <normaloff/>
+                    </iconset>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="pushButton_12">
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="icon">
+                    <iconset theme="list-remove">
+                     <normaloff/>
+                    </iconset>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </item>
+             <item row="1" column="1">
+              <widget class="sldImportance" name="sldPlotImportance" native="true">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+           <widget class="QWidget" name="tab_15">
+            <attribute name="title">
+             <string>Étapes de résolution</string>
+            </attribute>
+            <layout class="QVBoxLayout" name="verticalLayout_11">
+             <item>
+              <widget class="QListWidget" name="listWidget_2">
+               <item>
+                <property name="text">
+                 <string>Un bâteau arrive au port et personne ne sait pourquoi</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Le roi envoie des émissaires à bord. Ils ne reviennent jamais.</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Le roi envoie son armée.</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPlainTextEdit" name="plainTextEdit_7"/>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_17">
+               <item>
+                <widget class="QPushButton" name="pushButton_13">
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset theme="list-add">
+                   <normaloff/>
+                  </iconset>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="pushButton_14">
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset theme="list-remove">
+                   <normaloff/>
+                  </iconset>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="Line" name="line_4">
+                 <property name="orientation">
+                  <enum>Qt::Vertical</enum>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="pushButton_4">
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset theme="go-top">
+                   <normaloff/>
+                  </iconset>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="pushButton_5">
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset theme="go-up">
+                   <normaloff/>
+                  </iconset>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="pushButton_6">
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset theme="go-down">
+                   <normaloff/>
+                  </iconset>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="pushButton_15">
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset theme="go-bottom">
+                   <normaloff/>
+                  </iconset>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="Line" name="line_5">
+                 <property name="orientation">
+                  <enum>Qt::Vertical</enum>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="pushButton_16">
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset theme="text-x-generic">
+                   <normaloff/>
+                  </iconset>
+                 </property>
+                 <property name="checkable">
+                  <bool>true</bool>
+                 </property>
+                 <property name="checked">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_5">
+       <attribute name="title">
+        <string>Contexte</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="tab_6">
+       <attribute name="title">
+        <string>Plan</string>
+       </attribute>
+       <layout class="QHBoxLayout" name="horizontalLayout_12">
+        <item>
+         <widget class="QSplitter" name="splitterPlan">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="childrenCollapsible">
+           <bool>false</bool>
+          </property>
+          <widget class="QTreeWidget" name="treeWidget_2">
+           <column>
+            <property name="text">
+             <string>Liste de scènes</string>
+            </property>
+           </column>
+           <item>
+            <property name="text">
+             <string>Intrigue général</string>
+            </property>
+            <item>
+             <property name="text">
+              <string>Scène 1</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Scène 2</string>
+             </property>
+            </item>
+           </item>
+           <item>
+            <property name="text">
+             <string>Intrigue secondaire</string>
+            </property>
+            <item>
+             <property name="text">
+              <string>Scène 1</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Scène 2</string>
+             </property>
+            </item>
+           </item>
+          </widget>
+          <widget class="QWidget" name="">
+           <layout class="QVBoxLayout" name="verticalLayout_14">
+            <item>
+             <widget class="QTreeWidget" name="treeWidget_3">
+              <column>
+               <property name="text">
+                <string>Plan détaillé</string>
+               </property>
+              </column>
+              <item>
+               <property name="text">
+                <string>Chapitre 1</string>
+               </property>
+               <item>
+                <property name="text">
+                 <string>Scène 1</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Scène 2</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Scène 3</string>
+                </property>
+               </item>
+              </item>
+              <item>
+               <property name="text">
+                <string>Chapitre 2</string>
+               </property>
+               <item>
+                <property name="text">
+                 <string>Scène 1</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Scène 2</string>
+                </property>
+               </item>
+              </item>
+             </widget>
+            </item>
+            <item>
+             <widget class="QGroupBox" name="groupbox">
+              <property name="title">
+               <string>Détails de la scène</string>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_13">
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_11">
+                 <item>
+                  <widget class="QLabel" name="label_9">
+                   <property name="text">
+                    <string>POV</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QComboBox" name="comboBox">
+                   <property name="frame">
+                    <bool>false</bool>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <widget class="QPlainTextEdit" name="plainTextEdit_8"/>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_18">
+              <item>
+               <widget class="QPushButton" name="pushButton_17">
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset theme="list-add">
+                  <normaloff/>
+                 </iconset>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_18">
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset theme="list-remove">
+                  <normaloff/>
+                 </iconset>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_23">
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset theme="text-x-generic">
+                  <normaloff/>
+                 </iconset>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+                <property name="checked">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_7">
+       <attribute name="title">
+        <string>Rédaction</string>
+       </attribute>
+       <layout class="QHBoxLayout" name="horizontalLayout_20">
+        <item>
+         <widget class="QSplitter" name="splitterRedac">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="childrenCollapsible">
+           <bool>false</bool>
+          </property>
+          <widget class="QTreeWidget" name="treeWidget_4">
+           <column>
+            <property name="text">
+             <string>Plan détaillé</string>
+            </property>
+           </column>
+           <item>
+            <property name="text">
+             <string>Chapitre 1</string>
+            </property>
+            <item>
+             <property name="text">
+              <string>Scène 1</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Scène 2</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Scène 3</string>
+             </property>
+            </item>
+           </item>
+           <item>
+            <property name="text">
+             <string>Chapitre 2</string>
+            </property>
+            <item>
+             <property name="text">
+              <string>Scène 1</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Scène 2</string>
+             </property>
+            </item>
+           </item>
+          </widget>
+          <widget class="QWidget" name="layoutWidget">
+           <layout class="QVBoxLayout" name="verticalLayout_16">
+            <item>
+             <widget class="QPlainTextEdit" name="plainTextEdit_9"/>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_19">
+              <item>
+               <widget class="QPushButton" name="pushButton_20">
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset theme="text-x-generic">
+                  <normaloff/>
+                 </iconset>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+                <property name="checked">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer_2">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_19">
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset theme="edit-find">
+                  <normaloff/>
+                 </iconset>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+                <property name="checked">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QGroupBox" name="groupBox_3">
+           <property name="title">
+            <string>Aide mémoire</string>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_15">
+            <item>
+             <widget class="QLineEdit" name="lineEdit_3">
+              <property name="placeholderText">
+               <string>Filter</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QListWidget" name="listWidget_5">
+              <item>
+               <property name="text">
+                <string>Albert - perso</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Jean - perso</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Crapoquak - animal</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>La revenche du capitaine - intrigue</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item>
+             <widget class="QTextEdit" name="textEdit"/>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1063</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>sldImportance</class>
+   <extends>QWidget</extends>
+   <header>ui.sldImportance.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pushButton_16</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>plainTextEdit_7</receiver>
+   <slot>setShown(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>885</x>
+     <y>626</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>795</x>
+     <y>611</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_23</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>groupbox</receiver>
+   <slot>setShown(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1033</x>
+     <y>802</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>944</x>
+     <y>450</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_19</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>groupBox_3</receiver>
+   <slot>setShown(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>502</x>
+     <y>515</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>530</x>
+     <y>517</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_20</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>treeWidget_4</receiver>
+   <slot>setShown(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>324</x>
+     <y>518</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>259</x>
+     <y>510</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
