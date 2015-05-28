@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1063</width>
-    <height>696</height>
+    <width>1103</width>
+    <height>809</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,7 @@
     <item>
      <widget class="QTabWidget" name="tabMain">
       <property name="currentIndex">
-       <number>6</number>
+       <number>3</number>
       </property>
       <property name="documentMode">
        <bool>true</bool>
@@ -87,6 +87,11 @@
              <widget class="QPushButton" name="btnStepTwo">
               <property name="text">
                <string>Suivant</string>
+              </property>
+              <property name="icon">
+               <iconset theme="go-next">
+                <normaloff/>
+               </iconset>
               </property>
              </widget>
             </item>
@@ -178,6 +183,11 @@
                 <property name="text">
                  <string>Suivant</string>
                 </property>
+                <property name="icon">
+                 <iconset theme="go-next">
+                  <normaloff/>
+                 </iconset>
+                </property>
                </widget>
               </item>
              </layout>
@@ -222,6 +232,11 @@
                <widget class="QPushButton" name="btnStepFive">
                 <property name="text">
                  <string>Suivant</string>
+                </property>
+                <property name="icon">
+                 <iconset theme="go-next">
+                  <normaloff/>
+                 </iconset>
                 </property>
                </widget>
               </item>
@@ -286,6 +301,11 @@
                 <property name="text">
                  <string>Suivant</string>
                 </property>
+                <property name="icon">
+                 <iconset theme="go-next">
+                  <normaloff/>
+                 </iconset>
+                </property>
                </widget>
               </item>
              </layout>
@@ -344,19 +364,34 @@
            <layout class="QVBoxLayout" name="verticalLayout_8">
             <item>
              <widget class="QListWidget" name="listWidget">
+              <property name="dragEnabled">
+               <bool>true</bool>
+              </property>
+              <property name="dragDropMode">
+               <enum>QAbstractItemView::InternalMove</enum>
+              </property>
               <item>
                <property name="text">
                 <string>Perso 1</string>
+               </property>
+               <property name="flags">
+                <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
                </property>
               </item>
               <item>
                <property name="text">
                 <string>Perso 2</string>
                </property>
+               <property name="flags">
+                <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+               </property>
               </item>
               <item>
                <property name="text">
                 <string>Perso 3</string>
+               </property>
+               <property name="flags">
+                <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
                </property>
               </item>
              </widget>
@@ -507,6 +542,11 @@
                  <property name="text">
                   <string>Suivant</string>
                  </property>
+                 <property name="icon">
+                  <iconset theme="go-next">
+                   <normaloff/>
+                  </iconset>
+                 </property>
                 </widget>
                </item>
               </layout>
@@ -550,6 +590,11 @@
                 <widget class="QPushButton" name="btnStepSix">
                  <property name="text">
                   <string>Suivant</string>
+                 </property>
+                 <property name="icon">
+                  <iconset theme="go-next">
+                   <normaloff/>
+                  </iconset>
                  </property>
                 </widget>
                </item>
@@ -646,7 +691,7 @@
                   <string/>
                  </property>
                  <property name="icon">
-                  <iconset theme="dialog-warning">
+                  <iconset theme="emblem-favorite">
                    <normaloff/>
                   </iconset>
                  </property>
@@ -692,6 +737,11 @@
                  <property name="text">
                   <string>Suivant</string>
                  </property>
+                 <property name="icon">
+                  <iconset theme="go-next">
+                   <normaloff/>
+                  </iconset>
+                 </property>
                 </widget>
                </item>
               </layout>
@@ -702,21 +752,16 @@
          </widget>
         </item>
        </layout>
-       <zorder>splitterPersos</zorder>
-       <zorder>btnStepFour</zorder>
       </widget>
       <widget class="QWidget" name="tab_4">
        <attribute name="title">
         <string>Intrigues</string>
        </attribute>
-       <layout class="QHBoxLayout" name="horizontalLayout_13">
+       <layout class="QHBoxLayout" name="horizontalLayout_5">
         <item>
          <widget class="QSplitter" name="splitterPlot">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="childrenCollapsible">
-           <bool>false</bool>
           </property>
           <widget class="QGroupBox" name="groupBox_2">
            <property name="title">
@@ -730,6 +775,12 @@
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
+              </property>
+              <property name="dragEnabled">
+               <bool>true</bool>
+              </property>
+              <property name="dragDropMode">
+               <enum>QAbstractItemView::InternalMove</enum>
               </property>
               <item>
                <property name="text">
@@ -781,6 +832,22 @@
                 </property>
                </widget>
               </item>
+              <item>
+               <widget class="QPushButton" name="btnPlotShowSummary">
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset theme="text-x-generic"/>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+                <property name="checked">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
              </layout>
             </item>
            </layout>
@@ -824,7 +891,7 @@
              <item row="3" column="0">
               <widget class="QLabel" name="label_27">
                <property name="text">
-                <string>Promesses</string>
+                <string>Description</string>
                </property>
               </widget>
              </item>
@@ -1048,6 +1115,78 @@
             </layout>
            </widget>
           </widget>
+          <widget class="QGroupBox" name="grpPlotSummary">
+           <property name="title">
+            <string>Résumé</string>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_18">
+            <item>
+             <widget class="QComboBox" name="comboBox_2">
+              <property name="currentIndex">
+               <number>1</number>
+              </property>
+              <property name="frame">
+               <bool>false</bool>
+              </property>
+              <item>
+               <property name="text">
+                <string>Un paragraphe</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Une page</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>4 pages</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item>
+             <widget class="QStackedWidget" name="stkPlotSummary">
+              <property name="currentIndex">
+               <number>0</number>
+              </property>
+              <widget class="QWidget" name="page">
+               <layout class="QHBoxLayout" name="horizontalLayout_6">
+                <item>
+                 <widget class="QPlainTextEdit" name="txtPlotSummaryPara">
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="page_2">
+               <layout class="QHBoxLayout" name="horizontalLayout_10">
+                <item>
+                 <widget class="QPlainTextEdit" name="txtPlotSummaryPage">
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="page_3">
+               <layout class="QHBoxLayout" name="horizontalLayout_13">
+                <item>
+                 <widget class="QPlainTextEdit" name="txtPlotSummaryFull">
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </widget>
+            </item>
+           </layout>
+          </widget>
          </widget>
         </item>
        </layout>
@@ -1071,6 +1210,12 @@
            <bool>false</bool>
           </property>
           <widget class="QTreeWidget" name="treeWidget_2">
+           <property name="dragEnabled">
+            <bool>true</bool>
+           </property>
+           <property name="dragDropMode">
+            <enum>QAbstractItemView::InternalMove</enum>
+           </property>
            <column>
             <property name="text">
              <string>Liste de scènes</string>
@@ -1107,10 +1252,16 @@
             </item>
            </item>
           </widget>
-          <widget class="QWidget" name="">
+          <widget class="QWidget" name="layoutWidget">
            <layout class="QVBoxLayout" name="verticalLayout_14">
             <item>
              <widget class="QTreeWidget" name="treeWidget_3">
+              <property name="dragEnabled">
+               <bool>true</bool>
+              </property>
+              <property name="dragDropMode">
+               <enum>QAbstractItemView::InternalMove</enum>
+              </property>
               <column>
                <property name="text">
                 <string>Plan détaillé</string>
@@ -1417,12 +1568,121 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1063</width>
+     <width>1103</width>
      <height>31</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menu_Fichier">
+    <property name="title">
+     <string>&amp;Fichier</string>
+    </property>
+    <addaction name="actionNouveau"/>
+    <addaction name="actionOuvrir"/>
+    <addaction name="action_R_cents"/>
+    <addaction name="actionEnregistrer"/>
+    <addaction name="actionEnregistrer_sous"/>
+    <addaction name="separator"/>
+    <addaction name="actionQuitter"/>
+   </widget>
+   <widget class="QMenu" name="menuMode">
+    <property name="title">
+     <string>Mode</string>
+    </property>
+    <addaction name="actionSnowflakeMode"/>
+   </widget>
+   <addaction name="menu_Fichier"/>
+   <addaction name="menuMode"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionOuvrir">
+   <property name="icon">
+    <iconset theme="document-open">
+     <normaloff/>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Ouvrir</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="action_R_cents">
+   <property name="icon">
+    <iconset theme="document-open-recent">
+     <normaloff/>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Récents</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+R</string>
+   </property>
+  </action>
+  <action name="actionEnregistrer">
+   <property name="icon">
+    <iconset theme="document-save">
+     <normaloff/>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Enregistrer</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actionEnregistrer_sous">
+   <property name="icon">
+    <iconset theme="document-save-as">
+     <normaloff/>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Enregistrer sous...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+S</string>
+   </property>
+  </action>
+  <action name="actionQuitter">
+   <property name="icon">
+    <iconset theme="application-exit">
+     <normaloff/>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Quitter</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
+  <action name="actionSnowflakeMode">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Snowflake</string>
+   </property>
+  </action>
+  <action name="actionNouveau">
+   <property name="icon">
+    <iconset theme="document-new">
+     <normaloff/>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Nouveau</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+  </action>
  </widget>
  <customwidgets>
   <customwidget>
@@ -1441,8 +1701,8 @@
    <slot>setShown(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>885</x>
-     <y>626</y>
+     <x>848</x>
+     <y>688</y>
     </hint>
     <hint type="destinationlabel">
      <x>795</x>
@@ -1457,8 +1717,8 @@
    <slot>setShown(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1033</x>
-     <y>802</y>
+     <x>1088</x>
+     <y>770</y>
     </hint>
     <hint type="destinationlabel">
      <x>944</x>
@@ -1473,12 +1733,12 @@
    <slot>setShown(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>502</x>
-     <y>515</y>
+     <x>714</x>
+     <y>770</y>
     </hint>
     <hint type="destinationlabel">
-     <x>530</x>
-     <y>517</y>
+     <x>1090</x>
+     <y>585</y>
     </hint>
    </hints>
   </connection>
@@ -1489,12 +1749,44 @@
    <slot>setShown(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>324</x>
-     <y>518</y>
+     <x>401</x>
+     <y>770</y>
     </hint>
     <hint type="destinationlabel">
      <x>259</x>
      <y>510</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnPlotShowSummary</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>grpPlotSummary</receiver>
+   <slot>setShown(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>254</x>
+     <y>746</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>839</x>
+     <y>102</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>comboBox_2</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>stkPlotSummary</receiver>
+   <slot>setCurrentIndex(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>925</x>
+     <y>129</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>932</x>
+     <y>151</y>
     </hint>
    </hints>
   </connection>

@@ -15,20 +15,26 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         QMainWindow.__init__(self)
         self.setupUi(self)
         
-        
+        # UI
         self.splitterPersos.setStretchFactor(0, 25)
         self.splitterPersos.setStretchFactor(1, 75)
         
-        self.splitterPlot.setStretchFactor(0, 25)
-        self.splitterPlot.setStretchFactor(1, 75)
+        self.splitterPlot.setStretchFactor(0, 20)
+        self.splitterPlot.setStretchFactor(1, 40)
+        self.splitterPlot.setStretchFactor(2, 40)
+        
         
         self.splitterPlan.setStretchFactor(0, 25)
         self.splitterPlan.setStretchFactor(1, 75)
+        
         
         self.splitterRedac.setStretchFactor(0, 20)
         self.splitterRedac.setStretchFactor(1, 60)
         self.splitterRedac.setStretchFactor(2, 20)
         
+        
+        # Signals
+        self.tabMain.currentChanged.connect(self.updateTabMain)
         
         # Summary
         self.mapper = QSignalMapper(self)
@@ -58,6 +64,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.mapperCycle.setMapping(t, i)
             
         self.mapperCycle.mapped.connect(self.clickCycle)
+        
+    def updateTabMain(self, tab):
+        if tab == 3:  # Plot 
+            self.txtPlotSummaryPara.setPlainText(self.txtSummaryPara.toPlainText())
+            self.txtPlotSummaryPage.setPlainText(self.txtSummaryPage.toPlainText())
+            self.txtPlotSummaryFull.setPlainText(self.txtSummaryFull.toPlainText())
+            
+    
         
     def clickCycle(self, i):
         if i == 0: # step 2 - paragraph summary
