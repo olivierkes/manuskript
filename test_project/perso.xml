@@ -20,20 +20,20 @@
   </header>
   <data>
     <row row="0">
-      <col col="0">Ginette</col>
-      <col col="1">asdasd</col>
+      <col col="0">Albert</col>
+      <col col="1">0</col>
       <col col="2"></col>
       <col col="3"></col>
       <col col="4"></col>
       <col col="5"></col>
-      <col col="6">CCC</col>
-      <col col="7">BBB</col>
-      <col col="8">0</col>
+      <col col="6"></col>
+      <col col="7"></col>
+      <col col="8">1</col>
       <col col="9"></col>
     </row>
     <row row="1">
-      <col col="0">Albert</col>
-      <col col="1">asdasdasd</col>
+      <col col="0">Jean</col>
+      <col col="1">1</col>
       <col col="2"></col>
       <col col="3"></col>
       <col col="4"></col>

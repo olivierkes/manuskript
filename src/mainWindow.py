@@ -34,10 +34,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.splitterRedac.setStretchFactor(1, 60)
         self.splitterRedac.setStretchFactor(2, 20)
         
-        
-        # Signals
-        self.tabMain.currentChanged.connect(self.updateTabMain)
-        
         # Word count
         self.mprWordCount = QSignalMapper(self)
         for t, i in [
@@ -99,14 +95,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
         # Persos
         self.mdlPersos = QStandardItemModel(0, 10)
-        self.mdlPersosInfos = QStandardItemModel(3, 0)
-        self.mdlPersosInfos.insertColumn(0, [QStandardItem(i) for i in ["Date de naissance", "Àge", "Animal favori"]])
+        self.mdlPersosInfos = QStandardItemModel(1, 0)
+        self.mdlPersosInfos.insertColumn(0, [QStandardItem(i) for i in ["ID"]])
         self.mdlPersosInfos.setHorizontalHeaderLabels(["Description"])
         self.lstPersos.setModel(self.mdlPersos)
         self.tblDebugPersos.setModel(self.mdlPersos)
         self.tblPersoInfos.setModel(self.mdlPersosInfos)
-        #self.tblPersoInfos.horizontalHeader().setStretchLastSection(True)
-        #self.tblPersoInfos.horizontalHeader().hide()
+        self.tblPersoInfos.setRowHidden(0, True)
         self.tblDebugPersosInfos.setModel(self.mdlPersosInfos)
         
         self.btnAddPerso.clicked.connect(self.createPerso)
@@ -116,23 +111,24 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.mprPersos.setModel(self.mdlPersos)
         
         mapping = [
-            self.txtPersoName,
-            self.txtPersoMotivation,
-            self.txtPersoGoal,
-            self.txtPersoConflict,
-            self.txtPersoEpiphany,
-            self.txtPersoSummarySentance,
-            self.txtPersoSummaryPara,
-            self.txtPersoSummaryFull,
+            (self.txtPersoName, 0),
+            (self.txtPersoMotivation, 2),
+            (self.txtPersoGoal, 3),
+            (self.txtPersoConflict, 4),
+            (self.txtPersoEpiphany, 5),
+            (self.txtPersoSummarySentance, 6),
+            (self.txtPersoSummaryPara, 7),
+            (self.txtPersoSummaryFull, 8)
             ]
-        for w in mapping:
-                self.mprPersos.addMapping(w, mapping.index(w))    
+        for w, i in mapping:
+                self.mprPersos.addMapping(w, i)    
         self.mprPersos.addMapping(self.sldPersoImportance, 8, "importance")
         self.sldPersoImportance.importanceChanged.connect(self.mprPersos.submit)
             
         self.mprPersos.setCurrentIndex(0)
         self.lstPersos.selectionModel().currentChanged.connect(self.mprPersos.setCurrentModelIndex)
         self.lstPersos.selectionModel().currentChanged.connect(self.changeCurrentPerso)
+        self.tabPersos.currentChanged.connect(self.resizePersosInfos)
         
         #Debug
         self.mdlFlatData.setVerticalHeaderLabels(["Infos générales", "Summary"])
@@ -141,6 +137,66 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
         self.loadProject("test_project")
         
+####################################################################################################
+#                                             PERSOS                                               #
+####################################################################################################
+
+    def createPerso(self):
+        "Creates a perso by adding a row in mdlPersos and a column in mdlPersosInfos with same ID"
+        p = QStandardItem("Nouveau perso")
+        self.mdlPersos.appendRow(p)
+        pid = self.getPersosID()
+        self.checkPersosID()  # Attributes a persoID (which is logically pid)
+        
+        # Add column in persos infos
+        self.mdlPersosInfos.insertColumn(self.mdlPersosInfos.columnCount(), [QStandardItem(pid)])
+        self.mdlPersosInfos.setHorizontalHeaderItem(self.mdlPersosInfos.columnCount()-1, QStandardItem("Valeur"))
+            
+    def getPersosID(self):
+        "Returns an unused perso ID (row 1)"
+        vals = []
+        for i in range(self.mdlPersos.rowCount()):
+            item = self.mdlPersos.item(i, 1)
+            if item and item.text():
+                vals.append(int(item.text()))
+                
+        k = 0
+        while k in vals: k += 1
+        return str(k)
+            
+    def checkPersosID(self):
+        "Checks whether some persos ID (row 1) are empty, if so, assign an ID"
+        empty = []
+        for i in range(self.mdlPersos.rowCount()):
+            item = self.mdlPersos.item(i, 1)
+            if not item:
+                item = QStandardItem()
+                item.setText(self.getPersosID())
+                self.mdlPersos.setItem(i, 1, item)
+        
+    def removePerso(self):
+        i = self.lstPersos.currentIndex()
+        self.mdlPersos.takeRow(i.row())
+        self.mdlPersosInfos.takeColumn(i.row()+1)
+        
+    def changeCurrentPerso(self, trash=None):
+        for i in range(self.mdlPersosInfos.columnCount()):
+            self.tblPersoInfos.setColumnHidden(i, i<>0 and i<>self.lstPersos.currentIndex().row()+1)
+        #self.tblPersoInfos.horizontalHeader().resizeSections(QHeaderView.Stretch)
+        
+        self.resizePersosInfos()
+        
+    def resizePersosInfos(self):
+        self.tblPersoInfos.resizeColumnToContents(0)
+        w = self.tblPersoInfos.viewport().width()
+        w2 = self.tblPersoInfos.columnWidth(0)
+        current = self.lstPersos.currentIndex().row() + 1
+        self.tblPersoInfos.setColumnWidth(current, w - w2)
+        
+        
+####################################################################################################
+#                                             GENERAL                                              #
+####################################################################################################
         
     def loadProject(self, project):
         self.currentProject = project
@@ -148,24 +204,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         loadStandardItemModelXML(self.mdlPersos, "{}/perso.xml".format(project))
         loadStandardItemModelXML(self.mdlPersosInfos, "{}/persoInfos.xml".format(project))
         
-        
-    def createPerso(self):
-        p = QStandardItem("Nouveau perso")
-        self.mdlPersos.appendRow(p) 
-        #self.mdlPersosInfos.appendColumn([QStandardItem()]*self.mdlPersosInfos.columnCount())
-        self.mdlPersosInfos.insertColumn(self.mdlPersosInfos.columnCount())
-        self.mdlPersosInfos.setHorizontalHeaderItem(self.mdlPersosInfos.columnCount()-1, QStandardItem("Valeur"))
-        
-    def removePerso(self):
-        i = self.lstPersos.currentIndex()
-        self.mdlPersos.takeRow(i.row())
-        self.mdlPersosInfos.takeColumn(i.row()+1)
-        
-    def changeCurrentPerso(self):
-        for i in range(self.mdlPersosInfos.columnCount()):
-            self.tblPersoInfos.setColumnHidden(i, i<>0 and i<>self.lstPersos.currentIndex().row()+1)
-        #self.tblPersoInfos.horizontalHeader().resizeSections(QHeaderView.Stretch)
-        
+        # Stuff
+        self.checkPersosID()
+                
     def readSettings(self):
         # Load State and geometry
         settings = QSettings(qApp.organizationName(), qApp.applicationName())
@@ -186,12 +227,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
         # closeEvent
         QMainWindow.closeEvent(self, event)
-        
-    def updateTabMain(self, tab):
-        if tab == 3:  # Plot 
-            self.txtPlotSummaryPara.setPlainText(self.txtSummaryPara.toPlainText())
-            self.txtPlotSummaryPage.setPlainText(self.txtSummaryPage.toPlainText())
-            self.txtPlotSummaryFull.setPlainText(self.txtSummaryFull.toPlainText())
         
     def clickCycle(self, i):
         if i == 0: # step 2 - paragraph summary

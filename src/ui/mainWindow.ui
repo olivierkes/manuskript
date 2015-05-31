@@ -18,7 +18,7 @@
     <item>
      <widget class="QTabWidget" name="tabMain">
       <property name="currentIndex">
-       <number>2</number>
+       <number>6</number>
       </property>
       <property name="documentMode">
        <bool>true</bool>
@@ -1468,50 +1468,53 @@
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
-          <property name="childrenCollapsible">
-           <bool>false</bool>
-          </property>
-          <widget class="QTreeWidget" name="treeWidget_4">
-           <column>
-            <property name="text">
-             <string>Plan détaillé</string>
-            </property>
-           </column>
-           <item>
-            <property name="text">
-             <string>Chapitre 1</string>
-            </property>
+          <widget class="QWidget" name="">
+           <layout class="QVBoxLayout" name="verticalLayout_19">
             <item>
-             <property name="text">
-              <string>Scène 1</string>
-             </property>
+             <widget class="QTreeWidget" name="treeWidget_4">
+              <column>
+               <property name="text">
+                <string>Plan détaillé</string>
+               </property>
+              </column>
+              <item>
+               <property name="text">
+                <string>Chapitre 1</string>
+               </property>
+               <item>
+                <property name="text">
+                 <string>Scène 1</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Scène 2</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Scène 3</string>
+                </property>
+               </item>
+              </item>
+              <item>
+               <property name="text">
+                <string>Chapitre 2</string>
+               </property>
+               <item>
+                <property name="text">
+                 <string>Scène 1</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Scène 2</string>
+                </property>
+               </item>
+              </item>
+             </widget>
             </item>
-            <item>
-             <property name="text">
-              <string>Scène 2</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Scène 3</string>
-             </property>
-            </item>
-           </item>
-           <item>
-            <property name="text">
-             <string>Chapitre 2</string>
-            </property>
-            <item>
-             <property name="text">
-              <string>Scène 1</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Scène 2</string>
-             </property>
-            </item>
-           </item>
+           </layout>
           </widget>
           <widget class="QWidget" name="layoutWidget">
            <layout class="QVBoxLayout" name="verticalLayout_16">
@@ -1573,46 +1576,166 @@
             </item>
            </layout>
           </widget>
-          <widget class="QGroupBox" name="groupBox_3">
-           <property name="title">
-            <string>Aide mémoire</string>
+          <widget class="QTabWidget" name="tabWidget_2">
+           <property name="tabPosition">
+            <enum>QTabWidget::South</enum>
            </property>
-           <layout class="QVBoxLayout" name="verticalLayout_15">
-            <item>
-             <widget class="QLineEdit" name="lineEdit_3">
-              <property name="placeholderText">
-               <string>Filter</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QListWidget" name="listWidget_5">
-              <item>
-               <property name="text">
-                <string>Albert - perso</string>
+           <property name="currentIndex">
+            <number>0</number>
+           </property>
+           <property name="documentMode">
+            <bool>true</bool>
+           </property>
+           <widget class="QWidget" name="tab_17">
+            <attribute name="title">
+             <string>Scène</string>
+            </attribute>
+            <layout class="QVBoxLayout" name="verticalLayout_20" stretch="0,0,0">
+             <property name="sizeConstraint">
+              <enum>QLayout::SetMaximumSize</enum>
+             </property>
+             <item>
+              <widget class="collapsibleGroupBox" name="groupBox_4">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
                </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Jean - perso</string>
+               <property name="title">
+                <string>Propriétés de la scène</string>
                </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Crapoquak - animal</string>
+               <property name="checkable">
+                <bool>true</bool>
                </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>La revenche du capitaine - intrigue</string>
+               <layout class="QFormLayout" name="formLayout_5">
+                <item row="0" column="0">
+                 <widget class="QLabel" name="label_29">
+                  <property name="text">
+                   <string>Personnage</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QComboBox" name="comboBox_3">
+                  <property name="frame">
+                   <bool>false</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QLabel" name="label_30">
+                  <property name="text">
+                   <string>Status</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1">
+                 <widget class="QComboBox" name="comboBox_4">
+                  <property name="frame">
+                   <bool>false</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <widget class="QLabel" name="label_32">
+                  <property name="text">
+                   <string>Compile</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="1">
+                 <widget class="QCheckBox" name="checkBox">
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="collapsibleGroupBox" name="groupBox_5">
+               <property name="title">
+                <string>Résumé de la scène</string>
                </property>
-              </item>
-             </widget>
-            </item>
-            <item>
-             <widget class="QTextEdit" name="textEdit"/>
-            </item>
-           </layout>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_22">
+                <item>
+                 <widget class="QPlainTextEdit" name="plainTextEdit_3"/>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="collapsibleGroupBox" name="groupBox_6">
+               <property name="title">
+                <string>Notes pour la scène</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+               <layout class="QHBoxLayout" name="horizontalLayout_29">
+                <item>
+                 <widget class="QPlainTextEdit" name="plainTextEdit_2"/>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+           <widget class="QWidget" name="tab_18">
+            <attribute name="title">
+             <string>Tools</string>
+            </attribute>
+            <layout class="QVBoxLayout" name="verticalLayout_21">
+             <item>
+              <widget class="QGroupBox" name="groupBox_3">
+               <property name="title">
+                <string>Aide mémoire</string>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_15">
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_3">
+                  <property name="placeholderText">
+                   <string>Filter</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QListWidget" name="listWidget_5">
+                  <item>
+                   <property name="text">
+                    <string>Albert - perso</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Jean - perso</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Crapoquak - animal</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>La revenche du capitaine - intrigue</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QTextEdit" name="textEdit"/>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
           </widget>
          </widget>
         </item>
@@ -1801,6 +1924,12 @@
    <header>ui.sldImportance.h</header>
    <container>1</container>
   </customwidget>
+  <customwidget>
+   <class>collapsibleGroupBox</class>
+   <extends>QGroupBox</extends>
+   <header>ui.collapsibleGroupBox.h</header>
+   <container>1</container>
+  </customwidget>
  </customwidgets>
  <resources/>
  <connections>
@@ -1833,22 +1962,6 @@
     <hint type="destinationlabel">
      <x>944</x>
      <y>450</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButton_19</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>groupBox_3</receiver>
-   <slot>setShown(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>714</x>
-     <y>770</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1090</x>
-     <y>585</y>
     </hint>
    </hints>
   </connection>

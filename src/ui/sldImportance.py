@@ -37,8 +37,8 @@ class sldImportance(QWidget, Ui_sldImportance):
         
     def setValue(self, v):
         if v <> self.lastValue:    
-            self.sld.setValue(int(v))
-            self.changed(int(v))
+            self.sld.setValue(int(v) if v else 0)
+            self.changed(int(v) if v else 0)
             self.lastValue = v
         
     def setProperty():
