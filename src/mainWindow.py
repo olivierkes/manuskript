@@ -180,12 +180,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.mdlPersosInfos.takeColumn(i.row()+1)
         
     def changeCurrentPerso(self, trash=None):
-        for i in range(self.mdlPersosInfos.columnCount()):
-            idx = self.lstPersos.currentIndex()
-            pid = idx.sibling(idx.row(), 1)
-            pid2 = self.mdlPersosInfos.item(i, 0)
-            self.tblPersoInfos.setColumnHidden(i, i<>0 and pid <> pid2)
-        #self.tblPersoInfos.horizontalHeader().resizeSections(QHeaderView.Stretch)
+        idx = self.lstPersos.currentIndex()
+        pid = self.mdlPersos.item(idx.row(), 1).text()
+        for c in range(self.mdlPersosInfos.columnCount()):
+            pid2 = self.mdlPersosInfos.item(0, c).text()
+            self.tblPersoInfos.setColumnHidden(c, c <> 0 and pid <> pid2)
         
         self.resizePersosInfos()
         
