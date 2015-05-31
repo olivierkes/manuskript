@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<model>
+  <header>
+    <vertical>
+      <label row="0" text="Infos générales"/>
+      <label row="1" text="Summary"/>
+    </vertical>
+    <horizontal>
+      <label row="0" text="1"/>
+      <label row="1" text="2"/>
+      <label row="2" text="3"/>
+      <label row="3" text="4"/>
+      <label row="4" text="5"/>
+      <label row="5" text="6"/>
+      <label row="6" text="7"/>
+      <label row="7" text="8"/>
+    </horizontal>
+  </header>
+  <data>
+    <row row="0">
+      <col col="0">Titre du livre</col>
+      <col col="1">Sous-titre</col>
+      <col col="2"></col>
+      <col col="3"></col>
+      <col col="4">Fantasy</col>
+      <col col="5">CC-BY-SA</col>
+      <col col="6">Auteur Cool</col>
+      <col col="7">auteur@cool.com</col>
+    </row>
+    <row row="1">
+      <col col="0">Bonjour</col>
+      <col col="1">Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir </col>
+      <col col="2">Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir 
+
+Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir 
+
+Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir 
+
+Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir </col>
+      <col col="3">Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir 
+
+Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir 
+
+Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir 
+
+Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir 
+Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir 
+
+Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir Bonsoir </col>
+      <col col="4"></col>
+      <col col="5"></col>
+      <col col="6"></col>
+      <col col="7"></col>
+    </row>
+  </data>
+</model>

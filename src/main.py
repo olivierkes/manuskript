@@ -11,7 +11,7 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     app.setOrganizationName("Theologeek")
     app.setOrganizationDomain("www.theologeek.ch")
-    app.setApplicationName("Darqness")
+    app.setApplicationName("snowFlaqe")
 
     
     from mainWindow import MainWindow
