@@ -181,7 +181,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
     def changeCurrentPerso(self, trash=None):
         for i in range(self.mdlPersosInfos.columnCount()):
-            self.tblPersoInfos.setColumnHidden(i, i<>0 and i<>self.lstPersos.currentIndex().row()+1)
+            idx = self.lstPersos.currentIndex()
+            pid = idx.sibling(idx.row(), 1)
+            pid2 = self.mdlPersosInfos.item(i, 0)
+            self.tblPersoInfos.setColumnHidden(i, i<>0 and pid <> pid2)
         #self.tblPersoInfos.horizontalHeader().resizeSections(QHeaderView.Stretch)
         
         self.resizePersosInfos()
