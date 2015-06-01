@@ -10,6 +10,7 @@ from PyQt4.QtGui import *
 from ui.mainWindow import *
 from loadSave import *
 from enums import *
+from models.outlineModel import *
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
@@ -117,7 +118,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             (self.txtPersoEpiphany, Perso.epiphany.value),
             (self.txtPersoSummarySentance, Perso.summarySentance.value),
             (self.txtPersoSummaryPara, Perso.summaryPara.value),
-            (self.txtPersoSummaryFull, Perso.summaryFull.value)
+            (self.txtPersoSummaryFull, Perso.summaryFull.value),
+            (self.txtPersoNotes, Perso.notes.value)
             ]
         for w, i in mapping:
                 self.mprPersos.addMapping(w, i)    
@@ -129,15 +131,43 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.lstPersos.selectionModel().currentChanged.connect(self.changeCurrentPerso)
         self.tabPersos.currentChanged.connect(self.resizePersosInfos)
         
+        # Outline
+        self.mdlOutline = outlineModel()
+        #self.mdlOutline.setHorizontalHeaderLabels(
+	  #[i.name for i in Outline])
+        self.treeRedacOutline.setModel(self.mdlOutline)
+        self.treePlanOutline.setModel(self.mdlOutline)
+        self.treeRedacOutline.setSelectionModel(self.treePlanOutline.selectionModel())
+        for c in range(1, self.mdlOutline.columnCount()):
+            self.treeRedacOutline.hideColumn(c)
+            self.treePlanOutline.hideColumn(c)
+        self.btnRedacAddFolder.clicked.connect(lambda: self.outlineAddItem("folder"))
+        self.btnRedacAddScene.clicked.connect(lambda: self.outlineAddItem("scene"))
+        self.btnRedacRemoveItem.clicked.connect(self.outlineRemoveItem)
         #Debug
         self.mdlFlatData.setVerticalHeaderLabels(["Infos générales", "Summary"])
         self.tblDebugFlatData.setModel(self.mdlFlatData)
         self.tblDebugPersos.setModel(self.mdlPersos)
         self.tblDebugPersosInfos.setModel(self.mdlPersosInfos)
+        self.treeDebugOutline.setModel(self.mdlOutline)
         
         
         self.loadProject("test_project")
+    
+####################################################################################################
+#                                             OUTLINE                                              #
+####################################################################################################
+    
+    def outlineAddItem(self, type="folder"):
+        currentIndex = self.treeRedacOutline.currentIndex()
+        item = outlineItem("Nouveau", type)
+        self.mdlOutline.appendRow(item, currentIndex)
         
+    def outlineRemoveItem(self):
+        currentIndex = self.treeRedacOutline.currentIndex()
+        self.mdlOutline.removeIndex(currentIndex)
+    
+    
 ####################################################################################################
 #                                             PERSOS                                               #
 ####################################################################################################

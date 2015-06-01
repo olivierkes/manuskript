@@ -16,6 +16,7 @@
       <label row="7" text="summarySentance"/>
       <label row="8" text="summaryPara"/>
       <label row="9" text="summaryFull"/>
+      <label row="10" text="notes"/>
     </horizontal>
   </header>
   <data>
@@ -30,6 +31,10 @@
       <col col="7"></col>
       <col col="8"></col>
       <col col="9"></col>
+      <col col="10">Quelques notes
+
+
+Pour voir.</col>
     </row>
     <row row="1">
       <col col="0">Ginette</col>
@@ -42,6 +47,7 @@
       <col col="7"></col>
       <col col="8"></col>
       <col col="9"></col>
+      <col col="10"></col>
     </row>
   </data>
 </model>

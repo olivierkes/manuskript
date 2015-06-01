@@ -18,7 +18,7 @@
     <item>
      <widget class="QTabWidget" name="tabMain">
       <property name="currentIndex">
-       <number>2</number>
+       <number>6</number>
       </property>
       <property name="documentMode">
        <bool>true</bool>
@@ -713,6 +713,16 @@
              </item>
             </layout>
            </widget>
+           <widget class="QWidget" name="tab_19">
+            <attribute name="title">
+             <string>Notes</string>
+            </attribute>
+            <layout class="QHBoxLayout" name="horizontalLayout_30">
+             <item>
+              <widget class="QPlainTextEdit" name="txtPersoNotes"/>
+             </item>
+            </layout>
+           </widget>
            <widget class="QWidget" name="tab_12">
             <attribute name="title">
              <string>Informations détaillées</string>
@@ -1273,7 +1283,7 @@
             <bool>true</bool>
            </property>
            <property name="dragDropMode">
-            <enum>QAbstractItemView::InternalMove</enum>
+            <enum>QAbstractItemView::DragOnly</enum>
            </property>
            <column>
             <property name="text">
@@ -1314,53 +1324,13 @@
           <widget class="QWidget" name="layoutWidget">
            <layout class="QVBoxLayout" name="verticalLayout_14">
             <item>
-             <widget class="QTreeWidget" name="treeWidget_3">
+             <widget class="QTreeView" name="treePlanOutline">
               <property name="dragEnabled">
                <bool>true</bool>
               </property>
               <property name="dragDropMode">
-               <enum>QAbstractItemView::InternalMove</enum>
+               <enum>QAbstractItemView::DragDrop</enum>
               </property>
-              <column>
-               <property name="text">
-                <string>Plan détaillé</string>
-               </property>
-              </column>
-              <item>
-               <property name="text">
-                <string>Chapitre 1</string>
-               </property>
-               <item>
-                <property name="text">
-                 <string>Scène 1</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Scène 2</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Scène 3</string>
-                </property>
-               </item>
-              </item>
-              <item>
-               <property name="text">
-                <string>Chapitre 2</string>
-               </property>
-               <item>
-                <property name="text">
-                 <string>Scène 1</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Scène 2</string>
-                </property>
-               </item>
-              </item>
              </widget>
             </item>
             <item>
@@ -1379,7 +1349,7 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="QComboBox" name="comboBox">
+                  <widget class="QComboBox" name="cmbPlanPOV">
                    <property name="frame">
                     <bool>false</bool>
                    </property>
@@ -1388,7 +1358,14 @@
                 </layout>
                </item>
                <item>
-                <widget class="QPlainTextEdit" name="plainTextEdit_8"/>
+                <widget class="QLineEdit" name="txtPlanSummarySentance">
+                 <property name="placeholderText">
+                  <string>Résumé de la scène en une ligne</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPlainTextEdit" name="txtPlanSummaryFull"/>
                </item>
               </layout>
              </widget>
@@ -1468,51 +1445,67 @@
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
-          <widget class="QWidget" name="">
+          <widget class="QWidget" name="layoutWidget">
            <layout class="QVBoxLayout" name="verticalLayout_19">
             <item>
-             <widget class="QTreeWidget" name="treeWidget_4">
-              <column>
-               <property name="text">
-                <string>Plan détaillé</string>
-               </property>
-              </column>
-              <item>
-               <property name="text">
-                <string>Chapitre 1</string>
-               </property>
-               <item>
-                <property name="text">
-                 <string>Scène 1</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Scène 2</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Scène 3</string>
-                </property>
-               </item>
-              </item>
-              <item>
-               <property name="text">
-                <string>Chapitre 2</string>
-               </property>
-               <item>
-                <property name="text">
-                 <string>Scène 1</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Scène 2</string>
-                </property>
-               </item>
-              </item>
+             <widget class="QTreeView" name="treeRedacOutline">
+              <property name="dragDropMode">
+               <enum>QAbstractItemView::DragDrop</enum>
+              </property>
              </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_31">
+              <item>
+               <widget class="QPushButton" name="btnRedacAddFolder">
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset theme="folder-new">
+                  <normaloff/>
+                 </iconset>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btnRedacAddScene">
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset theme="document-new">
+                  <normaloff/>
+                 </iconset>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btnRedacRemoveItem">
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset theme="list-remove">
+                  <normaloff/>
+                 </iconset>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer_7">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
             </item>
            </layout>
           </widget>
@@ -1664,7 +1657,14 @@
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_22">
                 <item>
-                 <widget class="QPlainTextEdit" name="plainTextEdit_3"/>
+                 <widget class="QLineEdit" name="txtRedacSummarySentance">
+                  <property name="placeholderText">
+                   <string>Résumé de la scène en une ligne</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPlainTextEdit" name="txtRedacSummaryFull"/>
                 </item>
                </layout>
               </widget>
@@ -1752,7 +1752,7 @@
            <enum>QTabWidget::West</enum>
           </property>
           <property name="currentIndex">
-           <number>2</number>
+           <number>3</number>
           </property>
           <widget class="QWidget" name="tab_9">
            <attribute name="title">
@@ -1785,6 +1785,16 @@
                <bool>true</bool>
               </property>
              </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tab_20">
+           <attribute name="title">
+            <string>Outline</string>
+           </attribute>
+           <layout class="QHBoxLayout" name="horizontalLayout_32">
+            <item>
+             <widget class="QTreeView" name="treeDebugOutline"/>
             </item>
            </layout>
           </widget>
@@ -1962,22 +1972,6 @@
     <hint type="destinationlabel">
      <x>944</x>
      <y>450</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButton_20</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>treeWidget_4</receiver>
-   <slot>setShown(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>401</x>
-     <y>770</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>259</x>
-     <y>510</y>
     </hint>
    </hints>
   </connection>

@@ -22,4 +22,5 @@ class Perso(Enum):
     summarySentance = 7
     summaryPara = 8
     summaryFull = 9
+    notes = 10
     
