@@ -9,6 +9,7 @@ from PyQt4.QtGui import *
 
 from ui.mainWindow import *
 from loadSave import *
+from enums import *
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
@@ -96,13 +97,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Persos
         self.mdlPersos = QStandardItemModel(0, 10)
         self.mdlPersosInfos = QStandardItemModel(1, 0)
-        self.mdlPersosInfos.insertColumn(0, [QStandardItem(i) for i in ["ID"]])
+        self.mdlPersosInfos.insertColumn(0, [QStandardItem("ID")])
         self.mdlPersosInfos.setHorizontalHeaderLabels(["Description"])
         self.lstPersos.setModel(self.mdlPersos)
-        self.tblDebugPersos.setModel(self.mdlPersos)
         self.tblPersoInfos.setModel(self.mdlPersosInfos)
         self.tblPersoInfos.setRowHidden(0, True)
-        self.tblDebugPersosInfos.setModel(self.mdlPersosInfos)
         
         self.btnAddPerso.clicked.connect(self.createPerso)
         self.btnRmPerso.clicked.connect(self.removePerso)
@@ -111,18 +110,18 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.mprPersos.setModel(self.mdlPersos)
         
         mapping = [
-            (self.txtPersoName, 0),
-            (self.txtPersoMotivation, 2),
-            (self.txtPersoGoal, 3),
-            (self.txtPersoConflict, 4),
-            (self.txtPersoEpiphany, 5),
-            (self.txtPersoSummarySentance, 6),
-            (self.txtPersoSummaryPara, 7),
-            (self.txtPersoSummaryFull, 8)
+            (self.txtPersoName, Perso.name.value),
+            (self.txtPersoMotivation, Perso.motivation.value),
+            (self.txtPersoGoal, Perso.goal.value),
+            (self.txtPersoConflict, Perso.conflict.value),
+            (self.txtPersoEpiphany, Perso.epiphany.value),
+            (self.txtPersoSummarySentance, Perso.summarySentance.value),
+            (self.txtPersoSummaryPara, Perso.summaryPara.value),
+            (self.txtPersoSummaryFull, Perso.summaryFull.value)
             ]
         for w, i in mapping:
                 self.mprPersos.addMapping(w, i)    
-        self.mprPersos.addMapping(self.sldPersoImportance, 8, "importance")
+        self.mprPersos.addMapping(self.sldPersoImportance, Perso.importance.value, "importance")
         self.sldPersoImportance.importanceChanged.connect(self.mprPersos.submit)
             
         self.mprPersos.setCurrentIndex(0)
@@ -133,6 +132,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         #Debug
         self.mdlFlatData.setVerticalHeaderLabels(["Infos générales", "Summary"])
         self.tblDebugFlatData.setModel(self.mdlFlatData)
+        self.tblDebugPersos.setModel(self.mdlPersos)
+        self.tblDebugPersosInfos.setModel(self.mdlPersosInfos)
         
         
         self.loadProject("test_project")
@@ -156,7 +157,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         "Returns an unused perso ID (row 1)"
         vals = []
         for i in range(self.mdlPersos.rowCount()):
-            item = self.mdlPersos.item(i, 1)
+            item = self.mdlPersos.item(i, Perso.ID.value)
             if item and item.text():
                 vals.append(int(item.text()))
                 
@@ -168,11 +169,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         "Checks whether some persos ID (row 1) are empty, if so, assign an ID"
         empty = []
         for i in range(self.mdlPersos.rowCount()):
-            item = self.mdlPersos.item(i, 1)
+            item = self.mdlPersos.item(i, Perso.ID.value)
             if not item:
                 item = QStandardItem()
                 item.setText(self.getPersosID())
-                self.mdlPersos.setItem(i, 1, item)
+                self.mdlPersos.setItem(i, Perso.ID.value, item)
         
     def removePerso(self):
         i = self.lstPersos.currentIndex()
@@ -181,7 +182,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
     def changeCurrentPerso(self, trash=None):
         idx = self.lstPersos.currentIndex()
-        pid = self.mdlPersos.item(idx.row(), 1).text()
+        pid = self.mdlPersos.item(idx.row(), Perso.ID.value).text()
         for c in range(self.mdlPersosInfos.columnCount()):
             pid2 = self.mdlPersosInfos.item(0, c).text()
             self.tblPersoInfos.setColumnHidden(c, c <> 0 and pid <> pid2)
@@ -208,6 +209,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
         # Stuff
         self.checkPersosID()
+        # Adds header labels
+        self.mdlPersos.setHorizontalHeaderLabels(
+	  [i.name for i in Perso])
                 
     def readSettings(self):
         # Load State and geometry

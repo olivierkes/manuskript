@@ -6,41 +6,41 @@
       <label row="1" text="2"/>
     </vertical>
     <horizontal>
-      <label row="0" text="1"/>
-      <label row="1" text="2"/>
-      <label row="2" text="3"/>
-      <label row="3" text="4"/>
-      <label row="4" text="5"/>
-      <label row="5" text="6"/>
-      <label row="6" text="7"/>
-      <label row="7" text="8"/>
-      <label row="8" text="9"/>
-      <label row="9" text="10"/>
+      <label row="0" text="name"/>
+      <label row="1" text="ID"/>
+      <label row="2" text="importance"/>
+      <label row="3" text="motivation"/>
+      <label row="4" text="goal"/>
+      <label row="5" text="conflict"/>
+      <label row="6" text="epiphany"/>
+      <label row="7" text="summarySentance"/>
+      <label row="8" text="summaryPara"/>
+      <label row="9" text="summaryFull"/>
     </horizontal>
   </header>
   <data>
     <row row="0">
       <col col="0">Albert</col>
       <col col="1">0</col>
-      <col col="2"></col>
+      <col col="2">2</col>
       <col col="3"></col>
       <col col="4"></col>
       <col col="5"></col>
       <col col="6"></col>
       <col col="7"></col>
-      <col col="8">1</col>
+      <col col="8"></col>
       <col col="9"></col>
     </row>
     <row row="1">
-      <col col="0">Jean</col>
+      <col col="0">Ginette</col>
       <col col="1">1</col>
-      <col col="2"></col>
+      <col col="2">1</col>
       <col col="3"></col>
       <col col="4"></col>
       <col col="5"></col>
       <col col="6"></col>
       <col col="7"></col>
-      <col col="8">2</col>
+      <col col="8"></col>
       <col col="9"></col>
     </row>
   </data>

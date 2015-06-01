@@ -4,9 +4,6 @@
     <vertical>
       <label row="0" text="1"/>
       <label row="1" text="2"/>
-      <label row="2" text="3"/>
-      <label row="3" text="4"/>
-      <label row="4" text="5"/>
     </vertical>
     <horizontal>
       <label row="0" text="Description"/>
@@ -21,24 +18,9 @@
       <col col="2">1</col>
     </row>
     <row row="1">
-      <col col="0">Àge</col>
-      <col col="1">14</col>
-      <col col="2">42</col>
-    </row>
-    <row row="2">
-      <col col="0">Animal favori</col>
-      <col col="1"></col>
-      <col col="2"></col>
-    </row>
-    <row row="3">
-      <col col="0">Histoire préférée</col>
-      <col col="1"></col>
-      <col col="2"></col>
-    </row>
-    <row row="4">
-      <col col="0">Couleur des cheveux</col>
-      <col col="1"></col>
-      <col col="2"></col>
+      <col col="0">Age</col>
+      <col col="1">42</col>
+      <col col="2">12</col>
     </row>
   </data>
 </model>
