@@ -160,10 +160,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 ####################################################################################################
     
     def outlineAddItem(self, type="folder"):
-        currentIndex = self.treeRedacOutline.currentIndex()
-        print(currentIndex)
+        if len(self.treeRedacOutline.selectedIndexes()) == 0:
+            parent = QModelIndex()
+        else:
+            parent = self.treeRedacOutline.currentIndex()
+            
         item = outlineItem("Nouveau", type)
-        self.mdlOutline.appendItem(item, currentIndex)
+        self.mdlOutline.appendItem(item, parent)
         
     def outlineRemoveItems(self):
         for idx in self.treeRedacOutline.selectedIndexes():
