@@ -161,6 +161,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     
     def outlineAddItem(self, type="folder"):
         currentIndex = self.treeRedacOutline.currentIndex()
+        print(currentIndex)
         item = outlineItem("Nouveau", type)
         self.mdlOutline.appendItem(item, currentIndex)
         
