@@ -7,6 +7,7 @@ from __future__ import unicode_literals
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 from enum import Enum
+from lxml import etree as ET
 
 class Outline(Enum):
     title = 0
@@ -24,7 +25,7 @@ class outlineModel(QAbstractItemModel):
     def __init__(self):
         QAbstractItemModel.__init__(self)
         
-        self.rootItem = outlineItem()
+        self.rootItem = outlineItem("root", "folder")
     
     def index(self, row, column, parent):
         
@@ -84,14 +85,6 @@ class outlineModel(QAbstractItemModel):
         item.setData(index.column(), value)
         self.dataChanged.emit(index, index)
         return True
-    
-    def flags(self, index):
-        flags = Qt.ItemIsEnabled | Qt.ItemIsEditable | Qt.ItemIsSelectable | Qt.ItemIsDragEnabled
-        
-        if index.isValid() and index.internalPointer().isFolder():
-            flags |= Qt.ItemIsDropEnabled
-            
-        return flags
         
     
     def headerData(self, section, orientation, role=Qt.DisplayRole):
@@ -99,6 +92,141 @@ class outlineModel(QAbstractItemModel):
             return [i.name for i in Outline][section]
         else:
             return QVariant()
+        return True
+    
+    #################### DRAG AND DROP ########################
+    # http://doc.qt.io/qt-5/model-view-programming.html#using-drag-and-drop-with-item-views
+    
+    def flags(self, index):
+        flags = QAbstractItemModel.flags(self, index) | Qt.ItemIsEditable 
+        
+        if index.isValid() and index.internalPointer().isFolder():
+            flags |= Qt.ItemIsDropEnabled | Qt.ItemIsDragEnabled
+            
+        elif index.isValid():
+            flags |= Qt.ItemIsDragEnabled
+            
+        else:
+            flags |= Qt.ItemIsDropEnabled
+            
+        return flags
+    
+    def mimeTypes(self):
+        return ["application/xml"]
+    
+    def mimeData(self, indexes):
+        mimeData = QMimeData()
+        #encodedData = QByteArray()
+        #stream = QDataStream(encodedData, QIODevice.WriteOnly)
+        encodedData = ""
+        
+        root = ET.Element("outlineItems")
+        for index in indexes:
+            if index.isValid():
+                item = ET.XML(index.internalPointer().toXML())
+                root.append(item)
+        
+        encodedData = ET.tostring(root)
+        
+        mimeData.setData("application/xml", encodedData)
+        return mimeData
+    
+    def supportedDropActions(self):
+        
+        return Qt.MoveAction # Qt.CopyAction | 
+        return Qt.CopyAction | Qt.MoveAction
+    
+    def dropMimeData(self, data, action, row, column, parent):
+        
+        if action == Qt.IgnoreAction:
+            return True  # What is that?
+        
+        if not data.hasFormat("application/xml"):
+            return False
+        
+        if column > 0:
+            column = 0
+        
+        if row <> -1:
+            beginRow = row
+        elif parent.isValid():
+            beginRow = self.rowCount(parent) + 1
+        else:
+            beginRow = self.rowCount() + 1
+            
+        encodedData = str(data.data("application/xml"))
+        root = ET.XML(encodedData)
+        
+        if root.tag <> "outlineItems":
+            return False
+        
+        items = []
+        for child in root:
+            if child.tag == "outlineItem":
+                items.append(outlineItem(xml=ET.tostring(child)))
+                
+        if not items:
+            return False
+        
+        self.insertItems(items, beginRow, parent)
+        
+        return True
+        
+    ################# ADDING AND REMOVING #################
+        
+    def insertItem(self, item, row, parent=QModelIndex()):
+        return self.insertItems([item], row, parent)
+    
+    def insertItems(self, items, row, parent=QModelIndex()):
+        if not parent.isValid():
+            parentItem = self.rootItem
+        else:
+            parentItem = parent.internalPointer()
+            
+        # Insert only if parent is folder
+        if parentItem.isFolder():
+            self.beginInsertRows(parent, row, row + len(items) - 1)
+            
+            for i in items:
+                parentItem.insertChild(row + items.index(i), i)
+            
+            self.endInsertRows()
+            
+        return True
+        
+    def appendItem(self, item, parent=QModelIndex()):
+        if not parent.isValid():
+            parentItem = self.rootItem
+        else:
+            parentItem = parent.internalPointer()
+        
+        # If parent is folder, write into
+        if parentItem.isFolder():
+            self.insertItem(item, self.rowCount(parent), parent)
+            
+        # If parent is not folder, write next to
+        else:
+            self.insertItem(item, parent.row()+1, parent.parent())
+        
+    def removeIndex(self, index):
+        item = index.internalPointer()
+        self.removeRow(item.row(), index.parent())
+            
+    def removeRow(self, row, parent=QModelIndex()):
+        return self.removeRows(row, 1, parent)
+    
+    def removeRows(self, row, count, parent=QModelIndex()):
+        if not parent.isValid():
+            parentItem = self.rootItem
+        else:
+            parentItem = parent.internalPointer()
+            
+        self.beginRemoveRows(parent, row, row + count - 1)
+        for i in range(count):
+            parentItem.removeChild(row)
+            
+        self.endRemoveRows()
+        return True
     
     #def insertRow(self, row, item, parent=QModelIndex()):
         #self.beginInsertRows(parent, row, row)
@@ -112,43 +240,27 @@ class outlineModel(QAbstractItemModel):
         
         #self.endInsertRows()
         
-    def appendRow(self, item, parent=QModelIndex()):
-        if not parent.isValid():
-            parentItem = self.rootItem
-        else:
-            parentItem = parent.internalPointer()
         
-        if parentItem.isFolder():
-            self.beginInsertRows(parent, parentItem.childCount(), parentItem.childCount())
-            parentItem.appendChild(item)
-            self.endInsertRows()
-        
-    def removeIndex(self, index):
-        item = index.internalPointer()
-        self.removeRow(item.row(), 1, index.parent())
-            
-        
-    def removeRow(self, row, count, parent=QModelIndex()):
-        if not parent.isValid():
-            parentItem = self.rootItem
-        else:
-            parentItem = parent.internalPointer()
-            
-        self.beginRemoveRows(parent, row, row)
-        parentItem.removeChild(row)
-        self.endRemoveRows()
-        return True
+    ################# XML #################
+    
+    def saveToXML(self):
+        root = ET.XML(self.rootItem.toXML())
+        print(ET.tostring(root, pretty_print=True))
+        # FIXME
+    
     
 class outlineItem():
-    def __init__(self, title="", type="folder", parent=None):
-        
-        self._parent = parent
+    
+    def __init__(self, title="", type="folder", xml=""):
         
         self._data = {}
         self.childItems = []
         
-        self._data[Outline.title] = title
+        if title: self._data[Outline.title] = title
         self._data[Outline.type] = type
+        
+        if xml:
+            self.setFromXML(xml)
         
         
     def child(self, row):
@@ -165,7 +277,7 @@ class outlineItem():
             if Outline(column) in self._data:
                 return self._data[Outline(column)]
             else:
-                return QVariant()
+                return None
         elif role == Qt.DecorationRole and column == Outline.title.value:
             if self.isFolder():
                 return QIcon.fromTheme("folder")
@@ -173,18 +285,18 @@ class outlineItem():
                 return QIcon.fromTheme("document-new")
     
     def setData(self, column, data):
-        self._data[Outline(column)] = data
+        self._data[Outline(column)] = str(data.toString())
     
     def row(self):
         if self.parent:
             return self.parent().childItems.index(self)
         
     def appendChild(self, child):
-        self.childItems.append(child)
-        child._parent = self
+        self.insertChild(self.childCount(), child)
         
     def insertChild(self, row, child):
         self.childItems.insert(row, child)
+        child._parent = self
         
     def removeChild(self, row):
         self.childItems.pop(row)
@@ -197,3 +309,27 @@ class outlineItem():
     
     def isScene(self):
         return self._data[Outline.type] == "scene"
+    
+    def toXML(self):
+        item = ET.Element("outlineItem")
+        
+        for attrib in Outline:
+            val = self.data(attrib)
+            if val:
+                item.set(attrib.name, val)
+            
+        for i in self.childItems:
+            item.append(ET.XML(i.toXML()))
+            
+        return ET.tostring(item)
+    
+    def setFromXML(self, xml):
+        root = ET.XML(xml)
+        
+        for k in root.attrib:
+            if k in Outline.__members__:
+                self._data[Outline.__members__[k]] = root.attrib[k]
+                
+        for child in root:
+            item = outlineItem(xml=ET.tostring(child))
+            self.appendChild(item)

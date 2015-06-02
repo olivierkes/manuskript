@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'src/ui/mainWindow.ui'
 #
-# Created: Mon Jun  1 23:58:06 2015
+# Created: Tue Jun  2 13:54:35 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -774,6 +774,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_19.setObjectName(_fromUtf8("verticalLayout_19"))
         self.treeRedacOutline = QtGui.QTreeView(self.layoutWidget1)
         self.treeRedacOutline.setDragDropMode(QtGui.QAbstractItemView.DragDrop)
+        self.treeRedacOutline.setDefaultDropAction(QtCore.Qt.MoveAction)
+        self.treeRedacOutline.setSelectionMode(QtGui.QAbstractItemView.ExtendedSelection)
         self.treeRedacOutline.setObjectName(_fromUtf8("treeRedacOutline"))
         self.verticalLayout_19.addWidget(self.treeRedacOutline)
         self.horizontalLayout_31 = QtGui.QHBoxLayout()
@@ -798,6 +800,12 @@ class Ui_MainWindow(object):
         self.horizontalLayout_31.addWidget(self.btnRedacRemoveItem)
         spacerItem9 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout_31.addItem(spacerItem9)
+        self.btnRedacPreview = QtGui.QPushButton(self.layoutWidget1)
+        self.btnRedacPreview.setText(_fromUtf8(""))
+        icon = QtGui.QIcon.fromTheme(_fromUtf8("document-print"))
+        self.btnRedacPreview.setIcon(icon)
+        self.btnRedacPreview.setObjectName(_fromUtf8("btnRedacPreview"))
+        self.horizontalLayout_31.addWidget(self.btnRedacPreview)
         self.verticalLayout_19.addLayout(self.horizontalLayout_31)
         self.layoutWidget2 = QtGui.QWidget(self.splitterRedac)
         self.layoutWidget2.setObjectName(_fromUtf8("layoutWidget2"))

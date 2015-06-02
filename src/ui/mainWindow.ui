@@ -1452,6 +1452,12 @@
               <property name="dragDropMode">
                <enum>QAbstractItemView::DragDrop</enum>
               </property>
+              <property name="defaultDropAction">
+               <enum>Qt::MoveAction</enum>
+              </property>
+              <property name="selectionMode">
+               <enum>QAbstractItemView::ExtendedSelection</enum>
+              </property>
              </widget>
             </item>
             <item>
@@ -1504,6 +1510,16 @@
                  </size>
                 </property>
                </spacer>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btnRedacPreview">
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset theme="document-print"/>
+                </property>
+               </widget>
               </item>
              </layout>
             </item>

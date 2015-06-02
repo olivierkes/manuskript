@@ -64,6 +64,8 @@ def loadStandardItemModelXML(mdl, xml):
     for l in root.find("header").find("vertical").findall("label"):
         vLabels.append(l.attrib["text"])
     
+    #print(root.find("header").find("vertical").text)
+    
     mdl.setVerticalHeaderLabels(vLabels)
     mdl.setHorizontalHeaderLabels(hLabels)
     

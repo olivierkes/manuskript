@@ -143,14 +143,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.treePlanOutline.hideColumn(c)
         self.btnRedacAddFolder.clicked.connect(lambda: self.outlineAddItem("folder"))
         self.btnRedacAddScene.clicked.connect(lambda: self.outlineAddItem("scene"))
-        self.btnRedacRemoveItem.clicked.connect(self.outlineRemoveItem)
+        self.btnRedacRemoveItem.clicked.connect(self.outlineRemoveItems)
+        
         #Debug
         self.mdlFlatData.setVerticalHeaderLabels(["Infos générales", "Summary"])
         self.tblDebugFlatData.setModel(self.mdlFlatData)
         self.tblDebugPersos.setModel(self.mdlPersos)
         self.tblDebugPersosInfos.setModel(self.mdlPersosInfos)
         self.treeDebugOutline.setModel(self.mdlOutline)
-        
+        self.btnRedacPreview.clicked.connect(self.mdlOutline.saveToXML)
         
         self.loadProject("test_project")
     
@@ -161,11 +162,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def outlineAddItem(self, type="folder"):
         currentIndex = self.treeRedacOutline.currentIndex()
         item = outlineItem("Nouveau", type)
-        self.mdlOutline.appendRow(item, currentIndex)
+        self.mdlOutline.appendItem(item, currentIndex)
         
-    def outlineRemoveItem(self):
-        currentIndex = self.treeRedacOutline.currentIndex()
-        self.mdlOutline.removeIndex(currentIndex)
+    def outlineRemoveItems(self):
+        for idx in self.treeRedacOutline.selectedIndexes():
+            if idx.isValid():
+                self.mdlOutline.removeIndex(idx)
     
     
 ####################################################################################################
