@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<outlineItem title="root" type="folder">
+  <outlineItem title="Nouveau" type="scene"/>
+  <outlineItem title="Nouveau" type="folder"/>
+  <outlineItem title="Nouveau" type="folder"/>
+  <outlineItem title="Nouveau" type="folder">
+    <outlineItem title="Nouveau" type="scene"/>
+    <outlineItem title="Nouveau" type="folder"/>
+    <outlineItem title="Nouveau" type="scene"/>
+  </outlineItem>
+  <outlineItem title="Nouveau" type="scene"/>
+  <outlineItem title="Nouveau" type="scene"/>
+</outlineItem>
