@@ -23,5 +23,7 @@ compile:
 	pyrcc4 "$<" -o "$@" 
 
 %.py : %.ui
-	pyuic4  "$<" > "$@" 
+# 	pyuic4  "$<" > "$@" 
+	pyuic5  "$<" > "$@" 
+	
 

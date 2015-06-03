@@ -4,9 +4,7 @@
 from __future__ import print_function
 from __future__ import unicode_literals
 
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
-from PyQt4.QtXml import *
+from qt import *
 
 from lxml import etree as ET
 
@@ -19,13 +17,13 @@ def saveStandardItemModelXML(mdl, xml):
     for x in range(mdl.rowCount()):
         vH = ET.SubElement(vHeader, "label")
         vH.attrib["row"] = unicode(x)
-        vH.attrib["text"] = unicode(mdl.headerData(x, Qt.Vertical).toString())
+        vH.attrib["text"] = mdl.headerData(x, Qt.Vertical)
     
     hHeader = ET.SubElement(header, "horizontal")
     for y in range(mdl.columnCount()):
         hH = ET.SubElement(hHeader, "label")
         hH.attrib["row"] = unicode(y)
-        hH.attrib["text"] = unicode(mdl.headerData(y, Qt.Horizontal).toString())
+        hH.attrib["text"] = mdl.headerData(y, Qt.Horizontal)
     
     # Data
     data = ET.SubElement(root, "data")
@@ -37,10 +35,11 @@ def saveStandardItemModelXML(mdl, xml):
         for y in range(mdl.columnCount()):
             col = ET.SubElement(row, "col")
             col.attrib["col"] = unicode(y)
-            col.text = unicode(mdl.data(mdl.index(x, y)).toString())
+            if mdl.data(mdl.index(x, y)) <> "":
+                col.text = mdl.data(mdl.index(x, y))
             
     print("Saving to {}.".format(xml))
-    ET.ElementTree(root).write(xml, encoding="UTF-8",xml_declaration=True, pretty_print=True)
+    ET.ElementTree(root).write(xml, encoding="UTF-8", xml_declaration=True, pretty_print=True)
    
     
 def loadStandardItemModelXML(mdl, xml):

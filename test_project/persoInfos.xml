@@ -4,23 +4,25 @@
     <vertical>
       <label row="0" text="1"/>
       <label row="1" text="2"/>
+      <label row="2" text="3"/>
     </vertical>
     <horizontal>
       <label row="0" text="Description"/>
       <label row="1" text="Valeur"/>
-      <label row="2" text="Valeur"/>
     </horizontal>
   </header>
   <data>
     <row row="0">
       <col col="0">ID</col>
       <col col="1">0</col>
-      <col col="2">1</col>
     </row>
     <row row="1">
       <col col="0">Age</col>
       <col col="1">42</col>
-      <col col="2">12</col>
+    </row>
+    <row row="2">
+      <col col="0">Animal préféré</col>
+      <col col="1">Pingouin</col>
     </row>
   </data>
 </model>

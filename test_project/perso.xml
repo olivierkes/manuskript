@@ -3,7 +3,6 @@
   <header>
     <vertical>
       <label row="0" text="1"/>
-      <label row="1" text="2"/>
     </vertical>
     <horizontal>
       <label row="0" text="name"/>
@@ -24,30 +23,17 @@
       <col col="0">Albert</col>
       <col col="1">0</col>
       <col col="2">2</col>
-      <col col="3"></col>
-      <col col="4"></col>
-      <col col="5"></col>
-      <col col="6"></col>
-      <col col="7"></col>
-      <col col="8"></col>
-      <col col="9"></col>
+      <col col="3"/>
+      <col col="4"/>
+      <col col="5"/>
+      <col col="6"/>
+      <col col="7"/>
+      <col col="8"/>
+      <col col="9"/>
       <col col="10">Quelques notes
 
 
 Pour voir.</col>
-    </row>
-    <row row="1">
-      <col col="0">Ginette</col>
-      <col col="1">1</col>
-      <col col="2">1</col>
-      <col col="3"></col>
-      <col col="4"></col>
-      <col col="5"></col>
-      <col col="6"></col>
-      <col col="7"></col>
-      <col col="8"></col>
-      <col col="9"></col>
-      <col col="10"></col>
     </row>
   </data>
 </model>

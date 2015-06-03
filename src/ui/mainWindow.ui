@@ -1511,16 +1511,6 @@
                 </property>
                </spacer>
               </item>
-              <item>
-               <widget class="QPushButton" name="btnRedacPreview">
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="icon">
-                 <iconset theme="document-print"/>
-                </property>
-               </widget>
-              </item>
              </layout>
             </item>
            </layout>
@@ -1828,7 +1818,7 @@
      <x>0</x>
      <y>0</y>
      <width>1103</width>
-     <height>31</height>
+     <height>30</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_Fichier">
@@ -1845,7 +1835,7 @@
    </widget>
    <widget class="QMenu" name="menuMode">
     <property name="title">
-     <string>Mode</string>
+     <string>Mo&amp;de</string>
     </property>
     <addaction name="actionSnowflakeMode"/>
    </widget>
@@ -1860,7 +1850,7 @@
     </iconset>
    </property>
    <property name="text">
-    <string>Ouvrir</string>
+    <string>&amp;Ouvrir</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+O</string>
@@ -1886,7 +1876,7 @@
     </iconset>
    </property>
    <property name="text">
-    <string>Enregistrer</string>
+    <string>&amp;Enregistrer</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+S</string>
@@ -1899,7 +1889,7 @@
     </iconset>
    </property>
    <property name="text">
-    <string>Enregistrer sous...</string>
+    <string>Enregistrer &amp;sous...</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+S</string>
@@ -1912,7 +1902,7 @@
     </iconset>
    </property>
    <property name="text">
-    <string>Quitter</string>
+    <string>&amp;Quitter</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Q</string>
@@ -1926,7 +1916,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Snowflake</string>
+    <string>&amp;Snowflake</string>
    </property>
   </action>
   <action name="actionNouveau">
@@ -1936,7 +1926,7 @@
     </iconset>
    </property>
    <property name="text">
-    <string>Nouveau</string>
+    <string>&amp;Nouveau</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+N</string>
@@ -1963,15 +1953,15 @@
    <sender>pushButton_16</sender>
    <signal>toggled(bool)</signal>
    <receiver>plainTextEdit_7</receiver>
-   <slot>setShown(bool)</slot>
+   <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>848</x>
-     <y>688</y>
+     <x>117</x>
+     <y>124</y>
     </hint>
     <hint type="destinationlabel">
-     <x>795</x>
-     <y>611</y>
+     <x>105</x>
+     <y>88</y>
     </hint>
    </hints>
   </connection>
@@ -1979,15 +1969,15 @@
    <sender>pushButton_23</sender>
    <signal>toggled(bool)</signal>
    <receiver>groupbox</receiver>
-   <slot>setShown(bool)</slot>
+   <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1088</x>
-     <y>770</y>
+     <x>111</x>
+     <y>102</y>
     </hint>
     <hint type="destinationlabel">
-     <x>944</x>
-     <y>450</y>
+     <x>111</x>
+     <y>102</y>
     </hint>
    </hints>
   </connection>
@@ -1995,14 +1985,14 @@
    <sender>btnPlotShowSummary</sender>
    <signal>toggled(bool)</signal>
    <receiver>grpPlotSummary</receiver>
-   <slot>setShown(bool)</slot>
+   <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>254</x>
-     <y>746</y>
+     <x>111</x>
+     <y>102</y>
     </hint>
     <hint type="destinationlabel">
-     <x>839</x>
+     <x>111</x>
      <y>102</y>
     </hint>
    </hints>
@@ -2014,12 +2004,12 @@
    <slot>setCurrentIndex(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>925</x>
-     <y>129</y>
+     <x>111</x>
+     <y>102</y>
     </hint>
     <hint type="destinationlabel">
-     <x>932</x>
-     <y>151</y>
+     <x>111</x>
+     <y>102</y>
     </hint>
    </hints>
   </connection>

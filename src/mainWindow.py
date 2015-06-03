@@ -4,8 +4,7 @@
 from __future__ import print_function
 from __future__ import unicode_literals
 
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
+from qt import *
 
 from ui.mainWindow import *
 from loadSave import *
@@ -151,7 +150,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.tblDebugPersos.setModel(self.mdlPersos)
         self.tblDebugPersosInfos.setModel(self.mdlPersosInfos)
         self.treeDebugOutline.setModel(self.mdlOutline)
-        self.btnRedacPreview.clicked.connect(self.mdlOutline.saveToXML)
         
         self.loadProject("test_project")
     
@@ -242,6 +240,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         loadStandardItemModelXML(self.mdlFlatData, "{}/flatModel.xml".format(project))
         loadStandardItemModelXML(self.mdlPersos, "{}/perso.xml".format(project))
         loadStandardItemModelXML(self.mdlPersosInfos, "{}/persoInfos.xml".format(project))
+        self.mdlOutline.loadFromXML("{}/outline.xml".format(project))
         
         # Stuff
         self.checkPersosID()
@@ -252,8 +251,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def readSettings(self):
         # Load State and geometry
         settings = QSettings(qApp.organizationName(), qApp.applicationName())
-        self.restoreGeometry(settings.value("geometry").toByteArray())
-        self.restoreState(settings.value("windowState").toByteArray())
+        self.restoreGeometry(settings.value("geometry"))
+        self.restoreState(settings.value("windowState"))
         
     def closeEvent(self, event):
         # Save State and geometry
@@ -265,7 +264,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         saveStandardItemModelXML(self.mdlFlatData, "{}/flatModel.xml".format(self.currentProject))
         saveStandardItemModelXML(self.mdlPersos, "{}/perso.xml".format(self.currentProject))
         saveStandardItemModelXML(self.mdlPersosInfos, "{}/persoInfos.xml".format(self.currentProject))
-        
+        self.mdlOutline.saveToXML("{}/outline.xml".format(self.currentProject))
         
         # closeEvent
         QMainWindow.closeEvent(self, event)
@@ -311,7 +310,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             3:self.lblSummaryWCFull
             }[i]
         
-        wc = len(src.toPlainText().trimmed().split(" ")) if src.toPlainText() else 0
+        wc = len(src.toPlainText().strip().split(" ")) if src.toPlainText() else 0
         if i in [2, 3]: pages = " (~{} pages)".format(int(wc / 25) / 10.)
         else: pages = ""
         lbl.setText("Mots: {}{}".format(wc, pages))

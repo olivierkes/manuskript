@@ -4,8 +4,8 @@
 from __future__ import print_function
 from __future__ import unicode_literals
 
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
+from qt import *
+
 from enum import Enum
 from lxml import etree as ET
 
@@ -19,6 +19,7 @@ class Outline(Enum):
     notes = 6
     status = 7
     compile = 8
+    text = 9
     
 
 class outlineModel(QAbstractItemModel):
@@ -133,8 +134,17 @@ class outlineModel(QAbstractItemModel):
     
     def supportedDropActions(self):
         
-        return Qt.MoveAction # Qt.CopyAction | 
+        #return Qt.MoveAction # Qt.CopyAction | 
         return Qt.CopyAction | Qt.MoveAction
+    
+    def canDropMomeData(data, action, row, column, parent):
+        if not data.hasFormat("application/xml"):
+            return False
+
+        if column > 0:
+            return False
+
+        return True
     
     def dropMimeData(self, data, action, row, column, parent):
         
@@ -243,15 +253,21 @@ class outlineModel(QAbstractItemModel):
         
     ################# XML #################
     
-    def saveToXML(self):
+    def saveToXML(self, xml):
         root = ET.XML(self.rootItem.toXML())
-        print(ET.tostring(root, pretty_print=True))
-        # FIXME
+        ET.ElementTree(root).write(xml, encoding="UTF-8", xml_declaration=True, pretty_print=True)
     
+    def loadFromXML(self, xml):
+        try:
+            root = ET.parse(xml)
+            self.rootItem = outlineItem(xml=ET.tostring(root))  
+        except:
+            print("N'arrive pas à ouvrir {}".format(xml))
+            return
     
 class outlineItem():
     
-    def __init__(self, title="", type="folder", xml=""):
+    def __init__(self, title="", type="folder", xml=None):
         
         self._data = {}
         self.childItems = []
@@ -259,7 +275,7 @@ class outlineItem():
         if title: self._data[Outline.title] = title
         self._data[Outline.type] = type
         
-        if xml:
+        if xml is not None:
             self.setFromXML(xml)
         
         
@@ -285,7 +301,7 @@ class outlineItem():
                 return QIcon.fromTheme("document-new")
     
     def setData(self, column, data):
-        self._data[Outline(column)] = str(data.toString())
+        self._data[Outline(column)] = unicode(data.toString())
     
     def row(self):
         if self.parent:
