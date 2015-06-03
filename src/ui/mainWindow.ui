@@ -18,156 +18,160 @@
     <item>
      <widget class="QTabWidget" name="tabMain">
       <property name="currentIndex">
-       <number>6</number>
+       <number>1</number>
       </property>
       <property name="documentMode">
        <bool>true</bool>
       </property>
-      <widget class="QWidget" name="tab_3">
+      <widget class="QWidget" name="lytTabOverview">
        <attribute name="title">
         <string>Aperçu</string>
        </attribute>
-       <layout class="QHBoxLayout" name="horizontalLayout_26">
+       <layout class="QVBoxLayout" name="verticalLayout_23">
         <item>
-         <widget class="QGroupBox" name="grpBookInfos">
-          <property name="title">
-           <string>Information sur le livre</string>
-          </property>
-          <layout class="QFormLayout" name="formLayout_3">
-           <property name="leftMargin">
-            <number>6</number>
-           </property>
-           <property name="topMargin">
-            <number>6</number>
-           </property>
-           <property name="rightMargin">
-            <number>6</number>
-           </property>
-           <item row="0" column="0">
-            <widget class="QLabel" name="label_10">
-             <property name="text">
-              <string>Titre</string>
+         <layout class="QHBoxLayout" name="horizontalLayout_26">
+          <item>
+           <widget class="QGroupBox" name="grpBookInfos">
+            <property name="title">
+             <string>Information sur le livre</string>
+            </property>
+            <layout class="QFormLayout" name="formLayout_3">
+             <property name="leftMargin">
+              <number>6</number>
              </property>
-            </widget>
-           </item>
-           <item row="0" column="1">
-            <widget class="QLineEdit" name="txtGeneralTitle"/>
-           </item>
-           <item row="1" column="0">
-            <widget class="QLabel" name="label_11">
-             <property name="text">
-              <string>Sous titre</string>
+             <property name="topMargin">
+              <number>6</number>
              </property>
-            </widget>
-           </item>
-           <item row="1" column="1">
-            <widget class="QLineEdit" name="txtGeneralSubtitle"/>
-           </item>
-           <item row="2" column="0">
-            <widget class="QLabel" name="label_12">
-             <property name="text">
-              <string>Série</string>
+             <property name="rightMargin">
+              <number>6</number>
              </property>
-            </widget>
-           </item>
-           <item row="2" column="1">
-            <widget class="QLineEdit" name="txtGeneralSerie"/>
-           </item>
-           <item row="3" column="0">
-            <widget class="QLabel" name="label_13">
-             <property name="text">
-              <string>Volume</string>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="1">
-            <layout class="QHBoxLayout" name="horizontalLayout_25">
-             <item>
-              <widget class="QLineEdit" name="txtGeneralVolume"/>
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_10">
+               <property name="text">
+                <string>Titre</string>
+               </property>
+              </widget>
              </item>
-             <item>
-              <spacer name="horizontalSpacer_6">
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
+             <item row="0" column="1">
+              <widget class="QLineEdit" name="txtGeneralTitle"/>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="label_11">
+               <property name="text">
+                <string>Sous titre</string>
                </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>40</width>
-                 <height>20</height>
-                </size>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QLineEdit" name="txtGeneralSubtitle"/>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="label_12">
+               <property name="text">
+                <string>Série</string>
                </property>
-              </spacer>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QLineEdit" name="txtGeneralSerie"/>
+             </item>
+             <item row="3" column="0">
+              <widget class="QLabel" name="label_13">
+               <property name="text">
+                <string>Volume</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="1">
+              <layout class="QHBoxLayout" name="horizontalLayout_25">
+               <item>
+                <widget class="QLineEdit" name="txtGeneralVolume"/>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_6">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </item>
+             <item row="4" column="0">
+              <widget class="QLabel" name="label_14">
+               <property name="text">
+                <string>Genre</string>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="1">
+              <widget class="QLineEdit" name="txtGeneralGenre"/>
+             </item>
+             <item row="5" column="0">
+              <widget class="QLabel" name="label_16">
+               <property name="text">
+                <string>License</string>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="1">
+              <widget class="QLineEdit" name="txtGeneralLicense"/>
              </item>
             </layout>
-           </item>
-           <item row="4" column="0">
-            <widget class="QLabel" name="label_14">
-             <property name="text">
-              <string>Genre</string>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="grpAuthor">
+            <property name="title">
+             <string>Informations sur l'auteur</string>
+            </property>
+            <layout class="QFormLayout" name="formLayout_4">
+             <property name="leftMargin">
+              <number>6</number>
              </property>
-            </widget>
-           </item>
-           <item row="4" column="1">
-            <widget class="QLineEdit" name="txtGeneralGenre"/>
-           </item>
-           <item row="5" column="0">
-            <widget class="QLabel" name="label_16">
-             <property name="text">
-              <string>License</string>
+             <property name="topMargin">
+              <number>6</number>
              </property>
-            </widget>
-           </item>
-           <item row="5" column="1">
-            <widget class="QLineEdit" name="txtGeneralLicense"/>
-           </item>
-          </layout>
-         </widget>
-        </item>
-        <item>
-         <widget class="QGroupBox" name="grpAuthor">
-          <property name="title">
-           <string>Informations sur l'auteur</string>
-          </property>
-          <layout class="QFormLayout" name="formLayout_4">
-           <property name="leftMargin">
-            <number>6</number>
-           </property>
-           <property name="topMargin">
-            <number>6</number>
-           </property>
-           <property name="rightMargin">
-            <number>6</number>
-           </property>
-           <item row="0" column="0">
-            <widget class="QLabel" name="label_15">
-             <property name="text">
-              <string>Nom</string>
+             <property name="rightMargin">
+              <number>6</number>
              </property>
-            </widget>
-           </item>
-           <item row="0" column="1">
-            <widget class="QLineEdit" name="txtGeneralAuthor"/>
-           </item>
-           <item row="1" column="0">
-            <widget class="QLabel" name="label_19">
-             <property name="text">
-              <string>Email</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="1">
-            <widget class="QLineEdit" name="txtGeneralEmail"/>
-           </item>
-          </layout>
-         </widget>
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_15">
+               <property name="text">
+                <string>Nom</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QLineEdit" name="txtGeneralAuthor"/>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="label_19">
+               <property name="text">
+                <string>Email</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QLineEdit" name="txtGeneralEmail"/>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="tab">
+      <widget class="QWidget" name="lytTabSummary">
        <attribute name="title">
         <string>Résumé</string>
        </attribute>
-       <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <layout class="QVBoxLayout" name="verticalLayout_24">
         <item>
          <widget class="QTabWidget" name="tabSummary">
           <property name="tabPosition">
@@ -479,11 +483,11 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="tab_2">
+      <widget class="QWidget" name="lytTabPersos">
        <attribute name="title">
         <string>Personnages</string>
        </attribute>
-       <layout class="QHBoxLayout" name="horizontalLayout">
+       <layout class="QVBoxLayout" name="verticalLayout_25">
         <item>
          <widget class="QSplitter" name="splitterPersos">
           <property name="orientation">
@@ -820,11 +824,11 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="tab_4">
+      <widget class="QWidget" name="lytTabPlot">
        <attribute name="title">
         <string>Intrigues</string>
        </attribute>
-       <layout class="QHBoxLayout" name="horizontalLayout_5">
+       <layout class="QVBoxLayout" name="verticalLayout_26">
         <item>
          <widget class="QSplitter" name="splitterPlot">
           <property name="orientation">
@@ -1265,11 +1269,11 @@
         <string>Contexte</string>
        </attribute>
       </widget>
-      <widget class="QWidget" name="tab_6">
+      <widget class="QWidget" name="lytTabOutline">
        <attribute name="title">
         <string>Plan</string>
        </attribute>
-       <layout class="QHBoxLayout" name="horizontalLayout_12">
+       <layout class="QVBoxLayout" name="verticalLayout_27">
         <item>
          <widget class="QSplitter" name="splitterPlan">
           <property name="orientation">
@@ -1435,11 +1439,11 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="tab_7">
+      <widget class="QWidget" name="lytTabRedac">
        <attribute name="title">
         <string>Rédaction</string>
        </attribute>
-       <layout class="QHBoxLayout" name="horizontalLayout_20">
+       <layout class="QVBoxLayout" name="verticalLayout_28">
         <item>
          <widget class="QSplitter" name="splitterRedac">
           <property name="orientation">
@@ -1747,11 +1751,11 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="tab_8">
+      <widget class="QWidget" name="lytTabDebug">
        <attribute name="title">
         <string>Debug</string>
        </attribute>
-       <layout class="QHBoxLayout" name="horizontalLayout_23">
+       <layout class="QVBoxLayout" name="verticalLayout_29">
         <item>
          <widget class="QTabWidget" name="tabWidget">
           <property name="tabPosition">
@@ -1839,8 +1843,15 @@
     </property>
     <addaction name="actionSnowflakeMode"/>
    </widget>
+   <widget class="QMenu" name="menu_Aide">
+    <property name="title">
+     <string>&amp;Aide</string>
+    </property>
+    <addaction name="actShowHelp"/>
+   </widget>
    <addaction name="menu_Fichier"/>
    <addaction name="menuMode"/>
+   <addaction name="menu_Aide"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionOuvrir">
@@ -1930,6 +1941,25 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+N</string>
+   </property>
+  </action>
+  <action name="actShowHelp">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset theme="system-help">
+     <normaloff/>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Afficher les &amp;bulles d'aide</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+B</string>
    </property>
   </action>
  </widget>

@@ -7,6 +7,7 @@ from __future__ import unicode_literals
 from qt import *
 
 from ui.mainWindow import *
+from ui.helpLabel import helpLabel
 from loadSave import *
 from enums import *
 from models.outlineModel import *
@@ -19,21 +20,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.readSettings()
         
         # UI
-        self.splitterPersos.setStretchFactor(0, 25)
-        self.splitterPersos.setStretchFactor(1, 75)
-        
-        self.splitterPlot.setStretchFactor(0, 20)
-        self.splitterPlot.setStretchFactor(1, 40)
-        self.splitterPlot.setStretchFactor(2, 40)
-        
-        
-        self.splitterPlan.setStretchFactor(0, 25)
-        self.splitterPlan.setStretchFactor(1, 75)
-        
-        
-        self.splitterRedac.setStretchFactor(0, 20)
-        self.splitterRedac.setStretchFactor(1, 60)
-        self.splitterRedac.setStretchFactor(2, 20)
+        self.setupMoreUi()
         
         # Word count
         self.mprWordCount = QSignalMapper(self)
@@ -314,3 +301,47 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if i in [2, 3]: pages = " (~{} pages)".format(int(wc / 25) / 10.)
         else: pages = ""
         lbl.setText("Mots: {}{}".format(wc, pages))
+        
+        
+    def setupMoreUi(self):
+        # Splitters
+        self.splitterPersos.setStretchFactor(0, 25)
+        self.splitterPersos.setStretchFactor(1, 75)
+        
+        self.splitterPlot.setStretchFactor(0, 20)
+        self.splitterPlot.setStretchFactor(1, 40)
+        self.splitterPlot.setStretchFactor(2, 40)
+        
+        self.splitterPlan.setStretchFactor(0, 25)
+        self.splitterPlan.setStretchFactor(1, 75)
+        
+        self.splitterRedac.setStretchFactor(0, 20)
+        self.splitterRedac.setStretchFactor(1, 60)
+        self.splitterRedac.setStretchFactor(2, 20)
+        
+        # Help box
+        
+        references = [
+            (self.lytTabOverview,
+             "Entrez toutes les informations relatives au livre, ainsi qu'à vous."),
+            (self.lytTabSummary,
+             "Prenez le temps de réfléchir à un résumé de votre livre, en une phrase. Puis augmentez cette phrase en un paragraphe, puis en une page, puis en un résumé complet."),
+            (self.lytTabPersos,
+             "Créez ici vos personnage."),
+            (self.lytTabPlot,
+             "Développez vos intrigues."),
+            (self.lytTabOutline,
+             "Créez le plan de votre chef-d'œuvre."),
+            (self.lytTabRedac,
+             "Écrivez."),
+            (self.lytTabDebug,
+             "Des infos pour débugger des fois pendant qu'on code c'est utile."),
+            ]
+
+        for widget, text in references:
+            print(text)
+            label = helpLabel(text)
+            self.actShowHelp.toggled.connect(label.setVisible)
+            widget.layout().insertWidget(0, label)
+        
+        self.actShowHelp.setChecked(False)
