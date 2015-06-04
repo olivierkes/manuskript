@@ -36,3 +36,6 @@ class Outline(Enum):
     status = 7
     compile = 8
     text = 9
+    wordCount = 10
+    goal = 11
+    goalPercentage = 12

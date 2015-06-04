@@ -13,6 +13,7 @@ from loadSave import *
 from enums import *
 from models.outlineModel import *
 from models.persosProxyModel import *
+from functions import *
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
@@ -148,16 +149,20 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             ]
         for w, i in mapping:
                 self.mprPlan.addMapping(w, i)
+                
+        self.treePlanOutline.selectionModel().currentChanged.connect(lambda idx: self.mprPlan.setRootIndex(idx.parent()))
         self.treePlanOutline.selectionModel().currentChanged.connect(self.mprPlan.setCurrentModelIndex)
         self.treePlanOutline.selectionModel().currentChanged.connect(self.cmbPlanPOV.setCurrentModelIndex)
         
         
         self.treeRedacOutline.setSelectionModel(self.treePlanOutline.selectionModel())
+        
         for c in range(1, self.mdlOutline.columnCount()):
             self.treeRedacOutline.hideColumn(c)
             self.treePlanOutline.hideColumn(c)
-        for c in [Outline.POV.value, Outline.status.value, Outline.compile.value]:
+        for c in [Outline.POV.value, Outline.status.value, Outline.compile.value, Outline.wordCount.value, Outline.goal.value, Outline.goalPercentage.value]:
             self.treePlanOutline.showColumn(c)
+        
         self.btnRedacAddFolder.clicked.connect(lambda: self.outlineAddItem("folder"))
         self.btnPlanAddFolder.clicked.connect(lambda: self.outlineAddItem("folder"))
         self.btnRedacAddScene.clicked.connect(lambda: self.outlineAddItem("scene"))
@@ -167,6 +172,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
         self.cmbRedacPOV.setModels(self.mdlPersos, self.mdlOutline)
         self.cmbRedacStatus.setModel(self.mdlOutline)
+        #self.chkRedacCompile.setModel(self.mdlOutline)
+        
         self.mprOutline = QDataWidgetMapper()
         self.mprOutline.setModel(self.mdlOutline)
         mapping = [
@@ -174,16 +181,18 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             (self.txtRedacSummarySentance, Outline.summarySentance.value),
             (self.txtRedacSummaryFull, Outline.summaryFull.value),
             (self.txtRedacNotes, Outline.notes.value),
-            (self.cmbRedacStatus, Outline.status.value),
-            (self.chkRedacCompile, Outline.compile.value),
-            (self.txtRedacTitle, Outline.title.value)
+            (self.txtRedacTitle, Outline.title.value),
+            (self.txtRedacGoal, Outline.goal.value)
             ]
         for w, i in mapping:
                 self.mprOutline.addMapping(w, i)
         
+        self.treeRedacOutline.selectionModel().currentChanged.connect(lambda idx: self.mprOutline.setRootIndex(idx.parent()))
         self.treeRedacOutline.selectionModel().currentChanged.connect(self.mprOutline.setCurrentModelIndex)
         self.treeRedacOutline.selectionModel().currentChanged.connect(self.cmbRedacPOV.setCurrentModelIndex)
         self.treeRedacOutline.selectionModel().currentChanged.connect(self.cmbRedacStatus.setCurrentModelIndex)
+        self.treeRedacOutline.selectionModel().currentChanged.connect(self.chkRedacCompile.setCurrentModelIndex)
+        
         self.treeRedacOutline.selectionModel().currentChanged.connect(lambda idx: self.lblRedacPOV.setHidden(idx.internalPointer().isFolder()))
         self.treeRedacOutline.selectionModel().currentChanged.connect(lambda idx: self.cmbRedacPOV.setHidden(idx.internalPointer().isFolder()))
         self.treePlanOutline.selectionModel().currentChanged.connect(lambda idx: self.lblPlanPOV.setHidden(idx.internalPointer().isFolder()))
@@ -351,9 +360,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if i == 6: # step 8 - scene list
             self.tabMain.setCurrentIndex(3)
         
-            
-        
-    "Updates word counts over tabs"
     def wordCount(self, i):
         
         src= {
@@ -370,7 +376,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             3:self.lblSummaryWCFull
             }[i]
         
-        wc = len(src.toPlainText().strip().split(" ")) if src.toPlainText() else 0
+        wc = wordCount(src.toPlainText())
         if i in [2, 3]: pages = " (~{} pages)".format(int(wc / 25) / 10.)
         else: pages = ""
         lbl.setText("Mots: {}{}".format(wc, pages))
@@ -382,11 +388,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.splitterPersos.setStretchFactor(1, 75)
         
         self.splitterPlot.setStretchFactor(0, 20)
-        self.splitterPlot.setStretchFactor(1, 40)
-        self.splitterPlot.setStretchFactor(2, 40)
+        self.splitterPlot.setStretchFactor(1, 60)
+        self.splitterPlot.setStretchFactor(2, 30)
         
-        self.splitterPlan.setStretchFactor(0, 25)
-        self.splitterPlan.setStretchFactor(1, 75)
+        self.splitterOutlineH.setStretchFactor(0, 25)
+        self.splitterOutlineH.setStretchFactor(1, 75)
+        self.splitterOutlineV.setStretchFactor(0, 75)
+        self.splitterOutlineV.setStretchFactor(1, 25)
+        
         
         self.splitterRedac.setStretchFactor(0, 20)
         self.splitterRedac.setStretchFactor(1, 60)

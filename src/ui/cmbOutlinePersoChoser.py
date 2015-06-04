@@ -25,7 +25,7 @@ class cmbOutlinePersoChoser(QComboBox):
             self.setCurrentIndex(0)
         else:
             item = self.currentModelIndex.internalPointer()
-            POV = item.data(Outline.POV)
+            POV = item.data(Outline.POV.value)
             idx = self.findData(POV)
             if idx <> -1:
                 self.setCurrentIndex(idx)

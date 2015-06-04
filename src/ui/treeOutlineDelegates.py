@@ -48,8 +48,8 @@ class treeOutlineCompileDelegate(QStyledItemDelegate):
     def __init__(self, parent=None):
         QStyledItemDelegate.__init__(self, parent)
         
-    def displayText(self, value, locale):
-        return ""
+    #def displayText(self, value, locale):
+        #return ""
     
 class treeOutlineStatusDelegate(QStyledItemDelegate):
     

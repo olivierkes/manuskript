@@ -10,6 +10,8 @@ from enums import *
 from enum import Enum
 from lxml import etree as ET
 
+from functions import *
+
 class outlineModel(QAbstractItemModel):
     
     newStatuses = pyqtSignal()
@@ -74,7 +76,7 @@ class outlineModel(QAbstractItemModel):
     
     def setData(self, index, value, role=Qt.EditRole):
         item = index.internalPointer()
-        item.setData(index.column(), value)
+        item.setData(index.column(), value, role)
         
         if index.column() == Outline.status.value:
             self.generateStatuses()
@@ -316,9 +318,13 @@ class outlineItem():
         return len(Outline)
     
     def data(self, column, role=Qt.DisplayRole):
+        
+        #print("Data: ", column, role)
+        
         if role == Qt.DisplayRole or role == Qt.EditRole:
             if column == Outline.compile.value:
                 return self.data(column, Qt.CheckStateRole)
+            
             elif Outline(column) in self._data:
                 return self._data[Outline(column)]
             else:
@@ -340,7 +346,23 @@ class outlineItem():
             else:
                 return Qt.Unchecked
     
-    def setData(self, column, data):
+    def setData(self, column, data, role=Qt.DisplayRole):
+        if role not in [Qt.DisplayRole, Qt.EditRole, Qt.CheckStateRole]:
+            print(column, column == Outline.text.value, data, role)
+            return
+        
+        if column == Outline.text.value:
+            wc = wordCount(data)
+            self.setData(Outline.wordCount.value, wc)
+            
+        if column in [Outline.wordCount.value, Outline.goal.value]:
+            wc = self.data(Outline.wordCount.value)
+            goal = self.data(Outline.goal.value)
+            if goal and wc:
+                self.setData(Outline.goalPercentage.value, int(wc) / float(goal))
+            else:
+                self.setData(Outline.goalPercentage.value, "0")
+        
         self._data[Outline(column)] = data
     
     def row(self):
@@ -373,7 +395,7 @@ class outlineItem():
         item = ET.Element("outlineItem")
         
         for attrib in Outline:
-            val = self.data(attrib)
+            val = self.data(attrib.value)
             if val:
                 item.set(attrib.name, unicode(val))
             
@@ -387,7 +409,7 @@ class outlineItem():
         
         for k in root.attrib:
             if k in Outline.__members__:
-                self._data[Outline.__members__[k]] = unicode(root.attrib[k])
+                self.setData(Outline.__members__[k].value, unicode(root.attrib[k]))
                 
         for child in root:
             item = outlineItem(xml=ET.tostring(child))
