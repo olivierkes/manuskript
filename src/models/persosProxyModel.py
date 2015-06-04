@@ -19,9 +19,9 @@ class persosProxyModel(QAbstractProxyModel):
         QAbstractProxyModel.__init__(self, parent)
         
         self.rootItem = QStandardItem()
-        self.p1 = QStandardItem("Principal")
-        self.p2 = QStandardItem("Secondaire")
-        self.p3 = QStandardItem("Mineur")
+        self.p1 = QStandardItem("Principaux")
+        self.p2 = QStandardItem("Secondaires")
+        self.p3 = QStandardItem("Mineurs")
         
         self.cats = [
             self.p1,
@@ -118,8 +118,19 @@ class persosProxyModel(QAbstractProxyModel):
                 p = 0 if row == 0 else \
                     1 if row == n[0] + 1 else \
                     2
-                
                 return self.cats[p].text()
+            
+            elif role == Qt.ForegroundRole:
+                return QBrush(Qt.darkBlue)
+            elif role == Qt.BackgroundRole:
+                return QBrush(QColor(Qt.blue).lighter(190))
+            elif role == Qt.TextAlignmentRole:
+                return Qt.AlignCenter
+            elif role == Qt.FontRole:
+                f = QFont()
+                #f.setPointSize(f.pointSize() + 1)
+                f.setWeight(QFont.Bold)
+                return f
         else:
             return self.sourceModel().data(self.mapToSource(index), role)
     
@@ -141,7 +152,6 @@ class persosProxyModel(QAbstractProxyModel):
                 nrow = self._map[1][row - 2 - len(self._map[0])]
             else:
                 nrow = self._map[2][row - 3 - len(self._map[0]) - len(self._map[1])]
-            
             
             return self.mapFromSource(self.sourceModel().index(nrow, column, QModelIndex()))
     

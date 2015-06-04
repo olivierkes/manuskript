@@ -15,13 +15,16 @@
       <outlineItem title="Nouveau" type="folder"/>
     </outlineItem>
   </outlineItem>
-  <outlineItem title="Nouveau" type="folder" status="TODO" compile="2"/>
-  <outlineItem title="Nouveau" type="folder" status="First draft"/>
-  <outlineItem title="Nouveau" type="folder" status="First draft">
-    <outlineItem title="Nouveau" type="scene"/>
-    <outlineItem title="Nouveau" type="scene"/>
-    <outlineItem title="Nouveau" type="scene"/>
-    <outlineItem title="Nouveau" type="scene"/>
+  <outlineItem title="Nouveau Titre" type="folder" compile="True">
+    <outlineItem title="Nouveau" type="folder" status="TODO" compile="2"/>
+    <outlineItem title="Nouveau" type="folder" status="First draft"/>
+    <outlineItem title="Nouveau" type="folder" status="First draft">
+      <outlineItem title="Nouveau" type="scene"/>
+      <outlineItem title="Nouveau" type="scene"/>
+      <outlineItem title="Nouveau" type="scene"/>
+      <outlineItem title="Nouveau" type="scene"/>
+    </outlineItem>
   </outlineItem>
-  <outlineItem title="Nouveau" type="folder"/>
+  <outlineItem title="Nouveau" type="folder" compile="2"/>
+  <outlineItem title="Nouveau" type="folder" compile="2"/>
 </outlineItem>

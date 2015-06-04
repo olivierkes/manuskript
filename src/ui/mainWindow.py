@@ -267,6 +267,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_8 = QtWidgets.QVBoxLayout(self.groupBox)
         self.verticalLayout_8.setObjectName("verticalLayout_8")
         self.lstPersos = QtWidgets.QListView(self.groupBox)
+        self.lstPersos.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.lstPersos.setDragEnabled(True)
         self.lstPersos.setObjectName("lstPersos")
         self.verticalLayout_8.addWidget(self.lstPersos)
@@ -284,10 +285,10 @@ class Ui_MainWindow(object):
         self.btnRmPerso.setIcon(icon)
         self.btnRmPerso.setObjectName("btnRmPerso")
         self.horizontalLayout_14.addWidget(self.btnRmPerso)
-        self.lineEdit_8 = QtWidgets.QLineEdit(self.groupBox)
-        self.lineEdit_8.setClearButtonEnabled(True)
-        self.lineEdit_8.setObjectName("lineEdit_8")
-        self.horizontalLayout_14.addWidget(self.lineEdit_8)
+        self.txtPersosFilter = QtWidgets.QLineEdit(self.groupBox)
+        self.txtPersosFilter.setProperty("clearButtonEnabled", True)
+        self.txtPersosFilter.setObjectName("txtPersosFilter")
+        self.horizontalLayout_14.addWidget(self.txtPersosFilter)
         self.verticalLayout_8.addLayout(self.horizontalLayout_14)
         self.tabPersos = QtWidgets.QTabWidget(self.splitterPersos)
         self.tabPersos.setObjectName("tabPersos")
@@ -472,7 +473,7 @@ class Ui_MainWindow(object):
         self.pushButton_11.setObjectName("pushButton_11")
         self.horizontalLayout_15.addWidget(self.pushButton_11)
         self.lineEdit_7 = QtWidgets.QLineEdit(self.groupBox_2)
-        self.lineEdit_7.setClearButtonEnabled(True)
+        self.lineEdit_7.setProperty("clearButtonEnabled", True)
         self.lineEdit_7.setObjectName("lineEdit_7")
         self.horizontalLayout_15.addWidget(self.lineEdit_7)
         self.btnPlotShowSummary = QtWidgets.QPushButton(self.groupBox_2)
@@ -720,6 +721,9 @@ class Ui_MainWindow(object):
         self.txtPlanSummarySentance = QtWidgets.QLineEdit(self.groupbox)
         self.txtPlanSummarySentance.setObjectName("txtPlanSummarySentance")
         self.verticalLayout_13.addWidget(self.txtPlanSummarySentance)
+        self.label_9 = QtWidgets.QLabel(self.groupbox)
+        self.label_9.setObjectName("label_9")
+        self.verticalLayout_13.addWidget(self.label_9)
         self.txtPlanSummaryFull = QtWidgets.QPlainTextEdit(self.groupbox)
         self.txtPlanSummaryFull.setObjectName("txtPlanSummaryFull")
         self.verticalLayout_13.addWidget(self.txtPlanSummaryFull)
@@ -983,7 +987,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.addWidget(self.tabMain)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1103, 30))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1103, 31))
         self.menubar.setObjectName("menubar")
         self.menu_Fichier = QtWidgets.QMenu(self.menubar)
         self.menu_Fichier.setObjectName("menu_Fichier")
@@ -1088,7 +1092,7 @@ class Ui_MainWindow(object):
         self.tabSummary.setTabText(self.tabSummary.indexOf(self.tabWidgetPage2), _translate("MainWindow", "4 pages"))
         self.tabMain.setTabText(self.tabMain.indexOf(self.lytTabSummary), _translate("MainWindow", "Résumé"))
         self.groupBox.setTitle(_translate("MainWindow", "Noms"))
-        self.lineEdit_8.setPlaceholderText(_translate("MainWindow", "Filter"))
+        self.txtPersosFilter.setPlaceholderText(_translate("MainWindow", "Filter"))
         self.label_3.setText(_translate("MainWindow", "Nom"))
         self.label_18.setText(_translate("MainWindow", "Importance"))
         self.label_4.setText(_translate("MainWindow", "Motivation"))
@@ -1161,6 +1165,7 @@ class Ui_MainWindow(object):
         self.groupbox.setTitle(_translate("MainWindow", "Détails"))
         self.lblPlanPOV.setText(_translate("MainWindow", "POV"))
         self.txtPlanSummarySentance.setPlaceholderText(_translate("MainWindow", "Résumé de la scène en une ligne"))
+        self.label_9.setText(_translate("MainWindow", "Résumé en quelques phrases"))
         self.tabMain.setTabText(self.tabMain.indexOf(self.lytTabOutline), _translate("MainWindow", "Plan"))
         self.groupBox_4.setTitle(_translate("MainWindow", "Propriétés"))
         self.lblRedacPOV.setText(_translate("MainWindow", "POV"))
@@ -1209,7 +1214,7 @@ class Ui_MainWindow(object):
         self.actShowHelp.setText(_translate("MainWindow", "Afficher les &bulles d\'aide"))
         self.actShowHelp.setShortcut(_translate("MainWindow", "Ctrl+Shift+B"))
 
-from ui.sldImportance import sldImportance
-from ui.cmbOutlineStatusChoser import cmbOutlineStatusChoser
-from ui.collapsibleGroupBox import collapsibleGroupBox
 from ui.cmbOutlinePersoChoser import cmbOutlinePersoChoser
+from ui.cmbOutlineStatusChoser import cmbOutlineStatusChoser
+from ui.sldImportance import sldImportance
+from ui.collapsibleGroupBox import collapsibleGroupBox

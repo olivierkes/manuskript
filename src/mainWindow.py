@@ -86,6 +86,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Persos
         self.mdlPersos = QStandardItemModel(0, 10)
         self.mdlPersosProxy = persosProxyModel()
+        #self.mdlPersoProxyFilter = QSortFilterProxyModel()
         self.mdlPersosProxy.setSourceModel(self.mdlPersos)
         
         self.mdlPersosInfos = QStandardItemModel(1, 0)

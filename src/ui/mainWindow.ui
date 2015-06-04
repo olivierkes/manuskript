@@ -503,6 +503,9 @@
            <layout class="QVBoxLayout" name="verticalLayout_8">
             <item>
              <widget class="QListView" name="lstPersos">
+              <property name="horizontalScrollBarPolicy">
+               <enum>Qt::ScrollBarAlwaysOff</enum>
+              </property>
               <property name="dragEnabled">
                <bool>true</bool>
               </property>
@@ -535,11 +538,11 @@
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="lineEdit_8">
+               <widget class="QLineEdit" name="txtPersosFilter">
                 <property name="placeholderText">
                  <string>Filter</string>
                 </property>
-                <property name="clearButtonEnabled">
+                <property name="clearButtonEnabled" stdset="0">
                  <bool>true</bool>
                 </property>
                </widget>
@@ -901,7 +904,7 @@
                 <property name="placeholderText">
                  <string>Filter</string>
                 </property>
-                <property name="clearButtonEnabled">
+                <property name="clearButtonEnabled" stdset="0">
                  <bool>true</bool>
                 </property>
                </widget>
@@ -1374,6 +1377,13 @@
                 <widget class="QLineEdit" name="txtPlanSummarySentance">
                  <property name="placeholderText">
                   <string>Résumé de la scène en une ligne</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_9">
+                 <property name="text">
+                  <string>Résumé en quelques phrases</string>
                  </property>
                 </widget>
                </item>
@@ -1871,7 +1881,7 @@
      <x>0</x>
      <y>0</y>
      <width>1103</width>
-     <height>30</height>
+     <height>31</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_Fichier">
