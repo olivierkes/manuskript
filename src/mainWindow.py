@@ -126,6 +126,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.treePlanOutline.setItemDelegateForColumn(Outline.POV.value, self.treePlanOutlinePersoDelegate)
         self.treePlanOutlineCompileDelegate = treeOutlineCompileDelegate()
         self.treePlanOutline.setItemDelegateForColumn(Outline.compile.value, self.treePlanOutlineCompileDelegate)
+        self.treePlanOutlineStatusDelegate = treeOutlineStatusDelegate()
+        self.treePlanOutline.setItemDelegateForColumn(Outline.status.value, self.treePlanOutlineStatusDelegate)
+        
         self.cmbPlanPOV.setModels(self.mdlPersos, self.mdlOutline)
         self.treePlanOutline.header().setSectionResizeMode(QHeaderView.ResizeToContents)
         #self.treePlanOutline.header().setSectionResizeMode(QHeaderView.Interactive)
@@ -142,6 +145,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.treePlanOutline.selectionModel().currentChanged.connect(self.mprPlan.setCurrentModelIndex)
         self.treePlanOutline.selectionModel().currentChanged.connect(self.cmbPlanPOV.setCurrentModelIndex)
         
+        
         self.treeRedacOutline.setSelectionModel(self.treePlanOutline.selectionModel())
         for c in range(1, self.mdlOutline.columnCount()):
             self.treeRedacOutline.hideColumn(c)
@@ -156,6 +160,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btnPlanRemoveItem.clicked.connect(self.outlineRemoveItems)
         
         self.cmbRedacPOV.setModels(self.mdlPersos, self.mdlOutline)
+        self.cmbRedacStatus.setModel(self.mdlOutline)
         self.mprOutline = QDataWidgetMapper()
         self.mprOutline.setModel(self.mdlOutline)
         mapping = [
@@ -172,6 +177,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
         self.treeRedacOutline.selectionModel().currentChanged.connect(self.mprOutline.setCurrentModelIndex)
         self.treeRedacOutline.selectionModel().currentChanged.connect(self.cmbRedacPOV.setCurrentModelIndex)
+        self.treeRedacOutline.selectionModel().currentChanged.connect(self.cmbRedacStatus.setCurrentModelIndex)
         self.treeRedacOutline.selectionModel().currentChanged.connect(lambda idx: self.lblRedacPOV.setHidden(idx.internalPointer().isFolder()))
         self.treeRedacOutline.selectionModel().currentChanged.connect(lambda idx: self.cmbRedacPOV.setHidden(idx.internalPointer().isFolder()))
         

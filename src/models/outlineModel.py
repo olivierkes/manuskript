@@ -11,10 +11,14 @@ from enum import Enum
 from lxml import etree as ET
 
 class outlineModel(QAbstractItemModel):
+    
+    newStatuses = pyqtSignal()
+    
     def __init__(self):
         QAbstractItemModel.__init__(self)
         
         self.rootItem = outlineItem("root", "folder")
+        self.generateStatuses()
     
     def index(self, row, column, parent):
         
@@ -71,6 +75,10 @@ class outlineModel(QAbstractItemModel):
     def setData(self, index, value, role=Qt.EditRole):
         item = index.internalPointer()
         item.setData(index.column(), value)
+        
+        if index.column() == Outline.status.value:
+            self.generateStatuses()
+        
         self.dataChanged.emit(index, index)
         return True
         
@@ -252,10 +260,34 @@ class outlineModel(QAbstractItemModel):
     def loadFromXML(self, xml):
         try:
             root = ET.parse(xml)
-            self.rootItem = outlineItem(xml=ET.tostring(root))  
+            self.rootItem = outlineItem(xml=ET.tostring(root))
+            self.generateStatuses()
         except:
             print("N'arrive pas à ouvrir {}".format(xml))
             return
+        
+        
+    ################# DIVERS #################
+        
+    def generateStatuses(self, item=None):
+        if item == None:
+            self.statuses = [
+                "TODO",
+                "First draft",
+                "Second draft",
+                "Final"
+                ]
+            item = self.rootItem
+        
+        val = item.data(Outline.status.value)
+        if val and not val in self.statuses:
+            self.statuses.append(val)
+            self.newStatuses.emit()
+            
+        for c in item.children():
+            self.generateStatuses(c)
+            
+        
     
 class outlineItem():
     
@@ -276,6 +308,9 @@ class outlineItem():
     
     def childCount(self):
         return len(self.childItems)
+    
+    def children(self):
+        return self.childItems
     
     def columnCount(self):
         return len(Outline)

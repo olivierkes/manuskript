@@ -18,7 +18,7 @@
     <item>
      <widget class="QTabWidget" name="tabMain">
       <property name="currentIndex">
-       <number>5</number>
+       <number>6</number>
       </property>
       <property name="documentMode">
        <bool>true</bool>
@@ -1365,7 +1365,7 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="cmbPersoChoser" name="cmbPlanPOV">
+                  <widget class="cmbOutlinePersoChoser" name="cmbPlanPOV">
                    <property name="frame">
                     <bool>false</bool>
                    </property>
@@ -1663,7 +1663,13 @@
                  </widget>
                 </item>
                 <item row="0" column="1">
-                 <widget class="cmbPersoChoser" name="cmbRedacPOV">
+                 <widget class="cmbOutlinePersoChoser" name="cmbRedacPOV">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
                   <property name="frame">
                    <bool>false</bool>
                   </property>
@@ -1677,30 +1683,16 @@
                  </widget>
                 </item>
                 <item row="1" column="1">
-                 <widget class="QComboBox" name="cmbRedacStatus">
+                 <widget class="cmbOutlineStatusChoser" name="cmbRedacStatus">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
                   <property name="frame">
                    <bool>false</bool>
                   </property>
-                  <item>
-                   <property name="text">
-                    <string>TODO</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>First draft</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>Second draft</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>Final</string>
-                   </property>
-                  </item>
                  </widget>
                 </item>
                 <item row="2" column="0">
@@ -2040,9 +2032,14 @@
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>cmbPersoChoser</class>
+   <class>cmbOutlinePersoChoser</class>
    <extends>QComboBox</extends>
-   <header>ui.cmbPersoChoser.h</header>
+   <header>ui.cmbOutlinePersoChoser.h</header>
+  </customwidget>
+  <customwidget>
+   <class>cmbOutlineStatusChoser</class>
+   <extends>QComboBox</extends>
+   <header>ui.cmbOutlineStatusChoser.h</header>
   </customwidget>
  </customwidgets>
  <resources/>
