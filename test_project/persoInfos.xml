@@ -24,12 +24,12 @@
       <col col="0">Age</col>
       <col col="1">42</col>
       <col col="2">12</col>
-      <col col="3"/>
+      <col col="3">11</col>
     </row>
     <row row="2">
       <col col="0">Animal préféré</col>
       <col col="1">Pingouin</col>
-      <col col="2">Crevette aquatique</col>
+      <col col="2"/>
       <col col="3"/>
     </row>
   </data>

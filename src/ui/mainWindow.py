@@ -268,7 +268,6 @@ class Ui_MainWindow(object):
         self.verticalLayout_8.setObjectName("verticalLayout_8")
         self.lstPersos = QtWidgets.QListView(self.groupBox)
         self.lstPersos.setDragEnabled(True)
-        self.lstPersos.setDragDropMode(QtWidgets.QAbstractItemView.InternalMove)
         self.lstPersos.setObjectName("lstPersos")
         self.verticalLayout_8.addWidget(self.lstPersos)
         self.horizontalLayout_14 = QtWidgets.QHBoxLayout()
@@ -710,9 +709,9 @@ class Ui_MainWindow(object):
         self.verticalLayout_13.setObjectName("verticalLayout_13")
         self.horizontalLayout_11 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_11.setObjectName("horizontalLayout_11")
-        self.label_9 = QtWidgets.QLabel(self.groupbox)
-        self.label_9.setObjectName("label_9")
-        self.horizontalLayout_11.addWidget(self.label_9)
+        self.lblPlanPOV = QtWidgets.QLabel(self.groupbox)
+        self.lblPlanPOV.setObjectName("lblPlanPOV")
+        self.horizontalLayout_11.addWidget(self.lblPlanPOV)
         self.cmbPlanPOV = cmbOutlinePersoChoser(self.groupbox)
         self.cmbPlanPOV.setFrame(False)
         self.cmbPlanPOV.setObjectName("cmbPlanPOV")
@@ -866,7 +865,6 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.cmbRedacPOV.sizePolicy().hasHeightForWidth())
         self.cmbRedacPOV.setSizePolicy(sizePolicy)
-        self.cmbRedacPOV.setFrame(False)
         self.cmbRedacPOV.setObjectName("cmbRedacPOV")
         self.formLayout_5.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.cmbRedacPOV)
         self.label_30 = QtWidgets.QLabel(self.groupBox_4)
@@ -878,7 +876,7 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.cmbRedacStatus.sizePolicy().hasHeightForWidth())
         self.cmbRedacStatus.setSizePolicy(sizePolicy)
-        self.cmbRedacStatus.setFrame(False)
+        self.cmbRedacStatus.setEditable(True)
         self.cmbRedacStatus.setObjectName("cmbRedacStatus")
         self.formLayout_5.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.cmbRedacStatus)
         self.label_32 = QtWidgets.QLabel(self.groupBox_4)
@@ -1045,7 +1043,7 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menu_Aide.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.tabMain.setCurrentIndex(6)
+        self.tabMain.setCurrentIndex(2)
         self.tabSummary.setCurrentIndex(0)
         self.tabPersos.setCurrentIndex(0)
         self.tabPlot.setCurrentIndex(0)
@@ -1160,8 +1158,8 @@ class Ui_MainWindow(object):
         self.treeWidget_2.topLevelItem(1).child(0).setText(0, _translate("MainWindow", "Scène 1"))
         self.treeWidget_2.topLevelItem(1).child(1).setText(0, _translate("MainWindow", "Scène 2"))
         self.treeWidget_2.setSortingEnabled(__sortingEnabled)
-        self.groupbox.setTitle(_translate("MainWindow", "Détails de la scène"))
-        self.label_9.setText(_translate("MainWindow", "POV"))
+        self.groupbox.setTitle(_translate("MainWindow", "Détails"))
+        self.lblPlanPOV.setText(_translate("MainWindow", "POV"))
         self.txtPlanSummarySentance.setPlaceholderText(_translate("MainWindow", "Résumé de la scène en une ligne"))
         self.tabMain.setTabText(self.tabMain.indexOf(self.lytTabOutline), _translate("MainWindow", "Plan"))
         self.groupBox_4.setTitle(_translate("MainWindow", "Propriétés"))
@@ -1211,7 +1209,7 @@ class Ui_MainWindow(object):
         self.actShowHelp.setText(_translate("MainWindow", "Afficher les &bulles d\'aide"))
         self.actShowHelp.setShortcut(_translate("MainWindow", "Ctrl+Shift+B"))
 
-from ui.collapsibleGroupBox import collapsibleGroupBox
-from ui.cmbOutlineStatusChoser import cmbOutlineStatusChoser
 from ui.sldImportance import sldImportance
+from ui.cmbOutlineStatusChoser import cmbOutlineStatusChoser
+from ui.collapsibleGroupBox import collapsibleGroupBox
 from ui.cmbOutlinePersoChoser import cmbOutlinePersoChoser

@@ -40,7 +40,7 @@ Pour voir.</col>
     <row row="1">
       <col col="0">Ginette</col>
       <col col="1">1</col>
-      <col col="2"/>
+      <col col="2">1</col>
       <col col="3"/>
       <col col="4"/>
       <col col="5"/>
@@ -53,7 +53,7 @@ Pour voir.</col>
     <row row="2">
       <col col="0">Nouveau perso avec un nom pas très long</col>
       <col col="1">2</col>
-      <col col="2"/>
+      <col col="2">0</col>
       <col col="3"/>
       <col col="4"/>
       <col col="5"/>

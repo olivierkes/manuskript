@@ -323,11 +323,16 @@ class outlineItem():
                 return self._data[Outline(column)]
             else:
                 return None
+            
         elif role == Qt.DecorationRole and column == Outline.title.value:
             if self.isFolder():
                 return QIcon.fromTheme("folder")
             elif self.isScene():
                 return QIcon.fromTheme("document-new")
+            
+        elif role == Qt.ForegroundRole and column == Outline.title.value:
+            if not self.isCompile():
+                return QBrush(Qt.gray)
             
         elif role == Qt.CheckStateRole and column == Outline.compile.value:
             if Outline(column) in self._data and self._data[Outline(column)]:
@@ -357,6 +362,9 @@ class outlineItem():
     
     def isFolder(self):
         return self._data[Outline.type] == "folder"
+    
+    def isCompile(self):
+        return Outline.compile in self._data and self._data[Outline.compile]
     
     def isScene(self):
         return self._data[Outline.type] == "scene"

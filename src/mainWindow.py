@@ -12,6 +12,7 @@ from ui.treeOutlineDelegates import *
 from loadSave import *
 from enums import *
 from models.outlineModel import *
+from models.persosProxyModel import *
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
@@ -84,10 +85,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
         # Persos
         self.mdlPersos = QStandardItemModel(0, 10)
+        self.mdlPersosProxy = persosProxyModel()
+        self.mdlPersosProxy.setSourceModel(self.mdlPersos)
+        
         self.mdlPersosInfos = QStandardItemModel(1, 0)
         self.mdlPersosInfos.insertColumn(0, [QStandardItem("ID")])
         self.mdlPersosInfos.setHorizontalHeaderLabels(["Description"])
-        self.lstPersos.setModel(self.mdlPersos)
+        #self.lstPersos.setModel(self.mdlPersos)
+        self.lstPersos.setModel(self.mdlPersosProxy)
+        
         self.tblPersoInfos.setModel(self.mdlPersosInfos)
         self.tblPersoInfos.setRowHidden(0, True)
         
@@ -114,7 +120,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.sldPersoImportance.importanceChanged.connect(self.mprPersos.submit)
             
         self.mprPersos.setCurrentIndex(0)
-        self.lstPersos.selectionModel().currentChanged.connect(self.mprPersos.setCurrentModelIndex)
         self.lstPersos.selectionModel().currentChanged.connect(self.changeCurrentPerso)
         self.tabPersos.currentChanged.connect(self.resizePersosInfos)
         
@@ -180,6 +185,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.treeRedacOutline.selectionModel().currentChanged.connect(self.cmbRedacStatus.setCurrentModelIndex)
         self.treeRedacOutline.selectionModel().currentChanged.connect(lambda idx: self.lblRedacPOV.setHidden(idx.internalPointer().isFolder()))
         self.treeRedacOutline.selectionModel().currentChanged.connect(lambda idx: self.cmbRedacPOV.setHidden(idx.internalPointer().isFolder()))
+        self.treePlanOutline.selectionModel().currentChanged.connect(lambda idx: self.lblPlanPOV.setHidden(idx.internalPointer().isFolder()))
+        self.treePlanOutline.selectionModel().currentChanged.connect(lambda idx: self.cmbPlanPOV.setHidden(idx.internalPointer().isFolder()))
         
         
         #Debug
@@ -260,12 +267,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 self.mdlPersos.setItem(i, Perso.ID.value, item)
         
     def removePerso(self):
-        i = self.lstPersos.currentIndex()
+        i = self.mdlPersosProxy.mapToSource(self.lstPersos.currentIndex())
         self.mdlPersos.takeRow(i.row())
         self.mdlPersosInfos.takeColumn(i.row()+1)
         
     def changeCurrentPerso(self, trash=None):
-        idx = self.lstPersos.currentIndex()
+        idx = self.mdlPersosProxy.mapToSource(self.lstPersos.currentIndex())
+        
+        self.mprPersos.setCurrentModelIndex(idx)
         pid = self.mdlPersos.item(idx.row(), Perso.ID.value).text()
         for c in range(self.mdlPersosInfos.columnCount()):
             pid2 = self.mdlPersosInfos.item(0, c).text()
@@ -277,7 +286,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.tblPersoInfos.resizeColumnToContents(0)
         w = self.tblPersoInfos.viewport().width()
         w2 = self.tblPersoInfos.columnWidth(0)
-        current = self.lstPersos.currentIndex().row() + 1
+        current = self.mdlPersosProxy.mapToSource(self.lstPersos.currentIndex()).row() + 1
         self.tblPersoInfos.setColumnWidth(current, w - w2)
         
         

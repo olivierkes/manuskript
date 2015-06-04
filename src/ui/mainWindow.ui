@@ -18,7 +18,7 @@
     <item>
      <widget class="QTabWidget" name="tabMain">
       <property name="currentIndex">
-       <number>6</number>
+       <number>2</number>
       </property>
       <property name="documentMode">
        <bool>true</bool>
@@ -505,9 +505,6 @@
              <widget class="QListView" name="lstPersos">
               <property name="dragEnabled">
                <bool>true</bool>
-              </property>
-              <property name="dragDropMode">
-               <enum>QAbstractItemView::InternalMove</enum>
               </property>
              </widget>
             </item>
@@ -1352,13 +1349,13 @@
             <item>
              <widget class="QGroupBox" name="groupbox">
               <property name="title">
-               <string>Détails de la scène</string>
+               <string>Détails</string>
               </property>
               <layout class="QVBoxLayout" name="verticalLayout_13">
                <item>
                 <layout class="QHBoxLayout" name="horizontalLayout_11">
                  <item>
-                  <widget class="QLabel" name="label_9">
+                  <widget class="QLabel" name="lblPlanPOV">
                    <property name="text">
                     <string>POV</string>
                    </property>
@@ -1670,9 +1667,6 @@
                     <verstretch>0</verstretch>
                    </sizepolicy>
                   </property>
-                  <property name="frame">
-                   <bool>false</bool>
-                  </property>
                  </widget>
                 </item>
                 <item row="1" column="0">
@@ -1690,8 +1684,8 @@
                     <verstretch>0</verstretch>
                    </sizepolicy>
                   </property>
-                  <property name="frame">
-                   <bool>false</bool>
+                  <property name="editable">
+                   <bool>true</bool>
                   </property>
                  </widget>
                 </item>
