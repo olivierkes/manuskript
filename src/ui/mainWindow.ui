@@ -18,7 +18,7 @@
     <item>
      <widget class="QTabWidget" name="tabMain">
       <property name="currentIndex">
-       <number>1</number>
+       <number>5</number>
       </property>
       <property name="documentMode">
        <bool>true</bool>
@@ -542,6 +542,9 @@
                 <property name="placeholderText">
                  <string>Filter</string>
                 </property>
+                <property name="clearButtonEnabled">
+                 <bool>true</bool>
+                </property>
                </widget>
               </item>
              </layout>
@@ -900,6 +903,9 @@
                <widget class="QLineEdit" name="lineEdit_7">
                 <property name="placeholderText">
                  <string>Filter</string>
+                </property>
+                <property name="clearButtonEnabled">
+                 <bool>true</bool>
                 </property>
                </widget>
               </item>
@@ -1335,6 +1341,12 @@
               <property name="dragDropMode">
                <enum>QAbstractItemView::DragDrop</enum>
               </property>
+              <property name="defaultDropAction">
+               <enum>Qt::MoveAction</enum>
+              </property>
+              <property name="selectionMode">
+               <enum>QAbstractItemView::ExtendedSelection</enum>
+              </property>
              </widget>
             </item>
             <item>
@@ -1353,7 +1365,7 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="QComboBox" name="cmbPlanPOV">
+                  <widget class="cmbPersoChoser" name="cmbPlanPOV">
                    <property name="frame">
                     <bool>false</bool>
                    </property>
@@ -1377,19 +1389,31 @@
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_18">
               <item>
-               <widget class="QPushButton" name="pushButton_17">
+               <widget class="QPushButton" name="btnPlanAddFolder">
                 <property name="text">
                  <string/>
                 </property>
                 <property name="icon">
-                 <iconset theme="list-add">
+                 <iconset theme="folder-new">
                   <normaloff/>
                  </iconset>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QPushButton" name="pushButton_18">
+               <widget class="QPushButton" name="btnPlanAddScene">
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset theme="document-new">
+                  <normaloff/>
+                 </iconset>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btnPlanRemoveItem">
                 <property name="text">
                  <string/>
                 </property>
@@ -1522,7 +1546,26 @@
           <widget class="QWidget" name="layoutWidget">
            <layout class="QVBoxLayout" name="verticalLayout_16">
             <item>
-             <widget class="QPlainTextEdit" name="plainTextEdit_9"/>
+             <widget class="QLineEdit" name="txtRedacTitle">
+              <property name="font">
+               <font>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background:transparent;</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="frame">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPlainTextEdit" name="txtRedacText"/>
             </item>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_19">
@@ -1606,21 +1649,21 @@
                 </sizepolicy>
                </property>
                <property name="title">
-                <string>Propriétés de la scène</string>
+                <string>Propriétés</string>
                </property>
                <property name="checkable">
                 <bool>true</bool>
                </property>
                <layout class="QFormLayout" name="formLayout_5">
                 <item row="0" column="0">
-                 <widget class="QLabel" name="label_29">
+                 <widget class="QLabel" name="lblRedacPOV">
                   <property name="text">
-                   <string>Personnage</string>
+                   <string>POV</string>
                   </property>
                  </widget>
                 </item>
                 <item row="0" column="1">
-                 <widget class="QComboBox" name="comboBox_3">
+                 <widget class="cmbPersoChoser" name="cmbRedacPOV">
                   <property name="frame">
                    <bool>false</bool>
                   </property>
@@ -1634,10 +1677,30 @@
                  </widget>
                 </item>
                 <item row="1" column="1">
-                 <widget class="QComboBox" name="comboBox_4">
+                 <widget class="QComboBox" name="cmbRedacStatus">
                   <property name="frame">
                    <bool>false</bool>
                   </property>
+                  <item>
+                   <property name="text">
+                    <string>TODO</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>First draft</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Second draft</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Final</string>
+                   </property>
+                  </item>
                  </widget>
                 </item>
                 <item row="2" column="0">
@@ -1648,7 +1711,7 @@
                  </widget>
                 </item>
                 <item row="2" column="1">
-                 <widget class="QCheckBox" name="checkBox">
+                 <widget class="QCheckBox" name="chkRedacCompile">
                   <property name="text">
                    <string/>
                   </property>
@@ -1689,7 +1752,7 @@
                </property>
                <layout class="QHBoxLayout" name="horizontalLayout_29">
                 <item>
-                 <widget class="QPlainTextEdit" name="plainTextEdit_2"/>
+                 <widget class="QPlainTextEdit" name="txtRedacNotes"/>
                 </item>
                </layout>
               </widget>
@@ -1975,6 +2038,11 @@
    <extends>QGroupBox</extends>
    <header>ui.collapsibleGroupBox.h</header>
    <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>cmbPersoChoser</class>
+   <extends>QComboBox</extends>
+   <header>ui.cmbPersoChoser.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

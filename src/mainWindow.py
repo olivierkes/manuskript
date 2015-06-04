@@ -8,6 +8,7 @@ from qt import *
 
 from ui.mainWindow import *
 from ui.helpLabel import helpLabel
+from ui.treeOutlineDelegates import *
 from loadSave import *
 from enums import *
 from models.outlineModel import *
@@ -119,17 +120,61 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
         # Outline
         self.mdlOutline = outlineModel()
-        #self.mdlOutline.setHorizontalHeaderLabels(
-	  #[i.name for i in Outline])
         self.treeRedacOutline.setModel(self.mdlOutline)
         self.treePlanOutline.setModel(self.mdlOutline)
+        self.treePlanOutlinePersoDelegate = treeOutlinePersoDelegate(self.mdlPersos)
+        self.treePlanOutline.setItemDelegateForColumn(Outline.POV.value, self.treePlanOutlinePersoDelegate)
+        self.treePlanOutlineCompileDelegate = treeOutlineCompileDelegate()
+        self.treePlanOutline.setItemDelegateForColumn(Outline.compile.value, self.treePlanOutlineCompileDelegate)
+        self.cmbPlanPOV.setModels(self.mdlPersos, self.mdlOutline)
+        self.treePlanOutline.header().setSectionResizeMode(QHeaderView.ResizeToContents)
+        #self.treePlanOutline.header().setSectionResizeMode(QHeaderView.Interactive)
+        #self.treePlanOutline.header().sectionResized.connect(self.outlinePlanResizeTree)
+            
+        self.mprPlan = QDataWidgetMapper()
+        self.mprPlan.setModel(self.mdlOutline)
+        mapping = [
+            (self.txtPlanSummarySentance, Outline.summarySentance.value),
+            (self.txtPlanSummaryFull, Outline.summaryFull.value)
+            ]
+        for w, i in mapping:
+                self.mprPlan.addMapping(w, i)
+        self.treePlanOutline.selectionModel().currentChanged.connect(self.mprPlan.setCurrentModelIndex)
+        self.treePlanOutline.selectionModel().currentChanged.connect(self.cmbPlanPOV.setCurrentModelIndex)
+        
         self.treeRedacOutline.setSelectionModel(self.treePlanOutline.selectionModel())
         for c in range(1, self.mdlOutline.columnCount()):
             self.treeRedacOutline.hideColumn(c)
             self.treePlanOutline.hideColumn(c)
+        for c in [Outline.POV.value, Outline.status.value, Outline.compile.value]:
+            self.treePlanOutline.showColumn(c)
         self.btnRedacAddFolder.clicked.connect(lambda: self.outlineAddItem("folder"))
+        self.btnPlanAddFolder.clicked.connect(lambda: self.outlineAddItem("folder"))
         self.btnRedacAddScene.clicked.connect(lambda: self.outlineAddItem("scene"))
+        self.btnPlanAddScene.clicked.connect(lambda: self.outlineAddItem("scene"))
         self.btnRedacRemoveItem.clicked.connect(self.outlineRemoveItems)
+        self.btnPlanRemoveItem.clicked.connect(self.outlineRemoveItems)
+        
+        self.cmbRedacPOV.setModels(self.mdlPersos, self.mdlOutline)
+        self.mprOutline = QDataWidgetMapper()
+        self.mprOutline.setModel(self.mdlOutline)
+        mapping = [
+            (self.txtRedacText, Outline.text.value),
+            (self.txtRedacSummarySentance, Outline.summarySentance.value),
+            (self.txtRedacSummaryFull, Outline.summaryFull.value),
+            (self.txtRedacNotes, Outline.notes.value),
+            (self.cmbRedacStatus, Outline.status.value),
+            (self.chkRedacCompile, Outline.compile.value),
+            (self.txtRedacTitle, Outline.title.value)
+            ]
+        for w, i in mapping:
+                self.mprOutline.addMapping(w, i)
+        
+        self.treeRedacOutline.selectionModel().currentChanged.connect(self.mprOutline.setCurrentModelIndex)
+        self.treeRedacOutline.selectionModel().currentChanged.connect(self.cmbRedacPOV.setCurrentModelIndex)
+        self.treeRedacOutline.selectionModel().currentChanged.connect(lambda idx: self.lblRedacPOV.setHidden(idx.internalPointer().isFolder()))
+        self.treeRedacOutline.selectionModel().currentChanged.connect(lambda idx: self.cmbRedacPOV.setHidden(idx.internalPointer().isFolder()))
+        
         
         #Debug
         self.mdlFlatData.setVerticalHeaderLabels(["Infos générales", "Summary"])
@@ -157,6 +202,18 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         for idx in self.treeRedacOutline.selectedIndexes():
             if idx.isValid():
                 self.mdlOutline.removeIndex(idx)
+                
+    def outlinePlanResizeTree(self, **kargs):
+        print("Coucou")
+        stretch = Outline.title.value
+        w2 = 0
+        for c in range(self.mdlOutline.columnCount()):
+            if not self.treePlanOutline.isColumnHidden(c) and c <> stretch:
+                self.treePlanOutline.resizeColumnToContents(c)
+                w2 += self.treePlanOutline.columnWidth(c)
+        
+        w = self.treePlanOutline.viewport().width()
+        self.treePlanOutline.setColumnWidth(stretch, w - w2)
     
     
 ####################################################################################################
@@ -339,7 +396,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             ]
 
         for widget, text in references:
-            print(text)
             label = helpLabel(text)
             self.actShowHelp.toggled.connect(label.setVisible)
             widget.layout().insertWidget(0, label)

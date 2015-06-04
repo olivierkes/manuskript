@@ -1,13 +1,27 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <outlineItem title="root" type="folder">
-  <outlineItem title="Nouveau" type="scene"/>
+  <outlineItem title="NouveauNouveauNouveauNouveauNouveauNouveau asd asd s Franchement?" type="scene" summarySentance="Texte" POV="2" status="0" compile="2"/>
+  <outlineItem title="Nouveau" type="folder" status="First draft" compile="2">
+    <outlineItem title="Nouveau" type="scene" POV="2" compile="2"/>
+  </outlineItem>
+  <outlineItem title="éüæ" type="folder" summarySentance="Il arrive au comptoir" summaryFull="Il arrive au comptoir après avoir garé son cheval, et mange une grosse glace à la vanille." notes="Utiliser un jeu de mot sur &quot;comptoir&quot; / &quot;abreuvoir&quot;" status="TODO" compile="2">
+    <outlineItem title="Nouveau" type="scene" POV="1" status="TODO" compile="True" text="Le texte du truc."/>
+  </outlineItem>
+  <outlineItem title="Nouveau" type="folder">
+    <outlineItem title="Nouveau" type="folder">
+      <outlineItem title="Nouveau" type="folder"/>
+      <outlineItem title="Nouveau" type="folder"/>
+      <outlineItem title="Nouveau" type="folder"/>
+      <outlineItem title="Nouveau" type="folder"/>
+    </outlineItem>
+  </outlineItem>
   <outlineItem title="Nouveau" type="folder"/>
   <outlineItem title="Nouveau" type="folder"/>
   <outlineItem title="Nouveau" type="folder">
     <outlineItem title="Nouveau" type="scene"/>
-    <outlineItem title="Nouveau" type="folder"/>
+    <outlineItem title="Nouveau" type="scene"/>
+    <outlineItem title="Nouveau" type="scene"/>
     <outlineItem title="Nouveau" type="scene"/>
   </outlineItem>
-  <outlineItem title="Nouveau" type="scene"/>
-  <outlineItem title="Nouveau" type="scene"/>
+  <outlineItem title="Nouveau" type="folder"/>
 </outlineItem>

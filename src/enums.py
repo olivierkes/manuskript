@@ -24,3 +24,15 @@ class Perso(Enum):
     summaryFull = 9
     notes = 10
     
+    
+class Outline(Enum):
+    title = 0
+    ID = 1
+    type = 2
+    summarySentance = 3
+    summaryFull = 4
+    POV = 5
+    notes = 6
+    status = 7
+    compile = 8
+    text = 9

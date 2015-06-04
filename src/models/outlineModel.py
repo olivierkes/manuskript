@@ -5,22 +5,10 @@ from __future__ import print_function
 from __future__ import unicode_literals
 
 from qt import *
+from enums import *
 
 from enum import Enum
 from lxml import etree as ET
-
-class Outline(Enum):
-    title = 0
-    ID = 1
-    type = 2
-    summarySentance = 3
-    summaryFull = 4
-    POV = 5
-    notes = 6
-    status = 7
-    compile = 8
-    text = 9
-    
 
 class outlineModel(QAbstractItemModel):
     def __init__(self):
@@ -43,7 +31,6 @@ class outlineModel(QAbstractItemModel):
             return self.createIndex(row, column, childItem)
         else:
             return QModelIndex()
-        
     
     def parent(self, index=QModelIndex()):
         if not index.isValid():
@@ -99,17 +86,22 @@ class outlineModel(QAbstractItemModel):
     # http://doc.qt.io/qt-5/model-view-programming.html#using-drag-and-drop-with-item-views
     
     def flags(self, index):
+        #FIXME when dragging folders, sometimes flags is not called
+        
         flags = QAbstractItemModel.flags(self, index) | Qt.ItemIsEditable 
         
         if index.isValid() and index.internalPointer().isFolder():
-            flags |= Qt.ItemIsDropEnabled | Qt.ItemIsDragEnabled
+            flags |= Qt.ItemIsDragEnabled | Qt.ItemIsDropEnabled 
             
         elif index.isValid():
             flags |= Qt.ItemIsDragEnabled
             
         else:
             flags |= Qt.ItemIsDropEnabled
-            
+        
+        if index.isValid() and index.column() == Outline.compile.value:
+            flags |= Qt.ItemIsUserCheckable
+        
         return flags
     
     def mimeTypes(self):
@@ -117,13 +109,12 @@ class outlineModel(QAbstractItemModel):
     
     def mimeData(self, indexes):
         mimeData = QMimeData()
-        #encodedData = QByteArray()
-        #stream = QDataStream(encodedData, QIODevice.WriteOnly)
         encodedData = ""
         
         root = ET.Element("outlineItems")
+        
         for index in indexes:
-            if index.isValid():
+            if index.isValid() and index.column() == 0:
                 item = ET.XML(index.internalPointer().toXML())
                 root.append(item)
         
@@ -165,6 +156,7 @@ class outlineModel(QAbstractItemModel):
             beginRow = self.rowCount() + 1
             
         encodedData = str(data.data("application/xml"))
+        
         root = ET.XML(encodedData)
         
         if root.tag <> "outlineItems":
@@ -290,7 +282,9 @@ class outlineItem():
     
     def data(self, column, role=Qt.DisplayRole):
         if role == Qt.DisplayRole or role == Qt.EditRole:
-            if Outline(column) in self._data:
+            if column == Outline.compile.value:
+                return self.data(column, Qt.CheckStateRole)
+            elif Outline(column) in self._data:
                 return self._data[Outline(column)]
             else:
                 return None
@@ -299,9 +293,15 @@ class outlineItem():
                 return QIcon.fromTheme("folder")
             elif self.isScene():
                 return QIcon.fromTheme("document-new")
+            
+        elif role == Qt.CheckStateRole and column == Outline.compile.value:
+            if Outline(column) in self._data and self._data[Outline(column)]:
+                return Qt.Checked
+            else:
+                return Qt.Unchecked
     
     def setData(self, column, data):
-        self._data[Outline(column)] = unicode(data.toString())
+        self._data[Outline(column)] = data
     
     def row(self):
         if self.parent:
@@ -332,7 +332,7 @@ class outlineItem():
         for attrib in Outline:
             val = self.data(attrib)
             if val:
-                item.set(attrib.name, val)
+                item.set(attrib.name, unicode(val))
             
         for i in self.childItems:
             item.append(ET.XML(i.toXML()))
@@ -344,7 +344,7 @@ class outlineItem():
         
         for k in root.attrib:
             if k in Outline.__members__:
-                self._data[Outline.__members__[k]] = root.attrib[k]
+                self._data[Outline.__members__[k]] = unicode(root.attrib[k])
                 
         for child in root:
             item = outlineItem(xml=ET.tostring(child))

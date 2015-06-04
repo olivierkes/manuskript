@@ -20,7 +20,6 @@ class sldImportance(QWidget, Ui_sldImportance):
         self.sld.valueChanged.connect(self.changed)
         self.setValue(0)
         
-        
     def getImportance(self):
         return str(self.sld.value())
         
