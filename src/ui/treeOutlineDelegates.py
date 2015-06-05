@@ -6,6 +6,7 @@ from __future__ import unicode_literals
 
 from qt import *
 from enums import *
+from functions import *
 
 class treeOutlinePersoDelegate(QStyledItemDelegate):
     
@@ -48,8 +49,64 @@ class treeOutlineCompileDelegate(QStyledItemDelegate):
     def __init__(self, parent=None):
         QStyledItemDelegate.__init__(self, parent)
         
-    #def displayText(self, value, locale):
-        #return ""
+    def displayText(self, value, locale):
+        return ""
+    
+class treeOutlineGoalPercentageDelegate(QStyledItemDelegate):
+    def __init__(self, parent=None):
+        QStyledItemDelegate.__init__(self, parent)
+        
+    def paint(self, painter, option, index):
+        if not index.isValid():
+            return QStyledItemDelegate.paint(self, painter, option, index)
+        
+        QStyledItemDelegate.paint(self, painter, option, index)
+        
+        item = index.internalPointer()
+        
+        if not item.data(Outline.goal.value):
+            return
+        
+        p = toFloat(item.data(Outline.goalPercentage.value))
+        if p > 1: p = 1.
+
+        typ = item.data(Outline.type.value)
+        
+        level = item.level()
+        
+        margin = 7
+        #height =  5 if typ == "folder" else 3
+        height = max(12 - 2 * level, 6)
+        painter.save()
+        
+        rect = option.rect.adjusted(margin, margin, -margin, -margin)
+        #rect.setWidth(rect.width() - level * rect.width() / 10)
+        rect.setHeight(height)
+        rect.setTop(option.rect.top() + (option.rect.height() - height) / 2)
+        painter.drawRect(rect)
+        
+        c1 = QColor(Qt.red)
+        c2 = QColor(Qt.blue)
+        c3 = QColor(Qt.darkGreen)
+        if p < 0.3:
+            painter.setBrush(QBrush(c1))
+        elif p < 0.8:
+            painter.setBrush(QBrush(c2))
+        else:
+            painter.setBrush(QBrush(c3))
+        
+        #if typ == "folder":
+            #painter.setBrush(QBrush(Qt.blue))
+        #else:
+            #painter.setBrush(QBrush(Qt.green))
+            
+        r2 = QRect(rect)
+        r2.setWidth(r2.width() * p)
+        painter.drawRect(r2)
+        painter.restore()
+        
+    def displayText(self, value, locale):
+        return ""
     
 class treeOutlineStatusDelegate(QStyledItemDelegate):
     

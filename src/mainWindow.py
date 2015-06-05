@@ -120,7 +120,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 self.mprPersos.addMapping(w, i)    
         self.mprPersos.addMapping(self.sldPersoImportance, Perso.importance.value, "importance")
         self.sldPersoImportance.importanceChanged.connect(self.mprPersos.submit)
-            
+        self.tabMain.currentChanged.connect(self.mprPersos.submit)
+        
         self.mprPersos.setCurrentIndex(0)
         self.lstPersos.selectionModel().currentChanged.connect(self.changeCurrentPerso)
         self.tabPersos.currentChanged.connect(self.resizePersosInfos)
@@ -135,6 +136,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.treePlanOutline.setItemDelegateForColumn(Outline.compile.value, self.treePlanOutlineCompileDelegate)
         self.treePlanOutlineStatusDelegate = treeOutlineStatusDelegate()
         self.treePlanOutline.setItemDelegateForColumn(Outline.status.value, self.treePlanOutlineStatusDelegate)
+        self.treePlanOutlineGoalPercentageDelegate = treeOutlineGoalPercentageDelegate()
+        self.treePlanOutline.setItemDelegateForColumn(Outline.goalPercentage.value, self.treePlanOutlineGoalPercentageDelegate)
         
         self.cmbPlanPOV.setModels(self.mdlPersos, self.mdlOutline)
         self.treePlanOutline.header().setSectionResizeMode(QHeaderView.ResizeToContents)
@@ -153,7 +156,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.treePlanOutline.selectionModel().currentChanged.connect(lambda idx: self.mprPlan.setRootIndex(idx.parent()))
         self.treePlanOutline.selectionModel().currentChanged.connect(self.mprPlan.setCurrentModelIndex)
         self.treePlanOutline.selectionModel().currentChanged.connect(self.cmbPlanPOV.setCurrentModelIndex)
-        
+        self.tabMain.currentChanged.connect(self.mprPlan.submit)
         
         self.treeRedacOutline.setSelectionModel(self.treePlanOutline.selectionModel())
         
@@ -182,7 +185,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             (self.txtRedacSummaryFull, Outline.summaryFull.value),
             (self.txtRedacNotes, Outline.notes.value),
             (self.txtRedacTitle, Outline.title.value),
-            (self.txtRedacGoal, Outline.goal.value)
+            (self.txtRedacGoal, Outline.setGoal.value)
             ]
         for w, i in mapping:
                 self.mprOutline.addMapping(w, i)
@@ -192,6 +195,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.treeRedacOutline.selectionModel().currentChanged.connect(self.cmbRedacPOV.setCurrentModelIndex)
         self.treeRedacOutline.selectionModel().currentChanged.connect(self.cmbRedacStatus.setCurrentModelIndex)
         self.treeRedacOutline.selectionModel().currentChanged.connect(self.chkRedacCompile.setCurrentModelIndex)
+        self.tabMain.currentChanged.connect(self.mprOutline.submit)
         
         self.treeRedacOutline.selectionModel().currentChanged.connect(lambda idx: self.lblRedacPOV.setHidden(idx.internalPointer().isFolder()))
         self.treeRedacOutline.selectionModel().currentChanged.connect(lambda idx: self.cmbRedacPOV.setHidden(idx.internalPointer().isFolder()))
@@ -218,7 +222,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         else:
             parent = self.treeRedacOutline.currentIndex()
             
-        item = outlineItem("Nouveau", type)
+        item = outlineItem(title="Nouveau", type=type)
         self.mdlOutline.appendItem(item, parent)
         
     def outlineRemoveItems(self):

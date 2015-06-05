@@ -39,3 +39,5 @@ class Outline(Enum):
     wordCount = 10
     goal = 11
     goalPercentage = 12
+    setGoal = 13 # The goal set by the user, if any. Can be different from goal which can be computed
+                 # (sum of all sub-items' goals)

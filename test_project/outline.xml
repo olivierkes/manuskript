@@ -1,11 +1,39 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<outlineItem title="root" type="folder">
-  <outlineItem title="Nouveau" type="folder" summarySentance="a" compile="2">
-    <outlineItem title="Nouveau" type="scene" summarySentance="b" compile="2" text="Le texte de cet élément" wordCount="5" goalPercentage="0"/>
-    <outlineItem title="Nouveau" type="scene" summarySentance="c" compile="2"/>
-    <outlineItem title="Nouveau" type="scene" summarySentance="d" compile="2"/>
-  </outlineItem>
-  <outlineItem title="Nouveau" type="folder" summarySentance="e" compile="2"/>
+<outlineItem title="root" type="folder" compile="2" wordCount="102" setGoal="112">
   <outlineItem title="Nouveau" type="folder" compile="2"/>
-  <outlineItem title="Nouveau" type="scene" compile="2" goal="3" goalPercentage="1.0"/>
+  <outlineItem title="Parent" type="folder" compile="2" wordCount="87">
+    <outlineItem title="Nouveau" type="folder" compile="2" wordCount="73">
+      <outlineItem title="Nouveau" type="scene" compile="2" text="Du texteDu texteDu texteDu texteDu texteDu texteDu texteDu texteDu texteDu texteDu texteDu texteDu texteDu texteDu texteDu texteDu texteDu texteDu texteDu texteDu texteDu texteDu texteDu texte&#10;&#10;Du texteDu texteDu texteDu texteDu texteDu texteDu texteDu texteDu texteDu texteDu texteDu texteDu texteDu texteDu texteDu texteDu texteDu texteDu texteDu texteDu texteDu texteDu texteDu texte&#10;&#10;Du texteDu texteDu texteDu texteDu texteDu texteDu texteDu texteDu texteDu texteDu texteDu texteDu texteDu texteDu texteDu texteDu texteDu texteDu texteDu texteDu texteDu texteDu texteDu texte&#10;&#10;" wordCount="73" setGoal="150"/>
+      <outlineItem title="Nouveau" type="scene" compile="2" setGoal="50"/>
+      <outlineItem title="Nouveau" type="scene" compile="2" setGoal="50"/>
+      <outlineItem title="Nouveau" type="folder" compile="2" setGoal="100">
+        <outlineItem title="Nouveau" type="folder" compile="2" setGoal="50">
+          <outlineItem title="Nouveau" type="folder" compile="2" setGoal="200">
+            <outlineItem title="Nouveau" type="folder" compile="2" setGoal="100">
+              <outlineItem title="Nouveau" type="folder" compile="2" setGoal="100">
+                <outlineItem title="Nouveau" type="folder" compile="2" setGoal="100"/>
+              </outlineItem>
+            </outlineItem>
+          </outlineItem>
+        </outlineItem>
+      </outlineItem>
+    </outlineItem>
+    <outlineItem title="MOIMOIMOI" type="scene" compile="2" text="asdasdasdasdasd asd asd  asd asd  asd asd asd " wordCount="10" setGoal="150"/>
+    <outlineItem title="Nouveau" type="scene" compile="2" text="asd asd asd a" wordCount="4" setGoal="150"/>
+    <outlineItem title="Nouveau" type="folder" compile="2">
+      <outlineItem title="Nouveau" type="folder" compile="2">
+        <outlineItem title="Nouveau" type="folder" compile="2">
+          <outlineItem title="Nouveau" type="folder" compile="2">
+            <outlineItem title="Nouveau" type="folder" compile="2" setGoal="100"/>
+          </outlineItem>
+        </outlineItem>
+      </outlineItem>
+    </outlineItem>
+  </outlineItem>
+  <outlineItem title="MOIMOIMOI" type="scene" compile="2" text=" asd asd asd " wordCount="3" setGoal="3"/>
+  <outlineItem title="Nouveau" type="scene" compile="2" text="asdasd asd " wordCount="2" setGoal="25"/>
+  <outlineItem title="Nouveau" type="folder" compile="2"/>
+  <outlineItem title="Nouveau" type="folder" compile="2"/>
+  <outlineItem title="B" type="scene" compile="2" text="asd asd asd asd  asd asd asd asd asd " wordCount="10" setGoal="25"/>
+  <outlineItem title="A" type="scene" compile="2" setGoal="146"/>
 </outlineItem>

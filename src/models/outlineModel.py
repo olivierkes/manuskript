@@ -19,7 +19,7 @@ class outlineModel(QAbstractItemModel):
     def __init__(self):
         QAbstractItemModel.__init__(self)
         
-        self.rootItem = outlineItem("root", "folder")
+        self.rootItem = outlineItem(self, title="root")
         self.generateStatuses()
     
     def index(self, row, column, parent):
@@ -37,6 +37,23 @@ class outlineModel(QAbstractItemModel):
             return self.createIndex(row, column, childItem)
         else:
             return QModelIndex()
+    
+    def indexFromItem(self, item, column=0):
+        if item == self.rootItem:
+            return None
+        
+        parent = item.parent()
+        if not parent:
+            parent = self.rootItem
+        
+        if len(parent.children()) == 0:
+            return None
+        
+        #print(item.title(), [i.title() for i in parent.children()])
+        
+        row = parent.children().index(item)
+        col = column
+        return self.createIndex(row, col, item)
     
     def parent(self, index=QModelIndex()):
         if not index.isValid():
@@ -111,6 +128,9 @@ class outlineModel(QAbstractItemModel):
         
         if index.isValid() and index.column() == Outline.compile.value:
             flags |= Qt.ItemIsUserCheckable
+        
+        if index.column() in [i.value for i in [Outline.wordCount, Outline.goalPercentage]]:
+            flags &= ~ Qt.ItemIsEditable
         
         return flags
     
@@ -195,6 +215,9 @@ class outlineModel(QAbstractItemModel):
         else:
             parentItem = parent.internalPointer()
             
+        if parent.column() <> 0:
+            parent = parentItem.index()
+            
         # Insert only if parent is folder
         if parentItem.isFolder():
             self.beginInsertRows(parent, row, row + len(items) - 1)
@@ -211,6 +234,9 @@ class outlineModel(QAbstractItemModel):
             parentItem = self.rootItem
         else:
             parentItem = parent.internalPointer()
+        
+        if parent.column() <> 0:
+            parent = parentItem.index()
         
         # If parent is folder, write into
         if parentItem.isFolder():
@@ -260,13 +286,13 @@ class outlineModel(QAbstractItemModel):
         ET.ElementTree(root).write(xml, encoding="UTF-8", xml_declaration=True, pretty_print=True)
     
     def loadFromXML(self, xml):
-        try:
+        #try:
             root = ET.parse(xml)
-            self.rootItem = outlineItem(xml=ET.tostring(root))
+            self.rootItem = outlineItem(self, xml=ET.tostring(root))
             self.generateStatuses()
-        except:
-            print("N'arrive pas à ouvrir {}".format(xml))
-            return
+        #except:
+            #print("N'arrive pas à ouvrir {}".format(xml))
+            #return
         
         
     ################# DIVERS #################
@@ -293,14 +319,16 @@ class outlineModel(QAbstractItemModel):
     
 class outlineItem():
     
-    def __init__(self, title="", type="folder", xml=None):
+    def __init__(self, model=None, title="", type="folder", xml=None):
         
         self._data = {}
         self.childItems = []
+        self._parent = None
+        self._model = model
         
         if title: self._data[Outline.title] = title
         self._data[Outline.type] = type
-        
+        self._data[Outline.compile] = Qt.Checked
         if xml is not None:
             self.setFromXML(xml)
         
@@ -327,6 +355,7 @@ class outlineItem():
             
             elif Outline(column) in self._data:
                 return self._data[Outline(column)]
+            
             else:
                 return None
             
@@ -341,29 +370,70 @@ class outlineItem():
                 return QBrush(Qt.gray)
             
         elif role == Qt.CheckStateRole and column == Outline.compile.value:
-            if Outline(column) in self._data and self._data[Outline(column)]:
-                return Qt.Checked
-            else:
-                return Qt.Unchecked
+            return self._data[Outline(column)]
     
     def setData(self, column, data, role=Qt.DisplayRole):
         if role not in [Qt.DisplayRole, Qt.EditRole, Qt.CheckStateRole]:
             print(column, column == Outline.text.value, data, role)
             return
         
+        if column == Outline.text.value and self.isFolder():
+            # Folder have no text
+            return
+        
         if column == Outline.text.value:
             wc = wordCount(data)
             self.setData(Outline.wordCount.value, wc)
             
-        if column in [Outline.wordCount.value, Outline.goal.value]:
-            wc = self.data(Outline.wordCount.value)
-            goal = self.data(Outline.goal.value)
-            if goal and wc:
-                self.setData(Outline.goalPercentage.value, int(wc) / float(goal))
-            else:
-                self.setData(Outline.goalPercentage.value, "0")
+        if column == Outline.goal.value:
+            self._data[Outline.setGoal] = toInt(data) if toInt(data) > 0 else ""
+                
+            
+        updateWordCount = False
+        if column in [Outline.wordCount.value, Outline.goal.value, Outline.setGoal.value]:
+            updateWordCount = not Outline(column) in self._data or self._data[Outline(column)] <> data 
         
         self._data[Outline(column)] = data
+        
+        if updateWordCount:
+            self.updateWordCount()
+    
+    def updateWordCount(self):
+        if not self.isFolder():
+            setGoal = toInt(self.data(Outline.setGoal.value))
+            goal = toInt(self.data(Outline.goal.value))
+        
+            if goal <> setGoal:
+                self._data[Outline.goal] = setGoal
+            if setGoal:
+                wc = toInt(self.data(Outline.wordCount.value))
+                self.setData(Outline.goalPercentage.value, wc / float(setGoal))
+                
+        else:
+            wc = 0
+            for c in self.children():
+                wc += toInt(c.data(Outline.wordCount.value))
+            self._data[Outline.wordCount] = wc
+            
+            setGoal = toInt(self.data(Outline.setGoal.value))
+            goal = toInt(self.data(Outline.goal.value))
+            
+            if setGoal:
+                if goal <> setGoal:
+                    self._data[Outline.goal] = setGoal
+            else:
+                goal = 0
+                for c in self.children():
+                    goal += toInt(c.data(Outline.goal.value))
+                self._data[Outline.goal] = goal
+            
+            if goal:
+                self.setData(Outline.goalPercentage.value, wc / float(goal))
+                
+        self.emitDataChanged()
+        
+        if self.parent():
+            self.parent().updateWordCount()
     
     def row(self):
         if self.parent:
@@ -375,6 +445,16 @@ class outlineItem():
     def insertChild(self, row, child):
         self.childItems.insert(row, child)
         child._parent = self
+        child._model = self._model
+        self.updateWordCount()
+        
+    def index(self, column=0):
+        return self._model.indexFromItem(self, column)
+        
+    def emitDataChanged(self):
+        idx = self.index()
+        if idx:
+            self._model.dataChanged.emit(idx, self.index(len(Outline)))
         
     def removeChild(self, row):
         self.childItems.pop(row)
@@ -388,13 +468,28 @@ class outlineItem():
     def isCompile(self):
         return Outline.compile in self._data and self._data[Outline.compile]
     
+    def title(self):
+        if Outline.title in self._data:
+            return self._data[Outline.title]
+        else:
+            return ""
+    
     def isScene(self):
         return self._data[Outline.type] == "scene"
+    
+    def level(self):
+        if self.parent():
+            return self.parent().level() + 1
+        else:
+            return -1
     
     def toXML(self):
         item = ET.Element("outlineItem")
         
+        exclude = [Outline.goal, Outline.goalPercentage]
+        
         for attrib in Outline:
+            if attrib in exclude: continue
             val = self.data(attrib.value)
             if val:
                 item.set(attrib.name, unicode(val))
@@ -412,5 +507,5 @@ class outlineItem():
                 self.setData(Outline.__members__[k].value, unicode(root.attrib[k]))
                 
         for child in root:
-            item = outlineItem(xml=ET.tostring(child))
+            item = outlineItem(self._model, xml=ET.tostring(child))
             self.appendChild(item)
