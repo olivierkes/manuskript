@@ -512,6 +512,12 @@ class outlineItem():
         else:
             return ""
     
+    def path(self):
+        if self.parent().parent():
+            return "{} > {}".format(self.parent().path(), self.title())
+        else:
+            return self.title()
+    
     def isScene(self):
         return self._data[Outline.type] == "scene"
     

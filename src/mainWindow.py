@@ -204,10 +204,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.treeRedacOutline.selectionModel().currentChanged.connect(self.redacEditor.setCurrentModelIndex)
         self.tabMain.currentChanged.connect(self.mprOutline.submit)
         
-        self.treeRedacOutline.selectionModel().currentChanged.connect(lambda idx: self.lblRedacPOV.setHidden(idx.internalPointer().isFolder()))
-        self.treeRedacOutline.selectionModel().currentChanged.connect(lambda idx: self.cmbRedacPOV.setHidden(idx.internalPointer().isFolder()))
-        self.treePlanOutline.selectionModel().currentChanged.connect(lambda idx: self.lblPlanPOV.setHidden(idx.internalPointer().isFolder()))
-        self.treePlanOutline.selectionModel().currentChanged.connect(lambda idx: self.cmbPlanPOV.setHidden(idx.internalPointer().isFolder()))
+        self.treeRedacOutline.selectionModel().currentChanged.connect(self.outlineSelectionChanged)
+        self.treeRedacOutline.selectionModel().currentChanged.connect(self.outlineSelectionChanged)
+        self.treePlanOutline.selectionModel().currentChanged.connect(self.outlineSelectionChanged)
+        self.treePlanOutline.selectionModel().currentChanged.connect(self.outlineSelectionChanged)
         
         
         #Debug
@@ -223,6 +223,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 #                                             OUTLINE                                              #
 ####################################################################################################
     
+    def outlineSelectionChanged(self, idx):
+        if idx.isValid():
+            self.lblRedacPOV.setHidden(idx.internalPointer().isFolder())
+            self.cmbRedacPOV.setHidden(idx.internalPointer().isFolder())
+            self.lblPlanPOV.setHidden(idx.internalPointer().isFolder())
+            self.cmbPlanPOV.setHidden(idx.internalPointer().isFolder())
+        
     def outlineAddItem(self, type="folder"):
         if len(self.treeRedacOutline.selectedIndexes()) == 0:
             parent = QModelIndex()

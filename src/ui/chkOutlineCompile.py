@@ -25,7 +25,7 @@ class chkOutlineCompile(QCheckBox):
         self.updateSelectedItem()
         
     def updateSelectedItem(self, idx1=None, idx2=None):
-        if not self.currentModelIndex:
+        if not self.currentModelIndex or not self.currentModelIndex.isValid():
             self.setChecked(False)
             self.setEnabled(False)
         else:
@@ -39,7 +39,7 @@ class chkOutlineCompile(QCheckBox):
             self.setCheckState(c)
         
     def changed(self, state):
-        if self.currentModelIndex:
+        if self.currentModelIndex and self.currentModelIndex.isValid():
             mdl = self.currentModelIndex.model()
             modelIndex = mdl.index(self.currentModelIndex.row(), Outline.compile.value, self.currentModelIndex.parent())
             mdl.setData(modelIndex, state)

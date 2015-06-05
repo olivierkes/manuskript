@@ -1,43 +1,22 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<outlineItem title="root" type="folder" compile="2" wordCount="485" setGoal="112">
+<outlineItem title="root" type="folder" compile="2" wordCount="267" setGoal="112">
   <outlineItem title="Nouveau" type="folder" compile="2" wordCount="15">
     <outlineItem title="Nouveau" type="scene" compile="2" text="return QTextEdit.resizeEvent(self, e) ad ad  ad ad  adaasd ad adsdasd ad e drset" wordCount="15"/>
   </outlineItem>
-  <outlineItem title="Parent" type="folder" compile="2" wordCount="253">
-    <outlineItem title="Nouveau" type="folder" status="TODO" compile="2" wordCount="12">
+  <outlineItem title="Parent" type="folder" compile="2" wordCount="35">
+    <outlineItem title="Nouveau" type="folder" status="TODO" compile="2" wordCount="11">
       <outlineItem title="A" type="scene" compile="2" text="Du texteDu texteDu text ad ad ad ad " wordCount="8" setGoal="150"/>
       <outlineItem title="B" type="scene" compile="2" setGoal="50"/>
-      <outlineItem title="C" type="scene" compile="2" setGoal="50"/>
-      <outlineItem title="Nouveau" type="folder" compile="2" wordCount="4" setGoal="100">
-        <outlineItem title="Nouveau" type="folder" compile="2" wordCount="4" setGoal="50">
-          <outlineItem title="5" type="folder" compile="2" setGoal="200">
-            <outlineItem title="6" type="folder" compile="2" setGoal="100">
-              <outlineItem title="7" type="folder" compile="2" setGoal="100">
-                <outlineItem title="Nouveau" type="folder" compile="2" setGoal="100"/>
-              </outlineItem>
-            </outlineItem>
-          </outlineItem>
-          <outlineItem title="Nouveau" type="scene" compile="2" text="asda sdasd as d" wordCount="4"/>
-        </outlineItem>
-      </outlineItem>
+      <outlineItem title="C" type="scene" compile="2" text="adasd ad ad " wordCount="3" setGoal="50"/>
+      <outlineItem title="Nouveau" type="folder" compile="2" setGoal="100"/>
     </outlineItem>
-    <outlineItem title="MOIMOIMOI" type="scene" POV="2" compile="2" text="ASDASd ASD ASDASd ASD ASDASd ASD " wordCount="6" setGoal="150"/>
+    <outlineItem title="MOIMOIMOI" type="scene" POV="1" compile="2" text="ASDASd ASD ASDASd ASD ASDASd ASD " wordCount="6" setGoal="150"/>
     <outlineItem title="Nouveau" type="scene" POV="1" compile="2" text="ASDASd ASD ASDASd ASD " wordCount="4" setGoal="150"/>
-    <outlineItem title="Nouveau" type="folder" compile="2">
-      <outlineItem title="Nouveau" type="folder" compile="2">
-        <outlineItem title="Nouveau" type="folder" compile="2">
-          <outlineItem title="Nouveau" type="folder" compile="2">
-            <outlineItem title="Nouveau" type="folder" compile="2" setGoal="200"/>
-          </outlineItem>
-        </outlineItem>
-      </outlineItem>
-      <outlineItem title="Nouveau" type="folder" compile="2"/>
-      <outlineItem title="Nouveau" type="folder" compile="2"/>
-    </outlineItem>
     <outlineItem title="Nouveau" type="scene" compile="2" text="ASDASd ASD ASDASd ASD " wordCount="4" setGoal="25"/>
     <outlineItem title="B" type="scene" compile="2" text="asd asd asd asd  asd asd asd asd asd " wordCount="10" setGoal="25"/>
+    <outlineItem title="Nouveau" type="folder" compile="2"/>
   </outlineItem>
-  <outlineItem title="MOIMOIMOI" type="scene" POV="2" status="Second draft" compile="2" setGoal="2500"/>
+  <outlineItem title="MOIMOIMOI" type="scene" POV="0" status="Second draft" compile="2" setGoal="2500"/>
   <outlineItem title="A" type="scene" compile="2" setGoal="146"/>
   <outlineItem title="Nouveau A" type="folder" compile="2" wordCount="217">
     <outlineItem title="Nouveau" type="scene" compile="2" text="ASDASd ASD ASDASd ASD " wordCount="4"/>

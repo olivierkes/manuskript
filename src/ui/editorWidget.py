@@ -66,7 +66,7 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
     def setCurrentModelIndex(self, index):
         
         if index.isValid():
-            print("Populating")
+            
             self.currentIndex = index
             self._model = index.model()
             
@@ -96,7 +96,7 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
                 def addScene(itm):
                     edt = GrowingTextEdit(index=itm.index())
                     edt.setFrameShape(QFrame.NoFrame)
-                    edt.setStatusTip(itm.title())
+                    edt.setStatusTip(itm.path())
                     #edt.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
                     self.txtEdits.append(edt)
                     l.addWidget(edt)

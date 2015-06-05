@@ -21,7 +21,7 @@ class cmbOutlinePersoChoser(QComboBox):
         self.mdlOutline.dataChanged.connect(self.updateSelectedItem)
         
     def updateSelectedItem(self, idx1=None, idx2=None):
-        if not self.currentModelIndex:
+        if not self.currentModelIndex or not self.currentModelIndex.isValid():
             self.setCurrentIndex(0)
         else:
             item = self.currentModelIndex.internalPointer()
