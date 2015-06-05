@@ -104,9 +104,29 @@ class outlineModel(QAbstractItemModel):
     
     def headerData(self, section, orientation, role=Qt.DisplayRole):
         if orientation == Qt.Horizontal and role == Qt.DisplayRole:
-            return [i.name for i in Outline][section]
+            if section == Outline.title.value:
+                return "Titre"
+            elif section == Outline.wordCount.value:
+                return "Mots"
+            elif section == Outline.goal.value:
+                return "Goal"
+            elif section == Outline.goalPercentage.value:
+                return "%"
+            else:
+                return [i.name for i in Outline][section]
+        
+        elif role == Qt.SizeHintRole:
+            if section == Outline.compile.value:
+                return QSize(40, 30)
+            elif section == Outline.goalPercentage.value:
+                return QSize(100, 30)
+            else:
+                return QVariant()
         else:
             return QVariant()
+        
+        
+        
         return True
     
     #################### DRAG AND DROP ########################
@@ -200,9 +220,7 @@ class outlineModel(QAbstractItemModel):
         if not items:
             return False
         
-        self.insertItems(items, beginRow, parent)
-        
-        return True
+        return self.insertItems(items, beginRow, parent)
         
     ################# ADDING AND REMOVING #################
         
@@ -215,7 +233,7 @@ class outlineModel(QAbstractItemModel):
         else:
             parentItem = parent.internalPointer()
             
-        if parent.column() <> 0:
+        if parent.isValid() and parent.column() <> 0:
             parent = parentItem.index()
             
         # Insert only if parent is folder
@@ -227,7 +245,10 @@ class outlineModel(QAbstractItemModel):
             
             self.endInsertRows()
             
-        return True
+            return True
+        
+        else:
+            return False
         
     def appendItem(self, item, parent=QModelIndex()):
         if not parent.isValid():
@@ -235,7 +256,7 @@ class outlineModel(QAbstractItemModel):
         else:
             parentItem = parent.internalPointer()
         
-        if parent.column() <> 0:
+        if parent.isValid() and parent.column() <> 0:
             parent = parentItem.index()
         
         # If parent is folder, write into
@@ -365,12 +386,22 @@ class outlineItem():
             elif self.isScene():
                 return QIcon.fromTheme("document-new")
             
-        elif role == Qt.ForegroundRole and column == Outline.title.value:
-            if not self.isCompile():
+        elif role == Qt.ForegroundRole:
+            if column == Outline.title.value and not self.isCompile():
                 return QBrush(Qt.gray)
             
         elif role == Qt.CheckStateRole and column == Outline.compile.value:
             return self._data[Outline(column)]
+        
+        elif role == Qt.FontRole:
+            f = QFont()
+            if column == Outline.wordCount.value and self.isFolder():
+                f.setItalic(True)
+            elif column == Outline.goal.value and self.isFolder() and self.data(Outline.setGoal) == None:
+                f.setItalic(True)
+            if self.isFolder():
+                f.setBold(True)
+            return f
     
     def setData(self, column, data, role=Qt.DisplayRole):
         if role not in [Qt.DisplayRole, Qt.EditRole, Qt.CheckStateRole]:
@@ -387,7 +418,6 @@ class outlineItem():
             
         if column == Outline.goal.value:
             self._data[Outline.setGoal] = toInt(data) if toInt(data) > 0 else ""
-                
             
         updateWordCount = False
         if column in [Outline.wordCount.value, Outline.goal.value, Outline.setGoal.value]:
@@ -445,15 +475,23 @@ class outlineItem():
     def insertChild(self, row, child):
         self.childItems.insert(row, child)
         child._parent = self
-        child._model = self._model
+        child.setModel(self._model)
         self.updateWordCount()
         
+    def setModel(self, model):
+        self._model = model
+        for c in self.children():
+            c.setModel(model)
+        
     def index(self, column=0):
-        return self._model.indexFromItem(self, column)
+        if self._model:
+            return self._model.indexFromItem(self, column)
+        else:
+            return QModelIndex()
         
     def emitDataChanged(self):
         idx = self.index()
-        if idx:
+        if idx and self._model:
             self._model.dataChanged.emit(idx, self.index(len(Outline)))
         
     def removeChild(self, row):
@@ -486,12 +524,15 @@ class outlineItem():
     def toXML(self):
         item = ET.Element("outlineItem")
         
+        # We don't want to write some datas (computed)
         exclude = [Outline.goal, Outline.goalPercentage]
+        # We want to force some data even if they're empty
+        force = [Outline.compile]
         
         for attrib in Outline:
             if attrib in exclude: continue
             val = self.data(attrib.value)
-            if val:
+            if val or attrib in force:
                 item.set(attrib.name, unicode(val))
             
         for i in self.childItems:
@@ -504,7 +545,10 @@ class outlineItem():
         
         for k in root.attrib:
             if k in Outline.__members__:
-                self.setData(Outline.__members__[k].value, unicode(root.attrib[k]))
+                #if k == Outline.compile:
+                    #self.setData(Outline.__members__[k].value, unicode(root.attrib[k]), Qt.CheckStateRole)
+                #else:
+                    self.setData(Outline.__members__[k].value, unicode(root.attrib[k]))
                 
         for child in root:
             item = outlineItem(self._model, xml=ET.tostring(child))

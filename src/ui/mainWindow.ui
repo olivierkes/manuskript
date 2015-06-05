@@ -1331,7 +1331,7 @@
             </item>
            </item>
           </widget>
-          <widget class="QWidget" name="">
+          <widget class="QWidget" name="layoutWidget">
            <layout class="QVBoxLayout" name="verticalLayout_14">
             <item>
              <widget class="QSplitter" name="splitterOutlineV">
@@ -1351,6 +1351,9 @@
                <property name="selectionMode">
                 <enum>QAbstractItemView::ExtendedSelection</enum>
                </property>
+               <attribute name="headerStretchLastSection">
+                <bool>false</bool>
+               </attribute>
               </widget>
               <widget class="QFrame" name="frame">
                <property name="frameShape">
@@ -1363,9 +1366,22 @@
                 <item>
                  <layout class="QHBoxLayout" name="horizontalLayout_11">
                   <item>
+                   <spacer name="horizontalSpacer_8">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                  <item>
                    <widget class="QLabel" name="lblPlanPOV">
                     <property name="text">
-                     <string>POV</string>
+                     <string>POV:</string>
                     </property>
                     <property name="alignment">
                      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1376,6 +1392,38 @@
                    <widget class="cmbOutlinePersoChoser" name="cmbPlanPOV">
                     <property name="frame">
                      <bool>false</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="lblPlanGoal">
+                    <property name="text">
+                     <string>Goal:</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLineEdit" name="txtOutlineGoal">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="autoFillBackground">
+                     <bool>false</bool>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">border-radius: 6px;</string>
+                    </property>
+                    <property name="frame">
+                     <bool>false</bool>
+                    </property>
+                    <property name="placeholderText">
+                     <string>Nombre de mots</string>
                     </property>
                    </widget>
                   </item>
@@ -1587,7 +1635,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QPlainTextEdit" name="txtRedacText"/>
+             <widget class="editorWidget" name="redacEditor" native="true"/>
             </item>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_19">
@@ -1946,7 +1994,11 @@
            </attribute>
            <layout class="QHBoxLayout" name="horizontalLayout_32">
             <item>
-             <widget class="QTreeView" name="treeDebugOutline"/>
+             <widget class="QTreeView" name="treeDebugOutline">
+              <property name="wordWrap">
+               <bool>true</bool>
+              </property>
+             </widget>
             </item>
            </layout>
           </widget>
@@ -2132,6 +2184,12 @@
    <class>chkOutlineCompile</class>
    <extends>QCheckBox</extends>
    <header>ui.chkOutlineCompile.h</header>
+  </customwidget>
+  <customwidget>
+   <class>editorWidget</class>
+   <extends>QWidget</extends>
+   <header>ui.editorWidget.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>

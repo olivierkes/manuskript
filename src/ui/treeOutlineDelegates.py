@@ -16,6 +16,10 @@ class treeOutlinePersoDelegate(QStyledItemDelegate):
         
     def sizeHint(self, option, index):
         s = QStyledItemDelegate.sizeHint(self, option, index)
+        if s.width() > 200:
+            s.setWidth(200)
+        elif s.width() < 100:
+            s.setWidth(100)
         return s + QSize(18, 0)
     
     def createEditor(self, parent, option, index):
@@ -29,8 +33,11 @@ class treeOutlinePersoDelegate(QStyledItemDelegate):
         return editor
     
     def setEditorData(self, editor, index):
+        editor.addItem("")
         for i in range(self.mdlPersos.rowCount()):
             editor.addItem(self.mdlPersos.item(i, Perso.name.value).text(), self.mdlPersos.item(i, Perso.ID.value).text())
+            editor.setItemData(i+1, self.mdlPersos.item(i, Perso.name.value).text(), Qt.ToolTipRole)
+            
         editor.setCurrentIndex(editor.findData(index.data()))
     
     def setModelData(self, editor, model, index):
@@ -38,7 +45,6 @@ class treeOutlinePersoDelegate(QStyledItemDelegate):
         model.setData(index, val)
     
     def displayText(self, value, locale):
-        
         for i in range(self.mdlPersos.rowCount()):
             if self.mdlPersos.item(i, Perso.ID.value).text() == value:
                 return self.mdlPersos.item(i, Perso.name.value).text()
@@ -80,9 +86,16 @@ class treeOutlineGoalPercentageDelegate(QStyledItemDelegate):
         painter.save()
         
         rect = option.rect.adjusted(margin, margin, -margin, -margin)
-        #rect.setWidth(rect.width() - level * rect.width() / 10)
+        
+        # Move
+        rect.translate(level * rect.width() / 10, 0)
+        rect.setWidth(rect.width() - level * rect.width() / 10)
+        
         rect.setHeight(height)
         rect.setTop(option.rect.top() + (option.rect.height() - height) / 2)
+        
+        painter.setPen(Qt.NoPen)
+        painter.setBrush(QColor("#dddddd"))
         painter.drawRect(rect)
         
         c1 = QColor(Qt.red)

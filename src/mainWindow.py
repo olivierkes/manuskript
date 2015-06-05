@@ -140,15 +140,21 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.treePlanOutline.setItemDelegateForColumn(Outline.goalPercentage.value, self.treePlanOutlineGoalPercentageDelegate)
         
         self.cmbPlanPOV.setModels(self.mdlPersos, self.mdlOutline)
-        self.treePlanOutline.header().setSectionResizeMode(QHeaderView.ResizeToContents)
-        #self.treePlanOutline.header().setSectionResizeMode(QHeaderView.Interactive)
-        #self.treePlanOutline.header().sectionResized.connect(self.outlinePlanResizeTree)
+        
+        self.treePlanOutline.header().setSectionResizeMode(Outline.title.value, QHeaderView.Stretch)
+        self.treePlanOutline.header().setSectionResizeMode(Outline.POV.value, QHeaderView.ResizeToContents)
+        self.treePlanOutline.header().setSectionResizeMode(Outline.status.value, QHeaderView.ResizeToContents)
+        self.treePlanOutline.header().setSectionResizeMode(Outline.compile.value, QHeaderView.ResizeToContents)
+        self.treePlanOutline.header().setSectionResizeMode(Outline.wordCount.value, QHeaderView.ResizeToContents)
+        self.treePlanOutline.header().setSectionResizeMode(Outline.goal.value, QHeaderView.ResizeToContents)
+        self.treePlanOutline.header().setSectionResizeMode(Outline.goalPercentage.value, QHeaderView.ResizeToContents)
             
         self.mprPlan = QDataWidgetMapper()
         self.mprPlan.setModel(self.mdlOutline)
         mapping = [
             (self.txtPlanSummarySentance, Outline.summarySentance.value),
-            (self.txtPlanSummaryFull, Outline.summaryFull.value)
+            (self.txtPlanSummaryFull, Outline.summaryFull.value),
+            (self.txtOutlineGoal, Outline.setGoal.value)
             ]
         for w, i in mapping:
                 self.mprPlan.addMapping(w, i)
@@ -180,7 +186,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.mprOutline = QDataWidgetMapper()
         self.mprOutline.setModel(self.mdlOutline)
         mapping = [
-            (self.txtRedacText, Outline.text.value),
+            (self.redacEditor.txtRedacText, Outline.text.value),
             (self.txtRedacSummarySentance, Outline.summarySentance.value),
             (self.txtRedacSummaryFull, Outline.summaryFull.value),
             (self.txtRedacNotes, Outline.notes.value),
@@ -195,6 +201,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.treeRedacOutline.selectionModel().currentChanged.connect(self.cmbRedacPOV.setCurrentModelIndex)
         self.treeRedacOutline.selectionModel().currentChanged.connect(self.cmbRedacStatus.setCurrentModelIndex)
         self.treeRedacOutline.selectionModel().currentChanged.connect(self.chkRedacCompile.setCurrentModelIndex)
+        self.treeRedacOutline.selectionModel().currentChanged.connect(self.redacEditor.setCurrentModelIndex)
         self.tabMain.currentChanged.connect(self.mprOutline.submit)
         
         self.treeRedacOutline.selectionModel().currentChanged.connect(lambda idx: self.lblRedacPOV.setHidden(idx.internalPointer().isFolder()))

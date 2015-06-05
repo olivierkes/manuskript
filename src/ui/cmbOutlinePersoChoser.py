@@ -47,6 +47,7 @@ class cmbOutlinePersoChoser(QComboBox):
         for i in range(self.mdlPersos.rowCount()):
             try:
                 self.addItem(self.mdlPersos.item(i, Perso.name.value).text(), self.mdlPersos.item(i, Perso.ID.value).text())
+                self.setItemData(i+1, self.mdlPersos.item(i, Perso.name.value).text(), Qt.ToolTipRole)
             except:
                 pass
         if self.currentModelIndex:
