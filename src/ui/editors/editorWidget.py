@@ -143,8 +143,7 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
         self.setParent(None)
         mainWindow().hide()
         self.move(qApp.desktop().screenGeometry(currentScreen).topLeft())
-        #print(str((qApp.desktop().screenGeometry(currentScreen).width() - 800) / 2))
-        print(str((qApp.desktop().screenGeometry(currentScreen).width() - 800) / 2))
+        
         self.stack.setStyleSheet("""
             QTextEdit {{
                 margin-left: {m}px;
@@ -158,7 +157,7 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
         
         
     def keyPressEvent(self, event):
-        if event.key() == Qt.Key_Escape and self._fullscreen:
+        if event.key() in [Qt.Key_Escape, Qt.Key_F11] and self._fullscreen:
             mainWindow().show()
             self.stack.setStyleSheet("")
             self.setGeometry(self._geometry)

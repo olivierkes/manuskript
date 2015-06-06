@@ -1253,6 +1253,7 @@ class Ui_MainWindow(object):
         self.txtPlanSummarySentance.setPlaceholderText(_translate("MainWindow", "Résumé de la scène en une ligne"))
         self.label_9.setText(_translate("MainWindow", "Résumé en quelques phrases:"))
         self.tabMain.setTabText(self.tabMain.indexOf(self.lytTabOutline), _translate("MainWindow", "Plan"))
+        self.btnRedacFullscreen.setShortcut(_translate("MainWindow", "F11"))
         self.groupBox_4.setTitle(_translate("MainWindow", "Propriétés"))
         self.lblRedacPOV.setText(_translate("MainWindow", "POV"))
         self.label_30.setText(_translate("MainWindow", "Status"))
@@ -1306,9 +1307,9 @@ class Ui_MainWindow(object):
         self.actSpellcheck.setShortcut(_translate("MainWindow", "F8"))
         self.actSpellcheckDict.setText(_translate("MainWindow", "Dictionnaire"))
 
-from ui.cmbOutlineStatusChoser import cmbOutlineStatusChoser
 from ui.cmbOutlinePersoChoser import cmbOutlinePersoChoser
-from ui.editors.editorWidget import editorWidget
-from ui.chkOutlineCompile import chkOutlineCompile
-from ui.collapsibleGroupBox2 import collapsibleGroupBox2
+from ui.cmbOutlineStatusChoser import cmbOutlineStatusChoser
 from ui.sldImportance import sldImportance
+from ui.chkOutlineCompile import chkOutlineCompile
+from ui.editors.editorWidget import editorWidget
+from ui.collapsibleGroupBox2 import collapsibleGroupBox2

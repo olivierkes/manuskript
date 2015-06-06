@@ -1710,6 +1710,9 @@
                 <property name="icon">
                  <iconset theme="view-fullscreen"/>
                 </property>
+                <property name="shortcut">
+                 <string>F11</string>
+                </property>
                </widget>
               </item>
               <item>
