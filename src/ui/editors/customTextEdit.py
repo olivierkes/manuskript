@@ -17,13 +17,6 @@ class customTextEdit(QTextEdit):
     def __init__(self, parent=None, index=None, html=None, spellcheck=True, dict="", autoResize=False):
         QTextEdit.__init__(self, parent)
         
-        self.autoResize = autoResize
-        if autoResize:
-            self.document().contentsChanged.connect(self.sizeChange)
-            self.heightMin = 0
-            self.heightMax = 65000
-            self.sizeChange()
-        
         self.currentIndex = None
         self.item = None
         self.spellcheck = spellcheck
@@ -35,6 +28,13 @@ class customTextEdit(QTextEdit):
         elif html:
             self.document().setHtml(html)
             self.setReadOnly(True)
+        
+        self.autoResize = autoResize
+        if autoResize:
+            self.document().contentsChanged.connect(self.sizeChange)
+            self.heightMin = 0
+            self.heightMax = 65000
+            self.sizeChange()
             
     def setCurrentModelIndex(self, index):
         if index.isValid():

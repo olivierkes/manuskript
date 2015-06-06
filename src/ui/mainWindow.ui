@@ -1672,6 +1672,12 @@
               </item>
               <item>
                <widget class="QLabel" name="lblRedacWC">
+                <property name="minimumSize">
+                 <size>
+                  <width>10</width>
+                  <height>0</height>
+                 </size>
+                </property>
                 <property name="text">
                  <string/>
                 </property>
@@ -1693,6 +1699,16 @@
                 </property>
                 <property name="text">
                  <string/>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btnRedacFullscreen">
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset theme="view-fullscreen"/>
                 </property>
                </widget>
               </item>
@@ -2320,11 +2336,11 @@
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>639</x>
+     <x>660</x>
      <y>607</y>
     </hint>
     <hint type="destinationlabel">
-     <x>680</x>
+     <x>701</x>
      <y>759</y>
     </hint>
    </hints>
@@ -2336,11 +2352,11 @@
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>468</x>
+     <x>446</x>
      <y>606</y>
     </hint>
     <hint type="destinationlabel">
-     <x>440</x>
+     <x>428</x>
      <y>748</y>
     </hint>
    </hints>

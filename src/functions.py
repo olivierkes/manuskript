@@ -43,3 +43,9 @@ def drawProgress(painter, rect, progress, radius=0):
     r2 = QRect(rect)
     r2.setWidth(r2.width() * min(progress, 1))
     painter.drawRoundedRect(r2, radius, radius)
+    
+def mainWindow():
+    for i in qApp.topLevelWidgets():
+        if i.objectName() == "MainWindow":
+            return i
+    return None

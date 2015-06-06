@@ -487,6 +487,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             a.triggered.connect(self.openPyEnchantWebPage)
             self.menuTools.addAction(a)
             
+        self.btnRedacFullscreen.clicked.connect(self.redacEditor.showFullscreen)
+            
     def setDictionary(self):
         for i in self.menuDictGroup.actions():
             if i.isChecked():

@@ -45,7 +45,7 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
                 self.txtEdits = []
                 
                 def addTitle(itm):
-                    edt = customTextEdit(self, html="<h{l}>{t}</h{l}>".format(l=min(itm.level()+1, 5), t=itm.title()))
+                    edt = customTextEdit(self, html="<h{l}>{t}</h{l}>".format(l=min(itm.level()+1, 5), t=itm.title()), autoResize=True)
                     edt.setFrameShape(QFrame.NoFrame)
                     self.txtEdits.append(edt)
                     l.addWidget(edt)
@@ -106,7 +106,11 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
             wc = item.data(Outline.wordCount.value)
             goal = item.data(Outline.goal.value)
             pg = item.data(Outline.goalPercentage.value)
-            mw = qApp.activeWindow()
+            #mw = qApp.activeWindow()
+            
+            mw = mainWindow()
+            
+            if not mw: return
             
             if goal:
                 mw.lblRedacProgress.show()
@@ -130,3 +134,36 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
     def setDict(self, dct):
         self.currentDict = dct
         self.dictChanged.emit(dct)
+        
+    def showFullscreen(self):
+        self._parent = self.parent()
+        self._geometry = self.geometry()
+        self._fullscreen = True
+        currentScreen = qApp.desktop().screenNumber(self)
+        self.setParent(None)
+        mainWindow().hide()
+        self.move(qApp.desktop().screenGeometry(currentScreen).topLeft())
+        #print(str((qApp.desktop().screenGeometry(currentScreen).width() - 800) / 2))
+        print(str((qApp.desktop().screenGeometry(currentScreen).width() - 800) / 2))
+        self.stack.setStyleSheet("""
+            QTextEdit {{
+                margin-left: {m}px;
+                margin-right: {m}px;
+            }};""".format(
+                m=str((qApp.desktop().screenGeometry(currentScreen).width() - 800) / 2))
+            )
+        
+        QWidget.showFullScreen(self)
+        
+        
+        
+    def keyPressEvent(self, event):
+        if event.key() == Qt.Key_Escape and self._fullscreen:
+            mainWindow().show()
+            self.stack.setStyleSheet("")
+            self.setGeometry(self._geometry)
+            self.setParent(self._parent)
+            self._parent.layout().insertWidget(1, self)
+            self._fullscreen = False
+        else:
+            QWidget.keyPressEvent(self, event)

@@ -859,6 +859,7 @@ class Ui_MainWindow(object):
         spacerItem11 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_19.addItem(spacerItem11)
         self.lblRedacWC = QtWidgets.QLabel(self.layoutWidget1)
+        self.lblRedacWC.setMinimumSize(QtCore.QSize(10, 0))
         self.lblRedacWC.setText("")
         self.lblRedacWC.setObjectName("lblRedacWC")
         self.horizontalLayout_19.addWidget(self.lblRedacWC)
@@ -868,6 +869,12 @@ class Ui_MainWindow(object):
         self.lblRedacProgress.setText("")
         self.lblRedacProgress.setObjectName("lblRedacProgress")
         self.horizontalLayout_19.addWidget(self.lblRedacProgress)
+        self.btnRedacFullscreen = QtWidgets.QPushButton(self.layoutWidget1)
+        self.btnRedacFullscreen.setText("")
+        icon = QtGui.QIcon.fromTheme("view-fullscreen")
+        self.btnRedacFullscreen.setIcon(icon)
+        self.btnRedacFullscreen.setObjectName("btnRedacFullscreen")
+        self.horizontalLayout_19.addWidget(self.btnRedacFullscreen)
         self.btnRedacShowInfos = QtWidgets.QPushButton(self.layoutWidget1)
         self.btnRedacShowInfos.setText("")
         icon = QtGui.QIcon.fromTheme("edit-find")
@@ -1299,9 +1306,9 @@ class Ui_MainWindow(object):
         self.actSpellcheck.setShortcut(_translate("MainWindow", "F8"))
         self.actSpellcheckDict.setText(_translate("MainWindow", "Dictionnaire"))
 
-from ui.collapsibleGroupBox2 import collapsibleGroupBox2
-from ui.chkOutlineCompile import chkOutlineCompile
-from ui.sldImportance import sldImportance
 from ui.cmbOutlineStatusChoser import cmbOutlineStatusChoser
 from ui.cmbOutlinePersoChoser import cmbOutlinePersoChoser
 from ui.editors.editorWidget import editorWidget
+from ui.chkOutlineCompile import chkOutlineCompile
+from ui.collapsibleGroupBox2 import collapsibleGroupBox2
+from ui.sldImportance import sldImportance
