@@ -15,7 +15,16 @@ from models.outlineModel import *
 from models.persosProxyModel import *
 from functions import *
 
+# Spell checker support
+try:
+    import enchant
+except ImportError:
+    enchant = None
+
 class MainWindow(QMainWindow, Ui_MainWindow):
+    
+    dictChanged = pyqtSignal(unicode)
+    
     def __init__(self):
         QMainWindow.__init__(self)
         self.setupUi(self)
@@ -186,7 +195,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.mprOutline = QDataWidgetMapper()
         self.mprOutline.setModel(self.mdlOutline)
         mapping = [
-            (self.redacEditor.txtRedacText, Outline.text.value),
             (self.txtRedacSummarySentance, Outline.summarySentance.value),
             (self.txtRedacSummaryFull, Outline.summaryFull.value),
             (self.txtRedacNotes, Outline.notes.value),
@@ -202,6 +210,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.treeRedacOutline.selectionModel().currentChanged.connect(self.cmbRedacStatus.setCurrentModelIndex)
         self.treeRedacOutline.selectionModel().currentChanged.connect(self.chkRedacCompile.setCurrentModelIndex)
         self.treeRedacOutline.selectionModel().currentChanged.connect(self.redacEditor.setCurrentModelIndex)
+        self.treeRedacOutline.selectionModel().currentChanged.connect(self.redacEditor.txtRedacText.setCurrentModelIndex)
+        
         self.tabMain.currentChanged.connect(self.mprOutline.submit)
         
         self.treeRedacOutline.selectionModel().currentChanged.connect(self.outlineSelectionChanged)
@@ -425,7 +435,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.splitterRedac.setStretchFactor(2, 20)
         
         # Help box
-        
         references = [
             (self.lytTabOverview,
              "Entrez toutes les informations relatives au livre, ainsi qu'à vous."),
@@ -449,3 +458,39 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             widget.layout().insertWidget(0, label)
         
         self.actShowHelp.setChecked(False)
+        
+        # Spellcheck
+        if enchant:
+            self.menuDict = QMenu("Dictionary")
+            self.menuDictGroup = QActionGroup(self)
+
+            for i in enchant.list_dicts():
+                a = QAction(unicode(i[0]), self)
+                a.setCheckable(True)
+                a.triggered.connect(self.setDictionary)
+                if unicode(i[0]) == enchant.get_default_language(): # "fr_CH"
+                    a.setChecked(True)
+                self.menuDictGroup.addAction(a)
+                self.menuDict.addAction(a)
+
+            self.menuTools.addMenu(self.menuDict)
+            
+            self.actSpellcheck.toggled.connect(self.redacEditor.toggleSpellcheck)
+            self.dictChanged.connect(self.redacEditor.setDict)
+            
+            
+        else:
+            # No Spell check support
+            self.actSpellcheck.setVisible(False)
+            a = QAction("Install PyEnchant to use spellcheck", self)
+            a.setIcon(self.style().standardIcon(QStyle.SP_MessageBoxWarning))
+            a.triggered.connect(self.openPyEnchantWebPage)
+            self.menuTools.addAction(a)
+            
+    def setDictionary(self):
+        for i in self.menuDictGroup.actions():
+            if i.isChecked():
+                self.dictChanged.emit(i.text().replace("&", ""))
+
+    def openPyEnchantWebPage(self):
+        QDesktopServices.openUrl(QUrl("http://pythonhosted.org/pyenchant/"))

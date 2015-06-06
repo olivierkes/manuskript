@@ -411,10 +411,6 @@ class outlineItem():
         if column == Outline.text.value and self.isFolder():
             # Folder have no text
             return
-        
-        if column == Outline.text.value:
-            wc = wordCount(data)
-            self.setData(Outline.wordCount.value, wc)
             
         if column == Outline.goal.value:
             self._data[Outline.setGoal] = toInt(data) if toInt(data) > 0 else ""
@@ -424,6 +420,10 @@ class outlineItem():
             updateWordCount = not Outline(column) in self._data or self._data[Outline(column)] <> data 
         
         self._data[Outline(column)] = data
+        
+        if column == Outline.text.value:
+            wc = wordCount(data)
+            self.setData(Outline.wordCount.value, wc)
         
         if updateWordCount:
             self.updateWordCount()

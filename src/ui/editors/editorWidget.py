@@ -7,54 +7,13 @@ from __future__ import unicode_literals
 from qt import *
 from enums import *
 from ui.editors.editorWidget_ui import *
-
-class GrowingTextEdit(QTextEdit):
-
-    def __init__(self, index=None, html=None, parent=None):
-        QTextEdit.__init__(self, parent)  
-        self.document().contentsChanged.connect(self.sizeChange)
-        
-        self.heightMin = 0
-        self.heightMax = 65000
-        self.sizeChange()
-        self.item = None
-        
-        if index:
-            self.currentIndex = index
-            self.item = index.internalPointer()
-            self._model = index.model()
-            
-            self._model.dataChanged.connect(self.update)
-            self.document().contentsChanged.connect(self.submit)
-            
-        else:
-            self.document().setHtml(html)
-            self.setReadOnly(True)
-            
-        self.updateText()
-        
-    def submit(self):
-        self.item.setData(Outline.text.value, self.toPlainText())
-        
-    def update(self, topLeft, bottomRight):
-        if topLeft.row() <= self.currentIndex.row() <= bottomRight.row():
-            self.updateText()
-            
-    def updateText(self):
-        if self.item:
-            self.document().setPlainText(self.item.data(Outline.text.value))
-        
-    def resizeEvent(self, e):
-        QTextEdit.resizeEvent(self, e)
-        self.sizeChange()
-
-    def sizeChange(self):
-        docHeight = self.document().size().height()
-        if self.heightMin <= docHeight <= self.heightMax:
-            self.setMinimumHeight(docHeight)
+from ui.editors.customTextEdit import *
     
 
 class editorWidget(QWidget, Ui_editorWidget_ui):
+    
+    toggledSpellcheck = pyqtSignal(bool)
+    dictChanged = pyqtSignal(str)
     
     def __init__(self, parent=None):
         QWidget.__init__(self, parent)
@@ -62,6 +21,10 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
         self.currentIndex = None
         self.txtEdits = []
         self.scroll.setBackgroundRole(QPalette.Base)
+        self.toggledSpellcheck.connect(self.txtRedacText.toggleSpellcheck)
+        self.dictChanged.connect(self.txtRedacText.setDict)
+        self.currentDict = ""
+        self.spellcheck = True
         
     def setCurrentModelIndex(self, index):
         
@@ -82,7 +45,7 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
                 self.txtEdits = []
                 
                 def addTitle(itm):
-                    edt = GrowingTextEdit(html="<h{l}>{t}</h{l}>".format(l=min(itm.level()+1, 5), t=itm.title()))
+                    edt = customTextEdit(self, html="<h{l}>{t}</h{l}>".format(l=min(itm.level()+1, 5), t=itm.title()))
                     edt.setFrameShape(QFrame.NoFrame)
                     self.txtEdits.append(edt)
                     l.addWidget(edt)
@@ -94,9 +57,11 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
                     l.addWidget(line)
                 
                 def addScene(itm):
-                    edt = GrowingTextEdit(index=itm.index())
+                    edt = customTextEdit(self, index=itm.index(), spellcheck=self.spellcheck, dict=self.currentDict)
                     edt.setFrameShape(QFrame.NoFrame)
                     edt.setStatusTip(itm.path())
+                    self.toggledSpellcheck.connect(edt.toggleSpellcheck)
+                    self.dictChanged.connect(edt.setDict)
                     #edt.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
                     self.txtEdits.append(edt)
                     l.addWidget(edt)
@@ -126,3 +91,10 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
         else:
             self.currentIndex = None
             
+    def toggleSpellcheck(self, v):
+        self.spellcheck = v
+        self.toggledSpellcheck.emit(v)
+        
+    def setDict(self, dct):
+        self.currentDict = dct
+        self.dictChanged.emit(dct)

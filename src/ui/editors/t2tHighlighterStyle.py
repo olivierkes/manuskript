@@ -21,11 +21,11 @@ class t2tHighlighterStyle ():
 
         # Defaults
         self.defaultFontPointSize = self.editor.defaultFontPointSize
-        self.defaultFontFamily = ""
+        self.defaultFontFamily = qApp.font().family()
         self.tabStopWidth = 40
 
         self.setupEditor()
-
+        
         if self.name == "Default":
             self.initDefaults()
         #Temporary other theme
@@ -126,7 +126,7 @@ class t2tHighlighterStyle ():
                 blockFormat.setBackground(QColor("#EEEEFA"))
             n = blockUserData.getUserData(block).leadingSpaces() + 1
             f = QFontMetrics(QFont(self.defaultFontFamily,
-                                               self.defaultFontPointSize))
+                                   self.defaultFontPointSize))
             fm = f.width(" " * n +
                          blockUserData.getUserData(block).listSymbol())
             blockFormat.setTextIndent(-fm)
@@ -170,7 +170,7 @@ class t2tHighlighterStyle ():
             
         if preset in [State.HEADER_LINE]:
             size = size * 2
-            print size
+            #print size
 
         if preset in [State.RAW_AREA, State.RAW_LINE, "raw"]:
             color = "blue"

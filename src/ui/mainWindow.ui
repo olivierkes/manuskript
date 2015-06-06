@@ -2046,9 +2046,16 @@
     </property>
     <addaction name="actShowHelp"/>
    </widget>
+   <widget class="QMenu" name="menuTools">
+    <property name="title">
+     <string>&amp;Outlis</string>
+    </property>
+    <addaction name="actSpellcheck"/>
+   </widget>
    <addaction name="menu_Fichier"/>
    <addaction name="menuMode"/>
    <addaction name="menu_Aide"/>
+   <addaction name="menuTools"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionOuvrir">
@@ -2157,6 +2164,28 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+B</string>
+   </property>
+  </action>
+  <action name="actSpellcheck">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset theme="tools-check-spelling"/>
+   </property>
+   <property name="text">
+    <string>Correcteur ortographique</string>
+   </property>
+   <property name="shortcut">
+    <string>F8</string>
+   </property>
+  </action>
+  <action name="actSpellcheckDict">
+   <property name="text">
+    <string>Dictionnaire</string>
    </property>
   </action>
  </widget>

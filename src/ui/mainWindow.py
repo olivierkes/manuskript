@@ -1051,6 +1051,8 @@ class Ui_MainWindow(object):
         self.menuMode.setObjectName("menuMode")
         self.menu_Aide = QtWidgets.QMenu(self.menubar)
         self.menu_Aide.setObjectName("menu_Aide")
+        self.menuTools = QtWidgets.QMenu(self.menubar)
+        self.menuTools.setObjectName("menuTools")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -1089,6 +1091,14 @@ class Ui_MainWindow(object):
         icon = QtGui.QIcon.fromTheme("system-help")
         self.actShowHelp.setIcon(icon)
         self.actShowHelp.setObjectName("actShowHelp")
+        self.actSpellcheck = QtWidgets.QAction(MainWindow)
+        self.actSpellcheck.setCheckable(True)
+        self.actSpellcheck.setChecked(True)
+        icon = QtGui.QIcon.fromTheme("tools-check-spelling")
+        self.actSpellcheck.setIcon(icon)
+        self.actSpellcheck.setObjectName("actSpellcheck")
+        self.actSpellcheckDict = QtWidgets.QAction(MainWindow)
+        self.actSpellcheckDict.setObjectName("actSpellcheckDict")
         self.menu_Fichier.addAction(self.actionNouveau)
         self.menu_Fichier.addAction(self.actionOuvrir)
         self.menu_Fichier.addAction(self.action_R_cents)
@@ -1098,9 +1108,11 @@ class Ui_MainWindow(object):
         self.menu_Fichier.addAction(self.actionQuitter)
         self.menuMode.addAction(self.actionSnowflakeMode)
         self.menu_Aide.addAction(self.actShowHelp)
+        self.menuTools.addAction(self.actSpellcheck)
         self.menubar.addAction(self.menu_Fichier.menuAction())
         self.menubar.addAction(self.menuMode.menuAction())
         self.menubar.addAction(self.menu_Aide.menuAction())
+        self.menubar.addAction(self.menuTools.menuAction())
 
         self.retranslateUi(MainWindow)
         self.tabMain.setCurrentIndex(6)
@@ -1257,6 +1269,7 @@ class Ui_MainWindow(object):
         self.menu_Fichier.setTitle(_translate("MainWindow", "&Fichier"))
         self.menuMode.setTitle(_translate("MainWindow", "Mo&de"))
         self.menu_Aide.setTitle(_translate("MainWindow", "&Aide"))
+        self.menuTools.setTitle(_translate("MainWindow", "&Outlis"))
         self.actionOuvrir.setText(_translate("MainWindow", "&Ouvrir"))
         self.actionOuvrir.setShortcut(_translate("MainWindow", "Ctrl+O"))
         self.action_R_cents.setText(_translate("MainWindow", "&Récents"))
@@ -1272,10 +1285,13 @@ class Ui_MainWindow(object):
         self.actionNouveau.setShortcut(_translate("MainWindow", "Ctrl+N"))
         self.actShowHelp.setText(_translate("MainWindow", "Afficher les &bulles d\'aide"))
         self.actShowHelp.setShortcut(_translate("MainWindow", "Ctrl+Shift+B"))
+        self.actSpellcheck.setText(_translate("MainWindow", "Correcteur ortographique"))
+        self.actSpellcheck.setShortcut(_translate("MainWindow", "F8"))
+        self.actSpellcheckDict.setText(_translate("MainWindow", "Dictionnaire"))
 
 from ui.cmbOutlineStatusChoser import cmbOutlineStatusChoser
-from ui.cmbOutlinePersoChoser import cmbOutlinePersoChoser
-from ui.collapsibleGroupBox2 import collapsibleGroupBox2
-from ui.chkOutlineCompile import chkOutlineCompile
 from ui.sldImportance import sldImportance
 from ui.editors.editorWidget import editorWidget
+from ui.cmbOutlinePersoChoser import cmbOutlinePersoChoser
+from ui.chkOutlineCompile import chkOutlineCompile
+from ui.collapsibleGroupBox2 import collapsibleGroupBox2

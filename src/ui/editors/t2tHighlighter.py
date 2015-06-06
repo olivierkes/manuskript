@@ -343,13 +343,14 @@ class t2tHighlighter (QSyntaxHighlighter):
         data = blockUserData.getUserData(block)
 
         # Header Lines
-        if block.blockNumber() == 0:
-            block.setUserState(State.HEADER_LINE)
-            return
-        elif block.blockNumber() in [1, 2] and \
-             self.document().findBlockByNumber(0).text():
-            block.setUserState(State.HEADER_LINE)
-            return
+        # No header line here
+        #if block.blockNumber() == 0:
+            #block.setUserState(State.HEADER_LINE)
+            #return
+        #elif block.blockNumber() in [1, 2] and \
+             #self.document().findBlockByNumber(0).text():
+            #block.setUserState(State.HEADER_LINE)
+            #return
 
         state = 0
         inList = False
