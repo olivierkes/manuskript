@@ -1,4 +1,4 @@
-UI := $(wildcard src/ui/*.ui) $(wildcard src/ui/*.qrc) 
+UI := $(wildcard src/ui/*.ui) $(wildcard src/ui/*/*.ui) $(wildcard src/ui/*.qrc) 
 UIs= $(UI:.ui=.py) $(UI:.qrc=_rc.py)
 
 

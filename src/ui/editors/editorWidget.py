@@ -6,7 +6,7 @@ from __future__ import unicode_literals
 
 from qt import *
 from enums import *
-from ui.editorWidget_ui import *
+from ui.editors.editorWidget_ui import *
 
 class GrowingTextEdit(QTextEdit):
 

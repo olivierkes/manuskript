@@ -20,7 +20,7 @@
    <item>
     <widget class="QStackedWidget" name="stack">
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="scene">
       <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -28,7 +28,7 @@
         <number>0</number>
        </property>
        <item>
-        <widget class="QPlainTextEdit" name="txtRedacText"/>
+        <widget class="customTextEdit" name="txtRedacText"/>
        </item>
       </layout>
      </widget>
@@ -66,6 +66,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>customTextEdit</class>
+   <extends>QTextEdit</extends>
+   <header>ui.editors.customTextEdit.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

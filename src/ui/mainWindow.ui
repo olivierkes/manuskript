@@ -18,7 +18,7 @@
     <item>
      <widget class="QTabWidget" name="tabMain">
       <property name="currentIndex">
-       <number>5</number>
+       <number>6</number>
       </property>
       <property name="documentMode">
        <bool>true</bool>
@@ -2185,7 +2185,7 @@
   <customwidget>
    <class>editorWidget</class>
    <extends>QWidget</extends>
-   <header>ui.editorWidget.h</header>
+   <header>ui.editors.editorWidget.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>

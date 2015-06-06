@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'src/ui/editorWidget_ui.ui'
+# Form implementation generated from reading ui file 'src/ui/editors/editorWidget_ui.ui'
 #
 # Created by: PyQt5 UI code generator 5.4.1
 #
@@ -22,7 +22,7 @@ class Ui_editorWidget_ui(object):
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.scene)
         self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.txtRedacText = QtWidgets.QPlainTextEdit(self.scene)
+        self.txtRedacText = customTextEdit(self.scene)
         self.txtRedacText.setObjectName("txtRedacText")
         self.horizontalLayout_2.addWidget(self.txtRedacText)
         self.stack.addWidget(self.scene)
@@ -45,10 +45,11 @@ class Ui_editorWidget_ui(object):
         self.horizontalLayout.addWidget(self.stack)
 
         self.retranslateUi(editorWidget_ui)
-        self.stack.setCurrentIndex(1)
+        self.stack.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(editorWidget_ui)
 
     def retranslateUi(self, editorWidget_ui):
         _translate = QtCore.QCoreApplication.translate
         editorWidget_ui.setWindowTitle(_translate("editorWidget_ui", "Form"))
 
+from ui.editors.customTextEdit import customTextEdit
