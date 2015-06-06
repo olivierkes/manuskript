@@ -98,7 +98,8 @@ class outlineModel(QAbstractItemModel):
         if index.column() == Outline.status.value:
             self.generateStatuses()
         
-        self.dataChanged.emit(index, index)
+        self.dataChanged.emit(index.sibling(index.row(), 0), 
+                              index.sibling(index.row(), max([i.value for i in Outline])))
         return True
         
     
@@ -387,7 +388,7 @@ class outlineItem():
                 return QIcon.fromTheme("document-new")
             
         elif role == Qt.ForegroundRole:
-            if column == Outline.title.value and not self.isCompile():
+            if self.isCompile() in [0, "0"]:
                 return QBrush(Qt.gray)
             
         elif role == Qt.CheckStateRole and column == Outline.compile.value:

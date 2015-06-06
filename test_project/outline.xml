@@ -14,8 +14,8 @@
       </outlineItem>
     </outlineItem>
     <outlineItem title="MOIMOIMOI" type="scene" POV="1" compile="2" text="ASDASd ASD ASDASd ASD ASDASd ASD **ssss**" wordCount="7" setGoal="10"/>
-    <outlineItem title="Nouveau" type="scene" POV="1" compile="2" text="ASDASd ASD ASDASd ASD asd sss ad ad ssss" wordCount="9" setGoal="10"/>
-    <outlineItem title="Nouveau" type="scene" compile="2" text="ASDASd ASD ASDASd ASD " wordCount="4" setGoal="10"/>
+    <outlineItem title="Nouveau s" type="scene" POV="1" compile="2" text="ASDASd ASD ASDASd ASD asd sss ad ad ssss" wordCount="9" setGoal="10"/>
+    <outlineItem title="Nouveau" type="scene" compile="2" text="ASDASd ASD ASDASd ASD " wordCount="4" setGoal="100"/>
     <outlineItem title="B" type="scene" compile="2" text="asd asd asd asd  asd asd asd asd asd " wordCount="10" setGoal="10"/>
     <outlineItem title="Nouveau" type="folder" compile="2"/>
   </outlineItem>
