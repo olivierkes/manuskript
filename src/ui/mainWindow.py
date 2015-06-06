@@ -879,7 +879,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_20.setSizeConstraint(QtWidgets.QLayout.SetMaximumSize)
         self.verticalLayout_20.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_20.setObjectName("verticalLayout_20")
-        self.groupBox_4 = collapsibleGroupBox(self.tab_17)
+        self.groupBox_4 = collapsibleGroupBox2(self.tab_17)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -938,7 +938,7 @@ class Ui_MainWindow(object):
         self.txtRedacGoal.setObjectName("txtRedacGoal")
         self.formLayout_5.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.txtRedacGoal)
         self.verticalLayout_20.addWidget(self.groupBox_4)
-        self.groupBox_5 = collapsibleGroupBox(self.tab_17)
+        self.groupBox_5 = collapsibleGroupBox2(self.tab_17)
         self.groupBox_5.setFlat(True)
         self.groupBox_5.setCheckable(True)
         self.groupBox_5.setObjectName("groupBox_5")
@@ -953,7 +953,7 @@ class Ui_MainWindow(object):
         self.txtRedacSummaryFull.setObjectName("txtRedacSummaryFull")
         self.verticalLayout_22.addWidget(self.txtRedacSummaryFull)
         self.verticalLayout_20.addWidget(self.groupBox_5)
-        self.groupBox_6 = collapsibleGroupBox(self.tab_17)
+        self.groupBox_6 = collapsibleGroupBox2(self.tab_17)
         self.groupBox_6.setFlat(True)
         self.groupBox_6.setCheckable(True)
         self.groupBox_6.setObjectName("groupBox_6")
@@ -1273,9 +1273,9 @@ class Ui_MainWindow(object):
         self.actShowHelp.setText(_translate("MainWindow", "Afficher les &bulles d\'aide"))
         self.actShowHelp.setShortcut(_translate("MainWindow", "Ctrl+Shift+B"))
 
-from ui.collapsibleGroupBox import collapsibleGroupBox
-from ui.chkOutlineCompile import chkOutlineCompile
-from ui.cmbOutlineStatusChoser import cmbOutlineStatusChoser
-from ui.sldImportance import sldImportance
-from ui.editorWidget import editorWidget
 from ui.cmbOutlinePersoChoser import cmbOutlinePersoChoser
+from ui.sldImportance import sldImportance
+from ui.cmbOutlineStatusChoser import cmbOutlineStatusChoser
+from ui.chkOutlineCompile import chkOutlineCompile
+from ui.collapsibleGroupBox2 import collapsibleGroupBox2
+from ui.editorWidget import editorWidget

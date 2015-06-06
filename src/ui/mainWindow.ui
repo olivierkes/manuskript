@@ -1717,7 +1717,7 @@
               <number>0</number>
              </property>
              <item>
-              <widget class="collapsibleGroupBox" name="groupBox_4">
+              <widget class="collapsibleGroupBox2" name="groupBox_4">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -1827,7 +1827,7 @@
               </widget>
              </item>
              <item>
-              <widget class="collapsibleGroupBox" name="groupBox_5">
+              <widget class="collapsibleGroupBox2" name="groupBox_5">
                <property name="title">
                 <string>Résumé de la scène</string>
                </property>
@@ -1858,7 +1858,7 @@
               </widget>
              </item>
              <item>
-              <widget class="collapsibleGroupBox" name="groupBox_6">
+              <widget class="collapsibleGroupBox2" name="groupBox_6">
                <property name="title">
                 <string>Notes pour la scène</string>
                </property>
@@ -2168,12 +2168,6 @@
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>collapsibleGroupBox</class>
-   <extends>QGroupBox</extends>
-   <header>ui.collapsibleGroupBox.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
    <class>cmbOutlinePersoChoser</class>
    <extends>QComboBox</extends>
    <header>ui.cmbOutlinePersoChoser.h</header>
@@ -2192,6 +2186,12 @@
    <class>editorWidget</class>
    <extends>QWidget</extends>
    <header>ui.editorWidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>collapsibleGroupBox2</class>
+   <extends>QGroupBox</extends>
+   <header>ui.collapsibleGroupBox2.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
