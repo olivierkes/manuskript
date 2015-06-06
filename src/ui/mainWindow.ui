@@ -1534,20 +1534,17 @@
        <attribute name="title">
         <string>Rédaction</string>
        </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_28">
-        <property name="spacing">
-         <number>0</number>
-        </property>
-        <property name="margin">
-         <number>0</number>
-        </property>
+       <layout class="QVBoxLayout" name="verticalLayout_19">
         <item>
          <widget class="QSplitter" name="splitterRedac">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
-          <widget class="QWidget" name="layoutWidget">
-           <layout class="QVBoxLayout" name="verticalLayout_19">
+          <widget class="QWidget" name="widget" native="true">
+           <layout class="QVBoxLayout" name="verticalLayout_30">
+            <property name="margin">
+             <number>0</number>
+            </property>
             <item>
              <widget class="QTreeView" name="treeRedacOutline">
               <property name="dragDropMode">
@@ -1643,7 +1640,7 @@
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_19">
               <item>
-               <widget class="QPushButton" name="pushButton_20">
+               <widget class="QPushButton" name="btnRedacShowOutline">
                 <property name="text">
                  <string/>
                 </property>
@@ -1674,7 +1671,33 @@
                </spacer>
               </item>
               <item>
-               <widget class="QPushButton" name="pushButton_19">
+               <widget class="QLabel" name="lblRedacWC">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="lblRedacProgress">
+                <property name="minimumSize">
+                 <size>
+                  <width>100</width>
+                  <height>6</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>200</width>
+                  <height>14</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btnRedacShowInfos">
                 <property name="text">
                  <string/>
                 </property>
@@ -1695,7 +1718,7 @@
             </item>
            </layout>
           </widget>
-          <widget class="QTabWidget" name="tabWidget_2">
+          <widget class="QTabWidget" name="tabRedacInfos">
            <property name="tabPosition">
             <enum>QTabWidget::South</enum>
            </property>
@@ -2281,12 +2304,44 @@
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>505</x>
-     <y>617</y>
+     <x>1088</x>
+     <y>770</y>
     </hint>
     <hint type="destinationlabel">
      <x>508</x>
      <y>566</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnRedacShowInfos</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>tabRedacInfos</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>639</x>
+     <y>607</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>680</x>
+     <y>759</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnRedacShowOutline</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>widget</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>468</x>
+     <y>606</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>440</x>
+     <y>748</y>
     </hint>
    </hints>
   </connection>

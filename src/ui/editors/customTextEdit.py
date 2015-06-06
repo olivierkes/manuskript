@@ -14,15 +14,17 @@ except ImportError:
     
 class customTextEdit(QTextEdit):
     
-    def __init__(self, parent=None, index=None, html=None, spellcheck=True, dict=""):
+    def __init__(self, parent=None, index=None, html=None, spellcheck=True, dict="", autoResize=False):
         QTextEdit.__init__(self, parent)
-        self.document().contentsChanged.connect(self.sizeChange)
+        
+        self.autoResize = autoResize
+        if autoResize:
+            self.document().contentsChanged.connect(self.sizeChange)
+            self.heightMin = 0
+            self.heightMax = 65000
+            self.sizeChange()
         
         self.currentIndex = None
-            
-        self.heightMin = 0
-        self.heightMax = 65000
-        self.sizeChange()
         self.item = None
         self.spellcheck = spellcheck
         self.currentDict = dict
@@ -69,7 +71,8 @@ class customTextEdit(QTextEdit):
         
     def resizeEvent(self, e):
         QTextEdit.resizeEvent(self, e)
-        self.sizeChange()
+        if self.autoResize:
+            self.sizeChange()
 
     def sizeChange(self):
         docHeight = self.document().size().height()

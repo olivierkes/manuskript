@@ -8,7 +8,7 @@ from qt import *
 from enums import *
 from ui.editors.editorWidget_ui import *
 from ui.editors.customTextEdit import *
-    
+from functions import *
 
 class editorWidget(QWidget, Ui_editorWidget_ui):
     
@@ -57,7 +57,7 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
                     l.addWidget(line)
                 
                 def addScene(itm):
-                    edt = customTextEdit(self, index=itm.index(), spellcheck=self.spellcheck, dict=self.currentDict)
+                    edt = customTextEdit(self, index=itm.index(), spellcheck=self.spellcheck, dict=self.currentDict, autoResize=True)
                     edt.setFrameShape(QFrame.NoFrame)
                     edt.setStatusTip(itm.path())
                     self.toggledSpellcheck.connect(edt.toggleSpellcheck)
@@ -88,8 +88,40 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
             else:
                 self.stack.setCurrentIndex(0)
             
+            self._model.dataChanged.connect(self.modelDataChanged)
+            self.updateStatusBar()
+            
         else:
             self.currentIndex = None
+            
+    def modelDataChanged(self, topLeft, bottomRight):
+        if topLeft.row() <= self.currentIndex.row() <= bottomRight.row():
+            self.updateStatusBar()
+            
+    def updateStatusBar(self):
+        # Update progress
+        if self.currentIndex and self.currentIndex.isValid():
+            item = self.currentIndex.internalPointer()
+            
+            wc = item.data(Outline.wordCount.value)
+            goal = item.data(Outline.goal.value)
+            pg = item.data(Outline.goalPercentage.value)
+            mw = qApp.activeWindow()
+            
+            if goal:
+                mw.lblRedacProgress.show()
+                rect = mw.lblRedacProgress.geometry()
+                rect = QRect(QPoint(0, 0), rect.size())
+                self.px = QPixmap(rect.size())
+                self.px.fill(Qt.transparent)
+                p = QPainter(self.px)
+                drawProgress(p, rect, pg, 2)
+                del p
+                mw.lblRedacProgress.setPixmap(self.px)
+                mw.lblRedacWC.setText("{} mots / {}".format(wc, goal))
+            else:
+                mw.lblRedacProgress.hide()
+                mw.lblRedacWC.setText("{} mots".format(wc))
             
     def toggleSpellcheck(self, v):
         self.spellcheck = v

@@ -74,7 +74,6 @@ class treeOutlineGoalPercentageDelegate(QStyledItemDelegate):
             return
         
         p = toFloat(item.data(Outline.goalPercentage.value))
-        if p > 1: p = 1.
 
         typ = item.data(Outline.type.value)
         
@@ -94,28 +93,8 @@ class treeOutlineGoalPercentageDelegate(QStyledItemDelegate):
         rect.setHeight(height)
         rect.setTop(option.rect.top() + (option.rect.height() - height) / 2)
         
-        painter.setPen(Qt.NoPen)
-        painter.setBrush(QColor("#dddddd"))
-        painter.drawRect(rect)
+        drawProgress(painter, rect, p) # from functions
         
-        c1 = QColor(Qt.red)
-        c2 = QColor(Qt.blue)
-        c3 = QColor(Qt.darkGreen)
-        if p < 0.3:
-            painter.setBrush(QBrush(c1))
-        elif p < 0.8:
-            painter.setBrush(QBrush(c2))
-        else:
-            painter.setBrush(QBrush(c3))
-        
-        #if typ == "folder":
-            #painter.setBrush(QBrush(Qt.blue))
-        #else:
-            #painter.setBrush(QBrush(Qt.green))
-            
-        r2 = QRect(rect)
-        r2.setWidth(r2.width() * p)
-        painter.drawRect(r2)
         painter.restore()
         
     def displayText(self, value, locale):
