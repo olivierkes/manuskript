@@ -89,6 +89,9 @@ class Ui_MainWindow(object):
         self.txtGeneralEmail = QtWidgets.QLineEdit(self.grpAuthor)
         self.txtGeneralEmail.setObjectName("txtGeneralEmail")
         self.formLayout_4.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.txtGeneralEmail)
+        self.cmbStyle = QtWidgets.QComboBox(self.grpAuthor)
+        self.cmbStyle.setObjectName("cmbStyle")
+        self.formLayout_4.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.cmbStyle)
         self.horizontalLayout_26.addWidget(self.grpAuthor)
         self.verticalLayout_23.addLayout(self.horizontalLayout_26)
         self.tabMain.addTab(self.lytTabOverview, "")
@@ -1270,9 +1273,9 @@ class Ui_MainWindow(object):
         self.actShowHelp.setText(_translate("MainWindow", "Afficher les &bulles d\'aide"))
         self.actShowHelp.setShortcut(_translate("MainWindow", "Ctrl+Shift+B"))
 
-from ui.sldImportance import sldImportance
-from ui.chkOutlineCompile import chkOutlineCompile
-from ui.cmbOutlinePersoChoser import cmbOutlinePersoChoser
-from ui.editorWidget import editorWidget
 from ui.collapsibleGroupBox import collapsibleGroupBox
+from ui.chkOutlineCompile import chkOutlineCompile
 from ui.cmbOutlineStatusChoser import cmbOutlineStatusChoser
+from ui.sldImportance import sldImportance
+from ui.editorWidget import editorWidget
+from ui.cmbOutlinePersoChoser import cmbOutlinePersoChoser

@@ -10,6 +10,7 @@ if __name__ == "__main__":
     app.setOrganizationDomain("www.theologeek.ch")
     app.setApplicationName("snowFlaqe")
 
+    app.setStyle("Fusion")
     
     from mainWindow import MainWindow
     

@@ -217,6 +217,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.tblDebugPersosInfos.setModel(self.mdlPersosInfos)
         self.treeDebugOutline.setModel(self.mdlOutline)
         
+        # Playing with qStyle
+        self.cmbStyle.addItems(QStyleFactory.keys())
+        self.cmbStyle.setCurrentIndex([i.lower() for i in QStyleFactory.keys()].index(qApp.style().objectName()))
+        self.cmbStyle.currentIndexChanged[str].connect(qApp.setStyle)
+        
         self.loadProject("test_project")
     
 ####################################################################################################
