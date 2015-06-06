@@ -1,14 +1,17 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<outlineItem title="root" type="folder" compile="2" wordCount="267" setGoal="112">
+<outlineItem title="root" type="folder" compile="2" wordCount="355" setGoal="112">
   <outlineItem title="Nouveau" type="folder" compile="2" wordCount="15">
     <outlineItem title="Nouveau" type="scene" compile="2" text="return QTextEdit.resizeEvent(self, e) ad ad  ad ad  adaasd ad adsdasd ad e drset" wordCount="15"/>
   </outlineItem>
-  <outlineItem title="Parent" type="folder" status="TODO" compile="2" wordCount="35">
-    <outlineItem title="Nouveau" type="folder" summarySentance="asd asd asd " status="First draft" compile="2" wordCount="11">
+  <outlineItem title="Parent" type="folder" status="TODO" compile="2" wordCount="123">
+    <outlineItem title="Nouveau" type="folder" summarySentance="asd asd asd " status="First draft" compile="2" wordCount="99">
       <outlineItem title="A" type="scene" compile="2" text="Du texteDu texteDu text ad ad ad ad " wordCount="8" setGoal="10"/>
       <outlineItem title="B" type="scene" compile="2" setGoal="3"/>
       <outlineItem title="C" type="scene" compile="2" text="adasd ad ad " wordCount="3" setGoal="3"/>
-      <outlineItem title="Nouveau" type="folder" compile="2" setGoal="3"/>
+      <outlineItem title="Nouveau" type="folder" compile="2" wordCount="88">
+        <outlineItem title="Interest" type="scene" compile="2" text="asd asd asd as asd asd asd as asd asd asd as asd asd asd as asd asd asd as asd asd asd as asd asd asd as asd asd asd as asd asd asd as asd asd asd as asd asd asd as asd asd asd as asd asd asd as asd asd asd as asd asd asd as asd asd asd as asd asd asd as asd asd asd as asd asd asd as asd asd asd as asd asd asd as asd asd asd as " wordCount="88" setGoal="100"/>
+        <outlineItem title="Nouveau" type="scene" compile="2"/>
+      </outlineItem>
     </outlineItem>
     <outlineItem title="MOIMOIMOI" type="scene" POV="1" compile="2" text="ASDASd ASD ASDASd ASD ASDASd ASD " wordCount="6" setGoal="10"/>
     <outlineItem title="Nouveau" type="scene" POV="1" compile="2" text="ASDASd ASD ASDASd ASD " wordCount="4" setGoal="10"/>

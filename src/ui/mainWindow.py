@@ -1103,7 +1103,7 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menu_Aide.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.tabMain.setCurrentIndex(6)
+        self.tabMain.setCurrentIndex(5)
         self.tabSummary.setCurrentIndex(0)
         self.tabPersos.setCurrentIndex(0)
         self.tabPlot.setCurrentIndex(0)
@@ -1273,9 +1273,9 @@ class Ui_MainWindow(object):
         self.actShowHelp.setText(_translate("MainWindow", "Afficher les &bulles d\'aide"))
         self.actShowHelp.setShortcut(_translate("MainWindow", "Ctrl+Shift+B"))
 
+from ui.collapsibleGroupBox2 import collapsibleGroupBox2
 from ui.cmbOutlinePersoChoser import cmbOutlinePersoChoser
 from ui.sldImportance import sldImportance
 from ui.cmbOutlineStatusChoser import cmbOutlineStatusChoser
 from ui.chkOutlineCompile import chkOutlineCompile
-from ui.collapsibleGroupBox2 import collapsibleGroupBox2
 from ui.editorWidget import editorWidget

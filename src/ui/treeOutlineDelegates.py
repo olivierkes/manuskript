@@ -80,9 +80,9 @@ class treeOutlineGoalPercentageDelegate(QStyledItemDelegate):
         
         level = item.level()
         
-        margin = 7
-        #height =  5 if typ == "folder" else 3
-        height = max(12 - 2 * level, 6)
+        margin = 5
+        height = max(min(option.rect.height() - 2*margin, 12) - 2 * level, 6)
+        
         painter.save()
         
         rect = option.rect.adjusted(margin, margin, -margin, -margin)
