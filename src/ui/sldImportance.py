@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 #--!-- coding: utf8 --!--
  
-from __future__ import print_function
-from __future__ import unicode_literals
+
+
 
 from qt import *
 
@@ -34,7 +34,7 @@ class sldImportance(QWidget, Ui_sldImportance):
         self.importanceChanged.emit(str(v))
         
     def setValue(self, v):
-        if v <> self.lastValue:    
+        if v != self.lastValue:    
             self.sld.setValue(int(v) if v else 0)
             self.changed(int(v) if v else 0)
             self.lastValue = v

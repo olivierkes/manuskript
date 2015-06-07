@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 #--!-- coding: utf8 --!--
  
-from __future__ import print_function
-from __future__ import unicode_literals
+
+
 
 from qt import *
 
@@ -16,26 +16,26 @@ def saveStandardItemModelXML(mdl, xml):
     vHeader = ET.SubElement(header, "vertical")
     for x in range(mdl.rowCount()):
         vH = ET.SubElement(vHeader, "label")
-        vH.attrib["row"] = unicode(x)
-        vH.attrib["text"] = unicode(mdl.headerData(x, Qt.Vertical))
+        vH.attrib["row"] = str(x)
+        vH.attrib["text"] = str(mdl.headerData(x, Qt.Vertical))
     
     hHeader = ET.SubElement(header, "horizontal")
     for y in range(mdl.columnCount()):
         hH = ET.SubElement(hHeader, "label")
-        hH.attrib["row"] = unicode(y)
-        hH.attrib["text"] = unicode(mdl.headerData(y, Qt.Horizontal))
+        hH.attrib["row"] = str(y)
+        hH.attrib["text"] = str(mdl.headerData(y, Qt.Horizontal))
     
     # Data
     data = ET.SubElement(root, "data")
     
     for x in range(mdl.rowCount()):
         row = ET.SubElement(data, "row")
-        row.attrib["row"] = unicode(x)
+        row.attrib["row"] = str(x)
         
         for y in range(mdl.columnCount()):
             col = ET.SubElement(row, "col")
-            col.attrib["col"] = unicode(y)
-            if mdl.data(mdl.index(x, y)) <> "":
+            col.attrib["col"] = str(y)
+            if mdl.data(mdl.index(x, y)) != "":
                 col.text = mdl.data(mdl.index(x, y))
             
     print("Saving to {}.".format(xml))

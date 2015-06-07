@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 #--!-- coding: utf8 --!--
  
-from __future__ import print_function
-from __future__ import unicode_literals
+
+
 
 # As seen on http://stackoverflow.com/questions/36932/how-can-i-represent-an-enum-in-python
 

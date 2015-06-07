@@ -4,7 +4,7 @@ import sys
 from qt import *
 
 
-if __name__ == "__main__":
+def run():
     app = QApplication(sys.argv)
     app.setOrganizationName("Theologeek")
     app.setOrganizationDomain("www.theologeek.ch")
@@ -20,3 +20,6 @@ if __name__ == "__main__":
     
     app.exec_()
     app.deleteLater()
+
+if __name__ == "__main__":
+    run()

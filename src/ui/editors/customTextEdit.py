@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 #--!-- coding: utf8 --!--
  
-from __future__ import print_function
-from __future__ import unicode_literals
+
+
 
 from qt import *
 from enums import *
@@ -54,9 +54,11 @@ class customTextEdit(QTextEdit):
             # Spellchecking
             if enchant and self.spellcheck:
                 self.dict = enchant.Dict(self.currentDict if self.currentDict else enchant.get_default_language())
+            else:
+                self.spellcheck = False
         
     def submit(self):
-        if self.toPlainText() <> self.item.data(Outline.text.value):
+        if self.toPlainText() != self.item.data(Outline.text.value):
             #self._model.setData(self.item.index(), self.toPlainText(), Outline.text.value)
             self.item.setData(Outline.text.value, self.toPlainText())
         
@@ -66,7 +68,7 @@ class customTextEdit(QTextEdit):
             
     def updateText(self):
         if self.item:
-            if self.toPlainText() <> self.item.data(Outline.text.value):
+            if self.toPlainText() != self.item.data(Outline.text.value):
                 self.document().setPlainText(self.item.data(Outline.text.value))
         
     def resizeEvent(self, e):
@@ -102,13 +104,13 @@ class customTextEdit(QTextEdit):
     class SpellAction(QAction):
         "A special QAction that returns the text in a signal. Used for spellckech."
     
-        correct = pyqtSignal(unicode)
+        correct = pyqtSignal(str)
     
         def __init__(self, *args):
             QAction.__init__(self, *args)
     
             self.triggered.connect(lambda x: self.correct.emit(
-                unicode(self.text())))
+                str(self.text())))
 
     def contextMenuEvent(self, event):
         # Based on http://john.nachtimwald.com/2009/08/22/qplaintextedit-with-in-line-spell-check/
@@ -127,7 +129,7 @@ class customTextEdit(QTextEdit):
         # Check if the selected word is misspelled and offer spelling
         # suggestions if it is.
         if self.textCursor().hasSelection():
-            text = unicode(self.textCursor().selectedText())
+            text = str(self.textCursor().selectedText())
             if not self.dict.check(text):
                 spell_menu = QMenu('Spelling Suggestions')
                 for word in self.dict.suggest(text):

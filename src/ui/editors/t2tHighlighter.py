@@ -317,7 +317,7 @@ class t2tHighlighter (QSyntaxHighlighter):
         
         # Spell checking
         # Based on http://john.nachtimwald.com/2009/08/22/qplaintextedit-with-in-line-spell-check/
-        WORDS = u'(?iu)[\w\']+'
+        WORDS = '(?iu)[\w\']+'
         if state not in [State.SETTINGS_LINE]:
             if self.editor.spellcheck:
                 for word_object in re.finditer(WORDS, text):
@@ -357,7 +357,7 @@ class t2tHighlighter (QSyntaxHighlighter):
         blankLinesBefore = 0
 
         #if text.contains(QRegExp(r'^\s*[-+:] [^ ].*[^-+]{1}\s*$')):
-        if QRegExp(r'^\s*[-+:] [^ ].*[^-+]{1}\s*$').indexIn(text) <> -1:    
+        if QRegExp(r'^\s*[-+:] [^ ].*[^-+]{1}\s*$').indexIn(text) != -1:    
             state = State.LIST_BEGINS
 
         # List stuff
@@ -390,7 +390,7 @@ class t2tHighlighter (QSyntaxHighlighter):
 
             # Blank lines before (two = end of list)
             blankLinesBefore = self.getBlankLines(block.previous())
-            if not QRegExp(r'^\s*$').indexIn(block.previous().text()) <> -1 and \
+            if not QRegExp(r'^\s*$').indexIn(block.previous().text()) != -1 and \
                not blockUserData.getUserState(block.previous()) in [State.COMMENT_LINE,
                    State.COMMENT_AREA, State.COMMENT_AREA_BEGINS,
                    State.COMMENT_AREA_ENDS]:
@@ -403,7 +403,7 @@ class t2tHighlighter (QSyntaxHighlighter):
                 # End of list.
                 blankLinesBefore = 0
                 inList = False
-            if inList and QRegExp(r'^\s*$').indexIn(text) <> -1:
+            if inList and QRegExp(r'^\s*$').indexIn(text) != -1:
                 state = State.LIST_EMPTY
 
         # Areas
@@ -414,7 +414,7 @@ class t2tHighlighter (QSyntaxHighlighter):
             (State.TAGGED_AREA_BEGINS, State.TAGGED_AREA, State.TAGGED_AREA_ENDS, '^\'\'\'\s*$'),
             ]:
 
-            if QRegExp(marker).indexIn(text) <> -1:
+            if QRegExp(marker).indexIn(text) != -1:
                 if blockUserData.getUserState(block.previous()) in [begins, middle]:
                     state = ends
                     break
@@ -509,7 +509,7 @@ class t2tHighlighter (QSyntaxHighlighter):
                 d = QDir.cleanPath(QFileInfo(f).absoluteDir().absolutePath()+"/"+c)
                 file = codecs.open(d, 'r', "utf-8")
             except:
-                print("Error: cannot open {}.".format(c))
+                print(("Error: cannot open {}.".format(c)))
                 continue 
             # We add the content to the current lines of the current document
             lines += file.readlines() #lines.extend(file.readlines())
@@ -520,7 +520,7 @@ class t2tHighlighter (QSyntaxHighlighter):
         #while b.isValid():
         for l in lines:
             text = l #b.text()
-            r = QRegExp(ur'^%!p[or][se]t?proc[^\s]*\s*:\s*(\'[^\']*\'|\"[^\"]*\")\s*(\'[^\']*\'|\"[^\"]*\")')
+            r = QRegExp(r'^%!p[or][se]t?proc[^\s]*\s*:\s*(\'[^\']*\'|\"[^\"]*\")\s*(\'[^\']*\'|\"[^\"]*\")')
             if r.indexIn(text) != -1:
                 rule = r.cap(1)[1:-1]
                 # Check if there was a color-comment above that post/preproc bloc

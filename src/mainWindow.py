@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 #--!-- coding: utf8 --!--
  
-from __future__ import print_function
-from __future__ import unicode_literals
+
+
 
 from qt import *
 
@@ -23,7 +23,7 @@ except ImportError:
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     
-    dictChanged = pyqtSignal(unicode)
+    dictChanged = pyqtSignal(str)
     
     def __init__(self):
         QMainWindow.__init__(self)
@@ -228,8 +228,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.treeDebugOutline.setModel(self.mdlOutline)
         
         # Playing with qStyle
-        self.cmbStyle.addItems(QStyleFactory.keys())
-        self.cmbStyle.setCurrentIndex([i.lower() for i in QStyleFactory.keys()].index(qApp.style().objectName()))
+        self.cmbStyle.addItems(list(QStyleFactory.keys()))
+        self.cmbStyle.setCurrentIndex([i.lower() for i in list(QStyleFactory.keys())].index(qApp.style().objectName()))
         self.cmbStyle.currentIndexChanged[str].connect(qApp.setStyle)
         
         self.loadProject("test_project")
@@ -264,7 +264,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         stretch = Outline.title.value
         w2 = 0
         for c in range(self.mdlOutline.columnCount()):
-            if not self.treePlanOutline.isColumnHidden(c) and c <> stretch:
+            if not self.treePlanOutline.isColumnHidden(c) and c != stretch:
                 self.treePlanOutline.resizeColumnToContents(c)
                 w2 += self.treePlanOutline.columnWidth(c)
         
@@ -321,7 +321,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         pid = self.mdlPersos.item(idx.row(), Perso.ID.value).text()
         for c in range(self.mdlPersosInfos.columnCount()):
             pid2 = self.mdlPersosInfos.item(0, c).text()
-            self.tblPersoInfos.setColumnHidden(c, c <> 0 and pid <> pid2)
+            self.tblPersoInfos.setColumnHidden(c, c != 0 and pid != pid2)
         
         self.resizePersosInfos()
         
@@ -465,10 +465,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.menuDictGroup = QActionGroup(self)
 
             for i in enchant.list_dicts():
-                a = QAction(unicode(i[0]), self)
+                a = QAction(str(i[0]), self)
                 a.setCheckable(True)
                 a.triggered.connect(self.setDictionary)
-                if unicode(i[0]) == enchant.get_default_language(): # "fr_CH"
+                if str(i[0]) == enchant.get_default_language(): # "fr_CH"
                     a.setChecked(True)
                 self.menuDictGroup.addAction(a)
                 self.menuDict.addAction(a)

@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 #--!-- coding: utf8 --!--
  
-from __future__ import print_function
-from __future__ import unicode_literals
+
+
 
 from qt import *
 from enums import *
@@ -27,7 +27,7 @@ class cmbOutlinePersoChoser(QComboBox):
             item = self.currentModelIndex.internalPointer()
             POV = item.data(Outline.POV.value)
             idx = self.findData(POV)
-            if idx <> -1:
+            if idx != -1:
                 self.setCurrentIndex(idx)
             else:
                 self.setCurrentIndex(0)

@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 #--!-- coding: utf8 --!--
  
-from __future__ import print_function
-from __future__ import unicode_literals
+
+
 
 from qt import *
 from enums import *
@@ -199,7 +199,7 @@ class outlineModel(QAbstractItemModel):
         if column > 0:
             column = 0
         
-        if row <> -1:
+        if row != -1:
             beginRow = row
         elif parent.isValid():
             beginRow = self.rowCount(parent) + 1
@@ -210,7 +210,7 @@ class outlineModel(QAbstractItemModel):
         
         root = ET.XML(encodedData)
         
-        if root.tag <> "outlineItems":
+        if root.tag != "outlineItems":
             return False
         
         items = []
@@ -234,7 +234,7 @@ class outlineModel(QAbstractItemModel):
         else:
             parentItem = parent.internalPointer()
             
-        if parent.isValid() and parent.column() <> 0:
+        if parent.isValid() and parent.column() != 0:
             parent = parentItem.index()
             
         # Insert only if parent is folder
@@ -257,7 +257,7 @@ class outlineModel(QAbstractItemModel):
         else:
             parentItem = parent.internalPointer()
         
-        if parent.isValid() and parent.column() <> 0:
+        if parent.isValid() and parent.column() != 0:
             parent = parentItem.index()
         
         # If parent is folder, write into
@@ -418,7 +418,7 @@ class outlineItem():
             
         updateWordCount = False
         if column in [Outline.wordCount.value, Outline.goal.value, Outline.setGoal.value]:
-            updateWordCount = not Outline(column) in self._data or self._data[Outline(column)] <> data 
+            updateWordCount = not Outline(column) in self._data or self._data[Outline(column)] != data 
         
         self._data[Outline(column)] = data
         
@@ -434,7 +434,7 @@ class outlineItem():
             setGoal = toInt(self.data(Outline.setGoal.value))
             goal = toInt(self.data(Outline.goal.value))
         
-            if goal <> setGoal:
+            if goal != setGoal:
                 self._data[Outline.goal] = setGoal
             if setGoal:
                 wc = toInt(self.data(Outline.wordCount.value))
@@ -450,7 +450,7 @@ class outlineItem():
             goal = toInt(self.data(Outline.goal.value))
             
             if setGoal:
-                if goal <> setGoal:
+                if goal != setGoal:
                     self._data[Outline.goal] = setGoal
             else:
                 goal = 0
@@ -540,7 +540,7 @@ class outlineItem():
             if attrib in exclude: continue
             val = self.data(attrib.value)
             if val or attrib in force:
-                item.set(attrib.name, unicode(val))
+                item.set(attrib.name, str(val))
             
         for i in self.childItems:
             item.append(ET.XML(i.toXML()))
@@ -555,7 +555,7 @@ class outlineItem():
                 #if k == Outline.compile:
                     #self.setData(Outline.__members__[k].value, unicode(root.attrib[k]), Qt.CheckStateRole)
                 #else:
-                    self.setData(Outline.__members__[k].value, unicode(root.attrib[k]))
+                    self.setData(Outline.__members__[k].value, str(root.attrib[k]))
                 
         for child in root:
             item = outlineItem(self._model, xml=ET.tostring(child))

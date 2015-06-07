@@ -113,7 +113,7 @@ def translateSelectionToFormattedText(text, start, end):
 
 
 def printArray(array):
-    print("".join([str(j) for j in array]))
+    print(("".join([str(j) for j in array])))
 
 
 def printArrays(arrays):
@@ -235,7 +235,7 @@ class State:
     LIST_EMPTY = 42
     LIST_BULLET = 43
     LIST_BULLET_ENDS = 44
-    LIST = [40, 41, 42] + range(100, 201)
+    LIST = [40, 41, 42] + list(range(100, 201))
     # TABLE
     TABLE_LINE = 50
     TABLE_HEADER = 51

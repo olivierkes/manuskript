@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 #--!-- coding: utf8 --!--
  
-from __future__ import print_function
-from __future__ import unicode_literals
+
+
 
 from qt import *
 from enums import *
@@ -142,7 +142,6 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
         currentScreen = qApp.desktop().screenNumber(self)
         self.setParent(None)
         mainWindow().hide()
-        self.move(qApp.desktop().screenGeometry(currentScreen).topLeft())
         
         self.stack.setStyleSheet("""
             QTextEdit {{
@@ -152,7 +151,11 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
                 m=str((qApp.desktop().screenGeometry(currentScreen).width() - 800) / 2))
             )
         
+        self.move(qApp.desktop().screenGeometry(currentScreen).topLeft())
         QWidget.showFullScreen(self)
+        
+        #FIXME: too big?
+        print(qApp.desktop().screenGeometry(currentScreen), self.geometry())
         
         
         
