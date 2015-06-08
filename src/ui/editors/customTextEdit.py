@@ -21,6 +21,7 @@ class customTextEdit(QTextEdit):
         self.item = None
         self.spellcheck = spellcheck
         self.currentDict = dict
+        self.highlighter = None
         
         if index:
             self.setCurrentModelIndex(index)
@@ -49,7 +50,8 @@ class customTextEdit(QTextEdit):
             self.highlightWord = ""
             self.highligtCS = False
             
-            self.highlighter = t2tHighlighter(self)
+            if not self.highlighter:
+                self.highlighter = t2tHighlighter(self)
                 
             # Spellchecking
             if enchant and self.spellcheck:
