@@ -113,7 +113,6 @@ class corkDelegate(QStyledItemDelegate):
         elif self.editing == Outline.summaryFull:
             # Summary
             model.setData(index.sibling(index.row(), Outline.summaryFull.value), editor.toPlainText())
-            print(editor.toPlainText())
         
     def updateRects(self, option, index):
         margin = self.margin

@@ -10,6 +10,7 @@ SOURCES          += ../src/ui/helpLabel.py
 SOURCES          += ../src/ui/sldImportance.py
 SOURCES          += ../src/ui/editors/customTextEdit.py
 SOURCES          += ../src/ui/editors/editorWidget.py
+SOURCES          += ../src/ui/editors/corkDelegate.py
 
 
 TRANSLATIONS     += snowflaQe_fr.ts
