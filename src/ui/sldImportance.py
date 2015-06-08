@@ -25,9 +25,9 @@ class sldImportance(QWidget, Ui_sldImportance):
         
     def changed(self, v):
         val = [
-            "Mineur",
-            "Secondaire",
-            "Principal",
+            self.tr("Minor"),
+            self.tr("Secondary"),
+            self.tr("Main"),
             ]
         self.lbl.setText(val[v])
         

@@ -122,10 +122,10 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
                 drawProgress(p, rect, pg, 2)
                 del p
                 mw.lblRedacProgress.setPixmap(self.px)
-                mw.lblRedacWC.setText("{} mots / {}".format(wc, goal))
+                mw.lblRedacWC.setText(self.tr("{} words / {}").format(wc, goal))
             else:
                 mw.lblRedacProgress.hide()
-                mw.lblRedacWC.setText("{} mots".format(wc))
+                mw.lblRedacWC.setText(self.tr("{} words").format(wc))
             
     def toggleSpellcheck(self, v):
         self.spellcheck = v

@@ -38,14 +38,14 @@ def saveStandardItemModelXML(mdl, xml):
             if mdl.data(mdl.index(x, y)) != "":
                 col.text = mdl.data(mdl.index(x, y))
             
-    print("Saving to {}.".format(xml))
+    print(qApp.tr("Saving to {}.").format(xml))
     ET.ElementTree(root).write(xml, encoding="UTF-8", xml_declaration=True, pretty_print=True)
    
     
 def loadStandardItemModelXML(mdl, xml):
     
     
-    print("Loading {}... ".format(xml), end="")
+    print(qApp.tr("Loading {}... ").format(xml), end="")
     
     try:
         tree = ET.parse(xml)

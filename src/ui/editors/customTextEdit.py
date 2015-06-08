@@ -133,7 +133,7 @@ class customTextEdit(QTextEdit):
         if self.textCursor().hasSelection():
             text = str(self.textCursor().selectedText())
             if not self.dict.check(text):
-                spell_menu = QMenu('Spelling Suggestions')
+                spell_menu = QMenu(self.tr('Spelling Suggestions'))
                 for word in self.dict.suggest(text):
                     action = self.SpellAction(word, spell_menu)
                     action.correct.connect(self.correctWord)

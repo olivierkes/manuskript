@@ -14,14 +14,16 @@ def run():
     
     ### Translation process
     locale = QLocale.system().name()
+    locale = "fr_CH"
     #qtTranslator = QTranslator()
     #if qtTranslator.load("qt_" + locale):
         #app.installTranslator(qtTranslator)
     appTranslator = QTranslator()
-    if appTranslator.load("languages/snowflaQe_{}".format(locale)):
+    if appTranslator.load("i18n/snowflaQe_{}.qm".format(locale)):
         app.installTranslator(appTranslator)
+        print(app.tr("Loaded transation: {}.").format(locale))
     else:
-        print("Failed to load translator...")
+        print(app.tr("Failed to load translator for {}...").format(locale))
     
     
     from mainWindow import MainWindow

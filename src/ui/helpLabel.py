@@ -13,7 +13,7 @@ class helpLabel(QLabel):
         
         self.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Maximum)
         
-        self.setStatusTip("Infobulle: Si tu me trouve dérengant, tu peux me cacher via le menu Aide.")
+        self.setStatusTip(self.tr("If you don't wanna see me, you can hide me in Help menu."))
         
         self.setStyleSheet("""
             QLabel {

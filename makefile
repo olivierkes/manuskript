@@ -1,6 +1,7 @@
 UI := $(wildcard src/ui/*.ui) $(wildcard src/ui/*/*.ui) $(wildcard src/ui/*.qrc) 
 UIs= $(UI:.ui=.py) $(UI:.qrc=_rc.py)
-
+TS := $(wildcard i18n/*.ts)
+QMs= $(TS:.ts=.qm)
 
 ui: $(UIs)
 
@@ -20,10 +21,12 @@ compile:
 	cd src && python3 setup.py build_ext --inplace
 
 translation:
-	pylupdate5 languages/snowflaQe.pro
+	pylupdate5 -noobsolete i18n/snowflaQe.pro
 	
 linguist:
-	linguist languages/snowflaQe_fr.ts 
+	linguist i18n/snowflaQe_fr.ts 
+	
+i18n: $(QMs)
 	
 %_rc.py : %.qrc
 	pyrcc5 "$<" -o "$@" 
@@ -32,4 +35,6 @@ linguist:
 # 	pyuic4  "$<" > "$@" 
 	pyuic5  "$<" > "$@" 
 	
+%.qm:  %.ts
+	lrelease "$<"
 

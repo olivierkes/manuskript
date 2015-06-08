@@ -278,7 +278,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def createPerso(self):
         "Creates a perso by adding a row in mdlPersos and a column in mdlPersosInfos with same ID"
-        p = QStandardItem("Nouveau perso")
+        p = QStandardItem(self.tr("New character"))
         self.mdlPersos.appendRow(p)
         pid = self.getPersosID()
         self.checkPersosID()  # Attributes a persoID (which is logically pid)
@@ -410,9 +410,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             }[i]
         
         wc = wordCount(src.toPlainText())
-        if i in [2, 3]: pages = " (~{} pages)".format(int(wc / 25) / 10.)
+        if i in [2, 3]: pages = self.tr(" (~{} pages)").format(int(wc / 25) / 10.)
         else: pages = ""
-        lbl.setText("Mots: {}{}".format(wc, pages))
+        lbl.setText(self.tr("Words: {}{}").format(wc, pages))
         
         
     def setupMoreUi(self):
@@ -437,19 +437,19 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Help box
         references = [
             (self.lytTabOverview,
-             "Entrez toutes les informations relatives au livre, ainsi qu'à vous."),
+             self.tr("Enter infos about your book, and yourself.")),
             (self.lytTabSummary,
-             "Prenez le temps de réfléchir à un résumé de votre livre, en une phrase. Puis augmentez cette phrase en un paragraphe, puis en une page, puis en un résumé complet."),
+             self.tr("Take time to think about a one sentance (~50 words) summary of your book. Then expand it to a paragraph, then to a page, then to a full summary.")),
             (self.lytTabPersos,
-             "Créez ici vos personnage."),
+             self.tr("Create your characters.")),
             (self.lytTabPlot,
-             "Développez vos intrigues."),
+             self.tr("Develop plots.")),
             (self.lytTabOutline,
-             "Créez le plan de votre chef-d'œuvre."),
+             self.tr("Create the outline of your masterpiece.")),
             (self.lytTabRedac,
-             "Écrivez."),
+             self.tr("Write.")),
             (self.lytTabDebug,
-             "Des infos pour débugger des fois pendant qu'on code c'est utile."),
+             self.tr("Debug infos. Sometimes useful."),)
             ]
 
         for widget, text in references:
@@ -461,7 +461,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
         # Spellcheck
         if enchant:
-            self.menuDict = QMenu("Dictionary")
+            self.menuDict = QMenu(self.tr("Dictionary"))
             self.menuDictGroup = QActionGroup(self)
 
             for i in enchant.list_dicts():
@@ -482,7 +482,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         else:
             # No Spell check support
             self.actSpellcheck.setVisible(False)
-            a = QAction("Install PyEnchant to use spellcheck", self)
+            a = QAction(self.tr("Install PyEnchant to use spellcheck"), self)
             a.setIcon(self.style().standardIcon(QStyle.SP_MessageBoxWarning))
             a.triggered.connect(self.openPyEnchantWebPage)
             self.menuTools.addAction(a)
