@@ -8,6 +8,7 @@ from qt import *
 from enums import *
 from ui.editors.editorWidget_ui import *
 from ui.editors.customTextEdit import *
+from ui.editors.corkDelegate import *
 from functions import *
 
 class editorWidget(QWidget, Ui_editorWidget_ui):
@@ -25,6 +26,31 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
         self.dictChanged.connect(self.txtRedacText.setDict)
         self.currentDict = ""
         self.spellcheck = True
+        self.folderView = "cork"
+        
+        self.corkView.setResizeMode(QListView.Adjust)
+        self.corkView.setWrapping(True)
+        self.corkView.setItemDelegate(corkDelegate())
+        self.corkView.setSpacing(5)
+        self.corkView.setStyleSheet("""QListView {
+            background:#926239;
+            }""")
+        
+    def setFolderView(self, v):
+        oldV = self.folderView
+        if v == "cork":
+            self.folderView = "cork"
+        else:
+            self.folderView = "text"
+            
+        if oldV != self.folderView and self.currentIndex:
+            self.setCurrentModelIndex(self.currentIndex)
+        
+    def setCorkSizeFactor(self, v):
+        self.corkView.itemDelegate().setCorkSizeFactor(v)
+        r = self.corkView.rootIndex()
+        for c in range(r.row()):
+            self.corkView.itemDelegate().sizeHintChanged.emit(r.child(c, 0))
         
     def setCurrentModelIndex(self, index):
         
@@ -35,7 +61,7 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
             
             item = index.internalPointer()
             
-            if item.isFolder():
+            if item.isFolder() and self.folderView == "text":
                 self.stack.setCurrentIndex(1)
                 
                 w = QWidget()
@@ -84,7 +110,11 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
                 l.addItem(QSpacerItem(10, 1000, QSizePolicy.Minimum, QSizePolicy.Expanding))
                 self.scroll.setWidget(w)
                 
-                
+            elif item.isFolder() and self.folderView == "cork":
+                self.stack.setCurrentIndex(2)
+                self.corkView.setModel(self._model)
+                self.corkView.setRootIndex(self.currentIndex)
+              
             else:
                 self.stack.setCurrentIndex(0)
             
@@ -95,6 +125,8 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
             self.currentIndex = None
             
     def modelDataChanged(self, topLeft, bottomRight):
+        if not self.currentIndex:
+            return
         if topLeft.row() <= self.currentIndex.row() <= bottomRight.row():
             self.updateStatusBar()
             

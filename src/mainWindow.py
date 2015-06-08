@@ -219,6 +219,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.treePlanOutline.selectionModel().currentChanged.connect(self.outlineSelectionChanged)
         self.treePlanOutline.selectionModel().currentChanged.connect(self.outlineSelectionChanged)
         
+        self.sldCorkSizeFactor.valueChanged.connect(self.redacEditor.setCorkSizeFactor)
+        self.btnRedacFolderCork.toggled.connect(self.sldCorkSizeFactor.setVisible)
+        self.btnRedacFolderText.toggled.connect(lambda v: self.redacEditor.setFolderView("text" if v else "cork"))
         
         #Debug
         self.mdlFlatData.setVerticalHeaderLabels(["Infos générales", "Summary"])
@@ -244,6 +247,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.cmbRedacPOV.setHidden(idx.internalPointer().isFolder())
             self.lblPlanPOV.setHidden(idx.internalPointer().isFolder())
             self.cmbPlanPOV.setHidden(idx.internalPointer().isFolder())
+            self.btnRedacFolderText.setHidden(not idx.internalPointer().isFolder())
+            self.btnRedacFolderCork.setHidden(not idx.internalPointer().isFolder())
+            self.sldCorkSizeFactor.setHidden(not idx.internalPointer().isFolder())
         
     def outlineAddItem(self, type="folder"):
         if len(self.treeRedacOutline.selectedIndexes()) == 0:

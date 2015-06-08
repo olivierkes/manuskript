@@ -138,7 +138,6 @@ class outlineModel(QAbstractItemModel):
         
         flags = QAbstractItemModel.flags(self, index) | Qt.ItemIsEditable 
         
-        
         if index.isValid() and index.internalPointer().isFolder() and index.column() == 0:
             flags |= Qt.ItemIsDragEnabled | Qt.ItemIsDropEnabled 
             
@@ -177,8 +176,8 @@ class outlineModel(QAbstractItemModel):
     
     def supportedDropActions(self):
         
-        #return Qt.MoveAction # Qt.CopyAction | 
-        return Qt.CopyAction | Qt.MoveAction
+        return Qt.MoveAction # Qt.CopyAction | 
+        #return Qt.CopyAction | Qt.MoveAction
     
     #def canDropMimeData(self, data, action, row, column, parent):
         #if not data.hasFormat("application/xml"):
@@ -277,6 +276,7 @@ class outlineModel(QAbstractItemModel):
         return self.removeRows(row, 1, parent)
     
     def removeRows(self, row, count, parent=QModelIndex()):
+        print("Removing")
         if not parent.isValid():
             parentItem = self.rootItem
         else:

@@ -857,6 +857,28 @@ class Ui_MainWindow(object):
         self.btnRedacShowOutline.setChecked(True)
         self.btnRedacShowOutline.setObjectName("btnRedacShowOutline")
         self.horizontalLayout_19.addWidget(self.btnRedacShowOutline)
+        self.btnRedacFolderText = QtWidgets.QPushButton(self.layoutWidget1)
+        self.btnRedacFolderText.setCheckable(True)
+        self.btnRedacFolderText.setObjectName("btnRedacFolderText")
+        self.buttonGroup = QtWidgets.QButtonGroup(MainWindow)
+        self.buttonGroup.setObjectName("buttonGroup")
+        self.buttonGroup.addButton(self.btnRedacFolderText)
+        self.horizontalLayout_19.addWidget(self.btnRedacFolderText)
+        self.btnRedacFolderCork = QtWidgets.QPushButton(self.layoutWidget1)
+        self.btnRedacFolderCork.setCheckable(True)
+        self.btnRedacFolderCork.setChecked(True)
+        self.btnRedacFolderCork.setObjectName("btnRedacFolderCork")
+        self.buttonGroup.addButton(self.btnRedacFolderCork)
+        self.horizontalLayout_19.addWidget(self.btnRedacFolderCork)
+        self.sldCorkSizeFactor = QtWidgets.QSlider(self.layoutWidget1)
+        self.sldCorkSizeFactor.setMinimumSize(QtCore.QSize(100, 0))
+        self.sldCorkSizeFactor.setMaximumSize(QtCore.QSize(200, 16777215))
+        self.sldCorkSizeFactor.setMinimum(50)
+        self.sldCorkSizeFactor.setMaximum(200)
+        self.sldCorkSizeFactor.setProperty("value", 100)
+        self.sldCorkSizeFactor.setOrientation(QtCore.Qt.Horizontal)
+        self.sldCorkSizeFactor.setObjectName("sldCorkSizeFactor")
+        self.horizontalLayout_19.addWidget(self.sldCorkSizeFactor)
         spacerItem11 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_19.addItem(spacerItem11)
         self.lblRedacWC = QtWidgets.QLabel(self.layoutWidget1)
@@ -1252,6 +1274,8 @@ class Ui_MainWindow(object):
         self.txtPlanSummarySentance.setPlaceholderText(_translate("MainWindow", "One line scene summary"))
         self.label_9.setText(_translate("MainWindow", "Few sentences summary:"))
         self.tabMain.setTabText(self.tabMain.indexOf(self.lytTabOutline), _translate("MainWindow", "Outline"))
+        self.btnRedacFolderText.setText(_translate("MainWindow", "Text"))
+        self.btnRedacFolderCork.setText(_translate("MainWindow", "Cork"))
         self.btnRedacFullscreen.setShortcut(_translate("MainWindow", "F11"))
         self.groupBox_4.setTitle(_translate("MainWindow", "Properties"))
         self.lblRedacPOV.setText(_translate("MainWindow", "POV"))
@@ -1305,9 +1329,9 @@ class Ui_MainWindow(object):
         self.actSpellcheck.setText(_translate("MainWindow", "Spellcheck"))
         self.actSpellcheck.setShortcut(_translate("MainWindow", "F8"))
 
+from ui.collapsibleGroupBox2 import collapsibleGroupBox2
+from ui.sldImportance import sldImportance
 from ui.cmbOutlineStatusChoser import cmbOutlineStatusChoser
 from ui.chkOutlineCompile import chkOutlineCompile
-from ui.collapsibleGroupBox2 import collapsibleGroupBox2
 from ui.cmbOutlinePersoChoser import cmbOutlinePersoChoser
-from ui.sldImportance import sldImportance
 from ui.editors.editorWidget import editorWidget
