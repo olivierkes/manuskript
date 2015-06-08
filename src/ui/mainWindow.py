@@ -1329,9 +1329,9 @@ class Ui_MainWindow(object):
         self.actSpellcheck.setText(_translate("MainWindow", "Spellcheck"))
         self.actSpellcheck.setShortcut(_translate("MainWindow", "F8"))
 
-from ui.collapsibleGroupBox2 import collapsibleGroupBox2
 from ui.sldImportance import sldImportance
-from ui.cmbOutlineStatusChoser import cmbOutlineStatusChoser
 from ui.chkOutlineCompile import chkOutlineCompile
-from ui.cmbOutlinePersoChoser import cmbOutlinePersoChoser
 from ui.editors.editorWidget import editorWidget
+from ui.cmbOutlineStatusChoser import cmbOutlineStatusChoser
+from ui.cmbOutlinePersoChoser import cmbOutlinePersoChoser
+from ui.collapsibleGroupBox2 import collapsibleGroupBox2

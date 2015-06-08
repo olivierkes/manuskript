@@ -51,6 +51,7 @@ class Ui_editorWidget_ui(object):
         self.corkView.setDragDropMode(QtWidgets.QAbstractItemView.DragDrop)
         self.corkView.setDefaultDropAction(QtCore.Qt.MoveAction)
         self.corkView.setSelectionMode(QtWidgets.QAbstractItemView.ExtendedSelection)
+        self.corkView.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
         self.corkView.setVerticalScrollMode(QtWidgets.QAbstractItemView.ScrollPerPixel)
         self.corkView.setFlow(QtWidgets.QListView.LeftToRight)
         self.corkView.setObjectName("corkView")
