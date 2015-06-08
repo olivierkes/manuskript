@@ -19,6 +19,12 @@ profile:
 compile:
 	cd src && python3 setup.py build_ext --inplace
 
+translation:
+	pylupdate5 languages/snowflaQe.pro
+	
+linguist:
+	linguist languages/snowflaQe_fr.ts 
+	
 %_rc.py : %.qrc
 	pyrcc5 "$<" -o "$@" 
 

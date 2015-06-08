@@ -12,6 +12,18 @@ def run():
 
     app.setStyle("Fusion")
     
+    ### Translation process
+    locale = QLocale.system().name()
+    #qtTranslator = QTranslator()
+    #if qtTranslator.load("qt_" + locale):
+        #app.installTranslator(qtTranslator)
+    appTranslator = QTranslator()
+    if appTranslator.load("languages/snowflaQe_{}".format(locale)):
+        app.installTranslator(appTranslator)
+    else:
+        print("Failed to load translator...")
+    
+    
     from mainWindow import MainWindow
     
     
