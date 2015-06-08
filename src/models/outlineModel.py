@@ -138,13 +138,14 @@ class outlineModel(QAbstractItemModel):
         
         flags = QAbstractItemModel.flags(self, index) | Qt.ItemIsEditable 
         
-        if index.isValid() and index.internalPointer().isFolder():
+        
+        if index.isValid() and index.internalPointer().isFolder() and index.column() == 0:
             flags |= Qt.ItemIsDragEnabled | Qt.ItemIsDropEnabled 
             
-        elif index.isValid():
+        elif index.isValid() and index.column() == 0:
             flags |= Qt.ItemIsDragEnabled
             
-        else:
+        elif not index.isValid():
             flags |= Qt.ItemIsDropEnabled
         
         if index.isValid() and index.column() == Outline.compile.value:
@@ -179,14 +180,14 @@ class outlineModel(QAbstractItemModel):
         #return Qt.MoveAction # Qt.CopyAction | 
         return Qt.CopyAction | Qt.MoveAction
     
-    def canDropMomeData(data, action, row, column, parent):
-        if not data.hasFormat("application/xml"):
-            return False
+    #def canDropMimeData(self, data, action, row, column, parent):
+        #if not data.hasFormat("application/xml"):
+            #return False
 
-        if column > 0:
-            return False
+        #if column > 0:
+            #return False
 
-        return True
+        #return True
     
     def dropMimeData(self, data, action, row, column, parent):
         
@@ -206,7 +207,7 @@ class outlineModel(QAbstractItemModel):
         else:
             beginRow = self.rowCount() + 1
             
-        encodedData = str(data.data("application/xml"))
+        encodedData = bytes(data.data("application/xml")).decode()
         
         root = ET.XML(encodedData)
         
