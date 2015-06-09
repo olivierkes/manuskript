@@ -14,7 +14,7 @@ class outlineView(QTreeView, dndView):
     
     def __init__(self, parent=None, modelPersos=None):
         QTreeView.__init__(self, parent)
-        dndView.__init__(self, parent)
+        dndView.__init__(self)
         self.modelPersos = modelPersos
         self.header().setStretchLastSection(False)
         

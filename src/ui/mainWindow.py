@@ -1153,7 +1153,7 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuTools.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.tabMain.setCurrentIndex(6)
+        self.tabMain.setCurrentIndex(5)
         self.tabSummary.setCurrentIndex(0)
         self.tabPersos.setCurrentIndex(0)
         self.tabPlot.setCurrentIndex(0)
@@ -1332,11 +1332,11 @@ class Ui_MainWindow(object):
         self.actSpellcheck.setText(_translate("MainWindow", "Spellcheck"))
         self.actSpellcheck.setShortcut(_translate("MainWindow", "F8"))
 
-from ui.cmbOutlinePersoChoser import cmbOutlinePersoChoser
-from ui.collapsibleGroupBox2 import collapsibleGroupBox2
-from ui.sldImportance import sldImportance
 from ui.views.treeView import treeView
-from ui.editors.editorWidget import editorWidget
-from ui.views.outlineView import outlineView
 from ui.chkOutlineCompile import chkOutlineCompile
+from ui.editors.editorWidget import editorWidget
+from ui.collapsibleGroupBox2 import collapsibleGroupBox2
+from ui.cmbOutlinePersoChoser import cmbOutlinePersoChoser
 from ui.cmbOutlineStatusChoser import cmbOutlineStatusChoser
+from ui.views.outlineView import outlineView
+from ui.sldImportance import sldImportance

@@ -11,7 +11,7 @@ from functions import *
 class dndView(QAbstractItemView):
     
     def __init__(self, parent=None):
-        QAbstractItemView.__init__(self, parent)
+        #QAbstractItemView.__init__(self, parent)
         self.setDragDropMode(self.DragDrop)
         self.setDefaultDropAction(Qt.MoveAction)
         self.setSelectionMode(self.ExtendedSelection)
