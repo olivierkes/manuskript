@@ -9,12 +9,15 @@ from enums import *
 from functions import *
 from ui.views.treeOutlineDelegates import *
 from ui.views.dndView import *
+from ui.views.outlineBasics import *
 
-class outlineView(QTreeView, dndView):
+class outlineView(QTreeView, dndView, outlineBasics):
     
     def __init__(self, parent=None, modelPersos=None, modelLabels=None):
         QTreeView.__init__(self, parent)
         dndView.__init__(self)
+        outlineBasics.__init__(self, parent)
+        
         self.modelPersos = modelPersos
         self.modelLabels = modelLabels
         self.header().setStretchLastSection(False)
@@ -66,4 +69,8 @@ class outlineView(QTreeView, dndView):
     def dragMoveEvent(self, event):
         dndView.dragMoveEvent(self, event)
         QTreeView.dragMoveEvent(self, event)
+        
+    def mouseReleaseEvent(self, event):
+        QTreeView.mouseReleaseEvent(self, event)
+        outlineBasics.mouseReleaseEvent(self, event)
         

@@ -5,3 +5,7 @@ Features
 - Différents modes: simple (que le outliner / rédacteur), snowflake strict (cache les éléments tant que le précédent n'a pas été accompli), snowflake souple (tout est affiché mais permet de naviger, avec conseils)
 - Boîte à sable: endroit pour expérimenter, des scenes particulières ou des perso en situations spéciales. Avec suggestions de thèmes / lieux / ...
 - Distraction free: custom widget for that, with special features: customization, but also: locking (and unlocked after a certain number of words typed, or after a certain time; be sure to mask also all other screens), internet blocking for a time, etc.
+
+Small things:
+- Add color to characters
+- Plot: column "comment", with custom text, or predefined ([...] button with menu: "Yes-but-no-and" → "yes but", "no and"; "traveler's journey" → "Call", etc.)

@@ -136,6 +136,7 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
             elif item.isFolder() and self.folderView == "outline":
                 self.stack.setCurrentIndex(3)
                 self.outlineView.setModelPersos(mainWindow().mdlPersos)
+                self.outlineView.setModelLabels(mainWindow().mdlLabels)
                 self.outlineView.setModel(self._model)
                 self.outlineView.setRootIndex(self.currentIndex)
               
