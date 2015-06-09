@@ -1,12 +1,10 @@
 #!/usr/bin/env python
 #--!-- coding: utf8 --!--
  
-
-
-
 from qt import *
 from enums import *
 from functions import *
+from models.outlineModel import *
 
 class outlineBasics(QAbstractItemView):
     
@@ -28,8 +26,24 @@ class outlineBasics(QAbstractItemView):
             sel = self.getSelection()
             clipboard = qApp.clipboard()
             
-            # Copy, cut, paste
             self.menu = QMenu()
+            
+            # Add / remove items
+            self.actAddFolder = QAction(QIcon.fromTheme("folder-new"), self.tr("New Folder"), self.menu)
+            self.actAddFolder.triggered.connect(self.addFolder)
+            self.menu.addAction(self.actAddFolder)
+            
+            self.actAddScene = QAction(QIcon.fromTheme("document-new"), self.tr("New Scene"), self.menu)
+            self.actAddScene.triggered.connect(self.addScene)
+            self.menu.addAction(self.actAddScene)
+            
+            self.actDelete = QAction(QIcon.fromTheme("edit-delete"), self.tr("Delete"), self.menu)
+            self.actDelete.triggered.connect(self.delete)
+            self.menu.addAction(self.actDelete)
+            
+            self.menu.addSeparator()
+            
+            # Copy, cut, paste
             self.actCopy = QAction(QIcon.fromTheme("edit-copy"), self.tr("Copy"), self.menu)
             self.actCopy.triggered.connect(self.copy)
             self.menu.addAction(self.actCopy)
@@ -41,10 +55,6 @@ class outlineBasics(QAbstractItemView):
             self.actPaste = QAction(QIcon.fromTheme("edit-paste"), self.tr("Paste"), self.menu)
             self.actPaste.triggered.connect(self.paste)
             self.menu.addAction(self.actPaste)
-            
-            self.actDelete = QAction(QIcon.fromTheme("edit-delete"), self.tr("Delete"), self.menu)
-            self.actDelete.triggered.connect(self.delete)
-            self.menu.addAction(self.actDelete)
             
             self.menu.addSeparator()
                 
@@ -100,6 +110,8 @@ class outlineBasics(QAbstractItemView):
             if len(sel) > 0 and index.isValid() and not index.internalPointer().isFolder() \
                 or not clipboard.mimeData().hasFormat("application/xml"):
                 self.actPaste.setEnabled(False)
+                self.actAddFolder.setEnabled(False)
+                self.actAddScene.setEnabled(False)
             
             if len(sel) == 0:
                 self.actCopy.setEnabled(False)
@@ -109,6 +121,21 @@ class outlineBasics(QAbstractItemView):
                 self.menuStatus.setEnabled(False)
                 self.menuLabel.setEnabled(False)
             
+    def addFolder(self):
+        self.addItem("folder")
+        
+    def addScene(self):
+        self.addItem("scene")
+        
+    def addItem(self, type="folder"):
+        if len(self.selectedIndexes()) == 0:
+            parent = self.rootIndex()
+        else:
+            parent = self.currentIndex()
+            
+        item = outlineItem(title="Nouveau", type=type)
+        self.model().appendItem(item, parent)
+            
     def copy(self):
         mimeData = self.model().mimeData(self.selectionModel().selectedIndexes())
         qApp.clipboard().setMimeData(mimeData)
@@ -116,7 +143,7 @@ class outlineBasics(QAbstractItemView):
     def paste(self):
         index = self.currentIndex()
         if len(self.getSelection()) == 0:
-            index = QModelIndex()
+            index = self.rootIndex()
         data = qApp.clipboard().mimeData()
         self.model().dropMimeData(data, Qt.CopyAction, -1, 0, index)
         
