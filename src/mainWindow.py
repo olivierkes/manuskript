@@ -240,10 +240,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     
     def outlineSelectionChanged(self, idx):
         if idx.isValid():
-            self.lblRedacPOV.setHidden(idx.internalPointer().isFolder())
-            self.cmbRedacPOV.setHidden(idx.internalPointer().isFolder())
-            self.lblPlanPOV.setHidden(idx.internalPointer().isFolder())
-            self.cmbPlanPOV.setHidden(idx.internalPointer().isFolder())
+            #self.lblRedacPOV.setHidden(idx.internalPointer().isFolder())
+            #self.cmbRedacPOV.setHidden(idx.internalPointer().isFolder())
+            #self.lblPlanPOV.setHidden(idx.internalPointer().isFolder())
+            #self.cmbPlanPOV.setHidden(idx.internalPointer().isFolder())
             self.btnRedacFolderText.setHidden(not idx.internalPointer().isFolder())
             self.btnRedacFolderCork.setHidden(not idx.internalPointer().isFolder())
             self.btnRedacFolderOutline.setHidden(not idx.internalPointer().isFolder())

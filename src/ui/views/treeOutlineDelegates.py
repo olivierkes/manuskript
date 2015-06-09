@@ -22,8 +22,8 @@ class treeOutlinePersoDelegate(QStyledItemDelegate):
     
     def createEditor(self, parent, option, index):
         item = index.internalPointer()
-        if item.isFolder():
-            return
+        #if item.isFolder():  # No POV for folders
+            #return
         
         editor = QComboBox(parent)
         editor.setAutoFillBackground(True)
