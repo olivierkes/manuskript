@@ -2191,8 +2191,8 @@
    </widget>
    <addaction name="menu_Fichier"/>
    <addaction name="menuMode"/>
-   <addaction name="menu_Aide"/>
    <addaction name="menuTools"/>
+   <addaction name="menu_Aide"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionOuvrir">

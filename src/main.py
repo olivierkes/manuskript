@@ -25,7 +25,6 @@ def run():
     else:
         print(app.tr("Failed to load translator for {}...").format(locale))
     
-    
     from mainWindow import MainWindow
     
     

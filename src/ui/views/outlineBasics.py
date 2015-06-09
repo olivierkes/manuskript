@@ -28,39 +28,41 @@ class outlineBasics(QAbstractItemView):
             
             self.menu = QMenu()
             
+            print(qApp.translate("outlineBasics", "New Folder"))
+            
             # Add / remove items
-            self.actAddFolder = QAction(QIcon.fromTheme("folder-new"), self.tr("New Folder"), self.menu)
+            self.actAddFolder = QAction(QIcon.fromTheme("folder-new"), qApp.translate("outlineBasics", "New Folder"), self.menu)
             self.actAddFolder.triggered.connect(self.addFolder)
             self.menu.addAction(self.actAddFolder)
             
-            self.actAddScene = QAction(QIcon.fromTheme("document-new"), self.tr("New Scene"), self.menu)
+            self.actAddScene = QAction(QIcon.fromTheme("document-new"), qApp.translate("outlineBasics", "New Scene"), self.menu)
             self.actAddScene.triggered.connect(self.addScene)
             self.menu.addAction(self.actAddScene)
             
-            self.actDelete = QAction(QIcon.fromTheme("edit-delete"), self.tr("Delete"), self.menu)
+            self.actDelete = QAction(QIcon.fromTheme("edit-delete"), qApp.translate("outlineBasics", "Delete"), self.menu)
             self.actDelete.triggered.connect(self.delete)
             self.menu.addAction(self.actDelete)
             
             self.menu.addSeparator()
             
             # Copy, cut, paste
-            self.actCopy = QAction(QIcon.fromTheme("edit-copy"), self.tr("Copy"), self.menu)
+            self.actCopy = QAction(QIcon.fromTheme("edit-copy"), qApp.translate("outlineBasics", "Copy"), self.menu)
             self.actCopy.triggered.connect(self.copy)
             self.menu.addAction(self.actCopy)
             
-            self.actCut = QAction(QIcon.fromTheme("edit-cut"), self.tr("Cut"), self.menu)
+            self.actCut = QAction(QIcon.fromTheme("edit-cut"), qApp.translate("outlineBasics", "Cut"), self.menu)
             self.actCut.triggered.connect(self.cut)
             self.menu.addAction(self.actCut)
             
-            self.actPaste = QAction(QIcon.fromTheme("edit-paste"), self.tr("Paste"), self.menu)
+            self.actPaste = QAction(QIcon.fromTheme("edit-paste"), qApp.translate("outlineBasics", "Paste"), self.menu)
             self.actPaste.triggered.connect(self.paste)
             self.menu.addAction(self.actPaste)
             
             self.menu.addSeparator()
                 
-            self.menuPOV = QMenu(self.tr("Set POV"), self.menu)
+            self.menuPOV = QMenu(qApp.translate("outlineBasics", "Set POV"), self.menu)
             mw = mainWindow()
-            a = QAction(self.tr("None"), self.menuPOV)
+            a = QAction(qApp.translate("outlineBasics", "None"), self.menuPOV)
             a.triggered.connect(lambda: self.setPOV(""))
             self.menuPOV.addAction(a)
             self.menuPOV.addSeparator()
@@ -75,9 +77,9 @@ class outlineBasics(QAbstractItemView):
             self.menu.addMenu(self.menuPOV)
             
             
-            self.menuStatus = QMenu(self.tr("Set Status"), self.menu)
+            self.menuStatus = QMenu(qApp.translate("outlineBasics", "Set Status"), self.menu)
             if self.model():
-                a = QAction(self.tr("None"), self.menuStatus)
+                a = QAction(qApp.translate("outlineBasics", "None"), self.menuStatus)
                 a.triggered.connect(lambda: self.setStatus(""))
                 self.menuStatus.addAction(a)
                 self.menuStatus.addSeparator()
@@ -93,7 +95,7 @@ class outlineBasics(QAbstractItemView):
             self.menu.addMenu(self.menuStatus)
             
             
-            self.menuLabel = QMenu(self.tr("Set Label"), self.menu)
+            self.menuLabel = QMenu(qApp.translate("outlineBasics", "Set Label"), self.menu)
             mpr = QSignalMapper(self.menuLabel)
             for i in range(mw.mdlLabels.rowCount()):
                 a = QAction(mw.mdlLabels.item(i, 0).icon(),
@@ -133,7 +135,7 @@ class outlineBasics(QAbstractItemView):
         else:
             parent = self.currentIndex()
             
-        item = outlineItem(title="Nouveau", type=type)
+        item = outlineItem(title=qApp.translate("outlineBasics", "New"), type=type)
         self.model().appendItem(item, parent)
             
     def copy(self):

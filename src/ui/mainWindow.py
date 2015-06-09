@@ -1169,8 +1169,8 @@ class Ui_MainWindow(object):
         self.menuTools.addAction(self.actSpellcheck)
         self.menubar.addAction(self.menu_Fichier.menuAction())
         self.menubar.addAction(self.menuMode.menuAction())
-        self.menubar.addAction(self.menu_Aide.menuAction())
         self.menubar.addAction(self.menuTools.menuAction())
+        self.menubar.addAction(self.menu_Aide.menuAction())
 
         self.retranslateUi(MainWindow)
         self.tabMain.setCurrentIndex(6)
@@ -1354,12 +1354,12 @@ class Ui_MainWindow(object):
         self.actSpellcheck.setText(_translate("MainWindow", "Spellcheck"))
         self.actSpellcheck.setShortcut(_translate("MainWindow", "F8"))
 
-from ui.views.outlineView import outlineView
-from ui.views.treeView import treeView
-from ui.chkOutlineCompile import chkOutlineCompile
-from ui.cmbOutlinePersoChoser import cmbOutlinePersoChoser
-from ui.cmbOutlineLabelChoser import cmbOutlineLabelChoser
 from ui.collapsibleGroupBox2 import collapsibleGroupBox2
-from ui.editors.editorWidget import editorWidget
-from ui.cmbOutlineStatusChoser import cmbOutlineStatusChoser
+from ui.chkOutlineCompile import chkOutlineCompile
+from ui.views.treeView import treeView
+from ui.cmbOutlinePersoChoser import cmbOutlinePersoChoser
 from ui.sldImportance import sldImportance
+from ui.cmbOutlineStatusChoser import cmbOutlineStatusChoser
+from ui.editors.editorWidget import editorWidget
+from ui.cmbOutlineLabelChoser import cmbOutlineLabelChoser
+from ui.views.outlineView import outlineView

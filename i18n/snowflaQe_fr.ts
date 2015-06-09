@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="2.0" language="fr" sourcelanguage="en">
+<!DOCTYPE TS>
+<TS version="2.1" language="fr" sourcelanguage="en">
 <context>
     <name>MainWindow</name>
     <message>
@@ -552,32 +553,32 @@
         <source>Labels</source>
         <translation type="unfinished"></translation>
     </message>
-    <message encoding="UTF-8">
+    <message>
         <location filename="../src/ui/mainWindow.ui" line="1074"/>
         <source>Un bâteau arrive au port et personne ne sait pourquoi</source>
         <translation type="unfinished"></translation>
     </message>
-    <message encoding="UTF-8">
+    <message>
         <location filename="../src/ui/mainWindow.ui" line="1079"/>
         <source>Le roi envoie des émissaires à bord. Ils ne reviennent jamais.</source>
         <translation type="unfinished"></translation>
     </message>
-    <message encoding="UTF-8">
+    <message>
         <location filename="../src/ui/mainWindow.ui" line="1084"/>
         <source>Le roi envoie son armée.</source>
         <translation type="unfinished"></translation>
     </message>
-    <message encoding="UTF-8">
+    <message>
         <location filename="../src/ui/mainWindow.ui" line="1308"/>
         <source>Intrigue général</source>
         <translation type="unfinished"></translation>
     </message>
-    <message encoding="UTF-8">
+    <message>
         <location filename="../src/ui/mainWindow.ui" line="1327"/>
         <source>Scène 1</source>
         <translation type="unfinished"></translation>
     </message>
-    <message encoding="UTF-8">
+    <message>
         <location filename="../src/ui/mainWindow.ui" line="1332"/>
         <source>Scène 2</source>
         <translation type="unfinished"></translation>
@@ -649,39 +650,59 @@
 <context>
     <name>outlineBasics</name>
     <message>
-        <location filename="../src/ui/views/outlineBasics.py" line="33"/>
+        <location filename="../src/ui/views/outlineBasics.py" line="49"/>
         <source>Copy</source>
         <translation>Copier</translation>
     </message>
     <message>
-        <location filename="../src/ui/views/outlineBasics.py" line="37"/>
+        <location filename="../src/ui/views/outlineBasics.py" line="53"/>
         <source>Cut</source>
         <translation>Couper</translation>
     </message>
     <message>
-        <location filename="../src/ui/views/outlineBasics.py" line="41"/>
+        <location filename="../src/ui/views/outlineBasics.py" line="57"/>
         <source>Paste</source>
         <translation>Coller</translation>
     </message>
     <message>
-        <location filename="../src/ui/views/outlineBasics.py" line="45"/>
+        <location filename="../src/ui/views/outlineBasics.py" line="42"/>
         <source>Delete</source>
         <translation>Supprimer</translation>
     </message>
     <message>
-        <location filename="../src/ui/views/outlineBasics.py" line="61"/>
+        <location filename="../src/ui/views/outlineBasics.py" line="63"/>
         <source>Set POV</source>
         <translation>Choisir le POV</translation>
     </message>
     <message>
-        <location filename="../src/ui/views/outlineBasics.py" line="65"/>
+        <location filename="../src/ui/views/outlineBasics.py" line="80"/>
         <source>Set Status</source>
         <translation>Choisir le status</translation>
     </message>
     <message>
-        <location filename="../src/ui/views/outlineBasics.py" line="69"/>
+        <location filename="../src/ui/views/outlineBasics.py" line="98"/>
         <source>Set Label</source>
-        <translation>choisir le label</translation>
+        <translation>Choisir le label</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/views/outlineBasics.py" line="34"/>
+        <source>New Folder</source>
+        <translation>Nouveau Dossier</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/views/outlineBasics.py" line="38"/>
+        <source>New Scene</source>
+        <translation>Nouvelle Scène</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/views/outlineBasics.py" line="82"/>
+        <source>None</source>
+        <translation>Aucun</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/views/outlineBasics.py" line="138"/>
+        <source>New</source>
+        <translation>Nouveau</translation>
     </message>
 </context>
 <context>
