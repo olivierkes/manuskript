@@ -47,6 +47,55 @@ class outlineBasics(QAbstractItemView):
             self.menu.addAction(self.actDelete)
             
             self.menu.addSeparator()
+                
+            self.menuPOV = QMenu(self.tr("Set POV"), self.menu)
+            mw = mainWindow()
+            a = QAction(self.tr("None"), self.menuPOV)
+            a.triggered.connect(lambda: self.setPOV(""))
+            self.menuPOV.addAction(a)
+            self.menuPOV.addSeparator()
+            
+            mpr = QSignalMapper(self.menuPOV)
+            for i in range(mw.mdlPersos.rowCount()):
+                a = QAction(mw.mdlPersos.item(i, Perso.name.value).text(), self.menuPOV)
+                a.triggered.connect(mpr.map)
+                mpr.setMapping(a, int(mw.mdlPersos.item(i, Perso.ID.value).text()))
+                self.menuPOV.addAction(a)
+            mpr.mapped.connect(self.setPOV)
+            self.menu.addMenu(self.menuPOV)
+            
+            
+            self.menuStatus = QMenu(self.tr("Set Status"), self.menu)
+            if self.model():
+                a = QAction(self.tr("None"), self.menuStatus)
+                a.triggered.connect(lambda: self.setStatus(""))
+                self.menuStatus.addAction(a)
+                self.menuStatus.addSeparator()
+                
+                mpr = QSignalMapper(self.menuStatus)
+                for status in self.model().statuses:
+                    a = QAction(status, self.menuStatus)
+                    a.triggered.connect(mpr.map)
+                    mpr.setMapping(a, status)
+                    self.menuStatus.addAction(a)
+                mpr.mapped[str].connect(self.setStatus)
+            
+            self.menu.addMenu(self.menuStatus)
+            
+            
+            self.menuLabel = QMenu(self.tr("Set Label"), self.menu)
+            mpr = QSignalMapper(self.menuLabel)
+            for i in range(mw.mdlLabels.rowCount()):
+                a = QAction(mw.mdlLabels.item(i, 0).icon(),
+                            mw.mdlLabels.item(i, 0).text(), 
+                            self.menuLabel)
+                a.triggered.connect(mpr.map)
+                mpr.setMapping(a, i)
+                self.menuLabel.addAction(a)
+            mpr.mapped.connect(self.setLabel)
+            self.menu.addMenu(self.menuLabel)
+            
+            self.menu.popup(event.globalPos())
             
             if len(sel) > 0 and index.isValid() and not index.internalPointer().isFolder() \
                 or not clipboard.mimeData().hasFormat("application/xml"):
@@ -56,21 +105,9 @@ class outlineBasics(QAbstractItemView):
                 self.actCopy.setEnabled(False)
                 self.actCut.setEnabled(False)
                 self.actDelete.setEnabled(False)
-                
-            
-            menuPOV = QMenu(self.tr("Set POV"), self.menu)
-            menuPOV.addAction("Not yet")
-            self.menu.addMenu(menuPOV)
-            
-            menuStatus = QMenu(self.tr("Set Status"), self.menu)
-            menuStatus.addAction("Not yet")
-            self.menu.addMenu(menuStatus)
-            
-            menuLabel = QMenu(self.tr("Set Label"), self.menu)
-            menuLabel.addAction("Not yet")
-            self.menu.addMenu(menuLabel)
-            
-            self.menu.popup(event.globalPos())
+                self.menuPOV.setEnabled(False)
+                self.menuStatus.setEnabled(False)
+                self.menuLabel.setEnabled(False)
             
     def copy(self):
         mimeData = self.model().mimeData(self.selectionModel().selectedIndexes())
@@ -90,4 +127,15 @@ class outlineBasics(QAbstractItemView):
     def delete(self):
         for i in self.getSelection():
             self.model().removeIndex(i)
-        
+            
+    def setPOV(self, POV):
+        for i in self.getSelection():
+            self.model().setData(i.sibling(i.row(), Outline.POV.value), str(POV))
+    
+    def setStatus(self, status):
+        for i in self.getSelection():
+            self.model().setData(i.sibling(i.row(), Outline.status.value), str(status))
+    
+    def setLabel(self, label):
+        for i in self.getSelection():
+            self.model().setData(i.sibling(i.row(), Outline.label.value), str(label))
