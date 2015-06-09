@@ -28,8 +28,6 @@ class outlineBasics(QAbstractItemView):
             
             self.menu = QMenu()
             
-            print(qApp.translate("outlineBasics", "New Folder"))
-            
             # Add / remove items
             self.actAddFolder = QAction(QIcon.fromTheme("folder-new"), qApp.translate("outlineBasics", "New Folder"), self.menu)
             self.actAddFolder.triggered.connect(self.addFolder)
@@ -62,7 +60,7 @@ class outlineBasics(QAbstractItemView):
                 
             self.menuPOV = QMenu(qApp.translate("outlineBasics", "Set POV"), self.menu)
             mw = mainWindow()
-            a = QAction(qApp.translate("outlineBasics", "None"), self.menuPOV)
+            a = QAction(QIcon.fromTheme("edit-delete"), qApp.translate("outlineBasics", "None"), self.menuPOV)
             a.triggered.connect(lambda: self.setPOV(""))
             self.menuPOV.addAction(a)
             self.menuPOV.addSeparator()
@@ -79,7 +77,7 @@ class outlineBasics(QAbstractItemView):
             
             self.menuStatus = QMenu(qApp.translate("outlineBasics", "Set Status"), self.menu)
             if self.model():
-                a = QAction(qApp.translate("outlineBasics", "None"), self.menuStatus)
+                a = QAction(QIcon.fromTheme("edit-delete"), qApp.translate("outlineBasics", "None"), self.menuStatus)
                 a.triggered.connect(lambda: self.setStatus(""))
                 self.menuStatus.addAction(a)
                 self.menuStatus.addSeparator()
