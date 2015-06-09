@@ -958,14 +958,14 @@ class Ui_MainWindow(object):
         self.formLayout_5.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.cmbRedacStatus)
         self.label_32 = QtWidgets.QLabel(self.groupBox_4)
         self.label_32.setObjectName("label_32")
-        self.formLayout_5.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_32)
+        self.formLayout_5.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.label_32)
         self.chkRedacCompile = chkOutlineCompile(self.groupBox_4)
         self.chkRedacCompile.setText("")
         self.chkRedacCompile.setObjectName("chkRedacCompile")
-        self.formLayout_5.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.chkRedacCompile)
+        self.formLayout_5.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.chkRedacCompile)
         self.label_29 = QtWidgets.QLabel(self.groupBox_4)
         self.label_29.setObjectName("label_29")
-        self.formLayout_5.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.label_29)
+        self.formLayout_5.setWidget(4, QtWidgets.QFormLayout.LabelRole, self.label_29)
         self.txtRedacGoal = QtWidgets.QLineEdit(self.groupBox_4)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -976,7 +976,19 @@ class Ui_MainWindow(object):
         self.txtRedacGoal.setStyleSheet("border-radius: 6px;")
         self.txtRedacGoal.setFrame(False)
         self.txtRedacGoal.setObjectName("txtRedacGoal")
-        self.formLayout_5.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.txtRedacGoal)
+        self.formLayout_5.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.txtRedacGoal)
+        self.label_33 = QtWidgets.QLabel(self.groupBox_4)
+        self.label_33.setObjectName("label_33")
+        self.formLayout_5.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_33)
+        self.cmbRedacLabel = cmbOutlineLabelChoser(self.groupBox_4)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.cmbRedacLabel.sizePolicy().hasHeightForWidth())
+        self.cmbRedacLabel.setSizePolicy(sizePolicy)
+        self.cmbRedacLabel.setFrame(False)
+        self.cmbRedacLabel.setObjectName("cmbRedacLabel")
+        self.formLayout_5.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.cmbRedacLabel)
         self.verticalLayout_20.addWidget(self.groupBox_4)
         self.groupBox_5 = collapsibleGroupBox2(self.tab_17)
         self.groupBox_5.setFlat(True)
@@ -1078,6 +1090,14 @@ class Ui_MainWindow(object):
         self.treeDebugOutline.setObjectName("treeDebugOutline")
         self.horizontalLayout_32.addWidget(self.treeDebugOutline)
         self.tabWidget.addTab(self.tab_20, "")
+        self.tab = QtWidgets.QWidget()
+        self.tab.setObjectName("tab")
+        self.horizontalLayout = QtWidgets.QHBoxLayout(self.tab)
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.lstDebugLabels = QtWidgets.QListView(self.tab)
+        self.lstDebugLabels.setObjectName("lstDebugLabels")
+        self.horizontalLayout.addWidget(self.lstDebugLabels)
+        self.tabWidget.addTab(self.tab, "")
         self.verticalLayout_29.addWidget(self.tabWidget)
         self.tabMain.addTab(self.lytTabDebug, "")
         self.horizontalLayout_2.addWidget(self.tabMain)
@@ -1153,14 +1173,14 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuTools.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.tabMain.setCurrentIndex(5)
+        self.tabMain.setCurrentIndex(6)
         self.tabSummary.setCurrentIndex(0)
         self.tabPersos.setCurrentIndex(0)
         self.tabPlot.setCurrentIndex(0)
         self.comboBox_2.setCurrentIndex(0)
         self.stkPlotSummary.setCurrentIndex(1)
         self.tabRedacInfos.setCurrentIndex(0)
-        self.tabWidget.setCurrentIndex(3)
+        self.tabWidget.setCurrentIndex(4)
         self.pushButton_16.toggled['bool'].connect(self.plainTextEdit_7.setVisible)
         self.btnPlotShowSummary.toggled['bool'].connect(self.grpPlotSummary.setVisible)
         self.comboBox_2.currentIndexChanged['int'].connect(self.stkPlotSummary.setCurrentIndex)
@@ -1286,6 +1306,7 @@ class Ui_MainWindow(object):
         self.label_32.setText(_translate("MainWindow", "Compile"))
         self.label_29.setText(_translate("MainWindow", "Goal"))
         self.txtRedacGoal.setPlaceholderText(_translate("MainWindow", "Word count"))
+        self.label_33.setText(_translate("MainWindow", "Label"))
         self.groupBox_5.setTitle(_translate("MainWindow", "Scene summary"))
         self.txtRedacSummarySentance.setPlaceholderText(_translate("MainWindow", "One line scene summary"))
         self.groupBox_6.setTitle(_translate("MainWindow", "Notes"))
@@ -1309,6 +1330,7 @@ class Ui_MainWindow(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_10), _translate("MainWindow", "Persos"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_16), _translate("MainWindow", "Perso Infos"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_20), _translate("MainWindow", "Outline"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("MainWindow", "Labels"))
         self.tabMain.setTabText(self.tabMain.indexOf(self.lytTabDebug), _translate("MainWindow", "Debug"))
         self.menu_Fichier.setTitle(_translate("MainWindow", "File"))
         self.menuMode.setTitle(_translate("MainWindow", "Mode"))
@@ -1332,11 +1354,12 @@ class Ui_MainWindow(object):
         self.actSpellcheck.setText(_translate("MainWindow", "Spellcheck"))
         self.actSpellcheck.setShortcut(_translate("MainWindow", "F8"))
 
+from ui.views.outlineView import outlineView
 from ui.views.treeView import treeView
 from ui.chkOutlineCompile import chkOutlineCompile
-from ui.editors.editorWidget import editorWidget
-from ui.collapsibleGroupBox2 import collapsibleGroupBox2
 from ui.cmbOutlinePersoChoser import cmbOutlinePersoChoser
+from ui.cmbOutlineLabelChoser import cmbOutlineLabelChoser
+from ui.collapsibleGroupBox2 import collapsibleGroupBox2
+from ui.editors.editorWidget import editorWidget
 from ui.cmbOutlineStatusChoser import cmbOutlineStatusChoser
-from ui.views.outlineView import outlineView
 from ui.sldImportance import sldImportance

@@ -134,10 +134,25 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.lstPersos.selectionModel().currentChanged.connect(self.changeCurrentPerso)
         self.tabPersos.currentChanged.connect(self.resizePersosInfos)
         
+        # Labels
+        self.mdlLabels = QStandardItemModel()
+        for color, text in [
+            (Qt.transparent, ""),
+            (Qt.yellow, "Idea"),
+            (Qt.green, "Note"),
+            (Qt.blue, "Chapter"),
+            (Qt.red, "Scene")
+            ]:
+            px = QPixmap(32, 32)
+            px.fill(color)
+            self.mdlLabels.appendRow(QStandardItem(QIcon(px), text))
+            
+        
         # Outline
         self.mdlOutline = outlineModel()
         self.treeRedacOutline.setModel(self.mdlOutline)
         self.treePlanOutline.setModelPersos(self.mdlPersos)
+        self.treePlanOutline.setModelLabels(self.mdlLabels)
         self.treePlanOutline.setModel(self.mdlOutline)
         self.cmbPlanPOV.setModels(self.mdlPersos, self.mdlOutline)
             
@@ -166,6 +181,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btnPlanRemoveItem.clicked.connect(self.outlineRemoveItems)
         
         self.cmbRedacPOV.setModels(self.mdlPersos, self.mdlOutline)
+        self.cmbRedacLabel.setModels(self.mdlLabels, self.mdlOutline)
         self.cmbRedacStatus.setModel(self.mdlOutline)
         #self.chkRedacCompile.setModel(self.mdlOutline)
         
@@ -184,6 +200,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.treeRedacOutline.selectionModel().currentChanged.connect(lambda idx: self.mprOutline.setRootIndex(idx.parent()))
         self.treeRedacOutline.selectionModel().currentChanged.connect(self.mprOutline.setCurrentModelIndex)
         self.treeRedacOutline.selectionModel().currentChanged.connect(self.cmbRedacPOV.setCurrentModelIndex)
+        self.treeRedacOutline.selectionModel().currentChanged.connect(self.cmbRedacLabel.setCurrentModelIndex)
         self.treeRedacOutline.selectionModel().currentChanged.connect(self.cmbRedacStatus.setCurrentModelIndex)
         self.treeRedacOutline.selectionModel().currentChanged.connect(self.chkRedacCompile.setCurrentModelIndex)
         self.treeRedacOutline.selectionModel().currentChanged.connect(self.redacEditor.setCurrentModelIndex)
@@ -208,6 +225,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.tblDebugPersos.setModel(self.mdlPersos)
         self.tblDebugPersosInfos.setModel(self.mdlPersosInfos)
         self.treeDebugOutline.setModel(self.mdlOutline)
+        self.lstDebugLabels.setModel(self.mdlLabels)
         
         # Playing with qStyle
         self.cmbStyle.addItems(list(QStyleFactory.keys()))
@@ -328,6 +346,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         loadStandardItemModelXML(self.mdlFlatData, "{}/flatModel.xml".format(project))
         loadStandardItemModelXML(self.mdlPersos, "{}/perso.xml".format(project))
         loadStandardItemModelXML(self.mdlPersosInfos, "{}/persoInfos.xml".format(project))
+        loadStandardItemModelXML(self.mdlLabels, "{}/labels.xml".format(project))
         self.mdlOutline.loadFromXML("{}/outline.xml".format(project))
         
         # Stuff
@@ -352,6 +371,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         saveStandardItemModelXML(self.mdlFlatData, "{}/flatModel.xml".format(self.currentProject))
         saveStandardItemModelXML(self.mdlPersos, "{}/perso.xml".format(self.currentProject))
         saveStandardItemModelXML(self.mdlPersosInfos, "{}/persoInfos.xml".format(self.currentProject))
+        saveStandardItemModelXML(self.mdlLabels, "{}/labels.xml".format(self.currentProject))
         self.mdlOutline.saveToXML("{}/outline.xml".format(self.currentProject))
         
         # closeEvent

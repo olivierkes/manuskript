@@ -1,12 +1,10 @@
 #!/usr/bin/env python
 #--!-- coding: utf8 --!--
- 
-
-
 
 from qt import *
 from enums import *
 from functions import *
+
 
 class treeOutlinePersoDelegate(QStyledItemDelegate):
     
@@ -39,6 +37,7 @@ class treeOutlinePersoDelegate(QStyledItemDelegate):
             editor.setItemData(i+1, self.mdlPersos.item(i, Perso.name.value).text(), Qt.ToolTipRole)
             
         editor.setCurrentIndex(editor.findData(index.data()))
+        editor.showPopup()
     
     def setModelData(self, editor, model, index):
         val = editor.currentData()
@@ -50,6 +49,7 @@ class treeOutlinePersoDelegate(QStyledItemDelegate):
                 return self.mdlPersos.item(i, Perso.name.value).text()
         return ""
     
+    
 class treeOutlineCompileDelegate(QStyledItemDelegate):
     
     def __init__(self, parent=None):
@@ -57,6 +57,7 @@ class treeOutlineCompileDelegate(QStyledItemDelegate):
         
     def displayText(self, value, locale):
         return ""
+    
     
 class treeOutlineGoalPercentageDelegate(QStyledItemDelegate):
     def __init__(self, rootIndex=None, parent=None):
@@ -109,6 +110,7 @@ class treeOutlineGoalPercentageDelegate(QStyledItemDelegate):
     def displayText(self, value, locale):
         return ""
     
+    
 class treeOutlineStatusDelegate(QStyledItemDelegate):
     
     def __init__(self, parent=None):
@@ -131,7 +133,61 @@ class treeOutlineStatusDelegate(QStyledItemDelegate):
         for status in statuses:
             editor.addItem(status)
         editor.setCurrentIndex(editor.findText(index.data()))
+        editor.showPopup()
     
     def setModelData(self, editor, model, index):
         val = editor.currentText()
         model.setData(index, val)
+        
+        
+class treeOutlineLabelDelegate(QStyledItemDelegate):
+    
+    def __init__(self, mdlLabels, parent=None):
+        QStyledItemDelegate.__init__(self, parent)
+        self.mdlLabels = mdlLabels
+        
+    #def sizeHint(self, option, index):
+        #s = QStyledItemDelegate.sizeHint(self, option, index)
+        #if s.width() > 200:
+            #s.setWidth(200)
+        #elif s.width() < 100:
+            #s.setWidth(100)
+        #return s + QSize(18, 0)
+    
+    def createEditor(self, parent, option, index):
+        item = index.internalPointer()
+        editor = QComboBox(parent)
+        editor.setAutoFillBackground(True)
+        editor.setFrame(False)
+        return editor
+    
+    def setEditorData(self, editor, index):
+        for i in range(self.mdlLabels.rowCount()):
+            editor.addItem(self.mdlLabels.item(i, 0).icon(),
+                           self.mdlLabels.item(i, 0).text())
+            
+        val = index.internalPointer().data(Outline.label.value)
+        if not val: val = 0
+        editor.setCurrentIndex(int(val))
+        editor.showPopup()
+    
+    def setModelData(self, editor, model, index):
+        val = editor.currentIndex()
+        model.setData(index, val)
+        
+    def paint(self, painter, option, index):
+        if not index.isValid():
+            return QStyledItemDelegate.paint(self, painter, option, index)
+        else:
+            item = index.internalPointer()
+        
+        d = item.data(index.column(), Qt.DisplayRole)
+        if not d: 
+            d = 0
+        
+        lbl = self.mdlLabels.item(int(d), 0)
+        opt = QStyleOptionViewItem(option)
+        self.initStyleOption(opt, self.mdlLabels.indexFromItem(lbl))
+        
+        qApp.style().drawControl(QStyle.CE_ItemViewItem, opt, painter)
+        

@@ -18,7 +18,7 @@
     <item>
      <widget class="QTabWidget" name="tabMain">
       <property name="currentIndex">
-       <number>5</number>
+       <number>6</number>
       </property>
       <property name="documentMode">
        <bool>true</bool>
@@ -1887,28 +1887,28 @@
                   </property>
                  </widget>
                 </item>
-                <item row="2" column="0">
+                <item row="3" column="0">
                  <widget class="QLabel" name="label_32">
                   <property name="text">
                    <string>Compile</string>
                   </property>
                  </widget>
                 </item>
-                <item row="2" column="1">
+                <item row="3" column="1">
                  <widget class="chkOutlineCompile" name="chkRedacCompile">
                   <property name="text">
                    <string/>
                   </property>
                  </widget>
                 </item>
-                <item row="3" column="0">
+                <item row="4" column="0">
                  <widget class="QLabel" name="label_29">
                   <property name="text">
                    <string>Goal</string>
                   </property>
                  </widget>
                 </item>
-                <item row="3" column="1">
+                <item row="4" column="1">
                  <widget class="QLineEdit" name="txtRedacGoal">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -1927,6 +1927,26 @@
                   </property>
                   <property name="placeholderText">
                    <string>Word count</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <widget class="QLabel" name="label_33">
+                  <property name="text">
+                   <string>Label</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="1">
+                 <widget class="cmbOutlineLabelChoser" name="cmbRedacLabel">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="frame">
+                   <bool>false</bool>
                   </property>
                  </widget>
                 </item>
@@ -2062,7 +2082,7 @@
            <enum>QTabWidget::West</enum>
           </property>
           <property name="currentIndex">
-           <number>3</number>
+           <number>4</number>
           </property>
           <widget class="QWidget" name="tab_9">
            <attribute name="title">
@@ -2109,6 +2129,16 @@
                <bool>true</bool>
               </property>
              </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tab">
+           <attribute name="title">
+            <string>Labels</string>
+           </attribute>
+           <layout class="QHBoxLayout" name="horizontalLayout">
+            <item>
+             <widget class="QListView" name="lstDebugLabels"/>
             </item>
            </layout>
           </widget>
@@ -2336,6 +2366,11 @@
    <class>treeView</class>
    <extends>QTreeView</extends>
    <header>ui.views.treeView.h</header>
+  </customwidget>
+  <customwidget>
+   <class>cmbOutlineLabelChoser</class>
+   <extends>QComboBox</extends>
+   <header>ui.cmbOutlineLabelChoser.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

@@ -33,12 +33,14 @@ class Outline(Enum):
     summaryFull = 4
     POV = 5
     notes = 6
-    status = 7
-    compile = 8
-    text = 9
-    wordCount = 10
-    goal = 11
-    goalPercentage = 12
-    setGoal = 13 # The goal set by the user, if any. Can be different from goal which can be computed
+    label = 7
+    status = 8
+    compile = 9
+    text = 10
+    wordCount = 11
+    goal = 12
+    goalPercentage = 13
+    setGoal = 14 # The goal set by the user, if any. Can be different from goal which can be computed
                  # (sum of all sub-items' goals)
-    textFormat = 14
+    textFormat = 15
+    

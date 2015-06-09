@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<model>
+  <header>
+    <vertical>
+      <label row="0" text="1"/>
+      <label row="1" text="2"/>
+      <label row="2" text="3"/>
+      <label row="3" text="4"/>
+      <label row="4" text="5"/>
+    </vertical>
+    <horizontal>
+      <label row="0" text="1"/>
+    </horizontal>
+  </header>
+  <data>
+    <row row="0">
+      <col col="0"/>
+    </row>
+    <row row="1">
+      <col col="0">Idea</col>
+    </row>
+    <row row="2">
+      <col col="0">Note</col>
+    </row>
+    <row row="3">
+      <col col="0">Chapter</col>
+    </row>
+    <row row="4">
+      <col col="0">Scene</col>
+    </row>
+  </data>
+</model>

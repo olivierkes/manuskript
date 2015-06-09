@@ -12,15 +12,20 @@ from ui.views.dndView import *
 
 class outlineView(QTreeView, dndView):
     
-    def __init__(self, parent=None, modelPersos=None):
+    def __init__(self, parent=None, modelPersos=None, modelLabels=None):
         QTreeView.__init__(self, parent)
         dndView.__init__(self)
         self.modelPersos = modelPersos
+        self.modelLabels = modelLabels
         self.header().setStretchLastSection(False)
         
     def setModelPersos(self, model):
         # This is used by treeOutlinePersoDelegate to select character
         self.modelPersos = model
+        
+    def setModelLabels(self, model):
+        # This is used by treeOutlineLabelDelegate to display labels
+        self.modelLabels = model
         
     def setModel(self, model):
         QTreeView.setModel(self, model)
@@ -34,12 +39,15 @@ class outlineView(QTreeView, dndView):
         self.setItemDelegateForColumn(Outline.status.value, self.treePlanOutlineStatusDelegate)
         self.treePlanOutlineGoalPercentageDelegate = treeOutlineGoalPercentageDelegate()
         self.setItemDelegateForColumn(Outline.goalPercentage.value, self.treePlanOutlineGoalPercentageDelegate)
+        self.treePlanOutlineLabelDelegate = treeOutlineLabelDelegate(self.modelLabels)
+        self.setItemDelegateForColumn(Outline.label.value, self.treePlanOutlineLabelDelegate)
         
         # Hiding columns
         for c in range(1, self.model().columnCount()):
             self.hideColumn(c)
         for c in [Outline.POV.value, Outline.status.value, Outline.compile.value, 
-                  Outline.wordCount.value, Outline.goal.value, Outline.goalPercentage.value]:
+                  Outline.wordCount.value, Outline.goal.value, Outline.goalPercentage.value,
+                  Outline.label.value]:
             self.showColumn(c)
         
         self.header().setSectionResizeMode(Outline.title.value, QHeaderView.Stretch)
