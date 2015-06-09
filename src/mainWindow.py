@@ -173,10 +173,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
         self.treeRedacOutline.setSelectionModel(self.treePlanOutline.selectionModel())
         
-        self.btnRedacAddFolder.clicked.connect(lambda: self.outlineAddItem("folder"))
-        self.btnPlanAddFolder.clicked.connect(lambda: self.outlineAddItem("folder"))
-        self.btnRedacAddScene.clicked.connect(lambda: self.outlineAddItem("scene"))
-        self.btnPlanAddScene.clicked.connect(lambda: self.outlineAddItem("scene"))
+        self.btnRedacAddFolder.clicked.connect(self.treeRedacOutline.addFolder)
+        self.btnPlanAddFolder.clicked.connect(self.treePlanOutline.addFolder)
+        self.btnRedacAddScene.clicked.connect(self.treeRedacOutline.addScene)
+        self.btnPlanAddScene.clicked.connect(self.treePlanOutline.addScene)
         self.btnRedacRemoveItem.clicked.connect(self.outlineRemoveItems)
         self.btnPlanRemoveItem.clicked.connect(self.outlineRemoveItems)
         
@@ -240,40 +240,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     
     def outlineSelectionChanged(self, idx):
         if idx.isValid():
-            #self.lblRedacPOV.setHidden(idx.internalPointer().isFolder())
-            #self.cmbRedacPOV.setHidden(idx.internalPointer().isFolder())
-            #self.lblPlanPOV.setHidden(idx.internalPointer().isFolder())
-            #self.cmbPlanPOV.setHidden(idx.internalPointer().isFolder())
             self.btnRedacFolderText.setHidden(not idx.internalPointer().isFolder())
             self.btnRedacFolderCork.setHidden(not idx.internalPointer().isFolder())
             self.btnRedacFolderOutline.setHidden(not idx.internalPointer().isFolder())
             self.sldCorkSizeFactor.setHidden(not idx.internalPointer().isFolder())
         
-    def outlineAddItem(self, type="folder"):
-        if len(self.treeRedacOutline.selectedIndexes()) == 0:
-            parent = QModelIndex()
-        else:
-            parent = self.treeRedacOutline.currentIndex()
-            
-        item = outlineItem(title="Nouveau", type=type)
-        self.mdlOutline.appendItem(item, parent)
-        
     def outlineRemoveItems(self):
         for idx in self.treeRedacOutline.selectedIndexes():
             if idx.isValid():
                 self.mdlOutline.removeIndex(idx)
-                
-    def outlinePlanResizeTree(self, **kargs):
-        print("Coucou")
-        stretch = Outline.title.value
-        w2 = 0
-        for c in range(self.mdlOutline.columnCount()):
-            if not self.treePlanOutline.isColumnHidden(c) and c != stretch:
-                self.treePlanOutline.resizeColumnToContents(c)
-                w2 += self.treePlanOutline.columnWidth(c)
-        
-        w = self.treePlanOutline.viewport().width()
-        self.treePlanOutline.setColumnWidth(stretch, w - w2)
     
     
 ####################################################################################################

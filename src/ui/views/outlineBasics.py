@@ -110,6 +110,8 @@ class outlineBasics(QAbstractItemView):
             if len(sel) > 0 and index.isValid() and not index.internalPointer().isFolder() \
                 or not clipboard.mimeData().hasFormat("application/xml"):
                 self.actPaste.setEnabled(False)
+                
+            if len(sel) > 0 and index.isValid() and not index.internalPointer().isFolder():
                 self.actAddFolder.setEnabled(False)
                 self.actAddScene.setEnabled(False)
             
