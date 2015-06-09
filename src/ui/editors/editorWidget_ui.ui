@@ -68,26 +68,17 @@
         <number>0</number>
        </property>
        <item>
-        <widget class="QListView" name="corkView">
-         <property name="dragDropMode">
-          <enum>QAbstractItemView::DragDrop</enum>
-         </property>
-         <property name="defaultDropAction">
-          <enum>Qt::MoveAction</enum>
-         </property>
-         <property name="selectionMode">
-          <enum>QAbstractItemView::ExtendedSelection</enum>
-         </property>
-         <property name="selectionBehavior">
-          <enum>QAbstractItemView::SelectRows</enum>
-         </property>
-         <property name="verticalScrollMode">
-          <enum>QAbstractItemView::ScrollPerPixel</enum>
-         </property>
-         <property name="flow">
-          <enum>QListView::LeftToRight</enum>
-         </property>
-        </widget>
+        <widget class="corkView" name="corkView"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="outline">
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <property name="margin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="outlineView" name="outlineView"/>
        </item>
       </layout>
      </widget>
@@ -100,6 +91,16 @@
    <class>customTextEdit</class>
    <extends>QTextEdit</extends>
    <header>ui.editors.customTextEdit.h</header>
+  </customwidget>
+  <customwidget>
+   <class>outlineView</class>
+   <extends>QTreeView</extends>
+   <header>ui.views.outlineView.h</header>
+  </customwidget>
+  <customwidget>
+   <class>corkView</class>
+   <extends>QListView</extends>
+   <header>ui.views.corkView.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

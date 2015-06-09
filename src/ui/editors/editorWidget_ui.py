@@ -47,16 +47,19 @@ class Ui_editorWidget_ui(object):
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.cork)
         self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        self.corkView = QtWidgets.QListView(self.cork)
-        self.corkView.setDragDropMode(QtWidgets.QAbstractItemView.DragDrop)
-        self.corkView.setDefaultDropAction(QtCore.Qt.MoveAction)
-        self.corkView.setSelectionMode(QtWidgets.QAbstractItemView.ExtendedSelection)
-        self.corkView.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
-        self.corkView.setVerticalScrollMode(QtWidgets.QAbstractItemView.ScrollPerPixel)
-        self.corkView.setFlow(QtWidgets.QListView.LeftToRight)
+        self.corkView = corkView(self.cork)
         self.corkView.setObjectName("corkView")
         self.horizontalLayout_3.addWidget(self.corkView)
         self.stack.addWidget(self.cork)
+        self.outline = QtWidgets.QWidget()
+        self.outline.setObjectName("outline")
+        self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.outline)
+        self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_3.setObjectName("verticalLayout_3")
+        self.outlineView = outlineView(self.outline)
+        self.outlineView.setObjectName("outlineView")
+        self.verticalLayout_3.addWidget(self.outlineView)
+        self.stack.addWidget(self.outline)
         self.verticalLayout_2.addWidget(self.stack)
 
         self.retranslateUi(editorWidget_ui)
@@ -68,3 +71,5 @@ class Ui_editorWidget_ui(object):
         editorWidget_ui.setWindowTitle(_translate("editorWidget_ui", "Form"))
 
 from ui.editors.customTextEdit import customTextEdit
+from ui.views.outlineView import outlineView
+from ui.views.corkView import corkView

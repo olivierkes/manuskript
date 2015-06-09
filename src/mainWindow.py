@@ -8,7 +8,6 @@ from qt import *
 
 from ui.mainWindow import *
 from ui.helpLabel import helpLabel
-from ui.treeOutlineDelegates import *
 from loadSave import *
 from enums import *
 from models.outlineModel import *
@@ -138,25 +137,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Outline
         self.mdlOutline = outlineModel()
         self.treeRedacOutline.setModel(self.mdlOutline)
+        self.treePlanOutline.setModelPersos(self.mdlPersos)
         self.treePlanOutline.setModel(self.mdlOutline)
-        self.treePlanOutlinePersoDelegate = treeOutlinePersoDelegate(self.mdlPersos)
-        self.treePlanOutline.setItemDelegateForColumn(Outline.POV.value, self.treePlanOutlinePersoDelegate)
-        self.treePlanOutlineCompileDelegate = treeOutlineCompileDelegate()
-        self.treePlanOutline.setItemDelegateForColumn(Outline.compile.value, self.treePlanOutlineCompileDelegate)
-        self.treePlanOutlineStatusDelegate = treeOutlineStatusDelegate()
-        self.treePlanOutline.setItemDelegateForColumn(Outline.status.value, self.treePlanOutlineStatusDelegate)
-        self.treePlanOutlineGoalPercentageDelegate = treeOutlineGoalPercentageDelegate()
-        self.treePlanOutline.setItemDelegateForColumn(Outline.goalPercentage.value, self.treePlanOutlineGoalPercentageDelegate)
-        
         self.cmbPlanPOV.setModels(self.mdlPersos, self.mdlOutline)
-        
-        self.treePlanOutline.header().setSectionResizeMode(Outline.title.value, QHeaderView.Stretch)
-        self.treePlanOutline.header().setSectionResizeMode(Outline.POV.value, QHeaderView.ResizeToContents)
-        self.treePlanOutline.header().setSectionResizeMode(Outline.status.value, QHeaderView.ResizeToContents)
-        self.treePlanOutline.header().setSectionResizeMode(Outline.compile.value, QHeaderView.ResizeToContents)
-        self.treePlanOutline.header().setSectionResizeMode(Outline.wordCount.value, QHeaderView.ResizeToContents)
-        self.treePlanOutline.header().setSectionResizeMode(Outline.goal.value, QHeaderView.ResizeToContents)
-        self.treePlanOutline.header().setSectionResizeMode(Outline.goalPercentage.value, QHeaderView.ResizeToContents)
             
         self.mprPlan = QDataWidgetMapper()
         self.mprPlan.setModel(self.mdlOutline)
@@ -174,12 +157,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.tabMain.currentChanged.connect(self.mprPlan.submit)
         
         self.treeRedacOutline.setSelectionModel(self.treePlanOutline.selectionModel())
-        
-        for c in range(1, self.mdlOutline.columnCount()):
-            self.treeRedacOutline.hideColumn(c)
-            self.treePlanOutline.hideColumn(c)
-        for c in [Outline.POV.value, Outline.status.value, Outline.compile.value, Outline.wordCount.value, Outline.goal.value, Outline.goalPercentage.value]:
-            self.treePlanOutline.showColumn(c)
         
         self.btnRedacAddFolder.clicked.connect(lambda: self.outlineAddItem("folder"))
         self.btnPlanAddFolder.clicked.connect(lambda: self.outlineAddItem("folder"))
@@ -221,7 +198,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
         self.sldCorkSizeFactor.valueChanged.connect(self.redacEditor.setCorkSizeFactor)
         self.btnRedacFolderCork.toggled.connect(self.sldCorkSizeFactor.setVisible)
-        self.btnRedacFolderText.toggled.connect(lambda v: self.redacEditor.setFolderView("text" if v else "cork"))
+        self.btnRedacFolderText.clicked.connect(lambda v: self.redacEditor.setFolderView("text"))
+        self.btnRedacFolderCork.clicked.connect(lambda v: self.redacEditor.setFolderView("cork"))
+        self.btnRedacFolderOutline.clicked.connect(lambda v: self.redacEditor.setFolderView("outline"))
         
         #Debug
         self.mdlFlatData.setVerticalHeaderLabels(["Infos générales", "Summary"])
@@ -249,6 +228,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.cmbPlanPOV.setHidden(idx.internalPointer().isFolder())
             self.btnRedacFolderText.setHidden(not idx.internalPointer().isFolder())
             self.btnRedacFolderCork.setHidden(not idx.internalPointer().isFolder())
+            self.btnRedacFolderOutline.setHidden(not idx.internalPointer().isFolder())
             self.sldCorkSizeFactor.setHidden(not idx.internalPointer().isFolder())
         
     def outlineAddItem(self, type="folder"):

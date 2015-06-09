@@ -8,7 +8,6 @@ from qt import *
 from enums import *
 from ui.editors.editorWidget_ui import *
 from ui.editors.customTextEdit import *
-from ui.editors.corkDelegate import *
 from functions import *
 
 class editorWidget(QWidget, Ui_editorWidget_ui):
@@ -28,18 +27,12 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
         self.spellcheck = True
         self.folderView = "cork"
         
-        self.corkView.setResizeMode(QListView.Adjust)
-        self.corkView.setWrapping(True)
-        self.corkView.setItemDelegate(corkDelegate())
-        self.corkView.setSpacing(5)
-        self.corkView.setStyleSheet("""QListView {
-            background:#926239;
-            }""")
-        
     def setFolderView(self, v):
         oldV = self.folderView
         if v == "cork":
             self.folderView = "cork"
+        elif v == "outline":
+            self.folderView = "outline"
         else:
             self.folderView = "text"
             
@@ -61,7 +54,67 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
             
             item = index.internalPointer()
             
-            if item.isFolder() and self.folderView == "text":
+            # Couting the number of selected items
+            sel = [index]
+            for i in mainWindow().treeRedacOutline.selectionModel().selection().indexes():
+                if i.column() != 0: continue
+                if i not in sel: sel.append(i)
+                
+            def addTitle(itm):
+                edt = customTextEdit(self, html="<h{l}>{t}</h{l}>".format(l=min(itm.level()+1, 5), t=itm.title()), autoResize=True)
+                edt.setFrameShape(QFrame.NoFrame)
+                self.txtEdits.append(edt)
+                l.addWidget(edt)
+            
+            def addLine():
+                line = QFrame(self.scene)
+                line.setFrameShape(QFrame.HLine)
+                line.setFrameShadow(QFrame.Sunken)
+                l.addWidget(line)
+            
+            def addScene(itm):
+                edt = customTextEdit(self, index=itm.index(), spellcheck=self.spellcheck, dict=self.currentDict, autoResize=True)
+                edt.setFrameShape(QFrame.NoFrame)
+                edt.setStatusTip(itm.path())
+                self.toggledSpellcheck.connect(edt.toggleSpellcheck)
+                self.dictChanged.connect(edt.setDict)
+                #edt.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
+                self.txtEdits.append(edt)
+                l.addWidget(edt)
+            
+            def addChildren(itm):
+                for c in range(itm.childCount()):
+                    child = itm.child(c)
+                    
+                    if child.isFolder():
+                        addTitle(child)
+                        addChildren(child)
+                        
+                    else:
+                        addScene(child)
+                        addLine()
+            
+            def addSpacer():
+                l.addItem(QSpacerItem(10, 1000, QSizePolicy.Minimum, QSizePolicy.Expanding))
+              
+            # Display multiple selected items
+            if len(sel) > 1 and False:  # Buggy and not very useful, skip
+                self.stack.setCurrentIndex(1)
+                w = QWidget()
+                l = QVBoxLayout(w)
+                self.txtEdits = []
+                for idx in sel:
+                    sItem = idx.internalPointer()
+                    addTitle(sItem)
+                    if sItem.isFolder():
+                        addChildren(sItem)
+                    else:
+                        addScene(sItem)
+                    addLine()
+                addSpacer()
+                self.scroll.setWidget(w)
+                
+            elif item.isFolder() and self.folderView == "text":
                 self.stack.setCurrentIndex(1)
                 
                 w = QWidget()
@@ -70,50 +123,21 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
                 
                 self.txtEdits = []
                 
-                def addTitle(itm):
-                    edt = customTextEdit(self, html="<h{l}>{t}</h{l}>".format(l=min(itm.level()+1, 5), t=itm.title()), autoResize=True)
-                    edt.setFrameShape(QFrame.NoFrame)
-                    self.txtEdits.append(edt)
-                    l.addWidget(edt)
-                
-                def addLine():
-                    line = QFrame(self.scene)
-                    line.setFrameShape(QFrame.HLine)
-                    line.setFrameShadow(QFrame.Sunken)
-                    l.addWidget(line)
-                
-                def addScene(itm):
-                    edt = customTextEdit(self, index=itm.index(), spellcheck=self.spellcheck, dict=self.currentDict, autoResize=True)
-                    edt.setFrameShape(QFrame.NoFrame)
-                    edt.setStatusTip(itm.path())
-                    self.toggledSpellcheck.connect(edt.toggleSpellcheck)
-                    self.dictChanged.connect(edt.setDict)
-                    #edt.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
-                    self.txtEdits.append(edt)
-                    l.addWidget(edt)
-                
-                def addChildren(itm):
-                
-                    for c in range(itm.childCount()):
-                        child = itm.child(c)
-                        
-                        if child.isFolder():
-                            addTitle(child)
-                            addChildren(child)
-                            
-                        else:
-                            addScene(child)
-                            addLine()
-                
                 addTitle(item)
                 addChildren(item)
-                l.addItem(QSpacerItem(10, 1000, QSizePolicy.Minimum, QSizePolicy.Expanding))
+                addSpacer()
                 self.scroll.setWidget(w)
                 
             elif item.isFolder() and self.folderView == "cork":
                 self.stack.setCurrentIndex(2)
                 self.corkView.setModel(self._model)
                 self.corkView.setRootIndex(self.currentIndex)
+              
+            elif item.isFolder() and self.folderView == "outline":
+                self.stack.setCurrentIndex(3)
+                self.outlineView.setModelPersos(mainWindow().mdlPersos)
+                self.outlineView.setModel(self._model)
+                self.outlineView.setRootIndex(self.currentIndex)
               
             else:
                 self.stack.setCurrentIndex(0)

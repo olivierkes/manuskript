@@ -59,8 +59,15 @@ class treeOutlineCompileDelegate(QStyledItemDelegate):
         return ""
     
 class treeOutlineGoalPercentageDelegate(QStyledItemDelegate):
-    def __init__(self, parent=None):
+    def __init__(self, rootIndex=None, parent=None):
         QStyledItemDelegate.__init__(self, parent)
+        self.rootIndex = rootIndex
+        
+    def sizeHint(self, option, index):
+        sh = QStyledItemDelegate.sizeHint(self, option, index)
+        #if sh.width() > 50:
+        sh.setWidth(100)
+        return sh
         
     def paint(self, painter, option, index):
         if not index.isValid():
@@ -78,6 +85,8 @@ class treeOutlineGoalPercentageDelegate(QStyledItemDelegate):
         typ = item.data(Outline.type.value)
         
         level = item.level()
+        if self.rootIndex:
+            level -= self.rootIndex.internalPointer().level() + 1
         
         margin = 5
         height = max(min(option.rect.height() - 2*margin, 12) - 2 * level, 6)

@@ -703,7 +703,7 @@ class Ui_MainWindow(object):
         self.splitterOutlineV = QtWidgets.QSplitter(self.layoutWidget)
         self.splitterOutlineV.setOrientation(QtCore.Qt.Vertical)
         self.splitterOutlineV.setObjectName("splitterOutlineV")
-        self.treePlanOutline = QtWidgets.QTreeView(self.splitterOutlineV)
+        self.treePlanOutline = outlineView(self.splitterOutlineV)
         self.treePlanOutline.setDragEnabled(True)
         self.treePlanOutline.setDragDropMode(QtWidgets.QAbstractItemView.DragDrop)
         self.treePlanOutline.setDefaultDropAction(QtCore.Qt.MoveAction)
@@ -800,10 +800,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_30 = QtWidgets.QVBoxLayout(self.widget)
         self.verticalLayout_30.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_30.setObjectName("verticalLayout_30")
-        self.treeRedacOutline = QtWidgets.QTreeView(self.widget)
-        self.treeRedacOutline.setDragDropMode(QtWidgets.QAbstractItemView.DragDrop)
-        self.treeRedacOutline.setDefaultDropAction(QtCore.Qt.MoveAction)
-        self.treeRedacOutline.setSelectionMode(QtWidgets.QAbstractItemView.ExtendedSelection)
+        self.treeRedacOutline = treeView(self.widget)
         self.treeRedacOutline.setObjectName("treeRedacOutline")
         self.verticalLayout_30.addWidget(self.treeRedacOutline)
         self.horizontalLayout_31 = QtWidgets.QHBoxLayout()
@@ -870,6 +867,11 @@ class Ui_MainWindow(object):
         self.btnRedacFolderCork.setObjectName("btnRedacFolderCork")
         self.buttonGroup.addButton(self.btnRedacFolderCork)
         self.horizontalLayout_19.addWidget(self.btnRedacFolderCork)
+        self.btnRedacFolderOutline = QtWidgets.QPushButton(self.layoutWidget1)
+        self.btnRedacFolderOutline.setCheckable(True)
+        self.btnRedacFolderOutline.setObjectName("btnRedacFolderOutline")
+        self.buttonGroup.addButton(self.btnRedacFolderOutline)
+        self.horizontalLayout_19.addWidget(self.btnRedacFolderOutline)
         self.sldCorkSizeFactor = QtWidgets.QSlider(self.layoutWidget1)
         self.sldCorkSizeFactor.setMinimumSize(QtCore.QSize(100, 0))
         self.sldCorkSizeFactor.setMaximumSize(QtCore.QSize(200, 16777215))
@@ -1276,6 +1278,7 @@ class Ui_MainWindow(object):
         self.tabMain.setTabText(self.tabMain.indexOf(self.lytTabOutline), _translate("MainWindow", "Outline"))
         self.btnRedacFolderText.setText(_translate("MainWindow", "Text"))
         self.btnRedacFolderCork.setText(_translate("MainWindow", "Cork"))
+        self.btnRedacFolderOutline.setText(_translate("MainWindow", "Outline"))
         self.btnRedacFullscreen.setShortcut(_translate("MainWindow", "F11"))
         self.groupBox_4.setTitle(_translate("MainWindow", "Properties"))
         self.lblRedacPOV.setText(_translate("MainWindow", "POV"))
@@ -1329,9 +1332,11 @@ class Ui_MainWindow(object):
         self.actSpellcheck.setText(_translate("MainWindow", "Spellcheck"))
         self.actSpellcheck.setShortcut(_translate("MainWindow", "F8"))
 
-from ui.sldImportance import sldImportance
-from ui.chkOutlineCompile import chkOutlineCompile
-from ui.editors.editorWidget import editorWidget
-from ui.cmbOutlineStatusChoser import cmbOutlineStatusChoser
 from ui.cmbOutlinePersoChoser import cmbOutlinePersoChoser
 from ui.collapsibleGroupBox2 import collapsibleGroupBox2
+from ui.sldImportance import sldImportance
+from ui.views.treeView import treeView
+from ui.editors.editorWidget import editorWidget
+from ui.views.outlineView import outlineView
+from ui.chkOutlineCompile import chkOutlineCompile
+from ui.cmbOutlineStatusChoser import cmbOutlineStatusChoser

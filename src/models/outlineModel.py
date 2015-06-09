@@ -176,8 +176,7 @@ class outlineModel(QAbstractItemModel):
     
     def supportedDropActions(self):
         
-        return Qt.MoveAction # Qt.CopyAction | 
-        #return Qt.CopyAction | Qt.MoveAction
+        return Qt.CopyAction | Qt.MoveAction
     
     #def canDropMimeData(self, data, action, row, column, parent):
         #if not data.hasFormat("application/xml"):
@@ -276,7 +275,6 @@ class outlineModel(QAbstractItemModel):
         return self.removeRows(row, 1, parent)
     
     def removeRows(self, row, count, parent=QModelIndex()):
-        print("Removing")
         if not parent.isValid():
             parentItem = self.rootItem
         else:

@@ -248,6 +248,18 @@ class corkDelegate(QStyledItemDelegate):
                    #itemRect.right(), iconRect.bottom() + margin)
         p.drawLine(bottomRect.topLeft(), bottomRect.topRight())
         p.restore()
+            
+          # Lines
+        if True:
+            p.save()
+            p.setPen(QColor("#EEE"))
+            fm = QFontMetrics(option.font)
+            h = fm.lineSpacing()
+            l = self.mainTextRect.topLeft() + QPoint(0, h)
+            while self.mainTextRect.contains(l):
+                p.drawLine(l, QPoint(self.mainTextRect.right(), l.y()))
+                l.setY(l.y() + h)
+            p.restore()
         
         # Draw status
         mainRect = self.mainRect
@@ -280,18 +292,6 @@ class corkDelegate(QStyledItemDelegate):
         if fullSummary:
             p.setFont(option.font)
             p.drawText(self.mainTextRect, Qt.TextWordWrap, fullSummary)
-            
-          # Lines
-        if True:
-            p.save()
-            p.setPen(QColor("#EEE"))
-            fm = QFontMetrics(option.font)
-            h = fm.lineSpacing()
-            l = self.mainTextRect.topLeft() + QPoint(0, h)
-            while self.mainTextRect.contains(l):
-                p.drawLine(l, QPoint(self.mainTextRect.right(), l.y()))
-                l.setY(l.y() + h)
-            p.restore()
             
         #Debug
         #for r in [self.itemRect, self.iconRect, self.titleRect, self.bottomRect, self.mainLineRect, self.mainTextRect]:

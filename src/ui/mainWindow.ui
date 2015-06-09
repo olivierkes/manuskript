@@ -1341,7 +1341,7 @@
               <property name="orientation">
                <enum>Qt::Vertical</enum>
               </property>
-              <widget class="QTreeView" name="treePlanOutline">
+              <widget class="outlineView" name="treePlanOutline">
                <property name="dragEnabled">
                 <bool>true</bool>
                </property>
@@ -1549,17 +1549,7 @@
              <number>0</number>
             </property>
             <item>
-             <widget class="QTreeView" name="treeRedacOutline">
-              <property name="dragDropMode">
-               <enum>QAbstractItemView::DragDrop</enum>
-              </property>
-              <property name="defaultDropAction">
-               <enum>Qt::MoveAction</enum>
-              </property>
-              <property name="selectionMode">
-               <enum>QAbstractItemView::ExtendedSelection</enum>
-              </property>
-             </widget>
+             <widget class="treeView" name="treeRedacOutline"/>
             </item>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_31">
@@ -1682,6 +1672,19 @@
                  <bool>true</bool>
                 </property>
                 <property name="checked">
+                 <bool>true</bool>
+                </property>
+                <attribute name="buttonGroup">
+                 <string notr="true">buttonGroup</string>
+                </attribute>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btnRedacFolderOutline">
+                <property name="text">
+                 <string>Outline</string>
+                </property>
+                <property name="checkable">
                  <bool>true</bool>
                 </property>
                 <attribute name="buttonGroup">
@@ -2323,6 +2326,16 @@
    <extends>QGroupBox</extends>
    <header>ui.collapsibleGroupBox2.h</header>
    <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>outlineView</class>
+   <extends>QTreeView</extends>
+   <header>ui.views.outlineView.h</header>
+  </customwidget>
+  <customwidget>
+   <class>treeView</class>
+   <extends>QTreeView</extends>
+   <header>ui.views.treeView.h</header>
   </customwidget>
  </customwidgets>
  <resources/>
