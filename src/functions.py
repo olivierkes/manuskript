@@ -49,3 +49,7 @@ def mainWindow():
         if i.objectName() == "MainWindow":
             return i
     return None
+
+def iconColor(icon):
+    "Returns a QRgb from a QIcon, assuming its all the same color"
+    return QColor(QImage(icon.pixmap(5, 5)).pixel(2, 2))

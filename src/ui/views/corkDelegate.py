@@ -120,11 +120,12 @@ class corkDelegate(QStyledItemDelegate):
         item = index.internalPointer()
         self.itemRect = option.rect.adjusted(margin, margin, -margin, -margin)
         self.iconRect = QRect(self.itemRect.topLeft() + QPoint(margin, margin), QSize(iconSize, iconSize))
-        self.titleRect = QRect(self.iconRect.topRight().x() + margin, self.iconRect.top(),
-                         self.itemRect.topRight().x() - self.iconRect.right() - 2 * margin,
-                         self.iconRect.height())
-        self.bottomRect = QRect(QPoint(self.itemRect.x(), self.iconRect.bottom() + margin),
-                           QPoint(self.itemRect.right(), self.itemRect.bottom()))
+        self.labelRect = QRect(self.itemRect.topRight() - QPoint(iconSize + margin, 0),
+                               self.itemRect.topRight() + QPoint(0, iconSize + 2 * margin))
+        self.titleRect = QRect(self.iconRect.topRight() + QPoint(margin, 0),
+                               self.labelRect.bottomLeft() - QPoint(margin, margin))
+        self.bottomRect = QRect(QPoint(self.itemRect.x(), self.iconRect.bottom() + margin), 
+                                QPoint(self.itemRect.right(), self.itemRect.bottom()))
         self.topRect = QRect(self.itemRect.topLeft(), self.bottomRect.topRight())
         self.mainRect = self.bottomRect.adjusted(margin, margin, -margin, -margin)
         self.mainLineRect = QRect(self.mainRect.topLeft(),
@@ -133,7 +134,8 @@ class corkDelegate(QStyledItemDelegate):
                                   self.mainRect.bottomRight())
         if not item.data(Outline.summarySentance.value) :
             self.mainTextRect.setTopLeft(self.mainLineRect.topLeft())
-        
+        if item.data(Outline.label.value) in ["", "0"]:
+            self.titleRect.setBottomRight(self.labelRect.bottomRight() - QPoint(self.margin, self.margin))
         
     def paint(self, p, option, index):
         #QStyledItemDelegate.paint(self, p, option, index)
@@ -166,10 +168,10 @@ class corkDelegate(QStyledItemDelegate):
           # Stack
         if item.isFolder() and item.childCount() > 0:
             p.save()
-            angle = [-3, 5, 3]
             p.setBrush(Qt.white)
             for i in reversed(range(3)):
-                p.drawRoundedRect(self.itemRect.translated(3*i, 3*i), 10, 10)
+                p.drawRoundedRect(self.itemRect.adjusted(2*i, 2*i, -2*i, 2*i), 10, 10)
+                
             p.restore()
             
           # Background
@@ -195,6 +197,20 @@ class corkDelegate(QStyledItemDelegate):
         p.drawRoundedRect(itemRect, 10, 10)
         #p.drawRect(topRect)
         p.restore()
+        
+          # Label color
+        lbl = item.data(Outline.label.value)
+        if lbl and lbl != "0":
+            it = mainWindow().mdlLabels.item(int(lbl), 0)
+            if it != None:
+                p.save()
+                color = iconColor(it.icon())
+                p.setPen(Qt.NoPen)
+                p.setBrush(QBrush(color))
+                p.setClipRegion(QRegion(self.labelRect))
+                p.drawRoundedRect(itemRect, 10, 10)
+                #p.drawRect(topRect)
+                p.restore()
         
           # One line summary background
         lineSummary = item.data(Outline.summarySentance.value)
