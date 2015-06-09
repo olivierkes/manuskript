@@ -13,6 +13,7 @@ from enums import *
 from models.outlineModel import *
 from models.persosProxyModel import *
 from functions import *
+from settingsWindow import *
 
 # Spell checker support
 try:
@@ -143,9 +144,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             (Qt.blue, "Chapter"),
             (Qt.red, "Scene")
             ]:
-            px = QPixmap(32, 32)
-            px.fill(color)
-            self.mdlLabels.appendRow(QStandardItem(QIcon(px), text))
+            self.mdlLabels.appendRow(QStandardItem(iconFromColor(color), text))
             
         
         # Outline
@@ -218,6 +217,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btnRedacFolderText.clicked.connect(lambda v: self.redacEditor.setFolderView("text"))
         self.btnRedacFolderCork.clicked.connect(lambda v: self.redacEditor.setFolderView("cork"))
         self.btnRedacFolderOutline.clicked.connect(lambda v: self.redacEditor.setFolderView("outline"))
+        
+        # Main Menu
+        self.actLabels.triggered.connect(self.settingsLabel)
+        self.actStatus.triggered.connect(self.settingsStatus)
+        self.actQuit.triggered.connect(self.close)
         
         #Debug
         self.mdlFlatData.setVerticalHeaderLabels(["Infos générales", "Summary"])
@@ -477,3 +481,27 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def openPyEnchantWebPage(self):
         QDesktopServices.openUrl(QUrl("http://pythonhosted.org/pyenchant/"))
+        
+        
+####################################################################################################
+#                                            SETTINGS                                              #
+####################################################################################################
+
+    def settingsLabel(self):
+        self.settingsWindow(0)
+        
+    def settingsStatus(self):
+        self.settingsWindow(1)
+        
+    def settingsWindow(self, tab=None):
+        self.sw = settingsWindow(self)
+        self.sw.hide()
+        self.sw.setWindowModality(Qt.ApplicationModal)
+        self.sw.setWindowFlags(Qt.Dialog)
+        r = self.sw.geometry()
+        r2 = self.geometry()
+        self.sw.move(r2.center() - r.center())
+        if tab:
+            self.sw.tabWidget.setCurrentIndex(tab)
+        self.sw.show()
+        

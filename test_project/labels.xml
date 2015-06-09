@@ -7,6 +7,8 @@
       <label row="2" text="3"/>
       <label row="3" text="4"/>
       <label row="4" text="5"/>
+      <label row="5" text="6"/>
+      <label row="6" text="7"/>
     </vertical>
     <horizontal>
       <label row="0" text="1"/>
@@ -14,19 +16,25 @@
   </header>
   <data>
     <row row="0">
-      <col col="0"/>
+      <col col="0" color="#ff000000"/>
     </row>
     <row row="1">
-      <col col="0">Idea</col>
+      <col col="0" color="#ffffff00">Ideas</col>
     </row>
     <row row="2">
-      <col col="0">Note</col>
+      <col col="0" color="#ff00ff00">Notes</col>
     </row>
     <row row="3">
-      <col col="0">Chapter</col>
+      <col col="0" color="#ff0000ff">Chapter</col>
     </row>
     <row row="4">
-      <col col="0">Scene</col>
+      <col col="0" color="#ffff0000">Scene</col>
+    </row>
+    <row row="5">
+      <col col="0" color="#fffa4eec">New label</col>
+    </row>
+    <row row="6">
+      <col col="0" color="#ff7ef8f4">New label</col>
     </row>
   </data>
 </model>

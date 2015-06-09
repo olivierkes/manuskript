@@ -5,7 +5,7 @@
 
 
 from qt import *
-
+from functions import *
 from lxml import etree as ET
 
 def saveStandardItemModelXML(mdl, xml):
@@ -35,6 +35,8 @@ def saveStandardItemModelXML(mdl, xml):
         for y in range(mdl.columnCount()):
             col = ET.SubElement(row, "col")
             col.attrib["col"] = str(y)
+            if mdl.data(mdl.index(x, y), Qt.DecorationRole) != None:
+                col.attrib["color"] = iconColor(mdl.data(mdl.index(x, y), Qt.DecorationRole)).name(QColor.HexArgb)
             if mdl.data(mdl.index(x, y)) != "":
                 col.text = mdl.data(mdl.index(x, y))
             
@@ -75,5 +77,7 @@ def loadStandardItemModelXML(mdl, xml):
             c = int(col.attrib["col"])
             if col.text: 
                 mdl.setData(mdl.index(r, c), col.text)
-
+            if "color" in col.attrib:
+                mdl.item(r, c).setIcon(iconFromColorString(col.attrib["color"]))
+            
     print("OK")

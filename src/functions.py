@@ -53,3 +53,11 @@ def mainWindow():
 def iconColor(icon):
     "Returns a QRgb from a QIcon, assuming its all the same color"
     return QColor(QImage(icon.pixmap(5, 5)).pixel(2, 2))
+
+def iconFromColor(color):
+    px = QPixmap(32, 32)
+    px.fill(color)
+    return QIcon(px)
+
+def iconFromColorString(string):
+    return iconFromColor(QColor(string))

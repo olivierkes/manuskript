@@ -24,7 +24,7 @@
       <col col="0">Age</col>
       <col col="1">42</col>
       <col col="2">12</col>
-      <col col="3">11</col>
+      <col col="3"/>
     </row>
     <row row="2">
       <col col="0">Animal préféré</col>

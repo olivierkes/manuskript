@@ -132,6 +132,7 @@ class persosProxyModel(QAbstractProxyModel):
                 f.setWeight(QFont.Bold)
                 return f
         else:
+            #FIXME: sometimes, the name of the character is not displayed
             return self.sourceModel().data(self.mapToSource(index), role)
     
     def index(self, row, column, parent):

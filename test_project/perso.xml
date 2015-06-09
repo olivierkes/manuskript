@@ -22,7 +22,7 @@
   </header>
   <data>
     <row row="0">
-      <col col="0">Albert</col>
+      <col col="0">Albert le vert</col>
       <col col="1">0</col>
       <col col="2">2</col>
       <col col="3"/>
@@ -51,9 +51,9 @@ Pour voir.</col>
       <col col="10"/>
     </row>
     <row row="2">
-      <col col="0">Nouveau perso avec un nom pas très long mais franchement ennuyeux</col>
+      <col col="0">Nouveau perso avec un nom très très long pour voir comment ça fait</col>
       <col col="1">2</col>
-      <col col="2">0</col>
+      <col col="2"/>
       <col col="3"/>
       <col col="4"/>
       <col col="5"/>

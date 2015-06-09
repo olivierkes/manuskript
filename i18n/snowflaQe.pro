@@ -12,6 +12,7 @@ SOURCES          += ../src/ui/editors/customTextEdit.py
 SOURCES          += ../src/ui/editors/editorWidget.py
 SOURCES          += ../src/ui/views/corkDelegate.py
 SOURCES          += ../src/ui/views/outlineBasics.py
+SOURCES          += ../src/settingsWindow.py
 
 
 TRANSLATIONS     += snowflaQe_fr.ts

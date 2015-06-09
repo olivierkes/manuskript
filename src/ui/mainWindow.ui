@@ -2159,25 +2159,25 @@
      <height>31</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menu_Fichier">
+   <widget class="QMenu" name="menuFile">
     <property name="title">
      <string>File</string>
     </property>
-    <addaction name="actionNouveau"/>
-    <addaction name="actionOuvrir"/>
-    <addaction name="action_R_cents"/>
-    <addaction name="actionEnregistrer"/>
-    <addaction name="actionEnregistrer_sous"/>
+    <addaction name="actNew"/>
+    <addaction name="actOpen"/>
+    <addaction name="actRecents"/>
+    <addaction name="actSave"/>
+    <addaction name="actSaveAs"/>
     <addaction name="separator"/>
-    <addaction name="actionQuitter"/>
+    <addaction name="actQuit"/>
    </widget>
    <widget class="QMenu" name="menuMode">
     <property name="title">
      <string>Mode</string>
     </property>
-    <addaction name="actionSnowflakeMode"/>
+    <addaction name="actSnowflakeMode"/>
    </widget>
-   <widget class="QMenu" name="menu_Aide">
+   <widget class="QMenu" name="menuHelp">
     <property name="title">
      <string>Help</string>
     </property>
@@ -2189,13 +2189,21 @@
     </property>
     <addaction name="actSpellcheck"/>
    </widget>
-   <addaction name="menu_Fichier"/>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>Edit</string>
+    </property>
+    <addaction name="actLabels"/>
+    <addaction name="actStatus"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuEdit"/>
    <addaction name="menuMode"/>
    <addaction name="menuTools"/>
-   <addaction name="menu_Aide"/>
+   <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="actionOuvrir">
+  <action name="actOpen">
    <property name="icon">
     <iconset theme="document-open">
      <normaloff/>
@@ -2208,7 +2216,7 @@
     <string>Ctrl+O</string>
    </property>
   </action>
-  <action name="action_R_cents">
+  <action name="actRecents">
    <property name="icon">
     <iconset theme="document-open-recent">
      <normaloff/>
@@ -2221,7 +2229,7 @@
     <string>Ctrl+R</string>
    </property>
   </action>
-  <action name="actionEnregistrer">
+  <action name="actSave">
    <property name="icon">
     <iconset theme="document-save">
      <normaloff/>
@@ -2234,7 +2242,7 @@
     <string>Ctrl+S</string>
    </property>
   </action>
-  <action name="actionEnregistrer_sous">
+  <action name="actSaveAs">
    <property name="icon">
     <iconset theme="document-save-as">
      <normaloff/>
@@ -2247,7 +2255,7 @@
     <string>Ctrl+Shift+S</string>
    </property>
   </action>
-  <action name="actionQuitter">
+  <action name="actQuit">
    <property name="icon">
     <iconset theme="application-exit">
      <normaloff/>
@@ -2260,7 +2268,7 @@
     <string>Ctrl+Q</string>
    </property>
   </action>
-  <action name="actionSnowflakeMode">
+  <action name="actSnowflakeMode">
    <property name="checkable">
     <bool>true</bool>
    </property>
@@ -2271,7 +2279,7 @@
     <string>&amp;Snowflake</string>
    </property>
   </action>
-  <action name="actionNouveau">
+  <action name="actNew">
    <property name="icon">
     <iconset theme="document-new">
      <normaloff/>
@@ -2320,6 +2328,16 @@
    </property>
    <property name="shortcut">
     <string>F8</string>
+   </property>
+  </action>
+  <action name="actLabels">
+   <property name="text">
+    <string>Labels...</string>
+   </property>
+  </action>
+  <action name="actStatus">
+   <property name="text">
+    <string>Status...</string>
    </property>
   </action>
  </widget>

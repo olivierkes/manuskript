@@ -16,7 +16,7 @@ class cmbOutlineLabelChoser(QComboBox):
         
     def setModels(self, mdlLabels, mdlOutline):
         self.mdlLabels = mdlLabels
-        self.mdlLabels.dataChanged.connect(self.updateItems)
+        self.mdlLabels.dataChanged.connect(self.updateItems)  # Not emiting?
         self.mdlOutline = mdlOutline
         self.mdlOutline.dataChanged.connect(self.updateSelectedItem)
         self.updateItems()
@@ -36,13 +36,16 @@ class cmbOutlineLabelChoser(QComboBox):
         
     def setCurrentModelIndex(self, idx):
         self.currentModelIndex = idx
+        self.updateItems()
         self.updateSelectedItem()
         
-    def updateItems(self):
+    def updateItems(self, topLeft=None, bottomRight=None, roles=None):
         self.clear()
         for i in range(self.mdlLabels.rowCount()):
-            self.addItem(self.mdlLabels.item(i, 0).icon(),
-                        self.mdlLabels.item(i, 0).text())
+            item = self.mdlLabels.item(i, 0)
+            if item:
+                self.addItem(item.icon(),
+                            item.text())
             
         if self.currentModelIndex:
             self.updateSelectedItem()
