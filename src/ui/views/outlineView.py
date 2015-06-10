@@ -62,6 +62,7 @@ class outlineView(QTreeView, dndView, outlineBasics):
         self.header().setSectionResizeMode(Outline.title.value, QHeaderView.Stretch)
         self.header().setSectionResizeMode(Outline.POV.value, QHeaderView.ResizeToContents)
         self.header().setSectionResizeMode(Outline.status.value, QHeaderView.ResizeToContents)
+        self.header().setSectionResizeMode(Outline.label.value, QHeaderView.ResizeToContents)
         self.header().setSectionResizeMode(Outline.compile.value, QHeaderView.ResizeToContents)
         self.header().setSectionResizeMode(Outline.wordCount.value, QHeaderView.ResizeToContents)
         self.header().setSectionResizeMode(Outline.goal.value, QHeaderView.ResizeToContents)

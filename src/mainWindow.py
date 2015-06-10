@@ -166,7 +166,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
         self.treePlanOutline.setModel(self.mdlOutline)
         self.cmbPlanPOV.setModels(self.mdlPersos, self.mdlOutline)
-            
+        self.redacEditor.setModel(self.mdlOutline)
+        
         self.mprPlan = QDataWidgetMapper()
         self.mprPlan.setModel(self.mdlOutline)
         mapping = [
@@ -214,15 +215,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.treeRedacOutline.selectionModel().currentChanged.connect(self.cmbRedacLabel.setCurrentModelIndex)
         self.treeRedacOutline.selectionModel().currentChanged.connect(self.cmbRedacStatus.setCurrentModelIndex)
         self.treeRedacOutline.selectionModel().currentChanged.connect(self.chkRedacCompile.setCurrentModelIndex)
-        self.treeRedacOutline.selectionModel().currentChanged.connect(self.redacEditor.setCurrentModelIndex)
+        #self.treeRedacOutline.selectionModel().currentChanged.connect(self.redacEditor.setCurrentModelIndex)
+        self.treeRedacOutline.selectionModel().selectionChanged.connect(self.redacEditor.setView)
         self.treeRedacOutline.selectionModel().currentChanged.connect(self.redacEditor.txtRedacText.setCurrentModelIndex)
         
         self.tabMain.currentChanged.connect(self.mprOutline.submit)
         
-        self.treeRedacOutline.selectionModel().currentChanged.connect(self.outlineSelectionChanged)
-        self.treeRedacOutline.selectionModel().currentChanged.connect(self.outlineSelectionChanged)
-        self.treePlanOutline.selectionModel().currentChanged.connect(self.outlineSelectionChanged)
-        self.treePlanOutline.selectionModel().currentChanged.connect(self.outlineSelectionChanged)
+        self.treeRedacOutline.selectionModel().selectionChanged.connect(self.outlineSelectionChanged)
+        self.treeRedacOutline.selectionModel().selectionChanged.connect(self.outlineSelectionChanged)
+        self.treePlanOutline.selectionModel().selectionChanged.connect(self.outlineSelectionChanged)
+        self.treePlanOutline.selectionModel().selectionChanged.connect(self.outlineSelectionChanged)
         
         self.sldCorkSizeFactor.valueChanged.connect(self.redacEditor.setCorkSizeFactor)
         self.btnRedacFolderCork.toggled.connect(self.sldCorkSizeFactor.setVisible)
@@ -256,12 +258,21 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 #                                             OUTLINE                                              #
 ####################################################################################################
     
-    def outlineSelectionChanged(self, idx):
-        if idx.isValid():
-            self.btnRedacFolderText.setHidden(not idx.internalPointer().isFolder())
-            self.btnRedacFolderCork.setHidden(not idx.internalPointer().isFolder())
-            self.btnRedacFolderOutline.setHidden(not idx.internalPointer().isFolder())
-            self.sldCorkSizeFactor.setHidden(not idx.internalPointer().isFolder())
+    def outlineSelectionChanged(self):
+        if len(self.treeRedacOutline.selectionModel().selection().indexes()) == 0:
+            hidden = False
+        else:
+            idx = self.treeRedacOutline.currentIndex()
+            if idx.isValid():
+                hidden = not idx.internalPointer().isFolder()
+            else:
+                hidden = False
+            
+        
+        self.btnRedacFolderText.setHidden(hidden)
+        self.btnRedacFolderCork.setHidden(hidden)
+        self.btnRedacFolderOutline.setHidden(hidden)
+        self.sldCorkSizeFactor.setHidden(hidden)
         
     def outlineRemoveItems(self):
         for idx in self.treeRedacOutline.selectedIndexes():

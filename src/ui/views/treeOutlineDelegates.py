@@ -49,6 +49,18 @@ class treeOutlinePersoDelegate(QStyledItemDelegate):
                 return self.mdlPersos.item(i, Perso.name.value).text()
         return ""
     
+    def paint(self, painter, option, index):
+        #option.rect.setWidth(option.rect.width() - 18)
+        QStyledItemDelegate.paint(self, painter, option, index)
+        #option.rect.setWidth(option.rect.width() + 18)
+        
+        if index.isValid() and index.internalPointer().data(Outline.POV.value) not in ["", None]:
+            opt = QStyleOptionComboBox()
+            opt.rect = option.rect
+            r = qApp.style().subControlRect(QStyle.CC_ComboBox, opt, QStyle.SC_ComboBoxArrow)
+            option.rect = r
+            qApp.style().drawPrimitive(QStyle.PE_IndicatorArrowDown, option, painter)
+    
     
 class treeOutlineCompileDelegate(QStyledItemDelegate):
     
@@ -86,7 +98,7 @@ class treeOutlineGoalPercentageDelegate(QStyledItemDelegate):
         typ = item.data(Outline.type.value)
         
         level = item.level()
-        if self.rootIndex:
+        if self.rootIndex and self.rootIndex.isValid():
             level -= self.rootIndex.internalPointer().level() + 1
         
         margin = 5
@@ -150,6 +162,16 @@ class treeOutlineStatusDelegate(QStyledItemDelegate):
         except:
             return ""
         
+    def paint(self, painter, option, index):
+        QStyledItemDelegate.paint(self, painter, option, index)
+        
+        if index.isValid() and index.internalPointer().data(Outline.status.value) not in ["", None, "0"]:
+            opt = QStyleOptionComboBox()
+            opt.rect = option.rect
+            r = qApp.style().subControlRect(QStyle.CC_ComboBox, opt, QStyle.SC_ComboBoxArrow)
+            option.rect = r
+            qApp.style().drawPrimitive(QStyle.PE_IndicatorArrowDown, option, painter)
+        
         
 class treeOutlineLabelDelegate(QStyledItemDelegate):
     
@@ -157,18 +179,25 @@ class treeOutlineLabelDelegate(QStyledItemDelegate):
         QStyledItemDelegate.__init__(self, parent)
         self.mdlLabels = mdlLabels
         
-    #def sizeHint(self, option, index):
-        #s = QStyledItemDelegate.sizeHint(self, option, index)
-        #if s.width() > 200:
-            #s.setWidth(200)
-        #elif s.width() < 100:
-            #s.setWidth(100)
-        #return s + QSize(18, 0)
+    def sizeHint(self, option, index):
+        d = index.internalPointer().data(index.column(), Qt.DisplayRole)
+        if not d: 
+            d = 0
+        item = self.mdlLabels.item(int(d), 0)
+        idx = self.mdlLabels.indexFromItem(item)
+        opt = QStyleOptionViewItem(option)
+        self.initStyleOption(opt, idx)
+        s = qApp.style().sizeFromContents(QStyle.CT_ItemViewItem, opt, QSize())
+        if s.width() > 150:
+            s.setWidth(150)
+        elif s.width() < 50:
+            s.setWidth(50)
+        return s + QSize(18, 0)
     
     def createEditor(self, parent, option, index):
         item = index.internalPointer()
         editor = QComboBox(parent)
-        editor.setAutoFillBackground(True)
+        #editor.setAutoFillBackground(True)
         editor.setFrame(False)
         return editor
     
@@ -201,4 +230,12 @@ class treeOutlineLabelDelegate(QStyledItemDelegate):
         self.initStyleOption(opt, self.mdlLabels.indexFromItem(lbl))
         
         qApp.style().drawControl(QStyle.CE_ItemViewItem, opt, painter)
+        
+        # Drop down indicator
+        if index.isValid() and index.internalPointer().data(Outline.label.value) not in ["", None, "0"]:
+            opt = QStyleOptionComboBox()
+            opt.rect = option.rect
+            r = qApp.style().subControlRect(QStyle.CC_ComboBox, opt, QStyle.SC_ComboBoxArrow)
+            option.rect = r
+            qApp.style().drawPrimitive(QStyle.PE_IndicatorArrowDown, option, painter)
         
