@@ -17,6 +17,7 @@ class lineEditView(QLineEdit):
         
     def setModel(self, model):
         self._model = model
+        self._model.dataChanged.connect(self.update)
         
     def setColumn(self, col):
         self._column = col
@@ -31,7 +32,6 @@ class lineEditView(QLineEdit):
             if self._placeholderText != None:
                 self.setPlaceholderText(self._placeholderText)
             self.textEdited.connect(self.submit)
-            self._model.dataChanged.connect(self.update)
             self.updateText()
             
     def setCurrentModelIndexes(self, indexes):
@@ -45,7 +45,6 @@ class lineEditView(QLineEdit):
                 self._indexes.append(i)
         
         self.textEdited.connect(self.submit)
-        self._model.dataChanged.connect(self.update)
         self.updateText()
         
     def submit(self):
@@ -98,6 +97,7 @@ class lineEditView(QLineEdit):
             for t2 in t[1:]:
                 if t2 != t[0]:
                     same = False
+                    break
             
             if same:
                 self.setText(t[0])

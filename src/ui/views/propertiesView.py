@@ -54,5 +54,6 @@ class propertiesView(QWidget, Ui_propertiesView):
             print("Multiple selection, Work in progress")
             self.txtTitle.setCurrentModelIndexes(indexes)
             self.txtGoal.setCurrentModelIndexes(indexes)
+            self.chkCompile.setCurrentModelIndexes(indexes)
             #FIXME: do the other views
             
