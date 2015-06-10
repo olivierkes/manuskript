@@ -135,7 +135,9 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
             
             self.txtEdits = []
             
-            addTitle(item)
+            if item != self._model.rootItem:
+                addTitle(item)
+                
             addChildren(item)
             addSpacer()
             self.scroll.setWidget(w)
