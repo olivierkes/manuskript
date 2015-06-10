@@ -163,6 +163,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.treePlanOutline.setModelPersos(self.mdlPersos)
         self.treePlanOutline.setModelLabels(self.mdlLabels)
         self.treePlanOutline.setModelStatus(self.mdlStatus)
+        self.viewRedacProperties.setModels(self.mdlOutline, self.mdlPersos, self.mdlLabels, self.mdlStatus)
         
         self.treePlanOutline.setModel(self.mdlOutline)
         self.cmbPlanPOV.setModels(self.mdlPersos, self.mdlOutline)
@@ -192,29 +193,19 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btnRedacRemoveItem.clicked.connect(self.outlineRemoveItems)
         self.btnPlanRemoveItem.clicked.connect(self.outlineRemoveItems)
         
-        self.cmbRedacPOV.setModels(self.mdlPersos, self.mdlOutline)
-        self.cmbRedacLabel.setModels(self.mdlLabels, self.mdlOutline)
-        self.cmbRedacStatus.setModels(self.mdlStatus, self.mdlOutline)
-        #self.chkRedacCompile.setModel(self.mdlOutline)
-        
         self.mprOutline = QDataWidgetMapper()
         self.mprOutline.setModel(self.mdlOutline)
         mapping = [
             (self.txtRedacSummarySentance, Outline.summarySentance.value),
             (self.txtRedacSummaryFull, Outline.summaryFull.value),
-            (self.txtRedacNotes, Outline.notes.value),
-            (self.txtRedacTitle, Outline.title.value),
-            (self.txtRedacGoal, Outline.setGoal.value)
+            (self.txtRedacNotes, Outline.notes.value)
             ]
         for w, i in mapping:
                 self.mprOutline.addMapping(w, i)
         
         self.treeRedacOutline.selectionModel().currentChanged.connect(lambda idx: self.mprOutline.setRootIndex(idx.parent()))
         self.treeRedacOutline.selectionModel().currentChanged.connect(self.mprOutline.setCurrentModelIndex)
-        self.treeRedacOutline.selectionModel().currentChanged.connect(self.cmbRedacPOV.setCurrentModelIndex)
-        self.treeRedacOutline.selectionModel().currentChanged.connect(self.cmbRedacLabel.setCurrentModelIndex)
-        self.treeRedacOutline.selectionModel().currentChanged.connect(self.cmbRedacStatus.setCurrentModelIndex)
-        self.treeRedacOutline.selectionModel().currentChanged.connect(self.chkRedacCompile.setCurrentModelIndex)
+        self.treeRedacOutline.selectionModel().selectionChanged.connect(lambda: self.viewRedacProperties.selectionChanged(self.treeRedacOutline))
         #self.treeRedacOutline.selectionModel().currentChanged.connect(self.redacEditor.setCurrentModelIndex)
         self.treeRedacOutline.selectionModel().selectionChanged.connect(self.redacEditor.setView)
         self.treeRedacOutline.selectionModel().currentChanged.connect(self.redacEditor.txtRedacText.setCurrentModelIndex)

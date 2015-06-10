@@ -1,6 +1,7 @@
 FORMS            += ../src/ui/mainWindow.ui
 FORMS            += ../src/ui/sldImportance_ui.ui
 FORMS            += ../src/ui/editors/editorWidget_ui.ui
+FORMS            += ../src/ui/views/propertiesView_ui.ui
 
 
 SOURCES          += ../src/main.py

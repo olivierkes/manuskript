@@ -1609,25 +1609,6 @@
           <widget class="QWidget" name="layoutWidget">
            <layout class="QVBoxLayout" name="verticalLayout_16">
             <item>
-             <widget class="QLineEdit" name="txtRedacTitle">
-              <property name="font">
-               <font>
-                <weight>75</weight>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">background:transparent;</string>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="frame">
-               <bool>false</bool>
-              </property>
-             </widget>
-            </item>
-            <item>
              <widget class="editorWidget" name="redacEditor" native="true"/>
             </item>
             <item>
@@ -1840,110 +1821,17 @@
                <property name="checkable">
                 <bool>true</bool>
                </property>
-               <layout class="QFormLayout" name="formLayout_5">
+               <layout class="QVBoxLayout" name="verticalLayout_28">
                 <property name="margin">
                  <number>0</number>
                 </property>
-                <item row="0" column="0">
-                 <widget class="QLabel" name="lblRedacPOV">
-                  <property name="text">
-                   <string>POV</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="1">
-                 <widget class="cmbOutlinePersoChoser" name="cmbRedacPOV">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="frame">
-                   <bool>false</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="0">
-                 <widget class="QLabel" name="label_30">
-                  <property name="text">
-                   <string>Status</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="1">
-                 <widget class="cmbOutlineStatusChoser" name="cmbRedacStatus">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="frame">
-                   <bool>false</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item row="3" column="0">
-                 <widget class="QLabel" name="label_32">
-                  <property name="text">
-                   <string>Compile</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="3" column="1">
-                 <widget class="chkOutlineCompile" name="chkRedacCompile">
-                  <property name="text">
-                   <string/>
-                  </property>
-                 </widget>
-                </item>
-                <item row="4" column="0">
-                 <widget class="QLabel" name="label_29">
-                  <property name="text">
-                   <string>Goal</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="4" column="1">
-                 <widget class="QLineEdit" name="txtRedacGoal">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="autoFillBackground">
-                   <bool>false</bool>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">border-radius: 6px;</string>
-                  </property>
-                  <property name="frame">
-                   <bool>false</bool>
-                  </property>
-                  <property name="placeholderText">
-                   <string>Word count</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="2" column="0">
-                 <widget class="QLabel" name="label_33">
-                  <property name="text">
-                   <string>Label</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="2" column="1">
-                 <widget class="cmbOutlineLabelChoser" name="cmbRedacLabel">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="frame">
-                   <bool>false</bool>
+                <item>
+                 <widget class="propertiesView" name="viewRedacProperties" native="true">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>50</height>
+                   </size>
                   </property>
                  </widget>
                 </item>
@@ -2354,16 +2242,6 @@
    <header>ui.cmbOutlinePersoChoser.h</header>
   </customwidget>
   <customwidget>
-   <class>cmbOutlineStatusChoser</class>
-   <extends>QComboBox</extends>
-   <header>ui.cmbOutlineStatusChoser.h</header>
-  </customwidget>
-  <customwidget>
-   <class>chkOutlineCompile</class>
-   <extends>QCheckBox</extends>
-   <header>ui.chkOutlineCompile.h</header>
-  </customwidget>
-  <customwidget>
    <class>editorWidget</class>
    <extends>QWidget</extends>
    <header>ui.editors.editorWidget.h</header>
@@ -2386,9 +2264,10 @@
    <header>ui.views.treeView.h</header>
   </customwidget>
   <customwidget>
-   <class>cmbOutlineLabelChoser</class>
-   <extends>QComboBox</extends>
-   <header>ui.cmbOutlineLabelChoser.h</header>
+   <class>propertiesView</class>
+   <extends>QWidget</extends>
+   <header>ui.views.propertiesView.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>

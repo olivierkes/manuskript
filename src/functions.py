@@ -21,6 +21,12 @@ def toFloat(text):
     else:
         return 0.
     
+def toString(text):
+    if text == None:
+        return ""
+    else:
+        return str(text)
+    
 def drawProgress(painter, rect, progress, radius=0):
     painter.setPen(Qt.NoPen)
     painter.setBrush(QColor("#dddddd"))

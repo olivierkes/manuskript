@@ -70,6 +70,8 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
             index = QModelIndex()
             item = self._model.rootItem
             
+        self.currentIndex = index
+            
         def addTitle(itm):
             edt = customTextEdit(self, html="<h{l}>{t}</h{l}>".format(l=min(itm.level()+1, 5), t=itm.title()), autoResize=True)
             edt.setFrameShape(QFrame.NoFrame)
