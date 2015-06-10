@@ -144,6 +144,11 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
             self.stack.setCurrentIndex(2)
             self.corkView.setModel(self._model)
             self.corkView.setRootIndex(index)
+            self.corkView.selectionModel().selectionChanged.connect(
+                lambda: mainWindow().viewRedacProperties.selectionChanged(self.corkView))
+            self.corkView.clicked.connect(
+                lambda: mainWindow().viewRedacProperties.selectionChanged(self.corkView))
+            
             
         elif item.isFolder() and self.folderView == "outline":
             self.stack.setCurrentIndex(3)
@@ -152,6 +157,11 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
             self.outlineView.setModelStatus(mainWindow().mdlStatus)
             self.outlineView.setModel(self._model)
             self.outlineView.setRootIndex(index)
+            self.outlineView.selectionModel().selectionChanged.connect(
+                lambda: mainWindow().viewRedacProperties.selectionChanged(self.outlineView))
+            self.outlineView.clicked.connect(
+                lambda: mainWindow().viewRedacProperties.selectionChanged(self.outlineView))
+            
             
         else:
             self.stack.setCurrentIndex(0)

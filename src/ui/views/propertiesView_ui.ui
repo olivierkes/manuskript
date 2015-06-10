@@ -66,7 +66,7 @@
           </widget>
          </item>
          <item row="1" column="0">
-          <widget class="QLabel" name="label_30">
+          <widget class="QLabel" name="lblStatus">
            <property name="text">
             <string>Status</string>
            </property>
@@ -86,7 +86,7 @@
           </widget>
          </item>
          <item row="2" column="0">
-          <widget class="QLabel" name="label_33">
+          <widget class="QLabel" name="lblLabel">
            <property name="text">
             <string>Label</string>
            </property>
@@ -106,7 +106,7 @@
           </widget>
          </item>
          <item row="3" column="0">
-          <widget class="QLabel" name="label_32">
+          <widget class="QLabel" name="lblCompile">
            <property name="text">
             <string>Compile</string>
            </property>
@@ -120,7 +120,7 @@
           </widget>
          </item>
          <item row="4" column="0">
-          <widget class="QLabel" name="label_29">
+          <widget class="QLabel" name="lblGoal">
            <property name="text">
             <string>Goal</string>
            </property>

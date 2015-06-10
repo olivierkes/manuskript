@@ -205,7 +205,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
         self.treeRedacOutline.selectionModel().currentChanged.connect(lambda idx: self.mprOutline.setRootIndex(idx.parent()))
         self.treeRedacOutline.selectionModel().currentChanged.connect(self.mprOutline.setCurrentModelIndex)
-        self.treeRedacOutline.selectionModel().selectionChanged.connect(lambda: self.viewRedacProperties.selectionChanged(self.treeRedacOutline))
+        
+        self.treeRedacOutline.selectionModel().selectionChanged.connect(
+            lambda: self.viewRedacProperties.selectionChanged(self.treeRedacOutline))
+        self.treeRedacOutline.clicked.connect(
+            lambda: self.viewRedacProperties.selectionChanged(self.treeRedacOutline))
+        
         #self.treeRedacOutline.selectionModel().currentChanged.connect(self.redacEditor.setCurrentModelIndex)
         self.treeRedacOutline.selectionModel().selectionChanged.connect(self.redacEditor.setView)
         self.treeRedacOutline.selectionModel().currentChanged.connect(self.redacEditor.txtRedacText.setCurrentModelIndex)

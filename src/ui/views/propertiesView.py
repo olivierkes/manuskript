@@ -42,6 +42,7 @@ class propertiesView(QWidget, Ui_propertiesView):
         
         elif len(indexes) == 1:
             self.setEnabled(True)
+            self.setLabelsItalic(False)
             idx = indexes[0]
             self.cmbPOV.setCurrentModelIndex(idx)
             self.cmbLabel.setCurrentModelIndex(idx)
@@ -51,9 +52,23 @@ class propertiesView(QWidget, Ui_propertiesView):
             self.txtGoal.setCurrentModelIndex(idx)
             
         else:
-            print("Multiple selection, Work in progress")
+            self.setEnabled(True)
+            self.setLabelsItalic(True)
             self.txtTitle.setCurrentModelIndexes(indexes)
             self.txtGoal.setCurrentModelIndexes(indexes)
             self.chkCompile.setCurrentModelIndexes(indexes)
-            #FIXME: do the other views
+            self.cmbPOV.setCurrentModelIndexes(indexes)
+            self.cmbLabel.setCurrentModelIndexes(indexes)
+            self.cmbStatus.setCurrentModelIndexes(indexes)
             
+    def setLabelsItalic(self, value):
+        f = self.lblPOV.font()
+        f.setItalic(value)
+        for lbl in [
+            self.lblPOV,
+            self.lblStatus,
+            self.lblLabel,
+            self.lblCompile,
+            self.lblGoal
+            ]:
+            lbl.setFont(f)
