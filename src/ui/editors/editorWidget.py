@@ -137,6 +137,7 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
                 self.stack.setCurrentIndex(3)
                 self.outlineView.setModelPersos(mainWindow().mdlPersos)
                 self.outlineView.setModelLabels(mainWindow().mdlLabels)
+                self.outlineView.setModelStatus(mainWindow().mdlStatus)
                 self.outlineView.setModel(self._model)
                 self.outlineView.setRootIndex(self.currentIndex)
               

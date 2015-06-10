@@ -14,13 +14,10 @@ from functions import *
 
 class outlineModel(QAbstractItemModel):
     
-    newStatuses = pyqtSignal()
-    
     def __init__(self):
         QAbstractItemModel.__init__(self)
         
         self.rootItem = outlineItem(self, title="root")
-        self.generateStatuses()
     
     def index(self, row, column, parent):
         
@@ -94,9 +91,6 @@ class outlineModel(QAbstractItemModel):
     def setData(self, index, value, role=Qt.EditRole):
         item = index.internalPointer()
         item.setData(index.column(), value, role)
-        
-        if index.column() == Outline.status.value:
-            self.generateStatuses()
         
         self.dataChanged.emit(index.sibling(index.row(), 0), 
                               index.sibling(index.row(), max([i.value for i in Outline])))
@@ -310,33 +304,10 @@ class outlineModel(QAbstractItemModel):
         #try:
             root = ET.parse(xml)
             self.rootItem = outlineItem(self, xml=ET.tostring(root))
-            self.generateStatuses()
         #except:
             #print("N'arrive pas à ouvrir {}".format(xml))
             #return
-        
-        
-    ################# DIVERS #################
-        
-    def generateStatuses(self, item=None):
-        if item == None:
-            self.statuses = [
-                "TODO",
-                "First draft",
-                "Second draft",
-                "Final"
-                ]
-            item = self.rootItem
-        
-        val = item.data(Outline.status.value)
-        if val and not val in self.statuses:
-            self.statuses.append(val)
-            self.newStatuses.emit()
             
-        for c in item.children():
-            self.generateStatuses(c)
-            
-        
     
 class outlineItem():
     

@@ -66,7 +66,7 @@ class Ui_Settings(object):
         self.tab_2.setObjectName("tab_2")
         self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.tab_2)
         self.verticalLayout_4.setObjectName("verticalLayout_4")
-        self.lstStatus = QtWidgets.QListWidget(self.tab_2)
+        self.lstStatus = QtWidgets.QListView(self.tab_2)
         self.lstStatus.setObjectName("lstStatus")
         self.verticalLayout_4.addWidget(self.lstStatus)
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
@@ -90,7 +90,7 @@ class Ui_Settings(object):
         self.verticalLayout.addWidget(self.tabWidget)
 
         self.retranslateUi(Settings)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(Settings)
 
     def retranslateUi(self, Settings):

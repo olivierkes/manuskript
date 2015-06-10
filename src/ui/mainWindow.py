@@ -952,7 +952,6 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.cmbRedacStatus.sizePolicy().hasHeightForWidth())
         self.cmbRedacStatus.setSizePolicy(sizePolicy)
-        self.cmbRedacStatus.setEditable(True)
         self.cmbRedacStatus.setFrame(False)
         self.cmbRedacStatus.setObjectName("cmbRedacStatus")
         self.formLayout_5.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.cmbRedacStatus)
@@ -1097,6 +1096,9 @@ class Ui_MainWindow(object):
         self.lstDebugLabels = QtWidgets.QListView(self.tab)
         self.lstDebugLabels.setObjectName("lstDebugLabels")
         self.horizontalLayout.addWidget(self.lstDebugLabels)
+        self.lstDebugStatus = QtWidgets.QListView(self.tab)
+        self.lstDebugStatus.setObjectName("lstDebugStatus")
+        self.horizontalLayout.addWidget(self.lstDebugStatus)
         self.tabWidget.addTab(self.tab, "")
         self.verticalLayout_29.addWidget(self.tabWidget)
         self.tabMain.addTab(self.lytTabDebug, "")
@@ -1366,12 +1368,12 @@ class Ui_MainWindow(object):
         self.actLabels.setText(_translate("MainWindow", "Labels..."))
         self.actStatus.setText(_translate("MainWindow", "Status..."))
 
-from ui.cmbOutlineLabelChoser import cmbOutlineLabelChoser
-from ui.chkOutlineCompile import chkOutlineCompile
-from ui.views.outlineView import outlineView
-from ui.cmbOutlinePersoChoser import cmbOutlinePersoChoser
-from ui.cmbOutlineStatusChoser import cmbOutlineStatusChoser
-from ui.sldImportance import sldImportance
-from ui.editors.editorWidget import editorWidget
 from ui.collapsibleGroupBox2 import collapsibleGroupBox2
+from ui.cmbOutlineLabelChoser import cmbOutlineLabelChoser
+from ui.sldImportance import sldImportance
+from ui.cmbOutlineStatusChoser import cmbOutlineStatusChoser
+from ui.views.outlineView import outlineView
+from ui.chkOutlineCompile import chkOutlineCompile
 from ui.views.treeView import treeView
+from ui.editors.editorWidget import editorWidget
+from ui.cmbOutlinePersoChoser import cmbOutlinePersoChoser

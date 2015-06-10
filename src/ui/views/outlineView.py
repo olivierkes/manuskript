@@ -13,13 +13,15 @@ from ui.views.outlineBasics import *
 
 class outlineView(QTreeView, dndView, outlineBasics):
     
-    def __init__(self, parent=None, modelPersos=None, modelLabels=None):
+    def __init__(self, parent=None, modelPersos=None, modelLabels=None, modelStatus=None):
         QTreeView.__init__(self, parent)
         dndView.__init__(self)
         outlineBasics.__init__(self, parent)
         
         self.modelPersos = modelPersos
         self.modelLabels = modelLabels
+        self.modelStatus = modelStatus
+        
         self.header().setStretchLastSection(False)
         
     def setModelPersos(self, model):
@@ -30,6 +32,10 @@ class outlineView(QTreeView, dndView, outlineBasics):
         # This is used by treeOutlineLabelDelegate to display labels
         self.modelLabels = model
         
+    def setModelStatus(self, model):
+        # This is used by treeOutlineStatusDelegate to display statuses
+        self.modelStatus = model
+        
     def setModel(self, model):
         QTreeView.setModel(self, model)
         
@@ -38,7 +44,7 @@ class outlineView(QTreeView, dndView, outlineBasics):
         self.setItemDelegateForColumn(Outline.POV.value, self.treePlanOutlinePersoDelegate)
         self.treePlanOutlineCompileDelegate = treeOutlineCompileDelegate()
         self.setItemDelegateForColumn(Outline.compile.value, self.treePlanOutlineCompileDelegate)
-        self.treePlanOutlineStatusDelegate = treeOutlineStatusDelegate()
+        self.treePlanOutlineStatusDelegate = treeOutlineStatusDelegate(self.modelStatus)
         self.setItemDelegateForColumn(Outline.status.value, self.treePlanOutlineStatusDelegate)
         self.treePlanOutlineGoalPercentageDelegate = treeOutlineGoalPercentageDelegate()
         self.setItemDelegateForColumn(Outline.goalPercentage.value, self.treePlanOutlineGoalPercentageDelegate)

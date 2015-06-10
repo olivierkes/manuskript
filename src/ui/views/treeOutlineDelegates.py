@@ -113,31 +113,42 @@ class treeOutlineGoalPercentageDelegate(QStyledItemDelegate):
     
 class treeOutlineStatusDelegate(QStyledItemDelegate):
     
-    def __init__(self, parent=None):
+    def __init__(self, mdlStatus, parent=None):
         QStyledItemDelegate.__init__(self, parent)
+        self.mdlStatus = mdlStatus
         
     def sizeHint(self, option, index):
         s = QStyledItemDelegate.sizeHint(self, option, index)
+        if s.width() > 150:
+            s.setWidth(150)
+        elif s.width() < 50:
+            s.setWidth(50)
         return s + QSize(18, 0)
     
     def createEditor(self, parent, option, index):
         editor = QComboBox(parent)
         editor.setAutoFillBackground(True)
-        editor.setEditable(True)
         editor.setFrame(False)
         return editor
     
     def setEditorData(self, editor, index):
-        statuses = index.model().statuses
-        editor.addItem("")
-        for status in statuses:
-            editor.addItem(status)
-        editor.setCurrentIndex(editor.findText(index.data()))
+        for i in range(self.mdlStatus.rowCount()):
+            editor.addItem(self.mdlStatus.item(i, 0).text())
+            
+        val = index.internalPointer().data(Outline.status.value)
+        if not val: val = 0
+        editor.setCurrentIndex(int(val))
         editor.showPopup()
     
     def setModelData(self, editor, model, index):
-        val = editor.currentText()
+        val = editor.currentIndex()
         model.setData(index, val)
+        
+    def displayText(self, value, locale):
+        try:
+            return self.mdlStatus.item(int(value), 0).text()
+        except:
+            return ""
         
         
 class treeOutlineLabelDelegate(QStyledItemDelegate):

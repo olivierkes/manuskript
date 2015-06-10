@@ -58,6 +58,7 @@ class outlineBasics(QAbstractItemView):
             
             self.menu.addSeparator()
                 
+            # POV
             self.menuPOV = QMenu(qApp.translate("outlineBasics", "Set POV"), self.menu)
             mw = mainWindow()
             a = QAction(QIcon.fromTheme("edit-delete"), qApp.translate("outlineBasics", "None"), self.menuPOV)
@@ -74,25 +75,23 @@ class outlineBasics(QAbstractItemView):
             mpr.mapped.connect(self.setPOV)
             self.menu.addMenu(self.menuPOV)
             
-            
+            # Status
             self.menuStatus = QMenu(qApp.translate("outlineBasics", "Set Status"), self.menu)
-            if self.model():
-                a = QAction(QIcon.fromTheme("edit-delete"), qApp.translate("outlineBasics", "None"), self.menuStatus)
-                a.triggered.connect(lambda: self.setStatus(""))
-                self.menuStatus.addAction(a)
-                self.menuStatus.addSeparator()
+                #a = QAction(QIcon.fromTheme("edit-delete"), qApp.translate("outlineBasics", "None"), self.menuStatus)
+                #a.triggered.connect(lambda: self.setStatus(""))
+                #self.menuStatus.addAction(a)
+                #self.menuStatus.addSeparator()
                 
-                mpr = QSignalMapper(self.menuStatus)
-                for status in self.model().statuses:
-                    a = QAction(status, self.menuStatus)
-                    a.triggered.connect(mpr.map)
-                    mpr.setMapping(a, status)
-                    self.menuStatus.addAction(a)
-                mpr.mapped[str].connect(self.setStatus)
-            
+            mpr = QSignalMapper(self.menuStatus)
+            for i in range(mw.mdlStatus.rowCount()):
+                a = QAction(mw.mdlStatus.item(i, 0).text(), self.menuStatus)
+                a.triggered.connect(mpr.map)
+                mpr.setMapping(a, i)
+                self.menuStatus.addAction(a)
+            mpr.mapped.connect(self.setStatus)
             self.menu.addMenu(self.menuStatus)
             
-            
+            # Labels
             self.menuLabel = QMenu(qApp.translate("outlineBasics", "Set Label"), self.menu)
             mpr = QSignalMapper(self.menuLabel)
             for i in range(mw.mdlLabels.rowCount()):

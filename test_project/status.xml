@@ -15,22 +15,22 @@
   </header>
   <data>
     <row row="0">
-      <col col="0" color="#00000000"/>
+      <col col="0"/>
     </row>
     <row row="1">
-      <col col="0" color="#ffffff00">Idée</col>
+      <col col="0">TODO</col>
     </row>
     <row row="2">
-      <col col="0" color="#ff00ff00">Note</col>
+      <col col="0">Premier brouillon</col>
     </row>
     <row row="3">
-      <col col="0" color="#ff0000ff">Chapitre</col>
+      <col col="0">Second brouillon</col>
     </row>
     <row row="4">
-      <col col="0" color="#ffff0000">Scène</col>
+      <col col="0">Final</col>
     </row>
     <row row="5">
-      <col col="0" color="#ffc9ff9d">Nouveau label</col>
+      <col col="0">Nouveau status</col>
     </row>
   </data>
 </model>

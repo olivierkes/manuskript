@@ -17,7 +17,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="tab">
       <attribute name="title">
@@ -93,7 +93,9 @@
             <string/>
            </property>
            <property name="icon">
-            <iconset theme="list-add"/>
+            <iconset theme="list-add">
+             <normaloff/>
+            </iconset>
            </property>
           </widget>
          </item>
@@ -103,7 +105,9 @@
             <string/>
            </property>
            <property name="icon">
-            <iconset theme="list-remove"/>
+            <iconset theme="list-remove">
+             <normaloff/>
+            </iconset>
            </property>
           </widget>
          </item>
@@ -130,7 +134,7 @@
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_4">
        <item>
-        <widget class="QListWidget" name="lstStatus"/>
+        <widget class="QListView" name="lstStatus"/>
        </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_3">

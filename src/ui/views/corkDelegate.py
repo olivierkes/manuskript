@@ -281,16 +281,18 @@ class corkDelegate(QStyledItemDelegate):
         mainRect = self.mainRect
         status = item.data(Outline.status.value)
         if status:
-            p.save()
-            p.setClipRegion(QRegion(mainRect))
-            f = p.font()
-            f.setPointSize(f.pointSize() + 12)
-            f.setBold(True)
-            p.setFont(f)
-            p.setPen(QColor(Qt.red).lighter(175))
-            _rotate(-35)
-            p.drawText(mainRect, Qt.AlignCenter, status)
-            p.restore()
+            it = mainWindow().mdlStatus.item(int(status), 0)
+            if it != None:
+                p.save()
+                p.setClipRegion(QRegion(mainRect))
+                f = p.font()
+                f.setPointSize(f.pointSize() + 12)
+                f.setBold(True)
+                p.setFont(f)
+                p.setPen(QColor(Qt.red).lighter(175))
+                _rotate(-35)
+                p.drawText(mainRect, Qt.AlignCenter, it.text())
+                p.restore()
             
         # Draw Summary
           # One line

@@ -13,40 +13,41 @@ class cmbOutlineStatusChoser(QComboBox):
         QComboBox.__init__(self, parent)
         self.activated[int].connect(self.changed)
         self.currentModelIndex = None
-        self.setEditable(True)
-        self.setAutoFillBackground(True)
         
-    def setModel(self, mdlOutline):
+    def setModels(self, mdlStatus, mdlOutline):
+        self.mdlStatus = mdlStatus
+        self.mdlStatus.dataChanged.connect(self.updateItems)  # Not emiting?
         self.mdlOutline = mdlOutline
-        self.mdlOutline.dataChanged.connect(self.updateItems)
         self.mdlOutline.dataChanged.connect(self.updateSelectedItem)
-        self.mdlOutline.newStatuses.connect(self.updateItems)
         self.updateItems()
         
     def updateSelectedItem(self, idx1=None, idx2=None):
         if not self.currentModelIndex or not self.currentModelIndex.isValid():
             self.setCurrentIndex(0)
         else:
-            item = self.currentModelIndex.internalPointer()
-            self.setCurrentIndex(self.findText(item.data(Outline.status.value)))
+            val = self.currentModelIndex.internalPointer().data(Outline.status.value)
+            if not val: val = 0
+            try:
+                self.setCurrentIndex(int(val))
+            except:
+                pass
         
     def changed(self, idx):
         if self.currentModelIndex:
             modelIndex = self.mdlOutline.index(self.currentModelIndex.row(), Outline.status.value, self.currentModelIndex.parent())
-            self.mdlOutline.setData(modelIndex, self.currentText())
+            self.mdlOutline.setData(modelIndex, self.currentIndex())
         
     def setCurrentModelIndex(self, idx):
         self.currentModelIndex = idx
+        self.updateItems()
         self.updateSelectedItem()
         
-    def updateItems(self):
-        
+    def updateItems(self, topLeft=None, bottomRight=None, roles=None):
         self.clear()
-        
-        self.addItem("")
-        
-        for status in self.mdlOutline.statuses:
-            self.addItem(status)
+        for i in range(self.mdlStatus.rowCount()):
+            item = self.mdlStatus.item(i, 0)
+            if item:
+                self.addItem(item.text())
             
         if self.currentModelIndex:
             self.updateSelectedItem()

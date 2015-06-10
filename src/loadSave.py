@@ -36,7 +36,8 @@ def saveStandardItemModelXML(mdl, xml):
             col = ET.SubElement(row, "col")
             col.attrib["col"] = str(y)
             if mdl.data(mdl.index(x, y), Qt.DecorationRole) != None:
-                col.attrib["color"] = iconColor(mdl.data(mdl.index(x, y), Qt.DecorationRole)).name(QColor.HexArgb)
+                color = iconColor(mdl.data(mdl.index(x, y), Qt.DecorationRole)).name(QColor.HexArgb)
+                col.attrib["color"] = color if color != "#ff000000" else "#00000000"
             if mdl.data(mdl.index(x, y)) != "":
                 col.text = mdl.data(mdl.index(x, y))
             

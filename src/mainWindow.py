@@ -139,19 +139,31 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.mdlLabels = QStandardItemModel()
         for color, text in [
             (Qt.transparent, ""),
-            (Qt.yellow, "Idea"),
-            (Qt.green, "Note"),
-            (Qt.blue, "Chapter"),
-            (Qt.red, "Scene")
+            (Qt.yellow, self.tr("Idea")),
+            (Qt.green, self.tr("Note")),
+            (Qt.blue, self.tr("Chapter")),
+            (Qt.red, self.tr("Scene"))
             ]:
             self.mdlLabels.appendRow(QStandardItem(iconFromColor(color), text))
             
-        
+        # Status
+        self.mdlStatus = QStandardItemModel()
+        for text in [
+                "",
+                self.tr("TODO"),
+                self.tr("First draft"),
+                self.tr("Second draft"),
+                self.tr("Final")
+                ]:
+            self.mdlStatus.appendRow(QStandardItem(text))
+            
         # Outline
         self.mdlOutline = outlineModel()
         self.treeRedacOutline.setModel(self.mdlOutline)
         self.treePlanOutline.setModelPersos(self.mdlPersos)
         self.treePlanOutline.setModelLabels(self.mdlLabels)
+        self.treePlanOutline.setModelStatus(self.mdlStatus)
+        
         self.treePlanOutline.setModel(self.mdlOutline)
         self.cmbPlanPOV.setModels(self.mdlPersos, self.mdlOutline)
             
@@ -181,7 +193,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
         self.cmbRedacPOV.setModels(self.mdlPersos, self.mdlOutline)
         self.cmbRedacLabel.setModels(self.mdlLabels, self.mdlOutline)
-        self.cmbRedacStatus.setModel(self.mdlOutline)
+        self.cmbRedacStatus.setModels(self.mdlStatus, self.mdlOutline)
         #self.chkRedacCompile.setModel(self.mdlOutline)
         
         self.mprOutline = QDataWidgetMapper()
@@ -230,6 +242,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.tblDebugPersosInfos.setModel(self.mdlPersosInfos)
         self.treeDebugOutline.setModel(self.mdlOutline)
         self.lstDebugLabels.setModel(self.mdlLabels)
+        self.lstDebugStatus.setModel(self.mdlStatus)
+        
         
         # Playing with qStyle
         self.cmbStyle.addItems(list(QStyleFactory.keys()))
@@ -326,6 +340,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         loadStandardItemModelXML(self.mdlPersos, "{}/perso.xml".format(project))
         loadStandardItemModelXML(self.mdlPersosInfos, "{}/persoInfos.xml".format(project))
         loadStandardItemModelXML(self.mdlLabels, "{}/labels.xml".format(project))
+        loadStandardItemModelXML(self.mdlStatus, "{}/status.xml".format(project))
         self.mdlOutline.loadFromXML("{}/outline.xml".format(project))
         
         # Stuff
@@ -351,6 +366,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         saveStandardItemModelXML(self.mdlPersos, "{}/perso.xml".format(self.currentProject))
         saveStandardItemModelXML(self.mdlPersosInfos, "{}/persoInfos.xml".format(self.currentProject))
         saveStandardItemModelXML(self.mdlLabels, "{}/labels.xml".format(self.currentProject))
+        saveStandardItemModelXML(self.mdlStatus, "{}/status.xml".format(self.currentProject))
         self.mdlOutline.saveToXML("{}/outline.xml".format(self.currentProject))
         
         # closeEvent
