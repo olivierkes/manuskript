@@ -2239,7 +2239,7 @@
   <customwidget>
    <class>cmbOutlinePersoChoser</class>
    <extends>QComboBox</extends>
-   <header>ui.cmbOutlinePersoChoser.h</header>
+   <header>ui.views.cmbOutlinePersoChoser.h</header>
   </customwidget>
   <customwidget>
    <class>editorWidget</class>

@@ -107,5 +107,5 @@ class lineEditView(QLineEdit):
                 if not self._placeholderText:
                     self._placeholderText = self.placeholderText()
                     
-                self.setPlaceholderText("Various")
+                self.setPlaceholderText(self.tr("Various"))
                 

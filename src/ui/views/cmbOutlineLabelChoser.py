@@ -4,30 +4,33 @@
 from qt import *
 from enums import *
 
-
-class cmbOutlineStatusChoser(QComboBox):
+class cmbOutlineLabelChoser(QComboBox):
     
     def __init__(self, parent=None):
         QComboBox.__init__(self, parent)
         self.activated[int].connect(self.submit)
-        self._column = Outline.status.value
+        self._column = Outline.label.value
         self._index = None
         self._indexes = None
         self._updating = False
+        self._various = False
         
-    def setModels(self, mdlStatus, mdlOutline):
-        self.mdlStatus = mdlStatus
-        self.mdlStatus.dataChanged.connect(self.updateItems)
+    def setModels(self, mdlLabels, mdlOutline):
+        self.mdlLabels = mdlLabels
+        self.mdlLabels.dataChanged.connect(self.updateItems)
         self.mdlOutline = mdlOutline
         self.mdlOutline.dataChanged.connect(self.update)
         self.updateItems()
         
     def updateItems(self):
         self.clear()
-        for i in range(self.mdlStatus.rowCount()):
-            item = self.mdlStatus.item(i, 0)
+        for i in range(self.mdlLabels.rowCount()):
+            item = self.mdlLabels.item(i, 0)
             if item:
-                self.addItem(item.text())
+                self.addItem(item.icon(),
+                            item.text())
+        
+        self._various = False
             
         if self._index or self._indexes:
             self.updateSelectedItem()
@@ -37,6 +40,7 @@ class cmbOutlineStatusChoser(QComboBox):
         if index.column() != self._column:
             index = index.sibling(index.row(), self._column)
         self._index = index
+        self.updateItems()
         self.updateSelectedItem()
             
     def setCurrentModelIndexes(self, indexes):
@@ -49,6 +53,7 @@ class cmbOutlineStatusChoser(QComboBox):
                     i = i.sibling(i.row(), self._column)
                 self._indexes.append(i)
         
+        self.updateItems()
         self.updateSelectedItem()
         
     def update(self, topLeft, bottomRight):
@@ -69,12 +74,12 @@ class cmbOutlineStatusChoser(QComboBox):
             if update:
                 self.updateSelectedItem()
         
-    def getStatus(self, index):
+    def getLabel(self, index):
         item = index.internalPointer()
-        status = item.data(self._column)
-        if not status: 
-            status = 0
-        return int(status)
+        label = item.data(self._column)
+        if not label: 
+            label = 0
+        return int(label)
         
     def updateSelectedItem(self):
         
@@ -82,25 +87,33 @@ class cmbOutlineStatusChoser(QComboBox):
             return
         
         if self._index:
-            status = self.getStatus(self._index)
-            self.setCurrentIndex(status)
+            label = self.getLabel(self._index)
+            self.setCurrentIndex(label)
                 
         elif self._indexes:
-            statuses = []
+            labels = []
             same = True
             
             for i in self._indexes:
-                statuses.append(self.getStatus(i))
+                labels.append(self.getLabel(i))
                 
-            for s in statuses[1:]:
-                if s != statuses[0]:
+            for lbl in labels[1:]:
+                if lbl != labels[0]:
                     same = False
                     break
             
             if same:
-                self.setCurrentIndex(statuses[0])
+                self._various = False
+                self.setCurrentIndex(labels[0])
                 
             else:
+                if not self._various:
+                    self.insertItem(0, self.tr("Various"))
+                    f = self.font()
+                    f.setItalic(True)
+                    self.setItemData(0, f, Qt.FontRole)
+                    self.setItemData(0, QBrush(Qt.darkGray), Qt.ForegroundRole)
+                self._various = True
                 self.setCurrentIndex(0)
         
         else:
@@ -111,7 +124,16 @@ class cmbOutlineStatusChoser(QComboBox):
             self.mdlOutline.setData(self._index, self.currentIndex())
             
         elif self._indexes:
+            value = self.currentIndex()
+            
+            if self._various:
+                if value == 0:
+                    return
+                
+                value -= 1
+                
             self._updating = True
             for i in self._indexes:
-                self.mdlOutline.setData(i, self.currentIndex())
+                self.mdlOutline.setData(i, value)
             self._updating = False
+            

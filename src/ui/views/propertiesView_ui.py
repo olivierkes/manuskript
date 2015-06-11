@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_propertiesView(object):
     def setupUi(self, propertiesView):
         propertiesView.setObjectName("propertiesView")
-        propertiesView.resize(192, 153)
+        propertiesView.resize(192, 159)
         self.verticalLayout = QtWidgets.QVBoxLayout(propertiesView)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout.setObjectName("verticalLayout")
@@ -181,8 +181,8 @@ class Ui_propertiesView(object):
         self.label_36.setText(_translate("propertiesView", "Goal"))
         self.txtGoalMulti.setPlaceholderText(_translate("propertiesView", "Word count"))
 
+from ui.views.cmbOutlineLabelChoser import cmbOutlineLabelChoser
+from ui.views.cmbOutlinePersoChoser import cmbOutlinePersoChoser
 from ui.views.lineEditView import lineEditView
-from ui.chkOutlineCompile import chkOutlineCompile
-from ui.cmbOutlineLabelChoser import cmbOutlineLabelChoser
-from ui.cmbOutlineStatusChoser import cmbOutlineStatusChoser
-from ui.cmbOutlinePersoChoser import cmbOutlinePersoChoser
+from ui.views.cmbOutlineStatusChoser import cmbOutlineStatusChoser
+from ui.views.chkOutlineCompile import chkOutlineCompile

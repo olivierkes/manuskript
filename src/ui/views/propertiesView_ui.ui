@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>192</width>
-    <height>153</height>
+    <height>159</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -277,22 +277,22 @@
   <customwidget>
    <class>cmbOutlinePersoChoser</class>
    <extends>QComboBox</extends>
-   <header>ui.cmbOutlinePersoChoser.h</header>
+   <header>ui.views.cmbOutlinePersoChoser.h</header>
   </customwidget>
   <customwidget>
    <class>cmbOutlineStatusChoser</class>
    <extends>QComboBox</extends>
-   <header>ui.cmbOutlineStatusChoser.h</header>
+   <header>ui.views.cmbOutlineStatusChoser.h</header>
   </customwidget>
   <customwidget>
    <class>chkOutlineCompile</class>
    <extends>QCheckBox</extends>
-   <header>ui.chkOutlineCompile.h</header>
+   <header>ui.views.chkOutlineCompile.h</header>
   </customwidget>
   <customwidget>
    <class>cmbOutlineLabelChoser</class>
    <extends>QComboBox</extends>
-   <header>ui.cmbOutlineLabelChoser.h</header>
+   <header>ui.views.cmbOutlineLabelChoser.h</header>
   </customwidget>
   <customwidget>
    <class>lineEditView</class>

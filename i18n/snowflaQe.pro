@@ -13,6 +13,10 @@ SOURCES          += ../src/ui/editors/customTextEdit.py
 SOURCES          += ../src/ui/editors/editorWidget.py
 SOURCES          += ../src/ui/views/corkDelegate.py
 SOURCES          += ../src/ui/views/outlineBasics.py
+SOURCES          += ../src/ui/views/cmbOutlineLabelChoser.py
+SOURCES          += ../src/ui/views/cmbOutlinePersoChoser.py
+SOURCES          += ../src/ui/views/cmbOutlineStatusChoser.py
+SOURCES          += ../src/ui/views/lineEditView.py
 SOURCES          += ../src/settingsWindow.py
 
 

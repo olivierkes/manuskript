@@ -1,38 +1,36 @@
 #!/usr/bin/env python
 #--!-- coding: utf8 --!--
  
-
-
-
 from qt import *
 from enums import *
 
-class cmbOutlinePersoChoser(QComboBox):
+
+class cmbOutlineStatusChoser(QComboBox):
     
     def __init__(self, parent=None):
         QComboBox.__init__(self, parent)
         self.activated[int].connect(self.submit)
-        self._column = Outline.POV.value
+        self._column = Outline.status.value
         self._index = None
         self._indexes = None
         self._updating = False
+        self._various = False
         
-    def setModels(self, mdlPersos, mdlOutline):
-        self.mdlPersos = mdlPersos
-        self.mdlPersos.dataChanged.connect(self.updateItems)
+    def setModels(self, mdlStatus, mdlOutline):
+        self.mdlStatus = mdlStatus
+        self.mdlStatus.dataChanged.connect(self.updateItems)
         self.mdlOutline = mdlOutline
         self.mdlOutline.dataChanged.connect(self.update)
         self.updateItems()
         
     def updateItems(self):
         self.clear()
-        self.addItem("")
-        for i in range(self.mdlPersos.rowCount()):
-            try:
-                self.addItem(self.mdlPersos.item(i, Perso.name.value).text(), self.mdlPersos.item(i, Perso.ID.value).text())
-                self.setItemData(i+1, self.mdlPersos.item(i, Perso.name.value).text(), Qt.ToolTipRole)
-            except:
-                pass
+        for i in range(self.mdlStatus.rowCount()):
+            item = self.mdlStatus.item(i, 0)
+            if item:
+                self.addItem(item.text())
+            
+        self._various = False
             
         if self._index or self._indexes:
             self.updateSelectedItem()
@@ -42,6 +40,7 @@ class cmbOutlinePersoChoser(QComboBox):
         if index.column() != self._column:
             index = index.sibling(index.row(), self._column)
         self._index = index
+        self.updateItems()
         self.updateSelectedItem()
             
     def setCurrentModelIndexes(self, indexes):
@@ -54,6 +53,7 @@ class cmbOutlinePersoChoser(QComboBox):
                     i = i.sibling(i.row(), self._column)
                 self._indexes.append(i)
         
+        self.updateItems()
         self.updateSelectedItem()
         
     def update(self, topLeft, bottomRight):
@@ -74,43 +74,46 @@ class cmbOutlinePersoChoser(QComboBox):
             if update:
                 self.updateSelectedItem()
         
-    def getPOV(self, index):
+    def getStatus(self, index):
         item = index.internalPointer()
-        POV = item.data(self._column)
-        return POV
+        status = item.data(self._column)
+        if not status: 
+            status = 0
+        return int(status)
         
-    def selectPOV(self, POV):
-        idx = self.findData(POV)
-        if idx != -1:
-            self.setCurrentIndex(idx)
-        else:
-            self.setCurrentIndex(0)
-        
-    def updateSelectedItem(self, idx1=None, idx2=None):
+    def updateSelectedItem(self):
         
         if self._updating:
             return
         
         if self._index:
-            POV = self.getPOV(self._index)
-            self.selectPOV(POV)
+            status = self.getStatus(self._index)
+            self.setCurrentIndex(status)
                 
         elif self._indexes:
-            POVs = []
+            statuses = []
             same = True
             
             for i in self._indexes:
-                POVs.append(self.getPOV(i))
+                statuses.append(self.getStatus(i))
                 
-            for POV in POVs[1:]:
-                if POV != POVs[0]:
+            for s in statuses[1:]:
+                if s != statuses[0]:
                     same = False
                     break
             
             if same:
-                self.selectPOV(POVs[0])
+                self._various = False
+                self.setCurrentIndex(statuses[0])
                 
             else:
+                if not self._various:
+                    self.insertItem(0, self.tr("Various"))
+                    f = self.font()
+                    f.setItalic(True)
+                    self.setItemData(0, f, Qt.FontRole)
+                    self.setItemData(0, QBrush(Qt.darkGray), Qt.ForegroundRole)
+                self._various = True
                 self.setCurrentIndex(0)
         
         else:
@@ -118,10 +121,18 @@ class cmbOutlinePersoChoser(QComboBox):
         
     def submit(self, idx):
         if self._index:
-            self.mdlOutline.setData(self._index, self.currentData())
+            self.mdlOutline.setData(self._index, self.currentIndex())
             
         elif self._indexes:
+            value = self.currentIndex()
+            
+            if self._various:
+                if value == 0:
+                    return
+                
+                value -= 1
+                
             self._updating = True
             for i in self._indexes:
-                self.mdlOutline.setData(i, self.currentData())
+                self.mdlOutline.setData(i, value)
             self._updating = False

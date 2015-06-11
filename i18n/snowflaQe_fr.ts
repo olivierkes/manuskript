@@ -129,7 +129,7 @@
         <translation>Noms</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2030"/>
+        <location filename="../src/ui/mainWindow.ui" line="1918"/>
         <source>Filter</source>
         <translation>Filtre</translation>
     </message>
@@ -149,7 +149,7 @@
         <translation>Motivation</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1904"/>
+        <location filename="../src/ui/mainWindow.ui" line="599"/>
         <source>Goal</source>
         <translation>Goal</translation>
     </message>
@@ -174,7 +174,7 @@
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Résumé&lt;br/&gt;en un paragraphe&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1987"/>
+        <location filename="../src/ui/mainWindow.ui" line="1875"/>
         <source>Notes</source>
         <translation>Notes</translation>
     </message>
@@ -244,7 +244,7 @@
         <translation>Contexte</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2120"/>
+        <location filename="../src/ui/mainWindow.ui" line="2008"/>
         <source>Outline</source>
         <translation>Plan</translation>
     </message>
@@ -269,7 +269,7 @@
         <translation>Goal:</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1974"/>
+        <location filename="../src/ui/mainWindow.ui" line="1862"/>
         <source>One line scene summary</source>
         <translation>Résumé en une ligne</translation>
     </message>
@@ -284,7 +284,7 @@
         <translation>Rédaction</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1779"/>
+        <location filename="../src/ui/mainWindow.ui" line="1760"/>
         <source>F11</source>
         <translation type="unfinished"></translation>
     </message>
@@ -294,309 +294,259 @@
         <translation>Scène</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1835"/>
+        <location filename="../src/ui/mainWindow.ui" line="1816"/>
         <source>Properties</source>
         <translation>Propriétés</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1850"/>
-        <source>POV</source>
-        <translation>POV</translation>
-    </message>
-    <message>
-        <location filename="../src/ui/mainWindow.ui" line="1870"/>
-        <source>Status</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../src/ui/mainWindow.ui" line="1890"/>
-        <source>Compile</source>
-        <translation>Compile</translation>
-    </message>
-    <message>
-        <location filename="../src/ui/mainWindow.ui" line="1956"/>
+        <location filename="../src/ui/mainWindow.ui" line="1844"/>
         <source>Scene summary</source>
         <translation>Résumé de la scène</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2188"/>
+        <location filename="../src/ui/mainWindow.ui" line="2076"/>
         <source>Tools</source>
         <translation>Outils</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2018"/>
+        <location filename="../src/ui/mainWindow.ui" line="1906"/>
         <source>Cheat sheet</source>
         <translation>Aide-mémoire</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2038"/>
+        <location filename="../src/ui/mainWindow.ui" line="1926"/>
         <source>Albert - perso</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2043"/>
+        <location filename="../src/ui/mainWindow.ui" line="1931"/>
         <source>Jean - perso</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2048"/>
+        <location filename="../src/ui/mainWindow.ui" line="1936"/>
         <source>Crapoquak - animal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2053"/>
+        <location filename="../src/ui/mainWindow.ui" line="1941"/>
         <source>La revenche du capitaine - intrigue</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2073"/>
+        <location filename="../src/ui/mainWindow.ui" line="1961"/>
         <source>Debug</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2086"/>
+        <location filename="../src/ui/mainWindow.ui" line="1974"/>
         <source>FlatData</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2096"/>
+        <location filename="../src/ui/mainWindow.ui" line="1984"/>
         <source>Persos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2106"/>
+        <location filename="../src/ui/mainWindow.ui" line="1994"/>
         <source>Perso Infos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2164"/>
+        <location filename="../src/ui/mainWindow.ui" line="2052"/>
         <source>File</source>
         <translation>Fichier</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2182"/>
+        <location filename="../src/ui/mainWindow.ui" line="2070"/>
         <source>Help</source>
         <translation>Aide</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2213"/>
+        <location filename="../src/ui/mainWindow.ui" line="2101"/>
         <source>Open</source>
         <translation>Ouvrir</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2216"/>
+        <location filename="../src/ui/mainWindow.ui" line="2104"/>
         <source>Ctrl+O</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2226"/>
+        <location filename="../src/ui/mainWindow.ui" line="2114"/>
         <source>Recents</source>
         <translation>Récents</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2229"/>
+        <location filename="../src/ui/mainWindow.ui" line="2117"/>
         <source>Ctrl+R</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2239"/>
+        <location filename="../src/ui/mainWindow.ui" line="2127"/>
         <source>Save</source>
         <translation>Enregistrer</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2242"/>
+        <location filename="../src/ui/mainWindow.ui" line="2130"/>
         <source>Ctrl+S</source>
         <translation>Ctrl+S</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2252"/>
+        <location filename="../src/ui/mainWindow.ui" line="2140"/>
         <source>Save as...</source>
         <translation>Enregistrer sous...</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2255"/>
+        <location filename="../src/ui/mainWindow.ui" line="2143"/>
         <source>Ctrl+Shift+S</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2265"/>
+        <location filename="../src/ui/mainWindow.ui" line="2153"/>
         <source>Quit</source>
         <translation>Quitter</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2268"/>
+        <location filename="../src/ui/mainWindow.ui" line="2156"/>
         <source>Ctrl+Q</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2279"/>
+        <location filename="../src/ui/mainWindow.ui" line="2167"/>
         <source>&amp;Snowflake</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2289"/>
+        <location filename="../src/ui/mainWindow.ui" line="2177"/>
         <source>New</source>
         <translation>Nouveau</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2292"/>
+        <location filename="../src/ui/mainWindow.ui" line="2180"/>
         <source>Ctrl+N</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2308"/>
+        <location filename="../src/ui/mainWindow.ui" line="2196"/>
         <source>Show help texts</source>
         <translation>Montrer les bulles d&apos;aides</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2311"/>
+        <location filename="../src/ui/mainWindow.ui" line="2199"/>
         <source>Ctrl+Shift+B</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2327"/>
+        <location filename="../src/ui/mainWindow.ui" line="2215"/>
         <source>Spellcheck</source>
         <translation>Correcteur orthographique</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2330"/>
+        <location filename="../src/ui/mainWindow.ui" line="2218"/>
         <source>F8</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1926"/>
+        <location filename="../src/ui/mainWindow.ui" line="1429"/>
         <source>Word count</source>
         <translation>Nombre de mots</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2176"/>
+        <location filename="../src/ui/mainWindow.ui" line="2064"/>
         <source>Mode</source>
         <translation>Mode</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="278"/>
+        <location filename="../src/mainWindow.py" line="285"/>
         <source>New character</source>
         <translation>Nouveau perso</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="414"/>
+        <location filename="../src/mainWindow.py" line="421"/>
         <source> (~{} pages)</source>
         <translation> (~{} pages)</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="441"/>
+        <location filename="../src/mainWindow.py" line="448"/>
         <source>Enter infos about your book, and yourself.</source>
         <translation>Entrez toutes les informations relatives au livre, ainsi qu&apos;à vous.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="443"/>
+        <location filename="../src/mainWindow.py" line="450"/>
         <source>Take time to think about a one sentance (~50 words) summary of your book. Then expand it to a paragraph, then to a page, then to a full summary.</source>
         <translation>Prenez le temps de réfléchir à un résumé de votre livre, en une phrase (~50 mots). Puis augmentez cette phrase en un paragraphe, puis en une page, puis en un résumé complet.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="445"/>
+        <location filename="../src/mainWindow.py" line="452"/>
         <source>Create your characters.</source>
         <translation>Créez ici vos personnage.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="447"/>
+        <location filename="../src/mainWindow.py" line="454"/>
         <source>Develop plots.</source>
         <translation>Développez vos intrigues.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="449"/>
+        <location filename="../src/mainWindow.py" line="456"/>
         <source>Create the outline of your masterpiece.</source>
         <translation>Créez le plan de votre chef-d&apos;œuvre.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="451"/>
+        <location filename="../src/mainWindow.py" line="458"/>
         <source>Write.</source>
         <translation>Écrivez.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="453"/>
+        <location filename="../src/mainWindow.py" line="460"/>
         <source>Debug infos. Sometimes useful.</source>
         <translation>Des infos pour débugger des fois pendant qu&apos;on code c&apos;est utile.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="466"/>
+        <location filename="../src/mainWindow.py" line="473"/>
         <source>Dictionary</source>
         <translation>Dictionnaire</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="487"/>
+        <location filename="../src/mainWindow.py" line="494"/>
         <source>Install PyEnchant to use spellcheck</source>
         <translation>Installez PyEnchant pour profiter du correcteur orthographique</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="417"/>
+        <location filename="../src/mainWindow.py" line="424"/>
         <source>Words: {}{}</source>
         <translation>Mots: {}{}</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1656"/>
+        <location filename="../src/ui/mainWindow.ui" line="1637"/>
         <source>Text</source>
         <translation>Texte</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1669"/>
+        <location filename="../src/ui/mainWindow.ui" line="1650"/>
         <source>Cork</source>
         <translation>Cork</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1933"/>
-        <source>Label</source>
-        <translation>Label</translation>
-    </message>
-    <message>
-        <location filename="../src/ui/mainWindow.ui" line="2134"/>
+        <location filename="../src/ui/mainWindow.ui" line="2022"/>
         <source>Labels</source>
         <translation>Labels</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2194"/>
+        <location filename="../src/ui/mainWindow.ui" line="2082"/>
         <source>Edit</source>
         <translation>Édition</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2335"/>
+        <location filename="../src/ui/mainWindow.ui" line="2223"/>
         <source>Labels...</source>
         <translation>Labels...</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2340"/>
+        <location filename="../src/ui/mainWindow.ui" line="2228"/>
         <source>Status...</source>
         <translation>Status...</translation>
-    </message>
-    <message>
-        <location filename="../src/ui/mainWindow.ui" line="1074"/>
-        <source>Un bâteau arrive au port et personne ne sait pourquoi</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/ui/mainWindow.ui" line="1079"/>
-        <source>Le roi envoie des émissaires à bord. Ils ne reviennent jamais.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/ui/mainWindow.ui" line="1084"/>
-        <source>Le roi envoie son armée.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/ui/mainWindow.ui" line="1308"/>
-        <source>Intrigue général</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/ui/mainWindow.ui" line="1327"/>
-        <source>Scène 1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/ui/mainWindow.ui" line="1332"/>
-        <source>Scène 2</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/mainWindow.py" line="142"/>
@@ -633,6 +583,36 @@
         <source>Final</source>
         <translation>Final</translation>
     </message>
+    <message>
+        <location filename="../src/ui/mainWindow.ui" line="1074"/>
+        <source>Un bâteau arrive au port et personne ne sait pourquoi</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ui/mainWindow.ui" line="1079"/>
+        <source>Le roi envoie des émissaires à bord. Ils ne reviennent jamais.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ui/mainWindow.ui" line="1084"/>
+        <source>Le roi envoie son armée.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ui/mainWindow.ui" line="1308"/>
+        <source>Intrigue général</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ui/mainWindow.ui" line="1327"/>
+        <source>Scène 1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ui/mainWindow.ui" line="1332"/>
+        <source>Scène 2</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SpellAction</name>
@@ -656,6 +636,30 @@
     </message>
 </context>
 <context>
+    <name>cmbOutlineLabelChoser</name>
+    <message>
+        <location filename="../src/ui/views/cmbOutlineLabelChoser.py" line="111"/>
+        <source>Various</source>
+        <translation>Différentes valeurs</translation>
+    </message>
+</context>
+<context>
+    <name>cmbOutlinePersoChoser</name>
+    <message>
+        <location filename="../src/ui/views/cmbOutlinePersoChoser.py" line="121"/>
+        <source>Various</source>
+        <translation>Différentes valeurs</translation>
+    </message>
+</context>
+<context>
+    <name>cmbOutlineStatusChoser</name>
+    <message>
+        <location filename="../src/ui/views/cmbOutlineStatusChoser.py" line="111"/>
+        <source>Various</source>
+        <translation>Différentes valeurs</translation>
+    </message>
+</context>
+<context>
     <name>corkDelegate</name>
     <message>
         <location filename="../src/ui/views/corkDelegate.py" line="44"/>
@@ -671,12 +675,12 @@
 <context>
     <name>editorWidget</name>
     <message>
-        <location filename="../src/ui/editors/editorWidget.py" line="184"/>
+        <location filename="../src/ui/editors/editorWidget.py" line="215"/>
         <source>{} words / {}</source>
         <translation>{} mots / {}</translation>
     </message>
     <message>
-        <location filename="../src/ui/editors/editorWidget.py" line="187"/>
+        <location filename="../src/ui/editors/editorWidget.py" line="218"/>
         <source>{} words</source>
         <translation>{} mots</translation>
     </message>
@@ -695,6 +699,14 @@
         <location filename="../src/ui/helpLabel.py" line="16"/>
         <source>If you don&apos;t wanna see me, you can hide me in Help menu.</source>
         <translation>Infobulle: Si tu me trouve dérengant, tu peux me cacher via le menu Aide.</translation>
+    </message>
+</context>
+<context>
+    <name>lineEditView</name>
+    <message>
+        <location filename="../src/ui/views/lineEditView.py" line="110"/>
+        <source>Various</source>
+        <translation>Différentes valeurs</translation>
     </message>
 </context>
 <context>
@@ -753,6 +765,44 @@
         <location filename="../src/ui/views/outlineBasics.py" line="137"/>
         <source>New</source>
         <translation>Nouveau</translation>
+    </message>
+</context>
+<context>
+    <name>propertiesView</name>
+    <message>
+        <location filename="../src/ui/views/propertiesView_ui.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished">Form</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/views/propertiesView_ui.ui" line="168"/>
+        <source>POV</source>
+        <translation>POV</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/views/propertiesView_ui.ui" line="188"/>
+        <source>Status</source>
+        <translation>Status</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/views/propertiesView_ui.ui" line="208"/>
+        <source>Label</source>
+        <translation>Label</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/views/propertiesView_ui.ui" line="228"/>
+        <source>Compile</source>
+        <translation>Compile</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/views/propertiesView_ui.ui" line="242"/>
+        <source>Goal</source>
+        <translation>Goal</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/views/propertiesView_ui.ui" line="264"/>
+        <source>Word count</source>
+        <translation>Nombre de mots</translation>
     </message>
 </context>
 <context>

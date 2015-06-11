@@ -1299,10 +1299,10 @@ class Ui_MainWindow(object):
         self.actLabels.setText(_translate("MainWindow", "Labels..."))
         self.actStatus.setText(_translate("MainWindow", "Status..."))
 
-from ui.views.treeView import treeView
-from ui.cmbOutlinePersoChoser import cmbOutlinePersoChoser
 from ui.views.outlineView import outlineView
-from ui.sldImportance import sldImportance
-from ui.collapsibleGroupBox2 import collapsibleGroupBox2
 from ui.editors.editorWidget import editorWidget
 from ui.views.propertiesView import propertiesView
+from ui.collapsibleGroupBox2 import collapsibleGroupBox2
+from ui.sldImportance import sldImportance
+from ui.views.cmbOutlinePersoChoser import cmbOutlinePersoChoser
+from ui.views.treeView import treeView
