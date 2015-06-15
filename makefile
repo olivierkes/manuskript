@@ -9,7 +9,7 @@ run: $(UIs)
 	python3 src/main.py
 
 debug: $(UIs)
-	gdb --args python src/main.py
+	gdb --args python3 src/main.py
 
 lineprof:
 	kernprof -l -v src/main.py

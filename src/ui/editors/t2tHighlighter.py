@@ -26,6 +26,7 @@ class t2tHighlighter (QSyntaxHighlighter):
 
         # Stupid variable that fixes the loss of QTextBlockUserData.
         self.thisDocument = editor.document()
+        
         self.style = t2tHighlighterStyle(self.editor, style)
 
         self.inDocRules = []

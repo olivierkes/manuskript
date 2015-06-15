@@ -3,13 +3,15 @@
 import sys
 from qt import *
 
+_version = "0.1"
 
 def run():
     app = QApplication(sys.argv)
     app.setOrganizationName("Theologeek")
     app.setOrganizationDomain("www.theologeek.ch")
     app.setApplicationName("snowFlaqe")
-
+    app.setApplicationVersion("0.1")
+    
     app.setStyle("Fusion")
     
     ### Translation process

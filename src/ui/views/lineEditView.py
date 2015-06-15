@@ -80,10 +80,10 @@ class lineEditView(QLineEdit):
                 self.updateText()
             
     def updateText(self):
-        
         if self._index:
-            item = self._index.internalPointer()
-            txt = toString(item.data(self._column))
+            #item = self._index.internalPointer()
+            #txt = toString(item.data(self._column))
+            txt = toString(self._model.data(self._index))
             if self.text() != txt:
                 self.setText(txt)
         
@@ -92,7 +92,7 @@ class lineEditView(QLineEdit):
             same = True
             for i in self._indexes:
                 item = i.internalPointer()
-                t.append(str(item.data(self._column)))
+                t.append(toString(item.data(self._column)))
                 
             for t2 in t[1:]:
                 if t2 != t[0]:

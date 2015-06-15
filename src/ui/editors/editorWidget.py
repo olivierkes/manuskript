@@ -1,13 +1,10 @@
 #!/usr/bin/env python
 #--!-- coding: utf8 --!--
  
-
-
-
 from qt import *
 from enums import *
 from ui.editors.editorWidget_ui import *
-from ui.editors.customTextEdit import *
+from ui.views.textEditView import *
 from functions import *
 
 class editorWidget(QWidget, Ui_editorWidget_ui):
@@ -147,9 +144,9 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
             self.corkView.setModel(self._model)
             self.corkView.setRootIndex(index)
             self.corkView.selectionModel().selectionChanged.connect(
-                lambda: mainWindow().viewRedacProperties.selectionChanged(self.corkView))
+                lambda: mainWindow().redacMetadata.selectionChanged(self.corkView))
             self.corkView.clicked.connect(
-                lambda: mainWindow().viewRedacProperties.selectionChanged(self.corkView))
+                lambda: mainWindow().redacMetadata.selectionChanged(self.corkView))
             
             
         elif item.isFolder() and self.folderView == "outline":
@@ -160,9 +157,9 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
             self.outlineView.setModel(self._model)
             self.outlineView.setRootIndex(index)
             self.outlineView.selectionModel().selectionChanged.connect(
-                lambda: mainWindow().viewRedacProperties.selectionChanged(self.outlineView))
+                lambda: mainWindow().redacMetadata.selectionChanged(self.outlineView))
             self.outlineView.clicked.connect(
-                lambda: mainWindow().viewRedacProperties.selectionChanged(self.outlineView))
+                lambda: mainWindow().redacMetadata.selectionChanged(self.outlineView))
             
             
         else:

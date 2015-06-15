@@ -1,27 +1,34 @@
 #!/usr/bin/env python
 #--!-- coding: utf8 --!--
  
-
-
-
 from qt import *
 from enums import *
 from ui.editors.t2tHighlighter import *
+from functions import *
+
 try:
     import enchant
 except ImportError:
     enchant = None
     
-class customTextEdit(QTextEdit):
+class textEditView(QTextEdit):
     
     def __init__(self, parent=None, index=None, html=None, spellcheck=True, dict="", autoResize=False):
         QTextEdit.__init__(self, parent)
         
-        self.currentIndex = None
-        self.item = None
+        self._column = Outline.text.value
+        self._index = None
+        self._indexes = None
+        self._placeholderText = None
+        self._updating = False
+        self._item = None
+        self._update = False
+        self._highlighting = True
+        
         self.spellcheck = spellcheck
         self.currentDict = dict
         self.highlighter = None
+        self._autoResize = autoResize
         
         if index:
             self.setCurrentModelIndex(index)
@@ -29,18 +36,29 @@ class customTextEdit(QTextEdit):
         elif html:
             self.document().setHtml(html)
             self.setReadOnly(True)
+            
+        self.setAutoResize(self._autoResize)
+            
+    def setModel(self, model):
+        self._model = model
+        self._model.dataChanged.connect(self.update)
         
-        self.autoResize = autoResize
-        if autoResize:
-            self.document().contentsChanged.connect(self.sizeChange)
-            self.heightMin = 0
-            self.heightMax = 65000
-            self.sizeChange()
+    def setColumn(self, col):
+        self._column = col
+        
+    def setHighlighting(self, val):
+        self._highlighting = val
             
     def setCurrentModelIndex(self, index):
+        self._indexes = None
         if index.isValid():
-            self.currentIndex = index
-            self.item = index.internalPointer()
+            if index.column() != self._column:
+                index = index.sibling(index.row(), self._column)
+            self._index = index
+            self._item = index.internalPointer()
+            if self._placeholderText != None:
+                self.setPlaceholderText(self._placeholderText)
+                
             self._model = index.model()
             self.document().contentsChanged.connect(self.submit)
             self._model.dataChanged.connect(self.update)
@@ -50,7 +68,7 @@ class customTextEdit(QTextEdit):
             self.highlightWord = ""
             self.highligtCS = False
             
-            if not self.highlighter:
+            if self._highlighting and not self.highlighter:
                 self.highlighter = t2tHighlighter(self)
                 
             # Spellchecking
@@ -59,23 +77,82 @@ class customTextEdit(QTextEdit):
             else:
                 self.spellcheck = False
         
-    def submit(self):
-        if self.toPlainText() != self.item.data(Outline.text.value):
-            #self._model.setData(self.item.index(), self.toPlainText(), Outline.text.value)
-            self.item.setData(Outline.text.value, self.toPlainText())
+    def setCurrentModelIndexes(self, indexes):
+        self._index = None
+        self._indexes = []
+        
+        for i in indexes:
+            if i.isValid():
+                if i.column() != self._column:
+                    i = i.sibling(i.row(), self._column)
+                self._indexes.append(i)
+                
+        self.document().contentsChanged.connect(self.submit)
+        self.updateText()
         
     def update(self, topLeft, bottomRight):
-        if topLeft.row() <= self.currentIndex.row() <= bottomRight.row():
-            self.updateText()
+        if self._update:
+            return
+        
+        elif self._index:
+            if topLeft.row() <= self._index.row() <= bottomRight.row():
+                self.updateText()
+                
+        elif self._indexes:
+            update = False
+            for i in self._indexes:
+                if topLeft.row() <= i.row() <= bottomRight.row():
+                    update = True
+            if update:
+                self.updateText()
             
     def updateText(self):
-        if self.item:
-            if self.toPlainText() != self.item.data(Outline.text.value):
-                self.document().setPlainText(self.item.data(Outline.text.value))
+        if self._index:
+            if self.toPlainText() != toString(self._model.data(self._index)):
+                self.document().setPlainText(toString(self._model.data(self._index)))
+                
+        elif self._indexes:
+            t = []
+            same = True
+            for i in self._indexes:
+                item = i.internalPointer()
+                t.append(toString(item.data(self._column)))
+                
+            for t2 in t[1:]:
+                if t2 != t[0]:
+                    same = False
+                    break
+            
+            if same:
+                self.document().setPlainText(t[0])
+            else:
+                self.document().setPlainText("")
+                
+                if not self._placeholderText:
+                    self._placeholderText = self.placeholderText()
+                    
+                self.setPlaceholderText(self.tr("Various"))
         
+    def submit(self):
+        if self._index:
+            #item = self._index.internalPointer()
+            if self.toPlainText() != self._model.data(self._index):
+                self._model.setData(self._index, self.toPlainText())
+                
+        elif self._indexes:
+            self._updating = True
+            for i in self._indexes:
+                item = i.internalPointer()
+                if self.toPlainText() != toString(item.data(self._column)):
+                    self._model.setData(i, self.toPlainText())
+            self._updating = False
+            
+    # -----------------------------------------------------------------------------------------------------
+    # Resize stuff
+    
     def resizeEvent(self, e):
         QTextEdit.resizeEvent(self, e)
-        if self.autoResize:
+        if self._autoResize:
             self.sizeChange()
 
     def sizeChange(self):
@@ -83,6 +160,13 @@ class customTextEdit(QTextEdit):
         if self.heightMin <= docHeight <= self.heightMax:
             self.setMinimumHeight(docHeight)
             
+    def setAutoResize(self, val):
+        self._autoResize = val
+        if self._autoResize:
+            self.document().contentsChanged.connect(self.sizeChange)
+            self.heightMin = 0
+            self.heightMax = 65000
+            self.sizeChange()
             
     # -----------------------------------------------------------------------------------------------------
     # Spellchecking based on http://john.nachtimwald.com/2009/08/22/qplaintextedit-with-in-line-spell-check/
@@ -93,7 +177,8 @@ class customTextEdit(QTextEdit):
         
     def toggleSpellcheck(self, v):
         self.spellcheck = v
-        self.highlighter.rehighlight()
+        if self.highlighter:
+            self.highlighter.rehighlight()
 
     def mousePressEvent(self, event):
         if event.button() == Qt.RightButton:

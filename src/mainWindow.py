@@ -163,26 +163,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.treePlanOutline.setModelPersos(self.mdlPersos)
         self.treePlanOutline.setModelLabels(self.mdlLabels)
         self.treePlanOutline.setModelStatus(self.mdlStatus)
-        self.viewRedacProperties.setModels(self.mdlOutline, self.mdlPersos, self.mdlLabels, self.mdlStatus)
+        self.redacMetadata.setModels(self.mdlOutline, self.mdlPersos, self.mdlLabels, self.mdlStatus)
+        self.outlineItemEditor.setModels(self.mdlOutline, self.mdlPersos, self.mdlLabels, self.mdlStatus)
         
         self.treePlanOutline.setModel(self.mdlOutline)
-        self.cmbPlanPOV.setModels(self.mdlPersos, self.mdlOutline)
         self.redacEditor.setModel(self.mdlOutline)
         
-        self.mprPlan = QDataWidgetMapper()
-        self.mprPlan.setModel(self.mdlOutline)
-        mapping = [
-            (self.txtPlanSummarySentance, Outline.summarySentance.value),
-            (self.txtPlanSummaryFull, Outline.summaryFull.value),
-            (self.txtOutlineGoal, Outline.setGoal.value)
-            ]
-        for w, i in mapping:
-                self.mprPlan.addMapping(w, i)
-                
-        self.treePlanOutline.selectionModel().currentChanged.connect(lambda idx: self.mprPlan.setRootIndex(idx.parent()))
-        self.treePlanOutline.selectionModel().currentChanged.connect(self.mprPlan.setCurrentModelIndex)
-        self.treePlanOutline.selectionModel().currentChanged.connect(self.cmbPlanPOV.setCurrentModelIndex)
-        self.tabMain.currentChanged.connect(self.mprPlan.submit)
+        self.treePlanOutline.selectionModel().selectionChanged.connect(
+            lambda: self.outlineItemEditor.selectionChanged(self.treePlanOutline))
+        self.treePlanOutline.clicked.connect(
+            lambda: self.outlineItemEditor.selectionChanged(self.treePlanOutline))
         
         self.treeRedacOutline.setSelectionModel(self.treePlanOutline.selectionModel())
         
@@ -193,29 +183,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btnRedacRemoveItem.clicked.connect(self.outlineRemoveItems)
         self.btnPlanRemoveItem.clicked.connect(self.outlineRemoveItems)
         
-        self.mprOutline = QDataWidgetMapper()
-        self.mprOutline.setModel(self.mdlOutline)
-        mapping = [
-            (self.txtRedacSummarySentance, Outline.summarySentance.value),
-            (self.txtRedacSummaryFull, Outline.summaryFull.value),
-            (self.txtRedacNotes, Outline.notes.value)
-            ]
-        for w, i in mapping:
-                self.mprOutline.addMapping(w, i)
-        
-        self.treeRedacOutline.selectionModel().currentChanged.connect(lambda idx: self.mprOutline.setRootIndex(idx.parent()))
-        self.treeRedacOutline.selectionModel().currentChanged.connect(self.mprOutline.setCurrentModelIndex)
-        
         self.treeRedacOutline.selectionModel().selectionChanged.connect(
-            lambda: self.viewRedacProperties.selectionChanged(self.treeRedacOutline))
+            lambda: self.redacMetadata.selectionChanged(self.treeRedacOutline))
         self.treeRedacOutline.clicked.connect(
-            lambda: self.viewRedacProperties.selectionChanged(self.treeRedacOutline))
+            lambda: self.redacMetadata.selectionChanged(self.treeRedacOutline))
         
         #self.treeRedacOutline.selectionModel().currentChanged.connect(self.redacEditor.setCurrentModelIndex)
         self.treeRedacOutline.selectionModel().selectionChanged.connect(self.redacEditor.setView)
         self.treeRedacOutline.selectionModel().currentChanged.connect(self.redacEditor.txtRedacText.setCurrentModelIndex)
-        
-        self.tabMain.currentChanged.connect(self.mprOutline.submit)
         
         self.treeRedacOutline.selectionModel().selectionChanged.connect(self.outlineSelectionChanged)
         self.treeRedacOutline.selectionModel().selectionChanged.connect(self.outlineSelectionChanged)
@@ -264,7 +239,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             else:
                 hidden = False
             
-        
         self.btnRedacFolderText.setHidden(hidden)
         self.btnRedacFolderCork.setHidden(hidden)
         self.btnRedacFolderOutline.setHidden(hidden)
@@ -484,6 +458,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.menuTools.addMenu(self.menuDict)
             
             self.actSpellcheck.toggled.connect(self.redacEditor.toggleSpellcheck)
+            self.actSpellcheck.toggled.connect(self.redacMetadata.toggleSpellcheck)
+            self.actSpellcheck.toggled.connect(self.outlineItemEditor.toggleSpellcheck)
             self.dictChanged.connect(self.redacEditor.setDict)
             
             

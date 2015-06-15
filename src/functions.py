@@ -22,7 +22,7 @@ def toFloat(text):
         return 0.
     
 def toString(text):
-    if text == None:
+    if text in [None, "None"]:
         return ""
     else:
         return str(text)

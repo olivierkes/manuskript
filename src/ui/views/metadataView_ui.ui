@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>metadataView</class>
+ <widget class="QWidget" name="metadataView">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>425</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="margin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="collapsibleGroupBox2" name="groupBox_4">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="title">
+      <string>Properties</string>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_28">
+      <property name="margin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="propertiesView" name="properties" native="true">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>50</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="collapsibleGroupBox2" name="groupBox_5">
+     <property name="title">
+      <string>Summary</string>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_22">
+      <property name="margin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="lineEditView" name="txtSummarySentance">
+        <property name="inputMask">
+         <string/>
+        </property>
+        <property name="placeholderText">
+         <string>One line scene summary</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="textEditView" name="txtSummaryFull"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="collapsibleGroupBox2" name="groupBox_6">
+     <property name="title">
+      <string>Notes</string>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_29">
+      <property name="margin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="textEditView" name="txtNotes"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>textEditView</class>
+   <extends>QTextEdit</extends>
+   <header>ui.views.textEditView.h</header>
+  </customwidget>
+  <customwidget>
+   <class>collapsibleGroupBox2</class>
+   <extends>QGroupBox</extends>
+   <header>ui.collapsibleGroupBox2.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>propertiesView</class>
+   <extends>QWidget</extends>
+   <header>ui.views.propertiesView.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>lineEditView</class>
+   <extends>QLineEdit</extends>
+   <header>ui.views.lineEditView.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

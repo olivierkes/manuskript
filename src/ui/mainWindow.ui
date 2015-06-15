@@ -18,7 +18,7 @@
     <item>
      <widget class="QTabWidget" name="tabMain">
       <property name="currentIndex">
-       <number>6</number>
+       <number>1</number>
       </property>
       <property name="documentMode">
        <bool>true</bool>
@@ -53,7 +53,7 @@
               </widget>
              </item>
              <item row="0" column="1">
-              <widget class="QLineEdit" name="txtGeneralTitle"/>
+              <widget class="lineEditView" name="txtGeneralTitle"/>
              </item>
              <item row="1" column="0">
               <widget class="QLabel" name="label_11">
@@ -63,7 +63,7 @@
               </widget>
              </item>
              <item row="1" column="1">
-              <widget class="QLineEdit" name="txtGeneralSubtitle"/>
+              <widget class="lineEditView" name="txtGeneralSubtitle"/>
              </item>
              <item row="2" column="0">
               <widget class="QLabel" name="label_12">
@@ -73,7 +73,7 @@
               </widget>
              </item>
              <item row="2" column="1">
-              <widget class="QLineEdit" name="txtGeneralSerie"/>
+              <widget class="lineEditView" name="txtGeneralSerie"/>
              </item>
              <item row="3" column="0">
               <widget class="QLabel" name="label_13">
@@ -85,7 +85,7 @@
              <item row="3" column="1">
               <layout class="QHBoxLayout" name="horizontalLayout_25">
                <item>
-                <widget class="QLineEdit" name="txtGeneralVolume"/>
+                <widget class="lineEditView" name="txtGeneralVolume"/>
                </item>
                <item>
                 <spacer name="horizontalSpacer_6">
@@ -110,7 +110,7 @@
               </widget>
              </item>
              <item row="4" column="1">
-              <widget class="QLineEdit" name="txtGeneralGenre"/>
+              <widget class="lineEditView" name="txtGeneralGenre"/>
              </item>
              <item row="5" column="0">
               <widget class="QLabel" name="label_16">
@@ -120,7 +120,7 @@
               </widget>
              </item>
              <item row="5" column="1">
-              <widget class="QLineEdit" name="txtGeneralLicense"/>
+              <widget class="lineEditView" name="txtGeneralLicense"/>
              </item>
             </layout>
            </widget>
@@ -148,7 +148,7 @@
               </widget>
              </item>
              <item row="0" column="1">
-              <widget class="QLineEdit" name="txtGeneralAuthor"/>
+              <widget class="lineEditView" name="txtGeneralAuthor"/>
              </item>
              <item row="1" column="0">
               <widget class="QLabel" name="label_19">
@@ -158,7 +158,7 @@
               </widget>
              </item>
              <item row="1" column="1">
-              <widget class="QLineEdit" name="txtGeneralEmail"/>
+              <widget class="lineEditView" name="txtGeneralEmail"/>
              </item>
              <item row="2" column="1">
               <widget class="QComboBox" name="cmbStyle"/>
@@ -181,7 +181,7 @@
            <enum>QTabWidget::West</enum>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>3</number>
           </property>
           <widget class="QWidget" name="tab_14">
            <attribute name="title">
@@ -196,7 +196,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QPlainTextEdit" name="txtSummarySentance">
+             <widget class="textEditView" name="txtSummarySentance">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
                 <horstretch>0</horstretch>
@@ -254,7 +254,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QPlainTextEdit" name="txtSummarySentance_2">
+               <widget class="textEditView" name="txtSummarySentance_2">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
                   <horstretch>0</horstretch>
@@ -298,7 +298,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QPlainTextEdit" name="txtSummaryPara"/>
+               <widget class="textEditView" name="txtSummaryPara"/>
               </item>
               <item>
                <widget class="QLabel" name="lblSummaryWCPara">
@@ -351,7 +351,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QPlainTextEdit" name="txtSummaryPara_2">
+               <widget class="textEditView" name="txtSummaryPara_2">
                 <property name="readOnly">
                  <bool>true</bool>
                 </property>
@@ -401,7 +401,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QPlainTextEdit" name="txtSummaryPage"/>
+               <widget class="textEditView" name="txtSummaryPage"/>
               </item>
               <item>
                <widget class="QLabel" name="lblSummaryWCPage">
@@ -429,12 +429,9 @@
                </widget>
               </item>
               <item>
-               <widget class="QPlainTextEdit" name="txtSummaryPage_2">
+               <widget class="textEditView" name="txtSummaryPage_2">
                 <property name="readOnly">
                  <bool>true</bool>
-                </property>
-                <property name="plainText">
-                 <string/>
                 </property>
                </widget>
               </item>
@@ -469,7 +466,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QPlainTextEdit" name="txtSummaryFull"/>
+               <widget class="textEditView" name="txtSummaryFull"/>
               </item>
               <item>
                <widget class="QLabel" name="lblSummaryWCFull">
@@ -1233,38 +1230,26 @@
             <item>
              <widget class="QStackedWidget" name="stkPlotSummary">
               <property name="currentIndex">
-               <number>1</number>
+               <number>0</number>
               </property>
               <widget class="QWidget" name="page">
                <layout class="QHBoxLayout" name="horizontalLayout_6">
                 <item>
-                 <widget class="QPlainTextEdit" name="txtPlotSummaryPara">
-                  <property name="readOnly">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
+                 <widget class="textEditView" name="txtPlotSummaryPara"/>
                 </item>
                </layout>
               </widget>
               <widget class="QWidget" name="page_2">
                <layout class="QHBoxLayout" name="horizontalLayout_10">
                 <item>
-                 <widget class="QPlainTextEdit" name="txtPlotSummaryPage">
-                  <property name="readOnly">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
+                 <widget class="textEditView" name="txtPlotSummaryPage"/>
                 </item>
                </layout>
               </widget>
               <widget class="QWidget" name="page_3">
                <layout class="QHBoxLayout" name="horizontalLayout_13">
                 <item>
-                 <widget class="QPlainTextEdit" name="txtPlotSummaryFull">
-                  <property name="readOnly">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
+                 <widget class="textEditView" name="txtPlotSummaryFull"/>
                 </item>
                </layout>
               </widget>
@@ -1367,90 +1352,7 @@
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_13">
                 <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_11">
-                  <item>
-                   <spacer name="horizontalSpacer_8">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item>
-                   <widget class="QLabel" name="lblPlanPOV">
-                    <property name="text">
-                     <string>POV:</string>
-                    </property>
-                    <property name="alignment">
-                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="cmbOutlinePersoChoser" name="cmbPlanPOV">
-                    <property name="frame">
-                     <bool>false</bool>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QLabel" name="lblPlanGoal">
-                    <property name="text">
-                     <string>Goal:</string>
-                    </property>
-                    <property name="alignment">
-                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QLineEdit" name="txtOutlineGoal">
-                    <property name="sizePolicy">
-                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                     </sizepolicy>
-                    </property>
-                    <property name="autoFillBackground">
-                     <bool>false</bool>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">border-radius: 6px;</string>
-                    </property>
-                    <property name="frame">
-                     <bool>false</bool>
-                    </property>
-                    <property name="placeholderText">
-                     <string>Word count</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </item>
-                <item>
-                 <widget class="QLineEdit" name="txtPlanSummarySentance">
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="placeholderText">
-                   <string>One line scene summary</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLabel" name="label_9">
-                  <property name="text">
-                   <string>Few sentences summary:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QPlainTextEdit" name="txtPlanSummaryFull"/>
+                 <widget class="basicItemView" name="outlineItemEditor" native="true"/>
                 </item>
                </layout>
               </widget>
@@ -1795,9 +1697,9 @@
            </property>
            <widget class="QWidget" name="tab_17">
             <attribute name="title">
-             <string>Scene</string>
+             <string>Metadata</string>
             </attribute>
-            <layout class="QVBoxLayout" name="verticalLayout_20" stretch="0,0,0">
+            <layout class="QVBoxLayout" name="verticalLayout_20" stretch="0">
              <property name="sizeConstraint">
               <enum>QLayout::SetMaximumSize</enum>
              </property>
@@ -1805,90 +1707,7 @@
               <number>0</number>
              </property>
              <item>
-              <widget class="collapsibleGroupBox2" name="groupBox_4">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="title">
-                <string>Properties</string>
-               </property>
-               <property name="flat">
-                <bool>true</bool>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-               <layout class="QVBoxLayout" name="verticalLayout_28">
-                <property name="margin">
-                 <number>0</number>
-                </property>
-                <item>
-                 <widget class="propertiesView" name="viewRedacProperties" native="true">
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>50</height>
-                   </size>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
-             </item>
-             <item>
-              <widget class="collapsibleGroupBox2" name="groupBox_5">
-               <property name="title">
-                <string>Scene summary</string>
-               </property>
-               <property name="flat">
-                <bool>true</bool>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-               <layout class="QVBoxLayout" name="verticalLayout_22">
-                <property name="margin">
-                 <number>0</number>
-                </property>
-                <item>
-                 <widget class="QLineEdit" name="txtRedacSummarySentance">
-                  <property name="inputMask">
-                   <string/>
-                  </property>
-                  <property name="placeholderText">
-                   <string>One line scene summary</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QPlainTextEdit" name="txtRedacSummaryFull"/>
-                </item>
-               </layout>
-              </widget>
-             </item>
-             <item>
-              <widget class="collapsibleGroupBox2" name="groupBox_6">
-               <property name="title">
-                <string>Notes</string>
-               </property>
-               <property name="flat">
-                <bool>true</bool>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-               <layout class="QHBoxLayout" name="horizontalLayout_29">
-                <property name="margin">
-                 <number>0</number>
-                </property>
-                <item>
-                 <widget class="QPlainTextEdit" name="txtRedacNotes"/>
-                </item>
-               </layout>
-              </widget>
+              <widget class="metadataView" name="redacMetadata" native="true"/>
              </item>
             </layout>
            </widget>
@@ -2231,15 +2050,20 @@
  </widget>
  <customwidgets>
   <customwidget>
+   <class>textEditView</class>
+   <extends>QTextEdit</extends>
+   <header>ui.views.textEditView.h</header>
+  </customwidget>
+  <customwidget>
+   <class>outlineView</class>
+   <extends>QTreeView</extends>
+   <header>ui.views.outlineView.h</header>
+  </customwidget>
+  <customwidget>
    <class>sldImportance</class>
    <extends>QWidget</extends>
    <header>ui.sldImportance.h</header>
    <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>cmbOutlinePersoChoser</class>
-   <extends>QComboBox</extends>
-   <header>ui.views.cmbOutlinePersoChoser.h</header>
   </customwidget>
   <customwidget>
    <class>editorWidget</class>
@@ -2248,25 +2072,25 @@
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>collapsibleGroupBox2</class>
-   <extends>QGroupBox</extends>
-   <header>ui.collapsibleGroupBox2.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>outlineView</class>
-   <extends>QTreeView</extends>
-   <header>ui.views.outlineView.h</header>
-  </customwidget>
-  <customwidget>
    <class>treeView</class>
    <extends>QTreeView</extends>
    <header>ui.views.treeView.h</header>
   </customwidget>
   <customwidget>
-   <class>propertiesView</class>
+   <class>lineEditView</class>
+   <extends>QLineEdit</extends>
+   <header>ui.views.lineEditView.h</header>
+  </customwidget>
+  <customwidget>
+   <class>metadataView</class>
    <extends>QWidget</extends>
-   <header>ui.views.propertiesView.h</header>
+   <header>ui.views.metadataView.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>basicItemView</class>
+   <extends>QWidget</extends>
+   <header>ui.views.basicItemView.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

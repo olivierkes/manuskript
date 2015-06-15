@@ -1,15 +1,14 @@
 #!/usr/bin/env python
 #--!-- coding: utf8 --!--
- 
-
-
 
 from qt import *
 from functions import *
 from lxml import etree as ET
 
 def saveStandardItemModelXML(mdl, xml):
+    
     root = ET.Element("model")
+    root.attrib["version"] = qApp.applicationVersion()
     
     # Header
     header = ET.SubElement(root, "header")
@@ -46,7 +45,6 @@ def saveStandardItemModelXML(mdl, xml):
    
     
 def loadStandardItemModelXML(mdl, xml):
-    
     
     print(qApp.tr("Loading {}... ").format(xml), end="")
     

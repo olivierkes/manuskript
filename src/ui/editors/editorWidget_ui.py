@@ -22,7 +22,7 @@ class Ui_editorWidget_ui(object):
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.scene)
         self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.txtRedacText = customTextEdit(self.scene)
+        self.txtRedacText = textEditView(self.scene)
         self.txtRedacText.setObjectName("txtRedacText")
         self.horizontalLayout_2.addWidget(self.txtRedacText)
         self.stack.addWidget(self.scene)
@@ -63,13 +63,13 @@ class Ui_editorWidget_ui(object):
         self.verticalLayout_2.addWidget(self.stack)
 
         self.retranslateUi(editorWidget_ui)
-        self.stack.setCurrentIndex(2)
+        self.stack.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(editorWidget_ui)
 
     def retranslateUi(self, editorWidget_ui):
         _translate = QtCore.QCoreApplication.translate
         editorWidget_ui.setWindowTitle(_translate("editorWidget_ui", "Form"))
 
-from ui.editors.customTextEdit import customTextEdit
+from ui.views.textEditView import textEditView
 from ui.views.outlineView import outlineView
 from ui.views.corkView import corkView
