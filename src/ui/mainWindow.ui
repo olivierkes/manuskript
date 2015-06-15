@@ -18,7 +18,7 @@
     <item>
      <widget class="QTabWidget" name="tabMain">
       <property name="currentIndex">
-       <number>6</number>
+       <number>2</number>
       </property>
       <property name="documentMode">
        <bool>true</bool>
@@ -570,9 +570,6 @@
                </property>
               </widget>
              </item>
-             <item row="0" column="1">
-              <widget class="QLineEdit" name="txtPersoName"/>
-             </item>
              <item row="1" column="0">
               <widget class="QLabel" name="label_18">
                <property name="text">
@@ -678,6 +675,20 @@
                 </sizepolicy>
                </property>
               </widget>
+             </item>
+             <item row="0" column="1">
+              <layout class="QHBoxLayout" name="horizontalLayout_3">
+               <item>
+                <widget class="QLineEdit" name="txtPersoName"/>
+               </item>
+               <item>
+                <widget class="QPushButton" name="btnPersoColor">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+              </layout>
              </item>
             </layout>
            </widget>

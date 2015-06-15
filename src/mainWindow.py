@@ -95,21 +95,25 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
         # Persos
         self.mdlPersos = QStandardItemModel(0, 10)
-        self.mdlPersosProxy = persosProxyModel()
+        self.mdlPersosProxy = None #persosProxyModel()
         #self.mdlPersoProxyFilter = QSortFilterProxyModel()
-        self.mdlPersosProxy.setSourceModel(self.mdlPersos)
+        if self.mdlPersosProxy:
+            self.mdlPersosProxy.setSourceModel(self.mdlPersos)
+            self.lstPersos.setModel(self.mdlPersosProxy)
+        else:
+            self.lstPersos.setModel(self.mdlPersos)
         
         self.mdlPersosInfos = QStandardItemModel(1, 0)
         self.mdlPersosInfos.insertColumn(0, [QStandardItem("ID")])
         self.mdlPersosInfos.setHorizontalHeaderLabels(["Description"])
         #self.lstPersos.setModel(self.mdlPersos)
-        self.lstPersos.setModel(self.mdlPersosProxy)
         
         self.tblPersoInfos.setModel(self.mdlPersosInfos)
         self.tblPersoInfos.setRowHidden(0, True)
         
         self.btnAddPerso.clicked.connect(self.createPerso)
         self.btnRmPerso.clicked.connect(self.removePerso)
+        self.btnPersoColor.clicked.connect(self.setPersoColor)
         self.btnPersoAddInfo.clicked.connect(lambda: self.mdlPersosInfos.insertRow(self.mdlPersosInfos.rowCount()))
         self.mprPersos = QDataWidgetMapper()
         self.mprPersos.setModel(self.mdlPersos)
@@ -142,7 +146,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             (Qt.yellow, self.tr("Idea")),
             (Qt.green, self.tr("Note")),
             (Qt.blue, self.tr("Chapter")),
-            (Qt.red, self.tr("Scene"))
+            (Qt.red, self.tr("Scene")),
+            (Qt.cyan, self.tr("Research"))
             ]:
             self.mdlLabels.appendRow(QStandardItem(iconFromColor(color), text))
             
@@ -288,14 +293,25 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 self.mdlPersos.setItem(i, Perso.ID.value, item)
         
     def removePerso(self):
-        i = self.mdlPersosProxy.mapToSource(self.lstPersos.currentIndex())
+        if self.mdlPersosProxy:
+            i = self.mdlPersosProxy.mapToSource(self.lstPersos.currentIndex())
+        else:
+            i = self.lstPersos.currentIndex()
         self.mdlPersos.takeRow(i.row())
         self.mdlPersosInfos.takeColumn(i.row()+1)
         
     def changeCurrentPerso(self, trash=None):
-        idx = self.mdlPersosProxy.mapToSource(self.lstPersos.currentIndex())
+        if self.mdlPersosProxy:
+            idx = self.mdlPersosProxy.mapToSource(self.lstPersos.currentIndex())
+        else:
+            idx = self.lstPersos.currentIndex()
         
         self.mprPersos.setCurrentModelIndex(idx)
+        
+        # Button color
+        self.updatePersoColor()
+        
+        # detailed infos
         pid = self.mdlPersos.item(idx.row(), Perso.ID.value).text()
         for c in range(self.mdlPersosInfos.columnCount()):
             pid2 = self.mdlPersosInfos.item(0, c).text()
@@ -303,12 +319,47 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
         self.resizePersosInfos()
         
+    def updatePersoColor(self):    
+        if self.mdlPersosProxy:
+            idx = self.mdlPersosProxy.mapToSource(self.lstPersos.currentIndex())
+        else:
+            idx = self.lstPersos.currentIndex()
+            
+        px = QPixmap(32, 32)
+        icon = self.mdlPersos.item(idx.row()).icon()
+        if icon:
+            px.fill(iconColor(icon))
+        self.btnPersoColor.setIcon(QIcon(px))
+    
     def resizePersosInfos(self):
         self.tblPersoInfos.resizeColumnToContents(0)
         w = self.tblPersoInfos.viewport().width()
         w2 = self.tblPersoInfos.columnWidth(0)
-        current = self.mdlPersosProxy.mapToSource(self.lstPersos.currentIndex()).row() + 1
+        
+        if self.mdlPersosProxy:
+            current = self.mdlPersosProxy.mapToSource(self.lstPersos.currentIndex()).row() + 1
+        else:
+            current = self.lstPersos.currentIndex().row() + 1
+        
         self.tblPersoInfos.setColumnWidth(current, w - w2)
+        
+    def setPersoColor(self):
+        if self.mdlPersosProxy:
+            idx = self.mdlPersosProxy.mapToSource(self.lstPersos.currentIndex())
+        else:
+            idx = self.lstPersos.currentIndex()
+            
+        item = self.mdlPersos.item(idx.row(), Perso.name.value)
+        if item:
+            color = iconColor(item.icon())
+        else:
+            color = Qt.white
+        self.colorDialog = QColorDialog(color, self)
+        color = self.colorDialog.getColor(color)
+        px = QPixmap(32, 32)
+        px.fill(color)
+        self.mdlPersos.item(idx.row(), Perso.name.value).setIcon(QIcon(px))
+        self.updatePersoColor()
         
         
 ####################################################################################################

@@ -18,11 +18,12 @@
       <label row="8" text="summaryPara"/>
       <label row="9" text="summaryFull"/>
       <label row="10" text="notes"/>
+      <label row="11" text="color"/>
     </horizontal>
   </header>
   <data>
     <row row="0">
-      <col col="0">Albert le vert</col>
+      <col col="0" color="#ffff0000">Albert le vert</col>
       <col col="1">0</col>
       <col col="2">2</col>
       <col col="3"/>
@@ -36,9 +37,10 @@
 
 
 Pour voir.</col>
+      <col col="11"/>
     </row>
     <row row="1">
-      <col col="0">Ginette La Barbette</col>
+      <col col="0" color="#ff18f0f3">Ginette La Barbette</col>
       <col col="1">1</col>
       <col col="2">1</col>
       <col col="3"/>
@@ -49,11 +51,12 @@ Pour voir.</col>
       <col col="8"/>
       <col col="9"/>
       <col col="10"/>
+      <col col="11"/>
     </row>
     <row row="2">
-      <col col="0">Nouveau perso avec un nom très très long pour voir comment ça fait</col>
+      <col col="0" color="#ff0d05f0">Nouveau perso avec un nom très très long pour voir comment ça fait</col>
       <col col="1">2</col>
-      <col col="2"/>
+      <col col="2">1</col>
       <col col="3"/>
       <col col="4"/>
       <col col="5"/>
@@ -62,6 +65,7 @@ Pour voir.</col>
       <col col="8"/>
       <col col="9"/>
       <col col="10"/>
+      <col col="11"/>
     </row>
   </data>
 </model>

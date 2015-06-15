@@ -1,8 +1,5 @@
 #!/usr/bin/env python
 #--!-- coding: utf8 --!--
- 
-
-
 
 from qt import *
 
@@ -58,7 +55,11 @@ def mainWindow():
 
 def iconColor(icon):
     "Returns a QRgb from a QIcon, assuming its all the same color"
-    return QColor(QImage(icon.pixmap(5, 5)).pixel(2, 2))
+    px = icon.pixmap(5, 5)
+    if px.width() != 0:
+        return QColor(QImage(px).pixel(2, 2))
+    else:
+        return Qt.transparent
 
 def iconFromColor(color):
     px = QPixmap(32, 32)

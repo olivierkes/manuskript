@@ -302,9 +302,6 @@ class Ui_MainWindow(object):
         self.label_3 = QtWidgets.QLabel(self.infos)
         self.label_3.setObjectName("label_3")
         self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_3)
-        self.txtPersoName = QtWidgets.QLineEdit(self.infos)
-        self.txtPersoName.setObjectName("txtPersoName")
-        self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.txtPersoName)
         self.label_18 = QtWidgets.QLabel(self.infos)
         self.label_18.setObjectName("label_18")
         self.formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_18)
@@ -362,6 +359,16 @@ class Ui_MainWindow(object):
         self.sldPersoImportance.setSizePolicy(sizePolicy)
         self.sldPersoImportance.setObjectName("sldPersoImportance")
         self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.sldPersoImportance)
+        self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
+        self.txtPersoName = QtWidgets.QLineEdit(self.infos)
+        self.txtPersoName.setObjectName("txtPersoName")
+        self.horizontalLayout_3.addWidget(self.txtPersoName)
+        self.btnPersoColor = QtWidgets.QPushButton(self.infos)
+        self.btnPersoColor.setText("")
+        self.btnPersoColor.setObjectName("btnPersoColor")
+        self.horizontalLayout_3.addWidget(self.btnPersoColor)
+        self.formLayout.setLayout(0, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout_3)
         self.tabPersos.addTab(self.infos, "")
         self.tab_11 = QtWidgets.QWidget()
         self.tab_11.setObjectName("tab_11")
@@ -1042,7 +1049,7 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuHelp.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.tabMain.setCurrentIndex(6)
+        self.tabMain.setCurrentIndex(2)
         self.tabSummary.setCurrentIndex(0)
         self.tabPersos.setCurrentIndex(0)
         self.tabPlot.setCurrentIndex(0)
@@ -1211,11 +1218,11 @@ class Ui_MainWindow(object):
         self.actLabels.setText(_translate("MainWindow", "Labels..."))
         self.actStatus.setText(_translate("MainWindow", "Status..."))
 
-from ui.views.outlineView import outlineView
-from ui.views.textEditView import textEditView
-from ui.views.metadataView import metadataView
-from ui.views.lineEditView import lineEditView
-from ui.sldImportance import sldImportance
-from ui.views.basicItemView import basicItemView
-from ui.editors.editorWidget import editorWidget
 from ui.views.treeView import treeView
+from ui.sldImportance import sldImportance
+from ui.views.lineEditView import lineEditView
+from ui.editors.editorWidget import editorWidget
+from ui.views.textEditView import textEditView
+from ui.views.outlineView import outlineView
+from ui.views.metadataView import metadataView
+from ui.views.basicItemView import basicItemView
