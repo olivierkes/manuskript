@@ -37,7 +37,7 @@ class outlineModel(QAbstractItemModel):
     
     def indexFromItem(self, item, column=0):
         if item == self.rootItem:
-            return None
+            return QModelIndex()
         
         parent = item.parent()
         if not parent:
@@ -294,7 +294,7 @@ class outlineModel(QAbstractItemModel):
         #self.endInsertRows()
         
         
-    ################# XML #################
+    ################# XML / saving / loading #################
     
     def saveToXML(self, xml):
         root = ET.XML(self.rootItem.toXML())
@@ -307,7 +307,26 @@ class outlineModel(QAbstractItemModel):
         #except:
             #print("N'arrive pas à ouvrir {}".format(xml))
             #return
+    
+    def pathToIndex(self, index, path=""):
+        if not index.isValid():
+            return ""
+        if index.parent().isValid():
+            path = self.pathToIndex(index.parent())
+        if path:
+            path = "{},{}".format(path, str(index.row()))
+        else:
+            path = str(index.row())
+        
+        return path
             
+    def indexFromPath(self, path):
+        path = path.split(",")
+        item = self.rootItem
+        for p in path:
+            if p != "":
+                item = item.child(int(p))
+        return self.indexFromItem(item)
     
 class outlineItem():
     

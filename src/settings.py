@@ -27,17 +27,21 @@ spellcheck = False
 dict = None
 corkSizeFactor = 100
 folderView = "cork"
+lastTab = 0
+lastIndex = ""
 
 def save(filename):
     
-    global spellcheck, dict, corkSliderFactor, viewSettings, corkSizeFactor, folderView
+    global spellcheck, dict, corkSliderFactor, viewSettings, corkSizeFactor, folderView, lastTab, lastIndex
     
     allSettings = {
         "viewSettings": viewSettings,
         "dict": dict,
         "spellcheck": spellcheck,
         "corkSizeFactor": corkSizeFactor,
-        "folderView": folderView
+        "folderView": folderView,
+        "lastTab": lastTab,
+        "lastIndex": lastIndex
         }
     
     #pp=pprint.PrettyPrinter(indent=4, compact=False)
@@ -81,6 +85,14 @@ def load(filename):
     if "folderView" in allSettings:
         global folderView
         folderView = allSettings["folderView"]
+        
+    if "lastTab" in allSettings:
+        global lastTab
+        lastTab = allSettings["lastTab"]
+        
+    if "lastIndex" in allSettings:
+        global lastIndex
+        lastIndex = allSettings["lastIndex"]
         
     
     

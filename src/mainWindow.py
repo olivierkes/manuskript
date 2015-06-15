@@ -392,6 +392,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.btnRedacFolderCork.setChecked(True)
         elif settings.folderView == "outline":
             self.btnRedacFolderOutline.setChecked(True)
+        self.tabMain.setCurrentIndex(settings.lastTab)
+        self.treeRedacOutline.setCurrentIndex(self.mdlOutline.indexFromPath(settings.lastIndex))
+        
         
         # Stuff
         self.checkPersosID()
@@ -410,6 +413,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         stgs = QSettings(qApp.organizationName(), qApp.applicationName())
         stgs.setValue("geometry", self.saveGeometry())
         stgs.setValue("windowState", self.saveState())
+        
+        # Specific settings to save before quitting
+        settings.lastTab = self.tabMain.currentIndex()
+        if len(self.treeRedacOutline.selectedIndexes()) == 0:
+            sel = QModelIndex()
+        else:
+            sel = self.treeRedacOutline.currentIndex()
+        settings.lastIndex = self.mdlOutline.pathToIndex(sel)
         
         # Save data from models
         saveStandardItemModelXML(self.mdlFlatData, "{}/flatModel.xml".format(self.currentProject))
