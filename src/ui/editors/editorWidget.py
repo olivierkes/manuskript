@@ -123,7 +123,7 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
             addSpacer()
             self.scroll.setWidget(w)
             
-        elif item.isFolder() and self.folderView == "text":
+        elif item and item.isFolder() and self.folderView == "text":
             self.stack.setCurrentIndex(1)
             
             w = QWidget()
@@ -139,7 +139,7 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
             addSpacer()
             self.scroll.setWidget(w)
             
-        elif item.isFolder() and self.folderView == "cork":
+        elif item and item.isFolder() and self.folderView == "cork":
             self.stack.setCurrentIndex(2)
             self.corkView.setModel(self._model)
             self.corkView.setRootIndex(index)
@@ -149,7 +149,7 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
                 lambda: mainWindow().redacMetadata.selectionChanged(self.corkView))
             
             
-        elif item.isFolder() and self.folderView == "outline":
+        elif item and item.isFolder() and self.folderView == "outline":
             self.stack.setCurrentIndex(3)
             self.outlineView.setModelPersos(mainWindow().mdlPersos)
             self.outlineView.setModelLabels(mainWindow().mdlLabels)

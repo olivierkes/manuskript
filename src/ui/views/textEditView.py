@@ -22,7 +22,6 @@ class textEditView(QTextEdit):
         self._placeholderText = None
         self._updating = False
         self._item = None
-        self._update = False
         self._highlighting = True
         
         self.spellcheck = spellcheck
@@ -91,7 +90,7 @@ class textEditView(QTextEdit):
         self.updateText()
         
     def update(self, topLeft, bottomRight):
-        if self._update:
+        if self._updating:
             return
         
         elif self._index:
@@ -107,6 +106,7 @@ class textEditView(QTextEdit):
                 self.updateText()
             
     def updateText(self):
+        self._updating = True
         if self._index:
             if self.toPlainText() != toString(self._model.data(self._index)):
                 self.document().setPlainText(toString(self._model.data(self._index)))
@@ -132,12 +132,19 @@ class textEditView(QTextEdit):
                     self._placeholderText = self.placeholderText()
                     
                 self.setPlaceholderText(self.tr("Various"))
+        self._updating = False
         
     def submit(self):
+        
+        if self._updating:
+            return
+        
         if self._index:
             #item = self._index.internalPointer()
             if self.toPlainText() != self._model.data(self._index):
+                self._updating = True
                 self._model.setData(self._index, self.toPlainText())
+                self._updating = False
                 
         elif self._indexes:
             self._updating = True
