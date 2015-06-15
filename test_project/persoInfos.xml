@@ -7,7 +7,7 @@
       <label row="2" text="3"/>
     </vertical>
     <horizontal>
-      <label row="0" text="Description"/>
+      <label row="0" text="Valeur"/>
       <label row="1" text="Valeur"/>
       <label row="2" text="Valeur"/>
       <label row="3" text="Valeur"/>
@@ -15,20 +15,20 @@
   </header>
   <data>
     <row row="0">
-      <col col="0">ID</col>
-      <col col="1">0</col>
-      <col col="2">1</col>
-      <col col="3">2</col>
+      <col col="0">1</col>
+      <col col="1">2</col>
+      <col col="2">4</col>
+      <col col="3">5</col>
     </row>
     <row row="1">
-      <col col="0">Age</col>
-      <col col="1">42</col>
-      <col col="2">12</col>
+      <col col="0">12</col>
+      <col col="1"/>
+      <col col="2"/>
       <col col="3"/>
     </row>
     <row row="2">
-      <col col="0">Animal préféré</col>
-      <col col="1">Pingouin</col>
+      <col col="0"/>
+      <col col="1"/>
       <col col="2"/>
       <col col="3"/>
     </row>

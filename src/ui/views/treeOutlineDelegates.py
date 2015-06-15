@@ -31,11 +31,33 @@ class treeOutlinePersoDelegate(QStyledItemDelegate):
         return editor
     
     def setEditorData(self, editor, index):
-        editor.addItem("")
-        for i in range(self.mdlPersos.rowCount()):
-            editor.addItem(self.mdlPersos.item(i, Perso.name.value).text(), self.mdlPersos.item(i, Perso.ID.value).text())
-            editor.setItemData(i+1, self.mdlPersos.item(i, Perso.name.value).text(), Qt.ToolTipRole)
-            
+        #editor.addItem("")
+        editor.addItem(QIcon.fromTheme("edit-delete"), self.tr("None"))
+        #for i in range(self.mdlPersos.rowCount()):
+            #editor.addItem(self.mdlPersos.item(i, Perso.name.value).text(), self.mdlPersos.item(i, Perso.ID.value).text())
+            #editor.setItemData(i+1, self.mdlPersos.item(i, Perso.name.value).text(), Qt.ToolTipRole)
+        
+        l = [self.tr("Main"), self.tr("Secondary"), self.tr("Minor")]
+        for importance in range(3):
+            editor.addItem(l[importance])
+            editor.setItemData(editor.count()-1, QBrush(Qt.darkBlue), Qt.ForegroundRole)
+            editor.setItemData(editor.count()-1, QBrush(QColor(Qt.blue).lighter(190)), Qt.BackgroundRole)
+            item = editor.model().item(editor.count()-1)
+            item.setFlags(Qt.ItemIsEnabled)
+            for i in range(self.mdlPersos.rowCount()):
+                imp = self.mdlPersos.item(i, Perso.importance.value)
+                if imp:
+                    imp = toInt(imp.text())
+                else:
+                    imp = 0
+                if not 2-imp == importance: continue
+                
+                try:
+                    editor.addItem(self.mdlPersos.item(i, Perso.name.value).text(), self.mdlPersos.item(i, Perso.ID.value).text())
+                    editor.setItemData(i+1, self.mdlPersos.item(i, Perso.name.value).text(), Qt.ToolTipRole)
+                except:
+                    pass
+        
         editor.setCurrentIndex(editor.findData(index.data()))
         editor.showPopup()
     

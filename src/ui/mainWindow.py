@@ -1042,8 +1042,8 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuHelp.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.tabMain.setCurrentIndex(1)
-        self.tabSummary.setCurrentIndex(3)
+        self.tabMain.setCurrentIndex(6)
+        self.tabSummary.setCurrentIndex(0)
         self.tabPersos.setCurrentIndex(0)
         self.tabPlot.setCurrentIndex(0)
         self.comboBox_2.setCurrentIndex(0)
@@ -1211,11 +1211,11 @@ class Ui_MainWindow(object):
         self.actLabels.setText(_translate("MainWindow", "Labels..."))
         self.actStatus.setText(_translate("MainWindow", "Status..."))
 
-from ui.views.metadataView import metadataView
-from ui.views.treeView import treeView
-from ui.views.lineEditView import lineEditView
-from ui.views.outlineView import outlineView
+from ui.views.textEditView import textEditView
 from ui.views.basicItemView import basicItemView
+from ui.views.outlineView import outlineView
+from ui.views.metadataView import metadataView
+from ui.views.lineEditView import lineEditView
 from ui.sldImportance import sldImportance
 from ui.editors.editorWidget import editorWidget
-from ui.views.textEditView import textEditView
+from ui.views.treeView import treeView

@@ -6,6 +6,7 @@
 
 from qt import *
 from enums import *
+from functions import *
 
 class cmbOutlinePersoChoser(QComboBox):
     
@@ -27,13 +28,28 @@ class cmbOutlinePersoChoser(QComboBox):
         
     def updateItems(self):
         self.clear()
-        self.addItem("")
-        for i in range(self.mdlPersos.rowCount()):
-            try:
-                self.addItem(self.mdlPersos.item(i, Perso.name.value).text(), self.mdlPersos.item(i, Perso.ID.value).text())
-                self.setItemData(i+1, self.mdlPersos.item(i, Perso.name.value).text(), Qt.ToolTipRole)
-            except:
-                pass
+        self.addItem(QIcon.fromTheme("edit-delete"), self.tr("None"))
+        
+        l = [self.tr("Main"), self.tr("Secondary"), self.tr("Minor")]
+        for importance in range(3):
+            self.addItem(l[importance])
+            self.setItemData(self.count()-1, QBrush(Qt.darkBlue), Qt.ForegroundRole)
+            self.setItemData(self.count()-1, QBrush(QColor(Qt.blue).lighter(190)), Qt.BackgroundRole)
+            item = self.model().item(self.count()-1)
+            item.setFlags(Qt.ItemIsEnabled)
+            for i in range(self.mdlPersos.rowCount()):
+                imp = self.mdlPersos.item(i, Perso.importance.value)
+                if imp:
+                    imp = toInt(imp.text())
+                else:
+                    imp = 0
+                if not 2-imp == importance: continue
+                
+                try:
+                    self.addItem(self.mdlPersos.item(i, Perso.name.value).text(), self.mdlPersos.item(i, Perso.ID.value).text())
+                    self.setItemData(i+1, self.mdlPersos.item(i, Perso.name.value).text(), Qt.ToolTipRole)
+                except:
+                    pass
         
         self._various = False
         
