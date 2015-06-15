@@ -441,6 +441,7 @@ class outlineItem():
             if setGoal:
                 if goal != setGoal:
                     self._data[Outline.goal] = setGoal
+                    goal = setGoal
             else:
                 goal = 0
                 for c in self.children():
