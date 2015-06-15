@@ -63,9 +63,9 @@ class Ui_basicItemView(object):
         self.lblPlanPOV.setText(_translate("basicItemView", "POV:"))
         self.lblGoal.setText(_translate("basicItemView", "Goal:"))
         self.txtGoal.setPlaceholderText(_translate("basicItemView", "Word count"))
-        self.txtSummarySentance.setPlaceholderText(_translate("basicItemView", "One line scene summary"))
+        self.txtSummarySentance.setPlaceholderText(_translate("basicItemView", "One line summary"))
         self.label_9.setText(_translate("basicItemView", "Few sentences summary:"))
 
-from ui.views.cmbOutlinePersoChoser import cmbOutlinePersoChoser
 from ui.views.textEditView import textEditView
 from ui.views.lineEditView import lineEditView
+from ui.views.cmbOutlinePersoChoser import cmbOutlinePersoChoser

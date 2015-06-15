@@ -67,10 +67,10 @@ class Ui_metadataView(object):
         metadataView.setWindowTitle(_translate("metadataView", "Form"))
         self.groupBox_4.setTitle(_translate("metadataView", "Properties"))
         self.groupBox_5.setTitle(_translate("metadataView", "Summary"))
-        self.txtSummarySentance.setPlaceholderText(_translate("metadataView", "One line scene summary"))
+        self.txtSummarySentance.setPlaceholderText(_translate("metadataView", "One line summary"))
         self.groupBox_6.setTitle(_translate("metadataView", "Notes"))
 
 from ui.views.lineEditView import lineEditView
-from ui.collapsibleGroupBox2 import collapsibleGroupBox2
 from ui.views.textEditView import textEditView
+from ui.collapsibleGroupBox2 import collapsibleGroupBox2
 from ui.views.propertiesView import propertiesView

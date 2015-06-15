@@ -724,12 +724,12 @@ class Ui_MainWindow(object):
         self.btnPlanAddFolder.setIcon(icon)
         self.btnPlanAddFolder.setObjectName("btnPlanAddFolder")
         self.horizontalLayout_18.addWidget(self.btnPlanAddFolder)
-        self.btnPlanAddScene = QtWidgets.QPushButton(self.layoutWidget)
-        self.btnPlanAddScene.setText("")
+        self.btnPlanAddText = QtWidgets.QPushButton(self.layoutWidget)
+        self.btnPlanAddText.setText("")
         icon = QtGui.QIcon.fromTheme("document-new")
-        self.btnPlanAddScene.setIcon(icon)
-        self.btnPlanAddScene.setObjectName("btnPlanAddScene")
-        self.horizontalLayout_18.addWidget(self.btnPlanAddScene)
+        self.btnPlanAddText.setIcon(icon)
+        self.btnPlanAddText.setObjectName("btnPlanAddText")
+        self.horizontalLayout_18.addWidget(self.btnPlanAddText)
         self.btnPlanRemoveItem = QtWidgets.QPushButton(self.layoutWidget)
         self.btnPlanRemoveItem.setText("")
         icon = QtGui.QIcon.fromTheme("list-remove")
@@ -772,12 +772,12 @@ class Ui_MainWindow(object):
         self.btnRedacAddFolder.setIcon(icon)
         self.btnRedacAddFolder.setObjectName("btnRedacAddFolder")
         self.horizontalLayout_31.addWidget(self.btnRedacAddFolder)
-        self.btnRedacAddScene = QtWidgets.QPushButton(self.widget)
-        self.btnRedacAddScene.setText("")
+        self.btnRedacAddText = QtWidgets.QPushButton(self.widget)
+        self.btnRedacAddText.setText("")
         icon = QtGui.QIcon.fromTheme("document-new")
-        self.btnRedacAddScene.setIcon(icon)
-        self.btnRedacAddScene.setObjectName("btnRedacAddScene")
-        self.horizontalLayout_31.addWidget(self.btnRedacAddScene)
+        self.btnRedacAddText.setIcon(icon)
+        self.btnRedacAddText.setObjectName("btnRedacAddText")
+        self.horizontalLayout_31.addWidget(self.btnRedacAddText)
         self.btnRedacRemoveItem = QtWidgets.QPushButton(self.widget)
         self.btnRedacRemoveItem.setText("")
         icon = QtGui.QIcon.fromTheme("list-remove")
@@ -1211,11 +1211,11 @@ class Ui_MainWindow(object):
         self.actLabels.setText(_translate("MainWindow", "Labels..."))
         self.actStatus.setText(_translate("MainWindow", "Status..."))
 
-from ui.views.textEditView import textEditView
-from ui.views.basicItemView import basicItemView
 from ui.views.outlineView import outlineView
+from ui.views.textEditView import textEditView
 from ui.views.metadataView import metadataView
 from ui.views.lineEditView import lineEditView
 from ui.sldImportance import sldImportance
+from ui.views.basicItemView import basicItemView
 from ui.editors.editorWidget import editorWidget
 from ui.views.treeView import treeView

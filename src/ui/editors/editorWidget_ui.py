@@ -17,15 +17,15 @@ class Ui_editorWidget_ui(object):
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.stack = QtWidgets.QStackedWidget(editorWidget_ui)
         self.stack.setObjectName("stack")
-        self.scene = QtWidgets.QWidget()
-        self.scene.setObjectName("scene")
-        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.scene)
+        self.text = QtWidgets.QWidget()
+        self.text.setObjectName("text")
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.text)
         self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.txtRedacText = textEditView(self.scene)
+        self.txtRedacText = textEditView(self.text)
         self.txtRedacText.setObjectName("txtRedacText")
         self.horizontalLayout_2.addWidget(self.txtRedacText)
-        self.stack.addWidget(self.scene)
+        self.stack.addWidget(self.text)
         self.folder = QtWidgets.QWidget()
         self.folder.setObjectName("folder")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.folder)
@@ -71,5 +71,5 @@ class Ui_editorWidget_ui(object):
         editorWidget_ui.setWindowTitle(_translate("editorWidget_ui", "Form"))
 
 from ui.views.textEditView import textEditView
-from ui.views.outlineView import outlineView
 from ui.views.corkView import corkView
+from ui.views.outlineView import outlineView

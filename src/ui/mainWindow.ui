@@ -1373,7 +1373,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QPushButton" name="btnPlanAddScene">
+               <widget class="QPushButton" name="btnPlanAddText">
                 <property name="text">
                  <string/>
                 </property>
@@ -1468,7 +1468,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QPushButton" name="btnRedacAddScene">
+               <widget class="QPushButton" name="btnRedacAddText">
                 <property name="text">
                  <string/>
                 </property>

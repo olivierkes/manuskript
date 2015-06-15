@@ -76,12 +76,12 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
             l.addWidget(edt)
         
         def addLine():
-            line = QFrame(self.scene)
+            line = QFrame(self.text)
             line.setFrameShape(QFrame.HLine)
             line.setFrameShadow(QFrame.Sunken)
             l.addWidget(line)
         
-        def addScene(itm):
+        def addText(itm):
             edt = customTextEdit(self, index=itm.index(), spellcheck=self.spellcheck, dict=self.currentDict, autoResize=True)
             edt.setFrameShape(QFrame.NoFrame)
             edt.setStatusTip(itm.path())
@@ -100,7 +100,7 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
                     addChildren(child)
                     
                 else:
-                    addScene(child)
+                    addText(child)
                     addLine()
         
         def addSpacer():
@@ -118,7 +118,7 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
                 if sItem.isFolder():
                     addChildren(sItem)
                 else:
-                    addScene(sItem)
+                    addText(sItem)
                 addLine()
             addSpacer()
             self.scroll.setWidget(w)

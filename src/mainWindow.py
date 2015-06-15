@@ -178,8 +178,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
         self.btnRedacAddFolder.clicked.connect(self.treeRedacOutline.addFolder)
         self.btnPlanAddFolder.clicked.connect(self.treePlanOutline.addFolder)
-        self.btnRedacAddScene.clicked.connect(self.treeRedacOutline.addScene)
-        self.btnPlanAddScene.clicked.connect(self.treePlanOutline.addScene)
+        self.btnRedacAddText.clicked.connect(self.treeRedacOutline.addText)
+        self.btnPlanAddText.clicked.connect(self.treePlanOutline.addText)
         self.btnRedacRemoveItem.clicked.connect(self.outlineRemoveItems)
         self.btnPlanRemoveItem.clicked.connect(self.outlineRemoveItems)
         

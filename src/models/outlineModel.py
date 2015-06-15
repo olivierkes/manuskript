@@ -354,7 +354,7 @@ class outlineItem():
         elif role == Qt.DecorationRole and column == Outline.title.value:
             if self.isFolder():
                 return QIcon.fromTheme("folder")
-            elif self.isScene():
+            elif self.isText():
                 return QIcon.fromTheme("document-new")
             
         elif role == Qt.ForegroundRole:
@@ -489,8 +489,8 @@ class outlineItem():
         else:
             return self.title()
     
-    def isScene(self):
-        return self._data[Outline.type] == "scene"
+    def isText(self):
+        return self._data[Outline.type] == "text"
     
     def level(self):
         if self.parent():

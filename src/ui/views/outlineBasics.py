@@ -33,9 +33,9 @@ class outlineBasics(QAbstractItemView):
             self.actAddFolder.triggered.connect(self.addFolder)
             self.menu.addAction(self.actAddFolder)
             
-            self.actAddScene = QAction(QIcon.fromTheme("document-new"), qApp.translate("outlineBasics", "New Scene"), self.menu)
-            self.actAddScene.triggered.connect(self.addScene)
-            self.menu.addAction(self.actAddScene)
+            self.actAddText = QAction(QIcon.fromTheme("document-new"), qApp.translate("outlineBasics", "New Text"), self.menu)
+            self.actAddText.triggered.connect(self.addText)
+            self.menu.addAction(self.actAddText)
             
             self.actDelete = QAction(QIcon.fromTheme("edit-delete"), qApp.translate("outlineBasics", "Delete"), self.menu)
             self.actDelete.triggered.connect(self.delete)
@@ -126,7 +126,7 @@ class outlineBasics(QAbstractItemView):
                 
             if len(sel) > 0 and index.isValid() and not index.internalPointer().isFolder():
                 self.actAddFolder.setEnabled(False)
-                self.actAddScene.setEnabled(False)
+                self.actAddText.setEnabled(False)
             
             if len(sel) == 0:
                 self.actCopy.setEnabled(False)
@@ -139,8 +139,8 @@ class outlineBasics(QAbstractItemView):
     def addFolder(self):
         self.addItem("folder")
         
-    def addScene(self):
-        self.addItem("scene")
+    def addText(self):
+        self.addItem("text")
         
     def addItem(self, type="folder"):
         if len(self.selectedIndexes()) == 0:

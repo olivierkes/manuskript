@@ -22,7 +22,7 @@
      <property name="currentIndex">
       <number>0</number>
      </property>
-     <widget class="QWidget" name="scene">
+     <widget class="QWidget" name="text">
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <property name="margin">
         <number>0</number>
