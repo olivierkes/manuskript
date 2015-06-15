@@ -6,6 +6,7 @@ from enums import *
 from ui.editors.editorWidget_ui import *
 from ui.views.textEditView import *
 from functions import *
+import settings
 
 class editorWidget(QWidget, Ui_editorWidget_ui):
     
@@ -37,11 +38,16 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
         else:
             self.folderView = "text"
             
+        # Saving value
+        settings.folderView = self.folderView
+            
         if oldV != self.folderView and self.currentIndex:
             self.setCurrentModelIndex(self.currentIndex)
         
     def setCorkSizeFactor(self, v):
         self.corkView.itemDelegate().setCorkSizeFactor(v)
+        settings.corkSizeFactor = v
+        
         r = self.corkView.rootIndex()
         
         if r.isValid():
@@ -70,7 +76,7 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
         self.currentIndex = index
             
         def addTitle(itm):
-            edt = customTextEdit(self, html="<h{l}>{t}</h{l}>".format(l=min(itm.level()+1, 5), t=itm.title()), autoResize=True)
+            edt = textEditView(self, html="<h{l}>{t}</h{l}>".format(l=min(itm.level()+1, 5), t=itm.title()), autoResize=True)
             edt.setFrameShape(QFrame.NoFrame)
             self.txtEdits.append(edt)
             l.addWidget(edt)
@@ -82,7 +88,7 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
             l.addWidget(line)
         
         def addText(itm):
-            edt = customTextEdit(self, index=itm.index(), spellcheck=self.spellcheck, dict=self.currentDict, autoResize=True)
+            edt = textEditView(self, index=itm.index(), spellcheck=self.spellcheck, dict=self.currentDict, autoResize=True)
             edt.setFrameShape(QFrame.NoFrame)
             edt.setStatusTip(itm.path())
             self.toggledSpellcheck.connect(edt.toggleSpellcheck)

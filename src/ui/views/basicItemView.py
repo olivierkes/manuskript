@@ -54,6 +54,8 @@ class basicItemView(QWidget, Ui_basicItemView):
             self.cmbPOV.setCurrentModelIndexes(indexes)
             self.txtGoal.setCurrentModelIndexes(indexes)
             
+    def setDict(self, d):
+        self.txtSummaryFull.setDict(d)
         
     def toggleSpellcheck(self, v):
         self.txtSummaryFull.toggleSpellcheck(v)

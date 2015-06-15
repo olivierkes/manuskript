@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 #--!-- coding: utf8 --!--
  
-
-
-
 from qt import *
 
 from ui.mainWindow import *
@@ -14,6 +11,7 @@ from models.outlineModel import *
 from models.persosProxyModel import *
 from functions import *
 from settingsWindow import *
+import settings
 
 # Spell checker support
 try:
@@ -212,6 +210,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.actLabels.triggered.connect(self.settingsLabel)
         self.actStatus.triggered.connect(self.settingsStatus)
         self.actQuit.triggered.connect(self.close)
+        self.generateViewMenu()
         
         #Debug
         self.mdlFlatData.setVerticalHeaderLabels(["Infos générales", "Summary"])
@@ -378,6 +377,21 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         loadStandardItemModelXML(self.mdlLabels, "{}/labels.xml".format(project))
         loadStandardItemModelXML(self.mdlStatus, "{}/status.xml".format(project))
         self.mdlOutline.loadFromXML("{}/outline.xml".format(project))
+        settings.load("{}/settings.pickle".format(project))
+        
+        # Stuff from settings
+        self.generateViewMenu()
+        self.sldCorkSizeFactor.setValue(settings.corkSizeFactor)
+        self.actSpellcheck.setChecked(settings.spellcheck)
+        self.updateMenuDict()
+        self.setDictionary()
+        self.redacEditor.setFolderView(settings.folderView)
+        if settings.folderView == "text":
+            self.btnRedacFolderText.setChecked(True)
+        elif settings.folderView == "cork":
+            self.btnRedacFolderCork.setChecked(True)
+        elif settings.folderView == "outline":
+            self.btnRedacFolderOutline.setChecked(True)
         
         # Stuff
         self.checkPersosID()
@@ -393,9 +407,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
     def closeEvent(self, event):
         # Save State and geometry
-        settings = QSettings(qApp.organizationName(), qApp.applicationName())
-        settings.setValue("geometry", self.saveGeometry())
-        settings.setValue("windowState", self.saveState())
+        stgs = QSettings(qApp.organizationName(), qApp.applicationName())
+        stgs.setValue("geometry", self.saveGeometry())
+        stgs.setValue("windowState", self.saveState())
         
         # Save data from models
         saveStandardItemModelXML(self.mdlFlatData, "{}/flatModel.xml".format(self.currentProject))
@@ -404,6 +418,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         saveStandardItemModelXML(self.mdlLabels, "{}/labels.xml".format(self.currentProject))
         saveStandardItemModelXML(self.mdlStatus, "{}/status.xml".format(self.currentProject))
         self.mdlOutline.saveToXML("{}/outline.xml".format(self.currentProject))
+        settings.save("{}/settings.pickle".format(self.currentProject))
         
         # closeEvent
         QMainWindow.closeEvent(self, event)
@@ -500,23 +515,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if enchant:
             self.menuDict = QMenu(self.tr("Dictionary"))
             self.menuDictGroup = QActionGroup(self)
-
-            for i in enchant.list_dicts():
-                a = QAction(str(i[0]), self)
-                a.setCheckable(True)
-                a.triggered.connect(self.setDictionary)
-                if str(i[0]) == enchant.get_default_language(): # "fr_CH"
-                    a.setChecked(True)
-                self.menuDictGroup.addAction(a)
-                self.menuDict.addAction(a)
-
+            self.updateMenuDict()
             self.menuTools.addMenu(self.menuDict)
             
-            self.actSpellcheck.toggled.connect(self.redacEditor.toggleSpellcheck)
-            self.actSpellcheck.toggled.connect(self.redacMetadata.toggleSpellcheck)
-            self.actSpellcheck.toggled.connect(self.outlineItemEditor.toggleSpellcheck)
+            self.actSpellcheck.toggled.connect(self.toggleSpellcheck)
             self.dictChanged.connect(self.redacEditor.setDict)
-            
+            self.dictChanged.connect(self.redacMetadata.setDict)
+            self.dictChanged.connect(self.outlineItemEditor.setDict)
             
         else:
             # No Spell check support
@@ -528,14 +533,33 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             
         self.btnRedacFullscreen.clicked.connect(self.redacEditor.showFullscreen)
             
+    def updateMenuDict(self):
+        self.menuDict.clear()
+        for i in enchant.list_dicts():
+            a = QAction(str(i[0]), self)
+            a.setCheckable(True)
+            a.triggered.connect(self.setDictionary)
+            if settings.dict == None:
+                settings.dict = enchant.get_default_language()
+            if str(i[0]) == settings.dict:
+                a.setChecked(True)
+            self.menuDictGroup.addAction(a)
+            self.menuDict.addAction(a)
+            
     def setDictionary(self):
         for i in self.menuDictGroup.actions():
             if i.isChecked():
                 self.dictChanged.emit(i.text().replace("&", ""))
+                settings.dict = i.text().replace("&", "")
 
     def openPyEnchantWebPage(self):
         QDesktopServices.openUrl(QUrl("http://pythonhosted.org/pyenchant/"))
         
+    def toggleSpellcheck(self, val):
+        settings.spellcheck = val
+        self.redacEditor.toggleSpellcheck(val)
+        self.redacMetadata.toggleSpellcheck(val)
+        self.outlineItemEditor.toggleSpellcheck(val)
         
 ####################################################################################################
 #                                            SETTINGS                                              #
@@ -559,3 +583,68 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.sw.tabWidget.setCurrentIndex(tab)
         self.sw.show()
         
+####################################################################################################
+#                                           VIEW MENU                                              #
+####################################################################################################
+        
+    def generateViewMenu(self):    
+        
+        values = [
+                (self.tr("Nothing"), "Nothing"),
+                (self.tr("POV"), "POV"),
+                (self.tr("Label"), "Label"),
+                (self.tr("Progress"), "Progress"),
+                (self.tr("Compile"), "Compile"),
+                ]
+        
+        menus = [
+            (self.tr("Tree"), "Tree"),
+            (self.tr("Index cards"), "Cork"),
+            (self.tr("Outline"), "Outline")
+            ]
+        
+        submenus = {
+            "Tree": [
+                (self.tr("Icon color"), "Icon"),
+                (self.tr("Text color"), "Text"),
+                (self.tr("Background color"), "Background"),
+                ],
+            "Cork": [
+                (self.tr("Icon"), "Icon"),
+                (self.tr("Text"), "Text"),
+                (self.tr("Background"), "Background"),
+                (self.tr("Border"), "Border"),
+                (self.tr("Corner"), "Corner"),
+                ],
+            "Outline": [
+                (self.tr("Icon color"), "Icon"),
+                (self.tr("Text color"), "Text"),
+                (self.tr("Background color"), "Background"),
+                ],
+            }
+            
+        self.menuView.clear()
+            
+        #print("Generating menus with", settings.viewSettings)
+            
+        for mnu, mnud in menus:
+            m = QMenu(mnu, self.menuView)
+            for s, sd in submenus[mnud]:
+                m2 = QMenu(s, m)
+                agp = QActionGroup(m2)
+                for v, vd in values:
+                    a = QAction(v, m)
+                    a.setCheckable(True)
+                    a.setData("{},{},{}".format(mnud, sd, vd))
+                    if settings.viewSettings[mnud][sd] == vd:
+                        a.setChecked(True)
+                    a.triggered.connect(self.setViewElement)
+                    agp.addAction(a)
+                    m2.addAction(a)
+                m.addMenu(m2)
+            self.menuView.addMenu(m)
+        
+    def setViewElement(self):
+        action = self.sender()
+        item, part, element = action.data().split(",")
+        settings.viewSettings[item][part] = element

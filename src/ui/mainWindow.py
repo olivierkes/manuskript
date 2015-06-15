@@ -982,6 +982,8 @@ class Ui_MainWindow(object):
         self.menuTools.setObjectName("menuTools")
         self.menuEdit = QtWidgets.QMenu(self.menubar)
         self.menuEdit.setObjectName("menuEdit")
+        self.menuView = QtWidgets.QMenu(self.menubar)
+        self.menuView.setObjectName("menuView")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -1006,10 +1008,6 @@ class Ui_MainWindow(object):
         icon = QtGui.QIcon.fromTheme("application-exit")
         self.actQuit.setIcon(icon)
         self.actQuit.setObjectName("actQuit")
-        self.actSnowflakeMode = QtWidgets.QAction(MainWindow)
-        self.actSnowflakeMode.setCheckable(True)
-        self.actSnowflakeMode.setChecked(True)
-        self.actSnowflakeMode.setObjectName("actSnowflakeMode")
         self.actNew = QtWidgets.QAction(MainWindow)
         icon = QtGui.QIcon.fromTheme("document-new")
         self.actNew.setIcon(icon)
@@ -1030,6 +1028,22 @@ class Ui_MainWindow(object):
         self.actLabels.setObjectName("actLabels")
         self.actStatus = QtWidgets.QAction(MainWindow)
         self.actStatus.setObjectName("actStatus")
+        self.actViewTree = QtWidgets.QAction(MainWindow)
+        self.actViewTree.setObjectName("actViewTree")
+        self.actModeNorma = QtWidgets.QAction(MainWindow)
+        self.actModeNorma.setCheckable(True)
+        self.actModeNorma.setChecked(True)
+        self.actModeNorma.setObjectName("actModeNorma")
+        self.actModeSimple = QtWidgets.QAction(MainWindow)
+        self.actModeSimple.setCheckable(True)
+        self.actModeSimple.setObjectName("actModeSimple")
+        self.actModeFractal = QtWidgets.QAction(MainWindow)
+        self.actModeFractal.setCheckable(True)
+        self.actModeFractal.setObjectName("actModeFractal")
+        self.actViewCork = QtWidgets.QAction(MainWindow)
+        self.actViewCork.setObjectName("actViewCork")
+        self.actViewOutline = QtWidgets.QAction(MainWindow)
+        self.actViewOutline.setObjectName("actViewOutline")
         self.menuFile.addAction(self.actNew)
         self.menuFile.addAction(self.actOpen)
         self.menuFile.addAction(self.actRecents)
@@ -1037,7 +1051,9 @@ class Ui_MainWindow(object):
         self.menuFile.addAction(self.actSaveAs)
         self.menuFile.addSeparator()
         self.menuFile.addAction(self.actQuit)
-        self.menuMode.addAction(self.actSnowflakeMode)
+        self.menuMode.addAction(self.actModeNorma)
+        self.menuMode.addAction(self.actModeSimple)
+        self.menuMode.addAction(self.actModeFractal)
         self.menuHelp.addAction(self.actShowHelp)
         self.menuTools.addAction(self.actSpellcheck)
         self.menuEdit.addAction(self.actLabels)
@@ -1045,11 +1061,12 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuFile.menuAction())
         self.menubar.addAction(self.menuEdit.menuAction())
         self.menubar.addAction(self.menuMode.menuAction())
+        self.menubar.addAction(self.menuView.menuAction())
         self.menubar.addAction(self.menuTools.menuAction())
         self.menubar.addAction(self.menuHelp.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.tabMain.setCurrentIndex(2)
+        self.tabMain.setCurrentIndex(6)
         self.tabSummary.setCurrentIndex(0)
         self.tabPersos.setCurrentIndex(0)
         self.tabPlot.setCurrentIndex(0)
@@ -1168,7 +1185,7 @@ class Ui_MainWindow(object):
         self.treeWidget_2.setSortingEnabled(__sortingEnabled)
         self.tabMain.setTabText(self.tabMain.indexOf(self.lytTabOutline), _translate("MainWindow", "Outline"))
         self.btnRedacFolderText.setText(_translate("MainWindow", "Text"))
-        self.btnRedacFolderCork.setText(_translate("MainWindow", "Cork"))
+        self.btnRedacFolderCork.setText(_translate("MainWindow", "Index cards"))
         self.btnRedacFolderOutline.setText(_translate("MainWindow", "Outline"))
         self.btnRedacFullscreen.setShortcut(_translate("MainWindow", "F11"))
         self.tabRedacInfos.setTabText(self.tabRedacInfos.indexOf(self.tab_17), _translate("MainWindow", "Metadata"))
@@ -1198,6 +1215,7 @@ class Ui_MainWindow(object):
         self.menuHelp.setTitle(_translate("MainWindow", "Help"))
         self.menuTools.setTitle(_translate("MainWindow", "Tools"))
         self.menuEdit.setTitle(_translate("MainWindow", "Edit"))
+        self.menuView.setTitle(_translate("MainWindow", "View"))
         self.actOpen.setText(_translate("MainWindow", "Open"))
         self.actOpen.setShortcut(_translate("MainWindow", "Ctrl+O"))
         self.actRecents.setText(_translate("MainWindow", "Recents"))
@@ -1208,7 +1226,6 @@ class Ui_MainWindow(object):
         self.actSaveAs.setShortcut(_translate("MainWindow", "Ctrl+Shift+S"))
         self.actQuit.setText(_translate("MainWindow", "Quit"))
         self.actQuit.setShortcut(_translate("MainWindow", "Ctrl+Q"))
-        self.actSnowflakeMode.setText(_translate("MainWindow", "&Snowflake"))
         self.actNew.setText(_translate("MainWindow", "New"))
         self.actNew.setShortcut(_translate("MainWindow", "Ctrl+N"))
         self.actShowHelp.setText(_translate("MainWindow", "Show help texts"))
@@ -1217,12 +1234,18 @@ class Ui_MainWindow(object):
         self.actSpellcheck.setShortcut(_translate("MainWindow", "F8"))
         self.actLabels.setText(_translate("MainWindow", "Labels..."))
         self.actStatus.setText(_translate("MainWindow", "Status..."))
+        self.actViewTree.setText(_translate("MainWindow", "Tree"))
+        self.actModeNorma.setText(_translate("MainWindow", "Normal"))
+        self.actModeSimple.setText(_translate("MainWindow", "Simple"))
+        self.actModeFractal.setText(_translate("MainWindow", "Fractal"))
+        self.actViewCork.setText(_translate("MainWindow", "Index cards"))
+        self.actViewOutline.setText(_translate("MainWindow", "Outline"))
 
-from ui.views.treeView import treeView
+from ui.views.basicItemView import basicItemView
+from ui.views.textEditView import textEditView
+from ui.editors.editorWidget import editorWidget
 from ui.sldImportance import sldImportance
 from ui.views.lineEditView import lineEditView
-from ui.editors.editorWidget import editorWidget
-from ui.views.textEditView import textEditView
-from ui.views.outlineView import outlineView
 from ui.views.metadataView import metadataView
-from ui.views.basicItemView import basicItemView
+from ui.views.outlineView import outlineView
+from ui.views.treeView import treeView

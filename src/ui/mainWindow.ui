@@ -18,7 +18,7 @@
     <item>
      <widget class="QTabWidget" name="tabMain">
       <property name="currentIndex">
-       <number>2</number>
+       <number>6</number>
       </property>
       <property name="documentMode">
        <bool>true</bool>
@@ -1560,7 +1560,7 @@
               <item>
                <widget class="QPushButton" name="btnRedacFolderCork">
                 <property name="text">
-                 <string>Cork</string>
+                 <string>Index cards</string>
                 </property>
                 <property name="checkable">
                  <bool>true</bool>
@@ -1893,7 +1893,9 @@
     <property name="title">
      <string>Mode</string>
     </property>
-    <addaction name="actSnowflakeMode"/>
+    <addaction name="actModeNorma"/>
+    <addaction name="actModeSimple"/>
+    <addaction name="actModeFractal"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -1914,9 +1916,15 @@
     <addaction name="actLabels"/>
     <addaction name="actStatus"/>
    </widget>
+   <widget class="QMenu" name="menuView">
+    <property name="title">
+     <string>View</string>
+    </property>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
    <addaction name="menuMode"/>
+   <addaction name="menuView"/>
    <addaction name="menuTools"/>
    <addaction name="menuHelp"/>
   </widget>
@@ -1986,17 +1994,6 @@
     <string>Ctrl+Q</string>
    </property>
   </action>
-  <action name="actSnowflakeMode">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="checked">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>&amp;Snowflake</string>
-   </property>
-  </action>
   <action name="actNew">
    <property name="icon">
     <iconset theme="document-new">
@@ -2056,6 +2053,48 @@
   <action name="actStatus">
    <property name="text">
     <string>Status...</string>
+   </property>
+  </action>
+  <action name="actViewTree">
+   <property name="text">
+    <string>Tree</string>
+   </property>
+  </action>
+  <action name="actModeNorma">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Normal</string>
+   </property>
+  </action>
+  <action name="actModeSimple">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Simple</string>
+   </property>
+  </action>
+  <action name="actModeFractal">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Fractal</string>
+   </property>
+  </action>
+  <action name="actViewCork">
+   <property name="text">
+    <string>Index cards</string>
+   </property>
+  </action>
+  <action name="actViewOutline">
+   <property name="text">
+    <string>Outline</string>
    </property>
   </action>
  </widget>

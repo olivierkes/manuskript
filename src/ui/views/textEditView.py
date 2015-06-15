@@ -179,8 +179,10 @@ class textEditView(QTextEdit):
     # Spellchecking based on http://john.nachtimwald.com/2009/08/22/qplaintextedit-with-in-line-spell-check/
 
     def setDict(self, d):
+        self.currentDict = d
         self.dict = enchant.Dict(d)
-        self.highlighter.rehighlight()
+        if self.highlighter:
+            self.highlighter.rehighlight()
         
     def toggleSpellcheck(self, v):
         self.spellcheck = v

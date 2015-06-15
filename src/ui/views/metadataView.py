@@ -55,6 +55,10 @@ class metadataView(QWidget, Ui_metadataView):
             
         self.properties.selectionChanged(sourceView)
         
+    def setDict(self, d):
+        self.txtNotes.setDict(d)
+        self.txtSummaryFull.setDict(d)
+        
     def toggleSpellcheck(self, v):
         self.txtNotes.toggleSpellcheck(v)
         self.txtSummaryFull.toggleSpellcheck(v)
