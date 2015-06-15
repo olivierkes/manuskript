@@ -54,9 +54,9 @@ Pour voir.</col>
       <col col="11"/>
     </row>
     <row row="2">
-      <col col="0" color="#ff0d05f0">Nouveau perso avec un nom très très long pour voir comment ça fait</col>
+      <col col="0" color="#ff005500">Nouveau perso avec un nom très très long pour voir comment ça fait</col>
       <col col="1">2</col>
-      <col col="2">1</col>
+      <col col="2">0</col>
       <col col="3"/>
       <col col="4"/>
       <col col="5"/>

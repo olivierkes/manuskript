@@ -95,7 +95,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
         # Persos
         self.mdlPersos = QStandardItemModel(0, 10)
-        self.mdlPersosProxy = None #persosProxyModel()
+        self.mdlPersosProxy = persosProxyModel() # None
         #self.mdlPersoProxyFilter = QSortFilterProxyModel()
         if self.mdlPersosProxy:
             self.mdlPersosProxy.setSourceModel(self.mdlPersos)
@@ -113,7 +113,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
         self.btnAddPerso.clicked.connect(self.createPerso)
         self.btnRmPerso.clicked.connect(self.removePerso)
-        self.btnPersoColor.clicked.connect(self.setPersoColor)
+        self.btnPersoColor.clicked.connect(self.chosePersoColor)
         self.btnPersoAddInfo.clicked.connect(lambda: self.mdlPersosInfos.insertRow(self.mdlPersosInfos.rowCount()))
         self.mprPersos = QDataWidgetMapper()
         self.mprPersos.setModel(self.mdlPersos)
@@ -265,6 +265,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.mdlPersos.appendRow(p)
         pid = self.getPersosID()
         self.checkPersosID()  # Attributes a persoID (which is logically pid)
+        self.setPersoColor(self.mdlPersos.rowCount()-1, randomColor(QColor(Qt.white)))
         
         # Add column in persos infos
         self.mdlPersosInfos.insertColumn(self.mdlPersosInfos.columnCount(), [QStandardItem(pid)])
@@ -319,7 +320,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
         self.resizePersosInfos()
         
-    def updatePersoColor(self):    
+    def updatePersoColor(self):  
         if self.mdlPersosProxy:
             idx = self.mdlPersosProxy.mapToSource(self.lstPersos.currentIndex())
         else:
@@ -343,7 +344,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
         self.tblPersoInfos.setColumnWidth(current, w - w2)
         
-    def setPersoColor(self):
+    def chosePersoColor(self):
         if self.mdlPersosProxy:
             idx = self.mdlPersosProxy.mapToSource(self.lstPersos.currentIndex())
         else:
@@ -356,10 +357,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             color = Qt.white
         self.colorDialog = QColorDialog(color, self)
         color = self.colorDialog.getColor(color)
+        self.setPersoColor(idx.row(), color)
+        self.updatePersoColor()
+    
+    def setPersoColor(self, row, color):
         px = QPixmap(32, 32)
         px.fill(color)
-        self.mdlPersos.item(idx.row(), Perso.name.value).setIcon(QIcon(px))
-        self.updatePersoColor()
+        self.mdlPersos.item(row, Perso.name.value).setIcon(QIcon(px))
         
         
 ####################################################################################################

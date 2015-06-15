@@ -19,11 +19,11 @@ class persosProxyModel(QAbstractProxyModel):
         QAbstractProxyModel.__init__(self, parent)
         
         self.rootItem = QStandardItem()
-        self.p1 = QStandardItem("Principaux")
-        self.p2 = QStandardItem("Secondaires")
-        self.p3 = QStandardItem("Mineurs")
+        self.p1 = QStandardItem(self.tr("Main"))
+        self.p2 = QStandardItem(self.tr("Secundary"))
+        self.p3 = QStandardItem(self.tr("Minors"))
         
-        self.cats = [
+        self._cats = [
             self.p1,
             self.p2,
             self.p3
@@ -34,15 +34,8 @@ class persosProxyModel(QAbstractProxyModel):
         if not sourceIndex.isValid():
             return QModelIndex()
         
-        row = sourceIndex.row()
+        row = self._map.index(sourceIndex.row())
         item = sourceIndex.internalPointer()
-        
-        if row in self._map[0]:
-            row = self._map[0].index(row) + 1
-        elif row in self._map[1]:
-            row = len(self._map[0]) + 1 + self._map[1].index(row) + 1
-        elif row in self._map[2]:
-            row = len(self._map[0]) + 1 + len(self._map[1]) + 1 + self._map[2].index(row) + 1
         
         return self.createIndex(row, sourceIndex.column(), item)
         
@@ -56,23 +49,13 @@ class persosProxyModel(QAbstractProxyModel):
             return Qt.ItemIsEnabled | Qt.ItemIsSelectable
         
     def mapToSource(self, proxyIndex):
-        if not proxyIndex.isValid():
-            return QModelIndex()
+        #if not proxyIndex.isValid():
+            #return QModelIndex()
         
-        row = proxyIndex.row()
+        row = self._map[proxyIndex.row()]
         
-        if row == 0:
+        if type(row) != int:
             return QModelIndex()
-        elif row < len(self._map[0]) + 1:
-            row = self._map[0][row-1]
-        elif row == len(self._map[0]) + 1:
-            return QModelIndex()
-        elif row < len(self._map[0]) + 1 + len(self._map[1]) + 1:
-            row = self._map[1][row - 2 - len(self._map[0])]
-        elif row == len(self._map[0]) + 1 + len(self._map[1]) + 1:
-            return QModelIndex()
-        else:
-            row = self._map[2][row - 3 - len(self._map[0]) - len(self._map[1])]
         
         item = proxyIndex.internalPointer()
         
@@ -92,33 +75,31 @@ class persosProxyModel(QAbstractProxyModel):
         self.beginResetModel()
         src = self.sourceModel()
         
-        self._map = [[], [], []]
+        self._map = []
         
-        for i in range(src.rowCount()):
-            item = src.item(i, Perso.importance.value)
-            ID = src.item(i, Perso.ID.value)
+        for i in range(len(self._cats)):
+            self._map.append(self._cats[i])
             
-            if item:
-                imp = int(item.text())
-            else:
-                imp = 0
-            
-            self._map[2-imp].append(i)
+            for p in range(src.rowCount()):
+                item = src.item(p, Perso.importance.value)
+                
+                if item:
+                    imp = int(item.text())
+                else:
+                    imp = 0
+                
+                if 2-imp == i:
+                    self._map.append(p)
+        
         self.endResetModel()
     
-    def numberOfPersosByImportance(self):
-        return [len(i) for i in self._map]
     
     def data(self, index, role=Qt.DisplayRole):
         row = index.row()
         
         if index.isValid() and not self.mapToSource(index).isValid():
             if role == Qt.DisplayRole:
-                n = self.numberOfPersosByImportance()
-                p = 0 if row == 0 else \
-                    1 if row == n[0] + 1 else \
-                    2
-                return self.cats[p].text()
+                return self._map[row].text()
             
             elif role == Qt.ForegroundRole:
                 return QBrush(Qt.darkBlue)
@@ -137,30 +118,21 @@ class persosProxyModel(QAbstractProxyModel):
     
     def index(self, row, column, parent):
         
-        n = self.numberOfPersosByImportance()
+        i = self._map[row]
         
-        if row == 0 or row == n[0] + 1 or row == n[0]+n[1]+2:
-            p = 0 if row == 0 else \
-                1 if row == n[0] + 1 else \
-                2
+        if type(i) != int:
             
-            return self.createIndex(row, column, self.cats[p])
+            return self.createIndex(row, column, i)
         
         else:
-            if row < len(self._map[0]) + 1:
-                nrow = self._map[0][row - 1]
-            elif row < len(self._map[0]) + 1 + len(self._map[1]) + 1:
-                nrow = self._map[1][row - 2 - len(self._map[0])]
-            else:
-                nrow = self._map[2][row - 3 - len(self._map[0]) - len(self._map[1])]
             
-            return self.mapFromSource(self.sourceModel().index(nrow, column, QModelIndex()))
+            return self.mapFromSource(self.sourceModel().index(i, column, QModelIndex()))
     
     def parent(self, index=QModelIndex()):
         return QModelIndex()
     
     def rowCount(self, parent=QModelIndex()):
-        return self.sourceModel().rowCount(QModelIndex())+3
+        return len(self._map)
     
     def columnCount(self, parent=QModelIndex()):
         return self.sourceModel().columnCount(QModelIndex())

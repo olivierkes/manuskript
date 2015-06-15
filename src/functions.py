@@ -2,6 +2,7 @@
 #--!-- coding: utf8 --!--
 
 from qt import *
+from random import *
 
 def wordCount(text):
     return len(text.strip().replace(" ", "\n").split("\n")) if text else 0
@@ -68,3 +69,16 @@ def iconFromColor(color):
 
 def iconFromColorString(string):
     return iconFromColor(QColor(string))
+
+def randomColor(mix=None):
+    "Generates a random color. If mix (QColor) is given, mixes the random color and mix."
+    r = randint(0, 255)
+    g = randint(0, 255)
+    b = randint(0, 255)
+    
+    if mix:
+        r = (r + mix.red()) / 2
+        g = (g + mix.green()) / 2
+        b = (b + mix.blue()) / 2
+        
+    return QColor(r, g, b)
