@@ -395,7 +395,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.tabMain.setCurrentIndex(settings.lastTab)
         self.treeRedacOutline.setCurrentIndex(self.mdlOutline.indexFromPath(settings.lastIndex))
         
-        
         # Stuff
         self.checkPersosID()
         # Adds header labels
@@ -659,3 +658,5 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         action = self.sender()
         item, part, element = action.data().split(",")
         settings.viewSettings[item][part] = element
+        if item == "Cork":
+            self.redacEditor.redrawCorkItems()

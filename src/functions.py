@@ -3,6 +3,7 @@
 
 from qt import *
 from random import *
+from enums import *
 
 def wordCount(text):
     return len(text.strip().replace(" ", "\n").split("\n")) if text else 0
@@ -30,23 +31,27 @@ def drawProgress(painter, rect, progress, radius=0):
     painter.setBrush(QColor("#dddddd"))
     painter.drawRoundedRect(rect, radius, radius)
     
+    painter.setBrush(QBrush(colorFromProgress(progress)))
+        
+    r2 = QRect(rect)
+    r2.setWidth(r2.width() * min(progress, 1))
+    painter.drawRoundedRect(r2, radius, radius)
+    
+def colorFromProgress(progress):
+    progress = toFloat(progress)
     c1 = QColor(Qt.red)
     c2 = QColor(Qt.blue)
     c3 = QColor(Qt.darkGreen)
     c4 = QColor("#FFA500")
     
     if progress < 0.3:
-        painter.setBrush(QBrush(c1))
+        return c1
     elif progress < 0.8:
-        painter.setBrush(QBrush(c2))
+        return c2
     elif progress > 1.2:
-        painter.setBrush(QBrush(c4))
+        return c4
     else:
-        painter.setBrush(QBrush(c3))
-        
-    r2 = QRect(rect)
-    r2.setWidth(r2.width() * min(progress, 1))
-    painter.drawRoundedRect(r2, radius, radius)
+        return c3
     
 def mainWindow():
     for i in qApp.topLevelWidgets():
@@ -82,3 +87,49 @@ def randomColor(mix=None):
         b = (b + mix.blue()) / 2
         
     return QColor(r, g, b)
+
+def mixColors(col1, col2, f=.5):
+    f2 = 1-f
+    r = col1.red() * f + col2.red() * f2
+    g = col1.green() * f + col2.green() * f2
+    b = col1.blue() * f + col2.blue() * f2
+    return QColor(r, g, b)
+
+def outlineItemColors(item):
+        "Takes an OutlineItem and returns a dict of colors."
+        colors = {}
+        mw = mainWindow()
+        
+        # POV
+        colors["POV"] = Qt.transparent
+        POV = item.data(Outline.POV.value)
+        for i in range(mw.mdlPersos.rowCount()):
+            if mw.mdlPersos.item(i, Perso.ID.value).text() == POV:
+                colors["POV"] = iconColor(mw.mdlPersos.item(i, 0).icon())
+        
+        # Label
+        lbl = item.data(Outline.label.value)
+        col = iconColor(mw.mdlLabels.item(toInt(lbl)).icon())
+        if col == Qt.black:
+            # Don't know why, but transparent is rendered as black
+            col = QColor(Qt.transparent)
+        colors["Label"] = col
+        
+        # Progress
+        pg = item.data(Outline.goalPercentage.value)
+        colors["Progress"] = colorFromProgress(pg)
+        
+        # Compile
+        if item.isCompile() in [0, "0"]:
+            colors["Compile"] = QColor(Qt.gray)
+        else:
+            colors["Compile"] = QColor(Qt.black)
+            
+        return colors
+    
+def colorifyPixmap(pixmap, color):
+    # FIXME: ugly
+    p = QPainter(pixmap)
+    p.setCompositionMode(p.CompositionMode_Overlay)
+    p.fillRect(pixmap.rect(), color)
+    return pixmap

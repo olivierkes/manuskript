@@ -1,13 +1,11 @@
 #!/usr/bin/env python
 #--!-- coding: utf8 --!--
  
-
-
-
 from qt import *
 from enums import *
 from functions import *
 from random import randint
+import settings
 
 class corkDelegate(QStyledItemDelegate):
     
@@ -144,6 +142,7 @@ class corkDelegate(QStyledItemDelegate):
         
         item = index.internalPointer()
         self.updateRects(option, index)
+        colors = outlineItemColors(item)
         
         style = qApp.style()
         
@@ -177,7 +176,12 @@ class corkDelegate(QStyledItemDelegate):
           # Background
         itemRect = self.itemRect
         p.save()
-        p.setBrush(Qt.white)
+        if settings.viewSettings["Cork"]["Background"] != "Nothing":
+            c = colors[settings.viewSettings["Cork"]["Background"]]
+            col = mixColors(c, QColor(Qt.white), .2)
+            p.setBrush(col)
+        else:
+            p.setBrush(Qt.white)
         pen = p.pen()
         pen.setWidth(2)
         p.setPen(pen)
@@ -199,18 +203,16 @@ class corkDelegate(QStyledItemDelegate):
         p.restore()
         
           # Label color
-        lbl = item.data(Outline.label.value)
-        if lbl and lbl != "0":
-            it = mainWindow().mdlLabels.item(int(lbl), 0)
-            if it != None:
-                p.save()
-                color = iconColor(it.icon())
-                p.setPen(Qt.NoPen)
-                p.setBrush(QBrush(color))
-                p.setClipRegion(QRegion(self.labelRect))
-                p.drawRoundedRect(itemRect, 10, 10)
-                #p.drawRect(topRect)
-                p.restore()
+        if settings.viewSettings["Cork"]["Corner"] != "Nothing":
+            p.save()
+            color = colors[settings.viewSettings["Cork"]["Corner"]]
+            p.setPen(Qt.NoPen)
+            p.setBrush(color)
+            p.setClipRegion(QRegion(self.labelRect))
+            p.drawRoundedRect(itemRect, 10, 10)
+            #p.drawRect(topRect)
+            p.restore()
+            p.drawLine(self.labelRect.topLeft(), self.labelRect.bottomLeft())
         
           # One line summary background
         lineSummary = item.data(Outline.summarySentance.value)
@@ -229,6 +231,11 @@ class corkDelegate(QStyledItemDelegate):
         p.setBrush(Qt.NoBrush)
         pen = p.pen()
         pen.setWidth(2)
+        if settings.viewSettings["Cork"]["Border"] != "Nothing":
+            col = colors[settings.viewSettings["Cork"]["Border"]]
+            if col == Qt.transparent:
+                col = Qt.black
+            pen.setColor(col)
         p.setPen(pen)
         p.drawRoundedRect(itemRect, 10, 10)
         p.restore()
@@ -241,13 +248,23 @@ class corkDelegate(QStyledItemDelegate):
             mode = QIcon.Disabled
         elif option.state & style.State_Selected:
             mode = QIcon.Selected
-        index.data(Qt.DecorationRole).paint(p, iconRect, option.decorationAlignment, mode)
+        #index.data(Qt.DecorationRole).paint(p, iconRect, option.decorationAlignment, mode)
+        icon = index.data(Qt.DecorationRole).pixmap(iconRect.size())
+        if settings.viewSettings["Cork"]["Icon"] != "Nothing":
+            color = colors[settings.viewSettings["Cork"]["Icon"]]
+            colorifyPixmap(icon, color)
+        QIcon(icon).paint(p, iconRect, option.decorationAlignment, mode)
         
         # Draw title
         p.save()
         text = index.data()
         titleRect = self.titleRect
         if text:
+            if settings.viewSettings["Cork"]["Text"] != "Nothing":
+                col = colors[settings.viewSettings["Cork"]["Text"]]
+                if col == Qt.transparent:
+                    col = Qt.black
+                p.setPen(col)
             f = QFont(option.font)
             #f.setPointSize(f.pointSize() + 1)
             f.setBold(True)

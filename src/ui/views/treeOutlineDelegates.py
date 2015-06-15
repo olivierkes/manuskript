@@ -4,7 +4,33 @@
 from qt import *
 from enums import *
 from functions import *
+import settings
 
+class treeOutlineTitleDelegate(QStyledItemDelegate):
+    def __init__(self, mdlPersos, parent=None):
+        QStyledItemDelegate.__init__(self, parent)
+        
+    def paint(self, painter, option, index):
+        
+        item = index.internalPointer()
+        colors = outlineItemColors(item)
+        
+        # Icon
+        #icon = option.icon.pixmap(option.rect.size())
+        #if option.icon and settings.viewSettings["Tree"]["Icon"] != "Nothing":
+            #color = colors[settings.viewSettings["Tree"]["Icon"]]
+            #colorifyPixmap(icon, color)
+        #option.icon = QIcon(icon)
+        
+        ## Text
+        #if settings.viewSettings["Tree"]["Text"] != "Nothing":
+            #color = colors[settings.viewSettings["Tree"]["Text"]]
+            #print(option.palette.color(QPalette.Text))
+            #option.palette.setColor(QPalette.Text, color)
+            #print(option.palette.color(QPalette.Text), color)
+        
+        
+        QStyledItemDelegate.paint(self, painter, option, index)
 
 class treeOutlinePersoDelegate(QStyledItemDelegate):
     

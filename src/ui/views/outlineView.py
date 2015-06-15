@@ -40,6 +40,8 @@ class outlineView(QTreeView, dndView, outlineBasics):
         QTreeView.setModel(self, model)
         
         # Setting delegates
+        self.treePlanOutlineTitleDelegate = treeOutlineTitleDelegate(self.modelPersos)
+        self.setItemDelegateForColumn(Outline.title.value, self.treePlanOutlineTitleDelegate)
         self.treePlanOutlinePersoDelegate = treeOutlinePersoDelegate(self.modelPersos)
         self.setItemDelegateForColumn(Outline.POV.value, self.treePlanOutlinePersoDelegate)
         self.treePlanOutlineCompileDelegate = treeOutlineCompileDelegate()
