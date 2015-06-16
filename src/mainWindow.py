@@ -544,6 +544,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btnRedacFullscreen.clicked.connect(self.redacEditor.showFullscreen)
             
     def updateMenuDict(self):
+        
+        if not enchant:
+            return
+        
         self.menuDict.clear()
         for i in enchant.list_dicts():
             a = QAction(str(i[0]), self)
@@ -557,6 +561,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.menuDict.addAction(a)
             
     def setDictionary(self):
+        if not enchant:
+            return
+        
         for i in self.menuDictGroup.actions():
             if i.isChecked():
                 self.dictChanged.emit(i.text().replace("&", ""))
