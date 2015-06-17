@@ -90,21 +90,30 @@ class outlineModel(QAbstractItemModel):
     
     def setData(self, index, value, role=Qt.EditRole):
         item = index.internalPointer()
-        item.setData(index.column(), value, role)
+        if item.data(index.column(), role) != value:
+            item.setData(index.column(), value, role)
         
-        self.dataChanged.emit(index.sibling(index.row(), 0), 
-                              index.sibling(index.row(), max([i.value for i in Outline])))
+            self.dataChanged.emit(index.sibling(index.row(), 0), 
+                                  index.sibling(index.row(), max([i.value for i in Outline])))
         return True
         
     
     def headerData(self, section, orientation, role=Qt.DisplayRole):
-        if orientation == Qt.Horizontal and role == Qt.DisplayRole:
+        if orientation == Qt.Horizontal and role in [Qt.DisplayRole, Qt.ToolTipRole]:
             if section == Outline.title.value:
-                return "Titre"
+                return self.tr("Title")
+            elif section == Outline.POV.value:
+                return self.tr("POV")
+            elif section == Outline.label.value:
+                return self.tr("Label")
+            elif section == Outline.status.value:
+                return self.tr("Status")
+            elif section == Outline.compile.value:
+                return self.tr("Compile")
             elif section == Outline.wordCount.value:
-                return "Mots"
+                return self.tr("Word count")
             elif section == Outline.goal.value:
-                return "Goal"
+                return self.tr("Goal")
             elif section == Outline.goalPercentage.value:
                 return "%"
             else:

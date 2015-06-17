@@ -75,6 +75,7 @@ class Ui_MainWindow(object):
         self.grpAuthor = QtWidgets.QGroupBox(self.lytTabOverview)
         self.grpAuthor.setObjectName("grpAuthor")
         self.formLayout_4 = QtWidgets.QFormLayout(self.grpAuthor)
+        self.formLayout_4.setFieldGrowthPolicy(QtWidgets.QFormLayout.ExpandingFieldsGrow)
         self.formLayout_4.setContentsMargins(6, 6, 6, -1)
         self.formLayout_4.setObjectName("formLayout_4")
         self.label_15 = QtWidgets.QLabel(self.grpAuthor)
@@ -89,9 +90,6 @@ class Ui_MainWindow(object):
         self.txtGeneralEmail = lineEditView(self.grpAuthor)
         self.txtGeneralEmail.setObjectName("txtGeneralEmail")
         self.formLayout_4.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.txtGeneralEmail)
-        self.cmbStyle = QtWidgets.QComboBox(self.grpAuthor)
-        self.cmbStyle.setObjectName("cmbStyle")
-        self.formLayout_4.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.cmbStyle)
         self.horizontalLayout_26.addWidget(self.grpAuthor)
         self.verticalLayout_23.addLayout(self.horizontalLayout_26)
         self.tabMain.addTab(self.lytTabOverview, "")
@@ -1247,11 +1245,11 @@ class Ui_MainWindow(object):
         self.actViewOutline.setText(_translate("MainWindow", "Outline"))
         self.actSettings.setText(_translate("MainWindow", "Settings"))
 
-from ui.views.lineEditView import lineEditView
-from ui.views.outlineView import outlineView
-from ui.views.basicItemView import basicItemView
-from ui.views.textEditView import textEditView
-from ui.editors.editorWidget import editorWidget
-from ui.views.metadataView import metadataView
-from ui.sldImportance import sldImportance
 from ui.views.treeView import treeView
+from ui.views.lineEditView import lineEditView
+from ui.sldImportance import sldImportance
+from ui.editors.editorWidget import editorWidget
+from ui.views.textEditView import textEditView
+from ui.views.basicItemView import basicItemView
+from ui.views.outlineView import outlineView
+from ui.views.metadataView import metadataView

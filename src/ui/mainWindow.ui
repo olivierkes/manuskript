@@ -131,6 +131,9 @@
              <string>Author</string>
             </property>
             <layout class="QFormLayout" name="formLayout_4">
+             <property name="fieldGrowthPolicy">
+              <enum>QFormLayout::ExpandingFieldsGrow</enum>
+             </property>
              <property name="leftMargin">
               <number>6</number>
              </property>
@@ -159,9 +162,6 @@
              </item>
              <item row="1" column="1">
               <widget class="lineEditView" name="txtGeneralEmail"/>
-             </item>
-             <item row="2" column="1">
-              <widget class="QComboBox" name="cmbStyle"/>
              </item>
             </layout>
            </widget>

@@ -55,12 +55,7 @@ class outlineView(QTreeView, dndView, outlineBasics):
         self.setItemDelegateForColumn(Outline.label.value, self.outlineLabelDelegate)
         
         # Hiding columns
-        for c in range(1, self.model().columnCount()):
-            self.hideColumn(c)
-        for c in [Outline.POV.value, Outline.status.value, Outline.compile.value, 
-                  Outline.wordCount.value, Outline.goal.value, Outline.goalPercentage.value,
-                  Outline.label.value]:
-            self.showColumn(c)
+        self.hideColumns()
         
         self.header().setSectionResizeMode(Outline.title.value, QHeaderView.Stretch)
         self.header().setSectionResizeMode(Outline.POV.value, QHeaderView.ResizeToContents)
@@ -70,6 +65,12 @@ class outlineView(QTreeView, dndView, outlineBasics):
         self.header().setSectionResizeMode(Outline.wordCount.value, QHeaderView.ResizeToContents)
         self.header().setSectionResizeMode(Outline.goal.value, QHeaderView.ResizeToContents)
         self.header().setSectionResizeMode(Outline.goalPercentage.value, QHeaderView.ResizeToContents)
+        
+    def hideColumns(self):
+        for c in range(self.model().columnCount()):
+            self.hideColumn(c)
+        for c in settings.outlineViewColumns:
+            self.showColumn(c)
         
     def setRootIndex(self, index):
         QTreeView.setRootIndex(self, index)

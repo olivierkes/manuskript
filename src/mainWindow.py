@@ -391,12 +391,20 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.treeRedacOutline.setCurrentIndex(self.mdlOutline.indexFromPath(settings.lastIndex))
         
         # Set autosave
+        self.saveTimer = QTimer()
+        self.saveTimer.setInterval(settings.autoSaveDelay * 60 * 1000)
+        self.saveTimer.setSingleShot(False)
+        self.saveTimer.timeout.connect(self.saveDatas)
         if settings.autoSave:
-            self.saveTimer = QTimer()
-            self.saveTimer.setInterval(settings.autoSaveDelay * 60 * 1000)
-            self.saveTimer.setSingleShot(False)
-            self.saveTimer.timeout.connect(self.saveDatas)
             self.saveTimer.start()
+        
+        # Set autosave if no changes
+        self.saveTimerNoChanges = QTimer()
+        self.saveTimerNoChanges.setInterval(settings.autoSaveNoChangesDelay * 1000)
+        self.saveTimerNoChanges.setSingleShot(True)
+        self.mdlOutline.dataChanged.connect(self.startTimerNoChanges)
+        self.saveTimerNoChanges.timeout.connect(self.saveDatas)
+        self.saveTimerNoChanges.stop()
             
         # UI
         self.actSave.setEnabled(True)
@@ -436,6 +444,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
         # closeEvent
         QMainWindow.closeEvent(self, event)
+    
+    def startTimerNoChanges(self):
+        if settings.autoSaveNoChanges:
+            self.saveTimerNoChanges.start()
     
     def saveDatas(self):
         # Saving
@@ -628,10 +640,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 ####################################################################################################
 
     def settingsLabel(self):
-        self.settingsWindow(1)
+        self.settingsWindow(2)
         
     def settingsStatus(self):
-        self.settingsWindow(2)
+        self.settingsWindow(3)
         
     def settingsWindow(self, tab=None):
         self.sw = settingsWindow(self)
@@ -700,15 +712,18 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                     a.setData("{},{},{}".format(mnud, sd, vd))
                     if settings.viewSettings[mnud][sd] == vd:
                         a.setChecked(True)
-                    a.triggered.connect(self.setViewElement)
+                    a.triggered.connect(self.setViewSettingsAction)
                     agp.addAction(a)
                     m2.addAction(a)
                 m.addMenu(m2)
             self.menuView.addMenu(m)
         
-    def setViewElement(self):
+    def setViewSettingsAction(self):
         action = self.sender()
         item, part, element = action.data().split(",")
+        self.setViewSettings(item, part, element)
+        
+    def setViewSettings(self, item, part, element):
         settings.viewSettings[item][part] = element
         if item == "Cork":
             self.redacEditor.corkView.viewport().update()

@@ -2,6 +2,7 @@
 
 import pickle
 import pprint
+from enums import *
 
 viewSettings = {
     "Tree": {
@@ -29,14 +30,19 @@ corkSizeFactor = 100
 folderView = "cork"
 lastTab = 0
 lastIndex = ""
-autoSave = True
+autoSave = False
 autoSaveDelay = 5
+autoSaveNoChanges = True
+autoSaveNoChangesDelay = 5
 saveOnQuit = True
+outlineViewColumns = [Outline.title.value, Outline.POV.value, Outline.status.value, 
+                      Outline.compile.value, Outline.wordCount.value, Outline.goal.value, 
+                      Outline.goalPercentage.value, Outline.label.value]
 
 def save(filename=None):
     
     global spellcheck, dict, corkSliderFactor, viewSettings, corkSizeFactor, folderView, lastTab, lastIndex, \
-           autoSave, autoSaveDelay, saveOnQuit
+           autoSave, autoSaveDelay, saveOnQuit, autoSaveNoChanges, autoSaveNoChangesDelay, outlineViewColumns
     
     allSettings = {
         "viewSettings": viewSettings,
@@ -49,6 +55,9 @@ def save(filename=None):
         "autoSave":autoSave,
         "autoSaveDelay":autoSaveDelay,
         "saveOnQuit":saveOnQuit,
+        "autoSaveNoChanges":autoSaveNoChanges,
+        "autoSaveNoChangesDelay":autoSaveNoChangesDelay,
+        "outlineViewColumns":outlineViewColumns,
         }
     
     #pp=pprint.PrettyPrinter(indent=4, compact=False)
@@ -121,5 +130,15 @@ def load(string, fromString=False):
         global saveOnQuit
         saveOnQuit = allSettings["saveOnQuit"]
         
-    
+    if "autoSaveNoChanges" in allSettings:
+        global autoSaveNoChanges
+        autoSaveNoChanges = allSettings["autoSaveNoChanges"]
+        
+    if "autoSaveNoChangesDelay" in allSettings:
+        global autoSaveNoChangesDelay
+        autoSaveNoChangesDelay = allSettings["autoSaveNoChangesDelay"]
+        
+    if "outlineViewColumns" in allSettings:
+        global outlineViewColumns
+        outlineViewColumns = allSettings["outlineViewColumns"]
     
