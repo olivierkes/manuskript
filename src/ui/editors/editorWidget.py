@@ -171,7 +171,7 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
             
             
         else:
-            self.stack.setCurrentIndex(0)
+            self.stack.setCurrentIndex(0) # Single text item
         
         self._model.dataChanged.connect(self.modelDataChanged)
         self.updateStatusBar()
@@ -194,8 +194,15 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
             
     def updateStatusBar(self):
         # Update progress
-        if self.currentIndex and self.currentIndex.isValid():
-            item = self.currentIndex.internalPointer()
+        #if self.currentIndex and self.currentIndex.isValid():
+        if self._model:
+            if self.currentIndex:
+                item = self.currentIndex.internalPointer()
+            else:
+                item = self._model.rootItem
+            
+            if not item:
+                item = self._model.rootItem
             
             wc = item.data(Outline.wordCount.value)
             goal = item.data(Outline.goal.value)

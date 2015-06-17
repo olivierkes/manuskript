@@ -522,7 +522,7 @@ class outlineItem():
         item = ET.Element("outlineItem")
         
         # We don't want to write some datas (computed)
-        exclude = [Outline.goal, Outline.goalPercentage]
+        exclude = [Outline.wordCount, Outline.goal, Outline.goalPercentage]
         # We want to force some data even if they're empty
         force = [Outline.compile]
         
