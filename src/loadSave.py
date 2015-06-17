@@ -4,8 +4,35 @@
 from qt import *
 from functions import *
 from lxml import etree as ET
+import zipfile
+try:
+    import zlib # Used with zipfile for compression
+    compression = zipfile.ZIP_DEFLATED
+except:
+    compression = zipfile.ZIP_STORED
 
-def saveStandardItemModelXML(mdl, xml):
+def saveFilesToZip(files, zipname):
+    """Saves given files to zipname.
+    files is actually a list of (content, filename)."""
+    
+    zf = zipfile.ZipFile(zipname, mode="w")
+    
+    for content, filename in files:
+        zf.writestr(filename, content, compress_type=compression)
+    
+    zf.close()
+    
+def loadFilesFromZip(zipname):
+    """Returns the content of zipfile as a dict of filename:content."""
+    zf = zipfile.ZipFile(zipname)
+    files = {}
+    for f in zf.namelist():
+        files[f] = zf.read(f)
+    return files
+    
+def saveStandardItemModelXML(mdl, xml=None):
+    """Saves the given QStandardItemModel to XML.
+    If xml (filename) is given, saves to xml. Otherwise returns as string."""
     
     root = ET.Element("model")
     root.attrib["version"] = qApp.applicationVersion()
@@ -41,20 +68,28 @@ def saveStandardItemModelXML(mdl, xml):
                 col.text = mdl.data(mdl.index(x, y))
             
     #print(qApp.tr("Saving to {}.").format(xml))
-    ET.ElementTree(root).write(xml, encoding="UTF-8", xml_declaration=True, pretty_print=True)
+    if xml:
+        ET.ElementTree(root).write(xml, encoding="UTF-8", xml_declaration=True, pretty_print=True)
+    else:
+        return ET.tostring(root, encoding="UTF-8", xml_declaration=True, pretty_print=True)
    
     
-def loadStandardItemModelXML(mdl, xml):
+def loadStandardItemModelXML(mdl, xml, fromString=False):
+    """Load data to a QStandardItemModel mdl from xml.
+    By default xml is a filename. If fromString=True, xml is a string containg the data."""
     
     #print(qApp.tr("Loading {}... ").format(xml), end="")
     
-    try:
-        tree = ET.parse(xml)
-    except:
-        print("Failed.")
-        return
+    if not fromString:
+        try:
+            tree = ET.parse(xml)
+        except:
+            print("Failed.")
+            return
+    else:
+        root = ET.fromstring(xml)
     
-    root = tree.getroot()
+    #root = tree.getroot()
     
     #Header
     hLabels = []

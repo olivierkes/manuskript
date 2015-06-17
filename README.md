@@ -7,3 +7,4 @@ Dépendances:
 
 Optional:
 - pyenchant
+- zlib

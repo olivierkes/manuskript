@@ -33,7 +33,7 @@ autoSave = True
 autoSaveDelay = 5
 saveOnQuit = True
 
-def save(filename):
+def save(filename=None):
     
     global spellcheck, dict, corkSliderFactor, viewSettings, corkSizeFactor, folderView, lastTab, lastIndex, \
            autoSave, autoSaveDelay, saveOnQuit
@@ -55,19 +55,27 @@ def save(filename):
     #print("Saving:")
     #pp.pprint(allSettings)
     
-    f = open(filename, "wb")
-    pickle.dump(allSettings, f)
+    if filename:
+        f = open(filename, "wb")
+        pickle.dump(allSettings, f)
+    else:
+        return pickle.dumps(allSettings)
     
-def load(filename):
-    try:
-        global allSettings
-        
-        f = open(filename, "rb")
-        allSettings = pickle.load(f)
-        
-    except:
-        print("{} doesn't exist, cannot load settings.".format(filename))
-        return
+def load(string, fromString=False):
+    """Load settings from 'string'. 'string' is the filename of the pickle dump.
+    If fromString=True, string is the data of the pickle dumps."""
+    global allSettings
+    
+    if not fromString:
+        try:
+            f = open(string, "rb")
+            allSettings = pickle.load(f)
+            
+        except:
+            print("{} doesn't exist, cannot load settings.".format(string))
+            return
+    else:
+        allSettings = pickle.loads(string)
     
     #pp=pprint.PrettyPrinter(indent=4, compact=False)
     #print("Loading:")

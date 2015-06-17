@@ -2,3 +2,6 @@ snowflake*
 *.pyc
 *.lprof
 .directory
+test_project.zip
+test_project_
+Notes.t2t

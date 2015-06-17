@@ -226,7 +226,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.lstDebugLabels.setModel(self.mdlLabels)
         self.lstDebugStatus.setModel(self.mdlStatus)
         
-        self.loadProject("test_project")
+        self.loadProject("test_project.zip")
     
 ####################################################################################################
 #                                             OUTLINE                                              #
@@ -375,7 +375,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.loadDatas()
         
         # Load settings
-        settings.load("{}/settings.pickle".format(project))
         self.generateViewMenu()
         self.sldCorkSizeFactor.setValue(settings.corkSizeFactor)
         self.actSpellcheck.setChecked(settings.spellcheck)
@@ -435,29 +434,47 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if settings.saveOnQuit:
             self.saveDatas()
         
-        # Save settings
-        settings.save("{}/settings.pickle".format(self.currentProject))
-        
         # closeEvent
         QMainWindow.closeEvent(self, event)
     
     def saveDatas(self):
-        saveStandardItemModelXML(self.mdlFlatData, "{}/flatModel.xml".format(self.currentProject))
-        saveStandardItemModelXML(self.mdlPersos, "{}/perso.xml".format(self.currentProject))
-        saveStandardItemModelXML(self.mdlPersosInfos, "{}/persoInfos.xml".format(self.currentProject))
-        saveStandardItemModelXML(self.mdlLabels, "{}/labels.xml".format(self.currentProject))
-        saveStandardItemModelXML(self.mdlStatus, "{}/status.xml".format(self.currentProject))
-        self.mdlOutline.saveToXML("{}/outline.xml".format(self.currentProject))
+        # Saving
+        files = []
+        
+        files.append((saveStandardItemModelXML(self.mdlFlatData), "flatModel.xml"))
+        files.append((saveStandardItemModelXML(self.mdlPersos), "perso.xml"))
+        files.append((saveStandardItemModelXML(self.mdlPersosInfos), "persoInfos.xml"))
+        files.append((saveStandardItemModelXML(self.mdlLabels), "labels.xml"))
+        files.append((saveStandardItemModelXML(self.mdlStatus), "status.xml"))
+        files.append((self.mdlOutline.saveToXML(), "outline.xml"))
+        files.append((settings.save(),"settings.pickle"))
+        
+        saveFilesToZip(files, self.currentProject)
+        
+        # Giving some feedback
         print(self.tr("Project {} saved.").format(self.currentProject))
         self.statusBar().showMessage(self.tr("Project {} saved.").format(self.currentProject), 5000)
         
     def loadDatas(self):
-        loadStandardItemModelXML(self.mdlFlatData, "{}/flatModel.xml".format(self.currentProject))
-        loadStandardItemModelXML(self.mdlPersos, "{}/perso.xml".format(self.currentProject))
-        loadStandardItemModelXML(self.mdlPersosInfos, "{}/persoInfos.xml".format(self.currentProject))
-        loadStandardItemModelXML(self.mdlLabels, "{}/labels.xml".format(self.currentProject))
-        loadStandardItemModelXML(self.mdlStatus, "{}/status.xml".format(self.currentProject))
-        self.mdlOutline.loadFromXML("{}/outline.xml".format(self.currentProject))
+        # Loading
+        files = loadFilesFromZip(self.currentProject)
+        
+        if "flatModel.xml" in files:
+            loadStandardItemModelXML(self.mdlFlatData, files["flatModel.xml"], fromString=True)
+        if "perso.xml" in files:
+            loadStandardItemModelXML(self.mdlPersos, files["perso.xml"], fromString=True)
+        if "persoInfos.xml" in files:
+            loadStandardItemModelXML(self.mdlPersosInfos, files["persoInfos.xml"], fromString=True)
+        if "labels.xml" in files:
+            loadStandardItemModelXML(self.mdlLabels, files["labels.xml"], fromString=True)
+        if "status.xml" in files:
+            loadStandardItemModelXML(self.mdlStatus, files["status.xml"], fromString=True)
+        if "outline.xml" in files:
+            self.mdlOutline.loadFromXML(files["outline.xml"], fromString=True)
+        if "settings.pickle" in files:
+            settings.load(files["settings.pickle"], fromString=True)
+        
+        # Giving some feedback
         print(self.tr("Project {} loaded.").format(self.currentProject))
         self.statusBar().showMessage(self.tr("Project {} loaded.").format(self.currentProject), 5000)
     

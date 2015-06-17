@@ -296,17 +296,23 @@ class outlineModel(QAbstractItemModel):
         
     ################# XML / saving / loading #################
     
-    def saveToXML(self, xml):
+    def saveToXML(self, xml=None):
+        "If xml (filename) is given, saves the items to xml. Otherwise returns as string."
         root = ET.XML(self.rootItem.toXML())
-        ET.ElementTree(root).write(xml, encoding="UTF-8", xml_declaration=True, pretty_print=True)
+        if xml:
+            ET.ElementTree(root).write(xml, encoding="UTF-8", xml_declaration=True, pretty_print=True)
+        else:
+            return ET.tostring(root, encoding="UTF-8", xml_declaration=True, pretty_print=True)
     
-    def loadFromXML(self, xml):
-        #try:
+    def loadFromXML(self, xml, fromString=False):
+        "Load from xml. Assume that xml is a filename. If fromString=True, xml is the content."
+        if not fromString:
             root = ET.parse(xml)
-            self.rootItem = outlineItem(self, xml=ET.tostring(root))
-        #except:
-            #print("N'arrive pas à ouvrir {}".format(xml))
-            #return
+        else:
+            root = ET.fromstring(xml)
+            
+        self.rootItem = outlineItem(self, xml=ET.tostring(root))
+        
     
     def pathToIndex(self, index, path=""):
         if not index.isValid():
