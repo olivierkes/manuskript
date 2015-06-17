@@ -404,6 +404,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.saveTimerNoChanges.setInterval(settings.autoSaveNoChangesDelay * 1000)
         self.saveTimerNoChanges.setSingleShot(True)
         self.mdlOutline.dataChanged.connect(self.startTimerNoChanges)
+        self.mdlPersos.dataChanged.connect(self.startTimerNoChanges)
+        self.mdlPersosInfos.dataChanged.connect(self.startTimerNoChanges)
+        self.mdlStatus.dataChanged.connect(self.startTimerNoChanges)
+        self.mdlLabels.dataChanged.connect(self.startTimerNoChanges)
+        
         self.saveTimerNoChanges.timeout.connect(self.saveDatas)
         self.saveTimerNoChanges.stop()
             
