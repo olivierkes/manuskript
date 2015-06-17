@@ -1234,7 +1234,7 @@ class Ui_MainWindow(object):
         self.actShowHelp.setText(_translate("MainWindow", "Show help texts"))
         self.actShowHelp.setShortcut(_translate("MainWindow", "Ctrl+Shift+B"))
         self.actSpellcheck.setText(_translate("MainWindow", "Spellcheck"))
-        self.actSpellcheck.setShortcut(_translate("MainWindow", "F8"))
+        self.actSpellcheck.setShortcut(_translate("MainWindow", "F9"))
         self.actLabels.setText(_translate("MainWindow", "Labels..."))
         self.actStatus.setText(_translate("MainWindow", "Status..."))
         self.actViewTree.setText(_translate("MainWindow", "Tree"))
@@ -1244,12 +1244,13 @@ class Ui_MainWindow(object):
         self.actViewCork.setText(_translate("MainWindow", "Index cards"))
         self.actViewOutline.setText(_translate("MainWindow", "Outline"))
         self.actSettings.setText(_translate("MainWindow", "Settings"))
+        self.actSettings.setShortcut(_translate("MainWindow", "F8"))
 
-from ui.views.treeView import treeView
-from ui.views.lineEditView import lineEditView
 from ui.sldImportance import sldImportance
 from ui.editors.editorWidget import editorWidget
-from ui.views.textEditView import textEditView
-from ui.views.basicItemView import basicItemView
-from ui.views.outlineView import outlineView
 from ui.views.metadataView import metadataView
+from ui.views.outlineView import outlineView
+from ui.views.lineEditView import lineEditView
+from ui.views.treeView import treeView
+from ui.views.basicItemView import basicItemView
+from ui.views.textEditView import textEditView

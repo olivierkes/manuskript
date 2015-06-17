@@ -38,11 +38,16 @@ saveOnQuit = True
 outlineViewColumns = [Outline.title.value, Outline.POV.value, Outline.status.value, 
                       Outline.compile.value, Outline.wordCount.value, Outline.goal.value, 
                       Outline.goalPercentage.value, Outline.label.value]
+corkBackground = {
+    "color": "#926239",
+    "image": ""
+        }
 
 def save(filename=None):
     
     global spellcheck, dict, corkSliderFactor, viewSettings, corkSizeFactor, folderView, lastTab, lastIndex, \
-           autoSave, autoSaveDelay, saveOnQuit, autoSaveNoChanges, autoSaveNoChangesDelay, outlineViewColumns
+           autoSave, autoSaveDelay, saveOnQuit, autoSaveNoChanges, autoSaveNoChangesDelay, outlineViewColumns, \
+           corkBackground
     
     allSettings = {
         "viewSettings": viewSettings,
@@ -58,6 +63,7 @@ def save(filename=None):
         "autoSaveNoChanges":autoSaveNoChanges,
         "autoSaveNoChangesDelay":autoSaveNoChangesDelay,
         "outlineViewColumns":outlineViewColumns,
+        "corkBackground":corkBackground,
         }
     
     #pp=pprint.PrettyPrinter(indent=4, compact=False)
@@ -142,3 +148,6 @@ def load(string, fromString=False):
         global outlineViewColumns
         outlineViewColumns = allSettings["outlineViewColumns"]
     
+    if "corkBackground" in allSettings:
+        global corkBackground
+        corkBackground = allSettings["corkBackground"]

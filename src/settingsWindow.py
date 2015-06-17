@@ -7,6 +7,8 @@ from ui.settings import *
 from enums import *
 from functions import *
 import settings
+import os
+
 # Spell checker support
 try:
     import enchant
@@ -18,8 +20,13 @@ class settingsWindow(QWidget, Ui_Settings):
     def __init__(self, mainWindow):
         QWidget.__init__(self)
         self.setupUi(self)
-        
         self.mw = mainWindow
+        
+        # UI
+        for i in range(self.lstMenu.count()):
+            item = self.lstMenu.item(i)
+            item.setSizeHint(QSize(item.sizeHint().width(), 42))
+            item.setTextAlignment(Qt.AlignCenter)
         
         # General
         self.cmbStyle.addItems(list(QStyleFactory.keys()))
@@ -40,6 +47,7 @@ class settingsWindow(QWidget, Ui_Settings):
         self.txtAutoSaveNoChanges.textEdited.connect(self.saveSettingsChanged)
         
         # Views
+        self.tabViews.setCurrentIndex(0)
         lst = ["Nothing", "POV", "Label", "Progress", "Compile"]
         for cmb in self.viewSettingsDatas():
             item, part = self.viewSettingsDatas()[cmb]
@@ -50,6 +58,11 @@ class settingsWindow(QWidget, Ui_Settings):
             col = self.outlineColumnsData()[chk]
             chk.setChecked(col in settings.outlineViewColumns)
             chk.stateChanged.connect(self.outlineColumnsChanged)
+            
+        self.populatesCorkBackgrounds()
+        self.updateCorkColor()
+        self.cmbCorkImage.currentIndexChanged.connect(self.setCorkBackground)
+        self.btnCorkColor.clicked.connect(self.setCorkColor)
         
         # Labels
         self.lstLabels.setModel(self.mw.mdlLabels)
@@ -65,6 +78,19 @@ class settingsWindow(QWidget, Ui_Settings):
         self.btnStatusAdd.clicked.connect(self.addStatus)
         self.btnStatusRemove.clicked.connect(self.removeStatus)
         
+    def setTab(self, tab):
+        
+        tabs = {
+            "General":0,
+            "Views":1,
+            "Labels":2,
+            "Status":3,
+            }
+        
+        if tab in tabs:
+            self.lstMenu.setCurrentRow(tabs[tab])
+        else:
+            self.lstMenu.setCurrentRow(tab)
 ####################################################################################################
 #                                           GENERAL                                                #
 ####################################################################################################
@@ -140,6 +166,46 @@ class settingsWindow(QWidget, Ui_Settings):
         self.mw.redacEditor.outlineView.hideColumns()
         self.mw.treePlanOutline.hideColumns()
         
+    def setCorkColor(self):
+        color = QColor(settings.corkBackground["color"])
+        self.colorDialog = QColorDialog(color, self)
+        color = self.colorDialog.getColor(color)
+        settings.corkBackground["color"] = color.name()
+        self.updateCorkColor()
+        # Update Cork view 
+        self.mw.redacEditor.corkView.updateBackground()
+        
+    def updateCorkColor(self):
+        self.btnCorkColor.setStyleSheet("background:{};".format(settings.corkBackground["color"]))
+    
+    def setCorkBackground(self, i):
+        img = self.cmbCorkImage.itemData(i)
+        if img:
+            settings.corkBackground["image"] = os.path.join("resources/backgrounds", img)
+        else:
+            settings.corkBackground["image"] = ""
+        # Update Cork view 
+        self.mw.redacEditor.corkView.updateBackground()
+    
+    def populatesCorkBackgrounds(self):
+        #self.cmbDelegate = cmbPixmapDelegate()
+        #self.cmbCorkImage.setItemDelegate(self.cmbDelegate)
+        
+        path = "resources/backgrounds"
+        lst = os.listdir(path)
+        self.cmbCorkImage.addItem(QIcon.fromTheme("list-remove"), "", "")
+        for l in lst:
+            if l.lower()[-4:] in [".jpg", ".png"] or \
+               l.lower()[-5:] in [".jpeg"]:
+                px = QPixmap(os.path.join(path, l)).scaled(128, 64, Qt.KeepAspectRatio)
+                self.cmbCorkImage.addItem(QIcon(px), "", l)
+        
+        self.cmbCorkImage.setIconSize(QSize(128, 64))
+        
+        if settings.corkBackground["image"] != "":
+            i = self.cmbCorkImage.findData(settings.corkBackground["image"])
+            if i != -1:
+                self.cmbCorkImage.setCurrentIndex(i)
 
 ####################################################################################################
 #                                           STATUS                                                 #
@@ -151,16 +217,17 @@ class settingsWindow(QWidget, Ui_Settings):
     def removeStatus(self):
         for i in self.lstStatus.selectedIndexes():
             self.mw.mdlStatus.removeRows(i.row(), 1)
-        
-    def updateLabelColor(self, index):
-        px = QPixmap(64, 64)
-        px.fill(iconColor(self.mw.mdlLabels.item(index.row()).icon()))
-        self.btnLabelColor.setIcon(QIcon(px))
-        self.btnLabelColor.setEnabled(True)
     
 ####################################################################################################
 #                                           LABELS                                                 #
 ####################################################################################################
+        
+    def updateLabelColor(self, index):
+        #px = QPixmap(64, 64)
+        #px.fill(iconColor(self.mw.mdlLabels.item(index.row()).icon()))
+        #self.btnLabelColor.setIcon(QIcon(px))
+        self.btnLabelColor.setStyleSheet("background:{};".format(iconColor(self.mw.mdlLabels.item(index.row()).icon()).name()))
+        self.btnLabelColor.setEnabled(True)
     
     def addLabel(self):
         px = QPixmap(32, 32)
@@ -179,4 +246,4 @@ class settingsWindow(QWidget, Ui_Settings):
         px = QPixmap(32, 32)
         px.fill(color)
         self.mw.mdlLabels.item(index.row()).setIcon(QIcon(px))
-        
+        self.updateLabelColor(index)

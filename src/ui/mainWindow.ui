@@ -2043,7 +2043,7 @@
     <string>Spellcheck</string>
    </property>
    <property name="shortcut">
-    <string>F8</string>
+    <string>F9</string>
    </property>
   </action>
   <action name="actLabels">
@@ -2100,10 +2100,15 @@
   </action>
   <action name="actSettings">
    <property name="icon">
-    <iconset theme="preferences-system"/>
+    <iconset theme="preferences-system">
+     <normaloff/>
+    </iconset>
    </property>
    <property name="text">
     <string>Settings</string>
+   </property>
+   <property name="shortcut">
+    <string>F8</string>
    </property>
   </action>
  </widget>

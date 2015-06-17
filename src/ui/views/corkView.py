@@ -1,15 +1,13 @@
 #!/usr/bin/env python
 #--!-- coding: utf8 --!--
  
-
-
-
 from qt import *
 from enums import *
 from functions import *
 from ui.views.corkDelegate import *
 from ui.views.dndView import *
 from ui.views.outlineBasics import *
+import settings
 
 class corkView(QListView, dndView, outlineBasics):
     
@@ -22,12 +20,19 @@ class corkView(QListView, dndView, outlineBasics):
         self.setWrapping(True)
         self.setItemDelegate(corkDelegate())
         self.setSpacing(5)
-        self.setStyleSheet("""QListView {
-            background:#926239;
-            }""")
         self.setVerticalScrollMode(self.ScrollPerPixel)
         self.setFlow(self.LeftToRight)
         self.setSelectionBehavior(self.SelectRows)
+        self.updateBackground()
+        
+    def updateBackground(self):
+        self.setStyleSheet("""QListView {{
+            background:{color};
+            background-image: url({url});
+            }}""".format(
+                color=settings.corkBackground["color"],
+                url=settings.corkBackground["image"]
+                ))
         
     def dragMoveEvent(self, event):
         dndView.dragMoveEvent(self, event)

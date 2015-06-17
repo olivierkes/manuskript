@@ -6,48 +6,119 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>485</width>
-    <height>585</height>
+    <width>551</width>
+    <height>378</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
+  <layout class="QHBoxLayout" name="horizontalLayout_8">
    <item>
-    <widget class="QTabWidget" name="tabWidget">
+    <widget class="QListWidget" name="lstMenu">
+     <item>
+      <property name="text">
+       <string>General</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Views</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Labels</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Status</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item>
+    <widget class="QStackedWidget" name="stack">
      <property name="currentIndex">
       <number>1</number>
      </property>
-     <property name="documentMode">
-      <bool>true</bool>
-     </property>
-     <widget class="QWidget" name="tab_3">
-      <attribute name="title">
-       <string>General</string>
-      </attribute>
+     <widget class="QWidget" name="stackedWidgetPage1">
       <layout class="QVBoxLayout" name="verticalLayout_7">
+       <property name="margin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="lblTitleGeneral">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color:lightBlue;
+border:none;
+padding:10px;
+color:darkBlue;
+font-size:16px;
+font-weight:bold;
+text-align:center;</string>
+         </property>
+         <property name="text">
+          <string>General settings</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
        <item>
         <widget class="QGroupBox" name="groupBox_2">
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
          <property name="title">
           <string>Application style</string>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_5">
           <item>
            <widget class="QLabel" name="label_2">
+            <property name="font">
+             <font>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="text">
              <string>You might need to restart the app in order to avoid some visual issues.</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="cmbStyle"/>
+           <widget class="QComboBox" name="cmbStyle">
+            <property name="font">
+             <font>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>
        </item>
        <item>
         <widget class="QGroupBox" name="groupBox">
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
          <property name="title">
           <string>Saving</string>
          </property>
@@ -56,6 +127,12 @@
            <layout class="QHBoxLayout" name="horizontalLayout_5">
             <item>
              <widget class="QCheckBox" name="chkAutoSave">
+              <property name="font">
+               <font>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
+              </property>
               <property name="text">
                <string>Automatically save every</string>
               </property>
@@ -78,6 +155,12 @@
                 <height>16777215</height>
                </size>
               </property>
+              <property name="font">
+               <font>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
+              </property>
               <property name="styleSheet">
                <string notr="true">border-radius: 6px;</string>
               </property>
@@ -91,6 +174,12 @@
             </item>
             <item>
              <widget class="QLabel" name="label">
+              <property name="font">
+               <font>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
+              </property>
               <property name="text">
                <string>minutes.</string>
               </property>
@@ -98,6 +187,12 @@
             </item>
             <item>
              <spacer name="horizontalSpacer_3">
+              <property name="font">
+               <font>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
+              </property>
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
               </property>
@@ -115,6 +210,12 @@
            <layout class="QHBoxLayout" name="horizontalLayout_7">
             <item>
              <widget class="QCheckBox" name="chkAutoSaveNoChanges">
+              <property name="font">
+               <font>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
+              </property>
               <property name="text">
                <string>If no changes during</string>
               </property>
@@ -137,6 +238,12 @@
                 <height>16777215</height>
                </size>
               </property>
+              <property name="font">
+               <font>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
+              </property>
               <property name="styleSheet">
                <string notr="true">border-radius: 6px;</string>
               </property>
@@ -150,6 +257,12 @@
             </item>
             <item>
              <widget class="QLabel" name="label_14">
+              <property name="font">
+               <font>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
+              </property>
               <property name="text">
                <string>seconds.</string>
               </property>
@@ -157,6 +270,12 @@
             </item>
             <item>
              <spacer name="horizontalSpacer_4">
+              <property name="font">
+               <font>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
+              </property>
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
               </property>
@@ -172,6 +291,12 @@
           </item>
           <item>
            <widget class="QCheckBox" name="chkSaveOnQuit">
+            <property name="font">
+             <font>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="text">
              <string>Save on quit</string>
             </property>
@@ -198,540 +323,975 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab_4">
-      <attribute name="title">
-       <string>Views</string>
-      </attribute>
+     <widget class="QWidget" name="stackedWidgetPage2">
       <layout class="QVBoxLayout" name="verticalLayout_9">
+       <property name="margin">
+        <number>0</number>
+       </property>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_6">
-         <item>
-          <widget class="QGroupBox" name="groupBox_3">
-           <property name="title">
-            <string>Tree</string>
-           </property>
-           <layout class="QFormLayout" name="formLayout">
-            <item row="0" column="0">
-             <widget class="QLabel" name="label_3">
-              <property name="text">
-               <string>Icon color:</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="1">
-             <widget class="QComboBox" name="cmbTreeIcon">
-              <item>
-               <property name="text">
-                <string>Nothing</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>POV</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Label</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Progress</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Compile</string>
-               </property>
-              </item>
-             </widget>
-            </item>
-            <item row="1" column="0">
-             <widget class="QLabel" name="label_4">
-              <property name="text">
-               <string>Text color:</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="1">
-             <widget class="QComboBox" name="cmbTreeText">
-              <item>
-               <property name="text">
-                <string>Nothing</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>POV</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Label</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Progress</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Compile</string>
-               </property>
-              </item>
-             </widget>
-            </item>
-            <item row="2" column="0">
-             <widget class="QLabel" name="label_5">
-              <property name="text">
-               <string>Background color:</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="1">
-             <widget class="QComboBox" name="cmbTreeBackground">
-              <item>
-               <property name="text">
-                <string>Nothing</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>POV</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Label</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Progress</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Compile</string>
-               </property>
-              </item>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-         <item>
-          <widget class="QGroupBox" name="groupBox_5">
-           <property name="title">
-            <string>Index cards</string>
-           </property>
-           <layout class="QFormLayout" name="formLayout_2">
-            <item row="0" column="0">
-             <widget class="QLabel" name="label_9">
-              <property name="text">
-               <string>Icon color:</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="1">
-             <widget class="QComboBox" name="cmbCorkIcon">
-              <item>
-               <property name="text">
-                <string>Nothing</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>POV</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Label</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Progress</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Compile</string>
-               </property>
-              </item>
-             </widget>
-            </item>
-            <item row="1" column="0">
-             <widget class="QLabel" name="label_10">
-              <property name="text">
-               <string>Text color:</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="1">
-             <widget class="QComboBox" name="cmbCorkText">
-              <item>
-               <property name="text">
-                <string>Nothing</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>POV</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Label</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Progress</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Compile</string>
-               </property>
-              </item>
-             </widget>
-            </item>
-            <item row="2" column="0">
-             <widget class="QLabel" name="label_11">
-              <property name="text">
-               <string>Background color:</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="1">
-             <widget class="QComboBox" name="cmbCorkBackground">
-              <item>
-               <property name="text">
-                <string>Nothing</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>POV</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Label</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Progress</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Compile</string>
-               </property>
-              </item>
-             </widget>
-            </item>
-            <item row="3" column="0">
-             <widget class="QLabel" name="label_12">
-              <property name="text">
-               <string>Border color:</string>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="1">
-             <widget class="QComboBox" name="cmbCorkBorder">
-              <item>
-               <property name="text">
-                <string>Nothing</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>POV</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Label</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Progress</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Compile</string>
-               </property>
-              </item>
-             </widget>
-            </item>
-            <item row="4" column="0">
-             <widget class="QLabel" name="label_13">
-              <property name="text">
-               <string>Corner color:</string>
-              </property>
-             </widget>
-            </item>
-            <item row="4" column="1">
-             <widget class="QComboBox" name="cmbCorkCorner">
-              <item>
-               <property name="text">
-                <string>Nothing</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>POV</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Label</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Progress</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Compile</string>
-               </property>
-              </item>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-        </layout>
+        <widget class="QLabel" name="lblTitleViews">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color:lightBlue;
+border:none;
+padding:10px;
+color:darkBlue;
+font-size:16px;
+font-weight:bold;
+text-align:center;</string>
+         </property>
+         <property name="text">
+          <string>Views settings</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
        </item>
        <item>
-        <widget class="QGroupBox" name="groupBox_4">
-         <property name="title">
-          <string>Outline</string>
+        <widget class="QTabWidget" name="tabViews">
+         <property name="currentIndex">
+          <number>0</number>
          </property>
-         <layout class="QHBoxLayout" name="horizontalLayout_4">
-          <item>
-           <layout class="QFormLayout" name="formLayout_3">
-            <item row="0" column="0">
-             <widget class="QLabel" name="label_6">
-              <property name="text">
-               <string>Icon color:</string>
+         <widget class="QWidget" name="tab">
+          <attribute name="title">
+           <string>Tree</string>
+          </attribute>
+          <layout class="QVBoxLayout" name="verticalLayout">
+           <item>
+            <widget class="QGroupBox" name="groupBox_3">
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="title">
+              <string>Colors</string>
+             </property>
+             <layout class="QFormLayout" name="formLayout">
+              <property name="fieldGrowthPolicy">
+               <enum>QFormLayout::ExpandingFieldsGrow</enum>
               </property>
-             </widget>
-            </item>
-            <item row="0" column="1">
-             <widget class="QComboBox" name="cmbOutlineIcon">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_3">
+                <property name="font">
+                 <font>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Icon color:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QComboBox" name="cmbTreeIcon">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="font">
+                 <font>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>Nothing</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>POV</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Label</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Progress</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Compile</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="label_4">
+                <property name="font">
+                 <font>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Text color:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QComboBox" name="cmbTreeText">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="font">
+                 <font>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>Nothing</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>POV</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Label</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Progress</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Compile</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="label_5">
+                <property name="font">
+                 <font>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Background color:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QComboBox" name="cmbTreeBackground">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="font">
+                 <font>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>Nothing</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>POV</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Label</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Progress</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Compile</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <spacer name="verticalSpacer_3">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="tab_2">
+          <attribute name="title">
+           <string>Outline</string>
+          </attribute>
+          <layout class="QVBoxLayout" name="verticalLayout_11">
+           <item>
+            <widget class="QGroupBox" name="groupBox_4">
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="title">
+              <string>Colors</string>
+             </property>
+             <layout class="QFormLayout" name="formLayout_3">
+              <property name="fieldGrowthPolicy">
+               <enum>QFormLayout::ExpandingFieldsGrow</enum>
+              </property>
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_6">
+                <property name="font">
+                 <font>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Icon color:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QComboBox" name="cmbOutlineIcon">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="font">
+                 <font>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>Nothing</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>POV</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Label</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Progress</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Compile</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="label_7">
+                <property name="font">
+                 <font>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Text color:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QComboBox" name="cmbOutlineText">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="font">
+                 <font>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>Nothing</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>POV</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Label</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Progress</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Compile</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QComboBox" name="cmbOutlineBackground">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="font">
+                 <font>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>Nothing</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>POV</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Label</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Progress</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Compile</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="label_8">
+                <property name="font">
+                 <font>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Background color:</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QGroupBox" name="groupBox_6">
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="title">
+              <string>Visible columns</string>
+             </property>
+             <layout class="QGridLayout" name="gridLayout">
+              <item row="4" column="2">
+               <widget class="QCheckBox" name="chkOutlineGoal">
+                <property name="font">
+                 <font>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Goal</string>
+                </property>
+                <property name="checked">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="1">
+               <widget class="QCheckBox" name="chkOutlineWordCount">
+                <property name="font">
+                 <font>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Word count</string>
+                </property>
+                <property name="checked">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="3">
+               <widget class="QCheckBox" name="chkOutlinePercentage">
+                <property name="font">
+                 <font>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Percentage</string>
+                </property>
+                <property name="checked">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="0">
+               <widget class="QCheckBox" name="chkOutlineCompile">
+                <property name="font">
+                 <font>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Compile</string>
+                </property>
+                <property name="checked">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="3">
+               <widget class="QCheckBox" name="chkOutlineStatus">
+                <property name="font">
+                 <font>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Status</string>
+                </property>
+                <property name="checked">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="2">
+               <widget class="QCheckBox" name="chkOutlineLabel">
+                <property name="font">
+                 <font>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Label</string>
+                </property>
+                <property name="checked">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="QCheckBox" name="chkOutlinePOV">
+                <property name="font">
+                 <font>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>POV</string>
+                </property>
+                <property name="checked">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QCheckBox" name="chkOutlineTitle">
+                <property name="font">
+                 <font>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Title</string>
+                </property>
+                <property name="checked">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <spacer name="verticalSpacer_4">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="tab_3">
+          <attribute name="title">
+           <string>Index cards</string>
+          </attribute>
+          <layout class="QHBoxLayout" name="horizontalLayout_4">
+           <item>
+            <widget class="QGroupBox" name="groupBox_5">
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="title">
+              <string>Item colors</string>
+             </property>
+             <layout class="QFormLayout" name="formLayout_2">
+              <property name="fieldGrowthPolicy">
+               <enum>QFormLayout::ExpandingFieldsGrow</enum>
+              </property>
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_9">
+                <property name="font">
+                 <font>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Icon color:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QComboBox" name="cmbCorkIcon">
+                <property name="font">
+                 <font>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>Nothing</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>POV</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Label</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Progress</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Compile</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="label_10">
+                <property name="font">
+                 <font>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Text color:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QComboBox" name="cmbCorkText">
+                <property name="font">
+                 <font>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>Nothing</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>POV</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Label</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Progress</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Compile</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="label_11">
+                <property name="font">
+                 <font>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Background color:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QComboBox" name="cmbCorkBackground">
+                <property name="font">
+                 <font>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>Nothing</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>POV</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Label</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Progress</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Compile</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QLabel" name="label_12">
+                <property name="font">
+                 <font>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Border color:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="QComboBox" name="cmbCorkBorder">
+                <property name="font">
+                 <font>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>Nothing</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>POV</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Label</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Progress</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Compile</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="4" column="0">
+               <widget class="QLabel" name="label_13">
+                <property name="font">
+                 <font>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Corner color:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="1">
+               <widget class="QComboBox" name="cmbCorkCorner">
+                <property name="font">
+                 <font>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>Nothing</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>POV</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Label</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Progress</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Compile</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QGroupBox" name="groupBox_7">
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="title">
+              <string>Background</string>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_8">
               <item>
-               <property name="text">
-                <string>Nothing</string>
-               </property>
+               <widget class="QLabel" name="label_15">
+                <property name="font">
+                 <font>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Color:</string>
+                </property>
+               </widget>
               </item>
               <item>
-               <property name="text">
-                <string>POV</string>
-               </property>
+               <widget class="QPushButton" name="btnCorkColor">
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>32</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>64</width>
+                  <height>64</height>
+                 </size>
+                </property>
+                <property name="shortcut">
+                 <string>Ctrl+S</string>
+                </property>
+               </widget>
               </item>
               <item>
-               <property name="text">
-                <string>Label</string>
-               </property>
+               <widget class="QLabel" name="label_16">
+                <property name="font">
+                 <font>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Image:</string>
+                </property>
+               </widget>
               </item>
               <item>
-               <property name="text">
-                <string>Progress</string>
-               </property>
+               <widget class="QComboBox" name="cmbCorkImage">
+                <property name="font">
+                 <font>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+               </widget>
               </item>
               <item>
-               <property name="text">
-                <string>Compile</string>
-               </property>
+               <spacer name="verticalSpacer_5">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </spacer>
               </item>
-             </widget>
-            </item>
-            <item row="1" column="0">
-             <widget class="QLabel" name="label_7">
-              <property name="text">
-               <string>Text color:</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="1">
-             <widget class="QComboBox" name="cmbOutlineText">
-              <item>
-               <property name="text">
-                <string>Nothing</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>POV</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Label</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Progress</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Compile</string>
-               </property>
-              </item>
-             </widget>
-            </item>
-            <item row="2" column="0">
-             <widget class="QLabel" name="label_8">
-              <property name="text">
-               <string>Background color:</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="1">
-             <widget class="QComboBox" name="cmbOutlineBackground">
-              <item>
-               <property name="text">
-                <string>Nothing</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>POV</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Label</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Progress</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Compile</string>
-               </property>
-              </item>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <widget class="Line" name="line">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <layout class="QVBoxLayout" name="verticalLayout_8">
-            <item>
-             <widget class="QCheckBox" name="chkOutlineTitle">
-              <property name="text">
-               <string>Title</string>
-              </property>
-              <property name="checked">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QCheckBox" name="chkOutlinePOV">
-              <property name="text">
-               <string>POV</string>
-              </property>
-              <property name="checked">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QCheckBox" name="chkOutlineLabel">
-              <property name="text">
-               <string>Label</string>
-              </property>
-              <property name="checked">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QCheckBox" name="chkOutlineStatus">
-              <property name="text">
-               <string>Status</string>
-              </property>
-              <property name="checked">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QCheckBox" name="chkOutlineCompile">
-              <property name="text">
-               <string>Compile</string>
-              </property>
-              <property name="checked">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QCheckBox" name="chkOutlineWordCount">
-              <property name="text">
-               <string>Word count</string>
-              </property>
-              <property name="checked">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QCheckBox" name="chkOutlineGoal">
-              <property name="text">
-               <string>Goal</string>
-              </property>
-              <property name="checked">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QCheckBox" name="chkOutlinePercentage">
-              <property name="text">
-               <string>Percentage</string>
-              </property>
-              <property name="checked">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-         </layout>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
         </widget>
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab">
-      <attribute name="title">
-       <string>Labels</string>
-      </attribute>
+     <widget class="QWidget" name="stackedWidgetPage3">
       <layout class="QVBoxLayout" name="verticalLayout_3">
+       <property name="margin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="lblTitleLabels">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color:lightBlue;
+border:none;
+padding:10px;
+color:darkBlue;
+font-size:16px;
+font-weight:bold;
+text-align:center;</string>
+         </property>
+         <property name="text">
+          <string>Labels</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_2">
          <item>
@@ -836,11 +1396,36 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab_2">
-      <attribute name="title">
-       <string>Status</string>
-      </attribute>
+     <widget class="QWidget" name="stackedWidgetPage4">
       <layout class="QVBoxLayout" name="verticalLayout_4">
+       <property name="margin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="lblTitleStatus">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color:lightBlue;
+border:none;
+padding:10px;
+color:darkBlue;
+font-size:16px;
+font-weight:bold;
+text-align:center;</string>
+         </property>
+         <property name="text">
+          <string>Status</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
        <item>
         <widget class="QListView" name="lstStatus"/>
        </item>
@@ -892,5 +1477,22 @@
   </layout>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>lstMenu</sender>
+   <signal>currentRowChanged(int)</signal>
+   <receiver>stack</receiver>
+   <slot>setCurrentIndex(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>96</x>
+     <y>19</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>361</x>
+     <y>321</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

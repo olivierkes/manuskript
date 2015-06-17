@@ -389,6 +389,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.btnRedacFolderOutline.setChecked(True)
         self.tabMain.setCurrentIndex(settings.lastTab)
         self.treeRedacOutline.setCurrentIndex(self.mdlOutline.indexFromPath(settings.lastIndex))
+        self.redacEditor.corkView.updateBackground()
         
         # Set autosave
         self.saveTimer = QTimer()
@@ -640,10 +641,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 ####################################################################################################
 
     def settingsLabel(self):
-        self.settingsWindow(2)
+        self.settingsWindow("Labels")
         
     def settingsStatus(self):
-        self.settingsWindow(3)
+        self.settingsWindow("Status")
         
     def settingsWindow(self, tab=None):
         self.sw = settingsWindow(self)
@@ -654,7 +655,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         r2 = self.geometry()
         self.sw.move(r2.center() - r.center())
         if tab:
-            self.sw.tabWidget.setCurrentIndex(tab)
+            self.sw.setTab(tab)
         self.sw.show()
         
 ####################################################################################################
