@@ -1247,11 +1247,11 @@ class Ui_MainWindow(object):
         self.actViewOutline.setText(_translate("MainWindow", "Outline"))
         self.actSettings.setText(_translate("MainWindow", "Settings"))
 
-from ui.editors.editorWidget import editorWidget
-from ui.views.basicItemView import basicItemView
 from ui.views.lineEditView import lineEditView
-from ui.views.treeView import treeView
-from ui.views.textEditView import textEditView
 from ui.views.outlineView import outlineView
+from ui.views.basicItemView import basicItemView
+from ui.views.textEditView import textEditView
+from ui.editors.editorWidget import editorWidget
 from ui.views.metadataView import metadataView
 from ui.sldImportance import sldImportance
+from ui.views.treeView import treeView

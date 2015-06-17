@@ -382,9 +382,9 @@ class outlineItem():
             elif self.isText():
                 return QIcon.fromTheme("document-new")
             
-        elif role == Qt.ForegroundRole:
-            if self.isCompile() in [0, "0"]:
-                return QBrush(Qt.gray)
+        #elif role == Qt.ForegroundRole:
+            #if self.isCompile() in [0, "0"]:
+                #return QBrush(Qt.gray)
             
         elif role == Qt.CheckStateRole and column == Outline.compile.value:
             return self._data[Outline(column)]

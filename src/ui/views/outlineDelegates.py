@@ -6,33 +6,88 @@ from enums import *
 from functions import *
 import settings
 
-class treeOutlineTitleDelegate(QStyledItemDelegate):
-    def __init__(self, mdlPersos, parent=None):
+class outlineTitleDelegate(QStyledItemDelegate):
+    def __init__(self, parent=None):
         QStyledItemDelegate.__init__(self, parent)
+        self._view = None
+        
+    def setView(self, view):
+        self._view = view
         
     def paint(self, painter, option, index):
         
         item = index.internalPointer()
         colors = outlineItemColors(item)
         
+        style = qApp.style()
+        
+        opt = QStyleOptionViewItem(option)
+        self.initStyleOption(opt, index)
+        
+        iconRect = style.subElementRect(style.SE_ItemViewItemDecoration, opt)
+        textRect = style.subElementRect(style.SE_ItemViewItemText, opt)
+        
+        # Background
+        style.drawPrimitive(style.PE_PanelItemViewItem, opt, painter)
+        
+        if settings.viewSettings["Outline"]["Background"] != "Nothing" and not opt.state & QStyle.State_Selected:
+            
+            col = colors[settings.viewSettings["Outline"]["Background"]]
+            
+            if col != QColor(Qt.transparent):
+                col2 = QColor(Qt.white)
+                if opt.state & QStyle.State_Selected:
+                    col2 = opt.palette.brush(QPalette.Normal, QPalette.Highlight).color()
+                col = mixColors(col, col2, .2)
+                
+            painter.save()
+            painter.setBrush(col)
+            painter.setPen(Qt.NoPen)
+            
+            rect = opt.rect
+            if self._view:
+                r2 = self._view.visualRect(index)
+                rect = self._view.viewport().rect()
+                rect.setLeft(r2.left())
+                rect.setTop(r2.top())
+                rect.setBottom(r2.bottom())
+                
+            painter.drawRoundedRect(rect, 5, 5)
+            painter.restore()
+        
         # Icon
-        #icon = option.icon.pixmap(option.rect.size())
-        #if option.icon and settings.viewSettings["Tree"]["Icon"] != "Nothing":
-            #color = colors[settings.viewSettings["Tree"]["Icon"]]
-            #colorifyPixmap(icon, color)
-        #option.icon = QIcon(icon)
+        mode = QIcon.Normal
+        if not opt.state & QStyle.State_Enabled:
+            mode = QIcon.Disabled
+        elif opt.state & QStyle.State_Selected:
+            mode = QIcon.Selected
+        state = QIcon.On if opt.state & QStyle.State_Open else QIcon.Off
+        icon = opt.icon.pixmap(iconRect.size(), mode=mode, state=state)
+        if opt.icon and settings.viewSettings["Outline"]["Icon"] != "Nothing":
+            color = colors[settings.viewSettings["Outline"]["Icon"]]
+            colorifyPixmap(icon, color)
+        opt.icon = QIcon(icon)
+        opt.icon.paint(painter, iconRect, opt.decorationAlignment, mode, state)
         
-        ## Text
-        #if settings.viewSettings["Tree"]["Text"] != "Nothing":
-            #color = colors[settings.viewSettings["Tree"]["Text"]]
-            #print(option.palette.color(QPalette.Text))
-            #option.palette.setColor(QPalette.Text, color)
-            #print(option.palette.color(QPalette.Text), color)
+        # Text
+        if opt.text:
+            painter.save()
+            if settings.viewSettings["Outline"]["Text"] != "Nothing":
+                col = colors[settings.viewSettings["Outline"]["Text"]]
+                if col == Qt.transparent:
+                    col = Qt.black
+                painter.setPen(col)
+            f = QFont(opt.font)
+            painter.setFont(f)
+            fm = QFontMetrics(f)
+            elidedText = fm.elidedText(opt.text, Qt.ElideRight, textRect.width())
+            painter.drawText(textRect, Qt.AlignLeft, elidedText)
+            
+            painter.restore()
         
-        
-        QStyledItemDelegate.paint(self, painter, option, index)
+        #QStyledItemDelegate.paint(self, painter, option, index)
 
-class treeOutlinePersoDelegate(QStyledItemDelegate):
+class outlinePersoDelegate(QStyledItemDelegate):
     
     def __init__(self, mdlPersos, parent=None):
         QStyledItemDelegate.__init__(self, parent)
@@ -110,7 +165,7 @@ class treeOutlinePersoDelegate(QStyledItemDelegate):
             qApp.style().drawPrimitive(QStyle.PE_IndicatorArrowDown, option, painter)
     
     
-class treeOutlineCompileDelegate(QStyledItemDelegate):
+class outlineCompileDelegate(QStyledItemDelegate):
     
     def __init__(self, parent=None):
         QStyledItemDelegate.__init__(self, parent)
@@ -119,7 +174,7 @@ class treeOutlineCompileDelegate(QStyledItemDelegate):
         return ""
     
     
-class treeOutlineGoalPercentageDelegate(QStyledItemDelegate):
+class outlineGoalPercentageDelegate(QStyledItemDelegate):
     def __init__(self, rootIndex=None, parent=None):
         QStyledItemDelegate.__init__(self, parent)
         self.rootIndex = rootIndex
@@ -171,7 +226,7 @@ class treeOutlineGoalPercentageDelegate(QStyledItemDelegate):
         return ""
     
     
-class treeOutlineStatusDelegate(QStyledItemDelegate):
+class outlineStatusDelegate(QStyledItemDelegate):
     
     def __init__(self, mdlStatus, parent=None):
         QStyledItemDelegate.__init__(self, parent)
@@ -221,7 +276,7 @@ class treeOutlineStatusDelegate(QStyledItemDelegate):
             qApp.style().drawPrimitive(QStyle.PE_IndicatorArrowDown, option, painter)
         
         
-class treeOutlineLabelDelegate(QStyledItemDelegate):
+class outlineLabelDelegate(QStyledItemDelegate):
     
     def __init__(self, mdlLabels, parent=None):
         QStyledItemDelegate.__init__(self, parent)

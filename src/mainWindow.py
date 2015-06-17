@@ -711,4 +711,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         item, part, element = action.data().split(",")
         settings.viewSettings[item][part] = element
         if item == "Cork":
-            self.redacEditor.redrawCorkItems()
+            self.redacEditor.corkView.viewport().update()
+        if item == "Outline":
+            self.redacEditor.outlineView.viewport().update()
+            self.treePlanOutline.viewport().update()
+        if item == "Tree":
+            self.treeRedacOutline.viewport().update()

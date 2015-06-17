@@ -9,6 +9,7 @@ from enums import *
 from functions import *
 from ui.views.dndView import *
 from ui.views.outlineBasics import *
+from ui.views.treeDelegates import *
 
 class treeView(QTreeView, dndView, outlineBasics):
     
@@ -23,6 +24,10 @@ class treeView(QTreeView, dndView, outlineBasics):
         # Hiding columns
         for c in range(1, self.model().columnCount()):
             self.hideColumn(c)
+            
+        # Setting delegate
+        self.titleDelegate = treeTitleDelegate()
+        self.setItemDelegateForColumn(Outline.title.value, self.titleDelegate)
         
     def dragMoveEvent(self, event):
         dndView.dragMoveEvent(self, event)

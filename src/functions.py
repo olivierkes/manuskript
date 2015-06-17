@@ -65,7 +65,7 @@ def iconColor(icon):
     if px.width() != 0:
         return QColor(QImage(px).pixel(2, 2))
     else:
-        return Qt.transparent
+        return QColor(Qt.transparent)
 
 def iconFromColor(color):
     px = QPixmap(32, 32)
@@ -101,7 +101,7 @@ def outlineItemColors(item):
         mw = mainWindow()
         
         # POV
-        colors["POV"] = Qt.transparent
+        colors["POV"] = QColor(Qt.transparent)
         POV = item.data(Outline.POV.value)
         for i in range(mw.mdlPersos.rowCount()):
             if mw.mdlPersos.item(i, Perso.ID.value).text() == POV:
