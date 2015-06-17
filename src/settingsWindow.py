@@ -60,7 +60,7 @@ class settingsWindow(QWidget, Ui_Settings):
         settings.autoSave = True if self.chkAutoSave.checkState() else False
         settings.saveOnQuit = True if self.chkSaveOnQuit.checkState() else False
         settings.autoSaveDelay = int(self.txtAutoSave.text())
-        
+        self.mw.saveTimer.setInterval(settings.autoSaveDelay * 60 * 1000)
         
     def addStatus(self):
         self.mw.mdlStatus.appendRow(QStandardItem(self.tr("New status")))

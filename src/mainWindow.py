@@ -207,6 +207,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btnRedacFolderOutline.clicked.connect(lambda v: self.redacEditor.setFolderView("outline"))
         
         # Main Menu
+        self.actSave.setEnabled(False)
+        self.actSaveAs.setEnabled(False)
+        self.actSave.triggered.connect(self.saveDatas)
         self.actLabels.triggered.connect(self.settingsLabel)
         self.actStatus.triggered.connect(self.settingsStatus)
         self.actSettings.triggered.connect(self.settingsWindow)
@@ -367,15 +370,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
     def loadProject(self, project):
         self.currentProject = project
-        loadStandardItemModelXML(self.mdlFlatData, "{}/flatModel.xml".format(project))
-        loadStandardItemModelXML(self.mdlPersos, "{}/perso.xml".format(project))
-        loadStandardItemModelXML(self.mdlPersosInfos, "{}/persoInfos.xml".format(project))
-        loadStandardItemModelXML(self.mdlLabels, "{}/labels.xml".format(project))
-        loadStandardItemModelXML(self.mdlStatus, "{}/status.xml".format(project))
-        self.mdlOutline.loadFromXML("{}/outline.xml".format(project))
-        settings.load("{}/settings.pickle".format(project))
         
-        # Stuff from settings
+        # Load data
+        self.loadDatas()
+        
+        # Load settings
+        settings.load("{}/settings.pickle".format(project))
         self.generateViewMenu()
         self.sldCorkSizeFactor.setValue(settings.corkSizeFactor)
         self.actSpellcheck.setChecked(settings.spellcheck)
@@ -391,8 +391,22 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.tabMain.setCurrentIndex(settings.lastTab)
         self.treeRedacOutline.setCurrentIndex(self.mdlOutline.indexFromPath(settings.lastIndex))
         
+        # Set autosave
+        if settings.autoSave:
+            self.saveTimer = QTimer()
+            self.saveTimer.setInterval(settings.autoSaveDelay * 60 * 1000)
+            self.saveTimer.setSingleShot(False)
+            self.saveTimer.timeout.connect(self.saveDatas)
+            self.saveTimer.start()
+            
+        # UI
+        self.actSave.setEnabled(True)
+        self.actSaveAs.setEnabled(True)
+        #FIXME: set Window's name: project name
+            
         # Stuff
         self.checkPersosID()
+        
         # Adds header labels
         self.mdlPersos.setHorizontalHeaderLabels(
 	  [i.name for i in Perso])
@@ -419,19 +433,34 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
         # Save data from models
         if settings.saveOnQuit:
-            saveStandardItemModelXML(self.mdlFlatData, "{}/flatModel.xml".format(self.currentProject))
-            saveStandardItemModelXML(self.mdlPersos, "{}/perso.xml".format(self.currentProject))
-            saveStandardItemModelXML(self.mdlPersosInfos, "{}/persoInfos.xml".format(self.currentProject))
-            saveStandardItemModelXML(self.mdlLabels, "{}/labels.xml".format(self.currentProject))
-            saveStandardItemModelXML(self.mdlStatus, "{}/status.xml".format(self.currentProject))
-            self.mdlOutline.saveToXML("{}/outline.xml".format(self.currentProject))
+            self.saveDatas()
         
         # Save settings
         settings.save("{}/settings.pickle".format(self.currentProject))
         
         # closeEvent
         QMainWindow.closeEvent(self, event)
+    
+    def saveDatas(self):
+        saveStandardItemModelXML(self.mdlFlatData, "{}/flatModel.xml".format(self.currentProject))
+        saveStandardItemModelXML(self.mdlPersos, "{}/perso.xml".format(self.currentProject))
+        saveStandardItemModelXML(self.mdlPersosInfos, "{}/persoInfos.xml".format(self.currentProject))
+        saveStandardItemModelXML(self.mdlLabels, "{}/labels.xml".format(self.currentProject))
+        saveStandardItemModelXML(self.mdlStatus, "{}/status.xml".format(self.currentProject))
+        self.mdlOutline.saveToXML("{}/outline.xml".format(self.currentProject))
+        print(self.tr("Project {} saved.").format(self.currentProject))
+        self.statusBar().showMessage(self.tr("Project {} saved.").format(self.currentProject), 5000)
         
+    def loadDatas(self):
+        loadStandardItemModelXML(self.mdlFlatData, "{}/flatModel.xml".format(self.currentProject))
+        loadStandardItemModelXML(self.mdlPersos, "{}/perso.xml".format(self.currentProject))
+        loadStandardItemModelXML(self.mdlPersosInfos, "{}/persoInfos.xml".format(self.currentProject))
+        loadStandardItemModelXML(self.mdlLabels, "{}/labels.xml".format(self.currentProject))
+        loadStandardItemModelXML(self.mdlStatus, "{}/status.xml".format(self.currentProject))
+        self.mdlOutline.loadFromXML("{}/outline.xml".format(self.currentProject))
+        print(self.tr("Project {} loaded.").format(self.currentProject))
+        self.statusBar().showMessage(self.tr("Project {} loaded.").format(self.currentProject), 5000)
+    
     def clickCycle(self, i):
         if i == 0: # step 2 - paragraph summary
             self.tabMain.setCurrentIndex(1)
