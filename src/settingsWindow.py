@@ -6,7 +6,7 @@ from qt import *
 from ui.settings import *
 from enums import *
 from functions import *
-
+import settings
 # Spell checker support
 try:
     import enchant
@@ -21,6 +21,19 @@ class settingsWindow(QWidget, Ui_Settings):
         
         self.mw = mainWindow
         
+        # General
+        self.cmbStyle.addItems(list(QStyleFactory.keys()))
+        self.cmbStyle.setCurrentIndex([i.lower() for i in list(QStyleFactory.keys())].index(qApp.style().objectName()))
+        self.cmbStyle.currentIndexChanged[str].connect(self.setStyle)
+        
+        self.txtAutoSave.setValidator(QIntValidator(0, 999, self))
+        self.chkAutoSave.setChecked(settings.autoSave)
+        self.txtAutoSave.setText(str(settings.autoSaveDelay))
+        self.chkSaveOnQuit.setChecked(settings.saveOnQuit)
+        self.chkAutoSave.stateChanged.connect(self.saveSettingsChanged)
+        self.chkSaveOnQuit.stateChanged.connect(self.saveSettingsChanged)
+        self.txtAutoSave.textEdited.connect(self.saveSettingsChanged)
+        
         # Labels
         self.lstLabels.setModel(self.mw.mdlLabels)
         self.lstLabels.setRowHidden(0, True)
@@ -34,6 +47,20 @@ class settingsWindow(QWidget, Ui_Settings):
         self.lstStatus.setRowHidden(0, True)
         self.btnStatusAdd.clicked.connect(self.addStatus)
         self.btnStatusRemove.clicked.connect(self.removeStatus)
+        
+    def setStyle(self, style):
+        #Save style to Qt Settings
+        settings = QSettings(qApp.organizationName(), qApp.applicationName())
+        settings.setValue("applicationStyle", style)
+        qApp.setStyle(style)
+        
+    def saveSettingsChanged(self):
+        if self.txtAutoSave.text() in ["", "0"]:
+            self.txtAutoSave.setText("1")
+        settings.autoSave = True if self.chkAutoSave.checkState() else False
+        settings.saveOnQuit = True if self.chkSaveOnQuit.checkState() else False
+        settings.autoSaveDelay = int(self.txtAutoSave.text())
+        
         
     def addStatus(self):
         self.mw.mdlStatus.appendRow(QStandardItem(self.tr("New status")))

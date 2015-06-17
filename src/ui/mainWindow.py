@@ -1044,6 +1044,10 @@ class Ui_MainWindow(object):
         self.actViewCork.setObjectName("actViewCork")
         self.actViewOutline = QtWidgets.QAction(MainWindow)
         self.actViewOutline.setObjectName("actViewOutline")
+        self.actSettings = QtWidgets.QAction(MainWindow)
+        icon = QtGui.QIcon.fromTheme("preferences-system")
+        self.actSettings.setIcon(icon)
+        self.actSettings.setObjectName("actSettings")
         self.menuFile.addAction(self.actNew)
         self.menuFile.addAction(self.actOpen)
         self.menuFile.addAction(self.actRecents)
@@ -1058,6 +1062,7 @@ class Ui_MainWindow(object):
         self.menuTools.addAction(self.actSpellcheck)
         self.menuEdit.addAction(self.actLabels)
         self.menuEdit.addAction(self.actStatus)
+        self.menuEdit.addAction(self.actSettings)
         self.menubar.addAction(self.menuFile.menuAction())
         self.menubar.addAction(self.menuEdit.menuAction())
         self.menubar.addAction(self.menuMode.menuAction())
@@ -1240,12 +1245,13 @@ class Ui_MainWindow(object):
         self.actModeFractal.setText(_translate("MainWindow", "Fractal"))
         self.actViewCork.setText(_translate("MainWindow", "Index cards"))
         self.actViewOutline.setText(_translate("MainWindow", "Outline"))
+        self.actSettings.setText(_translate("MainWindow", "Settings"))
 
-from ui.views.basicItemView import basicItemView
-from ui.views.textEditView import textEditView
 from ui.editors.editorWidget import editorWidget
-from ui.sldImportance import sldImportance
+from ui.views.basicItemView import basicItemView
 from ui.views.lineEditView import lineEditView
-from ui.views.metadataView import metadataView
-from ui.views.outlineView import outlineView
 from ui.views.treeView import treeView
+from ui.views.textEditView import textEditView
+from ui.views.outlineView import outlineView
+from ui.views.metadataView import metadataView
+from ui.sldImportance import sldImportance

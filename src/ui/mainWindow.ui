@@ -1915,6 +1915,7 @@
     </property>
     <addaction name="actLabels"/>
     <addaction name="actStatus"/>
+    <addaction name="actSettings"/>
    </widget>
    <widget class="QMenu" name="menuView">
     <property name="title">
@@ -2095,6 +2096,14 @@
   <action name="actViewOutline">
    <property name="text">
     <string>Outline</string>
+   </property>
+  </action>
+  <action name="actSettings">
+   <property name="icon">
+    <iconset theme="preferences-system"/>
+   </property>
+   <property name="text">
+    <string>Settings</string>
    </property>
   </action>
  </widget>

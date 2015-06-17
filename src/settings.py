@@ -29,10 +29,14 @@ corkSizeFactor = 100
 folderView = "cork"
 lastTab = 0
 lastIndex = ""
+autoSave = True
+autoSaveDelay = 5
+saveOnQuit = True
 
 def save(filename):
     
-    global spellcheck, dict, corkSliderFactor, viewSettings, corkSizeFactor, folderView, lastTab, lastIndex
+    global spellcheck, dict, corkSliderFactor, viewSettings, corkSizeFactor, folderView, lastTab, lastIndex, \
+           autoSave, autoSaveDelay, saveOnQuit
     
     allSettings = {
         "viewSettings": viewSettings,
@@ -41,7 +45,10 @@ def save(filename):
         "corkSizeFactor": corkSizeFactor,
         "folderView": folderView,
         "lastTab": lastTab,
-        "lastIndex": lastIndex
+        "lastIndex": lastIndex,
+        "autoSave":autoSave,
+        "autoSaveDelay":autoSaveDelay,
+        "saveOnQuit":saveOnQuit,
         }
     
     #pp=pprint.PrettyPrinter(indent=4, compact=False)
@@ -93,6 +100,18 @@ def load(filename):
     if "lastIndex" in allSettings:
         global lastIndex
         lastIndex = allSettings["lastIndex"]
+        
+    if "autoSave" in allSettings:
+        global autoSave
+        autoSave = allSettings["autoSave"]
+        
+    if "autoSaveDelay" in allSettings:
+        global autoSaveDelay
+        autoSaveDelay = allSettings["autoSaveDelay"]
+        
+    if "saveOnQuit" in allSettings:
+        global saveOnQuit
+        saveOnQuit = allSettings["saveOnQuit"]
         
     
     

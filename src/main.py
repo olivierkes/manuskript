@@ -27,8 +27,13 @@ def run():
     else:
         print(app.tr("Failed to load translator for {}...").format(locale))
     
-    from mainWindow import MainWindow
+    # Load style from QSettings
+    settings = QSettings(app.organizationName(), app.applicationName())
+    if settings.contains("applicationStyle"):
+        style = settings.value("applicationStyle")
+        app.setStyle(style)
     
+    from mainWindow import MainWindow
     
     main = MainWindow()
     main.show()

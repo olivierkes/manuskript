@@ -209,6 +209,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Main Menu
         self.actLabels.triggered.connect(self.settingsLabel)
         self.actStatus.triggered.connect(self.settingsStatus)
+        self.actSettings.triggered.connect(self.settingsWindow)
+        
         self.actQuit.triggered.connect(self.close)
         self.generateViewMenu()
         
@@ -220,12 +222,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.treeDebugOutline.setModel(self.mdlOutline)
         self.lstDebugLabels.setModel(self.mdlLabels)
         self.lstDebugStatus.setModel(self.mdlStatus)
-        
-        
-        # Playing with qStyle
-        self.cmbStyle.addItems(list(QStyleFactory.keys()))
-        self.cmbStyle.setCurrentIndex([i.lower() for i in list(QStyleFactory.keys())].index(qApp.style().objectName()))
-        self.cmbStyle.currentIndexChanged[str].connect(qApp.setStyle)
         
         self.loadProject("test_project")
     
@@ -422,12 +418,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         settings.lastIndex = self.mdlOutline.pathToIndex(sel)
         
         # Save data from models
-        saveStandardItemModelXML(self.mdlFlatData, "{}/flatModel.xml".format(self.currentProject))
-        saveStandardItemModelXML(self.mdlPersos, "{}/perso.xml".format(self.currentProject))
-        saveStandardItemModelXML(self.mdlPersosInfos, "{}/persoInfos.xml".format(self.currentProject))
-        saveStandardItemModelXML(self.mdlLabels, "{}/labels.xml".format(self.currentProject))
-        saveStandardItemModelXML(self.mdlStatus, "{}/status.xml".format(self.currentProject))
-        self.mdlOutline.saveToXML("{}/outline.xml".format(self.currentProject))
+        if settings.saveOnQuit:
+            saveStandardItemModelXML(self.mdlFlatData, "{}/flatModel.xml".format(self.currentProject))
+            saveStandardItemModelXML(self.mdlPersos, "{}/perso.xml".format(self.currentProject))
+            saveStandardItemModelXML(self.mdlPersosInfos, "{}/persoInfos.xml".format(self.currentProject))
+            saveStandardItemModelXML(self.mdlLabels, "{}/labels.xml".format(self.currentProject))
+            saveStandardItemModelXML(self.mdlStatus, "{}/status.xml".format(self.currentProject))
+            self.mdlOutline.saveToXML("{}/outline.xml".format(self.currentProject))
+        
+        # Save settings
         settings.save("{}/settings.pickle".format(self.currentProject))
         
         # closeEvent
@@ -583,10 +582,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 ####################################################################################################
 
     def settingsLabel(self):
-        self.settingsWindow(0)
+        self.settingsWindow(1)
         
     def settingsStatus(self):
-        self.settingsWindow(1)
+        self.settingsWindow(2)
         
     def settingsWindow(self, tab=None):
         self.sw = settingsWindow(self)
