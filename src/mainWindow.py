@@ -323,13 +323,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             idx = self.mdlPersosProxy.mapToSource(self.lstPersos.currentIndex())
         else:
             idx = self.lstPersos.currentIndex()
-            
-        px = QPixmap(32, 32)
+        
         icon = self.mdlPersos.item(idx.row()).icon()
-        if icon:
-            px.fill(iconColor(icon))
-        self.btnPersoColor.setIcon(QIcon(px))
-    
+        color = iconColor(icon).name() if icon else ""
+        self.btnPersoColor.setStyleSheet("background:{};".format(color))
+        
     def resizePersosInfos(self):
         self.tblPersoInfos.resizeColumnToContents(0)
         w = self.tblPersoInfos.viewport().width()
@@ -355,8 +353,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             color = Qt.white
         self.colorDialog = QColorDialog(color, self)
         color = self.colorDialog.getColor(color)
-        self.setPersoColor(idx.row(), color)
-        self.updatePersoColor()
+        if color.isValid():
+            self.setPersoColor(idx.row(), color)
+            self.updatePersoColor()
     
     def setPersoColor(self, row, color):
         px = QPixmap(32, 32)

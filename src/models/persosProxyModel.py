@@ -63,13 +63,16 @@ class persosProxyModel(QAbstractProxyModel):
             
     def setSourceModel(self, model):
         QAbstractProxyModel.setSourceModel(self, model)
-        self.sourceModel().dataChanged.connect(self.mapModel)
+        self.sourceModel().dataChanged.connect(self.mapModelMaybe)
         self.sourceModel().rowsInserted.connect(self.mapModel)
         self.sourceModel().rowsRemoved.connect(self.mapModel)
         self.sourceModel().rowsMoved.connect(self.mapModel)
         
         self.mapModel()
         
+    def mapModelMaybe(self, topLeft, bottomRight):
+        if topLeft.column() <= Perso.importance.value <= bottomRight.column():
+            self.mapModel()
     
     def mapModel(self):
         self.beginResetModel()

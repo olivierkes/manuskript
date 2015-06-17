@@ -170,10 +170,11 @@ class settingsWindow(QWidget, Ui_Settings):
         color = QColor(settings.corkBackground["color"])
         self.colorDialog = QColorDialog(color, self)
         color = self.colorDialog.getColor(color)
-        settings.corkBackground["color"] = color.name()
-        self.updateCorkColor()
-        # Update Cork view 
-        self.mw.redacEditor.corkView.updateBackground()
+        if color.isValid():
+            settings.corkBackground["color"] = color.name()
+            self.updateCorkColor()
+            # Update Cork view 
+            self.mw.redacEditor.corkView.updateBackground()
         
     def updateCorkColor(self):
         self.btnCorkColor.setStyleSheet("background:{};".format(settings.corkBackground["color"]))
@@ -243,7 +244,8 @@ class settingsWindow(QWidget, Ui_Settings):
         color = iconColor(self.mw.mdlLabels.item(index.row()).icon())
         self.colorDialog = QColorDialog(color, self)
         color = self.colorDialog.getColor(color)
-        px = QPixmap(32, 32)
-        px.fill(color)
-        self.mw.mdlLabels.item(index.row()).setIcon(QIcon(px))
-        self.updateLabelColor(index)
+        if color.isValid():
+            px = QPixmap(32, 32)
+            px.fill(color)
+            self.mw.mdlLabels.item(index.row()).setIcon(QIcon(px))
+            self.updateLabelColor(index)
