@@ -135,26 +135,30 @@ def colorifyPixmap(pixmap, color):
     p.fillRect(pixmap.rect(), color)
     return pixmap
 
-def appPath():
-    return os.path.realpath(os.path.join(os.path.split(__file__)[0], ".."))
+def appPath(suffix=None):
+    p = os.path.realpath(os.path.join(os.path.split(__file__)[0], ".."))
+    if suffix:
+        p = os.path.join(p, suffix)
+    return p
 
-def writablePath():
-    return QStandardPaths.writableLocation(QStandardPaths.AppLocalDataLocation)
+def writablePath(suffix=None):
+    p = QStandardPaths.writableLocation(QStandardPaths.AppLocalDataLocation)
+    if suffix:
+        p = os.path.join(p, suffix)
+    return p
 
 def allPaths(suffix=None):
     paths = []
     # src directory
-    paths.append(appPath())
+    paths.append(appPath(suffix))
     # user writable directory
-    paths.append(writablePath())
-    
-    if suffix:
-        paths2 = []
-        for p in paths:
-            p2 = os.path.join(p, suffix)
-            paths2.append(p2)
-            if not os.path.exists(p2):
-                os.makedirs(p2)
-        paths = paths2
-    
+    paths.append(writablePath(suffix))
     return paths
+
+def findBackground(filename):
+    paths = allPaths("resources/backgrounds")
+    for p in paths:
+        lst = os.listdir(p)
+        for l in lst:
+            if l == filename:
+                return os.path.join(p, l)
