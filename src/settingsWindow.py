@@ -27,6 +27,7 @@ class settingsWindow(QWidget, Ui_Settings):
             item = self.lstMenu.item(i)
             item.setSizeHint(QSize(item.sizeHint().width(), 42))
             item.setTextAlignment(Qt.AlignCenter)
+        self.lstMenu.setMaximumWidth(150)
         
         # General
         self.cmbStyle.addItems(list(QStyleFactory.keys()))
@@ -78,6 +79,13 @@ class settingsWindow(QWidget, Ui_Settings):
         self.btnStatusAdd.clicked.connect(self.addStatus)
         self.btnStatusRemove.clicked.connect(self.removeStatus)
         
+        # Fullscreen
+        self.btnThemeEditOK.setIcon(qApp.style().standardIcon(QStyle.SP_DialogOkButton))
+        self.cmbThemeEdit.currentIndexChanged.connect(self.themeStack.setCurrentIndex)
+        self.cmbThemeEdit.setCurrentIndex(0)
+        self.cmbThemeEdit.currentIndexChanged.emit(0)
+        print(QStandardPaths.writableLocation(QStandardPaths.AppLocalDataLocation))
+        
     def setTab(self, tab):
         
         tabs = {
@@ -85,6 +93,7 @@ class settingsWindow(QWidget, Ui_Settings):
             "Views":1,
             "Labels":2,
             "Status":3,
+            "Fullscreen":4,
             }
         
         if tab in tabs:

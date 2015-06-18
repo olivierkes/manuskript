@@ -227,6 +227,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.lstDebugStatus.setModel(self.mdlStatus)
         
         self.loadProject("test_project.zip")
+        self.settingsWindow(tab="Fullscreen")
     
 ####################################################################################################
 #                                             OUTLINE                                              #
@@ -420,14 +421,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.checkPersosID()
         
         # Adds header labels
-        self.mdlPersos.setHorizontalHeaderLabels(
-	  [i.name for i in Perso])
+        self.mdlPersos.setHorizontalHeaderLabels([i.name for i in Perso])
                 
     def readSettings(self):
         # Load State and geometry
         settings = QSettings(qApp.organizationName(), qApp.applicationName())
-        self.restoreGeometry(settings.value("geometry"))
-        self.restoreState(settings.value("windowState"))
+        if settings.contains("geometry"):
+            self.restoreGeometry(settings.value("geometry"))
+        if settings.contains("windowState"):
+            self.restoreState(settings.value("windowState"))
         
     def closeEvent(self, event):
         # Save State and geometry

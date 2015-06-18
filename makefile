@@ -21,10 +21,10 @@ compile:
 	cd src && python3 setup.py build_ext --inplace
 
 translation:
-	pylupdate5 -noobsolete i18n/snowflaQe.pro
+	pylupdate5 -noobsolete i18n/manuskript.pro
 	
 linguist:
-	linguist i18n/snowflaQe_fr.ts 
+	linguist i18n/manuskript_fr.ts 
 	
 i18n: $(QMs)
 	

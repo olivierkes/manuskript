@@ -20,5 +20,5 @@ SOURCES          += ../src/ui/views/lineEditView.py
 SOURCES          += ../src/settingsWindow.py
 
 
-TRANSLATIONS     += snowflaQe_fr.ts
+TRANSLATIONS     += manuskript_fr.ts
 

@@ -2,14 +2,15 @@
 
 import sys
 from qt import *
+from ui.editors.fullScreenEditor import *
 
 _version = "0.1"
 
 def run():
     app = QApplication(sys.argv)
-    app.setOrganizationName("Theologeek")
+    app.setOrganizationName("manuskript")
     app.setOrganizationDomain("www.theologeek.ch")
-    app.setApplicationName("snowFlaqe")
+    app.setApplicationName("manuskript")
     app.setApplicationVersion("0.1")
     
     app.setStyle("Fusion")
@@ -21,7 +22,7 @@ def run():
     #if qtTranslator.load("qt_" + locale):
         #app.installTranslator(qtTranslator)
     appTranslator = QTranslator()
-    if appTranslator.load("i18n/snowflaQe_{}.qm".format(locale)):
+    if appTranslator.load("i18n/manuskript_{}.qm".format(locale)):
         app.installTranslator(appTranslator)
         print(app.tr("Loaded transation: {}.").format(locale))
     else:
@@ -37,6 +38,8 @@ def run():
     
     main = MainWindow()
     main.show()
+        
+    #testW = fullScreenEditor()
     
     app.exec_()
     app.deleteLater()
