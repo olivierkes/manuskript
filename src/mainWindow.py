@@ -226,7 +226,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.lstDebugLabels.setModel(self.mdlLabels)
         self.lstDebugStatus.setModel(self.mdlStatus)
         
-        self.loadProject("test_project.zip")
+        self.loadProject(os.path.join(appPath(), "test_project.zip"))
+        
         self.settingsWindow(tab="Fullscreen")
     
 ####################################################################################################

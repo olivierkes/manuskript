@@ -4,6 +4,7 @@
 from qt import *
 from random import *
 from enums import *
+import os
 
 def wordCount(text):
     return len(text.strip().replace(" ", "\n").split("\n")) if text else 0
@@ -133,3 +134,27 @@ def colorifyPixmap(pixmap, color):
     p.setCompositionMode(p.CompositionMode_Overlay)
     p.fillRect(pixmap.rect(), color)
     return pixmap
+
+def appPath():
+    return os.path.realpath(os.path.join(os.path.split(__file__)[0], ".."))
+
+def writablePath():
+    return QStandardPaths.writableLocation(QStandardPaths.AppLocalDataLocation)
+
+def allPaths(suffix=None):
+    paths = []
+    # src directory
+    paths.append(appPath())
+    # user writable directory
+    paths.append(writablePath())
+    
+    if suffix:
+        paths2 = []
+        for p in paths:
+            p2 = os.path.join(p, suffix)
+            paths2.append(p2)
+            if not os.path.exists(p2):
+                os.makedirs(p2)
+        paths = paths2
+    
+    return paths

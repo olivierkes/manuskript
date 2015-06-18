@@ -191,7 +191,7 @@ class settingsWindow(QWidget, Ui_Settings):
     def setCorkBackground(self, i):
         img = self.cmbCorkImage.itemData(i)
         if img:
-            settings.corkBackground["image"] = os.path.join("resources/backgrounds", img)
+            settings.corkBackground["image"] = img
         else:
             settings.corkBackground["image"] = ""
         # Update Cork view 
@@ -201,14 +201,16 @@ class settingsWindow(QWidget, Ui_Settings):
         #self.cmbDelegate = cmbPixmapDelegate()
         #self.cmbCorkImage.setItemDelegate(self.cmbDelegate)
         
-        path = "resources/backgrounds"
-        lst = os.listdir(path)
+        paths = allPaths("resources/backgrounds")
+        
         self.cmbCorkImage.addItem(QIcon.fromTheme("list-remove"), "", "")
-        for l in lst:
-            if l.lower()[-4:] in [".jpg", ".png"] or \
-               l.lower()[-5:] in [".jpeg"]:
-                px = QPixmap(os.path.join(path, l)).scaled(128, 64, Qt.KeepAspectRatio)
-                self.cmbCorkImage.addItem(QIcon(px), "", l)
+        for p in paths:
+            lst = os.listdir(p)
+            for l in lst:
+                if l.lower()[-4:] in [".jpg", ".png"] or \
+                l.lower()[-5:] in [".jpeg"]:
+                    px = QPixmap(os.path.join(p, l)).scaled(128, 64, Qt.KeepAspectRatio)
+                    self.cmbCorkImage.addItem(QIcon(px), "", os.path.join(p, l))
         
         self.cmbCorkImage.setIconSize(QSize(128, 64))
         
