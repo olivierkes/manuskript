@@ -1,0 +1,207 @@
+#!/usr/bin/env python
+#--!-- coding: utf8 --!--
+ 
+from qt import *
+from enums import *
+from functions import *
+import settings
+
+def loadThemeDatas(themeFile):
+    settings = QSettings(themeFile, QSettings.IniFormat)
+    _themeData = {}
+    
+    # Theme name
+    _themeData["Name"] = getThemeName(themeFile)
+    
+    # Window Background
+    loadThemeSetting(_themeData, settings, "Background/Color", "#000000")
+    loadThemeSetting(_themeData, settings, "Background/ImageFile", "")
+    loadThemeSetting(_themeData, settings, "Background/Type", 0)
+    
+    # Text Background
+    loadThemeSetting(_themeData, settings, "Foreground/Color", "#ffffff")
+    loadThemeSetting(_themeData, settings, "Foreground/Opacity", 50)
+    loadThemeSetting(_themeData, settings, "Foreground/Margin", 40)
+    loadThemeSetting(_themeData, settings, "Foreground/Padding", 10)
+    loadThemeSetting(_themeData, settings, "Foreground/Position", 1)
+    loadThemeSetting(_themeData, settings, "Foreground/Rounding", 5)
+    loadThemeSetting(_themeData, settings, "Foreground/Width", 700)
+    
+    # Text Options
+    loadThemeSetting(_themeData, settings, "Text/Color", "#ffffff")
+    loadThemeSetting(_themeData, settings, "Text/Font", qApp.font().toString())
+    loadThemeSetting(_themeData, settings, "Text/Misspelled", "#ff0000")
+    
+    # Paragraph Options
+    loadThemeSetting(_themeData, settings, "Spacings/IndendFirstLine", False)
+    loadThemeSetting(_themeData, settings, "Spacings/LineSpacing", 100)
+    loadThemeSetting(_themeData, settings, "Spacings/ParagraphAbove", 0)
+    loadThemeSetting(_themeData, settings, "Spacings/ParagraphBelow", 0)
+    loadThemeSetting(_themeData, settings, "Spacings/TabWidth", 48)
+    
+    return _themeData
+        
+def loadThemeSetting(datas, settings, key, default):
+    if settings.contains(key):
+        datas[key] = type(default)(settings.value(key))
+    else:
+        datas[key] = default
+                
+def getThemeName(theme):
+    settings = QSettings(theme, QSettings.IniFormat)
+    
+    if settings.contains("Name"):
+        return settings.value("Name")
+    else:
+        return os.path.splitext(os.path.split(theme)[1])[0]
+        
+def themeTextRect(themeDatas, screenRect):
+    
+    margin = themeDatas["Foreground/Margin"]
+    x = 0
+    y = margin
+    width = min(themeDatas["Foreground/Width"], screenRect.width() - 2 * margin)
+    height = screenRect.height() - 2 * margin
+    
+    if themeDatas["Foreground/Position"] == 0:  # Left
+        x = margin
+    elif themeDatas["Foreground/Position"] == 1:  # Center
+        x = (screenRect.width() - width) / 2
+    elif themeDatas["Foreground/Position"] == 2:  # Right
+        x = screenRect.width() - margin - width
+    elif themeDatas["Foreground/Position"] == 3:  # Stretched
+        x = margin
+        width = screenRect.width() - 2 * margin
+    return QRect(x, y, width, height)
+        
+def createThemePreview(theme, screenRect, size=QSize(200, 120)):
+    
+    if type(theme) == str and os.path.exists(theme):
+        # Theme is the path to an ini file
+        themeDatas = loadThemeDatas(theme)
+    else:
+        themeDatas = theme
+    
+    pixmap = generateTheme(themeDatas, screenRect)
+    
+    px = QPixmap(pixmap).scaled(size, Qt.KeepAspectRatio)
+    
+    w = px.width() / 10
+    h = px.height() / 10
+    r = themeTextRect(themeDatas, screenRect)
+    
+    painter = QPainter(px)
+    painter.drawPixmap(QRect(w, h, w*4, h*5), pixmap, QRect(r.topLeft() - QPoint(w/3, h/3), QSize(w*4, h*5)))
+    painter.setPen(Qt.white)
+    painter.drawRect(QRect(w, h, w*4, h*5))
+    painter.end()
+    
+    return px
+        
+def generateTheme(themeDatas, screenRect):
+    
+    # Window Background
+    px = QPixmap(screenRect.size())
+    px.fill(QColor(themeDatas["Background/Color"]))
+    
+    painter = QPainter(px)
+    if themeDatas["Background/ImageFile"]:
+        path = findBackground(themeDatas["Background/ImageFile"])
+        _type = themeDatas["Background/Type"]
+        if path and _type > 0:
+            if _type == 1: # Tiled
+                painter.fillRect(screenRect, QBrush(QImage(path)))
+            else:
+                img = QImage(path)
+                scaled = img.size()
+                if _type == 3: # Stretched
+                    scaled.scale(screenRect.size(), Qt.IgnoreAspectRatio)
+                elif _type == 4: # Scaled
+                    scaled.scale(screenRect.size(), Qt.KeepAspectRatio)
+                elif _type == 5: # Zoomed
+                    scaled.scale(screenRect.size(), Qt.KeepAspectRatioByExpanding)
+                    
+                painter.drawImage((screenRect.width() - scaled.width()) / 2, (screenRect.height() - scaled.height()) / 2, img.scaled(scaled))
+                
+    # Text Background
+    textRect = themeTextRect(themeDatas, screenRect)
+    
+    painter.save()
+    color = QColor(themeDatas["Foreground/Color"])
+    color.setAlpha(themeDatas["Foreground/Opacity"] * 255 / 100)
+    painter.setBrush(color)
+    painter.setPen(Qt.NoPen)
+    r = themeDatas["Foreground/Rounding"]
+    painter.drawRoundedRect(textRect, r, r)
+    painter.restore()
+    
+    painter.end()
+    
+    # Text
+    previewText = QTextEdit()
+    previewText.setFrameStyle(QFrame.NoFrame)
+    previewText.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+    previewText.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+    previewText.setPlainText(open(appPath("resources/themes/preview.txt")).read())
+    
+    padding = themeDatas["Foreground/Padding"]
+    x = textRect.x() + padding
+    y = textRect.y() + padding + themeDatas["Spacings/ParagraphAbove"]
+    width = textRect.width() - 2 * padding
+    height = textRect.height() - 2 * padding - themeDatas["Spacings/ParagraphAbove"]
+    previewText.setGeometry(x, y, width, height)
+    
+    p = previewText.palette()
+    p.setBrush(QPalette.Base, QBrush(px.copy(x, y, width, height)))
+    p.setColor(QPalette.Text, QColor(themeDatas["Text/Color"]))
+    p.setColor(QPalette.Highlight, QColor(themeDatas["Text/Color"]))
+    p.setColor(QPalette.HighlightedText, Qt.black if qGray(QColor(themeDatas["Text/Color"]).rgb()) > 127 else Qt.white)
+    previewText.setPalette(p)
+    
+    bf = QTextBlockFormat()
+    bf.setLineHeight(themeDatas["Spacings/LineSpacing"], QTextBlockFormat.ProportionalHeight)
+    bf.setTextIndent(themeDatas["Spacings/TabWidth"] * 1 if themeDatas["Spacings/IndendFirstLine"] else 0)
+    bf.setTopMargin(themeDatas["Spacings/ParagraphAbove"])
+    bf.setBottomMargin(themeDatas["Spacings/ParagraphBelow"])
+    
+    b = previewText.document().firstBlock()
+    cursor = previewText.textCursor()
+    while b.isValid():
+        bf2 = b.blockFormat()
+        bf2.merge(bf)
+        cursor.setPosition(b.position())
+        #cursor.setPosition(b.position(), QTextCursor.KeepAnchor)
+        cursor.setBlockFormat(bf2)
+        b = b.next()
+    
+    previewText.setTabStopWidth(themeDatas["Spacings/TabWidth"])
+    previewText.document().setIndentWidth(themeDatas["Spacings/TabWidth"])
+    
+    f = QFont()
+    f.fromString(themeDatas["Text/Font"])
+    previewText.setFont(f)
+    
+    previewText.render(px, previewText.pos())
+    return px
+    
+    
+    ## Text Background
+    ##themeDatas["Foreground/Color"]
+    ##themeDatas["Foreground/Opacity"]
+    ##themeDatas["Foreground/Margin"]
+    ##themeDatas["Foreground/Padding"]
+    ##themeDatas["Foreground/Position"]
+    ##themeDatas["Foreground/Rounding"]
+    ##themeDatas["Foreground/Width"]
+    
+    ## Text Options
+    ##themeDatas["Text/Color"]
+    ##themeDatas["Text/Font"]
+    #themeDatas["Text/Misspelled"]
+    
+    ## Paragraph Options
+    ##themeDatas["Spacings/IndendFirstLine"]
+    ##themeDatas["Spacings/LineSpacing"]
+    ##themeDatas["Spacings/ParagraphAbove"]
+    ##themeDatas["Spacings/ParagraphBelow"]
+    ##themeDatas["Spacings/TabWidth"]

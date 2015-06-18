@@ -6,6 +6,7 @@ from qt import *
 from ui.settings import *
 from enums import *
 from functions import *
+from ui.editors.themes import *
 import settings
 import os
 
@@ -82,13 +83,6 @@ class settingsWindow(QWidget, Ui_Settings):
         
         # Fullscreen
         self._editingTheme = None
-          # Preview editor
-        self.previewText = QTextEdit()
-        self.previewText.setFrameStyle(QFrame.NoFrame)
-        self.previewText.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
-        self.previewText.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
-        self.previewText.setPlainText(open(appPath("resources/themes/preview.txt")).read())
-          # UI stuff
         self.btnThemeEditOK.setIcon(qApp.style().standardIcon(QStyle.SP_DialogApplyButton))
         self.btnThemeEditOK.clicked.connect(self.saveTheme)
         self.btnThemeEditCancel.setIcon(qApp.style().standardIcon(QStyle.SP_DialogCancelButton))
@@ -331,7 +325,7 @@ class settingsWindow(QWidget, Ui_Settings):
             for t in lst:
                 theme = os.path.join(p, t)
                 editable = not appPath() in theme
-                n = self.getThemeName(theme)
+                n = getThemeName(theme)
                 
                 item = QListWidgetItem(n)
                 item.setData(Qt.UserRole, theme)
@@ -341,7 +335,9 @@ class settingsWindow(QWidget, Ui_Settings):
                 px = QPixmap(200, 120)
                 px.fill(Qt.white)
                 if not os.path.exists(thumb):
-                    thumb = self.createPreview(theme)
+                    currentScreen = qApp.desktop().screenNumber(self)
+                    screenRect = qApp.desktop().screenGeometry(currentScreen)
+                    thumb = createThemePreview(theme, screenRect)
                     
                 icon = QPixmap(thumb).scaled(200, 120, Qt.KeepAspectRatio)
                 painter = QPainter(px)
@@ -351,21 +347,13 @@ class settingsWindow(QWidget, Ui_Settings):
                 
                 self.lstThemes.addItem(item)
         self.lstThemes.setIconSize(QSize(200, 120))
-                
-    def getThemeName(self, theme):
-        settings = QSettings(theme, QSettings.IniFormat)
-        
-        if settings.contains("Name"):
-            return settings.value("Name")
-        else:
-            return os.path.splitext(os.path.split(theme)[1])[0]
         
     def loadTheme(self, theme):
         self._editingTheme = theme
         self._loadingTheme = True  # So we don't generate preview while loading
         
         # Load datas
-        self.loadThemeDatas(theme)
+        self._themeData = loadThemeDatas(theme)
         
         # Window Background
         self.btnThemWindowBackgroundColor.clicked.connect(lambda: self.getThemeColor("Background/Color"))
@@ -412,45 +400,6 @@ class settingsWindow(QWidget, Ui_Settings):
         # Generate preview
         self._loadingTheme = False
         self.updatePreview()
-        
-    def loadThemeDatas(self, theme):
-        settings = QSettings(theme, QSettings.IniFormat)
-        self._themeData = {}
-        
-        # Theme name
-        self._themeData["Name"] = self.getThemeName(theme)
-        
-        # Window Background
-        self.loadSetting(settings, "Background/Color", "#000000")
-        self.loadSetting(settings, "Background/ImageFile", "")
-        self.loadSetting(settings, "Background/Type", 0)
-        
-        # Text Background
-        self.loadSetting(settings, "Foreground/Color", "#ffffff")
-        self.loadSetting(settings, "Foreground/Opacity", 50)
-        self.loadSetting(settings, "Foreground/Margin", 40)
-        self.loadSetting(settings, "Foreground/Padding", 10)
-        self.loadSetting(settings, "Foreground/Position", 1)
-        self.loadSetting(settings, "Foreground/Rounding", 5)
-        self.loadSetting(settings, "Foreground/Width", 700)
-        
-        # Text Options
-        self.loadSetting(settings, "Text/Color", "#ffffff")
-        self.loadSetting(settings, "Text/Font", qApp.font().toString())
-        self.loadSetting(settings, "Text/Misspelled", "#ff0000")
-        
-        # Paragraph Options
-        self.loadSetting(settings, "Spacings/IndendFirstLine", False)
-        self.loadSetting(settings, "Spacings/LineSpacing", 100)
-        self.loadSetting(settings, "Spacings/ParagraphAbove", 0)
-        self.loadSetting(settings, "Spacings/ParagraphBelow", 0)
-        self.loadSetting(settings, "Spacings/TabWidth", 48)
-        
-    def loadSetting(self, settings, key, default):
-        if settings.contains(key):
-            self._themeData[key] = type(default)(settings.value(key))
-        else:
-            self._themeData[key] = default
         
     def setSetting(self, key, val):
         self._themeData[key] = val
@@ -554,25 +503,11 @@ class settingsWindow(QWidget, Ui_Settings):
         if self._loadingTheme:
             return
         
-        px = self.createPreview(self._editingTheme, self.lblPreview.size())
+        currentScreen = qApp.desktop().screenNumber(self)
+        screen = qApp.desktop().screenGeometry(currentScreen)
+        
+        px = createThemePreview(self._themeData, screen, self.lblPreview.size())
         self.lblPreview.setPixmap(px)
-        
-    def createPreview(self, theme, size=QSize(200, 120)):
-        pixmap = self.getPixmapFromTheme(theme)
-        
-        px = QPixmap(pixmap).scaled(size, Qt.KeepAspectRatio)
-        
-        w = px.width() / 10
-        h = px.height() / 10
-        r = self.textRect()
-        
-        painter = QPainter(px)
-        painter.drawPixmap(QRect(w, h, w*4, h*5), pixmap, QRect(r.topLeft() - QPoint(w/3, h/3), QSize(w*4, h*5)))
-        painter.setPen(Qt.white)
-        painter.drawRect(QRect(w, h, w*4, h*5))
-        painter.end()
-        
-        return px
         
     def setButtonColor(self, btn, color):
         btn.setStyleSheet("background:{};".format(color))
@@ -592,135 +527,6 @@ class settingsWindow(QWidget, Ui_Settings):
     def cancelEdit(self):
         self.themeStack.setCurrentIndex(0)
         self._editingTheme = None
-        
-    def getPixmapFromTheme(self, theme):
-        
-        if not self._editingTheme:
-            self.loadThemeDatas(theme)
-        
-        currentScreen = qApp.desktop().screenNumber(self)
-        screen = qApp.desktop().screenGeometry(currentScreen)
-        
-        # Window Background
-        px = QPixmap(screen.size())
-        px.fill(QColor(self._themeData["Background/Color"]))
-        
-        painter = QPainter(px)
-        if self._themeData["Background/ImageFile"]:
-            path = findBackground(self._themeData["Background/ImageFile"])
-            _type =self._themeData["Background/Type"]
-            if path and _type > 0:
-                if _type == 1: # Tiled
-                    painter.fillRect(screen, QBrush(QImage(path)))
-                else:
-                    img = QImage(path)
-                    scaled = img.size()
-                    if _type == 3: # Stretched
-                        scaled.scale(screen.size(), Qt.IgnoreAspectRatio)
-                    elif _type == 4: # Scaled
-                        scaled.scale(screen.size(), Qt.KeepAspectRatio)
-                    elif _type == 5: # Zoomed
-                        scaled.scale(screen.size(), Qt.KeepAspectRatioByExpanding)
-                        
-                    painter.drawImage((screen.width() - scaled.width()) / 2, (screen.height() - scaled.height()) / 2, img.scaled(scaled))
-                    
-        # Text Background
-        textRect = self.textRect()
-        
-        painter.save()
-        color = QColor(self._themeData["Foreground/Color"])
-        color.setAlpha(self._themeData["Foreground/Opacity"] * 255 / 100)
-        painter.setBrush(color)
-        painter.setPen(Qt.NoPen)
-        r = self._themeData["Foreground/Rounding"]
-        painter.drawRoundedRect(textRect, r, r)
-        painter.restore()
-        
-        painter.end()
-        
-        # Text
-        padding = self._themeData["Foreground/Padding"]
-        x = textRect.x() + padding
-        y = textRect.y() + padding + self._themeData["Spacings/ParagraphAbove"]
-        width = textRect.width() - 2 * padding
-        height = textRect.height() - 2 * padding - self._themeData["Spacings/ParagraphAbove"]
-        self.previewText.setGeometry(x, y, width, height)
-        
-        p = self.previewText.palette()
-        p.setBrush(QPalette.Base, QBrush(px.copy(x, y, width, height)))
-        p.setColor(QPalette.Text, QColor(self._themeData["Text/Color"]))
-        p.setColor(QPalette.Highlight, QColor(self._themeData["Text/Color"]))
-        p.setColor(QPalette.HighlightedText, Qt.black if qGray(QColor(self._themeData["Text/Color"]).rgb()) > 127 else Qt.white)
-        self.previewText.setPalette(p)
-        
-        bf = QTextBlockFormat()
-        bf.setLineHeight(self._themeData["Spacings/LineSpacing"], QTextBlockFormat.ProportionalHeight)
-        bf.setTextIndent(self._themeData["Spacings/TabWidth"] * 1 if self._themeData["Spacings/IndendFirstLine"] else 0)
-        bf.setTopMargin(self._themeData["Spacings/ParagraphAbove"])
-        bf.setBottomMargin(self._themeData["Spacings/ParagraphBelow"])
-        
-        b = self.previewText.document().firstBlock()
-        cursor = self.previewText.textCursor()
-        while b.isValid():
-            bf2 = b.blockFormat()
-            bf2.merge(bf)
-            cursor.setPosition(b.position())
-            #cursor.setPosition(b.position(), QTextCursor.KeepAnchor)
-            cursor.setBlockFormat(bf2)
-            b = b.next()
-        
-        self.previewText.setTabStopWidth(self._themeData["Spacings/TabWidth"])
-        self.previewText.document().setIndentWidth(self._themeData["Spacings/TabWidth"])
-        
-        f = QFont()
-        f.fromString(self._themeData["Text/Font"])
-        self.previewText.setFont(f)
-        
-        self.previewText.render(px, self.previewText.pos())
-        return px
-        
-        
-        ## Text Background
-        ##self._themeData["Foreground/Color"]
-        ##self._themeData["Foreground/Opacity"]
-        ##self._themeData["Foreground/Margin"]
-        ##self._themeData["Foreground/Padding"]
-        ##self._themeData["Foreground/Position"]
-        ##self._themeData["Foreground/Rounding"]
-        ##self._themeData["Foreground/Width"]
-        
-        ## Text Options
-        ##self._themeData["Text/Color"]
-        ##self._themeData["Text/Font"]
-        #self._themeData["Text/Misspelled"]
-        
-        ## Paragraph Options
-        ##self._themeData["Spacings/IndendFirstLine"]
-        ##self._themeData["Spacings/LineSpacing"]
-        ##self._themeData["Spacings/ParagraphAbove"]
-        ##self._themeData["Spacings/ParagraphBelow"]
-        ##self._themeData["Spacings/TabWidth"]
-        
-    def textRect(self):
-        currentScreen = qApp.desktop().screenNumber(self)
-        screen = qApp.desktop().screenGeometry(currentScreen)
-        
-        margin = self._themeData["Foreground/Margin"]
-        x = 0
-        y = margin
-        width = min(self._themeData["Foreground/Width"], screen.width() - 2 * margin)
-        height = screen.height() - 2 * margin
-        
-        if self._themeData["Foreground/Position"] == 0:  # Left
-            x = margin
-        elif self._themeData["Foreground/Position"] == 1:  # Center
-            x = (screen.width() - width) / 2
-        elif self._themeData["Foreground/Position"] == 2:  # Right
-            x = screen.width() - margin - width
-        elif self._themeData["Foreground/Position"] == 3:  # Stretched
-            x = margin
-            width = screen.width() - 2 * margin
-        return QRect(x, y, width, height)
     
     def resizeEvent(self, event):
         QWidget.resizeEvent(self, event)
