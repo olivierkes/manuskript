@@ -28,7 +28,9 @@ class t2tHighlighter (QSyntaxHighlighter):
         self.thisDocument = editor.document()
         
         self.style = t2tHighlighterStyle(self.editor, style)
-
+        self._defaultBlockFormat = QTextBlockFormat()
+        self._misspelledColor = Qt.red
+        
         self.inDocRules = []
 
         rules = [
@@ -60,6 +62,13 @@ class t2tHighlighter (QSyntaxHighlighter):
                        for (pattern, state) in rules]
         State.Recursion = 0
 
+    def setDefaultBlockFormat(self, bf):
+        self._defaultBlockFormat = bf
+        self.rehighlight()
+    
+    def setMisspelledColor(self, color):
+        self._misspelledColor = color
+    
     def highlightBlock(self, text):
         """Apply syntax highlighting to the given block of text.
         """
@@ -68,8 +77,11 @@ class t2tHighlighter (QSyntaxHighlighter):
         if self.style is None:
             default = QTextBlockFormat()
             QTextCursor(self.currentBlock()).setBlockFormat(default)
+            print("t2tHighlighter.py: is style supposed to be None?")
             return
-
+        
+        QTextCursor(self.currentBlock()).setBlockFormat(self._defaultBlockFormat)
+        
         block = self.currentBlock()
         oldState = blockUserData.getUserState(block)
         self.identifyBlock(block)
@@ -177,9 +189,9 @@ class t2tHighlighter (QSyntaxHighlighter):
                 # Uncomment for markup to be same size as title
                 #op = self.formats(preset="markup",
                                   #base=self.formats(preset=state))
-                self.setFormat(r.pos(2), r.cap(2).length(), f)
-                self.setFormat(r.pos(1), r.cap(1).length(), op)
-                self.setFormat(r.pos(3), r.cap(3).length(), op)
+                self.setFormat(r.pos(2), len(r.cap(2)), f)
+                self.setFormat(r.pos(1), len(r.cap(1)), op)
+                self.setFormat(r.pos(3), len(r.cap(3)), op)
 
         # Areas: comment, code, raw tagged
         for (begins, middle, ends) in [
@@ -234,18 +246,18 @@ class t2tHighlighter (QSyntaxHighlighter):
                     #if max([k[pos] for k in formatArray]) == 0 or 1 == 1:
                     self.setFormat(pos, 1,
                                    self.style.format(State.MARKUP))
-                    self.setFormat(pos + 1, r.cap(0).length() - 1,
+                    self.setFormat(pos + 1, len(r.cap(0)) - 1,
                                    self.style.format(State.LINKS))
-                    self.setFormat(pos + r.cap(0).length() - 1, 1,
+                    self.setFormat(pos + len(r.cap(0)) - 1, 1,
                                    self.style.format(State.MARKUP))
                     if r.pos(2) > 0:
                         _f = QTextCharFormat(self.style.format(State.LINKS))
                         _f.setForeground(QBrush(_f.foreground()
                                                       .color().lighter()))
                         _f.setFontUnderline(True)
-                        self.setFormat(r.pos(2), r.cap(2).length(), _f)
+                        self.setFormat(r.pos(2), len(r.cap(2)), _f)
                         
-                    links.append([pos, r.cap(0).length()]) # To remember for the next highlighter (single links)
+                    links.append([pos, len(r.cap(0))]) # To remember for the next highlighter (single links)
                     pos = r.indexIn(text, pos + 1)
                     
                 # Links like www.theologeek.ch, http://www.fsf.org, ...
@@ -262,7 +274,7 @@ class t2tHighlighter (QSyntaxHighlighter):
                         if pos > k[0] and pos < k[0] + k[1]:  # already highlighted
                             break
                     else:
-                        self.setFormat(pos, r.cap(0).length(), self.style.format(State.LINKS))
+                        self.setFormat(pos, len(r.cap(0)), self.style.format(State.LINKS))
                     
                     pos = r.indexIn(text, pos + 1)
 
@@ -279,7 +291,7 @@ class t2tHighlighter (QSyntaxHighlighter):
                 pos = r.indexIn(text)
                 while pos >= 0:
                     if max([k[pos] for k in formatArray]) == 0:
-                        self.setFormat(pos, r.cap(0).length(),
+                        self.setFormat(pos, len(r.cap(0)),
                                        self.style.format(State.MACRO))
                     pos = r.indexIn(text, pos + 1)
         
@@ -322,9 +334,9 @@ class t2tHighlighter (QSyntaxHighlighter):
         if state not in [State.SETTINGS_LINE]:
             if self.editor.spellcheck:
                 for word_object in re.finditer(WORDS, text):
-                    if not self.editor.dict.check(word_object.group()):
+                    if self.editor._dict and not self.editor._dict.check(word_object.group()):
                         format = self.format(word_object.start())
-                        format.setUnderlineColor(Qt.red)
+                        format.setUnderlineColor(self._misspelledColor)
                         format.setUnderlineStyle(QTextCharFormat.SpellCheckUnderline)
                         self.setFormat(word_object.start(),
                             word_object.end() - word_object.start(), format)
@@ -476,7 +488,7 @@ class t2tHighlighter (QSyntaxHighlighter):
            block.userState() >= 100:
             return True
 
-    def setStyle(self, style):
+    def setStyle(self, style="Default"):
         if style in t2tHighlighterStyle.validStyles:
             self.style = t2tHighlighterStyle(self.editor, style)
         else:

@@ -154,11 +154,3 @@ def allPaths(suffix=None):
     # user writable directory
     paths.append(writablePath(suffix))
     return paths
-
-def findBackground(filename):
-    paths = allPaths("resources/backgrounds")
-    for p in paths:
-        lst = os.listdir(p)
-        for l in lst:
-            if l == filename:
-                return os.path.join(p, l)

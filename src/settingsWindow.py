@@ -91,8 +91,8 @@ class settingsWindow(QWidget, Ui_Settings):
         self.cmbThemeEdit.setCurrentIndex(0)
         self.cmbThemeEdit.currentIndexChanged.emit(0)
         self.themeStack.setCurrentIndex(0)
-        self.populatesThemesList()
         self.lstThemes.currentItemChanged.connect(self.themeSelected)
+        self.populatesThemesList()
         self.btnThemeAdd.clicked.connect(self.newTheme)
         self.btnThemeEdit.clicked.connect(self.editTheme)
         self.btnThemeRemove.clicked.connect(self.removeTheme)
@@ -280,9 +280,14 @@ class settingsWindow(QWidget, Ui_Settings):
 
     def themeSelected(self, current, previous):
         if current:
+            # UI updates
             self.btnThemeEdit.setEnabled(current.data(Qt.UserRole+1))
             self.btnThemeRemove.setEnabled(current.data(Qt.UserRole+1))
+            # Save settings
+            theme = current.data(Qt.UserRole)
+            settings.fullScreenTheme = os.path.splitext(os.path.split(theme)[1])[0]
         else:
+            # UI updates
             self.btnThemeEdit.setEnabled(False)
             self.btnThemeRemove.setEnabled(False)
     
@@ -300,7 +305,6 @@ class settingsWindow(QWidget, Ui_Settings):
         settings = QSettings(name, QSettings.IniFormat)
         settings.setValue("Name", self.tr("New theme"))
         settings.sync()
-        print(name)
         
         self.populatesThemesList()
         
@@ -318,6 +322,7 @@ class settingsWindow(QWidget, Ui_Settings):
     
     def populatesThemesList(self):
         paths = allPaths("resources/themes")
+        current = settings.fullScreenTheme
         self.lstThemes.clear()
         
         for p in paths:
@@ -346,7 +351,16 @@ class settingsWindow(QWidget, Ui_Settings):
                 item.setIcon(QIcon(px))
                 
                 self.lstThemes.addItem(item)
+                
+                if current and current in t:
+                    self.lstThemes.setCurrentItem(item)
+                    current = None
+                
         self.lstThemes.setIconSize(QSize(200, 120))
+        
+        if current:  # the theme from settings wasn't found
+                     # select the last from the list
+            self.lstThemes.setCurrentRow(self.lstThemes.count() - 1)
         
     def loadTheme(self, theme):
         self._editingTheme = theme

@@ -101,7 +101,7 @@ class t2tHighlighterStyle ():
     def formatBlock(self, block, state):
         "Apply transformation to given block."
         blockFormat = QTextBlockFormat()
-
+        
         if state == State.BLOCKQUOTE_LINE:
             # Number of tabs
             n = block.text().indexOf(QRegExp(r'[^\t]'), 0)
@@ -125,6 +125,7 @@ class t2tHighlighterStyle ():
             else:
                 blockFormat.setBackground(QColor("#EEEEFA"))
             n = blockUserData.getUserData(block).leadingSpaces() + 1
+            
             f = QFontMetrics(QFont(self.defaultFontFamily,
                                    self.defaultFontPointSize))
             fm = f.width(" " * n +
@@ -144,9 +145,11 @@ class t2tHighlighterStyle ():
 
         _color = QColor()
         _format = QTextCharFormat()
-        size = self.defaultFontPointSize
-        _format.setFontFamily(self.defaultFontFamily)
-
+        #size = self.defaultFontPointSize
+        #_format.setFontFamily(self.defaultFontFamily)
+        _format.setFont(self.editor.font())
+        size = _format.fontPointSize()
+        
         # Base
         if base: _format = base
 
@@ -217,9 +220,9 @@ class t2tHighlighterStyle ():
         if preset == "higlighted":
             bgcolor = "yellow"
 
-        if preset == State.DEFAULT:
-            size = self.defaultFontPointSize
-            _format.setFontFamily(self.defaultFontFamily)
+        #if preset == State.DEFAULT:
+            #size = self.defaultFontPointSize
+            #_format.setFontFamily(self.defaultFontFamily)
 
         # Manual formatting
         if color:
@@ -241,5 +244,5 @@ class t2tHighlighterStyle ():
             _format.setFontPointSize(size)
         if fixedPitch:
             _format.setFontFixedPitch(True)
-
+        
         return _format

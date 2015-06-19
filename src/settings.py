@@ -43,11 +43,13 @@ corkBackground = {
     "image": ""
         }
 
+fullScreenTheme = "spacedreams"
+
 def save(filename=None):
     
     global spellcheck, dict, corkSliderFactor, viewSettings, corkSizeFactor, folderView, lastTab, lastIndex, \
            autoSave, autoSaveDelay, saveOnQuit, autoSaveNoChanges, autoSaveNoChangesDelay, outlineViewColumns, \
-           corkBackground
+           corkBackground, fullScreenTheme
     
     allSettings = {
         "viewSettings": viewSettings,
@@ -64,6 +66,7 @@ def save(filename=None):
         "autoSaveNoChangesDelay":autoSaveNoChangesDelay,
         "outlineViewColumns":outlineViewColumns,
         "corkBackground":corkBackground,
+        "fullScreenTheme":fullScreenTheme,
         }
     
     #pp=pprint.PrettyPrinter(indent=4, compact=False)
@@ -151,3 +154,7 @@ def load(string, fromString=False):
     if "corkBackground" in allSettings:
         global corkBackground
         corkBackground = allSettings["corkBackground"]
+        
+    if "fullScreenTheme" in allSettings:
+        global fullScreenTheme
+        fullScreenTheme = allSettings["fullScreenTheme"]

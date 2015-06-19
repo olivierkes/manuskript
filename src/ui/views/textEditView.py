@@ -28,6 +28,11 @@ class textEditView(QTextEdit):
         self.currentDict = dict
         self.highlighter = None
         self._autoResize = autoResize
+        self._defaultBlockFormat = QTextBlockFormat()
+        self.highlightWord = ""
+        self.highligtCS = False
+        self.defaultFontPointSize = qApp.font().pointSize()
+        self._dict = None
         
         if index:
             self.setCurrentModelIndex(index)
@@ -37,6 +42,16 @@ class textEditView(QTextEdit):
             self.setReadOnly(True)
             
         self.setAutoResize(self._autoResize)
+                    
+        # Spellchecking
+        if enchant and self.spellcheck:
+            self._dict = enchant.Dict(self.currentDict if self.currentDict else enchant.get_default_language())
+        else:
+            self.spellcheck = False
+            
+        if self._highlighting and not self.highlighter:
+            self.highlighter = t2tHighlighter(self)
+            self.highlighter.setDefaultBlockFormat(self._defaultBlockFormat)
             
     def setModel(self, model):
         self._model = model
@@ -47,6 +62,11 @@ class textEditView(QTextEdit):
         
     def setHighlighting(self, val):
         self._highlighting = val
+            
+    def setDefaultBlockFormat(self, bf):
+        self._defaultBlockFormat = bf
+        if self.highlighter:
+            self.highlighter.setDefaultBlockFormat(bf)
             
     def setCurrentModelIndex(self, index):
         self._indexes = None
@@ -63,18 +83,9 @@ class textEditView(QTextEdit):
             self._model.dataChanged.connect(self.update)
             self.updateText()
             
-            self.defaultFontPointSize = qApp.font().pointSize()
-            self.highlightWord = ""
-            self.highligtCS = False
-            
             if self._highlighting and not self.highlighter:
                 self.highlighter = t2tHighlighter(self)
-                
-            # Spellchecking
-            if enchant and self.spellcheck:
-                self.dict = enchant.Dict(self.currentDict if self.currentDict else enchant.get_default_language())
-            else:
-                self.spellcheck = False
+                self.highlighter.setDefaultBlockFormat(self._defaultBlockFormat)
         
     def setCurrentModelIndexes(self, indexes):
         self._index = None
@@ -180,14 +191,18 @@ class textEditView(QTextEdit):
 
     def setDict(self, d):
         self.currentDict = d
-        self.dict = enchant.Dict(d)
+        self._dict = enchant.Dict(d)
         if self.highlighter:
             self.highlighter.rehighlight()
         
     def toggleSpellcheck(self, v):
         self.spellcheck = v
+        if enchant and self.spellcheck and not self._dict:
+            self._dict = enchant.Dict(self.currentDict if self.currentDict else enchant.get_default_language())
         if self.highlighter:
             self.highlighter.rehighlight()
+        else:
+            self.spellcheck = False
 
     def mousePressEvent(self, event):
         if event.button() == Qt.RightButton:
@@ -226,9 +241,9 @@ class textEditView(QTextEdit):
         # suggestions if it is.
         if self.textCursor().hasSelection():
             text = str(self.textCursor().selectedText())
-            if not self.dict.check(text):
+            if not self._dict.check(text):
                 spell_menu = QMenu(self.tr('Spelling Suggestions'))
-                for word in self.dict.suggest(text):
+                for word in self._dict.suggest(text):
                     action = self.SpellAction(word, spell_menu)
                     action.correct.connect(self.correctWord)
                     spell_menu.addAction(action)

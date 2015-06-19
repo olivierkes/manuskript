@@ -4,6 +4,7 @@
 from qt import *
 from enums import *
 from ui.editors.editorWidget_ui import *
+from ui.editors.fullScreenEditor import *
 from ui.views.textEditView import *
 from functions import *
 import settings
@@ -237,26 +238,29 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
         self.dictChanged.emit(dct)
         
     def showFullscreen(self):
-        self._parent = self.parent()
-        self._geometry = self.geometry()
-        self._fullscreen = True
-        currentScreen = qApp.desktop().screenNumber(self)
-        self.setParent(None)
-        mainWindow().hide()
         
-        self.stack.setStyleSheet("""
-            QTextEdit {{
-                margin-left: {m}px;
-                margin-right: {m}px;
-            }};""".format(
-                m=str((qApp.desktop().screenGeometry(currentScreen).width() - 800) / 2))
-            )
+        self.testW = fullScreenEditor()
         
-        self.move(qApp.desktop().screenGeometry(currentScreen).topLeft())
-        QWidget.showFullScreen(self)
+        #self._parent = self.parent()
+        #self._geometry = self.geometry()
+        #self._fullscreen = True
+        #currentScreen = qApp.desktop().screenNumber(self)
+        #self.setParent(None)
+        #mainWindow().hide()
         
-        #FIXME: too big?
-        print(qApp.desktop().screenGeometry(currentScreen), self.geometry())
+        #self.stack.setStyleSheet("""
+            #QTextEdit {{
+                #margin-left: {m}px;
+                #margin-right: {m}px;
+            #}};""".format(
+                #m=str((qApp.desktop().screenGeometry(currentScreen).width() - 800) / 2))
+            #)
+        
+        #self.move(qApp.desktop().screenGeometry(currentScreen).topLeft())
+        #QWidget.showFullScreen(self)
+        
+        ##FIXME: too big?
+        #print(qApp.desktop().screenGeometry(currentScreen), self.geometry())
         
         
         

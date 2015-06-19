@@ -2,7 +2,6 @@
 
 import sys
 from qt import *
-from ui.editors.fullScreenEditor import *
 
 _version = "0.1"
 
@@ -38,8 +37,6 @@ def run():
     
     main = MainWindow()
     main.show()
-        
-    #testW = fullScreenEditor()
     
     app.exec_()
     app.deleteLater()

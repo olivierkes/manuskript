@@ -1,9 +1,12 @@
 #!/usr/bin/env python
 #--!-- coding: utf8 --!--
- 
+
+# Lots of stuff from here comes from the excellet focuswriter.
+
 from qt import *
 from enums import *
 from functions import *
+from ui.views.textEditView import *
 import settings
 
 def loadThemeDatas(themeFile):
@@ -84,6 +87,8 @@ def createThemePreview(theme, screenRect, size=QSize(200, 120)):
     
     pixmap = generateTheme(themeDatas, screenRect)
     
+    addThemePreviewText(pixmap, themeDatas, screenRect)
+    
     px = QPixmap(pixmap).scaled(size, Qt.KeepAspectRatio)
     
     w = px.width() / 10
@@ -97,6 +102,20 @@ def createThemePreview(theme, screenRect, size=QSize(200, 120)):
     painter.end()
     
     return px
+
+def findThemePath(themeName):
+    return findFirstFile(themeName, "resources/themes", "{}.theme")
+
+def findBackground(filename):
+    return findFirstFile(filename, "resources/backgrounds")
+
+def findFirstFile(filename, path="resources", mask="{}"):
+    paths = allPaths(path)
+    for p in paths:
+        lst = os.listdir(p)
+        for l in lst:
+            if l == mask.format(filename):
+                return os.path.join(p, l)
         
 def generateTheme(themeDatas, screenRect):
     
@@ -136,54 +155,77 @@ def generateTheme(themeDatas, screenRect):
     painter.restore()
     
     painter.end()
+    return px
     
-    # Text
-    previewText = QTextEdit()
-    previewText.setFrameStyle(QFrame.NoFrame)
-    previewText.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
-    previewText.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
-    previewText.setPlainText(open(appPath("resources/themes/preview.txt")).read())
+def themeEditorGeometry(themeDatas, textRect):
     
     padding = themeDatas["Foreground/Padding"]
     x = textRect.x() + padding
     y = textRect.y() + padding + themeDatas["Spacings/ParagraphAbove"]
     width = textRect.width() - 2 * padding
     height = textRect.height() - 2 * padding - themeDatas["Spacings/ParagraphAbove"]
-    previewText.setGeometry(x, y, width, height)
+    return x, y, width, height
     
-    p = previewText.palette()
-    p.setBrush(QPalette.Base, QBrush(px.copy(x, y, width, height)))
-    p.setColor(QPalette.Text, QColor(themeDatas["Text/Color"]))
-    p.setColor(QPalette.Highlight, QColor(themeDatas["Text/Color"]))
-    p.setColor(QPalette.HighlightedText, Qt.black if qGray(QColor(themeDatas["Text/Color"]).rgb()) > 127 else Qt.white)
-    previewText.setPalette(p)
-    
+def getThemeBlockFormat(themeDatas):
     bf = QTextBlockFormat()
     bf.setLineHeight(themeDatas["Spacings/LineSpacing"], QTextBlockFormat.ProportionalHeight)
     bf.setTextIndent(themeDatas["Spacings/TabWidth"] * 1 if themeDatas["Spacings/IndendFirstLine"] else 0)
     bf.setTopMargin(themeDatas["Spacings/ParagraphAbove"])
     bf.setBottomMargin(themeDatas["Spacings/ParagraphBelow"])
+    return bf
     
-    b = previewText.document().firstBlock()
-    cursor = previewText.textCursor()
-    while b.isValid():
-        bf2 = b.blockFormat()
-        bf2.merge(bf)
-        cursor.setPosition(b.position())
-        #cursor.setPosition(b.position(), QTextCursor.KeepAnchor)
-        cursor.setBlockFormat(bf2)
-        b = b.next()
+def setThemeEditorDatas(editor, themeDatas, pixmap, screenRect):
     
-    previewText.setTabStopWidth(themeDatas["Spacings/TabWidth"])
-    previewText.document().setIndentWidth(themeDatas["Spacings/TabWidth"])
+    textRect = themeTextRect(themeDatas, screenRect)
+    x, y, width, height = themeEditorGeometry(themeDatas, textRect)
+    editor.setGeometry(x, y, width, height)
+    
+    p = editor.palette()
+    #p.setBrush(QPalette.Base, QBrush(pixmap.copy(x, y, width, height)))
+    p.setBrush(QPalette.Base, QColor(Qt.transparent))
+    p.setColor(QPalette.Text, QColor(themeDatas["Text/Color"]))
+    p.setColor(QPalette.Highlight, QColor(themeDatas["Text/Color"]))
+    p.setColor(QPalette.HighlightedText, Qt.black if qGray(QColor(themeDatas["Text/Color"]).rgb()) > 127 else Qt.white)
+    editor.setPalette(p)
+    
+    editor.setAttribute(Qt.WA_NoSystemBackground, True)
+    
+    bf = getThemeBlockFormat(themeDatas)
+    editor.setDefaultBlockFormat(bf)
+    
+    #b = editor.document().firstBlock()
+    #cursor = editor.textCursor()
+    #cursor.setBlockFormat(bf)
+    #while b.isValid():
+        #bf2 = b.blockFormat()
+        #bf2.merge(bf)
+        #cursor.setPosition(b.position())
+        ##cursor.setPosition(b.position(), QTextCursor.KeepAnchor)
+        #cursor.setBlockFormat(bf2)
+        #b = b.next()
+    
+    editor.setTabStopWidth(themeDatas["Spacings/TabWidth"])
+    editor.document().setIndentWidth(themeDatas["Spacings/TabWidth"])
     
     f = QFont()
     f.fromString(themeDatas["Text/Font"])
-    previewText.setFont(f)
+    editor.setFont(f)
+    editor.highlighter.setMisspelledColor(QColor(themeDatas["Text/Misspelled"]))
     
-    previewText.render(px, previewText.pos())
-    return px
+    editor.highlighter.setStyle() # Reupdates highlighter styles
     
+def addThemePreviewText(pixmap, themeDatas, screenRect):
+    
+    # Text
+    previewText = textEditView()
+    previewText.setFrameStyle(QFrame.NoFrame)
+    previewText.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+    previewText.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+    previewText.setPlainText(open(appPath("resources/themes/preview.txt")).read())
+    
+    setThemeEditorDatas(previewText, themeDatas, pixmap, screenRect)
+    
+    previewText.render(pixmap, previewText.pos())
     
     ## Text Background
     ##themeDatas["Foreground/Color"]
