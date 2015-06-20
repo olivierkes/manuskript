@@ -246,6 +246,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btnRedacFolderCork.setHidden(hidden)
         self.btnRedacFolderOutline.setHidden(hidden)
         self.sldCorkSizeFactor.setHidden(hidden)
+        self.btnRedacFullscreen.setVisible(hidden)
         
     def outlineRemoveItems(self):
         for idx in self.treeRedacOutline.selectedIndexes():
@@ -604,7 +605,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             a.triggered.connect(self.openPyEnchantWebPage)
             self.menuTools.addAction(a)
             
-        self.btnRedacFullscreen.clicked.connect(self.redacEditor.showFullscreen)
+        self.btnRedacFullscreen.clicked.connect(lambda: self.redacEditor.showFullscreen(self.treeRedacOutline.currentIndex()))
             
     def updateMenuDict(self):
         

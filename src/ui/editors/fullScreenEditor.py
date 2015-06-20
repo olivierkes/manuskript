@@ -10,19 +10,21 @@ import settings
 
 class fullScreenEditor(QWidget):
     
-    def __init__(self, parent=None):
+    def __init__(self, index, parent=None):
         QWidget.__init__(self, parent)
         self._background = None
+        self._index = index
+        self._index.model().dataChanged.connect(self.dataChanged)
         self._theme = findThemePath(settings.fullScreenTheme)
         self._themeDatas = loadThemeDatas(self._theme)
         self.setMouseTracking(True)
         
         # Text editor
-        self.editor = textEditView(self, dict=settings.dict)
+        self.editor = textEditView(self, index=index, spellcheck=settings.spellcheck, dict=settings.dict)
         self.editor.setFrameStyle(QFrame.NoFrame)
-        f = QFile(appPath("resources/themes/preview.txt"))
-        f.open(QIODevice.ReadOnly)
-        self.editor.setPlainText(QTextStream(f).readAll()*5)
+        #f = QFile(appPath("resources/themes/preview.txt"))
+        #f.open(QIODevice.ReadOnly)
+        #self.editor.setPlainText(QTextStream(f).readAll()*5)
         self.editor.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.editor.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.editor.installEventFilter(self)
@@ -32,29 +34,52 @@ class fullScreenEditor(QWidget):
         self.scrollBar = self.editor.verticalScrollBar()
         self.scrollBar.setParent(self)
         
-        # Panel
+        # Top Panel
         self.topPanel = myPanel(parent=self)
-        self.bottomPanel = myPanel(parent=self)
+        self.topPanel.layout().addStretch(1)
+        
+        self.btnSpellCheck = QPushButton()
+        self.btnSpellCheck.setFlat(True)
+        self.btnSpellCheck.setIcon(QIcon.fromTheme("tools-check-spelling"))
+        self.btnSpellCheck.setCheckable(True)
+        self.btnSpellCheck.setChecked(self.editor.spellcheck)
+        self.btnSpellCheck.toggled.connect(self.editor.toggleSpellcheck)
+        self.topPanel.layout().addWidget(self.btnSpellCheck)
+        self.topPanel.layout().addStretch(1)
         
         b = QPushButton(self)
         b.setIcon(qApp.style().standardIcon(QStyle.SP_DialogCloseButton))
         b.clicked.connect(self.close)
         b.setFlat(True)
-        self.topPanel.layout().insertWidget(1, b)
+        self.topPanel.layout().addWidget(b)
         
+        # Bottom Panel
+        self.bottomPanel = myPanel(parent=self)
+        
+        self.bottomPanel.layout().addSpacing(24)
         self.lstThemes = QComboBox(self)
         self.lstThemes.setAttribute(Qt.WA_TranslucentBackground)
-        self.bottomPanel.layout().addWidget(self.lstThemes)
-        
         paths = allPaths("resources/themes")
-        
         for p in paths:
             lst = [i for i in os.listdir(p) if os.path.splitext(i)[1] == ".theme"]
             for t in lst:
                 themeIni = os.path.join(p, t)
                 self.lstThemes.addItem(os.path.splitext(t)[0])
-        
         self.lstThemes.currentTextChanged.connect(self.setTheme)
+        self.lstThemes.setMaximumSize(QSize(300, QFontMetrics(qApp.font()).height()))
+        self.bottomPanel.layout().addWidget(QLabel(self.tr("Theme:"), self))
+        self.bottomPanel.layout().addWidget(self.lstThemes)
+        self.bottomPanel.layout().addStretch(1)
+        
+        self.lblProgress = QLabel(self)
+        self.lblProgress.setMaximumSize(QSize(200, 14))
+        self.lblProgress.setMinimumSize(QSize(100, 14))
+        self.lblWC = QLabel(self)
+        self.bottomPanel.layout().addWidget(self.lblWC)
+        self.bottomPanel.layout().addWidget(self.lblProgress)
+        self.updateStatusBar()
+        
+        self.bottomPanel.layout().addSpacing(24)
         
         #self.updateTheme()
         self.showFullScreen()
@@ -62,6 +87,7 @@ class fullScreenEditor(QWidget):
         #self.show()
         
     def setTheme(self, themeName):
+        settings.fullScreenTheme = themeName
         self._theme = findThemePath(themeName)
         self._themeDatas = loadThemeDatas(self._theme)
         self.updateTheme()
@@ -81,12 +107,14 @@ class fullScreenEditor(QWidget):
             self._bgcolor = QColor(self._themeDatas["Foreground/Color"])
             self._bgcolor.setAlpha(self._themeDatas["Foreground/Opacity"] * 255 / 100)
             self._fgcolor = QColor(self._themeDatas["Text/Color"])
+            if self._themeDatas["Text/Color"] == self._themeDatas["Foreground/Color"]:
+                self._fgcolor = QColor(self._themeDatas["Background/Color"])
             
         # ScrollBar
         r = self.editor.geometry()
         w = qApp.style().pixelMetric(QStyle.PM_ScrollBarExtent)
         r.setWidth(w)
-        r.moveRight(rect.right())
+        r.moveRight(rect.right() - rect.left())
         self.scrollBar.setGeometry(r)
         self.scrollBar.setVisible(False)
         p = self.scrollBar.palette()
@@ -99,21 +127,29 @@ class fullScreenEditor(QWidget):
         # Panels
         r = QRect(0, 0, 0, 24)
         r.setWidth(rect.width())
-        r.moveLeft(rect.center().x() - r.width() / 2)
+        #r.moveLeft(rect.center().x() - r.width() / 2)
         self.topPanel.setGeometry(r)
         self.topPanel.setVisible(False)
-        r.moveBottom(rect.bottom())
+        r.moveBottom(rect.bottom() - rect.top())
         self.bottomPanel.setGeometry(r)
         self.bottomPanel.setVisible(False)
         self.topPanel.setColor(self._bgcolor)
         self.bottomPanel.setColor(self._bgcolor)
         
         # Lst theme
-        p = self.lstThemes.palette()
+        #p = self.lstThemes.palette()
+        p = self.palette()
         p.setBrush(QPalette.Button, self._bgcolor)
         p.setBrush(QPalette.ButtonText, self._fgcolor)
         p.setBrush(QPalette.WindowText, self._fgcolor)
-        self.lstThemes.setPalette(p)
+        
+        for panel in (self.bottomPanel, self.topPanel):
+            for i in range(panel.layout().count()):
+                item = panel.layout().itemAt(i)
+                if item.widget(): 
+                    item.widget().setPalette(p)
+        #self.lstThemes.setPalette(p)
+        #self.lblWC.setPalette(p)
         
         self.update()
         
@@ -135,15 +171,43 @@ class fullScreenEditor(QWidget):
     
     def mouseMoveEvent(self, event):
         r = self.geometry()
-        #print(event.pos(), r)
         
         for w in [self.scrollBar, self.topPanel, self.bottomPanel]:
             w.setVisible(w.geometry().contains(event.pos()))    
             
     def eventFilter(self, obj, event):
-        if event.type() == QEvent.MouseMove or obj == self.editor and event.type() == QEvent.Enter:
-            self.mouseMoveEvent(event)
+        if obj == self.editor and event.type() == QEvent.Enter:
+            for w in [self.scrollBar, self.topPanel, self.bottomPanel]:
+                w.setVisible(False)    
         return QWidget.eventFilter(self, obj, event)
+            
+    def dataChanged(self, topLeft, bottomRight):
+        if not self._index:
+            return
+        if topLeft.row() <= self._index.row() <= bottomRight.row():
+            self.updateStatusBar()
+            
+    def updateStatusBar(self):
+        if self._index:
+            item = self._index.internalPointer()
+        
+        wc = item.data(Outline.wordCount.value)
+        goal = item.data(Outline.goal.value)
+        pg = item.data(Outline.goalPercentage.value)
+        
+        if goal:
+            rect = self.lblProgress.geometry()
+            rect = QRect(QPoint(0, 0), rect.size())
+            self.px = QPixmap(rect.size())
+            self.px.fill(Qt.transparent)
+            p = QPainter(self.px)
+            drawProgress(p, rect, pg, 2)
+            p.end()
+            self.lblProgress.setPixmap(self.px)
+            self.lblWC.setText(self.tr("{} words / {}").format(wc, goal))
+        else:
+            mw.lblProgress.hide()
+            mw.lblWC.setText(self.tr("{} words").format(wc))
         
 class myScrollBar(QScrollBar):
     def __init__(self, color=Qt.white, parent=None):
@@ -151,7 +215,7 @@ class myScrollBar(QScrollBar):
         self._color = color
         #self.setAttribute(Qt.WA_TranslucentBackground)
         self.timer = QTimer()
-        self.timer.setInterval(250)
+        self.timer.setInterval(500)
         self.timer.setSingleShot(True)
         self.timer.timeout.connect(self.hide)
         self.valueChanged.connect(lambda v: self.timer.start())
@@ -186,7 +250,6 @@ class myPanel(QWidget):
         self.setAttribute(Qt.WA_TranslucentBackground)
         self.setLayout(QHBoxLayout())
         self.layout().setContentsMargins(0, 0, 0, 0)
-        self.layout().addStretch(1)
         
     def setColor(self, color):
         self._color = color

@@ -237,32 +237,9 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
         self.currentDict = dct
         self.dictChanged.emit(dct)
         
-    def showFullscreen(self):
+    def showFullscreen(self, index):
         
-        self.testW = fullScreenEditor()
-        
-        #self._parent = self.parent()
-        #self._geometry = self.geometry()
-        #self._fullscreen = True
-        #currentScreen = qApp.desktop().screenNumber(self)
-        #self.setParent(None)
-        #mainWindow().hide()
-        
-        #self.stack.setStyleSheet("""
-            #QTextEdit {{
-                #margin-left: {m}px;
-                #margin-right: {m}px;
-            #}};""".format(
-                #m=str((qApp.desktop().screenGeometry(currentScreen).width() - 800) / 2))
-            #)
-        
-        #self.move(qApp.desktop().screenGeometry(currentScreen).topLeft())
-        #QWidget.showFullScreen(self)
-        
-        ##FIXME: too big?
-        #print(qApp.desktop().screenGeometry(currentScreen), self.geometry())
-        
-        
+        self._fullScreen = fullScreenEditor(index)
         
     def keyPressEvent(self, event):
         if event.key() in [Qt.Key_Escape, Qt.Key_F11] and self._fullscreen:
