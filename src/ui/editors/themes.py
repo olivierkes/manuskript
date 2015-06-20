@@ -8,6 +8,7 @@ from enums import *
 from functions import *
 from ui.views.textEditView import *
 import settings
+import re
 
 def loadThemeDatas(themeFile):
     settings = QSettings(themeFile, QSettings.IniFormat)
@@ -104,17 +105,21 @@ def createThemePreview(theme, screenRect, size=QSize(200, 120)):
     return px
 
 def findThemePath(themeName):
-    return findFirstFile(themeName, "resources/themes", "{}.theme")
+    p = findFirstFile(re.escape("{}.theme".format(themeName)), "resources/themes")
+    if not p:
+        return findFirstFile(".*\.theme", "resources/themes")
+    else:
+        return p
 
 def findBackground(filename):
-    return findFirstFile(filename, "resources/backgrounds")
+    return findFirstFile(re.escape(filename), "resources/backgrounds")
 
-def findFirstFile(filename, path="resources", mask="{}"):
+def findFirstFile(regex, path="resources"):
     paths = allPaths(path)
     for p in paths:
         lst = os.listdir(p)
         for l in lst:
-            if l == mask.format(filename):
+            if re.match(regex, l):
                 return os.path.join(p, l)
         
 def generateTheme(themeDatas, screenRect):
@@ -221,7 +226,9 @@ def addThemePreviewText(pixmap, themeDatas, screenRect):
     previewText.setFrameStyle(QFrame.NoFrame)
     previewText.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
     previewText.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
-    previewText.setPlainText(open(appPath("resources/themes/preview.txt")).read())
+    f = QFile(appPath("resources/themes/preview.txt"))
+    f.open(QIODevice.ReadOnly)
+    previewText.setPlainText(QTextStream(f).readAll())
     
     setThemeEditorDatas(previewText, themeDatas, pixmap, screenRect)
     

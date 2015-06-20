@@ -142,9 +142,15 @@ def appPath(suffix=None):
     return p
 
 def writablePath(suffix=None):
-    p = QStandardPaths.writableLocation(QStandardPaths.AppLocalDataLocation)
+    if hasattr(QStandardPaths, "AppLocalDataLocation"):
+        p = QStandardPaths.writableLocation(QStandardPaths.AppLocalDataLocation)
+    else:
+        # Qt < 5.4
+        p = QStandardPaths.writableLocation(QStandardPaths.DataLocation)
     if suffix:
         p = os.path.join(p, suffix)
+    if not os.path.exists(p):
+        os.makedirs(p)
     return p
 
 def allPaths(suffix=None):

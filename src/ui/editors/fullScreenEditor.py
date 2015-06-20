@@ -20,12 +20,13 @@ class fullScreenEditor(QWidget):
         # Text editor
         self.editor = textEditView(self, dict=settings.dict)
         self.editor.setFrameStyle(QFrame.NoFrame)
-        self.editor.document().setPlainText(open(appPath("resources/themes/preview.txt")).read() * 5)
+        f = QFile(appPath("resources/themes/preview.txt"))
+        f.open(QIODevice.ReadOnly)
+        self.editor.setPlainText(QTextStream(f).readAll()*5)
         self.editor.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.editor.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.editor.installEventFilter(self)
         self.editor.setMouseTracking(True)
-        
         
         # Scroll bar
         if self._themeDatas["Foreground/Color"] == self._themeDatas["Background/Color"] or \
@@ -65,6 +66,10 @@ class fullScreenEditor(QWidget):
         r.moveRight(rect.right())
         self.scrollBar.setGeometry(r)
         self.scrollBar.setVisible(False)
+        p = self.scrollBar.palette()
+        b = QBrush(self._background.copy(self.scrollBar.geometry()))
+        p.setBrush(QPalette.Base, b)
+        self.scrollBar.setPalette(p)
         
         # Set Panel
         r = QRect(0, 0, 400, 120)
@@ -76,6 +81,7 @@ class fullScreenEditor(QWidget):
     def paintEvent(self, event):
         if self._background:
             painter = QPainter(self)
+            painter.setClipRegion(event.region())
             painter.drawPixmap(event.rect(), self._background, event.rect())
             painter.end()
       
@@ -104,12 +110,28 @@ class myScrollBar(QScrollBar):
     def __init__(self, color=Qt.white, parent=None):
         QScrollBar.__init__(self, parent)
         self._color = color
+        #self.setAttribute(Qt.WA_TranslucentBackground)
+        self.timer = QTimer()
+        self.timer.setInterval(250)
+        self.timer.setSingleShot(True)
+        self.timer.timeout.connect(self.hide)
+        self.valueChanged.connect(lambda v: self.timer.start())
+        self.valueChanged.connect(self.show)
+        
         
     def paintEvent(self, event):
         opt = QStyleOptionSlider()
         self.initStyleOption(opt)
         style = qApp.style()
         painter = QPainter(self)
+        
+        # Background (Necessary with Qt 5.2 it seems, not with 5.4)
+        painter.save()
+        painter.setPen(Qt.NoPen)
+        painter.setBrush(self.palette().brush(QPalette.Base))
+        painter.drawRect(event.rect())
+        painter.restore()
+        
         #slider
         r = style.subControlRect(style.CC_ScrollBar, opt, style.SC_ScrollBarSlider)
         painter.fillRect(r, self._color)
