@@ -28,20 +28,33 @@ class fullScreenEditor(QWidget):
         self.editor.installEventFilter(self)
         self.editor.setMouseTracking(True)
         
-        # Scroll bar
-        if self._themeDatas["Foreground/Color"] == self._themeDatas["Background/Color"] or \
-            self._themeDatas["Foreground/Opacity"] < 5:
-                color = QColor(self._themeDatas["Text/Color"])
-        else:
-            color = QColor(self._themeDatas["Foreground/Color"])
-            color.setAlpha(self._themeDatas["Foreground/Opacity"] * 255 / 100)
-        self.editor.setVerticalScrollBar(myScrollBar(color))
+        self.editor.setVerticalScrollBar(myScrollBar())
         self.scrollBar = self.editor.verticalScrollBar()
         self.scrollBar.setParent(self)
         
         # Panel
-        self.panel = myPanel(color, self)
+        self.topPanel = myPanel(parent=self)
+        self.bottomPanel = myPanel(parent=self)
         
+        b = QPushButton(self)
+        b.setIcon(qApp.style().standardIcon(QStyle.SP_DialogCloseButton))
+        b.clicked.connect(self.close)
+        b.setFlat(True)
+        self.topPanel.layout().insertWidget(1, b)
+        
+        self.lstThemes = QComboBox(self)
+        self.lstThemes.setAttribute(Qt.WA_TranslucentBackground)
+        self.bottomPanel.layout().addWidget(self.lstThemes)
+        
+        paths = allPaths("resources/themes")
+        
+        for p in paths:
+            lst = [i for i in os.listdir(p) if os.path.splitext(i)[1] == ".theme"]
+            for t in lst:
+                themeIni = os.path.join(p, t)
+                self.lstThemes.addItem(os.path.splitext(t)[0])
+        
+        self.lstThemes.currentTextChanged.connect(self.setTheme)
         
         #self.updateTheme()
         self.showFullScreen()
@@ -49,7 +62,7 @@ class fullScreenEditor(QWidget):
         #self.show()
         
     def setTheme(self, themeName):
-        self._theme = findThemePath(settings.fullScreenTheme)
+        self._theme = findThemePath(themeName)
         self._themeDatas = loadThemeDatas(self._theme)
         self.updateTheme()
         
@@ -59,7 +72,17 @@ class fullScreenEditor(QWidget):
         
         setThemeEditorDatas(self.editor, self._themeDatas, self._background, rect)
         
-        #set ScrollBar
+        # Colors
+        if self._themeDatas["Foreground/Color"] == self._themeDatas["Background/Color"] or \
+            self._themeDatas["Foreground/Opacity"] < 5:
+                self._bgcolor = QColor(self._themeDatas["Text/Color"])
+                self._fgcolor = QColor(self._themeDatas["Background/Color"])
+        else:
+            self._bgcolor = QColor(self._themeDatas["Foreground/Color"])
+            self._bgcolor.setAlpha(self._themeDatas["Foreground/Opacity"] * 255 / 100)
+            self._fgcolor = QColor(self._themeDatas["Text/Color"])
+            
+        # ScrollBar
         r = self.editor.geometry()
         w = qApp.style().pixelMetric(QStyle.PM_ScrollBarExtent)
         r.setWidth(w)
@@ -71,12 +94,28 @@ class fullScreenEditor(QWidget):
         p.setBrush(QPalette.Base, b)
         self.scrollBar.setPalette(p)
         
-        # Set Panel
-        r = QRect(0, 0, 400, 120)
-        r.moveBottom(rect.bottom())
+        self.scrollBar.setColor(self._bgcolor)
+        
+        # Panels
+        r = QRect(0, 0, 0, 24)
+        r.setWidth(rect.width())
         r.moveLeft(rect.center().x() - r.width() / 2)
-        self.panel.setGeometry(r)
-        self.panel.setVisible(False)
+        self.topPanel.setGeometry(r)
+        self.topPanel.setVisible(False)
+        r.moveBottom(rect.bottom())
+        self.bottomPanel.setGeometry(r)
+        self.bottomPanel.setVisible(False)
+        self.topPanel.setColor(self._bgcolor)
+        self.bottomPanel.setColor(self._bgcolor)
+        
+        # Lst theme
+        p = self.lstThemes.palette()
+        p.setBrush(QPalette.Button, self._bgcolor)
+        p.setBrush(QPalette.ButtonText, self._fgcolor)
+        p.setBrush(QPalette.WindowText, self._fgcolor)
+        self.lstThemes.setPalette(p)
+        
+        self.update()
         
     def paintEvent(self, event):
         if self._background:
@@ -98,7 +137,7 @@ class fullScreenEditor(QWidget):
         r = self.geometry()
         #print(event.pos(), r)
         
-        for w in [self.scrollBar, self.panel]:
+        for w in [self.scrollBar, self.topPanel, self.bottomPanel]:
             w.setVisible(w.geometry().contains(event.pos()))    
             
     def eventFilter(self, obj, event):
@@ -118,6 +157,8 @@ class myScrollBar(QScrollBar):
         self.valueChanged.connect(lambda v: self.timer.start())
         self.valueChanged.connect(self.show)
         
+    def setColor(self, color):
+        self._color = color
         
     def paintEvent(self, event):
         opt = QStyleOptionSlider()
@@ -143,6 +184,12 @@ class myPanel(QWidget):
         self._color = color
         self.show()
         self.setAttribute(Qt.WA_TranslucentBackground)
+        self.setLayout(QHBoxLayout())
+        self.layout().setContentsMargins(0, 0, 0, 0)
+        self.layout().addStretch(1)
+        
+    def setColor(self, color):
+        self._color = color
         
     def paintEvent(self, event):
         r = event.rect()
