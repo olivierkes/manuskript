@@ -389,7 +389,7 @@ class outlineItem():
             if self.isFolder():
                 return QIcon.fromTheme("folder")
             elif self.isText():
-                return QIcon.fromTheme("document-new")
+                return QIcon.fromTheme("text-x-generic")
             
         #elif role == Qt.ForegroundRole:
             #if self.isCompile() in [0, "0"]:
