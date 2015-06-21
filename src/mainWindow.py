@@ -180,23 +180,30 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btnRmSubPlot.clicked.connect(self.mdlPlots.removeSubPlot)
         self.btnRmPlotPerso.clicked.connect(self.mdlPlots.removePlotPerso)
         
-        self.mprPlots = QDataWidgetMapper()
-        self.mprPlots.setModel(self.mdlPlots)
-        mapping = [
-            #(self.txtPlotName, Plot.name.value),
+        #self.mprPlots = QDataWidgetMapper()
+        #self.mprPlots.setModel(self.mdlPlots)
+        #mapping = [
+            ##(self.txtPlotName, Plot.name.value),
+            #(self.txtPlotDescription, Plot.description.value),
+            #(self.txtPlotResult, Plot.result.value),
+            #]
+        #for w, i in mapping:
+            #self.mprPlots.addMapping(w, i)
+        #self.mprPlots.addMapping(self.sldPlotImportance, Plot.importance.value, "importance")
+        #self.sldPlotImportance.importanceChanged.connect(self.mprPlots.submit)
+        #self.tabMain.currentChanged.connect(self.mprPlots.submit)
+        #self.mprPlots.setCurrentIndex(0)
+        #self.lstPlots.selectionModel().currentChanged.connect(self.mprPlots.setCurrentModelIndex)
+        
+        for w, c in [
+            (self.txtPlotName, Plot.name.value),
             (self.txtPlotDescription, Plot.description.value),
             (self.txtPlotResult, Plot.result.value),
-            ]
-        for w, i in mapping:
-            self.mprPlots.addMapping(w, i)
-        self.mprPlots.addMapping(self.sldPlotImportance, Plot.importance.value, "importance")
-        self.sldPlotImportance.importanceChanged.connect(self.mprPlots.submit)
-        self.tabMain.currentChanged.connect(self.mprPlots.submit)
-        self.mprPlots.setCurrentIndex(0)
-        self.lstPlots.selectionModel().currentChanged.connect(self.mprPlots.setCurrentModelIndex)
-        
-        self.txtPlotName.setModel(self.mprPlots)
-        self.lstPlots.selectionModel().currentChanged.connect(self.txtPlotName.setCurrentModelIndex)
+            (self.sldPlotImportance, Plot.importance.value),
+            ]:
+            w.setModel(self.mdlPlots)
+            w.setColumn(c)
+            self.lstPlots.selectionModel().currentChanged.connect(w.setCurrentModelIndex)
         
         self.tabPlot.setEnabled(False)
         self.lstPlots.selectionModel().currentChanged.connect(lambda: self.tabPlot.setEnabled(self.lstPlots.selectionModel().currentIndex().isValid()))

@@ -1047,18 +1047,12 @@
                </property>
               </widget>
              </item>
-             <item row="3" column="1">
-              <widget class="QPlainTextEdit" name="txtPlotDescription"/>
-             </item>
              <item row="4" column="0">
               <widget class="QLabel" name="label_28">
                <property name="text">
                 <string>Result</string>
                </property>
               </widget>
-             </item>
-             <item row="4" column="1">
-              <widget class="QPlainTextEdit" name="txtPlotResult"/>
              </item>
              <item row="2" column="1">
               <layout class="QVBoxLayout" name="verticalLayout_12">
@@ -1130,6 +1124,12 @@
                 </sizepolicy>
                </property>
               </widget>
+             </item>
+             <item row="3" column="1">
+              <widget class="textEditView" name="txtPlotDescription"/>
+             </item>
+             <item row="4" column="1">
+              <widget class="textEditView" name="txtPlotResult"/>
              </item>
             </layout>
            </widget>

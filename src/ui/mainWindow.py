@@ -535,7 +535,7 @@ class Ui_MainWindow(object):
         self.label_25 = QtWidgets.QLabel(self.infos_2)
         self.label_25.setObjectName("label_25")
         self.formLayout_2.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_25)
-        self.txtPlotName = QtWidgets.QLineEdit(self.infos_2)
+        self.txtPlotName = lineEditView(self.infos_2)
         self.txtPlotName.setObjectName("txtPlotName")
         self.formLayout_2.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.txtPlotName)
         self.label_31 = QtWidgets.QLabel(self.infos_2)
@@ -547,15 +547,9 @@ class Ui_MainWindow(object):
         self.label_27 = QtWidgets.QLabel(self.infos_2)
         self.label_27.setObjectName("label_27")
         self.formLayout_2.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.label_27)
-        self.txtPlotDescription = QtWidgets.QPlainTextEdit(self.infos_2)
-        self.txtPlotDescription.setObjectName("txtPlotDescription")
-        self.formLayout_2.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.txtPlotDescription)
         self.label_28 = QtWidgets.QLabel(self.infos_2)
         self.label_28.setObjectName("label_28")
         self.formLayout_2.setWidget(4, QtWidgets.QFormLayout.LabelRole, self.label_28)
-        self.txtPlotResult = QtWidgets.QPlainTextEdit(self.infos_2)
-        self.txtPlotResult.setObjectName("txtPlotResult")
-        self.formLayout_2.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.txtPlotResult)
         self.verticalLayout_12 = QtWidgets.QVBoxLayout()
         self.verticalLayout_12.setObjectName("verticalLayout_12")
         self.lstPlotPerso = QtWidgets.QListView(self.infos_2)
@@ -594,6 +588,12 @@ class Ui_MainWindow(object):
         self.sldPlotImportance.setSizePolicy(sizePolicy)
         self.sldPlotImportance.setObjectName("sldPlotImportance")
         self.formLayout_2.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.sldPlotImportance)
+        self.txtPlotDescription = textEditView(self.infos_2)
+        self.txtPlotDescription.setObjectName("txtPlotDescription")
+        self.formLayout_2.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.txtPlotDescription)
+        self.txtPlotResult = textEditView(self.infos_2)
+        self.txtPlotResult.setObjectName("txtPlotResult")
+        self.formLayout_2.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.txtPlotResult)
         self.tabPlot.addTab(self.infos_2, "")
         self.tab_15 = QtWidgets.QWidget()
         self.tab_15.setObjectName("tab_15")
@@ -1117,10 +1117,10 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuHelp.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.tabMain.setCurrentIndex(1)
+        self.tabMain.setCurrentIndex(3)
         self.tabSummary.setCurrentIndex(0)
         self.tabPersos.setCurrentIndex(0)
-        self.tabPlot.setCurrentIndex(1)
+        self.tabPlot.setCurrentIndex(0)
         self.comboBox_2.setCurrentIndex(0)
         self.stkPlotSummary.setCurrentIndex(0)
         self.tabRedacInfos.setCurrentIndex(0)
@@ -1272,11 +1272,11 @@ class Ui_MainWindow(object):
         self.actSettings.setText(_translate("MainWindow", "Settings"))
         self.actSettings.setShortcut(_translate("MainWindow", "F8"))
 
-from ui.views.treeView import treeView
 from ui.editors.editorWidget import editorWidget
-from ui.views.lineEditView import lineEditView
-from ui.views.basicItemView import basicItemView
-from ui.views.metadataView import metadataView
-from ui.views.textEditView import textEditView
 from ui.views.outlineView import outlineView
+from ui.views.treeView import treeView
+from ui.views.textEditView import textEditView
+from ui.views.lineEditView import lineEditView
 from ui.sldImportance import sldImportance
+from ui.views.metadataView import metadataView
+from ui.views.basicItemView import basicItemView

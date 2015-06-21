@@ -33,13 +33,18 @@ def run():
         style = settings.value("applicationStyle")
         app.setStyle(style)
     
+    launch()
+    
+def launch():
     from mainWindow import MainWindow
     
     main = MainWindow()
     main.show()
     
-    app.exec_()
-    app.deleteLater()
+    qApp.exec_()
+    qApp.deleteLater()
+    
 
 if __name__ == "__main__":
+        
     run()
