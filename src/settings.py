@@ -9,6 +9,8 @@ viewSettings = {
         "Icon": "Nothing",
         "Text": "Compile",
         "Background": "Nothing",
+        "InfoFolder": "Nothing",
+        "InfoText": "Nothing",
         },
     "Cork": {
         "Icon": "Nothing",

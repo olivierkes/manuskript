@@ -465,6 +465,8 @@ class outlineItem():
             
             if goal:
                 self.setData(Outline.goalPercentage.value, wc / float(goal))
+            else:
+                self.setData(Outline.goalPercentage.value, "")
                 
         self.emitDataChanged()
         

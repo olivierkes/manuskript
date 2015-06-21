@@ -83,6 +83,39 @@ class treeTitleDelegate(QStyledItemDelegate):
             elidedText = fm.elidedText(opt.text, Qt.ElideRight, textRect.width())
             painter.drawText(textRect, Qt.AlignLeft, elidedText)
             
+            extraText = ""
+            if item.isFolder() and settings.viewSettings["Tree"]["InfoFolder"] != "Nothing":
+                if settings.viewSettings["Tree"]["InfoFolder"] == "Count":
+                    extraText = item.childCount()
+                    extraText = " [{}]".format(extraText)
+                elif settings.viewSettings["Tree"]["InfoFolder"] == "WC":
+                    extraText = item.data(Outline.wordCount.value)
+                    extraText = " ({})".format(extraText)
+                elif settings.viewSettings["Tree"]["InfoFolder"] == "Progress":
+                    extraText = int(toFloat(item.data(Outline.goalPercentage.value)) * 100)
+                    if extraText:
+                        extraText = " ({}%)".format(extraText)
+                
+            if item.isText() and settings.viewSettings["Tree"]["InfoText"] != "Nothing":
+                if settings.viewSettings["Tree"]["InfoText"] == "WC":
+                    extraText = item.data(Outline.wordCount.value)
+                    extraText = " ({})".format(extraText)
+                elif settings.viewSettings["Tree"]["InfoText"] == "Progress":
+                    extraText = int(toFloat(item.data(Outline.goalPercentage.value)) * 100)
+                    if extraText:
+                        extraText = " ({}%)".format(extraText)    
+                
+            if extraText:
+                
+                r = QRect(textRect)
+                r.setLeft(r.left() + fm.width(opt.text + " "))
+                
+                painter.save()
+                painter.setPen(Qt.darkGray)
+                painter.drawText(r, Qt.AlignLeft | Qt.AlignBottom, extraText)
+                painter.restore()
+                
+            
             painter.restore()
         
         #QStyledItemDelegate.paint(self, painter, option, index)

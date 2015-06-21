@@ -60,6 +60,18 @@ class settingsWindow(QWidget, Ui_Settings):
             col = self.outlineColumnsData()[chk]
             chk.setChecked(col in settings.outlineViewColumns)
             chk.stateChanged.connect(self.outlineColumnsChanged)
+        
+        for item, what, value in [
+            (self.rdoTreeItemCount, "InfoFolder", "Count"),
+            (self.rdoTreeWC, "InfoFolder", "WC"),
+            (self.rdoTreeProgress, "InfoFolder", "Progress"),
+            (self.rdoTreeNothing, "InfoFolder", "Nothing"),
+            (self.rdoTreeTextWC, "InfoText", "WC"),
+            (self.rdoTreeTextProgress, "InfoText", "Progress"),
+            (self.rdoTreeTextNothing, "InfoText", "Nothing"),
+            ]:
+            item.setChecked(settings.viewSettings["Tree"][what] == value)
+            item.toggled.connect(self.treeViewSettignsChanged)
             
         self.populatesCmbBackgrounds(self.cmbCorkImage)
         self.setCorkImageDefault()
@@ -186,6 +198,21 @@ class settingsWindow(QWidget, Ui_Settings):
         # Update views
         self.mw.redacEditor.outlineView.hideColumns()
         self.mw.treePlanOutline.hideColumns()
+        
+    def treeViewSettignsChanged(self):
+        for item, what, value in [
+            (self.rdoTreeItemCount, "InfoFolder", "Count"),
+            (self.rdoTreeWC, "InfoFolder", "WC"),
+            (self.rdoTreeProgress, "InfoFolder", "Progress"),
+            (self.rdoTreeNothing, "InfoFolder", "Nothing"),
+            (self.rdoTreeTextWC, "InfoText", "WC"),
+            (self.rdoTreeTextProgress, "InfoText", "Progress"),
+            (self.rdoTreeTextNothing, "InfoText", "Nothing"),
+            ]:
+            if item.isChecked():
+                settings.viewSettings["Tree"][what] = value
+                
+        self.mw.treeRedacOutline.viewport().update()
         
     def setCorkColor(self):
         color = QColor(settings.corkBackground["color"])

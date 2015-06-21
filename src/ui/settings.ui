@@ -46,7 +46,7 @@
    <item>
     <widget class="QStackedWidget" name="stack">
      <property name="currentIndex">
-      <number>4</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="stackedWidgetPage1">
       <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -361,13 +361,13 @@ text-align:center;</string>
        <item>
         <widget class="QTabWidget" name="tabViews">
          <property name="currentIndex">
-          <number>2</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="tab">
           <attribute name="title">
            <string>Tree</string>
           </attribute>
-          <layout class="QVBoxLayout" name="verticalLayout">
+          <layout class="QVBoxLayout" name="verticalLayout_17">
            <item>
             <widget class="QGroupBox" name="groupBox_3">
              <property name="font">
@@ -547,6 +547,153 @@ text-align:center;</string>
               </item>
              </layout>
             </widget>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_9">
+             <item>
+              <widget class="QGroupBox" name="groupBox_8">
+               <property name="font">
+                <font>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="title">
+                <string>Folders</string>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_15">
+                <item>
+                 <widget class="QRadioButton" name="rdoTreeItemCount">
+                  <property name="font">
+                   <font>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Show item count</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QRadioButton" name="rdoTreeWC">
+                  <property name="font">
+                   <font>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Show wordcount</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QRadioButton" name="rdoTreeProgress">
+                  <property name="font">
+                   <font>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Show progress</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QRadioButton" name="rdoTreeNothing">
+                  <property name="font">
+                   <font>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Nothing</string>
+                  </property>
+                  <property name="checked">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QGroupBox" name="groupBox_9">
+               <property name="font">
+                <font>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="title">
+                <string>Text</string>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_16">
+                <item>
+                 <widget class="QRadioButton" name="rdoTreeTextWC">
+                  <property name="font">
+                   <font>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Show wordcount</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QRadioButton" name="rdoTreeTextProgress">
+                  <property name="font">
+                   <font>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Show progress</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QRadioButton" name="rdoTreeTextNothing">
+                  <property name="font">
+                   <font>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Nothing</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="verticalSpacer_6">
+                  <property name="font">
+                   <font>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
            </item>
            <item>
             <spacer name="verticalSpacer_3">
@@ -1508,7 +1655,7 @@ text-align:center;</string>
          <property name="currentIndex">
           <number>1</number>
          </property>
-         <widget class="QWidget" name="stackedWidgetPage1_3" native="true">
+         <widget class="QWidget" name="stackedWidgetPage1_3">
           <layout class="QVBoxLayout" name="verticalLayout_12">
            <property name="margin">
             <number>0</number>
@@ -1583,7 +1730,7 @@ text-align:center;</string>
            </item>
           </layout>
          </widget>
-         <widget class="QWidget" name="stackedWidgetPage2_3" native="true">
+         <widget class="QWidget" name="stackedWidgetPage2_3">
           <layout class="QVBoxLayout" name="verticalLayout_13">
            <property name="margin">
             <number>0</number>
@@ -1646,7 +1793,7 @@ text-align:center;</string>
              <property name="childrenCollapsible">
               <bool>false</bool>
              </property>
-             <widget class="QWidget" name="">
+             <widget class="QWidget" name="layoutWidget">
               <layout class="QVBoxLayout" name="verticalLayout_14">
                <item>
                 <widget class="QComboBox" name="cmbThemeEdit">
@@ -1677,7 +1824,7 @@ text-align:center;</string>
                  <property name="currentIndex">
                   <number>1</number>
                  </property>
-                 <widget class="QWidget" name="stackedWidgetPage1_2" native="true">
+                 <widget class="QWidget" name="stackedWidgetPage1_2">
                   <layout class="QFormLayout" name="formLayout_4">
                    <property name="fieldGrowthPolicy">
                     <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
@@ -1749,7 +1896,7 @@ text-align:center;</string>
                    </item>
                   </layout>
                  </widget>
-                 <widget class="QWidget" name="stackedWidgetPage2_2" native="true">
+                 <widget class="QWidget" name="stackedWidgetPage2_2">
                   <layout class="QFormLayout" name="formLayout_5">
                    <property name="fieldGrowthPolicy">
                     <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
@@ -2033,7 +2180,7 @@ text-align:center;</string>
                    </item>
                   </layout>
                  </widget>
-                 <widget class="QWidget" name="stackedWidgetPage3_2" native="true">
+                 <widget class="QWidget" name="stackedWidgetPage3_2">
                   <layout class="QFormLayout" name="formLayout_6">
                    <property name="fieldGrowthPolicy">
                     <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
