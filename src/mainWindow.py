@@ -66,23 +66,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
         # Données
         self.mdlFlatData = QStandardItemModel(2, 8)
-        self.tblDebugFlatData.setModel(self.mdlFlatData)
-        
-        #self.mprSummary = QDataWidgetMapper()
-        #self.mprSummary.setModel(self.mdlFlatData)
-        #self.mprSummary.addMapping(self.txtSummarySituation, 0)
-        #self.mprSummary.addMapping(self.txtSummarySentance, 1)
-        #self.mprSummary.addMapping(self.txtSummarySentance_2, 1)
-        #self.mprSummary.addMapping(self.txtSummaryPara, 2)
-        #self.mprSummary.addMapping(self.txtSummaryPara_2, 2)
-        #self.mprSummary.addMapping(self.txtPlotSummaryPara, 2)
-        #self.mprSummary.addMapping(self.txtSummaryPage, 3)
-        #self.mprSummary.addMapping(self.txtSummaryPage_2, 3)
-        #self.mprSummary.addMapping(self.txtPlotSummaryPage, 3)
-        #self.mprSummary.addMapping(self.txtSummaryFull, 4)
-        #self.mprSummary.addMapping(self.txtPlotSummaryFull, 4)
-        #self.mprSummary.setCurrentIndex(1)
-        
         
         for widget, col in [
             (self.txtSummarySituation, 0),
@@ -101,19 +84,21 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             widget.setModel(self.mdlFlatData)
             widget.setColumn(col)
             widget.setCurrentModelIndex(self.mdlFlatData.index(1, col))
+            
+        for widget, col in [
+            (self.txtGeneralTitle, 0),
+            (self.txtGeneralSubtitle, 1),
+            (self.txtGeneralSerie, 2),
+            (self.txtGeneralVolume, 3),
+            (self.txtGeneralGenre, 4),
+            (self.txtGeneralLicense, 5),
+            (self.txtGeneralAuthor, 6),
+            (self.txtGeneralEmail, 7),
+            ]:
         
-        
-        self.mprInfos = QDataWidgetMapper()
-        self.mprInfos.setModel(self.mdlFlatData)
-        self.mprInfos.addMapping(self.txtGeneralTitle, 0)
-        self.mprInfos.addMapping(self.txtGeneralSubtitle, 1)
-        self.mprInfos.addMapping(self.txtGeneralSerie, 2)
-        self.mprInfos.addMapping(self.txtGeneralVolume, 3)
-        self.mprInfos.addMapping(self.txtGeneralGenre, 4)
-        self.mprInfos.addMapping(self.txtGeneralLicense, 5)
-        self.mprInfos.addMapping(self.txtGeneralAuthor, 6)
-        self.mprInfos.addMapping(self.txtGeneralEmail, 7)
-        self.mprInfos.setCurrentIndex(0)
+            widget.setModel(self.mdlFlatData)
+            widget.setColumn(col)
+            widget.setCurrentModelIndex(self.mdlFlatData.index(0, col))
         
         # Persos
         self.mdlPersos = QStandardItemModel(0, 0)
