@@ -67,84 +67,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Données
         self.mdlFlatData = QStandardItemModel(2, 8)
         
-        for widget, col in [
-            (self.txtSummarySituation, 0),
-            (self.txtSummarySentance, 1),
-            (self.txtSummarySentance_2, 1),
-            (self.txtSummaryPara, 2),
-            (self.txtSummaryPara_2, 2),
-            (self.txtPlotSummaryPara, 2),
-            (self.txtSummaryPage, 3),
-            (self.txtSummaryPage_2, 3),
-            (self.txtPlotSummaryPage, 3),
-            (self.txtSummaryFull, 4),
-            (self.txtPlotSummaryFull, 4),
-            ]:
-        
-            widget.setModel(self.mdlFlatData)
-            widget.setColumn(col)
-            widget.setCurrentModelIndex(self.mdlFlatData.index(1, col))
-            
-        for widget, col in [
-            (self.txtGeneralTitle, 0),
-            (self.txtGeneralSubtitle, 1),
-            (self.txtGeneralSerie, 2),
-            (self.txtGeneralVolume, 3),
-            (self.txtGeneralGenre, 4),
-            (self.txtGeneralLicense, 5),
-            (self.txtGeneralAuthor, 6),
-            (self.txtGeneralEmail, 7),
-            ]:
-        
-            widget.setModel(self.mdlFlatData)
-            widget.setColumn(col)
-            widget.setCurrentModelIndex(self.mdlFlatData.index(0, col))
-        
         # Persos
         self.mdlPersos = QStandardItemModel(0, 0)
-        self.mdlPersosProxy = persosProxyModel() # None
-        #self.mdlPersoProxyFilter = QSortFilterProxyModel()
-        if self.mdlPersosProxy:
-            self.mdlPersosProxy.setSourceModel(self.mdlPersos)
-            self.lstPersos.setModel(self.mdlPersosProxy)
-        else:
-            self.lstPersos.setModel(self.mdlPersos)
+        self.mdlPersosProxy = None # persosProxyModel() # None
+        #self.mdlPersosProxy = persosProxyModel()
         
         self.mdlPersosInfos = QStandardItemModel(1, 0)
         self.mdlPersosInfos.insertColumn(0, [QStandardItem("ID")])
         self.mdlPersosInfos.setHorizontalHeaderLabels(["Description"])
-        #self.lstPersos.setModel(self.mdlPersos)
-        
-        self.tblPersoInfos.setModel(self.mdlPersosInfos)
-        self.tblPersoInfos.setRowHidden(0, True)
-        
-        self.btnAddPerso.clicked.connect(self.createPerso)
-        self.btnRmPerso.clicked.connect(self.removePerso)
-        self.btnPersoColor.clicked.connect(self.chosePersoColor)
-        self.btnPersoAddInfo.clicked.connect(lambda: self.mdlPersosInfos.insertRow(self.mdlPersosInfos.rowCount()))
-        self.mprPersos = QDataWidgetMapper()
-        self.mprPersos.setModel(self.mdlPersos)
-        
-        mapping = [
-            (self.txtPersoName, Perso.name.value),
-            (self.txtPersoMotivation, Perso.motivation.value),
-            (self.txtPersoGoal, Perso.goal.value),
-            (self.txtPersoConflict, Perso.conflict.value),
-            (self.txtPersoEpiphany, Perso.epiphany.value),
-            (self.txtPersoSummarySentance, Perso.summarySentance.value),
-            (self.txtPersoSummaryPara, Perso.summaryPara.value),
-            (self.txtPersoSummaryFull, Perso.summaryFull.value),
-            (self.txtPersoNotes, Perso.notes.value)
-            ]
-        for w, i in mapping:
-                self.mprPersos.addMapping(w, i)    
-        self.mprPersos.addMapping(self.sldPersoImportance, Perso.importance.value, "importance")
-        self.sldPersoImportance.importanceChanged.connect(self.mprPersos.submit)
-        self.tabMain.currentChanged.connect(self.mprPersos.submit)
-        
-        self.mprPersos.setCurrentIndex(0)
-        self.lstPersos.selectionModel().currentChanged.connect(self.changeCurrentPerso)
-        self.tabPersos.currentChanged.connect(self.resizePersosInfos)
         
         # Labels
         self.mdlLabels = QStandardItemModel()
@@ -171,105 +101,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             
         # Plot
         self.mdlPlots = plotModel()
-        self.lstPlots.setModel(self.mdlPlots.viewModel())
-        self.lstPlotPerso.setModel(self.mdlPlots.viewModel())
-        self.lstSubPlots.setModel(self.mdlPlots.viewModel())
-        self.btnAddPlot.clicked.connect(self.mdlPlots.addPlot)
-        self.btnRmPlot.clicked.connect(lambda: self.mdlPlots.removePlot(self.lstPlots.currentIndex()))
-        self.btnAddSubPlot.clicked.connect(self.mdlPlots.addSubPlot)
-        self.btnRmSubPlot.clicked.connect(self.mdlPlots.removeSubPlot)
-        self.btnRmPlotPerso.clicked.connect(self.mdlPlots.removePlotPerso)
-        
-        #self.mprPlots = QDataWidgetMapper()
-        #self.mprPlots.setModel(self.mdlPlots)
-        #mapping = [
-            ##(self.txtPlotName, Plot.name.value),
-            #(self.txtPlotDescription, Plot.description.value),
-            #(self.txtPlotResult, Plot.result.value),
-            #]
-        #for w, i in mapping:
-            #self.mprPlots.addMapping(w, i)
-        #self.mprPlots.addMapping(self.sldPlotImportance, Plot.importance.value, "importance")
-        #self.sldPlotImportance.importanceChanged.connect(self.mprPlots.submit)
-        #self.tabMain.currentChanged.connect(self.mprPlots.submit)
-        #self.mprPlots.setCurrentIndex(0)
-        #self.lstPlots.selectionModel().currentChanged.connect(self.mprPlots.setCurrentModelIndex)
-        
-        for w, c in [
-            (self.txtPlotName, Plot.name.value),
-            (self.txtPlotDescription, Plot.description.value),
-            (self.txtPlotResult, Plot.result.value),
-            (self.sldPlotImportance, Plot.importance.value),
-            ]:
-            w.setModel(self.mdlPlots)
-            w.setColumn(c)
-            self.lstPlots.selectionModel().currentChanged.connect(w.setCurrentModelIndex)
-        
-        self.tabPlot.setEnabled(False)
-        self.lstPlots.selectionModel().currentChanged.connect(lambda: self.tabPlot.setEnabled(self.lstPlots.selectionModel().currentIndex().isValid()))
-        # sets persos view
-        self.lstPlots.selectionModel().currentChanged.connect(
-            lambda: self.lstPlotPerso.setRootIndex(self.mdlPlots.index(
-                self.lstPlots.selectionModel().currentIndex().row(),
-                Plot.persos.value)))
-        # sets subplots view
-        self.lstPlots.selectionModel().currentChanged.connect(
-            lambda: self.lstSubPlots.setRootIndex(self.mdlPlots.index(
-                self.lstPlots.selectionModel().currentIndex().row(),
-                Plot.subplots.value)))
-        # Subplot mapper
-        self.mprSubPlots = QDataWidgetMapper()
-        self.mprSubPlots.setModel(self.mdlPlots)
-        self.mprSubPlots.addMapping(self.txtSubPlotSummary, 2)
-        self.lstPlots.selectionModel().currentChanged.connect(self.mprSubPlots.setRootIndex)
-        self.lstSubPlots.selectionModel().currentChanged.connect(self.mprSubPlots.setCurrentModelIndex)
         
         # Outline
         self.mdlOutline = outlineModel()
-        self.treeRedacOutline.setModel(self.mdlOutline)
-        self.treePlanOutline.setModelPersos(self.mdlPersos)
-        self.treePlanOutline.setModelLabels(self.mdlLabels)
-        self.treePlanOutline.setModelStatus(self.mdlStatus)
-        
-        self.redacMetadata.setModels(self.mdlOutline, self.mdlPersos, self.mdlLabels, self.mdlStatus)
-        self.outlineItemEditor.setModels(self.mdlOutline, self.mdlPersos, self.mdlLabels, self.mdlStatus)
-        
-        self.treePlanOutline.setModel(self.mdlOutline)
-        self.redacEditor.setModel(self.mdlOutline)
-        
-        self.treePlanOutline.selectionModel().selectionChanged.connect(
-            lambda: self.outlineItemEditor.selectionChanged(self.treePlanOutline))
-        self.treePlanOutline.clicked.connect(
-            lambda: self.outlineItemEditor.selectionChanged(self.treePlanOutline))
-        
-        self.treeRedacOutline.setSelectionModel(self.treePlanOutline.selectionModel())
-        
-        self.btnRedacAddFolder.clicked.connect(self.treeRedacOutline.addFolder)
-        self.btnPlanAddFolder.clicked.connect(self.treePlanOutline.addFolder)
-        self.btnRedacAddText.clicked.connect(self.treeRedacOutline.addText)
-        self.btnPlanAddText.clicked.connect(self.treePlanOutline.addText)
-        self.btnRedacRemoveItem.clicked.connect(self.outlineRemoveItems)
-        self.btnPlanRemoveItem.clicked.connect(self.outlineRemoveItems)
-        
-        self.treeRedacOutline.selectionModel().selectionChanged.connect(
-            lambda: self.redacMetadata.selectionChanged(self.treeRedacOutline))
-        self.treeRedacOutline.clicked.connect(
-            lambda: self.redacMetadata.selectionChanged(self.treeRedacOutline))
-        
-        #self.treeRedacOutline.selectionModel().currentChanged.connect(self.redacEditor.setCurrentModelIndex)
-        self.treeRedacOutline.selectionModel().selectionChanged.connect(self.redacEditor.setView)
-        self.treeRedacOutline.selectionModel().currentChanged.connect(self.redacEditor.txtRedacText.setCurrentModelIndex)
-        
-        self.treeRedacOutline.selectionModel().selectionChanged.connect(self.outlineSelectionChanged)
-        self.treeRedacOutline.selectionModel().selectionChanged.connect(self.outlineSelectionChanged)
-        self.treePlanOutline.selectionModel().selectionChanged.connect(self.outlineSelectionChanged)
-        self.treePlanOutline.selectionModel().selectionChanged.connect(self.outlineSelectionChanged)
-        
-        self.sldCorkSizeFactor.valueChanged.connect(self.redacEditor.setCorkSizeFactor)
-        self.btnRedacFolderCork.toggled.connect(self.sldCorkSizeFactor.setVisible)
-        self.btnRedacFolderText.clicked.connect(lambda v: self.redacEditor.setFolderView("text"))
-        self.btnRedacFolderCork.clicked.connect(lambda v: self.redacEditor.setFolderView("cork"))
-        self.btnRedacFolderOutline.clicked.connect(lambda v: self.redacEditor.setFolderView("outline"))
         
         # Main Menu
         self.actSave.setEnabled(False)
@@ -464,6 +298,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Load data
         self.loadDatas()
         
+        self.makeConnections()
+        
         # Load settings
         self.generateViewMenu()
         self.sldCorkSizeFactor.setValue(settings.corkSizeFactor)
@@ -512,7 +348,168 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
         # Adds header labels
         self.mdlPersos.setHorizontalHeaderLabels([i.name for i in Perso])
-                
+
+    def makeConnections(self):
+        
+        # Flat datas (Summary and general infos)
+        for widget, col in [
+            (self.txtSummarySituation, 0),
+            (self.txtSummarySentance, 1),
+            (self.txtSummarySentance_2, 1),
+            (self.txtSummaryPara, 2),
+            (self.txtSummaryPara_2, 2),
+            (self.txtPlotSummaryPara, 2),
+            (self.txtSummaryPage, 3),
+            (self.txtSummaryPage_2, 3),
+            (self.txtPlotSummaryPage, 3),
+            (self.txtSummaryFull, 4),
+            (self.txtPlotSummaryFull, 4),
+            ]:
+        
+            widget.setModel(self.mdlFlatData)
+            widget.setColumn(col)
+            widget.setCurrentModelIndex(self.mdlFlatData.index(1, col))
+            
+        for widget, col in [
+            (self.txtGeneralTitle, 0),
+            (self.txtGeneralSubtitle, 1),
+            (self.txtGeneralSerie, 2),
+            (self.txtGeneralVolume, 3),
+            (self.txtGeneralGenre, 4),
+            (self.txtGeneralLicense, 5),
+            (self.txtGeneralAuthor, 6),
+            (self.txtGeneralEmail, 7),
+            ]:
+        
+            widget.setModel(self.mdlFlatData)
+            widget.setColumn(col)
+            widget.setCurrentModelIndex(self.mdlFlatData.index(0, col))
+        
+        # Persos
+        
+        if self.mdlPersosProxy:
+            self.mdlPersosProxy.setSourceModel(self.mdlPersos)
+            self.lstPersos.setModel(self.mdlPersosProxy)
+        else:
+            self.lstPersos.setModel(self.mdlPersos)
+            
+        self.tblPersoInfos.setModel(self.mdlPersosInfos)
+        self.tblPersoInfos.setRowHidden(0, True)
+        
+        self.btnAddPerso.clicked.connect(self.createPerso)
+        self.btnRmPerso.clicked.connect(self.removePerso)
+        self.btnPersoColor.clicked.connect(self.chosePersoColor)
+        self.btnPersoAddInfo.clicked.connect(lambda: self.mdlPersosInfos.insertRow(self.mdlPersosInfos.rowCount()))
+        self.mprPersos = QDataWidgetMapper()
+        self.mprPersos.setModel(self.mdlPersos)
+        
+        mapping = [
+            (self.txtPersoName, Perso.name.value),
+            (self.txtPersoMotivation, Perso.motivation.value),
+            (self.txtPersoGoal, Perso.goal.value),
+            (self.txtPersoConflict, Perso.conflict.value),
+            (self.txtPersoEpiphany, Perso.epiphany.value),
+            (self.txtPersoSummarySentance, Perso.summarySentance.value),
+            (self.txtPersoSummaryPara, Perso.summaryPara.value),
+            (self.txtPersoSummaryFull, Perso.summaryFull.value),
+            (self.txtPersoNotes, Perso.notes.value)
+            ]
+        for w, i in mapping:
+                self.mprPersos.addMapping(w, i)    
+        self.mprPersos.addMapping(self.sldPersoImportance, Perso.importance.value, "importance")
+        self.sldPersoImportance.importanceChanged.connect(self.mprPersos.submit)
+        self.tabMain.currentChanged.connect(self.mprPersos.submit)
+        
+        self.mprPersos.setCurrentIndex(0)
+        self.lstPersos.selectionModel().currentChanged.connect(self.changeCurrentPerso)
+        self.tabPersos.currentChanged.connect(self.resizePersosInfos)
+        
+        # Plots
+        self.lstPlots.setModel(self.mdlPlots.viewModel())
+        self.lstPlotPerso.setModel(self.mdlPlots.viewModel())
+        self.lstSubPlots.setModel(self.mdlPlots.viewModel())
+        self.btnAddPlot.clicked.connect(self.mdlPlots.addPlot)
+        self.btnRmPlot.clicked.connect(lambda: self.mdlPlots.removePlot(self.lstPlots.currentIndex()))
+        self.btnAddSubPlot.clicked.connect(self.mdlPlots.addSubPlot)
+        self.btnRmSubPlot.clicked.connect(self.mdlPlots.removeSubPlot)
+        self.btnRmPlotPerso.clicked.connect(self.mdlPlots.removePlotPerso)
+        
+        for w, c in [
+            (self.txtPlotName, Plot.name.value),
+            (self.txtPlotDescription, Plot.description.value),
+            (self.txtPlotResult, Plot.result.value),
+            (self.sldPlotImportance, Plot.importance.value),
+            ]:
+            w.setModel(self.mdlPlots)
+            w.setColumn(c)
+            self.lstPlots.selectionModel().currentChanged.connect(w.setCurrentModelIndex)
+        
+        self.tabPlot.setEnabled(False)
+        self.lstPlots.selectionModel().currentChanged.connect(lambda: self.tabPlot.setEnabled(self.lstPlots.selectionModel().currentIndex().isValid()))
+        # sets persos view
+        self.lstPlots.selectionModel().currentChanged.connect(
+            lambda: self.lstPlotPerso.setRootIndex(self.mdlPlots.index(
+                self.lstPlots.selectionModel().currentIndex().row(),
+                Plot.persos.value)))
+        # sets subplots view
+        self.lstPlots.selectionModel().currentChanged.connect(
+            lambda: self.lstSubPlots.setRootIndex(self.mdlPlots.index(
+                self.lstPlots.selectionModel().currentIndex().row(),
+                Plot.subplots.value)))
+        # Subplot mapper
+        self.mprSubPlots = QDataWidgetMapper()
+        self.mprSubPlots.setModel(self.mdlPlots)
+        self.mprSubPlots.addMapping(self.txtSubPlotSummary, 2)
+        self.lstPlots.selectionModel().currentChanged.connect(self.mprSubPlots.setRootIndex)
+        self.lstSubPlots.selectionModel().currentChanged.connect(self.mprSubPlots.setCurrentModelIndex)
+        
+        # Outline
+        
+        self.treeRedacOutline.setModel(self.mdlOutline)
+        self.treePlanOutline.setModelPersos(self.mdlPersos)
+        self.treePlanOutline.setModelLabels(self.mdlLabels)
+        self.treePlanOutline.setModelStatus(self.mdlStatus)
+        
+        self.redacMetadata.setModels(self.mdlOutline, self.mdlPersos, self.mdlLabels, self.mdlStatus)
+        self.outlineItemEditor.setModels(self.mdlOutline, self.mdlPersos, self.mdlLabels, self.mdlStatus)
+        
+        self.treePlanOutline.setModel(self.mdlOutline)
+        self.redacEditor.setModel(self.mdlOutline)
+        
+        self.treePlanOutline.selectionModel().selectionChanged.connect(
+            lambda: self.outlineItemEditor.selectionChanged(self.treePlanOutline))
+        self.treePlanOutline.clicked.connect(
+            lambda: self.outlineItemEditor.selectionChanged(self.treePlanOutline))
+        
+        self.treeRedacOutline.setSelectionModel(self.treePlanOutline.selectionModel())
+        
+        self.btnRedacAddFolder.clicked.connect(self.treeRedacOutline.addFolder)
+        self.btnPlanAddFolder.clicked.connect(self.treePlanOutline.addFolder)
+        self.btnRedacAddText.clicked.connect(self.treeRedacOutline.addText)
+        self.btnPlanAddText.clicked.connect(self.treePlanOutline.addText)
+        self.btnRedacRemoveItem.clicked.connect(self.outlineRemoveItems)
+        self.btnPlanRemoveItem.clicked.connect(self.outlineRemoveItems)
+        
+        self.treeRedacOutline.selectionModel().selectionChanged.connect(
+            lambda: self.redacMetadata.selectionChanged(self.treeRedacOutline))
+        self.treeRedacOutline.clicked.connect(
+            lambda: self.redacMetadata.selectionChanged(self.treeRedacOutline))
+        
+        #self.treeRedacOutline.selectionModel().currentChanged.connect(self.redacEditor.setCurrentModelIndex)
+        self.treeRedacOutline.selectionModel().selectionChanged.connect(self.redacEditor.setView)
+        self.treeRedacOutline.selectionModel().currentChanged.connect(self.redacEditor.txtRedacText.setCurrentModelIndex)
+        
+        self.treeRedacOutline.selectionModel().selectionChanged.connect(self.outlineSelectionChanged)
+        self.treeRedacOutline.selectionModel().selectionChanged.connect(self.outlineSelectionChanged)
+        self.treePlanOutline.selectionModel().selectionChanged.connect(self.outlineSelectionChanged)
+        self.treePlanOutline.selectionModel().selectionChanged.connect(self.outlineSelectionChanged)
+        
+        self.sldCorkSizeFactor.valueChanged.connect(self.redacEditor.setCorkSizeFactor)
+        self.btnRedacFolderCork.toggled.connect(self.sldCorkSizeFactor.setVisible)
+        self.btnRedacFolderText.clicked.connect(lambda v: self.redacEditor.setFolderView("text"))
+        self.btnRedacFolderCork.clicked.connect(lambda v: self.redacEditor.setFolderView("cork"))
+        self.btnRedacFolderOutline.clicked.connect(lambda v: self.redacEditor.setFolderView("outline"))
+
     def readSettings(self):
         # Load State and geometry
         settings = QSettings(qApp.organizationName(), qApp.applicationName())
