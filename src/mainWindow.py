@@ -59,7 +59,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.mapperCycle.setMapping(t, i)
             
         self.mapperCycle.mapped.connect(self.clickCycle)
-        
+        self.cmbSummary.currentIndexChanged.connect(self.summaryPageChanged)
+        self.cmbSummary.setCurrentIndex(0)
+        self.cmbSummary.currentIndexChanged.emit(0)
         
         # Données
         self.mdlFlatData = QStandardItemModel(2, 8)
@@ -67,16 +69,17 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
         self.mprSummary = QDataWidgetMapper()
         self.mprSummary.setModel(self.mdlFlatData)
-        self.mprSummary.addMapping(self.txtSummarySentance, 0)
-        self.mprSummary.addMapping(self.txtSummarySentance_2, 0)
-        self.mprSummary.addMapping(self.txtSummaryPara, 1)
-        self.mprSummary.addMapping(self.txtSummaryPara_2, 1)
-        self.mprSummary.addMapping(self.txtPlotSummaryPara, 1)
-        self.mprSummary.addMapping(self.txtSummaryPage, 2)
-        self.mprSummary.addMapping(self.txtSummaryPage_2, 2)
-        self.mprSummary.addMapping(self.txtPlotSummaryPage, 2)
-        self.mprSummary.addMapping(self.txtSummaryFull, 3)
-        self.mprSummary.addMapping(self.txtPlotSummaryFull, 3)
+        self.mprSummary.addMapping(self.txtSummarySituation, 0)
+        self.mprSummary.addMapping(self.txtSummarySentance, 1)
+        self.mprSummary.addMapping(self.txtSummarySentance_2, 1)
+        self.mprSummary.addMapping(self.txtSummaryPara, 2)
+        self.mprSummary.addMapping(self.txtSummaryPara_2, 2)
+        self.mprSummary.addMapping(self.txtPlotSummaryPara, 2)
+        self.mprSummary.addMapping(self.txtSummaryPage, 3)
+        self.mprSummary.addMapping(self.txtSummaryPage_2, 3)
+        self.mprSummary.addMapping(self.txtPlotSummaryPage, 3)
+        self.mprSummary.addMapping(self.txtSummaryFull, 4)
+        self.mprSummary.addMapping(self.txtPlotSummaryFull, 4)
         self.mprSummary.setCurrentIndex(1)
         
         self.mprInfos = QDataWidgetMapper()
@@ -227,6 +230,20 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.lstDebugStatus.setModel(self.mdlStatus)
         
         self.loadProject(os.path.join(appPath(), "test_project.zip"))
+    
+####################################################################################################
+#                                             SUMMARY                                              #
+####################################################################################################
+    
+    def summaryPageChanged(self, index):
+        fractalButtons = [
+            self.btnStepTwo,
+            self.btnStepThree,
+            self.btnStepFive,
+            self.btnStepSeven,
+            ]
+        for b in fractalButtons:
+            b.setVisible(fractalButtons.index(b) == index)
     
 ####################################################################################################
 #                                             OUTLINE                                              #
@@ -563,25 +580,35 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Help box
         references = [
             (self.lytTabOverview,
-             self.tr("Enter infos about your book, and yourself.")),
-            (self.lytTabSummary,
-             self.tr("Take time to think about a one sentance (~50 words) summary of your book. Then expand it to a paragraph, then to a page, then to a full summary.")),
+             self.tr("Enter infos about your book, and yourself."),
+             0),
+            (self.lytSituation,
+             self.tr("The basic situation, in the form of a 'What if...?' question. Ex: 'What if the most dangerous evil wizard could wasn't abled to kill a baby?' (Harry Potter)"),
+             1),
+            (self.lytSummary,
+             self.tr("Take time to think about a one sentance (~50 words) summary of your book. Then expand it to a paragraph, then to a page, then to a full summary."),
+             1),
             (self.lytTabPersos,
-             self.tr("Create your characters.")),
+             self.tr("Create your characters."),
+             0),
             (self.lytTabPlot,
-             self.tr("Develop plots.")),
+             self.tr("Develop plots."),
+             0),
             (self.lytTabOutline,
-             self.tr("Create the outline of your masterpiece.")),
+             self.tr("Create the outline of your masterpiece."),
+             0),
             (self.lytTabRedac,
-             self.tr("Write.")),
+             self.tr("Write."),
+             0),
             (self.lytTabDebug,
-             self.tr("Debug infos. Sometimes useful."),)
+             self.tr("Debug infos. Sometimes useful."),
+             0)
             ]
 
-        for widget, text in references:
+        for widget, text, pos in references:
             label = helpLabel(text)
             self.actShowHelp.toggled.connect(label.setVisible)
-            widget.layout().insertWidget(0, label)
+            widget.layout().insertWidget(pos, label)
         
         self.actShowHelp.setChecked(False)
         

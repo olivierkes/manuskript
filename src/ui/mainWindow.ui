@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1103</width>
-    <height>809</height>
+    <height>834</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,7 @@
     <item>
      <widget class="QTabWidget" name="tabMain">
       <property name="currentIndex">
-       <number>6</number>
+       <number>1</number>
       </property>
       <property name="documentMode">
        <bool>true</bool>
@@ -176,54 +176,333 @@
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_24">
         <item>
-         <widget class="QTabWidget" name="tabSummary">
-          <property name="tabPosition">
-           <enum>QTabWidget::West</enum>
+         <layout class="QFormLayout" name="formLayout_5">
+          <property name="labelAlignment">
+           <set>Qt::AlignRight|Qt::AlignTop|Qt::AlignTrailing</set>
           </property>
-          <property name="currentIndex">
-           <number>0</number>
-          </property>
-          <widget class="QWidget" name="tab_14">
-           <attribute name="title">
-            <string>One sentance</string>
-           </attribute>
-           <layout class="QVBoxLayout" name="verticalLayout_5">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_9">
+            <property name="font">
+             <font>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>Situation:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_29">
+            <property name="font">
+             <font>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>Summary:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <layout class="QVBoxLayout" name="lytSummary">
             <item>
-             <widget class="QLabel" name="label">
-              <property name="text">
-               <string>One sentance summary</string>
-              </property>
+             <widget class="QComboBox" name="cmbSummary">
+              <item>
+               <property name="text">
+                <string>One sentance</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>One paragraph</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>One page</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Full</string>
+               </property>
+              </item>
              </widget>
             </item>
+           </layout>
+          </item>
+          <item row="2" column="1">
+           <widget class="QStackedWidget" name="tabSummary">
+            <property name="currentIndex">
+             <number>0</number>
+            </property>
+            <widget class="QWidget" name="tabSummaryPage1">
+             <layout class="QVBoxLayout" name="verticalLayout_5">
+              <item>
+               <widget class="QLabel" name="label">
+                <property name="text">
+                 <string>One sentance summary</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="textEditView" name="txtSummarySentance">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="lblSummaryWCSentance">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="verticalSpacer_2">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="tabSummaryPage2">
+             <layout class="QHBoxLayout" name="horizontalLayout_4">
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout">
+                <item>
+                 <widget class="QLabel" name="label_21">
+                  <property name="text">
+                   <string>One sentance summary</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="textEditView" name="txtSummarySentance_2">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="verticalSpacer_3">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="Line" name="line">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_2">
+                <item>
+                 <widget class="QLabel" name="label_2">
+                  <property name="text">
+                   <string>One paragraph summary</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="textEditView" name="txtSummaryPara"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="lblSummaryWCPara">
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="verticalSpacer">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>264</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="tabSummaryPage3">
+             <layout class="QHBoxLayout" name="horizontalLayout_7">
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_6">
+                <item>
+                 <widget class="QLabel" name="label_22">
+                  <property name="text">
+                   <string>One paragraph summary</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="textEditView" name="txtSummaryPara_2">
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="verticalSpacer_4">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>264</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="Line" name="line_2">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_3">
+                <item>
+                 <widget class="QLabel" name="label_17">
+                  <property name="text">
+                   <string>Expand each sentence of your one paragraph summary to a paragraph</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="textEditView" name="txtSummaryPage"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="lblSummaryWCPage">
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="tabSummaryPage4">
+             <layout class="QHBoxLayout" name="horizontalLayout_8">
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_7">
+                <item>
+                 <widget class="QLabel" name="label_23">
+                  <property name="text">
+                   <string>One page summary</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="textEditView" name="txtSummaryPage_2">
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="Line" name="line_3">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_4">
+                <item>
+                 <widget class="QLabel" name="label_20">
+                  <property name="text">
+                   <string>Full summary</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="textEditView" name="txtSummaryFull"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="lblSummaryWCFull">
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_5">
             <item>
-             <widget class="textEditView" name="txtSummarySentance">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="lblSummaryWCSentance">
-              <property name="text">
-               <string/>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <spacer name="verticalSpacer_2">
+             <spacer name="horizontalSpacer_8">
               <property name="orientation">
-               <enum>Qt::Vertical</enum>
+               <enum>Qt::Horizontal</enum>
               </property>
               <property name="sizeHint" stdset="0">
                <size>
-                <width>20</width>
-                <height>40</height>
+                <width>40</width>
+                <height>20</height>
                </size>
               </property>
              </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnStepThree">
+              <property name="text">
+               <string>Next</string>
+              </property>
+              <property name="icon">
+               <iconset theme="go-next">
+                <normaloff/>
+               </iconset>
+              </property>
+             </widget>
             </item>
             <item>
              <widget class="QPushButton" name="btnStepTwo">
@@ -237,249 +516,44 @@
               </property>
              </widget>
             </item>
-           </layout>
-          </widget>
-          <widget class="QWidget" name="tab_13">
-           <attribute name="title">
-            <string>One paragraph</string>
-           </attribute>
-           <layout class="QHBoxLayout" name="horizontalLayout_4">
             <item>
-             <layout class="QVBoxLayout" name="verticalLayout">
-              <item>
-               <widget class="QLabel" name="label_21">
-                <property name="text">
-                 <string>One sentance summary</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="textEditView" name="txtSummarySentance_2">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="readOnly">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <spacer name="verticalSpacer_3">
-                <property name="orientation">
-                 <enum>Qt::Vertical</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>20</width>
-                  <height>40</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-             </layout>
-            </item>
-            <item>
-             <widget class="Line" name="line">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
+             <widget class="QPushButton" name="btnStepFive">
+              <property name="text">
+               <string>Next</string>
+              </property>
+              <property name="icon">
+               <iconset theme="go-next">
+                <normaloff/>
+               </iconset>
               </property>
              </widget>
             </item>
             <item>
-             <layout class="QVBoxLayout" name="verticalLayout_2">
-              <item>
-               <widget class="QLabel" name="label_2">
-                <property name="text">
-                 <string>One paragraph summary</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="textEditView" name="txtSummaryPara"/>
-              </item>
-              <item>
-               <widget class="QLabel" name="lblSummaryWCPara">
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <spacer name="verticalSpacer">
-                <property name="orientation">
-                 <enum>Qt::Vertical</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>20</width>
-                  <height>264</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
-               <widget class="QPushButton" name="btnStepThree">
-                <property name="text">
-                 <string>Next</string>
-                </property>
-                <property name="icon">
-                 <iconset theme="go-next">
-                  <normaloff/>
-                 </iconset>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-           </layout>
-          </widget>
-          <widget class="QWidget" name="tabWidgetPage1">
-           <attribute name="title">
-            <string>One page</string>
-           </attribute>
-           <layout class="QHBoxLayout" name="horizontalLayout_7">
-            <item>
-             <layout class="QVBoxLayout" name="verticalLayout_6">
-              <item>
-               <widget class="QLabel" name="label_22">
-                <property name="text">
-                 <string>One paragraph summary</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="textEditView" name="txtSummaryPara_2">
-                <property name="readOnly">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <spacer name="verticalSpacer_4">
-                <property name="orientation">
-                 <enum>Qt::Vertical</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>20</width>
-                  <height>264</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
-               <widget class="QPushButton" name="btnStepFive">
-                <property name="text">
-                 <string>Next</string>
-                </property>
-                <property name="icon">
-                 <iconset theme="go-next">
-                  <normaloff/>
-                 </iconset>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-            <item>
-             <widget class="Line" name="line_2">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
+             <widget class="QPushButton" name="btnStepSeven">
+              <property name="text">
+               <string>Next</string>
+              </property>
+              <property name="icon">
+               <iconset theme="go-next">
+                <normaloff/>
+               </iconset>
               </property>
              </widget>
             </item>
-            <item>
-             <layout class="QVBoxLayout" name="verticalLayout_3">
-              <item>
-               <widget class="QLabel" name="label_17">
-                <property name="text">
-                 <string>Expand each sentence of your one paragraph summary to a paragraph</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="textEditView" name="txtSummaryPage"/>
-              </item>
-              <item>
-               <widget class="QLabel" name="lblSummaryWCPage">
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
            </layout>
-          </widget>
-          <widget class="QWidget" name="tabWidgetPage2">
-           <attribute name="title">
-            <string>Full</string>
-           </attribute>
-           <layout class="QHBoxLayout" name="horizontalLayout_8">
+          </item>
+          <item row="0" column="1">
+           <layout class="QVBoxLayout" name="lytSituation">
             <item>
-             <layout class="QVBoxLayout" name="verticalLayout_7">
-              <item>
-               <widget class="QLabel" name="label_23">
-                <property name="text">
-                 <string>One page summary</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="textEditView" name="txtSummaryPage_2">
-                <property name="readOnly">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="btnStepSeven">
-                <property name="text">
-                 <string>Next</string>
-                </property>
-                <property name="icon">
-                 <iconset theme="go-next">
-                  <normaloff/>
-                 </iconset>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-            <item>
-             <widget class="Line" name="line_3">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
+             <widget class="QLineEdit" name="txtSummarySituation">
+              <property name="placeholderText">
+               <string>What if...?</string>
               </property>
              </widget>
             </item>
-            <item>
-             <layout class="QVBoxLayout" name="verticalLayout_4">
-              <item>
-               <widget class="QLabel" name="label_20">
-                <property name="text">
-                 <string>Full summary</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="textEditView" name="txtSummaryFull"/>
-              </item>
-              <item>
-               <widget class="QLabel" name="lblSummaryWCFull">
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
            </layout>
-          </widget>
-         </widget>
+          </item>
+         </layout>
         </item>
        </layout>
       </widget>
@@ -2167,11 +2241,11 @@
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>436</x>
+     <x>435</x>
      <y>127</y>
     </hint>
     <hint type="destinationlabel">
-     <x>436</x>
+     <x>435</x>
      <y>120</y>
     </hint>
    </hints>
@@ -2183,7 +2257,7 @@
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>332</x>
+     <x>331</x>
      <y>762</y>
     </hint>
     <hint type="destinationlabel">
@@ -2219,8 +2293,8 @@
      <y>770</y>
     </hint>
     <hint type="destinationlabel">
-     <x>508</x>
-     <y>566</y>
+     <x>1053</x>
+     <y>731</y>
     </hint>
    </hints>
   </connection>
@@ -2231,12 +2305,12 @@
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>660</x>
-     <y>607</y>
+     <x>860</x>
+     <y>614</y>
     </hint>
     <hint type="destinationlabel">
-     <x>701</x>
-     <y>759</y>
+     <x>1090</x>
+     <y>772</y>
     </hint>
    </hints>
   </connection>
@@ -2247,12 +2321,44 @@
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>446</x>
-     <y>606</y>
+     <x>272</x>
+     <y>614</y>
     </hint>
     <hint type="destinationlabel">
-     <x>428</x>
-     <y>748</y>
+     <x>233</x>
+     <y>772</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cmbSummary</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>tabSummary</receiver>
+   <slot>setCurrentIndex(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>187</x>
+     <y>135</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>462</x>
+     <y>430</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tabSummary</sender>
+   <signal>currentChanged(int)</signal>
+   <receiver>cmbSummary</receiver>
+   <slot>setCurrentIndex(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>462</x>
+     <y>430</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>156</x>
+     <y>134</y>
     </hint>
    </hints>
   </connection>
