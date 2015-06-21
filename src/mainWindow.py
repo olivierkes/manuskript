@@ -95,7 +95,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.mprInfos.setCurrentIndex(0)
         
         # Persos
-        self.mdlPersos = QStandardItemModel(0, 10)
+        self.mdlPersos = QStandardItemModel(0, 0)
         self.mdlPersosProxy = persosProxyModel() # None
         #self.mdlPersoProxyFilter = QSortFilterProxyModel()
         if self.mdlPersosProxy:

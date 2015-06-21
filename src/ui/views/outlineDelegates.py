@@ -94,7 +94,17 @@ class outlinePersoDelegate(QStyledItemDelegate):
         self.mdlPersos = mdlPersos
         
     def sizeHint(self, option, index):
-        s = QStyledItemDelegate.sizeHint(self, option, index)
+        #s = QStyledItemDelegate.sizeHint(self, option, index)
+        
+        item = QModelIndex()
+        for i in range(self.mdlPersos.rowCount()):
+            if self.mdlPersos.item(i, Perso.ID.value).text() == index.data(Perso.name.value):
+                item = self.mdlPersos.index(i, Perso.name.value)
+        
+        opt = QStyleOptionViewItem(option)
+        self.initStyleOption(opt, item)
+        s = QStyledItemDelegate.sizeHint(self, opt, item)
+        
         if s.width() > 200:
             s.setWidth(200)
         elif s.width() < 100:
@@ -134,7 +144,7 @@ class outlinePersoDelegate(QStyledItemDelegate):
                 if not 2-imp == importance: continue
                 
                 try:
-                    editor.addItem(self.mdlPersos.item(i, Perso.name.value).text(), self.mdlPersos.item(i, Perso.ID.value).text())
+                    editor.addItem(self.mdlPersos.item(i, Perso.name.value).icon(), self.mdlPersos.item(i, Perso.name.value).text(), self.mdlPersos.item(i, Perso.ID.value).text())
                     editor.setItemData(i+1, self.mdlPersos.item(i, Perso.name.value).text(), Qt.ToolTipRole)
                 except:
                     pass
@@ -146,16 +156,26 @@ class outlinePersoDelegate(QStyledItemDelegate):
         val = editor.currentData()
         model.setData(index, val)
     
-    def displayText(self, value, locale):
-        for i in range(self.mdlPersos.rowCount()):
-            if self.mdlPersos.item(i, Perso.ID.value).text() == value:
-                return self.mdlPersos.item(i, Perso.name.value).text()
-        return ""
+    #def displayText(self, value, locale):
+        #for i in range(self.mdlPersos.rowCount()):
+            #if self.mdlPersos.item(i, Perso.ID.value).text() == value:
+                #return self.mdlPersos.item(i, Perso.name.value).text()
+        #return ""
     
     def paint(self, painter, option, index):
-        #option.rect.setWidth(option.rect.width() - 18)
-        QStyledItemDelegate.paint(self, painter, option, index)
-        #option.rect.setWidth(option.rect.width() + 18)
+        ##option.rect.setWidth(option.rect.width() - 18)
+        #QStyledItemDelegate.paint(self, painter, option, index)
+        ##option.rect.setWidth(option.rect.width() + 18)
+        
+        item = QModelIndex()
+        for i in range(self.mdlPersos.rowCount()):
+            if self.mdlPersos.item(i, Perso.ID.value).text() == index.data(Perso.name.value):
+                item = self.mdlPersos.index(i, Perso.name.value)
+        
+        opt = QStyleOptionViewItem(option)
+        self.initStyleOption(opt, item)
+        
+        qApp.style().drawControl(QStyle.CE_ItemViewItem, opt, painter)
         
         if index.isValid() and index.internalPointer().data(Outline.POV.value) not in ["", None]:
             opt = QStyleOptionComboBox()

@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 #--!-- coding: utf8 --!--
  
-
-
-
 from qt import *
 from enums import *
 from functions import *
@@ -46,7 +43,7 @@ class cmbOutlinePersoChoser(QComboBox):
                 if not 2-imp == importance: continue
                 
                 try:
-                    self.addItem(self.mdlPersos.item(i, Perso.name.value).text(), self.mdlPersos.item(i, Perso.ID.value).text())
+                    self.addItem(self.mdlPersos.item(i, Perso.name.value).icon(), self.mdlPersos.item(i, Perso.name.value).text(), self.mdlPersos.item(i, Perso.ID.value).text())
                     self.setItemData(i+1, self.mdlPersos.item(i, Perso.name.value).text(), Qt.ToolTipRole)
                 except:
                     pass
