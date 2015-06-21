@@ -732,6 +732,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             if i.isChecked():
                 self.dictChanged.emit(i.text().replace("&", ""))
                 settings.dict = i.text().replace("&", "")
+        
+                # Find all textEditView from self, and toggle spellcheck
+                for w in self.findChildren(textEditView, QRegExp(".*"), Qt.FindChildrenRecursively):
+                    w.setDict(settings.dict)
 
     def openPyEnchantWebPage(self):
         QDesktopServices.openUrl(QUrl("http://pythonhosted.org/pyenchant/"))
