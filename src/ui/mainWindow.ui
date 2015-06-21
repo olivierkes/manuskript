@@ -18,7 +18,7 @@
     <item>
      <widget class="QTabWidget" name="tabMain">
       <property name="currentIndex">
-       <number>1</number>
+       <number>3</number>
       </property>
       <property name="documentMode">
        <bool>true</bool>
@@ -1003,7 +1003,7 @@
           </widget>
           <widget class="QTabWidget" name="tabPlot">
            <property name="currentIndex">
-            <number>1</number>
+            <number>0</number>
            </property>
            <property name="documentMode">
             <bool>true</bool>
@@ -1024,7 +1024,7 @@
               </widget>
              </item>
              <item row="0" column="1">
-              <widget class="QLineEdit" name="txtPlotName"/>
+              <widget class="lineEditView" name="txtPlotName"/>
              </item>
              <item row="1" column="0">
               <widget class="QLabel" name="label_31">

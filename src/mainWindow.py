@@ -183,7 +183,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.mprPlots = QDataWidgetMapper()
         self.mprPlots.setModel(self.mdlPlots)
         mapping = [
-            (self.txtPlotName, Plot.name.value),
+            #(self.txtPlotName, Plot.name.value),
             (self.txtPlotDescription, Plot.description.value),
             (self.txtPlotResult, Plot.result.value),
             ]
@@ -194,6 +194,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.tabMain.currentChanged.connect(self.mprPlots.submit)
         self.mprPlots.setCurrentIndex(0)
         self.lstPlots.selectionModel().currentChanged.connect(self.mprPlots.setCurrentModelIndex)
+        
+        self.txtPlotName.setModel(self.mprPlots)
+        self.lstPlots.selectionModel().currentChanged.connect(self.txtPlotName.setCurrentModelIndex)
+        
         self.tabPlot.setEnabled(False)
         self.lstPlots.selectionModel().currentChanged.connect(lambda: self.tabPlot.setEnabled(self.lstPlots.selectionModel().currentIndex().isValid()))
         # sets persos view
