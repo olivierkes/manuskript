@@ -545,7 +545,7 @@
           <item row="0" column="1">
            <layout class="QVBoxLayout" name="lytSituation">
             <item>
-             <widget class="QLineEdit" name="txtSummarySituation">
+             <widget class="lineEditView" name="txtSummarySituation">
               <property name="placeholderText">
                <string>What if...?</string>
               </property>
@@ -928,7 +928,7 @@
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_10">
             <item>
-             <widget class="QListWidget" name="listWidget_3">
+             <widget class="QListView" name="lstPlots">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
                 <horstretch>0</horstretch>
@@ -941,27 +941,12 @@
               <property name="dragDropMode">
                <enum>QAbstractItemView::InternalMove</enum>
               </property>
-              <item>
-               <property name="text">
-                <string>Principale</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Autre intrigue</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Autre intrigue</string>
-               </property>
-              </item>
              </widget>
             </item>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_15">
               <item>
-               <widget class="QPushButton" name="pushButton_8">
+               <widget class="QPushButton" name="btnAddPlot">
                 <property name="text">
                  <string/>
                 </property>
@@ -973,7 +958,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QPushButton" name="pushButton_11">
+               <widget class="QPushButton" name="btnRmPlot">
                 <property name="text">
                  <string/>
                 </property>
@@ -1018,7 +1003,7 @@
           </widget>
           <widget class="QTabWidget" name="tabPlot">
            <property name="currentIndex">
-            <number>0</number>
+            <number>1</number>
            </property>
            <property name="documentMode">
             <bool>true</bool>
@@ -1039,7 +1024,7 @@
               </widget>
              </item>
              <item row="0" column="1">
-              <widget class="QLineEdit" name="lineEdit_5"/>
+              <widget class="QLineEdit" name="txtPlotName"/>
              </item>
              <item row="1" column="0">
               <widget class="QLabel" name="label_31">
@@ -1063,7 +1048,7 @@
               </widget>
              </item>
              <item row="3" column="1">
-              <widget class="QPlainTextEdit" name="plainTextEdit_22"/>
+              <widget class="QPlainTextEdit" name="txtPlotDescription"/>
              </item>
              <item row="4" column="0">
               <widget class="QLabel" name="label_28">
@@ -1073,39 +1058,43 @@
               </widget>
              </item>
              <item row="4" column="1">
-              <widget class="QPlainTextEdit" name="plainTextEdit_23"/>
+              <widget class="QPlainTextEdit" name="txtPlotResult"/>
              </item>
              <item row="2" column="1">
               <layout class="QVBoxLayout" name="verticalLayout_12">
                <item>
-                <widget class="QListWidget" name="listWidget_4">
-                 <property name="flow">
-                  <enum>QListView::LeftToRight</enum>
+                <widget class="QListView" name="lstPlotPerso">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
                  </property>
-                 <property name="isWrapping" stdset="0">
-                  <bool>true</bool>
+                 <property name="movement">
+                  <enum>QListView::Static</enum>
                  </property>
-                 <item>
-                  <property name="text">
-                   <string>Albert</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Sylvestre</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Gentiana</string>
-                  </property>
-                 </item>
+                 <property name="viewMode">
+                  <enum>QListView::IconMode</enum>
+                 </property>
                 </widget>
                </item>
                <item>
                 <layout class="QHBoxLayout" name="horizontalLayout_16">
                  <item>
-                  <widget class="QPushButton" name="pushButton_10">
+                  <spacer name="horizontalSpacer_9">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="btnAddPlotPerso">
                    <property name="text">
                     <string/>
                    </property>
@@ -1117,7 +1106,7 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="QPushButton" name="pushButton_12">
+                  <widget class="QPushButton" name="btnRmPlotPerso">
                    <property name="text">
                     <string/>
                    </property>
@@ -1150,31 +1139,22 @@
             </attribute>
             <layout class="QVBoxLayout" name="verticalLayout_11">
              <item>
-              <widget class="QListWidget" name="listWidget_2">
-               <item>
-                <property name="text">
-                 <string>Un bâteau arrive au port et personne ne sait pourquoi</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Le roi envoie des émissaires à bord. Ils ne reviennent jamais.</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Le roi envoie son armée.</string>
-                </property>
-               </item>
+              <widget class="QListView" name="lstSubPlots">
+               <property name="dragDropMode">
+                <enum>QAbstractItemView::InternalMove</enum>
+               </property>
+               <property name="selectionBehavior">
+                <enum>QAbstractItemView::SelectRows</enum>
+               </property>
               </widget>
              </item>
              <item>
-              <widget class="QPlainTextEdit" name="plainTextEdit_7"/>
+              <widget class="textEditView" name="txtSubPlotSummary"/>
              </item>
              <item>
               <layout class="QHBoxLayout" name="horizontalLayout_17">
                <item>
-                <widget class="QPushButton" name="pushButton_13">
+                <widget class="QPushButton" name="btnAddSubPlot">
                  <property name="text">
                   <string/>
                  </property>
@@ -1186,7 +1166,7 @@
                 </widget>
                </item>
                <item>
-                <widget class="QPushButton" name="pushButton_14">
+                <widget class="QPushButton" name="btnRmSubPlot">
                  <property name="text">
                   <string/>
                  </property>
@@ -1260,7 +1240,20 @@
                 </widget>
                </item>
                <item>
-                <widget class="QPushButton" name="pushButton_16">
+                <spacer name="horizontalSpacer_10">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QPushButton" name="btnShowSubPlotSummary">
                  <property name="text">
                   <string/>
                  </property>
@@ -1871,7 +1864,7 @@
            <enum>QTabWidget::West</enum>
           </property>
           <property name="currentIndex">
-           <number>4</number>
+           <number>3</number>
           </property>
           <widget class="QWidget" name="tab_9">
            <attribute name="title">
@@ -1904,6 +1897,26 @@
                <bool>true</bool>
               </property>
              </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tab_2">
+           <attribute name="title">
+            <string>Plots</string>
+           </attribute>
+           <layout class="QHBoxLayout" name="horizontalLayout_11">
+            <item>
+             <widget class="QTableView" name="tblDebugPlots"/>
+            </item>
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_22">
+              <item>
+               <widget class="QTableView" name="tblDebugPlotsPersos"/>
+              </item>
+              <item>
+               <widget class="QTableView" name="tblDebugSubPlots"/>
+              </item>
+             </layout>
             </item>
            </layout>
           </widget>
@@ -2234,22 +2247,6 @@
  </customwidgets>
  <resources/>
  <connections>
-  <connection>
-   <sender>pushButton_16</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>plainTextEdit_7</receiver>
-   <slot>setVisible(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>435</x>
-     <y>127</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>435</x>
-     <y>120</y>
-    </hint>
-   </hints>
-  </connection>
   <connection>
    <sender>btnPlotShowSummary</sender>
    <signal>toggled(bool)</signal>

@@ -8,6 +8,7 @@ from ui.helpLabel import helpLabel
 from loadSave import *
 from enums import *
 from models.outlineModel import *
+from models.plotModel import *
 from models.persosProxyModel import *
 from functions import *
 from settingsWindow import *
@@ -67,20 +68,40 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.mdlFlatData = QStandardItemModel(2, 8)
         self.tblDebugFlatData.setModel(self.mdlFlatData)
         
-        self.mprSummary = QDataWidgetMapper()
-        self.mprSummary.setModel(self.mdlFlatData)
-        self.mprSummary.addMapping(self.txtSummarySituation, 0)
-        self.mprSummary.addMapping(self.txtSummarySentance, 1)
-        self.mprSummary.addMapping(self.txtSummarySentance_2, 1)
-        self.mprSummary.addMapping(self.txtSummaryPara, 2)
-        self.mprSummary.addMapping(self.txtSummaryPara_2, 2)
-        self.mprSummary.addMapping(self.txtPlotSummaryPara, 2)
-        self.mprSummary.addMapping(self.txtSummaryPage, 3)
-        self.mprSummary.addMapping(self.txtSummaryPage_2, 3)
-        self.mprSummary.addMapping(self.txtPlotSummaryPage, 3)
-        self.mprSummary.addMapping(self.txtSummaryFull, 4)
-        self.mprSummary.addMapping(self.txtPlotSummaryFull, 4)
-        self.mprSummary.setCurrentIndex(1)
+        #self.mprSummary = QDataWidgetMapper()
+        #self.mprSummary.setModel(self.mdlFlatData)
+        #self.mprSummary.addMapping(self.txtSummarySituation, 0)
+        #self.mprSummary.addMapping(self.txtSummarySentance, 1)
+        #self.mprSummary.addMapping(self.txtSummarySentance_2, 1)
+        #self.mprSummary.addMapping(self.txtSummaryPara, 2)
+        #self.mprSummary.addMapping(self.txtSummaryPara_2, 2)
+        #self.mprSummary.addMapping(self.txtPlotSummaryPara, 2)
+        #self.mprSummary.addMapping(self.txtSummaryPage, 3)
+        #self.mprSummary.addMapping(self.txtSummaryPage_2, 3)
+        #self.mprSummary.addMapping(self.txtPlotSummaryPage, 3)
+        #self.mprSummary.addMapping(self.txtSummaryFull, 4)
+        #self.mprSummary.addMapping(self.txtPlotSummaryFull, 4)
+        #self.mprSummary.setCurrentIndex(1)
+        
+        
+        for widget, col in [
+            (self.txtSummarySituation, 0),
+            (self.txtSummarySentance, 1),
+            (self.txtSummarySentance_2, 1),
+            (self.txtSummaryPara, 2),
+            (self.txtSummaryPara_2, 2),
+            (self.txtPlotSummaryPara, 2),
+            (self.txtSummaryPage, 3),
+            (self.txtSummaryPage_2, 3),
+            (self.txtPlotSummaryPage, 3),
+            (self.txtSummaryFull, 4),
+            (self.txtPlotSummaryFull, 4),
+            ]:
+        
+            widget.setModel(self.mdlFlatData)
+            widget.setColumn(col)
+            widget.setCurrentModelIndex(self.mdlFlatData.index(1, col))
+        
         
         self.mprInfos = QDataWidgetMapper()
         self.mprInfos.setModel(self.mdlFlatData)
@@ -163,6 +184,50 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 ]:
             self.mdlStatus.appendRow(QStandardItem(text))
             
+        # Plot
+        self.mdlPlots = plotModel()
+        self.lstPlots.setModel(self.mdlPlots.viewModel())
+        self.lstPlotPerso.setModel(self.mdlPlots.viewModel())
+        self.lstSubPlots.setModel(self.mdlPlots.viewModel())
+        self.btnAddPlot.clicked.connect(self.mdlPlots.addPlot)
+        self.btnRmPlot.clicked.connect(lambda: self.mdlPlots.removePlot(self.lstPlots.currentIndex()))
+        self.btnAddSubPlot.clicked.connect(self.mdlPlots.addSubPlot)
+        self.btnRmSubPlot.clicked.connect(self.mdlPlots.removeSubPlot)
+        self.btnRmPlotPerso.clicked.connect(self.mdlPlots.removePlotPerso)
+        
+        self.mprPlots = QDataWidgetMapper()
+        self.mprPlots.setModel(self.mdlPlots)
+        mapping = [
+            (self.txtPlotName, Plot.name.value),
+            (self.txtPlotDescription, Plot.description.value),
+            (self.txtPlotResult, Plot.result.value),
+            ]
+        for w, i in mapping:
+            self.mprPlots.addMapping(w, i)
+        self.mprPlots.addMapping(self.sldPlotImportance, Plot.importance.value, "importance")
+        self.sldPlotImportance.importanceChanged.connect(self.mprPlots.submit)
+        self.tabMain.currentChanged.connect(self.mprPlots.submit)
+        self.mprPlots.setCurrentIndex(0)
+        self.lstPlots.selectionModel().currentChanged.connect(self.mprPlots.setCurrentModelIndex)
+        self.tabPlot.setEnabled(False)
+        self.lstPlots.selectionModel().currentChanged.connect(lambda: self.tabPlot.setEnabled(self.lstPlots.selectionModel().currentIndex().isValid()))
+        # sets persos view
+        self.lstPlots.selectionModel().currentChanged.connect(
+            lambda: self.lstPlotPerso.setRootIndex(self.mdlPlots.index(
+                self.lstPlots.selectionModel().currentIndex().row(),
+                Plot.persos.value)))
+        # sets subplots view
+        self.lstPlots.selectionModel().currentChanged.connect(
+            lambda: self.lstSubPlots.setRootIndex(self.mdlPlots.index(
+                self.lstPlots.selectionModel().currentIndex().row(),
+                Plot.subplots.value)))
+        # Subplot mapper
+        self.mprSubPlots = QDataWidgetMapper()
+        self.mprSubPlots.setModel(self.mdlPlots)
+        self.mprSubPlots.addMapping(self.txtSubPlotSummary, 2)
+        self.lstPlots.selectionModel().currentChanged.connect(self.mprSubPlots.setRootIndex)
+        self.lstSubPlots.selectionModel().currentChanged.connect(self.mprSubPlots.setCurrentModelIndex)
+        
         # Outline
         self.mdlOutline = outlineModel()
         self.treeRedacOutline.setModel(self.mdlOutline)
@@ -225,6 +290,17 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.tblDebugFlatData.setModel(self.mdlFlatData)
         self.tblDebugPersos.setModel(self.mdlPersos)
         self.tblDebugPersosInfos.setModel(self.mdlPersosInfos)
+        self.tblDebugPlots.setModel(self.mdlPlots)
+        self.tblDebugPlotsPersos.setModel(self.mdlPlots)
+        self.tblDebugSubPlots.setModel(self.mdlPlots)
+        self.tblDebugPlots.selectionModel().currentChanged.connect(
+            lambda: self.tblDebugPlotsPersos.setRootIndex(self.mdlPlots.index(
+                self.tblDebugPlots.selectionModel().currentIndex().row(),
+                Plot.persos.value)))
+        self.tblDebugPlots.selectionModel().currentChanged.connect(
+            lambda: self.tblDebugSubPlots.setRootIndex(self.mdlPlots.index(
+                self.tblDebugPlots.selectionModel().currentIndex().row(),
+                Plot.subplots.value)))
         self.treeDebugOutline.setModel(self.mdlOutline)
         self.lstDebugLabels.setModel(self.mdlLabels)
         self.lstDebugStatus.setModel(self.mdlStatus)
@@ -482,6 +558,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         files.append((saveStandardItemModelXML(self.mdlPersosInfos), "persoInfos.xml"))
         files.append((saveStandardItemModelXML(self.mdlLabels), "labels.xml"))
         files.append((saveStandardItemModelXML(self.mdlStatus), "status.xml"))
+        files.append((saveStandardItemModelXML(self.mdlPlots), "plots.xml"))
         files.append((self.mdlOutline.saveToXML(), "outline.xml"))
         files.append((settings.save(),"settings.pickle"))
         
@@ -505,6 +582,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             loadStandardItemModelXML(self.mdlLabels, files["labels.xml"], fromString=True)
         if "status.xml" in files:
             loadStandardItemModelXML(self.mdlStatus, files["status.xml"], fromString=True)
+        if "plots.xml" in files:
+            loadStandardItemModelXML(self.mdlPlots, files["plots.xml"], fromString=True)
         if "outline.xml" in files:
             self.mdlOutline.loadFromXML(files["outline.xml"], fromString=True)
         if "settings.pickle" in files:
@@ -668,6 +747,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.redacEditor.toggleSpellcheck(val)
         self.redacMetadata.toggleSpellcheck(val)
         self.outlineItemEditor.toggleSpellcheck(val)
+        
+        # Find all textEditView from self, and toggle spellcheck
+        for w in self.findChildren(textEditView, QRegExp(".*"), Qt.FindChildrenRecursively):
+            w.toggleSpellcheck(val)
+            
         
 ####################################################################################################
 #                                            SETTINGS                                              #

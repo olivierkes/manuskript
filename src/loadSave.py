@@ -53,19 +53,7 @@ def saveStandardItemModelXML(mdl, xml=None):
     
     # Data
     data = ET.SubElement(root, "data")
-    
-    for x in range(mdl.rowCount()):
-        row = ET.SubElement(data, "row")
-        row.attrib["row"] = str(x)
-        
-        for y in range(mdl.columnCount()):
-            col = ET.SubElement(row, "col")
-            col.attrib["col"] = str(y)
-            if mdl.data(mdl.index(x, y), Qt.DecorationRole) != None:
-                color = iconColor(mdl.data(mdl.index(x, y), Qt.DecorationRole)).name(QColor.HexArgb)
-                col.attrib["color"] = color if color != "#ff000000" else "#00000000"
-            if mdl.data(mdl.index(x, y)) != "":
-                col.text = mdl.data(mdl.index(x, y))
+    saveItem(data, mdl)
             
     #print(qApp.tr("Saving to {}.").format(xml))
     if xml:
@@ -73,6 +61,21 @@ def saveStandardItemModelXML(mdl, xml=None):
     else:
         return ET.tostring(root, encoding="UTF-8", xml_declaration=True, pretty_print=True)
    
+def saveItem(root, mdl, parent=QModelIndex()):
+    for x in range(mdl.rowCount(parent)):
+        row = ET.SubElement(root, "row")
+        row.attrib["row"] = str(x)
+        
+        for y in range(mdl.columnCount(parent)):
+            col = ET.SubElement(row, "col")
+            col.attrib["col"] = str(y)
+            if mdl.data(mdl.index(x, y, parent), Qt.DecorationRole) != None:
+                color = iconColor(mdl.data(mdl.index(x, y, parent), Qt.DecorationRole)).name(QColor.HexArgb)
+                col.attrib["color"] = color if color != "#ff000000" else "#00000000"
+            if mdl.data(mdl.index(x, y, parent)) != "":
+                col.text = mdl.data(mdl.index(x, y, parent))
+            if mdl.hasChildren(mdl.index(x, y, parent)):
+                saveItem(col, mdl, mdl.index(x, y, parent))
     
 def loadStandardItemModelXML(mdl, xml, fromString=False):
     """Load data to a QStandardItemModel mdl from xml.
@@ -105,13 +108,29 @@ def loadStandardItemModelXML(mdl, xml, fromString=False):
     mdl.setHorizontalHeaderLabels(hLabels)
     
     #Data
-    for row in root.find("data").iter("row"):
-        r = int(row.attrib["row"])
-        for col in row.iter("col"):
-            c = int(col.attrib["col"])
-            if col.text: 
-                mdl.setData(mdl.index(r, c), col.text)
-            if "color" in col.attrib:
-                mdl.item(r, c).setIcon(iconFromColorString(col.attrib["color"]))
+    data = root.find("data")
+    loadItem(data, mdl)
             
     #print("OK")
+    
+def loadItem(root, mdl, parent=QModelIndex()):
+    for row in root:
+        r = int(row.attrib["row"])
+        for col in row:
+            c = int(col.attrib["col"])
+            item = mdl.itemFromIndex(mdl.index(r, c, parent))
+            if not item:
+                item = QStandardItem()
+                mdl.itemFromIndex(parent).setChild(r, c, item)
+                
+            if col.text: 
+                #mdl.setData(mdl.index(r, c, parent), col.text)
+                item.setText(col.text)
+                
+            if "color" in col.attrib:
+                #mdl.itemFromIndex(mdl.index(r, c, parent)).setIcon(iconFromColorString(col.attrib["color"]))
+                item.setIcon(iconFromColorString(col.attrib["color"]))
+                
+            if len(col) != 0:
+                #loadItem(col, mdl, mdl.index(r, c, parent))
+                loadItem(col, mdl, mdl.indexFromItem(item))

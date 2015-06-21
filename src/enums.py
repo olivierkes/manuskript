@@ -24,6 +24,14 @@ class Perso(Enum):
     summaryFull = 9
     notes = 10
     
+class Plot(Enum):
+    name = 0
+    ID = 1
+    importance = 2
+    persos = 3
+    description = 4
+    result = 5
+    subplots = 6
     
 class Outline(Enum):
     title = 0

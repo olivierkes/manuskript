@@ -50,14 +50,14 @@ class lineEditView(QLineEdit):
     def submit(self):
         if self._index:
             item = self._index.internalPointer()
-            if self.text() != item.data(self._column):
+            if self.text() != self._model.data(self._index):
                 self._model.setData(self._index, self.text())
                 
         elif self._indexes:
             self._updating = True
             for i in self._indexes:
                 item = i.internalPointer()
-                if self.text() != item.data(self._column):
+                if self.text() != self._model.data(i):
                     self._model.setData(i, self.text())
             self._updating = False
         
