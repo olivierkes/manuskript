@@ -230,6 +230,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.treePlanOutline.setModelPersos(self.mdlPersos)
         self.treePlanOutline.setModelLabels(self.mdlLabels)
         self.treePlanOutline.setModelStatus(self.mdlStatus)
+        
         self.redacMetadata.setModels(self.mdlOutline, self.mdlPersos, self.mdlLabels, self.mdlStatus)
         self.outlineItemEditor.setModels(self.mdlOutline, self.mdlPersos, self.mdlLabels, self.mdlStatus)
         

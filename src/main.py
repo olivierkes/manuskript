@@ -5,6 +5,9 @@ from qt import *
 
 _version = "0.1"
 
+import faulthandler
+faulthandler.enable()
+
 def run():
     app = QApplication(sys.argv)
     app.setOrganizationName("manuskript")
@@ -33,7 +36,8 @@ def run():
         style = settings.value("applicationStyle")
         app.setStyle(style)
     
-    launch()
+    launch() # Seperating launch to avoid segfault, so it seem.
+             # Cf. http://stackoverflow.com/questions/12433491/is-this-pyqt-4-python-bug-or-wrongly-behaving-code
     
 def launch():
     from mainWindow import MainWindow
