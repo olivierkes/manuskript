@@ -622,40 +622,6 @@ class Ui_MainWindow(object):
         self.btnRmSubPlot.setIcon(icon)
         self.btnRmSubPlot.setObjectName("btnRmSubPlot")
         self.horizontalLayout_17.addWidget(self.btnRmSubPlot)
-        self.line_4 = QtWidgets.QFrame(self.tab_15)
-        self.line_4.setFrameShape(QtWidgets.QFrame.VLine)
-        self.line_4.setFrameShadow(QtWidgets.QFrame.Sunken)
-        self.line_4.setObjectName("line_4")
-        self.horizontalLayout_17.addWidget(self.line_4)
-        self.pushButton_4 = QtWidgets.QPushButton(self.tab_15)
-        self.pushButton_4.setText("")
-        icon = QtGui.QIcon.fromTheme("go-top")
-        self.pushButton_4.setIcon(icon)
-        self.pushButton_4.setObjectName("pushButton_4")
-        self.horizontalLayout_17.addWidget(self.pushButton_4)
-        self.pushButton_5 = QtWidgets.QPushButton(self.tab_15)
-        self.pushButton_5.setText("")
-        icon = QtGui.QIcon.fromTheme("go-up")
-        self.pushButton_5.setIcon(icon)
-        self.pushButton_5.setObjectName("pushButton_5")
-        self.horizontalLayout_17.addWidget(self.pushButton_5)
-        self.pushButton_6 = QtWidgets.QPushButton(self.tab_15)
-        self.pushButton_6.setText("")
-        icon = QtGui.QIcon.fromTheme("go-down")
-        self.pushButton_6.setIcon(icon)
-        self.pushButton_6.setObjectName("pushButton_6")
-        self.horizontalLayout_17.addWidget(self.pushButton_6)
-        self.pushButton_15 = QtWidgets.QPushButton(self.tab_15)
-        self.pushButton_15.setText("")
-        icon = QtGui.QIcon.fromTheme("go-bottom")
-        self.pushButton_15.setIcon(icon)
-        self.pushButton_15.setObjectName("pushButton_15")
-        self.horizontalLayout_17.addWidget(self.pushButton_15)
-        self.line_5 = QtWidgets.QFrame(self.tab_15)
-        self.line_5.setFrameShape(QtWidgets.QFrame.VLine)
-        self.line_5.setFrameShadow(QtWidgets.QFrame.Sunken)
-        self.line_5.setObjectName("line_5")
-        self.horizontalLayout_17.addWidget(self.line_5)
         spacerItem10 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_17.addItem(spacerItem10)
         self.btnShowSubPlotSummary = QtWidgets.QPushButton(self.tab_15)
@@ -722,6 +688,7 @@ class Ui_MainWindow(object):
         self.lstOutlinePlots.setDragEnabled(True)
         self.lstOutlinePlots.setDragDropMode(QtWidgets.QAbstractItemView.DragOnly)
         self.lstOutlinePlots.setObjectName("lstOutlinePlots")
+        self.lstOutlinePlots.header().setVisible(False)
         self.layoutWidget = QtWidgets.QWidget(self.splitterOutlineH)
         self.layoutWidget.setObjectName("layoutWidget")
         self.verticalLayout_14 = QtWidgets.QVBoxLayout(self.layoutWidget)
@@ -1115,7 +1082,7 @@ class Ui_MainWindow(object):
         self.tabMain.setCurrentIndex(3)
         self.tabSummary.setCurrentIndex(0)
         self.tabPersos.setCurrentIndex(0)
-        self.tabPlot.setCurrentIndex(0)
+        self.tabPlot.setCurrentIndex(1)
         self.comboBox_2.setCurrentIndex(0)
         self.stkPlotSummary.setCurrentIndex(0)
         self.tabRedacInfos.setCurrentIndex(0)
@@ -1258,12 +1225,12 @@ class Ui_MainWindow(object):
         self.actSettings.setText(_translate("MainWindow", "Settings"))
         self.actSettings.setShortcut(_translate("MainWindow", "F8"))
 
-from ui.views.basicItemView import basicItemView
-from ui.editors.editorWidget import editorWidget
-from ui.sldImportance import sldImportance
-from ui.views.outlineView import outlineView
 from ui.views.plotTreeView import plotTreeView
+from ui.views.basicItemView import basicItemView
 from ui.views.lineEditView import lineEditView
 from ui.views.treeView import treeView
+from ui.editors.editorWidget import editorWidget
+from ui.views.outlineView import outlineView
 from ui.views.textEditView import textEditView
+from ui.sldImportance import sldImportance
 from ui.views.metadataView import metadataView
