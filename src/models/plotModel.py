@@ -114,6 +114,9 @@ class plotModel(QStandardItemModel):
         
         # Don't know why, if summary is in third position, then drag/drop deletes it...
         parentItem.appendRow([p, _id, QStandardItem(), summary])
+        
+        # Select last index
+        self.mw.lstSubPlots.setCurrentIndex(parent.child(self.rowCount(parent)-1, 0))
     
     def removeSubPlot(self):
         index = self.mw.lstSubPlots.currentIndex()

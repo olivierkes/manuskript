@@ -1111,7 +1111,7 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuHelp.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.tabMain.setCurrentIndex(5)
+        self.tabMain.setCurrentIndex(3)
         self.tabSummary.setCurrentIndex(0)
         self.tabPersos.setCurrentIndex(0)
         self.tabPlot.setCurrentIndex(0)
@@ -1258,12 +1258,12 @@ class Ui_MainWindow(object):
         self.actSettings.setText(_translate("MainWindow", "Settings"))
         self.actSettings.setShortcut(_translate("MainWindow", "F8"))
 
-from ui.views.outlineView import outlineView
-from ui.editors.editorWidget import editorWidget
 from ui.views.metadataView import metadataView
+from ui.views.plotTreeView import plotTreeView
+from ui.views.treeView import treeView
+from ui.editors.editorWidget import editorWidget
+from ui.views.outlineView import outlineView
+from ui.sldImportance import sldImportance
 from ui.views.lineEditView import lineEditView
 from ui.views.basicItemView import basicItemView
-from ui.views.treeView import treeView
-from ui.views.plotTreeView import plotTreeView
 from ui.views.textEditView import textEditView
-from ui.sldImportance import sldImportance

@@ -207,8 +207,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         return str(k)
             
     def checkPersosID(self):
-        "Checks whether some persos ID (row 1) are empty, if so, assign an ID"
-        empty = []
+        """Checks whether some persos ID (row 1) are empty, if so, assign an ID"""
         for i in range(self.mdlPersos.rowCount()):
             item = self.mdlPersos.item(i, Perso.ID.value)
             if not item:
@@ -309,7 +308,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.lstSubPlots.setRootIndex(index.sibling(index.row(), Plot.subplots.value))
         #self.txtSubPlotSummary.setCurrentModelIndex(QModelIndex())
         self.txtSubPlotSummary.setEnabled(False)
+        self._updatingSubPlot = True
         self.txtSubPlotSummary.setPlainText("")
+        self._updatingSubPlot = False
         
     def changeCurrentSubPlot(self, index):
         # Got segfaults when using my textEditView model system, so ad hoc stuff.
@@ -323,7 +324,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self._updatingSubPlot = True
         self.txtSubPlotSummary.setPlainText(txt)
         self._updatingSubPlot = False
-        self.txtSubPlotSummary.document().contentsChanged.connect(self.updateSubPlotSummary)
         
     def updateSubPlotSummary(self):
         if self._updatingSubPlot:
@@ -479,9 +479,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.lstPlots.currentItemChanged.connect(self.changeCurrentPlot)
         self.lstPlotPerso.setModel(self.mdlPlots)
         self.lstSubPlots.setModel(self.mdlPlots)
-        #self.txtSubPlotSummary.setModel(self.mdlPlots)
-        #self.txtSubPlotSummary.setColumn(1)
-        self.lstSubPlots.selectionModel().currentChanged.connect(self.changeCurrentSubPlot)
+        self._updatingSubPlot = False
+        self.txtSubPlotSummary.document().contentsChanged.connect(self.updateSubPlotSummary)
+        self.lstSubPlots.activated.connect(self.changeCurrentSubPlot)
         self.btnAddPlot.clicked.connect(self.mdlPlots.addPlot)
         self.btnRmPlot.clicked.connect(lambda: self.mdlPlots.removePlot(self.lstPlots.currentPlotIndex()))
         self.btnAddSubPlot.clicked.connect(self.mdlPlots.addSubPlot)
