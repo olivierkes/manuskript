@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #--!-- coding: utf8 --!--
- 
+
 from qt import *
 
 from ui.mainWindow import *
@@ -20,19 +20,20 @@ try:
 except ImportError:
     enchant = None
 
+
 class MainWindow(QMainWindow, Ui_MainWindow):
-    
+
     dictChanged = pyqtSignal(str)
-    
+
     def __init__(self):
         QMainWindow.__init__(self)
         self.setupUi(self)
-        
+
         self.readSettings()
-        
+
         # UI
         self.setupMoreUi()
-        
+
         # Word count
         self.mprWordCount = QSignalMapper(self)
         for t, i in [
@@ -44,7 +45,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             t.textChanged.connect(self.mprWordCount.map)
             self.mprWordCount.setMapping(t, i)
         self.mprWordCount.mapped.connect(self.wordCount)
-        
+
         # Snowflake Method Cycle
         self.mapperCycle = QSignalMapper(self)
         for t, i in [
@@ -58,24 +59,24 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             ]:
             t.clicked.connect(self.mapperCycle.map)
             self.mapperCycle.setMapping(t, i)
-            
+
         self.mapperCycle.mapped.connect(self.clickCycle)
         self.cmbSummary.currentIndexChanged.connect(self.summaryPageChanged)
         self.cmbSummary.setCurrentIndex(0)
         self.cmbSummary.currentIndexChanged.emit(0)
-        
+
         # Données
         self.mdlFlatData = QStandardItemModel(2, 8)
-        
+
         # Persos
         self.mdlPersos = QStandardItemModel(0, 0)
         #self.mdlPersosProxy = None # persosProxyModel() # None
         self.mdlPersosProxy = persosProxyModel(self)
-        
+
         self.mdlPersosInfos = QStandardItemModel(1, 0)
         self.mdlPersosInfos.insertColumn(0, [QStandardItem("ID")])
         self.mdlPersosInfos.setHorizontalHeaderLabels(["Description"])
-        
+
         # Labels
         self.mdlLabels = QStandardItemModel()
         for color, text in [
@@ -87,7 +88,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             (Qt.cyan, self.tr("Research"))
             ]:
             self.mdlLabels.appendRow(QStandardItem(iconFromColor(color), text))
-            
+
         # Status
         self.mdlStatus = QStandardItemModel()
         for text in [
@@ -98,13 +99,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 self.tr("Final")
                 ]:
             self.mdlStatus.appendRow(QStandardItem(text))
-            
+
         # Plot
         self.mdlPlots = plotModel()
-        
+
         # Outline
         self.mdlOutline = outlineModel()
-        
+
         # Main Menu
         self.actSave.setEnabled(False)
         self.actSaveAs.setEnabled(False)
@@ -112,10 +113,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.actLabels.triggered.connect(self.settingsLabel)
         self.actStatus.triggered.connect(self.settingsStatus)
         self.actSettings.triggered.connect(self.settingsWindow)
-        
+
         self.actQuit.triggered.connect(self.close)
         self.generateViewMenu()
-        
+
         #Debug
         self.mdlFlatData.setVerticalHeaderLabels(["Infos générales", "Summary"])
         self.tblDebugFlatData.setModel(self.mdlFlatData)
@@ -135,13 +136,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.treeDebugOutline.setModel(self.mdlOutline)
         self.lstDebugLabels.setModel(self.mdlLabels)
         self.lstDebugStatus.setModel(self.mdlStatus)
-        
+
         self.loadProject(os.path.join(appPath(), "test_project.zip"))
-    
-####################################################################################################
-#                                             SUMMARY                                              #
-####################################################################################################
-    
+
+###############################################################################
+# SUMMARY
+###############################################################################
+
     def summaryPageChanged(self, index):
         fractalButtons = [
             self.btnStepTwo,
@@ -151,13 +152,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             ]
         for b in fractalButtons:
             b.setVisible(fractalButtons.index(b) == index)
-    
-####################################################################################################
-#                                             OUTLINE                                              #
-####################################################################################################
-    
+
+###############################################################################
+# OUTLINE
+###############################################################################
+
     def outlineSelectionChanged(self):
-        if len(self.treeRedacOutline.selectionModel().selection().indexes()) == 0:
+        if len(self.treeRedacOutline.selectionModel().
+                    selection().indexes()) == 0:
             hidden = False
         else:
             idx = self.treeRedacOutline.currentIndex()
@@ -165,111 +167,118 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 hidden = not idx.internalPointer().isFolder()
             else:
                 hidden = False
-            
+
         self.btnRedacFolderText.setHidden(hidden)
         self.btnRedacFolderCork.setHidden(hidden)
         self.btnRedacFolderOutline.setHidden(hidden)
         self.sldCorkSizeFactor.setHidden(hidden)
         self.btnRedacFullscreen.setVisible(hidden)
-        
+
     def outlineRemoveItems(self):
         for idx in self.treeRedacOutline.selectedIndexes():
             if idx.isValid():
                 self.mdlOutline.removeIndex(idx)
-    
-    
-####################################################################################################
-#                                             PERSOS                                               #
-####################################################################################################
+
+###############################################################################
+# PERSOS
+###############################################################################
 
     def createPerso(self):
-        "Creates a perso by adding a row in mdlPersos and a column in mdlPersosInfos with same ID"
+        """Creates a perso by adding a row in mdlPersos
+        and a column in mdlPersosInfos with same ID"""
         p = QStandardItem(self.tr("New character"))
         self.mdlPersos.appendRow(p)
         pid = self.getPersosID()
         self.checkPersosID()  # Attributes a persoID (which is logically pid)
-        self.setPersoColor(self.mdlPersos.rowCount()-1, randomColor(QColor(Qt.white)))
-        
+        self.setPersoColor(self.mdlPersos.rowCount() - 1,
+                           randomColor(QColor(Qt.white)))
+
         # Add column in persos infos
-        self.mdlPersosInfos.insertColumn(self.mdlPersosInfos.columnCount(), [QStandardItem(pid)])
-        self.mdlPersosInfos.setHorizontalHeaderItem(self.mdlPersosInfos.columnCount()-1, QStandardItem("Valeur"))
-            
+        self.mdlPersosInfos.insertColumn(self.mdlPersosInfos.columnCount(),
+                                         [QStandardItem(pid)])
+        self.mdlPersosInfos.setHorizontalHeaderItem(
+            self.mdlPersosInfos.columnCount() - 1,
+            QStandardItem("Valeur"))
+
     def getPersosID(self):
-        "Returns an unused perso ID (row 1)"
+        """Returns an unused perso ID (row 1)."""
         vals = []
         for i in range(self.mdlPersos.rowCount()):
             item = self.mdlPersos.item(i, Perso.ID.value)
             if item and item.text():
                 vals.append(int(item.text()))
-                
+
         k = 0
-        while k in vals: k += 1
+        while k in vals:
+            k += 1
         return str(k)
-            
+
     def checkPersosID(self):
-        """Checks whether some persos ID (row 1) are empty, if so, assign an ID"""
+        """Checks whether some persos ID (row 1) are empty.
+        If so, assign an ID"""
         for i in range(self.mdlPersos.rowCount()):
             item = self.mdlPersos.item(i, Perso.ID.value)
             if not item:
                 item = QStandardItem()
                 item.setText(self.getPersosID())
                 self.mdlPersos.setItem(i, Perso.ID.value, item)
-        
+
     def removePerso(self):
         if self.mdlPersosProxy:
             i = self.mdlPersosProxy.mapToSource(self.lstPersos.currentIndex())
         else:
             i = self.lstPersos.currentIndex()
         self.mdlPersos.takeRow(i.row())
-        self.mdlPersosInfos.takeColumn(i.row()+1)
-        
+        self.mdlPersosInfos.takeColumn(i.row() + 1)
+
     def changeCurrentPerso(self, trash=None):
         if self.mdlPersosProxy:
             idx = self.mdlPersosProxy.mapToSource(self.lstPersos.currentIndex())
         else:
             idx = self.lstPersos.currentIndex()
-        
+
         self.mprPersos.setCurrentModelIndex(idx)
-        
+
         # Button color
         self.updatePersoColor()
-        
+
         # detailed infos
         pid = self.mdlPersos.item(idx.row(), Perso.ID.value).text()
         for c in range(self.mdlPersosInfos.columnCount()):
             pid2 = self.mdlPersosInfos.item(0, c).text()
             self.tblPersoInfos.setColumnHidden(c, c != 0 and pid != pid2)
-        
+
         self.resizePersosInfos()
-        
-    def updatePersoColor(self):  
+
+    def updatePersoColor(self):
         if self.mdlPersosProxy:
             idx = self.mdlPersosProxy.mapToSource(self.lstPersos.currentIndex())
         else:
             idx = self.lstPersos.currentIndex()
-        
+
         icon = self.mdlPersos.item(idx.row()).icon()
         color = iconColor(icon).name() if icon else ""
         self.btnPersoColor.setStyleSheet("background:{};".format(color))
-        
+
     def resizePersosInfos(self):
         self.tblPersoInfos.resizeColumnToContents(0)
         w = self.tblPersoInfos.viewport().width()
         w2 = self.tblPersoInfos.columnWidth(0)
-        
+
         if self.mdlPersosProxy:
-            current = self.mdlPersosProxy.mapToSource(self.lstPersos.currentIndex()).row() + 1
+            current = self.mdlPersosProxy.mapToSource(
+                           self.lstPersos.currentIndex()).row() + 1
         else:
             current = self.lstPersos.currentIndex().row() + 1
-        
+
         self.tblPersoInfos.setColumnWidth(current, w - w2)
-        
+
     def chosePersoColor(self):
         if self.mdlPersosProxy:
             idx = self.mdlPersosProxy.mapToSource(self.lstPersos.currentIndex())
         else:
             idx = self.lstPersos.currentIndex()
-            
+
         item = self.mdlPersos.item(idx.row(), Perso.name.value)
         if item:
             color = iconColor(item.icon())
@@ -280,40 +289,41 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if color.isValid():
             self.setPersoColor(idx.row(), color)
             self.updatePersoColor()
-    
+
     def setPersoColor(self, row, color):
         px = QPixmap(32, 32)
         px.fill(color)
         self.mdlPersos.item(row, Perso.name.value).setIcon(QIcon(px))
-        
-    
-####################################################################################################
-#                                              PLOTS                                               #
-####################################################################################################
+
+###############################################################################
+# PLOTS
+###############################################################################
 
     def changeCurrentPlot(self):
         index = self.lstPlots.currentPlotIndex()
-        
+
         if not index.isValid():
             self.tabPlot.setEnabled(False)
             return
-        
+
         self.tabPlot.setEnabled(True)
         self.txtPlotName.setCurrentModelIndex(index)
         self.txtPlotDescription.setCurrentModelIndex(index)
         self.txtPlotResult.setCurrentModelIndex(index)
         self.sldPlotImportance.setCurrentModelIndex(index)
-        self.lstPlotPerso.setRootIndex(index.sibling(index.row(), Plot.persos.value))
-        
-        self.lstSubPlots.setRootIndex(index.sibling(index.row(), Plot.subplots.value))
+        self.lstPlotPerso.setRootIndex(index.sibling(index.row(),
+                                                     Plot.persos.value))
+
+        self.lstSubPlots.setRootIndex(index.sibling(index.row(),
+                                      Plot.subplots.value))
         #self.txtSubPlotSummary.setCurrentModelIndex(QModelIndex())
         self.txtSubPlotSummary.setEnabled(False)
         self._updatingSubPlot = True
         self.txtSubPlotSummary.setPlainText("")
         self._updatingSubPlot = False
-        
+
     def changeCurrentSubPlot(self, index):
-        # Got segfaults when using my textEditView model system, so ad hoc stuff.
+        # Got segfaults when using textEditView model system, so ad hoc stuff.
         index = index.sibling(index.row(), 3)
         item = self.mdlPlots.itemFromIndex(index)
         if not item:
@@ -324,32 +334,32 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self._updatingSubPlot = True
         self.txtSubPlotSummary.setPlainText(txt)
         self._updatingSubPlot = False
-        
+
     def updateSubPlotSummary(self):
         if self._updatingSubPlot:
             return
-        
+
         index = self.lstSubPlots.currentIndex()
         if not index.isValid():
             return
         index = index.sibling(index.row(), 3)
         item = self.mdlPlots.itemFromIndex(index)
-        
+
         self._updatingSubPlot = True
         item.setText(self.txtSubPlotSummary.toPlainText())
         self._updatingSubPlot = False
-        
-####################################################################################################
-#                                             GENERAL                                              #
-####################################################################################################
-        
+
+###############################################################################
+# GENERAL
+###############################################################################
+
     def loadProject(self, project):
         self.currentProject = project
-        
+
         # Load data
         self.loadDatas()
         self.makeConnections()
-        
+
         # Load settings
         self.generateViewMenu()
         self.sldCorkSizeFactor.setValue(settings.corkSizeFactor)
@@ -364,9 +374,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         elif settings.folderView == "outline":
             self.btnRedacFolderOutline.setChecked(True)
         self.tabMain.setCurrentIndex(settings.lastTab)
-        self.treeRedacOutline.setCurrentIndex(self.mdlOutline.indexFromPath(settings.lastIndex))
+        self.treeRedacOutline.setCurrentIndex(
+                             self.mdlOutline.indexFromPath(settings.lastIndex))
         self.redacEditor.corkView.updateBackground()
-        
+
         # Set autosave
         self.saveTimer = QTimer()
         self.saveTimer.setInterval(settings.autoSaveDelay * 60 * 1000)
@@ -374,33 +385,34 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.saveTimer.timeout.connect(self.saveDatas)
         if settings.autoSave:
             self.saveTimer.start()
-        
+
         # Set autosave if no changes
         self.saveTimerNoChanges = QTimer()
-        self.saveTimerNoChanges.setInterval(settings.autoSaveNoChangesDelay * 1000)
+        self.saveTimerNoChanges.setInterval(settings.autoSaveNoChangesDelay
+                                                                        * 1000)
         self.saveTimerNoChanges.setSingleShot(True)
         self.mdlOutline.dataChanged.connect(self.startTimerNoChanges)
         self.mdlPersos.dataChanged.connect(self.startTimerNoChanges)
         self.mdlPersosInfos.dataChanged.connect(self.startTimerNoChanges)
         self.mdlStatus.dataChanged.connect(self.startTimerNoChanges)
         self.mdlLabels.dataChanged.connect(self.startTimerNoChanges)
-        
+
         self.saveTimerNoChanges.timeout.connect(self.saveDatas)
         self.saveTimerNoChanges.stop()
-            
+
         # UI
         self.actSave.setEnabled(True)
         self.actSaveAs.setEnabled(True)
         #FIXME: set Window's name: project name
-            
+
         # Stuff
         self.checkPersosID()
-        
+
         # Adds header labels
         self.mdlPersos.setHorizontalHeaderLabels([i.name for i in Perso])
 
     def makeConnections(self):
-        
+
         # Flat datas (Summary and general infos)
         for widget, col in [
             (self.txtSummarySituation, 0),
@@ -415,11 +427,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             (self.txtSummaryFull, 4),
             (self.txtPlotSummaryFull, 4),
             ]:
-        
+
             widget.setModel(self.mdlFlatData)
             widget.setColumn(col)
             widget.setCurrentModelIndex(self.mdlFlatData.index(1, col))
-            
+
         for widget, col in [
             (self.txtGeneralTitle, 0),
             (self.txtGeneralSubtitle, 1),
@@ -430,28 +442,29 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             (self.txtGeneralAuthor, 6),
             (self.txtGeneralEmail, 7),
             ]:
-        
+
             widget.setModel(self.mdlFlatData)
             widget.setColumn(col)
             widget.setCurrentModelIndex(self.mdlFlatData.index(0, col))
-        
+
         # Persos
         if self.mdlPersosProxy:
             self.mdlPersosProxy.setSourceModel(self.mdlPersos)
             self.lstPersos.setModel(self.mdlPersosProxy)
         else:
             self.lstPersos.setModel(self.mdlPersos)
-            
+
         self.tblPersoInfos.setModel(self.mdlPersosInfos)
         self.tblPersoInfos.setRowHidden(0, True)
-        
+
         self.btnAddPerso.clicked.connect(self.createPerso)
         self.btnRmPerso.clicked.connect(self.removePerso)
         self.btnPersoColor.clicked.connect(self.chosePersoColor)
-        self.btnPersoAddInfo.clicked.connect(lambda: self.mdlPersosInfos.insertRow(self.mdlPersosInfos.rowCount()))
+        self.btnPersoAddInfo.clicked.connect(lambda:
+                 self.mdlPersosInfos.insertRow(self.mdlPersosInfos.rowCount()))
         self.mprPersos = QDataWidgetMapper()
         self.mprPersos.setModel(self.mdlPersos)
-        
+
         mapping = [
             (self.txtPersoName, Perso.name.value),
             (self.txtPersoMotivation, Perso.motivation.value),
@@ -464,15 +477,17 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             (self.txtPersoNotes, Perso.notes.value)
             ]
         for w, i in mapping:
-                self.mprPersos.addMapping(w, i)    
-        self.mprPersos.addMapping(self.sldPersoImportance, Perso.importance.value, "importance")
+                self.mprPersos.addMapping(w, i)
+        self.mprPersos.addMapping(self.sldPersoImportance,
+                                  Perso.importance.value, "importance")
         self.sldPersoImportance.importanceChanged.connect(self.mprPersos.submit)
         self.tabMain.currentChanged.connect(self.mprPersos.submit)
-        
+
         self.mprPersos.setCurrentIndex(0)
-        self.lstPersos.selectionModel().currentChanged.connect(self.changeCurrentPerso)
+        self.lstPersos.selectionModel().currentChanged.connect(
+                                                       self.changeCurrentPerso)
         self.tabPersos.currentChanged.connect(self.resizePersosInfos)
-        
+
         # Plots
         self.lstPlots.setPlotModel(self.mdlPlots)
         self.txtPlotFilter.textChanged.connect(self.lstPlots.setFilter)
@@ -480,14 +495,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.lstPlotPerso.setModel(self.mdlPlots)
         self.lstSubPlots.setModel(self.mdlPlots)
         self._updatingSubPlot = False
-        self.txtSubPlotSummary.document().contentsChanged.connect(self.updateSubPlotSummary)
+        self.txtSubPlotSummary.document().contentsChanged.connect(
+                                                     self.updateSubPlotSummary)
         self.lstSubPlots.activated.connect(self.changeCurrentSubPlot)
         self.btnAddPlot.clicked.connect(self.mdlPlots.addPlot)
-        self.btnRmPlot.clicked.connect(lambda: self.mdlPlots.removePlot(self.lstPlots.currentPlotIndex()))
+        self.btnRmPlot.clicked.connect(lambda:
+                    self.mdlPlots.removePlot(self.lstPlots.currentPlotIndex()))
         self.btnAddSubPlot.clicked.connect(self.mdlPlots.addSubPlot)
         self.btnRmSubPlot.clicked.connect(self.mdlPlots.removeSubPlot)
         self.btnRmPlotPerso.clicked.connect(self.mdlPlots.removePlotPerso)
-        
+
         for w, c in [
             (self.txtPlotName, Plot.name.value),
             (self.txtPlotDescription, Plot.description.value),
@@ -496,57 +513,65 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             ]:
             w.setModel(self.mdlPlots)
             w.setColumn(c)
-            
+
         self.tabPlot.setEnabled(False)
-        
+
         self.lstOutlinePlots.setPlotModel(self.mdlPlots)
         self.lstOutlinePlots.setShowSubPlot(True)
-        
+
         # Outline
         self.treeRedacOutline.setModel(self.mdlOutline)
         self.treePlanOutline.setModelPersos(self.mdlPersos)
         self.treePlanOutline.setModelLabels(self.mdlLabels)
         self.treePlanOutline.setModelStatus(self.mdlStatus)
-        
-        self.redacMetadata.setModels(self.mdlOutline, self.mdlPersos, self.mdlLabels, self.mdlStatus)
-        self.outlineItemEditor.setModels(self.mdlOutline, self.mdlPersos, self.mdlLabels, self.mdlStatus)
-        
+
+        self.redacMetadata.setModels(self.mdlOutline, self.mdlPersos,
+                                     self.mdlLabels, self.mdlStatus)
+        self.outlineItemEditor.setModels(self.mdlOutline, self.mdlPersos,
+                                         self.mdlLabels, self.mdlStatus)
+
         self.treePlanOutline.setModel(self.mdlOutline)
         self.redacEditor.setModel(self.mdlOutline)
-        
-        self.treePlanOutline.selectionModel().selectionChanged.connect(
-            lambda: self.outlineItemEditor.selectionChanged(self.treePlanOutline))
-        self.treePlanOutline.clicked.connect(
-            lambda: self.outlineItemEditor.selectionChanged(self.treePlanOutline))
-        
-        self.treeRedacOutline.setSelectionModel(self.treePlanOutline.selectionModel())
-        
+
+        self.treePlanOutline.selectionModel().selectionChanged.connect(lambda:
+                 self.outlineItemEditor.selectionChanged(self.treePlanOutline))
+        self.treePlanOutline.clicked.connect(lambda:
+                 self.outlineItemEditor.selectionChanged(self.treePlanOutline))
+
+        self.treeRedacOutline.setSelectionModel(self.treePlanOutline
+                                                    .selectionModel())
+
         self.btnRedacAddFolder.clicked.connect(self.treeRedacOutline.addFolder)
         self.btnPlanAddFolder.clicked.connect(self.treePlanOutline.addFolder)
         self.btnRedacAddText.clicked.connect(self.treeRedacOutline.addText)
         self.btnPlanAddText.clicked.connect(self.treePlanOutline.addText)
         self.btnRedacRemoveItem.clicked.connect(self.outlineRemoveItems)
         self.btnPlanRemoveItem.clicked.connect(self.outlineRemoveItems)
-        
+
         self.treeRedacOutline.selectionModel().selectionChanged.connect(
             lambda: self.redacMetadata.selectionChanged(self.treeRedacOutline))
         self.treeRedacOutline.clicked.connect(
             lambda: self.redacMetadata.selectionChanged(self.treeRedacOutline))
-        
+
         #self.treeRedacOutline.selectionModel().currentChanged.connect(self.redacEditor.setCurrentModelIndex)
         self.treeRedacOutline.selectionModel().selectionChanged.connect(self.redacEditor.setView)
         self.treeRedacOutline.selectionModel().currentChanged.connect(self.redacEditor.txtRedacText.setCurrentModelIndex)
-        
+
         self.treeRedacOutline.selectionModel().selectionChanged.connect(self.outlineSelectionChanged)
         self.treeRedacOutline.selectionModel().selectionChanged.connect(self.outlineSelectionChanged)
         self.treePlanOutline.selectionModel().selectionChanged.connect(self.outlineSelectionChanged)
         self.treePlanOutline.selectionModel().selectionChanged.connect(self.outlineSelectionChanged)
-        
-        self.sldCorkSizeFactor.valueChanged.connect(self.redacEditor.setCorkSizeFactor)
-        self.btnRedacFolderCork.toggled.connect(self.sldCorkSizeFactor.setVisible)
-        self.btnRedacFolderText.clicked.connect(lambda v: self.redacEditor.setFolderView("text"))
-        self.btnRedacFolderCork.clicked.connect(lambda v: self.redacEditor.setFolderView("cork"))
-        self.btnRedacFolderOutline.clicked.connect(lambda v: self.redacEditor.setFolderView("outline"))
+
+        self.sldCorkSizeFactor.valueChanged.connect(
+             self.redacEditor.setCorkSizeFactor)
+        self.btnRedacFolderCork.toggled.connect(
+             self.sldCorkSizeFactor.setVisible)
+        self.btnRedacFolderText.clicked.connect(
+             lambda v: self.redacEditor.setFolderView("text"))
+        self.btnRedacFolderCork.clicked.connect(
+             lambda v: self.redacEditor.setFolderView("cork"))
+        self.btnRedacFolderOutline.clicked.connect(
+             lambda v: self.redacEditor.setFolderView("outline"))
 
     def readSettings(self):
         # Load State and geometry
@@ -555,13 +580,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.restoreGeometry(settings.value("geometry"))
         if settings.contains("windowState"):
             self.restoreState(settings.value("windowState"))
-        
+
     def closeEvent(self, event):
         # Save State and geometry
         stgs = QSettings(qApp.organizationName(), qApp.applicationName())
         stgs.setValue("geometry", self.saveGeometry())
         stgs.setValue("windowState", self.saveState())
-        
+
         # Specific settings to save before quitting
         settings.lastTab = self.tabMain.currentIndex()
         if len(self.treeRedacOutline.selectedIndexes()) == 0:
@@ -569,125 +594,141 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         else:
             sel = self.treeRedacOutline.currentIndex()
         settings.lastIndex = self.mdlOutline.pathToIndex(sel)
-        
+
         # Save data from models
         if settings.saveOnQuit:
             self.saveDatas()
-        
+
         # closeEvent
         QMainWindow.closeEvent(self, event)
-    
+
     def startTimerNoChanges(self):
         if settings.autoSaveNoChanges:
             self.saveTimerNoChanges.start()
-    
+
     def saveDatas(self):
         # Saving
         files = []
-        
-        files.append((saveStandardItemModelXML(self.mdlFlatData), "flatModel.xml"))
-        files.append((saveStandardItemModelXML(self.mdlPersos), "perso.xml"))
-        files.append((saveStandardItemModelXML(self.mdlPersosInfos), "persoInfos.xml"))
-        files.append((saveStandardItemModelXML(self.mdlLabels), "labels.xml"))
-        files.append((saveStandardItemModelXML(self.mdlStatus), "status.xml"))
-        files.append((saveStandardItemModelXML(self.mdlPlots), "plots.xml"))
-        files.append((self.mdlOutline.saveToXML(), "outline.xml"))
-        files.append((settings.save(),"settings.pickle"))
-        
+
+        files.append((saveStandardItemModelXML(self.mdlFlatData),
+                      "flatModel.xml"))
+        files.append((saveStandardItemModelXML(self.mdlPersos),
+                      "perso.xml"))
+        files.append((saveStandardItemModelXML(self.mdlPersosInfos),
+                      "persoInfos.xml"))
+        files.append((saveStandardItemModelXML(self.mdlLabels),
+                      "labels.xml"))
+        files.append((saveStandardItemModelXML(self.mdlStatus),
+                      "status.xml"))
+        files.append((saveStandardItemModelXML(self.mdlPlots),
+                      "plots.xml"))
+        files.append((self.mdlOutline.saveToXML(),
+                      "outline.xml"))
+        files.append((settings.save(),
+                      "settings.pickle"))
+
         saveFilesToZip(files, self.currentProject)
-        
+
         # Giving some feedback
         print(self.tr("Project {} saved.").format(self.currentProject))
-        self.statusBar().showMessage(self.tr("Project {} saved.").format(self.currentProject), 5000)
-        
+        self.statusBar().showMessage(
+             self.tr("Project {} saved.").format(self.currentProject), 5000)
+
     def loadDatas(self):
         # Loading
         files = loadFilesFromZip(self.currentProject)
-        
+
         if "flatModel.xml" in files:
-            loadStandardItemModelXML(self.mdlFlatData, files["flatModel.xml"], fromString=True)
+            loadStandardItemModelXML(self.mdlFlatData,
+                                     files["flatModel.xml"], fromString=True)
         if "perso.xml" in files:
-            loadStandardItemModelXML(self.mdlPersos, files["perso.xml"], fromString=True)
+            loadStandardItemModelXML(self.mdlPersos,
+                                     files["perso.xml"], fromString=True)
         if "persoInfos.xml" in files:
-            loadStandardItemModelXML(self.mdlPersosInfos, files["persoInfos.xml"], fromString=True)
+            loadStandardItemModelXML(self.mdlPersosInfos,
+                                     files["persoInfos.xml"], fromString=True)
         if "labels.xml" in files:
-            loadStandardItemModelXML(self.mdlLabels, files["labels.xml"], fromString=True)
+            loadStandardItemModelXML(self.mdlLabels,
+                                     files["labels.xml"], fromString=True)
         if "status.xml" in files:
-            loadStandardItemModelXML(self.mdlStatus, files["status.xml"], fromString=True)
+            loadStandardItemModelXML(self.mdlStatus,
+                                     files["status.xml"], fromString=True)
         if "plots.xml" in files:
-            loadStandardItemModelXML(self.mdlPlots, files["plots.xml"], fromString=True)
+            loadStandardItemModelXML(self.mdlPlots,
+                                     files["plots.xml"], fromString=True)
         if "outline.xml" in files:
             self.mdlOutline.loadFromXML(files["outline.xml"], fromString=True)
         if "settings.pickle" in files:
             settings.load(files["settings.pickle"], fromString=True)
-        
+
         # Giving some feedback
         print(self.tr("Project {} loaded.").format(self.currentProject))
-        self.statusBar().showMessage(self.tr("Project {} loaded.").format(self.currentProject), 5000)
-    
+        self.statusBar().showMessage(
+             self.tr("Project {} loaded.").format(self.currentProject), 5000)
+
     def clickCycle(self, i):
-        if i == 0: # step 2 - paragraph summary
+        if i == 0:  # step 2 - paragraph summary
             self.tabMain.setCurrentIndex(1)
             self.tabSummary.setCurrentIndex(1)
-        if i == 1: # step 3 - characters summary
+        if i == 1:  # step 3 - characters summary
             self.tabMain.setCurrentIndex(2)
             self.tabPersos.setCurrentIndex(0)
-        if i == 2: # step 4 - page summary
+        if i == 2:  # step 4 - page summary
             self.tabMain.setCurrentIndex(1)
             self.tabSummary.setCurrentIndex(2)
-        if i == 3: # step 5 - characters description
+        if i == 3:  # step 5 - characters description
             self.tabMain.setCurrentIndex(2)
             self.tabPersos.setCurrentIndex(1)
-        if i == 4: # step 6 - four page synopsis
+        if i == 4:  # step 6 - four page synopsis
             self.tabMain.setCurrentIndex(1)
             self.tabSummary.setCurrentIndex(3)
-        if i == 5: # step 7 - full character charts
+        if i == 5:  # step 7 - full character charts
             self.tabMain.setCurrentIndex(2)
             self.tabPersos.setCurrentIndex(2)
-        if i == 6: # step 8 - scene list
+        if i == 6:  # step 8 - scene list
             self.tabMain.setCurrentIndex(3)
-        
+
     def wordCount(self, i):
-        
-        src= {
-            0:self.txtSummarySentance,
-            1:self.txtSummaryPara,
-            2:self.txtSummaryPage,
-            3:self.txtSummaryFull
+
+        src = {
+            0: self.txtSummarySentance,
+            1: self.txtSummaryPara,
+            2: self.txtSummaryPage,
+            3: self.txtSummaryFull
             }[i]
-        
+
         lbl = {
-            0:self.lblSummaryWCSentance,
-            1:self.lblSummaryWCPara,
-            2:self.lblSummaryWCPage,
-            3:self.lblSummaryWCFull
+            0: self.lblSummaryWCSentance,
+            1: self.lblSummaryWCPara,
+            2: self.lblSummaryWCPage,
+            3: self.lblSummaryWCFull
             }[i]
-        
+
         wc = wordCount(src.toPlainText())
-        if i in [2, 3]: pages = self.tr(" (~{} pages)").format(int(wc / 25) / 10.)
-        else: pages = ""
+        if i in [2, 3]:
+            pages = self.tr(" (~{} pages)").format(int(wc / 25) / 10.)
+        else:
+            pages = ""
         lbl.setText(self.tr("Words: {}{}").format(wc, pages))
-        
-        
+
     def setupMoreUi(self):
         # Splitters
         self.splitterPersos.setStretchFactor(0, 25)
         self.splitterPersos.setStretchFactor(1, 75)
-        
+
         self.splitterPlot.setStretchFactor(0, 20)
         self.splitterPlot.setStretchFactor(1, 60)
         self.splitterPlot.setStretchFactor(2, 30)
-        
+
         self.splitterOutlineH.setStretchFactor(0, 25)
         self.splitterOutlineH.setStretchFactor(1, 75)
         self.splitterOutlineV.setStretchFactor(0, 75)
         self.splitterOutlineV.setStretchFactor(1, 25)
-        
-        
+
         self.splitterRedac.setStretchFactor(0, 20)
         self.splitterRedac.setStretchFactor(1, 60)
         self.splitterRedac.setStretchFactor(2, 20)
-        
+
         # Help box
         references = [
             (self.lytTabOverview,
@@ -720,21 +761,21 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             label = helpLabel(text)
             self.actShowHelp.toggled.connect(label.setVisible)
             widget.layout().insertWidget(pos, label)
-        
+
         self.actShowHelp.setChecked(False)
-        
+
         # Spellcheck
         if enchant:
             self.menuDict = QMenu(self.tr("Dictionary"))
             self.menuDictGroup = QActionGroup(self)
             self.updateMenuDict()
             self.menuTools.addMenu(self.menuDict)
-            
+
             self.actSpellcheck.toggled.connect(self.toggleSpellcheck)
             self.dictChanged.connect(self.redacEditor.setDict)
             self.dictChanged.connect(self.redacMetadata.setDict)
             self.dictChanged.connect(self.outlineItemEditor.setDict)
-            
+
         else:
             # No Spell check support
             self.actSpellcheck.setVisible(False)
@@ -742,63 +783,66 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             a.setIcon(self.style().standardIcon(QStyle.SP_MessageBoxWarning))
             a.triggered.connect(self.openPyEnchantWebPage)
             self.menuTools.addAction(a)
-            
-        self.btnRedacFullscreen.clicked.connect(lambda: self.redacEditor.showFullscreen(self.treeRedacOutline.currentIndex()))
-            
+
+        self.btnRedacFullscreen.clicked.connect(
+             lambda: self.redacEditor.showFullscreen(
+                     self.treeRedacOutline.currentIndex()))
+
     def updateMenuDict(self):
-        
+
         if not enchant:
             return
-        
+
         self.menuDict.clear()
         for i in enchant.list_dicts():
             a = QAction(str(i[0]), self)
             a.setCheckable(True)
             a.triggered.connect(self.setDictionary)
-            if settings.dict == None:
+            if settings.dict is None:
                 settings.dict = enchant.get_default_language()
             if str(i[0]) == settings.dict:
                 a.setChecked(True)
             self.menuDictGroup.addAction(a)
             self.menuDict.addAction(a)
-            
+
     def setDictionary(self):
         if not enchant:
             return
-        
+
         for i in self.menuDictGroup.actions():
             if i.isChecked():
                 self.dictChanged.emit(i.text().replace("&", ""))
                 settings.dict = i.text().replace("&", "")
-        
+
                 # Find all textEditView from self, and toggle spellcheck
-                for w in self.findChildren(textEditView, QRegExp(".*"), Qt.FindChildrenRecursively):
+                for w in self.findChildren(textEditView, QRegExp(".*"),
+                                           Qt.FindChildrenRecursively):
                     w.setDict(settings.dict)
 
     def openPyEnchantWebPage(self):
         QDesktopServices.openUrl(QUrl("http://pythonhosted.org/pyenchant/"))
-        
+
     def toggleSpellcheck(self, val):
         settings.spellcheck = val
         self.redacEditor.toggleSpellcheck(val)
         self.redacMetadata.toggleSpellcheck(val)
         self.outlineItemEditor.toggleSpellcheck(val)
-        
+
         # Find all textEditView from self, and toggle spellcheck
-        for w in self.findChildren(textEditView, QRegExp(".*"), Qt.FindChildrenRecursively):
+        for w in self.findChildren(textEditView, QRegExp(".*"),
+                                   Qt.FindChildrenRecursively):
             w.toggleSpellcheck(val)
-            
-        
-####################################################################################################
-#                                            SETTINGS                                              #
-####################################################################################################
+
+###############################################################################
+# SETTINGS
+###############################################################################
 
     def settingsLabel(self):
         self.settingsWindow("Labels")
-        
+
     def settingsStatus(self):
         self.settingsWindow("Status")
-        
+
     def settingsWindow(self, tab=None):
         self.sw = settingsWindow(self)
         self.sw.hide()
@@ -810,13 +854,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if tab:
             self.sw.setTab(tab)
         self.sw.show()
-        
-####################################################################################################
-#                                           VIEW MENU                                              #
-####################################################################################################
-        
-    def generateViewMenu(self):    
-        
+
+###############################################################################
+# VIEW MENU
+###############################################################################
+
+    def generateViewMenu(self):
+
         values = [
                 (self.tr("Nothing"), "Nothing"),
                 (self.tr("POV"), "POV"),
@@ -824,13 +868,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 (self.tr("Progress"), "Progress"),
                 (self.tr("Compile"), "Compile"),
                 ]
-        
+
         menus = [
             (self.tr("Tree"), "Tree"),
             (self.tr("Index cards"), "Cork"),
             (self.tr("Outline"), "Outline")
             ]
-        
+
         submenus = {
             "Tree": [
                 (self.tr("Icon color"), "Icon"),
@@ -850,11 +894,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 (self.tr("Background color"), "Background"),
                 ],
             }
-            
+
         self.menuView.clear()
-            
+
         #print("Generating menus with", settings.viewSettings)
-            
+
         for mnu, mnud in menus:
             m = QMenu(mnu, self.menuView)
             for s, sd in submenus[mnud]:
@@ -871,12 +915,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                     m2.addAction(a)
                 m.addMenu(m2)
             self.menuView.addMenu(m)
-        
+
     def setViewSettingsAction(self):
         action = self.sender()
         item, part, element = action.data().split(",")
         self.setViewSettings(item, part, element)
-        
+
     def setViewSettings(self, item, part, element):
         settings.viewSettings[item][part] = element
         if item == "Cork":
