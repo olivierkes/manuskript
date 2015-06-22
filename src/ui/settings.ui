@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Settings</string>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout_8">
    <item>
@@ -46,7 +46,7 @@
    <item>
     <widget class="QStackedWidget" name="stack">
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="stackedWidgetPage1">
       <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -99,7 +99,10 @@ text-align:center;</string>
              </font>
             </property>
             <property name="text">
-             <string>You might need to restart the app in order to avoid some visual issues.</string>
+             <string>You might need to restart manuskript in order to avoid some visual issues.</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
             </property>
            </widget>
           </item>

@@ -12,6 +12,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1103, 834)
+        MainWindow.setWindowTitle("Manuskript")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.centralwidget)
@@ -1131,7 +1132,6 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.grpBookInfos.setTitle(_translate("MainWindow", "Book infos"))
         self.label_10.setText(_translate("MainWindow", "Title"))
         self.label_11.setText(_translate("MainWindow", "Subtitle"))
@@ -1258,12 +1258,12 @@ class Ui_MainWindow(object):
         self.actSettings.setText(_translate("MainWindow", "Settings"))
         self.actSettings.setShortcut(_translate("MainWindow", "F8"))
 
-from ui.views.metadataView import metadataView
-from ui.views.plotTreeView import plotTreeView
-from ui.views.treeView import treeView
-from ui.editors.editorWidget import editorWidget
-from ui.views.outlineView import outlineView
-from ui.sldImportance import sldImportance
-from ui.views.lineEditView import lineEditView
 from ui.views.basicItemView import basicItemView
+from ui.editors.editorWidget import editorWidget
+from ui.sldImportance import sldImportance
+from ui.views.outlineView import outlineView
+from ui.views.plotTreeView import plotTreeView
+from ui.views.lineEditView import lineEditView
+from ui.views.treeView import treeView
 from ui.views.textEditView import textEditView
+from ui.views.metadataView import metadataView

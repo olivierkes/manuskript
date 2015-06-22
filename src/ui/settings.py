@@ -63,6 +63,7 @@ class Ui_Settings(object):
         font.setBold(False)
         font.setWeight(50)
         self.label_2.setFont(font)
+        self.label_2.setWordWrap(True)
         self.label_2.setObjectName("label_2")
         self.verticalLayout_5.addWidget(self.label_2)
         self.cmbStyle = QtWidgets.QComboBox(self.groupBox_2)
@@ -1150,7 +1151,7 @@ class Ui_Settings(object):
         self.horizontalLayout_8.addWidget(self.stack)
 
         self.retranslateUi(Settings)
-        self.stack.setCurrentIndex(1)
+        self.stack.setCurrentIndex(0)
         self.tabViews.setCurrentIndex(0)
         self.themeStack.setCurrentIndex(1)
         self.themeEditStack.setCurrentIndex(1)
@@ -1159,7 +1160,7 @@ class Ui_Settings(object):
 
     def retranslateUi(self, Settings):
         _translate = QtCore.QCoreApplication.translate
-        Settings.setWindowTitle(_translate("Settings", "Form"))
+        Settings.setWindowTitle(_translate("Settings", "Settings"))
         __sortingEnabled = self.lstMenu.isSortingEnabled()
         self.lstMenu.setSortingEnabled(False)
         item = self.lstMenu.item(0)
@@ -1175,7 +1176,7 @@ class Ui_Settings(object):
         self.lstMenu.setSortingEnabled(__sortingEnabled)
         self.lblTitleGeneral.setText(_translate("Settings", "General settings"))
         self.groupBox_2.setTitle(_translate("Settings", "Application style"))
-        self.label_2.setText(_translate("Settings", "You might need to restart the app in order to avoid some visual issues."))
+        self.label_2.setText(_translate("Settings", "You might need to restart manuskript in order to avoid some visual issues."))
         self.groupBox.setTitle(_translate("Settings", "Saving"))
         self.chkAutoSave.setText(_translate("Settings", "Automatically save every"))
         self.label.setText(_translate("Settings", "minutes."))
