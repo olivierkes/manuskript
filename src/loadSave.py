@@ -24,6 +24,7 @@ def saveFilesToZip(files, zipname):
     
 def loadFilesFromZip(zipname):
     """Returns the content of zipfile as a dict of filename:content."""
+    print(zipname)
     zf = zipfile.ZipFile(zipname)
     files = {}
     for f in zf.namelist():

@@ -2,7 +2,6 @@ snowflake*
 *.pyc
 *.lprof
 .directory
-test_project.zip
-test_project_
+*.msk
 Notes.t2t
 *.nja

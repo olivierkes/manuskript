@@ -28,12 +28,19 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
         QMainWindow.__init__(self)
         self.setupUi(self)
-
+        self.currentProject = None
+        
         self.readSettings()
 
         # UI
         self.setupMoreUi()
-
+        
+        # Welcome
+        self.treeWelcome.expandAll()
+        self.loadRecents()
+        self.btnWelcomeOpen.clicked.connect(self.openFile)
+        self.actOpen.triggered.connect(self.openFile)
+        
         # Word count
         self.mprWordCount = QSignalMapper(self)
         for t, i in [
@@ -107,8 +114,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.mdlOutline = outlineModel()
 
         # Main Menu
-        self.actSave.setEnabled(False)
-        self.actSaveAs.setEnabled(False)
+        for i in [self.actSave, self.actSaveAs, self.actCloseProject,
+                  self.menuEdit, self.menuMode, self.menuView, self.menuTools,
+                  self.menuHelp]:
+            i.setEnabled(False)
+        
+        
         self.actSave.triggered.connect(self.saveDatas)
         self.actLabels.triggered.connect(self.settingsLabel)
         self.actStatus.triggered.connect(self.settingsStatus)
@@ -136,8 +147,34 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.treeDebugOutline.setModel(self.mdlOutline)
         self.lstDebugLabels.setModel(self.mdlLabels)
         self.lstDebugStatus.setModel(self.mdlStatus)
+        
+        #self.loadProject(os.path.join(appPath(), "test_project.zip"))
 
-        self.loadProject(os.path.join(appPath(), "test_project.zip"))
+###############################################################################
+# WELCOME
+###############################################################################
+
+    def loadRecents(self):
+        sttgns = QSettings()
+        if sttgns.contains("recentFiles"):
+            lst = sttgns.value("recentFiles")
+            self.menuRecents.clear()
+            for f in lst:
+                name = os.path.split(f)[1]
+                a = QAction(name, self)
+                a.setData(f)
+                a.triggered.connect(self.loadRecentFile)
+                self.menuRecents.addAction(a)
+            
+            self.btnWelcomeRecent.setMenu(self.menuRecents)
+            
+    def openFile(self):
+        filename = QFileDialog.getOpenFileName(self, 
+                        self.tr("Open project"),
+                        ".", 
+                        self.tr("Manuskript project (*.msk)"))[0]
+        if filename:
+            self.loadProject(filename)
 
 ###############################################################################
 # SUMMARY
@@ -350,8 +387,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self._updatingSubPlot = False
 
 ###############################################################################
-# GENERAL
+# GENERAL AKA UNSORTED
 ###############################################################################
+
+    def loadRecentFile(self):
+        act = self.sender()
+        self.loadProject(act.data())
 
     def loadProject(self, project):
         self.currentProject = project
@@ -401,8 +442,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.saveTimerNoChanges.stop()
 
         # UI
-        self.actSave.setEnabled(True)
-        self.actSaveAs.setEnabled(True)
+        for i in [self.actSave, self.actSaveAs, self.actCloseProject,
+                  self.menuEdit, self.menuMode, self.menuView, self.menuTools,
+                  self.menuHelp]:
+            i.setEnabled(True)
         #FIXME: set Window's name: project name
 
         # Stuff
@@ -410,6 +453,22 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # Adds header labels
         self.mdlPersos.setHorizontalHeaderLabels([i.name for i in Perso])
+        
+        # Save recent files in settings
+        sttgns = QSettings()
+        if sttgns.contains("recentFiles"):
+            recentFiles = sttgns.value("recentFiles")
+        else:
+            recentFiles = []
+            
+        while project in recentFiles:
+            recentFiles.remove(project)
+        recentFiles.insert(0, project)
+        recentFiles = recentFiles[:10]
+        sttgns.setValue("recentFiles", recentFiles)
+        
+        # Show main Window
+        self.stack.setCurrentIndex(1)
 
     def makeConnections(self):
 
@@ -575,17 +634,17 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def readSettings(self):
         # Load State and geometry
-        settings = QSettings(qApp.organizationName(), qApp.applicationName())
-        if settings.contains("geometry"):
-            self.restoreGeometry(settings.value("geometry"))
-        if settings.contains("windowState"):
-            self.restoreState(settings.value("windowState"))
+        sttgns = QSettings(qApp.organizationName(), qApp.applicationName())
+        if sttgns.contains("geometry"):
+            self.restoreGeometry(sttgns.value("geometry"))
+        if sttgns.contains("windowState"):
+            self.restoreState(sttgns.value("windowState"))
 
     def closeEvent(self, event):
         # Save State and geometry
-        stgs = QSettings(qApp.organizationName(), qApp.applicationName())
-        stgs.setValue("geometry", self.saveGeometry())
-        stgs.setValue("windowState", self.saveState())
+        sttgns = QSettings(qApp.organizationName(), qApp.applicationName())
+        sttgns.setValue("geometry", self.saveGeometry())
+        sttgns.setValue("windowState", self.saveState())
 
         # Specific settings to save before quitting
         settings.lastTab = self.tabMain.currentIndex()
@@ -596,7 +655,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         settings.lastIndex = self.mdlOutline.pathToIndex(sel)
 
         # Save data from models
-        if settings.saveOnQuit:
+        if self.currentProject and settings.saveOnQuit:
             self.saveDatas()
 
         # closeEvent
