@@ -293,7 +293,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 ####################################################################################################
 
     def changeCurrentPlot(self):
-        index = self.lstPlots.currentIndex()
+        index = self.lstPlots.currentPlotIndex()
         
         if not index.isValid():
             self.tabPlot.setEnabled(False)
@@ -476,14 +476,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Plots
         self.lstPlots.setPlotModel(self.mdlPlots)
         self.txtPlotFilter.textChanged.connect(self.lstPlots.setFilter)
-        self.lstPlots.currentRowChanged.connect(self.changeCurrentPlot)
+        self.lstPlots.currentItemChanged.connect(self.changeCurrentPlot)
         self.lstPlotPerso.setModel(self.mdlPlots)
         self.lstSubPlots.setModel(self.mdlPlots)
         #self.txtSubPlotSummary.setModel(self.mdlPlots)
         #self.txtSubPlotSummary.setColumn(1)
         self.lstSubPlots.selectionModel().currentChanged.connect(self.changeCurrentSubPlot)
         self.btnAddPlot.clicked.connect(self.mdlPlots.addPlot)
-        self.btnRmPlot.clicked.connect(lambda: self.mdlPlots.removePlot(self.lstPlots.currentIndex()))
+        self.btnRmPlot.clicked.connect(lambda: self.mdlPlots.removePlot(self.lstPlots.currentPlotIndex()))
         self.btnAddSubPlot.clicked.connect(self.mdlPlots.addSubPlot)
         self.btnRmSubPlot.clicked.connect(self.mdlPlots.removeSubPlot)
         self.btnRmPlotPerso.clicked.connect(self.mdlPlots.removePlotPerso)
@@ -498,6 +498,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             w.setColumn(c)
             
         self.tabPlot.setEnabled(False)
+        
+        self.lstOutlinePlots.setPlotModel(self.mdlPlots)
+        self.lstOutlinePlots.setShowSubPlot(True)
         
         # Outline
         self.treeRedacOutline.setModel(self.mdlOutline)

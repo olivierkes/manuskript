@@ -487,8 +487,10 @@ class Ui_MainWindow(object):
         self.groupBox_2.setObjectName("groupBox_2")
         self.verticalLayout_10 = QtWidgets.QVBoxLayout(self.groupBox_2)
         self.verticalLayout_10.setObjectName("verticalLayout_10")
-        self.lstPlots = plotListView(self.groupBox_2)
+        self.lstPlots = plotTreeView(self.groupBox_2)
         self.lstPlots.setObjectName("lstPlots")
+        self.lstPlots.headerItem().setText(0, "1")
+        self.lstPlots.header().setVisible(False)
         self.verticalLayout_10.addWidget(self.lstPlots)
         self.horizontalLayout_15 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_15.setObjectName("horizontalLayout_15")
@@ -715,16 +717,10 @@ class Ui_MainWindow(object):
         self.splitterOutlineH = QtWidgets.QSplitter(self.lytTabOutline)
         self.splitterOutlineH.setOrientation(QtCore.Qt.Horizontal)
         self.splitterOutlineH.setObjectName("splitterOutlineH")
-        self.treeWidget_2 = QtWidgets.QTreeWidget(self.splitterOutlineH)
-        self.treeWidget_2.setDragEnabled(True)
-        self.treeWidget_2.setDragDropMode(QtWidgets.QAbstractItemView.DragOnly)
-        self.treeWidget_2.setObjectName("treeWidget_2")
-        item_0 = QtWidgets.QTreeWidgetItem(self.treeWidget_2)
-        item_1 = QtWidgets.QTreeWidgetItem(item_0)
-        item_1 = QtWidgets.QTreeWidgetItem(item_0)
-        item_0 = QtWidgets.QTreeWidgetItem(self.treeWidget_2)
-        item_1 = QtWidgets.QTreeWidgetItem(item_0)
-        item_1 = QtWidgets.QTreeWidgetItem(item_0)
+        self.lstOutlinePlots = plotTreeView(self.splitterOutlineH)
+        self.lstOutlinePlots.setDragEnabled(True)
+        self.lstOutlinePlots.setDragDropMode(QtWidgets.QAbstractItemView.DragOnly)
+        self.lstOutlinePlots.setObjectName("lstOutlinePlots")
         self.layoutWidget = QtWidgets.QWidget(self.splitterOutlineH)
         self.layoutWidget.setObjectName("layoutWidget")
         self.verticalLayout_14 = QtWidgets.QVBoxLayout(self.layoutWidget)
@@ -1115,10 +1111,10 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuHelp.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.tabMain.setCurrentIndex(3)
+        self.tabMain.setCurrentIndex(5)
         self.tabSummary.setCurrentIndex(0)
         self.tabPersos.setCurrentIndex(0)
-        self.tabPlot.setCurrentIndex(1)
+        self.tabPlot.setCurrentIndex(0)
         self.comboBox_2.setCurrentIndex(0)
         self.stkPlotSummary.setCurrentIndex(0)
         self.tabRedacInfos.setCurrentIndex(0)
@@ -1201,16 +1197,6 @@ class Ui_MainWindow(object):
         self.comboBox_2.setItemText(2, _translate("MainWindow", "Full"))
         self.tabMain.setTabText(self.tabMain.indexOf(self.lytTabPlot), _translate("MainWindow", "Plots"))
         self.tabMain.setTabText(self.tabMain.indexOf(self.tab_5), _translate("MainWindow", "Context"))
-        self.treeWidget_2.headerItem().setText(0, _translate("MainWindow", "Scenes list"))
-        __sortingEnabled = self.treeWidget_2.isSortingEnabled()
-        self.treeWidget_2.setSortingEnabled(False)
-        self.treeWidget_2.topLevelItem(0).setText(0, _translate("MainWindow", "Intrigue général"))
-        self.treeWidget_2.topLevelItem(0).child(0).setText(0, _translate("MainWindow", "Scène 1"))
-        self.treeWidget_2.topLevelItem(0).child(1).setText(0, _translate("MainWindow", "Scène 2"))
-        self.treeWidget_2.topLevelItem(1).setText(0, _translate("MainWindow", "Intrigue secondaire"))
-        self.treeWidget_2.topLevelItem(1).child(0).setText(0, _translate("MainWindow", "Scène 1"))
-        self.treeWidget_2.topLevelItem(1).child(1).setText(0, _translate("MainWindow", "Scène 2"))
-        self.treeWidget_2.setSortingEnabled(__sortingEnabled)
         self.tabMain.setTabText(self.tabMain.indexOf(self.lytTabOutline), _translate("MainWindow", "Outline"))
         self.btnRedacFolderText.setText(_translate("MainWindow", "Text"))
         self.btnRedacFolderCork.setText(_translate("MainWindow", "Index cards"))
@@ -1272,12 +1258,12 @@ class Ui_MainWindow(object):
         self.actSettings.setText(_translate("MainWindow", "Settings"))
         self.actSettings.setShortcut(_translate("MainWindow", "F8"))
 
-from ui.views.textEditView import textEditView
-from ui.views.basicItemView import basicItemView
-from ui.views.lineEditView import lineEditView
-from ui.views.plotListView import plotListView
 from ui.views.outlineView import outlineView
 from ui.editors.editorWidget import editorWidget
 from ui.views.metadataView import metadataView
-from ui.sldImportance import sldImportance
+from ui.views.lineEditView import lineEditView
+from ui.views.basicItemView import basicItemView
 from ui.views.treeView import treeView
+from ui.views.plotTreeView import plotTreeView
+from ui.views.textEditView import textEditView
+from ui.sldImportance import sldImportance

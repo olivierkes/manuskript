@@ -18,7 +18,7 @@
     <item>
      <widget class="QTabWidget" name="tabMain">
       <property name="currentIndex">
-       <number>3</number>
+       <number>5</number>
       </property>
       <property name="documentMode">
        <bool>true</bool>
@@ -916,7 +916,16 @@
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_10">
             <item>
-             <widget class="plotListView" name="lstPlots"/>
+             <widget class="plotTreeView" name="lstPlots">
+              <attribute name="headerVisible">
+               <bool>false</bool>
+              </attribute>
+              <column>
+               <property name="text">
+                <string notr="true">1</string>
+               </property>
+              </column>
+             </widget>
             </item>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_15">
@@ -975,7 +984,7 @@
           </widget>
           <widget class="QTabWidget" name="tabPlot">
            <property name="currentIndex">
-            <number>1</number>
+            <number>0</number>
            </property>
            <property name="documentMode">
             <bool>true</bool>
@@ -1326,48 +1335,13 @@
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
-          <widget class="QTreeWidget" name="treeWidget_2">
+          <widget class="plotTreeView" name="lstOutlinePlots">
            <property name="dragEnabled">
             <bool>true</bool>
            </property>
            <property name="dragDropMode">
             <enum>QAbstractItemView::DragOnly</enum>
            </property>
-           <column>
-            <property name="text">
-             <string>Scenes list</string>
-            </property>
-           </column>
-           <item>
-            <property name="text">
-             <string>Intrigue général</string>
-            </property>
-            <item>
-             <property name="text">
-              <string>Scène 1</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Scène 2</string>
-             </property>
-            </item>
-           </item>
-           <item>
-            <property name="text">
-             <string>Intrigue secondaire</string>
-            </property>
-            <item>
-             <property name="text">
-              <string>Scène 1</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Scène 2</string>
-             </property>
-            </item>
-           </item>
           </widget>
           <widget class="QWidget" name="layoutWidget">
            <layout class="QVBoxLayout" name="verticalLayout_14">
@@ -2198,9 +2172,9 @@
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>plotListView</class>
-   <extends>QListWidget</extends>
-   <header>ui.views.plotListView.h</header>
+   <class>plotTreeView</class>
+   <extends>QTreeWidget</extends>
+   <header>ui.views.plotTreeView.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

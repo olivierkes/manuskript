@@ -30,7 +30,20 @@ class plotModel(QStandardItemModel):
             plots[2-toInt(importance)].append(ID)
         return plots
     
-    def getNameByID(self, ID):
+    def getSubPlotsByID(self, ID):
+        index = self.getIndexFromID(ID)
+        if not index.isValid():
+            return
+        index = index.sibling(index.row(), Plot.subplots.value)
+        item = self.itemFromIndex(index)
+        lst = []
+        for i in range(item.rowCount()):
+            _ID = item.child(i, Plot.ID.value).text()
+            name = item.child(i, Plot.name.value).text()
+            lst.append((_ID, name))
+        return lst
+    
+    def getPlotNameByID(self, ID):
         for i in range(self.rowCount()):
             _ID = self.item(i, Plot.ID.value).text()
             if _ID == ID or toInt(_ID) == ID:
@@ -46,7 +59,7 @@ class plotModel(QStandardItemModel):
         return QModelIndex()
         
     def currentIndex(self):
-        i = self.mw.lstPlots.selectionModel().currentIndex()
+        i = self.mw.lstPlots.currentIndex()
         if i .isValid():
             return i
         else:
@@ -85,7 +98,7 @@ class plotModel(QStandardItemModel):
 ####################################################################################################
         
     def addSubPlot(self):
-        index = self.mw.lstPlots.currentIndex()
+        index = self.mw.lstPlots.currentPlotIndex()
         if not index.isValid():
             return
         
@@ -122,7 +135,7 @@ class plotModel(QStandardItemModel):
 ####################################################################################################
         
     def addPlotPerso(self, v):
-        index = self.mw.lstPlots.currentIndex()
+        index = self.mw.lstPlots.currentPlotIndex()
         if index.isValid():
             if not self.item(index.row(), Plot.persos.value):
                 self.setItem(index.row(), Plot.persos.value, QStandardItem())
