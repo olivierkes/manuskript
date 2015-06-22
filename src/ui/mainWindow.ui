@@ -499,8 +499,7 @@
               </property>
               <property name="icon">
                <iconset theme="go-next">
-                <normaloff/>
-               </iconset>
+                <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
               </property>
              </widget>
             </item>
@@ -511,8 +510,7 @@
               </property>
               <property name="icon">
                <iconset theme="go-next">
-                <normaloff/>
-               </iconset>
+                <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
               </property>
              </widget>
             </item>
@@ -523,8 +521,7 @@
               </property>
               <property name="icon">
                <iconset theme="go-next">
-                <normaloff/>
-               </iconset>
+                <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
               </property>
              </widget>
             </item>
@@ -535,8 +532,7 @@
               </property>
               <property name="icon">
                <iconset theme="go-next">
-                <normaloff/>
-               </iconset>
+                <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
               </property>
              </widget>
             </item>
@@ -594,8 +590,7 @@
                 </property>
                 <property name="icon">
                  <iconset theme="list-add">
-                  <normaloff/>
-                 </iconset>
+                  <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
                 </property>
                </widget>
               </item>
@@ -606,8 +601,7 @@
                 </property>
                 <property name="icon">
                  <iconset theme="list-remove">
-                  <normaloff/>
-                 </iconset>
+                  <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
                 </property>
                </widget>
               </item>
@@ -733,8 +727,7 @@
                  </property>
                  <property name="icon">
                   <iconset theme="go-next">
-                   <normaloff/>
-                  </iconset>
+                   <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
                  </property>
                 </widget>
                </item>
@@ -796,8 +789,7 @@
                  </property>
                  <property name="icon">
                   <iconset theme="go-next">
-                   <normaloff/>
-                  </iconset>
+                   <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
                  </property>
                 </widget>
                </item>
@@ -839,8 +831,7 @@
                  </property>
                  <property name="icon">
                   <iconset theme="list-add">
-                   <normaloff/>
-                  </iconset>
+                   <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
                  </property>
                 </widget>
                </item>
@@ -851,8 +842,7 @@
                  </property>
                  <property name="icon">
                   <iconset theme="emblem-favorite">
-                   <normaloff/>
-                  </iconset>
+                   <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
                  </property>
                  <property name="checkable">
                   <bool>true</bool>
@@ -866,8 +856,7 @@
                  </property>
                  <property name="icon">
                   <iconset theme="list-remove">
-                   <normaloff/>
-                  </iconset>
+                   <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
                  </property>
                 </widget>
                </item>
@@ -898,8 +887,7 @@
                  </property>
                  <property name="icon">
                   <iconset theme="go-next">
-                   <normaloff/>
-                  </iconset>
+                   <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
                  </property>
                 </widget>
                </item>
@@ -928,20 +916,7 @@
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_10">
             <item>
-             <widget class="QListView" name="lstPlots">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="dragEnabled">
-               <bool>true</bool>
-              </property>
-              <property name="dragDropMode">
-               <enum>QAbstractItemView::InternalMove</enum>
-              </property>
-             </widget>
+             <widget class="plotListView" name="lstPlots"/>
             </item>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_15">
@@ -952,8 +927,7 @@
                 </property>
                 <property name="icon">
                  <iconset theme="list-add">
-                  <normaloff/>
-                 </iconset>
+                  <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
                 </property>
                </widget>
               </item>
@@ -964,13 +938,12 @@
                 </property>
                 <property name="icon">
                  <iconset theme="list-remove">
-                  <normaloff/>
-                 </iconset>
+                  <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="lineEdit_7">
+               <widget class="QLineEdit" name="txtPlotFilter">
                 <property name="placeholderText">
                  <string>Filter</string>
                 </property>
@@ -986,8 +959,7 @@
                 </property>
                 <property name="icon">
                  <iconset theme="text-x-generic">
-                  <normaloff/>
-                 </iconset>
+                  <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
                 </property>
                 <property name="checkable">
                  <bool>true</bool>
@@ -1003,7 +975,7 @@
           </widget>
           <widget class="QTabWidget" name="tabPlot">
            <property name="currentIndex">
-            <number>0</number>
+            <number>1</number>
            </property>
            <property name="documentMode">
             <bool>true</bool>
@@ -1094,8 +1066,7 @@
                    </property>
                    <property name="icon">
                     <iconset theme="list-add">
-                     <normaloff/>
-                    </iconset>
+                     <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
                    </property>
                   </widget>
                  </item>
@@ -1106,8 +1077,7 @@
                    </property>
                    <property name="icon">
                     <iconset theme="list-remove">
-                     <normaloff/>
-                    </iconset>
+                     <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
                    </property>
                   </widget>
                  </item>
@@ -1137,7 +1107,7 @@
             <attribute name="title">
              <string>Resolution steps</string>
             </attribute>
-            <layout class="QVBoxLayout" name="verticalLayout_11">
+            <layout class="QVBoxLayout" name="verticalLayout_28">
              <item>
               <widget class="QListView" name="lstSubPlots">
                <property name="dragDropMode">
@@ -1149,7 +1119,16 @@
               </widget>
              </item>
              <item>
-              <widget class="textEditView" name="txtSubPlotSummary"/>
+              <widget class="QGroupBox" name="grpSubPlotSummary">
+               <property name="title">
+                <string>Summary:</string>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_11">
+                <item>
+                 <widget class="textEditView" name="txtSubPlotSummary"/>
+                </item>
+               </layout>
+              </widget>
              </item>
              <item>
               <layout class="QHBoxLayout" name="horizontalLayout_17">
@@ -1160,8 +1139,7 @@
                  </property>
                  <property name="icon">
                   <iconset theme="list-add">
-                   <normaloff/>
-                  </iconset>
+                   <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
                  </property>
                 </widget>
                </item>
@@ -1172,8 +1150,7 @@
                  </property>
                  <property name="icon">
                   <iconset theme="list-remove">
-                   <normaloff/>
-                  </iconset>
+                   <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
                  </property>
                 </widget>
                </item>
@@ -1191,8 +1168,7 @@
                  </property>
                  <property name="icon">
                   <iconset theme="go-top">
-                   <normaloff/>
-                  </iconset>
+                   <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
                  </property>
                 </widget>
                </item>
@@ -1203,8 +1179,7 @@
                  </property>
                  <property name="icon">
                   <iconset theme="go-up">
-                   <normaloff/>
-                  </iconset>
+                   <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
                  </property>
                 </widget>
                </item>
@@ -1215,8 +1190,7 @@
                  </property>
                  <property name="icon">
                   <iconset theme="go-down">
-                   <normaloff/>
-                  </iconset>
+                   <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
                  </property>
                 </widget>
                </item>
@@ -1227,8 +1201,7 @@
                  </property>
                  <property name="icon">
                   <iconset theme="go-bottom">
-                   <normaloff/>
-                  </iconset>
+                   <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
                  </property>
                 </widget>
                </item>
@@ -1259,8 +1232,7 @@
                  </property>
                  <property name="icon">
                   <iconset theme="text-x-generic">
-                   <normaloff/>
-                  </iconset>
+                   <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
                  </property>
                  <property name="checkable">
                   <bool>true</bool>
@@ -1445,8 +1417,7 @@
                 </property>
                 <property name="icon">
                  <iconset theme="folder-new">
-                  <normaloff/>
-                 </iconset>
+                  <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
                 </property>
                </widget>
               </item>
@@ -1457,8 +1428,7 @@
                 </property>
                 <property name="icon">
                  <iconset theme="document-new">
-                  <normaloff/>
-                 </iconset>
+                  <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
                 </property>
                </widget>
               </item>
@@ -1469,8 +1439,7 @@
                 </property>
                 <property name="icon">
                  <iconset theme="list-remove">
-                  <normaloff/>
-                 </iconset>
+                  <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
                 </property>
                </widget>
               </item>
@@ -1494,8 +1463,7 @@
                 </property>
                 <property name="icon">
                  <iconset theme="text-x-generic">
-                  <normaloff/>
-                 </iconset>
+                  <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
                 </property>
                 <property name="checkable">
                  <bool>true</bool>
@@ -1540,8 +1508,7 @@
                 </property>
                 <property name="icon">
                  <iconset theme="folder-new">
-                  <normaloff/>
-                 </iconset>
+                  <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
                 </property>
                </widget>
               </item>
@@ -1552,8 +1519,7 @@
                 </property>
                 <property name="icon">
                  <iconset theme="document-new">
-                  <normaloff/>
-                 </iconset>
+                  <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
                 </property>
                </widget>
               </item>
@@ -1564,8 +1530,7 @@
                 </property>
                 <property name="icon">
                  <iconset theme="list-remove">
-                  <normaloff/>
-                 </iconset>
+                  <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
                 </property>
                </widget>
               </item>
@@ -1600,8 +1565,7 @@
                 </property>
                 <property name="icon">
                  <iconset theme="text-x-generic">
-                  <normaloff/>
-                 </iconset>
+                  <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
                 </property>
                 <property name="checkable">
                  <bool>true</bool>
@@ -1733,8 +1697,7 @@
                 </property>
                 <property name="icon">
                  <iconset theme="view-fullscreen">
-                  <normaloff/>
-                 </iconset>
+                  <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
                 </property>
                 <property name="shortcut">
                  <string>F11</string>
@@ -1748,8 +1711,7 @@
                 </property>
                 <property name="icon">
                  <iconset theme="edit-find">
-                  <normaloff/>
-                 </iconset>
+                  <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
                 </property>
                 <property name="checkable">
                  <bool>true</bool>
@@ -2020,8 +1982,7 @@
   <action name="actOpen">
    <property name="icon">
     <iconset theme="document-open">
-     <normaloff/>
-    </iconset>
+     <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
    </property>
    <property name="text">
     <string>Open</string>
@@ -2033,8 +1994,7 @@
   <action name="actRecents">
    <property name="icon">
     <iconset theme="document-open-recent">
-     <normaloff/>
-    </iconset>
+     <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
    </property>
    <property name="text">
     <string>Recents</string>
@@ -2046,8 +2006,7 @@
   <action name="actSave">
    <property name="icon">
     <iconset theme="document-save">
-     <normaloff/>
-    </iconset>
+     <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
    </property>
    <property name="text">
     <string>Save</string>
@@ -2059,8 +2018,7 @@
   <action name="actSaveAs">
    <property name="icon">
     <iconset theme="document-save-as">
-     <normaloff/>
-    </iconset>
+     <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
    </property>
    <property name="text">
     <string>Save as...</string>
@@ -2072,8 +2030,7 @@
   <action name="actQuit">
    <property name="icon">
     <iconset theme="application-exit">
-     <normaloff/>
-    </iconset>
+     <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
    </property>
    <property name="text">
     <string>Quit</string>
@@ -2085,8 +2042,7 @@
   <action name="actNew">
    <property name="icon">
     <iconset theme="document-new">
-     <normaloff/>
-    </iconset>
+     <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
    </property>
    <property name="text">
     <string>New</string>
@@ -2104,8 +2060,7 @@
    </property>
    <property name="icon">
     <iconset theme="system-help">
-     <normaloff/>
-    </iconset>
+     <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
    </property>
    <property name="text">
     <string>Show help texts</string>
@@ -2123,8 +2078,7 @@
    </property>
    <property name="icon">
     <iconset theme="tools-check-spelling">
-     <normaloff/>
-    </iconset>
+     <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
    </property>
    <property name="text">
     <string>Spellcheck</string>
@@ -2188,8 +2142,7 @@
   <action name="actSettings">
    <property name="icon">
     <iconset theme="preferences-system">
-     <normaloff/>
-    </iconset>
+     <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
    </property>
    <property name="text">
     <string>Settings</string>
@@ -2244,6 +2197,11 @@
    <header>ui.views.basicItemView.h</header>
    <container>1</container>
   </customwidget>
+  <customwidget>
+   <class>plotListView</class>
+   <extends>QListWidget</extends>
+   <header>ui.views.plotListView.h</header>
+  </customwidget>
  </customwidgets>
  <resources/>
  <connections>
@@ -2254,8 +2212,8 @@
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>331</x>
-     <y>762</y>
+     <x>325</x>
+     <y>787</y>
     </hint>
     <hint type="destinationlabel">
      <x>860</x>
@@ -2356,6 +2314,22 @@
     <hint type="destinationlabel">
      <x>156</x>
      <y>134</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnShowSubPlotSummary</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>grpSubPlotSummary</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>742</x>
+     <y>762</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>742</x>
+     <y>749</y>
     </hint>
    </hints>
   </connection>

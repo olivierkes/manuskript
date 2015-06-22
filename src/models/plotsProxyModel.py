@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 #--!-- coding: utf8 --!--
-
+ 
 from qt import *
 from enums import *
 
 from enum import Enum
 from lxml import etree as ET
 
-class persosProxyModel(QSortFilterProxyModel):
+class plotsProxyModel(QSortFilterProxyModel):
     
     newStatuses = pyqtSignal()
     
@@ -68,7 +68,7 @@ class persosProxyModel(QSortFilterProxyModel):
         self.mapModel()
         
     def mapModelMaybe(self, topLeft, bottomRight):
-        if topLeft.column() <= Perso.importance.value <= bottomRight.column():
+        if topLeft.column() <= Plot.importance.value <= bottomRight.column():
             self.mapModel()
     
     def mapModel(self):
@@ -81,7 +81,7 @@ class persosProxyModel(QSortFilterProxyModel):
             self._map.append(self._cats[i])
             
             for p in range(src.rowCount()):
-                item = src.item(p, Perso.importance.value)
+                item = src.item(p, Plot.importance.value)
                 
                 if item:
                     imp = int(item.text())
@@ -122,11 +122,9 @@ class persosProxyModel(QSortFilterProxyModel):
         i = self._map[row]
         
         if type(i) != int:
-            
             return self.createIndex(row, column, i)
         
         else:
-            
             return self.mapFromSource(self.sourceModel().index(i, column, QModelIndex()))
     
     def parent(self, index=QModelIndex()):
@@ -141,7 +139,3 @@ class persosProxyModel(QSortFilterProxyModel):
     def item(self, row, col, parent=QModelIndex()):
         idx = self.mapToSource(self.index(row, col, parent))
         return self.sourceModel().item(idx.row(), idx.column())
-        
-    
-    #def setData(self, index, value, role=Qt.EditRole):
-        #pass

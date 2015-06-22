@@ -69,8 +69,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
         # Persos
         self.mdlPersos = QStandardItemModel(0, 0)
-        self.mdlPersosProxy = None # persosProxyModel() # None
-        #self.mdlPersosProxy = persosProxyModel()
+        #self.mdlPersosProxy = None # persosProxyModel() # None
+        self.mdlPersosProxy = persosProxyModel(self)
         
         self.mdlPersosInfos = QStandardItemModel(1, 0)
         self.mdlPersosInfos.insertColumn(0, [QStandardItem("ID")])
@@ -287,6 +287,57 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         px.fill(color)
         self.mdlPersos.item(row, Perso.name.value).setIcon(QIcon(px))
         
+    
+####################################################################################################
+#                                              PLOTS                                               #
+####################################################################################################
+
+    def changeCurrentPlot(self):
+        index = self.lstPlots.currentIndex()
+        
+        if not index.isValid():
+            self.tabPlot.setEnabled(False)
+            return
+        
+        self.tabPlot.setEnabled(True)
+        self.txtPlotName.setCurrentModelIndex(index)
+        self.txtPlotDescription.setCurrentModelIndex(index)
+        self.txtPlotResult.setCurrentModelIndex(index)
+        self.sldPlotImportance.setCurrentModelIndex(index)
+        self.lstPlotPerso.setRootIndex(index.sibling(index.row(), Plot.persos.value))
+        
+        self.lstSubPlots.setRootIndex(index.sibling(index.row(), Plot.subplots.value))
+        #self.txtSubPlotSummary.setCurrentModelIndex(QModelIndex())
+        self.txtSubPlotSummary.setEnabled(False)
+        self.txtSubPlotSummary.setPlainText("")
+        
+    def changeCurrentSubPlot(self, index):
+        # Got segfaults when using my textEditView model system, so ad hoc stuff.
+        index = index.sibling(index.row(), 3)
+        item = self.mdlPlots.itemFromIndex(index)
+        if not item:
+            self.txtSubPlotSummary.setEnabled(False)
+            return
+        self.txtSubPlotSummary.setEnabled(True)
+        txt = item.text()
+        self._updatingSubPlot = True
+        self.txtSubPlotSummary.setPlainText(txt)
+        self._updatingSubPlot = False
+        self.txtSubPlotSummary.document().contentsChanged.connect(self.updateSubPlotSummary)
+        
+    def updateSubPlotSummary(self):
+        if self._updatingSubPlot:
+            return
+        
+        index = self.lstSubPlots.currentIndex()
+        if not index.isValid():
+            return
+        index = index.sibling(index.row(), 3)
+        item = self.mdlPlots.itemFromIndex(index)
+        
+        self._updatingSubPlot = True
+        item.setText(self.txtSubPlotSummary.toPlainText())
+        self._updatingSubPlot = False
         
 ####################################################################################################
 #                                             GENERAL                                              #
@@ -297,7 +348,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
         # Load data
         self.loadDatas()
-        
         self.makeConnections()
         
         # Load settings
@@ -386,7 +436,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             widget.setCurrentModelIndex(self.mdlFlatData.index(0, col))
         
         # Persos
-        
         if self.mdlPersosProxy:
             self.mdlPersosProxy.setSourceModel(self.mdlPersos)
             self.lstPersos.setModel(self.mdlPersosProxy)
@@ -425,9 +474,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.tabPersos.currentChanged.connect(self.resizePersosInfos)
         
         # Plots
-        self.lstPlots.setModel(self.mdlPlots.viewModel())
-        self.lstPlotPerso.setModel(self.mdlPlots.viewModel())
-        self.lstSubPlots.setModel(self.mdlPlots.viewModel())
+        self.lstPlots.setPlotModel(self.mdlPlots)
+        self.txtPlotFilter.textChanged.connect(self.lstPlots.setFilter)
+        self.lstPlots.currentRowChanged.connect(self.changeCurrentPlot)
+        self.lstPlotPerso.setModel(self.mdlPlots)
+        self.lstSubPlots.setModel(self.mdlPlots)
+        #self.txtSubPlotSummary.setModel(self.mdlPlots)
+        #self.txtSubPlotSummary.setColumn(1)
+        self.lstSubPlots.selectionModel().currentChanged.connect(self.changeCurrentSubPlot)
         self.btnAddPlot.clicked.connect(self.mdlPlots.addPlot)
         self.btnRmPlot.clicked.connect(lambda: self.mdlPlots.removePlot(self.lstPlots.currentIndex()))
         self.btnAddSubPlot.clicked.connect(self.mdlPlots.addSubPlot)
@@ -442,29 +496,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             ]:
             w.setModel(self.mdlPlots)
             w.setColumn(c)
-            self.lstPlots.selectionModel().currentChanged.connect(w.setCurrentModelIndex)
-        
+            
         self.tabPlot.setEnabled(False)
-        self.lstPlots.selectionModel().currentChanged.connect(lambda: self.tabPlot.setEnabled(self.lstPlots.selectionModel().currentIndex().isValid()))
-        # sets persos view
-        self.lstPlots.selectionModel().currentChanged.connect(
-            lambda: self.lstPlotPerso.setRootIndex(self.mdlPlots.index(
-                self.lstPlots.selectionModel().currentIndex().row(),
-                Plot.persos.value)))
-        # sets subplots view
-        self.lstPlots.selectionModel().currentChanged.connect(
-            lambda: self.lstSubPlots.setRootIndex(self.mdlPlots.index(
-                self.lstPlots.selectionModel().currentIndex().row(),
-                Plot.subplots.value)))
-        # Subplot mapper
-        self.mprSubPlots = QDataWidgetMapper()
-        self.mprSubPlots.setModel(self.mdlPlots)
-        self.mprSubPlots.addMapping(self.txtSubPlotSummary, 2)
-        self.lstPlots.selectionModel().currentChanged.connect(self.mprSubPlots.setRootIndex)
-        self.lstSubPlots.selectionModel().currentChanged.connect(self.mprSubPlots.setCurrentModelIndex)
         
         # Outline
-        
         self.treeRedacOutline.setModel(self.mdlOutline)
         self.treePlanOutline.setModelPersos(self.mdlPersos)
         self.treePlanOutline.setModelLabels(self.mdlLabels)

@@ -40,8 +40,8 @@ class outlineView(QTreeView, dndView, outlineBasics):
         QTreeView.setModel(self, model)
         
         # Setting delegates
-        self.outlineTitleDelegate = outlineTitleDelegate()
-        self.outlineTitleDelegate.setView(self)
+        self.outlineTitleDelegate = outlineTitleDelegate(self)
+        #self.outlineTitleDelegate.setView(self)
         self.setItemDelegateForColumn(Outline.title.value, self.outlineTitleDelegate)
         self.outlinePersoDelegate = outlinePersoDelegate(self.modelPersos)
         self.setItemDelegateForColumn(Outline.POV.value, self.outlinePersoDelegate)

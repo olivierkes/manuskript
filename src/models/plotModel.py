@@ -4,6 +4,7 @@
 from qt import *
 from enums import *
 from functions import *
+from models.plotsProxyModel import *
 
 class plotModel(QStandardItemModel):
     
@@ -11,15 +12,56 @@ class plotModel(QStandardItemModel):
         QStandardItemModel.__init__(self, 0, 3)
         self.setHorizontalHeaderLabels([i.name for i in Plot])
         self.mw = mainWindow()
+        #self._proxy = plotsProxyModel()
+        #self._proxy.setSourceModel(self)
         
         self.updatePlotPersoButton()
         self.mw.mdlPersos.dataChanged.connect(self.updatePlotPersoButton)
         
+####################################################################################################
+#                                            QUERIES                                               #
+####################################################################################################
+
+    def getPlotsByImportance(self):
+        plots = [[], [], []]
+        for i in range(self.rowCount()):
+            importance = self.item(i, Plot.importance.value).text()
+            ID = self.item(i, Plot.ID.value).text()
+            plots[2-toInt(importance)].append(ID)
+        return plots
+    
+    def getNameByID(self, ID):
+        for i in range(self.rowCount()):
+            _ID = self.item(i, Plot.ID.value).text()
+            if _ID == ID or toInt(_ID) == ID:
+                name = self.item(i, Plot.name.value).text()
+                return name
+        return None
+    
+    def getIndexFromID(self, ID):
+        for i in range(self.rowCount()):
+            _ID = self.item(i, Plot.ID.value).text()
+            if _ID == ID or toInt(_ID) == ID:
+                return self.index(i, 0)
+        return QModelIndex()
+        
+    def currentIndex(self):
+        i = self.mw.lstPlots.selectionModel().currentIndex()
+        if i .isValid():
+            return i
+        else:
+            return None
+
+####################################################################################################
+#                                       ADDING / REMOVING                                          #
+####################################################################################################
+    
     def addPlot(self):
         p = QStandardItem(self.tr("New plot"))
         _id = QStandardItem(self.getUniqueID())
         importance = QStandardItem(str(0))
-        self.appendRow([p, _id, importance])
+        self.appendRow([p, _id, importance, QStandardItem("Persos"), 
+                        QStandardItem(), QStandardItem(), QStandardItem("Subplots")])
             
     def getUniqueID(self, parent=QModelIndex()):
         "Returns an unused ID"
@@ -37,24 +79,28 @@ class plotModel(QStandardItemModel):
         
     def removePlot(self, index):
         self.takeRow(index.row())
-        
-    def currentIndex(self):
-        i = self.mw.lstPlots.selectionModel().currentIndex()
-        if i .isValid():
-            return i
-        else:
-            return None
+
+####################################################################################################
+#                                           SUBPLOTS                                               #
+####################################################################################################
         
     def addSubPlot(self):
-        index = self.currentIndex()
-        if not index:
+        index = self.mw.lstPlots.currentIndex()
+        if not index.isValid():
             return
+        
         parent = index.sibling(index.row(), Plot.subplots.value)
-        parentItem = self.itemFromIndex(parent)
+        parentItem = self.item(index.row(), Plot.subplots.value)
+        
+        if not parentItem:
+            return
+        
         p = QStandardItem(self.tr("New subplot"))
         _id = QStandardItem(self.getUniqueID(parent))
         summary = QStandardItem()
-        parentItem.appendRow([p, _id, summary])
+        
+        # Don't know why, if summary is in third position, then drag/drop deletes it...
+        parentItem.appendRow([p, _id, QStandardItem(), summary])
     
     def removeSubPlot(self):
         index = self.mw.lstSubPlots.currentIndex()
@@ -63,12 +109,25 @@ class plotModel(QStandardItemModel):
         parent = index.parent()
         parentItem = self.itemFromIndex(parent)
         parentItem.takeRow(index.row())
+    
+    def flags(self, index):
+        parent = index.parent()
+        if parent.isValid(): # this is a subitem
+            return  Qt.ItemIsEnabled | Qt.ItemIsEditable | Qt.ItemIsSelectable | Qt.ItemIsDragEnabled
+        else:
+            return QStandardItemModel.flags(self, index)
+        
+####################################################################################################
+#                                         PLOT PERSOS                                              #
+####################################################################################################
         
     def addPlotPerso(self, v):
-        if self.currentIndex():
-            if not self.item(self.currentIndex().row(), Plot.persos.value):
-                self.setItem(self.currentIndex().row(), Plot.persos.value, QStandardItem())
-            item = self.item(self.currentIndex().row(), Plot.persos.value)
+        index = self.mw.lstPlots.currentIndex()
+        if index.isValid():
+            if not self.item(index.row(), Plot.persos.value):
+                self.setItem(index.row(), Plot.persos.value, QStandardItem())
+                
+            item = self.item(index.row(), Plot.persos.value)
             
             # We check that the PersoID is not in the list yet
             for i in range(item.rowCount()):
@@ -111,14 +170,20 @@ class plotModel(QStandardItemModel):
             
         mpr.mapped.connect(self.addPlotPerso)
         self.mw.btnAddPlotPerso.setMenu(menu)
+
+####################################################################################################
+#                                   PROXY MODEL (UNUSED)                                           #
+####################################################################################################
         
     def viewModel(self):
         "Returns proxy model if any, else self"
-        return self
-    
-    def flags(self, index):
-        parent = index.parent()
-        if parent.isValid(): # this is a subitem
-            return  Qt.ItemIsEnabled | Qt.ItemIsEditable | Qt.ItemIsSelectable | Qt.ItemIsDragEnabled
+        if self._proxy:
+            return self._proxy
         else:
-            return QStandardItemModel.flags(self, index)
+            return self
+    
+    def toSource(self, index):
+        if self._proxy:
+            return self._proxy.mapToSource(index)
+        else:
+            return index

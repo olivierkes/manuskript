@@ -32,6 +32,7 @@ class Plot(Enum):
     description = 4
     result = 5
     subplots = 6
+    summary = 7
     
 class Outline(Enum):
     title = 0

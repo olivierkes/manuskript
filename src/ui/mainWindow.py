@@ -487,14 +487,7 @@ class Ui_MainWindow(object):
         self.groupBox_2.setObjectName("groupBox_2")
         self.verticalLayout_10 = QtWidgets.QVBoxLayout(self.groupBox_2)
         self.verticalLayout_10.setObjectName("verticalLayout_10")
-        self.lstPlots = QtWidgets.QListView(self.groupBox_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.lstPlots.sizePolicy().hasHeightForWidth())
-        self.lstPlots.setSizePolicy(sizePolicy)
-        self.lstPlots.setDragEnabled(True)
-        self.lstPlots.setDragDropMode(QtWidgets.QAbstractItemView.InternalMove)
+        self.lstPlots = plotListView(self.groupBox_2)
         self.lstPlots.setObjectName("lstPlots")
         self.verticalLayout_10.addWidget(self.lstPlots)
         self.horizontalLayout_15 = QtWidgets.QHBoxLayout()
@@ -511,10 +504,10 @@ class Ui_MainWindow(object):
         self.btnRmPlot.setIcon(icon)
         self.btnRmPlot.setObjectName("btnRmPlot")
         self.horizontalLayout_15.addWidget(self.btnRmPlot)
-        self.lineEdit_7 = QtWidgets.QLineEdit(self.groupBox_2)
-        self.lineEdit_7.setProperty("clearButtonEnabled", True)
-        self.lineEdit_7.setObjectName("lineEdit_7")
-        self.horizontalLayout_15.addWidget(self.lineEdit_7)
+        self.txtPlotFilter = QtWidgets.QLineEdit(self.groupBox_2)
+        self.txtPlotFilter.setProperty("clearButtonEnabled", True)
+        self.txtPlotFilter.setObjectName("txtPlotFilter")
+        self.horizontalLayout_15.addWidget(self.txtPlotFilter)
         self.btnPlotShowSummary = QtWidgets.QPushButton(self.groupBox_2)
         self.btnPlotShowSummary.setText("")
         icon = QtGui.QIcon.fromTheme("text-x-generic")
@@ -597,16 +590,21 @@ class Ui_MainWindow(object):
         self.tabPlot.addTab(self.infos_2, "")
         self.tab_15 = QtWidgets.QWidget()
         self.tab_15.setObjectName("tab_15")
-        self.verticalLayout_11 = QtWidgets.QVBoxLayout(self.tab_15)
-        self.verticalLayout_11.setObjectName("verticalLayout_11")
+        self.verticalLayout_28 = QtWidgets.QVBoxLayout(self.tab_15)
+        self.verticalLayout_28.setObjectName("verticalLayout_28")
         self.lstSubPlots = QtWidgets.QListView(self.tab_15)
         self.lstSubPlots.setDragDropMode(QtWidgets.QAbstractItemView.InternalMove)
         self.lstSubPlots.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
         self.lstSubPlots.setObjectName("lstSubPlots")
-        self.verticalLayout_11.addWidget(self.lstSubPlots)
-        self.txtSubPlotSummary = textEditView(self.tab_15)
+        self.verticalLayout_28.addWidget(self.lstSubPlots)
+        self.grpSubPlotSummary = QtWidgets.QGroupBox(self.tab_15)
+        self.grpSubPlotSummary.setObjectName("grpSubPlotSummary")
+        self.verticalLayout_11 = QtWidgets.QVBoxLayout(self.grpSubPlotSummary)
+        self.verticalLayout_11.setObjectName("verticalLayout_11")
+        self.txtSubPlotSummary = textEditView(self.grpSubPlotSummary)
         self.txtSubPlotSummary.setObjectName("txtSubPlotSummary")
         self.verticalLayout_11.addWidget(self.txtSubPlotSummary)
+        self.verticalLayout_28.addWidget(self.grpSubPlotSummary)
         self.horizontalLayout_17 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_17.setObjectName("horizontalLayout_17")
         self.btnAddSubPlot = QtWidgets.QPushButton(self.tab_15)
@@ -665,7 +663,7 @@ class Ui_MainWindow(object):
         self.btnShowSubPlotSummary.setChecked(True)
         self.btnShowSubPlotSummary.setObjectName("btnShowSubPlotSummary")
         self.horizontalLayout_17.addWidget(self.btnShowSubPlotSummary)
-        self.verticalLayout_11.addLayout(self.horizontalLayout_17)
+        self.verticalLayout_28.addLayout(self.horizontalLayout_17)
         self.tabPlot.addTab(self.tab_15, "")
         self.grpPlotSummary = QtWidgets.QGroupBox(self.splitterPlot)
         self.grpPlotSummary.setObjectName("grpPlotSummary")
@@ -1120,7 +1118,7 @@ class Ui_MainWindow(object):
         self.tabMain.setCurrentIndex(3)
         self.tabSummary.setCurrentIndex(0)
         self.tabPersos.setCurrentIndex(0)
-        self.tabPlot.setCurrentIndex(0)
+        self.tabPlot.setCurrentIndex(1)
         self.comboBox_2.setCurrentIndex(0)
         self.stkPlotSummary.setCurrentIndex(0)
         self.tabRedacInfos.setCurrentIndex(0)
@@ -1132,6 +1130,7 @@ class Ui_MainWindow(object):
         self.btnRedacShowOutline.toggled['bool'].connect(self.widget.setVisible)
         self.cmbSummary.currentIndexChanged['int'].connect(self.tabSummary.setCurrentIndex)
         self.tabSummary.currentChanged['int'].connect(self.cmbSummary.setCurrentIndex)
+        self.btnShowSubPlotSummary.toggled['bool'].connect(self.grpSubPlotSummary.setVisible)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -1187,13 +1186,14 @@ class Ui_MainWindow(object):
         self.tabPersos.setTabText(self.tabPersos.indexOf(self.tab_12), _translate("MainWindow", "Detailed infos"))
         self.tabMain.setTabText(self.tabMain.indexOf(self.lytTabPersos), _translate("MainWindow", "Characters"))
         self.groupBox_2.setTitle(_translate("MainWindow", "Plots"))
-        self.lineEdit_7.setPlaceholderText(_translate("MainWindow", "Filter"))
+        self.txtPlotFilter.setPlaceholderText(_translate("MainWindow", "Filter"))
         self.label_25.setText(_translate("MainWindow", "Plot"))
         self.label_31.setText(_translate("MainWindow", "Importance"))
         self.label_26.setText(_translate("MainWindow", "Character(s)"))
         self.label_27.setText(_translate("MainWindow", "Description"))
         self.label_28.setText(_translate("MainWindow", "Result"))
         self.tabPlot.setTabText(self.tabPlot.indexOf(self.infos_2), _translate("MainWindow", "Basic infos"))
+        self.grpSubPlotSummary.setTitle(_translate("MainWindow", "Summary:"))
         self.tabPlot.setTabText(self.tabPlot.indexOf(self.tab_15), _translate("MainWindow", "Resolution steps"))
         self.grpPlotSummary.setTitle(_translate("MainWindow", "Summary"))
         self.comboBox_2.setItemText(0, _translate("MainWindow", "One paragraph"))
@@ -1272,11 +1272,12 @@ class Ui_MainWindow(object):
         self.actSettings.setText(_translate("MainWindow", "Settings"))
         self.actSettings.setShortcut(_translate("MainWindow", "F8"))
 
-from ui.editors.editorWidget import editorWidget
-from ui.views.outlineView import outlineView
-from ui.views.treeView import treeView
 from ui.views.textEditView import textEditView
-from ui.views.lineEditView import lineEditView
-from ui.sldImportance import sldImportance
-from ui.views.metadataView import metadataView
 from ui.views.basicItemView import basicItemView
+from ui.views.lineEditView import lineEditView
+from ui.views.plotListView import plotListView
+from ui.views.outlineView import outlineView
+from ui.editors.editorWidget import editorWidget
+from ui.views.metadataView import metadataView
+from ui.sldImportance import sldImportance
+from ui.views.treeView import treeView

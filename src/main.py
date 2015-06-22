@@ -6,7 +6,7 @@ from qt import *
 _version = "0.1"
 
 import faulthandler
-faulthandler.enable()
+#faulthandler.enable()
 
 def run():
     app = QApplication(sys.argv)

@@ -86,6 +86,14 @@ class textEditView(QTextEdit):
             if self._highlighting and not self.highlighter:
                 self.highlighter = t2tHighlighter(self)
                 self.highlighter.setDefaultBlockFormat(self._defaultBlockFormat)
+        else:
+            self._index = QModelIndex()
+            try:
+                self.document().contentsChanged.disconnect(self.submit)
+                self._model.dataChanged.disconnect(self.update)
+            except:
+                pass
+            self.setPlainText("")
         
     def setCurrentModelIndexes(self, indexes):
         self._index = None
