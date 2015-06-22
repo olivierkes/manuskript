@@ -561,7 +561,7 @@
     <message>
         <location filename="../src/mainWindow.py" line="88"/>
         <source>Research</source>
-        <translation>Reserche</translation>
+        <translation>Recherche</translation>
     </message>
     <message>
         <location filename="../src/mainWindow.py" line="635"/>
