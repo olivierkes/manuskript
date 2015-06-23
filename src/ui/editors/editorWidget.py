@@ -211,8 +211,10 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
             #mw = qApp.activeWindow()
             
             mw = mainWindow()
-            
             if not mw: return
+            
+            if not wc:
+                wc = 0
             
             if goal:
                 mw.lblRedacProgress.show()
