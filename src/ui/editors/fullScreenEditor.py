@@ -14,7 +14,6 @@ class fullScreenEditor(QWidget):
         QWidget.__init__(self, parent)
         self._background = None
         self._index = index
-        self._index.model().dataChanged.connect(self.dataChanged)
         self._theme = findThemePath(settings.fullScreenTheme)
         self._themeDatas = loadThemeDatas(self._theme)
         self.setMouseTracking(True)
@@ -80,6 +79,9 @@ class fullScreenEditor(QWidget):
         self.updateStatusBar()
         
         self.bottomPanel.layout().addSpacing(24)
+        
+        # Connection
+        self._index.model().dataChanged.connect(self.dataChanged)
         
         #self.updateTheme()
         self.showFullScreen()
@@ -206,8 +208,8 @@ class fullScreenEditor(QWidget):
             self.lblProgress.setPixmap(self.px)
             self.lblWC.setText(self.tr("{} words / {}").format(wc, goal))
         else:
-            mw.lblProgress.hide()
-            mw.lblWC.setText(self.tr("{} words").format(wc))
+            self.lblProgress.hide()
+            self.lblWC.setText(self.tr("{} words").format(wc))
         
 class myScrollBar(QScrollBar):
     def __init__(self, color=Qt.white, parent=None):
