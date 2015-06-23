@@ -176,8 +176,10 @@ class welcome(QWidget, Ui_welcome):
             ]
            
     def changeTemplate(self, item, column):
-        self.template = [i for i in self.templates() if i[0] == item.text(0)][0][1]
-        self.updateTemplate()
+        template = [i for i in self.templates() if i[0] == item.text(0)]
+        if len(template):
+            self.template = template[0][1]
+            self.updateTemplate()
         
     def updateTemplate(self):
         # Clear layout
