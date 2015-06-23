@@ -47,6 +47,9 @@ class settingsWindow(QWidget, Ui_Settings):
         self.chkSaveOnQuit.stateChanged.connect(self.saveSettingsChanged)
         self.txtAutoSave.textEdited.connect(self.saveSettingsChanged)
         self.txtAutoSaveNoChanges.textEdited.connect(self.saveSettingsChanged)
+        autoLoad, last = self.mw.welcome.getAutoLoadValues()
+        self.chkAutoLoad.setChecked(autoLoad)
+        self.chkAutoLoad.stateChanged.connect(self.saveSettingsChanged)
         
         # Views
         self.tabViews.setCurrentIndex(0)
@@ -130,8 +133,8 @@ class settingsWindow(QWidget, Ui_Settings):
         
     def setStyle(self, style):
         #Save style to Qt Settings
-        settings = QSettings(qApp.organizationName(), qApp.applicationName())
-        settings.setValue("applicationStyle", style)
+        sttgs = QSettings(qApp.organizationName(), qApp.applicationName())
+        sttgs.setValue("applicationStyle", style)
         qApp.setStyle(style)
         
     def saveSettingsChanged(self):
@@ -139,6 +142,10 @@ class settingsWindow(QWidget, Ui_Settings):
             self.txtAutoSave.setText("1")
         if self.txtAutoSaveNoChanges.text() in ["", "0"]:
             self.txtAutoSaveNoChanges.setText("1")
+        
+        sttgs = QSettings()
+        sttgs.setValue("autoLoad", True if self.chkAutoLoad.checkState() else False)
+        sttgs.sync()
         
         settings.autoSave = True if self.chkAutoSave.checkState() else False
         settings.autoSaveNoChanges = True if self.chkAutoSaveNoChanges.checkState() else False

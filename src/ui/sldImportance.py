@@ -10,7 +10,7 @@ class sldImportance(QWidget, Ui_sldImportance):
     importanceChanged = pyqtSignal(str)
     
     def __init__(self, parent=None):
-        QWidget.__init__(self)
+        QWidget.__init__(self, parent)
         self.setupUi(self)
         self._column = 0
         self._updating = False

@@ -1,5 +1,6 @@
 FORMS            += ../src/ui/mainWindow.ui
 FORMS            += ../src/ui/settings.ui
+FORMS            += ../src/ui/welcome_ui.ui
 FORMS            += ../src/ui/sldImportance_ui.ui
 
 FORMS            += ../src/ui/editors/editorWidget_ui.ui
@@ -15,6 +16,7 @@ SOURCES          += ../src/settingsWindow.py
 
 SOURCES          += ../src/ui/helpLabel.py
 SOURCES          += ../src/ui/sldImportance.py
+SOURCES          += ../src/ui/welcome.py
 
 SOURCES          += ../src/ui/editors/editorWidget.py
 SOURCES          += ../src/ui/editors/fullScreenEditor.py

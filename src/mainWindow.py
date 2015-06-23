@@ -36,10 +36,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.setupMoreUi()
         
         # Welcome
-        self.treeWelcome.expandAll()
-        self.loadRecents()
-        self.btnWelcomeOpen.clicked.connect(self.openFile)
-        self.actOpen.triggered.connect(self.openFile)
+        self.welcome.updateValues()
+        #self.welcome.btnCreate.clicked.connect
+        self.stack.setCurrentIndex(0)
         
         # Word count
         self.mprWordCount = QSignalMapper(self)
@@ -72,109 +71,24 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.cmbSummary.setCurrentIndex(0)
         self.cmbSummary.currentIndexChanged.emit(0)
 
-        # Données
-        self.mdlFlatData = QStandardItemModel(2, 8)
-
-        # Persos
-        self.mdlPersos = QStandardItemModel(0, 0)
-        #self.mdlPersosProxy = None # persosProxyModel() # None
-        self.mdlPersosProxy = persosProxyModel(self)
-
-        self.mdlPersosInfos = QStandardItemModel(1, 0)
-        self.mdlPersosInfos.insertColumn(0, [QStandardItem("ID")])
-        self.mdlPersosInfos.setHorizontalHeaderLabels(["Description"])
-
-        # Labels
-        self.mdlLabels = QStandardItemModel()
-        for color, text in [
-            (Qt.transparent, ""),
-            (Qt.yellow, self.tr("Idea")),
-            (Qt.green, self.tr("Note")),
-            (Qt.blue, self.tr("Chapter")),
-            (Qt.red, self.tr("Scene")),
-            (Qt.cyan, self.tr("Research"))
-            ]:
-            self.mdlLabels.appendRow(QStandardItem(iconFromColor(color), text))
-
-        # Status
-        self.mdlStatus = QStandardItemModel()
-        for text in [
-                "",
-                self.tr("TODO"),
-                self.tr("First draft"),
-                self.tr("Second draft"),
-                self.tr("Final")
-                ]:
-            self.mdlStatus.appendRow(QStandardItem(text))
-
-        # Plot
-        self.mdlPlots = plotModel()
-
-        # Outline
-        self.mdlOutline = outlineModel()
-
         # Main Menu
         for i in [self.actSave, self.actSaveAs, self.actCloseProject,
                   self.menuEdit, self.menuMode, self.menuView, self.menuTools,
                   self.menuHelp]:
             i.setEnabled(False)
         
-        
+        self.actOpen.triggered.connect(self.welcome.openFile)
         self.actSave.triggered.connect(self.saveDatas)
+        self.actSaveAs.triggered.connect(self.welcome.saveAsFile)
         self.actLabels.triggered.connect(self.settingsLabel)
         self.actStatus.triggered.connect(self.settingsStatus)
         self.actSettings.triggered.connect(self.settingsWindow)
+        self.actCloseProject.triggered.connect(self.closeProject)
 
         self.actQuit.triggered.connect(self.close)
         self.generateViewMenu()
-
-        #Debug
-        self.mdlFlatData.setVerticalHeaderLabels(["Infos générales", "Summary"])
-        self.tblDebugFlatData.setModel(self.mdlFlatData)
-        self.tblDebugPersos.setModel(self.mdlPersos)
-        self.tblDebugPersosInfos.setModel(self.mdlPersosInfos)
-        self.tblDebugPlots.setModel(self.mdlPlots)
-        self.tblDebugPlotsPersos.setModel(self.mdlPlots)
-        self.tblDebugSubPlots.setModel(self.mdlPlots)
-        self.tblDebugPlots.selectionModel().currentChanged.connect(
-            lambda: self.tblDebugPlotsPersos.setRootIndex(self.mdlPlots.index(
-                self.tblDebugPlots.selectionModel().currentIndex().row(),
-                Plot.persos.value)))
-        self.tblDebugPlots.selectionModel().currentChanged.connect(
-            lambda: self.tblDebugSubPlots.setRootIndex(self.mdlPlots.index(
-                self.tblDebugPlots.selectionModel().currentIndex().row(),
-                Plot.subplots.value)))
-        self.treeDebugOutline.setModel(self.mdlOutline)
-        self.lstDebugLabels.setModel(self.mdlLabels)
-        self.lstDebugStatus.setModel(self.mdlStatus)
         
         #self.loadProject(os.path.join(appPath(), "test_project.zip"))
-
-###############################################################################
-# WELCOME
-###############################################################################
-
-    def loadRecents(self):
-        sttgns = QSettings()
-        if sttgns.contains("recentFiles"):
-            lst = sttgns.value("recentFiles")
-            self.menuRecents.clear()
-            for f in lst:
-                name = os.path.split(f)[1]
-                a = QAction(name, self)
-                a.setData(f)
-                a.triggered.connect(self.loadRecentFile)
-                self.menuRecents.addAction(a)
-            
-            self.btnWelcomeRecent.setMenu(self.menuRecents)
-            
-    def openFile(self):
-        filename = QFileDialog.getOpenFileName(self, 
-                        self.tr("Open project"),
-                        ".", 
-                        self.tr("Manuskript project (*.msk)"))[0]
-        if filename:
-            self.loadProject(filename)
 
 ###############################################################################
 # SUMMARY
@@ -387,18 +301,31 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self._updatingSubPlot = False
 
 ###############################################################################
-# GENERAL AKA UNSORTED
+# LOAD AND SAVE
 ###############################################################################
 
-    def loadRecentFile(self):
-        act = self.sender()
-        self.loadProject(act.data())
-
-    def loadProject(self, project):
+    def loadProject(self, project, loadFromFile=True):
+        """Loads the project ``project``.
+        
+        If ``loadFromFile`` is False, then it does not load datas from file.
+        It assumes that the datas have been populated in a different way."""
+        if loadFromFile and not os.path.exists(project):
+            print(self.tr("The file {} does not exist. Try again.").format(project))
+            self.statusBar().showMessage(
+                self.tr("The file {} does not exist. Try again.").format(project),
+                5000)
+            return
+        
         self.currentProject = project
-
+        
+        # Load empty settings
+        import settings
+        QSettings().setValue("lastProject", project)
+        
         # Load data
-        self.loadDatas()
+        if loadFromFile:
+            self.loadEmptyDatas()
+            self.loadDatas()
         self.makeConnections()
 
         # Load settings
@@ -432,6 +359,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.saveTimerNoChanges.setInterval(settings.autoSaveNoChangesDelay
                                                                         * 1000)
         self.saveTimerNoChanges.setSingleShot(True)
+        self.mdlFlatData.dataChanged.connect(self.startTimerNoChanges)
         self.mdlOutline.dataChanged.connect(self.startTimerNoChanges)
         self.mdlPersos.dataChanged.connect(self.startTimerNoChanges)
         self.mdlPersosInfos.dataChanged.connect(self.startTimerNoChanges)
@@ -450,25 +378,188 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # Stuff
         self.checkPersosID()
-
-        # Adds header labels
-        self.mdlPersos.setHorizontalHeaderLabels([i.name for i in Perso])
-        
-        # Save recent files in settings
-        sttgns = QSettings()
-        if sttgns.contains("recentFiles"):
-            recentFiles = sttgns.value("recentFiles")
-        else:
-            recentFiles = []
-            
-        while project in recentFiles:
-            recentFiles.remove(project)
-        recentFiles.insert(0, project)
-        recentFiles = recentFiles[:10]
-        sttgns.setValue("recentFiles", recentFiles)
         
         # Show main Window
         self.stack.setCurrentIndex(1)
+        
+    def closeProject(self):
+        # Save datas
+        self.saveDatas()
+        
+        self.currentProject = None
+        QSettings().setValue("lastProject", "")
+        
+        # Clear datas
+        self.loadEmptyDatas()
+        
+        self.saveTimer.stop()
+        
+        # UI
+        for i in [self.actSave, self.actSaveAs, self.actCloseProject,
+                  self.menuEdit, self.menuMode, self.menuView, self.menuTools,
+                  self.menuHelp]:
+            i.setEnabled(False)
+        
+        # Reload recent files
+        self.welcome.updateValues()
+        
+        # Show welcome dialog
+        self.stack.setCurrentIndex(0)
+
+    def readSettings(self):
+        # Load State and geometry
+        sttgns = QSettings(qApp.organizationName(), qApp.applicationName())
+        if sttgns.contains("geometry"):
+            self.restoreGeometry(sttgns.value("geometry"))
+        if sttgns.contains("windowState"):
+            self.restoreState(sttgns.value("windowState"))
+
+    def closeEvent(self, event):
+        # Save State and geometry
+        sttgns = QSettings(qApp.organizationName(), qApp.applicationName())
+        sttgns.setValue("geometry", self.saveGeometry())
+        sttgns.setValue("windowState", self.saveState())
+
+        # Specific settings to save before quitting
+        settings.lastTab = self.tabMain.currentIndex()
+            
+        if self.currentProject:
+            # Remembering the current item
+            if len(self.treeRedacOutline.selectedIndexes()) == 0:
+                sel = QModelIndex()
+            else:
+                sel = self.treeRedacOutline.currentIndex()
+            settings.lastIndex = self.mdlOutline.pathToIndex(sel)
+
+        # Save data from models
+        if self.currentProject and settings.saveOnQuit:
+            self.saveDatas()
+
+        # closeEvent
+        QMainWindow.closeEvent(self, event)
+
+    def startTimerNoChanges(self):
+        if settings.autoSaveNoChanges:
+            self.saveTimerNoChanges.start()
+
+    def saveDatas(self, projectName=None):
+        """Saves the current project (in self.currentProject).
+        
+        If ``projectName`` is given, currentProject becomes projectName.
+        In other words, it "saves as...".
+        """
+        
+        if projectName:
+            self.currentProject = projectName
+            QSettings().setValue("lastProject", projectName)
+        
+        # Saving
+        files = []
+
+        files.append((saveStandardItemModelXML(self.mdlFlatData),
+                      "flatModel.xml"))
+        files.append((saveStandardItemModelXML(self.mdlPersos),
+                      "perso.xml"))
+        files.append((saveStandardItemModelXML(self.mdlPersosInfos),
+                      "persoInfos.xml"))
+        files.append((saveStandardItemModelXML(self.mdlLabels),
+                      "labels.xml"))
+        files.append((saveStandardItemModelXML(self.mdlStatus),
+                      "status.xml"))
+        files.append((saveStandardItemModelXML(self.mdlPlots),
+                      "plots.xml"))
+        files.append((self.mdlOutline.saveToXML(),
+                      "outline.xml"))
+        files.append((settings.save(),
+                      "settings.pickle"))
+
+        saveFilesToZip(files, self.currentProject)
+
+        # Giving some feedback
+        print(self.tr("Project {} saved.").format(self.currentProject))
+        self.statusBar().showMessage(
+             self.tr("Project {} saved.").format(self.currentProject), 5000)
+
+
+    def loadEmptyDatas(self):
+        self.mdlFlatData = QStandardItemModel()
+        self.mdlPersos = QStandardItemModel()
+        self.mdlPersosProxy = persosProxyModel(self)
+        self.mdlPersosInfos = QStandardItemModel()
+        self.mdlLabels = QStandardItemModel()
+        self.mdlStatus = QStandardItemModel()
+        self.mdlPlots = plotModel()
+        self.mdlOutline = outlineModel()
+
+    def loadDatas(self):
+        # Loading
+        files = loadFilesFromZip(self.currentProject)
+
+        errors = []
+        
+        if "flatModel.xml" in files:
+            loadStandardItemModelXML(self.mdlFlatData,
+                                     files["flatModel.xml"], fromString=True)
+        else:
+            errors.append("flatModel.xml")
+            
+        if "perso.xml" in files:
+            loadStandardItemModelXML(self.mdlPersos,
+                                     files["perso.xml"], fromString=True)
+        else:
+            errors.append("perso.xml")
+            
+            
+        if "persoInfos.xml" in files:
+            loadStandardItemModelXML(self.mdlPersosInfos,
+                                     files["persoInfos.xml"], fromString=True)
+        else:
+            errors.append("perso.xml")
+            
+        if "labels.xml" in files:
+            loadStandardItemModelXML(self.mdlLabels,
+                                     files["labels.xml"], fromString=True)
+        else:
+            errors.append("perso.xml")
+            
+        if "status.xml" in files:
+            loadStandardItemModelXML(self.mdlStatus,
+                                     files["status.xml"], fromString=True)
+        else:
+            errors.append("perso.xml")
+            
+        if "plots.xml" in files:
+            loadStandardItemModelXML(self.mdlPlots,
+                                     files["plots.xml"], fromString=True)
+        else:
+            errors.append("perso.xml")
+            
+        if "outline.xml" in files:
+            self.mdlOutline.loadFromXML(files["outline.xml"], fromString=True)
+        else:
+            errors.append("perso.xml")
+            
+        if "settings.pickle" in files:
+            settings.load(files["settings.pickle"], fromString=True)
+        else:
+            errors.append("perso.xml")
+            
+
+        # Giving some feedback
+        if not errors:
+            print(self.tr("Project {} loaded.").format(self.currentProject))
+            self.statusBar().showMessage(
+                self.tr("Project {} loaded.").format(self.currentProject), 5000)
+        else:
+            print(self.tr("Project {} loaded with some errors:").format(self.currentProject))
+            for e in errors:
+                print(self.tr(" * {} wasn't found in project file.").format(e))
+            self.statusBar().showMessage(
+                self.tr("Project {} loaded with some errors.").format(self.currentProject), 5000)
+
+###############################################################################
+# MAIN CONNECTIONS
+###############################################################################
 
     def makeConnections(self):
 
@@ -631,99 +722,31 @@ class MainWindow(QMainWindow, Ui_MainWindow):
              lambda v: self.redacEditor.setFolderView("cork"))
         self.btnRedacFolderOutline.clicked.connect(
              lambda v: self.redacEditor.setFolderView("outline"))
-
-    def readSettings(self):
-        # Load State and geometry
-        sttgns = QSettings(qApp.organizationName(), qApp.applicationName())
-        if sttgns.contains("geometry"):
-            self.restoreGeometry(sttgns.value("geometry"))
-        if sttgns.contains("windowState"):
-            self.restoreState(sttgns.value("windowState"))
-
-    def closeEvent(self, event):
-        # Save State and geometry
-        sttgns = QSettings(qApp.organizationName(), qApp.applicationName())
-        sttgns.setValue("geometry", self.saveGeometry())
-        sttgns.setValue("windowState", self.saveState())
-
-        # Specific settings to save before quitting
-        settings.lastTab = self.tabMain.currentIndex()
-        if len(self.treeRedacOutline.selectedIndexes()) == 0:
-            sel = QModelIndex()
-        else:
-            sel = self.treeRedacOutline.currentIndex()
-        settings.lastIndex = self.mdlOutline.pathToIndex(sel)
-
-        # Save data from models
-        if self.currentProject and settings.saveOnQuit:
-            self.saveDatas()
-
-        # closeEvent
-        QMainWindow.closeEvent(self, event)
-
-    def startTimerNoChanges(self):
-        if settings.autoSaveNoChanges:
-            self.saveTimerNoChanges.start()
-
-    def saveDatas(self):
-        # Saving
-        files = []
-
-        files.append((saveStandardItemModelXML(self.mdlFlatData),
-                      "flatModel.xml"))
-        files.append((saveStandardItemModelXML(self.mdlPersos),
-                      "perso.xml"))
-        files.append((saveStandardItemModelXML(self.mdlPersosInfos),
-                      "persoInfos.xml"))
-        files.append((saveStandardItemModelXML(self.mdlLabels),
-                      "labels.xml"))
-        files.append((saveStandardItemModelXML(self.mdlStatus),
-                      "status.xml"))
-        files.append((saveStandardItemModelXML(self.mdlPlots),
-                      "plots.xml"))
-        files.append((self.mdlOutline.saveToXML(),
-                      "outline.xml"))
-        files.append((settings.save(),
-                      "settings.pickle"))
-
-        saveFilesToZip(files, self.currentProject)
-
-        # Giving some feedback
-        print(self.tr("Project {} saved.").format(self.currentProject))
-        self.statusBar().showMessage(
-             self.tr("Project {} saved.").format(self.currentProject), 5000)
-
-    def loadDatas(self):
-        # Loading
-        files = loadFilesFromZip(self.currentProject)
-
-        if "flatModel.xml" in files:
-            loadStandardItemModelXML(self.mdlFlatData,
-                                     files["flatModel.xml"], fromString=True)
-        if "perso.xml" in files:
-            loadStandardItemModelXML(self.mdlPersos,
-                                     files["perso.xml"], fromString=True)
-        if "persoInfos.xml" in files:
-            loadStandardItemModelXML(self.mdlPersosInfos,
-                                     files["persoInfos.xml"], fromString=True)
-        if "labels.xml" in files:
-            loadStandardItemModelXML(self.mdlLabels,
-                                     files["labels.xml"], fromString=True)
-        if "status.xml" in files:
-            loadStandardItemModelXML(self.mdlStatus,
-                                     files["status.xml"], fromString=True)
-        if "plots.xml" in files:
-            loadStandardItemModelXML(self.mdlPlots,
-                                     files["plots.xml"], fromString=True)
-        if "outline.xml" in files:
-            self.mdlOutline.loadFromXML(files["outline.xml"], fromString=True)
-        if "settings.pickle" in files:
-            settings.load(files["settings.pickle"], fromString=True)
-
-        # Giving some feedback
-        print(self.tr("Project {} loaded.").format(self.currentProject))
-        self.statusBar().showMessage(
-             self.tr("Project {} loaded.").format(self.currentProject), 5000)
+        
+        #Debug
+        self.mdlFlatData.setVerticalHeaderLabels(["Infos générales", "Summary"])
+        self.tblDebugFlatData.setModel(self.mdlFlatData)
+        self.tblDebugPersos.setModel(self.mdlPersos)
+        self.tblDebugPersosInfos.setModel(self.mdlPersosInfos)
+        self.tblDebugPlots.setModel(self.mdlPlots)
+        self.tblDebugPlotsPersos.setModel(self.mdlPlots)
+        self.tblDebugSubPlots.setModel(self.mdlPlots)
+        self.tblDebugPlots.selectionModel().currentChanged.connect(
+            lambda: self.tblDebugPlotsPersos.setRootIndex(self.mdlPlots.index(
+                self.tblDebugPlots.selectionModel().currentIndex().row(),
+                Plot.persos.value)))
+        self.tblDebugPlots.selectionModel().currentChanged.connect(
+            lambda: self.tblDebugSubPlots.setRootIndex(self.mdlPlots.index(
+                self.tblDebugPlots.selectionModel().currentIndex().row(),
+                Plot.subplots.value)))
+        self.treeDebugOutline.setModel(self.mdlOutline)
+        self.lstDebugLabels.setModel(self.mdlLabels)
+        self.lstDebugStatus.setModel(self.mdlStatus)
+        self.mdlPersos.setHorizontalHeaderLabels([i.name for i in Perso])
+        
+###############################################################################
+# GENERAL AKA UNSORTED
+###############################################################################
 
     def clickCycle(self, i):
         if i == 0:  # step 2 - paragraph summary
@@ -846,6 +869,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btnRedacFullscreen.clicked.connect(
              lambda: self.redacEditor.showFullscreen(
                      self.treeRedacOutline.currentIndex()))
+
+###############################################################################
+# SPELLCHECK
+###############################################################################
 
     def updateMenuDict(self):
 

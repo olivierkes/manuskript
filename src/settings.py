@@ -160,3 +160,4 @@ def load(string, fromString=False):
     if "fullScreenTheme" in allSettings:
         global fullScreenTheme
         fullScreenTheme = allSettings["fullScreenTheme"]
+        
