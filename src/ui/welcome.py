@@ -17,6 +17,8 @@ class welcome(QWidget, Ui_welcome):
         QWidget.__init__(self, parent)
         self.setupUi(self)
         
+        self.template = []
+        
         self.mw = mainWindow()
         self.btnOpen.clicked.connect(self.openFile)
         self.btnCreate.clicked.connect(self.createFile)
@@ -309,19 +311,19 @@ class welcome(QWidget, Ui_welcome):
         
     def loadDefaultDatas(self):
         # Données
-        self.mw.mdlFlatData = QStandardItemModel(2, 8)
+        self.mw.mdlFlatData = QStandardItemModel(2, 8, self.mw)
 
         # Persos
-        self.mw.mdlPersos = QStandardItemModel(0, 0)
+        self.mw.mdlPersos = QStandardItemModel(0, 0, self.mw)
         #self.mdlPersosProxy = None # persosProxyModel() # None
-        self.mw.mdlPersosProxy = persosProxyModel(self)
+        self.mw.mdlPersosProxy = persosProxyModel(self.mw)
 
-        self.mw.mdlPersosInfos = QStandardItemModel(1, 0)
+        self.mw.mdlPersosInfos = QStandardItemModel(1, 0, self.mw)
         self.mw.mdlPersosInfos.insertColumn(0, [QStandardItem("ID")])
         self.mw.mdlPersosInfos.setHorizontalHeaderLabels(["Description"])
 
         # Labels
-        self.mw.mdlLabels = QStandardItemModel()
+        self.mw.mdlLabels = QStandardItemModel(self.mw)
         for color, text in [
             (Qt.transparent, ""),
             (Qt.yellow, self.tr("Idea")),
@@ -333,7 +335,7 @@ class welcome(QWidget, Ui_welcome):
             self.mw.mdlLabels.appendRow(QStandardItem(iconFromColor(color), text))
 
         # Status
-        self.mw.mdlStatus = QStandardItemModel()
+        self.mw.mdlStatus = QStandardItemModel(self.mw)
         for text in [
                 "",
                 self.tr("TODO"),
@@ -344,10 +346,10 @@ class welcome(QWidget, Ui_welcome):
             self.mw.mdlStatus.appendRow(QStandardItem(text))
 
         # Plot
-        self.mw.mdlPlots = plotModel()
+        self.mw.mdlPlots = plotModel(self.mw)
 
         # Outline
-        self.mw.mdlOutline = outlineModel()
+        self.mw.mdlOutline = outlineModel(self.mw)
         
         root = self.mw.mdlOutline.rootItem
         _type = self.cmbDefaultType.currentData()
@@ -378,5 +380,6 @@ class welcome(QWidget, Ui_welcome):
                     parent.appendChild(item)
                     addElement(item, datas[1:])
             
-        addElement(root, self.template)
+        if self.template:
+            addElement(root, self.template)
         

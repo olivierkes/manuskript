@@ -8,8 +8,8 @@ from models.plotsProxyModel import *
 
 class plotModel(QStandardItemModel):
     
-    def __init__(self):
-        QStandardItemModel.__init__(self, 0, 3)
+    def __init__(self, parent):
+        QStandardItemModel.__init__(self, 0, 3, parent)
         self.setHorizontalHeaderLabels([i.name for i in Plot])
         self.mw = mainWindow()
         #self._proxy = plotsProxyModel()

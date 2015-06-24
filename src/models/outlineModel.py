@@ -11,8 +11,8 @@ from functions import *
 
 class outlineModel(QAbstractItemModel):
     
-    def __init__(self):
-        QAbstractItemModel.__init__(self)
+    def __init__(self, parent):
+        QAbstractItemModel.__init__(self, parent)
         
         self.rootItem = outlineItem(self, title="root")
         self._defaultTextType = "t2t"

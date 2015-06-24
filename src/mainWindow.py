@@ -90,7 +90,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
         self.makeUIConnections()
         
-        
         #self.loadProject(os.path.join(appPath(), "test_project.zip"))
 
 ###############################################################################
@@ -485,14 +484,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
 
     def loadEmptyDatas(self):
-        self.mdlFlatData = QStandardItemModel()
-        self.mdlPersos = QStandardItemModel()
+        self.mdlFlatData = QStandardItemModel(self)
+        self.mdlPersos = QStandardItemModel(self)
         self.mdlPersosProxy = persosProxyModel(self)
-        self.mdlPersosInfos = QStandardItemModel()
-        self.mdlLabels = QStandardItemModel()
-        self.mdlStatus = QStandardItemModel()
-        self.mdlPlots = plotModel()
-        self.mdlOutline = outlineModel()
+        self.mdlPersosInfos = QStandardItemModel(self)
+        self.mdlLabels = QStandardItemModel(self)
+        self.mdlStatus = QStandardItemModel(self)
+        self.mdlPlots = plotModel(self)
+        self.mdlOutline = outlineModel(self)
 
     def loadDatas(self):
         # Loading
@@ -850,7 +849,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             ]
 
         for widget, text, pos in references:
-            label = helpLabel(text)
+            label = helpLabel(text, self)
             self.actShowHelp.toggled.connect(label.setVisible, AUC)
             widget.layout().insertWidget(pos, label)
 
