@@ -100,7 +100,7 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
                                highlighting=True,
                                autoResize=True)
             edt.setFrameShape(QFrame.NoFrame)
-            edt.setStatusTip(itm.path())
+            edt.setStatusTip("{} ({})".format(itm.path(), itm.type()))
             self.toggledSpellcheck.connect(edt.toggleSpellcheck, AUC)
             self.dictChanged.connect(edt.setDict, AUC)
             #edt.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)

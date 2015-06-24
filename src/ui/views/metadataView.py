@@ -10,6 +10,7 @@ class metadataView(QWidget, Ui_metadataView):
     def __init__(self, parent=None):
         QWidget.__init__(self)
         self.setupUi(self)
+        self._lastIndexes = None
         self.txtSummarySentance.setColumn(Outline.summarySentance.value)
         self.txtSummaryFull.setColumn(Outline.summaryFull.value)
         self.txtNotes.setColumn(Outline.notes.value)
@@ -34,8 +35,10 @@ class metadataView(QWidget, Ui_metadataView):
         return indexes
         
     def selectionChanged(self, sourceView):
-        
         indexes = self.getIndexes(sourceView)
+        
+        if self._lastIndexes == indexes:
+            return
         
         if len(indexes) == 0:
             self.setEnabled(False)
@@ -54,6 +57,8 @@ class metadataView(QWidget, Ui_metadataView):
             self.txtNotes.setCurrentModelIndexes(indexes)
             
         self.properties.selectionChanged(sourceView)
+        
+        self._lastIndexes = indexes
         
     def setDict(self, d):
         self.txtNotes.setDict(d)
