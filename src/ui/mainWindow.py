@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1089, 803)
+        MainWindow.resize(1145, 801)
         MainWindow.setWindowTitle("Manuskript")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
@@ -1007,7 +1007,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_12.addWidget(self.stack)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1089, 31))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1145, 31))
         self.menubar.setObjectName("menubar")
         self.menuFile = QtWidgets.QMenu(self.menubar)
         self.menuFile.setObjectName("menuFile")
@@ -1106,8 +1106,8 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuHelp.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.stack.setCurrentIndex(0)
-        self.tabMain.setCurrentIndex(5)
+        self.stack.setCurrentIndex(1)
+        self.tabMain.setCurrentIndex(6)
         self.tabSummary.setCurrentIndex(0)
         self.tabPersos.setCurrentIndex(0)
         self.tabPlot.setCurrentIndex(1)
@@ -1256,8 +1256,8 @@ from ui.views.basicItemView import basicItemView
 from ui.views.plotTreeView import plotTreeView
 from ui.views.metadataView import metadataView
 from ui.views.treeView import treeView
-from ui.sldImportance import sldImportance
-from ui.views.lineEditView import lineEditView
-from ui.views.textEditView import textEditView
-from ui.views.outlineView import outlineView
 from ui.editors.editorWidget import editorWidget
+from ui.views.outlineView import outlineView
+from ui.views.textEditView import textEditView
+from ui.views.lineEditView import lineEditView
+from ui.sldImportance import sldImportance

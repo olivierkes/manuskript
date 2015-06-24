@@ -581,27 +581,27 @@
     <message>
         <location filename="../src/ui/mainWindow.ui" line="2161"/>
         <source>Close project</source>
-        <translation type="unfinished"></translation>
+        <translation>Fermer le projet</translation>
     </message>
     <message>
         <location filename="../src/mainWindow.py" line="315"/>
         <source>The file {} does not exist. Try again.</source>
-        <translation type="unfinished"></translation>
+        <translation>Le fichier {} n&apos;existe pas. Essayez encore.</translation>
     </message>
     <message>
         <location filename="../src/mainWindow.py" line="555"/>
         <source>Project {} loaded with some errors:</source>
-        <translation type="unfinished"></translation>
+        <translation>Le projet {} a été chargé, avec des erreurs:</translation>
     </message>
     <message>
         <location filename="../src/mainWindow.py" line="557"/>
         <source> * {} wasn&apos;t found in project file.</source>
-        <translation type="unfinished"></translation>
+        <translation>* {} n&apos;a pas été trouvé dans le fichier du projet.</translation>
     </message>
     <message>
         <location filename="../src/mainWindow.py" line="558"/>
         <source>Project {} loaded with some errors.</source>
-        <translation type="unfinished"></translation>
+        <translation>Le projet {} a été chargé avec des erreurs.</translation>
     </message>
 </context>
 <context>
@@ -1425,12 +1425,12 @@ des lignes:</translation>
     <message>
         <location filename="../src/ui/welcome_ui.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Form</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../src/ui/welcome_ui.ui" line="50"/>
         <source>1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../src/ui/welcome.py" line="286"/>
@@ -1510,97 +1510,97 @@ des lignes:</translation>
     <message>
         <location filename="../src/ui/welcome.py" line="123"/>
         <source>Save project as...</source>
-        <translation type="unfinished"></translation>
+        <translation>Enregistrer le projer sous...</translation>
     </message>
     <message>
         <location filename="../src/ui/welcome.py" line="135"/>
         <source>Create New Project</source>
-        <translation type="unfinished"></translation>
+        <translation>Créer un nouveau projet</translation>
     </message>
     <message>
         <location filename="../src/ui/welcome.py" line="316"/>
         <source>Chapter</source>
-        <translation type="unfinished">Chapitre</translation>
+        <translation>Chapitre</translation>
     </message>
     <message>
         <location filename="../src/ui/welcome.py" line="317"/>
         <source>Scene</source>
-        <translation type="unfinished">Scène</translation>
+        <translation>Scène</translation>
     </message>
     <message>
         <location filename="../src/ui/welcome.py" line="166"/>
         <source>Trilogy</source>
-        <translation type="unfinished"></translation>
+        <translation>Trilogie</translation>
     </message>
     <message>
         <location filename="../src/ui/welcome.py" line="166"/>
         <source>Book</source>
-        <translation type="unfinished"></translation>
+        <translation>Livre</translation>
     </message>
     <message>
         <location filename="../src/ui/welcome.py" line="173"/>
         <source>Section</source>
-        <translation type="unfinished"></translation>
+        <translation>Section</translation>
     </message>
     <message>
         <location filename="../src/ui/welcome.py" line="213"/>
         <source>words each.</source>
-        <translation type="unfinished"></translation>
+        <translation>mots chacun(e).</translation>
     </message>
     <message>
         <location filename="../src/ui/welcome.py" line="216"/>
         <source>of</source>
-        <translation type="unfinished"></translation>
+        <translation>de</translation>
     </message>
     <message>
         <location filename="../src/ui/welcome.py" line="240"/>
         <source>Text</source>
-        <translation type="unfinished">Texte</translation>
+        <translation>Texte</translation>
     </message>
     <message>
         <location filename="../src/ui/welcome.py" line="243"/>
         <source>Something</source>
-        <translation type="unfinished"></translation>
+        <translation>Quelque chose</translation>
     </message>
     <message>
         <location filename="../src/ui/welcome.py" line="265"/>
         <source>&lt;b&gt;Total:&lt;/b&gt; {} words (~ {} pages)</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Total:&lt;/b&gt; {} mots (~ {} pages)</translation>
     </message>
     <message>
         <location filename="../src/ui/welcome.py" line="314"/>
         <source>Idea</source>
-        <translation type="unfinished">Idée</translation>
+        <translation>Idée</translation>
     </message>
     <message>
         <location filename="../src/ui/welcome.py" line="315"/>
         <source>Note</source>
-        <translation type="unfinished">Note</translation>
+        <translation>Note</translation>
     </message>
     <message>
         <location filename="../src/ui/welcome.py" line="318"/>
         <source>Research</source>
-        <translation type="unfinished">Recherche</translation>
+        <translation>Recherche</translation>
     </message>
     <message>
         <location filename="../src/ui/welcome.py" line="326"/>
         <source>TODO</source>
-        <translation type="unfinished">TODO</translation>
+        <translation>TODO</translation>
     </message>
     <message>
         <location filename="../src/ui/welcome.py" line="327"/>
         <source>First draft</source>
-        <translation type="unfinished">Premier brouillon</translation>
+        <translation>Premier brouillon</translation>
     </message>
     <message>
         <location filename="../src/ui/welcome.py" line="328"/>
         <source>Second draft</source>
-        <translation type="unfinished">Second brouillon</translation>
+        <translation>Second brouillon</translation>
     </message>
     <message>
         <location filename="../src/ui/welcome.py" line="329"/>
         <source>Final</source>
-        <translation type="unfinished">Final</translation>
+        <translation>Final</translation>
     </message>
 </context>
 </TS>

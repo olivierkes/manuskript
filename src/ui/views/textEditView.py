@@ -5,6 +5,7 @@ from qt import *
 from enums import *
 from ui.editors.t2tHighlighter import *
 from ui.editors.basicHighlighter import *
+from ui.editors.textFormat import *
 from models.outlineModel import *
 from functions import *
 
@@ -36,7 +37,15 @@ class textEditView(QTextEdit):
         self.highligtCS = False
         self.defaultFontPointSize = qApp.font().pointSize()
         self._dict = None
-        self.document().contentsChanged.connect(self.submit, AUC)
+        #self.document().contentsChanged.connect(self.submit, AUC)
+        
+        
+        # Submit text changed only after 500ms without modifications
+        self.updateTimer = QTimer()
+        self.updateTimer.setInterval(500)
+        self.updateTimer.setSingleShot(True)
+        self.updateTimer.timeout.connect(self.submit)
+        self.document().contentsChanged.connect(self.updateTimer.start, AUC)
         
         if index:
             self.setCurrentModelIndex(index)
@@ -99,6 +108,7 @@ class textEditView(QTextEdit):
                 #self._model.dataChanged.disconnect(self.update)
             except:
                 pass
+
             self.setPlainText("")
         
     def setupEditorForIndex(self, index):
@@ -137,13 +147,14 @@ class textEditView(QTextEdit):
         
         elif self._index:
             if topLeft.row() <= self._index.row() <= bottomRight.row():
-                
                 if topLeft.column() <= Outline.type.value <= bottomRight.column():
                     # If item type change, we reset the index to set the proper
                     # highlighter and other defaults
                     self.setupEditorForIndex(self._index)
+                    self.updateText()
                     
-                self.updateText()
+                elif topLeft.column() <= self._column <= bottomRight.column():
+                    self.updateText()
                 
         elif self._indexes:
             update = False
@@ -192,7 +203,6 @@ class textEditView(QTextEdit):
         self._updating = False
         
     def submit(self):
-        
         if self._updating:
             return
         
@@ -251,8 +261,10 @@ class textEditView(QTextEdit):
             self.heightMax = 65000
             self.sizeChange()
             
-    # -----------------------------------------------------------------------------------------------------
-    # Spellchecking based on http://john.nachtimwald.com/2009/08/22/qplaintextedit-with-in-line-spell-check/
+###############################################################################
+# SPELLCHECKING
+###############################################################################
+# Based on http://john.nachtimwald.com/2009/08/22/qplaintextedit-with-in-line-spell-check/
 
     def setDict(self, d):
         self.currentDict = d
@@ -332,4 +344,22 @@ class textEditView(QTextEdit):
  
         cursor.endEditBlock()
         
-    # -----------------------------------------------------------------------------------------------------
+###############################################################################
+# FORMATTING
+###############################################################################
+    
+    def focusInEvent(self, event):
+        "Finds textFormatter and attach them to that view."
+        QTextEdit.focusInEvent(self, event)
+        
+        p = self.parent()
+        while p.parent():
+            p = p.parent()
+        
+        if self._index:
+            for tF in p.findChildren(textFormat, QRegExp(".*"), Qt.FindChildrenRecursively):
+                tF.updateFromIndex(self._index)
+                tF.setTextEdit(self)
+                
+    def applyFormat(self, _format):
+        print(_format)

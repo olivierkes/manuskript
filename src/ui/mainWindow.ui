@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1089</width>
-    <height>803</height>
+    <width>1145</width>
+    <height>801</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -30,7 +30,7 @@
     <item>
      <widget class="QStackedWidget" name="stack">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="welcomePage">
        <layout class="QGridLayout" name="gridLayout">
@@ -109,7 +109,7 @@
         <item>
          <widget class="QTabWidget" name="tabMain">
           <property name="currentIndex">
-           <number>5</number>
+           <number>6</number>
           </property>
           <property name="documentMode">
            <bool>true</bool>
@@ -1941,7 +1941,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1089</width>
+     <width>1145</width>
      <height>31</height>
     </rect>
    </property>
@@ -2169,6 +2169,11 @@
    <header>ui.views.textEditView.h</header>
   </customwidget>
   <customwidget>
+   <class>lineEditView</class>
+   <extends>QLineEdit</extends>
+   <header>ui.views.lineEditView.h</header>
+  </customwidget>
+  <customwidget>
    <class>outlineView</class>
    <extends>QTreeView</extends>
    <header>ui.views.outlineView.h</header>
@@ -2189,11 +2194,6 @@
    <class>treeView</class>
    <extends>QTreeView</extends>
    <header>ui.views.treeView.h</header>
-  </customwidget>
-  <customwidget>
-   <class>lineEditView</class>
-   <extends>QLineEdit</extends>
-   <header>ui.views.lineEditView.h</header>
   </customwidget>
   <customwidget>
    <class>metadataView</class>

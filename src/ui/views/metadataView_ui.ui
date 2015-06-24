@@ -18,6 +18,9 @@
     <number>0</number>
    </property>
    <item>
+    <widget class="textFormat" name="textFormat" native="true"/>
+   </item>
+   <item>
     <widget class="collapsibleGroupBox2" name="groupBox_4">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -127,6 +130,12 @@
    <class>lineEditView</class>
    <extends>QLineEdit</extends>
    <header>ui.views.lineEditView.h</header>
+  </customwidget>
+  <customwidget>
+   <class>textFormat</class>
+   <extends>QWidget</extends>
+   <header>ui.editors.textFormat.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>

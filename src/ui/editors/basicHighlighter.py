@@ -10,6 +10,7 @@ class basicHighlighter(QSyntaxHighlighter):
         QSyntaxHighlighter.__init__(self, editor.document())
 
         self.editor = editor
+        self._misspelledColor = Qt.red
 
     def setDefaultBlockFormat(self, bf):
         self._defaultBlockFormat = bf
@@ -17,6 +18,12 @@ class basicHighlighter(QSyntaxHighlighter):
     
     def setMisspelledColor(self, color):
         self._misspelledColor = color
+        
+    def setStyle(self):
+        """t2tHighlighter needs to reupdates styles on some occasions (see themes.py).
+        This lazy function allow to update without checking the type of highlighter.
+        """
+        pass
     
     def highlightBlock(self, text):
         """Apply syntax highlighting to the given block of text.

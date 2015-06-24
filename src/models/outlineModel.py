@@ -91,8 +91,11 @@ class outlineModel(QAbstractItemModel):
         if item.data(index.column(), role) != value:
             item.setData(index.column(), value, role)
         
-            self.dataChanged.emit(index.sibling(index.row(), 0), 
-                                  index.sibling(index.row(), max([i.value for i in Outline])))
+            #self.dataChanged.emit(index.sibling(index.row(), 0), 
+                                  #index.sibling(index.row(), max([i.value for i in Outline])))
+            self.dataChanged.emit(index.sibling(index.row(), index.column()), 
+                                  index.sibling(index.row(), index.column()))
+            
         return True
         
     
@@ -485,7 +488,8 @@ class outlineItem():
             else:
                 self.setData(Outline.goalPercentage.value, "")
                 
-        self.emitDataChanged()
+        self.emitDataChanged([Outline.goal.value, Outline.setGoal.value,
+                              Outline.wordCount.value, Outline.goalPercentage.value])
         
         if self.parent():
             self.parent().updateWordCount()
@@ -514,10 +518,16 @@ class outlineItem():
         else:
             return QModelIndex()
         
-    def emitDataChanged(self):
+    def emitDataChanged(self, cols=None):
         idx = self.index()
         if idx and self._model:
-            self._model.dataChanged.emit(idx, self.index(len(Outline)))
+            if not cols:
+                # Emit data changed for the whole item (all columns)
+                self._model.dataChanged.emit(idx, self.index(len(Outline)))
+            else:
+                # Emit only for the specified columns
+                for c in cols:
+                    self._model.dataChanged.emit(self.index(c), self.index(c))
         
     def removeChild(self, row):
         self.childItems.pop(row)

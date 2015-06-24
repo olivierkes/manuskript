@@ -5,6 +5,8 @@ from qt import *
 from enums import *
 from ui.views.textEditView import *
 from ui.editors.themes import *
+from ui.editors.textFormat import *
+
 from functions import *
 import settings
 
@@ -17,13 +19,15 @@ class fullScreenEditor(QWidget):
         self._theme = findThemePath(settings.fullScreenTheme)
         self._themeDatas = loadThemeDatas(self._theme)
         self.setMouseTracking(True)
+        self._geometries = {}
         
         # Text editor
-        self.editor = textEditView(self, index=index, spellcheck=settings.spellcheck, dict=settings.dict)
+        self.editor = textEditView(self, 
+                                   index=index,
+                                   spellcheck=settings.spellcheck,
+                                   highlighting=True,
+                                   dict=settings.dict)
         self.editor.setFrameStyle(QFrame.NoFrame)
-        #f = QFile(appPath("resources/themes/preview.txt"))
-        #f.open(QIODevice.ReadOnly)
-        #self.editor.setPlainText(QTextStream(f).readAll()*5)
         self.editor.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.editor.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.editor.installEventFilter(self)
@@ -35,8 +39,9 @@ class fullScreenEditor(QWidget):
         
         # Top Panel
         self.topPanel = myPanel(parent=self)
-        self.topPanel.layout().addStretch(1)
+        #self.topPanel.layout().addStretch(1)
         
+        # Spell checking
         self.btnSpellCheck = QPushButton()
         self.btnSpellCheck.setFlat(True)
         self.btnSpellCheck.setIcon(QIcon.fromTheme("tools-check-spelling"))
@@ -44,6 +49,11 @@ class fullScreenEditor(QWidget):
         self.btnSpellCheck.setChecked(self.editor.spellcheck)
         self.btnSpellCheck.toggled.connect(self.editor.toggleSpellcheck)
         self.topPanel.layout().addWidget(self.btnSpellCheck)
+        self.topPanel.layout().addStretch(1)
+        
+        # Formatting
+        self.textFormat = textFormat(self)
+        self.topPanel.layout().addWidget(self.textFormat)
         self.topPanel.layout().addStretch(1)
         
         b = QPushButton(self)
@@ -95,6 +105,8 @@ class fullScreenEditor(QWidget):
         self.updateTheme()
         
     def updateTheme(self):
+        # Reinit stored geometries for hiding widgets
+        self._geometries = {}
         rect = self.geometry()
         self._background = generateTheme(self._themeDatas, rect)
         
@@ -118,7 +130,8 @@ class fullScreenEditor(QWidget):
         r.setWidth(w)
         r.moveRight(rect.right() - rect.left())
         self.scrollBar.setGeometry(r)
-        self.scrollBar.setVisible(False)
+        #self.scrollBar.setVisible(False)
+        self.hideWidget(self.scrollBar)
         p = self.scrollBar.palette()
         b = QBrush(self._background.copy(self.scrollBar.geometry()))
         p.setBrush(QPalette.Base, b)
@@ -131,10 +144,12 @@ class fullScreenEditor(QWidget):
         r.setWidth(rect.width())
         #r.moveLeft(rect.center().x() - r.width() / 2)
         self.topPanel.setGeometry(r)
-        self.topPanel.setVisible(False)
+        #self.topPanel.setVisible(False)
+        self.hideWidget(self.topPanel)
         r.moveBottom(rect.bottom() - rect.top())
         self.bottomPanel.setGeometry(r)
-        self.bottomPanel.setVisible(False)
+        #self.bottomPanel.setVisible(False)
+        self.hideWidget(self.bottomPanel)
         self.topPanel.setColor(self._bgcolor)
         self.bottomPanel.setColor(self._bgcolor)
         
@@ -175,12 +190,26 @@ class fullScreenEditor(QWidget):
         r = self.geometry()
         
         for w in [self.scrollBar, self.topPanel, self.bottomPanel]:
-            w.setVisible(w.geometry().contains(event.pos()))    
+            #w.setVisible(w.geometry().contains(event.pos())) 
+            if self._geometries[w].contains(event.pos()):
+                self.showWidget(w)
+            else:
+                self.hideWidget(w)
+            
+    def hideWidget(self, widget):
+        if widget not in self._geometries:
+            self._geometries[widget] = widget.geometry()
+        widget.move(self.geometry().bottomRight())
+        
+    def showWidget(self, widget):
+        if widget in self._geometries:
+            widget.move(self._geometries[widget].topLeft())
             
     def eventFilter(self, obj, event):
         if obj == self.editor and event.type() == QEvent.Enter:
             for w in [self.scrollBar, self.topPanel, self.bottomPanel]:
-                w.setVisible(False)    
+                #w.setVisible(False)
+                self.hideWidget(w)
         return QWidget.eventFilter(self, obj, event)
             
     def dataChanged(self, topLeft, bottomRight):
@@ -219,9 +248,9 @@ class myScrollBar(QScrollBar):
         self.timer = QTimer()
         self.timer.setInterval(500)
         self.timer.setSingleShot(True)
-        self.timer.timeout.connect(self.hide)
+        self.timer.timeout.connect(lambda: self.parent().hideWidget(self))
         self.valueChanged.connect(lambda v: self.timer.start())
-        self.valueChanged.connect(self.show)
+        self.valueChanged.connect(lambda: self.parent().showWidget(self))
         
     def setColor(self, color):
         self._color = color
@@ -233,11 +262,11 @@ class myScrollBar(QScrollBar):
         painter = QPainter(self)
         
         # Background (Necessary with Qt 5.2 it seems, not with 5.4)
-        painter.save()
-        painter.setPen(Qt.NoPen)
-        painter.setBrush(self.palette().brush(QPalette.Base))
-        painter.drawRect(event.rect())
-        painter.restore()
+        #painter.save()
+        #painter.setPen(Qt.NoPen)
+        #painter.setBrush(self.palette().brush(QPalette.Base))
+        #painter.drawRect(event.rect())
+        #painter.restore()
         
         #slider
         r = style.subControlRect(style.CC_ScrollBar, opt, style.SC_ScrollBarSlider)

@@ -13,6 +13,7 @@ from models.persosProxyModel import *
 from functions import *
 from settingsWindow import *
 import settings
+import imp
 
 # Spell checker support
 try:
@@ -321,7 +322,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.currentProject = project
         
         # Load empty settings
-        import settings
+        imp.reload(settings)
         QSettings().setValue("lastProject", project)
         
         # Load data

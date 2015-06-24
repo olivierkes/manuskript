@@ -5,6 +5,7 @@ from qt import *
 from enums import *
 from ui.editors.editorWidget_ui import *
 from ui.editors.fullScreenEditor import *
+from ui.editors.textFormat import *
 from ui.views.textEditView import *
 from functions import *
 import settings
