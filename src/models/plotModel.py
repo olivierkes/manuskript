@@ -161,7 +161,7 @@ class plotModel(QStandardItemModel):
         parentItem.takeRow(index.row())
     
     def updatePlotPersoButton(self):
-        menu = QMenu()
+        menu = QMenu(self.mw)
         
         menus = []
         for i in [self.tr("Main"), self.tr("Secondary"), self.tr("Minor")]:

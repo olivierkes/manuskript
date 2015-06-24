@@ -26,7 +26,7 @@ class outlineBasics(QAbstractItemView):
             sel = self.getSelection()
             clipboard = qApp.clipboard()
             
-            self.menu = QMenu()
+            self.menu = QMenu(self)
             
             # Add / remove items
             self.actAddFolder = QAction(QIcon.fromTheme("folder-new"), qApp.translate("outlineBasics", "New Folder"), self.menu)
@@ -150,7 +150,6 @@ class outlineBasics(QAbstractItemView):
         
         if _type == "text":
             _type = self.model()._defaultTextType
-            print(_type)
             
         item = outlineItem(title=qApp.translate("outlineBasics", "New"), _type=_type)
         self.model().appendItem(item, parent)

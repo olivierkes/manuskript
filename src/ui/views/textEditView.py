@@ -367,6 +367,11 @@ class textEditView(QTextEdit):
 # FORMATTING
 ###############################################################################
     
+    def focusOutEvent(self, event):
+        "Submit changes just before focusing out."
+        QTextEdit.focusOutEvent(self, event)
+        self.submit()
+     
     def focusInEvent(self, event):
         "Finds textFormatter and attach them to that view."
         QTextEdit.focusInEvent(self, event)
@@ -381,4 +386,5 @@ class textEditView(QTextEdit):
                 tF.setTextEdit(self)
                 
     def applyFormat(self, _format):
+        #FIXME
         print(_format)

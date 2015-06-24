@@ -42,7 +42,7 @@ class fullScreenEditor(QWidget):
         #self.topPanel.layout().addStretch(1)
         
         # Spell checking
-        self.btnSpellCheck = QPushButton()
+        self.btnSpellCheck = QPushButton(self)
         self.btnSpellCheck.setFlat(True)
         self.btnSpellCheck.setIcon(QIcon.fromTheme("tools-check-spelling"))
         self.btnSpellCheck.setCheckable(True)
