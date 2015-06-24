@@ -6,6 +6,9 @@ from random import *
 from enums import *
 import os
 
+# Used to detect multiple connections
+AUC = Qt.AutoConnection | Qt.UniqueConnection
+
 def wordCount(text):
     return len(text.strip().replace(" ", "\n").split("\n")) if text else 0
 

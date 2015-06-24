@@ -4,6 +4,8 @@
 from qt import *
 from enums import *
 from ui.editors.t2tHighlighter import *
+from ui.editors.basicHighlighter import *
+from models.outlineModel import *
 from functions import *
 
 try:
@@ -13,7 +15,7 @@ except ImportError:
     
 class textEditView(QTextEdit):
     
-    def __init__(self, parent=None, index=None, html=None, spellcheck=True, dict="", autoResize=False):
+    def __init__(self, parent=None, index=None, html=None, spellcheck=True, highlighting=False, dict="", autoResize=False):
         QTextEdit.__init__(self, parent)
         
         self._column = Outline.text.value
@@ -22,7 +24,8 @@ class textEditView(QTextEdit):
         self._placeholderText = None
         self._updating = False
         self._item = None
-        self._highlighting = True
+        self._highlighting = highlighting
+        self.setAcceptRichText(False)
         
         self.spellcheck = spellcheck
         self.currentDict = dict
@@ -33,6 +36,7 @@ class textEditView(QTextEdit):
         self.highligtCS = False
         self.defaultFontPointSize = qApp.font().pointSize()
         self._dict = None
+        self.document().contentsChanged.connect(self.submit, AUC)
         
         if index:
             self.setCurrentModelIndex(index)
@@ -55,7 +59,7 @@ class textEditView(QTextEdit):
             
     def setModel(self, model):
         self._model = model
-        self._model.dataChanged.connect(self.update)
+        self._model.dataChanged.connect(self.update, AUC)
         
     def setColumn(self, col):
         self._column = col
@@ -74,26 +78,45 @@ class textEditView(QTextEdit):
             if index.column() != self._column:
                 index = index.sibling(index.row(), self._column)
             self._index = index
-            self._item = index.internalPointer()
             if self._placeholderText != None:
                 self.setPlaceholderText(self._placeholderText)
                 
             self._model = index.model()
-            self.document().contentsChanged.connect(self.submit)
-            self._model.dataChanged.connect(self.update)
+            try:
+                self._model.dataChanged.connect(self.update, AUC)
+            except TypeError:
+                pass
+            
+            #self.document().contentsChanged.connect(self.submit, AUC)
             self.updateText()
             
-            if self._highlighting and not self.highlighter:
-                self.highlighter = t2tHighlighter(self)
-                self.highlighter.setDefaultBlockFormat(self._defaultBlockFormat)
+            self.setupEditorForIndex(self._index)
+            
         else:
             self._index = QModelIndex()
             try:
                 self.document().contentsChanged.disconnect(self.submit)
-                self._model.dataChanged.disconnect(self.update)
+                #self._model.dataChanged.disconnect(self.update)
             except:
                 pass
             self.setPlainText("")
+        
+    def setupEditorForIndex(self, index):
+        # Setting highlighter
+        if self._highlighting:
+            item = index.internalPointer()
+            if self._column == Outline.text.value and not item.isT2T():
+                self.highlighter = basicHighlighter(self)
+            else:
+                self.highlighter = t2tHighlighter(self)
+            
+            self.highlighter.setDefaultBlockFormat(self._defaultBlockFormat)
+        
+            # Accept richtext maybe
+            if self.indexIsHtml(index):
+                self.setAcceptRichText(True)
+            else:
+                self.setAcceptRichText(False)
         
     def setCurrentModelIndexes(self, indexes):
         self._index = None
@@ -105,7 +128,7 @@ class textEditView(QTextEdit):
                     i = i.sibling(i.row(), self._column)
                 self._indexes.append(i)
                 
-        self.document().contentsChanged.connect(self.submit)
+        #self.document().contentsChanged.connect(self.submit)
         self.updateText()
         
     def update(self, topLeft, bottomRight):
@@ -114,6 +137,12 @@ class textEditView(QTextEdit):
         
         elif self._index:
             if topLeft.row() <= self._index.row() <= bottomRight.row():
+                
+                if topLeft.column() <= Outline.type.value <= bottomRight.column():
+                    # If item type change, we reset the index to set the proper
+                    # highlighter and other defaults
+                    self.setupEditorForIndex(self._index)
+                    
                 self.updateText()
                 
         elif self._indexes:
@@ -125,10 +154,18 @@ class textEditView(QTextEdit):
                 self.updateText()
             
     def updateText(self):
+        
+        if self._updating:
+            return
+        
         self._updating = True
         if self._index:
-            if self.toPlainText() != toString(self._model.data(self._index)):
-                self.document().setPlainText(toString(self._model.data(self._index)))
+            if self.indexIsHtml(self._index):
+                if self.toHtml() != toString(self._model.data(self._index)):
+                    self.document().setHtml(toString(self._model.data(self._index)))
+            else:
+                if self.toPlainText() != toString(self._model.data(self._index)):
+                    self.document().setPlainText(toString(self._model.data(self._index)))
                 
         elif self._indexes:
             t = []
@@ -143,6 +180,7 @@ class textEditView(QTextEdit):
                     break
             
             if same:
+                # Assuming that we don't use HTML with multiple items
                 self.document().setPlainText(t[0])
             else:
                 self.document().setPlainText("")
@@ -159,11 +197,17 @@ class textEditView(QTextEdit):
             return
         
         if self._index:
-            #item = self._index.internalPointer()
-            if self.toPlainText() != self._model.data(self._index):
-                self._updating = True
-                self._model.setData(self._index, self.toPlainText())
-                self._updating = False
+            item = self._index.internalPointer()
+            if self.indexIsHtml(self._index):
+                if self.toHtml() != self._model.data(self._index):
+                    self._updating = True
+                    self._model.setData(self._index, self.toHtml())
+                    self._updating = False
+            else:
+                if self.toPlainText() != self._model.data(self._index):
+                    self._updating = True
+                    self._model.setData(self._index, self.toPlainText())
+                    self._updating = False
                 
         elif self._indexes:
             self._updating = True
@@ -172,6 +216,19 @@ class textEditView(QTextEdit):
                 if self.toPlainText() != toString(item.data(self._column)):
                     self._model.setData(i, self.toPlainText())
             self._updating = False
+            
+    def indexIsHtml(self, index):
+        if not index.isValid():
+            return False
+        
+        if type(index.model()) != outlineModel:
+            return False
+        
+        item = index.internalPointer()
+        if item.isHTML():
+            return True
+        else:
+            return False
             
     # -----------------------------------------------------------------------------------------------------
     # Resize stuff

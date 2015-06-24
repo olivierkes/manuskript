@@ -142,13 +142,17 @@ class outlineBasics(QAbstractItemView):
     def addText(self):
         self.addItem("text")
         
-    def addItem(self, type="folder"):
+    def addItem(self, _type="folder"):
         if len(self.selectedIndexes()) == 0:
             parent = self.rootIndex()
         else:
             parent = self.currentIndex()
+        
+        if _type == "text":
+            _type = self.model()._defaultTextType
+            print(_type)
             
-        item = outlineItem(title=qApp.translate("outlineBasics", "New"), type=type)
+        item = outlineItem(title=qApp.translate("outlineBasics", "New"), _type=_type)
         self.model().appendItem(item, parent)
             
     def copy(self):

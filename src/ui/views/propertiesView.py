@@ -16,6 +16,7 @@ class propertiesView(QWidget, Ui_propertiesView):
         self.cmbPOV.setModels(mdlPersos, mdlOutline)
         self.cmbLabel.setModels(mdlLabels, mdlOutline)
         self.cmbStatus.setModels(mdlStatus, mdlOutline)
+        self.cmbType.setModel(mdlOutline)
         self.chkCompile.setModel(mdlOutline)
         self.txtTitle.setModel(mdlOutline)
         self.txtGoal.setModel(mdlOutline)
@@ -51,6 +52,8 @@ class propertiesView(QWidget, Ui_propertiesView):
             self.txtTitle.setCurrentModelIndex(idx)
             self.txtGoal.setCurrentModelIndex(idx)
             
+            self.cmbType.setCurrentModelIndex(idx)
+            
         else:
             self.setEnabled(True)
             self.setLabelsItalic(True)
@@ -60,6 +63,8 @@ class propertiesView(QWidget, Ui_propertiesView):
             self.cmbPOV.setCurrentModelIndexes(indexes)
             self.cmbLabel.setCurrentModelIndexes(indexes)
             self.cmbStatus.setCurrentModelIndexes(indexes)
+            
+            self.cmbType.setCurrentModelIndexes(indexes)
             
     def setLabelsItalic(self, value):
         f = self.lblPOV.font()

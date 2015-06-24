@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 #--!-- coding: utf8 --!--
  
-
-
-
 from qt import *
 from enums import *
 
@@ -18,6 +15,7 @@ class outlineModel(QAbstractItemModel):
         QAbstractItemModel.__init__(self)
         
         self.rootItem = outlineItem(self, title="root")
+        self._defaultTextType = "t2t"
     
     def index(self, row, column, parent):
         
@@ -345,16 +343,20 @@ class outlineModel(QAbstractItemModel):
     
 class outlineItem():
     
-    def __init__(self, model=None, title="", type="folder", xml=None):
+    def __init__(self, model=None, title="", _type="folder", xml=None):
         
         self._data = {}
         self.childItems = []
         self._parent = None
         self._model = model
+        self.defaultTextType = None
         
-        if title: self._data[Outline.title] = title
-        self._data[Outline.type] = type
+        if title: 
+            self._data[Outline.title] = title
+        
+        self._data[Outline.type] = _type
         self._data[Outline.compile] = Qt.Checked
+        
         if xml is not None:
             self.setFromXML(xml)
         
@@ -390,6 +392,10 @@ class outlineItem():
                 return QIcon.fromTheme("folder")
             elif self.isText():
                 return QIcon.fromTheme("text-x-generic")
+            elif self.isT2T():
+                return QIcon.fromTheme("text-x-script")
+            elif self.isHTML():
+                return QIcon.fromTheme("text-html")
             
         #elif role == Qt.ForegroundRole:
             #if self.isCompile() in [0, "0"]:
@@ -420,15 +426,26 @@ class outlineItem():
         if column == Outline.goal.value:
             self._data[Outline.setGoal] = toInt(data) if toInt(data) > 0 else ""
             
+        # Checking if we will have to recount words
         updateWordCount = False
         if column in [Outline.wordCount.value, Outline.goal.value, Outline.setGoal.value]:
             updateWordCount = not Outline(column) in self._data or self._data[Outline(column)] != data 
         
+        # Setting data
         self._data[Outline(column)] = data
         
+        # Stuff to do afterwards
         if column == Outline.text.value:
             wc = wordCount(data)
             self.setData(Outline.wordCount.value, wc)
+            
+        if column == Outline.type.value:
+            oldType = self._data[Outline.type]
+            if oldType == "html" and data in ["txt", "t2t"]:
+                # Resource inneficient way to convert HTML to plain text
+                e = QTextEdit()
+                e.setHtml(self._data[Outline.text])
+                self._data[Outline.text] = e.toPlainText()
         
         if updateWordCount:
             self.updateWordCount()
@@ -508,8 +525,20 @@ class outlineItem():
     def parent(self):
         return self._parent
     
+    def type(self):
+        return self._data[Outline.type]
+    
     def isFolder(self):
         return self._data[Outline.type] == "folder"
+    
+    def isT2T(self):
+        return self._data[Outline.type] == "t2t"
+    
+    def isHTML(self):
+        return self._data[Outline.type] == "html"
+    
+    def isText(self):
+        return self._data[Outline.type] == "txt"
     
     def isCompile(self):
         return Outline.compile in self._data and self._data[Outline.compile]
@@ -525,9 +554,6 @@ class outlineItem():
             return "{} > {}".format(self.parent().path(), self.title())
         else:
             return self.title()
-    
-    def isText(self):
-        return self._data[Outline.type] == "text"
     
     def level(self):
         if self.parent():

@@ -32,7 +32,7 @@
       <property name="currentIndex">
        <number>0</number>
       </property>
-      <widget class="QWidget" name="page_5">
+      <widget class="QWidget" name="welcomePage">
        <layout class="QGridLayout" name="gridLayout">
         <item row="1" column="0">
          <spacer name="horizontalSpacer_12">
@@ -109,7 +109,7 @@
         <item>
          <widget class="QTabWidget" name="tabMain">
           <property name="currentIndex">
-           <number>3</number>
+           <number>5</number>
           </property>
           <property name="documentMode">
            <bool>true</bool>

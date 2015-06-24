@@ -190,6 +190,20 @@
             </item>
            </layout>
           </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
+            <item>
+             <widget class="QLabel" name="lblTotal_2">
+              <property name="text">
+               <string>Default text type:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="cmbDefaultType"/>
+            </item>
+           </layout>
+          </item>
          </layout>
         </item>
        </layout>

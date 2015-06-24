@@ -20,15 +20,15 @@ class Ui_MainWindow(object):
         self.horizontalLayout_12.setObjectName("horizontalLayout_12")
         self.stack = QtWidgets.QStackedWidget(self.centralwidget)
         self.stack.setObjectName("stack")
-        self.page_5 = QtWidgets.QWidget()
-        self.page_5.setObjectName("page_5")
-        self.gridLayout = QtWidgets.QGridLayout(self.page_5)
+        self.welcomePage = QtWidgets.QWidget()
+        self.welcomePage.setObjectName("welcomePage")
+        self.gridLayout = QtWidgets.QGridLayout(self.welcomePage)
         self.gridLayout.setObjectName("gridLayout")
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.gridLayout.addItem(spacerItem, 1, 0, 1, 1)
         spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.gridLayout.addItem(spacerItem1, 1, 2, 1, 1)
-        self.welcome = welcome(self.page_5)
+        self.welcome = welcome(self.welcomePage)
         self.welcome.setMinimumSize(QtCore.QSize(200, 200))
         self.welcome.setObjectName("welcome")
         self.gridLayout.addWidget(self.welcome, 1, 1, 1, 1)
@@ -36,7 +36,7 @@ class Ui_MainWindow(object):
         self.gridLayout.addItem(spacerItem2, 0, 1, 1, 1)
         spacerItem3 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.gridLayout.addItem(spacerItem3, 2, 1, 1, 1)
-        self.stack.addWidget(self.page_5)
+        self.stack.addWidget(self.welcomePage)
         self.page_4 = QtWidgets.QWidget()
         self.page_4.setObjectName("page_4")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.page_4)
@@ -1107,7 +1107,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.stack.setCurrentIndex(0)
-        self.tabMain.setCurrentIndex(3)
+        self.tabMain.setCurrentIndex(5)
         self.tabSummary.setCurrentIndex(0)
         self.tabPersos.setCurrentIndex(0)
         self.tabPlot.setCurrentIndex(1)
@@ -1252,12 +1252,12 @@ class Ui_MainWindow(object):
         self.actCloseProject.setText(_translate("MainWindow", "Close project"))
 
 from ui.welcome import welcome
-from ui.editors.editorWidget import editorWidget
-from ui.views.outlineView import outlineView
+from ui.views.basicItemView import basicItemView
+from ui.views.plotTreeView import plotTreeView
+from ui.views.metadataView import metadataView
+from ui.views.treeView import treeView
+from ui.sldImportance import sldImportance
 from ui.views.lineEditView import lineEditView
 from ui.views.textEditView import textEditView
-from ui.views.basicItemView import basicItemView
-from ui.sldImportance import sldImportance
-from ui.views.metadataView import metadataView
-from ui.views.plotTreeView import plotTreeView
-from ui.views.treeView import treeView
+from ui.views.outlineView import outlineView
+from ui.editors.editorWidget import editorWidget

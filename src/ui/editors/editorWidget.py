@@ -20,8 +20,9 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
         self.currentIndex = QModelIndex()
         self.txtEdits = []
         self.scroll.setBackgroundRole(QPalette.Base)
-        self.toggledSpellcheck.connect(self.txtRedacText.toggleSpellcheck)
-        self.dictChanged.connect(self.txtRedacText.setDict)
+        self.toggledSpellcheck.connect(self.txtRedacText.toggleSpellcheck, AUC)
+        self.dictChanged.connect(self.txtRedacText.setDict, AUC)
+        self.txtRedacText.setHighlighting(True)
         self.currentDict = ""
         self.spellcheck = True
         self.folderView = "cork"
@@ -91,11 +92,16 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
             l.addWidget(line)
         
         def addText(itm):
-            edt = textEditView(self, index=itm.index(), spellcheck=self.spellcheck, dict=self.currentDict, autoResize=True)
+            edt = textEditView(self, 
+                               index=itm.index(), 
+                               spellcheck=self.spellcheck, 
+                               dict=self.currentDict,
+                               highlighting=True,
+                               autoResize=True)
             edt.setFrameShape(QFrame.NoFrame)
             edt.setStatusTip(itm.path())
-            self.toggledSpellcheck.connect(edt.toggleSpellcheck)
-            self.dictChanged.connect(edt.setDict)
+            self.toggledSpellcheck.connect(edt.toggleSpellcheck, AUC)
+            self.dictChanged.connect(edt.setDict, AUC)
             #edt.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
             self.txtEdits.append(edt)
             l.addWidget(edt)
@@ -153,9 +159,9 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
             self.corkView.setModel(self._model)
             self.corkView.setRootIndex(index)
             self.corkView.selectionModel().selectionChanged.connect(
-                lambda: mainWindow().redacMetadata.selectionChanged(self.corkView))
+                lambda: mainWindow().redacMetadata.selectionChanged(self.corkView), AUC)
             self.corkView.clicked.connect(
-                lambda: mainWindow().redacMetadata.selectionChanged(self.corkView))
+                lambda: mainWindow().redacMetadata.selectionChanged(self.corkView), AUC)
             
             
         elif item and item.isFolder() and self.folderView == "outline":
@@ -166,15 +172,19 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
             self.outlineView.setModel(self._model)
             self.outlineView.setRootIndex(index)
             self.outlineView.selectionModel().selectionChanged.connect(
-                lambda: mainWindow().redacMetadata.selectionChanged(self.outlineView))
+                lambda: mainWindow().redacMetadata.selectionChanged(self.outlineView), AUC)
             self.outlineView.clicked.connect(
-                lambda: mainWindow().redacMetadata.selectionChanged(self.outlineView))
+                lambda: mainWindow().redacMetadata.selectionChanged(self.outlineView), AUC)
             
             
         else:
             self.stack.setCurrentIndex(0) # Single text item
         
-        self._model.dataChanged.connect(self.modelDataChanged)
+        try:
+            self._model.dataChanged.connect(self.modelDataChanged, AUC)
+        except TypeError:
+            pass
+        
         self.updateStatusBar()
         
         

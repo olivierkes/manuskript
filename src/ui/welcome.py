@@ -174,6 +174,13 @@ class welcome(QWidget, Ui_welcome):
                 (1000, None)
                 ])
             ]
+            
+    def defaultTextType(self):
+        return [
+            ("t2t", self.tr("Txt2Tags"), "text-x-generic"),
+            ("html", self.tr("Rich Text (html)"), "text-html"),
+            ("txt", self.tr("Plain Text"), "text-x-generic"),
+            ]
            
     def changeTemplate(self, item, column):
         template = [i for i in self.templates() if i[0] == item.text(0)]
@@ -293,8 +300,13 @@ class welcome(QWidget, Ui_welcome):
         item = self.addTopLevelItem(self.tr("Demo projects"))
         # FIXME: none yet
         
+        # Populates default text type
+        self.cmbDefaultType.clear()
+        for t in self.defaultTextType():
+            self.cmbDefaultType.addItem(QIcon.fromTheme(t[2]), t[1], t[0])
+        
         self.tree.expandAll()
-           
+        
     def loadDefaultDatas(self):
         # Données
         self.mw.mdlFlatData = QStandardItemModel(2, 8)
@@ -337,8 +349,9 @@ class welcome(QWidget, Ui_welcome):
         # Outline
         self.mw.mdlOutline = outlineModel()
         
-        
         root = self.mw.mdlOutline.rootItem
+        _type = self.cmbDefaultType.currentData()
+        self.mw.mdlOutline._defaultTextType = _type
         
         def addElement(parent, datas):
             if len(datas) == 2 and datas[1][1] == None or \
@@ -350,7 +363,7 @@ class welcome(QWidget, Ui_welcome):
                     item = outlineItem(title="{} {}".format(
                                                 datas[0][1], 
                                                 str(n)),
-                                       type="text")
+                                       _type=_type)
                     if len(datas) == 2:
                         item.setData(Outline.setGoal.value, datas[1][0])
                     parent.appendChild(item)
@@ -361,7 +374,7 @@ class welcome(QWidget, Ui_welcome):
                     item = outlineItem(title="{} {}".format(
                                                 datas[0][1], 
                                                 str(n)),
-                                       type="folder")
+                                       _type="folder")
                     parent.appendChild(item)
                     addElement(item, datas[1:])
             
