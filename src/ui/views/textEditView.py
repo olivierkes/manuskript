@@ -46,8 +46,12 @@ class textEditView(QTextEdit):
         self.updateTimer.setInterval(500)
         self.updateTimer.setSingleShot(True)
         self.updateTimer.timeout.connect(self.submit)
+        #self.updateTimer.timeout.connect(lambda: print("Timeout"))
+        
         self.updateTimer.stop()
         self.document().contentsChanged.connect(self.updateTimer.start, AUC)
+        #self.document().contentsChanged.connect(lambda: print("Document changed"))
+        
         #self.document().contentsChanged.connect(lambda: print(self.objectName(), "Contents changed"))
         
         if index:
@@ -71,7 +75,7 @@ class textEditView(QTextEdit):
             
     def setModel(self, model):
         self._model = model
-        self._model.dataChanged.connect(self.update, AUC)
+        #self._model.dataChanged.connect(self.update, AUC)
         
     def setColumn(self, col):
         self._column = col
@@ -167,6 +171,10 @@ class textEditView(QTextEdit):
             return
         
         elif self._index:
+            
+            if topLeft.parent() != self._index.parent():
+                return
+            
             if topLeft.row() <= self._index.row() <= bottomRight.row():
                 if topLeft.column() <= Outline.type.value <= bottomRight.column():
                     # If item type change, we reset the index to set the proper
@@ -175,6 +183,7 @@ class textEditView(QTextEdit):
                     self.updateText()
                     
                 elif topLeft.column() <= self._column <= bottomRight.column():
+                    print(topLeft.column(), self._column, bottomRight.column())
                     self.updateText()
                 
         elif self._indexes:
@@ -198,15 +207,17 @@ class textEditView(QTextEdit):
         
         if self._updating:
             return
-        
+        #print("Updating", self.objectName())
         self._updating = True
         if self._index:
             self.disconnectDocument()
             if self._textFormat == "html":
                 if self.toHtml() != toString(self._model.data(self._index)):
+                    #print("    Updating html")
                     self.document().setHtml(toString(self._model.data(self._index)))
             else:
                 if self.toPlainText() != toString(self._model.data(self._index)):
+                    #print("    Updating plaintext")
                     self.document().setPlainText(toString(self._model.data(self._index)))
             self.reconnectDocument()
             
@@ -237,16 +248,18 @@ class textEditView(QTextEdit):
     def submit(self):
         if self._updating:
             return
-        
+        #print("Submitting", self.objectName())
         if self._index:
             item = self._index.internalPointer()
             if self._textFormat == "html":
                 if self.toHtml() != self._model.data(self._index):
+                    #print("    Submitting html")
                     self._updating = True
                     self._model.setData(self._index, self.toHtml())
                     self._updating = False
             else:
                 if self.toPlainText() != self._model.data(self._index):
+                    #print("    Submitting plain text")
                     self._updating = True
                     self._model.setData(self._index, self.toPlainText())
                     self._updating = False

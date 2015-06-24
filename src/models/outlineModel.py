@@ -89,10 +89,12 @@ class outlineModel(QAbstractItemModel):
     def setData(self, index, value, role=Qt.EditRole):
         item = index.internalPointer()
         if item.data(index.column(), role) != value:
+            
             item.setData(index.column(), value, role)
         
             #self.dataChanged.emit(index.sibling(index.row(), 0), 
                                   #index.sibling(index.row(), max([i.value for i in Outline])))
+            #print("Model emit", index.row(), index.column())
             self.dataChanged.emit(index.sibling(index.row(), index.column()), 
                                   index.sibling(index.row(), index.column()))
             
@@ -388,7 +390,7 @@ class outlineItem():
                 return self._data[Outline(column)]
             
             else:
-                return None
+                return ""
             
         elif role == Qt.DecorationRole and column == Outline.title.value:
             if self.isFolder():
