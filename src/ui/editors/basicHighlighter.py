@@ -11,25 +11,26 @@ class basicHighlighter(QSyntaxHighlighter):
 
         self.editor = editor
         self._misspelledColor = Qt.red
+        self._defaultBlockFormat = QTextBlockFormat()
+        self._defaultCharFormat = QTextCharFormat()
 
     def setDefaultBlockFormat(self, bf):
         self._defaultBlockFormat = bf
         self.rehighlight()
+        
+    def setDefaultCharFormat(self, cf):
+        self._defaultCharFormat = cf
+        self.rehighlight()
     
     def setMisspelledColor(self, color):
         self._misspelledColor = color
-        
-    def setStyle(self):
-        """t2tHighlighter needs to reupdates styles on some occasions (see themes.py).
-        This lazy function allow to update without checking the type of highlighter.
-        """
-        pass
     
     def highlightBlock(self, text):
         """Apply syntax highlighting to the given block of text.
         """
 
         QTextCursor(self.currentBlock()).setBlockFormat(self._defaultBlockFormat)
+        #self.setFormat(0, len(text), self._defaultCharFormat)
         
         # Spell checking
         # Based on http://john.nachtimwald.com/2009/08/22/qplaintextedit-with-in-line-spell-check/

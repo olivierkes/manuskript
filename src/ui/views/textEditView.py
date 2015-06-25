@@ -4,10 +4,12 @@
 from qt import *
 from enums import *
 from ui.editors.t2tHighlighter import *
+from ui.editors.t2tFunctions import *
 from ui.editors.basicHighlighter import *
 from ui.editors.textFormat import *
 from models.outlineModel import *
 from functions import *
+import re
 
 try:
     import enchant
@@ -220,7 +222,8 @@ class textEditView(QTextEdit):
             if self._textFormat == "html":
                 if self.toHtml() != toString(self._model.data(self._index)):
                     #print("    Updating html")
-                    self.document().setHtml(toString(self._model.data(self._index)))
+                    html = self._model.data(self._index)
+                    self.document().setHtml(toString(html))
             else:
                 if self.toPlainText() != toString(self._model.data(self._index)):
                     #print("    Updating plaintext")
@@ -261,7 +264,11 @@ class textEditView(QTextEdit):
                 if self.toHtml() != self._model.data(self._index):
                     #print("    Submitting html")
                     self._updating = True
-                    self._model.setData(self._index, self.toHtml())
+                    html = self.toHtml()
+                    # We don't store font settings
+                    html = re.sub(r"font-family:.*?;", "", html)
+                    html = re.sub(r"font-size:.*?;", "", html)
+                    self._model.setData(self._index, html)
                     self._updating = False
             else:
                 if self.toPlainText() != self._model.data(self._index):
@@ -405,6 +412,70 @@ class textEditView(QTextEdit):
                 tF.setTextEdit(self)
                 
     def applyFormat(self, _format):
-        #FIXME
-        print(_format)
+        
+        if self._textFormat == "html":
+            
+            if _format == "Clear":
+                
+                cursor = self.textCursor()
+                
+                if _format == "Clear":
+                    fmt = QTextCharFormat()
+                    cursor.setCharFormat(fmt)
+                    bf = QTextBlockFormat()
+                    cursor.setBlockFormat(bf)
+            
+            elif _format in ["Bold", "Italic", "Underline"]:
+            
+                cursor = self.textCursor()
+                
+                # If no selection, selects the word in which the cursor is now
+                if not cursor.hasSelection():
+                    cursor.movePosition(QTextCursor.StartOfWord,
+                                        QTextCursor.MoveAnchor)
+                    cursor.movePosition(QTextCursor.EndOfWord,
+                                        QTextCursor.KeepAnchor)
+                
+                fmt = cursor.charFormat()
+                
+                if _format == "Bold":
+                    fmt.setFontWeight(QFont.Bold if fmt.fontWeight() != QFont.Bold else QFont.Normal)
+                elif _format == "Italic":
+                    fmt.setFontItalic(not fmt.fontItalic())
+                elif _format == "Underline":
+                    fmt.setFontUnderline(not fmt.fontUnderline())
+                    
+                fmt2 = QTextCharFormat()
+                fmt2.setFontWeight(fmt.fontWeight())
+                fmt2.setFontItalic(fmt.fontItalic())
+                fmt2.setFontUnderline(fmt.fontUnderline())
+                
+                cursor.mergeCharFormat(fmt2)
+                
+            elif _format in ["Left", "Center", "Right", "Justify"]:
+                
+                cursor = self.textCursor()
+                
+                bf = cursor.blockFormat()
+                bf.setAlignment(
+                    Qt.AlignLeft if _format == "Left" else
+                    Qt.AlignHCenter if _format == "Center" else
+                    Qt.AlignRight if _format == "Right" else
+                    Qt.AlignJustify)
+                print(bf.alignment() == Qt.AlignLeft)
+                
+                cursor.mergeBlockFormat(bf)
+                self.setTextCursor(cursor)
+        
+        elif self._textFormat == "t2t":
+            if _format == "Bold":
+                t2tFormatSelection(self, 0)
+            elif _format == "Italic":
+                t2tFormatSelection(self, 1)
+            elif _format == "Underline":
+                t2tFormatSelection(self, 2)
+            elif _format == "Clear":
+                t2tClearFormat(self)
+            
+        
         

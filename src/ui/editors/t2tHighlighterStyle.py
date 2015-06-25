@@ -14,13 +14,14 @@ class t2tHighlighterStyle ():
 
     validStyles = ["Default", "Monospace"]
 
-    def __init__(self, editor, name="Default"):
+    def __init__(self, editor, charFormat, name="Default"):
 
         self.editor = editor
         self.name = name
+        self._defaultCharFormat = charFormat
 
         # Defaults
-        self.defaultFontPointSize = self.editor.defaultFontPointSize
+        #self.defaultFontPointSize = self.editor.defaultFontPointSize
         self.defaultFontFamily = qApp.font().family()
         self.tabStopWidth = 40
 
@@ -36,7 +37,7 @@ class t2tHighlighterStyle ():
                 f = self.styles[i]
                 f.setFontFixedPitch(True)
                 f.setFontFamily(self.defaultFontFamily)
-                f.setFontPointSize(self.defaultFontPointSize)
+                f.setFontPointSize(self._defaultCharFormat.font().pointSize())
             self.styles[i] = f
 
     def setupEditor(self):
@@ -127,7 +128,7 @@ class t2tHighlighterStyle ():
             n = blockUserData.getUserData(block).leadingSpaces() + 1
             
             f = QFontMetrics(QFont(self.defaultFontFamily,
-                                   self.defaultFontPointSize))
+                                   self._defaultCharFormat.font().pointSize()))
             fm = f.width(" " * n +
                          blockUserData.getUserData(block).listSymbol())
             blockFormat.setTextIndent(-fm)
@@ -144,11 +145,10 @@ class t2tHighlighterStyle ():
         """
 
         _color = QColor()
-        _format = QTextCharFormat()
-        #size = self.defaultFontPointSize
-        #_format.setFontFamily(self.defaultFontFamily)
-        _format.setFont(self.editor.font())
-        size = _format.fontPointSize()
+        #_format = QTextCharFormat()
+        #_format.setFont(self.editor.font())
+        #size = _format.fontPointSize()
+        _format = QTextCharFormat(self._defaultCharFormat)
         
         # Base
         if base: _format = base
@@ -184,7 +184,7 @@ class t2tHighlighterStyle ():
         if preset in State.TITLES:
             style = "bold"
             color = "darkRed" if State.titleLevel(preset) % 2 == 1 else "blue"
-            size = (self.defaultFontPointSize
+            size = (self._defaultCharFormat.font().pointSize()
                     + 11 - 2 * State.titleLevel(preset))
 
         if preset == State.TABLE_HEADER:

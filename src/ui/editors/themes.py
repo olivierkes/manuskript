@@ -212,12 +212,18 @@ def setThemeEditorDatas(editor, themeDatas, pixmap, screenRect):
     editor.setTabStopWidth(themeDatas["Spacings/TabWidth"])
     editor.document().setIndentWidth(themeDatas["Spacings/TabWidth"])
     
-    f = QFont()
-    f.fromString(themeDatas["Text/Font"])
-    editor.setFont(f)
     editor.highlighter.setMisspelledColor(QColor(themeDatas["Text/Misspelled"]))
     
-    editor.highlighter.setStyle() # Reupdates highlighter styles
+    cf = QTextCharFormat()
+    f = QFont()
+    f.fromString(themeDatas["Text/Font"])
+    cf.setFont(f)
+    editor.highlighter.setDefaultCharFormat(cf)
+    #f = QFont()
+    #f.fromString(themeDatas["Text/Font"])
+    editor.setFont(f)
+    
+    
     
 def addThemePreviewText(pixmap, themeDatas, screenRect):
     

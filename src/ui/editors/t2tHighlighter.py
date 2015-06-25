@@ -27,9 +27,10 @@ class t2tHighlighter (QSyntaxHighlighter):
         # Stupid variable that fixes the loss of QTextBlockUserData.
         self.thisDocument = editor.document()
         
-        self.style = t2tHighlighterStyle(self.editor, style)
         self._defaultBlockFormat = QTextBlockFormat()
+        self._defaultCharFormat = QTextCharFormat()
         self._misspelledColor = Qt.red
+        self.style = t2tHighlighterStyle(self.editor, self._defaultCharFormat, style)
         
         self.inDocRules = []
 
@@ -65,6 +66,11 @@ class t2tHighlighter (QSyntaxHighlighter):
     def setDefaultBlockFormat(self, bf):
         self._defaultBlockFormat = bf
         self.rehighlight()
+        
+    def setDefaultCharFormat(self, cf):
+        self._defaultCharFormat = cf
+        self.setStyle()
+        self.rehighlight()
     
     def setMisspelledColor(self, color):
         self._misspelledColor = color
@@ -95,7 +101,8 @@ class t2tHighlighter (QSyntaxHighlighter):
 
         op = self.style.format(State.MARKUP)
 
-        self.setFormat(0, len(text), self.style.format(State.DEFAULT))
+        #self.setFormat(0, len(text), self.style.format(State.DEFAULT))
+        #self.setFormat(0, len(text), self._defaultCharFormat)
 
         # InDocRules: is it a settings which might have a specific rule,
         # a comment which contains color infos, or a include conf?
@@ -341,13 +348,6 @@ class t2tHighlighter (QSyntaxHighlighter):
                         self.setFormat(word_object.start(),
                             word_object.end() - word_object.start(), format)
 
-        # If a title was changed, we emit the corresponding signal
-        if oldState in State.TITLES or \
-           self.currentBlockState() in State.TITLES:
-            self.editor.structureChanged.emit()
-            #FIXME: si du texte est supprimé et qu'il y a un titre dedans,
-            #       cela n'est pas détecté et le signal pas émis.
-
     def identifyBlock(self, block):
         """Identifies what block type it is, and set userState and userData
         accordingly."""
@@ -490,7 +490,7 @@ class t2tHighlighter (QSyntaxHighlighter):
 
     def setStyle(self, style="Default"):
         if style in t2tHighlighterStyle.validStyles:
-            self.style = t2tHighlighterStyle(self.editor, style)
+            self.style = t2tHighlighterStyle(self.editor, self._defaultCharFormat, style)
         else:
             self.style = None
         self.rehighlight()

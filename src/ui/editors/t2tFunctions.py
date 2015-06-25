@@ -2,7 +2,108 @@
 # -*- coding: utf-8 -*-
 
 from qt import *
+import re
 
+def t2tFormatSelection(editor, style):
+    """
+    Formats the current selection of ``editor`` in the format given by ``style``, 
+    style being:
+        0: bold
+        1: italic
+        2: underline
+        3: strike
+        4: code
+        5: tagged
+    """
+    print("Formatting:", style)
+    formatChar = "*/_-`'"[style]
+
+    # FIXME: doesn't work if selection spans over several blocks.
+
+    cursor = editor.textCursor()
+    cursor.beginEditBlock()
+
+    if cursor.hasSelection():
+        pass
+    else:
+        # If no selection, selects the word in which the cursor is now
+        cursor.movePosition(QTextCursor.StartOfWord,
+                            QTextCursor.MoveAnchor)
+        cursor.movePosition(QTextCursor.EndOfWord,
+                            QTextCursor.KeepAnchor)
+
+    if not cursor.hasSelection():
+        # No selection means we are outside a word,
+        # so we insert markup and put cursor in the middle
+        cursor.insertText(formatChar * 4)
+        cursor.setPosition(cursor.position() - 2)
+        cursor.endEditBlock()
+        editor.setTextCursor(cursor)
+        # And we are done
+        return
+
+    # Get start and end of selection
+    start = cursor.selectionStart() - cursor.block().position()
+    end = cursor.selectionEnd() - cursor.block().position()
+    if start > end:
+        start, end = end, start
+
+    # Whole block
+    text = cursor.block().text()
+
+    # Adjusts selection to exclude the markup
+    while text[start:start + 1] == formatChar:
+        start += 1
+    while text[end - 1:end] ==formatChar:
+        end -= 1
+
+    # Get the text without formatting, and the array of format
+    fText, fArray = textToFormatArrayNoMarkup(text)
+    # Get the translated start and end of selection in the unformated text
+    tStart, tEnd = translateSelectionToUnformattedText(text, start, end)
+
+    # We want only the array that contains the propper formatting
+    propperArray = fArray[style]
+
+    if 0 in propperArray[tStart:tEnd]:
+        # have some unformated text in the selection, so we format the
+        # whole selection
+        propperArray = propperArray[:tStart] + [1] * \
+                        (tEnd - tStart) + propperArray[tEnd:]
+    else:
+        # The whole selection is already formatted, so we remove the
+        # formatting
+        propperArray = propperArray[:tStart] + [0] * \
+                        (tEnd - tStart) + propperArray[tEnd:]
+
+    fArray = fArray[0:style] + [propperArray] + fArray[style + 1:]
+
+    text = reformatText(fText, fArray)
+
+    # Replaces the whole block
+    cursor.movePosition(QTextCursor.StartOfBlock)
+    cursor.movePosition(QTextCursor.EndOfBlock,
+                        QTextCursor.KeepAnchor)
+    cursor.insertText(text)
+
+    cursor.setPosition(end + cursor.block().position())
+
+    cursor.endEditBlock()
+
+    editor.setTextCursor(cursor)
+
+def t2tClearFormat(editor):
+    "Clears format on ``editor``'s current selection."
+
+    cursor = editor.textCursor()
+    cursor.beginEditBlock()
+
+    text = cursor.selectedText()
+    t, a = textToFormatArrayNoMarkup(text)
+
+    cursor.insertText(t)
+    cursor.endEditBlock()
+    editor.setTextCursor(cursor)
 
 def textToFormatArray(text):
     """
@@ -131,24 +232,24 @@ def reformatText(text, markupArray):
 
     for k in range(len(markupArray)):
         m = markupArray[k]
-        open = False  # Are we in an openned markup
+        _open = False  # Are we in an _openned markup
         d = 0
         alreadySeen = []
         for i in range(len(text)):
             insert = False
-            if not open and m[i] == 1:
+            if not _open and m[i] == 1:
                 insert = True
-                open = True
+                _open = True
 
-            if open and m[i] == 0:
+            if _open and m[i] == 0:
                 insert = True
-                open = False
-            if open and m[i] > 1:
+                _open = False
+            if _open and m[i] > 1:
                 z = i
                 while m[z] == m[i]: z += 1
                 if m[z] != 1 and not m[i] in alreadySeen:
                     insert = True
-                    open = False
+                    _open = False
                 alreadySeen.append(m[i])
             if insert:
                 rText += markup[k]
@@ -161,7 +262,7 @@ def reformatText(text, markupArray):
                     alreadySeen = []
                 d += 2
             rText += text[i]
-        if open:
+        if _open:
             rText += markup[k]
             for j in range(len(markupArray)):
                 # The other array still have the same length
@@ -175,12 +276,18 @@ def reformatText(text, markupArray):
     ## Clean up
     # Exclude first and last space of the markup
     for markup in ["\*", "/", "_", "-", "`", "\'"]:
-        r = QRegExp(r'(' + markup * 2 + ')(\s+)(.+)(' + markup * 2 + ')')
-        r.setMinimal(True)
-        text.replace(r, "\\2\\1\\3\\4")
-        r = QRegExp(r'(' + markup * 2 + ')(.+)(\s+)(' + markup * 2 + ')')
-        r.setMinimal(True)
-        text.replace(r, "\\1\\2\\4\\3")
+        #r = QRegExp(r'(' + markup * 2 + ')(\s+)(.+)(' + markup * 2 + ')')
+        #r.setMinimal(True)
+        #text.replace(r, "\\2\\1\\3\\4")
+        text = re.sub(r'(' + markup * 2 + ')(\s+?)(.+?)(' + markup * 2 + ')',
+                      "\\2\\1\\3\\4",
+                      text)
+        #r = QRegExp(r'(' + markup * 2 + ')(.+)(\s+)(' + markup * 2 + ')')
+        #r.setMinimal(True)
+        #text.replace(r, "\\1\\2\\4\\3")
+        text = re.sub(r'(' + markup * 2 + ')(.+?)(\s+?)(' + markup * 2 + ')',
+                      "\\1\\2\\4\\3",
+                      text)
 
     return text
 

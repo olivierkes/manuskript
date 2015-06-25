@@ -22,12 +22,14 @@ class textFormat(QWidget, Ui_textFormat):
             "Left":      [self.btnLeft,       "format-justify-left",   self.tr("CTRL+L")],
             "Center":    [self.btnCenter,     "format-justify-center", self.tr("CTRL+E")],
             "Right":     [self.btnRight,      "format-justify-right",  self.tr("CTRL+R")],
+            "Justify":   [self.btnJustify,    "format-justify-fill",   self.tr("CTRL+J")],
             }
         
         for f in formats:
             val = formats[f]
             a = QAction(QIcon.fromTheme(val[1]), f, self)
             a.setShortcut(val[2])
+            a.setToolTip("Format {} ({})".format(f, val[2]))
             a.triggered.connect(self.setFormat)
             val[0].setDefaultAction(a)
     
