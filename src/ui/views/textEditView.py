@@ -137,6 +137,12 @@ class textEditView(QTextEdit):
         else:
             self._textFormat = "text"
         
+        # Accept richtext maybe
+        if self._textFormat == "html":
+            self.setAcceptRichText(True)
+        else:
+            self.setAcceptRichText(False)
+        
         # Setting highlighter
         if self._highlighting:
             item = index.internalPointer()
@@ -146,12 +152,6 @@ class textEditView(QTextEdit):
                 self.highlighter = t2tHighlighter(self)
             
             self.highlighter.setDefaultBlockFormat(self._defaultBlockFormat)
-        
-            # Accept richtext maybe
-            if self._textFormat == "html":
-                self.setAcceptRichText(True)
-            else:
-                self.setAcceptRichText
         
     def setCurrentModelIndexes(self, indexes):
         self._index = None
@@ -175,15 +175,22 @@ class textEditView(QTextEdit):
             if topLeft.parent() != self._index.parent():
                 return
             
+            #print("Model changed: ({}:{}), ({}:{}/{}), ({}:{}) for {} of {}".format(
+                #topLeft.row(), topLeft.column(), 
+                #self._index.row(), self._index.row(), self._column,
+                #bottomRight.row(), bottomRight.column(),
+                #self.objectName(), self.parent().objectName()))
+            
             if topLeft.row() <= self._index.row() <= bottomRight.row():
-                if topLeft.column() <= Outline.type.value <= bottomRight.column():
-                    # If item type change, we reset the index to set the proper
+                if self._column == Outline.text.value and \
+                   topLeft.column() <= Outline.type.value <= bottomRight.column():
+                    # If item type change, and we display the main text,
+                    # we reset the index to set the proper
                     # highlighter and other defaults
                     self.setupEditorForIndex(self._index)
                     self.updateText()
                     
                 elif topLeft.column() <= self._column <= bottomRight.column():
-                    print(topLeft.column(), self._column, bottomRight.column())
                     self.updateText()
                 
         elif self._indexes:
@@ -400,3 +407,4 @@ class textEditView(QTextEdit):
     def applyFormat(self, _format):
         #FIXME
         print(_format)
+        

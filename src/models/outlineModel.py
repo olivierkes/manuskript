@@ -94,8 +94,13 @@ class outlineModel(QAbstractItemModel):
             #self.dataChanged.emit(index.sibling(index.row(), 0), 
                                   #index.sibling(index.row(), max([i.value for i in Outline])))
             #print("Model emit", index.row(), index.column())
-            self.dataChanged.emit(index.sibling(index.row(), index.column()), 
-                                  index.sibling(index.row(), index.column()))
+            self.dataChanged.emit(index, index)
+            
+            if index.column() == Outline.type.value:
+                # If type changed, then the icon of title changed.
+                # Some views might be glad to know it.
+                self.dataChanged.emit(index.sibling(index.row(), Outline.title.value), 
+                                      index.sibling(index.row(), Outline.title.value))
             
         return True
         
@@ -434,6 +439,15 @@ class outlineItem():
         updateWordCount = False
         if column in [Outline.wordCount.value, Outline.goal.value, Outline.setGoal.value]:
             updateWordCount = not Outline(column) in self._data or self._data[Outline(column)] != data 
+            
+        # Stuff to do before
+        if column == Outline.type.value:
+            oldType = self._data[Outline.type]
+            if oldType == "html" and data in ["txt", "t2t"]:
+                # Resource inneficient way to convert HTML to plain text
+                e = QTextEdit()
+                e.setHtml(self._data[Outline.text])
+                self._data[Outline.text] = e.toPlainText()
         
         # Setting data
         self._data[Outline(column)] = data
@@ -442,14 +456,6 @@ class outlineItem():
         if column == Outline.text.value:
             wc = wordCount(data)
             self.setData(Outline.wordCount.value, wc)
-            
-        if column == Outline.type.value:
-            oldType = self._data[Outline.type]
-            if oldType == "html" and data in ["txt", "t2t"]:
-                # Resource inneficient way to convert HTML to plain text
-                e = QTextEdit()
-                e.setHtml(self._data[Outline.text])
-                self._data[Outline.text] = e.toPlainText()
         
         if updateWordCount:
             self.updateWordCount()
