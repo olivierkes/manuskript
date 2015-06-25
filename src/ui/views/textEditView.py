@@ -204,7 +204,6 @@ class textEditView(QTextEdit):
         self.document().contentsChanged.connect(self.updateTimer.start, AUC)
             
     def updateText(self):
-        
         if self._updating:
             return
         #print("Updating", self.objectName())
