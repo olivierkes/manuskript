@@ -19,6 +19,9 @@ profile:
 
 compile:
 	cd src && python3 setup.py build_ext --inplace
+	
+callgraph:
+	pycallgraph graphviz -- src/main.py
 
 translation:
 	pylupdate5 -noobsolete i18n/manuskript.pro

@@ -9,6 +9,7 @@ from ui.editors.basicHighlighter import *
 from ui.editors.textFormat import *
 from models.outlineModel import *
 from functions import *
+import settings
 import re
 
 try:
@@ -30,12 +31,15 @@ class textEditView(QTextEdit):
         self._highlighting = highlighting
         self._textFormat = "text"
         self.setAcceptRichText(False)
+        # When setting up a theme, this becomes true.
+        self._fromTheme = False  
         
         self.spellcheck = spellcheck
         self.currentDict = dict
         self.highlighter = None
         self._autoResize = autoResize
         self._defaultBlockFormat = QTextBlockFormat()
+        self._defaultCharFormat = QTextCharFormat()
         self.highlightWord = ""
         self.highligtCS = False
         self.defaultFontPointSize = qApp.font().pointSize()
@@ -106,6 +110,7 @@ class textEditView(QTextEdit):
                 pass
             
             self.setupEditorForIndex(self._index)
+            self.loadFontSettings()
             #self.document().contentsChanged.connect(self.submit, AUC)
             self.updateText()
             
@@ -153,6 +158,37 @@ class textEditView(QTextEdit):
             else:
                 self.highlighter = t2tHighlighter(self)
             
+            self.highlighter.setDefaultBlockFormat(self._defaultBlockFormat)
+        
+    def loadFontSettings(self):
+        if self._fromTheme or \
+           not self._index or \
+           type(self._index.model()) != outlineModel or \
+           self._column != Outline.text.value:
+            return
+        
+        opt = settings.textEditor
+        f = QFont()
+        f.fromString(opt["font"])
+        self.setFont(f)
+        
+        
+        cf = QTextCharFormat()
+        cf.setFont(f)
+        cf.setForeground(QColor(opt["fontColor"]))
+        
+        bf = QTextBlockFormat()
+        bf.setLineHeight(opt["lineSpacing"], bf.ProportionalHeight)
+        bf.setTextIndent(opt["tabWidth"] * 1 if opt["indent"] else 0)
+        bf.setTopMargin(opt["spacingAbove"])
+        bf.setBottomMargin(opt["spacingBelow"])
+        
+        self._defaultCharFormat = cf
+        self._defaultBlockFormat = bf
+        
+        if self.highlighter:
+            self.highlighter.setMisspelledColor(QColor(opt["misspelled"]))
+            self.highlighter.setDefaultCharFormat(self._defaultCharFormat)
             self.highlighter.setDefaultBlockFormat(self._defaultBlockFormat)
         
     def setCurrentModelIndexes(self, indexes):
@@ -420,9 +456,9 @@ class textEditView(QTextEdit):
                 cursor = self.textCursor()
                 
                 if _format == "Clear":
-                    fmt = QTextCharFormat()
+                    fmt = self._defaultCharFormat
                     cursor.setCharFormat(fmt)
-                    bf = QTextBlockFormat()
+                    bf = self._defaultBlockFormat
                     cursor.setBlockFormat(bf)
             
             elif _format in ["Bold", "Italic", "Underline"]:
@@ -445,7 +481,7 @@ class textEditView(QTextEdit):
                 elif _format == "Underline":
                     fmt.setFontUnderline(not fmt.fontUnderline())
                     
-                fmt2 = QTextCharFormat()
+                fmt2 = self._defaultCharFormat
                 fmt2.setFontWeight(fmt.fontWeight())
                 fmt2.setFontItalic(fmt.fontItalic())
                 fmt2.setFontUnderline(fmt.fontUnderline())

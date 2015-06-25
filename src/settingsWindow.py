@@ -7,6 +7,7 @@ from ui.settings import *
 from enums import *
 from functions import *
 from ui.editors.themes import *
+from ui.views.textEditView import *
 import settings
 import os
 
@@ -94,6 +95,37 @@ class settingsWindow(QWidget, Ui_Settings):
         self.updateCorkColor()
         self.cmbCorkImage.currentIndexChanged.connect(self.setCorkBackground)
         self.btnCorkColor.clicked.connect(self.setCorkColor)
+        
+        # Text editor
+        opt = settings.textEditor
+        self.setButtonColor(self.btnEditorFontColor, opt["fontColor"])
+        self.btnEditorFontColor.clicked.connect(self.choseEditorFontColor)
+        self.setButtonColor(self.btnEditorMisspelledColor, opt["misspelled"])
+        self.btnEditorMisspelledColor.clicked.connect(self.choseEditorMisspelledColor)
+        f = QFont()
+        f.fromString(opt["font"])
+        self.cmbEditorFontFamily.setCurrentFont(f)
+        self.cmbEditorFontFamily.currentFontChanged.connect(self.updateEditorSettings)
+        self.spnEditorFontSize.setValue(f.pointSize())
+        self.spnEditorFontSize.valueChanged.connect(self.updateEditorSettings)
+        self.cmbEditorLineSpacing.setCurrentIndex(
+            0 if opt["lineSpacing"] == 100 else
+            1 if opt["lineSpacing"] == 150 else
+            2 if opt["lineSpacing"] == 200 else
+            3)
+        self.cmbEditorLineSpacing.currentIndexChanged.connect(self.updateEditorSettings)
+        self.spnEditorLineSpacing.setValue(opt["lineSpacing"])
+        self.spnEditorLineSpacing.valueChanged.connect(self.updateEditorSettings)
+        self.spnEditorLineSpacing.setEnabled(opt["lineSpacing"] not in [100, 150, 200])
+        self.spnEditorLineSpacing.valueChanged.connect(self.updateEditorSettings)
+        self.spnEditorTabWidth.setValue(opt["tabWidth"])
+        self.spnEditorTabWidth.valueChanged.connect(self.updateEditorSettings)
+        self.chkEditorIndent.setChecked(opt["indent"])
+        self.chkEditorIndent.stateChanged.connect(self.updateEditorSettings)
+        self.spnEditorParaAbove.setValue(opt["spacingAbove"])
+        self.spnEditorParaAbove.valueChanged.connect(self.updateEditorSettings)
+        self.spnEditorParaBelow.setValue(opt["spacingBelow"])
+        self.spnEditorParaAbove.valueChanged.connect(self.updateEditorSettings)
         
         # Labels
         self.lstLabels.setModel(self.mw.mdlLabels)
@@ -279,6 +311,47 @@ class settingsWindow(QWidget, Ui_Settings):
             i = self.cmbCorkImage.findData(settings.corkBackground["image"])
             if i != -1:
                 self.cmbCorkImage.setCurrentIndex(i)
+
+####################################################################################################
+# VIEWS / EDITOR
+####################################################################################################
+
+    def updateEditorSettings(self):
+        # Store settings
+        f = self.cmbEditorFontFamily.currentFont()
+        f.setPointSize(self.spnEditorFontSize.value())
+        settings.textEditor["font"] = f.toString()
+        settings.textEditor["lineSpacing"] = \
+            100 if self.cmbEditorLineSpacing.currentIndex() == 0 else\
+            150 if self.cmbEditorLineSpacing.currentIndex() == 1 else\
+            200 if self.cmbEditorLineSpacing.currentIndex() == 2 else\
+            self.spnEditorLineSpacing.value()
+        self.spnEditorLineSpacing.setEnabled(self.cmbEditorLineSpacing.currentIndex() == 3)
+        settings.textEditor["tabWidth"] = self.spnEditorTabWidth.value()
+        settings.textEditor["indent"] = True if self.chkEditorIndent.checkState() else False
+        settings.textEditor["spacingAbove"] = self.spnEditorParaAbove.value()
+        settings.textEditor["spacingBelow"] = self.spnEditorParaBelow.value()
+        
+        # Update font and defaultBlockFormat to all textEditView. Drastically.
+        for w in mainWindow().findChildren(textEditView, QRegExp(".*")):
+            print(w.objectName(), w.parent().objectName())
+            w.loadFontSettings()
+        
+    def choseEditorFontColor(self):
+        color = settings.textEditor["fontColor"]
+        self.colorDialog = QColorDialog(QColor(color), self)
+        color = self.colorDialog.getColor(QColor(color))
+        if color.isValid():
+            settings.textEditor["fontColor"] = color.name()
+            self.setButtonColor(self.btnEditorFontColor, color.name())
+
+    def choseEditorMisspelledColor(self):
+        color = settings.textEditor["misspelled"]
+        self.colorDialog = QColorDialog(QColor(color), self)
+        color = self.colorDialog.getColor(QColor(color))
+        if color.isValid():
+            settings.textEditor["misspelled"] = color.name()
+            self.setButtonColor(self.btnEditorMisspelledColor, color.name())
 
 ####################################################################################################
 #                                           STATUS                                                 #

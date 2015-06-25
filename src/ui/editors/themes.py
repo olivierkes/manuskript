@@ -222,6 +222,7 @@ def setThemeEditorDatas(editor, themeDatas, pixmap, screenRect):
     #f = QFont()
     #f.fromString(themeDatas["Text/Font"])
     editor.setFont(f)
+    editor._fromTheme = True
     
     
     

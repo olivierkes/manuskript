@@ -102,7 +102,7 @@ class t2tHighlighter (QSyntaxHighlighter):
         op = self.style.format(State.MARKUP)
 
         #self.setFormat(0, len(text), self.style.format(State.DEFAULT))
-        #self.setFormat(0, len(text), self._defaultCharFormat)
+        self.setFormat(0, len(text), self._defaultCharFormat)
 
         # InDocRules: is it a settings which might have a specific rule,
         # a comment which contains color infos, or a include conf?

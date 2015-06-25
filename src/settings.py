@@ -3,6 +3,7 @@
 import pickle
 import pprint
 from enums import *
+from qt import *
 
 viewSettings = {
     "Tree": {
@@ -47,11 +48,22 @@ corkBackground = {
 defaultTextType = "t2t"
 fullScreenTheme = "spacedreams"
 
+textEditor = {
+    "fontColor": "#000",
+    "font": qApp.font().toString(),
+    "misspelled": "#F00",
+    "lineSpacing": 100,
+    "tabWidth": 20,
+    "indent": True,
+    "spacingAbove": 5,
+    "spacingBelow": 5,
+    }
+    
 def save(filename=None):
     
     global spellcheck, dict, corkSliderFactor, viewSettings, corkSizeFactor, folderView, lastTab, lastIndex, \
            autoSave, autoSaveDelay, saveOnQuit, autoSaveNoChanges, autoSaveNoChangesDelay, outlineViewColumns, \
-           corkBackground, fullScreenTheme, defaultTextType
+           corkBackground, fullScreenTheme, defaultTextType, textEditor
     
     allSettings = {
         "viewSettings": viewSettings,
@@ -70,6 +82,7 @@ def save(filename=None):
         "corkBackground":corkBackground,
         "fullScreenTheme":fullScreenTheme,
         "defaultTextType":defaultTextType,
+        "textEditor":textEditor,
         }
     
     #pp=pprint.PrettyPrinter(indent=4, compact=False)
@@ -165,3 +178,7 @@ def load(string, fromString=False):
     if "defaultTextType" in allSettings:
         global defaultTextType
         defaultTextType = allSettings["defaultTextType"]
+
+    if "textEditor" in allSettings:
+        global textEditor
+        textEditor = allSettings["textEditor"]

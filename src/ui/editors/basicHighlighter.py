@@ -32,7 +32,8 @@ class basicHighlighter(QSyntaxHighlighter):
         bf = QTextBlockFormat(self._defaultBlockFormat)
         bf.setAlignment(QTextCursor(self.currentBlock()).blockFormat().alignment())
         QTextCursor(self.currentBlock()).setBlockFormat(bf)
-        #self.setFormat(0, len(text), self._defaultCharFormat)
+        
+        self.setFormat(0, len(text), self._defaultCharFormat)
         
         # Spell checking
         # Based on http://john.nachtimwald.com/2009/08/22/qplaintextedit-with-in-line-spell-check/
