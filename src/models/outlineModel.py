@@ -15,7 +15,6 @@ class outlineModel(QAbstractItemModel):
         QAbstractItemModel.__init__(self, parent)
         
         self.rootItem = outlineItem(self, title="root")
-        self._defaultTextType = "t2t"
     
     def index(self, row, column, parent):
         

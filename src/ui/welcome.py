@@ -9,6 +9,8 @@ from models.plotModel import *
 from models.persosProxyModel import *
 import settings
 import locale
+import imp
+
 locale.setlocale(locale.LC_ALL, '')
 
 
@@ -310,6 +312,10 @@ class welcome(QWidget, Ui_welcome):
         self.tree.expandAll()
         
     def loadDefaultDatas(self):
+        
+        # Empty settings
+        imp.reload(settings)
+        
         # Données
         self.mw.mdlFlatData = QStandardItemModel(2, 8, self.mw)
 
@@ -353,7 +359,7 @@ class welcome(QWidget, Ui_welcome):
         
         root = self.mw.mdlOutline.rootItem
         _type = self.cmbDefaultType.currentData()
-        self.mw.mdlOutline._defaultTextType = _type
+        settings.defaultTextType = _type
         
         def addElement(parent, datas):
             if len(datas) == 2 and datas[1][1] == None or \

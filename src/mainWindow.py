@@ -319,15 +319,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             return
         
         self.currentProject = project
-        
-        # Load empty settings
-        imp.reload(settings)
         QSettings().setValue("lastProject", project)
         
-        # Load data
         if loadFromFile:
+            # Load empty settings
+            imp.reload(settings)    
+        
+            # Load data    
             self.loadEmptyDatas()
             self.loadDatas()
+        
         self.makeConnections()
 
         # Load settings

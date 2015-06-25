@@ -5,6 +5,7 @@ from qt import *
 from enums import *
 from functions import *
 from models.outlineModel import *
+import settings
 
 class outlineBasics(QAbstractItemView):
     
@@ -149,7 +150,7 @@ class outlineBasics(QAbstractItemView):
             parent = self.currentIndex()
         
         if _type == "text":
-            _type = self.model()._defaultTextType
+            _type = settings.defaultTextType
             
         item = outlineItem(title=qApp.translate("outlineBasics", "New"), _type=_type)
         self.model().appendItem(item, parent)

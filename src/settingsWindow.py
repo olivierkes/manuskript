@@ -51,6 +51,19 @@ class settingsWindow(QWidget, Ui_Settings):
         self.chkAutoLoad.setChecked(autoLoad)
         self.chkAutoLoad.stateChanged.connect(self.saveSettingsChanged)
         
+        dtt = [
+            ("t2t", self.tr("Txt2Tags"), "text-x-script"),
+            ("html", self.tr("Rich Text (html)"), "text-html"),
+            ("txt", self.tr("Plain Text"), "text-x-generic"),
+            ]
+        self.cmbDefaultTextType.clear()
+        for t in dtt:
+            self.cmbDefaultTextType.addItem(QIcon.fromTheme(t[2]), t[1], t[0])
+        i = self.cmbDefaultTextType.findData(settings.defaultTextType)
+        if i != -1:
+            self.cmbDefaultTextType.setCurrentIndex(i)
+        self.cmbDefaultTextType.currentIndexChanged.connect(self.saveSettingsChanged)
+        
         # Views
         self.tabViews.setCurrentIndex(0)
         lst = ["Nothing", "POV", "Label", "Progress", "Compile"]
@@ -154,6 +167,7 @@ class settingsWindow(QWidget, Ui_Settings):
         settings.autoSaveNoChangesDelay = int(self.txtAutoSaveNoChanges.text())
         self.mw.saveTimer.setInterval(settings.autoSaveDelay * 60 * 1000)
         self.mw.saveTimerNoChanges.setInterval(settings.autoSaveNoChangesDelay * 1000)
+        settings.defaultTextType = self.cmbDefaultTextType.currentData()
 
 ####################################################################################################
 #                                           VIEWS                                                  #

@@ -44,14 +44,14 @@ corkBackground = {
     "color": "#926239",
     "image": ""
         }
-
+defaultTextType = "t2t"
 fullScreenTheme = "spacedreams"
 
 def save(filename=None):
     
     global spellcheck, dict, corkSliderFactor, viewSettings, corkSizeFactor, folderView, lastTab, lastIndex, \
            autoSave, autoSaveDelay, saveOnQuit, autoSaveNoChanges, autoSaveNoChangesDelay, outlineViewColumns, \
-           corkBackground, fullScreenTheme
+           corkBackground, fullScreenTheme, defaultTextType
     
     allSettings = {
         "viewSettings": viewSettings,
@@ -69,6 +69,7 @@ def save(filename=None):
         "outlineViewColumns":outlineViewColumns,
         "corkBackground":corkBackground,
         "fullScreenTheme":fullScreenTheme,
+        "defaultTextType":defaultTextType,
         }
     
     #pp=pprint.PrettyPrinter(indent=4, compact=False)
@@ -161,3 +162,6 @@ def load(string, fromString=False):
         global fullScreenTheme
         fullScreenTheme = allSettings["fullScreenTheme"]
         
+    if "defaultTextType" in allSettings:
+        global defaultTextType
+        defaultTextType = allSettings["defaultTextType"]

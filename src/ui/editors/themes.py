@@ -222,7 +222,7 @@ def setThemeEditorDatas(editor, themeDatas, pixmap, screenRect):
 def addThemePreviewText(pixmap, themeDatas, screenRect):
     
     # Text
-    previewText = textEditView()
+    previewText = textEditView(highlighting=True)
     previewText.setFrameStyle(QFrame.NoFrame)
     previewText.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
     previewText.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
