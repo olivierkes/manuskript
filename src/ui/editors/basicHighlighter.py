@@ -29,7 +29,9 @@ class basicHighlighter(QSyntaxHighlighter):
         """Apply syntax highlighting to the given block of text.
         """
 
-        QTextCursor(self.currentBlock()).setBlockFormat(self._defaultBlockFormat)
+        bf = QTextBlockFormat(self._defaultBlockFormat)
+        bf.setAlignment(QTextCursor(self.currentBlock()).blockFormat().alignment())
+        QTextCursor(self.currentBlock()).setBlockFormat(bf)
         #self.setFormat(0, len(text), self._defaultCharFormat)
         
         # Spell checking

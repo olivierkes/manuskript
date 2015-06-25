@@ -456,15 +456,15 @@ class textEditView(QTextEdit):
                 
                 cursor = self.textCursor()
                 
-                bf = cursor.blockFormat()
+                #bf = cursor.blockFormat()
+                bf = QTextBlockFormat()
                 bf.setAlignment(
                     Qt.AlignLeft if _format == "Left" else
                     Qt.AlignHCenter if _format == "Center" else
                     Qt.AlignRight if _format == "Right" else
                     Qt.AlignJustify)
-                print(bf.alignment() == Qt.AlignLeft)
                 
-                cursor.mergeBlockFormat(bf)
+                cursor.setBlockFormat(bf)
                 self.setTextCursor(cursor)
         
         elif self._textFormat == "t2t":
