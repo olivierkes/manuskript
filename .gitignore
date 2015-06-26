@@ -5,3 +5,4 @@ snowflake*
 *.msk
 Notes.t2t
 *.nja
+src/pycallgraph.txt

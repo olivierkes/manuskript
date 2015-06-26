@@ -21,7 +21,7 @@ compile:
 	cd src && python3 setup.py build_ext --inplace
 	
 callgraph:
-	pycallgraph graphviz -- src/main.py
+	cd src; pycallgraph myoutput -- main.py
 
 translation:
 	pylupdate5 -noobsolete i18n/manuskript.pro
