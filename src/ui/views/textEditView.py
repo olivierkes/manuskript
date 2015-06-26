@@ -25,7 +25,7 @@ class textEditView(QTextEdit):
         self._column = Outline.text.value
         self._index = None
         self._indexes = None
-        self._placeholderText = None
+        self._placeholderText = self.placeholderText()
         self._updating = False
         self._item = None
         self._highlighting = highlighting
@@ -100,8 +100,8 @@ class textEditView(QTextEdit):
             if index.column() != self._column:
                 index = index.sibling(index.row(), self._column)
             self._index = index
-            if self._placeholderText != None:
-                self.setPlaceholderText(self._placeholderText)
+            
+            self.setPlaceholderText(self._placeholderText)
                 
             self._model = index.model()
             try:
@@ -267,6 +267,7 @@ class textEditView(QTextEdit):
             self.reconnectDocument()
             
         elif self._indexes:
+            self.disconnectDocument()
             t = []
             same = True
             for i in self._indexes:
@@ -288,6 +289,7 @@ class textEditView(QTextEdit):
                     self._placeholderText = self.placeholderText()
                     
                 self.setPlaceholderText(self.tr("Various"))
+            self.reconnectDocument()
         self._updating = False
         
     def submit(self):
@@ -314,6 +316,7 @@ class textEditView(QTextEdit):
                     self._updating = False
                 
         elif self._indexes:
+            print("Submitting many indexes")
             self._updating = True
             for i in self._indexes:
                 item = i.internalPointer()
