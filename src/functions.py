@@ -124,7 +124,7 @@ def outlineItemColors(item):
         colors["Progress"] = colorFromProgress(pg)
         
         # Compile
-        if item.isCompile() in [0, "0"]:
+        if item.compile() in [0, "0"]:
             colors["Compile"] = QColor(Qt.gray)
         else:
             colors["Compile"] = QColor(Qt.black)

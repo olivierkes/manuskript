@@ -387,10 +387,10 @@ class outlineItem():
         #print("Data: ", column, role)
         
         if role == Qt.DisplayRole or role == Qt.EditRole:
-            if column == Outline.compile.value:
-                return self.data(column, Qt.CheckStateRole)
+            #if column == Outline.compile.value:
+                #return self.data(column, Qt.CheckStateRole)
             
-            elif Outline(column) in self._data:
+            if Outline(column) in self._data:
                 return self._data[Outline(column)]
             
             else:
@@ -411,7 +411,11 @@ class outlineItem():
                 #return QBrush(Qt.gray)
             
         elif role == Qt.CheckStateRole and column == Outline.compile.value:
-            return self._data[Outline(column)]
+            #print(self.title(), self.compile())
+            #if self._data[Outline(column)] and not self.compile():
+                #return Qt.PartiallyChecked
+            #else:
+                return self._data[Outline(column)]
         
         elif role == Qt.FontRole:
             f = QFont()
@@ -458,6 +462,9 @@ class outlineItem():
         if column == Outline.text.value:
             wc = wordCount(data)
             self.setData(Outline.wordCount.value, wc)
+            
+        if column == Outline.compile.value:
+            self.emitDataChanged(cols=[Outline.title.value, Outline.compile.value], recursive=True)
         
         if updateWordCount:
             self.updateWordCount()
@@ -527,16 +534,21 @@ class outlineItem():
         else:
             return QModelIndex()
         
-    def emitDataChanged(self, cols=None):
+    def emitDataChanged(self, cols=None, recursive=False):
         idx = self.index()
         if idx and self._model:
             if not cols:
                 # Emit data changed for the whole item (all columns)
                 self._model.dataChanged.emit(idx, self.index(len(Outline)))
+                
             else:
                 # Emit only for the specified columns
                 for c in cols:
                     self._model.dataChanged.emit(self.index(c), self.index(c))
+                    
+            if recursive:
+                for c in self.children():
+                    c.emitDataChanged(cols, recursive=True)
         
     def removeChild(self, row):
         self.childItems.pop(row)
@@ -559,8 +571,13 @@ class outlineItem():
     def isText(self):
         return self._data[Outline.type] == "txt"
     
-    def isCompile(self):
-        return Outline.compile in self._data and self._data[Outline.compile]
+    def compile(self):
+        if self._data[Outline.compile] in ["0", 0]:
+            return False
+        elif self.parent():
+            return self.parent().compile()
+        else:
+            return True  # rootItem always compile
     
     def title(self):
         if Outline.title in self._data:
