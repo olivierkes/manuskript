@@ -14,7 +14,7 @@ class outlineModel(QAbstractItemModel):
     def __init__(self, parent):
         QAbstractItemModel.__init__(self, parent)
         
-        self.rootItem = outlineItem(self, title="root")
+        self.rootItem = outlineItem(self, title="root", ID="0")
     
     def index(self, row, column, parent):
         
@@ -327,8 +327,8 @@ class outlineModel(QAbstractItemModel):
         else:
             root = ET.fromstring(xml)
             
-        self.rootItem = outlineItem(self, xml=ET.tostring(root))
-        
+        self.rootItem = outlineItem(model=self, xml=ET.tostring(root), ID="0")
+        self.rootItem.checkIDs()
     
     def pathToIndex(self, index, path=""):
         if not index.isValid():
@@ -352,13 +352,14 @@ class outlineModel(QAbstractItemModel):
     
 class outlineItem():
     
-    def __init__(self, model=None, title="", _type="folder", xml=None):
+    def __init__(self, model=None, title="", _type="folder", xml=None, parent=None, ID=None):
         
         self._data = {}
         self.childItems = []
         self._parent = None
         self._model = model
         self.defaultTextType = None
+        self.IDs = []  # used by root item to store unique IDs
         
         if title: 
             self._data[Outline.title] = title
@@ -368,6 +369,12 @@ class outlineItem():
         
         if xml is not None:
             self.setFromXML(xml)
+            
+        if parent:
+            parent.appendChild(self)
+            
+        if ID:
+            self._data[Outline.ID] = ID
         
         
     def child(self, row):
@@ -521,6 +528,8 @@ class outlineItem():
         self.childItems.insert(row, child)
         child._parent = self
         child.setModel(self._model)
+        if not child.data(Outline.ID.value):
+            child.getUniqueID()
         self.updateWordCount()
         
     def setModel(self, model):
@@ -627,5 +636,40 @@ class outlineItem():
                     self.setData(Outline.__members__[k].value, str(root.attrib[k]))
                 
         for child in root:
-            item = outlineItem(self._model, xml=ET.tostring(child))
-            self.appendChild(item)
+            item = outlineItem(self._model, xml=ET.tostring(child), parent=self)
+            
+    def getUniqueID(self):
+        self.setData(Outline.ID.value, self._model.rootItem.findUniqueID())
+        
+    def checkIDs(self):
+        """This is called when a model is loaded.
+        
+        Makes a list of all sub-items IDs, that is used to generate unique IDs afterwards.
+        """
+        self.IDs = self.listAllIDs()
+        
+        if max([self.IDs.count(i) for i in self.IDs if i]) != 1:
+            print("There are some doublons:", [i for i in self.IDs if i and self.IDs.count(i) != 1])
+        
+        def checkChildren(item):
+            for c in item.children():
+                _id = c.data(Outline.ID.value)
+                if not _id or _id == "0":
+                    c.getUniqueID()
+                checkChildren(c)
+        
+        checkChildren(self)
+        
+        
+    def listAllIDs(self):
+        IDs = [self.data(Outline.ID.value)]
+        for c in self.children():
+            IDs.extend(c.listAllIDs())
+        return IDs
+        
+    def findUniqueID(self):
+        k = 0
+        while str(k) in self.IDs:
+            k += 1
+        self.IDs.append(str(k))
+        return str(k)

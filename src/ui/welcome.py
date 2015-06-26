@@ -371,10 +371,11 @@ class welcome(QWidget, Ui_welcome):
                     item = outlineItem(title="{} {}".format(
                                                 datas[0][1], 
                                                 str(n)),
-                                       _type=_type)
+                                       _type=_type,
+                                       parent=parent)
                     if len(datas) == 2:
                         item.setData(Outline.setGoal.value, datas[1][0])
-                    parent.appendChild(item)
+                    #parent.appendChild(item)
             else:
                 n = 0
                 for i in range(datas[0][0]):
@@ -382,8 +383,9 @@ class welcome(QWidget, Ui_welcome):
                     item = outlineItem(title="{} {}".format(
                                                 datas[0][1], 
                                                 str(n)),
-                                       _type="folder")
-                    parent.appendChild(item)
+                                       _type="folder",
+                                       parent=parent)
+                    #parent.appendChild(item)
                     addElement(item, datas[1:])
             
         if self.template:

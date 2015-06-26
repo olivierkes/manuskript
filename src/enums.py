@@ -2,8 +2,6 @@
 #--!-- coding: utf8 --!--
  
 
-
-
 # As seen on http://stackoverflow.com/questions/36932/how-can-i-represent-an-enum-in-python
 
 from enum import Enum
