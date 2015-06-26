@@ -5,6 +5,7 @@ from qt import *
 from ui.editors.t2tFunctions import *
 from ui.editors.blockUserData import blockUserData
 from ui.editors.t2tHighlighterStyle import t2tHighlighterStyle
+from ui.editors.basicHighlighter import *
 import re
 
 # This is aiming at implementing every rule from www.txt2tags.org/rules.html
@@ -15,21 +16,16 @@ import re
 #TODO: parse %!postproc et !%preproc, et si la ligne se termine par une couleur en commentaire (%#FF00FF), utiliser cette couleur pour highlighter. Permet des règles customisées par document, facilement.
 
 
-class t2tHighlighter (QSyntaxHighlighter):
+class t2tHighlighter (basicHighlighter):
     """Syntax highlighter for the Txt2Tags language.
     """
 
     def __init__(self, editor, style="Default"):
-        QSyntaxHighlighter.__init__(self, editor.document())
-
-        self.editor = editor
+        basicHighlighter.__init__(self, editor)
 
         # Stupid variable that fixes the loss of QTextBlockUserData.
         self.thisDocument = editor.document()
         
-        self._defaultBlockFormat = QTextBlockFormat()
-        self._defaultCharFormat = QTextCharFormat()
-        self._misspelledColor = Qt.red
         self.style = t2tHighlighterStyle(self.editor, self._defaultCharFormat, style)
         
         self.inDocRules = []
@@ -63,30 +59,22 @@ class t2tHighlighter (QSyntaxHighlighter):
                        for (pattern, state) in rules]
         State.Recursion = 0
 
-    def setDefaultBlockFormat(self, bf):
-        self._defaultBlockFormat = bf
-        self.rehighlight()
-        
     def setDefaultCharFormat(self, cf):
         self._defaultCharFormat = cf
         self.setStyle()
         self.rehighlight()
     
-    def setMisspelledColor(self, color):
-        self._misspelledColor = color
-    
     def highlightBlock(self, text):
         """Apply syntax highlighting to the given block of text.
         """
-
+        basicHighlighter.highlightBlockBefore(self, text)
+        
         # Check if syntax highlighting is enabled
         if self.style is None:
             default = QTextBlockFormat()
             QTextCursor(self.currentBlock()).setBlockFormat(default)
             print("t2tHighlighter.py: is style supposed to be None?")
             return
-        
-        QTextCursor(self.currentBlock()).setBlockFormat(self._defaultBlockFormat)
         
         block = self.currentBlock()
         oldState = blockUserData.getUserState(block)
@@ -102,7 +90,6 @@ class t2tHighlighter (QSyntaxHighlighter):
         op = self.style.format(State.MARKUP)
 
         #self.setFormat(0, len(text), self.style.format(State.DEFAULT))
-        self.setFormat(0, len(text), self._defaultCharFormat)
 
         # InDocRules: is it a settings which might have a specific rule,
         # a comment which contains color infos, or a include conf?
@@ -334,19 +321,8 @@ class t2tHighlighter (QSyntaxHighlighter):
                 #f = self.formats(preset=style, base=self.formats(index))
                 #self.setFormat(index, length, f)
                 #index = expression.indexIn(text, index + length)
-        
-        # Spell checking
-        # Based on http://john.nachtimwald.com/2009/08/22/qplaintextedit-with-in-line-spell-check/
-        WORDS = '(?iu)[\w\']+'
-        if state not in [State.SETTINGS_LINE]:
-            if self.editor.spellcheck:
-                for word_object in re.finditer(WORDS, text):
-                    if self.editor._dict and not self.editor._dict.check(word_object.group()):
-                        format = self.format(word_object.start())
-                        format.setUnderlineColor(self._misspelledColor)
-                        format.setUnderlineStyle(QTextCharFormat.SpellCheckUnderline)
-                        self.setFormat(word_object.start(),
-                            word_object.end() - word_object.start(), format)
+                
+        basicHighlighter.highlightBlockAfter(self, text)
 
     def identifyBlock(self, block):
         """Identifies what block type it is, and set userState and userData

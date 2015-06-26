@@ -25,15 +25,31 @@ class basicHighlighter(QSyntaxHighlighter):
     def setMisspelledColor(self, color):
         self._misspelledColor = color
     
+    
     def highlightBlock(self, text):
         """Apply syntax highlighting to the given block of text.
         """
-
+        self.highlightBlockBefore(text)
+        self.highlightBlockAfter(text)
+    
+    def highlightBlockBefore(self, text):
+        """Highlighting to do before anything else.
+        
+        When subclassing basicHighlighter, you must call highlightBlockBefore
+        before you do any custom highlighting.
+        """
         bf = QTextBlockFormat(self._defaultBlockFormat)
         bf.setAlignment(QTextCursor(self.currentBlock()).blockFormat().alignment())
         QTextCursor(self.currentBlock()).setBlockFormat(bf)
         
         self.setFormat(0, len(text), self._defaultCharFormat)
+        
+    def highlightBlockAfter(self, text):
+        """Highlighting to do after everything else.
+        
+        When subclassing basicHighlighter, you must call highlightBlockAfter
+        after your custom highlighting.
+        """
         
         # Spell checking
         # Based on http://john.nachtimwald.com/2009/08/22/qplaintextedit-with-in-line-spell-check/
@@ -46,3 +62,6 @@ class basicHighlighter(QSyntaxHighlighter):
                     format.setUnderlineStyle(QTextCharFormat.SpellCheckUnderline)
                     self.setFormat(word_object.start(),
                         word_object.end() - word_object.start(), format)
+
+
+        
