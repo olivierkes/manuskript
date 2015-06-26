@@ -57,7 +57,8 @@ class metadataView(QWidget, Ui_metadataView):
             self.txtNotes.setCurrentModelIndexes(indexes)
             
         self.properties.selectionChanged(sourceView)
-        
+        # Hides textFormat
+        self.textFormat.updateFromIndex(QModelIndex())
         self._lastIndexes = indexes
         
     def setDict(self, d):
