@@ -337,6 +337,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.actSpellcheck.setChecked(settings.spellcheck)
         self.updateMenuDict()
         self.setDictionary()
+        self.treeRedacOutline.setCurrentIndex(
+                             self.mdlOutline.indexFromPath(settings.lastIndex))
         self.redacEditor.setFolderView(settings.folderView)
         if settings.folderView == "text":
             self.btnRedacFolderText.setChecked(True)
@@ -345,8 +347,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         elif settings.folderView == "outline":
             self.btnRedacFolderOutline.setChecked(True)
         self.tabMain.setCurrentIndex(settings.lastTab)
-        self.treeRedacOutline.setCurrentIndex(
-                             self.mdlOutline.indexFromPath(settings.lastIndex))
         self.redacEditor.corkView.updateBackground()
 
         # Set autosave
