@@ -140,12 +140,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         """Creates a perso by adding a row in mdlPersos
         and a column in mdlPersosInfos with same ID"""
         p = QStandardItem(self.tr("New character"))
-        self.mdlPersos.appendRow(p)
         pid = self.getPersosID()
-        self.checkPersosID()  # Attributes a persoID (which is logically pid)
+        #self.checkPersosID()  # Attributes a persoID (which is logically pid)
+        self.mdlPersos.appendRow([p, QStandardItem(pid), QStandardItem("0")])
+        
         self.setPersoColor(self.mdlPersos.rowCount() - 1,
                            randomColor(QColor(Qt.white)))
-
+        
         # Add column in persos infos
         self.mdlPersosInfos.insertColumn(self.mdlPersosInfos.columnCount(),
                                          [QStandardItem(pid)])

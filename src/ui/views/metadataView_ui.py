@@ -57,7 +57,7 @@ class Ui_metadataView(object):
         self.horizontalLayout_29 = QtWidgets.QHBoxLayout(self.groupBox_6)
         self.horizontalLayout_29.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_29.setObjectName("horizontalLayout_29")
-        self.txtNotes = textEditView(self.groupBox_6)
+        self.txtNotes = textEditCompleter(self.groupBox_6)
         self.txtNotes.setObjectName("txtNotes")
         self.horizontalLayout_29.addWidget(self.txtNotes)
         self.verticalLayout.addWidget(self.groupBox_6)
@@ -73,8 +73,9 @@ class Ui_metadataView(object):
         self.txtSummarySentance.setPlaceholderText(_translate("metadataView", "One line summary"))
         self.groupBox_6.setTitle(_translate("metadataView", "Notes"))
 
-from ui.editors.textFormat import textFormat
-from ui.collapsibleGroupBox2 import collapsibleGroupBox2
-from ui.views.lineEditView import lineEditView
 from ui.views.textEditView import textEditView
+from ui.editors.textFormat import textFormat
+from ui.views.textEditCompleter import textEditCompleter
+from ui.views.lineEditView import lineEditView
+from ui.collapsibleGroupBox2 import collapsibleGroupBox2
 from ui.views.propertiesView import propertiesView

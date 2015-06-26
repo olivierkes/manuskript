@@ -49,6 +49,21 @@ class outlineModel(QAbstractItemModel):
         col = column
         return self.createIndex(row, col, item)
     
+    def getIndexByID(self, ID):
+        "Returns the index of item whose ID is ``ID``. If none, returns QModelIndex()."
+        def search(item):
+            if item.ID() == ID:
+                return item
+            for c in item.children():
+                r = search(c)
+                if r:
+                    return r
+        item = search(self.rootItem)
+        if not item:
+            return QModelIndex()
+        else:
+            return self.indexFromItem(item)
+    
     def parent(self, index=QModelIndex()):
         if not index.isValid():
             return QModelIndex()
@@ -331,6 +346,7 @@ class outlineModel(QAbstractItemModel):
         self.rootItem.checkIDs()
     
     def pathToIndex(self, index, path=""):
+        # FIXME: Use item's ID instead of rows
         if not index.isValid():
             return ""
         if index.parent().isValid():
@@ -593,6 +609,9 @@ class outlineItem():
             return self._data[Outline.title]
         else:
             return ""
+        
+    def ID(self):
+        return self.data(Outline.ID.value)
     
     def path(self):
         if self.parent().parent():
@@ -673,3 +692,9 @@ class outlineItem():
             k += 1
         self.IDs.append(str(k))
         return str(k)
+    
+    def pathToItem(self):
+        path = self.data(Outline.ID.value)
+        if self.parent().parent():
+            path = "{}:{}".format(self.parent().pathToItem(), path)
+        return path

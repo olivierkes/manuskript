@@ -17,6 +17,7 @@ SOURCES          += ../src/settingsWindow.py
 SOURCES          += ../src/models/outlineModel.py
 SOURCES          += ../src/models/persosProxyModel.py
 SOURCES          += ../src/models/plotModel.py
+SOURCES          += ../src/models/references.py
 
 SOURCES          += ../src/ui/helpLabel.py
 SOURCES          += ../src/ui/sldImportance.py
@@ -25,6 +26,7 @@ SOURCES          += ../src/ui/welcome.py
 SOURCES          += ../src/ui/editors/editorWidget.py
 SOURCES          += ../src/ui/editors/fullScreenEditor.py
 SOURCES          += ../src/ui/editors/textFormat.py
+SOURCES          += ../src/ui/editors/completer.py
 
 SOURCES          += ../src/ui/views/corkDelegate.py
 SOURCES          += ../src/ui/views/outlineDelegates.py

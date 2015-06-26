@@ -3,6 +3,7 @@
 
 from qt import *
 import re
+from functions import *
 
 class basicHighlighter(QSyntaxHighlighter):
 
@@ -50,6 +51,16 @@ class basicHighlighter(QSyntaxHighlighter):
         When subclassing basicHighlighter, you must call highlightBlockAfter
         after your custom highlighting.
         """
+        #print("Highlighting")
+        for txt in re.finditer(r"::(\w):(\d+?)::", text):
+            fmt = self.format(txt.start())
+            if txt.group(1) == "T":
+                fmt.setBackground(QBrush(QColor(Qt.blue).lighter(190)))
+            elif txt.group(1) == "C":
+                fmt.setBackground(QBrush(QColor(Qt.yellow).lighter(190)))
+            self.setFormat(txt.start(),
+                           txt.end() - txt.start(),
+                           fmt)
         
         # Spell checking
         # Based on http://john.nachtimwald.com/2009/08/22/qplaintextedit-with-in-line-spell-check/

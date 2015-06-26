@@ -83,7 +83,7 @@ class persosProxyModel(QSortFilterProxyModel):
             for p in range(src.rowCount()):
                 item = src.item(p, Perso.importance.value)
                 
-                if item:
+                if item and item.text():
                     imp = int(item.text())
                 else:
                     imp = 0

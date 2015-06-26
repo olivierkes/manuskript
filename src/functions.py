@@ -163,3 +163,6 @@ def allPaths(suffix=None):
     # user writable directory
     paths.append(writablePath(suffix))
     return paths
+
+def lightBlue():
+    return QColor(Qt.blue).lighter(190)
