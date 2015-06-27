@@ -1500,13 +1500,13 @@
            <attribute name="title">
             <string>Redaction</string>
            </attribute>
-           <layout class="QVBoxLayout" name="verticalLayout_19">
+           <layout class="QVBoxLayout" name="verticalLayout_16">
             <item>
              <widget class="QSplitter" name="splitterRedac">
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
               </property>
-              <widget class="QWidget" name="widget" native="true">
+              <widget class="QWidget" name="treeRedacWidget" native="true">
                <layout class="QVBoxLayout" name="verticalLayout_30">
                 <property name="margin">
                  <number>0</number>
@@ -1566,180 +1566,7 @@
                 </item>
                </layout>
               </widget>
-              <widget class="QWidget" name="layoutWidget">
-               <layout class="QVBoxLayout" name="verticalLayout_16">
-                <item>
-                 <widget class="editorWidget" name="redacEditor" native="true"/>
-                </item>
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_19">
-                  <item>
-                   <widget class="QPushButton" name="btnRedacShowOutline">
-                    <property name="text">
-                     <string/>
-                    </property>
-                    <property name="icon">
-                     <iconset theme="text-x-generic">
-                      <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
-                    </property>
-                    <property name="checkable">
-                     <bool>true</bool>
-                    </property>
-                    <property name="checked">
-                     <bool>true</bool>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QPushButton" name="btnRedacFolderText">
-                    <property name="text">
-                     <string>Text</string>
-                    </property>
-                    <property name="checkable">
-                     <bool>true</bool>
-                    </property>
-                    <attribute name="buttonGroup">
-                     <string notr="true">buttonGroup</string>
-                    </attribute>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QPushButton" name="btnRedacFolderCork">
-                    <property name="text">
-                     <string>Index cards</string>
-                    </property>
-                    <property name="checkable">
-                     <bool>true</bool>
-                    </property>
-                    <property name="checked">
-                     <bool>true</bool>
-                    </property>
-                    <attribute name="buttonGroup">
-                     <string notr="true">buttonGroup</string>
-                    </attribute>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QPushButton" name="btnRedacFolderOutline">
-                    <property name="text">
-                     <string>Outline</string>
-                    </property>
-                    <property name="checkable">
-                     <bool>true</bool>
-                    </property>
-                    <attribute name="buttonGroup">
-                     <string notr="true">buttonGroup</string>
-                    </attribute>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QSlider" name="sldCorkSizeFactor">
-                    <property name="minimumSize">
-                     <size>
-                      <width>100</width>
-                      <height>0</height>
-                     </size>
-                    </property>
-                    <property name="maximumSize">
-                     <size>
-                      <width>200</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="minimum">
-                     <number>50</number>
-                    </property>
-                    <property name="maximum">
-                     <number>200</number>
-                    </property>
-                    <property name="value">
-                     <number>100</number>
-                    </property>
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <spacer name="horizontalSpacer_2">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item>
-                   <widget class="QLabel" name="lblRedacWC">
-                    <property name="minimumSize">
-                     <size>
-                      <width>10</width>
-                      <height>0</height>
-                     </size>
-                    </property>
-                    <property name="text">
-                     <string/>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QLabel" name="lblRedacProgress">
-                    <property name="minimumSize">
-                     <size>
-                      <width>100</width>
-                      <height>6</height>
-                     </size>
-                    </property>
-                    <property name="maximumSize">
-                     <size>
-                      <width>200</width>
-                      <height>14</height>
-                     </size>
-                    </property>
-                    <property name="text">
-                     <string/>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QPushButton" name="btnRedacFullscreen">
-                    <property name="text">
-                     <string/>
-                    </property>
-                    <property name="icon">
-                     <iconset theme="view-fullscreen">
-                      <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
-                    </property>
-                    <property name="shortcut">
-                     <string>F11</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QPushButton" name="btnRedacShowInfos">
-                    <property name="text">
-                     <string/>
-                    </property>
-                    <property name="icon">
-                     <iconset theme="edit-find">
-                      <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
-                    </property>
-                    <property name="checkable">
-                     <bool>true</bool>
-                    </property>
-                    <property name="checked">
-                     <bool>true</bool>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </item>
-               </layout>
-              </widget>
+              <widget class="mainEditor" name="mainEditor" native="true"/>
               <widget class="QTabWidget" name="tabRedacInfos">
                <property name="tabPosition">
                 <enum>QTabWidget::South</enum>
@@ -2185,12 +2012,6 @@
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>editorWidget</class>
-   <extends>QWidget</extends>
-   <header>ui.editors.editorWidget.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
    <class>treeView</class>
    <extends>QTreeView</extends>
    <header>ui.views.treeView.h</header>
@@ -2216,6 +2037,12 @@
    <class>welcome</class>
    <extends>QWidget</extends>
    <header>ui.welcome.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>mainEditor</class>
+   <extends>QWidget</extends>
+   <header>ui.editors.mainEditor.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
@@ -2266,38 +2093,6 @@
     <hint type="destinationlabel">
      <x>1053</x>
      <y>731</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>btnRedacShowInfos</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>tabRedacInfos</receiver>
-   <slot>setVisible(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>860</x>
-     <y>614</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1090</x>
-     <y>772</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>btnRedacShowOutline</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>widget</receiver>
-   <slot>setVisible(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>272</x>
-     <y>614</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>233</x>
-     <y>772</y>
     </hint>
    </hints>
   </connection>

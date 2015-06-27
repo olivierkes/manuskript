@@ -110,23 +110,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 # OUTLINE
 ###############################################################################
 
-    def outlineSelectionChanged(self):
-        if len(self.treeRedacOutline.selectionModel().
-                    selection().indexes()) == 0:
-            hidden = False
-        else:
-            idx = self.treeRedacOutline.currentIndex()
-            if idx.isValid():
-                hidden = not idx.internalPointer().isFolder()
-            else:
-                hidden = False
-
-        self.btnRedacFolderText.setHidden(hidden)
-        self.btnRedacFolderCork.setHidden(hidden)
-        self.btnRedacFolderOutline.setHidden(hidden)
-        self.sldCorkSizeFactor.setHidden(hidden)
-        self.btnRedacFullscreen.setVisible(hidden)
-
     def outlineRemoveItems(self):
         for idx in self.treeRedacOutline.selectedIndexes():
             if idx.isValid():
@@ -334,21 +317,21 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # Load settings
         self.generateViewMenu()
-        self.sldCorkSizeFactor.setValue(settings.corkSizeFactor)
+        self.mainEditor.sldCorkSizeFactor.setValue(settings.corkSizeFactor)
         self.actSpellcheck.setChecked(settings.spellcheck)
         self.updateMenuDict()
         self.setDictionary()
         self.treeRedacOutline.setCurrentIndex(
                              self.mdlOutline.indexFromPath(settings.lastIndex))
-        self.redacEditor.setFolderView(settings.folderView)
+        self.mainEditor.setFolderView(settings.folderView)
         if settings.folderView == "text":
-            self.btnRedacFolderText.setChecked(True)
+            self.mainEditor.btnRedacFolderText.setChecked(True)
         elif settings.folderView == "cork":
-            self.btnRedacFolderCork.setChecked(True)
+            self.mainEditor.btnRedacFolderCork.setChecked(True)
         elif settings.folderView == "outline":
-            self.btnRedacFolderOutline.setChecked(True)
+            self.mainEditor.btnRedacFolderOutline.setChecked(True)
         self.tabMain.setCurrentIndex(settings.lastTab)
-        self.redacEditor.corkView.updateBackground()
+        self.mainEditor.updateCorkBackground()
 
         # Set autosave
         self.saveTimer = QTimer()
@@ -584,19 +567,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btnRedacRemoveItem.clicked.connect(self.outlineRemoveItems, AUC)
         self.btnPlanRemoveItem.clicked.connect(self.outlineRemoveItems, AUC)
 
-        self.sldCorkSizeFactor.valueChanged.connect(
-             self.redacEditor.setCorkSizeFactor, AUC)
-        self.btnRedacFolderCork.toggled.connect(
-             self.sldCorkSizeFactor.setVisible, AUC)
-        self.btnRedacFolderText.clicked.connect(
-             lambda v: self.redacEditor.setFolderView("text"), AUC)
-        self.btnRedacFolderCork.clicked.connect(
-             lambda v: self.redacEditor.setFolderView("cork"), AUC)
-        self.btnRedacFolderOutline.clicked.connect(
-             lambda v: self.redacEditor.setFolderView("outline"), AUC)
-        
-        
-
     def makeConnections(self):
 
         # Flat datas (Summary and general infos)
@@ -709,7 +679,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                                          self.mdlLabels, self.mdlStatus)
 
         self.treePlanOutline.setModel(self.mdlOutline)
-        self.redacEditor.setModel(self.mdlOutline)
+        #self.redacEditor.setModel(self.mdlOutline)
 
         self.treePlanOutline.selectionModel().selectionChanged.connect(lambda:
                  self.outlineItemEditor.selectionChanged(self.treePlanOutline), AUC)
@@ -725,10 +695,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             lambda: self.redacMetadata.selectionChanged(self.treeRedacOutline), AUC)
 
         #self.treeRedacOutline.selectionModel().currentChanged.connect(self.redacEditor.setCurrentModelIndex)
-        self.treeRedacOutline.selectionModel().selectionChanged.connect(self.redacEditor.setView, AUC)
-        self.treeRedacOutline.selectionModel().currentChanged.connect(self.redacEditor.txtRedacText.setCurrentModelIndex, AUC)
+        self.treeRedacOutline.selectionModel().selectionChanged.connect(self.mainEditor.selectionChanged, AUC)
+        self.treeRedacOutline.selectionModel().currentChanged.connect(self.mainEditor.setCurrentModelIndex, AUC)
 
-        self.treeRedacOutline.selectionModel().selectionChanged.connect(self.outlineSelectionChanged, AUC)
+        #self.treeRedacOutline.selectionModel().selectionChanged.connect(self.outlineSelectionChanged, AUC)
         #self.treeRedacOutline.selectionModel().selectionChanged.connect(self.outlineSelectionChanged, AUC)
         #self.treePlanOutline.selectionModel().selectionChanged.connect(self.outlineSelectionChanged, AUC)
         #self.treePlanOutline.selectionModel().selectionChanged.connect(self.outlineSelectionChanged, AUC)
@@ -865,7 +835,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.menuTools.addMenu(self.menuDict)
 
             self.actSpellcheck.toggled.connect(self.toggleSpellcheck, AUC)
-            self.dictChanged.connect(self.redacEditor.setDict, AUC)
+            self.dictChanged.connect(self.mainEditor.setDict, AUC)
             self.dictChanged.connect(self.redacMetadata.setDict, AUC)
             self.dictChanged.connect(self.outlineItemEditor.setDict, AUC)
 
@@ -876,10 +846,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             a.setIcon(self.style().standardIcon(QStyle.SP_MessageBoxWarning))
             a.triggered.connect(self.openPyEnchantWebPage, AUC)
             self.menuTools.addAction(a)
-
-        self.btnRedacFullscreen.clicked.connect(
-             lambda: self.redacEditor.showFullscreen(
-                     self.treeRedacOutline.currentIndex()), AUC)
 
 ###############################################################################
 # SPELLCHECK
@@ -921,7 +887,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def toggleSpellcheck(self, val):
         settings.spellcheck = val
-        self.redacEditor.toggleSpellcheck(val)
+        self.mainEditor.toggleSpellcheck(val)
         self.redacMetadata.toggleSpellcheck(val)
         self.outlineItemEditor.toggleSpellcheck(val)
 
@@ -1021,9 +987,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def setViewSettings(self, item, part, element):
         settings.viewSettings[item][part] = element
         if item == "Cork":
-            self.redacEditor.corkView.viewport().update()
+            self.mainEditor.updateCorkView()
         if item == "Outline":
-            self.redacEditor.outlineView.viewport().update()
+            self.mainEditor.updateTreeView()
             self.treePlanOutline.viewport().update()
         if item == "Tree":
             self.treeRedacOutline.viewport().update()

@@ -27,6 +27,8 @@ SOURCES          += ../src/ui/editors/editorWidget.py
 SOURCES          += ../src/ui/editors/fullScreenEditor.py
 SOURCES          += ../src/ui/editors/textFormat.py
 SOURCES          += ../src/ui/editors/completer.py
+SOURCES          += ../src/ui/editors/mainEditor.py
+
 
 SOURCES          += ../src/ui/views/corkDelegate.py
 SOURCES          += ../src/ui/views/outlineDelegates.py

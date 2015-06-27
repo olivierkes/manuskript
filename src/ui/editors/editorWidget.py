@@ -15,7 +15,7 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
     toggledSpellcheck = pyqtSignal(bool)
     dictChanged = pyqtSignal(str)
     
-    def __init__(self, parent=None):
+    def __init__(self, parent):
         QWidget.__init__(self, parent)
         self.setupUi(self)
         self.currentIndex = QModelIndex()
@@ -28,9 +28,9 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
         self.spellcheck = True
         self.folderView = "cork"
         
-    def setModel(self, model):
-        self._model = model
-        self.setView()
+    #def setModel(self, model):
+        #self._model = model
+        #self.setView()
         
     def setFolderView(self, v):
         oldV = self.folderView
@@ -164,7 +164,6 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
             self.corkView.clicked.connect(
                 lambda: mainWindow().redacMetadata.selectionChanged(self.corkView), AUC)
             
-            
         elif item and item.isFolder() and self.folderView == "outline":
             self.stack.setCurrentIndex(3)
             self.outlineView.setModelPersos(mainWindow().mdlPersos)
@@ -177,8 +176,8 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
             self.outlineView.clicked.connect(
                 lambda: mainWindow().redacMetadata.selectionChanged(self.outlineView), AUC)
             
-            
         else:
+            self.txtRedacText.setCurrentModelIndex(self.currentIndex)
             self.stack.setCurrentIndex(0) # Single text item
         
         try:
@@ -208,39 +207,10 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
         # Update progress
         #if self.currentIndex and self.currentIndex.isValid():
         if self._model:
-            if self.currentIndex:
-                item = self.currentIndex.internalPointer()
-            else:
-                item = self._model.rootItem
-            
-            if not item:
-                item = self._model.rootItem
-            
-            wc = item.data(Outline.wordCount.value)
-            goal = item.data(Outline.goal.value)
-            pg = item.data(Outline.goalPercentage.value)
-            #mw = qApp.activeWindow()
-            
             mw = mainWindow()
             if not mw: return
             
-            if not wc:
-                wc = 0
-            
-            if goal:
-                mw.lblRedacProgress.show()
-                rect = mw.lblRedacProgress.geometry()
-                rect = QRect(QPoint(0, 0), rect.size())
-                self.px = QPixmap(rect.size())
-                self.px.fill(Qt.transparent)
-                p = QPainter(self.px)
-                drawProgress(p, rect, pg, 2)
-                del p
-                mw.lblRedacProgress.setPixmap(self.px)
-                mw.lblRedacWC.setText(self.tr("{} words / {}").format(wc, goal))
-            else:
-                mw.lblRedacProgress.hide()
-                mw.lblRedacWC.setText(self.tr("{} words").format(wc))
+            mw.mainEditor.updateStats(self.currentIndex)
             
     def toggleSpellcheck(self, v):
         self.spellcheck = v
