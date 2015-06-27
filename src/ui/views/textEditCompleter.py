@@ -29,7 +29,7 @@ class textEditCompleter(textEditView):
         
     def setCurrentModelIndex(self, index):
         textEditView.setCurrentModelIndex(self, index)
-        if self._index:
+        if self._index and not self.completer:
             self.setCompleter(completer())
         
     def setCompleter(self, completer):

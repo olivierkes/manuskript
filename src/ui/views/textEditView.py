@@ -324,6 +324,11 @@ class textEditView(QTextEdit):
                     self._model.setData(i, self.toPlainText())
             self._updating = False
             
+    def keyPressEvent(self, event):
+        if event.key() == Qt.Key_Space:
+            self.submit()
+        QTextEdit.keyPressEvent(self, event)
+            
     # -----------------------------------------------------------------------------------------------------
     # Resize stuff
     
