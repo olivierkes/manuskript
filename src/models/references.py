@@ -41,3 +41,38 @@ def infoForRef(ref):
             
     else:
         return qApp.translate("references", "Unknown reference: {}.").format(ref)
+    
+    
+def openReference(ref):
+    match = re.fullmatch("::(\w):(\d+?)::", ref)
+    if match:
+        _type = match.group(1)
+        _ref = match.group(2)
+        
+        if _type == "C":
+            mw = mainWindow()
+            
+            for i in range(mw.mdlPersos.rowCount()):
+                if mw.mdlPersos.item(i, Perso.ID.value).text() == _ref:
+                    mw.tabMain.setCurrentIndex(2)
+                    # FIXME: update after creating a custom persomodel
+                    #mw.lstPersos.setCurrentRow(i)
+                    return True
+                
+            print("Ref not found")
+            return False
+        
+        elif _type == "T":
+            
+            mw = mainWindow()
+            index = mw.mdlOutline.getIndexByID(_ref)
+            
+            if index.isValid():
+                mw.treeRedacOutline.setCurrentIndex(index)
+                return True
+            else:
+                print("Ref not found")
+                return False
+        
+        print("Ref not implemented")
+        return False

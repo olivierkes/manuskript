@@ -75,9 +75,9 @@ class textEditView(QTextEdit):
         else:
             self.spellcheck = False
             
-        if self._highlighting and not self.highlighter:
-            self.highlighter = t2tHighlighter(self)
-            self.highlighter.setDefaultBlockFormat(self._defaultBlockFormat)
+        #if self._highlighting and not self.highlighter:
+            #self.highlighter = t2tHighlighter(self)
+            #self.highlighter.setDefaultBlockFormat(self._defaultBlockFormat)
             
     def setModel(self, model):
         self._model = model
@@ -132,9 +132,9 @@ class textEditView(QTextEdit):
             self._textFormat = "text"
             return
         
-        if self._column != Outline.text.value:
-            self._textFormat = "text"
-            return
+        #if self._column != Outline.text.value:
+            #self._textFormat = "text"
+            #return
         
         item = index.internalPointer()
         if item.isHTML():

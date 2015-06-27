@@ -21,10 +21,14 @@ class textEditCompleter(textEditView):
         textEditView.__init__(self, parent=parent, index=index, html=html, spellcheck=spellcheck, highlighting=True, dict=dict, autoResize=autoResize)
         
         self.completer = None
+        self.setMouseTracking(True)
+        self.refRects = []
+        
+        self.textChanged.connect(self.getRefRects)
+        self.document().documentLayoutChanged.connect(self.getRefRects)
         
     def setCurrentModelIndex(self, index):
         textEditView.setCurrentModelIndex(self, index)
-        
         if self._index:
             self.setCompleter(completer())
         
@@ -54,16 +58,16 @@ class textEditCompleter(textEditView):
             if text.find(m) <= pos <= text.find(m) + len(m):
                 return m
         
-    def event(self, event):
-        if event.type() == QEvent.ToolTip:
-            cursor = self.cursorForPosition(event.pos())
-            ref = self.refUnderCursor(cursor)
-            if ref:
-                QToolTip.showText(self.mapToGlobal(event.pos()), infoForRef(ref))
-            else:
-                QToolTip.hideText()
-            return True
-        return textEditView.event(self, event)
+    #def event(self, event):
+        #if event.type() == QEvent.ToolTip:
+            #cursor = self.cursorForPosition(event.pos())
+            #ref = self.refUnderCursor(cursor)
+            #if ref:
+                #QToolTip.showText(self.mapToGlobal(event.pos()), infoForRef(ref))
+            #else:
+                #QToolTip.hideText()
+            #return True
+        #return textEditView.event(self, event)
         
     def createStandardContextMenu(self):
         menu = textEditView.createStandardContextMenu(self)
@@ -104,6 +108,53 @@ class textEditCompleter(textEditView):
             self.completer.setGeometry(cr)
             self.completer.popup(self.textUnderCursor(select=True))
         
+    def mouseMoveEvent(self, event):
+        textEditView.mouseMoveEvent(self, event)
         
+        onRef = [r for r in self.refRects if r.contains(event.pos())]
+                
+        if not onRef:
+            qApp.restoreOverrideCursor()
+            QToolTip.hideText()
+            return
         
+        cursor = self.cursorForPosition(event.pos())
+        ref = self.refUnderCursor(cursor)
+        if ref:
+            if not qApp.overrideCursor():
+                qApp.setOverrideCursor(Qt.PointingHandCursor)
+            QToolTip.showText(self.mapToGlobal(event.pos()), infoForRef(ref))
         
+    def mouseReleaseEvent(self, event):
+        textEditView.mouseReleaseEvent(self, event)
+        onRef = [r for r in self.refRects if r.contains(event.pos())]
+        if onRef:
+            cursor = self.cursorForPosition(event.pos())
+            ref = self.refUnderCursor(cursor)
+            if ref:
+                openReference(ref)
+                qApp.restoreOverrideCursor()
+        
+    def resizeEvent(self, event):
+        textEditView.resizeEvent(self, event)
+        self.getRefRects()
+        
+    def getRefRects(self):
+        cursor = self.textCursor()
+        fm = QFontMetrics(self.font())
+        refs = []
+        for txt in re.finditer(r"::(\w):(\d+?)::", self.toPlainText()):
+            cursor.setPosition(txt.start())
+            r = self.cursorRect(cursor)
+            r.setWidth(fm.width(txt.group(0)))
+            r = r.adjusted(-2, -2, 2, 2)
+            refs.append(r)
+        self.refRects = refs
+        
+    def paintEvent(self, event):
+        #event = QPaintEvent(self.viewport().geometry())
+        QTextEdit.paintEvent(self, event)
+        painter = QPainter(self.viewport())
+        
+        for r in self.refRects:
+            painter.drawRect(r)

@@ -62,8 +62,8 @@ class basicHighlighter(QSyntaxHighlighter):
             elif txt.group(1) == "C":
                 fmt.setBackground(QBrush(QColor(Qt.yellow).lighter(170)))
             self.setFormat(txt.start(),
-                           txt.end() - txt.start(),
-                           fmt)
+                        txt.end() - txt.start(),
+                        fmt)
         
         # Spell checking
         # Based on http://john.nachtimwald.com/2009/08/22/qplaintextedit-with-in-line-spell-check/

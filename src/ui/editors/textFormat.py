@@ -45,6 +45,10 @@ class textFormat(QWidget, Ui_textFormat):
             self.setVisible(False)
             return 
         
+        if index.column() != Outline.text.value:
+            self.setVisible(False)
+            return 
+        
         self.setVisible(True)
         item = index.internalPointer()
         
