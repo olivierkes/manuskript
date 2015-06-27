@@ -15,8 +15,10 @@ class completer(QWidget, Ui_completer):
         QWidget.__init__(self, parent)
         self.setupUi(self)
         self.setWindowFlags(Qt.Popup)
-        self.text.textEdited.connect(self.updateListFromData)
+        self.text.textChanged.connect(self.updateListFromData)
         self.text.returnPressed.connect(self.submit)
+        self.listDelegate = listCompleterDelegate(self)
+        self.list.setItemDelegate(self.listDelegate)
         self.list.itemActivated.connect(self.submit)
         
         self.outlineModel = mainWindow().mdlOutline
@@ -27,7 +29,8 @@ class completer(QWidget, Ui_completer):
         self.populate()
         self.hide()
         
-    def popup(self):
+    def popup(self, completion=""):
+        self.text.setText(completion)
         self.text.setFocus(Qt.PopupFocusReason)
         self.show()
         
@@ -44,7 +47,7 @@ class completer(QWidget, Ui_completer):
             
             def addChildren(item):
                 for c in item.children():
-                    d.append((c.title(), c.ID()))
+                    d.append((c.title(), c.ID(), c.path()))
                     addChildren(c)
             
             r = self.outlineModel.rootItem
@@ -58,7 +61,9 @@ class completer(QWidget, Ui_completer):
             for r in range(self.persoModel.rowCount()):
                 name = self.persoModel.item(r, Perso.name.value).text()
                 ID = self.persoModel.item(r, Perso.ID.value).text()
-                d.append((name, ID))
+                imp = self.persoModel.item(r, Perso.importance.value).text()
+                imp = [self.tr("Minor"), self.tr("Secondary"), self.tr("Main")][int(imp)]
+                d.append((name, ID, imp))
             
             self.data[(self.tr("Characters"), "C")] = d
             
@@ -67,11 +72,14 @@ class completer(QWidget, Ui_completer):
     def updateListFromData(self):
         self.list.clear()
         for cat in self.data:
-            self.addCategory(cat[0])
-            for item in [i for i in self.data[cat] if self.text.text().lower() in i[0].lower()]:
-                i = QListWidgetItem(item[0])
-                i.setData(Qt.UserRole, "::{}:{}::".format(cat[1], item[1]))
-                self.list.addItem(i)
+            filtered = [i for i in self.data[cat] if self.text.text().lower() in i[0].lower()]
+            if filtered:
+                self.addCategory(cat[0])
+                for item in filtered:
+                    i = QListWidgetItem(item[0])
+                    i.setData(Qt.UserRole, "::{}:{}::".format(cat[1], item[1]))
+                    i.setData(Qt.UserRole+1, item[2])
+                    self.list.addItem(i)
         
         self.list.setCurrentRow(1)
         self.text.setFocus(Qt.PopupFocusReason)
@@ -86,3 +94,30 @@ class completer(QWidget, Ui_completer):
             self.list.keyPressEvent(event)
         else:
             QWidget.keyPressEvent(self, event)
+            
+            
+class listCompleterDelegate(QStyledItemDelegate):
+    def __init__(self, parent=None):
+        QStyledItemDelegate.__init__(self, parent)
+        
+    def paint(self, painter, option, index):
+        extra = index.data(Qt.UserRole+1)
+        if not extra:
+            return QStyledItemDelegate.paint(self, painter, option, index)
+        
+        else:
+            if option.state & QStyle.State_Selected:
+                painter.fillRect(option.rect, option.palette.color(QPalette.Inactive, QPalette.Highlight))
+ 
+            title = index.data()
+            extra = " - {}".format(extra)
+            painter.drawText(option.rect, Qt.AlignLeft, title)
+            
+            fm = QFontMetrics(option.font)
+            w = fm.width(title)
+            r = QRect(option.rect)
+            r.setLeft(r.left() + w)
+            painter.save()
+            painter.setPen(Qt.gray)
+            painter.drawText(r, Qt.AlignLeft, extra)
+            painter.restore()

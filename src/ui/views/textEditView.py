@@ -390,20 +390,27 @@ class textEditView(QTextEdit):
         if not self.spellcheck:
             QTextEdit.contextMenuEvent(self, event)
             return
-
+        
         popup_menu = self.createStandardContextMenu()
- 
+        popup_menu.exec_(event.globalPos())
+    
+    def createStandardContextMenu(self):
+        popup_menu = QTextEdit.createStandardContextMenu(self)
+        
+        if not self.spellcheck:
+            return popup_menu
+        
         # Select the word under the cursor.
         cursor = self.textCursor()
+        #cursor = self.cursorForPosition(pos)
         cursor.select(QTextCursor.WordUnderCursor)
         self.setTextCursor(cursor)
- 
         # Check if the selected word is misspelled and offer spelling
         # suggestions if it is.
-        if self.textCursor().hasSelection():
-            text = str(self.textCursor().selectedText())
+        if cursor.hasSelection():
+            text = str(cursor.selectedText())
             if not self._dict.check(text):
-                spell_menu = QMenu(self.tr('Spelling Suggestions'))
+                spell_menu = QMenu(self.tr('Spelling Suggestions'), self)
                 for word in self._dict.suggest(text):
                     action = self.SpellAction(word, spell_menu)
                     action.correct.connect(self.correctWord)
@@ -413,9 +420,9 @@ class textEditView(QTextEdit):
                 if len(spell_menu.actions()) != 0:
                     popup_menu.insertSeparator(popup_menu.actions()[0])
                     popup_menu.insertMenu(popup_menu.actions()[0], spell_menu)
- 
-        popup_menu.exec_(event.globalPos())
-    
+
+        return popup_menu
+        
     def correctWord(self, word):
         '''
         Replaces the selected text with word.

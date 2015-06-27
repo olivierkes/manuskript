@@ -51,13 +51,16 @@ class basicHighlighter(QSyntaxHighlighter):
         When subclassing basicHighlighter, you must call highlightBlockAfter
         after your custom highlighting.
         """
-        #print("Highlighting")
+        
+        # References
         for txt in re.finditer(r"::(\w):(\d+?)::", text):
             fmt = self.format(txt.start())
+            fmt.setFontFixedPitch(True)
+            fmt.setFontWeight(QFont.DemiBold)
             if txt.group(1) == "T":
                 fmt.setBackground(QBrush(QColor(Qt.blue).lighter(190)))
             elif txt.group(1) == "C":
-                fmt.setBackground(QBrush(QColor(Qt.yellow).lighter(190)))
+                fmt.setBackground(QBrush(QColor(Qt.yellow).lighter(170)))
             self.setFormat(txt.start(),
                            txt.end() - txt.start(),
                            fmt)
