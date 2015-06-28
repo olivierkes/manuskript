@@ -50,7 +50,7 @@ class textEditCompleter(textEditView):
         
     def refUnderCursor(self, cursor):
         pos = cursor.position()
-        cursor.select(QTextCursor.LineUnderCursor)
+        cursor.select(QTextCursor.BlockUnderCursor)
         text = cursor.selectedText()
         pos -= cursor.selectionStart()
         match = re.findall(r"::\w:\d+?::", text)
