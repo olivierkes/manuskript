@@ -566,6 +566,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btnPlanAddText.clicked.connect(self.treePlanOutline.addText, AUC)
         self.btnRedacRemoveItem.clicked.connect(self.outlineRemoveItems, AUC)
         self.btnPlanRemoveItem.clicked.connect(self.outlineRemoveItems, AUC)
+        
+        self.mainEditor.btnRedacShowOutline.toggled.connect(self.treeRedacWidget.setVisible)
+        self.mainEditor.btnRedacShowOutline.setChecked(True)
+        self.mainEditor.btnRedacShowInfos.toggled.connect(self.tabRedacInfos.setVisible)
+        self.mainEditor.btnRedacShowInfos.setChecked(True)
 
     def makeConnections(self):
 

@@ -17,6 +17,8 @@ class mainEditor(QWidget, Ui_mainEditor):
         self.tab.tabCloseRequested.connect(self.closeTab)
         self.tab.currentChanged.connect(self.tabChanged)
         
+        # Connections --------------------------------------------------------
+        
         self.sldCorkSizeFactor.valueChanged.connect(
              self.setCorkSizeFactor, AUC)
         self.btnRedacFolderCork.toggled.connect(
@@ -30,7 +32,6 @@ class mainEditor(QWidget, Ui_mainEditor):
         
         self.btnRedacFullscreen.clicked.connect(
              self.showFullScreen, AUC)
-        
         
 ###############################################################################
 # TABS

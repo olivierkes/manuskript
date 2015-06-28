@@ -2,7 +2,8 @@
 
 # Form implementation generated from reading ui file 'src/ui/editors/mainEditor_ui.ui'
 #
-# Created by: PyQt5 UI code generator 5.4.1
+# Created: Sun Jun 28 12:58:31 2015
+#      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -28,7 +29,6 @@ class Ui_mainEditor(object):
         icon = QtGui.QIcon.fromTheme("text-x-generic")
         self.btnRedacShowOutline.setIcon(icon)
         self.btnRedacShowOutline.setCheckable(True)
-        self.btnRedacShowOutline.setChecked(True)
         self.btnRedacShowOutline.setObjectName("btnRedacShowOutline")
         self.horizontalLayout_19.addWidget(self.btnRedacShowOutline)
         self.btnRedacFolderText = QtWidgets.QPushButton(mainEditor)
@@ -82,7 +82,6 @@ class Ui_mainEditor(object):
         icon = QtGui.QIcon.fromTheme("edit-find")
         self.btnRedacShowInfos.setIcon(icon)
         self.btnRedacShowInfos.setCheckable(True)
-        self.btnRedacShowInfos.setChecked(True)
         self.btnRedacShowInfos.setObjectName("btnRedacShowInfos")
         self.horizontalLayout_19.addWidget(self.btnRedacShowInfos)
         self.verticalLayout.addLayout(self.horizontalLayout_19)
