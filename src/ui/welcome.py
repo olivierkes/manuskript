@@ -5,8 +5,9 @@ from qt import *
 from functions import *
 from ui.welcome_ui import *
 from models.outlineModel import *
+from models.persosModel import *
 from models.plotModel import *
-from models.persosProxyModel import *
+#from models.persosProxyModel import *
 import settings
 import locale
 import imp
@@ -320,13 +321,14 @@ class welcome(QWidget, Ui_welcome):
         self.mw.mdlFlatData = QStandardItemModel(2, 8, self.mw)
 
         # Persos
-        self.mw.mdlPersos = QStandardItemModel(0, 0, self.mw)
+        #self.mw.mdlPersos = QStandardItemModel(0, 0, self.mw)
+        self.mw.mdlPersos = persosModel(self.mw)
         #self.mdlPersosProxy = None # persosProxyModel() # None
-        self.mw.mdlPersosProxy = persosProxyModel(self.mw)
+        #self.mw.mdlPersosProxy = persosProxyModel(self.mw)
 
-        self.mw.mdlPersosInfos = QStandardItemModel(1, 0, self.mw)
-        self.mw.mdlPersosInfos.insertColumn(0, [QStandardItem("ID")])
-        self.mw.mdlPersosInfos.setHorizontalHeaderLabels(["Description"])
+        #self.mw.mdlPersosInfos = QStandardItemModel(1, 0, self.mw)
+        #self.mw.mdlPersosInfos.insertColumn(0, [QStandardItem("ID")])
+        #self.mw.mdlPersosInfos.setHorizontalHeaderLabels(["Description"])
 
         # Labels
         self.mw.mdlLabels = QStandardItemModel(self.mw)

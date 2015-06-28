@@ -331,10 +331,11 @@ class Ui_MainWindow(object):
         self.groupBox.setObjectName("groupBox")
         self.verticalLayout_8 = QtWidgets.QVBoxLayout(self.groupBox)
         self.verticalLayout_8.setObjectName("verticalLayout_8")
-        self.lstPersos = QtWidgets.QListView(self.groupBox)
+        self.lstPersos = persoTreeView(self.groupBox)
         self.lstPersos.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.lstPersos.setDragEnabled(True)
         self.lstPersos.setObjectName("lstPersos")
+        self.lstPersos.headerItem().setText(0, "1")
         self.verticalLayout_8.addWidget(self.lstPersos)
         self.horizontalLayout_14 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_14.setObjectName("horizontalLayout_14")
@@ -1036,10 +1037,10 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.stack.setCurrentIndex(1)
-        self.tabMain.setCurrentIndex(6)
+        self.tabMain.setCurrentIndex(2)
         self.tabSummary.setCurrentIndex(0)
         self.tabPersos.setCurrentIndex(0)
-        self.tabPlot.setCurrentIndex(1)
+        self.tabPlot.setCurrentIndex(0)
         self.comboBox_2.setCurrentIndex(0)
         self.stkPlotSummary.setCurrentIndex(0)
         self.tabRedacInfos.setCurrentIndex(0)
@@ -1175,12 +1176,13 @@ class Ui_MainWindow(object):
         self.actCloseProject.setText(_translate("MainWindow", "Close project"))
 
 from ui.views.plotTreeView import plotTreeView
-from ui.views.metadataView import metadataView
-from ui.welcome import welcome
-from ui.views.basicItemView import basicItemView
-from ui.views.textEditView import textEditView
 from ui.views.outlineView import outlineView
-from ui.sldImportance import sldImportance
-from ui.views.treeView import treeView
+from ui.views.persoTreeView import persoTreeView
 from ui.views.lineEditView import lineEditView
+from ui.views.textEditView import textEditView
+from ui.sldImportance import sldImportance
 from ui.editors.mainEditor import mainEditor
+from ui.views.metadataView import metadataView
+from ui.views.basicItemView import basicItemView
+from ui.views.treeView import treeView
+from ui.welcome import welcome

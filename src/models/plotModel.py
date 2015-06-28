@@ -4,7 +4,6 @@
 from qt import *
 from enums import *
 from functions import *
-from models.plotsProxyModel import *
 
 class plotModel(QStandardItemModel):
     
@@ -12,8 +11,6 @@ class plotModel(QStandardItemModel):
         QStandardItemModel.__init__(self, 0, 3, parent)
         self.setHorizontalHeaderLabels([i.name for i in Plot])
         self.mw = mainWindow()
-        #self._proxy = plotsProxyModel()
-        #self._proxy.setSourceModel(self)
         
         self.updatePlotPersoButton()
         self.mw.mdlPersos.dataChanged.connect(self.updatePlotPersoButton)
@@ -186,20 +183,3 @@ class plotModel(QStandardItemModel):
             
         mpr.mapped.connect(self.addPlotPerso)
         self.mw.btnAddPlotPerso.setMenu(menu)
-
-####################################################################################################
-#                                   PROXY MODEL (UNUSED)                                           #
-####################################################################################################
-        
-    def viewModel(self):
-        "Returns proxy model if any, else self"
-        if self._proxy:
-            return self._proxy
-        else:
-            return self
-    
-    def toSource(self, index):
-        if self._proxy:
-            return self._proxy.mapToSource(index)
-        else:
-            return index

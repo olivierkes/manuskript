@@ -8,8 +8,9 @@ from ui.helpLabel import helpLabel
 from loadSave import *
 from enums import *
 from models.outlineModel import *
+from models.persosModel import *
 from models.plotModel import *
-from models.persosProxyModel import *
+#from models.persosProxyModel import *
 from functions import *
 from settingsWindow import *
 import settings
@@ -119,118 +120,134 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 # PERSOS
 ###############################################################################
 
-    def createPerso(self):
-        """Creates a perso by adding a row in mdlPersos
-        and a column in mdlPersosInfos with same ID"""
-        p = QStandardItem(self.tr("New character"))
-        pid = self.getPersosID()
-        #self.checkPersosID()  # Attributes a persoID (which is logically pid)
-        self.mdlPersos.appendRow([p, QStandardItem(pid), QStandardItem("0")])
+    #def createPerso(self):
+        #"""Creates a perso by adding a row in mdlPersos
+        #and a column in mdlPersosInfos with same ID"""
+        #p = QStandardItem(self.tr("New character"))
+        #pid = self.getPersosID()
+        ##self.checkPersosID()  # Attributes a persoID (which is logically pid)
+        #self.mdlPersos.appendRow([p, QStandardItem(pid), QStandardItem("0")])
         
-        self.setPersoColor(self.mdlPersos.rowCount() - 1,
-                           randomColor(QColor(Qt.white)))
+        #self.setPersoColor(self.mdlPersos.rowCount() - 1,
+                           #randomColor(QColor(Qt.white)))
         
-        # Add column in persos infos
-        self.mdlPersosInfos.insertColumn(self.mdlPersosInfos.columnCount(),
-                                         [QStandardItem(pid)])
-        self.mdlPersosInfos.setHorizontalHeaderItem(
-            self.mdlPersosInfos.columnCount() - 1,
-            QStandardItem("Valeur"))
+        ## Add column in persos infos
+        #self.mdlPersosInfos.insertColumn(self.mdlPersosInfos.columnCount(),
+                                         #[QStandardItem(pid)])
+        #self.mdlPersosInfos.setHorizontalHeaderItem(
+            #self.mdlPersosInfos.columnCount() - 1,
+            #QStandardItem("Valeur"))
 
-    def getPersosID(self):
-        """Returns an unused perso ID (row 1)."""
-        vals = []
-        for i in range(self.mdlPersos.rowCount()):
-            item = self.mdlPersos.item(i, Perso.ID.value)
-            if item and item.text():
-                vals.append(int(item.text()))
+    #def getPersosID(self):
+        #"""Returns an unused perso ID (row 1)."""
+        #vals = []
+        #for i in range(self.mdlPersos.rowCount()):
+            #item = self.mdlPersos.item(i, Perso.ID.value)
+            #if item and item.text():
+                #vals.append(int(item.text()))
 
-        k = 0
-        while k in vals:
-            k += 1
-        return str(k)
+        #k = 0
+        #while k in vals:
+            #k += 1
+        #return str(k)
 
-    def checkPersosID(self):
-        """Checks whether some persos ID (row 1) are empty.
-        If so, assign an ID"""
-        for i in range(self.mdlPersos.rowCount()):
-            item = self.mdlPersos.item(i, Perso.ID.value)
-            if not item:
-                item = QStandardItem()
-                item.setText(self.getPersosID())
-                self.mdlPersos.setItem(i, Perso.ID.value, item)
+    #def checkPersosID(self):
+        #"""Checks whether some persos ID (row 1) are empty.
+        #If so, assign an ID"""
+        #for i in range(self.mdlPersos.rowCount()):
+            #item = self.mdlPersos.item(i, Perso.ID.value)
+            #if not item:
+                #item = QStandardItem()
+                #item.setText(self.getPersosID())
+                #self.mdlPersos.setItem(i, Perso.ID.value, item)
 
-    def removePerso(self):
-        if self.mdlPersosProxy:
-            i = self.mdlPersosProxy.mapToSource(self.lstPersos.currentIndex())
-        else:
-            i = self.lstPersos.currentIndex()
-        self.mdlPersos.takeRow(i.row())
-        self.mdlPersosInfos.takeColumn(i.row() + 1)
+    #def removePerso(self):
+        #if self.mdlPersosProxy:
+            #i = self.mdlPersosProxy.mapToSource(self.lstPersos.currentIndex())
+        #else:
+            #i = self.lstPersos.currentIndex()
+        #self.mdlPersos.takeRow(i.row())
+        #self.mdlPersosInfos.takeColumn(i.row() + 1)
 
     def changeCurrentPerso(self, trash=None):
-        if self.mdlPersosProxy:
-            idx = self.mdlPersosProxy.mapToSource(self.lstPersos.currentIndex())
-        else:
-            idx = self.lstPersos.currentIndex()
+        
+        index = self.lstPersos.currentPersoIndex()
 
-        self.mprPersos.setCurrentModelIndex(idx)
+        if not index.isValid():
+            self.tabPlot.setEnabled(False)
+            return
 
-        # Button color
-        self.updatePersoColor()
+        self.tabPersos.setEnabled(True)
+        # FIXME
+        #self.txtPlotName.setCurrentModelIndex(index)
+        #self.txtPlotDescription.setCurrentModelIndex(index)
+        #self.txtPlotResult.setCurrentModelIndex(index)
+        #self.sldPlotImportance.setCurrentModelIndex(index)
+        
+        ## Button color
+        self.mdlPersos.updatePersoColor(index)
+        
+        
+        #if self.mdlPersosProxy:
+            #idx = self.mdlPersosProxy.mapToSource(self.lstPersos.currentIndex())
+        #else:
+            #idx = self.lstPersos.currentIndex()
 
-        # detailed infos
-        pid = self.mdlPersos.item(idx.row(), Perso.ID.value).text()
-        for c in range(self.mdlPersosInfos.columnCount()):
-            pid2 = self.mdlPersosInfos.item(0, c).text()
-            self.tblPersoInfos.setColumnHidden(c, c != 0 and pid != pid2)
+        #self.mprPersos.setCurrentModelIndex(idx)
 
-        self.resizePersosInfos()
 
-    def updatePersoColor(self):
-        if self.mdlPersosProxy:
-            idx = self.mdlPersosProxy.mapToSource(self.lstPersos.currentIndex())
-        else:
-            idx = self.lstPersos.currentIndex()
+        ## detailed infos
+        #pid = self.mdlPersos.item(idx.row(), Perso.ID.value).text()
+        #for c in range(self.mdlPersosInfos.columnCount()):
+            #pid2 = self.mdlPersosInfos.item(0, c).text()
+            #self.tblPersoInfos.setColumnHidden(c, c != 0 and pid != pid2)
 
-        icon = self.mdlPersos.item(idx.row()).icon()
-        color = iconColor(icon).name() if icon else ""
-        self.btnPersoColor.setStyleSheet("background:{};".format(color))
+        #self.resizePersosInfos()
 
-    def resizePersosInfos(self):
-        self.tblPersoInfos.resizeColumnToContents(0)
-        w = self.tblPersoInfos.viewport().width()
-        w2 = self.tblPersoInfos.columnWidth(0)
+    #def updatePersoColor(self):
+        #if self.mdlPersosProxy:
+            #idx = self.mdlPersosProxy.mapToSource(self.lstPersos.currentIndex())
+        #else:
+            #idx = self.lstPersos.currentIndex()
 
-        if self.mdlPersosProxy:
-            current = self.mdlPersosProxy.mapToSource(
-                           self.lstPersos.currentIndex()).row() + 1
-        else:
-            current = self.lstPersos.currentIndex().row() + 1
+        #icon = self.mdlPersos.item(idx.row()).icon()
+        #color = iconColor(icon).name() if icon else ""
+        #self.btnPersoColor.setStyleSheet("background:{};".format(color))
 
-        self.tblPersoInfos.setColumnWidth(current, w - w2)
+    #def resizePersosInfos(self):
+        #self.tblPersoInfos.resizeColumnToContents(0)
+        #w = self.tblPersoInfos.viewport().width()
+        #w2 = self.tblPersoInfos.columnWidth(0)
 
-    def chosePersoColor(self):
-        if self.mdlPersosProxy:
-            idx = self.mdlPersosProxy.mapToSource(self.lstPersos.currentIndex())
-        else:
-            idx = self.lstPersos.currentIndex()
+        #if self.mdlPersosProxy:
+            #current = self.mdlPersosProxy.mapToSource(
+                           #self.lstPersos.currentIndex()).row() + 1
+        #else:
+            #current = self.lstPersos.currentIndex().row() + 1
 
-        item = self.mdlPersos.item(idx.row(), Perso.name.value)
-        if item:
-            color = iconColor(item.icon())
-        else:
-            color = Qt.white
-        self.colorDialog = QColorDialog(color, self)
-        color = self.colorDialog.getColor(color)
-        if color.isValid():
-            self.setPersoColor(idx.row(), color)
-            self.updatePersoColor()
+        #self.tblPersoInfos.setColumnWidth(current, w - w2)
 
-    def setPersoColor(self, row, color):
-        px = QPixmap(32, 32)
-        px.fill(color)
-        self.mdlPersos.item(row, Perso.name.value).setIcon(QIcon(px))
+    #def chosePersoColor(self):
+        #if self.mdlPersosProxy:
+            #idx = self.mdlPersosProxy.mapToSource(self.lstPersos.currentIndex())
+        #else:
+            #idx = self.lstPersos.currentIndex()
+
+        #item = self.mdlPersos.item(idx.row(), Perso.name.value)
+        #if item:
+            #color = iconColor(item.icon())
+        #else:
+            #color = Qt.white
+        #self.colorDialog = QColorDialog(color, self)
+        #color = self.colorDialog.getColor(color)
+        #if color.isValid():
+            #self.setPersoColor(idx.row(), color)
+            #self.updatePersoColor()
+
+    #def setPersoColor(self, row, color):
+        #px = QPixmap(32, 32)
+        #px.fill(color)
+        #self.mdlPersos.item(row, Perso.name.value).setIcon(QIcon(px))
 
 ###############################################################################
 # PLOTS
@@ -349,7 +366,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.mdlFlatData.dataChanged.connect(self.startTimerNoChanges)
         self.mdlOutline.dataChanged.connect(self.startTimerNoChanges)
         self.mdlPersos.dataChanged.connect(self.startTimerNoChanges)
-        self.mdlPersosInfos.dataChanged.connect(self.startTimerNoChanges)
+        #self.mdlPersosInfos.dataChanged.connect(self.startTimerNoChanges)
         self.mdlStatus.dataChanged.connect(self.startTimerNoChanges)
         self.mdlLabels.dataChanged.connect(self.startTimerNoChanges)
 
@@ -364,7 +381,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         #FIXME: set Window's name: project name
 
         # Stuff
-        self.checkPersosID()
+        #self.checkPersosID()  # Should'n be necessary any longer
         
         # Show main Window
         self.stack.setCurrentIndex(1)
@@ -447,8 +464,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                       "flatModel.xml"))
         files.append((saveStandardItemModelXML(self.mdlPersos),
                       "perso.xml"))
-        files.append((saveStandardItemModelXML(self.mdlPersosInfos),
-                      "persoInfos.xml"))
+        #files.append((saveStandardItemModelXML(self.mdlPersosInfos),
+                      #"persoInfos.xml"))
         files.append((saveStandardItemModelXML(self.mdlLabels),
                       "labels.xml"))
         files.append((saveStandardItemModelXML(self.mdlStatus),
@@ -470,9 +487,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def loadEmptyDatas(self):
         self.mdlFlatData = QStandardItemModel(self)
-        self.mdlPersos = QStandardItemModel(self)
-        self.mdlPersosProxy = persosProxyModel(self)
-        self.mdlPersosInfos = QStandardItemModel(self)
+        self.mdlPersos = persosModel(self)
+        #self.mdlPersosProxy = persosProxyModel(self)
+        #self.mdlPersosInfos = QStandardItemModel(self)
         self.mdlLabels = QStandardItemModel(self)
         self.mdlStatus = QStandardItemModel(self)
         self.mdlPlots = plotModel(self)
@@ -497,11 +514,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             errors.append("perso.xml")
             
             
-        if "persoInfos.xml" in files:
-            loadStandardItemModelXML(self.mdlPersosInfos,
-                                     files["persoInfos.xml"], fromString=True)
-        else:
-            errors.append("perso.xml")
+        #if "persoInfos.xml" in files:
+            #loadStandardItemModelXML(self.mdlPersosInfos,
+                                     #files["persoInfos.xml"], fromString=True)
+        #else:
+            #errors.append("perso.xml")
             
         if "labels.xml" in files:
             loadStandardItemModelXML(self.mdlLabels,
@@ -550,9 +567,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def makeUIConnections(self):
         "Connections that have to be made once only, event when new project is loaded."
-        self.btnAddPerso.clicked.connect(self.createPerso, AUC)
-        self.btnRmPerso.clicked.connect(self.removePerso, AUC)
-        self.btnPersoColor.clicked.connect(self.chosePersoColor, AUC)
+        self.lstPersos.currentItemChanged.connect(self.changeCurrentPerso, AUC)
         
         self.txtPlotFilter.textChanged.connect(self.lstPlots.setFilter, AUC)
         self.lstPlots.currentItemChanged.connect(self.changeCurrentPlot, AUC)
@@ -609,17 +624,22 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             widget.setCurrentModelIndex(self.mdlFlatData.index(0, col))
 
         # Persos
-        if self.mdlPersosProxy:
-            self.mdlPersosProxy.setSourceModel(self.mdlPersos)
-            self.lstPersos.setModel(self.mdlPersosProxy)
-        else:
-            self.lstPersos.setModel(self.mdlPersos)
+        self.lstPersos.setPersosModel(self.mdlPersos)
+        self.btnAddPerso.clicked.connect(self.mdlPersos.addPerso, AUC)
+        self.btnRmPerso.clicked.connect(self.mdlPersos.removePerso, AUC)
+        self.btnPersoColor.clicked.connect(self.mdlPersos.chosePersoColor, AUC)
+        #if self.mdlPersosProxy:
+            #self.mdlPersosProxy.setSourceModel(self.mdlPersos)
+            #self.lstPersos.setModel(self.mdlPersosProxy)
+        #else:
+            #self.lstPersos.setModel(self.mdlPersos)
 
-        self.tblPersoInfos.setModel(self.mdlPersosInfos)
-        self.tblPersoInfos.setRowHidden(0, True)
-
-        self.btnPersoAddInfo.clicked.connect(lambda:
-                 self.mdlPersosInfos.insertRow(self.mdlPersosInfos.rowCount()), AUC)
+        #self.tblPersoInfos.setModel(self.mdlPersosInfos)
+        #self.tblPersoInfos.setRowHidden(0, True)
+        
+        #FIXME
+        #self.btnPersoAddInfo.clicked.connect(lambda:
+                 #self.mdlPersosInfos.insertRow(self.mdlPersosInfos.rowCount()), AUC)
         self.mprPersos = QDataWidgetMapper()
         self.mprPersos.setModel(self.mdlPersos)
 
@@ -643,8 +663,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.mprPersos.setCurrentIndex(0)
         self.lstPersos.selectionModel().currentChanged.connect(
-                                                       self.changeCurrentPerso, AUC)
-        self.tabPersos.currentChanged.connect(self.resizePersosInfos)
+                                        self.mdlPersos.updatePersoColor, AUC)
+        #self.tabPersos.currentChanged.connect(self.resizePersosInfos)
 
         # Plots
         self.lstPlots.setPlotModel(self.mdlPlots)
@@ -712,7 +732,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.mdlFlatData.setVerticalHeaderLabels(["Infos générales", "Summary"])
         self.tblDebugFlatData.setModel(self.mdlFlatData)
         self.tblDebugPersos.setModel(self.mdlPersos)
-        self.tblDebugPersosInfos.setModel(self.mdlPersosInfos)
+        #self.tblDebugPersosInfos.setModel(self.mdlPersosInfos)
         self.tblDebugPlots.setModel(self.mdlPlots)
         self.tblDebugPlotsPersos.setModel(self.mdlPlots)
         self.tblDebugSubPlots.setModel(self.mdlPlots)

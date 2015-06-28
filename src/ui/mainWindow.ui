@@ -109,7 +109,7 @@
         <item>
          <widget class="QTabWidget" name="tabMain">
           <property name="currentIndex">
-           <number>6</number>
+           <number>2</number>
           </property>
           <property name="documentMode">
            <bool>true</bool>
@@ -663,13 +663,18 @@
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_8">
                 <item>
-                 <widget class="QListView" name="lstPersos">
+                 <widget class="persoTreeView" name="lstPersos">
                   <property name="horizontalScrollBarPolicy">
                    <enum>Qt::ScrollBarAlwaysOff</enum>
                   </property>
                   <property name="dragEnabled">
                    <bool>true</bool>
                   </property>
+                  <column>
+                   <property name="text">
+                    <string notr="true">1</string>
+                   </property>
+                  </column>
                  </widget>
                 </item>
                 <item>
@@ -1075,7 +1080,7 @@
               </widget>
               <widget class="QTabWidget" name="tabPlot">
                <property name="currentIndex">
-                <number>1</number>
+                <number>0</number>
                </property>
                <property name="documentMode">
                 <bool>true</bool>
@@ -2045,6 +2050,11 @@
    <header>ui.editors.mainEditor.h</header>
    <container>1</container>
   </customwidget>
+  <customwidget>
+   <class>persoTreeView</class>
+   <extends>QTreeWidget</extends>
+   <header>ui.views.persoTreeView.h</header>
+  </customwidget>
  </customwidgets>
  <resources/>
  <connections>
@@ -2145,7 +2155,4 @@
    </hints>
   </connection>
  </connections>
- <buttongroups>
-  <buttongroup name="buttonGroup"/>
- </buttongroups>
 </ui>
