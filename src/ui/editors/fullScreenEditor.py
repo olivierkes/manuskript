@@ -74,6 +74,7 @@ class fullScreenEditor(QWidget):
             for t in lst:
                 themeIni = os.path.join(p, t)
                 self.lstThemes.addItem(os.path.splitext(t)[0])
+        self.lstThemes.setCurrentText(settings.fullScreenTheme)
         self.lstThemes.currentTextChanged.connect(self.setTheme)
         self.lstThemes.setMaximumSize(QSize(300, QFontMetrics(qApp.font()).height()))
         self.bottomPanel.layout().addWidget(QLabel(self.tr("Theme:"), self))
