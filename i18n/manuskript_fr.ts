@@ -49,7 +49,7 @@
         <translation>Informations sur l&apos;auteur</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="728"/>
+        <location filename="../src/ui/mainWindow.ui" line="733"/>
         <source>Name</source>
         <translation>Nom</translation>
     </message>
@@ -59,7 +59,7 @@
         <translation>Email</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1294"/>
+        <location filename="../src/ui/mainWindow.ui" line="1302"/>
         <source>Summary</source>
         <translation>Résumé</translation>
     </message>
@@ -74,12 +74,12 @@
         <translation>Résumé en une phrase</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="977"/>
+        <location filename="../src/ui/mainWindow.ui" line="985"/>
         <source>Next</source>
         <translation>Suivant</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1307"/>
+        <location filename="../src/ui/mainWindow.ui" line="1315"/>
         <source>One paragraph</source>
         <translation>Un paragraphe</translation>
     </message>
@@ -89,7 +89,7 @@
         <translation>Résumé en un paragraphe</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1312"/>
+        <location filename="../src/ui/mainWindow.ui" line="1320"/>
         <source>One page</source>
         <translation>Une page</translation>
     </message>
@@ -99,7 +99,7 @@
         <translation>Développez chaque phrase du paragraphe précédent en un paragraphe complet</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1317"/>
+        <location filename="../src/ui/mainWindow.ui" line="1325"/>
         <source>Full</source>
         <translation>Complet</translation>
     </message>
@@ -124,322 +124,307 @@
         <translation>Noms</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1792"/>
+        <location filename="../src/ui/mainWindow.ui" line="1631"/>
         <source>Filter</source>
         <translation>Filtre</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1085"/>
+        <location filename="../src/ui/mainWindow.ui" line="1093"/>
         <source>Basic infos</source>
         <translation>Informations générales</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1104"/>
+        <location filename="../src/ui/mainWindow.ui" line="1112"/>
         <source>Importance</source>
         <translation>Importance</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="742"/>
+        <location filename="../src/ui/mainWindow.ui" line="747"/>
         <source>Motivation</source>
         <translation>Motivation</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="752"/>
+        <location filename="../src/ui/mainWindow.ui" line="754"/>
         <source>Goal</source>
         <translation>Goal</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="762"/>
+        <location filename="../src/ui/mainWindow.ui" line="761"/>
         <source>Conflict</source>
         <translation>Conflit</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="772"/>
+        <location filename="../src/ui/mainWindow.ui" line="768"/>
         <source>Epiphany</source>
         <translation>Épiphanie</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="782"/>
+        <location filename="../src/ui/mainWindow.ui" line="775"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One sentance&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Résumé&lt;br/&gt;en une phrase&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="792"/>
+        <location filename="../src/ui/mainWindow.ui" line="782"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One paragraph&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Résumé&lt;br/&gt;en un paragraphe&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="893"/>
+        <location filename="../src/ui/mainWindow.ui" line="898"/>
         <source>Notes</source>
         <translation>Notes</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="903"/>
+        <location filename="../src/ui/mainWindow.ui" line="908"/>
         <source>Detailed infos</source>
         <translation>Informations détaillées</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1882"/>
+        <location filename="../src/ui/mainWindow.ui" line="1710"/>
         <source>Plots</source>
         <translation>Intrigues</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1094"/>
+        <location filename="../src/ui/mainWindow.ui" line="1102"/>
         <source>Plot</source>
         <translation>Intrigue</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1111"/>
+        <location filename="../src/ui/mainWindow.ui" line="1119"/>
         <source>Character(s)</source>
         <translation>Personnage(s)</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1118"/>
+        <location filename="../src/ui/mainWindow.ui" line="1126"/>
         <source>Description</source>
         <translation>Description</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1125"/>
+        <location filename="../src/ui/mainWindow.ui" line="1133"/>
         <source>Result</source>
         <translation>Résultat</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1208"/>
+        <location filename="../src/ui/mainWindow.ui" line="1216"/>
         <source>Resolution steps</source>
         <translation>Étapes de résolution</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1358"/>
+        <location filename="../src/ui/mainWindow.ui" line="1366"/>
         <source>Context</source>
         <translation>Contexte</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="973"/>
+        <location filename="../src/mainWindow.py" line="1014"/>
         <source>Outline</source>
         <translation>Plan</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1501"/>
+        <location filename="../src/ui/mainWindow.ui" line="1509"/>
         <source>Redaction</source>
         <translation>Rédaction</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1718"/>
-        <source>F11</source>
-        <translation>F11</translation>
-    </message>
-    <message>
-        <location filename="../src/ui/mainWindow.ui" line="1981"/>
+        <location filename="../src/ui/mainWindow.ui" line="1809"/>
         <source>Tools</source>
         <translation>Outils</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1780"/>
+        <location filename="../src/ui/mainWindow.ui" line="1619"/>
         <source>Cheat sheet</source>
         <translation>Aide-mémoire</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1800"/>
+        <location filename="../src/ui/mainWindow.ui" line="1639"/>
         <source>Albert - perso</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1805"/>
+        <location filename="../src/ui/mainWindow.ui" line="1644"/>
         <source>Jean - perso</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1810"/>
+        <location filename="../src/ui/mainWindow.ui" line="1649"/>
         <source>Crapoquak - animal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1815"/>
+        <location filename="../src/ui/mainWindow.ui" line="1654"/>
         <source>La revenche du capitaine - intrigue</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1835"/>
+        <location filename="../src/ui/mainWindow.ui" line="1674"/>
         <source>Debug</source>
         <translation>Debug</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1848"/>
+        <location filename="../src/ui/mainWindow.ui" line="1687"/>
         <source>FlatData</source>
         <translation>FlatData</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1858"/>
+        <location filename="../src/ui/mainWindow.ui" line="1697"/>
         <source>Persos</source>
         <translation>Persos</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1868"/>
-        <source>Perso Infos</source>
-        <translation>Perso Infos</translation>
-    </message>
-    <message>
-        <location filename="../src/ui/mainWindow.ui" line="1950"/>
+        <location filename="../src/ui/mainWindow.ui" line="1778"/>
         <source>File</source>
         <translation>Fichier</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1975"/>
+        <location filename="../src/ui/mainWindow.ui" line="1803"/>
         <source>Help</source>
         <translation>Aide</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2012"/>
+        <location filename="../src/ui/mainWindow.ui" line="1840"/>
         <source>Open</source>
         <translation>Ouvrir</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2015"/>
+        <location filename="../src/ui/mainWindow.ui" line="1843"/>
         <source>Ctrl+O</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1954"/>
+        <location filename="../src/ui/mainWindow.ui" line="1782"/>
         <source>Recents</source>
         <translation>Récents</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2024"/>
+        <location filename="../src/ui/mainWindow.ui" line="1852"/>
         <source>Save</source>
         <translation>Enregistrer</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2027"/>
+        <location filename="../src/ui/mainWindow.ui" line="1855"/>
         <source>Ctrl+S</source>
         <translation>Ctrl+S</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2036"/>
+        <location filename="../src/ui/mainWindow.ui" line="1864"/>
         <source>Save as...</source>
         <translation>Enregistrer sous...</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2039"/>
+        <location filename="../src/ui/mainWindow.ui" line="1867"/>
         <source>Ctrl+Shift+S</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2048"/>
+        <location filename="../src/ui/mainWindow.ui" line="1876"/>
         <source>Quit</source>
         <translation>Quitter</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2051"/>
+        <location filename="../src/ui/mainWindow.ui" line="1879"/>
         <source>Ctrl+Q</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2066"/>
+        <location filename="../src/ui/mainWindow.ui" line="1894"/>
         <source>Show help texts</source>
         <translation>Montrer les bulles d&apos;aides</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2069"/>
+        <location filename="../src/ui/mainWindow.ui" line="1897"/>
         <source>Ctrl+Shift+B</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2084"/>
+        <location filename="../src/ui/mainWindow.ui" line="1912"/>
         <source>Spellcheck</source>
         <translation>Correcteur orthographique</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2151"/>
+        <location filename="../src/ui/mainWindow.ui" line="1979"/>
         <source>F8</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1967"/>
+        <location filename="../src/ui/mainWindow.ui" line="1795"/>
         <source>Mode</source>
         <translation>Mode</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="142"/>
-        <source>New character</source>
-        <translation>Nouveau perso</translation>
-    </message>
-    <message>
-        <location filename="../src/mainWindow.py" line="802"/>
+        <location filename="../src/mainWindow.py" line="847"/>
         <source> (~{} pages)</source>
         <translation> (~{} pages)</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="828"/>
+        <location filename="../src/mainWindow.py" line="873"/>
         <source>Enter infos about your book, and yourself.</source>
         <translation>Entrez toutes les informations relatives au livre, ainsi qu&apos;à vous.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="834"/>
+        <location filename="../src/mainWindow.py" line="879"/>
         <source>Take time to think about a one sentance (~50 words) summary of your book. Then expand it to a paragraph, then to a page, then to a full summary.</source>
         <translation>Prenez le temps de réfléchir à un résumé de votre livre, en une phrase (~50 mots). Puis augmentez cette phrase en un paragraphe, puis en une page, puis en un résumé complet.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="837"/>
+        <location filename="../src/mainWindow.py" line="882"/>
         <source>Create your characters.</source>
         <translation>Créez ici vos personnage.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="840"/>
+        <location filename="../src/mainWindow.py" line="885"/>
         <source>Develop plots.</source>
         <translation>Développez vos intrigues.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="843"/>
+        <location filename="../src/mainWindow.py" line="888"/>
         <source>Create the outline of your masterpiece.</source>
         <translation>Créez le plan de votre chef-d&apos;œuvre.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="846"/>
+        <location filename="../src/mainWindow.py" line="891"/>
         <source>Write.</source>
         <translation>Écrivez.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="849"/>
+        <location filename="../src/mainWindow.py" line="894"/>
         <source>Debug infos. Sometimes useful.</source>
         <translation>Des infos pour débugger des fois pendant qu&apos;on code c&apos;est utile.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="863"/>
+        <location filename="../src/mainWindow.py" line="908"/>
         <source>Dictionary</source>
         <translation>Dictionnaire</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="876"/>
+        <location filename="../src/mainWindow.py" line="921"/>
         <source>Install PyEnchant to use spellcheck</source>
         <translation>Installez PyEnchant pour profiter du correcteur orthographique</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="806"/>
+        <location filename="../src/mainWindow.py" line="851"/>
         <source>Words: {}{}</source>
         <translation>Mots: {}{}</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="984"/>
+        <location filename="../src/mainWindow.py" line="1025"/>
         <source>Text</source>
         <translation>Texte</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1916"/>
+        <location filename="../src/ui/mainWindow.ui" line="1744"/>
         <source>Labels</source>
         <translation>Labels</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1987"/>
+        <location filename="../src/ui/mainWindow.ui" line="1815"/>
         <source>Edit</source>
         <translation>Édition</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2092"/>
+        <location filename="../src/ui/mainWindow.ui" line="1920"/>
         <source>Labels...</source>
         <translation>Labels...</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2097"/>
+        <location filename="../src/ui/mainWindow.ui" line="1925"/>
         <source>Status...</source>
         <translation>Status...</translation>
     </message>
@@ -449,7 +434,7 @@
         <translation>Situation:</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1224"/>
+        <location filename="../src/ui/mainWindow.ui" line="1232"/>
         <source>Summary:</source>
         <translation>Résumé:</translation>
     </message>
@@ -459,147 +444,147 @@
         <translation>Et si...?</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="972"/>
+        <location filename="../src/mainWindow.py" line="1013"/>
         <source>Index cards</source>
         <translation>Cartes</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1755"/>
+        <location filename="../src/ui/mainWindow.ui" line="1594"/>
         <source>Metadata</source>
         <translation>Métadonnées</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1995"/>
+        <location filename="../src/ui/mainWindow.ui" line="1823"/>
         <source>View</source>
         <translation>Vue</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2087"/>
+        <location filename="../src/ui/mainWindow.ui" line="1915"/>
         <source>F9</source>
         <translation>F9</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="971"/>
+        <location filename="../src/mainWindow.py" line="1012"/>
         <source>Tree</source>
         <translation>Arbre</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2113"/>
+        <location filename="../src/ui/mainWindow.ui" line="1941"/>
         <source>Normal</source>
         <translation>Normal</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2121"/>
+        <location filename="../src/ui/mainWindow.ui" line="1949"/>
         <source>Simple</source>
         <translation>Simple</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2129"/>
+        <location filename="../src/ui/mainWindow.ui" line="1957"/>
         <source>Fractal</source>
         <translation>Fractal</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2148"/>
+        <location filename="../src/ui/mainWindow.ui" line="1976"/>
         <source>Settings</source>
         <translation>Réglages</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="484"/>
+        <location filename="../src/mainWindow.py" line="508"/>
         <source>Project {} saved.</source>
         <translation>Le projet {} a été enregistré.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="555"/>
+        <location filename="../src/mainWindow.py" line="579"/>
         <source>Project {} loaded.</source>
         <translation>Le projet {} a été chargé.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="831"/>
+        <location filename="../src/mainWindow.py" line="876"/>
         <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous evil wizard could wasn&apos;t abled to kill a baby?&apos; (Harry Potter)</source>
         <translation>La situation de base, sous la forme d&apos;une question: &quot;Et si...?&quot; Par exemple: &quot;Et si le plus dangereux magiciens mauvais n&apos;était pas capable de tuer un bébé?&quot; (Harry Potter)</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="963"/>
+        <location filename="../src/mainWindow.py" line="1004"/>
         <source>Nothing</source>
         <translation>Rien</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="964"/>
+        <location filename="../src/mainWindow.py" line="1005"/>
         <source>POV</source>
         <translation>POV</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="965"/>
+        <location filename="../src/mainWindow.py" line="1006"/>
         <source>Label</source>
         <translation>Label</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="966"/>
+        <location filename="../src/mainWindow.py" line="1007"/>
         <source>Progress</source>
         <translation>Progrès</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="967"/>
+        <location filename="../src/mainWindow.py" line="1008"/>
         <source>Compile</source>
         <translation>Compilation</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="990"/>
+        <location filename="../src/mainWindow.py" line="1031"/>
         <source>Icon color</source>
         <translation>Couleur de l&apos;icone</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="991"/>
+        <location filename="../src/mainWindow.py" line="1032"/>
         <source>Text color</source>
         <translation>Couleur du texte</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="992"/>
+        <location filename="../src/mainWindow.py" line="1033"/>
         <source>Background color</source>
         <translation>Couleur de l&apos;arrière-plan</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="983"/>
+        <location filename="../src/mainWindow.py" line="1024"/>
         <source>Icon</source>
         <translation>Icone</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="985"/>
+        <location filename="../src/mainWindow.py" line="1026"/>
         <source>Background</source>
         <translation>Arrière-plan</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="986"/>
+        <location filename="../src/mainWindow.py" line="1027"/>
         <source>Border</source>
         <translation>Bordure</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="987"/>
+        <location filename="../src/mainWindow.py" line="1028"/>
         <source>Corner</source>
         <translation>Coin</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2161"/>
+        <location filename="../src/ui/mainWindow.ui" line="1989"/>
         <source>Close project</source>
         <translation>Fermer le projet</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="317"/>
+        <location filename="../src/mainWindow.py" line="344"/>
         <source>The file {} does not exist. Try again.</source>
         <translation>Le fichier {} n&apos;existe pas. Essayez encore.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="558"/>
+        <location filename="../src/mainWindow.py" line="582"/>
         <source>Project {} loaded with some errors:</source>
         <translation>Le projet {} a été chargé, avec des erreurs:</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="560"/>
+        <location filename="../src/mainWindow.py" line="584"/>
         <source> * {} wasn&apos;t found in project file.</source>
         <translation>* {} n&apos;a pas été trouvé dans le fichier du projet.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="561"/>
+        <location filename="../src/mainWindow.py" line="585"/>
         <source>Project {} loaded with some errors.</source>
         <translation>Le projet {} a été chargé avec des erreurs.</translation>
     </message>
@@ -1071,7 +1056,7 @@ des lignes:</translation>
 <context>
     <name>SpellAction</name>
     <message>
-        <location filename="../src/ui/views/textEditView.py" line="404"/>
+        <location filename="../src/ui/views/textEditView.py" line="419"/>
         <source>Spelling Suggestions</source>
         <translation>Suggestions</translation>
     </message>
@@ -1133,7 +1118,7 @@ des lignes:</translation>
 <context>
     <name>cmbOutlinePersoChoser</name>
     <message>
-        <location filename="../src/ui/views/cmbOutlinePersoChoser.py" line="138"/>
+        <location filename="../src/ui/views/cmbOutlinePersoChoser.py" line="130"/>
         <source>Various</source>
         <translation>Différentes valeurs</translation>
     </message>
@@ -1167,6 +1152,34 @@ des lignes:</translation>
     </message>
 </context>
 <context>
+    <name>completer</name>
+    <message>
+        <location filename="../src/ui/editors/completer.py" line="64"/>
+        <source>Texts</source>
+        <translation>Textes</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/editors/completer.py" line="73"/>
+        <source>Minor</source>
+        <translation>Mineur</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/editors/completer.py" line="73"/>
+        <source>Secondary</source>
+        <translation>Secondaire</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/editors/completer.py" line="73"/>
+        <source>Main</source>
+        <translation>Principal</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/editors/completer.py" line="76"/>
+        <source>Characters</source>
+        <translation>Personnages</translation>
+    </message>
+</context>
+<context>
     <name>corkDelegate</name>
     <message>
         <location filename="../src/ui/views/corkDelegate.py" line="42"/>
@@ -1177,19 +1190,6 @@ des lignes:</translation>
         <location filename="../src/ui/views/corkDelegate.py" line="68"/>
         <source>Full summary</source>
         <translation>Résumé complet</translation>
-    </message>
-</context>
-<context>
-    <name>editorWidget</name>
-    <message>
-        <location filename="../src/ui/editors/editorWidget.py" line="241"/>
-        <source>{} words / {}</source>
-        <translation>{} mots / {}</translation>
-    </message>
-    <message>
-        <location filename="../src/ui/editors/editorWidget.py" line="244"/>
-        <source>{} words</source>
-        <translation>{} mots</translation>
     </message>
 </context>
 <context>
@@ -1232,6 +1232,24 @@ des lignes:</translation>
         <location filename="../src/ui/views/lineEditView.py" line="110"/>
         <source>Various</source>
         <translation>Différentes valeurs</translation>
+    </message>
+</context>
+<context>
+    <name>mainEditor</name>
+    <message>
+        <location filename="../src/ui/editors/mainEditor.py" line="102"/>
+        <source>Root</source>
+        <translation>Racine</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/editors/mainEditor.py" line="172"/>
+        <source>{} words / {}</source>
+        <translation>{} mots / {}</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/editors/mainEditor.py" line="177"/>
+        <source>{} words</source>
+        <translation>{} mots</translation>
     </message>
 </context>
 <context>
@@ -1290,12 +1308,12 @@ des lignes:</translation>
         <translation>Choisir le POV</translation>
     </message>
     <message>
-        <location filename="../src/ui/views/outlineBasics.py" line="98"/>
+        <location filename="../src/ui/views/outlineBasics.py" line="94"/>
         <source>Set Status</source>
         <translation>Choisir le status</translation>
     </message>
     <message>
-        <location filename="../src/ui/views/outlineBasics.py" line="114"/>
+        <location filename="../src/ui/views/outlineBasics.py" line="110"/>
         <source>Set Label</source>
         <translation>Choisir le label</translation>
     </message>
@@ -1310,7 +1328,7 @@ des lignes:</translation>
         <translation>Aucun</translation>
     </message>
     <message>
-        <location filename="../src/ui/views/outlineBasics.py" line="160"/>
+        <location filename="../src/ui/views/outlineBasics.py" line="156"/>
         <source>New</source>
         <translation>Nouveau</translation>
     </message>
@@ -1338,37 +1356,37 @@ des lignes:</translation>
 <context>
     <name>outlineModel</name>
     <message>
-        <location filename="../src/models/outlineModel.py" line="111"/>
+        <location filename="../src/models/outlineModel.py" line="131"/>
         <source>Title</source>
         <translation>Titre</translation>
     </message>
     <message>
-        <location filename="../src/models/outlineModel.py" line="113"/>
+        <location filename="../src/models/outlineModel.py" line="133"/>
         <source>POV</source>
         <translation>POV</translation>
     </message>
     <message>
-        <location filename="../src/models/outlineModel.py" line="115"/>
+        <location filename="../src/models/outlineModel.py" line="135"/>
         <source>Label</source>
         <translation>Label</translation>
     </message>
     <message>
-        <location filename="../src/models/outlineModel.py" line="117"/>
+        <location filename="../src/models/outlineModel.py" line="137"/>
         <source>Status</source>
         <translation>Status</translation>
     </message>
     <message>
-        <location filename="../src/models/outlineModel.py" line="119"/>
+        <location filename="../src/models/outlineModel.py" line="139"/>
         <source>Compile</source>
         <translation>Compilation</translation>
     </message>
     <message>
-        <location filename="../src/models/outlineModel.py" line="121"/>
+        <location filename="../src/models/outlineModel.py" line="141"/>
         <source>Word count</source>
         <translation>Nombre de mots</translation>
     </message>
     <message>
-        <location filename="../src/models/outlineModel.py" line="123"/>
+        <location filename="../src/models/outlineModel.py" line="143"/>
         <source>Goal</source>
         <translation>Goal</translation>
     </message>
@@ -1381,19 +1399,37 @@ des lignes:</translation>
         <translation>Aucun</translation>
     </message>
     <message>
-        <location filename="../src/ui/views/outlineDelegates.py" line="131"/>
+        <location filename="../src/ui/views/outlineDelegates.py" line="128"/>
         <source>Main</source>
         <translation>Principal</translation>
     </message>
     <message>
-        <location filename="../src/ui/views/outlineDelegates.py" line="131"/>
+        <location filename="../src/ui/views/outlineDelegates.py" line="128"/>
         <source>Secondary</source>
         <translation>Secondaire</translation>
     </message>
     <message>
-        <location filename="../src/ui/views/outlineDelegates.py" line="131"/>
+        <location filename="../src/ui/views/outlineDelegates.py" line="128"/>
         <source>Minor</source>
         <translation>Mineur</translation>
+    </message>
+</context>
+<context>
+    <name>persosModel</name>
+    <message>
+        <location filename="../src/models/persosModel.py" line="84"/>
+        <source>New character</source>
+        <translation>Nouveau personnage</translation>
+    </message>
+    <message>
+        <location filename="../src/models/persosModel.py" line="141"/>
+        <source>Name</source>
+        <translation>Nom</translation>
+    </message>
+    <message>
+        <location filename="../src/models/persosModel.py" line="143"/>
+        <source>Value</source>
+        <translation>Valeur</translation>
     </message>
 </context>
 <context>
@@ -1417,27 +1453,27 @@ des lignes:</translation>
 <context>
     <name>plotModel</name>
     <message>
-        <location filename="../src/models/plotModel.py" line="73"/>
+        <location filename="../src/models/plotModel.py" line="69"/>
         <source>New plot</source>
         <translation>Nouvelle intrigue</translation>
     </message>
     <message>
-        <location filename="../src/models/plotModel.py" line="111"/>
+        <location filename="../src/models/plotModel.py" line="107"/>
         <source>New subplot</source>
         <translation>Nouvelle sous-intrigue</translation>
     </message>
     <message>
-        <location filename="../src/models/plotModel.py" line="167"/>
+        <location filename="../src/models/plotModel.py" line="163"/>
         <source>Main</source>
         <translation>Principale</translation>
     </message>
     <message>
-        <location filename="../src/models/plotModel.py" line="167"/>
+        <location filename="../src/models/plotModel.py" line="163"/>
         <source>Secondary</source>
         <translation>Secondaire</translation>
     </message>
     <message>
-        <location filename="../src/models/plotModel.py" line="167"/>
+        <location filename="../src/models/plotModel.py" line="163"/>
         <source>Minor</source>
         <translation>Mineure</translation>
     </message>
@@ -1501,6 +1537,24 @@ des lignes:</translation>
         <location filename="../src/ui/views/propertiesView_ui.ui" line="154"/>
         <source>Text type:</source>
         <translation>Format:</translation>
+    </message>
+</context>
+<context>
+    <name>references</name>
+    <message>
+        <location filename="../src/models/references.py" line="71"/>
+        <source>Unknown reference: {}.</source>
+        <translation>Référence inconnue: {}.</translation>
+    </message>
+    <message>
+        <location filename="../src/models/references.py" line="60"/>
+        <source>Text: &lt;b&gt;{}&lt;/b&gt;</source>
+        <translation>Texte: &lt;b&gt;{}&lt;/b&gt;</translation>
+    </message>
+    <message>
+        <location filename="../src/models/references.py" line="68"/>
+        <source>Character: &lt;b&gt;{}&lt;/b&gt;</source>
+        <translation>Personnage: &lt;b&gt;{}&lt;/b&gt;</translation>
     </message>
 </context>
 <context>
@@ -1572,7 +1626,7 @@ des lignes:</translation>
 <context>
     <name>textEditView</name>
     <message>
-        <location filename="../src/ui/views/textEditView.py" line="291"/>
+        <location filename="../src/ui/views/textEditView.py" line="292"/>
         <source>Various</source>
         <translation>Différentes valeurs</translation>
     </message>
@@ -1623,24 +1677,39 @@ des lignes:</translation>
 <context>
     <name>treeView</name>
     <message>
-        <location filename="../src/ui/views/treeView.py" line="40"/>
+        <location filename="../src/ui/views/treeView.py" line="63"/>
         <source>Expand {}</source>
         <translation>Développer {}</translation>
     </message>
     <message>
-        <location filename="../src/ui/views/treeView.py" line="44"/>
+        <location filename="../src/ui/views/treeView.py" line="67"/>
         <source>Collapse {}</source>
         <translation>Fermer {}</translation>
     </message>
     <message>
-        <location filename="../src/ui/views/treeView.py" line="50"/>
+        <location filename="../src/ui/views/treeView.py" line="74"/>
         <source>Expand All</source>
         <translation>Tout développer</translation>
     </message>
     <message>
-        <location filename="../src/ui/views/treeView.py" line="54"/>
+        <location filename="../src/ui/views/treeView.py" line="78"/>
         <source>Collapse All</source>
         <translation>Tout fermer</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/views/treeView.py" line="45"/>
+        <source>Root</source>
+        <translation>Racine</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/views/treeView.py" line="48"/>
+        <source>Open {} items in new tabs</source>
+        <translation>Ouvrir {} éléments dans des nouveaux onglets</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/views/treeView.py" line="51"/>
+        <source>Open {} in a new tab</source>
+        <translation>Ouvrir {} dans un nouvel onglet</translation>
     </message>
 </context>
 <context>
@@ -1656,37 +1725,37 @@ des lignes:</translation>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/ui/welcome.py" line="299"/>
+        <location filename="../src/ui/welcome.py" line="300"/>
         <source>Templates</source>
         <translation>Modèles</translation>
     </message>
     <message>
-        <location filename="../src/ui/welcome.py" line="155"/>
+        <location filename="../src/ui/welcome.py" line="156"/>
         <source>Empty</source>
         <translation>Vide</translation>
     </message>
     <message>
-        <location filename="../src/ui/welcome.py" line="156"/>
+        <location filename="../src/ui/welcome.py" line="157"/>
         <source>Novel</source>
         <translation>Roman</translation>
     </message>
     <message>
-        <location filename="../src/ui/welcome.py" line="161"/>
+        <location filename="../src/ui/welcome.py" line="162"/>
         <source>Novella</source>
         <translation>Nouvelle</translation>
     </message>
     <message>
-        <location filename="../src/ui/welcome.py" line="166"/>
+        <location filename="../src/ui/welcome.py" line="167"/>
         <source>Short Story</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/welcome.py" line="177"/>
+        <location filename="../src/ui/welcome.py" line="178"/>
         <source>Research paper</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/welcome.py" line="305"/>
+        <location filename="../src/ui/welcome.py" line="306"/>
         <source>Demo projects</source>
         <translation>Projets de démonstration</translation>
     </message>
@@ -1721,129 +1790,129 @@ des lignes:</translation>
         <translation>Créer</translation>
     </message>
     <message>
-        <location filename="../src/ui/welcome.py" line="116"/>
+        <location filename="../src/ui/welcome.py" line="117"/>
         <source>Open project</source>
         <translation>Ouvrir le projet</translation>
     </message>
     <message>
-        <location filename="../src/ui/welcome.py" line="139"/>
+        <location filename="../src/ui/welcome.py" line="140"/>
         <source>Manuskript project (*.msk)</source>
         <translation>Projet Manuskript (*.msk)</translation>
     </message>
     <message>
-        <location filename="../src/ui/welcome.py" line="127"/>
+        <location filename="../src/ui/welcome.py" line="128"/>
         <source>Save project as...</source>
         <translation>Enregistrer le projer sous...</translation>
     </message>
     <message>
-        <location filename="../src/ui/welcome.py" line="139"/>
+        <location filename="../src/ui/welcome.py" line="140"/>
         <source>Create New Project</source>
         <translation>Créer un nouveau projet</translation>
     </message>
     <message>
-        <location filename="../src/ui/welcome.py" line="338"/>
+        <location filename="../src/ui/welcome.py" line="340"/>
         <source>Chapter</source>
         <translation>Chapitre</translation>
     </message>
     <message>
-        <location filename="../src/ui/welcome.py" line="339"/>
+        <location filename="../src/ui/welcome.py" line="341"/>
         <source>Scene</source>
         <translation>Scène</translation>
     </message>
     <message>
-        <location filename="../src/ui/welcome.py" line="170"/>
+        <location filename="../src/ui/welcome.py" line="171"/>
         <source>Trilogy</source>
         <translation>Trilogie</translation>
     </message>
     <message>
-        <location filename="../src/ui/welcome.py" line="170"/>
+        <location filename="../src/ui/welcome.py" line="171"/>
         <source>Book</source>
         <translation>Livre</translation>
     </message>
     <message>
-        <location filename="../src/ui/welcome.py" line="177"/>
+        <location filename="../src/ui/welcome.py" line="178"/>
         <source>Section</source>
         <translation>Section</translation>
     </message>
     <message>
-        <location filename="../src/ui/welcome.py" line="226"/>
+        <location filename="../src/ui/welcome.py" line="227"/>
         <source>words each.</source>
         <translation>mots chacun(e).</translation>
     </message>
     <message>
-        <location filename="../src/ui/welcome.py" line="229"/>
+        <location filename="../src/ui/welcome.py" line="230"/>
         <source>of</source>
         <translation>de</translation>
     </message>
     <message>
-        <location filename="../src/ui/welcome.py" line="253"/>
+        <location filename="../src/ui/welcome.py" line="254"/>
         <source>Text</source>
         <translation>Texte</translation>
     </message>
     <message>
-        <location filename="../src/ui/welcome.py" line="256"/>
+        <location filename="../src/ui/welcome.py" line="257"/>
         <source>Something</source>
         <translation>Quelque chose</translation>
     </message>
     <message>
-        <location filename="../src/ui/welcome.py" line="278"/>
+        <location filename="../src/ui/welcome.py" line="279"/>
         <source>&lt;b&gt;Total:&lt;/b&gt; {} words (~ {} pages)</source>
         <translation>&lt;b&gt;Total:&lt;/b&gt; {} mots (~ {} pages)</translation>
     </message>
     <message>
-        <location filename="../src/ui/welcome.py" line="336"/>
+        <location filename="../src/ui/welcome.py" line="338"/>
         <source>Idea</source>
         <translation>Idée</translation>
     </message>
     <message>
-        <location filename="../src/ui/welcome.py" line="337"/>
+        <location filename="../src/ui/welcome.py" line="339"/>
         <source>Note</source>
         <translation>Note</translation>
     </message>
     <message>
-        <location filename="../src/ui/welcome.py" line="340"/>
+        <location filename="../src/ui/welcome.py" line="342"/>
         <source>Research</source>
         <translation>Recherche</translation>
     </message>
     <message>
-        <location filename="../src/ui/welcome.py" line="348"/>
+        <location filename="../src/ui/welcome.py" line="350"/>
         <source>TODO</source>
         <translation>TODO</translation>
     </message>
     <message>
-        <location filename="../src/ui/welcome.py" line="349"/>
+        <location filename="../src/ui/welcome.py" line="351"/>
         <source>First draft</source>
         <translation>Premier brouillon</translation>
     </message>
     <message>
-        <location filename="../src/ui/welcome.py" line="350"/>
+        <location filename="../src/ui/welcome.py" line="352"/>
         <source>Second draft</source>
         <translation>Second brouillon</translation>
     </message>
     <message>
-        <location filename="../src/ui/welcome.py" line="351"/>
+        <location filename="../src/ui/welcome.py" line="353"/>
         <source>Final</source>
         <translation>Final</translation>
     </message>
     <message>
         <location filename="../src/ui/welcome_ui.ui" line="198"/>
         <source>Default text type:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/ui/welcome.py" line="185"/>
-        <source>Txt2Tags</source>
-        <translation type="unfinished"></translation>
+        <translation>Type de texte par défaut:</translation>
     </message>
     <message>
         <location filename="../src/ui/welcome.py" line="186"/>
-        <source>Rich Text (html)</source>
-        <translation type="unfinished"></translation>
+        <source>Txt2Tags</source>
+        <translation>Txt2Tags</translation>
     </message>
     <message>
         <location filename="../src/ui/welcome.py" line="187"/>
+        <source>Rich Text (html)</source>
+        <translation>Texte riche (html)</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/welcome.py" line="188"/>
         <source>Plain Text</source>
-        <translation type="unfinished"></translation>
+        <translation>Texte simple</translation>
     </message>
 </context>
 </TS>

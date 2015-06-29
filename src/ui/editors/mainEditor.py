@@ -6,6 +6,9 @@ from enums import *
 from ui.editors.mainEditor_ui import *
 from ui.editors.editorWidget import *
 from functions import *
+import locale
+locale.setlocale(locale.LC_ALL, '')
+
 
 class mainEditor(QWidget, Ui_mainEditor):
     
@@ -166,10 +169,13 @@ class mainEditor(QWidget, Ui_mainEditor):
             drawProgress(p, rect, progress, 2)
             del p
             self.lblRedacProgress.setPixmap(self.px)
-            self.lblRedacWC.setText(self.tr("{} words / {}").format(wc, goal))
+            self.lblRedacWC.setText(self.tr("{} words / {}").format(
+                locale.format("%d", wc, grouping=True), 
+                locale.format("%d", goal, grouping=True)))
         else:
             self.lblRedacProgress.hide()
-            self.lblRedacWC.setText(self.tr("{} words").format(wc))
+            self.lblRedacWC.setText(self.tr("{} words").format(
+                locale.format("%d", wc, grouping=True)))
         
 ###############################################################################
 # VIEWS
