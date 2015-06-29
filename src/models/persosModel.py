@@ -31,7 +31,7 @@ class persosModel(QStandardItemModel):
         return self.item(row, Perso.importance.value).text()
 
 ###############################################################################
-# GENERAL QUERRIES
+# MODEL QUERRIES
 ###############################################################################
 
     def getPersosByImportance(self):
@@ -82,6 +82,7 @@ class persosModel(QStandardItemModel):
         and a column in mdlPersosInfos with same ID"""
         p = QStandardItem(self.tr("New character"))
         self.setPersoColor(p, randomColor(QColor(Qt.white)))
+        
         pid = self.getUniqueID()
         self.appendRow([p, QStandardItem(pid), QStandardItem("0")])
             
@@ -129,11 +130,40 @@ class persosModel(QStandardItemModel):
         color = self.getPersoColorName(idx)
         self.mw.btnPersoColor.setStyleSheet("background:{};".format(color))
         
-        
 ###############################################################################
 # PERSO INFOS
 ###############################################################################
 
+    def headerData(self, section, orientation, role=Qt.DisplayRole):
+        if role == Qt.DisplayRole and orientation == Qt.Horizontal:
+            if section == Perso.infoName.value:
+                return self.tr("Name")
+            elif section == Perso.infoData.value:
+                return self.tr("Value")
+            else:
+                return Perso(section).name
+        else:
+            return QStandardItemModel.headerData(self, section, orientation, role=Qt.DisplayRole)
+
     def addPersoInfo(self):
-        #FIXME
-        pass
+        perso = self.itemFromIndex(self.currentPersoIndex())
+        row = perso.rowCount()
+        perso.setChild(row, Perso.infoName.value, QStandardItem(""))
+        perso.setChild(row, Perso.infoData.value, QStandardItem(""))
+        
+        self.mw.updatePersoInfoView()
+        
+    def removePersoInfo(self):
+        perso = self.itemFromIndex(self.currentPersoIndex())
+        
+        rm = []
+        for idx in self.mw.tblPersoInfos.selectedIndexes():
+            if not idx.row() in rm:
+                rm.append(idx.row())
+        
+        rm.sort()
+        rm.reverse()
+        for r in rm:
+            perso.takeRow(r)
+        
+        

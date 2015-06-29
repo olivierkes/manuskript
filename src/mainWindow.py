@@ -193,9 +193,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             ]:
             w.setCurrentModelIndex(index)
         
-        ## Button color
+        # Button color
         self.mdlPersos.updatePersoColor(index)
         
+        # Perso Infos
+        self.tblPersoInfos.setRootIndex(index)
+        
+        if self.mdlPersos.rowCount(index):
+            self.updatePersoInfoView()
         
         #if self.mdlPersosProxy:
             #idx = self.mdlPersosProxy.mapToSource(self.lstPersos.currentIndex())
@@ -212,6 +217,19 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             #self.tblPersoInfos.setColumnHidden(c, c != 0 and pid != pid2)
 
         #self.resizePersosInfos()
+
+    def updatePersoInfoView(self):
+        # Hide columns
+        for i in range(self.mdlPersos.columnCount()):
+            self.tblPersoInfos.hideColumn(i)
+        self.tblPersoInfos.showColumn(Perso.infoName.value)
+        self.tblPersoInfos.showColumn(Perso.infoData.value)
+        
+        self.tblPersoInfos.horizontalHeader().setSectionResizeMode(
+            Perso.infoName.value, QHeaderView.ResizeToContents)
+        self.tblPersoInfos.horizontalHeader().setSectionResizeMode(
+            Perso.infoData.value, QHeaderView.Stretch)
+        self.tblPersoInfos.verticalHeader().hide()
 
     #def updatePersoColor(self):
         #if self.mdlPersosProxy:
@@ -634,6 +652,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # Persos
         self.lstPersos.setPersosModel(self.mdlPersos)
+        self.tblPersoInfos.setModel(self.mdlPersos)
+        
         self.btnAddPerso.clicked.connect(self.mdlPersos.addPerso, AUC)
         self.btnRmPerso.clicked.connect(self.mdlPersos.removePerso, AUC)
         self.btnPersoColor.clicked.connect(self.mdlPersos.chosePersoColor, AUC)
@@ -646,10 +666,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         #self.tblPersoInfos.setModel(self.mdlPersosInfos)
         #self.tblPersoInfos.setRowHidden(0, True)
         
-        #FIXME
-        #self.btnPersoAddInfo.clicked.connect(lambda:
-                 #self.mdlPersosInfos.insertRow(self.mdlPersosInfos.rowCount()), AUC)
-                 
+        self.btnPersoAddInfo.clicked.connect(self.mdlPersos.addPersoInfo, AUC)
+        self.btnPersoRmInfo.clicked.connect(self.mdlPersos.removePersoInfo, AUC)
+        
         #self.mprPersos = QDataWidgetMapper()
         #self.mprPersos.setModel(self.mdlPersos)
 
@@ -759,7 +778,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.mdlFlatData.setVerticalHeaderLabels(["Infos générales", "Summary"])
         self.tblDebugFlatData.setModel(self.mdlFlatData)
         self.tblDebugPersos.setModel(self.mdlPersos)
-        #self.tblDebugPersosInfos.setModel(self.mdlPersosInfos)
+        self.tblDebugPersosInfos.setModel(self.mdlPersos)
+        self.tblDebugPersos.selectionModel().currentChanged.connect(
+            lambda: self.tblDebugPersosInfos.setRootIndex(self.mdlPersos.index(
+                self.tblDebugPersos.selectionModel().currentIndex().row(),
+                Perso.name.value)), AUC)
+            
         self.tblDebugPlots.setModel(self.mdlPlots)
         self.tblDebugPlotsPersos.setModel(self.mdlPlots)
         self.tblDebugSubPlots.setModel(self.mdlPlots)
@@ -774,7 +798,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.treeDebugOutline.setModel(self.mdlOutline)
         self.lstDebugLabels.setModel(self.mdlLabels)
         self.lstDebugStatus.setModel(self.mdlStatus)
-        self.mdlPersos.setHorizontalHeaderLabels([i.name for i in Perso])
+        #self.mdlPersos.setHorizontalHeaderLabels([i.name for i in Perso])
         
         
 ###############################################################################
@@ -843,7 +867,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.splitterRedac.setStretchFactor(0, 20)
         self.splitterRedac.setStretchFactor(1, 60)
         self.splitterRedac.setStretchFactor(2, 20)
-
+        
         # Help box
         references = [
             (self.lytTabOverview,

@@ -21,6 +21,8 @@ class Perso(Enum):
     summaryPara = 8
     summaryFull = 9
     notes = 10
+    infoName = 11
+    infoData = 12
     
 class Plot(Enum):
     name = 0

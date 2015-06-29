@@ -466,6 +466,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_9.setObjectName("verticalLayout_9")
         self.tblPersoInfos = QtWidgets.QTableView(self.tab_12)
         self.tblPersoInfos.setAlternatingRowColors(True)
+        self.tblPersoInfos.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
         self.tblPersoInfos.setTextElideMode(QtCore.Qt.ElideNone)
         self.tblPersoInfos.setObjectName("tblPersoInfos")
         self.verticalLayout_9.addWidget(self.tblPersoInfos)
@@ -484,12 +485,12 @@ class Ui_MainWindow(object):
         self.pushButton_3.setCheckable(True)
         self.pushButton_3.setObjectName("pushButton_3")
         self.horizontalLayout_9.addWidget(self.pushButton_3)
-        self.pushButton_2 = QtWidgets.QPushButton(self.tab_12)
-        self.pushButton_2.setText("")
+        self.btnPersoRmInfo = QtWidgets.QPushButton(self.tab_12)
+        self.btnPersoRmInfo.setText("")
         icon = QtGui.QIcon.fromTheme("list-remove")
-        self.pushButton_2.setIcon(icon)
-        self.pushButton_2.setObjectName("pushButton_2")
-        self.horizontalLayout_9.addWidget(self.pushButton_2)
+        self.btnPersoRmInfo.setIcon(icon)
+        self.btnPersoRmInfo.setObjectName("btnPersoRmInfo")
+        self.horizontalLayout_9.addWidget(self.btnPersoRmInfo)
         self.lineEdit = QtWidgets.QLineEdit(self.tab_12)
         self.lineEdit.setObjectName("lineEdit")
         self.horizontalLayout_9.addWidget(self.lineEdit)
@@ -878,21 +879,15 @@ class Ui_MainWindow(object):
         self.tabWidget.addTab(self.tab_9, "")
         self.tab_10 = QtWidgets.QWidget()
         self.tab_10.setObjectName("tab_10")
-        self.horizontalLayout_27 = QtWidgets.QHBoxLayout(self.tab_10)
-        self.horizontalLayout_27.setObjectName("horizontalLayout_27")
+        self.verticalLayout_19 = QtWidgets.QVBoxLayout(self.tab_10)
+        self.verticalLayout_19.setObjectName("verticalLayout_19")
         self.tblDebugPersos = QtWidgets.QTableView(self.tab_10)
         self.tblDebugPersos.setObjectName("tblDebugPersos")
-        self.horizontalLayout_27.addWidget(self.tblDebugPersos)
-        self.tabWidget.addTab(self.tab_10, "")
-        self.tab_16 = QtWidgets.QWidget()
-        self.tab_16.setObjectName("tab_16")
-        self.horizontalLayout_28 = QtWidgets.QHBoxLayout(self.tab_16)
-        self.horizontalLayout_28.setObjectName("horizontalLayout_28")
-        self.tblDebugPersosInfos = QtWidgets.QTableView(self.tab_16)
-        self.tblDebugPersosInfos.setAlternatingRowColors(True)
+        self.verticalLayout_19.addWidget(self.tblDebugPersos)
+        self.tblDebugPersosInfos = QtWidgets.QTableView(self.tab_10)
         self.tblDebugPersosInfos.setObjectName("tblDebugPersosInfos")
-        self.horizontalLayout_28.addWidget(self.tblDebugPersosInfos)
-        self.tabWidget.addTab(self.tab_16, "")
+        self.verticalLayout_19.addWidget(self.tblDebugPersosInfos)
+        self.tabWidget.addTab(self.tab_10, "")
         self.tab_2 = QtWidgets.QWidget()
         self.tab_2.setObjectName("tab_2")
         self.horizontalLayout_11 = QtWidgets.QHBoxLayout(self.tab_2)
@@ -1039,12 +1034,12 @@ class Ui_MainWindow(object):
         self.stack.setCurrentIndex(1)
         self.tabMain.setCurrentIndex(2)
         self.tabSummary.setCurrentIndex(0)
-        self.tabPersos.setCurrentIndex(0)
+        self.tabPersos.setCurrentIndex(3)
         self.tabPlot.setCurrentIndex(0)
         self.comboBox_2.setCurrentIndex(0)
         self.stkPlotSummary.setCurrentIndex(0)
         self.tabRedacInfos.setCurrentIndex(0)
-        self.tabWidget.setCurrentIndex(3)
+        self.tabWidget.setCurrentIndex(1)
         self.btnPlotShowSummary.toggled['bool'].connect(self.grpPlotSummary.setVisible)
         self.comboBox_2.currentIndexChanged['int'].connect(self.stkPlotSummary.setCurrentIndex)
         self.btnPlanShowDetails.toggled['bool'].connect(self.frame.setVisible)
@@ -1139,7 +1134,6 @@ class Ui_MainWindow(object):
         self.tabMain.setTabText(self.tabMain.indexOf(self.lytTabRedac), _translate("MainWindow", "Redaction"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_9), _translate("MainWindow", "FlatData"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_10), _translate("MainWindow", "Persos"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_16), _translate("MainWindow", "Perso Infos"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "Plots"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_20), _translate("MainWindow", "Outline"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("MainWindow", "Labels"))
@@ -1175,14 +1169,14 @@ class Ui_MainWindow(object):
         self.actSettings.setShortcut(_translate("MainWindow", "F8"))
         self.actCloseProject.setText(_translate("MainWindow", "Close project"))
 
-from ui.views.plotTreeView import plotTreeView
-from ui.views.lineEditView import lineEditView
-from ui.views.outlineView import outlineView
 from ui.welcome import welcome
-from ui.views.treeView import treeView
-from ui.views.basicItemView import basicItemView
+from ui.views.plotTreeView import plotTreeView
 from ui.views.textEditView import textEditView
-from ui.views.metadataView import metadataView
-from ui.views.persoTreeView import persoTreeView
+from ui.views.basicItemView import basicItemView
 from ui.editors.mainEditor import mainEditor
+from ui.views.metadataView import metadataView
+from ui.views.outlineView import outlineView
+from ui.views.persoTreeView import persoTreeView
+from ui.views.treeView import treeView
+from ui.views.lineEditView import lineEditView
 from ui.sldImportance import sldImportance
