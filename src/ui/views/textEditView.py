@@ -35,7 +35,7 @@ class textEditView(QTextEdit):
         self._fromTheme = False  
         
         self.spellcheck = spellcheck
-        self.currentDict = dict
+        self.currentDict = dict if dict else settings.dict
         self.highlighter = None
         self._autoResize = autoResize
         self._defaultBlockFormat = QTextBlockFormat()
@@ -75,9 +75,9 @@ class textEditView(QTextEdit):
         else:
             self.spellcheck = False
             
-        #if self._highlighting and not self.highlighter:
-            #self.highlighter = t2tHighlighter(self)
-            #self.highlighter.setDefaultBlockFormat(self._defaultBlockFormat)
+        if self._highlighting and not self.highlighter:
+            self.highlighter = t2tHighlighter(self)
+            self.highlighter.setDefaultBlockFormat(self._defaultBlockFormat)
             
     def setModel(self, model):
         self._model = model

@@ -360,20 +360,18 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.makeConnections()
 
         # Load settings
+        for i in settings.openIndexes:
+            idx = self.mdlOutline.indexFromPath(i)
+            self.mainEditor.setCurrentModelIndex(idx, newTab = True)
         self.generateViewMenu()
         self.mainEditor.sldCorkSizeFactor.setValue(settings.corkSizeFactor)
         self.actSpellcheck.setChecked(settings.spellcheck)
+        self.toggleSpellcheck(settings.spellcheck)
         self.updateMenuDict()
         self.setDictionary()
-        self.treeRedacOutline.setCurrentIndex(
-                             self.mdlOutline.indexFromPath(settings.lastIndex))
+        
         self.mainEditor.setFolderView(settings.folderView)
-        if settings.folderView == "text":
-            self.mainEditor.btnRedacFolderText.setChecked(True)
-        elif settings.folderView == "cork":
-            self.mainEditor.btnRedacFolderCork.setChecked(True)
-        elif settings.folderView == "outline":
-            self.mainEditor.btnRedacFolderOutline.setChecked(True)
+        self.mainEditor.updateFolderViewButtons(settings.folderView)
         self.tabMain.setCurrentIndex(settings.lastTab)
         self.mainEditor.updateCorkBackground()
 
@@ -455,12 +453,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         settings.lastTab = self.tabMain.currentIndex()
             
         if self.currentProject:
-            # Remembering the current item
-            if len(self.treeRedacOutline.selectedIndexes()) == 0:
-                sel = QModelIndex()
-            else:
-                sel = self.treeRedacOutline.currentIndex()
-            settings.lastIndex = self.mdlOutline.pathToIndex(sel)
+            # Remembering the current items
+            sel = []
+            for i in range(self.mainEditor.tab.count()):
+                sel.append(self.mdlOutline.pathToIndex(self.mainEditor.tab.widget(i).currentIndex))
+            settings.openIndexes = sel
 
         # Save data from models
         if self.currentProject and settings.saveOnQuit:
@@ -756,9 +753,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                  self.outlineItemEditor.selectionChanged(self.treePlanOutline), AUC)
         self.treePlanOutline.clicked.connect(lambda:
                  self.outlineItemEditor.selectionChanged(self.treePlanOutline), AUC)
-
-        self.treeRedacOutline.setSelectionModel(self.treePlanOutline
-                                                    .selectionModel())
+        
+        # Sync selection
+        #self.treeRedacOutline.setSelectionModel(self.treePlanOutline
+                                                    #.selectionModel())
 
         self.treeRedacOutline.selectionModel().selectionChanged.connect(
             lambda: self.redacMetadata.selectionChanged(self.treeRedacOutline), AUC)
@@ -767,7 +765,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         #self.treeRedacOutline.selectionModel().currentChanged.connect(self.redacEditor.setCurrentModelIndex)
         self.treeRedacOutline.selectionModel().selectionChanged.connect(self.mainEditor.selectionChanged, AUC)
-        self.treeRedacOutline.selectionModel().currentChanged.connect(self.mainEditor.setCurrentModelIndex, AUC)
+        #self.treeRedacOutline.doubleClicked.connect(self.mainEditor.setCurrentModelIndex, AUC)
+        #self.treeRedacOutline.selectionModel().currentChanged.connect(self.mainEditor.setCurrentModelIndex, AUC)
 
         #self.treeRedacOutline.selectionModel().selectionChanged.connect(self.outlineSelectionChanged, AUC)
         #self.treeRedacOutline.selectionModel().selectionChanged.connect(self.outlineSelectionChanged, AUC)
@@ -936,11 +935,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         for i in enchant.list_dicts():
             a = QAction(str(i[0]), self)
             a.setCheckable(True)
-            a.triggered.connect(self.setDictionary, AUC)
             if settings.dict is None:
                 settings.dict = enchant.get_default_language()
             if str(i[0]) == settings.dict:
                 a.setChecked(True)
+            a.triggered.connect(self.setDictionary, AUC)
             self.menuDictGroup.addAction(a)
             self.menuDict.addAction(a)
 
@@ -950,7 +949,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         for i in self.menuDictGroup.actions():
             if i.isChecked():
-                self.dictChanged.emit(i.text().replace("&", ""))
+                #self.dictChanged.emit(i.text().replace("&", ""))
                 settings.dict = i.text().replace("&", "")
 
                 # Find all textEditView from self, and toggle spellcheck
@@ -963,9 +962,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def toggleSpellcheck(self, val):
         settings.spellcheck = val
-        self.mainEditor.toggleSpellcheck(val)
-        self.redacMetadata.toggleSpellcheck(val)
-        self.outlineItemEditor.toggleSpellcheck(val)
+        #self.mainEditor.toggleSpellcheck(val)
+        #self.redacMetadata.toggleSpellcheck(val)
+        #self.outlineItemEditor.toggleSpellcheck(val)
 
         # Find all textEditView from self, and toggle spellcheck
         for w in self.findChildren(textEditView, QRegExp(".*"),

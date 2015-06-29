@@ -789,6 +789,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_30.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_30.setObjectName("verticalLayout_30")
         self.treeRedacOutline = treeView(self.treeRedacWidget)
+        self.treeRedacOutline.setEditTriggers(QtWidgets.QAbstractItemView.EditKeyPressed)
         self.treeRedacOutline.setObjectName("treeRedacOutline")
         self.verticalLayout_30.addWidget(self.treeRedacOutline)
         self.horizontalLayout_31 = QtWidgets.QHBoxLayout()
@@ -1032,7 +1033,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.stack.setCurrentIndex(1)
-        self.tabMain.setCurrentIndex(2)
+        self.tabMain.setCurrentIndex(6)
         self.tabSummary.setCurrentIndex(0)
         self.tabPersos.setCurrentIndex(3)
         self.tabPlot.setCurrentIndex(0)
@@ -1169,14 +1170,14 @@ class Ui_MainWindow(object):
         self.actSettings.setShortcut(_translate("MainWindow", "F8"))
         self.actCloseProject.setText(_translate("MainWindow", "Close project"))
 
+from ui.views.persoTreeView import persoTreeView
+from ui.views.textEditView import textEditView
+from ui.sldImportance import sldImportance
+from ui.views.metadataView import metadataView
+from ui.editors.mainEditor import mainEditor
+from ui.views.basicItemView import basicItemView
+from ui.views.outlineView import outlineView
+from ui.views.lineEditView import lineEditView
 from ui.welcome import welcome
 from ui.views.plotTreeView import plotTreeView
-from ui.views.textEditView import textEditView
-from ui.views.basicItemView import basicItemView
-from ui.editors.mainEditor import mainEditor
-from ui.views.metadataView import metadataView
-from ui.views.outlineView import outlineView
-from ui.views.persoTreeView import persoTreeView
 from ui.views.treeView import treeView
-from ui.views.lineEditView import lineEditView
-from ui.sldImportance import sldImportance

@@ -109,7 +109,7 @@
         <item>
          <widget class="QTabWidget" name="tabMain">
           <property name="currentIndex">
-           <number>2</number>
+           <number>6</number>
           </property>
           <property name="documentMode">
            <bool>true</bool>
@@ -1520,7 +1520,11 @@
                  <number>0</number>
                 </property>
                 <item>
-                 <widget class="treeView" name="treeRedacOutline"/>
+                 <widget class="treeView" name="treeRedacOutline">
+                  <property name="editTriggers">
+                   <set>QAbstractItemView::EditKeyPressed</set>
+                  </property>
+                 </widget>
                 </item>
                 <item>
                  <layout class="QHBoxLayout" name="horizontalLayout_31">

@@ -32,7 +32,7 @@ dict = None
 corkSizeFactor = 100
 folderView = "cork"
 lastTab = 0
-lastIndex = ""
+openIndexes = [""]
 autoSave = False
 autoSaveDelay = 5
 autoSaveNoChanges = True
@@ -61,7 +61,7 @@ textEditor = {
     
 def save(filename=None):
     
-    global spellcheck, dict, corkSliderFactor, viewSettings, corkSizeFactor, folderView, lastTab, lastIndex, \
+    global spellcheck, dict, corkSliderFactor, viewSettings, corkSizeFactor, folderView, lastTab, openIndexes, \
            autoSave, autoSaveDelay, saveOnQuit, autoSaveNoChanges, autoSaveNoChangesDelay, outlineViewColumns, \
            corkBackground, fullScreenTheme, defaultTextType, textEditor
     
@@ -72,7 +72,7 @@ def save(filename=None):
         "corkSizeFactor": corkSizeFactor,
         "folderView": folderView,
         "lastTab": lastTab,
-        "lastIndex": lastIndex,
+        "openIndexes": openIndexes,
         "autoSave":autoSave,
         "autoSaveDelay":autoSaveDelay,
         "saveOnQuit":saveOnQuit,
@@ -139,9 +139,9 @@ def load(string, fromString=False):
         global lastTab
         lastTab = allSettings["lastTab"]
         
-    if "lastIndex" in allSettings:
-        global lastIndex
-        lastIndex = allSettings["lastIndex"]
+    if "openIndexes" in allSettings:
+        global openIndexes
+        openIndexes = allSettings["openIndexes"]
         
     if "autoSave" in allSettings:
         global autoSave

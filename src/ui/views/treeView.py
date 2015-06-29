@@ -17,6 +17,7 @@ class treeView(QTreeView, dndView, outlineBasics):
         QTreeView.__init__(self, parent)
         dndView.__init__(self, parent)
         outlineBasics.__init__(self, parent)
+        self._indexesToOpen = None
         
     def setModel(self, model):
         QTreeView.setModel(self, model)
@@ -33,7 +34,29 @@ class treeView(QTreeView, dndView, outlineBasics):
         menu = outlineBasics.makePopupMenu(self)
         first = menu.actions()[0]
         
+        # Open item in new tab
+        sel = self.selectedIndexes()
+        pos = self.viewport().mapFromGlobal(QCursor.pos())
+        mouseIndex = self.indexAt(pos)
         
+        if mouseIndex.isValid():
+            mouseTitle = mouseIndex.internalPointer().title()
+        else:
+            mouseTitle = self.tr("Root")
+        
+        if mouseIndex in sel and len(sel) > 1:
+            actionTitle = self.tr("Open {} items in new tabs").format(len(sel))
+            self._indexesToOpen = sel
+        else:
+            actionTitle = self.tr("Open {} in a new tab").format(mouseTitle)
+            self._indexesToOpen = [mouseIndex]
+        
+        self.actNewTab = QAction(actionTitle, menu)
+        self.actNewTab.triggered.connect(self.openNewTab)
+        menu.insertAction(first, self.actNewTab)
+        menu.insertSeparator(first)
+        
+        # Expand /collapse item
         if len(self.selectedIndexes()) != 0:
             index = self.currentIndex()
             item = index.internalPointer()
@@ -46,7 +69,8 @@ class treeView(QTreeView, dndView, outlineBasics):
             menu.insertAction(first, self.actCollapse)
             
             menu.insertSeparator(first)
-            
+        
+        # Expand /collapse all
         self.actExpandAll = QAction(self.tr("Expand All"), menu)
         self.actExpandAll.triggered.connect(self.expandAll)
         menu.insertAction(first, self.actExpandAll)
@@ -58,6 +82,9 @@ class treeView(QTreeView, dndView, outlineBasics):
         menu.insertSeparator(first)
         
         return menu
+        
+    def openNewTab(self):
+        mainWindow().mainEditor.openIndexes(self._indexesToOpen, newTab=True)
         
     def expandCurrentIndex(self, index=None):
         if index is None or type(index) == bool:
@@ -80,6 +107,14 @@ class treeView(QTreeView, dndView, outlineBasics):
     def dragMoveEvent(self, event):
         dndView.dragMoveEvent(self, event)
         QTreeView.dragMoveEvent(self, event)
+        
+    def mousePressEvent(self, event):
+        if event.button() == Qt.RightButton:
+            # Capture mouse press so that selection doesn't change
+            # on right click
+            pass
+        else:
+            QTreeView.mousePressEvent(self, event)
         
     def mouseReleaseEvent(self, event):
         QTreeView.mouseReleaseEvent(self, event)

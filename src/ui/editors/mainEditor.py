@@ -12,6 +12,7 @@ class mainEditor(QWidget, Ui_mainEditor):
     def __init__(self, parent=None):
         QWidget.__init__(self, parent)
         self.setupUi(self)
+        self._updating = False
         
         self.mw = mainWindow()
         self.tab.tabCloseRequested.connect(self.closeTab)
@@ -41,21 +42,36 @@ class mainEditor(QWidget, Ui_mainEditor):
         return self.tab.currentWidget()
     
     def tabChanged(self, index):
-        #FIXME: Update UI
-        pass
+        if self.currentEditor():
+            index = self.currentEditor().currentIndex
+            view = self.currentEditor().folderView
+            self.updateFolderViewButtons(view)
+        else:
+            index = QModelIndex()
+            
+        self._updating = True
+        self.mw.treeRedacOutline.setCurrentIndex(index)
+        self._updating = False
     
     def closeTab(self, index):
         #FIXME: submit data if textedit?
         self.tab.removeTab(index)
+        
+    def allTabs(self):
+        return [self.tab.widget(i) for i in range(self.tab.count())]
       
 ###############################################################################
 # SELECTION AND UPDATES
 ###############################################################################
         
     def selectionChanged(self):
+        if self._updating:
+            return
+        
         if len(self.mw.treeRedacOutline.selectionModel().
                     selection().indexes()) == 0:
             hidden = False
+            idx = QModelIndex()
         else:
             idx = self.mw.treeRedacOutline.currentIndex()
             if idx.isValid():
@@ -69,21 +85,36 @@ class mainEditor(QWidget, Ui_mainEditor):
         self.sldCorkSizeFactor.setHidden(hidden)
         self.btnRedacFullscreen.setVisible(hidden)
         
-        #FIXME
-        #self.redacEditor.setView
+        self.setCurrentModelIndex(idx)
         
+    def openIndexes(self, indexes, newTab=False):
+        for i in indexes:
+            self.setCurrentModelIndex(i, newTab)
         
     def setCurrentModelIndex(self, index, newTab=False):
         
         if not index.isValid():
-            return
+            title = self.tr("Root")
+        else:
+            title = index.internalPointer().title()
         
-        item = index.internalPointer()
+        # Checking if tab is already openned
+        for w in self.allTabs():
+            if w.currentIndex == index:
+                self.tab.setCurrentWidget(w)
+                return
         
-        editor = editorWidget(self)
-        editor.setCurrentModelIndex(index)
-        self.tab.addTab(editor, item.title())
-        self.tab.setCurrentIndex(self.tab.count() - 1)
+        if qApp.keyboardModifiers() & Qt.ControlModifier:
+            newTab = True
+        
+        if newTab or not self.tab.count():
+            editor = editorWidget(self)
+            editor.setCurrentModelIndex(index)
+            self.tab.addTab(editor, title)
+            self.tab.setCurrentIndex(self.tab.count() - 1)
+        else:
+            self.currentEditor().setCurrentModelIndex(index)
+            self.tab.setTabText(self.tab.currentIndex(), title)
         
         #FIXME: check if tab is already open
         
@@ -94,15 +125,22 @@ class mainEditor(QWidget, Ui_mainEditor):
 # UI
 ###############################################################################
         
+    def updateFolderViewButtons(self, view):
+        if view == "text":
+            self.btnRedacFolderText.setChecked(True)
+        elif view == "cork":
+            self.btnRedacFolderCork.setChecked(True)
+        elif view == "outline":
+            self.btnRedacFolderOutline.setChecked(True)
         
     def updateStats(self, index=None):  
         if index:
             item = index.internalPointer()
         else:
-            item = self._model.rootItem
+            item = self.mw.mdlOutline.rootItem
         
         if not item:
-            item = self._model.rootItem
+            item = self.mw.mdlOutline.rootItem
         
         wc = item.data(Outline.wordCount.value)
         goal = item.data(Outline.goal.value)
@@ -167,12 +205,12 @@ class mainEditor(QWidget, Ui_mainEditor):
 ###############################################################################
 
     def setDict(self, dict):
-        pass
-        #FIXME
+        print(dict)
+        for w in self.allTabs():
+            w.setDict(dict)
         
     def toggleSpellcheck(self, val):
-        pass
-        #FIXME
-        #self.redacEditor.toggleSpellcheck(val)
+        for w in self.allTabs():
+            w.toggleSpellcheck(val)
         
     

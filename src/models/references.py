@@ -68,7 +68,7 @@ def openReference(ref):
             index = mw.mdlOutline.getIndexByID(_ref)
             
             if index.isValid():
-                mw.treeRedacOutline.setCurrentIndex(index)
+                mw.mainEditor.setCurrentModelIndex(index, newTab=True)
                 return True
             else:
                 print("Ref not found")

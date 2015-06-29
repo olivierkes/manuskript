@@ -27,6 +27,7 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
         self.currentDict = ""
         self.spellcheck = True
         self.folderView = "cork"
+        self.mw = mainWindow()
         
     #def setModel(self, model):
         #self._model = model
@@ -58,27 +59,32 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
         if r.isValid():
             count = r.internalPointer().childCount()
         else:
-            count = self._model.rootItem.childCount()
+            count = self.mw.mdlOutline.rootItem.childCount()
         
         for c in range(count):
             self.corkView.itemDelegate().sizeHintChanged.emit(r.child(c, 0))
         
     def setView(self):
-        index = mainWindow().treeRedacOutline.currentIndex()
+        #index = mainWindow().treeRedacOutline.currentIndex()
         
-        # Couting the number of other selected items
-        sel = []
-        for i in mainWindow().treeRedacOutline.selectionModel().selection().indexes():
-            if i.column() != 0: continue
-            if i not in sel: sel.append(i)
+        ## Couting the number of other selected items
+        #sel = []
+        #for i in mainWindow().treeRedacOutline.selectionModel().selection().indexes():
+            #if i.column() != 0: continue
+            #if i not in sel: sel.append(i)
         
-        if len(sel) != 0:
-            item = index.internalPointer()
-        else:
-            index = QModelIndex()
-            item = self._model.rootItem
+        #if len(sel) != 0:
+            #item = index.internalPointer()
+        #else:
+            #index = QModelIndex()
+            #item = self.mw.mdlOutline.rootItem
             
-        self.currentIndex = index
+        #self.currentIndex = index
+        
+        if self.currentIndex.isValid():
+            item = self.currentIndex.internalPointer()
+        else:
+            item = self.mw.mdlOutline.rootItem
             
         def addTitle(itm):
             edt = textEditView(self, html="<h{l}>{t}</h{l}>".format(l=min(itm.level()+1, 5), t=itm.title()), autoResize=True)
@@ -96,7 +102,7 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
             edt = textEditView(self, 
                                index=itm.index(), 
                                spellcheck=self.spellcheck, 
-                               dict=self.currentDict,
+                               dict=settings.dict,
                                highlighting=True,
                                autoResize=True)
             edt.setFrameShape(QFrame.NoFrame)
@@ -123,23 +129,23 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
             l.addItem(QSpacerItem(10, 1000, QSizePolicy.Minimum, QSizePolicy.Expanding))
             
         # Display multiple selected items
-        if len(sel) > 1 and False:  # Buggy and not very useful, skip
-            self.stack.setCurrentIndex(1)
-            w = QWidget()
-            l = QVBoxLayout(w)
-            self.txtEdits = []
-            for idx in sel:
-                sItem = idx.internalPointer()
-                addTitle(sItem)
-                if sItem.isFolder():
-                    addChildren(sItem)
-                else:
-                    addText(sItem)
-                addLine()
-            addSpacer()
-            self.scroll.setWidget(w)
+        #if len(sel) > 1 and False:  # Buggy and not very useful, skip
+            #self.stack.setCurrentIndex(1)
+            #w = QWidget()
+            #l = QVBoxLayout(w)
+            #self.txtEdits = []
+            #for idx in sel:
+                #sItem = idx.internalPointer()
+                #addTitle(sItem)
+                #if sItem.isFolder():
+                    #addChildren(sItem)
+                #else:
+                    #addText(sItem)
+                #addLine()
+            #addSpacer()
+            #self.scroll.setWidget(w)
             
-        elif item and item.isFolder() and self.folderView == "text":
+        if item and item.isFolder() and self.folderView == "text":
             self.stack.setCurrentIndex(1)
             
             w = QWidget()
@@ -148,7 +154,7 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
             
             self.txtEdits = []
             
-            if item != self._model.rootItem:
+            if item != self.mw.mdlOutline.rootItem:
                 addTitle(item)
                 
             addChildren(item)
@@ -157,8 +163,8 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
             
         elif item and item.isFolder() and self.folderView == "cork":
             self.stack.setCurrentIndex(2)
-            self.corkView.setModel(self._model)
-            self.corkView.setRootIndex(index)
+            self.corkView.setModel(self.mw.mdlOutline)
+            self.corkView.setRootIndex(self.currentIndex)
             self.corkView.selectionModel().selectionChanged.connect(
                 lambda: mainWindow().redacMetadata.selectionChanged(self.corkView), AUC)
             self.corkView.clicked.connect(
@@ -169,8 +175,8 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
             self.outlineView.setModelPersos(mainWindow().mdlPersos)
             self.outlineView.setModelLabels(mainWindow().mdlLabels)
             self.outlineView.setModelStatus(mainWindow().mdlStatus)
-            self.outlineView.setModel(self._model)
-            self.outlineView.setRootIndex(index)
+            self.outlineView.setModel(self.mw.mdlOutline)
+            self.outlineView.setRootIndex(self.currentIndex)
             self.outlineView.selectionModel().selectionChanged.connect(
                 lambda: mainWindow().redacMetadata.selectionChanged(self.outlineView), AUC)
             self.outlineView.clicked.connect(
@@ -181,7 +187,7 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
             self.stack.setCurrentIndex(0) # Single text item
         
         try:
-            self._model.dataChanged.connect(self.modelDataChanged, AUC)
+            self.mw.mdlOutline.dataChanged.connect(self.modelDataChanged, AUC)
         except TypeError:
             pass
         
@@ -191,7 +197,7 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
     def setCurrentModelIndex(self, index=None):
         if index.isValid():
             self.currentIndex = index
-            self._model = index.model()
+            #self._model = index.model()
         else:
             self.currentIndex = QModelIndex()
             
@@ -206,11 +212,11 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
     def updateStatusBar(self):
         # Update progress
         #if self.currentIndex and self.currentIndex.isValid():
-        if self._model:
-            mw = mainWindow()
-            if not mw: return
-            
-            mw.mainEditor.updateStats(self.currentIndex)
+        #if self._model:
+        mw = mainWindow()
+        if not mw: return
+        
+        mw.mainEditor.updateStats(self.currentIndex)
             
     def toggleSpellcheck(self, v):
         self.spellcheck = v
