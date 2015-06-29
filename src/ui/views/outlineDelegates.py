@@ -98,7 +98,7 @@ class outlinePersoDelegate(QStyledItemDelegate):
         
         item = QModelIndex()
         for i in range(self.mdlPersos.rowCount()):
-            if self.mdlPersos.item(i, Perso.ID.value).text() == index.data(Perso.name.value):
+            if self.mdlPersos.ID(i) == index.data():
                 item = self.mdlPersos.index(i, Perso.name.value)
         
         opt = QStyleOptionViewItem(option)
@@ -124,30 +124,23 @@ class outlinePersoDelegate(QStyledItemDelegate):
     def setEditorData(self, editor, index):
         #editor.addItem("")
         editor.addItem(QIcon.fromTheme("edit-delete"), self.tr("None"))
-        #for i in range(self.mdlPersos.rowCount()):
-            #editor.addItem(self.mdlPersos.item(i, Perso.name.value).text(), self.mdlPersos.item(i, Perso.ID.value).text())
-            #editor.setItemData(i+1, self.mdlPersos.item(i, Perso.name.value).text(), Qt.ToolTipRole)
         
         l = [self.tr("Main"), self.tr("Secondary"), self.tr("Minor")]
         for importance in range(3):
             editor.addItem(l[importance])
-            editor.setItemData(editor.count()-1, QBrush(Qt.darkBlue), Qt.ForegroundRole)
-            editor.setItemData(editor.count()-1, QBrush(QColor(Qt.blue).lighter(190)), Qt.BackgroundRole)
-            item = editor.model().item(editor.count()-1)
+            editor.setItemData(editor.count() - 1, QBrush(Qt.darkBlue), Qt.ForegroundRole)
+            editor.setItemData(editor.count() - 1, QBrush(QColor(Qt.blue).lighter(190)), Qt.BackgroundRole)
+            item = editor.model().item(editor.count() - 1)
             item.setFlags(Qt.ItemIsEnabled)
             for i in range(self.mdlPersos.rowCount()):
-                imp = self.mdlPersos.item(i, Perso.importance.value)
-                if imp:
-                    imp = toInt(imp.text())
-                else:
-                    imp = 0
+                imp = toInt(self.mdlPersos.importance(i))
                 if not 2-imp == importance: continue
                 
-                try:
-                    editor.addItem(self.mdlPersos.item(i, Perso.name.value).icon(), self.mdlPersos.item(i, Perso.name.value).text(), self.mdlPersos.item(i, Perso.ID.value).text())
-                    editor.setItemData(i+1, self.mdlPersos.item(i, Perso.name.value).text(), Qt.ToolTipRole)
-                except:
-                    pass
+                #try:
+                editor.addItem(self.mdlPersos.icon(i), self.mdlPersos.name(i), self.mdlPersos.ID(i))
+                editor.setItemData(editor.count() - 1, self.mdlPersos.name(i), Qt.ToolTipRole)
+                #except:
+                    #pass
         
         editor.setCurrentIndex(editor.findData(index.data()))
         editor.showPopup()
@@ -156,12 +149,6 @@ class outlinePersoDelegate(QStyledItemDelegate):
         val = editor.currentData()
         model.setData(index, val)
     
-    #def displayText(self, value, locale):
-        #for i in range(self.mdlPersos.rowCount()):
-            #if self.mdlPersos.item(i, Perso.ID.value).text() == value:
-                #return self.mdlPersos.item(i, Perso.name.value).text()
-        #return ""
-    
     def paint(self, painter, option, index):
         ##option.rect.setWidth(option.rect.width() - 18)
         #QStyledItemDelegate.paint(self, painter, option, index)
@@ -169,7 +156,7 @@ class outlinePersoDelegate(QStyledItemDelegate):
         
         item = QModelIndex()
         for i in range(self.mdlPersos.rowCount()):
-            if self.mdlPersos.item(i, Perso.ID.value).text() == index.data(Perso.name.value):
+            if self.mdlPersos.ID(i) == index.data():
                 item = self.mdlPersos.index(i, Perso.name.value)
         
         opt = QStyleOptionViewItem(option)

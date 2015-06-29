@@ -748,18 +748,12 @@
                    </property>
                   </widget>
                  </item>
-                 <item row="2" column="1">
-                  <widget class="QPlainTextEdit" name="txtPersoMotivation"/>
-                 </item>
                  <item row="3" column="0">
                   <widget class="QLabel" name="label_5">
                    <property name="text">
                     <string>Goal</string>
                    </property>
                   </widget>
-                 </item>
-                 <item row="3" column="1">
-                  <widget class="QPlainTextEdit" name="txtPersoGoal"/>
                  </item>
                  <item row="4" column="0">
                   <widget class="QLabel" name="label_6">
@@ -768,18 +762,12 @@
                    </property>
                   </widget>
                  </item>
-                 <item row="4" column="1">
-                  <widget class="QPlainTextEdit" name="txtPersoConflict"/>
-                 </item>
                  <item row="5" column="0">
                   <widget class="QLabel" name="label_7">
                    <property name="text">
                     <string>Epiphany</string>
                    </property>
                   </widget>
-                 </item>
-                 <item row="5" column="1">
-                  <widget class="QPlainTextEdit" name="txtPersoEpiphany"/>
                  </item>
                  <item row="6" column="0">
                   <widget class="QLabel" name="label_24">
@@ -788,18 +776,12 @@
                    </property>
                   </widget>
                  </item>
-                 <item row="6" column="1">
-                  <widget class="QPlainTextEdit" name="txtPersoSummarySentance"/>
-                 </item>
                  <item row="7" column="0">
                   <widget class="QLabel" name="label_8">
                    <property name="text">
                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One paragraph&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                    </property>
                   </widget>
-                 </item>
-                 <item row="7" column="1">
-                  <widget class="QPlainTextEdit" name="txtPersoSummaryPara"/>
                  </item>
                  <item row="8" column="1">
                   <layout class="QHBoxLayout" name="horizontalLayout_21">
@@ -842,7 +824,7 @@
                  <item row="0" column="1">
                   <layout class="QHBoxLayout" name="horizontalLayout_3">
                    <item>
-                    <widget class="QLineEdit" name="txtPersoName"/>
+                    <widget class="lineEditView" name="txtPersoName"/>
                    </item>
                    <item>
                     <widget class="QPushButton" name="btnPersoColor">
@@ -853,6 +835,24 @@
                    </item>
                   </layout>
                  </item>
+                 <item row="2" column="1">
+                  <widget class="textEditView" name="txtPersoMotivation"/>
+                 </item>
+                 <item row="3" column="1">
+                  <widget class="textEditView" name="txtPersoGoal"/>
+                 </item>
+                 <item row="4" column="1">
+                  <widget class="textEditView" name="txtPersoConflict"/>
+                 </item>
+                 <item row="5" column="1">
+                  <widget class="textEditView" name="txtPersoEpiphany"/>
+                 </item>
+                 <item row="6" column="1">
+                  <widget class="textEditView" name="txtPersoSummarySentance"/>
+                 </item>
+                 <item row="7" column="1">
+                  <widget class="textEditView" name="txtPersoSummaryPara"/>
+                 </item>
                 </layout>
                </widget>
                <widget class="QWidget" name="tab_11">
@@ -861,7 +861,7 @@
                 </attribute>
                 <layout class="QVBoxLayout" name="verticalLayout_17">
                  <item>
-                  <widget class="QPlainTextEdit" name="txtPersoSummaryFull"/>
+                  <widget class="textEditView" name="txtPersoSummaryFull"/>
                  </item>
                  <item>
                   <layout class="QHBoxLayout" name="horizontalLayout_22">
@@ -899,7 +899,7 @@
                 </attribute>
                 <layout class="QHBoxLayout" name="horizontalLayout_30">
                  <item>
-                  <widget class="QPlainTextEdit" name="txtPersoNotes"/>
+                  <widget class="textEditView" name="txtPersoNotes"/>
                  </item>
                 </layout>
                </widget>

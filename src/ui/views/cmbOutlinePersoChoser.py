@@ -31,25 +31,17 @@ class cmbOutlinePersoChoser(QComboBox):
         
         for importance in range(3):
             self.addItem(l[importance])
-            # FIXME: segfault sometimes on QBrush next line
             self.setItemData(self.count()-1, QBrush(QColor(Qt.darkBlue)), Qt.ForegroundRole)
             self.setItemData(self.count()-1, QBrush(QColor(Qt.blue).lighter(190)), Qt.BackgroundRole)
             item = self.model().item(self.count()-1)
             item.setFlags(Qt.ItemIsEnabled)
             for i in range(self.mdlPersos.rowCount()):
-                imp = self.mdlPersos.item(i, Perso.importance.value)
-                if imp:
-                    imp = toInt(imp.text())
-                else:
-                    imp = 0
+                imp = toInt(self.mdlPersos.importance(i))
+                
                 if not 2-imp == importance: continue
             
-                item = self.mdlPersos.item(i, Perso.name.value)
-                item2 = self.mdlPersos.item(i, Perso.ID.value)
-                
-                if item and item2: # Otherwise error while loading
-                    self.addItem(item.icon(), item.text(), item2.text())
-                    self.setItemData(i+1, item.text(), Qt.ToolTipRole)
+                self.addItem(self.mdlPersos.icon(i), self.mdlPersos.name(i), self.mdlPersos.ID(i))
+                self.setItemData(self.count() - 1, self.mdlPersos.name(i), Qt.ToolTipRole)
                 
         
         self._various = False

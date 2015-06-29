@@ -53,10 +53,10 @@ def openReference(ref):
             mw = mainWindow()
             
             for i in range(mw.mdlPersos.rowCount()):
-                if mw.mdlPersos.item(i, Perso.ID.value).text() == _ref:
+                if mw.mdlPersos.ID(i) == _ref:
                     mw.tabMain.setCurrentIndex(2)
-                    # FIXME: update after creating a custom persomodel
-                    #mw.lstPersos.setCurrentRow(i)
+                    item = mw.lstPersos.getItemByID(_ref)
+                    mw.lstPersos.setCurrentItem(item)
                     return True
                 
             print("Ref not found")

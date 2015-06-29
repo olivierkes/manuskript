@@ -17,6 +17,8 @@ class persoTreeView(QTreeWidget):
         self._updating = False
         self.setRootIsDecorated(False)
         self.setIndentation(10)
+        self.setHeaderHidden(True)
+        self.setIconSize(QSize(24, 24))
         
         self.setColumnCount(1)
         self._rootItem = QTreeWidgetItem()
@@ -46,7 +48,7 @@ class persoTreeView(QTreeWidget):
             self.updateItems()
             
     def updateMaybe2(self, parent, first, last):
-        "Rows inserted or removed"
+        #Rows inserted or removed, we update only if they are topLevel rows.
         if parent == QModelIndex():
             self.updateItems()
             
@@ -58,8 +60,14 @@ class persoTreeView(QTreeWidget):
                 sub = item.child(c)
                 ID = sub.data(0, Qt.UserRole)
                 if ID:
+                    # Update name
                     name = self._model.getPersoNameByID(ID)
                     sub.setText(0, name)
+                    # Update icon
+                    px = QPixmap(32, 32)
+                    color = QColor(self._model.getPersoColorByID(ID))
+                    px.fill(color)
+                    sub.setIcon(0, QIcon(px))
             
     def updateItems(self):
         if not self._model:
@@ -102,9 +110,11 @@ class persoTreeView(QTreeWidget):
         self._updating = False
         
     def getItemByID(self, ID):
-        for i in range(self.topLevelItemCount()):
-            if self.topLevelItem(i).data(0, Qt.UserRole) == ID:
-                return self.topLevelItem(i)
+        for t in range(self.topLevelItemCount()):
+            for i in range(self.topLevelItem(t).childCount()):
+                item = self.topLevelItem(t).child(i)
+                if item.data(0, Qt.UserRole) == ID:
+                    return item
         
     def currentPersoIndex(self):
         ID = None

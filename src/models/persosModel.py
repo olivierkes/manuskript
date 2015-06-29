@@ -15,7 +15,23 @@ class persosModel(QStandardItemModel):
         #self._proxy.setSourceModel(self)
 
 ###############################################################################
-# QUERRIES
+# PERSOS QUERRIES
+###############################################################################
+
+    def name(self, row):
+        return self.item(row, Perso.name.value).text()
+    
+    def icon(self, row):
+        return self.item(row, Perso.name.value).icon()
+    
+    def ID(self, row):
+        return self.item(row, Perso.ID.value).text()
+    
+    def importance(self, row):
+        return self.item(row, Perso.importance.value).text()
+
+###############################################################################
+# GENERAL QUERRIES
 ###############################################################################
 
     def getPersosByImportance(self):
@@ -27,11 +43,9 @@ class persosModel(QStandardItemModel):
         return persos
     
     def getPersoNameByID(self, ID):
-        for i in range(self.rowCount()):
-            _ID = self.item(i, Perso.ID.value).text()
-            if _ID == ID or toInt(_ID) == ID:
-                name = self.item(i, Perso.name.value).text()
-                return name
+        index = self.getIndexFromID(ID)
+        if index.isValid():
+            return self.name(index.row())
         return None
     
     def getIndexFromID(self, ID):
@@ -100,7 +114,7 @@ class persosModel(QStandardItemModel):
             color = iconColor(item.icon())
         else:
             color = Qt.white
-        self.colorDialog = QColorDialog(color, self)
+        self.colorDialog = QColorDialog(color, self.mw)
         color = self.colorDialog.getColor(color)
         if color.isValid():
             self.setPersoColor(item, color)

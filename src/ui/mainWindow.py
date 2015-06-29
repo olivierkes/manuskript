@@ -372,39 +372,21 @@ class Ui_MainWindow(object):
         self.label_4 = QtWidgets.QLabel(self.infos)
         self.label_4.setObjectName("label_4")
         self.formLayout.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_4)
-        self.txtPersoMotivation = QtWidgets.QPlainTextEdit(self.infos)
-        self.txtPersoMotivation.setObjectName("txtPersoMotivation")
-        self.formLayout.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.txtPersoMotivation)
         self.label_5 = QtWidgets.QLabel(self.infos)
         self.label_5.setObjectName("label_5")
         self.formLayout.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.label_5)
-        self.txtPersoGoal = QtWidgets.QPlainTextEdit(self.infos)
-        self.txtPersoGoal.setObjectName("txtPersoGoal")
-        self.formLayout.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.txtPersoGoal)
         self.label_6 = QtWidgets.QLabel(self.infos)
         self.label_6.setObjectName("label_6")
         self.formLayout.setWidget(4, QtWidgets.QFormLayout.LabelRole, self.label_6)
-        self.txtPersoConflict = QtWidgets.QPlainTextEdit(self.infos)
-        self.txtPersoConflict.setObjectName("txtPersoConflict")
-        self.formLayout.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.txtPersoConflict)
         self.label_7 = QtWidgets.QLabel(self.infos)
         self.label_7.setObjectName("label_7")
         self.formLayout.setWidget(5, QtWidgets.QFormLayout.LabelRole, self.label_7)
-        self.txtPersoEpiphany = QtWidgets.QPlainTextEdit(self.infos)
-        self.txtPersoEpiphany.setObjectName("txtPersoEpiphany")
-        self.formLayout.setWidget(5, QtWidgets.QFormLayout.FieldRole, self.txtPersoEpiphany)
         self.label_24 = QtWidgets.QLabel(self.infos)
         self.label_24.setObjectName("label_24")
         self.formLayout.setWidget(6, QtWidgets.QFormLayout.LabelRole, self.label_24)
-        self.txtPersoSummarySentance = QtWidgets.QPlainTextEdit(self.infos)
-        self.txtPersoSummarySentance.setObjectName("txtPersoSummarySentance")
-        self.formLayout.setWidget(6, QtWidgets.QFormLayout.FieldRole, self.txtPersoSummarySentance)
         self.label_8 = QtWidgets.QLabel(self.infos)
         self.label_8.setObjectName("label_8")
         self.formLayout.setWidget(7, QtWidgets.QFormLayout.LabelRole, self.label_8)
-        self.txtPersoSummaryPara = QtWidgets.QPlainTextEdit(self.infos)
-        self.txtPersoSummaryPara.setObjectName("txtPersoSummaryPara")
-        self.formLayout.setWidget(7, QtWidgets.QFormLayout.FieldRole, self.txtPersoSummaryPara)
         self.horizontalLayout_21 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_21.setObjectName("horizontalLayout_21")
         spacerItem10 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
@@ -425,7 +407,7 @@ class Ui_MainWindow(object):
         self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.sldPersoImportance)
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        self.txtPersoName = QtWidgets.QLineEdit(self.infos)
+        self.txtPersoName = lineEditView(self.infos)
         self.txtPersoName.setObjectName("txtPersoName")
         self.horizontalLayout_3.addWidget(self.txtPersoName)
         self.btnPersoColor = QtWidgets.QPushButton(self.infos)
@@ -433,12 +415,30 @@ class Ui_MainWindow(object):
         self.btnPersoColor.setObjectName("btnPersoColor")
         self.horizontalLayout_3.addWidget(self.btnPersoColor)
         self.formLayout.setLayout(0, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout_3)
+        self.txtPersoMotivation = textEditView(self.infos)
+        self.txtPersoMotivation.setObjectName("txtPersoMotivation")
+        self.formLayout.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.txtPersoMotivation)
+        self.txtPersoGoal = textEditView(self.infos)
+        self.txtPersoGoal.setObjectName("txtPersoGoal")
+        self.formLayout.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.txtPersoGoal)
+        self.txtPersoConflict = textEditView(self.infos)
+        self.txtPersoConflict.setObjectName("txtPersoConflict")
+        self.formLayout.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.txtPersoConflict)
+        self.txtPersoEpiphany = textEditView(self.infos)
+        self.txtPersoEpiphany.setObjectName("txtPersoEpiphany")
+        self.formLayout.setWidget(5, QtWidgets.QFormLayout.FieldRole, self.txtPersoEpiphany)
+        self.txtPersoSummarySentance = textEditView(self.infos)
+        self.txtPersoSummarySentance.setObjectName("txtPersoSummarySentance")
+        self.formLayout.setWidget(6, QtWidgets.QFormLayout.FieldRole, self.txtPersoSummarySentance)
+        self.txtPersoSummaryPara = textEditView(self.infos)
+        self.txtPersoSummaryPara.setObjectName("txtPersoSummaryPara")
+        self.formLayout.setWidget(7, QtWidgets.QFormLayout.FieldRole, self.txtPersoSummaryPara)
         self.tabPersos.addTab(self.infos, "")
         self.tab_11 = QtWidgets.QWidget()
         self.tab_11.setObjectName("tab_11")
         self.verticalLayout_17 = QtWidgets.QVBoxLayout(self.tab_11)
         self.verticalLayout_17.setObjectName("verticalLayout_17")
-        self.txtPersoSummaryFull = QtWidgets.QPlainTextEdit(self.tab_11)
+        self.txtPersoSummaryFull = textEditView(self.tab_11)
         self.txtPersoSummaryFull.setObjectName("txtPersoSummaryFull")
         self.verticalLayout_17.addWidget(self.txtPersoSummaryFull)
         self.horizontalLayout_22 = QtWidgets.QHBoxLayout()
@@ -456,7 +456,7 @@ class Ui_MainWindow(object):
         self.tab_19.setObjectName("tab_19")
         self.horizontalLayout_30 = QtWidgets.QHBoxLayout(self.tab_19)
         self.horizontalLayout_30.setObjectName("horizontalLayout_30")
-        self.txtPersoNotes = QtWidgets.QPlainTextEdit(self.tab_19)
+        self.txtPersoNotes = textEditView(self.tab_19)
         self.txtPersoNotes.setObjectName("txtPersoNotes")
         self.horizontalLayout_30.addWidget(self.txtPersoNotes)
         self.tabPersos.addTab(self.tab_19, "")
@@ -1176,13 +1176,13 @@ class Ui_MainWindow(object):
         self.actCloseProject.setText(_translate("MainWindow", "Close project"))
 
 from ui.views.plotTreeView import plotTreeView
-from ui.views.outlineView import outlineView
-from ui.views.persoTreeView import persoTreeView
 from ui.views.lineEditView import lineEditView
-from ui.views.textEditView import textEditView
-from ui.sldImportance import sldImportance
-from ui.editors.mainEditor import mainEditor
-from ui.views.metadataView import metadataView
-from ui.views.basicItemView import basicItemView
-from ui.views.treeView import treeView
+from ui.views.outlineView import outlineView
 from ui.welcome import welcome
+from ui.views.treeView import treeView
+from ui.views.basicItemView import basicItemView
+from ui.views.textEditView import textEditView
+from ui.views.metadataView import metadataView
+from ui.views.persoTreeView import persoTreeView
+from ui.editors.mainEditor import mainEditor
+from ui.sldImportance import sldImportance

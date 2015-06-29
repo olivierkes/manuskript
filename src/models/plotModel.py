@@ -13,7 +13,6 @@ class plotModel(QStandardItemModel):
         self.mw = mainWindow()
         
         self.updatePlotPersoButton()
-        self.mw.mdlPersos.dataChanged.connect(self.updatePlotPersoButton)
         
 ####################################################################################################
 #                                            QUERIES                                               #
@@ -168,18 +167,14 @@ class plotModel(QStandardItemModel):
         
         mpr = QSignalMapper(menu)
         for i in range(self.mw.mdlPersos.rowCount()):
-            if self.mw.mdlPersos.item(i, Perso.ID.value):
-                a = QAction(self.mw.mdlPersos.item(i, Perso.name.value).text(), menu)
-                a.triggered.connect(mpr.map)
-                mpr.setMapping(a, int(self.mw.mdlPersos.item(i, Perso.ID.value).text()))
+            a = QAction(self.mw.mdlPersos.name(i), menu)
+            a.setIcon(self.mw.mdlPersos.icon(i))
+            a.triggered.connect(mpr.map)
+            mpr.setMapping(a, int(self.mw.mdlPersos.ID(i)))
+        
+            imp = toInt(self.mw.mdlPersos.importance(i))
             
-                imp = self.mw.mdlPersos.item(i, Perso.importance.value)
-                if imp:
-                    imp = toInt(imp.text())
-                else:
-                    imp = 0
-                
-                menus[2-imp].addAction(a)
+            menus[2-imp].addAction(a)
             
         mpr.mapped.connect(self.addPlotPerso)
         self.mw.btnAddPlotPerso.setMenu(menu)

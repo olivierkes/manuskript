@@ -178,11 +178,20 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             return
 
         self.tabPersos.setEnabled(True)
-        # FIXME
-        #self.txtPlotName.setCurrentModelIndex(index)
-        #self.txtPlotDescription.setCurrentModelIndex(index)
-        #self.txtPlotResult.setCurrentModelIndex(index)
-        #self.sldPlotImportance.setCurrentModelIndex(index)
+        
+        for w in [
+            self.txtPersoName,
+            self.sldPersoImportance,
+            self.txtPersoMotivation,
+            self.txtPersoGoal,
+            self.txtPersoConflict,
+            self.txtPersoEpiphany,
+            self.txtPersoSummarySentance,
+            self.txtPersoSummaryPara,
+            self.txtPersoSummaryFull,
+            self.txtPersoNotes,
+            ]:
+            w.setCurrentModelIndex(index)
         
         ## Button color
         self.mdlPersos.updatePersoColor(index)
@@ -440,7 +449,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.saveDatas()
 
         # closeEvent
-        QMainWindow.closeEvent(self, event)
+        #QMainWindow.closeEvent(self, event)  # Causin segfaults?
 
     def startTimerNoChanges(self):
         if settings.autoSaveNoChanges:
@@ -640,11 +649,32 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         #FIXME
         #self.btnPersoAddInfo.clicked.connect(lambda:
                  #self.mdlPersosInfos.insertRow(self.mdlPersosInfos.rowCount()), AUC)
-        self.mprPersos = QDataWidgetMapper()
-        self.mprPersos.setModel(self.mdlPersos)
+                 
+        #self.mprPersos = QDataWidgetMapper()
+        #self.mprPersos.setModel(self.mdlPersos)
 
-        mapping = [
+        #mapping = [
+            #(self.txtPersoName, Perso.name.value),
+            #(self.txtPersoMotivation, Perso.motivation.value),
+            #(self.txtPersoGoal, Perso.goal.value),
+            #(self.txtPersoConflict, Perso.conflict.value),
+            #(self.txtPersoEpiphany, Perso.epiphany.value),
+            #(self.txtPersoSummarySentance, Perso.summarySentance.value),
+            #(self.txtPersoSummaryPara, Perso.summaryPara.value),
+            #(self.txtPersoSummaryFull, Perso.summaryFull.value),
+            #(self.txtPersoNotes, Perso.notes.value)
+            #]
+        #for w, i in mapping:
+                #self.mprPersos.addMapping(w, i)
+        #self.mprPersos.addMapping(self.sldPersoImportance,
+                                  #Perso.importance.value, "importance")
+        #self.sldPersoImportance.importanceChanged.connect(self.mprPersos.submit, AUC)
+        #self.tabMain.currentChanged.connect(self.mprPersos.submit, AUC)
+        #self.mprPersos.setCurrentIndex(0)
+        
+        for w, c in [
             (self.txtPersoName, Perso.name.value),
+            (self.sldPersoImportance, Perso.importance.value),
             (self.txtPersoMotivation, Perso.motivation.value),
             (self.txtPersoGoal, Perso.goal.value),
             (self.txtPersoConflict, Perso.conflict.value),
@@ -653,17 +683,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             (self.txtPersoSummaryPara, Perso.summaryPara.value),
             (self.txtPersoSummaryFull, Perso.summaryFull.value),
             (self.txtPersoNotes, Perso.notes.value)
-            ]
-        for w, i in mapping:
-                self.mprPersos.addMapping(w, i)
-        self.mprPersos.addMapping(self.sldPersoImportance,
-                                  Perso.importance.value, "importance")
-        self.sldPersoImportance.importanceChanged.connect(self.mprPersos.submit, AUC)
-        self.tabMain.currentChanged.connect(self.mprPersos.submit, AUC)
-
-        self.mprPersos.setCurrentIndex(0)
-        self.lstPersos.selectionModel().currentChanged.connect(
-                                        self.mdlPersos.updatePersoColor, AUC)
+            ]:
+            w.setModel(self.mdlPersos)
+            w.setColumn(c)
+        self.tabPersos.setEnabled(False)
+        
+        #self.lstPersos.selectionModel().currentChanged.connect(
+                                        #self.mdlPersos.updatePersoColor, AUC)
         #self.tabPersos.currentChanged.connect(self.resizePersosInfos)
 
         # Plots
@@ -688,7 +714,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             w.setColumn(c)
 
         self.tabPlot.setEnabled(False)
-
+        self.mdlPlots.updatePlotPersoButton()
+        self.mdlPersos.dataChanged.connect(self.mdlPlots.updatePlotPersoButton)
         self.lstOutlinePlots.setPlotModel(self.mdlPlots)
         self.lstOutlinePlots.setShowSubPlot(True)
 
