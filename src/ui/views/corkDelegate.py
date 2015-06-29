@@ -11,7 +11,7 @@ class corkDelegate(QStyledItemDelegate):
     
     def __init__(self, parent=None):
         QStyledItemDelegate.__init__(self, parent)
-        self.factor = 1
+        self.factor = settings.corkSizeFactor / 100.
         self.defaultSize = QSize(300, 200)
         self.lastPos = None
         self.editing = None

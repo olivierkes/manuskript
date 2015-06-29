@@ -50,7 +50,6 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
         
     def setCorkSizeFactor(self, v):
         self.corkView.itemDelegate().setCorkSizeFactor(v)
-        settings.corkSizeFactor = v
         self.redrawCorkItems()
         
     def redrawCorkItems(self):

@@ -191,6 +191,7 @@ class mainEditor(QWidget, Ui_mainEditor):
     def setCorkSizeFactor(self, val):
         for w in self.allTabs():
             w.setCorkSizeFactor(val)
+        settings.corkSizeFactor = val
         
     def updateCorkView(self):
         for w in self.allTabs():
