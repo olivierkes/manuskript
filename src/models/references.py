@@ -42,6 +42,33 @@ def infoForRef(ref):
     else:
         return qApp.translate("references", "Unknown reference: {}.").format(ref)
     
+def tooltipForRef(ref):
+    match = re.fullmatch("::(\w):(\d+?)::", ref)
+    if match:
+        _type = match.group(1)
+        _ref = match.group(2)
+        
+        if _type == "T":
+            m = mainWindow().mdlOutline
+            idx = m.getIndexByID(_ref)
+            
+            if not idx.isValid():
+                return qApp.translate("references", "Unknown reference: {}.").format(ref)
+            
+            item = idx.internalPointer()
+            
+            tooltip = qApp.translate("references", "Text: <b>{}</b>").format(item.title())
+            tooltip += "<br><i>{}</i>".format(item.path())
+            
+            return tooltip
+        
+        elif _type == "C":
+            m = mainWindow().mdlPersos
+            name = m.item(int(_ref), Perso.name.value).text()
+            return qApp.translate("references", "Character: <b>{}</b>").format(name)
+            
+    else:
+        return qApp.translate("references", "Unknown reference: {}.").format(ref)
     
 def openReference(ref):
     match = re.fullmatch("::(\w):(\d+?)::", ref)

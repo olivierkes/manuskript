@@ -24,6 +24,14 @@ class completer(QWidget, Ui_completer):
         self.outlineModel = mainWindow().mdlOutline
         self.persoModel = mainWindow().mdlPersos
         
+        self.populateTimer = QTimer(self)
+        self.populateTimer.setSingleShot(True)
+        self.populateTimer.setInterval(500)
+        self.populateTimer.timeout.connect(self.populate)
+        self.populateTimer.stop()
+        self.outlineModel.dataChanged.connect(self.populateTimer.start)
+        self.persoModel.dataChanged.connect(self.populateTimer.start)
+        
         self.data = {}
         
         self.populate()

@@ -49,6 +49,11 @@ class outlineModel(QAbstractItemModel):
         col = column
         return self.createIndex(row, col, item)
     
+    def ID(self, index):
+        if index.isValid():
+            item = index.internalPointer()
+            return item.ID()
+    
     def getIndexByID(self, ID):
         "Returns the index of item whose ID is ``ID``. If none, returns QModelIndex()."
         def search(item):
@@ -240,12 +245,19 @@ class outlineModel(QAbstractItemModel):
         items = []
         for child in root:
             if child.tag == "outlineItem":
-                items.append(outlineItem(xml=ET.tostring(child)))
+                item = outlineItem(xml=ET.tostring(child))
+                items.append(item)
                 
         if not items:
             return False
         
-        return self.insertItems(items, beginRow, parent)
+        r = self.insertItems(items, beginRow, parent)
+        
+        if action == Qt.CopyAction:
+            for item in items:
+                item.getUniqueID()
+                
+        return r
         
     ################# ADDING AND REMOVING #################
         
@@ -362,7 +374,7 @@ class outlineModel(QAbstractItemModel):
         path = path.split(",")
         item = self.rootItem
         for p in path:
-            if p != "":
+            if p != "" and int(p) < item.childCount():
                 item = item.child(int(p))
         return self.indexFromItem(item)
     
@@ -577,6 +589,7 @@ class outlineItem():
         
     def removeChild(self, row):
         self.childItems.pop(row)
+        self.updateWordCount()
         
     def parent(self):
         return self._parent

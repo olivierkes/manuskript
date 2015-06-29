@@ -57,9 +57,9 @@ class treeView(QTreeView, dndView, outlineBasics):
         menu.insertSeparator(first)
         
         # Expand /collapse item
-        if len(self.selectedIndexes()) != 0:
-            index = self.currentIndex()
-            item = index.internalPointer()
+        if mouseIndex.isValid():
+            #index = self.currentIndex()
+            item = mouseIndex.internalPointer()
             self.actExpand = QAction(self.tr("Expand {}").format(item.title()), menu)
             self.actExpand.triggered.connect(self.expandCurrentIndex)
             menu.insertAction(first, self.actExpand)
@@ -88,7 +88,7 @@ class treeView(QTreeView, dndView, outlineBasics):
         
     def expandCurrentIndex(self, index=None):
         if index is None or type(index) == bool:
-            index = self.currentIndex()
+            index = self._indexesToOpen[0]  #self.currentIndex()
         
         self.expand(index)
         for i in range(self.model().rowCount(index)):
@@ -97,7 +97,7 @@ class treeView(QTreeView, dndView, outlineBasics):
     
     def collapseCurrentIndex(self, index=None):
         if index is None or type(index) == bool:
-            index = self.currentIndex()
+            index = self._indexesToOpen[0]  #self.currentIndex()
         
         self.collapse(index)
         for i in range(self.model().rowCount(index)):
@@ -115,7 +115,3 @@ class treeView(QTreeView, dndView, outlineBasics):
             pass
         else:
             QTreeView.mousePressEvent(self, event)
-        
-    def mouseReleaseEvent(self, event):
-        QTreeView.mouseReleaseEvent(self, event)
-        outlineBasics.mouseReleaseEvent(self, event)

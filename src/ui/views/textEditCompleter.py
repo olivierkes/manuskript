@@ -123,7 +123,7 @@ class textEditCompleter(textEditView):
         if ref:
             if not qApp.overrideCursor():
                 qApp.setOverrideCursor(Qt.PointingHandCursor)
-            QToolTip.showText(self.mapToGlobal(event.pos()), infoForRef(ref))
+            QToolTip.showText(self.mapToGlobal(event.pos()), tooltipForRef(ref))
         
     def mouseReleaseEvent(self, event):
         textEditView.mouseReleaseEvent(self, event)
@@ -147,7 +147,6 @@ class textEditCompleter(textEditView):
             cursor.setPosition(txt.start())
             r = self.cursorRect(cursor)
             r.setWidth(fm.width(txt.group(0)))
-            r = r.adjusted(-2, -2, 2, 2)
             refs.append(r)
         self.refRects = refs
         

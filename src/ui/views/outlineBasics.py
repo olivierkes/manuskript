@@ -20,11 +20,11 @@ class outlineBasics(QAbstractItemView):
         return sel
     
     def mouseReleaseEvent(self, event):
-        
         if event.button() == Qt.RightButton:
-            
             self.menu = self.makePopupMenu()
             self.menu.popup(event.globalPos())
+        else:
+            QAbstractItemView.mouseReleaseEvent(self, event)
         
     def makePopupMenu(self):
         index = self.currentIndex()
