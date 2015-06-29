@@ -226,10 +226,6 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
         self.currentDict = dct
         self.dictChanged.emit(dct)
         
-    def showFullscreen(self, index):
-        
-        self._fullScreen = fullScreenEditor(index)
-        
     def keyPressEvent(self, event):
         if event.key() in [Qt.Key_Escape, Qt.Key_F11] and self._fullscreen:
             mainWindow().show()

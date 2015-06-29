@@ -46,14 +46,25 @@ class mainEditor(QWidget, Ui_mainEditor):
             index = self.currentEditor().currentIndex
             view = self.currentEditor().folderView
             self.updateFolderViewButtons(view)
+            if index.isValid():
+                hidden = not index.internalPointer().isFolder()
+            else:
+                hidden = False
         else:
             index = QModelIndex()
+            hidden = False
             
         self._updating = True
         self.mw.treeRedacOutline.setCurrentIndex(index)
         self._updating = False
         
         self.updateStats()
+        
+        self.btnRedacFolderText.setHidden(hidden)
+        self.btnRedacFolderCork.setHidden(hidden)
+        self.btnRedacFolderOutline.setHidden(hidden)
+        self.sldCorkSizeFactor.setHidden(hidden)
+        self.btnRedacFullscreen.setVisible(hidden)
     
     def closeTab(self, index):
         #FIXME: submit data if textedit?
@@ -73,20 +84,9 @@ class mainEditor(QWidget, Ui_mainEditor):
         if len(self.mw.treeRedacOutline.selectionModel().
                     selection().indexes()) == 0:
             hidden = False
-            idx = QModelIndex()
         else:
             idx = self.mw.treeRedacOutline.currentIndex()
-            if idx.isValid():
-                hidden = not idx.internalPointer().isFolder()
-            else:
-                hidden = False
 
-        self.btnRedacFolderText.setHidden(hidden)
-        self.btnRedacFolderCork.setHidden(hidden)
-        self.btnRedacFolderOutline.setHidden(hidden)
-        self.sldCorkSizeFactor.setHidden(hidden)
-        self.btnRedacFullscreen.setVisible(hidden)
-        
         self.setCurrentModelIndex(idx)
         
     def openIndexes(self, indexes, newTab=False):
@@ -199,9 +199,8 @@ class mainEditor(QWidget, Ui_mainEditor):
             w.corkView.outlineView.viewport().update()
         
     def showFullScreen(self):
-        pass
-        #FIXME
-        #self.redacEditor.showFullscreen(self.treeRedacOutline.currentIndex()
+        if self.currentEditor():
+            self._fullScreen = fullScreenEditor(self.currentEditor().currentIndex)
         
 ###############################################################################
 # DICT AND STUFF LIKE THAT
