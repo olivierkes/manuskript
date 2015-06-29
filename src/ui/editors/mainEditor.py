@@ -52,6 +52,8 @@ class mainEditor(QWidget, Ui_mainEditor):
         self._updating = True
         self.mw.treeRedacOutline.setCurrentIndex(index)
         self._updating = False
+        
+        self.updateStats()
     
     def closeTab(self, index):
         #FIXME: submit data if textedit?
@@ -133,8 +135,13 @@ class mainEditor(QWidget, Ui_mainEditor):
         elif view == "outline":
             self.btnRedacFolderOutline.setChecked(True)
         
-    def updateStats(self, index=None):  
-        if index:
+    def updateStats(self):
+        
+        if not self.currentEditor():
+            return
+        
+        index = self.currentEditor().currentIndex
+        if index.isValid():
             item = index.internalPointer()
         else:
             item = self.mw.mdlOutline.rootItem
@@ -176,24 +183,20 @@ class mainEditor(QWidget, Ui_mainEditor):
         #self.redacEditor.setFolderView(settings.folderView)
         
     def setCorkSizeFactor(self, val):
-        #FIXME
-        pass
-        #self.redacEditor.setCorkSizeFactor
+        for w in self.allTabs():
+            w.setCorkSizeFactor(val)
         
     def updateCorkView(self):
-        pass
-        #FIXME
-        #self.redacEditor.corkView.viewport().update()
+        for w in self.allTabs():
+            w.corkView.viewport().update()
         
     def updateCorkBackground(self):
-        pass
-        #FIXME
-        #self.redacEditor.corkView.updateBackground()
+        for w in self.allTabs():
+            w.corkView.updateBackground()
     
     def updateTreeView(self):
-        pass
-        #FIXME
-        #self.redacEditor.outlineView.viewport().update()
+        for w in self.allTabs():
+            w.corkView.outlineView.viewport().update()
         
     def showFullScreen(self):
         pass

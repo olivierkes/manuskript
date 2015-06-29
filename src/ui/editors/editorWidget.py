@@ -216,7 +216,7 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
         mw = mainWindow()
         if not mw: return
         
-        mw.mainEditor.updateStats(self.currentIndex)
+        mw.mainEditor.updateStats()
             
     def toggleSpellcheck(self, v):
         self.spellcheck = v

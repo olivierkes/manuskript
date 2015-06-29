@@ -275,7 +275,7 @@ class settingsWindow(QWidget, Ui_Settings):
             settings.corkBackground["color"] = color.name()
             self.updateCorkColor()
             # Update Cork view 
-            self.mw.redacEditor.corkView.updateBackground()
+            self.mw.mainEditor.updateCorkBackground()
         
     def updateCorkColor(self):
         self.btnCorkColor.setStyleSheet("background:{};".format(settings.corkBackground["color"]))
@@ -287,7 +287,7 @@ class settingsWindow(QWidget, Ui_Settings):
         else:
             settings.corkBackground["image"] = ""
         # Update Cork view 
-        self.mw.redacEditor.corkView.updateBackground()
+        self.mw.mainEditor.updateCorkBackground()
     
     def populatesCmbBackgrounds(self, cmb):
         #self.cmbDelegate = cmbPixmapDelegate()

@@ -132,17 +132,17 @@ class textEditView(QTextEdit):
             self._textFormat = "text"
             return
         
-        #if self._column != Outline.text.value:
-            #self._textFormat = "text"
-            #return
-        
-        item = index.internalPointer()
-        if item.isHTML():
-            self._textFormat = "html"
-        elif item.isT2T():
-            self._textFormat = "t2t"
-        else:
+        if self._column != Outline.text.value:
             self._textFormat = "text"
+            
+        else:
+            item = index.internalPointer()
+            if item.isHTML():
+                self._textFormat = "html"
+            elif item.isT2T():
+                self._textFormat = "t2t"
+            else:
+                self._textFormat = "text"
         
         # Accept richtext maybe
         if self._textFormat == "html":
