@@ -15,7 +15,7 @@ class cheatSheet(QWidget, Ui_cheatSheet):
     def __init__(self, parent=None):
         QWidget.__init__(self, parent)
         self.setupUi(self)
-        self.splitter.setStretchFactor(0, 3)
+        self.splitter.setStretchFactor(0, 5)
         self.splitter.setStretchFactor(1, 70)
         
         self.txtFilter.textChanged.connect(self.updateListFromData)

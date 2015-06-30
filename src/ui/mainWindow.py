@@ -844,7 +844,6 @@ class Ui_MainWindow(object):
         self.groupBox_3.setFlat(True)
         self.groupBox_3.setObjectName("groupBox_3")
         self.verticalLayout_15 = QtWidgets.QVBoxLayout(self.groupBox_3)
-        self.verticalLayout_15.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_15.setObjectName("verticalLayout_15")
         self.cheatSheet = cheatSheet(self.groupBox_3)
         font = QtGui.QFont()
@@ -854,6 +853,23 @@ class Ui_MainWindow(object):
         self.cheatSheet.setObjectName("cheatSheet")
         self.verticalLayout_15.addWidget(self.cheatSheet)
         self.verticalLayout_21.addWidget(self.groupBox_3)
+        self.groupBox_4 = collapsibleGroupBox2(self.tab_18)
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.groupBox_4.setFont(font)
+        self.groupBox_4.setFlat(True)
+        self.groupBox_4.setObjectName("groupBox_4")
+        self.verticalLayout_31 = QtWidgets.QVBoxLayout(self.groupBox_4)
+        self.verticalLayout_31.setObjectName("verticalLayout_31")
+        self.widget = search(self.groupBox_4)
+        font = QtGui.QFont()
+        font.setBold(False)
+        font.setWeight(50)
+        self.widget.setFont(font)
+        self.widget.setObjectName("widget")
+        self.verticalLayout_31.addWidget(self.widget)
+        self.verticalLayout_21.addWidget(self.groupBox_4)
         self.tabRedacInfos.addTab(self.tab_18, "")
         self.verticalLayout_16.addWidget(self.splitterRedac)
         self.tabMain.addTab(self.lytTabRedac, "")
@@ -1029,7 +1045,7 @@ class Ui_MainWindow(object):
         self.stack.setCurrentIndex(1)
         self.tabMain.setCurrentIndex(6)
         self.tabSummary.setCurrentIndex(0)
-        self.tabPersos.setCurrentIndex(3)
+        self.tabPersos.setCurrentIndex(0)
         self.tabPlot.setCurrentIndex(0)
         self.comboBox_2.setCurrentIndex(0)
         self.stkPlotSummary.setCurrentIndex(0)
@@ -1113,6 +1129,7 @@ class Ui_MainWindow(object):
         self.tabMain.setTabText(self.tabMain.indexOf(self.lytTabOutline), _translate("MainWindow", "Outline"))
         self.tabRedacInfos.setTabText(self.tabRedacInfos.indexOf(self.tab_17), _translate("MainWindow", "Metadata"))
         self.groupBox_3.setTitle(_translate("MainWindow", "Cheat sheet"))
+        self.groupBox_4.setTitle(_translate("MainWindow", "Search"))
         self.tabRedacInfos.setTabText(self.tabRedacInfos.indexOf(self.tab_18), _translate("MainWindow", "Tools"))
         self.tabMain.setTabText(self.tabMain.indexOf(self.lytTabRedac), _translate("MainWindow", "Redaction"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_9), _translate("MainWindow", "FlatData"))
@@ -1152,16 +1169,17 @@ class Ui_MainWindow(object):
         self.actSettings.setShortcut(_translate("MainWindow", "F8"))
         self.actCloseProject.setText(_translate("MainWindow", "Close project"))
 
-from ui.views.treeView import treeView
 from ui.editors.mainEditor import mainEditor
-from ui.views.persoTreeView import persoTreeView
-from ui.sldImportance import sldImportance
-from ui.cheatSheet import cheatSheet
-from ui.views.basicItemView import basicItemView
+from ui.views.metadataView import metadataView
+from ui.search import search
 from ui.views.outlineView import outlineView
 from ui.collapsibleGroupBox2 import collapsibleGroupBox2
-from ui.views.metadataView import metadataView
-from ui.views.lineEditView import lineEditView
+from ui.views.persoTreeView import persoTreeView
+from ui.sldImportance import sldImportance
+from ui.views.basicItemView import basicItemView
+from ui.views.treeView import treeView
+from ui.cheatSheet import cheatSheet
 from ui.views.plotTreeView import plotTreeView
-from ui.views.textEditView import textEditView
 from ui.welcome import welcome
+from ui.views.textEditView import textEditView
+from ui.views.lineEditView import lineEditView

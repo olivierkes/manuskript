@@ -46,7 +46,7 @@ class persosModel(QStandardItemModel):
         index = self.getIndexFromID(ID)
         if index.isValid():
             return self.name(index.row())
-        return None
+        return ""
     
     def getIndexFromID(self, ID):
         for i in range(self.rowCount()):

@@ -717,7 +717,7 @@
               </widget>
               <widget class="QTabWidget" name="tabPersos">
                <property name="currentIndex">
-                <number>3</number>
+                <number>0</number>
                </property>
                <widget class="QWidget" name="infos">
                 <attribute name="title">
@@ -1628,11 +1628,36 @@
                     <bool>true</bool>
                    </property>
                    <layout class="QVBoxLayout" name="verticalLayout_15">
-                    <property name="margin">
-                     <number>0</number>
-                    </property>
                     <item>
                      <widget class="cheatSheet" name="cheatSheet" native="true">
+                      <property name="font">
+                       <font>
+                        <weight>50</weight>
+                        <bold>false</bold>
+                       </font>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="collapsibleGroupBox2" name="groupBox_4">
+                   <property name="font">
+                    <font>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="title">
+                    <string>Search</string>
+                   </property>
+                   <property name="flat">
+                    <bool>true</bool>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_31">
+                    <item>
+                     <widget class="search" name="widget" native="true">
                       <property name="font">
                        <font>
                         <weight>50</weight>
@@ -2045,6 +2070,12 @@
    <header>ui.collapsibleGroupBox2.h</header>
    <container>1</container>
   </customwidget>
+  <customwidget>
+   <class>search</class>
+   <extends>QWidget</extends>
+   <header>ui.search.h</header>
+   <container>1</container>
+  </customwidget>
  </customwidgets>
  <resources/>
  <connections>
@@ -2055,8 +2086,8 @@
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>325</x>
-     <y>787</y>
+     <x>342</x>
+     <y>760</y>
     </hint>
     <hint type="destinationlabel">
      <x>860</x>
@@ -2087,12 +2118,12 @@
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1088</x>
-     <y>770</y>
+     <x>1136</x>
+     <y>768</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1053</x>
-     <y>731</y>
+     <x>1137</x>
+     <y>729</y>
     </hint>
    </hints>
   </connection>
@@ -2135,12 +2166,12 @@
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>742</x>
-     <y>762</y>
+     <x>446</x>
+     <y>127</y>
     </hint>
     <hint type="destinationlabel">
-     <x>742</x>
-     <y>749</y>
+     <x>446</x>
+     <y>120</y>
     </hint>
    </hints>
   </connection>

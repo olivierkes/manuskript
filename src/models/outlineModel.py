@@ -59,9 +59,10 @@ class outlineModel(QAbstractItemModel):
         "Returns a list of IDs of all items whose POV is ``POV``."
         return self.rootItem.findItemsByPOV(POV)
     
-    def findItemsContaining(self, text, column):
-        "Returns a list of IDs of all items containing ``text`` in column ``column``."
-        return self.rootItem.findItemsContaining(text, column)
+    def findItemsContaining(self, text, columns, caseSensitive=False):
+        """Returns a list of IDs of all items containing ``text``
+        in columns ``columns`` (being a list of int)."""
+        return self.rootItem.findItemsContaining(text, columns, mainWindow(), caseSensitive)
     
     def getIndexByID(self, ID):
         "Returns the index of item whose ID is ``ID``. If none, returns QModelIndex()."
@@ -764,15 +765,34 @@ class outlineItem():
             
         return lst
     
-    def findItemsContaining(self, text, column):
+    def findItemsContaining(self, text, columns, mainWindow, caseSensitive=False):
         """Returns a list if IDs of all subitems 
-        containing ``text`` in column ``column``.
+        containing ``text`` in columns ``columns``
+        (being a list of int).
         """
         lst = []
-        if text in self.data(column):
-            lst.append(self.ID())
+        text = text.lower() if not caseSensitive else text
+        for c in columns:
+            
+            if c == Outline.POV.value:
+                searchIn = mainWindow.mdlPersos.getPersoNameByID(self.POV())
+                
+            elif c == Outline.status.value:
+                searchIn = mainWindow.mdlStatus.item(toInt(self.status()), 0).text()
+                
+            elif c == Outline.label.value:
+                searchIn = mainWindow.mdlLabels.item(toInt(self.label()), 0).text()
+                
+            else:
+                searchIn = self.data(c)
+                
+            searchIn = searchIn.lower() if not caseSensitive else searchIn
+            
+            if text in searchIn:
+                if not self.ID() in lst:
+                    lst.append(self.ID())
         
         for c in self.children():
-            lst.extend(c.findItemsContaining(text, column))
+            lst.extend(c.findItemsContaining(text, columns, mainWindow, caseSensitive))
             
         return lst

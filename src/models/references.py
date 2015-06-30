@@ -149,7 +149,7 @@ def infoForRef(ref):
             
             # List scences where character is referenced
             listRefs = ""
-            lst = oM.findItemsContaining(ref, Outline.notes.value)
+            lst = oM.findItemsContaining(ref, [Outline.notes.value])
             for t in lst:
                 idx = oM.getIndexByID(t)
                 listRefs += "<li><a href='{link}'>{text}</a>".format(
