@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="2.0" language="fr" sourcelanguage="en">
+<!DOCTYPE TS>
+<TS version="2.1" language="fr" sourcelanguage="en">
 <context>
     <name>MainWindow</name>
     <message>
@@ -1091,37 +1092,37 @@ des lignes:</translation>
     <message>
         <location filename="../src/ui/cheatSheet_ui.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Form</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../src/ui/cheatSheet_ui.ui" line="23"/>
         <source>Filter</source>
-        <translation type="unfinished">Filtre</translation>
+        <translation>Filtre</translation>
     </message>
     <message>
-        <location filename="../src/ui/cheatSheet.py" line="54"/>
+        <location filename="../src/ui/cheatSheet.py" line="55"/>
         <source>Minor</source>
-        <translation type="unfinished"></translation>
+        <translation>Mineur</translation>
     </message>
     <message>
-        <location filename="../src/ui/cheatSheet.py" line="54"/>
+        <location filename="../src/ui/cheatSheet.py" line="55"/>
         <source>Secondary</source>
-        <translation type="unfinished">Secondaire</translation>
+        <translation>Secondaire</translation>
     </message>
     <message>
-        <location filename="../src/ui/cheatSheet.py" line="54"/>
+        <location filename="../src/ui/cheatSheet.py" line="55"/>
         <source>Main</source>
-        <translation type="unfinished"></translation>
+        <translation>Principal</translation>
     </message>
     <message>
-        <location filename="../src/ui/cheatSheet.py" line="57"/>
+        <location filename="../src/ui/cheatSheet.py" line="58"/>
         <source>Characters</source>
-        <translation type="unfinished">Personnages</translation>
+        <translation>Personnages</translation>
     </message>
     <message>
-        <location filename="../src/ui/cheatSheet.py" line="69"/>
+        <location filename="../src/ui/cheatSheet.py" line="70"/>
         <source>Texts</source>
-        <translation type="unfinished">Textes</translation>
+        <translation>Textes</translation>
     </message>
 </context>
 <context>
@@ -1249,22 +1250,22 @@ des lignes:</translation>
         <translation>Form</translation>
     </message>
     <message>
-        <location filename="../src/ui/views/metadataView_ui.ui" line="32"/>
+        <location filename="../src/ui/views/metadataView_ui.ui" line="39"/>
         <source>Properties</source>
         <translation>Propriétés</translation>
     </message>
     <message>
-        <location filename="../src/ui/views/metadataView_ui.ui" line="60"/>
+        <location filename="../src/ui/views/metadataView_ui.ui" line="67"/>
         <source>Summary</source>
         <translation>Résumé</translation>
     </message>
     <message>
-        <location filename="../src/ui/views/metadataView_ui.ui" line="78"/>
+        <location filename="../src/ui/views/metadataView_ui.ui" line="85"/>
         <source>One line summary</source>
         <translation>Résumé en une ligne</translation>
     </message>
     <message>
-        <location filename="../src/ui/views/metadataView_ui.ui" line="91"/>
+        <location filename="../src/ui/views/metadataView_ui.ui" line="98"/>
         <source>Notes</source>
         <translation>Notes</translation>
     </message>
@@ -1345,39 +1346,49 @@ des lignes:</translation>
 <context>
     <name>outlineModel</name>
     <message>
-        <location filename="../src/models/outlineModel.py" line="131"/>
+        <location filename="../src/models/outlineModel.py" line="132"/>
         <source>Title</source>
         <translation>Titre</translation>
     </message>
     <message>
-        <location filename="../src/models/outlineModel.py" line="133"/>
+        <location filename="../src/models/outlineModel.py" line="134"/>
         <source>POV</source>
         <translation>POV</translation>
     </message>
     <message>
-        <location filename="../src/models/outlineModel.py" line="135"/>
+        <location filename="../src/models/outlineModel.py" line="136"/>
         <source>Label</source>
         <translation>Label</translation>
     </message>
     <message>
-        <location filename="../src/models/outlineModel.py" line="137"/>
+        <location filename="../src/models/outlineModel.py" line="138"/>
         <source>Status</source>
         <translation>Status</translation>
     </message>
     <message>
-        <location filename="../src/models/outlineModel.py" line="139"/>
+        <location filename="../src/models/outlineModel.py" line="140"/>
         <source>Compile</source>
         <translation>Compilation</translation>
     </message>
     <message>
-        <location filename="../src/models/outlineModel.py" line="141"/>
+        <location filename="../src/models/outlineModel.py" line="142"/>
         <source>Word count</source>
         <translation>Nombre de mots</translation>
     </message>
     <message>
-        <location filename="../src/models/outlineModel.py" line="143"/>
+        <location filename="../src/models/outlineModel.py" line="144"/>
         <source>Goal</source>
         <translation>Goal</translation>
+    </message>
+    <message>
+        <location filename="../src/models/outlineModel.py" line="665"/>
+        <source>{} words / {} ({})</source>
+        <translation>{} mots / {} ({})</translation>
+    </message>
+    <message>
+        <location filename="../src/models/outlineModel.py" line="670"/>
+        <source>{} words</source>
+        <translation>{} mots</translation>
     </message>
 </context>
 <context>
@@ -1531,19 +1542,24 @@ des lignes:</translation>
 <context>
     <name>references</name>
     <message>
-        <location filename="../src/models/references.py" line="71"/>
+        <location filename="../src/models/references.py" line="123"/>
         <source>Unknown reference: {}.</source>
         <translation>Référence inconnue: {}.</translation>
     </message>
     <message>
-        <location filename="../src/models/references.py" line="60"/>
+        <location filename="../src/models/references.py" line="112"/>
         <source>Text: &lt;b&gt;{}&lt;/b&gt;</source>
         <translation>Texte: &lt;b&gt;{}&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../src/models/references.py" line="68"/>
+        <location filename="../src/models/references.py" line="120"/>
         <source>Character: &lt;b&gt;{}&lt;/b&gt;</source>
         <translation>Personnage: &lt;b&gt;{}&lt;/b&gt;</translation>
+    </message>
+    <message>
+        <location filename="../src/models/references.py" line="33"/>
+        <source>None</source>
+        <translation>Aucun</translation>
     </message>
 </context>
 <context>
