@@ -55,6 +55,14 @@ class outlineModel(QAbstractItemModel):
             item = index.internalPointer()
             return item.ID()
     
+    def findItemsByPOV(self, POV):
+        "Returns a list of IDs of all items whose POV is ``POV``."
+        return self.rootItem.findItemsByPOV(POV)
+    
+    def findItemsContaining(self, text, column):
+        "Returns a list of IDs of all items containing ``text`` in column ``column``."
+        return self.rootItem.findItemsContaining(text, column)
+    
     def getIndexByID(self, ID):
         "Returns the index of item whose ID is ``ID``. If none, returns QModelIndex()."
         def search(item):
@@ -630,6 +638,12 @@ class outlineItem():
     def POV(self):
         return self.data(Outline.POV.value)
     
+    def status(self):
+        return self.data(Outline.status.value)
+    
+    def label(self):
+        return self.data(Outline.label.value)
+    
     def path(self):
         "Returns path to item as string."
         if self.parent().parent():
@@ -738,3 +752,27 @@ class outlineItem():
         if self.parent().parent():
             path = "{}:{}".format(self.parent().pathToItem(), path)
         return path
+    
+    def findItemsByPOV(self, POV):
+        "Returns a list of IDs of all subitems whose POV is ``POV``."
+        lst = []
+        if self.POV() == POV:
+            lst.append(self.ID())
+        
+        for c in self.children():
+            lst.extend(c.findItemsByPOV(POV))
+            
+        return lst
+    
+    def findItemsContaining(self, text, column):
+        """Returns a list if IDs of all subitems 
+        containing ``text`` in column ``column``.
+        """
+        lst = []
+        if text in self.data(column):
+            lst.append(self.ID())
+        
+        for c in self.children():
+            lst.extend(c.findItemsContaining(text, column))
+            
+        return lst

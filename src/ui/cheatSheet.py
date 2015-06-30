@@ -24,6 +24,7 @@ class cheatSheet(QWidget, Ui_cheatSheet):
         self.list.setItemDelegate(self.listDelegate)
         self.list.itemActivated.connect(self.showInfos)
         self.view.linkActivated.connect(self.openLink)
+        self.view.linkHovered.connect(self.linkHovered)
         
         self.outlineModel = None
         self.persoModel = None
@@ -103,6 +104,10 @@ class cheatSheet(QWidget, Ui_cheatSheet):
             
     def openLink(self, link):
         openReference(link)
+        
+    def linkHovered(self, link):
+        if link:
+            QToolTip.showText(QCursor.pos(), tooltipForRef(link))
         
     def keyPressEvent(self, event):
         if event.key() in [Qt.Key_Up, Qt.Key_Down]:

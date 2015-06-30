@@ -165,5 +165,13 @@ class persosModel(QStandardItemModel):
         rm.reverse()
         for r in rm:
             perso.takeRow(r)
-        
+            
+    def listPersoInfos(self, index):
+        infos = []
+        for i in range(self.rowCount(index)):
+            name = self.data(index.child(i, Perso.infoName.value))
+            val = self.data(index.child(i, Perso.infoData.value))
+            infos.append((name, val))
+            
+        return infos
         

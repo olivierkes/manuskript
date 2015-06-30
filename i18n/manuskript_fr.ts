@@ -1100,27 +1100,27 @@ des lignes:</translation>
         <translation>Filtre</translation>
     </message>
     <message>
-        <location filename="../src/ui/cheatSheet.py" line="55"/>
+        <location filename="../src/ui/cheatSheet.py" line="56"/>
         <source>Minor</source>
         <translation>Mineur</translation>
     </message>
     <message>
-        <location filename="../src/ui/cheatSheet.py" line="55"/>
+        <location filename="../src/ui/cheatSheet.py" line="56"/>
         <source>Secondary</source>
         <translation>Secondaire</translation>
     </message>
     <message>
-        <location filename="../src/ui/cheatSheet.py" line="55"/>
+        <location filename="../src/ui/cheatSheet.py" line="56"/>
         <source>Main</source>
         <translation>Principal</translation>
     </message>
     <message>
-        <location filename="../src/ui/cheatSheet.py" line="58"/>
+        <location filename="../src/ui/cheatSheet.py" line="59"/>
         <source>Characters</source>
         <translation>Personnages</translation>
     </message>
     <message>
-        <location filename="../src/ui/cheatSheet.py" line="70"/>
+        <location filename="../src/ui/cheatSheet.py" line="71"/>
         <source>Texts</source>
         <translation>Textes</translation>
     </message>
@@ -1346,47 +1346,47 @@ des lignes:</translation>
 <context>
     <name>outlineModel</name>
     <message>
-        <location filename="../src/models/outlineModel.py" line="132"/>
+        <location filename="../src/models/outlineModel.py" line="140"/>
         <source>Title</source>
         <translation>Titre</translation>
     </message>
     <message>
-        <location filename="../src/models/outlineModel.py" line="134"/>
+        <location filename="../src/models/outlineModel.py" line="142"/>
         <source>POV</source>
         <translation>POV</translation>
     </message>
     <message>
-        <location filename="../src/models/outlineModel.py" line="136"/>
+        <location filename="../src/models/outlineModel.py" line="144"/>
         <source>Label</source>
         <translation>Label</translation>
     </message>
     <message>
-        <location filename="../src/models/outlineModel.py" line="138"/>
+        <location filename="../src/models/outlineModel.py" line="146"/>
         <source>Status</source>
         <translation>Status</translation>
     </message>
     <message>
-        <location filename="../src/models/outlineModel.py" line="140"/>
+        <location filename="../src/models/outlineModel.py" line="148"/>
         <source>Compile</source>
         <translation>Compilation</translation>
     </message>
     <message>
-        <location filename="../src/models/outlineModel.py" line="142"/>
+        <location filename="../src/models/outlineModel.py" line="150"/>
         <source>Word count</source>
         <translation>Nombre de mots</translation>
     </message>
     <message>
-        <location filename="../src/models/outlineModel.py" line="144"/>
+        <location filename="../src/models/outlineModel.py" line="152"/>
         <source>Goal</source>
         <translation>Goal</translation>
     </message>
     <message>
-        <location filename="../src/models/outlineModel.py" line="665"/>
+        <location filename="../src/models/outlineModel.py" line="679"/>
         <source>{} words / {} ({})</source>
         <translation>{} mots / {} ({})</translation>
     </message>
     <message>
-        <location filename="../src/models/outlineModel.py" line="670"/>
+        <location filename="../src/models/outlineModel.py" line="684"/>
         <source>{} words</source>
         <translation>{} mots</translation>
     </message>
@@ -1542,24 +1542,109 @@ des lignes:</translation>
 <context>
     <name>references</name>
     <message>
-        <location filename="../src/models/references.py" line="123"/>
+        <location filename="../src/models/references.py" line="243"/>
         <source>Unknown reference: {}.</source>
         <translation>Référence inconnue: {}.</translation>
     </message>
     <message>
-        <location filename="../src/models/references.py" line="112"/>
+        <location filename="../src/models/references.py" line="232"/>
         <source>Text: &lt;b&gt;{}&lt;/b&gt;</source>
         <translation>Texte: &lt;b&gt;{}&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../src/models/references.py" line="120"/>
+        <location filename="../src/models/references.py" line="240"/>
         <source>Character: &lt;b&gt;{}&lt;/b&gt;</source>
         <translation>Personnage: &lt;b&gt;{}&lt;/b&gt;</translation>
     </message>
     <message>
+        <location filename="../src/models/references.py" line="111"/>
+        <source>Basic infos</source>
+        <translation>Informations générales</translation>
+    </message>
+    <message>
+        <location filename="../src/models/references.py" line="112"/>
+        <source>Detailed infos</source>
+        <translation>Informations détaillées</translation>
+    </message>
+    <message>
+        <location filename="../src/models/references.py" line="113"/>
+        <source>POV of:</source>
+        <translation>POV de:</translation>
+    </message>
+    <message>
+        <location filename="../src/models/references.py" line="114"/>
+        <source>Referenced in:</source>
+        <translation>Référencé dans:</translation>
+    </message>
+    <message>
+        <location filename="../src/models/references.py" line="119"/>
+        <source>Motivation</source>
+        <translation>Motivation</translation>
+    </message>
+    <message>
+        <location filename="../src/models/references.py" line="120"/>
+        <source>Goal</source>
+        <translation>Goal</translation>
+    </message>
+    <message>
+        <location filename="../src/models/references.py" line="121"/>
+        <source>Conflict</source>
+        <translation>Conflit</translation>
+    </message>
+    <message>
+        <location filename="../src/models/references.py" line="122"/>
+        <source>Epiphany</source>
+        <translation>Épiphanie</translation>
+    </message>
+    <message>
+        <location filename="../src/models/references.py" line="123"/>
+        <source>Short summary</source>
+        <translation>Résumé court</translation>
+    </message>
+    <message>
+        <location filename="../src/models/references.py" line="124"/>
+        <source>Longer summary</source>
+        <translation>Résumé long</translation>
+    </message>
+    <message>
+        <location filename="../src/models/references.py" line="26"/>
+        <source>Path:</source>
+        <translation>Chemin:</translation>
+    </message>
+    <message>
+        <location filename="../src/models/references.py" line="27"/>
+        <source>Stats:</source>
+        <translation>Stats:</translation>
+    </message>
+    <message>
+        <location filename="../src/models/references.py" line="28"/>
+        <source>POV:</source>
+        <translation>POV:</translation>
+    </message>
+    <message>
+        <location filename="../src/models/references.py" line="29"/>
+        <source>Status:</source>
+        <translation>Status:</translation>
+    </message>
+    <message>
+        <location filename="../src/models/references.py" line="30"/>
+        <source>Label:</source>
+        <translation>Label:</translation>
+    </message>
+    <message>
+        <location filename="../src/models/references.py" line="31"/>
+        <source>Short summary:</source>
+        <translation>Résumé court:</translation>
+    </message>
+    <message>
+        <location filename="../src/models/references.py" line="32"/>
+        <source>Long summary:</source>
+        <translation>Résumé long:</translation>
+    </message>
+    <message>
         <location filename="../src/models/references.py" line="33"/>
-        <source>None</source>
-        <translation>Aucun</translation>
+        <source>Notes:</source>
+        <translation>Notes:</translation>
     </message>
 </context>
 <context>
