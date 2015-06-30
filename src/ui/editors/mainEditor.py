@@ -87,6 +87,7 @@ class mainEditor(QWidget, Ui_mainEditor):
         if len(self.mw.treeRedacOutline.selectionModel().
                     selection().indexes()) == 0:
             hidden = False
+            idx = QModelIndex()
         else:
             idx = self.mw.treeRedacOutline.currentIndex()
 
@@ -121,10 +122,6 @@ class mainEditor(QWidget, Ui_mainEditor):
             self.currentEditor().setCurrentModelIndex(index)
             self.tab.setTabText(self.tab.currentIndex(), title)
         
-        #FIXME: check if tab is already open
-        
-        #self.redacEditor.txtRedacText.setCurrentModelIndex
-        #FIXME
         
 ###############################################################################
 # UI
@@ -182,11 +179,8 @@ class mainEditor(QWidget, Ui_mainEditor):
 ###############################################################################
         
     def setFolderView(self, view):
-        #FIXME
         if self.currentEditor():
             self.currentEditor().setFolderView(view)
-        pass
-        #self.redacEditor.setFolderView(settings.folderView)
         
     def setCorkSizeFactor(self, val):
         for w in self.allTabs():

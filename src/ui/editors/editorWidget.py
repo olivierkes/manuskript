@@ -19,6 +19,7 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
         QWidget.__init__(self, parent)
         self.setupUi(self)
         self.currentIndex = QModelIndex()
+        self.currentID = None
         self.txtEdits = []
         self.scroll.setBackgroundRole(QPalette.Base)
         self.toggledSpellcheck.connect(self.txtRedacText.toggleSpellcheck, AUC)
@@ -196,13 +197,22 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
     def setCurrentModelIndex(self, index=None):
         if index.isValid():
             self.currentIndex = index
+            self.currentID = self.mw.mdlOutline.ID(index)
             #self._model = index.model()
         else:
             self.currentIndex = QModelIndex()
             
         self.setView()
+        
+    def updateIndexFromID(self):
+        idx = self.mw.mdlOutline.getIndexByID(self.currentID)
+        if idx != self.currentIndex:
+            self.currentIndex = idx
+            self.setView()
             
     def modelDataChanged(self, topLeft, bottomRight):
+        if self.currentID:
+            self.updateIndexFromID()
         if not self.currentIndex:
             return
         if topLeft.row() <= self.currentIndex.row() <= bottomRight.row():

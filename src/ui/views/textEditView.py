@@ -76,7 +76,7 @@ class textEditView(QTextEdit):
             self.spellcheck = False
             
         if self._highlighting and not self.highlighter:
-            self.highlighter = t2tHighlighter(self)
+            self.highlighter = basicHighlighter(self)
             self.highlighter.setDefaultBlockFormat(self._defaultBlockFormat)
             
     def setModel(self, model):
