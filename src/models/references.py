@@ -22,15 +22,39 @@ def infoForRef(ref):
             
             item = idx.internalPointer()
             
-            text = "<h1>{}</h1>".format(item.title())
-            text += "<b>Path:</b> {}<br>".format(item.path())
-            ss = item.data(Outline.summarySentance.value)
-            if ss:
-                text += "\n<b>Short summary:</b> {}<br>".format(ss)
-                
-            ls = item.data(Outline.summaryFull.value)
-            if ls:
-                text += "\n<b>Long summary:</b> {}<br>".format(ls)
+            #<p><b>Status:</b> {status}</p>
+            #<p><b>Label:</b> {label}</p>
+            
+            if item.POV():
+                POV = "<a href='{ref}'>{text}</a>".format(
+                    ref="::C:{}::".format(item.POV()),
+                    text=mainWindow().mdlPersos.getPersoNameByID(item.POV()))
+            else:
+                POV = qApp.translate("references", "None")
+            
+            path = item.pathID()
+            pathStr = []
+            for _id, title in path:
+                pathStr.append("<a href='{ref}'>{text}</a>".format(
+                    ref="::T:{}::".format(_id),
+                    text=title))
+            path = " > ".join(pathStr)
+            
+            text = """<h1>{title}</h1>
+            <p><b>Path:</b> {path}</p>
+            <p><b>Stats:</b> {stats}</p>
+            <p><b>POV:</b> {POV}</p>
+            <p><b>Short summary:</b> {ss}</p>
+            <p><b>Long summary:</b> {ls}</p>
+            <p><b>Notes:</b> {notes}</p>
+            """.format(
+                title=item.title(),
+                path=path,
+                stats=item.stats(),
+                POV=POV,
+                ss=item.data(Outline.summarySentance.value).replace("\n", "<br>"),
+                ls=item.data(Outline.summaryFull.value).replace("\n", "<br>"),
+                notes=linkifyAllRefs(item.data(Outline.notes.value)).replace("\n", "<br>"))
             
             return text
         
@@ -41,6 +65,33 @@ def infoForRef(ref):
             
     else:
         return qApp.translate("references", "Unknown reference: {}.").format(ref)
+    
+def refToLink(ref):
+    match = re.fullmatch("::(\w):(\d+?)::", ref)
+    if match:
+        _type = match.group(1)
+        _ref = match.group(2)
+        text = ""
+        if _type == "T":
+            m = mainWindow().mdlOutline
+            idx = m.getIndexByID(_ref)
+            if idx.isValid():
+                item = idx.internalPointer()
+                text = item.title()
+            
+        elif _type == "C":
+            m = mainWindow().mdlPersos
+            text = m.item(int(_ref), Perso.name.value).text()
+            
+        if text:
+            return "<a href='{ref}'>{text}</a>".format(
+                    ref=ref,
+                    text=text)
+        else:
+            return ref
+    
+def linkifyAllRefs(text):
+    return re.sub(r"::(\w):(\d+?)::", lambda m: refToLink(m.group(0)), text)
     
 def tooltipForRef(ref):
     match = re.fullmatch("::(\w):(\d+?)::", ref)

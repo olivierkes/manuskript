@@ -20,24 +20,11 @@ class completer(QWidget, Ui_completer):
         self.listDelegate = listCompleterDelegate(self)
         self.list.setItemDelegate(self.listDelegate)
         self.list.itemActivated.connect(self.submit)
-        
-        self.outlineModel = mainWindow().mdlOutline
-        self.persoModel = mainWindow().mdlPersos
-        
-        self.populateTimer = QTimer(self)
-        self.populateTimer.setSingleShot(True)
-        self.populateTimer.setInterval(500)
-        self.populateTimer.timeout.connect(self.populate)
-        self.populateTimer.stop()
-        self.outlineModel.dataChanged.connect(self.populateTimer.start)
-        self.persoModel.dataChanged.connect(self.populateTimer.start)
-        
-        self.data = {}
-        
-        self.populate()
+        self.list.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.hide()
         
     def popup(self, completion=""):
+        self.updateListFromData()
         self.text.setText(completion)
         self.text.setFocus(Qt.PopupFocusReason)
         self.show()
@@ -48,39 +35,12 @@ class completer(QWidget, Ui_completer):
         item.setForeground(QBrush(Qt.darkBlue))
         item.setFlags(Qt.ItemIsEnabled)
         self.list.addItem(item)
-        
-    def populate(self):
-        if self.outlineModel:
-            d = []
-            
-            def addChildren(item):
-                for c in item.children():
-                    d.append((c.title(), c.ID(), c.path()))
-                    addChildren(c)
-            
-            r = self.outlineModel.rootItem
-            addChildren(r)
-            
-            self.data[(self.tr("Texts"), "T")] = d
-            
-        if self.persoModel:
-            d = []
-            
-            for r in range(self.persoModel.rowCount()):
-                name = self.persoModel.item(r, Perso.name.value).text()
-                ID = self.persoModel.item(r, Perso.ID.value).text()
-                imp = self.persoModel.item(r, Perso.importance.value).text()
-                imp = [self.tr("Minor"), self.tr("Secondary"), self.tr("Main")][int(imp)]
-                d.append((name, ID, imp))
-            
-            self.data[(self.tr("Characters"), "C")] = d
-            
-        self.updateListFromData()
             
     def updateListFromData(self):
+        data = mainWindow().cheatSheet.data
         self.list.clear()
-        for cat in self.data:
-            filtered = [i for i in self.data[cat] if self.text.text().lower() in i[0].lower()]
+        for cat in data:
+            filtered = [i for i in data[cat] if self.text.text().lower() in i[0].lower()]
             if filtered:
                 self.addCategory(cat[0])
                 for item in filtered:

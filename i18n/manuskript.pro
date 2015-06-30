@@ -2,6 +2,7 @@ FORMS            += ../src/ui/mainWindow.ui
 FORMS            += ../src/ui/settings.ui
 FORMS            += ../src/ui/welcome_ui.ui
 FORMS            += ../src/ui/sldImportance_ui.ui
+FORMS            += ../src/ui/cheatSheet_ui.ui
 
 FORMS            += ../src/ui/editors/editorWidget_ui.ui
 
@@ -23,13 +24,13 @@ SOURCES          += ../src/models/references.py
 SOURCES          += ../src/ui/helpLabel.py
 SOURCES          += ../src/ui/sldImportance.py
 SOURCES          += ../src/ui/welcome.py
+SOURCES          += ../src/ui/cheatSheet.py
 
 SOURCES          += ../src/ui/editors/editorWidget.py
 SOURCES          += ../src/ui/editors/fullScreenEditor.py
 SOURCES          += ../src/ui/editors/textFormat.py
 SOURCES          += ../src/ui/editors/completer.py
 SOURCES          += ../src/ui/editors/mainEditor.py
-
 
 SOURCES          += ../src/ui/views/corkDelegate.py
 SOURCES          += ../src/ui/views/outlineDelegates.py

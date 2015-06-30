@@ -1,8 +1,5 @@
 #!/usr/bin/env python
 #--!-- coding: utf8 --!--
- 
-
-
 
 from qt import *
 
@@ -33,6 +30,7 @@ class collapsibleGroupBox2(QWidget):
         self.switched = True
         
         self.vPolicy = self.sizePolicy().verticalPolicy()
+        self.parent().layout().setAlignment(Qt.AlignTop)
     
     def setFlat(self, val):
         if val:

@@ -1584,7 +1584,7 @@
                 <enum>QTabWidget::South</enum>
                </property>
                <property name="currentIndex">
-                <number>0</number>
+                <number>1</number>
                </property>
                <property name="documentMode">
                 <bool>true</bool>
@@ -1614,7 +1614,13 @@
                   <number>0</number>
                  </property>
                  <item>
-                  <widget class="QGroupBox" name="groupBox_3">
+                  <widget class="collapsibleGroupBox2" name="groupBox_3">
+                   <property name="font">
+                    <font>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
+                   </property>
                    <property name="title">
                     <string>Cheat sheet</string>
                    </property>
@@ -1626,38 +1632,14 @@
                      <number>0</number>
                     </property>
                     <item>
-                     <widget class="QLineEdit" name="lineEdit_3">
-                      <property name="placeholderText">
-                       <string>Filter</string>
+                     <widget class="cheatSheet" name="cheatSheet" native="true">
+                      <property name="font">
+                       <font>
+                        <weight>50</weight>
+                        <bold>false</bold>
+                       </font>
                       </property>
                      </widget>
-                    </item>
-                    <item>
-                     <widget class="QListWidget" name="listWidget_5">
-                      <item>
-                       <property name="text">
-                        <string>Albert - perso</string>
-                       </property>
-                      </item>
-                      <item>
-                       <property name="text">
-                        <string>Jean - perso</string>
-                       </property>
-                      </item>
-                      <item>
-                       <property name="text">
-                        <string>Crapoquak - animal</string>
-                       </property>
-                      </item>
-                      <item>
-                       <property name="text">
-                        <string>La revenche du capitaine - intrigue</string>
-                       </property>
-                      </item>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QTextEdit" name="textEdit"/>
                     </item>
                    </layout>
                   </widget>
@@ -2050,6 +2032,18 @@
    <class>persoTreeView</class>
    <extends>QTreeWidget</extends>
    <header>ui.views.persoTreeView.h</header>
+  </customwidget>
+  <customwidget>
+   <class>cheatSheet</class>
+   <extends>QWidget</extends>
+   <header>ui.cheatSheet.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>collapsibleGroupBox2</class>
+   <extends>QGroupBox</extends>
+   <header>ui.collapsibleGroupBox2.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>

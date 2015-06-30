@@ -772,7 +772,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         #self.treeRedacOutline.selectionModel().selectionChanged.connect(self.outlineSelectionChanged, AUC)
         #self.treePlanOutline.selectionModel().selectionChanged.connect(self.outlineSelectionChanged, AUC)
         #self.treePlanOutline.selectionModel().selectionChanged.connect(self.outlineSelectionChanged, AUC)
-
+        
+        # Cheat Sheet
+        self.cheatSheet.setModels()
+        
         #Debug
         self.mdlFlatData.setVerticalHeaderLabels(["Infos générales", "Summary"])
         self.tblDebugFlatData.setModel(self.mdlFlatData)

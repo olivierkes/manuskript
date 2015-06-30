@@ -836,29 +836,23 @@ class Ui_MainWindow(object):
         self.verticalLayout_21 = QtWidgets.QVBoxLayout(self.tab_18)
         self.verticalLayout_21.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_21.setObjectName("verticalLayout_21")
-        self.groupBox_3 = QtWidgets.QGroupBox(self.tab_18)
+        self.groupBox_3 = collapsibleGroupBox2(self.tab_18)
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.groupBox_3.setFont(font)
         self.groupBox_3.setFlat(True)
         self.groupBox_3.setObjectName("groupBox_3")
         self.verticalLayout_15 = QtWidgets.QVBoxLayout(self.groupBox_3)
         self.verticalLayout_15.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_15.setObjectName("verticalLayout_15")
-        self.lineEdit_3 = QtWidgets.QLineEdit(self.groupBox_3)
-        self.lineEdit_3.setObjectName("lineEdit_3")
-        self.verticalLayout_15.addWidget(self.lineEdit_3)
-        self.listWidget_5 = QtWidgets.QListWidget(self.groupBox_3)
-        self.listWidget_5.setObjectName("listWidget_5")
-        item = QtWidgets.QListWidgetItem()
-        self.listWidget_5.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.listWidget_5.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.listWidget_5.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.listWidget_5.addItem(item)
-        self.verticalLayout_15.addWidget(self.listWidget_5)
-        self.textEdit = QtWidgets.QTextEdit(self.groupBox_3)
-        self.textEdit.setObjectName("textEdit")
-        self.verticalLayout_15.addWidget(self.textEdit)
+        self.cheatSheet = cheatSheet(self.groupBox_3)
+        font = QtGui.QFont()
+        font.setBold(False)
+        font.setWeight(50)
+        self.cheatSheet.setFont(font)
+        self.cheatSheet.setObjectName("cheatSheet")
+        self.verticalLayout_15.addWidget(self.cheatSheet)
         self.verticalLayout_21.addWidget(self.groupBox_3)
         self.tabRedacInfos.addTab(self.tab_18, "")
         self.verticalLayout_16.addWidget(self.splitterRedac)
@@ -1039,7 +1033,7 @@ class Ui_MainWindow(object):
         self.tabPlot.setCurrentIndex(0)
         self.comboBox_2.setCurrentIndex(0)
         self.stkPlotSummary.setCurrentIndex(0)
-        self.tabRedacInfos.setCurrentIndex(0)
+        self.tabRedacInfos.setCurrentIndex(1)
         self.tabWidget.setCurrentIndex(1)
         self.btnPlotShowSummary.toggled['bool'].connect(self.grpPlotSummary.setVisible)
         self.comboBox_2.currentIndexChanged['int'].connect(self.stkPlotSummary.setCurrentIndex)
@@ -1119,18 +1113,6 @@ class Ui_MainWindow(object):
         self.tabMain.setTabText(self.tabMain.indexOf(self.lytTabOutline), _translate("MainWindow", "Outline"))
         self.tabRedacInfos.setTabText(self.tabRedacInfos.indexOf(self.tab_17), _translate("MainWindow", "Metadata"))
         self.groupBox_3.setTitle(_translate("MainWindow", "Cheat sheet"))
-        self.lineEdit_3.setPlaceholderText(_translate("MainWindow", "Filter"))
-        __sortingEnabled = self.listWidget_5.isSortingEnabled()
-        self.listWidget_5.setSortingEnabled(False)
-        item = self.listWidget_5.item(0)
-        item.setText(_translate("MainWindow", "Albert - perso"))
-        item = self.listWidget_5.item(1)
-        item.setText(_translate("MainWindow", "Jean - perso"))
-        item = self.listWidget_5.item(2)
-        item.setText(_translate("MainWindow", "Crapoquak - animal"))
-        item = self.listWidget_5.item(3)
-        item.setText(_translate("MainWindow", "La revenche du capitaine - intrigue"))
-        self.listWidget_5.setSortingEnabled(__sortingEnabled)
         self.tabRedacInfos.setTabText(self.tabRedacInfos.indexOf(self.tab_18), _translate("MainWindow", "Tools"))
         self.tabMain.setTabText(self.tabMain.indexOf(self.lytTabRedac), _translate("MainWindow", "Redaction"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_9), _translate("MainWindow", "FlatData"))
@@ -1170,14 +1152,16 @@ class Ui_MainWindow(object):
         self.actSettings.setShortcut(_translate("MainWindow", "F8"))
         self.actCloseProject.setText(_translate("MainWindow", "Close project"))
 
-from ui.views.persoTreeView import persoTreeView
-from ui.views.textEditView import textEditView
-from ui.sldImportance import sldImportance
-from ui.views.metadataView import metadataView
+from ui.views.treeView import treeView
 from ui.editors.mainEditor import mainEditor
+from ui.views.persoTreeView import persoTreeView
+from ui.sldImportance import sldImportance
+from ui.cheatSheet import cheatSheet
 from ui.views.basicItemView import basicItemView
 from ui.views.outlineView import outlineView
+from ui.collapsibleGroupBox2 import collapsibleGroupBox2
+from ui.views.metadataView import metadataView
 from ui.views.lineEditView import lineEditView
-from ui.welcome import welcome
 from ui.views.plotTreeView import plotTreeView
-from ui.views.treeView import treeView
+from ui.views.textEditView import textEditView
+from ui.welcome import welcome

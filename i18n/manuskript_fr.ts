@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="fr" sourcelanguage="en">
+<!DOCTYPE TS><TS version="2.0" language="fr" sourcelanguage="en">
 <context>
     <name>MainWindow</name>
     <message>
@@ -124,7 +123,7 @@
         <translation>Noms</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1631"/>
+        <location filename="../src/ui/mainWindow.ui" line="1056"/>
         <source>Filter</source>
         <translation>Filtre</translation>
     </message>
@@ -179,7 +178,7 @@
         <translation>Informations détaillées</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1710"/>
+        <location filename="../src/ui/mainWindow.ui" line="1692"/>
         <source>Plots</source>
         <translation>Intrigues</translation>
     </message>
@@ -214,7 +213,7 @@
         <translation>Contexte</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1014"/>
+        <location filename="../src/mainWindow.py" line="1017"/>
         <source>Outline</source>
         <translation>Plan</translation>
     </message>
@@ -224,207 +223,187 @@
         <translation>Rédaction</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1809"/>
+        <location filename="../src/ui/mainWindow.ui" line="1791"/>
         <source>Tools</source>
         <translation>Outils</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1619"/>
+        <location filename="../src/ui/mainWindow.ui" line="1625"/>
         <source>Cheat sheet</source>
         <translation>Aide-mémoire</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1639"/>
-        <source>Albert - perso</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/ui/mainWindow.ui" line="1644"/>
-        <source>Jean - perso</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/ui/mainWindow.ui" line="1649"/>
-        <source>Crapoquak - animal</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/ui/mainWindow.ui" line="1654"/>
-        <source>La revenche du capitaine - intrigue</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/ui/mainWindow.ui" line="1674"/>
+        <location filename="../src/ui/mainWindow.ui" line="1656"/>
         <source>Debug</source>
         <translation>Debug</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1687"/>
+        <location filename="../src/ui/mainWindow.ui" line="1669"/>
         <source>FlatData</source>
         <translation>FlatData</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1697"/>
+        <location filename="../src/ui/mainWindow.ui" line="1679"/>
         <source>Persos</source>
         <translation>Persos</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1778"/>
+        <location filename="../src/ui/mainWindow.ui" line="1760"/>
         <source>File</source>
         <translation>Fichier</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1803"/>
+        <location filename="../src/ui/mainWindow.ui" line="1785"/>
         <source>Help</source>
         <translation>Aide</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1840"/>
+        <location filename="../src/ui/mainWindow.ui" line="1822"/>
         <source>Open</source>
         <translation>Ouvrir</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1843"/>
+        <location filename="../src/ui/mainWindow.ui" line="1825"/>
         <source>Ctrl+O</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1782"/>
+        <location filename="../src/ui/mainWindow.ui" line="1764"/>
         <source>Recents</source>
         <translation>Récents</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1852"/>
+        <location filename="../src/ui/mainWindow.ui" line="1834"/>
         <source>Save</source>
         <translation>Enregistrer</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1855"/>
+        <location filename="../src/ui/mainWindow.ui" line="1837"/>
         <source>Ctrl+S</source>
         <translation>Ctrl+S</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1864"/>
+        <location filename="../src/ui/mainWindow.ui" line="1846"/>
         <source>Save as...</source>
         <translation>Enregistrer sous...</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1867"/>
+        <location filename="../src/ui/mainWindow.ui" line="1849"/>
         <source>Ctrl+Shift+S</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1876"/>
+        <location filename="../src/ui/mainWindow.ui" line="1858"/>
         <source>Quit</source>
         <translation>Quitter</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1879"/>
+        <location filename="../src/ui/mainWindow.ui" line="1861"/>
         <source>Ctrl+Q</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1894"/>
+        <location filename="../src/ui/mainWindow.ui" line="1876"/>
         <source>Show help texts</source>
         <translation>Montrer les bulles d&apos;aides</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1897"/>
+        <location filename="../src/ui/mainWindow.ui" line="1879"/>
         <source>Ctrl+Shift+B</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1912"/>
+        <location filename="../src/ui/mainWindow.ui" line="1894"/>
         <source>Spellcheck</source>
         <translation>Correcteur orthographique</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1979"/>
+        <location filename="../src/ui/mainWindow.ui" line="1961"/>
         <source>F8</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1795"/>
+        <location filename="../src/ui/mainWindow.ui" line="1777"/>
         <source>Mode</source>
         <translation>Mode</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="847"/>
+        <location filename="../src/mainWindow.py" line="850"/>
         <source> (~{} pages)</source>
         <translation> (~{} pages)</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="873"/>
+        <location filename="../src/mainWindow.py" line="876"/>
         <source>Enter infos about your book, and yourself.</source>
         <translation>Entrez toutes les informations relatives au livre, ainsi qu&apos;à vous.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="879"/>
+        <location filename="../src/mainWindow.py" line="882"/>
         <source>Take time to think about a one sentance (~50 words) summary of your book. Then expand it to a paragraph, then to a page, then to a full summary.</source>
         <translation>Prenez le temps de réfléchir à un résumé de votre livre, en une phrase (~50 mots). Puis augmentez cette phrase en un paragraphe, puis en une page, puis en un résumé complet.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="882"/>
+        <location filename="../src/mainWindow.py" line="885"/>
         <source>Create your characters.</source>
         <translation>Créez ici vos personnage.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="885"/>
+        <location filename="../src/mainWindow.py" line="888"/>
         <source>Develop plots.</source>
         <translation>Développez vos intrigues.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="888"/>
+        <location filename="../src/mainWindow.py" line="891"/>
         <source>Create the outline of your masterpiece.</source>
         <translation>Créez le plan de votre chef-d&apos;œuvre.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="891"/>
+        <location filename="../src/mainWindow.py" line="894"/>
         <source>Write.</source>
         <translation>Écrivez.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="894"/>
+        <location filename="../src/mainWindow.py" line="897"/>
         <source>Debug infos. Sometimes useful.</source>
         <translation>Des infos pour débugger des fois pendant qu&apos;on code c&apos;est utile.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="908"/>
+        <location filename="../src/mainWindow.py" line="911"/>
         <source>Dictionary</source>
         <translation>Dictionnaire</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="921"/>
+        <location filename="../src/mainWindow.py" line="924"/>
         <source>Install PyEnchant to use spellcheck</source>
         <translation>Installez PyEnchant pour profiter du correcteur orthographique</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="851"/>
+        <location filename="../src/mainWindow.py" line="854"/>
         <source>Words: {}{}</source>
         <translation>Mots: {}{}</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1025"/>
+        <location filename="../src/mainWindow.py" line="1028"/>
         <source>Text</source>
         <translation>Texte</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1744"/>
+        <location filename="../src/ui/mainWindow.ui" line="1726"/>
         <source>Labels</source>
         <translation>Labels</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1815"/>
+        <location filename="../src/ui/mainWindow.ui" line="1797"/>
         <source>Edit</source>
         <translation>Édition</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1920"/>
+        <location filename="../src/ui/mainWindow.ui" line="1902"/>
         <source>Labels...</source>
         <translation>Labels...</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1925"/>
+        <location filename="../src/ui/mainWindow.ui" line="1907"/>
         <source>Status...</source>
         <translation>Status...</translation>
     </message>
@@ -444,7 +423,7 @@
         <translation>Et si...?</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1013"/>
+        <location filename="../src/mainWindow.py" line="1016"/>
         <source>Index cards</source>
         <translation>Cartes</translation>
     </message>
@@ -454,37 +433,37 @@
         <translation>Métadonnées</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1823"/>
+        <location filename="../src/ui/mainWindow.ui" line="1805"/>
         <source>View</source>
         <translation>Vue</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1915"/>
+        <location filename="../src/ui/mainWindow.ui" line="1897"/>
         <source>F9</source>
         <translation>F9</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1012"/>
+        <location filename="../src/mainWindow.py" line="1015"/>
         <source>Tree</source>
         <translation>Arbre</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1941"/>
+        <location filename="../src/ui/mainWindow.ui" line="1923"/>
         <source>Normal</source>
         <translation>Normal</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1949"/>
+        <location filename="../src/ui/mainWindow.ui" line="1931"/>
         <source>Simple</source>
         <translation>Simple</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1957"/>
+        <location filename="../src/ui/mainWindow.ui" line="1939"/>
         <source>Fractal</source>
         <translation>Fractal</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1976"/>
+        <location filename="../src/ui/mainWindow.ui" line="1958"/>
         <source>Settings</source>
         <translation>Réglages</translation>
     </message>
@@ -499,72 +478,72 @@
         <translation>Le projet {} a été chargé.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="876"/>
+        <location filename="../src/mainWindow.py" line="879"/>
         <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous evil wizard could wasn&apos;t abled to kill a baby?&apos; (Harry Potter)</source>
         <translation>La situation de base, sous la forme d&apos;une question: &quot;Et si...?&quot; Par exemple: &quot;Et si le plus dangereux magiciens mauvais n&apos;était pas capable de tuer un bébé?&quot; (Harry Potter)</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1004"/>
+        <location filename="../src/mainWindow.py" line="1007"/>
         <source>Nothing</source>
         <translation>Rien</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1005"/>
+        <location filename="../src/mainWindow.py" line="1008"/>
         <source>POV</source>
         <translation>POV</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1006"/>
+        <location filename="../src/mainWindow.py" line="1009"/>
         <source>Label</source>
         <translation>Label</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1007"/>
+        <location filename="../src/mainWindow.py" line="1010"/>
         <source>Progress</source>
         <translation>Progrès</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1008"/>
+        <location filename="../src/mainWindow.py" line="1011"/>
         <source>Compile</source>
         <translation>Compilation</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1031"/>
+        <location filename="../src/mainWindow.py" line="1034"/>
         <source>Icon color</source>
         <translation>Couleur de l&apos;icone</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1032"/>
+        <location filename="../src/mainWindow.py" line="1035"/>
         <source>Text color</source>
         <translation>Couleur du texte</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1033"/>
+        <location filename="../src/mainWindow.py" line="1036"/>
         <source>Background color</source>
         <translation>Couleur de l&apos;arrière-plan</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1024"/>
+        <location filename="../src/mainWindow.py" line="1027"/>
         <source>Icon</source>
         <translation>Icone</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1026"/>
+        <location filename="../src/mainWindow.py" line="1029"/>
         <source>Background</source>
         <translation>Arrière-plan</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1027"/>
+        <location filename="../src/mainWindow.py" line="1030"/>
         <source>Border</source>
         <translation>Bordure</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1028"/>
+        <location filename="../src/mainWindow.py" line="1031"/>
         <source>Corner</source>
         <translation>Coin</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1989"/>
+        <location filename="../src/ui/mainWindow.ui" line="1971"/>
         <source>Close project</source>
         <translation>Fermer le projet</translation>
     </message>
@@ -1108,6 +1087,44 @@ des lignes:</translation>
     </message>
 </context>
 <context>
+    <name>cheatSheet</name>
+    <message>
+        <location filename="../src/ui/cheatSheet_ui.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished">Form</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/cheatSheet_ui.ui" line="23"/>
+        <source>Filter</source>
+        <translation type="unfinished">Filtre</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/cheatSheet.py" line="54"/>
+        <source>Minor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ui/cheatSheet.py" line="54"/>
+        <source>Secondary</source>
+        <translation type="unfinished">Secondaire</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/cheatSheet.py" line="54"/>
+        <source>Main</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ui/cheatSheet.py" line="57"/>
+        <source>Characters</source>
+        <translation type="unfinished">Personnages</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/cheatSheet.py" line="69"/>
+        <source>Texts</source>
+        <translation type="unfinished">Textes</translation>
+    </message>
+</context>
+<context>
     <name>cmbOutlineLabelChoser</name>
     <message>
         <location filename="../src/ui/views/cmbOutlineLabelChoser.py" line="111"/>
@@ -1152,34 +1169,6 @@ des lignes:</translation>
     </message>
 </context>
 <context>
-    <name>completer</name>
-    <message>
-        <location filename="../src/ui/editors/completer.py" line="64"/>
-        <source>Texts</source>
-        <translation>Textes</translation>
-    </message>
-    <message>
-        <location filename="../src/ui/editors/completer.py" line="73"/>
-        <source>Minor</source>
-        <translation>Mineur</translation>
-    </message>
-    <message>
-        <location filename="../src/ui/editors/completer.py" line="73"/>
-        <source>Secondary</source>
-        <translation>Secondaire</translation>
-    </message>
-    <message>
-        <location filename="../src/ui/editors/completer.py" line="73"/>
-        <source>Main</source>
-        <translation>Principal</translation>
-    </message>
-    <message>
-        <location filename="../src/ui/editors/completer.py" line="76"/>
-        <source>Characters</source>
-        <translation>Personnages</translation>
-    </message>
-</context>
-<context>
     <name>corkDelegate</name>
     <message>
         <location filename="../src/ui/views/corkDelegate.py" line="42"/>
@@ -1203,17 +1192,17 @@ des lignes:</translation>
 <context>
     <name>fullScreenEditor</name>
     <message>
-        <location filename="../src/ui/editors/fullScreenEditor.py" line="79"/>
+        <location filename="../src/ui/editors/fullScreenEditor.py" line="80"/>
         <source>Theme:</source>
         <translation>Thème:</translation>
     </message>
     <message>
-        <location filename="../src/ui/editors/fullScreenEditor.py" line="238"/>
+        <location filename="../src/ui/editors/fullScreenEditor.py" line="239"/>
         <source>{} words / {}</source>
         <translation>{} mots / {}</translation>
     </message>
     <message>
-        <location filename="../src/ui/editors/fullScreenEditor.py" line="241"/>
+        <location filename="../src/ui/editors/fullScreenEditor.py" line="242"/>
         <source>{} words</source>
         <translation>{} mots</translation>
     </message>
@@ -1237,17 +1226,17 @@ des lignes:</translation>
 <context>
     <name>mainEditor</name>
     <message>
-        <location filename="../src/ui/editors/mainEditor.py" line="102"/>
+        <location filename="../src/ui/editors/mainEditor.py" line="103"/>
         <source>Root</source>
         <translation>Racine</translation>
     </message>
     <message>
-        <location filename="../src/ui/editors/mainEditor.py" line="172"/>
+        <location filename="../src/ui/editors/mainEditor.py" line="169"/>
         <source>{} words / {}</source>
         <translation>{} mots / {}</translation>
     </message>
     <message>
-        <location filename="../src/ui/editors/mainEditor.py" line="177"/>
+        <location filename="../src/ui/editors/mainEditor.py" line="174"/>
         <source>{} words</source>
         <translation>{} mots</translation>
     </message>

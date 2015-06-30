@@ -3,11 +3,12 @@
  
 from qt import *
 from enums import *
-
 from enum import Enum
 from lxml import etree as ET
-
 from functions import *
+import locale
+locale.setlocale(locale.LC_ALL, '')
+
 
 class outlineModel(QAbstractItemModel):
     
@@ -626,17 +627,43 @@ class outlineItem():
     def ID(self):
         return self.data(Outline.ID.value)
     
+    def POV(self):
+        return self.data(Outline.POV.value)
+    
     def path(self):
+        "Returns path to item as string."
         if self.parent().parent():
             return "{} > {}".format(self.parent().path(), self.title())
         else:
             return self.title()
+    
+    def pathID(self):
+        "Returns path to item as list of (ID, title)."
+        if self.parent().parent():
+            return self.parent().pathID() + [(self.ID(), self.title())]
+        else:
+            return [(self.ID(), self.title())]
     
     def level(self):
         if self.parent():
             return self.parent().level() + 1
         else:
             return -1
+    
+    def stats(self):
+        wc = self.data(Outline.wordCount.value)
+        goal = self.data(Outline.goal.value)
+        progress = self.data(Outline.goalPercentage.value)
+        if not wc:
+            wc = 0
+        if goal:
+            return qApp.translate("outlineModel", "{} words / {} ({})").format(
+                locale.format("%d", wc, grouping=True), 
+                locale.format("%d", goal, grouping=True),
+                "{}%".format(str(int(progress * 100))))
+        else:
+            return qApp.translate("outlineModel", "{} words").format(
+                locale.format("%d", wc, grouping=True))
     
     def toXML(self):
         item = ET.Element("outlineItem")
