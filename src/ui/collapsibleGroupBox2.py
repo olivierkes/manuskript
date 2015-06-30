@@ -13,6 +13,7 @@ class collapsibleGroupBox2(QWidget):
         self.button.setChecked(True)
         self.switched = False
         self.vPolicy = None
+        self.button.setStyleSheet("background: lightBlue;")
         
     def resizeEvent(self, event):
         if not self.switched:
