@@ -188,6 +188,8 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
         
         try:
             self.mw.mdlOutline.dataChanged.connect(self.modelDataChanged, AUC)
+            self.mw.mdlOutline.rowsInserted.connect(self.updateIndexFromID, AUC)
+            self.mw.mdlOutline.rowsRemoved.connect(self.updateIndexFromID, AUC)
         except TypeError:
             pass
         
@@ -211,8 +213,8 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
             self.setView()
             
     def modelDataChanged(self, topLeft, bottomRight):
-        if self.currentID:
-            self.updateIndexFromID()
+        #if self.currentID:
+            #self.updateIndexFromID()
         if not self.currentIndex:
             return
         if topLeft.row() <= self.currentIndex.row() <= bottomRight.row():
