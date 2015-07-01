@@ -334,7 +334,6 @@ class settingsWindow(QWidget, Ui_Settings):
         
         # Update font and defaultBlockFormat to all textEditView. Drastically.
         for w in mainWindow().findChildren(textEditView, QRegExp(".*")):
-            print(w.objectName(), w.parent().objectName())
             w.loadFontSettings()
         
     def choseEditorFontColor(self):
@@ -344,6 +343,7 @@ class settingsWindow(QWidget, Ui_Settings):
         if color.isValid():
             settings.textEditor["fontColor"] = color.name()
             self.setButtonColor(self.btnEditorFontColor, color.name())
+            self.updateEditorSettings()
 
     def choseEditorMisspelledColor(self):
         color = settings.textEditor["misspelled"]
@@ -352,6 +352,7 @@ class settingsWindow(QWidget, Ui_Settings):
         if color.isValid():
             settings.textEditor["misspelled"] = color.name()
             self.setButtonColor(self.btnEditorMisspelledColor, color.name())
+            self.updateEditorSettings()
 
 ####################################################################################################
 #                                           STATUS                                                 #

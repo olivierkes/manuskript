@@ -43,7 +43,7 @@ class basicHighlighter(QSyntaxHighlighter):
         bf.setAlignment(QTextCursor(self.currentBlock()).blockFormat().alignment())
         QTextCursor(self.currentBlock()).setBlockFormat(bf)
         
-        self.setFormat(0, len(text), self._defaultCharFormat)
+        #self.setFormat(0, len(text), self._defaultCharFormat)
         
     def highlightBlockAfter(self, text):
         """Highlighting to do after everything else.

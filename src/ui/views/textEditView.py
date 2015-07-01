@@ -170,12 +170,19 @@ class textEditView(QTextEdit):
         opt = settings.textEditor
         f = QFont()
         f.fromString(opt["font"])
-        self.setFont(f)
-        
+        #self.setFont(f)
+        self.setStyleSheet("""
+            color: {foreground};
+            font-family: {ff};
+            font-size: {fs};
+            """.format(
+                foreground=opt["fontColor"],
+                ff=f.family(),
+                fs="{}pt".format(str(f.pointSize()))))
         
         cf = QTextCharFormat()
-        cf.setFont(f)
-        cf.setForeground(QColor(opt["fontColor"]))
+        #cf.setFont(f)
+        #cf.setForeground(QColor(opt["fontColor"]))
         
         bf = QTextBlockFormat()
         bf.setLineHeight(opt["lineSpacing"], bf.ProportionalHeight)
@@ -306,6 +313,7 @@ class textEditView(QTextEdit):
                     # We don't store font settings
                     html = re.sub(r"font-family:.*?;", "", html)
                     html = re.sub(r"font-size:.*?;", "", html)
+                    #print("Submitting:", html)
                     self._model.setData(self._index, html)
                     self._updating = False
             else:
@@ -463,6 +471,8 @@ class textEditView(QTextEdit):
                 tF.setTextEdit(self)
                 
     def applyFormat(self, _format):
+        
+        print(_format)
         
         if self._textFormat == "html":
             

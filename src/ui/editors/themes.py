@@ -185,13 +185,13 @@ def setThemeEditorDatas(editor, themeDatas, pixmap, screenRect):
     x, y, width, height = themeEditorGeometry(themeDatas, textRect)
     editor.setGeometry(x, y, width, height)
     
-    p = editor.palette()
-    #p.setBrush(QPalette.Base, QBrush(pixmap.copy(x, y, width, height)))
-    p.setBrush(QPalette.Base, QColor(Qt.transparent))
-    p.setColor(QPalette.Text, QColor(themeDatas["Text/Color"]))
-    p.setColor(QPalette.Highlight, QColor(themeDatas["Text/Color"]))
-    p.setColor(QPalette.HighlightedText, Qt.black if qGray(QColor(themeDatas["Text/Color"]).rgb()) > 127 else Qt.white)
-    editor.setPalette(p)
+    #p = editor.palette()
+    ##p.setBrush(QPalette.Base, QBrush(pixmap.copy(x, y, width, height)))
+    #p.setBrush(QPalette.Base, QColor(Qt.transparent))
+    #p.setColor(QPalette.Text, QColor(themeDatas["Text/Color"]))
+    #p.setColor(QPalette.Highlight, QColor(themeDatas["Text/Color"]))
+    #p.setColor(QPalette.HighlightedText, Qt.black if qGray(QColor(themeDatas["Text/Color"]).rgb()) > 127 else Qt.white)
+    #editor.setPalette(p)
     
     editor.setAttribute(Qt.WA_NoSystemBackground, True)
     
@@ -215,13 +215,30 @@ def setThemeEditorDatas(editor, themeDatas, pixmap, screenRect):
     editor.highlighter.setMisspelledColor(QColor(themeDatas["Text/Misspelled"]))
     
     cf = QTextCharFormat()
-    f = QFont()
-    f.fromString(themeDatas["Text/Font"])
-    cf.setFont(f)
-    editor.highlighter.setDefaultCharFormat(cf)
     #f = QFont()
     #f.fromString(themeDatas["Text/Font"])
-    editor.setFont(f)
+    #cf.setFont(f)
+    editor.highlighter.setDefaultCharFormat(cf)
+    f = QFont()
+    f.fromString(themeDatas["Text/Font"])
+    #editor.setFont(f)
+    
+    editor.setStyleSheet("""
+        background: transparent;
+        color: {foreground};
+        font-family: {ff};
+        font-size: {fs};
+        selection-color: {sc};
+        selection-background-color: {sbc};
+        """.format(
+            foreground=themeDatas["Text/Color"],
+            ff=f.family(),
+            fs="{}pt".format(str(f.pointSize())),
+            sc="black" if qGray(QColor(themeDatas["Text/Color"]).rgb()) > 127 else "white",
+            sbc=themeDatas["Text/Color"],
+            )
+        )
+    
     editor._fromTheme = True
     
     

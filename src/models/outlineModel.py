@@ -497,7 +497,7 @@ class outlineItem():
                 e = QTextEdit()
                 e.setHtml(self._data[Outline.text])
                 self._data[Outline.text] = e.toPlainText()
-            elif oldType in ["txt", "t2t"] and data == "html":
+            elif oldType in ["txt", "t2t"] and data == "html" and Outline.text in self._data:
                 self._data[Outline.text] = self._data[Outline.text].replace("\n", "<br>")
         
         # Setting data

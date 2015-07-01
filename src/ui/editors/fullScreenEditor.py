@@ -32,7 +32,6 @@ class fullScreenEditor(QWidget):
         self.editor.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.editor.installEventFilter(self)
         self.editor.setMouseTracking(True)
-        
         self.editor.setVerticalScrollBar(myScrollBar())
         self.scrollBar = self.editor.verticalScrollBar()
         self.scrollBar.setParent(self)
