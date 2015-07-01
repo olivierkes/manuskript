@@ -172,10 +172,12 @@ class textEditView(QTextEdit):
         f.fromString(opt["font"])
         #self.setFont(f)
         self.setStyleSheet("""
+            background: {bg};
             color: {foreground};
             font-family: {ff};
             font-size: {fs};
             """.format(
+                bg=opt["background"],
                 foreground=opt["fontColor"],
                 ff=f.family(),
                 fs="{}pt".format(str(f.pointSize()))))
@@ -310,9 +312,12 @@ class textEditView(QTextEdit):
                     #print("    Submitting html")
                     self._updating = True
                     html = self.toHtml()
-                    # We don't store font settings
-                    html = re.sub(r"font-family:.*?;", "", html)
-                    html = re.sub(r"font-size:.*?;", "", html)
+                    # We don't store paragraph and font settings
+                    html = re.sub(r"font-family:.*?;\s*", "", html)
+                    html = re.sub(r"font-size:.*?;\s*", "", html)
+                    html = re.sub(r"margin-.*?;\s*", "", html)
+                    html = re.sub(r"text-indent:.*?;\s*", "", html)
+                    html = re.sub(r"line-height:.*?;\s*", "", html)
                     #print("Submitting:", html)
                     self._model.setData(self._index, html)
                     self._updating = False

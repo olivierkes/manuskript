@@ -102,6 +102,8 @@ class settingsWindow(QWidget, Ui_Settings):
         self.btnEditorFontColor.clicked.connect(self.choseEditorFontColor)
         self.setButtonColor(self.btnEditorMisspelledColor, opt["misspelled"])
         self.btnEditorMisspelledColor.clicked.connect(self.choseEditorMisspelledColor)
+        self.setButtonColor(self.btnEditorBackgroundColor, opt["background"])
+        self.btnEditorBackgroundColor.clicked.connect(self.choseEditorBackgroundColor)
         f = QFont()
         f.fromString(opt["font"])
         self.cmbEditorFontFamily.setCurrentFont(f)
@@ -353,6 +355,17 @@ class settingsWindow(QWidget, Ui_Settings):
             settings.textEditor["misspelled"] = color.name()
             self.setButtonColor(self.btnEditorMisspelledColor, color.name())
             self.updateEditorSettings()
+            
+    def choseEditorBackgroundColor(self):
+        color = settings.textEditor["background"]
+        self.colorDialog = QColorDialog(QColor(color), self)
+        color = self.colorDialog.getColor(QColor(color))
+        if color.isValid():
+            settings.textEditor["background"] = color.name()
+            self.setButtonColor(self.btnEditorBackgroundColor, color.name())
+            self.updateEditorSettings()
+            
+    
 
 ####################################################################################################
 #                                           STATUS                                                 #

@@ -5,6 +5,7 @@ from qt import *
 from enums import *
 from functions import *
 import subprocess
+import re
 
 class basicExporter():
     
@@ -24,3 +25,8 @@ class basicExporter():
         cmd.wait()
         
         return output.decode("utf-8")
+    
+    def htmlBody(self, text):
+        text = text.replace("\n", "")
+        text = re.sub(r".*<body[^>]*?>(.*)</body>.*", "\\1", text)
+        return text

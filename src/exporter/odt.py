@@ -55,4 +55,7 @@ class odtExporter(basicExporter):
         elif _type == "txt":
             text = text.replace("\n", "<br>")
         
+        elif _type == "html":
+            text = self.htmlBody(text)
+        
         return text + "<br>"
