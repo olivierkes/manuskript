@@ -92,6 +92,8 @@ class mainEditor(QWidget, Ui_mainEditor):
             idx = self.mw.treeRedacOutline.currentIndex()
 
         self.setCurrentModelIndex(idx)
+        # Hides textFormat
+        self.textFormat.updateFromIndex(QModelIndex())
         
     def openIndexes(self, indexes, newTab=False):
         for i in indexes:

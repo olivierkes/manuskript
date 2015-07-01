@@ -2,8 +2,7 @@
 
 # Form implementation generated from reading ui file 'src/ui/editors/mainEditor_ui.ui'
 #
-# Created: Sun Jun 28 12:58:31 2015
-#      by: PyQt5 UI code generator 5.2.1
+# Created by: PyQt5 UI code generator 5.4.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -12,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_mainEditor(object):
     def setupUi(self, mainEditor):
         mainEditor.setObjectName("mainEditor")
-        mainEditor.resize(626, 300)
+        mainEditor.resize(791, 319)
         self.verticalLayout = QtWidgets.QVBoxLayout(mainEditor)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout.setObjectName("verticalLayout")
@@ -60,6 +59,17 @@ class Ui_mainEditor(object):
         self.horizontalLayout_19.addWidget(self.sldCorkSizeFactor)
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_19.addItem(spacerItem)
+        self.textFormat = textFormat(mainEditor)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.textFormat.sizePolicy().hasHeightForWidth())
+        self.textFormat.setSizePolicy(sizePolicy)
+        self.textFormat.setMinimumSize(QtCore.QSize(20, 20))
+        self.textFormat.setObjectName("textFormat")
+        self.horizontalLayout_19.addWidget(self.textFormat)
+        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_19.addItem(spacerItem1)
         self.lblRedacWC = QtWidgets.QLabel(mainEditor)
         self.lblRedacWC.setMinimumSize(QtCore.QSize(10, 0))
         self.lblRedacWC.setText("")
@@ -98,3 +108,4 @@ class Ui_mainEditor(object):
         self.btnRedacFolderOutline.setText(_translate("mainEditor", "Outline"))
         self.btnRedacFullscreen.setShortcut(_translate("mainEditor", "F11"))
 
+from ui.editors.textFormat import textFormat
