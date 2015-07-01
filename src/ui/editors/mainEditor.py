@@ -62,12 +62,7 @@ class mainEditor(QWidget, Ui_mainEditor):
         self._updating = False
         
         self.updateStats()
-        
-        self.btnRedacFolderText.setHidden(hidden)
-        self.btnRedacFolderCork.setHidden(hidden)
-        self.btnRedacFolderOutline.setHidden(hidden)
-        self.sldCorkSizeFactor.setHidden(hidden)
-        self.btnRedacFullscreen.setVisible(hidden)
+        self.updateThingsVisible(index)
     
     def closeTab(self, index):
         #FIXME: submit data if textedit?
@@ -86,14 +81,13 @@ class mainEditor(QWidget, Ui_mainEditor):
         
         if len(self.mw.treeRedacOutline.selectionModel().
                     selection().indexes()) == 0:
-            hidden = False
             idx = QModelIndex()
         else:
             idx = self.mw.treeRedacOutline.currentIndex()
 
         self.setCurrentModelIndex(idx)
-        # Hides textFormat
-        self.textFormat.updateFromIndex(QModelIndex())
+        
+        self.updateThingsVisible(idx)
         
     def openIndexes(self, indexes, newTab=False):
         for i in indexes:
@@ -128,6 +122,22 @@ class mainEditor(QWidget, Ui_mainEditor):
 ###############################################################################
 # UI
 ###############################################################################
+        
+    def updateThingsVisible(self, index):
+        if index.isValid():
+            visible = index.internalPointer().isFolder()
+        else:
+            visible = True
+        
+        # Hides / show textFormat
+        self.textFormat.updateFromIndex(index)
+        
+        self.btnRedacFolderText.setVisible(visible)
+        self.btnRedacFolderCork.setVisible(visible)
+        self.btnRedacFolderOutline.setVisible(visible)
+        self.sldCorkSizeFactor.setVisible(visible)
+        self.btnRedacFullscreen.setVisible(not visible)
+        
         
     def updateFolderViewButtons(self, view):
         if view == "text":
