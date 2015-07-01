@@ -619,6 +619,9 @@ class outlineItem():
     def isText(self):
         return self._data[Outline.type] == "txt"
     
+    def text(self):
+        return self.data(Outline.text.value)
+    
     def compile(self):
         if self._data[Outline.compile] in ["0", 0]:
             return False

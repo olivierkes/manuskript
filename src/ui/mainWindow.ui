@@ -1795,6 +1795,8 @@
     <addaction name="actSaveAs"/>
     <addaction name="actCloseProject"/>
     <addaction name="separator"/>
+    <addaction name="actCompile"/>
+    <addaction name="separator"/>
     <addaction name="actQuit"/>
    </widget>
    <widget class="QMenu" name="menuMode">
@@ -1994,6 +1996,14 @@
    </property>
    <property name="text">
     <string>Close project</string>
+   </property>
+  </action>
+  <action name="actCompile">
+   <property name="text">
+    <string>Compile</string>
+   </property>
+   <property name="shortcut">
+    <string>F6</string>
    </property>
   </action>
  </widget>

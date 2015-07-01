@@ -3,6 +3,7 @@ FORMS            += ../src/ui/settings.ui
 FORMS            += ../src/ui/welcome_ui.ui
 FORMS            += ../src/ui/sldImportance_ui.ui
 FORMS            += ../src/ui/cheatSheet_ui.ui
+FORMS            += ../src/ui/compileDialog_ui.ui
 
 FORMS            += ../src/ui/editors/editorWidget_ui.ui
 
@@ -21,10 +22,13 @@ SOURCES          += ../src/models/plotModel.py
 SOURCES          += ../src/models/persosModel.py
 SOURCES          += ../src/models/references.py
 
+SOURCES          += ../src/exporter/__init__.py
+
 SOURCES          += ../src/ui/helpLabel.py
 SOURCES          += ../src/ui/sldImportance.py
 SOURCES          += ../src/ui/welcome.py
 SOURCES          += ../src/ui/cheatSheet.py
+SOURCES          += ../src/ui/compileDialog.py
 
 SOURCES          += ../src/ui/editors/editorWidget.py
 SOURCES          += ../src/ui/editors/fullScreenEditor.py

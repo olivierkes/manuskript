@@ -1019,11 +1019,15 @@ class Ui_MainWindow(object):
         icon = QtGui.QIcon.fromTheme("window-close")
         self.actCloseProject.setIcon(icon)
         self.actCloseProject.setObjectName("actCloseProject")
+        self.actCompile = QtWidgets.QAction(MainWindow)
+        self.actCompile.setObjectName("actCompile")
         self.menuFile.addAction(self.actOpen)
         self.menuFile.addAction(self.menuRecents.menuAction())
         self.menuFile.addAction(self.actSave)
         self.menuFile.addAction(self.actSaveAs)
         self.menuFile.addAction(self.actCloseProject)
+        self.menuFile.addSeparator()
+        self.menuFile.addAction(self.actCompile)
         self.menuFile.addSeparator()
         self.menuFile.addAction(self.actQuit)
         self.menuMode.addAction(self.actModeNorma)
@@ -1168,18 +1172,20 @@ class Ui_MainWindow(object):
         self.actSettings.setText(_translate("MainWindow", "Settings"))
         self.actSettings.setShortcut(_translate("MainWindow", "F8"))
         self.actCloseProject.setText(_translate("MainWindow", "Close project"))
+        self.actCompile.setText(_translate("MainWindow", "Compile"))
+        self.actCompile.setShortcut(_translate("MainWindow", "F6"))
 
-from ui.editors.mainEditor import mainEditor
-from ui.views.metadataView import metadataView
+from ui.views.persoTreeView import persoTreeView
+from ui.cheatSheet import cheatSheet
 from ui.search import search
 from ui.views.outlineView import outlineView
-from ui.collapsibleGroupBox2 import collapsibleGroupBox2
-from ui.views.persoTreeView import persoTreeView
-from ui.sldImportance import sldImportance
-from ui.views.basicItemView import basicItemView
-from ui.views.treeView import treeView
-from ui.cheatSheet import cheatSheet
-from ui.views.plotTreeView import plotTreeView
-from ui.welcome import welcome
-from ui.views.textEditView import textEditView
 from ui.views.lineEditView import lineEditView
+from ui.sldImportance import sldImportance
+from ui.views.plotTreeView import plotTreeView
+from ui.editors.mainEditor import mainEditor
+from ui.collapsibleGroupBox2 import collapsibleGroupBox2
+from ui.welcome import welcome
+from ui.views.basicItemView import basicItemView
+from ui.views.metadataView import metadataView
+from ui.views.treeView import treeView
+from ui.views.textEditView import textEditView

@@ -56,6 +56,9 @@ class plotTreeView(QTreeWidget):
         if parent == QModelIndex():
             self.updateItems()
             
+        elif self._showSubPlot:
+            self.updateItems()
+            
     def updateNames(self):
         for i in range(self.topLevelItemCount()):
             item = self.topLevelItem(i)

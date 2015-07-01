@@ -5,6 +5,7 @@ from qt import *
 
 from ui.mainWindow import *
 from ui.helpLabel import helpLabel
+from ui.compileDialog import compileDialog
 from loadSave import *
 from enums import *
 from models.outlineModel import *
@@ -82,6 +83,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.actOpen.triggered.connect(self.welcome.openFile)
         self.actSave.triggered.connect(self.saveDatas)
         self.actSaveAs.triggered.connect(self.welcome.saveAsFile)
+        self.actCompile.triggered.connect(self.doCompile)
         self.actLabels.triggered.connect(self.settingsLabel)
         self.actStatus.triggered.connect(self.settingsStatus)
         self.actSettings.triggered.connect(self.settingsWindow)
@@ -1071,3 +1073,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.treePlanOutline.viewport().update()
         if item == "Tree":
             self.treeRedacOutline.viewport().update()
+            
+            
+###############################################################################
+# COMPILE
+###############################################################################
+
+    def doCompile(self):
+        self.compileDialog = compileDialog()
+        self.compileDialog.show()
