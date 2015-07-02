@@ -6,7 +6,7 @@ from enums import *
 from functions import *
 from ui.views.textEditView import *
 from ui.editors.completer import *
-from models.references import *
+import models.references as Ref
 import settings
 import re
 
@@ -53,7 +53,7 @@ class textEditCompleter(textEditView):
         cursor.select(QTextCursor.BlockUnderCursor)
         text = cursor.selectedText()
         pos -= cursor.selectionStart()
-        match = re.findall(r"::\w:\d+?::", text)
+        match = re.findall(Ref.RegExNonCapturing, text)
         for m in match:
             if text.find(m) <= pos <= text.find(m) + len(m):
                 return m
@@ -123,7 +123,7 @@ class textEditCompleter(textEditView):
         if ref:
             if not qApp.overrideCursor():
                 qApp.setOverrideCursor(Qt.PointingHandCursor)
-            QToolTip.showText(self.mapToGlobal(event.pos()), tooltipForRef(ref))
+            QToolTip.showText(self.mapToGlobal(event.pos()), Ref.tooltip(ref))
         
     def mouseReleaseEvent(self, event):
         textEditView.mouseReleaseEvent(self, event)
@@ -132,7 +132,7 @@ class textEditCompleter(textEditView):
             cursor = self.cursorForPosition(event.pos())
             ref = self.refUnderCursor(cursor)
             if ref:
-                openReference(ref)
+                Ref.open(ref)
                 qApp.restoreOverrideCursor()
         
     def resizeEvent(self, event):
@@ -143,7 +143,7 @@ class textEditCompleter(textEditView):
         cursor = self.textCursor()
         fm = QFontMetrics(self.font())
         refs = []
-        for txt in re.finditer(r"::(\w):(\d+?)::", self.toPlainText()):
+        for txt in re.finditer(Ref.RegEx, self.toPlainText()):
             cursor.setPosition(txt.start())
             r = self.cursorRect(cursor)
             r.setWidth(fm.width(txt.group(0)))

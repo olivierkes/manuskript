@@ -6,7 +6,6 @@ from enums import *
 from models.outlineModel import *
 from ui.search_ui import *
 from functions import *
-from models.references import *
 
 class search(QWidget, Ui_search):
     

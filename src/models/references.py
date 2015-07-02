@@ -6,14 +6,39 @@ from enums import *
 from functions import *
 import re
 
+###############################################################################
+# SHORT REFERENCES
+###############################################################################
 
-def infoForRef(ref):
-    match = re.fullmatch("::(\w):(\d+?)::", ref)
+
+RegEx = r"::(\w):(\d+?)::"
+RegExNonCapturing = r"::\w:\d+?::"
+EmptyRef = "::{}:{}::"
+PersoLetter = "C"
+TextLetter = "T"
+PlotLetter = "P"
+
+def plotReference(plotID):
+    return EmptyRef.format(PlotLetter, plotID)
+
+def persoReference(persoID):
+    return EmptyRef.format(PersoLetter, persoID)
+
+def textReference(outlineID):
+    return EmptyRef.format(TextLetter, outlineID)
+
+
+###############################################################################
+# READABLE INFOS
+###############################################################################
+
+def infos(ref):
+    match = re.fullmatch(RegEx, ref)
     if match:
         _type = match.group(1)
         _ref = match.group(2)
         
-        if _type == "T":
+        if _type == TextLetter:
             m = mainWindow().mdlOutline
             idx = m.getIndexByID(_ref)
             
@@ -35,7 +60,7 @@ def infoForRef(ref):
             POV = ""
             if item.POV():
                 POV = "<a href='{ref}'>{text}</a>".format(
-                    ref="::C:{}::".format(item.POV()),
+                    ref=getPersoReference(item.POV()),
                     text=mainWindow().mdlPersos.getPersoNameByID(item.POV()))
             
             status = item.status()
@@ -54,7 +79,7 @@ def infoForRef(ref):
             pathStr = []
             for _id, title in path:
                 pathStr.append("<a href='{ref}'>{text}</a>".format(
-                    ref="::T:{}::".format(_id),
+                    ref=getTextReference(_id),
                     text=title))
             path = " > ".join(pathStr)
             
@@ -99,7 +124,7 @@ def infoForRef(ref):
             
             return text
         
-        elif _type == "C":
+        elif _type == PersoLetter:
             m = mainWindow().mdlPersos
             index = m.getIndexFromID(_ref)
             name = m.name(index.row())
@@ -144,7 +169,7 @@ def infoForRef(ref):
             for t in lst:
                 idx = oM.getIndexByID(t)
                 listPOV += "<li><a href='{link}'>{text}</a>".format(
-                    link="::T:{}::".format(t),
+                    link=getTextReference(t),
                     text=oM.data(idx, Outline.title.value))
             
             # List scences where character is referenced
@@ -153,7 +178,7 @@ def infoForRef(ref):
             for t in lst:
                 idx = oM.getIndexByID(t)
                 listRefs += "<li><a href='{link}'>{text}</a>".format(
-                    link="::T:{}::".format(t),
+                    link=getTextReference(t),
                     text=oM.data(idx, Outline.title.value))
             
             text = """<h1>{name}</h1>
@@ -181,47 +206,13 @@ def infoForRef(ref):
     else:
         return qApp.translate("references", "Unknown reference: {}.").format(ref)
     
-def refToLink(ref):
-    match = re.fullmatch("::(\w):(\d+?)::", ref)
-    if match:
-        _type = match.group(1)
-        _ref = match.group(2)
-        text = ""
-        if _type == "T":
-            m = mainWindow().mdlOutline
-            idx = m.getIndexByID(_ref)
-            if idx.isValid():
-                item = idx.internalPointer()
-                text = item.title()
-            
-        elif _type == "C":
-            m = mainWindow().mdlPersos
-            text = m.item(int(_ref), Perso.name.value).text()
-            
-        if text:
-            return "<a href='{ref}'>{text}</a>".format(
-                    ref=ref,
-                    text=text)
-        else:
-            return ref
-    
-def linkifyAllRefs(text):
-    return re.sub(r"::(\w):(\d+?)::", lambda m: refToLink(m.group(0)), text)
-    
-def basicT2TFormat(text):
-    text = re.sub("\*\*(.*?)\*\*", "<b>\\1</b>", text)
-    text = re.sub("//(.*?)//", "<i>\\1</i>", text)
-    text = re.sub("__(.*?)__", "<u>\\1</u>", text)
-    text = text.replace("\n", "<br>")
-    return text
-    
-def tooltipForRef(ref):
-    match = re.fullmatch("::(\w):(\d+?)::", ref)
+def tooltip(ref):
+    match = re.fullmatch(RegEx, ref)
     if match:
         _type = match.group(1)
         _ref = match.group(2)
         
-        if _type == "T":
+        if _type == TextLetter:
             m = mainWindow().mdlOutline
             idx = m.getIndexByID(_ref)
             
@@ -235,7 +226,7 @@ def tooltipForRef(ref):
             
             return tooltip
         
-        elif _type == "C":
+        elif _type == PersoLetter:
             m = mainWindow().mdlPersos
             name = m.item(int(_ref), Perso.name.value).text()
             return qApp.translate("references", "Character: <b>{}</b>").format(name)
@@ -243,13 +234,52 @@ def tooltipForRef(ref):
     else:
         return qApp.translate("references", "Unknown reference: {}.").format(ref)
     
-def openReference(ref):
-    match = re.fullmatch("::(\w):(\d+?)::", ref)
+    
+###############################################################################
+# FUNCTIONS
+###############################################################################
+    
+def refToLink(ref):
+    match = re.fullmatch(RegEx, ref)
+    if match:
+        _type = match.group(1)
+        _ref = match.group(2)
+        text = ""
+        if _type == TextLetter:
+            m = mainWindow().mdlOutline
+            idx = m.getIndexByID(_ref)
+            if idx.isValid():
+                item = idx.internalPointer()
+                text = item.title()
+            
+        elif _type == PersoLetter:
+            m = mainWindow().mdlPersos
+            text = m.item(int(_ref), Perso.name.value).text()
+            
+        if text:
+            return "<a href='{ref}'>{text}</a>".format(
+                    ref=ref,
+                    text=text)
+        else:
+            return ref
+    
+def linkifyAllRefs(text):
+    return re.sub(RegEx, lambda m: refToLink(m.group(0)), text)
+    
+def basicT2TFormat(text):
+    text = re.sub("\*\*(.*?)\*\*", "<b>\\1</b>", text)
+    text = re.sub("//(.*?)//", "<i>\\1</i>", text)
+    text = re.sub("__(.*?)__", "<u>\\1</u>", text)
+    text = text.replace("\n", "<br>")
+    return text
+
+def open(ref):
+    match = re.fullmatch(RegEx, ref)
     if match:
         _type = match.group(1)
         _ref = match.group(2)
         
-        if _type == "C":
+        if _type == PersoLetter:
             mw = mainWindow()
             
             for i in range(mw.mdlPersos.rowCount()):
@@ -262,7 +292,7 @@ def openReference(ref):
             print("Ref not found")
             return False
         
-        elif _type == "T":
+        elif _type == TextLetter:
             
             mw = mainWindow()
             index = mw.mdlOutline.getIndexByID(_ref)

@@ -6,6 +6,7 @@ from enums import *
 from models.outlineModel import *
 from ui.editors.completer_ui import *
 from functions import *
+import models.references as Ref
 
 class completer(QWidget, Ui_completer):
     
@@ -45,7 +46,7 @@ class completer(QWidget, Ui_completer):
                 self.addCategory(cat[0])
                 for item in filtered:
                     i = QListWidgetItem(item[0])
-                    i.setData(Qt.UserRole, "::{}:{}::".format(cat[1], item[1]))
+                    i.setData(Qt.UserRole, Ref.EmptyRef.format(cat[1], item[1]))
                     i.setData(Qt.UserRole+1, item[2])
                     self.list.addItem(i)
         

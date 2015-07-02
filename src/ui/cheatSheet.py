@@ -6,7 +6,7 @@ from enums import *
 from models.outlineModel import *
 from ui.cheatSheet_ui import *
 from functions import *
-from models.references import *
+import models.references as Ref
 
 class cheatSheet(QWidget, Ui_cheatSheet):
     
@@ -23,6 +23,7 @@ class cheatSheet(QWidget, Ui_cheatSheet):
         self.listDelegate = listCompleterDelegate(self)
         self.list.setItemDelegate(self.listDelegate)
         self.list.itemActivated.connect(self.showInfos)
+        self.list.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.view.linkActivated.connect(self.openLink)
         self.view.linkHovered.connect(self.linkHovered)
         
@@ -44,6 +45,7 @@ class cheatSheet(QWidget, Ui_cheatSheet):
         self.persoModel = mainWindow().mdlPersos
         self.outlineModel.dataChanged.connect(self.populateTimer.start)
         self.persoModel.dataChanged.connect(self.populateTimer.start)
+        self.populate()
         
     def populate(self):
         if self.persoModel:
@@ -56,7 +58,7 @@ class cheatSheet(QWidget, Ui_cheatSheet):
                 imp = [self.tr("Minor"), self.tr("Secondary"), self.tr("Main")][int(imp)]
                 d.append((name, ID, imp))
             
-            self.data[(self.tr("Characters"), "C")] = d
+            self.data[(self.tr("Characters"), Ref.PersoLetter)] = d
         if self.outlineModel:
             d = []
             
@@ -68,7 +70,7 @@ class cheatSheet(QWidget, Ui_cheatSheet):
             r = self.outlineModel.rootItem
             addChildren(r)
             
-            self.data[(self.tr("Texts"), "T")] = d
+            self.data[(self.tr("Texts"), Ref.TextLetter)] = d
             
         self.updateListFromData()
             
@@ -100,14 +102,14 @@ class cheatSheet(QWidget, Ui_cheatSheet):
         i = self.list.currentItem()
         ref = i.data(Qt.UserRole)
         if ref:
-            self.view.setText(infoForRef(ref))
+            self.view.setText(Ref.infos(ref))
             
     def openLink(self, link):
-        openReference(link)
+        Ref.open(link)
         
     def linkHovered(self, link):
         if link:
-            QToolTip.showText(QCursor.pos(), tooltipForRef(link))
+            QToolTip.showText(QCursor.pos(), Ref.tooltip(link))
         
     def keyPressEvent(self, event):
         if event.key() in [Qt.Key_Up, Qt.Key_Down]:
