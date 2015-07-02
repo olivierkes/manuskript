@@ -32,17 +32,17 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         QMainWindow.__init__(self)
         self.setupUi(self)
         self.currentProject = None
-        
+
         self.readSettings()
 
         # UI
         self.setupMoreUi()
-        
+
         # Welcome
         self.welcome.updateValues()
         #self.welcome.btnCreate.clicked.connect
         self.stack.setCurrentIndex(0)
-        
+
         # Word count
         self.mprWordCount = QSignalMapper(self)
         for t, i in [
@@ -79,7 +79,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                   self.menuEdit, self.menuMode, self.menuView, self.menuTools,
                   self.menuHelp]:
             i.setEnabled(False)
-        
+
         self.actOpen.triggered.connect(self.welcome.openFile)
         self.actSave.triggered.connect(self.saveDatas)
         self.actSaveAs.triggered.connect(self.welcome.saveAsFile)
@@ -90,9 +90,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.actCloseProject.triggered.connect(self.closeProject)
         self.actQuit.triggered.connect(self.close)
         self.generateViewMenu()
-        
+
         self.makeUIConnections()
-        
+
         #self.loadProject(os.path.join(appPath(), "test_project.zip"))
 
 ###############################################################################
@@ -129,10 +129,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         #pid = self.getPersosID()
         ##self.checkPersosID()  # Attributes a persoID (which is logically pid)
         #self.mdlPersos.appendRow([p, QStandardItem(pid), QStandardItem("0")])
-        
+
         #self.setPersoColor(self.mdlPersos.rowCount() - 1,
                            #randomColor(QColor(Qt.white)))
-        
+
         ## Add column in persos infos
         #self.mdlPersosInfos.insertColumn(self.mdlPersosInfos.columnCount(),
                                          #[QStandardItem(pid)])
@@ -172,7 +172,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         #self.mdlPersosInfos.takeColumn(i.row() + 1)
 
     def changeCurrentPerso(self, trash=None):
-        
+
         index = self.lstPersos.currentPersoIndex()
 
         if not index.isValid():
@@ -180,7 +180,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             return
 
         self.tabPersos.setEnabled(True)
-        
+
         for w in [
             self.txtPersoName,
             self.sldPersoImportance,
@@ -194,16 +194,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.txtPersoNotes,
             ]:
             w.setCurrentModelIndex(index)
-        
+
         # Button color
         self.mdlPersos.updatePersoColor(index)
-        
+
         # Perso Infos
         self.tblPersoInfos.setRootIndex(index)
-        
+
         if self.mdlPersos.rowCount(index):
             self.updatePersoInfoView()
-        
+
         #if self.mdlPersosProxy:
             #idx = self.mdlPersosProxy.mapToSource(self.lstPersos.currentIndex())
         #else:
@@ -226,7 +226,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.tblPersoInfos.hideColumn(i)
         self.tblPersoInfos.showColumn(Perso.infoName.value)
         self.tblPersoInfos.showColumn(Perso.infoData.value)
-        
+
         self.tblPersoInfos.horizontalHeader().setSectionResizeMode(
             Perso.infoName.value, QHeaderView.ResizeToContents)
         self.tblPersoInfos.horizontalHeader().setSectionResizeMode(
@@ -338,7 +338,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def loadProject(self, project, loadFromFile=True):
         """Loads the project ``project``.
-        
+
         If ``loadFromFile`` is False, then it does not load datas from file.
         It assumes that the datas have been populated in a different way."""
         if loadFromFile and not os.path.exists(project):
@@ -347,18 +347,18 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 self.tr("The file {} does not exist. Try again.").format(project),
                 5000)
             return
-        
+
         self.currentProject = project
         QSettings().setValue("lastProject", project)
-        
+
         if loadFromFile:
             # Load empty settings
-            imp.reload(settings)    
-        
-            # Load data    
+            imp.reload(settings)
+
+            # Load data
             self.loadEmptyDatas()
             self.loadDatas()
-        
+
         self.makeConnections()
 
         # Load settings
@@ -371,7 +371,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.toggleSpellcheck(settings.spellcheck)
         self.updateMenuDict()
         self.setDictionary()
-        
+
         self.mainEditor.setFolderView(settings.folderView)
         self.mainEditor.updateFolderViewButtons(settings.folderView)
         self.tabMain.setCurrentIndex(settings.lastTab)
@@ -409,31 +409,31 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # Stuff
         #self.checkPersosID()  # Should'n be necessary any longer
-        
+
         # Show main Window
         self.stack.setCurrentIndex(1)
-        
+
     def closeProject(self):
         # Save datas
         self.saveDatas()
-        
+
         self.currentProject = None
         QSettings().setValue("lastProject", "")
-        
+
         # Clear datas
         self.loadEmptyDatas()
-        
+
         self.saveTimer.stop()
-        
+
         # UI
         for i in [self.actSave, self.actSaveAs, self.actCloseProject,
                   self.menuEdit, self.menuMode, self.menuView, self.menuTools,
                   self.menuHelp]:
             i.setEnabled(False)
-        
+
         # Reload recent files
         self.welcome.updateValues()
-        
+
         # Show welcome dialog
         self.stack.setCurrentIndex(0)
 
@@ -453,7 +453,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # Specific settings to save before quitting
         settings.lastTab = self.tabMain.currentIndex()
-            
+
         if self.currentProject:
             # Remembering the current items
             sel = []
@@ -474,15 +474,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def saveDatas(self, projectName=None):
         """Saves the current project (in self.currentProject).
-        
+
         If ``projectName`` is given, currentProject becomes projectName.
         In other words, it "saves as...".
         """
-        
+
         if projectName:
             self.currentProject = projectName
             QSettings().setValue("lastProject", projectName)
-        
+
         # Saving
         files = []
 
@@ -526,54 +526,54 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         files = loadFilesFromZip(self.currentProject)
 
         errors = []
-        
+
         if "flatModel.xml" in files:
             loadStandardItemModelXML(self.mdlFlatData,
                                      files["flatModel.xml"], fromString=True)
         else:
             errors.append("flatModel.xml")
-            
+
         if "perso.xml" in files:
             loadStandardItemModelXML(self.mdlPersos,
                                      files["perso.xml"], fromString=True)
         else:
             errors.append("perso.xml")
-            
-            
+
+
         #if "persoInfos.xml" in files:
             #loadStandardItemModelXML(self.mdlPersosInfos,
                                      #files["persoInfos.xml"], fromString=True)
         #else:
             #errors.append("perso.xml")
-            
+
         if "labels.xml" in files:
             loadStandardItemModelXML(self.mdlLabels,
                                      files["labels.xml"], fromString=True)
         else:
             errors.append("perso.xml")
-            
+
         if "status.xml" in files:
             loadStandardItemModelXML(self.mdlStatus,
                                      files["status.xml"], fromString=True)
         else:
             errors.append("perso.xml")
-            
+
         if "plots.xml" in files:
             loadStandardItemModelXML(self.mdlPlots,
                                      files["plots.xml"], fromString=True)
         else:
             errors.append("perso.xml")
-            
+
         if "outline.xml" in files:
             self.mdlOutline.loadFromXML(files["outline.xml"], fromString=True)
         else:
             errors.append("perso.xml")
-            
+
         if "settings.pickle" in files:
             settings.load(files["settings.pickle"], fromString=True)
         else:
             errors.append("perso.xml")
-            
+
 
         # Giving some feedback
         if not errors:
@@ -594,20 +594,20 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def makeUIConnections(self):
         "Connections that have to be made once only, event when new project is loaded."
         self.lstPersos.currentItemChanged.connect(self.changeCurrentPerso, AUC)
-        
+
         self.txtPlotFilter.textChanged.connect(self.lstPlots.setFilter, AUC)
         self.lstPlots.currentItemChanged.connect(self.changeCurrentPlot, AUC)
         self.txtSubPlotSummary.document().contentsChanged.connect(
                                                      self.updateSubPlotSummary, AUC)
         self.lstSubPlots.activated.connect(self.changeCurrentSubPlot, AUC)
-        
+
         self.btnRedacAddFolder.clicked.connect(self.treeRedacOutline.addFolder, AUC)
         self.btnPlanAddFolder.clicked.connect(self.treePlanOutline.addFolder, AUC)
         self.btnRedacAddText.clicked.connect(self.treeRedacOutline.addText, AUC)
         self.btnPlanAddText.clicked.connect(self.treePlanOutline.addText, AUC)
         self.btnRedacRemoveItem.clicked.connect(self.outlineRemoveItems, AUC)
         self.btnPlanRemoveItem.clicked.connect(self.outlineRemoveItems, AUC)
-        
+
         self.mainEditor.btnRedacShowOutline.toggled.connect(self.treeRedacWidget.setVisible)
         self.mainEditor.btnRedacShowOutline.setChecked(True)
         self.mainEditor.btnRedacShowInfos.toggled.connect(self.tabRedacInfos.setVisible)
@@ -652,7 +652,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Persos
         self.lstPersos.setPersosModel(self.mdlPersos)
         self.tblPersoInfos.setModel(self.mdlPersos)
-        
+
         self.btnAddPerso.clicked.connect(self.mdlPersos.addPerso, AUC)
         self.btnRmPerso.clicked.connect(self.mdlPersos.removePerso, AUC)
         self.btnPersoColor.clicked.connect(self.mdlPersos.chosePersoColor, AUC)
@@ -664,10 +664,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         #self.tblPersoInfos.setModel(self.mdlPersosInfos)
         #self.tblPersoInfos.setRowHidden(0, True)
-        
+
         self.btnPersoAddInfo.clicked.connect(self.mdlPersos.addPersoInfo, AUC)
         self.btnPersoRmInfo.clicked.connect(self.mdlPersos.removePersoInfo, AUC)
-        
+
         #self.mprPersos = QDataWidgetMapper()
         #self.mprPersos.setModel(self.mdlPersos)
 
@@ -689,7 +689,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         #self.sldPersoImportance.importanceChanged.connect(self.mprPersos.submit, AUC)
         #self.tabMain.currentChanged.connect(self.mprPersos.submit, AUC)
         #self.mprPersos.setCurrentIndex(0)
-        
+
         for w, c in [
             (self.txtPersoName, Perso.name.value),
             (self.sldPersoImportance, Perso.importance.value),
@@ -705,7 +705,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             w.setModel(self.mdlPersos)
             w.setColumn(c)
         self.tabPersos.setEnabled(False)
-        
+
         #self.lstPersos.selectionModel().currentChanged.connect(
                                         #self.mdlPersos.updatePersoColor, AUC)
         #self.tabPersos.currentChanged.connect(self.resizePersosInfos)
@@ -755,7 +755,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                  self.outlineItemEditor.selectionChanged(self.treePlanOutline), AUC)
         self.treePlanOutline.clicked.connect(lambda:
                  self.outlineItemEditor.selectionChanged(self.treePlanOutline), AUC)
-        
+
         # Sync selection
         #self.treeRedacOutline.setSelectionModel(self.treePlanOutline
                                                     #.selectionModel())
@@ -774,10 +774,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         #self.treeRedacOutline.selectionModel().selectionChanged.connect(self.outlineSelectionChanged, AUC)
         #self.treePlanOutline.selectionModel().selectionChanged.connect(self.outlineSelectionChanged, AUC)
         #self.treePlanOutline.selectionModel().selectionChanged.connect(self.outlineSelectionChanged, AUC)
-        
+
         # Cheat Sheet
         self.cheatSheet.setModels()
-        
+
         #Debug
         self.mdlFlatData.setVerticalHeaderLabels(["Infos générales", "Summary"])
         self.tblDebugFlatData.setModel(self.mdlFlatData)
@@ -787,7 +787,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             lambda: self.tblDebugPersosInfos.setRootIndex(self.mdlPersos.index(
                 self.tblDebugPersos.selectionModel().currentIndex().row(),
                 Perso.name.value)), AUC)
-            
+
         self.tblDebugPlots.setModel(self.mdlPlots)
         self.tblDebugPlotsPersos.setModel(self.mdlPlots)
         self.tblDebugSubPlots.setModel(self.mdlPlots)
@@ -803,8 +803,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.lstDebugLabels.setModel(self.mdlLabels)
         self.lstDebugStatus.setModel(self.mdlStatus)
         #self.mdlPersos.setHorizontalHeaderLabels([i.name for i in Perso])
-        
-        
+
+
 ###############################################################################
 # GENERAL AKA UNSORTED
 ###############################################################################
@@ -869,8 +869,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.splitterOutlineV.setStretchFactor(1, 25)
 
         self.splitterRedac.setStretchFactor(0, 30)
-        self.splitterRedac.setStretchFactor(1, 50)
-        self.splitterRedac.setStretchFactor(2, 20)
+        self.splitterRedac.setStretchFactor(1, 40)
+        self.splitterRedac.setStretchFactor(2, 30)
+        self.tabRedacInfos.setCurrentIndex(0)
         
         # Help box
         references = [
@@ -1073,8 +1074,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.treePlanOutline.viewport().update()
         if item == "Tree":
             self.treeRedacOutline.viewport().update()
-            
-            
+
+
 ###############################################################################
 # COMPILE
 ###############################################################################
