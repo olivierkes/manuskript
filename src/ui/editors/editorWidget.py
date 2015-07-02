@@ -190,6 +190,7 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
             self.mw.mdlOutline.dataChanged.connect(self.modelDataChanged, AUC)
             self.mw.mdlOutline.rowsInserted.connect(self.updateIndexFromID, AUC)
             self.mw.mdlOutline.rowsRemoved.connect(self.updateIndexFromID, AUC)
+            self.mw.mdlOutline.rowsAboutToBeRemoved.connect(self.rowsAboutToBeRemoved, AUC)
         except TypeError:
             pass
         
@@ -219,6 +220,13 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
             return
         if topLeft.row() <= self.currentIndex.row() <= bottomRight.row():
             self.updateStatusBar()
+            
+    def rowsAboutToBeRemoved(self, parent, first, last):
+        if self.currentIndex:
+            if self.currentIndex.parent() == parent and \
+                first <= self.currentIndex.row() <= last:
+                # Item deleted, close tab
+                self.mw.mainEditor.tab.removeTab(self.mw.mainEditor.tab.indexOf(self))
             
     def updateStatusBar(self):
         # Update progress

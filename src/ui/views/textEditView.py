@@ -25,6 +25,7 @@ class textEditView(QTextEdit):
         self._column = Outline.text.value
         self._index = None
         self._indexes = None
+        self._model = None
         self._placeholderText = self.placeholderText()
         self._updating = False
         self._item = None
@@ -59,6 +60,8 @@ class textEditView(QTextEdit):
         #self.document().contentsChanged.connect(lambda: print("Document changed"))
         
         #self.document().contentsChanged.connect(lambda: print(self.objectName(), "Contents changed"))
+            
+        self.setEnabled(False)
         
         if index:
             self.setCurrentModelIndex(index)
@@ -81,7 +84,14 @@ class textEditView(QTextEdit):
             
     def setModel(self, model):
         self._model = model
-        #self._model.dataChanged.connect(self.update, AUC)
+        try:
+            self._model.dataChanged.connect(self.update, AUC)
+        except TypeError:
+            pass
+        try:
+            self._model.rowsAboutToBeRemoved.connect(self.rowsAboutToBeRemoved, AUC)
+        except TypeError:
+            pass
         
     def setColumn(self, col):
         self._column = col
@@ -97,33 +107,42 @@ class textEditView(QTextEdit):
     def setCurrentModelIndex(self, index):
         self._indexes = None
         if index.isValid():
+            self.setEnabled(True)
             if index.column() != self._column:
                 index = index.sibling(index.row(), self._column)
             self._index = index
             
             self.setPlaceholderText(self._placeholderText)
-                
-            self._model = index.model()
-            try:
-                self._model.dataChanged.connect(self.update, AUC)
-            except TypeError:
-                pass
+            
+            if not self._model:
+                self.setModel(index.model())
             
             self.setupEditorForIndex(self._index)
             self.loadFontSettings()
-            #self.document().contentsChanged.connect(self.submit, AUC)
             self.updateText()
             
             
         else:
             self._index = QModelIndex()
-            try:
-                self.document().contentsChanged.disconnect(self.submit)
-                #self._model.dataChanged.disconnect(self.update)
-            except:
-                pass
 
             self.setPlainText("")
+            self.setEnabled(False)
+        
+    def setCurrentModelIndexes(self, indexes):
+        self._index = None
+        self._indexes = []
+        
+        for i in indexes:
+            if i.isValid():
+                self.setEnabled(True)
+                if i.column() != self._column:
+                    i = i.sibling(i.row(), self._column)
+                self._indexes.append(i)
+                
+                if not self._model:
+                    self.setModel(i.model())
+                
+        self.updateText()
         
     def setupEditorForIndex(self, index):
         
@@ -200,19 +219,6 @@ class textEditView(QTextEdit):
             self.highlighter.setDefaultCharFormat(self._defaultCharFormat)
             self.highlighter.setDefaultBlockFormat(self._defaultBlockFormat)
         
-    def setCurrentModelIndexes(self, indexes):
-        self._index = None
-        self._indexes = []
-        
-        for i in indexes:
-            if i.isValid():
-                if i.column() != self._column:
-                    i = i.sibling(i.row(), self._column)
-                self._indexes.append(i)
-                
-        #self.document().contentsChanged.connect(self.submit)
-        self.updateText()
-        
     def update(self, topLeft, bottomRight):
         if self._updating:
             return
@@ -247,6 +253,15 @@ class textEditView(QTextEdit):
                     update = True
             if update:
                 self.updateText()
+            
+    def rowsAboutToBeRemoved(self, parent, first, last):
+        if self._index:
+            if self._index.parent() == parent and \
+               first <= self._index.row() <= last:
+                self._index = None
+                self.setEnabled(False)
+            
+        #FIXME: self._indexes
             
     def disconnectDocument(self):
         try:
@@ -329,11 +344,11 @@ class textEditView(QTextEdit):
                     self._updating = False
                 
         elif self._indexes:
-            print("Submitting many indexes")
             self._updating = True
             for i in self._indexes:
                 item = i.internalPointer()
                 if self.toPlainText() != toString(item.data(self._column)):
+                    print("Submitting many indexes")
                     self._model.setData(i, self.toPlainText())
             self._updating = False
             

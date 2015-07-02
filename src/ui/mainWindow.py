@@ -726,13 +726,13 @@ class Ui_MainWindow(object):
         self.splitterOutlineV = QtWidgets.QSplitter(self.layoutWidget)
         self.splitterOutlineV.setOrientation(QtCore.Qt.Vertical)
         self.splitterOutlineV.setObjectName("splitterOutlineV")
-        self.treePlanOutline = outlineView(self.splitterOutlineV)
-        self.treePlanOutline.setDragEnabled(True)
-        self.treePlanOutline.setDragDropMode(QtWidgets.QAbstractItemView.DragDrop)
-        self.treePlanOutline.setDefaultDropAction(QtCore.Qt.MoveAction)
-        self.treePlanOutline.setSelectionMode(QtWidgets.QAbstractItemView.ExtendedSelection)
-        self.treePlanOutline.setObjectName("treePlanOutline")
-        self.treePlanOutline.header().setStretchLastSection(False)
+        self.treeOutlineOutline = outlineView(self.splitterOutlineV)
+        self.treeOutlineOutline.setDragEnabled(True)
+        self.treeOutlineOutline.setDragDropMode(QtWidgets.QAbstractItemView.DragDrop)
+        self.treeOutlineOutline.setDefaultDropAction(QtCore.Qt.MoveAction)
+        self.treeOutlineOutline.setSelectionMode(QtWidgets.QAbstractItemView.ExtendedSelection)
+        self.treeOutlineOutline.setObjectName("treeOutlineOutline")
+        self.treeOutlineOutline.header().setStretchLastSection(False)
         self.frame = QtWidgets.QFrame(self.splitterOutlineV)
         self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
@@ -745,24 +745,24 @@ class Ui_MainWindow(object):
         self.verticalLayout_14.addWidget(self.splitterOutlineV)
         self.horizontalLayout_18 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_18.setObjectName("horizontalLayout_18")
-        self.btnPlanAddFolder = QtWidgets.QPushButton(self.layoutWidget)
-        self.btnPlanAddFolder.setText("")
+        self.btnOutlineAddFolder = QtWidgets.QPushButton(self.layoutWidget)
+        self.btnOutlineAddFolder.setText("")
         icon = QtGui.QIcon.fromTheme("folder-new")
-        self.btnPlanAddFolder.setIcon(icon)
-        self.btnPlanAddFolder.setObjectName("btnPlanAddFolder")
-        self.horizontalLayout_18.addWidget(self.btnPlanAddFolder)
-        self.btnPlanAddText = QtWidgets.QPushButton(self.layoutWidget)
-        self.btnPlanAddText.setText("")
+        self.btnOutlineAddFolder.setIcon(icon)
+        self.btnOutlineAddFolder.setObjectName("btnOutlineAddFolder")
+        self.horizontalLayout_18.addWidget(self.btnOutlineAddFolder)
+        self.btnOutlineAddText = QtWidgets.QPushButton(self.layoutWidget)
+        self.btnOutlineAddText.setText("")
         icon = QtGui.QIcon.fromTheme("document-new")
-        self.btnPlanAddText.setIcon(icon)
-        self.btnPlanAddText.setObjectName("btnPlanAddText")
-        self.horizontalLayout_18.addWidget(self.btnPlanAddText)
-        self.btnPlanRemoveItem = QtWidgets.QPushButton(self.layoutWidget)
-        self.btnPlanRemoveItem.setText("")
+        self.btnOutlineAddText.setIcon(icon)
+        self.btnOutlineAddText.setObjectName("btnOutlineAddText")
+        self.horizontalLayout_18.addWidget(self.btnOutlineAddText)
+        self.btnOutlineRemoveItem = QtWidgets.QPushButton(self.layoutWidget)
+        self.btnOutlineRemoveItem.setText("")
         icon = QtGui.QIcon.fromTheme("list-remove")
-        self.btnPlanRemoveItem.setIcon(icon)
-        self.btnPlanRemoveItem.setObjectName("btnPlanRemoveItem")
-        self.horizontalLayout_18.addWidget(self.btnPlanRemoveItem)
+        self.btnOutlineRemoveItem.setIcon(icon)
+        self.btnOutlineRemoveItem.setObjectName("btnOutlineRemoveItem")
+        self.horizontalLayout_18.addWidget(self.btnOutlineRemoveItem)
         spacerItem15 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_18.addItem(spacerItem15)
         self.btnPlanShowDetails = QtWidgets.QPushButton(self.layoutWidget)
@@ -1047,13 +1047,13 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.stack.setCurrentIndex(1)
-        self.tabMain.setCurrentIndex(5)
+        self.tabMain.setCurrentIndex(6)
         self.tabSummary.setCurrentIndex(0)
         self.tabPersos.setCurrentIndex(0)
         self.tabPlot.setCurrentIndex(0)
         self.comboBox_2.setCurrentIndex(0)
         self.stkPlotSummary.setCurrentIndex(0)
-        self.tabRedacInfos.setCurrentIndex(1)
+        self.tabRedacInfos.setCurrentIndex(0)
         self.tabWidget.setCurrentIndex(1)
         self.btnPlotShowSummary.toggled['bool'].connect(self.grpPlotSummary.setVisible)
         self.comboBox_2.currentIndexChanged['int'].connect(self.stkPlotSummary.setCurrentIndex)
@@ -1175,17 +1175,17 @@ class Ui_MainWindow(object):
         self.actCompile.setText(_translate("MainWindow", "Compile"))
         self.actCompile.setShortcut(_translate("MainWindow", "F6"))
 
-from ui.views.treeView import treeView
+from ui.views.outlineView import outlineView
+from ui.views.basicItemView import basicItemView
+from ui.views.metadataView import metadataView
+from ui.views.textEditView import textEditView
 from ui.editors.mainEditor import mainEditor
 from ui.welcome import welcome
-from ui.sldImportance import sldImportance
-from ui.views.persoTreeView import persoTreeView
-from ui.cheatSheet import cheatSheet
-from ui.search import search
-from ui.views.basicItemView import basicItemView
-from ui.views.plotTreeView import plotTreeView
-from ui.views.metadataView import metadataView
-from ui.views.outlineView import outlineView
-from ui.collapsibleGroupBox2 import collapsibleGroupBox2
 from ui.views.lineEditView import lineEditView
-from ui.views.textEditView import textEditView
+from ui.search import search
+from ui.collapsibleGroupBox2 import collapsibleGroupBox2
+from ui.cheatSheet import cheatSheet
+from ui.views.persoTreeView import persoTreeView
+from ui.views.treeView import treeView
+from ui.views.plotTreeView import plotTreeView
+from ui.sldImportance import sldImportance

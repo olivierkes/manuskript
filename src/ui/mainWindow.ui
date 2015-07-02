@@ -109,7 +109,7 @@
         <item>
          <widget class="QTabWidget" name="tabMain">
           <property name="currentIndex">
-           <number>5</number>
+           <number>6</number>
           </property>
           <property name="documentMode">
            <bool>true</bool>
@@ -1399,7 +1399,7 @@
                   <property name="orientation">
                    <enum>Qt::Vertical</enum>
                   </property>
-                  <widget class="outlineView" name="treePlanOutline">
+                  <widget class="outlineView" name="treeOutlineOutline">
                    <property name="dragEnabled">
                     <bool>true</bool>
                    </property>
@@ -1434,7 +1434,7 @@
                 <item>
                  <layout class="QHBoxLayout" name="horizontalLayout_18">
                   <item>
-                   <widget class="QPushButton" name="btnPlanAddFolder">
+                   <widget class="QPushButton" name="btnOutlineAddFolder">
                     <property name="text">
                      <string/>
                     </property>
@@ -1445,7 +1445,7 @@
                    </widget>
                   </item>
                   <item>
-                   <widget class="QPushButton" name="btnPlanAddText">
+                   <widget class="QPushButton" name="btnOutlineAddText">
                     <property name="text">
                      <string/>
                     </property>
@@ -1456,7 +1456,7 @@
                    </widget>
                   </item>
                   <item>
-                   <widget class="QPushButton" name="btnPlanRemoveItem">
+                   <widget class="QPushButton" name="btnOutlineRemoveItem">
                     <property name="text">
                      <string/>
                     </property>
@@ -1584,7 +1584,7 @@
                 <enum>QTabWidget::South</enum>
                </property>
                <property name="currentIndex">
-                <number>1</number>
+                <number>0</number>
                </property>
                <property name="documentMode">
                 <bool>true</bool>

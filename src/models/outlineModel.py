@@ -84,7 +84,13 @@ class outlineModel(QAbstractItemModel):
             return QModelIndex()
         
         childItem = index.internalPointer()
-        parentItem = childItem.parent()
+        try:
+            parentItem = childItem.parent()
+        except AttributeError:
+            import traceback, sys
+            print(traceback.print_exc())
+            print(sys.exc_info()[0])
+            return QModelIndex()
         
         if parentItem == self.rootItem:
             return QModelIndex()
@@ -317,6 +323,23 @@ class outlineModel(QAbstractItemModel):
     def removeIndex(self, index):
         item = index.internalPointer()
         self.removeRow(item.row(), index.parent())
+            
+    def removeIndexes(self, indexes):
+        levels = {}
+        for i in indexes:
+            item = i.internalPointer()
+            level = item.level()
+            if not level in levels:
+                levels[level] = []
+            levels[level].append([i.row(), i])
+        
+        # Sort by level then by row
+        for l in reversed(sorted(levels.keys())):
+            rows = levels[l]
+            
+            rows = list(reversed(sorted(rows, key=lambda x:x[0])))
+            for r in rows:
+                self.removeIndex(r[1])
             
     def removeRow(self, row, parent=QModelIndex()):
         return self.removeRows(row, 1, parent)

@@ -113,11 +113,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 # OUTLINE
 ###############################################################################
 
-    def outlineRemoveItems(self):
-        for idx in self.treeRedacOutline.selectedIndexes():
-            if idx.isValid():
-                self.mdlOutline.removeIndex(idx)
-
+    def outlineRemoveItemsRedac(self):
+        self.treeRedacOutline.delete()
+                
+    def outlineRemoveItemsOutline(self):
+        self.treeOutlineOutline.delete()
+                
 ###############################################################################
 # PERSOS
 ###############################################################################
@@ -603,11 +604,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.lstSubPlots.activated.connect(self.changeCurrentSubPlot, AUC)
 
         self.btnRedacAddFolder.clicked.connect(self.treeRedacOutline.addFolder, AUC)
-        self.btnPlanAddFolder.clicked.connect(self.treePlanOutline.addFolder, AUC)
+        self.btnOutlineAddFolder.clicked.connect(self.treeOutlineOutline.addFolder, AUC)
         self.btnRedacAddText.clicked.connect(self.treeRedacOutline.addText, AUC)
-        self.btnPlanAddText.clicked.connect(self.treePlanOutline.addText, AUC)
-        self.btnRedacRemoveItem.clicked.connect(self.outlineRemoveItems, AUC)
-        self.btnPlanRemoveItem.clicked.connect(self.outlineRemoveItems, AUC)
+        self.btnOutlineAddText.clicked.connect(self.treeOutlineOutline.addText, AUC)
+        self.btnRedacRemoveItem.clicked.connect(self.outlineRemoveItemsRedac, AUC)
+        self.btnOutlineRemoveItem.clicked.connect(self.outlineRemoveItemsOutline, AUC)
 
         self.mainEditor.btnRedacShowOutline.toggled.connect(self.treeRedacWidget.setVisible)
         self.mainEditor.btnRedacShowOutline.setChecked(True)
@@ -740,25 +741,25 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # Outline
         self.treeRedacOutline.setModel(self.mdlOutline)
-        self.treePlanOutline.setModelPersos(self.mdlPersos)
-        self.treePlanOutline.setModelLabels(self.mdlLabels)
-        self.treePlanOutline.setModelStatus(self.mdlStatus)
+        self.treeOutlineOutline.setModelPersos(self.mdlPersos)
+        self.treeOutlineOutline.setModelLabels(self.mdlLabels)
+        self.treeOutlineOutline.setModelStatus(self.mdlStatus)
 
         self.redacMetadata.setModels(self.mdlOutline, self.mdlPersos,
                                      self.mdlLabels, self.mdlStatus)
         self.outlineItemEditor.setModels(self.mdlOutline, self.mdlPersos,
                                          self.mdlLabels, self.mdlStatus)
 
-        self.treePlanOutline.setModel(self.mdlOutline)
+        self.treeOutlineOutline.setModel(self.mdlOutline)
         #self.redacEditor.setModel(self.mdlOutline)
 
-        self.treePlanOutline.selectionModel().selectionChanged.connect(lambda:
-                 self.outlineItemEditor.selectionChanged(self.treePlanOutline), AUC)
-        self.treePlanOutline.clicked.connect(lambda:
-                 self.outlineItemEditor.selectionChanged(self.treePlanOutline), AUC)
+        self.treeOutlineOutline.selectionModel().selectionChanged.connect(lambda:
+                 self.outlineItemEditor.selectionChanged(self.treeOutlineOutline), AUC)
+        self.treeOutlineOutline.clicked.connect(lambda:
+                 self.outlineItemEditor.selectionChanged(self.treeOutlineOutline), AUC)
 
         # Sync selection
-        #self.treeRedacOutline.setSelectionModel(self.treePlanOutline
+        #self.treeRedacOutline.setSelectionModel(self.treeOutlineOutline
                                                     #.selectionModel())
 
         self.treeRedacOutline.selectionModel().selectionChanged.connect(
@@ -773,8 +774,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         #self.treeRedacOutline.selectionModel().selectionChanged.connect(self.outlineSelectionChanged, AUC)
         #self.treeRedacOutline.selectionModel().selectionChanged.connect(self.outlineSelectionChanged, AUC)
-        #self.treePlanOutline.selectionModel().selectionChanged.connect(self.outlineSelectionChanged, AUC)
-        #self.treePlanOutline.selectionModel().selectionChanged.connect(self.outlineSelectionChanged, AUC)
+        #self.treeOutlineOutline.selectionModel().selectionChanged.connect(self.outlineSelectionChanged, AUC)
+        #self.treeOutlineOutline.selectionModel().selectionChanged.connect(self.outlineSelectionChanged, AUC)
 
         # Cheat Sheet
         self.cheatSheet.setModels()
@@ -1072,7 +1073,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.mainEditor.updateCorkView()
         if item == "Outline":
             self.mainEditor.updateTreeView()
-            self.treePlanOutline.viewport().update()
+            self.treeOutlineOutline.viewport().update()
         if item == "Tree":
             self.treeRedacOutline.viewport().update()
 

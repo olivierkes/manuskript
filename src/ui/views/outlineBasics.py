@@ -172,8 +172,7 @@ class outlineBasics(QAbstractItemView):
         self.delete()
             
     def delete(self):
-        for i in self.getSelection():
-            self.model().removeIndex(i)
+        self.model().removeIndexes(self.getSelection())
             
     def setPOV(self, POV):
         for i in self.getSelection():
