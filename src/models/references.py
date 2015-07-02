@@ -94,7 +94,7 @@ def infoForRef(ref):
                     ls=ls.replace("\n", "<br>")) if ls else "",
                 notes="<p><b>{notesTitle}</b><br>{notes}</p>".format(
                     notesTitle=notesTitle,
-                    notes=linkifyAllRefs(notes).replace("\n", "<br>")) if notes else "",
+                    notes=linkifyAllRefs(basicT2TFormat(notes))) if notes else "",
                 )
             
             return text
@@ -207,6 +207,13 @@ def refToLink(ref):
     
 def linkifyAllRefs(text):
     return re.sub(r"::(\w):(\d+?)::", lambda m: refToLink(m.group(0)), text)
+    
+def basicT2TFormat(text):
+    text = re.sub("\*\*(.*?)\*\*", "<b>\\1</b>", text)
+    text = re.sub("//(.*?)//", "<i>\\1</i>", text)
+    text = re.sub("__(.*?)__", "<u>\\1</u>", text)
+    text = text.replace("\n", "<br>")
+    return text
     
 def tooltipForRef(ref):
     match = re.fullmatch("::(\w):(\d+?)::", ref)

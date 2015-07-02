@@ -132,7 +132,7 @@ class textEditView(QTextEdit):
             self._textFormat = "text"
             return
         
-        if self._column != Outline.text.value:
+        if self._column not in [Outline.text.value, Outline.notes.value]:
             self._textFormat = "text"
             
         else:
@@ -476,8 +476,6 @@ class textEditView(QTextEdit):
                 tF.setTextEdit(self)
                 
     def applyFormat(self, _format):
-        
-        print(_format)
         
         if self._textFormat == "html":
             

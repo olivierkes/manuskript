@@ -45,7 +45,7 @@ class textFormat(QWidget, Ui_textFormat):
             self.setVisible(False)
             return 
         
-        if index.column() != Outline.text.value:
+        if index.column() not in [Outline.text.value, Outline.notes.value]:
             self.setVisible(False)
             return 
         
