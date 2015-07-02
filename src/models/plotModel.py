@@ -14,9 +14,9 @@ class plotModel(QStandardItemModel):
         
         self.updatePlotPersoButton()
         
-####################################################################################################
-#                                            QUERIES                                               #
-####################################################################################################
+###############################################################################
+# QUERIES
+###############################################################################
 
     def getPlotsByImportance(self):
         plots = [[], [], []]
@@ -36,7 +36,8 @@ class plotModel(QStandardItemModel):
         for i in range(item.rowCount()):
             _ID = item.child(i, Plot.ID.value).text()
             name = item.child(i, Plot.name.value).text()
-            lst.append((_ID, name))
+            summary = item.child(i, 3).text()
+            lst.append((_ID, name, summary))
         return lst
     
     def getPlotNameByID(self, ID):
@@ -46,6 +47,15 @@ class plotModel(QStandardItemModel):
                 name = self.item(i, Plot.name.value).text()
                 return name
         return None
+    
+    def getSubPlotTextsByID(self, plotID, subplotRaw):
+        """Returns a tuple (name, summary) for the suplot whose raw in the model
+        is ``subplotRaw``, of plot whose ID is ``plotID``.
+        """
+        plotIndex = self.getIndexFromID(plotID)
+        name = plotIndex.child(subplotRaw, Plot.name.value).data()
+        summary = plotIndex.child(subplotRaw, 3).data()  # 3 is for summary
+        return (name, summary)
     
     def getIndexFromID(self, ID):
         for i in range(self.rowCount()):
@@ -60,10 +70,10 @@ class plotModel(QStandardItemModel):
             return i
         else:
             return None
-
-####################################################################################################
-#                                       ADDING / REMOVING                                          #
-####################################################################################################
+        
+###############################################################################
+# ADDING / REMOVING
+###############################################################################
     
     def addPlot(self):
         p = QStandardItem(self.tr("New plot"))
@@ -88,11 +98,11 @@ class plotModel(QStandardItemModel):
         
     def removePlot(self, index):
         self.takeRow(index.row())
-
-####################################################################################################
-#                                           SUBPLOTS                                               #
-####################################################################################################
         
+###############################################################################
+# SUBPLOTS
+###############################################################################
+ 
     def addSubPlot(self):
         index = self.mw.lstPlots.currentPlotIndex()
         if not index.isValid():
@@ -128,11 +138,11 @@ class plotModel(QStandardItemModel):
             return  Qt.ItemIsEnabled | Qt.ItemIsEditable | Qt.ItemIsSelectable | Qt.ItemIsDragEnabled
         else:
             return QStandardItemModel.flags(self, index)
-        
-####################################################################################################
-#                                         PLOT PERSOS                                              #
-####################################################################################################
-        
+
+###############################################################################
+# PLOT PERSOS
+###############################################################################
+
     def addPlotPerso(self, v):
         index = self.mw.lstPlots.currentPlotIndex()
         if index.isValid():

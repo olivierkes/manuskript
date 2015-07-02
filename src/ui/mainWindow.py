@@ -1047,7 +1047,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.stack.setCurrentIndex(1)
-        self.tabMain.setCurrentIndex(6)
+        self.tabMain.setCurrentIndex(5)
         self.tabSummary.setCurrentIndex(0)
         self.tabPersos.setCurrentIndex(0)
         self.tabPlot.setCurrentIndex(0)
@@ -1175,17 +1175,17 @@ class Ui_MainWindow(object):
         self.actCompile.setText(_translate("MainWindow", "Compile"))
         self.actCompile.setShortcut(_translate("MainWindow", "F6"))
 
+from ui.views.treeView import treeView
+from ui.editors.mainEditor import mainEditor
+from ui.welcome import welcome
+from ui.sldImportance import sldImportance
 from ui.views.persoTreeView import persoTreeView
 from ui.cheatSheet import cheatSheet
 from ui.search import search
-from ui.views.outlineView import outlineView
-from ui.views.lineEditView import lineEditView
-from ui.sldImportance import sldImportance
-from ui.views.plotTreeView import plotTreeView
-from ui.editors.mainEditor import mainEditor
-from ui.collapsibleGroupBox2 import collapsibleGroupBox2
-from ui.welcome import welcome
 from ui.views.basicItemView import basicItemView
+from ui.views.plotTreeView import plotTreeView
 from ui.views.metadataView import metadataView
-from ui.views.treeView import treeView
+from ui.views.outlineView import outlineView
+from ui.collapsibleGroupBox2 import collapsibleGroupBox2
+from ui.views.lineEditView import lineEditView
 from ui.views.textEditView import textEditView
