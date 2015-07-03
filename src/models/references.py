@@ -60,7 +60,7 @@ def infos(ref):
             POV = ""
             if item.POV():
                 POV = "<a href='{ref}'>{text}</a>".format(
-                    ref=getPersoReference(item.POV()),
+                    ref=persoReference(item.POV()),
                     text=mainWindow().mdlPersos.getPersoNameByID(item.POV()))
             
             status = item.status()
@@ -79,7 +79,7 @@ def infos(ref):
             pathStr = []
             for _id, title in path:
                 pathStr.append("<a href='{ref}'>{text}</a>".format(
-                    ref=getTextReference(_id),
+                    ref=textReference(_id),
                     text=title))
             path = " > ".join(pathStr)
             
@@ -169,16 +169,16 @@ def infos(ref):
             for t in lst:
                 idx = oM.getIndexByID(t)
                 listPOV += "<li><a href='{link}'>{text}</a>".format(
-                    link=getTextReference(t),
+                    link=textReference(t),
                     text=oM.data(idx, Outline.title.value))
             
-            # List scences where character is referenced
+            # List scenes where character is referenced
             listRefs = ""
             lst = oM.findItemsContaining(ref, [Outline.notes.value])
             for t in lst:
                 idx = oM.getIndexByID(t)
                 listRefs += "<li><a href='{link}'>{text}</a>".format(
-                    link=getTextReference(t),
+                    link=textReference(t),
                     text=oM.data(idx, Outline.title.value))
             
             text = """<h1>{name}</h1>
