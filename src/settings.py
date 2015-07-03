@@ -4,6 +4,7 @@ import pickle
 import pprint
 from enums import *
 from qt import *
+import collections
 
 viewSettings = {
     "Tree": {
@@ -60,11 +61,23 @@ textEditor = {
     "spacingBelow": 5,
     }
     
+revisions = {
+    "keep": True,
+    "smartremove": True,
+    "rules": collections.OrderedDict({
+        10 * 60:            60,                     # One per minute for the last 10mn
+        60 * 60:            60 * 10,                # One per 10mn for the last hour
+        60 * 60 * 24:       60 * 60,                # One per hour for the last day
+        60 * 60 * 24 * 30:  60 * 60 * 24,           # One per day for the last month
+        None:               60 * 60 * 24 * 7,       # One per week for eternity
+        })
+    }
+    
 def save(filename=None):
     
     global spellcheck, dict, corkSliderFactor, viewSettings, corkSizeFactor, folderView, lastTab, openIndexes, \
            autoSave, autoSaveDelay, saveOnQuit, autoSaveNoChanges, autoSaveNoChangesDelay, outlineViewColumns, \
-           corkBackground, fullScreenTheme, defaultTextType, textEditor
+           corkBackground, fullScreenTheme, defaultTextType, textEditor, revisions
     
     allSettings = {
         "viewSettings": viewSettings,
@@ -84,6 +97,7 @@ def save(filename=None):
         "fullScreenTheme":fullScreenTheme,
         "defaultTextType":defaultTextType,
         "textEditor":textEditor,
+        "revisions":revisions,
         }
     
     #pp=pprint.PrettyPrinter(indent=4, compact=False)
@@ -183,3 +197,7 @@ def load(string, fromString=False):
     if "textEditor" in allSettings:
         global textEditor
         textEditor = allSettings["textEditor"]
+
+    if "revisions" in allSettings:
+        global revisions
+        revisions = allSettings["revisions"]

@@ -65,6 +65,23 @@ class settingsWindow(QWidget, Ui_Settings):
             self.cmbDefaultTextType.setCurrentIndex(i)
         self.cmbDefaultTextType.currentIndexChanged.connect(self.saveSettingsChanged)
         
+        # Revisions
+        opt = settings.revisions
+        self.chkRevisionsKeep.setChecked(opt["keep"])
+        self.chkRevisionsKeep.stateChanged.connect(self.revisionsSettingsChanged)
+        self.chkRevisionRemove.setChecked(opt["smartremove"])
+        self.chkRevisionRemove.toggled.connect(self.revisionsSettingsChanged)
+        self.spnRevisions10Mn.setValue(60 / opt["rules"][10 * 60])
+        self.spnRevisions10Mn.valueChanged.connect(self.revisionsSettingsChanged)
+        self.spnRevisionsHour.setValue(60 * 10 / opt["rules"][60 * 60])
+        self.spnRevisionsHour.valueChanged.connect(self.revisionsSettingsChanged)
+        self.spnRevisionsDay.setValue(60 * 60 / opt["rules"][60 * 60 * 24])
+        self.spnRevisionsDay.valueChanged.connect(self.revisionsSettingsChanged)
+        self.spnRevisionsMonth.setValue(60 * 60 * 24 / opt["rules"][60 * 60 * 24 * 30])
+        self.spnRevisionsMonth.valueChanged.connect(self.revisionsSettingsChanged)
+        self.spnRevisionsEternity.setValue(60 * 60 * 24 * 7 / opt["rules"][None])
+        self.spnRevisionsEternity.valueChanged.connect(self.revisionsSettingsChanged)
+        
         # Views
         self.tabViews.setCurrentIndex(0)
         lst = ["Nothing", "POV", "Label", "Progress", "Compile"]
@@ -203,6 +220,21 @@ class settingsWindow(QWidget, Ui_Settings):
         self.mw.saveTimerNoChanges.setInterval(settings.autoSaveNoChangesDelay * 1000)
         settings.defaultTextType = self.cmbDefaultTextType.currentData()
 
+
+####################################################################################################
+#                                           REVISION                                               #
+####################################################################################################
+
+    def revisionsSettingsChanged(self):
+        opt = settings.revisions
+        opt["keep"] = True if self.chkRevisionsKeep.checkState() else False
+        opt["smartremove"] = self.chkRevisionRemove.isChecked()
+        opt["rules"][10 * 60] = 60 / self.spnRevisions10Mn.value()
+        opt["rules"][60 * 60] = 60 * 10 / self.spnRevisionsHour.value()
+        opt["rules"][60 * 60 * 24] = 60 * 60 / self.spnRevisionsDay.value()
+        opt["rules"][60 * 60 * 24 * 30] = 60 * 60 * 24 / self.spnRevisionsMonth.value()
+        opt["rules"][None] = 60 * 60 * 24 * 7 / self.spnRevisionsEternity.value()
+        
 ####################################################################################################
 #                                           VIEWS                                                  #
 ####################################################################################################

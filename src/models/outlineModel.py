@@ -6,10 +6,10 @@ from enums import *
 from enum import Enum
 from lxml import etree as ET
 from functions import *
+import settings
 import locale
 locale.setlocale(locale.LC_ALL, '')
 import time
-import collections
 
 class outlineModel(QAbstractItemModel):
     
@@ -869,6 +869,9 @@ class outlineItem():
     def addRevision(self):
         # FIXME: only add if significantly different, or enough time span
         
+        if not settings.revisions["keep"]:
+            return
+        
         if not Outline.text in self._data:
             return
         
@@ -876,7 +879,8 @@ class outlineItem():
             time.time(),
             self._data[Outline.text])
         
-        self.cleanRevisions()
+        if settings.revisions["smartremove"]:
+            self.cleanRevisions()
         
     def cleanRevisions(self):
         "Keep only one some the revisions."
@@ -884,12 +888,7 @@ class outlineItem():
         rev2 = []
         now = time.time()
         
-        rule = collections.OrderedDict()
-        rule[5 * 60] =             60                     # One per minute for the last 5mn
-        rule[60 * 60] =            60 * 10                # One per 10mn for the last hour
-        rule[60 * 60 * 24] =       60 * 60                # One per hour for the last day
-        rule[60 * 60 * 24 * 30] =  60 * 60 * 24           # One per day for the last month
-        rule[None] =               60 * 60 * 24 * 7       # One per week for eternity
+        rule = settings.revisions["rules"]
         
         revs = {}
         for i in rule:

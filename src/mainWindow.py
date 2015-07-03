@@ -984,10 +984,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 ###############################################################################
 
     def settingsLabel(self):
-        self.settingsWindow("Labels")
+        self.settingsWindow(3)
 
     def settingsStatus(self):
-        self.settingsWindow("Status")
+        self.settingsWindow(4)
 
     def settingsWindow(self, tab=None):
         self.sw = settingsWindow(self)

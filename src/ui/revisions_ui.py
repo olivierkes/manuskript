@@ -51,6 +51,9 @@ class Ui_revisions(object):
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.layoutWidget)
         self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.btnOptions = QtWidgets.QPushButton(self.layoutWidget)
+        self.btnOptions.setObjectName("btnOptions")
+        self.horizontalLayout_2.addWidget(self.btnOptions)
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem)
         self.btnRestore = QtWidgets.QPushButton(self.layoutWidget)
@@ -69,6 +72,7 @@ class Ui_revisions(object):
     def retranslateUi(self, revisions):
         _translate = QtCore.QCoreApplication.translate
         revisions.setWindowTitle(_translate("revisions", "Form"))
+        self.btnOptions.setText(_translate("revisions", "Options"))
         self.btnRestore.setText(_translate("revisions", "Restore"))
         self.btnDelete.setText(_translate("revisions", "Delete"))
 

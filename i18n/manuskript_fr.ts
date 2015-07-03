@@ -587,408 +587,408 @@
         <translation>Général</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="26"/>
+        <location filename="../src/ui/settings.ui" line="31"/>
         <source>Views</source>
         <translation>Apparence</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="1918"/>
+        <location filename="../src/ui/settings.ui" line="2225"/>
         <source>Labels</source>
         <translation>Labels</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="2050"/>
+        <location filename="../src/ui/settings.ui" line="2357"/>
         <source>Status</source>
         <translation>Status</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="2124"/>
+        <location filename="../src/ui/settings.ui" line="2431"/>
         <source>Fullscreen</source>
         <translation>Plein écran</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="74"/>
+        <location filename="../src/ui/settings.ui" line="79"/>
         <source>General settings</source>
         <translation>Réglages généraux</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="90"/>
+        <location filename="../src/ui/settings.ui" line="95"/>
         <source>Application style</source>
         <translation>Style de l&apos;application</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="162"/>
+        <location filename="../src/ui/settings.ui" line="167"/>
         <source>Saving</source>
         <translation>Enregistrement</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="176"/>
+        <location filename="../src/ui/settings.ui" line="181"/>
         <source>Automatically save every</source>
         <translation>Enregistrer automatiquement toutes les</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="223"/>
+        <location filename="../src/ui/settings.ui" line="228"/>
         <source>minutes.</source>
         <translation>minutes.</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="259"/>
+        <location filename="../src/ui/settings.ui" line="264"/>
         <source>If no changes during</source>
         <translation>S&apos;il n&apos;y a pas de modification durant</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="306"/>
+        <location filename="../src/ui/settings.ui" line="311"/>
         <source>seconds.</source>
         <translation>secondes.</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="340"/>
+        <location filename="../src/ui/settings.ui" line="345"/>
         <source>Save on quit</source>
         <translation>Enregistrer en quittant</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="429"/>
+        <location filename="../src/ui/settings.ui" line="736"/>
         <source>Views settings</source>
         <translation>Apparence</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="443"/>
+        <location filename="../src/ui/settings.ui" line="750"/>
         <source>Tree</source>
         <translation>Arbre</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="802"/>
+        <location filename="../src/ui/settings.ui" line="1109"/>
         <source>Colors</source>
         <translation>Couleurs</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="1160"/>
+        <location filename="../src/ui/settings.ui" line="1467"/>
         <source>Icon color:</source>
         <translation>Icone:</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="1366"/>
+        <location filename="../src/ui/settings.ui" line="1673"/>
         <source>Nothing</source>
         <translation>Rien</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="1371"/>
+        <location filename="../src/ui/settings.ui" line="1678"/>
         <source>POV</source>
         <translation>POV</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="1376"/>
+        <location filename="../src/ui/settings.ui" line="1683"/>
         <source>Label</source>
         <translation>Label</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="1381"/>
+        <location filename="../src/ui/settings.ui" line="1688"/>
         <source>Progress</source>
         <translation>Progrès</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="1386"/>
+        <location filename="../src/ui/settings.ui" line="1693"/>
         <source>Compile</source>
         <translation>Compilation</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="1208"/>
+        <location filename="../src/ui/settings.ui" line="1515"/>
         <source>Text color:</source>
         <translation>Texte:</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="1256"/>
+        <location filename="../src/ui/settings.ui" line="1563"/>
         <source>Background color:</source>
         <translation>Arrière-plan:</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="637"/>
+        <location filename="../src/ui/settings.ui" line="944"/>
         <source>Folders</source>
         <translation>Dossiers</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="649"/>
+        <location filename="../src/ui/settings.ui" line="956"/>
         <source>Show item count</source>
         <translation>Afficher le nombre de sous-éléments</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="719"/>
+        <location filename="../src/ui/settings.ui" line="1026"/>
         <source>Show wordcount</source>
         <translation>Afficher le nombre de mots</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="732"/>
+        <location filename="../src/ui/settings.ui" line="1039"/>
         <source>Show progress</source>
         <translation>Afficher le progrès</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="707"/>
+        <location filename="../src/ui/settings.ui" line="1014"/>
         <source>Text</source>
         <translation>Texte</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="790"/>
+        <location filename="../src/ui/settings.ui" line="1097"/>
         <source>Outline</source>
         <translation>Plan</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="982"/>
+        <location filename="../src/ui/settings.ui" line="1289"/>
         <source>Visible columns</source>
         <translation>Colonnes visibles</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="994"/>
+        <location filename="../src/ui/settings.ui" line="1301"/>
         <source>Goal</source>
         <translation>Goal</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="1010"/>
+        <location filename="../src/ui/settings.ui" line="1317"/>
         <source>Word count</source>
         <translation>Nombre de mots</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="1026"/>
+        <location filename="../src/ui/settings.ui" line="1333"/>
         <source>Percentage</source>
         <translation>Pourcentage</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="1106"/>
+        <location filename="../src/ui/settings.ui" line="1413"/>
         <source>Title</source>
         <translation>Titre</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="1133"/>
+        <location filename="../src/ui/settings.ui" line="1440"/>
         <source>Index cards</source>
         <translation>Cartes</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="1145"/>
+        <location filename="../src/ui/settings.ui" line="1452"/>
         <source>Item colors</source>
         <translation>Couleurs des cartes</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="1304"/>
+        <location filename="../src/ui/settings.ui" line="1611"/>
         <source>Border color:</source>
         <translation>Bordure:</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="1352"/>
+        <location filename="../src/ui/settings.ui" line="1659"/>
         <source>Corner color:</source>
         <translation>Coin:</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="1403"/>
+        <location filename="../src/ui/settings.ui" line="1710"/>
         <source>Background</source>
         <translation>Arrière-plan</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="2585"/>
+        <location filename="../src/ui/settings.ui" line="2892"/>
         <source>Color:</source>
         <translation>Couleur:</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="1965"/>
+        <location filename="../src/ui/settings.ui" line="2272"/>
         <source>Ctrl+S</source>
         <translation>Ctrl+S</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="2327"/>
+        <location filename="../src/ui/settings.ui" line="2634"/>
         <source>Image:</source>
         <translation>Image:</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="2162"/>
+        <location filename="../src/ui/settings.ui" line="2469"/>
         <source>New</source>
         <translation>Nouveau</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="2176"/>
+        <location filename="../src/ui/settings.ui" line="2483"/>
         <source>Edit</source>
         <translation>Modifier</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="2186"/>
+        <location filename="../src/ui/settings.ui" line="2493"/>
         <source>Delete</source>
         <translation>Supprimer</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="2221"/>
+        <location filename="../src/ui/settings.ui" line="2528"/>
         <source>Theme name:</source>
         <translation>Nom du thème:</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="2237"/>
+        <location filename="../src/ui/settings.ui" line="2544"/>
         <source>Apply</source>
         <translation>Enregistrer</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="2250"/>
+        <location filename="../src/ui/settings.ui" line="2557"/>
         <source>Cancel</source>
         <translation>Annuler</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="2280"/>
+        <location filename="../src/ui/settings.ui" line="2587"/>
         <source>Window Background</source>
         <translation>Arrière plan de la fenêtre</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="2285"/>
+        <location filename="../src/ui/settings.ui" line="2592"/>
         <source>Text Background</source>
         <translation>Arrière plan du texte</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="2290"/>
+        <location filename="../src/ui/settings.ui" line="2597"/>
         <source>Text Options</source>
         <translation>Options du texte</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="2295"/>
+        <location filename="../src/ui/settings.ui" line="2602"/>
         <source>Paragraph Options</source>
         <translation>Options des paragraphes</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="2337"/>
+        <location filename="../src/ui/settings.ui" line="2644"/>
         <source>Type:</source>
         <translation>Type:</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="2345"/>
+        <location filename="../src/ui/settings.ui" line="2652"/>
         <source>No Image</source>
         <translation>Pas d&apos;image</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="2350"/>
+        <location filename="../src/ui/settings.ui" line="2657"/>
         <source>Tiled</source>
         <translation>Mosaïque</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="2355"/>
+        <location filename="../src/ui/settings.ui" line="2662"/>
         <source>Centered</source>
         <translation>Centrée</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="2454"/>
+        <location filename="../src/ui/settings.ui" line="2761"/>
         <source>Stretched</source>
         <translation>Étirée</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="2365"/>
+        <location filename="../src/ui/settings.ui" line="2672"/>
         <source>Scaled</source>
         <translation>Mise à l&apos;échelle</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="2370"/>
+        <location filename="../src/ui/settings.ui" line="2677"/>
         <source>Zoomed</source>
         <translation>Zoomée</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="2405"/>
+        <location filename="../src/ui/settings.ui" line="2712"/>
         <source>Opacity:</source>
         <translation>Opacité:</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="2709"/>
+        <location filename="../src/ui/settings.ui" line="3016"/>
         <source>%</source>
         <translation>%</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="2431"/>
+        <location filename="../src/ui/settings.ui" line="2738"/>
         <source>Position:</source>
         <translation>Position:</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="2439"/>
+        <location filename="../src/ui/settings.ui" line="2746"/>
         <source>Left</source>
         <translation>Gauche</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="2444"/>
+        <location filename="../src/ui/settings.ui" line="2751"/>
         <source>Center</source>
         <translation>Centre</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="2449"/>
+        <location filename="../src/ui/settings.ui" line="2756"/>
         <source>Right</source>
         <translation>Droite</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="2462"/>
+        <location filename="../src/ui/settings.ui" line="2769"/>
         <source>Width:</source>
         <translation>Largeur:</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="2789"/>
+        <location filename="../src/ui/settings.ui" line="3096"/>
         <source> px</source>
         <translation>px</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="2513"/>
+        <location filename="../src/ui/settings.ui" line="2820"/>
         <source>Corner radius:</source>
         <translation>Arrondi:</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="2520"/>
+        <location filename="../src/ui/settings.ui" line="2827"/>
         <source>Margins:</source>
         <translation>Marges:</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="2549"/>
+        <location filename="../src/ui/settings.ui" line="2856"/>
         <source>Padding:</source>
         <translation>Intérieur:</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="2605"/>
+        <location filename="../src/ui/settings.ui" line="2912"/>
         <source>Font:</source>
         <translation>Police:</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="2628"/>
+        <location filename="../src/ui/settings.ui" line="2935"/>
         <source>Size:</source>
         <translation>Taille:</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="2642"/>
+        <location filename="../src/ui/settings.ui" line="2949"/>
         <source>Misspelled:</source>
         <translation>Orthographe:</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="2669"/>
+        <location filename="../src/ui/settings.ui" line="2976"/>
         <source>Line spacing:</source>
         <translation>Espacement
 des lignes:</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="2677"/>
+        <location filename="../src/ui/settings.ui" line="2984"/>
         <source>Single</source>
         <translation>Simple</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="2682"/>
+        <location filename="../src/ui/settings.ui" line="2989"/>
         <source>1.5 lines</source>
         <translation>1.5 lignes</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="2687"/>
+        <location filename="../src/ui/settings.ui" line="2994"/>
         <source>Double</source>
         <translation>Double</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="2692"/>
+        <location filename="../src/ui/settings.ui" line="2999"/>
         <source>Proportional</source>
         <translation>Proportionnel</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="2725"/>
+        <location filename="../src/ui/settings.ui" line="3032"/>
         <source>Tab width:</source>
         <translation>Tabulation:</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="2754"/>
+        <location filename="../src/ui/settings.ui" line="3061"/>
         <source>Spacing:</source>
         <translation>Espacement:</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="2811"/>
+        <location filename="../src/ui/settings.ui" line="3118"/>
         <source>Indent 1st line</source>
         <translation>Retrait 1ère ligne</translation>
     </message>
@@ -998,54 +998,109 @@ des lignes:</translation>
         <translation>Réglages</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="102"/>
+        <location filename="../src/ui/settings.ui" line="107"/>
         <source>You might need to restart manuskript in order to avoid some visual issues.</source>
         <translation>Il sera nécessaire de rédemarrer manuskript pour éviter des problèmes d&apos;affichages après avoir changé de style.</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="131"/>
+        <location filename="../src/ui/settings.ui" line="136"/>
         <source>Loading</source>
         <translation>Chargement</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="143"/>
+        <location filename="../src/ui/settings.ui" line="148"/>
         <source>Automatically load last project on startup</source>
         <translation>Charger au démarrage le dernier projet ouvert</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="359"/>
+        <location filename="../src/ui/settings.ui" line="364"/>
         <source>Default text format</source>
         <translation>Format de texte par défaut</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="371"/>
+        <location filename="../src/ui/settings.ui" line="376"/>
         <source>The format set by default when you create a new text item. You can change this on a per item basis.</source>
         <translation>Le format définit par défaut lorsque vous créez un nouveau élément texte. Vous pouvez changer ce format pour chaque élément.</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="1490"/>
+        <location filename="../src/ui/settings.ui" line="1797"/>
         <source>Text editor</source>
         <translation>Éditeur de texte</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="1502"/>
+        <location filename="../src/ui/settings.ui" line="1809"/>
         <source>Font</source>
         <translation>Police</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="1546"/>
+        <location filename="../src/ui/settings.ui" line="1853"/>
         <source>Family:</source>
         <translation>Famille:</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="1680"/>
+        <location filename="../src/ui/settings.ui" line="1987"/>
         <source>Paragraphs</source>
         <translation>Paragraphes</translation>
     </message>
     <message>
-        <location filename="../src/ui/settings.ui" line="1645"/>
+        <location filename="../src/ui/settings.ui" line="1952"/>
         <source>Background:</source>
         <translation>Arrière-plan:</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/settings.ui" line="434"/>
+        <source>Revisions</source>
+        <translation>Révisions</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/settings.ui" line="444"/>
+        <source>Revisions are a way to keep track of modifications. For each text item, it stores any changes you make to the main text, allowing you to see and restoring previous versions.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ui/settings.ui" line="454"/>
+        <source>Keep revisions</source>
+        <translation>Garder les révisions</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/settings.ui" line="470"/>
+        <source>Smart remove</source>
+        <translation>Suppression intelligente</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/settings.ui" line="485"/>
+        <source>Keep:</source>
+        <translation>Garder:</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/settings.ui" line="498"/>
+        <source>Smart remove allows you to keep only a certain number of revisions. It is strongly recommended to use it, lest you file will becomes full of thousands of insignificant changes.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ui/settings.ui" line="514"/>
+        <source>revisions per day for the last month</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ui/settings.ui" line="552"/>
+        <source>revisions per minute for the last 10 minutes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ui/settings.ui" line="565"/>
+        <source>revisions per hour for the last day</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ui/settings.ui" line="578"/>
+        <source>revisions per 10 minutes for the last hour</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ui/settings.ui" line="691"/>
+        <source>revisions per week till the end of time</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1761,60 +1816,85 @@ des lignes:</translation>
         <translation>Form</translation>
     </message>
     <message>
-        <location filename="../src/ui/revisions_ui.ui" line="93"/>
+        <location filename="../src/ui/revisions_ui.ui" line="100"/>
         <source>Restore</source>
         <translation>Restaurer</translation>
     </message>
     <message>
-        <location filename="../src/ui/revisions_ui.ui" line="103"/>
+        <location filename="../src/ui/revisions_ui.ui" line="110"/>
         <source>Delete</source>
         <translation>Supprimer</translation>
     </message>
     <message>
-        <location filename="../src/ui/revisions.py" line="62"/>
+        <location filename="../src/ui/revisions.py" line="93"/>
         <source>1 day ago</source>
         <translation>Il y a un jour</translation>
     </message>
     <message>
-        <location filename="../src/ui/revisions.py" line="64"/>
+        <location filename="../src/ui/revisions.py" line="95"/>
         <source>{} days ago</source>
         <translation>Il y a {} jours</translation>
     </message>
     <message>
-        <location filename="../src/ui/revisions.py" line="66"/>
+        <location filename="../src/ui/revisions.py" line="97"/>
         <source>{} hours ago</source>
         <translation>Il y a {} heures</translation>
     </message>
     <message>
-        <location filename="../src/ui/revisions.py" line="68"/>
+        <location filename="../src/ui/revisions.py" line="99"/>
         <source>{} minutes ago</source>
         <translation>Il y a {} minutes</translation>
     </message>
     <message>
-        <location filename="../src/ui/revisions.py" line="70"/>
+        <location filename="../src/ui/revisions.py" line="101"/>
         <source>{} seconds ago</source>
         <translation>Il y a {} secondes</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/revisions_ui.ui" line="77"/>
+        <source>Options</source>
+        <translation>Options</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/revisions.py" line="29"/>
+        <source>Show modifications</source>
+        <translation>Montrer les modifications</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/revisions.py" line="36"/>
+        <source>Show ancient version</source>
+        <translation>Montrer la version ancienne</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/revisions.py" line="44"/>
+        <source>Show spaces</source>
+        <translation>Montrer les espaces</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/revisions.py" line="50"/>
+        <source>Show modifications only</source>
+        <translation>Montrer les modifications seulement</translation>
     </message>
 </context>
 <context>
     <name>settingsWindow</name>
     <message>
-        <location filename="../src/settingsWindow.py" line="376"/>
+        <location filename="../src/settingsWindow.py" line="408"/>
         <source>New status</source>
         <translation>Nouveau status</translation>
     </message>
     <message>
-        <location filename="../src/settingsWindow.py" line="396"/>
+        <location filename="../src/settingsWindow.py" line="428"/>
         <source>New label</source>
         <translation>Nouveau label</translation>
     </message>
     <message>
-        <location filename="../src/settingsWindow.py" line="432"/>
+        <location filename="../src/settingsWindow.py" line="464"/>
         <source>newtheme</source>
         <translation>nouveautheme</translation>
     </message>
     <message>
-        <location filename="../src/settingsWindow.py" line="442"/>
+        <location filename="../src/settingsWindow.py" line="474"/>
         <source>New theme</source>
         <translation>Nouveau Thème</translation>
     </message>

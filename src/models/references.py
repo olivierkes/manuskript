@@ -275,9 +275,13 @@ def basicT2TFormat(text, formatting=True, EOL=True, titles=True):
         for i in range(1, 6):
             r1 = '^\s*{s}([^=].*[^=]){s}\s*$'.format(s="=" * i)
             r2 = '^\s*{s}([^\+].*[^\+]){s}\s*$'.format(s="\\+" * i)
+            r3 = '\n\s*{s}([^=].*[^=]){s}\s*\n'.format(s="=" * i)
+            r4 = '\n\s*{s}([^\+].*[^\+]){s}\s*\n'.format(s="\\+" * i)
             t = "<h{n}>\\1</h{n}>".format(n=i)
             text = re.sub(r1, t, text)
             text = re.sub(r2, t, text)
+            text = re.sub(r3, t, text)
+            text = re.sub(r4, t, text)
     if EOL:
         text = text.replace("\n", "<br>")
             

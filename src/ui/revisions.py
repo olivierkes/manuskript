@@ -23,6 +23,37 @@ class revisions(QWidget, Ui_revisions):
         self.list.itemActivated.connect(self.showDiff)
         #self.list.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         
+        self.menu = QMenu(self)
+        self.actGroup = QActionGroup(self)
+        
+        self.actShowDiff = QAction(self.tr("Show modifications"), self.menu)
+        self.actShowDiff.setCheckable(True)
+        self.actShowDiff.setChecked(True)
+        self.actShowDiff.triggered.connect(self.showDiff)
+        self.menu.addAction(self.actShowDiff)
+        self.actGroup.addAction(self.actShowDiff)
+        
+        self.actShowVersion = QAction(self.tr("Show ancient version"), self.menu)
+        self.actShowVersion.setCheckable(True)
+        self.actShowVersion.setChecked(False)
+        self.actShowVersion.triggered.connect(self.showDiff)
+        self.menu.addAction(self.actShowVersion)
+        self.actGroup.addAction(self.actShowVersion)
+        
+        self.menu.addSeparator()
+        self.actShowSpaces = QAction(self.tr("Show spaces"), self.menu)
+        self.actShowSpaces.setCheckable(True)
+        self.actShowSpaces.setChecked(False)
+        self.actShowSpaces.triggered.connect(self.showDiff)
+        self.menu.addAction(self.actShowSpaces)
+        
+        self.actDiffOnly = QAction(self.tr("Show modifications only"), self.menu)
+        self.actDiffOnly.setCheckable(True)
+        self.actDiffOnly.setChecked(True)
+        self.actDiffOnly.triggered.connect(self.showDiff)
+        self.menu.addAction(self.actDiffOnly)
+        self.btnOptions.setMenu(self.menu)
+        
         self._model = None
         self._index = None
         
@@ -72,17 +103,32 @@ class revisions(QWidget, Ui_revisions):
     def showDiff(self):
         #FIXME: doesn't work for HTML formatting.
         i = self.list.currentItem()
+        
+        if not i:
+            return
+        
         ts = i.data(Qt.UserRole)
         item = self._index.internalPointer()
         
         textNow = item.text()
         textBefore = [r[1] for r in item.revisions() if r[0] == ts][0]
         
+        if self.actShowVersion.isChecked():
+            if item.type() == "t2t":
+                textBefore = Ref.basicT2TFormat(textBefore)
+            self.view.setText(textBefore)
+            return
+        
         textNow = textNow.splitlines()
         textBefore = textBefore.splitlines()
         
         d = difflib.Differ()
         diff = list(d.compare(textBefore, textNow))
+        
+        if self.actShowSpaces.isChecked():
+            _format = lambda x: x.replace(" ", "␣ ")
+        else:
+            _format = lambda x:x
         
         extra = "" if item.type() == "html" else "<br>"    
         diff = [d for d in diff if d and not d[:2] == "? "]
@@ -99,27 +145,33 @@ class revisions(QWidget, Ui_revisions):
                 skip = False
                 continue
             
-            if op == "  ":
+            if op == "  " and not self.actDiffOnly.isChecked():
                 if item.type() == "t2t":
                     txt = Ref.basicT2TFormat(txt)
                 mydiff += "{}{}".format(txt, extra)
             elif op == "- " and op2 == "+ ":
+                if self.actDiffOnly.isChecked():
+                    mydiff += "<br>{}:<br>".format(str(n))
                 s = difflib.SequenceMatcher(None, txt, txt2, autojunk=False)
                 for tag, i1, i2, j1, j2 in s.get_opcodes():
                     if tag == "equal":
                         mydiff += txt[i1:i2]
                     elif tag == "delete":
-                        mydiff += "<span style='color:red;'>{}</span>".format(txt[i1:i2].replace(" ", "␣"))
+                        mydiff += "<span style='color:red;'>{}</span>".format(_format(txt[i1:i2]))
                     elif tag == "insert":
-                        mydiff += "<span style='color:green;'>{}</span>".format(txt2[j1:j2].replace(" ", "␣"))
+                        mydiff += "<span style='color:green;'>{}</span>".format(_format(txt2[j1:j2]))
                     elif tag == "replace":
-                        mydiff += "<span style='color:red;'>{}</span>".format(txt[i1:i2].replace(" ", "␣"))
-                        mydiff += "<span style='color:green;'>{}</span>".format(txt2[j1:j2].replace(" ", "␣"))
+                        mydiff += "<span style='color:red;'>{}</span>".format(_format(txt[i1:i2]))
+                        mydiff += "<span style='color:green;'>{}</span>".format(_format(txt2[j1:j2]))
                 mydiff += extra
                 skip = True
             elif op == "- ":
+                if self.actDiffOnly.isChecked():
+                    mydiff += "<br>{}:<br>".format(str(n))
                 mydiff += "<span style='color:red;'>{}</span>{}".format(txt, extra)
             elif op == "+ ":
+                if self.actDiffOnly.isChecked():
+                    mydiff += "<br>{}:<br>".format(str(n))
                 mydiff += "<span style='color:green;'>{}</span>{}".format(txt, extra)
         
         self.view.setText(mydiff)
