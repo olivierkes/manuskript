@@ -314,6 +314,7 @@ class textEditView(QTextEdit):
         self._updating = False
         
     def submit(self):
+        self.updateTimer.stop()
         if self._updating:
             return
         #print("Submitting", self.objectName())
@@ -350,9 +351,9 @@ class textEditView(QTextEdit):
             self._updating = False
             
     def keyPressEvent(self, event):
+        QTextEdit.keyPressEvent(self, event)
         if event.key() == Qt.Key_Space:
             self.submit()
-        QTextEdit.keyPressEvent(self, event)
             
     # -----------------------------------------------------------------------------------------------------
     # Resize stuff

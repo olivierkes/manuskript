@@ -14,12 +14,14 @@ class metadataView(QWidget, Ui_metadataView):
         self.txtSummarySentance.setColumn(Outline.summarySentance.value)
         self.txtSummaryFull.setColumn(Outline.summaryFull.value)
         self.txtNotes.setColumn(Outline.notes.value)
+        self.revisions.setEnabled(False)
         
     def setModels(self, mdlOutline, mdlPersos, mdlLabels, mdlStatus):
         self.properties.setModels(mdlOutline, mdlPersos, mdlLabels, mdlStatus)
         self.txtSummarySentance.setModel(mdlOutline)
         self.txtSummaryFull.setModel(mdlOutline)
         self.txtNotes.setModel(mdlOutline)
+        self.revisions.setModel(mdlOutline)
         
     def getIndexes(self, sourceView):
         "Returns a list of indexes from list of QItemSelectionRange"
@@ -42,6 +44,7 @@ class metadataView(QWidget, Ui_metadataView):
         
         if len(indexes) == 0:
             self.setEnabled(False)
+            self.revisions.setEnabled(False)
         
         elif len(indexes) == 1:
             self.setEnabled(True)
@@ -49,12 +52,15 @@ class metadataView(QWidget, Ui_metadataView):
             self.txtSummarySentance.setCurrentModelIndex(idx)
             self.txtSummaryFull.setCurrentModelIndex(idx)
             self.txtNotes.setCurrentModelIndex(idx)
+            self.revisions.setEnabled(True)
+            self.revisions.setCurrentModelIndex(idx)
             
         else:
             self.setEnabled(True)
             self.txtSummarySentance.setCurrentModelIndexes(indexes)
             self.txtSummaryFull.setCurrentModelIndexes(indexes)
             self.txtNotes.setCurrentModelIndexes(indexes)
+            self.revisions.setEnabled(False)
             
         self.properties.selectionChanged(sourceView)
         self._lastIndexes = indexes

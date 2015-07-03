@@ -52,4 +52,5 @@ class Outline(Enum):
     setGoal = 14 # The goal set by the user, if any. Can be different from goal which can be computed
                  # (sum of all sub-items' goals)
     textFormat = 15
+    revisions = 16
     

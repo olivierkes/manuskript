@@ -58,6 +58,18 @@ class Ui_metadataView(object):
         self.txtNotes.setObjectName("txtNotes")
         self.horizontalLayout_29.addWidget(self.txtNotes)
         self.verticalLayout.addWidget(self.groupBox_6)
+        self.groupBox_7 = collapsibleGroupBox2(metadataView)
+        self.groupBox_7.setFlat(True)
+        self.groupBox_7.setCheckable(True)
+        self.groupBox_7.setObjectName("groupBox_7")
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.groupBox_7)
+        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.revisions = revisions(self.groupBox_7)
+        self.revisions.setMinimumSize(QtCore.QSize(0, 50))
+        self.revisions.setObjectName("revisions")
+        self.verticalLayout_2.addWidget(self.revisions)
+        self.verticalLayout.addWidget(self.groupBox_7)
 
         self.retranslateUi(metadataView)
         QtCore.QMetaObject.connectSlotsByName(metadataView)
@@ -68,10 +80,12 @@ class Ui_metadataView(object):
         self.groupBox_4.setTitle(_translate("metadataView", "Properties"))
         self.groupBox_5.setTitle(_translate("metadataView", "Summary"))
         self.txtSummarySentance.setPlaceholderText(_translate("metadataView", "One line summary"))
-        self.groupBox_6.setTitle(_translate("metadataView", "Notes"))
+        self.groupBox_6.setTitle(_translate("metadataView", "Notes / References"))
+        self.groupBox_7.setTitle(_translate("metadataView", "Revisions"))
 
-from ui.collapsibleGroupBox2 import collapsibleGroupBox2
-from ui.views.propertiesView import propertiesView
 from ui.views.textEditCompleter import textEditCompleter
 from ui.views.textEditView import textEditView
+from ui.views.propertiesView import propertiesView
 from ui.views.lineEditView import lineEditView
+from ui.revisions import revisions
+from ui.collapsibleGroupBox2 import collapsibleGroupBox2

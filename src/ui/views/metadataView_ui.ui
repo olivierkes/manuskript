@@ -85,7 +85,7 @@
    <item>
     <widget class="collapsibleGroupBox2" name="groupBox_6">
      <property name="title">
-      <string>Notes</string>
+      <string>Notes / References</string>
      </property>
      <property name="flat">
       <bool>true</bool>
@@ -99,6 +99,34 @@
       </property>
       <item>
        <widget class="textEditCompleter" name="txtNotes"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="collapsibleGroupBox2" name="groupBox_7">
+     <property name="title">
+      <string>Revisions</string>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <property name="margin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="revisions" name="revisions" native="true">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>50</height>
+         </size>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
@@ -132,6 +160,12 @@
    <class>textEditCompleter</class>
    <extends>QTextEdit</extends>
    <header>ui.views.textEditCompleter.h</header>
+  </customwidget>
+  <customwidget>
+   <class>revisions</class>
+   <extends>QWidget</extends>
+   <header>ui.revisions.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>

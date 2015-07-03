@@ -4,6 +4,7 @@ FORMS            += ../src/ui/welcome_ui.ui
 FORMS            += ../src/ui/sldImportance_ui.ui
 FORMS            += ../src/ui/cheatSheet_ui.ui
 FORMS            += ../src/ui/compileDialog_ui.ui
+FORMS            += ../src/ui/revisions_ui.ui
 
 FORMS            += ../src/ui/editors/editorWidget_ui.ui
 
@@ -29,6 +30,7 @@ SOURCES          += ../src/ui/sldImportance.py
 SOURCES          += ../src/ui/welcome.py
 SOURCES          += ../src/ui/cheatSheet.py
 SOURCES          += ../src/ui/compileDialog.py
+SOURCES          += ../src/ui/revisions.py
 
 SOURCES          += ../src/ui/editors/editorWidget.py
 SOURCES          += ../src/ui/editors/fullScreenEditor.py

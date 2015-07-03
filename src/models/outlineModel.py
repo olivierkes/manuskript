@@ -8,7 +8,8 @@ from lxml import etree as ET
 from functions import *
 import locale
 locale.setlocale(locale.LC_ALL, '')
-
+import time
+import collections
 
 class outlineModel(QAbstractItemModel):
     
@@ -461,6 +462,9 @@ class outlineItem():
             if Outline(column) in self._data:
                 return self._data[Outline(column)]
             
+            elif column == Outline.revisions.value:
+                return []
+            
             else:
                 return ""
             
@@ -522,6 +526,9 @@ class outlineItem():
                 self._data[Outline.text] = e.toPlainText()
             elif oldType in ["txt", "t2t"] and data == "html" and Outline.text in self._data:
                 self._data[Outline.text] = self._data[Outline.text].replace("\n", "<br>")
+        
+        elif column == Outline.text.value:
+            self.addRevision()
         
         # Setting data
         self._data[Outline(column)] = data
@@ -706,11 +713,16 @@ class outlineItem():
             return qApp.translate("outlineModel", "{} words").format(
                 locale.format("%d", wc, grouping=True))
     
+
+###############################################################################
+# XML
+###############################################################################
+    
     def toXML(self):
         item = ET.Element("outlineItem")
         
         # We don't want to write some datas (computed)
-        exclude = [Outline.wordCount, Outline.goal, Outline.goalPercentage]
+        exclude = [Outline.wordCount, Outline.goal, Outline.goalPercentage, Outline.revisions]
         # We want to force some data even if they're empty
         force = [Outline.compile]
         
@@ -719,6 +731,14 @@ class outlineItem():
             val = self.data(attrib.value)
             if val or attrib in force:
                 item.set(attrib.name, str(val))
+        
+        # Saving revisions
+        rev = self.revisions()
+        for r in rev:
+            revItem = ET.Element("revision")
+            revItem.set("timestamp", str(r[0]))
+            revItem.set("text", r[1])
+            item.append(revItem)
             
         for i in self.childItems:
             item.append(ET.XML(i.toXML()))
@@ -736,7 +756,15 @@ class outlineItem():
                     self.setData(Outline.__members__[k].value, str(root.attrib[k]))
                 
         for child in root:
-            item = outlineItem(self._model, xml=ET.tostring(child), parent=self)
+            if child.tag == "outlineItem":
+                item = outlineItem(self._model, xml=ET.tostring(child), parent=self)
+            elif child.tag == "revision":
+                self.appendRevision(child.attrib["timestamp"], child.attrib["text"])
+            
+
+###############################################################################
+# IDS
+###############################################################################
             
     def getUniqueID(self):
         self.setData(Outline.ID.value, self._model.rootItem.findUniqueID())
@@ -822,3 +850,73 @@ class outlineItem():
             lst.extend(c.findItemsContaining(text, columns, mainWindow, caseSensitive))
             
         return lst
+
+###############################################################################
+# REVISIONS
+###############################################################################
+    
+    def revisions(self):
+        return self.data(Outline.revisions.value)
+    
+    def appendRevision(self, ts, text):
+        if not Outline.revisions in self._data:
+            self._data[Outline.revisions] = []
+            
+        self._data[Outline.revisions].append((
+            int(ts),
+            text))
+    
+    def addRevision(self):
+        # FIXME: only add if significantly different, or enough time span
+        
+        if not Outline.text in self._data:
+            return
+        
+        self.appendRevision(
+            time.time(),
+            self._data[Outline.text])
+        
+        self.cleanRevisions()
+        
+    def cleanRevisions(self):
+        "Keep only one some the revisions."
+        rev = self.revisions()
+        rev2 = []
+        now = time.time()
+        
+        rule = collections.OrderedDict()
+        rule[5 * 60] =             60                     # One per minute for the last 5mn
+        rule[60 * 60] =            60 * 10                # One per 10mn for the last hour
+        rule[60 * 60 * 24] =       60 * 60                # One per hour for the last day
+        rule[60 * 60 * 24 * 30] =  60 * 60 * 24           # One per day for the last month
+        rule[None] =               60 * 60 * 24 * 7       # One per week for eternity
+        
+        revs = {}
+        for i in rule:
+            revs[i] = []
+        
+        for r in rev:
+            for span in rule:
+                if not span or now - r[0] < span:
+                    revs[span].append(r)
+                    break
+        
+        for span in revs:
+            sortedRev = sorted(revs[span], key=lambda x:x[0])
+            last = None
+            for r in sortedRev:
+                if not last:
+                    rev2.append(r)
+                    last = r[0]
+                elif r[0] - last >= rule[span]:
+                    rev2.append(r)
+                    last = r[0]
+        
+        if rev2 != rev:
+            self._data[Outline.revisions] = rev2
+            self.emitDataChanged([Outline.revisions.value])
+        
+        
+        
+        
+        
