@@ -106,6 +106,7 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
                                highlighting=True,
                                autoResize=True)
             edt.setFrameShape(QFrame.NoFrame)
+            edt.setStyleSheet("background: {};".format(settings.textEditor["background"]))
             edt.setStatusTip("{} ({})".format(itm.path(), itm.type()))
             self.toggledSpellcheck.connect(edt.toggleSpellcheck, AUC)
             self.dictChanged.connect(edt.setDict, AUC)
@@ -147,9 +148,9 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
             
         if item and item.isFolder() and self.folderView == "text":
             self.stack.setCurrentIndex(1)
-            
             w = QWidget()
             l = QVBoxLayout(w)
+            w.setStyleSheet("background: {};".format(settings.textEditor["background"]))
             #self.scroll.setWidgetResizable(False)
             
             self.txtEdits = []

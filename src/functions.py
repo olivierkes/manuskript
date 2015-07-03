@@ -8,6 +8,7 @@ import os
 
 # Used to detect multiple connections
 AUC = Qt.AutoConnection | Qt.UniqueConnection
+MW = None
 
 def wordCount(text):
     return len(text.strip().replace(" ", "\n").split("\n")) if text else 0
@@ -58,10 +59,15 @@ def colorFromProgress(progress):
         return c3
     
 def mainWindow():
-    for i in qApp.topLevelWidgets():
-        if i.objectName() == "MainWindow":
-            return i
-    return None
+    global MW
+    if not MW:
+        for i in qApp.topLevelWidgets():
+            if i.objectName() == "MainWindow":
+                MW = i
+                return MW
+        return None
+    else:
+        return MW
 
 def iconColor(icon):
     "Returns a QRgb from a QIcon, assuming its all the same color"
@@ -166,3 +172,9 @@ def allPaths(suffix=None):
 
 def lightBlue():
     return QColor(Qt.blue).lighter(190)
+
+def totalObjects():
+    return len(mainWindow().findChildren(QObject))
+
+def printObjects():
+    print("Objects:", str(totalObjects()))

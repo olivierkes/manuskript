@@ -21,7 +21,6 @@ class textEditView(QTextEdit):
     
     def __init__(self, parent=None, index=None, html=None, spellcheck=True, highlighting=False, dict="", autoResize=False):
         QTextEdit.__init__(self, parent)
-        
         self._column = Outline.text.value
         self._index = None
         self._indexes = None
@@ -38,7 +37,7 @@ class textEditView(QTextEdit):
         self.spellcheck = spellcheck
         self.currentDict = dict if dict else settings.dict
         self.highlighter = None
-        self._autoResize = autoResize
+        self.setAutoResize(autoResize)
         self._defaultBlockFormat = QTextBlockFormat()
         self._defaultCharFormat = QTextCharFormat()
         self.highlightWord = ""
@@ -69,8 +68,6 @@ class textEditView(QTextEdit):
         elif html:
             self.document().setHtml(html)
             self.setReadOnly(True)
-            
-        self.setAutoResize(self._autoResize)
                     
         # Spellchecking
         if enchant and self.spellcheck:
