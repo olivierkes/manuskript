@@ -1614,7 +1614,7 @@
                   <number>0</number>
                  </property>
                  <item>
-                  <widget class="collapsibleGroupBox2" name="groupBox_3">
+                  <widget class="collapsibleGroupBox2" name="grpCheatSheet">
                    <property name="font">
                     <font>
                      <weight>75</weight>
@@ -1642,7 +1642,7 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="collapsibleGroupBox2" name="groupBox_4">
+                  <widget class="collapsibleGroupBox2" name="grpSearch">
                    <property name="font">
                     <font>
                      <weight>75</weight>
@@ -2019,6 +2019,12 @@
    <header>ui.views.lineEditView.h</header>
   </customwidget>
   <customwidget>
+   <class>collapsibleGroupBox2</class>
+   <extends>QGroupBox</extends>
+   <header>ui.collapsibleGroupBox2.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
    <class>outlineView</class>
    <extends>QTreeView</extends>
    <header>ui.views.outlineView.h</header>
@@ -2072,12 +2078,6 @@
    <class>cheatSheet</class>
    <extends>QWidget</extends>
    <header>ui.cheatSheet.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>collapsibleGroupBox2</class>
-   <extends>QGroupBox</extends>
-   <header>ui.collapsibleGroupBox2.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>

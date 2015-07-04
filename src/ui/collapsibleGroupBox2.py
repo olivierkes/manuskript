@@ -32,6 +32,8 @@ class collapsibleGroupBox2(QWidget):
         
         self.vPolicy = self.sizePolicy().verticalPolicy()
         self.parent().layout().setAlignment(Qt.AlignTop)
+        
+        self.setExpanded(self.button.isChecked())
     
     def setFlat(self, val):
         if val:
@@ -49,3 +51,9 @@ class collapsibleGroupBox2(QWidget):
             self.setSizePolicy(QSizePolicy.Preferred, self.vPolicy)
         else:
             self.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Maximum)
+            
+    def saveState(self):
+        return self.button.isChecked()
+    
+    def restoreState(self, val):
+        self.button.setChecked(val)

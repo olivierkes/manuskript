@@ -836,40 +836,40 @@ class Ui_MainWindow(object):
         self.verticalLayout_21 = QtWidgets.QVBoxLayout(self.tab_18)
         self.verticalLayout_21.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_21.setObjectName("verticalLayout_21")
-        self.groupBox_3 = collapsibleGroupBox2(self.tab_18)
+        self.grpCheatSheet = collapsibleGroupBox2(self.tab_18)
         font = QtGui.QFont()
         font.setBold(True)
         font.setWeight(75)
-        self.groupBox_3.setFont(font)
-        self.groupBox_3.setFlat(True)
-        self.groupBox_3.setObjectName("groupBox_3")
-        self.verticalLayout_15 = QtWidgets.QVBoxLayout(self.groupBox_3)
+        self.grpCheatSheet.setFont(font)
+        self.grpCheatSheet.setFlat(True)
+        self.grpCheatSheet.setObjectName("grpCheatSheet")
+        self.verticalLayout_15 = QtWidgets.QVBoxLayout(self.grpCheatSheet)
         self.verticalLayout_15.setObjectName("verticalLayout_15")
-        self.cheatSheet = cheatSheet(self.groupBox_3)
+        self.cheatSheet = cheatSheet(self.grpCheatSheet)
         font = QtGui.QFont()
         font.setBold(False)
         font.setWeight(50)
         self.cheatSheet.setFont(font)
         self.cheatSheet.setObjectName("cheatSheet")
         self.verticalLayout_15.addWidget(self.cheatSheet)
-        self.verticalLayout_21.addWidget(self.groupBox_3)
-        self.groupBox_4 = collapsibleGroupBox2(self.tab_18)
+        self.verticalLayout_21.addWidget(self.grpCheatSheet)
+        self.grpSearch = collapsibleGroupBox2(self.tab_18)
         font = QtGui.QFont()
         font.setBold(True)
         font.setWeight(75)
-        self.groupBox_4.setFont(font)
-        self.groupBox_4.setFlat(True)
-        self.groupBox_4.setObjectName("groupBox_4")
-        self.verticalLayout_31 = QtWidgets.QVBoxLayout(self.groupBox_4)
+        self.grpSearch.setFont(font)
+        self.grpSearch.setFlat(True)
+        self.grpSearch.setObjectName("grpSearch")
+        self.verticalLayout_31 = QtWidgets.QVBoxLayout(self.grpSearch)
         self.verticalLayout_31.setObjectName("verticalLayout_31")
-        self.widget = search(self.groupBox_4)
+        self.widget = search(self.grpSearch)
         font = QtGui.QFont()
         font.setBold(False)
         font.setWeight(50)
         self.widget.setFont(font)
         self.widget.setObjectName("widget")
         self.verticalLayout_31.addWidget(self.widget)
-        self.verticalLayout_21.addWidget(self.groupBox_4)
+        self.verticalLayout_21.addWidget(self.grpSearch)
         self.tabRedacInfos.addTab(self.tab_18, "")
         self.verticalLayout_16.addWidget(self.splitterRedac)
         self.tabMain.addTab(self.lytTabRedac, "")
@@ -1132,8 +1132,8 @@ class Ui_MainWindow(object):
         self.tabMain.setTabText(self.tabMain.indexOf(self.tab_5), _translate("MainWindow", "Context"))
         self.tabMain.setTabText(self.tabMain.indexOf(self.lytTabOutline), _translate("MainWindow", "Outline"))
         self.tabRedacInfos.setTabText(self.tabRedacInfos.indexOf(self.tab_17), _translate("MainWindow", "Metadata"))
-        self.groupBox_3.setTitle(_translate("MainWindow", "Cheat sheet"))
-        self.groupBox_4.setTitle(_translate("MainWindow", "Search"))
+        self.grpCheatSheet.setTitle(_translate("MainWindow", "Cheat sheet"))
+        self.grpSearch.setTitle(_translate("MainWindow", "Search"))
         self.tabRedacInfos.setTabText(self.tabRedacInfos.indexOf(self.tab_18), _translate("MainWindow", "Tools"))
         self.tabMain.setTabText(self.tabMain.indexOf(self.lytTabRedac), _translate("MainWindow", "Redaction"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_9), _translate("MainWindow", "FlatData"))
@@ -1175,17 +1175,17 @@ class Ui_MainWindow(object):
         self.actCompile.setText(_translate("MainWindow", "Compile"))
         self.actCompile.setShortcut(_translate("MainWindow", "F6"))
 
-from ui.views.outlineView import outlineView
-from ui.views.basicItemView import basicItemView
-from ui.views.metadataView import metadataView
-from ui.views.textEditView import textEditView
 from ui.editors.mainEditor import mainEditor
-from ui.welcome import welcome
-from ui.views.lineEditView import lineEditView
-from ui.search import search
-from ui.collapsibleGroupBox2 import collapsibleGroupBox2
 from ui.cheatSheet import cheatSheet
-from ui.views.persoTreeView import persoTreeView
+from ui.views.outlineView import outlineView
 from ui.views.treeView import treeView
-from ui.views.plotTreeView import plotTreeView
+from ui.collapsibleGroupBox2 import collapsibleGroupBox2
+from ui.views.metadataView import metadataView
 from ui.sldImportance import sldImportance
+from ui.views.plotTreeView import plotTreeView
+from ui.views.basicItemView import basicItemView
+from ui.views.textEditView import textEditView
+from ui.views.persoTreeView import persoTreeView
+from ui.search import search
+from ui.views.lineEditView import lineEditView
+from ui.welcome import welcome

@@ -18,7 +18,7 @@
     <number>0</number>
    </property>
    <item>
-    <widget class="collapsibleGroupBox2" name="groupBox_4">
+    <widget class="collapsibleGroupBox2" name="grpProperties">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
        <horstretch>0</horstretch>
@@ -52,7 +52,7 @@
     </widget>
    </item>
    <item>
-    <widget class="collapsibleGroupBox2" name="groupBox_5">
+    <widget class="collapsibleGroupBox2" name="grpSummary">
      <property name="title">
       <string>Summary</string>
      </property>
@@ -83,7 +83,7 @@
     </widget>
    </item>
    <item>
-    <widget class="collapsibleGroupBox2" name="groupBox_6">
+    <widget class="collapsibleGroupBox2" name="grpNotes">
      <property name="title">
       <string>Notes / References</string>
      </property>
@@ -104,7 +104,7 @@
     </widget>
    </item>
    <item>
-    <widget class="collapsibleGroupBox2" name="groupBox_7">
+    <widget class="collapsibleGroupBox2" name="grpRevisions">
      <property name="title">
       <string>Revisions</string>
      </property>

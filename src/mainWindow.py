@@ -446,13 +446,30 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.restoreGeometry(sttgns.value("geometry"))
         if sttgns.contains("windowState"):
             self.restoreState(sttgns.value("windowState"))
-
+        if sttgns.contains("metadataState"):
+            state = [False if v == "false" else True for v in sttgns.value("metadataState")]
+            self.redacMetadata.restoreState(state)
+        if sttgns.contains("redacInfosState"):
+            self.tabRedacInfos.setCurrentIndex(int(sttgns.value("redacInfosState")))
+        if sttgns.contains("cheatSheetState"):
+            state = False if sttgns.value("cheatSheetState") == "false" else True
+            self.grpCheatSheet.restoreState(state)
+        if sttgns.contains("searchState"):
+            state = False if sttgns.value("searchState") == "false" else True
+            self.grpSearch.restoreState(state)
+        
+        
     def closeEvent(self, event):
-        # Save State and geometry
+        # Save State and geometry and other things
         sttgns = QSettings(qApp.organizationName(), qApp.applicationName())
         sttgns.setValue("geometry", self.saveGeometry())
         sttgns.setValue("windowState", self.saveState())
-
+        sttgns.setValue("metadataState", self.redacMetadata.saveState())
+        sttgns.setValue("metadataState", self.redacMetadata.saveState())
+        sttgns.setValue("redacInfosState", self.tabRedacInfos.currentIndex())
+        sttgns.setValue("cheatSheetState", self.grpCheatSheet.saveState())
+        sttgns.setValue("searchState", self.grpSearch.saveState())
+        
         # Specific settings to save before quitting
         settings.lastTab = self.tabMain.currentIndex()
 
@@ -873,7 +890,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.splitterRedac.setStretchFactor(0, 30)
         self.splitterRedac.setStretchFactor(1, 40)
         self.splitterRedac.setStretchFactor(2, 30)
-        self.tabRedacInfos.setCurrentIndex(0)
         
         # Help box
         references = [

@@ -73,4 +73,17 @@ class metadataView(QWidget, Ui_metadataView):
         self.txtNotes.toggleSpellcheck(v)
         self.txtSummaryFull.toggleSpellcheck(v)
         
+    def saveState(self):
+        return [
+            self.grpProperties.saveState(),
+            self.grpSummary.saveState(),
+            self.grpNotes.saveState(),
+            self.grpRevisions.saveState(),
+            ]
+    
+    def restoreState(self, state):
+        self.grpProperties.restoreState(state[0]),
+        self.grpSummary.restoreState(state[1]),
+        self.grpNotes.restoreState(state[2]),
+        self.grpRevisions.restoreState(state[3]),
         
