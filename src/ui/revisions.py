@@ -9,6 +9,7 @@ from functions import *
 import models.references as Ref
 import datetime
 import difflib
+import re
 
 class revisions(QWidget, Ui_revisions):
     
@@ -21,6 +22,10 @@ class revisions(QWidget, Ui_revisions):
         self.listDelegate = listCompleterDelegate(self)
         self.list.setItemDelegate(self.listDelegate)
         self.list.itemActivated.connect(self.showDiff)
+        self.btnDelete.setEnabled(False)
+        self.btnRestore.clicked.connect(self.restore)
+        self.btnRestore.setEnabled(False)
+        
         #self.list.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         
         self.menu = QMenu(self)
@@ -101,11 +106,20 @@ class revisions(QWidget, Ui_revisions):
             return self.tr("{} seconds ago").format(str(delta.seconds))
             
     def showDiff(self):
-        #FIXME: doesn't work for HTML formatting.
+        # UI stuff
+        self.actShowSpaces.setEnabled(self.actShowDiff.isChecked())
+        self.actDiffOnly.setEnabled(self.actShowDiff.isChecked())
+        
+        #FIXME: Errors in line number
         i = self.list.currentItem()
         
         if not i:
+            self.btnDelete.setEnabled(False)
+            self.btnRestore.setEnabled(False)
             return
+        
+        self.btnDelete.setEnabled(True)
+        self.btnRestore.setEnabled(True)
         
         ts = i.data(Qt.UserRole)
         item = self._index.internalPointer()
@@ -145,25 +159,40 @@ class revisions(QWidget, Ui_revisions):
                 skip = False
                 continue
             
+            # Same line
             if op == "  " and not self.actDiffOnly.isChecked():
                 if item.type() == "t2t":
                     txt = Ref.basicT2TFormat(txt)
                 mydiff += "{}{}".format(txt, extra)
+                
             elif op == "- " and op2 == "+ ":
                 if self.actDiffOnly.isChecked():
-                    mydiff += "<br>{}:<br>".format(str(n))
+                    mydiff += "<br><span style='color: blue;'>{}</span><br>".format(
+                        self.tr("Line {}:").format(str(n)))
                 s = difflib.SequenceMatcher(None, txt, txt2, autojunk=False)
+                newline = ""
                 for tag, i1, i2, j1, j2 in s.get_opcodes():
                     if tag == "equal":
-                        mydiff += txt[i1:i2]
+                        newline += txt[i1:i2]
                     elif tag == "delete":
-                        mydiff += "<span style='color:red;'>{}</span>".format(_format(txt[i1:i2]))
+                        newline += "<span style='color:red;'>{}</span>".format(_format(txt[i1:i2]))
                     elif tag == "insert":
-                        mydiff += "<span style='color:green;'>{}</span>".format(_format(txt2[j1:j2]))
+                        newline += "<span style='color:green;'>{}</span>".format(_format(txt2[j1:j2]))
                     elif tag == "replace":
-                        mydiff += "<span style='color:red;'>{}</span>".format(_format(txt[i1:i2]))
-                        mydiff += "<span style='color:green;'>{}</span>".format(_format(txt2[j1:j2]))
-                mydiff += extra
+                        newline += "<span style='color:red;'>{}</span>".format(_format(txt[i1:i2]))
+                        newline += "<span style='color:green;'>{}</span>".format(_format(txt2[j1:j2]))
+                
+                # Few ugly tweaks for html diffs
+                newline = re.sub(r"(<span style='color.*?><span.*?>)</span>(.*)<span style='color:.*?>(</span></span>)",
+                                 "\\1\\2\\3", newline)
+                newline = re.sub(r"<p align=\"<span style='color:red;'>cen</span><span style='color:green;'>righ</span>t<span style='color:red;'>er</span>\" style=\" -qt-block-indent:0; -qt-user-state:0; \">(.*?)</p>",
+                                 "<p align=\"right\"><span style='color:green;'>\\1</span></p>", newline)
+                newline = re.sub(r"<p align=\"<span style='color:green;'>cente</span>r<span style='color:red;'>ight</span>\" style=\" -qt-block-indent:0; -qt-user-state:0; \">(.*)</p>",
+                                 "<p align=\"center\"><span style='color:green;'>\\1</span></p>", newline)
+                newline = re.sub(r"<p(<span.*?>)(.*?)(</span>)(.*?)>(.*?)</p>",
+                                 "<p\\2\\4>\\1\\5\\3</p>", newline)
+                
+                mydiff += newline + extra
                 skip = True
             elif op == "- ":
                 if self.actDiffOnly.isChecked():
@@ -175,6 +204,34 @@ class revisions(QWidget, Ui_revisions):
                 mydiff += "<span style='color:green;'>{}</span>{}".format(txt, extra)
         
         self.view.setText(mydiff)
+        
+    def restore(self):
+        i = self.list.currentItem()
+        if not i:
+            return
+        ts = i.data(Qt.UserRole)
+        item = self._index.internalPointer()
+        textBefore = [r[1] for r in item.revisions() if r[0] == ts][0]
+        index = self._index.sibling(self._index.row(), Outline.text.value)
+        self._index.model().setData(index, textBefore)
+        #item.setData(Outline.text.value, textBefore)
+        
+        
+    def saveState(self):
+        return [
+            self.actShowDiff.isChecked(),
+            self.actShowVersion.isChecked(),
+            self.actShowSpaces.isChecked(),
+            self.actDiffOnly.isChecked(),
+            ]
+    
+    def restoreState(self, state):
+        self.actShowDiff.setChecked(state[0])
+        self.actShowVersion.setChecked(state[1])
+        self.actShowSpaces.setChecked(state[2])
+        self.actDiffOnly.setChecked(state[3])
+        self.actShowSpaces.setEnabled(self.actShowDiff.isChecked())
+        self.actDiffOnly.setEnabled(self.actShowDiff.isChecked())
         
             
 class listCompleterDelegate(QStyledItemDelegate):

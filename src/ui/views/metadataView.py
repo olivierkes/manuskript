@@ -79,11 +79,11 @@ class metadataView(QWidget, Ui_metadataView):
             self.grpSummary.saveState(),
             self.grpNotes.saveState(),
             self.grpRevisions.saveState(),
+            self.revisions.saveState()
             ]
     
     def restoreState(self, state):
-        self.grpProperties.restoreState(state[0]),
-        self.grpSummary.restoreState(state[1]),
-        self.grpNotes.restoreState(state[2]),
-        self.grpRevisions.restoreState(state[3]),
-        
+        self.grpProperties.restoreState(state[0])
+        self.grpSummary.restoreState(state[1])
+        self.grpNotes.restoreState(state[2])
+        self.grpRevisions.restoreState(state[3])

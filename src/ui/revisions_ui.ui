@@ -93,9 +93,6 @@
        </item>
        <item>
         <widget class="QPushButton" name="btnRestore">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
          <property name="text">
           <string>Restore</string>
          </property>
@@ -103,9 +100,6 @@
        </item>
        <item>
         <widget class="QPushButton" name="btnDelete">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
          <property name="text">
           <string>Delete</string>
          </property>

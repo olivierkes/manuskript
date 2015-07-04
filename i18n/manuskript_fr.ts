@@ -214,7 +214,7 @@
         <translation>Contexte</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1022"/>
+        <location filename="../src/mainWindow.py" line="1042"/>
         <source>Outline</source>
         <translation>Plan</translation>
     </message>
@@ -329,62 +329,62 @@
         <translation>Mode</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="854"/>
+        <location filename="../src/mainWindow.py" line="875"/>
         <source> (~{} pages)</source>
         <translation> (~{} pages)</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="881"/>
+        <location filename="../src/mainWindow.py" line="901"/>
         <source>Enter infos about your book, and yourself.</source>
         <translation>Entrez toutes les informations relatives au livre, ainsi qu&apos;à vous.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="887"/>
+        <location filename="../src/mainWindow.py" line="907"/>
         <source>Take time to think about a one sentance (~50 words) summary of your book. Then expand it to a paragraph, then to a page, then to a full summary.</source>
         <translation>Prenez le temps de réfléchir à un résumé de votre livre, en une phrase (~50 mots). Puis augmentez cette phrase en un paragraphe, puis en une page, puis en un résumé complet.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="890"/>
+        <location filename="../src/mainWindow.py" line="910"/>
         <source>Create your characters.</source>
         <translation>Créez ici vos personnage.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="893"/>
+        <location filename="../src/mainWindow.py" line="913"/>
         <source>Develop plots.</source>
         <translation>Développez vos intrigues.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="896"/>
+        <location filename="../src/mainWindow.py" line="916"/>
         <source>Create the outline of your masterpiece.</source>
         <translation>Créez le plan de votre chef-d&apos;œuvre.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="899"/>
+        <location filename="../src/mainWindow.py" line="919"/>
         <source>Write.</source>
         <translation>Écrivez.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="902"/>
+        <location filename="../src/mainWindow.py" line="922"/>
         <source>Debug infos. Sometimes useful.</source>
         <translation>Des infos pour débugger des fois pendant qu&apos;on code c&apos;est utile.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="916"/>
+        <location filename="../src/mainWindow.py" line="936"/>
         <source>Dictionary</source>
         <translation>Dictionnaire</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="929"/>
+        <location filename="../src/mainWindow.py" line="949"/>
         <source>Install PyEnchant to use spellcheck</source>
         <translation>Installez PyEnchant pour profiter du correcteur orthographique</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="858"/>
+        <location filename="../src/mainWindow.py" line="879"/>
         <source>Words: {}{}</source>
         <translation>Mots: {}{}</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1033"/>
+        <location filename="../src/mainWindow.py" line="1053"/>
         <source>Text</source>
         <translation>Texte</translation>
     </message>
@@ -424,7 +424,7 @@
         <translation>Et si...?</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1021"/>
+        <location filename="../src/mainWindow.py" line="1041"/>
         <source>Index cards</source>
         <translation>Cartes</translation>
     </message>
@@ -444,7 +444,7 @@
         <translation>F9</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1020"/>
+        <location filename="../src/mainWindow.py" line="1040"/>
         <source>Tree</source>
         <translation>Arbre</translation>
     </message>
@@ -469,77 +469,77 @@
         <translation>Réglages</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="512"/>
+        <location filename="../src/mainWindow.py" line="533"/>
         <source>Project {} saved.</source>
         <translation>Le projet {} a été enregistré.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="583"/>
+        <location filename="../src/mainWindow.py" line="604"/>
         <source>Project {} loaded.</source>
         <translation>Le projet {} a été chargé.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="884"/>
+        <location filename="../src/mainWindow.py" line="904"/>
         <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous evil wizard could wasn&apos;t abled to kill a baby?&apos; (Harry Potter)</source>
         <translation>La situation de base, sous la forme d&apos;une question: &quot;Et si...?&quot; Par exemple: &quot;Et si le plus dangereux magiciens mauvais n&apos;était pas capable de tuer un bébé?&quot; (Harry Potter)</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1012"/>
+        <location filename="../src/mainWindow.py" line="1032"/>
         <source>Nothing</source>
         <translation>Rien</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1013"/>
+        <location filename="../src/mainWindow.py" line="1033"/>
         <source>POV</source>
         <translation>POV</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1014"/>
+        <location filename="../src/mainWindow.py" line="1034"/>
         <source>Label</source>
         <translation>Label</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1015"/>
+        <location filename="../src/mainWindow.py" line="1035"/>
         <source>Progress</source>
         <translation>Progrès</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1016"/>
+        <location filename="../src/mainWindow.py" line="1036"/>
         <source>Compile</source>
         <translation>Compilation</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1039"/>
+        <location filename="../src/mainWindow.py" line="1059"/>
         <source>Icon color</source>
         <translation>Couleur de l&apos;icone</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1040"/>
+        <location filename="../src/mainWindow.py" line="1060"/>
         <source>Text color</source>
         <translation>Couleur du texte</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1041"/>
+        <location filename="../src/mainWindow.py" line="1061"/>
         <source>Background color</source>
         <translation>Couleur de l&apos;arrière-plan</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1032"/>
+        <location filename="../src/mainWindow.py" line="1052"/>
         <source>Icon</source>
         <translation>Icone</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1034"/>
+        <location filename="../src/mainWindow.py" line="1054"/>
         <source>Background</source>
         <translation>Arrière-plan</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1035"/>
+        <location filename="../src/mainWindow.py" line="1055"/>
         <source>Border</source>
         <translation>Bordure</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1036"/>
+        <location filename="../src/mainWindow.py" line="1056"/>
         <source>Corner</source>
         <translation>Coin</translation>
     </message>
@@ -554,17 +554,17 @@
         <translation>Le fichier {} n&apos;existe pas. Essayez encore.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="586"/>
+        <location filename="../src/mainWindow.py" line="607"/>
         <source>Project {} loaded with some errors:</source>
         <translation>Le projet {} a été chargé, avec des erreurs:</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="588"/>
+        <location filename="../src/mainWindow.py" line="609"/>
         <source> * {} wasn&apos;t found in project file.</source>
         <translation>* {} n&apos;a pas été trouvé dans le fichier du projet.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="589"/>
+        <location filename="../src/mainWindow.py" line="610"/>
         <source>Project {} loaded with some errors.</source>
         <translation>Le projet {} a été chargé avec des erreurs.</translation>
     </message>
@@ -1826,27 +1826,27 @@ des lignes:</translation>
         <translation>Supprimer</translation>
     </message>
     <message>
-        <location filename="../src/ui/revisions.py" line="93"/>
+        <location filename="../src/ui/revisions.py" line="98"/>
         <source>1 day ago</source>
         <translation>Il y a un jour</translation>
     </message>
     <message>
-        <location filename="../src/ui/revisions.py" line="95"/>
+        <location filename="../src/ui/revisions.py" line="100"/>
         <source>{} days ago</source>
         <translation>Il y a {} jours</translation>
     </message>
     <message>
-        <location filename="../src/ui/revisions.py" line="97"/>
+        <location filename="../src/ui/revisions.py" line="102"/>
         <source>{} hours ago</source>
         <translation>Il y a {} heures</translation>
     </message>
     <message>
-        <location filename="../src/ui/revisions.py" line="99"/>
+        <location filename="../src/ui/revisions.py" line="104"/>
         <source>{} minutes ago</source>
         <translation>Il y a {} minutes</translation>
     </message>
     <message>
-        <location filename="../src/ui/revisions.py" line="101"/>
+        <location filename="../src/ui/revisions.py" line="106"/>
         <source>{} seconds ago</source>
         <translation>Il y a {} secondes</translation>
     </message>
@@ -1856,24 +1856,29 @@ des lignes:</translation>
         <translation>Options</translation>
     </message>
     <message>
-        <location filename="../src/ui/revisions.py" line="29"/>
+        <location filename="../src/ui/revisions.py" line="34"/>
         <source>Show modifications</source>
         <translation>Montrer les modifications</translation>
     </message>
     <message>
-        <location filename="../src/ui/revisions.py" line="36"/>
+        <location filename="../src/ui/revisions.py" line="41"/>
         <source>Show ancient version</source>
         <translation>Montrer la version ancienne</translation>
     </message>
     <message>
-        <location filename="../src/ui/revisions.py" line="44"/>
+        <location filename="../src/ui/revisions.py" line="49"/>
         <source>Show spaces</source>
         <translation>Montrer les espaces</translation>
     </message>
     <message>
-        <location filename="../src/ui/revisions.py" line="50"/>
+        <location filename="../src/ui/revisions.py" line="55"/>
         <source>Show modifications only</source>
         <translation>Montrer les modifications seulement</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/revisions.py" line="171"/>
+        <source>Line {}:</source>
+        <translation>Ligne {}:</translation>
     </message>
 </context>
 <context>

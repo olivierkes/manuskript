@@ -457,6 +457,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if sttgns.contains("searchState"):
             state = False if sttgns.value("searchState") == "false" else True
             self.grpSearch.restoreState(state)
+        if sttgns.contains("revisionsState"):
+            state = [False if v == "false" else True for v in sttgns.value("revisionsState")]
+            self.redacMetadata.revisions.restoreState(state)
         
         
     def closeEvent(self, event):
@@ -469,6 +472,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         sttgns.setValue("redacInfosState", self.tabRedacInfos.currentIndex())
         sttgns.setValue("cheatSheetState", self.grpCheatSheet.saveState())
         sttgns.setValue("searchState", self.grpSearch.saveState())
+        sttgns.setValue("revisionsState", self.redacMetadata.revisions.saveState())
         
         # Specific settings to save before quitting
         settings.lastTab = self.tabMain.currentIndex()
