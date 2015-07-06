@@ -11,6 +11,7 @@ from enums import *
 from models.outlineModel import *
 from models.persosModel import *
 from models.plotModel import *
+from ui.views.outlineDelegates import outlinePersoDelegate
 #from models.persosProxyModel import *
 from functions import *
 from settingsWindow import *
@@ -305,6 +306,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self._updatingSubPlot = True
         self.txtSubPlotSummary.setPlainText("")
         self._updatingSubPlot = False
+        self.lstPlotPerso.selectionModel().clear()
 
     def changeCurrentSubPlot(self, index):
         # Got segfaults when using textEditView model system, so ad hoc stuff.
@@ -332,6 +334,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self._updatingSubPlot = True
         item.setText(self.txtSubPlotSummary.toPlainText())
         self._updatingSubPlot = False
+        
+    def plotPersoSelectionChanged(self):
+        "Enables or disables remove plot perso button."
+        self.btnRmPlotPerso.setEnabled(
+            len(self.lstPlotPerso.selectedIndexes()) != 0)
 
 ###############################################################################
 # LOAD AND SAVE
@@ -743,6 +750,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                     self.mdlPlots.removePlot(self.lstPlots.currentPlotIndex()), AUC)
         self.btnAddSubPlot.clicked.connect(self.mdlPlots.addSubPlot, AUC)
         self.btnRmSubPlot.clicked.connect(self.mdlPlots.removeSubPlot, AUC)
+        self.lstPlotPerso.selectionModel().selectionChanged.connect(self.plotPersoSelectionChanged)
         self.btnRmPlotPerso.clicked.connect(self.mdlPlots.removePlotPerso, AUC)
 
         for w, c in [
@@ -759,6 +767,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.mdlPersos.dataChanged.connect(self.mdlPlots.updatePlotPersoButton)
         self.lstOutlinePlots.setPlotModel(self.mdlPlots)
         self.lstOutlinePlots.setShowSubPlot(True)
+        self.plotPersoDelegate = outlinePersoDelegate(self.mdlPersos, self)
+        self.lstPlotPerso.setItemDelegate(self.plotPersoDelegate)
 
         # Outline
         self.treeRedacOutline.setModel(self.mdlOutline)

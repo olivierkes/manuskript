@@ -109,7 +109,7 @@
         <item>
          <widget class="QTabWidget" name="tabMain">
           <property name="currentIndex">
-           <number>6</number>
+           <number>3</number>
           </property>
           <property name="documentMode">
            <bool>true</bool>
@@ -1144,11 +1144,11 @@
                        <verstretch>0</verstretch>
                       </sizepolicy>
                      </property>
+                     <property name="editTriggers">
+                      <set>QAbstractItemView::NoEditTriggers</set>
+                     </property>
                      <property name="movement">
                       <enum>QListView::Static</enum>
-                     </property>
-                     <property name="viewMode">
-                      <enum>QListView::IconMode</enum>
                      </property>
                     </widget>
                    </item>
@@ -1180,6 +1180,9 @@
                      </item>
                      <item>
                       <widget class="QPushButton" name="btnRmPlotPerso">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
                        <property name="text">
                         <string/>
                        </property>

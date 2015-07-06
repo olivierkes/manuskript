@@ -164,7 +164,8 @@ class outlinePersoDelegate(QStyledItemDelegate):
         
         qApp.style().drawControl(QStyle.CE_ItemViewItem, opt, painter)
         
-        if index.isValid() and index.internalPointer().data(Outline.POV.value) not in ["", None]:
+        #if index.isValid() and index.internalPointer().data(Outline.POV.value) not in ["", None]:
+        if index.isValid() and self.mdlPersos.data(index) not in ["", None]:
             opt = QStyleOptionComboBox()
             opt.rect = option.rect
             r = qApp.style().subControlRect(QStyle.CC_ComboBox, opt, QStyle.SC_ComboBoxArrow)

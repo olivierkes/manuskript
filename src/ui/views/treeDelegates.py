@@ -7,6 +7,9 @@ from functions import *
 import settings
 
 class treeTitleDelegate(QStyledItemDelegate):
+    """The main purpose of ``treeTitleDelegate`` is to paint outline items
+    in the treeview with propers colors according to settings.
+    """
     def __init__(self, parent=None):
         QStyledItemDelegate.__init__(self, parent)
         self._view = None

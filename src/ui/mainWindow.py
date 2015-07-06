@@ -582,8 +582,8 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.lstPlotPerso.sizePolicy().hasHeightForWidth())
         self.lstPlotPerso.setSizePolicy(sizePolicy)
+        self.lstPlotPerso.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
         self.lstPlotPerso.setMovement(QtWidgets.QListView.Static)
-        self.lstPlotPerso.setViewMode(QtWidgets.QListView.IconMode)
         self.lstPlotPerso.setObjectName("lstPlotPerso")
         self.verticalLayout_12.addWidget(self.lstPlotPerso)
         self.horizontalLayout_16 = QtWidgets.QHBoxLayout()
@@ -597,6 +597,7 @@ class Ui_MainWindow(object):
         self.btnAddPlotPerso.setObjectName("btnAddPlotPerso")
         self.horizontalLayout_16.addWidget(self.btnAddPlotPerso)
         self.btnRmPlotPerso = QtWidgets.QPushButton(self.infos_2)
+        self.btnRmPlotPerso.setEnabled(False)
         self.btnRmPlotPerso.setText("")
         icon = QtGui.QIcon.fromTheme("list-remove")
         self.btnRmPlotPerso.setIcon(icon)
@@ -1047,7 +1048,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.stack.setCurrentIndex(1)
-        self.tabMain.setCurrentIndex(6)
+        self.tabMain.setCurrentIndex(3)
         self.tabSummary.setCurrentIndex(0)
         self.tabPersos.setCurrentIndex(0)
         self.tabPlot.setCurrentIndex(0)
@@ -1175,17 +1176,17 @@ class Ui_MainWindow(object):
         self.actCompile.setText(_translate("MainWindow", "Compile"))
         self.actCompile.setShortcut(_translate("MainWindow", "F6"))
 
-from ui.editors.mainEditor import mainEditor
 from ui.cheatSheet import cheatSheet
-from ui.views.outlineView import outlineView
-from ui.views.treeView import treeView
-from ui.collapsibleGroupBox2 import collapsibleGroupBox2
+from ui.views.textEditView import textEditView
 from ui.views.metadataView import metadataView
+from ui.search import search
 from ui.sldImportance import sldImportance
+from ui.editors.mainEditor import mainEditor
+from ui.collapsibleGroupBox2 import collapsibleGroupBox2
 from ui.views.plotTreeView import plotTreeView
 from ui.views.basicItemView import basicItemView
-from ui.views.textEditView import textEditView
-from ui.views.persoTreeView import persoTreeView
-from ui.search import search
 from ui.views.lineEditView import lineEditView
+from ui.views.treeView import treeView
 from ui.welcome import welcome
+from ui.views.outlineView import outlineView
+from ui.views.persoTreeView import persoTreeView
