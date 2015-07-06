@@ -154,6 +154,6 @@ class textEditCompleter(textEditView):
         #event = QPaintEvent(self.viewport().geometry())
         QTextEdit.paintEvent(self, event)
         painter = QPainter(self.viewport())
-        
+        painter.setPen(Qt.gray)
         for r in self.refRects:
             painter.drawRect(r)

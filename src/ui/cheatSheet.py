@@ -29,6 +29,7 @@ class cheatSheet(QWidget, Ui_cheatSheet):
         
         self.outlineModel = None
         self.persoModel = None
+        self.plotModel = None
         
         self.populateTimer = QTimer(self)
         self.populateTimer.setSingleShot(True)
@@ -43,8 +44,11 @@ class cheatSheet(QWidget, Ui_cheatSheet):
     def setModels(self):
         self.outlineModel = mainWindow().mdlOutline
         self.persoModel = mainWindow().mdlPersos
+        self.plotModel = mainWindow().mdlPlots
+        
         self.outlineModel.dataChanged.connect(self.populateTimer.start)
         self.persoModel.dataChanged.connect(self.populateTimer.start)
+        self.plotModel.dataChanged.connect(self.populateTimer.start)
         self.populate()
         
     def populate(self):
@@ -59,6 +63,7 @@ class cheatSheet(QWidget, Ui_cheatSheet):
                 d.append((name, ID, imp))
             
             self.data[(self.tr("Characters"), Ref.PersoLetter)] = d
+        
         if self.outlineModel:
             d = []
             
@@ -71,6 +76,18 @@ class cheatSheet(QWidget, Ui_cheatSheet):
             addChildren(r)
             
             self.data[(self.tr("Texts"), Ref.TextLetter)] = d
+            
+        if self.plotModel:
+            d = []
+            
+            for r in range(self.plotModel.rowCount()):
+                name = self.plotModel.item(r, Plot.name.value).text()
+                ID = self.plotModel.item(r, Plot.ID.value).text()
+                imp = self.plotModel.item(r, Plot.importance.value).text()
+                imp = [self.tr("Minor"), self.tr("Secondary"), self.tr("Main")][int(imp)]
+                d.append((name, ID, imp))
+            
+            self.data[(self.tr("Plots"), Ref.PlotLetter)] = d
             
         self.updateListFromData()
             
@@ -92,7 +109,7 @@ class cheatSheet(QWidget, Ui_cheatSheet):
                 self.addCategory(cat[0])
                 for item in filtered:
                     i = QListWidgetItem(item[0])
-                    i.setData(Qt.UserRole, "::{}:{}::".format(cat[1], item[1]))
+                    i.setData(Qt.UserRole, Ref.EmptyRef.format(cat[1], item[1]))
                     i.setData(Qt.UserRole+1, item[2])
                     self.list.addItem(i)
         

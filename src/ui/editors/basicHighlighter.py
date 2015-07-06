@@ -4,6 +4,7 @@
 from qt import *
 import re
 from functions import *
+import models.references as Ref
 
 class basicHighlighter(QSyntaxHighlighter):
 
@@ -53,14 +54,17 @@ class basicHighlighter(QSyntaxHighlighter):
         """
         
         # References
-        for txt in re.finditer(r"::(\w):(\d+?)::", text):
+        for txt in re.finditer(Ref.RegEx, text):
             fmt = self.format(txt.start())
             fmt.setFontFixedPitch(True)
             fmt.setFontWeight(QFont.DemiBold)
-            if txt.group(1) == "T":
+            if txt.group(1) == Ref.TextLetter:
                 fmt.setBackground(QBrush(QColor(Qt.blue).lighter(190)))
-            elif txt.group(1) == "C":
+            elif txt.group(1) == Ref.PersoLetter:
                 fmt.setBackground(QBrush(QColor(Qt.yellow).lighter(170)))
+            elif txt.group(1) == Ref.PlotLetter:
+                fmt.setBackground(QBrush(QColor(Qt.red).lighter(170)))
+            
             self.setFormat(txt.start(),
                         txt.end() - txt.start(),
                         fmt)
