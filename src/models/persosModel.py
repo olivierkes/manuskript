@@ -143,7 +143,7 @@ class persosModel(QStandardItemModel):
             else:
                 return Perso(section).name
         else:
-            return QStandardItemModel.headerData(self, section, orientation, role=Qt.DisplayRole)
+            return QStandardItemModel.headerData(self, section, orientation, role)
 
     def addPersoInfo(self):
         perso = self.itemFromIndex(self.currentPersoIndex())

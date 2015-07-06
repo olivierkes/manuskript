@@ -624,9 +624,10 @@ class Ui_MainWindow(object):
         self.tab_15.setObjectName("tab_15")
         self.verticalLayout_28 = QtWidgets.QVBoxLayout(self.tab_15)
         self.verticalLayout_28.setObjectName("verticalLayout_28")
-        self.lstSubPlots = QtWidgets.QListView(self.tab_15)
+        self.lstSubPlots = QtWidgets.QTableView(self.tab_15)
         self.lstSubPlots.setDragDropMode(QtWidgets.QAbstractItemView.InternalMove)
         self.lstSubPlots.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
+        self.lstSubPlots.setShowGrid(False)
         self.lstSubPlots.setObjectName("lstSubPlots")
         self.verticalLayout_28.addWidget(self.lstSubPlots)
         self.grpSubPlotSummary = QtWidgets.QGroupBox(self.tab_15)
@@ -1050,8 +1051,8 @@ class Ui_MainWindow(object):
         self.stack.setCurrentIndex(1)
         self.tabMain.setCurrentIndex(3)
         self.tabSummary.setCurrentIndex(0)
-        self.tabPersos.setCurrentIndex(0)
-        self.tabPlot.setCurrentIndex(0)
+        self.tabPersos.setCurrentIndex(3)
+        self.tabPlot.setCurrentIndex(1)
         self.comboBox_2.setCurrentIndex(0)
         self.stkPlotSummary.setCurrentIndex(0)
         self.tabRedacInfos.setCurrentIndex(0)
@@ -1176,17 +1177,17 @@ class Ui_MainWindow(object):
         self.actCompile.setText(_translate("MainWindow", "Compile"))
         self.actCompile.setShortcut(_translate("MainWindow", "F6"))
 
-from ui.cheatSheet import cheatSheet
-from ui.views.textEditView import textEditView
-from ui.views.metadataView import metadataView
-from ui.search import search
+from ui.views.outlineView import outlineView
 from ui.sldImportance import sldImportance
 from ui.editors.mainEditor import mainEditor
-from ui.collapsibleGroupBox2 import collapsibleGroupBox2
-from ui.views.plotTreeView import plotTreeView
-from ui.views.basicItemView import basicItemView
+from ui.cheatSheet import cheatSheet
 from ui.views.lineEditView import lineEditView
-from ui.views.treeView import treeView
+from ui.views.metadataView import metadataView
+from ui.views.basicItemView import basicItemView
 from ui.welcome import welcome
-from ui.views.outlineView import outlineView
+from ui.views.textEditView import textEditView
+from ui.collapsibleGroupBox2 import collapsibleGroupBox2
+from ui.search import search
+from ui.views.plotTreeView import plotTreeView
 from ui.views.persoTreeView import persoTreeView
+from ui.views.treeView import treeView

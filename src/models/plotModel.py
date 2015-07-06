@@ -102,7 +102,35 @@ class plotModel(QStandardItemModel):
 ###############################################################################
 # SUBPLOTS
 ###############################################################################
- 
+
+    def headerData(self, section, orientation, role=Qt.DisplayRole):
+        if role == Qt.DisplayRole:
+            if orientation == Qt.Horizontal:
+                if section == Subplot.name.value:
+                    return self.tr("Name")
+                elif section == Subplot.meta.value:
+                    return self.tr("Meta")
+                else:
+                    return ""
+            else:
+                return ""
+        else:
+            return QStandardItemModel.headerData(self, section, orientation, role)
+    
+    def data(self, index, role=Qt.DisplayRole):
+        if index.parent().isValid() and \
+           index.parent().column() == Plot.subplots.value and \
+           index.column() == Subplot.meta.value:
+            if role == Qt.TextAlignmentRole:
+                return Qt.AlignRight | Qt.AlignVCenter
+            elif role == Qt.ForegroundRole:
+                return QBrush(Qt.gray)
+            else:
+                return QStandardItemModel.data(self, index, role)
+        
+        else:
+            return QStandardItemModel.data(self, index, role)
+    
     def addSubPlot(self):
         index = self.mw.lstPlots.currentPlotIndex()
         if not index.isValid():

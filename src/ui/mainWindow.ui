@@ -717,7 +717,7 @@
               </widget>
               <widget class="QTabWidget" name="tabPersos">
                <property name="currentIndex">
-                <number>0</number>
+                <number>3</number>
                </property>
                <widget class="QWidget" name="infos">
                 <attribute name="title">
@@ -1083,7 +1083,7 @@
               </widget>
               <widget class="QTabWidget" name="tabPlot">
                <property name="currentIndex">
-                <number>0</number>
+                <number>1</number>
                </property>
                <property name="documentMode">
                 <bool>true</bool>
@@ -1220,12 +1220,15 @@
                 </attribute>
                 <layout class="QVBoxLayout" name="verticalLayout_28">
                  <item>
-                  <widget class="QListView" name="lstSubPlots">
+                  <widget class="QTableView" name="lstSubPlots">
                    <property name="dragDropMode">
                     <enum>QAbstractItemView::InternalMove</enum>
                    </property>
                    <property name="selectionBehavior">
                     <enum>QAbstractItemView::SelectRows</enum>
+                   </property>
+                   <property name="showGrid">
+                    <bool>false</bool>
                    </property>
                   </widget>
                  </item>

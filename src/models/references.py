@@ -266,11 +266,15 @@ def infos(ref):
         item = m.item(index.row(), Plot.subplots.value)
         if item:
             for r in range(item.rowCount()):
-                title = item.child(r, 0).text()
-                summary = item.child(r, 3).text()
-                steps += "<li><b>{title}:</b> {summary}</li>".format(
+                title = item.child(r, Subplot.name.value).text()
+                summary = item.child(r, Subplot.summary.value).text()
+                meta = item.child(r, Subplot.meta.value).text()
+                if meta:
+                    meta = " <span style='color:gray;'>({})</span>".format(meta)
+                steps += "<li><b>{title}</b>{summary}{meta}</li>".format(
                     title=title,
-                    summary=summary)
+                    summary=": {}".format(summary) if summary else "",
+                    meta = meta if meta else "")
         
         text = """<h1>{name}</h1>
         {goto}

@@ -12,6 +12,7 @@ from models.outlineModel import *
 from models.persosModel import *
 from models.plotModel import *
 from ui.views.outlineDelegates import outlinePersoDelegate
+from ui.views.plotDelegate import plotDelegate
 #from models.persosProxyModel import *
 from functions import *
 from settingsWindow import *
@@ -298,9 +299,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.sldPlotImportance.setCurrentModelIndex(index)
         self.lstPlotPerso.setRootIndex(index.sibling(index.row(),
                                                      Plot.persos.value))
+        subplotindex = index.sibling(index.row(), Plot.subplots.value)
+        self.lstSubPlots.setRootIndex(subplotindex)
+        if self.mdlPlots.rowCount(subplotindex):
+            self.updateSubPlotView()
 
-        self.lstSubPlots.setRootIndex(index.sibling(index.row(),
-                                      Plot.subplots.value))
         #self.txtSubPlotSummary.setCurrentModelIndex(QModelIndex())
         self.txtSubPlotSummary.setEnabled(False)
         self._updatingSubPlot = True
@@ -308,9 +311,22 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self._updatingSubPlot = False
         self.lstPlotPerso.selectionModel().clear()
 
+    def updateSubPlotView(self):
+        # Hide columns
+        for i in range(self.mdlPlots.columnCount()):
+            self.lstSubPlots.hideColumn(i)
+        self.lstSubPlots.showColumn(Subplot.name.value)
+        self.lstSubPlots.showColumn(Subplot.meta.value)
+
+        self.lstSubPlots.horizontalHeader().setSectionResizeMode(
+            Subplot.name.value, QHeaderView.Stretch)
+        self.lstSubPlots.horizontalHeader().setSectionResizeMode(
+            Subplot.meta.value, QHeaderView.ResizeToContents)
+        self.lstSubPlots.verticalHeader().hide()
+        
     def changeCurrentSubPlot(self, index):
         # Got segfaults when using textEditView model system, so ad hoc stuff.
-        index = index.sibling(index.row(), 3)
+        index = index.sibling(index.row(), Subplot.summary.value)
         item = self.mdlPlots.itemFromIndex(index)
         if not item:
             self.txtSubPlotSummary.setEnabled(False)
@@ -328,7 +344,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         index = self.lstSubPlots.currentIndex()
         if not index.isValid():
             return
-        index = index.sibling(index.row(), 3)
+        index = index.sibling(index.row(), Subplot.summary.value)
         item = self.mdlPlots.itemFromIndex(index)
 
         self._updatingSubPlot = True
@@ -356,8 +372,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 5000)
             return
 
-        self.currentProject = project
-        QSettings().setValue("lastProject", project)
 
         if loadFromFile:
             # Load empty settings
@@ -365,7 +379,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
             # Load data
             self.loadEmptyDatas()
-            self.loadDatas()
+            self.loadDatas(project)
 
         self.makeConnections()
 
@@ -418,6 +432,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # Stuff
         #self.checkPersosID()  # Should'n be necessary any longer
+
+        self.currentProject = project
+        QSettings().setValue("lastProject", project)
 
         # Show main Window
         self.stack.setCurrentIndex(1)
@@ -551,9 +568,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.mdlPlots = plotModel(self)
         self.mdlOutline = outlineModel(self)
 
-    def loadDatas(self):
+    def loadDatas(self, project):
         # Loading
-        files = loadFilesFromZip(self.currentProject)
+        files = loadFilesFromZip(project)
 
         errors = []
 
@@ -607,15 +624,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # Giving some feedback
         if not errors:
-            print(self.tr("Project {} loaded.").format(self.currentProject))
+            print(self.tr("Project {} loaded.").format(project))
             self.statusBar().showMessage(
-                self.tr("Project {} loaded.").format(self.currentProject), 5000)
+                self.tr("Project {} loaded.").format(project), 5000)
         else:
-            print(self.tr("Project {} loaded with some errors:").format(self.currentProject))
+            print(self.tr("Project {} loaded with some errors:").format(project))
             for e in errors:
                 print(self.tr(" * {} wasn't found in project file.").format(e))
             self.statusBar().showMessage(
-                self.tr("Project {} loaded with some errors.").format(self.currentProject), 5000)
+                self.tr("Project {} loaded with some errors.").format(project), 5000)
 
 ###############################################################################
 # MAIN CONNECTIONS
@@ -769,6 +786,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.lstOutlinePlots.setShowSubPlot(True)
         self.plotPersoDelegate = outlinePersoDelegate(self.mdlPersos, self)
         self.lstPlotPerso.setItemDelegate(self.plotPersoDelegate)
+        self.plotDelegate = plotDelegate(self)
+        self.lstSubPlots.setItemDelegateForColumn(Subplot.meta.value, self.plotDelegate)
 
         # Outline
         self.treeRedacOutline.setModel(self.mdlOutline)

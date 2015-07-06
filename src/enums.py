@@ -34,6 +34,12 @@ class Plot(Enum):
     subplots = 6
     summary = 7
     
+class Subplot(Enum):
+    name = 0
+    ID = 1
+    meta = 2
+    summary = 3
+    
 class Outline(Enum):
     title = 0
     ID = 1

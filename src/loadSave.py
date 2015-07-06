@@ -105,14 +105,21 @@ def loadStandardItemModelXML(mdl, xml, fromString=False):
     
     #print(root.find("header").find("vertical").text)
     
-    mdl.setVerticalHeaderLabels(vLabels)
-    mdl.setHorizontalHeaderLabels(hLabels)
+    #mdl.setVerticalHeaderLabels(vLabels)
+    #mdl.setHorizontalHeaderLabels(hLabels)
+    
+    # Populates with empty items
+    for i in range(len(vLabels)):
+        row = []
+        for r in range(len(hLabels)):
+            row.append(QStandardItem())
+        mdl.appendRow(row)
     
     #Data
     data = root.find("data")
     loadItem(data, mdl)
             
-    #print("OK")
+    return True
     
 def loadItem(root, mdl, parent=QModelIndex()):
     for row in root:
