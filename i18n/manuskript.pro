@@ -7,6 +7,7 @@ FORMS            += ../src/ui/compileDialog_ui.ui
 FORMS            += ../src/ui/revisions_ui.ui
 
 FORMS            += ../src/ui/editors/editorWidget_ui.ui
+FORMS            += ../src/ui/editors/locker_ui.ui
 
 FORMS            += ../src/ui/views/propertiesView_ui.ui
 FORMS            += ../src/ui/views/basicItemView_ui.ui
@@ -34,6 +35,7 @@ SOURCES          += ../src/ui/revisions.py
 
 SOURCES          += ../src/ui/editors/editorWidget.py
 SOURCES          += ../src/ui/editors/fullScreenEditor.py
+SOURCES          += ../src/ui/editors/locker.py
 SOURCES          += ../src/ui/editors/textFormat.py
 SOURCES          += ../src/ui/editors/completer.py
 SOURCES          += ../src/ui/editors/mainEditor.py

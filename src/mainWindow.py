@@ -19,7 +19,7 @@ from settingsWindow import *
 import settings
 import imp
 
-# Spell checker support
+# Spellcheck support
 try:
     import enchant
 except ImportError:

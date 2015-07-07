@@ -6,9 +6,16 @@ from enums import *
 from ui.views.textEditView import *
 from ui.editors.themes import *
 from ui.editors.textFormat import *
+from ui.editors.locker import locker
 
 from functions import *
 import settings
+
+# Spell checker support
+try:
+    import enchant
+except ImportError:
+    enchant = None
 
 class fullScreenEditor(QWidget):
     
@@ -41,13 +48,15 @@ class fullScreenEditor(QWidget):
         #self.topPanel.layout().addStretch(1)
         
         # Spell checking
-        self.btnSpellCheck = QPushButton(self)
-        self.btnSpellCheck.setFlat(True)
-        self.btnSpellCheck.setIcon(QIcon.fromTheme("tools-check-spelling"))
-        self.btnSpellCheck.setCheckable(True)
-        self.btnSpellCheck.setChecked(self.editor.spellcheck)
-        self.btnSpellCheck.toggled.connect(self.editor.toggleSpellcheck)
-        self.topPanel.layout().addWidget(self.btnSpellCheck)
+        if enchant:
+            self.btnSpellCheck = QPushButton(self)
+            self.btnSpellCheck.setFlat(True)
+            self.btnSpellCheck.setIcon(QIcon.fromTheme("tools-check-spelling"))
+            self.btnSpellCheck.setCheckable(True)
+            self.btnSpellCheck.setChecked(self.editor.spellcheck)
+            self.btnSpellCheck.toggled.connect(self.editor.toggleSpellcheck)
+            self.topPanel.layout().addWidget(self.btnSpellCheck)
+        
         self.topPanel.layout().addStretch(1)
         
         # Formatting
@@ -55,11 +64,18 @@ class fullScreenEditor(QWidget):
         self.topPanel.layout().addWidget(self.textFormat)
         self.topPanel.layout().addStretch(1)
         
-        b = QPushButton(self)
-        b.setIcon(qApp.style().standardIcon(QStyle.SP_DialogCloseButton))
-        b.clicked.connect(self.close)
-        b.setFlat(True)
-        self.topPanel.layout().addWidget(b)
+        self.btnClose = QPushButton(self)
+        self.btnClose.setIcon(qApp.style().standardIcon(QStyle.SP_DialogCloseButton))
+        self.btnClose.clicked.connect(self.close)
+        self.btnClose.setFlat(True)
+        self.topPanel.layout().addWidget(self.btnClose)
+        
+        # Left Panel
+        self._locked = False
+        self.leftPanel = myPanel(vertical=True, parent=self)
+        self.locker = locker(self)
+        self.locker.lockChanged.connect(self.setLocked)
+        self.leftPanel.layout().addWidget(self.locker)
         
         # Bottom Panel
         self.bottomPanel = myPanel(parent=self)
@@ -97,6 +113,10 @@ class fullScreenEditor(QWidget):
         self.showFullScreen()
         #self.showMaximized()
         #self.show()
+        
+    def setLocked(self, val):
+        self._locked = val
+        self.btnClose.setVisible(not val)
         
     def setTheme(self, themeName):
         settings.fullScreenTheme = themeName
@@ -139,7 +159,17 @@ class fullScreenEditor(QWidget):
         
         self.scrollBar.setColor(self._bgcolor)
         
-        # Panels
+        # Left Panel
+        r = self.locker.geometry()
+        r.moveTopLeft(QPoint(
+            0, 
+            self.geometry().height() / 2 - r.height() / 2
+            ))
+        self.leftPanel.setGeometry(r)
+        self.hideWidget(self.leftPanel)
+        self.leftPanel.setColor(self._bgcolor)
+        
+        # Top / Bottom Panels
         r = QRect(0, 0, 0, 24)
         r.setWidth(rect.width())
         #r.moveLeft(rect.center().x() - r.width() / 2)
@@ -181,7 +211,8 @@ class fullScreenEditor(QWidget):
         self.updateTheme()
         
     def keyPressEvent(self, event):
-        if event.key() in [Qt.Key_Escape, Qt.Key_F11]:
+        if event.key() in [Qt.Key_Escape, Qt.Key_F11] and \
+           not self._locked:
             self.close()
         else:
             QWidget.keyPressEvent(self, event)
@@ -189,7 +220,8 @@ class fullScreenEditor(QWidget):
     def mouseMoveEvent(self, event):
         r = self.geometry()
         
-        for w in [self.scrollBar, self.topPanel, self.bottomPanel]:
+        for w in [self.scrollBar, self.topPanel, 
+                  self.bottomPanel, self.leftPanel]:
             #w.setVisible(w.geometry().contains(event.pos())) 
             if self._geometries[w].contains(event.pos()):
                 self.showWidget(w)
@@ -207,7 +239,8 @@ class fullScreenEditor(QWidget):
             
     def eventFilter(self, obj, event):
         if obj == self.editor and event.type() == QEvent.Enter:
-            for w in [self.scrollBar, self.topPanel, self.bottomPanel]:
+            for w in [self.scrollBar, self.topPanel, 
+                      self.bottomPanel, self.leftPanel]:
                 #w.setVisible(False)
                 self.hideWidget(w)
         return QWidget.eventFilter(self, obj, event)
@@ -239,6 +272,11 @@ class fullScreenEditor(QWidget):
         else:
             self.lblProgress.hide()
             self.lblWC.setText(self.tr("{} words").format(wc))
+            
+        self.locker.setWordCount(wc)
+        if not self.locker.isLocked():
+            if goal - wc > 0:
+                self.locker.spnWordTarget.setValue(goal - wc)
         
 class myScrollBar(QScrollBar):
     def __init__(self, color=Qt.white, parent=None):
@@ -274,12 +312,15 @@ class myScrollBar(QScrollBar):
         painter.end()
         
 class myPanel(QWidget):
-    def __init__(self, color=Qt.white, parent=None):
+    def __init__(self, color=Qt.white, vertical=False, parent=None):
         QWidget.__init__(self, parent)
         self._color = color
         self.show()
         self.setAttribute(Qt.WA_TranslucentBackground)
-        self.setLayout(QHBoxLayout())
+        if not vertical:
+            self.setLayout(QHBoxLayout())
+        else:
+            self.setLayout(QVBoxLayout())
         self.layout().setContentsMargins(0, 0, 0, 0)
         
     def setColor(self, color):
