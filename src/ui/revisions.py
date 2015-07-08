@@ -148,7 +148,7 @@ class revisions(QWidget, Ui_revisions):
         diff = [d for d in diff if d and not d[:2] == "? "]
         mydiff = ""
         skip = False
-        for n in range(len(diff)):
+        for n, l in enumerate(diff):
             l = diff[n]
             op = l[:2]
             txt = l[2:]

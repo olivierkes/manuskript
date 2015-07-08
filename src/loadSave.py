@@ -109,9 +109,9 @@ def loadStandardItemModelXML(mdl, xml, fromString=False):
     #mdl.setHorizontalHeaderLabels(hLabels)
     
     # Populates with empty items
-    for i in range(len(vLabels)):
+    for i in enumerate(vLabels):
         row = []
-        for r in range(len(hLabels)):
+        for r in enumerate(hLabels):
             row.append(QStandardItem())
         mdl.appendRow(row)
     

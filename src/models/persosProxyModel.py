@@ -77,8 +77,8 @@ class persosProxyModel(QSortFilterProxyModel):
         
         self._map = []
         
-        for i in range(len(self._cats)):
-            self._map.append(self._cats[i])
+        for i, cat in enumerate(self._cats):
+            self._map.append(cat)
             
             for p in range(src.rowCount()):
                 item = src.item(p, Perso.importance.value)

@@ -230,12 +230,12 @@ def reformatText(text, markupArray):
     rText = ""
     markup = ["**", "//", "__", "--", "``", "''"]
 
-    for k in range(len(markupArray)):
-        m = markupArray[k]
+    for k, m in enumerate(markupArray):
+        #m = markupArray[k]
         _open = False  # Are we in an _openned markup
         d = 0
         alreadySeen = []
-        for i in range(len(text)):
+        for i, t in enumerate(text):
             insert = False
             if not _open and m[i] == 1:
                 insert = True
@@ -253,23 +253,23 @@ def reformatText(text, markupArray):
                 alreadySeen.append(m[i])
             if insert:
                 rText += markup[k]
-                for j in range(len(markupArray)):
+                for j, m2 in enumerate(markupArray):
                     # The other array still have the same length
                     if j > k:
                         #Insert 2 for bold, 3 for italic, etc.
-                        markupArray[j].insert(i + d, k + 2)
-                        markupArray[j].insert(i + d, k + 2)
+                        m2.insert(i + d, k + 2)
+                        m2.insert(i + d, k + 2)
                     alreadySeen = []
                 d += 2
-            rText += text[i]
+            rText += t
         if _open:
             rText += markup[k]
-            for j in range(len(markupArray)):
+            for j, m2 in enumerate(markupArray):
                 # The other array still have the same length
                 if j > k:
                     #Insert 2 for bold, 3 for italic, etc.
-                    markupArray[j].insert(i + d, k + 2)
-                    markupArray[j].insert(i + d, k + 2)
+                    m2.insert(i + d, k + 2)
+                    m2.insert(i + d, k + 2)
         text = rText
         rText = ""
 

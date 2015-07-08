@@ -154,8 +154,8 @@ class t2tHighlighter (basicHighlighter):
         # Tables
         for lineState in [State.TABLE_LINE, State.TABLE_HEADER]:
             if state == lineState:
-                for i in range(len(text)):
-                    if text[i] == "|":
+                for i, t in enumerate(text):
+                    if t == "|":
                         self.setFormat(i, 1, op)
                     else:
                         self.setFormat(i, 1, self.style.format(lineState))
@@ -273,7 +273,7 @@ class t2tHighlighter (basicHighlighter):
                     pos = r.indexIn(text, pos + 1)
 
             # Bold, Italic, Underline, Code, Tagged, Strikeout
-            for i in range(len(text)):
+            for i, t in enumerate(text):
                 f = self.format(i)
                 beautifiers = [k[i] for k in formatArray]
                 self.setFormat(i, 1, self.style.beautifyFormat(f, beautifiers))
