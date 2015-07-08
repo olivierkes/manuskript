@@ -113,12 +113,11 @@ class textEditView(QTextEdit):
             
             if not self._model:
                 self.setModel(index.model())
-            
+
             self.setupEditorForIndex(self._index)
             self.loadFontSettings()
             self.updateText()
-            
-            
+
         else:
             self._index = QModelIndex()
 
@@ -142,7 +141,6 @@ class textEditView(QTextEdit):
         self.updateText()
         
     def setupEditorForIndex(self, index):
-        
         # what type of text are we editing?
         if type(index.model()) != outlineModel:
             self._textFormat = "text"
@@ -319,7 +317,7 @@ class textEditView(QTextEdit):
             return
         #print("Submitting", self.objectName())
         if self._index:
-            item = self._index.internalPointer()
+            #item = self._index.internalPointer()
             if self._textFormat == "html":
                 if self.toHtml() != self._model.data(self._index):
                     #print("    Submitting html")

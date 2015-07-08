@@ -49,7 +49,7 @@
         <translation>Informations sur l&apos;auteur</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="733"/>
+        <location filename="../src/ui/mainWindow.ui" line="1479"/>
         <source>Name</source>
         <translation>Nom</translation>
     </message>
@@ -124,7 +124,7 @@
         <translation>Noms</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1056"/>
+        <location filename="../src/ui/mainWindow.ui" line="1434"/>
         <source>Filter</source>
         <translation>Filtre</translation>
     </message>
@@ -179,7 +179,7 @@
         <translation>Informations détaillées</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1723"/>
+        <location filename="../src/ui/mainWindow.ui" line="1881"/>
         <source>Plots</source>
         <translation>Intrigues</translation>
     </message>
@@ -194,7 +194,7 @@
         <translation>Personnage(s)</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1126"/>
+        <location filename="../src/ui/mainWindow.ui" line="1489"/>
         <source>Description</source>
         <translation>Description</translation>
     </message>
@@ -209,202 +209,197 @@
         <translation>Étapes de résolution</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1372"/>
-        <source>Context</source>
-        <translation>Contexte</translation>
-    </message>
-    <message>
-        <location filename="../src/mainWindow.py" line="1071"/>
+        <location filename="../src/mainWindow.py" line="1127"/>
         <source>Outline</source>
         <translation>Plan</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1515"/>
+        <location filename="../src/ui/mainWindow.ui" line="1673"/>
         <source>Redaction</source>
         <translation>Rédaction</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1824"/>
+        <location filename="../src/ui/mainWindow.ui" line="1992"/>
         <source>Tools</source>
         <translation>Outils</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1631"/>
+        <location filename="../src/ui/mainWindow.ui" line="1789"/>
         <source>Cheat sheet</source>
         <translation>Aide-mémoire</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1687"/>
+        <location filename="../src/ui/mainWindow.ui" line="1845"/>
         <source>Debug</source>
         <translation>Debug</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1700"/>
+        <location filename="../src/ui/mainWindow.ui" line="1858"/>
         <source>FlatData</source>
         <translation>FlatData</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1710"/>
+        <location filename="../src/ui/mainWindow.ui" line="1868"/>
         <source>Persos</source>
         <translation>Persos</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1791"/>
+        <location filename="../src/ui/mainWindow.ui" line="1959"/>
         <source>File</source>
         <translation>Fichier</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1818"/>
+        <location filename="../src/ui/mainWindow.ui" line="1986"/>
         <source>Help</source>
         <translation>Aide</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1855"/>
+        <location filename="../src/ui/mainWindow.ui" line="2023"/>
         <source>Open</source>
         <translation>Ouvrir</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1858"/>
+        <location filename="../src/ui/mainWindow.ui" line="2026"/>
         <source>Ctrl+O</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1795"/>
+        <location filename="../src/ui/mainWindow.ui" line="1963"/>
         <source>Recents</source>
         <translation>Récents</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1867"/>
+        <location filename="../src/ui/mainWindow.ui" line="2035"/>
         <source>Save</source>
         <translation>Enregistrer</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1870"/>
+        <location filename="../src/ui/mainWindow.ui" line="2038"/>
         <source>Ctrl+S</source>
         <translation>Ctrl+S</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1879"/>
+        <location filename="../src/ui/mainWindow.ui" line="2047"/>
         <source>Save as...</source>
         <translation>Enregistrer sous...</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1882"/>
+        <location filename="../src/ui/mainWindow.ui" line="2050"/>
         <source>Ctrl+Shift+S</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1891"/>
+        <location filename="../src/ui/mainWindow.ui" line="2059"/>
         <source>Quit</source>
         <translation>Quitter</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1894"/>
+        <location filename="../src/ui/mainWindow.ui" line="2062"/>
         <source>Ctrl+Q</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1909"/>
+        <location filename="../src/ui/mainWindow.ui" line="2077"/>
         <source>Show help texts</source>
         <translation>Montrer les bulles d&apos;aides</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1912"/>
+        <location filename="../src/ui/mainWindow.ui" line="2080"/>
         <source>Ctrl+Shift+B</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1927"/>
+        <location filename="../src/ui/mainWindow.ui" line="2095"/>
         <source>Spellcheck</source>
         <translation>Correcteur orthographique</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1994"/>
+        <location filename="../src/ui/mainWindow.ui" line="2162"/>
         <source>F8</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1810"/>
+        <location filename="../src/ui/mainWindow.ui" line="1978"/>
         <source>Mode</source>
         <translation>Mode</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="904"/>
+        <location filename="../src/mainWindow.py" line="951"/>
         <source> (~{} pages)</source>
         <translation> (~{} pages)</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="930"/>
+        <location filename="../src/mainWindow.py" line="986"/>
         <source>Enter infos about your book, and yourself.</source>
         <translation>Entrez toutes les informations relatives au livre, ainsi qu&apos;à vous.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="936"/>
+        <location filename="../src/mainWindow.py" line="992"/>
         <source>Take time to think about a one sentance (~50 words) summary of your book. Then expand it to a paragraph, then to a page, then to a full summary.</source>
         <translation>Prenez le temps de réfléchir à un résumé de votre livre, en une phrase (~50 mots). Puis augmentez cette phrase en un paragraphe, puis en une page, puis en un résumé complet.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="939"/>
+        <location filename="../src/mainWindow.py" line="995"/>
         <source>Create your characters.</source>
         <translation>Créez ici vos personnage.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="942"/>
+        <location filename="../src/mainWindow.py" line="998"/>
         <source>Develop plots.</source>
         <translation>Développez vos intrigues.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="945"/>
+        <location filename="../src/mainWindow.py" line="1001"/>
         <source>Create the outline of your masterpiece.</source>
         <translation>Créez le plan de votre chef-d&apos;œuvre.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="948"/>
+        <location filename="../src/mainWindow.py" line="1004"/>
         <source>Write.</source>
         <translation>Écrivez.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="951"/>
+        <location filename="../src/mainWindow.py" line="1007"/>
         <source>Debug infos. Sometimes useful.</source>
         <translation>Des infos pour débugger des fois pendant qu&apos;on code c&apos;est utile.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="965"/>
+        <location filename="../src/mainWindow.py" line="1021"/>
         <source>Dictionary</source>
         <translation>Dictionnaire</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="978"/>
+        <location filename="../src/mainWindow.py" line="1034"/>
         <source>Install PyEnchant to use spellcheck</source>
         <translation>Installez PyEnchant pour profiter du correcteur orthographique</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="908"/>
+        <location filename="../src/mainWindow.py" line="955"/>
         <source>Words: {}{}</source>
         <translation>Mots: {}{}</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1082"/>
+        <location filename="../src/mainWindow.py" line="1138"/>
         <source>Text</source>
         <translation>Texte</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1757"/>
+        <location filename="../src/ui/mainWindow.ui" line="1925"/>
         <source>Labels</source>
         <translation>Labels</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1830"/>
+        <location filename="../src/ui/mainWindow.ui" line="1998"/>
         <source>Edit</source>
         <translation>Édition</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1935"/>
+        <location filename="../src/ui/mainWindow.ui" line="2103"/>
         <source>Labels...</source>
         <translation>Labels...</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1940"/>
+        <location filename="../src/ui/mainWindow.ui" line="2108"/>
         <source>Status...</source>
         <translation>Status...</translation>
     </message>
@@ -424,159 +419,189 @@
         <translation>Et si...?</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1070"/>
+        <location filename="../src/mainWindow.py" line="1126"/>
         <source>Index cards</source>
         <translation>Cartes</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1600"/>
+        <location filename="../src/ui/mainWindow.ui" line="1758"/>
         <source>Metadata</source>
         <translation>Métadonnées</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1838"/>
+        <location filename="../src/ui/mainWindow.ui" line="2006"/>
         <source>View</source>
         <translation>Vue</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1930"/>
+        <location filename="../src/ui/mainWindow.ui" line="2098"/>
         <source>F9</source>
         <translation>F9</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1069"/>
+        <location filename="../src/mainWindow.py" line="1125"/>
         <source>Tree</source>
         <translation>Arbre</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1956"/>
+        <location filename="../src/ui/mainWindow.ui" line="2124"/>
         <source>Normal</source>
         <translation>Normal</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1964"/>
+        <location filename="../src/ui/mainWindow.ui" line="2132"/>
         <source>Simple</source>
         <translation>Simple</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1972"/>
+        <location filename="../src/ui/mainWindow.ui" line="2140"/>
         <source>Fractal</source>
         <translation>Fractal</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1991"/>
+        <location filename="../src/ui/mainWindow.ui" line="2159"/>
         <source>Settings</source>
         <translation>Réglages</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="557"/>
+        <location filename="../src/mainWindow.py" line="577"/>
         <source>Project {} saved.</source>
         <translation>Le projet {} a été enregistré.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="628"/>
+        <location filename="../src/mainWindow.py" line="654"/>
         <source>Project {} loaded.</source>
         <translation>Le projet {} a été chargé.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="933"/>
+        <location filename="../src/mainWindow.py" line="989"/>
         <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous evil wizard could wasn&apos;t abled to kill a baby?&apos; (Harry Potter)</source>
         <translation>La situation de base, sous la forme d&apos;une question: &quot;Et si...?&quot; Par exemple: &quot;Et si le plus dangereux magiciens mauvais n&apos;était pas capable de tuer un bébé?&quot; (Harry Potter)</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1061"/>
+        <location filename="../src/mainWindow.py" line="1117"/>
         <source>Nothing</source>
         <translation>Rien</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1062"/>
+        <location filename="../src/mainWindow.py" line="1118"/>
         <source>POV</source>
         <translation>POV</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1063"/>
+        <location filename="../src/mainWindow.py" line="1119"/>
         <source>Label</source>
         <translation>Label</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1064"/>
+        <location filename="../src/mainWindow.py" line="1120"/>
         <source>Progress</source>
         <translation>Progrès</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1065"/>
+        <location filename="../src/mainWindow.py" line="1121"/>
         <source>Compile</source>
         <translation>Compilation</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1088"/>
+        <location filename="../src/mainWindow.py" line="1144"/>
         <source>Icon color</source>
         <translation>Couleur de l&apos;icone</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1089"/>
+        <location filename="../src/mainWindow.py" line="1145"/>
         <source>Text color</source>
         <translation>Couleur du texte</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1090"/>
+        <location filename="../src/mainWindow.py" line="1146"/>
         <source>Background color</source>
         <translation>Couleur de l&apos;arrière-plan</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1081"/>
+        <location filename="../src/mainWindow.py" line="1137"/>
         <source>Icon</source>
         <translation>Icone</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1083"/>
+        <location filename="../src/mainWindow.py" line="1139"/>
         <source>Background</source>
         <translation>Arrière-plan</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1084"/>
+        <location filename="../src/mainWindow.py" line="1140"/>
         <source>Border</source>
         <translation>Bordure</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1085"/>
+        <location filename="../src/mainWindow.py" line="1141"/>
         <source>Corner</source>
         <translation>Coin</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2004"/>
+        <location filename="../src/ui/mainWindow.ui" line="2172"/>
         <source>Close project</source>
         <translation>Fermer le projet</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="370"/>
+        <location filename="../src/mainWindow.py" line="388"/>
         <source>The file {} does not exist. Try again.</source>
         <translation>Le fichier {} n&apos;existe pas. Essayez encore.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="631"/>
+        <location filename="../src/mainWindow.py" line="657"/>
         <source>Project {} loaded with some errors:</source>
         <translation>Le projet {} a été chargé, avec des erreurs:</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="633"/>
+        <location filename="../src/mainWindow.py" line="659"/>
         <source> * {} wasn&apos;t found in project file.</source>
         <translation>* {} n&apos;a pas été trouvé dans le fichier du projet.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="634"/>
+        <location filename="../src/mainWindow.py" line="660"/>
         <source>Project {} loaded with some errors.</source>
         <translation>Le projet {} a été chargé avec des erreurs.</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="1659"/>
+        <location filename="../src/ui/mainWindow.ui" line="1817"/>
         <source>Search</source>
         <translation>Recherche</translation>
     </message>
     <message>
-        <location filename="../src/ui/mainWindow.ui" line="2012"/>
+        <location filename="../src/ui/mainWindow.ui" line="2180"/>
         <source>F6</source>
         <translation>F6</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/mainWindow.ui" line="1901"/>
+        <source>World</source>
+        <translation>Monde</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/mainWindow.ui" line="1447"/>
+        <source>Populates with empty data</source>
+        <translation>Remplir avec des catégories vides</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/mainWindow.ui" line="1470"/>
+        <source>General</source>
+        <translation>Général</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/mainWindow.ui" line="1500"/>
+        <source>More</source>
+        <translation>Plus</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/mainWindow.ui" line="1509"/>
+        <source>Source of passion</source>
+        <translation>Source de passion</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/mainWindow.ui" line="1519"/>
+        <source>Source of conflict</source>
+        <translation>Source de conflit</translation>
     </message>
 </context>
 <context>
@@ -1106,7 +1131,7 @@ des lignes:</translation>
 <context>
     <name>SpellAction</name>
     <message>
-        <location filename="../src/ui/views/textEditView.py" line="445"/>
+        <location filename="../src/ui/views/textEditView.py" line="443"/>
         <source>Spelling Suggestions</source>
         <translation>Suggestions</translation>
     </message>
@@ -1170,34 +1195,39 @@ des lignes:</translation>
         <translation>Filtre</translation>
     </message>
     <message>
-        <location filename="../src/ui/cheatSheet.py" line="87"/>
+        <location filename="../src/ui/cheatSheet.py" line="92"/>
         <source>Minor</source>
         <translation>Mineur</translation>
     </message>
     <message>
-        <location filename="../src/ui/cheatSheet.py" line="87"/>
+        <location filename="../src/ui/cheatSheet.py" line="92"/>
         <source>Secondary</source>
         <translation>Secondaire</translation>
     </message>
     <message>
-        <location filename="../src/ui/cheatSheet.py" line="87"/>
+        <location filename="../src/ui/cheatSheet.py" line="92"/>
         <source>Main</source>
         <translation>Principal</translation>
     </message>
     <message>
-        <location filename="../src/ui/cheatSheet.py" line="65"/>
+        <location filename="../src/ui/cheatSheet.py" line="70"/>
         <source>Characters</source>
         <translation>Personnages</translation>
     </message>
     <message>
-        <location filename="../src/ui/cheatSheet.py" line="78"/>
+        <location filename="../src/ui/cheatSheet.py" line="83"/>
         <source>Texts</source>
         <translation>Textes</translation>
     </message>
     <message>
-        <location filename="../src/ui/cheatSheet.py" line="90"/>
+        <location filename="../src/ui/cheatSheet.py" line="95"/>
         <source>Plots</source>
         <translation>Intrigues</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/cheatSheet.py" line="99"/>
+        <source>World</source>
+        <translation>Monde</translation>
     </message>
 </context>
 <context>
@@ -1375,7 +1405,7 @@ des lignes:</translation>
 <context>
     <name>lineEditView</name>
     <message>
-        <location filename="../src/ui/views/lineEditView.py" line="110"/>
+        <location filename="../src/ui/views/lineEditView.py" line="112"/>
         <source>Various</source>
         <translation>Différentes valeurs</translation>
     </message>
@@ -1786,144 +1816,154 @@ des lignes:</translation>
 <context>
     <name>references</name>
     <message>
-        <location filename="../src/models/references.py" line="348"/>
+        <location filename="../src/models/references.py" line="408"/>
         <source>Unknown reference: {}.</source>
         <translation>Référence inconnue: {}.</translation>
     </message>
     <message>
-        <location filename="../src/models/references.py" line="332"/>
+        <location filename="../src/models/references.py" line="383"/>
         <source>Text: &lt;b&gt;{}&lt;/b&gt;</source>
         <translation>Texte: &lt;b&gt;{}&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../src/models/references.py" line="340"/>
+        <location filename="../src/models/references.py" line="391"/>
         <source>Character: &lt;b&gt;{}&lt;/b&gt;</source>
         <translation>Personnage: &lt;b&gt;{}&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../src/models/references.py" line="153"/>
+        <location filename="../src/models/references.py" line="157"/>
         <source>Basic infos</source>
         <translation>Informations générales</translation>
     </message>
     <message>
-        <location filename="../src/models/references.py" line="154"/>
+        <location filename="../src/models/references.py" line="158"/>
         <source>Detailed infos</source>
         <translation>Informations détaillées</translation>
     </message>
     <message>
-        <location filename="../src/models/references.py" line="155"/>
+        <location filename="../src/models/references.py" line="159"/>
         <source>POV of:</source>
         <translation>POV de:</translation>
     </message>
     <message>
-        <location filename="../src/models/references.py" line="156"/>
+        <location filename="../src/models/references.py" line="321"/>
         <source>Referenced in:</source>
         <translation>Référencé dans:</translation>
     </message>
     <message>
-        <location filename="../src/models/references.py" line="165"/>
+        <location filename="../src/models/references.py" line="169"/>
         <source>Motivation</source>
         <translation>Motivation</translation>
     </message>
     <message>
-        <location filename="../src/models/references.py" line="166"/>
+        <location filename="../src/models/references.py" line="170"/>
         <source>Goal</source>
         <translation>Goal</translation>
     </message>
     <message>
-        <location filename="../src/models/references.py" line="167"/>
+        <location filename="../src/models/references.py" line="320"/>
         <source>Conflict</source>
         <translation>Conflit</translation>
     </message>
     <message>
-        <location filename="../src/models/references.py" line="168"/>
+        <location filename="../src/models/references.py" line="172"/>
         <source>Epiphany</source>
         <translation>Épiphanie</translation>
     </message>
     <message>
-        <location filename="../src/models/references.py" line="169"/>
+        <location filename="../src/models/references.py" line="173"/>
         <source>Short summary</source>
         <translation>Résumé court</translation>
     </message>
     <message>
-        <location filename="../src/models/references.py" line="170"/>
+        <location filename="../src/models/references.py" line="174"/>
         <source>Longer summary</source>
         <translation>Résumé long</translation>
     </message>
     <message>
-        <location filename="../src/models/references.py" line="62"/>
+        <location filename="../src/models/references.py" line="66"/>
         <source>Path:</source>
         <translation>Chemin:</translation>
     </message>
     <message>
-        <location filename="../src/models/references.py" line="63"/>
+        <location filename="../src/models/references.py" line="67"/>
         <source>Stats:</source>
         <translation>Stats:</translation>
     </message>
     <message>
-        <location filename="../src/models/references.py" line="64"/>
+        <location filename="../src/models/references.py" line="68"/>
         <source>POV:</source>
         <translation>POV:</translation>
     </message>
     <message>
-        <location filename="../src/models/references.py" line="65"/>
+        <location filename="../src/models/references.py" line="69"/>
         <source>Status:</source>
         <translation>Status:</translation>
     </message>
     <message>
-        <location filename="../src/models/references.py" line="66"/>
+        <location filename="../src/models/references.py" line="70"/>
         <source>Label:</source>
         <translation>Label:</translation>
     </message>
     <message>
-        <location filename="../src/models/references.py" line="67"/>
+        <location filename="../src/models/references.py" line="71"/>
         <source>Short summary:</source>
         <translation>Résumé court:</translation>
     </message>
     <message>
-        <location filename="../src/models/references.py" line="68"/>
+        <location filename="../src/models/references.py" line="72"/>
         <source>Long summary:</source>
         <translation>Résumé long:</translation>
     </message>
     <message>
-        <location filename="../src/models/references.py" line="69"/>
+        <location filename="../src/models/references.py" line="73"/>
         <source>Notes:</source>
         <translation>Notes:</translation>
     </message>
     <message>
-        <location filename="../src/models/references.py" line="318"/>
+        <location filename="../src/models/references.py" line="369"/>
         <source>Not a reference: {}.</source>
         <translation>Pas une référence: {}.</translation>
     </message>
     <message>
-        <location filename="../src/models/references.py" line="247"/>
+        <location filename="../src/models/references.py" line="324"/>
         <source>Go to {}.</source>
         <translation>Aller à {}.</translation>
     </message>
     <message>
-        <location filename="../src/models/references.py" line="241"/>
+        <location filename="../src/models/references.py" line="318"/>
         <source>Description</source>
         <translation>Description</translation>
     </message>
     <message>
-        <location filename="../src/models/references.py" line="242"/>
+        <location filename="../src/models/references.py" line="237"/>
         <source>Result</source>
         <translation>Résultat</translation>
     </message>
     <message>
-        <location filename="../src/models/references.py" line="243"/>
+        <location filename="../src/models/references.py" line="238"/>
         <source>Characters</source>
         <translation>Personnages</translation>
     </message>
     <message>
-        <location filename="../src/models/references.py" line="244"/>
+        <location filename="../src/models/references.py" line="239"/>
         <source>Resolution steps</source>
         <translation>Étapes de résolution</translation>
     </message>
     <message>
-        <location filename="../src/models/references.py" line="345"/>
+        <location filename="../src/models/references.py" line="396"/>
         <source>Plot: &lt;b&gt;{}&lt;/b&gt;</source>
         <translation>Intrigue: &lt;b&gt;{}&lt;/b&gt;</translation>
+    </message>
+    <message>
+        <location filename="../src/models/references.py" line="319"/>
+        <source>Passion</source>
+        <translation>Passion</translation>
+    </message>
+    <message>
+        <location filename="../src/models/references.py" line="404"/>
+        <source>World: &lt;b&gt;{name}&lt;/b&gt;{path}</source>
+        <translation>Monde: &lt;b&gt;{name}&lt;/b&gt;{path}</translation>
     </message>
 </context>
 <context>
@@ -2068,7 +2108,7 @@ des lignes:</translation>
 <context>
     <name>textEditView</name>
     <message>
-        <location filename="../src/ui/views/textEditView.py" line="313"/>
+        <location filename="../src/ui/views/textEditView.py" line="311"/>
         <source>Various</source>
         <translation>Différentes valeurs</translation>
     </message>
@@ -2355,6 +2395,219 @@ des lignes:</translation>
         <location filename="../src/ui/welcome.py" line="188"/>
         <source>Plain Text</source>
         <translation>Texte simple</translation>
+    </message>
+</context>
+<context>
+    <name>worldModel</name>
+    <message>
+        <location filename="../src/models/worldModel.py" line="128"/>
+        <source>New item</source>
+        <translation>Nouvel élément</translation>
+    </message>
+    <message>
+        <location filename="../src/models/worldModel.py" line="166"/>
+        <source>Fantasy world building</source>
+        <translation>Fantasy</translation>
+    </message>
+    <message>
+        <location filename="../src/models/worldModel.py" line="166"/>
+        <source>Physical</source>
+        <translation>Physique</translation>
+    </message>
+    <message>
+        <location filename="../src/models/worldModel.py" line="166"/>
+        <source>Climate</source>
+        <translation>Climat</translation>
+    </message>
+    <message>
+        <location filename="../src/models/worldModel.py" line="166"/>
+        <source>Topography</source>
+        <translation>Topographie</translation>
+    </message>
+    <message>
+        <location filename="../src/models/worldModel.py" line="166"/>
+        <source>Astronomy</source>
+        <translation>Astronomie</translation>
+    </message>
+    <message>
+        <location filename="../src/models/worldModel.py" line="166"/>
+        <source>Natural ressources</source>
+        <translation>Ressources naturelles</translation>
+    </message>
+    <message>
+        <location filename="../src/models/worldModel.py" line="166"/>
+        <source>Wild life</source>
+        <translation>Faune</translation>
+    </message>
+    <message>
+        <location filename="../src/models/worldModel.py" line="166"/>
+        <source>Flora</source>
+        <translation>Flore</translation>
+    </message>
+    <message>
+        <location filename="../src/models/worldModel.py" line="166"/>
+        <source>History</source>
+        <translation>Histoire</translation>
+    </message>
+    <message>
+        <location filename="../src/models/worldModel.py" line="166"/>
+        <source>Races</source>
+        <translation>Races</translation>
+    </message>
+    <message>
+        <location filename="../src/models/worldModel.py" line="166"/>
+        <source>Diseases</source>
+        <translation>Maladies</translation>
+    </message>
+    <message>
+        <location filename="../src/models/worldModel.py" line="177"/>
+        <source>Cultural</source>
+        <translation>Culture</translation>
+    </message>
+    <message>
+        <location filename="../src/models/worldModel.py" line="177"/>
+        <source>Customs</source>
+        <translation>Coutumes</translation>
+    </message>
+    <message>
+        <location filename="../src/models/worldModel.py" line="177"/>
+        <source>Food</source>
+        <translation>Nourriture</translation>
+    </message>
+    <message>
+        <location filename="../src/models/worldModel.py" line="177"/>
+        <source>Languages</source>
+        <translation>Langues</translation>
+    </message>
+    <message>
+        <location filename="../src/models/worldModel.py" line="177"/>
+        <source>Education</source>
+        <translation>Éducation</translation>
+    </message>
+    <message>
+        <location filename="../src/models/worldModel.py" line="177"/>
+        <source>Dresses</source>
+        <translation>Habits</translation>
+    </message>
+    <message>
+        <location filename="../src/models/worldModel.py" line="177"/>
+        <source>Science</source>
+        <translation>Science</translation>
+    </message>
+    <message>
+        <location filename="../src/models/worldModel.py" line="177"/>
+        <source>Calendar</source>
+        <translation>Calendrier</translation>
+    </message>
+    <message>
+        <location filename="../src/models/worldModel.py" line="177"/>
+        <source>Bodily language</source>
+        <translation>Language corporel</translation>
+    </message>
+    <message>
+        <location filename="../src/models/worldModel.py" line="177"/>
+        <source>Ethics</source>
+        <translation>Éthique</translation>
+    </message>
+    <message>
+        <location filename="../src/models/worldModel.py" line="177"/>
+        <source>Religion</source>
+        <translation>Religion</translation>
+    </message>
+    <message>
+        <location filename="../src/models/worldModel.py" line="177"/>
+        <source>Government</source>
+        <translation>Gouvernement</translation>
+    </message>
+    <message>
+        <location filename="../src/models/worldModel.py" line="177"/>
+        <source>Politics</source>
+        <translation>Politique</translation>
+    </message>
+    <message>
+        <location filename="../src/models/worldModel.py" line="177"/>
+        <source>Gender roles</source>
+        <translation>Rôles de genres</translation>
+    </message>
+    <message>
+        <location filename="../src/models/worldModel.py" line="177"/>
+        <source>Music and arts</source>
+        <translation>Musique et arts</translation>
+    </message>
+    <message>
+        <location filename="../src/models/worldModel.py" line="177"/>
+        <source>Architecture</source>
+        <translation>Architecture</translation>
+    </message>
+    <message>
+        <location filename="../src/models/worldModel.py" line="177"/>
+        <source>Military</source>
+        <translation>Militaire</translation>
+    </message>
+    <message>
+        <location filename="../src/models/worldModel.py" line="177"/>
+        <source>Technology</source>
+        <translation>Technologie</translation>
+    </message>
+    <message>
+        <location filename="../src/models/worldModel.py" line="177"/>
+        <source>Courtship</source>
+        <translation>Relations</translation>
+    </message>
+    <message>
+        <location filename="../src/models/worldModel.py" line="177"/>
+        <source>Demography</source>
+        <translation>Démographie</translation>
+    </message>
+    <message>
+        <location filename="../src/models/worldModel.py" line="177"/>
+        <source>Transportation</source>
+        <translation>Transport</translation>
+    </message>
+    <message>
+        <location filename="../src/models/worldModel.py" line="177"/>
+        <source>Medicine</source>
+        <translation>Médecine</translation>
+    </message>
+    <message>
+        <location filename="../src/models/worldModel.py" line="200"/>
+        <source>Magic system</source>
+        <translation>Magie</translation>
+    </message>
+    <message>
+        <location filename="../src/models/worldModel.py" line="200"/>
+        <source>Rules</source>
+        <translation>Lois</translation>
+    </message>
+    <message>
+        <location filename="../src/models/worldModel.py" line="200"/>
+        <source>Organization</source>
+        <translation>Organisation</translation>
+    </message>
+    <message>
+        <location filename="../src/models/worldModel.py" line="200"/>
+        <source>Magical objects</source>
+        <translation>Objets magiques</translation>
+    </message>
+    <message>
+        <location filename="../src/models/worldModel.py" line="200"/>
+        <source>Magical places</source>
+        <translation>Endroits magiques</translation>
+    </message>
+    <message>
+        <location filename="../src/models/worldModel.py" line="200"/>
+        <source>Magical races</source>
+        <translation>Races magiques</translation>
+    </message>
+    <message>
+        <location filename="../src/models/worldModel.py" line="207"/>
+        <source>Important places</source>
+        <translation>Lieux importants</translation>
+    </message>
+    <message>
+        <location filename="../src/models/worldModel.py" line="208"/>
+        <source>Important objects</source>
+        <translation>Objets importants</translation>
     </message>
 </context>
 </TS>

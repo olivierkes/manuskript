@@ -28,7 +28,8 @@ class lineEditView(QLineEdit):
             if index.column() != self._column:
                 index = index.sibling(index.row(), self._column)
             self._index = index
-            self.item = index.internalPointer()
+            self._model = index.model()
+            #self.item = index.internalPointer()
             if self._placeholderText != None:
                 self.setPlaceholderText(self._placeholderText)
             self.textEdited.connect(self.submit)
@@ -49,14 +50,14 @@ class lineEditView(QLineEdit):
         
     def submit(self):
         if self._index:
-            item = self._index.internalPointer()
+            #item = self._index.internalPointer()
             if self.text() != self._model.data(self._index):
                 self._model.setData(self._index, self.text())
                 
         elif self._indexes:
             self._updating = True
             for i in self._indexes:
-                item = i.internalPointer()
+                #item = i.internalPointer()
                 if self.text() != self._model.data(i):
                     self._model.setData(i, self.text())
             self._updating = False
@@ -91,9 +92,10 @@ class lineEditView(QLineEdit):
             t = []
             same = True
             for i in self._indexes:
-                item = i.internalPointer()
-                t.append(toString(item.data(self._column)))
-                
+                #item = i.internalPointer()
+                #t.append(toString(item.data(self._column)))
+                t.append(toString(self._model.data(i)))
+
             for t2 in t[1:]:
                 if t2 != t[0]:
                     same = False

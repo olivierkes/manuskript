@@ -64,6 +64,8 @@ class basicHighlighter(QSyntaxHighlighter):
                 fmt.setBackground(QBrush(QColor(Qt.yellow).lighter(170)))
             elif txt.group(1) == Ref.PlotLetter:
                 fmt.setBackground(QBrush(QColor(Qt.red).lighter(170)))
+            elif txt.group(1) == Ref.WorldLetter:
+                fmt.setBackground(QBrush(QColor(Qt.green).lighter(170)))
             
             self.setFormat(txt.start(),
                         txt.end() - txt.start(),

@@ -11,27 +11,31 @@ import re
 ###############################################################################
 
 # A regex used to match references
-RegEx = r"::(\w):(\d+?)::"
+RegEx = r"{(\w):(\d+):?.*?}"
 # A non-capturing regex used to identify references
-RegExNonCapturing = r"::\w:\d+?::"
+RegExNonCapturing = r"{\w:\d+:?.*?}"
 # The basic format of the references
-EmptyRef = "::{}:{}::"
+EmptyRef = "{{{}:{}:{}}}"
 PersoLetter = "C"
 TextLetter = "T"
 PlotLetter = "P"
+WorldLetter = "W"
 
-def plotReference(plotID):
+def plotReference(ID):
     "Takes the ID of a plot and returns a reference for that plot."
-    return EmptyRef.format(PlotLetter, plotID)
+    return EmptyRef.format(PlotLetter, ID, "")
 
-def persoReference(persoID):
+def persoReference(ID):
     "Takes the ID of a character and returns a reference for that character."
-    return EmptyRef.format(PersoLetter, persoID)
+    return EmptyRef.format(PersoLetter, ID, "")
 
-def textReference(outlineID):
+def textReference(ID):
     "Takes the ID of an outline item and returns a reference for that item."
-    return EmptyRef.format(TextLetter, outlineID)
+    return EmptyRef.format(TextLetter, ID, "")
 
+def worldReference(ID):
+    "Takes the ID of a world item and returns a reference for that item."
+    return EmptyRef.format(WordLetter, ID, "")
 
 ###############################################################################
 # READABLE INFOS
@@ -194,13 +198,7 @@ def infos(ref):
                 text=oM.data(idx, Outline.title.value))
         
         # List scenes where character is referenced
-        listRefs = ""
-        lst = oM.findItemsContaining(ref, [Outline.notes.value])
-        for t in lst:
-            idx = oM.getIndexByID(t)
-            listRefs += "<li><a href='{link}'>{text}</a></li>".format(
-                link=textReference(t),
-                text=oM.data(idx, Outline.title.value))
+        listRefs = listReferences(ref, referencedIn)
         
         text = """<h1>{name}</h1>
         {goto}
@@ -220,9 +218,7 @@ def infos(ref):
             POV="<h2>{POVof}</h2><ul>{listPOV}</ul>".format(
                 POVof=POVof,
                 listPOV=listPOV) if listPOV else "",
-            references="<h2>{referencedIn}</h2><ul>{listRefs}</ul>".format(
-                referencedIn=referencedIn,
-                listRefs=listRefs) if listRefs else "",
+            references=listRefs if listRefs else "",
                 )
         return text
     
@@ -237,6 +233,7 @@ def infos(ref):
         resultTitle = qApp.translate("references", "Result")
         charactersTitle = qApp.translate("references", "Characters")
         stepsTitle = qApp.translate("references", "Resolution steps")
+        referenceTitle = qApp.translate("references", "Referenced in:")
         
         # Goto (link)
         goto = qApp.translate("references", "Go to {}.")
@@ -276,12 +273,16 @@ def infos(ref):
                     summary=": {}".format(summary) if summary else "",
                     meta = meta if meta else "")
         
+        # List scenes where item is referenced
+        references = listReferences(ref, referenceTitle)
+        
         text = """<h1>{name}</h1>
         {goto}
         {characters}
         {description}
         {result}
         {steps}
+        {references}
         """.format(
             name=name,
             goto=goto,
@@ -297,7 +298,58 @@ def infos(ref):
             steps="<h2>{title}</h2><ul>{steps}</ul>".format(
                 title=stepsTitle,
                 steps=steps) if steps else "",
+            references=references
                 )
+        return text
+    
+    # A World item
+    elif _type == WorldLetter:
+        m = mainWindow().mdlWorld
+        index = m.indexByID(_ref)
+        name = m.name(index)
+        
+        # Titles
+        descriptionTitle = qApp.translate("references", "Description")
+        passionTitle = qApp.translate("references", "Passion")
+        conflictTitle = qApp.translate("references", "Conflict")
+        referenceTitle = qApp.translate("references", "Referenced in:")
+        
+        # Goto (link)
+        goto = qApp.translate("references", "Go to {}.")
+        goto = goto.format(refToLink(ref))
+        
+        # Description
+        description = basicFormat(m.description(index))
+        
+        # Passion
+        passion =  basicFormat(m.passion(index))
+        
+        # Conflict
+        conflict =  basicFormat(m.conflict(index))
+        
+        # List scenes where item is referenced
+        references = listReferences(ref, referenceTitle)
+        
+        text = """<h1>{name}</h1>
+        {goto}
+        {description}
+        {passion}
+        {conflict}
+        {references}
+        """.format(
+            name=name,
+            goto=goto,
+            description="<h2>{title}</h2>{text}".format(
+                title=descriptionTitle,
+                text=description) if description else "",
+            passion="<h2>{title}</h2>{text}".format(
+                title=passionTitle,
+                text=passion) if passion else "",
+            conflict="<h2>{title}</h2><ul>{lst}</ul>".format(
+                title=conflictTitle,
+                lst=conflict) if conflict else "",
+            references=references
+            )
         return text
     
     else:
@@ -337,8 +389,17 @@ def tooltip(ref):
         name = m.getPlotNameByID(_ref)
         return qApp.translate("references", "Plot: <b>{}</b>").format(name)
     
-    else:
-        return qApp.translate("references", "Unknown reference: {}.").format(ref)
+    elif _type == WorldLetter:
+        m = mainWindow().mdlWorld
+        item = m.itemByID(_ref)
+        if item:
+            name = item.text()
+            path = m.path(item)
+            return qApp.translate("references", "World: <b>{name}</b>{path}").format(
+                name=name,
+                path=" <span style='color:gray;'>({})</span>".format(path) if path else "")
+    
+    return qApp.translate("references", "Unknown reference: {}.").format(ref)
     
 ###############################################################################
 # FUNCTIONS
@@ -369,6 +430,10 @@ def refToLink(ref):
             m = mainWindow().mdlPlots
             text = m.getPlotNameByID(_ref)
             
+        elif _type == WorldLetter:
+            m = mainWindow().mdlWorld
+            text = m.itemByID(_ref).text()
+            
         if text:
             return "<a href='{ref}'>{text}</a>".format(
                     ref=ref,
@@ -379,6 +444,21 @@ def refToLink(ref):
 def linkifyAllRefs(text):
     "Takes all the references in ``text`` and transform them into HMTL links."
     return re.sub(RegEx, lambda m: refToLink(m.group(0)), text)
+    
+def listReferences(ref, title):
+    oM = mainWindow().mdlOutline
+    listRefs = ""
+    ref = ref[:ref.index(":", ref.index(":") + 1)]
+    lst = oM.findItemsContaining(ref, [Outline.notes.value])
+    for t in lst:
+        idx = oM.getIndexByID(t)
+        listRefs += "<li><a href='{link}'>{text}</a></li>".format(
+            link=textReference(t),
+            text=oM.data(idx, Outline.title.value))
+        
+    return "<h2>{title}</h2><ul>{ref}</ul>".format(
+                title=title,
+                ref=listRefs) if listRefs else ""
     
 def basicT2TFormat(text, formatting=True, EOL=True, titles=True):
     "A very basic t2t formatter to display notes and texts."
@@ -401,6 +481,13 @@ def basicT2TFormat(text, formatting=True, EOL=True, titles=True):
     if EOL:
         text = text.replace("\n", "<br>")
             
+    return text
+
+def basicFormat(text):
+    if not text:
+        return ""
+    text = text.replace("\n", "<br>")
+    text = linkifyAllRefs(text)
     return text
 
 def open(ref):
@@ -429,12 +516,12 @@ def open(ref):
         index = mw.mdlOutline.getIndexByID(_ref)
         
         if index.isValid():
+            mw.tabMain.setCurrentIndex(6)
             mw.mainEditor.setCurrentModelIndex(index, newTab=True)
             return True
         else:
             print("Ref not found")
             return False
-    
     
     elif  _type == PlotLetter:
         mw = mainWindow()
@@ -443,6 +530,19 @@ def open(ref):
         if item:
             mw.tabMain.setCurrentIndex(3)
             mw.lstPlots.setCurrentItem(item)
+            return True
+        
+        print("Ref not found")
+        return False
+    
+    elif  _type == WorldLetter:
+        mw = mainWindow()
+        item = mw.mdlWorld.itemByID(_ref)
+        
+        if item:
+            mw.tabMain.setCurrentIndex(4)
+            mw.treeWorld.setCurrentIndex(
+                mw.mdlWorld.indexFromItem(item))
             return True
         
         print("Ref not found")

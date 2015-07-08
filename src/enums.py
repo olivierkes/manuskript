@@ -40,6 +40,13 @@ class Subplot(Enum):
     meta = 2
     summary = 3
     
+class World(Enum):
+    name = 0
+    ID = 1
+    description = 2
+    passion = 3
+    conflict = 4
+    
 class Outline(Enum):
     title = 0
     ID = 1

@@ -141,7 +141,10 @@ class textEditCompleter(textEditView):
         
     def getRefRects(self):
         cursor = self.textCursor()
-        fm = QFontMetrics(self.font())
+        f = self.font()
+        f.setFixedPitch(True)
+        f.setWeight(QFont.DemiBold)
+        fm = QFontMetrics(f)
         refs = []
         for txt in re.finditer(Ref.RegEx, self.toPlainText()):
             cursor.setPosition(txt.start())

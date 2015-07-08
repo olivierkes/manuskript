@@ -30,6 +30,7 @@ class cheatSheet(QWidget, Ui_cheatSheet):
         self.outlineModel = None
         self.persoModel = None
         self.plotModel = None
+        self.worldModel = None
         
         self.populateTimer = QTimer(self)
         self.populateTimer.setSingleShot(True)
@@ -42,13 +43,17 @@ class cheatSheet(QWidget, Ui_cheatSheet):
         self.populate()
         
     def setModels(self):
-        self.outlineModel = mainWindow().mdlOutline
-        self.persoModel = mainWindow().mdlPersos
-        self.plotModel = mainWindow().mdlPlots
+        mw = mainWindow()
+        self.outlineModel = mw.mdlOutline
+        self.persoModel = mw.mdlPersos
+        self.plotModel = mw.mdlPlots
+        self.worldModel = mw.mdlWorld
         
         self.outlineModel.dataChanged.connect(self.populateTimer.start)
         self.persoModel.dataChanged.connect(self.populateTimer.start)
         self.plotModel.dataChanged.connect(self.populateTimer.start)
+        self.worldModel.dataChanged.connect(self.populateTimer.start)
+        
         self.populate()
         
     def populate(self):
@@ -89,6 +94,10 @@ class cheatSheet(QWidget, Ui_cheatSheet):
             
             self.data[(self.tr("Plots"), Ref.PlotLetter)] = d
             
+        if self.worldModel:
+            d = self.worldModel.listAll()
+            self.data[(self.tr("World"), Ref.WorldLetter)] = d
+            
         self.updateListFromData()
             
     def addCategory(self, title):
@@ -109,7 +118,7 @@ class cheatSheet(QWidget, Ui_cheatSheet):
                 self.addCategory(cat[0])
                 for item in filtered:
                     i = QListWidgetItem(item[0])
-                    i.setData(Qt.UserRole, Ref.EmptyRef.format(cat[1], item[1]))
+                    i.setData(Qt.UserRole, Ref.EmptyRef.format(cat[1], item[1], item[0]))
                     i.setData(Qt.UserRole+1, item[2])
                     self.list.addItem(i)
         

@@ -109,7 +109,7 @@
         <item>
          <widget class="QTabWidget" name="tabMain">
           <property name="currentIndex">
-           <number>3</number>
+           <number>4</number>
           </property>
           <property name="documentMode">
            <bool>true</bool>
@@ -717,7 +717,7 @@
               </widget>
               <widget class="QTabWidget" name="tabPersos">
                <property name="currentIndex">
-                <number>3</number>
+                <number>0</number>
                </property>
                <widget class="QWidget" name="infos">
                 <attribute name="title">
@@ -1083,7 +1083,7 @@
               </widget>
               <widget class="QTabWidget" name="tabPlot">
                <property name="currentIndex">
-                <number>1</number>
+                <number>0</number>
                </property>
                <property name="documentMode">
                 <bool>true</bool>
@@ -1367,10 +1367,168 @@
             </item>
            </layout>
           </widget>
-          <widget class="QWidget" name="tab_5">
+          <widget class="QWidget" name="lytTabContext">
            <attribute name="title">
-            <string>Context</string>
+            <string>World</string>
            </attribute>
+           <layout class="QVBoxLayout" name="verticalLayout_33">
+            <item>
+             <widget class="QSplitter" name="splitterWorld">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <widget class="QFrame" name="frame_3">
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_32">
+                <item>
+                 <widget class="QTreeView" name="treeWorld">
+                  <property name="editTriggers">
+                   <set>QAbstractItemView::EditKeyPressed</set>
+                  </property>
+                  <property name="selectionMode">
+                   <enum>QAbstractItemView::ExtendedSelection</enum>
+                  </property>
+                  <property name="indentation">
+                   <number>15</number>
+                  </property>
+                  <property name="rootIsDecorated">
+                   <bool>false</bool>
+                  </property>
+                  <attribute name="headerVisible">
+                   <bool>false</bool>
+                  </attribute>
+                  <attribute name="headerDefaultSectionSize">
+                   <number>0</number>
+                  </attribute>
+                 </widget>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_19">
+                  <item>
+                   <widget class="QPushButton" name="btnAddWorld">
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="icon">
+                     <iconset theme="list-add">
+                      <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="btnRmWorld">
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="icon">
+                     <iconset theme="list-remove">
+                      <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLineEdit" name="txtWorldFilter">
+                    <property name="placeholderText">
+                     <string>Filter</string>
+                    </property>
+                    <property name="clearButtonEnabled" stdset="0">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="btnWorldEmptyData">
+                    <property name="toolTip">
+                     <string>Populates with empty data</string>
+                    </property>
+                    <property name="statusTip">
+                     <string>Populates with empty data</string>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="icon">
+                     <iconset theme="emblem-favorite"/>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QTabWidget" name="tabWorld">
+               <property name="currentIndex">
+                <number>0</number>
+               </property>
+               <property name="documentMode">
+                <bool>true</bool>
+               </property>
+               <widget class="QWidget" name="tab_3">
+                <attribute name="title">
+                 <string>General</string>
+                </attribute>
+                <layout class="QFormLayout" name="formLayout_6">
+                 <property name="rowWrapPolicy">
+                  <enum>QFormLayout::WrapAllRows</enum>
+                 </property>
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="label_30">
+                   <property name="text">
+                    <string>Name</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="1">
+                  <widget class="lineEditView" name="txtWorldName"/>
+                 </item>
+                 <item row="1" column="0">
+                  <widget class="QLabel" name="label_32">
+                   <property name="text">
+                    <string>Description</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="1">
+                  <widget class="textEditCompleter" name="txtWorldDescription"/>
+                 </item>
+                </layout>
+               </widget>
+               <widget class="QWidget" name="tab_4">
+                <attribute name="title">
+                 <string>More</string>
+                </attribute>
+                <layout class="QFormLayout" name="formLayout_7">
+                 <property name="rowWrapPolicy">
+                  <enum>QFormLayout::WrapAllRows</enum>
+                 </property>
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="label_33">
+                   <property name="text">
+                    <string>Source of passion</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="1">
+                  <widget class="textEditCompleter" name="txtWorldPassion"/>
+                 </item>
+                 <item row="1" column="0">
+                  <widget class="QLabel" name="label_34">
+                   <property name="text">
+                    <string>Source of conflict</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="1">
+                  <widget class="textEditCompleter" name="txtWorldConflict"/>
+                 </item>
+                </layout>
+               </widget>
+              </widget>
+             </widget>
+            </item>
+           </layout>
           </widget>
           <widget class="QWidget" name="lytTabOutline">
            <attribute name="title">
@@ -1693,7 +1851,7 @@
                <enum>QTabWidget::West</enum>
               </property>
               <property name="currentIndex">
-               <number>1</number>
+               <number>3</number>
               </property>
               <widget class="QWidget" name="tab_9">
                <attribute name="title">
@@ -1735,6 +1893,16 @@
                    <widget class="QTableView" name="tblDebugSubPlots"/>
                   </item>
                  </layout>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="tab_5">
+               <attribute name="title">
+                <string>World</string>
+               </attribute>
+               <layout class="QVBoxLayout" name="verticalLayout_34">
+                <item>
+                 <widget class="QTreeView" name="treeDebugWorld"/>
                 </item>
                </layout>
               </widget>
@@ -2091,6 +2259,11 @@
    <extends>QWidget</extends>
    <header>ui.search.h</header>
    <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>textEditCompleter</class>
+   <extends>QTextEdit</extends>
+   <header>ui.views.textEditCompleter.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

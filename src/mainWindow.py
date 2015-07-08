@@ -11,6 +11,7 @@ from enums import *
 from models.outlineModel import *
 from models.persosModel import *
 from models.plotModel import *
+from models.worldModel import worldModel
 from ui.views.outlineDelegates import outlinePersoDelegate
 from ui.views.plotDelegate import plotDelegate
 #from models.persosProxyModel import *
@@ -357,6 +358,23 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             len(self.lstPlotPerso.selectedIndexes()) != 0)
 
 ###############################################################################
+# WORLD
+###############################################################################
+
+    def changeCurrentWorld(self):
+        index = self.mdlWorld.selectedIndex()
+
+        if not index.isValid():
+            self.tabWorld.setEnabled(False)
+            return
+
+        self.tabWorld.setEnabled(True)
+        self.txtWorldName.setCurrentModelIndex(index)
+        self.txtWorldDescription.setCurrentModelIndex(index)
+        self.txtWorldPassion.setCurrentModelIndex(index)
+        self.txtWorldConflict.setCurrentModelIndex(index)
+
+###############################################################################
 # LOAD AND SAVE
 ###############################################################################
 
@@ -416,6 +434,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.mdlOutline.dataChanged.connect(self.startTimerNoChanges)
         self.mdlPersos.dataChanged.connect(self.startTimerNoChanges)
         self.mdlPlots.dataChanged.connect(self.startTimerNoChanges)
+        self.mdlWorld.dataChanged.connect(self.startTimerNoChanges)
         #self.mdlPersosInfos.dataChanged.connect(self.startTimerNoChanges)
         self.mdlStatus.dataChanged.connect(self.startTimerNoChanges)
         self.mdlLabels.dataChanged.connect(self.startTimerNoChanges)
@@ -537,6 +556,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                       "flatModel.xml"))
         files.append((saveStandardItemModelXML(self.mdlPersos),
                       "perso.xml"))
+        files.append((saveStandardItemModelXML(self.mdlWorld),
+                      "world.xml"))
         #files.append((saveStandardItemModelXML(self.mdlPersosInfos),
                       #"persoInfos.xml"))
         files.append((saveStandardItemModelXML(self.mdlLabels),
@@ -567,6 +588,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.mdlStatus = QStandardItemModel(self)
         self.mdlPlots = plotModel(self)
         self.mdlOutline = outlineModel(self)
+        self.mdlWorld = worldModel(self)
 
     def loadDatas(self, project):
         # Loading
@@ -586,6 +608,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         else:
             errors.append("perso.xml")
 
+        if "world.xml" in files:
+            loadStandardItemModelXML(self.mdlWorld,
+                                     files["world.xml"], fromString=True)
+        else:
+            errors.append("world.xml")
 
         #if "persoInfos.xml" in files:
             #loadStandardItemModelXML(self.mdlPersosInfos,
@@ -789,6 +816,26 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.plotDelegate = plotDelegate(self)
         self.lstSubPlots.setItemDelegateForColumn(Subplot.meta.value, self.plotDelegate)
 
+        # World
+        self.treeWorld.setModel(self.mdlWorld)
+        for i in range(self.mdlWorld.columnCount()):
+            self.treeWorld.hideColumn(i)
+        self.treeWorld.showColumn(0)
+        self.btnWorldEmptyData.setMenu(self.mdlWorld.emptyDataMenu())
+        self.treeWorld.selectionModel().selectionChanged.connect(self.changeCurrentWorld, AUC)
+        self.btnAddWorld.clicked.connect(self.mdlWorld.addItem, AUC)
+        self.btnRmWorld.clicked.connect(self.mdlWorld.removeItem, AUC)
+        for w, c in [
+            (self.txtWorldName, World.name.value),
+            (self.txtWorldDescription, World.description.value),
+            (self.txtWorldPassion, World.passion.value),
+            (self.txtWorldConflict, World.conflict.value),
+            ]:
+            w.setModel(self.mdlWorld)
+            w.setColumn(c)
+        self.tabWorld.setEnabled(False)
+        self.treeWorld.expandAll()
+        
         # Outline
         self.treeRedacOutline.setModel(self.mdlOutline)
         self.treeOutlineOutline.setModelPersos(self.mdlPersos)
@@ -851,6 +898,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             lambda: self.tblDebugSubPlots.setRootIndex(self.mdlPlots.index(
                 self.tblDebugPlots.selectionModel().currentIndex().row(),
                 Plot.subplots.value)), AUC)
+        self.treeDebugWorld.setModel(self.mdlWorld)
         self.treeDebugOutline.setModel(self.mdlOutline)
         self.lstDebugLabels.setModel(self.mdlLabels)
         self.lstDebugStatus.setModel(self.mdlStatus)
@@ -914,6 +962,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.splitterPlot.setStretchFactor(0, 20)
         self.splitterPlot.setStretchFactor(1, 60)
         self.splitterPlot.setStretchFactor(2, 30)
+        
+        self.splitterWorld.setStretchFactor(0, 25)
+        self.splitterWorld.setStretchFactor(1, 75)
 
         self.splitterOutlineH.setStretchFactor(0, 25)
         self.splitterOutlineH.setStretchFactor(1, 75)
@@ -923,6 +974,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.splitterRedac.setStretchFactor(0, 30)
         self.splitterRedac.setStretchFactor(1, 40)
         self.splitterRedac.setStretchFactor(2, 30)
+        
+        # QFormLayout stretch
+        for w in [self.txtWorldDescription, self.txtWorldPassion, self.txtWorldConflict]:
+            s = w.sizePolicy()
+            s.setVerticalStretch(1)
+            w.setSizePolicy(s)
         
         # Help box
         references = [

@@ -21,6 +21,7 @@ SOURCES          += ../src/settingsWindow.py
 SOURCES          += ../src/models/outlineModel.py
 SOURCES          += ../src/models/persosProxyModel.py
 SOURCES          += ../src/models/plotModel.py
+SOURCES          += ../src/models/worldModel.py
 SOURCES          += ../src/models/persosModel.py
 SOURCES          += ../src/models/references.py
 
