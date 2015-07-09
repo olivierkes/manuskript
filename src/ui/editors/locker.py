@@ -20,6 +20,7 @@ class locker(QWidget, Ui_locker):
         self._btnText = None
         self._words = None
         self._target = None
+        self._blackout = []
         
         self.timer = QTimer(self)
         self.timer.setSingleShot(True)
@@ -37,6 +38,18 @@ class locker(QWidget, Ui_locker):
         self.btnLock.clicked.connect(self.lock)
         
     def lock(self):
+        # Block others screens
+        desktop = qApp.desktop()
+        self._blackout.clear()
+        if desktop.screenCount() > 1:
+            for d in range(desktop.screenCount()):
+                if desktop.screenNumber(self) != d:
+                    w = QWidget()
+                    w.setStyleSheet("background: black;")
+                    w.move(desktop.screenGeometry(d).topLeft())
+                    w.showFullScreen()
+                    self._blackout.append(w)
+        
         if self.rbtnWordTarget.isChecked():
             self._target = self._words + self.spnWordTarget.value()
             
@@ -51,6 +64,9 @@ class locker(QWidget, Ui_locker):
         self.lockChanged.emit(True)
         
     def unlock(self):
+        # Remove black screens
+        self._blackout.clear()
+        
         self.setEnabled(True)
         self.btnLock.setText(self._btnText)
         self.timer.stop()

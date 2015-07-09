@@ -245,14 +245,3 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
     def setDict(self, dct):
         self.currentDict = dct
         self.dictChanged.emit(dct)
-        
-    def keyPressEvent(self, event):
-        if event.key() in [Qt.Key_Escape, Qt.Key_F11] and self._fullscreen:
-            mainWindow().show()
-            self.stack.setStyleSheet("")
-            self.setGeometry(self._geometry)
-            self.setParent(self._parent)
-            self._parent.layout().insertWidget(1, self)
-            self._fullscreen = False
-        else:
-            QWidget.keyPressEvent(self, event)
