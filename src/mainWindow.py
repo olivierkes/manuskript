@@ -135,55 +135,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 # PERSOS
 ###############################################################################
 
-    #def createPerso(self):
-        #"""Creates a perso by adding a row in mdlPersos
-        #and a column in mdlPersosInfos with same ID"""
-        #p = QStandardItem(self.tr("New character"))
-        #pid = self.getPersosID()
-        ##self.checkPersosID()  # Attributes a persoID (which is logically pid)
-        #self.mdlPersos.appendRow([p, QStandardItem(pid), QStandardItem("0")])
-
-        #self.setPersoColor(self.mdlPersos.rowCount() - 1,
-                           #randomColor(QColor(Qt.white)))
-
-        ## Add column in persos infos
-        #self.mdlPersosInfos.insertColumn(self.mdlPersosInfos.columnCount(),
-                                         #[QStandardItem(pid)])
-        #self.mdlPersosInfos.setHorizontalHeaderItem(
-            #self.mdlPersosInfos.columnCount() - 1,
-            #QStandardItem("Valeur"))
-
-    #def getPersosID(self):
-        #"""Returns an unused perso ID (row 1)."""
-        #vals = []
-        #for i in range(self.mdlPersos.rowCount()):
-            #item = self.mdlPersos.item(i, Perso.ID.value)
-            #if item and item.text():
-                #vals.append(int(item.text()))
-
-        #k = 0
-        #while k in vals:
-            #k += 1
-        #return str(k)
-
-    #def checkPersosID(self):
-        #"""Checks whether some persos ID (row 1) are empty.
-        #If so, assign an ID"""
-        #for i in range(self.mdlPersos.rowCount()):
-            #item = self.mdlPersos.item(i, Perso.ID.value)
-            #if not item:
-                #item = QStandardItem()
-                #item.setText(self.getPersosID())
-                #self.mdlPersos.setItem(i, Perso.ID.value, item)
-
-    #def removePerso(self):
-        #if self.mdlPersosProxy:
-            #i = self.mdlPersosProxy.mapToSource(self.lstPersos.currentIndex())
-        #else:
-            #i = self.lstPersos.currentIndex()
-        #self.mdlPersos.takeRow(i.row())
-        #self.mdlPersosInfos.takeColumn(i.row() + 1)
-
     def changeCurrentPerso(self, trash=None):
 
         index = self.lstPersos.currentPersoIndex()
@@ -217,22 +168,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if self.mdlPersos.rowCount(index):
             self.updatePersoInfoView()
 
-        #if self.mdlPersosProxy:
-            #idx = self.mdlPersosProxy.mapToSource(self.lstPersos.currentIndex())
-        #else:
-            #idx = self.lstPersos.currentIndex()
-
-        #self.mprPersos.setCurrentModelIndex(idx)
-
-
-        ## detailed infos
-        #pid = self.mdlPersos.item(idx.row(), Perso.ID.value).text()
-        #for c in range(self.mdlPersosInfos.columnCount()):
-            #pid2 = self.mdlPersosInfos.item(0, c).text()
-            #self.tblPersoInfos.setColumnHidden(c, c != 0 and pid != pid2)
-
-        #self.resizePersosInfos()
-
     def updatePersoInfoView(self):
         # Hide columns
         for i in range(self.mdlPersos.columnCount()):
@@ -245,51 +180,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.tblPersoInfos.horizontalHeader().setSectionResizeMode(
             Perso.infoData.value, QHeaderView.Stretch)
         self.tblPersoInfos.verticalHeader().hide()
-
-    #def updatePersoColor(self):
-        #if self.mdlPersosProxy:
-            #idx = self.mdlPersosProxy.mapToSource(self.lstPersos.currentIndex())
-        #else:
-            #idx = self.lstPersos.currentIndex()
-
-        #icon = self.mdlPersos.item(idx.row()).icon()
-        #color = iconColor(icon).name() if icon else ""
-        #self.btnPersoColor.setStyleSheet("background:{};".format(color))
-
-    #def resizePersosInfos(self):
-        #self.tblPersoInfos.resizeColumnToContents(0)
-        #w = self.tblPersoInfos.viewport().width()
-        #w2 = self.tblPersoInfos.columnWidth(0)
-
-        #if self.mdlPersosProxy:
-            #current = self.mdlPersosProxy.mapToSource(
-                           #self.lstPersos.currentIndex()).row() + 1
-        #else:
-            #current = self.lstPersos.currentIndex().row() + 1
-
-        #self.tblPersoInfos.setColumnWidth(current, w - w2)
-
-    #def chosePersoColor(self):
-        #if self.mdlPersosProxy:
-            #idx = self.mdlPersosProxy.mapToSource(self.lstPersos.currentIndex())
-        #else:
-            #idx = self.lstPersos.currentIndex()
-
-        #item = self.mdlPersos.item(idx.row(), Perso.name.value)
-        #if item:
-            #color = iconColor(item.icon())
-        #else:
-            #color = Qt.white
-        #self.colorDialog = QColorDialog(color, self)
-        #color = self.colorDialog.getColor(color)
-        #if color.isValid():
-            #self.setPersoColor(idx.row(), color)
-            #self.updatePersoColor()
-
-    #def setPersoColor(self, row, color):
-        #px = QPixmap(32, 32)
-        #px.fill(color)
-        #self.mdlPersos.item(row, Perso.name.value).setIcon(QIcon(px))
 
 ###############################################################################
 # PLOTS
@@ -500,14 +390,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if sttgns.contains("metadataState"):
             state = [False if v == "false" else True for v in sttgns.value("metadataState")]
             self.redacMetadata.restoreState(state)
-        #if sttgns.contains("redacInfosState"):
-            #self.tabRedacInfos.setCurrentIndex(int(sttgns.value("redacInfosState")))
-        #if sttgns.contains("cheatSheetState"):
-            #state = False if sttgns.value("cheatSheetState") == "false" else True
-            #self.grpCheatSheet.restoreState(state)
-        #if sttgns.contains("searchState"):
-            #state = False if sttgns.value("searchState") == "false" else True
-            #self.grpSearch.restoreState(state)
         if sttgns.contains("revisionsState"):
             state = [False if v == "false" else True for v in sttgns.value("revisionsState")]
             self.redacMetadata.revisions.restoreState(state)
@@ -520,9 +402,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         sttgns.setValue("windowState", self.saveState())
         sttgns.setValue("metadataState", self.redacMetadata.saveState())
         sttgns.setValue("metadataState", self.redacMetadata.saveState())
-        #sttgns.setValue("redacInfosState", self.tabRedacInfos.currentIndex())
-        #sttgns.setValue("cheatSheetState", self.grpCheatSheet.saveState())
-        #sttgns.setValue("searchState", self.grpSearch.saveState())
         sttgns.setValue("revisionsState", self.redacMetadata.revisions.saveState())
         
         # Specific settings to save before quitting
@@ -566,8 +445,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                       "perso.xml"))
         files.append((saveStandardItemModelXML(self.mdlWorld),
                       "world.xml"))
-        #files.append((saveStandardItemModelXML(self.mdlPersosInfos),
-                      #"persoInfos.xml"))
         files.append((saveStandardItemModelXML(self.mdlLabels),
                       "labels.xml"))
         files.append((saveStandardItemModelXML(self.mdlStatus),
@@ -585,7 +462,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         print(self.tr("Project {} saved.").format(self.currentProject))
         self.statusBar().showMessage(
              self.tr("Project {} saved.").format(self.currentProject), 5000)
-
 
     def loadEmptyDatas(self):
         self.mdlFlatData = QStandardItemModel(self)
@@ -622,12 +498,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         else:
             errors.append("world.xml")
 
-        #if "persoInfos.xml" in files:
-            #loadStandardItemModelXML(self.mdlPersosInfos,
-                                     #files["persoInfos.xml"], fromString=True)
-        #else:
-            #errors.append("perso.xml")
-
         if "labels.xml" in files:
             loadStandardItemModelXML(self.mdlLabels,
                                      files["labels.xml"], fromString=True)
@@ -655,7 +525,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             settings.load(files["settings.pickle"], fromString=True)
         else:
             errors.append("perso.xml")
-
 
         # Giving some feedback
         if not errors:
@@ -735,39 +604,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btnAddPerso.clicked.connect(self.mdlPersos.addPerso, AUC)
         self.btnRmPerso.clicked.connect(self.mdlPersos.removePerso, AUC)
         self.btnPersoColor.clicked.connect(self.mdlPersos.chosePersoColor, AUC)
-        #if self.mdlPersosProxy:
-            #self.mdlPersosProxy.setSourceModel(self.mdlPersos)
-            #self.lstPersos.setModel(self.mdlPersosProxy)
-        #else:
-            #self.lstPersos.setModel(self.mdlPersos)
-
-        #self.tblPersoInfos.setModel(self.mdlPersosInfos)
-        #self.tblPersoInfos.setRowHidden(0, True)
-
+        
         self.btnPersoAddInfo.clicked.connect(self.mdlPersos.addPersoInfo, AUC)
         self.btnPersoRmInfo.clicked.connect(self.mdlPersos.removePersoInfo, AUC)
-
-        #self.mprPersos = QDataWidgetMapper()
-        #self.mprPersos.setModel(self.mdlPersos)
-
-        #mapping = [
-            #(self.txtPersoName, Perso.name.value),
-            #(self.txtPersoMotivation, Perso.motivation.value),
-            #(self.txtPersoGoal, Perso.goal.value),
-            #(self.txtPersoConflict, Perso.conflict.value),
-            #(self.txtPersoEpiphany, Perso.epiphany.value),
-            #(self.txtPersoSummarySentance, Perso.summarySentance.value),
-            #(self.txtPersoSummaryPara, Perso.summaryPara.value),
-            #(self.txtPersoSummaryFull, Perso.summaryFull.value),
-            #(self.txtPersoNotes, Perso.notes.value)
-            #]
-        #for w, i in mapping:
-                #self.mprPersos.addMapping(w, i)
-        #self.mprPersos.addMapping(self.sldPersoImportance,
-                                  #Perso.importance.value, "importance")
-        #self.sldPersoImportance.importanceChanged.connect(self.mprPersos.submit, AUC)
-        #self.tabMain.currentChanged.connect(self.mprPersos.submit, AUC)
-        #self.mprPersos.setCurrentIndex(0)
 
         for w, c in [
             (self.txtPersoName, Perso.name.value),
@@ -784,10 +623,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             w.setModel(self.mdlPersos)
             w.setColumn(c)
         self.tabPersos.setEnabled(False)
-
-        #self.lstPersos.selectionModel().currentChanged.connect(
-                                        #self.mdlPersos.updatePersoColor, AUC)
-        #self.tabPersos.currentChanged.connect(self.resizePersosInfos)
 
         # Plots
         self.lstPlots.setPlotModel(self.mdlPlots)
@@ -861,23 +696,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                  self.outlineItemEditor.selectionChanged(self.treeOutlineOutline), AUC)
 
         # Sync selection
-        #self.treeRedacOutline.setSelectionModel(self.treeOutlineOutline
-                                                    #.selectionModel())
-
         self.treeRedacOutline.selectionModel().selectionChanged.connect(
             lambda: self.redacMetadata.selectionChanged(self.treeRedacOutline), AUC)
         self.treeRedacOutline.clicked.connect(
             lambda: self.redacMetadata.selectionChanged(self.treeRedacOutline), AUC)
 
-        #self.treeRedacOutline.selectionModel().currentChanged.connect(self.redacEditor.setCurrentModelIndex)
         self.treeRedacOutline.selectionModel().selectionChanged.connect(self.mainEditor.selectionChanged, AUC)
-        #self.treeRedacOutline.doubleClicked.connect(self.mainEditor.setCurrentModelIndex, AUC)
-        #self.treeRedacOutline.selectionModel().currentChanged.connect(self.mainEditor.setCurrentModelIndex, AUC)
-
-        #self.treeRedacOutline.selectionModel().selectionChanged.connect(self.outlineSelectionChanged, AUC)
-        #self.treeRedacOutline.selectionModel().selectionChanged.connect(self.outlineSelectionChanged, AUC)
-        #self.treeOutlineOutline.selectionModel().selectionChanged.connect(self.outlineSelectionChanged, AUC)
-        #self.treeOutlineOutline.selectionModel().selectionChanged.connect(self.outlineSelectionChanged, AUC)
 
         # Cheat Sheet
         self.cheatSheet.setModels()
@@ -907,8 +731,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.treeDebugOutline.setModel(self.mdlOutline)
         self.lstDebugLabels.setModel(self.mdlLabels)
         self.lstDebugStatus.setModel(self.mdlStatus)
-        #self.mdlPersos.setHorizontalHeaderLabels([i.name for i in Perso])
-
 
 ###############################################################################
 # GENERAL AKA UNSORTED
@@ -1088,9 +910,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def toggleSpellcheck(self, val):
         settings.spellcheck = val
-        #self.mainEditor.toggleSpellcheck(val)
-        #self.redacMetadata.toggleSpellcheck(val)
-        #self.outlineItemEditor.toggleSpellcheck(val)
 
         # Find all textEditView from self, and toggle spellcheck
         for w in self.findChildren(textEditView, QRegExp(".*"),
