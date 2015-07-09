@@ -36,20 +36,6 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_19">
      <item>
-      <widget class="QPushButton" name="btnRedacShowOutline">
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset theme="text-x-generic">
-         <normaloff>../../../../../../../../.designer/backup</normaloff>../../../../../../../../.designer/backup</iconset>
-       </property>
-       <property name="checkable">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
       <widget class="QPushButton" name="btnRedacFolderText">
        <property name="text">
         <string>Text</string>
@@ -204,20 +190,6 @@
        </property>
        <property name="shortcut">
         <string>F11</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="btnRedacShowInfos">
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset theme="edit-find">
-         <normaloff>../../../../../../../../.designer/backup</normaloff>../../../../../../../../.designer/backup</iconset>
-       </property>
-       <property name="checkable">
-        <bool>true</bool>
        </property>
       </widget>
      </item>

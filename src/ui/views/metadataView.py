@@ -8,7 +8,7 @@ from ui.views.metadataView_ui import *
 class metadataView(QWidget, Ui_metadataView):
     
     def __init__(self, parent=None):
-        QWidget.__init__(self)
+        QWidget.__init__(self, parent)
         self.setupUi(self)
         self._lastIndexes = None
         self.txtSummarySentance.setColumn(Outline.summarySentance.value)

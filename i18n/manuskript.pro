@@ -33,6 +33,7 @@ SOURCES          += ../src/ui/welcome.py
 SOURCES          += ../src/ui/cheatSheet.py
 SOURCES          += ../src/ui/compileDialog.py
 SOURCES          += ../src/ui/revisions.py
+SOURCES          += ../src/ui/collapsibleDockWidgets.py
 
 SOURCES          += ../src/ui/editors/editorWidget.py
 SOURCES          += ../src/ui/editors/fullScreenEditor.py

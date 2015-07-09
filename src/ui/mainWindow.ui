@@ -109,7 +109,7 @@
         <item>
          <widget class="QTabWidget" name="tabMain">
           <property name="currentIndex">
-           <number>4</number>
+           <number>3</number>
           </property>
           <property name="documentMode">
            <bool>true</bool>
@@ -1060,23 +1060,6 @@
                     </property>
                    </widget>
                   </item>
-                  <item>
-                   <widget class="QPushButton" name="btnPlotShowSummary">
-                    <property name="text">
-                     <string/>
-                    </property>
-                    <property name="icon">
-                     <iconset theme="text-x-generic">
-                      <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
-                    </property>
-                    <property name="checkable">
-                     <bool>true</bool>
-                    </property>
-                    <property name="checked">
-                     <bool>true</bool>
-                    </property>
-                   </widget>
-                  </item>
                  </layout>
                 </item>
                </layout>
@@ -1450,7 +1433,9 @@
                      <string/>
                     </property>
                     <property name="icon">
-                     <iconset theme="emblem-favorite"/>
+                     <iconset theme="emblem-favorite">
+                      <normaloff/>
+                     </iconset>
                     </property>
                    </widget>
                   </item>
@@ -1672,7 +1657,10 @@
            <attribute name="title">
             <string>Redaction</string>
            </attribute>
-           <layout class="QVBoxLayout" name="verticalLayout_16">
+           <layout class="QVBoxLayout" name="verticalLayout_15">
+            <property name="margin">
+             <number>0</number>
+            </property>
             <item>
              <widget class="QSplitter" name="splitterRedac">
               <property name="orientation">
@@ -1688,6 +1676,9 @@
                   <property name="editTriggers">
                    <set>QAbstractItemView::EditKeyPressed</set>
                   </property>
+                  <attribute name="headerVisible">
+                   <bool>false</bool>
+                  </attribute>
                  </widget>
                 </item>
                 <item>
@@ -1743,99 +1734,7 @@
                </layout>
               </widget>
               <widget class="mainEditor" name="mainEditor" native="true"/>
-              <widget class="QTabWidget" name="tabRedacInfos">
-               <property name="tabPosition">
-                <enum>QTabWidget::South</enum>
-               </property>
-               <property name="currentIndex">
-                <number>0</number>
-               </property>
-               <property name="documentMode">
-                <bool>true</bool>
-               </property>
-               <widget class="QWidget" name="tab_17">
-                <attribute name="title">
-                 <string>Metadata</string>
-                </attribute>
-                <layout class="QVBoxLayout" name="verticalLayout_20" stretch="0">
-                 <property name="sizeConstraint">
-                  <enum>QLayout::SetMaximumSize</enum>
-                 </property>
-                 <property name="margin">
-                  <number>0</number>
-                 </property>
-                 <item>
-                  <widget class="metadataView" name="redacMetadata" native="true"/>
-                 </item>
-                </layout>
-               </widget>
-               <widget class="QWidget" name="tab_18">
-                <attribute name="title">
-                 <string>Tools</string>
-                </attribute>
-                <layout class="QVBoxLayout" name="verticalLayout_21">
-                 <property name="margin">
-                  <number>0</number>
-                 </property>
-                 <item>
-                  <widget class="collapsibleGroupBox2" name="grpCheatSheet">
-                   <property name="font">
-                    <font>
-                     <weight>75</weight>
-                     <bold>true</bold>
-                    </font>
-                   </property>
-                   <property name="title">
-                    <string>Cheat sheet</string>
-                   </property>
-                   <property name="flat">
-                    <bool>true</bool>
-                   </property>
-                   <layout class="QVBoxLayout" name="verticalLayout_15">
-                    <item>
-                     <widget class="cheatSheet" name="cheatSheet" native="true">
-                      <property name="font">
-                       <font>
-                        <weight>50</weight>
-                        <bold>false</bold>
-                       </font>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="collapsibleGroupBox2" name="grpSearch">
-                   <property name="font">
-                    <font>
-                     <weight>75</weight>
-                     <bold>true</bold>
-                    </font>
-                   </property>
-                   <property name="title">
-                    <string>Search</string>
-                   </property>
-                   <property name="flat">
-                    <bool>true</bool>
-                   </property>
-                   <layout class="QVBoxLayout" name="verticalLayout_31">
-                    <item>
-                     <widget class="search" name="widget" native="true">
-                      <property name="font">
-                       <font>
-                        <weight>50</weight>
-                        <bold>false</bold>
-                       </font>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </widget>
+              <widget class="metadataView" name="redacMetadata" native="true"/>
              </widget>
             </item>
            </layout>
@@ -2014,6 +1913,50 @@
    <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QDockWidget" name="dckCheatSheet">
+   <property name="windowTitle">
+    <string>Cheat sheet</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_5">
+    <layout class="QVBoxLayout" name="verticalLayout_39">
+     <item>
+      <widget class="cheatSheet" name="cheatSheet" native="true">
+       <property name="font">
+        <font>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QDockWidget" name="dckSearch">
+   <property name="windowTitle">
+    <string>Search</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_6">
+    <layout class="QVBoxLayout" name="verticalLayout_40">
+     <item>
+      <widget class="search" name="widget" native="true">
+       <property name="font">
+        <font>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
   <action name="actOpen">
    <property name="icon">
     <iconset theme="document-open">
@@ -2193,12 +2136,6 @@
    <header>ui.views.lineEditView.h</header>
   </customwidget>
   <customwidget>
-   <class>collapsibleGroupBox2</class>
-   <extends>QGroupBox</extends>
-   <header>ui.collapsibleGroupBox2.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
    <class>outlineView</class>
    <extends>QTreeView</extends>
    <header>ui.views.outlineView.h</header>
@@ -2269,22 +2206,6 @@
  <resources/>
  <connections>
   <connection>
-   <sender>btnPlotShowSummary</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>grpPlotSummary</receiver>
-   <slot>setVisible(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>342</x>
-     <y>760</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>860</x>
-     <y>170</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>comboBox_2</sender>
    <signal>currentIndexChanged(int)</signal>
    <receiver>stkPlotSummary</receiver>
@@ -2307,11 +2228,11 @@
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1136</x>
+     <x>999</x>
      <y>768</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1137</x>
+     <x>1000</x>
      <y>729</y>
     </hint>
    </hints>
@@ -2355,11 +2276,11 @@
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>446</x>
+     <x>404</x>
      <y>127</y>
     </hint>
     <hint type="destinationlabel">
-     <x>446</x>
+     <x>404</x>
      <y>120</y>
     </hint>
    </hints>

@@ -14,6 +14,7 @@ from models.plotModel import *
 from models.worldModel import worldModel
 from ui.views.outlineDelegates import outlinePersoDelegate
 from ui.views.plotDelegate import plotDelegate
+from ui.collapsibleDockWidgets import collapsibleDockWidgets
 #from models.persosProxyModel import *
 from functions import *
 from settingsWindow import *
@@ -30,6 +31,14 @@ except ImportError:
 class MainWindow(QMainWindow, Ui_MainWindow):
 
     dictChanged = pyqtSignal(str)
+
+    TabInfos = 0
+    TabSummary = 1
+    TabPersos = 2
+    TabPlots = 3
+    TabWorld = 4
+    TabOutline = 5
+    TabRedac = 6
 
     def __init__(self):
         QMainWindow.__init__(self)
@@ -390,7 +399,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 5000)
             return
 
-
         if loadFromFile:
             # Load empty settings
             imp.reload(settings)
@@ -492,14 +500,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if sttgns.contains("metadataState"):
             state = [False if v == "false" else True for v in sttgns.value("metadataState")]
             self.redacMetadata.restoreState(state)
-        if sttgns.contains("redacInfosState"):
-            self.tabRedacInfos.setCurrentIndex(int(sttgns.value("redacInfosState")))
-        if sttgns.contains("cheatSheetState"):
-            state = False if sttgns.value("cheatSheetState") == "false" else True
-            self.grpCheatSheet.restoreState(state)
-        if sttgns.contains("searchState"):
-            state = False if sttgns.value("searchState") == "false" else True
-            self.grpSearch.restoreState(state)
+        #if sttgns.contains("redacInfosState"):
+            #self.tabRedacInfos.setCurrentIndex(int(sttgns.value("redacInfosState")))
+        #if sttgns.contains("cheatSheetState"):
+            #state = False if sttgns.value("cheatSheetState") == "false" else True
+            #self.grpCheatSheet.restoreState(state)
+        #if sttgns.contains("searchState"):
+            #state = False if sttgns.value("searchState") == "false" else True
+            #self.grpSearch.restoreState(state)
         if sttgns.contains("revisionsState"):
             state = [False if v == "false" else True for v in sttgns.value("revisionsState")]
             self.redacMetadata.revisions.restoreState(state)
@@ -512,9 +520,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         sttgns.setValue("windowState", self.saveState())
         sttgns.setValue("metadataState", self.redacMetadata.saveState())
         sttgns.setValue("metadataState", self.redacMetadata.saveState())
-        sttgns.setValue("redacInfosState", self.tabRedacInfos.currentIndex())
-        sttgns.setValue("cheatSheetState", self.grpCheatSheet.saveState())
-        sttgns.setValue("searchState", self.grpSearch.saveState())
+        #sttgns.setValue("redacInfosState", self.tabRedacInfos.currentIndex())
+        #sttgns.setValue("cheatSheetState", self.grpCheatSheet.saveState())
+        #sttgns.setValue("searchState", self.grpSearch.saveState())
         sttgns.setValue("revisionsState", self.redacMetadata.revisions.saveState())
         
         # Specific settings to save before quitting
@@ -682,10 +690,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btnRedacRemoveItem.clicked.connect(self.outlineRemoveItemsRedac, AUC)
         self.btnOutlineRemoveItem.clicked.connect(self.outlineRemoveItemsOutline, AUC)
 
-        self.mainEditor.btnRedacShowOutline.toggled.connect(self.treeRedacWidget.setVisible)
-        self.mainEditor.btnRedacShowOutline.setChecked(True)
-        self.mainEditor.btnRedacShowInfos.toggled.connect(self.tabRedacInfos.setVisible)
-        self.mainEditor.btnRedacShowInfos.setChecked(True)
+        self.tabMain.currentChanged.connect(self.toolbar.setCurrentGroup)
 
     def makeConnections(self):
 
@@ -911,25 +916,25 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def clickCycle(self, i):
         if i == 0:  # step 2 - paragraph summary
-            self.tabMain.setCurrentIndex(1)
+            self.tabMain.setCurrentIndex(self.TabSummary)
             self.tabSummary.setCurrentIndex(1)
         if i == 1:  # step 3 - characters summary
-            self.tabMain.setCurrentIndex(2)
+            self.tabMain.setCurrentIndex(self.TabPersos)
             self.tabPersos.setCurrentIndex(0)
         if i == 2:  # step 4 - page summary
-            self.tabMain.setCurrentIndex(1)
+            self.tabMain.setCurrentIndex(self.TabSummary)
             self.tabSummary.setCurrentIndex(2)
         if i == 3:  # step 5 - characters description
-            self.tabMain.setCurrentIndex(2)
+            self.tabMain.setCurrentIndex(self.TabPersos)
             self.tabPersos.setCurrentIndex(1)
         if i == 4:  # step 6 - four page synopsis
-            self.tabMain.setCurrentIndex(1)
+            self.tabMain.setCurrentIndex(self.TabSummary)
             self.tabSummary.setCurrentIndex(3)
         if i == 5:  # step 7 - full character charts
-            self.tabMain.setCurrentIndex(2)
+            self.tabMain.setCurrentIndex(self.TabPersos)
             self.tabPersos.setCurrentIndex(2)
         if i == 6:  # step 8 - scene list
-            self.tabMain.setCurrentIndex(3)
+            self.tabMain.setCurrentIndex(self.TabPlots)
 
     def wordCount(self, i):
 
@@ -955,6 +960,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         lbl.setText(self.tr("Words: {}{}").format(wc, pages))
 
     def setupMoreUi(self):
+        
+        # Tool bar on the right
+        self.toolbar = collapsibleDockWidgets(Qt.RightDockWidgetArea, self)
+        self.toolbar.addCustomWidget(self.tr("Book summary"), self.grpPlotSummary, self.TabPlots)
+        self.toolbar.addCustomWidget(self.tr("Project tree"), self.treeRedacWidget, self.TabRedac)
+        self.toolbar.addCustomWidget(self.tr("Metadata"), self.redacMetadata, self.TabRedac)
+        
         # Splitters
         self.splitterPersos.setStretchFactor(0, 25)
         self.splitterPersos.setStretchFactor(1, 75)
