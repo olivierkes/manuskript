@@ -31,7 +31,8 @@ except ImportError:
 class MainWindow(QMainWindow, Ui_MainWindow):
 
     dictChanged = pyqtSignal(str)
-
+    
+    # Tab indexes
     TabInfos = 0
     TabSummary = 1
     TabPersos = 2

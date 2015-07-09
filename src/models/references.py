@@ -504,7 +504,7 @@ def open(ref):
         item = mw.lstPersos.getItemByID(_ref)
         
         if item:
-            mw.tabMain.setCurrentIndex(2)
+            mw.tabMain.setCurrentIndex(mw.TabPersos)
             mw.lstPersos.setCurrentItem(item)
             return True
             
@@ -516,7 +516,7 @@ def open(ref):
         index = mw.mdlOutline.getIndexByID(_ref)
         
         if index.isValid():
-            mw.tabMain.setCurrentIndex(6)
+            mw.tabMain.setCurrentIndex(mw.TabRedac)
             mw.mainEditor.setCurrentModelIndex(index, newTab=True)
             return True
         else:
@@ -528,7 +528,7 @@ def open(ref):
         item = mw.lstPlots.getItemByID(_ref)
         
         if item:
-            mw.tabMain.setCurrentIndex(3)
+            mw.tabMain.setCurrentIndex(mw.TabPlots)
             mw.lstPlots.setCurrentItem(item)
             return True
         
@@ -540,7 +540,7 @@ def open(ref):
         item = mw.mdlWorld.itemByID(_ref)
         
         if item:
-            mw.tabMain.setCurrentIndex(4)
+            mw.tabMain.setCurrentIndex(mw.TabWorld)
             mw.treeWorld.setCurrentIndex(
                 mw.mdlWorld.indexFromItem(item))
             return True
