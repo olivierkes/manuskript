@@ -1014,7 +1014,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if item == "Tree":
             self.treeRedacOutline.viewport().update()
 
-
 ###############################################################################
 # COMPILE
 ###############################################################################
