@@ -4,6 +4,7 @@
 from qt import *
 from enums import *
 from models.outlineModel import *
+import models.references as Ref
 from ui.search_ui import *
 from functions import *
 
@@ -114,9 +115,11 @@ class search(QWidget, Ui_search):
         qApp.restoreOverrideCursor()
             
     def openItem(self, item):
-        mw = mainWindow()
-        index = mw.mdlOutline.getIndexByID(item.data(Qt.UserRole))
-        mw.mainEditor.setCurrentModelIndex(index, newTab=True)
+        r = Ref.textReference(item.data(Qt.UserRole))
+        Ref.open(r)
+        #mw = mainWindow()
+        #index = mw.mdlOutline.getIndexByID(item.data(Qt.UserRole))
+        #mw.mainEditor.setCurrentModelIndex(index, newTab=True)
         
         
 class listResultDelegate(QStyledItemDelegate):

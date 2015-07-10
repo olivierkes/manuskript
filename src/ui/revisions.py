@@ -22,11 +22,20 @@ class revisions(QWidget, Ui_revisions):
         self.listDelegate = listCompleterDelegate(self)
         self.list.setItemDelegate(self.listDelegate)
         self.list.itemActivated.connect(self.showDiff)
+        self.list.setContextMenuPolicy(Qt.CustomContextMenu)
+        self.list.customContextMenuRequested.connect(self.popupMenu)
         self.btnDelete.setEnabled(False)
+        self.btnDelete.clicked.connect(self.delete)
         self.btnRestore.clicked.connect(self.restore)
         self.btnRestore.setEnabled(False)
         
         #self.list.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        
+        self.updateTimer = QTimer()
+        self.updateTimer.setSingleShot(True)
+        self.updateTimer.setInterval(500)
+        self.updateTimer.timeout.connect(self.update)
+        self.updateTimer.stop()
         
         self.menu = QMenu(self)
         self.actGroup = QActionGroup(self)
@@ -75,7 +84,8 @@ class revisions(QWidget, Ui_revisions):
         if self._index and \
            topLeft.column() <= Outline.revisions.value <= bottomRight.column() and \
            topLeft.row() <= self._index.row() <= bottomRight.row():
-            self.update()
+            #self.update()
+            self.updateTimer.start()
             
     def update(self):
         self.list.clear()
@@ -94,10 +104,14 @@ class revisions(QWidget, Ui_revisions):
     def readableDelta(self, timestamp):
         now = datetime.datetime.now()
         delta = now - datetime.datetime.fromtimestamp(timestamp)
-        if delta.days == 1:
-            return self.tr("1 day ago")
+        if delta.days > 365:
+            return self.tr("{} years ago").format(str(int(delta.days / 365)))
+        elif delta.days > 30:
+            return self.tr("{} months ago").format(str(int(delta.days / 30.5)))
         elif delta.days > 0:
             return self.tr("{} days ago").format(str(delta.days))
+        if delta.days == 1:
+            return self.tr("1 day ago")
         elif delta.seconds > 60 * 60:
             return self.tr("{} hours ago").format(str(int(delta.seconds / 60 / 60)))
         elif delta.seconds > 60:
@@ -169,26 +183,26 @@ class revisions(QWidget, Ui_revisions):
                 if self.actDiffOnly.isChecked():
                     mydiff += "<br><span style='color: blue;'>{}</span><br>".format(
                         self.tr("Line {}:").format(str(n)))
-                s = difflib.SequenceMatcher(None, txt, txt2, autojunk=False)
+                s = difflib.SequenceMatcher(None, txt, txt2, autojunk=True)
                 newline = ""
                 for tag, i1, i2, j1, j2 in s.get_opcodes():
                     if tag == "equal":
                         newline += txt[i1:i2]
                     elif tag == "delete":
-                        newline += "<span style='color:red;'>{}</span>".format(_format(txt[i1:i2]))
+                        newline += "<span style='color:red; background:yellow;'>{}</span>".format(_format(txt[i1:i2]))
                     elif tag == "insert":
-                        newline += "<span style='color:green;'>{}</span>".format(_format(txt2[j1:j2]))
+                        newline += "<span style='color:green; background:yellow;'>{}</span>".format(_format(txt2[j1:j2]))
                     elif tag == "replace":
-                        newline += "<span style='color:red;'>{}</span>".format(_format(txt[i1:i2]))
-                        newline += "<span style='color:green;'>{}</span>".format(_format(txt2[j1:j2]))
+                        newline += "<span style='color:red; background:yellow;'>{}</span>".format(_format(txt[i1:i2]))
+                        newline += "<span style='color:green; background:yellow;'>{}</span>".format(_format(txt2[j1:j2]))
                 
                 # Few ugly tweaks for html diffs
                 newline = re.sub(r"(<span style='color.*?><span.*?>)</span>(.*)<span style='color:.*?>(</span></span>)",
                                  "\\1\\2\\3", newline)
-                newline = re.sub(r"<p align=\"<span style='color:red;'>cen</span><span style='color:green;'>righ</span>t<span style='color:red;'>er</span>\" style=\" -qt-block-indent:0; -qt-user-state:0; \">(.*?)</p>",
-                                 "<p align=\"right\"><span style='color:green;'>\\1</span></p>", newline)
-                newline = re.sub(r"<p align=\"<span style='color:green;'>cente</span>r<span style='color:red;'>ight</span>\" style=\" -qt-block-indent:0; -qt-user-state:0; \">(.*)</p>",
-                                 "<p align=\"center\"><span style='color:green;'>\\1</span></p>", newline)
+                newline = re.sub(r"<p align=\"<span style='color:red; background:yellow;'>cen</span><span style='color:green; background:yellow;'>righ</span>t<span style='color:red; background:yellow;'>er</span>\" style=\" -qt-block-indent:0; -qt-user-state:0; \">(.*?)</p>",
+                                 "<p align=\"right\"><span style='color:green; background:yellow;'>\\1</span></p>", newline)
+                newline = re.sub(r"<p align=\"<span style='color:green; background:yellow;'>cente</span>r<span style='color:red; background:yellow;'>ight</span>\" style=\" -qt-block-indent:0; -qt-user-state:0; \">(.*)</p>",
+                                 "<p align=\"center\"><span style='color:green; background:yellow;'>\\1</span></p>", newline)
                 newline = re.sub(r"<p(<span.*?>)(.*?)(</span>)(.*?)>(.*?)</p>",
                                  "<p\\2\\4>\\1\\5\\3</p>", newline)
                 
@@ -216,6 +230,15 @@ class revisions(QWidget, Ui_revisions):
         self._index.model().setData(index, textBefore)
         #item.setData(Outline.text.value, textBefore)
         
+    def delete(self):
+        i = self.list.currentItem()
+        if not i:
+            return
+        ts = i.data(Qt.UserRole)
+        self._index.internalPointer().deleteRevision(ts)
+        
+    def clearAll(self):
+        self._index.internalPointer().clearAllRevisions()
         
     def saveState(self):
         return [
@@ -224,6 +247,18 @@ class revisions(QWidget, Ui_revisions):
             self.actShowSpaces.isChecked(),
             self.actDiffOnly.isChecked(),
             ]
+    
+    def popupMenu(self, pos):
+        i = self.list.itemAt(pos)
+        m = QMenu(self)
+        if i:
+            m.addAction(self.tr("Restore")).triggered.connect(self.restore)
+            m.addAction(self.tr("Delete")).triggered.connect(self.delete)
+            m.addSeparator()
+        if self.list.count():
+            m.addAction(self.tr("Clear all")).triggered.connect(self.clearAll)
+        
+        m.popup(self.list.mapToGlobal(pos))
     
     def restoreState(self, state):
         self.actShowDiff.setChecked(state[0])

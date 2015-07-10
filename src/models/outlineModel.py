@@ -866,9 +866,7 @@ class outlineItem():
             int(ts),
             text))
     
-    def addRevision(self):
-        # FIXME: only add if significantly different, or enough time span
-        
+    def addRevision(self):        
         if not settings.revisions["keep"]:
             return
         
@@ -881,6 +879,16 @@ class outlineItem():
         
         if settings.revisions["smartremove"]:
             self.cleanRevisions()
+            
+        self.emitDataChanged([Outline.revisions.value])
+            
+    def deleteRevision(self, ts):
+        self._data[Outline.revisions] = [r for r in self._data[Outline.revisions] if r[0] != ts]
+        self.emitDataChanged([Outline.revisions.value])
+        
+    def clearAllRevisions(self):
+        self._data[Outline.revisions] = []
+        self.emitDataChanged([Outline.revisions.value])
         
     def cleanRevisions(self):
         "Keep only one some the revisions."
@@ -895,11 +903,12 @@ class outlineItem():
             revs[i] = []
         
         for r in rev:
-            for span in rule:
+            # Have to put the lambda key otherwise cannot order when one element is None
+            for span in sorted(rule, key=lambda x:x if x else 60*60*24*30*365):
                 if not span or now - r[0] < span:
                     revs[span].append(r)
                     break
-        
+
         for span in revs:
             sortedRev = sorted(revs[span], key=lambda x:x[0])
             last = None
@@ -914,8 +923,3 @@ class outlineItem():
         if rev2 != rev:
             self._data[Outline.revisions] = rev2
             self.emitDataChanged([Outline.revisions.value])
-        
-        
-        
-        
-        
