@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="2.0" language="fr" sourcelanguage="en">
+<!DOCTYPE TS>
+<TS version="2.1" language="fr" sourcelanguage="en">
 <context>
     <name>MainWindow</name>
     <message>
@@ -208,7 +209,7 @@
         <translation>Étapes de résolution</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1140"/>
+        <location filename="../src/mainWindow.py" line="960"/>
         <source>Outline</source>
         <translation>Plan</translation>
     </message>
@@ -358,7 +359,7 @@
         <translation>Et si...?</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1139"/>
+        <location filename="../src/mainWindow.py" line="959"/>
         <source>Index cards</source>
         <translation>Cartes</translation>
     </message>
@@ -373,7 +374,7 @@
         <translation>F9</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1138"/>
+        <location filename="../src/mainWindow.py" line="958"/>
         <source>Tree</source>
         <translation>Arbre</translation>
     </message>
@@ -398,7 +399,7 @@
         <translation>Réglages</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1134"/>
+        <location filename="../src/mainWindow.py" line="954"/>
         <source>Compile</source>
         <translation>Compilation</translation>
     </message>
@@ -448,167 +449,167 @@
         <translation>Source de conflit</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="397"/>
+        <location filename="../src/mainWindow.py" line="288"/>
         <source>The file {} does not exist. Try again.</source>
         <translation type="unfinished">Le fichier {} n&apos;existe pas. Essayez encore.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="586"/>
+        <location filename="../src/mainWindow.py" line="464"/>
         <source>Project {} saved.</source>
         <translation type="unfinished">Le projet {} a été enregistré.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="663"/>
+        <location filename="../src/mainWindow.py" line="533"/>
         <source>Project {} loaded.</source>
         <translation type="unfinished">Le projet {} a été chargé.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="666"/>
+        <location filename="../src/mainWindow.py" line="536"/>
         <source>Project {} loaded with some errors:</source>
         <translation type="unfinished">Le projet {} a été chargé, avec des erreurs:</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="668"/>
+        <location filename="../src/mainWindow.py" line="538"/>
         <source> * {} wasn&apos;t found in project file.</source>
         <translation type="unfinished">* {} n&apos;a pas été trouvé dans le fichier du projet.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="669"/>
+        <location filename="../src/mainWindow.py" line="539"/>
         <source>Project {} loaded with some errors.</source>
         <translation type="unfinished">Le projet {} a été chargé avec des erreurs.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="957"/>
+        <location filename="../src/mainWindow.py" line="780"/>
         <source> (~{} pages)</source>
         <translation type="unfinished"> (~{} pages)</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="961"/>
+        <location filename="../src/mainWindow.py" line="784"/>
         <source>Words: {}{}</source>
         <translation type="unfinished">Mots: {}{}</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="967"/>
+        <location filename="../src/mainWindow.py" line="790"/>
         <source>Book summary</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="968"/>
+        <location filename="../src/mainWindow.py" line="791"/>
         <source>Project tree</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="969"/>
+        <location filename="../src/mainWindow.py" line="792"/>
         <source>Metadata</source>
         <translation type="unfinished">Métadonnées</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="999"/>
+        <location filename="../src/mainWindow.py" line="822"/>
         <source>Enter infos about your book, and yourself.</source>
         <translation type="unfinished">Entrez toutes les informations relatives au livre, ainsi qu&apos;à vous.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1002"/>
+        <location filename="../src/mainWindow.py" line="825"/>
         <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous evil wizard could wasn&apos;t abled to kill a baby?&apos; (Harry Potter)</source>
         <translation type="unfinished">La situation de base, sous la forme d&apos;une question: &quot;Et si...?&quot; Par exemple: &quot;Et si le plus dangereux magiciens mauvais n&apos;était pas capable de tuer un bébé?&quot; (Harry Potter)</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1005"/>
+        <location filename="../src/mainWindow.py" line="828"/>
         <source>Take time to think about a one sentance (~50 words) summary of your book. Then expand it to a paragraph, then to a page, then to a full summary.</source>
         <translation type="unfinished">Prenez le temps de réfléchir à un résumé de votre livre, en une phrase (~50 mots). Puis augmentez cette phrase en un paragraphe, puis en une page, puis en un résumé complet.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1008"/>
+        <location filename="../src/mainWindow.py" line="831"/>
         <source>Create your characters.</source>
         <translation type="unfinished">Créez ici vos personnage.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1011"/>
+        <location filename="../src/mainWindow.py" line="834"/>
         <source>Develop plots.</source>
         <translation type="unfinished">Développez vos intrigues.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1014"/>
+        <location filename="../src/mainWindow.py" line="837"/>
         <source>Create the outline of your masterpiece.</source>
         <translation type="unfinished">Créez le plan de votre chef-d&apos;œuvre.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1017"/>
+        <location filename="../src/mainWindow.py" line="840"/>
         <source>Write.</source>
         <translation type="unfinished">Écrivez.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1020"/>
+        <location filename="../src/mainWindow.py" line="843"/>
         <source>Debug infos. Sometimes useful.</source>
         <translation type="unfinished">Des infos pour débugger des fois pendant qu&apos;on code c&apos;est utile.</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1034"/>
+        <location filename="../src/mainWindow.py" line="857"/>
         <source>Dictionary</source>
         <translation type="unfinished">Dictionnaire</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1047"/>
+        <location filename="../src/mainWindow.py" line="870"/>
         <source>Install PyEnchant to use spellcheck</source>
         <translation type="unfinished">Installez PyEnchant pour profiter du correcteur orthographique</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1130"/>
+        <location filename="../src/mainWindow.py" line="950"/>
         <source>Nothing</source>
         <translation type="unfinished">Rien</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1131"/>
+        <location filename="../src/mainWindow.py" line="951"/>
         <source>POV</source>
         <translation type="unfinished">POV</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1132"/>
+        <location filename="../src/mainWindow.py" line="952"/>
         <source>Label</source>
         <translation type="unfinished">Label</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1133"/>
+        <location filename="../src/mainWindow.py" line="953"/>
         <source>Progress</source>
         <translation type="unfinished">Progrès</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1157"/>
+        <location filename="../src/mainWindow.py" line="977"/>
         <source>Icon color</source>
         <translation type="unfinished">Couleur de l&apos;icone</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1158"/>
+        <location filename="../src/mainWindow.py" line="978"/>
         <source>Text color</source>
         <translation type="unfinished">Couleur du texte</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1159"/>
+        <location filename="../src/mainWindow.py" line="979"/>
         <source>Background color</source>
         <translation type="unfinished">Couleur de l&apos;arrière-plan</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1150"/>
+        <location filename="../src/mainWindow.py" line="970"/>
         <source>Icon</source>
         <translation type="unfinished">Icone</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1151"/>
+        <location filename="../src/mainWindow.py" line="971"/>
         <source>Text</source>
         <translation type="unfinished">Texte</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1152"/>
+        <location filename="../src/mainWindow.py" line="972"/>
         <source>Background</source>
         <translation type="unfinished">Arrière-plan</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1153"/>
+        <location filename="../src/mainWindow.py" line="973"/>
         <source>Border</source>
         <translation type="unfinished">Bordure</translation>
     </message>
     <message>
-        <location filename="../src/mainWindow.py" line="1154"/>
+        <location filename="../src/mainWindow.py" line="974"/>
         <source>Corner</source>
         <translation type="unfinished">Coin</translation>
     </message>
@@ -1465,32 +1466,32 @@ des lignes:</translation>
         <translation>Bloquer !</translation>
     </message>
     <message>
-        <location filename="../src/ui/editors/locker.py" line="81"/>
+        <location filename="../src/ui/editors/locker.py" line="97"/>
         <source>~{} h.</source>
         <translation>~{} h.</translation>
     </message>
     <message>
-        <location filename="../src/ui/editors/locker.py" line="83"/>
+        <location filename="../src/ui/editors/locker.py" line="99"/>
         <source>~{} mn.</source>
         <translation>~{} mn.</translation>
     </message>
     <message>
-        <location filename="../src/ui/editors/locker.py" line="87"/>
+        <location filename="../src/ui/editors/locker.py" line="103"/>
         <source>{}:{}</source>
         <translation>{}:{}</translation>
     </message>
     <message>
-        <location filename="../src/ui/editors/locker.py" line="89"/>
+        <location filename="../src/ui/editors/locker.py" line="105"/>
         <source>{} s.</source>
         <translation>{} s.</translation>
     </message>
     <message>
-        <location filename="../src/ui/editors/locker.py" line="91"/>
+        <location filename="../src/ui/editors/locker.py" line="107"/>
         <source>{} remaining</source>
         <translation>{} restant</translation>
     </message>
     <message>
-        <location filename="../src/ui/editors/locker.py" line="96"/>
+        <location filename="../src/ui/editors/locker.py" line="112"/>
         <source>{} words remaining</source>
         <translation>{} mots restants</translation>
     </message>
@@ -1833,7 +1834,7 @@ des lignes:</translation>
 <context>
     <name>references</name>
     <message>
-        <location filename="../src/models/references.py" line="408"/>
+        <location filename="../src/models/references.py" line="379"/>
         <source>Unknown reference: {}.</source>
         <translation>Référence inconnue: {}.</translation>
     </message>
@@ -1843,7 +1844,7 @@ des lignes:</translation>
         <translation>Texte: &lt;b&gt;{}&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../src/models/references.py" line="391"/>
+        <location filename="../src/models/references.py" line="392"/>
         <source>Character: &lt;b&gt;{}&lt;/b&gt;</source>
         <translation>Personnage: &lt;b&gt;{}&lt;/b&gt;</translation>
     </message>
@@ -1968,7 +1969,7 @@ des lignes:</translation>
         <translation>Étapes de résolution</translation>
     </message>
     <message>
-        <location filename="../src/models/references.py" line="396"/>
+        <location filename="../src/models/references.py" line="398"/>
         <source>Plot: &lt;b&gt;{}&lt;/b&gt;</source>
         <translation>Intrigue: &lt;b&gt;{}&lt;/b&gt;</translation>
     </message>
@@ -1978,9 +1979,14 @@ des lignes:</translation>
         <translation>Passion</translation>
     </message>
     <message>
-        <location filename="../src/models/references.py" line="404"/>
+        <location filename="../src/models/references.py" line="406"/>
         <source>World: &lt;b&gt;{name}&lt;/b&gt;{path}</source>
         <translation>Monde: &lt;b&gt;{name}&lt;/b&gt;{path}</translation>
+    </message>
+    <message>
+        <location filename="../src/models/references.py" line="410"/>
+        <source>&lt;b&gt;Unknown reference:&lt;/b&gt; {}.</source>
+        <translation>&lt;b&gt;Référence inconnue:&lt;/b&gt; {}.</translation>
     </message>
 </context>
 <context>

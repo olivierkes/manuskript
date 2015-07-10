@@ -381,13 +381,15 @@ def tooltip(ref):
     
     elif _type == PersoLetter:
         m = mainWindow().mdlPersos
-        name = m.item(int(_ref), Perso.name.value).text()
-        return qApp.translate("references", "Character: <b>{}</b>").format(name)
+        item = m.item(int(_ref), Perso.name.value)
+        if item:
+            return qApp.translate("references", "Character: <b>{}</b>").format(item.text())
             
     elif _type == PlotLetter:
         m = mainWindow().mdlPlots
         name = m.getPlotNameByID(_ref)
-        return qApp.translate("references", "Plot: <b>{}</b>").format(name)
+        if name:
+            return qApp.translate("references", "Plot: <b>{}</b>").format(name)
     
     elif _type == WorldLetter:
         m = mainWindow().mdlWorld
@@ -399,7 +401,7 @@ def tooltip(ref):
                 name=name,
                 path=" <span style='color:gray;'>({})</span>".format(path) if path else "")
     
-    return qApp.translate("references", "Unknown reference: {}.").format(ref)
+    return qApp.translate("references", "<b>Unknown reference:</b> {}.").format(ref)
     
 ###############################################################################
 # FUNCTIONS

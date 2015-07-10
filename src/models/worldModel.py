@@ -105,7 +105,7 @@ class worldModel(QStandardItemModel):
                     return r
         
         r = browse(self.invisibleRootItem())
-        return r if r else -1
+        return r if r else None
         
     def path(self, item):
         "Returns the path to the item in the form of 'ancestor > ... > grand-parent > parent'."

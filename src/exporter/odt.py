@@ -6,6 +6,14 @@ from enums import *
 from functions import *
 from exporter.basic import basicExporter
 
+import sys, os
+sys.path.append(os.path.join(appPath(), "libs"))
+
+from odf.opendocument import OpenDocumentText
+from odf.style import Style, TextProperties
+from odf.text import H, P, Span
+
+
 class odtExporter(basicExporter):
     
     requires = ["filename"]
@@ -17,45 +25,51 @@ class odtExporter(basicExporter):
         mw = mainWindow()
         root = mw.mdlOutline.rootItem
         
-        doc = QTextDocument()
-        cursor = QTextCursor(doc)
-        
+        doc = OpenDocumentText()
         
         def appendItem(item):
             if item.isFolder():
                 
-                cursor.setPosition(doc.characterCount() - 1)
-                title = "<h{l}>{t}</h{l}><br>\n".format(
-                    l = str(item.level() + 1),
-                    t = item.title())
-                cursor.insertHtml(title)
+                self.addHeading(item.title(), item.level() + 1, doc)
                 
                 for c in item.children():
                     appendItem(c)
             
             else:
                 text = self.formatText(item.text(), item.type())
-                cursor.setPosition(doc.characterCount() - 1)
-                cursor.insertHtml(text)
+                if text:
+                    for l in text.split("\n"):
+                        self.addParagraph(l, doc)
                 
         for c in root.children():
             appendItem(c)
             
-        dw = QTextDocumentWriter(filename, "odt")
-        dw.write(doc)
+        doc.save(filename)
             
     def formatText(self, text, _type):
         
         if not text:
             return text
         
-        if _type == "t2t":
-            text = self.runT2T(text)
+        #if _type == "t2t":
+            #text = self.runT2T(text)
         
-        elif _type == "txt":
-            text = text.replace("\n", "<br>")
+        #elif _type == "txt":
+            #text = text.replace("\n", "<br>")
         
         elif _type == "html":
-            text = self.htmlBody(text)
+            doc = QTextDocument()
+            doc.setHtml(text)
+            text = doc.toPlainText()
+            #text = self.htmlBody(text)
         
-        return text + "<br>"
+        return text
+    
+    def addHeading(self, text, level, doc):
+        doc.text.addElement(H(outlinelevel=int(level), text=text))
+        return doc
+    
+    def addParagraph(self, text, doc):
+        p = P(stylename="Text Body", text=text)
+        doc.text.addElement(p)
+        return doc
