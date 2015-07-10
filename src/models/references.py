@@ -116,6 +116,7 @@ def infos(ref):
         {ss}
         {ls}
         {notes}
+        {references}
         """.format(
             title=item.title(),
             pathTitle=pathTitle,
@@ -133,13 +134,14 @@ def infos(ref):
                 label=label) if label else "",
             ss="<p><b>{ssTitle}</b> {ss}</p>".format(
                 ssTitle=ssTitle,
-                ss=ss.replace("\n", "<br>")) if ss else "",
+                ss=ss.replace("\n", "<br>")) if ss.strip() else "",
             ls="<p><b>{lsTitle}</b><br>{ls}</p>".format(
                 lsTitle=lsTitle,
-                ls=ls.replace("\n", "<br>")) if ls else "",
+                ls=ls.replace("\n", "<br>")) if ls.strip() else "",
             notes="<p><b>{notesTitle}</b><br>{notes}</p>".format(
                 notesTitle=notesTitle,
-                notes=linkifyAllRefs(basicT2TFormat(notes))) if notes else "",
+                notes=linkifyAllRefs(basicT2TFormat(notes))) if notes.strip() else "",
+            references=listReferences(ref)
             )
         
         return text
@@ -154,7 +156,6 @@ def infos(ref):
         basicTitle = qApp.translate("references", "Basic infos")
         detailedTitle = qApp.translate("references", "Detailed infos")
         POVof = qApp.translate("references", "POV of:")
-        referencedIn = qApp.translate("references", "Referenced in:")
         
         # Goto (link)
         goto = qApp.translate("references", "Go to {}.")
@@ -197,9 +198,6 @@ def infos(ref):
                 link=textReference(t),
                 text=oM.data(idx, Outline.title.value))
         
-        # List scenes where character is referenced
-        listRefs = listReferences(ref, referencedIn)
-        
         text = """<h1>{name}</h1>
         {goto}
         {basicInfos}
@@ -218,7 +216,7 @@ def infos(ref):
             POV="<h2>{POVof}</h2><ul>{listPOV}</ul>".format(
                 POVof=POVof,
                 listPOV=listPOV) if listPOV else "",
-            references=listRefs if listRefs else "",
+            references=listReferences(ref)
                 )
         return text
     
@@ -233,7 +231,6 @@ def infos(ref):
         resultTitle = qApp.translate("references", "Result")
         charactersTitle = qApp.translate("references", "Characters")
         stepsTitle = qApp.translate("references", "Resolution steps")
-        referenceTitle = qApp.translate("references", "Referenced in:")
         
         # Goto (link)
         goto = qApp.translate("references", "Go to {}.")
@@ -273,9 +270,6 @@ def infos(ref):
                     summary=": {}".format(summary) if summary else "",
                     meta = meta if meta else "")
         
-        # List scenes where item is referenced
-        references = listReferences(ref, referenceTitle)
-        
         text = """<h1>{name}</h1>
         {goto}
         {characters}
@@ -298,7 +292,7 @@ def infos(ref):
             steps="<h2>{title}</h2><ul>{steps}</ul>".format(
                 title=stepsTitle,
                 steps=steps) if steps else "",
-            references=references
+            references=listReferences(ref, referenceTitle)
                 )
         return text
     
@@ -312,7 +306,6 @@ def infos(ref):
         descriptionTitle = qApp.translate("references", "Description")
         passionTitle = qApp.translate("references", "Passion")
         conflictTitle = qApp.translate("references", "Conflict")
-        referenceTitle = qApp.translate("references", "Referenced in:")
         
         # Goto (link)
         goto = qApp.translate("references", "Go to {}.")
@@ -326,9 +319,6 @@ def infos(ref):
         
         # Conflict
         conflict =  basicFormat(m.conflict(index))
-        
-        # List scenes where item is referenced
-        references = listReferences(ref, referenceTitle)
         
         text = """<h1>{name}</h1>
         {goto}
@@ -348,7 +338,7 @@ def infos(ref):
             conflict="<h2>{title}</h2><ul>{lst}</ul>".format(
                 title=conflictTitle,
                 lst=conflict) if conflict else "",
-            references=references
+            references=listReferences(ref)
             )
         return text
     
@@ -447,7 +437,7 @@ def linkifyAllRefs(text):
     "Takes all the references in ``text`` and transform them into HMTL links."
     return re.sub(RegEx, lambda m: refToLink(m.group(0)), text)
     
-def listReferences(ref, title):
+def listReferences(ref, title=qApp.translate("references", "Referenced in:")):
     oM = mainWindow().mdlOutline
     listRefs = ""
     ref = ref[:ref.index(":", ref.index(":") + 1)]
