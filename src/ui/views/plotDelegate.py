@@ -37,8 +37,8 @@ class plotDelegate(QStyledItemDelegate):
                 self.tr("Resolution")
                 ],
             self.tr("Try / Fail"): [
-                self.tr("No but"),
-                self.tr("Yes and"),
+                self.tr("No and"),
+                self.tr("Yes but"),
                 ],
             self.tr("Freytag's pyramid"): [
                 self.tr("Exposition"),

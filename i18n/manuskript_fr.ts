@@ -1728,6 +1728,189 @@ des lignes:</translation>
     </message>
 </context>
 <context>
+    <name>plotDelegate</name>
+    <message>
+        <location filename="../src/ui/views/plotDelegate.py" line="32"/>
+        <source>General</source>
+        <translation>Général</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/views/plotDelegate.py" line="32"/>
+        <source>Promise</source>
+        <translation>Promesse</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/views/plotDelegate.py" line="32"/>
+        <source>Problem</source>
+        <translation>Problème</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/views/plotDelegate.py" line="32"/>
+        <source>Progress</source>
+        <translation>Progrès</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/views/plotDelegate.py" line="32"/>
+        <source>Resolution</source>
+        <translation>Résolution</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/views/plotDelegate.py" line="32"/>
+        <source>Try / Fail</source>
+        <translation>Essayer / Échouer</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/views/plotDelegate.py" line="32"/>
+        <source>Freytag&apos;s pyramid</source>
+        <translation>Pyramide de Freytag</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/views/plotDelegate.py" line="32"/>
+        <source>Exposition</source>
+        <translation>Exposition</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/views/plotDelegate.py" line="32"/>
+        <source>Rising action</source>
+        <translation>Action montante</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/views/plotDelegate.py" line="32"/>
+        <source>Climax</source>
+        <translation>Apogée</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/views/plotDelegate.py" line="32"/>
+        <source>Falling action</source>
+        <translation>Action en chute</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/views/plotDelegate.py" line="32"/>
+        <source>Three acts</source>
+        <translation>Trois actes</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/views/plotDelegate.py" line="32"/>
+        <source>1. Setup</source>
+        <translation>1. Mise en place</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/views/plotDelegate.py" line="32"/>
+        <source>1. Inciting event</source>
+        <translation>1. Catalyseur</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/views/plotDelegate.py" line="32"/>
+        <source>1. Turning point</source>
+        <translation>1. Tournant</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/views/plotDelegate.py" line="32"/>
+        <source>2. Choice</source>
+        <translation>2. Choix</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/views/plotDelegate.py" line="32"/>
+        <source>2. Reversal</source>
+        <translation>2. Renversement</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/views/plotDelegate.py" line="32"/>
+        <source>2. Disaster</source>
+        <translation>2. Désastre</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/views/plotDelegate.py" line="32"/>
+        <source>3. Stand up</source>
+        <translation>3. Redressement</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/views/plotDelegate.py" line="32"/>
+        <source>3. Climax</source>
+        <translation>3. Apogée</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/views/plotDelegate.py" line="32"/>
+        <source>3. Ending</source>
+        <translation>3. Résolution</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/views/plotDelegate.py" line="32"/>
+        <source>Hero&apos;s journey</source>
+        <translation>Voyage du héros</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/views/plotDelegate.py" line="32"/>
+        <source>Ordinary world</source>
+        <translation>Monde ordinaire</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/views/plotDelegate.py" line="32"/>
+        <source>Call to adventure</source>
+        <translation>Appel à l&apos;aventure</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/views/plotDelegate.py" line="32"/>
+        <source>Refusal of the call</source>
+        <translation>Refus de l&apos;appel</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/views/plotDelegate.py" line="32"/>
+        <source>Meeting with mentor</source>
+        <translation>Rencontre du mentor</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/views/plotDelegate.py" line="32"/>
+        <source>Corssing the Threshold</source>
+        <translation>Franchir le seuil</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/views/plotDelegate.py" line="32"/>
+        <source>Tests</source>
+        <translation>Épreuves</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/views/plotDelegate.py" line="32"/>
+        <source>Approach</source>
+        <translation>Approche</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/views/plotDelegate.py" line="32"/>
+        <source>Abyss</source>
+        <translation>Abysse</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/views/plotDelegate.py" line="32"/>
+        <source>Reward / Revelation</source>
+        <translation>Récompense / Révélation</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/views/plotDelegate.py" line="32"/>
+        <source>Transformation</source>
+        <translation>Transformation</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/views/plotDelegate.py" line="32"/>
+        <source>Atonement</source>
+        <translation>Expiation</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/views/plotDelegate.py" line="32"/>
+        <source>Return</source>
+        <translation>Retour</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/views/plotDelegate.py" line="32"/>
+        <source>No and</source>
+        <translation>Non et</translation>
+    </message>
+    <message>
+        <location filename="../src/ui/views/plotDelegate.py" line="32"/>
+        <source>Yes but</source>
+        <translation>Oui mai</translation>
+    </message>
+</context>
+<context>
     <name>plotModel</name>
     <message>
         <location filename="../src/models/plotModel.py" line="79"/>

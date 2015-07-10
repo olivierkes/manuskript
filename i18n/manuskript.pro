@@ -52,6 +52,7 @@ SOURCES          += ../src/ui/views/treeView.py
 SOURCES          += ../src/ui/views/lineEditView.py
 SOURCES          += ../src/ui/views/textEditView.py
 SOURCES          += ../src/ui/views/plotTreeView.py
+SOURCES          += ../src/ui/views/plotDelegate.py
 
 TRANSLATIONS     += manuskript_fr.ts
 
