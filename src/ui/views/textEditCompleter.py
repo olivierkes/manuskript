@@ -76,7 +76,6 @@ class textEditCompleter(textEditView):
         a.triggered.connect(self.popupCompleter)
         menu.insertSeparator(menu.actions()[0])
         menu.insertAction(menu.actions()[0], a)
-        
         return menu
         
     def keyPressEvent(self, event):

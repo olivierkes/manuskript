@@ -415,11 +415,6 @@ class textEditView(QTextEdit):
 
     def contextMenuEvent(self, event):
         # Based on http://john.nachtimwald.com/2009/08/22/qplaintextedit-with-in-line-spell-check/
-
-        if not self.spellcheck:
-            QTextEdit.contextMenuEvent(self, event)
-            return
-        
         popup_menu = self.createStandardContextMenu()
         popup_menu.exec_(event.globalPos())
     
