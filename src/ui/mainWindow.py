@@ -979,11 +979,13 @@ class Ui_MainWindow(object):
         self.horizontalLayout_12.addWidget(self.stack)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1145, 31))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1145, 21))
         self.menubar.setObjectName("menubar")
         self.menuFile = QtWidgets.QMenu(self.menubar)
         self.menuFile.setObjectName("menuFile")
         self.menuRecents = QtWidgets.QMenu(self.menuFile)
+        icon = QtGui.QIcon.fromTheme("folder-recent")
+        self.menuRecents.setIcon(icon)
         self.menuRecents.setObjectName("menuRecents")
         self.menuMode = QtWidgets.QMenu(self.menubar)
         self.menuMode.setObjectName("menuMode")
@@ -1113,7 +1115,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.stack.setCurrentIndex(1)
-        self.tabMain.setCurrentIndex(3)
+        self.tabMain.setCurrentIndex(5)
         self.tabSummary.setCurrentIndex(0)
         self.tabPersos.setCurrentIndex(0)
         self.tabPlot.setCurrentIndex(0)
@@ -1248,17 +1250,17 @@ class Ui_MainWindow(object):
         self.actCompile.setText(_translate("MainWindow", "Compile"))
         self.actCompile.setShortcut(_translate("MainWindow", "F6"))
 
-from ui.sldImportance import sldImportance
-from ui.views.metadataView import metadataView
-from ui.views.textEditCompleter import textEditCompleter
-from ui.views.outlineView import outlineView
+from ui.views.basicItemView import basicItemView
+from ui.views.plotTreeView import plotTreeView
 from ui.search import search
-from ui.views.textEditView import textEditView
-from ui.welcome import welcome
+from ui.views.textEditCompleter import textEditCompleter
 from ui.views.treeView import treeView
 from ui.editors.mainEditor import mainEditor
-from ui.views.basicItemView import basicItemView
-from ui.cheatSheet import cheatSheet
-from ui.views.persoTreeView import persoTreeView
+from ui.views.outlineView import outlineView
 from ui.views.lineEditView import lineEditView
-from ui.views.plotTreeView import plotTreeView
+from ui.views.textEditView import textEditView
+from ui.welcome import welcome
+from ui.sldImportance import sldImportance
+from ui.cheatSheet import cheatSheet
+from ui.views.metadataView import metadataView
+from ui.views.persoTreeView import persoTreeView

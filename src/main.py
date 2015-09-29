@@ -2,6 +2,7 @@
 
 import sys
 from qt import *
+from functions import *
 
 _version = "0.1"
 
@@ -36,6 +37,12 @@ def run():
     if settings.contains("applicationStyle"):
         style = settings.value("applicationStyle")
         app.setStyle(style)
+    
+    QIcon.setThemeSearchPaths(QIcon.themeSearchPaths() + [appPath("icons")])
+    QIcon.setThemeName("NumixMsk")
+    print(QIcon.hasThemeIcon("dialog-no"))
+    print(QIcon.themeSearchPaths())
+    #qApp.setWindowIcon(QIcon.fromTheme("im-aim"))
 
     # Seperating launch to avoid segfault, so it seem.
     # Cf. http://stackoverflow.com/questions/12433491/is-this-pyqt-4-python-bug-or-wrongly-behaving-code

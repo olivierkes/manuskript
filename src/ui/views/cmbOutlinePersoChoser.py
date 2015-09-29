@@ -25,7 +25,7 @@ class cmbOutlinePersoChoser(QComboBox):
         
     def updateItems(self):
         self.clear()
-        self.addItem(QIcon.fromTheme("edit-delete"), self.tr("None"))
+        self.addItem(QIcon.fromTheme("dialog-no"), self.tr("None"))
         
         l = [self.tr("Main"), self.tr("Secondary"), self.tr("Minor")]
         

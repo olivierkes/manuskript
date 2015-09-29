@@ -109,7 +109,7 @@
         <item>
          <widget class="QTabWidget" name="tabMain">
           <property name="currentIndex">
-           <number>3</number>
+           <number>5</number>
           </property>
           <property name="documentMode">
            <bool>true</bool>
@@ -1850,7 +1850,7 @@
      <x>0</x>
      <y>0</y>
      <width>1145</width>
-     <height>31</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -1860,6 +1860,9 @@
     <widget class="QMenu" name="menuRecents">
      <property name="title">
       <string>Recents</string>
+     </property>
+     <property name="icon">
+      <iconset theme="folder-recent"/>
      </property>
     </widget>
     <addaction name="actOpen"/>

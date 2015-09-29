@@ -2,7 +2,8 @@
 
 # Form implementation generated from reading ui file 'src/ui/revisions_ui.ui'
 #
-# Created by: PyQt5 UI code generator 5.4.1
+# Created: Tue Jul 14 19:00:07 2015
+#      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -29,7 +30,7 @@ class Ui_revisions(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 396, 70))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 394, 70))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout.setObjectName("verticalLayout")
@@ -52,14 +53,20 @@ class Ui_revisions(object):
         self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.btnOptions = QtWidgets.QPushButton(self.layoutWidget)
+        icon = QtGui.QIcon.fromTheme("preferences-system-symbolic")
+        self.btnOptions.setIcon(icon)
         self.btnOptions.setObjectName("btnOptions")
         self.horizontalLayout_2.addWidget(self.btnOptions)
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem)
         self.btnRestore = QtWidgets.QPushButton(self.layoutWidget)
+        icon = QtGui.QIcon.fromTheme("redo")
+        self.btnRestore.setIcon(icon)
         self.btnRestore.setObjectName("btnRestore")
         self.horizontalLayout_2.addWidget(self.btnRestore)
         self.btnDelete = QtWidgets.QPushButton(self.layoutWidget)
+        icon = QtGui.QIcon.fromTheme("edit-delete")
+        self.btnDelete.setIcon(icon)
         self.btnDelete.setObjectName("btnDelete")
         self.horizontalLayout_2.addWidget(self.btnDelete)
         self.verticalLayout_2.addWidget(self.splitter)

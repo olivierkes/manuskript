@@ -123,7 +123,7 @@ class outlinePersoDelegate(QStyledItemDelegate):
     
     def setEditorData(self, editor, index):
         #editor.addItem("")
-        editor.addItem(QIcon.fromTheme("edit-delete"), self.tr("None"))
+        editor.addItem(QIcon.fromTheme("dialog-no"), self.tr("None"))
         
         l = [self.tr("Main"), self.tr("Secondary"), self.tr("Minor")]
         for importance in range(3):

@@ -39,7 +39,7 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>396</width>
+         <width>394</width>
          <height>70</height>
         </rect>
        </property>
@@ -76,6 +76,9 @@
          <property name="text">
           <string>Options</string>
          </property>
+         <property name="icon">
+          <iconset theme="preferences-system-symbolic"/>
+         </property>
         </widget>
        </item>
        <item>
@@ -96,12 +99,18 @@
          <property name="text">
           <string>Restore</string>
          </property>
+         <property name="icon">
+          <iconset theme="redo"/>
+         </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="btnDelete">
          <property name="text">
           <string>Delete</string>
+         </property>
+         <property name="icon">
+          <iconset theme="edit-delete"/>
          </property>
         </widget>
        </item>

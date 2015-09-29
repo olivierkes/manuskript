@@ -1,0 +1,9 @@
+<svg width="128" xmlns="http://www.w3.org/2000/svg" height="128" viewBox="0 0 128 128" xmlns:xlink="http://www.w3.org/1999/xlink">
+<path style="fill:#dc322f" d="M 112 40 L 112 115.429688 C 112 128 112 128 98.285156 128 L 29.714844 128 C 16 128 16 128 16 115.429688 L 16 40 C 43.429688 40 91.429688 40 112 40 Z "/>
+<g style="fill-opacity:.667;fill:#fff">
+<path d="M 24 56 L 24 112 L 40 112 L 40 56 Z "/>
+<path d="M 56 56 L 56 112 L 72 112 L 72 56 Z "/>
+<path d="M 88 56 L 88 112 L 104 112 L 104 56 Z "/>
+</g>
+<path style="fill:#dc322f" d="M 16 32 L 112 32 L 112 16 L 88 16 L 88 0 L 40 0 L 40 16 L 16 16 Z "/>
+</svg>

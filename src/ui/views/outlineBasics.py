@@ -66,7 +66,7 @@ class outlineBasics(QAbstractItemView):
         # POV
         self.menuPOV = QMenu(qApp.translate("outlineBasics", "Set POV"), menu)
         mw = mainWindow()
-        a = QAction(QIcon.fromTheme("edit-delete"), qApp.translate("outlineBasics", "None"), self.menuPOV)
+        a = QAction(QIcon.fromTheme("dialog-no"), qApp.translate("outlineBasics", "None"), self.menuPOV)
         a.triggered.connect(lambda: self.setPOV(""))
         self.menuPOV.addAction(a)
         self.menuPOV.addSeparator()
@@ -92,7 +92,7 @@ class outlineBasics(QAbstractItemView):
         
         # Status
         self.menuStatus = QMenu(qApp.translate("outlineBasics", "Set Status"), menu)
-            #a = QAction(QIcon.fromTheme("edit-delete"), qApp.translate("outlineBasics", "None"), self.menuStatus)
+            #a = QAction(QIcon.fromTheme("dialog-no"), qApp.translate("outlineBasics", "None"), self.menuStatus)
             #a.triggered.connect(lambda: self.setStatus(""))
             #self.menuStatus.addAction(a)
             #self.menuStatus.addSeparator()

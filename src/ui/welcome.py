@@ -76,6 +76,7 @@ class welcome(QWidget, Ui_welcome):
         
     def loadRecents(self):
         sttgns = QSettings()
+        self.mw.menuRecents.setIcon(QIcon.fromTheme("folder-recent"))
         if sttgns.contains("recentFiles"):
             lst = sttgns.value("recentFiles")
             self.mw.menuRecents.clear()
