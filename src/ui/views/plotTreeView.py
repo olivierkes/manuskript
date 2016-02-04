@@ -174,7 +174,7 @@ class plotTreeView(QTreeWidget):
             sub = ET.Element("outlineItem")    
             sub.set(Outline.title.name, name)
             sub.set(Outline.type.name, settings.defaultTextType)
-            sub.set(Outline.summaryFull.name, name)
+            sub.set(Outline.summaryFull.name, summary)
             sub.set(Outline.notes.name, self.tr("**Plot:** {}").format(
                 Ref.plotReference(plotID)))
             
