@@ -211,7 +211,7 @@ class mainEditor(QWidget, Ui_mainEditor):
     
     def updateTreeView(self):
         for w in self.allTabs():
-            w.corkView.outlineView.viewport().update()
+            w.outlineView.viewport().update()
         
     def showFullScreen(self):
         if self.currentEditor():
