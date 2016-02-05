@@ -2,11 +2,12 @@
 
 import sys
 from qt import *
+
 from functions import *
+import faulthandler
 
 _version = "0.1"
 
-import faulthandler
 faulthandler.enable()
 
 
@@ -15,16 +16,16 @@ def run():
     app.setOrganizationName("manuskript")
     app.setOrganizationDomain("www.theologeek.ch")
     app.setApplicationName("manuskript")
-    app.setApplicationVersion("0.1")
+    app.setApplicationVersion(_version)
 
     app.setStyle("Fusion")
 
-    ### Translation process
+    # Translation process
     locale = QLocale.system().name()
     locale = "fr_CH"
-    #qtTranslator = QTranslator()
-    #if qtTranslator.load("qt_" + locale):
-        #app.installTranslator(qtTranslator)
+    # qtTranslator = QTranslator()
+    # if qtTranslator.load("qt_" + locale):
+    # app.installTranslator(qtTranslator)
     appTranslator = QTranslator()
     if appTranslator.load(appPath("i18n/manuskript_{}.qm").format(locale)):
         app.installTranslator(appTranslator)
@@ -37,12 +38,12 @@ def run():
     if settings.contains("applicationStyle"):
         style = settings.value("applicationStyle")
         app.setStyle(style)
-    
+
     QIcon.setThemeSearchPaths(QIcon.themeSearchPaths() + [appPath("icons")])
     QIcon.setThemeName("NumixMsk")
     print(QIcon.hasThemeIcon("dialog-no"))
     print(QIcon.themeSearchPaths())
-    #qApp.setWindowIcon(QIcon.fromTheme("im-aim"))
+    # qApp.setWindowIcon(QIcon.fromTheme("im-aim"))
 
     # Seperating launch to avoid segfault, so it seem.
     # Cf. http://stackoverflow.com/questions/12433491/is-this-pyqt-4-python-bug-or-wrongly-behaving-code
@@ -60,5 +61,4 @@ def launch():
 
 
 if __name__ == "__main__":
-
     run()
