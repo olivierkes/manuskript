@@ -26,7 +26,7 @@ def run():
     #if qtTranslator.load("qt_" + locale):
         #app.installTranslator(qtTranslator)
     appTranslator = QTranslator()
-    if appTranslator.load("i18n/manuskript_{}.qm".format(locale)):
+    if appTranslator.load(appPath("i18n/manuskript_{}.qm").format(locale)):
         app.installTranslator(appTranslator)
         print(app.tr("Loaded transation: {}.").format(locale))
     else:

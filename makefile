@@ -27,7 +27,8 @@ translation:
 	pylupdate5 -noobsolete i18n/manuskript.pro
 	
 linguist:
-	linguist i18n/manuskript_fr.ts 
+	linguist i18n/manuskript_fr.ts
+	lrelease i18n/manuskript_fr.ts
 	
 i18n: $(QMs)
 	

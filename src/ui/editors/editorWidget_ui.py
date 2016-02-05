@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'src/ui/editors/editorWidget_ui.ui'
 #
-# Created by: PyQt5 UI code generator 5.4.1
+# Created by: PyQt5 UI code generator 5.4.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -29,8 +29,8 @@ class Ui_editorWidget_ui(object):
         self.folder = QtWidgets.QWidget()
         self.folder.setObjectName("folder")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.folder)
-        self.verticalLayout.setSpacing(0)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName("verticalLayout")
         self.scroll = QtWidgets.QScrollArea(self.folder)
         self.scroll.setAutoFillBackground(True)
@@ -70,6 +70,6 @@ class Ui_editorWidget_ui(object):
         _translate = QtCore.QCoreApplication.translate
         editorWidget_ui.setWindowTitle(_translate("editorWidget_ui", "Form"))
 
-from ui.views.textEditView import textEditView
 from ui.views.corkView import corkView
 from ui.views.outlineView import outlineView
+from ui.views.textEditView import textEditView
