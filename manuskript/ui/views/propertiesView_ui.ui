@@ -297,32 +297,32 @@
   <customwidget>
    <class>lineEditView</class>
    <extends>QLineEdit</extends>
-   <header>ui.views.lineEditView.h</header>
+   <header>manuskript.ui.views.lineEditView.h</header>
   </customwidget>
   <customwidget>
    <class>cmbOutlinePersoChoser</class>
    <extends>QComboBox</extends>
-   <header>ui.views.cmbOutlinePersoChoser.h</header>
+   <header>manuskript.ui.views.cmbOutlinePersoChoser.h</header>
   </customwidget>
   <customwidget>
    <class>cmbOutlineStatusChoser</class>
    <extends>QComboBox</extends>
-   <header>ui.views.cmbOutlineStatusChoser.h</header>
+   <header>manuskript.ui.views.cmbOutlineStatusChoser.h</header>
   </customwidget>
   <customwidget>
    <class>chkOutlineCompile</class>
    <extends>QCheckBox</extends>
-   <header>ui.views.chkOutlineCompile.h</header>
+   <header>manuskript.ui.views.chkOutlineCompile.h</header>
   </customwidget>
   <customwidget>
    <class>cmbOutlineLabelChoser</class>
    <extends>QComboBox</extends>
-   <header>ui.views.cmbOutlineLabelChoser.h</header>
+   <header>manuskript.ui.views.cmbOutlineLabelChoser.h</header>
   </customwidget>
   <customwidget>
    <class>cmbOutlineTypeChoser</class>
    <extends>QComboBox</extends>
-   <header>ui.views.cmbOutlineTypeChoser.h</header>
+   <header>manuskript.ui.views.cmbOutlineTypeChoser.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

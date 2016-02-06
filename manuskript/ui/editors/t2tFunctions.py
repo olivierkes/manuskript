@@ -1,8 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from qt import *
 import re
+
+from PyQt5.QtCore import QRegExp
+from PyQt5.QtGui import QTextCursor
+
 
 def t2tFormatSelection(editor, style):
     """
@@ -54,7 +57,7 @@ def t2tFormatSelection(editor, style):
     # Adjusts selection to exclude the markup
     while text[start:start + 1] == formatChar:
         start += 1
-    while text[end - 1:end] ==formatChar:
+    while text[end - 1:end] == formatChar:
         end -= 1
 
     # Get the text without formatting, and the array of format
@@ -69,12 +72,12 @@ def t2tFormatSelection(editor, style):
         # have some unformated text in the selection, so we format the
         # whole selection
         propperArray = propperArray[:tStart] + [1] * \
-                        (tEnd - tStart) + propperArray[tEnd:]
+                                               (tEnd - tStart) + propperArray[tEnd:]
     else:
         # The whole selection is already formatted, so we remove the
         # formatting
         propperArray = propperArray[:tStart] + [0] * \
-                        (tEnd - tStart) + propperArray[tEnd:]
+                                               (tEnd - tStart) + propperArray[tEnd:]
 
     fArray = fArray[0:style] + [propperArray] + fArray[style + 1:]
 
@@ -92,8 +95,9 @@ def t2tFormatSelection(editor, style):
 
     editor.setTextCursor(cursor)
 
+
 def t2tClearFormat(editor):
-    "Clears format on ``editor``'s current selection."
+    """Clears format on ``editor``'s current selection."""
 
     cursor = editor.textCursor()
     cursor.beginEditBlock()
@@ -104,6 +108,7 @@ def t2tClearFormat(editor):
     cursor.insertText(t)
     cursor.endEditBlock()
     editor.setTextCursor(cursor)
+
 
 def textToFormatArray(text):
     """
@@ -140,7 +145,7 @@ def textToFormatArray(text):
         pos = r.indexIn(text, 0)
         lastPos = 0
         while pos >= 0:
-            #We have a winner
+            # We have a winner
             rList += [0] * (pos - lastPos)
             rList += [2] * 2
             rList += [1] * len(r.cap(2))
@@ -231,7 +236,7 @@ def reformatText(text, markupArray):
     markup = ["**", "//", "__", "--", "``", "''"]
 
     for k, m in enumerate(markupArray):
-        #m = markupArray[k]
+        # m = markupArray[k]
         _open = False  # Are we in an _openned markup
         d = 0
         alreadySeen = []
@@ -256,7 +261,7 @@ def reformatText(text, markupArray):
                 for j, m2 in enumerate(markupArray):
                     # The other array still have the same length
                     if j > k:
-                        #Insert 2 for bold, 3 for italic, etc.
+                        # Insert 2 for bold, 3 for italic, etc.
                         m2.insert(i + d, k + 2)
                         m2.insert(i + d, k + 2)
                     alreadySeen = []
@@ -267,24 +272,24 @@ def reformatText(text, markupArray):
             for j, m2 in enumerate(markupArray):
                 # The other array still have the same length
                 if j > k:
-                    #Insert 2 for bold, 3 for italic, etc.
+                    # Insert 2 for bold, 3 for italic, etc.
                     m2.insert(i + d, k + 2)
                     m2.insert(i + d, k + 2)
         text = rText
         rText = ""
 
-    ## Clean up
+    # Clean up
     # Exclude first and last space of the markup
     for markup in ["\*", "/", "_", "-", "`", "\'"]:
-        #r = QRegExp(r'(' + markup * 2 + ')(\s+)(.+)(' + markup * 2 + ')')
-        #r.setMinimal(True)
-        #text.replace(r, "\\2\\1\\3\\4")
+        # r = QRegExp(r'(' + markup * 2 + ')(\s+)(.+)(' + markup * 2 + ')')
+        # r.setMinimal(True)
+        # text.replace(r, "\\2\\1\\3\\4")
         text = re.sub(r'(' + markup * 2 + ')(\s+?)(.+?)(' + markup * 2 + ')',
                       "\\2\\1\\3\\4",
                       text)
-        #r = QRegExp(r'(' + markup * 2 + ')(.+)(\s+)(' + markup * 2 + ')')
-        #r.setMinimal(True)
-        #text.replace(r, "\\1\\2\\4\\3")
+        # r = QRegExp(r'(' + markup * 2 + ')(.+)(\s+)(' + markup * 2 + ')')
+        # r.setMinimal(True)
+        # text.replace(r, "\\1\\2\\4\\3")
         text = re.sub(r'(' + markup * 2 + ')(.+?)(\s+?)(' + markup * 2 + ')',
                       "\\1\\2\\4\\3",
                       text)
@@ -293,7 +298,7 @@ def reformatText(text, markupArray):
 
 
 def cleanFormat(text):
-    "Makes markup clean (removes doubles, etc.)"
+    """Makes markup clean (removes doubles, etc.)"""
     t, a = textToFormatArrayNoMarkup(text)
     return reformatText(t, a)
 
@@ -327,7 +332,7 @@ class State:
     RAW_AREA_ENDS = 20
     TAGGED_AREA_BEGINS = 21
     TAGGED_AREA_ENDS = 22
-    #LINE
+    # LINE
     COMMENT_LINE = 30
     CODE_LINE = 31
     RAW_LINE = 32
@@ -346,7 +351,7 @@ class State:
     # TABLE
     TABLE_LINE = 50
     TABLE_HEADER = 51
-    #OTHER
+    # OTHER
     MARKUP = 60
     LINKS = 61
     MACRO = 62

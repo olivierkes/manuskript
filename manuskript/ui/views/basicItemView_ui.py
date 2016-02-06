@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/views/basicItemView_ui.ui'
 #
-# Created by: PyQt5 UI code generator 5.4.1
+# Created by: PyQt5 UI code generator 5.4.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -66,6 +66,6 @@ class Ui_basicItemView(object):
         self.txtSummarySentance.setPlaceholderText(_translate("basicItemView", "One line summary"))
         self.label_9.setText(_translate("basicItemView", "Few sentences summary:"))
 
-from ui.views.textEditView import textEditView
-from ui.views.lineEditView import lineEditView
-from ui.views.cmbOutlinePersoChoser import cmbOutlinePersoChoser
+from manuskript.ui.views.cmbOutlinePersoChoser import cmbOutlinePersoChoser
+from manuskript.ui.views.lineEditView import lineEditView
+from manuskript.ui.views.textEditView import textEditView

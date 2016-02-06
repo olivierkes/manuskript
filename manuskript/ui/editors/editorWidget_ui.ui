@@ -14,7 +14,16 @@
    <string>Form</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
-   <property name="margin">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
     <number>0</number>
    </property>
    <item>
@@ -24,7 +33,16 @@
      </property>
      <widget class="QWidget" name="text">
       <layout class="QHBoxLayout" name="horizontalLayout_2">
-       <property name="margin">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
         <number>0</number>
        </property>
        <item>
@@ -37,7 +55,16 @@
        <property name="spacing">
         <number>0</number>
        </property>
-       <property name="margin">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
         <number>0</number>
        </property>
        <item>
@@ -53,8 +80,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>396</width>
-            <height>296</height>
+            <width>96</width>
+            <height>26</height>
            </rect>
           </property>
          </widget>
@@ -64,7 +91,16 @@
      </widget>
      <widget class="QWidget" name="cork">
       <layout class="QHBoxLayout" name="horizontalLayout_3">
-       <property name="margin">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
         <number>0</number>
        </property>
        <item>
@@ -74,7 +110,16 @@
      </widget>
      <widget class="QWidget" name="outline">
       <layout class="QVBoxLayout" name="verticalLayout_3">
-       <property name="margin">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
         <number>0</number>
        </property>
        <item>
@@ -90,17 +135,17 @@
   <customwidget>
    <class>textEditView</class>
    <extends>QTextEdit</extends>
-   <header>ui.views.textEditView.h</header>
+   <header>manuskript.ui.views.textEditView.h</header>
   </customwidget>
   <customwidget>
    <class>outlineView</class>
    <extends>QTreeView</extends>
-   <header>ui.views.outlineView.h</header>
+   <header>manuskript.ui.views.outlineView.h</header>
   </customwidget>
   <customwidget>
    <class>corkView</class>
    <extends>QListView</extends>
-   <header>ui.views.corkView.h</header>
+   <header>manuskript.ui.views.corkView.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

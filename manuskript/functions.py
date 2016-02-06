@@ -1,12 +1,20 @@
 #!/usr/bin/env python
 #--!-- coding: utf8 --!--
 
-from qt import *
-from random import *
-from enums import *
 import os
+from random import *
+
+from PyQt5.QtCore import Qt, QRect, QStandardPaths, QObject
 
 # Used to detect multiple connections
+from PyQt5.QtGui import QBrush, QIcon, QPainter
+from PyQt5.QtGui import QColor
+from PyQt5.QtGui import QImage
+from PyQt5.QtGui import QPixmap
+from PyQt5.QtWidgets import qApp
+
+from manuskript.enums import Outline
+
 AUC = Qt.AutoConnection | Qt.UniqueConnection
 MW = None
 
@@ -70,7 +78,7 @@ def mainWindow():
         return MW
 
 def iconColor(icon):
-    "Returns a QRgb from a QIcon, assuming its all the same color"
+    """Returns a QRgb from a QIcon, assuming its all the same color"""
     px = icon.pixmap(5, 5)
     if px.width() != 0:
         return QColor(QImage(px).pixel(2, 2))
@@ -86,7 +94,7 @@ def iconFromColorString(string):
     return iconFromColor(QColor(string))
 
 def randomColor(mix=None):
-    "Generates a random color. If mix (QColor) is given, mixes the random color and mix."
+    """Generates a random color. If mix (QColor) is given, mixes the random color and mix."""
     r = randint(0, 255)
     g = randint(0, 255)
     b = randint(0, 255)
@@ -106,36 +114,36 @@ def mixColors(col1, col2, f=.5):
     return QColor(r, g, b)
 
 def outlineItemColors(item):
-        "Takes an OutlineItem and returns a dict of colors."
-        colors = {}
-        mw = mainWindow()
-        
-        # POV
-        colors["POV"] = QColor(Qt.transparent)
-        POV = item.data(Outline.POV.value)
-        for i in range(mw.mdlPersos.rowCount()):
-            if mw.mdlPersos.ID(i) == POV:
-                colors["POV"] = iconColor(mw.mdlPersos.icon(i))
-        
-        # Label
-        lbl = item.data(Outline.label.value)
-        col = iconColor(mw.mdlLabels.item(toInt(lbl)).icon())
-        if col == Qt.black:
-            # Don't know why, but transparent is rendered as black
-            col = QColor(Qt.transparent)
-        colors["Label"] = col
-        
-        # Progress
-        pg = item.data(Outline.goalPercentage.value)
-        colors["Progress"] = colorFromProgress(pg)
-        
-        # Compile
-        if item.compile() in [0, "0"]:
-            colors["Compile"] = QColor(Qt.gray)
-        else:
-            colors["Compile"] = QColor(Qt.black)
-            
-        return colors
+    """Takes an OutlineItem and returns a dict of colors."""
+    colors = {}
+    mw = mainWindow()
+
+    # POV
+    colors["POV"] = QColor(Qt.transparent)
+    POV = item.data(Outline.POV.value)
+    for i in range(mw.mdlPersos.rowCount()):
+        if mw.mdlPersos.ID(i) == POV:
+            colors["POV"] = iconColor(mw.mdlPersos.icon(i))
+
+    # Label
+    lbl = item.data(Outline.label.value)
+    col = iconColor(mw.mdlLabels.item(toInt(lbl)).icon())
+    if col == Qt.black:
+        # Don't know why, but transparent is rendered as black
+        col = QColor(Qt.transparent)
+    colors["Label"] = col
+
+    # Progress
+    pg = item.data(Outline.goalPercentage.value)
+    colors["Progress"] = colorFromProgress(pg)
+
+    # Compile
+    if item.compile() in [0, "0"]:
+        colors["Compile"] = QColor(Qt.gray)
+    else:
+        colors["Compile"] = QColor(Qt.black)
+
+    return colors
     
 def colorifyPixmap(pixmap, color):
     # FIXME: ugly

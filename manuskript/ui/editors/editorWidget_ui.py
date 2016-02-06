@@ -37,7 +37,7 @@ class Ui_editorWidget_ui(object):
         self.scroll.setWidgetResizable(True)
         self.scroll.setObjectName("scroll")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 396, 296))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 96, 26))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.scroll.setWidget(self.scrollAreaWidgetContents)
         self.verticalLayout.addWidget(self.scroll)
@@ -70,6 +70,6 @@ class Ui_editorWidget_ui(object):
         _translate = QtCore.QCoreApplication.translate
         editorWidget_ui.setWindowTitle(_translate("editorWidget_ui", "Form"))
 
-from ui.views.corkView import corkView
-from ui.views.outlineView import outlineView
-from ui.views.textEditView import textEditView
+from manuskript.ui.views.corkView import corkView
+from manuskript.ui.views.outlineView import outlineView
+from manuskript.ui.views.textEditView import textEditView

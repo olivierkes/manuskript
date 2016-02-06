@@ -1,13 +1,15 @@
 #!/usr/bin/python
 # -*- coding: utf8 -*-
 
-from qt import *
 import re
-from functions import *
-import models.references as Ref
+
+from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QBrush, QTextCursor, QColor, QFont, QSyntaxHighlighter, QTextBlockFormat, QTextCharFormat
+
+import manuskript.models.references as Ref
+
 
 class basicHighlighter(QSyntaxHighlighter):
-
     def __init__(self, editor):
         QSyntaxHighlighter.__init__(self, editor.document())
 
@@ -19,21 +21,20 @@ class basicHighlighter(QSyntaxHighlighter):
     def setDefaultBlockFormat(self, bf):
         self._defaultBlockFormat = bf
         self.rehighlight()
-        
+
     def setDefaultCharFormat(self, cf):
         self._defaultCharFormat = cf
         self.rehighlight()
-    
+
     def setMisspelledColor(self, color):
         self._misspelledColor = color
-    
-    
+
     def highlightBlock(self, text):
         """Apply syntax highlighting to the given block of text.
         """
         self.highlightBlockBefore(text)
         self.highlightBlockAfter(text)
-    
+
     def highlightBlockBefore(self, text):
         """Highlighting to do before anything else.
         
@@ -43,16 +44,16 @@ class basicHighlighter(QSyntaxHighlighter):
         bf = QTextBlockFormat(self._defaultBlockFormat)
         bf.setAlignment(QTextCursor(self.currentBlock()).blockFormat().alignment())
         QTextCursor(self.currentBlock()).setBlockFormat(bf)
-        
-        #self.setFormat(0, len(text), self._defaultCharFormat)
-        
+
+        # self.setFormat(0, len(text), self._defaultCharFormat)
+
     def highlightBlockAfter(self, text):
         """Highlighting to do after everything else.
         
         When subclassing basicHighlighter, you must call highlightBlockAfter
         after your custom highlighting.
         """
-        
+
         # References
         for txt in re.finditer(Ref.RegEx, text):
             fmt = self.format(txt.start())
@@ -66,11 +67,11 @@ class basicHighlighter(QSyntaxHighlighter):
                 fmt.setBackground(QBrush(QColor(Qt.red).lighter(170)))
             elif txt.group(1) == Ref.WorldLetter:
                 fmt.setBackground(QBrush(QColor(Qt.green).lighter(170)))
-            
+
             self.setFormat(txt.start(),
-                        txt.end() - txt.start(),
-                        fmt)
-        
+                           txt.end() - txt.start(),
+                           fmt)
+
         # Spell checking
         # Based on http://john.nachtimwald.com/2009/08/22/qplaintextedit-with-in-line-spell-check/
         WORDS = '(?iu)[\w\']+'
@@ -81,7 +82,4 @@ class basicHighlighter(QSyntaxHighlighter):
                     format.setUnderlineColor(self._misspelledColor)
                     format.setUnderlineStyle(QTextCharFormat.SpellCheckUnderline)
                     self.setFormat(word_object.start(),
-                        word_object.end() - word_object.start(), format)
-
-
-        
+                                   word_object.end() - word_object.start(), format)

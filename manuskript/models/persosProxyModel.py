@@ -1,11 +1,8 @@
 #!/usr/bin/env python
 #--!-- coding: utf8 --!--
 
-from qt import *
-from enums import *
+from manuskript import enums
 
-from enum import Enum
-from lxml import etree as ET
 
 class persosProxyModel(QSortFilterProxyModel):
     

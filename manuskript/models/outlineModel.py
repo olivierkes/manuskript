@@ -1,13 +1,21 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
 
-from qt import *
-from enums import *
-from enum import Enum
-from lxml import etree as ET
-from functions import *
-import settings
 import locale
+
+from PyQt5.QtCore import QAbstractItemModel, QMimeData
+from PyQt5.QtCore import QModelIndex
+from PyQt5.QtCore import QSize
+from PyQt5.QtCore import QVariant
+from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QIcon, QFont
+from PyQt5.QtWidgets import QTextEdit, qApp
+
+from manuskript import settings
+from lxml import etree as ET
+
+from manuskript.enums import Outline
+from manuskript.functions import mainWindow, toInt, wordCount
 
 locale.setlocale(locale.LC_ALL, '')
 import time

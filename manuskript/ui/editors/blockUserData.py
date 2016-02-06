@@ -1,14 +1,12 @@
 #!/usr/bin/python
 # -*- coding: utf8 -*-
+from PyQt5.QtGui import QTextBlockUserData
 
-from qt import *
 
-
-class blockUserData (QTextBlockUserData):
-
+class blockUserData(QTextBlockUserData):
     @staticmethod
     def getUserData(block):
-        "Returns userData if it exists, or a blank one."
+        """Returns userData if it exists, or a blank one."""
         data = block.userData()
         if data is None:
             data = blockUserData()
@@ -16,7 +14,7 @@ class blockUserData (QTextBlockUserData):
 
     @staticmethod
     def getUserState(block):
-        "Returns the block state."
+        """Returns the block state."""
         state = block.userState()
         while state >= 100:
             state -= 100  # +100 means in a list

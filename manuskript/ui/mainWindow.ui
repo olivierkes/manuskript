@@ -103,7 +103,16 @@
         <property name="spacing">
          <number>0</number>
         </property>
-        <property name="margin">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
          <number>0</number>
         </property>
         <item>
@@ -706,7 +715,7 @@
                     <property name="placeholderText">
                      <string>Filter</string>
                     </property>
-                    <property name="clearButtonEnabled" stdset="0">
+                    <property name="clearButtonEnabled">
                      <bool>true</bool>
                     </property>
                    </widget>
@@ -1055,7 +1064,7 @@
                     <property name="placeholderText">
                      <string>Filter</string>
                     </property>
-                    <property name="clearButtonEnabled" stdset="0">
+                    <property name="clearButtonEnabled">
                      <bool>true</bool>
                     </property>
                    </widget>
@@ -1416,7 +1425,7 @@
                     <property name="placeholderText">
                      <string>Filter</string>
                     </property>
-                    <property name="clearButtonEnabled" stdset="0">
+                    <property name="clearButtonEnabled">
                      <bool>true</bool>
                     </property>
                    </widget>
@@ -1658,7 +1667,16 @@
             <string>Redaction</string>
            </attribute>
            <layout class="QVBoxLayout" name="verticalLayout_15">
-            <property name="margin">
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
              <number>0</number>
             </property>
             <item>
@@ -1668,7 +1686,16 @@
               </property>
               <widget class="QWidget" name="treeRedacWidget" native="true">
                <layout class="QVBoxLayout" name="verticalLayout_30">
-                <property name="margin">
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
                  <number>0</number>
                 </property>
                 <item>
@@ -1850,19 +1877,21 @@
      <x>0</x>
      <y>0</y>
      <width>1145</width>
-     <height>21</height>
+     <height>30</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
     <property name="title">
-     <string>File</string>
+     <string>Fi&amp;le</string>
     </property>
     <widget class="QMenu" name="menuRecents">
      <property name="title">
-      <string>Recents</string>
+      <string>&amp;Recents</string>
      </property>
      <property name="icon">
-      <iconset theme="folder-recent"/>
+      <iconset theme="folder-recent">
+       <normaloff/>
+      </iconset>
      </property>
     </widget>
     <addaction name="actOpen"/>
@@ -1877,7 +1906,7 @@
    </widget>
    <widget class="QMenu" name="menuMode">
     <property name="title">
-     <string>Mode</string>
+     <string>&amp;Mode</string>
     </property>
     <addaction name="actModeNorma"/>
     <addaction name="actModeSimple"/>
@@ -1905,7 +1934,7 @@
    </widget>
    <widget class="QMenu" name="menuView">
     <property name="title">
-     <string>View</string>
+     <string>&amp;View</string>
     </property>
    </widget>
    <addaction name="menuFile"/>
@@ -1918,7 +1947,7 @@
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QDockWidget" name="dckCheatSheet">
    <property name="windowTitle">
-    <string>Cheat sheet</string>
+    <string>&amp;Cheat sheet</string>
    </property>
    <attribute name="dockWidgetArea">
     <number>2</number>
@@ -1940,7 +1969,7 @@
   </widget>
   <widget class="QDockWidget" name="dckSearch">
    <property name="windowTitle">
-    <string>Search</string>
+    <string>Sea&amp;rch</string>
    </property>
    <attribute name="dockWidgetArea">
     <number>2</number>
@@ -1966,7 +1995,7 @@
      <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
    </property>
    <property name="text">
-    <string>Open</string>
+    <string>&amp;Open</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+O</string>
@@ -1978,7 +2007,7 @@
      <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
    </property>
    <property name="text">
-    <string>Save</string>
+    <string>&amp;Save</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+S</string>
@@ -1990,7 +2019,7 @@
      <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
    </property>
    <property name="text">
-    <string>Save as...</string>
+    <string>Sa&amp;ve as...</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+S</string>
@@ -2002,7 +2031,7 @@
      <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
    </property>
    <property name="text">
-    <string>Quit</string>
+    <string>&amp;Quit</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Q</string>
@@ -2020,7 +2049,7 @@
      <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
    </property>
    <property name="text">
-    <string>Show help texts</string>
+    <string>&amp;Show help texts</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+B</string>
@@ -2038,7 +2067,7 @@
      <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
    </property>
    <property name="text">
-    <string>Spellcheck</string>
+    <string>&amp;Spellcheck</string>
    </property>
    <property name="shortcut">
     <string>F9</string>
@@ -2046,12 +2075,12 @@
   </action>
   <action name="actLabels">
    <property name="text">
-    <string>Labels...</string>
+    <string>&amp;Labels...</string>
    </property>
   </action>
   <action name="actStatus">
    <property name="text">
-    <string>Status...</string>
+    <string>&amp;Status...</string>
    </property>
   </action>
   <action name="actViewTree">
@@ -2067,7 +2096,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Normal</string>
+    <string>&amp;Normal</string>
    </property>
   </action>
   <action name="actModeSimple">
@@ -2075,7 +2104,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Simple</string>
+    <string>&amp;Simple</string>
    </property>
   </action>
   <action name="actModeFractal">
@@ -2083,7 +2112,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Fractal</string>
+    <string>&amp;Fractal</string>
    </property>
   </action>
   <action name="actViewCork">
@@ -2102,7 +2131,7 @@
      <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
    </property>
    <property name="text">
-    <string>Settings</string>
+    <string>S&amp;ettings</string>
    </property>
    <property name="shortcut">
     <string>F8</string>
@@ -2115,12 +2144,12 @@
     </iconset>
    </property>
    <property name="text">
-    <string>Close project</string>
+    <string>&amp;Close project</string>
    </property>
   </action>
   <action name="actCompile">
    <property name="text">
-    <string>Compile</string>
+    <string>Co&amp;mpile</string>
    </property>
    <property name="shortcut">
     <string>F6</string>
@@ -2131,79 +2160,79 @@
   <customwidget>
    <class>textEditView</class>
    <extends>QTextEdit</extends>
-   <header>ui.views.textEditView.h</header>
+   <header>manuskript.ui.views.textEditView.h</header>
   </customwidget>
   <customwidget>
    <class>lineEditView</class>
    <extends>QLineEdit</extends>
-   <header>ui.views.lineEditView.h</header>
+   <header>manuskript.ui.views.lineEditView.h</header>
   </customwidget>
   <customwidget>
    <class>outlineView</class>
    <extends>QTreeView</extends>
-   <header>ui.views.outlineView.h</header>
+   <header>manuskript.ui.views.outlineView.h</header>
   </customwidget>
   <customwidget>
    <class>sldImportance</class>
    <extends>QWidget</extends>
-   <header>ui.sldImportance.h</header>
+   <header>manuskript.ui.sldImportance.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>treeView</class>
    <extends>QTreeView</extends>
-   <header>ui.views.treeView.h</header>
+   <header>manuskript.ui.views.treeView.h</header>
   </customwidget>
   <customwidget>
    <class>metadataView</class>
    <extends>QWidget</extends>
-   <header>ui.views.metadataView.h</header>
+   <header>manuskript.ui.views.metadataView.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>basicItemView</class>
    <extends>QWidget</extends>
-   <header>ui.views.basicItemView.h</header>
+   <header>manuskript.ui.views.basicItemView.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>plotTreeView</class>
    <extends>QTreeWidget</extends>
-   <header>ui.views.plotTreeView.h</header>
+   <header>manuskript.ui.views.plotTreeView.h</header>
   </customwidget>
   <customwidget>
    <class>welcome</class>
    <extends>QWidget</extends>
-   <header>ui.welcome.h</header>
+   <header>manuskript.ui.welcome.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>mainEditor</class>
    <extends>QWidget</extends>
-   <header>ui.editors.mainEditor.h</header>
+   <header>manuskript.ui.editors.mainEditor.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>persoTreeView</class>
    <extends>QTreeWidget</extends>
-   <header>ui.views.persoTreeView.h</header>
+   <header>manuskript.ui.views.persoTreeView.h</header>
   </customwidget>
   <customwidget>
    <class>cheatSheet</class>
    <extends>QWidget</extends>
-   <header>ui.cheatSheet.h</header>
+   <header>manuskript.ui.cheatSheet.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>search</class>
    <extends>QWidget</extends>
-   <header>ui.search.h</header>
+   <header>manuskript.ui.search.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>textEditCompleter</class>
    <extends>QTextEdit</extends>
-   <header>ui.views.textEditCompleter.h</header>
+   <header>manuskript.ui.views.textEditCompleter.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

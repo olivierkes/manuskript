@@ -1,7 +1,8 @@
 #!/usr/bin/env python
-#--!-- coding: utf8 --!--
-
-from qt import *
+# --!-- coding: utf8 --!--
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QToolBar, QDockWidget, QAction, QToolButton, QSizePolicy, QStylePainter, \
+    QStyleOptionButton, QStyle
 
 
 class collapsibleDockWidgets(QToolBar):
@@ -14,7 +15,7 @@ class collapsibleDockWidgets(QToolBar):
         Qt.RightDockWidgetArea: Qt.RightToolBarArea,
         Qt.TopDockWidgetArea: Qt.TopToolBarArea,
         Qt.BottomDockWidgetArea: Qt.BottomToolBarArea,
-        }
+    }
 
     def __init__(self, area, parent, name=""):
         QToolBar.__init__(self, parent)
@@ -26,18 +27,18 @@ class collapsibleDockWidgets(QToolBar):
 
         self.setFloatable(False)
         self.setMovable(False)
-        
-        #self.setAllowedAreas(self.TRANSPOSED_AREA[self._area])
+
+        # self.setAllowedAreas(self.TRANSPOSED_AREA[self._area])
         self.parent().addToolBar(self.TRANSPOSED_AREA[self._area], self)
-        
+
         # Dock widgets
         for d in self._dockWidgets():
             b = verticalButton(self)
             b.setDefaultAction(d.toggleViewAction())
             self.addWidget(b)
-            
+
         self.addSeparator()
-        
+
         # Other widgets
         self.otherWidgets = []
         self.currentGroup = None
@@ -47,41 +48,41 @@ class collapsibleDockWidgets(QToolBar):
         for w in mw.findChildren(QDockWidget, None):
             yield w
 
-    def addCustomWidget(self, text, widget, group=None):    
+    def addCustomWidget(self, text, widget, group=None):
         a = QAction(text, self)
         a.setCheckable(True)
         a.setChecked(widget.isVisible())
         a.toggled.connect(widget.setVisible)
-        #widget.installEventFilter(self)
+        # widget.installEventFilter(self)
         b = verticalButton(self)
         b.setDefaultAction(a)
         a2 = self.addWidget(b)
         self.otherWidgets.append((b, a2, widget, group))
-        
-    #def eventFilter(self, widget, event):
-        #if event.type() in [QEvent.Show, QEvent.Hide]:
-            #for btn, action, w, grp in self.otherWidgets:
-                #if w == widget:
-                    #btn.defaultAction().setChecked(event.type() == QEvent.Show)
-        #return False
-        
+
+        # def eventFilter(self, widget, event):
+        # if event.type() in [QEvent.Show, QEvent.Hide]:
+        # for btn, action, w, grp in self.otherWidgets:
+        # if w == widget:
+        # btn.defaultAction().setChecked(event.type() == QEvent.Show)
+        # return False
+
     def setCurrentGroup(self, group):
         self.currentGroup = group
         for btn, action, widget, grp in self.otherWidgets:
-            if not grp == group or grp == None:
+            if not grp == group or grp is None:
                 action.setVisible(False)
             else:
                 action.setVisible(True)
-            
+
 
 class verticalButton(QToolButton):
     def __init__(self, parent):
         QToolButton.__init__(self, parent)
         self.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Minimum)
-        
+
     def sizeHint(self):
         return QToolButton.sizeHint(self).transposed()
-        
+
     def paintEvent(self, event):
         p = QStylePainter(self)
         p.rotate(90)

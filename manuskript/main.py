@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 
-import sys
-from qt import *
-
-from functions import *
 import faulthandler
+import sys
+
+from PyQt5.QtCore import QLocale, QTranslator, QSettings
+from PyQt5.QtWidgets import QApplication
+from .functions import *
 
 _version = "0.1"
 
@@ -49,7 +50,7 @@ def run():
 
 
 def launch():
-    from mainWindow import MainWindow
+    from .mainWindow import MainWindow
 
     main = MainWindow()
     main.show()

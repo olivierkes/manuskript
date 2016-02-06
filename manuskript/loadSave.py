@@ -1,10 +1,15 @@
 #!/usr/bin/env python
 #--!-- coding: utf8 --!--
 
-from qt import *
-from functions import *
-from lxml import etree as ET
 import zipfile
+
+from PyQt5.QtCore import QModelIndex, Qt
+from PyQt5.QtGui import QColor, QStandardItem
+from PyQt5.QtWidgets import qApp
+from lxml import etree as ET
+
+from manuskript.functions import iconColor, iconFromColorString
+
 try:
     import zlib # Used with zipfile for compression
     compression = zipfile.ZIP_DEFLATED

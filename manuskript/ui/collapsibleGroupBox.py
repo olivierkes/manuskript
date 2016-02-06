@@ -1,31 +1,30 @@
 #!/usr/bin/env python
-#--!-- coding: utf8 --!--
- 
+# --!-- coding: utf8 --!--
+from PyQt5.QtCore import Qt, QRect, QRectF
+from PyQt5.QtGui import QColor, QBrush, QRegion, QTextOption, QFont
+from PyQt5.QtWidgets import QSizePolicy, QGroupBox, QWidget, QStylePainter, QStyleOptionGroupBox, qApp, QVBoxLayout, \
+    QStyle, QStyleOptionFrame, QStyleOptionFocusRect
 
-
-
-from qt import *
 
 class collapsibleGroupBox(QGroupBox):
-    
     def __init__(self, parent=None):
         QGroupBox.__init__(self)
-        
+
         self.toggled.connect(self.setExpanded)
         self.tempWidget = QWidget()
-        
+
         self.customStyle = False
-    
+
     def setExpanded(self, val):
         self.setCollapsed(not val)
-        
+
     def setCollapsed(self, val):
         if val:
             # Save layout
             self.tempWidget.setLayout(self.layout())
             # Set empty layout
             l = QVBoxLayout()
-            #print(l.contentsMargins().left(), l.contentsMargins().bottom(), l.contentsMargins().top(), )
+            # print(l.contentsMargins().left(), l.contentsMargins().bottom(), l.contentsMargins().top(), )
             l.setContentsMargins(0, 0, 0, 0)
             self.setLayout(l)
             self.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Maximum)
@@ -35,37 +34,37 @@ class collapsibleGroupBox(QGroupBox):
             # Set saved layout
             self.setLayout(self.tempWidget.layout())
             self.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
-            
+
     def paintEvent(self, event):
-        
+
         if not self.customStyle:
             return QGroupBox.paintEvent(self, event)
-        
+
         p = QStylePainter(self)
         opt = QStyleOptionGroupBox()
         self.initStyleOption(opt)
-        
+
         style = qApp.style()
         groupBox = opt
-        
-        #// Draw frame
+
+        # // Draw frame
         textRect = style.subControlRect(style.CC_GroupBox, opt, style.SC_GroupBoxLabel)
         checkBoxRect = style.subControlRect(style.CC_GroupBox, opt, style.SC_GroupBoxCheckBox)
-        
+
         p.save()
         titleRect = style.subControlRect(style.CC_GroupBox, opt, style.SC_GroupBoxFrame)
-        #r.setBottom(style.subControlRect(style.CC_GroupBox, opt, style.SC_GroupBoxContents).top())
+        # r.setBottom(style.subControlRect(style.CC_GroupBox, opt, style.SC_GroupBoxContents).top())
         titleRect.setHeight(textRect.height())
         titleRect.moveTop(textRect.top())
-        
+
         p.setBrush(QBrush(QColor(Qt.blue).lighter(190)))
         p.setPen(Qt.NoPen)
         p.drawRoundedRect(titleRect, 10, 10)
         p.restore()
-        
+
         if groupBox.subControls & QStyle.SC_GroupBoxFrame:
             frame = QStyleOptionFrame()
-            #frame.operator=(groupBox)
+            # frame.operator=(groupBox)
             frame.state = groupBox.state
             frame.features = groupBox.features
             frame.lineWidth = groupBox.lineWidth
@@ -81,26 +80,26 @@ class collapsibleGroupBox(QGroupBox):
                     finalRect.adjust(-4 if ltr else 0, 0, 0 if ltr else 4, 0)
                 else:
                     finalRect = textRect
-                
+
                 region -= QRegion(finalRect)
-            
+
             p.setClipRegion(region)
             style.drawPrimitive(style.PE_FrameGroupBox, frame, p)
             p.restore()
 
-        ##// Draw title
+        # // Draw title
         if groupBox.subControls & QStyle.SC_GroupBoxLabel and groupBox.text:
-            #textColor = QColor(groupBox.textColor)
-            #if textColor.isValid():
-                #p.setPen(textColor)
-            #alignment = int(groupBox.textAlignment)
-            #if not style.styleHint(QStyle.SH_UnderlineShortcut, opt):
-                #alignment |= Qt.TextHideMnemonic
+            # textColor = QColor(groupBox.textColor)
+            # if textColor.isValid():
+            # p.setPen(textColor)
+            # alignment = int(groupBox.textAlignment)
+            # if not style.styleHint(QStyle.SH_UnderlineShortcut, opt):
+            # alignment |= Qt.TextHideMnemonic
 
-            #style.drawItemText(p, textRect,  Qt.TextShowMnemonic | Qt.AlignHCenter | alignment,
-                            #groupBox.palette, groupBox.state & style.State_Enabled, groupBox.text,
-                            #QPalette.NoRole if textColor.isValid() else QPalette.WindowText)
-            
+            # style.drawItemText(p, textRect,  Qt.TextShowMnemonic | Qt.AlignHCenter | alignment,
+            # groupBox.palette, groupBox.state & style.State_Enabled, groupBox.text,
+            # QPalette.NoRole if textColor.isValid() else QPalette.WindowText)
+
             p.save()
             topt = QTextOption(Qt.AlignHCenter | Qt.AlignVCenter)
             f = QFont()
@@ -112,15 +111,15 @@ class collapsibleGroupBox(QGroupBox):
 
             if groupBox.state & style.State_HasFocus:
                 fropt = QStyleOptionFocusRect()
-                #fropt.operator=(groupBox)
+                # fropt.operator=(groupBox)
                 fropt.state = groupBox.state
                 fropt.rect = textRect
                 style.drawPrimitive(style.PE_FrameFocusRect, fropt, p)
 
-        #// Draw checkbox
-        #if groupBox.subControls & style.SC_GroupBoxCheckBox:
-            #box = QStyleOptionButton()
-            ##box.operator=(groupBox)
-            #box.state = groupBox.state
-            #box.rect = checkBoxRect
-            #style.drawPrimitive(style.PE_IndicatorCheckBox, box, p)
+                # // Draw checkbox
+                # if groupBox.subControls & style.SC_GroupBoxCheckBox:
+                # box = QStyleOptionButton()
+                # box.operator=(groupBox)
+                # box.state = groupBox.state
+                # box.rect = checkBoxRect
+                # style.drawPrimitive(style.PE_IndicatorCheckBox, box, p)

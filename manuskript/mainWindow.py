@@ -1,27 +1,33 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-
-from qt import *
-
-from ui.mainWindow import *
-from ui.helpLabel import helpLabel
-from ui.compileDialog import compileDialog
-from loadSave import *
-from enums import *
-from models.outlineModel import *
-from models.persosModel import *
-from models.plotModel import *
-from models.worldModel import worldModel
-from ui.views.outlineDelegates import outlinePersoDelegate
-from ui.views.plotDelegate import plotDelegate
-from ui.collapsibleDockWidgets import collapsibleDockWidgets
-# from models.persosProxyModel import *
-from functions import *
-from settingsWindow import *
-import settings
 import imp
+import os
+
+from PyQt5.QtCore import pyqtSignal, QSignalMapper, QTimer, QSettings, Qt, QRegExp, QUrl
+from PyQt5.QtGui import QStandardItemModel
+from PyQt5.QtWidgets import QMainWindow, QHeaderView, qApp, QMenu, QActionGroup, QAction, QStyle
+
+from manuskript import settings
+from manuskript.enums import Perso, Subplot, Plot, World
+from manuskript.functions import AUC, wordCount
+from manuskript.loadSave import loadStandardItemModelXML, loadFilesFromZip
+from manuskript.loadSave import saveFilesToZip
+from manuskript.loadSave import saveStandardItemModelXML
+from manuskript.models.outlineModel import outlineModel
+from manuskript.models.persosModel import persosModel
+from manuskript.models.plotModel import plotModel
+from manuskript.models.worldModel import worldModel
+from manuskript.settingsWindow import settingsWindow
+from manuskript.ui.collapsibleDockWidgets import collapsibleDockWidgets
+from manuskript.ui.compileDialog import compileDialog
+from manuskript.ui.helpLabel import helpLabel
+from manuskript.ui.mainWindow import Ui_MainWindow
+from manuskript.ui.views.outlineDelegates import outlinePersoDelegate
+from manuskript.ui.views.plotDelegate import plotDelegate
 
 # Spellcheck support
+from manuskript.ui.views.textEditView import textEditView
+
 try:
     import enchant
 except ImportError:
@@ -907,6 +913,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                     w.setDict(settings.dict)
 
     def openPyEnchantWebPage(self):
+        from PyQt5.QtGui import QDesktopServices
         QDesktopServices.openUrl(QUrl("http://pythonhosted.org/pyenchant/"))
 
     def toggleSpellcheck(self, val):

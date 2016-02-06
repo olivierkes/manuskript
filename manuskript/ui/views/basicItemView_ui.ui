@@ -109,17 +109,17 @@
   <customwidget>
    <class>textEditView</class>
    <extends>QTextEdit</extends>
-   <header>ui.views.textEditView.h</header>
+   <header>manuskript.ui.views.textEditView.h</header>
   </customwidget>
   <customwidget>
    <class>cmbOutlinePersoChoser</class>
    <extends>QComboBox</extends>
-   <header>ui.views.cmbOutlinePersoChoser.h</header>
+   <header>manuskript.ui.views.cmbOutlinePersoChoser.h</header>
   </customwidget>
   <customwidget>
    <class>lineEditView</class>
    <extends>QLineEdit</extends>
-   <header>ui.views.lineEditView.h</header>
+   <header>manuskript.ui.views.lineEditView.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

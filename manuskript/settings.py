@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 
-import pickle
-import pprint
-from enums import *
-from qt import *
 import collections
+import pickle
+
+from PyQt5.QtWidgets import qApp
+
+from manuskript.enums import Outline
 
 viewSettings = {
     "Tree": {

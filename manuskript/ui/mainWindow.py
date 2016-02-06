@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/mainWindow.ui'
 #
-# Created by: PyQt5 UI code generator 5.4.1
+# Created by: PyQt5 UI code generator 5.4.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -40,8 +40,8 @@ class Ui_MainWindow(object):
         self.page_4 = QtWidgets.QWidget()
         self.page_4.setObjectName("page_4")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.page_4)
-        self.horizontalLayout_2.setSpacing(0)
         self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_2.setSpacing(0)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.tabMain = QtWidgets.QTabWidget(self.page_4)
         self.tabMain.setDocumentMode(True)
@@ -352,7 +352,7 @@ class Ui_MainWindow(object):
         self.btnRmPerso.setObjectName("btnRmPerso")
         self.horizontalLayout_14.addWidget(self.btnRmPerso)
         self.txtPersosFilter = QtWidgets.QLineEdit(self.groupBox)
-        self.txtPersosFilter.setProperty("clearButtonEnabled", True)
+        self.txtPersosFilter.setClearButtonEnabled(True)
         self.txtPersosFilter.setObjectName("txtPersosFilter")
         self.horizontalLayout_14.addWidget(self.txtPersosFilter)
         self.verticalLayout_8.addLayout(self.horizontalLayout_14)
@@ -536,7 +536,7 @@ class Ui_MainWindow(object):
         self.btnRmPlot.setObjectName("btnRmPlot")
         self.horizontalLayout_15.addWidget(self.btnRmPlot)
         self.txtPlotFilter = QtWidgets.QLineEdit(self.groupBox_2)
-        self.txtPlotFilter.setProperty("clearButtonEnabled", True)
+        self.txtPlotFilter.setClearButtonEnabled(True)
         self.txtPlotFilter.setObjectName("txtPlotFilter")
         self.horizontalLayout_15.addWidget(self.txtPlotFilter)
         self.verticalLayout_10.addLayout(self.horizontalLayout_15)
@@ -732,7 +732,7 @@ class Ui_MainWindow(object):
         self.btnRmWorld.setObjectName("btnRmWorld")
         self.horizontalLayout_19.addWidget(self.btnRmWorld)
         self.txtWorldFilter = QtWidgets.QLineEdit(self.frame_3)
-        self.txtWorldFilter.setProperty("clearButtonEnabled", True)
+        self.txtWorldFilter.setClearButtonEnabled(True)
         self.txtWorldFilter.setObjectName("txtWorldFilter")
         self.horizontalLayout_19.addWidget(self.txtWorldFilter)
         self.btnWorldEmptyData = QtWidgets.QPushButton(self.frame_3)
@@ -799,7 +799,6 @@ class Ui_MainWindow(object):
         self.layoutWidget = QtWidgets.QWidget(self.splitterOutlineH)
         self.layoutWidget.setObjectName("layoutWidget")
         self.verticalLayout_14 = QtWidgets.QVBoxLayout(self.layoutWidget)
-        self.verticalLayout_14.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_14.setObjectName("verticalLayout_14")
         self.splitterOutlineV = QtWidgets.QSplitter(self.layoutWidget)
         self.splitterOutlineV.setOrientation(QtCore.Qt.Vertical)
@@ -979,7 +978,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_12.addWidget(self.stack)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1145, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1145, 30))
         self.menubar.setObjectName("menubar")
         self.menuFile = QtWidgets.QMenu(self.menubar)
         self.menuFile.setObjectName("menuFile")
@@ -1215,52 +1214,52 @@ class Ui_MainWindow(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_20), _translate("MainWindow", "Outline"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("MainWindow", "Labels"))
         self.tabMain.setTabText(self.tabMain.indexOf(self.lytTabDebug), _translate("MainWindow", "Debug"))
-        self.menuFile.setTitle(_translate("MainWindow", "File"))
-        self.menuRecents.setTitle(_translate("MainWindow", "Recents"))
-        self.menuMode.setTitle(_translate("MainWindow", "Mode"))
+        self.menuFile.setTitle(_translate("MainWindow", "Fi&le"))
+        self.menuRecents.setTitle(_translate("MainWindow", "&Recents"))
+        self.menuMode.setTitle(_translate("MainWindow", "&Mode"))
         self.menuHelp.setTitle(_translate("MainWindow", "Help"))
         self.menuTools.setTitle(_translate("MainWindow", "Tools"))
         self.menuEdit.setTitle(_translate("MainWindow", "Edit"))
-        self.menuView.setTitle(_translate("MainWindow", "View"))
-        self.dckCheatSheet.setWindowTitle(_translate("MainWindow", "Cheat sheet"))
-        self.dckSearch.setWindowTitle(_translate("MainWindow", "Search"))
-        self.actOpen.setText(_translate("MainWindow", "Open"))
+        self.menuView.setTitle(_translate("MainWindow", "&View"))
+        self.dckCheatSheet.setWindowTitle(_translate("MainWindow", "&Cheat sheet"))
+        self.dckSearch.setWindowTitle(_translate("MainWindow", "Sea&rch"))
+        self.actOpen.setText(_translate("MainWindow", "&Open"))
         self.actOpen.setShortcut(_translate("MainWindow", "Ctrl+O"))
-        self.actSave.setText(_translate("MainWindow", "Save"))
+        self.actSave.setText(_translate("MainWindow", "&Save"))
         self.actSave.setShortcut(_translate("MainWindow", "Ctrl+S"))
-        self.actSaveAs.setText(_translate("MainWindow", "Save as..."))
+        self.actSaveAs.setText(_translate("MainWindow", "Sa&ve as..."))
         self.actSaveAs.setShortcut(_translate("MainWindow", "Ctrl+Shift+S"))
-        self.actQuit.setText(_translate("MainWindow", "Quit"))
+        self.actQuit.setText(_translate("MainWindow", "&Quit"))
         self.actQuit.setShortcut(_translate("MainWindow", "Ctrl+Q"))
-        self.actShowHelp.setText(_translate("MainWindow", "Show help texts"))
+        self.actShowHelp.setText(_translate("MainWindow", "&Show help texts"))
         self.actShowHelp.setShortcut(_translate("MainWindow", "Ctrl+Shift+B"))
-        self.actSpellcheck.setText(_translate("MainWindow", "Spellcheck"))
+        self.actSpellcheck.setText(_translate("MainWindow", "&Spellcheck"))
         self.actSpellcheck.setShortcut(_translate("MainWindow", "F9"))
-        self.actLabels.setText(_translate("MainWindow", "Labels..."))
-        self.actStatus.setText(_translate("MainWindow", "Status..."))
+        self.actLabels.setText(_translate("MainWindow", "&Labels..."))
+        self.actStatus.setText(_translate("MainWindow", "&Status..."))
         self.actViewTree.setText(_translate("MainWindow", "Tree"))
-        self.actModeNorma.setText(_translate("MainWindow", "Normal"))
-        self.actModeSimple.setText(_translate("MainWindow", "Simple"))
-        self.actModeFractal.setText(_translate("MainWindow", "Fractal"))
+        self.actModeNorma.setText(_translate("MainWindow", "&Normal"))
+        self.actModeSimple.setText(_translate("MainWindow", "&Simple"))
+        self.actModeFractal.setText(_translate("MainWindow", "&Fractal"))
         self.actViewCork.setText(_translate("MainWindow", "Index cards"))
         self.actViewOutline.setText(_translate("MainWindow", "Outline"))
-        self.actSettings.setText(_translate("MainWindow", "Settings"))
+        self.actSettings.setText(_translate("MainWindow", "S&ettings"))
         self.actSettings.setShortcut(_translate("MainWindow", "F8"))
-        self.actCloseProject.setText(_translate("MainWindow", "Close project"))
-        self.actCompile.setText(_translate("MainWindow", "Compile"))
+        self.actCloseProject.setText(_translate("MainWindow", "&Close project"))
+        self.actCompile.setText(_translate("MainWindow", "Co&mpile"))
         self.actCompile.setShortcut(_translate("MainWindow", "F6"))
 
-from ui.views.basicItemView import basicItemView
-from ui.views.plotTreeView import plotTreeView
-from ui.search import search
-from ui.views.textEditCompleter import textEditCompleter
-from ui.views.treeView import treeView
-from ui.editors.mainEditor import mainEditor
-from ui.views.outlineView import outlineView
-from ui.views.lineEditView import lineEditView
-from ui.views.textEditView import textEditView
-from ui.welcome import welcome
-from ui.sldImportance import sldImportance
-from ui.cheatSheet import cheatSheet
-from ui.views.metadataView import metadataView
-from ui.views.persoTreeView import persoTreeView
+from manuskript.ui.cheatSheet import cheatSheet
+from manuskript.ui.editors.mainEditor import mainEditor
+from manuskript.ui.search import search
+from manuskript.ui.sldImportance import sldImportance
+from manuskript.ui.views.basicItemView import basicItemView
+from manuskript.ui.views.lineEditView import lineEditView
+from manuskript.ui.views.metadataView import metadataView
+from manuskript.ui.views.outlineView import outlineView
+from manuskript.ui.views.persoTreeView import persoTreeView
+from manuskript.ui.views.plotTreeView import plotTreeView
+from manuskript.ui.views.textEditCompleter import textEditCompleter
+from manuskript.ui.views.textEditView import textEditView
+from manuskript.ui.views.treeView import treeView
+from manuskript.ui.welcome import welcome

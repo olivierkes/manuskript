@@ -1,9 +1,16 @@
 #!/usr/bin/env python
-#--!-- coding: utf8 --!--
- 
-from qt import *
-from enums import *
-from functions import *
+# --!-- coding: utf8 --!--
+from PyQt5.QtCore import QModelIndex, Qt
+from PyQt5.QtGui import QStandardItemModel, QStandardItem, QColor, QPixmap, QIcon
+from PyQt5.QtWidgets import QColorDialog
+
+from manuskript.enums import Perso
+from manuskript.enums import Plot
+from manuskript.functions import iconColor
+from manuskript.functions import mainWindow
+from manuskript.functions import randomColor
+from manuskript.functions import toInt
+
 
 class persosModel(QStandardItemModel):
     
@@ -11,8 +18,8 @@ class persosModel(QStandardItemModel):
         QStandardItemModel.__init__(self, 0, 3, parent)
         self.setHorizontalHeaderLabels([i.name for i in Plot])
         self.mw = mainWindow()
-        #self._proxy = plotsProxyModel()
-        #self._proxy.setSourceModel(self)
+        # self._proxy = plotsProxyModel()
+        # self._proxy.setSourceModel(self)
 
 ###############################################################################
 # PERSOS QUERRIES
@@ -126,7 +133,7 @@ class persosModel(QStandardItemModel):
 ###############################################################################
 
     def updatePersoColor(self, idx):
-        #idx = self.currentPersoIndex()
+        # idx = self.currentPersoIndex()
         color = self.getPersoColorName(idx)
         self.mw.btnPersoColor.setStyleSheet("background:{};".format(color))
         
@@ -174,4 +181,3 @@ class persosModel(QStandardItemModel):
             infos.append((name, val))
             
         return infos
-        

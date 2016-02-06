@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/views/propertiesView_ui.ui'
 #
-# Created by: PyQt5 UI code generator 5.4.1
+# Created by: PyQt5 UI code generator 5.4.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -107,8 +107,8 @@ class Ui_propertiesView(object):
         self.page_2 = QtWidgets.QWidget()
         self.page_2.setObjectName("page_2")
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.page_2)
-        self.verticalLayout_3.setSpacing(0)
         self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_3.setSpacing(0)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
         self.formLayout_2 = QtWidgets.QFormLayout()
         self.formLayout_2.setObjectName("formLayout_2")
@@ -194,9 +194,9 @@ class Ui_propertiesView(object):
         self.label_36.setText(_translate("propertiesView", "Goal"))
         self.txtGoalMulti.setPlaceholderText(_translate("propertiesView", "Word count"))
 
-from ui.views.lineEditView import lineEditView
-from ui.views.chkOutlineCompile import chkOutlineCompile
-from ui.views.cmbOutlineTypeChoser import cmbOutlineTypeChoser
-from ui.views.cmbOutlineLabelChoser import cmbOutlineLabelChoser
-from ui.views.cmbOutlinePersoChoser import cmbOutlinePersoChoser
-from ui.views.cmbOutlineStatusChoser import cmbOutlineStatusChoser
+from manuskript.ui.views.chkOutlineCompile import chkOutlineCompile
+from manuskript.ui.views.cmbOutlineLabelChoser import cmbOutlineLabelChoser
+from manuskript.ui.views.cmbOutlinePersoChoser import cmbOutlinePersoChoser
+from manuskript.ui.views.cmbOutlineStatusChoser import cmbOutlineStatusChoser
+from manuskript.ui.views.cmbOutlineTypeChoser import cmbOutlineTypeChoser
+from manuskript.ui.views.lineEditView import lineEditView

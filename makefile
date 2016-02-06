@@ -1,4 +1,4 @@
-UI := $(wildcard src/ui/*.ui) $(wildcard src/ui/*/*.ui) $(wildcard src/ui/*.qrc) 
+UI := $(wildcard manuskript/ui/*.ui) $(wildcard manuskript/ui/*/*.ui) $(wildcard manuskript/ui/*.qrc) 
 UIs= $(UI:.ui=.py) $(UI:.qrc=_rc.py)
 TS := $(wildcard i18n/*.ts)
 QMs= $(TS:.ts=.qm)
@@ -6,22 +6,23 @@ QMs= $(TS:.ts=.qm)
 ui: $(UIs)
 
 run: $(UIs)
-	python3 src/main.py
+# 	python3 manuskript/main.py
+	bin/manuskript
 
 debug: $(UIs)
-	gdb --args python3 src/main.py
+	gdb --args python3 manuskript/main.py
 
 lineprof:
-	kernprof -l -v src/main.py
+	kernprof -l -v manuskript/main.py
 
 profile:
-	python3 -m cProfile -s 'cumtime' src/main.py | more
+	python3 -m cProfile -s 'cumtime' manuskript/main.py | more
 
 compile:
-	cd src && python3 setup.py build_ext --inplace
+	cd manuskript && python3 setup.py build_ext --inplace
 	
 callgraph:
-	cd src; pycallgraph myoutput -- main.py
+	cd manuskript; pycallgraph myoutput -- main.py
 
 translation:
 	pylupdate5 -noobsolete i18n/manuskript.pro

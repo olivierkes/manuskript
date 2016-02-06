@@ -137,34 +137,34 @@
   <customwidget>
    <class>textEditView</class>
    <extends>QTextEdit</extends>
-   <header>ui.views.textEditView.h</header>
+   <header>manuskript.ui.views.textEditView.h</header>
   </customwidget>
   <customwidget>
    <class>lineEditView</class>
    <extends>QLineEdit</extends>
-   <header>ui.views.lineEditView.h</header>
+   <header>manuskript.ui.views.lineEditView.h</header>
   </customwidget>
   <customwidget>
    <class>collapsibleGroupBox2</class>
    <extends>QGroupBox</extends>
-   <header>ui.collapsibleGroupBox2.h</header>
+   <header>manuskript.ui.collapsibleGroupBox2.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>propertiesView</class>
    <extends>QWidget</extends>
-   <header>ui.views.propertiesView.h</header>
+   <header>manuskript.ui.views.propertiesView.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>textEditCompleter</class>
    <extends>QTextEdit</extends>
-   <header>ui.views.textEditCompleter.h</header>
+   <header>manuskript.ui.views.textEditCompleter.h</header>
   </customwidget>
   <customwidget>
    <class>revisions</class>
    <extends>QWidget</extends>
-   <header>ui.revisions.h</header>
+   <header>manuskript.ui.revisions.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/editors/mainEditor_ui.ui'
 #
-# Created by: PyQt5 UI code generator 5.4.1
+# Created by: PyQt5 UI code generator 5.4.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -94,4 +94,4 @@ class Ui_mainEditor(object):
         self.btnRedacFolderOutline.setText(_translate("mainEditor", "Outline"))
         self.btnRedacFullscreen.setShortcut(_translate("mainEditor", "F11"))
 
-from ui.editors.textFormat import textFormat
+from manuskript.ui.editors.textFormat import textFormat
