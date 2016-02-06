@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'src/ui/editors/locker_ui.ui'
+# Form implementation generated from reading ui file 'manuskript/ui/editors/locker_ui.ui'
 #
 # Created: Tue Jul  7 17:57:16 2015
 #      by: PyQt5 UI code generator 5.2.1

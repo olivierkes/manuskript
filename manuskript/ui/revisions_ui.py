@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'src/ui/revisions_ui.ui'
+# Form implementation generated from reading ui file 'manuskript/ui/revisions_ui.ui'
 #
 # Created: Tue Jul 14 19:00:07 2015
 #      by: PyQt5 UI code generator 5.2.1

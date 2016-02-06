@@ -5,7 +5,7 @@ snowflake*
 *.msk
 Notes.t2t
 *.nja
-src/pycallgraph.txt
+manuskript/pycallgraph.txt
 ExportTest
 icons/Numix
 .idea
