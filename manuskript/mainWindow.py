@@ -3,13 +3,14 @@
 import imp
 import os
 
-from PyQt5.QtCore import pyqtSignal, QSignalMapper, QTimer, QSettings, Qt, QRegExp, QUrl
-from PyQt5.QtGui import QStandardItemModel
-from PyQt5.QtWidgets import QMainWindow, QHeaderView, qApp, QMenu, QActionGroup, QAction, QStyle
+from PyQt5.QtCore import pyqtSignal, QSignalMapper, QTimer, QSettings, Qt, QRegExp, QUrl, QSize
+from PyQt5.QtGui import QStandardItemModel, QIcon
+from PyQt5.QtWidgets import QMainWindow, QHeaderView, qApp, QMenu, QActionGroup, QAction, QStyle, QListWidgetItem, \
+    QLabel
 
 from manuskript import settings
 from manuskript.enums import Perso, Subplot, Plot, World
-from manuskript.functions import AUC, wordCount
+from manuskript.functions import AUC, wordCount, appPath
 from manuskript.loadSave import loadStandardItemModelXML, loadFilesFromZip
 from manuskript.loadSave import saveFilesToZip
 from manuskript.loadSave import saveStandardItemModelXML
@@ -791,6 +792,29 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.toolbar.addCustomWidget(self.tr("Book summary"), self.grpPlotSummary, self.TabPlots)
         self.toolbar.addCustomWidget(self.tr("Project tree"), self.treeRedacWidget, self.TabRedac)
         self.toolbar.addCustomWidget(self.tr("Metadata"), self.redacMetadata, self.TabRedac)
+
+        # Custom "tab" bar on the left
+        self.lstTabs.setIconSize(QSize(48, 48))
+        self.dckNavigation.setTitleBarWidget(QLabel())
+        for i in range(self.tabMain.count()):
+            icons = ["general-128px.png",
+                     "summary-128px.png",
+                     "characters-128px.png",
+                     "plot-128px.png",
+                     "world-128px.png",
+                     "outline-128px.png",
+                     "redaction-128px.png",
+                     ""
+                     ]
+            self.tabMain.setTabIcon(i, QIcon(appPath("icons/Custom/Tabs/{}".format(icons[i]))))
+            item = QListWidgetItem(self.tabMain.tabIcon(i),
+                                   self.tabMain.tabText(i))
+            item.setSizeHint(QSize(item.sizeHint().width(), 64))
+            item.setTextAlignment(Qt.AlignCenter)
+            self.lstTabs.addItem(item)
+        self.tabMain.tabBar().hide()
+        self.lstTabs.currentRowChanged.connect(self.tabMain.setCurrentIndex)
+        self.tabMain.currentChanged.connect(self.lstTabs.setCurrentRow)
 
         # Splitters
         self.splitterPersos.setStretchFactor(0, 25)

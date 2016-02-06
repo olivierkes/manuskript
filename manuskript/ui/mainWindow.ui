@@ -6,15 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1145</width>
-    <height>801</height>
+    <width>1112</width>
+    <height>808</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string notr="true">Manuskript</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QHBoxLayout" name="horizontalLayout_12">
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
     <property name="leftMargin">
      <number>0</number>
     </property>
@@ -99,35 +99,38 @@
        </layout>
       </widget>
       <widget class="QWidget" name="page_4">
-       <layout class="QHBoxLayout" name="horizontalLayout_2">
-        <property name="spacing">
-         <number>0</number>
-        </property>
-        <property name="leftMargin">
-         <number>0</number>
-        </property>
-        <property name="topMargin">
-         <number>0</number>
-        </property>
-        <property name="rightMargin">
-         <number>0</number>
-        </property>
-        <property name="bottomMargin">
-         <number>0</number>
-        </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_33">
         <item>
          <widget class="QTabWidget" name="tabMain">
+          <property name="tabPosition">
+           <enum>QTabWidget::North</enum>
+          </property>
+          <property name="tabShape">
+           <enum>QTabWidget::Rounded</enum>
+          </property>
           <property name="currentIndex">
-           <number>5</number>
+           <number>4</number>
           </property>
           <property name="documentMode">
            <bool>true</bool>
           </property>
           <widget class="QWidget" name="lytTabOverview">
            <attribute name="title">
-            <string>Overview</string>
+            <string>General</string>
            </attribute>
            <layout class="QVBoxLayout" name="verticalLayout_23">
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_26">
               <item>
@@ -275,6 +278,18 @@
             <string>Summary</string>
            </attribute>
            <layout class="QVBoxLayout" name="verticalLayout_24">
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
             <item>
              <layout class="QFormLayout" name="formLayout_5">
               <property name="labelAlignment">
@@ -658,6 +673,18 @@
             <string>Characters</string>
            </attribute>
            <layout class="QVBoxLayout" name="verticalLayout_25">
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
             <item>
              <widget class="QSplitter" name="splitterPersos">
               <property name="orientation">
@@ -1013,6 +1040,18 @@
             <string>Plots</string>
            </attribute>
            <layout class="QVBoxLayout" name="verticalLayout_26">
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
             <item>
              <widget class="QSplitter" name="splitterPlot">
               <property name="orientation">
@@ -1364,6 +1403,18 @@
             <string>World</string>
            </attribute>
            <layout class="QVBoxLayout" name="verticalLayout_33">
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
             <item>
              <widget class="QSplitter" name="splitterWorld">
               <property name="orientation">
@@ -1374,6 +1425,18 @@
                 <enum>QFrame::StyledPanel</enum>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_32">
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
                 <item>
                  <widget class="QTreeView" name="treeWorld">
                   <property name="editTriggers">
@@ -1529,6 +1592,18 @@
             <string>Outline</string>
            </attribute>
            <layout class="QVBoxLayout" name="verticalLayout_27">
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
             <item>
              <widget class="QSplitter" name="splitterOutlineH">
               <property name="orientation">
@@ -1876,7 +1951,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1145</width>
+     <width>1112</width>
      <height>30</height>
     </rect>
    </property>
@@ -1920,13 +1995,13 @@
    </widget>
    <widget class="QMenu" name="menuTools">
     <property name="title">
-     <string>Tools</string>
+     <string>&amp;Tools</string>
     </property>
     <addaction name="actSpellcheck"/>
    </widget>
    <widget class="QMenu" name="menuEdit">
     <property name="title">
-     <string>Edit</string>
+     <string>E&amp;dit</string>
     </property>
     <addaction name="actLabels"/>
     <addaction name="actStatus"/>
@@ -1983,6 +2058,45 @@
          <weight>50</weight>
          <bold>false</bold>
         </font>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QDockWidget" name="dckNavigation">
+   <property name="features">
+    <set>QDockWidget::DockWidgetClosable|QDockWidget::DockWidgetMovable</set>
+   </property>
+   <property name="windowTitle">
+    <string>&amp;Navigation</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>1</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents">
+    <layout class="QVBoxLayout" name="verticalLayout_16">
+     <item>
+      <widget class="QListWidget" name="lstTabs">
+       <property name="styleSheet">
+        <string notr="true">QListView {
+	show-decoration-selected: 0;
+	outline: none;
+	background-color: transparent;
+}
+
+QListView::item:selected {
+	background: #DCDEF1;
+	color: black;
+}
+
+QListView::item:hover {
+	background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                                stop: 0 #FAFBFE, stop: 1 #DCDEF1);
+}</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::NoFrame</enum>
        </property>
       </widget>
      </item>
@@ -2244,8 +2358,8 @@
    <slot>setCurrentIndex(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>868</x>
-     <y>129</y>
+     <x>1033</x>
+     <y>126</y>
     </hint>
     <hint type="destinationlabel">
      <x>868</x>
@@ -2260,8 +2374,8 @@
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>999</x>
-     <y>768</y>
+     <x>1039</x>
+     <y>769</y>
     </hint>
     <hint type="destinationlabel">
      <x>1000</x>
@@ -2312,8 +2426,8 @@
      <y>127</y>
     </hint>
     <hint type="destinationlabel">
-     <x>404</x>
-     <y>120</y>
+     <x>411</x>
+     <y>119</y>
     </hint>
    </hints>
   </connection>
