@@ -22,10 +22,8 @@ def run():
 
     # Translation process
     locale = QLocale.system().name()
-    locale = "fr_CH"
-    # qtTranslator = QTranslator()
-    # if qtTranslator.load("qt_" + locale):
-    # app.installTranslator(qtTranslator)
+    # locale = "fr_CH"
+
     appTranslator = QTranslator()
     if appTranslator.load(appPath("i18n/manuskript_{}.qm").format(locale)):
         app.installTranslator(appTranslator)
