@@ -19,6 +19,7 @@ class Ui_mainEditor(object):
         self.tab.setDocumentMode(True)
         self.tab.setTabsClosable(True)
         self.tab.setMovable(True)
+        self.tab.setTabBarAutoHide(True)
         self.tab.setObjectName("tab")
         self.verticalLayout.addWidget(self.tab)
         self.horizontalLayout_19 = QtWidgets.QHBoxLayout()
