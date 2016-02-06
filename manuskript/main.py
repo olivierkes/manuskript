@@ -19,6 +19,11 @@ def run():
     app.setApplicationName("manuskript")
     app.setApplicationVersion(_version)
 
+    icon = QIcon()
+    for i in [16, 31, 64, 128, 256, 512]:
+        icon.addFile(appPath("icons/Manuskript/icon-{}px.png".format(i)))
+    qApp.setWindowIcon(icon)
+
     app.setStyle("Fusion")
 
     # Translation process
