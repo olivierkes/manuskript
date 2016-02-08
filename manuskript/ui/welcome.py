@@ -16,6 +16,7 @@ from manuskript.models.outlineModel import outlineItem
 from manuskript.models.outlineModel import outlineModel
 from manuskript.models.persosModel import persosModel
 from manuskript.models.plotModel import plotModel
+from manuskript.models.worldModel import worldModel
 from manuskript.ui.welcome_ui import Ui_welcome
 
 locale.setlocale(locale.LC_ALL, '')
@@ -364,6 +365,9 @@ class welcome(QWidget, Ui_welcome):
 
         # Outline
         self.mw.mdlOutline = outlineModel(self.mw)
+
+        # World
+        self.mw.mdlWorld = worldModel(self.mw)
 
         root = self.mw.mdlOutline.rootItem
         _type = self.cmbDefaultType.currentData()
