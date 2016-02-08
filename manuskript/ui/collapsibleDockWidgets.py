@@ -2,7 +2,7 @@
 # --!-- coding: utf8 --!--
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QToolBar, QDockWidget, QAction, QToolButton, QSizePolicy, QStylePainter, \
-    QStyleOptionButton, QStyle
+    QStyleOptionButton, QStyle, QLabel
 
 
 class collapsibleDockWidgets(QToolBar):
@@ -35,6 +35,19 @@ class collapsibleDockWidgets(QToolBar):
         for d in self._dockWidgets():
             b = verticalButton(self)
             b.setDefaultAction(d.toggleViewAction())
+            # d.setStyleSheet("QDockWidget::title{background-color: red;}")
+            # d.setTitleBarWidget(QLabel(d.windowTitle()))
+            d.setStyleSheet("""
+            QDockWidget::title {
+                text-align: left; /* align the text to the left */
+                background: lightBlue;
+                padding: 5px;
+            }
+
+            QDockWidget::close-button, QDockWidget::float-button {
+                background: lightBlue;
+            }
+            """)
             self.addWidget(b)
 
         self.addSeparator()

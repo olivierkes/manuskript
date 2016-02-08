@@ -795,7 +795,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # Custom "tab" bar on the left
         self.lstTabs.setIconSize(QSize(48, 48))
-        self.dckNavigation.setTitleBarWidget(QLabel())
         for i in range(self.tabMain.count()):
             icons = ["general-128px.png",
                      "summary-128px.png",

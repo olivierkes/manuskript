@@ -2,7 +2,8 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/views/metadataView_ui.ui'
 #
-# Created by: PyQt5 UI code generator 5.4.2
+# Created: Mon Feb  8 09:48:05 2016
+#      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -13,6 +14,7 @@ class Ui_metadataView(object):
         metadataView.setObjectName("metadataView")
         metadataView.resize(400, 537)
         self.verticalLayout = QtWidgets.QVBoxLayout(metadataView)
+        self.verticalLayout.setSpacing(0)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout.setObjectName("verticalLayout")
         self.grpProperties = collapsibleGroupBox2(metadataView)
@@ -25,6 +27,7 @@ class Ui_metadataView(object):
         self.grpProperties.setCheckable(True)
         self.grpProperties.setObjectName("grpProperties")
         self.verticalLayout_28 = QtWidgets.QVBoxLayout(self.grpProperties)
+        self.verticalLayout_28.setSpacing(0)
         self.verticalLayout_28.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_28.setObjectName("verticalLayout_28")
         self.properties = propertiesView(self.grpProperties)
@@ -37,13 +40,24 @@ class Ui_metadataView(object):
         self.grpSummary.setCheckable(True)
         self.grpSummary.setObjectName("grpSummary")
         self.verticalLayout_22 = QtWidgets.QVBoxLayout(self.grpSummary)
+        self.verticalLayout_22.setSpacing(0)
         self.verticalLayout_22.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_22.setObjectName("verticalLayout_22")
         self.txtSummarySentance = lineEditView(self.grpSummary)
         self.txtSummarySentance.setInputMask("")
+        self.txtSummarySentance.setFrame(False)
         self.txtSummarySentance.setObjectName("txtSummarySentance")
         self.verticalLayout_22.addWidget(self.txtSummarySentance)
+        self.line = QtWidgets.QFrame(self.grpSummary)
+        self.line.setFrameShadow(QtWidgets.QFrame.Plain)
+        self.line.setLineWidth(0)
+        self.line.setMidLineWidth(0)
+        self.line.setFrameShape(QtWidgets.QFrame.HLine)
+        self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line.setObjectName("line")
+        self.verticalLayout_22.addWidget(self.line)
         self.txtSummaryFull = textEditView(self.grpSummary)
+        self.txtSummaryFull.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.txtSummaryFull.setObjectName("txtSummaryFull")
         self.verticalLayout_22.addWidget(self.txtSummaryFull)
         self.verticalLayout.addWidget(self.grpSummary)
@@ -52,6 +66,7 @@ class Ui_metadataView(object):
         self.grpNotes.setCheckable(True)
         self.grpNotes.setObjectName("grpNotes")
         self.horizontalLayout_29 = QtWidgets.QHBoxLayout(self.grpNotes)
+        self.horizontalLayout_29.setSpacing(0)
         self.horizontalLayout_29.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_29.setObjectName("horizontalLayout_29")
         self.txtNotes = textEditCompleter(self.grpNotes)
@@ -63,6 +78,7 @@ class Ui_metadataView(object):
         self.grpRevisions.setCheckable(True)
         self.grpRevisions.setObjectName("grpRevisions")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.grpRevisions)
+        self.verticalLayout_2.setSpacing(0)
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.revisions = revisions(self.grpRevisions)
@@ -80,12 +96,14 @@ class Ui_metadataView(object):
         self.grpProperties.setTitle(_translate("metadataView", "Properties"))
         self.grpSummary.setTitle(_translate("metadataView", "Summary"))
         self.txtSummarySentance.setPlaceholderText(_translate("metadataView", "One line summary"))
+        self.txtSummaryFull.setPlaceholderText(_translate("metadataView", "Full summary"))
         self.grpNotes.setTitle(_translate("metadataView", "Notes / References"))
+        self.txtNotes.setPlaceholderText(_translate("metadataView", "Notes / References"))
         self.grpRevisions.setTitle(_translate("metadataView", "Revisions"))
 
-from manuskript.ui.collapsibleGroupBox2 import collapsibleGroupBox2
 from manuskript.ui.revisions import revisions
-from manuskript.ui.views.lineEditView import lineEditView
 from manuskript.ui.views.propertiesView import propertiesView
 from manuskript.ui.views.textEditCompleter import textEditCompleter
 from manuskript.ui.views.textEditView import textEditView
+from manuskript.ui.views.lineEditView import lineEditView
+from manuskript.ui.collapsibleGroupBox2 import collapsibleGroupBox2

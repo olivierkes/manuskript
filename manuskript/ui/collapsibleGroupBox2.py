@@ -3,6 +3,8 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QWidget, QFrame, QPushButton, QVBoxLayout, QSizePolicy
 
+from manuskript.functions import lightBlue
+
 
 class collapsibleGroupBox2(QWidget):
     def __init__(self, parent=None):
@@ -13,7 +15,17 @@ class collapsibleGroupBox2(QWidget):
         self.button.setChecked(True)
         self.switched = False
         self.vPolicy = None
-        self.button.setStyleSheet("background: lightBlue;")
+        # self.button.setStyleSheet("background-color: lightBlue;")
+        self.button.setStyleSheet("""
+        QPushButton{
+            background-color: #BBB;
+            border: none;
+            padding: 2px;
+        }
+        QPushButton:checked, QPushButton:hover{
+            font-style:italic;
+            background-color:lightBlue;
+        }""")
 
     def resizeEvent(self, event):
         if not self.switched:
@@ -24,10 +36,12 @@ class collapsibleGroupBox2(QWidget):
         self.frame.setLayout(self.layout())
         self.wLayout = QVBoxLayout(self)
         self.wLayout.setContentsMargins(0, 0, 0, 0)
+        self.wLayout.setSpacing(0)
         self.wLayout.addWidget(self.button)
         self.wLayout.addWidget(self.frame)
         self.button.toggled.connect(self.setExpanded)
-        self.frame.layout().setContentsMargins(5, 0, 5, 0)
+        self.frame.layout().setContentsMargins(0, 0, 0, 4)
+        self.frame.layout().setSpacing(0)
         self.switched = True
 
         self.vPolicy = self.sizePolicy().verticalPolicy()
