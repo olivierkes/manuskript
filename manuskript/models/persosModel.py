@@ -16,7 +16,7 @@ class persosModel(QStandardItemModel):
     
     def __init__(self, parent):
         QStandardItemModel.__init__(self, 0, 3, parent)
-        self.setHorizontalHeaderLabels([i.name for i in Plot])
+        self.setHorizontalHeaderLabels([i.name for i in Perso])
         self.mw = mainWindow()
         # self._proxy = plotsProxyModel()
         # self._proxy.setSourceModel(self)
