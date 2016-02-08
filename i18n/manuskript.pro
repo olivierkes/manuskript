@@ -1,58 +1,58 @@
-FORMS            += ../src/ui/mainWindow.ui
-FORMS            += ../src/ui/settings.ui
-FORMS            += ../src/ui/welcome_ui.ui
-FORMS            += ../src/ui/sldImportance_ui.ui
-FORMS            += ../src/ui/cheatSheet_ui.ui
-FORMS            += ../src/ui/compileDialog_ui.ui
-FORMS            += ../src/ui/revisions_ui.ui
+FORMS            += ../manuskript/ui/mainWindow.ui
+FORMS            += ../manuskript/ui/settings_ui.ui
+FORMS            += ../manuskript/ui/welcome_ui.ui
+FORMS            += ../manuskript/ui/sldImportance_ui.ui
+FORMS            += ../manuskript/ui/cheatSheet_ui.ui
+FORMS            += ../manuskript/ui/compileDialog_ui.ui
+FORMS            += ../manuskript/ui/revisions_ui.ui
 
-FORMS            += ../src/ui/editors/editorWidget_ui.ui
-FORMS            += ../src/ui/editors/locker_ui.ui
+FORMS            += ../manuskript/ui/editors/editorWidget_ui.ui
+FORMS            += ../manuskript/ui/editors/locker_ui.ui
 
-FORMS            += ../src/ui/views/propertiesView_ui.ui
-FORMS            += ../src/ui/views/basicItemView_ui.ui
-FORMS            += ../src/ui/views/metadataView_ui.ui
+FORMS            += ../manuskript/ui/views/propertiesView_ui.ui
+FORMS            += ../manuskript/ui/views/basicItemView_ui.ui
+FORMS            += ../manuskript/ui/views/metadataView_ui.ui
 
-SOURCES          += ../src/main.py
-SOURCES          += ../src/loadSave.py
-SOURCES          += ../src/mainWindow.py
-SOURCES          += ../src/settingsWindow.py
+SOURCES          += ../manuskript/main.py
+SOURCES          += ../manuskript/loadSave.py
+SOURCES          += ../manuskript/mainWindow.py
+SOURCES          += ../manuskript/settingsWindow.py
 
-SOURCES          += ../src/models/outlineModel.py
-SOURCES          += ../src/models/persosProxyModel.py
-SOURCES          += ../src/models/plotModel.py
-SOURCES          += ../src/models/worldModel.py
-SOURCES          += ../src/models/persosModel.py
-SOURCES          += ../src/models/references.py
+SOURCES          += ../manuskript/models/outlineModel.py
+SOURCES          += ../manuskript/models/persosProxyModel.py
+SOURCES          += ../manuskript/models/plotModel.py
+SOURCES          += ../manuskript/models/worldModel.py
+SOURCES          += ../manuskript/models/persosModel.py
+SOURCES          += ../manuskript/models/references.py
 
-SOURCES          += ../src/exporter/__init__.py
+SOURCES          += ../manuskript/exporter/__init__.py
 
-SOURCES          += ../src/ui/helpLabel.py
-SOURCES          += ../src/ui/sldImportance.py
-SOURCES          += ../src/ui/welcome.py
-SOURCES          += ../src/ui/cheatSheet.py
-SOURCES          += ../src/ui/compileDialog.py
-SOURCES          += ../src/ui/revisions.py
-SOURCES          += ../src/ui/collapsibleDockWidgets.py
+SOURCES          += ../manuskript/ui/helpLabel.py
+SOURCES          += ../manuskript/ui/sldImportance.py
+SOURCES          += ../manuskript/ui/welcome.py
+SOURCES          += ../manuskript/ui/cheatSheet.py
+SOURCES          += ../manuskript/ui/compileDialog.py
+SOURCES          += ../manuskript/ui/revisions.py
+SOURCES          += ../manuskript/ui/collapsibleDockWidgets.py
 
-SOURCES          += ../src/ui/editors/editorWidget.py
-SOURCES          += ../src/ui/editors/fullScreenEditor.py
-SOURCES          += ../src/ui/editors/locker.py
-SOURCES          += ../src/ui/editors/textFormat.py
-SOURCES          += ../src/ui/editors/completer.py
-SOURCES          += ../src/ui/editors/mainEditor.py
+SOURCES          += ../manuskript/ui/editors/editorWidget.py
+SOURCES          += ../manuskript/ui/editors/fullScreenEditor.py
+SOURCES          += ../manuskript/ui/editors/locker.py
+SOURCES          += ../manuskript/ui/editors/textFormat.py
+SOURCES          += ../manuskript/ui/editors/completer.py
+SOURCES          += ../manuskript/ui/editors/mainEditor.py
 
-SOURCES          += ../src/ui/views/corkDelegate.py
-SOURCES          += ../src/ui/views/outlineDelegates.py
-SOURCES          += ../src/ui/views/outlineBasics.py
-SOURCES          += ../src/ui/views/cmbOutlineLabelChoser.py
-SOURCES          += ../src/ui/views/cmbOutlinePersoChoser.py
-SOURCES          += ../src/ui/views/cmbOutlineStatusChoser.py
-SOURCES          += ../src/ui/views/treeView.py
-SOURCES          += ../src/ui/views/lineEditView.py
-SOURCES          += ../src/ui/views/textEditView.py
-SOURCES          += ../src/ui/views/plotTreeView.py
-SOURCES          += ../src/ui/views/plotDelegate.py
+SOURCES          += ../manuskript/ui/views/corkDelegate.py
+SOURCES          += ../manuskript/ui/views/outlineDelegates.py
+SOURCES          += ../manuskript/ui/views/outlineBasics.py
+SOURCES          += ../manuskript/ui/views/cmbOutlineLabelChoser.py
+SOURCES          += ../manuskript/ui/views/cmbOutlinePersoChoser.py
+SOURCES          += ../manuskript/ui/views/cmbOutlineStatusChoser.py
+SOURCES          += ../manuskript/ui/views/treeView.py
+SOURCES          += ../manuskript/ui/views/lineEditView.py
+SOURCES          += ../manuskript/ui/views/textEditView.py
+SOURCES          += ../manuskript/ui/views/plotTreeView.py
+SOURCES          += ../manuskript/ui/views/plotDelegate.py
 
 TRANSLATIONS     += manuskript_fr.ts
 
