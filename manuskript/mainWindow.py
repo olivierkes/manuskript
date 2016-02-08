@@ -395,6 +395,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.restoreGeometry(sttgns.value("geometry"))
         if sttgns.contains("windowState"):
             self.restoreState(sttgns.value("windowState"))
+        else:
+            self.dckCheatSheet.hide()
+            self.dckSearch.hide()
         if sttgns.contains("metadataState"):
             state = [False if v == "false" else True for v in sttgns.value("metadataState")]
             self.redacMetadata.restoreState(state)
