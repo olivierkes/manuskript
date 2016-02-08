@@ -7,7 +7,7 @@ from PyQt5.QtCore import QLocale, QTranslator, QSettings
 from PyQt5.QtWidgets import QApplication
 from .functions import *
 
-_version = "0.1"
+_version = "0.1.1"
 
 faulthandler.enable()
 
