@@ -2,7 +2,8 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/editors/mainEditor_ui.ui'
 #
-# Created by: PyQt5 UI code generator 5.4.2
+# Created: Mon Feb  8 08:54:11 2016
+#      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -19,7 +20,7 @@ class Ui_mainEditor(object):
         self.tab.setDocumentMode(True)
         self.tab.setTabsClosable(True)
         self.tab.setMovable(True)
-        self.tab.setTabBarAutoHide(True)
+        self.tab.setProperty("tabBarAutoHide", False)
         self.tab.setObjectName("tab")
         self.verticalLayout.addWidget(self.tab)
         self.horizontalLayout_19 = QtWidgets.QHBoxLayout()

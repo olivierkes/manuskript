@@ -2,7 +2,8 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/mainWindow.ui'
 #
-# Created by: PyQt5 UI code generator 5.4.2
+# Created: Mon Feb  8 09:02:57 2016
+#      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -16,6 +17,7 @@ class Ui_MainWindow(object):
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.centralwidget)
+        self.horizontalLayout_2.setSpacing(0)
         self.horizontalLayout_2.setContentsMargins(0, 6, 0, 0)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.stack = QtWidgets.QStackedWidget(self.centralwidget)
@@ -40,6 +42,7 @@ class Ui_MainWindow(object):
         self.page_4 = QtWidgets.QWidget()
         self.page_4.setObjectName("page_4")
         self.horizontalLayout_33 = QtWidgets.QHBoxLayout(self.page_4)
+        self.horizontalLayout_33.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_33.setObjectName("horizontalLayout_33")
         self.tabMain = QtWidgets.QTabWidget(self.page_4)
         self.tabMain.setTabPosition(QtWidgets.QTabWidget.North)
@@ -806,6 +809,7 @@ class Ui_MainWindow(object):
         self.layoutWidget = QtWidgets.QWidget(self.splitterOutlineH)
         self.layoutWidget.setObjectName("layoutWidget")
         self.verticalLayout_14 = QtWidgets.QVBoxLayout(self.layoutWidget)
+        self.verticalLayout_14.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_14.setObjectName("verticalLayout_14")
         self.splitterOutlineV = QtWidgets.QSplitter(self.layoutWidget)
         self.splitterOutlineV.setOrientation(QtCore.Qt.Vertical)
@@ -985,7 +989,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.addWidget(self.stack)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1112, 30))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1112, 20))
         self.menubar.setObjectName("menubar")
         self.menuFile = QtWidgets.QMenu(self.menubar)
         self.menuFile.setObjectName("menuFile")
@@ -1012,6 +1016,7 @@ class Ui_MainWindow(object):
         self.dockWidgetContents_5 = QtWidgets.QWidget()
         self.dockWidgetContents_5.setObjectName("dockWidgetContents_5")
         self.verticalLayout_39 = QtWidgets.QVBoxLayout(self.dockWidgetContents_5)
+        self.verticalLayout_39.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_39.setObjectName("verticalLayout_39")
         self.cheatSheet = cheatSheet(self.dockWidgetContents_5)
         font = QtGui.QFont()
@@ -1027,6 +1032,7 @@ class Ui_MainWindow(object):
         self.dockWidgetContents_6 = QtWidgets.QWidget()
         self.dockWidgetContents_6.setObjectName("dockWidgetContents_6")
         self.verticalLayout_40 = QtWidgets.QVBoxLayout(self.dockWidgetContents_6)
+        self.verticalLayout_40.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_40.setObjectName("verticalLayout_40")
         self.widget = search(self.dockWidgetContents_6)
         font = QtGui.QFont()
@@ -1043,6 +1049,7 @@ class Ui_MainWindow(object):
         self.dockWidgetContents = QtWidgets.QWidget()
         self.dockWidgetContents.setObjectName("dockWidgetContents")
         self.verticalLayout_16 = QtWidgets.QVBoxLayout(self.dockWidgetContents)
+        self.verticalLayout_16.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_16.setObjectName("verticalLayout_16")
         self.lstTabs = QtWidgets.QListWidget(self.dockWidgetContents)
         self.lstTabs.setStyleSheet("QListView {\n"
@@ -1285,17 +1292,17 @@ class Ui_MainWindow(object):
         self.actCompile.setText(_translate("MainWindow", "Co&mpile"))
         self.actCompile.setShortcut(_translate("MainWindow", "F6"))
 
-from manuskript.ui.cheatSheet import cheatSheet
-from manuskript.ui.editors.mainEditor import mainEditor
-from manuskript.ui.search import search
-from manuskript.ui.sldImportance import sldImportance
-from manuskript.ui.views.basicItemView import basicItemView
-from manuskript.ui.views.lineEditView import lineEditView
-from manuskript.ui.views.metadataView import metadataView
-from manuskript.ui.views.outlineView import outlineView
-from manuskript.ui.views.persoTreeView import persoTreeView
-from manuskript.ui.views.plotTreeView import plotTreeView
-from manuskript.ui.views.textEditCompleter import textEditCompleter
 from manuskript.ui.views.textEditView import textEditView
-from manuskript.ui.views.treeView import treeView
+from manuskript.ui.views.persoTreeView import persoTreeView
+from manuskript.ui.views.basicItemView import basicItemView
+from manuskript.ui.cheatSheet import cheatSheet
+from manuskript.ui.views.lineEditView import lineEditView
 from manuskript.ui.welcome import welcome
+from manuskript.ui.sldImportance import sldImportance
+from manuskript.ui.views.outlineView import outlineView
+from manuskript.ui.search import search
+from manuskript.ui.views.textEditCompleter import textEditCompleter
+from manuskript.ui.views.plotTreeView import plotTreeView
+from manuskript.ui.views.treeView import treeView
+from manuskript.ui.editors.mainEditor import mainEditor
+from manuskript.ui.views.metadataView import metadataView

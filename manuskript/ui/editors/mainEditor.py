@@ -28,6 +28,12 @@ class mainEditor(QWidget, Ui_mainEditor):
         self.tab.tabCloseRequested.connect(self.closeTab)
         self.tab.currentChanged.connect(self.tabChanged)
 
+        # UI
+        try:
+            self.tab.setTabBarAutoHide(True)
+        except AttributeError:
+            print("Info: install Qt 5.4 or higher to use tabbar auto-hide in editor.")
+
         # Connections --------------------------------------------------------
 
         self.sldCorkSizeFactor.valueChanged.connect(

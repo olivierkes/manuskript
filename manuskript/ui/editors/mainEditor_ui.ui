@@ -40,8 +40,8 @@
      <property name="movable">
       <bool>true</bool>
      </property>
-     <property name="tabBarAutoHide">
-      <bool>true</bool>
+     <property name="tabBarAutoHide" stdset="0">
+      <bool>false</bool>
      </property>
     </widget>
    </item>
