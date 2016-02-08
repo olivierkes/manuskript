@@ -51,7 +51,7 @@ defaultTextType = "t2t"
 fullScreenTheme = "spacedreams"
 
 textEditor = {
-    "background": "fff",
+    "background": "#fff",
     "fontColor": "#000",
     "font": qApp.font().toString(),
     "misspelled": "#F00",
