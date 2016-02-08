@@ -10,6 +10,7 @@ from manuskript.functions import lightBlue
 from manuskript.functions import mainWindow
 from manuskript.ui.cheatSheet_ui import Ui_cheatSheet
 from manuskript.models import references as Ref
+from manuskript.ui.editors.completer import completer
 
 
 class cheatSheet(QWidget, Ui_cheatSheet):
@@ -21,11 +22,13 @@ class cheatSheet(QWidget, Ui_cheatSheet):
         self.splitter.setStretchFactor(0, 5)
         self.splitter.setStretchFactor(1, 70)
 
+        self.txtFilter.textChanged.connect(self.textChanged)
         self.txtFilter.textChanged.connect(self.updateListFromData)
         self.txtFilter.returnPressed.connect(self.showInfos)
         self.listDelegate = listCompleterDelegate(self)
         self.list.setItemDelegate(self.listDelegate)
         self.list.itemActivated.connect(self.showInfos)
+        self.list.hide()
         self.list.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.view.linkActivated.connect(self.openLink)
         self.view.linkHovered.connect(self.linkHovered)
@@ -58,6 +61,12 @@ class cheatSheet(QWidget, Ui_cheatSheet):
         self.worldModel.dataChanged.connect(self.populateTimer.start)
 
         self.populate()
+
+    def textChanged(self, text):
+        if not text:
+            self.list.hide()
+        else:
+            self.list.show()
 
     def populate(self):
         if self.persoModel:
@@ -128,6 +137,7 @@ class cheatSheet(QWidget, Ui_cheatSheet):
         self.list.setCurrentRow(1)
 
     def showInfos(self):
+        self.list.hide()
         i = self.list.currentItem()
         ref = i.data(Qt.UserRole)
         if ref:

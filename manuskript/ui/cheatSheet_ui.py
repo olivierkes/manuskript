@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/cheatSheet_ui.ui'
 #
-# Created: Mon Feb  8 10:28:58 2016
+# Created: Mon Feb  8 10:48:00 2016
 #      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -74,5 +74,5 @@ class Ui_cheatSheet(object):
     def retranslateUi(self, cheatSheet):
         _translate = QtCore.QCoreApplication.translate
         cheatSheet.setWindowTitle(_translate("cheatSheet", "Form"))
-        self.txtFilter.setPlaceholderText(_translate("cheatSheet", "Filter"))
+        self.txtFilter.setPlaceholderText(_translate("cheatSheet", "Filter (type the name of anything in your project)"))
 

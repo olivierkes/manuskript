@@ -35,7 +35,7 @@
       <bool>false</bool>
      </property>
      <property name="placeholderText">
-      <string>Filter</string>
+      <string>Filter (type the name of anything in your project)</string>
      </property>
      <property name="clearButtonEnabled">
       <bool>true</bool>
