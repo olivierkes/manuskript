@@ -453,6 +453,12 @@ class outlineItem():
     def childCount(self):
         return len(self.childItems)
 
+    def childCountRecursive(self):
+        n = self.childCount()
+        for c in self.children():
+            n += c.childCountRecursive()
+        return n
+
     def children(self):
         return self.childItems
 

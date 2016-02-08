@@ -73,12 +73,19 @@ revisions = {
         None:               60 * 60 * 24 * 7,       # One per week for eternity
         })
     }
+
+frequencyAnalyzer = {
+    "wordMin": 1,
+    "wordExclude": "a, and, or",
+    "phraseMin": 2,
+    "phraseMax": 5
+}
     
 def save(filename=None):
     
     global spellcheck, dict, corkSliderFactor, viewSettings, corkSizeFactor, folderView, lastTab, openIndexes, \
            autoSave, autoSaveDelay, saveOnQuit, autoSaveNoChanges, autoSaveNoChangesDelay, outlineViewColumns, \
-           corkBackground, fullScreenTheme, defaultTextType, textEditor, revisions
+           corkBackground, fullScreenTheme, defaultTextType, textEditor, revisions, frequencyAnalyzer
     
     allSettings = {
         "viewSettings": viewSettings,
@@ -99,6 +106,7 @@ def save(filename=None):
         "defaultTextType":defaultTextType,
         "textEditor":textEditor,
         "revisions":revisions,
+        "frequencyAnalyzer": frequencyAnalyzer
         }
     
     #pp=pprint.PrettyPrinter(indent=4, compact=False)
@@ -202,3 +210,8 @@ def load(string, fromString=False):
     if "revisions" in allSettings:
         global revisions
         revisions = allSettings["revisions"]
+
+    if "frequencyAnalyzer" in allSettings:
+        global frequencyAnalyzer
+        frequencyAnalyzer = allSettings["frequencyAnalyzer"]
+

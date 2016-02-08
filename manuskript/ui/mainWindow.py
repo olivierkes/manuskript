@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/mainWindow.ui'
 #
-# Created: Mon Feb  8 09:02:57 2016
+# Created: Mon Feb  8 11:20:10 2016
 #      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -1130,6 +1130,8 @@ class Ui_MainWindow(object):
         self.actCloseProject.setObjectName("actCloseProject")
         self.actCompile = QtWidgets.QAction(MainWindow)
         self.actCompile.setObjectName("actCompile")
+        self.actToolFrequency = QtWidgets.QAction(MainWindow)
+        self.actToolFrequency.setObjectName("actToolFrequency")
         self.menuFile.addAction(self.actOpen)
         self.menuFile.addAction(self.menuRecents.menuAction())
         self.menuFile.addAction(self.actSave)
@@ -1144,6 +1146,7 @@ class Ui_MainWindow(object):
         self.menuMode.addAction(self.actModeFractal)
         self.menuHelp.addAction(self.actShowHelp)
         self.menuTools.addAction(self.actSpellcheck)
+        self.menuTools.addAction(self.actToolFrequency)
         self.menuEdit.addAction(self.actLabels)
         self.menuEdit.addAction(self.actStatus)
         self.menuEdit.addAction(self.actSettings)
@@ -1291,18 +1294,19 @@ class Ui_MainWindow(object):
         self.actCloseProject.setText(_translate("MainWindow", "&Close project"))
         self.actCompile.setText(_translate("MainWindow", "Co&mpile"))
         self.actCompile.setShortcut(_translate("MainWindow", "F6"))
+        self.actToolFrequency.setText(_translate("MainWindow", "Frequency Analyzer"))
 
-from manuskript.ui.views.textEditView import textEditView
-from manuskript.ui.views.persoTreeView import persoTreeView
-from manuskript.ui.views.basicItemView import basicItemView
-from manuskript.ui.cheatSheet import cheatSheet
-from manuskript.ui.views.lineEditView import lineEditView
 from manuskript.ui.welcome import welcome
-from manuskript.ui.sldImportance import sldImportance
-from manuskript.ui.views.outlineView import outlineView
-from manuskript.ui.search import search
-from manuskript.ui.views.textEditCompleter import textEditCompleter
-from manuskript.ui.views.plotTreeView import plotTreeView
-from manuskript.ui.views.treeView import treeView
-from manuskript.ui.editors.mainEditor import mainEditor
 from manuskript.ui.views.metadataView import metadataView
+from manuskript.ui.views.basicItemView import basicItemView
+from manuskript.ui.editors.mainEditor import mainEditor
+from manuskript.ui.views.plotTreeView import plotTreeView
+from manuskript.ui.sldImportance import sldImportance
+from manuskript.ui.views.textEditCompleter import textEditCompleter
+from manuskript.ui.views.treeView import treeView
+from manuskript.ui.views.persoTreeView import persoTreeView
+from manuskript.ui.search import search
+from manuskript.ui.cheatSheet import cheatSheet
+from manuskript.ui.views.outlineView import outlineView
+from manuskript.ui.views.textEditView import textEditView
+from manuskript.ui.views.lineEditView import lineEditView

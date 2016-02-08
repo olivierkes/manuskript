@@ -2013,6 +2013,7 @@
      <string>&amp;Tools</string>
     </property>
     <addaction name="actSpellcheck"/>
+    <addaction name="actToolFrequency"/>
    </widget>
    <widget class="QMenu" name="menuEdit">
     <property name="title">
@@ -2318,6 +2319,11 @@ QListView::item:hover {
    </property>
    <property name="shortcut">
     <string>F6</string>
+   </property>
+  </action>
+  <action name="actToolFrequency">
+   <property name="text">
+    <string>Frequency Analyzer</string>
    </property>
   </action>
  </widget>

@@ -23,6 +23,7 @@ from manuskript.ui.collapsibleDockWidgets import collapsibleDockWidgets
 from manuskript.ui.compileDialog import compileDialog
 from manuskript.ui.helpLabel import helpLabel
 from manuskript.ui.mainWindow import Ui_MainWindow
+from manuskript.ui.tools.frequencyAnalyzer import frequencyAnalyzer
 from manuskript.ui.views.outlineDelegates import outlinePersoDelegate
 from manuskript.ui.views.plotDelegate import plotDelegate
 
@@ -108,6 +109,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.actSettings.triggered.connect(self.settingsWindow)
         self.actCloseProject.triggered.connect(self.closeProject)
         self.actQuit.triggered.connect(self.close)
+        self.actToolFrequency.triggered.connect(self.frequencyAnalyzer)
         self.generateViewMenu()
 
         self.makeUIConnections()
@@ -968,6 +970,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if tab:
             self.sw.setTab(tab)
         self.sw.show()
+
+    ###############################################################################
+    # TOOLS
+    ###############################################################################
+
+    def frequencyAnalyzer(self):
+        self.fw = frequencyAnalyzer(self)
+        self.fw.show()
 
     ###############################################################################
     # VIEW MENU
