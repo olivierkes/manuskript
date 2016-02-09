@@ -30,17 +30,40 @@
     <number>0</number>
    </property>
    <item>
-    <widget class="QLineEdit" name="txtFilter">
-     <property name="frame">
-      <bool>false</bool>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <property name="spacing">
+      <number>0</number>
      </property>
-     <property name="placeholderText">
-      <string>Filter (type the name of anything in your project)</string>
-     </property>
-     <property name="clearButtonEnabled">
-      <bool>true</bool>
-     </property>
-    </widget>
+     <item>
+      <widget class="QLineEdit" name="txtFilter">
+       <property name="frame">
+        <bool>false</bool>
+       </property>
+       <property name="placeholderText">
+        <string>Filter (type the name of anything in your project)</string>
+       </property>
+       <property name="clearButtonEnabled">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnShowList">
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset theme="go-bottom"/>
+       </property>
+       <property name="checkable">
+        <bool>true</bool>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
    <item>
     <widget class="Line" name="line">
@@ -87,7 +110,7 @@
          <x>0</x>
          <y>0</y>
          <width>400</width>
-         <height>68</height>
+         <height>70</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">

@@ -2,8 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/cheatSheet_ui.ui'
 #
-# Created: Mon Feb  8 10:48:00 2016
-#      by: PyQt5 UI code generator 5.2.1
+# Created by: PyQt5 UI code generator 5.4.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -14,19 +13,30 @@ class Ui_cheatSheet(object):
         cheatSheet.setObjectName("cheatSheet")
         cheatSheet.resize(400, 344)
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(cheatSheet)
-        self.verticalLayout_2.setSpacing(0)
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_2.setSpacing(0)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.horizontalLayout = QtWidgets.QHBoxLayout()
+        self.horizontalLayout.setSpacing(0)
+        self.horizontalLayout.setObjectName("horizontalLayout")
         self.txtFilter = QtWidgets.QLineEdit(cheatSheet)
         self.txtFilter.setFrame(False)
         self.txtFilter.setClearButtonEnabled(True)
         self.txtFilter.setObjectName("txtFilter")
-        self.verticalLayout_2.addWidget(self.txtFilter)
+        self.horizontalLayout.addWidget(self.txtFilter)
+        self.btnShowList = QtWidgets.QPushButton(cheatSheet)
+        self.btnShowList.setText("")
+        icon = QtGui.QIcon.fromTheme("go-bottom")
+        self.btnShowList.setIcon(icon)
+        self.btnShowList.setCheckable(True)
+        self.btnShowList.setFlat(True)
+        self.btnShowList.setObjectName("btnShowList")
+        self.horizontalLayout.addWidget(self.btnShowList)
+        self.verticalLayout_2.addLayout(self.horizontalLayout)
         self.line = QtWidgets.QFrame(cheatSheet)
         self.line.setFrameShadow(QtWidgets.QFrame.Plain)
         self.line.setLineWidth(0)
         self.line.setFrameShape(QtWidgets.QFrame.HLine)
-        self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
         self.verticalLayout_2.addWidget(self.line)
         self.splitter = QtWidgets.QSplitter(cheatSheet)
@@ -46,11 +56,11 @@ class Ui_cheatSheet(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 400, 68))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 400, 70))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
-        self.verticalLayout.setSpacing(0)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName("verticalLayout")
         self.view = QtWidgets.QLabel(self.scrollAreaWidgetContents)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)

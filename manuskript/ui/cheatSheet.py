@@ -28,10 +28,12 @@ class cheatSheet(QWidget, Ui_cheatSheet):
         self.listDelegate = listCompleterDelegate(self)
         self.list.setItemDelegate(self.listDelegate)
         self.list.itemActivated.connect(self.showInfos)
-        self.list.hide()
+        self.hideList()
         self.list.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.view.linkActivated.connect(self.openLink)
         self.view.linkHovered.connect(self.linkHovered)
+        self.btnShowList.toggled.connect(self.list.setVisible)
+        self.line.hide()
 
         self.outlineModel = None
         self.persoModel = None
@@ -64,9 +66,13 @@ class cheatSheet(QWidget, Ui_cheatSheet):
 
     def textChanged(self, text):
         if not text:
-            self.list.hide()
+            self.hideList()
         else:
             self.list.show()
+
+    def hideList(self):
+        if not self.btnShowList.isChecked():
+            self.list.hide()
 
     def populate(self):
         if self.persoModel:
@@ -125,7 +131,8 @@ class cheatSheet(QWidget, Ui_cheatSheet):
     def updateListFromData(self):
         self.list.clear()
         for cat in self.data:
-            filtered = [i for i in self.data[cat] if self.txtFilter.text().lower() in i[0].lower()]
+            filtered = [i for i in self.data[cat] if self.txtFilter.text().lower() in i[0].lower() or
+                                                     self.txtFilter.text().lower() in cat[0].lower()]
             if filtered:
                 self.addCategory(cat[0])
                 for item in filtered:
@@ -137,7 +144,7 @@ class cheatSheet(QWidget, Ui_cheatSheet):
         self.list.setCurrentRow(1)
 
     def showInfos(self):
-        self.list.hide()
+        self.hideList()
         i = self.list.currentItem()
         ref = i.data(Qt.UserRole)
         if ref:
