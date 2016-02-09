@@ -124,7 +124,7 @@ class welcome(QWidget, Ui_welcome):
         filename = QFileDialog.getOpenFileName(self,
                                                self.tr("Open project"),
                                                ".",
-                                               self.tr("Manuskript project (*.msk)"))[0]
+                                               self.tr("Manuskript project (*.msk);;All files (*)"))[0]
         if filename:
             self.appendToRecentFiles(filename)
             self.mw.loadProject(filename)
@@ -150,6 +150,8 @@ class welcome(QWidget, Ui_welcome):
                                                self.tr("Manuskript project (*.msk)"))[0]
 
         if filename:
+            if filename[:-4] != ".msk":
+                filename += ".msk"
             self.appendToRecentFiles(filename)
             self.loadDefaultDatas()
             self.mw.loadProject(filename, loadFromFile=False)
