@@ -51,11 +51,20 @@
    <item>
     <widget class="QStackedWidget" name="stack">
      <property name="currentIndex">
-      <number>1</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="stackedWidgetPage1">
       <layout class="QVBoxLayout" name="verticalLayout_7">
-       <property name="margin">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
         <number>0</number>
        </property>
        <item>
@@ -410,7 +419,16 @@ text-align:center;</string>
      </widget>
      <widget class="QWidget" name="page_3">
       <layout class="QVBoxLayout" name="verticalLayout">
-       <property name="margin">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
         <number>0</number>
        </property>
        <item>
@@ -467,7 +485,7 @@ text-align:center;</string>
           </font>
          </property>
          <property name="title">
-          <string>Smart remove</string>
+          <string>S&amp;mart remove</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -712,7 +730,16 @@ text-align:center;</string>
      </widget>
      <widget class="QWidget" name="stackedWidgetPage2">
       <layout class="QVBoxLayout" name="verticalLayout_9">
-       <property name="margin">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
         <number>0</number>
        </property>
        <item>
@@ -743,7 +770,7 @@ text-align:center;</string>
        <item>
         <widget class="QTabWidget" name="tabViews">
          <property name="currentIndex">
-          <number>3</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="tab">
           <attribute name="title">
@@ -953,7 +980,7 @@ text-align:center;</string>
                    </font>
                   </property>
                   <property name="text">
-                   <string>Show item count</string>
+                   <string>Show ite&amp;m count</string>
                   </property>
                  </widget>
                 </item>
@@ -980,6 +1007,19 @@ text-align:center;</string>
                   </property>
                   <property name="text">
                    <string>Show progress</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QRadioButton" name="rdoTreeSummary">
+                  <property name="font">
+                   <font>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Show summary</string>
                   </property>
                  </widget>
                 </item>
@@ -1037,6 +1077,19 @@ text-align:center;</string>
                   </property>
                   <property name="text">
                    <string>Show progress</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QRadioButton" name="rdoTreeTextSummary">
+                  <property name="font">
+                   <font>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Show summary</string>
                   </property>
                  </widget>
                 </item>
@@ -2201,7 +2254,16 @@ text-align:center;</string>
      </widget>
      <widget class="QWidget" name="stackedWidgetPage3">
       <layout class="QVBoxLayout" name="verticalLayout_3">
-       <property name="margin">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
         <number>0</number>
        </property>
        <item>
@@ -2333,7 +2395,16 @@ text-align:center;</string>
      </widget>
      <widget class="QWidget" name="stackedWidgetPage4">
       <layout class="QVBoxLayout" name="verticalLayout_4">
-       <property name="margin">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
         <number>0</number>
        </property>
        <item>
@@ -2407,7 +2478,16 @@ text-align:center;</string>
      </widget>
      <widget class="QWidget" name="page">
       <layout class="QVBoxLayout" name="verticalLayout_10">
-       <property name="margin">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
         <number>0</number>
        </property>
        <item>
@@ -2442,7 +2522,16 @@ text-align:center;</string>
          </property>
          <widget class="QWidget" name="stackedWidgetPage1_3">
           <layout class="QVBoxLayout" name="verticalLayout_12">
-           <property name="margin">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
             <number>0</number>
            </property>
            <item>
@@ -2517,7 +2606,16 @@ text-align:center;</string>
          </widget>
          <widget class="QWidget" name="stackedWidgetPage2_3">
           <layout class="QVBoxLayout" name="verticalLayout_13">
-           <property name="margin">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
             <number>0</number>
            </property>
            <item>

@@ -104,6 +104,10 @@ class treeTitleDelegate(QStyledItemDelegate):
                     extraText = int(toFloat(item.data(Outline.goalPercentage.value)) * 100)
                     if extraText:
                         extraText = " ({}%)".format(extraText)
+                elif settings.viewSettings["Tree"]["InfoFolder"] == "Summary":
+                    extraText = item.data(Outline.summarySentance.value)
+                    if extraText:
+                        extraText = " - {}".format(extraText)
 
             if item.isText() and settings.viewSettings["Tree"]["InfoText"] != "Nothing":
                 if settings.viewSettings["Tree"]["InfoText"] == "WC":
@@ -113,12 +117,20 @@ class treeTitleDelegate(QStyledItemDelegate):
                     extraText = int(toFloat(item.data(Outline.goalPercentage.value)) * 100)
                     if extraText:
                         extraText = " ({}%)".format(extraText)
+                elif settings.viewSettings["Tree"]["InfoText"] == "Summary":
+                    extraText = item.data(Outline.summarySentance.value)
+                    if extraText:
+                        extraText = " - {}".format(extraText)
+
 
             if extraText:
                 r = QRect(textRect)
                 r.setLeft(r.left() + fm.width(opt.text + " "))
 
                 painter.save()
+                f = painter.font()
+                f.setWeight(QFont.Normal)
+                painter.setFont(f)
                 painter.setPen(Qt.darkGray)
                 painter.drawText(r, Qt.AlignLeft | Qt.AlignBottom, extraText)
                 painter.restore()

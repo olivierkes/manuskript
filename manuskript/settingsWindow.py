@@ -106,9 +106,11 @@ class settingsWindow(QWidget, Ui_Settings):
             (self.rdoTreeItemCount, "InfoFolder", "Count"),
             (self.rdoTreeWC, "InfoFolder", "WC"),
             (self.rdoTreeProgress, "InfoFolder", "Progress"),
+            (self.rdoTreeSummary, "InfoFolder", "Summary"),
             (self.rdoTreeNothing, "InfoFolder", "Nothing"),
             (self.rdoTreeTextWC, "InfoText", "WC"),
             (self.rdoTreeTextProgress, "InfoText", "Progress"),
+            (self.rdoTreeTextSummary, "InfoText", "Summary"),
             (self.rdoTreeTextNothing, "InfoText", "Nothing"),
         ]:
             item.setChecked(settings.viewSettings["Tree"][what] == value)
@@ -296,9 +298,11 @@ class settingsWindow(QWidget, Ui_Settings):
             (self.rdoTreeItemCount, "InfoFolder", "Count"),
             (self.rdoTreeWC, "InfoFolder", "WC"),
             (self.rdoTreeProgress, "InfoFolder", "Progress"),
+            (self.rdoTreeSummary, "InfoFolder", "Summary"),
             (self.rdoTreeNothing, "InfoFolder", "Nothing"),
             (self.rdoTreeTextWC, "InfoText", "WC"),
             (self.rdoTreeTextProgress, "InfoText", "Progress"),
+            (self.rdoTreeTextSummary, "InfoText", "Summary"),
             (self.rdoTreeTextNothing, "InfoText", "Nothing"),
         ]:
             if item.isChecked():

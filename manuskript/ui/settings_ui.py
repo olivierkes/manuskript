@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'manuskript/ui/settings.ui'
+# Form implementation generated from reading ui file 'manuskript/ui/settings_ui.ui'
 #
-# Created by: PyQt5 UI code generator 5.4.1
+# Created by: PyQt5 UI code generator 5.4.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -516,6 +516,13 @@ class Ui_Settings(object):
         self.rdoTreeProgress.setFont(font)
         self.rdoTreeProgress.setObjectName("rdoTreeProgress")
         self.verticalLayout_15.addWidget(self.rdoTreeProgress)
+        self.rdoTreeSummary = QtWidgets.QRadioButton(self.groupBox_8)
+        font = QtGui.QFont()
+        font.setBold(False)
+        font.setWeight(50)
+        self.rdoTreeSummary.setFont(font)
+        self.rdoTreeSummary.setObjectName("rdoTreeSummary")
+        self.verticalLayout_15.addWidget(self.rdoTreeSummary)
         self.rdoTreeNothing = QtWidgets.QRadioButton(self.groupBox_8)
         font = QtGui.QFont()
         font.setBold(False)
@@ -547,6 +554,13 @@ class Ui_Settings(object):
         self.rdoTreeTextProgress.setFont(font)
         self.rdoTreeTextProgress.setObjectName("rdoTreeTextProgress")
         self.verticalLayout_16.addWidget(self.rdoTreeTextProgress)
+        self.rdoTreeTextSummary = QtWidgets.QRadioButton(self.groupBox_9)
+        font = QtGui.QFont()
+        font.setBold(False)
+        font.setWeight(50)
+        self.rdoTreeTextSummary.setFont(font)
+        self.rdoTreeTextSummary.setObjectName("rdoTreeTextSummary")
+        self.verticalLayout_16.addWidget(self.rdoTreeTextSummary)
         self.rdoTreeTextNothing = QtWidgets.QRadioButton(self.groupBox_9)
         font = QtGui.QFont()
         font.setBold(False)
@@ -1306,7 +1320,6 @@ class Ui_Settings(object):
         self.layoutWidget = QtWidgets.QWidget(self.splitter)
         self.layoutWidget.setObjectName("layoutWidget")
         self.verticalLayout_14 = QtWidgets.QVBoxLayout(self.layoutWidget)
-        self.verticalLayout_14.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_14.setObjectName("verticalLayout_14")
         self.cmbThemeEdit = QtWidgets.QComboBox(self.layoutWidget)
         self.cmbThemeEdit.setObjectName("cmbThemeEdit")
@@ -1586,8 +1599,8 @@ class Ui_Settings(object):
         self.horizontalLayout_8.addWidget(self.stack)
 
         self.retranslateUi(Settings)
-        self.stack.setCurrentIndex(1)
-        self.tabViews.setCurrentIndex(3)
+        self.stack.setCurrentIndex(2)
+        self.tabViews.setCurrentIndex(0)
         self.themeStack.setCurrentIndex(1)
         self.themeEditStack.setCurrentIndex(0)
         self.lstMenu.currentRowChanged['int'].connect(self.stack.setCurrentIndex)
@@ -1628,7 +1641,7 @@ class Ui_Settings(object):
         self.lblTitleGeneral_2.setText(_translate("Settings", "Revisions"))
         self.label_44.setText(_translate("Settings", "Revisions are a way to keep track of modifications. For each text item, it stores any changes you make to the main text, allowing you to see and restoring previous versions."))
         self.chkRevisionsKeep.setText(_translate("Settings", "Keep revisions"))
-        self.chkRevisionRemove.setTitle(_translate("Settings", "Smart remove"))
+        self.chkRevisionRemove.setTitle(_translate("Settings", "S&mart remove"))
         self.label_46.setText(_translate("Settings", "Keep:"))
         self.label_45.setText(_translate("Settings", "Smart remove allows you to keep only a certain number of revisions. It is strongly recommended to use it, lest you file will becomes full of thousands of insignificant changes."))
         self.label_50.setText(_translate("Settings", "revisions per day for the last month"))
@@ -1657,13 +1670,15 @@ class Ui_Settings(object):
         self.cmbTreeBackground.setItemText(3, _translate("Settings", "Progress"))
         self.cmbTreeBackground.setItemText(4, _translate("Settings", "Compile"))
         self.groupBox_8.setTitle(_translate("Settings", "Folders"))
-        self.rdoTreeItemCount.setText(_translate("Settings", "Show item count"))
+        self.rdoTreeItemCount.setText(_translate("Settings", "Show ite&m count"))
         self.rdoTreeWC.setText(_translate("Settings", "Show wordcount"))
         self.rdoTreeProgress.setText(_translate("Settings", "Show progress"))
+        self.rdoTreeSummary.setText(_translate("Settings", "Show summary"))
         self.rdoTreeNothing.setText(_translate("Settings", "Nothing"))
         self.groupBox_9.setTitle(_translate("Settings", "Text"))
         self.rdoTreeTextWC.setText(_translate("Settings", "Show wordcount"))
         self.rdoTreeTextProgress.setText(_translate("Settings", "Show progress"))
+        self.rdoTreeTextSummary.setText(_translate("Settings", "Show summary"))
         self.rdoTreeTextNothing.setText(_translate("Settings", "Nothing"))
         self.tabViews.setTabText(self.tabViews.indexOf(self.tab), _translate("Settings", "Tree"))
         self.groupBox_4.setTitle(_translate("Settings", "Colors"))
