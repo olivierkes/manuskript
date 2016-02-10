@@ -371,6 +371,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.currentProject = None
         QSettings().setValue("lastProject", "")
 
+        # FIXME: close all opened tabs in mainEditor
+
         # Clear datas
         self.loadEmptyDatas()
 
