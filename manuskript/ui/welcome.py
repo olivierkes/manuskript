@@ -5,13 +5,13 @@ import locale
 import imp
 import os
 
-from PyQt5.QtCore import QSettings, QRegExp, Qt
+from PyQt5.QtCore import QSettings, QRegExp, Qt, QDir
 from PyQt5.QtGui import QIcon, QBrush, QColor, QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import QWidget, QAction, QFileDialog, QSpinBox, QLineEdit, QLabel, QPushButton, QTreeWidgetItem
 
 from manuskript import settings
 from manuskript.enums import Outline
-from manuskript.functions import mainWindow, iconFromColor
+from manuskript.functions import mainWindow, iconFromColor, appPath
 from manuskript.models.outlineModel import outlineItem
 from manuskript.models.outlineModel import outlineModel
 from manuskript.models.persosModel import persosModel
@@ -36,6 +36,7 @@ class welcome(QWidget, Ui_welcome):
         self.tree.itemActivated.connect(self.changeTemplate)
         self.btnAddLevel.clicked.connect(self.templateAddLevel)
         self.btnAddWC.clicked.connect(self.templateAddWordCount)
+        self.btnCreateText = self.btnCreate.text()
 
         self.populateTemplates()
 
@@ -199,9 +200,19 @@ class welcome(QWidget, Ui_welcome):
 
     def changeTemplate(self, item, column):
         template = [i for i in self.templates() if i[0] == item.text(0)]
+        self.btnCreate.setText(self.btnCreateText)
         if len(template):
             self.template = template[0][1]
             self.updateTemplate()
+        elif item.data(0, Qt.UserRole):
+            name = item.data(0, Qt.UserRole)
+            # Clear templates
+            self.template = self.templates()[0][1]
+            self.updateTemplate()
+            # Change button text
+            self.btnCreate.setText("Open {}".format(name))
+            # Load project
+            self.mw.loadProject(appPath("sample-projects/{}".format(name)))
 
     def updateTemplate(self):
         # Clear layout
@@ -312,7 +323,10 @@ class welcome(QWidget, Ui_welcome):
 
         # Add Demo project
         item = self.addTopLevelItem(self.tr("Demo projects"))
-        # FIXME: none yet
+        dir = QDir(appPath("sample-projects"))
+        for f in dir.entryList(["*.msk"], filters=QDir.Files):
+            sub = QTreeWidgetItem(item, [f[:-4]])
+            sub.setData(0, Qt.UserRole, f)
 
         # Populates default text type
         self.cmbDefaultType.clear()
