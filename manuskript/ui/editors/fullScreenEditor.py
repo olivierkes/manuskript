@@ -280,7 +280,7 @@ class fullScreenEditor(QWidget):
             self.lblWC.setText(self.tr("{} words").format(wc))
 
         self.locker.setWordCount(wc)
-        if not self.locker.isLocked():
+        if goal and not self.locker.isLocked():
             if goal - wc > 0:
                 self.locker.spnWordTarget.setValue(goal - wc)
 
