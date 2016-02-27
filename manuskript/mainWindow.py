@@ -699,6 +699,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.treeOutlineOutline.setModel(self.mdlOutline)
         # self.redacEditor.setModel(self.mdlOutline)
+        self.storylineView.setModel(self.mdlPlots)
 
         self.treeOutlineOutline.selectionModel().selectionChanged.connect(lambda:
                                                                           self.outlineItemEditor.selectionChanged(
@@ -799,6 +800,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.toolbar.addCustomWidget(self.tr("Book summary"), self.grpPlotSummary, self.TabPlots)
         self.toolbar.addCustomWidget(self.tr("Project tree"), self.treeRedacWidget, self.TabRedac)
         self.toolbar.addCustomWidget(self.tr("Metadata"), self.redacMetadata, self.TabRedac)
+        self.toolbar.addCustomWidget(self.tr("Story line"), self.storylineView, self.TabRedac)
 
         # Custom "tab" bar on the left
         self.lstTabs.setIconSize(QSize(48, 48))
@@ -838,9 +840,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.splitterOutlineV.setStretchFactor(0, 75)
         self.splitterOutlineV.setStretchFactor(1, 25)
 
-        self.splitterRedac.setStretchFactor(0, 30)
-        self.splitterRedac.setStretchFactor(1, 40)
-        self.splitterRedac.setStretchFactor(2, 30)
+        # self.splitterRedacV.setStretchFactor(0, 55)
+        # self.splitterRedacV.setStretchFactor(1, 25)
+
+        self.splitterRedacH.setStretchFactor(0, 30)
+        self.splitterRedacH.setStretchFactor(1, 40)
+        self.splitterRedacH.setStretchFactor(2, 30)
 
         # QFormLayout stretch
         for w in [self.txtWorldDescription, self.txtWorldPassion, self.txtWorldConflict]:

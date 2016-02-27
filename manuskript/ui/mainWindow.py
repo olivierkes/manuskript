@@ -2,8 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/mainWindow.ui'
 #
-# Created: Mon Feb  8 11:20:10 2016
-#      by: PyQt5 UI code generator 5.2.1
+# Created by: PyQt5 UI code generator 5.4.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -17,8 +16,8 @@ class Ui_MainWindow(object):
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.centralwidget)
-        self.horizontalLayout_2.setSpacing(0)
         self.horizontalLayout_2.setContentsMargins(0, 6, 0, 0)
+        self.horizontalLayout_2.setSpacing(0)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.stack = QtWidgets.QStackedWidget(self.centralwidget)
         self.stack.setObjectName("stack")
@@ -809,7 +808,6 @@ class Ui_MainWindow(object):
         self.layoutWidget = QtWidgets.QWidget(self.splitterOutlineH)
         self.layoutWidget.setObjectName("layoutWidget")
         self.verticalLayout_14 = QtWidgets.QVBoxLayout(self.layoutWidget)
-        self.verticalLayout_14.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_14.setObjectName("verticalLayout_14")
         self.splitterOutlineV = QtWidgets.QSplitter(self.layoutWidget)
         self.splitterOutlineV.setOrientation(QtCore.Qt.Vertical)
@@ -869,10 +867,13 @@ class Ui_MainWindow(object):
         self.verticalLayout_15 = QtWidgets.QVBoxLayout(self.lytTabRedac)
         self.verticalLayout_15.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_15.setObjectName("verticalLayout_15")
-        self.splitterRedac = QtWidgets.QSplitter(self.lytTabRedac)
-        self.splitterRedac.setOrientation(QtCore.Qt.Horizontal)
-        self.splitterRedac.setObjectName("splitterRedac")
-        self.treeRedacWidget = QtWidgets.QWidget(self.splitterRedac)
+        self.splitterRedacV = QtWidgets.QSplitter(self.lytTabRedac)
+        self.splitterRedacV.setOrientation(QtCore.Qt.Vertical)
+        self.splitterRedacV.setObjectName("splitterRedacV")
+        self.splitterRedacH = QtWidgets.QSplitter(self.splitterRedacV)
+        self.splitterRedacH.setOrientation(QtCore.Qt.Horizontal)
+        self.splitterRedacH.setObjectName("splitterRedacH")
+        self.treeRedacWidget = QtWidgets.QWidget(self.splitterRedacH)
         self.treeRedacWidget.setObjectName("treeRedacWidget")
         self.verticalLayout_30 = QtWidgets.QVBoxLayout(self.treeRedacWidget)
         self.verticalLayout_30.setContentsMargins(0, 0, 0, 0)
@@ -905,11 +906,13 @@ class Ui_MainWindow(object):
         spacerItem16 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_31.addItem(spacerItem16)
         self.verticalLayout_30.addLayout(self.horizontalLayout_31)
-        self.mainEditor = mainEditor(self.splitterRedac)
+        self.mainEditor = mainEditor(self.splitterRedacH)
         self.mainEditor.setObjectName("mainEditor")
-        self.redacMetadata = metadataView(self.splitterRedac)
+        self.redacMetadata = metadataView(self.splitterRedacH)
         self.redacMetadata.setObjectName("redacMetadata")
-        self.verticalLayout_15.addWidget(self.splitterRedac)
+        self.storylineView = storylineView(self.splitterRedacV)
+        self.storylineView.setObjectName("storylineView")
+        self.verticalLayout_15.addWidget(self.splitterRedacV)
         self.tabMain.addTab(self.lytTabRedac, "")
         self.lytTabDebug = QtWidgets.QWidget()
         self.lytTabDebug.setObjectName("lytTabDebug")
@@ -989,7 +992,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.addWidget(self.stack)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1112, 20))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1112, 30))
         self.menubar.setObjectName("menubar")
         self.menuFile = QtWidgets.QMenu(self.menubar)
         self.menuFile.setObjectName("menuFile")
@@ -1159,7 +1162,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.stack.setCurrentIndex(1)
-        self.tabMain.setCurrentIndex(4)
+        self.tabMain.setCurrentIndex(6)
         self.tabSummary.setCurrentIndex(0)
         self.tabPersos.setCurrentIndex(0)
         self.tabPlot.setCurrentIndex(0)
@@ -1294,19 +1297,20 @@ class Ui_MainWindow(object):
         self.actCloseProject.setText(_translate("MainWindow", "&Close project"))
         self.actCompile.setText(_translate("MainWindow", "Co&mpile"))
         self.actCompile.setShortcut(_translate("MainWindow", "F6"))
-        self.actToolFrequency.setText(_translate("MainWindow", "Frequency Analyzer"))
+        self.actToolFrequency.setText(_translate("MainWindow", "&Frequency Analyzer"))
 
-from manuskript.ui.welcome import welcome
-from manuskript.ui.views.metadataView import metadataView
-from manuskript.ui.views.basicItemView import basicItemView
-from manuskript.ui.editors.mainEditor import mainEditor
-from manuskript.ui.views.plotTreeView import plotTreeView
-from manuskript.ui.sldImportance import sldImportance
-from manuskript.ui.views.textEditCompleter import textEditCompleter
-from manuskript.ui.views.treeView import treeView
-from manuskript.ui.views.persoTreeView import persoTreeView
-from manuskript.ui.search import search
 from manuskript.ui.cheatSheet import cheatSheet
-from manuskript.ui.views.outlineView import outlineView
-from manuskript.ui.views.textEditView import textEditView
+from manuskript.ui.editors.mainEditor import mainEditor
+from manuskript.ui.search import search
+from manuskript.ui.sldImportance import sldImportance
+from manuskript.ui.views.basicItemView import basicItemView
 from manuskript.ui.views.lineEditView import lineEditView
+from manuskript.ui.views.metadataView import metadataView
+from manuskript.ui.views.outlineView import outlineView
+from manuskript.ui.views.persoTreeView import persoTreeView
+from manuskript.ui.views.plotTreeView import plotTreeView
+from manuskript.ui.views.storylineView import storylineView
+from manuskript.ui.views.textEditCompleter import textEditCompleter
+from manuskript.ui.views.textEditView import textEditView
+from manuskript.ui.views.treeView import treeView
+from manuskript.ui.welcome import welcome
