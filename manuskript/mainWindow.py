@@ -699,7 +699,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.treeOutlineOutline.setModel(self.mdlOutline)
         # self.redacEditor.setModel(self.mdlOutline)
-        self.storylineView.setModel(self.mdlPlots)
+        self.storylineView.setModels(self.mdlOutline, self.mdlPersos, self.mdlPlots)
 
         self.treeOutlineOutline.selectionModel().selectionChanged.connect(lambda:
                                                                           self.outlineItemEditor.selectionChanged(
