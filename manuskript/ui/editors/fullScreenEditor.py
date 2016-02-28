@@ -280,9 +280,13 @@ class fullScreenEditor(QWidget):
             self.lblWC.setText(self.tr("{} words").format(wc))
 
         self.locker.setWordCount(wc)
+        # If there's a goal, then we update the locker target's number of word accordingly
+        # (also if there is a word count, we deduce it.
         if goal and not self.locker.isLocked():
-            if goal - wc > 0:
+            if wc and goal - wc > 0:
                 self.locker.spnWordTarget.setValue(goal - wc)
+            elif not wc:
+                self.locker.spnWordTarget.setValue(goal)
 
 
 class myScrollBar(QScrollBar):
