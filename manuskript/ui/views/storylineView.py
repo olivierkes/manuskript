@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
 from PyQt5.QtCore import Qt, QTimer
-from PyQt5.QtGui import QBrush, QPen
+from PyQt5.QtGui import QBrush, QPen, QFontMetrics
 from PyQt5.QtWidgets import QWidget, QGraphicsScene, QGraphicsSimpleTextItem, QMenu, QAction, QGraphicsRectItem, \
     QGraphicsLineItem
 
@@ -14,7 +14,6 @@ class storylineView(QWidget, Ui_storylineView):
         QWidget.__init__(self, parent)
         self.setupUi(self)
         self._mdlPlots = None
-        self.btnRefresh.clicked.connect(self.refresh)
         self.scene = QGraphicsScene()
         self.view.setScene(self.scene)
 
@@ -22,6 +21,9 @@ class storylineView(QWidget, Ui_storylineView):
         self.reloadTimer.timeout.connect(self.refresh)
         self.reloadTimer.setSingleShot(True)
         self.reloadTimer.setInterval(500)
+
+        self.btnRefresh.clicked.connect(self.refresh)
+        self.sldTxtSize.sliderMoved.connect(self.reloadTimer.start)
 
         self.generateMenu()
 
@@ -58,14 +60,13 @@ class storylineView(QWidget, Ui_storylineView):
 
         LINE_HEIGHT = 32
         SPACING = 6
-        RECT_WIDTH = 200
-        TEXT_WIDTH = 25
+        TEXT_WIDTH = self.sldTxtSize.value()
         LEVEL_HEIGHT = 12
 
         s = self.scene
         s.clear()
 
-        # Get Max Level
+        # Get Max Level (max depth)
         root = self._mdlOutline.rootItem
         def maxLevel(item, level=0, max=0):
             if level > max:
@@ -81,18 +82,23 @@ class storylineView(QWidget, Ui_storylineView):
         # Get plots
         plotsID = self._mdlPlots.getPlotsByImportance()
         plots = []
+        fm = QFontMetrics(s.font())
+        max_name = 0
+
         for importance in plotsID:
             for ID in importance:
                 name = self._mdlPlots.getPlotNameByID(ID)
                 plots.append((ID, name))
+                max_name = max(fm.width(name), max_name)
 
         ROWS_HEIGHT = len(plots) * (LINE_HEIGHT + SPACING )
+        TITLE_WIDTH = max_name + 2 * SPACING
 
 
         # Add Folders and Texts
         outline = OutlineRect(0, 0, 0, ROWS_HEIGHT + SPACING + MAX_LEVEL * LEVEL_HEIGHT)
         s.addItem(outline)
-        outline.setPos(RECT_WIDTH + SPACING, 0)
+        outline.setPos(TITLE_WIDTH + SPACING, 0)
 
         # A Function to add a rect with centered text
         def addRectText(x, w, parent, text="", level=0, tooltip=""):
@@ -114,7 +120,7 @@ class storylineView(QWidget, Ui_storylineView):
                 r = 0
                 for c in item.children():
                     r += itemWidth(c)
-                return r
+                return r or TEXT_WIDTH
             else:
                 return TEXT_WIDTH
 
@@ -142,7 +148,7 @@ class storylineView(QWidget, Ui_storylineView):
             color = randomColor()
 
             # Rect
-            r = QGraphicsRectItem(0, 0, RECT_WIDTH, LINE_HEIGHT, itemsRect)
+            r = QGraphicsRectItem(0, 0, TITLE_WIDTH, LINE_HEIGHT, itemsRect)
             r.setPen(QPen(Qt.NoPen))
             r.setBrush(QBrush(color))
             r.setPos(0, i * LINE_HEIGHT + i * SPACING)
@@ -153,9 +159,9 @@ class storylineView(QWidget, Ui_storylineView):
             txt.setPos(r.boundingRect().center() - txt.boundingRect().center())
 
             # Line
-            line = PlotLine(RECT_WIDTH,
+            line = PlotLine(TITLE_WIDTH,
                             r.mapToScene(r.rect().center()).y(),
-                            OUTLINE_WIDTH + RECT_WIDTH + SPACING,
+                            OUTLINE_WIDTH + TITLE_WIDTH + SPACING,
                             r.mapToScene(r.rect().center()).y())
             s.addItem(line)
             line.setPen(QPen(color, 5))

@@ -2,7 +2,8 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/views/storylineView_ui.ui'
 #
-# Created by: PyQt5 UI code generator 5.4.2
+# Created: Sun Feb 28 09:13:29 2016
+#      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -13,8 +14,8 @@ class Ui_storylineView(object):
         storylineView.setObjectName("storylineView")
         storylineView.resize(1040, 130)
         self.horizontalLayout = QtWidgets.QHBoxLayout(storylineView)
-        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout.setSpacing(0)
+        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.verticalLayout = QtWidgets.QVBoxLayout()
         self.verticalLayout.setSpacing(0)
@@ -37,8 +38,13 @@ class Ui_storylineView(object):
         self.btnRefresh.setFlat(True)
         self.btnRefresh.setObjectName("btnRefresh")
         self.verticalLayout.addWidget(self.btnRefresh)
-        spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout.addItem(spacerItem)
+        self.sldTxtSize = QtWidgets.QSlider(storylineView)
+        self.sldTxtSize.setMinimum(1)
+        self.sldTxtSize.setMaximum(100)
+        self.sldTxtSize.setProperty("value", 20)
+        self.sldTxtSize.setOrientation(QtCore.Qt.Vertical)
+        self.sldTxtSize.setObjectName("sldTxtSize")
+        self.verticalLayout.addWidget(self.sldTxtSize)
         self.btnSettings = QtWidgets.QPushButton(storylineView)
         self.btnSettings.setMaximumSize(QtCore.QSize(32, 32))
         self.btnSettings.setText("")

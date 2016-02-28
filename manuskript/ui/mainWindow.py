@@ -2,7 +2,8 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/mainWindow.ui'
 #
-# Created by: PyQt5 UI code generator 5.4.2
+# Created: Sun Feb 28 09:13:29 2016
+#      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -16,8 +17,8 @@ class Ui_MainWindow(object):
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.centralwidget)
-        self.horizontalLayout_2.setContentsMargins(0, 6, 0, 0)
         self.horizontalLayout_2.setSpacing(0)
+        self.horizontalLayout_2.setContentsMargins(0, 6, 0, 0)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.stack = QtWidgets.QStackedWidget(self.centralwidget)
         self.stack.setObjectName("stack")
@@ -808,6 +809,7 @@ class Ui_MainWindow(object):
         self.layoutWidget = QtWidgets.QWidget(self.splitterOutlineH)
         self.layoutWidget.setObjectName("layoutWidget")
         self.verticalLayout_14 = QtWidgets.QVBoxLayout(self.layoutWidget)
+        self.verticalLayout_14.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_14.setObjectName("verticalLayout_14")
         self.splitterOutlineV = QtWidgets.QSplitter(self.layoutWidget)
         self.splitterOutlineV.setOrientation(QtCore.Qt.Vertical)
@@ -1299,18 +1301,18 @@ class Ui_MainWindow(object):
         self.actCompile.setShortcut(_translate("MainWindow", "F6"))
         self.actToolFrequency.setText(_translate("MainWindow", "&Frequency Analyzer"))
 
-from manuskript.ui.cheatSheet import cheatSheet
-from manuskript.ui.editors.mainEditor import mainEditor
-from manuskript.ui.search import search
-from manuskript.ui.sldImportance import sldImportance
-from manuskript.ui.views.basicItemView import basicItemView
-from manuskript.ui.views.lineEditView import lineEditView
-from manuskript.ui.views.metadataView import metadataView
-from manuskript.ui.views.outlineView import outlineView
-from manuskript.ui.views.persoTreeView import persoTreeView
 from manuskript.ui.views.plotTreeView import plotTreeView
 from manuskript.ui.views.storylineView import storylineView
-from manuskript.ui.views.textEditCompleter import textEditCompleter
-from manuskript.ui.views.textEditView import textEditView
+from manuskript.ui.views.basicItemView import basicItemView
 from manuskript.ui.views.treeView import treeView
+from manuskript.ui.views.outlineView import outlineView
+from manuskript.ui.search import search
+from manuskript.ui.sldImportance import sldImportance
+from manuskript.ui.views.textEditCompleter import textEditCompleter
+from manuskript.ui.views.metadataView import metadataView
+from manuskript.ui.views.persoTreeView import persoTreeView
+from manuskript.ui.cheatSheet import cheatSheet
 from manuskript.ui.welcome import welcome
+from manuskript.ui.editors.mainEditor import mainEditor
+from manuskript.ui.views.lineEditView import lineEditView
+from manuskript.ui.views.textEditView import textEditView
