@@ -836,15 +836,16 @@ class outlineItem():
 
         return lst
 
-    def findItemsContaining(self, text, columns, mainWindow=mainWindow(), caseSensitive=False):
+    def findItemsContaining(self, text, columns, mainWindow=mainWindow(), caseSensitive=False, recursive=True):
         """Returns a list if IDs of all subitems
         containing ``text`` in columns ``columns``
         (being a list of int).
         """
         lst = self.itemContains(text, columns, mainWindow, caseSensitive)
 
-        for c in self.children():
-            lst.extend(c.findItemsContaining(text, columns, mainWindow, caseSensitive))
+        if recursive:
+            for c in self.children():
+                lst.extend(c.findItemsContaining(text, columns, mainWindow, caseSensitive))
 
         return lst
 

@@ -471,12 +471,32 @@ def linkifyAllRefs(text):
     return re.sub(RegEx, lambda m: refToLink(m.group(0)), text)
 
 
+def findReferencesTo(ref, parent=None, recursive=True):
+    """List of text items containing references ref, and returns IDs.
+    Starts from item parent. If None, starts from root."""
+    oM = mainWindow().mdlOutline
+
+    if parent == None:
+        parent = oM.rootItem
+
+    # Removes everything after the second ':': '{L:ID:random text}' → '{L:ID:'
+    ref = ref[:ref.index(":", ref.index(":") + 1)+1]
+
+    # Bare form '{L:ID}'
+    ref2 = ref[:-1] + "}"
+
+    # Since it's a simple search (no regex), we search for both.
+    lst = parent.findItemsContaining(ref, [Outline.notes.value], recursive=recursive)
+    lst += parent.findItemsContaining(ref2, [Outline.notes.value], recursive=recursive)
+
+    return lst
+
 def listReferences(ref, title=qApp.translate("references", "Referenced in:")):
     oM = mainWindow().mdlOutline
     listRefs = ""
-    # Removes everything after the second ':': '{L:ID:random text}' → '{L:ID:'
-    ref = ref[:ref.index(":", ref.index(":") + 1)]
-    lst = oM.findItemsContaining(ref, [Outline.notes.value])
+
+    lst = findReferencesTo(ref)
+
     for t in lst:
         idx = oM.getIndexByID(t)
         listRefs += "<li><a href='{link}'>{text}</a></li>".format(

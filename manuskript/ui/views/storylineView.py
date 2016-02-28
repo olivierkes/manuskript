@@ -155,7 +155,7 @@ class storylineView(QWidget, Ui_storylineView):
                         result = []
                         c = child
                         while c:
-                            result += c.itemContains(ref, [Outline.notes.value])
+                            result += references.findReferencesTo(ref, c, recursive=False)
                             c = c.parent()
 
                         if result:
@@ -240,7 +240,6 @@ class RefCircle(QGraphicsEllipseItem):
         self.setPos(self.pos() + r1.center() - r2.center())
 
     def mouseDoubleClickEvent(self, event):
-        print("Good News!", self._ref)
         references.open(self._ref)
 
     def hoverEnterEvent(self, event):
