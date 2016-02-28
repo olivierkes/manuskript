@@ -1,11 +1,13 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-from PyQt5.QtCore import Qt, QTimer
-from PyQt5.QtGui import QBrush, QPen, QFontMetrics
+from PyQt5.QtCore import Qt, QTimer, QRectF
+from PyQt5.QtGui import QBrush, QPen, QFontMetrics, QFontMetricsF
 from PyQt5.QtWidgets import QWidget, QGraphicsScene, QGraphicsSimpleTextItem, QMenu, QAction, QGraphicsRectItem, \
-    QGraphicsLineItem
+    QGraphicsLineItem, QGraphicsEllipseItem
 
+from manuskript.enums import Outline
 from manuskript.functions import randomColor
+from manuskript.models import references
 from manuskript.ui.views.storylineView_ui import Ui_storylineView
 
 
@@ -58,9 +60,10 @@ class storylineView(QWidget, Ui_storylineView):
         if not self._mdlPlots or not self._mdlOutline or not self._mdlPersos:
             pass
 
-        LINE_HEIGHT = 32
-        SPACING = 6
+        LINE_HEIGHT = 18
+        SPACING = 3
         TEXT_WIDTH = self.sldTxtSize.value()
+        CIRCLE_WIDTH = 10
         LEVEL_HEIGHT = 12
 
         s = self.scene
@@ -79,19 +82,22 @@ class storylineView(QWidget, Ui_storylineView):
 
         MAX_LEVEL = maxLevel(root)
 
-        # Get plots
+        # Generate left entries
+        # (As of now, plot only)
         plotsID = self._mdlPlots.getPlotsByImportance()
-        plots = []
+        trackedItems = []
         fm = QFontMetrics(s.font())
         max_name = 0
 
         for importance in plotsID:
             for ID in importance:
                 name = self._mdlPlots.getPlotNameByID(ID)
-                plots.append((ID, name))
+                ref = references.plotReference(ID, searchable=True)
+
+                trackedItems.append((ID, ref, name))
                 max_name = max(fm.width(name), max_name)
 
-        ROWS_HEIGHT = len(plots) * (LINE_HEIGHT + SPACING )
+        ROWS_HEIGHT = len(trackedItems) * (LINE_HEIGHT + SPACING )
         TITLE_WIDTH = max_name + 2 * SPACING
 
 
@@ -100,21 +106,26 @@ class storylineView(QWidget, Ui_storylineView):
         s.addItem(outline)
         outline.setPos(TITLE_WIDTH + SPACING, 0)
 
-        # A Function to add a rect with centered text
+        refCircles = [] # a list of all references, to be added later on the lines
+
+        # A Function to add a rect with centered elided text
         def addRectText(x, w, parent, text="", level=0, tooltip=""):
             deltaH = LEVEL_HEIGHT if level else 0
-            r = OutlineRect(0, 0, w, parent.rect().height()-deltaH, parent)
+            r = OutlineRect(0, 0, w, parent.rect().height()-deltaH, parent, title=text)
             r.setPos(x, deltaH)
-            r.setToolTip(tooltip)
 
             txt = QGraphicsSimpleTextItem(text, r)
             f = txt.font()
             f.setPointSize(8)
+            fm = QFontMetricsF(f)
+            elidedText = fm.elidedText(text, Qt.ElideMiddle, w)
             txt.setFont(f)
+            txt.setText(elidedText)
             txt.setPos(r.boundingRect().center() - txt.boundingRect().center())
             txt.setY(0)
             return r
 
+        # A function to returns an item's width, by counting its children
         def itemWidth(item):
             if item.isFolder():
                 r = 0
@@ -128,11 +139,34 @@ class storylineView(QWidget, Ui_storylineView):
             delta = 0
             for child in item.children():
                 w = itemWidth(child)
+
                 if child.isFolder():
                     parent = addRectText(delta, w, rect, child.title(), level, tooltip=child.title())
+                    parent.setToolTip(references.tooltip(references.textReference(child.ID())))
                     listItems(child, parent, level + 1)
+
                 else:
-                    addRectText(delta, TEXT_WIDTH, rect, "", level, tooltip=child.title())
+                    rectChild = addRectText(delta, TEXT_WIDTH, rect, "", level, tooltip=child.title())
+                    rectChild.setToolTip(references.tooltip(references.textReference(child.ID())))
+                    
+                    # Find tracked references in that scene (or parent folders)
+                    for ID, ref, name in trackedItems:
+
+                        result = []
+                        c = child
+                        while c:
+                            result += c.itemContains(ref, [Outline.notes.value])
+                            c = c.parent()
+
+                        if result:
+                            ref2 = result[0]
+                            
+                            # Create a RefCircle with the reference
+                            c = RefCircle(TEXT_WIDTH / 2, - CIRCLE_WIDTH / 2, CIRCLE_WIDTH, ID=ref2)
+                            
+                            # Store it, with the position of that item, to display it on the line later on
+                            refCircles.append((ref, c, rect.mapToItem(outline, rectChild.pos())))
+
                 delta += w
 
         listItems(root, outline)
@@ -144,7 +178,7 @@ class storylineView(QWidget, Ui_storylineView):
         itemsRect = s.addRect(0, 0, 0, 0)
         itemsRect.setPos(0, MAX_LEVEL * LEVEL_HEIGHT + SPACING)
 
-        for ID, name in plots:
+        for ID, ref, name in trackedItems:
             color = randomColor()
 
             # Rect
@@ -159,29 +193,61 @@ class storylineView(QWidget, Ui_storylineView):
             txt.setPos(r.boundingRect().center() - txt.boundingRect().center())
 
             # Line
-            line = PlotLine(TITLE_WIDTH,
-                            r.mapToScene(r.rect().center()).y(),
-                            OUTLINE_WIDTH + TITLE_WIDTH + SPACING,
-                            r.mapToScene(r.rect().center()).y())
+            line = PlotLine(0, 0,
+                            OUTLINE_WIDTH + SPACING, 0)
+            line.setPos(TITLE_WIDTH, r.mapToScene(r.rect().center()).y())
             s.addItem(line)
             line.setPen(QPen(color, 5))
             line.setToolTip(self.tr("Plot: ") + name)
+
+            # We add the circles / references to text, on the line
+            for ref2, circle, pos in refCircles:
+                if ref2 == ref:
+                    circle.setParentItem(line)
+                    circle.setPos(pos.x(), 0)
 
         # self.view.fitInView(0, 0, TOTAL_WIDTH, i * LINE_HEIGHT, Qt.KeepAspectRatioByExpanding) # KeepAspectRatio
         self.view.setSceneRect(0, 0, 0, 0)
 
 
 class OutlineRect(QGraphicsRectItem):
-    def __init__(self, x, y, w, h, parent=None):
+    def __init__(self, x, y, w, h, parent=None, title=None):
         QGraphicsRectItem.__init__(self, x, y, w, h, parent)
         self.setBrush(Qt.white)
         self.setAcceptHoverEvents(True)
+        self._title = title
 
-    def hoverEnterEvent(self, QGraphicsSceneHoverEvent):
+    def hoverEnterEvent(self, event):
         self.setBrush(Qt.lightGray)
 
-    def hoverLeaveEvent(self, QGraphicsSceneHoverEvent):
+    def hoverLeaveEvent(self, event):
         self.setBrush(Qt.white)
+
+
+class RefCircle(QGraphicsEllipseItem):
+    def __init__(self, x, y, diameter, parent=None, ID=None):
+        QGraphicsEllipseItem.__init__(self, x, y, diameter, diameter, parent)
+        self.setBrush(Qt.white)
+        self._ref = references.textReference(ID)
+        self.setToolTip(references.tooltip(self._ref))
+        self.setPen(QPen(Qt.black, 2))
+        self.setAcceptHoverEvents(True)
+
+    def multiplyDiameter(self, factor):
+        r1 = self.rect()
+        r2 = QRectF(0, 0, r1.width() * factor, r1.height() * factor)
+        self.setRect(r2)
+        self.setPos(self.pos() + r1.center() - r2.center())
+
+    def mouseDoubleClickEvent(self, event):
+        print("Good News!", self._ref)
+        references.open(self._ref)
+
+    def hoverEnterEvent(self, event):
+        self.multiplyDiameter(2)
+
+    def hoverLeaveEvent(self, event):
+        self.multiplyDiameter(.5)
 
 
 class PlotLine(QGraphicsLineItem):

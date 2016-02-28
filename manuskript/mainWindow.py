@@ -840,8 +840,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.splitterOutlineV.setStretchFactor(0, 75)
         self.splitterOutlineV.setStretchFactor(1, 25)
 
-        # self.splitterRedacV.setStretchFactor(0, 55)
-        # self.splitterRedacV.setStretchFactor(1, 25)
+        self.splitterRedacV.setStretchFactor(0, 10)
+        self.splitterRedacV.setStretchFactor(1, 100)
 
         self.splitterRedacH.setStretchFactor(0, 30)
         self.splitterRedacH.setStretchFactor(1, 40)
