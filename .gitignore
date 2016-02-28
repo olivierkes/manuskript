@@ -9,3 +9,5 @@ manuskript/pycallgraph.txt
 ExportTest
 icons/Numix
 .idea
+dist
+build

@@ -32,7 +32,10 @@ linguist:
 	lrelease i18n/manuskript_fr.ts
 	
 i18n: $(QMs)
-	
+
+pyinstaller:
+	python3 /usr/local/bin/pyinstaller manuskript.spec
+
 %_rc.py : %.qrc
 	pyrcc5 "$<" -o "$@" 
 

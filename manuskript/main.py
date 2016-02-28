@@ -4,10 +4,12 @@ import faulthandler
 import sys
 
 from PyQt5.QtCore import QLocale, QTranslator, QSettings
-from PyQt5.QtWidgets import QApplication
-from .functions import *
+from PyQt5.QtGui import QIcon
+from PyQt5.QtWidgets import QApplication, qApp
 
-_version = "0.1.1"
+from manuskript.functions import appPath
+
+_version = "0.2.0"
 
 faulthandler.enable()
 
