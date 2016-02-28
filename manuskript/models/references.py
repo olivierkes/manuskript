@@ -21,30 +21,47 @@ RegEx = r"{(\w):(\d+):?.*?}"
 RegExNonCapturing = r"{\w:\d+:?.*?}"
 # The basic format of the references
 EmptyRef = "{{{}:{}:{}}}"
+EmptyRefSearchable = "{{{}:{}:"
 PersoLetter = "C"
 TextLetter = "T"
 PlotLetter = "P"
 WorldLetter = "W"
 
 
-def plotReference(ID):
-    """Takes the ID of a plot and returns a reference for that plot."""
-    return EmptyRef.format(PlotLetter, ID, "")
+def plotReference(ID, searchable=False):
+    """Takes the ID of a plot and returns a reference for that plot.
+    @searchable: returns a stripped version that allows simple text search."""
+    if not searchable:
+        return EmptyRef.format(PlotLetter, ID, "")
+    else:
+        return EmptyRefSearchable.format(PlotLetter, ID, "")
 
 
-def persoReference(ID):
-    """Takes the ID of a character and returns a reference for that character."""
-    return EmptyRef.format(PersoLetter, ID, "")
+def persoReference(ID, searchable=False):
+    """Takes the ID of a character and returns a reference for that character.
+    @searchable: returns a stripped version that allows simple text search."""
+    if not searchable:
+        return EmptyRef.format(PersoLetter, ID, "")
+    else:
+        return EmptyRefSearchable.format(PersoLetter, ID, "")
 
 
-def textReference(ID):
-    """Takes the ID of an outline item and returns a reference for that item."""
-    return EmptyRef.format(TextLetter, ID, "")
+def textReference(ID, searchable=False):
+    """Takes the ID of an outline item and returns a reference for that item.
+    @searchable: returns a stripped version that allows simple text search."""
+    if not searchable:
+        return EmptyRef.format(TextLetter, ID, "")
+    else:
+        return EmptyRefSearchable.format(TextLetter, ID, "")
 
 
-def worldReference(ID):
-    """Takes the ID of a world item and returns a reference for that item."""
-    return EmptyRef.format(WorldLetter, ID, "")
+def worldReference(ID, searchable=False):
+    """Takes the ID of a world item and returns a reference for that item.
+    @searchable: returns a stripped version that allows simple text search."""
+    if not searchable:
+        return EmptyRef.format(WorldLetter, ID, "")
+    else:
+        return EmptyRefSearchable.format(WorldLetter, ID, "")
 
 
 ###############################################################################
@@ -375,7 +392,10 @@ def tooltip(ref):
 
         item = idx.internalPointer()
 
-        tt = qApp.translate("references", "Text: <b>{}</b>").format(item.title())
+        if item.isFolder():
+            tt = qApp.translate("references", "Folder: <b>{}</b>").format(item.title())
+        else:
+            tt = qApp.translate("references", "Text: <b>{}</b>").format(item.title())
         tt += "<br><i>{}</i>".format(item.path())
 
         return tt
@@ -451,11 +471,32 @@ def linkifyAllRefs(text):
     return re.sub(RegEx, lambda m: refToLink(m.group(0)), text)
 
 
+def findReferencesTo(ref, parent=None, recursive=True):
+    """List of text items containing references ref, and returns IDs.
+    Starts from item parent. If None, starts from root."""
+    oM = mainWindow().mdlOutline
+
+    if parent == None:
+        parent = oM.rootItem
+
+    # Removes everything after the second ':': '{L:ID:random text}' → '{L:ID:'
+    ref = ref[:ref.index(":", ref.index(":") + 1)+1]
+
+    # Bare form '{L:ID}'
+    ref2 = ref[:-1] + "}"
+
+    # Since it's a simple search (no regex), we search for both.
+    lst = parent.findItemsContaining(ref, [Outline.notes.value], recursive=recursive)
+    lst += parent.findItemsContaining(ref2, [Outline.notes.value], recursive=recursive)
+
+    return lst
+
 def listReferences(ref, title=qApp.translate("references", "Referenced in:")):
     oM = mainWindow().mdlOutline
     listRefs = ""
-    ref = ref[:ref.index(":", ref.index(":") + 1)]
-    lst = oM.findItemsContaining(ref, [Outline.notes.value])
+
+    lst = findReferencesTo(ref)
+
     for t in lst:
         idx = oM.getIndexByID(t)
         listRefs += "<li><a href='{link}'>{text}</a></li>".format(
