@@ -69,6 +69,7 @@ class collapsibleDockWidgets(QToolBar):
         # widget.installEventFilter(self)
         b = verticalButton(self)
         b.setDefaultAction(a)
+        #b.setChecked(widget.isVisible())
         a2 = self.addWidget(b)
         self.otherWidgets.append((b, a2, widget, group))
 
@@ -86,6 +87,22 @@ class collapsibleDockWidgets(QToolBar):
                 action.setVisible(False)
             else:
                 action.setVisible(True)
+
+    def saveState(self):
+        # We just need to save states of the custom widgets.
+        state = []
+        for btn, act, w, grp in self.otherWidgets:
+            state.append(
+                (grp, btn.text(), btn.isChecked())
+            )
+        return state
+
+    def restoreState(self, state):
+        for group, title, status in state:
+            for btn, act, widget, grp in self.otherWidgets:
+                if group == grp and title == btn.text():
+                    btn.setChecked(status)
+                    widget.setVisible(status)
 
 
 class verticalButton(QToolButton):

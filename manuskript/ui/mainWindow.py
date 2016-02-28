@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/mainWindow.ui'
 #
-# Created: Sun Feb 28 09:13:29 2016
+# Created: Sun Feb 28 13:22:17 2016
 #      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -871,9 +871,11 @@ class Ui_MainWindow(object):
         self.verticalLayout_15.setObjectName("verticalLayout_15")
         self.splitterRedacV = QtWidgets.QSplitter(self.lytTabRedac)
         self.splitterRedacV.setOrientation(QtCore.Qt.Vertical)
+        self.splitterRedacV.setChildrenCollapsible(False)
         self.splitterRedacV.setObjectName("splitterRedacV")
         self.splitterRedacH = QtWidgets.QSplitter(self.splitterRedacV)
         self.splitterRedacH.setOrientation(QtCore.Qt.Horizontal)
+        self.splitterRedacH.setChildrenCollapsible(False)
         self.splitterRedacH.setObjectName("splitterRedacH")
         self.treeRedacWidget = QtWidgets.QWidget(self.splitterRedacH)
         self.treeRedacWidget.setObjectName("treeRedacWidget")
@@ -994,7 +996,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.addWidget(self.stack)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1112, 30))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1112, 20))
         self.menubar.setObjectName("menubar")
         self.menuFile = QtWidgets.QMenu(self.menubar)
         self.menuFile.setObjectName("menuFile")
@@ -1301,18 +1303,18 @@ class Ui_MainWindow(object):
         self.actCompile.setShortcut(_translate("MainWindow", "F6"))
         self.actToolFrequency.setText(_translate("MainWindow", "&Frequency Analyzer"))
 
-from manuskript.ui.views.plotTreeView import plotTreeView
-from manuskript.ui.views.storylineView import storylineView
-from manuskript.ui.views.basicItemView import basicItemView
-from manuskript.ui.views.treeView import treeView
-from manuskript.ui.views.outlineView import outlineView
-from manuskript.ui.search import search
-from manuskript.ui.sldImportance import sldImportance
-from manuskript.ui.views.textEditCompleter import textEditCompleter
-from manuskript.ui.views.metadataView import metadataView
-from manuskript.ui.views.persoTreeView import persoTreeView
-from manuskript.ui.cheatSheet import cheatSheet
-from manuskript.ui.welcome import welcome
-from manuskript.ui.editors.mainEditor import mainEditor
 from manuskript.ui.views.lineEditView import lineEditView
+from manuskript.ui.cheatSheet import cheatSheet
+from manuskript.ui.editors.mainEditor import mainEditor
+from manuskript.ui.views.outlineView import outlineView
+from manuskript.ui.views.treeView import treeView
 from manuskript.ui.views.textEditView import textEditView
+from manuskript.ui.views.storylineView import storylineView
+from manuskript.ui.views.persoTreeView import persoTreeView
+from manuskript.ui.views.plotTreeView import plotTreeView
+from manuskript.ui.search import search
+from manuskript.ui.views.basicItemView import basicItemView
+from manuskript.ui.welcome import welcome
+from manuskript.ui.views.textEditCompleter import textEditCompleter
+from manuskript.ui.sldImportance import sldImportance
+from manuskript.ui.views.metadataView import metadataView

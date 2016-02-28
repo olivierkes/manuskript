@@ -322,6 +322,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.mainEditor.setFolderView(settings.folderView)
         self.mainEditor.updateFolderViewButtons(settings.folderView)
         self.tabMain.setCurrentIndex(settings.lastTab)
+        # We force to emit even if it opens on the current tab
+        self.tabMain.currentChanged.emit(settings.lastTab)
         self.mainEditor.updateCorkBackground()
 
         # Set autosave
@@ -406,6 +408,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if sttgns.contains("revisionsState"):
             state = [False if v == "false" else True for v in sttgns.value("revisionsState")]
             self.redacMetadata.revisions.restoreState(state)
+        if sttgns.contains("splitterRedacH"):
+            self.splitterRedacH.restoreState(sttgns.value("splitterRedacH"))
+        if sttgns.contains("splitterRedacV"):
+            self.splitterRedacV.restoreState(sttgns.value("splitterRedacV"))
+        if sttgns.contains("toolbar"):
+            # self.toolbar is not initialized yet, so we just store balue
+            self._toolbarState = sttgns.value("toolbar")
+        else:
+            self._toolbarState = ""
+
 
     def closeEvent(self, event):
         # Save State and geometry and other things
@@ -413,8 +425,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         sttgns.setValue("geometry", self.saveGeometry())
         sttgns.setValue("windowState", self.saveState())
         sttgns.setValue("metadataState", self.redacMetadata.saveState())
-        sttgns.setValue("metadataState", self.redacMetadata.saveState())
         sttgns.setValue("revisionsState", self.redacMetadata.revisions.saveState())
+        sttgns.setValue("splitterRedacH", self.splitterRedacH.saveState())
+        sttgns.setValue("splitterRedacV", self.splitterRedacV.saveState())
+        sttgns.setValue("toolbar", self.toolbar.saveState())
 
         # Specific settings to save before quitting
         settings.lastTab = self.tabMain.currentIndex()
@@ -801,6 +815,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.toolbar.addCustomWidget(self.tr("Project tree"), self.treeRedacWidget, self.TabRedac)
         self.toolbar.addCustomWidget(self.tr("Metadata"), self.redacMetadata, self.TabRedac)
         self.toolbar.addCustomWidget(self.tr("Story line"), self.storylineView, self.TabRedac)
+        if self._toolbarState:
+            self.toolbar.restoreState(self._toolbarState)
 
         # Custom "tab" bar on the left
         self.lstTabs.setIconSize(QSize(48, 48))

@@ -1774,9 +1774,15 @@
               <property name="orientation">
                <enum>Qt::Vertical</enum>
               </property>
+              <property name="childrenCollapsible">
+               <bool>false</bool>
+              </property>
               <widget class="QSplitter" name="splitterRedacH">
                <property name="orientation">
                 <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="childrenCollapsible">
+                <bool>false</bool>
                </property>
                <widget class="QWidget" name="treeRedacWidget" native="true">
                 <layout class="QVBoxLayout" name="verticalLayout_30">
@@ -1973,7 +1979,7 @@
      <x>0</x>
      <y>0</y>
      <width>1112</width>
-     <height>30</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
