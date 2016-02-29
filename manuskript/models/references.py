@@ -373,56 +373,125 @@ def infos(ref):
         return qApp.translate("references", "Unknown reference: {}.").format(ref)
 
 
-def tooltip(ref):
-    """Returns a tooltip in HTML for the reference ``ref``."""
+def shortInfos(ref):
+    """Returns infos about reference ``ref``.
+    Returns -1 if ``ref`` is not a valid reference, and None if it is valid but unknown."""
     match = re.fullmatch(RegEx, ref)
 
     if not match:
-        return qApp.translate("references", "Not a reference: {}.").format(ref)
+        return -1
 
     _type = match.group(1)
     _ref = match.group(2)
 
+    infos = {}
+    infos["ID"] = _ref
+
     if _type == TextLetter:
+
+        infos["type"] = TextLetter
+
         m = mainWindow().mdlOutline
         idx = m.getIndexByID(_ref)
 
         if not idx.isValid():
-            return qApp.translate("references", "Unknown reference: {}.").format(ref)
+            return None
 
         item = idx.internalPointer()
 
         if item.isFolder():
-            tt = qApp.translate("references", "Folder: <b>{}</b>").format(item.title())
+            infos["text_type"] = "folder"
         else:
-            tt = qApp.translate("references", "Text: <b>{}</b>").format(item.title())
-        tt += "<br><i>{}</i>".format(item.path())
+            infos["text_type"] = "text"
 
-        return tt
+        infos["title"] = item.title()
+        infos["path"] = item.path()
+        return infos
 
     elif _type == PersoLetter:
+
+        infos["type"] = PersoLetter
+
         m = mainWindow().mdlPersos
         item = m.item(int(_ref), Perso.name.value)
         if item:
-            return qApp.translate("references", "Character: <b>{}</b>").format(item.text())
+            infos["title"] = item.text()
+            infos["name"] = item.text()
+            return infos
 
     elif _type == PlotLetter:
+
+        infos["type"] = PlotLetter
+
         m = mainWindow().mdlPlots
         name = m.getPlotNameByID(_ref)
         if name:
-            return qApp.translate("references", "Plot: <b>{}</b>").format(name)
+            infos["title"] = name
+            return infos
 
     elif _type == WorldLetter:
+
+        infos["type"] = WorldLetter
+
         m = mainWindow().mdlWorld
         item = m.itemByID(_ref)
         if item:
             name = item.text()
             path = m.path(item)
-            return qApp.translate("references", "World: <b>{name}</b>{path}").format(
-                    name=name,
-                    path=" <span style='color:gray;'>({})</span>".format(path) if path else "")
+            infos["title"] = name
+            infos["path"] = path
+            return infos
 
-    return qApp.translate("references", "<b>Unknown reference:</b> {}.").format(ref)
+    return None
+
+
+def title(ref):
+    """Returns a the title (or name) for the reference ``ref``."""
+    infos = shortInfos(ref)
+    if infos and infos != -1 and "title" in infos:
+        return infos["title"]
+    else:
+        return None
+
+def type(ref):
+    infos = shortInfos(ref)
+    if infos and infos != -1:
+        return infos["type"]
+
+def ID(ref):
+    infos = shortInfos(ref)
+    if infos and infos != -1:
+        return infos["ID"]
+
+def tooltip(ref):
+    """Returns a tooltip in HTML for the reference ``ref``."""
+    infos = shortInfos(ref)
+
+    if not infos:
+        return qApp.translate("references", "<b>Unknown reference:</b> {}.").format(ref)
+
+    if infos == -1:
+        return qApp.translate("references", "Not a reference: {}.").format(ref)
+
+
+    if infos["type"] == TextLetter:
+        if infos["text_type"] == "folder":
+            tt = qApp.translate("references", "Folder: <b>{}</b>").format(infos["title"])
+        else:
+            tt = qApp.translate("references", "Text: <b>{}</b>").format(infos["title"])
+        tt += "<br><i>{}</i>".format(infos["path"])
+        return tt
+
+    elif infos["type"] == PersoLetter:
+        return qApp.translate("references", "Character: <b>{}</b>").format(infos["title"])
+
+    elif infos["type"] == PlotLetter:
+        return qApp.translate("references", "Plot: <b>{}</b>").format(infos["title"])
+
+    elif infos["type"] == WorldLetter:
+        return qApp.translate("references", "World: <b>{name}</b>{path}").format(
+                    name=infos["title"],
+                    path=" <span style='color:gray;'>({})</span>".format(infos["path"]) if infos["path"] else "")
 
 
 ###############################################################################

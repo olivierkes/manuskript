@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
 from PyQt5.QtCore import Qt, QTimer, QRectF
-from PyQt5.QtGui import QBrush, QPen, QFontMetrics, QFontMetricsF
+from PyQt5.QtGui import QBrush, QPen, QFontMetrics, QFontMetricsF, QColor
 from PyQt5.QtWidgets import QWidget, QGraphicsScene, QGraphicsSimpleTextItem, QMenu, QAction, QGraphicsRectItem, \
     QGraphicsLineItem, QGraphicsEllipseItem
 
@@ -32,15 +32,17 @@ class storylineView(QWidget, Ui_storylineView):
     def generateMenu(self):
         m = QMenu()
 
-        for i in [
-            self.tr("Show Plots"),
-            self.tr("Show Characters"),
-            self.tr("Show Objects"),
-        ]:
-            a = QAction(i, m)
-            a.setCheckable(True)
-            a.setEnabled(False)
-            m.addAction(a)
+        self.actPlots = QAction(self.tr("Show Plots"), m)
+        self.actPlots.setCheckable(True)
+        self.actPlots.setChecked(True)
+        self.actPlots.toggled.connect(self.reloadTimer.start)
+        m.addAction(self.actPlots)
+
+        self.actCharacters = QAction(self.tr("Show Characters"), m)
+        self.actCharacters.setCheckable(True)
+        self.actCharacters.setChecked(False)
+        self.actCharacters.toggled.connect(self.reloadTimer.start)
+        m.addAction(self.actCharacters)
 
         self.btnSettings.setMenu(m)
 
@@ -55,6 +57,33 @@ class storylineView(QWidget, Ui_storylineView):
         self._mdlPersos = mdlPersos
         self._mdlPersos.dataChanged.connect(self.reloadTimer.start)
 
+    def plotReferences(self):
+        "Returns a list of plot references"
+        if not self._mdlPlots:
+            pass
+
+        plotsID = self._mdlPlots.getPlotsByImportance()
+        r = []
+        for importance in plotsID:
+            for ID in importance:
+                ref = references.plotReference(ID)
+                r.append(ref)
+
+        return r
+
+    def persosReferences(self):
+        "Returns a list of character references"
+        if not self._mdlPersos:
+            pass
+
+        IDs = self._mdlPersos.getPersosByImportance()
+        r = []
+        for importance in IDs:
+            for ID in importance:
+                ref = references.persoReference(ID)
+                r.append(ref)
+
+        return r
 
     def refresh(self):
         if not self._mdlPlots or not self._mdlOutline or not self._mdlPersos:
@@ -82,24 +111,24 @@ class storylineView(QWidget, Ui_storylineView):
 
         MAX_LEVEL = maxLevel(root)
 
-        # Generate left entries
-        # (As of now, plot only)
-        plotsID = self._mdlPlots.getPlotsByImportance()
+        # Get the list of tracked items (array of references)
         trackedItems = []
-        fm = QFontMetrics(s.font())
-        max_name = 0
 
-        for importance in plotsID:
-            for ID in importance:
-                name = self._mdlPlots.getPlotNameByID(ID)
-                ref = references.plotReference(ID, searchable=True)
+        if self.actPlots.isChecked():
+            trackedItems += self.plotReferences()
 
-                trackedItems.append((ID, ref, name))
-                max_name = max(fm.width(name), max_name)
+        if self.actCharacters.isChecked():
+            trackedItems += self.persosReferences()
 
         ROWS_HEIGHT = len(trackedItems) * (LINE_HEIGHT + SPACING )
-        TITLE_WIDTH = max_name + 2 * SPACING
 
+        fm = QFontMetrics(s.font())
+        max_name = 0
+        for ref in trackedItems:
+            name = references.title(ref)
+            max_name = max(fm.width(name), max_name)
+
+        TITLE_WIDTH = max_name + 2 * SPACING
 
         # Add Folders and Texts
         outline = OutlineRect(0, 0, 0, ROWS_HEIGHT + SPACING + MAX_LEVEL * LEVEL_HEIGHT)
@@ -150,9 +179,22 @@ class storylineView(QWidget, Ui_storylineView):
                     rectChild.setToolTip(references.tooltip(references.textReference(child.ID())))
                     
                     # Find tracked references in that scene (or parent folders)
-                    for ID, ref, name in trackedItems:
+                    for ref in trackedItems:
 
                         result = []
+
+                        # Tests if POV
+                        scenePOV = False  # Will hold true of character is POV of the current text, not containing folder
+                        if references.type(ref) == references.PersoLetter:
+                            ID = references.ID(ref)
+                            c = child
+                            while c:
+                                if c.POV() == ID:
+                                    result.append(c.ID())
+                                    if c == child: scenePOV = True
+                                c = c.parent()
+
+                        # Search in notes/references
                         c = child
                         while c:
                             result += references.findReferencesTo(ref, c, recursive=False)
@@ -162,7 +204,7 @@ class storylineView(QWidget, Ui_storylineView):
                             ref2 = result[0]
                             
                             # Create a RefCircle with the reference
-                            c = RefCircle(TEXT_WIDTH / 2, - CIRCLE_WIDTH / 2, CIRCLE_WIDTH, ID=ref2)
+                            c = RefCircle(TEXT_WIDTH / 2, - CIRCLE_WIDTH / 2, CIRCLE_WIDTH, ID=ref2, important=scenePOV)
                             
                             # Store it, with the position of that item, to display it on the line later on
                             refCircles.append((ref, c, rect.mapToItem(outline, rectChild.pos())))
@@ -173,22 +215,27 @@ class storylineView(QWidget, Ui_storylineView):
 
         OUTLINE_WIDTH = itemWidth(root)
 
-        # Add Plots
+        # Add Tracked items
         i = 0
         itemsRect = s.addRect(0, 0, 0, 0)
         itemsRect.setPos(0, MAX_LEVEL * LEVEL_HEIGHT + SPACING)
 
-        for ID, ref, name in trackedItems:
-            color = randomColor()
+        for ref in trackedItems:
+            if references.type(ref) == references.PersoLetter:
+                color = QColor(self._mdlPersos.getPersoColorByID(references.ID(ref)))
+            else:
+                color = randomColor()
 
             # Rect
             r = QGraphicsRectItem(0, 0, TITLE_WIDTH, LINE_HEIGHT, itemsRect)
             r.setPen(QPen(Qt.NoPen))
             r.setBrush(QBrush(color))
             r.setPos(0, i * LINE_HEIGHT + i * SPACING)
+            r.setToolTip(references.tooltip(ref))
             i += 1
 
             # Text
+            name = references.title(ref)
             txt = QGraphicsSimpleTextItem(name, r)
             txt.setPos(r.boundingRect().center() - txt.boundingRect().center())
 
@@ -198,7 +245,7 @@ class storylineView(QWidget, Ui_storylineView):
             line.setPos(TITLE_WIDTH, r.mapToScene(r.rect().center()).y())
             s.addItem(line)
             line.setPen(QPen(color, 5))
-            line.setToolTip(self.tr("Plot: ") + name)
+            line.setToolTip(references.tooltip(ref))
 
             # We add the circles / references to text, on the line
             for ref2, circle, pos in refCircles:
@@ -225,13 +272,15 @@ class OutlineRect(QGraphicsRectItem):
 
 
 class RefCircle(QGraphicsEllipseItem):
-    def __init__(self, x, y, diameter, parent=None, ID=None):
+    def __init__(self, x, y, diameter, parent=None, ID=None, important=False):
         QGraphicsEllipseItem.__init__(self, x, y, diameter, diameter, parent)
         self.setBrush(Qt.white)
         self._ref = references.textReference(ID)
         self.setToolTip(references.tooltip(self._ref))
         self.setPen(QPen(Qt.black, 2))
         self.setAcceptHoverEvents(True)
+        if important:
+            self.setBrush(Qt.black)
 
     def multiplyDiameter(self, factor):
         r1 = self.rect()
