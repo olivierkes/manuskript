@@ -65,12 +65,12 @@
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="306"/>
-        <source>One sentance</source>
+        <source>One sentence</source>
         <translation>Une phrase</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="381"/>
-        <source>One sentance summary</source>
+        <source>One sentence summary</source>
         <translation>Résumé en une phrase</translation>
     </message>
     <message>
@@ -160,7 +160,7 @@
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="775"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One sentance&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One sentence&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Résumé&lt;br/&gt;en une phrase&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
@@ -515,7 +515,7 @@
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="828"/>
-        <source>Take time to think about a one sentance (~50 words) summary of your book. Then expand it to a paragraph, then to a page, then to a full summary.</source>
+        <source>Take time to think about a one sentence (~50 words) summary of your book. Then expand it to a paragraph, then to a page, then to a full summary.</source>
         <translation>Prenez le temps de réfléchir à un résumé de votre livre, en une phrase (~50 mots). Puis augmentez cette phrase en un paragraphe, puis en une page, puis en un résumé complet.</translation>
     </message>
     <message>
