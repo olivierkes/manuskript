@@ -103,7 +103,7 @@
        <number>0</number>
       </property>
       <item>
-       <widget class="lineEditView" name="txtSummarySentance">
+       <widget class="lineEditView" name="txtSummarySentence">
         <property name="inputMask">
          <string/>
         </property>
