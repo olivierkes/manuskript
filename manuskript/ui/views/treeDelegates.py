@@ -105,7 +105,7 @@ class treeTitleDelegate(QStyledItemDelegate):
                     if extraText:
                         extraText = " ({}%)".format(extraText)
                 elif settings.viewSettings["Tree"]["InfoFolder"] == "Summary":
-                    extraText = item.data(Outline.summarySentance.value)
+                    extraText = item.data(Outline.summarySentence.value)
                     if extraText:
                         extraText = " - {}".format(extraText)
 
@@ -118,7 +118,7 @@ class treeTitleDelegate(QStyledItemDelegate):
                     if extraText:
                         extraText = " ({}%)".format(extraText)
                 elif settings.viewSettings["Tree"]["InfoText"] == "Summary":
-                    extraText = item.data(Outline.summarySentance.value)
+                    extraText = item.data(Outline.summarySentence.value)
                     if extraText:
                         extraText = " - {}".format(extraText)
 
