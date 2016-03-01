@@ -130,7 +130,7 @@ def infos(ref):
         path = " > ".join(pathStr)
 
         # Summaries and notes
-        ss = item.data(Outline.summarySentance.value)
+        ss = item.data(Outline.summarySentence.value)
         ls = item.data(Outline.summaryFull.value)
         notes = item.data(Outline.notes.value)
 
@@ -195,7 +195,7 @@ def infos(ref):
             (Perso.goal, qApp.translate("references", "Goal"), False),
             (Perso.conflict, qApp.translate("references", "Conflict"), False),
             (Perso.epiphany, qApp.translate("references", "Epiphany"), False),
-            (Perso.summarySentance, qApp.translate("references", "Short summary"), True),
+            (Perso.summarySentence, qApp.translate("references", "Short summary"), True),
             (Perso.summaryPara, qApp.translate("references", "Longer summary"), True),
         ]:
             val = m.data(index.sibling(index.row(), i[0].value))

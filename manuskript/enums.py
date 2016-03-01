@@ -17,7 +17,7 @@ class Perso(Enum):
     goal = 4
     conflict = 5
     epiphany = 6
-    summarySentance = 7
+    summarySentence = 7
     summaryPara = 8
     summaryFull = 9
     notes = 10
@@ -51,7 +51,7 @@ class Outline(Enum):
     title = 0
     ID = 1
     type = 2
-    summarySentance = 3
+    summarySentence = 3
     summaryFull = 4
     POV = 5
     notes = 6

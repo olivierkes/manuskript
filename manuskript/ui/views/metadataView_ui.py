@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/views/metadataView_ui.ui'
 #
-# Created: Mon Feb  8 09:48:05 2016
+# Created: Wed Mar  2 00:30:18 2016
 #      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -43,11 +43,11 @@ class Ui_metadataView(object):
         self.verticalLayout_22.setSpacing(0)
         self.verticalLayout_22.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_22.setObjectName("verticalLayout_22")
-        self.txtSummarySentance = lineEditView(self.grpSummary)
-        self.txtSummarySentance.setInputMask("")
-        self.txtSummarySentance.setFrame(False)
-        self.txtSummarySentance.setObjectName("txtSummarySentance")
-        self.verticalLayout_22.addWidget(self.txtSummarySentance)
+        self.txtSummarySentence = lineEditView(self.grpSummary)
+        self.txtSummarySentence.setInputMask("")
+        self.txtSummarySentence.setFrame(False)
+        self.txtSummarySentence.setObjectName("txtSummarySentence")
+        self.verticalLayout_22.addWidget(self.txtSummarySentence)
         self.line = QtWidgets.QFrame(self.grpSummary)
         self.line.setFrameShadow(QtWidgets.QFrame.Plain)
         self.line.setLineWidth(0)
@@ -95,15 +95,15 @@ class Ui_metadataView(object):
         metadataView.setWindowTitle(_translate("metadataView", "Form"))
         self.grpProperties.setTitle(_translate("metadataView", "Properties"))
         self.grpSummary.setTitle(_translate("metadataView", "Summary"))
-        self.txtSummarySentance.setPlaceholderText(_translate("metadataView", "One line summary"))
+        self.txtSummarySentence.setPlaceholderText(_translate("metadataView", "One line summary"))
         self.txtSummaryFull.setPlaceholderText(_translate("metadataView", "Full summary"))
         self.grpNotes.setTitle(_translate("metadataView", "Notes / References"))
         self.txtNotes.setPlaceholderText(_translate("metadataView", "Notes / References"))
         self.grpRevisions.setTitle(_translate("metadataView", "Revisions"))
 
-from manuskript.ui.revisions import revisions
+from manuskript.ui.views.lineEditView import lineEditView
 from manuskript.ui.views.propertiesView import propertiesView
 from manuskript.ui.views.textEditCompleter import textEditCompleter
 from manuskript.ui.views.textEditView import textEditView
-from manuskript.ui.views.lineEditView import lineEditView
 from manuskript.ui.collapsibleGroupBox2 import collapsibleGroupBox2
+from manuskript.ui.revisions import revisions

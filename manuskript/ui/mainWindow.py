@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/mainWindow.ui'
 #
-# Created: Sun Feb 28 13:22:17 2016
+# Created: Wed Mar  2 00:30:17 2016
 #      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -165,18 +165,18 @@ class Ui_MainWindow(object):
         self.label = QtWidgets.QLabel(self.tabSummaryPage1)
         self.label.setObjectName("label")
         self.verticalLayout_5.addWidget(self.label)
-        self.txtSummarySentance = textEditView(self.tabSummaryPage1)
+        self.txtSummarySentence = textEditView(self.tabSummaryPage1)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.txtSummarySentance.sizePolicy().hasHeightForWidth())
-        self.txtSummarySentance.setSizePolicy(sizePolicy)
-        self.txtSummarySentance.setObjectName("txtSummarySentance")
-        self.verticalLayout_5.addWidget(self.txtSummarySentance)
-        self.lblSummaryWCSentance = QtWidgets.QLabel(self.tabSummaryPage1)
-        self.lblSummaryWCSentance.setText("")
-        self.lblSummaryWCSentance.setObjectName("lblSummaryWCSentance")
-        self.verticalLayout_5.addWidget(self.lblSummaryWCSentance)
+        sizePolicy.setHeightForWidth(self.txtSummarySentence.sizePolicy().hasHeightForWidth())
+        self.txtSummarySentence.setSizePolicy(sizePolicy)
+        self.txtSummarySentence.setObjectName("txtSummarySentence")
+        self.verticalLayout_5.addWidget(self.txtSummarySentence)
+        self.lblSummaryWCSentence = QtWidgets.QLabel(self.tabSummaryPage1)
+        self.lblSummaryWCSentence.setText("")
+        self.lblSummaryWCSentence.setObjectName("lblSummaryWCSentence")
+        self.verticalLayout_5.addWidget(self.lblSummaryWCSentence)
         spacerItem5 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout_5.addItem(spacerItem5)
         self.tabSummary.addWidget(self.tabSummaryPage1)
@@ -189,15 +189,15 @@ class Ui_MainWindow(object):
         self.label_21 = QtWidgets.QLabel(self.tabSummaryPage2)
         self.label_21.setObjectName("label_21")
         self.verticalLayout.addWidget(self.label_21)
-        self.txtSummarySentance_2 = textEditView(self.tabSummaryPage2)
+        self.txtSummarySentence_2 = textEditView(self.tabSummaryPage2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.txtSummarySentance_2.sizePolicy().hasHeightForWidth())
-        self.txtSummarySentance_2.setSizePolicy(sizePolicy)
-        self.txtSummarySentance_2.setReadOnly(True)
-        self.txtSummarySentance_2.setObjectName("txtSummarySentance_2")
-        self.verticalLayout.addWidget(self.txtSummarySentance_2)
+        sizePolicy.setHeightForWidth(self.txtSummarySentence_2.sizePolicy().hasHeightForWidth())
+        self.txtSummarySentence_2.setSizePolicy(sizePolicy)
+        self.txtSummarySentence_2.setReadOnly(True)
+        self.txtSummarySentence_2.setObjectName("txtSummarySentence_2")
+        self.verticalLayout.addWidget(self.txtSummarySentence_2)
         spacerItem6 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout.addItem(spacerItem6)
         self.horizontalLayout_4.addLayout(self.verticalLayout)
@@ -433,9 +433,9 @@ class Ui_MainWindow(object):
         self.txtPersoEpiphany = textEditView(self.infos)
         self.txtPersoEpiphany.setObjectName("txtPersoEpiphany")
         self.formLayout.setWidget(5, QtWidgets.QFormLayout.FieldRole, self.txtPersoEpiphany)
-        self.txtPersoSummarySentance = textEditView(self.infos)
-        self.txtPersoSummarySentance.setObjectName("txtPersoSummarySentance")
-        self.formLayout.setWidget(6, QtWidgets.QFormLayout.FieldRole, self.txtPersoSummarySentance)
+        self.txtPersoSummarySentence = textEditView(self.infos)
+        self.txtPersoSummarySentence.setObjectName("txtPersoSummarySentence")
+        self.formLayout.setWidget(6, QtWidgets.QFormLayout.FieldRole, self.txtPersoSummarySentence)
         self.txtPersoSummaryPara = textEditView(self.infos)
         self.txtPersoSummaryPara.setObjectName("txtPersoSummaryPara")
         self.formLayout.setWidget(7, QtWidgets.QFormLayout.FieldRole, self.txtPersoSummaryPara)
@@ -1196,12 +1196,12 @@ class Ui_MainWindow(object):
         self.tabMain.setTabText(self.tabMain.indexOf(self.lytTabOverview), _translate("MainWindow", "General"))
         self.label_9.setText(_translate("MainWindow", "Situation:"))
         self.label_29.setText(_translate("MainWindow", "Summary:"))
-        self.cmbSummary.setItemText(0, _translate("MainWindow", "One sentance"))
+        self.cmbSummary.setItemText(0, _translate("MainWindow", "One sentence"))
         self.cmbSummary.setItemText(1, _translate("MainWindow", "One paragraph"))
         self.cmbSummary.setItemText(2, _translate("MainWindow", "One page"))
         self.cmbSummary.setItemText(3, _translate("MainWindow", "Full"))
-        self.label.setText(_translate("MainWindow", "One sentance summary"))
-        self.label_21.setText(_translate("MainWindow", "One sentance summary"))
+        self.label.setText(_translate("MainWindow", "One sentence summary"))
+        self.label_21.setText(_translate("MainWindow", "One sentence summary"))
         self.label_2.setText(_translate("MainWindow", "One paragraph summary"))
         self.label_22.setText(_translate("MainWindow", "One paragraph summary"))
         self.label_17.setText(_translate("MainWindow", "Expand each sentence of your one paragraph summary to a paragraph"))
@@ -1221,7 +1221,7 @@ class Ui_MainWindow(object):
         self.label_5.setText(_translate("MainWindow", "Goal"))
         self.label_6.setText(_translate("MainWindow", "Conflict"))
         self.label_7.setText(_translate("MainWindow", "Epiphany"))
-        self.label_24.setText(_translate("MainWindow", "<html><head/><body><p align=\"right\">One sentance<br/>summary</p></body></html>"))
+        self.label_24.setText(_translate("MainWindow", "<html><head/><body><p align=\"right\">One sentence<br/>summary</p></body></html>"))
         self.label_8.setText(_translate("MainWindow", "<html><head/><body><p align=\"right\">One paragraph<br/>summary</p></body></html>"))
         self.btnStepFour.setText(_translate("MainWindow", "Next"))
         self.tabPersos.setTabText(self.tabPersos.indexOf(self.infos), _translate("MainWindow", "Basic infos"))
@@ -1303,18 +1303,18 @@ class Ui_MainWindow(object):
         self.actCompile.setShortcut(_translate("MainWindow", "F6"))
         self.actToolFrequency.setText(_translate("MainWindow", "&Frequency Analyzer"))
 
-from manuskript.ui.views.lineEditView import lineEditView
-from manuskript.ui.cheatSheet import cheatSheet
-from manuskript.ui.editors.mainEditor import mainEditor
-from manuskript.ui.views.outlineView import outlineView
-from manuskript.ui.views.treeView import treeView
-from manuskript.ui.views.textEditView import textEditView
 from manuskript.ui.views.storylineView import storylineView
+from manuskript.ui.views.textEditView import textEditView
+from manuskript.ui.views.lineEditView import lineEditView
+from manuskript.ui.views.treeView import treeView
+from manuskript.ui.editors.mainEditor import mainEditor
+from manuskript.ui.views.basicItemView import basicItemView
 from manuskript.ui.views.persoTreeView import persoTreeView
 from manuskript.ui.views.plotTreeView import plotTreeView
-from manuskript.ui.search import search
-from manuskript.ui.views.basicItemView import basicItemView
-from manuskript.ui.welcome import welcome
+from manuskript.ui.views.outlineView import outlineView
+from manuskript.ui.views.metadataView import metadataView
+from manuskript.ui.cheatSheet import cheatSheet
 from manuskript.ui.views.textEditCompleter import textEditCompleter
 from manuskript.ui.sldImportance import sldImportance
-from manuskript.ui.views.metadataView import metadataView
+from manuskript.ui.welcome import welcome
+from manuskript.ui.search import search
