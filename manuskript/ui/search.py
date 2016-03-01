@@ -84,7 +84,7 @@ class search(QWidget, Ui_search):
         lstColumns = [
             ("Title", Outline.title.value),
             ("Text", Outline.text.value),
-            ("Summary", Outline.summarySentance.value),
+            ("Summary", Outline.summarySentence.value),
             ("Summary", Outline.summaryFull.value),
             ("Notes", Outline.notes.value),
             ("POV", Outline.POV.value),
