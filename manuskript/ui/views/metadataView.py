@@ -11,14 +11,14 @@ class metadataView(QWidget, Ui_metadataView):
         QWidget.__init__(self, parent)
         self.setupUi(self)
         self._lastIndexes = None
-        self.txtSummarySentance.setColumn(Outline.summarySentance.value)
+        self.txtSummarySentence.setColumn(Outline.summarySentence.value)
         self.txtSummaryFull.setColumn(Outline.summaryFull.value)
         self.txtNotes.setColumn(Outline.notes.value)
         self.revisions.setEnabled(False)
 
     def setModels(self, mdlOutline, mdlPersos, mdlLabels, mdlStatus):
         self.properties.setModels(mdlOutline, mdlPersos, mdlLabels, mdlStatus)
-        self.txtSummarySentance.setModel(mdlOutline)
+        self.txtSummarySentence.setModel(mdlOutline)
         self.txtSummaryFull.setModel(mdlOutline)
         self.txtNotes.setModel(mdlOutline)
         self.revisions.setModel(mdlOutline)

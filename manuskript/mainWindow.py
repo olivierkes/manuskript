@@ -66,7 +66,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Word count
         self.mprWordCount = QSignalMapper(self)
         for t, i in [
-            (self.txtSummarySentance, 0),
+            (self.txtSummarySentence, 0),
             (self.txtSummaryPara, 1),
             (self.txtSummaryPage, 2),
             (self.txtSummaryFull, 3)
@@ -161,7 +161,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.txtPersoGoal,
             self.txtPersoConflict,
             self.txtPersoEpiphany,
-            self.txtPersoSummarySentance,
+            self.txtPersoSummarySentence,
             self.txtPersoSummaryPara,
             self.txtPersoSummaryFull,
             self.txtPersoNotes,
@@ -592,8 +592,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Flat datas (Summary and general infos)
         for widget, col in [
             (self.txtSummarySituation, 0),
-            (self.txtSummarySentance, 1),
-            (self.txtSummarySentance_2, 1),
+            (self.txtSummarySentence, 1),
+            (self.txtSummarySentence_2, 1),
             (self.txtSummaryPara, 2),
             (self.txtSummaryPara_2, 2),
             (self.txtPlotSummaryPara, 2),
@@ -639,7 +639,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             (self.txtPersoGoal, Perso.goal.value),
             (self.txtPersoConflict, Perso.conflict.value),
             (self.txtPersoEpiphany, Perso.epiphany.value),
-            (self.txtPersoSummarySentance, Perso.summarySentance.value),
+            (self.txtPersoSummarySentence, Perso.summarySentence.value),
             (self.txtPersoSummaryPara, Perso.summaryPara.value),
             (self.txtPersoSummaryFull, Perso.summaryFull.value),
             (self.txtPersoNotes, Perso.notes.value)
@@ -787,14 +787,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def wordCount(self, i):
 
         src = {
-            0: self.txtSummarySentance,
+            0: self.txtSummarySentence,
             1: self.txtSummaryPara,
             2: self.txtSummaryPage,
             3: self.txtSummaryFull
         }[i]
 
         lbl = {
-            0: self.lblSummaryWCSentance,
+            0: self.lblSummaryWCSentence,
             1: self.lblSummaryWCPara,
             2: self.lblSummaryWCPage,
             3: self.lblSummaryWCFull
@@ -881,7 +881,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
              1),
             (self.lytSummary,
              self.tr(
-                     """Take time to think about a one sentance (~50 words) summary of your book. Then expand it to
+                     """Take time to think about a one sentence (~50 words) summary of your book. Then expand it to
                      a paragraph, then to a page, then to a full summary."""),
              1),
             (self.lytTabPersos,

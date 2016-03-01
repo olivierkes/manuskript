@@ -17,7 +17,7 @@ class Perso(Enum):
     goal = 4
     conflict = 5
     epiphany = 6
-    summarySentance = 7
+    summarySentence = 7
     summaryPara = 8
     summaryFull = 9
     notes = 10

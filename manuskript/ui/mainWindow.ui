@@ -342,7 +342,7 @@
                  <widget class="QComboBox" name="cmbSummary">
                   <item>
                    <property name="text">
-                    <string>One sentance</string>
+                    <string>One sentence</string>
                    </property>
                   </item>
                   <item>
@@ -374,12 +374,12 @@
                   <item>
                    <widget class="QLabel" name="label">
                     <property name="text">
-                     <string>One sentance summary</string>
+                     <string>One sentence summary</string>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="textEditView" name="txtSummarySentance">
+                   <widget class="textEditView" name="txtSummarySentence">
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
                       <horstretch>0</horstretch>
@@ -389,7 +389,7 @@
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLabel" name="lblSummaryWCSentance">
+                   <widget class="QLabel" name="lblSummaryWCSentence">
                     <property name="text">
                      <string/>
                     </property>
@@ -417,12 +417,12 @@
                     <item>
                      <widget class="QLabel" name="label_21">
                       <property name="text">
-                       <string>One sentance summary</string>
+                       <string>One sentence summary</string>
                       </property>
                      </widget>
                     </item>
                     <item>
-                     <widget class="textEditView" name="txtSummarySentance_2">
+                     <widget class="textEditView" name="txtSummarySentence_2">
                       <property name="sizePolicy">
                        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
                         <horstretch>0</horstretch>
@@ -823,7 +823,7 @@
                  <item row="6" column="0">
                   <widget class="QLabel" name="label_24">
                    <property name="text">
-                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One sentance&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One sentence&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                    </property>
                   </widget>
                  </item>
@@ -899,7 +899,7 @@
                   <widget class="textEditView" name="txtPersoEpiphany"/>
                  </item>
                  <item row="6" column="1">
-                  <widget class="textEditView" name="txtPersoSummarySentance"/>
+                  <widget class="textEditView" name="txtPersoSummarySentence"/>
                  </item>
                  <item row="7" column="1">
                   <widget class="textEditView" name="txtPersoSummaryPara"/>
