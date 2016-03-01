@@ -84,7 +84,7 @@
     </layout>
    </item>
    <item>
-    <widget class="lineEditView" name="txtSummarySentance">
+    <widget class="lineEditView" name="txtSummarySentence">
      <property name="text">
       <string/>
      </property>

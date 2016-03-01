@@ -43,14 +43,14 @@ class basicItemView(QWidget, Ui_basicItemView):
         elif len(indexes) == 1:
             self.setEnabled(True)
             idx = indexes[0]
-            self.txtSummarySentance.setCurrentModelIndex(idx)
+            self.txtSummarySentence.setCurrentModelIndex(idx)
             self.txtSummaryFull.setCurrentModelIndex(idx)
             self.cmbPOV.setCurrentModelIndex(idx)
             self.txtGoal.setCurrentModelIndex(idx)
 
         else:
             self.setEnabled(True)
-            self.txtSummarySentance.setCurrentModelIndexes(indexes)
+            self.txtSummarySentence.setCurrentModelIndexes(indexes)
             self.txtSummaryFull.setCurrentModelIndexes(indexes)
             self.cmbPOV.setCurrentModelIndexes(indexes)
             self.txtGoal.setCurrentModelIndexes(indexes)

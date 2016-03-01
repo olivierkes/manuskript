@@ -51,7 +51,7 @@ class Outline(Enum):
     title = 0
     ID = 1
     type = 2
-    summarySentance = 3
+    summarySentence = 3
     summaryFull = 4
     POV = 5
     notes = 6

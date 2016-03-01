@@ -2,7 +2,8 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/settings_ui.ui'
 #
-# Created by: PyQt5 UI code generator 5.4.2
+# Created: Wed Mar  2 00:30:17 2016
+#      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -1320,6 +1321,7 @@ class Ui_Settings(object):
         self.layoutWidget = QtWidgets.QWidget(self.splitter)
         self.layoutWidget.setObjectName("layoutWidget")
         self.verticalLayout_14 = QtWidgets.QVBoxLayout(self.layoutWidget)
+        self.verticalLayout_14.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_14.setObjectName("verticalLayout_14")
         self.cmbThemeEdit = QtWidgets.QComboBox(self.layoutWidget)
         self.cmbThemeEdit.setObjectName("cmbThemeEdit")

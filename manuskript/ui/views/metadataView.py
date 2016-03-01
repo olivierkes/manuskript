@@ -49,7 +49,7 @@ class metadataView(QWidget, Ui_metadataView):
         elif len(indexes) == 1:
             self.setEnabled(True)
             idx = indexes[0]
-            self.txtSummarySentance.setCurrentModelIndex(idx)
+            self.txtSummarySentence.setCurrentModelIndex(idx)
             self.txtSummaryFull.setCurrentModelIndex(idx)
             self.txtNotes.setCurrentModelIndex(idx)
             self.revisions.setEnabled(True)
@@ -57,7 +57,7 @@ class metadataView(QWidget, Ui_metadataView):
 
         else:
             self.setEnabled(True)
-            self.txtSummarySentance.setCurrentModelIndexes(indexes)
+            self.txtSummarySentence.setCurrentModelIndexes(indexes)
             self.txtSummaryFull.setCurrentModelIndexes(indexes)
             self.txtNotes.setCurrentModelIndexes(indexes)
             self.revisions.setEnabled(False)

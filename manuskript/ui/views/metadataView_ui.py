@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/views/metadataView_ui.ui'
 #
-# Created: Mon Feb  8 09:48:05 2016
+# Created: Wed Mar  2 00:30:18 2016
 #      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -101,9 +101,9 @@ class Ui_metadataView(object):
         self.txtNotes.setPlaceholderText(_translate("metadataView", "Notes / References"))
         self.grpRevisions.setTitle(_translate("metadataView", "Revisions"))
 
-from manuskript.ui.revisions import revisions
+from manuskript.ui.views.lineEditView import lineEditView
 from manuskript.ui.views.propertiesView import propertiesView
 from manuskript.ui.views.textEditCompleter import textEditCompleter
 from manuskript.ui.views.textEditView import textEditView
-from manuskript.ui.views.lineEditView import lineEditView
 from manuskript.ui.collapsibleGroupBox2 import collapsibleGroupBox2
+from manuskript.ui.revisions import revisions

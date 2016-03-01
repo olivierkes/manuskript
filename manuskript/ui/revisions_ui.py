@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/revisions_ui.ui'
 #
-# Created: Tue Jul 14 19:00:07 2015
+# Created: Wed Mar  2 00:30:17 2016
 #      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
