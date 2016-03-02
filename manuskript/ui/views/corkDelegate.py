@@ -69,7 +69,11 @@ class corkDelegate(QStyledItemDelegate):
             edt = QPlainTextEdit(parent)
             edt.setFocusPolicy(Qt.StrongFocus)
             edt.setFrameShape(QFrame.NoFrame)
-            edt.setPlaceholderText(self.tr("Full summary"))
+            try:
+                # QPlainTextEdit.setPlaceholderText was introduced in Qt 5.3
+                edt.setPlaceholderText(self.tr("Full summary"))
+            except AttributeError:
+                pass
             return edt
 
     def updateEditorGeometry(self, editor, option, index):
