@@ -2358,7 +2358,7 @@ QListView::item:hover {
   <customwidget>
    <class>sldImportance</class>
    <extends>QWidget</extends>
-   <header>manuskript.ui.sldImportance.h</header>
+   <header>manuskript.ui.views.sldImportance.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>

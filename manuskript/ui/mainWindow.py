@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/mainWindow.ui'
 #
-# Created: Thu Mar  3 13:40:20 2016
+# Created: Thu Mar  3 18:52:22 2016
 #      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -1303,18 +1303,18 @@ class Ui_MainWindow(object):
         self.actCompile.setShortcut(_translate("MainWindow", "F6"))
         self.actToolFrequency.setText(_translate("MainWindow", "&Frequency Analyzer"))
 
-from manuskript.ui.search import search
+from manuskript.ui.views.outlineView import outlineView
+from manuskript.ui.views.textEditView import textEditView
+from manuskript.ui.views.basicItemView import basicItemView
+from manuskript.ui.views.plotTreeView import plotTreeView
 from manuskript.ui.cheatSheet import cheatSheet
-from manuskript.ui.views.textEditCompleter import textEditCompleter
+from manuskript.ui.views.sldImportance import sldImportance
+from manuskript.ui.views.metadataView import metadataView
+from manuskript.ui.views.characterTreeView import characterTreeView
+from manuskript.ui.editors.mainEditor import mainEditor
+from manuskript.ui.search import search
 from manuskript.ui.views.lineEditView import lineEditView
 from manuskript.ui.welcome import welcome
-from manuskript.ui.views.characterTreeView import characterTreeView
-from manuskript.ui.sldImportance import sldImportance
-from manuskript.ui.views.plotTreeView import plotTreeView
-from manuskript.ui.views.basicItemView import basicItemView
-from manuskript.ui.views.outlineView import outlineView
-from manuskript.ui.views.metadataView import metadataView
 from manuskript.ui.views.treeView import treeView
-from manuskript.ui.editors.mainEditor import mainEditor
+from manuskript.ui.views.textEditCompleter import textEditCompleter
 from manuskript.ui.views.storylineView import storylineView
-from manuskript.ui.views.textEditView import textEditView

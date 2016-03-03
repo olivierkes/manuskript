@@ -2,9 +2,9 @@
 # --!-- coding: utf8 --!--
 from PyQt5.QtCore import pyqtSignal, pyqtProperty
 from PyQt5.QtWidgets import QWidget
+from manuskript.ui.views.sldImportance_ui import Ui_sldImportance
 
 from manuskript.functions import toInt
-from manuskript.ui.sldImportance_ui import Ui_sldImportance
 
 
 class sldImportance(QWidget, Ui_sldImportance):
