@@ -18,9 +18,9 @@ class cmbOutlinePersoChoser(QComboBox):
         self._updating = False
         self._various = False
 
-    def setModels(self, mdlPersos, mdlOutline):
-        self.mdlPersos = mdlPersos
-        self.mdlPersos.dataChanged.connect(self.updateItems)
+    def setModels(self, mdlCharacter, mdlOutline):
+        self.mdlCharacters = mdlCharacter
+        self.mdlCharacters.dataChanged.connect(self.updateItems)
         self.mdlOutline = mdlOutline
         self.mdlOutline.dataChanged.connect(self.update)
         self.updateItems()
@@ -37,14 +37,14 @@ class cmbOutlinePersoChoser(QComboBox):
             self.setItemData(self.count() - 1, QBrush(QColor(Qt.blue).lighter(190)), Qt.BackgroundRole)
             item = self.model().item(self.count() - 1)
             item.setFlags(Qt.ItemIsEnabled)
-            for i in range(self.mdlPersos.rowCount()):
-                imp = toInt(self.mdlPersos.importance(i))
+            for i in range(self.mdlCharacters.rowCount()):
+                imp = toInt(self.mdlCharacters.importance(i))
 
                 if not 2 - imp == importance:
                     continue
 
-                self.addItem(self.mdlPersos.icon(i), self.mdlPersos.name(i), self.mdlPersos.ID(i))
-                self.setItemData(self.count() - 1, self.mdlPersos.name(i), Qt.ToolTipRole)
+                self.addItem(self.mdlCharacters.icon(i), self.mdlCharacters.name(i), self.mdlCharacters.ID(i))
+                self.setItemData(self.count() - 1, self.mdlCharacters.name(i), Qt.ToolTipRole)
 
         self._various = False
 

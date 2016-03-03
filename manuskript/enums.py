@@ -9,7 +9,7 @@ from enum import Enum
 #def enum(**enums):
     #return type(str('Enum'), (), enums)
 
-class Perso(Enum):
+class Character(Enum):
     name = 0
     ID = 1
     importance = 2
@@ -21,8 +21,6 @@ class Perso(Enum):
     summaryPara = 8
     summaryFull = 9
     notes = 10
-    infoName = 11
-    infoData = 12
     
 class Plot(Enum):
     name = 0

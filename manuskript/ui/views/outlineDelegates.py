@@ -6,7 +6,7 @@ from PyQt5.QtWidgets import QStyledItemDelegate, QStyleOptionViewItem, QStyle, Q
 from PyQt5.QtWidgets import qApp
 
 from manuskript import settings
-from manuskript.enums import Perso, Outline
+from manuskript.enums import Character, Outline
 from manuskript.functions import outlineItemColors, mixColors, colorifyPixmap, toInt, toFloat, drawProgress
 
 
@@ -93,17 +93,17 @@ class outlineTitleDelegate(QStyledItemDelegate):
 
 
 class outlinePersoDelegate(QStyledItemDelegate):
-    def __init__(self, mdlPersos, parent=None):
+    def __init__(self, mdlCharacter, parent=None):
         QStyledItemDelegate.__init__(self, parent)
-        self.mdlPersos = mdlPersos
+        self.mdlCharacter = mdlCharacter
 
     def sizeHint(self, option, index):
         # s = QStyledItemDelegate.sizeHint(self, option, index)
 
         item = QModelIndex()
-        for i in range(self.mdlPersos.rowCount()):
-            if self.mdlPersos.ID(i) == index.data():
-                item = self.mdlPersos.index(i, Perso.name.value)
+        for i in range(self.mdlCharacter.rowCount()):
+            if self.mdlCharacter.ID(i) == index.data():
+                item = self.mdlCharacter.index(i, Character.name.value)
 
         opt = QStyleOptionViewItem(option)
         self.initStyleOption(opt, item)
@@ -136,13 +136,13 @@ class outlinePersoDelegate(QStyledItemDelegate):
             editor.setItemData(editor.count() - 1, QBrush(QColor(Qt.blue).lighter(190)), Qt.BackgroundRole)
             item = editor.model().item(editor.count() - 1)
             item.setFlags(Qt.ItemIsEnabled)
-            for i in range(self.mdlPersos.rowCount()):
-                imp = toInt(self.mdlPersos.importance(i))
+            for i in range(self.mdlCharacter.rowCount()):
+                imp = toInt(self.mdlCharacter.importance(i))
                 if not 2 - imp == importance: continue
 
                 # try:
-                editor.addItem(self.mdlPersos.icon(i), self.mdlPersos.name(i), self.mdlPersos.ID(i))
-                editor.setItemData(editor.count() - 1, self.mdlPersos.name(i), Qt.ToolTipRole)
+                editor.addItem(self.mdlCharacter.icon(i), self.mdlCharacter.name(i), self.mdlCharacter.ID(i))
+                editor.setItemData(editor.count() - 1, self.mdlCharacter.name(i), Qt.ToolTipRole)
                 # except:
                 # pass
 
@@ -159,9 +159,9 @@ class outlinePersoDelegate(QStyledItemDelegate):
         ##option.rect.setWidth(option.rect.width() + 18)
 
         item = QModelIndex()
-        for i in range(self.mdlPersos.rowCount()):
-            if self.mdlPersos.ID(i) == index.data():
-                item = self.mdlPersos.index(i, Perso.name.value)
+        for i in range(self.mdlCharacter.rowCount()):
+            if self.mdlCharacter.ID(i) == index.data():
+                item = self.mdlCharacter.index(i, Character.name.value)
 
         opt = QStyleOptionViewItem(option)
         self.initStyleOption(opt, item)
@@ -169,7 +169,7 @@ class outlinePersoDelegate(QStyledItemDelegate):
         qApp.style().drawControl(QStyle.CE_ItemViewItem, opt, painter)
 
         # if index.isValid() and index.internalPointer().data(Outline.POV.value) not in ["", None]:
-        if index.isValid() and self.mdlPersos.data(index) not in ["", None]:
+        if index.isValid() and self.mdlCharacter.data(index) not in ["", None]:
             opt = QStyleOptionComboBox()
             opt.rect = option.rect
             r = qApp.style().subControlRect(QStyle.CC_ComboBox, opt, QStyle.SC_ComboBoxArrow)

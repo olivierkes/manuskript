@@ -121,9 +121,9 @@ def outlineItemColors(item):
     # POV
     colors["POV"] = QColor(Qt.transparent)
     POV = item.data(Outline.POV.value)
-    for i in range(mw.mdlPersos.rowCount()):
-        if mw.mdlPersos.ID(i) == POV:
-            colors["POV"] = iconColor(mw.mdlPersos.icon(i))
+    for i in range(mw.mdlCharacter.rowCount()):
+        if mw.mdlCharacter.ID(i) == POV:
+            colors["POV"] = iconColor(mw.mdlCharacter.icon(i))
 
     # Label
     lbl = item.data(Outline.label.value)

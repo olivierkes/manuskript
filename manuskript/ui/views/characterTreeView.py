@@ -2,12 +2,16 @@
 # --!-- coding: utf8 --!--
 from PyQt5.QtCore import QSize, QModelIndex, Qt
 from PyQt5.QtGui import QPixmap, QColor, QIcon, QBrush
-from PyQt5.QtWidgets import QTreeWidget, QTreeWidgetItem
+from PyQt5.QtWidgets import QTreeWidget, QTreeWidgetItem, QColorDialog
 
-from manuskript.enums import Perso
+from manuskript.enums import Character
+from manuskript.functions import iconColor, mainWindow
 
 
-class persoTreeView(QTreeWidget):
+class characterTreeView(QTreeWidget):
+    """
+    A QTreeWidget that displays characters from a characterModel in respect of their importance.
+    """
     def __init__(self, parent=None):
         QTreeWidget.__init__(self, parent)
         self._model = None
@@ -24,7 +28,7 @@ class persoTreeView(QTreeWidget):
         self._rootItem = QTreeWidgetItem()
         self.insertTopLevelItem(0, self._rootItem)
 
-    def setPersosModel(self, model):
+    def setCharactersModel(self, model):
         self._model = model
         self._model.dataChanged.connect(self.updateMaybe)
         self._model.rowsInserted.connect(self.updateMaybe2)
@@ -39,11 +43,11 @@ class persoTreeView(QTreeWidget):
         if topLeft.parent() != QModelIndex():
             return
 
-        if topLeft.column() <= Perso.name.value <= bottomRight.column():
+        if topLeft.column() <= Character.name.value <= bottomRight.column():
             # Update name
             self.updateNames()
 
-        elif topLeft.column() <= Perso.importance.value <= bottomRight.column():
+        elif topLeft.column() <= Character.importance.value <= bottomRight.column():
             # Importance changed
             self.updateItems()
 
@@ -56,16 +60,17 @@ class persoTreeView(QTreeWidget):
         for i in range(self.topLevelItemCount()):
             item = self.topLevelItem(i)
 
-            for c in range(item.childCount()):
-                sub = item.child(c)
+            for child in range(item.childCount()):
+                sub = item.child(child)
                 ID = sub.data(0, Qt.UserRole)
-                if ID:
+                if ID is not None:
                     # Update name
-                    name = self._model.getPersoNameByID(ID)
+                    c = self._model.getCharacterByID(ID)
+                    name = c.name()
                     sub.setText(0, name)
                     # Update icon
                     px = QPixmap(32, 32)
-                    color = QColor(self._model.getPersoColorByID(ID))
+                    color = c.color()
                     px.fill(color)
                     sub.setIcon(0, QIcon(px))
 
@@ -78,10 +83,12 @@ class persoTreeView(QTreeWidget):
 
         self._updating = True
         self.clear()
-        persos = self._model.getPersosByImportance()
+        characters = self._model.getCharactersByImportance()
 
         h = [self.tr("Main"), self.tr("Secondary"), self.tr("Minor")]
+
         for i in range(3):
+            # Create category item
             cat = QTreeWidgetItem(self, [h[i]])
             cat.setBackground(0, QBrush(QColor(Qt.blue).lighter(190)))
             cat.setForeground(0, QBrush(Qt.darkBlue))
@@ -92,36 +99,67 @@ class persoTreeView(QTreeWidget):
             self.addTopLevelItem(cat)
             # cat.setChildIndicatorPolicy(cat.DontShowIndicator)
 
-            for ID in persos[i]:
-                name = self._model.getPersoNameByID(ID)
+            for c in characters[i]:
+                name = c.name()
+                # Check if name passes filter
                 if not self._filter.lower() in name.lower():
                     continue
+
                 item = QTreeWidgetItem(cat, [name])
-                item.setData(0, Qt.UserRole, ID)
+                item.setData(0, Qt.UserRole, c.ID())
                 px = QPixmap(32, 32)
-                color = QColor(self._model.getPersoColorByID(ID))
+                color = QColor(c.color())
                 px.fill(color)
                 item.setIcon(0, QIcon(px))
 
-                if ID == self._lastID:
+                if c.ID() == self._lastID:
                     self.setCurrentItem(item)
 
         self.expandAll()
         self._updating = False
 
-    def getItemByID(self, ID):
-        for t in range(self.topLevelItemCount()):
-            for i in range(self.topLevelItem(t).childCount()):
-                item = self.topLevelItem(t).child(i)
-                if item.data(0, Qt.UserRole) == ID:
-                    return item
+    def removeCharacter(self):
+        """
+        Removes selected character.
+        """
+        ID = self.currentCharacterID()
+        if ID:
+            self._model.removeCharacter(ID)
 
-    def currentPersoIndex(self):
+    def choseCharacterColor(self):
+        ID = self.currentCharacterID()
+        c = self._model.getCharacterByID(ID)
+        if c:
+            color = iconColor(c.icon)
+        else:
+            color = Qt.white
+        self.colorDialog = QColorDialog(color, mainWindow())
+        color = self.colorDialog.getColor(color)
+        if color.isValid():
+            c.setColor(color)
+            mainWindow().updateCharacterColor(ID)
+
+    def addCharacterInfo(self):
+        self._model.addCharacterInfo(self.currentCharacterID())
+
+    def removeCharacterInfo(self):
+        self._model.removeCharacterInfo(self.currentCharacterID(),
+                                        )
+
+    def currentCharacterID(self):
         ID = None
         if self.currentItem():
             ID = self.currentItem().data(0, Qt.UserRole)
 
-        return self._model.getIndexFromID(ID)
+        return ID
+
+    def currentCharacter(self):
+        """
+        Returns the selected character
+        @return: Character
+        """
+        ID = self.currentCharacterID()
+        return self._model.getCharacterByID(ID)
 
     def mouseDoubleClickEvent(self, event):
         item = self.currentItem()

@@ -212,13 +212,13 @@ class plotModel(QStandardItemModel):
             menu.addMenu(m)
 
         mpr = QSignalMapper(menu)
-        for i in range(self.mw.mdlPersos.rowCount()):
-            a = QAction(self.mw.mdlPersos.name(i), menu)
-            a.setIcon(self.mw.mdlPersos.icon(i))
+        for i in range(self.mw.mdlCharacter.rowCount()):
+            a = QAction(self.mw.mdlCharacter.name(i), menu)
+            a.setIcon(self.mw.mdlCharacter.icon(i))
             a.triggered.connect(mpr.map)
-            mpr.setMapping(a, int(self.mw.mdlPersos.ID(i)))
+            mpr.setMapping(a, int(self.mw.mdlCharacter.ID(i)))
 
-            imp = toInt(self.mw.mdlPersos.importance(i))
+            imp = toInt(self.mw.mdlCharacter.importance(i))
 
             menus[2 - imp].addAction(a)
 

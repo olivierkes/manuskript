@@ -9,13 +9,13 @@ from PyQt5.QtWidgets import QMainWindow, QHeaderView, qApp, QMenu, QActionGroup,
     QLabel
 
 from manuskript import settings
-from manuskript.enums import Perso, Subplot, Plot, World
+from manuskript.enums import Character, Subplot, Plot, World
 from manuskript.functions import AUC, wordCount, appPath
 from manuskript.loadSave import loadStandardItemModelXML, loadFilesFromZip
 from manuskript.loadSave import saveFilesToZip
 from manuskript.loadSave import saveStandardItemModelXML
+from manuskript.models.characterModel import characterModel
 from manuskript.models.outlineModel import outlineModel
-from manuskript.models.persosModel import persosModel
 from manuskript.models.plotModel import plotModel
 from manuskript.models.worldModel import worldModel
 from manuskript.settingsWindow import settingsWindow
@@ -144,15 +144,18 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     # PERSOS
     ###############################################################################
 
-    def changeCurrentPerso(self, trash=None):
+    def changeCurrentCharacter(self, trash=None):
+        """
 
-        index = self.lstPersos.currentPersoIndex()
-
-        if not index.isValid():
+        @return:
+        """
+        c = self.lstCharacters.currentCharacter()
+        if not c:
             self.tabPlot.setEnabled(False)
             return
 
         self.tabPersos.setEnabled(True)
+        index = c.index()
 
         for w in [
             self.txtPersoName,
@@ -169,26 +172,23 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             w.setCurrentModelIndex(index)
 
         # Button color
-        self.mdlPersos.updatePersoColor(index)
+        self.updateCharacterColor(c.ID())
 
-        # Perso Infos
+        # Character Infos
         self.tblPersoInfos.setRootIndex(index)
 
-        if self.mdlPersos.rowCount(index):
+        if self.mdlCharacter.rowCount(index):
             self.updatePersoInfoView()
 
     def updatePersoInfoView(self):
-        # Hide columns
-        for i in range(self.mdlPersos.columnCount()):
-            self.tblPersoInfos.hideColumn(i)
-        self.tblPersoInfos.showColumn(Perso.infoName.value)
-        self.tblPersoInfos.showColumn(Perso.infoData.value)
-
-        self.tblPersoInfos.horizontalHeader().setSectionResizeMode(
-                Perso.infoName.value, QHeaderView.ResizeToContents)
-        self.tblPersoInfos.horizontalHeader().setSectionResizeMode(
-                Perso.infoData.value, QHeaderView.Stretch)
+        self.tblPersoInfos.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeToContents)
+        self.tblPersoInfos.horizontalHeader().setSectionResizeMode(1, QHeaderView.Stretch)
         self.tblPersoInfos.verticalHeader().hide()
+
+    def updateCharacterColor(self, ID):
+        c = self.mdlCharacter.getCharacterByID(ID)
+        color = c.color().name()
+        self.btnPersoColor.setStyleSheet("background:{};".format(color))
 
     ###############################################################################
     # PLOTS
@@ -340,7 +340,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.saveTimerNoChanges.setSingleShot(True)
         self.mdlFlatData.dataChanged.connect(self.startTimerNoChanges)
         self.mdlOutline.dataChanged.connect(self.startTimerNoChanges)
-        self.mdlPersos.dataChanged.connect(self.startTimerNoChanges)
+        self.mdlCharacter.dataChanged.connect(self.startTimerNoChanges)
         self.mdlPlots.dataChanged.connect(self.startTimerNoChanges)
         self.mdlWorld.dataChanged.connect(self.startTimerNoChanges)
         # self.mdlPersosInfos.dataChanged.connect(self.startTimerNoChanges)
@@ -467,8 +467,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         files.append((saveStandardItemModelXML(self.mdlFlatData),
                       "flatModel.xml"))
-        files.append((saveStandardItemModelXML(self.mdlPersos),
-                      "perso.xml"))
+        # files.append((saveStandardItemModelXML(self.mdlCharacter),
+        #               "perso.xml"))
         files.append((saveStandardItemModelXML(self.mdlWorld),
                       "world.xml"))
         files.append((saveStandardItemModelXML(self.mdlLabels),
@@ -491,7 +491,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def loadEmptyDatas(self):
         self.mdlFlatData = QStandardItemModel(self)
-        self.mdlPersos = persosModel(self)
+        self.mdlCharacter = characterModel(self)
         # self.mdlPersosProxy = persosProxyModel(self)
         # self.mdlPersosInfos = QStandardItemModel(self)
         self.mdlLabels = QStandardItemModel(self)
@@ -513,7 +513,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             errors.append("flatModel.xml")
 
         if "perso.xml" in files:
-            loadStandardItemModelXML(self.mdlPersos,
+            loadStandardItemModelXML(self.mdlCharacter,
                                      files["perso.xml"], fromString=True)
         else:
             errors.append("perso.xml")
@@ -570,7 +570,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def makeUIConnections(self):
         "Connections that have to be made once only, event when new project is loaded."
-        self.lstPersos.currentItemChanged.connect(self.changeCurrentPerso, AUC)
+        self.lstCharacters.currentItemChanged.connect(self.changeCurrentCharacter, AUC)
 
         self.txtPlotFilter.textChanged.connect(self.lstPlots.setFilter, AUC)
         self.lstPlots.currentItemChanged.connect(self.changeCurrentPlot, AUC)
@@ -622,29 +622,29 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             widget.setCurrentModelIndex(self.mdlFlatData.index(0, col))
 
         # Persos
-        self.lstPersos.setPersosModel(self.mdlPersos)
-        self.tblPersoInfos.setModel(self.mdlPersos)
+        self.lstCharacters.setCharactersModel(self.mdlCharacter)
+        self.tblPersoInfos.setModel(self.mdlCharacter)
 
-        self.btnAddPerso.clicked.connect(self.mdlPersos.addPerso, AUC)
-        self.btnRmPerso.clicked.connect(self.mdlPersos.removePerso, AUC)
-        self.btnPersoColor.clicked.connect(self.mdlPersos.chosePersoColor, AUC)
+        self.btnAddPerso.clicked.connect(self.mdlCharacter.addCharacter, AUC)
+        self.btnRmPerso.clicked.connect(self.lstCharacters.removeCharacter, AUC)
+        self.btnPersoColor.clicked.connect(self.lstCharacters.choseCharacterColor, AUC)
 
-        self.btnPersoAddInfo.clicked.connect(self.mdlPersos.addPersoInfo, AUC)
-        self.btnPersoRmInfo.clicked.connect(self.mdlPersos.removePersoInfo, AUC)
+        self.btnPersoAddInfo.clicked.connect(self.lstCharacters.addCharacterInfo, AUC)
+        self.btnPersoRmInfo.clicked.connect(self.lstCharacters.removeCharacterInfo, AUC)
 
         for w, c in [
-            (self.txtPersoName, Perso.name.value),
-            (self.sldPersoImportance, Perso.importance.value),
-            (self.txtPersoMotivation, Perso.motivation.value),
-            (self.txtPersoGoal, Perso.goal.value),
-            (self.txtPersoConflict, Perso.conflict.value),
-            (self.txtPersoEpiphany, Perso.epiphany.value),
-            (self.txtPersoSummarySentence, Perso.summarySentence.value),
-            (self.txtPersoSummaryPara, Perso.summaryPara.value),
-            (self.txtPersoSummaryFull, Perso.summaryFull.value),
-            (self.txtPersoNotes, Perso.notes.value)
+            (self.txtPersoName, Character.name.value),
+            (self.sldPersoImportance, Character.importance.value),
+            (self.txtPersoMotivation, Character.motivation.value),
+            (self.txtPersoGoal, Character.goal.value),
+            (self.txtPersoConflict, Character.conflict.value),
+            (self.txtPersoEpiphany, Character.epiphany.value),
+            (self.txtPersoSummarySentence, Character.summarySentence.value),
+            (self.txtPersoSummaryPara, Character.summaryPara.value),
+            (self.txtPersoSummaryFull, Character.summaryFull.value),
+            (self.txtPersoNotes, Character.notes.value)
         ]:
-            w.setModel(self.mdlPersos)
+            w.setModel(self.mdlCharacter)
             w.setColumn(c)
         self.tabPersos.setEnabled(False)
 
@@ -672,10 +672,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.tabPlot.setEnabled(False)
         self.mdlPlots.updatePlotPersoButton()
-        self.mdlPersos.dataChanged.connect(self.mdlPlots.updatePlotPersoButton)
+        self.mdlCharacter.dataChanged.connect(self.mdlPlots.updatePlotPersoButton)
         self.lstOutlinePlots.setPlotModel(self.mdlPlots)
         self.lstOutlinePlots.setShowSubPlot(True)
-        self.plotPersoDelegate = outlinePersoDelegate(self.mdlPersos, self)
+        self.plotPersoDelegate = outlinePersoDelegate(self.mdlCharacter, self)
         self.lstPlotPerso.setItemDelegate(self.plotPersoDelegate)
         self.plotDelegate = plotDelegate(self)
         self.lstSubPlots.setItemDelegateForColumn(Subplot.meta.value, self.plotDelegate)
@@ -702,18 +702,18 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # Outline
         self.treeRedacOutline.setModel(self.mdlOutline)
-        self.treeOutlineOutline.setModelPersos(self.mdlPersos)
+        self.treeOutlineOutline.setModelCharacters(self.mdlCharacter)
         self.treeOutlineOutline.setModelLabels(self.mdlLabels)
         self.treeOutlineOutline.setModelStatus(self.mdlStatus)
 
-        self.redacMetadata.setModels(self.mdlOutline, self.mdlPersos,
+        self.redacMetadata.setModels(self.mdlOutline, self.mdlCharacter,
                                      self.mdlLabels, self.mdlStatus)
-        self.outlineItemEditor.setModels(self.mdlOutline, self.mdlPersos,
+        self.outlineItemEditor.setModels(self.mdlOutline, self.mdlCharacter,
                                          self.mdlLabels, self.mdlStatus)
 
         self.treeOutlineOutline.setModel(self.mdlOutline)
         # self.redacEditor.setModel(self.mdlOutline)
-        self.storylineView.setModels(self.mdlOutline, self.mdlPersos, self.mdlPlots)
+        self.storylineView.setModels(self.mdlOutline, self.mdlCharacter, self.mdlPlots)
 
         self.treeOutlineOutline.selectionModel().selectionChanged.connect(lambda:
                                                                           self.outlineItemEditor.selectionChanged(
@@ -735,10 +735,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Debug
         self.mdlFlatData.setVerticalHeaderLabels(["Infos générales", "Summary"])
         self.tblDebugFlatData.setModel(self.mdlFlatData)
-        self.tblDebugPersos.setModel(self.mdlPersos)
-        self.tblDebugPersosInfos.setModel(self.mdlPersos)
+        self.tblDebugPersos.setModel(self.mdlCharacter)
+        self.tblDebugPersosInfos.setModel(self.mdlCharacter)
         self.tblDebugPersos.selectionModel().currentChanged.connect(
-                lambda: self.tblDebugPersosInfos.setRootIndex(self.mdlPersos.index(
+                lambda: self.tblDebugPersosInfos.setRootIndex(self.mdlCharacter.index(
                         self.tblDebugPersos.selectionModel().currentIndex().row(),
                         Perso.name.value)), AUC)
 

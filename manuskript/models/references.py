@@ -11,7 +11,7 @@ import re
 from PyQt5.QtWidgets import qApp
 
 from manuskript.enums import Outline
-from manuskript.enums import Perso
+from manuskript.enums import Character
 from manuskript.enums import Plot
 from manuskript.enums import Subplot
 from manuskript.functions import mainWindow
@@ -104,7 +104,7 @@ def infos(ref):
         if item.POV():
             POV = "<a href='{ref}'>{text}</a>".format(
                     ref=persoReference(item.POV()),
-                    text=mainWindow().mdlPersos.getPersoNameByID(item.POV()))
+                    text=mainWindow().mdlCharacter.getCharacterByID(item.POV()).name())
 
         # The status of the scene
         status = item.status()
@@ -175,7 +175,7 @@ def infos(ref):
 
     # A character
     elif _type == PersoLetter:
-        m = mainWindow().mdlPersos
+        m = mainWindow().mdlCharacter
         index = m.getIndexFromID(_ref)
         name = m.name(index.row())
 
@@ -272,7 +272,7 @@ def infos(ref):
                                       Plot.result.value))
 
         # Characters
-        pM = mainWindow().mdlPersos
+        pM = mainWindow().mdlCharacter
         item = m.item(index.row(), Plot.persos.value)
         characters = ""
         if item:
@@ -412,7 +412,7 @@ def shortInfos(ref):
 
         infos["type"] = PersoLetter
 
-        m = mainWindow().mdlPersos
+        m = mainWindow().mdlCharacter
         item = m.item(int(_ref), Perso.name.value)
         if item:
             infos["title"] = item.text()
@@ -516,7 +516,7 @@ def refToLink(ref):
                 text = item.title()
 
         elif _type == PersoLetter:
-            m = mainWindow().mdlPersos
+            m = mainWindow().mdlCharacter
             text = m.item(int(_ref), Perso.name.value).text()
 
         elif _type == PlotLetter:
@@ -620,11 +620,12 @@ def open(ref):
 
     if _type == PersoLetter:
         mw = mainWindow()
+        # FIXME
         item = mw.lstPersos.getItemByID(_ref)
 
         if item:
             mw.tabMain.setCurrentIndex(mw.TabPersos)
-            mw.lstPersos.setCurrentItem(item)
+            mw.lstCharacters.setCurrentItem(item)
             return True
 
         print("Ref not found")

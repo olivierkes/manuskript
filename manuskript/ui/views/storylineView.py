@@ -46,7 +46,7 @@ class storylineView(QWidget, Ui_storylineView):
 
         self.btnSettings.setMenu(m)
 
-    def setModels(self, mdlOutline, mdlPersos, mdlPlots):
+    def setModels(self, mdlOutline, mdlCharacter, mdlPlots):
         self._mdlPlots = mdlPlots
         # self._mdlPlots.dataChanged.connect(self.refresh)
         # self._mdlPlots.rowsInserted.connect(self.refresh)
@@ -54,8 +54,8 @@ class storylineView(QWidget, Ui_storylineView):
         self._mdlOutline = mdlOutline
         self._mdlOutline.dataChanged.connect(self.reloadTimer.start)
 
-        self._mdlPersos = mdlPersos
-        self._mdlPersos.dataChanged.connect(self.reloadTimer.start)
+        self._mdlCharacter = mdlCharacter
+        self._mdlCharacter.dataChanged.connect(self.reloadTimer.start)
 
     def plotReferences(self):
         "Returns a list of plot references"
@@ -73,10 +73,10 @@ class storylineView(QWidget, Ui_storylineView):
 
     def persosReferences(self):
         "Returns a list of character references"
-        if not self._mdlPersos:
+        if not self._mdlCharacter:
             pass
 
-        IDs = self._mdlPersos.getPersosByImportance()
+        IDs = self._mdlCharacter.getPersosByImportance()
         r = []
         for importance in IDs:
             for ID in importance:
@@ -86,7 +86,7 @@ class storylineView(QWidget, Ui_storylineView):
         return r
 
     def refresh(self):
-        if not self._mdlPlots or not self._mdlOutline or not self._mdlPersos:
+        if not self._mdlPlots or not self._mdlOutline or not self._mdlCharacter:
             pass
 
         LINE_HEIGHT = 18
@@ -222,7 +222,7 @@ class storylineView(QWidget, Ui_storylineView):
 
         for ref in trackedItems:
             if references.type(ref) == references.PersoLetter:
-                color = QColor(self._mdlPersos.getPersoColorByID(references.ID(ref)))
+                color = QColor(self._mdlCharacter.getPersoColorByID(references.ID(ref)))
             else:
                 color = randomColor()
 

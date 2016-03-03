@@ -11,20 +11,20 @@ from manuskript.ui.views.outlineDelegates import outlineTitleDelegate, outlinePe
 
 
 class outlineView(QTreeView, dndView, outlineBasics):
-    def __init__(self, parent=None, modelPersos=None, modelLabels=None, modelStatus=None):
+    def __init__(self, parent=None, modelCharacters=None, modelLabels=None, modelStatus=None):
         QTreeView.__init__(self, parent)
         dndView.__init__(self)
         outlineBasics.__init__(self, parent)
 
-        self.modelPersos = modelPersos
+        self.modelCharacters = modelCharacters
         self.modelLabels = modelLabels
         self.modelStatus = modelStatus
 
         self.header().setStretchLastSection(False)
 
-    def setModelPersos(self, model):
+    def setModelCharacters(self, model):
         # This is used by outlinePersoDelegate to select character
-        self.modelPersos = model
+        self.modelCharacters = model
 
     def setModelLabels(self, model):
         # This is used by outlineLabelDelegate to display labels
@@ -41,7 +41,7 @@ class outlineView(QTreeView, dndView, outlineBasics):
         self.outlineTitleDelegate = outlineTitleDelegate(self)
         # self.outlineTitleDelegate.setView(self)
         self.setItemDelegateForColumn(Outline.title.value, self.outlineTitleDelegate)
-        self.outlinePersoDelegate = outlinePersoDelegate(self.modelPersos)
+        self.outlinePersoDelegate = outlinePersoDelegate(self.modelCharacters)
         self.setItemDelegateForColumn(Outline.POV.value, self.outlinePersoDelegate)
         self.outlineCompileDelegate = outlineCompileDelegate()
         self.setItemDelegateForColumn(Outline.compile.value, self.outlineCompileDelegate)
