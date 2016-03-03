@@ -22,7 +22,7 @@ RegExNonCapturing = r"{\w:\d+:?.*?}"
 # The basic format of the references
 EmptyRef = "{{{}:{}:{}}}"
 EmptyRefSearchable = "{{{}:{}:"
-PersoLetter = "C"
+CharacterLetter = "C"
 TextLetter = "T"
 PlotLetter = "P"
 WorldLetter = "W"
@@ -37,13 +37,13 @@ def plotReference(ID, searchable=False):
         return EmptyRefSearchable.format(PlotLetter, ID, "")
 
 
-def persoReference(ID, searchable=False):
+def characterReference(ID, searchable=False):
     """Takes the ID of a character and returns a reference for that character.
     @searchable: returns a stripped version that allows simple text search."""
     if not searchable:
-        return EmptyRef.format(PersoLetter, ID, "")
+        return EmptyRef.format(CharacterLetter, ID, "")
     else:
-        return EmptyRefSearchable.format(PersoLetter, ID, "")
+        return EmptyRefSearchable.format(CharacterLetter, ID, "")
 
 
 def textReference(ID, searchable=False):
@@ -103,7 +103,7 @@ def infos(ref):
         POV = ""
         if item.POV():
             POV = "<a href='{ref}'>{text}</a>".format(
-                    ref=persoReference(item.POV()),
+                    ref=characterReference(item.POV()),
                     text=mainWindow().mdlCharacter.getCharacterByID(item.POV()).name())
 
         # The status of the scene
@@ -174,10 +174,12 @@ def infos(ref):
         return text
 
     # A character
-    elif _type == PersoLetter:
+    elif _type == CharacterLetter:
         m = mainWindow().mdlCharacter
-        index = m.getIndexFromID(_ref)
-        name = m.name(index.row())
+        c = m.getCharacterByID(int(_ref))
+        index = c.index()
+
+        name = c.name()
 
         # Titles
         basicTitle = qApp.translate("references", "Basic infos")
@@ -191,14 +193,16 @@ def infos(ref):
         # basic infos
         basic = []
         for i in [
-            (Perso.motivation, qApp.translate("references", "Motivation"), False),
-            (Perso.goal, qApp.translate("references", "Goal"), False),
-            (Perso.conflict, qApp.translate("references", "Conflict"), False),
-            (Perso.epiphany, qApp.translate("references", "Epiphany"), False),
-            (Perso.summarySentence, qApp.translate("references", "Short summary"), True),
-            (Perso.summaryPara, qApp.translate("references", "Longer summary"), True),
+            (Character.motivation, qApp.translate("references", "Motivation"), False),
+            (Character.goal, qApp.translate("references", "Goal"), False),
+            (Character.conflict, qApp.translate("references", "Conflict"), False),
+            (Character.epiphany, qApp.translate("references", "Epiphany"), False),
+            (Character.summarySentence, qApp.translate("references", "Short summary"), True),
+            (Character.summaryPara, qApp.translate("references", "Longer summary"), True),
         ]:
+
             val = m.data(index.sibling(index.row(), i[0].value))
+
             if val:
                 basic.append("<b>{title}:</b>{n}{val}".format(
                         title=i[1],
@@ -208,7 +212,7 @@ def infos(ref):
 
         # detailed infos
         detailed = []
-        for _name, _val in m.listPersoInfos(index):
+        for _name, _val in c.listInfos():
             detailed.append("<b>{}:</b> {}".format(
                     _name,
                     _val))
@@ -279,7 +283,7 @@ def infos(ref):
             for r in range(item.rowCount()):
                 ID = item.child(r, 0).text()
                 characters += "<li><a href='{link}'>{text}</a>".format(
-                        link=persoReference(ID),
+                        link=characterReference(ID),
                         text=pM.getPersoNameByID(ID))
 
         # Resolution steps
@@ -408,15 +412,16 @@ def shortInfos(ref):
         infos["path"] = item.path()
         return infos
 
-    elif _type == PersoLetter:
+    elif _type == CharacterLetter:
 
-        infos["type"] = PersoLetter
+        infos["type"] = CharacterLetter
 
         m = mainWindow().mdlCharacter
-        item = m.item(int(_ref), Perso.name.value)
-        if item:
-            infos["title"] = item.text()
-            infos["name"] = item.text()
+        c = m.getCharacterByID(int(_ref))
+
+        if c:
+            infos["title"] = c.name()
+            infos["name"] = c.name()
             return infos
 
     elif _type == PlotLetter:
@@ -482,7 +487,7 @@ def tooltip(ref):
         tt += "<br><i>{}</i>".format(infos["path"])
         return tt
 
-    elif infos["type"] == PersoLetter:
+    elif infos["type"] == CharacterLetter:
         return qApp.translate("references", "Character: <b>{}</b>").format(infos["title"])
 
     elif infos["type"] == PlotLetter:
@@ -515,9 +520,9 @@ def refToLink(ref):
                 item = idx.internalPointer()
                 text = item.title()
 
-        elif _type == PersoLetter:
+        elif _type == CharacterLetter:
             m = mainWindow().mdlCharacter
-            text = m.item(int(_ref), Perso.name.value).text()
+            text = m.getCharacterByID(int(_ref)).name()
 
         elif _type == PlotLetter:
             m = mainWindow().mdlPlots
@@ -618,17 +623,16 @@ def open(ref):
     _type = match.group(1)
     _ref = match.group(2)
 
-    if _type == PersoLetter:
+    if _type == CharacterLetter:
         mw = mainWindow()
-        # FIXME
-        item = mw.lstPersos.getItemByID(_ref)
+        item = mw.lstCharacters.getItemByID(int(_ref))
 
         if item:
             mw.tabMain.setCurrentIndex(mw.TabPersos)
             mw.lstCharacters.setCurrentItem(item)
             return True
 
-        print("Ref not found")
+        print("Error: Ref {} not found".format(ref))
         return False
 
     elif _type == TextLetter:

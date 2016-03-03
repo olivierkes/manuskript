@@ -59,6 +59,8 @@ class cheatSheet(QWidget, Ui_cheatSheet):
 
         self.outlineModel.dataChanged.connect(self.populateTimer.start)
         self.characterModel.dataChanged.connect(self.populateTimer.start)
+        self.characterModel.rowsInserted.connect(self.populateTimer.start)
+        self.characterModel.rowsRemoved.connect(self.populateTimer.start)
         self.plotModel.dataChanged.connect(self.populateTimer.start)
         self.worldModel.dataChanged.connect(self.populateTimer.start)
 
@@ -82,7 +84,7 @@ class cheatSheet(QWidget, Ui_cheatSheet):
                 imp = [self.tr("Minor"), self.tr("Secondary"), self.tr("Main")][int(c.importance())]
                 d.append((c.name(), c.ID(), imp))
 
-            self.data[(self.tr("Characters"), Ref.PersoLetter)] = d
+            self.data[(self.tr("Characters"), Ref.CharacterLetter)] = d
 
         if self.outlineModel:
             d = []

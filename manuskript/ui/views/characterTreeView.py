@@ -161,6 +161,13 @@ class characterTreeView(QTreeWidget):
         ID = self.currentCharacterID()
         return self._model.getCharacterByID(ID)
 
+    def getItemByID(self, ID):
+        for t in range(self.topLevelItemCount()):
+            for i in range(self.topLevelItem(t).childCount()):
+                item = self.topLevelItem(t).child(i)
+                if item.data(0, Qt.UserRole) == ID:
+                    return item
+
     def mouseDoubleClickEvent(self, event):
         item = self.currentItem()
         # Catching double clicks to forbid collapsing of toplevel items

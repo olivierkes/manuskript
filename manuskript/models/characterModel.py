@@ -39,7 +39,7 @@ class characterModel(QAbstractItemModel):
                 if index.column() in c._data:
                     return c._data[index.column()]
                 else:
-                    return QVariant()
+                    return ""
 
         elif type(c) == CharacterInfo:
             if role == Qt.DisplayRole or role == Qt.EditRole:
@@ -141,6 +141,7 @@ class characterModel(QAbstractItemModel):
         return r
 
     def getCharacterByID(self, ID):
+        ID = int(ID)
         for c in self.characters:
             if c.ID() == ID:
                 return c
@@ -273,6 +274,12 @@ class Character():
             k += 1
 
         self._data[C.ID.value] = k
+
+    def listInfos(self):
+        r = []
+        for i in self.infos:
+            r.append((i.description, i.value))
+        return r
 
 class CharacterInfo():
     def __init__(self, character, description="", value=""):
