@@ -141,10 +141,11 @@ class characterModel(QAbstractItemModel):
         return r
 
     def getCharacterByID(self, ID):
-        ID = int(ID)
-        for c in self.characters:
-            if c.ID() == ID:
-                return c
+        if ID is not None:
+            ID = str(ID)
+            for c in self.characters:
+                if c.ID() == ID:
+                    return c
         return None
 
 ###############################################################################
@@ -267,13 +268,13 @@ class Character():
         """Assigns an unused character ID."""
         vals = []
         for c in self._model.characters:
-            vals.append(c.ID())
+            vals.append(int(c.ID()))
 
         k = 0
         while k in vals:
             k += 1
 
-        self._data[C.ID.value] = k
+        self._data[C.ID.value] = str(k)
 
     def listInfos(self):
         r = []

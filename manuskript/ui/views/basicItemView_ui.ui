@@ -43,7 +43,7 @@
       </widget>
      </item>
      <item>
-      <widget class="cmbOutlinePersoChoser" name="cmbPOV">
+      <widget class="cmbOutlineCharacterChoser" name="cmbPOV">
        <property name="frame">
         <bool>false</bool>
        </property>
@@ -112,9 +112,9 @@
    <header>manuskript.ui.views.textEditView.h</header>
   </customwidget>
   <customwidget>
-   <class>cmbOutlinePersoChoser</class>
+   <class>cmbOutlineCharacterChoser</class>
    <extends>QComboBox</extends>
-   <header>manuskript.ui.views.cmbOutlinePersoChoser.h</header>
+   <header>manuskript.ui.views.cmbOutlineCharacterChoser.h</header>
   </customwidget>
   <customwidget>
    <class>lineEditView</class>

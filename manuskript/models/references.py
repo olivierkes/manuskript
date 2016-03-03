@@ -417,7 +417,7 @@ def shortInfos(ref):
         infos["type"] = CharacterLetter
 
         m = mainWindow().mdlCharacter
-        c = m.getCharacterByID(int(_ref))
+        c = m.getCharacterByID(_ref)
 
         if c:
             infos["title"] = c.name()

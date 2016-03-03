@@ -8,7 +8,7 @@ from manuskript.enums import Outline
 from manuskript.functions import toInt
 
 
-class cmbOutlinePersoChoser(QComboBox):
+class cmbOutlineCharacterChoser(QComboBox):
     def __init__(self, parent=None):
         QComboBox.__init__(self, parent)
         self.activated[int].connect(self.submit)
@@ -21,6 +21,9 @@ class cmbOutlinePersoChoser(QComboBox):
     def setModels(self, mdlCharacter, mdlOutline):
         self.mdlCharacters = mdlCharacter
         self.mdlCharacters.dataChanged.connect(self.updateItems)
+        self.mdlCharacters.rowsInserted.connect(self.updateItems)
+        self.mdlCharacters.rowsRemoved.connect(self.updateItems)
+
         self.mdlOutline = mdlOutline
         self.mdlOutline.dataChanged.connect(self.update)
         self.updateItems()

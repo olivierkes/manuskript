@@ -53,7 +53,7 @@
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="cmbOutlinePersoChoser" name="cmbPOV">
+          <widget class="cmbOutlineCharacterChoser" name="cmbPOV">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -190,7 +190,7 @@
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="cmbOutlinePersoChoser" name="cmbPOVMulti">
+          <widget class="cmbOutlineCharacterChoser" name="cmbPOVMulti">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -300,9 +300,9 @@
    <header>manuskript.ui.views.lineEditView.h</header>
   </customwidget>
   <customwidget>
-   <class>cmbOutlinePersoChoser</class>
+   <class>cmbOutlineCharacterChoser</class>
    <extends>QComboBox</extends>
-   <header>manuskript.ui.views.cmbOutlinePersoChoser.h</header>
+   <header>manuskript.ui.views.cmbOutlineCharacterChoser.h</header>
   </customwidget>
   <customwidget>
    <class>cmbOutlineStatusChoser</class>

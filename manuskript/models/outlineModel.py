@@ -855,7 +855,7 @@ class outlineItem():
         for c in columns:
 
             if c == Outline.POV.value:
-                searchIn = mainWindow.mdlCharacter.getPersoNameByID(self.POV())
+                searchIn = mainWindow.mdlCharacter.getCharacterByID(self.POV()).name()
 
             elif c == Outline.status.value:
                 searchIn = mainWindow.mdlStatus.item(toInt(self.status()), 0).text()

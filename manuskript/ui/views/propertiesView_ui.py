@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/views/propertiesView_ui.ui'
 #
-# Created: Wed Mar  2 00:30:18 2016
+# Created: Thu Mar  3 17:26:11 2016
 #      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -37,7 +37,7 @@ class Ui_propertiesView(object):
         self.lblPOV = QtWidgets.QLabel(self.page)
         self.lblPOV.setObjectName("lblPOV")
         self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.lblPOV)
-        self.cmbPOV = cmbOutlinePersoChoser(self.page)
+        self.cmbPOV = cmbOutlineCharacterChoser(self.page)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -116,7 +116,7 @@ class Ui_propertiesView(object):
         self.lblPOV_2 = QtWidgets.QLabel(self.page_2)
         self.lblPOV_2.setObjectName("lblPOV_2")
         self.formLayout_2.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.lblPOV_2)
-        self.cmbPOVMulti = cmbOutlinePersoChoser(self.page_2)
+        self.cmbPOVMulti = cmbOutlineCharacterChoser(self.page_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -195,9 +195,9 @@ class Ui_propertiesView(object):
         self.label_36.setText(_translate("propertiesView", "Goal"))
         self.txtGoalMulti.setPlaceholderText(_translate("propertiesView", "Word count"))
 
-from manuskript.ui.views.cmbOutlineStatusChoser import cmbOutlineStatusChoser
 from manuskript.ui.views.lineEditView import lineEditView
-from manuskript.ui.views.chkOutlineCompile import chkOutlineCompile
-from manuskript.ui.views.cmbOutlineLabelChoser import cmbOutlineLabelChoser
+from manuskript.ui.views.cmbOutlineCharacterChoser import cmbOutlineCharacterChoser
 from manuskript.ui.views.cmbOutlineTypeChoser import cmbOutlineTypeChoser
-from manuskript.ui.views.cmbOutlinePersoChoser import cmbOutlinePersoChoser
+from manuskript.ui.views.chkOutlineCompile import chkOutlineCompile
+from manuskript.ui.views.cmbOutlineStatusChoser import cmbOutlineStatusChoser
+from manuskript.ui.views.cmbOutlineLabelChoser import cmbOutlineLabelChoser

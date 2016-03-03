@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/views/basicItemView_ui.ui'
 #
-# Created: Wed Mar  2 00:33:34 2016
+# Created: Thu Mar  3 17:26:11 2016
 #      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -24,7 +24,7 @@ class Ui_basicItemView(object):
         self.lblPlanPOV.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.lblPlanPOV.setObjectName("lblPlanPOV")
         self.horizontalLayout_11.addWidget(self.lblPlanPOV)
-        self.cmbPOV = cmbOutlinePersoChoser(basicItemView)
+        self.cmbPOV = cmbOutlineCharacterChoser(basicItemView)
         self.cmbPOV.setFrame(False)
         self.cmbPOV.setObjectName("cmbPOV")
         self.horizontalLayout_11.addWidget(self.cmbPOV)
@@ -67,6 +67,6 @@ class Ui_basicItemView(object):
         self.txtSummarySentence.setPlaceholderText(_translate("basicItemView", "One line summary"))
         self.label_9.setText(_translate("basicItemView", "Few sentences summary:"))
 
-from manuskript.ui.views.cmbOutlinePersoChoser import cmbOutlinePersoChoser
-from manuskript.ui.views.textEditView import textEditView
+from manuskript.ui.views.cmbOutlineCharacterChoser import cmbOutlineCharacterChoser
 from manuskript.ui.views.lineEditView import lineEditView
+from manuskript.ui.views.textEditView import textEditView
