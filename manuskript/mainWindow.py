@@ -740,7 +740,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.tblDebugPersos.selectionModel().currentChanged.connect(
                 lambda: self.tblDebugPersosInfos.setRootIndex(self.mdlCharacter.index(
                         self.tblDebugPersos.selectionModel().currentIndex().row(),
-                        Perso.name.value)), AUC)
+                        Character.name.value)), AUC)
 
         self.tblDebugPlots.setModel(self.mdlPlots)
         self.tblDebugPlotsPersos.setModel(self.mdlPlots)
