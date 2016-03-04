@@ -11,9 +11,7 @@ from PyQt5.QtWidgets import QMainWindow, QHeaderView, qApp, QMenu, QActionGroup,
 from manuskript import settings
 from manuskript.enums import Character, Subplot, Plot, World
 from manuskript.functions import AUC, wordCount, appPath
-from manuskript.loadSave import loadStandardItemModelXML, loadFilesFromZip
-from manuskript.loadSave import saveFilesToZip
-from manuskript.loadSave import saveStandardItemModelXML
+from manuskript.loadSave import saveProject, loadProject
 from manuskript.models.characterModel import characterModel
 from manuskript.models.outlineModel import outlineModel
 from manuskript.models.plotModel import plotModel
@@ -462,27 +460,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.currentProject = projectName
             QSettings().setValue("lastProject", projectName)
 
-        # Saving
-        files = []
-
-        files.append((saveStandardItemModelXML(self.mdlFlatData),
-                      "flatModel.xml"))
-        # files.append((saveStandardItemModelXML(self.mdlCharacter),
-        #               "perso.xml"))
-        files.append((saveStandardItemModelXML(self.mdlWorld),
-                      "world.xml"))
-        files.append((saveStandardItemModelXML(self.mdlLabels),
-                      "labels.xml"))
-        files.append((saveStandardItemModelXML(self.mdlStatus),
-                      "status.xml"))
-        files.append((saveStandardItemModelXML(self.mdlPlots),
-                      "plots.xml"))
-        files.append((self.mdlOutline.saveToXML(),
-                      "outline.xml"))
-        files.append((settings.save(),
-                      "settings.pickle"))
-
-        saveFilesToZip(files, self.currentProject)
+        saveProject(version=0)
 
         # Giving some feedback
         print(self.tr("Project {} saved.").format(self.currentProject))
@@ -501,56 +479,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.mdlWorld = worldModel(self)
 
     def loadDatas(self, project):
-        # Loading
-        files = loadFilesFromZip(project)
 
-        errors = []
-
-        if "flatModel.xml" in files:
-            loadStandardItemModelXML(self.mdlFlatData,
-                                     files["flatModel.xml"], fromString=True)
-        else:
-            errors.append("flatModel.xml")
-
-        if "perso.xml" in files:
-            loadStandardItemModelXML(self.mdlCharacter,
-                                     files["perso.xml"], fromString=True)
-        else:
-            errors.append("perso.xml")
-
-        if "world.xml" in files:
-            loadStandardItemModelXML(self.mdlWorld,
-                                     files["world.xml"], fromString=True)
-        else:
-            errors.append("world.xml")
-
-        if "labels.xml" in files:
-            loadStandardItemModelXML(self.mdlLabels,
-                                     files["labels.xml"], fromString=True)
-        else:
-            errors.append("perso.xml")
-
-        if "status.xml" in files:
-            loadStandardItemModelXML(self.mdlStatus,
-                                     files["status.xml"], fromString=True)
-        else:
-            errors.append("perso.xml")
-
-        if "plots.xml" in files:
-            loadStandardItemModelXML(self.mdlPlots,
-                                     files["plots.xml"], fromString=True)
-        else:
-            errors.append("perso.xml")
-
-        if "outline.xml" in files:
-            self.mdlOutline.loadFromXML(files["outline.xml"], fromString=True)
-        else:
-            errors.append("perso.xml")
-
-        if "settings.pickle" in files:
-            settings.load(files["settings.pickle"], fromString=True)
-        else:
-            errors.append("perso.xml")
+        errors = loadProject(project)
 
         # Giving some feedback
         if not errors:

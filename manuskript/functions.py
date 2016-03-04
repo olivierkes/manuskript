@@ -179,6 +179,10 @@ def allPaths(suffix=None):
     return paths
 
 def lightBlue():
+    """
+    A light blue used in several places in manuskript.
+    @return: QColor
+    """
     return QColor(Qt.blue).lighter(190)
 
 def totalObjects():
