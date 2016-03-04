@@ -460,7 +460,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.currentProject = projectName
             QSettings().setValue("lastProject", projectName)
 
-        saveProject(version=0)
+        saveProject()  # version=0
 
         # Giving some feedback
         print(self.tr("Project {} saved.").format(self.currentProject))
