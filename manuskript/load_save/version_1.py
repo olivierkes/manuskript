@@ -6,14 +6,17 @@
 # (except for some elements), allowing collaborative work
 # versioning and third-partty editing.
 import os
+import string
 import zipfile
 
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QModelIndex
 from PyQt5.QtGui import QColor
 
 from manuskript import settings
-from manuskript.enums import Character
+from manuskript.enums import Character, World
 from manuskript.functions import mainWindow, iconColor
+from lxml import etree as ET
+
 
 try:
     import zlib  # Used with zipfile for compression
@@ -28,13 +31,40 @@ cache = {}
 
 def formatMetaData(name, value, tabLength=10):
 
-    # TODO: escape ":" in name
+    # Multiline formatting
+    if len(value.split("\n")) > 1:
+        value = "\n".join([" " * (tabLength + 1) + l for l in value.split("\n")])[tabLength + 1:]
+
+    # Avoid empty description (don't know how much MMD loves that)
+    if name == "":
+        name = "None"
+
+    # Escapes ":" in name
+    name = name.replace(":", "_.._")
+
     return "{name}:{spaces}{value}\n".format(
         name=name,
         spaces=" " * (tabLength - len(name)),
         value=value
     )
 
+
+def slugify(name):
+    """
+    A basic slug function, that escapes all spaces to "_" and all non letters/digits to "-".
+    @param name: name to slugify (str)
+    @return: str
+    """
+    valid = string.ascii_letters + string.digits
+    newName = ""
+    for c in name:
+        if c in valid:
+            newName += c
+        elif c in string.whitespace:
+            newName += "_"
+        else:
+            newName += "-"
+    return newName
 
 def saveProject(zip=None):
     """
@@ -50,8 +80,11 @@ def saveProject(zip=None):
         zip = False
         # Fixme
 
-
+    # List of files to be written
     files = []
+    # List of files to be removed
+    removes = []
+
     mw = mainWindow()
 
     # General infos (book and author)
@@ -91,13 +124,9 @@ def saveProject(zip=None):
         ("Full", 4),
         ]:
         val = mw.mdlFlatData.item(1, col).text().strip()
-        val = "\n".join([" " * 13 + l for l in val.split("\n")])[13:]
         if val:
-            content += "{name}:{spaces}{value}\n".format(
-                name=name,
-                spaces=" " * (12 - len(name)),
-                value=val
-            )
+            content += formatMetaData(name, val, 12)
+
     files.append((path, content))
 
     # Label & Status
@@ -146,25 +175,23 @@ def saveProject(zip=None):
     mdl = mw.mdlCharacter
     for c in mdl.characters:
         content = ""
-        LENGTH = 20
         for m, name in _map:
             val = mdl.data(c.index(m.value)).strip()
             if val:
-                # Multiline formatting
-                if len(val.split("\n")) > 1:
-                    val = "\n".join([" " * (LENGTH + 1) + l for l in val.split("\n")])[LENGTH + 1:]
-
-                content += formatMetaData(name, val, LENGTH)
+                content += formatMetaData(name, val, 20)
 
         for info in c.infos:
-            content += formatMetaData(info.description, info.value, LENGTH)
+            content += formatMetaData(info.description, info.value, 20)
 
-        name = "{ID}-{slugName}".format(
+        cpath = path.format(name="{ID}-{slugName}".format(
             ID=c.ID(),
-            slugName="FIXME"
-        )
+            slugName=slugify(c.name())
+        ))
+        if c.lastPath and cpath != c.lastPath:
+            removes.append(c.lastPath)
+        c.lastPath = cpath
         files.append((
-            path.format(name=name),
+            cpath,
             content))
 
     # Texts
@@ -176,7 +203,15 @@ def saveProject(zip=None):
     # Either in an XML file, or in lots of plain texts?
     # More probably text, since there might be writing done in third-party.
 
-    # TODO
+    path = "world.opml"
+    mdl = mw.mdlWorld
+
+    root = ET.Element("opml")
+    root.attrib["version"] = "1.0"
+    body = ET.SubElement(root, "body")
+    addWorldItem(body, mdl)
+    content = ET.tostring(root, encoding="UTF-8", xml_declaration=True, pretty_print=True)
+    files.append((path, content))
 
     # Plots (mw.mdlPlots)
     # Either in XML or lots of plain texts?
@@ -212,6 +247,13 @@ def saveProject(zip=None):
         folder = os.path.splitext(os.path.basename(project))[0]
         print("Saving to folder", folder)
 
+        for path in removes:
+            if path not in [p for p,c in files]:
+                filename = os.path.join(dir, folder, path)
+                print("* Removing", filename)
+                os.remove(filename)
+                cache.pop(path)
+
         for path, content in files:
             filename = os.path.join(dir, folder, path)
             os.makedirs(os.path.dirname(filename), exist_ok=True)
@@ -230,6 +272,34 @@ def saveProject(zip=None):
             else:
                 print("  In cache, and identical. Do nothing.")
 
+def addWorldItem(root, mdl, parent=QModelIndex()):
+    """
+    Lists elements in a world model and create an OPML xml file.
+    @param root: an Etree element
+    @param mdl:  a worldModel
+    @param parent: the parent index in the world model
+    @return: root, to which sub element have been added
+    """
+    # List every row (every world item)
+    for x in range(mdl.rowCount(parent)):
+
+        # For each row, create an outline item.
+        outline = ET.SubElement(root, "outline")
+        for y in range(mdl.columnCount(parent)):
+
+            val = mdl.data(mdl.index(x, y, parent))
+
+            if not val:
+                continue
+
+            for w in World:
+                if y == w.value:
+                    outline.attrib[w.name] = val
+
+            if mdl.hasChildren(mdl.index(x, y, parent)):
+                addWorldItem(outline, mdl, mdl.index(x, y, parent))
+
+    return root
 
 def loadProject(project):
     """

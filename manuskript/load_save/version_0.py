@@ -14,7 +14,7 @@ from lxml import etree as ET
 
 from manuskript import settings
 from manuskript.functions import iconColor, iconFromColorString, mainWindow
-from manuskript.models.characterModel import Character
+from manuskript.models.characterModel import Character, CharacterInfo
 
 try:
     import zlib  # Used with zipfile for compression
@@ -250,18 +250,40 @@ def loadItem(root, mdl, parent=QModelIndex()):
 
 
 def loadStandardItemModelXMLForCharacters(mdl, xml):
+    """
+    Loads a standardItemModel saved to XML by version 0, but for the new characterModel.
+    @param mdl: characterModel
+    @param xml: the content of the xml
+    @return: nothing
+    """
     mdl = mainWindow().mdlCharacter
     root = ET.fromstring(xml)
     data = root.find("data")
+
     for row in data:
         char = Character(mdl)
+
         for col in row:
             c = int(col.attrib["col"])
+
             # Value
             if col.text:
                 char._data[c] = col.text
+
             # Color
             if "color" in col.attrib:
                 char.setColor(QColor(col.attrib["color"]))
-            # TODO: infos
+
+            # Infos
+            if len(col) != 0:
+                for rrow in col:
+                    info = CharacterInfo(char)
+                    for ccol in rrow:
+                        cc = int(ccol.attrib["col"])
+                        if cc == 11 and ccol.text:
+                            info.description = ccol.text
+                        if cc == 12 and ccol.text:
+                            info.value = ccol.text
+                    char.infos.append(info)
+
         mdl.characters.append(char)

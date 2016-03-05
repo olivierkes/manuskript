@@ -215,6 +215,7 @@ class characterModel(QAbstractItemModel):
 class Character():
     def __init__(self, model, name="No name"):
         self._model = model
+        self.lastPath = ""
 
         self._data = {}
         self._data[C.name.value] = name
