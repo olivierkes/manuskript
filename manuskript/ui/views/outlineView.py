@@ -6,7 +6,7 @@ from manuskript import settings
 from manuskript.enums import Outline
 from manuskript.ui.views.dndView import dndView
 from manuskript.ui.views.outlineBasics import outlineBasics
-from manuskript.ui.views.outlineDelegates import outlineTitleDelegate, outlinePersoDelegate, outlineCompileDelegate, \
+from manuskript.ui.views.outlineDelegates import outlineTitleDelegate, outlineCharacterDelegate, outlineCompileDelegate, \
     outlineStatusDelegate, outlineGoalPercentageDelegate, outlineLabelDelegate
 
 
@@ -23,7 +23,7 @@ class outlineView(QTreeView, dndView, outlineBasics):
         self.header().setStretchLastSection(False)
 
     def setModelCharacters(self, model):
-        # This is used by outlinePersoDelegate to select character
+        # This is used by outlineCharacterDelegate to select character
         self.modelCharacters = model
 
     def setModelLabels(self, model):
@@ -41,7 +41,7 @@ class outlineView(QTreeView, dndView, outlineBasics):
         self.outlineTitleDelegate = outlineTitleDelegate(self)
         # self.outlineTitleDelegate.setView(self)
         self.setItemDelegateForColumn(Outline.title.value, self.outlineTitleDelegate)
-        self.outlinePersoDelegate = outlinePersoDelegate(self.modelCharacters)
+        self.outlinePersoDelegate = outlineCharacterDelegate(self.modelCharacters)
         self.setItemDelegateForColumn(Outline.POV.value, self.outlinePersoDelegate)
         self.outlineCompileDelegate = outlineCompileDelegate()
         self.setItemDelegateForColumn(Outline.compile.value, self.outlineCompileDelegate)

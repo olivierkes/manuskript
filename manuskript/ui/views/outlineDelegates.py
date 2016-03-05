@@ -92,7 +92,7 @@ class outlineTitleDelegate(QStyledItemDelegate):
             # QStyledItemDelegate.paint(self, painter, option, index)
 
 
-class outlinePersoDelegate(QStyledItemDelegate):
+class outlineCharacterDelegate(QStyledItemDelegate):
     def __init__(self, mdlCharacter, parent=None):
         QStyledItemDelegate.__init__(self, parent)
         self.mdlCharacter = mdlCharacter

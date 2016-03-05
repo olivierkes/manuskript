@@ -22,7 +22,7 @@ from manuskript.ui.compileDialog import compileDialog
 from manuskript.ui.helpLabel import helpLabel
 from manuskript.ui.mainWindow import Ui_MainWindow
 from manuskript.ui.tools.frequencyAnalyzer import frequencyAnalyzer
-from manuskript.ui.views.outlineDelegates import outlinePersoDelegate
+from manuskript.ui.views.outlineDelegates import outlineCharacterDelegate
 from manuskript.ui.views.plotDelegate import plotDelegate
 
 # Spellcheck support
@@ -605,7 +605,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.mdlCharacter.dataChanged.connect(self.mdlPlots.updatePlotPersoButton)
         self.lstOutlinePlots.setPlotModel(self.mdlPlots)
         self.lstOutlinePlots.setShowSubPlot(True)
-        self.plotPersoDelegate = outlinePersoDelegate(self.mdlCharacter, self)
+        self.plotPersoDelegate = outlineCharacterDelegate(self.mdlCharacter, self)
         self.lstPlotPerso.setItemDelegate(self.plotPersoDelegate)
         self.plotDelegate = plotDelegate(self)
         self.lstSubPlots.setItemDelegateForColumn(Subplot.meta.value, self.plotDelegate)

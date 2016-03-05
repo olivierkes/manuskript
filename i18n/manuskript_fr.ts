@@ -1669,7 +1669,7 @@ des lignes:</translation>
     </message>
 </context>
 <context>
-    <name>outlinePersoDelegate</name>
+    <name>outlineCharacterDelegate</name>
     <message>
         <location filename="../manuskript/ui/views/outlineDelegates.py" line="126"/>
         <source>None</source>
