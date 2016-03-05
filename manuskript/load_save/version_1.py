@@ -12,6 +12,7 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QColor
 
 from manuskript import settings
+from manuskript.enums import Character
 from manuskript.functions import mainWindow, iconColor
 
 try:
@@ -24,6 +25,17 @@ except:
 
 cache = {}
 
+
+def formatMetaData(name, value, tabLength=10):
+
+    # TODO: escape ":" in name
+    return "{name}:{spaces}{value}\n".format(
+        name=name,
+        spaces=" " * (tabLength - len(name)),
+        value=value
+    )
+
+
 def saveProject(zip=None):
     """
     Saves the project. If zip is False, the project is saved as a multitude of plain-text files for the most parts
@@ -35,7 +47,7 @@ def saveProject(zip=None):
     @return: Nothing
     """
     if zip is None:
-        zip = True
+        zip = False
         # Fixme
 
 
@@ -118,7 +130,42 @@ def saveProject(zip=None):
     # Characters (self.mdlCharacter)
     # In a character folder
 
-    # TODO
+    path = os.path.join("characters", "{name}.txt")  # Not sure wheter os.path allows this
+    _map = [
+        (Character.name, "Name"),
+        (Character.ID,   "ID"),
+        (Character.importance, "Importance"),
+        (Character.motivation, "Motivation"),
+        (Character.goal, "Goal"),
+        (Character.conflict, "Conflict"),
+        (Character.summarySentence, "Phrase Summary"),
+        (Character.summaryPara, "Paragraph Summary"),
+        (Character.summaryFull, "Full Summary"),
+        (Character.notes, "Notes"),
+    ]
+    mdl = mw.mdlCharacter
+    for c in mdl.characters:
+        content = ""
+        LENGTH = 20
+        for m, name in _map:
+            val = mdl.data(c.index(m.value)).strip()
+            if val:
+                # Multiline formatting
+                if len(val.split("\n")) > 1:
+                    val = "\n".join([" " * (LENGTH + 1) + l for l in val.split("\n")])[LENGTH + 1:]
+
+                content += formatMetaData(name, val, LENGTH)
+
+        for info in c.infos:
+            content += formatMetaData(info.description, info.value, LENGTH)
+
+        name = "{ID}-{slugName}".format(
+            ID=c.ID(),
+            slugName="FIXME"
+        )
+        files.append((
+            path.format(name=name),
+            content))
 
     # Texts
     # In an outline folder

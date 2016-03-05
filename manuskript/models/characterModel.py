@@ -213,7 +213,7 @@ class characterModel(QAbstractItemModel):
 ###############################################################################
 
 class Character():
-    def __init__(self, model, name):
+    def __init__(self, model, name="No name"):
         self._model = model
 
         self._data = {}

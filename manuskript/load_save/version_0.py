@@ -14,6 +14,7 @@ from lxml import etree as ET
 
 from manuskript import settings
 from manuskript.functions import iconColor, iconFromColorString, mainWindow
+from manuskript.models.characterModel import Character
 
 try:
     import zlib  # Used with zipfile for compression
@@ -130,8 +131,7 @@ def loadProject(project):
         errors.append("flatModel.xml")
 
     if "perso.xml" in files:
-        loadStandardItemModelXML(mw.mdlCharacter,
-                                 files["perso.xml"], fromString=True)
+        loadStandardItemModelXMLForCharacters(mw.mdlCharacter, files["perso.xml"])
     else:
         errors.append("perso.xml")
 
@@ -247,3 +247,21 @@ def loadItem(root, mdl, parent=QModelIndex()):
             if len(col) != 0:
                 # loadItem(col, mdl, mdl.index(r, c, parent))
                 loadItem(col, mdl, mdl.indexFromItem(item))
+
+
+def loadStandardItemModelXMLForCharacters(mdl, xml):
+    mdl = mainWindow().mdlCharacter
+    root = ET.fromstring(xml)
+    data = root.find("data")
+    for row in data:
+        char = Character(mdl)
+        for col in row:
+            c = int(col.attrib["col"])
+            # Value
+            if col.text:
+                char._data[c] = col.text
+            # Color
+            if "color" in col.attrib:
+                char.setColor(QColor(col.attrib["color"]))
+            # TODO: infos
+        mdl.characters.append(char)
