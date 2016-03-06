@@ -277,7 +277,7 @@ def infos(ref):
 
         # Characters
         pM = mainWindow().mdlCharacter
-        item = m.item(index.row(), Plot.persos.value)
+        item = m.item(index.row(), Plot.characters.value)
         characters = ""
         if item:
             for r in range(item.rowCount()):

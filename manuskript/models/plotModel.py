@@ -182,10 +182,10 @@ class plotModel(QStandardItemModel):
     def addPlotPerso(self, v):
         index = self.mw.lstPlots.currentPlotIndex()
         if index.isValid():
-            if not self.item(index.row(), Plot.persos.value):
-                self.setItem(index.row(), Plot.persos.value, QStandardItem())
+            if not self.item(index.row(), Plot.characters.value):
+                self.setItem(index.row(), Plot.characters.value, QStandardItem())
 
-            item = self.item(index.row(), Plot.persos.value)
+            item = self.item(index.row(), Plot.characters.value)
 
             # We check that the PersoID is not in the list yet
             for i in range(item.rowCount()):

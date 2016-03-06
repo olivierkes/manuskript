@@ -26,7 +26,7 @@ class Plot(Enum):
     name = 0
     ID = 1
     importance = 2
-    persos = 3
+    characters = 3
     description = 4
     result = 5
     subplots = 6
@@ -64,4 +64,3 @@ class Outline(Enum):
                  # (sum of all sub-items' goals)
     textFormat = 15
     revisions = 16
-    

@@ -13,7 +13,7 @@ from PyQt5.QtCore import Qt, QModelIndex
 from PyQt5.QtGui import QColor
 
 from manuskript import settings
-from manuskript.enums import Character, World
+from manuskript.enums import Character, World, Plot
 from manuskript.functions import mainWindow, iconColor
 from lxml import etree as ET
 
@@ -217,7 +217,15 @@ def saveProject(zip=None):
     # Either in XML or lots of plain texts?
     # More probably XML since there is not really a lot if writing to do (third-party)
 
-    # TODO
+    path = "plots.opml"
+    mdl = mw.mdlPlots
+
+    root = ET.Element("opml")
+    root.attrib["version"] = "1.0"
+    body = ET.SubElement(root, "body")
+    addPlotItem(body, mdl)
+    content = ET.tostring(root, encoding="UTF-8", xml_declaration=True, pretty_print=True)
+    files.append((path, content))
 
     # Settings
     # Saved in readable text (json) for easier versionning. But they mustn't be shared, it seems.
@@ -298,6 +306,52 @@ def addWorldItem(root, mdl, parent=QModelIndex()):
 
             if mdl.hasChildren(mdl.index(x, y, parent)):
                 addWorldItem(outline, mdl, mdl.index(x, y, parent))
+
+    return root
+
+
+def addPlotItem(root, mdl, parent=QModelIndex()):
+    """
+    Lists elements in a plot model and create an OPML xml file.
+    @param root: an Etree element
+    @param mdl:  a plotModel
+    @param parent: the parent index in the plot model
+    @return: root, to which sub element have been added
+    """
+
+    # List every row (every plot item)
+    for x in range(mdl.rowCount(parent)):
+
+        # For each row, create an outline item.
+        outline = ET.SubElement(root, "outline")
+        for y in range(mdl.columnCount(parent)):
+
+            index = mdl.index(x, y, parent)
+            val = mdl.data(index)
+
+            if not val:
+                continue
+
+            for w in Plot:
+                if y == w.value:
+                    outline.attrib[w.name] = val
+
+            if y == Plot.characters.value:
+                if mdl.hasChildren(index):
+                    characters = []
+                    for cX in range(mdl.rowCount(index)):
+                        for cY in range(mdl.columnCount(index)):
+                            cIndex = mdl.index(cX, cY, index)
+                            characters.append(mdl.data(cIndex))
+                    outline.attrib[Plot.characters.name] = ",".join(characters)
+                else:
+                    outline.attrib.pop(Plot.characters.name)
+
+            elif y == Plot.subplots.value and mdl.hasChildren(index):
+                outline.attrib.pop(Plot.subplots.name)
+
+
+                # addWorldItem(outline, mdl, index)
 
     return root
 
