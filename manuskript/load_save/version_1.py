@@ -13,7 +13,7 @@ from PyQt5.QtCore import Qt, QModelIndex
 from PyQt5.QtGui import QColor
 
 from manuskript import settings
-from manuskript.enums import Character, World, Plot
+from manuskript.enums import Character, World, Plot, PlotStep
 from manuskript.functions import mainWindow, iconColor
 from lxml import etree as ET
 
@@ -24,7 +24,6 @@ try:
     compression = zipfile.ZIP_DEFLATED
 except:
     compression = zipfile.ZIP_STORED
-
 
 cache = {}
 
@@ -66,6 +65,7 @@ def slugify(name):
             newName += "-"
     return newName
 
+
 def saveProject(zip=None):
     """
     Saves the project. If zip is False, the project is saved as a multitude of plain-text files for the most parts
@@ -86,6 +86,10 @@ def saveProject(zip=None):
     removes = []
 
     mw = mainWindow()
+
+    if zip:
+        # File format version
+        files.append(("VERSION", "1"))
 
     # General infos (book and author)
     # Saved in plain text, in infos.txt
@@ -187,6 +191,8 @@ def saveProject(zip=None):
             ID=c.ID(),
             slugName=slugify(c.name())
         ))
+        # Has the character been renamed?
+        # If so, we remove the old file (if not zipped)
         if c.lastPath and cpath != c.lastPath:
             removes.append(c.lastPath)
         c.lastPath = cpath
@@ -217,13 +223,11 @@ def saveProject(zip=None):
     # Either in XML or lots of plain texts?
     # More probably XML since there is not really a lot if writing to do (third-party)
 
-    path = "plots.opml"
+    path = "plots.xml"
     mdl = mw.mdlPlots
 
-    root = ET.Element("opml")
-    root.attrib["version"] = "1.0"
-    body = ET.SubElement(root, "body")
-    addPlotItem(body, mdl)
+    root = ET.Element("root")
+    addPlotItem(root, mdl)
     content = ET.tostring(root, encoding="UTF-8", xml_declaration=True, pretty_print=True)
     files.append((path, content))
 
@@ -280,6 +284,7 @@ def saveProject(zip=None):
             else:
                 print("  In cache, and identical. Do nothing.")
 
+
 def addWorldItem(root, mdl, parent=QModelIndex()):
     """
     Lists elements in a world model and create an OPML xml file.
@@ -312,7 +317,7 @@ def addWorldItem(root, mdl, parent=QModelIndex()):
 
 def addPlotItem(root, mdl, parent=QModelIndex()):
     """
-    Lists elements in a plot model and create an OPML xml file.
+    Lists elements in a plot model and create an xml file.
     @param root: an Etree element
     @param mdl:  a plotModel
     @param parent: the parent index in the plot model
@@ -323,7 +328,7 @@ def addPlotItem(root, mdl, parent=QModelIndex()):
     for x in range(mdl.rowCount(parent)):
 
         # For each row, create an outline item.
-        outline = ET.SubElement(root, "outline")
+        outline = ET.SubElement(root, "plot")
         for y in range(mdl.columnCount(parent)):
 
             index = mdl.index(x, y, parent)
@@ -336,6 +341,7 @@ def addPlotItem(root, mdl, parent=QModelIndex()):
                 if y == w.value:
                     outline.attrib[w.name] = val
 
+            # List characters as attrib
             if y == Plot.characters.value:
                 if mdl.hasChildren(index):
                     characters = []
@@ -347,13 +353,23 @@ def addPlotItem(root, mdl, parent=QModelIndex()):
                 else:
                     outline.attrib.pop(Plot.characters.name)
 
-            elif y == Plot.steps.value and mdl.hasChildren(index):
+            # List resolution steps as sub items
+            elif y == Plot.steps.value:
+                if mdl.hasChildren(index):
+                    for cX in range(mdl.rowCount(index)):
+                        step = ET.SubElement(outline, "step")
+                        for cY in range(mdl.columnCount(index)):
+                            cIndex = mdl.index(cX, cY, index)
+                            val = mdl.data(cIndex)
+
+                            for w in PlotStep:
+                                if cY == w.value:
+                                    step.attrib[w.name] = val
+
                 outline.attrib.pop(Plot.steps.name)
 
-
-                # addWorldItem(outline, mdl, index)
-
     return root
+
 
 def loadProject(project):
     """
