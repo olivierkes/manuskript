@@ -13,7 +13,7 @@ from PyQt5.QtWidgets import qApp
 from manuskript.enums import Outline
 from manuskript.enums import Character
 from manuskript.enums import Plot
-from manuskript.enums import Subplot
+from manuskript.enums import PlotStep
 from manuskript.functions import mainWindow
 
 RegEx = r"{(\w):(\d+):?.*?}"
@@ -288,12 +288,12 @@ def infos(ref):
 
         # Resolution steps
         steps = ""
-        item = m.item(index.row(), Plot.subplots.value)
+        item = m.item(index.row(), Plot.steps.value)
         if item:
             for r in range(item.rowCount()):
-                title = item.child(r, Subplot.name.value).text()
-                summary = item.child(r, Subplot.summary.value).text()
-                meta = item.child(r, Subplot.meta.value).text()
+                title = item.child(r, PlotStep.name.value).text()
+                summary = item.child(r, PlotStep.summary.value).text()
+                meta = item.child(r, PlotStep.meta.value).text()
                 if meta:
                     meta = " <span style='color:gray;'>({})</span>".format(meta)
                 steps += "<li><b>{title}</b>{summary}{meta}</li>".format(

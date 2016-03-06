@@ -9,7 +9,7 @@ from PyQt5.QtWidgets import QMainWindow, QHeaderView, qApp, QMenu, QActionGroup,
     QLabel
 
 from manuskript import settings
-from manuskript.enums import Character, Subplot, Plot, World
+from manuskript.enums import Character, PlotStep, Plot, World
 from manuskript.functions import AUC, wordCount, appPath
 from manuskript.loadSave import saveProject, loadProject
 from manuskript.models.characterModel import characterModel
@@ -206,7 +206,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.sldPlotImportance.setCurrentModelIndex(index)
         self.lstPlotPerso.setRootIndex(index.sibling(index.row(),
                                                      Plot.characters.value))
-        subplotindex = index.sibling(index.row(), Plot.subplots.value)
+        subplotindex = index.sibling(index.row(), Plot.steps.value)
         self.lstSubPlots.setRootIndex(subplotindex)
         if self.mdlPlots.rowCount(subplotindex):
             self.updateSubPlotView()
@@ -222,18 +222,18 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Hide columns
         for i in range(self.mdlPlots.columnCount()):
             self.lstSubPlots.hideColumn(i)
-        self.lstSubPlots.showColumn(Subplot.name.value)
-        self.lstSubPlots.showColumn(Subplot.meta.value)
+        self.lstSubPlots.showColumn(PlotStep.name.value)
+        self.lstSubPlots.showColumn(PlotStep.meta.value)
 
         self.lstSubPlots.horizontalHeader().setSectionResizeMode(
-                Subplot.name.value, QHeaderView.Stretch)
+                PlotStep.name.value, QHeaderView.Stretch)
         self.lstSubPlots.horizontalHeader().setSectionResizeMode(
-                Subplot.meta.value, QHeaderView.ResizeToContents)
+                PlotStep.meta.value, QHeaderView.ResizeToContents)
         self.lstSubPlots.verticalHeader().hide()
 
     def changeCurrentSubPlot(self, index):
         # Got segfaults when using textEditView model system, so ad hoc stuff.
-        index = index.sibling(index.row(), Subplot.summary.value)
+        index = index.sibling(index.row(), PlotStep.summary.value)
         item = self.mdlPlots.itemFromIndex(index)
         if not item:
             self.txtSubPlotSummary.setEnabled(False)
@@ -251,7 +251,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         index = self.lstSubPlots.currentIndex()
         if not index.isValid():
             return
-        index = index.sibling(index.row(), Subplot.summary.value)
+        index = index.sibling(index.row(), PlotStep.summary.value)
         item = self.mdlPlots.itemFromIndex(index)
 
         self._updatingSubPlot = True
@@ -608,7 +608,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.plotCharacterDelegate = outlineCharacterDelegate(self.mdlCharacter, self)
         self.lstPlotPerso.setItemDelegate(self.plotCharacterDelegate)
         self.plotDelegate = plotDelegate(self)
-        self.lstSubPlots.setItemDelegateForColumn(Subplot.meta.value, self.plotDelegate)
+        self.lstSubPlots.setItemDelegateForColumn(PlotStep.meta.value, self.plotDelegate)
 
         # World
         self.treeWorld.setModel(self.mdlWorld)
@@ -682,7 +682,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.tblDebugPlots.selectionModel().currentChanged.connect(
                 lambda: self.tblDebugSubPlots.setRootIndex(self.mdlPlots.index(
                         self.tblDebugPlots.selectionModel().currentIndex().row(),
-                        Plot.subplots.value)), AUC)
+                        Plot.steps.value)), AUC)
         self.treeDebugWorld.setModel(self.mdlWorld)
         self.treeDebugOutline.setModel(self.mdlOutline)
         self.lstDebugLabels.setModel(self.mdlLabels)

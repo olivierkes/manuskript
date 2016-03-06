@@ -29,10 +29,10 @@ class Plot(Enum):
     characters = 3
     description = 4
     result = 5
-    subplots = 6
+    steps = 6
     summary = 7
     
-class Subplot(Enum):
+class PlotStep(Enum):
     name = 0
     ID = 1
     meta = 2

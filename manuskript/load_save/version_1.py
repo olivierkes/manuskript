@@ -347,8 +347,8 @@ def addPlotItem(root, mdl, parent=QModelIndex()):
                 else:
                     outline.attrib.pop(Plot.characters.name)
 
-            elif y == Plot.subplots.value and mdl.hasChildren(index):
-                outline.attrib.pop(Plot.subplots.name)
+            elif y == Plot.steps.value and mdl.hasChildren(index):
+                outline.attrib.pop(Plot.steps.name)
 
 
                 # addWorldItem(outline, mdl, index)
