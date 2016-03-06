@@ -101,9 +101,9 @@ class outlineCharacterDelegate(QStyledItemDelegate):
         # s = QStyledItemDelegate.sizeHint(self, option, index)
 
         item = QModelIndex()
-        for i in range(self.mdlCharacter.rowCount()):
-            if self.mdlCharacter.ID(i) == index.data():
-                item = self.mdlCharacter.index(i, Character.name.value)
+        character = self.mdlCharacter.getCharacterByID(index.data())
+        if character:
+            item = character.index(Character.name.value)
 
         opt = QStyleOptionViewItem(option)
         self.initStyleOption(opt, item)
@@ -158,18 +158,21 @@ class outlineCharacterDelegate(QStyledItemDelegate):
         # QStyledItemDelegate.paint(self, painter, option, index)
         ##option.rect.setWidth(option.rect.width() + 18)
 
-        item = QModelIndex()
-        for i in range(self.mdlCharacter.rowCount()):
-            if self.mdlCharacter.ID(i) == index.data():
-                item = self.mdlCharacter.index(i, Character.name.value)
+        itemIndex = QModelIndex()
+        character = self.mdlCharacter.getCharacterByID(index.data())
+        if character:
+            itemIndex = character.index(Character.name.value)
+        else:
+            # Character ID not found in character model.
+            return
 
         opt = QStyleOptionViewItem(option)
-        self.initStyleOption(opt, item)
+        self.initStyleOption(opt, itemIndex)
 
         qApp.style().drawControl(QStyle.CE_ItemViewItem, opt, painter)
 
         # if index.isValid() and index.internalPointer().data(Outline.POV.value) not in ["", None]:
-        if index.isValid() and self.mdlCharacter.data(index) not in ["", None]:
+        if itemIndex.isValid() and self.mdlCharacter.data(itemIndex) not in ["", None]:
             opt = QStyleOptionComboBox()
             opt.rect = option.rect
             r = qApp.style().subControlRect(QStyle.CC_ComboBox, opt, QStyle.SC_ComboBoxArrow)

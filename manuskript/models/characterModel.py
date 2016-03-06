@@ -30,12 +30,9 @@ class characterModel(QAbstractItemModel):
             # Returns characters infos
             return 2
         else:
-            return 1
+            return len(C)
 
     def data(self, index, role=Qt.DisplayRole):
-        if not index.isValid():
-            return None
-        
         c = index.internalPointer()
         if type(c) == Character:
             if role == Qt.DisplayRole:

@@ -605,8 +605,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.mdlCharacter.dataChanged.connect(self.mdlPlots.updatePlotPersoButton)
         self.lstOutlinePlots.setPlotModel(self.mdlPlots)
         self.lstOutlinePlots.setShowSubPlot(True)
-        self.plotPersoDelegate = outlineCharacterDelegate(self.mdlCharacter, self)
-        self.lstPlotPerso.setItemDelegate(self.plotPersoDelegate)
+        self.plotCharacterDelegate = outlineCharacterDelegate(self.mdlCharacter, self)
+        self.lstPlotPerso.setItemDelegate(self.plotCharacterDelegate)
         self.plotDelegate = plotDelegate(self)
         self.lstSubPlots.setItemDelegateForColumn(Subplot.meta.value, self.plotDelegate)
 
