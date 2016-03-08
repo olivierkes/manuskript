@@ -854,8 +854,13 @@ class outlineItem():
         text = text.lower() if not caseSensitive else text
         for c in columns:
 
-            if c == Outline.POV.value:
-                searchIn = mainWindow.mdlCharacter.getCharacterByID(self.POV()).name()
+            if c == Outline.POV.value and self.POV():
+                c = mainWindow.mdlCharacter.getCharacterByID(self.POV())
+                if c:
+                    searchIn = c.name()
+                else:
+                    searchIn = ""
+                    print("Character POV not found:", self.POV())
 
             elif c == Outline.status.value:
                 searchIn = mainWindow.mdlStatus.item(toInt(self.status()), 0).text()

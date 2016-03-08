@@ -37,8 +37,9 @@ def saveProject():
 
     files.append((saveStandardItemModelXML(mw.mdlFlatData),
                   "flatModel.xml"))
-    files.append((saveStandardItemModelXML(mw.mdlCharacter),
-                  "perso.xml"))
+    print("ERROR: file format 0 does not save characters !")
+    # files.append((saveStandardItemModelXML(mw.mdlCharacter),
+    #               "perso.xml"))
     files.append((saveStandardItemModelXML(mw.mdlWorld),
                   "world.xml"))
     files.append((saveStandardItemModelXML(mw.mdlLabels),
@@ -145,36 +146,35 @@ def loadProject(project):
         loadStandardItemModelXML(mw.mdlLabels,
                                  files["labels.xml"], fromString=True)
     else:
-        errors.append("perso.xml")
+        errors.append("labels.xml")
 
     if "status.xml" in files:
         loadStandardItemModelXML(mw.mdlStatus,
                                  files["status.xml"], fromString=True)
     else:
-        errors.append("perso.xml")
+        errors.append("status.xml")
 
     if "plots.xml" in files:
         loadStandardItemModelXML(mw.mdlPlots,
                                  files["plots.xml"], fromString=True)
     else:
-        errors.append("perso.xml")
+        errors.append("plots.xml")
 
     if "outline.xml" in files:
         mw.mdlOutline.loadFromXML(files["outline.xml"], fromString=True)
     else:
-        errors.append("perso.xml")
+        errors.append("outline.xml")
 
     if "settings.pickle" in files:
         settings.load(files["settings.pickle"], fromString=True)
     else:
-        errors.append("perso.xml")
+        errors.append("settings.pickle")
 
     return errors
 
 
 def loadFilesFromZip(zipname):
     """Returns the content of zipfile as a dict of filename:content."""
-    print(zipname)
     zf = zipfile.ZipFile(zipname)
     files = {}
     for f in zf.namelist():

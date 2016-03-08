@@ -13,7 +13,7 @@ from PyQt5.QtCore import Qt, QModelIndex
 from PyQt5.QtGui import QColor
 
 from manuskript import settings
-from manuskript.enums import Character, World, Plot, PlotStep
+from manuskript.enums import Character, World, Plot, PlotStep, Outline
 from manuskript.functions import mainWindow, iconColor
 from lxml import etree as ET
 
@@ -163,7 +163,7 @@ def saveProject(zip=None):
     # Characters (self.mdlCharacter)
     # In a character folder
 
-    path = os.path.join("characters", "{name}.txt")  # Not sure wheter os.path allows this
+    path = os.path.join("characters", "{name}.txt")
     _map = [
         (Character.name, "Name"),
         (Character.ID,   "ID"),
@@ -203,7 +203,9 @@ def saveProject(zip=None):
     # Texts
     # In an outline folder
 
-    # TODO
+    mdl = mw.mdlOutline
+    for filename, content in exportOutlineItem(mdl.rootItem):
+        files.append((filename, content))
 
     # World (mw.mdlWorld)
     # Either in an XML file, or in lots of plain texts?
@@ -370,6 +372,82 @@ def addPlotItem(root, mdl, parent=QModelIndex()):
 
     return root
 
+
+def exportOutlineItem(root):
+    """
+    Takes an outline item, and returns an array of (`filename`, `content`) sets, representing the whole tree
+    of items converted to mmd.
+
+    @param root: OutlineItem
+    @return: (str, str)
+    """
+    r = []
+    path = "outline"
+
+    k=0
+    for child in root.children():
+        spath = os.path.join(path, *outlineItemPath(child))
+        k += 1
+
+        if child.type() == "folder":
+            fpath = os.path.join(spath, "folder.txt")
+            content = outlineToMMD(child)
+            r.append((fpath, content))
+
+        elif child.type() in ["txt", "t2t"]:
+            content = outlineToMMD(child)
+            r.append((spath, content))
+
+        elif child.type() in ["html"]:
+            # Convert first
+            pass
+
+        else:
+            print("Unknown type")
+
+        r += exportOutlineItem(child)
+
+    return r
+
+def outlineItemPath(item):
+    # Root item
+    if not item.parent():
+        return []
+    else:
+        name = "{ID}-{name}{ext}".format(
+            ID=item.row(),
+            name=slugify(item.title()),
+            ext="" if item.type() == "folder" else ".{}".format(item.type())
+        )
+        return outlineItemPath(item.parent()) + [name]
+
+def outlineToMMD(item):
+    content = ""
+
+    # We don't want to write some datas (computed)
+    exclude = [Outline.wordCount, Outline.goal, Outline.goalPercentage, Outline.revisions, Outline.text]
+    # We want to force some data even if they're empty
+    force = [Outline.compile]
+
+    for attrib in Outline:
+        if attrib in exclude: continue
+        val = item.data(attrib.value)
+        if val or attrib in force:
+            content += formatMetaData(attrib.name, str(val), 15)
+
+    content += "\n\n"
+    content += item.data(Outline.text.value)
+
+    # Saving revisions
+    # TODO
+    # rev = item.revisions()
+    # for r in rev:
+    #     revItem = ET.Element("revision")
+    #     revItem.set("timestamp", str(r[0]))
+    #     revItem.set("text", r[1])
+    #     item.append(revItem)
+
+    return content
 
 def loadProject(project):
     """
