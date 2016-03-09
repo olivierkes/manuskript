@@ -219,19 +219,6 @@ def saveProject(zip=None):
 
         files.append((cpath, content))
 
-    # # List removed characters
-    # for c in mdl.removed:
-    #     # generate file's path
-    #     cpath = path.format(name="{ID}-{slugName}".format(
-    #         ID=c.ID(),
-    #         slugName=slugify(c.name())
-    #     ))
-    #
-    #     # Mark for removal
-    #     removes.append(cpath)
-
-    mdl.removed.clear()
-
     ####################################################################################################################
     # Texts
     # In an outline folder
@@ -243,11 +230,6 @@ def saveProject(zip=None):
     files += f
     moves += m
     removes += r
-
-    # List removed items
-    # for item in mdl.removed:
-    #     path = outlineItemPath(item)
-    #     log("* Marking for removal:", path)
 
     ####################################################################################################################
     # World

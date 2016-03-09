@@ -3,6 +3,7 @@
 
 # The loadSave file calls the propper functions to load and save file
 # trying to detect the proper file format if it comes from an older version
+import os
 import zipfile
 
 import manuskript.load_save.version_0 as v0
@@ -20,10 +21,10 @@ def saveProject(version=None):
 def loadProject(project):
 
     # Detect version
-    # Is it a zip?
     isZip = False
     version = 0
 
+    # Is it a zip?
     try:
         zf = zipfile.ZipFile(project)
         isZip = True
@@ -40,8 +41,17 @@ def loadProject(project):
 
     # Not a zip
     else:
-        # FIXME
-        pass
+        # Project path
+        dir = os.path.dirname(project)
+
+        # Folder containing file: name of the project file (without .msk extension)
+        folder = os.path.splitext(os.path.basename(project))[0]
+
+        # Reading VERSION file
+        path = os.path.join(dir, folder, "VERSION")
+        if os.path.exists(path):
+            with open(path, "r") as f:
+                version = int(f.read())
 
     print("Detected file format version:", version)
 

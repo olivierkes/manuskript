@@ -14,9 +14,6 @@ class characterModel(QAbstractItemModel):
 
         # CharacterItems are stored in this list
         self.characters = []
-        # We keep track of removed character, so that when we save in multiple files, we can remove old character's
-        # files.
-        self.removed = []
 
 ###############################################################################
 # QAbstractItemModel subclassed
@@ -174,7 +171,6 @@ class characterModel(QAbstractItemModel):
         """
         c = self.getCharacterByID(ID)
         self.beginRemoveRows(QModelIndex(), self.characters.index(c), self.characters.index(c))
-        self.removed.append(c)
         self.characters.remove(c)
         self.endRemoveRows()
 
