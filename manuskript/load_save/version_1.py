@@ -66,6 +66,10 @@ def slugify(name):
     return newName
 
 
+def log(*args):
+    print(" ".join(str(a) for a in args))
+
+
 def saveProject(zip=None):
     """
     Saves the project. If zip is False, the project is saved as a multitude of plain-text files for the most parts
@@ -80,12 +84,14 @@ def saveProject(zip=None):
         zip = False
         # Fixme
 
-    print("\n\n", "Saving to:", "zip" if zip else "folder")
+    log("\n\nSaving to:", "zip" if zip else "folder")
 
     # List of files to be written
     files = []
     # List of files to be removed
     removes = []
+    # List of files to be moved
+    moves = []
 
     mw = mainWindow()
 
@@ -117,6 +123,7 @@ def saveProject(zip=None):
             )
     files.append((path, content))
 
+    ####################################################################################################################
     # Summary
     # In plain text, in summary.txt
 
@@ -135,6 +142,7 @@ def saveProject(zip=None):
 
     files.append((path, content))
 
+    ####################################################################################################################
     # Label & Status
     # In plain text
 
@@ -162,7 +170,8 @@ def saveProject(zip=None):
 
         files.append((path, content))
 
-    # Characters (self.mdlCharacter)
+    ####################################################################################################################
+    # Characters
     # In a character folder
 
     path = os.path.join("characters", "{name}.txt")
@@ -179,7 +188,11 @@ def saveProject(zip=None):
         (Character.notes, "Notes"),
     ]
     mdl = mw.mdlCharacter
+
+    # Review characters
     for c in mdl.characters:
+
+        # Generates file's content
         content = ""
         for m, name in _map:
             val = mdl.data(c.index(m.value)).strip()
@@ -189,28 +202,46 @@ def saveProject(zip=None):
         for info in c.infos:
             content += formatMetaData(info.description, info.value, 20)
 
+        # generate file's path
         cpath = path.format(name="{ID}-{slugName}".format(
             ID=c.ID(),
             slugName=slugify(c.name())
         ))
-        # Has the character been renamed?
-        # If so, we remove the old file (if not zipped)
-        if c.lastPath and cpath != c.lastPath:
-            removes.append(c.lastPath)
-        c.lastPath = cpath
-        files.append((
-            cpath,
-            content))
 
+        # Has the character been renamed?
+        if c.lastPath and cpath != c.lastPath:
+            moves.append((c.lastPath, cpath))
+
+        # Update character's path
+        c.lastPath = cpath
+
+        files.append((cpath, content))
+
+    # List removed characters
+    for c in mdl.removed:
+        # generate file's path
+        cpath = path.format(name="{ID}-{slugName}".format(
+            ID=c.ID(),
+            slugName=slugify(c.name())
+        ))
+
+        # Mark for removal
+        removes.append(cpath)
+
+    mdl.removed.clear()
+
+    ####################################################################################################################
     # Texts
     # In an outline folder
 
     mdl = mw.mdlOutline
-    f, r = exportOutlineItem(mdl.rootItem)
+    f, m, r = exportOutlineItem(mdl.rootItem)
     files += f
+    moves += m
     removes += r
 
-    # World (mw.mdlWorld)
+    ####################################################################################################################
+    # World
     # Either in an XML file, or in lots of plain texts?
     # More probably text, since there might be writing done in third-party.
 
@@ -224,6 +255,7 @@ def saveProject(zip=None):
     content = ET.tostring(root, encoding="UTF-8", xml_declaration=True, pretty_print=True)
     files.append((path, content))
 
+    ####################################################################################################################
     # Plots (mw.mdlPlots)
     # Either in XML or lots of plain texts?
     # More probably XML since there is not really a lot if writing to do (third-party)
@@ -236,15 +268,19 @@ def saveProject(zip=None):
     content = ET.tostring(root, encoding="UTF-8", xml_declaration=True, pretty_print=True)
     files.append((path, content))
 
+    ####################################################################################################################
     # Settings
     # Saved in readable text (json) for easier versionning. But they mustn't be shared, it seems.
     # Maybe include them only if zipped?
     # Well, for now, we keep them here...
+
     files.append(("settings.txt", settings.save(protocol=0)))
 
     project = mw.currentProject
 
+    ####################################################################################################################
     # Save to zip
+
     if zip:
         project = os.path.join(
             os.path.dirname(project),
@@ -258,41 +294,58 @@ def saveProject(zip=None):
 
         zf.close()
 
+    ####################################################################################################################
     # Save to plain text
+
     else:
+
+        # Project path
         dir = os.path.dirname(project)
+
+        # Folder containing file: name of the project file (without .msk extension)
         folder = os.path.splitext(os.path.basename(project))[0]
-        print("\nSaving to folder", folder)
+
+        # Debug
+        log("\nSaving to folder", folder)
+
+        # Moving files that have been renamed
+        for old, new in moves:
+
+            # Get full path
+            oldPath = os.path.join(dir, folder, old)
+            newPath = os.path.join(dir, folder, new)
+
+            # Move the old file to the new place
+            os.replace(oldPath, newPath)
+            log("* Renaming {} to {}".format(old, new))
+
+            # Update cache
+            if old in cache:
+                cache[new] = cache.pop(old)
 
         for path in removes:
             if path not in [p for p,c in files]:
                 filename = os.path.join(dir, folder, path)
-                print("* Removing", filename)
+                log("* Removing", path)
+
                 if os.path.isdir(filename):
                     shutil.rmtree(filename)
-                    # FIXME: when deleting a folder, there are still files in "removes".
 
-                    # FIXME: if user copied custom files in the directory, they will be lost.
-                    #        need to find a way to rename instead of remove.
-
-                    # FIXME: items removed have to be removed (not just the renamed)
-                    
                 else:  # elif os.path.exists(filename)
                     os.remove(filename)
 
+                # Clear cache
                 cache.pop(path, 0)
 
         for path, content in files:
             filename = os.path.join(dir, folder, path)
             os.makedirs(os.path.dirname(filename), exist_ok=True)
-            # print("* Saving file", filename)
 
             # TODO: the first time it saves, it will overwrite everything, since it's not yet in cache.
             #       Or we have to cache while loading.
 
             if not path in cache or cache[path] != content:
-                print("* Saving file", filename)
-                print("  Not in cache or changed: we write")
+                log("* Writing file", path)
                 mode = "w"+ ("b" if type(content) == bytes else "")
                 with open(filename, mode) as f:
                     f.write(content)
@@ -300,7 +353,7 @@ def saveProject(zip=None):
 
             else:
                 pass
-                # print("  In cache, and identical. Do nothing.")
+                # log("  In cache, and identical. Do nothing.")
 
 
 def addWorldItem(root, mdl, parent=QModelIndex()):
@@ -393,6 +446,7 @@ def exportOutlineItem(root):
     """
     Takes an outline item, and returns two lists:
     1. of (`filename`, `content`), representing the whole tree of files to be written, in multimarkdown.
+    3. of (`filename`, `filename`) listing files to be moved
     2. of `filename`, representing files to be removed.
 
     @param root: OutlineItem
@@ -400,6 +454,7 @@ def exportOutlineItem(root):
     """
 
     files = []
+    moves = []
     removes = []
 
     path = "outline"
@@ -410,16 +465,15 @@ def exportOutlineItem(root):
         k += 1
 
         # Has the item been renamed?
-        # If so, we mark the old file for removal
-        if "Herod_dies" in spath:
-            print(child.title(), spath, "<==", child.lastPath)
         if child.lastPath and spath != child.lastPath:
-            removes.append(child.lastPath)
-            print(child.title(), "has been renamed (", child.lastPath, " → ", spath, ")")
-            print("  → We remove:", child.lastPath)
+            moves.append((child.lastPath, spath))
+            log(child.title(), "has been renamed (", child.lastPath, " → ", spath, ")")
+            log(" → We mark for moving:", child.lastPath)
 
+        # Updates item last's path
         child.lastPath = spath
 
+        # Generating content
         if child.type() == "folder":
             fpath = os.path.join(spath, "folder.txt")
             content = outlineToMMD(child)
@@ -431,16 +485,18 @@ def exportOutlineItem(root):
 
         elif child.type() in ["html"]:
             # FIXME: Convert first
-            pass
+            content = outlineToMMD(child)
+            files.append((spath, content))
 
         else:
-            print("Unknown type")
+            log("Unknown type")
 
-        f, r = exportOutlineItem(child)
+        f, m, r = exportOutlineItem(child)
         files += f
+        moves += m
         removes += r
 
-    return files, removes
+    return files, moves, removes
 
 def outlineItemPath(item):
     # Root item
@@ -472,7 +528,7 @@ def outlineToMMD(item):
     content += item.data(Outline.text.value)
 
     # Saving revisions
-    # TODO
+    # TODO: saving revisions?
     # rev = item.revisions()
     # for r in rev:
     #     revItem = ET.Element("revision")
