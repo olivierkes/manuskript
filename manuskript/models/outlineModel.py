@@ -18,7 +18,7 @@ from manuskript.enums import Outline
 from manuskript.functions import mainWindow, toInt, wordCount
 
 locale.setlocale(locale.LC_ALL, '')
-import time
+import time, os
 
 
 class outlineModel(QAbstractItemModel):
@@ -26,6 +26,9 @@ class outlineModel(QAbstractItemModel):
         QAbstractItemModel.__init__(self, parent)
 
         self.rootItem = outlineItem(self, title="root", ID="0")
+
+        # Stores removed item, in order to remove them on disk when saving, depending on the file format.
+        self.removed = []
 
     def index(self, row, column, parent):
 
@@ -363,7 +366,8 @@ class outlineModel(QAbstractItemModel):
 
         self.beginRemoveRows(parent, row, row + count - 1)
         for i in range(count):
-            parentItem.removeChild(row)
+            item = parentItem.removeChild(row)
+            self.removed.append(item)
 
         self.endRemoveRows()
         return True
@@ -418,7 +422,7 @@ class outlineItem():
         self._model = model
         self.defaultTextType = None
         self.IDs = []  # used by root item to store unique IDs
-        self.lastPath = ""  # used by loadSave version_1 to remember which files the items comes from,
+        self._lastPath = ""  # used by loadSave version_1 to remember which files the items comes from,
                             # in case it is renamed / removed
 
         if title:
@@ -592,7 +596,7 @@ class outlineItem():
             self.parent().updateWordCount(emit)
 
     def row(self):
-        if self.parent:
+        if self.parent():
             return self.parent().childItems.index(self)
 
     def appendChild(self, child):
@@ -634,9 +638,15 @@ class outlineItem():
                     c.emitDataChanged(cols, recursive=True)
 
     def removeChild(self, row):
-        self.childItems.pop(row)
+        """
+        Removes child at position `row` and returns it.
+        @param row: index (int) of the child to remove.
+        @return: the removed outlineItem
+        """
+        r = self.childItems.pop(row)
         # Might be causing segfault when updateWordCount emits dataChanged
         self.updateWordCount(emit=False)
+        return r
 
     def parent(self):
         return self._parent
@@ -748,7 +758,7 @@ class outlineItem():
             item.append(revItem)
 
         # Saving lastPath
-        item.set("lastPath", self.lastPath)
+        item.set("lastPath", self._lastPath)
 
         for i in self.childItems:
             item.append(ET.XML(i.toXML()))
@@ -766,7 +776,7 @@ class outlineItem():
                 self.setData(Outline.__members__[k].value, str(root.attrib[k]))
 
         if "lastPath" in root.attrib:
-            self.lastPath = root.attrib["lastPath"]
+            self._lastPath = root.attrib["lastPath"]
 
         for child in root:
             if child.tag == "outlineItem":

@@ -217,16 +217,16 @@ def saveProject(zip=None):
 
         files.append((cpath, content))
 
-    # List removed characters
-    for c in mdl.removed:
-        # generate file's path
-        cpath = path.format(name="{ID}-{slugName}".format(
-            ID=c.ID(),
-            slugName=slugify(c.name())
-        ))
-
-        # Mark for removal
-        removes.append(cpath)
+    # # List removed characters
+    # for c in mdl.removed:
+    #     # generate file's path
+    #     cpath = path.format(name="{ID}-{slugName}".format(
+    #         ID=c.ID(),
+    #         slugName=slugify(c.name())
+    #     ))
+    #
+    #     # Mark for removal
+    #     removes.append(cpath)
 
     mdl.removed.clear()
 
@@ -235,10 +235,18 @@ def saveProject(zip=None):
     # In an outline folder
 
     mdl = mw.mdlOutline
+
+    # Go through the tree
     f, m, r = exportOutlineItem(mdl.rootItem)
     files += f
     moves += m
     removes += r
+
+    # List removed items
+    # for item in mdl.removed:
+    #     path = outlineItemPath(item)
+    #     log("* Marking for removal:", path)
+
 
     ####################################################################################################################
     # World
@@ -299,6 +307,8 @@ def saveProject(zip=None):
 
     else:
 
+        global cache
+
         # Project path
         dir = os.path.dirname(project)
 
@@ -316,27 +326,23 @@ def saveProject(zip=None):
             newPath = os.path.join(dir, folder, new)
 
             # Move the old file to the new place
-            os.replace(oldPath, newPath)
-            log("* Renaming {} to {}".format(old, new))
+            try:
+                os.replace(oldPath, newPath)
+                log("* Renaming/moving {} to {}".format(old, new))
+            except FileNotFoundError:
+                # Maybe parent folder has been renamed
+                pass
 
             # Update cache
-            if old in cache:
-                cache[new] = cache.pop(old)
+            cache2 = {}
+            for f in cache:
+                f2 = f.replace(old, new)
+                if f2 != f:
+                    log("  * Updating cache:", f, f2)
+                cache2[f2] = cache[f]
+            cache = cache2
 
-        for path in removes:
-            if path not in [p for p,c in files]:
-                filename = os.path.join(dir, folder, path)
-                log("* Removing", path)
-
-                if os.path.isdir(filename):
-                    shutil.rmtree(filename)
-
-                else:  # elif os.path.exists(filename)
-                    os.remove(filename)
-
-                # Clear cache
-                cache.pop(path, 0)
-
+        # Writing files
         for path, content in files:
             filename = os.path.join(dir, folder, path)
             os.makedirs(os.path.dirname(filename), exist_ok=True)
@@ -354,6 +360,31 @@ def saveProject(zip=None):
             else:
                 pass
                 # log("  In cache, and identical. Do nothing.")
+
+        # Removing phantoms
+        for path in [p for p in cache if p not in [p for p,c in files]]:
+            filename = os.path.join(dir, folder, path)
+            log("* Removing", path)
+
+            if os.path.isdir(filename):
+                shutil.rmtree(filename)
+
+            else:  # elif os.path.exists(filename)
+                os.remove(filename)
+
+            # Clear cache
+            cache.pop(path, 0)
+
+        # Removing empty directories
+        for root, dirs, files in os.walk(os.path.join(dir, folder, "outline")):
+            for dir in dirs:
+                newDir = os.path.join(root, dir)
+                try:
+                    os.removedirs(newDir)
+                    log("* Removing empty directory:", newDir)
+                except:
+                    # Directory not empty, we don't remove.
+                    pass
 
 
 def addWorldItem(root, mdl, parent=QModelIndex()):
@@ -457,21 +488,22 @@ def exportOutlineItem(root):
     moves = []
     removes = []
 
-    path = "outline"
-
     k=0
     for child in root.children():
-        spath = os.path.join(path, *outlineItemPath(child))
+        itemPath = outlineItemPath(child)
+        spath = os.path.join(*itemPath)
+
         k += 1
 
         # Has the item been renamed?
-        if child.lastPath and spath != child.lastPath:
-            moves.append((child.lastPath, spath))
-            log(child.title(), "has been renamed (", child.lastPath, " → ", spath, ")")
-            log(" → We mark for moving:", child.lastPath)
+        lp = child._lastPath
+        if lp and spath != lp:
+            moves.append((lp, spath))
+            log(child.title(), "has been renamed (", lp, " → ", spath, ")")
+            log(" → We mark for moving:", lp)
 
         # Updates item last's path
-        child.lastPath = spath
+        child._lastPath = spath # itemPath[-1]
 
         # Generating content
         if child.type() == "folder":
@@ -484,7 +516,7 @@ def exportOutlineItem(root):
             files.append((spath, content))
 
         elif child.type() in ["html"]:
-            # FIXME: Convert first
+            # Save as html. Not the most beautiful, but hey.
             content = outlineToMMD(child)
             files.append((spath, content))
 
@@ -499,14 +531,20 @@ def exportOutlineItem(root):
     return files, moves, removes
 
 def outlineItemPath(item):
+    """
+    Returns the outlineItem file path (like the path where it will be written on the disk). As a list of folder's
+    name. To be joined by os.path.join.
+    @param item: outlineItem
+    @return: list of folder's names
+    """
     # Root item
     if not item.parent():
-        return []
+        return ["outline"]
     else:
         name = "{ID}-{name}{ext}".format(
             ID=item.row(),
             name=slugify(item.title()),
-            ext="" if item.type() == "folder" else ".{}".format(item.type())
+            ext="" if item.type() == "folder" else ".md"  # ".{}".format(item.type())  # To have .txt, .t2t, .html, ...
         )
         return outlineItemPath(item.parent()) + [name]
 
