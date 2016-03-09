@@ -308,7 +308,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # Load settings
         for i in settings.openIndexes:
-            idx = self.mdlOutline.indexFromPath(i)
+            idx = self.mdlOutline.getIndexByID(i)
             self.mainEditor.setCurrentModelIndex(idx, newTab=True)
         self.generateViewMenu()
         self.mainEditor.sldCorkSizeFactor.setValue(settings.corkSizeFactor)
@@ -432,10 +432,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         settings.lastTab = self.tabMain.currentIndex()
 
         if self.currentProject:
-            # Remembering the current items
+            # Remembering the current items (stores outlineItem's ID)
             sel = []
             for i in range(self.mainEditor.tab.count()):
-                sel.append(self.mdlOutline.pathToIndex(self.mainEditor.tab.widget(i).currentIndex))
+                sel.append(self.mdlOutline.ID(self.mainEditor.tab.widget(i).currentIndex))
             settings.openIndexes = sel
 
         # Save data from models
@@ -461,6 +461,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             QSettings().setValue("lastProject", projectName)
 
         saveProject()  # version=0
+        self.saveTimerNoChanges.stop()
 
         # Giving some feedback
         print(self.tr("Project {} saved.").format(self.currentProject))
