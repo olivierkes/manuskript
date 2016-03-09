@@ -557,11 +557,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.tblPersoInfos.setModel(self.mdlCharacter)
 
         self.btnAddPerso.clicked.connect(self.mdlCharacter.addCharacter, AUC)
-        self.btnRmPerso.clicked.connect(self.lstCharacters.removeCharacter, AUC)
-        self.btnPersoColor.clicked.connect(self.lstCharacters.choseCharacterColor, AUC)
-
-        self.btnPersoAddInfo.clicked.connect(self.lstCharacters.addCharacterInfo, AUC)
-        self.btnPersoRmInfo.clicked.connect(self.lstCharacters.removeCharacterInfo, AUC)
+        try:
+            self.btnRmPerso.clicked.connect(self.lstCharacters.removeCharacter, AUC)
+            self.btnPersoColor.clicked.connect(self.lstCharacters.choseCharacterColor, AUC)
+            self.btnPersoAddInfo.clicked.connect(self.lstCharacters.addCharacterInfo, AUC)
+            self.btnPersoRmInfo.clicked.connect(self.lstCharacters.removeCharacterInfo, AUC)
+        except TypeError:
+            # Connection has already been made
+            pass
 
         for w, c in [
             (self.txtPersoName, Character.name.value),
