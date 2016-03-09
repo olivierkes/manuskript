@@ -15,7 +15,7 @@ def saveProject(version=None):
     if version == 0:
         v0.saveProject()
     else:
-        v1.saveProject()
+        v1.saveProject(zip=True)
 
 
 def loadProject(project):
@@ -41,21 +41,12 @@ def loadProject(project):
 
     # Not a zip
     else:
-        # Project path
-        dir = os.path.dirname(project)
-
-        # Folder containing file: name of the project file (without .msk extension)
-        folder = os.path.splitext(os.path.basename(project))[0]
-
-        # Reading VERSION file
-        path = os.path.join(dir, folder, "VERSION")
-        if os.path.exists(path):
-            with open(path, "r") as f:
-                version = int(f.read())
+        with open(project, "r") as f:
+            version = int(f.read())
 
     print("Detected file format version:", version)
 
-    if version == 0:
+    if version == 0 or True:
         v0.loadProject(project)
     else:
         v1.loadProject(project)

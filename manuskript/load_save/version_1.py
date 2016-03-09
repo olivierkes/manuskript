@@ -231,6 +231,10 @@ def saveProject(zip=None):
     moves += m
     removes += r
 
+    # Writes revisions (if asked for)
+    if settings.revisions["keep"]:
+        files.append(("revisions.xml", mdl.saveToXML()))
+
     ####################################################################################################################
     # World
     # Either in an XML file, or in lots of plain texts?
@@ -273,10 +277,10 @@ def saveProject(zip=None):
     # Save to zip
 
     if zip:
-        project = os.path.join(
-            os.path.dirname(project),
-            "_" + os.path.basename(project)
-        )
+        # project = os.path.join(
+        #     os.path.dirname(project),
+        #     "_" + os.path.basename(project)
+        # )
 
         zf = zipfile.ZipFile(project, mode="w")
 
@@ -368,6 +372,10 @@ def saveProject(zip=None):
                 except:
                     # Directory not empty, we don't remove.
                     pass
+
+        # Write the project file's content
+        with open(project, "w") as f:
+            f.write("1")  # Format number
 
 
 def addWorldItem(root, mdl, parent=QModelIndex()):
