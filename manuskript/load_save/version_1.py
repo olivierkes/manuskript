@@ -5,7 +5,7 @@
 # Aims at providing a plain-text way of saving a project
 # (except for some elements), allowing collaborative work
 # versioning and third-partty editing.
-import os
+import os, shutil
 import string
 import zipfile
 
@@ -79,6 +79,8 @@ def saveProject(zip=None):
     if zip is None:
         zip = False
         # Fixme
+
+    print("\n\n", "Saving to:", "zip" if zip else "folder")
 
     # List of files to be written
     files = []
@@ -204,8 +206,9 @@ def saveProject(zip=None):
     # In an outline folder
 
     mdl = mw.mdlOutline
-    for filename, content in exportOutlineItem(mdl.rootItem):
-        files.append((filename, content))
+    f, r = exportOutlineItem(mdl.rootItem)
+    files += f
+    removes += r
 
     # World (mw.mdlWorld)
     # Either in an XML file, or in lots of plain texts?
@@ -259,24 +262,36 @@ def saveProject(zip=None):
     else:
         dir = os.path.dirname(project)
         folder = os.path.splitext(os.path.basename(project))[0]
-        print("Saving to folder", folder)
+        print("\nSaving to folder", folder)
 
         for path in removes:
             if path not in [p for p,c in files]:
                 filename = os.path.join(dir, folder, path)
                 print("* Removing", filename)
-                os.remove(filename)
-                cache.pop(path)
+                if os.path.isdir(filename):
+                    shutil.rmtree(filename)
+                    # FIXME: when deleting a folder, there are still files in "removes".
+
+                    # FIXME: if user copied custom files in the directory, they will be lost.
+                    #        need to find a way to rename instead of remove.
+
+                    # FIXME: items removed have to be removed (not just the renamed)
+                    
+                else:  # elif os.path.exists(filename)
+                    os.remove(filename)
+
+                cache.pop(path, 0)
 
         for path, content in files:
             filename = os.path.join(dir, folder, path)
             os.makedirs(os.path.dirname(filename), exist_ok=True)
-            print("* Saving file", filename)
+            # print("* Saving file", filename)
 
             # TODO: the first time it saves, it will overwrite everything, since it's not yet in cache.
             #       Or we have to cache while loading.
 
             if not path in cache or cache[path] != content:
+                print("* Saving file", filename)
                 print("  Not in cache or changed: we write")
                 mode = "w"+ ("b" if type(content) == bytes else "")
                 with open(filename, mode) as f:
@@ -284,7 +299,8 @@ def saveProject(zip=None):
                 cache[path] = content
 
             else:
-                print("  In cache, and identical. Do nothing.")
+                pass
+                # print("  In cache, and identical. Do nothing.")
 
 
 def addWorldItem(root, mdl, parent=QModelIndex()):
@@ -375,13 +391,17 @@ def addPlotItem(root, mdl, parent=QModelIndex()):
 
 def exportOutlineItem(root):
     """
-    Takes an outline item, and returns an array of (`filename`, `content`) sets, representing the whole tree
-    of items converted to mmd.
+    Takes an outline item, and returns two lists:
+    1. of (`filename`, `content`), representing the whole tree of files to be written, in multimarkdown.
+    2. of `filename`, representing files to be removed.
 
     @param root: OutlineItem
-    @return: (str, str)
+    @return: [(str, str)], [str]
     """
-    r = []
+
+    files = []
+    removes = []
+
     path = "outline"
 
     k=0
@@ -389,25 +409,38 @@ def exportOutlineItem(root):
         spath = os.path.join(path, *outlineItemPath(child))
         k += 1
 
+        # Has the item been renamed?
+        # If so, we mark the old file for removal
+        if "Herod_dies" in spath:
+            print(child.title(), spath, "<==", child.lastPath)
+        if child.lastPath and spath != child.lastPath:
+            removes.append(child.lastPath)
+            print(child.title(), "has been renamed (", child.lastPath, " → ", spath, ")")
+            print("  → We remove:", child.lastPath)
+
+        child.lastPath = spath
+
         if child.type() == "folder":
             fpath = os.path.join(spath, "folder.txt")
             content = outlineToMMD(child)
-            r.append((fpath, content))
+            files.append((fpath, content))
 
         elif child.type() in ["txt", "t2t"]:
             content = outlineToMMD(child)
-            r.append((spath, content))
+            files.append((spath, content))
 
         elif child.type() in ["html"]:
-            # Convert first
+            # FIXME: Convert first
             pass
 
         else:
             print("Unknown type")
 
-        r += exportOutlineItem(child)
+        f, r = exportOutlineItem(child)
+        files += f
+        removes += r
 
-    return r
+    return files, removes
 
 def outlineItemPath(item):
     # Root item

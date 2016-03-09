@@ -400,19 +400,6 @@ class outlineModel(QAbstractItemModel):
         self.rootItem = outlineItem(model=self, xml=ET.tostring(root), ID="0")
         self.rootItem.checkIDs()
 
-    def pathToIndex(self, index, path=""):
-        # FIXME: Use item's ID instead of rows
-        if not index.isValid():
-            return ""
-        if index.parent().isValid():
-            path = self.pathToIndex(index.parent())
-        if path:
-            path = "{},{}".format(path, str(index.row()))
-        else:
-            path = str(index.row())
-
-        return path
-
     def indexFromPath(self, path):
         path = path.split(",")
         item = self.rootItem
@@ -431,6 +418,8 @@ class outlineItem():
         self._model = model
         self.defaultTextType = None
         self.IDs = []  # used by root item to store unique IDs
+        self.lastPath = ""  # used by loadSave version_1 to remember which files the items comes from,
+                            # in case it is renamed / removed
 
         if title:
             self._data[Outline.title] = title
@@ -758,6 +747,9 @@ class outlineItem():
             revItem.set("text", r[1])
             item.append(revItem)
 
+        # Saving lastPath
+        item.set("lastPath", self.lastPath)
+
         for i in self.childItems:
             item.append(ET.XML(i.toXML()))
 
@@ -772,6 +764,9 @@ class outlineItem():
                 # self.setData(Outline.__members__[k].value, unicode(root.attrib[k]), Qt.CheckStateRole)
                 # else:
                 self.setData(Outline.__members__[k].value, str(root.attrib[k]))
+
+        if "lastPath" in root.attrib:
+            self.lastPath = root.attrib["lastPath"]
 
         for child in root:
             if child.tag == "outlineItem":
