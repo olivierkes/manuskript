@@ -5,7 +5,9 @@
 # Aims at providing a plain-text way of saving a project
 # (except for some elements), allowing collaborative work
 # versioning and third-partty editing.
-import os, shutil
+
+import os
+import shutil
 import string
 import zipfile
 
@@ -105,15 +107,15 @@ def saveProject(zip=None):
     path = "infos.txt"
     content = ""
     for name, col in [
-        ("Title", 0),
-        ("Subtitle", 1),
-        ("Serie", 2),
-        ("Volume", 3),
-        ("Genre", 4),
-        ("License", 5),
-        ("Author", 6),
-        ("Email", 7),
-        ]:
+            ("Title", 0),
+            ("Subtitle", 1),
+            ("Serie", 2),
+            ("Volume", 3),
+            ("Genre", 4),
+            ("License", 5),
+            ("Author", 6),
+            ("Email", 7),
+            ]:
         val = mw.mdlFlatData.item(0, col).text().strip()
         if val:
             content += "{name}:{spaces}{value}\n".format(
@@ -130,12 +132,12 @@ def saveProject(zip=None):
     path = "summary.txt"
     content = ""
     for name, col in [
-        ("Situation", 0),
-        ("Sentence", 1),
-        ("Paragraph", 2),
-        ("Page", 3),
-        ("Full", 4),
-        ]:
+            ("Situation", 0),
+            ("Sentence", 1),
+            ("Paragraph", 2),
+            ("Page", 3),
+            ("Full", 4),
+            ]:
         val = mw.mdlFlatData.item(1, col).text().strip()
         if val:
             content += formatMetaData(name, val, 12)
@@ -165,7 +167,7 @@ def saveProject(zip=None):
             if text:
                 content += "{name}{color}\n".format(
                     name=text,
-                    color= "" if color == "" else ":" + " " * (20 - len(text)) + color
+                    color="" if color == "" else ":" + " " * (20 - len(text)) + color
                 )
 
         files.append((path, content))
@@ -246,7 +248,6 @@ def saveProject(zip=None):
     # for item in mdl.removed:
     #     path = outlineItemPath(item)
     #     log("* Marking for removal:", path)
-
 
     ####################################################################################################################
     # World
@@ -350,9 +351,9 @@ def saveProject(zip=None):
             # TODO: the first time it saves, it will overwrite everything, since it's not yet in cache.
             #       Or we have to cache while loading.
 
-            if not path in cache or cache[path] != content:
+            if path not in cache or cache[path] != content:
                 log("* Writing file", path)
-                mode = "w"+ ("b" if type(content) == bytes else "")
+                mode = "w" + ("b" if type(content) == bytes else "")
                 with open(filename, mode) as f:
                     f.write(content)
                 cache[path] = content
@@ -362,7 +363,7 @@ def saveProject(zip=None):
                 # log("  In cache, and identical. Do nothing.")
 
         # Removing phantoms
-        for path in [p for p in cache if p not in [p for p,c in files]]:
+        for path in [p for p in cache if p not in [p for p, c in files]]:
             filename = os.path.join(dir, folder, path)
             log("* Removing", path)
 
@@ -488,10 +489,9 @@ def exportOutlineItem(root):
     moves = []
     removes = []
 
-    k=0
+    k = 0
     for child in root.children():
-        itemPath = outlineItemPath(child)
-        spath = os.path.join(*itemPath)
+        spath = os.path.join(*outlineItemPath(child))
 
         k += 1
 
@@ -503,7 +503,7 @@ def exportOutlineItem(root):
             log(" → We mark for moving:", lp)
 
         # Updates item last's path
-        child._lastPath = spath # itemPath[-1]
+        child._lastPath = spath
 
         # Generating content
         if child.type() == "folder":
@@ -530,6 +530,7 @@ def exportOutlineItem(root):
 
     return files, moves, removes
 
+
 def outlineItemPath(item):
     """
     Returns the outlineItem file path (like the path where it will be written on the disk). As a list of folder's
@@ -548,6 +549,7 @@ def outlineItemPath(item):
         )
         return outlineItemPath(item.parent()) + [name]
 
+
 def outlineToMMD(item):
     content = ""
 
@@ -557,7 +559,8 @@ def outlineToMMD(item):
     force = [Outline.compile]
 
     for attrib in Outline:
-        if attrib in exclude: continue
+        if attrib in exclude:
+            continue
         val = item.data(attrib.value)
         if val or attrib in force:
             content += formatMetaData(attrib.name, str(val), 15)
@@ -575,6 +578,7 @@ def outlineToMMD(item):
     #     item.append(revItem)
 
     return content
+
 
 def loadProject(project):
     """
