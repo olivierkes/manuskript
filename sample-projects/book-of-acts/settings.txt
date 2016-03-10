@@ -1,0 +1,79 @@
+{
+    "autoSave": false,
+    "autoSaveDelay": 5,
+    "autoSaveNoChanges": true,
+    "autoSaveNoChangesDelay": 5,
+    "corkBackground": {
+        "color": "#926239",
+        "image": "/home/olivier/Dropbox/Documents/Travail/Geekeries/Python/PyCharmProjects/manuskript/resources/backgrounds/spacedreams.jpg"
+    },
+    "corkSizeFactor": 84,
+    "defaultTextType": "txt",
+    "dict": "en_US",
+    "folderView": "text",
+    "frequencyAnalyzer": {
+        "phraseMax": 5,
+        "phraseMin": 2,
+        "wordExclude": "a, and, or",
+        "wordMin": 1
+    },
+    "fullScreenTheme": "gentleblues",
+    "lastTab": 4,
+    "openIndexes": [
+        null
+    ],
+    "outlineViewColumns": [
+        0,
+        5,
+        8,
+        9,
+        11,
+        12,
+        13,
+        7
+    ],
+    "revisions": {
+        "keep": true,
+        "rules": {
+            "2592000": 86400,
+            "3600": 600,
+            "600": 60,
+            "86400": 3600
+        },
+        "smartremove": true
+    },
+    "saveOnQuit": true,
+    "spellcheck": false,
+    "textEditor": {
+        "background": "#fff",
+        "font": "Oxygen-Sans,10,-1,5,50,0,0,0,0,0",
+        "fontColor": "#000",
+        "indent": true,
+        "lineSpacing": 100,
+        "misspelled": "#F00",
+        "spacingAbove": 5,
+        "spacingBelow": 5,
+        "tabWidth": 20
+    },
+    "viewSettings": {
+        "Cork": {
+            "Background": "Nothing",
+            "Border": "Nothing",
+            "Corner": "Label",
+            "Icon": "Nothing",
+            "Text": "Nothing"
+        },
+        "Outline": {
+            "Background": "Nothing",
+            "Icon": "Nothing",
+            "Text": "Compile"
+        },
+        "Tree": {
+            "Background": "Nothing",
+            "Icon": "Nothing",
+            "InfoFolder": "Summary",
+            "InfoText": "Nothing",
+            "Text": "Compile"
+        }
+    }
+}

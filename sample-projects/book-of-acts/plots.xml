@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<root>
+  <plot name="The good news spreads from Jerusalem to Rome" ID="0" importance="2"/>
+  <plot name="Peter needs to broaden his understanding of the Gospel" ID="1" importance="1" characters="0"/>
+  <plot name="Paul and Barnabas fight" ID="2" importance="0" characters="1,5"/>
+</root>

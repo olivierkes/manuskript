@@ -1,0 +1,5 @@
+Idea:                #ffff00
+Note:                #00ff00
+Chapter:             #0000ff
+Scene:               #ff0000
+Research:            #00ffff

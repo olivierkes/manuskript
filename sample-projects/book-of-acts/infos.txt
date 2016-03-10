@@ -1,0 +1,3 @@
+Title:          The Acts of the Apostles
+License:        Public Domain (World English Bible)
+Author:         Luke
