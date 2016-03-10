@@ -77,9 +77,7 @@ class outlineModel(QAbstractItemModel):
         in columns ``columns`` (being a list of int)."""
         return self.rootItem.findItemsContaining(text, columns, mainWindow(), caseSensitive)
 
-    def getIndexByID(self, ID):
-        "Returns the index of item whose ID is ``ID``. If none, returns QModelIndex()."
-
+    def getItemByID(self, ID):
         def search(item):
             if item.ID() == ID:
                 return item
@@ -89,6 +87,11 @@ class outlineModel(QAbstractItemModel):
                     return r
 
         item = search(self.rootItem)
+        return item
+
+    def getIndexByID(self, ID):
+        "Returns the index of item whose ID is ``ID``. If none, returns QModelIndex()."
+        item = self.getItemByID(ID)
         if not item:
             return QModelIndex()
         else:

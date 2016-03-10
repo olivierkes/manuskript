@@ -23,6 +23,7 @@ from lxml import etree as ET
 
 from manuskript.load_save.version_0 import loadFilesFromZip
 from manuskript.models.characterModel import CharacterInfo
+from manuskript.models.outlineModel import outlineItem
 
 try:
     import zlib  # Used with zipfile for compression
@@ -573,15 +574,6 @@ def outlineToMMD(item):
     content += "\n\n"
     content += item.data(Outline.text.value)
 
-    # Saving revisions
-    # TODO: saving revisions?
-    # rev = item.revisions()
-    # for r in rev:
-    #     revItem = ET.Element("revision")
-    #     revItem.set("timestamp", str(r[0]))
-    #     revItem.set("text", r[1])
-    #     item.append(revItem)
-
     return content
 
 ########################################################################################################################
@@ -595,9 +587,6 @@ def loadProject(project, zip=None):
     @param zip: whether the project is a zipped or not.
     @return: an array of errors, empty if None.
     """
-
-    # FIXME: Don't forget to cache everything that is loaded
-    # In order to save only what has changed.
 
     mw = mainWindow()
     errors = []
@@ -631,6 +620,12 @@ def loadProject(project, zip=None):
                 mode = "r" + ("b" if f[-4:] in [".xml", "opml"] else "")
                 with open(os.path.join(dirpath, f), mode) as fo:
                     files[os.path.join(p, f)] = fo.read()
+
+    # Sort files by keys
+    files = OrderedDict(sorted(files.items()))
+
+    # Saves to cache
+    cache = files
 
     ####################################################################################################################
     # Settings
@@ -792,21 +787,138 @@ def loadProject(project, zip=None):
 
         log("* Adds {} ({})".format(c.name(), c.ID()))
 
+    ####################################################################################################################
+    # Texts
+    # We read outline form the outline folder. If revisions are saved, then there's also a revisions.xml which contains
+    # everything, but the outline folder takes precedence (in cases it's been edited outside of manuksript.
 
-    # if "perso.xml" in files:
-    #     loadStandardItemModelXMLForCharacters(mw.mdlCharacter, files["perso.xml"])
-    # else:
-    #     errors.append("perso.xml")
-    #
-    #
-    # if "outline.xml" in files:
-    #     mw.mdlOutline.loadFromXML(files["outline.xml"], fromString=True)
-    # else:
-    #     errors.append("outline.xml")
-    #
-    # return errors
+    mdl = mw.mdlOutline
+    log("\nReading outline:")
+    paths = [f for f in files if "outline" in f]
+    outline = OrderedDict()
+
+    # We create a structure of imbricated OrderedDict to store the whole tree.
+    for f in paths:
+        split = f.split(os.path.sep)[1:]
+        # log("* ", split)
+
+        last = ""
+        parent = outline
+        for i in split:
+            if last:
+                parent = parent[last]
+            last = i
+
+            if not i in parent:
+                # If not last item, then it is folder
+                if i != split[-1]:
+                    parent[i] = OrderedDict()
+
+                # If file, we store it
+                else:
+                    parent[i] = files[f]
+
+    # We now just have to recursively add items.
+    addTextItems(mdl, outline)
+
+    # Adds revisions
+    if "revisions.xml" in files:
+        root = ET.fromstring(files["revisions.xml"])
+        appendRevisions(mdl, root)
+
+    # Check IDS
+    mdl.rootItem.checkIDs()
+
+    return errors
+
+
+def addTextItems(mdl, odict, parent=None):
+    """
+    Adds a text / outline items from an OrderedDict.
+    @param mdl: model to add to
+    @param odict: OrderedDict
+    @return: nothing
+    """
+    if parent is None:
+        parent = mdl.rootItem
+
+    for k in odict:
+
+        # In case k is a folder:
+        if type(odict[k]) == OrderedDict and "folder.txt" in odict[k]:
+
+            # Adds folder
+            log("{}* Adds {} to {} (folder)".format("  " * parent.level(), k, parent.title()))
+            item = outlineFromMMD(odict[k]["folder.txt"], parent=parent)
+
+            # Read content
+            addTextItems(mdl, odict[k], parent=item)
+
+        # In case it is not
+        elif k != "folder.txt":
+            log("{}* Adds {} to {} (file)".format("  " * parent.level(), k, parent.title()))
+            item = outlineFromMMD(odict[k], parent=parent)
+
+
+def outlineFromMMD(text, parent):
+    """
+    Creates outlineItem from multimarkdown file.
+    @param text: content of the file
+    @param parent: appends item to parent (outlineItem)
+    @return: outlineItem
+    """
+
+    item = outlineItem(parent=parent)
+    md, body = parseMMDFile(text, asDict=True)
+
+    # Store metadata
+    for k in md:
+        if k in Outline.__members__:
+            item.setData(Outline.__members__[k].value, str(md[k]))
+
+    # Store body
+    item.setData(Outline.text.value, str(body))
+
+    # FIXME: add lastpath
+
+    return item
+
+
+def appendRevisions(mdl, root):
+    """
+    Parse etree item to find outlineItem's with revisions, and adds them to model `mdl`.
+    @param mdl: outlineModel
+    @param root: etree
+    @return: nothing
+    """
+    for child in root:
+        # Recursively go through items
+        if child.tag == "outlineItem":
+            appendRevisions(mdl, child)
+
+        # Revision found.
+        elif child.tag == "revision":
+            # Get root's ID
+            ID = root.attrib["ID"]
+            if not ID:
+                log("* Serious problem: no ID!")
+                return
+
+            # Find outline item in model
+            item = mdl.getItemByID(ID)
+
+            # Store revision
+            log("* Appends revision ({}) to {}".format(child.attrib["timestamp"], item.title()))
+            item.appendRevision(child.attrib["timestamp"], child.attrib["text"])
+
 
 def getOutlineItem(item, enum):
+    """
+    Reads outline items from an opml file. Returns a row of QStandardItem, easy to add to a QStandardItemModel.
+    @param item: etree item
+    @param enum: enum to read keys from
+    @return: [QStandardItem]
+    """
     row = getStandardItemRowFromXMLEnum(item, enum)
     log("* Add worldItem:", row[0].text())
     for child in item:
@@ -814,6 +926,7 @@ def getOutlineItem(item, enum):
         row[0].appendRow(sub)
 
     return row
+
 
 def getStandardItemRowFromXMLEnum(item, enum):
     """
@@ -880,7 +993,7 @@ def parseMMDFile(text, asDict=False):
                     mdd[descr] = val
 
         else:
-            body.append[s]
+            body.append(s)
 
     # We remove the second empty line (since we save with two empty lines)
     if body and body[0] == "":
