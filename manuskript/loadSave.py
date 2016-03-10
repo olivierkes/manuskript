@@ -12,10 +12,15 @@ import manuskript.load_save.version_1 as v1
 
 def saveProject(version=None):
 
+    # While debugging, we don't save the project
+    return
+
     if version == 0:
         v0.saveProject()
     else:
-        v1.saveProject(zip=True)
+        v1.saveProject()
+
+    # FIXME: add settings to chose between saving as zip or not.
 
 
 def loadProject(project):
@@ -44,9 +49,10 @@ def loadProject(project):
         with open(project, "r") as f:
             version = int(f.read())
 
+    print("Loading:", project)
     print("Detected file format version:", version)
 
-    if version == 0 or True:
+    if version == 0:
         v0.loadProject(project)
     else:
-        v1.loadProject(project)
+        v1.loadProject(project, zip=isZip)

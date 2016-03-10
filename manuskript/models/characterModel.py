@@ -156,12 +156,13 @@ class characterModel(QAbstractItemModel):
     def addCharacter(self):
         """
         Creates a new character
-        @return: nothing
+        @return: the character
         """
         c = Character(model=self, name=self.tr("New character"))
         self.beginInsertRows(QModelIndex(), len(self.characters), len(self.characters))
         self.characters.append(c)
         self.endInsertRows()
+        return c
 
     def removeCharacter(self, ID):
         """

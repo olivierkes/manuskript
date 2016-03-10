@@ -7,18 +7,22 @@
 # versioning and third-partty editing.
 
 import os
+import re
 import shutil
 import string
 import zipfile
+from collections import OrderedDict
 
 from PyQt5.QtCore import Qt, QModelIndex
-from PyQt5.QtGui import QColor
+from PyQt5.QtGui import QColor, QStandardItem
 
 from manuskript import settings
 from manuskript.enums import Character, World, Plot, PlotStep, Outline
-from manuskript.functions import mainWindow, iconColor
+from manuskript.functions import mainWindow, iconColor, iconFromColorString
 from lxml import etree as ET
 
+from manuskript.load_save.version_0 import loadFilesFromZip
+from manuskript.models.characterModel import CharacterInfo
 
 try:
     import zlib  # Used with zipfile for compression
@@ -29,6 +33,31 @@ except:
 
 cache = {}
 
+
+characterMap = OrderedDict([
+    (Character.name, "Name"),
+    (Character.ID,   "ID"),
+    (Character.importance, "Importance"),
+    (Character.motivation, "Motivation"),
+    (Character.goal, "Goal"),
+    (Character.conflict, "Conflict"),
+    (Character.summarySentence, "Phrase Summary"),
+    (Character.summaryPara, "Paragraph Summary"),
+    (Character.summaryFull, "Full Summary"),
+    (Character.notes, "Notes"),
+])
+# characterMap = {
+#     Character.name: "Name",
+#     Character.ID:   "ID",
+#     Character.importance: "Importance",
+#     Character.motivation: "Motivation",
+#     Character.goal: "Goal",
+#     Character.conflict: "Conflict",
+#     Character.summarySentence: "Phrase Summary",
+#     Character.summaryPara: "Paragraph Summary",
+#     Character.summaryFull: "Full Summary",
+#     Character.notes: "Notes",
+# }
 
 def formatMetaData(name, value, tabLength=10):
 
@@ -177,18 +206,6 @@ def saveProject(zip=None):
     # In a character folder
 
     path = os.path.join("characters", "{name}.txt")
-    _map = [
-        (Character.name, "Name"),
-        (Character.ID,   "ID"),
-        (Character.importance, "Importance"),
-        (Character.motivation, "Motivation"),
-        (Character.goal, "Goal"),
-        (Character.conflict, "Conflict"),
-        (Character.summarySentence, "Phrase Summary"),
-        (Character.summaryPara, "Paragraph Summary"),
-        (Character.summaryFull, "Full Summary"),
-        (Character.notes, "Notes"),
-    ]
     mdl = mw.mdlCharacter
 
     # Review characters
@@ -196,11 +213,15 @@ def saveProject(zip=None):
 
         # Generates file's content
         content = ""
-        for m, name in _map:
+        for m in characterMap:
             val = mdl.data(c.index(m.value)).strip()
             if val:
-                content += formatMetaData(name, val, 20)
+                content += formatMetaData(characterMap[m], val, 20)
 
+        # Character's color:
+        content += formatMetaData("Color", c.color().name(QColor.HexRgb), 20)
+
+        # Character's infos
         for info in c.infos:
             content += formatMetaData(info.description, info.value, 20)
 
@@ -334,19 +355,13 @@ def saveProject(zip=None):
             filename = os.path.join(dir, folder, path)
             os.makedirs(os.path.dirname(filename), exist_ok=True)
 
-            # TODO: the first time it saves, it will overwrite everything, since it's not yet in cache.
-            #       Or we have to cache while loading.
-
+            # Check if content is in cache, and write if necessary
             if path not in cache or cache[path] != content:
                 log("* Writing file", path)
                 mode = "w" + ("b" if type(content) == bytes else "")
                 with open(filename, mode) as f:
                     f.write(content)
                 cache[path] = content
-
-            else:
-                pass
-                # log("  In cache, and identical. Do nothing.")
 
         # Removing phantoms
         for path in [p for p in cache if p not in [p for p, c in files]]:
@@ -569,15 +584,313 @@ def outlineToMMD(item):
 
     return content
 
+########################################################################################################################
+# LOAD
+########################################################################################################################
 
-def loadProject(project):
+def loadProject(project, zip=None):
     """
     Loads a project.
     @param project: the filename of the project to open.
+    @param zip: whether the project is a zipped or not.
     @return: an array of errors, empty if None.
     """
 
-    # Don't forget to cache everything that is loaded
+    # FIXME: Don't forget to cache everything that is loaded
     # In order to save only what has changed.
 
-    pass
+    mw = mainWindow()
+    errors = []
+
+    ####################################################################################################################
+    # Read and store everything in a dict
+
+    log("\nLoading {} ({})".format(project, "ZIP" if zip else "not zip"))
+    if zip:
+        files = loadFilesFromZip(project)
+
+        # Decode files
+        for f in files:
+            if f[-4:] not in [".xml", "opml"]:
+                files[f] = files[f].decode("utf-8")
+
+    else:
+        # Project path
+        dir = os.path.dirname(project)
+
+        # Folder containing file: name of the project file (without .msk extension)
+        folder = os.path.splitext(os.path.basename(project))[0]
+
+        # The full path towards the folder containing files
+        path = os.path.join(dir, folder, "")
+
+        files = {}
+        for dirpath, dirnames, filenames in os.walk(path):
+            p = dirpath.replace(path, "")
+            for f in filenames:
+                mode = "r" + ("b" if f[-4:] in [".xml", "opml"] else "")
+                with open(os.path.join(dirpath, f), mode) as fo:
+                    files[os.path.join(p, f)] = fo.read()
+
+    ####################################################################################################################
+    # Settings
+
+    if "settings.txt" in files:
+        settings.load(files["settings.txt"], fromString=True, protocol=0)
+    else:
+        errors.append("settings.txt")
+
+    ####################################################################################################################
+    # Labels
+
+    mdl = mw.mdlLabels
+    mdl.appendRow(QStandardItem(""))  # Empty = No labels
+    if "labels.txt" in files:
+        log("\nReading labels:")
+        for s in files["labels.txt"].split("\n"):
+            if not s:
+                continue
+
+            m = re.search(r"^(.*?):\s*(.*)$", s)
+            txt = m.group(1)
+            col = m.group(2)
+            log("* Add status: {} ({})".format(txt, col))
+            icon = iconFromColorString(col)
+            mdl.appendRow(QStandardItem(icon, txt))
+
+    else:
+        errors.append("labels.txt")
+
+    ####################################################################################################################
+    # Status
+
+    mdl = mw.mdlStatus
+    mdl.appendRow(QStandardItem(""))  # Empty = No status
+    if "status.txt" in files:
+        log("\nReading Status:")
+        for s in files["status.txt"].split("\n"):
+            if not s:
+                continue
+            log("* Add status:", s)
+            mdl.appendRow(QStandardItem(s))
+    else:
+        errors.append("status.txt")
+
+    ####################################################################################################################
+    # Infos
+
+    mdl = mw.mdlFlatData
+    if "infos.txt" in files:
+        md, body = parseMMDFile(files["infos.txt"], asDict=True)
+
+        row = []
+        for name in ["Title", "Subtitle", "Serie", "Volume", "Genre", "License", "Author", "Email"]:
+            row.append(QStandardItem(md.get(name, "")))
+
+        mdl.appendRow(row)
+
+    else:
+        errors.append("infos.txt")
+
+    ####################################################################################################################
+    # Summary
+
+    mdl = mw.mdlFlatData
+    if "summary.txt" in files:
+        md, body = parseMMDFile(files["summary.txt"], asDict=True)
+
+        row = []
+        for name in ["Situation", "Sentence", "Paragraph", "Page", "Full"]:
+            row.append(QStandardItem(md.get(name, "")))
+
+        mdl.appendRow(row)
+
+    else:
+        errors.append("summary.txt")
+
+    ####################################################################################################################
+    # Plots
+
+    mdl = mw.mdlPlots
+    if "plots.xml" in files:
+        log("\nReading plots:")
+        # xml = bytearray(files["plots.xml"], "utf-8")
+        root = ET.fromstring(files["plots.xml"])
+
+        for plot in root:
+            # Create row
+            row = getStandardItemRowFromXMLEnum(plot, Plot)
+
+            # Log
+            log("* Add plot: ", row[0].text())
+
+            # Characters
+            if row[Plot.characters.value].text():
+                IDs = row[Plot.characters.value].text().split(",")
+                item = QStandardItem()
+                for ID in IDs:
+                    item.appendRow(QStandardItem(ID.strip()))
+                row[Plot.characters.value] = item
+
+            # Subplots
+            for step in plot:
+                row[Plot.steps.value].appendRow(
+                    getStandardItemRowFromXMLEnum(step, PlotStep)
+                )
+
+            # Add row to the model
+            mdl.appendRow(row)
+
+    else:
+        errors.append("plots.xml")
+
+    ####################################################################################################################
+    # World
+
+    mdl = mw.mdlWorld
+    if "world.opml" in files:
+        log("\nReading World:")
+        # xml = bytearray(files["plots.xml"], "utf-8")
+        root = ET.fromstring(files["world.opml"])
+        body = root.find("body")
+
+        for outline in body:
+            row = getOutlineItem(outline, World)
+            mdl.appendRow(row)
+
+    else:
+        errors.append("world.opml")
+
+    ####################################################################################################################
+    # Characters
+
+    mdl = mw.mdlCharacter
+    log("\nReading Characters:")
+    for f in [f for f in files if "characters" in f]:
+        md, body = parseMMDFile(files[f])
+        c = mdl.addCharacter()
+
+        color = False
+        for desc, val in md:
+
+            # Base infos
+            if desc in characterMap.values():
+                key = [key for key, value in characterMap.items() if value == desc][0]
+                index = c.index(key.value)
+                mdl.setData(index, val)
+
+            # Character color
+            elif desc == "Color" and not color:
+                c.setColor(QColor(val))
+                # We remember the first time we found "Color": it is the icon color.
+                # If "Color" comes a second time, it is a Character's info.
+                color = True
+
+            # Character's infos
+            else:
+                c.infos.append(CharacterInfo(c, desc, val))
+
+        log("* Adds {} ({})".format(c.name(), c.ID()))
+
+
+    # if "perso.xml" in files:
+    #     loadStandardItemModelXMLForCharacters(mw.mdlCharacter, files["perso.xml"])
+    # else:
+    #     errors.append("perso.xml")
+    #
+    #
+    # if "outline.xml" in files:
+    #     mw.mdlOutline.loadFromXML(files["outline.xml"], fromString=True)
+    # else:
+    #     errors.append("outline.xml")
+    #
+    # return errors
+
+def getOutlineItem(item, enum):
+    row = getStandardItemRowFromXMLEnum(item, enum)
+    log("* Add worldItem:", row[0].text())
+    for child in item:
+        sub = getOutlineItem(child, enum)
+        row[0].appendRow(sub)
+
+    return row
+
+def getStandardItemRowFromXMLEnum(item, enum):
+    """
+    Reads and etree item and creates a row of QStandardItems by cross-referencing an enum.
+    Returns a list of QStandardItems that can be added to a QStandardItemModel by appendRow.
+    @param item: the etree item
+    @param enum: the enum
+    @return: list of QStandardItems
+    """
+    row = []
+    for i in range(len(enum)):
+        row.append(QStandardItem(""))
+
+    for name in item.attrib:
+        if name in enum.__members__:
+            row[enum[name].value] = QStandardItem(item.attrib[name])
+    return row
+
+def parseMMDFile(text, asDict=False):
+    """
+    Takes the content of a MultiMarkDown file (str) and returns:
+    1. A list containing metadatas: (description, value) if asDict is False.
+       If asDict is True, returns metadatas as an OrderedDict. Be aware that if multiple metadatas have the same description
+       (which is stupid, but hey), they will be lost except the last one.
+    2. The body of the file
+    @param text: the content of the file
+    @return: (list, str) or (OrderedDict, str)
+    """
+    md = []
+    mdd = OrderedDict()
+    body = []
+    descr = ""
+    val = ""
+    inBody = False
+    for s in text.split("\n"):
+        if not inBody:
+            m = re.match(r"^(.*?):\s*(.*)$", s)
+            if m:
+                # Commit last metadata
+                if descr:
+                    if descr == "None":
+                        descr = ""
+                    md.append((descr, val))
+                    mdd[descr] = val
+                descr = ""
+                val = ""
+
+                # Store new values
+                descr = m.group(1)
+                val = m.group(2)
+
+            elif s[:4] == "    ":
+                val += "\n" + s.strip()
+
+            elif s == "":
+                # End of metadatas
+                inBody = True
+
+                # Commit last metadata
+                if descr:
+                    if descr == "None":
+                        descr = ""
+                    md.append((descr, val))
+                    mdd[descr] = val
+
+        else:
+            body.append[s]
+
+    # We remove the second empty line (since we save with two empty lines)
+    if body and body[0] == "":
+        body = body[1:]
+
+    body = "\n".join(body)
+
+    if not asDict:
+        return md, body
+    else:
+        return mdd, body
+
+
