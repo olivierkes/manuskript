@@ -49,7 +49,7 @@ characterMap = OrderedDict([
 ])
 
 # If true, logs infos while saving and loading.
-LOG = False
+LOG = True
 
 def formatMetaData(name, value, tabLength=10):
 
@@ -321,7 +321,8 @@ def saveProject(zip=None):
 
         # If cache is empty (meaning we haven't loaded from disk), we wipe folder, just to be sure.
         if not cache:
-            shutil.rmtree(os.path.join(dir, folder))
+            if os.path.exists(os.path.join(dir, folder)):
+                shutil.rmtree(os.path.join(dir, folder))
 
         # Moving files that have been renamed
         for old, new in moves:
@@ -897,8 +898,6 @@ def outlineFromMMD(text, parent):
     # Store body
     item.setData(Outline.text.value, str(body))
 
-    # FIXME: add lastpath
-
     return item
 
 
@@ -920,10 +919,13 @@ def appendRevisions(mdl, root):
             ID = root.attrib["ID"]
             if not ID:
                 log("* Serious problem: no ID!")
-                return
+                continue
 
             # Find outline item in model
             item = mdl.getItemByID(ID)
+            if not item:
+                log("* Error: no item whose ID is", ID)
+                continue
 
             # Store revision
             log("* Appends revision ({}) to {}".format(child.attrib["timestamp"], item.title()))
@@ -981,7 +983,7 @@ def parseMMDFile(text, asDict=False):
     inBody = False
     for s in text.split("\n"):
         if not inBody:
-            m = re.match(r"^(.*?):\s*(.*)$", s)
+            m = re.match(r"^([^\s].*?):\s*(.*)$", s)
             if m:
                 # Commit last metadata
                 if descr:
