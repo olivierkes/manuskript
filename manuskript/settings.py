@@ -131,7 +131,7 @@ def save(filename=None, protocol=None):
            return pickle.dumps(allSettings)
 
 
-def load(string, fromString=False):
+def load(string, fromString=False, protocol=None):
     """Load settings from 'string'. 'string' is the filename of the pickle dump.
     If fromString=True, string is the data of the pickle dumps."""
     global allSettings
@@ -145,8 +145,11 @@ def load(string, fromString=False):
             print("{} doesn't exist, cannot load settings.".format(string))
             return
     else:
-        allSettings = pickle.loads(string)
-    
+        if protocol == 0:
+            allSettings = json.loads(string)
+        else:
+            allSettings = pickle.loads(string)
+
     #pp=pprint.PrettyPrinter(indent=4, compact=False)
     #print("Loading:")
     #pp.pprint(allSettings)
@@ -222,6 +225,17 @@ def load(string, fromString=False):
     if "revisions" in allSettings:
         global revisions
         revisions = allSettings["revisions"]
+
+        # With JSON we had to convert int keys to str, and None to "null", so we roll back.
+        r = {}
+        for i in revisions["rules"]:
+            if i == "null":
+                r[None] = revisions["rules"]["null"]
+                continue
+            elif i == None:
+                continue
+            r[int(i)] = revisions["rules"][i]
+        revisions["rules"] = r
 
     if "frequencyAnalyzer" in allSettings:
         global frequencyAnalyzer
