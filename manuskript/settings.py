@@ -231,10 +231,13 @@ def load(string, fromString=False, protocol=None):
         for i in revisions["rules"]:
             if i == "null":
                 r[None] = revisions["rules"]["null"]
-                continue
+
             elif i == None:
-                continue
-            r[int(i)] = revisions["rules"][i]
+                r[None] = revisions["rules"][None]
+
+            else:
+                r[int(i)] = revisions["rules"][i]
+
         revisions["rules"] = r
 
     if "frequencyAnalyzer" in allSettings:

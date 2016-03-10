@@ -49,7 +49,7 @@ characterMap = OrderedDict([
 ])
 
 # If true, logs infos while saving and loading.
-LOG = True
+LOG = False
 
 def formatMetaData(name, value, tabLength=10):
 
