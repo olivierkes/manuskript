@@ -13,7 +13,7 @@ import manuskript.load_save.version_1 as v1
 def saveProject(version=None):
 
     # While debugging, we don't save the project
-    return
+    # return
 
     if version == 0:
         v0.saveProject()

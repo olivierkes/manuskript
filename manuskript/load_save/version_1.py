@@ -47,18 +47,9 @@ characterMap = OrderedDict([
     (Character.summaryFull, "Full Summary"),
     (Character.notes, "Notes"),
 ])
-# characterMap = {
-#     Character.name: "Name",
-#     Character.ID:   "ID",
-#     Character.importance: "Importance",
-#     Character.motivation: "Motivation",
-#     Character.goal: "Goal",
-#     Character.conflict: "Conflict",
-#     Character.summarySentence: "Phrase Summary",
-#     Character.summaryPara: "Paragraph Summary",
-#     Character.summaryFull: "Full Summary",
-#     Character.notes: "Notes",
-# }
+
+# If true, logs infos while saving and loading.
+LOG = False
 
 def formatMetaData(name, value, tabLength=10):
 
@@ -99,7 +90,8 @@ def slugify(name):
 
 
 def log(*args):
-    print(" ".join(str(a) for a in args))
+    if LOG:
+        print(" ".join(str(a) for a in args))
 
 
 def saveProject(zip=None):
@@ -327,6 +319,10 @@ def saveProject(zip=None):
         # Debug
         log("\nSaving to folder", folder)
 
+        # If cache is empty (meaning we haven't loaded from disk), we wipe folder, just to be sure.
+        if not cache:
+            shutil.rmtree(os.path.join(dir, folder))
+
         # Moving files that have been renamed
         for old, new in moves:
 
@@ -358,7 +354,7 @@ def saveProject(zip=None):
 
             # Check if content is in cache, and write if necessary
             if path not in cache or cache[path] != content:
-                log("* Writing file", path)
+                log("* Writing file {} ({})".format(path, "not in cache" if path not in cache else "different"))
                 mode = "w" + ("b" if type(content) == bytes else "")
                 with open(filename, mode) as f:
                     f.write(content)
@@ -371,6 +367,10 @@ def saveProject(zip=None):
 
             if os.path.isdir(filename):
                 shutil.rmtree(filename)
+
+            elif path == "VERSION":
+                # If loading from zip, but saving to path, file VERSION is not needed.
+                continue
 
             else:  # elif os.path.exists(filename)
                 os.remove(filename)
@@ -442,12 +442,12 @@ def addPlotItem(root, mdl, parent=QModelIndex()):
 
             index = mdl.index(x, y, parent)
             val = mdl.data(index)
-
-            if not val:
-                continue
+            #
+            # if not val:
+            #     continue
 
             for w in Plot:
-                if y == w.value:
+                if y == w.value and val:
                     outline.attrib[w.name] = val
 
             # List characters as attrib
@@ -459,7 +459,8 @@ def addPlotItem(root, mdl, parent=QModelIndex()):
                             cIndex = mdl.index(cX, cY, index)
                             characters.append(mdl.data(cIndex))
                     outline.attrib[Plot.characters.name] = ",".join(characters)
-                else:
+
+                elif Plot.characters.name in outline.attrib:
                     outline.attrib.pop(Plot.characters.name)
 
             # List resolution steps as sub items
@@ -475,7 +476,8 @@ def addPlotItem(root, mdl, parent=QModelIndex()):
                                 if cY == w.value:
                                     step.attrib[w.name] = val
 
-                outline.attrib.pop(Plot.steps.name)
+                elif Plot.steps.name in outline.attrib:
+                    outline.attrib.pop(Plot.steps.name)
 
     return root
 
@@ -621,11 +623,12 @@ def loadProject(project, zip=None):
                 with open(os.path.join(dirpath, f), mode) as fo:
                     files[os.path.join(p, f)] = fo.read()
 
+        # Saves to cache (only if we loaded from disk and not zip)
+        global cache
+        cache = files
+
     # Sort files by keys
     files = OrderedDict(sorted(files.items()))
-
-    # Saves to cache
-    cache = files
 
     ####################################################################################################################
     # Settings
@@ -764,6 +767,7 @@ def loadProject(project, zip=None):
     for f in [f for f in files if "characters" in f]:
         md, body = parseMMDFile(files[f])
         c = mdl.addCharacter()
+        c.lastPath = f
 
         color = False
         for desc, val in md:
@@ -804,19 +808,26 @@ def loadProject(project, zip=None):
 
         last = ""
         parent = outline
+        parentLastPath = "outline"
         for i in split:
             if last:
                 parent = parent[last]
+                parentLastPath = os.path.join(parentLastPath, last)
             last = i
 
             if not i in parent:
-                # If not last item, then it is folder
+                # If not last item, then it is a folder
                 if i != split[-1]:
                     parent[i] = OrderedDict()
 
                 # If file, we store it
                 else:
                     parent[i] = files[f]
+
+                # We store f to add it later as lastPath
+                parent[i + ":lastPath"] = os.path.join(parentLastPath, i)
+
+
 
     # We now just have to recursively add items.
     addTextItems(mdl, outline)
@@ -850,14 +861,19 @@ def addTextItems(mdl, odict, parent=None):
             # Adds folder
             log("{}* Adds {} to {} (folder)".format("  " * parent.level(), k, parent.title()))
             item = outlineFromMMD(odict[k]["folder.txt"], parent=parent)
+            item._lastPath = odict[k + ":lastPath"]
 
             # Read content
             addTextItems(mdl, odict[k], parent=item)
 
-        # In case it is not
-        elif k != "folder.txt":
+        # k is not a folder
+        elif type(odict[k]) == str and k != "folder.txt" and not ":lastPath" in k:
             log("{}* Adds {} to {} (file)".format("  " * parent.level(), k, parent.title()))
             item = outlineFromMMD(odict[k], parent=parent)
+            item._lastPath = odict[k + ":lastPath"]
+
+        elif not ":lastPath" in k and k != "folder.txt":
+            print("* Strange things in file {}".format(k))
 
 
 def outlineFromMMD(text, parent):
