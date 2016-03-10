@@ -83,12 +83,12 @@ class outlineBasics(QAbstractItemView):
             self.menuPOV.addMenu(m)
 
         mpr = QSignalMapper(self.menuPOV)
-        for i in range(mw.mdlPersos.rowCount()):
-            a = QAction(mw.mdlPersos.icon(i), mw.mdlPersos.name(i), self.menuPOV)
+        for i in range(mw.mdlCharacter.rowCount()):
+            a = QAction(mw.mdlCharacter.icon(i), mw.mdlCharacter.name(i), self.menuPOV)
             a.triggered.connect(mpr.map)
-            mpr.setMapping(a, int(mw.mdlPersos.ID(i)))
+            mpr.setMapping(a, int(mw.mdlCharacter.ID(i)))
 
-            imp = toInt(mw.mdlPersos.importance(i))
+            imp = toInt(mw.mdlCharacter.importance(i))
 
             menus[2 - imp].addAction(a)
 

@@ -4,7 +4,7 @@ from PyQt5.QtCore import pyqtSignal, Qt, QTimer, QRect
 from PyQt5.QtGui import QBrush, QCursor, QPalette, QFontMetrics
 from PyQt5.QtWidgets import QWidget, QListWidgetItem, QToolTip, QStyledItemDelegate, QStyle
 
-from manuskript.enums import Perso
+from manuskript.enums import Character
 from manuskript.enums import Plot
 from manuskript.functions import lightBlue
 from manuskript.functions import mainWindow
@@ -36,7 +36,7 @@ class cheatSheet(QWidget, Ui_cheatSheet):
         self.line.hide()
 
         self.outlineModel = None
-        self.persoModel = None
+        self.characterModel = None
         self.plotModel = None
         self.worldModel = None
 
@@ -53,12 +53,14 @@ class cheatSheet(QWidget, Ui_cheatSheet):
     def setModels(self):
         mw = mainWindow()
         self.outlineModel = mw.mdlOutline
-        self.persoModel = mw.mdlPersos
+        self.characterModel = mw.mdlCharacter
         self.plotModel = mw.mdlPlots
         self.worldModel = mw.mdlWorld
 
         self.outlineModel.dataChanged.connect(self.populateTimer.start)
-        self.persoModel.dataChanged.connect(self.populateTimer.start)
+        self.characterModel.dataChanged.connect(self.populateTimer.start)
+        self.characterModel.rowsInserted.connect(self.populateTimer.start)
+        self.characterModel.rowsRemoved.connect(self.populateTimer.start)
         self.plotModel.dataChanged.connect(self.populateTimer.start)
         self.worldModel.dataChanged.connect(self.populateTimer.start)
 
@@ -75,17 +77,14 @@ class cheatSheet(QWidget, Ui_cheatSheet):
             self.list.hide()
 
     def populate(self):
-        if self.persoModel:
+        if self.characterModel:
             d = []
 
-            for r in range(self.persoModel.rowCount()):
-                name = self.persoModel.item(r, Perso.name.value).text()
-                ID = self.persoModel.item(r, Perso.ID.value).text()
-                imp = self.persoModel.item(r, Perso.importance.value).text()
-                imp = [self.tr("Minor"), self.tr("Secondary"), self.tr("Main")][int(imp)]
-                d.append((name, ID, imp))
+            for c in self.characterModel.characters:
+                imp = [self.tr("Minor"), self.tr("Secondary"), self.tr("Main")][int(c.importance())]
+                d.append((c.name(), c.ID(), imp))
 
-            self.data[(self.tr("Characters"), Ref.PersoLetter)] = d
+            self.data[(self.tr("Characters"), Ref.CharacterLetter)] = d
 
         if self.outlineModel:
             d = []

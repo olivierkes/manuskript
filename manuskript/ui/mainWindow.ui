@@ -124,7 +124,7 @@
            <enum>QTabWidget::Rounded</enum>
           </property>
           <property name="currentIndex">
-           <number>6</number>
+           <number>2</number>
           </property>
           <property name="documentMode">
            <bool>true</bool>
@@ -714,7 +714,7 @@
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_8">
                 <item>
-                 <widget class="persoTreeView" name="lstPersos">
+                 <widget class="characterTreeView" name="lstCharacters">
                   <property name="horizontalScrollBarPolicy">
                    <enum>Qt::ScrollBarAlwaysOff</enum>
                   </property>
@@ -2358,7 +2358,7 @@ QListView::item:hover {
   <customwidget>
    <class>sldImportance</class>
    <extends>QWidget</extends>
-   <header>manuskript.ui.sldImportance.h</header>
+   <header>manuskript.ui.views.sldImportance.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
@@ -2396,9 +2396,9 @@ QListView::item:hover {
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>persoTreeView</class>
+   <class>characterTreeView</class>
    <extends>QTreeWidget</extends>
-   <header>manuskript.ui.views.persoTreeView.h</header>
+   <header>manuskript.ui.views.characterTreeView.h</header>
   </customwidget>
   <customwidget>
    <class>cheatSheet</class>

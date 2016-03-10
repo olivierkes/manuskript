@@ -16,8 +16,8 @@ class metadataView(QWidget, Ui_metadataView):
         self.txtNotes.setColumn(Outline.notes.value)
         self.revisions.setEnabled(False)
 
-    def setModels(self, mdlOutline, mdlPersos, mdlLabels, mdlStatus):
-        self.properties.setModels(mdlOutline, mdlPersos, mdlLabels, mdlStatus)
+    def setModels(self, mdlOutline, mdlCharacter, mdlLabels, mdlStatus):
+        self.properties.setModels(mdlOutline, mdlCharacter, mdlLabels, mdlStatus)
         self.txtSummarySentence.setModel(mdlOutline)
         self.txtSummaryFull.setModel(mdlOutline)
         self.txtNotes.setModel(mdlOutline)

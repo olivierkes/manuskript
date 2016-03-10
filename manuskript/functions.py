@@ -121,9 +121,9 @@ def outlineItemColors(item):
     # POV
     colors["POV"] = QColor(Qt.transparent)
     POV = item.data(Outline.POV.value)
-    for i in range(mw.mdlPersos.rowCount()):
-        if mw.mdlPersos.ID(i) == POV:
-            colors["POV"] = iconColor(mw.mdlPersos.icon(i))
+    for i in range(mw.mdlCharacter.rowCount()):
+        if mw.mdlCharacter.ID(i) == POV:
+            colors["POV"] = iconColor(mw.mdlCharacter.icon(i))
 
     # Label
     lbl = item.data(Outline.label.value)
@@ -179,6 +179,10 @@ def allPaths(suffix=None):
     return paths
 
 def lightBlue():
+    """
+    A light blue used in several places in manuskript.
+    @return: QColor
+    """
     return QColor(Qt.blue).lighter(190)
 
 def totalObjects():

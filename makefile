@@ -10,7 +10,7 @@ run: $(UIs)
 	bin/manuskript
 
 debug: $(UIs)
-	gdb --args python3 manuskript/main.py
+	gdb --args python3 bin/manuskript
 
 lineprof:
 	kernprof -l -v manuskript/main.py

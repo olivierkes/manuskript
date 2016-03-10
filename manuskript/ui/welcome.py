@@ -12,9 +12,9 @@ from PyQt5.QtWidgets import QWidget, QAction, QFileDialog, QSpinBox, QLineEdit, 
 from manuskript import settings
 from manuskript.enums import Outline
 from manuskript.functions import mainWindow, iconFromColor, appPath
+from manuskript.models.characterModel import characterModel
 from manuskript.models.outlineModel import outlineItem
 from manuskript.models.outlineModel import outlineModel
-from manuskript.models.persosModel import persosModel
 from manuskript.models.plotModel import plotModel
 from manuskript.models.worldModel import worldModel
 from manuskript.ui.welcome_ui import Ui_welcome
@@ -345,7 +345,7 @@ class welcome(QWidget, Ui_welcome):
 
         # Persos
         # self.mw.mdlPersos = QStandardItemModel(0, 0, self.mw)
-        self.mw.mdlPersos = persosModel(self.mw)
+        self.mw.mdlCharacter = characterModel(self.mw)
         # self.mdlPersosProxy = None # persosProxyModel() # None
         # self.mw.mdlPersosProxy = persosProxyModel(self.mw)
 

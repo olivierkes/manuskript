@@ -1,11 +1,15 @@
 # -*- coding: utf-8 -*-
 
 import collections
+import json
 import pickle
 
 from PyQt5.QtWidgets import qApp
 
 from manuskript.enums import Outline
+
+# TODO: move some/all of those settings to application settings and not project settings
+#       in order to allow a shared project between several writers
 
 viewSettings = {
     "Tree": {
@@ -28,7 +32,8 @@ viewSettings = {
         "Background": "Nothing",
         },
     }
-    
+
+# Application
 spellcheck = False
 dict = None
 corkSizeFactor = 100
@@ -81,7 +86,7 @@ frequencyAnalyzer = {
     "phraseMax": 5
 }
     
-def save(filename=None):
+def save(filename=None, protocol=None):
     
     global spellcheck, dict, corkSliderFactor, viewSettings, corkSizeFactor, folderView, lastTab, openIndexes, \
            autoSave, autoSaveDelay, saveOnQuit, autoSaveNoChanges, autoSaveNoChangesDelay, outlineViewColumns, \
@@ -107,7 +112,7 @@ def save(filename=None):
         "textEditor":textEditor,
         "revisions":revisions,
         "frequencyAnalyzer": frequencyAnalyzer
-        }
+    }
     
     #pp=pprint.PrettyPrinter(indent=4, compact=False)
     #print("Saving:")
@@ -117,9 +122,16 @@ def save(filename=None):
         f = open(filename, "wb")
         pickle.dump(allSettings, f)
     else:
-        return pickle.dumps(allSettings)
-    
-def load(string, fromString=False):
+        if protocol == 0:
+            # This looks stupid
+            # But a simple json.dumps with sort_keys will throw a TypeError
+            # because of unorderable types.
+            return json.dumps(json.loads(json.dumps(allSettings)), indent=4, sort_keys=True)
+        else:
+           return pickle.dumps(allSettings)
+
+
+def load(string, fromString=False, protocol=None):
     """Load settings from 'string'. 'string' is the filename of the pickle dump.
     If fromString=True, string is the data of the pickle dumps."""
     global allSettings
@@ -133,8 +145,11 @@ def load(string, fromString=False):
             print("{} doesn't exist, cannot load settings.".format(string))
             return
     else:
-        allSettings = pickle.loads(string)
-    
+        if protocol == 0:
+            allSettings = json.loads(string)
+        else:
+            allSettings = pickle.loads(string)
+
     #pp=pprint.PrettyPrinter(indent=4, compact=False)
     #print("Loading:")
     #pp.pprint(allSettings)
@@ -210,6 +225,17 @@ def load(string, fromString=False):
     if "revisions" in allSettings:
         global revisions
         revisions = allSettings["revisions"]
+
+        # With JSON we had to convert int keys to str, and None to "null", so we roll back.
+        r = {}
+        for i in revisions["rules"]:
+            if i == "null":
+                r[None] = revisions["rules"]["null"]
+                continue
+            elif i == None:
+                continue
+            r[int(i)] = revisions["rules"][i]
+        revisions["rules"] = r
 
     if "frequencyAnalyzer" in allSettings:
         global frequencyAnalyzer

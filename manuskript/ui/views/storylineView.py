@@ -46,7 +46,7 @@ class storylineView(QWidget, Ui_storylineView):
 
         self.btnSettings.setMenu(m)
 
-    def setModels(self, mdlOutline, mdlPersos, mdlPlots):
+    def setModels(self, mdlOutline, mdlCharacter, mdlPlots):
         self._mdlPlots = mdlPlots
         # self._mdlPlots.dataChanged.connect(self.refresh)
         # self._mdlPlots.rowsInserted.connect(self.refresh)
@@ -54,8 +54,8 @@ class storylineView(QWidget, Ui_storylineView):
         self._mdlOutline = mdlOutline
         self._mdlOutline.dataChanged.connect(self.reloadTimer.start)
 
-        self._mdlPersos = mdlPersos
-        self._mdlPersos.dataChanged.connect(self.reloadTimer.start)
+        self._mdlCharacter = mdlCharacter
+        self._mdlCharacter.dataChanged.connect(self.reloadTimer.start)
 
     def plotReferences(self):
         "Returns a list of plot references"
@@ -71,22 +71,22 @@ class storylineView(QWidget, Ui_storylineView):
 
         return r
 
-    def persosReferences(self):
+    def charactersReferences(self):
         "Returns a list of character references"
-        if not self._mdlPersos:
+        if not self._mdlCharacter:
             pass
 
-        IDs = self._mdlPersos.getPersosByImportance()
+        chars = self._mdlCharacter.getCharactersByImportance()
         r = []
-        for importance in IDs:
-            for ID in importance:
-                ref = references.persoReference(ID)
+        for importance in chars:
+            for c in importance:
+                ref = references.characterReference(c.ID())
                 r.append(ref)
 
         return r
 
     def refresh(self):
-        if not self._mdlPlots or not self._mdlOutline or not self._mdlPersos:
+        if not self._mdlPlots or not self._mdlOutline or not self._mdlCharacter:
             pass
 
         LINE_HEIGHT = 18
@@ -118,7 +118,7 @@ class storylineView(QWidget, Ui_storylineView):
             trackedItems += self.plotReferences()
 
         if self.actCharacters.isChecked():
-            trackedItems += self.persosReferences()
+            trackedItems += self.charactersReferences()
 
         ROWS_HEIGHT = len(trackedItems) * (LINE_HEIGHT + SPACING )
 
@@ -185,7 +185,7 @@ class storylineView(QWidget, Ui_storylineView):
 
                         # Tests if POV
                         scenePOV = False  # Will hold true of character is POV of the current text, not containing folder
-                        if references.type(ref) == references.PersoLetter:
+                        if references.type(ref) == references.CharacterLetter:
                             ID = references.ID(ref)
                             c = child
                             while c:
@@ -221,8 +221,8 @@ class storylineView(QWidget, Ui_storylineView):
         itemsRect.setPos(0, MAX_LEVEL * LEVEL_HEIGHT + SPACING)
 
         for ref in trackedItems:
-            if references.type(ref) == references.PersoLetter:
-                color = QColor(self._mdlPersos.getPersoColorByID(references.ID(ref)))
+            if references.type(ref) == references.CharacterLetter:
+                color = self._mdlCharacter.getCharacterByID(references.ID(ref)).color()
             else:
                 color = randomColor()
 

@@ -9,7 +9,7 @@ from PyQt5.QtGui import QStandardItemModel
 from PyQt5.QtWidgets import QAction, QMenu
 
 from manuskript.enums import Plot
-from manuskript.enums import Subplot
+from manuskript.enums import PlotStep
 from manuskript.functions import toInt, mainWindow
 
 
@@ -37,7 +37,7 @@ class plotModel(QStandardItemModel):
         index = self.getIndexFromID(ID)
         if not index.isValid():
             return
-        index = index.sibling(index.row(), Plot.subplots.value)
+        index = index.sibling(index.row(), Plot.steps.value)
         item = self.itemFromIndex(index)
         lst = []
         for i in range(item.rowCount()):
@@ -86,8 +86,8 @@ class plotModel(QStandardItemModel):
         p = QStandardItem(self.tr("New plot"))
         _id = QStandardItem(self.getUniqueID())
         importance = QStandardItem(str(0))
-        self.appendRow([p, _id, importance, QStandardItem("Persos"),
-                        QStandardItem(), QStandardItem(), QStandardItem("Subplots")])
+        self.appendRow([p, _id, importance, QStandardItem("Characters"),
+                        QStandardItem(), QStandardItem(), QStandardItem("Resolution steps")])
 
     def getUniqueID(self, parent=QModelIndex()):
         """Returns an unused ID"""
@@ -114,9 +114,9 @@ class plotModel(QStandardItemModel):
     def headerData(self, section, orientation, role=Qt.DisplayRole):
         if role == Qt.DisplayRole:
             if orientation == Qt.Horizontal:
-                if section == Subplot.name.value:
+                if section == PlotStep.name.value:
                     return self.tr("Name")
-                elif section == Subplot.meta.value:
+                elif section == PlotStep.meta.value:
                     return self.tr("Meta")
                 else:
                     return ""
@@ -127,8 +127,8 @@ class plotModel(QStandardItemModel):
 
     def data(self, index, role=Qt.DisplayRole):
         if index.parent().isValid() and \
-                        index.parent().column() == Plot.subplots.value and \
-                        index.column() == Subplot.meta.value:
+                        index.parent().column() == Plot.steps.value and \
+                        index.column() == PlotStep.meta.value:
             if role == Qt.TextAlignmentRole:
                 return Qt.AlignRight | Qt.AlignVCenter
             elif role == Qt.ForegroundRole:
@@ -144,13 +144,13 @@ class plotModel(QStandardItemModel):
         if not index.isValid():
             return
 
-        parent = index.sibling(index.row(), Plot.subplots.value)
-        parentItem = self.item(index.row(), Plot.subplots.value)
+        parent = index.sibling(index.row(), Plot.steps.value)
+        parentItem = self.item(index.row(), Plot.steps.value)
 
         if not parentItem:
             return
 
-        p = QStandardItem(self.tr("New subplot"))
+        p = QStandardItem(self.tr("New step"))
         _id = QStandardItem(self.getUniqueID(parent))
         summary = QStandardItem()
 
@@ -182,10 +182,10 @@ class plotModel(QStandardItemModel):
     def addPlotPerso(self, v):
         index = self.mw.lstPlots.currentPlotIndex()
         if index.isValid():
-            if not self.item(index.row(), Plot.persos.value):
-                self.setItem(index.row(), Plot.persos.value, QStandardItem())
+            if not self.item(index.row(), Plot.characters.value):
+                self.setItem(index.row(), Plot.characters.value, QStandardItem())
 
-            item = self.item(index.row(), Plot.persos.value)
+            item = self.item(index.row(), Plot.characters.value)
 
             # We check that the PersoID is not in the list yet
             for i in range(item.rowCount()):
@@ -212,13 +212,13 @@ class plotModel(QStandardItemModel):
             menu.addMenu(m)
 
         mpr = QSignalMapper(menu)
-        for i in range(self.mw.mdlPersos.rowCount()):
-            a = QAction(self.mw.mdlPersos.name(i), menu)
-            a.setIcon(self.mw.mdlPersos.icon(i))
+        for i in range(self.mw.mdlCharacter.rowCount()):
+            a = QAction(self.mw.mdlCharacter.name(i), menu)
+            a.setIcon(self.mw.mdlCharacter.icon(i))
             a.triggered.connect(mpr.map)
-            mpr.setMapping(a, int(self.mw.mdlPersos.ID(i)))
+            mpr.setMapping(a, int(self.mw.mdlCharacter.ID(i)))
 
-            imp = toInt(self.mw.mdlPersos.importance(i))
+            imp = toInt(self.mw.mdlCharacter.importance(i))
 
             menus[2 - imp].addAction(a)
 

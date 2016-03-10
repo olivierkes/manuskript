@@ -12,8 +12,8 @@ class propertiesView(QWidget, Ui_propertiesView):
         self.setupUi(self)
         self.txtGoal.setColumn(Outline.setGoal.value)
 
-    def setModels(self, mdlOutline, mdlPersos, mdlLabels, mdlStatus):
-        self.cmbPOV.setModels(mdlPersos, mdlOutline)
+    def setModels(self, mdlOutline, mdlCharacter, mdlLabels, mdlStatus):
+        self.cmbPOV.setModels(mdlCharacter, mdlOutline)
         self.cmbLabel.setModels(mdlLabels, mdlOutline)
         self.cmbStatus.setModels(mdlStatus, mdlOutline)
         self.cmbType.setModel(mdlOutline)

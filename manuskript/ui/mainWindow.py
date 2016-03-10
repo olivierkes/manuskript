@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/mainWindow.ui'
 #
-# Created: Wed Mar  2 00:30:17 2016
+# Created: Thu Mar  3 18:52:22 2016
 #      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -337,12 +337,12 @@ class Ui_MainWindow(object):
         self.groupBox.setObjectName("groupBox")
         self.verticalLayout_8 = QtWidgets.QVBoxLayout(self.groupBox)
         self.verticalLayout_8.setObjectName("verticalLayout_8")
-        self.lstPersos = persoTreeView(self.groupBox)
-        self.lstPersos.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
-        self.lstPersos.setDragEnabled(True)
-        self.lstPersos.setObjectName("lstPersos")
-        self.lstPersos.headerItem().setText(0, "1")
-        self.verticalLayout_8.addWidget(self.lstPersos)
+        self.lstCharacters = characterTreeView(self.groupBox)
+        self.lstCharacters.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.lstCharacters.setDragEnabled(True)
+        self.lstCharacters.setObjectName("lstCharacters")
+        self.lstCharacters.headerItem().setText(0, "1")
+        self.verticalLayout_8.addWidget(self.lstCharacters)
         self.horizontalLayout_14 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_14.setObjectName("horizontalLayout_14")
         self.btnAddPerso = QtWidgets.QPushButton(self.groupBox)
@@ -1166,7 +1166,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.stack.setCurrentIndex(1)
-        self.tabMain.setCurrentIndex(6)
+        self.tabMain.setCurrentIndex(2)
         self.tabSummary.setCurrentIndex(0)
         self.tabPersos.setCurrentIndex(0)
         self.tabPlot.setCurrentIndex(0)
@@ -1303,18 +1303,18 @@ class Ui_MainWindow(object):
         self.actCompile.setShortcut(_translate("MainWindow", "F6"))
         self.actToolFrequency.setText(_translate("MainWindow", "&Frequency Analyzer"))
 
-from manuskript.ui.views.storylineView import storylineView
-from manuskript.ui.views.textEditView import textEditView
-from manuskript.ui.views.lineEditView import lineEditView
-from manuskript.ui.views.treeView import treeView
-from manuskript.ui.editors.mainEditor import mainEditor
-from manuskript.ui.views.basicItemView import basicItemView
-from manuskript.ui.views.persoTreeView import persoTreeView
-from manuskript.ui.views.plotTreeView import plotTreeView
 from manuskript.ui.views.outlineView import outlineView
-from manuskript.ui.views.metadataView import metadataView
+from manuskript.ui.views.textEditView import textEditView
+from manuskript.ui.views.basicItemView import basicItemView
+from manuskript.ui.views.plotTreeView import plotTreeView
 from manuskript.ui.cheatSheet import cheatSheet
-from manuskript.ui.views.textEditCompleter import textEditCompleter
-from manuskript.ui.sldImportance import sldImportance
-from manuskript.ui.welcome import welcome
+from manuskript.ui.views.sldImportance import sldImportance
+from manuskript.ui.views.metadataView import metadataView
+from manuskript.ui.views.characterTreeView import characterTreeView
+from manuskript.ui.editors.mainEditor import mainEditor
 from manuskript.ui.search import search
+from manuskript.ui.views.lineEditView import lineEditView
+from manuskript.ui.welcome import welcome
+from manuskript.ui.views.treeView import treeView
+from manuskript.ui.views.textEditCompleter import textEditCompleter
+from manuskript.ui.views.storylineView import storylineView
