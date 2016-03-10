@@ -50,7 +50,7 @@ def loadProject(project):
             version = int(f.read())
 
     print("Loading:", project)
-    print("Detected file format version:", version)
+    print("Detected file format version: {}. Zip: {}.".format(version, isZip))
 
     if version == 0:
         v0.loadProject(project)

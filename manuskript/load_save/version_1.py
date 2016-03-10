@@ -106,7 +106,7 @@ def saveProject(zip=None):
     """
     if zip is None:
         zip = False
-        # Fixme
+        # FIXME: use value from settings
 
     log("\n\nSaving to:", "zip" if zip else "folder")
 
@@ -626,6 +626,8 @@ def loadProject(project, zip=None):
         # Saves to cache (only if we loaded from disk and not zip)
         global cache
         cache = files
+        
+        # FIXME: watch directory for changes
 
     # Sort files by keys
     files = OrderedDict(sorted(files.items()))
