@@ -7,7 +7,8 @@ import os
 
 from PyQt5.QtCore import QSettings, QRegExp, Qt, QDir
 from PyQt5.QtGui import QIcon, QBrush, QColor, QStandardItemModel, QStandardItem
-from PyQt5.QtWidgets import QWidget, QAction, QFileDialog, QSpinBox, QLineEdit, QLabel, QPushButton, QTreeWidgetItem
+from PyQt5.QtWidgets import QWidget, QAction, QFileDialog, QSpinBox, QLineEdit, QLabel, QPushButton, QTreeWidgetItem, \
+    qApp
 
 from manuskript import settings
 from manuskript.enums import Outline
@@ -191,11 +192,13 @@ class welcome(QWidget, Ui_welcome):
             ])
         ]
 
-    def defaultTextType(self):
+    @classmethod
+    def defaultTextType(cls):
         return [
-            ("t2t", self.tr("Txt2Tags"), "text-x-generic"),
-            ("html", self.tr("Rich Text (html)"), "text-html"),
-            ("txt", self.tr("Plain Text"), "text-x-generic"),
+            ("t2t",  qApp.translate("Welcome", "Txt2Tags"), "text-x-generic"),
+            ("html", qApp.translate("Welcome", "Rich Text (html)"), "text-html"),
+            ("txt",  qApp.translate("Welcome", "Plain Text"), "text-x-generic"),
+            ("md",   qApp.translate("Welcome", "Multi-Markdown"), "text-x-generic"),
         ]
 
     def changeTemplate(self, item, column):

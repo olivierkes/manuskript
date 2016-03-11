@@ -11,7 +11,7 @@ from PyQt5.QtWidgets import QMainWindow, QHeaderView, qApp, QMenu, QActionGroup,
 from manuskript import settings
 from manuskript.enums import Character, PlotStep, Plot, World
 from manuskript.functions import AUC, wordCount, appPath
-from manuskript.loadSave import saveProject, loadProject
+from manuskript import loadSave
 from manuskript.models.characterModel import characterModel
 from manuskript.models.outlineModel import outlineModel
 from manuskript.models.plotModel import plotModel
@@ -375,8 +375,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # Clear datas
         self.loadEmptyDatas()
-
         self.saveTimer.stop()
+        loadSave.clearSaveCache()
 
         # UI
         for i in [self.actSave, self.actSaveAs, self.actCloseProject,
@@ -460,7 +460,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.currentProject = projectName
             QSettings().setValue("lastProject", projectName)
 
-        saveProject()  # version=0
+        loadSave.saveProject()  # version=0
         self.saveTimerNoChanges.stop()
 
         # Giving some feedback
@@ -481,7 +481,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def loadDatas(self, project):
 
-        errors = loadProject(project)
+        errors = loadSave.loadProject(project)
 
         # Giving some feedback
         if not errors:

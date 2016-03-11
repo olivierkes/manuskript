@@ -530,7 +530,7 @@ def exportOutlineItem(root):
             content = outlineToMMD(child)
             files.append((fpath, content))
 
-        elif child.type() in ["txt", "t2t"]:
+        elif child.type() in ["txt", "t2t", "md"]:
             content = outlineToMMD(child)
             files.append((spath, content))
 

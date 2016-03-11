@@ -52,7 +52,7 @@ corkBackground = {
     "color": "#926239",
     "image": ""
         }
-defaultTextType = "t2t"
+defaultTextType = "md"
 fullScreenTheme = "spacedreams"
 
 textEditor = {

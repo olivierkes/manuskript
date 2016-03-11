@@ -18,6 +18,7 @@ from manuskript.ui.editors.themes import getThemeName
 from manuskript.ui.editors.themes import loadThemeDatas
 from manuskript.ui.settings_ui import Ui_Settings
 from manuskript.ui.views.textEditView import textEditView
+from manuskript.ui.welcome import welcome
 
 try:
     import enchant
@@ -59,11 +60,7 @@ class settingsWindow(QWidget, Ui_Settings):
         self.chkAutoLoad.setChecked(autoLoad)
         self.chkAutoLoad.stateChanged.connect(self.saveSettingsChanged)
 
-        dtt = [
-            ("t2t", self.tr("Txt2Tags"), "text-x-script"),
-            ("html", self.tr("Rich Text (html)"), "text-html"),
-            ("txt", self.tr("Plain Text"), "text-x-generic"),
-        ]
+        dtt = welcome.defaultTextType()
         self.cmbDefaultTextType.clear()
         for t in dtt:
             self.cmbDefaultTextType.addItem(QIcon.fromTheme(t[2]), t[1], t[0])
