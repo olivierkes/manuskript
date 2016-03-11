@@ -138,7 +138,12 @@ def saveProject(zip=None):
             ("Author", 6),
             ("Email", 7),
             ]:
-        val = mw.mdlFlatData.item(0, col).text().strip()
+        item = mw.mdlFlatData.item(0, col)
+        if item:
+            val = item.text().strip()
+        else:
+            val = ""
+
         if val:
             content += "{name}:{spaces}{value}\n".format(
                 name=name,
@@ -160,7 +165,12 @@ def saveProject(zip=None):
             ("Page", 3),
             ("Full", 4),
             ]:
-        val = mw.mdlFlatData.item(1, col).text().strip()
+        item = mw.mdlFlatData.item(1, col)
+        if item:
+            val = item.text().strip()
+        else:
+            val = ""
+
         if val:
             content += formatMetaData(name, val, 12)
 
