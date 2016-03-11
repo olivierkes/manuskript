@@ -151,7 +151,7 @@ class welcome(QWidget, Ui_welcome):
                                                self.tr("Manuskript project (*.msk)"))[0]
 
         if filename:
-            if filename[:-4] != ".msk":
+            if filename[-4:] != ".msk":
                 filename += ".msk"
             self.appendToRecentFiles(filename)
             self.loadDefaultDatas()
