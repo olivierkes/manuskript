@@ -55,4 +55,4 @@ SOURCES          += ../manuskript/ui/views/plotTreeView.py
 SOURCES          += ../manuskript/ui/views/plotDelegate.py
 
 TRANSLATIONS     += manuskript_fr.ts
-
+TRANSLATIONS     += manuskript_es.ts
