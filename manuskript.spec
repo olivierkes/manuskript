@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['bin/manuskript'],
-             pathex=['/home/olivier/Dropbox/Documents/Travail/Geekeries/Python/PyCharmProjects/manuskript_pyinstaller tests'],
+             pathex=['.'],
              binaries=None,
              datas=[
              ("icons", "icons"),
@@ -12,7 +12,7 @@ a = Analysis(['bin/manuskript'],
              ("resources", "resources"),
              ("sample-projects", "sample-projects"),
              ],
-             hiddenimports=[],
+             hiddenimports=["xml.dom"],
              hookspath=[],
              runtime_hooks=[],
              excludes=[],
