@@ -76,7 +76,11 @@ class textEditView(QTextEdit):
 
         # Spellchecking
         if enchant and self.spellcheck:
-            self._dict = enchant.Dict(self.currentDict if self.currentDict else enchant.get_default_language())
+            try:
+                self._dict = enchant.Dict(self.currentDict if self.currentDict else enchant.get_default_language())
+            except enchant.errors.DictNotFoundError:
+                self.spellcheck = False
+
         else:
             self.spellcheck = False
 
