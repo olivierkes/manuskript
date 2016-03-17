@@ -175,7 +175,7 @@ class textEditView(QTextEdit):
         # Setting highlighter
         if self._highlighting:
             item = index.internalPointer()
-            if self._column == Outline.text.value and not item.isT2T():
+            if self._column == Outline.text.value and not (item.isT2T() or item.isMD()):
                 self.highlighter = basicHighlighter(self)
             elif item.isT2T():
                 self.highlighter = t2tHighlighter(self)
