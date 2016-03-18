@@ -162,9 +162,6 @@ class outlineCharacterDelegate(QStyledItemDelegate):
         character = self.mdlCharacter.getCharacterByID(index.data())
         if character:
             itemIndex = character.index(Character.name.value)
-        else:
-            # Character ID not found in character model.
-            return
 
         opt = QStyleOptionViewItem(option)
         self.initStyleOption(opt, itemIndex)
