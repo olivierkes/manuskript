@@ -17,12 +17,23 @@ class MMDHighlighter(basicHighlighter):
         'Italic2':          '(_)([^_].+?[^_])(_)',
         'Title':            '^(#+)(\s*)(.*)(#*)',
         'HTML':             '<.+?>',
+        'Blockquotes':      '^(> )+.*$',
+        'OrderedList':      '^\d+\.\s+',
+        'UnorderedList':    '^[\*\+-]\s+',
+        'Code':             '^\s{4,}.*$',
+        'Links-inline':     '(\[)(.*?)(\])(\()(.*?)(\))',
+        'Links-ref':        '(\[)(.*?)(\])\s?(\[)(.*?)(\])',
+        'Links-ref2':       '^\s{,3}(\[)(.*?)(\]:)\s+([^\s]*)\s*(.*?)*$',
     }
 
     def __init__(self, editor, style="Default"):
         basicHighlighter.__init__(self, editor)
 
         self.editor = editor
+
+        self.rules = {}
+        for key in self.MARKDOWN_REGEX:
+            self.rules[key] = re.compile(self.MARKDOWN_REGEX[key])
 
     def highlightBlock(self, text):
         basicHighlighter.highlightBlockBefore(self, text)
@@ -32,34 +43,88 @@ class MMDHighlighter(basicHighlighter):
         basicHighlighter.highlightBlockAfter(self, text)
 
     def doHighlightBlock(self, text):
+        """
+        A quick-n-dirty very basic highlighter, that fails in most non-trivial cases. And is ugly.
+        """
 
-        fop = QTextCharFormat()
-        fop.setForeground(Qt.lightGray)
-        fb = QTextCharFormat()
-        fb.setFontWeight(QFont.Bold)
-        fi = QTextCharFormat()
-        fi.setFontItalic(True)
+        # Creates textCharFormat
+        cfOperator = QTextCharFormat()
+        cfOperator.setForeground(Qt.lightGray)
+        cfBold = QTextCharFormat()
+        cfBold.setFontWeight(QFont.Bold)
+        cfItalic = QTextCharFormat()
+        cfItalic.setFontItalic(True)
 
+        # Titles (only atx-style, with #, not underlined)
+        defaultSize = self._defaultCharFormat.font().pointSize()
+        r = self.rules["Title"]
+        for m in r.finditer(text):
+            cfOperator.setFontPointSize(defaultSize + 12 - 2 * len(m.group(1)))
+            cfBold.setFontPointSize(defaultSize + 12 - 2 * len(m.group(1)))
+
+            self.setFormat(m.start(1), len(m.group(1)), cfOperator)
+            self.setFormat(m.start(3), len(m.group(3)), cfBold)
+            self.setFormat(m.start(4), len(m.group(4)), cfOperator)
+
+        # Code blocks
+        r = self.rules["Code"]
+        format = QTextCharFormat()
+        format.setForeground(Qt.darkGray)
+        format.setFontFixedPitch(True)
+        for m in r.finditer(text):
+            self.setFormat(m.start(), m.end() - m.start(), format)
+
+        # Basic stuff
+        stuff = [
+            ("Blockquotes", Qt.blue),
+            ("OrderedList", Qt.red),
+            ("UnorderedList", Qt.darkRed),
+            ("HTML", Qt.darkGreen),
+        ]
+        for name, color in stuff:
+            r = self.rules[name]
+            format = QTextCharFormat()
+            format.setForeground(color)
+            for m in r.finditer(text):
+                self.setFormat(m.start(), m.end() - m.start(), format)
+
+        # Bold and Italic
         for name, style in [
-            ("Italic", fi),
-            ("Italic2", fi),
-            ("Bold", fb),
-            ("Bold2", fb),
+            ("Italic", cfItalic),
+            ("Italic2", cfItalic),
+            ("Bold", cfBold),
+            ("Bold2", cfBold),
         ]:
-            r = re.compile(self.MARKDOWN_REGEX[name])
+            r = self.rules[name]
 
             for m in r.finditer(text):
-                self.setFormat(m.start(1), len(m.group(1)), fop)
+                self.setFormat(m.start(1), len(m.group(1)), cfOperator)
                 self.setFormat(m.start(2), len(m.group(2)), style)
-                self.setFormat(m.start(3), len(m.group(3)), fop)
+                self.setFormat(m.start(3), len(m.group(3)), cfOperator)
 
-        fps = self._defaultCharFormat.font().pointSize()
+        # Links
+        cfURL = QTextCharFormat()
+        cfURL.setForeground(Qt.darkGreen)
+        cfURL.setFontItalic(True)
+        cfText = QTextCharFormat()
+        cfText.setForeground(Qt.darkBlue)
+        cfIdentifier = QTextCharFormat()
+        cfIdentifier.setForeground(Qt.darkMagenta)
 
-        r = re.compile(self.MARKDOWN_REGEX["Title"])
+        for type in ['Links-inline', 'Links-ref']:
+            r = self.rules[type]
+            for m in r.finditer(text):
+                self.setFormat(m.start(1), len(m.group(1)), cfOperator)
+                self.setFormat(m.start(2), len(m.group(2)), cfText)
+                self.setFormat(m.start(3), len(m.group(3)), cfOperator)
+                self.setFormat(m.start(4), len(m.group(4)), cfOperator)
+                self.setFormat(m.start(5), len(m.group(5)), cfURL if "inline" in type else cfIdentifier)
+                self.setFormat(m.start(6), len(m.group(6)), cfOperator)
+
+        r = self.rules["Links-ref2"]
         for m in r.finditer(text):
-            fop.setFontPointSize(fps + 12 - 2 * len(m.group(1)))
-            fb.setFontPointSize(fps + 12 - 2 * len(m.group(1)))
-
-            self.setFormat(m.start(1), len(m.group(1)), fop)
-            self.setFormat(m.start(3), len(m.group(3)), fb)
-            self.setFormat(m.start(4), len(m.group(4)), fop)
+            self.setFormat(m.start(1), len(m.group(1)), cfOperator)
+            self.setFormat(m.start(2), len(m.group(2)), cfIdentifier)
+            self.setFormat(m.start(3), len(m.group(3)), cfOperator)
+            self.setFormat(m.start(4), len(m.group(4)), cfURL)
+            self.setFormat(m.start(5), len(m.group(5)), cfText)
