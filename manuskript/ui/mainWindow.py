@@ -2,8 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/mainWindow.ui'
 #
-# Created: Thu Mar  3 18:52:22 2016
-#      by: PyQt5 UI code generator 5.2.1
+# Created by: PyQt5 UI code generator 5.4.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -17,8 +16,8 @@ class Ui_MainWindow(object):
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.centralwidget)
-        self.horizontalLayout_2.setSpacing(0)
         self.horizontalLayout_2.setContentsMargins(0, 6, 0, 0)
+        self.horizontalLayout_2.setSpacing(0)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.stack = QtWidgets.QStackedWidget(self.centralwidget)
         self.stack.setObjectName("stack")
@@ -809,7 +808,6 @@ class Ui_MainWindow(object):
         self.layoutWidget = QtWidgets.QWidget(self.splitterOutlineH)
         self.layoutWidget.setObjectName("layoutWidget")
         self.verticalLayout_14 = QtWidgets.QVBoxLayout(self.layoutWidget)
-        self.verticalLayout_14.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_14.setObjectName("verticalLayout_14")
         self.splitterOutlineV = QtWidgets.QSplitter(self.layoutWidget)
         self.splitterOutlineV.setOrientation(QtCore.Qt.Vertical)
@@ -996,7 +994,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.addWidget(self.stack)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1112, 20))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1112, 30))
         self.menubar.setObjectName("menubar")
         self.menuFile = QtWidgets.QMenu(self.menubar)
         self.menuFile.setObjectName("menuFile")
@@ -1004,8 +1002,6 @@ class Ui_MainWindow(object):
         icon = QtGui.QIcon.fromTheme("folder-recent")
         self.menuRecents.setIcon(icon)
         self.menuRecents.setObjectName("menuRecents")
-        self.menuMode = QtWidgets.QMenu(self.menubar)
-        self.menuMode.setObjectName("menuMode")
         self.menuHelp = QtWidgets.QMenu(self.menubar)
         self.menuHelp.setObjectName("menuHelp")
         self.menuTools = QtWidgets.QMenu(self.menubar)
@@ -1014,6 +1010,8 @@ class Ui_MainWindow(object):
         self.menuEdit.setObjectName("menuEdit")
         self.menuView = QtWidgets.QMenu(self.menubar)
         self.menuView.setObjectName("menuView")
+        self.menuMode = QtWidgets.QMenu(self.menuView)
+        self.menuMode.setObjectName("menuMode")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -1113,16 +1111,16 @@ class Ui_MainWindow(object):
         self.actStatus.setObjectName("actStatus")
         self.actViewTree = QtWidgets.QAction(MainWindow)
         self.actViewTree.setObjectName("actViewTree")
-        self.actModeNorma = QtWidgets.QAction(MainWindow)
-        self.actModeNorma.setCheckable(True)
-        self.actModeNorma.setChecked(True)
-        self.actModeNorma.setObjectName("actModeNorma")
         self.actModeSimple = QtWidgets.QAction(MainWindow)
         self.actModeSimple.setCheckable(True)
+        self.actModeSimple.setChecked(True)
         self.actModeSimple.setObjectName("actModeSimple")
-        self.actModeFractal = QtWidgets.QAction(MainWindow)
-        self.actModeFractal.setCheckable(True)
-        self.actModeFractal.setObjectName("actModeFractal")
+        self.actModeFiction = QtWidgets.QAction(MainWindow)
+        self.actModeFiction.setCheckable(True)
+        self.actModeFiction.setObjectName("actModeFiction")
+        self.actModeSnowflake = QtWidgets.QAction(MainWindow)
+        self.actModeSnowflake.setCheckable(True)
+        self.actModeSnowflake.setObjectName("actModeSnowflake")
         self.actViewCork = QtWidgets.QAction(MainWindow)
         self.actViewCork.setObjectName("actViewCork")
         self.actViewOutline = QtWidgets.QAction(MainWindow)
@@ -1139,6 +1137,8 @@ class Ui_MainWindow(object):
         self.actCompile.setObjectName("actCompile")
         self.actToolFrequency = QtWidgets.QAction(MainWindow)
         self.actToolFrequency.setObjectName("actToolFrequency")
+        self.actionTest = QtWidgets.QAction(MainWindow)
+        self.actionTest.setObjectName("actionTest")
         self.menuFile.addAction(self.actOpen)
         self.menuFile.addAction(self.menuRecents.menuAction())
         self.menuFile.addAction(self.actSave)
@@ -1148,25 +1148,26 @@ class Ui_MainWindow(object):
         self.menuFile.addAction(self.actCompile)
         self.menuFile.addSeparator()
         self.menuFile.addAction(self.actQuit)
-        self.menuMode.addAction(self.actModeNorma)
-        self.menuMode.addAction(self.actModeSimple)
-        self.menuMode.addAction(self.actModeFractal)
         self.menuHelp.addAction(self.actShowHelp)
         self.menuTools.addAction(self.actSpellcheck)
         self.menuTools.addAction(self.actToolFrequency)
         self.menuEdit.addAction(self.actLabels)
         self.menuEdit.addAction(self.actStatus)
         self.menuEdit.addAction(self.actSettings)
+        self.menuMode.addAction(self.actModeSimple)
+        self.menuMode.addAction(self.actModeFiction)
+        self.menuMode.addAction(self.actModeSnowflake)
+        self.menuView.addAction(self.menuMode.menuAction())
+        self.menuView.addSeparator()
         self.menubar.addAction(self.menuFile.menuAction())
         self.menubar.addAction(self.menuEdit.menuAction())
-        self.menubar.addAction(self.menuMode.menuAction())
         self.menubar.addAction(self.menuView.menuAction())
         self.menubar.addAction(self.menuTools.menuAction())
         self.menubar.addAction(self.menuHelp.menuAction())
 
         self.retranslateUi(MainWindow)
         self.stack.setCurrentIndex(1)
-        self.tabMain.setCurrentIndex(2)
+        self.tabMain.setCurrentIndex(4)
         self.tabSummary.setCurrentIndex(0)
         self.tabPersos.setCurrentIndex(0)
         self.tabPlot.setCurrentIndex(0)
@@ -1268,11 +1269,11 @@ class Ui_MainWindow(object):
         self.tabMain.setTabText(self.tabMain.indexOf(self.lytTabDebug), _translate("MainWindow", "Debug"))
         self.menuFile.setTitle(_translate("MainWindow", "Fi&le"))
         self.menuRecents.setTitle(_translate("MainWindow", "&Recents"))
-        self.menuMode.setTitle(_translate("MainWindow", "&Mode"))
         self.menuHelp.setTitle(_translate("MainWindow", "Help"))
         self.menuTools.setTitle(_translate("MainWindow", "&Tools"))
         self.menuEdit.setTitle(_translate("MainWindow", "E&dit"))
         self.menuView.setTitle(_translate("MainWindow", "&View"))
+        self.menuMode.setTitle(_translate("MainWindow", "&Mode"))
         self.dckCheatSheet.setWindowTitle(_translate("MainWindow", "&Cheat sheet"))
         self.dckSearch.setWindowTitle(_translate("MainWindow", "Sea&rch"))
         self.dckNavigation.setWindowTitle(_translate("MainWindow", "&Navigation"))
@@ -1291,9 +1292,9 @@ class Ui_MainWindow(object):
         self.actLabels.setText(_translate("MainWindow", "&Labels..."))
         self.actStatus.setText(_translate("MainWindow", "&Status..."))
         self.actViewTree.setText(_translate("MainWindow", "Tree"))
-        self.actModeNorma.setText(_translate("MainWindow", "&Normal"))
         self.actModeSimple.setText(_translate("MainWindow", "&Simple"))
-        self.actModeFractal.setText(_translate("MainWindow", "&Fractal"))
+        self.actModeFiction.setText(_translate("MainWindow", "&Fiction"))
+        self.actModeSnowflake.setText(_translate("MainWindow", "&Snowflake"))
         self.actViewCork.setText(_translate("MainWindow", "Index cards"))
         self.actViewOutline.setText(_translate("MainWindow", "Outline"))
         self.actSettings.setText(_translate("MainWindow", "S&ettings"))
@@ -1302,19 +1303,20 @@ class Ui_MainWindow(object):
         self.actCompile.setText(_translate("MainWindow", "Co&mpile"))
         self.actCompile.setShortcut(_translate("MainWindow", "F6"))
         self.actToolFrequency.setText(_translate("MainWindow", "&Frequency Analyzer"))
+        self.actionTest.setText(_translate("MainWindow", "test"))
 
-from manuskript.ui.views.outlineView import outlineView
-from manuskript.ui.views.textEditView import textEditView
-from manuskript.ui.views.basicItemView import basicItemView
-from manuskript.ui.views.plotTreeView import plotTreeView
 from manuskript.ui.cheatSheet import cheatSheet
-from manuskript.ui.views.sldImportance import sldImportance
-from manuskript.ui.views.metadataView import metadataView
-from manuskript.ui.views.characterTreeView import characterTreeView
 from manuskript.ui.editors.mainEditor import mainEditor
 from manuskript.ui.search import search
+from manuskript.ui.views.basicItemView import basicItemView
+from manuskript.ui.views.characterTreeView import characterTreeView
 from manuskript.ui.views.lineEditView import lineEditView
-from manuskript.ui.welcome import welcome
-from manuskript.ui.views.treeView import treeView
-from manuskript.ui.views.textEditCompleter import textEditCompleter
+from manuskript.ui.views.metadataView import metadataView
+from manuskript.ui.views.outlineView import outlineView
+from manuskript.ui.views.plotTreeView import plotTreeView
+from manuskript.ui.views.sldImportance import sldImportance
 from manuskript.ui.views.storylineView import storylineView
+from manuskript.ui.views.textEditCompleter import textEditCompleter
+from manuskript.ui.views.textEditView import textEditView
+from manuskript.ui.views.treeView import treeView
+from manuskript.ui.welcome import welcome

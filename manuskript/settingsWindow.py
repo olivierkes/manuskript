@@ -11,12 +11,13 @@ from PyQt5.QtWidgets import qApp
 # Spell checker support
 from manuskript import settings
 from manuskript.enums import Outline
-from manuskript.functions import allPaths, iconColor, writablePath, appPath
+from manuskript.functions import allPaths, iconColor, writablePath, appPath, findWidgetsOfClass
 from manuskript.functions import mainWindow
 from manuskript.ui.editors.themes import createThemePreview
 from manuskript.ui.editors.themes import getThemeName
 from manuskript.ui.editors.themes import loadThemeDatas
 from manuskript.ui.settings_ui import Ui_Settings
+from manuskript.ui.views.outlineView import outlineView
 from manuskript.ui.views.textEditView import textEditView
 from manuskript.ui.welcome import welcome
 
@@ -98,6 +99,8 @@ class settingsWindow(QWidget, Ui_Settings):
             col = self.outlineColumnsData()[chk]
             chk.setChecked(col in settings.outlineViewColumns)
             chk.stateChanged.connect(self.outlineColumnsChanged)
+
+        self.chkOutlinePOV.setVisible(settings.viewMode != "simple") #  Hides checkbox if non-fiction view mode
 
         for item, what, value in [
             (self.rdoTreeItemCount, "InfoFolder", "Count"),
@@ -264,6 +267,7 @@ class settingsWindow(QWidget, Ui_Settings):
         item, part = self.viewSettingsDatas()[cmb]
         element = lst[cmb.currentIndex()]
         self.mw.setViewSettings(item, part, element)
+        self.mw.generateViewMenu()
 
     def outlineColumnsData(self):
         return {
@@ -287,8 +291,8 @@ class settingsWindow(QWidget, Ui_Settings):
             settings.outlineViewColumns.remove(col)
 
         # Update views
-        self.mw.redacEditor.outlineView.hideColumns()
-        self.mw.treePlanOutline.hideColumns()
+        for w in findWidgetsOfClass(outlineView):
+            w.hideColumns()
 
     def treeViewSettignsChanged(self):
         for item, what, value in [

@@ -9,8 +9,8 @@ from PyQt5.QtWidgets import QMainWindow, QHeaderView, qApp, QMenu, QActionGroup,
     QLabel
 
 from manuskript import settings
-from manuskript.enums import Character, PlotStep, Plot, World
-from manuskript.functions import AUC, wordCount, appPath
+from manuskript.enums import Character, PlotStep, Plot, World, Outline
+from manuskript.functions import AUC, wordCount, appPath, findWidgetsOfClass
 from manuskript import loadSave
 from manuskript.models.characterModel import characterModel
 from manuskript.models.outlineModel import outlineModel
@@ -93,8 +93,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # Main Menu
         for i in [self.actSave, self.actSaveAs, self.actCloseProject,
-                  self.menuEdit, self.menuMode, self.menuView, self.menuTools,
-                  self.menuHelp]:
+                  self.menuEdit, self.menuView, self.menuTools, self.menuHelp]:
             i.setEnabled(False)
 
         self.actOpen.triggered.connect(self.welcome.openFile)
@@ -108,6 +107,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.actQuit.triggered.connect(self.close)
         self.actToolFrequency.triggered.connect(self.frequencyAnalyzer)
         self.generateViewMenu()
+
+        self.actModeGroup = QActionGroup(self)
+        self.actModeSimple.setActionGroup(self.actModeGroup)
+        self.actModeFiction.setActionGroup(self.actModeGroup)
+        self.actModeSnowflake.setActionGroup(self.actModeGroup)
+        self.actModeSimple.triggered.connect(self.setViewModeSimple)
+        self.actModeFiction.triggered.connect(self.setViewModeFiction)
+        self.actModeSnowflake.setEnabled(False)
 
         self.makeUIConnections()
 
@@ -322,6 +329,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # We force to emit even if it opens on the current tab
         self.tabMain.currentChanged.emit(settings.lastTab)
         self.mainEditor.updateCorkBackground()
+        if settings.viewMode == "simple":
+            self.setViewModeSimple()
+        else:
+            self.setViewModeFiction()
 
         # Set autosave
         self.saveTimer = QTimer()
@@ -349,8 +360,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # UI
         for i in [self.actSave, self.actSaveAs, self.actCloseProject,
-                  self.menuEdit, self.menuMode, self.menuView, self.menuTools,
-                  self.menuHelp]:
+                  self.menuEdit, self.menuView, self.menuTools, self.menuHelp]:
             i.setEnabled(True)
         # FIXME: set Window's name: project name
 
@@ -379,8 +389,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # UI
         for i in [self.actSave, self.actSaveAs, self.actCloseProject,
-                  self.menuEdit, self.menuMode, self.menuView, self.menuTools,
-                  self.menuHelp]:
+                  self.menuEdit, self.menuView, self.menuTools, self.menuHelp]:
             i.setEnabled(False)
 
         # Reload recent files
@@ -979,6 +988,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         }
 
         self.menuView.clear()
+        self.menuView.addMenu(self.menuMode)
+        self.menuView.addSeparator()
 
         # print("Generating menus with", settings.viewSettings)
 
@@ -1013,6 +1024,48 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.treeOutlineOutline.viewport().update()
         if item == "Tree":
             self.treeRedacOutline.viewport().update()
+
+    ###############################################################################
+    # VIEW MODES
+    ###############################################################################
+
+    def setViewModeSimple(self):
+        settings.viewMode = "simple"
+        self.tabMain.setCurrentIndex(self.TabRedac)
+        self.viewModeFictionVisibilitySwitch(False)
+        self.actModeSimple.setChecked(True)
+
+    def setViewModeFiction(self):
+        settings.viewMode = "fiction"
+        self.viewModeFictionVisibilitySwitch(True)
+        self.actModeFiction.setChecked(True)
+
+    def viewModeFictionVisibilitySwitch(self, val):
+        """
+        Swtiches the visibility of some UI components useful for fiction only
+        @param val: sets visibility to val
+        """
+
+        # Menu navigation & boutton in toolbar
+        self.toolbar.setDockVisibility(self.dckNavigation, val)
+
+        # POV in metadatas
+        from manuskript.ui.views.propertiesView import propertiesView
+        for w in findWidgetsOfClass(propertiesView):
+            w.lblPOV.setVisible(val)
+            w.cmbPOV.setVisible(val)
+
+        # POV in outline view
+        if Outline.POV.value in settings.outlineViewColumns:
+            settings.outlineViewColumns.remove(Outline.POV.value)
+
+        from manuskript.ui.views.outlineView import outlineView
+        for w in findWidgetsOfClass(outlineView):
+            w.hideColumns()
+
+        # TODO: clean up all other fiction things in non-fiction view mode
+        # Character in search widget
+        # POV in settings / views
 
     ###############################################################################
     # COMPILE

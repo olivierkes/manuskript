@@ -4,7 +4,7 @@
 import os
 from random import *
 
-from PyQt5.QtCore import Qt, QRect, QStandardPaths, QObject
+from PyQt5.QtCore import Qt, QRect, QStandardPaths, QObject, QRegExp
 
 # Used to detect multiple connections
 from PyQt5.QtGui import QBrush, QIcon, QPainter
@@ -18,27 +18,32 @@ from manuskript.enums import Outline
 AUC = Qt.AutoConnection | Qt.UniqueConnection
 MW = None
 
+
 def wordCount(text):
     return len(text.strip().replace(" ", "\n").split("\n")) if text else 0
+
 
 def toInt(text):
     if text:
         return int(text)
     else:
         return 0
-    
+
+
 def toFloat(text):
     if text:
         return float(text)
     else:
         return 0.
-    
+
+
 def toString(text):
     if text in [None, "None"]:
         return ""
     else:
         return str(text)
-    
+
+
 def drawProgress(painter, rect, progress, radius=0):
     painter.setPen(Qt.NoPen)
     painter.setBrush(QColor("#dddddd"))
@@ -49,7 +54,8 @@ def drawProgress(painter, rect, progress, radius=0):
     r2 = QRect(rect)
     r2.setWidth(r2.width() * min(progress, 1))
     painter.drawRoundedRect(r2, radius, radius)
-    
+
+
 def colorFromProgress(progress):
     progress = toFloat(progress)
     c1 = QColor(Qt.red)
@@ -65,7 +71,8 @@ def colorFromProgress(progress):
         return c4
     else:
         return c3
-    
+
+
 def mainWindow():
     global MW
     if not MW:
@@ -77,6 +84,7 @@ def mainWindow():
     else:
         return MW
 
+
 def iconColor(icon):
     """Returns a QRgb from a QIcon, assuming its all the same color"""
     px = icon.pixmap(5, 5)
@@ -85,13 +93,16 @@ def iconColor(icon):
     else:
         return QColor(Qt.transparent)
 
+
 def iconFromColor(color):
     px = QPixmap(32, 32)
     px.fill(color)
     return QIcon(px)
 
+
 def iconFromColorString(string):
     return iconFromColor(QColor(string))
+
 
 def randomColor(mix=None):
     """Generates a random color. If mix (QColor) is given, mixes the random color and mix."""
@@ -106,12 +117,14 @@ def randomColor(mix=None):
         
     return QColor(r, g, b)
 
+
 def mixColors(col1, col2, f=.5):
     f2 = 1-f
     r = col1.red() * f + col2.red() * f2
     g = col1.green() * f + col2.green() * f2
     b = col1.blue() * f + col2.blue() * f2
     return QColor(r, g, b)
+
 
 def outlineItemColors(item):
     """Takes an OutlineItem and returns a dict of colors."""
@@ -144,7 +157,8 @@ def outlineItemColors(item):
         colors["Compile"] = QColor(Qt.black)
 
     return colors
-    
+
+
 def colorifyPixmap(pixmap, color):
     # FIXME: ugly
     p = QPainter(pixmap)
@@ -152,11 +166,13 @@ def colorifyPixmap(pixmap, color):
     p.fillRect(pixmap.rect(), color)
     return pixmap
 
+
 def appPath(suffix=None):
     p = os.path.realpath(os.path.join(os.path.split(__file__)[0], ".."))
     if suffix:
         p = os.path.join(p, suffix)
     return p
+
 
 def writablePath(suffix=None):
     if hasattr(QStandardPaths, "AppLocalDataLocation"):
@@ -170,6 +186,7 @@ def writablePath(suffix=None):
         os.makedirs(p)
     return p
 
+
 def allPaths(suffix=None):
     paths = []
     # src directory
@@ -178,6 +195,7 @@ def allPaths(suffix=None):
     paths.append(writablePath(suffix))
     return paths
 
+
 def lightBlue():
     """
     A light blue used in several places in manuskript.
@@ -185,8 +203,19 @@ def lightBlue():
     """
     return QColor(Qt.blue).lighter(190)
 
+
 def totalObjects():
     return len(mainWindow().findChildren(QObject))
 
+
 def printObjects():
     print("Objects:", str(totalObjects()))
+
+
+def findWidgetsOfClass(cls):
+    """
+    Returns all widgets, children of MainWindow, whose class is cls.
+    @param cls: a class
+    @return: list of QWidgets
+    """
+    return mainWindow().findChildren(cls, QRegExp())
