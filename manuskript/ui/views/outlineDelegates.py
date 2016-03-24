@@ -278,7 +278,7 @@ class outlineStatusDelegate(QStyledItemDelegate):
     def paint(self, painter, option, index):
         QStyledItemDelegate.paint(self, painter, option, index)
 
-        if index.isValid() and index.internalPointer().data(Outline.status.value) not in ["", None, "0"]:
+        if index.isValid() and index.internalPointer().data(Outline.status.value) not in ["", None, "0", 0]:
             opt = QStyleOptionComboBox()
             opt.rect = option.rect
             r = qApp.style().subControlRect(QStyle.CC_ComboBox, opt, QStyle.SC_ComboBoxArrow)
@@ -344,7 +344,7 @@ class outlineLabelDelegate(QStyledItemDelegate):
         qApp.style().drawControl(QStyle.CE_ItemViewItem, opt, painter)
 
         # Drop down indicator
-        if index.isValid() and index.internalPointer().data(Outline.label.value) not in ["", None, "0"]:
+        if index.isValid() and index.internalPointer().data(Outline.label.value) not in ["", None, "0", 0]:
             opt = QStyleOptionComboBox()
             opt.rect = option.rect
             r = qApp.style().subControlRect(QStyle.CC_ComboBox, opt, QStyle.SC_ComboBoxArrow)

@@ -42,6 +42,12 @@ class characterModel(QAbstractItemModel):
                 else:
                     return ""
 
+            elif role == Qt.DecorationRole:
+                if index.column() == C.name.value:
+                    return c.icon
+                else:
+                    return QVariant()
+
         elif type(c) == CharacterInfo:
             if role == Qt.DisplayRole or role == Qt.EditRole:
                 if index.column() == 0:
