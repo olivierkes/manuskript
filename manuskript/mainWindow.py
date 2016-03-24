@@ -58,7 +58,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # Welcome
         self.welcome.updateValues()
-        # self.welcome.btnCreate.clicked.connect
         self.stack.setCurrentIndex(0)
 
         # Word count
@@ -139,7 +138,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.treeOutlineOutline.delete()
 
     ###############################################################################
-    # PERSOS
+    # CHARACTERS
     ###############################################################################
 
     def changeCurrentCharacter(self, trash=None):
@@ -278,11 +277,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.txtWorldName.setCurrentModelIndex(index)
         self.txtWorldDescription.setCurrentModelIndex(index)
         self.txtWorldPassion.setCurrentModelIndex(index)
-        self.txtWorldConflict.setCurrentModelIndex(index)
-
-    ###############################################################################
-    # LOAD AND SAVE
-    ###############################################################################
+    #     self.txtWorldConflict.setCurrentModelIndex(index)
+    #
+    # ###############################################################################
+    # # LOAD AND SAVE
+    # ###############################################################################
 
     def loadProject(self, project, loadFromFile=True):
         """Loads the project ``project``.
@@ -500,7 +499,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     ###############################################################################
 
     def makeUIConnections(self):
-        "Connections that have to be made once only, event when new project is loaded."
+        "Connections that have to be made once only, even when a new project is loaded."
         self.lstCharacters.currentItemChanged.connect(self.changeCurrentCharacter, AUC)
 
         self.txtPlotFilter.textChanged.connect(self.lstPlots.setFilter, AUC)
@@ -552,7 +551,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             widget.setColumn(col)
             widget.setCurrentModelIndex(self.mdlFlatData.index(0, col))
 
-        # Persos
+        # Characters
         self.lstCharacters.setCharactersModel(self.mdlCharacter)
         self.tblPersoInfos.setModel(self.mdlCharacter)
 
