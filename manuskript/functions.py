@@ -2,6 +2,7 @@
 #--!-- coding: utf8 --!--
 
 import os
+import re
 from random import *
 
 from PyQt5.QtCore import Qt, QRect, QStandardPaths, QObject, QRegExp
@@ -219,3 +220,19 @@ def findWidgetsOfClass(cls):
     @return: list of QWidgets
     """
     return mainWindow().findChildren(cls, QRegExp())
+
+
+def findBackground(filename):
+    """
+    Returns the full path to a background file of name filename within ressource folders.
+    """
+    return findFirstFile(re.escape(filename), "resources/backgrounds")
+
+
+def findFirstFile(regex, path="resources"):
+    paths = allPaths(path)
+    for p in paths:
+        lst = os.listdir(p)
+        for l in lst:
+            if re.match(regex, l):
+                return os.path.join(p, l)

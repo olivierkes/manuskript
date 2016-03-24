@@ -3,6 +3,7 @@
 from PyQt5.QtWidgets import QListView
 
 from manuskript import settings
+from manuskript.functions import findBackground
 from manuskript.ui.views.corkDelegate import corkDelegate
 from manuskript.ui.views.dndView import dndView
 from manuskript.ui.views.outlineBasics import outlineBasics
@@ -24,12 +25,13 @@ class corkView(QListView, dndView, outlineBasics):
         self.updateBackground()
 
     def updateBackground(self):
+        img = findBackground(settings.corkBackground["image"])
         self.setStyleSheet("""QListView {{
             background:{color};
             background-image: url({url});
             }}""".format(
                 color=settings.corkBackground["color"],
-                url=settings.corkBackground["image"]
+                url=img
         ))
 
     def dragMoveEvent(self, event):

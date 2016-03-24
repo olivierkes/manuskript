@@ -94,8 +94,13 @@ class fullScreenEditor(QWidget):
             lst = [i for i in os.listdir(p) if os.path.splitext(i)[1] == ".theme"]
             for t in lst:
                 themeIni = os.path.join(p, t)
-                self.lstThemes.addItem(os.path.splitext(t)[0])
-        self.lstThemes.setCurrentText(settings.fullScreenTheme)
+                name = loadThemeDatas(themeIni)["Name"]
+                # self.lstThemes.addItem(os.path.splitext(t)[0])
+                self.lstThemes.addItem(name)
+                self.lstThemes.setItemData(self.lstThemes.count()-1, os.path.splitext(t)[0])
+
+        self.lstThemes.setCurrentIndex(self.lstThemes.findData(settings.fullScreenTheme))
+        # self.lstThemes.setCurrentText(settings.fullScreenTheme)
         self.lstThemes.currentTextChanged.connect(self.setTheme)
         self.lstThemes.setMaximumSize(QSize(300, QFontMetrics(qApp.font()).height()))
         self.bottomPanel.layout().addWidget(QLabel(self.tr("Theme:"), self))
@@ -125,6 +130,7 @@ class fullScreenEditor(QWidget):
         self.btnClose.setVisible(not val)
 
     def setTheme(self, themeName):
+        themeName = self.lstThemes.currentData()
         settings.fullScreenTheme = themeName
         self._theme = findThemePath(themeName)
         self._themeDatas = loadThemeDatas(self._theme)

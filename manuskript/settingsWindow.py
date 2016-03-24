@@ -326,6 +326,7 @@ class settingsWindow(QWidget, Ui_Settings):
 
     def setCorkBackground(self, i):
         img = self.cmbCorkImage.itemData(i)
+        img = os.path.basename(img)
         if img:
             settings.corkBackground["image"] = img
         else:
