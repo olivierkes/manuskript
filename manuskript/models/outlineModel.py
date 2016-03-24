@@ -481,9 +481,9 @@ class outlineItem():
         elif role == Qt.DecorationRole and column == Outline.title.value:
             if self.isFolder():
                 return QIcon.fromTheme("folder")
-            elif self.isText():
+            elif self.isText:
                 return QIcon.fromTheme("text-x-generic")
-            elif self.isT2T():
+            elif self.isT2T() or self.isMD():
                 return QIcon.fromTheme("text-x-script")
             elif self.isHTML():
                 return QIcon.fromTheme("text-html")
@@ -529,12 +529,12 @@ class outlineItem():
         # Stuff to do before
         if column == Outline.type.value:
             oldType = self._data[Outline.type]
-            if oldType == "html" and data in ["txt", "t2t"]:
+            if oldType == "html" and data in ["txt", "t2t", "md"]:
                 # Resource inneficient way to convert HTML to plain text
                 e = QTextEdit()
                 e.setHtml(self._data[Outline.text])
                 self._data[Outline.text] = e.toPlainText()
-            elif oldType in ["txt", "t2t"] and data == "html" and Outline.text in self._data:
+            elif oldType in ["txt", "t2t", "md"] and data == "html" and Outline.text in self._data:
                 self._data[Outline.text] = self._data[Outline.text].replace("\n", "<br>")
 
         elif column == Outline.text.value:
@@ -662,6 +662,12 @@ class outlineItem():
 
     def isT2T(self):
         return self._data[Outline.type] == "t2t"
+
+    def isMD(self):
+        return self._data[Outline.type] == "md"
+
+    def isMMD(self):
+        return self._data[Outline.type] == "md"
 
     def isHTML(self):
         return self._data[Outline.type] == "html"

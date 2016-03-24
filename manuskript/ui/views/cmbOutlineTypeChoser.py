@@ -5,6 +5,7 @@ from PyQt5.QtGui import QIcon, QBrush
 from PyQt5.QtWidgets import QComboBox
 
 from manuskript.enums import Outline
+from manuskript.ui.welcome import welcome
 
 
 class cmbOutlineTypeChoser(QComboBox):
@@ -24,11 +25,8 @@ class cmbOutlineTypeChoser(QComboBox):
 
     def updateItems(self):
         self.clear()
-        types = [
-            ("t2t", self.tr("Txt2Tags"), "text-x-generic"),
-            ("html", self.tr("Rich Text (html)"), "text-html"),
-            ("txt", self.tr("Plain Text"), "text-x-generic"),
-        ]
+        types = welcome.defaultTextType()
+
         for t in types:
             self.addItem(QIcon.fromTheme(t[2]), t[1], t[0])
 
@@ -43,7 +41,7 @@ class cmbOutlineTypeChoser(QComboBox):
             index = index.sibling(index.row(), self._column)
         self._index = index
         # Disabled if item type is not text
-        self.setEnabled(index.internalPointer().type() in ["t2t", "html", "txt"])
+        self.setEnabled(index.internalPointer().type() in ["t2t", "html", "txt", "md"])
         self.updateItems()
         self.updateSelectedItem()
 
@@ -57,7 +55,7 @@ class cmbOutlineTypeChoser(QComboBox):
                 if i.column() != self._column:
                     i = i.sibling(i.row(), self._column)
                 self._indexes.append(i)
-                if i.internalPointer().type() in ["t2t", "html", "txt"]:
+                if i.internalPointer().type() in ["t2t", "html", "txt", "md"]:
                     hasText = True
 
         self.setEnabled(hasText)

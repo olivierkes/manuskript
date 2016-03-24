@@ -11,6 +11,7 @@ from manuskript.enums import Outline
 from manuskript.functions import AUC
 from manuskript.functions import toString
 from manuskript.models.outlineModel import outlineModel
+from manuskript.ui.editors.MMDHighlighter import MMDHighlighter
 from manuskript.ui.editors.basicHighlighter import basicHighlighter
 from manuskript.ui.editors.t2tFunctions import t2tClearFormat
 from manuskript.ui.editors.t2tFunctions import t2tFormatSelection
@@ -164,6 +165,8 @@ class textEditView(QTextEdit):
                 self._textFormat = "html"
             elif item.isT2T():
                 self._textFormat = "t2t"
+            elif item.isMD():
+                self._textFormat = "md"
             else:
                 self._textFormat = "text"
 
@@ -176,10 +179,12 @@ class textEditView(QTextEdit):
         # Setting highlighter
         if self._highlighting:
             item = index.internalPointer()
-            if self._column == Outline.text.value and not item.isT2T():
+            if self._column == Outline.text.value and not (item.isT2T() or item.isMD()):
                 self.highlighter = basicHighlighter(self)
-            else:
+            elif item.isT2T():
                 self.highlighter = t2tHighlighter(self)
+            elif item.isMD():
+                self.highlighter = MMDHighlighter(self)
 
             self.highlighter.setDefaultBlockFormat(self._defaultBlockFormat)
 
@@ -555,3 +560,7 @@ class textEditView(QTextEdit):
                 t2tFormatSelection(self, 2)
             elif _format == "Clear":
                 t2tClearFormat(self)
+
+        elif self._textFormat == "md":
+            # FIXME
+            print("Not implemented yet.")
