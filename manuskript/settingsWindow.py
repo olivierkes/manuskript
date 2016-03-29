@@ -243,7 +243,6 @@ class settingsWindow(QWidget, Ui_Settings):
 
         sttgs = QSettings()
         sttgs.setValue("autoLoad", True if self.chkAutoLoad.checkState() else False)
-        print("Setting Value:", True if self.chkAutoLoad.checkState() else False)
         sttgs.sync()
 
         settings.autoSave = True if self.chkAutoSave.checkState() else False

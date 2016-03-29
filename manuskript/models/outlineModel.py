@@ -15,7 +15,7 @@ from manuskript import settings
 from lxml import etree as ET
 
 from manuskript.enums import Outline
-from manuskript.functions import mainWindow, toInt, wordCount
+from manuskript.functions import mainWindow, toInt, wordCount, HTML2PlainText
 
 locale.setlocale(locale.LC_ALL, '')
 import time, os
@@ -531,9 +531,7 @@ class outlineItem():
             oldType = self._data[Outline.type]
             if oldType == "html" and data in ["txt", "t2t", "md"]:
                 # Resource inneficient way to convert HTML to plain text
-                e = QTextEdit()
-                e.setHtml(self._data[Outline.text])
-                self._data[Outline.text] = e.toPlainText()
+                self._data[Outline.text] = HTML2PlainText(self._data[Outline.text])
             elif oldType in ["txt", "t2t", "md"] and data == "html" and Outline.text in self._data:
                 self._data[Outline.text] = self._data[Outline.text].replace("\n", "<br>")
 

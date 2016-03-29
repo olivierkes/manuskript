@@ -12,7 +12,7 @@ from PyQt5.QtGui import QBrush, QIcon, QPainter
 from PyQt5.QtGui import QColor
 from PyQt5.QtGui import QImage
 from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import qApp
+from PyQt5.QtWidgets import qApp, QTextEdit
 
 from manuskript.enums import Outline
 
@@ -236,3 +236,14 @@ def findFirstFile(regex, path="resources"):
         for l in lst:
             if re.match(regex, l):
                 return os.path.join(p, l)
+
+
+def HTML2PlainText(html):
+    """
+    Ressource-inefficient way to convert HTML to plain text.
+    @param html:
+    @return:
+    """
+    e = QTextEdit()
+    e.setHtml(html)
+    return e.toPlainText()
