@@ -2,8 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/settings_ui.ui'
 #
-# Created: Wed Mar  2 00:30:17 2016
-#      by: PyQt5 UI code generator 5.2.1
+# Created by: PyQt5 UI code generator 5.4.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -12,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Settings(object):
     def setupUi(self, Settings):
         Settings.setObjectName("Settings")
-        Settings.resize(658, 491)
+        Settings.resize(658, 561)
         self.horizontalLayout_8 = QtWidgets.QHBoxLayout(Settings)
         self.horizontalLayout_8.setObjectName("horizontalLayout_8")
         self.lstMenu = QtWidgets.QListWidget(Settings)
@@ -77,6 +76,30 @@ class Ui_Settings(object):
         self.cmbStyle.setObjectName("cmbStyle")
         self.verticalLayout_5.addWidget(self.cmbStyle)
         self.verticalLayout_7.addWidget(self.groupBox_2)
+        self.groupBox_14 = QtWidgets.QGroupBox(self.stackedWidgetPage1)
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.groupBox_14.setFont(font)
+        self.groupBox_14.setObjectName("groupBox_14")
+        self.verticalLayout_20 = QtWidgets.QVBoxLayout(self.groupBox_14)
+        self.verticalLayout_20.setObjectName("verticalLayout_20")
+        self.label_52 = QtWidgets.QLabel(self.groupBox_14)
+        font = QtGui.QFont()
+        font.setBold(False)
+        font.setWeight(50)
+        self.label_52.setFont(font)
+        self.label_52.setWordWrap(True)
+        self.label_52.setObjectName("label_52")
+        self.verticalLayout_20.addWidget(self.label_52)
+        self.cmbTranslation = QtWidgets.QComboBox(self.groupBox_14)
+        font = QtGui.QFont()
+        font.setBold(False)
+        font.setWeight(50)
+        self.cmbTranslation.setFont(font)
+        self.cmbTranslation.setObjectName("cmbTranslation")
+        self.verticalLayout_20.addWidget(self.cmbTranslation)
+        self.verticalLayout_7.addWidget(self.groupBox_14)
         self.groupBox_10 = QtWidgets.QGroupBox(self.stackedWidgetPage1)
         font = QtGui.QFont()
         font.setBold(True)
@@ -1321,7 +1344,6 @@ class Ui_Settings(object):
         self.layoutWidget = QtWidgets.QWidget(self.splitter)
         self.layoutWidget.setObjectName("layoutWidget")
         self.verticalLayout_14 = QtWidgets.QVBoxLayout(self.layoutWidget)
-        self.verticalLayout_14.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_14.setObjectName("verticalLayout_14")
         self.cmbThemeEdit = QtWidgets.QComboBox(self.layoutWidget)
         self.cmbThemeEdit.setObjectName("cmbThemeEdit")
@@ -1601,7 +1623,7 @@ class Ui_Settings(object):
         self.horizontalLayout_8.addWidget(self.stack)
 
         self.retranslateUi(Settings)
-        self.stack.setCurrentIndex(2)
+        self.stack.setCurrentIndex(0)
         self.tabViews.setCurrentIndex(0)
         self.themeStack.setCurrentIndex(1)
         self.themeEditStack.setCurrentIndex(0)
@@ -1630,6 +1652,8 @@ class Ui_Settings(object):
         self.lblTitleGeneral.setText(_translate("Settings", "General settings"))
         self.groupBox_2.setTitle(_translate("Settings", "Application style"))
         self.label_2.setText(_translate("Settings", "You might need to restart manuskript in order to avoid some visual issues."))
+        self.groupBox_14.setTitle(_translate("Settings", "Application language"))
+        self.label_52.setText(_translate("Settings", "You will need to restart manuskript for the translation to take effect."))
         self.groupBox_10.setTitle(_translate("Settings", "Loading"))
         self.chkAutoLoad.setText(_translate("Settings", "Automatically load last project on startup"))
         self.groupBox.setTitle(_translate("Settings", "Saving"))
@@ -1676,7 +1700,7 @@ class Ui_Settings(object):
         self.rdoTreeWC.setText(_translate("Settings", "Show wordcount"))
         self.rdoTreeProgress.setText(_translate("Settings", "Show progress"))
         self.rdoTreeSummary.setText(_translate("Settings", "Show summary"))
-        self.rdoTreeNothing.setText(_translate("Settings", "Nothing"))
+        self.rdoTreeNothing.setText(_translate("Settings", "&Nothing"))
         self.groupBox_9.setTitle(_translate("Settings", "Text"))
         self.rdoTreeTextWC.setText(_translate("Settings", "Show wordcount"))
         self.rdoTreeTextProgress.setText(_translate("Settings", "Show progress"))

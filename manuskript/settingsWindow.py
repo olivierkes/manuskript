@@ -1,11 +1,12 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
 import os
+from collections import OrderedDict
 
-from PyQt5.QtCore import QSize, QSettings, QRegExp
+from PyQt5.QtCore import QSize, QSettings, QRegExp, QTranslator, QObject
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIntValidator, QIcon, QFont, QColor, QPixmap, QStandardItem, QPainter
-from PyQt5.QtWidgets import QStyleFactory, QWidget, QStyle, QColorDialog, QListWidgetItem
+from PyQt5.QtWidgets import QStyleFactory, QWidget, QStyle, QColorDialog, QListWidgetItem, QMessageBox
 from PyQt5.QtWidgets import qApp
 
 # Spell checker support
@@ -44,6 +45,21 @@ class settingsWindow(QWidget, Ui_Settings):
         self.cmbStyle.addItems(list(QStyleFactory.keys()))
         self.cmbStyle.setCurrentIndex([i.lower() for i in list(QStyleFactory.keys())].index(qApp.style().objectName()))
         self.cmbStyle.currentIndexChanged[str].connect(self.setStyle)
+
+        self.cmbTranslation.clear()
+        tr = OrderedDict()
+        tr["English"] = ""
+        tr["Français"] = "manuskript_fr.qm"
+        tr["Español"] = "manuskript_es.qm"
+
+        for name in tr:
+            self.cmbTranslation.addItem(name, tr[name])
+
+        sttgs = QSettings(qApp.organizationName(), qApp.applicationName())
+        if sttgs.contains("applicationTranslation") and sttgs.value("applicationTranslation") in tr.values():
+            self.cmbTranslation.setCurrentText([i for i in tr if tr[i] == sttgs.value("applicationTranslation")][0])
+
+        self.cmbTranslation.currentIndexChanged.connect(self.setTranslation)
 
         self.txtAutoSave.setValidator(QIntValidator(0, 999, self))
         self.txtAutoSaveNoChanges.setValidator(QIntValidator(0, 999, self))
@@ -208,6 +224,14 @@ class settingsWindow(QWidget, Ui_Settings):
         sttgs = QSettings(qApp.organizationName(), qApp.applicationName())
         sttgs.setValue("applicationStyle", style)
         qApp.setStyle(style)
+
+    def setTranslation(self, index):
+        path = self.cmbTranslation.currentData()
+        # Save settings
+        sttgs = QSettings(qApp.organizationName(), qApp.applicationName())
+        sttgs.setValue("applicationTranslation", path)
+
+        # QMessageBox.information(self, "Warning", "You'll have to restart manuskript.")
 
     def saveSettingsChanged(self):
         if self.txtAutoSave.text() in ["", "0"]:
