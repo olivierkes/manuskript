@@ -5,8 +5,6 @@ from PyQt5.QtGui import QBrush, QPen, QFontMetrics, QFontMetricsF, QColor
 from PyQt5.QtWidgets import QWidget, QGraphicsScene, QGraphicsSimpleTextItem, QMenu, QAction, QGraphicsRectItem, \
     QGraphicsLineItem, QGraphicsEllipseItem
 
-from manuskript.enums import Outline
-from manuskript.functions import randomColor
 from manuskript.models import references
 from manuskript.ui.views.storylineView_ui import Ui_storylineView
 
@@ -220,11 +218,18 @@ class storylineView(QWidget, Ui_storylineView):
         itemsRect = s.addRect(0, 0, 0, 0)
         itemsRect.setPos(0, MAX_LEVEL * LEVEL_HEIGHT + SPACING)
 
+        # Set of colors for plots (as long as they don't have their own colors)
+        colors = [
+            "#D97777", "#AE5F8C", "#D9A377", "#FFC2C2", "#FFDEC2", "#D2A0BC",
+            "#7B0F0F", "#7B400F", "#620C3D", "#AA3939", "#AA6C39", "#882D61",
+            "#4C0000", "#4C2200", "#3D0022",
+        ]
+
         for ref in trackedItems:
             if references.type(ref) == references.CharacterLetter:
                 color = self._mdlCharacter.getCharacterByID(references.ID(ref)).color()
             else:
-                color = randomColor()
+                color = QColor(colors[i % len(colors)])
 
             # Rect
             r = QGraphicsRectItem(0, 0, TITLE_WIDTH, LINE_HEIGHT, itemsRect)
