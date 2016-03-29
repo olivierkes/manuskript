@@ -85,12 +85,14 @@ frequencyAnalyzer = {
     "phraseMin": 2,
     "phraseMax": 5
 }
+
+viewMode = "fiction"
     
 def save(filename=None, protocol=None):
     
     global spellcheck, dict, corkSliderFactor, viewSettings, corkSizeFactor, folderView, lastTab, openIndexes, \
            autoSave, autoSaveDelay, saveOnQuit, autoSaveNoChanges, autoSaveNoChangesDelay, outlineViewColumns, \
-           corkBackground, fullScreenTheme, defaultTextType, textEditor, revisions, frequencyAnalyzer
+           corkBackground, fullScreenTheme, defaultTextType, textEditor, revisions, frequencyAnalyzer, viewMode
     
     allSettings = {
         "viewSettings": viewSettings,
@@ -111,7 +113,8 @@ def save(filename=None, protocol=None):
         "defaultTextType":defaultTextType,
         "textEditor":textEditor,
         "revisions":revisions,
-        "frequencyAnalyzer": frequencyAnalyzer
+        "frequencyAnalyzer": frequencyAnalyzer,
+        "viewMode": viewMode,
     }
     
     #pp=pprint.PrettyPrinter(indent=4, compact=False)
@@ -243,4 +246,8 @@ def load(string, fromString=False, protocol=None):
     if "frequencyAnalyzer" in allSettings:
         global frequencyAnalyzer
         frequencyAnalyzer = allSettings["frequencyAnalyzer"]
+
+    if "viewMode" in allSettings:
+        global viewMode
+        viewMode = allSettings["viewMode"]
 

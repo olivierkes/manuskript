@@ -124,7 +124,7 @@
            <enum>QTabWidget::Rounded</enum>
           </property>
           <property name="currentIndex">
-           <number>2</number>
+           <number>4</number>
           </property>
           <property name="documentMode">
            <bool>true</bool>
@@ -1979,7 +1979,7 @@
      <x>0</x>
      <y>0</y>
      <width>1112</width>
-     <height>20</height>
+     <height>30</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -2006,14 +2006,6 @@
     <addaction name="separator"/>
     <addaction name="actQuit"/>
    </widget>
-   <widget class="QMenu" name="menuMode">
-    <property name="title">
-     <string>&amp;Mode</string>
-    </property>
-    <addaction name="actModeNorma"/>
-    <addaction name="actModeSimple"/>
-    <addaction name="actModeFractal"/>
-   </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
      <string>Help</string>
@@ -2039,10 +2031,19 @@
     <property name="title">
      <string>&amp;View</string>
     </property>
+    <widget class="QMenu" name="menuMode">
+     <property name="title">
+      <string>&amp;Mode</string>
+     </property>
+     <addaction name="actModeSimple"/>
+     <addaction name="actModeFiction"/>
+     <addaction name="actModeSnowflake"/>
+    </widget>
+    <addaction name="menuMode"/>
+    <addaction name="separator"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
-   <addaction name="menuMode"/>
    <addaction name="menuView"/>
    <addaction name="menuTools"/>
    <addaction name="menuHelp"/>
@@ -2266,7 +2267,7 @@ QListView::item:hover {
     <string>Tree</string>
    </property>
   </action>
-  <action name="actModeNorma">
+  <action name="actModeSimple">
    <property name="checkable">
     <bool>true</bool>
    </property>
@@ -2274,23 +2275,23 @@ QListView::item:hover {
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>&amp;Normal</string>
-   </property>
-  </action>
-  <action name="actModeSimple">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="text">
     <string>&amp;Simple</string>
    </property>
   </action>
-  <action name="actModeFractal">
+  <action name="actModeFiction">
    <property name="checkable">
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>&amp;Fractal</string>
+    <string>&amp;Fiction</string>
+   </property>
+  </action>
+  <action name="actModeSnowflake">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>&amp;Snowflake</string>
    </property>
   </action>
   <action name="actViewCork">
@@ -2336,6 +2337,11 @@ QListView::item:hover {
   <action name="actToolFrequency">
    <property name="text">
     <string>&amp;Frequency Analyzer</string>
+   </property>
+  </action>
+  <action name="actionTest">
+   <property name="text">
+    <string>test</string>
    </property>
   </action>
  </widget>

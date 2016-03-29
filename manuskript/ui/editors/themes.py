@@ -9,7 +9,7 @@ from PyQt5.QtCore import QSettings, QRect, QSize, Qt, QPoint, QFile, QIODevice, 
 from PyQt5.QtGui import QPixmap, QPainter, QColor, QBrush, QImage, QTextBlockFormat, QTextCharFormat, QFont, qGray
 from PyQt5.QtWidgets import qApp, QFrame
 
-from manuskript.functions import allPaths, appPath
+from manuskript.functions import allPaths, appPath, findBackground, findFirstFile
 from manuskript.ui.views.textEditView import textEditView
 
 
@@ -117,19 +117,6 @@ def findThemePath(themeName):
         return findFirstFile(".*\.theme", "resources/themes")
     else:
         return p
-
-
-def findBackground(filename):
-    return findFirstFile(re.escape(filename), "resources/backgrounds")
-
-
-def findFirstFile(regex, path="resources"):
-    paths = allPaths(path)
-    for p in paths:
-        lst = os.listdir(p)
-        for l in lst:
-            if re.match(regex, l):
-                return os.path.join(p, l)
 
 
 def generateTheme(themeDatas, screenRect):

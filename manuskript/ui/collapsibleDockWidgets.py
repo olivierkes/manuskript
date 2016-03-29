@@ -2,7 +2,7 @@
 # --!-- coding: utf8 --!--
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QToolBar, QDockWidget, QAction, QToolButton, QSizePolicy, QStylePainter, \
-    QStyleOptionButton, QStyle, QLabel
+    QStyleOptionButton, QStyle
 
 
 class collapsibleDockWidgets(QToolBar):
@@ -31,6 +31,8 @@ class collapsibleDockWidgets(QToolBar):
         # self.setAllowedAreas(self.TRANSPOSED_AREA[self._area])
         self.parent().addToolBar(self.TRANSPOSED_AREA[self._area], self)
 
+        self._dockToButtonAction = {}
+
         # Dock widgets
         for d in self._dockWidgets():
             b = verticalButton(self)
@@ -48,7 +50,8 @@ class collapsibleDockWidgets(QToolBar):
                 background: lightBlue;
             }
             """)
-            self.addWidget(b)
+            a = self.addWidget(b)
+            self._dockToButtonAction[d] = a
 
         self.addSeparator()
 
@@ -87,6 +90,10 @@ class collapsibleDockWidgets(QToolBar):
                 action.setVisible(False)
             else:
                 action.setVisible(True)
+
+    def setDockVisibility(self, dock, val):
+        dock.setVisible(val)
+        self._dockToButtonAction[dock].setVisible(val)
 
     def saveState(self):
         # We just need to save states of the custom widgets.

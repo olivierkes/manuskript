@@ -65,6 +65,10 @@ class outlineView(QTreeView, dndView, outlineBasics):
         self.header().setSectionResizeMode(Outline.goalPercentage.value, QHeaderView.ResizeToContents)
 
     def hideColumns(self):
+        if not self.model():
+            # outlineView is probably not initialized, because editorWidgets shows index cards or text.
+            return
+
         for c in range(self.model().columnCount()):
             self.hideColumn(c)
         for c in settings.outlineViewColumns:
