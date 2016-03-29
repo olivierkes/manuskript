@@ -402,7 +402,13 @@ class textEditView(QTextEdit):
     def toggleSpellcheck(self, v):
         self.spellcheck = v
         if enchant and self.spellcheck and not self._dict:
-            self._dict = enchant.Dict(self.currentDict if self.currentDict else enchant.get_default_language())
+            if self.currentDict:
+                self._dict = enchant.Dict(self.currentDict)
+            elif enchant.get_default_language() in enchant.get_default_language():
+                self._dict = enchant.Dict(enchant.get_default_language())
+            else:
+                self.spellcheck = False
+
         if self.highlighter:
             self.highlighter.rehighlight()
         else:
