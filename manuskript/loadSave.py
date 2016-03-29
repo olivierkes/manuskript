@@ -20,8 +20,6 @@ def saveProject(version=None):
     else:
         v1.saveProject()
 
-    # FIXME: add settings to chose between saving as zip or not.
-
 
 def clearSaveCache():
     v1.cache = {}

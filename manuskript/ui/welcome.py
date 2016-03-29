@@ -66,7 +66,7 @@ class welcome(QWidget, Ui_welcome):
     def getAutoLoadValues(self):
         sttgns = QSettings()
         if sttgns.contains("autoLoad"):
-            autoLoad = True if sttgns.value("autoLoad") == "true" else False
+            autoLoad = True if sttgns.value("autoLoad") in ["true", True] else False
         else:
             autoLoad = False
         if autoLoad and sttgns.contains("lastProject"):

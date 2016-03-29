@@ -87,12 +87,14 @@ frequencyAnalyzer = {
 }
 
 viewMode = "fiction"
+saveToZip = True
     
 def save(filename=None, protocol=None):
     
     global spellcheck, dict, corkSliderFactor, viewSettings, corkSizeFactor, folderView, lastTab, openIndexes, \
            autoSave, autoSaveDelay, saveOnQuit, autoSaveNoChanges, autoSaveNoChangesDelay, outlineViewColumns, \
-           corkBackground, fullScreenTheme, defaultTextType, textEditor, revisions, frequencyAnalyzer, viewMode
+           corkBackground, fullScreenTheme, defaultTextType, textEditor, revisions, frequencyAnalyzer, viewMode, \
+           saveToZip
     
     allSettings = {
         "viewSettings": viewSettings,
@@ -115,6 +117,7 @@ def save(filename=None, protocol=None):
         "revisions":revisions,
         "frequencyAnalyzer": frequencyAnalyzer,
         "viewMode": viewMode,
+        "saveToZip": saveToZip,
     }
     
     #pp=pprint.PrettyPrinter(indent=4, compact=False)
@@ -251,3 +254,6 @@ def load(string, fromString=False, protocol=None):
         global viewMode
         viewMode = allSettings["viewMode"]
 
+    if "saveToZip" in allSettings:
+        global saveToZip
+        saveToZip = allSettings["saveToZip"]

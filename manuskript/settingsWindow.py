@@ -68,9 +68,11 @@ class settingsWindow(QWidget, Ui_Settings):
         self.txtAutoSave.setText(str(settings.autoSaveDelay))
         self.txtAutoSaveNoChanges.setText(str(settings.autoSaveNoChangesDelay))
         self.chkSaveOnQuit.setChecked(settings.saveOnQuit)
+        self.chkSaveToZip.setChecked(settings.saveToZip)
         self.chkAutoSave.stateChanged.connect(self.saveSettingsChanged)
         self.chkAutoSaveNoChanges.stateChanged.connect(self.saveSettingsChanged)
         self.chkSaveOnQuit.stateChanged.connect(self.saveSettingsChanged)
+        self.chkSaveToZip.stateChanged.connect(self.saveSettingsChanged)
         self.txtAutoSave.textEdited.connect(self.saveSettingsChanged)
         self.txtAutoSaveNoChanges.textEdited.connect(self.saveSettingsChanged)
         autoLoad, last = self.mw.welcome.getAutoLoadValues()
@@ -241,11 +243,13 @@ class settingsWindow(QWidget, Ui_Settings):
 
         sttgs = QSettings()
         sttgs.setValue("autoLoad", True if self.chkAutoLoad.checkState() else False)
+        print("Setting Value:", True if self.chkAutoLoad.checkState() else False)
         sttgs.sync()
 
         settings.autoSave = True if self.chkAutoSave.checkState() else False
         settings.autoSaveNoChanges = True if self.chkAutoSaveNoChanges.checkState() else False
         settings.saveOnQuit = True if self.chkSaveOnQuit.checkState() else False
+        settings.saveToZip = True if self.chkSaveToZip.checkState() else False
         settings.autoSaveDelay = int(self.txtAutoSave.text())
         settings.autoSaveNoChangesDelay = int(self.txtAutoSaveNoChanges.text())
         self.mw.saveTimer.setInterval(settings.autoSaveDelay * 60 * 1000)

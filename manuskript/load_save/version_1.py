@@ -105,8 +105,7 @@ def saveProject(zip=None):
     @return: Nothing
     """
     if zip is None:
-        zip = False
-        # FIXME: use value from settings
+        zip = settings.saveToZip
 
     log("\n\nSaving to:", "zip" if zip else "folder")
 
@@ -650,6 +649,9 @@ def loadProject(project, zip=None):
         settings.load(files["settings.txt"], fromString=True, protocol=0)
     else:
         errors.append("settings.txt")
+
+    # Just to be sure
+    settings.saveToZip = zip
 
     ####################################################################################################################
     # Labels
