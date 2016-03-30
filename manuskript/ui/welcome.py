@@ -89,7 +89,7 @@ class welcome(QWidget, Ui_welcome):
         if sttgns.contains("recentFiles"):
             lst = sttgns.value("recentFiles")
             self.mw.menuRecents.clear()
-            for f in lst:
+            for f in [f for f in lst if os.path.exists(f)]:
                 name = os.path.split(f)[1]
                 a = QAction(name, self)
                 a.setData(f)
