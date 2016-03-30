@@ -1,6 +1,6 @@
 title:          Peter preaches
 ID:             12
-type:           txt
+type:           md
 POV:            0
 compile:        2
 

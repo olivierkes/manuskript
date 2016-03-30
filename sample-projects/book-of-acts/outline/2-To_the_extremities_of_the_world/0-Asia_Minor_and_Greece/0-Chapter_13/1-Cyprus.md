@@ -1,6 +1,6 @@
 title:          Cyprus
 ID:             52
-type:           txt
+type:           md
 notes:          {P:0:The good news spreads from Jerusalem to Rome}
                 {C:5:Barnabas}
 compile:        2

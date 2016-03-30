@@ -1,6 +1,6 @@
 title:          The Church in Antioch
 ID:             44
-type:           txt
+type:           md
 notes:          {P:2:Paul and Barnabas fight}
                 {C:5:Barnabas}
 compile:        2

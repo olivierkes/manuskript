@@ -1,6 +1,6 @@
 title:          The conversion of Peter
 ID:             42
-type:           txt
+type:           md
 POV:            0
 compile:        2
 

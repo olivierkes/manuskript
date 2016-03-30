@@ -1,6 +1,6 @@
 title:          Peter and John in front of the Sanhedrin
 ID:             16
-type:           txt
+type:           md
 POV:            0
 compile:        2
 

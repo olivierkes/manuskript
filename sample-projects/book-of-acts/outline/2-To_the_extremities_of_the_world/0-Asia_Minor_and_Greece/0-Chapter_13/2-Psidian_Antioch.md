@@ -1,6 +1,6 @@
 title:          Psidian Antioch
 ID:             53
-type:           txt
+type:           md
 notes:          {C:5:Barnabas}
 compile:        2
 

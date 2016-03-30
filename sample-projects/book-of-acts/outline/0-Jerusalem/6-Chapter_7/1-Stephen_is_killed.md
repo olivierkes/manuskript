@@ -1,6 +1,6 @@
 title:          Stephen is killed
 ID:             25
-type:           txt
+type:           md
 POV:            3
 compile:        2
 

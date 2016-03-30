@@ -1,6 +1,6 @@
 title:          The Council writes to gentile believers
 ID:             58
-type:           txt
+type:           md
 notes:          {C:5:Barnabas}
 compile:        2
 

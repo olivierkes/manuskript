@@ -1,6 +1,6 @@
 title:          Peter adresses the crowd
 ID:             15
-type:           txt
+type:           md
 POV:            0
 notes:          {P:0:The good news spreads from Jerusalem to Rome}
 compile:        2

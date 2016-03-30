@@ -1,6 +1,6 @@
 title:          Philip and the Ethiopian
 ID:             36
-type:           txt
+type:           md
 POV:            2
 compile:        2
 

@@ -1,6 +1,6 @@
 title:          Many healings done by the aposles
 ID:             20
-type:           txt
+type:           md
 compile:        2
 
 

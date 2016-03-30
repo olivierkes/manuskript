@@ -1,6 +1,6 @@
 title:          The Council at Jerusalem
 ID:             57
-type:           txt
+type:           md
 notes:          {P:1:Peter needs to broaden his understanding of the Gospel}
                 {C:5:Barnabas}
 compile:        2

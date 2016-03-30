@@ -1,6 +1,6 @@
 title:          Peter heals a beggar
 ID:             13
-type:           txt
+type:           md
 POV:            0
 compile:        2
 

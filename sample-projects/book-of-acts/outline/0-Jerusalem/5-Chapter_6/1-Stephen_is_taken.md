@@ -1,6 +1,6 @@
 title:          Stephen is taken
 ID:             23
-type:           txt
+type:           md
 POV:            3
 compile:        2
 

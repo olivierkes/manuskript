@@ -1,6 +1,6 @@
 title:          Paul and Barnabas fight and split
 ID:             59
-type:           txt
+type:           md
 notes:          {P:2:Paul and Barnabas fight}
                 {C:5:Barnabas}
 compile:        2

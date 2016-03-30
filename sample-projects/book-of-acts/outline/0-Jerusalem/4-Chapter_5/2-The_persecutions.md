@@ -1,6 +1,6 @@
 title:          The persecutions
 ID:             21
-type:           txt
+type:           md
 compile:        2
 
 

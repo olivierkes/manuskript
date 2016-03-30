@@ -1,6 +1,6 @@
 title:          Herod dies
 ID:             46
-type:           txt
+type:           md
 POV:            4
 notes:          Present:
                 - {C:1:Paul}

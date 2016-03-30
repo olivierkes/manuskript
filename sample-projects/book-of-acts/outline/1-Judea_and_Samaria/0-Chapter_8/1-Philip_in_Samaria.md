@@ -1,6 +1,6 @@
 title:          Philip in Samaria
 ID:             32
-type:           txt
+type:           md
 POV:            2
 notes:          {P:0:The good news spreads from Jerusalem to Rome}
 compile:        2

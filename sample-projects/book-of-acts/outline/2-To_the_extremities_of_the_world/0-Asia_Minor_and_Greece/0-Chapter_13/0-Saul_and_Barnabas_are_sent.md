@@ -1,6 +1,6 @@
 title:          Saul and Barnabas are sent
 ID:             51
-type:           txt
+type:           md
 notes:          {P:2:Paul and Barnabas fight}
                 {C:5:Barnabas}
                 

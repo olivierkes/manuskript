@@ -1,6 +1,6 @@
 title:          Peter explains his actions
 ID:             43
-type:           txt
+type:           md
 POV:            0
 notes:          {P:1:Peter needs to broaden his understanding of the Gospel}
 compile:        2

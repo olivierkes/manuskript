@@ -1,6 +1,6 @@
 title:          The church scattered
 ID:             26
-type:           txt
+type:           md
 notes:          {P:0:The good news spreads from Jerusalem to Rome}
 compile:        2
 

@@ -1,6 +1,6 @@
 title:          Saul in Damascus and Jerusalem
 ID:             38
-type:           txt
+type:           md
 POV:            1
 notes:          {P:2:Paul and Barnabas fight}
                 {C:5:Barnabas}

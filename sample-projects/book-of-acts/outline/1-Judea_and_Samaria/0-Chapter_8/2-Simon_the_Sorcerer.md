@@ -1,6 +1,6 @@
 title:          Simon the Sorcerer
 ID:             33
-type:           txt
+type:           md
 POV:            2
 compile:        2
 
