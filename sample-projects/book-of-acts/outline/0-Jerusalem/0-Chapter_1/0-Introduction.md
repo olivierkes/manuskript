@@ -1,6 +1,6 @@
 title:          Introduction
 ID:             1
-type:           txt
+type:           md
 compile:        2
 
 

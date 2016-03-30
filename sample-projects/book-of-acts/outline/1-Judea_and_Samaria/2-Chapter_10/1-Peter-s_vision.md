@@ -1,6 +1,6 @@
 title:          Peter's vision
 ID:             41
-type:           txt
+type:           md
 POV:            0
 compile:        2
 

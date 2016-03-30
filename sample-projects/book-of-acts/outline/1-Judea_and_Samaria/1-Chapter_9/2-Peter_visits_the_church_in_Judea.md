@@ -1,6 +1,6 @@
 title:          Peter visits the church in Judea
 ID:             39
-type:           txt
+type:           md
 POV:            0
 compile:        2
 

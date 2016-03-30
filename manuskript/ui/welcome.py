@@ -89,7 +89,7 @@ class welcome(QWidget, Ui_welcome):
         if sttgns.contains("recentFiles"):
             lst = sttgns.value("recentFiles")
             self.mw.menuRecents.clear()
-            for f in lst:
+            for f in [f for f in lst if os.path.exists(f)]:
                 name = os.path.split(f)[1]
                 a = QAction(name, self)
                 a.setData(f)
@@ -191,15 +191,6 @@ class welcome(QWidget, Ui_welcome):
                 (3, self.tr("Section")),
                 (1000, None)
             ], "Non-fiction")
-        ]
-
-    @classmethod
-    def defaultTextType(cls):
-        return [
-            ("t2t",  qApp.translate("Welcome", "Txt2Tags"), "text-x-generic"),
-            ("html", qApp.translate("Welcome", "Rich Text (html)"), "text-html"),
-            ("txt",  qApp.translate("Welcome", "Plain Text"), "text-x-generic"),
-            ("md",   qApp.translate("Welcome", "Multi-Markdown"), "text-x-generic"),
         ]
 
     def changeTemplate(self, item, column):
@@ -343,11 +334,6 @@ class welcome(QWidget, Ui_welcome):
             sub = QTreeWidgetItem(item, [f[:-4]])
             sub.setData(0, Qt.UserRole, f)
 
-        # Populates default text type
-        self.cmbDefaultType.clear()
-        for t in self.defaultTextType():
-            self.cmbDefaultType.addItem(QIcon.fromTheme(t[2]), t[1], t[0])
-
         self.tree.expandAll()
 
     def loadDefaultDatas(self):
@@ -403,8 +389,7 @@ class welcome(QWidget, Ui_welcome):
         self.mw.mdlWorld = worldModel(self.mw)
 
         root = self.mw.mdlOutline.rootItem
-        _type = self.cmbDefaultType.currentData()
-        settings.defaultTextType = _type
+        _type = "md"
 
         def addElement(parent, datas):
             if len(datas) == 2 and datas[1][1] == None or \

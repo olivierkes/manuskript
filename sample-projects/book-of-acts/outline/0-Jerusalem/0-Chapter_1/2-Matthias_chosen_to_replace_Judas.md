@@ -1,6 +1,6 @@
 title:          Matthias chosen to replace Judas
 ID:             3
-type:           txt
+type:           md
 notes:          {C:2:Philip}
 compile:        2
 

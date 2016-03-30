@@ -1,6 +1,6 @@
 title:          Lystra and Derbe
 ID:             55
-type:           txt
+type:           md
 notes:          {C:5:Barnabas}
 compile:        2
 

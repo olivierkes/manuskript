@@ -1,6 +1,6 @@
 title:          The believers pray
 ID:             17
-type:           txt
+type:           md
 notes:          Mention: {C:4:Herod}
 compile:        2
 

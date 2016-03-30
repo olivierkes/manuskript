@@ -1,6 +1,6 @@
 title:          The choosing of seven
 ID:             22
-type:           txt
+type:           md
 notes:          {C:2:Philip}
 compile:        2
 

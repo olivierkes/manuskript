@@ -481,12 +481,8 @@ class outlineItem():
         elif role == Qt.DecorationRole and column == Outline.title.value:
             if self.isFolder():
                 return QIcon.fromTheme("folder")
-            elif self.isText:
+            elif self.isMD():
                 return QIcon.fromTheme("text-x-generic")
-            elif self.isT2T() or self.isMD():
-                return QIcon.fromTheme("text-x-script")
-            elif self.isHTML():
-                return QIcon.fromTheme("text-html")
 
                 # elif role == Qt.ForegroundRole:
                 # if self.isCompile() in [0, "0"]:
@@ -527,15 +523,7 @@ class outlineItem():
             updateWordCount = not Outline(column) in self._data or self._data[Outline(column)] != data
 
         # Stuff to do before
-        if column == Outline.type.value:
-            oldType = self._data[Outline.type]
-            if oldType == "html" and data in ["txt", "t2t", "md"]:
-                # Resource inneficient way to convert HTML to plain text
-                self._data[Outline.text] = HTML2PlainText(self._data[Outline.text])
-            elif oldType in ["txt", "t2t", "md"] and data == "html" and Outline.text in self._data:
-                self._data[Outline.text] = self._data[Outline.text].replace("\n", "<br>")
-
-        elif column == Outline.text.value:
+        if column == Outline.text.value:
             self.addRevision()
 
         # Setting data
@@ -658,20 +646,14 @@ class outlineItem():
     def isFolder(self):
         return self._data[Outline.type] == "folder"
 
-    def isT2T(self):
-        return self._data[Outline.type] == "t2t"
+    def isText(self):
+        return self._data[Outline.type] == "md"
 
     def isMD(self):
         return self._data[Outline.type] == "md"
 
     def isMMD(self):
         return self._data[Outline.type] == "md"
-
-    def isHTML(self):
-        return self._data[Outline.type] == "html"
-
-    def isText(self):
-        return self._data[Outline.type] == "txt"
 
     def text(self):
         return self.data(Outline.text.value)

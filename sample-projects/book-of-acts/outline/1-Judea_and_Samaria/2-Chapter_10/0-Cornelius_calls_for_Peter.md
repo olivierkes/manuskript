@@ -1,6 +1,6 @@
 title:          Cornelius calls for Peter
 ID:             40
-type:           txt
+type:           md
 POV:            0
 notes:          {P:1}
 compile:        2

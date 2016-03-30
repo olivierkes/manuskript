@@ -61,10 +61,6 @@ class textFormat(QWidget, Ui_textFormat):
 
         elif item.isText():
             self.align.setVisible(False)
-            self.format.setVisible(False)
-
-        elif item.isT2T() or item.isMD():
-            self.align.setVisible(False)
 
     def setFormat(self):
         act = self.sender()

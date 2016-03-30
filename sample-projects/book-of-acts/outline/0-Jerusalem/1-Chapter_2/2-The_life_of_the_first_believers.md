@@ -1,6 +1,6 @@
 title:          The life of the first believers
 ID:             14
-type:           txt
+type:           md
 compile:        2
 
 

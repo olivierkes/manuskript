@@ -7,14 +7,23 @@
     <x>0</x>
     <y>0</y>
     <width>192</width>
-    <height>159</height>
+    <height>186</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
-   <property name="margin">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
     <number>0</number>
    </property>
    <item>
@@ -40,7 +49,16 @@
      </property>
      <widget class="QWidget" name="page">
       <layout class="QVBoxLayout" name="verticalLayout_2">
-       <property name="margin">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
         <number>0</number>
        </property>
        <item>
@@ -105,28 +123,28 @@
            </property>
           </widget>
          </item>
-         <item row="5" column="0">
+         <item row="4" column="0">
           <widget class="QLabel" name="lblCompile">
            <property name="text">
             <string>Compile</string>
            </property>
           </widget>
          </item>
-         <item row="5" column="1">
+         <item row="4" column="1">
           <widget class="chkOutlineCompile" name="chkCompile">
            <property name="text">
             <string/>
            </property>
           </widget>
          </item>
-         <item row="6" column="0">
+         <item row="5" column="0">
           <widget class="QLabel" name="lblGoal">
            <property name="text">
             <string>Goal</string>
            </property>
           </widget>
          </item>
-         <item row="6" column="1">
+         <item row="5" column="1">
           <widget class="lineEditView" name="txtGoal">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -148,26 +166,6 @@
            </property>
           </widget>
          </item>
-         <item row="3" column="0">
-          <widget class="QLabel" name="lblLabel_2">
-           <property name="text">
-            <string>Text type:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="1">
-          <widget class="cmbOutlineTypeChoser" name="cmbType">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="frame">
-            <bool>false</bool>
-           </property>
-          </widget>
-         </item>
         </layout>
        </item>
       </layout>
@@ -177,7 +175,16 @@
        <property name="spacing">
         <number>0</number>
        </property>
-       <property name="margin">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
         <number>0</number>
        </property>
        <item>
@@ -318,11 +325,6 @@
    <class>cmbOutlineLabelChoser</class>
    <extends>QComboBox</extends>
    <header>manuskript.ui.views.cmbOutlineLabelChoser.h</header>
-  </customwidget>
-  <customwidget>
-   <class>cmbOutlineTypeChoser</class>
-   <extends>QComboBox</extends>
-   <header>manuskript.ui.views.cmbOutlineTypeChoser.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

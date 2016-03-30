@@ -1,6 +1,6 @@
 title:          The believers share
 ID:             18
-type:           txt
+type:           md
 notes:          {C:5:Barnabas}
 compile:        2
 

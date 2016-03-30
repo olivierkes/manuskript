@@ -144,8 +144,6 @@ class revisions(QWidget, Ui_revisions):
         textBefore = [r[1] for r in item.revisions() if r[0] == ts][0]
 
         if self.actShowVersion.isChecked():
-            if item.type() == "t2t":
-                textBefore = Ref.basicT2TFormat(textBefore)
             self.view.setText(textBefore)
             return
 
@@ -160,7 +158,7 @@ class revisions(QWidget, Ui_revisions):
         else:
             _format = lambda x: x
 
-        extra = "" if item.type() == "html" else "<br>"
+        extra = "<br>"
         diff = [d for d in diff if d and not d[:2] == "? "]
         mydiff = ""
         skip = False
@@ -177,8 +175,6 @@ class revisions(QWidget, Ui_revisions):
 
             # Same line
             if op == "  " and not self.actDiffOnly.isChecked():
-                if item.type() == "t2t":
-                    txt = Ref.basicT2TFormat(txt)
                 mydiff += "{}{}".format(txt, extra)
 
             elif op == "- " and op2 == "+ ":

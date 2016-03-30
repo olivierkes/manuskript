@@ -1,6 +1,6 @@
 title:          Peter escapes from prison
 ID:             45
-type:           txt
+type:           md
 POV:            0
 notes:          Mention: {C:4:Herod}
 compile:        2

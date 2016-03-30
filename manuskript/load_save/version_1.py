@@ -18,7 +18,7 @@ from PyQt5.QtGui import QColor, QStandardItem
 
 from manuskript import settings
 from manuskript.enums import Character, World, Plot, PlotStep, Outline
-from manuskript.functions import mainWindow, iconColor, iconFromColorString
+from manuskript.functions import mainWindow, iconColor, iconFromColorString, HTML2PlainText
 from lxml import etree as ET
 
 from manuskript.load_save.version_0 import loadFilesFromZip
@@ -529,12 +529,7 @@ def exportOutlineItem(root):
             content = outlineToMMD(child)
             files.append((fpath, content))
 
-        elif child.type() in ["txt", "t2t", "md"]:
-            content = outlineToMMD(child)
-            files.append((spath, content))
-
-        elif child.type() in ["html"]:
-            # Save as html. Not the most beautiful, but hey.
+        elif child.type() == "md":
             content = outlineToMMD(child)
             files.append((spath, content))
 
@@ -565,7 +560,7 @@ def outlineItemPath(item):
         name = "{ID}-{name}{ext}".format(
             ID=str(item.row()).zfill(len(str(siblings))),
             name=slugify(item.title()),
-            ext="" if item.type() == "folder" else ".md"  # ".{}".format(item.type())  # To have .txt, .t2t, .html, ...
+            ext="" if item.type() == "folder" else ".md"
         )
         return outlineItemPath(item.parent()) + [name]
 
@@ -911,6 +906,14 @@ def outlineFromMMD(text, parent):
 
     # Store body
     item.setData(Outline.text.value, str(body))
+
+    # Set file format to "md"
+    # (Old version of manuskript had different file formats: text, t2t, html and md)
+    # If file format is html, convert to plain text:
+    if item.type() == "html":
+        item.setData(Outline.text.value, HTML2PlainText(body))
+    if item.type() in ["txt", "t2t", "html"]:
+        item.setData(Outline.type.value, "md")
 
     return item
 

@@ -1,6 +1,6 @@
 title:          Stephen preaches
 ID:             24
-type:           txt
+type:           md
 POV:            3
 compile:        2
 

@@ -1,6 +1,6 @@
 title:          The promised Spirit
 ID:             4
-type:           txt
+type:           md
 compile:        2
 
 

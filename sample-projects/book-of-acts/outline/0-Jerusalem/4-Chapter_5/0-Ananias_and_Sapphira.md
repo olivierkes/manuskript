@@ -1,6 +1,6 @@
 title:          Ananias and Sapphira
 ID:             19
-type:           txt
+type:           md
 compile:        2
 
 

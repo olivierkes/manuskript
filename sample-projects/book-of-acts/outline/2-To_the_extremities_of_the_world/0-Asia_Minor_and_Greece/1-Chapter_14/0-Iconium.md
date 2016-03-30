@@ -1,6 +1,6 @@
 title:          Iconium
 ID:             54
-type:           txt
+type:           md
 compile:        2
 
 
