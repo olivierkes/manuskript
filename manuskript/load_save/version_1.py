@@ -494,13 +494,13 @@ def addPlotItem(root, mdl, parent=QModelIndex()):
 
 def exportOutlineItem(root):
     """
-    Takes an outline item, and returns two lists:
+    Takes an outline item, and returns three lists:
     1. of (`filename`, `content`), representing the whole tree of files to be written, in multimarkdown.
-    3. of (`filename`, `filename`) listing files to be moved
-    2. of `filename`, representing files to be removed.
+    2. of (`filename`, `filename`) listing files to be moved
+    3. of `filename`, representing files to be removed.
 
     @param root: OutlineItem
-    @return: [(str, str)], [str]
+    @return: [(str, str)], [(str, str)], [str]
     """
 
     files = []
@@ -560,8 +560,10 @@ def outlineItemPath(item):
     if not item.parent():
         return ["outline"]
     else:
+        # Count the number of siblings for padding '0'
+        siblings = item.parent().childCount()
         name = "{ID}-{name}{ext}".format(
-            ID=item.row(),
+            ID=str(item.row()).zfill(len(str(siblings))),
             name=slugify(item.title()),
             ext="" if item.type() == "folder" else ".md"  # ".{}".format(item.type())  # To have .txt, .t2t, .html, ...
         )
