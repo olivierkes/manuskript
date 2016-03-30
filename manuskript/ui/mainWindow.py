@@ -1294,7 +1294,7 @@ class Ui_MainWindow(object):
         self.actViewTree.setText(_translate("MainWindow", "Tree"))
         self.actModeSimple.setText(_translate("MainWindow", "&Simple"))
         self.actModeFiction.setText(_translate("MainWindow", "&Fiction"))
-        self.actModeSnowflake.setText(_translate("MainWindow", "&Snowflake"))
+        self.actModeSnowflake.setText(_translate("MainWindow", "S&nowflake"))
         self.actViewCork.setText(_translate("MainWindow", "Index cards"))
         self.actViewOutline.setText(_translate("MainWindow", "Outline"))
         self.actSettings.setText(_translate("MainWindow", "S&ettings"))

@@ -86,7 +86,7 @@ frequencyAnalyzer = {
     "phraseMax": 5
 }
 
-viewMode = "fiction"
+viewMode = "fiction"  # simple, fiction
 saveToZip = True
     
 def save(filename=None, protocol=None):

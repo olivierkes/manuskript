@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/welcome_ui.ui'
 #
-# Created by: PyQt5 UI code generator 5.4.1
+# Created by: PyQt5 UI code generator 5.4.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_welcome(object):
     def setupUi(self, welcome):
         welcome.setObjectName("welcome")
-        welcome.resize(705, 422)
+        welcome.resize(728, 459)
         self.horizontalLayout = QtWidgets.QHBoxLayout(welcome)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.frame_2 = QtWidgets.QFrame(welcome)

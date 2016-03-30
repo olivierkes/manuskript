@@ -2291,7 +2291,7 @@ QListView::item:hover {
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>&amp;Snowflake</string>
+    <string>S&amp;nowflake</string>
    </property>
   </action>
   <action name="actViewCork">
