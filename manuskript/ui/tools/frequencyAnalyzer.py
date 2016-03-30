@@ -45,12 +45,6 @@ class frequencyAnalyzer(QWidget, Ui_FrequencyAnalyzer):
         def listPhrases(item, nMin, nMax):
             txt = item.text()
 
-            # Convert to plain text
-            if item.isHTML():
-                e = QTextEdit()
-                e.setHtml(item.text())
-                txt = e.toPlainText()
-
             # Split into words
             lst = re.findall(r"[\w']+", txt)            # Ignores punctuation
             # lst = re.findall(r"[\w']+|[.,!?;]", txt)  # Includes punctuation
@@ -91,12 +85,6 @@ class frequencyAnalyzer(QWidget, Ui_FrequencyAnalyzer):
 
         def listWords(item):
             txt = item.text()
-
-            # Convert to plain text
-            if item.isHTML():
-                e = QTextEdit()
-                e.setHtml(item.text())
-                txt = e.toPlainText()
 
             lst = re.findall(r"[\w']+", txt)
             for c in item.children():

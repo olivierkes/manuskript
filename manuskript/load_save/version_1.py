@@ -560,7 +560,7 @@ def outlineItemPath(item):
         name = "{ID}-{name}{ext}".format(
             ID=str(item.row()).zfill(len(str(siblings))),
             name=slugify(item.title()),
-            ext="" if item.type() == "folder" else ".md"  # ".{}".format(item.type())  # To have .txt, .t2t, .html, ...
+            ext="" if item.type() == "folder" else ".md"
         )
         return outlineItemPath(item.parent()) + [name]
 
