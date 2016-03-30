@@ -1984,7 +1984,7 @@
    </property>
    <widget class="QMenu" name="menuFile">
     <property name="title">
-     <string>Fi&amp;le</string>
+     <string>&amp;File</string>
     </property>
     <widget class="QMenu" name="menuRecents">
      <property name="title">
@@ -2008,7 +2008,7 @@
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
-     <string>Help</string>
+     <string>&amp;Help</string>
     </property>
     <addaction name="actShowHelp"/>
    </widget>
@@ -2021,7 +2021,7 @@
    </widget>
    <widget class="QMenu" name="menuEdit">
     <property name="title">
-     <string>E&amp;dit</string>
+     <string>&amp;Edit</string>
     </property>
     <addaction name="actLabels"/>
     <addaction name="actStatus"/>
@@ -2337,11 +2337,6 @@ QListView::item:hover {
   <action name="actToolFrequency">
    <property name="text">
     <string>&amp;Frequency Analyzer</string>
-   </property>
-  </action>
-  <action name="actionTest">
-   <property name="text">
-    <string>test</string>
    </property>
   </action>
  </widget>

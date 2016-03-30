@@ -1137,8 +1137,6 @@ class Ui_MainWindow(object):
         self.actCompile.setObjectName("actCompile")
         self.actToolFrequency = QtWidgets.QAction(MainWindow)
         self.actToolFrequency.setObjectName("actToolFrequency")
-        self.actionTest = QtWidgets.QAction(MainWindow)
-        self.actionTest.setObjectName("actionTest")
         self.menuFile.addAction(self.actOpen)
         self.menuFile.addAction(self.menuRecents.menuAction())
         self.menuFile.addAction(self.actSave)
@@ -1267,11 +1265,11 @@ class Ui_MainWindow(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_20), _translate("MainWindow", "Outline"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("MainWindow", "Labels"))
         self.tabMain.setTabText(self.tabMain.indexOf(self.lytTabDebug), _translate("MainWindow", "Debug"))
-        self.menuFile.setTitle(_translate("MainWindow", "Fi&le"))
+        self.menuFile.setTitle(_translate("MainWindow", "&File"))
         self.menuRecents.setTitle(_translate("MainWindow", "&Recents"))
-        self.menuHelp.setTitle(_translate("MainWindow", "Help"))
+        self.menuHelp.setTitle(_translate("MainWindow", "&Help"))
         self.menuTools.setTitle(_translate("MainWindow", "&Tools"))
-        self.menuEdit.setTitle(_translate("MainWindow", "E&dit"))
+        self.menuEdit.setTitle(_translate("MainWindow", "&Edit"))
         self.menuView.setTitle(_translate("MainWindow", "&View"))
         self.menuMode.setTitle(_translate("MainWindow", "&Mode"))
         self.dckCheatSheet.setWindowTitle(_translate("MainWindow", "&Cheat sheet"))
@@ -1303,7 +1301,6 @@ class Ui_MainWindow(object):
         self.actCompile.setText(_translate("MainWindow", "Co&mpile"))
         self.actCompile.setShortcut(_translate("MainWindow", "F6"))
         self.actToolFrequency.setText(_translate("MainWindow", "&Frequency Analyzer"))
-        self.actionTest.setText(_translate("MainWindow", "test"))
 
 from manuskript.ui.cheatSheet import cheatSheet
 from manuskript.ui.editors.mainEditor import mainEditor
