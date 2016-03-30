@@ -25,7 +25,7 @@ class cmbOutlineTypeChoser(QComboBox):
 
     def updateItems(self):
         self.clear()
-        types = welcome.defaultTextType()
+        types = []
 
         for t in types:
             self.addItem(QIcon.fromTheme(t[2]), t[1], t[0])

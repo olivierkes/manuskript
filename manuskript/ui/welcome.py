@@ -193,15 +193,6 @@ class welcome(QWidget, Ui_welcome):
             ], "Non-fiction")
         ]
 
-    @classmethod
-    def defaultTextType(cls):
-        return [
-            ("t2t",  qApp.translate("Welcome", "Txt2Tags"), "text-x-generic"),
-            ("html", qApp.translate("Welcome", "Rich Text (html)"), "text-html"),
-            ("txt",  qApp.translate("Welcome", "Plain Text"), "text-x-generic"),
-            ("md",   qApp.translate("Welcome", "Multi-Markdown"), "text-x-generic"),
-        ]
-
     def changeTemplate(self, item, column):
         template = [i for i in self.templates() if i[0] == item.text(0)]
         self.btnCreate.setText(self.btnCreateText)
@@ -343,11 +334,6 @@ class welcome(QWidget, Ui_welcome):
             sub = QTreeWidgetItem(item, [f[:-4]])
             sub.setData(0, Qt.UserRole, f)
 
-        # Populates default text type
-        self.cmbDefaultType.clear()
-        for t in self.defaultTextType():
-            self.cmbDefaultType.addItem(QIcon.fromTheme(t[2]), t[1], t[0])
-
         self.tree.expandAll()
 
     def loadDefaultDatas(self):
@@ -403,8 +389,7 @@ class welcome(QWidget, Ui_welcome):
         self.mw.mdlWorld = worldModel(self.mw)
 
         root = self.mw.mdlOutline.rootItem
-        _type = self.cmbDefaultType.currentData()
-        settings.defaultTextType = _type
+        _type = "md"
 
         def addElement(parent, datas):
             if len(datas) == 2 and datas[1][1] == None or \
