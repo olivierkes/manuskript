@@ -374,13 +374,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.stack.setCurrentIndex(1)
 
     def closeProject(self):
+
+        # Close open tabs in editor
+        self.mainEditor.closeAllTabs()
+
         # Save datas
         self.saveDatas()
 
         self.currentProject = None
         QSettings().setValue("lastProject", "")
-
-        # FIXME: close all opened tabs in mainEditor
 
         # Clear datas
         self.loadEmptyDatas()
