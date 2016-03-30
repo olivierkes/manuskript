@@ -11,6 +11,7 @@ from manuskript.enums import Outline
 from manuskript.functions import AUC
 from manuskript.functions import toString
 from manuskript.models.outlineModel import outlineModel
+from manuskript.ui.editors.MDFunctions import MDFormatSelection
 from manuskript.ui.editors.MMDHighlighter import MMDHighlighter
 from manuskript.ui.editors.basicHighlighter import basicHighlighter
 from manuskript.ui.editors.textFormat import textFormat
@@ -456,16 +457,12 @@ class textEditView(QTextEdit):
     def applyFormat(self, _format):
 
         if self._textFormat == "md":
-            # FIXME
-            print("Not implemented yet.")
 
-            # Model: from t2tFunctions
-            # if self._textFormat == "t2t":
-            #     if _format == "Bold":
-            #         t2tFormatSelection(self, 0)
-            #     elif _format == "Italic":
-            #         t2tFormatSelection(self, 1)
-            #     elif _format == "Underline":
-            #         t2tFormatSelection(self, 2)
-            #     elif _format == "Clear":
-            #         t2tClearFormat(self)
+            if _format == "Bold":
+                MDFormatSelection(self, 0)
+            elif _format == "Italic":
+                MDFormatSelection(self, 1)
+            elif _format == "Code":
+                MDFormatSelection(self, 2)
+            elif _format == "Clear":
+                MDFormatSelection(self)
