@@ -107,7 +107,7 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
                                autoResize=True)
             edt.setFrameShape(QFrame.NoFrame)
             edt.setStyleSheet("background: {};".format(settings.textEditor["background"]))
-            edt.setStatusTip("{} ({})".format(itm.path(), itm.type()))
+            edt.setStatusTip("{}".format(itm.path()))
             self.toggledSpellcheck.connect(edt.toggleSpellcheck, AUC)
             self.dictChanged.connect(edt.setDict, AUC)
             # edt.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)

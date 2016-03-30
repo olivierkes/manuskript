@@ -167,7 +167,7 @@ def infos(ref):
                         ls=ls.replace("\n", "<br>")) if ls.strip() else "",
                 notes="<p><b>{notesTitle}</b><br>{notes}</p>".format(
                         notesTitle=notesTitle,
-                        notes=linkifyAllRefs(basicT2TFormat(notes))) if notes.strip() else "",
+                        notes=linkifyAllRefs(notes)) if notes.strip() else "",
                 references=listReferences(ref)
         )
 
@@ -580,30 +580,6 @@ def listReferences(ref, title=qApp.translate("references", "Referenced in:")):
     return "<h2>{title}</h2><ul>{ref}</ul>".format(
             title=title,
             ref=listRefs) if listRefs else ""
-
-
-def basicT2TFormat(text, formatting=True, EOL=True, titles=True):
-    """A very basic t2t formatter to display notes and texts."""
-    text = text.splitlines()
-    for n, line in enumerate(text):
-        if formatting:
-            line = re.sub("\*\*(.*?)\*\*", "<b>\\1</b>", line)
-            line = re.sub("//(.*?)//", "<i>\\1</i>", line)
-            line = re.sub("__(.*?)__", "<u>\\1</u>", line)
-
-        if titles:
-            for i in range(1, 6):
-                r1 = '^\s*{s}([^=].*[^=]){s}\s*$'.format(s="=" * i)
-                r2 = '^\s*{s}([^\+].*[^\+]){s}\s*$'.format(s="\\+" * i)
-                t = "<h{n}>\\1</h{n}>".format(n=i)
-                line = re.sub(r1, t, line)
-                line = re.sub(r2, t, line)
-        text[n] = line
-    text = "\n".join(text)
-    if EOL:
-        text = text.replace("\n", "<br>")
-
-    return text
 
 
 def basicFormat(text):
