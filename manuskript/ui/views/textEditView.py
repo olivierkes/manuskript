@@ -398,15 +398,19 @@ class textEditView(QTextEdit):
             return popup_menu
 
         # Select the word under the cursor.
+        # But only if there is no selection (otherwise it's impossible to select more text to copy/cut)
         cursor = self.textCursor()
-        # cursor = self.cursorForPosition(pos)
-        cursor.select(QTextCursor.WordUnderCursor)
-        self.setTextCursor(cursor)
+        if not cursor.hasSelection():
+            cursor.select(QTextCursor.WordUnderCursor)
+            self.setTextCursor(cursor)
+
         # Check if the selected word is misspelled and offer spelling
         # suggestions if it is.
         if cursor.hasSelection():
             text = str(cursor.selectedText())
-            if not self._dict.check(text):
+            valid = self._dict.check(text)
+            selectedWord = cursor.selectedText()
+            if not valid:
                 spell_menu = QMenu(self.tr('Spelling Suggestions'), self)
                 for word in self._dict.suggest(text):
                     action = self.SpellAction(word, spell_menu)
@@ -416,7 +420,23 @@ class textEditView(QTextEdit):
                 # suggestions.
                 if len(spell_menu.actions()) != 0:
                     popup_menu.insertSeparator(popup_menu.actions()[0])
+                    # Adds: add to dictionary
+                    addAction = QAction(self.tr("&Add to dictionary"), popup_menu)
+                    addAction.triggered.connect(self.addWordToDict)
+                    addAction.setData(selectedWord)
+                    popup_menu.insertAction(popup_menu.actions()[0], addAction)
+                    # Adds: suggestions
                     popup_menu.insertMenu(popup_menu.actions()[0], spell_menu)
+                    # popup_menu.insertSeparator(popup_menu.actions()[0])
+
+            # If word was added to custom dict, give the possibility to remove it
+            elif valid and self._dict.is_added(selectedWord):
+                popup_menu.insertSeparator(popup_menu.actions()[0])
+                # Adds: remove from dictionary
+                rmAction = QAction(self.tr("&Remove from custom dictionary"), popup_menu)
+                rmAction.triggered.connect(self.rmWordFromDict)
+                rmAction.setData(selectedWord)
+                popup_menu.insertAction(popup_menu.actions()[0], rmAction)
 
         return popup_menu
 
@@ -431,6 +451,16 @@ class textEditView(QTextEdit):
         cursor.insertText(word)
 
         cursor.endEditBlock()
+
+    def addWordToDict(self):
+        word = self.sender().data()
+        self._dict.add(word)
+        self.highlighter.rehighlight()
+
+    def rmWordFromDict(self):
+        word = self.sender().data()
+        self._dict.remove(word)
+        self.highlighter.rehighlight()
 
     ###############################################################################
     # FORMATTING
