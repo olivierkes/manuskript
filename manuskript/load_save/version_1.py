@@ -475,10 +475,11 @@ def addPlotItem(root, mdl, parent=QModelIndex()):
                         step = ET.SubElement(outline, "step")
                         for cY in range(mdl.columnCount(index)):
                             cIndex = mdl.index(cX, cY, index)
-                            val = mdl.data(cIndex)
+                            # If empty, returns None, which creates trouble later with lxml, so default to ""
+                            val = mdl.data(cIndex) or ""
 
                             for w in PlotStep:
-                                if cY == w.value:
+                                if cY == w.value and w.name:
                                     step.attrib[w.name] = val
 
                 elif Plot.steps.name in outline.attrib:
