@@ -10,7 +10,7 @@ from PyQt5.QtWidgets import QApplication, qApp
 
 from manuskript.functions import appPath, writablePath
 
-_version = "0.2.0"
+_version = "0.3.0"
 
 faulthandler.enable()
 
