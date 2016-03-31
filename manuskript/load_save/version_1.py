@@ -118,9 +118,8 @@ def saveProject(zip=None):
 
     mw = mainWindow()
 
-    if zip:
-        # File format version
-        files.append(("VERSION", "1"))
+    # File format version
+    files.append(("MANUSKRIPT", "1"))
 
     # General infos (book and author)
     # Saved in plain text, in infos.txt
@@ -377,10 +376,6 @@ def saveProject(zip=None):
 
             if os.path.isdir(filename):
                 shutil.rmtree(filename)
-
-            elif path == "VERSION":
-                # If loading from zip, but saving to path, file VERSION is not needed.
-                continue
 
             else:  # elif os.path.exists(filename)
                 os.remove(filename)

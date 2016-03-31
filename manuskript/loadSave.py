@@ -39,10 +39,16 @@ def loadProject(project):
         isZip = False
 
     # Does it have a VERSION in zip root?
+    # Was used in transition between 0.2.0 and 0.3.0
+    # So VERSION part can be deleted for manuskript 0.4.0
     if isZip and "VERSION" in zf.namelist():
         version = int(zf.read("VERSION"))
 
-    # Zip but no VERSION: oldest file format
+    # Does it have a MANUSKRIPT in zip root?
+    elif isZip and "MANUSKRIPT" in zf.namelist():
+        version = int(zf.read("MANUSKRIPT"))
+
+    # Zip but no VERSION/MANUSKRIPT: oldest file format
     elif isZip:
         version = 0
 
