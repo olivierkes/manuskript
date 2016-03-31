@@ -182,11 +182,12 @@ class textEditView(QTextEdit):
         f = QFont()
         f.fromString(opt["font"])
         # self.setFont(f)
-        self.setStyleSheet("""
+        self.setStyleSheet("""QTextEdit{{
             background: {bg};
             color: {foreground};
             font-family: {ff};
             font-size: {fs};
+            }}
             """.format(
                 bg=opt["background"],
                 foreground=opt["fontColor"],
