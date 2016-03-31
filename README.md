@@ -5,7 +5,7 @@
 ![Main view](http://www.theologeek.ch/manuskript/wp-content/uploads/2016/03/manuskript-0.3.0.jpg)
 
 
-## [Download](http://www.theologeek.ch/manuksript/download)
+## [Download](http://www.theologeek.ch/manuskript/download)
 
 ## Running from sources
 
