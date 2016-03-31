@@ -375,6 +375,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def closeProject(self):
 
+        if not self.currentProject:
+            return
+
         # Close open tabs in editor
         self.mainEditor.closeAllTabs()
 

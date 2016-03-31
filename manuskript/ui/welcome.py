@@ -115,6 +115,7 @@ class welcome(QWidget, Ui_welcome):
     def loadRecentFile(self):
         act = self.sender()
         self.appendToRecentFiles(act.data())
+        self.mw.closeProject()
         self.mw.loadProject(act.data())
 
     ###############################################################################
