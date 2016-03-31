@@ -11,14 +11,14 @@ class metadataView(QWidget, Ui_metadataView):
         QWidget.__init__(self, parent)
         self.setupUi(self)
         self._lastIndexes = None
-        self.txtSummarySentance.setColumn(Outline.summarySentance.value)
+        self.txtSummarySentence.setColumn(Outline.summarySentence.value)
         self.txtSummaryFull.setColumn(Outline.summaryFull.value)
         self.txtNotes.setColumn(Outline.notes.value)
         self.revisions.setEnabled(False)
 
-    def setModels(self, mdlOutline, mdlPersos, mdlLabels, mdlStatus):
-        self.properties.setModels(mdlOutline, mdlPersos, mdlLabels, mdlStatus)
-        self.txtSummarySentance.setModel(mdlOutline)
+    def setModels(self, mdlOutline, mdlCharacter, mdlLabels, mdlStatus):
+        self.properties.setModels(mdlOutline, mdlCharacter, mdlLabels, mdlStatus)
+        self.txtSummarySentence.setModel(mdlOutline)
         self.txtSummaryFull.setModel(mdlOutline)
         self.txtNotes.setModel(mdlOutline)
         self.revisions.setModel(mdlOutline)
@@ -49,7 +49,7 @@ class metadataView(QWidget, Ui_metadataView):
         elif len(indexes) == 1:
             self.setEnabled(True)
             idx = indexes[0]
-            self.txtSummarySentance.setCurrentModelIndex(idx)
+            self.txtSummarySentence.setCurrentModelIndex(idx)
             self.txtSummaryFull.setCurrentModelIndex(idx)
             self.txtNotes.setCurrentModelIndex(idx)
             self.revisions.setEnabled(True)
@@ -57,7 +57,7 @@ class metadataView(QWidget, Ui_metadataView):
 
         else:
             self.setEnabled(True)
-            self.txtSummarySentance.setCurrentModelIndexes(indexes)
+            self.txtSummarySentence.setCurrentModelIndexes(indexes)
             self.txtSummaryFull.setCurrentModelIndexes(indexes)
             self.txtNotes.setCurrentModelIndexes(indexes)
             self.revisions.setEnabled(False)

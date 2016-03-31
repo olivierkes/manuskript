@@ -29,9 +29,7 @@ class arboExporter():
                     writeItem(c, path2)
 
             else:
-                ext = ".t2t" if item.isT2T() else \
-                    ".html" if item.isHTML() else \
-                        ".txt"
+                ext = ".md"
                 path2 = os.path.join(path, item.title() + ext)
                 f = open(path2, "w")
                 text = self.formatText(item.text(), item.type())

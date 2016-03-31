@@ -6,25 +6,25 @@ from manuskript import settings
 from manuskript.enums import Outline
 from manuskript.ui.views.dndView import dndView
 from manuskript.ui.views.outlineBasics import outlineBasics
-from manuskript.ui.views.outlineDelegates import outlineTitleDelegate, outlinePersoDelegate, outlineCompileDelegate, \
+from manuskript.ui.views.outlineDelegates import outlineTitleDelegate, outlineCharacterDelegate, outlineCompileDelegate, \
     outlineStatusDelegate, outlineGoalPercentageDelegate, outlineLabelDelegate
 
 
 class outlineView(QTreeView, dndView, outlineBasics):
-    def __init__(self, parent=None, modelPersos=None, modelLabels=None, modelStatus=None):
+    def __init__(self, parent=None, modelCharacters=None, modelLabels=None, modelStatus=None):
         QTreeView.__init__(self, parent)
         dndView.__init__(self)
         outlineBasics.__init__(self, parent)
 
-        self.modelPersos = modelPersos
+        self.modelCharacters = modelCharacters
         self.modelLabels = modelLabels
         self.modelStatus = modelStatus
 
         self.header().setStretchLastSection(False)
 
-    def setModelPersos(self, model):
-        # This is used by outlinePersoDelegate to select character
-        self.modelPersos = model
+    def setModelCharacters(self, model):
+        # This is used by outlineCharacterDelegate to select character
+        self.modelCharacters = model
 
     def setModelLabels(self, model):
         # This is used by outlineLabelDelegate to display labels
@@ -41,8 +41,8 @@ class outlineView(QTreeView, dndView, outlineBasics):
         self.outlineTitleDelegate = outlineTitleDelegate(self)
         # self.outlineTitleDelegate.setView(self)
         self.setItemDelegateForColumn(Outline.title.value, self.outlineTitleDelegate)
-        self.outlinePersoDelegate = outlinePersoDelegate(self.modelPersos)
-        self.setItemDelegateForColumn(Outline.POV.value, self.outlinePersoDelegate)
+        self.outlineCharacterDelegate = outlineCharacterDelegate(self.modelCharacters)
+        self.setItemDelegateForColumn(Outline.POV.value, self.outlineCharacterDelegate)
         self.outlineCompileDelegate = outlineCompileDelegate()
         self.setItemDelegateForColumn(Outline.compile.value, self.outlineCompileDelegate)
         self.outlineStatusDelegate = outlineStatusDelegate(self.modelStatus)
@@ -65,6 +65,10 @@ class outlineView(QTreeView, dndView, outlineBasics):
         self.header().setSectionResizeMode(Outline.goalPercentage.value, QHeaderView.ResizeToContents)
 
     def hideColumns(self):
+        if not self.model():
+            # outlineView is probably not initialized, because editorWidgets shows index cards or text.
+            return
+
         for c in range(self.model().columnCount()):
             self.hideColumn(c)
         for c in settings.outlineViewColumns:

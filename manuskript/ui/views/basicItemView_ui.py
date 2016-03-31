@@ -2,7 +2,8 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/views/basicItemView_ui.ui'
 #
-# Created by: PyQt5 UI code generator 5.4.2
+# Created: Thu Mar  3 17:26:11 2016
+#      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -23,7 +24,7 @@ class Ui_basicItemView(object):
         self.lblPlanPOV.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.lblPlanPOV.setObjectName("lblPlanPOV")
         self.horizontalLayout_11.addWidget(self.lblPlanPOV)
-        self.cmbPOV = cmbOutlinePersoChoser(basicItemView)
+        self.cmbPOV = cmbOutlineCharacterChoser(basicItemView)
         self.cmbPOV.setFrame(False)
         self.cmbPOV.setObjectName("cmbPOV")
         self.horizontalLayout_11.addWidget(self.cmbPOV)
@@ -43,10 +44,10 @@ class Ui_basicItemView(object):
         self.txtGoal.setObjectName("txtGoal")
         self.horizontalLayout_11.addWidget(self.txtGoal)
         self.verticalLayout.addLayout(self.horizontalLayout_11)
-        self.txtSummarySentance = lineEditView(basicItemView)
-        self.txtSummarySentance.setText("")
-        self.txtSummarySentance.setObjectName("txtSummarySentance")
-        self.verticalLayout.addWidget(self.txtSummarySentance)
+        self.txtSummarySentence = lineEditView(basicItemView)
+        self.txtSummarySentence.setText("")
+        self.txtSummarySentence.setObjectName("txtSummarySentence")
+        self.verticalLayout.addWidget(self.txtSummarySentence)
         self.label_9 = QtWidgets.QLabel(basicItemView)
         self.label_9.setObjectName("label_9")
         self.verticalLayout.addWidget(self.label_9)
@@ -63,9 +64,9 @@ class Ui_basicItemView(object):
         self.lblPlanPOV.setText(_translate("basicItemView", "POV:"))
         self.lblGoal.setText(_translate("basicItemView", "Goal:"))
         self.txtGoal.setPlaceholderText(_translate("basicItemView", "Word count"))
-        self.txtSummarySentance.setPlaceholderText(_translate("basicItemView", "One line summary"))
+        self.txtSummarySentence.setPlaceholderText(_translate("basicItemView", "One line summary"))
         self.label_9.setText(_translate("basicItemView", "Few sentences summary:"))
 
-from manuskript.ui.views.cmbOutlinePersoChoser import cmbOutlinePersoChoser
+from manuskript.ui.views.cmbOutlineCharacterChoser import cmbOutlineCharacterChoser
 from manuskript.ui.views.lineEditView import lineEditView
 from manuskript.ui.views.textEditView import textEditView

@@ -61,7 +61,7 @@ class basicHighlighter(QSyntaxHighlighter):
             fmt.setFontWeight(QFont.DemiBold)
             if txt.group(1) == Ref.TextLetter:
                 fmt.setBackground(QBrush(QColor(Qt.blue).lighter(190)))
-            elif txt.group(1) == Ref.PersoLetter:
+            elif txt.group(1) == Ref.CharacterLetter:
                 fmt.setBackground(QBrush(QColor(Qt.yellow).lighter(170)))
             elif txt.group(1) == Ref.PlotLetter:
                 fmt.setBackground(QBrush(QColor(Qt.red).lighter(170)))

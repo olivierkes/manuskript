@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_propertiesView(object):
     def setupUi(self, propertiesView):
         propertiesView.setObjectName("propertiesView")
-        propertiesView.resize(192, 159)
+        propertiesView.resize(192, 186)
         self.verticalLayout = QtWidgets.QVBoxLayout(propertiesView)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout.setObjectName("verticalLayout")
@@ -36,7 +36,7 @@ class Ui_propertiesView(object):
         self.lblPOV = QtWidgets.QLabel(self.page)
         self.lblPOV.setObjectName("lblPOV")
         self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.lblPOV)
-        self.cmbPOV = cmbOutlinePersoChoser(self.page)
+        self.cmbPOV = cmbOutlineCharacterChoser(self.page)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -71,14 +71,14 @@ class Ui_propertiesView(object):
         self.formLayout.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.cmbLabel)
         self.lblCompile = QtWidgets.QLabel(self.page)
         self.lblCompile.setObjectName("lblCompile")
-        self.formLayout.setWidget(5, QtWidgets.QFormLayout.LabelRole, self.lblCompile)
+        self.formLayout.setWidget(4, QtWidgets.QFormLayout.LabelRole, self.lblCompile)
         self.chkCompile = chkOutlineCompile(self.page)
         self.chkCompile.setText("")
         self.chkCompile.setObjectName("chkCompile")
-        self.formLayout.setWidget(5, QtWidgets.QFormLayout.FieldRole, self.chkCompile)
+        self.formLayout.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.chkCompile)
         self.lblGoal = QtWidgets.QLabel(self.page)
         self.lblGoal.setObjectName("lblGoal")
-        self.formLayout.setWidget(6, QtWidgets.QFormLayout.LabelRole, self.lblGoal)
+        self.formLayout.setWidget(5, QtWidgets.QFormLayout.LabelRole, self.lblGoal)
         self.txtGoal = lineEditView(self.page)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -89,19 +89,7 @@ class Ui_propertiesView(object):
         self.txtGoal.setStyleSheet("border-radius: 6px;")
         self.txtGoal.setFrame(False)
         self.txtGoal.setObjectName("txtGoal")
-        self.formLayout.setWidget(6, QtWidgets.QFormLayout.FieldRole, self.txtGoal)
-        self.lblLabel_2 = QtWidgets.QLabel(self.page)
-        self.lblLabel_2.setObjectName("lblLabel_2")
-        self.formLayout.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.lblLabel_2)
-        self.cmbType = cmbOutlineTypeChoser(self.page)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.cmbType.sizePolicy().hasHeightForWidth())
-        self.cmbType.setSizePolicy(sizePolicy)
-        self.cmbType.setFrame(False)
-        self.cmbType.setObjectName("cmbType")
-        self.formLayout.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.cmbType)
+        self.formLayout.setWidget(5, QtWidgets.QFormLayout.FieldRole, self.txtGoal)
         self.verticalLayout_2.addLayout(self.formLayout)
         self.stack.addWidget(self.page)
         self.page_2 = QtWidgets.QWidget()
@@ -115,7 +103,7 @@ class Ui_propertiesView(object):
         self.lblPOV_2 = QtWidgets.QLabel(self.page_2)
         self.lblPOV_2.setObjectName("lblPOV_2")
         self.formLayout_2.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.lblPOV_2)
-        self.cmbPOVMulti = cmbOutlinePersoChoser(self.page_2)
+        self.cmbPOVMulti = cmbOutlineCharacterChoser(self.page_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -186,7 +174,6 @@ class Ui_propertiesView(object):
         self.lblCompile.setText(_translate("propertiesView", "Compile"))
         self.lblGoal.setText(_translate("propertiesView", "Goal"))
         self.txtGoal.setPlaceholderText(_translate("propertiesView", "Word count"))
-        self.lblLabel_2.setText(_translate("propertiesView", "Text type:"))
         self.lblPOV_2.setText(_translate("propertiesView", "POV"))
         self.label_31.setText(_translate("propertiesView", "Status"))
         self.label_34.setText(_translate("propertiesView", "Label"))
@@ -195,8 +182,7 @@ class Ui_propertiesView(object):
         self.txtGoalMulti.setPlaceholderText(_translate("propertiesView", "Word count"))
 
 from manuskript.ui.views.chkOutlineCompile import chkOutlineCompile
+from manuskript.ui.views.cmbOutlineCharacterChoser import cmbOutlineCharacterChoser
 from manuskript.ui.views.cmbOutlineLabelChoser import cmbOutlineLabelChoser
-from manuskript.ui.views.cmbOutlinePersoChoser import cmbOutlinePersoChoser
 from manuskript.ui.views.cmbOutlineStatusChoser import cmbOutlineStatusChoser
-from manuskript.ui.views.cmbOutlineTypeChoser import cmbOutlineTypeChoser
 from manuskript.ui.views.lineEditView import lineEditView

@@ -11,10 +11,9 @@ from manuskript.enums import Outline
 from manuskript.functions import AUC
 from manuskript.functions import toString
 from manuskript.models.outlineModel import outlineModel
+from manuskript.ui.editors.MDFunctions import MDFormatSelection
+from manuskript.ui.editors.MMDHighlighter import MMDHighlighter
 from manuskript.ui.editors.basicHighlighter import basicHighlighter
-from manuskript.ui.editors.t2tFunctions import t2tClearFormat
-from manuskript.ui.editors.t2tFunctions import t2tFormatSelection
-from manuskript.ui.editors.t2tHighlighter import t2tHighlighter
 from manuskript.ui.editors.textFormat import textFormat
 
 try:
@@ -76,7 +75,11 @@ class textEditView(QTextEdit):
 
         # Spellchecking
         if enchant and self.spellcheck:
-            self._dict = enchant.Dict(self.currentDict if self.currentDict else enchant.get_default_language())
+            try:
+                self._dict = enchant.Dict(self.currentDict if self.currentDict else enchant.get_default_language())
+            except enchant.errors.DictNotFoundError:
+                self.spellcheck = False
+
         else:
             self.spellcheck = False
 
@@ -146,36 +149,25 @@ class textEditView(QTextEdit):
         self.updateText()
 
     def setupEditorForIndex(self, index):
-        # what type of text are we editing?
+        # In which model are we editing?
         if type(index.model()) != outlineModel:
             self._textFormat = "text"
             return
 
+        # what type of text are we editing?
         if self._column not in [Outline.text.value, Outline.notes.value]:
             self._textFormat = "text"
 
         else:
-            item = index.internalPointer()
-            if item.isHTML():
-                self._textFormat = "html"
-            elif item.isT2T():
-                self._textFormat = "t2t"
-            else:
-                self._textFormat = "text"
-
-        # Accept richtext maybe
-        if self._textFormat == "html":
-            self.setAcceptRichText(True)
-        else:
-            self.setAcceptRichText(False)
+            self._textFormat = "md"
 
         # Setting highlighter
         if self._highlighting:
             item = index.internalPointer()
-            if self._column == Outline.text.value and not item.isT2T():
-                self.highlighter = basicHighlighter(self)
+            if self._column in [Outline.text.value, Outline.notes.value]:
+                self.highlighter = MMDHighlighter(self)
             else:
-                self.highlighter = t2tHighlighter(self)
+                self.highlighter = basicHighlighter(self)
 
             self.highlighter.setDefaultBlockFormat(self._defaultBlockFormat)
 
@@ -190,11 +182,12 @@ class textEditView(QTextEdit):
         f = QFont()
         f.fromString(opt["font"])
         # self.setFont(f)
-        self.setStyleSheet("""
+        self.setStyleSheet("""QTextEdit{{
             background: {bg};
             color: {foreground};
             font-family: {ff};
             font-size: {fs};
+            }}
             """.format(
                 bg=opt["background"],
                 foreground=opt["fontColor"],
@@ -235,15 +228,7 @@ class textEditView(QTextEdit):
                 # self.objectName(), self.parent().objectName()))
 
             if topLeft.row() <= self._index.row() <= bottomRight.row():
-                if self._column == Outline.text.value and \
-                                        topLeft.column() <= Outline.type.value <= bottomRight.column():
-                    # If item type change, and we display the main text,
-                    # we reset the index to set the proper
-                    # highlighter and other defaults
-                    self.setupEditorForIndex(self._index)
-                    self.updateText()
-
-                elif topLeft.column() <= self._column <= bottomRight.column():
+                if topLeft.column() <= self._column <= bottomRight.column():
                     self.updateText()
 
         elif self._indexes:
@@ -279,15 +264,9 @@ class textEditView(QTextEdit):
         self._updating = True
         if self._index:
             self.disconnectDocument()
-            if self._textFormat == "html":
-                if self.toHtml() != toString(self._model.data(self._index)):
-                    # print("    Updating html")
-                    html = self._model.data(self._index)
-                    self.document().setHtml(toString(html))
-            else:
-                if self.toPlainText() != toString(self._model.data(self._index)):
-                    # print("    Updating plaintext")
-                    self.document().setPlainText(toString(self._model.data(self._index)))
+            if self.toPlainText() != toString(self._model.data(self._index)):
+                # print("    Updating plaintext")
+                self.document().setPlainText(toString(self._model.data(self._index)))
             self.reconnectDocument()
 
         elif self._indexes:
@@ -304,7 +283,6 @@ class textEditView(QTextEdit):
                     break
 
             if same:
-                # Assuming that we don't use HTML with multiple items
                 self.document().setPlainText(t[0])
             else:
                 self.document().setPlainText("")
@@ -323,26 +301,11 @@ class textEditView(QTextEdit):
         # print("Submitting", self.objectName())
         if self._index:
             # item = self._index.internalPointer()
-            if self._textFormat == "html":
-                if self.toHtml() != self._model.data(self._index):
-                    # print("    Submitting html")
-                    self._updating = True
-                    html = self.toHtml()
-                    # We don't store paragraph and font settings
-                    html = re.sub(r"font-family:.*?;\s*", "", html)
-                    html = re.sub(r"font-size:.*?;\s*", "", html)
-                    html = re.sub(r"margin-.*?;\s*", "", html)
-                    html = re.sub(r"text-indent:.*?;\s*", "", html)
-                    html = re.sub(r"line-height:.*?;\s*", "", html)
-                    # print("Submitting:", html)
-                    self._model.setData(self._index, html)
-                    self._updating = False
-            else:
-                if self.toPlainText() != self._model.data(self._index):
-                    # print("    Submitting plain text")
-                    self._updating = True
-                    self._model.setData(self._index, self.toPlainText())
-                    self._updating = False
+            if self.toPlainText() != self._model.data(self._index):
+                # print("    Submitting plain text")
+                self._updating = True
+                self._model.setData(self._index, self.toPlainText())
+                self._updating = False
 
         elif self._indexes:
             self._updating = True
@@ -393,7 +356,13 @@ class textEditView(QTextEdit):
     def toggleSpellcheck(self, v):
         self.spellcheck = v
         if enchant and self.spellcheck and not self._dict:
-            self._dict = enchant.Dict(self.currentDict if self.currentDict else enchant.get_default_language())
+            if self.currentDict:
+                self._dict = enchant.Dict(self.currentDict)
+            elif enchant.dict_exists(enchant.get_default_language()):
+                self._dict = enchant.Dict(enchant.get_default_language())
+            else:
+                self.spellcheck = False
+
         if self.highlighter:
             self.highlighter.rehighlight()
         else:
@@ -430,15 +399,19 @@ class textEditView(QTextEdit):
             return popup_menu
 
         # Select the word under the cursor.
+        # But only if there is no selection (otherwise it's impossible to select more text to copy/cut)
         cursor = self.textCursor()
-        # cursor = self.cursorForPosition(pos)
-        cursor.select(QTextCursor.WordUnderCursor)
-        self.setTextCursor(cursor)
+        if not cursor.hasSelection():
+            cursor.select(QTextCursor.WordUnderCursor)
+            self.setTextCursor(cursor)
+
         # Check if the selected word is misspelled and offer spelling
         # suggestions if it is.
         if cursor.hasSelection():
             text = str(cursor.selectedText())
-            if not self._dict.check(text):
+            valid = self._dict.check(text)
+            selectedWord = cursor.selectedText()
+            if not valid:
                 spell_menu = QMenu(self.tr('Spelling Suggestions'), self)
                 for word in self._dict.suggest(text):
                     action = self.SpellAction(word, spell_menu)
@@ -448,7 +421,23 @@ class textEditView(QTextEdit):
                 # suggestions.
                 if len(spell_menu.actions()) != 0:
                     popup_menu.insertSeparator(popup_menu.actions()[0])
+                    # Adds: add to dictionary
+                    addAction = QAction(self.tr("&Add to dictionary"), popup_menu)
+                    addAction.triggered.connect(self.addWordToDict)
+                    addAction.setData(selectedWord)
+                    popup_menu.insertAction(popup_menu.actions()[0], addAction)
+                    # Adds: suggestions
                     popup_menu.insertMenu(popup_menu.actions()[0], spell_menu)
+                    # popup_menu.insertSeparator(popup_menu.actions()[0])
+
+            # If word was added to custom dict, give the possibility to remove it
+            elif valid and self._dict.is_added(selectedWord):
+                popup_menu.insertSeparator(popup_menu.actions()[0])
+                # Adds: remove from dictionary
+                rmAction = QAction(self.tr("&Remove from custom dictionary"), popup_menu)
+                rmAction.triggered.connect(self.rmWordFromDict)
+                rmAction.setData(selectedWord)
+                popup_menu.insertAction(popup_menu.actions()[0], rmAction)
 
         return popup_menu
 
@@ -463,6 +452,16 @@ class textEditView(QTextEdit):
         cursor.insertText(word)
 
         cursor.endEditBlock()
+
+    def addWordToDict(self):
+        word = self.sender().data()
+        self._dict.add(word)
+        self.highlighter.rehighlight()
+
+    def rmWordFromDict(self):
+        word = self.sender().data()
+        self._dict.remove(word)
+        self.highlighter.rehighlight()
 
     ###############################################################################
     # FORMATTING
@@ -488,66 +487,13 @@ class textEditView(QTextEdit):
 
     def applyFormat(self, _format):
 
-        if self._textFormat == "html":
+        if self._textFormat == "md":
 
-            if _format == "Clear":
-
-                cursor = self.textCursor()
-
-                if _format == "Clear":
-                    fmt = self._defaultCharFormat
-                    cursor.setCharFormat(fmt)
-                    bf = self._defaultBlockFormat
-                    cursor.setBlockFormat(bf)
-
-            elif _format in ["Bold", "Italic", "Underline"]:
-
-                cursor = self.textCursor()
-
-                # If no selection, selects the word in which the cursor is now
-                if not cursor.hasSelection():
-                    cursor.movePosition(QTextCursor.StartOfWord,
-                                        QTextCursor.MoveAnchor)
-                    cursor.movePosition(QTextCursor.EndOfWord,
-                                        QTextCursor.KeepAnchor)
-
-                fmt = cursor.charFormat()
-
-                if _format == "Bold":
-                    fmt.setFontWeight(QFont.Bold if fmt.fontWeight() != QFont.Bold else QFont.Normal)
-                elif _format == "Italic":
-                    fmt.setFontItalic(not fmt.fontItalic())
-                elif _format == "Underline":
-                    fmt.setFontUnderline(not fmt.fontUnderline())
-
-                fmt2 = self._defaultCharFormat
-                fmt2.setFontWeight(fmt.fontWeight())
-                fmt2.setFontItalic(fmt.fontItalic())
-                fmt2.setFontUnderline(fmt.fontUnderline())
-
-                cursor.mergeCharFormat(fmt2)
-
-            elif _format in ["Left", "Center", "Right", "Justify"]:
-
-                cursor = self.textCursor()
-
-                # bf = cursor.blockFormat()
-                bf = QTextBlockFormat()
-                bf.setAlignment(
-                        Qt.AlignLeft if _format == "Left" else
-                        Qt.AlignHCenter if _format == "Center" else
-                        Qt.AlignRight if _format == "Right" else
-                        Qt.AlignJustify)
-
-                cursor.setBlockFormat(bf)
-                self.setTextCursor(cursor)
-
-        elif self._textFormat == "t2t":
             if _format == "Bold":
-                t2tFormatSelection(self, 0)
+                MDFormatSelection(self, 0)
             elif _format == "Italic":
-                t2tFormatSelection(self, 1)
-            elif _format == "Underline":
-                t2tFormatSelection(self, 2)
+                MDFormatSelection(self, 1)
+            elif _format == "Code":
+                MDFormatSelection(self, 2)
             elif _format == "Clear":
-                t2tClearFormat(self)
+                MDFormatSelection(self)

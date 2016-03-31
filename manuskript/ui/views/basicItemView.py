@@ -10,13 +10,13 @@ class basicItemView(QWidget, Ui_basicItemView):
     def __init__(self, parent=None):
         QWidget.__init__(self)
         self.setupUi(self)
-        self.txtSummarySentance.setColumn(Outline.summarySentance.value)
+        self.txtSummarySentence.setColumn(Outline.summarySentence.value)
         self.txtSummaryFull.setColumn(Outline.summaryFull.value)
         self.txtGoal.setColumn(Outline.setGoal.value)
 
-    def setModels(self, mdlOutline, mdlPersos, mdlLabels, mdlStatus):
-        self.cmbPOV.setModels(mdlPersos, mdlOutline)
-        self.txtSummarySentance.setModel(mdlOutline)
+    def setModels(self, mdlOutline, mdlCharacter, mdlLabels, mdlStatus):
+        self.cmbPOV.setModels(mdlCharacter, mdlOutline)
+        self.txtSummarySentence.setModel(mdlOutline)
         self.txtSummaryFull.setModel(mdlOutline)
         self.txtGoal.setModel(mdlOutline)
 
@@ -43,14 +43,14 @@ class basicItemView(QWidget, Ui_basicItemView):
         elif len(indexes) == 1:
             self.setEnabled(True)
             idx = indexes[0]
-            self.txtSummarySentance.setCurrentModelIndex(idx)
+            self.txtSummarySentence.setCurrentModelIndex(idx)
             self.txtSummaryFull.setCurrentModelIndex(idx)
             self.cmbPOV.setCurrentModelIndex(idx)
             self.txtGoal.setCurrentModelIndex(idx)
 
         else:
             self.setEnabled(True)
-            self.txtSummarySentance.setCurrentModelIndexes(indexes)
+            self.txtSummarySentence.setCurrentModelIndexes(indexes)
             self.txtSummaryFull.setCurrentModelIndexes(indexes)
             self.cmbPOV.setCurrentModelIndexes(indexes)
             self.txtGoal.setCurrentModelIndexes(indexes)

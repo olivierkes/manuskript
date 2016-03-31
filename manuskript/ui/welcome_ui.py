@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/welcome_ui.ui'
 #
-# Created by: PyQt5 UI code generator 5.4.1
+# Created by: PyQt5 UI code generator 5.4.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_welcome(object):
     def setupUi(self, welcome):
         welcome.setObjectName("welcome")
-        welcome.resize(705, 422)
+        welcome.resize(728, 459)
         self.horizontalLayout = QtWidgets.QHBoxLayout(welcome)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.frame_2 = QtWidgets.QFrame(welcome)
@@ -78,15 +78,6 @@ class Ui_welcome(object):
         self.btnAddWC.setObjectName("btnAddWC")
         self.horizontalLayout_2.addWidget(self.btnAddWC)
         self.templateLayout.addLayout(self.horizontalLayout_2)
-        self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        self.lblTotal_2 = QtWidgets.QLabel(self.frame_2)
-        self.lblTotal_2.setObjectName("lblTotal_2")
-        self.horizontalLayout_3.addWidget(self.lblTotal_2)
-        self.cmbDefaultType = QtWidgets.QComboBox(self.frame_2)
-        self.cmbDefaultType.setObjectName("cmbDefaultType")
-        self.horizontalLayout_3.addWidget(self.cmbDefaultType)
-        self.templateLayout.addLayout(self.horizontalLayout_3)
         self.horizontalLayout_23.addLayout(self.templateLayout)
         self.verticalLayout_32.addLayout(self.horizontalLayout_23)
         self.line_4 = QtWidgets.QFrame(self.frame_2)
@@ -133,7 +124,6 @@ class Ui_welcome(object):
         self.tree.setSortingEnabled(__sortingEnabled)
         self.btnAddLevel.setText(_translate("welcome", "Add level"))
         self.btnAddWC.setText(_translate("welcome", "Add wordcount"))
-        self.lblTotal_2.setText(_translate("welcome", "Default text type:"))
         self.chkLoadLastProject.setText(_translate("welcome", "Next time, automatically open last project"))
         self.btnOpen.setText(_translate("welcome", "Open..."))
         self.btnRecent.setText(_translate("welcome", "Recent"))

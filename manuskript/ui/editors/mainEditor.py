@@ -78,10 +78,14 @@ class mainEditor(QWidget, Ui_mainEditor):
         self.updateThingsVisible(index)
 
     def closeTab(self, index):
-        # FIXME: submit data if textedit?
         w = self.tab.widget(index)
         self.tab.removeTab(index)
+        w.setCurrentModelIndex(QModelIndex())
         w.deleteLater()
+
+    def closeAllTabs(self):
+        while(self.tab.count()):
+            self.closeTab(0)
 
     def allTabs(self):
         return [self.tab.widget(i) for i in range(self.tab.count())]

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>705</width>
-    <height>422</height>
+    <width>728</width>
+    <height>459</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -187,20 +187,6 @@
                <string>Add wordcount</string>
               </property>
              </widget>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_3">
-            <item>
-             <widget class="QLabel" name="lblTotal_2">
-              <property name="text">
-               <string>Default text type:</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QComboBox" name="cmbDefaultType"/>
             </item>
            </layout>
           </item>

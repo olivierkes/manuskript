@@ -11,9 +11,9 @@ import re
 from PyQt5.QtWidgets import qApp
 
 from manuskript.enums import Outline
-from manuskript.enums import Perso
+from manuskript.enums import Character
 from manuskript.enums import Plot
-from manuskript.enums import Subplot
+from manuskript.enums import PlotStep
 from manuskript.functions import mainWindow
 
 RegEx = r"{(\w):(\d+):?.*?}"
@@ -22,7 +22,7 @@ RegExNonCapturing = r"{\w:\d+:?.*?}"
 # The basic format of the references
 EmptyRef = "{{{}:{}:{}}}"
 EmptyRefSearchable = "{{{}:{}:"
-PersoLetter = "C"
+CharacterLetter = "C"
 TextLetter = "T"
 PlotLetter = "P"
 WorldLetter = "W"
@@ -37,13 +37,13 @@ def plotReference(ID, searchable=False):
         return EmptyRefSearchable.format(PlotLetter, ID, "")
 
 
-def persoReference(ID, searchable=False):
+def characterReference(ID, searchable=False):
     """Takes the ID of a character and returns a reference for that character.
     @searchable: returns a stripped version that allows simple text search."""
     if not searchable:
-        return EmptyRef.format(PersoLetter, ID, "")
+        return EmptyRef.format(CharacterLetter, ID, "")
     else:
-        return EmptyRefSearchable.format(PersoLetter, ID, "")
+        return EmptyRefSearchable.format(CharacterLetter, ID, "")
 
 
 def textReference(ID, searchable=False):
@@ -103,8 +103,8 @@ def infos(ref):
         POV = ""
         if item.POV():
             POV = "<a href='{ref}'>{text}</a>".format(
-                    ref=persoReference(item.POV()),
-                    text=mainWindow().mdlPersos.getPersoNameByID(item.POV()))
+                    ref=characterReference(item.POV()),
+                    text=mainWindow().mdlCharacter.getCharacterByID(item.POV()).name())
 
         # The status of the scene
         status = item.status()
@@ -130,7 +130,7 @@ def infos(ref):
         path = " > ".join(pathStr)
 
         # Summaries and notes
-        ss = item.data(Outline.summarySentance.value)
+        ss = item.data(Outline.summarySentence.value)
         ls = item.data(Outline.summaryFull.value)
         notes = item.data(Outline.notes.value)
 
@@ -167,17 +167,19 @@ def infos(ref):
                         ls=ls.replace("\n", "<br>")) if ls.strip() else "",
                 notes="<p><b>{notesTitle}</b><br>{notes}</p>".format(
                         notesTitle=notesTitle,
-                        notes=linkifyAllRefs(basicT2TFormat(notes))) if notes.strip() else "",
+                        notes=linkifyAllRefs(notes)) if notes.strip() else "",
                 references=listReferences(ref)
         )
 
         return text
 
     # A character
-    elif _type == PersoLetter:
-        m = mainWindow().mdlPersos
-        index = m.getIndexFromID(_ref)
-        name = m.name(index.row())
+    elif _type == CharacterLetter:
+        m = mainWindow().mdlCharacter
+        c = m.getCharacterByID(int(_ref))
+        index = c.index()
+
+        name = c.name()
 
         # Titles
         basicTitle = qApp.translate("references", "Basic infos")
@@ -191,14 +193,16 @@ def infos(ref):
         # basic infos
         basic = []
         for i in [
-            (Perso.motivation, qApp.translate("references", "Motivation"), False),
-            (Perso.goal, qApp.translate("references", "Goal"), False),
-            (Perso.conflict, qApp.translate("references", "Conflict"), False),
-            (Perso.epiphany, qApp.translate("references", "Epiphany"), False),
-            (Perso.summarySentance, qApp.translate("references", "Short summary"), True),
-            (Perso.summaryPara, qApp.translate("references", "Longer summary"), True),
+            (Character.motivation, qApp.translate("references", "Motivation"), False),
+            (Character.goal, qApp.translate("references", "Goal"), False),
+            (Character.conflict, qApp.translate("references", "Conflict"), False),
+            (Character.epiphany, qApp.translate("references", "Epiphany"), False),
+            (Character.summarySentence, qApp.translate("references", "Short summary"), True),
+            (Character.summaryPara, qApp.translate("references", "Longer summary"), True),
         ]:
+
             val = m.data(index.sibling(index.row(), i[0].value))
+
             if val:
                 basic.append("<b>{title}:</b>{n}{val}".format(
                         title=i[1],
@@ -208,7 +212,7 @@ def infos(ref):
 
         # detailed infos
         detailed = []
-        for _name, _val in m.listPersoInfos(index):
+        for _name, _val in c.listInfos():
             detailed.append("<b>{}:</b> {}".format(
                     _name,
                     _val))
@@ -272,24 +276,24 @@ def infos(ref):
                                       Plot.result.value))
 
         # Characters
-        pM = mainWindow().mdlPersos
-        item = m.item(index.row(), Plot.persos.value)
+        pM = mainWindow().mdlCharacter
+        item = m.item(index.row(), Plot.characters.value)
         characters = ""
         if item:
             for r in range(item.rowCount()):
                 ID = item.child(r, 0).text()
                 characters += "<li><a href='{link}'>{text}</a>".format(
-                        link=persoReference(ID),
+                        link=characterReference(ID),
                         text=pM.getPersoNameByID(ID))
 
         # Resolution steps
         steps = ""
-        item = m.item(index.row(), Plot.subplots.value)
+        item = m.item(index.row(), Plot.steps.value)
         if item:
             for r in range(item.rowCount()):
-                title = item.child(r, Subplot.name.value).text()
-                summary = item.child(r, Subplot.summary.value).text()
-                meta = item.child(r, Subplot.meta.value).text()
+                title = item.child(r, PlotStep.name.value).text()
+                summary = item.child(r, PlotStep.summary.value).text()
+                meta = item.child(r, PlotStep.meta.value).text()
                 if meta:
                     meta = " <span style='color:gray;'>({})</span>".format(meta)
                 steps += "<li><b>{title}</b>{summary}{meta}</li>".format(
@@ -373,56 +377,126 @@ def infos(ref):
         return qApp.translate("references", "Unknown reference: {}.").format(ref)
 
 
-def tooltip(ref):
-    """Returns a tooltip in HTML for the reference ``ref``."""
+def shortInfos(ref):
+    """Returns infos about reference ``ref``.
+    Returns -1 if ``ref`` is not a valid reference, and None if it is valid but unknown."""
     match = re.fullmatch(RegEx, ref)
 
     if not match:
-        return qApp.translate("references", "Not a reference: {}.").format(ref)
+        return -1
 
     _type = match.group(1)
     _ref = match.group(2)
 
+    infos = {}
+    infos["ID"] = _ref
+
     if _type == TextLetter:
+
+        infos["type"] = TextLetter
+
         m = mainWindow().mdlOutline
         idx = m.getIndexByID(_ref)
 
         if not idx.isValid():
-            return qApp.translate("references", "Unknown reference: {}.").format(ref)
+            return None
 
         item = idx.internalPointer()
 
         if item.isFolder():
-            tt = qApp.translate("references", "Folder: <b>{}</b>").format(item.title())
+            infos["text_type"] = "folder"
         else:
-            tt = qApp.translate("references", "Text: <b>{}</b>").format(item.title())
-        tt += "<br><i>{}</i>".format(item.path())
+            infos["text_type"] = "text"
 
-        return tt
+        infos["title"] = item.title()
+        infos["path"] = item.path()
+        return infos
 
-    elif _type == PersoLetter:
-        m = mainWindow().mdlPersos
-        item = m.item(int(_ref), Perso.name.value)
-        if item:
-            return qApp.translate("references", "Character: <b>{}</b>").format(item.text())
+    elif _type == CharacterLetter:
+
+        infos["type"] = CharacterLetter
+
+        m = mainWindow().mdlCharacter
+        c = m.getCharacterByID(_ref)
+
+        if c:
+            infos["title"] = c.name()
+            infos["name"] = c.name()
+            return infos
 
     elif _type == PlotLetter:
+
+        infos["type"] = PlotLetter
+
         m = mainWindow().mdlPlots
         name = m.getPlotNameByID(_ref)
         if name:
-            return qApp.translate("references", "Plot: <b>{}</b>").format(name)
+            infos["title"] = name
+            return infos
 
     elif _type == WorldLetter:
+
+        infos["type"] = WorldLetter
+
         m = mainWindow().mdlWorld
         item = m.itemByID(_ref)
         if item:
             name = item.text()
             path = m.path(item)
-            return qApp.translate("references", "World: <b>{name}</b>{path}").format(
-                    name=name,
-                    path=" <span style='color:gray;'>({})</span>".format(path) if path else "")
+            infos["title"] = name
+            infos["path"] = path
+            return infos
 
-    return qApp.translate("references", "<b>Unknown reference:</b> {}.").format(ref)
+    return None
+
+
+def title(ref):
+    """Returns a the title (or name) for the reference ``ref``."""
+    infos = shortInfos(ref)
+    if infos and infos != -1 and "title" in infos:
+        return infos["title"]
+    else:
+        return None
+
+def type(ref):
+    infos = shortInfos(ref)
+    if infos and infos != -1:
+        return infos["type"]
+
+def ID(ref):
+    infos = shortInfos(ref)
+    if infos and infos != -1:
+        return infos["ID"]
+
+def tooltip(ref):
+    """Returns a tooltip in HTML for the reference ``ref``."""
+    infos = shortInfos(ref)
+
+    if not infos:
+        return qApp.translate("references", "<b>Unknown reference:</b> {}.").format(ref)
+
+    if infos == -1:
+        return qApp.translate("references", "Not a reference: {}.").format(ref)
+
+
+    if infos["type"] == TextLetter:
+        if infos["text_type"] == "folder":
+            tt = qApp.translate("references", "Folder: <b>{}</b>").format(infos["title"])
+        else:
+            tt = qApp.translate("references", "Text: <b>{}</b>").format(infos["title"])
+        tt += "<br><i>{}</i>".format(infos["path"])
+        return tt
+
+    elif infos["type"] == CharacterLetter:
+        return qApp.translate("references", "Character: <b>{}</b>").format(infos["title"])
+
+    elif infos["type"] == PlotLetter:
+        return qApp.translate("references", "Plot: <b>{}</b>").format(infos["title"])
+
+    elif infos["type"] == WorldLetter:
+        return qApp.translate("references", "World: <b>{name}</b>{path}").format(
+                    name=infos["title"],
+                    path=" <span style='color:gray;'>({})</span>".format(infos["path"]) if infos["path"] else "")
 
 
 ###############################################################################
@@ -446,9 +520,9 @@ def refToLink(ref):
                 item = idx.internalPointer()
                 text = item.title()
 
-        elif _type == PersoLetter:
-            m = mainWindow().mdlPersos
-            text = m.item(int(_ref), Perso.name.value).text()
+        elif _type == CharacterLetter:
+            m = mainWindow().mdlCharacter
+            text = m.getCharacterByID(int(_ref)).name()
 
         elif _type == PlotLetter:
             m = mainWindow().mdlPlots
@@ -508,30 +582,6 @@ def listReferences(ref, title=qApp.translate("references", "Referenced in:")):
             ref=listRefs) if listRefs else ""
 
 
-def basicT2TFormat(text, formatting=True, EOL=True, titles=True):
-    """A very basic t2t formatter to display notes and texts."""
-    text = text.splitlines()
-    for n, line in enumerate(text):
-        if formatting:
-            line = re.sub("\*\*(.*?)\*\*", "<b>\\1</b>", line)
-            line = re.sub("//(.*?)//", "<i>\\1</i>", line)
-            line = re.sub("__(.*?)__", "<u>\\1</u>", line)
-
-        if titles:
-            for i in range(1, 6):
-                r1 = '^\s*{s}([^=].*[^=]){s}\s*$'.format(s="=" * i)
-                r2 = '^\s*{s}([^\+].*[^\+]){s}\s*$'.format(s="\\+" * i)
-                t = "<h{n}>\\1</h{n}>".format(n=i)
-                line = re.sub(r1, t, line)
-                line = re.sub(r2, t, line)
-        text[n] = line
-    text = "\n".join(text)
-    if EOL:
-        text = text.replace("\n", "<br>")
-
-    return text
-
-
 def basicFormat(text):
     if not text:
         return ""
@@ -549,16 +599,16 @@ def open(ref):
     _type = match.group(1)
     _ref = match.group(2)
 
-    if _type == PersoLetter:
+    if _type == CharacterLetter:
         mw = mainWindow()
-        item = mw.lstPersos.getItemByID(_ref)
+        item = mw.lstCharacters.getItemByID(int(_ref))
 
         if item:
             mw.tabMain.setCurrentIndex(mw.TabPersos)
-            mw.lstPersos.setCurrentItem(item)
+            mw.lstCharacters.setCurrentItem(item)
             return True
 
-        print("Ref not found")
+        print("Error: Ref {} not found".format(ref))
         return False
 
     elif _type == TextLetter:

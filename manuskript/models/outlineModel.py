@@ -15,10 +15,10 @@ from manuskript import settings
 from lxml import etree as ET
 
 from manuskript.enums import Outline
-from manuskript.functions import mainWindow, toInt, wordCount
+from manuskript.functions import mainWindow, toInt, wordCount, HTML2PlainText
 
 locale.setlocale(locale.LC_ALL, '')
-import time
+import time, os
 
 
 class outlineModel(QAbstractItemModel):
@@ -26,6 +26,9 @@ class outlineModel(QAbstractItemModel):
         QAbstractItemModel.__init__(self, parent)
 
         self.rootItem = outlineItem(self, title="root", ID="0")
+
+        # Stores removed item, in order to remove them on disk when saving, depending on the file format.
+        self.removed = []
 
     def index(self, row, column, parent):
 
@@ -74,9 +77,7 @@ class outlineModel(QAbstractItemModel):
         in columns ``columns`` (being a list of int)."""
         return self.rootItem.findItemsContaining(text, columns, mainWindow(), caseSensitive)
 
-    def getIndexByID(self, ID):
-        "Returns the index of item whose ID is ``ID``. If none, returns QModelIndex()."
-
+    def getItemByID(self, ID):
         def search(item):
             if item.ID() == ID:
                 return item
@@ -86,6 +87,11 @@ class outlineModel(QAbstractItemModel):
                     return r
 
         item = search(self.rootItem)
+        return item
+
+    def getIndexByID(self, ID):
+        "Returns the index of item whose ID is ``ID``. If none, returns QModelIndex()."
+        item = self.getItemByID(ID)
         if not item:
             return QModelIndex()
         else:
@@ -363,7 +369,8 @@ class outlineModel(QAbstractItemModel):
 
         self.beginRemoveRows(parent, row, row + count - 1)
         for i in range(count):
-            parentItem.removeChild(row)
+            item = parentItem.removeChild(row)
+            self.removed.append(item)
 
         self.endRemoveRows()
         return True
@@ -400,19 +407,6 @@ class outlineModel(QAbstractItemModel):
         self.rootItem = outlineItem(model=self, xml=ET.tostring(root), ID="0")
         self.rootItem.checkIDs()
 
-    def pathToIndex(self, index, path=""):
-        # FIXME: Use item's ID instead of rows
-        if not index.isValid():
-            return ""
-        if index.parent().isValid():
-            path = self.pathToIndex(index.parent())
-        if path:
-            path = "{},{}".format(path, str(index.row()))
-        else:
-            path = str(index.row())
-
-        return path
-
     def indexFromPath(self, path):
         path = path.split(",")
         item = self.rootItem
@@ -431,6 +425,8 @@ class outlineItem():
         self._model = model
         self.defaultTextType = None
         self.IDs = []  # used by root item to store unique IDs
+        self._lastPath = ""  # used by loadSave version_1 to remember which files the items comes from,
+                            # in case it is renamed / removed
 
         if title:
             self._data[Outline.title] = title
@@ -485,12 +481,8 @@ class outlineItem():
         elif role == Qt.DecorationRole and column == Outline.title.value:
             if self.isFolder():
                 return QIcon.fromTheme("folder")
-            elif self.isText():
+            elif self.isMD():
                 return QIcon.fromTheme("text-x-generic")
-            elif self.isT2T():
-                return QIcon.fromTheme("text-x-script")
-            elif self.isHTML():
-                return QIcon.fromTheme("text-html")
 
                 # elif role == Qt.ForegroundRole:
                 # if self.isCompile() in [0, "0"]:
@@ -531,17 +523,7 @@ class outlineItem():
             updateWordCount = not Outline(column) in self._data or self._data[Outline(column)] != data
 
         # Stuff to do before
-        if column == Outline.type.value:
-            oldType = self._data[Outline.type]
-            if oldType == "html" and data in ["txt", "t2t"]:
-                # Resource inneficient way to convert HTML to plain text
-                e = QTextEdit()
-                e.setHtml(self._data[Outline.text])
-                self._data[Outline.text] = e.toPlainText()
-            elif oldType in ["txt", "t2t"] and data == "html" and Outline.text in self._data:
-                self._data[Outline.text] = self._data[Outline.text].replace("\n", "<br>")
-
-        elif column == Outline.text.value:
+        if column == Outline.text.value:
             self.addRevision()
 
         # Setting data
@@ -603,7 +585,7 @@ class outlineItem():
             self.parent().updateWordCount(emit)
 
     def row(self):
-        if self.parent:
+        if self.parent():
             return self.parent().childItems.index(self)
 
     def appendChild(self, child):
@@ -645,9 +627,15 @@ class outlineItem():
                     c.emitDataChanged(cols, recursive=True)
 
     def removeChild(self, row):
-        self.childItems.pop(row)
+        """
+        Removes child at position `row` and returns it.
+        @param row: index (int) of the child to remove.
+        @return: the removed outlineItem
+        """
+        r = self.childItems.pop(row)
         # Might be causing segfault when updateWordCount emits dataChanged
         self.updateWordCount(emit=False)
+        return r
 
     def parent(self):
         return self._parent
@@ -658,14 +646,14 @@ class outlineItem():
     def isFolder(self):
         return self._data[Outline.type] == "folder"
 
-    def isT2T(self):
-        return self._data[Outline.type] == "t2t"
-
-    def isHTML(self):
-        return self._data[Outline.type] == "html"
-
     def isText(self):
-        return self._data[Outline.type] == "txt"
+        return self._data[Outline.type] == "md"
+
+    def isMD(self):
+        return self._data[Outline.type] == "md"
+
+    def isMMD(self):
+        return self._data[Outline.type] == "md"
 
     def text(self):
         return self.data(Outline.text.value)
@@ -758,6 +746,9 @@ class outlineItem():
             revItem.set("text", r[1])
             item.append(revItem)
 
+        # Saving lastPath
+        item.set("lastPath", self._lastPath)
+
         for i in self.childItems:
             item.append(ET.XML(i.toXML()))
 
@@ -772,6 +763,18 @@ class outlineItem():
                 # self.setData(Outline.__members__[k].value, unicode(root.attrib[k]), Qt.CheckStateRole)
                 # else:
                 self.setData(Outline.__members__[k].value, str(root.attrib[k]))
+
+        if "lastPath" in root.attrib:
+            self._lastPath = root.attrib["lastPath"]
+
+        # If loading from an old file format, convert to md and remove html markup
+        if self.type() in ["txt", "t2t"]:
+            self.setData(Outline.type.value, "md")
+
+        elif self.type() == "html":
+            self.setData(Outline.type.value, "md")
+            self.setData(Outline.text.value, HTML2PlainText(self.data(Outline.text.value)))
+            self.setData(Outline.notes.value, HTML2PlainText(self.data(Outline.notes.value)))
 
         for child in root:
             if child.tag == "outlineItem":
@@ -854,8 +857,13 @@ class outlineItem():
         text = text.lower() if not caseSensitive else text
         for c in columns:
 
-            if c == Outline.POV.value:
-                searchIn = mainWindow.mdlPersos.getPersoNameByID(self.POV())
+            if c == Outline.POV.value and self.POV():
+                c = mainWindow.mdlCharacter.getCharacterByID(self.POV())
+                if c:
+                    searchIn = c.name()
+                else:
+                    searchIn = ""
+                    print("Character POV not found:", self.POV())
 
             elif c == Outline.status.value:
                 searchIn = mainWindow.mdlStatus.item(toInt(self.status()), 0).text()

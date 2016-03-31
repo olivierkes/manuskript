@@ -1,23 +1,26 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
 import os
+from collections import OrderedDict
 
-from PyQt5.QtCore import QSize, QSettings, QRegExp
+from PyQt5.QtCore import QSize, QSettings, QRegExp, QTranslator, QObject
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIntValidator, QIcon, QFont, QColor, QPixmap, QStandardItem, QPainter
-from PyQt5.QtWidgets import QStyleFactory, QWidget, QStyle, QColorDialog, QListWidgetItem
+from PyQt5.QtWidgets import QStyleFactory, QWidget, QStyle, QColorDialog, QListWidgetItem, QMessageBox
 from PyQt5.QtWidgets import qApp
 
 # Spell checker support
 from manuskript import settings
 from manuskript.enums import Outline
-from manuskript.functions import allPaths, iconColor, writablePath, appPath
+from manuskript.functions import allPaths, iconColor, writablePath, appPath, findWidgetsOfClass
 from manuskript.functions import mainWindow
 from manuskript.ui.editors.themes import createThemePreview
 from manuskript.ui.editors.themes import getThemeName
 from manuskript.ui.editors.themes import loadThemeDatas
 from manuskript.ui.settings_ui import Ui_Settings
+from manuskript.ui.views.outlineView import outlineView
 from manuskript.ui.views.textEditView import textEditView
+from manuskript.ui.welcome import welcome
 
 try:
     import enchant
@@ -43,6 +46,21 @@ class settingsWindow(QWidget, Ui_Settings):
         self.cmbStyle.setCurrentIndex([i.lower() for i in list(QStyleFactory.keys())].index(qApp.style().objectName()))
         self.cmbStyle.currentIndexChanged[str].connect(self.setStyle)
 
+        self.cmbTranslation.clear()
+        tr = OrderedDict()
+        tr["English"] = ""
+        tr["Français"] = "manuskript_fr.qm"
+        tr["Español"] = "manuskript_es.qm"
+
+        for name in tr:
+            self.cmbTranslation.addItem(name, tr[name])
+
+        sttgs = QSettings(qApp.organizationName(), qApp.applicationName())
+        if sttgs.contains("applicationTranslation") and sttgs.value("applicationTranslation") in tr.values():
+            self.cmbTranslation.setCurrentText([i for i in tr if tr[i] == sttgs.value("applicationTranslation")][0])
+
+        self.cmbTranslation.currentIndexChanged.connect(self.setTranslation)
+
         self.txtAutoSave.setValidator(QIntValidator(0, 999, self))
         self.txtAutoSaveNoChanges.setValidator(QIntValidator(0, 999, self))
         self.chkAutoSave.setChecked(settings.autoSave)
@@ -50,27 +68,16 @@ class settingsWindow(QWidget, Ui_Settings):
         self.txtAutoSave.setText(str(settings.autoSaveDelay))
         self.txtAutoSaveNoChanges.setText(str(settings.autoSaveNoChangesDelay))
         self.chkSaveOnQuit.setChecked(settings.saveOnQuit)
+        self.chkSaveToZip.setChecked(settings.saveToZip)
         self.chkAutoSave.stateChanged.connect(self.saveSettingsChanged)
         self.chkAutoSaveNoChanges.stateChanged.connect(self.saveSettingsChanged)
         self.chkSaveOnQuit.stateChanged.connect(self.saveSettingsChanged)
+        self.chkSaveToZip.stateChanged.connect(self.saveSettingsChanged)
         self.txtAutoSave.textEdited.connect(self.saveSettingsChanged)
         self.txtAutoSaveNoChanges.textEdited.connect(self.saveSettingsChanged)
         autoLoad, last = self.mw.welcome.getAutoLoadValues()
         self.chkAutoLoad.setChecked(autoLoad)
         self.chkAutoLoad.stateChanged.connect(self.saveSettingsChanged)
-
-        dtt = [
-            ("t2t", self.tr("Txt2Tags"), "text-x-script"),
-            ("html", self.tr("Rich Text (html)"), "text-html"),
-            ("txt", self.tr("Plain Text"), "text-x-generic"),
-        ]
-        self.cmbDefaultTextType.clear()
-        for t in dtt:
-            self.cmbDefaultTextType.addItem(QIcon.fromTheme(t[2]), t[1], t[0])
-        i = self.cmbDefaultTextType.findData(settings.defaultTextType)
-        if i != -1:
-            self.cmbDefaultTextType.setCurrentIndex(i)
-        self.cmbDefaultTextType.currentIndexChanged.connect(self.saveSettingsChanged)
 
         # Revisions
         opt = settings.revisions
@@ -101,6 +108,8 @@ class settingsWindow(QWidget, Ui_Settings):
             col = self.outlineColumnsData()[chk]
             chk.setChecked(col in settings.outlineViewColumns)
             chk.stateChanged.connect(self.outlineColumnsChanged)
+
+        self.chkOutlinePOV.setVisible(settings.viewMode != "simple") #  Hides checkbox if non-fiction view mode
 
         for item, what, value in [
             (self.rdoTreeItemCount, "InfoFolder", "Count"),
@@ -209,6 +218,14 @@ class settingsWindow(QWidget, Ui_Settings):
         sttgs.setValue("applicationStyle", style)
         qApp.setStyle(style)
 
+    def setTranslation(self, index):
+        path = self.cmbTranslation.currentData()
+        # Save settings
+        sttgs = QSettings(qApp.organizationName(), qApp.applicationName())
+        sttgs.setValue("applicationTranslation", path)
+
+        # QMessageBox.information(self, "Warning", "You'll have to restart manuskript.")
+
     def saveSettingsChanged(self):
         if self.txtAutoSave.text() in ["", "0"]:
             self.txtAutoSave.setText("1")
@@ -222,11 +239,11 @@ class settingsWindow(QWidget, Ui_Settings):
         settings.autoSave = True if self.chkAutoSave.checkState() else False
         settings.autoSaveNoChanges = True if self.chkAutoSaveNoChanges.checkState() else False
         settings.saveOnQuit = True if self.chkSaveOnQuit.checkState() else False
+        settings.saveToZip = True if self.chkSaveToZip.checkState() else False
         settings.autoSaveDelay = int(self.txtAutoSave.text())
         settings.autoSaveNoChangesDelay = int(self.txtAutoSaveNoChanges.text())
         self.mw.saveTimer.setInterval(settings.autoSaveDelay * 60 * 1000)
         self.mw.saveTimerNoChanges.setInterval(settings.autoSaveNoChangesDelay * 1000)
-        settings.defaultTextType = self.cmbDefaultTextType.currentData()
 
     ####################################################################################################
     #                                           REVISION                                               #
@@ -267,6 +284,7 @@ class settingsWindow(QWidget, Ui_Settings):
         item, part = self.viewSettingsDatas()[cmb]
         element = lst[cmb.currentIndex()]
         self.mw.setViewSettings(item, part, element)
+        self.mw.generateViewMenu()
 
     def outlineColumnsData(self):
         return {
@@ -290,8 +308,8 @@ class settingsWindow(QWidget, Ui_Settings):
             settings.outlineViewColumns.remove(col)
 
         # Update views
-        self.mw.redacEditor.outlineView.hideColumns()
-        self.mw.treePlanOutline.hideColumns()
+        for w in findWidgetsOfClass(outlineView):
+            w.hideColumns()
 
     def treeViewSettignsChanged(self):
         for item, what, value in [
@@ -325,6 +343,7 @@ class settingsWindow(QWidget, Ui_Settings):
 
     def setCorkBackground(self, i):
         img = self.cmbCorkImage.itemData(i)
+        img = os.path.basename(img)
         if img:
             settings.corkBackground["image"] = img
         else:

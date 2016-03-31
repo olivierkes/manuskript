@@ -124,7 +124,7 @@
            <enum>QTabWidget::Rounded</enum>
           </property>
           <property name="currentIndex">
-           <number>6</number>
+           <number>4</number>
           </property>
           <property name="documentMode">
            <bool>true</bool>
@@ -342,7 +342,7 @@
                  <widget class="QComboBox" name="cmbSummary">
                   <item>
                    <property name="text">
-                    <string>One sentance</string>
+                    <string>One sentence</string>
                    </property>
                   </item>
                   <item>
@@ -374,12 +374,12 @@
                   <item>
                    <widget class="QLabel" name="label">
                     <property name="text">
-                     <string>One sentance summary</string>
+                     <string>One sentence summary</string>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="textEditView" name="txtSummarySentance">
+                   <widget class="textEditView" name="txtSummarySentence">
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
                       <horstretch>0</horstretch>
@@ -389,7 +389,7 @@
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLabel" name="lblSummaryWCSentance">
+                   <widget class="QLabel" name="lblSummaryWCSentence">
                     <property name="text">
                      <string/>
                     </property>
@@ -417,12 +417,12 @@
                     <item>
                      <widget class="QLabel" name="label_21">
                       <property name="text">
-                       <string>One sentance summary</string>
+                       <string>One sentence summary</string>
                       </property>
                      </widget>
                     </item>
                     <item>
-                     <widget class="textEditView" name="txtSummarySentance_2">
+                     <widget class="textEditView" name="txtSummarySentence_2">
                       <property name="sizePolicy">
                        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
                         <horstretch>0</horstretch>
@@ -714,7 +714,7 @@
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_8">
                 <item>
-                 <widget class="persoTreeView" name="lstPersos">
+                 <widget class="characterTreeView" name="lstCharacters">
                   <property name="horizontalScrollBarPolicy">
                    <enum>Qt::ScrollBarAlwaysOff</enum>
                   </property>
@@ -823,7 +823,7 @@
                  <item row="6" column="0">
                   <widget class="QLabel" name="label_24">
                    <property name="text">
-                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One sentance&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One sentence&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                    </property>
                   </widget>
                  </item>
@@ -899,7 +899,7 @@
                   <widget class="textEditView" name="txtPersoEpiphany"/>
                  </item>
                  <item row="6" column="1">
-                  <widget class="textEditView" name="txtPersoSummarySentance"/>
+                  <widget class="textEditView" name="txtPersoSummarySentence"/>
                  </item>
                  <item row="7" column="1">
                   <widget class="textEditView" name="txtPersoSummaryPara"/>
@@ -1979,12 +1979,12 @@
      <x>0</x>
      <y>0</y>
      <width>1112</width>
-     <height>20</height>
+     <height>30</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
     <property name="title">
-     <string>Fi&amp;le</string>
+     <string>&amp;File</string>
     </property>
     <widget class="QMenu" name="menuRecents">
      <property name="title">
@@ -2006,17 +2006,9 @@
     <addaction name="separator"/>
     <addaction name="actQuit"/>
    </widget>
-   <widget class="QMenu" name="menuMode">
-    <property name="title">
-     <string>&amp;Mode</string>
-    </property>
-    <addaction name="actModeNorma"/>
-    <addaction name="actModeSimple"/>
-    <addaction name="actModeFractal"/>
-   </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
-     <string>Help</string>
+     <string>&amp;Help</string>
     </property>
     <addaction name="actShowHelp"/>
    </widget>
@@ -2029,7 +2021,7 @@
    </widget>
    <widget class="QMenu" name="menuEdit">
     <property name="title">
-     <string>E&amp;dit</string>
+     <string>&amp;Edit</string>
     </property>
     <addaction name="actLabels"/>
     <addaction name="actStatus"/>
@@ -2039,10 +2031,19 @@
     <property name="title">
      <string>&amp;View</string>
     </property>
+    <widget class="QMenu" name="menuMode">
+     <property name="title">
+      <string>&amp;Mode</string>
+     </property>
+     <addaction name="actModeSimple"/>
+     <addaction name="actModeFiction"/>
+     <addaction name="actModeSnowflake"/>
+    </widget>
+    <addaction name="menuMode"/>
+    <addaction name="separator"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
-   <addaction name="menuMode"/>
    <addaction name="menuView"/>
    <addaction name="menuTools"/>
    <addaction name="menuHelp"/>
@@ -2266,7 +2267,7 @@ QListView::item:hover {
     <string>Tree</string>
    </property>
   </action>
-  <action name="actModeNorma">
+  <action name="actModeSimple">
    <property name="checkable">
     <bool>true</bool>
    </property>
@@ -2274,23 +2275,23 @@ QListView::item:hover {
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>&amp;Normal</string>
-   </property>
-  </action>
-  <action name="actModeSimple">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="text">
     <string>&amp;Simple</string>
    </property>
   </action>
-  <action name="actModeFractal">
+  <action name="actModeFiction">
    <property name="checkable">
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>&amp;Fractal</string>
+    <string>&amp;Fiction</string>
+   </property>
+  </action>
+  <action name="actModeSnowflake">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>S&amp;nowflake</string>
    </property>
   </action>
   <action name="actViewCork">
@@ -2358,7 +2359,7 @@ QListView::item:hover {
   <customwidget>
    <class>sldImportance</class>
    <extends>QWidget</extends>
-   <header>manuskript.ui.sldImportance.h</header>
+   <header>manuskript.ui.views.sldImportance.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
@@ -2396,9 +2397,9 @@ QListView::item:hover {
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>persoTreeView</class>
+   <class>characterTreeView</class>
    <extends>QTreeWidget</extends>
-   <header>manuskript.ui.views.persoTreeView.h</header>
+   <header>manuskript.ui.views.characterTreeView.h</header>
   </customwidget>
   <customwidget>
    <class>cheatSheet</class>

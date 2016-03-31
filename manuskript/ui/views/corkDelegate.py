@@ -38,7 +38,7 @@ class corkDelegate(QStyledItemDelegate):
 
         if self.mainLineRect.contains(self.lastPos):
             # One line summary
-            self.editing = Outline.summarySentance
+            self.editing = Outline.summarySentence
             edt = QLineEdit(parent)
             edt.setFocusPolicy(Qt.StrongFocus)
             edt.setFrame(False)
@@ -69,12 +69,16 @@ class corkDelegate(QStyledItemDelegate):
             edt = QPlainTextEdit(parent)
             edt.setFocusPolicy(Qt.StrongFocus)
             edt.setFrameShape(QFrame.NoFrame)
-            edt.setPlaceholderText(self.tr("Full summary"))
+            try:
+                # QPlainTextEdit.setPlaceholderText was introduced in Qt 5.3
+                edt.setPlaceholderText(self.tr("Full summary"))
+            except AttributeError:
+                pass
             return edt
 
     def updateEditorGeometry(self, editor, option, index):
 
-        if self.editing == Outline.summarySentance:
+        if self.editing == Outline.summarySentence:
             # One line summary
             editor.setGeometry(self.mainLineRect)
 
@@ -89,9 +93,9 @@ class corkDelegate(QStyledItemDelegate):
     def setEditorData(self, editor, index):
         item = index.internalPointer()
 
-        if self.editing == Outline.summarySentance:
+        if self.editing == Outline.summarySentence:
             # One line summary
-            editor.setText(item.data(Outline.summarySentance.value))
+            editor.setText(item.data(Outline.summarySentence.value))
 
         elif self.editing == Outline.title:
             # Title
@@ -103,9 +107,9 @@ class corkDelegate(QStyledItemDelegate):
 
     def setModelData(self, editor, model, index):
 
-        if self.editing == Outline.summarySentance:
+        if self.editing == Outline.summarySentence:
             # One line summary
-            model.setData(index.sibling(index.row(), Outline.summarySentance.value), editor.text())
+            model.setData(index.sibling(index.row(), Outline.summarySentence.value), editor.text())
 
         elif self.editing == Outline.title:
             # Title
@@ -133,7 +137,7 @@ class corkDelegate(QStyledItemDelegate):
                                   self.mainRect.topRight() + QPoint(0, iconSize))
         self.mainTextRect = QRect(self.mainLineRect.bottomLeft() + QPoint(0, margin),
                                   self.mainRect.bottomRight())
-        if not item.data(Outline.summarySentance.value):
+        if not item.data(Outline.summarySentence.value):
             self.mainTextRect.setTopLeft(self.mainLineRect.topLeft())
         if item.data(Outline.label.value) in ["", "0"]:
             self.titleRect.setBottomRight(self.labelRect.bottomRight() - QPoint(self.margin, self.margin))
@@ -218,7 +222,7 @@ class corkDelegate(QStyledItemDelegate):
             p.drawLine(self.labelRect.topLeft(), self.labelRect.bottomLeft())
 
             # One line summary background
-        lineSummary = item.data(Outline.summarySentance.value)
+        lineSummary = item.data(Outline.summarySentence.value)
         fullSummary = item.data(Outline.summaryFull.value)
         if lineSummary or not fullSummary:
             m = self.margin

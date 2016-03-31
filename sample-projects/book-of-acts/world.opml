@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<opml version="1.0">
+  <body>
+    <outline name="Places" ID="0">
+      <outline name="Jerusalem" ID="1"/>
+      <outline name="Judea" ID="2"/>
+      <outline name="Samaria" ID="3"/>
+      <outline name="Ephesus" ID="4"/>
+      <outline name="Rome" ID="5"/>
+    </outline>
+    <outline name="Cultures" ID="6">
+      <outline name="Jews" ID="7"/>
+      <outline name="Greeks" ID="8"/>
+    </outline>
+    <outline name="Travel" ID="9">
+      <outline name="Road" ID="10"/>
+      <outline name="Sea" ID="11"/>
+    </outline>
+  </body>
+</opml>

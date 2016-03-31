@@ -7,14 +7,15 @@ import os
 
 from PyQt5.QtCore import QSettings, QRegExp, Qt, QDir
 from PyQt5.QtGui import QIcon, QBrush, QColor, QStandardItemModel, QStandardItem
-from PyQt5.QtWidgets import QWidget, QAction, QFileDialog, QSpinBox, QLineEdit, QLabel, QPushButton, QTreeWidgetItem
+from PyQt5.QtWidgets import QWidget, QAction, QFileDialog, QSpinBox, QLineEdit, QLabel, QPushButton, QTreeWidgetItem, \
+    qApp
 
 from manuskript import settings
 from manuskript.enums import Outline
 from manuskript.functions import mainWindow, iconFromColor, appPath
+from manuskript.models.characterModel import characterModel
 from manuskript.models.outlineModel import outlineItem
 from manuskript.models.outlineModel import outlineModel
-from manuskript.models.persosModel import persosModel
 from manuskript.models.plotModel import plotModel
 from manuskript.models.worldModel import worldModel
 from manuskript.ui.welcome_ui import Ui_welcome
@@ -65,7 +66,7 @@ class welcome(QWidget, Ui_welcome):
     def getAutoLoadValues(self):
         sttgns = QSettings()
         if sttgns.contains("autoLoad"):
-            autoLoad = True if sttgns.value("autoLoad") == "true" else False
+            autoLoad = True if sttgns.value("autoLoad") in ["true", True] else False
         else:
             autoLoad = False
         if autoLoad and sttgns.contains("lastProject"):
@@ -88,7 +89,7 @@ class welcome(QWidget, Ui_welcome):
         if sttgns.contains("recentFiles"):
             lst = sttgns.value("recentFiles")
             self.mw.menuRecents.clear()
-            for f in lst:
+            for f in [f for f in lst if os.path.exists(f)]:
                 name = os.path.split(f)[1]
                 a = QAction(name, self)
                 a.setData(f)
@@ -114,6 +115,7 @@ class welcome(QWidget, Ui_welcome):
     def loadRecentFile(self):
         act = self.sender()
         self.appendToRecentFiles(act.data())
+        self.mw.closeProject()
         self.mw.loadProject(act.data())
 
     ###############################################################################
@@ -151,7 +153,7 @@ class welcome(QWidget, Ui_welcome):
                                                self.tr("Manuskript project (*.msk)"))[0]
 
         if filename:
-            if filename[:-4] != ".msk":
+            if filename[-4:] != ".msk":
                 filename += ".msk"
             self.appendToRecentFiles(filename)
             self.loadDefaultDatas()
@@ -163,51 +165,49 @@ class welcome(QWidget, Ui_welcome):
 
     def templates(self):
         return [
-            (self.tr("Empty"), []),
+            (self.tr("Empty fiction"), [], "Fiction"),
             (self.tr("Novel"), [
                 (20, self.tr("Chapter")),
                 (5, self.tr("Scene")),
                 (500, None)  # A line with None is word count
-            ]),
+            ], "Fiction"),
             (self.tr("Novella"), [
                 (10, self.tr("Chapter")),
                 (5, self.tr("Scene")),
                 (500, None)
-            ]),
+            ], "Fiction"),
             (self.tr("Short Story"), [
                 (10, self.tr("Scene")),
                 (1000, None)
-            ]),
+            ], "Fiction"),
             (self.tr("Trilogy"), [
                 (3, self.tr("Book")),
                 (3, self.tr("Section")),
                 (10, self.tr("Chapter")),
                 (5, self.tr("Scene")),
                 (500, None)
-            ]),
+            ], "Fiction"),
+            (self.tr("Empty non-fiction"), [], "Non-fiction"),
             (self.tr("Research paper"), [
                 (3, self.tr("Section")),
                 (1000, None)
-            ])
-        ]
-
-    def defaultTextType(self):
-        return [
-            ("t2t", self.tr("Txt2Tags"), "text-x-generic"),
-            ("html", self.tr("Rich Text (html)"), "text-html"),
-            ("txt", self.tr("Plain Text"), "text-x-generic"),
+            ], "Non-fiction")
         ]
 
     def changeTemplate(self, item, column):
         template = [i for i in self.templates() if i[0] == item.text(0)]
         self.btnCreate.setText(self.btnCreateText)
+
+        # Selected item is a template
         if len(template):
-            self.template = template[0][1]
+            self.template = template[0]
             self.updateTemplate()
+
+        # Selected item is a sample project
         elif item.data(0, Qt.UserRole):
             name = item.data(0, Qt.UserRole)
             # Clear templates
-            self.template = self.templates()[0][1]
+            self.template = self.templates()[0]
             self.updateTemplate()
             # Change button text
             self.btnCreate.setText("Open {}".format(name))
@@ -232,7 +232,7 @@ class welcome(QWidget, Ui_welcome):
 
         k = 0
         hasWC = False
-        for d in self.template:
+        for d in self.template[1]:
             spin = QSpinBox(self)
             spin.setRange(0, 999999)
             spin.setValue(d[0])
@@ -261,29 +261,29 @@ class welcome(QWidget, Ui_welcome):
             self.lytTemplate.addWidget(txt, k, 2)
             k += 1
 
-        self.btnAddWC.setEnabled(not hasWC and len(self.template) > 0)
+        self.btnAddWC.setEnabled(not hasWC and len(self.template[1]) > 0)
         self.btnAddLevel.setEnabled(True)
         self.lblTotal.setVisible(hasWC)
         self.updateWordCount()
 
     def templateAddLevel(self):
-        if len(self.template) > 0 and \
-                        self.template[len(self.template) - 1][1] == None:
+        if len(self.template[1]) > 0 and \
+                        self.template[1][len(self.template[1]) - 1][1] == None:
             # has word cound, so insert before
-            self.template.insert(len(self.template) - 1, (10, self.tr("Text")))
+            self.template[1].insert(len(self.template[1]) - 1, (10, self.tr("Text")))
         else:
             # No word count, so insert at end
-            self.template.append((10, self.tr("Something")))
+            self.template[1].append((10, self.tr("Something")))
         self.updateTemplate()
 
     def templateAddWordCount(self):
-        self.template.append((500, None))
+        self.template[1].append((500, None))
         self.updateTemplate()
 
     def deleteTemplateRow(self):
         btn = self.sender()
         row = btn.property("deleteRow")
-        self.template.pop(row)
+        self.template[1].pop(row)
         self.updateTemplate()
 
     def updateWordCount(self):
@@ -316,10 +316,17 @@ class welcome(QWidget, Ui_welcome):
         self.tree.setIndentation(0)
 
         # Add templates
-        item = self.addTopLevelItem(self.tr("Templates"))
-        templates = self.templates()
+        item = self.addTopLevelItem(self.tr("Fiction"))
+        templates = [i for i in self.templates() if i[2] == "Fiction"]
         for t in templates:
             sub = QTreeWidgetItem(item, [t[0]])
+
+        # Add templates: non-fiction
+        item = self.addTopLevelItem(self.tr("Non-fiction"))
+        templates = [i for i in self.templates() if i[2] == "Non-fiction"]
+        for t in templates:
+            sub = QTreeWidgetItem(item, [t[0]])
+
 
         # Add Demo project
         item = self.addTopLevelItem(self.tr("Demo projects"))
@@ -328,24 +335,21 @@ class welcome(QWidget, Ui_welcome):
             sub = QTreeWidgetItem(item, [f[:-4]])
             sub.setData(0, Qt.UserRole, f)
 
-        # Populates default text type
-        self.cmbDefaultType.clear()
-        for t in self.defaultTextType():
-            self.cmbDefaultType.addItem(QIcon.fromTheme(t[2]), t[1], t[0])
-
         self.tree.expandAll()
 
     def loadDefaultDatas(self):
 
         # Empty settings
         imp.reload(settings)
+        t = [i for i in self.templates() if i[0] == self.template[0]]
+        if t and t[0][2] == "Non-fiction": settings.viewMode = "simple"
 
         # Données
         self.mw.mdlFlatData = QStandardItemModel(2, 8, self.mw)
 
         # Persos
         # self.mw.mdlPersos = QStandardItemModel(0, 0, self.mw)
-        self.mw.mdlPersos = persosModel(self.mw)
+        self.mw.mdlCharacter = characterModel(self.mw)
         # self.mdlPersosProxy = None # persosProxyModel() # None
         # self.mw.mdlPersosProxy = persosProxyModel(self.mw)
 
@@ -386,8 +390,7 @@ class welcome(QWidget, Ui_welcome):
         self.mw.mdlWorld = worldModel(self.mw)
 
         root = self.mw.mdlOutline.rootItem
-        _type = self.cmbDefaultType.currentData()
-        settings.defaultTextType = _type
+        _type = "md"
 
         def addElement(parent, datas):
             if len(datas) == 2 and datas[1][1] == None or \
@@ -416,5 +419,5 @@ class welcome(QWidget, Ui_welcome):
                     # parent.appendChild(item)
                     addElement(item, datas[1:])
 
-        if self.template:
-            addElement(root, self.template)
+        if self.template[1]:
+            addElement(root, self.template[1])
