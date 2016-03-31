@@ -5,7 +5,7 @@
     "autoSaveNoChangesDelay": 5,
     "corkBackground": {
         "color": "#926239",
-        "image": "/home/olivier/Dropbox/Documents/Travail/Geekeries/Python/PyCharmProjects/manuskript/resources/backgrounds/spacedreams.jpg"
+        "image": "writingdesk.jpg"
     },
     "corkSizeFactor": 84,
     "defaultTextType": "txt",
