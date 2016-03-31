@@ -767,6 +767,15 @@ class outlineItem():
         if "lastPath" in root.attrib:
             self._lastPath = root.attrib["lastPath"]
 
+        # If loading from an old file format, convert to md and remove html markup
+        if self.type() in ["txt", "t2t"]:
+            self.setData(Outline.type.value, "md")
+
+        elif self.type() == "html":
+            self.setData(Outline.type.value, "md")
+            self.setData(Outline.text.value, HTML2PlainText(self.data(Outline.text.value)))
+            self.setData(Outline.notes.value, HTML2PlainText(self.data(Outline.notes.value)))
+
         for child in root:
             if child.tag == "outlineItem":
                 item = outlineItem(self._model, xml=ET.tostring(child), parent=self)
