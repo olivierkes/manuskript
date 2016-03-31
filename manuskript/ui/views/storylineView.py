@@ -5,6 +5,7 @@ from PyQt5.QtGui import QBrush, QPen, QFontMetrics, QFontMetricsF, QColor
 from PyQt5.QtWidgets import QWidget, QGraphicsScene, QGraphicsSimpleTextItem, QMenu, QAction, QGraphicsRectItem, \
     QGraphicsLineItem, QGraphicsEllipseItem
 
+from manuskript.enums import Outline
 from manuskript.models import references
 from manuskript.ui.views.storylineView_ui import Ui_storylineView
 
@@ -50,10 +51,14 @@ class storylineView(QWidget, Ui_storylineView):
         # self._mdlPlots.rowsInserted.connect(self.refresh)
 
         self._mdlOutline = mdlOutline
-        self._mdlOutline.dataChanged.connect(self.reloadTimer.start)
+        self._mdlOutline.dataChanged.connect(self.updateMaybe)
 
         self._mdlCharacter = mdlCharacter
         self._mdlCharacter.dataChanged.connect(self.reloadTimer.start)
+
+    def updateMaybe(self, topLeft, bottomRight):
+        if topLeft.column() <= Outline.notes.value <= bottomRight.column():
+            self.reloadTimer.start
 
     def plotReferences(self):
         "Returns a list of plot references"
@@ -85,7 +90,10 @@ class storylineView(QWidget, Ui_storylineView):
 
     def refresh(self):
         if not self._mdlPlots or not self._mdlOutline or not self._mdlCharacter:
-            pass
+            return
+
+        if not self.isVisible():
+            return
 
         LINE_HEIGHT = 18
         SPACING = 3

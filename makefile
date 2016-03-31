@@ -16,7 +16,7 @@ lineprof:
 	kernprof -l -v manuskript/main.py
 
 profile:
-	python3 -m cProfile -s 'cumtime' manuskript/main.py | more
+	python3 -m cProfile -s 'cumtime' bin/manuskript | more
 
 compile:
 	cd manuskript && python3 setup.py build_ext --inplace
