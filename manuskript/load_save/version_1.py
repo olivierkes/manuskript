@@ -364,9 +364,14 @@ def saveProject(zip=None):
             # Check if content is in cache, and write if necessary
             if path not in cache or cache[path] != content:
                 log("* Writing file {} ({})".format(path, "not in cache" if path not in cache else "different"))
-                mode = "w" + ("b" if type(content) == bytes else "")
-                with open(filename, mode) as f:
-                    f.write(content)
+                # mode = "w" + ("b" if type(content) == bytes else "")
+                if type(content) == bytes:
+                    with open(filename, "wb") as f:
+                        f.write(content)
+                else:
+                    with open(filename, "w", encoding='utf8') as f:
+                        f.write(content)
+
                 cache[path] = content
 
         # Removing phantoms
@@ -395,7 +400,7 @@ def saveProject(zip=None):
                     pass
 
         # Write the project file's content
-        with open(project, "w") as f:
+        with open(project, "w", encoding='utf8') as f:
             f.write("1")  # Format number
 
 
@@ -622,9 +627,13 @@ def loadProject(project, zip=None):
         for dirpath, dirnames, filenames in os.walk(path):
             p = dirpath.replace(path, "")
             for f in filenames:
-                mode = "r" + ("b" if f[-4:] in [".xml", "opml"] else "")
-                with open(os.path.join(dirpath, f), mode) as fo:
-                    files[os.path.join(p, f)] = fo.read()
+                # mode = "r" + ("b" if f[-4:] in [".xml", "opml"] else "")
+                if f[-4:] in [".xml", "opml"]:
+                    with open(os.path.join(dirpath, f), "rb") as fo:
+                        files[os.path.join(p, f)] = fo.read()
+                else:
+                    with open(os.path.join(dirpath, f), "r", encoding="utf8") as fo:
+                        files[os.path.join(p, f)] = fo.read()
 
         # Saves to cache (only if we loaded from disk and not zip)
         global cache
