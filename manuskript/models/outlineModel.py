@@ -424,7 +424,7 @@ class outlineItem():
         self._parent = None
         self._model = model
         self.defaultTextType = None
-        self.IDs = []  # used by root item to store unique IDs
+        self.IDs = ["0"]  # used by root item to store unique IDs
         self._lastPath = ""  # used by loadSave version_1 to remember which files the items comes from,
                             # in case it is renamed / removed
 
