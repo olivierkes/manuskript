@@ -162,7 +162,7 @@ class settingsWindow(QWidget, Ui_Settings):
         self.spnEditorParaAbove.setValue(opt["spacingAbove"])
         self.spnEditorParaAbove.valueChanged.connect(self.updateEditorSettings)
         self.spnEditorParaBelow.setValue(opt["spacingBelow"])
-        self.spnEditorParaAbove.valueChanged.connect(self.updateEditorSettings)
+        self.spnEditorParaBelow.valueChanged.connect(self.updateEditorSettings)
 
         # Labels
         self.lstLabels.setModel(self.mw.mdlLabels)
