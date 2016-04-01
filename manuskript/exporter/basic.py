@@ -1,29 +1,83 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
 
-import re
+import shutil
 import subprocess
 
+from PyQt5.QtWidgets import QWidget
 
-class basicExporter():
+
+class basicExporter:
+
+    name = ""
+    description = ""
+    exportTo = []
+    cmd = ""
+
     def __init__(self):
         pass
 
-    def runT2T(self, text, target="html"):
+    @classmethod
+    def getFormatByName(cls, name):
+        for f in cls.exportTo:
+            if f.name == name:
+                return f
 
-        cmdl = ['txt2tags', '-t', target, '--enc=utf-8', '--no-headers', '-o', '-', '-']
+        return None
 
-        cmd = subprocess.Popen(('echo', text), stdout=subprocess.PIPE)
-        try:
-            output = subprocess.check_output(cmdl, stdin=cmd.stdout, stderr=subprocess.STDOUT)  # , cwd="/tmp"
-        except subprocess.CalledProcessError as e:
-            print("Error!")
-            return text
-        cmd.wait()
+    @classmethod
+    def isValid(cls):
+        return cls.path() != None
 
-        return output.decode("utf-8")
+    @classmethod
+    def version(cls):
+        return ""
 
-    def htmlBody(self, text):
-        text = text.replace("\n", "")
-        text = re.sub(r".*<body[^>]*?>(.*)</body>.*", "\\1", text)
-        return text
+    @classmethod
+    def path(cls):
+        return shutil.which(cls.cmd)
+
+    @classmethod
+    def run(cls, args):
+        r = subprocess.check_output([cls.cmd] + args)  # timeout=.2
+        return r.decode("utf-8")
+
+        # Example of how to run a command
+        #
+        # cmdl = ['txt2tags', '-t', target, '--enc=utf-8', '--no-headers', '-o', '-', '-']
+        #
+        # cmd = subprocess.Popen(('echo', text), stdout=subprocess.PIPE)
+        # try:
+        #     output = subprocess.check_output(cmdl, stdin=cmd.stdout, stderr=subprocess.STDOUT)  # , cwd="/tmp"
+        # except subprocess.CalledProcessError as e:
+        #     print("Error!")
+        #     return text
+        # cmd.wait()
+        #
+        # return output.decode("utf-8")
+
+
+class basicFormat:
+
+    implemented = False
+    requires = {
+        "Settings": False,
+        "PreviewBefore": False,
+        "PreviewAfter": False,
+    }
+
+    def __init__(self, name, description=""):
+        self.name = name
+        self.description = description
+
+    @classmethod
+    def settingsWidget(self):
+        return QWidget()
+
+    @classmethod
+    def previewWidgetBefore(self):
+        return QWidget()
+
+    @classmethod
+    def previewWidgetAfter(self):
+        return QWidget()
