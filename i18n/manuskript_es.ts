@@ -139,7 +139,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1377"/>
         <source>Full</source>
-        <translation>Lleno</translation>
+        <translation>Completo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="420"/>
