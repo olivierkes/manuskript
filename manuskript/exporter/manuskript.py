@@ -24,7 +24,10 @@ class manuskriptExporter(basicExporter):
     name = "Manuskript"
     description = "Default exporter, provides basic formats used by other exporters."
     exportTo = [
-        markdownFormat
+        basicFormat("Plain text", "Simplest export to plain text. Allows you to use your own markup not understood "
+                                  "by manuskript, for example <a href='www.fountain.io'>Fountain</a>."),
+        markdownFormat,
+        basicFormat("OPML")
     ]
 
     @classmethod

@@ -13,7 +13,7 @@ class mmdExporter(basicExporter):
     exportTo = [
         basicFormat("HTML", "A little known format modestly used. You know, web sites for example."),
         basicFormat("latex", ""),
-        basicFormat("OpenDocument", "OpenDocument format. Used by LibreOffice for example."),
+        basicFormat("Flat XML", ""),
         basicFormat("ePub", "Books that don't kill trees."),
     ]
     cmd = "mmd"

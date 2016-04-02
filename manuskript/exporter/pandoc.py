@@ -24,7 +24,7 @@ class pandocExporter(basicExporter):
     exportTo = [
         HTMLFormat,
         basicFormat("ePub", "Books that don't kill trees."),
-        basicFormat("OpenDocument", ""),
+        basicFormat("OpenDocument", "OpenDocument format. Used by LibreOffice for example."),
         basicFormat("PDF", "Needs latex to be installed."),
         basicFormat("DocX", "Microsoft Office (.docx) document."),
     ]
