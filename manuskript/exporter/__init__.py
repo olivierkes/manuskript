@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
 
-from manuskript.exporter.manuskript import  manuskriptExporter
+from manuskript.exporter.manuskript import manuskriptExporter
 from manuskript.exporter.mmd import mmdExporter
 from manuskript.exporter.pandoc import pandocExporter
 

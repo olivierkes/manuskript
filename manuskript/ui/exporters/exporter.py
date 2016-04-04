@@ -14,11 +14,12 @@ from manuskript.ui.exporters.exportersManager import exportersManager
 
 
 class exporterDialog(QWidget, Ui_exporter):
-    def __init__(self, parent=None):
+    def __init__(self, parent=None, mw=None):
         QWidget.__init__(self, parent)
         self.setupUi(self)
 
         # Var
+        self.mw = mw
         self.currentExporter = None
 
         # Populates lite
@@ -42,6 +43,8 @@ class exporterDialog(QWidget, Ui_exporter):
 
         self.cmbExporters.currentIndexChanged.connect(self.updateUi)
         self.cmbExporters.setCurrentIndex(1)
+
+        print(exporter.basic.basicFormat.concatenate(mw.mdlOutline.rootItem))
 
     def updateUi(self, index):
         name = self.cmbExporters.currentText()

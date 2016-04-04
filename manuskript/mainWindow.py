@@ -1077,7 +1077,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     ###############################################################################
 
     def doCompile(self):
-        self.dialog = exporterDialog()
+        self.dialog = exporterDialog(mw=self)
         self.dialog.show()
 
         r = self.dialog.geometry()
