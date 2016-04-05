@@ -9,8 +9,7 @@ class HTMLFormat(basicFormat):
     implemented = False
     requires = {
         "Settings": True,
-        "PreviewBefore": True,
-        "PreviewAfter": True,
+        "Preview": True,
     }
 
 
@@ -27,6 +26,8 @@ class pandocExporter(basicExporter):
         basicFormat("OpenDocument", "OpenDocument format. Used by LibreOffice for example."),
         basicFormat("PDF", "Needs latex to be installed."),
         basicFormat("DocX", "Microsoft Office (.docx) document."),
+        basicFormat("reST"),
+
     ]
     cmd = "pandoc"
 

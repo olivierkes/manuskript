@@ -16,16 +16,7 @@ class collapsibleGroupBox2(QWidget):
         self.switched = False
         self.vPolicy = None
         # self.button.setStyleSheet("background-color: lightBlue;")
-        self.button.setStyleSheet("""
-        QPushButton{
-            background-color: #BBB;
-            border: none;
-            padding: 2px;
-        }
-        QPushButton:checked, QPushButton:hover{
-            font-style:italic;
-            background-color:lightBlue;
-        }""")
+        self.setCustomColors()
 
     def resizeEvent(self, event):
         if not self.switched:
@@ -71,3 +62,21 @@ class collapsibleGroupBox2(QWidget):
 
     def restoreState(self, val):
         self.button.setChecked(val)
+
+    def setCustomColors(self, active="lightBlue", inactive="#BBB"):
+        self.button.setStyleSheet("""
+        QPushButton{{
+            background-color: {inactive};
+            border: none;
+            padding: 2px;
+        }}
+        QPushButton:checked, QPushButton:hover{{
+            background-color:{active};
+        }}
+        QPushButton:hover{{
+            font-style:italic;
+        }}""".format(
+            active=active,
+            inactive=inactive
+        ))
+

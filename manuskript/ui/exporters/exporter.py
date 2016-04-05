@@ -8,7 +8,7 @@ from PyQt5.QtGui import QBrush, QColor
 from PyQt5.QtWidgets import QWidget, QVBoxLayout
 
 from manuskript import exporter
-from manuskript.functions import lightBlue
+from manuskript.functions import lightBlue, printObjects
 from manuskript.ui.exporters.exporter_ui import Ui_exporter
 from manuskript.ui.exporters.exportersManager import exportersManager
 
@@ -44,48 +44,76 @@ class exporterDialog(QWidget, Ui_exporter):
         self.cmbExporters.currentIndexChanged.connect(self.updateUi)
         self.cmbExporters.setCurrentIndex(1)
 
-        print(exporter.basic.basicFormat.concatenate(mw.mdlOutline.rootItem))
+        self.btnPreview.clicked.connect(self.preview)
 
     def updateUi(self, index):
-        name = self.cmbExporters.currentText()
-        exporterName = self.cmbExporters.currentData()
+        E, F = self.getSelectedExporter()
 
-        E = exporter.getExporterByName(exporterName)
-
-        if not E:
-            self.setWidgetsEnabled(False)
-            return
-
-        F = E.getFormatByName(name)
-
-        if not F or not F.implemented:
+        if not E or not F or not F.implemented:
             self.setWidgetsEnabled(False)
             return
 
         self.setWidgetsEnabled(True)
 
         self.grpSettings.setVisible(F.requires["Settings"])
-        self.grpPreviewBefore.setVisible(F.requires["PreviewBefore"])
-        self.grpPreviewAfter.setVisible(F.requires["PreviewAfter"])
+        self.grpPreview.setVisible(F.requires["Preview"])
+        self.btnPreview.setVisible(F.requires["Preview"])
 
-        # if F.requires["Settings"]:
-        #     self.settingsWidget = F.settingsWidget()
-        #
-        # if F.requires["PreviewBefore"]:
-        #     self.previewBefore = F.previewWidgetBefore()
-        #
-        # if F.requires["PreviewAfter"]:
-        #     self.previewAfter = F.previewWidgetAfter()
+        if F.requires["Settings"]:
+            self.settingsWidget = F.settingsWidget()
+            self.setGroupWidget(self.grpSettings, self.settingsWidget)
+
+        if F.requires["Preview"]:
+            self.previewWidget = F.previewWidget()
+            self.setGroupWidget(self.grpPreview, self.previewWidget)
+
+    def preview(self):
+        E, F = self.getSelectedExporter()
+        if not E or not F or not F.implemented:
+            return
+        F.preview(self.settingsWidget, self.previewWidget)
+
+    ###################################################################################################################
+    # UI
+    ###################################################################################################################
+
+    def getSelectedExporter(self):
+        name = self.cmbExporters.currentText()
+        exporterName = self.cmbExporters.currentData()
+
+        E = exporter.getExporterByName(exporterName)
+
+        if not E:
+            return None, None
+
+        F = E.getFormatByName(name)
+
+        if not F:
+            return E, F
+
+        return E, F
 
     def setWidgetsEnabled(self, value):
+        """One function to control them all. Enables or disables all groups."""
         self.grpSettings.setEnabled(value)
-        self.grpPreviewBefore.setEnabled(value)
-        self.grpPreviewAfter.setEnabled(value)
+        self.grpPreview.setEnabled(value)
 
     def openManager(self):
+        """Open exporters manager dialog"""
         self.dialog = exportersManager()
         self.dialog.show()
 
         r = self.dialog.geometry()
         r2 = self.geometry()
         self.dialog.move(r2.center() - r.center())
+
+    def setGroupWidget(self, group, widget):
+        """Sets the given widget as main widget for QGroupBox group."""
+
+        # Removes every items from given layout.
+        l = group.layout()
+        while l.count():
+            l.removeItem(l.itemAt(0))
+
+        l.addWidget(widget)
+        widget.setParent(group)

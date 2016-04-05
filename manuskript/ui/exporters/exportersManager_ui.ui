@@ -183,58 +183,18 @@ text-align:center;</string>
          </font>
         </property>
         <property name="title">
-         <string>Path</string>
+         <string>Status</string>
         </property>
-        <layout class="QVBoxLayout" name="verticalLayout_2">
-         <item>
-          <layout class="QFormLayout" name="formLayout">
-           <item row="0" column="0">
-            <widget class="QLabel" name="label_2">
-             <property name="text">
-              <string>Status:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="1">
-            <widget class="QLabel" name="lblStatus">
-             <property name="font">
-              <font>
-               <weight>50</weight>
-               <bold>false</bold>
-              </font>
-             </property>
-             <property name="text">
-              <string notr="true">{ExporterStatus}</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="0">
-            <widget class="QLabel" name="lblVersionName">
-             <property name="text">
-              <string>Version:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="1">
-            <widget class="QLabel" name="lblVersion">
-             <property name="font">
-              <font>
-               <weight>50</weight>
-               <bold>false</bold>
-              </font>
-             </property>
-             <property name="text">
-              <string notr="true">{ExporterVersion}</string>
-             </property>
-             <property name="textInteractionFlags">
-              <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
-             </property>
-            </widget>
-           </item>
-          </layout>
+        <layout class="QFormLayout" name="formLayout">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_2">
+           <property name="text">
+            <string>Status:</string>
+           </property>
+          </widget>
          </item>
-         <item>
-          <widget class="QLabel" name="lblHelpText">
+         <item row="0" column="1">
+          <widget class="QLabel" name="lblStatus">
            <property name="font">
             <font>
              <weight>50</weight>
@@ -242,17 +202,41 @@ text-align:center;</string>
             </font>
            </property>
            <property name="text">
-            <string>{HelpText}</string>
+            <string notr="true">{ExporterStatus}</string>
            </property>
-           <property name="wordWrap">
-            <bool>true</bool>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="lblVersionName">
+           <property name="text">
+            <string>Version:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLabel" name="lblVersion">
+           <property name="font">
+            <font>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string notr="true">{ExporterVersion}</string>
            </property>
            <property name="textInteractionFlags">
             <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
            </property>
           </widget>
          </item>
-         <item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="label">
+           <property name="text">
+            <string>Path:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
           <layout class="QHBoxLayout" name="horizontalLayout_2">
            <item>
             <widget class="QLineEdit" name="txtPath">
@@ -278,6 +262,25 @@ text-align:center;</string>
             </widget>
            </item>
           </layout>
+         </item>
+         <item row="4" column="0" colspan="2">
+          <widget class="QLabel" name="lblHelpText">
+           <property name="font">
+            <font>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>{HelpText}</string>
+           </property>
+           <property name="wordWrap">
+            <bool>true</bool>
+           </property>
+           <property name="textInteractionFlags">
+            <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+           </property>
+          </widget>
          </item>
         </layout>
        </widget>
