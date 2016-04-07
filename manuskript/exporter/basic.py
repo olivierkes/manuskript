@@ -82,3 +82,23 @@ class basicFormat:
     @classmethod
     def preview(cls, settingsWidget, previewWidget):
         pass
+
+    @classmethod
+    def shortcodes(cls):
+        return [
+            ("\n", "\\n")
+        ]
+
+    @classmethod
+    def escapes(cls, text):
+        for A, B in cls.shortcodes():
+            text = text.replace(A, B)
+        return text
+
+    @classmethod
+    def descapes(cls, text):
+        """How do we call that?"""
+        for A, B in cls.shortcodes():
+            text = text.replace(B, A)
+        return text
+

@@ -19,6 +19,10 @@ FORMS            += ../manuskript/ui/views/basicItemView_ui.ui
 FORMS            += ../manuskript/ui/views/sldImportance_ui.ui
 FORMS            += ../manuskript/ui/views/storylineView_ui.ui
 
+FORMS            += ../manuskript/ui/exporters/exporter_ui.ui
+FORMS            += ../manuskript/ui/exporters/exportersManager_ui.ui
+FORMS            += ../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui
+
 
 SOURCES          += ../manuskript/exporter/__init__.py
 SOURCES          += ../manuskript/load_save/version_0.py
@@ -59,6 +63,11 @@ SOURCES          += ../manuskript/ui/views/textEditCompleter.py
 SOURCES          += ../manuskript/ui/views/textEditView.py
 SOURCES          += ../manuskript/ui/views/treeView.py
 SOURCES          += ../manuskript/ui/welcome.py
+SOURCES          += ../manuskript/ui/exporters/exporter.py
+SOURCES          += ../manuskript/ui/exporters/exportersManager.py
+SOURCES          += ../manuskript/ui/exporters/manuskript/plainTextSettings.py
+
+
 
 TRANSLATIONS     += manuskript_fr.ts
 TRANSLATIONS     += manuskript_es.ts

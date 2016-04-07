@@ -43,18 +43,18 @@ QToolBox::tab:selected, QToolBox::tab:hover{
 }</string>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>3</number>
      </property>
      <property name="tabSpacing">
       <number>0</number>
      </property>
-     <widget class="QWidget" name="page">
+     <widget class="QWidget" name="content">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>0</y>
         <width>491</width>
-        <height>824</height>
+        <height>842</height>
        </rect>
       </property>
       <attribute name="label">
@@ -150,7 +150,7 @@ QToolBox::tab:selected, QToolBox::tab:hover{
           <item row="0" column="0" colspan="2">
            <widget class="QLabel" name="label_2">
             <property name="text">
-             <string>Filters what items will be included in the final export.</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Filters what items will be included in the final export.&lt;br/&gt;&lt;span style=&quot; color:#773333;&quot;&gt;(Not fully implemented yet.)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
            </widget>
           </item>
@@ -227,7 +227,15 @@ QToolBox::tab:selected, QToolBox::tab:hover{
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="page_3">
+     <widget class="QWidget" name="separations">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>511</width>
+        <height>522</height>
+       </rect>
+      </property>
       <attribute name="label">
        <string>Separations</string>
       </attribute>
@@ -286,7 +294,9 @@ QToolBox::tab:selected, QToolBox::tab:hover{
               <string/>
              </property>
              <property name="icon">
-              <iconset theme="folder"/>
+              <iconset theme="folder">
+               <normaloff/>
+              </iconset>
              </property>
              <property name="flat">
               <bool>true</bool>
@@ -321,7 +331,9 @@ QToolBox::tab:selected, QToolBox::tab:hover{
               <string/>
              </property>
              <property name="icon">
-              <iconset theme="folder"/>
+              <iconset theme="folder">
+               <normaloff/>
+              </iconset>
              </property>
              <property name="flat">
               <bool>true</bool>
@@ -410,7 +422,9 @@ QToolBox::tab:selected, QToolBox::tab:hover{
               <string/>
              </property>
              <property name="icon">
-              <iconset theme="text-x-generic"/>
+              <iconset theme="text-x-generic">
+               <normaloff/>
+              </iconset>
              </property>
              <property name="flat">
               <bool>true</bool>
@@ -536,7 +550,9 @@ QToolBox::tab:selected, QToolBox::tab:hover{
               <string/>
              </property>
              <property name="icon">
-              <iconset theme="folder"/>
+              <iconset theme="folder">
+               <normaloff/>
+              </iconset>
              </property>
              <property name="flat">
               <bool>true</bool>
@@ -571,7 +587,9 @@ QToolBox::tab:selected, QToolBox::tab:hover{
               <string/>
              </property>
              <property name="icon">
-              <iconset theme="text-x-generic"/>
+              <iconset theme="text-x-generic">
+               <normaloff/>
+              </iconset>
              </property>
              <property name="flat">
               <bool>true</bool>
@@ -660,7 +678,9 @@ QToolBox::tab:selected, QToolBox::tab:hover{
               <string/>
              </property>
              <property name="icon">
-              <iconset theme="text-x-generic"/>
+              <iconset theme="text-x-generic">
+               <normaloff/>
+              </iconset>
              </property>
              <property name="flat">
               <bool>true</bool>
@@ -695,7 +715,9 @@ QToolBox::tab:selected, QToolBox::tab:hover{
               <string/>
              </property>
              <property name="icon">
-              <iconset theme="folder"/>
+              <iconset theme="folder">
+               <normaloff/>
+              </iconset>
              </property>
              <property name="flat">
               <bool>true</bool>
@@ -745,13 +767,13 @@ QToolBox::tab:selected, QToolBox::tab:hover{
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="page_2">
+     <widget class="QWidget" name="transformations">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>0</y>
         <width>511</width>
-        <height>548</height>
+        <height>522</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -814,9 +836,6 @@ QToolBox::tab:selected, QToolBox::tab:hover{
             </item>
             <item>
              <widget class="QLineEdit" name="txtTransDoubleQuotesA">
-              <property name="enabled">
-               <bool>false</bool>
-              </property>
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -841,13 +860,13 @@ QToolBox::tab:selected, QToolBox::tab:hover{
               <property name="frame">
                <bool>false</bool>
               </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
              </widget>
             </item>
             <item>
              <widget class="QLabel" name="lblTransDoubleQuotes">
-              <property name="enabled">
-               <bool>false</bool>
-              </property>
               <property name="text">
                <string>…</string>
               </property>
@@ -855,9 +874,6 @@ QToolBox::tab:selected, QToolBox::tab:hover{
             </item>
             <item>
              <widget class="QLineEdit" name="txtTransDoubleQuotesB">
-              <property name="enabled">
-               <bool>false</bool>
-              </property>
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -881,6 +897,9 @@ QToolBox::tab:selected, QToolBox::tab:hover{
               </property>
               <property name="frame">
                <bool>false</bool>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
               </property>
              </widget>
             </item>
@@ -920,9 +939,6 @@ QToolBox::tab:selected, QToolBox::tab:hover{
             </item>
             <item>
              <widget class="QLineEdit" name="txtTransSingleQuoteA">
-              <property name="enabled">
-               <bool>false</bool>
-              </property>
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -947,13 +963,13 @@ QToolBox::tab:selected, QToolBox::tab:hover{
               <property name="frame">
                <bool>false</bool>
               </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
              </widget>
             </item>
             <item>
              <widget class="QLabel" name="lblTransSingleQuote">
-              <property name="enabled">
-               <bool>false</bool>
-              </property>
               <property name="text">
                <string>…</string>
               </property>
@@ -961,9 +977,6 @@ QToolBox::tab:selected, QToolBox::tab:hover{
             </item>
             <item>
              <widget class="QLineEdit" name="txtTransSingleQuoteB">
-              <property name="enabled">
-               <bool>false</bool>
-              </property>
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -987,6 +1000,9 @@ QToolBox::tab:selected, QToolBox::tab:hover{
               </property>
               <property name="frame">
                <bool>false</bool>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
               </property>
              </widget>
             </item>
@@ -1023,6 +1039,12 @@ QToolBox::tab:selected, QToolBox::tab:hover{
          <layout class="QVBoxLayout" name="verticalLayout_9">
           <item>
            <widget class="QTableWidget" name="tblReplacements">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="alternatingRowColors">
              <bool>true</bool>
             </property>
@@ -1078,7 +1100,9 @@ QToolBox::tab:selected, QToolBox::tab:hover{
                <string/>
               </property>
               <property name="icon">
-               <iconset theme="list-add"/>
+               <iconset theme="list-add">
+                <normaloff/>
+               </iconset>
               </property>
               <property name="flat">
                <bool>true</bool>
@@ -1091,7 +1115,9 @@ QToolBox::tab:selected, QToolBox::tab:hover{
                <string/>
               </property>
               <property name="icon">
-               <iconset theme="list-remove"/>
+               <iconset theme="list-remove">
+                <normaloff/>
+               </iconset>
               </property>
               <property name="flat">
                <bool>true</bool>
@@ -1105,6 +1131,55 @@ QToolBox::tab:selected, QToolBox::tab:hover{
        </item>
        <item>
         <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="preview">
+      <attribute name="label">
+       <string>Preview</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_11">
+       <item>
+        <widget class="QGroupBox" name="groupBox">
+         <property name="title">
+          <string>Font</string>
+         </property>
+         <layout class="QFormLayout" name="formLayout_3">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_7">
+            <property name="text">
+             <string>Font:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QFontComboBox" name="cmbPreviewFont"/>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_8">
+            <property name="text">
+             <string>Font size:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QSpinBox" name="spnPreviewSize"/>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_4">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
          </property>

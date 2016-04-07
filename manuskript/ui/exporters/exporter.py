@@ -1,14 +1,14 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
+import json
 import os
-from collections import OrderedDict
 
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QBrush, QColor
-from PyQt5.QtWidgets import QWidget, QVBoxLayout
+from PyQt5.QtWidgets import QWidget
 
 from manuskript import exporter
-from manuskript.functions import lightBlue, printObjects
+from manuskript.functions import lightBlue, writablePath
 from manuskript.ui.exporters.exporter_ui import Ui_exporter
 from manuskript.ui.exporters.exportersManager import exportersManager
 
