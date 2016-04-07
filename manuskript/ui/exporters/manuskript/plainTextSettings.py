@@ -118,7 +118,6 @@ class exporterSettings(QWidget, Ui_exporterSettings):
         # Final stuff
 
         self.toolBox.setCurrentIndex(0)
-        self.loadSettings()
 
     ###################################################################################################################
     # SETTINGS
@@ -126,7 +125,6 @@ class exporterSettings(QWidget, Ui_exporterSettings):
 
     def loadSettings(self):
         filename = self.getSettingsPath()
-        print(filename)
         if os.path.exists(filename):
             with open(filename) as f:
                 self.settings = json.load(f)
@@ -229,7 +227,6 @@ class exporterSettings(QWidget, Ui_exporterSettings):
             s["TextTitle"] = []
             s["TextText"] = []
             nLevel = int((self.tblContent.rowCount() - 2) / 2)
-            print(nLevel)
             for row in range(nLevel):
                 s["FolderTitle"].append(self.tblContent.item(2 + row, 1).checkState() == Qt.Checked)
                 s["TextTitle"].append(self.tblContent.item(2 + row + nLevel, 1).checkState() == Qt.Checked)
@@ -278,7 +275,6 @@ class exporterSettings(QWidget, Ui_exporterSettings):
 
         s["Custom"] = []
         for i in range(self.tblReplacements.rowCount()):
-            print(self.getTableRowValues(self.tblReplacements, i))
             s["Custom"].append(self.getTableRowValues(self.tblReplacements, i))
         self.settings["Transform"] = s
 
@@ -288,9 +284,6 @@ class exporterSettings(QWidget, Ui_exporterSettings):
         f.setPointSize(self.spnPreviewSize.value())
         s["PreviewFont"] = f.toString()
         self.settings["Preview"] = s
-
-        # Save settings
-        self.writeSettings()
 
         return self.settings
 

@@ -471,6 +471,7 @@ class Ui_exporterSettings(object):
         self.verticalLayout_6.addItem(spacerItem10)
         self.toolBox.addItem(self.transformations, "")
         self.preview = QtWidgets.QWidget()
+        self.preview.setStyleSheet("QGroupBox{font-weight:bold;}")
         self.preview.setObjectName("preview")
         self.verticalLayout_11 = QtWidgets.QVBoxLayout(self.preview)
         self.verticalLayout_11.setObjectName("verticalLayout_11")

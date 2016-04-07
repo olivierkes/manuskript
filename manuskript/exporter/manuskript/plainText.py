@@ -2,7 +2,7 @@
 # --!-- coding: utf8 --!--
 import re
 from PyQt5.QtGui import QFont, QTextCharFormat
-from PyQt5.QtWidgets import QPlainTextEdit
+from PyQt5.QtWidgets import QPlainTextEdit, qApp
 
 from manuskript.exporter.basic import basicFormat
 from manuskript.functions import mainWindow
@@ -11,9 +11,9 @@ from manuskript.ui.exporters.manuskript.plainTextSettings import exporterSetting
 
 
 class plainText(basicFormat):
-    name = "Plain text"
-    description = "Simplest export to plain text. Allows you to use your own markup not understood " \
-                  "by manuskript, for example <a href='www.fountain.io'>Fountain</a>."
+    name = qApp.tr("Plain text")
+    description = qApp.tr("Simplest export to plain text. Allows you to use your own markup not understood " \
+                  "by manuskript, for example <a href='www.fountain.io'>Fountain</a>.")
     implemented = True
     requires = {
         "Settings": True,
@@ -23,6 +23,7 @@ class plainText(basicFormat):
     @classmethod
     def settingsWidget(cls):
         w = exporterSettings(cls)
+        w.loadSettings()
         return w
 
     @classmethod
@@ -34,7 +35,9 @@ class plainText(basicFormat):
     @classmethod
     def preview(cls, settingsWidget, previewWidget):
         settings = settingsWidget.getSettings()
-        print(settings)
+
+        # Save settings
+        settingsWidget.writeSettings()
 
         r = cls.concatenate(mainWindow().mdlOutline.rootItem, settings)
 
@@ -48,8 +51,7 @@ class plainText(basicFormat):
         previewWidget.setPlainText(r)
 
     @classmethod
-    def concatenate(cls, item: outlineItem, settings,
-                    processTitle=lambda x: x + "\n") -> str:
+    def concatenate(cls, item: outlineItem, settings) -> str:
         s = settings
         r = ""
 
@@ -65,13 +67,13 @@ class plainText(basicFormat):
                 if not s["Content"]["More"] and s["Content"]["FolderTitle"] or\
                        s["Content"]["More"] and s["Content"]["FolderTitle"][l]:
 
-                    r += processTitle(item.title())
+                    r += cls.processTitle(item.title(), l, settings)
 
             elif item.isText():
                 if not s["Content"]["More"] and s["Content"]["TextTitle"] or \
                        s["Content"]["More"] and s["Content"]["TextTitle"][l]:
 
-                    r += processTitle(item.title())
+                    r += cls.processTitle(item.title(), l, settings)
 
                 if not s["Content"]["More"] and s["Content"]["TextText"] or \
                        s["Content"]["More"] and s["Content"]["TextText"][l]:
@@ -99,7 +101,7 @@ class plainText(basicFormat):
                 elif last == "md" and c.type() == "folder":
                     content += s["Separator"]["TF"]
 
-            content += cls.concatenate(c, settings, processTitle)
+            content += cls.concatenate(c, settings)
 
             last = c.type()
 
@@ -107,6 +109,10 @@ class plainText(basicFormat):
         r += content
 
         return r
+
+    @classmethod
+    def processTitle(cls, text, level, settings):
+        return text + "\n"
 
     @classmethod
     def processText(cls, content, settings):

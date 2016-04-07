@@ -1145,6 +1145,9 @@ QToolBox::tab:selected, QToolBox::tab:hover{
       </layout>
      </widget>
      <widget class="QWidget" name="preview">
+      <property name="styleSheet">
+       <string notr="true">QGroupBox{font-weight:bold;}</string>
+      </property>
       <attribute name="label">
        <string>Preview</string>
       </attribute>

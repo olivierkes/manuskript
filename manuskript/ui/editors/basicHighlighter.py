@@ -75,7 +75,7 @@ class basicHighlighter(QSyntaxHighlighter):
         # Spell checking
         # Based on http://john.nachtimwald.com/2009/08/22/qplaintextedit-with-in-line-spell-check/
         WORDS = '(?iu)[\w\']+'
-        if self.editor.spellcheck:
+        if hasattr(self.editor, "spellcheck") and self.editor.spellcheck:
             for word_object in re.finditer(WORDS, text):
                 if self.editor._dict and not self.editor._dict.check(word_object.group()):
                     format = self.format(word_object.start())
