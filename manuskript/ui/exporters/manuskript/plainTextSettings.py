@@ -104,7 +104,7 @@ class exporterSettings(QWidget, Ui_exporterSettings):
             cmb.currentIndexChanged.connect(self.transCmbChanged)
             cmb.currentIndexChanged.emit(0)
 
-        self.btnTransAdd.clicked.connect(self.transAddTableRow)
+        self.btnTransAdd.clicked.connect(lambda: self.transAddTableRow(checked=True))
         self.btnTransRemove.clicked.connect(self.transRemoveTableRow)
         self.tableWidgetAdjustToContent(self.tblReplacements)
 
@@ -308,13 +308,13 @@ class exporterSettings(QWidget, Ui_exporterSettings):
 
     def contentUpdateTable(self):
 
-        def addFolderRow(text="Folder"):
+        def addFolderRow(text=self.tr("Folder")):
             self.tableWidgetAddRow(self.tblContent, [
                 self.tableWidgetMakeItem(text, "folder"),
                 self.tableWidgetMakeItem("", "", True, True),
             ])
 
-        def addTextRow(text="Text"):
+        def addTextRow(text=self.tr("Text")):
             self.tableWidgetAddRow(self.tblContent, [
                 self.tableWidgetMakeItem(text, "text-x-generic"),
                 self.tableWidgetMakeItem("", "", True, False),
@@ -331,10 +331,10 @@ class exporterSettings(QWidget, Ui_exporterSettings):
         level = self.mw.mdlOutline.maxLevel()
 
         for i in range(level):
-            addFolderRow("{}Level {} folder".format("  " * i, i + 1))
+            addFolderRow(self.tr("{}Level {} folder").format("  " * i, i + 1))
 
         for i in range(level):
-            addTextRow("{}Level {} text".format("  " * i, i + 1))
+            addTextRow(self.tr("{}Level {} text").format("  " * i, i + 1))
 
         self.tableWidgetAdjustToContent(self.tblContent)
 

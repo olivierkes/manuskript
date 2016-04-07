@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
+from PyQt5.QtWidgets import qApp
 
 from manuskript.exporter.basic import basicExporter, basicFormat
 
@@ -7,9 +8,9 @@ from manuskript.exporter.basic import basicExporter, basicFormat
 class mmdExporter(basicExporter):
 
     name = "MultiMarkdown"
-    description = """<p>A superset of markdown.</p>
+    description = qApp.tr("""<p>A superset of markdown.</p>
     <p>Website: <a href="http://fletcherpenney.net/multimarkdown/">http://fletcherpenney.net/multimarkdown/</a></p>
-    """
+    """)
     exportTo = [
         basicFormat("HTML", "A little known format modestly used. You know, web sites for example."),
         basicFormat("latex", ""),

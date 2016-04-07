@@ -3,6 +3,7 @@
 from PyQt5.QtWidgets import QTextEdit, qApp
 
 from manuskript.exporter.basic import basicExporter, basicFormat
+from manuskript.exporter.manuskript.HTML import HTML
 from manuskript.exporter.manuskript.markdown import markdown
 from manuskript.exporter.manuskript.plainText import plainText
 
@@ -14,7 +15,7 @@ class manuskriptExporter(basicExporter):
     exportTo = [
         plainText,
         markdown,
-        basicFormat("HTML"),
+        HTML,
         basicFormat("OPML")
     ]
 

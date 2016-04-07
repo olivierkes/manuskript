@@ -2,7 +2,7 @@
 # --!-- coding: utf8 --!--
 import re
 from PyQt5.QtGui import QFont, QTextCharFormat
-from PyQt5.QtWidgets import QPlainTextEdit, qApp
+from PyQt5.QtWidgets import QPlainTextEdit, qApp, QFrame
 
 from manuskript.exporter.basic import basicFormat
 from manuskript.functions import mainWindow
@@ -12,8 +12,8 @@ from manuskript.ui.exporters.manuskript.plainTextSettings import exporterSetting
 
 class plainText(basicFormat):
     name = qApp.tr("Plain text")
-    description = qApp.tr("Simplest export to plain text. Allows you to use your own markup not understood " \
-                  "by manuskript, for example <a href='www.fountain.io'>Fountain</a>.")
+    description = qApp.tr("""Simplest export to plain text. Allows you to use your own markup not understood
+                  by manuskript, for example <a href='www.fountain.io'>Fountain</a>.""")
     implemented = True
     requires = {
         "Settings": True,
@@ -29,8 +29,13 @@ class plainText(basicFormat):
     @classmethod
     def previewWidget(cls):
         w = QPlainTextEdit()
+        w.setFrameShape(QFrame.NoFrame)
         w.setReadOnly(True)
         return w
+
+    @classmethod
+    def output(cls, settings):
+        return cls.concatenate(mainWindow().mdlOutline.rootItem, settings)
 
     @classmethod
     def preview(cls, settingsWidget, previewWidget):
@@ -39,16 +44,20 @@ class plainText(basicFormat):
         # Save settings
         settingsWidget.writeSettings()
 
-        r = cls.concatenate(mainWindow().mdlOutline.rootItem, settings)
+        r = cls.output(settings)
 
         # Set preview font
-        cf = QTextCharFormat()
-        f = QFont()
-        f.fromString(settings["Preview"]["PreviewFont"])
-        cf.setFont(f)
-        previewWidget.setCurrentCharFormat(cf)
+        cls.preparesTextEditView(previewWidget, settings["Preview"]["PreviewFont"])
 
         previewWidget.setPlainText(r)
+
+    @classmethod
+    def preparesTextEditView(cls, view, textFont):
+        cf = QTextCharFormat()
+        f = QFont()
+        f.fromString(textFont)
+        cf.setFont(f)
+        view.setCurrentCharFormat(cf)
 
     @classmethod
     def concatenate(cls, item: outlineItem, settings) -> str:

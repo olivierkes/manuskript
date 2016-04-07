@@ -36,6 +36,10 @@ class exporterDialog(QWidget, Ui_exporter):
             item.setFlags(Qt.ItemIsEnabled)
 
             for f in E.exportTo:
+
+                if not f.isValid():
+                    continue
+
                 name = f.name if f.implemented else self.tr("{} (not implemented yet)").format(f.name)
                 self.cmbExporters.addItem(name, E.name)
 
@@ -113,7 +117,9 @@ class exporterDialog(QWidget, Ui_exporter):
         # Removes every items from given layout.
         l = group.layout()
         while l.count():
-            l.removeItem(l.itemAt(0))
+            item = l.itemAt(0)
+            l.removeItem(item)
+            item.widget().deleteLater()
 
         l.addWidget(widget)
         widget.setParent(group)

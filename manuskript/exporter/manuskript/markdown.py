@@ -11,8 +11,8 @@ from manuskript.ui.exporters.manuskript.plainTextSettings import exporterSetting
 
 class markdown(plainText):
     name = qApp.tr("Markdown")
-    description = qApp.tr("Just like plain text, excepts adds markdown titles. \
-                          Presupposes that texts are formatted in markdown.")
+    description = qApp.tr("""Just like plain text, excepts adds markdown titles.
+                          Presupposes that texts are formatted in markdown.""")
 
     @classmethod
     def settingsWidget(cls):

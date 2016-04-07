@@ -92,8 +92,15 @@ class exportersManager(QWidget, Ui_ExportersManager):
                 self.lblExportToDescription.setText("")
 
             else:
-                self.lblExportToDescription.setText("<b>{}:</b> {}".format(
+
+                desc = "<b>{}:</b> {}".format(
                     name,
-                    f.description))
+                    f.description)
 
+                if not f.isValid():
+                    desc += "<br><br>" + \
+                            self.tr("<b>Status:</b> uninstalled.") + \
+                            "<br><br>" + \
+                            self.tr("<b>Requires:</b> ") + f.InvalidBecause
 
+                self.lblExportToDescription.setText(desc)

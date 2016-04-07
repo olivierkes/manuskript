@@ -62,6 +62,7 @@ class basicExporter:
 class basicFormat:
 
     implemented = False
+    InvalidBecause = ""
     requires = {
         "Settings": False,
         "Preview": False,
@@ -101,4 +102,8 @@ class basicFormat:
         for A, B in cls.shortcodes():
             text = text.replace(B, A)
         return text
+
+    @classmethod
+    def isValid(cls):
+        return True
 
