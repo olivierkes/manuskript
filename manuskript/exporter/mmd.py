@@ -8,7 +8,7 @@ from manuskript.exporter.basic import basicExporter, basicFormat
 class mmdExporter(basicExporter):
 
     name = "MultiMarkdown"
-    description = qApp.tr("""<p>A superset of markdown.</p>
+    description = qApp.translate("Export", """<p>A superset of markdown.</p>
     <p>Website: <a href="http://fletcherpenney.net/multimarkdown/">http://fletcherpenney.net/multimarkdown/</a></p>
     """)
     exportTo = [

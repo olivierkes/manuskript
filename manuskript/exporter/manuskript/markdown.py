@@ -10,8 +10,8 @@ from manuskript.ui.exporters.manuskript.plainTextSettings import exporterSetting
 
 
 class markdown(plainText):
-    name = qApp.tr("Markdown")
-    description = qApp.tr("""Just like plain text, excepts adds markdown titles.
+    name = "Markdown"
+    description = qApp.translate("Export", """Just like plain text, excepts adds markdown titles.
                           Presupposes that texts are formatted in markdown.""")
 
     @classmethod
@@ -73,7 +73,7 @@ class markdownSettings(exporterSettings):
         w = self.toolBox.widget(self.toolBox.count() - 1)
         self.grpMarkdown = QGroupBox(self.tr("Markdown"))
         self.grpMarkdown.setLayout(QVBoxLayout())
-        self.chkMarkdownHighlighter = QCheckBox(self.tr("Preview with highlighter."))
+        self.chkMarkdownHighlighter = QCheckBox(qApp.translate("Export", "Preview with highlighter."))
         self.grpMarkdown.layout().addWidget(self.chkMarkdownHighlighter)
 
         w.layout().insertWidget(w.layout().count() - 1, self.grpMarkdown)

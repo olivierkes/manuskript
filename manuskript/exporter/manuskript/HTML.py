@@ -13,9 +13,9 @@ except ImportError:
     MD = None
 
 class HTML(markdown):
-    name = qApp.tr("HTML")
-    description = qApp.tr("Basic HTML output using python module 'markdown'.")
-    InvalidBecause = qApp.tr("python module 'markdown'.")
+    name = "HTML"
+    description = qApp.translate("Export", "Basic HTML output using python module 'markdown'.")
+    InvalidBecause = qApp.translate("Export", "python module 'markdown'.")
 
     @classmethod
     def isValid(cls):
@@ -47,8 +47,8 @@ class HTML(markdown):
         w1.setFrameShape(QFrame.NoFrame)
         w1.setReadOnly(True)
         w2 = QWebView()
-        t.addTab(w2, qApp.tr("HTML"))
-        t.addTab(w1, qApp.tr("Source"))
+        t.addTab(w2, qApp.translate("Export", "HTML"))
+        t.addTab(w1, qApp.translate("Export", "Source"))
         return t
 
     @classmethod

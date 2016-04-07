@@ -1,6 +1,5 @@
 FORMS            += ../manuskript/ui/revisions_ui.ui
 FORMS            += ../manuskript/ui/mainWindow.ui
-FORMS            += ../manuskript/ui/compileDialog_ui.ui
 FORMS            += ../manuskript/ui/search_ui.ui
 FORMS            += ../manuskript/ui/tools/frequency_ui.ui
 FORMS            += ../manuskript/ui/welcome_ui.ui
@@ -38,7 +37,6 @@ SOURCES          += ../manuskript/models/worldModel.py
 SOURCES          += ../manuskript/settingsWindow.py
 SOURCES          += ../manuskript/ui/cheatSheet.py
 SOURCES          += ../manuskript/ui/collapsibleDockWidgets.py
-SOURCES          += ../manuskript/ui/compileDialog.py
 SOURCES          += ../manuskript/ui/editors/fullScreenEditor.py
 SOURCES          += ../manuskript/ui/editors/locker.py
 SOURCES          += ../manuskript/ui/editors/mainEditor.py

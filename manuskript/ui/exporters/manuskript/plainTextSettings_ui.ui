@@ -43,7 +43,7 @@ QToolBox::tab:selected, QToolBox::tab:hover{
 }</string>
      </property>
      <property name="currentIndex">
-      <number>3</number>
+      <number>2</number>
      </property>
      <property name="tabSpacing">
       <number>0</number>
@@ -362,7 +362,7 @@ QToolBox::tab:selected, QToolBox::tab:hover{
             <bool>false</bool>
            </property>
            <property name="text">
-            <string>\n</string>
+            <string notr="true">\n</string>
            </property>
           </widget>
          </item>
@@ -490,7 +490,7 @@ QToolBox::tab:selected, QToolBox::tab:hover{
             <bool>false</bool>
            </property>
            <property name="text">
-            <string>\n</string>
+            <string notr="true">\n</string>
            </property>
           </widget>
          </item>
@@ -618,7 +618,7 @@ QToolBox::tab:selected, QToolBox::tab:hover{
             <bool>false</bool>
            </property>
            <property name="text">
-            <string>\n</string>
+            <string notr="true">\n</string>
            </property>
           </widget>
          </item>
@@ -746,7 +746,7 @@ QToolBox::tab:selected, QToolBox::tab:hover{
             <bool>false</bool>
            </property>
            <property name="text">
-            <string>\n</string>
+            <string notr="true">\n</string>
            </property>
           </widget>
          </item>
@@ -857,6 +857,9 @@ QToolBox::tab:selected, QToolBox::tab:hover{
               <property name="styleSheet">
                <string notr="true">border-radius: 6px;</string>
               </property>
+              <property name="text">
+               <string notr="true"/>
+              </property>
               <property name="frame">
                <bool>false</bool>
               </property>
@@ -868,7 +871,7 @@ QToolBox::tab:selected, QToolBox::tab:hover{
             <item>
              <widget class="QLabel" name="lblTransDoubleQuotes">
               <property name="text">
-               <string>…</string>
+               <string notr="true">…</string>
               </property>
              </widget>
             </item>
@@ -894,6 +897,9 @@ QToolBox::tab:selected, QToolBox::tab:hover{
               </property>
               <property name="styleSheet">
                <string notr="true">border-radius: 6px;</string>
+              </property>
+              <property name="text">
+               <string notr="true"/>
               </property>
               <property name="frame">
                <bool>false</bool>
@@ -960,6 +966,9 @@ QToolBox::tab:selected, QToolBox::tab:hover{
               <property name="styleSheet">
                <string notr="true">border-radius: 6px;</string>
               </property>
+              <property name="text">
+               <string notr="true"/>
+              </property>
               <property name="frame">
                <bool>false</bool>
               </property>
@@ -971,7 +980,7 @@ QToolBox::tab:selected, QToolBox::tab:hover{
             <item>
              <widget class="QLabel" name="lblTransSingleQuote">
               <property name="text">
-               <string>…</string>
+               <string notr="true">…</string>
               </property>
              </widget>
             </item>
@@ -997,6 +1006,9 @@ QToolBox::tab:selected, QToolBox::tab:hover{
               </property>
               <property name="styleSheet">
                <string notr="true">border-radius: 6px;</string>
+              </property>
+              <property name="text">
+               <string notr="true"/>
               </property>
               <property name="frame">
                <bool>false</bool>
@@ -1145,6 +1157,14 @@ QToolBox::tab:selected, QToolBox::tab:hover{
       </layout>
      </widget>
      <widget class="QWidget" name="preview">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>511</width>
+        <height>522</height>
+       </rect>
+      </property>
       <property name="styleSheet">
        <string notr="true">QGroupBox{font-weight:bold;}</string>
       </property>

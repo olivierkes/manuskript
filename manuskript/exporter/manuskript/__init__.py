@@ -11,7 +11,7 @@ from manuskript.exporter.manuskript.plainText import plainText
 class manuskriptExporter(basicExporter):
 
     name = "Manuskript"
-    description = qApp.tr("Default exporter, provides basic formats used by other exporters.")
+    description = qApp.translate("Export", "Default exporter, provides basic formats used by other exporters.")
     exportTo = [
         plainText,
         markdown,
