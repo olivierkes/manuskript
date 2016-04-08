@@ -50,6 +50,29 @@ class mainEditor(QWidget, Ui_mainEditor):
         self.btnRedacFullscreen.clicked.connect(
                 self.showFullScreen, AUC)
 
+        # FIXME: can we do something that looks good?
+        #        How to remove the line under the tabs?
+        # self.setStyleSheet("""
+        #     QTabWidget::tab-bar{
+        #         border:none;
+        #     }
+        #     QTabBar::tab{
+        #         padding: 2px 10px;
+        #         margin: 2px;
+        #         border-top: none;
+        #         border-radius: 1px;
+        #         background: transparent;
+        #     }
+        #
+        #     QTabBar::tab:selected{
+        #         border-top: 3px solid orange;
+        #         border-radius: 3px;
+        #     }
+        #     QTabBar::tab:hover{
+        #         background: darkgray;
+        #     }
+        #     """)
+
     ###############################################################################
     # TABS
     ###############################################################################
