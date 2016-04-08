@@ -19,6 +19,7 @@ class plainText(basicFormat):
         "Settings": True,
         "Preview": True,
     }
+    icon = "text-plain"
 
     # Default settings used in cls.getExportFilename. For easy subclassing when exporting plaintext.
     exportVarName = "lastPlainText"

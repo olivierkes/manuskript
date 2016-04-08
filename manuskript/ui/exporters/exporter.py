@@ -4,7 +4,7 @@ import json
 import os
 
 from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QBrush, QColor
+from PyQt5.QtGui import QBrush, QColor, QIcon
 from PyQt5.QtWidgets import QWidget
 
 from manuskript import exporter
@@ -24,7 +24,7 @@ class exporterDialog(QWidget, Ui_exporter):
         self.settingsWidget = None
         self.previewWidget = None
 
-        # Populates lite
+        # Populates list
         self.cmbExporters.clear()
         for E in exporter.exporters:
 
@@ -43,7 +43,7 @@ class exporterDialog(QWidget, Ui_exporter):
                     continue
 
                 name = f.name if f.implemented else self.tr("{} (not implemented yet)").format(f.name)
-                self.cmbExporters.addItem(name, E.name)
+                self.cmbExporters.addItem(QIcon.fromTheme(f.icon), name, E.name)
 
         self.btnManageExporters.clicked.connect(self.openManager)
 

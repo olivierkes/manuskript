@@ -5,7 +5,8 @@ from collections import OrderedDict
 
 from PyQt5.QtCore import QSize
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QWidget
+from PyQt5.QtGui import QIcon
+from PyQt5.QtWidgets import QWidget, QListWidgetItem
 
 from manuskript import exporter
 from manuskript.ui.exporters.exportersManager_ui import Ui_ExportersManager
@@ -54,10 +55,12 @@ class exportersManager(QWidget, Ui_ExportersManager):
         self.lstExportTo.clear()
 
         for f in E.exportTo:
-            self.lstExportTo.addItem(f.name)
+            item = QListWidgetItem(QIcon.fromTheme(f.icon), f.name)
+            self.lstExportTo.addItem(item)
 
-        self.lstExportTo.setMaximumWidth(120)
-        self.lstExportTo.setMinimumWidth(120)
+        self.grpExportTo.layout().setStretch(0, 4)
+        self.grpExportTo.layout().setStretch(1, 6)
+
         self.lstExportTo.setCurrentRow(0)
 
         # Updates path & version

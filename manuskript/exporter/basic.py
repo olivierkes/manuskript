@@ -67,10 +67,12 @@ class basicFormat:
         "Settings": False,
         "Preview": False,
     }
+    icon = ""
 
-    def __init__(self, name, description=""):
+    def __init__(self, name, description="", icon=""):
         self.name = name
         self.description = description
+        self.icon = icon
 
     @classmethod
     def settingsWidget(cls):

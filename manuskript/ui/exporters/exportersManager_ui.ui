@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>658</width>
-    <height>439</height>
+    <width>720</width>
+    <height>548</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -110,7 +110,14 @@ text-align:center;</string>
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
-          <widget class="QListWidget" name="lstExportTo"/>
+          <widget class="QListWidget" name="lstExportTo">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="MinimumExpanding" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QFrame" name="frame">

@@ -16,6 +16,7 @@ class HTML(markdown):
     name = "HTML"
     description = qApp.translate("Export", "Basic HTML output using python module 'markdown'.")
     InvalidBecause = qApp.translate("Export", "python module 'markdown'.")
+    icon = "text-html"
 
     exportVarName = "lastManuskriptHTML"
     exportFilter = "HTML files (*.html);; Any files (*)"

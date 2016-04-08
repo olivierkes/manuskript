@@ -12,10 +12,10 @@ class mmdExporter(basicExporter):
     <p>Website: <a href="http://fletcherpenney.net/multimarkdown/">http://fletcherpenney.net/multimarkdown/</a></p>
     """)
     exportTo = [
-        basicFormat("HTML", "A little known format modestly used. You know, web sites for example."),
-        basicFormat("latex", ""),
-        basicFormat("Flat XML", ""),
-        basicFormat("ePub", "Books that don't kill trees."),
+        basicFormat("HTML", "A little known format modestly used. You know, web sites for example.", "text-html"),
+        basicFormat("latex", "", "text-x-tex"),
+        basicFormat("Flat XML", "", "text-xml"),
+        basicFormat("ePub", "Books that don't kill trees.", icon="application-epub+zip"),
     ]
     cmd = "mmd"
 

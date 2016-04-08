@@ -2,7 +2,8 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/exporters/exportersManager_ui.ui'
 #
-# Created by: PyQt5 UI code generator 5.4.2
+# Created: Fri Apr  8 12:47:11 2016
+#      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -11,7 +12,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_ExportersManager(object):
     def setupUi(self, ExportersManager):
         ExportersManager.setObjectName("ExportersManager")
-        ExportersManager.resize(658, 439)
+        ExportersManager.resize(720, 548)
         self.horizontalLayout_8 = QtWidgets.QHBoxLayout(ExportersManager)
         self.horizontalLayout_8.setObjectName("horizontalLayout_8")
         self.lstExporters = QtWidgets.QListWidget(ExportersManager)
@@ -69,6 +70,11 @@ class Ui_ExportersManager(object):
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.grpExportTo)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.lstExportTo = QtWidgets.QListWidget(self.grpExportTo)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.lstExportTo.sizePolicy().hasHeightForWidth())
+        self.lstExportTo.setSizePolicy(sizePolicy)
         self.lstExportTo.setObjectName("lstExportTo")
         self.horizontalLayout.addWidget(self.lstExportTo)
         self.frame = QtWidgets.QFrame(self.grpExportTo)
@@ -76,8 +82,8 @@ class Ui_ExportersManager(object):
         self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame.setObjectName("frame")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.frame)
-        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout.setSpacing(0)
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout.setObjectName("verticalLayout")
         self.lblExportToDescription = QtWidgets.QLabel(self.frame)
         font = QtGui.QFont()

@@ -12,6 +12,7 @@ class HTMLFormat(basicFormat):
         "Settings": True,
         "Preview": True,
     }
+    icon="text-html"
 
 
 class pandocExporter(basicExporter):
@@ -23,11 +24,11 @@ class pandocExporter(basicExporter):
     """)
     exportTo = [
         HTMLFormat,
-        basicFormat("ePub", "Books that don't kill trees."),
-        basicFormat("OpenDocument", "OpenDocument format. Used by LibreOffice for example."),
-        basicFormat("PDF", "Needs latex to be installed."),
-        basicFormat("DocX", "Microsoft Office (.docx) document."),
-        basicFormat("reST"),
+        basicFormat("ePub", "Books that don't kill trees.", icon="application-epub+zip"),
+        basicFormat("OpenDocument", "OpenDocument format. Used by LibreOffice for example.", icon="application-vnd.oasis.opendocument.text"),
+        basicFormat("PDF", "Needs latex to be installed.", icon="application-pdf"),
+        basicFormat("DocX", "Microsoft Office (.docx) document.", icon="application-vnd.openxmlformats-officedocument.wordprocessingml.document"),
+        basicFormat("reST", icon="text-plain"),
 
     ]
     cmd = "pandoc"

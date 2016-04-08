@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/exporters/exporter_ui.ui'
 #
-# Created: Thu Apr  7 16:37:00 2016
+# Created: Fri Apr  8 12:22:37 2016
 #      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -24,15 +24,20 @@ class Ui_exporter(object):
         self.cmbExporters.setObjectName("cmbExporters")
         self.horizontalLayout.addWidget(self.cmbExporters)
         self.btnManageExporters = QtWidgets.QPushButton(exporter)
-        self.btnManageExporters.setFlat(True)
+        icon = QtGui.QIcon.fromTheme("preferences-system")
+        self.btnManageExporters.setIcon(icon)
         self.btnManageExporters.setObjectName("btnManageExporters")
         self.horizontalLayout.addWidget(self.btnManageExporters)
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem)
         self.btnPreview = QtWidgets.QPushButton(exporter)
+        icon = QtGui.QIcon.fromTheme("document-print-preview")
+        self.btnPreview.setIcon(icon)
         self.btnPreview.setObjectName("btnPreview")
         self.horizontalLayout.addWidget(self.btnPreview)
         self.btnExport = QtWidgets.QPushButton(exporter)
+        icon = QtGui.QIcon.fromTheme("document-export")
+        self.btnExport.setIcon(icon)
         self.btnExport.setObjectName("btnExport")
         self.horizontalLayout.addWidget(self.btnExport)
         self.verticalLayout.addLayout(self.horizontalLayout)

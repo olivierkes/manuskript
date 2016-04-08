@@ -16,7 +16,7 @@ class manuskriptExporter(basicExporter):
         plainText,
         markdown,
         HTML,
-        basicFormat("OPML")
+        basicFormat("OPML", icon="text-x-opml+xml")
     ]
 
     @classmethod
