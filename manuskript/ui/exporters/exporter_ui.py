@@ -2,7 +2,8 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/exporters/exporter_ui.ui'
 #
-# Created by: PyQt5 UI code generator 5.4.2
+# Created: Thu Apr  7 16:37:00 2016
+#      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -23,6 +24,7 @@ class Ui_exporter(object):
         self.cmbExporters.setObjectName("cmbExporters")
         self.horizontalLayout.addWidget(self.cmbExporters)
         self.btnManageExporters = QtWidgets.QPushButton(exporter)
+        self.btnManageExporters.setFlat(True)
         self.btnManageExporters.setObjectName("btnManageExporters")
         self.horizontalLayout.addWidget(self.btnManageExporters)
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
@@ -30,9 +32,9 @@ class Ui_exporter(object):
         self.btnPreview = QtWidgets.QPushButton(exporter)
         self.btnPreview.setObjectName("btnPreview")
         self.horizontalLayout.addWidget(self.btnPreview)
-        self.pushButton_2 = QtWidgets.QPushButton(exporter)
-        self.pushButton_2.setObjectName("pushButton_2")
-        self.horizontalLayout.addWidget(self.pushButton_2)
+        self.btnExport = QtWidgets.QPushButton(exporter)
+        self.btnExport.setObjectName("btnExport")
+        self.horizontalLayout.addWidget(self.btnExport)
         self.verticalLayout.addLayout(self.horizontalLayout)
         self.splitter = QtWidgets.QSplitter(exporter)
         self.splitter.setOrientation(QtCore.Qt.Horizontal)
@@ -40,14 +42,14 @@ class Ui_exporter(object):
         self.grpSettings = QtWidgets.QGroupBox(self.splitter)
         self.grpSettings.setObjectName("grpSettings")
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.grpSettings)
-        self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_3.setSpacing(0)
+        self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
         self.grpPreview = QtWidgets.QGroupBox(self.splitter)
         self.grpPreview.setObjectName("grpPreview")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.grpPreview)
-        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_2.setSpacing(0)
+        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.verticalLayout.addWidget(self.splitter)
 
@@ -60,7 +62,7 @@ class Ui_exporter(object):
         self.label.setText(_translate("exporter", "Export to:"))
         self.btnManageExporters.setText(_translate("exporter", "Manage exporters"))
         self.btnPreview.setText(_translate("exporter", "Preview"))
-        self.pushButton_2.setText(_translate("exporter", "Export"))
+        self.btnExport.setText(_translate("exporter", "Export"))
         self.grpSettings.setTitle(_translate("exporter", "Settings"))
         self.grpPreview.setTitle(_translate("exporter", "Preview"))
 

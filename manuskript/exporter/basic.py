@@ -85,6 +85,10 @@ class basicFormat:
         pass
 
     @classmethod
+    def export(cls, settingsWidget):
+        pass
+
+    @classmethod
     def shortcodes(cls):
         return [
             ("\n", "\\n")

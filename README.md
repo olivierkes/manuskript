@@ -20,8 +20,9 @@ Be sure to have all **dependencies** installed !
 ## Dependencies
 - Python 3
 - PyQt5
-- libqt5svg5
-- lxml
+- Qt SVG (`libqt5svg5` on Ubuntu)
+- Qt Webkit (`python3-pyqt5.qtwebkit` on Ubuntu)
+- lxml (`python3-lxml` on Ubuntu)
 
 Optional:
 - pyenchant

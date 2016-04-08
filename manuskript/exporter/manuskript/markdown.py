@@ -14,6 +14,9 @@ class markdown(plainText):
     description = qApp.translate("Export", """Just like plain text, excepts adds markdown titles.
                           Presupposes that texts are formatted in markdown.""")
 
+    exportVarName = "lastManuskriptMarkdown"
+    exportFilter = "Markdown files (*.md);; Any files (*)"
+
     @classmethod
     def settingsWidget(cls):
         w = markdownSettings(cls)

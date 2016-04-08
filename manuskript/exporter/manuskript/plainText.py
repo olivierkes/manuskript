@@ -2,7 +2,7 @@
 # --!-- coding: utf8 --!--
 import re
 from PyQt5.QtGui import QFont, QTextCharFormat
-from PyQt5.QtWidgets import QPlainTextEdit, qApp, QFrame
+from PyQt5.QtWidgets import QPlainTextEdit, qApp, QFrame, QFileDialog
 
 from manuskript.exporter.basic import basicFormat
 from manuskript.functions import mainWindow
@@ -20,6 +20,11 @@ class plainText(basicFormat):
         "Preview": True,
     }
 
+    # Default settings used in cls.getExportFilename. For easy subclassing when exporting plaintext.
+    exportVarName = "lastPlainText"
+    exportFilter = "Text files (*.txt);; Any files (*)"
+
+
     @classmethod
     def settingsWidget(cls):
         w = exporterSettings(cls)
@@ -36,6 +41,61 @@ class plainText(basicFormat):
     @classmethod
     def output(cls, settings):
         return cls.concatenate(mainWindow().mdlOutline.rootItem, settings)
+
+    @classmethod
+    def getExportFilename(cls, settingsWidget, varName=None, filter=None):
+
+        if varName is None:
+            varName = cls.exportVarName
+
+        if filter is None:
+            filter = cls.exportFilter
+
+        settings = settingsWidget.getSettings()
+
+        s = settings.get("Output", {})
+        if varName in s:
+            filename = s[varName]
+        else:
+            filename = ""
+
+        filename, filter = QFileDialog.getSaveFileName(settingsWidget.parent(),
+                                                       caption=qApp.translate("Export", "Chose output file..."),
+                                                       filter=filter,
+                                                       directory=filename)
+
+        if filename:
+            s[varName] = filename
+            settingsWidget.settings["Output"] = s
+
+            # Auto adds extension if necessary
+            try:
+                # Extract the extension from "Some name (*.ext)"
+                ext = filter.split("(")[1].split(")")[0]
+                ext = ext.split(".")[1]
+                if " " in ext:  # In case there are multiple extensions: "Images (*.png *.jpg)"
+                    ext = ext.split(" ")[0]
+            except:
+                ext = ""
+
+            if ext and filename[-len(ext)-1:] != ".{}".format(ext):
+                filename += "." + ext
+
+        # Save settings
+        settingsWidget.writeSettings()
+
+        return filename
+
+    @classmethod
+    def export(cls, settingsWidget):
+        settings = settingsWidget.getSettings()
+        settingsWidget.writeSettings()
+
+        filename = cls.getExportFilename(settingsWidget)
+
+        if filename:
+            with open(filename, "w") as f:
+                f.write(cls.output(settingsWidget.settings))
 
     @classmethod
     def preview(cls, settingsWidget, previewWidget):

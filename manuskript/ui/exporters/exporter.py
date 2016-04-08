@@ -21,6 +21,8 @@ class exporterDialog(QWidget, Ui_exporter):
         # Var
         self.mw = mw
         self.currentExporter = None
+        self.settingsWidget = None
+        self.previewWidget = None
 
         # Populates lite
         self.cmbExporters.clear()
@@ -49,6 +51,7 @@ class exporterDialog(QWidget, Ui_exporter):
         self.cmbExporters.setCurrentIndex(1)
 
         self.btnPreview.clicked.connect(self.preview)
+        self.btnExport.clicked.connect(self.export)
 
     def updateUi(self, index):
         E, F = self.getSelectedExporter()
@@ -71,11 +74,20 @@ class exporterDialog(QWidget, Ui_exporter):
             self.previewWidget = F.previewWidget()
             self.setGroupWidget(self.grpPreview, self.previewWidget)
 
+            self.splitter.setStretchFactor(0, 3)
+            self.splitter.setStretchFactor(1, 6)
+
     def preview(self):
         E, F = self.getSelectedExporter()
         if not E or not F or not F.implemented:
             return
         F.preview(self.settingsWidget, self.previewWidget)
+
+    def export(self):
+        E, F = self.getSelectedExporter()
+        if not E or not F or not F.implemented:
+            return
+        F.export(self.settingsWidget)
 
     ###################################################################################################################
     # UI
