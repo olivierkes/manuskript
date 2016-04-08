@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/editors/mainEditor_ui.ui'
 #
-# Created: Mon Feb  8 08:54:11 2016
+# Created: Fri Apr  8 13:43:25 2016
 #      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -27,6 +27,7 @@ class Ui_mainEditor(object):
         self.horizontalLayout_19.setObjectName("horizontalLayout_19")
         self.btnRedacFolderText = QtWidgets.QPushButton(mainEditor)
         self.btnRedacFolderText.setCheckable(True)
+        self.btnRedacFolderText.setFlat(True)
         self.btnRedacFolderText.setObjectName("btnRedacFolderText")
         self.buttonGroup = QtWidgets.QButtonGroup(mainEditor)
         self.buttonGroup.setObjectName("buttonGroup")
@@ -35,11 +36,13 @@ class Ui_mainEditor(object):
         self.btnRedacFolderCork = QtWidgets.QPushButton(mainEditor)
         self.btnRedacFolderCork.setCheckable(True)
         self.btnRedacFolderCork.setChecked(True)
+        self.btnRedacFolderCork.setFlat(True)
         self.btnRedacFolderCork.setObjectName("btnRedacFolderCork")
         self.buttonGroup.addButton(self.btnRedacFolderCork)
         self.horizontalLayout_19.addWidget(self.btnRedacFolderCork)
         self.btnRedacFolderOutline = QtWidgets.QPushButton(mainEditor)
         self.btnRedacFolderOutline.setCheckable(True)
+        self.btnRedacFolderOutline.setFlat(True)
         self.btnRedacFolderOutline.setObjectName("btnRedacFolderOutline")
         self.buttonGroup.addButton(self.btnRedacFolderOutline)
         self.horizontalLayout_19.addWidget(self.btnRedacFolderOutline)
@@ -80,6 +83,7 @@ class Ui_mainEditor(object):
         self.btnRedacFullscreen.setText("")
         icon = QtGui.QIcon.fromTheme("view-fullscreen")
         self.btnRedacFullscreen.setIcon(icon)
+        self.btnRedacFullscreen.setFlat(True)
         self.btnRedacFullscreen.setObjectName("btnRedacFullscreen")
         self.horizontalLayout_19.addWidget(self.btnRedacFullscreen)
         self.verticalLayout.addLayout(self.horizontalLayout_19)

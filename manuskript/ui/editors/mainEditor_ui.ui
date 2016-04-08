@@ -55,6 +55,9 @@
        <property name="checkable">
         <bool>true</bool>
        </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
        <attribute name="buttonGroup">
         <string notr="true">buttonGroup</string>
        </attribute>
@@ -71,6 +74,9 @@
        <property name="checked">
         <bool>true</bool>
        </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
        <attribute name="buttonGroup">
         <string notr="true">buttonGroup</string>
        </attribute>
@@ -82,6 +88,9 @@
         <string>Outline</string>
        </property>
        <property name="checkable">
+        <bool>true</bool>
+       </property>
+       <property name="flat">
         <bool>true</bool>
        </property>
        <attribute name="buttonGroup">
@@ -202,6 +211,9 @@
        </property>
        <property name="shortcut">
         <string>F11</string>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
        </property>
       </widget>
      </item>

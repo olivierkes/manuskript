@@ -756,6 +756,27 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def setupMoreUi(self):
 
+        self.setStyleSheet("""
+        QMenuBar#menubar{border:none;}
+
+        QToolButton{
+            background: none;
+            border: none;
+        }
+        QPushButton:flat:hover, QToolButton:hover{
+            border: 1px solid darkgray;
+            border-radius: 3px;
+            background: darkgray;
+        }
+        """)
+
+        # Custon palette?
+        p = qApp.palette()
+        c = p.color(p.Window)
+        # p.setColor(p.Base, c.lighter(115))
+        qApp.setPalette(p)
+
+
         # Tool bar on the right
         self.toolbar = collapsibleDockWidgets(Qt.RightDockWidgetArea, self)
         self.toolbar.addCustomWidget(self.tr("Book summary"), self.grpPlotSummary, self.TabPlots)

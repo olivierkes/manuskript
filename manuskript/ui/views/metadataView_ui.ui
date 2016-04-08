@@ -173,6 +173,9 @@
       </property>
       <item>
        <widget class="textEditCompleter" name="txtNotes">
+        <property name="frameShape">
+         <enum>QFrame::NoFrame</enum>
+        </property>
         <property name="placeholderText">
          <string>Notes / References</string>
         </property>

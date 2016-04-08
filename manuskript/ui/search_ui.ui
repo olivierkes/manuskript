@@ -65,7 +65,11 @@
     </layout>
    </item>
    <item>
-    <widget class="QListWidget" name="result"/>
+    <widget class="QListWidget" name="result">
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>

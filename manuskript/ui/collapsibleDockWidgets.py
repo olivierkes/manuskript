@@ -59,6 +59,17 @@ class collapsibleDockWidgets(QToolBar):
         self.otherWidgets = []
         self.currentGroup = None
 
+        self.setStyleSheet("""
+        QToolBar{
+            background:transparent;
+            border: none;
+            spacing: 0px;
+        }
+        QToolBar:separator{
+            border: none;
+        }
+        """)
+
     def _dockWidgets(self):
         mw = self.parent()
         for w in mw.findChildren(QDockWidget, None):
@@ -116,6 +127,25 @@ class verticalButton(QToolButton):
     def __init__(self, parent):
         QToolButton.__init__(self, parent)
         self.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Minimum)
+
+        self.setStyleSheet("""
+            QToolButton{
+                border: none;
+                border-radius: 0px;
+                background: transparent;
+                margin: 0px;
+                padding: 3px;
+            }
+            QToolButton:checked{
+                border: 0px solid darkgray;
+                background: transparent;
+                color: darkblue;
+            }
+            QToolButton:hover{
+                border: 0px solid darkgray;
+                color: darkblue;
+            }
+            """)
 
     def sizeHint(self):
         return QToolButton.sizeHint(self).transposed()

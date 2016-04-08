@@ -22,7 +22,7 @@
      <number>0</number>
     </property>
     <property name="topMargin">
-     <number>6</number>
+     <number>1</number>
     </property>
     <property name="rightMargin">
      <number>0</number>
@@ -124,7 +124,7 @@
            <enum>QTabWidget::Rounded</enum>
           </property>
           <property name="currentIndex">
-           <number>4</number>
+           <number>6</number>
           </property>
           <property name="documentMode">
            <bool>true</bool>
@@ -739,6 +739,9 @@
                      <iconset theme="list-add">
                       <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
                     </property>
+                    <property name="flat">
+                     <bool>true</bool>
+                    </property>
                    </widget>
                   </item>
                   <item>
@@ -749,6 +752,9 @@
                     <property name="icon">
                      <iconset theme="list-remove">
                       <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
+                    </property>
+                    <property name="flat">
+                     <bool>true</bool>
                     </property>
                    </widget>
                   </item>
@@ -857,6 +863,9 @@
                      <property name="icon">
                       <iconset theme="go-next">
                        <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
+                     </property>
+                     <property name="flat">
+                      <bool>true</bool>
                      </property>
                     </widget>
                    </item>
@@ -1100,6 +1109,9 @@
                      <iconset theme="list-add">
                       <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
                     </property>
+                    <property name="flat">
+                     <bool>true</bool>
+                    </property>
                    </widget>
                   </item>
                   <item>
@@ -1110,6 +1122,9 @@
                     <property name="icon">
                      <iconset theme="list-remove">
                       <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
+                    </property>
+                    <property name="flat">
+                     <bool>true</bool>
                     </property>
                    </widget>
                   </item>
@@ -1129,7 +1144,7 @@
               </widget>
               <widget class="QTabWidget" name="tabPlot">
                <property name="currentIndex">
-                <number>0</number>
+                <number>1</number>
                </property>
                <property name="documentMode">
                 <bool>true</bool>
@@ -1222,6 +1237,9 @@
                         <iconset theme="list-add">
                          <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
                        </property>
+                       <property name="flat">
+                        <bool>true</bool>
+                       </property>
                       </widget>
                      </item>
                      <item>
@@ -1235,6 +1253,9 @@
                        <property name="icon">
                         <iconset theme="list-remove">
                          <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
+                       </property>
+                       <property name="flat">
+                        <bool>true</bool>
                        </property>
                       </widget>
                      </item>
@@ -1301,6 +1322,9 @@
                       <iconset theme="list-add">
                        <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
                      </property>
+                     <property name="flat">
+                      <bool>true</bool>
+                     </property>
                     </widget>
                    </item>
                    <item>
@@ -1311,6 +1335,9 @@
                      <property name="icon">
                       <iconset theme="list-remove">
                        <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
+                     </property>
+                     <property name="flat">
+                      <bool>true</bool>
                      </property>
                     </widget>
                    </item>
@@ -1340,6 +1367,9 @@
                       <bool>true</bool>
                      </property>
                      <property name="checked">
+                      <bool>true</bool>
+                     </property>
+                     <property name="flat">
                       <bool>true</bool>
                      </property>
                     </widget>
@@ -1485,6 +1515,9 @@
                      <iconset theme="list-add">
                       <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
                     </property>
+                    <property name="flat">
+                     <bool>true</bool>
+                    </property>
                    </widget>
                   </item>
                   <item>
@@ -1495,6 +1528,9 @@
                     <property name="icon">
                      <iconset theme="list-remove">
                       <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
+                    </property>
+                    <property name="flat">
+                     <bool>true</bool>
                     </property>
                    </widget>
                   </item>
@@ -1523,6 +1559,9 @@
                      <iconset theme="emblem-favorite">
                       <normaloff/>
                      </iconset>
+                    </property>
+                    <property name="flat">
+                     <bool>true</bool>
                     </property>
                    </widget>
                   </item>
@@ -1690,6 +1729,9 @@
                      <iconset theme="folder-new">
                       <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
                     </property>
+                    <property name="flat">
+                     <bool>true</bool>
+                    </property>
                    </widget>
                   </item>
                   <item>
@@ -1701,6 +1743,9 @@
                      <iconset theme="document-new">
                       <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
                     </property>
+                    <property name="flat">
+                     <bool>true</bool>
+                    </property>
                    </widget>
                   </item>
                   <item>
@@ -1711,6 +1756,9 @@
                     <property name="icon">
                      <iconset theme="list-remove">
                       <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
+                    </property>
+                    <property name="flat">
+                     <bool>true</bool>
                     </property>
                    </widget>
                   </item>
@@ -1740,6 +1788,9 @@
                      <bool>true</bool>
                     </property>
                     <property name="checked">
+                     <bool>true</bool>
+                    </property>
+                    <property name="flat">
                      <bool>true</bool>
                     </property>
                    </widget>
@@ -1819,6 +1870,9 @@
                       <iconset theme="folder-new">
                        <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
                      </property>
+                     <property name="flat">
+                      <bool>true</bool>
+                     </property>
                     </widget>
                    </item>
                    <item>
@@ -1830,6 +1884,9 @@
                       <iconset theme="document-new">
                        <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
                      </property>
+                     <property name="flat">
+                      <bool>true</bool>
+                     </property>
                     </widget>
                    </item>
                    <item>
@@ -1840,6 +1897,9 @@
                      <property name="icon">
                       <iconset theme="list-remove">
                        <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
+                     </property>
+                     <property name="flat">
+                      <bool>true</bool>
                      </property>
                     </widget>
                    </item>
@@ -1979,7 +2039,7 @@
      <x>0</x>
      <y>0</y>
      <width>1112</width>
-     <height>30</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
