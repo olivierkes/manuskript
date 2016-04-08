@@ -1851,6 +1851,12 @@
                  </property>
                  <item>
                   <widget class="treeView" name="treeRedacOutline">
+                   <property name="autoFillBackground">
+                    <bool>true</bool>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::NoFrame</enum>
+                   </property>
                    <property name="editTriggers">
                     <set>QAbstractItemView::EditKeyPressed</set>
                    </property>

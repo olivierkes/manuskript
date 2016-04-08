@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/compileDialog_ui.ui'
 #
-# Created: Wed Mar  2 00:30:17 2016
+# Created: Fri Apr  8 18:15:48 2016
 #      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!

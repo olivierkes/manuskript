@@ -4,7 +4,7 @@ import imp
 import os
 
 from PyQt5.QtCore import pyqtSignal, QSignalMapper, QTimer, QSettings, Qt, QRegExp, QUrl, QSize
-from PyQt5.QtGui import QStandardItemModel, QIcon
+from PyQt5.QtGui import QStandardItemModel, QIcon, QColor
 from PyQt5.QtWidgets import QMainWindow, QHeaderView, qApp, QMenu, QActionGroup, QAction, QStyle, QListWidgetItem, \
     QLabel
 
@@ -768,14 +768,28 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             border-radius: 3px;
             background: darkgray;
         }
+
         """)
 
         # Custon palette?
         p = qApp.palette()
         c = p.color(p.Window)
         # p.setColor(p.Base, c.lighter(115))
+        p.setColor(p.Base, QColor("#EEE"))
         qApp.setPalette(p)
 
+        p = self.treeRedacOutline.palette()
+        c = p.color(p.Window)
+        # p.setBrush(p.Base, Qt.red)  # That doesn't work, why?
+        # p.setBrush(p.Window, Qt.green)
+        # self.treeRedacOutline.setPalette(p)
+        # self.treeRedacOutline.setStyleSheet("background: {};".format(c.name()))
+        self.treeRedacOutline.setStyleSheet("""
+            QTreeView{
+                background: transparent;
+                margin-top: 30px;
+            }
+            """)
 
         # Tool bar on the right
         self.toolbar = collapsibleDockWidgets(Qt.RightDockWidgetArea, self)

@@ -136,7 +136,7 @@ class verticalButton(QToolButton):
                 margin: 0px;
                 padding: 3px;
             }
-            QToolButton:checked{
+            /*QToolButton:checked{
                 border: 0px solid darkgray;
                 background: transparent;
                 color: darkblue;
@@ -144,7 +144,16 @@ class verticalButton(QToolButton):
             QToolButton:hover{
                 border: 0px solid darkgray;
                 color: darkblue;
+            }*/
+            QToolButton:checked{
+                border: 0px solid darkgray;
+                background: #bbbbbb;
             }
+            QToolButton:hover{
+                border: 0px solid darkgray;
+                background: #cccccc;
+            }
+
             """)
 
     def sizeHint(self):
