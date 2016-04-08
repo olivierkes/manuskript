@@ -654,6 +654,7 @@ def loadProject(project, zip=None):
 
     # Just to be sure
     settings.saveToZip = zip
+    settings.defaultTextType = "md"
 
     ####################################################################################################################
     # Labels
