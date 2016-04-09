@@ -4,6 +4,7 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QWidget, QFrame, QPushButton, QVBoxLayout, QSizePolicy, qApp
 
 from manuskript.functions import lightBlue
+from manuskript.ui import style
 
 
 class collapsibleGroupBox2(QWidget):
@@ -17,34 +18,7 @@ class collapsibleGroupBox2(QWidget):
         self.vPolicy = None
         # self.button.setStyleSheet("background-color: lightBlue;")
 
-        s1 = """
-        QPushButton{
-            background-color: #BBB;
-            border: none;
-            padding: 2px;
-        }
-        QPushButton:checked, QPushButton:hover{
-            font-style:italic;
-            background-color:lightBlue;
-        }"""
-
-        # p = qApp.palette()
-        # c = p.color(p.Window)
-
-        s2 = """
-        QPushButton{
-            background-color: transparent;
-            border: none;
-            border-top: 1px solid darkgray;
-            padding: 4px 0px;
-            font-weight: bold;
-        }
-        QPushButton:hover{
-            background-color:#cccccc;
-        }
-        """
-
-        self.button.setStyleSheet(s2)
+        self.button.setStyleSheet(style.collapsibleGroupBoxButton())
 
     def resizeEvent(self, event):
         if not self.switched:

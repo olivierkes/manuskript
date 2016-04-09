@@ -11,6 +11,7 @@ from PyQt5.QtWidgets import qApp
 from manuskript import settings
 from manuskript.enums import Outline
 from manuskript.functions import AUC, mainWindow, drawProgress
+from manuskript.ui import style
 from manuskript.ui.editors.editorWidget import editorWidget
 from manuskript.ui.editors.fullScreenEditor import fullScreenEditor
 from manuskript.ui.editors.mainEditor_ui import Ui_mainEditor
@@ -51,34 +52,7 @@ class mainEditor(QWidget, Ui_mainEditor):
                 self.showFullScreen, AUC)
 
         self.tab.setDocumentMode(False)
-        self.tab.setStyleSheet("""
-        QTabWidget::pane{
-            margin-top: -1px;
-            border: 1px solid #999;
-        }
-        QTabWidget::tab-bar{
-            left:10px;
-        }
-        QTabBar{
-            background: transparent;
-            border-radius: 0;
-            border: 0px;
-        }
-        QTabBar::tab{
-            margin: 2px 0 0 0;
-            padding: 2px 9px;
-            border: 1px solid #999;
-            border-bottom: 0px;
-            margin-top: 3px;
-        }
-        QTabBar::tab:selected{
-            border: 1px solid #999;
-            background: white;
-            border-bottom: 0px;
-            margin-top: 0px;
-        }
-
-        """)
+        self.tab.setStyleSheet(style.mainEditorTabSS())
 
     ###############################################################################
     # TABS

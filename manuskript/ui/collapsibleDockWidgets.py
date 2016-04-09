@@ -4,6 +4,8 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QToolBar, QDockWidget, QAction, QToolButton, QSizePolicy, QStylePainter, \
     QStyleOptionButton, QStyle
 
+from manuskript.ui import style
+
 
 class collapsibleDockWidgets(QToolBar):
     """
@@ -39,17 +41,7 @@ class collapsibleDockWidgets(QToolBar):
             b.setDefaultAction(d.toggleViewAction())
             # d.setStyleSheet("QDockWidget::title{background-color: red;}")
             # d.setTitleBarWidget(QLabel(d.windowTitle()))
-            d.setStyleSheet("""
-            QDockWidget::title {
-                text-align: left; /* align the text to the left */
-                background: lightBlue;
-                padding: 5px;
-            }
-
-            QDockWidget::close-button, QDockWidget::float-button {
-                background: lightBlue;
-            }
-            """)
+            d.setStyleSheet(style.dockSS())
             a = self.addWidget(b)
             self._dockToButtonAction[d] = a
 
@@ -59,16 +51,7 @@ class collapsibleDockWidgets(QToolBar):
         self.otherWidgets = []
         self.currentGroup = None
 
-        self.setStyleSheet("""
-        QToolBar{
-            background:transparent;
-            border: none;
-            spacing: 0px;
-        }
-        QToolBar:separator{
-            border: none;
-        }
-        """)
+        self.setStyleSheet(style.toolBarSS())
 
     def _dockWidgets(self):
         mw = self.parent()
@@ -128,33 +111,7 @@ class verticalButton(QToolButton):
         QToolButton.__init__(self, parent)
         self.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Minimum)
 
-        self.setStyleSheet("""
-            QToolButton{
-                border: none;
-                border-radius: 0px;
-                background: transparent;
-                margin: 0px;
-                padding: 3px;
-            }
-            /*QToolButton:checked{
-                border: 0px solid darkgray;
-                background: transparent;
-                color: darkblue;
-            }
-            QToolButton:hover{
-                border: 0px solid darkgray;
-                color: darkblue;
-            }*/
-            QToolButton:checked{
-                border: 0px solid darkgray;
-                background: #bbbbbb;
-            }
-            QToolButton:hover{
-                border: 0px solid darkgray;
-                background: #cccccc;
-            }
-
-            """)
+        self.setStyleSheet(style.verticalToolButtonSS())
 
     def sizeHint(self):
         return QToolButton.sizeHint(self).transposed()

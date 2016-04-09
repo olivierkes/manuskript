@@ -17,6 +17,7 @@ from manuskript.models.outlineModel import outlineModel
 from manuskript.models.plotModel import plotModel
 from manuskript.models.worldModel import worldModel
 from manuskript.settingsWindow import settingsWindow
+from manuskript.ui import style
 from manuskript.ui.collapsibleDockWidgets import collapsibleDockWidgets
 from manuskript.ui.compileDialog import compileDialog
 from manuskript.ui.helpLabel import helpLabel
@@ -756,40 +757,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def setupMoreUi(self):
 
-        self.setStyleSheet("""
-        QMenuBar#menubar{border:none;}
-
-        QToolButton{
-            background: none;
-            border: none;
-        }
-        QPushButton:flat:hover, QToolButton:hover{
-            border: 1px solid darkgray;
-            border-radius: 3px;
-            background: darkgray;
-        }
-
-        """)
-
-        # Custon palette?
-        p = qApp.palette()
-        c = p.color(p.Window)
-        # p.setColor(p.Base, c.lighter(115))
-        p.setColor(p.Base, QColor("#EEE"))
-        qApp.setPalette(p)
-
-        p = self.treeRedacOutline.palette()
-        c = p.color(p.Window)
-        # p.setBrush(p.Base, Qt.red)  # That doesn't work, why?
-        # p.setBrush(p.Window, Qt.green)
-        # self.treeRedacOutline.setPalette(p)
-        # self.treeRedacOutline.setStyleSheet("background: {};".format(c.name()))
-        self.treeRedacOutline.setStyleSheet("""
-            QTreeView{
-                background: transparent;
-                margin-top: 30px;
-            }
-            """)
+        style.styleMainWindow(self)
 
         # Tool bar on the right
         self.toolbar = collapsibleDockWidgets(Qt.RightDockWidgetArea, self)
