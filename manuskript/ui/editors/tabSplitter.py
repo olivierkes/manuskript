@@ -2,9 +2,8 @@
 # --!-- coding: utf8 --!--
 import locale
 
-from PyQt5.QtCore import QModelIndex, QRect, QPoint
-from PyQt5.QtCore import Qt, QObject, QSize
-from PyQt5.QtGui import QPixmap, QPainter
+from PyQt5.QtCore import QModelIndex, QRect, QPoint, Qt, QObject, QSize
+from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QWidget, QPushButton, qApp
 
 from manuskript.functions import mainWindow
@@ -28,11 +27,11 @@ class tabSplitter(QWidget, Ui_tabSplitter):
 
         self.btmSplit = QPushButton()
 
-        self.btnSplit = QPushButton("S", self)
+        self.btnSplit = QPushButton(self)
         self.btnSplit.setGeometry(QRect(0, 0, 24, 24))
         self.btnSplit.setMinimumSize(QSize(24, 24))
         self.btnSplit.setMaximumSize(QSize(24, 24))
-        self.btnSplit.setCheckable(True)
+        # self.btnSplit.setCheckable(True)
         self.btnSplit.setFlat(True)
         self.btnSplit.setObjectName("btnSplit")
 
@@ -42,6 +41,7 @@ class tabSplitter(QWidget, Ui_tabSplitter):
         self.secondTab = None
         self.splitState = 0
         self.focusTab = 1
+        self.closeSplit()
 
         self.tab.tabCloseRequested.connect(self.closeTab)
         self.tab.currentChanged.connect(self.mainEditor.tabChanged)
@@ -103,7 +103,9 @@ class tabSplitter(QWidget, Ui_tabSplitter):
 
             self.splitState = 1
             self.splitter.setOrientation(Qt.Horizontal)
-            self.btnSplit.setChecked(True)
+            # self.btnSplit.setChecked(True)
+            self.btnSplit.setIcon(QIcon.fromTheme("split-vertical"))
+            self.btnSplit.setToolTip(self.tr("Split horizontally"))
 
         elif state is None and self.splitState == 1 or state == 2:
             if self.secondTab is None:
@@ -111,7 +113,9 @@ class tabSplitter(QWidget, Ui_tabSplitter):
 
             self.splitter.setOrientation(Qt.Vertical)
             self.splitState = 2
-            self.btnSplit.setChecked(True)
+            # self.btnSplit.setChecked(True)
+            self.btnSplit.setIcon(QIcon.fromTheme("split-horizontal"))
+            self.btnSplit.setToolTip(self.tr("Close split"))
 
         else:
             self.closeSplit()
@@ -134,8 +138,10 @@ class tabSplitter(QWidget, Ui_tabSplitter):
             qApp.focusChanged.disconnect(self.secondTab.focusChanged)
         self.focusTab = 1
         self.secondTab = None
-        self.btnSplit.setChecked(False)
+        # self.btnSplit.setChecked(False)
         self.splitState = 0
+        self.btnSplit.setIcon(QIcon.fromTheme("split-close"))
+        self.btnSplit.setToolTip(self.tr("Split vertically"))
 
     # def resizeEvent(self, event):
     #     r = self.geometry()
