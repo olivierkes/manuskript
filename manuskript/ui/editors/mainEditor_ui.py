@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/editors/mainEditor_ui.ui'
 #
-# Created: Fri Apr  8 18:15:49 2016
+# Created: Sun Apr 10 11:19:00 2016
 #      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -14,15 +14,17 @@ class Ui_mainEditor(object):
         mainEditor.setObjectName("mainEditor")
         mainEditor.resize(791, 319)
         self.verticalLayout = QtWidgets.QVBoxLayout(mainEditor)
+        self.verticalLayout.setSpacing(0)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout.setObjectName("verticalLayout")
-        self.tab = QtWidgets.QTabWidget(mainEditor)
-        self.tab.setDocumentMode(True)
-        self.tab.setTabsClosable(True)
-        self.tab.setMovable(True)
-        self.tab.setProperty("tabBarAutoHide", False)
-        self.tab.setObjectName("tab")
-        self.verticalLayout.addWidget(self.tab)
+        self.tabSplitter = tabSplitter(mainEditor)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.tabSplitter.sizePolicy().hasHeightForWidth())
+        self.tabSplitter.setSizePolicy(sizePolicy)
+        self.tabSplitter.setObjectName("tabSplitter")
+        self.verticalLayout.addWidget(self.tabSplitter)
         self.horizontalLayout_19 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_19.setObjectName("horizontalLayout_19")
         self.btnRedacFolderText = QtWidgets.QPushButton(mainEditor)
@@ -89,7 +91,6 @@ class Ui_mainEditor(object):
         self.verticalLayout.addLayout(self.horizontalLayout_19)
 
         self.retranslateUi(mainEditor)
-        self.tab.setCurrentIndex(-1)
         QtCore.QMetaObject.connectSlotsByName(mainEditor)
 
     def retranslateUi(self, mainEditor):
@@ -100,4 +101,5 @@ class Ui_mainEditor(object):
         self.btnRedacFolderOutline.setText(_translate("mainEditor", "Outline"))
         self.btnRedacFullscreen.setShortcut(_translate("mainEditor", "F11"))
 
+from manuskript.ui.editors.tabSplitter import tabSplitter
 from manuskript.ui.editors.textFormat import textFormat

@@ -90,7 +90,7 @@ def mainEditorTabSS():
             border: 1px solid #999;
         }
         QTabWidget::tab-bar{
-            left:10px;
+            left:25px;
         }
         QTabBar{
             background: transparent;
@@ -113,6 +113,29 @@ def mainEditorTabSS():
         QTabBar::tab:!selected:hover{
             background:#ddd;
         }
+
+QScrollBar:vertical {
+    border: none;
+    background: transparent;
+    width: 10px;
+}
+QScrollBar::handle {
+    background: rgba(180, 180, 180, 40%);
+}
+QScrollBar::add-line:vertical {
+    width:0;
+    height: 0;
+    border: none;
+    background: none;
+}
+
+QScrollBar::sub-line:vertical {
+    width:0;
+    height: 0;
+    border: none;
+    background: none;
+}
+
         """
 
 def toolBarSS():

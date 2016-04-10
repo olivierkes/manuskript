@@ -1,0 +1,163 @@
+#!/usr/bin/env python
+# --!-- coding: utf8 --!--
+import locale
+
+from PyQt5.QtCore import QModelIndex, QRect, QPoint
+from PyQt5.QtCore import Qt, QObject, QSize
+from PyQt5.QtGui import QPixmap, QPainter
+from PyQt5.QtWidgets import QWidget, QPushButton, qApp
+
+from manuskript.functions import mainWindow
+from manuskript.ui import style
+from manuskript.ui.editors.tabSplitter_ui import Ui_tabSplitter
+
+
+class tabSplitter(QWidget, Ui_tabSplitter):
+    def __init__(self, parent=None, mainEditor=None):
+        QWidget.__init__(self, parent)
+        self.setupUi(self)
+        self.tab.setStyleSheet(style.mainEditorTabSS())
+
+        try:
+            self.tab.setTabBarAutoHide(True)
+        except AttributeError:
+            print("Info: install Qt 5.4 or higher to use tabbar auto-hide in editor.")
+
+        #Remove empty widget
+        # self.splitter.widget(1).setParent(None)
+
+        self.btmSplit = QPushButton()
+
+        self.btnSplit = QPushButton("S", self)
+        self.btnSplit.setGeometry(QRect(0, 0, 24, 24))
+        self.btnSplit.setMinimumSize(QSize(24, 24))
+        self.btnSplit.setMaximumSize(QSize(24, 24))
+        self.btnSplit.setCheckable(True)
+        self.btnSplit.setFlat(True)
+        self.btnSplit.setObjectName("btnSplit")
+
+        self.mainEditor = mainEditor or parent
+
+        self.btnSplit.clicked.connect(self.split)
+        self.secondTab = None
+        self.splitState = 0
+        self.focusTab = 1
+
+        self.tab.tabCloseRequested.connect(self.closeTab)
+        self.tab.currentChanged.connect(self.mainEditor.tabChanged)
+
+        qApp.focusChanged.connect(self.focusChanged)
+
+    ###############################################################################
+    # TABS
+    ###############################################################################
+
+    def closeTab(self, index):
+        w = self.tab.widget(index)
+        self.tab.removeTab(index)
+        w.setCurrentModelIndex(QModelIndex())
+        w.deleteLater()
+
+    def tabOpenIndexes(self):
+        sel = []
+        for i in range(self.tab.count()):
+            sel.append(mainWindow().mdlOutline.ID(self.tab.widget(i).currentIndex))
+        return sel
+
+    def openIndexes(self):
+        r = [
+            self.splitState,
+            self.tabOpenIndexes(),
+            self.secondTab.openIndexes() if self.secondTab else None,
+        ]
+        return r
+
+    def restoreOpenIndexes(self, openIndexes):
+
+        try:
+
+            self.split(state=openIndexes[0])
+
+            for i in openIndexes[1]:
+                idx = mainWindow().mdlOutline.getIndexByID(i)
+                self.mainEditor.setCurrentModelIndex(idx, newTab=True)
+
+            if openIndexes[2]:
+                self.focusTab = 2
+                self.secondTab.restoreOpenIndexes(openIndexes[2])
+
+        except:
+
+            print("Failed to load indexes from settings...")
+            print("Indexes:", openIndexes)
+
+    ###############################################################################
+    # SPLITTER
+    ###############################################################################
+
+    def split(self, toggled=None, state=None):
+
+        if state is None and self.splitState == 0 or state == 1:
+            if self.secondTab is None:
+                self.addSecondTab()
+
+            self.splitState = 1
+            self.splitter.setOrientation(Qt.Horizontal)
+            self.btnSplit.setChecked(True)
+
+        elif state is None and self.splitState == 1 or state == 2:
+            if self.secondTab is None:
+                self.addSecondTab()
+
+            self.splitter.setOrientation(Qt.Vertical)
+            self.splitState = 2
+            self.btnSplit.setChecked(True)
+
+        else:
+            self.closeSplit()
+
+    def addSecondTab(self):
+        self.secondTab = tabSplitter(mainEditor=self.mainEditor)
+        self.splitter.addWidget(self.secondTab)
+        self.splitter.setStretchFactor(0, 10)
+        self.splitter.setStretchFactor(1, 10)
+
+        if self.mainEditor.currentEditor():
+            idx = self.mainEditor.currentEditor().currentIndex
+            self.focusTab = 2
+            self.mainEditor.setCurrentModelIndex(idx)
+
+    def closeSplit(self):
+        if self.secondTab:
+            self.secondTab.setParent(None)
+            self.secondTab.deleteLater()
+            qApp.focusChanged.disconnect(self.secondTab.focusChanged)
+        self.focusTab = 1
+        self.secondTab = None
+        self.btnSplit.setChecked(False)
+        self.splitState = 0
+
+    # def resizeEvent(self, event):
+    #     r = self.geometry()
+    #     r.moveLeft(0)
+    #     r.moveTop(0)
+    #     self.splitter.setGeometry(r)
+    #     self.btnSplit.setGeometry(QRect(0, 0, 24, 24))
+
+    def focusChanged(self, old, new):
+        if self.secondTab is None or new is None:
+            return
+
+        oldFT = self.focusTab
+        while new:
+            if new == self.tab:
+                self.focusTab = 1
+                new = None
+            elif new == self.secondTab:
+                self.focusTab = 2
+                new = None
+            else:
+                new = new.parent()
+
+        if self.focusTab != oldFT:
+            self.mainEditor.tabChanged()

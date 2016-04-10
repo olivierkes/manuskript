@@ -26,21 +26,14 @@ class mainEditor(QWidget, Ui_mainEditor):
         self._updating = False
 
         self.mw = mainWindow()
-        self.tab.tabCloseRequested.connect(self.closeTab)
-        self.tab.currentChanged.connect(self.tabChanged)
-
-        # UI
-        try:
-            self.tab.setTabBarAutoHide(True)
-        except AttributeError:
-            print("Info: install Qt 5.4 or higher to use tabbar auto-hide in editor.")
 
         # Connections --------------------------------------------------------
 
         self.sldCorkSizeFactor.valueChanged.connect(
                 self.setCorkSizeFactor, AUC)
         self.btnRedacFolderCork.toggled.connect(
-                self.sldCorkSizeFactor.setVisible, AUC)
+                self.sldCorkSizeFactor.setVisible, AUC
+        )
         self.btnRedacFolderText.clicked.connect(
                 lambda v: self.setFolderView("text"), AUC)
         self.btnRedacFolderCork.clicked.connect(
@@ -51,28 +44,33 @@ class mainEditor(QWidget, Ui_mainEditor):
         self.btnRedacFullscreen.clicked.connect(
                 self.showFullScreen, AUC)
 
-        self.tab.setDocumentMode(False)
-        self.tab.setStyleSheet(style.mainEditorTabSS())
+        # self.tab.setDocumentMode(False)
+
 
     ###############################################################################
     # TABS
     ###############################################################################
 
-    def currentEditor(self):
-        return self.tab.currentWidget()
+    def currentTabWidget(self):
+        """Returns the tabSplitter that has focus."""
+        ts = self.tabSplitter
+        while ts:
+            if ts.focusTab == 1:
+                return ts.tab
+            else:
+                ts = ts.secondTab
 
-    def tabChanged(self, index):
+    def currentEditor(self):
+        return self.currentTabWidget().currentWidget()
+        # return self.tab.currentWidget()
+
+    def tabChanged(self, index=QModelIndex()):
         if self.currentEditor():
             index = self.currentEditor().currentIndex
             view = self.currentEditor().folderView
             self.updateFolderViewButtons(view)
-            if index.isValid():
-                hidden = not index.internalPointer().isFolder()
-            else:
-                hidden = False
         else:
             index = QModelIndex()
-            hidden = False
 
         self._updating = True
         self.mw.treeRedacOutline.setCurrentIndex(index)
@@ -81,18 +79,35 @@ class mainEditor(QWidget, Ui_mainEditor):
         self.updateStats()
         self.updateThingsVisible(index)
 
-    def closeTab(self, index):
-        w = self.tab.widget(index)
-        self.tab.removeTab(index)
-        w.setCurrentModelIndex(QModelIndex())
-        w.deleteLater()
-
     def closeAllTabs(self):
-        while(self.tab.count()):
-            self.closeTab(0)
+        for ts in self.allTabSplitters():
+            while(ts.tab.count()):
+                ts.closeTab(0)
 
-    def allTabs(self):
-        return [self.tab.widget(i) for i in range(self.tab.count())]
+        for ts in reversed(self.allTabSplitters()):
+            ts.closeSplit()
+
+    def allTabs(self, tabWidget=None):
+        """Returns all the tabs from the given tabWidget. If tabWidget is None, from the current tabWidget."""
+        if tabWidget is None:
+            tabWidget = self.currentTabWidget()
+        return [tabWidget.widget(i) for i in range(tabWidget.count())]
+
+    def allAllTabs(self):
+        """Returns a list of all tabs, from all tabWidgets."""
+        r = []
+        for ts in self.allTabSplitters():
+            r.extend(self.allTabs(ts.tab))
+        return r
+
+    def allTabSplitters(self):
+        r = []
+        ts = self.tabSplitter
+        while ts:
+            r.append(ts)
+            ts = ts.secondTab
+        return r
+
 
     ###############################################################################
     # SELECTION AND UPDATES
@@ -126,20 +141,20 @@ class mainEditor(QWidget, Ui_mainEditor):
         # Checking if tab is already openned
         for w in self.allTabs():
             if w.currentIndex == index:
-                self.tab.setCurrentWidget(w)
+                self.currentTabWidget().setCurrentWidget(w)
                 return
 
         if qApp.keyboardModifiers() & Qt.ControlModifier:
             newTab = True
 
-        if newTab or not self.tab.count():
+        if newTab or not self.currentTabWidget().count():
             editor = editorWidget(self)
             editor.setCurrentModelIndex(index)
-            self.tab.addTab(editor, title)
-            self.tab.setCurrentIndex(self.tab.count() - 1)
+            self.currentTabWidget().addTab(editor, title)
+            self.currentTabWidget().setCurrentIndex(self.currentTabWidget().count() - 1)
         else:
             self.currentEditor().setCurrentModelIndex(index)
-            self.tab.setTabText(self.tab.currentIndex(), title)
+            self.currentTabWidget().setTabText(self.currentTabWidget().currentIndex(), title)
 
     ###############################################################################
     # UI
@@ -157,7 +172,7 @@ class mainEditor(QWidget, Ui_mainEditor):
         self.btnRedacFolderText.setVisible(visible)
         self.btnRedacFolderCork.setVisible(visible)
         self.btnRedacFolderOutline.setVisible(visible)
-        self.sldCorkSizeFactor.setVisible(visible)
+        self.sldCorkSizeFactor.setVisible(visible and self.btnRedacFolderCork.isChecked())
         self.btnRedacFullscreen.setVisible(not visible)
 
     def updateFolderViewButtons(self, view):
@@ -216,20 +231,20 @@ class mainEditor(QWidget, Ui_mainEditor):
             self.currentEditor().setFolderView(view)
 
     def setCorkSizeFactor(self, val):
-        for w in self.allTabs():
+        for w in self.allAllTabs():
             w.setCorkSizeFactor(val)
         settings.corkSizeFactor = val
 
     def updateCorkView(self):
-        for w in self.allTabs():
+        for w in self.allAllTabs():
             w.corkView.viewport().update()
 
     def updateCorkBackground(self):
-        for w in self.allTabs():
+        for w in self.allAllTabs():
             w.corkView.updateBackground()
 
     def updateTreeView(self):
-        for w in self.allTabs():
+        for w in self.allAllTabs():
             w.outlineView.viewport().update()
 
     def showFullScreen(self):
@@ -242,9 +257,9 @@ class mainEditor(QWidget, Ui_mainEditor):
 
     def setDict(self, dict):
         print(dict)
-        for w in self.allTabs():
+        for w in self.allAllTabs():
             w.setDict(dict)
 
     def toggleSpellcheck(self, val):
-        for w in self.allTabs():
+        for w in self.allAllTabs():
             w.toggleSpellcheck(val)

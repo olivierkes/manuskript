@@ -314,9 +314,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.makeConnections()
 
         # Load settings
-        for i in settings.openIndexes:
-            idx = self.mdlOutline.getIndexByID(i)
-            self.mainEditor.setCurrentModelIndex(idx, newTab=True)
+        if settings.openIndexes:
+            self.mainEditor.tabSplitter.restoreOpenIndexes(settings.openIndexes)
         self.generateViewMenu()
         self.mainEditor.sldCorkSizeFactor.setValue(settings.corkSizeFactor)
         self.actSpellcheck.setChecked(settings.spellcheck)
@@ -447,10 +446,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         if self.currentProject:
             # Remembering the current items (stores outlineItem's ID)
-            sel = []
-            for i in range(self.mainEditor.tab.count()):
-                sel.append(self.mdlOutline.ID(self.mainEditor.tab.widget(i).currentIndex))
-            settings.openIndexes = sel
+            settings.openIndexes = self.mainEditor.tabSplitter.openIndexes()
 
         # Save data from models
         if self.currentProject and settings.saveOnQuit:
