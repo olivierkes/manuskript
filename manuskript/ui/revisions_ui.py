@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/revisions_ui.ui'
 #
-# Created: Wed Mar  2 00:30:17 2016
+# Created: Fri Apr  8 14:30:44 2016
 #      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -25,14 +25,18 @@ class Ui_revisions(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.list.sizePolicy().hasHeightForWidth())
         self.list.setSizePolicy(sizePolicy)
+        self.list.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.list.setObjectName("list")
         self.scrollArea = QtWidgets.QScrollArea(self.splitter)
+        self.scrollArea.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 394, 70))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 400, 68))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
+        self.verticalLayout.setSpacing(0)
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout.setObjectName("verticalLayout")
         self.view = QtWidgets.QLabel(self.scrollAreaWidgetContents)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
@@ -55,6 +59,7 @@ class Ui_revisions(object):
         self.btnOptions = QtWidgets.QPushButton(self.layoutWidget)
         icon = QtGui.QIcon.fromTheme("preferences-system-symbolic")
         self.btnOptions.setIcon(icon)
+        self.btnOptions.setFlat(True)
         self.btnOptions.setObjectName("btnOptions")
         self.horizontalLayout_2.addWidget(self.btnOptions)
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
@@ -62,11 +67,13 @@ class Ui_revisions(object):
         self.btnRestore = QtWidgets.QPushButton(self.layoutWidget)
         icon = QtGui.QIcon.fromTheme("redo")
         self.btnRestore.setIcon(icon)
+        self.btnRestore.setFlat(True)
         self.btnRestore.setObjectName("btnRestore")
         self.horizontalLayout_2.addWidget(self.btnRestore)
         self.btnDelete = QtWidgets.QPushButton(self.layoutWidget)
         icon = QtGui.QIcon.fromTheme("edit-delete")
         self.btnDelete.setIcon(icon)
+        self.btnDelete.setFlat(True)
         self.btnDelete.setObjectName("btnDelete")
         self.horizontalLayout_2.addWidget(self.btnDelete)
         self.verticalLayout_2.addWidget(self.splitter)

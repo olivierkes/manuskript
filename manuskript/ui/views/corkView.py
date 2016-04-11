@@ -29,6 +29,7 @@ class corkView(QListView, dndView, outlineBasics):
         self.setStyleSheet("""QListView {{
             background:{color};
             background-image: url({url});
+            background-attachment: fixed;
             }}""".format(
                 color=settings.corkBackground["color"],
                 url=img

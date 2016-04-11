@@ -4,7 +4,7 @@ import imp
 import os
 
 from PyQt5.QtCore import pyqtSignal, QSignalMapper, QTimer, QSettings, Qt, QRegExp, QUrl, QSize
-from PyQt5.QtGui import QStandardItemModel, QIcon
+from PyQt5.QtGui import QStandardItemModel, QIcon, QColor
 from PyQt5.QtWidgets import QMainWindow, QHeaderView, qApp, QMenu, QActionGroup, QAction, QStyle, QListWidgetItem, \
     QLabel
 
@@ -17,6 +17,7 @@ from manuskript.models.outlineModel import outlineModel
 from manuskript.models.plotModel import plotModel
 from manuskript.models.worldModel import worldModel
 from manuskript.settingsWindow import settingsWindow
+from manuskript.ui import style
 from manuskript.ui.collapsibleDockWidgets import collapsibleDockWidgets
 from manuskript.ui.compileDialog import compileDialog
 from manuskript.ui.helpLabel import helpLabel
@@ -313,9 +314,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.makeConnections()
 
         # Load settings
-        for i in settings.openIndexes:
-            idx = self.mdlOutline.getIndexByID(i)
-            self.mainEditor.setCurrentModelIndex(idx, newTab=True)
+        if settings.openIndexes:
+            self.mainEditor.tabSplitter.restoreOpenIndexes(settings.openIndexes)
         self.generateViewMenu()
         self.mainEditor.sldCorkSizeFactor.setValue(settings.corkSizeFactor)
         self.actSpellcheck.setChecked(settings.spellcheck)
@@ -325,6 +325,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.mainEditor.setFolderView(settings.folderView)
         self.mainEditor.updateFolderViewButtons(settings.folderView)
+        self.mainEditor.tabSplitter.updateStyleSheet()
         self.tabMain.setCurrentIndex(settings.lastTab)
         # We force to emit even if it opens on the current tab
         self.tabMain.currentChanged.emit(settings.lastTab)
@@ -446,10 +447,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         if self.currentProject:
             # Remembering the current items (stores outlineItem's ID)
-            sel = []
-            for i in range(self.mainEditor.tab.count()):
-                sel.append(self.mdlOutline.ID(self.mainEditor.tab.widget(i).currentIndex))
-            settings.openIndexes = sel
+            settings.openIndexes = self.mainEditor.tabSplitter.openIndexes()
 
         # Save data from models
         if self.currentProject and settings.saveOnQuit:
@@ -662,17 +660,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # self.redacEditor.setModel(self.mdlOutline)
         self.storylineView.setModels(self.mdlOutline, self.mdlCharacter, self.mdlPlots)
 
-        self.treeOutlineOutline.selectionModel().selectionChanged.connect(lambda:
-                                                                          self.outlineItemEditor.selectionChanged(
-                                                                                  self.treeOutlineOutline), AUC)
-        self.treeOutlineOutline.clicked.connect(lambda:
-                                                self.outlineItemEditor.selectionChanged(self.treeOutlineOutline), AUC)
+        self.treeOutlineOutline.selectionModel().selectionChanged.connect(self.outlineItemEditor.selectionChanged, AUC)
+        self.treeOutlineOutline.clicked.connect(self.outlineItemEditor.selectionChanged, AUC)
 
         # Sync selection
-        self.treeRedacOutline.selectionModel().selectionChanged.connect(
-                lambda: self.redacMetadata.selectionChanged(self.treeRedacOutline), AUC)
-        self.treeRedacOutline.clicked.connect(
-                lambda: self.redacMetadata.selectionChanged(self.treeRedacOutline), AUC)
+        self.treeRedacOutline.selectionModel().selectionChanged.connect(self.redacMetadata.selectionChanged, AUC)
+        self.treeRedacOutline.clicked.connect(self.redacMetadata.selectionChanged, AUC)
 
         self.treeRedacOutline.selectionModel().selectionChanged.connect(self.mainEditor.selectionChanged, AUC)
 
@@ -755,6 +748,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         lbl.setText(self.tr("Words: {}{}").format(wc, pages))
 
     def setupMoreUi(self):
+
+        style.styleMainWindow(self)
 
         # Tool bar on the right
         self.toolbar = collapsibleDockWidgets(Qt.RightDockWidgetArea, self)
