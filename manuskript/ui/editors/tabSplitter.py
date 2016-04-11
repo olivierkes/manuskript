@@ -25,8 +25,6 @@ class tabSplitter(QWidget, Ui_tabSplitter):
         #Remove empty widget
         # self.splitter.widget(1).setParent(None)
 
-        self.btmSplit = QPushButton()
-
         self.btnSplit = QPushButton(self)
         self.btnSplit.setGeometry(QRect(0, 0, 24, 24))
         self.btnSplit.setMinimumSize(QSize(24, 24))

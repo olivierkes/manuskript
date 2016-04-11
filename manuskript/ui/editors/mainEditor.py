@@ -4,9 +4,8 @@ import locale
 
 from PyQt5.QtCore import QModelIndex, QRect, QPoint
 from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QPixmap, QPainter
-from PyQt5.QtWidgets import QWidget
-from PyQt5.QtWidgets import qApp
+from PyQt5.QtGui import QPixmap, QPainter, QIcon
+from PyQt5.QtWidgets import QWidget, qApp
 
 from manuskript import settings
 from manuskript.enums import Outline
@@ -46,6 +45,13 @@ class mainEditor(QWidget, Ui_mainEditor):
 
         # self.tab.setDocumentMode(False)
 
+        self.btnRedacFolderCork.setIcon(QIcon.fromTheme("view-cards"))
+        self.btnRedacFolderOutline.setIcon(QIcon.fromTheme("view-outline"))
+        self.btnRedacFolderText.setIcon(QIcon.fromTheme("view-text"))
+
+        for btn in [self.btnRedacFolderCork, self.btnRedacFolderText, self.btnRedacFolderOutline]:
+            btn.setToolTip(btn.text())
+            btn.setText("")
 
     ###############################################################################
     # TABS
