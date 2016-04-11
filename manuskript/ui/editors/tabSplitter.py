@@ -3,7 +3,7 @@
 import locale
 
 from PyQt5.QtCore import QModelIndex, QRect, QPoint, Qt, QObject, QSize
-from PyQt5.QtGui import QIcon
+from PyQt5.QtGui import QIcon, QPalette
 from PyQt5.QtWidgets import QWidget, QPushButton, qApp
 
 from manuskript.functions import mainWindow
@@ -15,7 +15,7 @@ class tabSplitter(QWidget, Ui_tabSplitter):
     def __init__(self, parent=None, mainEditor=None):
         QWidget.__init__(self, parent)
         self.setupUi(self)
-        self.tab.setStyleSheet(style.mainEditorTabSS())
+        self.setStyleSheet(style.mainEditorTabSS())
 
         try:
             self.tab.setTabBarAutoHide(True)
@@ -32,6 +32,7 @@ class tabSplitter(QWidget, Ui_tabSplitter):
         # self.btnSplit.setCheckable(True)
         self.btnSplit.setFlat(True)
         self.btnSplit.setObjectName("btnSplit")
+        self.btnSplit.installEventFilter(self)
 
         self.mainEditor = mainEditor or parent
 
@@ -120,6 +121,7 @@ class tabSplitter(QWidget, Ui_tabSplitter):
 
     def addSecondTab(self):
         self.secondTab = tabSplitter(mainEditor=self.mainEditor)
+        self.secondTab.setObjectName(self.objectName() + "_")
         self.splitter.addWidget(self.secondTab)
         self.splitter.setStretchFactor(0, 10)
         self.splitter.setStretchFactor(1, 10)
@@ -130,10 +132,17 @@ class tabSplitter(QWidget, Ui_tabSplitter):
             self.mainEditor.setCurrentModelIndex(idx)
 
     def closeSplit(self):
-        if self.secondTab:
-            self.secondTab.setParent(None)
-            self.secondTab.deleteLater()
-            qApp.focusChanged.disconnect(self.secondTab.focusChanged)
+        st = self.secondTab
+        l = []
+        while st:
+            l.append(st)
+            st = st.secondTab
+
+        for st in reversed(l):
+            st.setParent(None)
+            qApp.focusChanged.disconnect(st.focusChanged)
+            st.deleteLater()
+
         self.focusTab = 1
         self.secondTab = None
         # self.btnSplit.setChecked(False)
@@ -165,3 +174,12 @@ class tabSplitter(QWidget, Ui_tabSplitter):
 
         if self.focusTab != oldFT:
             self.mainEditor.tabChanged()
+
+    def eventFilter(self, object, event):
+        if object == self.btnSplit and event.type() == event.HoverEnter:
+            self.setAutoFillBackground(True)
+            self.setBackgroundRole(QPalette.Midlight)
+        elif object == self.btnSplit and event.type() == event.HoverLeave:
+            self.setAutoFillBackground(False)
+            self.setBackgroundRole(QPalette.Window)
+        return QWidget.eventFilter(self, object, event)
