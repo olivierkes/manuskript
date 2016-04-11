@@ -151,6 +151,8 @@ class tabSplitter(QWidget, Ui_tabSplitter):
     def addSecondTab(self):
         self.secondTab = tabSplitter(mainEditor=self.mainEditor)
         self.secondTab.setObjectName(self.objectName() + "_")
+        self.secondTab.splitter.setObjectName(self.splitter.objectName() + "_")
+
         self.splitter.addWidget(self.secondTab)
         self.splitter.setStretchFactor(0, 10)
         self.splitter.setStretchFactor(1, 10)
@@ -210,8 +212,15 @@ class tabSplitter(QWidget, Ui_tabSplitter):
     def eventFilter(self, object, event):
         if object == self.btnSplit and event.type() == event.HoverEnter:
             self.setAutoFillBackground(True)
+            # self.splitter.setAutoFillBackground(True)
+            # self.splitter.setStyleSheet("""QSplitter#{}{{
+            #     border:1px solid darkblue;
+            #     }}""".format(self.splitter.objectName()))
             self.setBackgroundRole(QPalette.Highlight)
         elif object == self.btnSplit and event.type() == event.HoverLeave:
             self.setAutoFillBackground(False)
+            # self.splitter.setStyleSheet("""QSplitter#{}{{
+            #     border: 1px solid transparent;
+            #     }}""".format(self.splitter.objectName()))
             self.setBackgroundRole(QPalette.Window)
         return QWidget.eventFilter(self, object, event)
