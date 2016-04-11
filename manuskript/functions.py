@@ -142,9 +142,9 @@ def outlineItemColors(item):
     # Label
     lbl = item.data(Outline.label.value)
     col = iconColor(mw.mdlLabels.item(toInt(lbl)).icon())
-    if col == Qt.black:
-        # Don't know why, but transparent is rendered as black
-        col = QColor(Qt.transparent)
+    # if col == Qt.black:
+    #     # Don't know why, but transparent is rendered as black
+    #     col = QColor(Qt.transparent)
     colors["Label"] = col
 
     # Progress
