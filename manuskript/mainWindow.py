@@ -325,6 +325,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.mainEditor.setFolderView(settings.folderView)
         self.mainEditor.updateFolderViewButtons(settings.folderView)
+        self.mainEditor.tabSplitter.updateStyleSheet()
         self.tabMain.setCurrentIndex(settings.lastTab)
         # We force to emit even if it opens on the current tab
         self.tabMain.currentChanged.emit(settings.lastTab)
@@ -659,17 +660,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # self.redacEditor.setModel(self.mdlOutline)
         self.storylineView.setModels(self.mdlOutline, self.mdlCharacter, self.mdlPlots)
 
-        self.treeOutlineOutline.selectionModel().selectionChanged.connect(lambda:
-                                                                          self.outlineItemEditor.selectionChanged(
-                                                                                  self.treeOutlineOutline), AUC)
-        self.treeOutlineOutline.clicked.connect(lambda:
-                                                self.outlineItemEditor.selectionChanged(self.treeOutlineOutline), AUC)
+        self.treeOutlineOutline.selectionModel().selectionChanged.connect(self.outlineItemEditor.selectionChanged, AUC)
+        self.treeOutlineOutline.clicked.connect(self.outlineItemEditor.selectionChanged, AUC)
 
         # Sync selection
-        self.treeRedacOutline.selectionModel().selectionChanged.connect(
-                lambda: self.redacMetadata.selectionChanged(self.treeRedacOutline), AUC)
-        self.treeRedacOutline.clicked.connect(
-                lambda: self.redacMetadata.selectionChanged(self.treeRedacOutline), AUC)
+        self.treeRedacOutline.selectionModel().selectionChanged.connect(self.redacMetadata.selectionChanged, AUC)
+        self.treeRedacOutline.clicked.connect(self.redacMetadata.selectionChanged, AUC)
 
         self.treeRedacOutline.selectionModel().selectionChanged.connect(self.mainEditor.selectionChanged, AUC)
 

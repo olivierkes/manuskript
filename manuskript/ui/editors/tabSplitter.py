@@ -15,16 +15,13 @@ class tabSplitter(QWidget, Ui_tabSplitter):
     def __init__(self, parent=None, mainEditor=None):
         QWidget.__init__(self, parent)
         self.setupUi(self)
-        self.setStyleSheet(style.mainEditorTabSS())
 
-        try:
-            self.tab.setTabBarAutoHide(True)
-        except AttributeError:
-            print("Info: install Qt 5.4 or higher to use tabbar auto-hide in editor.")
+        # try:
+        #     self.tab.setTabBarAutoHide(True)
+        # except AttributeError:
+        #     print("Info: install Qt 5.4 or higher to use tabbar auto-hide in editor.")
 
-        #Remove empty widget
-        # self.splitter.widget(1).setParent(None)
-
+        # Button to split
         self.btnSplit = QPushButton(self)
         self.btnSplit.setGeometry(QRect(0, 0, 24, 24))
         self.btnSplit.setMinimumSize(QSize(24, 24))
@@ -33,19 +30,37 @@ class tabSplitter(QWidget, Ui_tabSplitter):
         self.btnSplit.setFlat(True)
         self.btnSplit.setObjectName("btnSplit")
         self.btnSplit.installEventFilter(self)
+        self.btnSplit.clicked.connect(self.split)
+
+        # Button to set target
+        self.isTarget = False
+        self.btnTarget = QPushButton(QIcon.fromTheme("set-target"), "", self)
+        self.btnTarget.setGeometry(QRect(25, 0, 24, 24))
+        self.btnTarget.setMinimumSize(QSize(24, 24))
+        self.btnTarget.setMaximumSize(QSize(24, 24))
+        # self.btnTarget.setCheckable(True)
+        self.btnTarget.setFlat(True)
+        self.btnTarget.setObjectName("btnTarget")
+        self.btnTarget.clicked.connect(self.setTarget)
+        self.updateTargetIcon(self.isTarget)
 
         self.mainEditor = mainEditor or parent
 
-        self.btnSplit.clicked.connect(self.split)
         self.secondTab = None
         self.splitState = 0
         self.focusTab = 1
         self.closeSplit()
 
+        self.updateStyleSheet()
+
         self.tab.tabCloseRequested.connect(self.closeTab)
         self.tab.currentChanged.connect(self.mainEditor.tabChanged)
-
         qApp.focusChanged.connect(self.focusChanged)
+
+    def updateStyleSheet(self):
+        self.setStyleSheet(style.mainEditorTabSS())
+        if self.secondTab:
+            self.secondTab.updateStyleSheet()
 
     ###############################################################################
     # TABS
@@ -89,6 +104,20 @@ class tabSplitter(QWidget, Ui_tabSplitter):
 
             print("Failed to load indexes from settings...")
             print("Indexes:", openIndexes)
+
+    ###############################################################################
+    # TARGET
+    ###############################################################################
+
+    def setTarget(self):
+        self.isTarget = not self.isTarget
+        self.updateTargetIcon(self.isTarget)
+
+    def updateTargetIcon(self, val):
+        icon = QIcon.fromTheme("set-target", QIcon("../icons/NumixMsk/256x256/actions/set-target.svg"))
+        if not val:
+            icon = QIcon(icon.pixmap(128, 128, icon.Disabled))
+        self.btnTarget.setIcon(icon)
 
     ###############################################################################
     # SPLITTER
@@ -150,6 +179,9 @@ class tabSplitter(QWidget, Ui_tabSplitter):
         self.btnSplit.setIcon(QIcon.fromTheme("split-close"))
         self.btnSplit.setToolTip(self.tr("Split vertically"))
 
+        if len(l):
+            self.mainEditor.tabChanged()
+
     # def resizeEvent(self, event):
     #     r = self.geometry()
     #     r.moveLeft(0)
@@ -178,7 +210,7 @@ class tabSplitter(QWidget, Ui_tabSplitter):
     def eventFilter(self, object, event):
         if object == self.btnSplit and event.type() == event.HoverEnter:
             self.setAutoFillBackground(True)
-            self.setBackgroundRole(QPalette.Midlight)
+            self.setBackgroundRole(QPalette.Highlight)
         elif object == self.btnSplit and event.type() == event.HoverLeave:
             self.setAutoFillBackground(False)
             self.setBackgroundRole(QPalette.Window)

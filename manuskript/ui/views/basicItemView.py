@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-from PyQt5.QtWidgets import QWidget
+from PyQt5.QtWidgets import QWidget, QAbstractItemView
 
 from manuskript.enums import Outline
 from manuskript.ui.views.basicItemView_ui import Ui_basicItemView
@@ -24,7 +24,7 @@ class basicItemView(QWidget, Ui_basicItemView):
         """Returns a list of indexes from list of QItemSelectionRange"""
         indexes = []
 
-        for i in sourceView.selectionModel().selection().indexes():
+        for i in sourceView.selection().indexes():
             if i.column() != 0:
                 continue
 
@@ -33,9 +33,13 @@ class basicItemView(QWidget, Ui_basicItemView):
 
         return indexes
 
-    def selectionChanged(self, sourceView):
+    def selectionChanged(self):
+        if isinstance(self.sender(), QAbstractItemView):
+            selectionModel = self.sender().selectionModel()
+        else:
+            selectionModel = self.sender()
 
-        indexes = self.getIndexes(sourceView)
+        indexes = self.getIndexes(selectionModel)
 
         if len(indexes) == 0:
             self.setEnabled(False)

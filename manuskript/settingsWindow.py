@@ -14,6 +14,7 @@ from manuskript import settings
 from manuskript.enums import Outline
 from manuskript.functions import allPaths, iconColor, writablePath, appPath, findWidgetsOfClass
 from manuskript.functions import mainWindow
+from manuskript.ui.editors.tabSplitter import tabSplitter
 from manuskript.ui.editors.themes import createThemePreview
 from manuskript.ui.editors.themes import getThemeName
 from manuskript.ui.editors.themes import loadThemeDatas
@@ -397,6 +398,10 @@ class settingsWindow(QWidget, Ui_Settings):
         # Update font and defaultBlockFormat to all textEditView. Drastically.
         for w in mainWindow().findChildren(textEditView, QRegExp(".*")):
             w.loadFontSettings()
+
+        # Update background color in all tabSplitter (tabs)
+        for w in mainWindow().findChildren(tabSplitter, QRegExp(".*")):
+            w.updateStyleSheet()
 
     def choseEditorFontColor(self):
         color = settings.textEditor["fontColor"]

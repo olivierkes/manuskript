@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-from PyQt5.QtWidgets import QWidget
+from PyQt5.QtWidgets import QWidget, QAbstractItemView
 
 from manuskript.enums import Outline
 from manuskript.ui.views.metadataView_ui import Ui_metadataView
@@ -27,7 +27,7 @@ class metadataView(QWidget, Ui_metadataView):
         """Returns a list of indexes from list of QItemSelectionRange"""
         indexes = []
 
-        for i in sourceView.selectionModel().selection().indexes():
+        for i in sourceView.selection().indexes():
             if i.column() != 0:
                 continue
 
@@ -36,8 +36,14 @@ class metadataView(QWidget, Ui_metadataView):
 
         return indexes
 
-    def selectionChanged(self, sourceView):
-        indexes = self.getIndexes(sourceView)
+    def selectionChanged(self):
+
+        if isinstance(self.sender(), QAbstractItemView):
+            selectionModel = self.sender().selectionModel()
+        else:
+            selectionModel = self.sender()
+
+        indexes = self.getIndexes(selectionModel)
 
         if self._lastIndexes == indexes:
             return
@@ -62,7 +68,7 @@ class metadataView(QWidget, Ui_metadataView):
             self.txtNotes.setCurrentModelIndexes(indexes)
             self.revisions.setEnabled(False)
 
-        self.properties.selectionChanged(sourceView)
+        self.properties.selectionChanged(self.sender())
         self._lastIndexes = indexes
 
     def setDict(self, d):

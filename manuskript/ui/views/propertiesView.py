@@ -24,7 +24,7 @@ class propertiesView(QWidget, Ui_propertiesView):
         """Returns a list of indexes from list of QItemSelectionRange"""
         indexes = []
 
-        for i in sourceView.selectionModel().selection().indexes():
+        for i in sourceView.selection().indexes():
             if i.column() != 0:
                 continue
 

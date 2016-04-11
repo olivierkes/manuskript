@@ -3,10 +3,13 @@
 
 
 # default window color (linux):
-from PyQt5.QtGui import QColor
+from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QColor, QPalette
 from PyQt5.QtWidgets import qApp
 
-window = "#d6d2d0" #"#eee"
+from manuskript import settings
+
+window = "#d6d2d0" #"#eee" / #eff0f1
 
 bgHover = "#ccc"
 bgChecked = "#bbb"
@@ -51,6 +54,24 @@ def appPalette():
     # p.setColor(p.Base, QColor("#FFF"))
     return p
 
+    # dark_palette = QPalette()
+    # dark_palette.setColor(QPalette.Window, QColor(53, 53, 53))
+    # dark_palette.setColor(QPalette.WindowText, Qt.white)
+    # dark_palette.setColor(QPalette.Base, QColor(25, 25, 25))
+    # dark_palette.setColor(QPalette.AlternateBase, QColor(53, 53, 53))
+    # dark_palette.setColor(QPalette.ToolTipBase, Qt.white)
+    # dark_palette.setColor(QPalette.ToolTipText, Qt.white)
+    # dark_palette.setColor(QPalette.Text, Qt.white)
+    # dark_palette.setColor(QPalette.Button, QColor(53, 53, 53))
+    # dark_palette.setColor(QPalette.ButtonText, Qt.white)
+    # dark_palette.setColor(QPalette.BrightText, Qt.red)
+    # dark_palette.setColor(QPalette.Link, QColor(42, 130, 218))
+    # dark_palette.setColor(QPalette.Highlight, QColor(42, 130, 218))
+    # dark_palette.setColor(QPalette.HighlightedText, Qt.black)
+    # qApp.setStyleSheet("QToolTip { color: #ffffff; background-color: #2a82da; border: 1px solid white; }")
+    #
+    # return dark_palette
+
 
 def collapsibleGroupBoxButton():
     s1 = """
@@ -85,58 +106,61 @@ def collapsibleGroupBoxButton():
 
 def mainEditorTabSS():
     return """
-        QTabWidget::pane{
+        QTabWidget::pane{{
             margin-top: -1px;
             border: 1px solid #999;
-        }
-        QTabWidget::tab-bar{
-            left:25px;
-        }
-        QTabBar{
+        }}
+        QTabWidget::tab-bar{{
+            left:50px;
+        }}
+        QTabBar{{
             background: transparent;
             border-radius: 0;
             border: 0px;
-        }
-        QTabBar::tab{
+        }}
+        QTabBar::tab{{
             margin: 2px 0 0 0;
             padding: 2px 9px;
             border: 1px solid #999;
             border-bottom: 0px;
             margin-top: 3px;
-        }
-        QTabBar::tab:selected{
+        }}
+        QTabBar::tab:selected{{
             border: 1px solid #999;
-            background: white;
+            background: {bgColor};
             border-bottom: 0px;
             margin-top: 0px;
-        }
-        QTabBar::tab:!selected:hover{
+            color: {foreground};
+        }}
+        QTabBar::tab:!selected:hover{{
             background:#ddd;
-        }
+        }}
 
-QScrollBar:vertical {
-    border: none;
-    background: transparent;
-    width: 10px;
-}
-QScrollBar::handle {
-    background: rgba(180, 180, 180, 40%);
-}
-QScrollBar::add-line:vertical {
-    width:0;
-    height: 0;
-    border: none;
-    background: none;
-}
-
-QScrollBar::sub-line:vertical {
-    width:0;
-    height: 0;
-    border: none;
-    background: none;
-}
-
-        """
+        QScrollBar:vertical {{
+            border: none;
+            background: transparent;
+            width: 10px;
+        }}
+        QScrollBar::handle {{
+            background: rgba(180, 180, 180, 40%);
+        }}
+        QScrollBar::add-line:vertical {{
+            width:0;
+            height: 0;
+            border: none;
+            background: none;
+        }}
+        
+        QScrollBar::sub-line:vertical {{
+            width:0;
+            height: 0;
+            border: none;
+            background: none;
+        }}
+        """.format(
+        bgColor=settings.textEditor["background"],
+        foreground=settings.textEditor["fontColor"]
+    )
 
 def toolBarSS():
     return """

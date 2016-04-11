@@ -45,9 +45,15 @@ class mainEditor(QWidget, Ui_mainEditor):
 
         # self.tab.setDocumentMode(False)
 
-        self.btnRedacFolderCork.setIcon(QIcon.fromTheme("view-cards"))
-        self.btnRedacFolderOutline.setIcon(QIcon.fromTheme("view-outline"))
-        self.btnRedacFolderText.setIcon(QIcon.fromTheme("view-text"))
+        # Bug in Qt < 5.5: doesn't always load icons from custom theme.
+        # Cf. https://github.com/qtproject/qtbase/commit/a8621a3f85e64f1252a80ae81a6e22554f7b3f44
+        # Since those are important, we provide fallback.
+        self.btnRedacFolderCork.setIcon(QIcon.fromTheme("view-cards",
+                                                        QIcon("../icons/NumixMsk/256x256/actions/view-cards.svg")))
+        self.btnRedacFolderOutline.setIcon(QIcon.fromTheme("view-outline",
+                                                           QIcon("../icons/NumixMsk/256x256/actions/view-outline.svg")))
+        self.btnRedacFolderText.setIcon(QIcon.fromTheme("view-text",
+                                                        QIcon("../icons/NumixMsk/256x256/actions/view-text.svg")))
 
         for btn in [self.btnRedacFolderCork, self.btnRedacFolderText, self.btnRedacFolderOutline]:
             btn.setToolTip(btn.text())
@@ -66,8 +72,10 @@ class mainEditor(QWidget, Ui_mainEditor):
             else:
                 ts = ts.secondTab
 
-    def currentEditor(self):
-        return self.currentTabWidget().currentWidget()
+    def currentEditor(self, tabWidget=None):
+        if tabWidget is None:
+            tabWidget = self.currentTabWidget()
+        return tabWidget.currentWidget()
         # return self.tab.currentWidget()
 
     def tabChanged(self, index=QModelIndex()):
@@ -78,12 +86,15 @@ class mainEditor(QWidget, Ui_mainEditor):
         else:
             index = QModelIndex()
 
-        self._updating = True
-        self.mw.treeRedacOutline.setCurrentIndex(index)
-        self._updating = False
+        self.updateMainTreeView(index)
 
         self.updateStats()
         self.updateThingsVisible(index)
+
+    def updateMainTreeView(self, index):
+        self._updating = True
+        self.mw.treeRedacOutline.setCurrentIndex(index)
+        self._updating = False
 
     def closeAllTabs(self):
         for ts in self.allTabSplitters():
@@ -130,24 +141,23 @@ class mainEditor(QWidget, Ui_mainEditor):
             idx = self.mw.treeRedacOutline.currentIndex()
 
         self.setCurrentModelIndex(idx)
-
         self.updateThingsVisible(idx)
 
     def openIndexes(self, indexes, newTab=False):
         for i in indexes:
             self.setCurrentModelIndex(i, newTab)
 
-    def setCurrentModelIndex(self, index, newTab=False):
+    def setCurrentModelIndex(self, index, newTab=False, tabWidget=None):
 
-        if not index.isValid():
-            title = self.tr("Root")
-        else:
-            title = index.internalPointer().title()
+        title = self.getIndexTitle(index)
+
+        if tabWidget is None:
+            tabWidget = self.currentTabWidget()
 
         # Checking if tab is already openned
-        for w in self.allTabs():
+        for w in self.allTabs(tabWidget):
             if w.currentIndex == index:
-                self.currentTabWidget().setCurrentWidget(w)
+                tabWidget.setCurrentWidget(w)
                 return
 
         if qApp.keyboardModifiers() & Qt.ControlModifier:
@@ -156,11 +166,29 @@ class mainEditor(QWidget, Ui_mainEditor):
         if newTab or not self.currentTabWidget().count():
             editor = editorWidget(self)
             editor.setCurrentModelIndex(index)
-            self.currentTabWidget().addTab(editor, title)
-            self.currentTabWidget().setCurrentIndex(self.currentTabWidget().count() - 1)
+            tabWidget.addTab(editor, title)
+            tabWidget.setCurrentIndex(self.currentTabWidget().count() - 1)
         else:
-            self.currentEditor().setCurrentModelIndex(index)
-            self.currentTabWidget().setTabText(self.currentTabWidget().currentIndex(), title)
+            self.currentEditor(tabWidget).setCurrentModelIndex(index)
+            tabWidget.setTabText(tabWidget.currentIndex(), title)
+
+    def updateTargets(self):
+        """Updates all tabSplitter that are targets. This is called from editorWidget."""
+        index = self.sender().currentIndex()
+
+        for ts in self.allTabSplitters():
+            if ts.isTarget:
+                self.updateMainTreeView(index)
+                self.setCurrentModelIndex(index, tabWidget=ts.tab)
+                self.updateThingsVisible(index)
+
+    def getIndexTitle(self, index):
+        if not index.isValid():
+            title = self.tr("Root")
+        else:
+            title = index.internalPointer().title()
+
+        return title
 
     ###############################################################################
     # UI
