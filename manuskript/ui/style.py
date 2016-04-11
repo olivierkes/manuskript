@@ -9,11 +9,13 @@ from PyQt5.QtWidgets import qApp
 
 from manuskript import settings
 
-window = "#d6d2d0" #"#eee" / #eff0f1
+# window = "#d6d2d0" #"#eee" / #eff0f1
+window = qApp.palette().color(QPalette.Window).name()
 
 bgHover = "#ccc"
 bgChecked = "#bbb"
 borderColor = "darkGray"
+blue = "#268bd2"
 
 def mainWindowSS():
     return """
@@ -89,7 +91,7 @@ def collapsibleGroupBoxButton():
         QPushButton{{
             background-color: transparent;
             border: none;
-            border-top: 1px solid {bgChecked};
+            border-top: 1px solid darkGray;
             padding: 4px 0px;
             font-weight: bold;
         }}
@@ -119,11 +121,10 @@ def mainEditorTabSS():
             border: 0px;
         }}
         QTabBar::tab{{
-            margin: 2px 0 0 0;
+            margin: 3px 0 -3px 0;
             padding: 2px 9px;
             border: 1px solid #999;
             border-bottom: 0px;
-            margin-top: 3px;
         }}
         QTabBar::tab:selected{{
             border: 1px solid #999;
@@ -201,13 +202,45 @@ def verticalToolButtonSS():
 
 def dockSS():
     return """
-            QDockWidget::title {
-                text-align: left; /* align the text to the left */
-                background: lightBlue;
-                padding: 5px;
-            }
+        QDockWidget::title {{
+            text-align: left; /* align the text to the left */
+            background: {bgChecked};
+            padding: 5px;
+        }}
 
-            QDockWidget::close-button, QDockWidget::float-button {
-                background: lightBlue;
-            }
-            """
+        QDockWidget::close-button, QDockWidget::float-button {{
+            background: {bgChecked};
+        }}
+        """.format(
+        bgChecked=bgChecked
+    )
+
+
+def searchResultSS():
+    return """
+        QListWidget{{
+            background: {window};
+        }}
+        """.format(
+        window=window
+    )
+
+
+def lineEditSS():
+    # return "border-radius: 6px;"
+    return """QLineEdit{{
+        border: none;
+        border-bottom: 1px solid {checked};
+        background:{window};
+    }}
+    QLineEdit:focus{{
+        border-bottom: 1px solid {blue};
+    }}
+    """.format(window=window,
+               checked=bgChecked,
+               blue=blue)
+    
+    
+def transparentSS():
+    return """background: transparent;
+              border:none;"""

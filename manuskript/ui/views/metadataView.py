@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import QWidget, QAbstractItemView
 
 from manuskript.enums import Outline
 from manuskript.ui.views.metadataView_ui import Ui_metadataView
-
+from manuskript.ui import style
 
 class metadataView(QWidget, Ui_metadataView):
     def __init__(self, parent=None):
@@ -15,6 +15,10 @@ class metadataView(QWidget, Ui_metadataView):
         self.txtSummaryFull.setColumn(Outline.summaryFull.value)
         self.txtNotes.setColumn(Outline.notes.value)
         self.revisions.setEnabled(False)
+        
+        self.txtSummarySentence.setStyleSheet(style.lineEditSS())
+        self.txtSummaryFull.setStyleSheet(style.transparentSS())
+        self.txtNotes.setStyleSheet(style.transparentSS())
 
     def setModels(self, mdlOutline, mdlCharacter, mdlLabels, mdlStatus):
         self.properties.setModels(mdlOutline, mdlCharacter, mdlLabels, mdlStatus)

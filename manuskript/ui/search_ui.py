@@ -2,8 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/search_ui.ui'
 #
-# Created: Fri Apr  8 18:15:49 2016
-#      by: PyQt5 UI code generator 5.2.1
+# Created by: PyQt5 UI code generator 5.4.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -14,13 +13,14 @@ class Ui_search(object):
         search.setObjectName("search")
         search.resize(400, 300)
         self.verticalLayout = QtWidgets.QVBoxLayout(search)
-        self.verticalLayout.setSpacing(0)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName("verticalLayout")
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setSpacing(0)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.text = QtWidgets.QLineEdit(search)
+        self.text.setInputMask("")
         self.text.setFrame(False)
         self.text.setClearButtonEnabled(True)
         self.text.setObjectName("text")
@@ -45,4 +45,5 @@ class Ui_search(object):
     def retranslateUi(self, search):
         _translate = QtCore.QCoreApplication.translate
         search.setWindowTitle(_translate("search", "Form"))
+        self.text.setPlaceholderText(_translate("search", "Search for..."))
 

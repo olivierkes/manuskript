@@ -6,7 +6,7 @@ from PyQt5.QtCore import QModelIndex, QRect, QPoint, Qt, QObject, QSize
 from PyQt5.QtGui import QIcon, QPalette
 from PyQt5.QtWidgets import QWidget, QPushButton, qApp
 
-from manuskript.functions import mainWindow
+from manuskript.functions import mainWindow, appPath
 from manuskript.ui import style
 from manuskript.ui.editors.tabSplitter_ui import Ui_tabSplitter
 
@@ -42,6 +42,7 @@ class tabSplitter(QWidget, Ui_tabSplitter):
         self.btnTarget.setFlat(True)
         self.btnTarget.setObjectName("btnTarget")
         self.btnTarget.clicked.connect(self.setTarget)
+        self.btnTarget.setToolTip(self.tr("Open selected items in that view."))
         self.updateTargetIcon(self.isTarget)
 
         self.mainEditor = mainEditor or parent
@@ -89,8 +90,8 @@ class tabSplitter(QWidget, Ui_tabSplitter):
     def restoreOpenIndexes(self, openIndexes):
 
         try:
-
-            self.split(state=openIndexes[0])
+            if openIndexes[1]:
+                self.split(state=openIndexes[0])
 
             for i in openIndexes[1]:
                 idx = mainWindow().mdlOutline.getIndexByID(i)
@@ -114,7 +115,7 @@ class tabSplitter(QWidget, Ui_tabSplitter):
         self.updateTargetIcon(self.isTarget)
 
     def updateTargetIcon(self, val):
-        icon = QIcon.fromTheme("set-target", QIcon("../icons/NumixMsk/256x256/actions/set-target.svg"))
+        icon = QIcon.fromTheme("set-target", QIcon(appPath("icons/NumixMsk/256x256/actions/set-target.svg")))
         if not val:
             icon = QIcon(icon.pixmap(128, 128, icon.Disabled))
         self.btnTarget.setIcon(icon)
@@ -211,16 +212,22 @@ class tabSplitter(QWidget, Ui_tabSplitter):
 
     def eventFilter(self, object, event):
         if object == self.btnSplit and event.type() == event.HoverEnter:
-            self.setAutoFillBackground(True)
+            # self.setAutoFillBackground(True)
+            # self.setBackgroundRole(QPalette.Highlight)
+
             # self.splitter.setAutoFillBackground(True)
             # self.splitter.setStyleSheet("""QSplitter#{}{{
             #     border:1px solid darkblue;
             #     }}""".format(self.splitter.objectName()))
-            self.setBackgroundRole(QPalette.Highlight)
+
+            self.setStyleSheet(style.mainEditorTabSS() + "QWidget{{background:{};}}".format(style.bgHover))
         elif object == self.btnSplit and event.type() == event.HoverLeave:
-            self.setAutoFillBackground(False)
+            # self.setAutoFillBackground(False)
+            # self.setBackgroundRole(QPalette.Window)
+
             # self.splitter.setStyleSheet("""QSplitter#{}{{
             #     border: 1px solid transparent;
             #     }}""".format(self.splitter.objectName()))
-            self.setBackgroundRole(QPalette.Window)
+
+            self.setStyleSheet(style.mainEditorTabSS())
         return QWidget.eventFilter(self, object, event)

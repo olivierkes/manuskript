@@ -8,6 +8,7 @@ from manuskript.enums import Character
 from manuskript.enums import Plot
 from manuskript.functions import lightBlue
 from manuskript.functions import mainWindow
+from manuskript.ui import style
 from manuskript.ui.cheatSheet_ui import Ui_cheatSheet
 from manuskript.models import references as Ref
 from manuskript.ui.editors.completer import completer
@@ -19,6 +20,7 @@ class cheatSheet(QWidget, Ui_cheatSheet):
     def __init__(self, parent=None):
         QWidget.__init__(self, parent)
         self.setupUi(self)
+        self.txtFilter.setStyleSheet(style.lineEditSS())
         self.splitter.setStretchFactor(0, 5)
         self.splitter.setStretchFactor(1, 70)
 

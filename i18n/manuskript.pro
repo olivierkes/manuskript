@@ -12,6 +12,7 @@ FORMS            += ../manuskript/ui/editors/textFormat_ui.ui
 FORMS            += ../manuskript/ui/editors/locker_ui.ui
 FORMS            += ../manuskript/ui/editors/completer_ui.ui
 FORMS            += ../manuskript/ui/editors/mainEditor_ui.ui
+FORMS            += ../manuskript/ui/editors/tabSplitter_ui.ui
 
 FORMS            += ../manuskript/ui/views/propertiesView_ui.ui
 FORMS            += ../manuskript/ui/views/metadataView_ui.ui
@@ -39,6 +40,7 @@ SOURCES          += ../manuskript/ui/editors/fullScreenEditor.py
 SOURCES          += ../manuskript/ui/editors/locker.py
 SOURCES          += ../manuskript/ui/editors/mainEditor.py
 SOURCES          += ../manuskript/ui/editors/textFormat.py
+SOURCES          += ../manuskript/ui/editors/tabSplitter.py
 SOURCES          += ../manuskript/ui/helpLabel.py
 SOURCES          += ../manuskript/ui/revisions.py
 SOURCES          += ../manuskript/ui/search.py

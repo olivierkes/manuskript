@@ -9,7 +9,7 @@ from PyQt5.QtWidgets import QWidget, qApp
 
 from manuskript import settings
 from manuskript.enums import Outline
-from manuskript.functions import AUC, mainWindow, drawProgress
+from manuskript.functions import AUC, mainWindow, drawProgress, appPath
 from manuskript.ui import style
 from manuskript.ui.editors.editorWidget import editorWidget
 from manuskript.ui.editors.fullScreenEditor import fullScreenEditor
@@ -49,11 +49,11 @@ class mainEditor(QWidget, Ui_mainEditor):
         # Cf. https://github.com/qtproject/qtbase/commit/a8621a3f85e64f1252a80ae81a6e22554f7b3f44
         # Since those are important, we provide fallback.
         self.btnRedacFolderCork.setIcon(QIcon.fromTheme("view-cards",
-                                                        QIcon("../icons/NumixMsk/256x256/actions/view-cards.svg")))
+                                        QIcon(appPath("icons/NumixMsk/256x256/actions/view-cards.svg"))))
         self.btnRedacFolderOutline.setIcon(QIcon.fromTheme("view-outline",
-                                                           QIcon("../icons/NumixMsk/256x256/actions/view-outline.svg")))
+                                           QIcon(appPath("icons/NumixMsk/256x256/actions/view-outline.svg"))))
         self.btnRedacFolderText.setIcon(QIcon.fromTheme("view-text",
-                                                        QIcon("../icons/NumixMsk/256x256/actions/view-text.svg")))
+                                        QIcon(appPath("icons/NumixMsk/256x256/actions/view-text.svg"))))
 
         for btn in [self.btnRedacFolderCork, self.btnRedacFolderText, self.btnRedacFolderOutline]:
             btn.setToolTip(btn.text())
