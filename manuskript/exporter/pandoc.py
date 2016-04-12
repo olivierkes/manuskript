@@ -33,10 +33,12 @@ class pandocExporter(basicExporter):
     ]
     cmd = "pandoc"
 
-    @classmethod
-    def version(cls):
-        if cls.isValid():
-            r = cls.run(["-v"])
+    def __init__(self):
+        basicExporter.__init__(self)
+
+    def version(self):
+        if self.isValid():
+            r = self.run(["-v"])
             return r.split("\n")[0]
         else:
             return ""

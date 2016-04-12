@@ -19,10 +19,9 @@ class mmdExporter(basicExporter):
     ]
     cmd = "mmd"
 
-    @classmethod
-    def version(cls):
-        if cls.isValid():
-            r = cls.run(["-v"])
+    def version(self):
+        if self.isValid():
+            r = self.run(["-v"])
             return r.split("\n")[1]
         else:
             return ""

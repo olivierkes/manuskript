@@ -6,7 +6,7 @@ from collections import OrderedDict
 from PyQt5.QtCore import QSize
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QWidget, QListWidgetItem
+from PyQt5.QtWidgets import QWidget, QListWidgetItem, QFileDialog
 
 from manuskript import exporter
 from manuskript.ui.exporters.exportersManager_ui import Ui_ExportersManager
@@ -36,6 +36,9 @@ class exportersManager(QWidget, Ui_ExportersManager):
         self.lstExportTo.currentTextChanged.connect(self.updateFormatDescription)
 
         self.lstExporters.setCurrentRow(0)
+
+        self.btnSetPath.clicked.connect(self.setAppPath)
+        self.txtPath.editingFinished.connect(self.updateAppPath)
 
     def updateUi(self, name):
         E = exporter.getExporterByName(name)
@@ -67,9 +70,15 @@ class exportersManager(QWidget, Ui_ExportersManager):
         self.grpPath.setVisible(E.name != "Manuskript")  # We hide if exporter is manuskript
 
         # Installed
-        if E.isValid():
+        if E.isValid() == 2:
             self.lblStatus.setText(self.tr("Installed"))
             self.lblStatus.setStyleSheet("color: darkGreen;")
+            self.lblHelpText.setVisible(False)
+            self.lblVersion.setVisible(True)
+            self.lblVersionName.setVisible(True)
+        elif E.isValid() == 1:
+            self.lblStatus.setText(self.tr("Custom"))
+            self.lblStatus.setStyleSheet("color: darkOrange;")
             self.lblHelpText.setVisible(False)
             self.lblVersion.setVisible(True)
             self.lblVersionName.setVisible(True)
@@ -85,7 +94,10 @@ class exportersManager(QWidget, Ui_ExportersManager):
         self.lblVersion.setText(E.version())
 
         # Path
-        self.txtPath.setText(E.path())
+        if E.path():
+            self.txtPath.setText(E.path())
+        else:
+            self.txtPath.setText(E.customPath)
 
     def updateFormatDescription(self, name):
         if self.currentExporter:
@@ -107,3 +119,24 @@ class exportersManager(QWidget, Ui_ExportersManager):
                             self.tr("<b>Requires:</b> ") + f.InvalidBecause
 
                 self.lblExportToDescription.setText(desc)
+
+    def setAppPath(self):
+        if self.currentExporter:
+            E = self.currentExporter
+            fn = QFileDialog.getOpenFileName(self,
+                                             caption=self.tr("Set {} executable path.").format(E.cmd),
+                                             directory=E.customPath)
+            if fn[0]:
+                self.updateAppPath(fn[0])
+
+    def updateAppPath(self, path=""):
+        if not path:
+            path = self.txtPath.text()
+
+        if self.currentExporter:
+            E = self.currentExporter
+            E.setCustomPath(path)
+            self.txtPath.setText(E.customPath)
+
+            self.updateUi(E.name)
+

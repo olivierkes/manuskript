@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-
+import os
 import shutil
 import subprocess
 
+from PyQt5.QtCore import QSettings
 from PyQt5.QtWidgets import QWidget
 
 from manuskript.models.outlineModel import outlineItem
@@ -15,9 +16,16 @@ class basicExporter:
     description = ""
     exportTo = []
     cmd = ""
+    customPath = ""
 
     def __init__(self):
-        pass
+        settings = QSettings()
+        self.customPath = settings.value("Exporters/{}_customPath".format(self.name), "")
+
+    def setCustomPath(self, path):
+        self.customPath = path
+        settings = QSettings()
+        settings.setValue("Exporters/{}_customPath".format(self.name), self.customPath)
 
     @classmethod
     def getFormatByName(cls, name):
@@ -27,9 +35,13 @@ class basicExporter:
 
         return None
 
-    @classmethod
-    def isValid(cls):
-        return cls.path() != None
+    def isValid(self):
+        if self.path() != None:
+            return 2
+        elif self.customPath and os.path.exists(self.customPath):
+            return 1
+        else:
+            return 0
 
     @classmethod
     def version(cls):
@@ -39,9 +51,15 @@ class basicExporter:
     def path(cls):
         return shutil.which(cls.cmd)
 
-    @classmethod
-    def run(cls, args):
-        r = subprocess.check_output([cls.cmd] + args)  # timeout=.2
+    def run(self, args):
+        if self.isValid() == 2:
+            run = self.cmd
+        elif self.isValid() == 1:
+            run = self.customPath
+        else:
+            print("Error: no command for", self.name)
+            return
+        r = subprocess.check_output([run] + args)  # timeout=.2
         return r.decode("utf-8")
 
         # Example of how to run a command

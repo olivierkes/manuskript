@@ -6,9 +6,9 @@ from manuskript.exporter.mmd import mmdExporter
 from manuskript.exporter.pandoc import pandocExporter
 
 exporters = [
-    manuskriptExporter,
-    pandocExporter,
-    mmdExporter
+    manuskriptExporter(),
+    pandocExporter(),
+    mmdExporter()
 ]
 
 def getExporterByName(name):
