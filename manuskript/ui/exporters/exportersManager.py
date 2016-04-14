@@ -4,7 +4,7 @@ import os
 from collections import OrderedDict
 
 from PyQt5.QtCore import QSize
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, pyqtSignal
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QWidget, QListWidgetItem, QFileDialog
 
@@ -12,6 +12,9 @@ from manuskript import exporter
 from manuskript.ui.exporters.exportersManager_ui import Ui_ExportersManager
 
 class exportersManager(QWidget, Ui_ExportersManager):
+
+    exportersMightHaveChanged = pyqtSignal()
+
     def __init__(self, parent=None):
         QWidget.__init__(self, parent)
         self.setupUi(self)
@@ -139,4 +142,5 @@ class exportersManager(QWidget, Ui_ExportersManager):
             self.txtPath.setText(E.customPath)
 
             self.updateUi(E.name)
+            self.exportersMightHaveChanged.emit()
 

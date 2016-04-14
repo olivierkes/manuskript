@@ -24,6 +24,18 @@ class exporterDialog(QWidget, Ui_exporter):
         self.settingsWidget = None
         self.previewWidget = None
 
+        self.populateExportList()
+
+        self.btnManageExporters.clicked.connect(self.openManager)
+
+        self.cmbExporters.currentIndexChanged.connect(self.updateUi)
+        self.cmbExporters.setCurrentIndex(1)
+
+        self.btnPreview.clicked.connect(self.preview)
+        self.btnExport.clicked.connect(self.export)
+
+    def populateExportList(self):
+
         # Populates list
         self.cmbExporters.clear()
         for E in exporter.exporters:
@@ -44,14 +56,6 @@ class exporterDialog(QWidget, Ui_exporter):
 
                 name = f.name if f.implemented else self.tr("{} (not implemented yet)").format(f.name)
                 self.cmbExporters.addItem(QIcon.fromTheme(f.icon), name, E.name)
-
-        self.btnManageExporters.clicked.connect(self.openManager)
-
-        self.cmbExporters.currentIndexChanged.connect(self.updateUi)
-        self.cmbExporters.setCurrentIndex(1)
-
-        self.btnPreview.clicked.connect(self.preview)
-        self.btnExport.clicked.connect(self.export)
 
     def updateUi(self, index):
         E, F = self.getSelectedExporter()
@@ -122,6 +126,8 @@ class exporterDialog(QWidget, Ui_exporter):
         r = self.dialog.geometry()
         r2 = self.geometry()
         self.dialog.move(r2.center() - r.center())
+
+        self.dialog.exportersMightHaveChanged.connect(self.populateExportList)
 
     def setGroupWidget(self, group, widget):
         """Sets the given widget as main widget for QGroupBox group."""

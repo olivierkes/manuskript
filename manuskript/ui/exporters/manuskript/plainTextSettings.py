@@ -157,9 +157,15 @@ class exporterSettings(QWidget, Ui_exporterSettings):
         else:
             nLevel = len(s["FolderTitle"])
             for i in range(nLevel):
-                self.tblContent.item(i + 2, 1).setCheckState(Qt.Checked if s["FolderTitle"][i] else Qt.Unchecked)
-                self.tblContent.item(i + 2 + nLevel, 1).setCheckState(Qt.Checked if s["TextTitle"][i] else Qt.Unchecked)
-                self.tblContent.item(i + 2 + nLevel, 2).setCheckState(Qt.Checked if s["TextText"][i] else Qt.Unchecked)
+                item = self.tblContent.item(i + 2, 1)
+                if item:
+                    item.setCheckState(Qt.Checked if s["FolderTitle"][i] else Qt.Unchecked)
+                item = self.tblContent.item(i + 2 + nLevel, 1)
+                if item:
+                    item.setCheckState(Qt.Checked if s["TextTitle"][i] else Qt.Unchecked)
+                item = self.tblContent.item(i + 2 + nLevel, 2)
+                if item:
+                    item.setCheckState(Qt.Checked if s["TextText"][i] else Qt.Unchecked)
 
         self.chkContentIgnoreCompile.setChecked(s["IgnoreCompile"])
         self.chkContentParent.setChecked(s["Parent"])
