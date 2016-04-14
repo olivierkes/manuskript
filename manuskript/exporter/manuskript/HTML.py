@@ -4,7 +4,7 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtWebKitWidgets import QWebView
 from PyQt5.QtWidgets import QPlainTextEdit, qApp, QTabWidget, QFrame
 
-from manuskript.exporter.manuskript.markdown import markdown
+from manuskript.exporter.manuskript.markdown import markdown, markdownSettings
 from manuskript.ui.exporters.manuskript.plainTextSettings import exporterSettings
 
 try:
@@ -21,18 +21,15 @@ class HTML(markdown):
     exportVarName = "lastManuskriptHTML"
     exportFilter = "HTML files (*.html);; Any files (*)"
 
-    @classmethod
-    def isValid(cls):
+    def isValid(self):
         return MD is not None
 
-    @classmethod
-    def settingsWidget(cls):
-        w = exporterSettings(cls)
+    def settingsWidget(self):
+        w = markdownSettings(self)
         w.loadSettings()
         return w
 
-    @classmethod
-    def previewWidget(cls):
+    def previewWidget(self):
         t = QTabWidget()
         t.setDocumentMode(True)
         t.setStyleSheet("""
@@ -60,24 +57,23 @@ class HTML(markdown):
         t.setCurrentIndex(2)
         return t
 
-    @classmethod
-    def output(cls, settings):
-        html = MD.markdown(markdown.output(settings))
+    def output(self, settings):
+        html = MD.markdown(markdown.output(self, settings))
         return html
 
-    @classmethod
-    def preview(cls, settingsWidget, previewWidget):
+    def preview(self, settingsWidget, previewWidget):
         settings = settingsWidget.getSettings()
 
         # Save settings
         settingsWidget.writeSettings()
 
-        md = markdown.output(settings)
+        md = markdown.output(self, settings)
         html = MD.markdown(md)
 
-        cls.preparesTextEditView(previewWidget.widget(0), settings["Preview"]["PreviewFont"])
+        self.preparesTextEditView(previewWidget.widget(0), settings["Preview"]["PreviewFont"])
+        self.preparesTextEditViewMarkdown(previewWidget.widget(0), settings)
         previewWidget.widget(0).setPlainText(md)
-        cls.preparesTextEditView(previewWidget.widget(1), settings["Preview"]["PreviewFont"])
+        self.preparesTextEditView(previewWidget.widget(1), settings["Preview"]["PreviewFont"])
         previewWidget.widget(1).setPlainText(html)
         previewWidget.widget(2).setHtml(html)
 

@@ -18,51 +18,31 @@ class markdown(plainText):
     exportFilter = "Markdown files (*.md);; Any files (*)"
     icon = "text-x-markdown"
 
-    @classmethod
-    def settingsWidget(cls):
-        w = markdownSettings(cls)
+    def settingsWidget(self):
+        w = markdownSettings(self)
         w.loadSettings()
         return w
 
-    @classmethod
-    def preview(cls, settingsWidget, previewWidget):
-        # plainText.preview(settingsWidget, previewWidget)
-        # Don't know why, if I call superclass here, then concatenate does not call this processTitle function,
-        # But that of of plainText.
+    def preparesTextEditViewMarkdown(self, view, settings):
+        if settings["Preview"]["MarkdownHighlighter"]:
+            self.highlighter = MMDHighlighter(view)
+        else:
+            self.highlighter = None
 
-        # ---------------------------
-        # From plainText:
-
+    def preview(self, settingsWidget, previewWidget):
         settings = settingsWidget.getSettings()
 
         # Save settings
         settingsWidget.writeSettings()
 
-        # ---------------------------
-        # Specific to markdown
+        # Prepares text edit
+        self.preparesTextEditViewMarkdown(previewWidget, settingsWidget.settings)
+        self.preparesTextEditView(previewWidget, settings["Preview"]["PreviewFont"])
 
-        s = settingsWidget.settings
-        if s["Preview"]["MarkdownHighlighter"]:
-            cls.highlighter = MMDHighlighter(previewWidget)
-        else:
-            cls.highlighter = None
-
-        # ---------------------------
-        # From plainText:
-
-        r = cls.concatenate(mainWindow().mdlOutline.rootItem, settings)
-
-        # Set preview font
-        cf = QTextCharFormat()
-        f = QFont()
-        f.fromString(settings["Preview"]["PreviewFont"])
-        cf.setFont(f)
-        previewWidget.setCurrentCharFormat(cf)
-
+        r = self.concatenate(mainWindow().mdlOutline.rootItem, settings)
         previewWidget.setPlainText(r)
 
-    @classmethod
-    def processTitle(cls, text, level, settings):
+    def processTitle(self, text, level, settings):
         return "{} {}\n".format(
             "#" * (level + 1),
             text

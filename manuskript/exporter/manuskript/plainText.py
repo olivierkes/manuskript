@@ -21,36 +21,34 @@ class plainText(basicFormat):
     }
     icon = "text-plain"
 
-    # Default settings used in cls.getExportFilename. For easy subclassing when exporting plaintext.
+    # Default settings used in self.getExportFilename. For easy subclassing when exporting plaintext.
     exportVarName = "lastPlainText"
     exportFilter = "Text files (*.txt);; Any files (*)"
 
+    def __init__(self):
+        pass
 
-    @classmethod
-    def settingsWidget(cls):
-        w = exporterSettings(cls)
+    def settingsWidget(self):
+        w = exporterSettings(self)
         w.loadSettings()
         return w
 
-    @classmethod
-    def previewWidget(cls):
+    def previewWidget(self):
         w = QPlainTextEdit()
         w.setFrameShape(QFrame.NoFrame)
         w.setReadOnly(True)
         return w
 
-    @classmethod
-    def output(cls, settings):
-        return cls.concatenate(mainWindow().mdlOutline.rootItem, settings)
+    def output(self, settings):
+        return self.concatenate(mainWindow().mdlOutline.rootItem, settings)
 
-    @classmethod
-    def getExportFilename(cls, settingsWidget, varName=None, filter=None):
+    def getExportFilename(self, settingsWidget, varName=None, filter=None):
 
         if varName is None:
-            varName = cls.exportVarName
+            varName = self.exportVarName
 
         if filter is None:
-            filter = cls.exportFilter
+            filter = self.exportFilter
 
         settings = settingsWidget.getSettings()
 
@@ -87,41 +85,37 @@ class plainText(basicFormat):
 
         return filename
 
-    @classmethod
-    def export(cls, settingsWidget):
+    def export(self, settingsWidget):
         settings = settingsWidget.getSettings()
-        settingsWidget.writeSettings()
 
-        filename = cls.getExportFilename(settingsWidget)
+        filename = self.getExportFilename(settingsWidget)
+        settingsWidget.writeSettings()
 
         if filename:
             with open(filename, "w") as f:
-                f.write(cls.output(settingsWidget.settings))
+                f.write(self.output(settingsWidget.settings))
 
-    @classmethod
-    def preview(cls, settingsWidget, previewWidget):
+    def preview(self, settingsWidget, previewWidget):
         settings = settingsWidget.getSettings()
 
         # Save settings
         settingsWidget.writeSettings()
 
-        r = cls.output(settings)
+        r = self.output(settings)
 
         # Set preview font
-        cls.preparesTextEditView(previewWidget, settings["Preview"]["PreviewFont"])
+        self.preparesTextEditView(previewWidget, settings["Preview"]["PreviewFont"])
 
         previewWidget.setPlainText(r)
 
-    @classmethod
-    def preparesTextEditView(cls, view, textFont):
+    def preparesTextEditView(self, view, textFont):
         cf = QTextCharFormat()
         f = QFont()
         f.fromString(textFont)
         cf.setFont(f)
         view.setCurrentCharFormat(cf)
 
-    @classmethod
-    def concatenate(cls, item: outlineItem, settings) -> str:
+    def concatenate(self, item: outlineItem, settings) -> str:
         s = settings
         r = ""
 
@@ -137,18 +131,18 @@ class plainText(basicFormat):
                 if not s["Content"]["More"] and s["Content"]["FolderTitle"] or\
                        s["Content"]["More"] and s["Content"]["FolderTitle"][l]:
 
-                    r += cls.processTitle(item.title(), l, settings)
+                    r += self.processTitle(item.title(), l, settings)
 
             elif item.isText():
                 if not s["Content"]["More"] and s["Content"]["TextTitle"] or \
                        s["Content"]["More"] and s["Content"]["TextTitle"][l]:
 
-                    r += cls.processTitle(item.title(), l, settings)
+                    r += self.processTitle(item.title(), l, settings)
 
                 if not s["Content"]["More"] and s["Content"]["TextText"] or \
                        s["Content"]["More"] and s["Content"]["TextText"][l]:
 
-                    r += cls.processText(item.text(), settings)
+                    r += self.processText(item.text(), settings)
 
         content = ""
 
@@ -171,21 +165,19 @@ class plainText(basicFormat):
                 elif last == "md" and c.type() == "folder":
                     content += s["Separator"]["TF"]
 
-            content += cls.concatenate(c, settings)
+            content += self.concatenate(c, settings)
 
             last = c.type()
 
-        # r += cls.processContent(content, settings)
+        # r += self.processContent(content, settings)
         r += content
 
         return r
 
-    @classmethod
-    def processTitle(cls, text, level, settings):
+    def processTitle(self, text, level, settings):
         return text + "\n"
 
-    @classmethod
-    def processText(cls, content, settings):
+    def processText(self, content, settings):
         s = settings["Transform"]
 
         if s["Dash"]:

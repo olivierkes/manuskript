@@ -13,9 +13,9 @@ class manuskriptExporter(basicExporter):
     name = "Manuskript"
     description = qApp.translate("Export", "Default exporter, provides basic formats used by other exporters.")
     exportTo = [
-        plainText,
-        markdown,
-        HTML,
+        plainText(),
+        markdown(),
+        HTML(),
         basicFormat("OPML", icon="text-x-opml+xml")
     ]
 
