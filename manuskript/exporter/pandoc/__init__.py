@@ -3,6 +3,8 @@
 from PyQt5.QtWidgets import qApp
 
 from manuskript.exporter.basic import basicExporter, basicFormat
+from manuskript.exporter.pandoc.markdown import markdown
+
 
 class HTMLFormat(basicFormat):
     name = "HTML"
@@ -24,6 +26,7 @@ class pandocExporter(basicExporter):
     """)
     exportTo = [
         HTMLFormat,
+        markdown,
         basicFormat("ePub", "Books that don't kill trees.", icon="application-epub+zip"),
         basicFormat("OpenDocument", "OpenDocument format. Used by LibreOffice for example.", icon="application-vnd.oasis.opendocument.text"),
         basicFormat("PDF", "Needs latex to be installed.", icon="application-pdf"),
