@@ -8,7 +8,7 @@ from manuskript.ui import style
 
 
 class collapsibleGroupBox2(QWidget):
-    def __init__(self, parent=None):
+    def __init__(self, parent=None, title=None):
         QWidget.__init__(self, parent)
         self.frame = QFrame(self)
         self.button = QPushButton("Toggle", self)
@@ -19,6 +19,9 @@ class collapsibleGroupBox2(QWidget):
         # self.button.setStyleSheet("background-color: lightBlue;")
 
         self.button.setStyleSheet(style.collapsibleGroupBoxButton())
+
+        if title:
+            self.setTitle(title)
 
     def resizeEvent(self, event):
         if not self.switched:

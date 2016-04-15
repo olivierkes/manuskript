@@ -1,4 +1,4 @@
-UI := $(wildcard manuskript/ui/*.ui) $(wildcard manuskript/ui/*/*.ui) $(wildcard manuskript/ui/*.qrc) 
+UI := $(wildcard manuskript/ui/*.ui) $(wildcard manuskript/ui/*/*.ui) $(wildcard manuskript/ui/*/*/*.ui) $(wildcard manuskript/ui/*.qrc) 
 UIs= $(UI:.ui=.py) $(UI:.qrc=_rc.py)
 TS := $(wildcard i18n/*.ts)
 QMs= $(TS:.ts=.qm)

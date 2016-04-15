@@ -5,17 +5,13 @@ import os
 import re
 from random import *
 
-from PyQt5.QtCore import Qt, QRect, QStandardPaths, QObject, QRegExp
-
-# Used to detect multiple connections
-from PyQt5.QtGui import QBrush, QIcon, QPainter
-from PyQt5.QtGui import QColor
-from PyQt5.QtGui import QImage
-from PyQt5.QtGui import QPixmap
+from PyQt5.QtCore import Qt, QRect, QStandardPaths, QObject, QRegExp, QDir
+from PyQt5.QtGui import QBrush, QIcon, QPainter, QColor, QImage, QPixmap
 from PyQt5.QtWidgets import qApp, QTextEdit
 
 from manuskript.enums import Outline
 
+# Used to detect multiple connections
 AUC = Qt.AutoConnection | Qt.UniqueConnection
 MW = None
 
@@ -195,6 +191,10 @@ def allPaths(suffix=None):
     # user writable directory
     paths.append(writablePath(suffix))
     return paths
+
+def tempFile(name):
+    "Returns a temp file."
+    return os.path.join(QDir.tempPath(), name)
 
 
 def lightBlue():

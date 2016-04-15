@@ -19,7 +19,7 @@ from manuskript.models.worldModel import worldModel
 from manuskript.settingsWindow import settingsWindow
 from manuskript.ui import style
 from manuskript.ui.collapsibleDockWidgets import collapsibleDockWidgets
-from manuskript.ui.compileDialog import compileDialog
+from manuskript.ui.exporters.exporter import exporterDialog
 from manuskript.ui.helpLabel import helpLabel
 from manuskript.ui.mainWindow import Ui_MainWindow
 from manuskript.ui.tools.frequencyAnalyzer import frequencyAnalyzer
@@ -1072,5 +1072,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     ###############################################################################
 
     def doCompile(self):
-        self.compileDialog = compileDialog()
-        self.compileDialog.show()
+        self.dialog = exporterDialog(mw=self)
+        self.dialog.show()
+
+        r = self.dialog.geometry()
+        r2 = self.geometry()
+        self.dialog.move(r2.center() - r.center())
+

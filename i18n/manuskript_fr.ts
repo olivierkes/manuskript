@@ -1,6 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="2.0" language="fr" sourcelanguage="en">
 <context>
+    <name>Export</name>
+    <message>
+        <location filename="../manuskript/exporter/manuskript/__init__.py" line="14"/>
+        <source>Default exporter, provides basic formats used by other exporters.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/exporter/manuskript/HTML.py" line="17"/>
+        <source>Basic HTML output using python module &apos;markdown&apos;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/exporter/manuskript/HTML.py" line="18"/>
+        <source>python module &apos;markdown&apos;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/exporter/mmd.py" line="11"/>
+        <source>&lt;p&gt;A superset of markdown.&lt;/p&gt;
+    &lt;p&gt;Website: &lt;a href=&quot;http://fletcherpenney.net/multimarkdown/&quot;&gt;http://fletcherpenney.net/multimarkdown/&lt;/a&gt;&lt;/p&gt;
+    </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/exporter/pandoc.py" line="9"/>
+        <source>A little known format modestly used. You know, web sites for example.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/exporter/pandoc.py" line="20"/>
+        <source>&lt;p&gt;A universal document convertor. Can be used to convert markdown to a wide range of other
+    formats.&lt;/p&gt;
+    &lt;p&gt;Website: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
+    </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/exporter/manuskript/HTML.py" line="50"/>
+        <source>HTML</source>
+        <translation type="unfinished">HTML</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/exporter/manuskript/HTML.py" line="51"/>
+        <source>Source</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/exporter/manuskript/markdown.py" line="14"/>
+        <source>Just like plain text, excepts adds markdown titles.
+                          Presupposes that texts are formatted in markdown.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/exporter/manuskript/markdown.py" line="76"/>
+        <source>Preview with highlighter.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/exporter/manuskript/plainText.py" line="14"/>
+        <source>Plain text</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/exporter/manuskript/plainText.py" line="15"/>
+        <source>Simplest export to plain text. Allows you to use your own markup not understood
+                  by manuskript, for example &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ExportersManager</name>
+    <message>
+        <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="14"/>
+        <source>Manage Exporters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="21"/>
+        <source>Manuskript</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="75"/>
+        <source>Description</source>
+        <translation type="unfinished">Description</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="109"/>
+        <source>Offers export to</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="186"/>
+        <source>Status</source>
+        <translation type="unfinished">Status</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="192"/>
+        <source>Status:</source>
+        <translation type="unfinished">Status:</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="212"/>
+        <source>Version:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="235"/>
+        <source>Path:</source>
+        <translation type="unfinished">Chemin:</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="260"/>
+        <source>...</source>
+        <translation type="unfinished">...</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="275"/>
+        <source>{HelpText}</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>FrequencyAnalyzer</name>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="14"/>
@@ -251,7 +374,11 @@
         <translation>Étapes de résolution</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../manuskript/mainWindow.py" line="970"/>
+=======
+        <location filename="../manuskript/mainWindow.py" line="975"/>
+>>>>>>> feature/Exporter
         <source>Outline</source>
         <translation>Plan</translation>
     </message>
@@ -331,7 +458,11 @@
         <translation>Et si...?</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../manuskript/mainWindow.py" line="969"/>
+=======
+        <location filename="../manuskript/mainWindow.py" line="974"/>
+>>>>>>> feature/Exporter
         <source>Index cards</source>
         <translation>Cartes</translation>
     </message>
@@ -341,12 +472,20 @@
         <translation>F9</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../manuskript/mainWindow.py" line="968"/>
+=======
+        <location filename="../manuskript/mainWindow.py" line="973"/>
+>>>>>>> feature/Exporter
         <source>Tree</source>
         <translation>Arbre</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../manuskript/mainWindow.py" line="964"/>
+=======
+        <location filename="../manuskript/mainWindow.py" line="969"/>
+>>>>>>> feature/Exporter
         <source>Compile</source>
         <translation>Compilation</translation>
     </message>
@@ -391,152 +530,272 @@
         <translation>Le fichier {} n&apos;existe pas. Essayez encore.</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../manuskript/mainWindow.py" line="480"/>
+=======
+        <location filename="../manuskript/mainWindow.py" line="482"/>
+>>>>>>> feature/Exporter
         <source>Project {} saved.</source>
         <translation>Le projet {} a été enregistré.</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../manuskript/mainWindow.py" line="501"/>
+=======
+        <location filename="../manuskript/mainWindow.py" line="503"/>
+>>>>>>> feature/Exporter
         <source>Project {} loaded.</source>
         <translation>Le projet {} a été chargé.</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../manuskript/mainWindow.py" line="504"/>
+=======
+        <location filename="../manuskript/mainWindow.py" line="506"/>
+>>>>>>> feature/Exporter
         <source>Project {} loaded with some errors:</source>
         <translation>Le projet {} a été chargé, avec des erreurs:</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../manuskript/mainWindow.py" line="506"/>
+=======
+        <location filename="../manuskript/mainWindow.py" line="508"/>
+>>>>>>> feature/Exporter
         <source> * {} wasn&apos;t found in project file.</source>
         <translation>* {} n&apos;a pas été trouvé dans le fichier du projet.</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../manuskript/mainWindow.py" line="507"/>
+=======
+        <location filename="../manuskript/mainWindow.py" line="509"/>
+>>>>>>> feature/Exporter
         <source>Project {} loaded with some errors.</source>
         <translation>Le projet {} a été chargé avec des erreurs.</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../manuskript/mainWindow.py" line="746"/>
+=======
+        <location filename="../manuskript/mainWindow.py" line="753"/>
+>>>>>>> feature/Exporter
         <source> (~{} pages)</source>
         <translation> (~{} pages)</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../manuskript/mainWindow.py" line="750"/>
+=======
+        <location filename="../manuskript/mainWindow.py" line="757"/>
+>>>>>>> feature/Exporter
         <source>Words: {}{}</source>
         <translation>Mots: {}{}</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../manuskript/mainWindow.py" line="758"/>
+=======
+        <location filename="../manuskript/mainWindow.py" line="763"/>
+>>>>>>> feature/Exporter
         <source>Book summary</source>
         <translation>Résumé du livre</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../manuskript/mainWindow.py" line="759"/>
+=======
+        <location filename="../manuskript/mainWindow.py" line="764"/>
+>>>>>>> feature/Exporter
         <source>Project tree</source>
         <translation>Arborescence</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../manuskript/mainWindow.py" line="760"/>
+=======
+        <location filename="../manuskript/mainWindow.py" line="765"/>
+>>>>>>> feature/Exporter
         <source>Metadata</source>
         <translation>Métadonnées</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../manuskript/mainWindow.py" line="819"/>
+=======
+        <location filename="../manuskript/mainWindow.py" line="824"/>
+>>>>>>> feature/Exporter
         <source>Enter infos about your book, and yourself.</source>
         <translation>Entrez toutes les informations relatives au livre, ainsi qu&apos;à vous.</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../manuskript/mainWindow.py" line="832"/>
+=======
+        <location filename="../manuskript/mainWindow.py" line="837"/>
+>>>>>>> feature/Exporter
         <source>Create your characters.</source>
         <translation>Créez ici vos personnage.</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../manuskript/mainWindow.py" line="835"/>
+=======
+        <location filename="../manuskript/mainWindow.py" line="840"/>
+>>>>>>> feature/Exporter
         <source>Develop plots.</source>
         <translation>Développez vos intrigues.</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../manuskript/mainWindow.py" line="838"/>
+=======
+        <location filename="../manuskript/mainWindow.py" line="843"/>
+>>>>>>> feature/Exporter
         <source>Create the outline of your masterpiece.</source>
         <translation>Créez le plan de votre chef-d&apos;œuvre.</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../manuskript/mainWindow.py" line="841"/>
+=======
+        <location filename="../manuskript/mainWindow.py" line="846"/>
+>>>>>>> feature/Exporter
         <source>Write.</source>
         <translation>Écrivez.</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../manuskript/mainWindow.py" line="844"/>
+=======
+        <location filename="../manuskript/mainWindow.py" line="849"/>
+>>>>>>> feature/Exporter
         <source>Debug infos. Sometimes useful.</source>
         <translation>Des infos pour débugger des fois pendant qu&apos;on code c&apos;est utile.</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../manuskript/mainWindow.py" line="858"/>
+=======
+        <location filename="../manuskript/mainWindow.py" line="863"/>
+>>>>>>> feature/Exporter
         <source>Dictionary</source>
         <translation>Dictionnaire</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../manuskript/mainWindow.py" line="871"/>
+=======
+        <location filename="../manuskript/mainWindow.py" line="876"/>
+>>>>>>> feature/Exporter
         <source>Install PyEnchant to use spellcheck</source>
         <translation>Installez PyEnchant pour profiter du correcteur orthographique</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../manuskript/mainWindow.py" line="960"/>
+=======
+        <location filename="../manuskript/mainWindow.py" line="965"/>
+>>>>>>> feature/Exporter
         <source>Nothing</source>
         <translation>Rien</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../manuskript/mainWindow.py" line="961"/>
+=======
+        <location filename="../manuskript/mainWindow.py" line="966"/>
+>>>>>>> feature/Exporter
         <source>POV</source>
         <translation>POV</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../manuskript/mainWindow.py" line="962"/>
+=======
+        <location filename="../manuskript/mainWindow.py" line="967"/>
+>>>>>>> feature/Exporter
         <source>Label</source>
         <translation>Label</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../manuskript/mainWindow.py" line="963"/>
+=======
+        <location filename="../manuskript/mainWindow.py" line="968"/>
+>>>>>>> feature/Exporter
         <source>Progress</source>
         <translation>Progrès</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../manuskript/mainWindow.py" line="987"/>
+=======
+        <location filename="../manuskript/mainWindow.py" line="992"/>
+>>>>>>> feature/Exporter
         <source>Icon color</source>
         <translation>Couleur de l&apos;icone</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../manuskript/mainWindow.py" line="988"/>
+=======
+        <location filename="../manuskript/mainWindow.py" line="993"/>
+>>>>>>> feature/Exporter
         <source>Text color</source>
         <translation>Couleur du texte</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../manuskript/mainWindow.py" line="989"/>
+=======
+        <location filename="../manuskript/mainWindow.py" line="994"/>
+>>>>>>> feature/Exporter
         <source>Background color</source>
         <translation>Couleur de l&apos;arrière-plan</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../manuskript/mainWindow.py" line="980"/>
+=======
+        <location filename="../manuskript/mainWindow.py" line="985"/>
+>>>>>>> feature/Exporter
         <source>Icon</source>
         <translation>Icone</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../manuskript/mainWindow.py" line="981"/>
+=======
+        <location filename="../manuskript/mainWindow.py" line="986"/>
+>>>>>>> feature/Exporter
         <source>Text</source>
         <translation>Texte</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../manuskript/mainWindow.py" line="982"/>
+=======
+        <location filename="../manuskript/mainWindow.py" line="987"/>
+>>>>>>> feature/Exporter
         <source>Background</source>
         <translation>Arrière-plan</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../manuskript/mainWindow.py" line="983"/>
+=======
+        <location filename="../manuskript/mainWindow.py" line="988"/>
+>>>>>>> feature/Exporter
         <source>Border</source>
         <translation>Bordure</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../manuskript/mainWindow.py" line="984"/>
+=======
+        <location filename="../manuskript/mainWindow.py" line="989"/>
+>>>>>>> feature/Exporter
         <source>Corner</source>
         <translation>Coin</translation>
     </message>
@@ -656,18 +915,30 @@
         <translation>&amp;Analyseur de fréquence</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../manuskript/mainWindow.py" line="761"/>
+=======
+        <location filename="../manuskript/mainWindow.py" line="766"/>
+>>>>>>> feature/Exporter
         <source>Story line</source>
         <translation></translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../manuskript/mainWindow.py" line="822"/>
+=======
+        <location filename="../manuskript/mainWindow.py" line="827"/>
+>>>>>>> feature/Exporter
         <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous
                      evil wizard could wasn&apos;t abled to kill a baby?&apos; (Harry Potter)</source>
         <translation>La situation de base, sous la forme d&apos;une question &quot;Et si…?&quot;. Par exemple: &quot;Et si le plus dangereux des sorciers maléfiques n&apos;était pas capable de tuer un petit bébé?&quot; (Harry Potter)</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../manuskript/mainWindow.py" line="827"/>
+=======
+        <location filename="../manuskript/mainWindow.py" line="832"/>
+>>>>>>> feature/Exporter
         <source>Take time to think about a one sentence (~50 words) summary of your book. Then expand it to
                      a paragraph, then to a page, then to a full summary.</source>
         <translation>Prenez le temps de penser à une phrase (~50 mots) qui résume votre livre. Ensuite, développez-là en un paragraphe, puis une page, puis un résumé complet.</translation>
@@ -1232,12 +1503,20 @@ des lignes:</translation>
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="426"/>
         <source>&amp;Add to dictionary</source>
+<<<<<<< HEAD
         <translation type="unfinished"></translation>
+=======
+        <translation>&amp;Ajouter au dictionnaire</translation>
+>>>>>>> feature/Exporter
     </message>
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="438"/>
         <source>&amp;Remove from custom dictionary</source>
+<<<<<<< HEAD
         <translation type="unfinished"></translation>
+=======
+        <translation>&amp;Supprimer du dictionnaire perso</translation>
+>>>>>>> feature/Exporter
     </message>
 </context>
 <context>
@@ -1423,59 +1702,6 @@ des lignes:</translation>
     </message>
 </context>
 <context>
-    <name>compileDialog</name>
-    <message>
-        <location filename="../manuskript/ui/compileDialog_ui.ui" line="14"/>
-        <source>Dialog</source>
-        <translation>Dialog</translation>
-    </message>
-    <message>
-        <location filename="../manuskript/ui/compileDialog_ui.ui" line="38"/>
-        <source>Compile as:</source>
-        <translation>Compiler comme:</translation>
-    </message>
-    <message>
-        <location filename="../manuskript/ui/compileDialog_ui.ui" line="66"/>
-        <source>Folder:</source>
-        <translation>Dossier:</translation>
-    </message>
-    <message>
-        <location filename="../manuskript/ui/compileDialog_ui.ui" line="99"/>
-        <source>...</source>
-        <translation>...</translation>
-    </message>
-    <message>
-        <location filename="../manuskript/ui/compileDialog_ui.ui" line="89"/>
-        <source>File name:</source>
-        <translation>Fichier:</translation>
-    </message>
-    <message>
-        <location filename="../manuskript/ui/compileDialog_ui.ui" line="137"/>
-        <source>Compile</source>
-        <translation>Compiler</translation>
-    </message>
-    <message>
-        <location filename="../manuskript/ui/compileDialog_ui.ui" line="144"/>
-        <source>Cancel</source>
-        <translation>Annuler</translation>
-    </message>
-    <message>
-        <location filename="../manuskript/ui/compileDialog.py" line="55"/>
-        <source>Working...</source>
-        <translation>En cours...</translation>
-    </message>
-    <message>
-        <location filename="../manuskript/ui/compileDialog.py" line="71"/>
-        <source>Chose export folder</source>
-        <translation>Choisir le dossier</translation>
-    </message>
-    <message>
-        <location filename="../manuskript/ui/compileDialog.py" line="79"/>
-        <source>Chose export target</source>
-        <translation>Choisir la cible</translation>
-    </message>
-</context>
-<context>
     <name>completer</name>
     <message>
         <location filename="../manuskript/ui/editors/completer_ui.ui" line="14"/>
@@ -1507,29 +1733,268 @@ des lignes:</translation>
 <context>
     <name>exporter</name>
     <message>
-        <location filename="../manuskript/exporter/__init__.py" line="11"/>
-        <source>HTML</source>
-        <translation>HTML</translation>
+        <location filename="../manuskript/ui/exporters/exporter_ui.ui" line="59"/>
+        <source>Export</source>
+        <translation>Exporter</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/__init__.py" line="11"/>
-        <source>HTML Document (*.html)</source>
-        <translation>Document HTML (*.html)</translation>
+        <location filename="../manuskript/ui/exporters/exporter_ui.ui" line="22"/>
+        <source>Export to:</source>
+        <translation>Exporter vers:</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/__init__.py" line="11"/>
-        <source>Arborescence</source>
-        <translation>Arborescence</translation>
+        <location filename="../manuskript/ui/exporters/exporter_ui.ui" line="32"/>
+        <source>Manage exporters</source>
+        <translation>Gérer les exporteurs</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/__init__.py" line="11"/>
-        <source>OpenDocument (LibreOffice)</source>
-        <translation>OpenDocument (LibreOffice)</translation>
+        <location filename="../manuskript/ui/exporters/exporter_ui.ui" line="94"/>
+        <source>Preview</source>
+        <translation>Prévisualiser</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/__init__.py" line="11"/>
-        <source>OpenDocument (*.odt)</source>
-        <translation>OpenDocument (*.odt)</translation>
+        <location filename="../manuskript/ui/exporters/exporter_ui.ui" line="72"/>
+        <source>Settings</source>
+        <translation>Réglages</translation>
+    </message>
+</context>
+<context>
+    <name>exporterDialog</name>
+    <message>
+        <location filename="../manuskript/ui/exporters/exporter.py" line="43"/>
+        <source>{} (not implemented yet)</source>
+        <translation>{} (pas encore implémenté)</translation>
+    </message>
+</context>
+<context>
+    <name>exporterSettings</name>
+    <message>
+        <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="14"/>
+        <source>Form</source>
+        <translation>Form</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="61"/>
+        <source>Content</source>
+        <translation>Contenu</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="67"/>
+        <source>Decide here what will be included in the final export.</source>
+        <translation>Choisissez ici ce qui sera inclu dans l&apos;export.</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="96"/>
+        <source>Type</source>
+        <translation>Type</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="101"/>
+        <source>Title</source>
+        <translation>Titre</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings.py" line="317"/>
+        <source>Text</source>
+        <translation>Texte</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="129"/>
+        <source>I need more granularity</source>
+        <translation>J&apos;ai besoin de plus de finesse</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="138"/>
+        <source>Fi&amp;lters</source>
+        <translation>Fi&amp;ltres</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="153"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Filters what items will be included in the final export.&lt;br/&gt;&lt;span style=&quot; color:#773333;&quot;&gt;(Not fully implemented yet.)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Filtrer les éléments qui seront inclus dans l&apos;export.&lt;br/&gt;&lt;span style=&quot; color:#773333;&quot;&gt;(Pas encore pleinement implémenté.)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="160"/>
+        <source>Ignore compile status (include all items)</source>
+        <translation>Ignorer le statut de compilation (i.e. inclure tous les éléments)</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="167"/>
+        <source>Subitems of:</source>
+        <translation>Sous-éléments de:</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="181"/>
+        <source>Labels</source>
+        <translation>Labels</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="188"/>
+        <source>Status</source>
+        <translation>Status</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="240"/>
+        <source>Separations</source>
+        <translation>Séparations</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="252"/>
+        <source>Between folders:</source>
+        <translation>Entre les dossiers:</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings.py" line="84"/>
+        <source>Empty line</source>
+        <translation>Ligne vide</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings.py" line="103"/>
+        <source>Custom</source>
+        <translation>Personnalisé</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="380"/>
+        <source>Between texts:</source>
+        <translation>Entre les textes:</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="508"/>
+        <source>Between folder and text:</source>
+        <translation>Entre dossier et texte:</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="636"/>
+        <source>Between text and folder:</source>
+        <translation>Entre texte et dossier:</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="783"/>
+        <source>Transformations</source>
+        <translation>Transformations</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="792"/>
+        <source>Typographic replacements:</source>
+        <translation>Corrections typographiques:</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="807"/>
+        <source>Replace ... with â¦</source>
+        <translation>Remplacer ... avec …</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="814"/>
+        <source>Replace --- with â</source>
+        <translation>Remplacer --- avec —</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="821"/>
+        <source>Replace double quotes (&quot;) with:</source>
+        <translation>Remplacer les guillements doubles (&quot;) avec:</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="930"/>
+        <source>Replace single quotes (&apos;) with:</source>
+        <translation>Remplacer les guillements simples (&apos;) avec:</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1039"/>
+        <source>Remove multiple spaces</source>
+        <translation>Supprimer les espaces doubles</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1049"/>
+        <source>Custom replacements:</source>
+        <translation>Remplacements personnalisés</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1068"/>
+        <source>Enabled</source>
+        <translation>Activé</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1073"/>
+        <source>Replace</source>
+        <translation>Remplacer</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1078"/>
+        <source>With</source>
+        <translation>Par</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1083"/>
+        <source>RegExp</source>
+        <translation>RegExp</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1086"/>
+        <source>If checked, uses regular expression for replacement. If unchecked, replaced as plain text.</source>
+        <translation>Si la case est cochée, une expression régulière est utilisée pour le remplacement. Sinon, le remplacement est effectué en texte simple.</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1172"/>
+        <source>Preview</source>
+        <translation>Prévisualiser</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1178"/>
+        <source>Font</source>
+        <translation>Police</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1184"/>
+        <source>Font:</source>
+        <translation>Police:</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1194"/>
+        <source>Font size:</source>
+        <translation>Taille de la police:</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings.py" line="311"/>
+        <source>Folder</source>
+        <translation>Dosser</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings.py" line="334"/>
+        <source>{}Level {} folder</source>
+        <translation>{}Dossier de niveau {}</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings.py" line="337"/>
+        <source>{}Level {} text</source>
+        <translation>{}Texte de niveau {}</translation>
+    </message>
+</context>
+<context>
+    <name>exportersManager</name>
+    <message>
+        <location filename="../manuskript/ui/exporters/exportersManager.py" line="68"/>
+        <source>Installed</source>
+        <translation>Installé</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/exportersManager.py" line="74"/>
+        <source>Not found</source>
+        <translation>Pas trouvé</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/exportersManager.py" line="77"/>
+        <source>{} not found. Install it, or set path manually.</source>
+        <translation>{} n&apos;a pas été trouvé. Installé le, ou indiquez l&apos;emplacement manuellement.</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/exportersManager.py" line="102"/>
+        <source>&lt;b&gt;Status:&lt;/b&gt; uninstalled.</source>
+        <translation>&lt;b&gt;Status:&lt;/b&gt; non-installé.</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/exporters/exportersManager.py" line="104"/>
+        <source>&lt;b&gt;Requires:&lt;/b&gt; </source>
+        <translation>&lt;b&gt;Nécessite:&lt;/b&gt; </translation>
     </message>
 </context>
 <context>
@@ -1693,6 +2158,14 @@ des lignes:</translation>
         <location filename="../manuskript/ui/editors/mainEditor_ui.ui" line="207"/>
         <source>F11</source>
         <translation>F11</translation>
+    </message>
+</context>
+<context>
+    <name>markdownSettings</name>
+    <message>
+        <location filename="../manuskript/exporter/manuskript/markdown.py" line="74"/>
+        <source>Markdown</source>
+        <translation>Markdown</translation>
     </message>
 </context>
 <context>
@@ -1867,12 +2340,12 @@ des lignes:</translation>
         <translation>Cible</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/outlineModel.py" line="718"/>
+        <location filename="../manuskript/models/outlineModel.py" line="731"/>
         <source>{} words / {} ({})</source>
         <translation>{} mots / {} ({})</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/outlineModel.py" line="723"/>
+        <location filename="../manuskript/models/outlineModel.py" line="736"/>
         <source>{} words</source>
         <translation>{} mots</translation>
     </message>
@@ -2816,12 +3289,20 @@ des lignes:</translation>
         <translation>Créer un nouveau projet</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../manuskript/ui/welcome.py" line="369"/>
+=======
+        <location filename="../manuskript/ui/welcome.py" line="367"/>
+>>>>>>> feature/Exporter
         <source>Chapter</source>
         <translation>Chapitre</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../manuskript/ui/welcome.py" line="370"/>
+=======
+        <location filename="../manuskript/ui/welcome.py" line="368"/>
+>>>>>>> feature/Exporter
         <source>Scene</source>
         <translation>Scène</translation>
     </message>
@@ -2866,37 +3347,65 @@ des lignes:</translation>
         <translation>&lt;b&gt;Total:&lt;/b&gt; {} mots (~ {} pages)</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../manuskript/ui/welcome.py" line="367"/>
+=======
+        <location filename="../manuskript/ui/welcome.py" line="365"/>
+>>>>>>> feature/Exporter
         <source>Idea</source>
         <translation>Idée</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../manuskript/ui/welcome.py" line="368"/>
+=======
+        <location filename="../manuskript/ui/welcome.py" line="366"/>
+>>>>>>> feature/Exporter
         <source>Note</source>
         <translation>Note</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../manuskript/ui/welcome.py" line="371"/>
+=======
+        <location filename="../manuskript/ui/welcome.py" line="369"/>
+>>>>>>> feature/Exporter
         <source>Research</source>
         <translation>Recherche</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../manuskript/ui/welcome.py" line="379"/>
+=======
+        <location filename="../manuskript/ui/welcome.py" line="377"/>
+>>>>>>> feature/Exporter
         <source>TODO</source>
         <translation>TODO</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../manuskript/ui/welcome.py" line="380"/>
+=======
+        <location filename="../manuskript/ui/welcome.py" line="378"/>
+>>>>>>> feature/Exporter
         <source>First draft</source>
         <translation>Premier brouillon</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../manuskript/ui/welcome.py" line="381"/>
+=======
+        <location filename="../manuskript/ui/welcome.py" line="379"/>
+>>>>>>> feature/Exporter
         <source>Second draft</source>
         <translation>Second brouillon</translation>
     </message>
     <message>
+<<<<<<< HEAD
         <location filename="../manuskript/ui/welcome.py" line="382"/>
+=======
+        <location filename="../manuskript/ui/welcome.py" line="380"/>
+>>>>>>> feature/Exporter
         <source>Final</source>
         <translation>Final</translation>
     </message>

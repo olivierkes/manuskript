@@ -193,6 +193,18 @@ class outlineModel(QAbstractItemModel):
 
         return True
 
+    def maxLevel(self):
+        """Returns the max depth of the model."""
+        def depth(item, d=-1):
+            d += 1
+            r = d
+            for c in item.children():
+                r = max(r, depth(c, d))
+            return r
+
+        d = depth(self.rootItem)
+        return d
+
     #################### DRAG AND DROP ########################
     # http://doc.qt.io/qt-5/model-view-programming.html#using-drag-and-drop-with-item-views
 
@@ -699,6 +711,7 @@ class outlineItem():
             return [(self.ID(), self.title())]
 
     def level(self):
+        """Returns the level of the current item. Root item returns -1."""
         if self.parent():
             return self.parent().level() + 1
         else:
