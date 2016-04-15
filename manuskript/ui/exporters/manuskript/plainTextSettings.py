@@ -135,6 +135,7 @@ class exporterSettings(QWidget, Ui_exporterSettings):
             self.getSettings()
 
     def writeSettings(self):
+        self.getSettings()
         with open(self.getSettingsPath(), 'w') as f:
             # json.dumps(json.loads(json.dumps(allSettings)), indent=4, sort_keys=True)
             json.dump(self.settings, f, indent=4, sort_keys=True)

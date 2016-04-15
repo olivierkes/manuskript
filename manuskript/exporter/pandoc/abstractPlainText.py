@@ -47,7 +47,7 @@ class abstractPlainText(markdown):
 
 
 class pandocSetting:
-    def __init__(self, arg, type, format, label, widget=None, default=None, min=None, max=None, vals=None):
+    def __init__(self, arg, type, format, label, widget=None, default=None, min=None, max=None, vals=None, suffix=""):
         self.arg = arg
         self.type = type
         self.label = label
@@ -59,6 +59,7 @@ class pandocSetting:
         self.min = min
         self.max = max
         self.vals = vals.split("|") if vals else []
+        self.suffix = suffix
 
     def isValid(self, format):
         """Return whether the specific setting is active with the given format."""
@@ -88,14 +89,14 @@ class pandocSettings(markdownSettings):
         "TOC":          pandocSetting("--toc", "checkbox", "",
                                       qApp.translate("Export", "Include a table of contents.")),
 
-        "TOC-depth":    pandocSetting("--toc-depth", "number", "",
+        "TOC-depth":    pandocSetting("--toc-depth=", "number", "",
                                       qApp.translate("Export", "Number of sections level to include in TOC: "),
                                       default=3, min=1, max=6),
         "smart":        pandocSetting("--smart", "checkbox", "",
                                       qApp.translate("Export", "Typographically correct output")),
         "normalize":    pandocSetting("--normalize", "checkbox", "",
                                       qApp.translate("Export", "Normalize the document (cleaner)")),
-        "base-header":  pandocSetting("--base-header-level", "number", "",
+        "base-header":  pandocSetting("--base-header-level=", "number", "",
                                       qApp.translate("Export", "Specify the base level for headers: "),
                                       default=1, min=1),
 
@@ -108,10 +109,29 @@ class pandocSettings(markdownSettings):
                                         qApp.translate("Export", "Self-contained html files, with no dependencies")),
         "q-tags":       pandocSetting("--html-q-tags", "checkbox", "html",
                                         qApp.translate("Export", "Use <q> tags for quotes in HTML")),
-        "latex-engine": pandocSetting("--latex-engine", "combo", "pdf",
+        "latex-engine": pandocSetting("--latex-engine=", "combo", "pdf",
                                       qApp.translate("Export", "LaTeX engine used to produce the PDF."),
-                                      vals="pdflatex|lualatex|xelatex")
+                                      vals="pdflatex|lualatex|xelatex"),
 
+    }
+
+    pdfSettings = {
+
+        # PDF
+        "latex-ps":     pandocSetting("--variable=papersize:", "combo", "pdf latex",  # FIXME: does not work with default template
+                                      qApp.translate("Export", "Paper size:"),
+                                      vals="letter|A4|A5"),
+        "latex-fs":     pandocSetting("--variable=fontsize:", "number", "pdf latex",  # FIXME: does not work with default template
+                                      qApp.translate("Export", "Font size:"),
+                                      min=8, max=88, default=12, suffix="pt"),
+        "latex-class":  pandocSetting("--variable=documentclass:", "combo", "pdf latex",
+                                     qApp.translate("Export", "Class:"),
+                                     vals="article|report|book|memoir"),
+        "latex-ls":     pandocSetting("--variable=linestretch:", "combo", "pdf latex",
+                                     qApp.translate("Export", "Line spacing:"),
+                                     vals="1|1.25|1.5|2"),
+
+        # FIXME: complete with http://pandoc.org/README.html#variables-for-latex
     }
 
 
@@ -141,6 +161,11 @@ class pandocSettings(markdownSettings):
         self.addSettingsWidget("self-contained", self.grpPandocSpecific)
         self.addSettingsWidget("q-tags", self.grpPandocSpecific)
         self.addSettingsWidget("latex-engine", self.grpPandocSpecific)
+
+        # PDF settings
+        self.settingsList.update(self.pdfSettings)
+        for i in self.pdfSettings:
+            self.addSettingsWidget(i, self.grpPandocSpecific)
 
         self.toolBox.insertItem(self.toolBox.count() - 1, w, "Pandoc")
         self.toolBox.layout().setSpacing(0)  # Not sure why this is needed, but hey...
@@ -181,6 +206,8 @@ class pandocSettings(markdownSettings):
                 s.widget.setMinimum(s.min)
             if s.max:
                 s.widget.setMaximum(s.max)
+            if s.suffix:
+                s.widget.setSuffix(s.suffix)
             l.addWidget(s.widget, 2)
             parent.layout().addLayout(l)
 
@@ -218,7 +245,6 @@ class pandocSettings(markdownSettings):
 
     def getSettings(self):
         self.settings = markdownSettings.getSettings(self)
-        # self.settings["Preview"]["MarkdownHighlighter"] = self.chkMarkdownHighlighter.isChecked()
 
         P = self.settings.get("Pandoc", {})
 
@@ -245,18 +271,22 @@ class pandocSettings(markdownSettings):
             s = self.settingsList[name]
 
             if s.isValid(self.format):
+                rr = ""
                 if s.type == "checkbox":
                     if s.widget.isChecked():
-                        r.append(s.arg)
+                        rr = s.arg
                 elif s.type == "number":
-                    r.append("{}={}".format(
+                    rr = "{}{}".format(
                         s.arg,
                         str(s.widget.value())
-                    ))
+                    )
                 elif s.type == "combo":
-                    r.append("{}={}".format(
+                    rr = "{}{}".format(
                         s.arg,
                         s.widget.currentText()
-                    ))
+                    )
+
+                if rr:
+                    r.append(rr+s.suffix)
         return r
 

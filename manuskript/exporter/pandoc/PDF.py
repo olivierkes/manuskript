@@ -1,15 +1,20 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
+import random
+
 from PyQt5.QtCore import QUrl
 from PyQt5.QtWebKit import QWebSettings
 from PyQt5.QtWebKitWidgets import QWebView
 from PyQt5.QtWidgets import qApp
 
-from manuskript.exporter.manuskript import HTML as MskHTML
 from manuskript.exporter.pandoc.abstractOutput import abstractOutput
+from manuskript.functions import tempFile
+from manuskript.ui.views.PDFViewer import PDFViewer
 
 
 class PDF(abstractOutput):
+    """PDF Viewer using PDS.js. Cf. https://github.com/mozilla/pdf.js/wiki/Setup-PDF.js-in-a-website"""
+
     name = "PDF"
     description = qApp.translate("Export", "Needs latex to be installed.")
     icon = "application-pdf"
@@ -30,13 +35,12 @@ class PDF(abstractOutput):
         return self.exporter.convert(src, args, outputfile)
 
     def previewWidget(self):
-        web = QWebView()
-        web.settings().setAttribute(QWebSettings.PluginsEnabled, True)
-        # web.show()
-        return web
+        return PDFViewer()
 
     def preview(self, settingsWidget, previewWidget):
-        filename = "/tmp/msk_asdlhadl.pdf"
+        filename = tempFile("msk_pdfpreview.pdf")
+
+        settingsWidget.writeSettings()
         content = self.output(settingsWidget, outputfile=filename)
 
-        previewWidget.setUrl(QUrl("file://"+filename))
+        previewWidget.loadPDF(filename)
