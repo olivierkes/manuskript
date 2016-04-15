@@ -46,7 +46,7 @@ class exporterDialog(QWidget, Ui_exporter):
             if not E.isValid():
                 continue
 
-            self.cmbExporters.addItem(E.name)
+            self.cmbExporters.addItem(QIcon(E.icon), E.name)
             self.cmbExporters.setItemData(self.cmbExporters.count() - 1, QBrush(QColor(Qt.darkBlue)), Qt.ForegroundRole)
             self.cmbExporters.setItemData(self.cmbExporters.count() - 1, QBrush(lightBlue()), Qt.BackgroundRole)
             item = self.cmbExporters.model().item(self.cmbExporters.count() - 1)

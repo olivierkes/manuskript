@@ -17,6 +17,7 @@ class basicExporter:
     exportTo = []
     cmd = ""
     customPath = ""
+    icon = ""
 
     def __init__(self):
         settings = QSettings()

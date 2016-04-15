@@ -25,7 +25,8 @@ class exportersManager(QWidget, Ui_ExportersManager):
         # Populates lite
         self.lstExporters.clear()
         for E in exporter.exporters:
-            self.lstExporters.addItem(E.name)
+            item = QListWidgetItem(QIcon(E.icon), E.name)
+            self.lstExporters.addItem(item)
 
         # UI
         for i in range(self.lstExporters.count()):

@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
 import random
+import shutil
 
 from PyQt5.QtCore import QUrl
 from PyQt5.QtWebKit import QWebSettings
@@ -17,6 +18,8 @@ class PDF(abstractOutput):
 
     name = "PDF"
     description = qApp.translate("Export", "Needs latex to be installed.")
+    InvalidBecause = qApp.translate("Export", """a valid latex installation. See pandoc recommendations on:
+                     <a href="http://pandoc.org/installing.html">http://pandoc.org/installing.html</a>""")
     icon = "application-pdf"
 
     exportVarName = "lastPandocPDF"
@@ -26,6 +29,10 @@ class PDF(abstractOutput):
         "Settings": True,
         "Preview": True,
     }
+
+    def isValid(self):
+        path = shutil.which("pdflatex")
+        return path is not None
 
     def output(self, settingsWidget, outputfile=None):
         args = settingsWidget.runnableSettings()
