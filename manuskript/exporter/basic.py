@@ -27,9 +27,8 @@ class basicExporter:
         settings = QSettings()
         settings.setValue("Exporters/{}_customPath".format(self.name), self.customPath)
 
-    @classmethod
-    def getFormatByName(cls, name):
-        for f in cls.exportTo:
+    def getFormatByName(self, name):
+        for f in self.exportTo:
             if f.name == name:
                 return f
 
@@ -43,13 +42,11 @@ class basicExporter:
         else:
             return 0
 
-    @classmethod
-    def version(cls):
+    def version(self):
         return ""
 
-    @classmethod
-    def path(cls):
-        return shutil.which(cls.cmd)
+    def path(self):
+        return shutil.which(self.cmd)
 
     def run(self, args):
         if self.isValid() == 2:

@@ -57,8 +57,8 @@ class HTML(markdown):
         t.setCurrentIndex(2)
         return t
 
-    def output(self, settings):
-        html = MD.markdown(markdown.output(self, settings))
+    def output(self, settingsWidget):
+        html = MD.markdown(markdown.output(self, settingsWidget))
         return html
 
     def preview(self, settingsWidget, previewWidget):
@@ -67,7 +67,7 @@ class HTML(markdown):
         # Save settings
         settingsWidget.writeSettings()
 
-        md = markdown.output(self, settings)
+        md = markdown.output(self, settingsWidget)
         html = MD.markdown(md)
 
         self.preparesTextEditView(previewWidget.widget(0), settings["Preview"]["PreviewFont"])

@@ -39,7 +39,8 @@ class plainText(basicFormat):
         w.setReadOnly(True)
         return w
 
-    def output(self, settings):
+    def output(self, settingsWidget):
+        settings = settingsWidget.getSettings()
         return self.concatenate(mainWindow().mdlOutline.rootItem, settings)
 
     def getExportFilename(self, settingsWidget, varName=None, filter=None):
@@ -90,10 +91,15 @@ class plainText(basicFormat):
 
         filename = self.getExportFilename(settingsWidget)
         settingsWidget.writeSettings()
+        content = self.output(settingsWidget)
+
+        if not content:
+            print("Error: content is empty. Nothing saved.")
+            return
 
         if filename:
             with open(filename, "w") as f:
-                f.write(self.output(settingsWidget.settings))
+                f.write(content)
 
     def preview(self, settingsWidget, previewWidget):
         settings = settingsWidget.getSettings()
@@ -101,7 +107,7 @@ class plainText(basicFormat):
         # Save settings
         settingsWidget.writeSettings()
 
-        r = self.output(settings)
+        r = self.output(settingsWidget)
 
         # Set preview font
         self.preparesTextEditView(previewWidget, settings["Preview"]["PreviewFont"])

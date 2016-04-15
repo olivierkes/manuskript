@@ -34,6 +34,9 @@ class exporterDialog(QWidget, Ui_exporter):
         self.btnPreview.clicked.connect(self.preview)
         self.btnExport.clicked.connect(self.export)
 
+        # FIXME: Debug: working on pandoc's markdown
+        self.cmbExporters.setCurrentIndex(7)
+
     def populateExportList(self):
 
         # Populates list

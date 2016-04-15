@@ -39,8 +39,7 @@ class markdown(plainText):
         self.preparesTextEditViewMarkdown(previewWidget, settingsWidget.settings)
         self.preparesTextEditView(previewWidget, settings["Preview"]["PreviewFont"])
 
-        r = self.concatenate(mainWindow().mdlOutline.rootItem, settings)
-        previewWidget.setPlainText(r)
+        previewWidget.setPlainText(self.output(settingsWidget))
 
     def processTitle(self, text, level, settings):
         return "{} {}\n".format(
