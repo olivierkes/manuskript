@@ -4,7 +4,7 @@
 # Version 0 of file saving format.
 # Was used at the begining and up util version XXX when
 # it was superseded by Version 1, which is more open and flexible
-
+import os
 import zipfile
 
 from PyQt5.QtCore import QModelIndex, Qt
@@ -178,7 +178,7 @@ def loadFilesFromZip(zipname):
     zf = zipfile.ZipFile(zipname)
     files = {}
     for f in zf.namelist():
-        files[f] = zf.read(f)
+        files[os.path.normpath(f)] = zf.read(f)
     return files
 
 
