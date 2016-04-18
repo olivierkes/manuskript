@@ -102,9 +102,8 @@ class tabSplitter(QWidget, Ui_tabSplitter):
                 self.secondTab.restoreOpenIndexes(openIndexes[2])
 
         except:
-
-            print("Failed to load indexes from settings...")
-            print("Indexes:", openIndexes)
+            # Cannot load open indexes. Let's simply open root.
+            self.mainEditor.setCurrentModelIndex(QModelIndex(), newTab=True)
 
     ###############################################################################
     # TARGET

@@ -72,6 +72,11 @@ class mainEditor(QWidget, Ui_mainEditor):
             else:
                 ts = ts.secondTab
 
+        # No tabSplitter has focus, something is strange.
+        # But probably not important.
+        # Let's return self.tabSplitter.tab anyway.
+        return self.tabSplitter.tab
+
     def currentEditor(self, tabWidget=None):
         if tabWidget is None:
             tabWidget = self.currentTabWidget()
@@ -163,11 +168,11 @@ class mainEditor(QWidget, Ui_mainEditor):
         if qApp.keyboardModifiers() & Qt.ControlModifier:
             newTab = True
 
-        if newTab or not self.currentTabWidget().count():
+        if newTab or not tabWidget.count():
             editor = editorWidget(self)
             editor.setCurrentModelIndex(index)
             tabWidget.addTab(editor, title)
-            tabWidget.setCurrentIndex(self.currentTabWidget().count() - 1)
+            tabWidget.setCurrentIndex(tabWidget.count() - 1)
         else:
             self.currentEditor(tabWidget).setCurrentModelIndex(index)
             tabWidget.setTabText(tabWidget.currentIndex(), title)
