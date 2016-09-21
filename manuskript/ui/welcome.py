@@ -34,7 +34,7 @@ class welcome(QWidget, Ui_welcome):
         self.btnOpen.clicked.connect(self.openFile)
         self.btnCreate.clicked.connect(self.createFile)
         self.chkLoadLastProject.toggled.connect(self.setAutoLoad)
-        self.tree.itemActivated.connect(self.changeTemplate)
+        self.tree.itemClicked.connect(self.changeTemplate)
         self.btnAddLevel.clicked.connect(self.templateAddLevel)
         self.btnAddWC.clicked.connect(self.templateAddWordCount)
         self.btnCreateText = self.btnCreate.text()
