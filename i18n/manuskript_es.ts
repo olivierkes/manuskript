@@ -1,33 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="2.0" language="es_ES" sourcelanguage="">
+<!DOCTYPE TS>
+<TS version="2.1" language="es_ES">
 <context>
     <name>Export</name>
     <message>
         <location filename="../manuskript/exporter/manuskript/__init__.py" line="14"/>
         <source>Default exporter, provides basic formats used by other exporters.</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportador por defecto que proporciona los formatos básicos que utilizan otros exportadores.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="17"/>
         <source>Basic HTML output using python module &apos;markdown&apos;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Salida básica en HTML utilizando el módulo de python &apos;markdown&apos;.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="18"/>
         <source>python module &apos;markdown&apos;.</source>
-        <translation type="unfinished"></translation>
+        <translation>módulo de python &apos;markdown&apos;.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/mmd.py" line="11"/>
         <source>&lt;p&gt;A superset of markdown.&lt;/p&gt;
     &lt;p&gt;Website: &lt;a href=&quot;http://fletcherpenney.net/multimarkdown/&quot;&gt;http://fletcherpenney.net/multimarkdown/&lt;/a&gt;&lt;/p&gt;
     </source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;Un superconjunto de markdown.&lt;/p&gt;
+    &lt;p&gt;Sede en: &lt;a href=&quot;http://fletcherpenney.net/multimarkdown/&quot;&gt;http://fletcherpenney.net/multimarkdown/&lt;/a&gt;&lt;/p&gt;
+    </translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc.py" line="9"/>
         <source>A little known format modestly used. You know, web sites for example.</source>
-        <translation type="unfinished"></translation>
+        <translation>Un formato poco conocido utilizado modestamente. Ya sabes, páginas web, por ejemplo.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc.py" line="20"/>
@@ -35,39 +38,43 @@
     formats.&lt;/p&gt;
     &lt;p&gt;Website: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
     </source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;Convertidor de documentos universal. Puede utilizarse para convertir markdown a un amplio conjunto de formatos.&lt;/p&gt;
+&lt;p&gt;Sede: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
+</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="50"/>
         <source>HTML</source>
-        <translation type="unfinished">HTML</translation>
+        <translation>HTML</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="51"/>
         <source>Source</source>
-        <translation type="unfinished"></translation>
+        <translation>Fuente</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/markdown.py" line="14"/>
         <source>Just like plain text, excepts adds markdown titles.
                           Presupposes that texts are formatted in markdown.</source>
-        <translation type="unfinished"></translation>
+        <translation>Es como el texto plano, excepto que añade títulos en markdown.
+ Presupone que el texto está formateado en markdown.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/markdown.py" line="76"/>
         <source>Preview with highlighter.</source>
-        <translation type="unfinished"></translation>
+        <translation>Previsualización con Markdown Highlighter.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="14"/>
         <source>Plain text</source>
-        <translation type="unfinished"></translation>
+        <translation>Texto plano</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="15"/>
         <source>Simplest export to plain text. Allows you to use your own markup not understood
                   by manuskript, for example &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation>La exportación más simple a texto plano. Te permite utilizar tu propio formato de marcado no conocido
+                   por manuskript, por ejemplo &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</translation>
     </message>
 </context>
 <context>
@@ -75,47 +82,47 @@
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="14"/>
         <source>Manage Exporters</source>
-        <translation type="unfinished"></translation>
+        <translation>Configura módulos de exportación</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="21"/>
         <source>Manuskript</source>
-        <translation type="unfinished"></translation>
+        <translation>Manuskript</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="75"/>
         <source>Description</source>
-        <translation type="unfinished">Descripción</translation>
+        <translation>Descripción</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="109"/>
         <source>Offers export to</source>
-        <translation type="unfinished"></translation>
+        <translation>Ofrece exportar a</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="186"/>
         <source>Status</source>
-        <translation type="unfinished">Estado</translation>
+        <translation>Estado</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="192"/>
         <source>Status:</source>
-        <translation type="unfinished">Estado:</translation>
+        <translation>Estado:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="212"/>
         <source>Version:</source>
-        <translation type="unfinished"></translation>
+        <translation>Versión:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="235"/>
         <source>Path:</source>
-        <translation type="unfinished">Ruta:</translation>
+        <translation>Ruta:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="260"/>
         <source>...</source>
-        <translation type="unfinished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="275"/>
@@ -296,7 +303,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="676"/>
         <source>What if...?</source>
-        <translation>Y si...?</translation>
+        <translation>Qué pasaría si...?</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="688"/>
@@ -411,18 +418,18 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1581"/>
         <source>Source of passion</source>
-        <translation>Fuente de la pasión</translation>
+        <translation>Causa de pasión</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1591"/>
         <source>Source of conflict</source>
-        <translation>Fuente del conflicto</translation>
+        <translation>Causa de conflicto</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="972"/>
         <source>Outline</source>
-        <translatorcomment>Need to search a good word for this one</translatorcomment>
-        <translation></translation>
+        <translatorcomment>Best match for this element.</translatorcomment>
+        <translation>Esquema</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1757"/>
@@ -442,7 +449,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1896"/>
         <source>Persos</source>
-        <translation></translation>
+        <translation>Personajes</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1953"/>
@@ -482,7 +489,8 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2054"/>
         <source>&amp;Cheat sheet</source>
-        <translation>&amp;Chuleta</translation>
+        <translatorcomment>Chuleta has negative meaning as a something you wear hidden to an exam. Guía rápida is the translation microsoft and other companies use in it&apos;s manuals.</translatorcomment>
+        <translation>&amp;Guía rápida</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2088"/>
@@ -1841,7 +1849,8 @@
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.ui" line="177"/>
         <source>Notes / References</source>
-        <translation>Noras / Referencias</translation>
+        <translatorcomment>Errata fixed</translatorcomment>
+        <translation>Notas / Referencias</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.ui" line="187"/>
