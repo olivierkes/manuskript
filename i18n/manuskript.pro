@@ -70,7 +70,6 @@ SOURCES          += ../manuskript/ui/exporters/manuskript/plainTextSettings.py
 
 SOURCES          += ../manuskript/exporter/basic.py
 SOURCES          += ../manuskript/exporter/mmd.py
-SOURCES          += ../manuskript/exporter/pandoc.py
 SOURCES          += ../manuskript/exporter/manuskript/__init__.py
 SOURCES          += ../manuskript/exporter/manuskript/HTML.py
 SOURCES          += ../manuskript/exporter/manuskript/markdown.py
