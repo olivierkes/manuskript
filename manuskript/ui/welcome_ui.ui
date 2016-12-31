@@ -61,7 +61,7 @@
             </font>
            </property>
            <property name="textAlignment">
-            <set>AlignHCenter|AlignVCenter|AlignCenter</set>
+            <set>AlignCenter</set>
            </property>
            <property name="background">
             <brush brushstyle="SolidPattern">
@@ -118,7 +118,7 @@
             </font>
            </property>
            <property name="textAlignment">
-            <set>AlignHCenter|AlignVCenter|AlignCenter</set>
+            <set>AlignCenter</set>
            </property>
            <property name="background">
             <brush brushstyle="SolidPattern">
@@ -242,6 +242,9 @@
         </item>
         <item>
          <widget class="QPushButton" name="btnCreate">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="text">
            <string>Create</string>
           </property>
