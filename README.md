@@ -32,4 +32,4 @@ Optional:
 ```sudo pacman -S --needed python python-pyqt5 qt5-svg python-lxml python-pyenchant zlib```
 
 - Debian based (Ubuntu, Linux Mint, etc.):
-```sudo apt-get install python3-pyqt5 libqt5svg5 python3-lxml python3-enchant zlibg1```
+```sudo apt-get install python3-pyqt5 libqt5svg5 python3-lxml python3-enchant zlib1g```
