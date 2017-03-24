@@ -34,4 +34,4 @@ Optional:
 
 - Debian based (Ubuntu, Linux Mint, etc.):
 ```sudo apt-get install python3-pyqt5 libqt5svg5 python3-lxml python3-enchant zlib1g```  
-  An additional package might be needed: ``sudo apt-get install python3-pyqt5.qtwebkit``
+  Additional packages that might be needed: ``python3-pyqt5.qtwebkit pyqt5-dev-tools``
