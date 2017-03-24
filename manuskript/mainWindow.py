@@ -518,7 +518,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.lstPlots.currentItemChanged.connect(self.changeCurrentPlot, AUC)
         self.txtSubPlotSummary.document().contentsChanged.connect(
                 self.updateSubPlotSummary, AUC)
-        self.lstSubPlots.activated.connect(self.changeCurrentSubPlot, AUC)
+        self.lstSubPlots.clicked.connect(self.changeCurrentSubPlot, AUC)
 
         self.btnRedacAddFolder.clicked.connect(self.treeRedacOutline.addFolder, AUC)
         self.btnOutlineAddFolder.clicked.connect(self.treeOutlineOutline.addFolder, AUC)
@@ -602,6 +602,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btnRmPlot.clicked.connect(lambda:
                                        self.mdlPlots.removePlot(self.lstPlots.currentPlotIndex()), AUC)
         self.btnAddSubPlot.clicked.connect(self.mdlPlots.addSubPlot, AUC)
+        self.btnAddSubPlot.clicked.connect(self.updateSubPlotView, AUC)
         self.btnRmSubPlot.clicked.connect(self.mdlPlots.removeSubPlot, AUC)
         self.lstPlotPerso.selectionModel().selectionChanged.connect(self.plotPersoSelectionChanged)
         self.btnRmPlotPerso.clicked.connect(self.mdlPlots.removePlotPerso, AUC)
