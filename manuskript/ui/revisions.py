@@ -23,7 +23,7 @@ class revisions(QWidget, Ui_revisions):
 
         self.listDelegate = listCompleterDelegate(self)
         self.list.setItemDelegate(self.listDelegate)
-        self.list.itemActivated.connect(self.showDiff)
+        self.list.itemClicked.connect(self.showDiff)
         self.list.setContextMenuPolicy(Qt.CustomContextMenu)
         self.list.customContextMenuRequested.connect(self.popupMenu)
         self.btnDelete.setEnabled(False)

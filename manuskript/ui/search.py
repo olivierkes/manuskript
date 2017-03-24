@@ -33,7 +33,7 @@ class search(QWidget, Ui_search):
 
         self.delegate = listResultDelegate(self)
         self.result.setItemDelegate(self.delegate)
-        self.result.itemActivated.connect(self.openItem)
+        self.result.itemClicked.connect(self.openItem)
 
         self.result.setStyleSheet(style.searchResultSS())
         self.text.setStyleSheet(style.lineEditSS())
