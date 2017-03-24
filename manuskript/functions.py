@@ -17,7 +17,9 @@ MW = None
 
 
 def wordCount(text):
-    return len(text.strip().replace(" ", "\n").split("\n")) if text else 0
+    t = text.strip().replace(" ", "\n").split("\n")
+    t = [l for l in t if l]
+    return len(t)
 
 
 def toInt(text):
