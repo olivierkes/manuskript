@@ -17,7 +17,7 @@ class mmdExporter(basicExporter):
         basicFormat("Flat XML", "", "text-xml"),
         basicFormat("ePub", "Books that don't kill trees.", icon="application-epub+zip"),
     ]
-    cmd = "mmd"
+    cmd = "multimarkdown"
 
     def version(self):
         if self.isValid():
