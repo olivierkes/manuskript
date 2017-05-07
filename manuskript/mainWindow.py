@@ -285,8 +285,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.txtWorldName.setCurrentModelIndex(index)
         self.txtWorldDescription.setCurrentModelIndex(index)
         self.txtWorldPassion.setCurrentModelIndex(index)
-    #     self.txtWorldConflict.setCurrentModelIndex(index)
-    #
+        self.txtWorldConflict.setCurrentModelIndex(index)
+
     # ###############################################################################
     # # LOAD AND SAVE
     # ###############################################################################
