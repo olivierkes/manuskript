@@ -1,11 +1,12 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QUrl
 from PyQt5.QtWebKitWidgets import QWebView
 from PyQt5.QtWidgets import QPlainTextEdit, qApp, QTabWidget, QFrame
 
 from manuskript.exporter.manuskript.markdown import markdown, markdownSettings
 from manuskript.ui.exporters.manuskript.plainTextSettings import exporterSettings
+import os
 
 try:
     import markdown as MD
@@ -69,13 +70,14 @@ class HTML(markdown):
 
         md = markdown.output(self, settingsWidget)
         html = MD.markdown(md)
+        path = os.path.join(self.projectPath(), "dummy.html")
 
         self.preparesTextEditView(previewWidget.widget(0), settings["Preview"]["PreviewFont"])
         self.preparesTextEditViewMarkdown(previewWidget.widget(0), settings)
         previewWidget.widget(0).setPlainText(md)
         self.preparesTextEditView(previewWidget.widget(1), settings["Preview"]["PreviewFont"])
         previewWidget.widget(1).setPlainText(html)
-        previewWidget.widget(2).setHtml(html)
+        previewWidget.widget(2).setHtml(html, QUrl.fromLocalFile(path))
 
 
 

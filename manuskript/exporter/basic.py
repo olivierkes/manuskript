@@ -8,6 +8,7 @@ from PyQt5.QtCore import QSettings
 from PyQt5.QtWidgets import QWidget
 
 from manuskript.models.outlineModel import outlineItem
+from manuskript.functions import mainWindow
 
 
 class basicExporter:
@@ -128,4 +129,8 @@ class basicFormat:
     @classmethod
     def isValid(cls):
         return True
+    
+    @classmethod
+    def projectPath(cls):
+        return os.path.dirname(os.path.abspath(mainWindow().currentProject))
 
