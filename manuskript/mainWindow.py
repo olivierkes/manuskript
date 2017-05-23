@@ -363,7 +363,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         for i in [self.actSave, self.actSaveAs, self.actCloseProject,
                   self.menuEdit, self.menuView, self.menuTools, self.menuHelp]:
             i.setEnabled(True)
-        # FIXME: set Window's name: project name
+
+        # Add project name to Window's name
+        pName = os.path.split(project)[1]
+        if pName.endswith('.msk'):
+            pName=pName[:-4]
+        self.setWindowTitle(pName + " - " + self.tr("Manuskript"))
 
         # Stuff
         # self.checkPersosID()  # Should'n be necessary any longer
@@ -397,6 +402,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         for i in [self.actSave, self.actSaveAs, self.actCloseProject,
                   self.menuEdit, self.menuView, self.menuTools, self.menuHelp]:
             i.setEnabled(False)
+
+        # Set Window's name - no project loaded
+        self.setWindowTitle(self.tr("Manuskript"))
 
         # Reload recent files
         self.welcome.updateValues()
