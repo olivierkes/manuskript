@@ -30,6 +30,7 @@ class cheatSheet(QWidget, Ui_cheatSheet):
         self.listDelegate = listCompleterDelegate(self)
         self.list.setItemDelegate(self.listDelegate)
         self.list.itemActivated.connect(self.showInfos)
+        self.list.itemClicked.connect(self.showInfos)
         self.hideList()
         self.list.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.view.linkActivated.connect(self.openLink)
