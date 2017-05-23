@@ -360,6 +360,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.saveTimerNoChanges.stop()
 
         # UI
+        for i in [self.actOpen, self.menuRecents]:
+            i.setEnabled(False)
         for i in [self.actSave, self.actSaveAs, self.actCloseProject,
                   self.menuEdit, self.menuView, self.menuTools, self.menuHelp]:
             i.setEnabled(True)
@@ -398,7 +400,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.saveTimer.stop()
         loadSave.clearSaveCache()
 
+        self.breakConnections()
+
         # UI
+        for i in [self.actOpen, self.menuRecents]:
+            i.setEnabled(True)
         for i in [self.actSave, self.actSaveAs, self.actCloseProject,
                   self.menuEdit, self.menuView, self.menuTools, self.menuHelp]:
             i.setEnabled(False)
@@ -706,6 +712,76 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.treeDebugOutline.setModel(self.mdlOutline)
         self.lstDebugLabels.setModel(self.mdlLabels)
         self.lstDebugStatus.setModel(self.mdlStatus)
+
+    def disconnectAll(self, signal, oldHandler=None):
+        # Disconnect all "oldHandler" slot connections for a signal
+        #
+        # Ref: PyQt Widget connect() and disconnect()
+        #      https://stackoverflow.com/questions/21586643/pyqt-widget-connect-and-disconnect
+        #
+        # The loop is needed for safely disconnecting a specific handler,
+        # because it may have been connected multiple times, and
+        # disconnect only removes one connection at a time.
+        while True:
+            try:
+                if oldHandler is not None:
+                    signal.disconnect(oldHandler)
+                else:
+                    signal.disconnect()
+            except TypeError:
+                break
+
+    def breakConnections(self):
+        # Break connections for UI elements that were connected in makeConnections()
+
+        # Characters
+        self.disconnectAll(self.btnAddPerso.clicked, self.mdlCharacter.addCharacter)
+        self.disconnectAll(self.btnRmPerso.clicked, self.lstCharacters.removeCharacter)
+        self.disconnectAll(self.btnPersoColor.clicked, self.lstCharacters.choseCharacterColor)
+        self.disconnectAll(self.btnPersoAddInfo.clicked, self.lstCharacters.addCharacterInfo)
+        self.disconnectAll(self.btnPersoRmInfo.clicked, self.lstCharacters.removeCharacterInfo)
+
+        # Plots
+        self._updatingSubPlot = False
+        self.disconnectAll(self.btnAddPlot.clicked, self.mdlPlots.addPlot)
+        self.disconnectAll(self.btnRmPlot.clicked, lambda:
+                                                   self.mdlPlots.removePlot(self.lstPlots.currentPlotIndex()))
+        self.disconnectAll(self.btnAddSubPlot.clicked, self.mdlPlots.addSubPlot)
+        self.disconnectAll(self.btnAddSubPlot.clicked, self.updateSubPlotView)
+        self.disconnectAll(self.btnRmSubPlot.clicked, self.mdlPlots.removeSubPlot)
+        self.disconnectAll(self.lstPlotPerso.selectionModel().selectionChanged, self.plotPersoSelectionChanged)
+        self.disconnectAll(self.btnRmPlotPerso.clicked, self.mdlPlots.removePlotPerso)
+
+        self.disconnectAll(self.mdlCharacter.dataChanged, self.mdlPlots.updatePlotPersoButton)
+
+        # World
+        self.disconnectAll(self.treeWorld.selectionModel().selectionChanged, self.changeCurrentWorld)
+        self.disconnectAll(self.btnAddWorld.clicked, self.mdlWorld.addItem)
+        self.disconnectAll(self.btnRmWorld.clicked, self.mdlWorld.removeItem)
+
+        # Outline
+        self.disconnectAll(self.treeOutlineOutline.selectionModel().selectionChanged, self.outlineItemEditor.selectionChanged)
+        self.disconnectAll(self.treeOutlineOutline.clicked, self.outlineItemEditor.selectionChanged)
+
+        # Sync selection
+        self.disconnectAll(self.treeRedacOutline.selectionModel().selectionChanged, self.redacMetadata.selectionChanged)
+        self.disconnectAll(self.treeRedacOutline.clicked, self.redacMetadata.selectionChanged)
+
+        self.disconnectAll(self.treeRedacOutline.selectionModel().selectionChanged, self.mainEditor.selectionChanged)
+
+        # Debug
+        self.disconnectAll(self.tblDebugPersos.selectionModel().currentChanged,
+                lambda: self.tblDebugPersosInfos.setRootIndex(self.mdlCharacter.index(
+                        self.tblDebugPersos.selectionModel().currentIndex().row(),
+                        Character.name.value)))
+        self.disconnectAll(self.tblDebugPlots.selectionModel().currentChanged,
+                lambda: self.tblDebugPlotsPersos.setRootIndex(self.mdlPlots.index(
+                        self.tblDebugPlots.selectionModel().currentIndex().row(),
+                        Plot.characters.value)))
+        self.disconnectAll(self.tblDebugPlots.selectionModel().currentChanged,
+                lambda: self.tblDebugSubPlots.setRootIndex(self.mdlPlots.index(
+                        self.tblDebugPlots.selectionModel().currentIndex().row(),
+                        Plot.steps.value)))
 
     ###############################################################################
     # GENERAL AKA UNSORTED
