@@ -70,13 +70,17 @@ SOURCES          += ../manuskript/ui/exporters/manuskript/plainTextSettings.py
 
 SOURCES          += ../manuskript/exporter/basic.py
 SOURCES          += ../manuskript/exporter/mmd.py
-SOURCES          += ../manuskript/exporter/pandoc.py
 SOURCES          += ../manuskript/exporter/manuskript/__init__.py
 SOURCES          += ../manuskript/exporter/manuskript/HTML.py
 SOURCES          += ../manuskript/exporter/manuskript/markdown.py
 SOURCES          += ../manuskript/exporter/manuskript/plainText.py
 
-
+SOURCES          +=../manuskript/exporter/pandoc/HTML.py
+SOURCES          +=../manuskript/exporter/pandoc/__init__.py
+SOURCES          +=../manuskript/exporter/pandoc/outputFormats.py
+SOURCES          +=../manuskript/exporter/pandoc/PDF.py
+SOURCES          +=../manuskript/exporter/pandoc/plainText.py
+SOURCES          +=../manuskript/exporter/pandoc/abstractPlainText.py
 
 TRANSLATIONS     += manuskript_fr.ts
 TRANSLATIONS     += manuskript_es.ts
