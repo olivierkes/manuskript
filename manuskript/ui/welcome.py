@@ -196,6 +196,7 @@ class welcome(QWidget, Ui_welcome):
 
     def changeTemplate(self, item, column):
         template = [i for i in self.templates() if i[0] == item.text(0)]
+        self.btnCreate.setEnabled(True)
         self.btnCreate.setText(self.btnCreateText)
 
         # Selected item is a template

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/welcome_ui.ui'
 #
-# Created by: PyQt5 UI code generator 5.4.2
+# Created by: PyQt5 UI code generator 5.7
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -100,6 +100,7 @@ class Ui_welcome(object):
         self.btnRecent.setObjectName("btnRecent")
         self.horizontalLayout_20.addWidget(self.btnRecent)
         self.btnCreate = QtWidgets.QPushButton(self.frame_2)
+        self.btnCreate.setEnabled(False)
         self.btnCreate.setObjectName("btnCreate")
         self.horizontalLayout_20.addWidget(self.btnCreate)
         self.verticalLayout_32.addLayout(self.horizontalLayout_20)
