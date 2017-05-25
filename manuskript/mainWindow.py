@@ -4,7 +4,7 @@ import imp
 import os
 
 from PyQt5.QtCore import pyqtSignal, QSignalMapper, QTimer, QSettings, Qt, QRegExp, QUrl, QSize
-from PyQt5.QtGui import QStandardItemModel, QIcon
+from PyQt5.QtGui import QStandardItemModel, QIcon, QColor
 from PyQt5.QtWidgets import QMainWindow, QHeaderView, qApp, QMenu, QActionGroup, QAction, QStyle, QListWidgetItem, \
     QLabel
 
@@ -17,8 +17,9 @@ from manuskript.models.outlineModel import outlineModel
 from manuskript.models.plotModel import plotModel
 from manuskript.models.worldModel import worldModel
 from manuskript.settingsWindow import settingsWindow
+from manuskript.ui import style
 from manuskript.ui.collapsibleDockWidgets import collapsibleDockWidgets
-from manuskript.ui.compileDialog import compileDialog
+from manuskript.ui.exporters.exporter import exporterDialog
 from manuskript.ui.helpLabel import helpLabel
 from manuskript.ui.mainWindow import Ui_MainWindow
 from manuskript.ui.tools.frequencyAnalyzer import frequencyAnalyzer
@@ -284,8 +285,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.txtWorldName.setCurrentModelIndex(index)
         self.txtWorldDescription.setCurrentModelIndex(index)
         self.txtWorldPassion.setCurrentModelIndex(index)
-    #     self.txtWorldConflict.setCurrentModelIndex(index)
-    #
+        self.txtWorldConflict.setCurrentModelIndex(index)
+
     # ###############################################################################
     # # LOAD AND SAVE
     # ###############################################################################
@@ -313,9 +314,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.makeConnections()
 
         # Load settings
-        for i in settings.openIndexes:
-            idx = self.mdlOutline.getIndexByID(i)
-            self.mainEditor.setCurrentModelIndex(idx, newTab=True)
+        if settings.openIndexes:
+            self.mainEditor.tabSplitter.restoreOpenIndexes(settings.openIndexes)
         self.generateViewMenu()
         self.mainEditor.sldCorkSizeFactor.setValue(settings.corkSizeFactor)
         self.actSpellcheck.setChecked(settings.spellcheck)
@@ -325,6 +325,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.mainEditor.setFolderView(settings.folderView)
         self.mainEditor.updateFolderViewButtons(settings.folderView)
+        self.mainEditor.tabSplitter.updateStyleSheet()
         self.tabMain.setCurrentIndex(settings.lastTab)
         # We force to emit even if it opens on the current tab
         self.tabMain.currentChanged.emit(settings.lastTab)
@@ -359,10 +360,17 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.saveTimerNoChanges.stop()
 
         # UI
+        for i in [self.actOpen, self.menuRecents]:
+            i.setEnabled(False)
         for i in [self.actSave, self.actSaveAs, self.actCloseProject,
                   self.menuEdit, self.menuView, self.menuTools, self.menuHelp]:
             i.setEnabled(True)
-        # FIXME: set Window's name: project name
+
+        # Add project name to Window's name
+        pName = os.path.split(project)[1]
+        if pName.endswith('.msk'):
+            pName=pName[:-4]
+        self.setWindowTitle(pName + " - " + self.tr("Manuskript"))
 
         # Stuff
         # self.checkPersosID()  # Should'n be necessary any longer
@@ -392,10 +400,17 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.saveTimer.stop()
         loadSave.clearSaveCache()
 
+        self.breakConnections()
+
         # UI
+        for i in [self.actOpen, self.menuRecents]:
+            i.setEnabled(True)
         for i in [self.actSave, self.actSaveAs, self.actCloseProject,
                   self.menuEdit, self.menuView, self.menuTools, self.menuHelp]:
             i.setEnabled(False)
+
+        # Set Window's name - no project loaded
+        self.setWindowTitle(self.tr("Manuskript"))
 
         # Reload recent files
         self.welcome.updateValues()
@@ -446,10 +461,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         if self.currentProject:
             # Remembering the current items (stores outlineItem's ID)
-            sel = []
-            for i in range(self.mainEditor.tab.count()):
-                sel.append(self.mdlOutline.ID(self.mainEditor.tab.widget(i).currentIndex))
-            settings.openIndexes = sel
+            settings.openIndexes = self.mainEditor.tabSplitter.openIndexes()
 
         # Save data from models
         if self.currentProject and settings.saveOnQuit:
@@ -520,7 +532,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.lstPlots.currentItemChanged.connect(self.changeCurrentPlot, AUC)
         self.txtSubPlotSummary.document().contentsChanged.connect(
                 self.updateSubPlotSummary, AUC)
-        self.lstSubPlots.activated.connect(self.changeCurrentSubPlot, AUC)
+        self.lstSubPlots.clicked.connect(self.changeCurrentSubPlot, AUC)
 
         self.btnRedacAddFolder.clicked.connect(self.treeRedacOutline.addFolder, AUC)
         self.btnOutlineAddFolder.clicked.connect(self.treeOutlineOutline.addFolder, AUC)
@@ -604,6 +616,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btnRmPlot.clicked.connect(lambda:
                                        self.mdlPlots.removePlot(self.lstPlots.currentPlotIndex()), AUC)
         self.btnAddSubPlot.clicked.connect(self.mdlPlots.addSubPlot, AUC)
+        self.btnAddSubPlot.clicked.connect(self.updateSubPlotView, AUC)
         self.btnRmSubPlot.clicked.connect(self.mdlPlots.removeSubPlot, AUC)
         self.lstPlotPerso.selectionModel().selectionChanged.connect(self.plotPersoSelectionChanged)
         self.btnRmPlotPerso.clicked.connect(self.mdlPlots.removePlotPerso, AUC)
@@ -662,17 +675,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # self.redacEditor.setModel(self.mdlOutline)
         self.storylineView.setModels(self.mdlOutline, self.mdlCharacter, self.mdlPlots)
 
-        self.treeOutlineOutline.selectionModel().selectionChanged.connect(lambda:
-                                                                          self.outlineItemEditor.selectionChanged(
-                                                                                  self.treeOutlineOutline), AUC)
-        self.treeOutlineOutline.clicked.connect(lambda:
-                                                self.outlineItemEditor.selectionChanged(self.treeOutlineOutline), AUC)
+        self.treeOutlineOutline.selectionModel().selectionChanged.connect(self.outlineItemEditor.selectionChanged, AUC)
+        self.treeOutlineOutline.clicked.connect(self.outlineItemEditor.selectionChanged, AUC)
 
         # Sync selection
-        self.treeRedacOutline.selectionModel().selectionChanged.connect(
-                lambda: self.redacMetadata.selectionChanged(self.treeRedacOutline), AUC)
-        self.treeRedacOutline.clicked.connect(
-                lambda: self.redacMetadata.selectionChanged(self.treeRedacOutline), AUC)
+        self.treeRedacOutline.selectionModel().selectionChanged.connect(self.redacMetadata.selectionChanged, AUC)
+        self.treeRedacOutline.clicked.connect(self.redacMetadata.selectionChanged, AUC)
 
         self.treeRedacOutline.selectionModel().selectionChanged.connect(self.mainEditor.selectionChanged, AUC)
 
@@ -704,6 +712,76 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.treeDebugOutline.setModel(self.mdlOutline)
         self.lstDebugLabels.setModel(self.mdlLabels)
         self.lstDebugStatus.setModel(self.mdlStatus)
+
+    def disconnectAll(self, signal, oldHandler=None):
+        # Disconnect all "oldHandler" slot connections for a signal
+        #
+        # Ref: PyQt Widget connect() and disconnect()
+        #      https://stackoverflow.com/questions/21586643/pyqt-widget-connect-and-disconnect
+        #
+        # The loop is needed for safely disconnecting a specific handler,
+        # because it may have been connected multiple times, and
+        # disconnect only removes one connection at a time.
+        while True:
+            try:
+                if oldHandler is not None:
+                    signal.disconnect(oldHandler)
+                else:
+                    signal.disconnect()
+            except TypeError:
+                break
+
+    def breakConnections(self):
+        # Break connections for UI elements that were connected in makeConnections()
+
+        # Characters
+        self.disconnectAll(self.btnAddPerso.clicked, self.mdlCharacter.addCharacter)
+        self.disconnectAll(self.btnRmPerso.clicked, self.lstCharacters.removeCharacter)
+        self.disconnectAll(self.btnPersoColor.clicked, self.lstCharacters.choseCharacterColor)
+        self.disconnectAll(self.btnPersoAddInfo.clicked, self.lstCharacters.addCharacterInfo)
+        self.disconnectAll(self.btnPersoRmInfo.clicked, self.lstCharacters.removeCharacterInfo)
+
+        # Plots
+        self._updatingSubPlot = False
+        self.disconnectAll(self.btnAddPlot.clicked, self.mdlPlots.addPlot)
+        self.disconnectAll(self.btnRmPlot.clicked, lambda:
+                                                   self.mdlPlots.removePlot(self.lstPlots.currentPlotIndex()))
+        self.disconnectAll(self.btnAddSubPlot.clicked, self.mdlPlots.addSubPlot)
+        self.disconnectAll(self.btnAddSubPlot.clicked, self.updateSubPlotView)
+        self.disconnectAll(self.btnRmSubPlot.clicked, self.mdlPlots.removeSubPlot)
+        self.disconnectAll(self.lstPlotPerso.selectionModel().selectionChanged, self.plotPersoSelectionChanged)
+        self.disconnectAll(self.btnRmPlotPerso.clicked, self.mdlPlots.removePlotPerso)
+
+        self.disconnectAll(self.mdlCharacter.dataChanged, self.mdlPlots.updatePlotPersoButton)
+
+        # World
+        self.disconnectAll(self.treeWorld.selectionModel().selectionChanged, self.changeCurrentWorld)
+        self.disconnectAll(self.btnAddWorld.clicked, self.mdlWorld.addItem)
+        self.disconnectAll(self.btnRmWorld.clicked, self.mdlWorld.removeItem)
+
+        # Outline
+        self.disconnectAll(self.treeOutlineOutline.selectionModel().selectionChanged, self.outlineItemEditor.selectionChanged)
+        self.disconnectAll(self.treeOutlineOutline.clicked, self.outlineItemEditor.selectionChanged)
+
+        # Sync selection
+        self.disconnectAll(self.treeRedacOutline.selectionModel().selectionChanged, self.redacMetadata.selectionChanged)
+        self.disconnectAll(self.treeRedacOutline.clicked, self.redacMetadata.selectionChanged)
+
+        self.disconnectAll(self.treeRedacOutline.selectionModel().selectionChanged, self.mainEditor.selectionChanged)
+
+        # Debug
+        self.disconnectAll(self.tblDebugPersos.selectionModel().currentChanged,
+                lambda: self.tblDebugPersosInfos.setRootIndex(self.mdlCharacter.index(
+                        self.tblDebugPersos.selectionModel().currentIndex().row(),
+                        Character.name.value)))
+        self.disconnectAll(self.tblDebugPlots.selectionModel().currentChanged,
+                lambda: self.tblDebugPlotsPersos.setRootIndex(self.mdlPlots.index(
+                        self.tblDebugPlots.selectionModel().currentIndex().row(),
+                        Plot.characters.value)))
+        self.disconnectAll(self.tblDebugPlots.selectionModel().currentChanged,
+                lambda: self.tblDebugSubPlots.setRootIndex(self.mdlPlots.index(
+                        self.tblDebugPlots.selectionModel().currentIndex().row(),
+                        Plot.steps.value)))
 
     ###############################################################################
     # GENERAL AKA UNSORTED
@@ -755,6 +833,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         lbl.setText(self.tr("Words: {}{}").format(wc, pages))
 
     def setupMoreUi(self):
+
+        style.styleMainWindow(self)
 
         # Tool bar on the right
         self.toolbar = collapsibleDockWidgets(Qt.RightDockWidgetArea, self)
@@ -1077,5 +1157,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     ###############################################################################
 
     def doCompile(self):
-        self.compileDialog = compileDialog()
-        self.compileDialog.show()
+        self.dialog = exporterDialog(mw=self)
+        self.dialog.show()
+
+        r = self.dialog.geometry()
+        r2 = self.geometry()
+        self.dialog.move(r2.center() - r.center())
+

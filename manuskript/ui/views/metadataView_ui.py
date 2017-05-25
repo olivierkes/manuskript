@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/views/metadataView_ui.ui'
 #
-# Created: Wed Mar  2 00:30:18 2016
+# Created: Fri Apr  8 14:24:47 2016
 #      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -70,6 +70,7 @@ class Ui_metadataView(object):
         self.horizontalLayout_29.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_29.setObjectName("horizontalLayout_29")
         self.txtNotes = textEditCompleter(self.grpNotes)
+        self.txtNotes.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.txtNotes.setObjectName("txtNotes")
         self.horizontalLayout_29.addWidget(self.txtNotes)
         self.verticalLayout.addWidget(self.grpNotes)
@@ -101,9 +102,9 @@ class Ui_metadataView(object):
         self.txtNotes.setPlaceholderText(_translate("metadataView", "Notes / References"))
         self.grpRevisions.setTitle(_translate("metadataView", "Revisions"))
 
-from manuskript.ui.views.lineEditView import lineEditView
-from manuskript.ui.views.propertiesView import propertiesView
-from manuskript.ui.views.textEditCompleter import textEditCompleter
-from manuskript.ui.views.textEditView import textEditView
 from manuskript.ui.collapsibleGroupBox2 import collapsibleGroupBox2
+from manuskript.ui.views.textEditView import textEditView
+from manuskript.ui.views.textEditCompleter import textEditCompleter
+from manuskript.ui.views.propertiesView import propertiesView
+from manuskript.ui.views.lineEditView import lineEditView
 from manuskript.ui.revisions import revisions

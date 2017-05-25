@@ -6,6 +6,7 @@ from PyQt5.QtWidgets import QWidget, QMenu, QAction, qApp, QListWidgetItem, QSty
 
 from manuskript.enums import Outline
 from manuskript.functions import mainWindow
+from manuskript.ui import style
 from manuskript.ui.search_ui import Ui_search
 from manuskript.models import references as Ref
 
@@ -32,7 +33,10 @@ class search(QWidget, Ui_search):
 
         self.delegate = listResultDelegate(self)
         self.result.setItemDelegate(self.delegate)
-        self.result.itemActivated.connect(self.openItem)
+        self.result.itemClicked.connect(self.openItem)
+
+        self.result.setStyleSheet(style.searchResultSS())
+        self.text.setStyleSheet(style.lineEditSS())
 
     def generateOptionMenu(self):
         self.menu = QMenu(self)

@@ -1,32 +1,19 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-import collections
 
-from PyQt5.QtWidgets import qApp
+from manuskript.exporter.manuskript import manuskriptExporter
+from manuskript.exporter.mmd import mmdExporter
+from manuskript.exporter.pandoc import pandocExporter
 
-from manuskript.exporter.arbo import arboExporter
-from manuskript.exporter.html import htmlExporter
-from manuskript.exporter.odt import odtExporter
+exporters = [
+    manuskriptExporter(),
+    pandocExporter(),
+    mmdExporter()
+]
 
-formats = collections.OrderedDict([
-    # Format
-    # Readable name
-    # Class
-    # QFileDialog filter
-    ('html', (
-        qApp.translate("exporter", "HTML"),
-        htmlExporter,
-        qApp.translate("exporter", "HTML Document (*.html)"))),
-    ('arbo', (
-        qApp.translate("exporter", "Arborescence"),
-        arboExporter,
-        None)),
-    ('odt', (
-        qApp.translate("exporter", "OpenDocument (LibreOffice)"),
-        odtExporter,
-        qApp.translate("exporter", "OpenDocument (*.odt)"))),
-    ('epub', (
-        "ePub (not yet)",
-        None,
-        None)),
-])
+def getExporterByName(name):
+    for e in exporters:
+        if e.name == name:
+            return e
+
+    return None

@@ -10,7 +10,7 @@ from PyQt5.QtWidgets import QApplication, qApp
 
 from manuskript.functions import appPath, writablePath
 
-_version = "0.3.0"
+_version = "0.4.0"
 
 faulthandler.enable()
 
@@ -21,9 +21,10 @@ def run():
     app.setOrganizationDomain("www.theologeek.ch")
     app.setApplicationName("manuskript")
     app.setApplicationVersion(_version)
-
+    
+    print("Running manuskript version {}.".format(_version))
     icon = QIcon()
-    for i in [16, 31, 64, 128, 256, 512]:
+    for i in [16, 32, 64, 128, 256, 512]:
         icon.addFile(appPath("icons/Manuskript/icon-{}px.png".format(i)))
     qApp.setWindowIcon(icon)
 

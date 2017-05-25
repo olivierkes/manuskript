@@ -36,6 +36,9 @@
      </property>
      <item>
       <widget class="QLineEdit" name="txtFilter">
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
        <property name="frame">
         <bool>false</bool>
        </property>
@@ -53,7 +56,9 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset theme="go-bottom"/>
+        <iconset theme="go-bottom">
+         <normaloff/>
+        </iconset>
        </property>
        <property name="checkable">
         <bool>true</bool>
@@ -110,7 +115,7 @@
          <x>0</x>
          <y>0</y>
          <width>400</width>
-         <height>70</height>
+         <height>68</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">

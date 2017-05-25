@@ -42,6 +42,7 @@ characterMap = OrderedDict([
     (Character.motivation, "Motivation"),
     (Character.goal, "Goal"),
     (Character.conflict, "Conflict"),
+    (Character.epiphany, "Epiphany"),
     (Character.summarySentence, "Phrase Summary"),
     (Character.summaryPara, "Paragraph Summary"),
     (Character.summaryFull, "Full Summary"),
@@ -654,6 +655,7 @@ def loadProject(project, zip=None):
 
     # Just to be sure
     settings.saveToZip = zip
+    settings.defaultTextType = "md"
 
     ####################################################################################################################
     # Labels

@@ -14,6 +14,9 @@
    <string>Form</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>0</number>
+   </property>
    <property name="leftMargin">
     <number>0</number>
    </property>
@@ -27,21 +30,12 @@
     <number>0</number>
    </property>
    <item>
-    <widget class="QTabWidget" name="tab">
-     <property name="currentIndex">
-      <number>-1</number>
-     </property>
-     <property name="documentMode">
-      <bool>true</bool>
-     </property>
-     <property name="tabsClosable">
-      <bool>true</bool>
-     </property>
-     <property name="movable">
-      <bool>true</bool>
-     </property>
-     <property name="tabBarAutoHide" stdset="0">
-      <bool>false</bool>
+    <widget class="tabSplitter" name="tabSplitter" native="true">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
      </property>
     </widget>
    </item>
@@ -53,6 +47,9 @@
         <string>Text</string>
        </property>
        <property name="checkable">
+        <bool>true</bool>
+       </property>
+       <property name="flat">
         <bool>true</bool>
        </property>
        <attribute name="buttonGroup">
@@ -71,6 +68,9 @@
        <property name="checked">
         <bool>true</bool>
        </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
        <attribute name="buttonGroup">
         <string notr="true">buttonGroup</string>
        </attribute>
@@ -82,6 +82,9 @@
         <string>Outline</string>
        </property>
        <property name="checkable">
+        <bool>true</bool>
+       </property>
+       <property name="flat">
         <bool>true</bool>
        </property>
        <attribute name="buttonGroup">
@@ -203,6 +206,9 @@
        <property name="shortcut">
         <string>F11</string>
        </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
       </widget>
      </item>
     </layout>
@@ -214,6 +220,12 @@
    <class>textFormat</class>
    <extends>QWidget</extends>
    <header>manuskript.ui.editors.textFormat.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>tabSplitter</class>
+   <extends>QWidget</extends>
+   <header>manuskript.ui.editors.tabSplitter.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

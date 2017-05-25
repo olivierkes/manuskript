@@ -1,13 +1,14 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QWidget, QFrame, QPushButton, QVBoxLayout, QSizePolicy
+from PyQt5.QtWidgets import QWidget, QFrame, QPushButton, QVBoxLayout, QSizePolicy, qApp
 
 from manuskript.functions import lightBlue
+from manuskript.ui import style
 
 
 class collapsibleGroupBox2(QWidget):
-    def __init__(self, parent=None):
+    def __init__(self, parent=None, title=None):
         QWidget.__init__(self, parent)
         self.frame = QFrame(self)
         self.button = QPushButton("Toggle", self)
@@ -16,16 +17,11 @@ class collapsibleGroupBox2(QWidget):
         self.switched = False
         self.vPolicy = None
         # self.button.setStyleSheet("background-color: lightBlue;")
-        self.button.setStyleSheet("""
-        QPushButton{
-            background-color: #BBB;
-            border: none;
-            padding: 2px;
-        }
-        QPushButton:checked, QPushButton:hover{
-            font-style:italic;
-            background-color:lightBlue;
-        }""")
+
+        self.button.setStyleSheet(style.collapsibleGroupBoxButton())
+
+        if title:
+            self.setTitle(title)
 
     def resizeEvent(self, event):
         if not self.switched:

@@ -34,7 +34,7 @@ class welcome(QWidget, Ui_welcome):
         self.btnOpen.clicked.connect(self.openFile)
         self.btnCreate.clicked.connect(self.createFile)
         self.chkLoadLastProject.toggled.connect(self.setAutoLoad)
-        self.tree.itemActivated.connect(self.changeTemplate)
+        self.tree.itemClicked.connect(self.changeTemplate)
         self.btnAddLevel.clicked.connect(self.templateAddLevel)
         self.btnAddWC.clicked.connect(self.templateAddWordCount)
         self.btnCreateText = self.btnCreate.text()
@@ -341,8 +341,10 @@ class welcome(QWidget, Ui_welcome):
 
         # Empty settings
         imp.reload(settings)
-        t = [i for i in self.templates() if i[0] == self.template[0]]
-        if t and t[0][2] == "Non-fiction": settings.viewMode = "simple"
+        if self.template:
+            t = [i for i in self.templates() if i[0] == self.template[0]]
+            if t and t[0][2] == "Non-fiction":
+                settings.viewMode = "simple"
 
         # Données
         self.mw.mdlFlatData = QStandardItemModel(2, 8, self.mw)
@@ -419,5 +421,5 @@ class welcome(QWidget, Ui_welcome):
                     # parent.appendChild(item)
                     addElement(item, datas[1:])
 
-        if self.template[1]:
+        if self.template and self.template[1]:
             addElement(root, self.template[1])

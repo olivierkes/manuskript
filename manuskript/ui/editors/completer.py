@@ -21,7 +21,7 @@ class completer(QWidget, Ui_completer):
         self.text.returnPressed.connect(self.submit)
         self.listDelegate = listCompleterDelegate(self)
         self.list.setItemDelegate(self.listDelegate)
-        self.list.itemActivated.connect(self.submit)
+        self.list.itemClicked.connect(self.submit)
         self.list.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.hide()
 

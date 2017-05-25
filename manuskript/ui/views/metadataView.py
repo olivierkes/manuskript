@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-from PyQt5.QtWidgets import QWidget
+from PyQt5.QtWidgets import QWidget, QAbstractItemView
 
 from manuskript.enums import Outline
 from manuskript.ui.views.metadataView_ui import Ui_metadataView
-
+from manuskript.ui import style
 
 class metadataView(QWidget, Ui_metadataView):
     def __init__(self, parent=None):
@@ -15,6 +15,10 @@ class metadataView(QWidget, Ui_metadataView):
         self.txtSummaryFull.setColumn(Outline.summaryFull.value)
         self.txtNotes.setColumn(Outline.notes.value)
         self.revisions.setEnabled(False)
+        
+        self.txtSummarySentence.setStyleSheet(style.lineEditSS())
+        self.txtSummaryFull.setStyleSheet(style.transparentSS())
+        self.txtNotes.setStyleSheet(style.transparentSS())
 
     def setModels(self, mdlOutline, mdlCharacter, mdlLabels, mdlStatus):
         self.properties.setModels(mdlOutline, mdlCharacter, mdlLabels, mdlStatus)
@@ -27,7 +31,7 @@ class metadataView(QWidget, Ui_metadataView):
         """Returns a list of indexes from list of QItemSelectionRange"""
         indexes = []
 
-        for i in sourceView.selectionModel().selection().indexes():
+        for i in sourceView.selection().indexes():
             if i.column() != 0:
                 continue
 
@@ -36,8 +40,14 @@ class metadataView(QWidget, Ui_metadataView):
 
         return indexes
 
-    def selectionChanged(self, sourceView):
-        indexes = self.getIndexes(sourceView)
+    def selectionChanged(self):
+
+        if isinstance(self.sender(), QAbstractItemView):
+            selectionModel = self.sender().selectionModel()
+        else:
+            selectionModel = self.sender()
+
+        indexes = self.getIndexes(selectionModel)
 
         if self._lastIndexes == indexes:
             return
@@ -62,7 +72,7 @@ class metadataView(QWidget, Ui_metadataView):
             self.txtNotes.setCurrentModelIndexes(indexes)
             self.revisions.setEnabled(False)
 
-        self.properties.selectionChanged(sourceView)
+        self.properties.selectionChanged(selectionModel)
         self._lastIndexes = indexes
 
     def setDict(self, d):

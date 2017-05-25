@@ -284,7 +284,7 @@ def infos(ref):
                 ID = item.child(r, 0).text()
                 characters += "<li><a href='{link}'>{text}</a>".format(
                         link=characterReference(ID),
-                        text=pM.getPersoNameByID(ID))
+                        text=pM.getCharacterByID(ID).name())
 
         # Resolution steps
         steps = ""
@@ -601,7 +601,7 @@ def open(ref):
 
     if _type == CharacterLetter:
         mw = mainWindow()
-        item = mw.lstCharacters.getItemByID(int(_ref))
+        item = mw.lstCharacters.getItemByID(_ref)
 
         if item:
             mw.tabMain.setCurrentIndex(mw.TabPersos)

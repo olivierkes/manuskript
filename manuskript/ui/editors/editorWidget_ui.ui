@@ -29,7 +29,7 @@
    <item>
     <widget class="QStackedWidget" name="stack">
      <property name="currentIndex">
-      <number>0</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="text">
       <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -46,7 +46,11 @@
         <number>0</number>
        </property>
        <item>
-        <widget class="textEditView" name="txtRedacText"/>
+        <widget class="textEditView" name="txtRedacText">
+         <property name="frameShape">
+          <enum>QFrame::NoFrame</enum>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -72,6 +76,9 @@
          <property name="autoFillBackground">
           <bool>true</bool>
          </property>
+         <property name="frameShape">
+          <enum>QFrame::NoFrame</enum>
+         </property>
          <property name="widgetResizable">
           <bool>true</bool>
          </property>
@@ -80,8 +87,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>96</width>
-            <height>26</height>
+            <width>400</width>
+            <height>300</height>
            </rect>
           </property>
          </widget>
@@ -104,7 +111,11 @@
         <number>0</number>
        </property>
        <item>
-        <widget class="corkView" name="corkView"/>
+        <widget class="corkView" name="corkView">
+         <property name="frameShape">
+          <enum>QFrame::NoFrame</enum>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -123,7 +134,11 @@
         <number>0</number>
        </property>
        <item>
-        <widget class="outlineView" name="outlineView"/>
+        <widget class="outlineView" name="outlineView">
+         <property name="frameShape">
+          <enum>QFrame::NoFrame</enum>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>

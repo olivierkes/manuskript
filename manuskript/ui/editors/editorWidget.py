@@ -166,10 +166,12 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
             self.stack.setCurrentIndex(2)
             self.corkView.setModel(self.mw.mdlOutline)
             self.corkView.setRootIndex(self.currentIndex)
-            self.corkView.selectionModel().selectionChanged.connect(
-                    lambda: mainWindow().redacMetadata.selectionChanged(self.corkView), AUC)
-            self.corkView.clicked.connect(
-                    lambda: mainWindow().redacMetadata.selectionChanged(self.corkView), AUC)
+            try:
+                self.corkView.selectionModel().selectionChanged.connect(mainWindow().redacMetadata.selectionChanged, AUC)
+                self.corkView.clicked.connect(mainWindow().redacMetadata.selectionChanged, AUC)
+                self.corkView.clicked.connect(mainWindow().mainEditor.updateTargets, AUC)
+            except TypeError:
+                pass
 
         elif item and item.isFolder() and self.folderView == "outline":
             self.stack.setCurrentIndex(3)
@@ -178,10 +180,13 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
             self.outlineView.setModelStatus(mainWindow().mdlStatus)
             self.outlineView.setModel(self.mw.mdlOutline)
             self.outlineView.setRootIndex(self.currentIndex)
-            self.outlineView.selectionModel().selectionChanged.connect(
-                    lambda: mainWindow().redacMetadata.selectionChanged(self.outlineView), AUC)
-            self.outlineView.clicked.connect(
-                    lambda: mainWindow().redacMetadata.selectionChanged(self.outlineView), AUC)
+
+            try:
+                self.outlineView.selectionModel().selectionChanged.connect(mainWindow().redacMetadata.selectionChanged, AUC)
+                self.outlineView.clicked.connect(mainWindow().redacMetadata.selectionChanged, AUC)
+                self.outlineView.clicked.connect(mainWindow().mainEditor.updateTargets, AUC)
+            except TypeError:
+                pass
 
         else:
             self.txtRedacText.setCurrentModelIndex(self.currentIndex)

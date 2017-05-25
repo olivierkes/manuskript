@@ -139,7 +139,7 @@ class corkDelegate(QStyledItemDelegate):
                                   self.mainRect.bottomRight())
         if not item.data(Outline.summarySentence.value):
             self.mainTextRect.setTopLeft(self.mainLineRect.topLeft())
-        if item.data(Outline.label.value) in ["", "0"]:
+        if item.data(Outline.label.value) in ["", "0", 0]:
             self.titleRect.setBottomRight(self.labelRect.bottomRight() - QPoint(self.margin, self.margin))
 
     def paint(self, p, option, index):
@@ -219,7 +219,8 @@ class corkDelegate(QStyledItemDelegate):
             p.drawRoundedRect(itemRect, 10, 10)
             # p.drawRect(topRect)
             p.restore()
-            p.drawLine(self.labelRect.topLeft(), self.labelRect.bottomLeft())
+            if color != Qt.transparent:
+                p.drawLine(self.labelRect.topLeft(), self.labelRect.bottomLeft())
 
             # One line summary background
         lineSummary = item.data(Outline.summarySentence.value)

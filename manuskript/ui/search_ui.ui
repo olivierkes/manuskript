@@ -36,8 +36,14 @@
      </property>
      <item>
       <widget class="QLineEdit" name="text">
+       <property name="inputMask">
+        <string/>
+       </property>
        <property name="frame">
         <bool>false</bool>
+       </property>
+       <property name="placeholderText">
+        <string>Search for...</string>
        </property>
        <property name="clearButtonEnabled">
         <bool>true</bool>
@@ -65,7 +71,11 @@
     </layout>
    </item>
    <item>
-    <widget class="QListWidget" name="result"/>
+    <widget class="QListWidget" name="result">
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>
