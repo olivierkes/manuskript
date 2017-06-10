@@ -25,7 +25,11 @@ class corkView(QListView, dndView, outlineBasics):
         self.updateBackground()
 
     def updateBackground(self):
-        img = findBackground(settings.corkBackground["image"])
+        if settings.corkBackground["image"] != "":
+            img = findBackground(settings.corkBackground["image"])
+        else:
+            # No background image
+            img = ""
         self.setStyleSheet("""QListView {{
             background:{color};
             background-image: url({url});

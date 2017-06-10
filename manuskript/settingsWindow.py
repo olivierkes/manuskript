@@ -13,7 +13,7 @@ from PyQt5.QtWidgets import qApp
 from manuskript import settings
 from manuskript.enums import Outline
 from manuskript.functions import allPaths, iconColor, writablePath, appPath, findWidgetsOfClass
-from manuskript.functions import mainWindow
+from manuskript.functions import mainWindow, findBackground
 from manuskript.ui.editors.tabSplitter import tabSplitter
 from manuskript.ui.editors.themes import createThemePreview
 from manuskript.ui.editors.themes import getThemeName
@@ -371,7 +371,7 @@ class settingsWindow(QWidget, Ui_Settings):
 
     def setCorkImageDefault(self):
         if settings.corkBackground["image"] != "":
-            i = self.cmbCorkImage.findData(settings.corkBackground["image"])
+            i = self.cmbCorkImage.findData(findBackground(settings.corkBackground["image"]))
             if i != -1:
                 self.cmbCorkImage.setCurrentIndex(i)
 
