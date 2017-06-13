@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
 from PyQt5.QtCore import Qt, QUrl
-from PyQt5.QtWebKitWidgets import QWebView
+from PyQt5.QtWebEngineWidgets import QWebEngineView
 from PyQt5.QtWidgets import QPlainTextEdit, qApp, QTabWidget, QFrame
 
 from manuskript.exporter.manuskript.markdown import markdown, markdownSettings
@@ -50,7 +50,7 @@ class HTML(markdown):
         w1 = QPlainTextEdit()
         w1.setFrameShape(QFrame.NoFrame)
         w1.setReadOnly(True)
-        w2 = QWebView()
+        w2 = QWebEngineView()
         t.addTab(w0, qApp.translate("Export", "Markdown source"))
         t.addTab(w1, qApp.translate("Export", "HTML Source"))
         t.addTab(w2, qApp.translate("Export", "HTML Output"))
@@ -78,6 +78,3 @@ class HTML(markdown):
         self.preparesTextEditView(previewWidget.widget(1), settings["Preview"]["PreviewFont"])
         previewWidget.widget(1).setPlainText(html)
         previewWidget.widget(2).setHtml(html, QUrl.fromLocalFile(path))
-
-
-
