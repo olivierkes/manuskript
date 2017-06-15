@@ -50,7 +50,7 @@ outlineViewColumns = [Outline.title.value, Outline.POV.value, Outline.status.val
                       Outline.goalPercentage.value, Outline.label.value]
 corkBackground = {
     "color": "#926239",
-    "image": ""
+    "image": "writingdesk"
         }
 defaultTextType = "md"
 fullScreenTheme = "spacedreams"
