@@ -53,7 +53,7 @@ def run():
         print(app.tr("Loaded translation: {}.").format(translation))
 
     else:
-        print(app.tr("Warning: failed to load translator for locale {}...").format(locale))
+        print(app.tr("Note: No translator found or loaded for locale {}.").format(locale))
 
     QIcon.setThemeSearchPaths(QIcon.themeSearchPaths() + [appPath("icons")])
     QIcon.setThemeName("NumixMsk")
