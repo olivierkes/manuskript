@@ -52,6 +52,7 @@ class settingsWindow(QWidget, Ui_Settings):
         tr["English"] = ""
         tr["Français"] = "manuskript_fr.qm"
         tr["Español"] = "manuskript_es.qm"
+        tr["Deutsch"] = "manuskript_de.qm"
 
         for name in tr:
             self.cmbTranslation.addItem(name, tr[name])
