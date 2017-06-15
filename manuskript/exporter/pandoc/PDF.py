@@ -38,8 +38,6 @@ class PDF(abstractOutput):
         args = settingsWidget.runnableSettings()
         args.remove("--to=pdf")
         args.append("--to=latex")
-        if shutil.which("xelatex"):
-            args.append("--latex-engine=xelatex")
         src = self.src(settingsWidget)
         return self.exporter.convert(src, args, outputfile)
 
