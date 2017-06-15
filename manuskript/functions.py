@@ -226,12 +226,16 @@ def findWidgetsOfClass(cls):
 
 def findBackground(filename):
     """
-    Returns the full path to a background file of name filename within ressource folders.
+    Returns the full path to a background file of name filename within resources folders.
     """
     return findFirstFile(re.escape(filename), "resources/backgrounds")
 
 
 def findFirstFile(regex, path="resources"):
+    """
+    Returns full path of first file matching regular expression regex within folder path,
+    otherwise returns full path of last file in folder path.
+    """
     paths = allPaths(path)
     for p in paths:
         lst = os.listdir(p)
