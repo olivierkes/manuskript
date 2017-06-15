@@ -8,7 +8,7 @@ import os
 from PyQt5.QtCore import QSettings, QRegExp, Qt, QDir
 from PyQt5.QtGui import QIcon, QBrush, QColor, QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import QWidget, QAction, QFileDialog, QSpinBox, QLineEdit, QLabel, QPushButton, QTreeWidgetItem, \
-    qApp
+    qApp, QMessageBox
 
 from manuskript import settings
 from manuskript.enums import Outline
@@ -155,6 +155,14 @@ class welcome(QWidget, Ui_welcome):
         if filename:
             if filename[-4:] != ".msk":
                 filename += ".msk"
+            if os.path.exists(filename):
+                # Check if okay to overwrite existing project
+                result = QMessageBox.warning(self, self.tr("Warning"),
+                    self.tr("Overwrite existing project {} ?").format(filename),
+                    QMessageBox.Ok|QMessageBox.Cancel, QMessageBox.Cancel)
+                if result == QMessageBox.Cancel:
+                    return
+            # Create new project
             self.appendToRecentFiles(filename)
             self.loadDefaultDatas()
             self.mw.loadProject(filename, loadFromFile=False)
