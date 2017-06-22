@@ -179,6 +179,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Button color
         self.updateCharacterColor(c.ID())
 
+        # Slider importance
+        self.updateCharacterImportance(c.ID())
+
         # Character Infos
         self.tblPersoInfos.setRootIndex(index)
 
@@ -194,6 +197,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         c = self.mdlCharacter.getCharacterByID(ID)
         color = c.color().name()
         self.btnPersoColor.setStyleSheet("background:{};".format(color))
+
+    def updateCharacterImportance(self, ID):
+        c = self.mdlCharacter.getCharacterByID(ID)
+        self.sldPersoImportance.setValue(int(c.importance()))
 
     ###############################################################################
     # PLOTS
