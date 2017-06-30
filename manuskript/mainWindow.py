@@ -156,7 +156,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         """
         c = self.lstCharacters.currentCharacter()
         if not c:
-            self.tabPlot.setEnabled(False)
+            self.tabPersos.setEnabled(False)
             return
 
         self.tabPersos.setEnabled(True)
