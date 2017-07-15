@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
 from PyQt5.QtCore import Qt, QUrl
-from PyQt5.QtWebKitWidgets import QWebView
-from PyQt5.QtWidgets import QPlainTextEdit, qApp, QTabWidget, QFrame
+from PyQt5.QtWidgets import QPlainTextEdit, qApp, QTabWidget, QFrame, QTextEdit
 
 from manuskript.exporter.manuskript.markdown import markdown, markdownSettings
+from manuskript.ui.views.webView import webView
 from manuskript.ui.exporters.manuskript.plainTextSettings import exporterSettings
 import os
 
@@ -50,10 +50,12 @@ class HTML(markdown):
         w1 = QPlainTextEdit()
         w1.setFrameShape(QFrame.NoFrame)
         w1.setReadOnly(True)
-        w2 = QWebView()
         t.addTab(w0, qApp.translate("Export", "Markdown source"))
         t.addTab(w1, qApp.translate("Export", "HTML Source"))
-        t.addTab(w2, qApp.translate("Export", "HTML Output"))
+        
+        if webView:
+            w2 = webView()
+            t.addTab(w2, qApp.translate("Export", "HTML Output"))
 
         t.setCurrentIndex(2)
         return t
@@ -77,7 +79,8 @@ class HTML(markdown):
         previewWidget.widget(0).setPlainText(md)
         self.preparesTextEditView(previewWidget.widget(1), settings["Preview"]["PreviewFont"])
         previewWidget.widget(1).setPlainText(html)
-        previewWidget.widget(2).setHtml(html, QUrl.fromLocalFile(path))
-
-
-
+        w2 = previewWidget.widget(2)
+        if isinstance(w2, QTextEdit):
+            w2.setHtml(html)
+        else:
+            w2.setHtml(html, QUrl.fromLocalFile(path))

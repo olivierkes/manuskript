@@ -4,8 +4,6 @@ import random
 import shutil
 
 from PyQt5.QtCore import QUrl
-from PyQt5.QtWebKit import QWebSettings
-from PyQt5.QtWebKitWidgets import QWebView
 from PyQt5.QtWidgets import qApp
 
 from manuskript.exporter.pandoc.abstractOutput import abstractOutput
@@ -38,6 +36,8 @@ class PDF(abstractOutput):
         args = settingsWidget.runnableSettings()
         args.remove("--to=pdf")
         args.append("--to=latex")
+        if shutil.which("xelatex"):
+            args.append("--latex-engine=xelatex")
         src = self.src(settingsWidget)
         return self.exporter.convert(src, args, outputfile)
 

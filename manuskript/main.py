@@ -4,6 +4,7 @@ import faulthandler
 import os
 import sys
 
+# import PyQt5.QtWebEngineWidgets # must be imported before QApplication
 from PyQt5.QtCore import QLocale, QTranslator, QSettings
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QApplication, qApp
@@ -21,7 +22,7 @@ def run():
     app.setOrganizationDomain("www.theologeek.ch")
     app.setApplicationName("manuskript")
     app.setApplicationVersion(_version)
-    
+
     print("Running manuskript version {}.".format(_version))
     icon = QIcon()
     for i in [16, 32, 64, 128, 256, 512]:
