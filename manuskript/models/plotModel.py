@@ -55,6 +55,14 @@ class plotModel(QStandardItemModel):
                 return name
         return None
 
+    def getPlotImportanceByID(self, ID):
+        for i in range(self.rowCount()):
+            _ID = self.item(i, Plot.ID.value).text()
+            if _ID == ID or toInt(_ID) == ID:
+                importance = self.item(i, Plot.importance.value).text()
+                return importance
+        return "0" # Default to "Minor"
+
     def getSubPlotTextsByID(self, plotID, subplotRaw):
         """Returns a tuple (name, summary) for the suplot whose raw in the model
         is ``subplotRaw``, of plot whose ID is ``plotID``.

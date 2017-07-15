@@ -156,7 +156,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         """
         c = self.lstCharacters.currentCharacter()
         if not c:
-            self.tabPlot.setEnabled(False)
+            self.tabPersos.setEnabled(False)
             return
 
         self.tabPersos.setEnabled(True)
@@ -179,6 +179,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Button color
         self.updateCharacterColor(c.ID())
 
+        # Slider importance
+        self.updateCharacterImportance(c.ID())
+
         # Character Infos
         self.tblPersoInfos.setRootIndex(index)
 
@@ -194,6 +197,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         c = self.mdlCharacter.getCharacterByID(ID)
         color = c.color().name()
         self.btnPersoColor.setStyleSheet("background:{};".format(color))
+
+    def updateCharacterImportance(self, ID):
+        c = self.mdlCharacter.getCharacterByID(ID)
+        self.sldPersoImportance.setValue(int(c.importance()))
 
     ###############################################################################
     # PLOTS
@@ -213,6 +220,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.sldPlotImportance.setCurrentModelIndex(index)
         self.lstPlotPerso.setRootIndex(index.sibling(index.row(),
                                                      Plot.characters.value))
+
+        # Slider importance
+        self.updatePlotImportance(index.row())
+
         subplotindex = index.sibling(index.row(), Plot.steps.value)
         self.lstSubPlots.setRootIndex(subplotindex)
         if self.mdlPlots.rowCount(subplotindex):
@@ -237,6 +248,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.lstSubPlots.horizontalHeader().setSectionResizeMode(
                 PlotStep.meta.value, QHeaderView.ResizeToContents)
         self.lstSubPlots.verticalHeader().hide()
+
+    def updatePlotImportance(self, ID):
+        imp = self.mdlPlots.getPlotImportanceByID(ID)
+        self.sldPlotImportance.setValue(int(imp))
 
     def changeCurrentSubPlot(self, index):
         # Got segfaults when using textEditView model system, so ad hoc stuff.
