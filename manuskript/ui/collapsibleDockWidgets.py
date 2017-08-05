@@ -101,7 +101,9 @@ class collapsibleDockWidgets(QToolBar):
     def restoreState(self, state):
         for group, title, status in state:
             for btn, act, widget, grp in self.otherWidgets:
-                if group == grp and title == btn.text():
+                # Strip '&' from both title and btn.text() to improve matching because
+                #   title contains "&" shortcut character whereas btn.text() does not.
+                if group == grp and title.replace('&', '') == btn.text().replace('&', ''):
                     btn.setChecked(status)
                     widget.setVisible(status)
 
