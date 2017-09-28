@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/mainWindow.ui'
 #
-# Created by: PyQt5 UI code generator 5.4.2
+# Created by: PyQt5 UI code generator 5.5.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -1016,7 +1016,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.addWidget(self.stack)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1112, 20))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1112, 30))
         self.menubar.setObjectName("menubar")
         self.menuFile = QtWidgets.QMenu(self.menubar)
         self.menuFile.setObjectName("menuFile")
@@ -1159,6 +1159,8 @@ class Ui_MainWindow(object):
         self.actCompile.setObjectName("actCompile")
         self.actToolFrequency = QtWidgets.QAction(MainWindow)
         self.actToolFrequency.setObjectName("actToolFrequency")
+        self.actAbout = QtWidgets.QAction(MainWindow)
+        self.actAbout.setObjectName("actAbout")
         self.menuFile.addAction(self.actOpen)
         self.menuFile.addAction(self.menuRecents.menuAction())
         self.menuFile.addAction(self.actSave)
@@ -1169,6 +1171,7 @@ class Ui_MainWindow(object):
         self.menuFile.addSeparator()
         self.menuFile.addAction(self.actQuit)
         self.menuHelp.addAction(self.actShowHelp)
+        self.menuHelp.addAction(self.actAbout)
         self.menuTools.addAction(self.actSpellcheck)
         self.menuTools.addAction(self.actToolFrequency)
         self.menuEdit.addAction(self.actLabels)
@@ -1323,6 +1326,8 @@ class Ui_MainWindow(object):
         self.actCompile.setText(_translate("MainWindow", "Co&mpile"))
         self.actCompile.setShortcut(_translate("MainWindow", "F6"))
         self.actToolFrequency.setText(_translate("MainWindow", "&Frequency Analyzer"))
+        self.actAbout.setText(_translate("MainWindow", "&About"))
+        self.actAbout.setToolTip(_translate("MainWindow", "About Manuskript"))
 
 from manuskript.ui.cheatSheet import cheatSheet
 from manuskript.ui.editors.mainEditor import mainEditor

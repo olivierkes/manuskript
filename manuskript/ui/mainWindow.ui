@@ -1557,8 +1557,7 @@
                     </property>
                     <property name="icon">
                      <iconset theme="emblem-favorite">
-                      <normaloff/>
-                     </iconset>
+                      <normaloff>.</normaloff>.</iconset>
                     </property>
                     <property name="flat">
                      <bool>true</bool>
@@ -2045,7 +2044,7 @@
      <x>0</x>
      <y>0</y>
      <width>1112</width>
-     <height>20</height>
+     <height>30</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -2058,8 +2057,7 @@
      </property>
      <property name="icon">
       <iconset theme="folder-recent">
-       <normaloff/>
-      </iconset>
+       <normaloff>.</normaloff>.</iconset>
      </property>
     </widget>
     <addaction name="actOpen"/>
@@ -2077,6 +2075,7 @@
      <string>&amp;Help</string>
     </property>
     <addaction name="actShowHelp"/>
+    <addaction name="actAbout"/>
    </widget>
    <widget class="QMenu" name="menuTools">
     <property name="title">
@@ -2385,8 +2384,7 @@ QListView::item:hover {
   <action name="actCloseProject">
    <property name="icon">
     <iconset theme="window-close">
-     <normaloff/>
-    </iconset>
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>&amp;Close project</string>
@@ -2403,6 +2401,14 @@ QListView::item:hover {
   <action name="actToolFrequency">
    <property name="text">
     <string>&amp;Frequency Analyzer</string>
+   </property>
+  </action>
+  <action name="actAbout">
+   <property name="text">
+    <string>&amp;About</string>
+   </property>
+   <property name="toolTip">
+    <string>About Manuskript</string>
    </property>
   </action>
  </widget>
