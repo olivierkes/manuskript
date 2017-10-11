@@ -18,6 +18,7 @@ from manuskript.models.plotModel import plotModel
 from manuskript.models.worldModel import worldModel
 from manuskript.settingsWindow import settingsWindow
 from manuskript.ui import style
+from manuskript.ui.about import aboutDialog
 from manuskript.ui.collapsibleDockWidgets import collapsibleDockWidgets
 from manuskript.ui.exporters.exporter import exporterDialog
 from manuskript.ui.helpLabel import helpLabel
@@ -107,6 +108,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.actCloseProject.triggered.connect(self.closeProject)
         self.actQuit.triggered.connect(self.close)
         self.actToolFrequency.triggered.connect(self.frequencyAnalyzer)
+        self.actAbout.triggered.connect(self.about)
         self.generateViewMenu()
 
         self.actModeGroup = QActionGroup(self)
@@ -797,6 +799,19 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 lambda: self.tblDebugSubPlots.setRootIndex(self.mdlPlots.index(
                         self.tblDebugPlots.selectionModel().currentIndex().row(),
                         Plot.steps.value)))
+
+    ###############################################################################
+    # HELP
+    ###############################################################################
+
+    def about(self):
+        self.dialog = aboutDialog(mw=self)
+        self.dialog.setFixedSize(self.dialog.size())
+        self.dialog.show()
+        # Center about dialog
+        r = self.dialog.geometry()
+        r2 = self.geometry()
+        self.dialog.move(r2.center() - r.center())
 
     ###############################################################################
     # GENERAL AKA UNSORTED
