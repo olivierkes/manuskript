@@ -7,7 +7,6 @@ from PyQt5.QtWidgets import QWidget
 from platform import python_version
 
 from manuskript.functions import appPath
-from manuskript.ui import about
 from manuskript.ui.about_ui import Ui_about
 from manuskript.version import getVersion
 
@@ -26,23 +25,28 @@ class aboutDialog(QWidget, Ui_about):
         logoPic = QPixmap(appPath("icons/Manuskript/logo-400x104.png"))
         self.labelLogo.setPixmap(logoPic)
 
-        self.labelManuskriptVersion.setText(self.tr("Version") + " " + getVersion())
-
-        self.labelWebsite.setText(
-               "<a href=\"http://www.theologeek.ch/manuskript/\">" \
-             + "http://www.theologeek.ch/manuskript/" \
-             + "</a>" )
-        self.labelWebsite.setOpenExternalLinks(True)
-
-        self.labelLicense.setText( \
-               "<a href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\">" \
-             + self.tr("GNU General Public License Version 3") \
-             + "</a>" )
-        self.labelLicense.setOpenExternalLinks(True)
-
-        self.labelPythonVersion.setText(self.tr("Python") + " " + python_version())
-        self.labelPyQtVersion.setText(self.tr("PyQt") + " " + PYQT_VERSION_STR)
-        self.labelQtVersion.setText(self.tr("Qt") + " " + QT_VERSION_STR)
+        self.labelManuskriptVersion.setText(
+              "<b>" + self.tr("Version") + " " + getVersion() + "</b><br>"
+            + "&nbsp;"*5 + """<a href="http://www.theologeek.ch/manuskript/">
+                                http://www.theologeek.ch/manuskript/
+                               </a><br>"""
+            + "&nbsp;"*5 + "Copyright © 2015-2017 Olivier Keshavjee<br>"
+            + "&nbsp;"*5 + """<a href="https://www.gnu.org/licenses/gpl-3.0.en.html">
+                                GNU General Public License Version 3
+                            </a><br>"""
+            )
+        
+        self.labelManuskriptVersion.setOpenExternalLinks(True)
+        
+        self.labelSoftwareVersion.setText(
+              "<b>" + self.tr("Software Versions in Use:") + "</b><br>"
+            + "&nbsp;"*5 + self.tr("Python") + " " + python_version() + "<br>"
+            + "&nbsp;"*5 + self.tr("PyQt") + " " + PYQT_VERSION_STR + "<br>"
+            + "&nbsp;"*5 + self.tr("Qt") + " " + QT_VERSION_STR
+            )
+        #self.labelPythonVersion.setText()
+        #self.labelPyQtVersion.setText()
+        #self.labelQtVersion.setText()
 
     def accept(self):
         self.close()
