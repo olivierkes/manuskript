@@ -10,7 +10,7 @@ from manuskript.exporter.basic import basicExporter, basicFormat
 from manuskript.exporter.pandoc.HTML import HTML
 from manuskript.exporter.pandoc.PDF import PDF
 from manuskript.exporter.pandoc.outputFormats import ePub, OpenDocument, DocX
-from manuskript.exporter.pandoc.plainText import reST, markdown, latex
+from manuskript.exporter.pandoc.plainText import reST, markdown, latex, OPML
 from manuskript.functions import mainWindow
 
 
@@ -35,7 +35,7 @@ class pandocExporter(basicExporter):
             DocX(self),
             PDF(self),
             reST(self),
-
+            OPML(self),
         ]
 
     def version(self):

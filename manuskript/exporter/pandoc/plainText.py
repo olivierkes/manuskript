@@ -36,3 +36,16 @@ class latex(abstractPlainText):
     icon = "text-x-tex"
     exportFilter = "Tex files (*.tex);; Any files (*)"
 
+
+class OPML(abstractPlainText):
+    name = "OPML"
+    description = qApp.translate("Export", """The purpose of this format is to provide a way to exchange information
+                                              between outliners and Internet services that can be browsed or controlled
+                                              through an outliner.""")
+
+    exportVarName = "lastPandocOPML"
+    toFormat = "opml"
+    icon = "text-x-opml+xml"
+    exportFilter = "OPML files (*.opml);; Any files (*)"
+
+
