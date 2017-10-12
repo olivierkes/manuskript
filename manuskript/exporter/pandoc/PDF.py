@@ -4,8 +4,6 @@ import random
 import shutil
 
 from PyQt5.QtCore import QUrl
-from PyQt5.QtWebKit import QWebSettings
-from PyQt5.QtWebKitWidgets import QWebView
 from PyQt5.QtWidgets import qApp
 
 from manuskript.exporter.pandoc.abstractOutput import abstractOutput

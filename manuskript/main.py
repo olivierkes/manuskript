@@ -4,6 +4,7 @@ import faulthandler
 import os
 import sys
 
+import manuskript.ui.views.webView
 from PyQt5.QtCore import QLocale, QTranslator, QSettings
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QApplication, qApp
