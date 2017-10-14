@@ -124,7 +124,7 @@
            <enum>QTabWidget::Rounded</enum>
           </property>
           <property name="currentIndex">
-           <number>6</number>
+           <number>2</number>
           </property>
           <property name="documentMode">
            <bool>true</bool>
@@ -774,7 +774,7 @@
               </widget>
               <widget class="QTabWidget" name="tabPersos">
                <property name="currentIndex">
-                <number>0</number>
+                <number>3</number>
                </property>
                <widget class="QWidget" name="infos">
                 <attribute name="title">
@@ -991,20 +991,6 @@
                      <property name="icon">
                       <iconset theme="list-add">
                        <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QPushButton" name="pushButton_3">
-                     <property name="text">
-                      <string/>
-                     </property>
-                     <property name="icon">
-                      <iconset theme="emblem-favorite">
-                       <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
-                     </property>
-                     <property name="checkable">
-                      <bool>true</bool>
                      </property>
                     </widget>
                    </item>
@@ -1557,7 +1543,8 @@
                     </property>
                     <property name="icon">
                      <iconset theme="emblem-favorite">
-                      <normaloff>.</normaloff>.</iconset>
+                      <normaloff/>
+                     </iconset>
                     </property>
                     <property name="flat">
                      <bool>true</bool>
@@ -2044,7 +2031,7 @@
      <x>0</x>
      <y>0</y>
      <width>1112</width>
-     <height>30</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -2057,7 +2044,8 @@
      </property>
      <property name="icon">
       <iconset theme="folder-recent">
-       <normaloff>.</normaloff>.</iconset>
+       <normaloff/>
+      </iconset>
      </property>
     </widget>
     <addaction name="actOpen"/>
@@ -2384,7 +2372,8 @@ QListView::item:hover {
   <action name="actCloseProject">
    <property name="icon">
     <iconset theme="window-close">
-     <normaloff>.</normaloff>.</iconset>
+     <normaloff/>
+    </iconset>
    </property>
    <property name="text">
     <string>&amp;Close project</string>

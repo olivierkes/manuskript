@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/mainWindow.ui'
 #
-# Created: Wed Oct 11 08:10:56 2017
+# Created: Fri Oct 13 07:42:41 2017
 #      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -487,13 +487,6 @@ class Ui_MainWindow(object):
         self.btnPersoAddInfo.setIcon(icon)
         self.btnPersoAddInfo.setObjectName("btnPersoAddInfo")
         self.horizontalLayout_9.addWidget(self.btnPersoAddInfo)
-        self.pushButton_3 = QtWidgets.QPushButton(self.tab_12)
-        self.pushButton_3.setText("")
-        icon = QtGui.QIcon.fromTheme("emblem-favorite")
-        self.pushButton_3.setIcon(icon)
-        self.pushButton_3.setCheckable(True)
-        self.pushButton_3.setObjectName("pushButton_3")
-        self.horizontalLayout_9.addWidget(self.pushButton_3)
         self.btnPersoRmInfo = QtWidgets.QPushButton(self.tab_12)
         self.btnPersoRmInfo.setText("")
         icon = QtGui.QIcon.fromTheme("list-remove")
@@ -1018,7 +1011,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.addWidget(self.stack)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1112, 30))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1112, 20))
         self.menubar.setObjectName("menubar")
         self.menuFile = QtWidgets.QMenu(self.menubar)
         self.menuFile.setObjectName("menuFile")
@@ -1192,9 +1185,9 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.stack.setCurrentIndex(1)
-        self.tabMain.setCurrentIndex(6)
+        self.tabMain.setCurrentIndex(2)
         self.tabSummary.setCurrentIndex(0)
-        self.tabPersos.setCurrentIndex(0)
+        self.tabPersos.setCurrentIndex(3)
         self.tabPlot.setCurrentIndex(1)
         self.comboBox_2.setCurrentIndex(0)
         self.stkPlotSummary.setCurrentIndex(0)
@@ -1331,18 +1324,18 @@ class Ui_MainWindow(object):
         self.actAbout.setText(_translate("MainWindow", "&About"))
         self.actAbout.setToolTip(_translate("MainWindow", "About Manuskript"))
 
-from manuskript.ui.views.lineEditView import lineEditView
-from manuskript.ui.search import search
-from manuskript.ui.views.textEditView import textEditView
-from manuskript.ui.views.textEditCompleter import textEditCompleter
-from manuskript.ui.cheatSheet import cheatSheet
-from manuskript.ui.views.sldImportance import sldImportance
-from manuskript.ui.views.characterTreeView import characterTreeView
-from manuskript.ui.views.outlineView import outlineView
-from manuskript.ui.views.plotTreeView import plotTreeView
 from manuskript.ui.welcome import welcome
-from manuskript.ui.views.treeView import treeView
-from manuskript.ui.views.metadataView import metadataView
-from manuskript.ui.views.basicItemView import basicItemView
-from manuskript.ui.editors.mainEditor import mainEditor
+from manuskript.ui.cheatSheet import cheatSheet
+from manuskript.ui.views.lineEditView import lineEditView
+from manuskript.ui.views.textEditCompleter import textEditCompleter
 from manuskript.ui.views.storylineView import storylineView
+from manuskript.ui.search import search
+from manuskript.ui.views.basicItemView import basicItemView
+from manuskript.ui.views.metadataView import metadataView
+from manuskript.ui.views.sldImportance import sldImportance
+from manuskript.ui.views.plotTreeView import plotTreeView
+from manuskript.ui.views.textEditView import textEditView
+from manuskript.ui.views.outlineView import outlineView
+from manuskript.ui.views.treeView import treeView
+from manuskript.ui.views.characterTreeView import characterTreeView
+from manuskript.ui.editors.mainEditor import mainEditor
