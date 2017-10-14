@@ -126,7 +126,12 @@ class settingsWindow(QWidget, Ui_Settings):
         ]:
             item.setChecked(settings.viewSettings["Tree"][what] == value)
             item.toggled.connect(self.treeViewSettignsChanged)
-
+        
+        self.rdoCorkOldStyle.setChecked(settings.corkStyle == "old")
+        self.rdoCorkNewStyle.setChecked(settings.corkStyle == "new")
+        self.rdoCorkNewStyle.toggled.connect(self.setCorkStyle)
+        self.rdoCorkOldStyle.toggled.connect(self.setCorkStyle)
+        
         self.populatesCmbBackgrounds(self.cmbCorkImage)
         self.setCorkImageDefault()
         self.updateCorkColor()
@@ -339,6 +344,10 @@ class settingsWindow(QWidget, Ui_Settings):
             self.updateCorkColor()
             # Update Cork view 
             self.mw.mainEditor.updateCorkBackground()
+            
+    def setCorkStyle(self):
+        settings.corkStyle = "new" if self.rdoCorkNewStyle.isChecked() else "old"
+        self.mw.mainEditor.updateCorkView()
 
     def updateCorkColor(self):
         self.btnCorkColor.setStyleSheet("background:{};".format(settings.corkBackground["color"]))

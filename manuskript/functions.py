@@ -133,13 +133,19 @@ def outlineItemColors(item):
     # POV
     colors["POV"] = QColor(Qt.transparent)
     POV = item.data(Outline.POV.value)
-    for i in range(mw.mdlCharacter.rowCount()):
-        if mw.mdlCharacter.ID(i) == POV:
-            colors["POV"] = iconColor(mw.mdlCharacter.icon(i))
+    if POV == "":
+        col = QColor(Qt.transparent)
+    else:
+        for i in range(mw.mdlCharacter.rowCount()):
+            if mw.mdlCharacter.ID(i) == POV:
+                colors["POV"] = iconColor(mw.mdlCharacter.icon(i))
 
     # Label
     lbl = item.data(Outline.label.value)
-    col = iconColor(mw.mdlLabels.item(toInt(lbl)).icon())
+    if lbl == "":
+        col = QColor(Qt.transparent)
+    else:
+        col = iconColor(mw.mdlLabels.item(toInt(lbl)).icon())
     # if col == Qt.black:
     #     # Don't know why, but transparent is rendered as black
     #     col = QColor(Qt.transparent)

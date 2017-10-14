@@ -52,6 +52,7 @@ corkBackground = {
     "color": "#926239",
     "image": "writingdesk"
         }
+corkStyle = "new"
 defaultTextType = "md"
 fullScreenTheme = "spacedreams"
 
@@ -93,7 +94,7 @@ def save(filename=None, protocol=None):
     
     global spellcheck, dict, corkSliderFactor, viewSettings, corkSizeFactor, folderView, lastTab, openIndexes, \
            autoSave, autoSaveDelay, saveOnQuit, autoSaveNoChanges, autoSaveNoChangesDelay, outlineViewColumns, \
-           corkBackground, fullScreenTheme, defaultTextType, textEditor, revisions, frequencyAnalyzer, viewMode, \
+           corkBackground, corkStyle, fullScreenTheme, defaultTextType, textEditor, revisions, frequencyAnalyzer, viewMode, \
            saveToZip
     
     allSettings = {
@@ -111,6 +112,7 @@ def save(filename=None, protocol=None):
         "autoSaveNoChangesDelay":autoSaveNoChangesDelay,
         "outlineViewColumns":outlineViewColumns,
         "corkBackground":corkBackground,
+        "corkStyle": corkStyle,
         "fullScreenTheme":fullScreenTheme,
         "defaultTextType":defaultTextType,
         "textEditor":textEditor,
@@ -215,6 +217,10 @@ def load(string, fromString=False, protocol=None):
     if "corkBackground" in allSettings:
         global corkBackground
         corkBackground = allSettings["corkBackground"]
+        
+    if "corkStyle" in allSettings:
+        global corkStyle
+        corkStyle = allSettings["corkStyle"]
         
     if "fullScreenTheme" in allSettings:
         global fullScreenTheme
