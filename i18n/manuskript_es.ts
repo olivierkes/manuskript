@@ -332,7 +332,7 @@
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="154"/>
-        <source>Book infos</source>
+        <source>Book info</source>
         <translation>Informaciones de libros</translation>
     </message>
     <message>
@@ -467,7 +467,7 @@
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1154"/>
-        <source>Basic infos</source>
+        <source>Basic info</source>
         <translation>Informaciónes básicas</translation>
     </message>
     <message>
@@ -512,7 +512,7 @@
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="968"/>
-        <source>Detailed infos</source>
+        <source>Detailed info</source>
         <translation>Informaciones detalladas</translation>
     </message>
     <message>
@@ -578,7 +578,7 @@
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1808"/>
-        <source>Redaction</source>
+        <source>Editor</source>
         <translation>Redacción</translation>
     </message>
     <message>
@@ -834,7 +834,7 @@
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="819"/>
-        <source>Enter infos about your book, and yourself.</source>
+        <source>Enter informations about your book, and yourself.</source>
         <translation>Introduzca información acerca de tu libro y sobre ti mismo.</translation>
     </message>
     <message>
@@ -873,7 +873,7 @@
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="844"/>
-        <source>Debug infos. Sometimes useful.</source>
+        <source>Debug info. Sometimes useful.</source>
         <translation>Depura la información. A veces es útil.</translation>
     </message>
     <message>
@@ -2814,12 +2814,12 @@
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="188"/>
-        <source>Basic infos</source>
+        <source>Basic info</source>
         <translation>Informaciones básicas</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="189"/>
-        <source>Detailed infos</source>
+        <source>Detailed info</source>
         <translation>Informaciones detalladas</translation>
     </message>
     <message>

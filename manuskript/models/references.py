@@ -182,8 +182,8 @@ def infos(ref):
         name = c.name()
 
         # Titles
-        basicTitle = qApp.translate("references", "Basic infos")
-        detailedTitle = qApp.translate("references", "Detailed infos")
+        basicTitle = qApp.translate("references", "Basic info")
+        detailedTitle = qApp.translate("references", "Detailed info")
         POVof = qApp.translate("references", "POV of:")
 
         # Goto (link)

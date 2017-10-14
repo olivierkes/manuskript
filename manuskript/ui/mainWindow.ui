@@ -124,7 +124,7 @@
            <enum>QTabWidget::Rounded</enum>
           </property>
           <property name="currentIndex">
-           <number>2</number>
+           <number>3</number>
           </property>
           <property name="documentMode">
            <bool>true</bool>
@@ -151,7 +151,7 @@
               <item>
                <widget class="QGroupBox" name="grpBookInfos">
                 <property name="title">
-                 <string>Book infos</string>
+                 <string>Book informations</string>
                 </property>
                 <layout class="QFormLayout" name="formLayout_3">
                  <property name="leftMargin">
@@ -776,9 +776,9 @@
                <property name="currentIndex">
                 <number>0</number>
                </property>
-               <widget class="QWidget" name="infos">
+               <widget class="QWidget" name="info">
                 <attribute name="title">
-                 <string>Basic infos</string>
+                 <string>Basic info</string>
                 </attribute>
                 <layout class="QVBoxLayout" name="verticalLayout_20">
                  <property name="spacing">
@@ -1008,7 +1008,7 @@
                </widget>
                <widget class="QWidget" name="tab_12">
                 <attribute name="title">
-                 <string>Detailed infos</string>
+                 <string>Detailed info</string>
                 </attribute>
                 <layout class="QVBoxLayout" name="verticalLayout_9">
                  <item>
@@ -1173,14 +1173,14 @@
               </widget>
               <widget class="QTabWidget" name="tabPlot">
                <property name="currentIndex">
-                <number>1</number>
+                <number>0</number>
                </property>
                <property name="documentMode">
                 <bool>true</bool>
                </property>
                <widget class="QWidget" name="infos_2">
                 <attribute name="title">
-                 <string>Basic infos</string>
+                 <string>Basic info</string>
                 </attribute>
                 <layout class="QFormLayout" name="formLayout_2">
                  <property name="fieldGrowthPolicy">
@@ -1834,7 +1834,7 @@
           </widget>
           <widget class="QWidget" name="lytTabRedac">
            <attribute name="title">
-            <string>Redaction</string>
+            <string>Editor</string>
            </attribute>
            <layout class="QVBoxLayout" name="verticalLayout_15">
             <property name="leftMargin">

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/mainWindow.ui'
 #
-# Created: Sat Oct 14 14:03:18 2017
+# Created: Sat Oct 14 20:38:54 2017
 #      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -366,13 +366,13 @@ class Ui_MainWindow(object):
         self.verticalLayout_8.addLayout(self.horizontalLayout_14)
         self.tabPersos = QtWidgets.QTabWidget(self.splitterPersos)
         self.tabPersos.setObjectName("tabPersos")
-        self.infos = QtWidgets.QWidget()
-        self.infos.setObjectName("infos")
-        self.verticalLayout_20 = QtWidgets.QVBoxLayout(self.infos)
+        self.info = QtWidgets.QWidget()
+        self.info.setObjectName("info")
+        self.verticalLayout_20 = QtWidgets.QVBoxLayout(self.info)
         self.verticalLayout_20.setSpacing(0)
         self.verticalLayout_20.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_20.setObjectName("verticalLayout_20")
-        self.scrollAreaPersoInfos = QtWidgets.QScrollArea(self.infos)
+        self.scrollAreaPersoInfos = QtWidgets.QScrollArea(self.info)
         self.scrollAreaPersoInfos.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.scrollAreaPersoInfos.setLineWidth(0)
         self.scrollAreaPersoInfos.setWidgetResizable(True)
@@ -457,7 +457,7 @@ class Ui_MainWindow(object):
         self.formLayout_8.setLayout(2, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout_3)
         self.scrollAreaPersoInfos.setWidget(self.scrollAreaPersoInfosWidget)
         self.verticalLayout_20.addWidget(self.scrollAreaPersoInfos)
-        self.tabPersos.addTab(self.infos, "")
+        self.tabPersos.addTab(self.info, "")
         self.tab_11 = QtWidgets.QWidget()
         self.tab_11.setObjectName("tab_11")
         self.verticalLayout_17 = QtWidgets.QVBoxLayout(self.tab_11)
@@ -1200,10 +1200,10 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.stack.setCurrentIndex(1)
-        self.tabMain.setCurrentIndex(2)
+        self.tabMain.setCurrentIndex(3)
         self.tabSummary.setCurrentIndex(0)
         self.tabPersos.setCurrentIndex(0)
-        self.tabPlot.setCurrentIndex(1)
+        self.tabPlot.setCurrentIndex(0)
         self.comboBox_2.setCurrentIndex(0)
         self.stkPlotSummary.setCurrentIndex(0)
         self.tabWorld.setCurrentIndex(0)
@@ -1217,7 +1217,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        self.grpBookInfos.setTitle(_translate("MainWindow", "Book infos"))
+        self.grpBookInfos.setTitle(_translate("MainWindow", "Book informations"))
         self.label_10.setText(_translate("MainWindow", "Title"))
         self.label_11.setText(_translate("MainWindow", "Subtitle"))
         self.label_12.setText(_translate("MainWindow", "Serie"))
@@ -1258,13 +1258,13 @@ class Ui_MainWindow(object):
         self.btnStepFour.setText(_translate("MainWindow", "Next"))
         self.label_18.setText(_translate("MainWindow", "Importance"))
         self.label_3.setText(_translate("MainWindow", "Name"))
-        self.tabPersos.setTabText(self.tabPersos.indexOf(self.infos), _translate("MainWindow", "Basic infos"))
+        self.tabPersos.setTabText(self.tabPersos.indexOf(self.info), _translate("MainWindow", "Basic info"))
         self.btnStepSix.setText(_translate("MainWindow", "Next"))
         self.tabPersos.setTabText(self.tabPersos.indexOf(self.tab_11), _translate("MainWindow", "Summary"))
         self.tabPersos.setTabText(self.tabPersos.indexOf(self.tab_19), _translate("MainWindow", "Notes"))
         self.lineEdit.setPlaceholderText(_translate("MainWindow", "Filter"))
         self.btnStepEight.setText(_translate("MainWindow", "Next"))
-        self.tabPersos.setTabText(self.tabPersos.indexOf(self.tab_12), _translate("MainWindow", "Detailed infos"))
+        self.tabPersos.setTabText(self.tabPersos.indexOf(self.tab_12), _translate("MainWindow", "Detailed info"))
         self.tabMain.setTabText(self.tabMain.indexOf(self.lytTabPersos), _translate("MainWindow", "Characters"))
         self.groupBox_2.setTitle(_translate("MainWindow", "Plots"))
         self.txtPlotFilter.setPlaceholderText(_translate("MainWindow", "Filter"))
@@ -1273,7 +1273,7 @@ class Ui_MainWindow(object):
         self.label_26.setText(_translate("MainWindow", "Character(s)"))
         self.label_27.setText(_translate("MainWindow", "Description"))
         self.label_28.setText(_translate("MainWindow", "Result"))
-        self.tabPlot.setTabText(self.tabPlot.indexOf(self.infos_2), _translate("MainWindow", "Basic infos"))
+        self.tabPlot.setTabText(self.tabPlot.indexOf(self.infos_2), _translate("MainWindow", "Basic info"))
         self.grpSubPlotSummary.setTitle(_translate("MainWindow", "Summary:"))
         self.tabPlot.setTabText(self.tabPlot.indexOf(self.tab_15), _translate("MainWindow", "Resolution steps"))
         self.grpPlotSummary.setTitle(_translate("MainWindow", "Summary"))
@@ -1292,7 +1292,7 @@ class Ui_MainWindow(object):
         self.tabWorld.setTabText(self.tabWorld.indexOf(self.tab_4), _translate("MainWindow", "More"))
         self.tabMain.setTabText(self.tabMain.indexOf(self.lytTabContext), _translate("MainWindow", "World"))
         self.tabMain.setTabText(self.tabMain.indexOf(self.lytTabOutline), _translate("MainWindow", "Outline"))
-        self.tabMain.setTabText(self.tabMain.indexOf(self.lytTabRedac), _translate("MainWindow", "Redaction"))
+        self.tabMain.setTabText(self.tabMain.indexOf(self.lytTabRedac), _translate("MainWindow", "Editor"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_9), _translate("MainWindow", "FlatData"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_10), _translate("MainWindow", "Persos"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "Plots"))
@@ -1339,18 +1339,18 @@ class Ui_MainWindow(object):
         self.actAbout.setText(_translate("MainWindow", "&About"))
         self.actAbout.setToolTip(_translate("MainWindow", "About Manuskript"))
 
-from manuskript.ui.editors.mainEditor import mainEditor
-from manuskript.ui.views.lineEditView import lineEditView
-from manuskript.ui.views.sldImportance import sldImportance
-from manuskript.ui.views.treeView import treeView
-from manuskript.ui.views.characterTreeView import characterTreeView
 from manuskript.ui.views.basicItemView import basicItemView
-from manuskript.ui.views.textEditCompleter import textEditCompleter
-from manuskript.ui.views.plotTreeView import plotTreeView
-from manuskript.ui.views.metadataView import metadataView
-from manuskript.ui.cheatSheet import cheatSheet
-from manuskript.ui.views.storylineView import storylineView
-from manuskript.ui.search import search
-from manuskript.ui.views.textEditView import textEditView
+from manuskript.ui.editors.mainEditor import mainEditor
+from manuskript.ui.views.treeView import treeView
 from manuskript.ui.views.outlineView import outlineView
+from manuskript.ui.views.metadataView import metadataView
+from manuskript.ui.views.storylineView import storylineView
+from manuskript.ui.views.lineEditView import lineEditView
 from manuskript.ui.welcome import welcome
+from manuskript.ui.search import search
+from manuskript.ui.views.characterTreeView import characterTreeView
+from manuskript.ui.cheatSheet import cheatSheet
+from manuskript.ui.views.textEditView import textEditView
+from manuskript.ui.views.textEditCompleter import textEditCompleter
+from manuskript.ui.views.sldImportance import sldImportance
+from manuskript.ui.views.plotTreeView import plotTreeView

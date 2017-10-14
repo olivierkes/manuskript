@@ -314,7 +314,7 @@ des lignes:</translation>
     <name>MainWindow</name>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="154"/>
-        <source>Book infos</source>
+        <source>Book info</source>
         <translation>Informations sur le livre</translation>
     </message>
     <message>
@@ -434,7 +434,7 @@ des lignes:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1154"/>
-        <source>Basic infos</source>
+        <source>Basic info</source>
         <translation>Informations générales</translation>
     </message>
     <message>
@@ -479,7 +479,7 @@ des lignes:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="968"/>
-        <source>Detailed infos</source>
+        <source>Detailed info</source>
         <translation>Informations détaillées</translation>
     </message>
     <message>
@@ -519,7 +519,7 @@ des lignes:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1808"/>
-        <source>Redaction</source>
+        <source>Editor</source>
         <translation>Rédaction</translation>
     </message>
     <message>
@@ -704,7 +704,7 @@ des lignes:</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="819"/>
-        <source>Enter infos about your book, and yourself.</source>
+        <source>Enter informations about your book, and yourself.</source>
         <translation>Entrez toutes les informations relatives au livre, ainsi qu&apos;à vous.</translation>
     </message>
     <message>
@@ -729,8 +729,8 @@ des lignes:</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="844"/>
-        <source>Debug infos. Sometimes useful.</source>
-        <translation>Des infos pour débugger des fois pendant qu&apos;on code c&apos;est utile.</translation>
+        <source>Debug info. Sometimes useful.</source>
+        <translation>Des informations pour débugger des fois pendant qu&apos;on code c&apos;est utile.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="858"/>
@@ -2698,12 +2698,12 @@ des lignes:</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="188"/>
-        <source>Basic infos</source>
+        <source>Basic info</source>
         <translation>Informations générales</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="189"/>
-        <source>Detailed infos</source>
+        <source>Detailed info</source>
         <translation>Informations détaillées</translation>
     </message>
     <message>

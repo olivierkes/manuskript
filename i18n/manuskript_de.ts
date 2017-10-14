@@ -271,7 +271,7 @@
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="154"/>
-        <source>Book infos</source>
+        <source>Book info</source>
         <translation>Buchinformationen</translation>
     </message>
     <message>
@@ -426,7 +426,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="781"/>
         <location filename="../manuskript/ui/mainWindow.ui" line="1154"/>
-        <source>Basic infos</source>
+        <source>Basic info</source>
         <translation>Basisinformationen</translation>
     </message>
     <message>
@@ -472,7 +472,7 @@
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="968"/>
-        <source>Detailed infos</source>
+        <source>Detailed info</source>
         <translation>Details</translation>
     </message>
     <message>
@@ -544,7 +544,7 @@
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1808"/>
-        <source>Redaction</source>
+        <source>Editor</source>
         <translation>Redaktion</translation>
     </message>
     <message>
@@ -1947,12 +1947,12 @@
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="185"/>
-        <source>Basic infos</source>
+        <source>Basic info</source>
         <translation>Baisinformationen</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="186"/>
-        <source>Detailed infos</source>
+        <source>Detailed info</source>
         <translation>Detailierte Informationen</translation>
     </message>
     <message>

@@ -888,7 +888,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                      "plot-128px.png",
                      "world-128px.png",
                      "outline-128px.png",
-                     "redaction-128px.png",
+                     "editor-128px.png",
                      ""
                      ]
             self.tabMain.setTabIcon(i, QIcon(appPath("icons/Custom/Tabs/{}".format(icons[i]))))
@@ -934,7 +934,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Help box
         references = [
             (self.lytTabOverview,
-             self.tr("Enter infos about your book, and yourself."),
+             self.tr("Enter informations about your book, and yourself."),
              0),
             (self.lytSituation,
              self.tr(
@@ -962,7 +962,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
              self.tr("Write."),
              0),
             (self.lytTabDebug,
-             self.tr("Debug infos. Sometimes useful."),
+             self.tr("Debug info. Sometimes useful."),
              0)
         ]
 
