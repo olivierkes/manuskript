@@ -6,7 +6,7 @@ from PyQt5.QtCore import Qt, QSize, QPoint, QRect, QEvent, QTimer
 from PyQt5.QtGui import QFontMetrics, QColor, QBrush, QPalette, QPainter, QPixmap
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QFrame, QWidget, QPushButton, qApp, QStyle, QComboBox, QLabel, QScrollBar, \
-    QStyleOptionSlider, QHBoxLayout, QVBoxLayout
+    QStyleOptionSlider, QHBoxLayout, QVBoxLayout, QMenu, QAction
 
 # Spell checker support
 from manuskript import settings
@@ -243,6 +243,10 @@ class fullScreenEditor(QWidget):
     def hideWidget(self, widget):
         if widget not in self._geometries:
             self._geometries[widget] = widget.geometry()
+        
+        if hasattr(widget, "_autoHide") and not widget._autoHide:
+            return
+        
         widget.move(self.geometry().bottomRight())
 
     def showWidget(self, widget):
@@ -336,6 +340,8 @@ class myPanel(QWidget):
         self._color = color
         self.show()
         self.setAttribute(Qt.WA_TranslucentBackground)
+        self._autoHide = True
+        
         if not vertical:
             self.setLayout(QHBoxLayout())
         else:
@@ -349,3 +355,17 @@ class myPanel(QWidget):
         r = event.rect()
         painter = QPainter(self)
         painter.fillRect(r, self._color)
+        
+    def setAutoHide(self, value):
+        self._autoHide = value
+        
+    def mouseReleaseEvent(self, event):
+        if event.button() == Qt.RightButton:
+            m = QMenu()
+            a = QAction(self.tr("Auto-hide"), m)
+            a.setCheckable(True)
+            a.setChecked(self._autoHide)
+            a.toggled.connect(self.setAutoHide)
+            m.addAction(a)
+            m.popup(self.mapToGlobal(event.pos()))
+            self._m = m
