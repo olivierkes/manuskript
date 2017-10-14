@@ -258,7 +258,8 @@ class fullScreenEditor(QWidget):
         return QWidget.eventFilter(self, obj, event)
 
     def dataChanged(self, topLeft, bottomRight):
-        if not self._index:
+        # This is called sometimes after self has been destroyed. Don't know why.
+        if not self or not self._index:
             return
         if topLeft.row() <= self._index.row() <= bottomRight.row():
             self.updateStatusBar()
