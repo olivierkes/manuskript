@@ -895,6 +895,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             item = QListWidgetItem(self.tabMain.tabIcon(i),
                                    self.tabMain.tabText(i))
             item.setSizeHint(QSize(item.sizeHint().width(), 64))
+            item.setToolTip(self.tabMain.tabText(i))
             item.setTextAlignment(Qt.AlignCenter)
             self.lstTabs.addItem(item)
         self.tabMain.tabBar().hide()
