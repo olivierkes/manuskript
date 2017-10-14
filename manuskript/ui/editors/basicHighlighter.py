@@ -66,6 +66,7 @@ class basicHighlighter(QSyntaxHighlighter):
             fmt = self.format(txt.start())
             fmt.setFontFixedPitch(True)
             fmt.setFontWeight(QFont.DemiBold)
+            fmt.setForeground(Qt.black)  # or text becomes unreadable in some color scheme
             if txt.group(1) == Ref.TextLetter:
                 fmt.setBackground(QBrush(QColor(Qt.blue).lighter(190)))
             elif txt.group(1) == Ref.CharacterLetter:
