@@ -600,7 +600,7 @@ class settingsWindow(QWidget, Ui_Settings):
         self.btnThemeMisspelledColor.clicked.connect(lambda: self.getThemeColor("Text/Misspelled"))
 
         # Paragraph Options
-        self.chkThemeIndent.stateChanged.connect(lambda v: self.setSetting("Spacings/IndendFirstLine", v != 0))
+        self.chkThemeIndent.stateChanged.connect(lambda v: self.setSetting("Spacings/IndentFirstLine", v != 0))
         self.cmbThemeLineSpacing.currentIndexChanged.connect(self.updateLineSpacing)
         self.cmbThemeLineSpacing.currentIndexChanged.connect(self.updateLineSpacing)
         self.spnThemeLineSpacing.valueChanged.connect(lambda v: self.setSetting("Spacings/LineSpacing", v))
@@ -652,7 +652,7 @@ class settingsWindow(QWidget, Ui_Settings):
         self.setButtonColor(self.btnThemeMisspelledColor, self._themeData["Text/Misspelled"])
 
         # Paragraph Options
-        self.chkThemeIndent.setCheckState(Qt.Checked if self._themeData["Spacings/IndendFirstLine"] else Qt.Unchecked)
+        self.chkThemeIndent.setCheckState(Qt.Checked if self._themeData["Spacings/IndentFirstLine"] else Qt.Unchecked)
         self.spnThemeLineSpacing.setEnabled(False)
         if self._themeData["Spacings/LineSpacing"] == 100:
             self.cmbThemeLineSpacing.setCurrentIndex(0)

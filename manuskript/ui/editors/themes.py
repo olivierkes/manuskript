@@ -40,7 +40,7 @@ def loadThemeDatas(themeFile):
     loadThemeSetting(_themeData, settings, "Text/Misspelled", "#ff0000")
 
     # Paragraph Options
-    loadThemeSetting(_themeData, settings, "Spacings/IndendFirstLine", False)
+    loadThemeSetting(_themeData, settings, "Spacings/IndentFirstLine", False)
     loadThemeSetting(_themeData, settings, "Spacings/LineSpacing", 100)
     loadThemeSetting(_themeData, settings, "Spacings/ParagraphAbove", 0)
     loadThemeSetting(_themeData, settings, "Spacings/ParagraphBelow", 0)
@@ -51,7 +51,14 @@ def loadThemeDatas(themeFile):
 
 def loadThemeSetting(datas, settings, key, default):
     if settings.contains(key):
-        datas[key] = type(default)(settings.value(key))
+        
+        if type(default) != type(True):
+            datas[key] = type(default)(settings.value(key))
+        else:
+            # Bools are stored as "true"/"false", but both are read as True
+            # since they are non-empty string.
+            datas[key] = True if settings.value(key) == "true" else False
+            
     else:
         datas[key] = default
 
@@ -172,7 +179,7 @@ def themeEditorGeometry(themeDatas, textRect):
 def getThemeBlockFormat(themeDatas):
     bf = QTextBlockFormat()
     bf.setLineHeight(themeDatas["Spacings/LineSpacing"], QTextBlockFormat.ProportionalHeight)
-    bf.setTextIndent(themeDatas["Spacings/TabWidth"] * 1 if themeDatas["Spacings/IndendFirstLine"] else 0)
+    bf.setTextIndent(themeDatas["Spacings/TabWidth"] * 1 if themeDatas["Spacings/IndentFirstLine"] else 0)
     bf.setTopMargin(themeDatas["Spacings/ParagraphAbove"])
     bf.setBottomMargin(themeDatas["Spacings/ParagraphBelow"])
     return bf
@@ -269,7 +276,7 @@ def addThemePreviewText(pixmap, themeDatas, screenRect):
     # themeDatas["Text/Misspelled"]
 
     ## Paragraph Options
-    ##themeDatas["Spacings/IndendFirstLine"]
+    ##themeDatas["Spacings/IndentFirstLine"]
     ##themeDatas["Spacings/LineSpacing"]
     ##themeDatas["Spacings/ParagraphAbove"]
     ##themeDatas["Spacings/ParagraphBelow"]
