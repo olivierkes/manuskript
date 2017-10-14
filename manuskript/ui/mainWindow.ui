@@ -774,144 +774,187 @@
               </widget>
               <widget class="QTabWidget" name="tabPersos">
                <property name="currentIndex">
-                <number>3</number>
+                <number>0</number>
                </property>
                <widget class="QWidget" name="infos">
                 <attribute name="title">
                  <string>Basic infos</string>
                 </attribute>
-                <layout class="QFormLayout" name="formLayout">
-                 <property name="fieldGrowthPolicy">
-                  <enum>QFormLayout::ExpandingFieldsGrow</enum>
+                <layout class="QVBoxLayout" name="verticalLayout_20">
+                 <property name="spacing">
+                  <number>0</number>
                  </property>
-                 <item row="0" column="0">
-                  <widget class="QLabel" name="label_3">
-                   <property name="text">
-                    <string>Name</string>
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QScrollArea" name="scrollAreaPersoInfos">
+                   <property name="frameShape">
+                    <enum>QFrame::NoFrame</enum>
                    </property>
-                  </widget>
-                 </item>
-                 <item row="1" column="0">
-                  <widget class="QLabel" name="label_18">
-                   <property name="text">
-                    <string>Importance</string>
+                   <property name="lineWidth">
+                    <number>0</number>
                    </property>
-                  </widget>
-                 </item>
-                 <item row="2" column="0">
-                  <widget class="QLabel" name="label_4">
-                   <property name="text">
-                    <string>Motivation</string>
+                   <property name="widgetResizable">
+                    <bool>true</bool>
                    </property>
-                  </widget>
-                 </item>
-                 <item row="3" column="0">
-                  <widget class="QLabel" name="label_5">
-                   <property name="text">
-                    <string>Goal</string>
+                   <property name="alignment">
+                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
                    </property>
-                  </widget>
-                 </item>
-                 <item row="4" column="0">
-                  <widget class="QLabel" name="label_6">
-                   <property name="text">
-                    <string>Conflict</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="5" column="0">
-                  <widget class="QLabel" name="label_7">
-                   <property name="text">
-                    <string>Epiphany</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="6" column="0">
-                  <widget class="QLabel" name="label_24">
-                   <property name="text">
-                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One sentence&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="7" column="0">
-                  <widget class="QLabel" name="label_8">
-                   <property name="text">
-                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One paragraph&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="8" column="1">
-                  <layout class="QHBoxLayout" name="horizontalLayout_21">
-                   <item>
-                    <spacer name="horizontalSpacer_3">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
+                   <widget class="QWidget" name="scrollAreaPersoInfosWidget">
+                    <property name="geometry">
+                     <rect>
+                      <x>0</x>
+                      <y>0</y>
+                      <width>444</width>
+                      <height>709</height>
+                     </rect>
+                    </property>
+                    <layout class="QFormLayout" name="formLayout_8">
+                     <property name="fieldGrowthPolicy">
+                      <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
                      </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>40</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                   <item>
-                    <widget class="QPushButton" name="btnStepFour">
-                     <property name="text">
-                      <string>Next</string>
-                     </property>
-                     <property name="icon">
-                      <iconset theme="go-next">
-                       <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
-                     </property>
-                     <property name="flat">
-                      <bool>true</bool>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </item>
-                 <item row="1" column="1">
-                  <widget class="sldImportance" name="sldPersoImportance" native="true">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
+                     <item row="4" column="0">
+                      <widget class="QLabel" name="label_4">
+                       <property name="text">
+                        <string>Motivation</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="4" column="1">
+                      <widget class="textEditView" name="txtPersoMotivation"/>
+                     </item>
+                     <item row="5" column="0">
+                      <widget class="QLabel" name="label_5">
+                       <property name="text">
+                        <string>Goal</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="5" column="1">
+                      <widget class="textEditView" name="txtPersoGoal"/>
+                     </item>
+                     <item row="6" column="0">
+                      <widget class="QLabel" name="label_6">
+                       <property name="text">
+                        <string>Conflict</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="6" column="1">
+                      <widget class="textEditView" name="txtPersoConflict"/>
+                     </item>
+                     <item row="7" column="0">
+                      <widget class="QLabel" name="label_7">
+                       <property name="text">
+                        <string>Epiphany</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="7" column="1">
+                      <widget class="textEditView" name="txtPersoEpiphany"/>
+                     </item>
+                     <item row="8" column="0">
+                      <widget class="QLabel" name="label_24">
+                       <property name="text">
+                        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One sentence&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="8" column="1">
+                      <widget class="textEditView" name="txtPersoSummarySentence"/>
+                     </item>
+                     <item row="9" column="0">
+                      <widget class="QLabel" name="label_8">
+                       <property name="text">
+                        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One paragraph&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="9" column="1">
+                      <widget class="textEditView" name="txtPersoSummaryPara"/>
+                     </item>
+                     <item row="10" column="1">
+                      <layout class="QHBoxLayout" name="horizontalLayout_21">
+                       <item>
+                        <spacer name="horizontalSpacer_3">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>40</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item>
+                        <widget class="QPushButton" name="btnStepFour">
+                         <property name="text">
+                          <string>Next</string>
+                         </property>
+                         <property name="icon">
+                          <iconset theme="go-next">
+                           <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
+                         </property>
+                         <property name="flat">
+                          <bool>true</bool>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item row="3" column="0">
+                      <widget class="QLabel" name="label_18">
+                       <property name="text">
+                        <string>Importance</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="3" column="1">
+                      <widget class="sldImportance" name="sldPersoImportance" native="true">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="2" column="0">
+                      <widget class="QLabel" name="label_3">
+                       <property name="text">
+                        <string>Name</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="2" column="1">
+                      <layout class="QHBoxLayout" name="horizontalLayout_3">
+                       <item>
+                        <widget class="lineEditView" name="txtPersoName"/>
+                       </item>
+                       <item>
+                        <widget class="QPushButton" name="btnPersoColor">
+                         <property name="text">
+                          <string/>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </widget>
                   </widget>
-                 </item>
-                 <item row="0" column="1">
-                  <layout class="QHBoxLayout" name="horizontalLayout_3">
-                   <item>
-                    <widget class="lineEditView" name="txtPersoName"/>
-                   </item>
-                   <item>
-                    <widget class="QPushButton" name="btnPersoColor">
-                     <property name="text">
-                      <string/>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </item>
-                 <item row="2" column="1">
-                  <widget class="textEditView" name="txtPersoMotivation"/>
-                 </item>
-                 <item row="3" column="1">
-                  <widget class="textEditView" name="txtPersoGoal"/>
-                 </item>
-                 <item row="4" column="1">
-                  <widget class="textEditView" name="txtPersoConflict"/>
-                 </item>
-                 <item row="5" column="1">
-                  <widget class="textEditView" name="txtPersoEpiphany"/>
-                 </item>
-                 <item row="6" column="1">
-                  <widget class="textEditView" name="txtPersoSummarySentence"/>
-                 </item>
-                 <item row="7" column="1">
-                  <widget class="textEditView" name="txtPersoSummaryPara"/>
                  </item>
                 </layout>
                </widget>

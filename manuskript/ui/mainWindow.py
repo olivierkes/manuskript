@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/mainWindow.ui'
 #
-# Created: Fri Oct 13 07:42:41 2017
+# Created: Sat Oct 14 14:03:18 2017
 #      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -368,80 +368,95 @@ class Ui_MainWindow(object):
         self.tabPersos.setObjectName("tabPersos")
         self.infos = QtWidgets.QWidget()
         self.infos.setObjectName("infos")
-        self.formLayout = QtWidgets.QFormLayout(self.infos)
-        self.formLayout.setFieldGrowthPolicy(QtWidgets.QFormLayout.ExpandingFieldsGrow)
-        self.formLayout.setObjectName("formLayout")
-        self.label_3 = QtWidgets.QLabel(self.infos)
-        self.label_3.setObjectName("label_3")
-        self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_3)
-        self.label_18 = QtWidgets.QLabel(self.infos)
-        self.label_18.setObjectName("label_18")
-        self.formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_18)
-        self.label_4 = QtWidgets.QLabel(self.infos)
+        self.verticalLayout_20 = QtWidgets.QVBoxLayout(self.infos)
+        self.verticalLayout_20.setSpacing(0)
+        self.verticalLayout_20.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_20.setObjectName("verticalLayout_20")
+        self.scrollAreaPersoInfos = QtWidgets.QScrollArea(self.infos)
+        self.scrollAreaPersoInfos.setFrameShape(QtWidgets.QFrame.NoFrame)
+        self.scrollAreaPersoInfos.setLineWidth(0)
+        self.scrollAreaPersoInfos.setWidgetResizable(True)
+        self.scrollAreaPersoInfos.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
+        self.scrollAreaPersoInfos.setObjectName("scrollAreaPersoInfos")
+        self.scrollAreaPersoInfosWidget = QtWidgets.QWidget()
+        self.scrollAreaPersoInfosWidget.setGeometry(QtCore.QRect(0, 0, 444, 709))
+        self.scrollAreaPersoInfosWidget.setObjectName("scrollAreaPersoInfosWidget")
+        self.formLayout_8 = QtWidgets.QFormLayout(self.scrollAreaPersoInfosWidget)
+        self.formLayout_8.setFieldGrowthPolicy(QtWidgets.QFormLayout.AllNonFixedFieldsGrow)
+        self.formLayout_8.setObjectName("formLayout_8")
+        self.label_4 = QtWidgets.QLabel(self.scrollAreaPersoInfosWidget)
         self.label_4.setObjectName("label_4")
-        self.formLayout.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_4)
-        self.label_5 = QtWidgets.QLabel(self.infos)
+        self.formLayout_8.setWidget(4, QtWidgets.QFormLayout.LabelRole, self.label_4)
+        self.txtPersoMotivation = textEditView(self.scrollAreaPersoInfosWidget)
+        self.txtPersoMotivation.setObjectName("txtPersoMotivation")
+        self.formLayout_8.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.txtPersoMotivation)
+        self.label_5 = QtWidgets.QLabel(self.scrollAreaPersoInfosWidget)
         self.label_5.setObjectName("label_5")
-        self.formLayout.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.label_5)
-        self.label_6 = QtWidgets.QLabel(self.infos)
+        self.formLayout_8.setWidget(5, QtWidgets.QFormLayout.LabelRole, self.label_5)
+        self.txtPersoGoal = textEditView(self.scrollAreaPersoInfosWidget)
+        self.txtPersoGoal.setObjectName("txtPersoGoal")
+        self.formLayout_8.setWidget(5, QtWidgets.QFormLayout.FieldRole, self.txtPersoGoal)
+        self.label_6 = QtWidgets.QLabel(self.scrollAreaPersoInfosWidget)
         self.label_6.setObjectName("label_6")
-        self.formLayout.setWidget(4, QtWidgets.QFormLayout.LabelRole, self.label_6)
-        self.label_7 = QtWidgets.QLabel(self.infos)
+        self.formLayout_8.setWidget(6, QtWidgets.QFormLayout.LabelRole, self.label_6)
+        self.txtPersoConflict = textEditView(self.scrollAreaPersoInfosWidget)
+        self.txtPersoConflict.setObjectName("txtPersoConflict")
+        self.formLayout_8.setWidget(6, QtWidgets.QFormLayout.FieldRole, self.txtPersoConflict)
+        self.label_7 = QtWidgets.QLabel(self.scrollAreaPersoInfosWidget)
         self.label_7.setObjectName("label_7")
-        self.formLayout.setWidget(5, QtWidgets.QFormLayout.LabelRole, self.label_7)
-        self.label_24 = QtWidgets.QLabel(self.infos)
+        self.formLayout_8.setWidget(7, QtWidgets.QFormLayout.LabelRole, self.label_7)
+        self.txtPersoEpiphany = textEditView(self.scrollAreaPersoInfosWidget)
+        self.txtPersoEpiphany.setObjectName("txtPersoEpiphany")
+        self.formLayout_8.setWidget(7, QtWidgets.QFormLayout.FieldRole, self.txtPersoEpiphany)
+        self.label_24 = QtWidgets.QLabel(self.scrollAreaPersoInfosWidget)
         self.label_24.setObjectName("label_24")
-        self.formLayout.setWidget(6, QtWidgets.QFormLayout.LabelRole, self.label_24)
-        self.label_8 = QtWidgets.QLabel(self.infos)
+        self.formLayout_8.setWidget(8, QtWidgets.QFormLayout.LabelRole, self.label_24)
+        self.txtPersoSummarySentence = textEditView(self.scrollAreaPersoInfosWidget)
+        self.txtPersoSummarySentence.setObjectName("txtPersoSummarySentence")
+        self.formLayout_8.setWidget(8, QtWidgets.QFormLayout.FieldRole, self.txtPersoSummarySentence)
+        self.label_8 = QtWidgets.QLabel(self.scrollAreaPersoInfosWidget)
         self.label_8.setObjectName("label_8")
-        self.formLayout.setWidget(7, QtWidgets.QFormLayout.LabelRole, self.label_8)
+        self.formLayout_8.setWidget(9, QtWidgets.QFormLayout.LabelRole, self.label_8)
+        self.txtPersoSummaryPara = textEditView(self.scrollAreaPersoInfosWidget)
+        self.txtPersoSummaryPara.setObjectName("txtPersoSummaryPara")
+        self.formLayout_8.setWidget(9, QtWidgets.QFormLayout.FieldRole, self.txtPersoSummaryPara)
         self.horizontalLayout_21 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_21.setObjectName("horizontalLayout_21")
         spacerItem10 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_21.addItem(spacerItem10)
-        self.btnStepFour = QtWidgets.QPushButton(self.infos)
+        self.btnStepFour = QtWidgets.QPushButton(self.scrollAreaPersoInfosWidget)
         icon = QtGui.QIcon.fromTheme("go-next")
         self.btnStepFour.setIcon(icon)
         self.btnStepFour.setFlat(True)
         self.btnStepFour.setObjectName("btnStepFour")
         self.horizontalLayout_21.addWidget(self.btnStepFour)
-        self.formLayout.setLayout(8, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout_21)
-        self.sldPersoImportance = sldImportance(self.infos)
+        self.formLayout_8.setLayout(10, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout_21)
+        self.label_18 = QtWidgets.QLabel(self.scrollAreaPersoInfosWidget)
+        self.label_18.setObjectName("label_18")
+        self.formLayout_8.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.label_18)
+        self.sldPersoImportance = sldImportance(self.scrollAreaPersoInfosWidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.sldPersoImportance.sizePolicy().hasHeightForWidth())
         self.sldPersoImportance.setSizePolicy(sizePolicy)
         self.sldPersoImportance.setObjectName("sldPersoImportance")
-        self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.sldPersoImportance)
+        self.formLayout_8.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.sldPersoImportance)
+        self.label_3 = QtWidgets.QLabel(self.scrollAreaPersoInfosWidget)
+        self.label_3.setObjectName("label_3")
+        self.formLayout_8.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_3)
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        self.txtPersoName = lineEditView(self.infos)
+        self.txtPersoName = lineEditView(self.scrollAreaPersoInfosWidget)
         self.txtPersoName.setObjectName("txtPersoName")
         self.horizontalLayout_3.addWidget(self.txtPersoName)
-        self.btnPersoColor = QtWidgets.QPushButton(self.infos)
+        self.btnPersoColor = QtWidgets.QPushButton(self.scrollAreaPersoInfosWidget)
         self.btnPersoColor.setText("")
         self.btnPersoColor.setObjectName("btnPersoColor")
         self.horizontalLayout_3.addWidget(self.btnPersoColor)
-        self.formLayout.setLayout(0, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout_3)
-        self.txtPersoMotivation = textEditView(self.infos)
-        self.txtPersoMotivation.setObjectName("txtPersoMotivation")
-        self.formLayout.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.txtPersoMotivation)
-        self.txtPersoGoal = textEditView(self.infos)
-        self.txtPersoGoal.setObjectName("txtPersoGoal")
-        self.formLayout.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.txtPersoGoal)
-        self.txtPersoConflict = textEditView(self.infos)
-        self.txtPersoConflict.setObjectName("txtPersoConflict")
-        self.formLayout.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.txtPersoConflict)
-        self.txtPersoEpiphany = textEditView(self.infos)
-        self.txtPersoEpiphany.setObjectName("txtPersoEpiphany")
-        self.formLayout.setWidget(5, QtWidgets.QFormLayout.FieldRole, self.txtPersoEpiphany)
-        self.txtPersoSummarySentence = textEditView(self.infos)
-        self.txtPersoSummarySentence.setObjectName("txtPersoSummarySentence")
-        self.formLayout.setWidget(6, QtWidgets.QFormLayout.FieldRole, self.txtPersoSummarySentence)
-        self.txtPersoSummaryPara = textEditView(self.infos)
-        self.txtPersoSummaryPara.setObjectName("txtPersoSummaryPara")
-        self.formLayout.setWidget(7, QtWidgets.QFormLayout.FieldRole, self.txtPersoSummaryPara)
+        self.formLayout_8.setLayout(2, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout_3)
+        self.scrollAreaPersoInfos.setWidget(self.scrollAreaPersoInfosWidget)
+        self.verticalLayout_20.addWidget(self.scrollAreaPersoInfos)
         self.tabPersos.addTab(self.infos, "")
         self.tab_11 = QtWidgets.QWidget()
         self.tab_11.setObjectName("tab_11")
@@ -1187,7 +1202,7 @@ class Ui_MainWindow(object):
         self.stack.setCurrentIndex(1)
         self.tabMain.setCurrentIndex(2)
         self.tabSummary.setCurrentIndex(0)
-        self.tabPersos.setCurrentIndex(3)
+        self.tabPersos.setCurrentIndex(0)
         self.tabPlot.setCurrentIndex(1)
         self.comboBox_2.setCurrentIndex(0)
         self.stkPlotSummary.setCurrentIndex(0)
@@ -1234,8 +1249,6 @@ class Ui_MainWindow(object):
         self.tabMain.setTabText(self.tabMain.indexOf(self.lytTabSummary), _translate("MainWindow", "Summary"))
         self.groupBox.setTitle(_translate("MainWindow", "Names"))
         self.txtPersosFilter.setPlaceholderText(_translate("MainWindow", "Filter"))
-        self.label_3.setText(_translate("MainWindow", "Name"))
-        self.label_18.setText(_translate("MainWindow", "Importance"))
         self.label_4.setText(_translate("MainWindow", "Motivation"))
         self.label_5.setText(_translate("MainWindow", "Goal"))
         self.label_6.setText(_translate("MainWindow", "Conflict"))
@@ -1243,6 +1256,8 @@ class Ui_MainWindow(object):
         self.label_24.setText(_translate("MainWindow", "<html><head/><body><p align=\"right\">One sentence<br/>summary</p></body></html>"))
         self.label_8.setText(_translate("MainWindow", "<html><head/><body><p align=\"right\">One paragraph<br/>summary</p></body></html>"))
         self.btnStepFour.setText(_translate("MainWindow", "Next"))
+        self.label_18.setText(_translate("MainWindow", "Importance"))
+        self.label_3.setText(_translate("MainWindow", "Name"))
         self.tabPersos.setTabText(self.tabPersos.indexOf(self.infos), _translate("MainWindow", "Basic infos"))
         self.btnStepSix.setText(_translate("MainWindow", "Next"))
         self.tabPersos.setTabText(self.tabPersos.indexOf(self.tab_11), _translate("MainWindow", "Summary"))
@@ -1324,18 +1339,18 @@ class Ui_MainWindow(object):
         self.actAbout.setText(_translate("MainWindow", "&About"))
         self.actAbout.setToolTip(_translate("MainWindow", "About Manuskript"))
 
-from manuskript.ui.welcome import welcome
-from manuskript.ui.cheatSheet import cheatSheet
+from manuskript.ui.editors.mainEditor import mainEditor
 from manuskript.ui.views.lineEditView import lineEditView
-from manuskript.ui.views.textEditCompleter import textEditCompleter
-from manuskript.ui.views.storylineView import storylineView
-from manuskript.ui.search import search
-from manuskript.ui.views.basicItemView import basicItemView
-from manuskript.ui.views.metadataView import metadataView
 from manuskript.ui.views.sldImportance import sldImportance
-from manuskript.ui.views.plotTreeView import plotTreeView
-from manuskript.ui.views.textEditView import textEditView
-from manuskript.ui.views.outlineView import outlineView
 from manuskript.ui.views.treeView import treeView
 from manuskript.ui.views.characterTreeView import characterTreeView
-from manuskript.ui.editors.mainEditor import mainEditor
+from manuskript.ui.views.basicItemView import basicItemView
+from manuskript.ui.views.textEditCompleter import textEditCompleter
+from manuskript.ui.views.plotTreeView import plotTreeView
+from manuskript.ui.views.metadataView import metadataView
+from manuskript.ui.cheatSheet import cheatSheet
+from manuskript.ui.views.storylineView import storylineView
+from manuskript.ui.search import search
+from manuskript.ui.views.textEditView import textEditView
+from manuskript.ui.views.outlineView import outlineView
+from manuskript.ui.welcome import welcome
