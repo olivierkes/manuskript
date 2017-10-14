@@ -103,7 +103,7 @@ def saveProject(zip=None):
     collaborative work, versionning, or third-party editing.
     @param zip: if True, saves as a single file. If False, saves as plain-text. If None, tries to determine based on
     settings.
-    @return: Nothing
+    @return: True if successful, False otherwise.
     """
     if zip is None:
         zip = settings.saveToZip
@@ -295,6 +295,10 @@ def saveProject(zip=None):
     files.append(("settings.txt", settings.save(protocol=0)))
 
     project = mw.currentProject
+    
+    if not os.access(project, os.W_OK):
+        print("Error: you don't have write access to save this project there.")
+        return False
 
     ####################################################################################################################
     # Save to zip
@@ -311,6 +315,7 @@ def saveProject(zip=None):
             zf.writestr(filename, content, compress_type=compression)
 
         zf.close()
+        return True
 
     ####################################################################################################################
     # Save to plain text
@@ -403,6 +408,8 @@ def saveProject(zip=None):
         # Write the project file's content
         with open(project, "w", encoding='utf8') as f:
             f.write("1")  # Format number
+            
+        return True
 
 
 def addWorldItem(root, mdl, parent=QModelIndex()):

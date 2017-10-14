@@ -502,13 +502,17 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.currentProject = projectName
             QSettings().setValue("lastProject", projectName)
 
-        loadSave.saveProject()  # version=0
+        r = loadSave.saveProject()  # version=0
         self.saveTimerNoChanges.stop()
+        
+        if r:
+            feedback = self.tr("Project {} saved.").format(self.currentProject)
+        else:
+            feedback = self.tr("WARNING: Project {} not saved.").format(self.currentProject)
 
         # Giving some feedback
-        print(self.tr("Project {} saved.").format(self.currentProject))
-        self.statusBar().showMessage(
-                self.tr("Project {} saved.").format(self.currentProject), 5000)
+        print(feedback)
+        self.statusBar().showMessage(feedback, 5000)
 
     def loadEmptyDatas(self):
         self.mdlFlatData = QStandardItemModel(self)
