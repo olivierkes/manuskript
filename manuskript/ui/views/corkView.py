@@ -46,3 +46,14 @@ class corkView(QListView, dndView, outlineBasics):
     def mouseReleaseEvent(self, event):
         QListView.mouseReleaseEvent(self, event)
         outlineBasics.mouseReleaseEvent(self, event)
+        
+    def mouseDoubleClickEvent(self, event):
+        if self.selectedIndexes() == []:
+            idx = self.rootIndex()
+            parent = idx.parent()
+            
+            from manuskript.functions import MW
+            MW.treeRedacOutline.setCurrentIndex(parent)
+            #self.setRootIndex(parent)
+        else:
+            r = QListView.mouseDoubleClickEvent(self, event)
