@@ -28,6 +28,7 @@ class mainEditor(QWidget, Ui_mainEditor):
 
         # Connections --------------------------------------------------------
 
+        self.btnGoUp.clicked.connect(self.goToParentItem)
         self.sldCorkSizeFactor.valueChanged.connect(
                 self.setCorkSizeFactor, AUC)
         self.btnRedacFolderCork.toggled.connect(
@@ -151,6 +152,11 @@ class mainEditor(QWidget, Ui_mainEditor):
     def openIndexes(self, indexes, newTab=False):
         for i in indexes:
             self.setCurrentModelIndex(i, newTab)
+            
+    def goToParentItem(self):
+        idx = self.currentEditor().currentIndex
+        from manuskript.functions import MW
+        MW.treeRedacOutline.setCurrentIndex(idx.parent())
 
     def setCurrentModelIndex(self, index, newTab=False, tabWidget=None):
 

@@ -53,7 +53,7 @@ class corkView(QListView, dndView, outlineBasics):
             parent = idx.parent()
             
             from manuskript.functions import MW
-            MW.treeRedacOutline.setCurrentIndex(parent)
+            MW.openIndex(parent)
             #self.setRootIndex(parent)
         else:
             r = QListView.mouseDoubleClickEvent(self, event)

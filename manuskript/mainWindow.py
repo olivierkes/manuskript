@@ -304,9 +304,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.txtWorldPassion.setCurrentModelIndex(index)
         self.txtWorldConflict.setCurrentModelIndex(index)
 
-    # ###############################################################################
-    # # LOAD AND SAVE
-    # ###############################################################################
+    ###############################################################################
+    # EDITOR
+    ###############################################################################
+
+    def openIndex(self, index):
+        self.treeRedacOutline.setCurrentIndex(index)
+
+    ###############################################################################
+    # LOAD AND SAVE
+    ###############################################################################
 
     def loadProject(self, project, loadFromFile=True):
         """Loads the project ``project``.

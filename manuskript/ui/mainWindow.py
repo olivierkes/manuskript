@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/mainWindow.ui'
 #
-# Created: Sat Oct 14 20:38:54 2017
+# Created: Sat Oct 14 21:07:22 2017
 #      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -1339,18 +1339,18 @@ class Ui_MainWindow(object):
         self.actAbout.setText(_translate("MainWindow", "&About"))
         self.actAbout.setToolTip(_translate("MainWindow", "About Manuskript"))
 
-from manuskript.ui.views.basicItemView import basicItemView
-from manuskript.ui.editors.mainEditor import mainEditor
-from manuskript.ui.views.treeView import treeView
-from manuskript.ui.views.outlineView import outlineView
+from manuskript.ui.views.textEditCompleter import textEditCompleter
 from manuskript.ui.views.metadataView import metadataView
-from manuskript.ui.views.storylineView import storylineView
-from manuskript.ui.views.lineEditView import lineEditView
 from manuskript.ui.welcome import welcome
 from manuskript.ui.search import search
-from manuskript.ui.views.characterTreeView import characterTreeView
-from manuskript.ui.cheatSheet import cheatSheet
+from manuskript.ui.views.lineEditView import lineEditView
+from manuskript.ui.views.basicItemView import basicItemView
+from manuskript.ui.views.outlineView import outlineView
+from manuskript.ui.views.storylineView import storylineView
+from manuskript.ui.views.treeView import treeView
 from manuskript.ui.views.textEditView import textEditView
-from manuskript.ui.views.textEditCompleter import textEditCompleter
+from manuskript.ui.editors.mainEditor import mainEditor
 from manuskript.ui.views.sldImportance import sldImportance
 from manuskript.ui.views.plotTreeView import plotTreeView
+from manuskript.ui.cheatSheet import cheatSheet
+from manuskript.ui.views.characterTreeView import characterTreeView

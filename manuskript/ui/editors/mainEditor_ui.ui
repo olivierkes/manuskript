@@ -42,6 +42,25 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_19">
      <item>
+      <widget class="QPushButton" name="btnGoUp">
+       <property name="toolTip">
+        <string>Go to parent item</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset theme="go-up"/>
+       </property>
+       <property name="shortcut">
+        <string>Alt+Up</string>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="btnRedacFolderText">
        <property name="text">
         <string>Text</string>
