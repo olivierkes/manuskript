@@ -47,19 +47,10 @@ class basicHighlighter(QSyntaxHighlighter):
         #c.joinPreviousEditBlock()
         bf = QTextBlockFormat(self._defaultBlockFormat)
         bf.setAlignment(c.blockFormat().alignment())
-        c.setBlockFormat(bf)
+        if bf != c.blockFormat():
+            c.setBlockFormat(bf)
         #c.endEditBlock()
         #print(" ", self.currentBlock().document().availableUndoSteps())
-
-        # This is an ugly fix.
-        # Calling setBlockFormat adds an item to the undo stack. Don't know why,
-        # or how to change that. So the stacks becomes big and it's impossible
-        # to undo/redo any meaningful change.
-        # Using QTextCursor.joinPreviousEditBlock() doesn't work.
-        # But calling an undo after setting block format works: it doesn't undo
-        # anything, and the stack is not filled.
-        # FIXME: redo still doesn't work
-        self.currentBlock().document().undo(c)
 
         # self.setFormat(0, len(text), self._defaultCharFormat)
 
