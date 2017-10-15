@@ -416,6 +416,10 @@ class settingsWindow(QWidget, Ui_Settings):
         # Update background color in all tabSplitter (tabs)
         for w in mainWindow().findChildren(tabSplitter, QRegExp(".*")):
             w.updateStyleSheet()
+            
+        # Update background color in all folder text view:
+        for w in mainWindow().findChildren(QWidget, QRegExp("editorWidgetFolderText")):
+            w.setStyleSheet("background: {};".format(settings.textEditor["background"]))
 
     def choseEditorFontColor(self):
         color = settings.textEditor["fontColor"]
