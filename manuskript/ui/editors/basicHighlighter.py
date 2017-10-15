@@ -88,6 +88,7 @@ class basicHighlighter(QSyntaxHighlighter):
                 if self.editor._dict and not self.editor._dict.check(word_object.group()):
                     format = self.format(word_object.start())
                     format.setUnderlineColor(self._misspelledColor)
-                    format.setUnderlineStyle(QTextCharFormat.SpellCheckUnderline)
+                    # SpellCheckUnderline fails with some fonts
+                    format.setUnderlineStyle(QTextCharFormat.WaveUnderline)
                     self.setFormat(word_object.start(),
                                    word_object.end() - word_object.start(), format)
