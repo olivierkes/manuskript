@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/mainWindow.ui'
 #
-# Created: Sat Oct 14 21:07:22 2017
+# Created: Sun Oct 15 22:19:14 2017
 #      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -1138,8 +1138,12 @@ class Ui_MainWindow(object):
         self.actSpellcheck.setIcon(icon)
         self.actSpellcheck.setObjectName("actSpellcheck")
         self.actLabels = QtWidgets.QAction(MainWindow)
+        icon = QtGui.QIcon.fromTheme("folder_color_picker")
+        self.actLabels.setIcon(icon)
         self.actLabels.setObjectName("actLabels")
         self.actStatus = QtWidgets.QAction(MainWindow)
+        icon = QtGui.QIcon.fromTheme("applications-development")
+        self.actStatus.setIcon(icon)
         self.actStatus.setObjectName("actStatus")
         self.actViewTree = QtWidgets.QAction(MainWindow)
         self.actViewTree.setObjectName("actViewTree")
@@ -1166,10 +1170,14 @@ class Ui_MainWindow(object):
         self.actCloseProject.setIcon(icon)
         self.actCloseProject.setObjectName("actCloseProject")
         self.actCompile = QtWidgets.QAction(MainWindow)
+        icon = QtGui.QIcon.fromTheme("document-export")
+        self.actCompile.setIcon(icon)
         self.actCompile.setObjectName("actCompile")
         self.actToolFrequency = QtWidgets.QAction(MainWindow)
         self.actToolFrequency.setObjectName("actToolFrequency")
         self.actAbout = QtWidgets.QAction(MainWindow)
+        icon = QtGui.QIcon.fromTheme("stock_view-details")
+        self.actAbout.setIcon(icon)
         self.actAbout.setObjectName("actAbout")
         self.menuFile.addAction(self.actOpen)
         self.menuFile.addAction(self.menuRecents.menuAction())
@@ -1200,7 +1208,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.stack.setCurrentIndex(1)
-        self.tabMain.setCurrentIndex(3)
+        self.tabMain.setCurrentIndex(6)
         self.tabSummary.setCurrentIndex(0)
         self.tabPersos.setCurrentIndex(0)
         self.tabPlot.setCurrentIndex(0)
@@ -1339,18 +1347,18 @@ class Ui_MainWindow(object):
         self.actAbout.setText(_translate("MainWindow", "&About"))
         self.actAbout.setToolTip(_translate("MainWindow", "About Manuskript"))
 
-from manuskript.ui.views.textEditCompleter import textEditCompleter
-from manuskript.ui.views.metadataView import metadataView
+from manuskript.ui.views.textEditView import textEditView
+from manuskript.ui.cheatSheet import cheatSheet
+from manuskript.ui.editors.mainEditor import mainEditor
 from manuskript.ui.welcome import welcome
-from manuskript.ui.search import search
-from manuskript.ui.views.lineEditView import lineEditView
+from manuskript.ui.views.characterTreeView import characterTreeView
 from manuskript.ui.views.basicItemView import basicItemView
-from manuskript.ui.views.outlineView import outlineView
 from manuskript.ui.views.storylineView import storylineView
 from manuskript.ui.views.treeView import treeView
-from manuskript.ui.views.textEditView import textEditView
-from manuskript.ui.editors.mainEditor import mainEditor
-from manuskript.ui.views.sldImportance import sldImportance
+from manuskript.ui.search import search
 from manuskript.ui.views.plotTreeView import plotTreeView
-from manuskript.ui.cheatSheet import cheatSheet
-from manuskript.ui.views.characterTreeView import characterTreeView
+from manuskript.ui.views.metadataView import metadataView
+from manuskript.ui.views.outlineView import outlineView
+from manuskript.ui.views.lineEditView import lineEditView
+from manuskript.ui.views.sldImportance import sldImportance
+from manuskript.ui.views.textEditCompleter import textEditCompleter

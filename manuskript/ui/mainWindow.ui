@@ -124,7 +124,7 @@
            <enum>QTabWidget::Rounded</enum>
           </property>
           <property name="currentIndex">
-           <number>3</number>
+           <number>6</number>
           </property>
           <property name="documentMode">
            <bool>true</bool>
@@ -2349,11 +2349,17 @@ QListView::item:hover {
    </property>
   </action>
   <action name="actLabels">
+   <property name="icon">
+    <iconset theme="folder_color_picker"/>
+   </property>
    <property name="text">
     <string>&amp;Labels...</string>
    </property>
   </action>
   <action name="actStatus">
+   <property name="icon">
+    <iconset theme="applications-development"/>
+   </property>
    <property name="text">
     <string>&amp;Status...</string>
    </property>
@@ -2423,6 +2429,9 @@ QListView::item:hover {
    </property>
   </action>
   <action name="actCompile">
+   <property name="icon">
+    <iconset theme="document-export"/>
+   </property>
    <property name="text">
     <string>Co&amp;mpile</string>
    </property>
@@ -2436,6 +2445,9 @@ QListView::item:hover {
    </property>
   </action>
   <action name="actAbout">
+   <property name="icon">
+    <iconset theme="stock_view-details"/>
+   </property>
    <property name="text">
     <string>&amp;About</string>
    </property>

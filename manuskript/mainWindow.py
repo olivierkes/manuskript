@@ -904,7 +904,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                      "application-text-template", #applications-publishing
                      "stock_people",
                      "stock_shuffle",
-                     "applications-internet",
+                     "emblem-web", #stock_timezone applications-internet
                      "gtk-index", #applications-versioncontrol
                      "gtk-edit",
                      "applications-debugging"
@@ -1104,9 +1104,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         ]
 
         menus = [
-            (self.tr("Tree"), "Tree"),
-            (self.tr("Index cards"), "Cork"),
-            (self.tr("Outline"), "Outline")
+            (self.tr("Tree"), "Tree", "view-list-tree"),
+            (self.tr("Index cards"), "Cork", "view-cards"),
+            (self.tr("Outline"), "Outline", "view-outline")
         ]
 
         submenus = {
@@ -1135,8 +1135,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # print("Generating menus with", settings.viewSettings)
 
-        for mnu, mnud in menus:
+        for mnu, mnud, icon in menus:
             m = QMenu(mnu, self.menuView)
+            if icon:
+                m.setIcon(QIcon.fromTheme(icon))
             for s, sd in submenus[mnud]:
                 m2 = QMenu(s, m)
                 agp = QActionGroup(m2)

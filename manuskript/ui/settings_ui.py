@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/settings_ui.ui'
 #
-# Created: Sun Oct 15 14:43:30 2017
+# Created: Sun Oct 15 22:18:32 2017
 #      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -584,7 +584,8 @@ class Ui_Settings(object):
         self.verticalLayout_17.addLayout(self.horizontalLayout_9)
         spacerItem5 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout_17.addItem(spacerItem5)
-        self.tabViews.addTab(self.tab, "")
+        icon = QtGui.QIcon.fromTheme("view-list-tree")
+        self.tabViews.addTab(self.tab, icon, "")
         self.tab_2 = QtWidgets.QWidget()
         self.tab_2.setObjectName("tab_2")
         self.verticalLayout_11 = QtWidgets.QVBoxLayout(self.tab_2)
@@ -746,7 +747,8 @@ class Ui_Settings(object):
         self.verticalLayout_11.addWidget(self.groupBox_6)
         spacerItem6 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout_11.addItem(spacerItem6)
-        self.tabViews.addTab(self.tab_2, "")
+        icon = QtGui.QIcon.fromTheme("view-outline")
+        self.tabViews.addTab(self.tab_2, icon, "")
         self.tab_3 = QtWidgets.QWidget()
         self.tab_3.setObjectName("tab_3")
         self.gridLayout_3 = QtWidgets.QGridLayout(self.tab_3)
@@ -921,7 +923,8 @@ class Ui_Settings(object):
         self.cmbCorkCorner.addItem("")
         self.formLayout_2.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.cmbCorkCorner)
         self.gridLayout_3.addWidget(self.groupBox_5, 0, 0, 2, 1)
-        self.tabViews.addTab(self.tab_3, "")
+        icon = QtGui.QIcon.fromTheme("view-cards")
+        self.tabViews.addTab(self.tab_3, icon, "")
         self.tab_4 = QtWidgets.QWidget()
         self.tab_4.setObjectName("tab_4")
         self.horizontalLayout_11 = QtWidgets.QHBoxLayout(self.tab_4)
@@ -1146,7 +1149,8 @@ class Ui_Settings(object):
         self.spnEditorParaBelow.setObjectName("spnEditorParaBelow")
         self.formLayout_9.setWidget(5, QtWidgets.QFormLayout.FieldRole, self.spnEditorParaBelow)
         self.horizontalLayout_11.addWidget(self.groupBox_13)
-        self.tabViews.addTab(self.tab_4, "")
+        icon = QtGui.QIcon.fromTheme("view-text")
+        self.tabViews.addTab(self.tab_4, icon, "")
         self.verticalLayout_9.addWidget(self.tabViews)
         self.stack.addWidget(self.stackedWidgetPage2)
         self.stackedWidgetPage3 = QtWidgets.QWidget()
@@ -1634,7 +1638,7 @@ class Ui_Settings(object):
 
         self.retranslateUi(Settings)
         self.stack.setCurrentIndex(2)
-        self.tabViews.setCurrentIndex(0)
+        self.tabViews.setCurrentIndex(3)
         self.themeStack.setCurrentIndex(1)
         self.themeEditStack.setCurrentIndex(0)
         self.lstMenu.currentRowChanged['int'].connect(self.stack.setCurrentIndex)
