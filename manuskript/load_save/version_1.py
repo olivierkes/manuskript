@@ -296,7 +296,10 @@ def saveProject(zip=None):
 
     project = mw.currentProject
     
-    if not os.access(project, os.W_OK):
+    # We check if the file exist and we have write access. If the file does
+    # not exists, we check the parent folder, because it might be a new project.
+    if os.path.exists(project) and not os.access(project, os.W_OK) or \
+       not os.path.exists(project) and not os.access(os.path.dirname(project), os.W_OK):
         print("Error: you don't have write access to save this project there.")
         return False
 
