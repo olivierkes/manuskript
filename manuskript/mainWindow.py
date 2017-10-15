@@ -889,16 +889,28 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Custom "tab" bar on the left
         self.lstTabs.setIconSize(QSize(48, 48))
         for i in range(self.tabMain.count()):
-            icons = ["general-128px.png",
-                     "summary-128px.png",
-                     "characters-128px.png",
-                     "plot-128px.png",
-                     "world-128px.png",
-                     "outline-128px.png",
-                     "editor-128px.png",
-                     ""
-                     ]
-            self.tabMain.setTabIcon(i, QIcon(appPath("icons/Custom/Tabs/{}".format(icons[i]))))
+            #icons = ["general-128px.png",
+                     #"summary-128px.png",
+                     #"characters-128px.png",
+                     #"plot-128px.png",
+                     #"world-128px.png",
+                     #"outline-128px.png",
+                     #"editor-128px.png",
+                     #""
+                     #]
+            #self.tabMain.setTabIcon(i, QIcon(appPath("icons/Custom/Tabs/{}".format(icons[i]))))
+            
+            icons = ["stock_view-details", #info
+                     "application-text-template", #applications-publishing
+                     "stock_people",
+                     "stock_shuffle",
+                     "applications-internet",
+                     "gtk-index", #applications-versioncontrol
+                     "gtk-edit",
+                     "applications-debugging"
+            ]
+            self.tabMain.setTabIcon(i, QIcon.fromTheme(icons[i]))
+            
             item = QListWidgetItem(self.tabMain.tabIcon(i),
                                    self.tabMain.tabText(i))
             item.setSizeHint(QSize(item.sizeHint().width(), 64))
