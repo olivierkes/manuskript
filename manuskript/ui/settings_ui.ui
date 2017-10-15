@@ -792,9 +792,12 @@ text-align:center;</string>
        <item>
         <widget class="QTabWidget" name="tabViews">
          <property name="currentIndex">
-          <number>0</number>
+          <number>3</number>
          </property>
          <widget class="QWidget" name="tab">
+          <attribute name="icon">
+           <iconset theme="view-list-tree"/>
+          </attribute>
           <attribute name="title">
            <string>Tree</string>
           </attribute>
@@ -1168,6 +1171,9 @@ text-align:center;</string>
           </layout>
          </widget>
          <widget class="QWidget" name="tab_2">
+          <attribute name="icon">
+           <iconset theme="view-outline"/>
+          </attribute>
           <attribute name="title">
            <string>Outline</string>
           </attribute>
@@ -1511,6 +1517,9 @@ text-align:center;</string>
           </layout>
          </widget>
          <widget class="QWidget" name="tab_3">
+          <attribute name="icon">
+           <iconset theme="view-cards"/>
+          </attribute>
           <attribute name="title">
            <string>Index cards</string>
           </attribute>
@@ -1909,6 +1918,9 @@ text-align:center;</string>
           </layout>
          </widget>
          <widget class="QWidget" name="tab_4">
+          <attribute name="icon">
+           <iconset theme="view-text"/>
+          </attribute>
           <attribute name="title">
            <string>Text editor</string>
           </attribute>

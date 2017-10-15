@@ -895,16 +895,28 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Custom "tab" bar on the left
         self.lstTabs.setIconSize(QSize(48, 48))
         for i in range(self.tabMain.count()):
-            icons = ["general-128px.png",
-                     "summary-128px.png",
-                     "characters-128px.png",
-                     "plot-128px.png",
-                     "world-128px.png",
-                     "outline-128px.png",
-                     "editor-128px.png",
-                     ""
-                     ]
-            self.tabMain.setTabIcon(i, QIcon(appPath("icons/Custom/Tabs/{}".format(icons[i]))))
+            #icons = ["general-128px.png",
+                     #"summary-128px.png",
+                     #"characters-128px.png",
+                     #"plot-128px.png",
+                     #"world-128px.png",
+                     #"outline-128px.png",
+                     #"editor-128px.png",
+                     #""
+                     #]
+            #self.tabMain.setTabIcon(i, QIcon(appPath("icons/Custom/Tabs/{}".format(icons[i]))))
+            
+            icons = ["stock_view-details", #info
+                     "application-text-template", #applications-publishing
+                     "stock_people",
+                     "stock_shuffle",
+                     "emblem-web", #stock_timezone applications-internet
+                     "gtk-index", #applications-versioncontrol
+                     "gtk-edit",
+                     "applications-debugging"
+            ]
+            self.tabMain.setTabIcon(i, QIcon.fromTheme(icons[i]))
+            
             item = QListWidgetItem(self.tabMain.tabIcon(i),
                                    self.tabMain.tabText(i))
             item.setSizeHint(QSize(item.sizeHint().width(), 64))
@@ -1098,9 +1110,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         ]
 
         menus = [
-            (self.tr("Tree"), "Tree"),
-            (self.tr("Index cards"), "Cork"),
-            (self.tr("Outline"), "Outline")
+            (self.tr("Tree"), "Tree", "view-list-tree"),
+            (self.tr("Index cards"), "Cork", "view-cards"),
+            (self.tr("Outline"), "Outline", "view-outline")
         ]
 
         submenus = {
@@ -1129,8 +1141,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # print("Generating menus with", settings.viewSettings)
 
-        for mnu, mnud in menus:
+        for mnu, mnud, icon in menus:
             m = QMenu(mnu, self.menuView)
+            if icon:
+                m.setIcon(QIcon.fromTheme(icon))
             for s, sd in submenus[mnud]:
                 m2 = QMenu(s, m)
                 agp = QActionGroup(m2)

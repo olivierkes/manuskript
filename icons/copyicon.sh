@@ -10,12 +10,16 @@
 # # execute it:
 # "${command[@]}"
 
+dirSrc=/usr/share/icons/Numix/
+
+dirDest=$(pwd)
+
 name=$1
 echo $name
-cd $(dirname "$0")
-cd Numix
+# cd $(dirname "$0")
+cd $dirSrc
 pwd
 for i in $(find  -name $name.svg); \
                 do echo $i; \
-                cp --parents $i ../NumixMsk; \
+                cp --parents $i $dirDest/NumixMsk; \
 done

@@ -36,10 +36,14 @@ class settingsWindow(QWidget, Ui_Settings):
         self.mw = mainWindow
 
         # UI
+        icons = ["configure", "history-view", "gnome-settings",
+                 "folder_color_picker", "applications-development", "preferences-desktop-theme"]
         for i in range(self.lstMenu.count()):
             item = self.lstMenu.item(i)
             item.setSizeHint(QSize(item.sizeHint().width(), 42))
             item.setTextAlignment(Qt.AlignCenter)
+            if icons[i]:
+                item.setIcon(QIcon.fromTheme(icons[i]))
         self.lstMenu.setMaximumWidth(150)
 
         # General
