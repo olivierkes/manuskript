@@ -335,13 +335,12 @@ class corkDelegate(QStyledItemDelegate):
             p.restore()
 
         # Draw status
-        mainRect = self.mainRect
         status = item.data(Outline.status.value)
         if status:
             it = mainWindow().mdlStatus.item(int(status), 0)
             if it != None:
                 p.save()
-                p.setClipRegion(QRegion(mainRect))
+                p.setClipRegion(QRegion(self.cardRect))
                 f = p.font()
                 f.setPointSize(f.pointSize() + 12)
                 f.setBold(True)
