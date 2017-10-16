@@ -11,6 +11,7 @@ from PyQt5.QtWidgets import QMainWindow, QHeaderView, qApp, QMenu, QActionGroup,
 from manuskript import settings
 from manuskript.enums import Character, PlotStep, Plot, World, Outline
 from manuskript.functions import AUC, wordCount, appPath, findWidgetsOfClass
+import manuskript.functions as F
 from manuskript import loadSave
 from manuskript.models.characterModel import characterModel
 from manuskript.models.outlineModel import outlineModel
@@ -900,16 +901,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                      #]
             #self.tabMain.setTabIcon(i, QIcon(appPath("icons/Custom/Tabs/{}".format(icons[i]))))
             
-            icons = ["stock_view-details", #info
-                     "application-text-template", #applications-publishing
-                     "stock_people",
-                     "stock_shuffle",
-                     "emblem-web", #stock_timezone applications-internet
-                     "gtk-index", #applications-versioncontrol
-                     "gtk-edit",
-                     "applications-debugging"
+            icons = [QIcon.fromTheme("stock_view-details"), #info
+                     QIcon.fromTheme("application-text-template"), #applications-publishing
+                     F.themeIcon("characters"),
+                     F.themeIcon("plots"),
+                     F.themeIcon("world"),
+                     F.themeIcon("outline"),
+                     QIcon.fromTheme("gtk-edit"),
+                     QIcon.fromTheme("applications-debugging")
             ]
-            self.tabMain.setTabIcon(i, QIcon.fromTheme(icons[i]))
+            self.tabMain.setTabIcon(i, icons[i])
             
             item = QListWidgetItem(self.tabMain.tabIcon(i),
                                    self.tabMain.tabText(i))

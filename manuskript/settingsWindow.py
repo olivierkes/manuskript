@@ -13,7 +13,7 @@ from PyQt5.QtWidgets import qApp
 from manuskript import settings
 from manuskript.enums import Outline
 from manuskript.functions import allPaths, iconColor, writablePath, appPath, findWidgetsOfClass
-from manuskript.functions import mainWindow, findBackground
+from manuskript.functions import mainWindow, findBackground, themeIcon
 from manuskript.ui.editors.tabSplitter import tabSplitter
 from manuskript.ui.editors.themes import createThemePreview
 from manuskript.ui.editors.themes import getThemeName
@@ -36,14 +36,19 @@ class settingsWindow(QWidget, Ui_Settings):
         self.mw = mainWindow
 
         # UI
-        icons = ["configure", "history-view", "gnome-settings",
-                 "folder_color_picker", "applications-development", "preferences-desktop-theme"]
+        icons = [QIcon.fromTheme("configure"), 
+                 QIcon.fromTheme("history-view"), 
+                 QIcon.fromTheme("gnome-settings"),
+                 themeIcon("label"),
+                 themeIcon("status"),
+                 QIcon.fromTheme("preferences-desktop-theme")
+                ]
         for i in range(self.lstMenu.count()):
             item = self.lstMenu.item(i)
             item.setSizeHint(QSize(item.sizeHint().width(), 42))
             item.setTextAlignment(Qt.AlignCenter)
             if icons[i]:
-                item.setIcon(QIcon.fromTheme(icons[i]))
+                item.setIcon(icons[i])
         self.lstMenu.setMaximumWidth(150)
 
         # General

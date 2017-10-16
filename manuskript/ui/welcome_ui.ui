@@ -176,6 +176,9 @@
               <property name="text">
                <string>Add level</string>
               </property>
+              <property name="icon">
+               <iconset theme="list-add"/>
+              </property>
              </widget>
             </item>
             <item>
@@ -185,6 +188,9 @@
               </property>
               <property name="text">
                <string>Add wordcount</string>
+              </property>
+              <property name="icon">
+               <iconset theme="applications-debugging"/>
               </property>
              </widget>
             </item>
@@ -231,6 +237,9 @@
           <property name="text">
            <string>Open...</string>
           </property>
+          <property name="icon">
+           <iconset theme="document-open"/>
+          </property>
          </widget>
         </item>
         <item>
@@ -238,12 +247,18 @@
           <property name="text">
            <string>Recent</string>
           </property>
+          <property name="icon">
+           <iconset theme="folder-recent"/>
+          </property>
          </widget>
         </item>
         <item>
          <widget class="QPushButton" name="btnCreate">
           <property name="text">
            <string>Create</string>
+          </property>
+          <property name="icon">
+           <iconset theme="dialog-ok"/>
           </property>
          </widget>
         </item>

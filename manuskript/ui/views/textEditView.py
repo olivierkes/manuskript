@@ -3,12 +3,12 @@
 import re
 
 from PyQt5.QtCore import QTimer, QModelIndex, Qt, QEvent, pyqtSignal, QRegExp
-from PyQt5.QtGui import QTextBlockFormat, QTextCharFormat, QFont, QColor, QMouseEvent, QTextCursor
+from PyQt5.QtGui import QTextBlockFormat, QTextCharFormat, QFont, QColor, QIcon, QMouseEvent, QTextCursor
 from PyQt5.QtWidgets import QTextEdit, qApp, QAction, QMenu
 
 from manuskript import settings
 from manuskript.enums import Outline
-from manuskript.functions import AUC
+from manuskript.functions import AUC, themeIcon
 from manuskript.functions import toString
 from manuskript.models.outlineModel import outlineModel
 from manuskript.ui.editors.MDFunctions import MDFormatSelection
@@ -413,6 +413,7 @@ class textEditView(QTextEdit):
             selectedWord = cursor.selectedText()
             if not valid:
                 spell_menu = QMenu(self.tr('Spelling Suggestions'), self)
+                spell_menu.setIcon(themeIcon("spelling"))
                 for word in self._dict.suggest(text):
                     action = self.SpellAction(word, spell_menu)
                     action.correct.connect(self.correctWord)
@@ -423,6 +424,7 @@ class textEditView(QTextEdit):
                     popup_menu.insertSeparator(popup_menu.actions()[0])
                     # Adds: add to dictionary
                     addAction = QAction(self.tr("&Add to dictionary"), popup_menu)
+                    addAction.setIcon(QIcon.fromTheme("list-add"))
                     addAction.triggered.connect(self.addWordToDict)
                     addAction.setData(selectedWord)
                     popup_menu.insertAction(popup_menu.actions()[0], addAction)
@@ -435,6 +437,7 @@ class textEditView(QTextEdit):
                 popup_menu.insertSeparator(popup_menu.actions()[0])
                 # Adds: remove from dictionary
                 rmAction = QAction(self.tr("&Remove from custom dictionary"), popup_menu)
+                rmAction.setIcon(QIcon.fromTheme("list-remove"))
                 rmAction.triggered.connect(self.rmWordFromDict)
                 rmAction.setData(selectedWord)
                 popup_menu.insertAction(popup_menu.actions()[0], rmAction)

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/revisions_ui.ui'
 #
-# Created: Fri Apr  8 14:30:44 2016
+# Created: Mon Oct 16 10:36:02 2017
 #      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -65,7 +65,7 @@ class Ui_revisions(object):
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem)
         self.btnRestore = QtWidgets.QPushButton(self.layoutWidget)
-        icon = QtGui.QIcon.fromTheme("redo")
+        icon = QtGui.QIcon.fromTheme("edit-redo")
         self.btnRestore.setIcon(icon)
         self.btnRestore.setFlat(True)
         self.btnRestore.setObjectName("btnRestore")

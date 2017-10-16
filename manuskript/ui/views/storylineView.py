@@ -7,6 +7,7 @@ from PyQt5.QtWidgets import QWidget, QGraphicsScene, QGraphicsSimpleTextItem, QM
 
 from manuskript.enums import Outline
 from manuskript.models import references
+import manuskript.functions as F
 from manuskript.ui.views.storylineView_ui import Ui_storylineView
 
 
@@ -14,6 +15,7 @@ class storylineView(QWidget, Ui_storylineView):
     def __init__(self, parent=None):
         QWidget.__init__(self, parent)
         self.setupUi(self)
+        
         self._mdlPlots = None
         self.scene = QGraphicsScene()
         self.view.setScene(self.scene)
@@ -34,12 +36,14 @@ class storylineView(QWidget, Ui_storylineView):
         self.actPlots = QAction(self.tr("Show Plots"), m)
         self.actPlots.setCheckable(True)
         self.actPlots.setChecked(True)
+        self.actPlots.setIcon(F.themeIcon("plots"))
         self.actPlots.toggled.connect(self.reloadTimer.start)
         m.addAction(self.actPlots)
 
         self.actCharacters = QAction(self.tr("Show Characters"), m)
         self.actCharacters.setCheckable(True)
         self.actCharacters.setChecked(False)
+        self.actCharacters.setIcon(F.themeIcon("characters"))
         self.actCharacters.toggled.connect(self.reloadTimer.start)
         m.addAction(self.actCharacters)
 
