@@ -299,7 +299,7 @@ class textEditView(QTextEdit):
         if self._updating:
             return
         # print("Submitting", self.objectName())
-        if self._index:
+        if self._index and self._index.isValid():
             # item = self._index.internalPointer()
             if self.toPlainText() != self._model.data(self._index):
                 # print("    Submitting plain text")
