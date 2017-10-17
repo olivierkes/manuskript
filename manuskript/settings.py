@@ -66,7 +66,7 @@ textEditor = {
     "indent": True,
     "spacingAbove": 5,
     "spacingBelow": 5,
-    "textAlignement": 0, # 0: left, 1: center, 2: right, 3: justify
+    "textAlignment": 0, # 0: left, 1: center, 2: right, 3: justify
     }
     
 revisions = {
