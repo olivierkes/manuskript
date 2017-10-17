@@ -18,8 +18,11 @@ class metadataView(QWidget, Ui_metadataView):
         self.revisions.setEnabled(False)
         
         self.txtSummarySentence.setStyleSheet(style.lineEditSS())
-        self.txtSummaryFull.setStyleSheet(style.transparentSS())
-        self.txtNotes.setStyleSheet(style.transparentSS())
+        self.txtSummaryFull.setStyleSheet(style.transparentSS() + 
+                                          style.simpleScrollBarV())
+        self.txtNotes.setStyleSheet(style.transparentSS() +
+                                    style.simpleScrollBarV())
+        self.revisions.setStyleSheet(style.simpleScrollBarV())
 
     def setModels(self, mdlOutline, mdlCharacter, mdlLabels, mdlStatus):
         self.properties.setModels(mdlOutline, mdlCharacter, mdlLabels, mdlStatus)
