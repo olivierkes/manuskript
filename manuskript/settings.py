@@ -66,6 +66,7 @@ textEditor = {
     "indent": True,
     "spacingAbove": 5,
     "spacingBelow": 5,
+    "textAlignement": 0, # 0: left, 1: center, 2: right, 3: justify
     }
     
 revisions = {
@@ -233,6 +234,9 @@ def load(string, fromString=False, protocol=None):
     if "textEditor" in allSettings:
         global textEditor
         textEditor = allSettings["textEditor"]
+        
+        if not "textAlignment" in textEditor: # Added in 0.5.0
+            textEditor["textAlignment"] = 0
 
     if "revisions" in allSettings:
         global revisions

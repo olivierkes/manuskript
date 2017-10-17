@@ -161,6 +161,8 @@ class settingsWindow(QWidget, Ui_Settings):
         self.cmbEditorFontFamily.currentFontChanged.connect(self.updateEditorSettings)
         self.spnEditorFontSize.setValue(f.pointSize())
         self.spnEditorFontSize.valueChanged.connect(self.updateEditorSettings)
+        self.cmbEditorAlignment.setCurrentIndex(opt["textAlignment"])
+        self.cmbEditorAlignment.currentIndexChanged.connect(self.updateEditorSettings)
         self.cmbEditorLineSpacing.setCurrentIndex(
                 0 if opt["lineSpacing"] == 100 else
                 1 if opt["lineSpacing"] == 150 else
@@ -403,6 +405,7 @@ class settingsWindow(QWidget, Ui_Settings):
         f = self.cmbEditorFontFamily.currentFont()
         f.setPointSize(self.spnEditorFontSize.value())
         settings.textEditor["font"] = f.toString()
+        settings.textEditor["textAlignment"] = self.cmbEditorAlignment.currentIndex()
         settings.textEditor["lineSpacing"] = \
             100 if self.cmbEditorLineSpacing.currentIndex() == 0 else \
             150 if self.cmbEditorLineSpacing.currentIndex() == 1 else \
@@ -623,6 +626,7 @@ class settingsWindow(QWidget, Ui_Settings):
 
         # Paragraph Options
         self.chkThemeIndent.stateChanged.connect(lambda v: self.setSetting("Spacings/IndentFirstLine", v != 0))
+        self.cmbThemeAlignment.currentIndexChanged.connect(lambda i: self.setSetting("Spacings/Alignment", i))
         self.cmbThemeLineSpacing.currentIndexChanged.connect(self.updateLineSpacing)
         self.cmbThemeLineSpacing.currentIndexChanged.connect(self.updateLineSpacing)
         self.spnThemeLineSpacing.valueChanged.connect(lambda v: self.setSetting("Spacings/LineSpacing", v))
@@ -676,6 +680,7 @@ class settingsWindow(QWidget, Ui_Settings):
         # Paragraph Options
         self.chkThemeIndent.setCheckState(Qt.Checked if self._themeData["Spacings/IndentFirstLine"] else Qt.Unchecked)
         self.spnThemeLineSpacing.setEnabled(False)
+        self.cmbThemeAlignment.setCurrentIndex(self._themeData["Spacings/Alignment"])
         if self._themeData["Spacings/LineSpacing"] == 100:
             self.cmbThemeLineSpacing.setCurrentIndex(0)
         elif self._themeData["Spacings/LineSpacing"] == 150:
