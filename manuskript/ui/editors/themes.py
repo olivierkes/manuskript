@@ -40,6 +40,7 @@ def loadThemeDatas(themeFile):
     loadThemeSetting(_themeData, settings, "Text/Misspelled", "#ff0000")
 
     # Paragraph Options
+    loadThemeSetting(_themeData, settings, "Spacings/Alignment", 0)
     loadThemeSetting(_themeData, settings, "Spacings/IndentFirstLine", False)
     loadThemeSetting(_themeData, settings, "Spacings/LineSpacing", 100)
     loadThemeSetting(_themeData, settings, "Spacings/ParagraphAbove", 0)
@@ -178,6 +179,10 @@ def themeEditorGeometry(themeDatas, textRect):
 
 def getThemeBlockFormat(themeDatas):
     bf = QTextBlockFormat()
+    bf.setAlignment(Qt.AlignLeft if themeDatas["Spacings/Alignment"] == 0 else
+                    Qt.AlignCenter if themeDatas["Spacings/Alignment"] == 1 else
+                    Qt.AlignRight if themeDatas["Spacings/Alignment"] == 2 else
+                    Qt.AlignJustify)
     bf.setLineHeight(themeDatas["Spacings/LineSpacing"], QTextBlockFormat.ProportionalHeight)
     bf.setTextIndent(themeDatas["Spacings/TabWidth"] * 1 if themeDatas["Spacings/IndentFirstLine"] else 0)
     bf.setTopMargin(themeDatas["Spacings/ParagraphAbove"])

@@ -203,6 +203,10 @@ class textEditView(QTextEdit):
         bf.setTextIndent(opt["tabWidth"] * 1 if opt["indent"] else 0)
         bf.setTopMargin(opt["spacingAbove"])
         bf.setBottomMargin(opt["spacingBelow"])
+        bf.setAlignment(Qt.AlignLeft if opt["textAlignment"] == 0 else
+                        Qt.AlignCenter if opt["textAlignment"] == 1 else
+                        Qt.AlignRight if opt["textAlignment"] == 2 else
+                        Qt.AlignJustify)
 
         self._defaultCharFormat = cf
         self._defaultBlockFormat = bf

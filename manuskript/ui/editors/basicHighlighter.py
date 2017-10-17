@@ -46,7 +46,6 @@ class basicHighlighter(QSyntaxHighlighter):
         c = QTextCursor(self.currentBlock())
         #c.joinPreviousEditBlock()
         bf = QTextBlockFormat(self._defaultBlockFormat)
-        bf.setAlignment(c.blockFormat().alignment())
         if bf != c.blockFormat():
             c.setBlockFormat(bf)
         #c.endEditBlock()
