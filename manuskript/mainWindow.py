@@ -6,7 +6,7 @@ import os
 from PyQt5.QtCore import pyqtSignal, QSignalMapper, QTimer, QSettings, Qt, QRegExp, QUrl, QSize
 from PyQt5.QtGui import QStandardItemModel, QIcon, QColor
 from PyQt5.QtWidgets import QMainWindow, QHeaderView, qApp, QMenu, QActionGroup, QAction, QStyle, QListWidgetItem, \
-    QLabel
+    QLabel, QMessageBox
 
 from manuskript import settings
 from manuskript.enums import Character, PlotStep, Plot, World, Outline
@@ -1220,10 +1220,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     ###############################################################################
 
     def doCompile(self):
-        self.dialog = exporterDialog(mw=self)
-        self.dialog.show()
+        if self.currentProject is not None:
+            self.dialog = exporterDialog(mw=self)
+            self.dialog.show()
 
-        r = self.dialog.geometry()
-        r2 = self.geometry()
-        self.dialog.move(r2.center() - r.center())
+            r = self.dialog.geometry()
+            r2 = self.geometry()
+            self.dialog.move(r2.center() - r.center())
+        else:
+            QMessageBox.critical(self, "Cannot compile", "No project selected")
 
