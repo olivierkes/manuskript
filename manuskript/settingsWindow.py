@@ -560,6 +560,9 @@ class settingsWindow(QWidget, Ui_Settings):
                 item = QListWidgetItem(n)
                 item.setData(Qt.UserRole, theme)
                 item.setData(Qt.UserRole + 1, editable)
+                item.setToolTip("{}{}".format(
+                    n,
+                    self.tr(" (read-only)") if not editable else ""))
 
                 thumb = os.path.join(p, t.replace(".theme", ".jpg"))
                 px = QPixmap(200, 120)

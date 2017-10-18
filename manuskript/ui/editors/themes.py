@@ -12,6 +12,7 @@ from PyQt5.QtWidgets import qApp, QFrame
 from manuskript.functions import allPaths, appPath, findBackground, findFirstFile
 from manuskript.ui.views.textEditView import textEditView
 
+_thumbCache = {}
 
 def loadThemeDatas(themeFile):
     settings = QSettings(themeFile, QSettings.IniFormat)
@@ -51,18 +52,11 @@ def loadThemeDatas(themeFile):
 
 
 def loadThemeSetting(datas, settings, key, default):
-    if settings.contains(key):
-        
-        if type(default) != type(True):
-            datas[key] = type(default)(settings.value(key))
-        else:
-            # Bools are stored as "true"/"false", but both are read as True
-            # since they are non-empty string.
-            datas[key] = True if settings.value(key) == "true" else False
-            
-    else:
-        datas[key] = default
-
+    """
+    Loads data from ini file, using default value if the key is absent,
+    and casting to the proper type based on default.
+    """
+    datas[key] = settings.value(key, default, type(default))
 
 def getThemeName(theme):
     settings = QSettings(theme, QSettings.IniFormat)
@@ -93,11 +87,28 @@ def themeTextRect(themeDatas, screenRect):
 
 
 def createThemePreview(theme, screenRect, size=QSize(200, 120)):
+    """
+    Generates a QPixmap preview for given theme.
+    
+    Theme can be either a string containing the filename of the ini
+    file with the theme settings, or it can be a dict with the settings.
+    
+    If theme is a filename, the result is cached.
+    """
+    
+    # Checking whether theme is a string or dict
     if type(theme) == str and os.path.exists(theme):
         # Theme is the path to an ini file
         themeDatas = loadThemeDatas(theme)
+        fromFile = True
     else:
         themeDatas = theme
+        fromFile = False
+
+    # Check if item is in cache
+    if fromFile and theme in _thumbCache:
+        if _thumbCache[theme][0] == themeDatas:
+            return _thumbCache[theme][1]
 
     pixmap = generateTheme(themeDatas, screenRect)
 
@@ -115,6 +126,10 @@ def createThemePreview(theme, screenRect, size=QSize(200, 120)):
     painter.setPen(Qt.white)
     painter.drawRect(QRect(w, h, w * 4, h * 5))
     painter.end()
+    
+    # If theme is a themefile, we keep it in cache
+    if fromFile:
+        _thumbCache[theme] = [themeDatas, px]
 
     return px
 
