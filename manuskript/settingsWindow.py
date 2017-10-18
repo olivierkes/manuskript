@@ -161,6 +161,11 @@ class settingsWindow(QWidget, Ui_Settings):
         self.cmbEditorFontFamily.currentFontChanged.connect(self.updateEditorSettings)
         self.spnEditorFontSize.setValue(f.pointSize())
         self.spnEditorFontSize.valueChanged.connect(self.updateEditorSettings)
+        self.chkEditorCursorWidth.setChecked(opt["cursorWidth"] != 1)
+        self.chkEditorCursorWidth.stateChanged.connect(self.updateEditorSettings)
+        self.spnEditorCursorWidth.setValue(opt["cursorWidth"] if opt["cursorWidth"] != 1 else 9)
+        self.spnEditorCursorWidth.valueChanged.connect(self.updateEditorSettings)
+        self.spnEditorCursorWidth.setEnabled(opt["cursorWidth"] != 1)
         self.cmbEditorAlignment.setCurrentIndex(opt["textAlignment"])
         self.cmbEditorAlignment.currentIndexChanged.connect(self.updateEditorSettings)
         self.cmbEditorLineSpacing.setCurrentIndex(
@@ -405,6 +410,10 @@ class settingsWindow(QWidget, Ui_Settings):
         f = self.cmbEditorFontFamily.currentFont()
         f.setPointSize(self.spnEditorFontSize.value())
         settings.textEditor["font"] = f.toString()
+        settings.textEditor["cursorWidth"] = \
+            1 if not self.chkEditorCursorWidth.isChecked() else \
+            self.spnEditorCursorWidth.value()
+        self.spnEditorCursorWidth.setEnabled(self.chkEditorCursorWidth.isChecked())
         settings.textEditor["textAlignment"] = self.cmbEditorAlignment.currentIndex()
         settings.textEditor["lineSpacing"] = \
             100 if self.cmbEditorLineSpacing.currentIndex() == 0 else \

@@ -197,6 +197,8 @@ class textEditView(QTextEdit):
         cf = QTextCharFormat()
         # cf.setFont(f)
         # cf.setForeground(QColor(opt["fontColor"]))
+        
+        self.setCursorWidth(opt["cursorWidth"])
 
         bf = QTextBlockFormat()
         bf.setLineHeight(opt["lineSpacing"], bf.ProportionalHeight)
