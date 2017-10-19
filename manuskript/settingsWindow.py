@@ -4,7 +4,7 @@ import os
 from collections import OrderedDict
 
 from PyQt5.QtCore import QSize, QSettings, QRegExp, QTranslator, QObject
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QTimer
 from PyQt5.QtGui import QIntValidator, QIcon, QFont, QColor, QPixmap, QStandardItem, QPainter
 from PyQt5.QtWidgets import QStyleFactory, QWidget, QStyle, QColorDialog, QListWidgetItem, QMessageBox
 from PyQt5.QtWidgets import qApp
@@ -186,6 +186,10 @@ class settingsWindow(QWidget, Ui_Settings):
         self.spnEditorParaAbove.valueChanged.connect(self.updateEditorSettings)
         self.spnEditorParaBelow.setValue(opt["spacingBelow"])
         self.spnEditorParaBelow.valueChanged.connect(self.updateEditorSettings)
+        self.timerUpdateWidgets = QTimer()
+        self.timerUpdateWidgets.setSingleShot(True)
+        self.timerUpdateWidgets.setInterval(250)
+        self.timerUpdateWidgets.timeout.connect(self.updateAllWidgets)
 
         # Labels
         self.lstLabels.setModel(self.mw.mdlLabels)
@@ -425,7 +429,11 @@ class settingsWindow(QWidget, Ui_Settings):
         settings.textEditor["indent"] = True if self.chkEditorIndent.checkState() else False
         settings.textEditor["spacingAbove"] = self.spnEditorParaAbove.value()
         settings.textEditor["spacingBelow"] = self.spnEditorParaBelow.value()
+        
+        self.timerUpdateWidgets.start()
 
+    def updateAllWidgets(self):
+        
         # Update font and defaultBlockFormat to all textEditView. Drastically.
         for w in mainWindow().findChildren(textEditView, QRegExp(".*")):
             w.loadFontSettings()
