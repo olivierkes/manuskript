@@ -91,13 +91,13 @@ class basicHighlighter(QSyntaxHighlighter):
             textedText = text + " "
         
         # Based on http://john.nachtimwald.com/2009/08/22/qplaintextedit-with-in-line-spell-check/
-        WORDS = '(?iu)([\w\']+)\W'  # (?iu) means case insensitive and unicode
+        WORDS = '(?iu)([\w\']+)[^\'\w]'  # (?iu) means case insensitive and unicode
         if hasattr(self.editor, "spellcheck") and self.editor.spellcheck:
             for word_object in re.finditer(WORDS, textedText):
                 if self.editor._dict and not self.editor._dict.check(word_object.group(1)):
-                    format = self.format(word_object.start())
+                    format = self.format(word_object.start(1))
                     format.setUnderlineColor(self._misspelledColor)
                     # SpellCheckUnderline fails with some fonts
                     format.setUnderlineStyle(QTextCharFormat.WaveUnderline)
-                    self.setFormat(word_object.start(),
-                                   word_object.end() - word_object.start(), format)
+                    self.setFormat(word_object.start(1),
+                                   word_object.end(1) - word_object.start(1), format)
