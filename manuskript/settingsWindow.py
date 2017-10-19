@@ -485,7 +485,7 @@ class settingsWindow(QWidget, Ui_Settings):
             qApp.setCursorFlashTime(0)
         else:
             # Load default system value, that we cached at startup
-            qApp.setCursorFlashTime(mw._defaultCursorFlashTime)
+            qApp.setCursorFlashTime(self.mw._defaultCursorFlashTime)
 
     def choseEditorFontColor(self):
         color = settings.textEditor["fontColor"]
