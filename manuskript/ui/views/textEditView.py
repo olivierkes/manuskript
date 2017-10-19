@@ -4,7 +4,7 @@ import re
 
 from PyQt5.QtCore import QTimer, QModelIndex, Qt, QEvent, pyqtSignal, QRegExp
 from PyQt5.QtGui import QTextBlockFormat, QTextCharFormat, QFont, QColor, QIcon, QMouseEvent, QTextCursor
-from PyQt5.QtWidgets import QTextEdit, qApp, QAction, QMenu
+from PyQt5.QtWidgets import QWidget, QTextEdit, qApp, QAction, QMenu
 
 from manuskript import settings
 from manuskript.enums import Outline
@@ -201,7 +201,14 @@ class textEditView(QTextEdit):
                 )
             )
 
-        self.parent().setStyleSheet("background: {bg};".format(bg=opt["background"]))
+        # We set the parent background to the editor's background in case
+        # there are margins. We check that the parent class is a QWidget because
+        # if textEditView is used in fullScreenEditor, then we don't want to
+        # set the background
+        if self.parent().__class__ == QWidget:
+            self.parent().setStyleSheet("background: {bg};".format(
+                bg=opt["background"]))
+        
         cf = QTextCharFormat()
         # cf.setFont(f)
         # cf.setForeground(QColor(opt["fontColor"]))

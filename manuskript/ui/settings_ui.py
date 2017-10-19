@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/settings_ui.ui'
 #
-# Created: Thu Oct 19 12:06:37 2017
+# Created: Thu Oct 19 12:16:24 2017
 #      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -1102,14 +1102,7 @@ class Ui_Settings(object):
         font.setWeight(50)
         self.label_54.setFont(font)
         self.label_54.setObjectName("label_54")
-        self.formLayout_11.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_54)
-        self.label_55 = QtWidgets.QLabel(self.groupBox_16)
-        font = QtGui.QFont()
-        font.setBold(False)
-        font.setWeight(50)
-        self.label_55.setFont(font)
-        self.label_55.setObjectName("label_55")
-        self.formLayout_11.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_55)
+        self.formLayout_11.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_54)
         self.spnEditorMarginsLR = QtWidgets.QSpinBox(self.groupBox_16)
         font = QtGui.QFont()
         font.setBold(False)
@@ -1117,7 +1110,14 @@ class Ui_Settings(object):
         self.spnEditorMarginsLR.setFont(font)
         self.spnEditorMarginsLR.setMaximum(2048)
         self.spnEditorMarginsLR.setObjectName("spnEditorMarginsLR")
-        self.formLayout_11.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.spnEditorMarginsLR)
+        self.formLayout_11.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.spnEditorMarginsLR)
+        self.label_55 = QtWidgets.QLabel(self.groupBox_16)
+        font = QtGui.QFont()
+        font.setBold(False)
+        font.setWeight(50)
+        self.label_55.setFont(font)
+        self.label_55.setObjectName("label_55")
+        self.formLayout_11.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_55)
         self.spnEditorMarginsTB = QtWidgets.QSpinBox(self.groupBox_16)
         font = QtGui.QFont()
         font.setBold(False)
@@ -1125,7 +1125,7 @@ class Ui_Settings(object):
         self.spnEditorMarginsTB.setFont(font)
         self.spnEditorMarginsTB.setMaximum(2048)
         self.spnEditorMarginsTB.setObjectName("spnEditorMarginsTB")
-        self.formLayout_11.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.spnEditorMarginsTB)
+        self.formLayout_11.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.spnEditorMarginsTB)
         self.verticalLayout_21.addWidget(self.groupBox_16)
         self.horizontalLayout_4.addLayout(self.verticalLayout_21)
         self.groupBox_13 = QtWidgets.QGroupBox(self.tab_4)
@@ -1933,8 +1933,8 @@ class Ui_Settings(object):
         self.chkEditorMaxWidth.setText(_translate("Settings", "Max width"))
         self.spnEditorMaxWidth.setSuffix(_translate("Settings", " px"))
         self.label_54.setText(_translate("Settings", "Left/Right margins:"))
-        self.label_55.setText(_translate("Settings", "Top/Bottom margins:"))
         self.spnEditorMarginsLR.setSuffix(_translate("Settings", " px"))
+        self.label_55.setText(_translate("Settings", "Top/Bottom margins:"))
         self.spnEditorMarginsTB.setSuffix(_translate("Settings", " px"))
         self.groupBox_13.setTitle(_translate("Settings", "Paragraphs"))
         self.label_40.setText(_translate("Settings", "Line spacing:"))

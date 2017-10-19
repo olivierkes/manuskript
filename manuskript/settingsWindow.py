@@ -236,6 +236,10 @@ class settingsWindow(QWidget, Ui_Settings):
         self.btnThemeAdd.clicked.connect(self.newTheme)
         self.btnThemeEdit.clicked.connect(self.editTheme)
         self.btnThemeRemove.clicked.connect(self.removeTheme)
+        self.timerUpdateFSPreview = QTimer()
+        self.timerUpdateFSPreview.setSingleShot(True)
+        self.timerUpdateFSPreview.setInterval(250)
+        self.timerUpdateFSPreview.timeout.connect(self.updatePreview)
 
     def setTab(self, tab):
 
@@ -700,7 +704,7 @@ class settingsWindow(QWidget, Ui_Settings):
 
     def setSetting(self, key, val):
         self._themeData[key] = val
-        self.updatePreview()
+        self.timerUpdateFSPreview.start()
 
     def updateUIFromTheme(self):
         self.txtThemeName.setText(self._themeData["Name"])
@@ -765,7 +769,7 @@ class settingsWindow(QWidget, Ui_Settings):
             f.setPointSize(int(s))
 
         self._themeData["Text/Font"] = f.toString()
-        self.updatePreview()
+        self.timerUpdateFSPreview.start()
 
     def updateLineSpacing(self, i):
         if i == 0:
@@ -777,7 +781,7 @@ class settingsWindow(QWidget, Ui_Settings):
         elif i == 3:
             self._themeData["Spacings/LineSpacing"] = self.spnThemeLineSpacing.value()
         self.spnThemeLineSpacing.setEnabled(i == 3)
-        self.updatePreview()
+        self.timerUpdateFSPreview.start()
 
     def updateThemeBackground(self, i):
         img = self.cmbCorkImage.itemData(i)
