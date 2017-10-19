@@ -187,13 +187,21 @@ class textEditView(QTextEdit):
             color: {foreground};
             font-family: {ff};
             font-size: {fs};
+            margin: {mTB}px {mLR}px;
+            {maxWidth}
             }}
             """.format(
                 bg=opt["background"],
                 foreground=opt["fontColor"],
                 ff=f.family(),
-                fs="{}pt".format(str(f.pointSize()))))
+                fs="{}pt".format(str(f.pointSize())),
+                mTB = opt["marginsTB"],
+                mLR = opt["marginsLR"],
+                maxWidth = "max-width: {}px;".format(opt["maxWidth"]) if opt["maxWidth"] else "",
+                )
+            )
 
+        self.parent().setStyleSheet("background: {bg};".format(bg=opt["background"]))
         cf = QTextCharFormat()
         # cf.setFont(f)
         # cf.setForeground(QColor(opt["fontColor"]))

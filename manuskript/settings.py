@@ -67,7 +67,11 @@ textEditor = {
     "spacingAbove": 5,
     "spacingBelow": 5,
     "textAlignment": 0, # 0: left, 1: center, 2: right, 3: justify
-    "cursorWidth": 1
+    "cursorWidth": 1,
+    "cursorNotBlinking": False,
+    "maxWidth": 0,
+    "marginsLR": 0,
+    "marginsTB": 0,
     }
     
 revisions = {
@@ -235,12 +239,24 @@ def load(string, fromString=False, protocol=None):
     if "textEditor" in allSettings:
         global textEditor
         textEditor = allSettings["textEditor"]
-        
-        if not "textAlignment" in textEditor: # Added in 0.5.0
-            textEditor["textAlignment"] = 0
-            
-        if not "cursorWidth" in textEditor: # Added in 0.5.0
-            textEditor["cursorWidth"] = 1
+
+        added = {
+            "textAlignment": 0,                 # Added in 0.5.0
+            "cursorWidth": 1,
+            "cursorNotBlinking": False,         # Added in 0.6.0
+            "maxWidth": 0,
+            "marginsLR": 0,
+            "marginsTB": 0,
+            }
+
+        for k in added:
+            if not k in textEditor: textEditor[k] = added[k]
+
+        if textEditor["cursorNotBlinking"]:
+            qApp.setCursorFlashTime(0)
+        else:
+            from manuskript.functions import mainWindow
+            qApp.setCursorFlashTime(mainWindow()._defaultCursorFlashTime)
 
     if "revisions" in allSettings:
         global revisions
