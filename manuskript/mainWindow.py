@@ -6,7 +6,7 @@ import os
 from PyQt5.QtCore import pyqtSignal, QSignalMapper, QTimer, QSettings, Qt, QRegExp, QUrl, QSize
 from PyQt5.QtGui import QStandardItemModel, QIcon, QColor
 from PyQt5.QtWidgets import QMainWindow, QHeaderView, qApp, QMenu, QActionGroup, QAction, QStyle, QListWidgetItem, \
-    QLabel
+    QLabel, QDockWidget
 
 from manuskript import settings
 from manuskript.enums import Character, PlotStep, Plot, World, Outline
@@ -61,7 +61,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # Welcome
         self.welcome.updateValues()
-        self.stack.setCurrentIndex(0)
+        self.switchToWelcome()
 
         # Word count
         self.mprWordCount = QSignalMapper(self)
@@ -124,6 +124,61 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.makeUIConnections()
 
         # self.loadProject(os.path.join(appPath(), "test_project.zip"))
+    
+    def updateDockVisibility(self, restore=False):
+        """
+        Saves the state of the docks visibility. Or if `restore` is True, 
+        restores from `self._dckVisibility`. This allows to hide the docks
+        while showing the welcome screen, and then restore them as they
+        were.
+        
+        If `self._dckVisibility` contains "LOCK", then we don't override values
+        with current visibility state. This is used the first time we load.
+        "LOCK" is then removed.
+        """
+        docks = [
+            self.dckCheatSheet,
+            self.dckNavigation,
+            self.dckSearch,
+        ]
+        
+        for d in docks:
+            if not restore:
+                # We store the values, but only if "LOCK" is not present
+                if not "LOCK" in self._dckVisibility:
+                    self._dckVisibility[d.objectName()] = d.isVisible()
+                # Hide the dock
+                d.setVisible(False)
+            else:
+                # Restore the dock's visibily based on stored value
+                d.setVisible(self._dckVisibility[d.objectName()])
+        
+        # Lock is used only once, at start up. We can remove it
+        if "LOCK" in self._dckVisibility:
+            self._dckVisibility.pop("LOCK")
+    
+    def switchToWelcome(self):
+        """
+        While switching to welcome screen, we have to hide all the docks.
+        Otherwise one could use the search dock, and manuskript would crash.
+        Plus it's unncessary distraction.
+        But we also want to restore them to their visibility prior to switching,
+        so we store states.
+        """
+        # Stores the state of docks
+        self.updateDockVisibility()
+        # Hides the toolbar
+        self.toolbar.setVisible(False)
+        # Switch to welcome screen
+        self.stack.setCurrentIndex(0)
+        
+    def switchToProject(self):
+        """Restores docks and toolbar visibility, and switch to project."""
+        # Restores the docks visibility
+        self.updateDockVisibility(restore=True)
+        # Show the toolbar
+        self.toolbar.setVisible(True)
+        self.stack.setCurrentIndex(1)
 
     ###############################################################################
     # SUMMARY
@@ -406,7 +461,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         QSettings().setValue("lastProject", project)
 
         # Show main Window
-        self.stack.setCurrentIndex(1)
+        self.switchToProject()
 
     def closeProject(self):
 
@@ -444,7 +499,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.welcome.updateValues()
 
         # Show welcome dialog
-        self.stack.setCurrentIndex(0)
+        self.switchToWelcome()
 
     def readSettings(self):
         # Load State and geometry
@@ -453,9 +508,21 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.restoreGeometry(sttgns.value("geometry"))
         if sttgns.contains("windowState"):
             self.restoreState(sttgns.value("windowState"))
+
+        if sttgns.contains("docks"):
+            self._dckVisibility = {}
+            vals = sttgns.value("docks")
+            for name in vals:
+                self._dckVisibility[name] = vals[name]
         else:
-            self.dckCheatSheet.hide()
-            self.dckSearch.hide()
+            # Create default settings
+            self._dckVisibility = {
+                self.dckNavigation.objectName() : True,
+                self.dckCheatSheet.objectName() : False,
+                self.dckSearch.objectName() : False,
+            }
+        self._dckVisibility["LOCK"] = True  # prevent overiding loaded values
+
         if sttgns.contains("metadataState"):
             state = [False if v == "false" else True for v in sttgns.value("metadataState")]
             self.redacMetadata.restoreState(state)
@@ -472,7 +539,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         else:
             self._toolbarState = ""
 
-
     def closeEvent(self, event):
         # Save State and geometry and other things
         sttgns = QSettings(qApp.organizationName(), qApp.applicationName())
@@ -483,7 +549,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         sttgns.setValue("splitterRedacH", self.splitterRedacH.saveState())
         sttgns.setValue("splitterRedacV", self.splitterRedacV.saveState())
         sttgns.setValue("toolbar", self.toolbar.saveState())
-
+        
+        # If we are not in the welcome window, we update the visibility
+        # of the docks widgets
+        if self.stack.currentIndex() == 1:
+            self.updateDockVisibility()
+        # Storing the visibility of docks to restore it on restart
+        sttgns.setValue("docks", self._dckVisibility)
+        
         # Specific settings to save before quitting
         settings.lastTab = self.tabMain.currentIndex()
 
@@ -883,10 +956,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # Tool bar on the right
         self.toolbar = collapsibleDockWidgets(Qt.RightDockWidgetArea, self)
-        self.toolbar.addCustomWidget(self.tr("Book summary"), self.grpPlotSummary, self.TabPlots)
-        self.toolbar.addCustomWidget(self.tr("Project tree"), self.treeRedacWidget, self.TabRedac)
-        self.toolbar.addCustomWidget(self.tr("Metadata"), self.redacMetadata, self.TabRedac)
-        self.toolbar.addCustomWidget(self.tr("Story line"), self.storylineView, self.TabRedac)
+        self.toolbar.addCustomWidget(self.tr("Book summary"), self.grpPlotSummary, self.TabPlots, False)
+        self.toolbar.addCustomWidget(self.tr("Project tree"), self.treeRedacWidget, self.TabRedac, True)
+        self.toolbar.addCustomWidget(self.tr("Metadata"), self.redacMetadata, self.TabRedac, False)
+        self.toolbar.addCustomWidget(self.tr("Story line"), self.storylineView, self.TabRedac, False)
         if self._toolbarState:
             self.toolbar.restoreState(self._toolbarState)
 
