@@ -179,14 +179,17 @@ class mainEditor(QWidget, Ui_mainEditor):
         if self._updating:
             return
 
-        if len(self.mw.treeRedacOutline.selectionModel().
-               selection().indexes()) == 0:
-            idx = QModelIndex()
-        else:
-            idx = self.mw.treeRedacOutline.currentIndex()
+        # This might be called during a drag n drop operation, or while deleting
+        # items. If so, we don't want to do anything.
+        if not self.mw.mdlOutline._removingRows:
+            if len(self.mw.treeRedacOutline.selectionModel().
+                selection().indexes()) == 0:
+                idx = QModelIndex()
+            else:
+                idx = self.mw.treeRedacOutline.currentIndex()
 
-        self.setCurrentModelIndex(idx)
-        self.updateThingsVisible(idx)
+            self.setCurrentModelIndex(idx)
+            self.updateThingsVisible(idx)
 
     def openIndexes(self, indexes, newTab=False):
         for i in indexes:
@@ -194,8 +197,7 @@ class mainEditor(QWidget, Ui_mainEditor):
 
     def goToParentItem(self):
         idx = self.currentEditor().currentIndex
-        from manuskript.functions import MW
-        MW.treeRedacOutline.setCurrentIndex(idx.parent())
+        self.mw.treeRedacOutline.setCurrentIndex(idx.parent())
 
     def setCurrentModelIndex(self, index, newTab=False, tabWidget=None):
 
@@ -216,11 +218,12 @@ class mainEditor(QWidget, Ui_mainEditor):
         if newTab or not tabWidget.count():
             editor = editorWidget(self)
             editor.setCurrentModelIndex(index)
+            editor._tabWidget = tabWidget
             tabWidget.addTab(editor, title)
             tabWidget.setCurrentIndex(tabWidget.count() - 1)
         else:
             self.currentEditor(tabWidget).setCurrentModelIndex(index)
-            tabWidget.setTabText(tabWidget.currentIndex(), title)
+            #tabWidget.setTabText(tabWidget.currentIndex(), title)
 
     def updateTargets(self):
         """Updates all tabSplitter that are targets. This is called from editorWidget."""

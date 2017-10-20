@@ -16,9 +16,9 @@ class metadataView(QWidget, Ui_metadataView):
         self.txtSummaryFull.setColumn(Outline.summaryFull.value)
         self.txtNotes.setColumn(Outline.notes.value)
         self.revisions.setEnabled(False)
-        
+
         self.txtSummarySentence.setStyleSheet(style.lineEditSS())
-        self.txtSummaryFull.setStyleSheet(style.transparentSS() + 
+        self.txtSummaryFull.setStyleSheet(style.transparentSS() +
                                           style.simpleScrollBarV())
         self.txtNotes.setStyleSheet(style.transparentSS() +
                                     style.simpleScrollBarV())
@@ -60,6 +60,9 @@ class metadataView(QWidget, Ui_metadataView):
         if len(indexes) == 0:
             self.setEnabled(False)
             self.revisions.setEnabled(False)
+            self.txtSummarySentence.setCurrentModelIndex(QModelIndex())
+            self.txtSummaryFull.setCurrentModelIndex(QModelIndex())
+            self.txtNotes.setCurrentModelIndex(QModelIndex())
 
         # One item selected
         elif len(indexes) == 1:
@@ -89,7 +92,7 @@ class metadataView(QWidget, Ui_metadataView):
 
             # Behavior 2:
             # Allow edition of multiple indexes.
-            # Bug: Multiple selections of items sometimes gets Notes/references 
+            # Bug: Multiple selections of items sometimes gets Notes/references
             #      field to be ereased. See #10 on github.
             #self.txtSummarySentence.setCurrentModelIndexes(indexes)
             #self.txtSummaryFull.setCurrentModelIndexes(indexes)

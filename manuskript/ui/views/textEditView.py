@@ -208,11 +208,11 @@ class textEditView(QTextEdit):
         if self.parent().__class__ == QWidget:
             self.parent().setStyleSheet("background: {bg};".format(
                 bg=opt["background"]))
-        
+
         cf = QTextCharFormat()
         # cf.setFont(f)
         # cf.setForeground(QColor(opt["fontColor"]))
-        
+
         self.setCursorWidth(opt["cursorWidth"])
 
         bf = QTextBlockFormat()
@@ -237,8 +237,7 @@ class textEditView(QTextEdit):
         if self._updating:
             return
 
-        elif self._index:
-
+        elif self._index and self._index.isValid():
             if topLeft.parent() != self._index.parent():
                 return
 
@@ -266,7 +265,6 @@ class textEditView(QTextEdit):
                                     first <= self._index.row() <= last:
                 self._index = None
                 self.setEnabled(False)
-
                 # FIXME: self._indexes
 
     def disconnectDocument(self):

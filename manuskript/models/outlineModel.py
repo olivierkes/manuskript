@@ -25,10 +25,11 @@ class outlineModel(QAbstractItemModel):
     def __init__(self, parent):
         QAbstractItemModel.__init__(self, parent)
 
-        self.rootItem = outlineItem(self, title="root", ID="0")
+        self.rootItem = outlineItem(self, title="Root", ID="0")
 
         # Stores removed item, in order to remove them on disk when saving, depending on the file format.
         self.removed = []
+        self._removingRows = False
 
     def index(self, row, column, parent):
 
@@ -266,13 +267,13 @@ class outlineModel(QAbstractItemModel):
         items = self.decodeMimeData(data)
         if items is None:
             return False
-        
+
         # Get the parent item
         if not parent.isValid():
             parentItem = self.rootItem
         else:
             parentItem = parent.internalPointer()
-        
+
         for item in items:
             # Get parentItem's parents IDs in a list
             path = parentItem.pathID()  # path to item in the form [(ID, title), ...]
@@ -281,7 +282,7 @@ class outlineModel(QAbstractItemModel):
             # as a children of himself.
             if item.ID() in path:
                 return False
-        
+
         return True
 
     def decodeMimeData(self, data):
@@ -300,7 +301,7 @@ class outlineModel(QAbstractItemModel):
             if child.tag == "outlineItem":
                 item = outlineItem(xml=ET.tostring(child))
                 items.append(item)
-        
+
         return items
 
     def dropMimeData(self, data, action, row, column, parent):
@@ -311,7 +312,7 @@ class outlineModel(QAbstractItemModel):
         items = self.decodeMimeData(data)
         if items is None:
             return False
-        
+
         if column > 0:
             column = 0
 
@@ -408,11 +409,14 @@ class outlineModel(QAbstractItemModel):
         else:
             parentItem = parent.internalPointer()
 
+        self._removingRows = True  # Views that are updating can easily know
+                                   # if this is due to row removal.
         self.beginRemoveRows(parent, row, row + count - 1)
         for i in range(count):
             item = parentItem.removeChild(row)
             self.removed.append(item)
 
+        self._removingRows = False
         self.endRemoveRows()
         return True
 

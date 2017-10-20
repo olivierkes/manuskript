@@ -42,9 +42,9 @@ class outlineBasics(QAbstractItemView):
         self.actOpen = QAction(QIcon.fromTheme("go-right"), qApp.translate("outlineBasic", "Open Item"), menu)
         self.actOpen.triggered.connect(self.openItem)
         menu.addAction(self.actOpen)
-        
+
         menu.addSeparator()
-        
+
         # Add / remove items
         self.actAddFolder = QAction(QIcon.fromTheme("folder-new"), qApp.translate("outlineBasics", "New Folder"), menu)
         self.actAddFolder.triggered.connect(self.addFolder)
@@ -154,7 +154,7 @@ class outlineBasics(QAbstractItemView):
         idx = self.currentIndex()
         from manuskript.functions import MW
         MW.openIndex(idx)
-    
+
     def addFolder(self):
         self.addItem("folder")
 
