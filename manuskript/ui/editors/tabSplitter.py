@@ -12,6 +12,26 @@ from manuskript.ui.editors.tabSplitter_ui import Ui_tabSplitter
 
 
 class tabSplitter(QWidget, Ui_tabSplitter):
+    """
+    `tabSplitter` is used to have mutliple `outlineItem`s open, either in tabs
+    and/or in splitted views. Each tab contains an `editorWidget` which is responsible
+    for showing one single `outlineItem` in several ways.
+
+    `tabSplitter` is managed mainly through the `mainEditor` which is responsible
+    for opening indexes and such.
+
+    `tabSplitter` main widget is a `QSplitter` named `self.splitter`. It contains one
+    `QTabWidget` called `self.tab`. A second `tabSplitter` can be loaded through
+    `self.split` in `self.splitter`. That way, a single `tabSplitter` can split
+    indefinitely.
+
+    `tabSplitter` also has two buttons:
+
+     1. `self.btnSplit`: used to split and unsplit
+     2. `self.btnTarget`: toggles whether `self.tab` is a target to open any
+        selected outlineItem in any other views.
+    """
+
     def __init__(self, parent=None, mainEditor=None):
         QWidget.__init__(self, parent)
         self.setupUi(self)

@@ -11,6 +11,31 @@ from manuskript.ui.views.textEditView import textEditView
 
 
 class editorWidget(QWidget, Ui_editorWidget_ui):
+    """
+    `editorWidget` is a class responsible for displaying and editing one
+    `outlineItem`. This item can be a folder or a text.
+
+    It has four views (see `self.setView`)
+
+      - For folders: "text", "outline" or "cork" (set in `self.folderView`)
+
+        Text: displays a list of `textEditView` in a scroll area
+
+        Outline: displays an outline, using an `outlineView`
+
+        Cork: displays flash cards, using a `corkView`
+
+      - For text: item is simply displayed in a `textEditView`
+
+    All those views are contained in `editorWidget` single widget: `self.stack`.
+
+    `editorWidget` are managed in `tabSplitted` (that allow to open several
+    `outlineItem`s, either in Tabs or in split views.
+
+    `tabSplitted` are in turn managed by the `mainEditor`, which is unique and
+    gives UI buttons to manage all those views.
+    """
+
     toggledSpellcheck = pyqtSignal(bool)
     dictChanged = pyqtSignal(str)
 
@@ -212,6 +237,10 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
         self.setView()
 
     def updateIndexFromID(self):
+        """
+        Index might have changed (through drag an drop), so we keep current
+        item's ID and update index.
+        """
         idx = self.mw.mdlOutline.getIndexByID(self.currentID)
         if idx != self.currentIndex:
             self.currentIndex = idx
