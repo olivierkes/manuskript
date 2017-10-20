@@ -253,23 +253,65 @@ class outlineModel(QAbstractItemModel):
 
         return Qt.CopyAction | Qt.MoveAction
 
-        # def canDropMimeData(self, data, action, row, column, parent):
-        # if not data.hasFormat("application/xml"):
-        # return False
+    def canDropMimeData(self, data, action, row, column, parent):
+        """Ensures that we are not droping an item into itself."""
 
-        # if column > 0:
-        # return False
+        if not data.hasFormat("application/xml"):
+            return False
 
-        # return True
+        if column > 0:
+            return False
+
+        # # Gets encoded mime data to retrieve the item
+        items = self.decodeMimeData(data)
+        if items is None:
+            return False
+        
+        # Get the parent item
+        if not parent.isValid():
+            parentItem = self.rootItem
+        else:
+            parentItem = parent.internalPointer()
+        
+        for item in items:
+            # Get parentItem's parents IDs in a list
+            path = parentItem.pathID()  # path to item in the form [(ID, title), ...]
+            path = [ID for ID, title in path]
+            # Is item in the path? It would mean that it tries to get dropped
+            # as a children of himself.
+            if item.ID() in path:
+                return False
+        
+        return True
+
+    def decodeMimeData(self, data):
+        if not data.hasFormat("application/xml"):
+            return None
+        encodedData = bytes(data.data("application/xml")).decode()
+        root = ET.XML(encodedData)
+        if root is None:
+            return None
+
+        if root.tag != "outlineItems":
+            return None
+
+        items = []
+        for child in root:
+            if child.tag == "outlineItem":
+                item = outlineItem(xml=ET.tostring(child))
+                items.append(item)
+        
+        return items
 
     def dropMimeData(self, data, action, row, column, parent):
 
         if action == Qt.IgnoreAction:
             return True  # What is that?
 
-        if not data.hasFormat("application/xml"):
+        items = self.decodeMimeData(data)
+        if items is None:
             return False
-
+        
         if column > 0:
             column = 0
 
@@ -279,19 +321,6 @@ class outlineModel(QAbstractItemModel):
             beginRow = self.rowCount(parent) + 1
         else:
             beginRow = self.rowCount() + 1
-
-        encodedData = bytes(data.data("application/xml")).decode()
-
-        root = ET.XML(encodedData)
-
-        if root.tag != "outlineItems":
-            return False
-
-        items = []
-        for child in root:
-            if child.tag == "outlineItem":
-                item = outlineItem(xml=ET.tostring(child))
-                items.append(item)
 
         if not items:
             return False
@@ -705,7 +734,7 @@ class outlineItem():
 
     def pathID(self):
         "Returns path to item as list of (ID, title)."
-        if self.parent().parent():
+        if self.parent() and self.parent().parent():
             return self.parent().pathID() + [(self.ID(), self.title())]
         else:
             return [(self.ID(), self.title())]
