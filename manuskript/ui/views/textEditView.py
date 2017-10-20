@@ -204,10 +204,17 @@ class textEditView(QTextEdit):
         # We set the parent background to the editor's background in case
         # there are margins. We check that the parent class is a QWidget because
         # if textEditView is used in fullScreenEditor, then we don't want to
-        # set the background
+        # set the background.
         if self.parent().__class__ == QWidget:
-            self.parent().setStyleSheet("background: {bg};".format(
-                bg=opt["background"]))
+            self.parent().setStyleSheet("""
+                QWidget#{name}{{
+                    background: {bg};
+                }}""".format(
+                    # We style by name, otherwise all heriting widgets get the same
+                    # colored background, for example context menu.
+                    name=self.parent().objectName(),
+                    bg=opt["background"],
+                ))
 
         cf = QTextCharFormat()
         # cf.setFont(f)
