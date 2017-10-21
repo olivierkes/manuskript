@@ -36,6 +36,9 @@ i18n: $(QMs)
 pyinstaller:
 	python3 /usr/local/bin/pyinstaller manuskript.spec
 
+stats:
+	python3 libs/gh-release-stats.py olivierkes manuskript -d
+
 %_rc.py : %.qrc
 	pyrcc5 "$<" -o "$@" 
 

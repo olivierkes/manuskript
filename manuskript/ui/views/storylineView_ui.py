@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/views/storylineView_ui.ui'
 #
-# Created: Sun Feb 28 09:13:29 2016
+# Created: Mon Oct 16 10:05:35 2017
 #      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -20,16 +20,6 @@ class Ui_storylineView(object):
         self.verticalLayout = QtWidgets.QVBoxLayout()
         self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName("verticalLayout")
-        self.btnZoomIn = QtWidgets.QPushButton(storylineView)
-        self.btnZoomIn.setMaximumSize(QtCore.QSize(32, 32))
-        self.btnZoomIn.setFlat(True)
-        self.btnZoomIn.setObjectName("btnZoomIn")
-        self.verticalLayout.addWidget(self.btnZoomIn)
-        self.btnZoomOut = QtWidgets.QPushButton(storylineView)
-        self.btnZoomOut.setMaximumSize(QtCore.QSize(32, 32))
-        self.btnZoomOut.setFlat(True)
-        self.btnZoomOut.setObjectName("btnZoomOut")
-        self.verticalLayout.addWidget(self.btnZoomOut)
         self.btnRefresh = QtWidgets.QPushButton(storylineView)
         self.btnRefresh.setMaximumSize(QtCore.QSize(32, 32))
         self.btnRefresh.setText("")
@@ -64,6 +54,4 @@ class Ui_storylineView(object):
     def retranslateUi(self, storylineView):
         _translate = QtCore.QCoreApplication.translate
         storylineView.setWindowTitle(_translate("storylineView", "Form"))
-        self.btnZoomIn.setText(_translate("storylineView", "+"))
-        self.btnZoomOut.setText(_translate("storylineView", "-"))
 

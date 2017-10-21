@@ -37,6 +37,7 @@ def mainWindowSS():
 
 def styleMainWindow(mw):
     mw.setStyleSheet(mainWindowSS())
+    mw.lstTabs.verticalScrollBar().setStyleSheet(simpleScrollBarV())
 
     # Custon palette?
     qApp.setPalette(appPalette())
@@ -242,5 +243,31 @@ def lineEditSS():
     
     
 def transparentSS():
-    return """background: transparent;
-              border:none;"""
+    return """
+        QTextEdit{
+            background: transparent;
+            border:none;
+        }"""
+
+def simpleScrollBarV():
+    return """
+        QScrollBar:vertical {
+            border: none;
+            background: transparent;
+            width: 8px;
+        }
+        QScrollBar::handle {
+            background: rgba(180, 180, 180, 60%);
+        }
+        QScrollBar::add-line:vertical {
+            width:0;
+            height: 0;
+            border: none;
+            background: none;
+        }        
+        QScrollBar::sub-line:vertical {
+            width:0;
+            height: 0;
+            border: none;
+            background: none;
+        }"""

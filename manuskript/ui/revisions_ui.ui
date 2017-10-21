@@ -135,7 +135,7 @@
           <string>Restore</string>
          </property>
          <property name="icon">
-          <iconset theme="redo">
+          <iconset theme="edit-redo">
            <normaloff/>
           </iconset>
          </property>

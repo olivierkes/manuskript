@@ -103,6 +103,30 @@ def iconFromColorString(string):
     return iconFromColor(QColor(string))
 
 
+def themeIcon(name):
+    "Returns an icon for the given name."
+    
+    db = {
+        "character":    "stock_people",
+        "characters":   "stock_people",
+        "plot":         "stock_shuffle",
+        "plots":        "stock_shuffle",
+        "world":        "emblem-web", #stock_timezone applications-internet
+        "outline":      "gtk-index", #applications-versioncontrol
+        "label":        "folder_color_picker",
+        "status":       "applications-development",
+        "text":         "view-text",
+        "card":         "view-card",
+        "outline":      "view-outline",
+        "tree":         "view-list-tree",
+        "spelling":     "tools-check-spelling"
+    }
+    
+    if name in db:
+        return QIcon.fromTheme(db[name])
+    else:
+        return QIcon()
+
 def randomColor(mix=None):
     """Generates a random color. If mix (QColor) is given, mixes the random color and mix."""
     r = randint(0, 255)

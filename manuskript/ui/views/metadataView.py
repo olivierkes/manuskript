@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
 from PyQt5.QtWidgets import QWidget, QAbstractItemView
+from PyQt5.QtCore import QModelIndex
 
 from manuskript.enums import Outline
 from manuskript.ui.views.metadataView_ui import Ui_metadataView
@@ -17,8 +18,11 @@ class metadataView(QWidget, Ui_metadataView):
         self.revisions.setEnabled(False)
         
         self.txtSummarySentence.setStyleSheet(style.lineEditSS())
-        self.txtSummaryFull.setStyleSheet(style.transparentSS())
-        self.txtNotes.setStyleSheet(style.transparentSS())
+        self.txtSummaryFull.setStyleSheet(style.transparentSS() + 
+                                          style.simpleScrollBarV())
+        self.txtNotes.setStyleSheet(style.transparentSS() +
+                                    style.simpleScrollBarV())
+        self.revisions.setStyleSheet(style.simpleScrollBarV())
 
     def setModels(self, mdlOutline, mdlCharacter, mdlLabels, mdlStatus):
         self.properties.setModels(mdlOutline, mdlCharacter, mdlLabels, mdlStatus)
@@ -52,24 +56,45 @@ class metadataView(QWidget, Ui_metadataView):
         if self._lastIndexes == indexes:
             return
 
+        # No item selected
         if len(indexes) == 0:
             self.setEnabled(False)
             self.revisions.setEnabled(False)
 
+        # One item selected
         elif len(indexes) == 1:
             self.setEnabled(True)
             idx = indexes[0]
+            self.txtSummarySentence.setEnabled(True)
+            self.txtSummaryFull.setEnabled(True)
+            self.txtNotes.setEnabled(True)
             self.txtSummarySentence.setCurrentModelIndex(idx)
             self.txtSummaryFull.setCurrentModelIndex(idx)
             self.txtNotes.setCurrentModelIndex(idx)
             self.revisions.setEnabled(True)
             self.revisions.setCurrentModelIndex(idx)
 
+        # Multiple items selected
         else:
             self.setEnabled(True)
-            self.txtSummarySentence.setCurrentModelIndexes(indexes)
-            self.txtSummaryFull.setCurrentModelIndexes(indexes)
-            self.txtNotes.setCurrentModelIndexes(indexes)
+
+            # Behavior 1:
+            # We disable the text areas when multiple indexes are selected
+            self.txtSummarySentence.setEnabled(False)
+            self.txtSummaryFull.setEnabled(False)
+            self.txtNotes.setEnabled(False)
+            self.txtSummarySentence.setCurrentModelIndex(QModelIndex())
+            self.txtSummaryFull.setCurrentModelIndex(QModelIndex())
+            self.txtNotes.setCurrentModelIndex(QModelIndex())
+
+            # Behavior 2:
+            # Allow edition of multiple indexes.
+            # Bug: Multiple selections of items sometimes gets Notes/references 
+            #      field to be ereased. See #10 on github.
+            #self.txtSummarySentence.setCurrentModelIndexes(indexes)
+            #self.txtSummaryFull.setCurrentModelIndexes(indexes)
+            #self.txtNotes.setCurrentModelIndexes(indexes)
+
             self.revisions.setEnabled(False)
 
         self.properties.selectionChanged(selectionModel)

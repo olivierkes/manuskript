@@ -13,7 +13,7 @@ from PyQt5.QtWidgets import qApp
 from manuskript import settings
 from manuskript.enums import Outline
 from manuskript.functions import allPaths, iconColor, writablePath, appPath, findWidgetsOfClass
-from manuskript.functions import mainWindow, findBackground
+from manuskript.functions import mainWindow, findBackground, themeIcon
 from manuskript.ui.editors.tabSplitter import tabSplitter
 from manuskript.ui.editors.themes import createThemePreview
 from manuskript.ui.editors.themes import getThemeName
@@ -36,14 +36,19 @@ class settingsWindow(QWidget, Ui_Settings):
         self.mw = mainWindow
 
         # UI
-        icons = ["configure", "history-view", "gnome-settings",
-                 "folder_color_picker", "applications-development", "preferences-desktop-theme"]
+        icons = [QIcon.fromTheme("configure"), 
+                 QIcon.fromTheme("history-view"), 
+                 QIcon.fromTheme("gnome-settings"),
+                 themeIcon("label"),
+                 themeIcon("status"),
+                 QIcon.fromTheme("preferences-desktop-theme")
+                ]
         for i in range(self.lstMenu.count()):
             item = self.lstMenu.item(i)
             item.setSizeHint(QSize(item.sizeHint().width(), 42))
             item.setTextAlignment(Qt.AlignCenter)
             if icons[i]:
-                item.setIcon(QIcon.fromTheme(icons[i]))
+                item.setIcon(icons[i])
         self.lstMenu.setMaximumWidth(150)
 
         # General
@@ -156,6 +161,13 @@ class settingsWindow(QWidget, Ui_Settings):
         self.cmbEditorFontFamily.currentFontChanged.connect(self.updateEditorSettings)
         self.spnEditorFontSize.setValue(f.pointSize())
         self.spnEditorFontSize.valueChanged.connect(self.updateEditorSettings)
+        self.chkEditorCursorWidth.setChecked(opt["cursorWidth"] != 1)
+        self.chkEditorCursorWidth.stateChanged.connect(self.updateEditorSettings)
+        self.spnEditorCursorWidth.setValue(opt["cursorWidth"] if opt["cursorWidth"] != 1 else 9)
+        self.spnEditorCursorWidth.valueChanged.connect(self.updateEditorSettings)
+        self.spnEditorCursorWidth.setEnabled(opt["cursorWidth"] != 1)
+        self.cmbEditorAlignment.setCurrentIndex(opt["textAlignment"])
+        self.cmbEditorAlignment.currentIndexChanged.connect(self.updateEditorSettings)
         self.cmbEditorLineSpacing.setCurrentIndex(
                 0 if opt["lineSpacing"] == 100 else
                 1 if opt["lineSpacing"] == 150 else
@@ -398,6 +410,11 @@ class settingsWindow(QWidget, Ui_Settings):
         f = self.cmbEditorFontFamily.currentFont()
         f.setPointSize(self.spnEditorFontSize.value())
         settings.textEditor["font"] = f.toString()
+        settings.textEditor["cursorWidth"] = \
+            1 if not self.chkEditorCursorWidth.isChecked() else \
+            self.spnEditorCursorWidth.value()
+        self.spnEditorCursorWidth.setEnabled(self.chkEditorCursorWidth.isChecked())
+        settings.textEditor["textAlignment"] = self.cmbEditorAlignment.currentIndex()
         settings.textEditor["lineSpacing"] = \
             100 if self.cmbEditorLineSpacing.currentIndex() == 0 else \
             150 if self.cmbEditorLineSpacing.currentIndex() == 1 else \
@@ -416,6 +433,10 @@ class settingsWindow(QWidget, Ui_Settings):
         # Update background color in all tabSplitter (tabs)
         for w in mainWindow().findChildren(tabSplitter, QRegExp(".*")):
             w.updateStyleSheet()
+            
+        # Update background color in all folder text view:
+        for w in mainWindow().findChildren(QWidget, QRegExp("editorWidgetFolderText")):
+            w.setStyleSheet("background: {};".format(settings.textEditor["background"]))
 
     def choseEditorFontColor(self):
         color = settings.textEditor["fontColor"]
@@ -548,6 +569,9 @@ class settingsWindow(QWidget, Ui_Settings):
                 item = QListWidgetItem(n)
                 item.setData(Qt.UserRole, theme)
                 item.setData(Qt.UserRole + 1, editable)
+                item.setToolTip("{}{}".format(
+                    n,
+                    self.tr(" (read-only)") if not editable else ""))
 
                 thumb = os.path.join(p, t.replace(".theme", ".jpg"))
                 px = QPixmap(200, 120)
@@ -614,6 +638,7 @@ class settingsWindow(QWidget, Ui_Settings):
 
         # Paragraph Options
         self.chkThemeIndent.stateChanged.connect(lambda v: self.setSetting("Spacings/IndentFirstLine", v != 0))
+        self.cmbThemeAlignment.currentIndexChanged.connect(lambda i: self.setSetting("Spacings/Alignment", i))
         self.cmbThemeLineSpacing.currentIndexChanged.connect(self.updateLineSpacing)
         self.cmbThemeLineSpacing.currentIndexChanged.connect(self.updateLineSpacing)
         self.spnThemeLineSpacing.valueChanged.connect(lambda v: self.setSetting("Spacings/LineSpacing", v))
@@ -667,6 +692,7 @@ class settingsWindow(QWidget, Ui_Settings):
         # Paragraph Options
         self.chkThemeIndent.setCheckState(Qt.Checked if self._themeData["Spacings/IndentFirstLine"] else Qt.Unchecked)
         self.spnThemeLineSpacing.setEnabled(False)
+        self.cmbThemeAlignment.setCurrentIndex(self._themeData["Spacings/Alignment"])
         if self._themeData["Spacings/LineSpacing"] == 100:
             self.cmbThemeLineSpacing.setCurrentIndex(0)
         elif self._themeData["Spacings/LineSpacing"] == 150:
