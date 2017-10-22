@@ -7,10 +7,7 @@ from manuskript.models.outlineModel import outlineItem
 from manuskript.enums import Outline
 import xmltodict
 from manuskript.functions import mainWindow
-
-
-def handleCard(_, card):
-    print(card['title'])
+from PyQt5.QtCore import QModelIndex
 
 
 def exportOpml():
@@ -32,9 +29,14 @@ def importOpml(opmlFilePath):
     outline = bodyNode['outline']
 
     for element in outline:
-        parseItems(underElement=element, parentItem=mdl.rootItem)
+        parseItems(element, mdl.rootItem)
+
+    mdl.layoutChanged.emit()
+
+    mw.treeRedacOutline.viewport().update()
 
     return True
+
 
 def parseItems(underElement, parentItem):
     if '@text' in underElement:
@@ -62,11 +64,13 @@ def parseItems(underElement, parentItem):
 
     return
 
+
 def saveNewlines(inString):
     inString = inString.replace("\r\n", "\n")
     inString = inString.replace("\n", "{{lf}}")
 
     return inString
+
 
 def restoreNewLines(inString):
     return inString.replace("{{lf}}", "\n")
