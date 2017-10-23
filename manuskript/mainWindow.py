@@ -124,14 +124,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.makeUIConnections()
 
         # self.loadProject(os.path.join(appPath(), "test_project.zip"))
-    
+
     def updateDockVisibility(self, restore=False):
         """
-        Saves the state of the docks visibility. Or if `restore` is True, 
+        Saves the state of the docks visibility. Or if `restore` is True,
         restores from `self._dckVisibility`. This allows to hide the docks
         while showing the welcome screen, and then restore them as they
         were.
-        
+
         If `self._dckVisibility` contains "LOCK", then we don't override values
         with current visibility state. This is used the first time we load.
         "LOCK" is then removed.
@@ -141,7 +141,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.dckNavigation,
             self.dckSearch,
         ]
-        
+
         for d in docks:
             if not restore:
                 # We store the values, but only if "LOCK" is not present
@@ -152,11 +152,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             else:
                 # Restore the dock's visibily based on stored value
                 d.setVisible(self._dckVisibility[d.objectName()])
-        
+
         # Lock is used only once, at start up. We can remove it
         if "LOCK" in self._dckVisibility:
             self._dckVisibility.pop("LOCK")
-    
+
     def switchToWelcome(self):
         """
         While switching to welcome screen, we have to hide all the docks.
@@ -171,7 +171,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.toolbar.setVisible(False)
         # Switch to welcome screen
         self.stack.setCurrentIndex(0)
-        
+
     def switchToProject(self):
         """Restores docks and toolbar visibility, and switch to project."""
         # Restores the docks visibility
@@ -404,6 +404,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.updateMenuDict()
         self.setDictionary()
 
+        iconSize = settings.viewSettings["Tree"]["iconSize"]
+        self.treeRedacOutline.setIconSize(QSize(iconSize, iconSize))
         self.mainEditor.setFolderView(settings.folderView)
         self.mainEditor.updateFolderViewButtons(settings.folderView)
         self.mainEditor.tabSplitter.updateStyleSheet()
@@ -549,14 +551,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         sttgns.setValue("splitterRedacH", self.splitterRedacH.saveState())
         sttgns.setValue("splitterRedacV", self.splitterRedacV.saveState())
         sttgns.setValue("toolbar", self.toolbar.saveState())
-        
+
         # If we are not in the welcome window, we update the visibility
         # of the docks widgets
         if self.stack.currentIndex() == 1:
             self.updateDockVisibility()
         # Storing the visibility of docks to restore it on restart
         sttgns.setValue("docks", self._dckVisibility)
-        
+
         # Specific settings to save before quitting
         settings.lastTab = self.tabMain.currentIndex()
 
@@ -588,7 +590,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         r = loadSave.saveProject()  # version=0
         self.saveTimerNoChanges.stop()
-        
+
         if r:
             feedback = self.tr("Project {} saved.").format(self.currentProject)
         else:
@@ -976,7 +978,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                      #""
                      #]
             #self.tabMain.setTabIcon(i, QIcon(appPath("icons/Custom/Tabs/{}".format(icons[i]))))
-            
+
             icons = [QIcon.fromTheme("stock_view-details"), #info
                      QIcon.fromTheme("application-text-template"), #applications-publishing
                      F.themeIcon("characters"),
@@ -987,7 +989,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                      QIcon.fromTheme("applications-debugging")
             ]
             self.tabMain.setTabIcon(i, icons[i])
-            
+
             item = QListWidgetItem(self.tabMain.tabIcon(i),
                                    self.tabMain.tabText(i))
             item.setSizeHint(QSize(item.sizeHint().width(), 64))
