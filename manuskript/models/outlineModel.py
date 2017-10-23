@@ -491,6 +491,8 @@ class outlineItem():
                 return ""
 
         elif role == Qt.DecorationRole and column == Outline.title.value:
+            if self.customIcon():
+                return QIcon.fromTheme(self.data(Outline.customIcon.value))
             if self.isFolder():
                 return QIcon.fromTheme("folder")
             elif self.isMD():
@@ -548,6 +550,11 @@ class outlineItem():
 
         if column == Outline.compile.value:
             self.emitDataChanged(cols=[Outline.title.value, Outline.compile.value], recursive=True)
+
+        if column == Outline.customIcon.value:
+            # If custom icon changed, we tell views to update title (so that icons
+            # will be updated as well)
+            self.emitDataChanged(cols=[Outline.title.value])
 
         if updateWordCount:
             self.updateWordCount()
@@ -666,6 +673,12 @@ class outlineItem():
 
     def isMMD(self):
         return self._data[Outline.type] == "md"
+
+    def customIcon(self):
+        return self.data(Outline.customIcon.value)
+
+    def setCustomIcon(self, customIcon):
+        self.setData(Outline.customIcon.value, customIcon)
 
     def text(self):
         return self.data(Outline.text.value)
