@@ -404,6 +404,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.updateMenuDict()
         self.setDictionary()
 
+        iconSize = settings.viewSettings["Tree"]["iconSize"]
+        self.treeRedacOutline.setIconSize(QSize(iconSize, iconSize))
         self.mainEditor.setFolderView(settings.folderView)
         self.mainEditor.updateFolderViewButtons(settings.folderView)
         self.mainEditor.tabSplitter.updateStyleSheet()

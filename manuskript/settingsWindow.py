@@ -37,8 +37,8 @@ class settingsWindow(QWidget, Ui_Settings):
         self.mw = mainWindow
 
         # UI
-        icons = [QIcon.fromTheme("configure"), 
-                 QIcon.fromTheme("history-view"), 
+        icons = [QIcon.fromTheme("configure"),
+                 QIcon.fromTheme("history-view"),
                  QIcon.fromTheme("gnome-settings"),
                  themeIcon("label"),
                  themeIcon("status"),
@@ -136,12 +136,17 @@ class settingsWindow(QWidget, Ui_Settings):
         ]:
             item.setChecked(settings.viewSettings["Tree"][what] == value)
             item.toggled.connect(self.treeViewSettignsChanged)
-        
+
+        self.sldTreeIconSize.valueChanged.connect(self.treeViewSettignsChanged)
+        self.sldTreeIconSize.valueChanged.connect(
+            lambda v: self.lblTreeIconSize.setText("{}x{}".format(v, v)))
+        self.sldTreeIconSize.setValue(settings.viewSettings["Tree"]["iconSize"])
+
         self.rdoCorkOldStyle.setChecked(settings.corkStyle == "old")
         self.rdoCorkNewStyle.setChecked(settings.corkStyle == "new")
         self.rdoCorkNewStyle.toggled.connect(self.setCorkStyle)
         self.rdoCorkOldStyle.toggled.connect(self.setCorkStyle)
-        
+
         self.populatesCmbBackgrounds(self.cmbCorkImage)
         self.setCorkImageDefault()
         self.updateCorkColor()
@@ -373,6 +378,11 @@ class settingsWindow(QWidget, Ui_Settings):
             if item.isChecked():
                 settings.viewSettings["Tree"][what] = value
 
+        iconSize = self.sldTreeIconSize.value()
+        if iconSize != settings.viewSettings["Tree"]["iconSize"]:
+            settings.viewSettings["Tree"]["iconSize"] = iconSize
+            self.mw.treeRedacOutline.setIconSize(QSize(iconSize, iconSize))
+
         self.mw.treeRedacOutline.viewport().update()
 
     def setCorkColor(self):
@@ -382,9 +392,9 @@ class settingsWindow(QWidget, Ui_Settings):
         if color.isValid():
             settings.corkBackground["color"] = color.name()
             self.updateCorkColor()
-            # Update Cork view 
+            # Update Cork view
             self.mw.mainEditor.updateCorkBackground()
-            
+
     def setCorkStyle(self):
         settings.corkStyle = "new" if self.rdoCorkNewStyle.isChecked() else "old"
         self.mw.mainEditor.updateCorkView()
@@ -399,7 +409,7 @@ class settingsWindow(QWidget, Ui_Settings):
             settings.corkBackground["image"] = img
         else:
             settings.corkBackground["image"] = ""
-        # Update Cork view 
+        # Update Cork view
         self.mw.mainEditor.updateCorkBackground()
 
     def populatesCmbBackgrounds(self, cmb):
@@ -474,7 +484,7 @@ class settingsWindow(QWidget, Ui_Settings):
         # Update background color in all tabSplitter (tabs)
         for w in mainWindow().findChildren(tabSplitter, QRegExp(".*")):
             w.updateStyleSheet()
-            
+
         # Update background color in all folder text view:
         for w in mainWindow().findChildren(QWidget, QRegExp("editorWidgetFolderText")):
             w.setStyleSheet("background: {};".format(settings.textEditor["background"]))

@@ -1,6 +1,3 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
- <g transform="matrix(0.48528169,0,0,0.48522074,-0.38978691,-0.20297126)">
-  <path d="m 13.414 7.259 6.389 9.336 -2.828 2.828 -9.332 -6.385 a 10 10 0 0 0 2.261 10.627 10 10 0 0 0 14.14 0 10 10 0 0 0 0 -14.14 10 10 0 0 0 -10.631 -2.265 z" style="fill:#4793db;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
-  <rect transform="matrix(0.70710678,-0.70710678,0.70710678,0.70710678,0,0)" y="32.737" x="-3.231" height="20" width="7" style="fill:#4793db;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
- </g>
+<svg width="22" xmlns="http://www.w3.org/2000/svg" height="22" viewBox="0 0 22 22" xmlns:xlink="http://www.w3.org/1999/xlink">
+<path style="fill:#4693db" d="M 12.15625 9.945312 L 18.332031 16.078125 L 16.089844 18.332031 L 9.898438 12.1875 C 5.945312 13.308594 3.40625 10.785156 3.6875 6.582031 L 8.285156 9.375 L 9.332031 8.265625 L 6.511719 3.78125 C 10.179688 2.941406 13.566406 6.863281 12.15625 9.945312 Z "/>
 </svg>
