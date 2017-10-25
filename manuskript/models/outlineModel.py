@@ -309,6 +309,13 @@ class outlineModel(QAbstractItemModel):
         if action == Qt.IgnoreAction:
             return True  # What is that?
 
+        # Strangely, on some cases, we get a call to dropMimeData though
+        # self.canDropMimeData returned False.
+        # See https://github.com/olivierkes/manuskript/issues/169 to reproduce.
+        # So we double check for safety.
+        if not self.canDropMimeData(data, action, row, column, parent):
+            return False
+
         items = self.decodeMimeData(data)
         if items is None:
             return False
