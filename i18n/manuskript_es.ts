@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="2.0" language="es_ES" sourcelanguage="">
+<!DOCTYPE TS>
+<TS version="2.1" language="es_ES">
 <context>
     <name>Export</name>
     <message>
@@ -206,14 +207,17 @@
         <location filename="../manuskript/exporter/pandoc/PDF.py" line="19"/>
         <source>a valid latex installation. See pandoc recommendations on:
                      &lt;a href=&quot;http://pandoc.org/installing.html&quot;&gt;http://pandoc.org/installing.html&lt;/a&gt;. If you want unicode support, you need xelatex.</source>
-        <translation type="unfinished"></translation>
+        <translation>una instalación de latex valida. Vea las recomendaciones de pandoc en:
+                     &lt;a href=&quot;http://pandoc.org/installing.html&quot;&gt;http://pandoc.org/installing.html&lt;/a&gt;. Si desea soporte unicode, necesitará xelatex.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/plainText.py" line="42"/>
         <source>The purpose of this format is to provide a way to exchange information
                                               between outliners and Internet services that can be browsed or controlled
                                               through an outliner.</source>
-        <translation type="unfinished"></translation>
+        <translation>El proposito de este formato es proveer una manera para intercambiar información
+                                              entre outliners y servicios de Internet que puedan ser navegados o controlados
+                                              a través de un outliner.</translation>
     </message>
 </context>
 <context>
@@ -266,7 +270,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="282"/>
         <source>{HelpText}</source>
-        <translation type="unfinished"></translation>
+        <translation>{TextoDeAyuda}</translation>
     </message>
 </context>
 <context>
@@ -946,32 +950,32 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="154"/>
         <source>Book informations</source>
-        <translation type="unfinished"></translation>
+        <translation>Informaciones del libro</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2452"/>
         <source>&amp;About</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Acerca de</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2455"/>
         <source>About Manuskript</source>
-        <translation type="unfinished"></translation>
+        <translation>Acerca de Manuskript</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="441"/>
         <source>Manuskript</source>
-        <translation type="unfinished">Manuskript</translation>
+        <translation>Manuskript</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="523"/>
         <source>WARNING: Project {} not saved.</source>
-        <translation type="unfinished"></translation>
+        <translation>ADVERTENCIA: Proyecto {} no guardado.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="980"/>
         <source>Build worlds.  Create hierarchy of broad categories down to specific details.</source>
-        <translation type="unfinished"></translation>
+        <translation>Construir mundos.  Crear una jerarquía desde categorías amplias hasta detalles especifícos.</translation>
     </message>
 </context>
 <context>
@@ -1519,42 +1523,42 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1634"/>
         <source>Style</source>
-        <translation type="unfinished"></translation>
+        <translation>Estilo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1646"/>
         <source>Old style</source>
-        <translation type="unfinished"></translation>
+        <translation>Estilo anterior</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1659"/>
         <source>New style</source>
-        <translation type="unfinished"></translation>
+        <translation>Nuevo estilo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2127"/>
         <source>Cursor</source>
-        <translation type="unfinished"></translation>
+        <translation>Cursor</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2139"/>
         <source>Use block insertion of</source>
-        <translation type="unfinished"></translation>
+        <translation>Usar bloque de inserción de</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2394"/>
         <source>Alignment:</source>
-        <translation type="unfinished"></translation>
+        <translation>Alineamiento:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3458"/>
         <source>Justify</source>
-        <translation type="unfinished"></translation>
+        <translation>Justificación</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3471"/>
         <source>Alignment</source>
-        <translation type="unfinished"></translation>
+        <translation>Alineamiento</translation>
     </message>
 </context>
 <context>
@@ -1585,7 +1589,7 @@
     <message>
         <location filename="../manuskript/main.py" line="56"/>
         <source>Note: No translator found or loaded for locale {}.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nota: No se ha encontrado traducción o se ha cargado para el locale {}.</translation>
     </message>
 </context>
 <context>
@@ -2014,15 +2018,15 @@
         <source>{}Level {} text</source>
         <translation>{}Nivel {} texto</translation>
     </message>
-    <message encoding="UTF-8">
+    <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="807"/>
         <source>Replace ... with …</source>
-        <translation type="unfinished"></translation>
+        <translation>Reemplazar ... con ...</translation>
     </message>
-    <message encoding="UTF-8">
+    <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="814"/>
         <source>Replace --- with —</source>
-        <translation type="unfinished"></translation>
+        <translation>Reemplazar --- con —</translation>
     </message>
 </context>
 <context>
@@ -2228,12 +2232,12 @@
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.ui" line="47"/>
         <source>Go to parent item</source>
-        <translation type="unfinished"></translation>
+        <translation>Ir al elemento padre</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.ui" line="56"/>
         <source>Alt+Up</source>
-        <translation type="unfinished"></translation>
+        <translation>Alt+Arriba</translation>
     </message>
 </context>
 <context>
@@ -2287,7 +2291,7 @@
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="365"/>
         <source>Auto-hide</source>
-        <translation type="unfinished"></translation>
+        <translation>Auto ocultar</translation>
     </message>
 </context>
 <context>
@@ -2295,7 +2299,7 @@
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="42"/>
         <source>Open Item</source>
-        <translation type="unfinished"></translation>
+        <translation>Abrir elemento</translation>
     </message>
 </context>
 <context>
@@ -3122,7 +3126,7 @@
     <message>
         <location filename="../manuskript/settingsWindow.py" line="574"/>
         <source> (read-only)</source>
-        <translation type="unfinished"></translation>
+        <translation> (sólo lectura)</translation>
     </message>
 </context>
 <context>
@@ -3506,17 +3510,17 @@
     <message>
         <location filename="../manuskript/ui/welcome.py" line="153"/>
         <source>Manuskript</source>
-        <translation type="unfinished">Manuskript</translation>
+        <translation>Manuskript</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="168"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>Advertencia</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="168"/>
         <source>Overwrite existing project {} ?</source>
-        <translation type="unfinished"></translation>
+        <translation>¿Sobreescribir el proyecto existe {}?</translation>
     </message>
 </context>
 <context>
