@@ -302,6 +302,37 @@ class outlineModel(QAbstractItemModel):
                 item = outlineItem(xml=ET.tostring(child))
                 items.append(item)
 
+        # We remove every item whose parent is also in items, otherwise it gets
+        # duplicated. (https://github.com/olivierkes/manuskript/issues/169)
+        # For example if selecting:
+        #   - Parent
+        #      - Child
+        # And draging them, items encoded in mime data are: [Parent, Child],
+        # but Child is already contained in Parent, so if we do nothing we end
+        # up with:
+        #   - Parent
+        #     - Child
+        #   - Child
+
+        newItems = items[:]
+        IDs = [i.ID() for i in items]
+
+        def checkIfChildIsPresent(item):
+            # Recursively check every children of item, to see if any is in
+            # the list of items to copy. If so, we remove it from the list.
+            for c in item.children():
+                # We check if children is in the selection
+                # and if it hasn't been removed yet
+                if c.ID() in IDs and c.ID() in [i.ID() for i in newItems]:
+                    # Remove item by ID
+                    newItems.remove([i for i in newItems if i.ID() == c.ID()][0])
+                checkIfChildIsPresent(c)
+
+        for i in items:
+            checkIfChildIsPresent(i)
+
+        items = newItems
+
         return items
 
     def dropMimeData(self, data, action, row, column, parent):
