@@ -295,7 +295,7 @@ def saveProject(zip=None):
     files.append(("settings.txt", settings.save(protocol=0)))
 
     project = mw.currentProject
-    
+
     # We check if the file exist and we have write access. If the file does
     # not exists, we check the parent folder, because it might be a new project.
     if os.path.exists(project) and not os.access(project, os.W_OK) or \
@@ -411,7 +411,7 @@ def saveProject(zip=None):
         # Write the project file's content
         with open(project, "w", encoding='utf8') as f:
             f.write("1")  # Format number
-            
+
         return True
 
 
@@ -569,9 +569,18 @@ def outlineItemPath(item):
     else:
         # Count the number of siblings for padding '0'
         siblings = item.parent().childCount()
+
+        # We check if multiple items have the same name
+        # If so, we add "-ID" to their name
+        siblingsNames = [s.title() for s in item.parent().children()]
+        if siblingsNames.count(item.title()) > 1:
+            title = "{}-{}".format(item.title(), item.ID())
+        else:
+            title = item.title()
+
         name = "{ID}-{name}{ext}".format(
             ID=str(item.row()).zfill(len(str(siblings))),
-            name=slugify(item.title()),
+            name=slugify(title),
             ext="" if item.type() == "folder" else ".md"
         )
         return outlineItemPath(item.parent()) + [name]
@@ -649,7 +658,7 @@ def loadProject(project, zip=None):
         # Saves to cache (only if we loaded from disk and not zip)
         global cache
         cache = files
-        
+
         # FIXME: watch directory for changes
 
     # Sort files by keys
