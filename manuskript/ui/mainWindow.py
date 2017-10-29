@@ -2,8 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/mainWindow.ui'
 #
-# Created: Sun Oct 15 22:19:14 2017
-#      by: PyQt5 UI code generator 5.2.1
+# Created by: PyQt5 UI code generator 5.9
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -17,14 +16,15 @@ class Ui_MainWindow(object):
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.centralwidget)
-        self.horizontalLayout_2.setSpacing(0)
         self.horizontalLayout_2.setContentsMargins(0, 1, 0, 0)
+        self.horizontalLayout_2.setSpacing(0)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.stack = QtWidgets.QStackedWidget(self.centralwidget)
         self.stack.setObjectName("stack")
         self.welcomePage = QtWidgets.QWidget()
         self.welcomePage.setObjectName("welcomePage")
         self.gridLayout = QtWidgets.QGridLayout(self.welcomePage)
+        self.gridLayout.setContentsMargins(0, 0, 0, 0)
         self.gridLayout.setObjectName("gridLayout")
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.gridLayout.addItem(spacerItem, 1, 0, 1, 1)
@@ -161,6 +161,7 @@ class Ui_MainWindow(object):
         self.tabSummaryPage1 = QtWidgets.QWidget()
         self.tabSummaryPage1.setObjectName("tabSummaryPage1")
         self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.tabSummaryPage1)
+        self.verticalLayout_5.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_5.setObjectName("verticalLayout_5")
         self.label = QtWidgets.QLabel(self.tabSummaryPage1)
         self.label.setObjectName("label")
@@ -183,6 +184,7 @@ class Ui_MainWindow(object):
         self.tabSummaryPage2 = QtWidgets.QWidget()
         self.tabSummaryPage2.setObjectName("tabSummaryPage2")
         self.horizontalLayout_4 = QtWidgets.QHBoxLayout(self.tabSummaryPage2)
+        self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
         self.verticalLayout = QtWidgets.QVBoxLayout()
         self.verticalLayout.setObjectName("verticalLayout")
@@ -225,6 +227,7 @@ class Ui_MainWindow(object):
         self.tabSummaryPage3 = QtWidgets.QWidget()
         self.tabSummaryPage3.setObjectName("tabSummaryPage3")
         self.horizontalLayout_7 = QtWidgets.QHBoxLayout(self.tabSummaryPage3)
+        self.horizontalLayout_7.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_7.setObjectName("horizontalLayout_7")
         self.verticalLayout_6 = QtWidgets.QVBoxLayout()
         self.verticalLayout_6.setObjectName("verticalLayout_6")
@@ -260,6 +263,7 @@ class Ui_MainWindow(object):
         self.tabSummaryPage4 = QtWidgets.QWidget()
         self.tabSummaryPage4.setObjectName("tabSummaryPage4")
         self.horizontalLayout_8 = QtWidgets.QHBoxLayout(self.tabSummaryPage4)
+        self.horizontalLayout_8.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_8.setObjectName("horizontalLayout_8")
         self.verticalLayout_7 = QtWidgets.QVBoxLayout()
         self.verticalLayout_7.setObjectName("verticalLayout_7")
@@ -369,8 +373,8 @@ class Ui_MainWindow(object):
         self.info = QtWidgets.QWidget()
         self.info.setObjectName("info")
         self.verticalLayout_20 = QtWidgets.QVBoxLayout(self.info)
-        self.verticalLayout_20.setSpacing(0)
         self.verticalLayout_20.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_20.setSpacing(0)
         self.verticalLayout_20.setObjectName("verticalLayout_20")
         self.scrollAreaPersoInfos = QtWidgets.QScrollArea(self.info)
         self.scrollAreaPersoInfos.setFrameShape(QtWidgets.QFrame.NoFrame)
@@ -383,6 +387,7 @@ class Ui_MainWindow(object):
         self.scrollAreaPersoInfosWidget.setObjectName("scrollAreaPersoInfosWidget")
         self.formLayout_8 = QtWidgets.QFormLayout(self.scrollAreaPersoInfosWidget)
         self.formLayout_8.setFieldGrowthPolicy(QtWidgets.QFormLayout.AllNonFixedFieldsGrow)
+        self.formLayout_8.setContentsMargins(0, 0, 0, 0)
         self.formLayout_8.setObjectName("formLayout_8")
         self.label_4 = QtWidgets.QLabel(self.scrollAreaPersoInfosWidget)
         self.label_4.setObjectName("label_4")
@@ -639,6 +644,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_28 = QtWidgets.QVBoxLayout(self.tab_15)
         self.verticalLayout_28.setObjectName("verticalLayout_28")
         self.lstSubPlots = QtWidgets.QTableView(self.tab_15)
+        self.lstSubPlots.setDragDropOverwriteMode(False)
         self.lstSubPlots.setDragDropMode(QtWidgets.QAbstractItemView.InternalMove)
         self.lstSubPlots.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
         self.lstSubPlots.setShowGrid(False)
@@ -697,6 +703,7 @@ class Ui_MainWindow(object):
         self.page = QtWidgets.QWidget()
         self.page.setObjectName("page")
         self.horizontalLayout_6 = QtWidgets.QHBoxLayout(self.page)
+        self.horizontalLayout_6.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_6.setObjectName("horizontalLayout_6")
         self.txtPlotSummaryPara = textEditView(self.page)
         self.txtPlotSummaryPara.setObjectName("txtPlotSummaryPara")
@@ -705,6 +712,7 @@ class Ui_MainWindow(object):
         self.page_2 = QtWidgets.QWidget()
         self.page_2.setObjectName("page_2")
         self.horizontalLayout_10 = QtWidgets.QHBoxLayout(self.page_2)
+        self.horizontalLayout_10.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_10.setObjectName("horizontalLayout_10")
         self.txtPlotSummaryPage = textEditView(self.page_2)
         self.txtPlotSummaryPage.setObjectName("txtPlotSummaryPage")
@@ -713,6 +721,7 @@ class Ui_MainWindow(object):
         self.page_3 = QtWidgets.QWidget()
         self.page_3.setObjectName("page_3")
         self.horizontalLayout_13 = QtWidgets.QHBoxLayout(self.page_3)
+        self.horizontalLayout_13.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_13.setObjectName("horizontalLayout_13")
         self.txtPlotSummaryFull = textEditView(self.page_3)
         self.txtPlotSummaryFull.setObjectName("txtPlotSummaryFull")
@@ -987,6 +996,7 @@ class Ui_MainWindow(object):
         self.tblDebugPlotsPersos.setObjectName("tblDebugPlotsPersos")
         self.verticalLayout_22.addWidget(self.tblDebugPlotsPersos)
         self.tblDebugSubPlots = QtWidgets.QTableView(self.tab_2)
+        self.tblDebugSubPlots.setDragDropMode(QtWidgets.QAbstractItemView.InternalMove)
         self.tblDebugSubPlots.setObjectName("tblDebugSubPlots")
         self.verticalLayout_22.addWidget(self.tblDebugSubPlots)
         self.horizontalLayout_11.addLayout(self.verticalLayout_22)
@@ -1208,14 +1218,14 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.stack.setCurrentIndex(1)
-        self.tabMain.setCurrentIndex(6)
+        self.tabMain.setCurrentIndex(3)
         self.tabSummary.setCurrentIndex(0)
         self.tabPersos.setCurrentIndex(0)
         self.tabPlot.setCurrentIndex(0)
         self.comboBox_2.setCurrentIndex(0)
         self.stkPlotSummary.setCurrentIndex(0)
         self.tabWorld.setCurrentIndex(0)
-        self.tabWidget.setCurrentIndex(3)
+        self.tabWidget.setCurrentIndex(2)
         self.comboBox_2.currentIndexChanged['int'].connect(self.stkPlotSummary.setCurrentIndex)
         self.btnPlanShowDetails.toggled['bool'].connect(self.frame.setVisible)
         self.cmbSummary.currentIndexChanged['int'].connect(self.tabSummary.setCurrentIndex)
@@ -1283,6 +1293,10 @@ class Ui_MainWindow(object):
         self.label_28.setText(_translate("MainWindow", "Result"))
         self.tabPlot.setTabText(self.tabPlot.indexOf(self.infos_2), _translate("MainWindow", "Basic info"))
         self.grpSubPlotSummary.setTitle(_translate("MainWindow", "Summary:"))
+        self.btnAddSubPlot.setToolTip(_translate("MainWindow", "Add plot step (CTRL+Enter)"))
+        self.btnAddSubPlot.setShortcut(_translate("MainWindow", "Ctrl+Return"))
+        self.btnRmSubPlot.setToolTip(_translate("MainWindow", "Remove selected plot step(s) (CTRL+Backspace)"))
+        self.btnRmSubPlot.setShortcut(_translate("MainWindow", "Ctrl+Backspace"))
         self.tabPlot.setTabText(self.tabPlot.indexOf(self.tab_15), _translate("MainWindow", "Resolution steps"))
         self.grpPlotSummary.setTitle(_translate("MainWindow", "Summary"))
         self.comboBox_2.setItemText(0, _translate("MainWindow", "One paragraph"))
@@ -1347,18 +1361,18 @@ class Ui_MainWindow(object):
         self.actAbout.setText(_translate("MainWindow", "&About"))
         self.actAbout.setToolTip(_translate("MainWindow", "About Manuskript"))
 
-from manuskript.ui.views.textEditView import textEditView
 from manuskript.ui.cheatSheet import cheatSheet
 from manuskript.ui.editors.mainEditor import mainEditor
-from manuskript.ui.welcome import welcome
-from manuskript.ui.views.characterTreeView import characterTreeView
-from manuskript.ui.views.basicItemView import basicItemView
-from manuskript.ui.views.storylineView import storylineView
-from manuskript.ui.views.treeView import treeView
 from manuskript.ui.search import search
-from manuskript.ui.views.plotTreeView import plotTreeView
+from manuskript.ui.views.basicItemView import basicItemView
+from manuskript.ui.views.characterTreeView import characterTreeView
+from manuskript.ui.views.lineEditView import lineEditView
 from manuskript.ui.views.metadataView import metadataView
 from manuskript.ui.views.outlineView import outlineView
-from manuskript.ui.views.lineEditView import lineEditView
+from manuskript.ui.views.plotTreeView import plotTreeView
 from manuskript.ui.views.sldImportance import sldImportance
+from manuskript.ui.views.storylineView import storylineView
 from manuskript.ui.views.textEditCompleter import textEditCompleter
+from manuskript.ui.views.textEditView import textEditView
+from manuskript.ui.views.treeView import treeView
+from manuskript.ui.welcome import welcome

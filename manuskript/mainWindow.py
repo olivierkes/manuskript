@@ -297,10 +297,23 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def updateSubPlotView(self):
         # Hide columns
-        for i in range(self.mdlPlots.columnCount()):
-            self.lstSubPlots.hideColumn(i)
-        self.lstSubPlots.showColumn(PlotStep.name.value)
-        self.lstSubPlots.showColumn(PlotStep.meta.value)
+        # FIXME: when columns are hidden, and drag and drop InternalMove is enabled
+        #        as well as selectionBehavior=SelectRows, then when moving a row
+        #        hidden cells (here: summary and ID) are deleted...
+        #        So instead we set their width to 0.
+        #for i in range(self.mdlPlots.columnCount()):
+            #self.lstSubPlots.hideColumn(i)
+        #self.lstSubPlots.showColumn(PlotStep.name.value)
+        #self.lstSubPlots.showColumn(PlotStep.meta.value)
+
+        self.lstSubPlots.horizontalHeader().setSectionResizeMode(
+                PlotStep.ID.value, QHeaderView.Fixed)
+        self.lstSubPlots.horizontalHeader().setSectionResizeMode(
+                PlotStep.summary.value, QHeaderView.Fixed)
+        self.lstSubPlots.horizontalHeader().resizeSection(
+                PlotStep.ID.value, 0)
+        self.lstSubPlots.horizontalHeader().resizeSection(
+                PlotStep.summary.value, 0)
 
         self.lstSubPlots.horizontalHeader().setSectionResizeMode(
                 PlotStep.name.value, QHeaderView.Stretch)
@@ -715,9 +728,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.tabPersos.setEnabled(False)
 
         # Plots
-        self.lstPlots.setPlotModel(self.mdlPlots)
-        self.lstPlotPerso.setModel(self.mdlPlots)
         self.lstSubPlots.setModel(self.mdlPlots)
+        self.lstPlotPerso.setModel(self.mdlPlots)
+        self.lstPlots.setPlotModel(self.mdlPlots)
         self._updatingSubPlot = False
         self.btnAddPlot.clicked.connect(self.mdlPlots.addPlot, AUC)
         self.btnRmPlot.clicked.connect(lambda:
@@ -727,6 +740,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btnRmSubPlot.clicked.connect(self.mdlPlots.removeSubPlot, AUC)
         self.lstPlotPerso.selectionModel().selectionChanged.connect(self.plotPersoSelectionChanged)
         self.btnRmPlotPerso.clicked.connect(self.mdlPlots.removePlotPerso, AUC)
+        self.lstSubPlots.selectionModel().currentRowChanged.connect(self.changeCurrentSubPlot, AUC)
 
         for w, c in [
             (self.txtPlotName, Plot.name.value),
@@ -857,6 +871,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.disconnectAll(self.btnAddSubPlot.clicked, self.updateSubPlotView)
         self.disconnectAll(self.btnRmSubPlot.clicked, self.mdlPlots.removeSubPlot)
         self.disconnectAll(self.lstPlotPerso.selectionModel().selectionChanged, self.plotPersoSelectionChanged)
+        self.disconnectAll(self.lstSubPlots.selectionModel().currentRowChanged, self.changeCurrentSubPlot)
         self.disconnectAll(self.btnRmPlotPerso.clicked, self.mdlPlots.removePlotPerso)
 
         self.disconnectAll(self.mdlCharacter.dataChanged, self.mdlPlots.updatePlotPersoButton)
