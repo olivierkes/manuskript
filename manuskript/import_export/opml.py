@@ -2,67 +2,110 @@
 # --!-- coding: utf8 --!--
 
 # Import/export outline cards in OPML format
-
+from PyQt5.QtWidgets import QMessageBox
 from manuskript.models.outlineModel import outlineItem
 from manuskript.enums import Outline
-import xmltodict
+from lxml import etree as ET
 from manuskript.functions import mainWindow
-from PyQt5.QtCore import QModelIndex
 
 
-def exportOpml():
-    return True
-
-
-def importOpml(opmlFilePath):
-    with open(opmlFilePath, 'r') as opmlFile:
-        opmlContent = saveNewlines(opmlFile.read())
-
+def importOpml(opmlFilePath, idx):
+    ret = False
     mw = mainWindow()
+
+    try:
+        with open(opmlFilePath, 'r') as opmlFile:
+            opmlContent = saveNewlines(opmlFile.read())
+    except:
+        # TODO: Translation
+        QMessageBox.critical(mw, mw.tr("OPML Import"),
+                             mw.tr("File open failed."))
+        return False
+
     mdl = mw.mdlOutline
 
-    dict = xmltodict.parse(opmlContent, strip_whitespace=False)
+    if idx.internalPointer() is not None:
+        parentItem = idx.internalPointer()
+    else:
+        parentItem = mdl.rootItem
 
-    opmlNode = dict['opml']
-    bodyNode = opmlNode['body']
+    try:
+        parsed = ET.fromstring(bytes(opmlContent, 'utf-8'))
 
-    outline = bodyNode['outline']
+        opmlNode = parsed
+        bodyNode = opmlNode.find("body")
 
-    for element in outline:
-        parseItems(element, mdl.rootItem)
+        if bodyNode is not None:
+            outlineEls = bodyNode.findall("outline")
 
-    mdl.layoutChanged.emit()
+            if outlineEls is not None:
+                for element in outlineEls:
+                    parseItems(element, parentItem)
 
-    mw.treeRedacOutline.viewport().update()
+                mdl.layoutChanged.emit()
+                mw.treeRedacOutline.viewport().update()
+                ret = True
+    except:
+        pass
 
-    return True
+    # TODO: Translation
+    if ret:
+        QMessageBox.information(mw, mw.tr("OPML Import"),
+                             mw.tr("Import Complete."))
+    else:
+        QMessageBox.critical(mw, mw.tr("OPML Import"),
+                             mw.tr("This does not appear to be a valid OPML file."))
+
+    return ret
 
 
 def parseItems(underElement, parentItem):
-    if '@text' in underElement:
-        card = outlineItem(parent=parentItem, title=underElement['@text'])
+    text = underElement.get('text')
+    if text is not None:
+        """
+        In the case where the title is exceptionally long, trim it so it isn't
+        distracting in the tab label
+        """
+        title = text[0:32]
+        if len(title) < len(text):
+            title += '...'
 
-        text = ""
+        card = outlineItem(parent=parentItem, title=title)
+
+        body = ""
         summary = ""
-        if '@_note' in underElement:
-            text = restoreNewLines(underElement['@_note'])
-            summary = text[0:128]
+        note = underElement.get('_note')
+        if note is not None and not isWhitespaceOnly(note):
+            body = restoreNewLines(note)
+            summary = body[0:128]
+        else:
+            """
+            There's no note (body), but there is a title.  Fill the
+            body with the title to support cards that consist only
+            of a title.
+            """
+            body = text
 
         card.setData(Outline.summaryFull.value, summary)
 
-        if 'outline' in underElement:
-            elements = underElement['outline']
-
-            for el in elements:
+        children = underElement.findall('outline')
+        if children is not None and len(children) > 0:
+            for el in children:
                 parseItems(el, card)
         else:
             card.setData(Outline.type.value, 'md')
-            card.setData(Outline.text.value, text)
+            card.setData(Outline.text.value, body)
 
-        # I assume I don't have to do the following
-        # parentItem.appendChild(card)
+            # I assume I don't have to do the following
+            # parentItem.appendChild(card)
 
     return
+
+
+"""
+Since XML parsers are notorious for stripping out significant newlines,
+save them in a form we can restore after the parse.
+"""
 
 
 def saveNewlines(inString):
@@ -72,6 +115,22 @@ def saveNewlines(inString):
     return inString
 
 
+"""
+Restore any significant newlines
+"""
+
+
 def restoreNewLines(inString):
     return inString.replace("{{lf}}", "\n")
 
+
+"""
+Determine whether or not a string only contains whitespace.
+"""
+
+
+def isWhitespaceOnly(inString):
+    str = restoreNewLines(inString)
+    str = ''.join(str.split())
+
+    return len(str) is 0

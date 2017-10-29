@@ -55,6 +55,14 @@ class Ui_mainEditor(object):
         self.btnRedacFolderOutline.setObjectName("btnRedacFolderOutline")
         self.buttonGroup.addButton(self.btnRedacFolderOutline)
         self.horizontalLayout_19.addWidget(self.btnRedacFolderOutline)
+        self.btnImport = QtWidgets.QPushButton(mainEditor)
+        self.btnImport.setText("")
+        icon = QtGui.QIcon.fromTheme("document-open")
+        self.btnImport.setIcon(icon)
+        self.btnImport.setFlat(True)
+        self.btnImport.setObjectName("btnImport")
+        self.buttonGroup.addButton(self.btnImport)
+        self.horizontalLayout_19.addWidget(self.btnImport)
         self.sldCorkSizeFactor = QtWidgets.QSlider(mainEditor)
         self.sldCorkSizeFactor.setMinimumSize(QtCore.QSize(100, 0))
         self.sldCorkSizeFactor.setMaximumSize(QtCore.QSize(200, 16777215))
@@ -109,6 +117,8 @@ class Ui_mainEditor(object):
         self.btnRedacFolderCork.setText(_translate("mainEditor", "Index cards"))
         self.btnRedacFolderOutline.setText(_translate("mainEditor", "Outline"))
         self.btnRedacFullscreen.setShortcut(_translate("mainEditor", "F11"))
+        # TODO: Translation
+        self.btnImport.setToolTip(_translate("mainEditor", "Import items from an OPML file into the current folder"))
 
 from manuskript.ui.editors.tabSplitter import tabSplitter
 from manuskript.ui.editors.textFormat import textFormat

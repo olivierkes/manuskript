@@ -27,7 +27,6 @@ from manuskript.ui.mainWindow import Ui_MainWindow
 from manuskript.ui.tools.frequencyAnalyzer import frequencyAnalyzer
 from manuskript.ui.views.outlineDelegates import outlineCharacterDelegate
 from manuskript.ui.views.plotDelegate import plotDelegate
-from manuskript.import_export import opml as opmlInputExport
 
 # Spellcheck support
 from manuskript.ui.views.textEditView import textEditView
@@ -98,13 +97,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Main Menu
         for i in [self.actSave, self.actSaveAs, self.actCloseProject,
                   self.menuEdit, self.menuView, self.menuTools, self.menuHelp,
-                  self.actCompile, self.actImport, self.actSettings]:
+                  self.actCompile, self.actSettings]:
             i.setEnabled(False)
 
         self.actOpen.triggered.connect(self.welcome.openFile)
         self.actSave.triggered.connect(self.saveDatas)
         self.actSaveAs.triggered.connect(self.welcome.saveAsFile)
-        self.actImport.triggered.connect(self.importOutline)
         self.actCompile.triggered.connect(self.doCompile)
         self.actLabels.triggered.connect(self.settingsLabel)
         self.actStatus.triggered.connect(self.settingsStatus)
@@ -447,7 +445,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             i.setEnabled(False)
         for i in [self.actSave, self.actSaveAs, self.actCloseProject,
                   self.menuEdit, self.menuView, self.menuTools, self.menuHelp,
-                  self.actCompile, self.actImport, self.actSettings]:
+                  self.actCompile, self.actSettings]:
             i.setEnabled(True)
 
         # Add project name to Window's name
@@ -491,7 +489,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             i.setEnabled(True)
         for i in [self.actSave, self.actSaveAs, self.actCloseProject,
                   self.menuEdit, self.menuView, self.menuTools, self.menuHelp,
-                  self.actCompile, self.actImport, self.actSettings]:
+                  self.actCompile, self.actSettings]:
             i.setEnabled(False)
 
         # Set Window's name - no project loaded
@@ -626,10 +624,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 print(self.tr(" * {} wasn't found in project file.").format(e))
             self.statusBar().showMessage(
                     self.tr("Project {} loaded with some errors.").format(project), 5000)
-
-    def importOutline(self, project):
-        opmlInputExport.importOpml('/home/cstevenson/End Plan 2.opml')
-        return True
 
     ###############################################################################
     # MAIN CONNECTIONS

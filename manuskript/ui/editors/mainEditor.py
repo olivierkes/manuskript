@@ -14,6 +14,7 @@ from manuskript.ui import style
 from manuskript.ui.editors.editorWidget import editorWidget
 from manuskript.ui.editors.fullScreenEditor import fullScreenEditor
 from manuskript.ui.editors.mainEditor_ui import Ui_mainEditor
+from manuskript.import_export import opml as opmlInputExport
 
 locale.setlocale(locale.LC_ALL, '')
 
@@ -43,6 +44,10 @@ class mainEditor(QWidget, Ui_mainEditor):
 
         self.btnRedacFullscreen.clicked.connect(
                 self.showFullScreen, AUC)
+
+        self.btnImport.clicked.connect(
+                lambda v: self.importOPML()
+        )
 
         # self.tab.setDocumentMode(False)
 
@@ -217,6 +222,7 @@ class mainEditor(QWidget, Ui_mainEditor):
         self.btnRedacFolderText.setVisible(visible)
         self.btnRedacFolderCork.setVisible(visible)
         self.btnRedacFolderOutline.setVisible(visible)
+        self.btnImport.setVisible(visible)
         self.sldCorkSizeFactor.setVisible(visible and self.btnRedacFolderCork.isChecked())
         self.btnRedacFullscreen.setVisible(not visible)
 
@@ -295,6 +301,20 @@ class mainEditor(QWidget, Ui_mainEditor):
     def showFullScreen(self):
         if self.currentEditor():
             self._fullScreen = fullScreenEditor(self.currentEditor().currentIndex)
+
+    def importOPML(self):
+        from PyQt5.QtWidgets import QFileDialog
+        options = QFileDialog.Options()
+        options |= QFileDialog.DontUseNativeDialog
+        fileName, _ = QFileDialog.getOpenFileName(self, "Import OPML", "",
+                                                  "OPML Files (*.opml)", options=options)
+        if fileName:
+            if len(self.mw.treeRedacOutline.selectionModel().
+                           selection().indexes()) == 0:
+                idx = QModelIndex()
+            else:
+                idx = self.mw.treeRedacOutline.currentIndex()
+            opmlInputExport.importOpml(fileName, idx)
 
     ###############################################################################
     # DICT AND STUFF LIKE THAT

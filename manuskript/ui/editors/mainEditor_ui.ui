@@ -112,6 +112,23 @@
       </widget>
      </item>
      <item>
+      <widget class="QPushButton" name="btnImport">
+       <property name="toolTip">
+        <!-- TODO: Translation -->
+        <string>Import items from an OPML file into the current folder</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset theme="document-open"/>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QSlider" name="sldCorkSizeFactor">
        <property name="minimumSize">
         <size>
