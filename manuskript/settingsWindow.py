@@ -36,8 +36,8 @@ class settingsWindow(QWidget, Ui_Settings):
         self.mw = mainWindow
 
         # UI
-        icons = [QIcon.fromTheme("configure"), 
-                 QIcon.fromTheme("history-view"), 
+        icons = [QIcon.fromTheme("configure"),
+                 QIcon.fromTheme("history-view"),
                  QIcon.fromTheme("gnome-settings"),
                  themeIcon("label"),
                  themeIcon("status"),
@@ -62,6 +62,7 @@ class settingsWindow(QWidget, Ui_Settings):
         tr["Français"] = "manuskript_fr.qm"
         tr["Español"] = "manuskript_es.qm"
         tr["Deutsch"] = "manuskript_de.qm"
+        tr["Svenska"] = "manuskript_sv.qm"
 
         for name in tr:
             self.cmbTranslation.addItem(name, tr[name])
@@ -135,12 +136,12 @@ class settingsWindow(QWidget, Ui_Settings):
         ]:
             item.setChecked(settings.viewSettings["Tree"][what] == value)
             item.toggled.connect(self.treeViewSettignsChanged)
-        
+
         self.rdoCorkOldStyle.setChecked(settings.corkStyle == "old")
         self.rdoCorkNewStyle.setChecked(settings.corkStyle == "new")
         self.rdoCorkNewStyle.toggled.connect(self.setCorkStyle)
         self.rdoCorkOldStyle.toggled.connect(self.setCorkStyle)
-        
+
         self.populatesCmbBackgrounds(self.cmbCorkImage)
         self.setCorkImageDefault()
         self.updateCorkColor()
@@ -358,9 +359,9 @@ class settingsWindow(QWidget, Ui_Settings):
         if color.isValid():
             settings.corkBackground["color"] = color.name()
             self.updateCorkColor()
-            # Update Cork view 
+            # Update Cork view
             self.mw.mainEditor.updateCorkBackground()
-            
+
     def setCorkStyle(self):
         settings.corkStyle = "new" if self.rdoCorkNewStyle.isChecked() else "old"
         self.mw.mainEditor.updateCorkView()
@@ -375,7 +376,7 @@ class settingsWindow(QWidget, Ui_Settings):
             settings.corkBackground["image"] = img
         else:
             settings.corkBackground["image"] = ""
-        # Update Cork view 
+        # Update Cork view
         self.mw.mainEditor.updateCorkBackground()
 
     def populatesCmbBackgrounds(self, cmb):
@@ -433,7 +434,7 @@ class settingsWindow(QWidget, Ui_Settings):
         # Update background color in all tabSplitter (tabs)
         for w in mainWindow().findChildren(tabSplitter, QRegExp(".*")):
             w.updateStyleSheet()
-            
+
         # Update background color in all folder text view:
         for w in mainWindow().findChildren(QWidget, QRegExp("editorWidgetFolderText")):
             w.setStyleSheet("background: {};".format(settings.textEditor["background"]))
