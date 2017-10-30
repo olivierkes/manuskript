@@ -49,7 +49,8 @@ class settingsWindow(QWidget, Ui_Settings):
             item.setTextAlignment(Qt.AlignCenter)
             if icons[i]:
                 item.setIcon(icons[i])
-        self.lstMenu.setMaximumWidth(150)
+        self.lstMenu.setMaximumWidth(140)
+        self.lstMenu.setMinimumWidth(140)
 
         # General
         self.cmbStyle.addItems(list(QStyleFactory.keys()))

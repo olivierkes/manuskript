@@ -16,6 +16,9 @@
   <layout class="QHBoxLayout" name="horizontalLayout_8">
    <item>
     <widget class="QListWidget" name="lstMenu">
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
      <item>
       <property name="text">
        <string>General</string>

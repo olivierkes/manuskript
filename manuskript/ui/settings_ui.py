@@ -2,8 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/settings_ui.ui'
 #
-# Created: Wed Oct 18 10:25:40 2017
-#      by: PyQt5 UI code generator 5.2.1
+# Created by: PyQt5 UI code generator 5.9
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -16,6 +15,7 @@ class Ui_Settings(object):
         self.horizontalLayout_8 = QtWidgets.QHBoxLayout(Settings)
         self.horizontalLayout_8.setObjectName("horizontalLayout_8")
         self.lstMenu = QtWidgets.QListWidget(Settings)
+        self.lstMenu.setWordWrap(True)
         self.lstMenu.setObjectName("lstMenu")
         item = QtWidgets.QListWidgetItem()
         self.lstMenu.addItem(item)
@@ -1426,6 +1426,7 @@ class Ui_Settings(object):
         self.stackedWidgetPage1_2.setObjectName("stackedWidgetPage1_2")
         self.formLayout_4 = QtWidgets.QFormLayout(self.stackedWidgetPage1_2)
         self.formLayout_4.setFieldGrowthPolicy(QtWidgets.QFormLayout.AllNonFixedFieldsGrow)
+        self.formLayout_4.setContentsMargins(0, 0, 0, 0)
         self.formLayout_4.setObjectName("formLayout_4")
         self.label_17 = QtWidgets.QLabel(self.stackedWidgetPage1_2)
         self.label_17.setObjectName("label_17")
@@ -1457,6 +1458,7 @@ class Ui_Settings(object):
         self.stackedWidgetPage2_2.setObjectName("stackedWidgetPage2_2")
         self.formLayout_5 = QtWidgets.QFormLayout(self.stackedWidgetPage2_2)
         self.formLayout_5.setFieldGrowthPolicy(QtWidgets.QFormLayout.AllNonFixedFieldsGrow)
+        self.formLayout_5.setContentsMargins(0, 0, 0, 0)
         self.formLayout_5.setObjectName("formLayout_5")
         self.label_20 = QtWidgets.QLabel(self.stackedWidgetPage2_2)
         self.label_20.setObjectName("label_20")
@@ -1554,6 +1556,7 @@ class Ui_Settings(object):
         self.page_2.setObjectName("page_2")
         self.formLayout_7 = QtWidgets.QFormLayout(self.page_2)
         self.formLayout_7.setFieldGrowthPolicy(QtWidgets.QFormLayout.AllNonFixedFieldsGrow)
+        self.formLayout_7.setContentsMargins(0, 0, 0, 0)
         self.formLayout_7.setObjectName("formLayout_7")
         self.label_29 = QtWidgets.QLabel(self.page_2)
         self.label_29.setObjectName("label_29")
@@ -1603,6 +1606,7 @@ class Ui_Settings(object):
         self.stackedWidgetPage3_2.setObjectName("stackedWidgetPage3_2")
         self.formLayout_6 = QtWidgets.QFormLayout(self.stackedWidgetPage3_2)
         self.formLayout_6.setFieldGrowthPolicy(QtWidgets.QFormLayout.AllNonFixedFieldsGrow)
+        self.formLayout_6.setContentsMargins(0, 0, 0, 0)
         self.formLayout_6.setObjectName("formLayout_6")
         self.label_26 = QtWidgets.QLabel(self.stackedWidgetPage3_2)
         self.label_26.setObjectName("label_26")
