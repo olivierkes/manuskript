@@ -6,7 +6,7 @@ from PyQt5.QtWidgets import QTreeWidget, QTreeWidgetItem
 from lxml import etree as ET
 
 from manuskript import settings
-from manuskript.enums import Plot, Outline
+from manuskript.enums import Plot, Outline, PlotStep
 from manuskript.models import references as Ref
 
 
@@ -76,7 +76,13 @@ class plotTreeView(QTreeWidget):
     ###############################################################################
 
     def updateMaybe(self, topLeft, bottomRight):
-        if topLeft.parent() != QModelIndex():
+        if topLeft.parent() != QModelIndex() and \
+           topLeft.column() <= PlotStep.name.value <= bottomRight.column() and \
+           self._showSubPlot:
+            # Name's of Step has been updated, we update Items if showing
+            # subplots.
+            self.updateItems()
+        elif topLeft.parent() != QModelIndex():
             return
 
         if topLeft.column() <= Plot.name.value <= bottomRight.column():

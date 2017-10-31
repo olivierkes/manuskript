@@ -4,8 +4,9 @@ import os
 from collections import OrderedDict
 
 from PyQt5.QtCore import QSize, QSettings, QRegExp, QTranslator, QObject
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QTimer
 from PyQt5.QtGui import QIntValidator, QIcon, QFont, QColor, QPixmap, QStandardItem, QPainter
+from PyQt5.QtGui import QStyleHints
 from PyQt5.QtWidgets import QStyleFactory, QWidget, QStyle, QColorDialog, QListWidgetItem, QMessageBox
 from PyQt5.QtWidgets import qApp
 
@@ -13,7 +14,7 @@ from PyQt5.QtWidgets import qApp
 from manuskript import settings
 from manuskript.enums import Outline
 from manuskript.functions import allPaths, iconColor, writablePath, appPath, findWidgetsOfClass
-from manuskript.functions import mainWindow
+from manuskript.functions import mainWindow, findBackground, themeIcon
 from manuskript.ui.editors.tabSplitter import tabSplitter
 from manuskript.ui.editors.themes import createThemePreview
 from manuskript.ui.editors.themes import getThemeName
@@ -36,11 +37,21 @@ class settingsWindow(QWidget, Ui_Settings):
         self.mw = mainWindow
 
         # UI
+        icons = [QIcon.fromTheme("configure"),
+                 QIcon.fromTheme("history-view"),
+                 QIcon.fromTheme("gnome-settings"),
+                 themeIcon("label"),
+                 themeIcon("status"),
+                 QIcon.fromTheme("preferences-desktop-theme")
+                ]
         for i in range(self.lstMenu.count()):
             item = self.lstMenu.item(i)
             item.setSizeHint(QSize(item.sizeHint().width(), 42))
             item.setTextAlignment(Qt.AlignCenter)
-        self.lstMenu.setMaximumWidth(150)
+            if icons[i]:
+                item.setIcon(icons[i])
+        self.lstMenu.setMaximumWidth(140)
+        self.lstMenu.setMinimumWidth(140)
 
         # General
         self.cmbStyle.addItems(list(QStyleFactory.keys()))
@@ -52,6 +63,8 @@ class settingsWindow(QWidget, Ui_Settings):
         tr["English"] = ""
         tr["Français"] = "manuskript_fr.qm"
         tr["Español"] = "manuskript_es.qm"
+        tr["Deutsch"] = "manuskript_de.qm"
+        tr["Svenska"] = "manuskript_sv.qm"
 
         for name in tr:
             self.cmbTranslation.addItem(name, tr[name])
@@ -126,6 +139,16 @@ class settingsWindow(QWidget, Ui_Settings):
             item.setChecked(settings.viewSettings["Tree"][what] == value)
             item.toggled.connect(self.treeViewSettignsChanged)
 
+        self.sldTreeIconSize.valueChanged.connect(self.treeViewSettignsChanged)
+        self.sldTreeIconSize.valueChanged.connect(
+            lambda v: self.lblTreeIconSize.setText("{}x{}".format(v, v)))
+        self.sldTreeIconSize.setValue(settings.viewSettings["Tree"]["iconSize"])
+
+        self.rdoCorkOldStyle.setChecked(settings.corkStyle == "old")
+        self.rdoCorkNewStyle.setChecked(settings.corkStyle == "new")
+        self.rdoCorkNewStyle.toggled.connect(self.setCorkStyle)
+        self.rdoCorkOldStyle.toggled.connect(self.setCorkStyle)
+
         self.populatesCmbBackgrounds(self.cmbCorkImage)
         self.setCorkImageDefault()
         self.updateCorkColor()
@@ -134,6 +157,7 @@ class settingsWindow(QWidget, Ui_Settings):
 
         # Text editor
         opt = settings.textEditor
+            # Font
         self.setButtonColor(self.btnEditorFontColor, opt["fontColor"])
         self.btnEditorFontColor.clicked.connect(self.choseEditorFontColor)
         self.setButtonColor(self.btnEditorMisspelledColor, opt["misspelled"])
@@ -146,6 +170,27 @@ class settingsWindow(QWidget, Ui_Settings):
         self.cmbEditorFontFamily.currentFontChanged.connect(self.updateEditorSettings)
         self.spnEditorFontSize.setValue(f.pointSize())
         self.spnEditorFontSize.valueChanged.connect(self.updateEditorSettings)
+            # Cursor
+        self.chkEditorCursorWidth.setChecked(opt["cursorWidth"] != 1)
+        self.chkEditorCursorWidth.stateChanged.connect(self.updateEditorSettings)
+        self.spnEditorCursorWidth.setValue(opt["cursorWidth"] if opt["cursorWidth"] != 1 else 9)
+        self.spnEditorCursorWidth.valueChanged.connect(self.updateEditorSettings)
+        self.spnEditorCursorWidth.setEnabled(opt["cursorWidth"] != 1)
+        self.chkEditorNoBlinking.setChecked(opt["cursorNotBlinking"])
+        self.chkEditorNoBlinking.stateChanged.connect(self.setApplicationCursorBlinking)
+            # Text areas
+        self.chkEditorMaxWidth.setChecked(opt["maxWidth"] != 0)
+        self.chkEditorMaxWidth.stateChanged.connect(self.updateEditorSettings)
+        self.spnEditorMaxWidth.setEnabled(opt["maxWidth"] != 0)
+        self.spnEditorMaxWidth.setValue(500 if opt["maxWidth"] == 0 else opt["maxWidth"])
+        self.spnEditorMaxWidth.valueChanged.connect(self.updateEditorSettings)
+        self.spnEditorMarginsLR.setValue(opt["marginsLR"])
+        self.spnEditorMarginsLR.valueChanged.connect(self.updateEditorSettings)
+        self.spnEditorMarginsTB.setValue(opt["marginsTB"])
+        self.spnEditorMarginsTB.valueChanged.connect(self.updateEditorSettings)
+            # Paragraphs
+        self.cmbEditorAlignment.setCurrentIndex(opt["textAlignment"])
+        self.cmbEditorAlignment.currentIndexChanged.connect(self.updateEditorSettings)
         self.cmbEditorLineSpacing.setCurrentIndex(
                 0 if opt["lineSpacing"] == 100 else
                 1 if opt["lineSpacing"] == 150 else
@@ -164,6 +209,10 @@ class settingsWindow(QWidget, Ui_Settings):
         self.spnEditorParaAbove.valueChanged.connect(self.updateEditorSettings)
         self.spnEditorParaBelow.setValue(opt["spacingBelow"])
         self.spnEditorParaBelow.valueChanged.connect(self.updateEditorSettings)
+        self.timerUpdateWidgets = QTimer()
+        self.timerUpdateWidgets.setSingleShot(True)
+        self.timerUpdateWidgets.setInterval(250)
+        self.timerUpdateWidgets.timeout.connect(self.updateAllWidgets)
 
         # Labels
         self.lstLabels.setModel(self.mw.mdlLabels)
@@ -194,6 +243,10 @@ class settingsWindow(QWidget, Ui_Settings):
         self.btnThemeAdd.clicked.connect(self.newTheme)
         self.btnThemeEdit.clicked.connect(self.editTheme)
         self.btnThemeRemove.clicked.connect(self.removeTheme)
+        self.timerUpdateFSPreview = QTimer()
+        self.timerUpdateFSPreview.setSingleShot(True)
+        self.timerUpdateFSPreview.setInterval(250)
+        self.timerUpdateFSPreview.timeout.connect(self.updatePreview)
 
     def setTab(self, tab):
 
@@ -327,6 +380,11 @@ class settingsWindow(QWidget, Ui_Settings):
             if item.isChecked():
                 settings.viewSettings["Tree"][what] = value
 
+        iconSize = self.sldTreeIconSize.value()
+        if iconSize != settings.viewSettings["Tree"]["iconSize"]:
+            settings.viewSettings["Tree"]["iconSize"] = iconSize
+            self.mw.treeRedacOutline.setIconSize(QSize(iconSize, iconSize))
+
         self.mw.treeRedacOutline.viewport().update()
 
     def setCorkColor(self):
@@ -336,8 +394,12 @@ class settingsWindow(QWidget, Ui_Settings):
         if color.isValid():
             settings.corkBackground["color"] = color.name()
             self.updateCorkColor()
-            # Update Cork view 
+            # Update Cork view
             self.mw.mainEditor.updateCorkBackground()
+
+    def setCorkStyle(self):
+        settings.corkStyle = "new" if self.rdoCorkNewStyle.isChecked() else "old"
+        self.mw.mainEditor.updateCorkView()
 
     def updateCorkColor(self):
         self.btnCorkColor.setStyleSheet("background:{};".format(settings.corkBackground["color"]))
@@ -349,7 +411,7 @@ class settingsWindow(QWidget, Ui_Settings):
             settings.corkBackground["image"] = img
         else:
             settings.corkBackground["image"] = ""
-        # Update Cork view 
+        # Update Cork view
         self.mw.mainEditor.updateCorkBackground()
 
     def populatesCmbBackgrounds(self, cmb):
@@ -371,7 +433,7 @@ class settingsWindow(QWidget, Ui_Settings):
 
     def setCorkImageDefault(self):
         if settings.corkBackground["image"] != "":
-            i = self.cmbCorkImage.findData(settings.corkBackground["image"])
+            i = self.cmbCorkImage.findData(findBackground(settings.corkBackground["image"]))
             if i != -1:
                 self.cmbCorkImage.setCurrentIndex(i)
 
@@ -381,9 +443,27 @@ class settingsWindow(QWidget, Ui_Settings):
 
     def updateEditorSettings(self):
         # Store settings
+        # Font
         f = self.cmbEditorFontFamily.currentFont()
         f.setPointSize(self.spnEditorFontSize.value())
         settings.textEditor["font"] = f.toString()
+
+        # Cursor
+        settings.textEditor["cursorWidth"] = \
+            1 if not self.chkEditorCursorWidth.isChecked() else \
+            self.spnEditorCursorWidth.value()
+        self.spnEditorCursorWidth.setEnabled(self.chkEditorCursorWidth.isChecked())
+
+        # Text area
+        settings.textEditor["maxWidth"] = \
+            0 if not self.chkEditorMaxWidth.isChecked() else \
+            self.spnEditorMaxWidth.value()
+        self.spnEditorMaxWidth.setEnabled(self.chkEditorMaxWidth.isChecked())
+        settings.textEditor["marginsLR"] = self.spnEditorMarginsLR.value()
+        settings.textEditor["marginsTB"] = self.spnEditorMarginsTB.value()
+
+        # Paragraphs
+        settings.textEditor["textAlignment"] = self.cmbEditorAlignment.currentIndex()
         settings.textEditor["lineSpacing"] = \
             100 if self.cmbEditorLineSpacing.currentIndex() == 0 else \
             150 if self.cmbEditorLineSpacing.currentIndex() == 1 else \
@@ -395,6 +475,10 @@ class settingsWindow(QWidget, Ui_Settings):
         settings.textEditor["spacingAbove"] = self.spnEditorParaAbove.value()
         settings.textEditor["spacingBelow"] = self.spnEditorParaBelow.value()
 
+        self.timerUpdateWidgets.start()
+
+    def updateAllWidgets(self):
+
         # Update font and defaultBlockFormat to all textEditView. Drastically.
         for w in mainWindow().findChildren(textEditView, QRegExp(".*")):
             w.loadFontSettings()
@@ -402,6 +486,18 @@ class settingsWindow(QWidget, Ui_Settings):
         # Update background color in all tabSplitter (tabs)
         for w in mainWindow().findChildren(tabSplitter, QRegExp(".*")):
             w.updateStyleSheet()
+
+        # Update background color in all folder text view:
+        for w in mainWindow().findChildren(QWidget, QRegExp("editorWidgetFolderText")):
+            w.setStyleSheet("background: {};".format(settings.textEditor["background"]))
+
+    def setApplicationCursorBlinking(self):
+        settings.textEditor["cursorNotBlinking"] = self.chkEditorNoBlinking.isChecked()
+        if settings.textEditor["cursorNotBlinking"]:
+            qApp.setCursorFlashTime(0)
+        else:
+            # Load default system value, that we cached at startup
+            qApp.setCursorFlashTime(self.mw._defaultCursorFlashTime)
 
     def choseEditorFontColor(self):
         color = settings.textEditor["fontColor"]
@@ -534,6 +630,9 @@ class settingsWindow(QWidget, Ui_Settings):
                 item = QListWidgetItem(n)
                 item.setData(Qt.UserRole, theme)
                 item.setData(Qt.UserRole + 1, editable)
+                item.setToolTip("{}{}".format(
+                    n,
+                    self.tr(" (read-only)") if not editable else ""))
 
                 thumb = os.path.join(p, t.replace(".theme", ".jpg"))
                 px = QPixmap(200, 120)
@@ -599,7 +698,8 @@ class settingsWindow(QWidget, Ui_Settings):
         self.btnThemeMisspelledColor.clicked.connect(lambda: self.getThemeColor("Text/Misspelled"))
 
         # Paragraph Options
-        self.chkThemeIndent.stateChanged.connect(lambda v: self.setSetting("Spacings/IndendFirstLine", v != 0))
+        self.chkThemeIndent.stateChanged.connect(lambda v: self.setSetting("Spacings/IndentFirstLine", v != 0))
+        self.cmbThemeAlignment.currentIndexChanged.connect(lambda i: self.setSetting("Spacings/Alignment", i))
         self.cmbThemeLineSpacing.currentIndexChanged.connect(self.updateLineSpacing)
         self.cmbThemeLineSpacing.currentIndexChanged.connect(self.updateLineSpacing)
         self.spnThemeLineSpacing.valueChanged.connect(lambda v: self.setSetting("Spacings/LineSpacing", v))
@@ -616,7 +716,7 @@ class settingsWindow(QWidget, Ui_Settings):
 
     def setSetting(self, key, val):
         self._themeData[key] = val
-        self.updatePreview()
+        self.timerUpdateFSPreview.start()
 
     def updateUIFromTheme(self):
         self.txtThemeName.setText(self._themeData["Name"])
@@ -651,8 +751,9 @@ class settingsWindow(QWidget, Ui_Settings):
         self.setButtonColor(self.btnThemeMisspelledColor, self._themeData["Text/Misspelled"])
 
         # Paragraph Options
-        self.chkThemeIndent.setCheckState(Qt.Checked if self._themeData["Spacings/IndendFirstLine"] else Qt.Unchecked)
+        self.chkThemeIndent.setCheckState(Qt.Checked if self._themeData["Spacings/IndentFirstLine"] else Qt.Unchecked)
         self.spnThemeLineSpacing.setEnabled(False)
+        self.cmbThemeAlignment.setCurrentIndex(self._themeData["Spacings/Alignment"])
         if self._themeData["Spacings/LineSpacing"] == 100:
             self.cmbThemeLineSpacing.setCurrentIndex(0)
         elif self._themeData["Spacings/LineSpacing"] == 150:
@@ -680,7 +781,7 @@ class settingsWindow(QWidget, Ui_Settings):
             f.setPointSize(int(s))
 
         self._themeData["Text/Font"] = f.toString()
-        self.updatePreview()
+        self.timerUpdateFSPreview.start()
 
     def updateLineSpacing(self, i):
         if i == 0:
@@ -692,7 +793,7 @@ class settingsWindow(QWidget, Ui_Settings):
         elif i == 3:
             self._themeData["Spacings/LineSpacing"] = self.spnThemeLineSpacing.value()
         self.spnThemeLineSpacing.setEnabled(i == 3)
-        self.updatePreview()
+        self.timerUpdateFSPreview.start()
 
     def updateThemeBackground(self, i):
         img = self.cmbCorkImage.itemData(i)

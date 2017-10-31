@@ -41,10 +41,23 @@ class plotModel(QStandardItemModel):
         item = self.itemFromIndex(index)
         lst = []
         for i in range(item.rowCount()):
-            _ID = item.child(i, Plot.ID.value).text()
-            name = item.child(i, Plot.name.value).text()
-            summary = item.child(i, 3).text()
-            lst.append((_ID, name, summary))
+            if item.child(i, PlotStep.ID.value):
+                _ID = item.child(i, PlotStep.ID.value).text()
+
+                # Don't know why sometimes name is None (while drag'n'droping
+                # several items)
+                if item.child(i, PlotStep.name.value):
+                    name = item.child(i, PlotStep.name.value).text()
+                else:
+                    name = ""
+
+                # Don't know why sometimes summary is None
+                if item.child(i, PlotStep.summary.value):
+                    summary = item.child(i, PlotStep.summary.value).text()
+                else:
+                    summary = ""
+
+                lst.append((_ID, name, summary))
         return lst
 
     def getPlotNameByID(self, ID):
@@ -55,13 +68,21 @@ class plotModel(QStandardItemModel):
                 return name
         return None
 
+    def getPlotImportanceByID(self, ID):
+        for i in range(self.rowCount()):
+            _ID = self.item(i, Plot.ID.value).text()
+            if _ID == ID or toInt(_ID) == ID:
+                importance = self.item(i, Plot.importance.value).text()
+                return importance
+        return "0" # Default to "Minor"
+
     def getSubPlotTextsByID(self, plotID, subplotRaw):
         """Returns a tuple (name, summary) for the suplot whose raw in the model
         is ``subplotRaw``, of plot whose ID is ``plotID``.
         """
         plotIndex = self.getIndexFromID(plotID)
-        name = plotIndex.child(subplotRaw, Plot.name.value).data()
-        summary = plotIndex.child(subplotRaw, 3).data()  # 3 is for summary
+        name = plotIndex.child(subplotRaw, PlotStep.name.value).data()
+        summary = plotIndex.child(subplotRaw, PlotStep.summary.value).data()
         return name, summary
 
     def getIndexFromID(self, ID):
@@ -154,19 +175,32 @@ class plotModel(QStandardItemModel):
         _id = QStandardItem(self.getUniqueID(parent))
         summary = QStandardItem()
 
-        # Don't know why, if summary is in third position, then drag/drop deletes it...
-        parentItem.appendRow([p, _id, QStandardItem(), summary])
-
-        # Select last index
-        self.mw.lstSubPlots.setCurrentIndex(parent.child(self.rowCount(parent) - 1, 0))
+        currentIndex = self.mw.lstSubPlots.selectionModel().selectedIndexes()
+        if currentIndex:
+            # We use last item of selection in case of many
+            currentIndex = currentIndex[-1]
+            row = currentIndex.row() + 1
+            parentItem.insertRow(row, [p, _id, QStandardItem(), summary])
+            # Select last index
+            self.mw.lstSubPlots.setCurrentIndex(currentIndex.sibling(row, 0))
+        else:
+            # Don't know why, if summary is in third position, then drag/drop deletes it...
+            parentItem.appendRow([p, _id, QStandardItem(), summary])
+            # Select last index
+            self.mw.lstSubPlots.setCurrentIndex(parent.child(self.rowCount(parent) - 1, 0))
 
     def removeSubPlot(self):
-        index = self.mw.lstSubPlots.currentIndex()
-        if not index.isValid():
+        """
+        Remove all selected subplots / plot steps, in mw.lstSubPlots.
+        """
+        parent = self.mw.lstSubPlots.rootIndex()
+        if not parent.isValid():
             return
-        parent = index.parent()
         parentItem = self.itemFromIndex(parent)
-        parentItem.takeRow(index.row())
+
+        while self.mw.lstSubPlots.selectionModel().selectedRows():
+            i = self.mw.lstSubPlots.selectionModel().selectedRows()[0]
+            parentItem.takeRow(i.row())
 
     def flags(self, index):
         parent = index.parent()
@@ -221,6 +255,11 @@ class plotModel(QStandardItemModel):
             imp = toInt(self.mw.mdlCharacter.importance(i))
 
             menus[2 - imp].addAction(a)
+
+        # Disabling empty menus
+        for m in menus:
+            if not m.actions():
+                m.setEnabled(False)
 
         mpr.mapped.connect(self.addPlotPerso)
         self.mw.btnAddPlotPerso.setMenu(menu)

@@ -18,6 +18,7 @@ viewSettings = {
         "Background": "Nothing",
         "InfoFolder": "Nothing",
         "InfoText": "Nothing",
+        "iconSize": 24,
         },
     "Cork": {
         "Icon": "Nothing",
@@ -45,13 +46,14 @@ autoSaveDelay = 5
 autoSaveNoChanges = True
 autoSaveNoChangesDelay = 5
 saveOnQuit = True
-outlineViewColumns = [Outline.title.value, Outline.POV.value, Outline.status.value, 
-                      Outline.compile.value, Outline.wordCount.value, Outline.goal.value, 
+outlineViewColumns = [Outline.title.value, Outline.POV.value, Outline.status.value,
+                      Outline.compile.value, Outline.wordCount.value, Outline.goal.value,
                       Outline.goalPercentage.value, Outline.label.value]
 corkBackground = {
     "color": "#926239",
-    "image": ""
+    "image": "writingdesk"
         }
+corkStyle = "new"
 defaultTextType = "md"
 fullScreenTheme = "spacedreams"
 
@@ -65,8 +67,14 @@ textEditor = {
     "indent": True,
     "spacingAbove": 5,
     "spacingBelow": 5,
+    "textAlignment": 0, # 0: left, 1: center, 2: right, 3: justify
+    "cursorWidth": 1,
+    "cursorNotBlinking": False,
+    "maxWidth": 0,
+    "marginsLR": 0,
+    "marginsTB": 0,
     }
-    
+
 revisions = {
     "keep": True,
     "smartremove": True,
@@ -88,14 +96,14 @@ frequencyAnalyzer = {
 
 viewMode = "fiction"  # simple, fiction
 saveToZip = True
-    
+
 def save(filename=None, protocol=None):
-    
+
     global spellcheck, dict, corkSliderFactor, viewSettings, corkSizeFactor, folderView, lastTab, openIndexes, \
            autoSave, autoSaveDelay, saveOnQuit, autoSaveNoChanges, autoSaveNoChangesDelay, outlineViewColumns, \
-           corkBackground, fullScreenTheme, defaultTextType, textEditor, revisions, frequencyAnalyzer, viewMode, \
+           corkBackground, corkStyle, fullScreenTheme, defaultTextType, textEditor, revisions, frequencyAnalyzer, viewMode, \
            saveToZip
-    
+
     allSettings = {
         "viewSettings": viewSettings,
         "dict": dict,
@@ -111,6 +119,7 @@ def save(filename=None, protocol=None):
         "autoSaveNoChangesDelay":autoSaveNoChangesDelay,
         "outlineViewColumns":outlineViewColumns,
         "corkBackground":corkBackground,
+        "corkStyle": corkStyle,
         "fullScreenTheme":fullScreenTheme,
         "defaultTextType":defaultTextType,
         "textEditor":textEditor,
@@ -119,11 +128,11 @@ def save(filename=None, protocol=None):
         "viewMode": viewMode,
         "saveToZip": saveToZip,
     }
-    
+
     #pp=pprint.PrettyPrinter(indent=4, compact=False)
     #print("Saving:")
     #pp.pprint(allSettings)
-    
+
     if filename:
         f = open(filename, "wb")
         pickle.dump(allSettings, f)
@@ -141,12 +150,12 @@ def load(string, fromString=False, protocol=None):
     """Load settings from 'string'. 'string' is the filename of the pickle dump.
     If fromString=True, string is the data of the pickle dumps."""
     global allSettings
-    
+
     if not fromString:
         try:
             f = open(string, "rb")
             allSettings = pickle.load(f)
-            
+
         except:
             print("{} doesn't exist, cannot load settings.".format(string))
             return
@@ -159,67 +168,77 @@ def load(string, fromString=False, protocol=None):
     #pp=pprint.PrettyPrinter(indent=4, compact=False)
     #print("Loading:")
     #pp.pprint(allSettings)
-    
+
     if "viewSettings" in allSettings:
         global viewSettings
         viewSettings = allSettings["viewSettings"]
-        
+
+        for cat, name, default in [
+            ("Tree", "iconSize", 24),   # Added in 0.6.0
+            ]:
+            if not name in viewSettings[cat]:
+                viewSettings[cat][name] = default
+
     if "dict" in allSettings:
         global dict
         dict = allSettings["dict"]
-        
+
     if "spellcheck" in allSettings:
         global spellcheck
         spellcheck = allSettings["spellcheck"]
-        
+
     if "corkSizeFactor" in allSettings:
         global corkSizeFactor
         corkSizeFactor = allSettings["corkSizeFactor"]
-        
+
     if "folderView" in allSettings:
         global folderView
         folderView = allSettings["folderView"]
-        
+
     if "lastTab" in allSettings:
         global lastTab
         lastTab = allSettings["lastTab"]
-        
+
     if "openIndexes" in allSettings:
         global openIndexes
         openIndexes = allSettings["openIndexes"]
-        
+
     if "autoSave" in allSettings:
         global autoSave
         autoSave = allSettings["autoSave"]
-        
+
     if "autoSaveDelay" in allSettings:
         global autoSaveDelay
         autoSaveDelay = allSettings["autoSaveDelay"]
-        
+
     if "saveOnQuit" in allSettings:
         global saveOnQuit
         saveOnQuit = allSettings["saveOnQuit"]
-        
+
     if "autoSaveNoChanges" in allSettings:
         global autoSaveNoChanges
         autoSaveNoChanges = allSettings["autoSaveNoChanges"]
-        
+
     if "autoSaveNoChangesDelay" in allSettings:
         global autoSaveNoChangesDelay
         autoSaveNoChangesDelay = allSettings["autoSaveNoChangesDelay"]
-        
+
     if "outlineViewColumns" in allSettings:
         global outlineViewColumns
         outlineViewColumns = allSettings["outlineViewColumns"]
-    
+
     if "corkBackground" in allSettings:
         global corkBackground
         corkBackground = allSettings["corkBackground"]
-        
+
+    if "corkStyle" in allSettings:
+        global corkStyle
+        corkStyle = allSettings["corkStyle"]
+
     if "fullScreenTheme" in allSettings:
         global fullScreenTheme
         fullScreenTheme = allSettings["fullScreenTheme"]
-        
+
     if "defaultTextType" in allSettings:
         global defaultTextType
         defaultTextType = allSettings["defaultTextType"]
@@ -227,6 +246,24 @@ def load(string, fromString=False, protocol=None):
     if "textEditor" in allSettings:
         global textEditor
         textEditor = allSettings["textEditor"]
+
+        added = {
+            "textAlignment": 0,                 # Added in 0.5.0
+            "cursorWidth": 1,
+            "cursorNotBlinking": False,         # Added in 0.6.0
+            "maxWidth": 0,
+            "marginsLR": 0,
+            "marginsTB": 0,
+            }
+
+        for k in added:
+            if not k in textEditor: textEditor[k] = added[k]
+
+        if textEditor["cursorNotBlinking"]:
+            qApp.setCursorFlashTime(0)
+        else:
+            from manuskript.functions import mainWindow
+            qApp.setCursorFlashTime(mainWindow()._defaultCursorFlashTime)
 
     if "revisions" in allSettings:
         global revisions

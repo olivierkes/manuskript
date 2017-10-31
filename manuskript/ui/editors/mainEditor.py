@@ -19,6 +19,45 @@ locale.setlocale(locale.LC_ALL, '')
 
 
 class mainEditor(QWidget, Ui_mainEditor):
+    """
+    `mainEditor` is responsible for opening `outlineItem`s and offering informations
+    and commands about those `outlineItem`s to the used.
+
+    It contains two main elements:
+
+     1. A `tabSplitter`, which can open any numer of `outlineItem`s either in tabs
+        (in `QTabWidget`) and/or in splitted views (children `tabSplitter`s).
+     2. An horizontal layout contain a number of buttons and informations:
+
+        - Go up button
+        - Select folder view: either "text", "cork" or "outline" (see `editorWidget`)
+        - Zoom slider for "cork" view
+        - Label showing stats about displayed `outlineItem`
+        - Fullscreen button
+
+    `mainEditor` is responsible for opening indexes, propagating event to relevent
+    views, opening and closing tabs, etc.
+
+    +---------------------------| mainEditor |--------------------------------+
+    |                                                                         |
+    | +--------| tabSplitter |----------------------------------------------+ |
+    | |                               +----------| tabSplitter |---------+  | |
+    | |                               |                                  |  | |
+    | |  +-----| editorWidget |----+  |  +-------| editorWidget |-----+  |  | |
+    | |  |                         |  |  |                            |  |  | |
+    | |  +-------------------------+  |  +----------------------------+  |  | |
+    | |                               |                                  |  | |
+    | |  +-----| editorWidget |----+  |  +-------| editorWidget |-----+  |  | |
+    | |  |                         |  |  |                            |  |  | |
+    | |  +-------------------------+  |  +----------------------------+  |  | |
+    | |                               +----------------------------------+  | |
+    | +---------------------------------------------------------------------+ |
+    |                                                                         |
+    +-------------------------------------------------------------------------+
+    | ##  ##  ##  ##                toolbar                            ##  ## |
+    +-------------------------------------------------------------------------+
+    """
+
     def __init__(self, parent=None):
         QWidget.__init__(self, parent)
         self.setupUi(self)
@@ -28,6 +67,7 @@ class mainEditor(QWidget, Ui_mainEditor):
 
         # Connections --------------------------------------------------------
 
+        self.btnGoUp.clicked.connect(self.goToParentItem)
         self.sldCorkSizeFactor.valueChanged.connect(
                 self.setCorkSizeFactor, AUC)
         self.btnRedacFolderCork.toggled.connect(
@@ -139,18 +179,25 @@ class mainEditor(QWidget, Ui_mainEditor):
         if self._updating:
             return
 
-        if len(self.mw.treeRedacOutline.selectionModel().
-               selection().indexes()) == 0:
-            idx = QModelIndex()
-        else:
-            idx = self.mw.treeRedacOutline.currentIndex()
+        # This might be called during a drag n drop operation, or while deleting
+        # items. If so, we don't want to do anything.
+        if not self.mw.mdlOutline._removingRows:
+            if len(self.mw.treeRedacOutline.selectionModel().
+                selection().indexes()) == 0:
+                idx = QModelIndex()
+            else:
+                idx = self.mw.treeRedacOutline.currentIndex()
 
-        self.setCurrentModelIndex(idx)
-        self.updateThingsVisible(idx)
+            self.setCurrentModelIndex(idx)
+            self.updateThingsVisible(idx)
 
     def openIndexes(self, indexes, newTab=False):
         for i in indexes:
             self.setCurrentModelIndex(i, newTab)
+
+    def goToParentItem(self):
+        idx = self.currentEditor().currentIndex
+        self.mw.treeRedacOutline.setCurrentIndex(idx.parent())
 
     def setCurrentModelIndex(self, index, newTab=False, tabWidget=None):
 
@@ -171,11 +218,12 @@ class mainEditor(QWidget, Ui_mainEditor):
         if newTab or not tabWidget.count():
             editor = editorWidget(self)
             editor.setCurrentModelIndex(index)
+            editor._tabWidget = tabWidget
             tabWidget.addTab(editor, title)
             tabWidget.setCurrentIndex(tabWidget.count() - 1)
         else:
             self.currentEditor(tabWidget).setCurrentModelIndex(index)
-            tabWidget.setTabText(tabWidget.currentIndex(), title)
+            #tabWidget.setTabText(tabWidget.currentIndex(), title)
 
     def updateTargets(self):
         """Updates all tabSplitter that are targets. This is called from editorWidget."""

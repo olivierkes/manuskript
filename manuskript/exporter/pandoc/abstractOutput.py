@@ -18,5 +18,6 @@ class abstractOutput(abstractPlainText):
     def export(self, settingsWidget):
         filename = self.getExportFilename(settingsWidget)
         settingsWidget.writeSettings()
-        content = self.output(settingsWidget, outputfile=filename)
+        if filename:
+            content = self.output(settingsWidget, outputfile=filename)
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-from PyQt5.QtCore import QSize, Qt, QRect, QPoint
-from PyQt5.QtGui import QMouseEvent, QFont, QPalette, QRegion, QFontMetrics, QColor, QIcon
+from PyQt5.QtCore import QSize, Qt, QRect, QPoint, QPointF
+from PyQt5.QtGui import QMouseEvent, QFont, QPalette, QRegion, QFontMetrics, QColor, QIcon, QPolygonF
 from PyQt5.QtWidgets import QStyledItemDelegate, QLineEdit, QPlainTextEdit, QFrame, qApp, QStyle
 
 from manuskript import settings
@@ -16,16 +16,22 @@ class corkDelegate(QStyledItemDelegate):
     def __init__(self, parent=None):
         QStyledItemDelegate.__init__(self, parent)
         self.factor = settings.corkSizeFactor / 100.
-        self.defaultSize = QSize(300, 200)
         self.lastPos = None
         self.editing = None
         self.margin = 5
+
+    def newStyle(self):
+        return settings.corkStyle == "new"
 
     def setCorkSizeFactor(self, v):
         self.factor = v / 100.
 
     def sizeHint(self, option, index):
-        return self.defaultSize * self.factor
+        if self.newStyle():
+            defaultSize = QSize(300, 210)
+        else:
+            defaultSize = QSize(300, 200)
+        return defaultSize * self.factor
 
     def editorEvent(self, event, model, option, index):
         # We catch the mouse position in the widget to know which part to edit
@@ -42,10 +48,13 @@ class corkDelegate(QStyledItemDelegate):
             edt = QLineEdit(parent)
             edt.setFocusPolicy(Qt.StrongFocus)
             edt.setFrame(False)
-            edt.setAlignment(Qt.AlignCenter)
-            edt.setPlaceholderText(self.tr("One line summary"))
             f = QFont(option.font)
-            f.setItalic(True)
+            if self.newStyle():
+                f.setBold(True)
+            else:
+                f.setItalic(True)
+                edt.setAlignment(Qt.AlignCenter)
+            edt.setPlaceholderText(self.tr("One line summary"))
             edt.setFont(f)
             return edt
 
@@ -56,10 +65,12 @@ class corkDelegate(QStyledItemDelegate):
             edt.setFocusPolicy(Qt.StrongFocus)
             edt.setFrame(False)
             f = QFont(option.font)
-            # f.setPointSize(f.pointSize() + 1)
+            if self.newStyle():
+                f.setPointSize(f.pointSize() + 4)
+            else:
+                edt.setAlignment(Qt.AlignCenter)
             f.setBold(True)
             edt.setFont(f)
-            edt.setAlignment(Qt.AlignCenter)
             # edt.setGeometry(self.titleRect)
             return edt
 
@@ -120,6 +131,44 @@ class corkDelegate(QStyledItemDelegate):
             model.setData(index.sibling(index.row(), Outline.summaryFull.value), editor.toPlainText())
 
     def updateRects(self, option, index):
+        if self.newStyle():
+            self.updateRects_v2(option, index)
+        else:
+            self.updateRects_v1(option, index)
+
+    def updateRects_v2(self, option, index):
+        margin = self.margin * 2
+        iconSize = max(24 * self.factor, 18)
+        item = index.internalPointer()
+        fm = QFontMetrics(option.font)
+        h = fm.lineSpacing()    
+        
+        self.itemRect = option.rect.adjusted(margin, margin, -margin, -margin)
+        
+        top = 15 * self.factor
+        self.topRect = QRect(self.itemRect)
+        self.topRect.setHeight(top)
+        
+        self.cardRect = QRect(self.itemRect.topLeft() + QPoint(0, top),
+                         self.itemRect.bottomRight())
+        self.iconRect = QRect(self.cardRect.topLeft() + QPoint(margin, margin),
+                              QSize(iconSize, iconSize))
+        self.labelRect = QRect(self.cardRect.topRight() - QPoint(margin + self.factor * 18, 1),
+                               self.cardRect.topRight() + QPoint(- margin - self.factor * 4, self.factor * 24))
+        self.titleRect = QRect(self.iconRect.topRight() + QPoint(margin, 0),
+                               self.labelRect.bottomLeft() - QPoint(margin, margin))
+        self.titleRect.setBottom(self.iconRect.bottom())
+        self.mainRect = QRect(self.iconRect.bottomLeft() + QPoint(0, margin),
+                              self.cardRect.bottomRight() - QPoint(margin, 2*margin))
+        self.mainRect.setLeft(self.titleRect.left())
+        self.mainLineRect = QRect(self.mainRect.topLeft(),
+                                  self.mainRect.topRight() + QPoint(0, h))
+        self.mainTextRect = QRect(self.mainLineRect.bottomLeft() + QPoint(0, margin),
+                                  self.mainRect.bottomRight())
+        if not item.data(Outline.summarySentence.value):
+            self.mainTextRect.setTopLeft(self.mainLineRect.topLeft())
+    
+    def updateRects_v1(self, option, index):
         margin = self.margin
         iconSize = max(16 * self.factor, 12)
         item = index.internalPointer()
@@ -143,6 +192,182 @@ class corkDelegate(QStyledItemDelegate):
             self.titleRect.setBottomRight(self.labelRect.bottomRight() - QPoint(self.margin, self.margin))
 
     def paint(self, p, option, index):
+        if self.newStyle():
+            self.paint_v2(p, option, index)
+        else:
+            self.paint_v1(p, option, index)
+            
+    def paint_v2(self, p, option, index):
+        # QStyledItemDelegate.paint(self, p, option, index)
+        if not index.isValid():
+            return
+
+        item = index.internalPointer()
+        self.updateRects(option, index)
+        colors = outlineItemColors(item)
+
+        style = qApp.style()
+
+        def _rotate(angle):
+            p.translate(self.mainRect.center())
+            p.rotate(angle)
+            p.translate(-self.mainRect.center())
+            
+        def drawRect(r):
+            p.save()
+            p.setBrush(Qt.gray)
+            p.drawRect(r)
+            p.restore()
+
+        # Draw background
+        cg = QPalette.ColorGroup(QPalette.Normal if option.state & QStyle.State_Enabled else QPalette.Disabled)
+        if cg == QPalette.Normal and not option.state & QStyle.State_Active:
+            cg = QPalette.Inactive
+
+            # Selection
+        if option.state & QStyle.State_Selected:
+            p.save()
+            p.setBrush(option.palette.brush(cg, QPalette.Highlight))
+            p.setPen(Qt.NoPen)
+            #p.drawRoundedRect(option.rect, 12, 12)
+            p.drawRect(option.rect)
+            p.restore()
+
+            # Background
+        p.save()
+        if settings.viewSettings["Cork"]["Background"] != "Nothing":
+            c = colors[settings.viewSettings["Cork"]["Background"]]
+            if c == QColor(Qt.transparent):
+                c = QColor(Qt.white)
+            col = mixColors(c, QColor(Qt.white), .2)
+            p.setBrush(col)
+        else:
+            p.setBrush(Qt.white)
+        
+        p.setPen(Qt.NoPen)
+        p.drawRect(self.cardRect)
+        if item.isFolder():
+            itemPoly = QPolygonF([
+                self.topRect.topLeft(),
+                self.topRect.topLeft() + QPoint(self.topRect.width() * .35, 0),
+                self.cardRect.topLeft() + QPoint(self.topRect.width() * .45, 0),
+                self.cardRect.topRight(),
+                self.cardRect.bottomRight(),
+                self.cardRect.bottomLeft()
+            ])
+            p.drawPolygon(itemPoly)
+        p.restore()
+
+        # Label color
+        if settings.viewSettings["Cork"]["Corner"] != "Nothing":
+            p.save()
+            color = colors[settings.viewSettings["Cork"]["Corner"]]
+            p.setPen(Qt.NoPen)
+            p.setBrush(color)
+            p.drawRect(self.labelRect)
+            w = self.labelRect.width()
+            poly = QPolygonF([
+                self.labelRect.bottomLeft() + QPointF(0, 1),
+                self.labelRect.bottomLeft() + QPointF(0, w / 2),
+                self.labelRect.bottomLeft() + QPointF(w / 2, 1),
+                self.labelRect.bottomRight() + QPointF(1, w / 2),
+                self.labelRect.bottomRight() + QPointF(1, 1),
+            ])
+            
+            p.drawPolygon(poly)    
+            p.restore()
+        
+        if settings.viewSettings["Cork"]["Corner"] == "Nothing" or \
+           color == Qt.transparent:
+            # No corner, so title can be full width
+            self.titleRect.setRight(self.mainRect.right())
+
+        # Draw the icon
+        iconRect = self.iconRect
+        mode = QIcon.Normal
+        if not option.state & style.State_Enabled:
+            mode = QIcon.Disabled
+        elif option.state & style.State_Selected:
+            mode = QIcon.Selected
+        # index.data(Qt.DecorationRole).paint(p, iconRect, option.decorationAlignment, mode)
+        icon = index.data(Qt.DecorationRole).pixmap(iconRect.size())
+        if settings.viewSettings["Cork"]["Icon"] != "Nothing":
+            color = colors[settings.viewSettings["Cork"]["Icon"]]
+            colorifyPixmap(icon, color)
+        QIcon(icon).paint(p, iconRect, option.decorationAlignment, mode)
+
+        # Draw title
+        p.save()
+        text = index.data()
+        
+        if text:
+            if settings.viewSettings["Cork"]["Text"] != "Nothing":
+                col = colors[settings.viewSettings["Cork"]["Text"]]
+                if col == Qt.transparent:
+                    col = Qt.black
+                p.setPen(col)
+            f = QFont(option.font)
+            f.setPointSize(f.pointSize() + 4)
+            f.setBold(True)
+            p.setFont(f)
+            fm = QFontMetrics(f)
+            elidedText = fm.elidedText(text, Qt.ElideRight, self.titleRect.width())
+            p.drawText(self.titleRect, Qt.AlignLeft | Qt.AlignVCenter, elidedText)
+        p.restore()
+
+            # One line summary background
+        lineSummary = item.data(Outline.summarySentence.value)
+        fullSummary = item.data(Outline.summaryFull.value)
+
+            # Border
+        if settings.viewSettings["Cork"]["Border"] != "Nothing":
+            p.save()
+            p.setBrush(Qt.NoBrush)
+            pen = p.pen()
+            pen.setWidth(2)
+            col = colors[settings.viewSettings["Cork"]["Border"]]
+            pen.setColor(col)
+            p.setPen(pen)
+            if item.isFolder():
+                p.drawPolygon(itemPoly)
+            else:
+                p.drawRect(self.cardRect)
+            p.restore()
+
+        # Draw status
+        status = item.data(Outline.status.value)
+        if status:
+            it = mainWindow().mdlStatus.item(int(status), 0)
+            if it != None:
+                p.save()
+                p.setClipRegion(QRegion(self.cardRect))
+                f = p.font()
+                f.setPointSize(f.pointSize() + 12)
+                f.setBold(True)
+                p.setFont(f)
+                p.setPen(QColor(Qt.red).lighter(170))
+                _rotate(-35)
+                p.drawText(self.cardRect, Qt.AlignCenter, it.text())
+                p.restore()
+
+                # Draw Summary
+                # One line
+        if lineSummary:
+            p.save()
+            f = QFont(option.font)
+            f.setBold(True)
+            p.setFont(f)
+            fm = QFontMetrics(f)
+            elidedText = fm.elidedText(lineSummary, Qt.ElideRight, self.mainLineRect.width())
+            p.drawText(self.mainLineRect, Qt.AlignLeft | Qt.AlignVCenter, elidedText)
+            p.restore()
+
+            # Full summary
+        if fullSummary:
+            p.setFont(option.font)
+            p.drawText(self.mainTextRect, Qt.TextWordWrap, fullSummary)
+
+    def paint_v1(self, p, option, index):
         # QStyledItemDelegate.paint(self, p, option, index)
         if not index.isValid():
             return

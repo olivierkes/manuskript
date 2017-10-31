@@ -8,8 +8,9 @@ import os
 from PyQt5.QtCore import QSettings, QRegExp, Qt, QDir
 from PyQt5.QtGui import QIcon, QBrush, QColor, QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import QWidget, QAction, QFileDialog, QSpinBox, QLineEdit, QLabel, QPushButton, QTreeWidgetItem, \
-    qApp
+    qApp, QMessageBox
 
+from manuskript import loadSave
 from manuskript import settings
 from manuskript.enums import Outline
 from manuskript.functions import mainWindow, iconFromColor, appPath
@@ -65,10 +66,7 @@ class welcome(QWidget, Ui_welcome):
 
     def getAutoLoadValues(self):
         sttgns = QSettings()
-        if sttgns.contains("autoLoad"):
-            autoLoad = True if sttgns.value("autoLoad") in ["true", True] else False
-        else:
-            autoLoad = False
+        autoLoad = sttgns.value("autoLoad", type=bool)
         if autoLoad and sttgns.contains("lastProject"):
             last = sttgns.value("lastProject")
         else:
@@ -133,7 +131,7 @@ class welcome(QWidget, Ui_welcome):
             self.mw.loadProject(filename)
 
     def saveAsFile(self):
-        """File dialog that request a file, existing or not. 
+        """File dialog that request a file, existing or not.
         Save datas to that file, which then becomes the current project."""
         filename = QFileDialog.getSaveFileName(self,
                                                self.tr("Save project as..."),
@@ -142,7 +140,13 @@ class welcome(QWidget, Ui_welcome):
 
         if filename:
             self.appendToRecentFiles(filename)
+            loadSave.clearSaveCache()  # Ensure all file(s) are saved under new filename
             self.mw.saveDatas(filename)
+            # Update Window's project name with new filename
+            pName = os.path.split(filename)[1]
+            if pName.endswith('.msk'):
+                pName=pName[:-4]
+            self.mw.setWindowTitle(pName + " - " + self.tr("Manuskript"))
 
     def createFile(self):
         """When starting a new project, ask for a place to save it.
@@ -155,6 +159,14 @@ class welcome(QWidget, Ui_welcome):
         if filename:
             if filename[-4:] != ".msk":
                 filename += ".msk"
+            if os.path.exists(filename):
+                # Check if okay to overwrite existing project
+                result = QMessageBox.warning(self, self.tr("Warning"),
+                    self.tr("Overwrite existing project {} ?").format(filename),
+                    QMessageBox.Ok|QMessageBox.Cancel, QMessageBox.Cancel)
+                if result == QMessageBox.Cancel:
+                    return
+            # Create new project
             self.appendToRecentFiles(filename)
             self.loadDefaultDatas()
             self.mw.loadProject(filename, loadFromFile=False)
@@ -236,6 +248,10 @@ class welcome(QWidget, Ui_welcome):
             spin = QSpinBox(self)
             spin.setRange(0, 999999)
             spin.setValue(d[0])
+            # Storing the level of the template in that spinbox, so we can use
+            # it to update the template when valueChanged on that spinbox
+            # (we do that in self.updateWordCount for convenience).
+            spin.setProperty("templateIndex", self.template[1].index(d))
             spin.valueChanged.connect(self.updateWordCount)
 
             if d[1] != None:
@@ -287,10 +303,25 @@ class welcome(QWidget, Ui_welcome):
         self.updateTemplate()
 
     def updateWordCount(self):
+        """
+        Updates the word count of the template, and displays it in a label.
+
+        Also, updates self.template, which is used to create the items when
+        calling self.createFile.
+        """
         total = 1
+
+        # Searching for every spinboxes on the widget, and multiplying
+        # their values to get the number of words.
         for s in self.findChildren(QSpinBox, QRegExp(".*"),
                                    Qt.FindChildrenRecursively):
             total = total * s.value()
+
+            # Update self.template to reflect the changed values
+            templateIndex = s.property("templateIndex")
+            self.template[1][templateIndex] = (
+                s.value(),
+                self.template[1][templateIndex][1])
 
         if total == 1:
             total = 0

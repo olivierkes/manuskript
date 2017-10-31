@@ -8,7 +8,8 @@
         "image": "writingdesk.jpg"
     },
     "corkSizeFactor": 84,
-    "defaultTextType": "txt",
+    "corkStyle": "new",
+    "defaultTextType": "md",
     "dict": "en_US",
     "folderView": "cork",
     "frequencyAnalyzer": {
@@ -47,14 +48,16 @@
     "spellcheck": false,
     "textEditor": {
         "background": "#fff",
-        "font": "Oxygen-Sans,10,-1,5,50,0,0,0,0,0",
+        "cursorWidth": 1,
+        "font": "DejaVu Sans,10,-1,5,50,0,0,0,0,0",
         "fontColor": "#000",
         "indent": true,
         "lineSpacing": 100,
         "misspelled": "#F00",
         "spacingAbove": 5,
         "spacingBelow": 5,
-        "tabWidth": 20
+        "tabWidth": 20,
+        "textAlignment": 0
     },
     "viewMode": "fiction",
     "viewSettings": {

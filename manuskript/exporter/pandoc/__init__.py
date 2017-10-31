@@ -10,7 +10,7 @@ from manuskript.exporter.basic import basicExporter, basicFormat
 from manuskript.exporter.pandoc.HTML import HTML
 from manuskript.exporter.pandoc.PDF import PDF
 from manuskript.exporter.pandoc.outputFormats import ePub, OpenDocument, DocX
-from manuskript.exporter.pandoc.plainText import reST, markdown, latex
+from manuskript.exporter.pandoc.plainText import reST, markdown, latex, OPML
 from manuskript.functions import mainWindow
 
 
@@ -35,7 +35,7 @@ class pandocExporter(basicExporter):
             DocX(self),
             PDF(self),
             reST(self),
-
+            OPML(self),
         ]
 
     def version(self):
@@ -50,6 +50,20 @@ class pandocExporter(basicExporter):
 
         if outputfile:
             args.append("--output={}".format(outputfile))
+
+        for name, col, var in [
+            ("Title", 0, "title"),
+            ("Subtitle", 1, "subtitle"),
+            ("Serie", 2, ""),
+            ("Volume", 3, ""),
+            ("Genre", 4, ""),
+            ("License", 5, ""),
+            ("Author", 6, "author"),
+            ("Email", 7, ""),
+            ]:
+            item = mainWindow().mdlFlatData.item(0, col)
+            if var and item and item.text().strip():
+                args.append("--variable={}:{}".format(var, item.text().strip()))
 
         qApp.setOverrideCursor(QCursor(Qt.WaitCursor))
 

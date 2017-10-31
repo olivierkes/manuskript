@@ -4,8 +4,6 @@ import random
 import shutil
 
 from PyQt5.QtCore import QUrl
-from PyQt5.QtWebKit import QWebSettings
-from PyQt5.QtWebKitWidgets import QWebView
 from PyQt5.QtWidgets import qApp
 
 from manuskript.exporter.pandoc.abstractOutput import abstractOutput
@@ -19,7 +17,7 @@ class PDF(abstractOutput):
     name = "PDF"
     description = qApp.translate("Export", "Needs latex to be installed.")
     InvalidBecause = qApp.translate("Export", """a valid latex installation. See pandoc recommendations on:
-                     <a href="http://pandoc.org/installing.html">http://pandoc.org/installing.html</a>""")
+                     <a href="http://pandoc.org/installing.html">http://pandoc.org/installing.html</a>. If you want unicode support, you need xelatex.""")
     icon = "application-pdf"
 
     exportVarName = "lastPandocPDF"
@@ -31,7 +29,7 @@ class PDF(abstractOutput):
     }
 
     def isValid(self):
-        path = shutil.which("pdflatex")
+        path = shutil.which("pdflatex") or shutil.which("xelatex")
         return path is not None
 
     def output(self, settingsWidget, outputfile=None):

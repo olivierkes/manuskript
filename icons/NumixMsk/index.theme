@@ -5,7 +5,7 @@ Comment=Custom Numix Theme for Manuskript
 
 Example=folder
 
-Directories=16x16/actions,16x16/animations,16x16/apps,16x16/categories,16x16/devices,16x16/emblems,16x16/mimetypes,16x16/panel,16x16/places,16x16/status,22x22/actions,22x22/animations,22x22/apps,22x22/categories,22x22/devices,22x22/emblems,22x22/mimetypes,22x22/panel,22x22/places,22x22/status,24x24/actions,24x24/animations,24x24/apps,24x24/categories,24x24/devices,24x24/emblems,24x24/mimetypes,24x24/panel,24x24/places,24x24/status,32x32/actions,32x32/animations,32x32/apps,32x32/categories,32x32/devices,32x32/emblems,32x32/mimetypes,32x32/places,32x32/status,48x48/actions,48x48/animations,48x48/apps,48x48/categories,48x48/devices,48x48/emblems,48x48/mimetypes,48x48/notifications,48x48/places,48x48/status,64x64/actions,64x64/animations,64x64/categories,64x64/devices,64x64/emblems,64x64/mimetypes,64x64/places,64x64/status,96x96/places,128x128/actions,128x128/animations,128x128/categories,128x128/devices,128x128/emblems,128x128/mimetypes,128x128/places,128x128/status,256x256/actions,256x256/animations,256x256/categories,256x256/devices,256x256/emblems,256x256/mimetypes,256x256/places,256x256/status,scalable/actions,scalable/apps,scalable/categories,scalable/devices,scalable/emblems,scalable/mimetypes,scalable/places,scalable/status
+Directories=16x16/actions,16x16/animations,16x16/apps,16x16/categories,16x16/devices,16x16/emblems,16x16/mimetypes,16x16/panel,16x16/places,16x16/status,22x22/actions,22x22/animations,22x22/apps,22x22/categories,22x22/devices,22x22/emblems,22x22/mimetypes,22x22/panel,22x22/places,22x22/status,24x24/actions,24x24/animations,24x24/apps,24x24/categories,24x24/devices,24x24/emblems,24x24/mimetypes,24x24/panel,24x24/places,24x24/status,32x32/actions,32x32/animations,32x32/apps,32x32/categories,32x32/devices,32x32/emblems,32x32/mimetypes,32x32/places,32x32/status,48x48/actions,48x48/animations,48x48/apps,48x48/categories,48x48/devices,48x48/emblems,48x48/mimetypes,48x48/notifications,48x48/places,48x48/status,64x64/actions,64x64/animations,64x64/categories,64x64/devices,64x64/emblems,64x64/mimetypes,64x64/places,64x64/status,96x96/places,128x128/actions,128x128/animations,128x128/categories,128x128/devices,128x128/emblems,128x128/mimetypes,128x128/places,128x128/status,256x256/actions,256x256/animations,256x256/categories,256x256/devices,256x256/emblems,256x256/mimetypes,256x256/places,256x256/status,scalable/actions,scalable/apps,scalable/categories,scalable/devices,scalable/emblems,scalable/emotes,scalable/mimetypes,scalable/places,scalable/status
 
 [16x16/actions]
 Size=16
@@ -422,6 +422,13 @@ Context=Devices
 Type=Scalable
 
 [scalable/emblems]
+Size=16
+MinSize=16
+MaxSize=256
+Context=Emblems
+Type=Scalable
+
+[scalable/emotes]
 Size=16
 MinSize=16
 MaxSize=256

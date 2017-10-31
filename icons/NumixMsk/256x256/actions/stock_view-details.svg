@@ -1,0 +1,7 @@
+<svg width="256" xmlns="http://www.w3.org/2000/svg" height="256" viewBox="0 0 256 256" xmlns:xlink="http://www.w3.org/1999/xlink">
+<path style="fill:#268bd2;fill-rule:evenodd" d="M 256 128 C 256 198.691406 198.691406 256 128 256 C 57.308594 256 0 198.691406 0 128 C 0 57.308594 57.308594 0 128 0 C 198.691406 0 256 57.308594 256 128 Z "/>
+<g style="fill:#fff;fill-opacity:.902">
+<path d="M 144 192 L 112 192 L 112 128 L 144 128 L 144 192 "/>
+<path style="fill-rule:evenodd" d="M 144 80 C 144 88.835938 136.835938 96 128 96 C 119.164062 96 112 88.835938 112 80 C 112 71.164062 119.164062 64 128 64 C 136.835938 64 144 71.164062 144 80 Z "/>
+</g>
+</svg>

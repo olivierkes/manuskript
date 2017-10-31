@@ -4,13 +4,13 @@ import faulthandler
 import os
 import sys
 
+import manuskript.ui.views.webView
 from PyQt5.QtCore import QLocale, QTranslator, QSettings
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QApplication, qApp
 
 from manuskript.functions import appPath, writablePath
-
-_version = "0.4.0"
+from manuskript.version import getVersion
 
 faulthandler.enable()
 
@@ -20,9 +20,9 @@ def run():
     app.setOrganizationName("manuskript")
     app.setOrganizationDomain("www.theologeek.ch")
     app.setApplicationName("manuskript")
-    app.setApplicationVersion(_version)
+    app.setApplicationVersion(getVersion())
     
-    print("Running manuskript version {}.".format(_version))
+    print("Running manuskript version {}.".format(getVersion()))
     icon = QIcon()
     for i in [16, 32, 64, 128, 256, 512]:
         icon.addFile(appPath("icons/Manuskript/icon-{}px.png".format(i)))
@@ -53,7 +53,7 @@ def run():
         print(app.tr("Loaded translation: {}.").format(translation))
 
     else:
-        print(app.tr("Warning: failed to load translator for locale {}...").format(locale))
+        print(app.tr("Note: No translator found or loaded for locale {}.").format(locale))
 
     QIcon.setThemeSearchPaths(QIcon.themeSearchPaths() + [appPath("icons")])
     QIcon.setThemeName("NumixMsk")
@@ -68,6 +68,9 @@ def launch():
     from .mainWindow import MainWindow
 
     main = MainWindow()
+    # We store the system default cursor flash time to be able to restore it
+    # later if necessary
+    main._defaultCursorFlashTime = qApp.cursorFlashTime()
     main.show()
 
     qApp.exec_()

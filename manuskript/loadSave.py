@@ -16,9 +16,9 @@ def saveProject(version=None):
     # return
 
     if version == 0:
-        v0.saveProject()
+        return v0.saveProject()
     else:
-        v1.saveProject()
+        return v1.saveProject()
 
 
 def clearSaveCache():

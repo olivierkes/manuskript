@@ -58,11 +58,26 @@ class collapsibleDockWidgets(QToolBar):
         for w in mw.findChildren(QDockWidget, None):
             yield w
 
-    def addCustomWidget(self, text, widget, group=None):
+    def addCustomWidget(self, text, widget, group=None, defaultVisibility=True):
+        """
+        Adds a custom widget to the toolbar.
+        
+        `text` is the name that will displayed on the button to switch visibility.
+        `widget` is the widget to control from the toolbar.
+        `group` is an integer (or any hashable) if the current widget should not
+            be displayed all the time. Call `collapsibleDockWidgets.setCurrentGroup`
+            to switch to that group and hide other widgets.
+        `defaultVisibility` is the default visibility of the item when it is added.
+            This allows for the widget to be added to `collapsibleDockWidgets` after
+            they've been created but before they are shown, and yet specify their
+            desired visibility. Otherwise it creates troubes, see #167 on github:
+            https://github.com/olivierkes/manuskript/issues/167.
+        """
         a = QAction(text, self)
         a.setCheckable(True)
-        a.setChecked(widget.isVisible())
+        a.setChecked(defaultVisibility)
         a.toggled.connect(widget.setVisible)
+        widget.setVisible(defaultVisibility)
         # widget.installEventFilter(self)
         b = verticalButton(self)
         b.setDefaultAction(a)
@@ -90,7 +105,10 @@ class collapsibleDockWidgets(QToolBar):
         self._dockToButtonAction[dock].setVisible(val)
 
     def saveState(self):
-        # We just need to save states of the custom widgets.
+        """
+        Saves and returns the state of the custom widgets. The visibility of the
+        docks is not saved since it is included in `QMainWindow.saveState`.
+        """
         state = []
         for btn, act, w, grp in self.otherWidgets:
             state.append(
@@ -99,10 +117,14 @@ class collapsibleDockWidgets(QToolBar):
         return state
 
     def restoreState(self, state):
+        """Restores the state of the custom widgets."""
         for group, title, status in state:
             for btn, act, widget, grp in self.otherWidgets:
-                if group == grp and title == btn.text():
+                # Strip '&' from both title and btn.text() to improve matching because
+                #   title contains "&" shortcut character whereas btn.text() does not.
+                if group == grp and title.replace('&', '') == btn.text().replace('&', ''):
                     btn.setChecked(status)
+                    btn.defaultAction().setChecked(status)
                     widget.setVisible(status)
 
 

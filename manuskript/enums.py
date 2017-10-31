@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #--!-- coding: utf8 --!--
- 
+
 
 # As seen on http://stackoverflow.com/questions/36932/how-can-i-represent-an-enum-in-python
 
@@ -21,7 +21,7 @@ class Character(Enum):
     summaryPara = 8
     summaryFull = 9
     notes = 10
-    
+
 class Plot(Enum):
     name = 0
     ID = 1
@@ -31,20 +31,20 @@ class Plot(Enum):
     result = 5
     steps = 6
     summary = 7
-    
+
 class PlotStep(Enum):
     name = 0
     ID = 1
     meta = 2
     summary = 3
-    
+
 class World(Enum):
     name = 0
     ID = 1
     description = 2
     passion = 3
     conflict = 4
-    
+
 class Outline(Enum):
     title = 0
     ID = 1
@@ -64,3 +64,4 @@ class Outline(Enum):
                  # (sum of all sub-items' goals)
     textFormat = 15
     revisions = 16
+    customIcon = 17

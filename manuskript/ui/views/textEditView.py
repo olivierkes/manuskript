@@ -3,12 +3,12 @@
 import re
 
 from PyQt5.QtCore import QTimer, QModelIndex, Qt, QEvent, pyqtSignal, QRegExp
-from PyQt5.QtGui import QTextBlockFormat, QTextCharFormat, QFont, QColor, QMouseEvent, QTextCursor
-from PyQt5.QtWidgets import QTextEdit, qApp, QAction, QMenu
+from PyQt5.QtGui import QTextBlockFormat, QTextCharFormat, QFont, QColor, QIcon, QMouseEvent, QTextCursor
+from PyQt5.QtWidgets import QWidget, QTextEdit, qApp, QAction, QMenu
 
 from manuskript import settings
 from manuskript.enums import Outline
-from manuskript.functions import AUC
+from manuskript.functions import AUC, themeIcon
 from manuskript.functions import toString
 from manuskript.models.outlineModel import outlineModel
 from manuskript.ui.editors.MDFunctions import MDFormatSelection
@@ -187,22 +187,50 @@ class textEditView(QTextEdit):
             color: {foreground};
             font-family: {ff};
             font-size: {fs};
+            margin: {mTB}px {mLR}px;
+            {maxWidth}
             }}
             """.format(
                 bg=opt["background"],
                 foreground=opt["fontColor"],
                 ff=f.family(),
-                fs="{}pt".format(str(f.pointSize()))))
+                fs="{}pt".format(str(f.pointSize())),
+                mTB = opt["marginsTB"],
+                mLR = opt["marginsLR"],
+                maxWidth = "max-width: {}px;".format(opt["maxWidth"]) if opt["maxWidth"] else "",
+                )
+            )
+
+        # We set the parent background to the editor's background in case
+        # there are margins. We check that the parent class is a QWidget because
+        # if textEditView is used in fullScreenEditor, then we don't want to
+        # set the background.
+        if self.parent().__class__ == QWidget:
+            self.parent().setStyleSheet("""
+                QWidget#{name}{{
+                    background: {bg};
+                }}""".format(
+                    # We style by name, otherwise all heriting widgets get the same
+                    # colored background, for example context menu.
+                    name=self.parent().objectName(),
+                    bg=opt["background"],
+                ))
 
         cf = QTextCharFormat()
         # cf.setFont(f)
         # cf.setForeground(QColor(opt["fontColor"]))
+
+        self.setCursorWidth(opt["cursorWidth"])
 
         bf = QTextBlockFormat()
         bf.setLineHeight(opt["lineSpacing"], bf.ProportionalHeight)
         bf.setTextIndent(opt["tabWidth"] * 1 if opt["indent"] else 0)
         bf.setTopMargin(opt["spacingAbove"])
         bf.setBottomMargin(opt["spacingBelow"])
+        bf.setAlignment(Qt.AlignLeft if opt["textAlignment"] == 0 else
+                        Qt.AlignCenter if opt["textAlignment"] == 1 else
+                        Qt.AlignRight if opt["textAlignment"] == 2 else
+                        Qt.AlignJustify)
 
         self._defaultCharFormat = cf
         self._defaultBlockFormat = bf
@@ -216,8 +244,7 @@ class textEditView(QTextEdit):
         if self._updating:
             return
 
-        elif self._index:
-
+        elif self._index and self._index.isValid():
             if topLeft.parent() != self._index.parent():
                 return
 
@@ -245,7 +272,6 @@ class textEditView(QTextEdit):
                                     first <= self._index.row() <= last:
                 self._index = None
                 self.setEnabled(False)
-
                 # FIXME: self._indexes
 
     def disconnectDocument(self):
@@ -299,7 +325,7 @@ class textEditView(QTextEdit):
         if self._updating:
             return
         # print("Submitting", self.objectName())
-        if self._index:
+        if self._index and self._index.isValid():
             # item = self._index.internalPointer()
             if self.toPlainText() != self._model.data(self._index):
                 # print("    Submitting plain text")
@@ -413,6 +439,7 @@ class textEditView(QTextEdit):
             selectedWord = cursor.selectedText()
             if not valid:
                 spell_menu = QMenu(self.tr('Spelling Suggestions'), self)
+                spell_menu.setIcon(themeIcon("spelling"))
                 for word in self._dict.suggest(text):
                     action = self.SpellAction(word, spell_menu)
                     action.correct.connect(self.correctWord)
@@ -423,6 +450,7 @@ class textEditView(QTextEdit):
                     popup_menu.insertSeparator(popup_menu.actions()[0])
                     # Adds: add to dictionary
                     addAction = QAction(self.tr("&Add to dictionary"), popup_menu)
+                    addAction.setIcon(QIcon.fromTheme("list-add"))
                     addAction.triggered.connect(self.addWordToDict)
                     addAction.setData(selectedWord)
                     popup_menu.insertAction(popup_menu.actions()[0], addAction)
@@ -435,6 +463,7 @@ class textEditView(QTextEdit):
                 popup_menu.insertSeparator(popup_menu.actions()[0])
                 # Adds: remove from dictionary
                 rmAction = QAction(self.tr("&Remove from custom dictionary"), popup_menu)
+                rmAction.setIcon(QIcon.fromTheme("list-remove"))
                 rmAction.triggered.connect(self.rmWordFromDict)
                 rmAction.setData(selectedWord)
                 popup_menu.insertAction(popup_menu.actions()[0], rmAction)

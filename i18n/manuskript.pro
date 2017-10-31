@@ -84,3 +84,4 @@ SOURCES          +=../manuskript/exporter/pandoc/abstractPlainText.py
 
 TRANSLATIONS     += manuskript_fr.ts
 TRANSLATIONS     += manuskript_es.ts
+TRANSLATIONS     += manuskript_de.ts

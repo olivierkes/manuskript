@@ -6,11 +6,12 @@ import os
 from PyQt5.QtCore import pyqtSignal, QSignalMapper, QTimer, QSettings, Qt, QRegExp, QUrl, QSize
 from PyQt5.QtGui import QStandardItemModel, QIcon, QColor
 from PyQt5.QtWidgets import QMainWindow, QHeaderView, qApp, QMenu, QActionGroup, QAction, QStyle, QListWidgetItem, \
-    QLabel
+    QLabel, QDockWidget
 
 from manuskript import settings
 from manuskript.enums import Character, PlotStep, Plot, World, Outline
 from manuskript.functions import AUC, wordCount, appPath, findWidgetsOfClass
+import manuskript.functions as F
 from manuskript import loadSave
 from manuskript.models.characterModel import characterModel
 from manuskript.models.outlineModel import outlineModel
@@ -18,6 +19,7 @@ from manuskript.models.plotModel import plotModel
 from manuskript.models.worldModel import worldModel
 from manuskript.settingsWindow import settingsWindow
 from manuskript.ui import style
+from manuskript.ui.about import aboutDialog
 from manuskript.ui.collapsibleDockWidgets import collapsibleDockWidgets
 from manuskript.ui.exporters.exporter import exporterDialog
 from manuskript.ui.helpLabel import helpLabel
@@ -59,7 +61,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # Welcome
         self.welcome.updateValues()
-        self.stack.setCurrentIndex(0)
+        self.switchToWelcome()
 
         # Word count
         self.mprWordCount = QSignalMapper(self)
@@ -94,7 +96,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # Main Menu
         for i in [self.actSave, self.actSaveAs, self.actCloseProject,
-                  self.menuEdit, self.menuView, self.menuTools, self.menuHelp]:
+                  self.menuEdit, self.menuView, self.menuTools, self.menuHelp,
+                  self.actCompile, self.actSettings]:
             i.setEnabled(False)
 
         self.actOpen.triggered.connect(self.welcome.openFile)
@@ -107,6 +110,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.actCloseProject.triggered.connect(self.closeProject)
         self.actQuit.triggered.connect(self.close)
         self.actToolFrequency.triggered.connect(self.frequencyAnalyzer)
+        self.actAbout.triggered.connect(self.about)
         self.generateViewMenu()
 
         self.actModeGroup = QActionGroup(self)
@@ -120,6 +124,61 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.makeUIConnections()
 
         # self.loadProject(os.path.join(appPath(), "test_project.zip"))
+
+    def updateDockVisibility(self, restore=False):
+        """
+        Saves the state of the docks visibility. Or if `restore` is True,
+        restores from `self._dckVisibility`. This allows to hide the docks
+        while showing the welcome screen, and then restore them as they
+        were.
+
+        If `self._dckVisibility` contains "LOCK", then we don't override values
+        with current visibility state. This is used the first time we load.
+        "LOCK" is then removed.
+        """
+        docks = [
+            self.dckCheatSheet,
+            self.dckNavigation,
+            self.dckSearch,
+        ]
+
+        for d in docks:
+            if not restore:
+                # We store the values, but only if "LOCK" is not present
+                if not "LOCK" in self._dckVisibility:
+                    self._dckVisibility[d.objectName()] = d.isVisible()
+                # Hide the dock
+                d.setVisible(False)
+            else:
+                # Restore the dock's visibily based on stored value
+                d.setVisible(self._dckVisibility[d.objectName()])
+
+        # Lock is used only once, at start up. We can remove it
+        if "LOCK" in self._dckVisibility:
+            self._dckVisibility.pop("LOCK")
+
+    def switchToWelcome(self):
+        """
+        While switching to welcome screen, we have to hide all the docks.
+        Otherwise one could use the search dock, and manuskript would crash.
+        Plus it's unncessary distraction.
+        But we also want to restore them to their visibility prior to switching,
+        so we store states.
+        """
+        # Stores the state of docks
+        self.updateDockVisibility()
+        # Hides the toolbar
+        self.toolbar.setVisible(False)
+        # Switch to welcome screen
+        self.stack.setCurrentIndex(0)
+
+    def switchToProject(self):
+        """Restores docks and toolbar visibility, and switch to project."""
+        # Restores the docks visibility
+        self.updateDockVisibility(restore=True)
+        # Show the toolbar
+        self.toolbar.setVisible(True)
+        self.stack.setCurrentIndex(1)
 
     ###############################################################################
     # SUMMARY
@@ -156,7 +215,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         """
         c = self.lstCharacters.currentCharacter()
         if not c:
-            self.tabPlot.setEnabled(False)
+            self.tabPersos.setEnabled(False)
             return
 
         self.tabPersos.setEnabled(True)
@@ -179,6 +238,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Button color
         self.updateCharacterColor(c.ID())
 
+        # Slider importance
+        self.updateCharacterImportance(c.ID())
+
         # Character Infos
         self.tblPersoInfos.setRootIndex(index)
 
@@ -194,6 +256,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         c = self.mdlCharacter.getCharacterByID(ID)
         color = c.color().name()
         self.btnPersoColor.setStyleSheet("background:{};".format(color))
+
+    def updateCharacterImportance(self, ID):
+        c = self.mdlCharacter.getCharacterByID(ID)
+        self.sldPersoImportance.setValue(int(c.importance()))
 
     ###############################################################################
     # PLOTS
@@ -213,6 +279,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.sldPlotImportance.setCurrentModelIndex(index)
         self.lstPlotPerso.setRootIndex(index.sibling(index.row(),
                                                      Plot.characters.value))
+
+        # Slider importance
+        self.updatePlotImportance(index.row())
+
         subplotindex = index.sibling(index.row(), Plot.steps.value)
         self.lstSubPlots.setRootIndex(subplotindex)
         if self.mdlPlots.rowCount(subplotindex):
@@ -227,16 +297,33 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def updateSubPlotView(self):
         # Hide columns
-        for i in range(self.mdlPlots.columnCount()):
-            self.lstSubPlots.hideColumn(i)
-        self.lstSubPlots.showColumn(PlotStep.name.value)
-        self.lstSubPlots.showColumn(PlotStep.meta.value)
+        # FIXME: when columns are hidden, and drag and drop InternalMove is enabled
+        #        as well as selectionBehavior=SelectRows, then when moving a row
+        #        hidden cells (here: summary and ID) are deleted...
+        #        So instead we set their width to 0.
+        #for i in range(self.mdlPlots.columnCount()):
+            #self.lstSubPlots.hideColumn(i)
+        #self.lstSubPlots.showColumn(PlotStep.name.value)
+        #self.lstSubPlots.showColumn(PlotStep.meta.value)
+
+        self.lstSubPlots.horizontalHeader().setSectionResizeMode(
+                PlotStep.ID.value, QHeaderView.Fixed)
+        self.lstSubPlots.horizontalHeader().setSectionResizeMode(
+                PlotStep.summary.value, QHeaderView.Fixed)
+        self.lstSubPlots.horizontalHeader().resizeSection(
+                PlotStep.ID.value, 0)
+        self.lstSubPlots.horizontalHeader().resizeSection(
+                PlotStep.summary.value, 0)
 
         self.lstSubPlots.horizontalHeader().setSectionResizeMode(
                 PlotStep.name.value, QHeaderView.Stretch)
         self.lstSubPlots.horizontalHeader().setSectionResizeMode(
                 PlotStep.meta.value, QHeaderView.ResizeToContents)
         self.lstSubPlots.verticalHeader().hide()
+
+    def updatePlotImportance(self, ID):
+        imp = self.mdlPlots.getPlotImportanceByID(ID)
+        self.sldPlotImportance.setValue(int(imp))
 
     def changeCurrentSubPlot(self, index):
         # Got segfaults when using textEditView model system, so ad hoc stuff.
@@ -287,9 +374,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.txtWorldPassion.setCurrentModelIndex(index)
         self.txtWorldConflict.setCurrentModelIndex(index)
 
-    # ###############################################################################
-    # # LOAD AND SAVE
-    # ###############################################################################
+    ###############################################################################
+    # EDITOR
+    ###############################################################################
+
+    def openIndex(self, index):
+        self.treeRedacOutline.setCurrentIndex(index)
+
+    ###############################################################################
+    # LOAD AND SAVE
+    ###############################################################################
 
     def loadProject(self, project, loadFromFile=True):
         """Loads the project ``project``.
@@ -323,6 +417,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.updateMenuDict()
         self.setDictionary()
 
+        iconSize = settings.viewSettings["Tree"]["iconSize"]
+        self.treeRedacOutline.setIconSize(QSize(iconSize, iconSize))
         self.mainEditor.setFolderView(settings.folderView)
         self.mainEditor.updateFolderViewButtons(settings.folderView)
         self.mainEditor.tabSplitter.updateStyleSheet()
@@ -363,7 +459,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         for i in [self.actOpen, self.menuRecents]:
             i.setEnabled(False)
         for i in [self.actSave, self.actSaveAs, self.actCloseProject,
-                  self.menuEdit, self.menuView, self.menuTools, self.menuHelp]:
+                  self.menuEdit, self.menuView, self.menuTools, self.menuHelp,
+                  self.actCompile, self.actSettings]:
             i.setEnabled(True)
 
         # Add project name to Window's name
@@ -379,7 +476,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         QSettings().setValue("lastProject", project)
 
         # Show main Window
-        self.stack.setCurrentIndex(1)
+        self.switchToProject()
 
     def closeProject(self):
 
@@ -406,7 +503,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         for i in [self.actOpen, self.menuRecents]:
             i.setEnabled(True)
         for i in [self.actSave, self.actSaveAs, self.actCloseProject,
-                  self.menuEdit, self.menuView, self.menuTools, self.menuHelp]:
+                  self.menuEdit, self.menuView, self.menuTools, self.menuHelp,
+                  self.actCompile, self.actSettings]:
             i.setEnabled(False)
 
         # Set Window's name - no project loaded
@@ -416,7 +514,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.welcome.updateValues()
 
         # Show welcome dialog
-        self.stack.setCurrentIndex(0)
+        self.switchToWelcome()
 
     def readSettings(self):
         # Load State and geometry
@@ -425,9 +523,21 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.restoreGeometry(sttgns.value("geometry"))
         if sttgns.contains("windowState"):
             self.restoreState(sttgns.value("windowState"))
+
+        if sttgns.contains("docks"):
+            self._dckVisibility = {}
+            vals = sttgns.value("docks")
+            for name in vals:
+                self._dckVisibility[name] = vals[name]
         else:
-            self.dckCheatSheet.hide()
-            self.dckSearch.hide()
+            # Create default settings
+            self._dckVisibility = {
+                self.dckNavigation.objectName() : True,
+                self.dckCheatSheet.objectName() : False,
+                self.dckSearch.objectName() : False,
+            }
+        self._dckVisibility["LOCK"] = True  # prevent overiding loaded values
+
         if sttgns.contains("metadataState"):
             state = [False if v == "false" else True for v in sttgns.value("metadataState")]
             self.redacMetadata.restoreState(state)
@@ -444,7 +554,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         else:
             self._toolbarState = ""
 
-
     def closeEvent(self, event):
         # Save State and geometry and other things
         sttgns = QSettings(qApp.organizationName(), qApp.applicationName())
@@ -455,6 +564,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         sttgns.setValue("splitterRedacH", self.splitterRedacH.saveState())
         sttgns.setValue("splitterRedacV", self.splitterRedacV.saveState())
         sttgns.setValue("toolbar", self.toolbar.saveState())
+
+        # If we are not in the welcome window, we update the visibility
+        # of the docks widgets
+        if self.stack.currentIndex() == 1:
+            self.updateDockVisibility()
+        # Storing the visibility of docks to restore it on restart
+        sttgns.setValue("docks", self._dckVisibility)
 
         # Specific settings to save before quitting
         settings.lastTab = self.tabMain.currentIndex()
@@ -485,13 +601,17 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.currentProject = projectName
             QSettings().setValue("lastProject", projectName)
 
-        loadSave.saveProject()  # version=0
+        r = loadSave.saveProject()  # version=0
         self.saveTimerNoChanges.stop()
 
+        if r:
+            feedback = self.tr("Project {} saved.").format(self.currentProject)
+        else:
+            feedback = self.tr("WARNING: Project {} not saved.").format(self.currentProject)
+
         # Giving some feedback
-        print(self.tr("Project {} saved.").format(self.currentProject))
-        self.statusBar().showMessage(
-                self.tr("Project {} saved.").format(self.currentProject), 5000)
+        print(feedback)
+        self.statusBar().showMessage(feedback, 5000)
 
     def loadEmptyDatas(self):
         self.mdlFlatData = QStandardItemModel(self)
@@ -608,9 +728,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.tabPersos.setEnabled(False)
 
         # Plots
-        self.lstPlots.setPlotModel(self.mdlPlots)
-        self.lstPlotPerso.setModel(self.mdlPlots)
         self.lstSubPlots.setModel(self.mdlPlots)
+        self.lstPlotPerso.setModel(self.mdlPlots)
+        self.lstPlots.setPlotModel(self.mdlPlots)
         self._updatingSubPlot = False
         self.btnAddPlot.clicked.connect(self.mdlPlots.addPlot, AUC)
         self.btnRmPlot.clicked.connect(lambda:
@@ -620,6 +740,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btnRmSubPlot.clicked.connect(self.mdlPlots.removeSubPlot, AUC)
         self.lstPlotPerso.selectionModel().selectionChanged.connect(self.plotPersoSelectionChanged)
         self.btnRmPlotPerso.clicked.connect(self.mdlPlots.removePlotPerso, AUC)
+        self.lstSubPlots.selectionModel().currentRowChanged.connect(self.changeCurrentSubPlot, AUC)
 
         for w, c in [
             (self.txtPlotName, Plot.name.value),
@@ -750,6 +871,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.disconnectAll(self.btnAddSubPlot.clicked, self.updateSubPlotView)
         self.disconnectAll(self.btnRmSubPlot.clicked, self.mdlPlots.removeSubPlot)
         self.disconnectAll(self.lstPlotPerso.selectionModel().selectionChanged, self.plotPersoSelectionChanged)
+        self.disconnectAll(self.lstSubPlots.selectionModel().currentRowChanged, self.changeCurrentSubPlot)
         self.disconnectAll(self.btnRmPlotPerso.clicked, self.mdlPlots.removePlotPerso)
 
         self.disconnectAll(self.mdlCharacter.dataChanged, self.mdlPlots.updatePlotPersoButton)
@@ -782,6 +904,19 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 lambda: self.tblDebugSubPlots.setRootIndex(self.mdlPlots.index(
                         self.tblDebugPlots.selectionModel().currentIndex().row(),
                         Plot.steps.value)))
+
+    ###############################################################################
+    # HELP
+    ###############################################################################
+
+    def about(self):
+        self.dialog = aboutDialog(mw=self)
+        self.dialog.setFixedSize(self.dialog.size())
+        self.dialog.show()
+        # Center about dialog
+        r = self.dialog.geometry()
+        r2 = self.geometry()
+        self.dialog.move(r2.center() - r.center())
 
     ###############################################################################
     # GENERAL AKA UNSORTED
@@ -838,29 +973,42 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # Tool bar on the right
         self.toolbar = collapsibleDockWidgets(Qt.RightDockWidgetArea, self)
-        self.toolbar.addCustomWidget(self.tr("Book summary"), self.grpPlotSummary, self.TabPlots)
-        self.toolbar.addCustomWidget(self.tr("Project tree"), self.treeRedacWidget, self.TabRedac)
-        self.toolbar.addCustomWidget(self.tr("Metadata"), self.redacMetadata, self.TabRedac)
-        self.toolbar.addCustomWidget(self.tr("Story line"), self.storylineView, self.TabRedac)
+        self.toolbar.addCustomWidget(self.tr("Book summary"), self.grpPlotSummary, self.TabPlots, False)
+        self.toolbar.addCustomWidget(self.tr("Project tree"), self.treeRedacWidget, self.TabRedac, True)
+        self.toolbar.addCustomWidget(self.tr("Metadata"), self.redacMetadata, self.TabRedac, False)
+        self.toolbar.addCustomWidget(self.tr("Story line"), self.storylineView, self.TabRedac, False)
         if self._toolbarState:
             self.toolbar.restoreState(self._toolbarState)
 
         # Custom "tab" bar on the left
         self.lstTabs.setIconSize(QSize(48, 48))
         for i in range(self.tabMain.count()):
-            icons = ["general-128px.png",
-                     "summary-128px.png",
-                     "characters-128px.png",
-                     "plot-128px.png",
-                     "world-128px.png",
-                     "outline-128px.png",
-                     "redaction-128px.png",
-                     ""
-                     ]
-            self.tabMain.setTabIcon(i, QIcon(appPath("icons/Custom/Tabs/{}".format(icons[i]))))
+            #icons = ["general-128px.png",
+                     #"summary-128px.png",
+                     #"characters-128px.png",
+                     #"plot-128px.png",
+                     #"world-128px.png",
+                     #"outline-128px.png",
+                     #"editor-128px.png",
+                     #""
+                     #]
+            #self.tabMain.setTabIcon(i, QIcon(appPath("icons/Custom/Tabs/{}".format(icons[i]))))
+
+            icons = [QIcon.fromTheme("stock_view-details"), #info
+                     QIcon.fromTheme("application-text-template"), #applications-publishing
+                     F.themeIcon("characters"),
+                     F.themeIcon("plots"),
+                     F.themeIcon("world"),
+                     F.themeIcon("outline"),
+                     QIcon.fromTheme("gtk-edit"),
+                     QIcon.fromTheme("applications-debugging")
+            ]
+            self.tabMain.setTabIcon(i, icons[i])
+
             item = QListWidgetItem(self.tabMain.tabIcon(i),
                                    self.tabMain.tabText(i))
             item.setSizeHint(QSize(item.sizeHint().width(), 64))
+            item.setToolTip(self.tabMain.tabText(i))
             item.setTextAlignment(Qt.AlignCenter)
             self.lstTabs.addItem(item)
         self.tabMain.tabBar().hide()
@@ -899,7 +1047,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Help box
         references = [
             (self.lytTabOverview,
-             self.tr("Enter infos about your book, and yourself."),
+             self.tr("Enter informations about your book, and yourself."),
              0),
             (self.lytSituation,
              self.tr(
@@ -917,6 +1065,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             (self.lytTabPlot,
              self.tr("Develop plots."),
              0),
+            (self.lytTabContext,
+             self.tr("Build worlds.  Create hierarchy of broad categories down to specific details."),
+             0),
             (self.lytTabOutline,
              self.tr("Create the outline of your masterpiece."),
              0),
@@ -924,7 +1075,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
              self.tr("Write."),
              0),
             (self.lytTabDebug,
-             self.tr("Debug infos. Sometimes useful."),
+             self.tr("Debug info. Sometimes useful."),
              0)
         ]
 
@@ -1047,9 +1198,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         ]
 
         menus = [
-            (self.tr("Tree"), "Tree"),
-            (self.tr("Index cards"), "Cork"),
-            (self.tr("Outline"), "Outline")
+            (self.tr("Tree"), "Tree", "view-list-tree"),
+            (self.tr("Index cards"), "Cork", "view-cards"),
+            (self.tr("Outline"), "Outline", "view-outline")
         ]
 
         submenus = {
@@ -1078,8 +1229,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # print("Generating menus with", settings.viewSettings)
 
-        for mnu, mnud in menus:
+        for mnu, mnud, icon in menus:
             m = QMenu(mnu, self.menuView)
+            if icon:
+                m.setIcon(QIcon.fromTheme(icon))
             for s, sd in submenus[mnud]:
                 m2 = QMenu(s, m)
                 agp = QActionGroup(m2)

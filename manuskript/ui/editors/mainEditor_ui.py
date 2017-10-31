@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/editors/mainEditor_ui.ui'
 #
-# Created: Sun Apr 10 11:19:00 2016
+# Created: Sat Oct 14 21:30:36 2017
 #      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -27,6 +27,13 @@ class Ui_mainEditor(object):
         self.verticalLayout.addWidget(self.tabSplitter)
         self.horizontalLayout_19 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_19.setObjectName("horizontalLayout_19")
+        self.btnGoUp = QtWidgets.QPushButton(mainEditor)
+        self.btnGoUp.setText("")
+        icon = QtGui.QIcon.fromTheme("go-up")
+        self.btnGoUp.setIcon(icon)
+        self.btnGoUp.setFlat(True)
+        self.btnGoUp.setObjectName("btnGoUp")
+        self.horizontalLayout_19.addWidget(self.btnGoUp)
         self.btnRedacFolderText = QtWidgets.QPushButton(mainEditor)
         self.btnRedacFolderText.setCheckable(True)
         self.btnRedacFolderText.setFlat(True)
@@ -96,6 +103,8 @@ class Ui_mainEditor(object):
     def retranslateUi(self, mainEditor):
         _translate = QtCore.QCoreApplication.translate
         mainEditor.setWindowTitle(_translate("mainEditor", "Form"))
+        self.btnGoUp.setToolTip(_translate("mainEditor", "Go to parent item"))
+        self.btnGoUp.setShortcut(_translate("mainEditor", "Alt+Up"))
         self.btnRedacFolderText.setText(_translate("mainEditor", "Text"))
         self.btnRedacFolderCork.setText(_translate("mainEditor", "Index cards"))
         self.btnRedacFolderOutline.setText(_translate("mainEditor", "Outline"))

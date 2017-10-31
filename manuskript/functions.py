@@ -47,9 +47,9 @@ def drawProgress(painter, rect, progress, radius=0):
     painter.setPen(Qt.NoPen)
     painter.setBrush(QColor("#dddddd"))
     painter.drawRoundedRect(rect, radius, radius)
-    
+
     painter.setBrush(QBrush(colorFromProgress(progress)))
-        
+
     r2 = QRect(rect)
     r2.setWidth(r2.width() * min(progress, 1))
     painter.drawRoundedRect(r2, radius, radius)
@@ -61,7 +61,7 @@ def colorFromProgress(progress):
     c2 = QColor(Qt.blue)
     c3 = QColor(Qt.darkGreen)
     c4 = QColor("#FFA500")
-    
+
     if progress < 0.3:
         return c1
     elif progress < 0.8:
@@ -103,17 +103,41 @@ def iconFromColorString(string):
     return iconFromColor(QColor(string))
 
 
+def themeIcon(name):
+    "Returns an icon for the given name."
+
+    db = {
+        "character":    "stock_people",
+        "characters":   "stock_people",
+        "plot":         "stock_shuffle",
+        "plots":        "stock_shuffle",
+        "world":        "emblem-web", #stock_timezone applications-internet
+        "outline":      "gtk-index", #applications-versioncontrol
+        "label":        "folder_color_picker",
+        "status":       "applications-development",
+        "text":         "view-text",
+        "card":         "view-card",
+        "outline":      "view-outline",
+        "tree":         "view-list-tree",
+        "spelling":     "tools-check-spelling"
+    }
+
+    if name in db:
+        return QIcon.fromTheme(db[name])
+    else:
+        return QIcon()
+
 def randomColor(mix=None):
     """Generates a random color. If mix (QColor) is given, mixes the random color and mix."""
     r = randint(0, 255)
     g = randint(0, 255)
     b = randint(0, 255)
-    
+
     if mix:
         r = (r + mix.red()) / 2
         g = (g + mix.green()) / 2
         b = (b + mix.blue()) / 2
-        
+
     return QColor(r, g, b)
 
 
@@ -133,13 +157,19 @@ def outlineItemColors(item):
     # POV
     colors["POV"] = QColor(Qt.transparent)
     POV = item.data(Outline.POV.value)
-    for i in range(mw.mdlCharacter.rowCount()):
-        if mw.mdlCharacter.ID(i) == POV:
-            colors["POV"] = iconColor(mw.mdlCharacter.icon(i))
+    if POV == "":
+        col = QColor(Qt.transparent)
+    else:
+        for i in range(mw.mdlCharacter.rowCount()):
+            if mw.mdlCharacter.ID(i) == POV:
+                colors["POV"] = iconColor(mw.mdlCharacter.icon(i))
 
     # Label
     lbl = item.data(Outline.label.value)
-    col = iconColor(mw.mdlLabels.item(toInt(lbl)).icon())
+    if lbl == "":
+        col = QColor(Qt.transparent)
+    else:
+        col = iconColor(mw.mdlLabels.item(toInt(lbl)).icon())
     # if col == Qt.black:
     #     # Don't know why, but transparent is rendered as black
     #     col = QColor(Qt.transparent)
@@ -226,12 +256,16 @@ def findWidgetsOfClass(cls):
 
 def findBackground(filename):
     """
-    Returns the full path to a background file of name filename within ressource folders.
+    Returns the full path to a background file of name filename within resources folders.
     """
     return findFirstFile(re.escape(filename), "resources/backgrounds")
 
 
 def findFirstFile(regex, path="resources"):
+    """
+    Returns full path of first file matching regular expression regex within folder path,
+    otherwise returns full path of last file in folder path.
+    """
     paths = allPaths(path)
     for p in paths:
         lst = os.listdir(p)
@@ -249,3 +283,75 @@ def HTML2PlainText(html):
     e = QTextEdit()
     e.setHtml(html)
     return e.toPlainText()
+
+def customIcons():
+    """
+    Returns a list of possible customIcons. String from theme.
+    """
+
+    r = [
+        "text-plain",
+        "gnome-settings",
+        "applications-internet",
+        "applications-debugging",
+        "applications-development",
+        "system-help",
+        "info",
+        "dialog-question",
+        "dialog-warning",
+        "stock_timezone",
+        "stock_people",
+        "stock_shuffle",
+        "gtk-index",
+        "folder_color_picker",
+        "applications-versioncontrol",
+
+        "stock_home",
+        "stock_trash_empty",
+        "stock_trash_full",
+        "stock_yes",
+        "stock_no",
+        "stock_notes",
+        "stock_calendar",
+        "stock_mic",
+        'stock_score-lowest', 'stock_score-lower', 'stock_score-low', 'stock_score-normal', 'stock_score-high', 'stock_score-higher', 'stock_score-highest',
+        "stock_task",
+        "stock_refresh",
+        "application-community",
+        "applications-chat",
+        "application-menu",
+        "applications-education",
+        "applications-science",
+        "applications-puzzles",
+        "applications-roleplaying",
+        "applications-sports",
+        "applications-libraries",
+        "applications-publishing",
+        "applications-development",
+        "applications-games",
+        "applications-boardgames",
+        "applications-geography",
+        "applications-physics",
+        "package_multimedia",
+        "media-flash",
+        "media-optical",
+        "media-floppy",
+        "media-playback-start",
+        "media-playback-pause",
+        "media-playback-stop",
+        "media-playback-record",
+        "media-playback-start-rtl",
+        "media-eject",
+        "document-save",
+        "gohome",
+        'purple-folder', 'yellow-folder', 'red-folder', 'custom-folder', 'grey-folder', 'blue-folder', 'default-folder', 'pink-folder', 'orange-folder', 'green-folder', 'brown-folder',
+        'folder-home', 'folder-remote', 'folder-music', 'folder-saved-search', 'folder-projects', 'folder-sound', 'folder-publicshare', 'folder-pictures', 'folder-saved-search-alt', 'folder-tag',
+        'calendar-01', 'calendar-02', 'calendar-03', 'calendar-04', 'calendar-05', 'calendar-06', 'calendar-07', 'calendar-08', 'calendar-09', 'calendar-10',
+        'arrow-down', 'arrow-left', 'arrow-right', 'arrow-up', 'arrow-down-double', 'arrow-left-double', 'arrow-right-double', 'arrow-up-double',
+        'emblem-added', 'emblem-checked', 'emblem-downloads', 'emblem-dropbox-syncing', 'emblem-danger', 'emblem-development', 'emblem-dropbox-app', 'emblem-art', 'emblem-camera', 'emblem-dropbox-selsync', 'emblem-insync-des-error', 'emblem-insync-error', 'emblem-generic', 'emblem-favorites', 'emblem-error', 'emblem-dropbox-uptodate', 'emblem-marketing', 'emblem-money', 'emblem-music', 'emblem-noread', 'emblem-people', 'emblem-personal', 'emblem-sound', 'emblem-shared', 'emblem-sales', 'emblem-presentation', 'emblem-plan', 'emblem-system', 'emblem-urgent', 'emblem-videos', 'emblem-web',
+        'face-angel', 'face-clown', 'face-angry', 'face-cool', 'face-devilish', 'face-sick', 'face-sleeping', 'face-uncertain', 'face-monkey', 'face-ninja', 'face-pirate', 'face-glasses', 'face-in-love', 'face-confused',
+        'feed-marked-symbolic', 'feed-non-starred', 'feed-starred', 'feed-unmarked-symbolic',
+        'notification-new-symbolic',
+        ]
+
+    return sorted(r)

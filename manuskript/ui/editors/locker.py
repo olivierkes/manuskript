@@ -79,7 +79,7 @@ class locker(QWidget, Ui_locker):
         self._words = wc
         if self.isLocked():
             self.updateBtnText()
-            if self._words >= self._target:
+            if self._target and self._words >= self._target:
                 self.unlock()
 
     def updateBtnText(self):

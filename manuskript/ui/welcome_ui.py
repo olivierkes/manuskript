@@ -2,7 +2,8 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/welcome_ui.ui'
 #
-# Created by: PyQt5 UI code generator 5.4.2
+# Created: Mon Oct 16 10:45:41 2017
+#      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -71,10 +72,14 @@ class Ui_welcome(object):
         self.horizontalLayout_2.addWidget(self.lblTotal)
         self.btnAddLevel = QtWidgets.QPushButton(self.frame_2)
         self.btnAddLevel.setEnabled(False)
+        icon = QtGui.QIcon.fromTheme("list-add")
+        self.btnAddLevel.setIcon(icon)
         self.btnAddLevel.setObjectName("btnAddLevel")
         self.horizontalLayout_2.addWidget(self.btnAddLevel)
         self.btnAddWC = QtWidgets.QPushButton(self.frame_2)
         self.btnAddWC.setEnabled(False)
+        icon = QtGui.QIcon.fromTheme("applications-debugging")
+        self.btnAddWC.setIcon(icon)
         self.btnAddWC.setObjectName("btnAddWC")
         self.horizontalLayout_2.addWidget(self.btnAddWC)
         self.templateLayout.addLayout(self.horizontalLayout_2)
@@ -94,12 +99,18 @@ class Ui_welcome(object):
         spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_20.addItem(spacerItem1)
         self.btnOpen = QtWidgets.QPushButton(self.frame_2)
+        icon = QtGui.QIcon.fromTheme("document-open")
+        self.btnOpen.setIcon(icon)
         self.btnOpen.setObjectName("btnOpen")
         self.horizontalLayout_20.addWidget(self.btnOpen)
         self.btnRecent = QtWidgets.QPushButton(self.frame_2)
+        icon = QtGui.QIcon.fromTheme("folder-recent")
+        self.btnRecent.setIcon(icon)
         self.btnRecent.setObjectName("btnRecent")
         self.horizontalLayout_20.addWidget(self.btnRecent)
         self.btnCreate = QtWidgets.QPushButton(self.frame_2)
+        icon = QtGui.QIcon.fromTheme("dialog-ok")
+        self.btnCreate.setIcon(icon)
         self.btnCreate.setObjectName("btnCreate")
         self.horizontalLayout_20.addWidget(self.btnCreate)
         self.verticalLayout_32.addLayout(self.horizontalLayout_20)
