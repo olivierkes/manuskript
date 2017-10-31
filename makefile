@@ -13,7 +13,7 @@ debug: $(UIs)
 	gdb --args python3 bin/manuskript
 
 lineprof:
-	kernprof -l -v manuskript/main.py
+	kernprof -l -v bin/manuskript
 
 profile:
 	python3 -m cProfile -s 'cumtime' bin/manuskript | more

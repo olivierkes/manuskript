@@ -51,6 +51,20 @@ class pandocExporter(basicExporter):
         if outputfile:
             args.append("--output={}".format(outputfile))
 
+        for name, col, var in [
+            ("Title", 0, "title"),
+            ("Subtitle", 1, "subtitle"),
+            ("Serie", 2, ""),
+            ("Volume", 3, ""),
+            ("Genre", 4, ""),
+            ("License", 5, ""),
+            ("Author", 6, "author"),
+            ("Email", 7, ""),
+            ]:
+            item = mainWindow().mdlFlatData.item(0, col)
+            if var and item and item.text().strip():
+                args.append("--variable={}:{}".format(var, item.text().strip()))
+
         qApp.setOverrideCursor(QCursor(Qt.WaitCursor))
 
         p = subprocess.Popen(

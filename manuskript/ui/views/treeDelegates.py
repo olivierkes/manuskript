@@ -90,7 +90,7 @@ class treeTitleDelegate(QStyledItemDelegate):
             painter.setFont(f)
             fm = QFontMetrics(f)
             elidedText = fm.elidedText(opt.text, Qt.ElideRight, textRect.width())
-            painter.drawText(textRect, Qt.AlignLeft, elidedText)
+            painter.drawText(textRect, Qt.AlignLeft | Qt.AlignVCenter, elidedText)
 
             extraText = ""
             if item.isFolder() and settings.viewSettings["Tree"]["InfoFolder"] != "Nothing":

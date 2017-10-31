@@ -68,6 +68,9 @@ def launch():
     from .mainWindow import MainWindow
 
     main = MainWindow()
+    # We store the system default cursor flash time to be able to restore it
+    # later if necessary
+    main._defaultCursorFlashTime = qApp.cursorFlashTime()
     main.show()
 
     qApp.exec_()

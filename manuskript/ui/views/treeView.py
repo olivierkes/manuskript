@@ -59,15 +59,16 @@ class treeView(QTreeView, dndView, outlineBasics):
         if mouseIndex.isValid():
             # index = self.currentIndex()
             item = mouseIndex.internalPointer()
-            self.actExpand = QAction(self.tr("Expand {}").format(item.title()), menu)
-            self.actExpand.triggered.connect(self.expandCurrentIndex)
-            menu.insertAction(first, self.actExpand)
+            if item.isFolder():
+                self.actExpand = QAction(self.tr("Expand {}").format(item.title()), menu)
+                self.actExpand.triggered.connect(self.expandCurrentIndex)
+                menu.insertAction(first, self.actExpand)
 
-            self.actCollapse = QAction(self.tr("Collapse {}").format(item.title()), menu)
-            self.actCollapse.triggered.connect(self.collapseCurrentIndex)
-            menu.insertAction(first, self.actCollapse)
+                self.actCollapse = QAction(self.tr("Collapse {}").format(item.title()), menu)
+                self.actCollapse.triggered.connect(self.collapseCurrentIndex)
+                menu.insertAction(first, self.actCollapse)
 
-            menu.insertSeparator(first)
+                menu.insertSeparator(first)
 
         # Expand /collapse all
         self.actExpandAll = QAction(self.tr("Expand All"), menu)

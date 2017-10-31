@@ -11,6 +11,31 @@ from manuskript.ui.views.textEditView import textEditView
 
 
 class editorWidget(QWidget, Ui_editorWidget_ui):
+    """
+    `editorWidget` is a class responsible for displaying and editing one
+    `outlineItem`. This item can be a folder or a text.
+
+    It has four views (see `self.setView`)
+
+      - For folders: "text", "outline" or "cork" (set in `self.folderView`)
+
+        Text: displays a list of `textEditView` in a scroll area
+
+        Outline: displays an outline, using an `outlineView`
+
+        Cork: displays flash cards, using a `corkView`
+
+      - For text: item is simply displayed in a `textEditView`
+
+    All those views are contained in `editorWidget` single widget: `self.stack`.
+
+    `editorWidget` are managed in `tabSplitted` (that allow to open several
+    `outlineItem`s, either in Tabs or in split views.
+
+    `tabSplitted` are in turn managed by the `mainEditor`, which is unique and
+    gives UI buttons to manage all those views.
+    """
+
     toggledSpellcheck = pyqtSignal(bool)
     dictChanged = pyqtSignal(str)
 
@@ -28,6 +53,7 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
         self.spellcheck = True
         self.folderView = "cork"
         self.mw = mainWindow()
+        self._tabWidget = None  # set by mainEditor on creation
 
         # def setModel(self, model):
         # self._model = model
@@ -63,6 +89,25 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
         for c in range(count):
             self.corkView.itemDelegate().sizeHintChanged.emit(r.child(c, 0))
 
+    def updateTabTitle(self):
+        """
+        `editorWidget` belongs to a `QTabWidget` in a `tabSplitter`. We update
+        the tab title to reflect that of current item.
+        """
+        # `self._tabWidget` is set by mainEditor when creating tab and `editorWidget`.
+        # if `editorWidget` is ever used out of `mainEditor`, this could throw
+        # an error.
+        if not self._tabWidget:
+            return
+
+        if self.currentIndex.isValid():
+            item = self.currentIndex.internalPointer()
+        else:
+            item = self.mw.mdlOutline.rootItem
+
+        i = self._tabWidget.indexOf(self)
+        self._tabWidget.setTabText(i, item.title())
+
     def setView(self):
         # index = mainWindow().treeRedacOutline.currentIndex()
 
@@ -84,6 +129,8 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
             item = self.currentIndex.internalPointer()
         else:
             item = self.mw.mdlOutline.rootItem
+
+        self.updateTabTitle()
 
         def addTitle(itm):
             edt = textEditView(self, html="<h{l}>{t}</h{l}>".format(l=min(itm.level() + 1, 5), t=itm.title()),
@@ -188,15 +235,17 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
             except TypeError:
                 pass
 
-        else:
+        if item and item.isText():
             self.txtRedacText.setCurrentModelIndex(self.currentIndex)
             self.stack.setCurrentIndex(0)  # Single text item
+        else:
+            self.txtRedacText.setCurrentModelIndex(QModelIndex())
 
         try:
             self.mw.mdlOutline.dataChanged.connect(self.modelDataChanged, AUC)
             self.mw.mdlOutline.rowsInserted.connect(self.updateIndexFromID, AUC)
             self.mw.mdlOutline.rowsRemoved.connect(self.updateIndexFromID, AUC)
-            self.mw.mdlOutline.rowsAboutToBeRemoved.connect(self.rowsAboutToBeRemoved, AUC)
+            #self.mw.mdlOutline.rowsAboutToBeRemoved.connect(self.rowsAboutToBeRemoved, AUC)
         except TypeError:
             pass
 
@@ -209,12 +258,30 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
             # self._model = index.model()
         else:
             self.currentIndex = QModelIndex()
+            self.currentID = None
 
         self.setView()
 
     def updateIndexFromID(self):
+        """
+        Index might have changed (through drag an drop), so we keep current
+        item's ID and update index. Item might have been deleted too.
+        """
         idx = self.mw.mdlOutline.getIndexByID(self.currentID)
-        if idx != self.currentIndex:
+
+        # If we have an ID but the ID does not exist, it has been deleted
+        if self.currentID and idx == QModelIndex():
+            # Item has been deleted, we open the parent instead
+            self.setCurrentModelIndex(self.currentIndex.parent())
+            # FIXME: selection in self.mw.treeRedacOutline is not updated
+            #        but we cannot simply setCurrentIndex through treeRedacOutline
+            #        because this might be a tab in the background / out of focus
+            #        Also the UI of mainEditor is not updated (so the folder icons
+            #        are not display, button "up" doesn't work, etc.).
+
+        # Item has been moved
+        elif idx != self.currentIndex:
+            # We update the index
             self.currentIndex = idx
             self.setView()
 
@@ -226,12 +293,12 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
         if topLeft.row() <= self.currentIndex.row() <= bottomRight.row():
             self.updateStatusBar()
 
-    def rowsAboutToBeRemoved(self, parent, first, last):
-        if self.currentIndex:
-            if self.currentIndex.parent() == parent and \
-                                    first <= self.currentIndex.row() <= last:
-                # Item deleted, close tab
-                self.mw.mainEditor.tab.removeTab(self.mw.mainEditor.tab.indexOf(self))
+    #def rowsAboutToBeRemoved(self, parent, first, last):
+        #if self.currentIndex:
+            #if self.currentIndex.parent() == parent and \
+                                    #first <= self.currentIndex.row() <= last:
+                ## Item deleted, close tab
+                #self.mw.mainEditor.tab.removeTab(self.mw.mainEditor.tab.indexOf(self))
 
     def updateStatusBar(self):
         # Update progress

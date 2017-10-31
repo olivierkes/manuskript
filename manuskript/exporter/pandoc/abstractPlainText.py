@@ -48,7 +48,7 @@ class abstractPlainText(markdown):
 
 class pandocSetting:
     def __init__(self, arg, type, format, label, widget=None, default=None, min=None, max=None, vals=None, suffix=""):
-        self.arg = arg
+        self.arg = arg  # start with EXT for extensions
         self.type = type
         self.label = label
         self.formats = format
@@ -99,6 +99,8 @@ class pandocSettings(markdownSettings):
         "base-header":  pandocSetting("--base-header-level=", "number", "",
                                       qApp.translate("Export", "Specify the base level for headers: "),
                                       default=1, min=1),
+        "disable-YAML": pandocSetting("EXT-yaml_metadata_block", "checkbox", "",
+                                      qApp.translate("Export", "Disable YAML metadata block.\nUse that if you get YAML related error.")),
 
         # Specific
         "ref-link":     pandocSetting("--reference-links", "checkbox", "markdown rst",
@@ -112,7 +114,8 @@ class pandocSettings(markdownSettings):
         "latex-engine": pandocSetting("--latex-engine=", "combo", "pdf",
                                       qApp.translate("Export", "LaTeX engine used to produce the PDF."),
                                       vals="pdflatex|lualatex|xelatex"),
-
+        "epub3":        pandocSetting("EXTepub3", "checkbox", "epub",
+                                        qApp.translate("Export", "Convert to ePUB3")),
     }
 
     pdfSettings = {
@@ -148,6 +151,7 @@ class pandocSettings(markdownSettings):
         self.addSettingsWidget("normalize", self.grpPandocGeneral)
         self.addSettingsWidget("base-header", self.grpPandocGeneral)
         self.addSettingsWidget("standalone", self.grpPandocGeneral)
+        self.addSettingsWidget("disable-YAML", self.grpPandocGeneral)
 
         self.grpPandocTOC = self.collapsibleGroupBox(self.tr("Table of Content"), w)
 
@@ -161,6 +165,7 @@ class pandocSettings(markdownSettings):
         self.addSettingsWidget("self-contained", self.grpPandocSpecific)
         self.addSettingsWidget("q-tags", self.grpPandocSpecific)
         self.addSettingsWidget("latex-engine", self.grpPandocSpecific)
+        self.addSettingsWidget("epub3", self.grpPandocSpecific)
 
         # PDF settings
         self.settingsList.update(self.pdfSettings)
@@ -264,11 +269,27 @@ class pandocSettings(markdownSettings):
         return self.settings
 
     def runnableSettings(self):
-        r = ["--from=markdown",
-             "--to={}".format(self.format)]
 
+        # First we get extensions (where arg starts with EXT)
+        extensions = ""
+        toFormat = self.format
         for name in self.settingsList:
             s = self.settingsList[name]
+            if s.arg[:3] == "EXT" and s.isValid(self.format):
+                if name == "disable-YAML" and s.widget.isChecked():
+                    extensions += "-yaml_metadata_block"
+                if name == "epub3" and s.widget.isChecked():
+                    toFormat = "epub3"
+
+        r = ["--from=markdown" + extensions,
+             "--to={}".format(toFormat)]
+
+        # Add every command
+        for name in self.settingsList:
+            s = self.settingsList[name]
+
+            if s.arg[:3] == "EXT":
+                continue
 
             if s.isValid(self.format):
                 rr = ""

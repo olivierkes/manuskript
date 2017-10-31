@@ -124,7 +124,7 @@
            <enum>QTabWidget::Rounded</enum>
           </property>
           <property name="currentIndex">
-           <number>6</number>
+           <number>3</number>
           </property>
           <property name="documentMode">
            <bool>true</bool>
@@ -1317,6 +1317,9 @@
                 <layout class="QVBoxLayout" name="verticalLayout_28">
                  <item>
                   <widget class="QTableView" name="lstSubPlots">
+                   <property name="dragDropOverwriteMode">
+                    <bool>false</bool>
+                   </property>
                    <property name="dragDropMode">
                     <enum>QAbstractItemView::InternalMove</enum>
                    </property>
@@ -1344,12 +1347,18 @@
                   <layout class="QHBoxLayout" name="horizontalLayout_17">
                    <item>
                     <widget class="QPushButton" name="btnAddSubPlot">
+                     <property name="toolTip">
+                      <string>Add plot step (CTRL+Enter)</string>
+                     </property>
                      <property name="text">
                       <string/>
                      </property>
                      <property name="icon">
                       <iconset theme="list-add">
                        <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
+                     </property>
+                     <property name="shortcut">
+                      <string>Ctrl+Return</string>
                      </property>
                      <property name="flat">
                       <bool>true</bool>
@@ -1358,12 +1367,18 @@
                    </item>
                    <item>
                     <widget class="QPushButton" name="btnRmSubPlot">
+                     <property name="toolTip">
+                      <string>Remove selected plot step(s) (CTRL+Backspace)</string>
+                     </property>
                      <property name="text">
                       <string/>
                      </property>
                      <property name="icon">
                       <iconset theme="list-remove">
                        <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
+                     </property>
+                     <property name="shortcut">
+                      <string>Ctrl+Backspace</string>
                      </property>
                      <property name="flat">
                       <bool>true</bool>
@@ -1974,7 +1989,7 @@
                <enum>QTabWidget::West</enum>
               </property>
               <property name="currentIndex">
-               <number>3</number>
+               <number>2</number>
               </property>
               <widget class="QWidget" name="tab_9">
                <attribute name="title">
@@ -2013,7 +2028,11 @@
                    <widget class="QTableView" name="tblDebugPlotsPersos"/>
                   </item>
                   <item>
-                   <widget class="QTableView" name="tblDebugSubPlots"/>
+                   <widget class="QTableView" name="tblDebugSubPlots">
+                    <property name="dragDropMode">
+                     <enum>QAbstractItemView::InternalMove</enum>
+                    </property>
+                   </widget>
                   </item>
                  </layout>
                 </item>
@@ -2350,7 +2369,9 @@ QListView::item:hover {
   </action>
   <action name="actLabels">
    <property name="icon">
-    <iconset theme="folder_color_picker"/>
+    <iconset theme="folder_color_picker">
+     <normaloff/>
+    </iconset>
    </property>
    <property name="text">
     <string>&amp;Labels...</string>
@@ -2358,7 +2379,9 @@ QListView::item:hover {
   </action>
   <action name="actStatus">
    <property name="icon">
-    <iconset theme="applications-development"/>
+    <iconset theme="applications-development">
+     <normaloff/>
+    </iconset>
    </property>
    <property name="text">
     <string>&amp;Status...</string>
@@ -2430,7 +2453,9 @@ QListView::item:hover {
   </action>
   <action name="actCompile">
    <property name="icon">
-    <iconset theme="document-export"/>
+    <iconset theme="document-export">
+     <normaloff/>
+    </iconset>
    </property>
    <property name="text">
     <string>Co&amp;mpile</string>
@@ -2446,7 +2471,9 @@ QListView::item:hover {
   </action>
   <action name="actAbout">
    <property name="icon">
-    <iconset theme="stock_view-details"/>
+    <iconset theme="stock_view-details">
+     <normaloff/>
+    </iconset>
    </property>
    <property name="text">
     <string>&amp;About</string>

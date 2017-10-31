@@ -1,13 +1,14 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-from PyQt5.QtCore import Qt, QSignalMapper
+from PyQt5.QtCore import Qt, QSignalMapper, QSize
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QAbstractItemView, qApp, QMenu, QAction
+from PyQt5.QtWidgets import QListWidget, QWidgetAction, QListWidgetItem, QLineEdit
 
 from manuskript import settings
 from manuskript.enums import Outline
 from manuskript.functions import mainWindow
-from manuskript.functions import toInt
+from manuskript.functions import toInt, customIcons
 from manuskript.models.outlineModel import outlineItem
 
 
@@ -39,7 +40,7 @@ class outlineBasics(QAbstractItemView):
         menu = QMenu(self)
 
         # Add / remove items
-        self.actOpen = QAction(QIcon.fromTheme("go-right"), qApp.translate("outlineBasic", "Open Item"), menu)
+        self.actOpen = QAction(QIcon.fromTheme("go-right"), qApp.translate("outlineBasics", "Open Item"), menu)
         self.actOpen.triggered.connect(self.openItem)
         menu.addAction(self.actOpen)
 
@@ -133,6 +134,44 @@ class outlineBasics(QAbstractItemView):
         mpr.mapped.connect(self.setLabel)
         menu.addMenu(self.menuLabel)
 
+        menu.addSeparator()
+
+        # Custom icons
+        self.menuCustomIcons = QMenu(qApp.translate("outlineBasics", "Set Custom Icon"), menu)
+        a = QAction(qApp.translate("outlineBasics", "Restore to default"), self.menuCustomIcons)
+        a.triggered.connect(lambda: self.setCustomIcon(""))
+        self.menuCustomIcons.addAction(a)
+        self.menuCustomIcons.addSeparator()
+
+        txt = QLineEdit()
+        txt.textChanged.connect(self.filterLstIcons)
+        txt.setPlaceholderText("Filter icons")
+        txt.setStyleSheet("background: transparent; border: none;")
+        act = QWidgetAction(self.menuCustomIcons)
+        act.setDefaultWidget(txt)
+        self.menuCustomIcons.addAction(act)
+
+        self.lstIcons = QListWidget()
+        for i in customIcons():
+            item = QListWidgetItem()
+            item.setIcon(QIcon.fromTheme(i))
+            item.setData(Qt.UserRole, i)
+            item.setToolTip(i)
+            self.lstIcons.addItem(item)
+        self.lstIcons.itemClicked.connect(self.setCustomIconFromItem)
+        self.lstIcons.setViewMode(self.lstIcons.IconMode)
+        self.lstIcons.setUniformItemSizes(True)
+        self.lstIcons.setResizeMode(self.lstIcons.Adjust)
+        self.lstIcons.setMovement(self.lstIcons.Static)
+        self.lstIcons.setStyleSheet("background: transparent; background: none;")
+        self.filterLstIcons("")
+        act = QWidgetAction(self.menuCustomIcons)
+        act.setDefaultWidget(self.lstIcons)
+        self.menuCustomIcons.addAction(act)
+
+        menu.addMenu(self.menuCustomIcons)
+
+        # Disabling stuff
         if len(sel) > 0 and index.isValid() and not index.internalPointer().isFolder() \
                 or not clipboard.mimeData().hasFormat("application/xml"):
             self.actPaste.setEnabled(False)
@@ -149,6 +188,7 @@ class outlineBasics(QAbstractItemView):
             self.menuPOV.setEnabled(False)
             self.menuStatus.setEnabled(False)
             self.menuLabel.setEnabled(False)
+            self.menuCustomIcons.setEnabled(False)
 
         return menu
 
@@ -204,3 +244,17 @@ class outlineBasics(QAbstractItemView):
     def setLabel(self, label):
         for i in self.getSelection():
             self.model().setData(i.sibling(i.row(), Outline.label.value), str(label))
+
+    def setCustomIcon(self, customIcon):
+        for i in self.getSelection():
+            item = i.internalPointer()
+            item.setCustomIcon(customIcon)
+
+    def setCustomIconFromItem(self, item):
+        icon = item.data(Qt.UserRole)
+        self.setCustomIcon(icon)
+        self.menu.close()
+
+    def filterLstIcons(self, text):
+        for l in self.lstIcons.findItems("", Qt.MatchContains):
+            l.setHidden(not text in l.data(Qt.UserRole))
