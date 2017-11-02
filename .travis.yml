@@ -1,0 +1,23 @@
+# according to the internet Python envs are hard and it's better to build them from scratch
+language: cpp
+os:
+- osx
+sudo: required
+install:
+- if [ "$TRAVIS_OS_NAME" = "osx" ]; then bash package/prepare_osx.sh; fi
+script:
+- python3 package/dependency_test.py
+before_deploy:
+- export FILENAME=manuskript-$TRAVIS_BRANCH-$TRAVIS_OS_NAME.zip
+- pyinstaller manuskript.spec --clean
+- cd dist && zip $FILENAME -r manuskript && cd ..
+- ls dist
+deploy:
+  provider: releases
+  api_key:
+    secure: XVcO7GsEEQxNymr7h567BxkERBZittpoC3oMZN+F2rzIoeabo/wjjBSyhMvgJKDYm1rFjQro2tr9r1ubMCjUyBP7eioOIY+7clX7pmxKPYosYgrXXx2WnaWgv8zkVk7KkXmGyFxjnp7jyTNytjFlcOeXl1cvLHum+a56vD6pINQft9V1eQ3NuPZnM729pEndL2TkI0o246QNNi1XBxIeX/o/15zx0BTMG5z8M0oGBW7VaZC6IOZ9NED7L4VGAkVizb3ONLypnQRGfFdWWE3o6gfYTLhk9fGekmlykbpOjgQcxpUe29AExKVToXfDWYUhAzaNsrpDaXXn7C0RDBVRiJYN10CiEojaZOTq7F2nrnE5Y5x1k3oXElXVAT9JQoFw935aJpEM7g5WFwmPikXoHkTFtoXWyVHcUyn2ByYuA7wu61u9NVKFvMOeH0Qg/U3IQhXvu5FekMAbDbu2H0VfKCu1+RnCepp3JFVFIPB1nr7TsmAuJDD2Z1qJ1O7S66DFWt05VLh2ruCL/lKjQIY9tP8cSaVrYEiXFBDam5JyhILYMyKWonYZWbZ4B+5Vzersq+ZjXXRkdSDHX4DuKtKiI5z2oP1ijLU0i7gkBK7UMdaKq/2l3mT3JDK88oaL5K6BeB9C50p0k7rlQtC920SvmmqDjiDelJqaCtcqzEw13H4=
+  file: dist/$FILENAME
+  overwrite: true
+  skip_cleanup: true
+  on:
+    tags: true
