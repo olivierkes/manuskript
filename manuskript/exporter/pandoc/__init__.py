@@ -40,7 +40,7 @@ class pandocExporter(basicExporter):
 
     def version(self):
         if self.isValid():
-            r = self.run(["-v"])
+            r = self.run(["--version"])
             return r.split("\n")[0]
         else:
             return ""
