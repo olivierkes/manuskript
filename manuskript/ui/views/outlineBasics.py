@@ -39,14 +39,18 @@ class outlineBasics(QAbstractItemView):
 
         menu = QMenu(self)
 
-        # Add / remove items
+        # Open items
         self.actOpen = QAction(QIcon.fromTheme("go-right"), qApp.translate("outlineBasics", "Open Item"), menu)
         self.actOpen.triggered.connect(self.openItem)
         menu.addAction(self.actOpen)
 
         menu.addSeparator()
 
-        # Add / remove items
+        # Rename / add / remove items
+        self.actRename = QAction(QIcon.fromTheme("edit-rename"), qApp.translate("outlineBasics", "Rename"), menu)
+        self.actRename.triggered.connect(self.rename)
+        menu.addAction(self.actRename)
+
         self.actAddFolder = QAction(QIcon.fromTheme("folder-new"), qApp.translate("outlineBasics", "New Folder"), menu)
         self.actAddFolder.triggered.connect(self.addFolder)
         menu.addAction(self.actAddFolder)
@@ -184,11 +188,15 @@ class outlineBasics(QAbstractItemView):
             self.actOpen.setEnabled(False)
             self.actCopy.setEnabled(False)
             self.actCut.setEnabled(False)
+            self.actRename.setEnabled(False)
             self.actDelete.setEnabled(False)
             self.menuPOV.setEnabled(False)
             self.menuStatus.setEnabled(False)
             self.menuLabel.setEnabled(False)
             self.menuCustomIcons.setEnabled(False)
+
+        if len(sel) > 1:
+            self.actRename.setEnabled(False)
 
         return menu
 
@@ -196,6 +204,14 @@ class outlineBasics(QAbstractItemView):
         idx = self.currentIndex()
         from manuskript.functions import MW
         MW.openIndex(idx)
+
+    def rename(self):
+        if len(self.getSelection()) == 1:
+            index = self.currentIndex()
+            self.edit(index)
+        elif len(self.getSelection()) > 1:
+            # FIXME: add smart rename
+            pass
 
     def addFolder(self):
         self.addItem("folder")
