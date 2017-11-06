@@ -15,8 +15,10 @@ from manuskript.ui.editors.editorWidget import editorWidget
 from manuskript.ui.editors.fullScreenEditor import fullScreenEditor
 from manuskript.ui.editors.mainEditor_ui import Ui_mainEditor
 
-locale.setlocale(locale.LC_ALL, '')
-
+try:
+    locale.setlocale(locale.LC_ALL, '')
+except:
+    pass
 
 class mainEditor(QWidget, Ui_mainEditor):
     """

@@ -17,7 +17,12 @@ from lxml import etree as ET
 from manuskript.enums import Outline
 from manuskript.functions import mainWindow, toInt, wordCount, HTML2PlainText
 
-locale.setlocale(locale.LC_ALL, '')
+try:
+    locale.setlocale(locale.LC_ALL, '')
+except:
+    # Invalid locale, but not really a big deal because it's used only for
+    # number formating
+    pass
 import time, os
 
 

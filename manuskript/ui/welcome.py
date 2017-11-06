@@ -21,8 +21,10 @@ from manuskript.models.plotModel import plotModel
 from manuskript.models.worldModel import worldModel
 from manuskript.ui.welcome_ui import Ui_welcome
 
-locale.setlocale(locale.LC_ALL, '')
-
+try:
+    locale.setlocale(locale.LC_ALL, '')
+except:
+    pass
 
 class welcome(QWidget, Ui_welcome):
     def __init__(self, parent=None):
