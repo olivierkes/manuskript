@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
 
-# Import/export outline cards in OPML format
 from PyQt5.QtWidgets import QMessageBox
 from manuskript.models.outlineModel import outlineItem
 from manuskript.enums import Outline
@@ -10,6 +9,9 @@ from manuskript.functions import mainWindow
 
 
 def importOpml(opmlFilePath, idx):
+    """
+    Import/export outline cards in OPML format.
+    """
     ret = False
     mw = mainWindow()
 
@@ -62,10 +64,9 @@ def importOpml(opmlFilePath, idx):
 def parseItems(underElement, parentItem):
     text = underElement.get('text')
     if text is not None:
-        """
-        In the case where the title is exceptionally long, trim it so it isn't
-        distracting in the tab label
-        """
+
+        # In the case where the title is exceptionally long, trim it so it isn't
+        # distracting in the tab label
         title = text[0:32]
         if len(title) < len(text):
             title += '...'
@@ -79,11 +80,10 @@ def parseItems(underElement, parentItem):
             body = restoreNewLines(note)
             summary = body[0:128]
         else:
-            """
-            There's no note (body), but there is a title.  Fill the
-            body with the title to support cards that consist only
-            of a title.
-            """
+
+            # There's no note (body), but there is a title.  Fill the
+            # body with the title to support cards that consist only
+            # of a title.
             body = text
 
         card.setData(Outline.summaryFull.value, summary)
@@ -101,35 +101,26 @@ def parseItems(underElement, parentItem):
 
     return
 
-
-"""
-Since XML parsers are notorious for stripping out significant newlines,
-save them in a form we can restore after the parse.
-"""
-
-
 def saveNewlines(inString):
+    """
+    Since XML parsers are notorious for stripping out significant newlines,
+    save them in a form we can restore after the parse.
+    """
     inString = inString.replace("\r\n", "\n")
     inString = inString.replace("\n", "{{lf}}")
 
     return inString
 
-
-"""
-Restore any significant newlines
-"""
-
-
 def restoreNewLines(inString):
+    """
+    Restore any significant newlines
+    """
     return inString.replace("{{lf}}", "\n")
 
-
-"""
-Determine whether or not a string only contains whitespace.
-"""
-
-
 def isWhitespaceOnly(inString):
+    """
+    Determine whether or not a string only contains whitespace.
+    """
     str = restoreNewLines(inString)
     str = ''.join(str.split())
 
