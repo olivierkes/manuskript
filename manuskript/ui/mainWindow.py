@@ -1366,6 +1366,7 @@ class Ui_MainWindow(object):
         self.actAbout.setText(_translate("MainWindow", "&About"))
         self.actAbout.setToolTip(_translate("MainWindow", "About Manuskript"))
         self.actImport.setText(_translate("MainWindow", "Import…"))
+        self.actImport.setShortcut(_translate("MainWindow", "F7"))
 
 from manuskript.ui.cheatSheet import cheatSheet
 from manuskript.ui.editors.mainEditor import mainEditor

@@ -19,7 +19,7 @@
      <item>
       <widget class="QLabel" name="label">
        <property name="text">
-        <string>Import from:</string>
+        <string>Format:</string>
        </property>
       </widget>
      </item>
@@ -28,8 +28,11 @@
      </item>
      <item>
       <widget class="QPushButton" name="btnManageImporters">
-       <property name="text">
+       <property name="toolTip">
         <string>Manage importers</string>
+       </property>
+       <property name="text">
+        <string/>
        </property>
        <property name="icon">
         <iconset theme="preferences-system">
@@ -39,7 +42,7 @@
       </widget>
      </item>
      <item>
-      <spacer name="horizontalSpacer">
+      <spacer name="horizontalSpacer_2">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
@@ -60,6 +63,52 @@
         <iconset theme="document-import"/>
        </property>
       </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="lblIcon">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="lblFileName">
+       <property name="font">
+        <font>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnClearFileName">
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset theme="edit-clear"/>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
      </item>
      <item>
       <widget class="QPushButton" name="btnPreview">

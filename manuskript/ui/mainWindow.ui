@@ -2490,6 +2490,9 @@ QListView::item:hover {
    <property name="text">
     <string>Import…</string>
    </property>
+   <property name="shortcut">
+    <string>F7</string>
+   </property>
   </action>
  </widget>
  <customwidgets>
