@@ -19,6 +19,8 @@ class basicExporter:
     cmd = ""
     customPath = ""
     icon = ""
+    absentTip = ""  # A tip displayed when exporter is absent.
+    absentURL = ""  # URL to open if exporter is absent.
 
     def __init__(self):
         settings = QSettings()
@@ -129,7 +131,7 @@ class basicFormat:
     @classmethod
     def isValid(cls):
         return True
-    
+
     @classmethod
     def projectPath(cls):
         return os.path.dirname(os.path.abspath(mainWindow().currentProject))

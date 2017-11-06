@@ -5,10 +5,10 @@ import os
 
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QBrush, QColor, QIcon
-from PyQt5.QtWidgets import QWidget
+from PyQt5.QtWidgets import QWidget, QStyle
 
 from manuskript import exporter
-from manuskript.functions import lightBlue, writablePath
+from manuskript.functions import lightBlue, writablePath, openURL
 from manuskript.ui.exporters.exporter_ui import Ui_exporter
 from manuskript.ui.exporters.exportersManager import exportersManager
 
@@ -42,7 +42,7 @@ class exporterDialog(QWidget, Ui_exporter):
         self.cmbExporters.clear()
         for E in exporter.exporters:
 
-            if not E.isValid():
+            if not E.isValid() and not E.absentTip:
                 continue
 
             self.cmbExporters.addItem(QIcon(E.icon), E.name)
@@ -50,6 +50,10 @@ class exporterDialog(QWidget, Ui_exporter):
             self.cmbExporters.setItemData(self.cmbExporters.count() - 1, QBrush(lightBlue()), Qt.BackgroundRole)
             item = self.cmbExporters.model().item(self.cmbExporters.count() - 1)
             item.setFlags(Qt.ItemIsEnabled)
+
+            if not E.isValid() and E.absentTip:
+                self.cmbExporters.addItem(self.style().standardIcon(QStyle.SP_MessageBoxWarning), E.absentTip, "::URL::" + E.absentURL)
+                continue
 
             for f in E.exportTo:
 
@@ -60,6 +64,12 @@ class exporterDialog(QWidget, Ui_exporter):
                 self.cmbExporters.addItem(QIcon.fromTheme(f.icon), name, E.name)
 
     def updateUi(self, index):
+
+        # We check if we have an URL to open
+        data = self.cmbExporters.currentData()
+        if data and data[:7] == "::URL::" and data[7:]:
+            openURL(data[7:])
+
         E, F = self.getSelectedExporter()
 
         if not E or not F or not F.implemented:
