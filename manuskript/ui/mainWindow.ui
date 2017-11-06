@@ -2116,6 +2116,7 @@
     <addaction name="actSaveAs"/>
     <addaction name="actCloseProject"/>
     <addaction name="separator"/>
+    <addaction name="actImport"/>
     <addaction name="actCompile"/>
     <addaction name="separator"/>
     <addaction name="actQuit"/>
@@ -2480,6 +2481,14 @@ QListView::item:hover {
    </property>
    <property name="toolTip">
     <string>About Manuskript</string>
+   </property>
+  </action>
+  <action name="actImport">
+   <property name="icon">
+    <iconset theme="document-import"/>
+   </property>
+   <property name="text">
+    <string>Import…</string>
    </property>
   </action>
  </widget>

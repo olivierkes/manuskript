@@ -14,7 +14,7 @@ from manuskript.ui import style
 from manuskript.ui.editors.editorWidget import editorWidget
 from manuskript.ui.editors.fullScreenEditor import fullScreenEditor
 from manuskript.ui.editors.mainEditor_ui import Ui_mainEditor
-from manuskript.import_export import opml as opmlInputExport
+from manuskript.importer import opml as opmlInputExport
 
 locale.setlocale(locale.LC_ALL, '')
 
