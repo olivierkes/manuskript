@@ -1,28 +1,31 @@
 # Change Log
 
-## [Unreleased](https://github.com/olivierkes/manuskript/tree/HEAD)
-
-[Full Changelog](https://github.com/olivierkes/manuskript/compare/0.4.0...HEAD)
+## [0.5.0](https://github.com/olivierkes/manuskript/tree/0.5.0) (2017-10-31)
+[Full Changelog](https://github.com/olivierkes/manuskript/compare/0.4.0...0.5.0)
 
 **Implemented enhancements:**
 
+- Feature request: disable cursor blinking [\#165](https://github.com/olivierkes/manuskript/issues/165)
 - Swedish translation \(sv-SE\). [\#177](https://github.com/olivierkes/manuskript/issues/177)
 - Spanish transalation for manuskript 0.5.0 [\#174](https://github.com/olivierkes/manuskript/issues/174)
 - Suggestion: Configurable editor margins. [\#168](https://github.com/olivierkes/manuskript/issues/168)
-- Feature request: disable cursor blinking [\#165](https://github.com/olivierkes/manuskript/issues/165)
 - Suggestion: Block insertion cursor. [\#163](https://github.com/olivierkes/manuskript/issues/163)
 - New navigation icon design [\#159](https://github.com/olivierkes/manuskript/issues/159)
 - New flash card design [\#158](https://github.com/olivierkes/manuskript/issues/158)
 - Redaction view navigation improvements [\#157](https://github.com/olivierkes/manuskript/issues/157)
 - Request: Justified formatting of text [\#148](https://github.com/olivierkes/manuskript/issues/148)
-- Questions on script writing [\#120](https://github.com/olivierkes/manuskript/issues/120)
-- add suport Fountain fromat [\#111](https://github.com/olivierkes/manuskript/issues/111)
 - Ability to always show word target in distraction free mode [\#109](https://github.com/olivierkes/manuskript/issues/109)
 - Use on smaller resolution screens [\#108](https://github.com/olivierkes/manuskript/issues/108)
 - Odd wordchoices in English. [\#53](https://github.com/olivierkes/manuskript/issues/53)
 
 **Fixed bugs:**
 
+- Bug in 'World' section [\#126](https://github.com/olivierkes/manuskript/issues/126)
+- Redaction's tab problem in 0.3.0 win version [\#92](https://github.com/olivierkes/manuskript/issues/92)
+- Application Style setting GTK+ on Linux Mint Mate  [\#57](https://github.com/olivierkes/manuskript/issues/57)
+- Likes to freeze and crash [\#50](https://github.com/olivierkes/manuskript/issues/50)
+- Seg faults found [\#9](https://github.com/olivierkes/manuskript/issues/9)
+- Installation - Qt platforn plugin "xcb" not found [\#8](https://github.com/olivierkes/manuskript/issues/8)
 - Untranslatable strings. [\#178](https://github.com/olivierkes/manuskript/issues/178)
 - Create new project ignores changes made to template levels before Create [\#171](https://github.com/olivierkes/manuskript/issues/171)
 - Several bugs in drag'n'dropping items [\#169](https://github.com/olivierkes/manuskript/issues/169)
@@ -33,22 +36,16 @@
 - App crash when moving a step in Plots section [\#134](https://github.com/olivierkes/manuskript/issues/134)
 - Indent not saved in custom full screen theme [\#133](https://github.com/olivierkes/manuskript/issues/133)
 - 'Save as' only partly works [\#128](https://github.com/olivierkes/manuskript/issues/128)
-- Bug in 'World' section [\#126](https://github.com/olivierkes/manuskript/issues/126)
 - "pandoc: Could not parse YAML header" error [\#124](https://github.com/olivierkes/manuskript/issues/124)
 - Distraction free mode crashes with time target [\#119](https://github.com/olivierkes/manuskript/issues/119)
 - Pandoc PDF output error with unicode characters [\#117](https://github.com/olivierkes/manuskript/issues/117)
 - Character Importance-Slider memorize importance of last character ... partly [\#102](https://github.com/olivierkes/manuskript/issues/102)
-- Redaction's tab problem in 0.3.0 win version [\#92](https://github.com/olivierkes/manuskript/issues/92)
-- Application Style setting GTK+ on Linux Mint Mate  [\#57](https://github.com/olivierkes/manuskript/issues/57)
 - Index cards seem to keep a background image by default. [\#52](https://github.com/olivierkes/manuskript/issues/52)
 - In revision mode text, selecting group doesn't load text-preferences right. [\#51](https://github.com/olivierkes/manuskript/issues/51)
-- Likes to freeze and crash [\#50](https://github.com/olivierkes/manuskript/issues/50)
 - Undo/redo works in some text areas but not others [\#34](https://github.com/olivierkes/manuskript/issues/34)
 - Some bugs in Windows XP and Ubuntu 15.1 [\#25](https://github.com/olivierkes/manuskript/issues/25)
 - Manuskript fails to load last state of panels [\#14](https://github.com/olivierkes/manuskript/issues/14)
 - Multiple selections of items sometimes gets Notes/references field to be ereased [\#10](https://github.com/olivierkes/manuskript/issues/10)
-- Seg faults found [\#9](https://github.com/olivierkes/manuskript/issues/9)
-- Installation - Qt platforn plugin "xcb" not found [\#8](https://github.com/olivierkes/manuskript/issues/8)
 
 **Closed issues:**
 
@@ -64,6 +61,7 @@
 
 **Merged pull requests:**
 
+- Change message from warning to note for failed to load translator string [\#110](https://github.com/olivierkes/manuskript/pull/110) ([gedakc](https://github.com/gedakc))
 - Add about manuskript dialog [\#153](https://github.com/olivierkes/manuskript/pull/153) ([gedakc](https://github.com/gedakc))
 - Add help tip for world tab [\#151](https://github.com/olivierkes/manuskript/pull/151) ([gedakc](https://github.com/gedakc))
 - Add missing \_\_init\_\_.py file [\#149](https://github.com/olivierkes/manuskript/pull/149) ([gedakc](https://github.com/gedakc))
@@ -73,7 +71,9 @@
 - Fixes: add character button does not set importance slider to default… [\#121](https://github.com/olivierkes/manuskript/pull/121) ([gedakc](https://github.com/gedakc))
 - Request confirmation if create project would overwrite existing file\(s\) [\#114](https://github.com/olivierkes/manuskript/pull/114) ([gedakc](https://github.com/gedakc))
 - Fixes: Unable to change index cards background from image to a color [\#113](https://github.com/olivierkes/manuskript/pull/113) ([gedakc](https://github.com/gedakc))
-- Change message from warning to note for failed to load translator string [\#110](https://github.com/olivierkes/manuskript/pull/110) ([gedakc](https://github.com/gedakc))
+- Add project name to main window title [\#103](https://github.com/olivierkes/manuskript/pull/103) ([gedakc](https://github.com/gedakc))
+- Fixes: after project close, open or create project fails [\#100](https://github.com/olivierkes/manuskript/pull/100) ([gedakc](https://github.com/gedakc))
+- Fixes: incorrect reference to 32px icon [\#97](https://github.com/olivierkes/manuskript/pull/97) ([gedakc](https://github.com/gedakc))
 
 ## [0.4.0](https://github.com/olivierkes/manuskript/tree/0.4.0) (2017-05-25)
 [Full Changelog](https://github.com/olivierkes/manuskript/compare/0.3.0...0.4.0)
@@ -142,9 +142,6 @@
 
 **Merged pull requests:**
 
-- Add project name to main window title [\#103](https://github.com/olivierkes/manuskript/pull/103) ([gedakc](https://github.com/gedakc))
-- Fixes: after project close, open or create project fails [\#100](https://github.com/olivierkes/manuskript/pull/100) ([gedakc](https://github.com/gedakc))
-- Fixes: incorrect reference to 32px icon [\#97](https://github.com/olivierkes/manuskript/pull/97) ([gedakc](https://github.com/gedakc))
 - Fixes: field "Source of conflict" in World is not active [\#95](https://github.com/olivierkes/manuskript/pull/95) ([gedakc](https://github.com/gedakc))
 - Fixes: epiphany section in basic infos for characters not saved \#43 [\#94](https://github.com/olivierkes/manuskript/pull/94) ([gedakc](https://github.com/gedakc))
 - Updating README.md [\#68](https://github.com/olivierkes/manuskript/pull/68) ([olivierkes](https://github.com/olivierkes))
