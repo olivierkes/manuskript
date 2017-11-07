@@ -6,7 +6,7 @@ from manuskript.importer.markdownImporter import markdownImporter
 from manuskript.importer.opmlImporter import opmlImporter
 
 importers = [
-    markdownImporter,
+    #markdownImporter,
     opmlImporter,
-    folderImporter,
+    #folderImporter,
     ]

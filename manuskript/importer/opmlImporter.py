@@ -12,7 +12,7 @@ class opmlImporter(abstractImporter):
 
     name = "OPML"
     description = ""
-    fileFormat = "OPML Files (*.opml)"
+    fileFormat = "OPML Files (*.opml *.xml)"
     icon = "text-x-opml+xml"
 
     @classmethod
@@ -23,15 +23,16 @@ class opmlImporter(abstractImporter):
         ret = False
 
         try:
-            with open(filePath, 'r') as opmlFile:
-                opmlContent = cls.saveNewlines(opmlFile.read())
+            with open(filePath, 'rb') as opmlFile:
+                #opmlContent = cls.saveNewlines(opmlFile.read())
+                opmlContent = opmlFile.read()
         except:
             QMessageBox.critical(settingsWidget,
                                  qApp.translate("Import", "OPML Import"),
                                  qApp.translate("Import", "File open failed."))
             return None
 
-        parsed = ET.fromstring(bytes(opmlContent, 'utf-8'))
+        parsed = ET.fromstring(opmlContent)
 
         opmlNode = parsed
         bodyNode = opmlNode.find("body")
@@ -65,7 +66,8 @@ class opmlImporter(abstractImporter):
             body = ""
             note = underElement.get('_note')
             if note is not None and not cls.isWhitespaceOnly(note):
-                body = cls.restoreNewLines(note)
+                #body = cls.restoreNewLines(note)
+                body = note
 
             children = underElement.findall('outline')
             if children is not None and len(children) > 0:

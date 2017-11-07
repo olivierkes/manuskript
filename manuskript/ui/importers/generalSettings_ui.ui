@@ -80,13 +80,20 @@ QToolBox::tab:selected, QToolBox::tab:hover{
          </property>
          <item row="2" column="0">
           <widget class="QCheckBox" name="chkGeneralSplitScenes">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="text">
             <string>Split scenes at:</string>
            </property>
           </widget>
          </item>
          <item row="2" column="1">
-          <widget class="QLineEdit" name="txtGeneralSplitScenes"/>
+          <widget class="QLineEdit" name="txtGeneralSplitScenes">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+          </widget>
          </item>
          <item row="3" column="0" colspan="2">
           <widget class="QCheckBox" name="chkGeneralTrimTitles">

@@ -25,6 +25,7 @@ class importerDialog(QWidget, Ui_importer):
         ".rst": "text-plain",
         ".tex": "text-x-tex",
         ".opml": "text-x-opml+xml",
+        ".xml": "text-x-opml+xml",
         ".html": "text-html",
         }
 
@@ -38,6 +39,7 @@ class importerDialog(QWidget, Ui_importer):
         self.setStyleSheet(style.mainWindowSS())
         self.tree.setStyleSheet("QTreeView{background:transparent;}")
         self.editor.setStyleSheet("QWidget{background:transparent;}")
+        self.editor.toggleSpellcheck(False)
 
         # Register importFormats:
         self.importers = importer.importers
@@ -52,12 +54,8 @@ class importerDialog(QWidget, Ui_importer):
         self.btnImport.clicked.connect(self.doImport)
         self.cmbImporters.currentTextChanged.connect(self.updateSettings)
 
-        #self.setFileName("")
-        QTimer.singleShot(50, lambda:
-            self.cmbImporters.setCurrentText("OPML"))
-        QTimer.singleShot(50, lambda:
-            self.setFileName("/home/olivier/Dropbox/Documents/Travail/Geekeries/Python/PyCharmProjects/manuskript/test-projects/IMPORTS/End Plan 2.opml")
-            )
+        self.setFileName("")
+        self.updateSettings()
 
     ############################################################################
     # Combobox / Formats
@@ -108,14 +106,18 @@ class importerDialog(QWidget, Ui_importer):
             self.lblFileName.setText(os.path.basename(fileName))
             self.lblFileName.setToolTip(fileName)
             ext = os.path.splitext(fileName)[1]
+            icon = None
             if ext and ext in self.formatsIcon:
                 icon = QIcon.fromTheme(self.formatsIcon[ext])
             elif os.path.isdir(fileName):
                 icon = QIcon.fromTheme("folder")
 
-            #self.lblIcon.setVisible(True)
-            h = self.lblFileName.height()
-            self.lblIcon.setPixmap(icon.pixmap(h, h))
+            if icon:
+                self.lblIcon.setVisible(True)
+                h = self.lblFileName.height()
+                self.lblIcon.setPixmap(icon.pixmap(h, h))
+            else:
+                self.lblIcon.hide()
 
         else:
             self.fileName = None

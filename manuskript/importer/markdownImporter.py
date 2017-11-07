@@ -8,5 +8,5 @@ class markdownImporter(abstractImporter):
 
     name = "Markdown"
     description = ""
-    fileFormat = "Markdown files (*.md; *.txt; *)"
+    fileFormat = "Markdown files (*.md *.txt *)"
     icon = "text-x-markdown"
