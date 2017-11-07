@@ -80,7 +80,9 @@ class Ui_importer(object):
         self.splitter_2 = QtWidgets.QSplitter(self.grpPreview)
         self.splitter_2.setOrientation(QtCore.Qt.Horizontal)
         self.splitter_2.setObjectName("splitter_2")
-        self.tree = treeView(self.splitter_2)
+        self.tree = QtWidgets.QTreeView(self.splitter_2)
+        self.tree.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
+        self.tree.setHeaderHidden(True)
         self.tree.setObjectName("tree")
         self.editor = mainEditor(self.splitter_2)
         self.editor.setObjectName("editor")
@@ -102,4 +104,3 @@ class Ui_importer(object):
         self.grpPreview.setTitle(_translate("importer", "Preview"))
 
 from manuskript.ui.editors.mainEditor import mainEditor
-from manuskript.ui.views.treeView import treeView

@@ -90,6 +90,13 @@ QToolBox::tab:selected, QToolBox::tab:hover{
            </property>
           </widget>
          </item>
+         <item row="2" column="0" colspan="2">
+          <widget class="QCheckBox" name="chkGeneralTrimTitles">
+           <property name="text">
+            <string>Trim long titles (&gt; 32 chars)</string>
+           </property>
+          </widget>
+         </item>
         </layout>
        </item>
       </layout>

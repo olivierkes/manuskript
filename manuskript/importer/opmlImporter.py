@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
 
-from PyQt5.QtWidgets import QMessageBox
+from PyQt5.QtWidgets import qApp, QMessageBox
 from manuskript.models.outlineModel import outlineItem
 from manuskript.enums import Outline
 from lxml import etree as ET
@@ -15,9 +15,56 @@ class opmlImporter(abstractImporter):
     fileFormat = "OPML Files (*.opml)"
     icon = "text-x-opml+xml"
 
+    @classmethod
+    def startImport(cls, filePath, parentItem, settingsWidget):
+        """
+        Import/export outline cards in OPML format.
+        """
+        ret = False
+
+        try:
+            with open(filePath, 'r') as opmlFile:
+                opmlContent = cls.saveNewlines(opmlFile.read())
+        except:
+            QMessageBox.critical(settingsWidget,
+                                 qApp.translate("Import", "OPML Import"),
+                                 qApp.translate("Import", "File open failed."))
+            return None
+
+        parsed = ET.fromstring(bytes(opmlContent, 'utf-8'))
+
+        opmlNode = parsed
+        bodyNode = opmlNode.find("body")
+        items = []
+
+        if bodyNode is not None:
+            outlineEls = bodyNode.findall("outline")
+
+            if outlineEls is not None:
+                for element in outlineEls:
+                    items.append(cls.parseItems(element, parentItem))
+                ret = True
+
+        if ret:
+            #QMessageBox.information(
+                #settingsWidget,
+                #qApp.translate("Import", "OPML Import"),
+                #qApp.translate("Import", "Import Complete."))
+            pass
+        else:
+            QMessageBox.critical(
+                settingsWidget,
+                qApp.translate("Import", "OPML Import"),
+                qApp.translate("Import", "This does not appear to be a valid OPML file."))
+
+            return None
+
+        return items
+
     def importOpml(opmlFilePath, idx):
         """
         Import/export outline cards in OPML format.
+        #FIXME: delete me when done with startImport
         """
         ret = False
         mw = mainWindow()
@@ -26,7 +73,6 @@ class opmlImporter(abstractImporter):
             with open(opmlFilePath, 'r') as opmlFile:
                 opmlContent = saveNewlines(opmlFile.read())
         except:
-            # TODO: Translation
             QMessageBox.critical(mw, mw.tr("OPML Import"),
                                 mw.tr("File open failed."))
             return False
@@ -67,48 +113,30 @@ class opmlImporter(abstractImporter):
 
         return ret
 
-
-    def parseItems(underElement, parentItem):
-        text = underElement.get('text')
-        if text is not None:
-
-            # In the case where the title is exceptionally long, trim it so it isn't
-            # distracting in the tab label
-            title = text[0:32]
-            if len(title) < len(text):
-                title += '...'
+    @classmethod
+    def parseItems(cls, underElement, parentItem=None):
+        title = underElement.get('text')
+        if title is not None:
 
             card = outlineItem(parent=parentItem, title=title)
 
             body = ""
-            summary = ""
             note = underElement.get('_note')
-            if note is not None and not isWhitespaceOnly(note):
-                body = restoreNewLines(note)
-                summary = body[0:128]
-            else:
-
-                # There's no note (body), but there is a title.  Fill the
-                # body with the title to support cards that consist only
-                # of a title.
-                body = text
-
-            card.setData(Outline.summaryFull.value, summary)
+            if note is not None and not cls.isWhitespaceOnly(note):
+                body = cls.restoreNewLines(note)
 
             children = underElement.findall('outline')
             if children is not None and len(children) > 0:
                 for el in children:
-                    parseItems(el, card)
+                    cls.parseItems(el, card)
             else:
                 card.setData(Outline.type.value, 'md')
                 card.setData(Outline.text.value, body)
 
-                # I assume I don't have to do the following
-                # parentItem.appendChild(card)
+        return card
 
-        return
-
-    def saveNewlines(inString):
+    @classmethod
+    def saveNewlines(cls, inString):
         """
         Since XML parsers are notorious for stripping out significant newlines,
         save them in a form we can restore after the parse.
@@ -118,17 +146,19 @@ class opmlImporter(abstractImporter):
 
         return inString
 
-    def restoreNewLines(inString):
+    @classmethod
+    def restoreNewLines(cls, inString):
         """
         Restore any significant newlines
         """
         return inString.replace("{{lf}}", "\n")
 
-    def isWhitespaceOnly(inString):
+    @classmethod
+    def isWhitespaceOnly(cls, inString):
         """
         Determine whether or not a string only contains whitespace.
         """
-        str = restoreNewLines(inString)
-        str = ''.join(str.split())
+        s = cls.restoreNewLines(inString)
+        s = ''.join(s.split())
 
-        return len(str) is 0
+        return len(s) is 0

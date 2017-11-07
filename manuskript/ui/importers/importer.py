@@ -157,5 +157,30 @@ class importerDialog(QWidget, Ui_importer):
     ############################################################################
 
     def preview(self):
-        # TODO
+
+        # We find the current selected format
+        F = self.currentFormat()
+
+        # Temporary outlineModel
         previewModel = outlineModel(self)
+
+        # Calling the importer in a temporary model
+        items = F.startImport(self.fileName,
+                              previewModel.rootItem,
+                              self.settingsWidget)
+
+        # Do transformations
+        # TODO
+
+        if items:
+            self.tree.setModel(previewModel)
+            for i in range(1, previewModel.columnCount()):
+                self.tree.hideColumn(i)
+
+    def startImport(self):
+        pass
+
+        # Note: dont forget to emit: mdl.layoutChanged.emit()
+        # Maybe: mw.treeRedacOutline.viewport().update()
+
+

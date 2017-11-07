@@ -22,10 +22,11 @@ class abstractImporter:
                      # For folder, use "<<folder>>"
     icon = ""
 
-    @classmethod
-    def startImport(cls, filePath):
+    def startImport(self, filePath, settingsWidget):
         """
-        Takes a str path to the file/folder to import, and return `outlineItem`s.
+        Takes a str path to the file/folder to import, and the settingsWidget
+        returnend by `self.settingsWidget()` containing the user set settings,
+        and return `outlineItem`s.
         """
         pass
 

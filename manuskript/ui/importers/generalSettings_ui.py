@@ -49,6 +49,9 @@ class Ui_generalSettings(object):
         self.treeGeneralParent.setHeaderHidden(True)
         self.treeGeneralParent.setObjectName("treeGeneralParent")
         self.formLayout_4.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.treeGeneralParent)
+        self.chkGeneralTrimTitles = QtWidgets.QCheckBox(self.general)
+        self.chkGeneralTrimTitles.setObjectName("chkGeneralTrimTitles")
+        self.formLayout_4.setWidget(2, QtWidgets.QFormLayout.SpanningRole, self.chkGeneralTrimTitles)
         self.verticalLayout_5.addLayout(self.formLayout_4)
         self.toolBox.addItem(self.general, "")
         self.verticalLayout_2.addWidget(self.toolBox)
@@ -63,5 +66,6 @@ class Ui_generalSettings(object):
         generalSettings.setWindowTitle(_translate("generalSettings", "Form"))
         self.chkGeneralParent.setText(_translate("generalSettings", "Import under:"))
         self.chkGeneralSplitScenes.setText(_translate("generalSettings", "Split scenes at:"))
+        self.chkGeneralTrimTitles.setText(_translate("generalSettings", "Trim long titles (> 32 chars)"))
         self.toolBox.setItemText(self.toolBox.indexOf(self.general), _translate("generalSettings", "General"))
 
