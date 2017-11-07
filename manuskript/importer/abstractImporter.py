@@ -22,7 +22,8 @@ class abstractImporter:
                      # For folder, use "<<folder>>"
     icon = ""
 
-    def startImport(self, filePath, settingsWidget):
+    @classmethod
+    def startImport(cls, filePath, parentItem, settingsWidget):
         """
         Takes a str path to the file/folder to import, and the settingsWidget
         returnend by `self.settingsWidget()` containing the user set settings,
@@ -36,5 +37,9 @@ class abstractImporter:
         Returns a QWidget if needed for settings.
         """
         return None
+
+    @classmethod
+    def isValid(cls):
+        return False
 
 

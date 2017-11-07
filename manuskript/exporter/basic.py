@@ -129,7 +129,7 @@ class basicFormat:
     @classmethod
     def isValid(cls):
         return True
-    
+
     @classmethod
     def projectPath(cls):
         return os.path.dirname(os.path.abspath(mainWindow().currentProject))

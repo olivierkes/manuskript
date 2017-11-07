@@ -16,21 +16,35 @@ class opmlImporter(abstractImporter):
     icon = "text-x-opml+xml"
 
     @classmethod
-    def startImport(cls, filePath, parentItem, settingsWidget):
+    def isValid(cls):
+        return True
+
+    @classmethod
+    def startImport(cls, filePath, parentItem, settingsWidget, fromString=None):
         """
         Import/export outline cards in OPML format.
         """
         ret = False
 
-        try:
-            with open(filePath, 'rb') as opmlFile:
-                #opmlContent = cls.saveNewlines(opmlFile.read())
-                opmlContent = opmlFile.read()
-        except:
-            QMessageBox.critical(settingsWidget,
-                                 qApp.translate("Import", "OPML Import"),
-                                 qApp.translate("Import", "File open failed."))
+        if filePath != "":
+            # We have a filePath, so we read the file
+            try:
+                with open(filePath, 'rb') as opmlFile:
+                    #opmlContent = cls.saveNewlines(opmlFile.read())
+                    opmlContent = opmlFile.read()
+            except:
+                QMessageBox.critical(settingsWidget,
+                                    qApp.translate("Import", "OPML Import"),
+                                    qApp.translate("Import", "File open failed."))
+                return None
+
+        elif fromString == "":
+            # We have neither filePath nor fromString, so we leave
             return None
+
+        else:
+            # We load from string
+            opmlContent = bytes(fromString, "utf-8")
 
         parsed = ET.fromstring(opmlContent)
 

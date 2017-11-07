@@ -3,9 +3,9 @@
 import json
 import os
 
-from PyQt5.QtCore import Qt, QTimer
-from PyQt5.QtGui import QBrush, QColor, QIcon
-from PyQt5.QtWidgets import QWidget, QFileDialog, QMessageBox
+from PyQt5.QtCore import Qt, QTimer, QUrl
+from PyQt5.QtGui import QBrush, QColor, QIcon, QDesktopServices
+from PyQt5.QtWidgets import QWidget, QFileDialog, QMessageBox, QStyle
 
 from manuskript.functions import lightBlue, writablePath, appPath
 from manuskript.ui.importers.importer_ui import Ui_importer
@@ -14,6 +14,7 @@ from manuskript.ui import style
 from manuskript import importer
 from manuskript.models.outlineModel import outlineModel
 from manuskript.enums import Outline
+from manuskript.exporter.pandoc import pandocExporter
 
 class importerDialog(QWidget, Ui_importer):
 
@@ -68,6 +69,15 @@ class importerDialog(QWidget, Ui_importer):
 
         for f in self.importers:
             addFormat(f.name, f.icon)
+            if not f.isValid():
+                item = self.cmbImporters.model().item(self.cmbImporters.count() - 1)
+                item.setFlags(Qt.NoItemFlags)
+
+        if not pandocExporter().isValid():
+            self.cmbImporters.addItem(
+                self.style().standardIcon(QStyle.SP_MessageBoxWarning),
+                "Install pandoc to import from much more formats",
+                "::URL::http://pandoc.org/installing.html")
 
     def currentFormat(self):
         formatName = self.cmbImporters.currentText()
@@ -141,7 +151,15 @@ class importerDialog(QWidget, Ui_importer):
         settings widget using the current format provided settings widget.
         """
 
+        # We check if we have to open an URL
+        data = self.cmbImporters.currentData()
+        if data and data[:7] == "::URL::" and data[7:]:
+            # FIXME: use functions.openURL after merge with feature/Exporters
+            QDesktopServices.openUrl(QUrl(data[7:]))
+            return
+
         F = self.currentFormat()
+
         self.settingsWidget = generalSettings()
         self.setGroupWidget(self.grpSettings, self.settingsWidget)
         self.grpSettings.setMinimumWidth(200)
@@ -151,6 +169,9 @@ class importerDialog(QWidget, Ui_importer):
         #w = QWidget()
         #toolBox.insertItem(toolBox.count(), w, "Pandoc")
         #See pandoc's abstractPlainText
+
+        # Clear file name
+        self.setFileName("")
 
     def setGroupWidget(self, group, widget):
         """
