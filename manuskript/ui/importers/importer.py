@@ -5,7 +5,7 @@ import os
 
 from PyQt5.QtCore import Qt, QTimer
 from PyQt5.QtGui import QBrush, QColor, QIcon
-from PyQt5.QtWidgets import QWidget, QFileDialog
+from PyQt5.QtWidgets import QWidget, QFileDialog, QMessageBox
 
 from manuskript.functions import lightBlue, writablePath, appPath
 from manuskript.ui.importers.importer_ui import Ui_importer
@@ -49,6 +49,7 @@ class importerDialog(QWidget, Ui_importer):
         self.btnChoseFile.clicked.connect(self.selectFile)
         self.btnClearFileName.clicked.connect(self.setFileName)
         self.btnPreview.clicked.connect(self.preview)
+        self.btnImport.clicked.connect(self.doImport)
         self.cmbImporters.currentTextChanged.connect(self.updateSettings)
 
         #self.setFileName("")
@@ -170,26 +171,63 @@ class importerDialog(QWidget, Ui_importer):
 
     def preview(self):
 
-        # We find the current selected format
-        F = self.currentFormat()
-
-        # Temporary outlineModel
+        # Creating a temporary outlineModel
         previewModel = outlineModel(self)
         previewModel.loadFromXML(
             self.mw.mdlOutline.saveToXML(),
             fromString=True)
 
+        # Inserting elements
+        result = self.startImport(previewModel)
+
+        if result:
+            self.tree.setModel(previewModel)
+            for i in range(1, previewModel.columnCount()):
+                self.tree.hideColumn(i)
+            self.tree.selectionModel().currentChanged.connect(self.editor.setCurrentModelIndex)
+            self.previewSplitter.setStretchFactor(0, 10)
+            self.previewSplitter.setStretchFactor(1, 40)
+
+    def doImport(self):
+        """
+        Called by the Import button.
+        """
+        self.startImport(self.mw.mdlOutline)
+
+        QMessageBox.information(self, self.tr("Import status"),
+                                self.tr("Import Complete."))
+
+        self.close()
+
+    def startImport(self, outlineModel):
+        """
+        Where most of the magic happens.
+        Is used by preview and by doImport (actual import).
+
+        `outlineModel` is the model where the imported items are added.
+        """
+
+        # We find the current selected format
+        F = self.currentFormat()
+
         # Parent item
         ID = self.settingsWidget.importUnderID()
-        parentItem = previewModel.getItemByID(ID)
+        parentItem = outlineModel.getItemByID(ID)
 
-        # Calling the importer in a temporary model
+        # Calling the importer
         items = F.startImport(self.fileName,
                               parentItem,
                               self.settingsWidget)
 
         # Do transformations
-        # ------------------
+        items = self.doTransformations(items)
+
+        return True
+
+    def doTransformations(self, items):
+        """
+        Do general transformations.
+        """
 
         # Trim long titles
         if self.settingsWidget.trimLongTitles():
@@ -201,19 +239,6 @@ class importerDialog(QWidget, Ui_importer):
             for i in items:
                 trim(i)
 
-        if items:
-            self.tree.setModel(previewModel)
-            for i in range(1, previewModel.columnCount()):
-                self.tree.hideColumn(i)
-            self.tree.selectionModel().currentChanged.connect(self.editor.setCurrentModelIndex)
-            self.previewSplitter.setStretchFactor(0, 10)
-            self.previewSplitter.setStretchFactor(1, 40)
-
-
-    def startImport(self):
-        pass
-
-        # Note: dont forget to emit: mdl.layoutChanged.emit()
-        # Maybe: mw.treeRedacOutline.viewport().update()
+        return items
 
 
