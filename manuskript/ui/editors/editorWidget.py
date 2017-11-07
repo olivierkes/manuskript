@@ -55,6 +55,8 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
         self.mw = mainWindow()
         self._tabWidget = None  # set by mainEditor on creation
 
+        self._model = None
+
         # def setModel(self, model):
         # self._model = model
         # self.setView()
@@ -83,8 +85,10 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
 
         if r.isValid():
             count = r.internalPointer().childCount()
+        elif self._model:
+            count = self._model.rootItem.childCount()
         else:
-            count = self.mw.mdlOutline.rootItem.childCount()
+            count = 0
 
         for c in range(count):
             self.corkView.itemDelegate().sizeHintChanged.emit(r.child(c, 0))
@@ -102,8 +106,10 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
 
         if self.currentIndex.isValid():
             item = self.currentIndex.internalPointer()
+        elif self._model:
+            item = self._model.rootItem
         else:
-            item = self.mw.mdlOutline.rootItem
+            return
 
         i = self._tabWidget.indexOf(self)
         self._tabWidget.setTabText(i, item.title())
@@ -202,7 +208,7 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
 
             self.txtEdits = []
 
-            if item != self.mw.mdlOutline.rootItem:
+            if item != self._model.rootItem:
                 addTitle(item)
 
             addChildren(item)
@@ -211,7 +217,7 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
 
         elif item and item.isFolder() and self.folderView == "cork":
             self.stack.setCurrentIndex(2)
-            self.corkView.setModel(self.mw.mdlOutline)
+            self.corkView.setModel(self._model)
             self.corkView.setRootIndex(self.currentIndex)
             try:
                 self.corkView.selectionModel().selectionChanged.connect(mainWindow().redacMetadata.selectionChanged, AUC)
@@ -225,7 +231,7 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
             self.outlineView.setModelCharacters(mainWindow().mdlCharacter)
             self.outlineView.setModelLabels(mainWindow().mdlLabels)
             self.outlineView.setModelStatus(mainWindow().mdlStatus)
-            self.outlineView.setModel(self.mw.mdlOutline)
+            self.outlineView.setModel(self._model)
             self.outlineView.setRootIndex(self.currentIndex)
 
             try:
@@ -242,9 +248,9 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
             self.txtRedacText.setCurrentModelIndex(QModelIndex())
 
         try:
-            self.mw.mdlOutline.dataChanged.connect(self.modelDataChanged, AUC)
-            self.mw.mdlOutline.rowsInserted.connect(self.updateIndexFromID, AUC)
-            self.mw.mdlOutline.rowsRemoved.connect(self.updateIndexFromID, AUC)
+            self._model.dataChanged.connect(self.modelDataChanged, AUC)
+            self._model.rowsInserted.connect(self.updateIndexFromID, AUC)
+            self._model.rowsRemoved.connect(self.updateIndexFromID, AUC)
             #self.mw.mdlOutline.rowsAboutToBeRemoved.connect(self.rowsAboutToBeRemoved, AUC)
         except TypeError:
             pass
@@ -254,8 +260,8 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
     def setCurrentModelIndex(self, index=None):
         if index.isValid():
             self.currentIndex = index
-            self.currentID = self.mw.mdlOutline.ID(index)
-            # self._model = index.model()
+            self._model = index.model()
+            self.currentID = self._model.ID(index)
         else:
             self.currentIndex = QModelIndex()
             self.currentID = None
@@ -267,7 +273,7 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
         Index might have changed (through drag an drop), so we keep current
         item's ID and update index. Item might have been deleted too.
         """
-        idx = self.mw.mdlOutline.getIndexByID(self.currentID)
+        idx = self._model.getIndexByID(self.currentID)
 
         # If we have an ID but the ID does not exist, it has been deleted
         if self.currentID and idx == QModelIndex():

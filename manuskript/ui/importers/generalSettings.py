@@ -3,7 +3,7 @@
 import json
 import os
 
-from PyQt5.QtCore import Qt, QSize, QSortFilterProxyModel
+from PyQt5.QtCore import Qt, QSize, QSortFilterProxyModel, QModelIndex
 from PyQt5.QtGui import QIcon, QFontMetrics, QFont
 from PyQt5.QtWidgets import QWidget, QTableWidgetItem, QListWidgetItem, QTreeView
 
@@ -30,8 +30,6 @@ class generalSettings(QWidget, Ui_generalSettings):
         self.treeGeneralParent.setCurrentIndex(self.getParentIndex())
         self.chkGeneralParent.toggled.connect(self.treeGeneralParent.setVisible)
         self.treeGeneralParent.hide()
-        self.treeGeneralParent.selectionModel().currentChanged.connect(
-            lambda: print(self.treeGeneralParent.currentIndex().row()))
 
     def getParentIndex(self):
         """
@@ -43,4 +41,21 @@ class generalSettings(QWidget, Ui_generalSettings):
         else:
             idx = self.mw.treeRedacOutline.currentIndex()
         return idx
+
+    def importUnderID(self):
+        """
+        Returns the ID of the item selected in treeGeneralParent, if checked.
+        """
+        if self.chkGeneralParent.isChecked():
+            idx = self.treeGeneralParent.currentIndex()
+            # We used a filter proxy model, so we have to map back to source
+            # to get an index from mdlOutline
+            idx = self.treeGeneralParent.model().mapToSource(idx)
+            if idx.isValid():
+                return idx.internalPointer().ID()
+
+        return "0" # 0 is root's ID
+
+    def trimLongTitles(self):
+        return self.chkGeneralTrimTitles.isChecked()
 

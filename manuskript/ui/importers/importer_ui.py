@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_importer(object):
     def setupUi(self, importer):
         importer.setObjectName("importer")
-        importer.resize(694, 489)
+        importer.resize(867, 560)
         self.verticalLayout = QtWidgets.QVBoxLayout(importer)
         self.verticalLayout.setObjectName("verticalLayout")
         self.horizontalLayout = QtWidgets.QHBoxLayout()
@@ -64,6 +64,7 @@ class Ui_importer(object):
         self.verticalLayout.addLayout(self.horizontalLayout)
         self.splitter = QtWidgets.QSplitter(importer)
         self.splitter.setOrientation(QtCore.Qt.Horizontal)
+        self.splitter.setChildrenCollapsible(False)
         self.splitter.setObjectName("splitter")
         self.grpSettings = QtWidgets.QGroupBox(self.splitter)
         self.grpSettings.setObjectName("grpSettings")
@@ -77,16 +78,16 @@ class Ui_importer(object):
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_2.setSpacing(0)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.splitter_2 = QtWidgets.QSplitter(self.grpPreview)
-        self.splitter_2.setOrientation(QtCore.Qt.Horizontal)
-        self.splitter_2.setObjectName("splitter_2")
-        self.tree = QtWidgets.QTreeView(self.splitter_2)
+        self.previewSplitter = QtWidgets.QSplitter(self.grpPreview)
+        self.previewSplitter.setOrientation(QtCore.Qt.Horizontal)
+        self.previewSplitter.setObjectName("previewSplitter")
+        self.tree = QtWidgets.QTreeView(self.previewSplitter)
         self.tree.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
         self.tree.setHeaderHidden(True)
         self.tree.setObjectName("tree")
-        self.editor = mainEditor(self.splitter_2)
+        self.editor = editorWidget(self.previewSplitter)
         self.editor.setObjectName("editor")
-        self.verticalLayout_2.addWidget(self.splitter_2)
+        self.verticalLayout_2.addWidget(self.previewSplitter)
         self.verticalLayout.addWidget(self.splitter)
 
         self.retranslateUi(importer)
@@ -103,4 +104,4 @@ class Ui_importer(object):
         self.grpSettings.setTitle(_translate("importer", "Settings"))
         self.grpPreview.setTitle(_translate("importer", "Preview"))
 
-from manuskript.ui.editors.mainEditor import mainEditor
+from manuskript.ui.editors.editorWidget import editorWidget

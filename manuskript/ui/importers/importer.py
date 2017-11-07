@@ -3,7 +3,7 @@
 import json
 import os
 
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QTimer
 from PyQt5.QtGui import QBrush, QColor, QIcon
 from PyQt5.QtWidgets import QWidget, QFileDialog
 
@@ -13,6 +13,7 @@ from manuskript.ui.importers.generalSettings import generalSettings
 from manuskript.ui import style
 from manuskript import importer
 from manuskript.models.outlineModel import outlineModel
+from manuskript.enums import Outline
 
 class importerDialog(QWidget, Ui_importer):
 
@@ -35,6 +36,8 @@ class importerDialog(QWidget, Ui_importer):
         self.mw = mw
         self.fileName = ""
         self.setStyleSheet(style.mainWindowSS())
+        self.tree.setStyleSheet("QTreeView{background:transparent;}")
+        self.editor.setStyleSheet("QWidget{background:transparent;}")
 
         # Register importFormats:
         self.importers = importer.importers
@@ -49,7 +52,11 @@ class importerDialog(QWidget, Ui_importer):
         self.cmbImporters.currentTextChanged.connect(self.updateSettings)
 
         #self.setFileName("")
-        self.setFileName("/home/olivier/Dropbox/Documents/Travail/Geekeries/Python/PyCharmProjects/manuskript/test-projects/IMPORTS/End Plan 2.opml")
+        QTimer.singleShot(50, lambda:
+            self.cmbImporters.setCurrentText("OPML"))
+        QTimer.singleShot(50, lambda:
+            self.setFileName("/home/olivier/Dropbox/Documents/Travail/Geekeries/Python/PyCharmProjects/manuskript/test-projects/IMPORTS/End Plan 2.opml")
+            )
 
     ############################################################################
     # Combobox / Formats
@@ -134,8 +141,13 @@ class importerDialog(QWidget, Ui_importer):
         F = self.currentFormat()
         self.settingsWidget = generalSettings()
         self.setGroupWidget(self.grpSettings, self.settingsWidget)
+        self.grpSettings.setMinimumWidth(200)
 
         #TODO: custom format widget
+        #toolBox = self.settingsWidget.toolBox
+        #w = QWidget()
+        #toolBox.insertItem(toolBox.count(), w, "Pandoc")
+        #See pandoc's abstractPlainText
 
     def setGroupWidget(self, group, widget):
         """
@@ -163,19 +175,40 @@ class importerDialog(QWidget, Ui_importer):
 
         # Temporary outlineModel
         previewModel = outlineModel(self)
+        previewModel.loadFromXML(
+            self.mw.mdlOutline.saveToXML(),
+            fromString=True)
+
+        # Parent item
+        ID = self.settingsWidget.importUnderID()
+        parentItem = previewModel.getItemByID(ID)
 
         # Calling the importer in a temporary model
         items = F.startImport(self.fileName,
-                              previewModel.rootItem,
+                              parentItem,
                               self.settingsWidget)
 
         # Do transformations
-        # TODO
+        # ------------------
+
+        # Trim long titles
+        if self.settingsWidget.trimLongTitles():
+            def trim(item):
+                if len(item.title()) > 32:
+                    item.setData(Outline.title.value, item.title()[:32])
+                for c in item.children():
+                    trim(c)
+            for i in items:
+                trim(i)
 
         if items:
             self.tree.setModel(previewModel)
             for i in range(1, previewModel.columnCount()):
                 self.tree.hideColumn(i)
+            self.tree.selectionModel().currentChanged.connect(self.editor.setCurrentModelIndex)
+            self.previewSplitter.setStretchFactor(0, 10)
+            self.previewSplitter.setStretchFactor(1, 40)
+
 
     def startImport(self):
         pass

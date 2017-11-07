@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>694</width>
-    <height>489</height>
+    <width>867</width>
+    <height>560</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -131,6 +131,9 @@
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
+     <property name="childrenCollapsible">
+      <bool>false</bool>
+     </property>
      <widget class="QGroupBox" name="grpSettings">
       <property name="title">
        <string>Settings</string>
@@ -174,7 +177,7 @@
         <number>0</number>
        </property>
        <item>
-        <widget class="QSplitter" name="splitter_2">
+        <widget class="QSplitter" name="previewSplitter">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
@@ -186,7 +189,7 @@
            <bool>true</bool>
           </property>
          </widget>
-         <widget class="mainEditor" name="editor" native="true"/>
+         <widget class="editorWidget" name="editor" native="true"/>
         </widget>
        </item>
       </layout>
@@ -197,9 +200,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>mainEditor</class>
+   <class>editorWidget</class>
    <extends>QWidget</extends>
-   <header>manuskript.ui.editors.mainEditor.h</header>
+   <header>manuskript.ui.editors.editorWidget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
