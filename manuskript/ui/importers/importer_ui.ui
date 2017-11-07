@@ -178,6 +178,8 @@
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
+         <widget class="treeView" name="tree"/>
+         <widget class="mainEditor" name="editor" native="true"/>
         </widget>
        </item>
       </layout>
@@ -186,6 +188,19 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>treeView</class>
+   <extends>QTreeView</extends>
+   <header>manuskript.ui.views.treeView.h</header>
+  </customwidget>
+  <customwidget>
+   <class>mainEditor</class>
+   <extends>QWidget</extends>
+   <header>manuskript.ui.editors.mainEditor.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

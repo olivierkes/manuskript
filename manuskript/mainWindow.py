@@ -383,6 +383,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def openIndex(self, index):
         self.treeRedacOutline.setCurrentIndex(index)
 
+    def openIndexes(self, indexes, newTab=True):
+        self.mainEditor.openIndexes(indexes, newTab=True)
+
     ###############################################################################
     # LOAD AND SAVE
     ###############################################################################

@@ -12,6 +12,7 @@ from manuskript.ui.importers.importer_ui import Ui_importer
 from manuskript.ui.importers.generalSettings import generalSettings
 from manuskript.ui import style
 from manuskript import importer
+from manuskript.models.outlineModel import outlineModel
 
 class importerDialog(QWidget, Ui_importer):
 
@@ -157,4 +158,4 @@ class importerDialog(QWidget, Ui_importer):
 
     def preview(self):
         # TODO
-        pass
+        previewModel = outlineModel(self)
