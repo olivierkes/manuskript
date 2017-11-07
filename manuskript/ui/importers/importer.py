@@ -196,8 +196,14 @@ class importerDialog(QWidget, Ui_importer):
         """
         self.startImport(self.mw.mdlOutline)
 
-        QMessageBox.information(self, self.tr("Import status"),
-                                self.tr("Import Complete."))
+        # Signal every views that important model changes have happened.
+        self.mw.mdlOutline.layoutChanged.emit()
+
+        # I'm getting seg fault over this message sometimes...
+        # Using status bar message instead...
+        #QMessageBox.information(self, self.tr("Import status"),
+                                #self.tr("Import Complete."))
+        self.mw.statusBar().showMessage("Import complete!", 5000)
 
         self.close()
 
