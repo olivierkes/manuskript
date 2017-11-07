@@ -27,21 +27,6 @@
       <widget class="QComboBox" name="cmbImporters"/>
      </item>
      <item>
-      <widget class="QPushButton" name="btnManageImporters">
-       <property name="toolTip">
-        <string>Manage importers</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset theme="preferences-system">
-         <normaloff/>
-        </iconset>
-       </property>
-      </widget>
-     </item>
-     <item>
       <spacer name="horizontalSpacer_2">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
@@ -60,7 +45,8 @@
         <string>Chose file</string>
        </property>
        <property name="icon">
-        <iconset theme="document-import"/>
+        <iconset theme="document-import">
+         <normaloff>../../../../../../../../../../.designer/backup</normaloff>../../../../../../../../../../.designer/backup</iconset>
        </property>
       </widget>
      </item>
@@ -86,11 +72,15 @@
      </item>
      <item>
       <widget class="QPushButton" name="btnClearFileName">
+       <property name="toolTip">
+        <string>Clear file</string>
+       </property>
        <property name="text">
         <string/>
        </property>
        <property name="icon">
-        <iconset theme="edit-clear"/>
+        <iconset theme="edit-clear">
+         <normaloff>../../../../../../../../../../.designer/backup</normaloff>../../../../../../../../../../.designer/backup</iconset>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -117,8 +107,20 @@
        </property>
        <property name="icon">
         <iconset theme="document-print-preview">
-         <normaloff/>
-        </iconset>
+         <normaloff>../../../../../../../../../../.designer/backup</normaloff>../../../../../../../../../../.designer/backup</iconset>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnImport">
+       <property name="text">
+        <string>Import</string>
+       </property>
+       <property name="icon">
+        <iconset theme="document-import"/>
        </property>
       </widget>
      </item>
@@ -171,6 +173,13 @@
        <property name="bottomMargin">
         <number>0</number>
        </property>
+       <item>
+        <widget class="QSplitter" name="splitter_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
     </widget>

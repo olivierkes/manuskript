@@ -7,15 +7,11 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QBrush, QColor, QIcon
 from PyQt5.QtWidgets import QWidget, QFileDialog
 
-from manuskript import exporter
 from manuskript.functions import lightBlue, writablePath, appPath
 from manuskript.ui.importers.importer_ui import Ui_importer
-
-class importFormat:
-    def __init__(self, name, icon, fileFormat):
-        self.name = name
-        self.icon = icon
-        self.fileFormat = fileFormat
+from manuskript.ui.importers.generalSettings import generalSettings
+from manuskript.ui import style
+from manuskript import importer
 
 class importerDialog(QWidget, Ui_importer):
 
@@ -37,15 +33,10 @@ class importerDialog(QWidget, Ui_importer):
         # Var
         self.mw = mw
         self.fileName = ""
+        self.setStyleSheet(style.mainWindowSS())
 
         # Register importFormats:
-        self.formats = []
-        self.formats.append(importFormat("OPML", "text-x-opml+xml",
-                                         "OPML Files (*.opml)"))
-        self.formats.append(importFormat("Markdown", "text-x-markdown",
-                                         "Markdown files (*.md; *.txt; *)"))
-        self.formats.append(importFormat("Folder", "folder",
-                                         "<<folder>>"))
+        self.importers = importer.importers
 
         # Populate combo box with formats
         self.populateImportList()
@@ -54,7 +45,10 @@ class importerDialog(QWidget, Ui_importer):
         self.btnChoseFile.clicked.connect(self.selectFile)
         self.btnClearFileName.clicked.connect(self.setFileName)
         self.btnPreview.clicked.connect(self.preview)
-        self.setFileName("")
+        self.cmbImporters.currentTextChanged.connect(self.updateSettings)
+
+        #self.setFileName("")
+        self.setFileName("/home/olivier/Dropbox/Documents/Travail/Geekeries/Python/PyCharmProjects/manuskript/test-projects/IMPORTS/End Plan 2.opml")
 
     ############################################################################
     # Combobox / Formats
@@ -65,18 +59,25 @@ class importerDialog(QWidget, Ui_importer):
         def addFormat(name, icon):
             self.cmbImporters.addItem(QIcon.fromTheme(icon), name)
 
-        for f in self.formats:
+        for f in self.importers:
             addFormat(f.name, f.icon)
+
+    def currentFormat(self):
+        formatName = self.cmbImporters.currentText()
+        F = [F for F in self.importers if F.name == formatName][0]
+        return F
 
     ############################################################################
     # Import file
     ############################################################################
 
     def selectFile(self):
+        """
+        Called to select a file in the file system. Uses QFileDialog.
+        """
 
         # We find the current selected format
-        formatName = self.cmbImporters.currentText()
-        F = [F for F in self.formats if F.name == formatName][0]
+        F = self.currentFormat()
 
         options = QFileDialog.Options()
         options |= QFileDialog.DontUseNativeDialog
@@ -90,47 +91,70 @@ class importerDialog(QWidget, Ui_importer):
         self.setFileName(fileName)
 
     def setFileName(self, fileName):
+        """
+        Updates Ui with given filename. Filename can be empty.
+        """
         if fileName:
             self.fileName = fileName
-            self.btnPreview.setEnabled(True)
             self.lblFileName.setText(os.path.basename(fileName))
             self.lblFileName.setToolTip(fileName)
-            self.btnClearFileName.setVisible(True)
             ext = os.path.splitext(fileName)[1]
             if ext and ext in self.formatsIcon:
-                self.lblIcon.setVisible(True)
-                h = self.lblFileName.height()
-                self.lblIcon.setPixmap(
-                    QIcon.fromTheme(self.formatsIcon[ext]).pixmap(h, h)
-                )
+                icon = QIcon.fromTheme(self.formatsIcon[ext])
             elif os.path.isdir(fileName):
-                self.lblIcon.setVisible(True)
-                h = self.lblFileName.height()
-                self.lblIcon.setPixmap(QIcon.fromTheme("folder").pixmap(h, h))
+                icon = QIcon.fromTheme("folder")
+
+            #self.lblIcon.setVisible(True)
+            h = self.lblFileName.height()
+            self.lblIcon.setPixmap(icon.pixmap(h, h))
 
         else:
             self.fileName = None
-            self.btnPreview.setEnabled(False)
             self.lblFileName.setText("")
-            self.btnClearFileName.setVisible(False)
-            self.lblIcon.setVisible(False)
+
+        hasFile = True if fileName else False
+
+        self.btnClearFileName.setVisible(hasFile)
+        self.lblIcon.setVisible(hasFile)
+        self.btnChoseFile.setVisible(not hasFile)
+        self.btnPreview.setEnabled(hasFile)
+        self.btnImport.setEnabled(hasFile)
 
     ############################################################################
-    # Preview
+    # UI
+    ############################################################################
+
+    def updateSettings(self):
+        """
+        When the current format change (through the combobox), we update the
+        settings widget using the current format provided settings widget.
+        """
+
+        F = self.currentFormat()
+        self.settingsWidget = generalSettings()
+        self.setGroupWidget(self.grpSettings, self.settingsWidget)
+
+        #TODO: custom format widget
+
+    def setGroupWidget(self, group, widget):
+        """
+        Sets the given widget as main widget for QGroupBox group.
+        """
+
+        # Removes every items from given layout.
+        l = group.layout()
+        while l.count():
+            item = l.itemAt(0)
+            l.removeItem(item)
+            item.widget().deleteLater()
+
+        l.addWidget(widget)
+        widget.setParent(group)
+
+    ############################################################################
+    # Preview / Import
     ############################################################################
 
     def preview(self):
         # TODO
         pass
-
-    ############################################################################
-    #
-    ############################################################################
-
-    def getParentIndex(self):
-        if len(self.mw.treeRedacOutline.selectionModel().
-                        selection().indexes()) == 0:
-            idx = QModelIndex()
-        else:
-            idx = self.mw.treeRedacOutline.currentIndex()
-        return idx

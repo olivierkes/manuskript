@@ -2,8 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/editors/mainEditor_ui.ui'
 #
-# Created: Sat Oct 14 21:30:36 2017
-#      by: PyQt5 UI code generator 5.2.1
+# Created by: PyQt5 UI code generator 5.9
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -14,8 +13,8 @@ class Ui_mainEditor(object):
         mainEditor.setObjectName("mainEditor")
         mainEditor.resize(791, 319)
         self.verticalLayout = QtWidgets.QVBoxLayout(mainEditor)
-        self.verticalLayout.setSpacing(0)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName("verticalLayout")
         self.tabSplitter = tabSplitter(mainEditor)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
@@ -55,14 +54,6 @@ class Ui_mainEditor(object):
         self.btnRedacFolderOutline.setObjectName("btnRedacFolderOutline")
         self.buttonGroup.addButton(self.btnRedacFolderOutline)
         self.horizontalLayout_19.addWidget(self.btnRedacFolderOutline)
-        self.btnImport = QtWidgets.QPushButton(mainEditor)
-        self.btnImport.setText("")
-        icon = QtGui.QIcon.fromTheme("document-open")
-        self.btnImport.setIcon(icon)
-        self.btnImport.setFlat(True)
-        self.btnImport.setObjectName("btnImport")
-        self.buttonGroup.addButton(self.btnImport)
-        self.horizontalLayout_19.addWidget(self.btnImport)
         self.sldCorkSizeFactor = QtWidgets.QSlider(mainEditor)
         self.sldCorkSizeFactor.setMinimumSize(QtCore.QSize(100, 0))
         self.sldCorkSizeFactor.setMaximumSize(QtCore.QSize(200, 16777215))
@@ -117,8 +108,6 @@ class Ui_mainEditor(object):
         self.btnRedacFolderCork.setText(_translate("mainEditor", "Index cards"))
         self.btnRedacFolderOutline.setText(_translate("mainEditor", "Outline"))
         self.btnRedacFullscreen.setShortcut(_translate("mainEditor", "F11"))
-        # TODO: Translation
-        self.btnImport.setToolTip(_translate("mainEditor", "Import items from an OPML file into the current folder"))
 
 from manuskript.ui.editors.tabSplitter import tabSplitter
 from manuskript.ui.editors.textFormat import textFormat

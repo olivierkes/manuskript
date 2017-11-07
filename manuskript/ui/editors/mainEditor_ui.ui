@@ -50,7 +50,9 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset theme="go-up"/>
+        <iconset theme="go-up">
+         <normaloff/>
+        </iconset>
        </property>
        <property name="shortcut">
         <string>Alt+Up</string>
@@ -109,23 +111,6 @@
        <attribute name="buttonGroup">
         <string notr="true">buttonGroup</string>
        </attribute>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="btnImport">
-       <property name="toolTip">
-        <!-- TODO: Translation -->
-        <string>Import items from an OPML file into the current folder</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset theme="document-open"/>
-       </property>
-       <property name="flat">
-        <bool>true</bool>
-       </property>
       </widget>
      </item>
      <item>
