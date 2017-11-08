@@ -4,6 +4,9 @@
 from manuskript.importer.abstractImporter import abstractImporter
 from manuskript.exporter.pandoc import pandocExporter
 from manuskript.importer.opmlImporter import opmlImporter
+from manuskript.importer.markdownImporter import markdownImporter
+from PyQt5.QtWidgets import qApp
+
 
 class pandocImporter(abstractImporter):
 
@@ -13,21 +16,57 @@ class pandocImporter(abstractImporter):
     def isValid(cls):
         return pandocExporter().isValid()
 
-    @classmethod
-    def startImport(cls, filePath, parentItem, settingsWidget):
+    def startImport(self, filePath, parentItem, settingsWidget):
+
+        formatTo = self.getSetting("formatTo").value().lower()
 
         # pandoc --from=markdown filename --to=opml --standalone
         args = [
-            "--from={}".format(cls.formatFrom),
+            "--from={}".format(self.formatFrom),
             filePath,
-            "--to=opml",
+            "--to={}".format(formatTo),
             "--standalone"
         ]
 
         r = pandocExporter().run(args)
 
-        return opmlImporter.startImport("", parentItem,
-                                        settingsWidget, fromString=r)
+        if formatTo == "opml":
+            return self.opmlImporter.startImport("", parentItem,
+                                            settingsWidget, fromString=r)
+        elif formatTo == "markdown":
+            return self.mdImporter.startImport(filePath, parentItem,
+                                                settingsWidget, fromString=r)
+
+    def settingsWidget(self, widget):
+        """
+        Takes a QWidget that can be modified and must be returned.
+        """
+
+        # Add group
+        group = self.addGroup(widget.toolBox.widget(0),
+                              qApp.translate("Import", "Pandoc import"))
+
+        self.addSetting("info", "label",
+                        qApp.translate("Import", """<b>Info:</b> Manuskript can
+                        import from <b>markdown</b> or <b>OPML</b>. Pandoc will
+                        convert your document to either (see option below), and
+                        then it will be imported in manuskript. One or the other
+                        might give better result depending on your document.
+                        <br/>&nbsp;"""))
+
+        self.addSetting("formatTo", "combo",
+                        qApp.translate("Import", "Import using:"),
+                        vals="markdown|OPML")
+
+        for s in self.settings:
+            self.settings[s].widget(group)
+
+        self.mdImporter = markdownImporter()
+        widget = self.mdImporter.settingsWidget(widget)
+        self.opmlImporter = opmlImporter()
+        widget = self.opmlImporter.settingsWidget(widget)
+
+        return widget
 
 
 class markdownPandocImporter(pandocImporter):

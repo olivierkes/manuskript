@@ -2,7 +2,6 @@
 # --!-- coding: utf8 --!--
 
 from manuskript.importer.abstractImporter import abstractImporter
-from manuskript.importer.abstractImporter import abstractImporter
 from manuskript.models.outlineModel import outlineItem
 from manuskript.enums import Outline
 from PyQt5.QtWidgets import qApp
@@ -62,9 +61,12 @@ class markdownImporter(abstractImporter):
         ```
         """
 
-        # Read file
-        with open(filePath, "r") as f:
-            txt = f.read()
+        if not fromString:
+            # Read file
+            with open(filePath, "r") as f:
+                txt = f.read()
+        else:
+            txt = fromString
 
         items = []
 
