@@ -2,6 +2,11 @@
 # --!-- coding: utf8 --!--
 
 from manuskript.importer.abstractImporter import abstractImporter
+from manuskript.importer.abstractImporter import abstractImporter
+from manuskript.models.outlineModel import outlineItem
+from manuskript.enums import Outline
+from PyQt5.QtWidgets import qApp
+import re, os
 
 
 class markdownImporter(abstractImporter):
@@ -10,3 +15,144 @@ class markdownImporter(abstractImporter):
     description = ""
     fileFormat = "Markdown files (*.md *.txt *)"
     icon = "text-x-markdown"
+
+    @classmethod
+    def isValid(cls):
+        return True
+
+    def startImport(self, filePath, parentItem, settingsWidget, fromString=None):
+        """
+        Very simple import from markdown. We just look at ATX headers (we
+        ignore setext for the sake of simplicity, for now.)
+
+        **A difficulty:** in the following example, we can do things with
+        markdown headers (like go from level 1 to level 4 and back to level 2)
+        that we cannot do in an outline.
+
+        ```
+        # Level 1
+        # Level 1
+        ## Level 2
+        ### Level 3
+        #### Level 4
+        ##### Level 5
+        ### Level 3
+        # Level 1
+        #### Level 4? → Level 2
+        ### Level 3? → Level 2
+        ## Level 2 → Level 2
+        #### Level 4? → Level 3
+        ```
+
+        I think the current version of the imported manages that quite well.
+
+        **A question:** In the following sample, the first Level 1 becomes a
+        text element, because it has no other sub elements. But the content of
+        second Level 1 becomes a text element, with no name. What name should
+        we give it?
+
+        ```
+        # Level 1
+        Some texte content.
+        Level 1 will become a text element.
+        # Level 1
+        This content has no name.
+        ## Level 2
+        ...
+        ```
+        """
+
+        # Read file
+        with open(filePath, "r") as f:
+            txt = f.read()
+
+        items = []
+
+        parent = parentItem
+        lastLevel = 0
+        content = ""
+
+        def saveContent(content, parent):
+            if content.strip():
+                child = outlineItem(title=parent.title(), parent=parent, _type="md")
+                child._data[Outline.text] = content
+                items.append(child)
+            return ""
+
+        def addTitle(name, parent, level):
+            child = outlineItem(title=name, parent=parent)
+            child.__miLevel = level
+            items.append(child)
+            return child
+
+        header = re.compile(r"(\#+)\s*(.+?)\s*\#*$")
+
+        # Import in top level folder?
+        if self.getSetting("topLevelFolder").value():
+            parent = addTitle(os.path.basename(filePath), parentItem, 0)
+
+        # We store the level of each item in a temporary var
+        parent.__miLevel = 0  # markdown importer header level
+
+        for l in txt.split("\n"):
+            m = header.match(l)
+            if m:
+                # Header !
+                level = len(m.group(1))
+                name = m.group(2)
+
+                # save content
+                content = saveContent(content, parent)
+
+                # get parent level
+                while parent.__miLevel >= level:
+                    parent = parent.parent()
+
+                # create title
+                child = addTitle(name, parent, level)
+                child.__miLevel = level
+
+                # title becomes the new parent
+                parent = child
+
+                lastLevel = level
+
+            else:
+                content += l + "\n"
+
+        saveContent(content, parent)
+
+        # Clean up
+        for i in items:
+            if i.childCount() == 1 and i.children()[0].isText():
+                # We have a folder with only one text item
+                # So we make it a text item
+                i._data[Outline.type] = "md"
+                i._data[Outline.text] = i.children()[0].text()
+                i.removeChild(0)
+
+        return items
+
+    def settingsWidget(self, widget):
+        """
+        Takes a QWidget that can be modified and must be returned.
+        """
+
+        # Add group
+        group = self.addGroup(widget.toolBox.widget(0),
+                              qApp.translate("Import", "Markdown import"))
+        #group = cls.addPage(widget, "Folder import")
+
+        self.addSetting("info", "label",
+                        qApp.translate("Import", """<b>WARNING:</b> Current
+                        importer only knows ATX-header (<code>#&nbsp;Header</code>), and
+                        not setext headers (underlined with ========).<br/>&nbsp;"""))
+
+        self.addSetting("topLevelFolder", "checkbox",
+                        qApp.translate("Import", "Import in a top-level folder."),
+                        default=False),
+
+        for s in self.settings:
+            self.settings[s].widget(group)
+
+        return widget

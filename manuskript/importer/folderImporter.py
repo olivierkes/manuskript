@@ -88,7 +88,6 @@ class folderImporter(abstractImporter):
 
         return items
 
-
     def settingsWidget(self, widget):
         """
         Takes a QWidget that can be modified and must be returned.
@@ -121,9 +120,6 @@ class folderImporter(abstractImporter):
         self.addSetting("separateFolderFiles", "checkbox",
                         qApp.translate("Import", "Import folder then files"),
                         default=True),
-
-
-
 
         for s in self.settings:
             self.settings[s].widget(group)
