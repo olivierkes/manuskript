@@ -82,7 +82,8 @@ class importerDialog(QWidget, Ui_importer):
     def currentFormat(self):
         formatName = self.cmbImporters.currentText()
         F = [F for F in self.importers if F.name == formatName][0]
-        return F
+        # We instantiate the class
+        return F()
 
     ############################################################################
     # Import file
@@ -94,7 +95,7 @@ class importerDialog(QWidget, Ui_importer):
         """
 
         # We find the current selected format
-        F = self.currentFormat()
+        F = self._format
 
         options = QFileDialog.Options()
         options |= QFileDialog.DontUseNativeDialog
@@ -159,16 +160,20 @@ class importerDialog(QWidget, Ui_importer):
             return
 
         F = self.currentFormat()
+        self._format = F
 
         self.settingsWidget = generalSettings()
-        self.setGroupWidget(self.grpSettings, self.settingsWidget)
-        self.grpSettings.setMinimumWidth(200)
-
         #TODO: custom format widget
+        self.settingsWidget = F.settingsWidget(self.settingsWidget)
+
         #toolBox = self.settingsWidget.toolBox
         #w = QWidget()
         #toolBox.insertItem(toolBox.count(), w, "Pandoc")
         #See pandoc's abstractPlainText
+
+        # Set the settings widget in place
+        self.setGroupWidget(self.grpSettings, self.settingsWidget)
+        self.grpSettings.setMinimumWidth(200)
 
         # Clear file name
         self.setFileName("")
@@ -234,10 +239,14 @@ class importerDialog(QWidget, Ui_importer):
         Is used by preview and by doImport (actual import).
 
         `outlineModel` is the model where the imported items are added.
+
+        FIXME: Optimisation: when adding many outlineItems, outlineItem.updateWordCount
+        is a bottleneck. It gets called a crazy number of time, and its not
+        necessary.
         """
 
         # We find the current selected format
-        F = self.currentFormat()
+        F = self._format
 
         # Parent item
         ID = self.settingsWidget.importUnderID()
@@ -263,6 +272,8 @@ class importerDialog(QWidget, Ui_importer):
             def trim(item):
                 if len(item.title()) > 32:
                     item.setData(Outline.title.value, item.title()[:32])
+                # I think it's overkill to do it recursively, since items
+                # is supposed to contain every imported items.
                 for c in item.children():
                     trim(c)
             for i in items:

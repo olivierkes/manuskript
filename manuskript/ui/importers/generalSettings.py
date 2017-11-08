@@ -10,6 +10,8 @@ from PyQt5.QtWidgets import QWidget, QTableWidgetItem, QListWidgetItem, QTreeVie
 from manuskript.functions import mainWindow, writablePath
 from manuskript.ui.importers.generalSettings_ui import Ui_generalSettings
 from manuskript.enums import Outline
+from manuskript.ui import style
+
 
 class generalSettings(QWidget, Ui_generalSettings):
     def __init__(self, parent=None):
@@ -17,6 +19,7 @@ class generalSettings(QWidget, Ui_generalSettings):
         self.setupUi(self)
 
         self.mw = mainWindow()
+        self.txtGeneralSplitScenes.setStyleSheet(style.lineEditSS())
 
         # TreeView to select parent
         # We use a proxy to display only folders

@@ -895,7 +895,7 @@ class outlineItem():
         self.IDs = self.listAllIDs()
 
         if max([self.IDs.count(i) for i in self.IDs if i]) != 1:
-            print("There are some doublons:", [i for i in self.IDs if i and self.IDs.count(i) != 1])
+            print("WARNING ! There are some items with same IDs:", [i for i in self.IDs if i and self.IDs.count(i) != 1])
 
         def checkChildren(item):
             for c in item.children():
@@ -913,8 +913,9 @@ class outlineItem():
         return IDs
 
     def findUniqueID(self):
+        IDs = [int(i) for i in self.IDs]
         k = 0
-        while str(k) in self.IDs:
+        while k in self.IDs:
             k += 1
         self.IDs.append(str(k))
         return str(k)
