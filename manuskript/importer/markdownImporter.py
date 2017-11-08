@@ -85,7 +85,9 @@ class markdownImporter(abstractImporter):
             items.append(child)
             return child
 
-        header = re.compile(r"(\#+)\s*(.+?)\s*\#*$")
+        ATXHeader = re.compile(r"(\#+)\s*(.+?)\s*\#*$")
+        setextHeader1 = re.compile(r"(.+)\n===+$", re.MULTILINE)
+        setextHeader2 = re.compile(r"(.+)\n---+$", re.MULTILINE)
 
         # Import in top level folder?
         if self.getSetting("topLevelFolder").value():
@@ -94,12 +96,43 @@ class markdownImporter(abstractImporter):
         # We store the level of each item in a temporary var
         parent.__miLevel = 0  # markdown importer header level
 
-        for l in txt.split("\n"):
-            m = header.match(l)
+        txt = txt.split("\n")
+        skipNextLine = False
+        for i in range(len(txt)):
+
+            l = txt[i]
+            l2 = "\n".join(txt[i:i+2])
+
+            header = False
+
+            if skipNextLine:
+                # Last line was a setext-style header.
+                skipNextLine = False
+                continue
+
+            # Check ATX Header
+            m = ATXHeader.match(l)
             if m:
-                # Header !
+                header = True
                 level = len(m.group(1))
                 name = m.group(2)
+
+            # Check setext header
+            m = setextHeader1.match(l2)
+            if not header and m:
+                header = True
+                level = 1
+                name = m.group(1)
+                skipNextLine = True
+
+            m = setextHeader2.match(l2)
+            if not header and m:
+                header = True
+                level = 2
+                name = m.group(1)
+                skipNextLine = True
+
+            if header:
 
                 # save content
                 content = saveContent(content, parent)
@@ -144,9 +177,9 @@ class markdownImporter(abstractImporter):
         #group = cls.addPage(widget, "Folder import")
 
         self.addSetting("info", "label",
-                        qApp.translate("Import", """<b>WARNING:</b> Current
-                        importer only knows ATX-header (<code>#&nbsp;Header</code>), and
-                        not setext headers (underlined with ========).<br/>&nbsp;"""))
+                        qApp.translate("Import", """<b>Info:</b> A very simple
+                        parser that will go through a markdown document and
+                        create items for each titles.<br/>&nbsp;"""))
 
         self.addSetting("topLevelFolder", "checkbox",
                         qApp.translate("Import", "Import in a top-level folder."),
