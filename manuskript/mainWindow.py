@@ -21,6 +21,7 @@ from manuskript.settingsWindow import settingsWindow
 from manuskript.ui import style
 from manuskript.ui.about import aboutDialog
 from manuskript.ui.collapsibleDockWidgets import collapsibleDockWidgets
+from manuskript.ui.importers.importer import importerDialog
 from manuskript.ui.exporters.exporter import exporterDialog
 from manuskript.ui.helpLabel import helpLabel
 from manuskript.ui.mainWindow import Ui_MainWindow
@@ -97,12 +98,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Main Menu
         for i in [self.actSave, self.actSaveAs, self.actCloseProject,
                   self.menuEdit, self.menuView, self.menuTools, self.menuHelp,
-                  self.actCompile, self.actSettings]:
+                  self.actImport, self.actCompile, self.actSettings]:
             i.setEnabled(False)
 
         self.actOpen.triggered.connect(self.welcome.openFile)
         self.actSave.triggered.connect(self.saveDatas)
         self.actSaveAs.triggered.connect(self.welcome.saveAsFile)
+        self.actImport.triggered.connect(self.doImport)
         self.actCompile.triggered.connect(self.doCompile)
         self.actLabels.triggered.connect(self.settingsLabel)
         self.actStatus.triggered.connect(self.settingsStatus)
@@ -381,6 +383,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def openIndex(self, index):
         self.treeRedacOutline.setCurrentIndex(index)
 
+    def openIndexes(self, indexes, newTab=True):
+        self.mainEditor.openIndexes(indexes, newTab=True)
+
     ###############################################################################
     # LOAD AND SAVE
     ###############################################################################
@@ -408,7 +413,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.makeConnections()
 
         # Load settings
-        if settings.openIndexes:
+        if settings.openIndexes and settings.openIndexes != [""]:
             self.mainEditor.tabSplitter.restoreOpenIndexes(settings.openIndexes)
         self.generateViewMenu()
         self.mainEditor.sldCorkSizeFactor.setValue(settings.corkSizeFactor)
@@ -460,7 +465,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             i.setEnabled(False)
         for i in [self.actSave, self.actSaveAs, self.actCloseProject,
                   self.menuEdit, self.menuView, self.menuTools, self.menuHelp,
-                  self.actCompile, self.actSettings]:
+                  self.actImport, self.actCompile, self.actSettings]:
             i.setEnabled(True)
 
         # Add project name to Window's name
@@ -504,7 +509,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             i.setEnabled(True)
         for i in [self.actSave, self.actSaveAs, self.actCloseProject,
                   self.menuEdit, self.menuView, self.menuTools, self.menuHelp,
-                  self.actCompile, self.actSettings]:
+                  self.actImport, self.actCompile, self.actSettings]:
             i.setEnabled(False)
 
         # Set Window's name - no project loaded
@@ -1306,8 +1311,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # POV in settings / views
 
     ###############################################################################
-    # COMPILE
+    # IMPORT / EXPORT
     ###############################################################################
+
+    def doImport(self):
+        self.dialog = importerDialog(mw=self)
+        self.dialog.show()
+
+        r = self.dialog.geometry()
+        r2 = self.geometry()
+        self.dialog.move(r2.center() - r.center())
 
     def doCompile(self):
         self.dialog = exporterDialog(mw=self)

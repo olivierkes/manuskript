@@ -821,10 +821,56 @@ class outlineItem():
             return qApp.translate("outlineModel", "{} words").format(
                     locale.format("%d", wc, grouping=True))
 
+    def copy(self):
+        """
+        Returns a copy of item, with no parent, and no ID.
+        """
+        item = outlineItem(xml=self.toXML())
+        item.setData(Outline.ID.value, None)
+        return item
 
-        ###############################################################################
-        # XML
-        ###############################################################################
+    def split(self, splitMark, recursive=True):
+        """
+        Split scene at splitMark. If multiple splitMark, multiple splits.
+
+        If called on a folder and recursive is True, then it is recursively
+        applied to every children.
+        """
+        if self.isFolder() and recursive:
+            for c in self.children():
+                c.split(splitMark)
+
+        else:
+            txt = self.text().split(splitMark)
+
+            if len(txt) == 1:
+                # Mark not found
+                return False
+
+            else:
+
+                # Stores the new text
+                self.setData(Outline.text.value, txt[0])
+
+                k = 1
+                for subTxt in txt[1:]:
+                    # Create a copy
+                    item = self.copy()
+
+                    # Change title adding _k
+                    item.setData(Outline.title.value,
+                                 "{}_{}".format(item.title(), k+1))
+
+                    # Set text
+                    item.setData(Outline.text.value, subTxt)
+
+                    # Inserting item
+                    self.parent().insertChild(self.row()+k, item)
+                    k += 1
+
+    ###############################################################################
+    # XML
+    ###############################################################################
 
     def toXML(self):
         item = ET.Element("outlineItem")
@@ -884,10 +930,9 @@ class outlineItem():
             elif child.tag == "revision":
                 self.appendRevision(child.attrib["timestamp"], child.attrib["text"])
 
-
-            ###############################################################################
-            # IDS
-            ###############################################################################
+    ###############################################################################
+    # IDS
+    ###############################################################################
 
     def getUniqueID(self):
         self.setData(Outline.ID.value, self._model.rootItem.findUniqueID())
@@ -900,7 +945,7 @@ class outlineItem():
         self.IDs = self.listAllIDs()
 
         if max([self.IDs.count(i) for i in self.IDs if i]) != 1:
-            print("There are some doublons:", [i for i in self.IDs if i and self.IDs.count(i) != 1])
+            print("WARNING ! There are some items with same IDs:", [i for i in self.IDs if i and self.IDs.count(i) != 1])
 
         def checkChildren(item):
             for c in item.children():
@@ -918,8 +963,9 @@ class outlineItem():
         return IDs
 
     def findUniqueID(self):
-        k = 0
-        while str(k) in self.IDs:
+        IDs = [int(i) for i in self.IDs]
+        k = 1
+        while k in IDs:
             k += 1
         self.IDs.append(str(k))
         return str(k)

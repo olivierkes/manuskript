@@ -53,8 +53,8 @@ QToolBox::tab:selected, QToolBox::tab:hover{
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>491</width>
-        <height>842</height>
+        <width>497</width>
+        <height>834</height>
        </rect>
       </property>
       <attribute name="label">
@@ -233,7 +233,7 @@ QToolBox::tab:selected, QToolBox::tab:hover{
         <x>0</x>
         <y>0</y>
         <width>511</width>
-        <height>522</height>
+        <height>534</height>
        </rect>
       </property>
       <attribute name="label">
@@ -773,7 +773,7 @@ QToolBox::tab:selected, QToolBox::tab:hover{
         <x>0</x>
         <y>0</y>
         <width>511</width>
-        <height>522</height>
+        <height>534</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -1162,7 +1162,7 @@ QToolBox::tab:selected, QToolBox::tab:hover{
         <x>0</x>
         <y>0</y>
         <width>511</width>
-        <height>522</height>
+        <height>534</height>
        </rect>
       </property>
       <property name="styleSheet">

@@ -1189,12 +1189,17 @@ class Ui_MainWindow(object):
         icon = QtGui.QIcon.fromTheme("stock_view-details")
         self.actAbout.setIcon(icon)
         self.actAbout.setObjectName("actAbout")
+        self.actImport = QtWidgets.QAction(MainWindow)
+        icon = QtGui.QIcon.fromTheme("document-import")
+        self.actImport.setIcon(icon)
+        self.actImport.setObjectName("actImport")
         self.menuFile.addAction(self.actOpen)
         self.menuFile.addAction(self.menuRecents.menuAction())
         self.menuFile.addAction(self.actSave)
         self.menuFile.addAction(self.actSaveAs)
         self.menuFile.addAction(self.actCloseProject)
         self.menuFile.addSeparator()
+        self.menuFile.addAction(self.actImport)
         self.menuFile.addAction(self.actCompile)
         self.menuFile.addSeparator()
         self.menuFile.addAction(self.actQuit)
@@ -1360,6 +1365,8 @@ class Ui_MainWindow(object):
         self.actToolFrequency.setText(_translate("MainWindow", "&Frequency Analyzer"))
         self.actAbout.setText(_translate("MainWindow", "&About"))
         self.actAbout.setToolTip(_translate("MainWindow", "About Manuskript"))
+        self.actImport.setText(_translate("MainWindow", "Import…"))
+        self.actImport.setShortcut(_translate("MainWindow", "F7"))
 
 from manuskript.ui.cheatSheet import cheatSheet
 from manuskript.ui.editors.mainEditor import mainEditor

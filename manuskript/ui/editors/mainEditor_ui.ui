@@ -50,7 +50,9 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset theme="go-up"/>
+        <iconset theme="go-up">
+         <normaloff/>
+        </iconset>
        </property>
        <property name="shortcut">
         <string>Alt+Up</string>

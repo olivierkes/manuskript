@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
 from PyQt5.QtCore import Qt, QSignalMapper, QSize
-from PyQt5.QtGui import QIcon
+from PyQt5.QtGui import QIcon, QCursor
 from PyQt5.QtWidgets import QAbstractItemView, qApp, QMenu, QAction
 from PyQt5.QtWidgets import QListWidget, QWidgetAction, QListWidgetItem, QLineEdit
 
@@ -14,7 +14,7 @@ from manuskript.models.outlineModel import outlineItem
 
 class outlineBasics(QAbstractItemView):
     def __init__(self, parent=None):
-        pass
+        self._indexesToOpen = None
 
     def getSelection(self):
         sel = []
@@ -39,10 +39,43 @@ class outlineBasics(QAbstractItemView):
 
         menu = QMenu(self)
 
-        # Open items
-        self.actOpen = QAction(QIcon.fromTheme("go-right"), qApp.translate("outlineBasics", "Open Item"), menu)
+        # Get index under cursor
+        pos = self.viewport().mapFromGlobal(QCursor.pos())
+        mouseIndex = self.indexAt(pos)
+
+        # Get index's title
+        if mouseIndex.isValid():
+            title = mouseIndex.internalPointer().title()
+
+        elif self.rootIndex().parent().isValid():
+            # mouseIndex is the background of an item, so we check the parent
+            mouseIndex = self.rootIndex().parent()
+            title = mouseIndex.internalPointer().title()
+
+        else:
+            title = self.tr("Root")
+
+        if len(title) > 25:
+            title = title[:25] + "…"
+
+        # Open Item action
+        self.actOpen = QAction(QIcon.fromTheme("go-right"),
+                               qApp.translate("outlineBasics", "Open {}".format(title)),
+                               menu)
         self.actOpen.triggered.connect(self.openItem)
         menu.addAction(self.actOpen)
+
+        # Open item(s) in new tab
+        if mouseIndex in sel and len(sel) > 1:
+            actionTitle = self.tr("Open {} items in new tabs").format(len(sel))
+            self._indexesToOpen = sel
+        else:
+            actionTitle = self.tr("Open {} in a new tab").format(title)
+            self._indexesToOpen = [mouseIndex]
+
+        self.actNewTab = QAction(QIcon.fromTheme("go-right"), actionTitle, menu)
+        self.actNewTab.triggered.connect(self.openItemsInNewTabs)
+        menu.addAction(self.actNewTab)
 
         menu.addSeparator()
 
@@ -185,7 +218,6 @@ class outlineBasics(QAbstractItemView):
             self.actAddText.setEnabled(False)
 
         if len(sel) == 0:
-            self.actOpen.setEnabled(False)
             self.actCopy.setEnabled(False)
             self.actCut.setEnabled(False)
             self.actRename.setEnabled(False)
@@ -201,9 +233,14 @@ class outlineBasics(QAbstractItemView):
         return menu
 
     def openItem(self):
-        idx = self.currentIndex()
+        #idx = self.currentIndex()
+        idx = self._indexesToOpen[0]
         from manuskript.functions import MW
         MW.openIndex(idx)
+
+    def openItemsInNewTabs(self):
+        from manuskript.functions import MW
+        MW.openIndexes(self._indexesToOpen)
 
     def rename(self):
         if len(self.getSelection()) == 1:
