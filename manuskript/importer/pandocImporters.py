@@ -19,13 +19,15 @@ class pandocImporter(abstractImporter):
     def startImport(self, filePath, parentItem, settingsWidget):
 
         formatTo = self.getSetting("formatTo").value().lower()
+        wrap = self.getSetting("wrap").value().lower()
 
         # pandoc --from=markdown filename --to=opml --standalone
         args = [
             "--from={}".format(self.formatFrom),
             filePath,
             "--to={}".format(formatTo),
-            "--standalone"
+            "--standalone",
+            "--wrap={}".format(wrap),
         ]
 
         r = pandocExporter().run(args)
@@ -57,6 +59,19 @@ class pandocImporter(abstractImporter):
         self.addSetting("formatTo", "combo",
                         qApp.translate("Import", "Import using:"),
                         vals="markdown|OPML")
+
+        self.addSetting("wrap", "combo",
+                        qApp.translate("Import", "Wrap lines:"),
+                        vals="auto|none|preserve")
+
+        self.addSetting("infoWrap", "label",
+                        qApp.translate("Import", """(<code>auto</code>: wraps at
+                        72 characters.<br>
+                        <code>none</code>: no line wrap.<br>
+                        <code>preserve</code>: tries to preserves line wrap from
+                        the original document.
+                        <br/>&nbsp;"""),
+                        default="none")
 
         for s in self.settings:
             self.settings[s].widget(group)
