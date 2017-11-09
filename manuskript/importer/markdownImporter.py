@@ -91,10 +91,6 @@ class markdownImporter(abstractImporter):
         setextHeader1 = re.compile(r"(.+)\n===+$", re.MULTILINE)
         setextHeader2 = re.compile(r"(.+)\n---+$", re.MULTILINE)
 
-        # Import in top level folder?
-        if self.getSetting("topLevelFolder").value():
-            parent = addTitle(os.path.basename(filePath), parentItem, 0)
-
         # We store the level of each item in a temporary var
         parent.__miLevel = 0  # markdown importer header level
 
@@ -182,10 +178,6 @@ class markdownImporter(abstractImporter):
                         qApp.translate("Import", """<b>Info:</b> A very simple
                         parser that will go through a markdown document and
                         create items for each titles.<br/>&nbsp;"""))
-
-        self.addSetting("topLevelFolder", "checkbox",
-                        qApp.translate("Import", "Import in a top-level folder."),
-                        default=False),
 
         for s in self.settings:
             self.settings[s].widget(group)

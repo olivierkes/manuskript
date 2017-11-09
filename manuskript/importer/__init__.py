@@ -6,7 +6,7 @@ from manuskript.importer.markdownImporter import markdownImporter
 from manuskript.importer.opmlImporter import opmlImporter
 from manuskript.importer.pandocImporters import markdownPandocImporter, \
     odtPandocImporter, ePubPandocImporter, docXPandocImporter, HTMLPandocImporter, \
-    rstPandocImporter, LaTeXPandocImporter
+    rstPandocImporter, LaTeXPandocImporter, OPMLPandocImporter
 
 importers = [
     # Internal
@@ -22,4 +22,5 @@ importers = [
     HTMLPandocImporter,
     rstPandocImporter,
     LaTeXPandocImporter,
+    OPMLPandocImporter,
     ]

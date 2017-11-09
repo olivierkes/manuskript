@@ -31,12 +31,6 @@ class folderImporter(abstractImporter):
         items = []
         stack = {}
 
-        if self.getSetting("topLevelFolder").value():
-            parent = outlineItem(title=os.path.basename(filePath),
-                                 parent=parentItem)
-            items.append(parent)
-            stack[filePath] = parent
-
         for dirpath, dirnames, filenames in os.walk(filePath):
 
             if dirpath in stack:
@@ -108,10 +102,6 @@ class folderImporter(abstractImporter):
                         qApp.translate("Import", "Include only those extensions:"),
                         default="*.txt, *.md",
                         tooltip=qApp.translate("Import", "Coma separated values")),
-
-        self.addSetting("topLevelFolder", "checkbox",
-                        qApp.translate("Import", "Include top-level folder"),
-                        default=False),
 
         self.addSetting("sortItems", "checkbox",
                         qApp.translate("Import", "Sort items by name"),

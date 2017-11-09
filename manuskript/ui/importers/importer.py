@@ -12,7 +12,7 @@ from manuskript.ui.importers.importer_ui import Ui_importer
 from manuskript.ui.importers.generalSettings import generalSettings
 from manuskript.ui import style
 from manuskript import importer
-from manuskript.models.outlineModel import outlineModel
+from manuskript.models.outlineModel import outlineModel, outlineItem
 from manuskript.enums import Outline
 from manuskript.exporter.pandoc import pandocExporter
 
@@ -67,7 +67,21 @@ class importerDialog(QWidget, Ui_importer):
         def addFormat(name, icon):
             self.cmbImporters.addItem(QIcon.fromTheme(icon), name)
 
+        def addHeader(name):
+            self.cmbImporters.addItem(name, "header")
+            self.cmbImporters.setItemData(self.cmbImporters.count() - 1, QBrush(QColor(Qt.darkBlue)), Qt.ForegroundRole)
+            self.cmbImporters.setItemData(self.cmbImporters.count() - 1, QBrush(lightBlue()), Qt.BackgroundRole)
+            item = self.cmbImporters.model().item(self.cmbImporters.count() - 1)
+            item.setFlags(Qt.ItemIsEnabled)
+
+        lastEngine = ""
+
         for f in self.importers:
+            # Header
+            if f.engine != lastEngine:
+                addHeader(f.engine)
+                lastEngine = f.engine
+
             addFormat(f.name, f.icon)
             if not f.isValid():
                 item = self.cmbImporters.model().item(self.cmbImporters.count() - 1)
@@ -79,8 +93,14 @@ class importerDialog(QWidget, Ui_importer):
                 "Install pandoc to import from much more formats",
                 "::URL::http://pandoc.org/installing.html")
 
+        self.cmbImporters.setCurrentIndex(1)
+
     def currentFormat(self):
         formatName = self.cmbImporters.currentText()
+
+        if self.cmbImporters.currentData() == "header":
+            return None
+
         F = [F for F in self.importers if F.name == formatName][0]
         # We instantiate the class
         return F()
@@ -162,14 +182,17 @@ class importerDialog(QWidget, Ui_importer):
         F = self.currentFormat()
         self._format = F
 
+        # Checking if we have a valid importer (otherwise a header)
+        if not F:
+            self.grpSettings.setEnabled(False)
+            self.grpPreview.setEnabled(False)
+            return
+        self.grpSettings.setEnabled(True)
+        self.grpPreview.setEnabled(True)
+
         self.settingsWidget = generalSettings()
         #TODO: custom format widget
         self.settingsWidget = F.settingsWidget(self.settingsWidget)
-
-        #toolBox = self.settingsWidget.toolBox
-        #w = QWidget()
-        #toolBox.insertItem(toolBox.count(), w, "Pandoc")
-        #See pandoc's abstractPlainText
 
         # Set the settings widget in place
         self.setGroupWidget(self.grpSettings, self.settingsWidget)
@@ -245,6 +268,8 @@ class importerDialog(QWidget, Ui_importer):
         necessary.
         """
 
+        items = []
+
         # We find the current selected format
         F = self._format
 
@@ -252,10 +277,19 @@ class importerDialog(QWidget, Ui_importer):
         ID = self.settingsWidget.importUnderID()
         parentItem = outlineModel.getItemByID(ID)
 
+        # Import in top-level folder?
+        if self.settingsWidget.importInTopLevelFolder():
+            parent = outlineItem(title=os.path.basename(self.fileName),
+                                 parent=parentItem)
+            parentItem = parent
+            items.append(parent)
+
         # Calling the importer
-        items = F.startImport(self.fileName,
+        rItems = F.startImport(self.fileName,
                               parentItem,
                               self.settingsWidget)
+
+        items.extend(rItems)
 
         # Do transformations
         items = self.doTransformations(items)

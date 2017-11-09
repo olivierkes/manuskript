@@ -59,6 +59,13 @@ class generalSettings(QWidget, Ui_generalSettings):
 
         return "0" # 0 is root's ID
 
+    def importInTopLevelFolder(self):
+        """
+        Should the import be flat in the parent folder, or create a top-level
+        folder?
+        """
+        return self.chkGeneralTopLevel.isChecked()
+
     def trimLongTitles(self):
         return self.chkGeneralTrimTitles.isChecked()
 

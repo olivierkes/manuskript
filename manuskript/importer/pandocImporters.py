@@ -11,6 +11,7 @@ from PyQt5.QtWidgets import qApp
 class pandocImporter(abstractImporter):
 
     formatFrom = ""
+    engine = "Pandoc"
 
     @classmethod
     def isValid(cls):
@@ -62,16 +63,14 @@ class pandocImporter(abstractImporter):
 
         self.addSetting("wrap", "combo",
                         qApp.translate("Import", "Wrap lines:"),
-                        vals="auto|none|preserve")
-
-        self.addSetting("infoWrap", "label",
-                        qApp.translate("Import", """(<code>auto</code>: wraps at
-                        72 characters.<br>
-                        <code>none</code>: no line wrap.<br>
-                        <code>preserve</code>: tries to preserves line wrap from
-                        the original document.
-                        <br/>&nbsp;"""),
-                        default="none")
+                        vals="auto|none|preserve",
+                        default="none",
+                        tooltip=qApp.translate("Import", """<p>Should pandoc create
+                        cosmetic / non-semantic line-breaks?</p><p>
+                        <b>auto</b>: wraps at 72 characters.<br>
+                        <b>none</b>: no line wrap.<br>
+                        <b>preserve</b>: tries to preserves line wrap from the
+                        original document.</p>"""))
 
         for s in self.settings:
             self.settings[s].widget(group)
@@ -86,7 +85,7 @@ class pandocImporter(abstractImporter):
 
 class markdownPandocImporter(pandocImporter):
 
-    name = "Markdown (pandoc)"
+    name = "Markdown"
     description = "Markdown, using pandoc"
     fileFormat = "Markdown files (*.md *.txt *)"
     icon = "text-x-markdown"
@@ -94,7 +93,7 @@ class markdownPandocImporter(pandocImporter):
 
 class ePubPandocImporter(pandocImporter):
 
-    name = "ePub (pandoc)"
+    name = "ePub"
     description = ""
     fileFormat = "ePub files (*.epub)"
     icon = "application-epub+zip"
@@ -102,7 +101,7 @@ class ePubPandocImporter(pandocImporter):
 
 class docXPandocImporter(pandocImporter):
 
-    name = "DocX (pandoc)"
+    name = "DocX"
     description = ""
     fileFormat = "DocX files (*.docx)"
     icon = "application-vnd.openxmlformats-officedocument.wordprocessingml.document"
@@ -110,7 +109,7 @@ class docXPandocImporter(pandocImporter):
 
 class odtPandocImporter(pandocImporter):
 
-    name = "ODT (pandoc)"
+    name = "ODT"
     description = ""
     fileFormat = "Open Document files (*.odt)"
     icon = "application-vnd.oasis.opendocument.text"
@@ -118,7 +117,7 @@ class odtPandocImporter(pandocImporter):
 
 class rstPandocImporter(pandocImporter):
 
-    name = "reStructuredText (pandoc)"
+    name = "reStructuredText"
     description = ""
     fileFormat = "reStructuredText files (*.rst)"
     icon = "text-plain"
@@ -126,7 +125,7 @@ class rstPandocImporter(pandocImporter):
 
 class HTMLPandocImporter(pandocImporter):
 
-    name = "HTML (pandoc)"
+    name = "HTML"
     description = ""
     fileFormat = "HTML files (*.htm *.html)"
     icon = "text-html"
@@ -134,11 +133,19 @@ class HTMLPandocImporter(pandocImporter):
 
 class LaTeXPandocImporter(pandocImporter):
 
-    name = "LaTeX (pandoc)"
+    name = "LaTeX"
     description = ""
     fileFormat = "LaTeX files (*.tex)"
     icon = "text-x-tex"
     formatFrom = "latex"
+
+class OPMLPandocImporter(pandocImporter):
+
+    name = "OPML"
+    description = ""
+    fileFormat = "OPML files (*.opml *.xml)"
+    icon = "text-x-opml+xml"
+    formatFrom = "opml"
 
 
 

@@ -24,6 +24,7 @@ class abstractImporter:
     fileFormat = ""  # File format accepted. For example: "OPML Files (*.opml)"
                      # For folder, use "<<folder>>"
     icon = ""
+    engine = "Internal"
 
     def __init__(self):
         self.settings = {}
@@ -143,6 +144,8 @@ class abstractImporter:
                     l.addWidget(label, 6)
                     self._widget = QComboBox()
                     self._widget.addItems(self.vals)
+                    if self.default:
+                        self._widget.setCurrentText(self.default)
                     l.addWidget(self._widget, 2)
                     if parent:
                         parent.layout().addLayout(l)
