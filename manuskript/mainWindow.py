@@ -413,7 +413,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.makeConnections()
 
         # Load settings
-        if settings.openIndexes:
+        if settings.openIndexes and settings.openIndexes != [""]:
             self.mainEditor.tabSplitter.restoreOpenIndexes(settings.openIndexes)
         self.generateViewMenu()
         self.mainEditor.sldCorkSizeFactor.setValue(settings.corkSizeFactor)

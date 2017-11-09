@@ -914,8 +914,8 @@ class outlineItem():
 
     def findUniqueID(self):
         IDs = [int(i) for i in self.IDs]
-        k = 0
-        while k in self.IDs:
+        k = 1
+        while k in IDs:
             k += 1
         self.IDs.append(str(k))
         return str(k)
