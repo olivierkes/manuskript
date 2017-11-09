@@ -2158,8 +2158,26 @@
     <addaction name="menuMode"/>
     <addaction name="separator"/>
    </widget>
+   <widget class="QMenu" name="menuDocuments">
+    <property name="title">
+     <string>&amp;Documents</string>
+    </property>
+    <addaction name="actCopy"/>
+    <addaction name="actCut"/>
+    <addaction name="actPaste"/>
+    <addaction name="actDuplicate"/>
+    <addaction name="actDelete"/>
+    <addaction name="separator"/>
+    <addaction name="actMoveUp"/>
+    <addaction name="actMoveDown"/>
+    <addaction name="separator"/>
+    <addaction name="actMerge"/>
+    <addaction name="actSplitDialog"/>
+    <addaction name="actSplitCursor"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
+   <addaction name="menuDocuments"/>
    <addaction name="menuView"/>
    <addaction name="menuTools"/>
    <addaction name="menuHelp"/>
@@ -2485,13 +2503,125 @@ QListView::item:hover {
   </action>
   <action name="actImport">
    <property name="icon">
-    <iconset theme="document-import"/>
+    <iconset theme="document-import">
+     <normaloff/>
+    </iconset>
    </property>
    <property name="text">
     <string>Import…</string>
    </property>
    <property name="shortcut">
     <string>F7</string>
+   </property>
+  </action>
+  <action name="actCopy">
+   <property name="icon">
+    <iconset theme="edit-copy"/>
+   </property>
+   <property name="text">
+    <string>Copy</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+C</string>
+   </property>
+  </action>
+  <action name="actCut">
+   <property name="icon">
+    <iconset theme="edit-cut"/>
+   </property>
+   <property name="text">
+    <string>Cut</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+X</string>
+   </property>
+  </action>
+  <action name="actPaste">
+   <property name="icon">
+    <iconset theme="edit-paste"/>
+   </property>
+   <property name="text">
+    <string>Paste</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+V</string>
+   </property>
+  </action>
+  <action name="actSplitDialog">
+   <property name="icon">
+    <iconset theme="split"/>
+   </property>
+   <property name="text">
+    <string>Split…</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+K</string>
+   </property>
+  </action>
+  <action name="actSplitCursor">
+   <property name="icon">
+    <iconset theme="split"/>
+   </property>
+   <property name="text">
+    <string>Split at cursor</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+K</string>
+   </property>
+  </action>
+  <action name="actMerge">
+   <property name="icon">
+    <iconset theme="merge"/>
+   </property>
+   <property name="text">
+    <string>Merge</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+M</string>
+   </property>
+  </action>
+  <action name="actDuplicate">
+   <property name="icon">
+    <iconset theme="folder-copy"/>
+   </property>
+   <property name="text">
+    <string>&amp;Duplicate</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+D</string>
+   </property>
+  </action>
+  <action name="actDelete">
+   <property name="icon">
+    <iconset theme="edit-delete"/>
+   </property>
+   <property name="text">
+    <string>Delete</string>
+   </property>
+   <property name="shortcut">
+    <string>Del</string>
+   </property>
+  </action>
+  <action name="actMoveUp">
+   <property name="icon">
+    <iconset theme="arrow-up"/>
+   </property>
+   <property name="text">
+    <string>Move Up</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+Up</string>
+   </property>
+  </action>
+  <action name="actMoveDown">
+   <property name="icon">
+    <iconset theme="arrow-down"/>
+   </property>
+   <property name="text">
+    <string>Move Down</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+Down</string>
    </property>
   </action>
  </widget>

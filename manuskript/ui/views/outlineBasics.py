@@ -286,6 +286,62 @@ class outlineBasics(QAbstractItemView):
     def delete(self):
         self.model().removeIndexes(self.getSelection())
 
+    def duplicate(self):
+        self.copy()
+        self.paste()
+
+    def move(self, delta=1):
+        """
+        Move selected items up or down.
+        """
+
+        # we store selected indexes
+        currentID = self.model().ID(self.currentIndex())
+        selIDs = [self.model().ID(i) for i in self.selectedIndexes()]
+
+        # Block signals
+        self.blockSignals(True)
+        self.selectionModel().blockSignals(True)
+
+        # Move each index individually
+        for idx in self.selectedIndexes():
+            self.moveIndex(idx, delta)
+
+        # Done the hardcore way, so inform views
+        self.model().layoutChanged.emit()
+
+        # restore selection
+        selIdx = [self.model().getIndexByID(ID) for ID in selIDs]
+        sm = self.selectionModel()
+        sm.clear()
+        [sm.select(idx, sm.Select) for idx in selIdx]
+        sm.setCurrentIndex(self.model().getIndexByID(currentID), sm.Select)
+        #self.setSelectionModel(sm)
+
+        # Unblock signals
+        self.blockSignals(False)
+        self.selectionModel().blockSignals(False)
+
+    def moveIndex(self, index, delta=1):
+        """
+        Move the item represented by index. +1 means down, -1 means up.
+        """
+
+        if not index.isValid():
+            return
+
+        if index.parent().isValid():
+            parentItem = index.parent().internalPointer()
+        else:
+            parentItem = index.model().rootItem
+
+        parentItem.childItems.insert(index.row() + delta,
+                                     parentItem.childItems.pop(index.row()))
+        parentItem.updateWordCount(emit=False)
+
+    def moveUp(self): self.move(-1)
+    def moveDown(self): self.move(+1)
+
     def setPOV(self, POV):
         for i in self.getSelection():
             self.model().setData(i.sibling(i.row(), Outline.POV.value), str(POV))

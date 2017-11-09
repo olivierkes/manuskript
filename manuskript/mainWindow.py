@@ -53,7 +53,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
         QMainWindow.__init__(self)
         self.setupUi(self)
+
+        # Var
         self.currentProject = None
+        self._lastFocus = None
 
         self.readSettings()
 
@@ -101,6 +104,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                   self.actImport, self.actCompile, self.actSettings]:
             i.setEnabled(False)
 
+        # Main Menu:: File
         self.actOpen.triggered.connect(self.welcome.openFile)
         self.actSave.triggered.connect(self.saveDatas)
         self.actSaveAs.triggered.connect(self.welcome.saveAsFile)
@@ -111,10 +115,21 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.actSettings.triggered.connect(self.settingsWindow)
         self.actCloseProject.triggered.connect(self.closeProject)
         self.actQuit.triggered.connect(self.close)
-        self.actToolFrequency.triggered.connect(self.frequencyAnalyzer)
-        self.actAbout.triggered.connect(self.about)
-        self.generateViewMenu()
 
+        # Main menu:: Documents
+        self.actCopy.triggered.connect(self.documentsCopy)
+        self.actCut.triggered.connect(self.documentsCut)
+        self.actPaste.triggered.connect(self.documentsPaste)
+        self.actDuplicate.triggered.connect(self.documentsDuplicate)
+        self.actDelete.triggered.connect(self.documentsDelete)
+        self.actMoveUp.triggered.connect(self.documentsMoveUp)
+        self.actMoveDown.triggered.connect(self.documentsMoveDown)
+        self.actSplitDialog.triggered.connect(self.documentsSplitDialog)
+        self.actSplitCursor.triggered.connect(self.documentsSplitCursor)
+        self.actMerge.triggered.connect(self.documentsMerge)
+
+        # Main Menu:: view
+        self.generateViewMenu()
         self.actModeGroup = QActionGroup(self)
         self.actModeSimple.setActionGroup(self.actModeGroup)
         self.actModeFiction.setActionGroup(self.actModeGroup)
@@ -122,6 +137,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.actModeSimple.triggered.connect(self.setViewModeSimple)
         self.actModeFiction.triggered.connect(self.setViewModeFiction)
         self.actModeSnowflake.setEnabled(False)
+
+        # Main Menu:: Tool
+        self.actToolFrequency.triggered.connect(self.frequencyAnalyzer)
+        self.actAbout.triggered.connect(self.about)
 
         self.makeUIConnections()
 
@@ -181,6 +200,33 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Show the toolbar
         self.toolbar.setVisible(True)
         self.stack.setCurrentIndex(1)
+
+    ###############################################################################
+    # GENERAL / UI STUFF
+    ###############################################################################
+
+    def tabMainChanged(self):
+        "Called when main tab changes."
+        self.menuDocuments.menuAction().setVisible(self.tabMain.currentIndex() == self.TabRedac)
+
+    def focusChanged(self, old, new):
+        """
+        We get notified by qApp when focus changes, from old to new widget.
+        """
+
+        # Determine which item had focus last, to send the keyboard shortcuts
+        # to the right place
+
+        targets = [
+            self.treeRedacOutline,
+            self.mainEditor
+            ]
+
+        while new is not None:
+            if new in targets:
+                self._lastFocus = new
+                break
+            new = new.parent()
 
     ###############################################################################
     # SUMMARY
@@ -385,6 +431,33 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def openIndexes(self, indexes, newTab=True):
         self.mainEditor.openIndexes(indexes, newTab=True)
+
+    # Menu Documents #############################################################
+
+    # Functions called by the menu Documents
+    # self._lastFocus is the last editor that had focus (either treeView or
+    # mainEditor). So we just pass along the signal.
+
+    def documentsCopy(self):
+        if self._lastFocus: self._lastFocus.copy()
+    def documentsCut(self):
+        if self._lastFocus: self._lastFocus.cut()
+    def documentsPaste(self):
+        if self._lastFocus: self._lastFocus.paste()
+    def documentsDuplicate(self):
+        if self._lastFocus: self._lastFocus.duplicate()
+    def documentsDelete(self):
+        if self._lastFocus: self._lastFocus.delete()
+    def documentsMoveUp(self):
+        if self._lastFocus: self._lastFocus.moveUp()
+    def documentsMoveDown(self):
+        if self._lastFocus: self._lastFocus.moveDown()
+    def documentsSplitDialog(self):
+        print("documentsSplitDialog::FIXME")
+    def documentsSplitCursor(self):
+        print("documentsSplitCursor::FIXME")
+    def documentsMerge(self):
+        print("documentsMerge::FIXME")
 
     ###############################################################################
     # LOAD AND SAVE
@@ -667,6 +740,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btnOutlineRemoveItem.clicked.connect(self.outlineRemoveItemsOutline, AUC)
 
         self.tabMain.currentChanged.connect(self.toolbar.setCurrentGroup)
+        self.tabMain.currentChanged.connect(self.tabMainChanged)
+
+        qApp.focusChanged.connect(self.focusChanged)
 
     def makeConnections(self):
 
@@ -988,16 +1064,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Custom "tab" bar on the left
         self.lstTabs.setIconSize(QSize(48, 48))
         for i in range(self.tabMain.count()):
-            #icons = ["general-128px.png",
-                     #"summary-128px.png",
-                     #"characters-128px.png",
-                     #"plot-128px.png",
-                     #"world-128px.png",
-                     #"outline-128px.png",
-                     #"editor-128px.png",
-                     #""
-                     #]
-            #self.tabMain.setTabIcon(i, QIcon(appPath("icons/Custom/Tabs/{}".format(icons[i]))))
 
             icons = [QIcon.fromTheme("stock_view-details"), #info
                      QIcon.fromTheme("application-text-template"), #applications-publishing

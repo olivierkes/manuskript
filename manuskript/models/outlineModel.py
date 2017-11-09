@@ -273,6 +273,19 @@ class outlineModel(QAbstractItemModel):
         if items is None:
             return False
 
+        # We check if parent is not a child of one of the items
+        if self.isParentAChildOfItems(parent, items):
+            return False
+
+        return True
+
+    def isParentAChildOfItems(self, parent, items):
+        """
+        Takes a parent index, and a list of outlineItems items. Check whether
+        parent is in a child of one of the items.
+        Return True in that case, False if not.
+        """
+
         # Get the parent item
         if not parent.isValid():
             parentItem = self.rootItem
@@ -286,9 +299,9 @@ class outlineModel(QAbstractItemModel):
             # Is item in the path? It would mean that it tries to get dropped
             # as a children of himself.
             if item.ID() in path:
-                return False
+                return True
 
-        return True
+        return False
 
     def decodeMimeData(self, data):
         if not data.hasFormat("application/xml"):
@@ -345,12 +358,13 @@ class outlineModel(QAbstractItemModel):
         if action == Qt.IgnoreAction:
             return True  # What is that?
 
-        # Strangely, on some cases, we get a call to dropMimeData though
-        # self.canDropMimeData returned False.
-        # See https://github.com/olivierkes/manuskript/issues/169 to reproduce.
-        # So we double check for safety.
-        if not self.canDropMimeData(data, action, row, column, parent):
-            return False
+        if action == Qt.MoveAction:
+            # Strangely, on some cases, we get a call to dropMimeData though
+            # self.canDropMimeData returned False.
+            # See https://github.com/olivierkes/manuskript/issues/169 to reproduce.
+            # So we double check for safety.
+            if not self.canDropMimeData(data, action, row, column, parent):
+                return False
 
         items = self.decodeMimeData(data)
         if items is None:
@@ -366,6 +380,21 @@ class outlineModel(QAbstractItemModel):
         else:
             beginRow = self.rowCount() + 1
 
+        if action == Qt.CopyAction:
+            # Behavior if parent is a text item
+            # For example, we select a text and do: CTRL+C CTRL+V
+            if parent.isValid() and not parent.internalPointer().isFolder():
+                # We insert copy in parent folder, just below
+                beginRow = parent.row() + 1
+                parent = parent.parent()
+
+            if parent.isValid() and parent.internalPointer().isFolder():
+                while self.isParentAChildOfItems(parent, items):
+                    # We are copying a folder on itself. Assume duplicates.
+                    # Copy not in, but next to
+                    beginRow = parent.row() + 1
+                    parent = parent.parent()
+
         if not items:
             return False
 
@@ -373,7 +402,7 @@ class outlineModel(QAbstractItemModel):
 
         if action == Qt.CopyAction:
             for item in items:
-                item.getUniqueID()
+                item.getUniqueID(recursive=True)
 
         return r
 
@@ -934,8 +963,12 @@ class outlineItem():
     # IDS
     ###############################################################################
 
-    def getUniqueID(self):
+    def getUniqueID(self, recursive=False):
         self.setData(Outline.ID.value, self._model.rootItem.findUniqueID())
+
+        if recursive:
+            for c in self.children():
+                c.getUniqueID(recursive)
 
     def checkIDs(self):
         """This is called when a model is loaded.

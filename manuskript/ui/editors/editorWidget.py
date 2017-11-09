@@ -266,7 +266,8 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
             self.currentIndex = QModelIndex()
             self.currentID = None
 
-        self.setView()
+        if self._model:
+            self.setView()
 
     def updateIndexFromID(self):
         """
@@ -323,3 +324,36 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
     def setDict(self, dct):
         self.currentDict = dct
         self.dictChanged.emit(dct)
+
+    ###############################################################################
+    # FUNCTIONS FOR MENU ACCESS
+    ###############################################################################
+
+    def getCurrentItemView(self):
+        if self.folderView == "outline":
+            return self.outlineView
+        elif self.folderView == "cork":
+            return self.corkView
+        else:
+            return None
+
+    def copy(self):
+        if self.getCurrentItemView(): self.getCurrentItemView().copy()
+    def cut(self):
+        if self.getCurrentItemView(): self.getCurrentItemView().cut()
+    def paste(self):
+        if self.getCurrentItemView(): self.getCurrentItemView().paste()
+    def duplicate(self):
+        if self.getCurrentItemView(): self.getCurrentItemView().duplicate()
+    def delete(self):
+        if self.getCurrentItemView(): self.getCurrentItemView().delete()
+    def moveUp(self):
+        if self.getCurrentItemView(): self.getCurrentItemView().moveUp()
+    def moveDown(self):
+        if self.getCurrentItemView(): self.getCurrentItemView().moveDown()
+    def documentsSplitDialog(self):
+        print("documentsSplitDialog::FIXME")
+    def documentsSplitCursor(self):
+        print("documentsSplitCursor::FIXME")
+    def documentsMerge(self):
+        print("documentsMerge::FIXME")
