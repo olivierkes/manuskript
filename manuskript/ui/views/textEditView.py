@@ -2,7 +2,7 @@
 # --!-- coding: utf8 --!--
 import re
 
-from PyQt5.QtCore import QTimer, QModelIndex, Qt, QEvent, pyqtSignal, QRegExp
+from PyQt5.QtCore import QTimer, QModelIndex, Qt, QEvent, pyqtSignal, QRegExp, QLocale
 from PyQt5.QtGui import QTextBlockFormat, QTextCharFormat, QFont, QColor, QIcon, QMouseEvent, QTextCursor
 from PyQt5.QtWidgets import QWidget, QTextEdit, qApp, QAction, QMenu
 
@@ -76,7 +76,7 @@ class textEditView(QTextEdit):
         # Spellchecking
         if enchant and self.spellcheck:
             try:
-                self._dict = enchant.Dict(self.currentDict if self.currentDict else enchant.get_default_language())
+                self._dict = enchant.Dict(self.currentDict if self.currentDict else self.getDefaultLocale())
             except enchant.errors.DictNotFoundError:
                 self.spellcheck = False
 
@@ -86,6 +86,15 @@ class textEditView(QTextEdit):
         if self._highlighting and not self.highlighter:
             self.highlighter = basicHighlighter(self)
             self.highlighter.setDefaultBlockFormat(self._defaultBlockFormat)
+
+    def getDefaultLocale(self):
+        default_locale = enchant.get_default_language()
+        if default_locale is None:
+            default_locale = QLocale.system().name()
+        if default_locale is None:
+            default_locale = enchant.list_dicts()[0][0]
+        
+        return default_locale
 
     def setModel(self, model):
         self._model = model
