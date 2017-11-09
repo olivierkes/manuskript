@@ -24,9 +24,12 @@ def wordCount(text):
 
 def toInt(text):
     if text:
-        return int(text)
-    else:
-        return 0
+        try:
+            return int(text)
+        except ValueError:
+            pass
+
+    return 0
 
 
 def toFloat(text):
