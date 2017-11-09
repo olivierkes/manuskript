@@ -393,7 +393,7 @@ class textEditView(QTextEdit):
         if enchant and self.spellcheck and not self._dict:
             if self.currentDict:
                 self._dict = enchant.Dict(self.currentDict)
-            elif enchant.dict_exists(enchant.get_default_language()):
+            elif enchant.get_default_language() and enchant.dict_exists(enchant.get_default_language()):
                 self._dict = enchant.Dict(enchant.get_default_language())
             else:
                 self.spellcheck = False
