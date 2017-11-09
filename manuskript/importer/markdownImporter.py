@@ -88,8 +88,8 @@ class markdownImporter(abstractImporter):
             return child
 
         ATXHeader = re.compile(r"(\#+)\s*(.+?)\s*\#*$")
-        setextHeader1 = re.compile(r"(.+)\n===+$", re.MULTILINE)
-        setextHeader2 = re.compile(r"(.+)\n---+$", re.MULTILINE)
+        setextHeader1 = re.compile(r"([^\#-=].+)\n(===+)$", re.MULTILINE)
+        setextHeader2 = re.compile(r"([^\#-=].+)\n(---+)$", re.MULTILINE)
 
         # We store the level of each item in a temporary var
         parent.__miLevel = 0  # markdown importer header level
@@ -117,14 +117,15 @@ class markdownImporter(abstractImporter):
 
             # Check setext header
             m = setextHeader1.match(l2)
-            if not header and m:
+
+            if not header and m and len(m.group(1)) == len(m.group(2)):
                 header = True
                 level = 1
                 name = m.group(1)
                 skipNextLine = True
 
             m = setextHeader2.match(l2)
-            if not header and m:
+            if not header and m and len(m.group(1)) == len(m.group(2)):
                 header = True
                 level = 2
                 name = m.group(1)
@@ -160,7 +161,8 @@ class markdownImporter(abstractImporter):
                 # So we make it a text item
                 i._data[Outline.type] = "md"
                 i._data[Outline.text] = i.children()[0].text()
-                i.removeChild(0)
+                c = i.removeChild(0)
+                items.remove(c)
 
         return items
 

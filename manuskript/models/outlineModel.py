@@ -816,10 +816,56 @@ class outlineItem():
             return qApp.translate("outlineModel", "{} words").format(
                     locale.format("%d", wc, grouping=True))
 
+    def copy(self):
+        """
+        Returns a copy of item, with no parent, and no ID.
+        """
+        item = outlineItem(xml=self.toXML())
+        item.setData(Outline.ID.value, None)
+        return item
 
-        ###############################################################################
-        # XML
-        ###############################################################################
+    def split(self, splitMark, recursive=True):
+        """
+        Split scene at splitMark. If multiple splitMark, multiple splits.
+
+        If called on a folder and recursive is True, then it is recursively
+        applied to every children.
+        """
+        if self.isFolder() and recursive:
+            for c in self.children():
+                c.split(splitMark)
+
+        else:
+            txt = self.text().split(splitMark)
+
+            if len(txt) == 1:
+                # Mark not found
+                return False
+
+            else:
+
+                # Stores the new text
+                self.setData(Outline.text.value, txt[0])
+
+                k = 1
+                for subTxt in txt[1:]:
+                    # Create a copy
+                    item = self.copy()
+
+                    # Change title adding _k
+                    item.setData(Outline.title.value,
+                                 "{}_{}".format(item.title(), k+1))
+
+                    # Set text
+                    item.setData(Outline.text.value, subTxt)
+
+                    # Inserting item
+                    self.parent().insertChild(self.row()+k, item)
+                    k += 1
+
+    ###############################################################################
+    # XML
+    ###############################################################################
 
     def toXML(self):
         item = ET.Element("outlineItem")
@@ -879,10 +925,9 @@ class outlineItem():
             elif child.tag == "revision":
                 self.appendRevision(child.attrib["timestamp"], child.attrib["text"])
 
-
-            ###############################################################################
-            # IDS
-            ###############################################################################
+    ###############################################################################
+    # IDS
+    ###############################################################################
 
     def getUniqueID(self):
         self.setData(Outline.ID.value, self._model.rootItem.findUniqueID())

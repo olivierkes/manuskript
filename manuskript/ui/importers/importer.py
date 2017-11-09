@@ -64,8 +64,10 @@ class importerDialog(QWidget, Ui_importer):
 
     def populateImportList(self):
 
-        def addFormat(name, icon):
-            self.cmbImporters.addItem(QIcon.fromTheme(icon), name)
+        def addFormat(name, icon, identifier):
+            # Identifier serves to distingues 2 importers that would have the
+            # same name.
+            self.cmbImporters.addItem(QIcon.fromTheme(icon), name, identifier)
 
         def addHeader(name):
             self.cmbImporters.addItem(name, "header")
@@ -82,7 +84,7 @@ class importerDialog(QWidget, Ui_importer):
                 addHeader(f.engine)
                 lastEngine = f.engine
 
-            addFormat(f.name, f.icon)
+            addFormat(f.name, f.icon, "{}:{}".format(f.engine, f.name))
             if not f.isValid():
                 item = self.cmbImporters.model().item(self.cmbImporters.count() - 1)
                 item.setFlags(Qt.NoItemFlags)
@@ -96,12 +98,13 @@ class importerDialog(QWidget, Ui_importer):
         self.cmbImporters.setCurrentIndex(1)
 
     def currentFormat(self):
-        formatName = self.cmbImporters.currentText()
+        formatIdentifier = self.cmbImporters.currentData()
 
-        if self.cmbImporters.currentData() == "header":
+        if formatIdentifier == "header":
             return None
 
-        F = [F for F in self.importers if F.name == formatName][0]
+        F = [F for F in self.importers
+               if formatIdentifier == "{}:{}".format(F.engine, F.name)][0]
         # We instantiate the class
         return F()
 
@@ -303,15 +306,14 @@ class importerDialog(QWidget, Ui_importer):
 
         # Trim long titles
         if self.settingsWidget.trimLongTitles():
-            def trim(item):
+            for item in items:
                 if len(item.title()) > 32:
                     item.setData(Outline.title.value, item.title()[:32])
-                # I think it's overkill to do it recursively, since items
-                # is supposed to contain every imported items.
-                for c in item.children():
-                    trim(c)
-            for i in items:
-                trim(i)
+
+        # Split at
+        if self.settingsWidget.splitScenes():
+            for item in items:
+                item.split(self.settingsWidget.splitScenes(), recursive=False)
 
         return items
 

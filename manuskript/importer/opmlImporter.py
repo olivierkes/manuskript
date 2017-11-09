@@ -57,7 +57,7 @@ class opmlImporter(abstractImporter):
 
             if outlineEls is not None:
                 for element in outlineEls:
-                    items.append(cls.parseItems(element, parentItem))
+                    items.extend(cls.parseItems(element, parentItem))
                 ret = True
 
         if not ret:
@@ -72,10 +72,12 @@ class opmlImporter(abstractImporter):
 
     @classmethod
     def parseItems(cls, underElement, parentItem=None):
+        items = []
         title = underElement.get('text')
         if title is not None:
 
             card = outlineItem(parent=parentItem, title=title)
+            items.append(card)
 
             body = ""
             note = underElement.get('_note')
@@ -86,12 +88,12 @@ class opmlImporter(abstractImporter):
             children = underElement.findall('outline')
             if children is not None and len(children) > 0:
                 for el in children:
-                    cls.parseItems(el, card)
+                    items.extend(cls.parseItems(el, card))
             else:
                 card.setData(Outline.type.value, 'md')
                 card.setData(Outline.text.value, body)
 
-        return card
+        return items
 
     @classmethod
     def saveNewlines(cls, inString):

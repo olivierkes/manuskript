@@ -10,9 +10,9 @@ from manuskript.importer.pandocImporters import markdownPandocImporter, \
 
 importers = [
     # Internal
-    opmlImporter,
-    folderImporter,
     markdownImporter,
+    folderImporter,
+    opmlImporter,
 
     # Pandoc
     markdownPandocImporter,

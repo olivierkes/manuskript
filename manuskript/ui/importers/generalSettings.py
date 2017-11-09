@@ -69,3 +69,22 @@ class generalSettings(QWidget, Ui_generalSettings):
     def trimLongTitles(self):
         return self.chkGeneralTrimTitles.isChecked()
 
+    def splitScenes(self):
+        """
+        Return wheter the user wants to split scenes.
+        If unchecked, returns False.
+        If checked, returns the escaped split mark, or default (in placeholderText).
+        """
+        if self.chkGeneralSplitScenes.isChecked():
+            split = self.txtGeneralSplitScenes.text()
+
+            if not split:
+                split = self.txtGeneralSplitScenes.placeholderText()
+
+            split = split.replace("\\n", "\n")
+            split = split.replace("\\t", "\t")
+            return split
+
+        else:
+            return False
+

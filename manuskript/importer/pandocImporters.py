@@ -12,6 +12,7 @@ class pandocImporter(abstractImporter):
 
     formatFrom = ""
     engine = "Pandoc"
+    extraArgs = []
 
     @classmethod
     def isValid(cls):
@@ -27,9 +28,13 @@ class pandocImporter(abstractImporter):
             "--from={}".format(self.formatFrom),
             filePath,
             "--to={}".format(formatTo),
-            "--standalone",
             "--wrap={}".format(wrap),
         ]
+
+        if formatTo == "opml":
+            args.append("--standalone")
+
+        args += self.extraArgs
 
         r = pandocExporter().run(args)
 
@@ -146,7 +151,6 @@ class OPMLPandocImporter(pandocImporter):
     fileFormat = "OPML files (*.opml *.xml)"
     icon = "text-x-opml+xml"
     formatFrom = "opml"
-
 
 
 
