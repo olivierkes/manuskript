@@ -257,8 +257,7 @@ class mainEditor(QWidget, Ui_mainEditor):
     def moveDown(self): self.currentEditor().moveDown()
     def splitDialog(self): self.currentEditor().splitDialog()
     def splitCursor(self): self.currentEditor().splitCursor()
-    def documentsMerge(self):
-        print("documentsMerge::FIXME")
+    def merge(self): self.currentEditor().merge()
 
     ###############################################################################
     # UI

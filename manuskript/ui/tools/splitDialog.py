@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
 from PyQt5.QtWidgets import QInputDialog
+from manuskript.functions import mainWindow
 
 
 class splitDialog(QInputDialog):
@@ -38,7 +39,16 @@ class splitDialog(QInputDialog):
 
         self.setLabelText(description)
         self.setTextValue(mark)
-        self.setWindowTitle(self.tr("Split item(s)"))
+
+        if len(indexes) == 0:
+            return
+        if len(indexes) == 1:
+            idx =  indexes[0]
+            self.setWindowTitle(
+                self.tr("Split '{}'").format(self.getItem(idx).title())
+                )
+        else:
+            self.setWindowTitle(self.tr("Split items"))
 
         r = self.exec()
 
@@ -50,6 +60,11 @@ class splitDialog(QInputDialog):
             mark = mark.replace("\\t", "\t")
 
             for idx in indexes:
-                if idx.isValid():
-                    item = idx.internalPointer()
-                    item.split(mark)
+                item = self.getItem(idx)
+                item.split(mark)
+
+    def getItem(self, index):
+        if index.isValid():
+            return index.internalPointer()
+        else:
+            return mainWindow().mdlOutline.rootItem

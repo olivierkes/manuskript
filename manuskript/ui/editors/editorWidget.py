@@ -331,6 +331,12 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
     ###############################################################################
 
     def getCurrentItemView(self):
+        """
+        Returns the current item view, between txtRedacText, outlineView and
+        corkView. If folder/text view, returns None. (Because handled
+        differently)
+        """
+
         if self.stack.currentIndex() == 0:
             return self.txtRedacText
         elif self.folderView == "outline":
@@ -370,7 +376,7 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
             splitDialog(self, [self.currentIndex], mark=sel)
 
         elif self.getCurrentItemView():
-            # One of the view
+            # One of the views
             self.getCurrentItemView().splitDialog()
 
     def splitCursor(self):
@@ -395,5 +401,16 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
 
             item.splitAt(pos, len(title))
 
-    def documentsMerge(self):
-        print("documentsMerge::FIXME")
+    def merge(self):
+        """
+        Merges selected items together.
+
+        Call context: Multiple selection, same parent.
+        """
+        if self.getCurrentItemView() == self.txtRedacText:
+            # Text editor, nothing to merge
+            pass
+
+        elif self.getCurrentItemView():
+            # One of the views
+            self.getCurrentItemView().merge()

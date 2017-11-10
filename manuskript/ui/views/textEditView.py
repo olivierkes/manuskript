@@ -141,6 +141,21 @@ class textEditView(QTextEdit):
             self.setPlainText("")
             self.setEnabled(False)
 
+    def currentIndex(self):
+        """
+        Getter function used to normalized views acces with QAbstractItemViews.
+        """
+        if self._index:
+            return self._index
+        else:
+            return QModelIndex()
+
+    def getSelection(self):
+        """
+        Getter function used to normalized views acces with QAbstractItemViews.
+        """
+        return [self.currentIndex()]
+
     def setCurrentModelIndexes(self, indexes):
         self._index = None
         self._indexes = []

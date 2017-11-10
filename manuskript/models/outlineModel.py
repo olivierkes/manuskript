@@ -928,6 +928,23 @@ class outlineItem():
         # Inserting item using the model to signal views
         self._model.insertItem(item, self.row()+1, self.parent().index())
 
+    def mergeWith(self, items, sep="\n---\n"):
+        """
+        Merges item with several other items. Merge is basic, it merges only
+        the text.
+
+        @param items: list of `outlineItem`s.
+        @param sep: a text added between each item's text.
+        """
+
+        # Merges the texts
+        text = [self.text()]
+        text.extend([i.text() for i in items])
+        self.setData(Outline.text.value, sep.join(text))
+
+        # Removes other items
+        self._model.removeIndexes([i.index() for i in items])
+
     ###############################################################################
     # XML
     ###############################################################################

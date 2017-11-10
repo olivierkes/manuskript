@@ -358,3 +358,6 @@ def customIcons():
         ]
 
     return sorted(r)
+
+def statusMessage(message, duration=5000):
+    mainWindow().statusBar().showMessage(message, duration)

@@ -214,7 +214,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         We get notified by qApp when focus changes, from old to new widget.
         """
 
-        # Determine which item had focus last, to send the keyboard shortcuts
+        # Determine which view had focus last, to send the keyboard shortcuts
         # to the right place
 
         targets = [
@@ -476,7 +476,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if self._lastFocus and self._lastFocus == self.mainEditor:
             self.mainEditor.splitCursor()
     def documentsMerge(self):
-        print("documentsMerge::FIXME")
+        "Merges selected item(s)."
+        if self._lastFocus: self._lastFocus.merge()
 
     ###############################################################################
     # LOAD AND SAVE

@@ -8,7 +8,7 @@ from PyQt5.QtWidgets import QAbstractItemView, qApp, QMenu, QAction, \
 
 from manuskript import settings
 from manuskript.enums import Outline
-from manuskript.functions import mainWindow
+from manuskript.functions import mainWindow, statusMessage
 from manuskript.functions import toInt, customIcons
 from manuskript.models.outlineModel import outlineItem
 from manuskript.ui.tools.splitDialog import splitDialog
@@ -374,9 +374,43 @@ class outlineBasics(QAbstractItemView):
 
         indexes = self.getSelection()
         if len(indexes) == 0:
-            return
+            # No selection, we use parent
+            indexes = [self.rootIndex()]
 
         splitDialog(self, indexes)
+
+    def merge(self):
+        """
+        Merges selected items together.
+
+        Call context: Multiple selection, same parent.
+        """
+
+        # Get selection
+        indexes = self.getSelection()
+        # Get items
+        items = [i.internalPointer() for i in indexes if i.isValid()]
+        # Remove folders
+        items = [i for i in items if not i.isFolder()]
+
+        # Check that we have at least 2 items
+        if len(items) < 2:
+            statusMessage(qApp.translate("outlineBasics",
+                          "Select at least two items. Folders are ignored."))
+            return
+
+        # Check that all share the same parent
+        p = items[0].parent()
+        for i in items:
+            if i.parent() != p:
+                statusMessage(qApp.translate("outlineBasics",
+                          "All items must be on the same level (share the same parent)."))
+                return
+
+        # Sort items by row
+        items = sorted(items, key=lambda i: i.row())
+
+        items[0].mergeWith(items[1:])
 
     def setPOV(self, POV):
         for i in self.getSelection():
