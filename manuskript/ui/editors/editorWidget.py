@@ -8,6 +8,7 @@ from manuskript import settings
 from manuskript.functions import AUC, mainWindow
 from manuskript.ui.editors.editorWidget_ui import Ui_editorWidget_ui
 from manuskript.ui.views.textEditView import textEditView
+from manuskript.ui.tools.splitDialog import splitDialog
 
 
 class editorWidget(QWidget, Ui_editorWidget_ui):
@@ -266,7 +267,8 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
             self.currentIndex = QModelIndex()
             self.currentID = None
 
-        self.setView()
+        if self._model:
+            self.setView()
 
     def updateIndexFromID(self):
         """
@@ -323,3 +325,92 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
     def setDict(self, dct):
         self.currentDict = dct
         self.dictChanged.emit(dct)
+
+    ###############################################################################
+    # FUNCTIONS FOR MENU ACCESS
+    ###############################################################################
+
+    def getCurrentItemView(self):
+        """
+        Returns the current item view, between txtRedacText, outlineView and
+        corkView. If folder/text view, returns None. (Because handled
+        differently)
+        """
+
+        if self.stack.currentIndex() == 0:
+            return self.txtRedacText
+        elif self.folderView == "outline":
+            return self.outlineView
+        elif self.folderView == "cork":
+            return self.corkView
+        else:
+            return None
+
+    def copy(self):
+        if self.getCurrentItemView(): self.getCurrentItemView().copy()
+    def cut(self):
+        if self.getCurrentItemView(): self.getCurrentItemView().cut()
+    def paste(self):
+        if self.getCurrentItemView(): self.getCurrentItemView().paste()
+    def duplicate(self):
+        if self.getCurrentItemView(): self.getCurrentItemView().duplicate()
+    def delete(self):
+        if self.getCurrentItemView(): self.getCurrentItemView().delete()
+    def moveUp(self):
+        if self.getCurrentItemView(): self.getCurrentItemView().moveUp()
+    def moveDown(self):
+        if self.getCurrentItemView(): self.getCurrentItemView().moveDown()
+
+    def splitDialog(self):
+        """
+        Opens a dialog to split selected items.
+        """
+        if self.getCurrentItemView() == self.txtRedacText:
+            # Text editor
+            if not self.currentIndex.isValid():
+                return
+
+            sel = self.txtRedacText.textCursor().selectedText()
+            # selectedText uses \u2029 instead of \n, no idea why.
+            sel = sel.replace("\u2029", "\n")
+            splitDialog(self, [self.currentIndex], mark=sel)
+
+        elif self.getCurrentItemView():
+            # One of the views
+            self.getCurrentItemView().splitDialog()
+
+    def splitCursor(self):
+        """
+        Splits items at cursor position. If there is a selection, that selection
+        becomes the new item's title.
+
+        Call context: Only works when editing a file.
+        """
+
+        if not self.currentIndex.isValid():
+            return
+
+        if self.getCurrentItemView() == self.txtRedacText:
+            c = self.txtRedacText.textCursor()
+
+            title = c.selectedText()
+            # selection can be backward
+            pos = min(c.selectionStart(), c.selectionEnd())
+
+            item = self.currentIndex.internalPointer()
+
+            item.splitAt(pos, len(title))
+
+    def merge(self):
+        """
+        Merges selected items together.
+
+        Call context: Multiple selection, same parent.
+        """
+        if self.getCurrentItemView() == self.txtRedacText:
+            # Text editor, nothing to merge
+            pass
+
+        elif self.getCurrentItemView():
+            # One of the views
+            self.getCurrentItemView().merge()

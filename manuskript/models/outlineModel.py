@@ -273,6 +273,19 @@ class outlineModel(QAbstractItemModel):
         if items is None:
             return False
 
+        # We check if parent is not a child of one of the items
+        if self.isParentAChildOfItems(parent, items):
+            return False
+
+        return True
+
+    def isParentAChildOfItems(self, parent, items):
+        """
+        Takes a parent index, and a list of outlineItems items. Check whether
+        parent is in a child of one of the items.
+        Return True in that case, False if not.
+        """
+
         # Get the parent item
         if not parent.isValid():
             parentItem = self.rootItem
@@ -286,9 +299,9 @@ class outlineModel(QAbstractItemModel):
             # Is item in the path? It would mean that it tries to get dropped
             # as a children of himself.
             if item.ID() in path:
-                return False
+                return True
 
-        return True
+        return False
 
     def decodeMimeData(self, data):
         if not data.hasFormat("application/xml"):
@@ -345,12 +358,13 @@ class outlineModel(QAbstractItemModel):
         if action == Qt.IgnoreAction:
             return True  # What is that?
 
-        # Strangely, on some cases, we get a call to dropMimeData though
-        # self.canDropMimeData returned False.
-        # See https://github.com/olivierkes/manuskript/issues/169 to reproduce.
-        # So we double check for safety.
-        if not self.canDropMimeData(data, action, row, column, parent):
-            return False
+        if action == Qt.MoveAction:
+            # Strangely, on some cases, we get a call to dropMimeData though
+            # self.canDropMimeData returned False.
+            # See https://github.com/olivierkes/manuskript/issues/169 to reproduce.
+            # So we double check for safety.
+            if not self.canDropMimeData(data, action, row, column, parent):
+                return False
 
         items = self.decodeMimeData(data)
         if items is None:
@@ -366,14 +380,41 @@ class outlineModel(QAbstractItemModel):
         else:
             beginRow = self.rowCount() + 1
 
+        if action == Qt.CopyAction:
+            # Behavior if parent is a text item
+            # For example, we select a text and do: CTRL+C CTRL+V
+            if parent.isValid() and not parent.internalPointer().isFolder():
+                # We insert copy in parent folder, just below
+                beginRow = parent.row() + 1
+                parent = parent.parent()
+
+            if parent.isValid() and parent.internalPointer().isFolder():
+                while self.isParentAChildOfItems(parent, items):
+                    # We are copying a folder on itself. Assume duplicates.
+                    # Copy not in, but next to
+                    beginRow = parent.row() + 1
+                    parent = parent.parent()
+
         if not items:
             return False
 
-        r = self.insertItems(items, beginRow, parent)
-
+        # In case of copy actions, items might be duplicates, so we need new IDs.
+        # But they might not be, if we cut, then paste. Paste is a Copy Action.
+        # The first paste would not need new IDs. But subsequent ones will.
         if action == Qt.CopyAction:
+            IDs = self.rootItem.listAllIDs()
+
             for item in items:
-                item.getUniqueID()
+                if item.ID() in IDs:
+                    # Recursively remove ID. So will get a new one when inserted.
+                    def stripID(item):
+                        item.setData(Outline.ID.value, None)
+                        for c in item.children():
+                            stripID(c)
+
+                    stripID(item)
+
+        r = self.insertItems(items, beginRow, parent)
 
         return r
 
@@ -623,6 +664,7 @@ class outlineItem():
         if column == Outline.text.value:
             wc = wordCount(data)
             self.setData(Outline.wordCount.value, wc)
+            self.emitDataChanged(cols=[Outline.text.value]) # new in 0.5.0
 
         if column == Outline.compile.value:
             self.emitDataChanged(cols=[Outline.title.value, Outline.compile.value], recursive=True)
@@ -865,8 +907,55 @@ class outlineItem():
                     item.setData(Outline.text.value, subTxt)
 
                     # Inserting item
-                    self.parent().insertChild(self.row()+k, item)
+                    #self.parent().insertChild(self.row()+k, item)
+                    self._model.insertItem(item, self.row()+k, self.parent().index())
                     k += 1
+
+    def splitAt(self, position, length=0):
+        """
+        Splits note at position p.
+
+        If length is bigger than 0, it describes the length of the title, made
+        from the character following position.
+        """
+
+        txt = self.text()
+
+        # Stores the new text
+        self.setData(Outline.text.value, txt[:position])
+
+        # Create a copy
+        item = self.copy()
+
+        # Update title
+        if length > 0:
+            title = txt[position:position+length].replace("\n", "")
+        else:
+            title = "{}_{}".format(item.title(), 2)
+        item.setData(Outline.title.value, title)
+
+        # Set text
+        item.setData(Outline.text.value, txt[position+length:])
+
+        # Inserting item using the model to signal views
+        self._model.insertItem(item, self.row()+1, self.parent().index())
+
+    def mergeWith(self, items, sep="\n\n"):
+        """
+        Merges item with several other items. Merge is basic, it merges only
+        the text.
+
+        @param items: list of `outlineItem`s.
+        @param sep: a text added between each item's text.
+        """
+
+        # Merges the texts
+        text = [self.text()]
+        text.extend([i.text() for i in items])
+        self.setData(Outline.text.value, sep.join(text))
+
+        # Removes other items
+        self._model.removeIndexes([i.index() for i in items])
 
     ###############################################################################
     # XML
@@ -934,8 +1023,12 @@ class outlineItem():
     # IDS
     ###############################################################################
 
-    def getUniqueID(self):
+    def getUniqueID(self, recursive=False):
         self.setData(Outline.ID.value, self._model.rootItem.findUniqueID())
+
+        if recursive:
+            for c in self.children():
+                c.getUniqueID(recursive)
 
     def checkIDs(self):
         """This is called when a model is loaded.

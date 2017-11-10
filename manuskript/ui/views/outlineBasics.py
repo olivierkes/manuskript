@@ -2,14 +2,16 @@
 # --!-- coding: utf8 --!--
 from PyQt5.QtCore import Qt, QSignalMapper, QSize
 from PyQt5.QtGui import QIcon, QCursor
-from PyQt5.QtWidgets import QAbstractItemView, qApp, QMenu, QAction
-from PyQt5.QtWidgets import QListWidget, QWidgetAction, QListWidgetItem, QLineEdit
+from PyQt5.QtWidgets import QAbstractItemView, qApp, QMenu, QAction, \
+                            QListWidget, QWidgetAction, QListWidgetItem, \
+                            QLineEdit, QInputDialog, QMessageBox, QCheckBox
 
 from manuskript import settings
 from manuskript.enums import Outline
-from manuskript.functions import mainWindow
+from manuskript.functions import mainWindow, statusMessage
 from manuskript.functions import toInt, customIcons
 from manuskript.models.outlineModel import outlineItem
+from manuskript.ui.tools.splitDialog import splitDialog
 
 
 class outlineBasics(QAbstractItemView):
@@ -53,7 +55,7 @@ class outlineBasics(QAbstractItemView):
             title = mouseIndex.internalPointer().title()
 
         else:
-            title = self.tr("Root")
+            title = qApp.translate("outlineBasics", "Root")
 
         if len(title) > 25:
             title = title[:25] + "…"
@@ -67,10 +69,10 @@ class outlineBasics(QAbstractItemView):
 
         # Open item(s) in new tab
         if mouseIndex in sel and len(sel) > 1:
-            actionTitle = self.tr("Open {} items in new tabs").format(len(sel))
+            actionTitle = qApp.translate("outlineBasics", "Open {} items in new tabs").format(len(sel))
             self._indexesToOpen = sel
         else:
-            actionTitle = self.tr("Open {} in a new tab").format(title)
+            actionTitle = qApp.translate("outlineBasics", "Open {} in a new tab").format(title)
             self._indexesToOpen = [mouseIndex]
 
         self.actNewTab = QAction(QIcon.fromTheme("go-right"), actionTitle, menu)
@@ -284,7 +286,131 @@ class outlineBasics(QAbstractItemView):
         self.delete()
 
     def delete(self):
+        """
+        Shows a warning, and then deletes currently selected indexes.
+        """
+        if not settings.dontShowDeleteWarning:
+            msg = QMessageBox(QMessageBox.Warning,
+                qApp.translate("outlineBasics", "About to remove"),
+                qApp.translate("outlineBasics",
+                    "<p><b>You're about to delete {} item(s).</b></p><p>Are you sure?</p>"
+                    ).format(len(self.getSelection())),
+                QMessageBox.Yes | QMessageBox.Cancel)
+
+            chk = QCheckBox("&Don't show this warning in the future.")
+            msg.setCheckBox(chk)
+            ret = msg.exec()
+
+            if ret == QMessageBox.Cancel:
+                return
+
+            if chk.isChecked():
+                settings.dontShowDeleteWarning = True
+
         self.model().removeIndexes(self.getSelection())
+
+    def duplicate(self):
+        self.copy()
+        self.paste()
+
+    def move(self, delta=1):
+        """
+        Move selected items up or down.
+        """
+
+        # we store selected indexesret
+        currentID = self.model().ID(self.currentIndex())
+        selIDs = [self.model().ID(i) for i in self.selectedIndexes()]
+
+        # Block signals
+        self.blockSignals(True)
+        self.selectionModel().blockSignals(True)
+
+        # Move each index individually
+        for idx in self.selectedIndexes():
+            self.moveIndex(idx, delta)
+
+        # Done the hardcore way, so inform views
+        self.model().layoutChanged.emit()
+
+        # restore selection
+        selIdx = [self.model().getIndexByID(ID) for ID in selIDs]
+        sm = self.selectionModel()
+        sm.clear()
+        [sm.select(idx, sm.Select) for idx in selIdx]
+        sm.setCurrentIndex(self.model().getIndexByID(currentID), sm.Select)
+        #self.setSmsgBoxelectionModel(sm)
+
+        # Unblock signals
+        self.blockSignals(False)
+        self.selectionModel().blockSignals(False)
+
+    def moveIndex(self, index, delta=1):
+        """
+        Move the item represented by index. +1 means down, -1 means up.
+        """
+
+        if not index.isValid():
+            return
+
+        if index.parent().isValid():
+            parentItem = index.parent().internalPointer()
+        else:
+            parentItem = index.model().rootItem
+
+        parentItem.childItems.insert(index.row() + delta,
+                                     parentItem.childItems.pop(index.row()))
+        parentItem.updateWordCount(emit=False)
+
+    def moveUp(self): self.move(-1)
+    def moveDown(self): self.move(+1)
+
+    def splitDialog(self):
+        """
+        Opens a dialog to split selected items.
+
+        Call context: if at least one index is selected. Folder or text.
+        """
+
+        indexes = self.getSelection()
+        if len(indexes) == 0:
+            # No selection, we use parent
+            indexes = [self.rootIndex()]
+
+        splitDialog(self, indexes)
+
+    def merge(self):
+        """
+        Merges selected items together.
+
+        Call context: Multiple selection, same parent.
+        """
+
+        # Get selection
+        indexes = self.getSelection()
+        # Get items
+        items = [i.internalPointer() for i in indexes if i.isValid()]
+        # Remove folders
+        items = [i for i in items if not i.isFolder()]
+
+        # Check that we have at least 2 items
+        if len(items) < 2:
+            statusMessage(qApp.translate("outlineBasics",
+                          "Select at least two items. Folders are ignored."))
+            return
+
+        # Check that all share the same parent
+        p = items[0].parent()
+        for i in items:
+            if i.parent() != p:
+                statusMessage(qApp.translate("outlineBasics",
+                          "All items must be on the same level (share the same parent)."))
+                return
+
+        # Sort items by row
+        items = sorted(items, key=lambda i: i.row())
+
+        items[0].mergeWith(items[1:])
 
     def setPOV(self, POV):
         for i in self.getSelection():

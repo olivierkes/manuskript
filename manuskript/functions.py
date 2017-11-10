@@ -24,9 +24,12 @@ def wordCount(text):
 
 def toInt(text):
     if text:
-        return int(text)
-    else:
-        return 0
+        try:
+            return int(text)
+        except ValueError:
+            pass
+
+    return 0
 
 
 def toFloat(text):
@@ -355,3 +358,6 @@ def customIcons():
         ]
 
     return sorted(r)
+
+def statusMessage(message, duration=5000):
+    mainWindow().statusBar().showMessage(message, duration)

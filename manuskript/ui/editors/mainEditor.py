@@ -172,7 +172,6 @@ class mainEditor(QWidget, Ui_mainEditor):
             ts = ts.secondTab
         return r
 
-
     ###############################################################################
     # SELECTION AND UPDATES
     ###############################################################################
@@ -244,6 +243,21 @@ class mainEditor(QWidget, Ui_mainEditor):
             title = index.internalPointer().title()
 
         return title
+
+    ###############################################################################
+    # FUNCTIONS FOR MENU ACCESS
+    ###############################################################################
+
+    def copy(self): self.currentEditor().copy()
+    def cut(self): self.currentEditor().cut()
+    def paste(self): self.currentEditor().paste()
+    def duplicate(self): self.currentEditor().duplicate()
+    def delete(self): self.currentEditor().delete()
+    def moveUp(self): self.currentEditor().moveUp()
+    def moveDown(self): self.currentEditor().moveDown()
+    def splitDialog(self): self.currentEditor().splitDialog()
+    def splitCursor(self): self.currentEditor().splitCursor()
+    def merge(self): self.currentEditor().merge()
 
     ###############################################################################
     # UI
