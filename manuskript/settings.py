@@ -96,13 +96,14 @@ frequencyAnalyzer = {
 
 viewMode = "fiction"  # simple, fiction
 saveToZip = True
+dontShowDeleteWarning = False
 
 def save(filename=None, protocol=None):
 
     global spellcheck, dict, corkSliderFactor, viewSettings, corkSizeFactor, folderView, lastTab, openIndexes, \
            autoSave, autoSaveDelay, saveOnQuit, autoSaveNoChanges, autoSaveNoChangesDelay, outlineViewColumns, \
            corkBackground, corkStyle, fullScreenTheme, defaultTextType, textEditor, revisions, frequencyAnalyzer, viewMode, \
-           saveToZip
+           saveToZip, dontShowDeleteWarning
 
     allSettings = {
         "viewSettings": viewSettings,
@@ -127,6 +128,7 @@ def save(filename=None, protocol=None):
         "frequencyAnalyzer": frequencyAnalyzer,
         "viewMode": viewMode,
         "saveToZip": saveToZip,
+        "dontShowDeleteWarning": dontShowDeleteWarning,
     }
 
     #pp=pprint.PrettyPrinter(indent=4, compact=False)
@@ -294,3 +296,7 @@ def load(string, fromString=False, protocol=None):
     if "saveToZip" in allSettings:
         global saveToZip
         saveToZip = allSettings["saveToZip"]
+
+    if "dontShowDeleteWarning" in allSettings:
+        global dontShowDeleteWarning
+        dontShowDeleteWarning = allSettings["dontShowDeleteWarning"]

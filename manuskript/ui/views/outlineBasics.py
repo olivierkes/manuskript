@@ -2,14 +2,16 @@
 # --!-- coding: utf8 --!--
 from PyQt5.QtCore import Qt, QSignalMapper, QSize
 from PyQt5.QtGui import QIcon, QCursor
-from PyQt5.QtWidgets import QAbstractItemView, qApp, QMenu, QAction
-from PyQt5.QtWidgets import QListWidget, QWidgetAction, QListWidgetItem, QLineEdit
+from PyQt5.QtWidgets import QAbstractItemView, qApp, QMenu, QAction, \
+                            QListWidget, QWidgetAction, QListWidgetItem, \
+                            QLineEdit, QInputDialog, QMessageBox, QCheckBox
 
 from manuskript import settings
 from manuskript.enums import Outline
 from manuskript.functions import mainWindow
 from manuskript.functions import toInt, customIcons
 from manuskript.models.outlineModel import outlineItem
+from manuskript.ui.tools.splitDialog import splitDialog
 
 
 class outlineBasics(QAbstractItemView):
@@ -53,7 +55,7 @@ class outlineBasics(QAbstractItemView):
             title = mouseIndex.internalPointer().title()
 
         else:
-            title = self.tr("Root")
+            title = qApp.translate("outlineBasics", "Root")
 
         if len(title) > 25:
             title = title[:25] + "…"
@@ -67,10 +69,10 @@ class outlineBasics(QAbstractItemView):
 
         # Open item(s) in new tab
         if mouseIndex in sel and len(sel) > 1:
-            actionTitle = self.tr("Open {} items in new tabs").format(len(sel))
+            actionTitle = qApp.translate("outlineBasics", "Open {} items in new tabs").format(len(sel))
             self._indexesToOpen = sel
         else:
-            actionTitle = self.tr("Open {} in a new tab").format(title)
+            actionTitle = qApp.translate("outlineBasics", "Open {} in a new tab").format(title)
             self._indexesToOpen = [mouseIndex]
 
         self.actNewTab = QAction(QIcon.fromTheme("go-right"), actionTitle, menu)
@@ -284,6 +286,27 @@ class outlineBasics(QAbstractItemView):
         self.delete()
 
     def delete(self):
+        """
+        Shows a warning, and then deletes currently selected indexes.
+        """
+        if not settings.dontShowDeleteWarning:
+            msg = QMessageBox(QMessageBox.Warning,
+                qApp.translate("outlineBasics", "About to remove"),
+                qApp.translate("outlineBasics",
+                    "<p><b>You're about to delete {} item(s).</b></p><p>Are you sure?</p>"
+                    ).format(len(self.getSelection())),
+                QMessageBox.Yes | QMessageBox.Cancel)
+
+            chk = QCheckBox("&Don't show this warning in the future.")
+            msg.setCheckBox(chk)
+            ret = msg.exec()
+
+            if ret == QMessageBox.Cancel:
+                return
+
+            if chk.isChecked():
+                settings.dontShowDeleteWarning = True
+
         self.model().removeIndexes(self.getSelection())
 
     def duplicate(self):
@@ -295,7 +318,7 @@ class outlineBasics(QAbstractItemView):
         Move selected items up or down.
         """
 
-        # we store selected indexes
+        # we store selected indexesret
         currentID = self.model().ID(self.currentIndex())
         selIDs = [self.model().ID(i) for i in self.selectedIndexes()]
 
@@ -316,7 +339,7 @@ class outlineBasics(QAbstractItemView):
         sm.clear()
         [sm.select(idx, sm.Select) for idx in selIdx]
         sm.setCurrentIndex(self.model().getIndexByID(currentID), sm.Select)
-        #self.setSelectionModel(sm)
+        #self.setSmsgBoxelectionModel(sm)
 
         # Unblock signals
         self.blockSignals(False)
@@ -341,6 +364,19 @@ class outlineBasics(QAbstractItemView):
 
     def moveUp(self): self.move(-1)
     def moveDown(self): self.move(+1)
+
+    def splitDialog(self):
+        """
+        Opens a dialog to split selected items.
+
+        Call context: if at least one index is selected. Folder or text.
+        """
+
+        indexes = self.getSelection()
+        if len(indexes) == 0:
+            return
+
+        splitDialog(self, indexes)
 
     def setPOV(self, POV):
         for i in self.getSelection():

@@ -8,6 +8,7 @@ from manuskript import settings
 from manuskript.functions import AUC, mainWindow
 from manuskript.ui.editors.editorWidget_ui import Ui_editorWidget_ui
 from manuskript.ui.views.textEditView import textEditView
+from manuskript.ui.tools.splitDialog import splitDialog
 
 
 class editorWidget(QWidget, Ui_editorWidget_ui):
@@ -330,7 +331,9 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
     ###############################################################################
 
     def getCurrentItemView(self):
-        if self.folderView == "outline":
+        if self.stack.currentIndex() == 0:
+            return self.txtRedacText
+        elif self.folderView == "outline":
             return self.outlineView
         elif self.folderView == "cork":
             return self.corkView
@@ -351,9 +354,46 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
         if self.getCurrentItemView(): self.getCurrentItemView().moveUp()
     def moveDown(self):
         if self.getCurrentItemView(): self.getCurrentItemView().moveDown()
-    def documentsSplitDialog(self):
-        print("documentsSplitDialog::FIXME")
-    def documentsSplitCursor(self):
-        print("documentsSplitCursor::FIXME")
+
+    def splitDialog(self):
+        """
+        Opens a dialog to split selected items.
+        """
+        if self.getCurrentItemView() == self.txtRedacText:
+            # Text editor
+            if not self.currentIndex.isValid():
+                return
+
+            sel = self.txtRedacText.textCursor().selectedText()
+            # selectedText uses \u2029 instead of \n, no idea why.
+            sel = sel.replace("\u2029", "\n")
+            splitDialog(self, [self.currentIndex], mark=sel)
+
+        elif self.getCurrentItemView():
+            # One of the view
+            self.getCurrentItemView().splitDialog()
+
+    def splitCursor(self):
+        """
+        Splits items at cursor position. If there is a selection, that selection
+        becomes the new item's title.
+
+        Call context: Only works when editing a file.
+        """
+
+        if not self.currentIndex.isValid():
+            return
+
+        if self.getCurrentItemView() == self.txtRedacText:
+            c = self.txtRedacText.textCursor()
+
+            title = c.selectedText()
+            # selection can be backward
+            pos = min(c.selectionStart(), c.selectionEnd())
+
+            item = self.currentIndex.internalPointer()
+
+            item.splitAt(pos, len(title))
+
     def documentsMerge(self):
         print("documentsMerge::FIXME")

@@ -652,6 +652,7 @@ class outlineItem():
         if column == Outline.text.value:
             wc = wordCount(data)
             self.setData(Outline.wordCount.value, wc)
+            self.emitDataChanged(cols=[Outline.text.value]) # new in 0.5.0
 
         if column == Outline.compile.value:
             self.emitDataChanged(cols=[Outline.title.value, Outline.compile.value], recursive=True)
@@ -894,8 +895,38 @@ class outlineItem():
                     item.setData(Outline.text.value, subTxt)
 
                     # Inserting item
-                    self.parent().insertChild(self.row()+k, item)
+                    #self.parent().insertChild(self.row()+k, item)
+                    self._model.insertItem(item, self.row()+k, self.parent().index())
                     k += 1
+
+    def splitAt(self, position, length=0):
+        """
+        Splits note at position p.
+
+        If length is bigger than 0, it describes the length of the title, made
+        from the character following position.
+        """
+
+        txt = self.text()
+
+        # Stores the new text
+        self.setData(Outline.text.value, txt[:position])
+
+        # Create a copy
+        item = self.copy()
+
+        # Update title
+        if length > 0:
+            title = txt[position:position+length].replace("\n", "")
+        else:
+            title = "{}_{}".format(item.title(), 2)
+        item.setData(Outline.title.value, title)
+
+        # Set text
+        item.setData(Outline.text.value, txt[position+length:])
+
+        # Inserting item using the model to signal views
+        self._model.insertItem(item, self.row()+1, self.parent().index())
 
     ###############################################################################
     # XML

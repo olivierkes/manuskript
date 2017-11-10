@@ -93,7 +93,7 @@ class textEditView(QTextEdit):
             default_locale = QLocale.system().name()
         if default_locale is None:
             default_locale = enchant.list_dicts()[0][0]
-        
+
         return default_locale
 
     def setModel(self, model):

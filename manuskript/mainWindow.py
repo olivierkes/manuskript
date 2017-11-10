@@ -439,23 +439,42 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     # mainEditor). So we just pass along the signal.
 
     def documentsCopy(self):
+        "Copy selected item(s)."
         if self._lastFocus: self._lastFocus.copy()
     def documentsCut(self):
+        "Cut selected item(s)."
         if self._lastFocus: self._lastFocus.cut()
     def documentsPaste(self):
+        "Paste clipboard item(s) into selected item."
         if self._lastFocus: self._lastFocus.paste()
     def documentsDuplicate(self):
+        "Duplicate selected item(s)."
         if self._lastFocus: self._lastFocus.duplicate()
     def documentsDelete(self):
+        "Delete selected item(s)."
         if self._lastFocus: self._lastFocus.delete()
     def documentsMoveUp(self):
+        "Move up selected item(s)."
         if self._lastFocus: self._lastFocus.moveUp()
     def documentsMoveDown(self):
+        "Move Down selected item(s)."
         if self._lastFocus: self._lastFocus.moveDown()
+
     def documentsSplitDialog(self):
-        print("documentsSplitDialog::FIXME")
+        "Opens a dialog to split selected items."
+        if self._lastFocus: self._lastFocus.splitDialog()
+        # current items or selected items?
+        pass
+        # use outlineBasics, to do that on all selected items.
+        # use editorWidget to do that on selected text.
+
     def documentsSplitCursor(self):
-        print("documentsSplitCursor::FIXME")
+        """
+        Split current item (open in text editor) at cursor position. If there is
+        a text selection, that selection becomes the title of the new scene.
+        """
+        if self._lastFocus and self._lastFocus == self.mainEditor:
+            self.mainEditor.splitCursor()
     def documentsMerge(self):
         print("documentsMerge::FIXME")
 
