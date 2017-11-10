@@ -398,11 +398,23 @@ class outlineModel(QAbstractItemModel):
         if not items:
             return False
 
-        r = self.insertItems(items, beginRow, parent)
-
+        # In case of copy actions, items might be duplicates, so we need new IDs.
+        # But they might not be, if we cut, then paste. Paste is a Copy Action.
+        # The first paste would not need new IDs. But subsequent ones will.
         if action == Qt.CopyAction:
+            IDs = self.rootItem.listAllIDs()
+
             for item in items:
-                item.getUniqueID(recursive=True)
+                if item.ID() in IDs:
+                    # Recursively remove ID. So will get a new one when inserted.
+                    def stripID(item):
+                        item.setData(Outline.ID.value, None)
+                        for c in item.children():
+                            stripID(c)
+
+                    stripID(item)
+
+        r = self.insertItems(items, beginRow, parent)
 
         return r
 
@@ -928,7 +940,7 @@ class outlineItem():
         # Inserting item using the model to signal views
         self._model.insertItem(item, self.row()+1, self.parent().index())
 
-    def mergeWith(self, items, sep="\n---\n"):
+    def mergeWith(self, items, sep="\n\n"):
         """
         Merges item with several other items. Merge is basic, it merges only
         the text.
