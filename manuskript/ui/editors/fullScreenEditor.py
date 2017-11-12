@@ -243,11 +243,12 @@ class fullScreenEditor(QWidget):
     def hideWidget(self, widget):
         if widget not in self._geometries:
             self._geometries[widget] = widget.geometry()
-        
+
         if hasattr(widget, "_autoHide") and not widget._autoHide:
             return
-        
-        widget.move(self.geometry().bottomRight())
+
+        # Hides wiget in the bottom right corner
+        widget.move(self.geometry().bottomRight() + QPoint(1, 1))
 
     def showWidget(self, widget):
         if widget in self._geometries:
@@ -341,7 +342,7 @@ class myPanel(QWidget):
         self.show()
         self.setAttribute(Qt.WA_TranslucentBackground)
         self._autoHide = True
-        
+
         if not vertical:
             self.setLayout(QHBoxLayout())
         else:
@@ -355,10 +356,10 @@ class myPanel(QWidget):
         r = event.rect()
         painter = QPainter(self)
         painter.fillRect(r, self._color)
-        
+
     def setAutoHide(self, value):
         self._autoHide = value
-        
+
     def mouseReleaseEvent(self, event):
         if event.button() == Qt.RightButton:
             m = QMenu()
