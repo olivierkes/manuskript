@@ -141,6 +141,8 @@ class welcome(QWidget, Ui_welcome):
                                                self.tr("Manuskript project (*.msk)"))[0]
 
         if filename:
+            if filename[-4:] != ".msk":
+                filename += ".msk"
             self.appendToRecentFiles(filename)
             loadSave.clearSaveCache()  # Ensure all file(s) are saved under new filename
             self.mw.saveDatas(filename)
