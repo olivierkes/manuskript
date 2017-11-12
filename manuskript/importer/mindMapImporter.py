@@ -19,8 +19,7 @@ class mindMapImporter(abstractImporter):
     def isValid(cls):
         return True
 
-    @classmethod
-    def startImport(cls, filePath, parentItem, settingsWidget, fromString=None):
+    def startImport(self, filePath, parentItem, settingsWidget, fromString=None):
         """
         Import/export outline cards in mind map free plane.
         """
@@ -48,7 +47,7 @@ class mindMapImporter(abstractImporter):
         items = []
 
         if node is not None:
-            items.extend(cls.parseItems(node, parentItem))
+            items.extend(self.parseItems(node, parentItem))
             ret = True
 
         if not ret:
@@ -61,8 +60,26 @@ class mindMapImporter(abstractImporter):
 
         return items
 
-    @classmethod
-    def parseItems(cls, underElement, parentItem=None):
+    def settingsWidget(self, widget):
+        """
+        Takes a QWidget that can be modified and must be returned.
+        """
+
+        # Add group
+        group = self.addGroup(widget.toolBox.widget(0),
+                              qApp.translate("Import", "Mind Map import"))
+
+        self.addSetting("importTipAs", "combo",
+                        qApp.translate("Import", "Import tip as:"),
+                        vals="Folder|Text",
+                       )
+
+        for s in self.settings:
+            self.settings[s].widget(group)
+
+        return widget
+
+    def parseItems(self, underElement, parentItem=None):
         items = []
         title = underElement.get('TEXT')
         if title is not None:
@@ -73,8 +90,8 @@ class mindMapImporter(abstractImporter):
             children = underElement.findall('node')
             if children is not None and len(children) > 0:
                 for c in children:
-                    items.extend(cls.parseItems(c, item))
-            else:
+                    items.extend(self.parseItems(c, item))
+            elif self.getSetting("importTipAs").value() == "Text":
                 item.setData(Outline.type.value, 'md')
 
         return items

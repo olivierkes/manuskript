@@ -130,6 +130,7 @@ class importerDialog(QWidget, Ui_importer):
             fileName, _ = QFileDialog.getOpenFileName(self, "Import from file", "",
                                                       F.fileFormat, options=options)
         self.setFileName(fileName)
+        self.preview()
 
     def setFileName(self, fileName):
         """
