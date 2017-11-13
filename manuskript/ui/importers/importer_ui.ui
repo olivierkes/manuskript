@@ -45,8 +45,7 @@
         <string>Chose file</string>
        </property>
        <property name="icon">
-        <iconset theme="document-import">
-         <normaloff>../../../../../../../../../../.designer/backup</normaloff>../../../../../../../../../../.designer/backup</iconset>
+        <iconset theme="document-import"/>
        </property>
       </widget>
      </item>

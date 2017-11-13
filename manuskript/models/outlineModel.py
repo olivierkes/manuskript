@@ -15,7 +15,8 @@ from manuskript import settings
 from lxml import etree as ET
 
 from manuskript.enums import Outline
-from manuskript.functions import mainWindow, toInt, wordCount, HTML2PlainText
+from manuskript.functions import mainWindow, toInt, wordCount
+from manuskript.converters import HTML2PlainText
 
 try:
     locale.setlocale(locale.LC_ALL, '')

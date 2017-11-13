@@ -18,7 +18,8 @@ from PyQt5.QtGui import QColor, QStandardItem
 
 from manuskript import settings
 from manuskript.enums import Character, World, Plot, PlotStep, Outline
-from manuskript.functions import mainWindow, iconColor, iconFromColorString, HTML2PlainText
+from manuskript.functions import mainWindow, iconColor, iconFromColorString
+from manuskript.converters import HTML2PlainText
 from lxml import etree as ET
 
 from manuskript.load_save.version_0 import loadFilesFromZip

@@ -226,6 +226,9 @@ class importerDialog(QWidget, Ui_importer):
 
     def preview(self):
 
+        if not self.fileName:
+            return
+
         # Creating a temporary outlineModel
         previewModel = outlineModel(self)
         previewModel.loadFromXML(

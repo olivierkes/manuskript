@@ -276,17 +276,6 @@ def findFirstFile(regex, path="resources"):
             if re.match(regex, l):
                 return os.path.join(p, l)
 
-
-def HTML2PlainText(html):
-    """
-    Ressource-inefficient way to convert HTML to plain text.
-    @param html:
-    @return:
-    """
-    e = QTextEdit()
-    e.setHtml(html)
-    return e.toPlainText()
-
 def customIcons():
     """
     Returns a list of possible customIcons. String from theme.

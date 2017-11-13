@@ -7,6 +7,7 @@ from manuskript.enums import Outline
 from lxml import etree as ET
 from manuskript.functions import mainWindow
 from manuskript.importer.abstractImporter import abstractImporter
+from manuskript.converters import HTML2MD, HTML2PlainText
 
 class mindMapImporter(abstractImporter):
 
@@ -71,7 +72,7 @@ class mindMapImporter(abstractImporter):
 
         self.addSetting("importTipAs", "combo",
                         qApp.translate("Import", "Import tip as:"),
-                        vals="Folder|Text",
+                        vals="Text|Folder",
                        )
 
         for s in self.settings:
@@ -81,17 +82,65 @@ class mindMapImporter(abstractImporter):
 
     def parseItems(self, underElement, parentItem=None):
         items = []
-        title = underElement.get('TEXT')
-        if title is not None:
 
-            item = outlineItem(parent=parentItem, title=title)
-            items.append(item)
+        # Title
+        title = underElement.get('TEXT', "").replace("\n", " ")
+        if not title:
+            title = qApp.translate("Import", "Untitled")
 
-            children = underElement.findall('node')
-            if children is not None and len(children) > 0:
-                for c in children:
-                    items.extend(self.parseItems(c, item))
-            elif self.getSetting("importTipAs").value() == "Text":
-                item.setData(Outline.type.value, 'md')
+        item = outlineItem(parent=parentItem, title=title)
+        items.append(item)
+
+        # URL
+        url = underElement.get('LINK', None)
+
+        # Rich text content
+        content = ""
+        content = underElement.find("richcontent")
+        if content is not None:
+            # In Freemind, can be note or node
+            # Note: it's a note
+            # Node: it's the title of the node, in rich text
+            content_type = content.get("TYPE", "NOTE")
+            content = ET.tostring(content.find("html"))
+
+        if content and content_type == "NODE":
+            # Content is title
+            # convert rich text title (in html) to plain text
+            title = HTML2PlainText(content) #.replace("\n", " ").strip()
+            # Count the number of lines
+            lines = [l.strip() for l in title.split("\n") if l.strip()]
+
+            # If there is one line, we use it as title.
+            # Otherwise we leave it to be inserted as a note.
+            if len(lines) == 1:
+                item.setData(Outline.title.value, "".join(lines))
+                content = ""
+
+        if content:
+            # Set the note content as text value
+            content = HTML2MD(content)
+            item.setData(Outline.notes.value, content)
+
+        if url:
+            # Set the url in notes
+            item.setData(Outline.notes.value,
+                         item.data(Outline.notes.value) + "\n\n" + url)
+
+        children = underElement.findall('node')
+
+        # Process children
+        if children is not None and len(children) > 0:
+            for c in children:
+                items.extend(self.parseItems(c, item))
+
+        # Process if no children
+        elif self.getSetting("importTipAs").value() == "Text":
+            # Transform item to text
+            item.setData(Outline.type.value, 'md')
+            # Move notes to text
+            if item.data(Outline.notes.value):
+                item.setData(Outline.text.value, item.data(Outline.notes.value))
+                item.setData(Outline.notes.value, "")
 
         return items
