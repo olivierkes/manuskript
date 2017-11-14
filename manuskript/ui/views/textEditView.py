@@ -15,6 +15,7 @@ from manuskript.ui.editors.MDFunctions import MDFormatSelection
 from manuskript.ui.editors.MMDHighlighter import MMDHighlighter
 from manuskript.ui.editors.basicHighlighter import basicHighlighter
 from manuskript.ui.editors.textFormat import textFormat
+from manuskript.ui import style as S
 
 try:
     import enchant
@@ -205,6 +206,8 @@ class textEditView(QTextEdit):
         opt = settings.textEditor
         f = QFont()
         f.fromString(opt["font"])
+        background = opt["background"] if not opt["backgroundTransparent"] else "transparent"
+        foreground = opt["fontColor"] if not opt["backgroundTransparent"] else S.text
         # self.setFont(f)
         self.setStyleSheet("""QTextEdit{{
             background: {bg};
@@ -215,8 +218,8 @@ class textEditView(QTextEdit):
             {maxWidth}
             }}
             """.format(
-                bg=opt["background"],
-                foreground=opt["fontColor"],
+                bg=background,
+                foreground=foreground,
                 ff=f.family(),
                 fs="{}pt".format(str(f.pointSize())),
                 mTB = opt["marginsTB"],
@@ -237,7 +240,7 @@ class textEditView(QTextEdit):
                     # We style by name, otherwise all heriting widgets get the same
                     # colored background, for example context menu.
                     name=self.parent().objectName(),
-                    bg=opt["background"],
+                    bg=background,
                 ))
 
         cf = QTextCharFormat()

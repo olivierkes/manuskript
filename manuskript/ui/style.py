@@ -18,10 +18,17 @@ windowText = p.color(QPalette.WindowText).name()    # General foregroung
 base = p.color(QPalette.Base).name()                # Other background
 text = p.color(QPalette.Text).name()                # Base Text
 brightText = p.color(QPalette.BrightText).name()    # Contrast Text
-button = p.color(QPalette.Window).name()            # Button background
-buttonText = p.color(QPalette.Window).name()        # Button Text
+button = p.color(QPalette.Button).name()            # Button background
+buttonText = p.color(QPalette.ButtonText).name()    # Button Text
 highlight = p.color(QPalette.Highlight).name()      # Other background
 highlightedText = p.color(QPalette.HighlightedText).name() # Base Text
+
+light = p.color(QPalette.Light).name()       # Lighter than Button color
+midlight = p.color(QPalette.Midlight).name() # Between Button and Light
+dark = p.color(QPalette.Dark).name()         # Darker than Button
+mid = p.color(QPalette.Mid).name()           # Between Button and Dark
+shadow = p.color(QPalette.Shadow).name()     # A very dark color
+
 
 bgHover = "#ccc"
 bgChecked = "#bbb"
@@ -119,43 +126,85 @@ def collapsibleGroupBoxButton():
 
 
 def mainEditorTabSS():
-    return """
-        QTabWidget::pane{{
-            margin-top: -1px;
-            border: 1px solid #999;
-        }}
-        QTabWidget::tab-bar{{
-            left:50px;
-        }}
-        QTabBar{{
-            background: transparent;
-            border-radius: 0;
-            border: 0px;
-        }}
-        QTabBar::tab{{
-            margin: 3px 0 -3px 0;
-            padding: 2px 9px;
-            border: 1px solid #999;
-            border-bottom: 0px;
-        }}
-        QTabBar::tab:selected{{
-            border: 1px solid #999;
-            background: {bgColor};
-            border-bottom: 0px;
-            margin-top: 0px;
-            color: {foreground};
-        }}
-        QTabBar::tab:!selected:hover{{
-            background:#ddd;
-        }}
+    if not settings.textEditor["backgroundTransparent"]:
+        SS = """
+            QTabWidget::pane{{
+                margin-top: -1px;
+                border: 1px solid {borderColor};
+            }}
+            QTabWidget::tab-bar{{
+                left:50px;
+            }}
+            QTabBar{{
+                background: transparent;
+                border-radius: 0;
+                border: 0px;
+            }}
+            QTabBar::tab{{
+                padding: 2px 9px;
+                border: 1px solid {borderColor};
+                border-bottom: 0px;
+            }}
+            QTabBar::tab:selected{{
+                border: 1px solid {borderColor};
+                background: {bgColor};
+                border-bottom: 0px;
+                color: {foreground};
+            }}
+            QTabBar::tab:!selected:hover{{
+                background:{highlight};
+                color: {highlightedText};
+            }}
+            """.format(
+                bgColor=settings.textEditor["background"],
+                foreground=settings.textEditor["fontColor"],
+                borderColor=mid,
+                highlight=highlight,
+                highlightedText=highlightedText,
+            )
+    else:
+        # Transparent text view
+        SS = """
+            QTabWidget::pane{{
+                margin-top: -1px;
+                border: none;
+            }}
+            QTabWidget::tab-bar{{
+                left:50px;
+            }}
+            QTabBar{{
+                background: transparent;
+                border: 0px;
+            }}
+            QTabBar::tab{{
+                padding: 2px 9px;
+                border: 1px solid {borderColor};
+            }}
+            QTabBar::tab:selected{{
+                border: 1px solid {borderColor};
+                background: {highlight};
+                color: {text};
+            }}
+            QTabBar::tab:!selected:hover{{
+                background:{highlight};
+                color: {highlightedText};
+            }}
+            """.format(
+                highlight=highlight,
+                highlightedText=highlightedText,
+                text=text,
+                borderColor=mid,
+            )
 
+    # Add scrollbar
+    SS += """
         QScrollBar:vertical {{
             border: none;
             background: transparent;
             width: 10px;
         }}
         QScrollBar::handle {{
-            background: rgba(180, 180, 180, 40%);
+            background: {scrollBG};
         }}
         QScrollBar::add-line:vertical {{
             width:0;
@@ -170,10 +219,10 @@ def mainEditorTabSS():
             border: none;
             background: none;
         }}
-        """.format(
-        bgColor=settings.textEditor["background"],
-        foreground=settings.textEditor["fontColor"]
-    )
+        """.format(scrollBG=button)
+
+    return SS
+
 
 def toolBarSS():
     return """
