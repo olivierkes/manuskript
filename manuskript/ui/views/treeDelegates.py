@@ -82,13 +82,20 @@ class treeTitleDelegate(QStyledItemDelegate):
         # Text
         if opt.text:
             painter.save()
+            textColor = QColor(S.text)
             if option.state & QStyle.State_Selected:
                 col = QColor(S.highlightedText)
+                textColor = col
                 painter.setPen(col)
             if settings.viewSettings["Tree"]["Text"] != "Nothing":
                 col = colors[settings.viewSettings["Tree"]["Text"]]
                 if col == Qt.transparent:
-                    col = QColor(S.text)
+                    col = textColor
+                # If text color is Compile and item is selected, we have
+                # to change the color
+                if settings.viewSettings["Outline"]["Text"] == "Compile" and \
+                   item.compile() in [0, "0"]:
+                    col = mixColors(textColor, QColor(S.window))
                 painter.setPen(col)
             f = QFont(opt.font)
             painter.setFont(f)

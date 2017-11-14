@@ -189,7 +189,7 @@ def outlineItemColors(item):
     if item.compile() in [0, "0"]:
         colors["Compile"] = mixColors(QColor(S.text), QColor(S.window))
     else:
-        colors["Compile"] = QColor(S.text)
+        colors["Compile"] = QColor(Qt.transparent) # will use default
 
     return colors
 
