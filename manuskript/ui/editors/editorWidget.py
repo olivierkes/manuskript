@@ -40,6 +40,8 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
     toggledSpellcheck = pyqtSignal(bool)
     dictChanged = pyqtSignal(str)
 
+    _maxTabTitleLength = 24
+
     def __init__(self, parent):
         QWidget.__init__(self, parent)
         self.setupUi(self)
@@ -113,7 +115,15 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
             return
 
         i = self._tabWidget.indexOf(self)
-        self._tabWidget.setTabText(i, item.title())
+
+        self._tabWidget.setTabText(i, self.ellidedTitle(item.title()))
+        self._tabWidget.setTabToolTip(i, item.title())
+
+    def ellidedTitle(self, title):
+        if len(title) > self._maxTabTitleLength:
+            return "{}…".format(title[:self._maxTabTitleLength])
+        else:
+            return title
 
     def setView(self):
         # index = mainWindow().treeRedacOutline.currentIndex()

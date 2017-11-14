@@ -220,7 +220,8 @@ class mainEditor(QWidget, Ui_mainEditor):
             editor = editorWidget(self)
             editor.setCurrentModelIndex(index)
             editor._tabWidget = tabWidget
-            tabWidget.addTab(editor, title)
+            i = tabWidget.addTab(editor, editor.ellidedTitle(title))
+            tabWidget.setTabToolTip(i, title)
             tabWidget.setCurrentIndex(tabWidget.count() - 1)
         else:
             self.currentEditor(tabWidget).setCurrentModelIndex(index)
