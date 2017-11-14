@@ -142,10 +142,11 @@ class treeTitleDelegate(QStyledItemDelegate):
                 f = painter.font()
                 f.setWeight(QFont.Normal)
                 painter.setFont(f)
-                col = mixColors(
-                    QColor(S.window),
-                    QColor(S.text))
-                painter.setPen(col) #Qt.darkGray
+                if option.state & QStyle.State_Selected:
+                    col = QColor(S.highlightedTextLight)
+                else:
+                    col = QColor(S.textLight)
+                painter.setPen(col)
                 painter.drawText(r, Qt.AlignLeft | Qt.AlignVCenter, extraText)
                 painter.restore()
 

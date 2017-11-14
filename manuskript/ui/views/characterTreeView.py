@@ -6,6 +6,7 @@ from PyQt5.QtWidgets import QTreeWidget, QTreeWidgetItem, QColorDialog
 
 from manuskript.enums import Character
 from manuskript.functions import iconColor, mainWindow
+from manuskript.ui import style as S
 
 
 class characterTreeView(QTreeWidget):
@@ -90,8 +91,8 @@ class characterTreeView(QTreeWidget):
         for i in range(3):
             # Create category item
             cat = QTreeWidgetItem(self, [h[i]])
-            cat.setBackground(0, QBrush(QColor(Qt.blue).lighter(190)))
-            cat.setForeground(0, QBrush(Qt.darkBlue))
+            cat.setBackground(0, QBrush(QColor(S.highlightLight)))
+            cat.setForeground(0, QBrush(QColor(S.highlightedTextDark)))
             cat.setTextAlignment(0, Qt.AlignCenter)
             f = cat.font(0)
             f.setBold(True)

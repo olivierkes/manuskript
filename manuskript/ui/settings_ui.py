@@ -43,13 +43,6 @@ class Ui_Settings(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.lblTitleGeneral.sizePolicy().hasHeightForWidth())
         self.lblTitleGeneral.setSizePolicy(sizePolicy)
-        self.lblTitleGeneral.setStyleSheet("background-color:lightBlue;\n"
-"border:none;\n"
-"padding:10px;\n"
-"color:darkBlue;\n"
-"font-size:16px;\n"
-"font-weight:bold;\n"
-"text-align:center;")
         self.lblTitleGeneral.setAlignment(QtCore.Qt.AlignCenter)
         self.lblTitleGeneral.setObjectName("lblTitleGeneral")
         self.verticalLayout_7.addWidget(self.lblTitleGeneral)
@@ -230,13 +223,6 @@ class Ui_Settings(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.lblTitleGeneral_2.sizePolicy().hasHeightForWidth())
         self.lblTitleGeneral_2.setSizePolicy(sizePolicy)
-        self.lblTitleGeneral_2.setStyleSheet("background-color:lightBlue;\n"
-"border:none;\n"
-"padding:10px;\n"
-"color:darkBlue;\n"
-"font-size:16px;\n"
-"font-weight:bold;\n"
-"text-align:center;")
         self.lblTitleGeneral_2.setAlignment(QtCore.Qt.AlignCenter)
         self.lblTitleGeneral_2.setObjectName("lblTitleGeneral_2")
         self.verticalLayout.addWidget(self.lblTitleGeneral_2)
@@ -397,13 +383,6 @@ class Ui_Settings(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.lblTitleViews.sizePolicy().hasHeightForWidth())
         self.lblTitleViews.setSizePolicy(sizePolicy)
-        self.lblTitleViews.setStyleSheet("background-color:lightBlue;\n"
-"border:none;\n"
-"padding:10px;\n"
-"color:darkBlue;\n"
-"font-size:16px;\n"
-"font-weight:bold;\n"
-"text-align:center;")
         self.lblTitleViews.setAlignment(QtCore.Qt.AlignCenter)
         self.lblTitleViews.setObjectName("lblTitleViews")
         self.verticalLayout_9.addWidget(self.lblTitleViews)
@@ -1329,13 +1308,6 @@ class Ui_Settings(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.lblTitleLabels.sizePolicy().hasHeightForWidth())
         self.lblTitleLabels.setSizePolicy(sizePolicy)
-        self.lblTitleLabels.setStyleSheet("background-color:lightBlue;\n"
-"border:none;\n"
-"padding:10px;\n"
-"color:darkBlue;\n"
-"font-size:16px;\n"
-"font-weight:bold;\n"
-"text-align:center;")
         self.lblTitleLabels.setAlignment(QtCore.Qt.AlignCenter)
         self.lblTitleLabels.setObjectName("lblTitleLabels")
         self.verticalLayout_3.addWidget(self.lblTitleLabels)
@@ -1392,13 +1364,6 @@ class Ui_Settings(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.lblTitleStatus.sizePolicy().hasHeightForWidth())
         self.lblTitleStatus.setSizePolicy(sizePolicy)
-        self.lblTitleStatus.setStyleSheet("background-color:lightBlue;\n"
-"border:none;\n"
-"padding:10px;\n"
-"color:darkBlue;\n"
-"font-size:16px;\n"
-"font-weight:bold;\n"
-"text-align:center;")
         self.lblTitleStatus.setAlignment(QtCore.Qt.AlignCenter)
         self.lblTitleStatus.setObjectName("lblTitleStatus")
         self.verticalLayout_4.addWidget(self.lblTitleStatus)
@@ -1428,22 +1393,15 @@ class Ui_Settings(object):
         self.verticalLayout_10 = QtWidgets.QVBoxLayout(self.page)
         self.verticalLayout_10.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_10.setObjectName("verticalLayout_10")
-        self.lblTitleStatus_2 = QtWidgets.QLabel(self.page)
+        self.lblTitleFullscreen = QtWidgets.QLabel(self.page)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.lblTitleStatus_2.sizePolicy().hasHeightForWidth())
-        self.lblTitleStatus_2.setSizePolicy(sizePolicy)
-        self.lblTitleStatus_2.setStyleSheet("background-color:lightBlue;\n"
-"border:none;\n"
-"padding:10px;\n"
-"color:darkBlue;\n"
-"font-size:16px;\n"
-"font-weight:bold;\n"
-"text-align:center;")
-        self.lblTitleStatus_2.setAlignment(QtCore.Qt.AlignCenter)
-        self.lblTitleStatus_2.setObjectName("lblTitleStatus_2")
-        self.verticalLayout_10.addWidget(self.lblTitleStatus_2)
+        sizePolicy.setHeightForWidth(self.lblTitleFullscreen.sizePolicy().hasHeightForWidth())
+        self.lblTitleFullscreen.setSizePolicy(sizePolicy)
+        self.lblTitleFullscreen.setAlignment(QtCore.Qt.AlignCenter)
+        self.lblTitleFullscreen.setObjectName("lblTitleFullscreen")
+        self.verticalLayout_10.addWidget(self.lblTitleFullscreen)
         self.themeStack = QtWidgets.QStackedWidget(self.page)
         self.themeStack.setObjectName("themeStack")
         self.stackedWidgetPage1_3 = QtWidgets.QWidget()
@@ -1820,7 +1778,7 @@ class Ui_Settings(object):
         self.horizontalLayout_8.addWidget(self.stack)
 
         self.retranslateUi(Settings)
-        self.stack.setCurrentIndex(2)
+        self.stack.setCurrentIndex(5)
         self.tabViews.setCurrentIndex(3)
         self.themeStack.setCurrentIndex(1)
         self.themeEditStack.setCurrentIndex(3)
@@ -2016,7 +1974,7 @@ class Ui_Settings(object):
         self.lblTitleLabels.setText(_translate("Settings", "Labels"))
         self.btnLabelColor.setShortcut(_translate("Settings", "Ctrl+S"))
         self.lblTitleStatus.setText(_translate("Settings", "Status"))
-        self.lblTitleStatus_2.setText(_translate("Settings", "Fullscreen"))
+        self.lblTitleFullscreen.setText(_translate("Settings", "Fullscreen"))
         self.btnThemeAdd.setText(_translate("Settings", "New"))
         self.btnThemeEdit.setText(_translate("Settings", "Edit"))
         self.btnThemeRemove.setText(_translate("Settings", "Delete"))

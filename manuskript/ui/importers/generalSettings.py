@@ -17,6 +17,7 @@ class generalSettings(QWidget, Ui_generalSettings):
     def __init__(self, parent=None):
         QWidget.__init__(self, parent)
         self.setupUi(self)
+        self.toolBox.setStyleSheet(style.toolBoxSS())
 
         self.mw = mainWindow()
         self.txtGeneralSplitScenes.setStyleSheet(style.lineEditSS())

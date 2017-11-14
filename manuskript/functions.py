@@ -146,11 +146,18 @@ def randomColor(mix=None):
 
 
 def mixColors(col1, col2, f=.5):
+    fromString = False
+    if type(col1) == str:
+        fromString = True
+        col1 = QColor(col1)
+    if type(col2) == str:
+        col2 = QColor(col2)
     f2 = 1-f
     r = col1.red() * f + col2.red() * f2
     g = col1.green() * f + col2.green() * f2
     b = col1.blue() * f + col2.blue() * f2
-    return QColor(r, g, b)
+
+    return QColor(r, g, b) if not fromString else QColor(r, g, b).name()
 
 
 def outlineItemColors(item):
@@ -234,14 +241,6 @@ def allPaths(suffix=None):
 def tempFile(name):
     "Returns a temp file."
     return os.path.join(QDir.tempPath(), name)
-
-
-def lightBlue():
-    """
-    A light blue used in several places in manuskript.
-    @return: QColor
-    """
-    return QColor(Qt.blue).lighter(190)
 
 
 def totalObjects():

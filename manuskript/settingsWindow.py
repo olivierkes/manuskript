@@ -38,6 +38,15 @@ class settingsWindow(QWidget, Ui_Settings):
         self.mw = mainWindow
 
         # UI
+        for l in [self.lblTitleGeneral,
+                  self.lblTitleGeneral_2,
+                  self.lblTitleViews,
+                  self.lblTitleLabels,
+                  self.lblTitleStatus,
+                  self.lblTitleFullscreen,
+                  ]:
+            l.setStyleSheet(S.titleLabelSS())
+
         icons = [QIcon.fromTheme("configure"),
                  QIcon.fromTheme("history-view"),
                  QIcon.fromTheme("gnome-settings"),

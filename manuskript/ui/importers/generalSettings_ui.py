@@ -17,18 +17,9 @@ class Ui_generalSettings(object):
         self.verticalLayout_2.setSpacing(10)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.toolBox = QtWidgets.QToolBox(generalSettings)
-        self.toolBox.setStyleSheet("QToolBox::tab{\n"
-"    background-color: #BBB;\n"
-"    padding: 2px;\n"
-"    border: none;\n"
-"}\n"
-"\n"
-"QToolBox::tab:selected, QToolBox::tab:hover{\n"
-"    background-color:skyblue;\n"
-"}")
         self.toolBox.setObjectName("toolBox")
         self.general = QtWidgets.QWidget()
-        self.general.setGeometry(QtCore.QRect(0, 0, 267, 378))
+        self.general.setGeometry(QtCore.QRect(0, 0, 267, 375))
         self.general.setObjectName("general")
         self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.general)
         self.verticalLayout_5.setContentsMargins(6, 6, 6, 6)

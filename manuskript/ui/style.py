@@ -8,6 +8,7 @@ from PyQt5.QtGui import QColor, QPalette
 from PyQt5.QtWidgets import qApp
 
 from manuskript import settings
+from manuskript import functions as F
 
 # Loading palette colors.
 # Manuskript as to restart to reload
@@ -16,6 +17,7 @@ p = qApp.palette()
 window = p.color(QPalette.Window).name()            # General background
 windowText = p.color(QPalette.WindowText).name()    # General foregroung
 base = p.color(QPalette.Base).name()                # Other background
+alternateBase = p.color(QPalette.AlternateBase).name() # Other background
 text = p.color(QPalette.Text).name()                # Base Text
 brightText = p.color(QPalette.BrightText).name()    # Contrast Text
 button = p.color(QPalette.Button).name()            # Button background
@@ -29,11 +31,17 @@ dark = p.color(QPalette.Dark).name()         # Darker than Button
 mid = p.color(QPalette.Mid).name()           # Between Button and Dark
 shadow = p.color(QPalette.Shadow).name()     # A very dark color
 
+highlightLight = F.mixColors(highlight, window, .3)
+highlightedTextDark = F.mixColors(highlight, text, .3)
+highlightedTextLight = F.mixColors(highlight, highlightedText)
+midlighter = F.mixColors(mid, window, .4)
+textLight = F.mixColors(window, text)
 
-bgHover = "#ccc"
-bgChecked = "#bbb"
-borderColor = "darkGray"
-blue = "#268bd2"
+
+#from manuskript.ui import style as S
+#QColor(S.highlightedTextDark)
+#QColor(S.highlightLight)
+
 
 def mainWindowSS():
     return """
@@ -44,13 +52,13 @@ def mainWindowSS():
         border: none;
     }}
     QPushButton:flat:hover, QToolButton:hover{{
-        border: 1px solid {borderColor};
+        border: 1px solid {borderHover};
         border-radius: 3px;
-        background: {bgHover};
+        background: {backgroundHover};
     }}
     """.format(
-        bgHover=bgHover,
-        borderColor=borderColor
+        backgroundHover=highlightLight,
+        borderHover=mid
     )
 
 def styleMainWindow(mw):
@@ -58,13 +66,34 @@ def styleMainWindow(mw):
     mw.lstTabs.verticalScrollBar().setStyleSheet(simpleScrollBarV())
 
     # Custon palette?
-    qApp.setPalette(appPalette())
+    #qApp.setPalette(appPalette())
 
     mw.treeRedacOutline.setStyleSheet("""
             QTreeView{
                 background: transparent;
                 margin-top: 30px;
-            }""")
+            }""" + simpleScrollBarV())
+
+    mw.lstTabs.setStyleSheet("""
+        QListView {{
+            show-decoration-selected: 0;
+            outline: none;
+            background-color: transparent;
+        }}
+
+        QListView::item:selected {{
+            background: {highlight};
+            color: {textSelected}
+        }}
+
+        QListView::item:hover {{
+            background: {hover};
+        }}
+        """.format(
+            hover=highlight,
+            highlight=highlightLight,
+            textSelected=text,
+        ))
 
 
 def appPalette():
@@ -96,30 +125,30 @@ def appPalette():
 
 def collapsibleGroupBoxButton():
     s1 = """
-        QPushButton{
+        QPushButton{{
             background-color: #BBB;
             border: none;
             padding: 2px;
-        }
-        QPushButton:checked, QPushButton:hover{
+        }}
+        QPushButton:checked, QPushButton:hover{{
             font-style:italic;
-            background-color:lightBlue;
-        }"""
+            background-color:{bg};
+        }}""".format(bg=highlightLight)
 
     s2 = """
         QPushButton{{
             background-color: transparent;
             border: none;
-            border-top: 1px solid darkGray;
+            border-top: 1px solid {border};
             padding: 4px 0px;
             font-weight: bold;
         }}
         QPushButton:hover{{
-            background-color:{bgHover};
+            background-color:{hover};
         }}
         """.format(
-        bgHover=bgHover,
-        bgChecked=bgChecked
+        hover=highlightLight,
+        border=mid,
     )
 
     return s2
@@ -183,7 +212,7 @@ def mainEditorTabSS():
             QTabBar::tab:selected{{
                 border: 1px solid {borderColor};
                 background: {highlight};
-                color: {text};
+                color: {highlightedText};
             }}
             QTabBar::tab:!selected:hover{{
                 background:{highlight};
@@ -197,45 +226,25 @@ def mainEditorTabSS():
             )
 
     # Add scrollbar
-    SS += """
-        QScrollBar:vertical {{
-            border: none;
-            background: transparent;
-            width: 10px;
-        }}
-        QScrollBar::handle {{
-            background: {scrollBG};
-        }}
-        QScrollBar::add-line:vertical {{
-            width:0;
-            height: 0;
-            border: none;
-            background: none;
-        }}
-
-        QScrollBar::sub-line:vertical {{
-            width:0;
-            height: 0;
-            border: none;
-            background: none;
-        }}
-        """.format(scrollBG=button)
+    SS += simpleScrollBarV(handle=mid, width=10)
 
     return SS
 
 
 def toolBarSS():
     return """
-        QToolBar{
+        QToolBar{{
             background:transparent;
             border: 0;
-            border-left: 1px solid darkgray;
+            border-left: 1px solid {border};
             spacing: 0px;
-        }
-        QToolBar:separator{
+        }}
+        QToolBar:separator{{
             border: none;
-        }
-        """
+        }}
+        """.format(
+            border=midlighter,
+            )
 
 def verticalToolButtonSS():
     return """
@@ -255,25 +264,27 @@ def verticalToolButtonSS():
             background: {bgHover};
         }}
         """.format(
-        borderColor=borderColor,
-        bgChecked=bgChecked,
-        bgHover=bgHover
+        borderColor=mid,
+        bgChecked=midlighter,
+        bgHover=highlightLight,
     )
 
 
 def dockSS():
+
     return """
         QDockWidget::title {{
             text-align: left; /* align the text to the left */
-            background: {bgChecked};
+            background: {header};
             padding: 5px;
         }}
 
         QDockWidget::close-button, QDockWidget::float-button {{
-            background: {bgChecked};
+            background: {header};
         }}
         """.format(
-        bgChecked=bgChecked
+        header=highlightLight,
+        button=button
     )
 
 
@@ -291,15 +302,15 @@ def lineEditSS():
     # return "border-radius: 6px;"
     return """QLineEdit{{
         border: none;
-        border-bottom: 1px solid {checked};
+        border-bottom: 1px solid {line};
         background:{window};
     }}
     QLineEdit:focus{{
-        border-bottom: 1px solid {blue};
+        border-bottom: 1px solid {highlight};
     }}
     """.format(window=window,
-               checked=bgChecked,
-               blue=blue)
+               line=mid,
+               highlight=highlight)
 
 
 def transparentSS():
@@ -309,25 +320,66 @@ def transparentSS():
             border:none;
         }"""
 
-def simpleScrollBarV():
+def simpleScrollBarV(handle=None, width=8):
+    # system default is (i think): mid background, dark handle
+
+    default = midlighter
+
+    handle = handle or default
     return """
-        QScrollBar:vertical {
+        QScrollBar:vertical {{
             border: none;
-            background: transparent;
-            width: 8px;
-        }
-        QScrollBar::handle {
-            background: rgba(180, 180, 180, 60%);
-        }
-        QScrollBar::add-line:vertical {
+            background: {background};
+            width: {width}px;
+        }}
+        QScrollBar::handle {{
+            background: {handle};
+        }}
+        QScrollBar::add-line:vertical {{
             width:0;
             height: 0;
             border: none;
             background: none;
-        }
-        QScrollBar::sub-line:vertical {
+        }}
+
+        QScrollBar::sub-line:vertical {{
             width:0;
             height: 0;
             border: none;
             background: none;
-        }"""
+        }}""".format(
+            background="transparent",
+            handle=handle,
+            width=width)
+
+def toolBoxSS():
+    return """
+    QToolBox::tab{{
+        background-color: {background};
+        padding: 2px;
+        border: none;
+    }}
+
+    QToolBox::tab:selected, QToolBox::tab:hover{{
+        background-color:{backgroundHover};
+        color: {colorHover};
+    }}""".format(
+            background=highlightLight,
+            backgroundHover=highlight,
+            colorHover=highlightedText,
+        )
+
+def titleLabelSS():
+    return """
+        QLabel{{
+            background-color:{bg};
+            border:none;
+            padding:10px;
+            color:{text};
+            font-size:16px;
+            font-weight:bold;
+            text-align:center;
+        }}""".format(
+            bg=highlightLight,
+            text=highlightedTextDark,
+            )

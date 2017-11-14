@@ -54,7 +54,7 @@
    <item>
     <widget class="QStackedWidget" name="stack">
      <property name="currentIndex">
-      <number>2</number>
+      <number>5</number>
      </property>
      <widget class="QWidget" name="stackedWidgetPage1">
       <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -77,15 +77,6 @@
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background-color:lightBlue;
-border:none;
-padding:10px;
-color:darkBlue;
-font-size:16px;
-font-weight:bold;
-text-align:center;</string>
          </property>
          <property name="text">
           <string>General settings</string>
@@ -464,15 +455,6 @@ text-align:center;</string>
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
-         <property name="styleSheet">
-          <string notr="true">background-color:lightBlue;
-border:none;
-padding:10px;
-color:darkBlue;
-font-size:16px;
-font-weight:bold;
-text-align:center;</string>
-         </property>
          <property name="text">
           <string>Revisions</string>
          </property>
@@ -774,15 +756,6 @@ text-align:center;</string>
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background-color:lightBlue;
-border:none;
-padding:10px;
-color:darkBlue;
-font-size:16px;
-font-weight:bold;
-text-align:center;</string>
          </property>
          <property name="text">
           <string>Views settings</string>
@@ -2679,15 +2652,6 @@ text-align:center;</string>
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
-         <property name="styleSheet">
-          <string notr="true">background-color:lightBlue;
-border:none;
-padding:10px;
-color:darkBlue;
-font-size:16px;
-font-weight:bold;
-text-align:center;</string>
-         </property>
          <property name="text">
           <string>Labels</string>
          </property>
@@ -2820,15 +2784,6 @@ text-align:center;</string>
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
-         <property name="styleSheet">
-          <string notr="true">background-color:lightBlue;
-border:none;
-padding:10px;
-color:darkBlue;
-font-size:16px;
-font-weight:bold;
-text-align:center;</string>
-         </property>
          <property name="text">
           <string>Status</string>
          </property>
@@ -2896,21 +2851,12 @@ text-align:center;</string>
         <number>0</number>
        </property>
        <item>
-        <widget class="QLabel" name="lblTitleStatus_2">
+        <widget class="QLabel" name="lblTitleFullscreen">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background-color:lightBlue;
-border:none;
-padding:10px;
-color:darkBlue;
-font-size:16px;
-font-weight:bold;
-text-align:center;</string>
          </property>
          <property name="text">
           <string>Fullscreen</string>

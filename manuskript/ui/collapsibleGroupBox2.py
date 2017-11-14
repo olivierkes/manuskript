@@ -3,7 +3,6 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QWidget, QFrame, QPushButton, QVBoxLayout, QSizePolicy, qApp
 
-from manuskript.functions import lightBlue
 from manuskript.ui import style
 
 
@@ -16,7 +15,6 @@ class collapsibleGroupBox2(QWidget):
         self.button.setChecked(True)
         self.switched = False
         self.vPolicy = None
-        # self.button.setStyleSheet("background-color: lightBlue;")
 
         self.button.setStyleSheet(style.collapsibleGroupBoxButton())
 

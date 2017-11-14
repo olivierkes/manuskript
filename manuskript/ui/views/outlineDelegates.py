@@ -10,6 +10,7 @@ from manuskript.enums import Character, Outline
 from manuskript.functions import outlineItemColors, mixColors, colorifyPixmap, toInt, toFloat, drawProgress
 from manuskript.ui import style as S
 
+
 class outlineTitleDelegate(QStyledItemDelegate):
     def __init__(self, parent=None):
         QStyledItemDelegate.__init__(self, parent)
@@ -142,8 +143,8 @@ class outlineCharacterDelegate(QStyledItemDelegate):
         l = [self.tr("Main"), self.tr("Secondary"), self.tr("Minor")]
         for importance in range(3):
             editor.addItem(l[importance])
-            editor.setItemData(editor.count() - 1, QBrush(Qt.darkBlue), Qt.ForegroundRole)
-            editor.setItemData(editor.count() - 1, QBrush(QColor(Qt.blue).lighter(190)), Qt.BackgroundRole)
+            editor.setItemData(editor.count() - 1, QBrush(QColor(S.highlightedTextDark)), Qt.ForegroundRole)
+            editor.setItemData(editor.count() - 1, QBrush(QColor(S.highlightLight)), Qt.BackgroundRole)
             item = editor.model().item(editor.count() - 1)
             item.setFlags(Qt.ItemIsEnabled)
             for i in range(self.mdlCharacter.rowCount()):

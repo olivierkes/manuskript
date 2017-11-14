@@ -383,7 +383,7 @@ class Ui_MainWindow(object):
         self.scrollAreaPersoInfos.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.scrollAreaPersoInfos.setObjectName("scrollAreaPersoInfos")
         self.scrollAreaPersoInfosWidget = QtWidgets.QWidget()
-        self.scrollAreaPersoInfosWidget.setGeometry(QtCore.QRect(0, 0, 444, 709))
+        self.scrollAreaPersoInfosWidget.setGeometry(QtCore.QRect(0, 0, 426, 688))
         self.scrollAreaPersoInfosWidget.setObjectName("scrollAreaPersoInfosWidget")
         self.formLayout_8 = QtWidgets.QFormLayout(self.scrollAreaPersoInfosWidget)
         self.formLayout_8.setFieldGrowthPolicy(QtWidgets.QFormLayout.AllNonFixedFieldsGrow)
@@ -1036,7 +1036,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.addWidget(self.stack)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1112, 20))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1112, 30))
         self.menubar.setObjectName("menubar")
         self.menuFile = QtWidgets.QMenu(self.menubar)
         self.menuFile.setObjectName("menuFile")
@@ -1101,21 +1101,6 @@ class Ui_MainWindow(object):
         self.verticalLayout_16.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_16.setObjectName("verticalLayout_16")
         self.lstTabs = QtWidgets.QListWidget(self.dockWidgetContents)
-        self.lstTabs.setStyleSheet("QListView {\n"
-"    show-decoration-selected: 0;\n"
-"    outline: none;\n"
-"    background-color: transparent;\n"
-"}\n"
-"\n"
-"QListView::item:selected {\n"
-"    background: #DCDEF1;\n"
-"    color: black;\n"
-"}\n"
-"\n"
-"QListView::item:hover {\n"
-"    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
-"                                                stop: 0 #FAFBFE, stop: 1 #DCDEF1);\n"
-"}")
         self.lstTabs.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.lstTabs.setObjectName("lstTabs")
         self.verticalLayout_16.addWidget(self.lstTabs)
@@ -1421,27 +1406,27 @@ class Ui_MainWindow(object):
         self.actToolFrequency.setText(_translate("MainWindow", "&Frequency Analyzer"))
         self.actAbout.setText(_translate("MainWindow", "&About"))
         self.actAbout.setToolTip(_translate("MainWindow", "About Manuskript"))
-        self.actImport.setText(_translate("MainWindow", "Import…"))
+        self.actImport.setText(_translate("MainWindow", "&Import…"))
         self.actImport.setShortcut(_translate("MainWindow", "F7"))
-        self.actCopy.setText(_translate("MainWindow", "Copy"))
+        self.actCopy.setText(_translate("MainWindow", "&Copy"))
         self.actCopy.setShortcut(_translate("MainWindow", "Ctrl+C"))
-        self.actCut.setText(_translate("MainWindow", "Cut"))
+        self.actCut.setText(_translate("MainWindow", "C&ut"))
         self.actCut.setShortcut(_translate("MainWindow", "Ctrl+X"))
-        self.actPaste.setText(_translate("MainWindow", "Paste"))
+        self.actPaste.setText(_translate("MainWindow", "&Paste"))
         self.actPaste.setShortcut(_translate("MainWindow", "Ctrl+V"))
-        self.actSplitDialog.setText(_translate("MainWindow", "Split…"))
+        self.actSplitDialog.setText(_translate("MainWindow", "&Split…"))
         self.actSplitDialog.setShortcut(_translate("MainWindow", "Ctrl+Shift+K"))
-        self.actSplitCursor.setText(_translate("MainWindow", "Split at cursor"))
+        self.actSplitCursor.setText(_translate("MainWindow", "Sp&lit at cursor"))
         self.actSplitCursor.setShortcut(_translate("MainWindow", "Ctrl+K"))
-        self.actMerge.setText(_translate("MainWindow", "Merge"))
+        self.actMerge.setText(_translate("MainWindow", "Me&rge"))
         self.actMerge.setShortcut(_translate("MainWindow", "Ctrl+M"))
         self.actDuplicate.setText(_translate("MainWindow", "&Duplicate"))
         self.actDuplicate.setShortcut(_translate("MainWindow", "Ctrl+D"))
-        self.actDelete.setText(_translate("MainWindow", "Delete"))
+        self.actDelete.setText(_translate("MainWindow", "D&elete"))
         self.actDelete.setShortcut(_translate("MainWindow", "Del"))
-        self.actMoveUp.setText(_translate("MainWindow", "Move Up"))
+        self.actMoveUp.setText(_translate("MainWindow", "&Move Up"))
         self.actMoveUp.setShortcut(_translate("MainWindow", "Ctrl+Shift+Up"))
-        self.actMoveDown.setText(_translate("MainWindow", "Move Down"))
+        self.actMoveDown.setText(_translate("MainWindow", "M&ove Down"))
         self.actMoveDown.setShortcut(_translate("MainWindow", "Ctrl+Shift+Down"))
 
 from manuskript.ui.cheatSheet import cheatSheet

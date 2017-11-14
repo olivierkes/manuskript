@@ -7,7 +7,7 @@ from PyQt5.QtCore import Qt, QTimer, QUrl
 from PyQt5.QtGui import QBrush, QColor, QIcon, QDesktopServices
 from PyQt5.QtWidgets import QWidget, QFileDialog, QMessageBox, QStyle
 
-from manuskript.functions import lightBlue, writablePath, appPath
+from manuskript.functions import writablePath, appPath
 from manuskript.ui.importers.importer_ui import Ui_importer
 from manuskript.ui.importers.generalSettings import generalSettings
 from manuskript.ui import style
@@ -71,8 +71,8 @@ class importerDialog(QWidget, Ui_importer):
 
         def addHeader(name):
             self.cmbImporters.addItem(name, "header")
-            self.cmbImporters.setItemData(self.cmbImporters.count() - 1, QBrush(QColor(Qt.darkBlue)), Qt.ForegroundRole)
-            self.cmbImporters.setItemData(self.cmbImporters.count() - 1, QBrush(lightBlue()), Qt.BackgroundRole)
+            self.cmbImporters.setItemData(self.cmbImporters.count() - 1, QBrush(QColor(style.highlightedTextDark)), Qt.ForegroundRole)
+            self.cmbImporters.setItemData(self.cmbImporters.count() - 1, QBrush(QColor(style.highlightLight)), Qt.BackgroundRole)
             item = self.cmbImporters.model().item(self.cmbImporters.count() - 1)
             item.setFlags(Qt.ItemIsEnabled)
 

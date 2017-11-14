@@ -6,6 +6,7 @@ from PyQt5.QtWidgets import QComboBox
 
 from manuskript.enums import Outline
 from manuskript.functions import toInt
+from manuskript.ui import style as S
 
 
 class cmbOutlineCharacterChoser(QComboBox):
@@ -36,8 +37,8 @@ class cmbOutlineCharacterChoser(QComboBox):
 
         for importance in range(3):
             self.addItem(l[importance])
-            self.setItemData(self.count() - 1, QBrush(QColor(Qt.darkBlue)), Qt.ForegroundRole)
-            self.setItemData(self.count() - 1, QBrush(QColor(Qt.blue).lighter(190)), Qt.BackgroundRole)
+            self.setItemData(self.count() - 1, QBrush(QColor(S.highlightedTextDark)), Qt.ForegroundRole)
+            self.setItemData(self.count() - 1, QBrush(QColor(S.highlightLight)), Qt.BackgroundRole)
             item = self.model().item(self.count() - 1)
             item.setFlags(Qt.ItemIsEnabled)
             for i in range(self.mdlCharacters.rowCount()):
