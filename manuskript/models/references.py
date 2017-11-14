@@ -9,12 +9,16 @@ import re
 
 # A regex used to match references
 from PyQt5.QtWidgets import qApp
+from PyQt5.QtGui import QColor
+from PyQt5.QtCore import Qt
 
 from manuskript.enums import Outline
 from manuskript.enums import Character
 from manuskript.enums import Plot
 from manuskript.enums import PlotStep
-from manuskript.functions import mainWindow
+from manuskript.functions import mainWindow, mixColors
+from manuskript.ui import style as S
+
 
 RegEx = r"{(\w):(\d+):?.*?}"
 # A non-capturing regex used to identify references
@@ -26,6 +30,12 @@ CharacterLetter = "C"
 TextLetter = "T"
 PlotLetter = "P"
 WorldLetter = "W"
+
+# Colors
+TextHighlightColor = QColor(mixColors(QColor(Qt.blue).name(), S.window, .3))
+CharacterHighlightColor = QColor(mixColors(QColor(Qt.yellow).name(), S.window, .3))
+PlotHighlightColor = QColor(mixColors(QColor(Qt.red).name(), S.window, .3))
+WorldHighlightColor = QColor(mixColors(QColor(Qt.green).name(), S.window, .3))
 
 
 def plotReference(ID, searchable=False):
@@ -69,7 +79,7 @@ def worldReference(ID, searchable=False):
 ###############################################################################
 
 def infos(ref):
-    """Returns a full paragraph in HTML format 
+    """Returns a full paragraph in HTML format
     containing detailed infos about the reference ``ref``.
     """
     match = re.fullmatch(RegEx, ref)
