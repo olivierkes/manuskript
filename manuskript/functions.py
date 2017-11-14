@@ -47,8 +47,9 @@ def toString(text):
 
 
 def drawProgress(painter, rect, progress, radius=0):
+    from manuskript.ui import style as S
     painter.setPen(Qt.NoPen)
-    painter.setBrush(QColor("#dddddd"))
+    painter.setBrush(QColor(S.base)) # "#dddddd"
     painter.drawRoundedRect(rect, radius, radius)
 
     painter.setBrush(QBrush(colorFromProgress(progress)))
