@@ -21,6 +21,8 @@ class corkDelegate(QStyledItemDelegate):
         self.editing = None
         self.margin = 5
 
+        self.bgColors = {}
+
     def newStyle(self):
         return settings.corkStyle == "new"
 
@@ -43,6 +45,8 @@ class corkDelegate(QStyledItemDelegate):
     def createEditor(self, parent, option, index):
         self.updateRects(option, index)
 
+        bgColor = self.bgColors.get(index, "white")
+
         if self.mainLineRect.contains(self.lastPos):
             # One line summary
             self.editing = Outline.summarySentence
@@ -57,6 +61,7 @@ class corkDelegate(QStyledItemDelegate):
                 edt.setAlignment(Qt.AlignCenter)
             edt.setPlaceholderText(self.tr("One line summary"))
             edt.setFont(f)
+            edt.setStyleSheet("background: {}; color: black;".format(bgColor))
             return edt
 
         elif self.titleRect.contains(self.lastPos):
@@ -72,6 +77,7 @@ class corkDelegate(QStyledItemDelegate):
                 edt.setAlignment(Qt.AlignCenter)
             f.setBold(True)
             edt.setFont(f)
+            edt.setStyleSheet("background: {}; color: black;".format(bgColor))
             # edt.setGeometry(self.titleRect)
             return edt
 
@@ -86,6 +92,7 @@ class corkDelegate(QStyledItemDelegate):
                 edt.setPlaceholderText(self.tr("Full summary"))
             except AttributeError:
                 pass
+            edt.setStyleSheet("background: {}; color: black;".format(bgColor))
             return edt
 
     def updateEditorGeometry(self, editor, option, index):
@@ -246,6 +253,9 @@ class corkDelegate(QStyledItemDelegate):
         else:
             p.setBrush(Qt.white)
             backgroundColor = QColor(Qt.white)
+
+            # Cache background color
+        self.bgColors[index] = backgroundColor.name()
 
         p.setPen(Qt.NoPen)
         p.drawRect(self.cardRect)
