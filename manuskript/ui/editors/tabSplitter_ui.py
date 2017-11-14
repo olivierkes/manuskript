@@ -2,8 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/editors/tabSplitter_ui.ui'
 #
-# Created: Sun Apr 10 16:27:03 2016
-#      by: PyQt5 UI code generator 5.2.1
+# Created by: PyQt5 UI code generator 5.9
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -20,8 +19,8 @@ class Ui_tabSplitter(object):
         tabSplitter.setSizePolicy(sizePolicy)
         tabSplitter.setWindowTitle("tabSPlitter")
         self.verticalLayout = QtWidgets.QVBoxLayout(tabSplitter)
-        self.verticalLayout.setSpacing(0)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName("verticalLayout")
         self.splitter = QtWidgets.QSplitter(tabSplitter)
         self.splitter.setMinimumSize(QtCore.QSize(30, 30))

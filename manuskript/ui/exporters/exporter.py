@@ -8,9 +8,10 @@ from PyQt5.QtGui import QBrush, QColor, QIcon
 from PyQt5.QtWidgets import QWidget
 
 from manuskript import exporter
-from manuskript.functions import lightBlue, writablePath
+from manuskript.functions import writablePath
 from manuskript.ui.exporters.exporter_ui import Ui_exporter
 from manuskript.ui.exporters.exportersManager import exportersManager
+from manuskript.ui import style as S
 
 
 class exporterDialog(QWidget, Ui_exporter):
@@ -46,8 +47,8 @@ class exporterDialog(QWidget, Ui_exporter):
                 continue
 
             self.cmbExporters.addItem(QIcon(E.icon), E.name)
-            self.cmbExporters.setItemData(self.cmbExporters.count() - 1, QBrush(QColor(Qt.darkBlue)), Qt.ForegroundRole)
-            self.cmbExporters.setItemData(self.cmbExporters.count() - 1, QBrush(lightBlue()), Qt.BackgroundRole)
+            self.cmbExporters.setItemData(self.cmbExporters.count() - 1, QBrush(QColor(S.highlightedTextDark)), Qt.ForegroundRole)
+            self.cmbExporters.setItemData(self.cmbExporters.count() - 1, QBrush(QColor(S.highlightLight)), Qt.BackgroundRole)
             item = self.cmbExporters.model().item(self.cmbExporters.count() - 1)
             item.setFlags(Qt.ItemIsEnabled)
 

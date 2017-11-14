@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
 from PyQt5.QtCore import pyqtSignal, Qt, QRect
-from PyQt5.QtGui import QBrush, QFontMetrics, QPalette
+from PyQt5.QtGui import QBrush, QFontMetrics, QPalette, QColor
 from PyQt5.QtWidgets import QWidget, QListWidgetItem, QStyledItemDelegate, QStyle
 
-from manuskript.functions import lightBlue
 from manuskript.functions import mainWindow
 from manuskript.ui.editors.completer_ui import Ui_completer
 from manuskript.models import references as Ref
+from manuskript.ui import style as S
 
 
 class completer(QWidget, Ui_completer):
@@ -33,8 +33,8 @@ class completer(QWidget, Ui_completer):
 
     def addCategory(self, title):
         item = QListWidgetItem(title)
-        item.setBackground(QBrush(lightBlue()))
-        item.setForeground(QBrush(Qt.darkBlue))
+        item.setBackground(QBrush(QColor(S.highlightLight)))
+        item.setForeground(QBrush(QColor(S.highlightedTextDark)))
         item.setFlags(Qt.ItemIsEnabled)
         self.list.addItem(item)
 
@@ -88,6 +88,10 @@ class listCompleterDelegate(QStyledItemDelegate):
             r = QRect(option.rect)
             r.setLeft(r.left() + w)
             painter.save()
-            painter.setPen(Qt.gray)
+            if option.state & QStyle.State_Selected:
+                painter.setPen(QColor(S.highlightedTextLight))
+            else:
+                painter.setPen(QColor(S.textLight))
+
             painter.drawText(r, Qt.AlignLeft, extra)
             painter.restore()

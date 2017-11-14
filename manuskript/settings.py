@@ -58,8 +58,8 @@ defaultTextType = "md"
 fullScreenTheme = "spacedreams"
 
 textEditor = {
-    "background": "#fff",
-    "fontColor": "#000",
+    "background": "",
+    "fontColor": "",
     "font": qApp.font().toString(),
     "misspelled": "#F00",
     "lineSpacing": 100,
@@ -73,6 +73,7 @@ textEditor = {
     "maxWidth": 0,
     "marginsLR": 0,
     "marginsTB": 0,
+    "backgroundTransparent": False,
     }
 
 revisions = {
@@ -97,6 +98,19 @@ frequencyAnalyzer = {
 viewMode = "fiction"  # simple, fiction
 saveToZip = True
 dontShowDeleteWarning = False
+
+def initDefaultValues():
+    """
+    Load some default values based on system's settings.
+    Is called anytime we open/create a project.
+    """
+    global textEditor
+    if not textEditor["background"]:
+        from manuskript.ui import style as S
+        textEditor["background"] = S.base
+    if not textEditor["fontColor"]:
+        from manuskript.ui import style as S
+        textEditor["fontColor"] = S.text
 
 def save(filename=None, protocol=None):
 
@@ -256,6 +270,7 @@ def load(string, fromString=False, protocol=None):
             "maxWidth": 0,
             "marginsLR": 0,
             "marginsTB": 0,
+            "backgroundTransparent": False,      # Added in 0.6.0
             }
 
         for k in added:

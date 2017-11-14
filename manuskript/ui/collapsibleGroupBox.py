@@ -4,6 +4,7 @@ from PyQt5.QtCore import Qt, QRect, QRectF
 from PyQt5.QtGui import QColor, QBrush, QRegion, QTextOption, QFont
 from PyQt5.QtWidgets import QSizePolicy, QGroupBox, QWidget, QStylePainter, QStyleOptionGroupBox, qApp, QVBoxLayout, \
     QStyle, QStyleOptionFrame, QStyleOptionFocusRect
+from manuskript.ui import style as S
 
 
 class collapsibleGroupBox(QGroupBox):
@@ -57,7 +58,7 @@ class collapsibleGroupBox(QGroupBox):
         titleRect.setHeight(textRect.height())
         titleRect.moveTop(textRect.top())
 
-        p.setBrush(QBrush(QColor(Qt.blue).lighter(190)))
+        p.setBrush(QBrush(QColor(S.highlightLight)))
         p.setPen(Qt.NoPen)
         p.drawRoundedRect(titleRect, 10, 10)
         p.restore()
@@ -105,7 +106,7 @@ class collapsibleGroupBox(QGroupBox):
             f = QFont()
             f.setBold(True)
             p.setFont(f)
-            p.setPen(Qt.darkBlue)
+            p.setPen(QColor(S.highlightedTextDark))
             p.drawText(QRectF(titleRect), groupBox.text.replace("&", ""), topt)
             p.restore()
 

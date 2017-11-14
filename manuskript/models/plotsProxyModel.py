@@ -9,6 +9,7 @@ from PyQt5.QtGui import QColor
 from PyQt5.QtGui import QStandardItem
 
 from manuskript.enums import Plot
+from manuskript.ui import style as S
 
 
 class plotsProxyModel(QSortFilterProxyModel):
@@ -105,9 +106,9 @@ class plotsProxyModel(QSortFilterProxyModel):
                 return self._map[row].text()
 
             elif role == Qt.ForegroundRole:
-                return QBrush(Qt.darkBlue)
+                return QBrush(QColor(S.highlightedTextDark))
             elif role == Qt.BackgroundRole:
-                return QBrush(QColor(Qt.blue).lighter(190))
+                return QBrush(QColor(S.highlightLight))
             elif role == Qt.TextAlignmentRole:
                 return Qt.AlignCenter
             elif role == Qt.FontRole:

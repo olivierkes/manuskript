@@ -9,6 +9,7 @@ from manuskript.enums import Outline
 from manuskript.functions import mixColors, colorifyPixmap
 from manuskript.functions import outlineItemColors
 from manuskript.functions import toFloat
+from manuskript.ui import style as S
 
 
 class treeTitleDelegate(QStyledItemDelegate):
@@ -44,7 +45,7 @@ class treeTitleDelegate(QStyledItemDelegate):
             col = colors[settings.viewSettings["Tree"]["Background"]]
 
             if col != QColor(Qt.transparent):
-                col2 = QColor(Qt.white)
+                col2 = QColor(S.window)
                 if opt.state & QStyle.State_Selected:
                     col2 = opt.palette.brush(QPalette.Normal, QPalette.Highlight).color()
                 col = mixColors(col, col2, .2)
@@ -81,10 +82,20 @@ class treeTitleDelegate(QStyledItemDelegate):
         # Text
         if opt.text:
             painter.save()
+            textColor = QColor(S.text)
+            if option.state & QStyle.State_Selected:
+                col = QColor(S.highlightedText)
+                textColor = col
+                painter.setPen(col)
             if settings.viewSettings["Tree"]["Text"] != "Nothing":
                 col = colors[settings.viewSettings["Tree"]["Text"]]
                 if col == Qt.transparent:
-                    col = Qt.black
+                    col = textColor
+                # If text color is Compile and item is selected, we have
+                # to change the color
+                if settings.viewSettings["Outline"]["Text"] == "Compile" and \
+                   item.compile() in [0, "0"]:
+                    col = mixColors(textColor, QColor(S.window))
                 painter.setPen(col)
             f = QFont(opt.font)
             painter.setFont(f)
@@ -131,8 +142,12 @@ class treeTitleDelegate(QStyledItemDelegate):
                 f = painter.font()
                 f.setWeight(QFont.Normal)
                 painter.setFont(f)
-                painter.setPen(Qt.darkGray)
-                painter.drawText(r, Qt.AlignLeft | Qt.AlignBottom, extraText)
+                if option.state & QStyle.State_Selected:
+                    col = QColor(S.highlightedTextLight)
+                else:
+                    col = QColor(S.textLight)
+                painter.setPen(col)
+                painter.drawText(r, Qt.AlignLeft | Qt.AlignVCenter, extraText)
                 painter.restore()
 
             painter.restore()

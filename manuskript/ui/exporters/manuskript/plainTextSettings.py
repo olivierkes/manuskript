@@ -9,12 +9,14 @@ from PyQt5.QtWidgets import QWidget, QTableWidgetItem, QListWidgetItem, QTreeVie
 
 from manuskript.functions import mainWindow, writablePath
 from manuskript.ui.exporters.manuskript.plainTextSettings_ui import Ui_exporterSettings
+from manuskript.ui import style as S
 
 
 class exporterSettings(QWidget, Ui_exporterSettings):
     def __init__(self, _format, parent=None):
         QWidget.__init__(self, parent)
         self.setupUi(self)
+        self.toolBox.setStyleSheet(S.toolBoxSS())
 
         self.mw = mainWindow()
         self._format = _format

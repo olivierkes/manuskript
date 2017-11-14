@@ -17,18 +17,9 @@ class Ui_exporterSettings(object):
         self.verticalLayout_2.setSpacing(10)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.toolBox = QtWidgets.QToolBox(exporterSettings)
-        self.toolBox.setStyleSheet("QToolBox::tab{\n"
-"    background-color: #BBB;\n"
-"    padding: 2px;\n"
-"    border: none;\n"
-"}\n"
-"\n"
-"QToolBox::tab:selected, QToolBox::tab:hover{\n"
-"    background-color:skyblue;\n"
-"}")
         self.toolBox.setObjectName("toolBox")
         self.content = QtWidgets.QWidget()
-        self.content.setGeometry(QtCore.QRect(0, 0, 497, 834))
+        self.content.setGeometry(QtCore.QRect(0, 0, 349, 842))
         self.content.setObjectName("content")
         self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.content)
         self.verticalLayout_5.setContentsMargins(0, 0, 0, 0)
@@ -112,7 +103,7 @@ class Ui_exporterSettings(object):
         self.verticalLayout_5.addItem(spacerItem1)
         self.toolBox.addItem(self.content, "")
         self.separations = QtWidgets.QWidget()
-        self.separations.setGeometry(QtCore.QRect(0, 0, 511, 534))
+        self.separations.setGeometry(QtCore.QRect(0, 0, 173, 336))
         self.separations.setObjectName("separations")
         self.verticalLayout_8 = QtWidgets.QVBoxLayout(self.separations)
         self.verticalLayout_8.setContentsMargins(0, 0, 0, 0)
@@ -321,7 +312,7 @@ class Ui_exporterSettings(object):
         self.verticalLayout_8.addItem(spacerItem6)
         self.toolBox.addItem(self.separations, "")
         self.transformations = QtWidgets.QWidget()
-        self.transformations.setGeometry(QtCore.QRect(0, 0, 511, 534))
+        self.transformations.setGeometry(QtCore.QRect(0, 0, 511, 522))
         self.transformations.setStyleSheet("QGroupBox{font-weight:bold;}")
         self.transformations.setObjectName("transformations")
         self.verticalLayout_6 = QtWidgets.QVBoxLayout(self.transformations)
@@ -484,7 +475,7 @@ class Ui_exporterSettings(object):
         self.verticalLayout_6.addItem(spacerItem10)
         self.toolBox.addItem(self.transformations, "")
         self.preview = QtWidgets.QWidget()
-        self.preview.setGeometry(QtCore.QRect(0, 0, 511, 534))
+        self.preview.setGeometry(QtCore.QRect(0, 0, 369, 130))
         self.preview.setStyleSheet("QGroupBox{font-weight:bold;}")
         self.preview.setObjectName("preview")
         self.verticalLayout_11 = QtWidgets.QVBoxLayout(self.preview)

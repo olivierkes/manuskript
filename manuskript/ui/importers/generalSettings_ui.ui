@@ -31,17 +31,6 @@
    </property>
    <item>
     <widget class="QToolBox" name="toolBox">
-     <property name="styleSheet">
-      <string notr="true">QToolBox::tab{
-	background-color: #BBB;
-	padding: 2px;
-	border: none;
-}
-
-QToolBox::tab:selected, QToolBox::tab:hover{
-	background-color:skyblue;
-}</string>
-     </property>
      <property name="currentIndex">
       <number>0</number>
      </property>
@@ -54,7 +43,7 @@ QToolBox::tab:selected, QToolBox::tab:hover{
         <x>0</x>
         <y>0</y>
         <width>267</width>
-        <height>378</height>
+        <height>375</height>
        </rect>
       </property>
       <attribute name="label">

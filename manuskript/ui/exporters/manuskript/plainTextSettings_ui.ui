@@ -31,17 +31,6 @@
    </property>
    <item>
     <widget class="QToolBox" name="toolBox">
-     <property name="styleSheet">
-      <string notr="true">QToolBox::tab{
-	background-color: #BBB;
-	padding: 2px;
-	border: none;
-}
-
-QToolBox::tab:selected, QToolBox::tab:hover{
-	background-color:skyblue;
-}</string>
-     </property>
      <property name="currentIndex">
       <number>2</number>
      </property>
@@ -53,8 +42,8 @@ QToolBox::tab:selected, QToolBox::tab:hover{
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>497</width>
-        <height>834</height>
+        <width>349</width>
+        <height>842</height>
        </rect>
       </property>
       <attribute name="label">
@@ -232,8 +221,8 @@ QToolBox::tab:selected, QToolBox::tab:hover{
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>511</width>
-        <height>534</height>
+        <width>173</width>
+        <height>336</height>
        </rect>
       </property>
       <attribute name="label">
@@ -295,8 +284,7 @@ QToolBox::tab:selected, QToolBox::tab:hover{
              </property>
              <property name="icon">
               <iconset theme="folder">
-               <normaloff/>
-              </iconset>
+               <normaloff>.</normaloff>.</iconset>
              </property>
              <property name="flat">
               <bool>true</bool>
@@ -332,8 +320,7 @@ QToolBox::tab:selected, QToolBox::tab:hover{
              </property>
              <property name="icon">
               <iconset theme="folder">
-               <normaloff/>
-              </iconset>
+               <normaloff>.</normaloff>.</iconset>
              </property>
              <property name="flat">
               <bool>true</bool>
@@ -423,8 +410,7 @@ QToolBox::tab:selected, QToolBox::tab:hover{
              </property>
              <property name="icon">
               <iconset theme="text-x-generic">
-               <normaloff/>
-              </iconset>
+               <normaloff>.</normaloff>.</iconset>
              </property>
              <property name="flat">
               <bool>true</bool>
@@ -460,8 +446,7 @@ QToolBox::tab:selected, QToolBox::tab:hover{
              </property>
              <property name="icon">
               <iconset theme="text-x-generic">
-               <normaloff/>
-              </iconset>
+               <normaloff>.</normaloff>.</iconset>
              </property>
              <property name="flat">
               <bool>true</bool>
@@ -551,8 +536,7 @@ QToolBox::tab:selected, QToolBox::tab:hover{
              </property>
              <property name="icon">
               <iconset theme="folder">
-               <normaloff/>
-              </iconset>
+               <normaloff>.</normaloff>.</iconset>
              </property>
              <property name="flat">
               <bool>true</bool>
@@ -588,8 +572,7 @@ QToolBox::tab:selected, QToolBox::tab:hover{
              </property>
              <property name="icon">
               <iconset theme="text-x-generic">
-               <normaloff/>
-              </iconset>
+               <normaloff>.</normaloff>.</iconset>
              </property>
              <property name="flat">
               <bool>true</bool>
@@ -679,8 +662,7 @@ QToolBox::tab:selected, QToolBox::tab:hover{
              </property>
              <property name="icon">
               <iconset theme="text-x-generic">
-               <normaloff/>
-              </iconset>
+               <normaloff>.</normaloff>.</iconset>
              </property>
              <property name="flat">
               <bool>true</bool>
@@ -716,8 +698,7 @@ QToolBox::tab:selected, QToolBox::tab:hover{
              </property>
              <property name="icon">
               <iconset theme="folder">
-               <normaloff/>
-              </iconset>
+               <normaloff>.</normaloff>.</iconset>
              </property>
              <property name="flat">
               <bool>true</bool>
@@ -773,7 +754,7 @@ QToolBox::tab:selected, QToolBox::tab:hover{
         <x>0</x>
         <y>0</y>
         <width>511</width>
-        <height>534</height>
+        <height>522</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -1113,8 +1094,7 @@ QToolBox::tab:selected, QToolBox::tab:hover{
               </property>
               <property name="icon">
                <iconset theme="list-add">
-                <normaloff/>
-               </iconset>
+                <normaloff>.</normaloff>.</iconset>
               </property>
               <property name="flat">
                <bool>true</bool>
@@ -1128,8 +1108,7 @@ QToolBox::tab:selected, QToolBox::tab:hover{
               </property>
               <property name="icon">
                <iconset theme="list-remove">
-                <normaloff/>
-               </iconset>
+                <normaloff>.</normaloff>.</iconset>
               </property>
               <property name="flat">
                <bool>true</bool>
@@ -1161,8 +1140,8 @@ QToolBox::tab:selected, QToolBox::tab:hover{
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>511</width>
-        <height>534</height>
+        <width>369</width>
+        <height>130</height>
        </rect>
       </property>
       <property name="styleSheet">

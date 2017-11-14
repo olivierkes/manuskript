@@ -10,6 +10,7 @@ from manuskript.functions import colorifyPixmap
 from manuskript.functions import mainWindow
 from manuskript.functions import mixColors
 from manuskript.functions import outlineItemColors
+from manuskript.ui import style as S
 
 
 class corkDelegate(QStyledItemDelegate):
@@ -19,6 +20,8 @@ class corkDelegate(QStyledItemDelegate):
         self.lastPos = None
         self.editing = None
         self.margin = 5
+
+        self.bgColors = {}
 
     def newStyle(self):
         return settings.corkStyle == "new"
@@ -42,6 +45,8 @@ class corkDelegate(QStyledItemDelegate):
     def createEditor(self, parent, option, index):
         self.updateRects(option, index)
 
+        bgColor = self.bgColors.get(index, "white")
+
         if self.mainLineRect.contains(self.lastPos):
             # One line summary
             self.editing = Outline.summarySentence
@@ -56,6 +61,7 @@ class corkDelegate(QStyledItemDelegate):
                 edt.setAlignment(Qt.AlignCenter)
             edt.setPlaceholderText(self.tr("One line summary"))
             edt.setFont(f)
+            edt.setStyleSheet("background: {}; color: black;".format(bgColor))
             return edt
 
         elif self.titleRect.contains(self.lastPos):
@@ -71,6 +77,7 @@ class corkDelegate(QStyledItemDelegate):
                 edt.setAlignment(Qt.AlignCenter)
             f.setBold(True)
             edt.setFont(f)
+            edt.setStyleSheet("background: {}; color: black;".format(bgColor))
             # edt.setGeometry(self.titleRect)
             return edt
 
@@ -85,6 +92,7 @@ class corkDelegate(QStyledItemDelegate):
                 edt.setPlaceholderText(self.tr("Full summary"))
             except AttributeError:
                 pass
+            edt.setStyleSheet("background: {}; color: black;".format(bgColor))
             return edt
 
     def updateEditorGeometry(self, editor, option, index):
@@ -240,9 +248,14 @@ class corkDelegate(QStyledItemDelegate):
             if c == QColor(Qt.transparent):
                 c = QColor(Qt.white)
             col = mixColors(c, QColor(Qt.white), .2)
+            backgroundColor = col
             p.setBrush(col)
         else:
             p.setBrush(Qt.white)
+            backgroundColor = QColor(Qt.white)
+
+            # Cache background color
+        self.bgColors[index] = backgroundColor.name()
 
         p.setPen(Qt.NoPen)
         p.drawRect(self.cardRect)
@@ -302,10 +315,20 @@ class corkDelegate(QStyledItemDelegate):
 
         if text:
             p.setPen(Qt.black)
+            textColor = QColor(Qt.black)
             if settings.viewSettings["Cork"]["Text"] != "Nothing":
                 col = colors[settings.viewSettings["Cork"]["Text"]]
                 if col == Qt.transparent:
                     col = Qt.black
+
+                # If title setting is compile, we have to hack the color
+                # Or we won't see anything in some themes
+                if settings.viewSettings["Cork"]["Text"] == "Compile":
+                    if item.compile() in [0, "0"]:
+                        col = mixColors(QColor(Qt.black), backgroundColor)
+                    else:
+                        col = Qt.black
+                textColor = col
                 p.setPen(col)
             f = QFont(option.font)
             f.setPointSize(f.pointSize() + 4)
@@ -358,7 +381,7 @@ class corkDelegate(QStyledItemDelegate):
             f = QFont(option.font)
             f.setBold(True)
             p.setFont(f)
-            p.setPen(Qt.black)
+            p.setPen(textColor)
             fm = QFontMetrics(f)
             elidedText = fm.elidedText(lineSummary, Qt.ElideRight, self.mainLineRect.width())
             p.drawText(self.mainLineRect, Qt.AlignLeft | Qt.AlignVCenter, elidedText)
@@ -368,7 +391,7 @@ class corkDelegate(QStyledItemDelegate):
         if fullSummary:
             p.save()
             p.setFont(option.font)
-            p.setPen(Qt.black)
+            p.setPen(textColor)
             p.drawText(self.mainTextRect, Qt.TextWordWrap, fullSummary)
             p.restore()
 
