@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>658</width>
-    <height>530</height>
+    <height>632</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -795,13 +795,12 @@ text-align:center;</string>
        <item>
         <widget class="QTabWidget" name="tabViews">
          <property name="currentIndex">
-          <number>0</number>
+          <number>3</number>
          </property>
          <widget class="QWidget" name="tab">
           <attribute name="icon">
            <iconset theme="view-list-tree">
-            <normaloff/>
-           </iconset>
+            <normaloff>.</normaloff>.</iconset>
           </attribute>
           <attribute name="title">
            <string>Tree</string>
@@ -1070,7 +1069,7 @@ text-align:center;</string>
                    </font>
                   </property>
                   <property name="text">
-                   <string>Show wordcount</string>
+                   <string>Show &amp;wordcount</string>
                   </property>
                  </widget>
                 </item>
@@ -1083,7 +1082,7 @@ text-align:center;</string>
                    </font>
                   </property>
                   <property name="text">
-                   <string>Show progress</string>
+                   <string>S&amp;how progress</string>
                   </property>
                  </widget>
                 </item>
@@ -1096,7 +1095,7 @@ text-align:center;</string>
                    </font>
                   </property>
                   <property name="text">
-                   <string>Show summary</string>
+                   <string>Show summar&amp;y</string>
                   </property>
                  </widget>
                 </item>
@@ -1140,7 +1139,7 @@ text-align:center;</string>
                    </font>
                   </property>
                   <property name="text">
-                   <string>Show wordcount</string>
+                   <string>&amp;Show wordcount</string>
                   </property>
                  </widget>
                 </item>
@@ -1153,7 +1152,7 @@ text-align:center;</string>
                    </font>
                   </property>
                   <property name="text">
-                   <string>Show progress</string>
+                   <string>Show p&amp;rogress</string>
                   </property>
                  </widget>
                 </item>
@@ -1225,8 +1224,7 @@ text-align:center;</string>
          <widget class="QWidget" name="tab_2">
           <attribute name="icon">
            <iconset theme="view-outline">
-            <normaloff/>
-           </iconset>
+            <normaloff>.</normaloff>.</iconset>
           </attribute>
           <attribute name="title">
            <string>Outline</string>
@@ -1573,8 +1571,7 @@ text-align:center;</string>
          <widget class="QWidget" name="tab_3">
           <attribute name="icon">
            <iconset theme="view-cards">
-            <normaloff/>
-           </iconset>
+            <normaloff>.</normaloff>.</iconset>
           </attribute>
           <attribute name="title">
            <string>Index cards</string>
@@ -1693,7 +1690,7 @@ text-align:center;</string>
                  </font>
                 </property>
                 <property name="text">
-                 <string>Old style</string>
+                 <string>Old st&amp;yle</string>
                 </property>
                </widget>
               </item>
@@ -1706,7 +1703,7 @@ text-align:center;</string>
                  </font>
                 </property>
                 <property name="text">
-                 <string>New style</string>
+                 <string>Ne&amp;w style</string>
                 </property>
                </widget>
               </item>
@@ -1976,365 +1973,342 @@ text-align:center;</string>
          <widget class="QWidget" name="tab_4">
           <attribute name="icon">
            <iconset theme="view-text">
-            <normaloff/>
-           </iconset>
+            <normaloff>.</normaloff>.</iconset>
           </attribute>
           <attribute name="title">
            <string>Text editor</string>
           </attribute>
-          <layout class="QVBoxLayout" name="verticalLayout_22">
+          <layout class="QHBoxLayout" name="horizontalLayout_4">
            <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_4">
+            <layout class="QVBoxLayout" name="verticalLayout_21">
              <item>
-              <layout class="QVBoxLayout" name="verticalLayout_21">
-               <item>
-                <widget class="QGroupBox" name="groupBox_12">
-                 <property name="font">
-                  <font>
-                   <weight>75</weight>
-                   <bold>true</bold>
-                  </font>
-                 </property>
-                 <property name="title">
-                  <string>Font</string>
-                 </property>
-                 <layout class="QFormLayout" name="formLayout_8">
-                  <item row="1" column="0">
-                   <widget class="QLabel" name="label_37">
-                    <property name="font">
-                     <font>
-                      <weight>50</weight>
-                      <bold>false</bold>
-                     </font>
-                    </property>
-                    <property name="text">
-                     <string>Color:</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="1" column="1">
-                   <widget class="QPushButton" name="btnEditorFontColor">
-                    <property name="sizePolicy">
-                     <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                     </sizepolicy>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <weight>50</weight>
-                      <bold>false</bold>
-                     </font>
-                    </property>
-                    <property name="text">
-                     <string/>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="2" column="0">
-                   <widget class="QLabel" name="label_39">
-                    <property name="font">
-                     <font>
-                      <weight>50</weight>
-                      <bold>false</bold>
-                     </font>
-                    </property>
-                    <property name="text">
-                     <string>Family:</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="2" column="1">
-                   <widget class="QFontComboBox" name="cmbEditorFontFamily">
-                    <property name="sizePolicy">
-                     <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                     </sizepolicy>
-                    </property>
-                    <property name="maximumSize">
-                     <size>
-                      <width>150</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <weight>50</weight>
-                      <bold>false</bold>
-                     </font>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="3" column="0">
-                   <widget class="QLabel" name="label_38">
-                    <property name="font">
-                     <font>
-                      <weight>50</weight>
-                      <bold>false</bold>
-                     </font>
-                    </property>
-                    <property name="text">
-                     <string>Size:</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="4" column="0">
-                   <widget class="QLabel" name="label_36">
-                    <property name="font">
-                     <font>
-                      <weight>50</weight>
-                      <bold>false</bold>
-                     </font>
-                    </property>
-                    <property name="text">
-                     <string>Misspelled:</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="4" column="1">
-                   <widget class="QPushButton" name="btnEditorMisspelledColor">
-                    <property name="sizePolicy">
-                     <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                     </sizepolicy>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <weight>50</weight>
-                      <bold>false</bold>
-                     </font>
-                    </property>
-                    <property name="text">
-                     <string/>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="3" column="1">
-                   <widget class="QSpinBox" name="spnEditorFontSize">
-                    <property name="font">
-                     <font>
-                      <weight>50</weight>
-                      <bold>false</bold>
-                     </font>
-                    </property>
-                    <property name="minimum">
-                     <number>4</number>
-                    </property>
-                    <property name="maximum">
-                     <number>299</number>
-                    </property>
-                    <property name="value">
-                     <number>10</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="0">
-                   <widget class="QLabel" name="label_43">
-                    <property name="font">
-                     <font>
-                      <weight>50</weight>
-                      <bold>false</bold>
-                     </font>
-                    </property>
-                    <property name="text">
-                     <string>Background:</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="1">
-                   <widget class="QPushButton" name="btnEditorBackgroundColor">
-                    <property name="sizePolicy">
-                     <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                     </sizepolicy>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <weight>50</weight>
-                      <bold>false</bold>
-                     </font>
-                    </property>
-                    <property name="text">
-                     <string/>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
-               <item>
-                <widget class="QGroupBox" name="groupBox_15">
-                 <property name="font">
-                  <font>
-                   <weight>75</weight>
-                   <bold>true</bold>
-                  </font>
-                 </property>
-                 <property name="title">
-                  <string>Cursor</string>
-                 </property>
-                 <layout class="QFormLayout" name="formLayout_10">
-                  <item row="0" column="0">
-                   <widget class="QCheckBox" name="chkEditorCursorWidth">
-                    <property name="font">
-                     <font>
-                      <weight>50</weight>
-                      <bold>false</bold>
-                     </font>
-                    </property>
-                    <property name="text">
-                     <string>Use block insertion of</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="1">
-                   <widget class="QSpinBox" name="spnEditorCursorWidth">
-                    <property name="font">
-                     <font>
-                      <weight>50</weight>
-                      <bold>false</bold>
-                     </font>
-                    </property>
-                    <property name="suffix">
-                     <string> px</string>
-                    </property>
-                    <property name="minimum">
-                     <number>0</number>
-                    </property>
-                    <property name="maximum">
-                     <number>99</number>
-                    </property>
-                    <property name="value">
-                     <number>9</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="1" column="0">
-                   <widget class="QCheckBox" name="chkEditorNoBlinking">
-                    <property name="font">
-                     <font>
-                      <weight>50</weight>
-                      <bold>false</bold>
-                     </font>
-                    </property>
-                    <property name="text">
-                     <string>Disable blinking</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
-               <item>
-                <widget class="QGroupBox" name="groupBox_16">
-                 <property name="font">
-                  <font>
-                   <weight>75</weight>
-                   <bold>true</bold>
-                  </font>
-                 </property>
-                 <property name="title">
-                  <string>Text area</string>
-                 </property>
-                 <layout class="QFormLayout" name="formLayout_11">
-                  <item row="0" column="0">
-                   <widget class="QCheckBox" name="chkEditorMaxWidth">
-                    <property name="font">
-                     <font>
-                      <weight>50</weight>
-                      <bold>false</bold>
-                     </font>
-                    </property>
-                    <property name="text">
-                     <string>Max width</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="1">
-                   <widget class="QSpinBox" name="spnEditorMaxWidth">
-                    <property name="font">
-                     <font>
-                      <weight>50</weight>
-                      <bold>false</bold>
-                     </font>
-                    </property>
-                    <property name="suffix">
-                     <string> px</string>
-                    </property>
-                    <property name="maximum">
-                     <number>4096</number>
-                    </property>
-                    <property name="value">
-                     <number>500</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="2" column="0">
-                   <widget class="QLabel" name="label_54">
-                    <property name="font">
-                     <font>
-                      <weight>50</weight>
-                      <bold>false</bold>
-                     </font>
-                    </property>
-                    <property name="text">
-                     <string>Left/Right margins:</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="2" column="1">
-                   <widget class="QSpinBox" name="spnEditorMarginsLR">
-                    <property name="font">
-                     <font>
-                      <weight>50</weight>
-                      <bold>false</bold>
-                     </font>
-                    </property>
-                    <property name="suffix">
-                     <string> px</string>
-                    </property>
-                    <property name="maximum">
-                     <number>2048</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="1" column="0">
-                   <widget class="QLabel" name="label_55">
-                    <property name="font">
-                     <font>
-                      <weight>50</weight>
-                      <bold>false</bold>
-                     </font>
-                    </property>
-                    <property name="text">
-                     <string>Top/Bottom margins:</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="1" column="1">
-                   <widget class="QSpinBox" name="spnEditorMarginsTB">
-                    <property name="font">
-                     <font>
-                      <weight>50</weight>
-                      <bold>false</bold>
-                     </font>
-                    </property>
-                    <property name="suffix">
-                     <string> px</string>
-                    </property>
-                    <property name="maximum">
-                     <number>2048</number>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
-              </layout>
+              <widget class="QGroupBox" name="groupBox_17">
+               <property name="font">
+                <font>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="title">
+                <string>Colors</string>
+               </property>
+               <layout class="QFormLayout" name="formLayout_12">
+                <item row="0" column="0">
+                 <widget class="QLabel" name="label_43">
+                  <property name="font">
+                   <font>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Background:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QPushButton" name="btnEditorBackgroundColor">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1">
+                 <widget class="QCheckBox" name="chkEditorBackgroundTransparent">
+                  <property name="font">
+                   <font>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Transparent</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <widget class="QLabel" name="label_37">
+                  <property name="font">
+                   <font>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Color:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="1">
+                 <widget class="QPushButton" name="btnEditorFontColor">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="0" colspan="2">
+                 <widget class="QPushButton" name="btnEditorColorDefault">
+                  <property name="font">
+                   <font>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Restore defaults</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
              </item>
+             <item>
+              <widget class="QGroupBox" name="groupBox_12">
+               <property name="font">
+                <font>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="title">
+                <string>Font</string>
+               </property>
+               <layout class="QFormLayout" name="formLayout_8">
+                <item row="3" column="0">
+                 <widget class="QLabel" name="label_39">
+                  <property name="font">
+                   <font>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Family:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="1">
+                 <widget class="QFontComboBox" name="cmbEditorFontFamily">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>150</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="0">
+                 <widget class="QLabel" name="label_38">
+                  <property name="font">
+                   <font>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Size:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="0">
+                 <widget class="QLabel" name="label_36">
+                  <property name="font">
+                   <font>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Misspelled:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="1">
+                 <widget class="QPushButton" name="btnEditorMisspelledColor">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="1">
+                 <widget class="QSpinBox" name="spnEditorFontSize">
+                  <property name="font">
+                   <font>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="minimum">
+                   <number>4</number>
+                  </property>
+                  <property name="maximum">
+                   <number>299</number>
+                  </property>
+                  <property name="value">
+                   <number>10</number>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QGroupBox" name="groupBox_16">
+               <property name="font">
+                <font>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="title">
+                <string>Text area</string>
+               </property>
+               <layout class="QFormLayout" name="formLayout_11">
+                <item row="0" column="0">
+                 <widget class="QCheckBox" name="chkEditorMaxWidth">
+                  <property name="font">
+                   <font>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Max width</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QSpinBox" name="spnEditorMaxWidth">
+                  <property name="font">
+                   <font>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="suffix">
+                   <string> px</string>
+                  </property>
+                  <property name="maximum">
+                   <number>4096</number>
+                  </property>
+                  <property name="value">
+                   <number>500</number>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <widget class="QLabel" name="label_54">
+                  <property name="font">
+                   <font>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Left/Right margins:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="1">
+                 <widget class="QSpinBox" name="spnEditorMarginsLR">
+                  <property name="font">
+                   <font>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="suffix">
+                   <string> px</string>
+                  </property>
+                  <property name="maximum">
+                   <number>2048</number>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QLabel" name="label_55">
+                  <property name="font">
+                   <font>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Top/Bottom margins:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1">
+                 <widget class="QSpinBox" name="spnEditorMarginsTB">
+                  <property name="font">
+                   <font>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="suffix">
+                   <string> px</string>
+                  </property>
+                  <property name="maximum">
+                   <number>2048</number>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_22">
              <item>
               <widget class="QGroupBox" name="groupBox_13">
                <property name="font">
@@ -2347,6 +2321,65 @@ text-align:center;</string>
                 <string>Paragraphs</string>
                </property>
                <layout class="QFormLayout" name="formLayout_9">
+                <item row="0" column="0">
+                 <widget class="QLabel" name="label_35">
+                  <property name="font">
+                   <font>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Alignment:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QComboBox" name="cmbEditorAlignment">
+                  <property name="font">
+                   <font>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <item>
+                   <property name="text">
+                    <string>Left</string>
+                   </property>
+                   <property name="icon">
+                    <iconset theme="format-justify-left">
+                     <normaloff>.</normaloff>.</iconset>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Center</string>
+                   </property>
+                   <property name="icon">
+                    <iconset theme="format-justify-center">
+                     <normaloff>.</normaloff>.</iconset>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Right</string>
+                   </property>
+                   <property name="icon">
+                    <iconset theme="format-justify-right">
+                     <normaloff>.</normaloff>.</iconset>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Justify</string>
+                   </property>
+                   <property name="icon">
+                    <iconset theme="format-justify-fill">
+                     <normaloff>.</normaloff>.</iconset>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
                 <item row="1" column="0">
                  <widget class="QLabel" name="label_40">
                   <property name="font">
@@ -2550,8 +2583,23 @@ text-align:center;</string>
                   </property>
                  </widget>
                 </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QGroupBox" name="groupBox_15">
+               <property name="font">
+                <font>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="title">
+                <string>Cursor</string>
+               </property>
+               <layout class="QFormLayout" name="formLayout_10">
                 <item row="0" column="0">
-                 <widget class="QLabel" name="label_35">
+                 <widget class="QCheckBox" name="chkEditorCursorWidth">
                   <property name="font">
                    <font>
                     <weight>50</weight>
@@ -2559,58 +2607,43 @@ text-align:center;</string>
                    </font>
                   </property>
                   <property name="text">
-                   <string>Alignment:</string>
+                   <string>Use block insertion of</string>
                   </property>
                  </widget>
                 </item>
                 <item row="0" column="1">
-                 <widget class="QComboBox" name="cmbEditorAlignment">
+                 <widget class="QSpinBox" name="spnEditorCursorWidth">
                   <property name="font">
                    <font>
                     <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
-                  <item>
-                   <property name="text">
-                    <string>Left</string>
-                   </property>
-                   <property name="icon">
-                    <iconset theme="format-justify-left">
-                     <normaloff/>
-                    </iconset>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>Center</string>
-                   </property>
-                   <property name="icon">
-                    <iconset theme="format-justify-center">
-                     <normaloff/>
-                    </iconset>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>Right</string>
-                   </property>
-                   <property name="icon">
-                    <iconset theme="format-justify-right">
-                     <normaloff/>
-                    </iconset>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>Justify</string>
-                   </property>
-                   <property name="icon">
-                    <iconset theme="format-justify-fill">
-                     <normaloff/>
-                    </iconset>
-                   </property>
-                  </item>
+                  <property name="suffix">
+                   <string> px</string>
+                  </property>
+                  <property name="minimum">
+                   <number>0</number>
+                  </property>
+                  <property name="maximum">
+                   <number>99</number>
+                  </property>
+                  <property name="value">
+                   <number>9</number>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QCheckBox" name="chkEditorNoBlinking">
+                  <property name="font">
+                   <font>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Disable blinking</string>
+                  </property>
                  </widget>
                 </item>
                </layout>
@@ -3597,8 +3630,7 @@ text-align:center;</string>
                       </property>
                       <property name="icon">
                        <iconset theme="format-justify-left">
-                        <normaloff/>
-                       </iconset>
+                        <normaloff>.</normaloff>.</iconset>
                       </property>
                      </item>
                      <item>
@@ -3607,8 +3639,7 @@ text-align:center;</string>
                       </property>
                       <property name="icon">
                        <iconset theme="format-justify-center">
-                        <normaloff/>
-                       </iconset>
+                        <normaloff>.</normaloff>.</iconset>
                       </property>
                      </item>
                      <item>
@@ -3617,8 +3648,7 @@ text-align:center;</string>
                       </property>
                       <property name="icon">
                        <iconset theme="format-justify-right">
-                        <normaloff/>
-                       </iconset>
+                        <normaloff>.</normaloff>.</iconset>
                       </property>
                      </item>
                      <item>
@@ -3627,8 +3657,7 @@ text-align:center;</string>
                       </property>
                       <property name="icon">
                        <iconset theme="format-justify-fill">
-                        <normaloff/>
-                       </iconset>
+                        <normaloff>.</normaloff>.</iconset>
                       </property>
                      </item>
                     </widget>

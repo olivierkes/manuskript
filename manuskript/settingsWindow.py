@@ -23,6 +23,7 @@ from manuskript.ui.settings_ui import Ui_Settings
 from manuskript.ui.views.outlineView import outlineView
 from manuskript.ui.views.textEditView import textEditView
 from manuskript.ui.welcome import welcome
+from manuskript.ui import style as S
 
 try:
     import enchant
@@ -164,6 +165,9 @@ class settingsWindow(QWidget, Ui_Settings):
         self.btnEditorMisspelledColor.clicked.connect(self.choseEditorMisspelledColor)
         self.setButtonColor(self.btnEditorBackgroundColor, opt["background"])
         self.btnEditorBackgroundColor.clicked.connect(self.choseEditorBackgroundColor)
+        self.chkEditorBackgroundTransparent.setChecked(opt["backgroundTransparent"])
+        self.chkEditorBackgroundTransparent.stateChanged.connect(self.updateEditorSettings)
+        self.btnEditorColorDefault.clicked.connect(self.restoreEditorColors)
         f = QFont()
         f.fromString(opt["font"])
         self.cmbEditorFontFamily.setCurrentFont(f)
@@ -442,7 +446,13 @@ class settingsWindow(QWidget, Ui_Settings):
             ####################################################################################################
 
     def updateEditorSettings(self):
-        # Store settings
+        """
+        Stores settings for editor appareance.
+        """
+
+        # Background
+        settings.textEditor["backgroundTransparent"] = True if self.chkEditorBackgroundTransparent.checkState() else False
+
         # Font
         f = self.cmbEditorFontFamily.currentFont()
         f.setPointSize(self.spnEditorFontSize.value())
@@ -525,6 +535,13 @@ class settingsWindow(QWidget, Ui_Settings):
             settings.textEditor["background"] = color.name()
             self.setButtonColor(self.btnEditorBackgroundColor, color.name())
             self.updateEditorSettings()
+
+    def restoreEditorColors(self):
+        settings.textEditor["background"] = S.base
+        self.setButtonColor(self.btnEditorBackgroundColor, S.base)
+        settings.textEditor["fontColor"] = S.text
+        self.setButtonColor(self.btnEditorFontColor, S.text)
+        self.updateEditorSettings()
 
         ####################################################################################################
         #                                           STATUS                                                 #

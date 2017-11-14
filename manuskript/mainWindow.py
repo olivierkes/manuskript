@@ -498,6 +498,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if loadFromFile:
             # Load empty settings
             imp.reload(settings)
+            settings.initDefaultValues()
 
             # Load data
             self.loadEmptyDatas()

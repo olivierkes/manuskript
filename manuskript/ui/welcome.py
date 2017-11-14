@@ -374,6 +374,8 @@ class welcome(QWidget, Ui_welcome):
 
         # Empty settings
         imp.reload(settings)
+        settings.initDefaultValues()
+
         if self.template:
             t = [i for i in self.templates() if i[0] == self.template[0]]
             if t and t[0][2] == "Non-fiction":
