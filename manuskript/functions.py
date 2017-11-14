@@ -153,6 +153,9 @@ def mixColors(col1, col2, f=.5):
 
 
 def outlineItemColors(item):
+
+    from manuskript.ui import style as S
+
     """Takes an OutlineItem and returns a dict of colors."""
     colors = {}
     mw = mainWindow()
@@ -184,9 +187,9 @@ def outlineItemColors(item):
 
     # Compile
     if item.compile() in [0, "0"]:
-        colors["Compile"] = QColor(Qt.gray)
+        colors["Compile"] = mixColors(QColor(S.text), QColor(S.window))
     else:
-        colors["Compile"] = QColor(Qt.black)
+        colors["Compile"] = QColor(S.text)
 
     return colors
 

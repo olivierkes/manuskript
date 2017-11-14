@@ -9,8 +9,19 @@ from PyQt5.QtWidgets import qApp
 
 from manuskript import settings
 
+# Loading palette colors.
+# Manuskript as to restart to reload
+p = qApp.palette()
 # window = "#d6d2d0" #"#eee" / #eff0f1
-window = qApp.palette().color(QPalette.Window).name()
+window = p.color(QPalette.Window).name()            # General background
+windowText = p.color(QPalette.WindowText).name()    # General foregroung
+base = p.color(QPalette.Base).name()                # Other background
+text = p.color(QPalette.Text).name()                # Base Text
+brightText = p.color(QPalette.BrightText).name()    # Contrast Text
+button = p.color(QPalette.Window).name()            # Button background
+buttonText = p.color(QPalette.Window).name()        # Button Text
+highlight = p.color(QPalette.Highlight).name()      # Other background
+highlightedText = p.color(QPalette.HighlightedText).name() # Base Text
 
 bgHover = "#ccc"
 bgChecked = "#bbb"
@@ -152,7 +163,7 @@ def mainEditorTabSS():
             border: none;
             background: none;
         }}
-        
+
         QScrollBar::sub-line:vertical {{
             width:0;
             height: 0;
@@ -240,8 +251,8 @@ def lineEditSS():
     """.format(window=window,
                checked=bgChecked,
                blue=blue)
-    
-    
+
+
 def transparentSS():
     return """
         QTextEdit{
@@ -264,7 +275,7 @@ def simpleScrollBarV():
             height: 0;
             border: none;
             background: none;
-        }        
+        }
         QScrollBar::sub-line:vertical {
             width:0;
             height: 0;

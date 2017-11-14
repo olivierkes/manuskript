@@ -10,6 +10,7 @@ from manuskript.functions import colorifyPixmap
 from manuskript.functions import mainWindow
 from manuskript.functions import mixColors
 from manuskript.functions import outlineItemColors
+from manuskript.ui import style as S
 
 
 class corkDelegate(QStyledItemDelegate):
@@ -240,9 +241,11 @@ class corkDelegate(QStyledItemDelegate):
             if c == QColor(Qt.transparent):
                 c = QColor(Qt.white)
             col = mixColors(c, QColor(Qt.white), .2)
+            backgroundColor = col
             p.setBrush(col)
         else:
             p.setBrush(Qt.white)
+            backgroundColor = QColor(Qt.white)
 
         p.setPen(Qt.NoPen)
         p.drawRect(self.cardRect)
@@ -302,10 +305,20 @@ class corkDelegate(QStyledItemDelegate):
 
         if text:
             p.setPen(Qt.black)
+            textColor = QColor(Qt.black)
             if settings.viewSettings["Cork"]["Text"] != "Nothing":
                 col = colors[settings.viewSettings["Cork"]["Text"]]
                 if col == Qt.transparent:
                     col = Qt.black
+
+                # If title setting is compile, we have to hack the color
+                # Or we won't see anything in some themes
+                if settings.viewSettings["Cork"]["Text"] == "Compile":
+                    if item.compile() in [0, "0"]:
+                        col = mixColors(QColor(Qt.black), backgroundColor)
+                    else:
+                        col = Qt.black
+                textColor = col
                 p.setPen(col)
             f = QFont(option.font)
             f.setPointSize(f.pointSize() + 4)
@@ -358,7 +371,7 @@ class corkDelegate(QStyledItemDelegate):
             f = QFont(option.font)
             f.setBold(True)
             p.setFont(f)
-            p.setPen(Qt.black)
+            p.setPen(textColor)
             fm = QFontMetrics(f)
             elidedText = fm.elidedText(lineSummary, Qt.ElideRight, self.mainLineRect.width())
             p.drawText(self.mainLineRect, Qt.AlignLeft | Qt.AlignVCenter, elidedText)
@@ -368,7 +381,7 @@ class corkDelegate(QStyledItemDelegate):
         if fullSummary:
             p.save()
             p.setFont(option.font)
-            p.setPen(Qt.black)
+            p.setPen(textColor)
             p.drawText(self.mainTextRect, Qt.TextWordWrap, fullSummary)
             p.restore()
 
