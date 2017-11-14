@@ -27,6 +27,7 @@ class abstractImporter:
     engine = "Internal"
 
     def __init__(self):
+        self.settingsList = []  # Keep the name of the settings in order
         self.settings = {}
 
     def startImport(self, filePath, parentItem, settingsWidget):
@@ -73,6 +74,7 @@ class abstractImporter:
     def addSetting(self, name, type, label, widget=None,  default=None,
                    tooltip=None, min=None, max=None, vals=None, suffix=""):
 
+        self.settingsList.append(name)
         self.settings[name] = self.setting(name, type, label, widget,  default,
                                          tooltip, min, max, vals, suffix)
 
@@ -83,6 +85,15 @@ class abstractImporter:
     def getSetting(self, name):
         if name in self.settings:
             return self.settings[name]
+
+    def addSettingsTo(self, widget):
+        """
+        Adds all the settings to the given widget. Assume that the settings
+        have not been called yet, so calling `.widget()` will create their
+        widgets.
+        """
+        for name in self.settingsList:
+            self.settings[name].widget(widget)
 
 
     class setting:

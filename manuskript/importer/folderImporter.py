@@ -24,7 +24,7 @@ class folderImporter(abstractImporter):
         Imports from a folder.
         """
         ext = self.getSetting("ext").value()
-        ext = [e.strip().replace("*", "") for e in ext.split(",")]
+        ext = [e.strip().replace("*", "").lower() for e in ext.split(",")]
 
         sorting = self.getSetting("sortItems").value()
 
@@ -42,11 +42,16 @@ class folderImporter(abstractImporter):
 
             def addFile(f):
                 fName, fExt = os.path.splitext(f)
-                if fExt in ext:
-                    child = outlineItem(title=fName, _type="md", parent=item)
-                    with open(os.path.join(dirpath, f), "r") as fr:
-                        child._data[Outline.text] = fr.read()
-                    items.append(child)
+                if fExt.lower() in ext:
+                    try:
+                        with open(os.path.join(dirpath, f), "r") as fr:
+                            content = fr.read()
+                        child = outlineItem(title=fName, _type="md", parent=item)
+                        child._data[Outline.text] = content
+                        items.append(child)
+                    except UnicodeDecodeError:
+                        # Probably not a text file
+                        pass
 
             def addFolder(d):
                 child = outlineItem(title=d, parent=item)
@@ -93,10 +98,11 @@ class folderImporter(abstractImporter):
         #group = cls.addPage(widget, "Folder import")
 
         self.addSetting("info", "label",
-                        qApp.translate("Import", """<b>Info:</b> Imports a whole
+                        qApp.translate("Import", """<p><b>Info:</b> Imports a whole
                         directory structure. Folders are added as folders, and
                         plaintext documents within (you chose which ones by extension)
-                        are added as scene.<br/>&nbsp;"""))
+                        are added as scene.</p>
+                        <p>Only text files are supported (not images, binary or others).</p>"""))
 
         self.addSetting("ext", "text",
                         qApp.translate("Import", "Include only those extensions:"),
@@ -111,8 +117,7 @@ class folderImporter(abstractImporter):
                         qApp.translate("Import", "Import folder then files"),
                         default=True),
 
-        for s in self.settings:
-            self.settings[s].widget(group)
+        self.addSettingsTo(group)
 
         return widget
 
