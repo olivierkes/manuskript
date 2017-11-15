@@ -44,11 +44,11 @@ class characterTreeView(QTreeWidget):
         if topLeft.parent() != QModelIndex():
             return
 
-        if topLeft.column() <= Character.name.value <= bottomRight.column():
+        if topLeft.column() <= Character.name <= bottomRight.column():
             # Update name
             self.updateNames()
 
-        elif topLeft.column() <= Character.importance.value <= bottomRight.column():
+        elif topLeft.column() <= Character.importance <= bottomRight.column():
             # Importance changed
             self.updateItems()
 

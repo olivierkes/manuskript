@@ -279,15 +279,15 @@ def infos(ref):
 
         # Description
         description = m.data(index.sibling(index.row(),
-                                           Plot.description.value))
+                                           Plot.description))
 
         # Result
         result = m.data(index.sibling(index.row(),
-                                      Plot.result.value))
+                                      Plot.result))
 
         # Characters
         pM = mainWindow().mdlCharacter
-        item = m.item(index.row(), Plot.characters.value)
+        item = m.item(index.row(), Plot.characters)
         characters = ""
         if item:
             for r in range(item.rowCount()):
@@ -298,12 +298,12 @@ def infos(ref):
 
         # Resolution steps
         steps = ""
-        item = m.item(index.row(), Plot.steps.value)
+        item = m.item(index.row(), Plot.steps)
         if item:
             for r in range(item.rowCount()):
-                title = item.child(r, PlotStep.name.value).text()
-                summary = item.child(r, PlotStep.summary.value).text()
-                meta = item.child(r, PlotStep.meta.value).text()
+                title = item.child(r, PlotStep.name).text()
+                summary = item.child(r, PlotStep.summary).text()
+                meta = item.child(r, PlotStep.meta).text()
                 if meta:
                     meta = " <span style='color:gray;'>({})</span>".format(meta)
                 steps += "<li><b>{title}</b>{summary}{meta}</li>".format(

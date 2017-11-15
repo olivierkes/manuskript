@@ -132,7 +132,7 @@ class abstractItem():
 
         # Checking if we will have to recount words
         updateWordCount = False
-        if column in [Outline.wordCount.value, Outline.goal.value, Outline.setGoal]:
+        if column in [Outline.wordCount, Outline.goal, Outline.setGoal]:
             updateWordCount = not Outline(column) in self._data or self._data[Outline(column)] != data
 
         # Stuff to do before
@@ -149,7 +149,7 @@ class abstractItem():
             self.emitDataChanged(cols=[Outline.text]) # new in 0.5.0
 
         if column == Outline.compile:
-            self.emitDataChanged(cols=[Outline.title.value, Outline.compile], recursive=True)
+            self.emitDataChanged(cols=[Outline.title, Outline.compile], recursive=True)
 
         if column == Outline.customIcon:
             # If custom icon changed, we tell views to update title (so that icons
@@ -197,8 +197,8 @@ class abstractItem():
                 self.setData(Outline.goalPercentage, "")
 
         if emit:
-            self.emitDataChanged([Outline.goal.value, Outline.setGoal,
-                                  Outline.wordCount.value, Outline.goalPercentage])
+            self.emitDataChanged([Outline.goal, Outline.setGoal,
+                                  Outline.wordCount, Outline.goalPercentage])
 
         if self.parent():
             self.parent().updateWordCount(emit)
@@ -492,8 +492,8 @@ class abstractItem():
 
         elif self.type() == "html":
             self.setData(Outline.type, "md")
-            self.setData(Outline.text.value, HTML2PlainText(self.data(Outline.text)))
-            self.setData(Outline.notes.value, HTML2PlainText(self.data(Outline.notes)))
+            self.setData(Outline.text, HTML2PlainText(self.data(Outline.text)))
+            self.setData(Outline.notes, HTML2PlainText(self.data(Outline.notes)))
 
         for child in root:
             if child.tag == "outlineItem":

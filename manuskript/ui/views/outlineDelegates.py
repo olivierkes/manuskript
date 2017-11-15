@@ -114,7 +114,7 @@ class outlineCharacterDelegate(QStyledItemDelegate):
         item = QModelIndex()
         character = self.mdlCharacter.getCharacterByID(index.data())
         if character:
-            item = character.index(Character.name.value)
+            item = character.index(Character.name)
 
         opt = QStyleOptionViewItem(option)
         self.initStyleOption(opt, item)
@@ -172,7 +172,7 @@ class outlineCharacterDelegate(QStyledItemDelegate):
         itemIndex = QModelIndex()
         character = self.mdlCharacter.getCharacterByID(index.data())
         if character:
-            itemIndex = character.index(Character.name.value)
+            itemIndex = character.index(Character.name)
 
         opt = QStyleOptionViewItem(option)
         self.initStyleOption(opt, itemIndex)

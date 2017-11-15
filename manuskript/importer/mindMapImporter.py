@@ -140,7 +140,7 @@ class mindMapImporter(abstractImporter):
             item.setData(Outline.type, 'md')
             # Move notes to text
             if item.data(Outline.notes):
-                item.setData(Outline.text.value, item.data(Outline.notes))
+                item.setData(Outline.text, item.data(Outline.notes))
                 item.setData(Outline.notes, "")
 
         return items

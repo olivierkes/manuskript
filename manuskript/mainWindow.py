@@ -326,12 +326,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.txtPlotResult.setCurrentModelIndex(index)
         self.sldPlotImportance.setCurrentModelIndex(index)
         self.lstPlotPerso.setRootIndex(index.sibling(index.row(),
-                                                     Plot.characters.value))
+                                                     Plot.characters))
 
         # Slider importance
         self.updatePlotImportance(index.row())
 
-        subplotindex = index.sibling(index.row(), Plot.steps.value)
+        subplotindex = index.sibling(index.row(), Plot.steps)
         self.lstSubPlots.setRootIndex(subplotindex)
         if self.mdlPlots.rowCount(subplotindex):
             self.updateSubPlotView()
@@ -351,22 +351,22 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         #        So instead we set their width to 0.
         #for i in range(self.mdlPlots.columnCount()):
             #self.lstSubPlots.hideColumn(i)
-        #self.lstSubPlots.showColumn(PlotStep.name.value)
-        #self.lstSubPlots.showColumn(PlotStep.meta.value)
+        #self.lstSubPlots.showColumn(PlotStep.name)
+        #self.lstSubPlots.showColumn(PlotStep.meta)
 
         self.lstSubPlots.horizontalHeader().setSectionResizeMode(
-                PlotStep.ID.value, QHeaderView.Fixed)
+                PlotStep.ID, QHeaderView.Fixed)
         self.lstSubPlots.horizontalHeader().setSectionResizeMode(
-                PlotStep.summary.value, QHeaderView.Fixed)
+                PlotStep.summary, QHeaderView.Fixed)
         self.lstSubPlots.horizontalHeader().resizeSection(
-                PlotStep.ID.value, 0)
+                PlotStep.ID, 0)
         self.lstSubPlots.horizontalHeader().resizeSection(
-                PlotStep.summary.value, 0)
+                PlotStep.summary, 0)
 
         self.lstSubPlots.horizontalHeader().setSectionResizeMode(
-                PlotStep.name.value, QHeaderView.Stretch)
+                PlotStep.name, QHeaderView.Stretch)
         self.lstSubPlots.horizontalHeader().setSectionResizeMode(
-                PlotStep.meta.value, QHeaderView.ResizeToContents)
+                PlotStep.meta, QHeaderView.ResizeToContents)
         self.lstSubPlots.verticalHeader().hide()
 
     def updatePlotImportance(self, ID):
@@ -375,7 +375,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def changeCurrentSubPlot(self, index):
         # Got segfaults when using textEditView model system, so ad hoc stuff.
-        index = index.sibling(index.row(), PlotStep.summary.value)
+        index = index.sibling(index.row(), PlotStep.summary)
         item = self.mdlPlots.itemFromIndex(index)
         if not item:
             self.txtSubPlotSummary.setEnabled(False)
@@ -393,7 +393,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         index = self.lstSubPlots.currentIndex()
         if not index.isValid():
             return
-        index = index.sibling(index.row(), PlotStep.summary.value)
+        index = index.sibling(index.row(), PlotStep.summary)
         item = self.mdlPlots.itemFromIndex(index)
 
         self._updatingSubPlot = True
@@ -814,16 +814,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             pass
 
         for w, c in [
-            (self.txtPersoName, Character.name.value),
-            (self.sldPersoImportance, Character.importance.value),
-            (self.txtPersoMotivation, Character.motivation.value),
-            (self.txtPersoGoal, Character.goal.value),
-            (self.txtPersoConflict, Character.conflict.value),
-            (self.txtPersoEpiphany, Character.epiphany.value),
-            (self.txtPersoSummarySentence, Character.summarySentence.value),
-            (self.txtPersoSummaryPara, Character.summaryPara.value),
-            (self.txtPersoSummaryFull, Character.summaryFull.value),
-            (self.txtPersoNotes, Character.notes.value)
+            (self.txtPersoName, Character.name),
+            (self.sldPersoImportance, Character.importance),
+            (self.txtPersoMotivation, Character.motivation),
+            (self.txtPersoGoal, Character.goal),
+            (self.txtPersoConflict, Character.conflict),
+            (self.txtPersoEpiphany, Character.epiphany),
+            (self.txtPersoSummarySentence, Character.summarySentence),
+            (self.txtPersoSummaryPara, Character.summaryPara),
+            (self.txtPersoSummaryFull, Character.summaryFull),
+            (self.txtPersoNotes, Character.notes)
         ]:
             w.setModel(self.mdlCharacter)
             w.setColumn(c)
@@ -845,10 +845,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.lstSubPlots.selectionModel().currentRowChanged.connect(self.changeCurrentSubPlot, AUC)
 
         for w, c in [
-            (self.txtPlotName, Plot.name.value),
-            (self.txtPlotDescription, Plot.description.value),
-            (self.txtPlotResult, Plot.result.value),
-            (self.sldPlotImportance, Plot.importance.value),
+            (self.txtPlotName, Plot.name),
+            (self.txtPlotDescription, Plot.description),
+            (self.txtPlotResult, Plot.result),
+            (self.sldPlotImportance, Plot.importance),
         ]:
             w.setModel(self.mdlPlots)
             w.setColumn(c)
@@ -861,7 +861,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.plotCharacterDelegate = outlineCharacterDelegate(self.mdlCharacter, self)
         self.lstPlotPerso.setItemDelegate(self.plotCharacterDelegate)
         self.plotDelegate = plotDelegate(self)
-        self.lstSubPlots.setItemDelegateForColumn(PlotStep.meta.value, self.plotDelegate)
+        self.lstSubPlots.setItemDelegateForColumn(PlotStep.meta, self.plotDelegate)
 
         # World
         self.treeWorld.setModel(self.mdlWorld)
@@ -873,10 +873,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btnAddWorld.clicked.connect(self.mdlWorld.addItem, AUC)
         self.btnRmWorld.clicked.connect(self.mdlWorld.removeItem, AUC)
         for w, c in [
-            (self.txtWorldName, World.name.value),
-            (self.txtWorldDescription, World.description.value),
-            (self.txtWorldPassion, World.passion.value),
-            (self.txtWorldConflict, World.conflict.value),
+            (self.txtWorldName, World.name),
+            (self.txtWorldDescription, World.description),
+            (self.txtWorldPassion, World.passion),
+            (self.txtWorldConflict, World.conflict),
         ]:
             w.setModel(self.mdlWorld)
             w.setColumn(c)
@@ -918,7 +918,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.tblDebugPersos.selectionModel().currentChanged.connect(
                 lambda: self.tblDebugPersosInfos.setRootIndex(self.mdlCharacter.index(
                         self.tblDebugPersos.selectionModel().currentIndex().row(),
-                        Character.name.value)), AUC)
+                        Character.name)), AUC)
 
         self.tblDebugPlots.setModel(self.mdlPlots)
         self.tblDebugPlotsPersos.setModel(self.mdlPlots)
@@ -926,11 +926,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.tblDebugPlots.selectionModel().currentChanged.connect(
                 lambda: self.tblDebugPlotsPersos.setRootIndex(self.mdlPlots.index(
                         self.tblDebugPlots.selectionModel().currentIndex().row(),
-                        Plot.characters.value)), AUC)
+                        Plot.characters)), AUC)
         self.tblDebugPlots.selectionModel().currentChanged.connect(
                 lambda: self.tblDebugSubPlots.setRootIndex(self.mdlPlots.index(
                         self.tblDebugPlots.selectionModel().currentIndex().row(),
-                        Plot.steps.value)), AUC)
+                        Plot.steps)), AUC)
         self.treeDebugWorld.setModel(self.mdlWorld)
         self.treeDebugOutline.setModel(self.mdlOutline)
         self.lstDebugLabels.setModel(self.mdlLabels)
@@ -997,15 +997,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.disconnectAll(self.tblDebugPersos.selectionModel().currentChanged,
                 lambda: self.tblDebugPersosInfos.setRootIndex(self.mdlCharacter.index(
                         self.tblDebugPersos.selectionModel().currentIndex().row(),
-                        Character.name.value)))
+                        Character.name)))
         self.disconnectAll(self.tblDebugPlots.selectionModel().currentChanged,
                 lambda: self.tblDebugPlotsPersos.setRootIndex(self.mdlPlots.index(
                         self.tblDebugPlots.selectionModel().currentIndex().row(),
-                        Plot.characters.value)))
+                        Plot.characters)))
         self.disconnectAll(self.tblDebugPlots.selectionModel().currentChanged,
                 lambda: self.tblDebugSubPlots.setRootIndex(self.mdlPlots.index(
                         self.tblDebugPlots.selectionModel().currentIndex().row(),
-                        Plot.steps.value)))
+                        Plot.steps)))
 
     ###############################################################################
     # HELP

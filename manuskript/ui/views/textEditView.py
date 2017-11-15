@@ -180,7 +180,7 @@ class textEditView(QTextEdit):
             return
 
         # what type of text are we editing?
-        if self._column not in [Outline.text.value, Outline.notes]:
+        if self._column not in [Outline.text, Outline.notes]:
             self._textFormat = "text"
 
         else:
@@ -189,7 +189,7 @@ class textEditView(QTextEdit):
         # Setting highlighter
         if self._highlighting:
             item = index.internalPointer()
-            if self._column in [Outline.text.value, Outline.notes]:
+            if self._column in [Outline.text, Outline.notes]:
                 self.highlighter = MMDHighlighter(self)
             else:
                 self.highlighter = basicHighlighter(self)

@@ -46,9 +46,9 @@ autoSaveDelay = 5
 autoSaveNoChanges = True
 autoSaveNoChangesDelay = 5
 saveOnQuit = True
-outlineViewColumns = [Outline.title.value, Outline.POV.value, Outline.status,
-                      Outline.compile.value, Outline.wordCount.value, Outline.goal,
-                      Outline.goalPercentage.value, Outline.label]
+outlineViewColumns = [Outline.title, Outline.POV, Outline.status,
+                      Outline.compile, Outline.wordCount, Outline.goal,
+                      Outline.goalPercentage, Outline.label]
 corkBackground = {
     "color": "#926239",
     "image": "writingdesk"

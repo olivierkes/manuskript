@@ -105,9 +105,9 @@ class cheatSheet(QWidget, Ui_cheatSheet):
             d = []
 
             for r in range(self.plotModel.rowCount()):
-                name = self.plotModel.item(r, Plot.name.value).text()
-                ID = self.plotModel.item(r, Plot.ID.value).text()
-                imp = self.plotModel.item(r, Plot.importance.value).text()
+                name = self.plotModel.item(r, Plot.name).text()
+                ID = self.plotModel.item(r, Plot.ID).text()
+                imp = self.plotModel.item(r, Plot.importance).text()
                 imp = [self.tr("Minor"), self.tr("Secondary"), self.tr("Main")][int(imp)]
                 d.append((name, ID, imp))
 

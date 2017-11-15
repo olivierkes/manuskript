@@ -473,7 +473,7 @@ def addPlotItem(root, mdl, parent=QModelIndex()):
                     outline.attrib[w.name] = val
 
             # List characters as attrib
-            if y == Plot.characters.value:
+            if y == Plot.characters:
                 if mdl.hasChildren(index):
                     characters = []
                     for cX in range(mdl.rowCount(index)):
@@ -486,7 +486,7 @@ def addPlotItem(root, mdl, parent=QModelIndex()):
                     outline.attrib.pop(Plot.characters.name)
 
             # List resolution steps as sub items
-            elif y == Plot.steps.value:
+            elif y == Plot.steps:
                 if mdl.hasChildren(index):
                     for cX in range(mdl.rowCount(index)):
                         step = ET.SubElement(outline, "step")
@@ -762,16 +762,16 @@ def loadProject(project, zip=None):
             log("* Add plot: ", row[0].text())
 
             # Characters
-            if row[Plot.characters.value].text():
-                IDs = row[Plot.characters.value].text().split(",")
+            if row[Plot.characters].text():
+                IDs = row[Plot.characters].text().split(",")
                 item = QStandardItem()
                 for ID in IDs:
                     item.appendRow(QStandardItem(ID.strip()))
-                row[Plot.characters.value] = item
+                row[Plot.characters] = item
 
             # Subplots
             for step in plot:
-                row[Plot.steps.value].appendRow(
+                row[Plot.steps].appendRow(
                     getStandardItemRowFromXMLEnum(step, PlotStep)
                 )
 
