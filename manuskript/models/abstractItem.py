@@ -77,21 +77,21 @@ class abstractItem():
         # print("Data: ", column, role)
 
         if role == Qt.DisplayRole or role == Qt.EditRole:
-            # if column == Outline.compile.value:
+            # if column == Outline.compile:
             # return self.data(column, Qt.CheckStateRole)
 
             if Outline(column) in self._data:
                 return self._data[Outline(column)]
 
-            elif column == Outline.revisions.value:
+            elif column == Outline.revisions:
                 return []
 
             else:
                 return ""
 
-        elif role == Qt.DecorationRole and column == Outline.title.value:
+        elif role == Qt.DecorationRole and column == Outline.title:
             if self.customIcon():
-                return QIcon.fromTheme(self.data(Outline.customIcon.value))
+                return QIcon.fromTheme(self.data(Outline.customIcon))
             if self.isFolder():
                 return QIcon.fromTheme("folder")
             elif self.isMD():
@@ -101,7 +101,7 @@ class abstractItem():
                 # if self.isCompile() in [0, "0"]:
                 # return QBrush(Qt.gray)
 
-        elif role == Qt.CheckStateRole and column == Outline.compile.value:
+        elif role == Qt.CheckStateRole and column == Outline.compile:
             # print(self.title(), self.compile())
             # if self._data[Outline(column)] and not self.compile():
             # return Qt.PartiallyChecked
@@ -110,9 +110,9 @@ class abstractItem():
 
         elif role == Qt.FontRole:
             f = QFont()
-            if column == Outline.wordCount.value and self.isFolder():
+            if column == Outline.wordCount and self.isFolder():
                 f.setItalic(True)
-            elif column == Outline.goal.value and self.isFolder() and self.data(Outline.setGoal) == None:
+            elif column == Outline.goal and self.isFolder() and self.data(Outline.setGoal) == None:
                 f.setItalic(True)
             if self.isFolder():
                 f.setBold(True)
@@ -120,41 +120,41 @@ class abstractItem():
 
     def setData(self, column, data, role=Qt.DisplayRole):
         if role not in [Qt.DisplayRole, Qt.EditRole, Qt.CheckStateRole]:
-            print(column, column == Outline.text.value, data, role)
+            print(column, column == Outline.text, data, role)
             return
 
-        if column == Outline.text.value and self.isFolder():
+        if column == Outline.text and self.isFolder():
             # Folder have no text
             return
 
-        if column == Outline.goal.value:
+        if column == Outline.goal:
             self._data[Outline.setGoal] = toInt(data) if toInt(data) > 0 else ""
 
         # Checking if we will have to recount words
         updateWordCount = False
-        if column in [Outline.wordCount.value, Outline.goal.value, Outline.setGoal.value]:
+        if column in [Outline.wordCount.value, Outline.goal.value, Outline.setGoal]:
             updateWordCount = not Outline(column) in self._data or self._data[Outline(column)] != data
 
         # Stuff to do before
-        if column == Outline.text.value:
+        if column == Outline.text:
             self.addRevision()
 
         # Setting data
         self._data[Outline(column)] = data
 
         # Stuff to do afterwards
-        if column == Outline.text.value:
+        if column == Outline.text:
             wc = wordCount(data)
-            self.setData(Outline.wordCount.value, wc)
-            self.emitDataChanged(cols=[Outline.text.value]) # new in 0.5.0
+            self.setData(Outline.wordCount, wc)
+            self.emitDataChanged(cols=[Outline.text]) # new in 0.5.0
 
-        if column == Outline.compile.value:
-            self.emitDataChanged(cols=[Outline.title.value, Outline.compile.value], recursive=True)
+        if column == Outline.compile:
+            self.emitDataChanged(cols=[Outline.title.value, Outline.compile], recursive=True)
 
-        if column == Outline.customIcon.value:
+        if column == Outline.customIcon:
             # If custom icon changed, we tell views to update title (so that icons
             # will be updated as well)
-            self.emitDataChanged(cols=[Outline.title.value])
+            self.emitDataChanged(cols=[Outline.title])
 
         if updateWordCount:
             self.updateWordCount()
@@ -163,23 +163,23 @@ class abstractItem():
         """Update word count for item and parents.
         If emit is False, no signal is emitted (sometimes cause segfault)"""
         if not self.isFolder():
-            setGoal = toInt(self.data(Outline.setGoal.value))
-            goal = toInt(self.data(Outline.goal.value))
+            setGoal = toInt(self.data(Outline.setGoal))
+            goal = toInt(self.data(Outline.goal))
 
             if goal != setGoal:
                 self._data[Outline.goal] = setGoal
             if setGoal:
-                wc = toInt(self.data(Outline.wordCount.value))
-                self.setData(Outline.goalPercentage.value, wc / float(setGoal))
+                wc = toInt(self.data(Outline.wordCount))
+                self.setData(Outline.goalPercentage, wc / float(setGoal))
 
         else:
             wc = 0
             for c in self.children():
-                wc += toInt(c.data(Outline.wordCount.value))
+                wc += toInt(c.data(Outline.wordCount))
             self._data[Outline.wordCount] = wc
 
-            setGoal = toInt(self.data(Outline.setGoal.value))
-            goal = toInt(self.data(Outline.goal.value))
+            setGoal = toInt(self.data(Outline.setGoal))
+            goal = toInt(self.data(Outline.goal))
 
             if setGoal:
                 if goal != setGoal:
@@ -188,17 +188,17 @@ class abstractItem():
             else:
                 goal = 0
                 for c in self.children():
-                    goal += toInt(c.data(Outline.goal.value))
+                    goal += toInt(c.data(Outline.goal))
                 self._data[Outline.goal] = goal
 
             if goal:
-                self.setData(Outline.goalPercentage.value, wc / float(goal))
+                self.setData(Outline.goalPercentage, wc / float(goal))
             else:
-                self.setData(Outline.goalPercentage.value, "")
+                self.setData(Outline.goalPercentage, "")
 
         if emit:
-            self.emitDataChanged([Outline.goal.value, Outline.setGoal.value,
-                                  Outline.wordCount.value, Outline.goalPercentage.value])
+            self.emitDataChanged([Outline.goal.value, Outline.setGoal,
+                                  Outline.wordCount.value, Outline.goalPercentage])
 
         if self.parent():
             self.parent().updateWordCount(emit)
@@ -214,7 +214,7 @@ class abstractItem():
         self.childItems.insert(row, child)
         child._parent = self
         child.setModel(self._model)
-        if not child.data(Outline.ID.value):
+        if not child.data(Outline.ID):
             child.getUniqueID()
         self.updateWordCount()
 
@@ -275,13 +275,13 @@ class abstractItem():
         return self._data[Outline.type] == "md"
 
     def customIcon(self):
-        return self.data(Outline.customIcon.value)
+        return self.data(Outline.customIcon)
 
     def setCustomIcon(self, customIcon):
-        self.setData(Outline.customIcon.value, customIcon)
+        self.setData(Outline.customIcon, customIcon)
 
     def text(self):
-        return self.data(Outline.text.value)
+        return self.data(Outline.text)
 
     def compile(self):
         if self._data[Outline.compile] in ["0", 0]:
@@ -298,16 +298,16 @@ class abstractItem():
             return ""
 
     def ID(self):
-        return self.data(Outline.ID.value)
+        return self.data(Outline.ID)
 
     def POV(self):
-        return self.data(Outline.POV.value)
+        return self.data(Outline.POV)
 
     def status(self):
-        return self.data(Outline.status.value)
+        return self.data(Outline.status)
 
     def label(self):
-        return self.data(Outline.label.value)
+        return self.data(Outline.label)
 
     def path(self):
         "Returns path to item as string."
@@ -331,9 +331,9 @@ class abstractItem():
             return -1
 
     def stats(self):
-        wc = self.data(Outline.wordCount.value)
-        goal = self.data(Outline.goal.value)
-        progress = self.data(Outline.goalPercentage.value)
+        wc = self.data(Outline.wordCount)
+        goal = self.data(Outline.goal)
+        progress = self.data(Outline.goalPercentage)
         if not wc:
             wc = 0
         if goal:
@@ -350,7 +350,7 @@ class abstractItem():
         Returns a copy of item, with no parent, and no ID.
         """
         item = outlineItem(xml=self.toXML())
-        item.setData(Outline.ID.value, None)
+        item.setData(Outline.ID, None)
         return item
 
     def split(self, splitMark, recursive=True):
@@ -374,7 +374,7 @@ class abstractItem():
             else:
 
                 # Stores the new text
-                self.setData(Outline.text.value, txt[0])
+                self.setData(Outline.text, txt[0])
 
                 k = 1
                 for subTxt in txt[1:]:
@@ -382,11 +382,11 @@ class abstractItem():
                     item = self.copy()
 
                     # Change title adding _k
-                    item.setData(Outline.title.value,
+                    item.setData(Outline.title,
                                  "{}_{}".format(item.title(), k+1))
 
                     # Set text
-                    item.setData(Outline.text.value, subTxt)
+                    item.setData(Outline.text, subTxt)
 
                     # Inserting item
                     #self.parent().insertChild(self.row()+k, item)
@@ -404,7 +404,7 @@ class abstractItem():
         txt = self.text()
 
         # Stores the new text
-        self.setData(Outline.text.value, txt[:position])
+        self.setData(Outline.text, txt[:position])
 
         # Create a copy
         item = self.copy()
@@ -414,10 +414,10 @@ class abstractItem():
             title = txt[position:position+length].replace("\n", "")
         else:
             title = "{}_{}".format(item.title(), 2)
-        item.setData(Outline.title.value, title)
+        item.setData(Outline.title, title)
 
         # Set text
-        item.setData(Outline.text.value, txt[position+length:])
+        item.setData(Outline.text, txt[position+length:])
 
         # Inserting item using the model to signal views
         self._model.insertItem(item, self.row()+1, self.parent().index())
@@ -434,7 +434,7 @@ class abstractItem():
         # Merges the texts
         text = [self.text()]
         text.extend([i.text() for i in items])
-        self.setData(Outline.text.value, sep.join(text))
+        self.setData(Outline.text, sep.join(text))
 
         # Removes other items
         self._model.removeIndexes([i.index() for i in items])
@@ -479,21 +479,21 @@ class abstractItem():
         for k in root.attrib:
             if k in Outline.__members__:
                 # if k == Outline.compile:
-                # self.setData(Outline.__members__[k].value, unicode(root.attrib[k]), Qt.CheckStateRole)
+                # self.setData(Outline.__members__[k], unicode(root.attrib[k]), Qt.CheckStateRole)
                 # else:
-                self.setData(Outline.__members__[k].value, str(root.attrib[k]))
+                self.setData(Outline.__members__[k], str(root.attrib[k]))
 
         if "lastPath" in root.attrib:
             self._lastPath = root.attrib["lastPath"]
 
         # If loading from an old file format, convert to md and remove html markup
         if self.type() in ["txt", "t2t"]:
-            self.setData(Outline.type.value, "md")
+            self.setData(Outline.type, "md")
 
         elif self.type() == "html":
-            self.setData(Outline.type.value, "md")
-            self.setData(Outline.text.value, HTML2PlainText(self.data(Outline.text.value)))
-            self.setData(Outline.notes.value, HTML2PlainText(self.data(Outline.notes.value)))
+            self.setData(Outline.type, "md")
+            self.setData(Outline.text.value, HTML2PlainText(self.data(Outline.text)))
+            self.setData(Outline.notes.value, HTML2PlainText(self.data(Outline.notes)))
 
         for child in root:
             if child.tag == "outlineItem":
@@ -506,7 +506,7 @@ class abstractItem():
     ###############################################################################
 
     def getUniqueID(self, recursive=False):
-        self.setData(Outline.ID.value, self._model.rootItem.findUniqueID())
+        self.setData(Outline.ID, self._model.rootItem.findUniqueID())
 
         if recursive:
             for c in self.children():
@@ -524,7 +524,7 @@ class abstractItem():
 
         def checkChildren(item):
             for c in item.children():
-                _id = c.data(Outline.ID.value)
+                _id = c.data(Outline.ID)
                 if not _id or _id == "0":
                     c.getUniqueID()
                 checkChildren(c)
@@ -532,7 +532,7 @@ class abstractItem():
         checkChildren(self)
 
     def listAllIDs(self):
-        IDs = [self.data(Outline.ID.value)]
+        IDs = [self.data(Outline.ID)]
         for c in self.children():
             IDs.extend(c.listAllIDs())
         return IDs
@@ -546,7 +546,7 @@ class abstractItem():
         return str(k)
 
     def pathToItem(self):
-        path = self.data(Outline.ID.value)
+        path = self.data(Outline.ID)
         if self.parent().parent():
             path = "{}:{}".format(self.parent().pathToItem(), path)
         return path
@@ -580,7 +580,7 @@ class abstractItem():
         text = text.lower() if not caseSensitive else text
         for c in columns:
 
-            if c == Outline.POV.value and self.POV():
+            if c == Outline.POV and self.POV():
                 c = mainWindow.mdlCharacter.getCharacterByID(self.POV())
                 if c:
                     searchIn = c.name()
@@ -588,10 +588,10 @@ class abstractItem():
                     searchIn = ""
                     print("Character POV not found:", self.POV())
 
-            elif c == Outline.status.value:
+            elif c == Outline.status:
                 searchIn = mainWindow.mdlStatus.item(toInt(self.status()), 0).text()
 
-            elif c == Outline.label.value:
+            elif c == Outline.label:
                 searchIn = mainWindow.mdlLabels.item(toInt(self.label()), 0).text()
 
             else:
@@ -610,7 +610,7 @@ class abstractItem():
     ###############################################################################
 
     def revisions(self):
-        return self.data(Outline.revisions.value)
+        return self.data(Outline.revisions)
 
     def appendRevision(self, ts, text):
         if not Outline.revisions in self._data:
@@ -634,15 +634,15 @@ class abstractItem():
         if settings.revisions["smartremove"]:
             self.cleanRevisions()
 
-        self.emitDataChanged([Outline.revisions.value])
+        self.emitDataChanged([Outline.revisions])
 
     def deleteRevision(self, ts):
         self._data[Outline.revisions] = [r for r in self._data[Outline.revisions] if r[0] != ts]
-        self.emitDataChanged([Outline.revisions.value])
+        self.emitDataChanged([Outline.revisions])
 
     def clearAllRevisions(self):
         self._data[Outline.revisions] = []
-        self.emitDataChanged([Outline.revisions.value])
+        self.emitDataChanged([Outline.revisions])
 
     def cleanRevisions(self):
         "Keep only one some the revisions."
@@ -676,4 +676,4 @@ class abstractItem():
 
         if rev2 != rev:
             self._data[Outline.revisions] = rev2
-            self.emitDataChanged([Outline.revisions.value])
+            self.emitDataChanged([Outline.revisions])

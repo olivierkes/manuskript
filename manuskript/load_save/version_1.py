@@ -603,7 +603,7 @@ def outlineToMMD(item):
             content += formatMetaData(attrib.name, str(val), 15)
 
     content += "\n\n"
-    content += item.data(Outline.text.value)
+    content += item.data(Outline.text)
 
     return content
 
@@ -929,18 +929,18 @@ def outlineFromMMD(text, parent):
     # Store metadata
     for k in md:
         if k in Outline.__members__:
-            item.setData(Outline.__members__[k].value, str(md[k]))
+            item.setData(Outline.__members__[k], str(md[k]))
 
     # Store body
-    item.setData(Outline.text.value, str(body))
+    item.setData(Outline.text, str(body))
 
     # Set file format to "md"
     # (Old version of manuskript had different file formats: text, t2t, html and md)
     # If file format is html, convert to plain text:
     if item.type() == "html":
-        item.setData(Outline.text.value, HTML2PlainText(body))
+        item.setData(Outline.text, HTML2PlainText(body))
     if item.type() in ["txt", "t2t", "html"]:
-        item.setData(Outline.type.value, "md")
+        item.setData(Outline.type, "md")
 
     return item
 

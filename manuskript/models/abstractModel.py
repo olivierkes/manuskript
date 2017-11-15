@@ -160,39 +160,39 @@ class abstractModel(QAbstractItemModel):
             # print("Model emit", index.row(), index.column())
             self.dataChanged.emit(index, index)
 
-            if index.column() == Outline.type.value:
+            if index.column() == Outline.type:
                 # If type changed, then the icon of title changed.
                 # Some views might be glad to know it.
-                self.dataChanged.emit(index.sibling(index.row(), Outline.title.value),
-                                      index.sibling(index.row(), Outline.title.value))
+                self.dataChanged.emit(index.sibling(index.row(), Outline.title),
+                                      index.sibling(index.row(), Outline.title))
 
         return True
 
     def headerData(self, section, orientation, role=Qt.DisplayRole):
         if orientation == Qt.Horizontal and role in [Qt.DisplayRole, Qt.ToolTipRole]:
-            if section == Outline.title.value:
+            if section == Outline.title:
                 return self.tr("Title")
-            elif section == Outline.POV.value:
+            elif section == Outline.POV:
                 return self.tr("POV")
-            elif section == Outline.label.value:
+            elif section == Outline.label:
                 return self.tr("Label")
-            elif section == Outline.status.value:
+            elif section == Outline.status:
                 return self.tr("Status")
-            elif section == Outline.compile.value:
+            elif section == Outline.compile:
                 return self.tr("Compile")
-            elif section == Outline.wordCount.value:
+            elif section == Outline.wordCount:
                 return self.tr("Word count")
-            elif section == Outline.goal.value:
+            elif section == Outline.goal:
                 return self.tr("Goal")
-            elif section == Outline.goalPercentage.value:
+            elif section == Outline.goalPercentage:
                 return "%"
             else:
                 return [i.name for i in Outline][section]
 
         elif role == Qt.SizeHintRole:
-            if section == Outline.compile.value:
+            if section == Outline.compile:
                 return QSize(40, 30)
-            elif section == Outline.goalPercentage.value:
+            elif section == Outline.goalPercentage:
                 return QSize(100, 30)
             else:
                 return QVariant()
@@ -230,7 +230,7 @@ class abstractModel(QAbstractItemModel):
         elif not index.isValid():
             flags |= Qt.ItemIsDropEnabled
 
-        if index.isValid() and index.column() == Outline.compile.value:
+        if index.isValid() and index.column() == Outline.compile:
             flags |= Qt.ItemIsUserCheckable
 
         if index.column() in [i.value for i in [Outline.wordCount, Outline.goalPercentage]]:
@@ -410,7 +410,7 @@ class abstractModel(QAbstractItemModel):
                 if item.ID() in IDs:
                     # Recursively remove ID. So will get a new one when inserted.
                     def stripID(item):
-                        item.setData(Outline.ID.value, None)
+                        item.setData(Outline.ID, None)
                         for c in item.children():
                             stripID(c)
 

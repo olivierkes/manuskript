@@ -14,7 +14,7 @@ class chkOutlineCompile(QCheckBox):
     def __init__(self, parent=None):
         QCheckBox.__init__(self, parent)
         self.stateChanged.connect(self.submit)
-        self._column = Outline.compile.value
+        self._column = Outline.compile
         self._index = None
         self._indexes = None
         self._model = None

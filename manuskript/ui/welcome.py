@@ -445,7 +445,7 @@ class welcome(QWidget, Ui_welcome):
                             _type=_type,
                             parent=parent)
                     if len(datas) == 2:
-                        item.setData(Outline.setGoal.value, datas[1][0])
+                        item.setData(Outline.setGoal, datas[1][0])
                         # parent.appendChild(item)
             else:
                 n = 0

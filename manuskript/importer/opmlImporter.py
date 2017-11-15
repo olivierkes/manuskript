@@ -90,8 +90,8 @@ class opmlImporter(abstractImporter):
                 for el in children:
                     items.extend(cls.parseItems(el, card))
             else:
-                card.setData(Outline.type.value, 'md')
-                card.setData(Outline.text.value, body)
+                card.setData(Outline.type, 'md')
+                card.setData(Outline.text, body)
 
         return items
 

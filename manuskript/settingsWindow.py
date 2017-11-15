@@ -355,14 +355,14 @@ class settingsWindow(QWidget, Ui_Settings):
 
     def outlineColumnsData(self):
         return {
-            self.chkOutlineTitle: Outline.title.value,
-            self.chkOutlinePOV: Outline.POV.value,
-            self.chkOutlineLabel: Outline.label.value,
-            self.chkOutlineStatus: Outline.status.value,
-            self.chkOutlineCompile: Outline.compile.value,
-            self.chkOutlineWordCount: Outline.wordCount.value,
-            self.chkOutlineGoal: Outline.goal.value,
-            self.chkOutlinePercentage: Outline.goalPercentage.value,
+            self.chkOutlineTitle: Outline.title,
+            self.chkOutlinePOV: Outline.POV,
+            self.chkOutlineLabel: Outline.label,
+            self.chkOutlineStatus: Outline.status,
+            self.chkOutlineCompile: Outline.compile,
+            self.chkOutlineWordCount: Outline.wordCount,
+            self.chkOutlineGoal: Outline.goal,
+            self.chkOutlinePercentage: Outline.goalPercentage,
         }
 
     def outlineColumnsChanged(self):

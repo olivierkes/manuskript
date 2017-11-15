@@ -9,7 +9,7 @@ from manuskript.functions import toString
 class lineEditView(QLineEdit):
     def __init__(self, parent=None):
         QLineEdit.__init__(self, parent)
-        self._column = Outline.title.value
+        self._column = Outline.title
         self._indexes = None
         self._index = None
         self._placeholderText = None

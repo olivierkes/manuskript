@@ -61,7 +61,7 @@ class storylineView(QWidget, Ui_storylineView):
         self._mdlCharacter.dataChanged.connect(self.reloadTimer.start)
 
     def updateMaybe(self, topLeft, bottomRight):
-        if topLeft.column() <= Outline.notes.value <= bottomRight.column():
+        if topLeft.column() <= Outline.notes <= bottomRight.column():
             self.reloadTimer.start
 
     def plotReferences(self):

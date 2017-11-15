@@ -414,15 +414,15 @@ class outlineBasics(QAbstractItemView):
 
     def setPOV(self, POV):
         for i in self.getSelection():
-            self.model().setData(i.sibling(i.row(), Outline.POV.value), str(POV))
+            self.model().setData(i.sibling(i.row(), Outline.POV), str(POV))
 
     def setStatus(self, status):
         for i in self.getSelection():
-            self.model().setData(i.sibling(i.row(), Outline.status.value), str(status))
+            self.model().setData(i.sibling(i.row(), Outline.status), str(status))
 
     def setLabel(self, label):
         for i in self.getSelection():
-            self.model().setData(i.sibling(i.row(), Outline.label.value), str(label))
+            self.model().setData(i.sibling(i.row(), Outline.label), str(label))
 
     def setCustomIcon(self, customIcon):
         for i in self.getSelection():

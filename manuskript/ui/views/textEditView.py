@@ -27,7 +27,7 @@ class textEditView(QTextEdit):
     def __init__(self, parent=None, index=None, html=None, spellcheck=True, highlighting=False, dict="",
                  autoResize=False):
         QTextEdit.__init__(self, parent)
-        self._column = Outline.text.value
+        self._column = Outline.text
         self._index = None
         self._indexes = None
         self._model = None
@@ -180,7 +180,7 @@ class textEditView(QTextEdit):
             return
 
         # what type of text are we editing?
-        if self._column not in [Outline.text.value, Outline.notes.value]:
+        if self._column not in [Outline.text.value, Outline.notes]:
             self._textFormat = "text"
 
         else:
@@ -189,7 +189,7 @@ class textEditView(QTextEdit):
         # Setting highlighter
         if self._highlighting:
             item = index.internalPointer()
-            if self._column in [Outline.text.value, Outline.notes.value]:
+            if self._column in [Outline.text.value, Outline.notes]:
                 self.highlighter = MMDHighlighter(self)
             else:
                 self.highlighter = basicHighlighter(self)
@@ -200,7 +200,7 @@ class textEditView(QTextEdit):
         if self._fromTheme or \
                 not self._index or \
                     type(self._index.model()) != outlineModel or \
-                    self._column != Outline.text.value:
+                    self._column != Outline.text:
             return
 
         opt = settings.textEditor

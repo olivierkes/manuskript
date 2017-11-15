@@ -301,9 +301,9 @@ class mainEditor(QWidget, Ui_mainEditor):
         if not item:
             item = self.mw.mdlOutline.rootItem
 
-        wc = item.data(Outline.wordCount.value)
-        goal = item.data(Outline.goal.value)
-        progress = item.data(Outline.goalPercentage.value)
+        wc = item.data(Outline.wordCount)
+        goal = item.data(Outline.goal)
+        progress = item.data(Outline.goalPercentage)
         # mw = qApp.activeWindow()
 
         if not wc:

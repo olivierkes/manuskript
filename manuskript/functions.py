@@ -170,7 +170,7 @@ def outlineItemColors(item):
 
     # POV
     colors["POV"] = QColor(Qt.transparent)
-    POV = item.data(Outline.POV.value)
+    POV = item.data(Outline.POV)
     if POV == "":
         col = QColor(Qt.transparent)
     else:
@@ -179,7 +179,7 @@ def outlineItemColors(item):
                 colors["POV"] = iconColor(mw.mdlCharacter.icon(i))
 
     # Label
-    lbl = item.data(Outline.label.value)
+    lbl = item.data(Outline.label)
     if lbl == "":
         col = QColor(Qt.transparent)
     else:
@@ -190,7 +190,7 @@ def outlineItemColors(item):
     colors["Label"] = col
 
     # Progress
-    pg = item.data(Outline.goalPercentage.value)
+    pg = item.data(Outline.goalPercentage)
     colors["Progress"] = colorFromProgress(pg)
 
     # Compile

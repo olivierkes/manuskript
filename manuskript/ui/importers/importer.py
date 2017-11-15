@@ -312,7 +312,7 @@ class importerDialog(QWidget, Ui_importer):
         if self.settingsWidget.trimLongTitles():
             for item in items:
                 if len(item.title()) > 32:
-                    item.setData(Outline.title.value, item.title()[:32])
+                    item.setData(Outline.title, item.title()[:32])
 
         # Split at
         if self.settingsWidget.splitScenes():

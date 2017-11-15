@@ -140,9 +140,9 @@ def infos(ref):
         path = " > ".join(pathStr)
 
         # Summaries and notes
-        ss = item.data(Outline.summarySentence.value)
-        ls = item.data(Outline.summaryFull.value)
-        notes = item.data(Outline.notes.value)
+        ss = item.data(Outline.summarySentence)
+        ls = item.data(Outline.summaryFull)
+        notes = item.data(Outline.notes)
 
         text = """<h1>{title}</h1>
         <p><b>{pathTitle}</b> {path}</p>
@@ -237,7 +237,7 @@ def infos(ref):
             idx = oM.getIndexByID(t)
             listPOV += "<li><a href='{link}'>{text}</a></li>".format(
                     link=textReference(t),
-                    text=oM.data(idx, Outline.title.value))
+                    text=oM.data(idx, Outline.title))
 
         text = """<h1>{name}</h1>
         {goto}
@@ -570,8 +570,8 @@ def findReferencesTo(ref, parent=None, recursive=True):
     ref2 = ref[:-1] + "}"
 
     # Since it's a simple search (no regex), we search for both.
-    lst = parent.findItemsContaining(ref, [Outline.notes.value], recursive=recursive)
-    lst += parent.findItemsContaining(ref2, [Outline.notes.value], recursive=recursive)
+    lst = parent.findItemsContaining(ref, [Outline.notes], recursive=recursive)
+    lst += parent.findItemsContaining(ref2, [Outline.notes], recursive=recursive)
 
     return lst
 
@@ -585,7 +585,7 @@ def listReferences(ref, title=qApp.translate("references", "Referenced in:")):
         idx = oM.getIndexByID(t)
         listRefs += "<li><a href='{link}'>{text}</a></li>".format(
                 link=textReference(t),
-                text=oM.data(idx, Outline.title.value))
+                text=oM.data(idx, Outline.title))
 
     return "<h2>{title}</h2><ul>{ref}</ul>".format(
             title=title,

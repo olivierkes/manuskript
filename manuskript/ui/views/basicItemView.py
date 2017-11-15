@@ -10,9 +10,9 @@ class basicItemView(QWidget, Ui_basicItemView):
     def __init__(self, parent=None):
         QWidget.__init__(self)
         self.setupUi(self)
-        self.txtSummarySentence.setColumn(Outline.summarySentence.value)
-        self.txtSummaryFull.setColumn(Outline.summaryFull.value)
-        self.txtGoal.setColumn(Outline.setGoal.value)
+        self.txtSummarySentence.setColumn(Outline.summarySentence)
+        self.txtSummaryFull.setColumn(Outline.summaryFull)
+        self.txtGoal.setColumn(Outline.setGoal)
 
     def setModels(self, mdlOutline, mdlCharacter, mdlLabels, mdlStatus):
         self.cmbPOV.setModels(mdlCharacter, mdlOutline)

@@ -25,7 +25,7 @@ class generalSettings(QWidget, Ui_generalSettings):
         # TreeView to select parent
         # We use a proxy to display only folders
         proxy = QSortFilterProxyModel()
-        proxy.setFilterKeyColumn(Outline.type.value)
+        proxy.setFilterKeyColumn(Outline.type)
         proxy.setFilterFixedString("folder")
         proxy.setSourceModel(self.mw.mdlOutline)
         self.treeGeneralParent.setModel(proxy)

@@ -179,7 +179,7 @@ class outlineCharacterDelegate(QStyledItemDelegate):
 
         qApp.style().drawControl(QStyle.CE_ItemViewItem, opt, painter)
 
-        # if index.isValid() and index.internalPointer().data(Outline.POV.value) not in ["", None]:
+        # if index.isValid() and index.internalPointer().data(Outline.POV) not in ["", None]:
         if itemIndex.isValid() and self.mdlCharacter.data(itemIndex) not in ["", None]:
             opt = QStyleOptionComboBox()
             opt.rect = option.rect
@@ -215,12 +215,12 @@ class outlineGoalPercentageDelegate(QStyledItemDelegate):
 
         item = index.internalPointer()
 
-        if not item.data(Outline.goal.value):
+        if not item.data(Outline.goal):
             return
 
-        p = toFloat(item.data(Outline.goalPercentage.value))
+        p = toFloat(item.data(Outline.goalPercentage))
 
-        typ = item.data(Outline.type.value)
+        typ = item.data(Outline.type)
 
         level = item.level()
         if self.rootIndex and self.rootIndex.isValid():
@@ -271,7 +271,7 @@ class outlineStatusDelegate(QStyledItemDelegate):
         for i in range(self.mdlStatus.rowCount()):
             editor.addItem(self.mdlStatus.item(i, 0).text())
 
-        val = index.internalPointer().data(Outline.status.value)
+        val = index.internalPointer().data(Outline.status)
         if not val: val = 0
         editor.setCurrentIndex(int(val))
         editor.showPopup()
@@ -289,7 +289,7 @@ class outlineStatusDelegate(QStyledItemDelegate):
     def paint(self, painter, option, index):
         QStyledItemDelegate.paint(self, painter, option, index)
 
-        if index.isValid() and index.internalPointer().data(Outline.status.value) not in ["", None, "0", 0]:
+        if index.isValid() and index.internalPointer().data(Outline.status) not in ["", None, "0", 0]:
             opt = QStyleOptionComboBox()
             opt.rect = option.rect
             r = qApp.style().subControlRect(QStyle.CC_ComboBox, opt, QStyle.SC_ComboBoxArrow)
@@ -329,7 +329,7 @@ class outlineLabelDelegate(QStyledItemDelegate):
             editor.addItem(self.mdlLabels.item(i, 0).icon(),
                            self.mdlLabels.item(i, 0).text())
 
-        val = index.internalPointer().data(Outline.label.value)
+        val = index.internalPointer().data(Outline.label)
         if not val: val = 0
         editor.setCurrentIndex(int(val))
         editor.showPopup()
@@ -355,7 +355,7 @@ class outlineLabelDelegate(QStyledItemDelegate):
         qApp.style().drawControl(QStyle.CE_ItemViewItem, opt, painter)
 
         # Drop down indicator
-        if index.isValid() and index.internalPointer().data(Outline.label.value) not in ["", None, "0", 0]:
+        if index.isValid() and index.internalPointer().data(Outline.label) not in ["", None, "0", 0]:
             opt = QStyleOptionComboBox()
             opt.rect = option.rect
             r = qApp.style().subControlRect(QStyle.CC_ComboBox, opt, QStyle.SC_ComboBoxArrow)

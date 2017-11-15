@@ -109,27 +109,27 @@ class treeTitleDelegate(QStyledItemDelegate):
                     extraText = item.childCount()
                     extraText = " [{}]".format(extraText)
                 elif settings.viewSettings["Tree"]["InfoFolder"] == "WC":
-                    extraText = item.data(Outline.wordCount.value)
+                    extraText = item.data(Outline.wordCount)
                     extraText = " ({})".format(extraText)
                 elif settings.viewSettings["Tree"]["InfoFolder"] == "Progress":
-                    extraText = int(toFloat(item.data(Outline.goalPercentage.value)) * 100)
+                    extraText = int(toFloat(item.data(Outline.goalPercentage)) * 100)
                     if extraText:
                         extraText = " ({}%)".format(extraText)
                 elif settings.viewSettings["Tree"]["InfoFolder"] == "Summary":
-                    extraText = item.data(Outline.summarySentence.value)
+                    extraText = item.data(Outline.summarySentence)
                     if extraText:
                         extraText = " - {}".format(extraText)
 
             if item.isText() and settings.viewSettings["Tree"]["InfoText"] != "Nothing":
                 if settings.viewSettings["Tree"]["InfoText"] == "WC":
-                    extraText = item.data(Outline.wordCount.value)
+                    extraText = item.data(Outline.wordCount)
                     extraText = " ({})".format(extraText)
                 elif settings.viewSettings["Tree"]["InfoText"] == "Progress":
-                    extraText = int(toFloat(item.data(Outline.goalPercentage.value)) * 100)
+                    extraText = int(toFloat(item.data(Outline.goalPercentage)) * 100)
                     if extraText:
                         extraText = " ({}%)".format(extraText)
                 elif settings.viewSettings["Tree"]["InfoText"] == "Summary":
-                    extraText = item.data(Outline.summarySentence.value)
+                    extraText = item.data(Outline.summarySentence)
                     if extraText:
                         extraText = " - {}".format(extraText)
 

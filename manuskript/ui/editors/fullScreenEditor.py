@@ -273,9 +273,9 @@ class fullScreenEditor(QWidget):
         if self._index:
             item = self._index.internalPointer()
 
-        wc = item.data(Outline.wordCount.value)
-        goal = item.data(Outline.goal.value)
-        pg = item.data(Outline.goalPercentage.value)
+        wc = item.data(Outline.wordCount)
+        goal = item.data(Outline.goal)
+        pg = item.data(Outline.goalPercentage)
 
         if goal:
             rect = self.lblProgress.geometry()

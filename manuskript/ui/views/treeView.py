@@ -27,7 +27,7 @@ class treeView(QTreeView, dndView, outlineBasics):
 
         # Setting delegate
         self.titleDelegate = treeTitleDelegate()
-        self.setItemDelegateForColumn(Outline.title.value, self.titleDelegate)
+        self.setItemDelegateForColumn(Outline.title, self.titleDelegate)
 
     def makePopupMenu(self):
         menu = outlineBasics.makePopupMenu(self)
