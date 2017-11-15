@@ -12,7 +12,7 @@ from manuskript.ui.importers.importer_ui import Ui_importer
 from manuskript.ui.importers.generalSettings import generalSettings
 from manuskript.ui import style
 from manuskript import importer
-from manuskript.models.outlineModel import outlineModel, outlineItem
+from manuskript.models import outlineModel, outlineItem
 from manuskript.enums import Outline
 from manuskript.exporter.pandoc import pandocExporter
 

@@ -24,7 +24,7 @@ from lxml import etree as ET
 
 from manuskript.load_save.version_0 import loadFilesFromZip
 from manuskript.models.characterModel import CharacterInfo
-from manuskript.models.outlineModel import outlineItem
+from manuskript.models import outlineItem
 
 try:
     import zlib  # Used with zipfile for compression

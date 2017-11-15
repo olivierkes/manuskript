@@ -15,8 +15,7 @@ from manuskript import settings
 from manuskript.enums import Outline
 from manuskript.functions import mainWindow, iconFromColor, appPath
 from manuskript.models.characterModel import characterModel
-from manuskript.models.outlineModel import outlineItem
-from manuskript.models.outlineModel import outlineModel
+from manuskript.models import outlineItem, outlineModel
 from manuskript.models.plotModel import plotModel
 from manuskript.models.worldModel import worldModel
 from manuskript.ui.welcome_ui import Ui_welcome

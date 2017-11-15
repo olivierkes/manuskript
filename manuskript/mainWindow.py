@@ -14,7 +14,7 @@ from manuskript.functions import AUC, wordCount, appPath, findWidgetsOfClass
 import manuskript.functions as F
 from manuskript import loadSave
 from manuskript.models.characterModel import characterModel
-from manuskript.models.outlineModel import outlineModel
+from manuskript.models import outlineModel
 from manuskript.models.plotModel import plotModel
 from manuskript.models.worldModel import worldModel
 from manuskript.settingsWindow import settingsWindow

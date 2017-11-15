@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<outlineItem title="root" ID="0" type="folder" compile="2" lastPath="">
+<outlineItem title="Root" ID="0" type="folder" compile="2" lastPath="">
   <outlineItem title="Jerusalem" ID="35" type="folder" POV="0" compile="2" lastPath="outline/0-Jerusalem">
     <outlineItem title="Chapter 1" ID="5" type="folder" compile="2" setGoal="1000" lastPath="outline/0-Jerusalem/0-Chapter_1">
       <outlineItem title="Introduction" ID="1" type="md" compile="2" text="1 The first book I wrote, Theophilus, concerned all that Jesus began both to do and to teach, 2 until the day in which he was received up, after he had given commandment through the Holy Spirit to the apostles whom he had chosen. 3 To these he also showed himself alive after he suffered, by many proofs, appearing to them over a period of forty days, and speaking about God’s Kingdom. " lastPath="outline/0-Jerusalem/0-Chapter_1/0-Introduction.md">

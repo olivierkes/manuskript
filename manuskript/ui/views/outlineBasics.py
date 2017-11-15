@@ -10,7 +10,7 @@ from manuskript import settings
 from manuskript.enums import Outline
 from manuskript.functions import mainWindow, statusMessage
 from manuskript.functions import toInt, customIcons
-from manuskript.models.outlineModel import outlineItem
+from manuskript.models import outlineItem
 from manuskript.ui.tools.splitDialog import splitDialog
 
 

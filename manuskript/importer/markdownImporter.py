@@ -2,7 +2,7 @@
 # --!-- coding: utf8 --!--
 
 from manuskript.importer.abstractImporter import abstractImporter
-from manuskript.models.outlineModel import outlineItem
+from manuskript.models import outlineItem
 from manuskript.enums import Outline
 from PyQt5.QtWidgets import qApp
 import re, os

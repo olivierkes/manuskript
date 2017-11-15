@@ -2,7 +2,7 @@
 # --!-- coding: utf8 --!--
 
 from PyQt5.QtWidgets import qApp, QMessageBox
-from manuskript.models.outlineModel import outlineItem
+from manuskript.models import outlineItem
 from manuskript.enums import Outline
 from lxml import etree as ET
 from manuskript.functions import mainWindow

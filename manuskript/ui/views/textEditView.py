@@ -10,7 +10,7 @@ from manuskript import settings
 from manuskript.enums import Outline
 from manuskript.functions import AUC, themeIcon
 from manuskript.functions import toString
-from manuskript.models.outlineModel import outlineModel
+from manuskript.models import outlineModel
 from manuskript.ui.editors.MDFunctions import MDFormatSelection
 from manuskript.ui.editors.MMDHighlighter import MMDHighlighter
 from manuskript.ui.editors.basicHighlighter import basicHighlighter

@@ -4,7 +4,7 @@ from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QWidget, QAction
 
 from manuskript.enums import Outline
-from manuskript.models.outlineModel import outlineModel
+from manuskript.models import outlineModel
 from manuskript.ui.editors.textFormat_ui import Ui_textFormat
 
 
