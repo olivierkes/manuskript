@@ -60,3 +60,8 @@ class Outline(IntEnum):
     textFormat = 15
     revisions = 16
     customIcon = 17
+
+class Abstract(IntEnum):
+    title = 0
+    ID = 1
+    type = 2

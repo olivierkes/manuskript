@@ -15,6 +15,7 @@ from manuskript import settings
 from lxml import etree as ET
 
 from manuskript.enums import Outline
+from manuskript import enums
 from manuskript.functions import mainWindow, toInt, wordCount
 from manuskript.converters import HTML2PlainText
 
@@ -24,26 +25,30 @@ except:
     # Invalid locale, but not really a big deal because it's used only for
     # number formating
     pass
-import time, os
+import os
 
 
 class abstractItem():
-    def __init__(self, model=None, title="", _type="folder", xml=None, parent=None, ID=None):
+
+    # Enum kept on the class for easier acces
+    enum = enums.Abstract
+
+    # Used for XML export
+    name = "abstractItem"
+
+    def __init__(self, model=None, title="", _type="abstract", xml=None, parent=None, ID=None):
 
         self._data = {}
         self.childItems = []
         self._parent = None
         self._model = model
-        self.defaultTextType = None
+
         self.IDs = ["0"]  # used by root item to store unique IDs
         self._lastPath = ""  # used by loadSave version_1 to remember which files the items comes from,
-                            # in case it is renamed / removed
+                             # in case it is renamed / removed
 
-        if title:
-            self._data[Outline.title] = title
-
-        self._data[Outline.type] = _type
-        self._data[Outline.compile] = Qt.Checked
+        self._data[self.enum.title] = title
+        self._data[self.enum.type] = _type
 
         if xml is not None:
             self.setFromXML(xml)
@@ -52,7 +57,67 @@ class abstractItem():
             parent.appendChild(self)
 
         if ID:
-            self._data[Outline.ID] = ID
+            self._data[self.enum.ID] = ID
+
+    #######################################################################
+    # Model
+    #######################################################################
+
+    def setModel(self, model):
+        self._model = model
+        for c in self.children():
+            c.setModel(model)
+
+    def index(self, column=0):
+        if self._model:
+            return self._model.indexFromItem(self, column)
+        else:
+            return QModelIndex()
+
+    def emitDataChanged(self, cols=None, recursive=False):
+        """
+        Emits the dataChanged signal of the model, to signal views that data
+        have changed.
+
+        @param cols: an array of int (or None). The columns of the index that
+                     have been changed.
+        @param recursive: boolean. If true, all children will also emit the
+                     dataChanged signal.
+        """
+        idx = self.index()
+        if idx and self._model:
+            if not cols:
+                # Emit data changed for the whole item (all columns)
+                self._model.dataChanged.emit(idx, self.index(len(self.enum)))
+
+            else:
+                # Emit only for the specified columns
+                for c in cols:
+                    self._model.dataChanged.emit(self.index(c), self.index(c))
+
+            if recursive:
+                for c in self.children():
+                    c.emitDataChanged(cols, recursive=True)
+
+    #######################################################################
+    # Properties
+    #######################################################################
+
+    def title(self):
+        return self._data.get(self.enum.title, "")
+
+    def ID(self):
+        return self._data.get(self.enum.ID, 0)
+
+    def columnCount(self):
+        return len(self.enum)
+
+    def type(self):
+        return self._data[self.enum.type]
+
+    #######################################################################
+    # Parent / Children managment
+    #######################################################################
 
     def child(self, row):
         return self.childItems[row]
@@ -69,8 +134,111 @@ class abstractItem():
     def children(self):
         return self.childItems
 
-    def columnCount(self):
-        return len(Outline)
+    def row(self):
+        if self.parent():
+            return self.parent().childItems.index(self)
+
+    def appendChild(self, child):
+        self.insertChild(self.childCount(), child)
+
+    def insertChild(self, row, child):
+        self.childItems.insert(row, child)
+        child._parent = self
+        child.setModel(self._model)
+        if not child.ID():
+            child.getUniqueID()
+
+    def removeChild(self, row):
+        """
+        Removes child at position `row` and returns it.
+        @param row: index (int) of the child to remove.
+        @return: the removed abstractItem
+        """
+        r = self.childItems.pop(row)
+        return r
+
+    def parent(self):
+        return self._parent
+
+    def path(self, sep=" > "):
+        "Returns path to item as string."
+        if self.parent().parent():
+            return "{parent}{sep}{title}".format(
+                parent=self.parent().path(),
+                sep=sep,
+                title=self.title())
+        else:
+            return self.title()
+
+    def pathID(self):
+        "Returns path to item as list of (ID, title)."
+        if self.parent() and self.parent().parent():
+            return self.parent().pathID() + [(self.ID(), self.title())]
+        else:
+            return [(self.ID(), self.title())]
+
+    def level(self):
+        """Returns the level of the current item. Root item returns -1."""
+        if self.parent():
+            return self.parent().level() + 1
+        else:
+            return -1
+
+    def copy(self):
+        """
+        Returns a copy of item, with no parent, and no ID.
+        """
+        item = self.__class__(xml=self.toXML())
+        item.setData(self.enum.ID, None)
+        return item
+
+    ###############################################################################
+    # IDS
+    ###############################################################################
+
+    def getUniqueID(self, recursive=False):
+        self.setData(Outline.ID, self._model.rootItem.findUniqueID())
+
+        if recursive:
+            for c in self.children():
+                c.getUniqueID(recursive)
+
+    def checkIDs(self):
+        """This is called when a model is loaded.
+
+        Makes a list of all sub-items IDs, that is used to generate unique IDs afterwards.
+        """
+        self.IDs = self.listAllIDs()
+
+        if max([self.IDs.count(i) for i in self.IDs if i]) != 1:
+            print("WARNING ! There are some items with same IDs:", [i for i in self.IDs if i and self.IDs.count(i) != 1])
+
+        def checkChildren(item):
+            for c in item.children():
+                _id = c.ID()
+                if not _id or _id == "0":
+                    c.getUniqueID()
+                checkChildren(c)
+
+        checkChildren(self)
+
+    def listAllIDs(self):
+        IDs = [self.ID()]
+        for c in self.children():
+            IDs.extend(c.listAllIDs())
+        return IDs
+
+    def findUniqueID(self):
+        IDs = [int(i) for i in self.IDs]
+        k = 1
+        while k in IDs:
+            k += 1
+        self.IDs.append(str(k))
+        return str(k)
+
+    #######################################################################
+    # Data
+    #######################################################################
 
     def data(self, column, role=Qt.DisplayRole):
 
@@ -159,297 +327,48 @@ class abstractItem():
         if updateWordCount:
             self.updateWordCount()
 
-    def updateWordCount(self, emit=True):
-        """Update word count for item and parents.
-        If emit is False, no signal is emitted (sometimes cause segfault)"""
-        if not self.isFolder():
-            setGoal = toInt(self.data(Outline.setGoal))
-            goal = toInt(self.data(Outline.goal))
-
-            if goal != setGoal:
-                self._data[Outline.goal] = setGoal
-            if setGoal:
-                wc = toInt(self.data(Outline.wordCount))
-                self.setData(Outline.goalPercentage, wc / float(setGoal))
-
-        else:
-            wc = 0
-            for c in self.children():
-                wc += toInt(c.data(Outline.wordCount))
-            self._data[Outline.wordCount] = wc
-
-            setGoal = toInt(self.data(Outline.setGoal))
-            goal = toInt(self.data(Outline.goal))
-
-            if setGoal:
-                if goal != setGoal:
-                    self._data[Outline.goal] = setGoal
-                    goal = setGoal
-            else:
-                goal = 0
-                for c in self.children():
-                    goal += toInt(c.data(Outline.goal))
-                self._data[Outline.goal] = goal
-
-            if goal:
-                self.setData(Outline.goalPercentage, wc / float(goal))
-            else:
-                self.setData(Outline.goalPercentage, "")
-
-        if emit:
-            self.emitDataChanged([Outline.goal, Outline.setGoal,
-                                  Outline.wordCount, Outline.goalPercentage])
-
-        if self.parent():
-            self.parent().updateWordCount(emit)
-
-    def row(self):
-        if self.parent():
-            return self.parent().childItems.index(self)
-
-    def appendChild(self, child):
-        self.insertChild(self.childCount(), child)
-
-    def insertChild(self, row, child):
-        self.childItems.insert(row, child)
-        child._parent = self
-        child.setModel(self._model)
-        if not child.data(Outline.ID):
-            child.getUniqueID()
-        self.updateWordCount()
-
-    def setModel(self, model):
-        self._model = model
-        for c in self.children():
-            c.setModel(model)
-
-    def index(self, column=0):
-        if self._model:
-            return self._model.indexFromItem(self, column)
-        else:
-            return QModelIndex()
-
-    def emitDataChanged(self, cols=None, recursive=False):
-        idx = self.index()
-        if idx and self._model:
-            if not cols:
-                # Emit data changed for the whole item (all columns)
-                self._model.dataChanged.emit(idx, self.index(len(Outline)))
-
-            else:
-                # Emit only for the specified columns
-                for c in cols:
-                    self._model.dataChanged.emit(self.index(c), self.index(c))
-
-            if recursive:
-                for c in self.children():
-                    c.emitDataChanged(cols, recursive=True)
-
-    def removeChild(self, row):
-        """
-        Removes child at position `row` and returns it.
-        @param row: index (int) of the child to remove.
-        @return: the removed outlineItem
-        """
-        r = self.childItems.pop(row)
-        # Might be causing segfault when updateWordCount emits dataChanged
-        self.updateWordCount(emit=False)
-        return r
-
-    def parent(self):
-        return self._parent
-
-    def type(self):
-        return self._data[Outline.type]
-
-    def isFolder(self):
-        return self._data[Outline.type] == "folder"
-
-    def isText(self):
-        return self._data[Outline.type] == "md"
-
-    def isMD(self):
-        return self._data[Outline.type] == "md"
-
-    def isMMD(self):
-        return self._data[Outline.type] == "md"
-
-    def customIcon(self):
-        return self.data(Outline.customIcon)
-
-    def setCustomIcon(self, customIcon):
-        self.setData(Outline.customIcon, customIcon)
-
-    def text(self):
-        return self.data(Outline.text)
-
-    def compile(self):
-        if self._data[Outline.compile] in ["0", 0]:
-            return False
-        elif self.parent():
-            return self.parent().compile()
-        else:
-            return True  # rootItem always compile
-
-    def title(self):
-        if Outline.title in self._data:
-            return self._data[Outline.title]
-        else:
-            return ""
-
-    def ID(self):
-        return self.data(Outline.ID)
-
-    def POV(self):
-        return self.data(Outline.POV)
-
-    def status(self):
-        return self.data(Outline.status)
-
-    def label(self):
-        return self.data(Outline.label)
-
-    def path(self):
-        "Returns path to item as string."
-        if self.parent().parent():
-            return "{} > {}".format(self.parent().path(), self.title())
-        else:
-            return self.title()
-
-    def pathID(self):
-        "Returns path to item as list of (ID, title)."
-        if self.parent() and self.parent().parent():
-            return self.parent().pathID() + [(self.ID(), self.title())]
-        else:
-            return [(self.ID(), self.title())]
-
-    def level(self):
-        """Returns the level of the current item. Root item returns -1."""
-        if self.parent():
-            return self.parent().level() + 1
-        else:
-            return -1
-
-    def stats(self):
-        wc = self.data(Outline.wordCount)
-        goal = self.data(Outline.goal)
-        progress = self.data(Outline.goalPercentage)
-        if not wc:
-            wc = 0
-        if goal:
-            return qApp.translate("outlineModel", "{} words / {} ({})").format(
-                    locale.format("%d", wc, grouping=True),
-                    locale.format("%d", goal, grouping=True),
-                    "{}%".format(str(int(progress * 100))))
-        else:
-            return qApp.translate("outlineModel", "{} words").format(
-                    locale.format("%d", wc, grouping=True))
-
-    def copy(self):
-        """
-        Returns a copy of item, with no parent, and no ID.
-        """
-        item = outlineItem(xml=self.toXML())
-        item.setData(Outline.ID, None)
-        return item
-
-    def split(self, splitMark, recursive=True):
-        """
-        Split scene at splitMark. If multiple splitMark, multiple splits.
-
-        If called on a folder and recursive is True, then it is recursively
-        applied to every children.
-        """
-        if self.isFolder() and recursive:
-            for c in self.children():
-                c.split(splitMark)
-
-        else:
-            txt = self.text().split(splitMark)
-
-            if len(txt) == 1:
-                # Mark not found
-                return False
-
-            else:
-
-                # Stores the new text
-                self.setData(Outline.text, txt[0])
-
-                k = 1
-                for subTxt in txt[1:]:
-                    # Create a copy
-                    item = self.copy()
-
-                    # Change title adding _k
-                    item.setData(Outline.title,
-                                 "{}_{}".format(item.title(), k+1))
-
-                    # Set text
-                    item.setData(Outline.text, subTxt)
-
-                    # Inserting item
-                    #self.parent().insertChild(self.row()+k, item)
-                    self._model.insertItem(item, self.row()+k, self.parent().index())
-                    k += 1
-
-    def splitAt(self, position, length=0):
-        """
-        Splits note at position p.
-
-        If length is bigger than 0, it describes the length of the title, made
-        from the character following position.
-        """
-
-        txt = self.text()
-
-        # Stores the new text
-        self.setData(Outline.text, txt[:position])
-
-        # Create a copy
-        item = self.copy()
-
-        # Update title
-        if length > 0:
-            title = txt[position:position+length].replace("\n", "")
-        else:
-            title = "{}_{}".format(item.title(), 2)
-        item.setData(Outline.title, title)
-
-        # Set text
-        item.setData(Outline.text, txt[position+length:])
-
-        # Inserting item using the model to signal views
-        self._model.insertItem(item, self.row()+1, self.parent().index())
-
-    def mergeWith(self, items, sep="\n\n"):
-        """
-        Merges item with several other items. Merge is basic, it merges only
-        the text.
-
-        @param items: list of `outlineItem`s.
-        @param sep: a text added between each item's text.
-        """
-
-        # Merges the texts
-        text = [self.text()]
-        text.extend([i.text() for i in items])
-        self.setData(Outline.text, sep.join(text))
-
-        # Removes other items
-        self._model.removeIndexes([i.index() for i in items])
-
     ###############################################################################
     # XML
     ###############################################################################
 
-    def toXML(self):
-        item = ET.Element("outlineItem")
+    # We don't want to write some datas (computed)
+    XMLExclude = [Outline.wordCount, Outline.goal, Outline.goalPercentage, Outline.revisions]
+    # We want to force some data even if they're empty
+    XMLForce = [Outline.compile]
 
-        # We don't want to write some datas (computed)
-        exclude = [Outline.wordCount, Outline.goal, Outline.goalPercentage, Outline.revisions]
-        # We want to force some data even if they're empty
-        force = [Outline.compile]
+    def toXML(self):
+        item = ET.Element(self.name)
+
+        ## We don't want to write some datas (computed)
+        #exclude = [Outline.wordCount, Outline.goal, Outline.goalPercentage, Outline.revisions]
+        ## We want to force some data even if they're empty
+        #force = [Outline.compile]
+
+        for attrib in self.enum:
+            if attrib in self.XMLExclude:
+                continue
+            val = self.data(attrib)
+            if val or attrib in self.XMLForce:
+                item.set(attrib.name, str(val))
+
+        # Saving revisions
+        rev = self.revisions()
+        for r in rev:
+            revItem = ET.Element("revision")
+            revItem.set("timestamp", str(r[0]))
+            revItem.set("text", r[1])
+            item.append(revItem)
+
+        # Saving lastPath
+        item.set("lastPath", self._lastPath)
+
+        for i in self.childItems:
+            item.append(ET.XML(i.toXML()))
+
+        return ET.tostring(item)
+
+    def toXML_(self):
+        item = ET.Element("outlineItem")
 
         for attrib in Outline:
             if attrib in exclude: continue
@@ -501,179 +420,3 @@ class abstractItem():
             elif child.tag == "revision":
                 self.appendRevision(child.attrib["timestamp"], child.attrib["text"])
 
-    ###############################################################################
-    # IDS
-    ###############################################################################
-
-    def getUniqueID(self, recursive=False):
-        self.setData(Outline.ID, self._model.rootItem.findUniqueID())
-
-        if recursive:
-            for c in self.children():
-                c.getUniqueID(recursive)
-
-    def checkIDs(self):
-        """This is called when a model is loaded.
-
-        Makes a list of all sub-items IDs, that is used to generate unique IDs afterwards.
-        """
-        self.IDs = self.listAllIDs()
-
-        if max([self.IDs.count(i) for i in self.IDs if i]) != 1:
-            print("WARNING ! There are some items with same IDs:", [i for i in self.IDs if i and self.IDs.count(i) != 1])
-
-        def checkChildren(item):
-            for c in item.children():
-                _id = c.data(Outline.ID)
-                if not _id or _id == "0":
-                    c.getUniqueID()
-                checkChildren(c)
-
-        checkChildren(self)
-
-    def listAllIDs(self):
-        IDs = [self.data(Outline.ID)]
-        for c in self.children():
-            IDs.extend(c.listAllIDs())
-        return IDs
-
-    def findUniqueID(self):
-        IDs = [int(i) for i in self.IDs]
-        k = 1
-        while k in IDs:
-            k += 1
-        self.IDs.append(str(k))
-        return str(k)
-
-    def pathToItem(self):
-        path = self.data(Outline.ID)
-        if self.parent().parent():
-            path = "{}:{}".format(self.parent().pathToItem(), path)
-        return path
-
-    def findItemsByPOV(self, POV):
-        "Returns a list of IDs of all subitems whose POV is ``POV``."
-        lst = []
-        if self.POV() == POV:
-            lst.append(self.ID())
-
-        for c in self.children():
-            lst.extend(c.findItemsByPOV(POV))
-
-        return lst
-
-    def findItemsContaining(self, text, columns, mainWindow=mainWindow(), caseSensitive=False, recursive=True):
-        """Returns a list if IDs of all subitems
-        containing ``text`` in columns ``columns``
-        (being a list of int).
-        """
-        lst = self.itemContains(text, columns, mainWindow, caseSensitive)
-
-        if recursive:
-            for c in self.children():
-                lst.extend(c.findItemsContaining(text, columns, mainWindow, caseSensitive))
-
-        return lst
-
-    def itemContains(self, text, columns, mainWindow=mainWindow(), caseSensitive=False):
-        lst = []
-        text = text.lower() if not caseSensitive else text
-        for c in columns:
-
-            if c == Outline.POV and self.POV():
-                c = mainWindow.mdlCharacter.getCharacterByID(self.POV())
-                if c:
-                    searchIn = c.name()
-                else:
-                    searchIn = ""
-                    print("Character POV not found:", self.POV())
-
-            elif c == Outline.status:
-                searchIn = mainWindow.mdlStatus.item(toInt(self.status()), 0).text()
-
-            elif c == Outline.label:
-                searchIn = mainWindow.mdlLabels.item(toInt(self.label()), 0).text()
-
-            else:
-                searchIn = self.data(c)
-
-            searchIn = searchIn.lower() if not caseSensitive else searchIn
-
-            if text in searchIn:
-                if not self.ID() in lst:
-                    lst.append(self.ID())
-
-        return lst
-
-    ###############################################################################
-    # REVISIONS
-    ###############################################################################
-
-    def revisions(self):
-        return self.data(Outline.revisions)
-
-    def appendRevision(self, ts, text):
-        if not Outline.revisions in self._data:
-            self._data[Outline.revisions] = []
-
-        self._data[Outline.revisions].append((
-            int(ts),
-            text))
-
-    def addRevision(self):
-        if not settings.revisions["keep"]:
-            return
-
-        if not Outline.text in self._data:
-            return
-
-        self.appendRevision(
-                time.time(),
-                self._data[Outline.text])
-
-        if settings.revisions["smartremove"]:
-            self.cleanRevisions()
-
-        self.emitDataChanged([Outline.revisions])
-
-    def deleteRevision(self, ts):
-        self._data[Outline.revisions] = [r for r in self._data[Outline.revisions] if r[0] != ts]
-        self.emitDataChanged([Outline.revisions])
-
-    def clearAllRevisions(self):
-        self._data[Outline.revisions] = []
-        self.emitDataChanged([Outline.revisions])
-
-    def cleanRevisions(self):
-        "Keep only one some the revisions."
-        rev = self.revisions()
-        rev2 = []
-        now = time.time()
-
-        rule = settings.revisions["rules"]
-
-        revs = {}
-        for i in rule:
-            revs[i] = []
-
-        for r in rev:
-            # Have to put the lambda key otherwise cannot order when one element is None
-            for span in sorted(rule, key=lambda x: x if x else 60 * 60 * 24 * 30 * 365):
-                if not span or now - r[0] < span:
-                    revs[span].append(r)
-                    break
-
-        for span in revs:
-            sortedRev = sorted(revs[span], key=lambda x: x[0])
-            last = None
-            for r in sortedRev:
-                if not last:
-                    rev2.append(r)
-                    last = r[0]
-                elif r[0] - last >= rule[span]:
-                    rev2.append(r)
-                    last = r[0]
-
-        if rev2 != rev:
-            self._data[Outline.revisions] = rev2
-            self.emitDataChanged([Outline.revisions])
