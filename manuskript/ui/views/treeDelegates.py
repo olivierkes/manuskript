@@ -94,7 +94,7 @@ class treeTitleDelegate(QStyledItemDelegate):
                 # If text color is Compile and item is selected, we have
                 # to change the color
                 if settings.viewSettings["Outline"]["Text"] == "Compile" and \
-                   item.compile() in [0, "0"]:
+                   not item.compile():
                     col = mixColors(textColor, QColor(S.window))
                 painter.setPen(col)
             f = QFont(opt.font)
@@ -109,7 +109,7 @@ class treeTitleDelegate(QStyledItemDelegate):
                     extraText = item.childCount()
                     extraText = " [{}]".format(extraText)
                 elif settings.viewSettings["Tree"]["InfoFolder"] == "WC":
-                    extraText = item.data(Outline.wordCount)
+                    extraText = item.wordCount()
                     extraText = " ({})".format(extraText)
                 elif settings.viewSettings["Tree"]["InfoFolder"] == "Progress":
                     extraText = int(toFloat(item.data(Outline.goalPercentage)) * 100)
@@ -122,7 +122,7 @@ class treeTitleDelegate(QStyledItemDelegate):
 
             if item.isText() and settings.viewSettings["Tree"]["InfoText"] != "Nothing":
                 if settings.viewSettings["Tree"]["InfoText"] == "WC":
-                    extraText = item.data(Outline.wordCount)
+                    extraText = item.wordCount()
                     extraText = " ({})".format(extraText)
                 elif settings.viewSettings["Tree"]["InfoText"] == "Progress":
                     extraText = int(toFloat(item.data(Outline.goalPercentage)) * 100)

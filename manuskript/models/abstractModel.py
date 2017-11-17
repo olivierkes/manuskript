@@ -16,7 +16,6 @@ from lxml import etree as ET
 
 from manuskript.enums import Outline
 from manuskript.functions import mainWindow, toInt, wordCount
-from manuskript.converters import HTML2PlainText
 from manuskript.models import outlineItem
 
 try:
@@ -105,13 +104,13 @@ class abstractModel(QAbstractItemModel):
         item = search(self.rootItem)
         return item
 
-    def getIndexByID(self, ID):
+    def getIndexByID(self, ID, column=0):
         "Returns the index of item whose ID is `ID`. If none, returns QModelIndex()."
         item = self.getItemByID(ID)
         if not item:
             return QModelIndex()
         else:
-            return self.indexFromItem(item)
+            return self.indexFromItem(item, column)
 
     def parent(self, index=QModelIndex()):
         if not index.isValid():
@@ -369,6 +368,7 @@ class abstractModel(QAbstractItemModel):
                 return False
 
         items = self.decodeMimeData(data)
+
         if items is None:
             return False
 

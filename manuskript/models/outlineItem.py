@@ -1,12 +1,24 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
 
+import time
+import locale
 from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QFont, QIcon
+from PyQt5.QtWidgets import qApp
+from lxml import etree as ET
 from manuskript.models.abstractItem import abstractItem
 from manuskript import enums
-from manuskript.functions import mainWindow, toInt
+from manuskript import functions as F
 from manuskript import settings
-import time
+from manuskript.converters import HTML2PlainText
+
+try:
+    locale.setlocale(locale.LC_ALL, '')
+except:
+    # Invalid locale, but not really a big deal because it's used only for
+    # number formating
+    pass
 
 
 class outlineItem(abstractItem):
@@ -20,7 +32,8 @@ class outlineItem(abstractItem):
         abstractItem.__init__(self, model, title, _type, xml, parent, ID)
 
         self.defaultTextType = None
-        self._data[self.enum.compile] = Qt.Checked
+        if not self._data.get(self.enum.compile):
+            self._data[self.enum.compile] = 2
 
     #######################################################################
     # Properties
@@ -42,7 +55,7 @@ class outlineItem(abstractItem):
         return self.data(self.enum.text)
 
     def compile(self):
-        if self._data[self.enum.compile] in ["0", 0]:
+        if self._data.get(self.enum.compile, 1) in ["0", 0]:
             return False
         elif self.parent():
             return self.parent().compile()
@@ -64,6 +77,87 @@ class outlineItem(abstractItem):
     def setCustomIcon(self, customIcon):
         self.setData(self.enum.customIcon, customIcon)
 
+    def wordCount(self):
+        return self._data.get(self.enum.wordCount, 0)
+
+    #######################################################################
+    # Data
+    #######################################################################
+
+    def data(self, column, role=Qt.DisplayRole):
+
+        data = abstractItem.data(self, column, role)
+        E = self.enum
+
+        if role == Qt.DisplayRole or role == Qt.EditRole:
+            if column == E.revisions:
+                return []
+
+            else:
+                return data
+
+        elif role == Qt.DecorationRole and column == E.title:
+            if self.customIcon():
+                return QIcon.fromTheme(self.data(E.customIcon))
+            if self.isFolder():
+                return QIcon.fromTheme("folder")
+            elif self.isText():
+                return QIcon.fromTheme("text-x-generic")
+
+        elif role == Qt.CheckStateRole and column == E.compile:
+            return Qt.Checked if self.compile() else Qt.Unchecked
+
+        elif role == Qt.FontRole:
+            f = QFont()
+            if column == E.wordCount and self.isFolder():
+                f.setItalic(True)
+            elif column == E.goal and self.isFolder() and not self.data(E.setGoal):
+                f.setItalic(True)
+            if self.isFolder():
+                f.setBold(True)
+            return f
+
+    def setData(self, column, data, role=Qt.DisplayRole):
+
+        E = self.enum
+
+        if column == E.text and self.isFolder():
+            # Folder have no text
+            return
+
+        if column == E.goal:
+            self._data[E.setGoal] = F.toInt(data) if F.toInt(data) > 0 else ""
+
+        # Checking if we will have to recount words
+        updateWordCount = False
+        if column in [E.wordCount, E.goal, E.setGoal]:
+            updateWordCount = not column in self._data or self._data[column] != data
+
+        # Stuff to do before
+        if column == E.text:
+            self.addRevision()
+
+        # Calling base class implementation
+        abstractItem.setData(self, column, data, role)
+
+        # Stuff to do afterwards
+        if column == E.text:
+            wc = F.wordCount(data)
+            self.setData(E.wordCount, wc)
+
+        if column == E.compile:
+            # Title changes when compile changes
+            self.emitDataChanged(cols=[E.title, E.compile],
+                                 recursive=True)
+
+        if column == E.customIcon:
+            # If custom icon changed, we tell views to update title (so that
+            # icons will be updated as well)
+            self.emitDataChanged(cols=[E.title])
+
+        if updateWordCount:
+            self.updateWordCount()
+
     #######################################################################
     # Wordcount
     #######################################################################
@@ -82,23 +176,23 @@ class outlineItem(abstractItem):
         """Update word count for item and parents.
         If emit is False, no signal is emitted (sometimes cause segfault)"""
         if not self.isFolder():
-            setGoal = toInt(self.data(self.enum.setGoal))
-            goal = toInt(self.data(self.enum.goal))
+            setGoal = F.toInt(self.data(self.enum.setGoal))
+            goal = F.toInt(self.data(self.enum.goal))
 
             if goal != setGoal:
                 self._data[self.enum.goal] = setGoal
             if setGoal:
-                wc = toInt(self.data(self.enum.wordCount))
+                wc = F.toInt(self.data(self.enum.wordCount))
                 self.setData(self.enum.goalPercentage, wc / float(setGoal))
 
         else:
             wc = 0
             for c in self.children():
-                wc += toInt(c.data(self.enum.wordCount))
+                wc += F.toInt(c.data(self.enum.wordCount))
             self._data[self.enum.wordCount] = wc
 
-            setGoal = toInt(self.data(self.enum.setGoal))
-            goal = toInt(self.data(self.enum.goal))
+            setGoal = F.toInt(self.data(self.enum.setGoal))
+            goal = F.toInt(self.data(self.enum.goal))
 
             if setGoal:
                 if goal != setGoal:
@@ -107,7 +201,7 @@ class outlineItem(abstractItem):
             else:
                 goal = 0
                 for c in self.children():
-                    goal += toInt(c.data(self.enum.goal))
+                    goal += F.toInt(c.data(self.enum.goal))
                 self._data[self.enum.goal] = goal
 
             if goal:
@@ -123,9 +217,9 @@ class outlineItem(abstractItem):
             self.parent().updateWordCount(emit)
 
     def stats(self):
-        wc = self.data(Outline.wordCount)
-        goal = self.data(Outline.goal)
-        progress = self.data(Outline.goalPercentage)
+        wc = self.data(enums.Outline.wordCount)
+        goal = self.data(enums.Outline.goal)
+        progress = self.data(enums.Outline.goalPercentage)
         if not wc:
             wc = 0
         if goal:
@@ -242,7 +336,8 @@ class outlineItem(abstractItem):
 
         return lst
 
-    def findItemsContaining(self, text, columns, mainWindow=mainWindow(), caseSensitive=False, recursive=True):
+    def findItemsContaining(self, text, columns, mainWindow=F.mainWindow(),
+                            caseSensitive=False, recursive=True):
         """Returns a list if IDs of all subitems
         containing ``text`` in columns ``columns``
         (being a list of int).
@@ -255,7 +350,8 @@ class outlineItem(abstractItem):
 
         return lst
 
-    def itemContains(self, text, columns, mainWindow=mainWindow(), caseSensitive=False):
+    def itemContains(self, text, columns, mainWindow=F.mainWindow(),
+                     caseSensitive=False):
         lst = []
         text = text.lower() if not caseSensitive else text
         for c in columns:
@@ -269,10 +365,10 @@ class outlineItem(abstractItem):
                     print("Character POV not found:", self.POV())
 
             elif c == self.enum.status:
-                searchIn = mainWindow.mdlStatus.item(toInt(self.status()), 0).text()
+                searchIn = mainWindow.mdlStatus.item(F.toInt(self.status()), 0).text()
 
             elif c == self.enum.label:
-                searchIn = mainWindow.mdlLabels.item(toInt(self.label()), 0).text()
+                searchIn = mainWindow.mdlLabels.item(F.toInt(self.label()), 0).text()
 
             else:
                 searchIn = self.data(c)
@@ -309,7 +405,7 @@ class outlineItem(abstractItem):
 
         self.appendRevision(
                 time.time(),
-                self._data[self.enum.text])
+                self.text())
 
         if settings.revisions["smartremove"]:
             self.cleanRevisions()
@@ -358,7 +454,44 @@ class outlineItem(abstractItem):
             self._data[self.enum.revisions] = rev2
             self.emitDataChanged([self.enum.revisions])
 
+    #######################################################################
+    # XML
+    #######################################################################
+
+    # We don't want to write some datas (computed)
+    XMLExclude = [enums.Outline.wordCount,
+                  enums.Outline.goal,
+                  enums.Outline.goalPercentage,
+                  enums.Outline.revisions]
+    # We want to force some data even if they're empty
+    XMLForce = [enums.Outline.compile]
+
+    def toXMLProcessItem(self, item):
+
+        # Saving revisions
+        rev = self.revisions()
+        for r in rev:
+            revItem = ET.Element("revision")
+            revItem.set("timestamp", str(r[0]))
+            revItem.set("text", r[1])
+            item.append(revItem)
+
+        return item
 
 
+    def setFromXMLProcessMore(self, root):
 
+        # If loading from an old file format, convert to md and
+        # remove html markup
+        if self.type() in ["txt", "t2t"]:
+            self.setData(Outline.type, "md")
 
+        elif self.type() == "html":
+            self.setData(Outline.type, "md")
+            self.setData(Outline.text, HTML2PlainText(self.data(Outline.text)))
+            self.setData(Outline.notes, HTML2PlainText(self.data(Outline.notes)))
+
+        # Revisions
+        for child in root:
+            if child.tag == "revision":
+                self.appendRevision(child.attrib["timestamp"], child.attrib["text"])

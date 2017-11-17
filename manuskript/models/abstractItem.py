@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
 
-import locale
-
 from PyQt5.QtCore import QAbstractItemModel, QMimeData
 from PyQt5.QtCore import QModelIndex
 from PyQt5.QtCore import QSize
@@ -10,22 +8,9 @@ from PyQt5.QtCore import QVariant
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIcon, QFont
 from PyQt5.QtWidgets import QTextEdit, qApp
-
-from manuskript import settings
 from lxml import etree as ET
 
-from manuskript.enums import Outline
 from manuskript import enums
-from manuskript.functions import mainWindow, toInt, wordCount
-from manuskript.converters import HTML2PlainText
-
-try:
-    locale.setlocale(locale.LC_ALL, '')
-except:
-    # Invalid locale, but not really a big deal because it's used only for
-    # number formating
-    pass
-import os
 
 
 class abstractItem():
@@ -53,11 +38,11 @@ class abstractItem():
         if xml is not None:
             self.setFromXML(xml)
 
-        if parent:
-            parent.appendChild(self)
-
         if ID:
             self._data[self.enum.ID] = ID
+
+        if parent:
+            parent.appendChild(self)
 
     #######################################################################
     # Model
@@ -107,7 +92,7 @@ class abstractItem():
         return self._data.get(self.enum.title, "")
 
     def ID(self):
-        return self._data.get(self.enum.ID, 0)
+        return self._data.get(self.enum.ID)
 
     def columnCount(self):
         return len(self.enum)
@@ -197,7 +182,7 @@ class abstractItem():
     ###############################################################################
 
     def getUniqueID(self, recursive=False):
-        self.setData(Outline.ID, self._model.rootItem.findUniqueID())
+        self.setData(self.enum.ID, self._model.rootItem.findUniqueID())
 
         if recursive:
             for c in self.children():
@@ -241,108 +226,37 @@ class abstractItem():
     #######################################################################
 
     def data(self, column, role=Qt.DisplayRole):
-
-        # print("Data: ", column, role)
-
+        # Return value in self._data
         if role == Qt.DisplayRole or role == Qt.EditRole:
-            # if column == Outline.compile:
-            # return self.data(column, Qt.CheckStateRole)
+            return self._data.get(column, "")
 
-            if Outline(column) in self._data:
-                return self._data[Outline(column)]
-
-            elif column == Outline.revisions:
-                return []
-
-            else:
-                return ""
-
-        elif role == Qt.DecorationRole and column == Outline.title:
-            if self.customIcon():
-                return QIcon.fromTheme(self.data(Outline.customIcon))
-            if self.isFolder():
-                return QIcon.fromTheme("folder")
-            elif self.isMD():
-                return QIcon.fromTheme("text-x-generic")
-
-                # elif role == Qt.ForegroundRole:
-                # if self.isCompile() in [0, "0"]:
-                # return QBrush(Qt.gray)
-
-        elif role == Qt.CheckStateRole and column == Outline.compile:
-            # print(self.title(), self.compile())
-            # if self._data[Outline(column)] and not self.compile():
-            # return Qt.PartiallyChecked
-            # else:
-            return self._data[Outline(column)]
-
-        elif role == Qt.FontRole:
-            f = QFont()
-            if column == Outline.wordCount and self.isFolder():
-                f.setItalic(True)
-            elif column == Outline.goal and self.isFolder() and self.data(Outline.setGoal) == None:
-                f.setItalic(True)
-            if self.isFolder():
-                f.setBold(True)
-            return f
+        # Or return QVariant
+        return QVariant()
 
     def setData(self, column, data, role=Qt.DisplayRole):
-        if role not in [Qt.DisplayRole, Qt.EditRole, Qt.CheckStateRole]:
-            print(column, column == Outline.text, data, role)
-            return
-
-        if column == Outline.text and self.isFolder():
-            # Folder have no text
-            return
-
-        if column == Outline.goal:
-            self._data[Outline.setGoal] = toInt(data) if toInt(data) > 0 else ""
-
-        # Checking if we will have to recount words
-        updateWordCount = False
-        if column in [Outline.wordCount, Outline.goal, Outline.setGoal]:
-            updateWordCount = not Outline(column) in self._data or self._data[Outline(column)] != data
-
-        # Stuff to do before
-        if column == Outline.text:
-            self.addRevision()
-
         # Setting data
-        self._data[Outline(column)] = data
+        self._data[column] = data
 
-        # Stuff to do afterwards
-        if column == Outline.text:
-            wc = wordCount(data)
-            self.setData(Outline.wordCount, wc)
-            self.emitDataChanged(cols=[Outline.text]) # new in 0.5.0
-
-        if column == Outline.compile:
-            self.emitDataChanged(cols=[Outline.title, Outline.compile], recursive=True)
-
-        if column == Outline.customIcon:
-            # If custom icon changed, we tell views to update title (so that icons
-            # will be updated as well)
-            self.emitDataChanged(cols=[Outline.title])
-
-        if updateWordCount:
-            self.updateWordCount()
+        # Emit signal
+        self.emitDataChanged(cols=[column]) # new in 0.5.0
 
     ###############################################################################
     # XML
     ###############################################################################
 
     # We don't want to write some datas (computed)
-    XMLExclude = [Outline.wordCount, Outline.goal, Outline.goalPercentage, Outline.revisions]
+    XMLExclude = []
     # We want to force some data even if they're empty
-    XMLForce = [Outline.compile]
+    XMLForce = []
 
     def toXML(self):
+        """
+        Returns a string containing the item (and children) in XML.
+        By default, saves all attributes from self.enum and lastPath.
+        You can define in XMLExclude and XMLForce what you want to be
+        excluded or forcibly included.
+        """
         item = ET.Element(self.name)
-
-        ## We don't want to write some datas (computed)
-        #exclude = [Outline.wordCount, Outline.goal, Outline.goalPercentage, Outline.revisions]
-        ## We want to force some data even if they're empty
-        #force = [Outline.compile]
 
         for attrib in self.enum:
             if attrib in self.XMLExclude:
@@ -351,72 +265,42 @@ class abstractItem():
             if val or attrib in self.XMLForce:
                 item.set(attrib.name, str(val))
 
-        # Saving revisions
-        rev = self.revisions()
-        for r in rev:
-            revItem = ET.Element("revision")
-            revItem.set("timestamp", str(r[0]))
-            revItem.set("text", r[1])
-            item.append(revItem)
-
         # Saving lastPath
         item.set("lastPath", self._lastPath)
+
+        # Additional stuff for subclasses
+        item = self.toXMLProcessItem(item)
 
         for i in self.childItems:
             item.append(ET.XML(i.toXML()))
 
         return ET.tostring(item)
 
-    def toXML_(self):
-        item = ET.Element("outlineItem")
-
-        for attrib in Outline:
-            if attrib in exclude: continue
-            val = self.data(attrib.value)
-            if val or attrib in force:
-                item.set(attrib.name, str(val))
-
-        # Saving revisions
-        rev = self.revisions()
-        for r in rev:
-            revItem = ET.Element("revision")
-            revItem.set("timestamp", str(r[0]))
-            revItem.set("text", r[1])
-            item.append(revItem)
-
-        # Saving lastPath
-        item.set("lastPath", self._lastPath)
-
-        for i in self.childItems:
-            item.append(ET.XML(i.toXML()))
-
-        return ET.tostring(item)
+    def toXMLProcessItem(self, item):
+        """
+        Subclass this to change the behavior of `toXML`.
+        """
+        return item
 
     def setFromXML(self, xml):
         root = ET.XML(xml)
 
-        for k in root.attrib:
-            if k in Outline.__members__:
-                # if k == Outline.compile:
-                # self.setData(Outline.__members__[k], unicode(root.attrib[k]), Qt.CheckStateRole)
-                # else:
-                self.setData(Outline.__members__[k], str(root.attrib[k]))
+        for k in self.enum:
+            if k.name in root.attrib:
+                self.setData(k, str(root.attrib[k.name]))
 
         if "lastPath" in root.attrib:
             self._lastPath = root.attrib["lastPath"]
 
-        # If loading from an old file format, convert to md and remove html markup
-        if self.type() in ["txt", "t2t"]:
-            self.setData(Outline.type, "md")
-
-        elif self.type() == "html":
-            self.setData(Outline.type, "md")
-            self.setData(Outline.text, HTML2PlainText(self.data(Outline.text)))
-            self.setData(Outline.notes, HTML2PlainText(self.data(Outline.notes)))
+        self.setFromXMLProcessMore(root)
 
         for child in root:
-            if child.tag == "outlineItem":
-                item = outlineItem(self._model, xml=ET.tostring(child), parent=self)
-            elif child.tag == "revision":
-                self.appendRevision(child.attrib["timestamp"], child.attrib["text"])
+            if child.tag == self.name:
+                item = self.__class__(self._model, xml=ET.tostring(child), parent=self)
 
+    def setFromXMLProcessMore(self, root):
+        """
+        Additional stuff that subclasses must do with the XML to restore
+        item.
+        """
+        return

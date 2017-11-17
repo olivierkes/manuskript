@@ -195,6 +195,9 @@ class outlineCompileDelegate(QStyledItemDelegate):
     def displayText(self, value, locale):
         return ""
 
+    #def createEditor(self, parent, option, index):
+        #return None
+
 
 class outlineGoalPercentageDelegate(QStyledItemDelegate):
     def __init__(self, rootIndex=None, parent=None):

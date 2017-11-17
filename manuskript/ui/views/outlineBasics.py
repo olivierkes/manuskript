@@ -31,8 +31,10 @@ class outlineBasics(QAbstractItemView):
         if event.button() == Qt.RightButton:
             self.menu = self.makePopupMenu()
             self.menu.popup(event.globalPos())
-        else:
-            QAbstractItemView.mouseReleaseEvent(self, event)
+        # We don't call QAbstractItemView.mouseReleaseEvent because
+        # outlineBasics is never subclassed alone. So the others views
+        # (outlineView, corkView, treeView) that subclass outlineBasics
+        # call their respective mother class.
 
     def makePopupMenu(self):
         index = self.currentIndex()

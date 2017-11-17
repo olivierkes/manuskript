@@ -353,3 +353,17 @@ def customIcons():
 
 def statusMessage(message, duration=5000):
     mainWindow().statusBar().showMessage(message, duration)
+
+def inspect():
+    """
+    Debugging tool. Call it to see a stack of calls up to that point.
+    """
+    import inspect, os
+    print("-----------------------")
+    for s in inspect.stack()[1:]:
+        print(" * {}:{} // {}".format(
+            os.path.basename(s.filename),
+            s.lineno,
+            s.function))
+        print("   " + "".join(s.code_context))
+

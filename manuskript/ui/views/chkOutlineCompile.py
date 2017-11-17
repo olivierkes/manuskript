@@ -43,13 +43,7 @@ class chkOutlineCompile(QCheckBox):
 
     def getCheckedValue(self, index):
         item = index.internalPointer()
-        c = item.data(Outline.compile)
-        if c:
-            c = int(c)
-        else:
-            c = Qt.Unchecked
-
-        return c
+        return Qt.Checked if item.compile() else Qt.Unchecked
 
     def update(self, topLeft, bottomRight):
 
