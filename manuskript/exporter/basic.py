@@ -19,6 +19,8 @@ class basicExporter:
     cmd = ""
     customPath = ""
     icon = ""
+    absentTip = ""  # A tip displayed when exporter is absent.
+    absentURL = ""  # URL to open if exporter is absent.
 
     def __init__(self):
         settings = QSettings()

@@ -3,11 +3,11 @@
 import json
 import os
 
-from PyQt5.QtCore import Qt, QTimer, QUrl
-from PyQt5.QtGui import QBrush, QColor, QIcon, QDesktopServices
+from PyQt5.QtCore import Qt, QTimer
+from PyQt5.QtGui import QBrush, QColor, QIcon
 from PyQt5.QtWidgets import QWidget, QFileDialog, QMessageBox, QStyle
 
-from manuskript.functions import writablePath, appPath
+from manuskript.functions import writablePath, appPath, openURL
 from manuskript.ui.importers.importer_ui import Ui_importer
 from manuskript.ui.importers.generalSettings import generalSettings
 from manuskript.ui import style
@@ -180,7 +180,7 @@ class importerDialog(QWidget, Ui_importer):
         data = self.cmbImporters.currentData()
         if data and data[:7] == "::URL::" and data[7:]:
             # FIXME: use functions.openURL after merge with feature/Exporters
-            QDesktopServices.openUrl(QUrl(data[7:]))
+            openURL(data[7:])
             return
 
         F = self.currentFormat()

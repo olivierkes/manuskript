@@ -1234,8 +1234,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                     w.setDict(settings.dict)
 
     def openPyEnchantWebPage(self):
-        from PyQt5.QtGui import QDesktopServices
-        QDesktopServices.openUrl(QUrl("http://pythonhosted.org/pyenchant/"))
+        F.openURL("http://pythonhosted.org/pyenchant/")
 
     def toggleSpellcheck(self, val):
         settings.spellcheck = val
