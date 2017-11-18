@@ -366,4 +366,3 @@ def inspect():
             s.lineno,
             s.function))
         print("   " + "".join(s.code_context))
-

@@ -21,7 +21,7 @@ def run():
     app.setOrganizationDomain("www.theologeek.ch")
     app.setApplicationName("manuskript")
     app.setApplicationVersion(getVersion())
-    
+
     print("Running manuskript version {}.".format(getVersion()))
     icon = QIcon()
     for i in [16, 32, 64, 128, 256, 512]:
@@ -65,7 +65,7 @@ def run():
 
 
 def launch():
-    from .mainWindow import MainWindow
+    from manuskript.mainWindow import MainWindow
 
     main = MainWindow()
     # We store the system default cursor flash time to be able to restore it
