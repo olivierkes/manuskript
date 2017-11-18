@@ -41,9 +41,6 @@ def test_several():
     d = F.colorFromProgress(1.5)
     assert a != b != c != d
 
-    # mainWindow
-    # assert F.mainWindow() == None  # Because there is no MW
-
     # iconColor & iconFromColor & iconFromColorString
     icon = F.iconFromColorString("#ff0000")
     assert F.iconColor(icon).name().lower() == "#ff0000"
@@ -86,15 +83,13 @@ def test_paths():
     assert "resources/backgrounds/spacedreams.jpg" in f
     assert len(F.customIcons()) > 1
 
-# def test_mainWindow():
-#
-#     from manuskript.mainWindow import MainWindow
-#     m = MainWindow()
-#
-#     assert F.mainWindow() is not None
-#     assert F.MW is not None
-#
-#     F.statusMessage("Test")
-#     F.printObjects()
-#
-#     m.deleteLater()
+def test_mainWindow():
+
+    from PyQt5.QtWidgets import QWidget
+
+    assert F.mainWindow() is not None
+    assert F.MW is not None
+
+    F.statusMessage("Test")
+    F.printObjects()
+    assert len(F.findWidgetsOfClass(QWidget)) > 0
