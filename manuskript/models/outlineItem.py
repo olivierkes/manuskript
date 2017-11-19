@@ -90,7 +90,7 @@ class outlineItem(abstractItem):
         E = self.enum
 
         if role == Qt.DisplayRole or role == Qt.EditRole:
-            if column == E.revisions:
+            if data == "" and column == E.revisions:
                 return []
 
             else:

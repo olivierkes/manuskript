@@ -22,6 +22,8 @@ def test_outlineItemsProperties(outlineItemFolder, outlineItemText):
     Tests with simple items, without parent or models.
     """
 
+    from PyQt5.QtCore import Qt
+
     # Simplification
     folder = outlineItemFolder
     text = outlineItemText
@@ -37,9 +39,10 @@ def test_outlineItemsProperties(outlineItemFolder, outlineItemText):
     assert folder.status() == ""
     assert folder.label() == ""
     assert folder.customIcon() == ""
+    assert folder.data(42) == ""
+    assert folder.data(folder.enum.title, role=Qt.CheckStateRole) == None
 
     # setData and other setters
-    from PyQt5.QtCore import Qt
     assert text.data(text.enum.compile, role=Qt.CheckStateRole) == Qt.Checked
     text.setData(text.enum.compile, 0)
     assert text.compile() == False
@@ -123,18 +126,38 @@ def test_modelStuff(outlineModelBasic):
     assert folder.findItemsContaining("VALUE", cols,  MW, False) == [text2.ID()]
 
     # Revisions
-    # from manuskript import settings
-    # settings.revisions["smartremove"] = False
-    # text2.setData(text2.enum.text, "Some value.")
-    # assert text2.revisions() == 1
-    # text2.clearAllRevisions()
-    # assert text2.revisions() == []
-    # text2.setData(text2.enum.text, "Some value.")
-    # assert len(text2.revisions()) == 1
-    # text2.setData(text2.enum.text, "Some new value.")
-    # assert len(text2.revisions()) == 1  # Auto clean
+    text2.clearAllRevisions()
+    assert text2.revisions() == []
+    text2.setData(text2.enum.text, "Some value.")
+    assert len(text2.revisions()) == 1
+    text2.setData(text2.enum.text, "Some new value.")
+    assert len(text2.revisions()) == 1  # Auto clean
+    text2.deleteRevision(text2.revisions()[0][0])
+    assert len(text2.revisions()) == 0
 
+    # Model, count and copy
+    k = folder._model
+    folder.setModel(14)
+    assert text2._model == 14
+    folder.setModel(k)
+    assert folder.columnCount() == len(folder.enum)
+    text1 = text2.copy()
+    assert text1.ID() is None
+    folder.appendChild(text1)
+    assert text1.ID() is not None
+    assert folder.childCountRecursive() == 2
+    assert text1.path() == "Folder > Text"
+    assert len(text1.pathID()) == 2
 
+    # IDs
+    folder2 = folder.copy()
+    text3 = text1.copy()
+    text3.setData(text3.enum.ID, "0")
+    folder2.appendChild(text3)
+    folder.appendChild(folder2)
+    assert text3.ID() == "0"
+    root.checkIDs()
+    assert text3.ID() != "0"
 
     #TODO: copy (with children), IDs check, childcountrecursive
     #      (cf. abstractItem)

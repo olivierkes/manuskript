@@ -17,7 +17,7 @@ def outlineModelBasic(MWEmptyProject):
 
     root = mdl.rootItem
     f = outlineItem(title="Folder", parent=root)
-    t1 = outlineItem(title="Text 1", _type="md", parent=f)
-    t2 = outlineItem(title="Text 2", _type="md", parent=root)
+    t1 = outlineItem(title="Text", _type="md", parent=f)
+    t2 = outlineItem(title="Text", _type="md", parent=root)
 
     return mdl
