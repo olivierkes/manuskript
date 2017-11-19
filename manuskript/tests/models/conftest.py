@@ -7,13 +7,13 @@ import pytest
 from manuskript.models import outlineModel, outlineItem
 
 @pytest.fixture
-def outlineModelBasic():
+def outlineModelBasic(MWEmptyProject):
     """Returns an outlineModel with a few items:
       * Folder
         * Text
       * Text
     """
-    mdl = outlineModel(parent=None)
+    mdl = MWEmptyProject.mdlOutline
 
     root = mdl.rootItem
     f = outlineItem(title="Folder", parent=root)
