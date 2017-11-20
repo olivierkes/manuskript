@@ -18,6 +18,7 @@ def test_general(MWSampleProject):
     MW.actStatus.triggered.emit()
     assert MW.sw.isVisible()
     MW.sw.hide()
+    MW.sw.setTab("General")
 
     SW = MW.sw
 
@@ -57,6 +58,8 @@ def test_general(MWSampleProject):
         assert chk.isChecked() is not state
 
     # Loading and Saving
+    SW.txtAutoSave.setText("0")
+    SW.txtAutoSaveNoChanges.setText("0")
     switchCheckBoxAndAssert(SW.chkAutoLoad,
                             lambda: qS.value("autoLoad", type=bool))
     switchCheckBoxAndAssert(SW.chkAutoSave,
@@ -79,11 +82,15 @@ def test_general(MWSampleProject):
     SW.cmbTreeIcon.currentIndexChanged.emit(0)
     SW.cmbOutlineIcon.currentIndexChanged.emit(0)
     SW.cmbCorkIcon.currentIndexChanged.emit(0)
+    SW.chkOutlineTitle.setChecked(Qt.Checked)  #outlineColumnsChanged
+    SW.chkOutlineTitle.setChecked(Qt.Unchecked)
+    SW.chkOutlineTitle.setChecked(Qt.Checked)
     # Can't test because of the dialog
     # assert SW.setCorkColor() is None
+    SW.sldTreeIconSize.setValue(SW.sldTreeIconSize.value() + 1)
     SW.rdoCorkNewStyle.toggled.emit(True)
     SW.cmbCorkImage.currentIndexChanged.emit(0)
-    SW.cmbCorkImage.currentIndexChanged.emit(0)
+    SW.cmbCorkImage.currentIndexChanged.emit(1)
     # Test editor: same problem as above
     # choseEditorFontColor
     # choseEditorMisspelledColor
@@ -94,6 +101,11 @@ def test_general(MWSampleProject):
     assert SW.restoreEditorColors() is None
     switchCheckBoxAndAssert(SW.chkEditorNoBlinking,
                             lambda: S.textEditor["cursorNotBlinking"])
+    # Twice on purpose: set and restore
+    switchCheckBoxAndAssert(SW.chkEditorNoBlinking,
+                            lambda: S.textEditor["cursorNotBlinking"])
+    # Manually call updateAllWidgets, because other wise timer of 250ms
+    SW.updateAllWidgets()
 
     # Labels
     assert SW.updateLabelColor(MW.mdlLabels.item(1).index()) is None
@@ -122,6 +134,10 @@ def test_general(MWSampleProject):
     count = SW.lstThemes.count()
     SW.newTheme()
     assert SW.lstThemes.count() == count + 1
+    SW.newTheme() # theme with same name
+    item = SW.lstThemes.item(SW.lstThemes.count() - 1)
+    SW.lstThemes.setCurrentItem(item)
+    SW.removeTheme()
     item = SW.lstThemes.item(count)
     SW.lstThemes.setCurrentItem(item)
     SW.editTheme()
@@ -129,8 +145,12 @@ def test_general(MWSampleProject):
                             lambda: SW._themeData["Spacings/IndentFirstLine"])
     SW.updateThemeFont(None)
     SW.updateThemeBackground(0)
+    SW.updateThemeBackground(1)
+    SW.spnThemeLineSpacing.setValue(123)
     for i in range(4):
         SW.updateLineSpacing(i)
+        SW.updateUIFromTheme() # No time to wait on timer
+    assert SW._editingTheme is not None
     SW.resize(SW.geometry().size()) # resizeEvent
     #TODO: other edit test (see SW.loadTheme
     SW.saveTheme()
