@@ -29,18 +29,21 @@ def test_general(MWSampleProject):
 
     # Style
     assert SW.cmbStyle.count() == len(list(QStyleFactory.keys()))
-    assert SW.cmbStyle.currentText() == qS.value("applicationStyle")
+    if qS.value("applicationStyle"):
+        assert SW.cmbStyle.currentText() == qS.value("applicationStyle")
     ## Seg fault when trying to set the style in tests:
     # for s in styles:
     #     SW.cmbStyle.setCurrentText(s)
         # assert S.value("applicationStyle") == s
 
     # Translations
-    assert (SW.cmbTranslation.currentData()
-            == qS.value("applicationTranslation"))
+    if qS.value("applicationTranslation"):
+        assert (SW.cmbTranslation.currentData()
+                == qS.value("applicationTranslation"))
     for name in SW.translations:
         SW.cmbTranslation.setCurrentText(name)
-        assert qS.value("applicationTranslation") == SW.translations[name]
+        if qS.value("applicationTranslation"):
+            assert qS.value("applicationTranslation") == SW.translations[name]
 
     def switchCheckBoxAndAssert(chk, settings):
         """
@@ -139,26 +142,3 @@ def test_general(MWSampleProject):
     SW.lstThemes.setCurrentItem(item)
     SW.removeTheme()
     assert SW.lstThemes.count() == count
-
-    # self._editingTheme = None
-    # self.btnThemeEditOK.setIcon(qApp.style().standardIcon(QStyle.SP_DialogApplyButton))
-    # self.btnThemeEditOK.clicked.connect(self.saveTheme)
-    # self.btnThemeEditCancel.setIcon(qApp.style().standardIcon(QStyle.SP_DialogCancelButton))
-    # self.btnThemeEditCancel.clicked.connect(self.cancelEdit)
-    # self.cmbThemeEdit.currentIndexChanged.connect(self.themeEditStack.setCurrentIndex)
-    # self.cmbThemeEdit.setCurrentIndex(0)
-    # self.cmbThemeEdit.currentIndexChanged.emit(0)
-    # self.themeStack.setCurrentIndex(0)
-    # self.populatesThemesList()
-    # self.btnThemeAdd.clicked.connect(self.newTheme)
-    # self.btnThemeEdit.clicked.connect(self.editTheme)
-    # self.btnThemeRemove.clicked.connect(self.removeTheme)
-    # self.timerUpdateFSPreview = QTimer()
-    # self.timerUpdateFSPreview.setSingleShot(True)
-    # self.timerUpdateFSPreview.setInterval(250)
-    # self.timerUpdateFSPreview.timeout.connect(self.updatePreview)
-    # saveTheme
-    # themeEditStack.setCurrentIndex
-    # editTheme
-    # removeTheme
-    # updatePreview
