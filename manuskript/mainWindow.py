@@ -1388,7 +1388,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             w.cmbPOV.setVisible(val)
 
         # POV in outline view
-        if Outline.POV in settings.outlineViewColumns:
+        if val is None and Outline.POV in settings.outlineViewColumns:
             settings.outlineViewColumns.remove(Outline.POV)
 
         from manuskript.ui.views.outlineView import outlineView
