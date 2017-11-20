@@ -85,7 +85,7 @@ def test_paths():
 
 def test_mainWindow():
 
-    from PyQt5.QtWidgets import QWidget
+    from PyQt5.QtWidgets import QWidget, QLCDNumber
 
     assert F.mainWindow() is not None
     assert F.MW is not None
@@ -93,3 +93,4 @@ def test_mainWindow():
     F.statusMessage("Test")
     F.printObjects()
     assert len(F.findWidgetsOfClass(QWidget)) > 0
+    assert len(F.findWidgetsOfClass(QLCDNumber)) == 0

@@ -187,6 +187,9 @@ def infos(ref):
     elif _type == CharacterLetter:
         m = mainWindow().mdlCharacter
         c = m.getCharacterByID(int(_ref))
+        if c is None:
+            return qApp.translate("references", "Unknown reference: {}.").format(ref)
+
         index = c.index()
 
         name = c.name()
@@ -267,6 +270,9 @@ def infos(ref):
         index = m.getIndexFromID(_ref)
         name = m.getPlotNameByID(_ref)
 
+        if not index.isValid():
+            return qApp.translate("references", "Unknown reference: {}.").format(ref)
+
         # Titles
         descriptionTitle = qApp.translate("references", "Description")
         resultTitle = qApp.translate("references", "Result")
@@ -342,6 +348,9 @@ def infos(ref):
         m = mainWindow().mdlWorld
         index = m.indexByID(_ref)
         name = m.name(index)
+
+        if not index.isValid():
+            return qApp.translate("references", "Unknown reference: {}.").format(ref)
 
         # Titles
         descriptionTitle = qApp.translate("references", "Description")
@@ -532,7 +541,9 @@ def refToLink(ref):
 
         elif _type == CharacterLetter:
             m = mainWindow().mdlCharacter
-            text = m.getCharacterByID(int(_ref)).name()
+            c = m.getCharacterByID(int(_ref))
+            if c:
+                text = c.name()
 
         elif _type == PlotLetter:
             m = mainWindow().mdlPlots
@@ -540,7 +551,9 @@ def refToLink(ref):
 
         elif _type == WorldLetter:
             m = mainWindow().mdlWorld
-            text = m.itemByID(_ref).text()
+            item = m.itemByID(_ref)
+            if item:
+                text = item.text()
 
         if text:
             return "<a href='{ref}'>{text}</a>".format(
@@ -549,11 +562,9 @@ def refToLink(ref):
         else:
             return ref
 
-
 def linkifyAllRefs(text):
     """Takes all the references in ``text`` and transform them into HMTL links."""
     return re.sub(RegEx, lambda m: refToLink(m.group(0)), text)
-
 
 def findReferencesTo(ref, parent=None, recursive=True):
     """List of text items containing references ref, and returns IDs.
@@ -591,14 +602,12 @@ def listReferences(ref, title=qApp.translate("references", "Referenced in:")):
             title=title,
             ref=listRefs) if listRefs else ""
 
-
 def basicFormat(text):
     if not text:
         return ""
     text = text.replace("\n", "<br>")
     text = linkifyAllRefs(text)
     return text
-
 
 def open(ref):
     """Identify ``ref`` and open it."""

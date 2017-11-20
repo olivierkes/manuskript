@@ -5,16 +5,17 @@
 
 import pytest
 
-from manuskript.models import outlineItem
 
 @pytest.fixture
 def outlineItemFolder():
     '''Returns a folder outlineItem title "Folder".'''
+    from manuskript.models import outlineItem
     return outlineItem(title="Folder")
 
 @pytest.fixture
 def outlineItemText():
     '''Returns a text outlineItem title "Text".'''
+    from manuskript.models import outlineItem
     return outlineItem(title="Text", _type="md")
 
 def test_outlineItemsProperties(outlineItemFolder, outlineItemText):
@@ -158,6 +159,3 @@ def test_modelStuff(outlineModelBasic):
     assert text3.ID() == "0"
     root.checkIDs()
     assert text3.ID() != "0"
-
-    #TODO: copy (with children), IDs check, childcountrecursive
-    #      (cf. abstractItem)

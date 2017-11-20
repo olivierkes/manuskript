@@ -10,7 +10,7 @@ from PyQt5.QtWidgets import QMainWindow, QHeaderView, qApp, QMenu, QActionGroup,
 
 from manuskript import settings
 from manuskript.enums import Character, PlotStep, Plot, World, Outline
-from manuskript.functions import AUC, wordCount, appPath, findWidgetsOfClass
+from manuskript.functions import wordCount, appPath, findWidgetsOfClass
 import manuskript.functions as F
 from manuskript import loadSave
 from manuskript.models.characterModel import characterModel
@@ -57,6 +57,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Var
         self.currentProject = None
         self._lastFocus = None
+        self._defaultCursorFlashTime = 1000 # Overriden at startup with system
+                                            # value. In manuskript.main.
 
         self.readSettings()
 
@@ -745,20 +747,20 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def makeUIConnections(self):
         "Connections that have to be made once only, even when a new project is loaded."
-        self.lstCharacters.currentItemChanged.connect(self.changeCurrentCharacter, AUC)
+        self.lstCharacters.currentItemChanged.connect(self.changeCurrentCharacter, F.AUC)
 
-        self.txtPlotFilter.textChanged.connect(self.lstPlots.setFilter, AUC)
-        self.lstPlots.currentItemChanged.connect(self.changeCurrentPlot, AUC)
+        self.txtPlotFilter.textChanged.connect(self.lstPlots.setFilter, F.AUC)
+        self.lstPlots.currentItemChanged.connect(self.changeCurrentPlot, F.AUC)
         self.txtSubPlotSummary.document().contentsChanged.connect(
-                self.updateSubPlotSummary, AUC)
-        self.lstSubPlots.clicked.connect(self.changeCurrentSubPlot, AUC)
+                self.updateSubPlotSummary, F.AUC)
+        self.lstSubPlots.clicked.connect(self.changeCurrentSubPlot, F.AUC)
 
-        self.btnRedacAddFolder.clicked.connect(self.treeRedacOutline.addFolder, AUC)
-        self.btnOutlineAddFolder.clicked.connect(self.treeOutlineOutline.addFolder, AUC)
-        self.btnRedacAddText.clicked.connect(self.treeRedacOutline.addText, AUC)
-        self.btnOutlineAddText.clicked.connect(self.treeOutlineOutline.addText, AUC)
-        self.btnRedacRemoveItem.clicked.connect(self.outlineRemoveItemsRedac, AUC)
-        self.btnOutlineRemoveItem.clicked.connect(self.outlineRemoveItemsOutline, AUC)
+        self.btnRedacAddFolder.clicked.connect(self.treeRedacOutline.addFolder, F.AUC)
+        self.btnOutlineAddFolder.clicked.connect(self.treeOutlineOutline.addFolder, F.AUC)
+        self.btnRedacAddText.clicked.connect(self.treeRedacOutline.addText, F.AUC)
+        self.btnOutlineAddText.clicked.connect(self.treeOutlineOutline.addText, F.AUC)
+        self.btnRedacRemoveItem.clicked.connect(self.outlineRemoveItemsRedac, F.AUC)
+        self.btnOutlineRemoveItem.clicked.connect(self.outlineRemoveItemsOutline, F.AUC)
 
         self.tabMain.currentChanged.connect(self.toolbar.setCurrentGroup)
         self.tabMain.currentChanged.connect(self.tabMainChanged)
@@ -803,12 +805,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.lstCharacters.setCharactersModel(self.mdlCharacter)
         self.tblPersoInfos.setModel(self.mdlCharacter)
 
-        self.btnAddPerso.clicked.connect(self.mdlCharacter.addCharacter, AUC)
+        self.btnAddPerso.clicked.connect(self.mdlCharacter.addCharacter, F.AUC)
         try:
-            self.btnRmPerso.clicked.connect(self.lstCharacters.removeCharacter, AUC)
-            self.btnPersoColor.clicked.connect(self.lstCharacters.choseCharacterColor, AUC)
-            self.btnPersoAddInfo.clicked.connect(self.lstCharacters.addCharacterInfo, AUC)
-            self.btnPersoRmInfo.clicked.connect(self.lstCharacters.removeCharacterInfo, AUC)
+            self.btnRmPerso.clicked.connect(self.lstCharacters.removeCharacter, F.AUC)
+            self.btnPersoColor.clicked.connect(self.lstCharacters.choseCharacterColor, F.AUC)
+            self.btnPersoAddInfo.clicked.connect(self.lstCharacters.addCharacterInfo, F.AUC)
+            self.btnPersoRmInfo.clicked.connect(self.lstCharacters.removeCharacterInfo, F.AUC)
         except TypeError:
             # Connection has already been made
             pass
@@ -834,15 +836,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.lstPlotPerso.setModel(self.mdlPlots)
         self.lstPlots.setPlotModel(self.mdlPlots)
         self._updatingSubPlot = False
-        self.btnAddPlot.clicked.connect(self.mdlPlots.addPlot, AUC)
+        self.btnAddPlot.clicked.connect(self.mdlPlots.addPlot, F.AUC)
         self.btnRmPlot.clicked.connect(lambda:
-                                       self.mdlPlots.removePlot(self.lstPlots.currentPlotIndex()), AUC)
-        self.btnAddSubPlot.clicked.connect(self.mdlPlots.addSubPlot, AUC)
-        self.btnAddSubPlot.clicked.connect(self.updateSubPlotView, AUC)
-        self.btnRmSubPlot.clicked.connect(self.mdlPlots.removeSubPlot, AUC)
+                                       self.mdlPlots.removePlot(self.lstPlots.currentPlotIndex()), F.AUC)
+        self.btnAddSubPlot.clicked.connect(self.mdlPlots.addSubPlot, F.AUC)
+        self.btnAddSubPlot.clicked.connect(self.updateSubPlotView, F.AUC)
+        self.btnRmSubPlot.clicked.connect(self.mdlPlots.removeSubPlot, F.AUC)
         self.lstPlotPerso.selectionModel().selectionChanged.connect(self.plotPersoSelectionChanged)
-        self.btnRmPlotPerso.clicked.connect(self.mdlPlots.removePlotPerso, AUC)
-        self.lstSubPlots.selectionModel().currentRowChanged.connect(self.changeCurrentSubPlot, AUC)
+        self.btnRmPlotPerso.clicked.connect(self.mdlPlots.removePlotPerso, F.AUC)
+        self.lstSubPlots.selectionModel().currentRowChanged.connect(self.changeCurrentSubPlot, F.AUC)
 
         for w, c in [
             (self.txtPlotName, Plot.name),
@@ -869,9 +871,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.treeWorld.hideColumn(i)
         self.treeWorld.showColumn(0)
         self.btnWorldEmptyData.setMenu(self.mdlWorld.emptyDataMenu())
-        self.treeWorld.selectionModel().selectionChanged.connect(self.changeCurrentWorld, AUC)
-        self.btnAddWorld.clicked.connect(self.mdlWorld.addItem, AUC)
-        self.btnRmWorld.clicked.connect(self.mdlWorld.removeItem, AUC)
+        self.treeWorld.selectionModel().selectionChanged.connect(self.changeCurrentWorld, F.AUC)
+        self.btnAddWorld.clicked.connect(self.mdlWorld.addItem, F.AUC)
+        self.btnRmWorld.clicked.connect(self.mdlWorld.removeItem, F.AUC)
         for w, c in [
             (self.txtWorldName, World.name),
             (self.txtWorldDescription, World.description),
@@ -898,14 +900,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # self.redacEditor.setModel(self.mdlOutline)
         self.storylineView.setModels(self.mdlOutline, self.mdlCharacter, self.mdlPlots)
 
-        self.treeOutlineOutline.selectionModel().selectionChanged.connect(self.outlineItemEditor.selectionChanged, AUC)
-        self.treeOutlineOutline.clicked.connect(self.outlineItemEditor.selectionChanged, AUC)
+        self.treeOutlineOutline.selectionModel().selectionChanged.connect(self.outlineItemEditor.selectionChanged, F.AUC)
+        self.treeOutlineOutline.clicked.connect(self.outlineItemEditor.selectionChanged, F.AUC)
 
         # Sync selection
-        self.treeRedacOutline.selectionModel().selectionChanged.connect(self.redacMetadata.selectionChanged, AUC)
-        self.treeRedacOutline.clicked.connect(self.redacMetadata.selectionChanged, AUC)
+        self.treeRedacOutline.selectionModel().selectionChanged.connect(self.redacMetadata.selectionChanged, F.AUC)
+        self.treeRedacOutline.clicked.connect(self.redacMetadata.selectionChanged, F.AUC)
 
-        self.treeRedacOutline.selectionModel().selectionChanged.connect(self.mainEditor.selectionChanged, AUC)
+        self.treeRedacOutline.selectionModel().selectionChanged.connect(self.mainEditor.selectionChanged, F.AUC)
 
         # Cheat Sheet
         self.cheatSheet.setModels()
@@ -918,7 +920,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.tblDebugPersos.selectionModel().currentChanged.connect(
                 lambda: self.tblDebugPersosInfos.setRootIndex(self.mdlCharacter.index(
                         self.tblDebugPersos.selectionModel().currentIndex().row(),
-                        Character.name)), AUC)
+                        Character.name)), F.AUC)
 
         self.tblDebugPlots.setModel(self.mdlPlots)
         self.tblDebugPlotsPersos.setModel(self.mdlPlots)
@@ -926,11 +928,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.tblDebugPlots.selectionModel().currentChanged.connect(
                 lambda: self.tblDebugPlotsPersos.setRootIndex(self.mdlPlots.index(
                         self.tblDebugPlots.selectionModel().currentIndex().row(),
-                        Plot.characters)), AUC)
+                        Plot.characters)), F.AUC)
         self.tblDebugPlots.selectionModel().currentChanged.connect(
                 lambda: self.tblDebugSubPlots.setRootIndex(self.mdlPlots.index(
                         self.tblDebugPlots.selectionModel().currentIndex().row(),
-                        Plot.steps)), AUC)
+                        Plot.steps)), F.AUC)
         self.treeDebugWorld.setModel(self.mdlWorld)
         self.treeDebugOutline.setModel(self.mdlOutline)
         self.lstDebugLabels.setModel(self.mdlLabels)
@@ -1173,7 +1175,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         for widget, text, pos in references:
             label = helpLabel(text, self)
-            self.actShowHelp.toggled.connect(label.setVisible, AUC)
+            self.actShowHelp.toggled.connect(label.setVisible, F.AUC)
             widget.layout().insertWidget(pos, label)
 
         self.actShowHelp.setChecked(False)
@@ -1185,17 +1187,17 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.updateMenuDict()
             self.menuTools.addMenu(self.menuDict)
 
-            self.actSpellcheck.toggled.connect(self.toggleSpellcheck, AUC)
-            self.dictChanged.connect(self.mainEditor.setDict, AUC)
-            self.dictChanged.connect(self.redacMetadata.setDict, AUC)
-            self.dictChanged.connect(self.outlineItemEditor.setDict, AUC)
+            self.actSpellcheck.toggled.connect(self.toggleSpellcheck, F.AUC)
+            self.dictChanged.connect(self.mainEditor.setDict, F.AUC)
+            self.dictChanged.connect(self.redacMetadata.setDict, F.AUC)
+            self.dictChanged.connect(self.outlineItemEditor.setDict, F.AUC)
 
         else:
             # No Spell check support
             self.actSpellcheck.setVisible(False)
             a = QAction(self.tr("Install PyEnchant to use spellcheck"), self)
             a.setIcon(self.style().standardIcon(QStyle.SP_MessageBoxWarning))
-            a.triggered.connect(self.openPyEnchantWebPage, AUC)
+            a.triggered.connect(self.openPyEnchantWebPage, F.AUC)
             self.menuTools.addAction(a)
 
     ###############################################################################
@@ -1215,7 +1217,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 settings.dict = enchant.get_default_language()
             if str(i[0]) == settings.dict:
                 a.setChecked(True)
-            a.triggered.connect(self.setDictionary, AUC)
+            a.triggered.connect(self.setDictionary, F.AUC)
             self.menuDictGroup.addAction(a)
             self.menuDict.addAction(a)
 
@@ -1334,7 +1336,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                     a.setData("{},{},{}".format(mnud, sd, vd))
                     if settings.viewSettings[mnud][sd] == vd:
                         a.setChecked(True)
-                    a.triggered.connect(self.setViewSettingsAction, AUC)
+                    a.triggered.connect(self.setViewSettingsAction, F.AUC)
                     agp.addAction(a)
                     m2.addAction(a)
                 m.addMenu(m2)

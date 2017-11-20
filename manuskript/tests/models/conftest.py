@@ -4,7 +4,6 @@
 """Conf for models."""
 
 import pytest
-from manuskript.models import outlineModel, outlineItem
 
 @pytest.fixture
 def outlineModelBasic(MWEmptyProject):
@@ -13,6 +12,7 @@ def outlineModelBasic(MWEmptyProject):
         * Text
       * Text
     """
+    from manuskript.models import outlineItem
     mdl = MWEmptyProject.mdlOutline
 
     root = mdl.rootItem
