@@ -65,7 +65,9 @@ class settingsWindow(QWidget, Ui_Settings):
 
         # General
         self.cmbStyle.addItems(list(QStyleFactory.keys()))
-        self.cmbStyle.setCurrentIndex([i.lower() for i in list(QStyleFactory.keys())].index(qApp.style().objectName()))
+        self.cmbStyle.setCurrentIndex(
+            [i.lower() for i in list(QStyleFactory.keys())]
+            .index(qApp.style().objectName()))
         self.cmbStyle.currentIndexChanged[str].connect(self.setStyle)
 
         self.cmbTranslation.clear()
@@ -75,13 +77,18 @@ class settingsWindow(QWidget, Ui_Settings):
         tr["Español"] = "manuskript_es.qm"
         tr["Deutsch"] = "manuskript_de.qm"
         tr["Svenska"] = "manuskript_sv.qm"
+        self.translations = tr
 
         for name in tr:
             self.cmbTranslation.addItem(name, tr[name])
 
         sttgs = QSettings(qApp.organizationName(), qApp.applicationName())
-        if sttgs.contains("applicationTranslation") and sttgs.value("applicationTranslation") in tr.values():
-            self.cmbTranslation.setCurrentText([i for i in tr if tr[i] == sttgs.value("applicationTranslation")][0])
+        if (sttgs.contains("applicationTranslation")
+            and sttgs.value("applicationTranslation") in tr.values()):
+            # Sets the correct translation
+            self.cmbTranslation.setCurrentText(
+                [i for i in tr
+                 if tr[i] == sttgs.value("applicationTranslation")][0])
 
         self.cmbTranslation.currentIndexChanged.connect(self.setTranslation)
 
@@ -571,8 +578,8 @@ class settingsWindow(QWidget, Ui_Settings):
         # px = QPixmap(64, 64)
         # px.fill(iconColor(self.mw.mdlLabels.item(index.row()).icon()))
         # self.btnLabelColor.setIcon(QIcon(px))
-        self.btnLabelColor.setStyleSheet(
-            "background:{};".format(iconColor(self.mw.mdlLabels.item(index.row()).icon()).name()))
+        self.btnLabelColor.setStyleSheet("background:{};".format(
+            iconColor(self.mw.mdlLabels.item(index.row()).icon()).name()))
         self.btnLabelColor.setEnabled(True)
 
     def addLabel(self):
