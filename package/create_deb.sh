@@ -1,11 +1,13 @@
 #!/bin/bash
 
+# Can take two parameters: AppVersion PkgNumber
+# Default values are: 0.5.0 1
 
 # Manuskript Vars
 AppName=manuskript
-AppVersion=0.5.0
-PkgNumber=1
-PkgVersion=0.5.0-1
+AppVersion=${1:-0.5.0}
+PkgNumber=${2:-1}
+PkgVersion=$AppVersion-$PkgNumber
 #PkgSizeInKb  # find with:  du -sk manuskript-0.5.0-1
 
 # Program vars
