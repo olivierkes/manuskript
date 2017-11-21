@@ -16,9 +16,9 @@ faulthandler.enable()
 
 def prepare(tests=False):
     app = QApplication(sys.argv)
-    app.setOrganizationName("manuskript"+"_tests" if tests else "")
+    app.setOrganizationName("manuskript"+("_tests" if tests else ""))
     app.setOrganizationDomain("www.theologeek.ch")
-    app.setApplicationName("manuskript"+"_tests" if tests else "")
+    app.setApplicationName("manuskript"+("_tests" if tests else ""))
     app.setApplicationVersion(getVersion())
 
     print("Running manuskript version {}.".format(getVersion()))
