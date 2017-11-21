@@ -10,7 +10,7 @@ Section: office, text
 Priority: optional
 Installed-Size: {PkgSizeInKb}
 Architecture: all
-Origin: Debian 8 Jessie
+Origin: Ubuntu 14.04
 Bugs: https://github.com/olivierkes/manuskript/issues
 Homepage: http://www.theologeek.ch/manuskript/
 Source: https://github.com/olivierkes/manuskript/archive/0.5.0.tar.gz
