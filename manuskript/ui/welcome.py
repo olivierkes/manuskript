@@ -77,7 +77,8 @@ class welcome(QWidget, Ui_welcome):
         return autoLoad, last
 
     def setAutoLoad(self, v):
-        QSettings().setValue("autoLoad", v)
+        if type(v) == bool:
+            QSettings().setValue("autoLoad", v)
 
     ###############################################################################
     # RECENTS

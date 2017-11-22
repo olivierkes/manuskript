@@ -18,6 +18,15 @@ def MW():
     return MW
 
 @pytest.fixture
+def MWNoProject(MW):
+    """
+    Take the MainWindow and close andy possibly open project.
+    """
+    MW.closeProject()
+    assert MW.currentProject is None
+    return MW
+
+@pytest.fixture
 def MWEmptyProject(MW):
     """
     Creates a MainWindow and load an empty project.
