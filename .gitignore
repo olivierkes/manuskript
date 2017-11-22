@@ -12,3 +12,4 @@ icons/Numix
 dist
 build
 test-projects
+.cache
