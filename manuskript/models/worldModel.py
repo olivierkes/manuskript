@@ -4,11 +4,12 @@ from PyQt5.QtCore import QModelIndex
 from PyQt5.QtCore import QSize
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QStandardItem, QBrush, QFontMetrics
-from PyQt5.QtGui import QStandardItemModel
+from PyQt5.QtGui import QStandardItemModel, QColor
 from PyQt5.QtWidgets import QMenu, QAction, qApp
 
 from manuskript.enums import World
-from manuskript.functions import mainWindow, lightBlue
+from manuskript.functions import mainWindow
+from manuskript.ui import style as S
 
 
 class worldModel(QStandardItemModel):
@@ -254,7 +255,7 @@ class worldModel(QStandardItemModel):
 
         if role == Qt.BackgroundRole:
             if level == 0:
-                return QBrush(lightBlue())
+                return QBrush(QColor(S.highlightLight))
 
         if role == Qt.TextAlignmentRole:
             if level == 0:
@@ -268,7 +269,7 @@ class worldModel(QStandardItemModel):
 
         if role == Qt.ForegroundRole:
             if level == 0:
-                return QBrush(Qt.darkBlue)
+                return QBrush(QColor(S.highlightedTextDark))
 
         if role == Qt.SizeHintRole:
             fm = QFontMetrics(qApp.font())

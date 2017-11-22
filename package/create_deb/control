@@ -1,0 +1,19 @@
+Package: manuskript
+Version: {PkgVersion}
+Maintainer: Curtis Gedak <gedakc@gmail.com>
+Description: Manuskript open source tool for writers.
+ Manuskript is an open source tool for writers.  It
+ provides a rich environment to help writers create
+ their first draft and then further refine and edit
+ their masterpiece.
+Section: office, text
+Priority: optional
+Installed-Size: {PkgSizeInKb}
+Architecture: all
+Origin: Ubuntu 14.04
+Bugs: https://github.com/olivierkes/manuskript/issues
+Homepage: http://www.theologeek.ch/manuskript/
+Source: https://github.com/olivierkes/manuskript/archive/0.5.0.tar.gz
+Depends: python3, python3-pyqt5, python3-pyqt5.qtwebkit, libqt5svg5,
+ python3-lxml, zlib1g, python3-enchant, python3-markdown, pandoc
+Suggests: texlive-latex-recommended

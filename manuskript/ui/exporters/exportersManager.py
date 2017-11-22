@@ -10,6 +10,8 @@ from PyQt5.QtWidgets import QWidget, QListWidgetItem, QFileDialog
 
 from manuskript import exporter
 from manuskript.ui.exporters.exportersManager_ui import Ui_ExportersManager
+from manuskript.ui import style as S
+
 
 class exportersManager(QWidget, Ui_ExportersManager):
 
@@ -18,6 +20,7 @@ class exportersManager(QWidget, Ui_ExportersManager):
     def __init__(self, parent=None):
         QWidget.__init__(self, parent)
         self.setupUi(self)
+        self.lblExporterName.setStyleSheet(S.titleLabelSS())
 
         # Var
         self.currentExporter = None

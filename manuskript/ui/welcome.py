@@ -20,9 +20,12 @@ from manuskript.models.outlineModel import outlineModel
 from manuskript.models.plotModel import plotModel
 from manuskript.models.worldModel import worldModel
 from manuskript.ui.welcome_ui import Ui_welcome
+from manuskript.ui import style as S
 
-locale.setlocale(locale.LC_ALL, '')
-
+try:
+    locale.setlocale(locale.LC_ALL, '')
+except:
+    pass
 
 class welcome(QWidget, Ui_welcome):
     def __init__(self, parent=None):
@@ -65,8 +68,15 @@ class welcome(QWidget, Ui_welcome):
             self.mw.loadProject(last)
 
     def getAutoLoadValues(self):
+        """
+        Reads manuskript system's settings and returns a tupple:
+        - `bool`: whether manuskript should automatically load
+                  the last openend project or display the
+                  welcome widget.
+        - `str`:  the absolute path to the last opened project.
+        """
         sttgns = QSettings()
-        autoLoad = sttgns.value("autoLoad", type=bool)
+        autoLoad = sttgns.value("autoLoad", defaultValue=False, type=bool)
         if autoLoad and sttgns.contains("lastProject"):
             last = sttgns.value("lastProject")
         else:
@@ -139,6 +149,8 @@ class welcome(QWidget, Ui_welcome):
                                                self.tr("Manuskript project (*.msk)"))[0]
 
         if filename:
+            if filename[-4:] != ".msk":
+                filename += ".msk"
             self.appendToRecentFiles(filename)
             loadSave.clearSaveCache()  # Ensure all file(s) are saved under new filename
             self.mw.saveDatas(filename)
@@ -269,6 +281,7 @@ class welcome(QWidget, Ui_welcome):
                 btn = QPushButton("", self)
                 btn.setIcon(QIcon.fromTheme("edit-delete"))
                 btn.setProperty("deleteRow", k)
+                btn.setFlat(True)
                 btn.clicked.connect(self.deleteTemplateRow)
 
                 self.lytTemplate.addWidget(btn, k, 3)
@@ -333,8 +346,8 @@ class welcome(QWidget, Ui_welcome):
 
     def addTopLevelItem(self, name):
         item = QTreeWidgetItem(self.tree, [name])
-        item.setBackground(0, QBrush(QColor(Qt.blue).lighter(190)))
-        item.setForeground(0, QBrush(Qt.darkBlue))
+        item.setBackground(0, QBrush(QColor(S.highlightLight)))
+        item.setForeground(0, QBrush(QColor(S.highlightedTextDark)))
         item.setTextAlignment(0, Qt.AlignCenter)
         item.setFlags(Qt.ItemIsEnabled)
         f = item.font(0)
@@ -372,6 +385,8 @@ class welcome(QWidget, Ui_welcome):
 
         # Empty settings
         imp.reload(settings)
+        settings.initDefaultValues()
+
         if self.template:
             t = [i for i in self.templates() if i[0] == self.template[0]]
             if t and t[0][2] == "Non-fiction":

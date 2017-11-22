@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui'
 #
-# Created by: PyQt5 UI code generator 5.4.2
+# Created by: PyQt5 UI code generator 5.9
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -17,20 +17,12 @@ class Ui_exporterSettings(object):
         self.verticalLayout_2.setSpacing(10)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.toolBox = QtWidgets.QToolBox(exporterSettings)
-        self.toolBox.setStyleSheet("QToolBox::tab{\n"
-"    background-color: #BBB;\n"
-"    padding: 2px;\n"
-"    border: none;\n"
-"}\n"
-"\n"
-"QToolBox::tab:selected, QToolBox::tab:hover{\n"
-"    background-color:skyblue;\n"
-"}")
         self.toolBox.setObjectName("toolBox")
         self.content = QtWidgets.QWidget()
-        self.content.setGeometry(QtCore.QRect(0, 0, 491, 842))
+        self.content.setGeometry(QtCore.QRect(0, 0, 349, 842))
         self.content.setObjectName("content")
         self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.content)
+        self.verticalLayout_5.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_5.setObjectName("verticalLayout_5")
         self.label = QtWidgets.QLabel(self.content)
         self.label.setObjectName("label")
@@ -111,9 +103,10 @@ class Ui_exporterSettings(object):
         self.verticalLayout_5.addItem(spacerItem1)
         self.toolBox.addItem(self.content, "")
         self.separations = QtWidgets.QWidget()
-        self.separations.setGeometry(QtCore.QRect(0, 0, 511, 522))
+        self.separations.setGeometry(QtCore.QRect(0, 0, 173, 336))
         self.separations.setObjectName("separations")
         self.verticalLayout_8 = QtWidgets.QVBoxLayout(self.separations)
+        self.verticalLayout_8.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_8.setObjectName("verticalLayout_8")
         self.label_3 = QtWidgets.QLabel(self.separations)
         font = QtGui.QFont()
@@ -323,6 +316,7 @@ class Ui_exporterSettings(object):
         self.transformations.setStyleSheet("QGroupBox{font-weight:bold;}")
         self.transformations.setObjectName("transformations")
         self.verticalLayout_6 = QtWidgets.QVBoxLayout(self.transformations)
+        self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_6.setObjectName("verticalLayout_6")
         self.grpTransTypo = collapsibleGroupBox2(self.transformations)
         self.grpTransTypo.setStyleSheet("")
@@ -481,10 +475,11 @@ class Ui_exporterSettings(object):
         self.verticalLayout_6.addItem(spacerItem10)
         self.toolBox.addItem(self.transformations, "")
         self.preview = QtWidgets.QWidget()
-        self.preview.setGeometry(QtCore.QRect(0, 0, 511, 522))
+        self.preview.setGeometry(QtCore.QRect(0, 0, 369, 130))
         self.preview.setStyleSheet("QGroupBox{font-weight:bold;}")
         self.preview.setObjectName("preview")
         self.verticalLayout_11 = QtWidgets.QVBoxLayout(self.preview)
+        self.verticalLayout_11.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_11.setObjectName("verticalLayout_11")
         self.groupBox = QtWidgets.QGroupBox(self.preview)
         self.groupBox.setObjectName("groupBox")

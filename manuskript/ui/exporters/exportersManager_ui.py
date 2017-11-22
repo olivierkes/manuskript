@@ -2,8 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/exporters/exportersManager_ui.ui'
 #
-# Created: Fri Apr  8 12:47:11 2016
-#      by: PyQt5 UI code generator 5.2.1
+# Created by: PyQt5 UI code generator 5.9
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -31,13 +30,6 @@ class Ui_ExportersManager(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.lblExporterName.sizePolicy().hasHeightForWidth())
         self.lblExporterName.setSizePolicy(sizePolicy)
-        self.lblExporterName.setStyleSheet("background-color:lightBlue;\n"
-"border:none;\n"
-"padding:10px;\n"
-"color:darkBlue;\n"
-"font-size:16px;\n"
-"font-weight:bold;\n"
-"text-align:center;")
         self.lblExporterName.setText("{Exporter Name}")
         self.lblExporterName.setAlignment(QtCore.Qt.AlignCenter)
         self.lblExporterName.setObjectName("lblExporterName")
@@ -82,8 +74,8 @@ class Ui_ExportersManager(object):
         self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame.setObjectName("frame")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.frame)
-        self.verticalLayout.setSpacing(0)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName("verticalLayout")
         self.lblExportToDescription = QtWidgets.QLabel(self.frame)
         font = QtGui.QFont()

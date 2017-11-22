@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Manuskript
+Comment=An open source tool for writers
+Keywords=manuskript;office;write;edit;novel;text;msk
+Exec=/usr/bin/manuskript
+Terminal=false
+Type=Application
+Icon=/usr/share/manuskript/icons/Manuskript/icon-512px.png
+Categories=Office;WordProcessor;

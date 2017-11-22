@@ -8,7 +8,6 @@
         <source>&lt;p&gt;A superset of markdown.&lt;/p&gt;
     &lt;p&gt;Website: &lt;a href=&quot;http://fletcherpenney.net/multimarkdown/&quot;&gt;http://fletcherpenney.net/multimarkdown/&lt;/a&gt;&lt;/p&gt;
     </source>
-        <translatorcomment>This makes limited sense in Swedish.</translatorcomment>
         <translation>&lt;p&gt;En supermängd till markdown.&lt;/p&gt;
     &lt;p&gt;Websida: &lt;a href=&quot;http://fletcherpenney.net/multimarkdown/&quot;&gt;http://fletcherpenney.net/multimarkdown/&lt;/a&gt;&lt;/p&gt;
     </translation>
@@ -26,7 +25,6 @@
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="19"/>
         <source>python module &apos;markdown&apos;.</source>
-        <translatorcomment>Not sure why this is repeated again.</translatorcomment>
         <translation>python-modulen &apos;markdown&apos;.</translation>
     </message>
     <message>
@@ -54,7 +52,6 @@
     <message>
         <location filename="../manuskript/exporter/manuskript/markdown.py" line="59"/>
         <source>Preview with highlighter.</source>
-        <translatorcomment>Unclear what highlighter is -- going with the physical version used to highlight text.</translatorcomment>
         <translation>Förhandsgranskning med märkpenna.</translation>
     </message>
     <message>
@@ -77,7 +74,6 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/HTML.py" line="13"/>
         <source>A little known format modestly used. You know, web sites for example.</source>
-        <translatorcomment>Is this sarcasm? :)</translatorcomment>
         <translation>Ett relativt okänt format som används blygsamt, t.ex. på websidor.</translation>
     </message>
     <message>
@@ -92,14 +88,13 @@
     </translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/__init__.py" line="74"/>
+        <location filename="../manuskript/exporter/pandoc/__init__.py" line="88"/>
         <source>Error</source>
         <translation>Fel</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/outputFormats.py" line="10"/>
         <source>Books that don&apos;t kill trees.</source>
-        <translatorcomment>What&apos;s the context here? It looks a bit random. :)</translatorcomment>
         <translation>Böcker som inte mördar träd.</translation>
     </message>
     <message>
@@ -115,14 +110,12 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/PDF.py" line="18"/>
         <source>Needs latex to be installed.</source>
-        <translatorcomment>Incorrect casing in English.</translatorcomment>
         <translation>Kräver att LaTex är installerat.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/PDF.py" line="19"/>
         <source>a valid latex installation. See pandoc recommendations on:
                      &lt;a href=&quot;http://pandoc.org/installing.html&quot;&gt;http://pandoc.org/installing.html&lt;/a&gt;. If you want unicode support, you need xelatex.</source>
-        <translatorcomment>This string seems incomplete in English?</translatorcomment>
         <translation>en giltig LaTex-installation. Se vad pandoc rekommenderar på:
                      &lt;a href=&quot;http://pandoc.org/installing.html&quot;&gt;http://pandoc.org/installing.html&lt;/a&gt;. Vill du ha stöd för unicode behöver du xelatex.</translation>
     </message>
@@ -184,49 +177,61 @@
         <translation>Välj rotnivå för rubriker: </translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="104"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="106"/>
         <source>Use reference-style links instead of inline links</source>
         <translation>Använd referenslänkar i stället för infogade länkar</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="106"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="108"/>
         <source>Use ATX-style headers</source>
         <translation>Använd ATX-rubriker</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="108"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="110"/>
         <source>Self-contained html files, with no dependencies</source>
         <translation>Fristående HTML-filer utan andra beroenden</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="110"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="112"/>
         <source>Use &lt;q&gt; tags for quotes in HTML</source>
         <translation>Använd &lt;q&gt;-taggar för citat i HTML</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="112"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="114"/>
         <source>LaTeX engine used to produce the PDF.</source>
         <translation>LaTeX-motor som används för att skapa PDF-dokumentet.</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="121"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="124"/>
         <source>Paper size:</source>
         <translation>Pappersstorlek:</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="124"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="127"/>
         <source>Font size:</source>
         <translation>Teckenstorlek:</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="127"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="130"/>
         <source>Class:</source>
         <translation>Klass:</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="130"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="133"/>
         <source>Line spacing:</source>
         <translation>Radavstånd:</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="102"/>
+        <source>Disable YAML metadata block.
+Use that if you get YAML related error.</source>
+        <translation>Avaktivera YAML metadata block.
+Använd detta om du får ett felmeddelande angående YAML.</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="117"/>
+        <source>Convert to ePUB3</source>
+        <translation>Konvertera till ePUB3</translation>
     </message>
 </context>
 <context>
@@ -333,7 +338,7 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="1610"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="1625"/>
         <source>General</source>
         <translation>Allmänt</translation>
     </message>
@@ -378,7 +383,7 @@
         <translation>Författare</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="1619"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="1634"/>
         <source>Name</source>
         <translation>Namn</translation>
     </message>
@@ -388,7 +393,7 @@
         <translation>E-mail</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="1413"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="1428"/>
         <source>Summary</source>
         <translation>Sammanfattning</translation>
     </message>
@@ -398,7 +403,7 @@
         <translation>Situation:</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="1334"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="1337"/>
         <source>Summary:</source>
         <translation>Sammanfattning:</translation>
     </message>
@@ -408,17 +413,17 @@
         <translation>En mening</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="1426"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="1441"/>
         <source>One paragraph</source>
         <translation>Ett stycke</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="1431"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="1446"/>
         <source>One page</source>
         <translation>En sida</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="1436"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="1451"/>
         <source>Full</source>
         <translation>Full</translation>
     </message>
@@ -468,7 +473,7 @@
         <translation>Namn</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="1569"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="1584"/>
         <source>Filter</source>
         <translation>Filter</translation>
     </message>
@@ -523,7 +528,7 @@
         <translation>Detaljerad info</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2004"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2019"/>
         <source>Plots</source>
         <translation>Handlingar</translation>
     </message>
@@ -538,7 +543,7 @@
         <translation>Karaktär(er)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="1629"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="1644"/>
         <source>Description</source>
         <translation>Beskrivning</translation>
     </message>
@@ -553,441 +558,458 @@
         <translation>Lösningssteg</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2024"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2043"/>
         <source>World</source>
         <translation>Värld</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="1582"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="1597"/>
         <source>Populates with empty data</source>
         <translation>Fylls med tom data</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="1640"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="1655"/>
         <source>More</source>
         <translation>Mer</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="1649"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="1664"/>
         <source>Source of passion</source>
         <translation>Passionskälla</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="1659"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="1674"/>
         <source>Source of conflict</source>
         <translation>Konfliktkälla</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1188"/>
+        <location filename="../manuskript/mainWindow.py" line="1205"/>
         <source>Outline</source>
         <translation>Utkast</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="1837"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="1852"/>
         <source>Editor</source>
         <translation>Redigerare</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="1968"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="1983"/>
         <source>Debug</source>
-        <translatorcomment>Placeholder?</translatorcomment>
         <translation>Debug</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="1981"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="1996"/>
         <source>FlatData</source>
-        <translatorcomment>Placeholder?</translatorcomment>
         <translation>FlatData</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="1991"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2006"/>
         <source>Persos</source>
-        <translatorcomment>Placeholder?</translatorcomment>
         <translation>Persos</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2048"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2067"/>
         <source>Labels</source>
         <translation>Etiketter</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2082"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2101"/>
         <source>&amp;File</source>
         <translation>&amp;Arkiv</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2086"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2105"/>
         <source>&amp;Recents</source>
         <translation>S&amp;enaste</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2106"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2125"/>
         <source>&amp;Help</source>
         <translation>&amp;Hjälp</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2113"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2132"/>
         <source>&amp;Tools</source>
         <translation>&amp;Verktyg</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2120"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2139"/>
         <source>&amp;Edit</source>
         <translation>&amp;Redigera</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2128"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2147"/>
         <source>&amp;View</source>
         <translation>&amp;Visa</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2132"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2151"/>
         <source>&amp;Mode</source>
         <translation>&amp;Läge</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2150"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2169"/>
         <source>&amp;Cheat sheet</source>
         <translation>&amp;Fusklapp</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2184"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2203"/>
         <source>Sea&amp;rch</source>
         <translation>S&amp;ök</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2221"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2240"/>
         <source>&amp;Navigation</source>
         <translation>&amp;Navigation</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2273"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2292"/>
         <source>&amp;Open</source>
         <translation>&amp;Öppna</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2276"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2295"/>
         <source>Ctrl+O</source>
         <translation>Ctrl+O</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2285"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2304"/>
         <source>&amp;Save</source>
         <translation>&amp;Spara</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2288"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2307"/>
         <source>Ctrl+S</source>
         <translation>Ctrl+S</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2297"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2316"/>
         <source>Sa&amp;ve as...</source>
         <translation>Spara s&amp;om...</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2300"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2319"/>
         <source>Ctrl+Shift+S</source>
         <translation>Ctrl+Shift+S</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2309"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2328"/>
         <source>&amp;Quit</source>
         <translation>&amp;Avsluta</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2312"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2331"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2327"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2346"/>
         <source>&amp;Show help texts</source>
         <translation>&amp;Visa hjälptexter</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2330"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2349"/>
         <source>Ctrl+Shift+B</source>
         <translation>Ctrl+Shift+B</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2345"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2364"/>
         <source>&amp;Spellcheck</source>
         <translation>&amp;Stavningskontroll</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2348"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2367"/>
         <source>F9</source>
         <translation>F9</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2356"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2377"/>
         <source>&amp;Labels...</source>
         <translation>&amp;Etiketter...</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2364"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2387"/>
         <source>&amp;Status...</source>
         <translation>&amp;Status...</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1186"/>
+        <location filename="../manuskript/mainWindow.py" line="1203"/>
         <source>Tree</source>
         <translation>Träd</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2380"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2403"/>
         <source>&amp;Simple</source>
         <translation>&amp;Enkelt</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2388"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2411"/>
         <source>&amp;Fiction</source>
         <translation>&amp;Skönlitteratur</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2396"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2419"/>
         <source>S&amp;nowflake</source>
         <translation>S&amp;nöflingemetoden</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1187"/>
+        <location filename="../manuskript/mainWindow.py" line="1204"/>
         <source>Index cards</source>
         <translation>Registerkort</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2415"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2438"/>
         <source>S&amp;ettings</source>
         <translation>I&amp;nställningar</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2418"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2441"/>
         <source>F8</source>
         <translation>F8</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2428"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2451"/>
         <source>&amp;Close project</source>
         <translation>S&amp;täng projekt</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2436"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2461"/>
         <source>Co&amp;mpile</source>
         <translation>Ko&amp;mpilera</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2439"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2464"/>
         <source>F6</source>
         <translation>F6</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2444"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2469"/>
         <source>&amp;Frequency Analyzer</source>
         <translation>&amp;Frekvensanalys</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2452"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2479"/>
         <source>&amp;About</source>
         <translation>&amp;Om</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2455"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2482"/>
         <source>About Manuskript</source>
         <translation>Om Manuskript</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="382"/>
+        <location filename="../manuskript/mainWindow.py" line="395"/>
         <source>The file {} does not exist. Try again.</source>
         <translation>Filen {} finns inte. Försök igen.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="496"/>
+        <location filename="../manuskript/mainWindow.py" line="511"/>
         <source>Manuskript</source>
         <translation>Manuskript</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="594"/>
+        <location filename="../manuskript/mainWindow.py" line="609"/>
         <source>Project {} saved.</source>
         <translation>Projekt {} sparades.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="596"/>
+        <location filename="../manuskript/mainWindow.py" line="611"/>
         <source>WARNING: Project {} not saved.</source>
         <translation>VARNING: Projekt {} sparades ej.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="620"/>
+        <location filename="../manuskript/mainWindow.py" line="635"/>
         <source>Project {} loaded.</source>
         <translation>Projekt {} laddades.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="623"/>
+        <location filename="../manuskript/mainWindow.py" line="638"/>
         <source>Project {} loaded with some errors:</source>
         <translation>Projekt {} laddades med vissa fel:</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="625"/>
+        <location filename="../manuskript/mainWindow.py" line="640"/>
         <source> * {} wasn&apos;t found in project file.</source>
         <translation> * {} hittades inte i projektfilen.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="626"/>
+        <location filename="../manuskript/mainWindow.py" line="641"/>
         <source>Project {} loaded with some errors.</source>
         <translation>Projekt {} laddades med vissa fel.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="949"/>
+        <location filename="../manuskript/mainWindow.py" line="966"/>
         <source> (~{} pages)</source>
         <translation> (~{} sidor)</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="953"/>
+        <location filename="../manuskript/mainWindow.py" line="970"/>
         <source>Words: {}{}</source>
         <translation>Ord: {}{}</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="961"/>
+        <location filename="../manuskript/mainWindow.py" line="978"/>
         <source>Book summary</source>
         <translation>Sammanfattning av boken</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="962"/>
+        <location filename="../manuskript/mainWindow.py" line="979"/>
         <source>Project tree</source>
         <translation>Projektträd</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="963"/>
+        <location filename="../manuskript/mainWindow.py" line="980"/>
         <source>Metadata</source>
         <translation>Metadata</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="964"/>
+        <location filename="../manuskript/mainWindow.py" line="981"/>
         <source>Story line</source>
         <translation>Handling</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1034"/>
+        <location filename="../manuskript/mainWindow.py" line="1051"/>
         <source>Enter informations about your book, and yourself.</source>
         <translation>Skriv information om din bok och dig själv.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1037"/>
+        <location filename="../manuskript/mainWindow.py" line="1054"/>
         <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous
                      evil wizard could wasn&apos;t abled to kill a baby?&apos; (Harry Potter)</source>
         <translation>Den grundläggande situationen i form av en &quot;Tänk om...?&quot;-mening. Exempel: &apos;Tänk om världens farligaste
                      onda trollkarl misslyckades med att döda en baby?&apos; (Harry Potter)</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1042"/>
+        <location filename="../manuskript/mainWindow.py" line="1059"/>
         <source>Take time to think about a one sentence (~50 words) summary of your book. Then expand it to
                      a paragraph, then to a page, then to a full summary.</source>
         <translation>Tänk ut en kort (ca. 50 ord) mening som sammanfattar din bok. Utveckla den sedan till
                      ett stycke, till en sida och sist till en full sammanfattning.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1047"/>
+        <location filename="../manuskript/mainWindow.py" line="1064"/>
         <source>Create your characters.</source>
         <translation>Skapa dina karaktärer.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1050"/>
+        <location filename="../manuskript/mainWindow.py" line="1067"/>
         <source>Develop plots.</source>
         <translation>Utveckla handlingen.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1053"/>
+        <location filename="../manuskript/mainWindow.py" line="1070"/>
         <source>Build worlds.  Create hierarchy of broad categories down to specific details.</source>
         <translation>Utforma världar.  Skapa en hierarki av generella kategorier ned till minsta detalj.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1056"/>
+        <location filename="../manuskript/mainWindow.py" line="1073"/>
         <source>Create the outline of your masterpiece.</source>
         <translation>Skapa ett utkast för ditt mästerverk.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1059"/>
+        <location filename="../manuskript/mainWindow.py" line="1076"/>
         <source>Write.</source>
         <translation>Skriv.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1062"/>
+        <location filename="../manuskript/mainWindow.py" line="1079"/>
         <source>Debug info. Sometimes useful.</source>
         <translation>Debug-information. Kan vara användbar.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1076"/>
+        <location filename="../manuskript/mainWindow.py" line="1093"/>
         <source>Dictionary</source>
         <translation>Ordbok</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1089"/>
+        <location filename="../manuskript/mainWindow.py" line="1106"/>
         <source>Install PyEnchant to use spellcheck</source>
         <translation>Installera PyEnchant för stavningskontroll</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1178"/>
+        <location filename="../manuskript/mainWindow.py" line="1195"/>
         <source>Nothing</source>
         <translation>Ingenting</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1179"/>
+        <location filename="../manuskript/mainWindow.py" line="1196"/>
         <source>POV</source>
         <translation>Synvinkel</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1180"/>
+        <location filename="../manuskript/mainWindow.py" line="1197"/>
         <source>Label</source>
         <translation>Etikett</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1181"/>
+        <location filename="../manuskript/mainWindow.py" line="1198"/>
         <source>Progress</source>
         <translation>Framsteg</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1182"/>
+        <location filename="../manuskript/mainWindow.py" line="1199"/>
         <source>Compile</source>
         <translation>Kompilera</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1205"/>
+        <location filename="../manuskript/mainWindow.py" line="1222"/>
         <source>Icon color</source>
         <translation>Ikonfärg</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1206"/>
+        <location filename="../manuskript/mainWindow.py" line="1223"/>
         <source>Text color</source>
         <translation>Textfärg</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1207"/>
+        <location filename="../manuskript/mainWindow.py" line="1224"/>
         <source>Background color</source>
         <translation>Bakgrundsfärg</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1198"/>
+        <location filename="../manuskript/mainWindow.py" line="1215"/>
         <source>Icon</source>
         <translation>Ikon</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1199"/>
+        <location filename="../manuskript/mainWindow.py" line="1216"/>
         <source>Text</source>
         <translation>Text</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1200"/>
+        <location filename="../manuskript/mainWindow.py" line="1217"/>
         <source>Background</source>
         <translation>Bakgrund</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1201"/>
+        <location filename="../manuskript/mainWindow.py" line="1218"/>
         <source>Border</source>
         <translation>Kant</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1202"/>
+        <location filename="../manuskript/mainWindow.py" line="1219"/>
         <source>Corner</source>
         <translation>Hörn</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/mainWindow.ui" line="1351"/>
+        <source>Add plot step (CTRL+Enter)</source>
+        <translation>Lägg till nytt steg i handlingen (CTRL+Enter)</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/mainWindow.ui" line="1361"/>
+        <source>Ctrl+Return</source>
+        <translation>Ctrl+Enter</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/mainWindow.ui" line="1371"/>
+        <source>Remove selected plot step(s) (CTRL+Backspace)</source>
+        <translation>Ta bort valda steg i handlingen (CTRL+Backspace)</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/mainWindow.ui" line="1381"/>
+        <source>Ctrl+Backspace</source>
+        <translation>Ctrl+Backspace</translation>
     </message>
 </context>
 <context>
@@ -998,596 +1020,631 @@
         <translation>Inställningar</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="21"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="24"/>
         <source>General</source>
         <translation>Allmänt</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="474"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="477"/>
         <source>Revisions</source>
         <translation>Ändringshistorik</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="31"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="34"/>
         <source>Views</source>
         <translation>Visningar</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2491"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2659"/>
         <source>Labels</source>
         <translation>Etiketter</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2632"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2800"/>
         <source>Status</source>
         <translation>Status</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2715"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2883"/>
         <source>Fullscreen</source>
         <translation>Fullskärm</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="88"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="91"/>
         <source>General settings</source>
         <translation>Allmänna inställningar</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="104"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="107"/>
         <source>Application style</source>
         <translation>Applikationens utseende</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="116"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="119"/>
         <source>You might need to restart manuskript in order to avoid some visual issues.</source>
         <translation>Du kan behöva starta om Manuskript för att undvika problem med utseendet.</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="145"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="148"/>
         <source>Application language</source>
         <translation>Applikationens språk</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="157"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="160"/>
         <source>You will need to restart manuskript for the translation to take effect.</source>
         <translation>Du behöver starta om Manuskript för att se ändringarna.</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="186"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="189"/>
         <source>Loading</source>
         <translation>Uppstart</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="198"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="201"/>
         <source>Automatically load last project on startup</source>
         <translation>Ladda automatiskt senaste projekt vid uppstart</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="217"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="220"/>
         <source>Saving</source>
         <translation>Sparande</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="231"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="234"/>
         <source>Automatically save every</source>
         <translation>Spara automatiskt var</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="278"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="281"/>
         <source>minutes.</source>
         <translation>minut.</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="314"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="317"/>
         <source>If no changes during</source>
         <translation>Om inget har ändrats på</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="361"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="364"/>
         <source>seconds.</source>
         <translation>sekunder.</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="395"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="398"/>
         <source>Save on quit</source>
         <translation>Spara vid avslut</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="411"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="414"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If you check this option, your project will be save as one single file. Easier to copy or backup, but does not allow collaborative editing, or versionning.&lt;br/&gt;If this is unchecked, your project will be save as a folder containing many small files.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Markeras detta alternativ sparas ditt projekt som en samlad fil. Detta gör det lättare att ta en backup eller göra en kopia, men tillåter inte gemensam redigering eller versionshantering.&lt;br/&gt;Markeras alternativet inte sparas ditt projekt som en mapp med många små filer.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="417"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="420"/>
         <source>Save to one single file</source>
         <translation>Spara i en samlad fil</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="484"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="487"/>
         <source>Revisions are a way to keep track of modifications. For each text item, it stores any changes you make to the main text, allowing you to see and restoring previous versions.</source>
         <translation>Ändringshistorik låter dig följa dina ändringar. För varje textobjekt sparas ändringar som du har gjort vilket ger dig möjlighet till att se och återskapa tidigare versioner.</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="494"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="497"/>
         <source>Keep revisions</source>
         <translation>Aktivera Ändringshistorik</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="510"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="513"/>
         <source>S&amp;mart remove</source>
         <translation>S&amp;mart borttagning</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="525"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="528"/>
         <source>Keep:</source>
         <translation>Behåll:</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="538"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="541"/>
         <source>Smart remove allows you to keep only a certain number of revisions. It is strongly recommended to use it, lest you file will becomes full of thousands of insignificant changes.</source>
         <translation>Smart borttagning låter dig behålla ett visst antal ändringar. Du rekommenderas att använda den för att undvika att din fil fylls med tusentals av oviktiga ändringar.</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="554"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="557"/>
         <source>revisions per day for the last month</source>
         <translation>ändringar per dag för senaste månaden</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="592"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="595"/>
         <source>revisions per minute for the last 10 minutes</source>
         <translation>ändringar per minut för senaste 10 minuterna</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="605"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="608"/>
         <source>revisions per hour for the last day</source>
         <translation>ändringar per timme för senaste dagen</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="618"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="621"/>
         <source>revisions per 10 minutes for the last hour</source>
         <translation>ändringar per 10 minuter för senaste timmen</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="731"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="734"/>
         <source>revisions per week till the end of time</source>
         <translation>ändringar per vecka tills vidare</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="785"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="788"/>
         <source>Views settings</source>
         <translation>Visningsinställningar</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="804"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="807"/>
         <source>Tree</source>
         <translation>Träd</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1194"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1244"/>
         <source>Colors</source>
         <translation>Färger</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1690"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1740"/>
         <source>Icon color:</source>
         <translation>Ikonfärg:</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1896"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1946"/>
         <source>Nothing</source>
         <translation>Ingenting</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1901"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1951"/>
         <source>POV</source>
         <translation>Synvinkel</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1906"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1956"/>
         <source>Label</source>
         <translation>Etikett</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1911"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1961"/>
         <source>Progress</source>
         <translation>Framsteg</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1916"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1966"/>
         <source>Compile</source>
         <translation>Kompilera</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1738"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1788"/>
         <source>Text color:</source>
         <translation>Textfärg:</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1786"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1836"/>
         <source>Background color:</source>
         <translation>Bakgrundsfärg:</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="998"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1048"/>
         <source>Folders</source>
         <translation>Mappar</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1010"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1060"/>
         <source>Show ite&amp;m count</source>
         <translation>Visa antal obje&amp;kt</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1093"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1143"/>
         <source>Show wordcount</source>
         <translation>Visa antal ord</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1106"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1156"/>
         <source>Show progress</source>
         <translation>Visa framsteg</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1119"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1169"/>
         <source>Show summary</source>
         <translation>Visa sammanfattning</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1062"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1112"/>
         <source>&amp;Nothing</source>
         <translation>I&amp;ngenting</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1081"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1131"/>
         <source>Text</source>
         <translation>Text</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1182"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1232"/>
         <source>Outline</source>
         <translation>Utkast</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1374"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1424"/>
         <source>Visible columns</source>
         <translation>Synliga kolumner</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1386"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1436"/>
         <source>Goal</source>
         <translation>Mål</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1402"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1452"/>
         <source>Word count</source>
         <translation>Antal ord</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1418"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1468"/>
         <source>Percentage</source>
         <translation>Procent</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1498"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1548"/>
         <source>Title</source>
         <translation>Titel</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1530"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1580"/>
         <source>Index cards</source>
         <translation>Registerkort</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1542"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1592"/>
         <source>Background</source>
         <translation>Bakgrund</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3194"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3362"/>
         <source>Color:</source>
         <translation>Färg:</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2538"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2706"/>
         <source>Ctrl+S</source>
         <translation>Ctrl+S</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2936"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3104"/>
         <source>Image:</source>
         <translation>Bild:</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1634"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1684"/>
         <source>Style</source>
         <translation>Utseende</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1646"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1696"/>
         <source>Old style</source>
         <translation>Gammalt utseende</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1659"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1709"/>
         <source>New style</source>
         <translation>Nytt utseende</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1675"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1725"/>
         <source>Item colors</source>
         <translation>Objektfärger</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1834"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1884"/>
         <source>Border color:</source>
         <translation>Kantfärg:</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1882"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1932"/>
         <source>Corner color:</source>
         <translation>Hörnfärg:</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1933"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1983"/>
         <source>Text editor</source>
         <translation>Textredigerare</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1949"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1999"/>
         <source>Font</source>
         <translation>Typsnitt</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1993"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2043"/>
         <source>Family:</source>
         <translation>Familj:</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3237"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3405"/>
         <source>Size:</source>
         <translation>Teckenstorlek:</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3251"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3419"/>
         <source>Misspelled:</source>
         <translation>Felstavat:</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2092"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2142"/>
         <source>Background:</source>
         <translation>Bakgrund:</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2127"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2177"/>
         <source>Cursor</source>
         <translation>Markör</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2139"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2189"/>
         <source>Use block insertion of</source>
         <translation>Använd blockmarkör på</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3398"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3566"/>
         <source> px</source>
         <translation> pixlar</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2179"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2347"/>
         <source>Paragraphs</source>
         <translation>Stycke</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3278"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3446"/>
         <source>Line spacing:</source>
         <translation>Radavstånd:</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3286"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3454"/>
         <source>Single</source>
         <translation>Enkelt</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3291"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3459"/>
         <source>1.5 lines</source>
         <translation>1.5 rader</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3296"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3464"/>
         <source>Double</source>
         <translation>Dubbelt</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3301"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3469"/>
         <source>Proportional</source>
         <translation>Proportionellt</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3318"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3486"/>
         <source>%</source>
         <translation>%</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3334"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3502"/>
         <source>Tab width:</source>
         <translation>Tabb-bredd:</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3420"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3588"/>
         <source>Indent 1st line</source>
         <translation>Indrag på rad 1</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3363"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3531"/>
         <source>Spacing:</source>
-        <translatorcomment>It seems like some labels could be missing here? Should this say &quot;Spacing before and after&quot; or should it be split up into multiple labels?</translatorcomment>
         <translation>Avstånd:</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2394"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2562"/>
         <source>Alignment:</source>
         <translation>Justering:</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3428"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3596"/>
         <source>Left</source>
         <translation>Vänster</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3438"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3606"/>
         <source>Center</source>
         <translation>Centrera</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3448"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3616"/>
         <source>Right</source>
         <translation>Höger</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3458"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3626"/>
         <source>Justify</source>
         <translation>Justerad</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2762"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2930"/>
         <source>New</source>
         <translation>Ny</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2776"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2944"/>
         <source>Edit</source>
         <translation>Redigera</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2786"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2954"/>
         <source>Delete</source>
         <translation>Ta bort</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2830"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2998"/>
         <source>Theme name:</source>
         <translation>Temats namn:</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2846"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3014"/>
         <source>Apply</source>
         <translation>Använd</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2859"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3027"/>
         <source>Cancel</source>
         <translation>Avbryt</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2889"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3057"/>
         <source>Window Background</source>
         <translation>Fönsterbakgrund</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2894"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3062"/>
         <source>Text Background</source>
         <translation>Textbakgrund</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2899"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3067"/>
         <source>Text Options</source>
         <translation>Textinställningar</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2904"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3072"/>
         <source>Paragraph Options</source>
         <translation>Styckesinställningar</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2946"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3114"/>
         <source>Type:</source>
         <translation>Typ:</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2954"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3122"/>
         <source>No Image</source>
         <translation>Ingen bild</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2959"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3127"/>
         <source>Tiled</source>
         <translation>Sida vid sida</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2964"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3132"/>
         <source>Centered</source>
         <translation>Centrerad</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3063"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3231"/>
         <source>Stretched</source>
         <translation>Sträckt</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2974"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3142"/>
         <source>Scaled</source>
         <translation>Skalad</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2979"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3147"/>
         <source>Zoomed</source>
         <translation>Zoomad</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3014"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3182"/>
         <source>Opacity:</source>
         <translation>Opacitet:</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3040"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3208"/>
         <source>Position:</source>
         <translation>Position:</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3071"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3239"/>
         <source>Width:</source>
         <translation>Bredd:</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3122"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3290"/>
         <source>Corner radius:</source>
         <translation>Hörnradie:</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3129"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3297"/>
         <source>Margins:</source>
         <translation>Marginaler:</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3158"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3326"/>
         <source>Padding:</source>
         <translation>Utfyllnad:</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3214"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3382"/>
         <source>Font:</source>
         <translation>Typsnitt:</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3471"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3639"/>
         <source>Alignment</source>
         <translation>Justering</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/settings_ui.ui" line="999"/>
+        <source>Icon Size</source>
+        <translation>Storlek på ikoner</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1011"/>
+        <source>TextLabel</source>
+        <translatorcomment>Placeholder string?</translatorcomment>
+        <translation>TextEtikett</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2224"/>
+        <source>Disable blinking</source>
+        <translation>Avaktivera blinkning</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2240"/>
+        <source>Text area</source>
+        <translation>Textområde</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2252"/>
+        <source>Max width</source>
+        <translation>Maximal bredd</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2284"/>
+        <source>Left/Right margins:</source>
+        <translation>Vänster-/Höger-marginaler:</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2313"/>
+        <source>Top/Bottom margins:</source>
+        <translation>Topp-/Botten-marginaler:</translation>
     </message>
 </context>
 <context>
     <name>SpellAction</name>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="422"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="442"/>
         <source>Spelling Suggestions</source>
         <translation>Stavningsförslag</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="433"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="453"/>
         <source>&amp;Add to dictionary</source>
         <translation>&amp;Lägg till i ordbok</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="446"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="466"/>
         <source>&amp;Remove from custom dictionary</source>
         <translation>&amp;Ta bort från ordbok</translation>
     </message>
@@ -1771,7 +1828,6 @@
     <message>
         <location filename="../manuskript/ui/collapsibleDockWidgets.py" line="26"/>
         <source>Dock Widgets Toolbar</source>
-        <translatorcomment>This has no good Swedish translation and could be out of context.</translatorcomment>
         <translation>Verktygsrad för Dock Widgets</translation>
     </message>
 </context>
@@ -1954,12 +2010,14 @@
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="807"/>
-        <source>Replace ... with …</source>
+        <source>Replace ... with â¦</source>
+        <translatorcomment>Character issue in the source text?</translatorcomment>
         <translation>Ersätt ... med …</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="814"/>
-        <source>Replace --- with —</source>
+        <source>Replace --- with â</source>
+        <translatorcomment>Character issue in source text?</translatorcomment>
         <translation>Ersätt --- med —</translation>
     </message>
     <message>
@@ -2168,7 +2226,6 @@
     <message>
         <location filename="../manuskript/ui/editors/locker_ui.ui" line="79"/>
         <source>Lock !</source>
-        <translatorcomment>Is the space after Lock intentional?</translatorcomment>
         <translation>Lås!</translation>
     </message>
     <message>
@@ -2240,17 +2297,17 @@
         <translation>F11</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/editors/mainEditor.py" line="198"/>
+        <location filename="../manuskript/ui/editors/mainEditor.py" line="240"/>
         <source>Root</source>
         <translation>Rot</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/editors/mainEditor.py" line="262"/>
+        <location filename="../manuskript/ui/editors/mainEditor.py" line="304"/>
         <source>{} words / {}</source>
         <translation>{} ord / {}</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/editors/mainEditor.py" line="267"/>
+        <location filename="../manuskript/ui/editors/mainEditor.py" line="309"/>
         <source>{} words</source>
         <translation>{} ord</translation>
     </message>
@@ -2310,84 +2367,91 @@
     </message>
 </context>
 <context>
-    <name>outlineBasic</name>
-    <message>
-        <location filename="../manuskript/ui/views/outlineBasics.py" line="42"/>
-        <source>Open Item</source>
-        <translation>Öppna Objekt</translation>
-    </message>
-</context>
-<context>
     <name>outlineBasics</name>
     <message>
-        <location filename="../manuskript/ui/views/outlineBasics.py" line="49"/>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="50"/>
         <source>New Folder</source>
         <translation>Ny Mapp</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/outlineBasics.py" line="53"/>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="54"/>
         <source>New Text</source>
         <translation>Ny Text</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/outlineBasics.py" line="57"/>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="58"/>
         <source>Delete</source>
         <translation>Ta Bort</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/outlineBasics.py" line="64"/>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="65"/>
         <source>Copy</source>
         <translation>Kopiera</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/outlineBasics.py" line="68"/>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="69"/>
         <source>Cut</source>
         <translation>Klipp Ut</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/outlineBasics.py" line="72"/>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="73"/>
         <source>Paste</source>
         <translation>Klistra In</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/outlineBasics.py" line="79"/>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="80"/>
         <source>Set POV</source>
         <translation>Ange Synvinkel</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/outlineBasics.py" line="81"/>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="82"/>
         <source>None</source>
         <translation>Ingen</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/outlineBasics.py" line="87"/>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="88"/>
         <source>Main</source>
         <translation>Huvudkaraktär</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/outlineBasics.py" line="87"/>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="89"/>
         <source>Secondary</source>
         <translation>Bikaraktär</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/outlineBasics.py" line="87"/>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="90"/>
         <source>Minor</source>
         <translation>Statist</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/outlineBasics.py" line="106"/>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="109"/>
         <source>Set Status</source>
         <translation>Ange Status</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/outlineBasics.py" line="122"/>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="125"/>
         <source>Set Label</source>
         <translation>Ange Etikett</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/outlineBasics.py" line="173"/>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="215"/>
         <source>New</source>
         <translation>Ny</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="43"/>
+        <source>Open Item</source>
+        <translation>Öppna Objekt</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="140"/>
+        <source>Set Custom Icon</source>
+        <translation>Välj Anpassad Ikon</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="141"/>
+        <source>Restore to default</source>
+        <translation>Återställ till standard</translation>
     </message>
 </context>
 <context>
@@ -2416,47 +2480,47 @@
 <context>
     <name>outlineModel</name>
     <message>
-        <location filename="../manuskript/models/outlineModel.py" line="166"/>
+        <location filename="../manuskript/models/outlineModel.py" line="167"/>
         <source>Title</source>
         <translation>Titel</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/outlineModel.py" line="168"/>
+        <location filename="../manuskript/models/outlineModel.py" line="169"/>
         <source>POV</source>
         <translation>Synvinkel</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/outlineModel.py" line="170"/>
+        <location filename="../manuskript/models/outlineModel.py" line="171"/>
         <source>Label</source>
         <translation>Etikett</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/outlineModel.py" line="172"/>
+        <location filename="../manuskript/models/outlineModel.py" line="173"/>
         <source>Status</source>
         <translation>Status</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/outlineModel.py" line="174"/>
+        <location filename="../manuskript/models/outlineModel.py" line="175"/>
         <source>Compile</source>
         <translation>Kompilera</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/outlineModel.py" line="176"/>
+        <location filename="../manuskript/models/outlineModel.py" line="177"/>
         <source>Word count</source>
         <translation>Antal ord</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/outlineModel.py" line="178"/>
+        <location filename="../manuskript/models/outlineModel.py" line="179"/>
         <source>Goal</source>
         <translation>Mål</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/outlineModel.py" line="731"/>
+        <location filename="../manuskript/models/outlineModel.py" line="815"/>
         <source>{} words / {} ({})</source>
         <translation>{} ord / {} ({})</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/outlineModel.py" line="736"/>
+        <location filename="../manuskript/models/outlineModel.py" line="820"/>
         <source>{} words</source>
         <translation>{} ord</translation>
     </message>
@@ -2464,17 +2528,17 @@
 <context>
     <name>pandocSettings</name>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="145"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="148"/>
         <source>General</source>
         <translation>Allmänt</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="152"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="156"/>
         <source>Table of Content</source>
         <translation>Innehållsförteckning</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="157"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="161"/>
         <source>Custom settings for {}</source>
         <translation>Anpassade inställningar för {}</translation>
     </message>
@@ -2489,7 +2553,6 @@
     <message>
         <location filename="../manuskript/models/persosProxyModel.py" line="16"/>
         <source>Secundary</source>
-        <translatorcomment>Misspelled in English</translatorcomment>
         <translation>Bikaraktär</translation>
     </message>
     <message>
@@ -2508,7 +2571,6 @@
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Promise</source>
-        <translatorcomment>Not sure of the context here</translatorcomment>
         <translation>Löfte</translation>
     </message>
     <message>
@@ -2604,7 +2666,6 @@
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>3. Stand up</source>
-        <translatorcomment>Context unclear.</translatorcomment>
         <translation>3. Stå upp</translation>
     </message>
     <message>
@@ -2686,37 +2747,37 @@
 <context>
     <name>plotModel</name>
     <message>
-        <location filename="../manuskript/models/plotModel.py" line="94"/>
+        <location filename="../manuskript/models/plotModel.py" line="109"/>
         <source>New plot</source>
         <translation>Ny handling</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/plotModel.py" line="126"/>
+        <location filename="../manuskript/models/plotModel.py" line="141"/>
         <source>Name</source>
         <translation>Namn</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/plotModel.py" line="128"/>
+        <location filename="../manuskript/models/plotModel.py" line="143"/>
         <source>Meta</source>
         <translation>Meta</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/plotModel.py" line="163"/>
+        <location filename="../manuskript/models/plotModel.py" line="178"/>
         <source>New step</source>
         <translation>Nytt steg</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/plotModel.py" line="219"/>
+        <location filename="../manuskript/models/plotModel.py" line="247"/>
         <source>Main</source>
         <translation>Huvudkaraktär</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/plotModel.py" line="219"/>
+        <location filename="../manuskript/models/plotModel.py" line="247"/>
         <source>Secondary</source>
         <translation>Bikaraktär</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/plotModel.py" line="219"/>
+        <location filename="../manuskript/models/plotModel.py" line="247"/>
         <source>Minor</source>
         <translation>Statist</translation>
     </message>
@@ -2724,22 +2785,22 @@
 <context>
     <name>plotTreeView</name>
     <message>
-        <location filename="../manuskript/ui/views/plotTreeView.py" line="121"/>
+        <location filename="../manuskript/ui/views/plotTreeView.py" line="127"/>
         <source>Main</source>
         <translation>Huvudkaraktär</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/plotTreeView.py" line="121"/>
+        <location filename="../manuskript/ui/views/plotTreeView.py" line="127"/>
         <source>Secondary</source>
         <translation>Bikaraktär</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/plotTreeView.py" line="121"/>
+        <location filename="../manuskript/ui/views/plotTreeView.py" line="127"/>
         <source>Minor</source>
         <translation>Statist</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/plotTreeView.py" line="182"/>
+        <location filename="../manuskript/ui/views/plotTreeView.py" line="188"/>
         <source>**Plot:** {}</source>
         <translation>**Handling:** {}</translation>
     </message>
@@ -2754,7 +2815,6 @@
     <message>
         <location filename="../manuskript/models/plotsProxyModel.py" line="22"/>
         <source>Secundary</source>
-        <translatorcomment>Typo in English text</translatorcomment>
         <translation>Bikaraktär</translation>
     </message>
     <message>
@@ -3123,28 +3183,27 @@
 <context>
     <name>settingsWindow</name>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="475"/>
+        <location filename="../manuskript/settingsWindow.py" line="536"/>
         <source>New status</source>
         <translation>Ny status</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="496"/>
+        <location filename="../manuskript/settingsWindow.py" line="557"/>
         <source>New label</source>
         <translation>Ny etikett</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="532"/>
+        <location filename="../manuskript/settingsWindow.py" line="593"/>
         <source>newtheme</source>
-        <translatorcomment>Keeping in English since the formatting looks strange.</translatorcomment>
         <translation>newtheme</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="542"/>
+        <location filename="../manuskript/settingsWindow.py" line="603"/>
         <source>New theme</source>
         <translation>Nytt tema</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="574"/>
+        <location filename="../manuskript/settingsWindow.py" line="635"/>
         <source> (read-only)</source>
         <translation> (skrivskyddad)</translation>
     </message>
@@ -3159,7 +3218,6 @@
     <message>
         <location filename="../manuskript/ui/views/sldImportance_ui.ui" line="39"/>
         <source>TextLabel</source>
-        <translatorcomment>Keeping in English since formatting looks strange.</translatorcomment>
         <translation>TextLabel</translation>
     </message>
     <message>
@@ -3199,22 +3257,22 @@
 <context>
     <name>tabSplitter</name>
     <message>
-        <location filename="../manuskript/ui/editors/tabSplitter.py" line="45"/>
+        <location filename="../manuskript/ui/editors/tabSplitter.py" line="65"/>
         <source>Open selected items in that view.</source>
         <translation>Öppna valda objekt i den visningen.</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/editors/tabSplitter.py" line="136"/>
+        <location filename="../manuskript/ui/editors/tabSplitter.py" line="156"/>
         <source>Split horizontally</source>
         <translation>Dela horisontellt</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/editors/tabSplitter.py" line="146"/>
+        <location filename="../manuskript/ui/editors/tabSplitter.py" line="166"/>
         <source>Close split</source>
         <translation>Stäng delning</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/editors/tabSplitter.py" line="182"/>
+        <location filename="../manuskript/ui/editors/tabSplitter.py" line="202"/>
         <source>Split vertically</source>
         <translation>Dela vertikalt</translation>
     </message>
@@ -3230,7 +3288,7 @@
 <context>
     <name>textEditView</name>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="300"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="320"/>
         <source>Various</source>
         <translation>Diverse</translation>
     </message>
@@ -3301,22 +3359,22 @@
         <translation>Öppna {} i en ny flik</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/treeView.py" line="62"/>
+        <location filename="../manuskript/ui/views/treeView.py" line="63"/>
         <source>Expand {}</source>
         <translation>Expandera {}</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/treeView.py" line="66"/>
+        <location filename="../manuskript/ui/views/treeView.py" line="67"/>
         <source>Collapse {}</source>
         <translation>Minimera {}</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/treeView.py" line="73"/>
+        <location filename="../manuskript/ui/views/treeView.py" line="74"/>
         <source>Expand All</source>
         <translation>Expandera Alla</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/treeView.py" line="77"/>
+        <location filename="../manuskript/ui/views/treeView.py" line="78"/>
         <source>Collapse All</source>
         <translation>Minimera Alla</translation>
     </message>
@@ -3331,7 +3389,6 @@
     <message>
         <location filename="../manuskript/ui/welcome_ui.ui" line="50"/>
         <source>1</source>
-        <translatorcomment>Not sure what this is?</translatorcomment>
         <translation>1</translation>
     </message>
     <message>
@@ -3365,14 +3422,13 @@
         <translation>Uppsats</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="345"/>
+        <location filename="../manuskript/ui/welcome.py" line="364"/>
         <source>Demo projects</source>
         <translation>Demoprojekt</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome_ui.ui" line="177"/>
         <source>Add level</source>
-        <translatorcomment>This functionality seems a bit unclear in both English and Swedish</translatorcomment>
         <translation>Lägg till nivå</translation>
     </message>
     <message>
@@ -3446,12 +3502,12 @@
         <translation>Tom skönlitteratur</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="381"/>
+        <location filename="../manuskript/ui/welcome.py" line="400"/>
         <source>Chapter</source>
         <translation>Kapitel</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="382"/>
+        <location filename="../manuskript/ui/welcome.py" line="401"/>
         <source>Scene</source>
         <translation>Scen</translation>
     </message>
@@ -3476,72 +3532,72 @@
         <translation>Tom facklitteratur</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="260"/>
+        <location filename="../manuskript/ui/welcome.py" line="264"/>
         <source>words each.</source>
         <translation>ord vardera.</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="263"/>
+        <location filename="../manuskript/ui/welcome.py" line="267"/>
         <source>of</source>
         <translation>av</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="286"/>
+        <location filename="../manuskript/ui/welcome.py" line="290"/>
         <source>Text</source>
         <translation>Text</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="289"/>
+        <location filename="../manuskript/ui/welcome.py" line="293"/>
         <source>Something</source>
         <translation>Någonting</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="311"/>
+        <location filename="../manuskript/ui/welcome.py" line="330"/>
         <source>&lt;b&gt;Total:&lt;/b&gt; {} words (~ {} pages)</source>
         <translation>&lt;b&gt;Total:&lt;/b&gt; {} ord (~ {} sidor)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="332"/>
+        <location filename="../manuskript/ui/welcome.py" line="351"/>
         <source>Fiction</source>
         <translation>Skönlitteratur</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="338"/>
+        <location filename="../manuskript/ui/welcome.py" line="357"/>
         <source>Non-fiction</source>
         <translation>Facklitteratur</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="379"/>
+        <location filename="../manuskript/ui/welcome.py" line="398"/>
         <source>Idea</source>
         <translation>Idé</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="380"/>
+        <location filename="../manuskript/ui/welcome.py" line="399"/>
         <source>Note</source>
         <translation>Anteckning</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="383"/>
+        <location filename="../manuskript/ui/welcome.py" line="402"/>
         <source>Research</source>
         <translation>Referensinformation</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="391"/>
+        <location filename="../manuskript/ui/welcome.py" line="410"/>
         <source>TODO</source>
         <translation>Att Göra</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="392"/>
+        <location filename="../manuskript/ui/welcome.py" line="411"/>
         <source>First draft</source>
         <translation>Första utkast</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="393"/>
+        <location filename="../manuskript/ui/welcome.py" line="412"/>
         <source>Second draft</source>
         <translation>Andra utkast</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="394"/>
+        <location filename="../manuskript/ui/welcome.py" line="413"/>
         <source>Final</source>
         <translation>Slutgiltig</translation>
     </message>

@@ -2,8 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/editors/mainEditor_ui.ui'
 #
-# Created: Sat Oct 14 21:30:36 2017
-#      by: PyQt5 UI code generator 5.2.1
+# Created by: PyQt5 UI code generator 5.9
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -14,8 +13,8 @@ class Ui_mainEditor(object):
         mainEditor.setObjectName("mainEditor")
         mainEditor.resize(791, 319)
         self.verticalLayout = QtWidgets.QVBoxLayout(mainEditor)
-        self.verticalLayout.setSpacing(0)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName("verticalLayout")
         self.tabSplitter = tabSplitter(mainEditor)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)

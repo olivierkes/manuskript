@@ -15,8 +15,10 @@ from manuskript.ui.editors.editorWidget import editorWidget
 from manuskript.ui.editors.fullScreenEditor import fullScreenEditor
 from manuskript.ui.editors.mainEditor_ui import Ui_mainEditor
 
-locale.setlocale(locale.LC_ALL, '')
-
+try:
+    locale.setlocale(locale.LC_ALL, '')
+except:
+    pass
 
 class mainEditor(QWidget, Ui_mainEditor):
     """
@@ -170,7 +172,6 @@ class mainEditor(QWidget, Ui_mainEditor):
             ts = ts.secondTab
         return r
 
-
     ###############################################################################
     # SELECTION AND UPDATES
     ###############################################################################
@@ -219,7 +220,8 @@ class mainEditor(QWidget, Ui_mainEditor):
             editor = editorWidget(self)
             editor.setCurrentModelIndex(index)
             editor._tabWidget = tabWidget
-            tabWidget.addTab(editor, title)
+            i = tabWidget.addTab(editor, editor.ellidedTitle(title))
+            tabWidget.setTabToolTip(i, title)
             tabWidget.setCurrentIndex(tabWidget.count() - 1)
         else:
             self.currentEditor(tabWidget).setCurrentModelIndex(index)
@@ -242,6 +244,21 @@ class mainEditor(QWidget, Ui_mainEditor):
             title = index.internalPointer().title()
 
         return title
+
+    ###############################################################################
+    # FUNCTIONS FOR MENU ACCESS
+    ###############################################################################
+
+    def copy(self): self.currentEditor().copy()
+    def cut(self): self.currentEditor().cut()
+    def paste(self): self.currentEditor().paste()
+    def duplicate(self): self.currentEditor().duplicate()
+    def delete(self): self.currentEditor().delete()
+    def moveUp(self): self.currentEditor().moveUp()
+    def moveDown(self): self.currentEditor().moveDown()
+    def splitDialog(self): self.currentEditor().splitDialog()
+    def splitCursor(self): self.currentEditor().splitCursor()
+    def merge(self): self.currentEditor().merge()
 
     ###############################################################################
     # UI
@@ -301,12 +318,12 @@ class mainEditor(QWidget, Ui_mainEditor):
             drawProgress(p, rect, progress, 2)
             del p
             self.lblRedacProgress.setPixmap(self.px)
-            self.lblRedacWC.setText(self.tr("{} words / {}").format(
+            self.lblRedacWC.setText(self.tr("{} words / {} ").format(
                     locale.format("%d", wc, grouping=True),
                     locale.format("%d", goal, grouping=True)))
         else:
             self.lblRedacProgress.hide()
-            self.lblRedacWC.setText(self.tr("{} words").format(
+            self.lblRedacWC.setText(self.tr("{} words ").format(
                     locale.format("%d", wc, grouping=True)))
 
     ###############################################################################

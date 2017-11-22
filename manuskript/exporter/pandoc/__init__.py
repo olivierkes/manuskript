@@ -22,6 +22,8 @@ class pandocExporter(basicExporter):
     <p>Website: <a href="http://www.pandoc.org">http://pandoc.org/</a></p>
     """)
     cmd = "pandoc"
+    absentTip = "Install pandoc to benefit from a wide range of export formats (DocX, ePub, PDF, etc.)"
+    absentURL = "http://pandoc.org/installing.html"
 
     def __init__(self):
         basicExporter.__init__(self)
@@ -40,7 +42,7 @@ class pandocExporter(basicExporter):
 
     def version(self):
         if self.isValid():
-            r = self.run(["-v"])
+            r = self.run(["--version"])
             return r.split("\n")[0]
         else:
             return ""

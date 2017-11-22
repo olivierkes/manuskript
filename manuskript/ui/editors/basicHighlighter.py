@@ -37,7 +37,7 @@ class basicHighlighter(QSyntaxHighlighter):
 
     def highlightBlockBefore(self, text):
         """Highlighting to do before anything else.
-        
+
         When subclassing basicHighlighter, you must call highlightBlockBefore
         before you do any custom highlighting.
         """
@@ -55,7 +55,7 @@ class basicHighlighter(QSyntaxHighlighter):
 
     def highlightBlockAfter(self, text):
         """Highlighting to do after everything else.
-        
+
         When subclassing basicHighlighter, you must call highlightBlockAfter
         after your custom highlighting.
         """
@@ -65,22 +65,22 @@ class basicHighlighter(QSyntaxHighlighter):
             fmt = self.format(txt.start())
             fmt.setFontFixedPitch(True)
             fmt.setFontWeight(QFont.DemiBold)
-            fmt.setForeground(Qt.black)  # or text becomes unreadable in some color scheme
+
             if txt.group(1) == Ref.TextLetter:
-                fmt.setBackground(QBrush(QColor(Qt.blue).lighter(190)))
+                fmt.setBackground(QBrush(Ref.TextHighlightColor))
             elif txt.group(1) == Ref.CharacterLetter:
-                fmt.setBackground(QBrush(QColor(Qt.yellow).lighter(170)))
+                fmt.setBackground(QBrush(Ref.CharacterHighlightColor))
             elif txt.group(1) == Ref.PlotLetter:
-                fmt.setBackground(QBrush(QColor(Qt.red).lighter(170)))
+                fmt.setBackground(QBrush(Ref.PlotHighlightColor))
             elif txt.group(1) == Ref.WorldLetter:
-                fmt.setBackground(QBrush(QColor(Qt.green).lighter(170)))
+                fmt.setBackground(QBrush(Ref.WorldHighlightColor))
 
             self.setFormat(txt.start(),
                            txt.end() - txt.start(),
                            fmt)
 
         # Spell checking
-        
+
         # Following algorithm would not check words at the end of line.
         # This hacks adds a space to every line where the text cursor is not
         # So that it doesn't spellcheck while typing, but still spellchecks at
@@ -89,7 +89,7 @@ class basicHighlighter(QSyntaxHighlighter):
         if self.currentBlock().position() + len(text) != \
            self.editor.textCursor().position():
             textedText = text + " "
-        
+
         # Based on http://john.nachtimwald.com/2009/08/22/qplaintextedit-with-in-line-spell-check/
         WORDS = '(?iu)([\w\']+)[^\'\w]'  # (?iu) means case insensitive and unicode
         if hasattr(self.editor, "spellcheck") and self.editor.spellcheck:

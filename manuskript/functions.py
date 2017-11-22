@@ -6,7 +6,9 @@ import re
 from random import *
 
 from PyQt5.QtCore import Qt, QRect, QStandardPaths, QObject, QRegExp, QDir
+from PyQt5.QtCore import QUrl
 from PyQt5.QtGui import QBrush, QIcon, QPainter, QColor, QImage, QPixmap
+from PyQt5.QtGui import QDesktopServices
 from PyQt5.QtWidgets import qApp, QTextEdit
 
 from manuskript.enums import Outline
@@ -24,9 +26,12 @@ def wordCount(text):
 
 def toInt(text):
     if text:
-        return int(text)
-    else:
-        return 0
+        try:
+            return int(text)
+        except ValueError:
+            pass
+
+    return 0
 
 
 def toFloat(text):
@@ -44,8 +49,9 @@ def toString(text):
 
 
 def drawProgress(painter, rect, progress, radius=0):
+    from manuskript.ui import style as S
     painter.setPen(Qt.NoPen)
-    painter.setBrush(QColor("#dddddd"))
+    painter.setBrush(QColor(S.base)) # "#dddddd"
     painter.drawRoundedRect(rect, radius, radius)
 
     painter.setBrush(QBrush(colorFromProgress(progress)))
@@ -142,14 +148,24 @@ def randomColor(mix=None):
 
 
 def mixColors(col1, col2, f=.5):
+    fromString = False
+    if type(col1) == str:
+        fromString = True
+        col1 = QColor(col1)
+    if type(col2) == str:
+        col2 = QColor(col2)
     f2 = 1-f
     r = col1.red() * f + col2.red() * f2
     g = col1.green() * f + col2.green() * f2
     b = col1.blue() * f + col2.blue() * f2
-    return QColor(r, g, b)
+
+    return QColor(r, g, b) if not fromString else QColor(r, g, b).name()
 
 
 def outlineItemColors(item):
+
+    from manuskript.ui import style as S
+
     """Takes an OutlineItem and returns a dict of colors."""
     colors = {}
     mw = mainWindow()
@@ -181,9 +197,9 @@ def outlineItemColors(item):
 
     # Compile
     if item.compile() in [0, "0"]:
-        colors["Compile"] = QColor(Qt.gray)
+        colors["Compile"] = mixColors(QColor(S.text), QColor(S.window))
     else:
-        colors["Compile"] = QColor(Qt.black)
+        colors["Compile"] = QColor(Qt.transparent) # will use default
 
     return colors
 
@@ -229,14 +245,6 @@ def tempFile(name):
     return os.path.join(QDir.tempPath(), name)
 
 
-def lightBlue():
-    """
-    A light blue used in several places in manuskript.
-    @return: QColor
-    """
-    return QColor(Qt.blue).lighter(190)
-
-
 def totalObjects():
     return len(mainWindow().findChildren(QObject))
 
@@ -272,17 +280,6 @@ def findFirstFile(regex, path="resources"):
         for l in lst:
             if re.match(regex, l):
                 return os.path.join(p, l)
-
-
-def HTML2PlainText(html):
-    """
-    Ressource-inefficient way to convert HTML to plain text.
-    @param html:
-    @return:
-    """
-    e = QTextEdit()
-    e.setHtml(html)
-    return e.toPlainText()
 
 def customIcons():
     """
@@ -355,3 +352,11 @@ def customIcons():
         ]
 
     return sorted(r)
+
+
+def statusMessage(message, duration=5000):
+    mainWindow().statusBar().showMessage(message, duration)
+
+
+def openURL(url):
+    QDesktopServices.openUrl(QUrl(url))

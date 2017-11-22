@@ -2,19 +2,19 @@
 # --!-- coding: utf8 --!--
 import re
 
-from PyQt5.QtCore import QTimer, QModelIndex, Qt, QEvent, pyqtSignal, QRegExp
+from PyQt5.QtCore import QTimer, QModelIndex, Qt, QEvent, pyqtSignal, QRegExp, QLocale
 from PyQt5.QtGui import QTextBlockFormat, QTextCharFormat, QFont, QColor, QIcon, QMouseEvent, QTextCursor
 from PyQt5.QtWidgets import QWidget, QTextEdit, qApp, QAction, QMenu
 
 from manuskript import settings
 from manuskript.enums import Outline
-from manuskript.functions import AUC, themeIcon
-from manuskript.functions import toString
+from manuskript import functions as F
 from manuskript.models.outlineModel import outlineModel
 from manuskript.ui.editors.MDFunctions import MDFormatSelection
 from manuskript.ui.editors.MMDHighlighter import MMDHighlighter
 from manuskript.ui.editors.basicHighlighter import basicHighlighter
 from manuskript.ui.editors.textFormat import textFormat
+from manuskript.ui import style as S
 
 try:
     import enchant
@@ -49,7 +49,7 @@ class textEditView(QTextEdit):
         self.highligtCS = False
         self.defaultFontPointSize = qApp.font().pointSize()
         self._dict = None
-        # self.document().contentsChanged.connect(self.submit, AUC)
+        # self.document().contentsChanged.connect(self.submit, F.AUC)
 
         # Submit text changed only after 500ms without modifications
         self.updateTimer = QTimer()
@@ -59,7 +59,7 @@ class textEditView(QTextEdit):
         # self.updateTimer.timeout.connect(lambda: print("Timeout"))
 
         self.updateTimer.stop()
-        self.document().contentsChanged.connect(self.updateTimer.start, AUC)
+        self.document().contentsChanged.connect(self.updateTimer.start, F.AUC)
         # self.document().contentsChanged.connect(lambda: print("Document changed"))
 
         # self.document().contentsChanged.connect(lambda: print(self.objectName(), "Contents changed"))
@@ -76,7 +76,7 @@ class textEditView(QTextEdit):
         # Spellchecking
         if enchant and self.spellcheck:
             try:
-                self._dict = enchant.Dict(self.currentDict if self.currentDict else enchant.get_default_language())
+                self._dict = enchant.Dict(self.currentDict if self.currentDict else self.getDefaultLocale())
             except enchant.errors.DictNotFoundError:
                 self.spellcheck = False
 
@@ -87,14 +87,23 @@ class textEditView(QTextEdit):
             self.highlighter = basicHighlighter(self)
             self.highlighter.setDefaultBlockFormat(self._defaultBlockFormat)
 
+    def getDefaultLocale(self):
+        default_locale = enchant.get_default_language()
+        if default_locale is None:
+            default_locale = QLocale.system().name()
+        if default_locale is None:
+            default_locale = enchant.list_dicts()[0][0]
+
+        return default_locale
+
     def setModel(self, model):
         self._model = model
         try:
-            self._model.dataChanged.connect(self.update, AUC)
+            self._model.dataChanged.connect(self.update, F.AUC)
         except TypeError:
             pass
         try:
-            self._model.rowsAboutToBeRemoved.connect(self.rowsAboutToBeRemoved, AUC)
+            self._model.rowsAboutToBeRemoved.connect(self.rowsAboutToBeRemoved, F.AUC)
         except TypeError:
             pass
 
@@ -131,6 +140,21 @@ class textEditView(QTextEdit):
 
             self.setPlainText("")
             self.setEnabled(False)
+
+    def currentIndex(self):
+        """
+        Getter function used to normalized views acces with QAbstractItemViews.
+        """
+        if self._index:
+            return self._index
+        else:
+            return QModelIndex()
+
+    def getSelection(self):
+        """
+        Getter function used to normalized views acces with QAbstractItemViews.
+        """
+        return [self.currentIndex()]
 
     def setCurrentModelIndexes(self, indexes):
         self._index = None
@@ -181,6 +205,8 @@ class textEditView(QTextEdit):
         opt = settings.textEditor
         f = QFont()
         f.fromString(opt["font"])
+        background = opt["background"] if not opt["backgroundTransparent"] else "transparent"
+        foreground = opt["fontColor"] if not opt["backgroundTransparent"] else S.text
         # self.setFont(f)
         self.setStyleSheet("""QTextEdit{{
             background: {bg};
@@ -191,8 +217,8 @@ class textEditView(QTextEdit):
             {maxWidth}
             }}
             """.format(
-                bg=opt["background"],
-                foreground=opt["fontColor"],
+                bg=background,
+                foreground=foreground,
                 ff=f.family(),
                 fs="{}pt".format(str(f.pointSize())),
                 mTB = opt["marginsTB"],
@@ -213,7 +239,7 @@ class textEditView(QTextEdit):
                     # We style by name, otherwise all heriting widgets get the same
                     # colored background, for example context menu.
                     name=self.parent().objectName(),
-                    bg=opt["background"],
+                    bg=background,
                 ))
 
         cf = QTextCharFormat()
@@ -281,7 +307,7 @@ class textEditView(QTextEdit):
             pass
 
     def reconnectDocument(self):
-        self.document().contentsChanged.connect(self.updateTimer.start, AUC)
+        self.document().contentsChanged.connect(self.updateTimer.start, F.AUC)
 
     def updateText(self):
         if self._updating:
@@ -290,9 +316,9 @@ class textEditView(QTextEdit):
         self._updating = True
         if self._index:
             self.disconnectDocument()
-            if self.toPlainText() != toString(self._model.data(self._index)):
+            if self.toPlainText() != F.toString(self._model.data(self._index)):
                 # print("    Updating plaintext")
-                self.document().setPlainText(toString(self._model.data(self._index)))
+                self.document().setPlainText(F.toString(self._model.data(self._index)))
             self.reconnectDocument()
 
         elif self._indexes:
@@ -301,7 +327,7 @@ class textEditView(QTextEdit):
             same = True
             for i in self._indexes:
                 item = i.internalPointer()
-                t.append(toString(item.data(self._column)))
+                t.append(F.toString(item.data(self._column)))
 
             for t2 in t[1:]:
                 if t2 != t[0]:
@@ -337,7 +363,7 @@ class textEditView(QTextEdit):
             self._updating = True
             for i in self._indexes:
                 item = i.internalPointer()
-                if self.toPlainText() != toString(item.data(self._column)):
+                if self.toPlainText() != F.toString(item.data(self._column)):
                     print("Submitting many indexes")
                     self._model.setData(i, self.toPlainText())
             self._updating = False
@@ -384,7 +410,7 @@ class textEditView(QTextEdit):
         if enchant and self.spellcheck and not self._dict:
             if self.currentDict:
                 self._dict = enchant.Dict(self.currentDict)
-            elif enchant.dict_exists(enchant.get_default_language()):
+            elif enchant.get_default_language() and enchant.dict_exists(enchant.get_default_language()):
                 self._dict = enchant.Dict(enchant.get_default_language())
             else:
                 self.spellcheck = False
@@ -439,7 +465,7 @@ class textEditView(QTextEdit):
             selectedWord = cursor.selectedText()
             if not valid:
                 spell_menu = QMenu(self.tr('Spelling Suggestions'), self)
-                spell_menu.setIcon(themeIcon("spelling"))
+                spell_menu.setIcon(F.themeIcon("spelling"))
                 for word in self._dict.suggest(text):
                     action = self.SpellAction(word, spell_menu)
                     action.correct.connect(self.correctWord)
@@ -526,3 +552,21 @@ class textEditView(QTextEdit):
                 MDFormatSelection(self, 2)
             elif _format == "Clear":
                 MDFormatSelection(self)
+
+    ###############################################################################
+    # KEYBOARD SHORTCUTS
+    ###############################################################################
+
+    def callMainTreeView(self, functionName):
+        """
+        The tree view in mainwindow must have same index as the text
+        edit that has focus. So we can pass it the call for documents
+        edits like: duplicate, move up, etc.
+        """
+        if self._index and self._column == Outline.text.value:
+            function = getattr(F.mainWindow().treeRedacOutline, functionName)
+            function()
+
+    def duplicate(self): self.callMainTreeView("duplicate")
+    def moveUp(self): self.callMainTreeView("moveUp")
+    def moveDown(self): self.callMainTreeView("moveDown")

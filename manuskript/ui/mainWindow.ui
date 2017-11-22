@@ -815,8 +815,8 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>444</width>
-                      <height>709</height>
+                      <width>426</width>
+                      <height>688</height>
                      </rect>
                     </property>
                     <layout class="QFormLayout" name="formLayout_8">
@@ -1601,8 +1601,7 @@
                     </property>
                     <property name="icon">
                      <iconset theme="emblem-favorite">
-                      <normaloff/>
-                     </iconset>
+                      <normaloff>.</normaloff>.</iconset>
                     </property>
                     <property name="flat">
                      <bool>true</bool>
@@ -2093,7 +2092,7 @@
      <x>0</x>
      <y>0</y>
      <width>1112</width>
-     <height>20</height>
+     <height>30</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -2106,8 +2105,7 @@
      </property>
      <property name="icon">
       <iconset theme="folder-recent">
-       <normaloff/>
-      </iconset>
+       <normaloff>.</normaloff>.</iconset>
      </property>
     </widget>
     <addaction name="actOpen"/>
@@ -2116,6 +2114,7 @@
     <addaction name="actSaveAs"/>
     <addaction name="actCloseProject"/>
     <addaction name="separator"/>
+    <addaction name="actImport"/>
     <addaction name="actCompile"/>
     <addaction name="separator"/>
     <addaction name="actQuit"/>
@@ -2157,8 +2156,26 @@
     <addaction name="menuMode"/>
     <addaction name="separator"/>
    </widget>
+   <widget class="QMenu" name="menuDocuments">
+    <property name="title">
+     <string>&amp;Documents</string>
+    </property>
+    <addaction name="actCopy"/>
+    <addaction name="actCut"/>
+    <addaction name="actPaste"/>
+    <addaction name="actDuplicate"/>
+    <addaction name="actDelete"/>
+    <addaction name="separator"/>
+    <addaction name="actMoveUp"/>
+    <addaction name="actMoveDown"/>
+    <addaction name="separator"/>
+    <addaction name="actMerge"/>
+    <addaction name="actSplitDialog"/>
+    <addaction name="actSplitCursor"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
+   <addaction name="menuDocuments"/>
    <addaction name="menuView"/>
    <addaction name="menuTools"/>
    <addaction name="menuHelp"/>
@@ -2258,23 +2275,6 @@
      </property>
      <item>
       <widget class="QListWidget" name="lstTabs">
-       <property name="styleSheet">
-        <string notr="true">QListView {
-	show-decoration-selected: 0;
-	outline: none;
-	background-color: transparent;
-}
-
-QListView::item:selected {
-	background: #DCDEF1;
-	color: black;
-}
-
-QListView::item:hover {
-	background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                                stop: 0 #FAFBFE, stop: 1 #DCDEF1);
-}</string>
-       </property>
        <property name="frameShape">
         <enum>QFrame::NoFrame</enum>
        </property>
@@ -2370,8 +2370,7 @@ QListView::item:hover {
   <action name="actLabels">
    <property name="icon">
     <iconset theme="folder_color_picker">
-     <normaloff/>
-    </iconset>
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>&amp;Labels...</string>
@@ -2380,8 +2379,7 @@ QListView::item:hover {
   <action name="actStatus">
    <property name="icon">
     <iconset theme="applications-development">
-     <normaloff/>
-    </iconset>
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>&amp;Status...</string>
@@ -2444,8 +2442,7 @@ QListView::item:hover {
   <action name="actCloseProject">
    <property name="icon">
     <iconset theme="window-close">
-     <normaloff/>
-    </iconset>
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>&amp;Close project</string>
@@ -2454,8 +2451,7 @@ QListView::item:hover {
   <action name="actCompile">
    <property name="icon">
     <iconset theme="document-export">
-     <normaloff/>
-    </iconset>
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Co&amp;mpile</string>
@@ -2472,14 +2468,145 @@ QListView::item:hover {
   <action name="actAbout">
    <property name="icon">
     <iconset theme="stock_view-details">
-     <normaloff/>
-    </iconset>
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>&amp;About</string>
    </property>
    <property name="toolTip">
     <string>About Manuskript</string>
+   </property>
+  </action>
+  <action name="actImport">
+   <property name="icon">
+    <iconset theme="document-import">
+     <normaloff>.</normaloff>.</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Import…</string>
+   </property>
+   <property name="shortcut">
+    <string>F7</string>
+   </property>
+  </action>
+  <action name="actCopy">
+   <property name="icon">
+    <iconset theme="edit-copy">
+     <normaloff>.</normaloff>.</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Copy</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+C</string>
+   </property>
+  </action>
+  <action name="actCut">
+   <property name="icon">
+    <iconset theme="edit-cut">
+     <normaloff>.</normaloff>.</iconset>
+   </property>
+   <property name="text">
+    <string>C&amp;ut</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+X</string>
+   </property>
+  </action>
+  <action name="actPaste">
+   <property name="icon">
+    <iconset theme="edit-paste">
+     <normaloff>.</normaloff>.</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Paste</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+V</string>
+   </property>
+  </action>
+  <action name="actSplitDialog">
+   <property name="icon">
+    <iconset theme="split">
+     <normaloff>.</normaloff>.</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Split…</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+K</string>
+   </property>
+  </action>
+  <action name="actSplitCursor">
+   <property name="icon">
+    <iconset theme="split">
+     <normaloff>.</normaloff>.</iconset>
+   </property>
+   <property name="text">
+    <string>Sp&amp;lit at cursor</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+K</string>
+   </property>
+  </action>
+  <action name="actMerge">
+   <property name="icon">
+    <iconset theme="merge">
+     <normaloff>.</normaloff>.</iconset>
+   </property>
+   <property name="text">
+    <string>Me&amp;rge</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+M</string>
+   </property>
+  </action>
+  <action name="actDuplicate">
+   <property name="icon">
+    <iconset theme="folder-copy">
+     <normaloff>.</normaloff>.</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Duplicate</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+D</string>
+   </property>
+  </action>
+  <action name="actDelete">
+   <property name="icon">
+    <iconset theme="edit-delete">
+     <normaloff>.</normaloff>.</iconset>
+   </property>
+   <property name="text">
+    <string>D&amp;elete</string>
+   </property>
+   <property name="shortcut">
+    <string>Del</string>
+   </property>
+  </action>
+  <action name="actMoveUp">
+   <property name="icon">
+    <iconset theme="arrow-up">
+     <normaloff>.</normaloff>.</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Move Up</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+Up</string>
+   </property>
+  </action>
+  <action name="actMoveDown">
+   <property name="icon">
+    <iconset theme="arrow-down">
+     <normaloff>.</normaloff>.</iconset>
+   </property>
+   <property name="text">
+    <string>M&amp;ove Down</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+Down</string>
    </property>
   </action>
  </widget>

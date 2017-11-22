@@ -239,7 +239,13 @@ class tabSplitter(QWidget, Ui_tabSplitter):
             #     border:1px solid darkblue;
             #     }}""".format(self.splitter.objectName()))
 
-            self.setStyleSheet(style.mainEditorTabSS() + "QWidget{{background:{};}}".format(style.bgHover))
+            self.setStyleSheet(style.mainEditorTabSS() + """
+                QSplitter#{name},
+                QSplitter#{name} > QWidget > QSplitter{{
+                    border:3px solid {color};
+                }}""".format(
+                    name=self.splitter.objectName(),
+                    color=style.highlight))
         elif object == self.btnSplit and event.type() == event.HoverLeave:
             # self.setAutoFillBackground(False)
             # self.setBackgroundRole(QPalette.Window)

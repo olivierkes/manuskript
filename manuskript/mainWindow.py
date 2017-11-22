@@ -21,6 +21,7 @@ from manuskript.settingsWindow import settingsWindow
 from manuskript.ui import style
 from manuskript.ui.about import aboutDialog
 from manuskript.ui.collapsibleDockWidgets import collapsibleDockWidgets
+from manuskript.ui.importers.importer import importerDialog
 from manuskript.ui.exporters.exporter import exporterDialog
 from manuskript.ui.helpLabel import helpLabel
 from manuskript.ui.mainWindow import Ui_MainWindow
@@ -52,7 +53,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
         QMainWindow.__init__(self)
         self.setupUi(self)
+
+        # Var
         self.currentProject = None
+        self._lastFocus = None
 
         self.readSettings()
 
@@ -97,22 +101,35 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Main Menu
         for i in [self.actSave, self.actSaveAs, self.actCloseProject,
                   self.menuEdit, self.menuView, self.menuTools, self.menuHelp,
-                  self.actCompile, self.actSettings]:
+                  self.actImport, self.actCompile, self.actSettings]:
             i.setEnabled(False)
 
+        # Main Menu:: File
         self.actOpen.triggered.connect(self.welcome.openFile)
         self.actSave.triggered.connect(self.saveDatas)
         self.actSaveAs.triggered.connect(self.welcome.saveAsFile)
+        self.actImport.triggered.connect(self.doImport)
         self.actCompile.triggered.connect(self.doCompile)
         self.actLabels.triggered.connect(self.settingsLabel)
         self.actStatus.triggered.connect(self.settingsStatus)
         self.actSettings.triggered.connect(self.settingsWindow)
         self.actCloseProject.triggered.connect(self.closeProject)
         self.actQuit.triggered.connect(self.close)
-        self.actToolFrequency.triggered.connect(self.frequencyAnalyzer)
-        self.actAbout.triggered.connect(self.about)
-        self.generateViewMenu()
 
+        # Main menu:: Documents
+        self.actCopy.triggered.connect(self.documentsCopy)
+        self.actCut.triggered.connect(self.documentsCut)
+        self.actPaste.triggered.connect(self.documentsPaste)
+        self.actDuplicate.triggered.connect(self.documentsDuplicate)
+        self.actDelete.triggered.connect(self.documentsDelete)
+        self.actMoveUp.triggered.connect(self.documentsMoveUp)
+        self.actMoveDown.triggered.connect(self.documentsMoveDown)
+        self.actSplitDialog.triggered.connect(self.documentsSplitDialog)
+        self.actSplitCursor.triggered.connect(self.documentsSplitCursor)
+        self.actMerge.triggered.connect(self.documentsMerge)
+
+        # Main Menu:: view
+        self.generateViewMenu()
         self.actModeGroup = QActionGroup(self)
         self.actModeSimple.setActionGroup(self.actModeGroup)
         self.actModeFiction.setActionGroup(self.actModeGroup)
@@ -120,6 +137,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.actModeSimple.triggered.connect(self.setViewModeSimple)
         self.actModeFiction.triggered.connect(self.setViewModeFiction)
         self.actModeSnowflake.setEnabled(False)
+
+        # Main Menu:: Tool
+        self.actToolFrequency.triggered.connect(self.frequencyAnalyzer)
+        self.actAbout.triggered.connect(self.about)
 
         self.makeUIConnections()
 
@@ -179,6 +200,33 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Show the toolbar
         self.toolbar.setVisible(True)
         self.stack.setCurrentIndex(1)
+
+    ###############################################################################
+    # GENERAL / UI STUFF
+    ###############################################################################
+
+    def tabMainChanged(self):
+        "Called when main tab changes."
+        self.menuDocuments.menuAction().setVisible(self.tabMain.currentIndex() == self.TabRedac)
+
+    def focusChanged(self, old, new):
+        """
+        We get notified by qApp when focus changes, from old to new widget.
+        """
+
+        # Determine which view had focus last, to send the keyboard shortcuts
+        # to the right place
+
+        targets = [
+            self.treeRedacOutline,
+            self.mainEditor
+            ]
+
+        while new is not None:
+            if new in targets:
+                self._lastFocus = new
+                break
+            new = new.parent()
 
     ###############################################################################
     # SUMMARY
@@ -381,6 +429,56 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def openIndex(self, index):
         self.treeRedacOutline.setCurrentIndex(index)
 
+    def openIndexes(self, indexes, newTab=True):
+        self.mainEditor.openIndexes(indexes, newTab=True)
+
+    # Menu Documents #############################################################
+
+    # Functions called by the menu Documents
+    # self._lastFocus is the last editor that had focus (either treeView or
+    # mainEditor). So we just pass along the signal.
+
+    def documentsCopy(self):
+        "Copy selected item(s)."
+        if self._lastFocus: self._lastFocus.copy()
+    def documentsCut(self):
+        "Cut selected item(s)."
+        if self._lastFocus: self._lastFocus.cut()
+    def documentsPaste(self):
+        "Paste clipboard item(s) into selected item."
+        if self._lastFocus: self._lastFocus.paste()
+    def documentsDuplicate(self):
+        "Duplicate selected item(s)."
+        if self._lastFocus: self._lastFocus.duplicate()
+    def documentsDelete(self):
+        "Delete selected item(s)."
+        if self._lastFocus: self._lastFocus.delete()
+    def documentsMoveUp(self):
+        "Move up selected item(s)."
+        if self._lastFocus: self._lastFocus.moveUp()
+    def documentsMoveDown(self):
+        "Move Down selected item(s)."
+        if self._lastFocus: self._lastFocus.moveDown()
+
+    def documentsSplitDialog(self):
+        "Opens a dialog to split selected items."
+        if self._lastFocus: self._lastFocus.splitDialog()
+        # current items or selected items?
+        pass
+        # use outlineBasics, to do that on all selected items.
+        # use editorWidget to do that on selected text.
+
+    def documentsSplitCursor(self):
+        """
+        Split current item (open in text editor) at cursor position. If there is
+        a text selection, that selection becomes the title of the new scene.
+        """
+        if self._lastFocus and self._lastFocus == self.mainEditor:
+            self.mainEditor.splitCursor()
+    def documentsMerge(self):
+        "Merges selected item(s)."
+        if self._lastFocus: self._lastFocus.merge()
+
     ###############################################################################
     # LOAD AND SAVE
     ###############################################################################
@@ -400,6 +498,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if loadFromFile:
             # Load empty settings
             imp.reload(settings)
+            settings.initDefaultValues()
 
             # Load data
             self.loadEmptyDatas()
@@ -408,7 +507,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.makeConnections()
 
         # Load settings
-        if settings.openIndexes:
+        if settings.openIndexes and settings.openIndexes != [""]:
             self.mainEditor.tabSplitter.restoreOpenIndexes(settings.openIndexes)
         self.generateViewMenu()
         self.mainEditor.sldCorkSizeFactor.setValue(settings.corkSizeFactor)
@@ -460,7 +559,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             i.setEnabled(False)
         for i in [self.actSave, self.actSaveAs, self.actCloseProject,
                   self.menuEdit, self.menuView, self.menuTools, self.menuHelp,
-                  self.actCompile, self.actSettings]:
+                  self.actImport, self.actCompile, self.actSettings]:
             i.setEnabled(True)
 
         # Add project name to Window's name
@@ -504,7 +603,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             i.setEnabled(True)
         for i in [self.actSave, self.actSaveAs, self.actCloseProject,
                   self.menuEdit, self.menuView, self.menuTools, self.menuHelp,
-                  self.actCompile, self.actSettings]:
+                  self.actImport, self.actCompile, self.actSettings]:
             i.setEnabled(False)
 
         # Set Window's name - no project loaded
@@ -662,6 +761,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btnOutlineRemoveItem.clicked.connect(self.outlineRemoveItemsOutline, AUC)
 
         self.tabMain.currentChanged.connect(self.toolbar.setCurrentGroup)
+        self.tabMain.currentChanged.connect(self.tabMainChanged)
+
+        qApp.focusChanged.connect(self.focusChanged)
 
     def makeConnections(self):
 
@@ -983,16 +1085,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Custom "tab" bar on the left
         self.lstTabs.setIconSize(QSize(48, 48))
         for i in range(self.tabMain.count()):
-            #icons = ["general-128px.png",
-                     #"summary-128px.png",
-                     #"characters-128px.png",
-                     #"plot-128px.png",
-                     #"world-128px.png",
-                     #"outline-128px.png",
-                     #"editor-128px.png",
-                     #""
-                     #]
-            #self.tabMain.setTabIcon(i, QIcon(appPath("icons/Custom/Tabs/{}".format(icons[i]))))
 
             icons = [QIcon.fromTheme("stock_view-details"), #info
                      QIcon.fromTheme("application-text-template"), #applications-publishing
@@ -1142,8 +1234,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                     w.setDict(settings.dict)
 
     def openPyEnchantWebPage(self):
-        from PyQt5.QtGui import QDesktopServices
-        QDesktopServices.openUrl(QUrl("http://pythonhosted.org/pyenchant/"))
+        F.openURL("http://pythonhosted.org/pyenchant/")
 
     def toggleSpellcheck(self, val):
         settings.spellcheck = val
@@ -1306,8 +1397,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # POV in settings / views
 
     ###############################################################################
-    # COMPILE
+    # IMPORT / EXPORT
     ###############################################################################
+
+    def doImport(self):
+        self.dialog = importerDialog(mw=self)
+        self.dialog.show()
+
+        r = self.dialog.geometry()
+        r2 = self.geometry()
+        self.dialog.move(r2.center() - r.center())
 
     def doCompile(self):
         self.dialog = exporterDialog(mw=self)
