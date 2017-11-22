@@ -11,8 +11,7 @@ from manuskript.enums import Outline
 from manuskript import functions as F
 from manuskript.models.outlineModel import outlineModel
 from manuskript.ui.editors.MDFunctions import MDFormatSelection
-from manuskript.ui.editors.MMDHighlighter import MMDHighlighter
-from manuskript.ui.editors.basicHighlighter import basicHighlighter
+from manuskript.ui.highlighters import MMDHighlighter, BasicHighlighter
 from manuskript.ui.editors.textFormat import textFormat
 from manuskript.ui import style as S
 
@@ -84,7 +83,7 @@ class textEditView(QTextEdit):
             self.spellcheck = False
 
         if self._highlighting and not self.highlighter:
-            self.highlighter = basicHighlighter(self)
+            self.highlighter = BasicHighlighter(self)
             self.highlighter.setDefaultBlockFormat(self._defaultBlockFormat)
 
     def getDefaultLocale(self):
@@ -191,7 +190,7 @@ class textEditView(QTextEdit):
             if self._column in [Outline.text.value, Outline.notes.value]:
                 self.highlighter = MMDHighlighter(self)
             else:
-                self.highlighter = basicHighlighter(self)
+                self.highlighter = BasicHighlighter(self)
 
             self.highlighter.setDefaultBlockFormat(self._defaultBlockFormat)
 
