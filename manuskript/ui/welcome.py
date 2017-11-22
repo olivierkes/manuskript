@@ -68,8 +68,15 @@ class welcome(QWidget, Ui_welcome):
             self.mw.loadProject(last)
 
     def getAutoLoadValues(self):
+        """
+        Reads manuskript system's settings and returns a tupple:
+        - `bool`: whether manuskript should automatically load
+                  the last openend project or display the
+                  welcome widget.
+        - `str`:  the absolute path to the last opened project.
+        """
         sttgns = QSettings()
-        autoLoad = sttgns.value("autoLoad", type=bool)
+        autoLoad = sttgns.value("autoLoad", defaultValue=False, type=bool)
         if autoLoad and sttgns.contains("lastProject"):
             last = sttgns.value("lastProject")
         else:
