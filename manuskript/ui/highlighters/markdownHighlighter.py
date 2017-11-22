@@ -12,10 +12,14 @@ from PyQt5.QtGui import (QSyntaxHighlighter, QTextBlock, QColor, QFont,
                          QTextCharFormat, QBrush, QPalette)
 from PyQt5.QtWidgets import qApp, QStyle
 
-from manuskript.ui.highlighters.markdownTokenizer import MarkdownTokenizer
-from manuskript.ui.highlighters.markdownEnums import MarkdownState as MS
-from manuskript.ui.highlighters.markdownEnums import MarkdownTokenType as MTT
-from manuskript.ui.highlighters.markdownEnums import BlockquoteStyle as BS
+from manuskript.ui.highlighters import BasicHighlighter
+from manuskript.ui.highlighters import MarkdownTokenizer
+from manuskript.ui.highlighters import MarkdownState as MS
+from manuskript.ui.highlighters import MarkdownTokenType as MTT
+from manuskript.ui.highlighters import BlockquoteStyle as BS
+from manuskript.ui import style as S
+from manuskript import settings
+from manuskript import functions as F
 
 # Un longue ligne. Un longue ligne. Un longue ligne. Un longue ligne.asdasdasda
 
@@ -26,14 +30,14 @@ GW_FADE_ALPHA = 140
 
 #FIXME: Setext heading don't work anymore
 
-class MarkdownHighlighter(QSyntaxHighlighter):
+class MarkdownHighlighter(BasicHighlighter):
 
     highlightBlockAtPosition = pyqtSignal(int)
     headingFound = pyqtSignal(int, str, QTextBlock)
     headingRemoved = pyqtSignal(int)
 
     def __init__(self, editor):
-        QSyntaxHighlighter.__init__(self, editor.document())
+        BasicHighlighter.__init__(self, editor)
 
         #default values
         self.editor = editor
@@ -42,11 +46,6 @@ class MarkdownHighlighter(QSyntaxHighlighter):
         self.spellCheckEnabled = False
         #self.typingPaused = True
         self.inBlockquote = False
-        self.defaultTextColor = QColor(Qt.black)
-        self.backgroundColor = QColor(Qt.white)
-        self.markupColor = QColor(Qt.black)
-        self.linkColor = QColor(Qt.blue)
-        self.spellingErrorColor = QColor(Qt.red)
         self.blockquoteStyle = BS.BlockquoteStyleFancy
 
         # Settings
@@ -55,13 +54,6 @@ class MarkdownHighlighter(QSyntaxHighlighter):
 
         self.highlightBlockAtPosition.connect(self.onHighlightBlockAtPosition,
                                               Qt.QueuedConnection)
-
-        # font = QFont("Monospace", 12, QFont.Normal, False)
-        font = self.document().defaultFont()
-        font.setStyleStrategy(QFont.PreferAntialias)
-        self.defaultFormat = QTextCharFormat()
-        self.defaultFormat.setFont(font)
-        self.defaultFormat.setForeground(QBrush(self.defaultTextColor))
 
         self.theme = self.defaultTheme()
         self.setupHeadingFontSize(True)
@@ -72,16 +64,11 @@ class MarkdownHighlighter(QSyntaxHighlighter):
         self.searchExpressionRegExp = False
         self.searchExpressionCase = False
 
-        self.customRules = [
-            ("(°).*?(°)", {"background": Qt.yellow,
-                           "markupColor":Qt.lightGray}),
-            ]
-
         #f = self.document().defaultFont()
         #f.setFamily("monospace")
         #self.document().setDefaultFont(f)
 
-    def highlightBlock(self, text):
+    def doHighlightBlock(self, text):
         """
         Note:  Never set the QTextBlockFormat for a QTextBlock from within
         the highlighter. Depending on how the block format is modified,
@@ -97,17 +84,8 @@ class MarkdownHighlighter(QSyntaxHighlighter):
         formatting to be triggered yet again.
         """
 
-        if self.currentBlock().blockNumber() == 0:
-            # This is the title
-            bf = QTextCharFormat()
-            bf.setFontPointSize(self.editor.font().pointSize() * 2)
-            bf.setFontWeight(QFont.Bold)
-            bf.setForeground(Qt.lightGray)
-            self.setFormat(0, len(text), bf)
-            return
-
         lastState = self.currentBlockState()
-        self.setFormat(0, len(text), self.defaultFormat)
+        self.setFormat(0, len(text), self._defaultCharFormat)
 
         if self.tokenizer != None:
             self.tokenizer.clear()
@@ -144,7 +122,7 @@ class MarkdownHighlighter(QSyntaxHighlighter):
                 i += 1
 
             #if self.currentBlockState() == MS.MarkdownStateBlockquote:
-                #fmt = QTextCharFormat(self.defaultFormat)
+                #fmt = QTextCharFormat(self._defaultCharFormat)
                 #fmt.setForeground(Qt.lightGray)
                 #self.setFormat(0, len(text), fmt)
 
@@ -176,87 +154,6 @@ class MarkdownHighlighter(QSyntaxHighlighter):
         if self.spellCheckEnabled:
             self.spellCheck(text)
 
-        # HASHTAGS AND HIGHLIGHTS
-
-        # Hashtags
-        s = 0
-        ht = QRegExp(r'([^#])(#[\w]+)')
-        while ht.indexIn(text, s) >= 0:
-            f = self.format(ht.pos()+1)
-            f.setForeground(QColor("#07c"))
-            f.setFontWeight(QFont.Bold)
-            self.setFormat(ht.pos()+1, ht.matchedLength()-1, f)
-            s = ht.pos() + 1
-
-        # Highlighted
-        for w in self.highlightedWords + self.highlightedTags:
-            pos = text.lower().find(w.lower())
-            while pos >= 0:
-                for i in range(pos, pos + len(w)):
-                    f = self.format(i)
-                    f.setBackground(QBrush(QColor("#fAf")))
-                    self.setFormat(i, 1, f)
-                pos = text.lower().find(w.lower(), pos+1)
-
-        # Searched
-        #FIXME: consider searchExpressionRegExp
-        if self.searchExpression:
-            s = self.searchExpression
-
-            if not self.searchExpressionRegExp:
-                if self.searchExpressionCase:
-                    pos = text.find(s)
-                else:
-                    pos = text.lower().find(s.lower())
-                while pos >= 0:
-                    for i in range(pos, pos + len(s)):
-                        f = self.format(i)
-                        f.setBackground(QBrush(QColor("#Aff")))
-                        self.setFormat(i, 1, f)
-                    pos = text.lower().find(s.lower(), pos+1)
-
-            else:
-                # Using QRegExp
-                rx = QRegExp(s)
-                if not self.searchExpressionCase:
-                    rx.setCaseSensitivity(Qt.CaseInsensitive)
-                p = rx.indexIn(text)
-                while p != -1:
-                    f = self.format(p)
-                    f.setBackground(QBrush(QColor("#Aff")))
-                    self.setFormat(p, rx.matchedLength(), f)
-                    p = rx.indexIn(text, p + 1)
-
-                # Using python re
-                #try:
-                    #for m in re.finditer(s, text):
-                        #f = self.format(m.start())
-                        #f.setBackground(QBrush(QColor("#0ff")))
-                        #self.setFormat(m.start(), len(m.group()), f)
-                #except:
-                    ## Probably malformed regExp
-                    #pass
-
-        # Custom rules
-        for rule, theme in self.customRules:
-            for m in re.finditer(rule, text):
-
-                if not m.groups():  # No groups, therefore no markup
-                    f = self.format(m.start())
-                    f, garbage = self.formatsFromTheme(theme, f)
-                    self.setFormat(m.start(), len(m.group()), f)
-
-                else:
-                    mf = self.format(m.start())
-                    f = self.format(m.start() + len(m.group(1)))
-                    f, mf = self.formatsFromTheme(theme, f, mf)
-                    self.setFormat(m.start(1), len(m.group(1)), mf)
-                    self.setFormat(m.start(2), len(m.group(2)), mf)
-                    self.setFormat(m.start(1) + len(m.group(1)),
-                                   len(m.group())
-                                   - len(m.group(1))
-                                   - len(m.group(2)), f)
-
         # If the block has transitioned from previously being a heading to now
         # being a non-heading, signal that the position in the document no
         # longer contains a heading.
@@ -270,20 +167,25 @@ class MarkdownHighlighter(QSyntaxHighlighter):
     # COLORS & FORMATTING
     ###########################################################################
 
+    def updateColorScheme(self, rehighlight=True):
+        BasicHighlighter.updateColorScheme(self, rehighlight)
+        self.theme = self.defaultTheme()
+        self.setEnableLargeHeadingSizes(True)
+
     def defaultTheme(self):
 
-        markup = qApp.palette().color(QPalette.Mid)
-        if markup == Qt.black:
-            markup = Qt.lightGray
+        markup = self.markupColor
         dark = qApp.palette().color(QPalette.Dark)
         if dark == Qt.black:
             dark = QColor(Qt.gray)
         darker = dark.darker(150)
 
         # Text background
-        background = qApp.palette().color(QPalette.Base)
-        lightBackground = background.darker(130)
-        veryLightBackground = background.darker(105)
+        background = self.backgroundColor
+        text = self.defaultTextColor
+        lightBackground = F.mixColors(background, text, .4)
+        veryLightBackground = F.mixColors(background, text, .7)
+        link = self.linkColor
 
         theme = {
             "markup": markup}
@@ -311,17 +213,15 @@ class MarkdownHighlighter(QSyntaxHighlighter):
                 "formatMarkup":True,
                 "bold": True,
                 "monospace": True,
-                #"color": Qt.darkBlue if i % 2 == 1 else Qt.darkMagenta,
             }
-        b = 100
-        d = 50
-        color = QColor(Qt.darkBlue)
+
+        color = QColor(S.highlightedTextDark)
         theme[MTT.TokenAtxHeading1]["color"] = color
-        theme[MTT.TokenAtxHeading2]["color"] = color.lighter(b + d)
-        theme[MTT.TokenAtxHeading3]["color"] = color.lighter(b + 2*d)
-        theme[MTT.TokenAtxHeading4]["color"] = color.lighter(b + 3*d)
-        theme[MTT.TokenAtxHeading5]["color"] = color.lighter(b + 4*d)
-        theme[MTT.TokenAtxHeading6]["color"] = color.lighter(b + 5*d)
+        theme[MTT.TokenAtxHeading2]["color"] = F.mixColors(color, background, .9)
+        theme[MTT.TokenAtxHeading3]["color"] = F.mixColors(color, background, .8)
+        theme[MTT.TokenAtxHeading4]["color"] = F.mixColors(color, background, .7)
+        theme[MTT.TokenAtxHeading5]["color"] = F.mixColors(color, background, .6)
+        theme[MTT.TokenAtxHeading6]["color"] = F.mixColors(color, background, .5)
 
         for i in [MTT.TokenSetextHeading1Line2, MTT.TokenSetextHeading2Line2]:
             theme[i] = {
@@ -352,13 +252,13 @@ class MarkdownHighlighter(QSyntaxHighlighter):
         theme[MTT.TokenHtmlEntity] = {
             "color":Qt.red}
         theme[MTT.TokenAutomaticLink] = {
-            "color": qApp.palette().color(QPalette.Link)}
+            "color": link}
         theme[MTT.TokenInlineLink] = {
-            "color": qApp.palette().color(QPalette.Link)}
+            "color": link}
         theme[MTT.TokenReferenceLink] = {
-            "color": qApp.palette().color(QPalette.Link)}
+            "color": link}
         theme[MTT.TokenReferenceDefinition] = {
-            "color": qApp.palette().color(QPalette.Link)}
+            "color": link}
         theme[MTT.TokenImage] = {
             "color": Qt.green}
         theme[MTT.TokenHtmlComment] = {
@@ -402,25 +302,13 @@ class MarkdownHighlighter(QSyntaxHighlighter):
 
         return theme
 
-    def setColorScheme(self, defaultTextColor, backgroundColor, markupColor,
-                       linkColor, spellingErrorColor):
-        self.defaultTextColor = defaultTextColor
-        self.backgroundColor = backgroundColor
-        self.markupColor = markupColor
-        self.linkColor = linkColor
-        self.spellingErrorColor = spellingErrorColor
-        self.defaultFormat.setForeground(QBrush(defaultTextColor))
-
-        # FIXME: generate a theme based on that
-        self.rehighlight()
-
     ###########################################################################
     # ACTUAL FORMATTING
     ###########################################################################
 
     def applyFormattingForToken(self, token, text):
         if token.type != MTT.TokenUnknown:
-            format = self.format(token.position + token.openingMarkupLength)
+            fmt = self.format(token.position + token.openingMarkupLength)
             markupFormat = self.format(token.position)
             if self.theme.get("markup"):
                 markupFormat.setForeground(self.theme["markup"])
@@ -438,14 +326,14 @@ class MarkdownHighlighter(QSyntaxHighlighter):
                     self.currentBlockState(),)
                      )
 
-            #if token.type in range(6, 10):
-            #debug()
+            # if token.type in range(6, 10):
+            # debug()
 
             theme = self.theme.get(token.type)
             if theme:
-                format, markupFormat = self.formatsFromTheme(theme,
-                                                             format,
-                                                             markupFormat)
+                fmt, markupFormat = self.formatsFromTheme(theme,
+                                                          fmt,
+                                                          markupFormat)
 
             # Format openning Markup
             self.setFormat(token.position, token.openingMarkupLength,
@@ -455,7 +343,7 @@ class MarkdownHighlighter(QSyntaxHighlighter):
             self.setFormat(
                 token.position + token.openingMarkupLength,
                 token.length - token.openingMarkupLength - token.closingMarkupLength,
-                format)
+                fmt)
 
             # Format closing Markup
             if token.closingMarkupLength > 0:
@@ -468,13 +356,15 @@ class MarkdownHighlighter(QSyntaxHighlighter):
             qWarning("MarkdownHighlighter.applyFormattingForToken() was passed"
                      " in a token of unknown type.")
 
-    def formatsFromTheme(self, theme, format=QTextCharFormat(),
+    def formatsFromTheme(self, theme, format=None,
                          markupFormat=QTextCharFormat()):
         # Token
         if theme.get("color"):
             format.setForeground(theme["color"])
         if theme.get("deltaSize"):
-            format.setFontPointSize(format.fontPointSize() + theme["deltaSize"])
+            f = format.font()
+            f.setPointSize(format.font().pointSize() + theme["deltaSize"])
+            format.setFont(f)
         if theme.get("background"):
             format.setBackground(theme["background"])
         if theme.get("monospace"):
@@ -542,13 +432,13 @@ class MarkdownHighlighter(QSyntaxHighlighter):
             self.rehighlight()
 
     def increaseFontSize(self):
-        self.defaultFormat.setFontPointSize(self.defaultFormat.fontPointSize()
-                                            + 1.0)
+        self._defaultCharFormat.setFontPointSize(
+            self._defaultCharFormat.font().pointSize() + 1.0)
         self.rehighlight()
 
     def decreaseFontSize(self):
-        self.defaultFormat.setFontPointSize(self.defaultFormat.fontPointSize()
-                                            - 1.0)
+        self._defaultCharFormat.setFontPointSize(
+            self._defaultCharFormat.font().pointSize() - 1.0)
         self.rehighlight()
 
     def setEnableLargeHeadingSizes(self, enable):
@@ -577,8 +467,9 @@ class MarkdownHighlighter(QSyntaxHighlighter):
         self.rehighlight()
 
     def setFont(self, fontFamily, fontSize):
-        font = QFont(family=fontFamily, pointSize=fontSize, weight=QFont.Normal, italic=False)
-        self.defaultFormat.setFont(font)
+        font = QFont(family=fontFamily, pointSize=fontSize,
+                     weight=QFont.Normal, italic=False)
+        self._defaultCharFormat.setFont(font)
         self.rehighlight()
 
     def setSpellCheckEnabled(self, enabled):

@@ -11,7 +11,8 @@ from manuskript.enums import Outline
 from manuskript import functions as F
 from manuskript.models.outlineModel import outlineModel
 from manuskript.ui.editors.MDFunctions import MDFormatSelection
-from manuskript.ui.highlighters import MMDHighlighter, BasicHighlighter
+from manuskript.ui.highlighters import BasicHighlighter, MarkdownHighlighter
+from manuskript.ui.highlighters import MMDHighlighter
 from manuskript.ui.editors.textFormat import textFormat
 from manuskript.ui import style as S
 
@@ -22,8 +23,8 @@ except ImportError:
 
 
 class textEditView(QTextEdit):
-    def __init__(self, parent=None, index=None, html=None, spellcheck=True, highlighting=False, dict="",
-                 autoResize=False):
+    def __init__(self, parent=None, index=None, html=None, spellcheck=True,
+                 highlighting=False, dict="", autoResize=False):
         QTextEdit.__init__(self, parent)
         self._column = Outline.text.value
         self._index = None
@@ -75,7 +76,8 @@ class textEditView(QTextEdit):
         # Spellchecking
         if enchant and self.spellcheck:
             try:
-                self._dict = enchant.Dict(self.currentDict if self.currentDict else self.getDefaultLocale())
+                self._dict = enchant.Dict(self.currentDict if self.currentDict
+                                          else self.getDefaultLocale())
             except enchant.errors.DictNotFoundError:
                 self.spellcheck = False
 
@@ -188,11 +190,12 @@ class textEditView(QTextEdit):
         if self._highlighting:
             item = index.internalPointer()
             if self._column in [Outline.text.value, Outline.notes.value]:
-                self.highlighter = MMDHighlighter(self)
+                self.highlighter = MarkdownHighlighter(self)
             else:
                 self.highlighter = BasicHighlighter(self)
 
             self.highlighter.setDefaultBlockFormat(self._defaultBlockFormat)
+            self.highlighter.updateColorScheme()
 
     def loadFontSettings(self):
         if self._fromTheme or \
@@ -204,8 +207,10 @@ class textEditView(QTextEdit):
         opt = settings.textEditor
         f = QFont()
         f.fromString(opt["font"])
-        background = opt["background"] if not opt["backgroundTransparent"] else "transparent"
-        foreground = opt["fontColor"] if not opt["backgroundTransparent"] else S.text
+        background = (opt["background"] if not opt["backgroundTransparent"]
+                      else "transparent")
+        foreground = opt["fontColor"] # if not opt["backgroundTransparent"]
+        #                               else S.text
         # self.setFont(f)
         self.setStyleSheet("""QTextEdit{{
             background: {bg};
@@ -261,6 +266,7 @@ class textEditView(QTextEdit):
         self._defaultBlockFormat = bf
 
         if self.highlighter:
+            self.highlighter.updateColorScheme()
             self.highlighter.setMisspelledColor(QColor(opt["misspelled"]))
             self.highlighter.setDefaultCharFormat(self._defaultCharFormat)
             self.highlighter.setDefaultBlockFormat(self._defaultBlockFormat)

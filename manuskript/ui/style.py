@@ -24,6 +24,8 @@ button = p.color(QPalette.Button).name()            # Button background
 buttonText = p.color(QPalette.ButtonText).name()    # Button Text
 highlight = p.color(QPalette.Highlight).name()      # Other background
 highlightedText = p.color(QPalette.HighlightedText).name() # Base Text
+link = p.color(QPalette.Link).name()                # Link
+linkVisited = p.color(QPalette.LinkVisited).name()  # Link visited
 
 light = p.color(QPalette.Light).name()       # Lighter than Button color
 midlight = p.color(QPalette.Midlight).name() # Between Button and Light

@@ -35,13 +35,6 @@ class MMDHighlighter(BasicHighlighter):
         for key in self.MARKDOWN_REGEX:
             self.rules[key] = re.compile(self.MARKDOWN_REGEX[key])
 
-    def highlightBlock(self, text):
-        BasicHighlighter.highlightBlockBefore(self, text)
-
-        self.doHighlightBlock(text)
-
-        BasicHighlighter.highlightBlockAfter(self, text)
-
     def doHighlightBlock(self, text):
         """
         A quick-n-dirty very basic highlighter, that fails in most non-trivial cases. And is ugly.

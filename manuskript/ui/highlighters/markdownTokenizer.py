@@ -6,8 +6,8 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-from noteflow.ui.views.markdownEnums import MarkdownState as MS
-from noteflow.ui.views.markdownEnums import MarkdownTokenType as MTT
+from manuskript.ui.highlighters import MarkdownState as MS
+from manuskript.ui.highlighters import MarkdownTokenType as MTT
 
 # This file is simply a python translation of GhostWriter's Tokenizer.
 # http://wereturtle.github.io/ghostwriter/
@@ -69,10 +69,10 @@ class HighlightTokenizer:
 
 
 class MarkdownTokenizer(HighlightTokenizer):
-    
+
     DUMMY_CHAR = "$"
     MAX_MARKDOWN_HEADING_LEVEL = 6
-    
+
     paragraphBreakRegex = QRegExp("^\\s*$")
     heading1SetextRegex = QRegExp("^===+\\s*$")
     heading2SetextRegex = QRegExp("^---+\\s*$")
@@ -112,21 +112,21 @@ class MarkdownTokenizer(HighlightTokenizer):
     htmlInlineCommentRegex.setMinimal(True)
     mentionRegex = QRegExp("\\B@\\w+(\\-\\w+)*(/\\w+(\\-\\w+)*)?")
     pipeTableDividerRegex = QRegExp("^ {0,3}(\\|[ :]?)?-{3,}([ :]?\\|[ :]?-{3,}([ :]?\\|)?)+\\s*$")
-    
+
     def __init__(self):
         HighlightTokenizer.__init__(self)
-    
+
     def tokenize(self, text, currentState, previousState, nextState):
         self.currentState = currentState
         self.previousState = previousState
         self.nextState = nextState
-        
+
         if (self.previousState == MS.MarkdownStateInGithubCodeFence or \
             self.previousState == MS.MarkdownStateInPandocCodeFence) and \
                 self.tokenizeCodeBlock(text):
             # No further tokenizing required
             pass
-        
+
         elif self.previousState != MS.MarkdownStateComment \
             and self.paragraphBreakRegex.exactMatch(text):
 
@@ -137,7 +137,7 @@ class MarkdownTokenizer(HighlightTokenizer):
             elif previousState != MS.MarkdownStateCodeBlock or \
                 (text[:1] != "\t" and text[-4:] != "    "):
                 self.setState(MS.MarkdownStateParagraphBreak)
-        
+
         elif self.tokenizeSetextHeadingLine2(text) or \
              self.tokenizeCodeBlock(text) or \
              self.tokenizeMultilineComment(text) or \
@@ -145,7 +145,7 @@ class MarkdownTokenizer(HighlightTokenizer):
              self.tokenizeTableDivider(text):
             # No further tokenizing required
             pass
-        
+
         elif self.tokenizeSetextHeadingLine1(text) or \
              self.tokenizeAtxHeading(text) or \
              self.tokenizeBlockquote(text) or \
@@ -153,7 +153,7 @@ class MarkdownTokenizer(HighlightTokenizer):
              self.tokenizeBulletPointList(text):
             self.tokenizeLineBreak(text)
             self.tokenizeInline(text)
-            
+
         else:
             if previousState in [MS.MarkdownStateListLineBreak,
                                  MS.MarkdownStateNumberedList,
@@ -168,7 +168,7 @@ class MarkdownTokenizer(HighlightTokenizer):
                 self.setState(MS.MarkdownStateParagraph)
             self.tokenizeLineBreak(text)
             self.tokenizeInline(text)
-            
+
         # Make sure that if the second line of a setext heading is removed the
         # first line is reprocessed.  Otherwise, it will still show up in the
         # document as a heading.
@@ -177,7 +177,7 @@ class MarkdownTokenizer(HighlightTokenizer):
            (previousState == MS.MarkdownStateSetextHeading2Line1 and \
            self.getState() != MS.MarkdownStateSetextHeading2Line2):
             self.requestBacktrack()
-    
+
     def tokenizeSetextHeadingLine1(self, text):
         #Check the next line's state to see if this is a setext-style heading.
         level = 0
@@ -188,12 +188,12 @@ class MarkdownTokenizer(HighlightTokenizer):
             level = 1
             self.setState(MS.MarkdownStateSetextHeading1Line1)
             token.type = MTT.TokenSetextHeading1Line1
-            
+
         elif MS.MarkdownStateSetextHeading2Line2 == nextState:
             level = 2
             self.setState(MS.MarkdownStateSetextHeading2Line1)
             token.type = MTT.TokenSetextHeading2Line1
-        
+
         if level > 0:
             token.length = len(text)
             token.position = 0
@@ -201,7 +201,7 @@ class MarkdownTokenizer(HighlightTokenizer):
             return True
 
         return False
-    
+
     def tokenizeSetextHeadingLine2(self, text):
         level = 0
         setextMatch = False
@@ -212,13 +212,13 @@ class MarkdownTokenizer(HighlightTokenizer):
             setextMatch = self.heading1SetextRegex.exactMatch(text)
             self.setState(MS.MarkdownStateSetextHeading1Line2)
             token.type = MTT.TokenSetextHeading1Line2
-            
+
         elif previousState == MS.MarkdownStateSetextHeading2Line1:
             level = 2
             setextMatch = self.heading2SetextRegex.exactMatch(text)
             self.setState(MS.MarkdownStateSetextHeading2Line2)
             token.type = MTT.TokenSetextHeading2Line2
-            
+
         elif previousState == MS.MarkdownStateParagraph:
             h1Line2 = self.heading1SetextRegex.exactMatch(text)
             h2Line2 = self.heading2SetextRegex.exactMatch(text)
@@ -232,7 +232,7 @@ class MarkdownTokenizer(HighlightTokenizer):
                 if h1Line2:
                     self.setState(MS.MarkdownStateSetextHeading1Line2)
                     token.type = MTT.TokenSetextHeading1Line2
-                    
+
                 else:
                     self.setState(MS.MarkdownStateSetextHeading2Line2)
                     token.type = MTT.TokenSetextHeading2Line2
@@ -246,32 +246,32 @@ class MarkdownTokenizer(HighlightTokenizer):
                 token.position = 0
                 self.addToken(token)
                 return True
-            
+
             else:
                 # Restart tokenizing on the previous line.
                 self.requestBacktrack()
                 False
-  
+
         return False
-    
+
     def tokenizeAtxHeading(self, text):
         escapedText = self.dummyOutEscapeCharacters(text)
         trailingPoundCount = 0
         level = 0
-        
+
         #Count the number of pound signs at the front of the string,
         #up to the maximum allowed, to determine the heading level.
-        
+
         while escapedText[level] == "#":
             level += 1
             if level >= len(escapedText) or level >= self.MAX_MARKDOWN_HEADING_LEVEL:
                 break
-        
+
         if level > 0 and level < len(text):
             # Count how many pound signs are at the end of the text.
             while escapedText[-trailingPoundCount -1] == "#":
                 trailingPoundCount += 1
-        
+
             token = Token()
             token.position = 0
             token.length = len(text)
@@ -282,7 +282,7 @@ class MarkdownTokenizer(HighlightTokenizer):
             self.setState(MS.MarkdownStateAtxHeading1 + level -1)
             return True
         return False
-    
+
     def tokenizeNumberedList(self, text):
         previousState = self.previousState
         if (previousState in [MS.MarkdownStateParagraphBreak,
@@ -296,7 +296,7 @@ class MarkdownTokenizer(HighlightTokenizer):
            self.numberedNestedListRegex.exactMatch(text)):
             periodIndex = text.find(".")
             parenthIndex = text.find(")")
-            
+
             if periodIndex < 0:
                 index = parenthIndex
             elif parenthIndex < 0:
@@ -305,7 +305,7 @@ class MarkdownTokenizer(HighlightTokenizer):
                 index = periodIndex
             else:
                 index = parenthIndex
-            
+
             if index > 0:
                 token = Token()
                 token.type = MTT.TokenNumberedList
@@ -315,11 +315,11 @@ class MarkdownTokenizer(HighlightTokenizer):
                 self.addToken(token)
                 self.setState(MS.MarkdownStateNumberedList)
                 return True
-            
+
             return False
-        
+
         return False
-    
+
     def tokenizeBulletPointList(self, text):
         foundBulletChar = False
         bulletCharIndex = -1
@@ -338,17 +338,17 @@ class MarkdownTokenizer(HighlightTokenizer):
 
         # Search for the bullet point character, which can
         # be either a '+', '-', or '*'.
-        
+
         for i in range(len(text)):
             if text[i] == " ":
                 if foundBulletChar:
                     # We've confirmed it's a bullet point by the whitespace that
                     # follows the bullet point character, and can now exit the
                     # loop.
-                    
+
                     whitespaceFoundAfterBulletChar = True
                     break
-                
+
                 else:
                     spaceCount += 1
 
@@ -356,7 +356,7 @@ class MarkdownTokenizer(HighlightTokenizer):
                     # number of spaces preceeding the bullet point does not
                     # exceed three, as that would indicate a code block rather
                     # than a bullet point list.
-                    
+
                     if spaceCount > 3 and previousState not in [
                         MS.MarkdownStateNumberedList,
                         MS.MarkdownStateBulletPointList,
@@ -367,30 +367,30 @@ class MarkdownTokenizer(HighlightTokenizer):
                         MS.MarkdownStateCodeBlock,
                         MS.MarkdownStateCodeFenceEnd,]:
                         return False
-                        
+
             elif text[i] == "\t":
                 if foundBulletChar:
                     # We've confirmed it's a bullet point by the whitespace that
                     # follows the bullet point character, and can now exit the
                     # loop.
-                    
+
                     whitespaceFoundAfterBulletChar = True
                     break
-                
+
                 elif previousState in [
                     MS.MarkdownStateParagraphBreak,
                     MS.MarkdownStateUnknown]:
-                    
+
                     # If this list item is the first in the list, ensure that
                     # no tab character preceedes the bullet point, as that would
                     # indicate a code block rather than a bullet point list.
-                    
+
                     return False
-                
+
             elif text[i] in ["+", "-", "*"]:
                 foundBulletChar = True
                 bulletCharIndex = i
-            
+
             else:
                 return False
 
@@ -403,9 +403,9 @@ class MarkdownTokenizer(HighlightTokenizer):
             self.addToken(token)
             self.setState(MS.MarkdownStateBulletPointList)
             return True
-        
+
         return False
-    
+
     def tokenizeHorizontalRule (self, text):
         if self.hruleRegex.exactMatch(text):
             token = Token()
@@ -417,12 +417,12 @@ class MarkdownTokenizer(HighlightTokenizer):
             return True
 
         return False
-    
+
     def tokenizeLineBreak(self, text):
         currentState = self.currentState
         previousState = self.previousState
         nextState = self.nextState
-        
+
         if currentState in [
             MS.MarkdownStateParagraph,
             MS.MarkdownStateBlockquote,
@@ -434,7 +434,7 @@ class MarkdownTokenizer(HighlightTokenizer):
                 MS.MarkdownStateNumberedList,
                 MS.MarkdownStateBulletPointList,]:
                 self.requestBacktrack()
-            
+
             if nextState in [
                 MS.MarkdownStateParagraph,
                 MS.MarkdownStateBlockquote,
@@ -448,17 +448,17 @@ class MarkdownTokenizer(HighlightTokenizer):
                     token.length = 1
                     self.addToken(token)
                     return True
-        
+
         return False
-    
+
     def tokenizeBlockquote(self, text):
         previousState = self.previousState
         if previousState == MS.MarkdownStateBlockquote or \
            self.blockquoteRegex.exactMatch(text):
-            
+
             # Find any '>' characters at the front of the line.
             markupLength = 0
-            
+
             for i in range(len(text)):
                 if text[i] == ">":
                     markupLength = i + 1
@@ -466,27 +466,27 @@ class MarkdownTokenizer(HighlightTokenizer):
                     # There are no more '>' characters at the front of the line,
                     # so stop processing.
                     break
-            
+
             token = Token()
             token.type = MTT.TokenBlockquote
             token.position = 0
             token.length = len(text)
-            
+
             if markupLength > 0:
                 token.openingMarkupLength = markupLength
-                
+
             self.addToken(token)
             self.setState(MS.MarkdownStateBlockquote)
             return True
         return False
-    
+
     def tokenizeCodeBlock(self, text):
         previousState = self.previousState
         if previousState in [
                 MS.MarkdownStateInGithubCodeFence,
                 MS.MarkdownStateInPandocCodeFence]:
             self.setState(previousState)
-            
+
             if (previousState == MS.MarkdownStateInGithubCodeFence and \
                self.githubCodeFenceEndRegex.exactMatch(text)) or \
                (previousState == MS.MarkdownStateInPandocCodeFence and \
@@ -497,16 +497,16 @@ class MarkdownTokenizer(HighlightTokenizer):
                 token.length = len(text)
                 self.addToken(token)
                 self.setState(MS.MarkdownStateCodeFenceEnd)
-                
+
             else:
                 token = Token()
                 token.type = MTT.TokenCodeBlock
                 token.position = 0
                 token.length = len(text)
                 self.addToken(token)
-                
+
             return True
-        
+
         elif previousState in [
                 MS.MarkdownStateCodeBlock,
                 MS.MarkdownStateParagraphBreak,
@@ -520,7 +520,7 @@ class MarkdownTokenizer(HighlightTokenizer):
             self.addToken(token)
             self.setState(MS.MarkdownStateCodeBlock)
             return True
-        
+
         elif previousState in [
                 MS.MarkdownStateParagraphBreak,
                 MS.MarkdownStateParagraph,
@@ -532,49 +532,49 @@ class MarkdownTokenizer(HighlightTokenizer):
                 foundCodeFenceStart = True
                 token.type = MTT.TokenGithubCodeFence
                 self.setState(MS.MarkdownStateInGithubCodeFence)
-                
+
             elif self.pandocCodeFenceStartRegex.exactMatch(text):
                 foundCodeFenceStart = True
                 token.type = MTT.TokenPandocCodeFence
                 self.setState(MS.MarkdownStateInPandocCodeFence)
-                
+
             if foundCodeFenceStart:
                 token.position = 0
                 token.length = len(text)
                 self.addToken(token)
                 return True
-            
+
         return False
-    
+
     def tokenizeMultilineComment(self, text):
         previousState = self.previousState
-        
+
         if previousState == MS.MarkdownStateComment:
             # Find the end of the comment, if any.
             index = text.find("-->")
             token = Token()
             token.type = MTT.TokenHtmlComment
             token.position = 0
-            
+
             if index >= 0:
                 token.length = index + 3
                 self.addToken(token)
-                
+
                 # Return false so that the rest of the line that isn't within
                 # the commented segment can be highlighted as normal paragraph
                 # text.
-                
+
             else:
                 token.length = len(text)
                 self.addToken(token)
                 self.setState(MS.MarkdownStateComment)
                 return True
-        
+
         return False
-    
+
     def tokenizeInline(self, text):
         escapedText = self.dummyOutEscapeCharacters(text)
-        
+
         # Check if the line is a reference definition.
         if self.referenceDefinitionRegex.exactMatch(text):
             colonIndex = escapedText.find(":")
@@ -583,10 +583,10 @@ class MarkdownTokenizer(HighlightTokenizer):
             token.position = 0
             token.length = colonIndex + 1
             self.addToken(token)
-            
+
             # Replace the first bracket so that the '[...]:' reference definition
             # start doesn't get highlighted as a reference link.
-            
+
             firstBracketIndex = escapedText.find("[")
             if firstBracketIndex >= 0:
                 i = firstBracketIndex
@@ -610,21 +610,21 @@ class MarkdownTokenizer(HighlightTokenizer):
         escapedText = self.tokenizeMatches(MTT.TokenMention, escapedText, self.mentionRegex, 0, 0, False, True)
 
         return True
-    
+
     def tokenizeVerbatim(self, text):
         index = self.verbatimRegex.indexIn(text)
-        
+
         while index >= 0:
             end = ""
             count = self.verbatimRegex.matchedLength()
-            
+
             # Search for the matching end, which should have the same number
             # of back ticks as the start.
             for i in range(count):
                 end += '`'
-            
+
             endIndex = text.find(end, index + count)
-            
+
             # If the end was found, add the verbatim token.
             if endIndex >= 0:
                 token = Token()
@@ -634,26 +634,26 @@ class MarkdownTokenizer(HighlightTokenizer):
                 token.openingMarkupLength = count
                 token.closingMarkupLength = count
                 self.addToken(token)
-                
+
                 # Fill out the token match in the string with the dummy
                 # character so that searches for other Markdown elements
                 # don't find anything within this token's range in the string.
-                
+
                 for i in range(index, index + token.length):
                     text = text[:i] + self.DUMMY_CHAR + text[i+1:]
-                
+
                 index += token.length
-            
+
             # Else start searching again at the very next character.
             else:
                 index += 1
-            
+
             index = self.verbatimRegex.indexIn(text, index)
         return text
-        
+
     def tokenizeHtmlComments(self, text):
         previousState = self.previousState
-        
+
         # Check for the end of a multiline comment so that it doesn't get further
         # tokenized. Don't bother formatting the comment itself, however, because
         # it should have already been tokenized in tokenizeMultilineComment().
@@ -661,10 +661,10 @@ class MarkdownTokenizer(HighlightTokenizer):
             commentEnd = text.find("-->")
             for i in range(commentEnd + 3):
                 text = text[:i] + self.DUMMY_CHAR + text[i+1:]
-        
+
         # Now check for inline comments (non-multiline).
         commentStart = self.htmlInlineCommentRegex.indexIn(text)
-        
+
         while commentStart >= 0:
             commentLength = self.htmlInlineCommentRegex.matchedLength()
             token = Token()
@@ -672,15 +672,15 @@ class MarkdownTokenizer(HighlightTokenizer):
             token.position = commentStart
             token.length = commentLength
             self.addToken(token)
-            
+
             # Replace comment segment with dummy characters so that it doesn't
             # get tokenized again.
-            
+
             for i in range(commentStart, commentStart + commentLength):
                 text = text[:i] + self.DUMMY_CHAR + text[i+1:]
-            
+
             commentStart = self.htmlInlineCommentRegex.indexIn(text, commentStart + commentLength)
-            
+
         # Find multiline comment start, if any.
         commentStart = text.find("<!--")
         if commentStart >= 0:
@@ -690,18 +690,18 @@ class MarkdownTokenizer(HighlightTokenizer):
             token.length = len(text) - commentStart
             self.addToken(token)
             self.setState(MS.MarkdownStateComment)
-            
+
             # Replace comment segment with dummy characters so that it doesn't
             # get tokenized again.
-            
+
             for i in range(commentStart, len(text)):
                 text = text[:i] + self.DUMMY_CHAR + text[i+1:]
         return text
-            
+
     def tokenizeTableHeaderRow(self, text):
         previousState = self.previousState
         nextState = self.nextState
-        
+
         if previousState in [
             MS.MarkdownStateParagraphBreak,
             MS.MarkdownStateListLineBreak,
@@ -721,7 +721,7 @@ class MarkdownTokenizer(HighlightTokenizer):
             MS.MarkdownStateUnknown] and \
            nextState == MS.MarkdownStatePipeTableDivider:
             self.setState(MS.MarkdownStatePipeTableHeader)
-            
+
             headerStart = 0
             for i in range(len(text)):
                 if text[i] == "|":
@@ -731,21 +731,21 @@ class MarkdownTokenizer(HighlightTokenizer):
                     # to prevent formatting such as strong and emphasis from
                     # picking it up.
                     text = text[:i] + " " + text[i+1:]
-                    
+
                     token = Token()
-                    
+
                     if i > 0:
                         token.type = MTT.TokenTableHeader
                         token.position = headerStart
                         token.length = i - headerStart
                         self.addToken(token)
-                    
+
                     token.type = MTT.TokenTablePipe
                     token.position = i
                     token.length = 1
                     self.addToken(token)
                     headerStart = i + 1
-            
+
             if headerStart < len(text):
                 token = Token()
                 token.type = MTT.TokenTableHeader
@@ -754,7 +754,7 @@ class MarkdownTokenizer(HighlightTokenizer):
                 self.addToken(token)
 
         return text
-    
+
     def tokenizeTableDivider(self, text):
         previousState = self.previousState
         if previousState == MS.MarkdownStatePipeTableHeader:
@@ -765,9 +765,9 @@ class MarkdownTokenizer(HighlightTokenizer):
                 token.length = len(text)
                 token.position = 0
                 self.addToken(token)
-                
+
                 return True
-            
+
             else:
                 # Restart tokenizing on the previous line.
                 self.requestBacktrack()
@@ -776,24 +776,24 @@ class MarkdownTokenizer(HighlightTokenizer):
                 # Restart tokenizing on the previous line.
                 self.requestBacktrack()
                 self.setState(MS.MarkdownStatePipeTableDivider)
-                
+
                 token = Token()
                 token.length = len(text)
                 token.position = 0
                 token.type = MTT.TokenTableDivider
                 self.addToken(token)
                 return True
-        
+
         return False
-    
+
     def tokenizeTableRow(self, text):
         previousState = self.previousState
-        
+
         if previousState in [
             MS.MarkdownStatePipeTableDivider,
             MS.MarkdownStatePipeTableRow]:
             self.setState(MS.MarkdownStatePipeTableRow)
-            
+
             for i in range(len(text)):
                 if text[i] == "|":
                     # Replace pipe with space so that it doesn't get formatted
@@ -801,7 +801,7 @@ class MarkdownTokenizer(HighlightTokenizer):
                     # Note that we use a space rather than DUMMY_CHAR for this,
                     # to prevent formatting such as strong and emphasis from
                     # picking it up.
-                    
+
                     text = text[:i] + " " + text[i+1:]
 
                     token = Token()
@@ -811,7 +811,7 @@ class MarkdownTokenizer(HighlightTokenizer):
                     self.addToken(token)
 
         return text
-            
+
     def tokenizeMatches(self, tokenType, text, regex,
                         markupStartCount=0, markupEndCount=0,
                         replaceMarkupChars=False, replaceAllChars=False):
@@ -821,40 +821,40 @@ class MarkdownTokenizer(HighlightTokenizer):
         tokens.  The markupStartCount and markupEndCount values are used to
         indicate how many markup special characters preceed and follow the
         main text, respectively.
-         
+
         For example, if the matched string is "**bold**", and
         markupStartCount = 2 and markupEndCount = 2, then the asterisks
         preceeding and following the word "bold" will be set as opening and
         closing markup in the token.
-        
+
         If replaceMarkupChars is true, then the markupStartCount and
         markupEndCount characters will be replaced with a dummy character in
         the text QString so that subsequent parsings of the same line do not
         pick up the original characters.
-         
+
         If replaceAllChars is true instead, then the entire matched text will
         be replaced with dummy characters--again, for ease in parsing the
         same line for other regular expression matches.
         """
         index = regex.indexIn(text)
-        
+
         while index >= 0:
             length = regex.matchedLength()
             token = Token()
             token.type = tokenType
             token.position = index
             token.length = length
-            
+
             if markupStartCount > 0:
                 token.openingMarkupLength = markupStartCount
-                
+
             if markupEndCount > 0:
                 token.closingMarkupLength = markupEndCount
-                
+
             if replaceAllChars:
                 for i in range(index, index + length):
                     text = text[:i] + self.DUMMY_CHAR + text[i+1:]
-            
+
             elif replaceMarkupChars:
                 for i in range(index, index + markupStartCount):
                     text = text[:i] + self.DUMMY_CHAR + text[i+1:]
@@ -865,19 +865,19 @@ class MarkdownTokenizer(HighlightTokenizer):
             index = regex.indexIn(text, index + length)
 
         return text
-    
+
     def dummyOutEscapeCharacters(self, text):
         """
         Replaces escaped characters in text so they aren't picked up
         during parsing.  Returns a copy of the input text string
         with the escaped characters replaced with a dummy character.
         """
-        
+
         return re.sub("\\\\.", "\$", text)
-        
+
         #escape = False
         #escapedText = text
-        
+
         #for i in range(len(text)):
             #if escape:
                 #escapedText = escapedText[:i] + self.DUMMY_CHAR + escapedText[i+1:]

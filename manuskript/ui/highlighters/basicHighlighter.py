@@ -8,6 +8,9 @@ from PyQt5.QtGui import QBrush, QTextCursor, QColor, QFont, QSyntaxHighlighter
 from PyQt5.QtGui import QTextBlockFormat, QTextCharFormat
 
 import manuskript.models.references as Ref
+import manuskript.ui.style as S
+from manuskript import settings
+from manuskript import functions as F
 
 
 class BasicHighlighter(QSyntaxHighlighter):
@@ -18,6 +21,11 @@ class BasicHighlighter(QSyntaxHighlighter):
         self._misspelledColor = Qt.red
         self._defaultBlockFormat = QTextBlockFormat()
         self._defaultCharFormat = QTextCharFormat()
+        self.defaultTextColor = QColor(S.text)
+        self.backgroundColor = QColor(S.base)
+        self.markupColor = QColor(S.textLight)
+        self.linkColor = QColor(S.link)
+        self.spellingErrorColor = QColor(Qt.red)
 
     def setDefaultBlockFormat(self, bf):
         self._defaultBlockFormat = bf
@@ -30,17 +38,47 @@ class BasicHighlighter(QSyntaxHighlighter):
     def setMisspelledColor(self, color):
         self._misspelledColor = color
 
+    def updateColorScheme(self, rehighlight=True):
+        """
+        Generates a base set of colors that will take account of user
+        preferences, and use system style.
+        """
+
+        # Reading user settings
+        opt = settings.textEditor
+
+        self.defaultTextColor = QColor(opt["fontColor"])
+        self.backgroundColor = (QColor(opt["background"])
+                                if not opt["backgroundTransparent"]
+                                else QColor(S.window))
+        self.markupColor = F.mixColors(self.defaultTextColor,
+                                       self.backgroundColor,
+                                       .3)
+        self.linkColor = QColor(S.link)
+        self.spellingErrorColor = QColor(opt["misspelled"])
+        self._defaultCharFormat.setForeground(QBrush(self.defaultTextColor))
+
+        if rehighlight:
+            self.rehighlight()
+
     def highlightBlock(self, text):
         """Apply syntax highlighting to the given block of text.
         """
         self.highlightBlockBefore(text)
+        self.doHighlightBlock(text)
         self.highlightBlockAfter(text)
+
+    def doHighlightBlock(self, text):
+        """
+        Virtual funtion to subclass.
+        """
+        pass
 
     def highlightBlockBefore(self, text):
         """Highlighting to do before anything else.
 
         When subclassing BasicHighlighter, you must call highlightBlockBefore
-        before you do any custom highlighting.
+        before you do any custom highlighting. Or implement doHighlightBlock.
         """
 
         #print(">", self.currentBlock().document().availableUndoSteps())
@@ -58,7 +96,7 @@ class BasicHighlighter(QSyntaxHighlighter):
         """Highlighting to do after everything else.
 
         When subclassing BasicHighlighter, you must call highlightBlockAfter
-        after your custom highlighting.
+        after your custom highlighting. Or implement doHighlightBlock.
         """
 
         # References
