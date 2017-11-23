@@ -2,7 +2,7 @@
 # --!-- coding: utf8 --!--
 
 from PyQt5.QtWidgets import qApp, QMessageBox
-from manuskript.models.outlineModel import outlineItem
+from manuskript.models import outlineItem
 from manuskript.enums import Outline
 from lxml import etree as ET
 from manuskript.functions import mainWindow
@@ -90,8 +90,8 @@ class opmlImporter(abstractImporter):
                 for el in children:
                     items.extend(cls.parseItems(el, card))
             else:
-                card.setData(Outline.type.value, 'md')
-                card.setData(Outline.text.value, body)
+                card.setData(Outline.type, 'md')
+                card.setData(Outline.text, body)
 
         return items
 

@@ -46,24 +46,24 @@ class worldModel(QStandardItemModel):
 
     def ID(self, index):
         """Returns the ID of the given index."""
-        index = index.sibling(index.row(), World.ID.value)
+        index = index.sibling(index.row(), World.ID)
         return self.data(index)
 
     def name(self, index):
         """Returns the name of the given index."""
-        index = index.sibling(index.row(), World.name.value)
+        index = index.sibling(index.row(), World.name)
         return self.data(index)
 
     def description(self, index):
-        index = index.sibling(index.row(), World.description.value)
+        index = index.sibling(index.row(), World.description)
         return self.data(index)
 
     def conflict(self, index):
-        index = index.sibling(index.row(), World.conflict.value)
+        index = index.sibling(index.row(), World.conflict)
         return self.data(index)
 
     def passion(self, index):
-        index = index.sibling(index.row(), World.passion.value)
+        index = index.sibling(index.row(), World.passion)
         return self.data(index)
 
     def itemID(self, item):

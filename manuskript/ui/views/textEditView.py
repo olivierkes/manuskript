@@ -26,7 +26,7 @@ class textEditView(QTextEdit):
     def __init__(self, parent=None, index=None, html=None, spellcheck=True, highlighting=False, dict="",
                  autoResize=False):
         QTextEdit.__init__(self, parent)
-        self._column = Outline.text.value
+        self._column = Outline.text
         self._index = None
         self._indexes = None
         self._model = None
@@ -38,6 +38,10 @@ class textEditView(QTextEdit):
         self.setAcceptRichText(False)
         # When setting up a theme, this becomes true.
         self._fromTheme = False
+        # Sometimes we need to update index because item has changed its
+        # position, so we only have it's ID as reference. We store it to
+        # update at the propper time.
+        self._updateIndexFromID = None
 
         self.spellcheck = spellcheck
         self.currentDict = dict if dict else settings.dict
@@ -179,7 +183,7 @@ class textEditView(QTextEdit):
             return
 
         # what type of text are we editing?
-        if self._column not in [Outline.text.value, Outline.notes.value]:
+        if self._column not in [Outline.text, Outline.notes]:
             self._textFormat = "text"
 
         else:
@@ -188,7 +192,7 @@ class textEditView(QTextEdit):
         # Setting highlighter
         if self._highlighting:
             item = index.internalPointer()
-            if self._column in [Outline.text.value, Outline.notes.value]:
+            if self._column in [Outline.text, Outline.notes]:
                 self.highlighter = MMDHighlighter(self)
             else:
                 self.highlighter = basicHighlighter(self)
@@ -199,7 +203,7 @@ class textEditView(QTextEdit):
         if self._fromTheme or \
                 not self._index or \
                     type(self._index.model()) != outlineModel or \
-                    self._column != Outline.text.value:
+                    self._column != Outline.text:
             return
 
         opt = settings.textEditor
@@ -270,7 +274,15 @@ class textEditView(QTextEdit):
         if self._updating:
             return
 
-        elif self._index and self._index.isValid():
+        if self._updateIndexFromID:
+            # We have to update to a new index
+            self._index = self._index.model().getIndexByID(
+                self._updateIndexFromID,
+                self._column)
+            self._updateIndexFromID = None
+
+        if self._index and self._index.isValid():
+
             if topLeft.parent() != self._index.parent():
                 return
 
@@ -293,12 +305,33 @@ class textEditView(QTextEdit):
                 self.updateText()
 
     def rowsAboutToBeRemoved(self, parent, first, last):
-        if self._index:
+        if self._index and self._index.isValid():
+
+            # Has my _index just been removed?
             if self._index.parent() == parent and \
                                     first <= self._index.row() <= last:
                 self._index = None
                 self.setEnabled(False)
+                return
                 # FIXME: self._indexes
+
+            # We check if item is a child of the row about to be removed
+            child = False
+            p = self._index.parent()
+            while p:
+                if p == parent:
+                    child = True
+                    p = None
+                elif p.isValid():
+                    p = p.parent()
+                else:
+                    p = None
+            if child:
+                # Item might have moved (so will not be valid any more)
+                ID = self._index.internalPointer().ID()
+                # We store ID, and we update it in self.update (after the
+                # rows have been removed).
+                self._updateIndexFromID = ID
 
     def disconnectDocument(self):
         try:

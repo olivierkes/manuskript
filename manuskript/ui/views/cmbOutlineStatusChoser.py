@@ -11,7 +11,7 @@ class cmbOutlineStatusChoser(QComboBox):
     def __init__(self, parent=None):
         QComboBox.__init__(self, parent)
         self.activated[int].connect(self.submit)
-        self._column = Outline.status.value
+        self._column = Outline.status
         self._index = None
         self._indexes = None
         self._updating = False

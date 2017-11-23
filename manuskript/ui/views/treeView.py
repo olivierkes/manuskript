@@ -22,12 +22,14 @@ class treeView(QTreeView, dndView, outlineBasics):
         QTreeView.setModel(self, model)
 
         # Hiding columns
-        for c in range(1, self.model().columnCount()):
+        for c in range(self.model().columnCount()):
             self.hideColumn(c)
+
+        self.showColumn(Outline.title)
 
         # Setting delegate
         self.titleDelegate = treeTitleDelegate()
-        self.setItemDelegateForColumn(Outline.title.value, self.titleDelegate)
+        self.setItemDelegateForColumn(Outline.title, self.titleDelegate)
 
     def makePopupMenu(self):
         menu = outlineBasics.makePopupMenu(self)

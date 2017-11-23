@@ -24,7 +24,7 @@ from lxml import etree as ET
 
 from manuskript.load_save.version_0 import loadFilesFromZip
 from manuskript.models.characterModel import CharacterInfo
-from manuskript.models.outlineModel import outlineItem
+from manuskript.models import outlineItem
 
 try:
     import zlib  # Used with zipfile for compression
@@ -473,7 +473,7 @@ def addPlotItem(root, mdl, parent=QModelIndex()):
                     outline.attrib[w.name] = val
 
             # List characters as attrib
-            if y == Plot.characters.value:
+            if y == Plot.characters:
                 if mdl.hasChildren(index):
                     characters = []
                     for cX in range(mdl.rowCount(index)):
@@ -486,7 +486,7 @@ def addPlotItem(root, mdl, parent=QModelIndex()):
                     outline.attrib.pop(Plot.characters.name)
 
             # List resolution steps as sub items
-            elif y == Plot.steps.value:
+            elif y == Plot.steps:
                 if mdl.hasChildren(index):
                     for cX in range(mdl.rowCount(index)):
                         step = ET.SubElement(outline, "step")
@@ -603,7 +603,7 @@ def outlineToMMD(item):
             content += formatMetaData(attrib.name, str(val), 15)
 
     content += "\n\n"
-    content += item.data(Outline.text.value)
+    content += item.data(Outline.text)
 
     return content
 
@@ -762,16 +762,16 @@ def loadProject(project, zip=None):
             log("* Add plot: ", row[0].text())
 
             # Characters
-            if row[Plot.characters.value].text():
-                IDs = row[Plot.characters.value].text().split(",")
+            if row[Plot.characters].text():
+                IDs = row[Plot.characters].text().split(",")
                 item = QStandardItem()
                 for ID in IDs:
                     item.appendRow(QStandardItem(ID.strip()))
-                row[Plot.characters.value] = item
+                row[Plot.characters] = item
 
             # Subplots
             for step in plot:
-                row[Plot.steps.value].appendRow(
+                row[Plot.steps].appendRow(
                     getStandardItemRowFromXMLEnum(step, PlotStep)
                 )
 
@@ -929,18 +929,18 @@ def outlineFromMMD(text, parent):
     # Store metadata
     for k in md:
         if k in Outline.__members__:
-            item.setData(Outline.__members__[k].value, str(md[k]))
+            item.setData(Outline.__members__[k], str(md[k]))
 
     # Store body
-    item.setData(Outline.text.value, str(body))
+    item.setData(Outline.text, str(body))
 
     # Set file format to "md"
     # (Old version of manuskript had different file formats: text, t2t, html and md)
     # If file format is html, convert to plain text:
     if item.type() == "html":
-        item.setData(Outline.text.value, HTML2PlainText(body))
+        item.setData(Outline.text, HTML2PlainText(body))
     if item.type() in ["txt", "t2t", "html"]:
-        item.setData(Outline.type.value, "md")
+        item.setData(Outline.type, "md")
 
     return item
 

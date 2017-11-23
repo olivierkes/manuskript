@@ -12,7 +12,7 @@ from manuskript.ui.importers.importer_ui import Ui_importer
 from manuskript.ui.importers.generalSettings import generalSettings
 from manuskript.ui import style
 from manuskript import importer
-from manuskript.models.outlineModel import outlineModel, outlineItem
+from manuskript.models import outlineModel, outlineItem
 from manuskript.enums import Outline
 from manuskript.exporter.pandoc import pandocExporter
 
@@ -312,7 +312,7 @@ class importerDialog(QWidget, Ui_importer):
         if self.settingsWidget.trimLongTitles():
             for item in items:
                 if len(item.title()) > 32:
-                    item.setData(Outline.title.value, item.title()[:32])
+                    item.setData(Outline.title, item.title()[:32])
 
         # Split at
         if self.settingsWidget.splitScenes():

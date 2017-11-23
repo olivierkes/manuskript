@@ -6,7 +6,7 @@ from PyQt5.QtWidgets import QPlainTextEdit, qApp, QFrame, QFileDialog
 
 from manuskript.exporter.basic import basicFormat
 from manuskript.functions import mainWindow
-from manuskript.models.outlineModel import outlineItem
+from manuskript.models import outlineItem
 from manuskript.ui.exporters.manuskript.plainTextSettings import exporterSettings
 
 

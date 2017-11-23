@@ -2,7 +2,7 @@
 # --!-- coding: utf8 --!--
 
 from PyQt5.QtWidgets import qApp, QMessageBox
-from manuskript.models.outlineModel import outlineItem
+from manuskript.models import outlineItem
 from manuskript.enums import Outline
 from lxml import etree as ET
 from manuskript.functions import mainWindow
@@ -114,18 +114,18 @@ class mindMapImporter(abstractImporter):
             # If there is one line, we use it as title.
             # Otherwise we leave it to be inserted as a note.
             if len(lines) == 1:
-                item.setData(Outline.title.value, "".join(lines))
+                item.setData(Outline.title, "".join(lines))
                 content = ""
 
         if content:
             # Set the note content as text value
             content = HTML2MD(content)
-            item.setData(Outline.notes.value, content)
+            item.setData(Outline.notes, content)
 
         if url:
             # Set the url in notes
-            item.setData(Outline.notes.value,
-                         item.data(Outline.notes.value) + "\n\n" + url)
+            item.setData(Outline.notes,
+                         item.data(Outline.notes) + "\n\n" + url)
 
         children = underElement.findall('node')
 
@@ -137,10 +137,10 @@ class mindMapImporter(abstractImporter):
         # Process if no children
         elif self.getSetting("importTipAs").value() == "Text":
             # Transform item to text
-            item.setData(Outline.type.value, 'md')
+            item.setData(Outline.type, 'md')
             # Move notes to text
-            if item.data(Outline.notes.value):
-                item.setData(Outline.text.value, item.data(Outline.notes.value))
-                item.setData(Outline.notes.value, "")
+            if item.data(Outline.notes):
+                item.setData(Outline.text, item.data(Outline.notes))
+                item.setData(Outline.notes, "")
 
         return items

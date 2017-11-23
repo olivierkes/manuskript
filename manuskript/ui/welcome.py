@@ -15,8 +15,7 @@ from manuskript import settings
 from manuskript.enums import Outline
 from manuskript.functions import mainWindow, iconFromColor, appPath
 from manuskript.models.characterModel import characterModel
-from manuskript.models.outlineModel import outlineItem
-from manuskript.models.outlineModel import outlineModel
+from manuskript.models import outlineItem, outlineModel
 from manuskript.models.plotModel import plotModel
 from manuskript.models.worldModel import worldModel
 from manuskript.ui.welcome_ui import Ui_welcome
@@ -85,7 +84,8 @@ class welcome(QWidget, Ui_welcome):
         return autoLoad, last
 
     def setAutoLoad(self, v):
-        QSettings().setValue("autoLoad", v)
+        if type(v) == bool:
+            QSettings().setValue("autoLoad", v)
 
     ###############################################################################
     # RECENTS
@@ -160,18 +160,20 @@ class welcome(QWidget, Ui_welcome):
                 pName=pName[:-4]
             self.mw.setWindowTitle(pName + " - " + self.tr("Manuskript"))
 
-    def createFile(self):
+    def createFile(self, filename=None, overwrite=False):
         """When starting a new project, ask for a place to save it.
         Datas are not loaded from file, so they must be populated another way."""
-        filename = QFileDialog.getSaveFileName(self,
-                                               self.tr("Create New Project"),
-                                               ".",
-                                               self.tr("Manuskript project (*.msk)"))[0]
+        if filename is None:
+            filename = QFileDialog.getSaveFileName(
+                           self,
+                           self.tr("Create New Project"),
+                           ".",
+                           self.tr("Manuskript project (*.msk)"))[0]
 
         if filename:
             if filename[-4:] != ".msk":
                 filename += ".msk"
-            if os.path.exists(filename):
+            if os.path.exists(filename) and not overwrite:
                 # Check if okay to overwrite existing project
                 result = QMessageBox.warning(self, self.tr("Warning"),
                     self.tr("Overwrite existing project {} ?").format(filename),
@@ -453,7 +455,7 @@ class welcome(QWidget, Ui_welcome):
                             _type=_type,
                             parent=parent)
                     if len(datas) == 2:
-                        item.setData(Outline.setGoal.value, datas[1][0])
+                        item.setData(Outline.setGoal, datas[1][0])
                         # parent.appendChild(item)
             else:
                 n = 0

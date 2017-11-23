@@ -10,7 +10,7 @@ from manuskript import settings
 from manuskript.enums import Outline
 from manuskript.functions import mainWindow, statusMessage
 from manuskript.functions import toInt, customIcons
-from manuskript.models.outlineModel import outlineItem
+from manuskript.models import outlineItem
 from manuskript.ui.tools.splitDialog import splitDialog
 
 
@@ -31,8 +31,10 @@ class outlineBasics(QAbstractItemView):
         if event.button() == Qt.RightButton:
             self.menu = self.makePopupMenu()
             self.menu.popup(event.globalPos())
-        else:
-            QAbstractItemView.mouseReleaseEvent(self, event)
+        # We don't call QAbstractItemView.mouseReleaseEvent because
+        # outlineBasics is never subclassed alone. So the others views
+        # (outlineView, corkView, treeView) that subclass outlineBasics
+        # call their respective mother class.
 
     def makePopupMenu(self):
         index = self.currentIndex()
@@ -414,15 +416,15 @@ class outlineBasics(QAbstractItemView):
 
     def setPOV(self, POV):
         for i in self.getSelection():
-            self.model().setData(i.sibling(i.row(), Outline.POV.value), str(POV))
+            self.model().setData(i.sibling(i.row(), Outline.POV), str(POV))
 
     def setStatus(self, status):
         for i in self.getSelection():
-            self.model().setData(i.sibling(i.row(), Outline.status.value), str(status))
+            self.model().setData(i.sibling(i.row(), Outline.status), str(status))
 
     def setLabel(self, label):
         for i in self.getSelection():
-            self.model().setData(i.sibling(i.row(), Outline.label.value), str(label))
+            self.model().setData(i.sibling(i.row(), Outline.label), str(label))
 
     def setCustomIcon(self, customIcon):
         for i in self.getSelection():

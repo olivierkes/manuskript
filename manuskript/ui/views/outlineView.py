@@ -40,29 +40,29 @@ class outlineView(QTreeView, dndView, outlineBasics):
         # Setting delegates
         self.outlineTitleDelegate = outlineTitleDelegate(self)
         # self.outlineTitleDelegate.setView(self)
-        self.setItemDelegateForColumn(Outline.title.value, self.outlineTitleDelegate)
+        self.setItemDelegateForColumn(Outline.title, self.outlineTitleDelegate)
         self.outlineCharacterDelegate = outlineCharacterDelegate(self.modelCharacters)
-        self.setItemDelegateForColumn(Outline.POV.value, self.outlineCharacterDelegate)
+        self.setItemDelegateForColumn(Outline.POV, self.outlineCharacterDelegate)
         self.outlineCompileDelegate = outlineCompileDelegate()
-        self.setItemDelegateForColumn(Outline.compile.value, self.outlineCompileDelegate)
+        self.setItemDelegateForColumn(Outline.compile, self.outlineCompileDelegate)
         self.outlineStatusDelegate = outlineStatusDelegate(self.modelStatus)
-        self.setItemDelegateForColumn(Outline.status.value, self.outlineStatusDelegate)
+        self.setItemDelegateForColumn(Outline.status, self.outlineStatusDelegate)
         self.outlineGoalPercentageDelegate = outlineGoalPercentageDelegate()
-        self.setItemDelegateForColumn(Outline.goalPercentage.value, self.outlineGoalPercentageDelegate)
+        self.setItemDelegateForColumn(Outline.goalPercentage, self.outlineGoalPercentageDelegate)
         self.outlineLabelDelegate = outlineLabelDelegate(self.modelLabels)
-        self.setItemDelegateForColumn(Outline.label.value, self.outlineLabelDelegate)
+        self.setItemDelegateForColumn(Outline.label, self.outlineLabelDelegate)
 
         # Hiding columns
         self.hideColumns()
 
-        self.header().setSectionResizeMode(Outline.title.value, QHeaderView.Stretch)
-        self.header().setSectionResizeMode(Outline.POV.value, QHeaderView.ResizeToContents)
-        self.header().setSectionResizeMode(Outline.status.value, QHeaderView.ResizeToContents)
-        self.header().setSectionResizeMode(Outline.label.value, QHeaderView.ResizeToContents)
-        self.header().setSectionResizeMode(Outline.compile.value, QHeaderView.ResizeToContents)
-        self.header().setSectionResizeMode(Outline.wordCount.value, QHeaderView.ResizeToContents)
-        self.header().setSectionResizeMode(Outline.goal.value, QHeaderView.ResizeToContents)
-        self.header().setSectionResizeMode(Outline.goalPercentage.value, QHeaderView.ResizeToContents)
+        self.header().setSectionResizeMode(Outline.title, QHeaderView.Stretch)
+        self.header().setSectionResizeMode(Outline.POV, QHeaderView.ResizeToContents)
+        self.header().setSectionResizeMode(Outline.status, QHeaderView.ResizeToContents)
+        self.header().setSectionResizeMode(Outline.label, QHeaderView.ResizeToContents)
+        self.header().setSectionResizeMode(Outline.compile, QHeaderView.ResizeToContents)
+        self.header().setSectionResizeMode(Outline.wordCount, QHeaderView.ResizeToContents)
+        self.header().setSectionResizeMode(Outline.goal, QHeaderView.ResizeToContents)
+        self.header().setSectionResizeMode(Outline.goalPercentage, QHeaderView.ResizeToContents)
 
     def hideColumns(self):
         if not self.model():
@@ -77,7 +77,7 @@ class outlineView(QTreeView, dndView, outlineBasics):
     def setRootIndex(self, index):
         QTreeView.setRootIndex(self, index)
         self.outlineGoalPercentageDelegate = outlineGoalPercentageDelegate(index)
-        self.setItemDelegateForColumn(Outline.goalPercentage.value, self.outlineGoalPercentageDelegate)
+        self.setItemDelegateForColumn(Outline.goalPercentage, self.outlineGoalPercentageDelegate)
 
     def dragMoveEvent(self, event):
         dndView.dragMoveEvent(self, event)

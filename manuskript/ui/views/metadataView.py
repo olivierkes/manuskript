@@ -12,9 +12,9 @@ class metadataView(QWidget, Ui_metadataView):
         QWidget.__init__(self, parent)
         self.setupUi(self)
         self._lastIndexes = None
-        self.txtSummarySentence.setColumn(Outline.summarySentence.value)
-        self.txtSummaryFull.setColumn(Outline.summaryFull.value)
-        self.txtNotes.setColumn(Outline.notes.value)
+        self.txtSummarySentence.setColumn(Outline.summarySentence)
+        self.txtSummaryFull.setColumn(Outline.summaryFull)
+        self.txtNotes.setColumn(Outline.notes)
         self.revisions.setEnabled(False)
 
         self.txtSummarySentence.setStyleSheet(style.lineEditSS())

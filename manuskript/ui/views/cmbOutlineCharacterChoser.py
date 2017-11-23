@@ -13,7 +13,7 @@ class cmbOutlineCharacterChoser(QComboBox):
     def __init__(self, parent=None):
         QComboBox.__init__(self, parent)
         self.activated[int].connect(self.submit)
-        self._column = Outline.POV.value
+        self._column = Outline.POV
         self._index = None
         self._indexes = None
         self._updating = False

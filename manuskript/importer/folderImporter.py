@@ -3,7 +3,7 @@
 
 import os
 from manuskript.importer.abstractImporter import abstractImporter
-from manuskript.models.outlineModel import outlineItem
+from manuskript.models import outlineItem
 from manuskript.enums import Outline
 from PyQt5.QtWidgets import qApp
 

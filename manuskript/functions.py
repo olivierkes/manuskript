@@ -172,7 +172,7 @@ def outlineItemColors(item):
 
     # POV
     colors["POV"] = QColor(Qt.transparent)
-    POV = item.data(Outline.POV.value)
+    POV = item.data(Outline.POV)
     if POV == "":
         col = QColor(Qt.transparent)
     else:
@@ -181,7 +181,7 @@ def outlineItemColors(item):
                 colors["POV"] = iconColor(mw.mdlCharacter.icon(i))
 
     # Label
-    lbl = item.data(Outline.label.value)
+    lbl = item.data(Outline.label)
     if lbl == "":
         col = QColor(Qt.transparent)
     else:
@@ -192,7 +192,7 @@ def outlineItemColors(item):
     colors["Label"] = col
 
     # Progress
-    pg = item.data(Outline.goalPercentage.value)
+    pg = item.data(Outline.goalPercentage)
     colors["Progress"] = colorFromProgress(pg)
 
     # Compile
@@ -353,10 +353,27 @@ def customIcons():
 
     return sorted(r)
 
-
 def statusMessage(message, duration=5000):
+    """
+    Shows a message in MainWindow's status bar.
+    """
     mainWindow().statusBar().showMessage(message, duration)
 
-
 def openURL(url):
+    """
+    Opens url (string) in browser using desktop default application.
+    """
     QDesktopServices.openUrl(QUrl(url))
+
+def inspect():
+    """
+    Debugging tool. Call it to see a stack of calls up to that point.
+    """
+    import inspect, os
+    print("-----------------------")
+    for s in inspect.stack()[1:]:
+        print(" * {}:{} // {}".format(
+            os.path.basename(s.filename),
+            s.lineno,
+            s.function))
+        print("   " + "".join(s.code_context))

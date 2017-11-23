@@ -72,7 +72,7 @@ class plotsProxyModel(QSortFilterProxyModel):
         self.mapModel()
 
     def mapModelMaybe(self, topLeft, bottomRight):
-        if topLeft.column() <= Plot.importance.value <= bottomRight.column():
+        if topLeft.column() <= Plot.importance <= bottomRight.column():
             self.mapModel()
 
     def mapModel(self):
@@ -85,7 +85,7 @@ class plotsProxyModel(QSortFilterProxyModel):
             self._map.append(self._cats[i])
 
             for p in range(src.rowCount()):
-                item = src.item(p, Plot.importance.value)
+                item = src.item(p, Plot.importance)
 
                 if item:
                     imp = int(item.text())
