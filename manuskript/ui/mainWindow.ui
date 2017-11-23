@@ -186,7 +186,7 @@
                  <item row="2" column="0">
                   <widget class="QLabel" name="label_12">
                    <property name="text">
-                    <string>Serie</string>
+                    <string>Series</string>
                    </property>
                   </widget>
                  </item>

@@ -1283,7 +1283,7 @@ class Ui_MainWindow(object):
         self.grpBookInfos.setTitle(_translate("MainWindow", "Book informations"))
         self.label_10.setText(_translate("MainWindow", "Title"))
         self.label_11.setText(_translate("MainWindow", "Subtitle"))
-        self.label_12.setText(_translate("MainWindow", "Serie"))
+        self.label_12.setText(_translate("MainWindow", "Series"))
         self.label_13.setText(_translate("MainWindow", "Volume"))
         self.label_14.setText(_translate("MainWindow", "Genre"))
         self.label_16.setText(_translate("MainWindow", "License"))

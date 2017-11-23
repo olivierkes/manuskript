@@ -350,7 +350,7 @@ Use that if you get YAML related error.</source>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="189"/>
-        <source>Serie</source>
+        <source>Series</source>
         <translation>Serie</translation>
     </message>
     <message>
