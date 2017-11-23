@@ -1139,7 +1139,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Help box
         references = [
             (self.lytTabOverview,
-             self.tr("Enter informations about your book, and yourself."),
+             self.tr("Enter information about your book, and yourself."),
              0),
             (self.lytSituation,
              self.tr(

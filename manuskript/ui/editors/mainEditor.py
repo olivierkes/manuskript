@@ -22,14 +22,14 @@ except:
 
 class mainEditor(QWidget, Ui_mainEditor):
     """
-    `mainEditor` is responsible for opening `outlineItem`s and offering informations
+    `mainEditor` is responsible for opening `outlineItem`s and offering information
     and commands about those `outlineItem`s to the used.
 
     It contains two main elements:
 
      1. A `tabSplitter`, which can open any numer of `outlineItem`s either in tabs
         (in `QTabWidget`) and/or in splitted views (children `tabSplitter`s).
-     2. An horizontal layout contain a number of buttons and informations:
+     2. An horizontal layout contain a number of buttons and information:
 
         - Go up button
         - Select folder view: either "text", "cork" or "outline" (see `editorWidget`)
