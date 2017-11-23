@@ -41,13 +41,13 @@ class textEditView(QTextEdit):
 
         self.spellcheck = spellcheck
         self.currentDict = dict if dict else settings.dict
+        self._defaultFontSize = qApp.font().pointSize()
         self.highlighter = None
         self.setAutoResize(autoResize)
         self._defaultBlockFormat = QTextBlockFormat()
         self._defaultCharFormat = QTextCharFormat()
         self.highlightWord = ""
         self.highligtCS = False
-        self.defaultFontPointSize = qApp.font().pointSize()
         self._dict = None
         # self.document().contentsChanged.connect(self.submit, F.AUC)
 
@@ -433,6 +433,31 @@ class textEditView(QTextEdit):
             event = QMouseEvent(QEvent.MouseButtonPress, event.pos(),
                                 Qt.LeftButton, Qt.LeftButton, Qt.NoModifier)
         QTextEdit.mousePressEvent(self, event)
+
+    def wheelEvent(self, event):
+        """
+        We catch wheelEvent if key modifier is CTRL to change font size.
+        Note: this should be in a class specific for main textEditView (#TODO).
+        """
+        if event.modifiers() & Qt.ControlModifier:
+            # Get the wheel angle.
+            d = event.angleDelta().y() / 120
+
+            # Update settings
+            f = QFont()
+            f.fromString(settings.textEditor["font"])
+            f.setPointSizeF(f.pointSizeF() + d)
+            settings.textEditor["font"] = f.toString()
+
+            # Update font to all textEditView. Drastically.
+            for w in F.mainWindow().findChildren(textEditView, QRegExp(".*")):
+                w.loadFontSettings()
+
+            # We tell the world that we accepted this event
+            event.accept()
+            return
+
+        QTextEdit.wheelEvent(self, event)
 
     class SpellAction(QAction):
         """A special QAction that returns the text in a signal. Used for spellckech."""
