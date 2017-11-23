@@ -875,7 +875,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1054"/>
         <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous
-                     evil wizard could wasn&apos;t abled to kill a baby?&apos; (Harry Potter)</source>
+                     evil wizard wasn&apos;t able to kill a baby?&apos; (Harry Potter)</source>
         <translation>Die Ausgangssituation, in Form von &apos;Was wäre wenn ...?&quot; Fragen. Beispiel: &quot;Was wäre wenn der gefährlichste
                      böse Zauberer nicht in der Lage wäre, ein Baby zu töten?&quot; (Harry Potter)</translation>
     </message>

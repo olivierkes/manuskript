@@ -875,7 +875,7 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1054"/>
         <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous
-                     evil wizard could wasn&apos;t abled to kill a baby?&apos; (Harry Potter)</source>
+                     evil wizard wasn&apos;t able to kill a baby?&apos; (Harry Potter)</source>
         <translation>Den grundläggande situationen i form av en &quot;Tänk om...?&quot;-mening. Exempel: &apos;Tänk om världens farligaste
                      onda trollkarl misslyckades med att döda en baby?&apos; (Harry Potter)</translation>
     </message>

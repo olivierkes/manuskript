@@ -1144,7 +1144,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             (self.lytSituation,
              self.tr(
                      """The basic situation, in the form of a 'What if...?' question. Ex: 'What if the most dangerous
-                     evil wizard could wasn't abled to kill a baby?' (Harry Potter)"""),
+                     evil wizard wasn't able to kill a baby?' (Harry Potter)"""),
              1),
             (self.lytSummary,
              self.tr(
