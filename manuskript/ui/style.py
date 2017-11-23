@@ -29,8 +29,8 @@ linkVisited = p.color(QPalette.LinkVisited).name()  # Link visited
 
 light = p.color(QPalette.Light).name()       # Lighter than Button color
 midlight = p.color(QPalette.Midlight).name() # Between Button and Light
-dark = p.color(QPalette.Dark).name()         # Darker than Button
 mid = p.color(QPalette.Mid).name()           # Between Button and Dark
+dark = p.color(QPalette.Dark).name()         # Darker than Button
 shadow = p.color(QPalette.Shadow).name()     # A very dark color
 
 highlightLight = F.mixColors(highlight, window, .3)

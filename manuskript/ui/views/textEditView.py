@@ -230,6 +230,7 @@ class textEditView(QTextEdit):
                 maxWidth = "max-width: {}px;".format(opt["maxWidth"]) if opt["maxWidth"] else "",
                 )
             )
+        self._defaultFontSize = f.pointSize()
 
         # We set the parent background to the editor's background in case
         # there are margins. We check that the parent class is a QWidget because

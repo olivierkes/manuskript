@@ -174,18 +174,21 @@ class MarkdownHighlighter(BasicHighlighter):
 
     def defaultTheme(self):
 
-        markup = self.markupColor
-        dark = qApp.palette().color(QPalette.Dark)
-        if dark == Qt.black:
-            dark = QColor(Qt.gray)
-        darker = dark.darker(150)
-
-        # Text background
+        # Colors
         background = self.backgroundColor
         text = self.defaultTextColor
-        lightBackground = F.mixColors(background, text, .4)
-        veryLightBackground = F.mixColors(background, text, .7)
+        light = F.mixColors(text, background, .75)
+        markup = F.mixColors(text, background, .5)
+        veryLight = F.mixColors(text, background, .25)
+
+        highlightedText = QColor(S.highlightedText)
+        highlightedTextDark = QColor(S.highlightedTextDark)
+        highlightedTextLight = QColor(S.highlightedTextLight)
+        highlight = QColor(S.highlight)
+        listToken = F.mixColors(highlight, background, .4)
+
         link = self.linkColor
+        linkVisited = QColor(S.linkVisited)
 
         theme = {
             "markup": markup}
@@ -208,49 +211,66 @@ class MarkdownHighlighter(BasicHighlighter):
             #"super":True,
             #"sub":True
 
+        # color = QColor(S.highlightedTextDark)
+        titleColor = highlight
+        titleMarkupColor = F.mixColors(titleColor, background, .3)
+
         for i in MTT.TITLES:
             theme[i] = {
                 "formatMarkup":True,
                 "bold": True,
-                "monospace": True,
+                # "monospace": True,
+                "markupColor": titleMarkupColor
             }
 
-        color = QColor(S.highlightedTextDark)
-        theme[MTT.TokenAtxHeading1]["color"] = color
-        theme[MTT.TokenAtxHeading2]["color"] = F.mixColors(color, background, .9)
-        theme[MTT.TokenAtxHeading3]["color"] = F.mixColors(color, background, .8)
-        theme[MTT.TokenAtxHeading4]["color"] = F.mixColors(color, background, .7)
-        theme[MTT.TokenAtxHeading5]["color"] = F.mixColors(color, background, .6)
-        theme[MTT.TokenAtxHeading6]["color"] = F.mixColors(color, background, .5)
+        theme[MTT.TokenAtxHeading1]["color"] = titleColor
+        theme[MTT.TokenAtxHeading2]["color"] = F.mixColors(titleColor,
+                                                           background, .9)
+        theme[MTT.TokenAtxHeading3]["color"] = F.mixColors(titleColor,
+                                                           background, .8)
+        theme[MTT.TokenAtxHeading4]["color"] = F.mixColors(titleColor,
+                                                           background, .7)
+        theme[MTT.TokenAtxHeading5]["color"] = F.mixColors(titleColor,
+                                                           background, .6)
+        theme[MTT.TokenAtxHeading6]["color"] = F.mixColors(titleColor,
+                                                           background, .5)
+
+        theme[MTT.TokenSetextHeading1Line1]["color"] = titleColor
+        theme[MTT.TokenSetextHeading2Line1]["color"] = F.mixColors(titleColor,
+                                                                   background,
+                                                                   .9)
+
+        for i in [MTT.TokenSetextHeading1Line1, MTT.TokenSetextHeading2Line1]:
+            theme[i]["monospace"] = True
 
         for i in [MTT.TokenSetextHeading1Line2, MTT.TokenSetextHeading2Line2]:
             theme[i] = {
-                "color": markup,
+                "color": titleMarkupColor,
                 "monospace":True}
 
         # Beautifiers
         theme[MTT.TokenEmphasis] = {
-                "italic":True,}
+            "italic":True}
         theme[MTT.TokenStrong] = {
             "bold":True}
         theme[MTT.TokenStrikethrough] = {
             "strike":True}
         theme[MTT.TokenVerbatim] = {
             "monospace":True,
-            "background": veryLightBackground,
+            "background": veryLight,
             "formatMarkup": True,
-            "markupColor": markup}
+            "markupColor": markup,
+            "deltaSize": -1}
         theme[MTT.TokenSuperScript] = {
             "super":True,
             "formatMarkup":True}
         theme[MTT.TokenSubScript] = {
             "sub":True,
             "formatMarkup":True}
-
         theme[MTT.TokenHtmlTag] = {
-            "color":Qt.red}
-        theme[MTT.TokenHtmlEntity] = {
-            "color":Qt.red}
+            "color": linkVisited}
+        theme[MTT.TokenHtmlEntity] = {  # &nbsp;
+            "color": linkVisited}
         theme[MTT.TokenAutomaticLink] = {
             "color": link}
         theme[MTT.TokenInlineLink] = {
@@ -260,15 +280,15 @@ class MarkdownHighlighter(BasicHighlighter):
         theme[MTT.TokenReferenceDefinition] = {
             "color": link}
         theme[MTT.TokenImage] = {
-            "color": Qt.green}
+            "color": highlightedTextDark}
         theme[MTT.TokenHtmlComment] = {
-            "color": dark}
+            "color": markup}
         theme[MTT.TokenNumberedList] = {
-            "markupColor": QColor(Qt.red).lighter(),
+            "markupColor": listToken,
             "markupBold": True,
             "markupMonospace": True,}
         theme[MTT.TokenBulletPointList] = {
-            "markupColor": QColor(Qt.red).lighter(),
+            "markupColor": listToken,
             "markupBold": True,
             "markupMonospace": True,}
         theme[MTT.TokenHorizontalRule] = {
@@ -279,13 +299,15 @@ class MarkdownHighlighter(BasicHighlighter):
         theme[MTT.TokenLineBreak] = {
             "background": markup}
         theme[MTT.TokenBlockquote] = {
-            "color": darker,
-            "markupColor": lightBackground,
-            "markupBackground": lightBackground}
+            "color": light,
+            "markupColor": veryLight,
+            "markupBackground": veryLight}
         theme[MTT.TokenCodeBlock] = {
-            "color": darker,
-            "markupBackground": veryLightBackground,
-            "monospace":True}
+            "color": light,
+            "markupBackground": veryLight,
+            "formatMarkup": True,
+            "monospace":True,
+            "deltaSize":-1}
         theme[MTT.TokenGithubCodeFence] = {
             "color": markup}
         theme[MTT.TokenPandocCodeFence] = {
@@ -294,7 +316,7 @@ class MarkdownHighlighter(BasicHighlighter):
             "color": markup}
         theme[MTT.TokenMention] = {} # FIXME
         theme[MTT.TokenTableHeader] = {
-            "color": darker, "monospace":True}
+            "color": light, "monospace":True}
         theme[MTT.TokenTableDivider] = {
             "color": markup, "monospace":True}
         theme[MTT.TokenTablePipe] = {
@@ -362,9 +384,11 @@ class MarkdownHighlighter(BasicHighlighter):
         if theme.get("color"):
             format.setForeground(theme["color"])
         if theme.get("deltaSize"):
-            f = format.font()
-            f.setPointSize(format.font().pointSize() + theme["deltaSize"])
-            format.setFont(f)
+            size = self.editor._defaultFontSize + theme["deltaSize"]
+            if size >= 0:
+                f = format.font()
+                f.setPointSize(size)
+                format.setFont(f)
         if theme.get("background"):
             format.setBackground(theme["background"])
         if theme.get("monospace"):
