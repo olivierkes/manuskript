@@ -714,7 +714,7 @@ Use that if you get YAML related error.</source>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1051"/>
-        <source>Enter informations about your book, and yourself.</source>
+        <source>Enter information about your book, and yourself.</source>
         <translation>Entrez toutes les informations relatives au livre, ainsi qu&apos;à vous.</translation>
     </message>
     <message>
@@ -951,7 +951,7 @@ Use that if you get YAML related error.</source>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="154"/>
-        <source>Book informations</source>
+        <source>Book information</source>
         <translation>Informations sur le livre</translation>
     </message>
     <message>

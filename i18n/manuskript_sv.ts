@@ -344,7 +344,7 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="154"/>
-        <source>Book informations</source>
+        <source>Book information</source>
         <translation>Information om boken</translation>
     </message>
     <message>
@@ -869,7 +869,7 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1051"/>
-        <source>Enter informations about your book, and yourself.</source>
+        <source>Enter information about your book, and yourself.</source>
         <translation>Skriv information om din bok och dig själv.</translation>
     </message>
     <message>
