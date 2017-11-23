@@ -619,7 +619,7 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2105"/>
-        <source>&amp;Recents</source>
+        <source>&amp;Recent</source>
         <translation>S&amp;enaste</translation>
     </message>
     <message>

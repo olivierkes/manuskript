@@ -614,7 +614,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2105"/>
-        <source>&amp;Recents</source>
+        <source>&amp;Recent</source>
         <translation>&amp;Zuletzt verwendete Dokumente </translation>
     </message>
     <message>

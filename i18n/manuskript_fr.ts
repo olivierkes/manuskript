@@ -819,7 +819,7 @@ Use that if you get YAML related error.</source>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2105"/>
-        <source>&amp;Recents</source>
+        <source>&amp;Recent</source>
         <translation>&amp;Récents</translation>
     </message>
     <message>

@@ -2101,7 +2101,7 @@
     </property>
     <widget class="QMenu" name="menuRecents">
      <property name="title">
-      <string>&amp;Recents</string>
+      <string>&amp;Recent</string>
      </property>
      <property name="icon">
       <iconset theme="folder-recent">

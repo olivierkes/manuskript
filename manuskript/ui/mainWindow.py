@@ -1368,7 +1368,7 @@ class Ui_MainWindow(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("MainWindow", "Labels"))
         self.tabMain.setTabText(self.tabMain.indexOf(self.lytTabDebug), _translate("MainWindow", "Debug"))
         self.menuFile.setTitle(_translate("MainWindow", "&File"))
-        self.menuRecents.setTitle(_translate("MainWindow", "&Recents"))
+        self.menuRecents.setTitle(_translate("MainWindow", "&Recent"))
         self.menuHelp.setTitle(_translate("MainWindow", "&Help"))
         self.menuTools.setTitle(_translate("MainWindow", "&Tools"))
         self.menuEdit.setTitle(_translate("MainWindow", "&Edit"))
