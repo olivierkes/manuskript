@@ -100,8 +100,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # Main Menu
         for i in [self.actSave, self.actSaveAs, self.actCloseProject,
-                  self.menuEdit, self.menuView, self.menuTools, self.menuHelp,
-                  self.actImport, self.actCompile, self.actSettings]:
+                  self.menuEdit, self.menuView, self.menuDocuments,
+                  self.menuTools, self.menuHelp, self.actImport,
+                  self.actCompile, self.actSettings]:
             i.setEnabled(False)
 
         # Main Menu:: File
@@ -207,7 +208,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def tabMainChanged(self):
         "Called when main tab changes."
-        self.menuDocuments.menuAction().setVisible(self.tabMain.currentIndex() == self.TabRedac)
+        self.menuDocuments.menuAction().setEnabled(self.tabMain.currentIndex()
+                                                   == self.TabRedac)
 
     def focusChanged(self, old, new):
         """
@@ -558,8 +560,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         for i in [self.actOpen, self.menuRecents]:
             i.setEnabled(False)
         for i in [self.actSave, self.actSaveAs, self.actCloseProject,
-                  self.menuEdit, self.menuView, self.menuTools, self.menuHelp,
-                  self.actImport, self.actCompile, self.actSettings]:
+                  self.menuEdit, self.menuView, self.menuDocuments,
+                  self.menuTools, self.menuHelp, self.actImport,
+                  self.actCompile, self.actSettings]:
             i.setEnabled(True)
 
         # Add project name to Window's name
@@ -602,8 +605,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         for i in [self.actOpen, self.menuRecents]:
             i.setEnabled(True)
         for i in [self.actSave, self.actSaveAs, self.actCloseProject,
-                  self.menuEdit, self.menuView, self.menuTools, self.menuHelp,
-                  self.actImport, self.actCompile, self.actSettings]:
+                  self.menuEdit, self.menuView, self.menuDocuments,
+                  self.menuTools, self.menuHelp, self.actImport,
+                  self.actCompile, self.actSettings]:
             i.setEnabled(False)
 
         # Set Window's name - no project loaded
@@ -1415,4 +1419,3 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         r = self.dialog.geometry()
         r2 = self.geometry()
         self.dialog.move(r2.center() - r.center())
-
