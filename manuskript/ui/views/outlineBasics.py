@@ -81,46 +81,57 @@ class outlineBasics(QAbstractItemView):
 
         menu.addSeparator()
 
-        # Rename / add / remove items
-        self.actRename = QAction(QIcon.fromTheme("edit-rename"), qApp.translate("outlineBasics", "Rename"), menu)
-        self.actRename.triggered.connect(self.rename)
-        menu.addAction(self.actRename)
-
-        self.actAddFolder = QAction(QIcon.fromTheme("folder-new"), qApp.translate("outlineBasics", "New Folder"), menu)
+        # Add text / folder
+        self.actAddFolder = QAction(QIcon.fromTheme("folder-new"),
+                                    qApp.translate("outlineBasics", "New &Folder"),
+                                    menu)
         self.actAddFolder.triggered.connect(self.addFolder)
         menu.addAction(self.actAddFolder)
 
-        self.actAddText = QAction(QIcon.fromTheme("document-new"), qApp.translate("outlineBasics", "New Text"), menu)
+        self.actAddText = QAction(QIcon.fromTheme("document-new"),
+                                  qApp.translate("outlineBasics", "New &Text"),
+                                  menu)
         self.actAddText.triggered.connect(self.addText)
         menu.addAction(self.actAddText)
-
-        self.actDelete = QAction(QIcon.fromTheme("edit-delete"), qApp.translate("outlineBasics", "Delete"), menu)
-        self.actDelete.triggered.connect(self.delete)
-        menu.addAction(self.actDelete)
 
         menu.addSeparator()
 
         # Copy, cut, paste, duplicate
         self.actCopy = QAction(QIcon.fromTheme("edit-copy"),
-                               qApp.translate("outlineBasics", "Copy"), menu)
+                               qApp.translate("outlineBasics", "&Copy"), menu)
         self.actCopy.triggered.connect(self.copy)
         menu.addAction(self.actCopy)
 
         self.actCut = QAction(QIcon.fromTheme("edit-cut"),
-                              qApp.translate("outlineBasics", "Cut"), menu)
+                              qApp.translate("outlineBasics", "C&ut"), menu)
         self.actCut.triggered.connect(self.cut)
         menu.addAction(self.actCut)
 
         self.actPaste = QAction(QIcon.fromTheme("edit-paste"),
-                                qApp.translate("outlineBasics", "Paste"), menu)
+                                qApp.translate("outlineBasics", "&Paste"), menu)
         self.actPaste.triggered.connect(self.paste)
         menu.addAction(self.actPaste)
 
+        menu.addSeparator()
+
+        # Rename / duplicate / remove items
+        self.actRename = QAction(QIcon.fromTheme("edit-rename"),
+                                 qApp.translate("outlineBasics", "&Rename"),
+                                 menu)
+        self.actRename.triggered.connect(self.rename)
+        menu.addAction(self.actRename)
+
         self.actDuplicate = QAction(QIcon.fromTheme("folder-copy"),
-                                    qApp.translate("outlineBasics", "Duplicate"),
+                                    qApp.translate("outlineBasics", "Dup&licate"),
                                     menu)
         self.actDuplicate.triggered.connect(self.duplicate)
         menu.addAction(self.actDuplicate)
+
+        self.actDelete = QAction(QIcon.fromTheme("edit-delete"),
+                                 qApp.translate("outlineBasics", "&Delete"),
+                                 menu)
+        self.actDelete.triggered.connect(self.delete)
+        menu.addAction(self.actDelete)
 
         menu.addSeparator()
 

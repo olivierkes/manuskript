@@ -121,6 +121,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.actCopy.triggered.connect(self.documentsCopy)
         self.actCut.triggered.connect(self.documentsCut)
         self.actPaste.triggered.connect(self.documentsPaste)
+        self.actRename.triggered.connect(self.documentsRename)
         self.actDuplicate.triggered.connect(self.documentsDuplicate)
         self.actDelete.triggered.connect(self.documentsDelete)
         self.actMoveUp.triggered.connect(self.documentsMoveUp)
@@ -449,6 +450,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def documentsPaste(self):
         "Paste clipboard item(s) into selected item."
         if self._lastFocus: self._lastFocus.paste()
+    def documentsRename(self):
+        "Rename selected item."
+        if self._lastFocus: self._lastFocus.rename()
     def documentsDuplicate(self):
         "Duplicate selected item(s)."
         if self._lastFocus: self._lastFocus.duplicate()

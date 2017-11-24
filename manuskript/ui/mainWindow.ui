@@ -2163,6 +2163,8 @@
     <addaction name="actCopy"/>
     <addaction name="actCut"/>
     <addaction name="actPaste"/>
+    <addaction name="separator"/>
+    <addaction name="actRename"/>
     <addaction name="actDuplicate"/>
     <addaction name="actDelete"/>
     <addaction name="separator"/>
@@ -2551,11 +2553,10 @@
   </action>
   <action name="actMerge">
    <property name="icon">
-    <iconset theme="merge">
-     <normaloff>.</normaloff>.</iconset>
+    <iconset theme="merge"/>
    </property>
    <property name="text">
-    <string>Me&amp;rge</string>
+    <string>&amp;Merge</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+M</string>
@@ -2567,7 +2568,7 @@
      <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
-    <string>&amp;Duplicate</string>
+    <string>Dupl&amp;icate</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+D</string>
@@ -2579,7 +2580,7 @@
      <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
-    <string>D&amp;elete</string>
+    <string>&amp;Delete</string>
    </property>
    <property name="shortcut">
     <string>Del</string>
@@ -2607,6 +2608,18 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+Down</string>
+   </property>
+  </action>
+  <action name="actRename">
+   <property name="icon">
+    <iconset theme="edit-rename">
+     <normaloff>.</normaloff>.</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Rename</string>
+   </property>
+   <property name="shortcut">
+    <string>F2</string>
    </property>
   </action>
  </widget>
