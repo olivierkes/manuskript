@@ -12,6 +12,7 @@ class Ui_generalSettings(object):
     def setupUi(self, generalSettings):
         generalSettings.setObjectName("generalSettings")
         generalSettings.resize(267, 401)
+        generalSettings.setWindowTitle("Form")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(generalSettings)
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_2.setSpacing(10)
@@ -58,7 +59,6 @@ class Ui_generalSettings(object):
 
     def retranslateUi(self, generalSettings):
         _translate = QtCore.QCoreApplication.translate
-        generalSettings.setWindowTitle(_translate("generalSettings", "Form"))
         self.chkGeneralSplitScenes.setText(_translate("generalSettings", "Split scenes at:"))
         self.txtGeneralSplitScenes.setPlaceholderText(_translate("generalSettings", "\\n---\\n"))
         self.chkGeneralTrimTitles.setText(_translate("generalSettings", "Trim long titles (> 32 chars)"))

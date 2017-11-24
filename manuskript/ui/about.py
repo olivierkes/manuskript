@@ -35,14 +35,14 @@ class aboutDialog(QWidget, Ui_about):
                                 GNU General Public License Version 3
                             </a><br>"""
             )
-        
+
         self.labelManuskriptVersion.setOpenExternalLinks(True)
-        
+
         self.labelSoftwareVersion.setText(
               "<b>" + self.tr("Software Versions in Use:") + "</b><br>"
-            + "&nbsp;"*5 + self.tr("Python") + " " + python_version() + "<br>"
-            + "&nbsp;"*5 + self.tr("PyQt") + " " + PYQT_VERSION_STR + "<br>"
-            + "&nbsp;"*5 + self.tr("Qt") + " " + QT_VERSION_STR
+            + "&nbsp;"*5 + "Python " + python_version() + "<br>"
+            + "&nbsp;"*5 + "PyQt " + PYQT_VERSION_STR + "<br>"
+            + "&nbsp;"*5 + "Qt " + QT_VERSION_STR
             )
         #self.labelPythonVersion.setText()
         #self.labelPyQtVersion.setText()
