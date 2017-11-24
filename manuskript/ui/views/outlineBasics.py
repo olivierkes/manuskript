@@ -100,18 +100,27 @@ class outlineBasics(QAbstractItemView):
 
         menu.addSeparator()
 
-        # Copy, cut, paste
-        self.actCopy = QAction(QIcon.fromTheme("edit-copy"), qApp.translate("outlineBasics", "Copy"), menu)
+        # Copy, cut, paste, duplicate
+        self.actCopy = QAction(QIcon.fromTheme("edit-copy"),
+                               qApp.translate("outlineBasics", "Copy"), menu)
         self.actCopy.triggered.connect(self.copy)
         menu.addAction(self.actCopy)
 
-        self.actCut = QAction(QIcon.fromTheme("edit-cut"), qApp.translate("outlineBasics", "Cut"), menu)
+        self.actCut = QAction(QIcon.fromTheme("edit-cut"),
+                              qApp.translate("outlineBasics", "Cut"), menu)
         self.actCut.triggered.connect(self.cut)
         menu.addAction(self.actCut)
 
-        self.actPaste = QAction(QIcon.fromTheme("edit-paste"), qApp.translate("outlineBasics", "Paste"), menu)
+        self.actPaste = QAction(QIcon.fromTheme("edit-paste"),
+                                qApp.translate("outlineBasics", "Paste"), menu)
         self.actPaste.triggered.connect(self.paste)
         menu.addAction(self.actPaste)
+
+        self.actDuplicate = QAction(QIcon.fromTheme("folder-copy"),
+                                    qApp.translate("outlineBasics", "Duplicate"),
+                                    menu)
+        self.actDuplicate.triggered.connect(self.duplicate)
+        menu.addAction(self.actDuplicate)
 
         menu.addSeparator()
 
@@ -222,6 +231,7 @@ class outlineBasics(QAbstractItemView):
         if len(sel) == 0:
             self.actCopy.setEnabled(False)
             self.actCut.setEnabled(False)
+            self.actDuplicate.setEnabled(False)
             self.actRename.setEnabled(False)
             self.actDelete.setEnabled(False)
             self.menuPOV.setEnabled(False)
@@ -274,12 +284,19 @@ class outlineBasics(QAbstractItemView):
         mimeData = self.model().mimeData(self.selectionModel().selectedIndexes())
         qApp.clipboard().setMimeData(mimeData)
 
-    def paste(self):
+    def paste(self, mimeData=None):
+        """
+        Paste item from mimeData to selected item. If mimeData is not given,
+        it is taken from clipboard. If not item selected, paste into root.
+        """
         index = self.currentIndex()
         if len(self.getSelection()) == 0:
             index = self.rootIndex()
-        data = qApp.clipboard().mimeData()
-        self.model().dropMimeData(data, Qt.CopyAction, -1, 0, index)
+
+        if mimeData is None:
+            mimeData = qApp.clipboard().mimeData()
+
+        self.model().dropMimeData(mimeData, Qt.CopyAction, -1, 0, index)
 
     def cut(self):
         self.copy()
@@ -310,8 +327,11 @@ class outlineBasics(QAbstractItemView):
         self.model().removeIndexes(self.getSelection())
 
     def duplicate(self):
-        self.copy()
-        self.paste()
+        """
+        Duplicates item(s), while preserving clipbaord content.
+        """
+        mimeData = self.model().mimeData(self.selectionModel().selectedIndexes())
+        self.paste(mimeData)
 
     def move(self, delta=1):
         """
