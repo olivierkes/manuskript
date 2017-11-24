@@ -388,7 +388,8 @@ class textEditView(QTextEdit):
             self.sizeChange()
 
     def sizeChange(self):
-        docHeight = self.document().size().height()
+        opt = settings.textEditor
+        docHeight = self.document().size().height() + 2 * opt["marginsTB"]
         if self.heightMin <= docHeight <= self.heightMax:
             self.setMinimumHeight(docHeight)
 
