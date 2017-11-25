@@ -774,7 +774,7 @@
               </widget>
               <widget class="QTabWidget" name="tabPersos">
                <property name="currentIndex">
-                <number>0</number>
+                <number>2</number>
                </property>
                <widget class="QWidget" name="info">
                 <attribute name="title">
@@ -964,7 +964,7 @@
                 </attribute>
                 <layout class="QVBoxLayout" name="verticalLayout_17">
                  <item>
-                  <widget class="textEditView" name="txtPersoSummaryFull"/>
+                  <widget class="textEditCompleter" name="txtPersoSummaryFull"/>
                  </item>
                  <item>
                   <layout class="QHBoxLayout" name="horizontalLayout_22">
@@ -1002,7 +1002,7 @@
                 </attribute>
                 <layout class="QHBoxLayout" name="horizontalLayout_30">
                  <item>
-                  <widget class="textEditView" name="txtPersoNotes"/>
+                  <widget class="textEditCompleter" name="txtPersoNotes"/>
                  </item>
                 </layout>
                </widget>
@@ -1173,7 +1173,7 @@
               </widget>
               <widget class="QTabWidget" name="tabPlot">
                <property name="currentIndex">
-                <number>0</number>
+                <number>1</number>
                </property>
                <property name="documentMode">
                 <bool>true</bool>
@@ -1303,10 +1303,10 @@
                   </widget>
                  </item>
                  <item row="3" column="1">
-                  <widget class="textEditView" name="txtPlotDescription"/>
+                  <widget class="textEditCompleter" name="txtPlotDescription"/>
                  </item>
                  <item row="4" column="1">
-                  <widget class="textEditView" name="txtPlotResult"/>
+                  <widget class="textEditCompleter" name="txtPlotResult"/>
                  </item>
                 </layout>
                </widget>

@@ -1415,4 +1415,3 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         r = self.dialog.geometry()
         r2 = self.geometry()
         self.dialog.move(r2.center() - r.center())
-

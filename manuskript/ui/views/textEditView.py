@@ -7,7 +7,7 @@ from PyQt5.QtGui import QTextBlockFormat, QTextCharFormat, QFont, QColor, QIcon,
 from PyQt5.QtWidgets import QWidget, QTextEdit, qApp, QAction, QMenu
 
 from manuskript import settings
-from manuskript.enums import Outline
+from manuskript.enums import Outline, World, Character, Plot
 from manuskript import functions as F
 from manuskript.models.outlineModel import outlineModel
 from manuskript.ui.editors.MDFunctions import MDFormatSelection
@@ -175,25 +175,25 @@ class textEditView(QTextEdit):
         self.updateText()
 
     def setupEditorForIndex(self, index):
-        # In which model are we editing?
-        if type(index.model()) != outlineModel:
-            self._textFormat = "text"
-            return
-
-        # what type of text are we editing?
-        if self._column not in [Outline.text.value, Outline.notes.value]:
-            self._textFormat = "text"
-
-        else:
-            self._textFormat = "md"
+        # Let's say we use markdown everywhere...
+        self._textFormat = "md"
 
         # Setting highlighter
         if self._highlighting:
-            item = index.internalPointer()
-            if self._column in [Outline.text.value, Outline.notes.value]:
-                self.highlighter = MarkdownHighlighter(self)
-            else:
-                self.highlighter = BasicHighlighter(self)
+            # # item = index.internalPointer()
+            # if self._column in [
+            #         Outline.text.value,
+            #         Outline.notes.value,
+            #         Character.summaryFull.value,
+            #         Character.notes.value,
+            #         World.description.value,
+            #         World.passion.value,
+            #         World.conflict.value,
+            #         ]:
+            #FIXME: subclass textEdit instad of doing stuff like that
+            self.highlighter = MarkdownHighlighter(self)
+            # else:
+            #     self.highlighter = BasicHighlighter(self)
 
             self.highlighter.setDefaultBlockFormat(self._defaultBlockFormat)
             self.highlighter.updateColorScheme()
