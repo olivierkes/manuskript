@@ -38,6 +38,7 @@ class textEditView(QTextEdit):
         self.setAcceptRichText(False)
         # When setting up a theme, this becomes true.
         self._fromTheme = False
+        self._themeData = None
 
         self.spellcheck = spellcheck
         self.currentDict = dict if dict else settings.dict

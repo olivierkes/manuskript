@@ -174,21 +174,32 @@ class MarkdownHighlighter(BasicHighlighter):
 
     def defaultTheme(self):
 
-        # Colors
+        # Base Colors
         background = self.backgroundColor
         text = self.defaultTextColor
-        light = F.mixColors(text, background, .75)
-        markup = F.mixColors(text, background, .5)
-        veryLight = F.mixColors(text, background, .25)
-
         highlightedText = QColor(S.highlightedText)
         highlightedTextDark = QColor(S.highlightedTextDark)
         highlightedTextLight = QColor(S.highlightedTextLight)
         highlight = QColor(S.highlight)
-        listToken = F.mixColors(highlight, background, .4)
-
         link = self.linkColor
         linkVisited = QColor(S.linkVisited)
+
+        # titleColor = highlight
+        titleColor = QColor(S.highlightedTextDark)
+
+        # FullscreenEditor probably
+        if self.editor._fromTheme and self.editor._themeData:
+            text = QColor(self.editor._themeData["Text/Color"])
+            background =  QColor(self.editor._themeData["Background/Color"])
+            titleColor = text
+
+        # Compositions
+        light = F.mixColors(text, background, .75)
+        markup = F.mixColors(text, background, .5)
+        veryLight = F.mixColors(text, background, .25)
+        listToken = F.mixColors(highlight, background, .4)
+        titleMarkupColor = F.mixColors(titleColor, background, .3)
+
 
         theme = {
             "markup": markup}
@@ -210,10 +221,6 @@ class MarkdownHighlighter(BasicHighlighter):
             #"markupMonospace": True,
             #"super":True,
             #"sub":True
-
-        titleColor = QColor(S.highlightedTextDark)
-        # titleColor = highlight
-        titleMarkupColor = F.mixColors(titleColor, background, .3)
 
         for i in MTT.TITLES:
             theme[i] = {

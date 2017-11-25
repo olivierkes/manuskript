@@ -47,16 +47,29 @@ class BasicHighlighter(QSyntaxHighlighter):
         # Reading user settings
         opt = settings.textEditor
 
-        self.defaultTextColor = QColor(opt["fontColor"])
-        self.backgroundColor = (QColor(opt["background"])
-                                if not opt["backgroundTransparent"]
-                                else QColor(S.window))
-        self.markupColor = F.mixColors(self.defaultTextColor,
-                                       self.backgroundColor,
-                                       .3)
-        self.linkColor = QColor(S.link)
-        self.spellingErrorColor = QColor(opt["misspelled"])
-        self._defaultCharFormat.setForeground(QBrush(self.defaultTextColor))
+        if not self.editor._fromTheme or not self.editor._themeData:
+
+            self.defaultTextColor = QColor(opt["fontColor"])
+            self.backgroundColor = (QColor(opt["background"])
+                                    if not opt["backgroundTransparent"]
+                                    else QColor(S.window))
+            self.markupColor = F.mixColors(self.defaultTextColor,
+                                           self.backgroundColor,
+                                           .3)
+            self.linkColor = QColor(S.link)
+            self.spellingErrorColor = QColor(opt["misspelled"])
+            self._defaultCharFormat.setForeground(QBrush(self.defaultTextColor))
+
+        # FullscreenEditor probably
+        else:
+            opt = self.editor._themeData
+            self.defaultTextColor = QColor(opt["Text/Color"])
+            self.backgroundColor =  QColor(opt["Background/Color"])
+            self.markupColor = F.mixColors(self.defaultTextColor,
+                                           self.backgroundColor,
+                                           .3)
+            self.linkColor = QColor(S.link)
+            self.spellingErrorColor = QColor(opt["Text/Misspelled"])
 
         if rehighlight:
             self.rehighlight()
