@@ -211,8 +211,8 @@ class MarkdownHighlighter(BasicHighlighter):
             #"super":True,
             #"sub":True
 
-        # color = QColor(S.highlightedTextDark)
-        titleColor = highlight
+        titleColor = QColor(S.highlightedTextDark)
+        # titleColor = highlight
         titleMarkupColor = F.mixColors(titleColor, background, .3)
 
         for i in MTT.TITLES:
