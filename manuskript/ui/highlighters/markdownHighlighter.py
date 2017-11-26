@@ -329,6 +329,31 @@ class MarkdownHighlighter(BasicHighlighter):
         theme[MTT.TokenTablePipe] = {
             "color": markup, "monospace":True}
 
+        # CriticMarkup
+        theme[MTT.TokenCMAddition] = {
+            "color": QColor("#00bb00"),
+            "markupColor": QColor(F.mixColors("#00bb00", background, .4)),
+            "markupMonospace": True,}
+        theme[MTT.TokenCMDeletion] = {
+            "color": QColor("#dd0000"),
+            "markupColor": QColor(F.mixColors("#dd0000", background, .4)),
+            "markupMonospace": True,
+            "strike": True}
+        theme[MTT.TokenCMSubstitution] = {
+            "color": QColor("#ff8600"),
+            "markupColor": QColor(F.mixColors("#ff8600", background, .4)),
+            "markupMonospace": True,}
+        theme[MTT.TokenCMComment] = {
+            "color": QColor("#0000bb"),
+            "markupColor": QColor(F.mixColors("#0000bb", background, .4)),
+            "markupMonospace": True,}
+        theme[MTT.TokenCMHighlight] = {
+            "color": QColor("#aa53a9"),
+            "background": QColor(F.mixColors("#aa53a9", background, .1)),
+            "markupBackground": QColor(F.mixColors("#aa53a9", background, .1)),
+            "markupColor": QColor(F.mixColors("#aa53a9", background, .5)),
+            "markupMonospace": True,}
+
         return theme
 
     ###########################################################################

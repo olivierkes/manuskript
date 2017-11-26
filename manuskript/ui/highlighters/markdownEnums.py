@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-        
+
 #==============================================================================
 #   MARKDOWN STATES
 #==============================================================================
@@ -36,10 +36,10 @@ class MarkdownState:
 #==============================================================================
 #   MARKDOWN TOKEN TYPE
 #==============================================================================
-        
+
 class MarkdownTokenType:
     TokenUnknown  = -1
-    
+
     # Titles
     TokenAtxHeading1 = 0
     TokenAtxHeading2 = 1
@@ -51,7 +51,7 @@ class MarkdownTokenType:
     TokenSetextHeading1Line2 = 7
     TokenSetextHeading2Line1 = 8
     TokenSetextHeading2Line2 = 9
-    
+
     TokenEmphasis = 10
     TokenStrong = 11
     TokenStrikethrough = 12
@@ -79,15 +79,21 @@ class MarkdownTokenType:
     TokenTablePipe = 34
     TokenSuperScript = 35
     TokenSubScript = 36
-    TokenLast = 37
-    
+    # CriticMarkup
+    TokenCMAddition = 37 # {++ ++}
+    TokenCMDeletion = 38 # {-- --}
+    TokenCMSubstitution = 39 #{~~ ~> ~~}
+    TokenCMComment = 40 # {>> <<}
+    TokenCMHighlight = 41 # {== ==}{>> <<}
+    TokenLast = 42
+
     TITLES =  [TokenAtxHeading1, TokenAtxHeading2, TokenAtxHeading3,
                TokenAtxHeading4, TokenAtxHeading5, TokenAtxHeading6,
                TokenSetextHeading1Line1, TokenSetextHeading1Line2,
                TokenSetextHeading2Line1, TokenSetextHeading2Line2]
-    
-    
-    
+
+
+
 class BlockquoteStyle:
     BlockquoteStylePlain = 0
     BlockquoteStyleItalic = 1
