@@ -270,9 +270,6 @@ class mainEditor(QWidget, Ui_mainEditor):
         else:
             visible = True
 
-        # Hides / show textFormat
-        self.textFormat.updateFromIndex(index)
-
         self.btnRedacFolderText.setVisible(visible)
         self.btnRedacFolderCork.setVisible(visible)
         self.btnRedacFolderOutline.setVisible(visible)

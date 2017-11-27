@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/editors/mainEditor_ui.ui'
 #
-# Created by: PyQt5 UI code generator 5.9
+# Created by: PyQt5 UI code generator 5.5.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -65,17 +65,6 @@ class Ui_mainEditor(object):
         self.horizontalLayout_19.addWidget(self.sldCorkSizeFactor)
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_19.addItem(spacerItem)
-        self.textFormat = textFormat(mainEditor)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.textFormat.sizePolicy().hasHeightForWidth())
-        self.textFormat.setSizePolicy(sizePolicy)
-        self.textFormat.setMinimumSize(QtCore.QSize(20, 20))
-        self.textFormat.setObjectName("textFormat")
-        self.horizontalLayout_19.addWidget(self.textFormat)
-        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_19.addItem(spacerItem1)
         self.lblRedacWC = QtWidgets.QLabel(mainEditor)
         self.lblRedacWC.setMinimumSize(QtCore.QSize(10, 0))
         self.lblRedacWC.setText("")
@@ -110,4 +99,3 @@ class Ui_mainEditor(object):
         self.btnRedacFullscreen.setShortcut(_translate("mainEditor", "F11"))
 
 from manuskript.ui.editors.tabSplitter import tabSplitter
-from manuskript.ui.editors.textFormat import textFormat

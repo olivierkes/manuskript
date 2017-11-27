@@ -13,7 +13,6 @@ from manuskript import settings
 from manuskript.enums import Outline
 from manuskript.functions import allPaths, drawProgress
 from manuskript.ui.editors.locker import locker
-from manuskript.ui.editors.textFormat import textFormat
 from manuskript.ui.editors.themes import findThemePath, generateTheme, setThemeEditorDatas
 from manuskript.ui.editors.themes import loadThemeDatas
 from manuskript.ui.views.MDEditView import MDEditView
@@ -65,11 +64,7 @@ class fullScreenEditor(QWidget):
 
         self.topPanel.layout().addStretch(1)
 
-        # Formatting
-        self.textFormat = textFormat(self)
-        self.topPanel.layout().addWidget(self.textFormat)
-        self.topPanel.layout().addStretch(1)
-
+        # Close
         self.btnClose = QPushButton(self)
         self.btnClose.setIcon(qApp.style().standardIcon(QStyle.SP_DialogCloseButton))
         self.btnClose.clicked.connect(self.close)

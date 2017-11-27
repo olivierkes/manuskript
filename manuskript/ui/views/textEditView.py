@@ -10,10 +10,7 @@ from manuskript import settings
 from manuskript.enums import Outline, World, Character, Plot
 from manuskript import functions as F
 from manuskript.models.outlineModel import outlineModel
-from manuskript.ui.editors.MDFunctions import MDFormatSelection
 from manuskript.ui.highlighters import BasicHighlighter
-# from manuskript.ui.highlighters import MMDHighlighter
-from manuskript.ui.editors.textFormat import textFormat
 from manuskript.ui import style as S
 
 try:
@@ -543,32 +540,6 @@ class textEditView(QTextEdit):
         """Submit changes just before focusing out."""
         QTextEdit.focusOutEvent(self, event)
         self.submit()
-
-    def focusInEvent(self, event):
-        """Finds textFormatter and attach them to that view."""
-        QTextEdit.focusInEvent(self, event)
-
-        p = self.parent()
-        while p.parent():
-            p = p.parent()
-
-        if self._index:
-            for tF in p.findChildren(textFormat, QRegExp(".*"), Qt.FindChildrenRecursively):
-                tF.updateFromIndex(self._index)
-                tF.setTextEdit(self)
-
-    def applyFormat(self, _format):
-
-        if self._textFormat == "md":
-
-            if _format == "Bold":
-                MDFormatSelection(self, 0)
-            elif _format == "Italic":
-                MDFormatSelection(self, 1)
-            elif _format == "Code":
-                MDFormatSelection(self, 2)
-            elif _format == "Clear":
-                MDFormatSelection(self)
 
     ###############################################################################
     # KEYBOARD SHORTCUTS
