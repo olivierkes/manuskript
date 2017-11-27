@@ -7,7 +7,7 @@ from PyQt5.QtCore import Qt, QTimer
 from PyQt5.QtGui import QBrush, QColor, QIcon
 from PyQt5.QtWidgets import QWidget, QFileDialog, QMessageBox, QStyle
 
-from manuskript.functions import writablePath, appPath, openURL
+from manuskript.functions import writablePath, appPath, openURL, statusMessage
 from manuskript.ui.importers.importer_ui import Ui_importer
 from manuskript.ui.importers.generalSettings import generalSettings
 from manuskript.ui import style
@@ -259,7 +259,7 @@ class importerDialog(QWidget, Ui_importer):
         # Using status bar message instead...
         #QMessageBox.information(self, self.tr("Import status"),
                                 #self.tr("Import Complete."))
-        self.mw.statusBar().showMessage("Import complete!", 5000)
+        statusMessage("Import complete!", 5000)
 
         self.close()
 
@@ -320,5 +320,3 @@ class importerDialog(QWidget, Ui_importer):
                 item.split(self.settingsWidget.splitScenes(), recursive=False)
 
         return items
-
-

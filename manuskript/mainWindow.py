@@ -490,9 +490,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         It assumes that the datas have been populated in a different way."""
         if loadFromFile and not os.path.exists(project):
             print(self.tr("The file {} does not exist. Try again.").format(project))
-            self.statusBar().showMessage(
-                    self.tr("The file {} does not exist. Try again.").format(project),
-                    5000)
+            F.statusMessage(
+                    self.tr("The file {} does not exist. Try again.").format(project))
             return
 
         if loadFromFile:
@@ -710,7 +709,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # Giving some feedback
         print(feedback)
-        self.statusBar().showMessage(feedback, 5000)
+        F.statusMessage(feedback)
 
     def loadEmptyDatas(self):
         self.mdlFlatData = QStandardItemModel(self)
@@ -730,13 +729,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Giving some feedback
         if not errors:
             print(self.tr("Project {} loaded.").format(project))
-            self.statusBar().showMessage(
+            F.statusMessage(
                     self.tr("Project {} loaded.").format(project), 5000)
         else:
             print(self.tr("Project {} loaded with some errors:").format(project))
             for e in errors:
                 print(self.tr(" * {} wasn't found in project file.").format(e))
-            self.statusBar().showMessage(
+            F.statusMessage(
                     self.tr("Project {} loaded with some errors.").format(project), 5000)
 
     ###############################################################################

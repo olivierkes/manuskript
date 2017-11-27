@@ -6,7 +6,7 @@ import re
 from random import *
 
 from PyQt5.QtCore import Qt, QRect, QStandardPaths, QObject, QRegExp, QDir
-from PyQt5.QtCore import QUrl
+from PyQt5.QtCore import QUrl, QTimer
 from PyQt5.QtGui import QBrush, QIcon, QPainter, QColor, QImage, QPixmap
 from PyQt5.QtGui import QDesktopServices
 from PyQt5.QtWidgets import qApp, QTextEdit
@@ -355,7 +355,9 @@ def customIcons():
 
 
 def statusMessage(message, duration=5000):
+    mainWindow().statusBar().show()
     mainWindow().statusBar().showMessage(message, duration)
+    QTimer.singleShot(duration, mainWindow().statusBar().hide)
 
 
 def openURL(url):
