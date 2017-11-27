@@ -100,7 +100,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # Main Menu
         for i in [self.actSave, self.actSaveAs, self.actCloseProject,
-                  self.menuEdit, self.menuView, self.menuDocuments,
+                  self.menuEdit, self.menuView, self.menuOrganize,
                   self.menuTools, self.menuHelp, self.actImport,
                   self.actCompile, self.actSettings]:
             i.setEnabled(False)
@@ -209,8 +209,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def tabMainChanged(self):
         "Called when main tab changes."
-        self.menuDocuments.menuAction().setEnabled(self.tabMain.currentIndex()
-                                                   == self.TabRedac)
+        tabIsEditor = self.tabMain.currentIndex() == self.TabRedac
+        self.menuOrganize.menuAction().setEnabled(tabIsEditor)
+        for i in [self.actCut,
+                  self.actCopy,
+                  self.actPaste,
+                  self.actDelete,
+                  self.actRename]:
+            i.setEnabled(tabIsEditor)
 
     def focusChanged(self, old, new):
         """
@@ -564,7 +570,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         for i in [self.actOpen, self.menuRecents]:
             i.setEnabled(False)
         for i in [self.actSave, self.actSaveAs, self.actCloseProject,
-                  self.menuEdit, self.menuView, self.menuDocuments,
+                  self.menuEdit, self.menuView, self.menuOrganize,
                   self.menuTools, self.menuHelp, self.actImport,
                   self.actCompile, self.actSettings]:
             i.setEnabled(True)
@@ -609,7 +615,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         for i in [self.actOpen, self.menuRecents]:
             i.setEnabled(True)
         for i in [self.actSave, self.actSaveAs, self.actCloseProject,
-                  self.menuEdit, self.menuView, self.menuDocuments,
+                  self.menuEdit, self.menuView, self.menuOrganize,
                   self.menuTools, self.menuHelp, self.actImport,
                   self.actCompile, self.actSettings]:
             i.setEnabled(False)

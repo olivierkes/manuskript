@@ -2137,6 +2137,12 @@
     <property name="title">
      <string>&amp;Edit</string>
     </property>
+    <addaction name="actCut"/>
+    <addaction name="actCopy"/>
+    <addaction name="actPaste"/>
+    <addaction name="actDelete"/>
+    <addaction name="actRename"/>
+    <addaction name="separator"/>
     <addaction name="actLabels"/>
     <addaction name="actStatus"/>
     <addaction name="actSettings"/>
@@ -2156,18 +2162,10 @@
     <addaction name="menuMode"/>
     <addaction name="separator"/>
    </widget>
-   <widget class="QMenu" name="menuDocuments">
+   <widget class="QMenu" name="menuOrganize">
     <property name="title">
-     <string>&amp;Documents</string>
+     <string>Organi&amp;ze</string>
     </property>
-    <addaction name="actCopy"/>
-    <addaction name="actCut"/>
-    <addaction name="actPaste"/>
-    <addaction name="separator"/>
-    <addaction name="actRename"/>
-    <addaction name="actDuplicate"/>
-    <addaction name="actDelete"/>
-    <addaction name="separator"/>
     <addaction name="actMoveUp"/>
     <addaction name="actMoveDown"/>
     <addaction name="separator"/>
@@ -2177,7 +2175,7 @@
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
-   <addaction name="menuDocuments"/>
+   <addaction name="menuOrganize"/>
    <addaction name="menuView"/>
    <addaction name="menuTools"/>
    <addaction name="menuHelp"/>
@@ -2553,10 +2551,11 @@
   </action>
   <action name="actMerge">
    <property name="icon">
-    <iconset theme="merge"/>
+    <iconset theme="merge">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
-    <string>&amp;Merge</string>
+    <string>M&amp;erge</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+M</string>
