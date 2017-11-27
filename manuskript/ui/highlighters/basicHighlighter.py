@@ -64,7 +64,10 @@ class BasicHighlighter(QSyntaxHighlighter):
         else:
             opt = self.editor._themeData
             self.defaultTextColor = QColor(opt["Text/Color"])
-            self.backgroundColor =  QColor(opt["Background/Color"])
+            self.backgroundColor =  F.mixColors(
+                QColor(opt["Foreground/Color"]),
+                QColor(opt["Background/Color"]),
+                int(opt["Foreground/Opacity"])/100.)
             self.markupColor = F.mixColors(self.defaultTextColor,
                                            self.backgroundColor,
                                            .3)

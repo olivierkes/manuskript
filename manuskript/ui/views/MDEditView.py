@@ -24,6 +24,10 @@ class MDEditView(textEditView):
         self._textFormat = "md"
         self._highlighterClass = MarkdownHighlighter
 
+        if index:
+            # We have to setup things anew, for the highlighter notably
+            self.setCurrentModelIndex(index)
+
     # def focusInEvent(self, event):
     #     """Finds textFormatter and attach them to that view."""
     #     textEditView.focusInEvent(self, event)

@@ -83,9 +83,9 @@ class textEditView(QTextEdit):
         else:
             self.spellcheck = False
 
-        # if self._highlighting and not self.highlighter:
-        #     self.highlighter = self._highlighterClass(self)
-        #     self.highlighter.setDefaultBlockFormat(self._defaultBlockFormat)
+        if self._highlighting and not self.highlighter:
+            self.highlighter = self._highlighterClass(self)
+            self.highlighter.setDefaultBlockFormat(self._defaultBlockFormat)
 
     def getDefaultLocale(self):
         default_locale = enchant.get_default_language()
