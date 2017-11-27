@@ -379,7 +379,7 @@
                    </widget>
                   </item>
                   <item>
-                   <widget class="textEditView" name="txtSummarySentence">
+                   <widget class="MDEditCompleter" name="txtSummarySentence">
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
                       <horstretch>0</horstretch>
@@ -422,7 +422,7 @@
                      </widget>
                     </item>
                     <item>
-                     <widget class="textEditView" name="txtSummarySentence_2">
+                     <widget class="MDEditCompleter" name="txtSummarySentence_2">
                       <property name="sizePolicy">
                        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
                         <horstretch>0</horstretch>
@@ -466,7 +466,7 @@
                      </widget>
                     </item>
                     <item>
-                     <widget class="textEditView" name="txtSummaryPara"/>
+                     <widget class="MDEditCompleter" name="txtSummaryPara"/>
                     </item>
                     <item>
                      <widget class="QLabel" name="lblSummaryWCPara">
@@ -504,7 +504,7 @@
                      </widget>
                     </item>
                     <item>
-                     <widget class="textEditView" name="txtSummaryPara_2">
+                     <widget class="MDEditCompleter" name="txtSummaryPara_2">
                       <property name="readOnly">
                        <bool>true</bool>
                       </property>
@@ -542,7 +542,7 @@
                      </widget>
                     </item>
                     <item>
-                     <widget class="textEditView" name="txtSummaryPage"/>
+                     <widget class="MDEditCompleter" name="txtSummaryPage"/>
                     </item>
                     <item>
                      <widget class="QLabel" name="lblSummaryWCPage">
@@ -567,7 +567,7 @@
                      </widget>
                     </item>
                     <item>
-                     <widget class="textEditView" name="txtSummaryPage_2">
+                     <widget class="MDEditCompleter" name="txtSummaryPage_2">
                       <property name="readOnly">
                        <bool>true</bool>
                       </property>
@@ -592,7 +592,7 @@
                      </widget>
                     </item>
                     <item>
-                     <widget class="textEditView" name="txtSummaryFull"/>
+                     <widget class="MDEditCompleter" name="txtSummaryFull"/>
                     </item>
                     <item>
                      <widget class="QLabel" name="lblSummaryWCFull">
@@ -774,7 +774,7 @@
               </widget>
               <widget class="QTabWidget" name="tabPersos">
                <property name="currentIndex">
-                <number>0</number>
+                <number>2</number>
                </property>
                <widget class="QWidget" name="info">
                 <attribute name="title">
@@ -831,7 +831,7 @@
                       </widget>
                      </item>
                      <item row="4" column="1">
-                      <widget class="textEditView" name="txtPersoMotivation"/>
+                      <widget class="MDEditCompleter" name="txtPersoMotivation"/>
                      </item>
                      <item row="5" column="0">
                       <widget class="QLabel" name="label_5">
@@ -841,7 +841,7 @@
                       </widget>
                      </item>
                      <item row="5" column="1">
-                      <widget class="textEditView" name="txtPersoGoal"/>
+                      <widget class="MDEditCompleter" name="txtPersoGoal"/>
                      </item>
                      <item row="6" column="0">
                       <widget class="QLabel" name="label_6">
@@ -851,7 +851,7 @@
                       </widget>
                      </item>
                      <item row="6" column="1">
-                      <widget class="textEditView" name="txtPersoConflict"/>
+                      <widget class="MDEditCompleter" name="txtPersoConflict"/>
                      </item>
                      <item row="7" column="0">
                       <widget class="QLabel" name="label_7">
@@ -861,7 +861,7 @@
                       </widget>
                      </item>
                      <item row="7" column="1">
-                      <widget class="textEditView" name="txtPersoEpiphany"/>
+                      <widget class="MDEditCompleter" name="txtPersoEpiphany"/>
                      </item>
                      <item row="8" column="0">
                       <widget class="QLabel" name="label_24">
@@ -871,7 +871,7 @@
                       </widget>
                      </item>
                      <item row="8" column="1">
-                      <widget class="textEditView" name="txtPersoSummarySentence"/>
+                      <widget class="MDEditCompleter" name="txtPersoSummarySentence"/>
                      </item>
                      <item row="9" column="0">
                       <widget class="QLabel" name="label_8">
@@ -881,7 +881,7 @@
                       </widget>
                      </item>
                      <item row="9" column="1">
-                      <widget class="textEditView" name="txtPersoSummaryPara"/>
+                      <widget class="MDEditCompleter" name="txtPersoSummaryPara"/>
                      </item>
                      <item row="10" column="1">
                       <layout class="QHBoxLayout" name="horizontalLayout_21">
@@ -964,7 +964,7 @@
                 </attribute>
                 <layout class="QVBoxLayout" name="verticalLayout_17">
                  <item>
-                  <widget class="textEditView" name="txtPersoSummaryFull"/>
+                  <widget class="MDEditCompleter" name="txtPersoSummaryFull"/>
                  </item>
                  <item>
                   <layout class="QHBoxLayout" name="horizontalLayout_22">
@@ -1002,7 +1002,7 @@
                 </attribute>
                 <layout class="QHBoxLayout" name="horizontalLayout_30">
                  <item>
-                  <widget class="textEditView" name="txtPersoNotes"/>
+                  <widget class="MDEditCompleter" name="txtPersoNotes"/>
                  </item>
                 </layout>
                </widget>
@@ -1173,7 +1173,7 @@
               </widget>
               <widget class="QTabWidget" name="tabPlot">
                <property name="currentIndex">
-                <number>0</number>
+                <number>1</number>
                </property>
                <property name="documentMode">
                 <bool>true</bool>
@@ -1303,10 +1303,10 @@
                   </widget>
                  </item>
                  <item row="3" column="1">
-                  <widget class="textEditView" name="txtPlotDescription"/>
+                  <widget class="MDEditCompleter" name="txtPlotDescription"/>
                  </item>
                  <item row="4" column="1">
-                  <widget class="textEditView" name="txtPlotResult"/>
+                  <widget class="MDEditCompleter" name="txtPlotResult"/>
                  </item>
                 </layout>
                </widget>
@@ -1338,7 +1338,7 @@
                    </property>
                    <layout class="QVBoxLayout" name="verticalLayout_11">
                     <item>
-                     <widget class="textEditView" name="txtSubPlotSummary"/>
+                     <widget class="MDEditCompleter" name="txtSubPlotSummary"/>
                     </item>
                    </layout>
                   </widget>
@@ -1461,21 +1461,21 @@
                   <widget class="QWidget" name="page">
                    <layout class="QHBoxLayout" name="horizontalLayout_6">
                     <item>
-                     <widget class="textEditView" name="txtPlotSummaryPara"/>
+                     <widget class="MDEditCompleter" name="txtPlotSummaryPara"/>
                     </item>
                    </layout>
                   </widget>
                   <widget class="QWidget" name="page_2">
                    <layout class="QHBoxLayout" name="horizontalLayout_10">
                     <item>
-                     <widget class="textEditView" name="txtPlotSummaryPage"/>
+                     <widget class="MDEditCompleter" name="txtPlotSummaryPage"/>
                     </item>
                    </layout>
                   </widget>
                   <widget class="QWidget" name="page_3">
                    <layout class="QHBoxLayout" name="horizontalLayout_13">
                     <item>
-                     <widget class="textEditView" name="txtPlotSummaryFull"/>
+                     <widget class="MDEditCompleter" name="txtPlotSummaryFull"/>
                     </item>
                    </layout>
                   </widget>
@@ -1645,7 +1645,7 @@
                   </widget>
                  </item>
                  <item row="1" column="1">
-                  <widget class="textEditCompleter" name="txtWorldDescription"/>
+                  <widget class="MDEditCompleter" name="txtWorldDescription"/>
                  </item>
                 </layout>
                </widget>
@@ -1665,7 +1665,7 @@
                   </widget>
                  </item>
                  <item row="0" column="1">
-                  <widget class="textEditCompleter" name="txtWorldPassion"/>
+                  <widget class="MDEditCompleter" name="txtWorldPassion"/>
                  </item>
                  <item row="1" column="0">
                   <widget class="QLabel" name="label_34">
@@ -1675,7 +1675,7 @@
                   </widget>
                  </item>
                  <item row="1" column="1">
-                  <widget class="textEditCompleter" name="txtWorldConflict"/>
+                  <widget class="MDEditCompleter" name="txtWorldConflict"/>
                  </item>
                 </layout>
                </widget>
@@ -2616,6 +2616,11 @@
    <extends>QTextEdit</extends>
    <header>manuskript.ui.views.textEditView.h</header>
   </customwidget>
+   <customwidget>
+    <class>MDEditCompleter</class>
+    <extends>QTextEdit</extends>
+    <header>manuskript.ui.views.MDEditCompleter.h</header>
+   </customwidget>
   <customwidget>
    <class>lineEditView</class>
    <extends>QLineEdit</extends>
@@ -2682,11 +2687,6 @@
    <extends>QWidget</extends>
    <header>manuskript.ui.search.h</header>
    <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>textEditCompleter</class>
-   <extends>QTextEdit</extends>
-   <header>manuskript.ui.views.textEditCompleter.h</header>
   </customwidget>
   <customwidget>
    <class>storylineView</class>

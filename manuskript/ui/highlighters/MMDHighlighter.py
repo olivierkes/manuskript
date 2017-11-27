@@ -5,10 +5,10 @@ import re
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QTextCharFormat, QFont, QTextCursor, QFontMetrics
 
-from manuskript.ui.editors.basicHighlighter import basicHighlighter
+from manuskript.ui.highlighters import BasicHighlighter
 
 
-class MMDHighlighter(basicHighlighter):
+class MMDHighlighter(BasicHighlighter):
 
     MARKDOWN_REGEX = {
         'Bold':             '(\*\*)(.+?)(\*\*)',
@@ -27,20 +27,13 @@ class MMDHighlighter(basicHighlighter):
     }
 
     def __init__(self, editor, style="Default"):
-        basicHighlighter.__init__(self, editor)
+        BasicHighlighter.__init__(self, editor)
 
         self.editor = editor
 
         self.rules = {}
         for key in self.MARKDOWN_REGEX:
             self.rules[key] = re.compile(self.MARKDOWN_REGEX[key])
-
-    def highlightBlock(self, text):
-        basicHighlighter.highlightBlockBefore(self, text)
-
-        self.doHighlightBlock(text)
-
-        basicHighlighter.highlightBlockAfter(self, text)
 
     def doHighlightBlock(self, text):
         """

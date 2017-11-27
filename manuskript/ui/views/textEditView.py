@@ -7,13 +7,10 @@ from PyQt5.QtGui import QTextBlockFormat, QTextCharFormat, QFont, QColor, QIcon,
 from PyQt5.QtWidgets import QWidget, QTextEdit, qApp, QAction, QMenu
 
 from manuskript import settings
-from manuskript.enums import Outline
+from manuskript.enums import Outline, World, Character, Plot
 from manuskript import functions as F
 from manuskript.models.outlineModel import outlineModel
-from manuskript.ui.editors.MDFunctions import MDFormatSelection
-from manuskript.ui.editors.MMDHighlighter import MMDHighlighter
-from manuskript.ui.editors.basicHighlighter import basicHighlighter
-from manuskript.ui.editors.textFormat import textFormat
+from manuskript.ui.highlighters import BasicHighlighter
 from manuskript.ui import style as S
 
 try:
@@ -23,8 +20,8 @@ except ImportError:
 
 
 class textEditView(QTextEdit):
-    def __init__(self, parent=None, index=None, html=None, spellcheck=True, highlighting=False, dict="",
-                 autoResize=False):
+    def __init__(self, parent=None, index=None, html=None, spellcheck=True,
+                 highlighting=False, dict="", autoResize=False):
         QTextEdit.__init__(self, parent)
         self._column = Outline.text
         self._index = None
@@ -42,16 +39,18 @@ class textEditView(QTextEdit):
         # position, so we only have it's ID as reference. We store it to
         # update at the propper time.
         self._updateIndexFromID = None
+        self._themeData = None
+        self._highlighterClass = BasicHighlighter
 
         self.spellcheck = spellcheck
         self.currentDict = dict if dict else settings.dict
+        self._defaultFontSize = qApp.font().pointSize()
         self.highlighter = None
         self.setAutoResize(autoResize)
         self._defaultBlockFormat = QTextBlockFormat()
         self._defaultCharFormat = QTextCharFormat()
         self.highlightWord = ""
         self.highligtCS = False
-        self.defaultFontPointSize = qApp.font().pointSize()
         self._dict = None
         # self.document().contentsChanged.connect(self.submit, F.AUC)
 
@@ -80,7 +79,8 @@ class textEditView(QTextEdit):
         # Spellchecking
         if enchant and self.spellcheck:
             try:
-                self._dict = enchant.Dict(self.currentDict if self.currentDict else self.getDefaultLocale())
+                self._dict = enchant.Dict(self.currentDict if self.currentDict
+                                          else self.getDefaultLocale())
             except enchant.errors.DictNotFoundError:
                 self.spellcheck = False
 
@@ -88,7 +88,7 @@ class textEditView(QTextEdit):
             self.spellcheck = False
 
         if self._highlighting and not self.highlighter:
-            self.highlighter = basicHighlighter(self)
+            self.highlighter = self._highlighterClass(self)
             self.highlighter.setDefaultBlockFormat(self._defaultBlockFormat)
 
     def getDefaultLocale(self):
@@ -177,27 +177,11 @@ class textEditView(QTextEdit):
         self.updateText()
 
     def setupEditorForIndex(self, index):
-        # In which model are we editing?
-        if type(index.model()) != outlineModel:
-            self._textFormat = "text"
-            return
-
-        # what type of text are we editing?
-        if self._column not in [Outline.text, Outline.notes]:
-            self._textFormat = "text"
-
-        else:
-            self._textFormat = "md"
-
         # Setting highlighter
         if self._highlighting:
-            item = index.internalPointer()
-            if self._column in [Outline.text, Outline.notes]:
-                self.highlighter = MMDHighlighter(self)
-            else:
-                self.highlighter = basicHighlighter(self)
-
+            self.highlighter = self._highlighterClass(self)
             self.highlighter.setDefaultBlockFormat(self._defaultBlockFormat)
+            self.highlighter.updateColorScheme()
 
     def loadFontSettings(self):
         if self._fromTheme or \
@@ -209,8 +193,10 @@ class textEditView(QTextEdit):
         opt = settings.textEditor
         f = QFont()
         f.fromString(opt["font"])
-        background = opt["background"] if not opt["backgroundTransparent"] else "transparent"
-        foreground = opt["fontColor"] if not opt["backgroundTransparent"] else S.text
+        background = (opt["background"] if not opt["backgroundTransparent"]
+                      else "transparent")
+        foreground = opt["fontColor"] # if not opt["backgroundTransparent"]
+        #                               else S.text
         # self.setFont(f)
         self.setStyleSheet("""QTextEdit{{
             background: {bg};
@@ -230,6 +216,7 @@ class textEditView(QTextEdit):
                 maxWidth = "max-width: {}px;".format(opt["maxWidth"]) if opt["maxWidth"] else "",
                 )
             )
+        self._defaultFontSize = f.pointSize()
 
         # We set the parent background to the editor's background in case
         # there are margins. We check that the parent class is a QWidget because
@@ -266,6 +253,7 @@ class textEditView(QTextEdit):
         self._defaultBlockFormat = bf
 
         if self.highlighter:
+            self.highlighter.updateColorScheme()
             self.highlighter.setMisspelledColor(QColor(opt["misspelled"]))
             self.highlighter.setDefaultCharFormat(self._defaultCharFormat)
             self.highlighter.setDefaultBlockFormat(self._defaultBlockFormat)
@@ -415,7 +403,8 @@ class textEditView(QTextEdit):
             self.sizeChange()
 
     def sizeChange(self):
-        docHeight = self.document().size().height()
+        opt = settings.textEditor
+        docHeight = self.document().size().height() + 2 * opt["marginsTB"]
         if self.heightMin <= docHeight <= self.heightMax:
             self.setMinimumHeight(docHeight)
 
@@ -460,6 +449,31 @@ class textEditView(QTextEdit):
             event = QMouseEvent(QEvent.MouseButtonPress, event.pos(),
                                 Qt.LeftButton, Qt.LeftButton, Qt.NoModifier)
         QTextEdit.mousePressEvent(self, event)
+
+    def wheelEvent(self, event):
+        """
+        We catch wheelEvent if key modifier is CTRL to change font size.
+        Note: this should be in a class specific for main textEditView (#TODO).
+        """
+        if event.modifiers() & Qt.ControlModifier:
+            # Get the wheel angle.
+            d = event.angleDelta().y() / 120
+
+            # Update settings
+            f = QFont()
+            f.fromString(settings.textEditor["font"])
+            f.setPointSizeF(f.pointSizeF() + d)
+            settings.textEditor["font"] = f.toString()
+
+            # Update font to all textEditView. Drastically.
+            for w in F.mainWindow().findChildren(textEditView, QRegExp(".*")):
+                w.loadFontSettings()
+
+            # We tell the world that we accepted this event
+            event.accept()
+            return
+
+        QTextEdit.wheelEvent(self, event)
 
     class SpellAction(QAction):
         """A special QAction that returns the text in a signal. Used for spellckech."""
@@ -560,32 +574,6 @@ class textEditView(QTextEdit):
         QTextEdit.focusOutEvent(self, event)
         self.submit()
 
-    def focusInEvent(self, event):
-        """Finds textFormatter and attach them to that view."""
-        QTextEdit.focusInEvent(self, event)
-
-        p = self.parent()
-        while p.parent():
-            p = p.parent()
-
-        if self._index:
-            for tF in p.findChildren(textFormat, QRegExp(".*"), Qt.FindChildrenRecursively):
-                tF.updateFromIndex(self._index)
-                tF.setTextEdit(self)
-
-    def applyFormat(self, _format):
-
-        if self._textFormat == "md":
-
-            if _format == "Bold":
-                MDFormatSelection(self, 0)
-            elif _format == "Italic":
-                MDFormatSelection(self, 1)
-            elif _format == "Code":
-                MDFormatSelection(self, 2)
-            elif _format == "Clear":
-                MDFormatSelection(self)
-
     ###############################################################################
     # KEYBOARD SHORTCUTS
     ###############################################################################
@@ -596,7 +584,7 @@ class textEditView(QTextEdit):
         edit that has focus. So we can pass it the call for documents
         edits like: duplicate, move up, etc.
         """
-        if self._index and self._column == Outline.text.value:
+        if self._index and self._column == Outline.text:
             function = getattr(F.mainWindow().treeRedacOutline, functionName)
             function()
 

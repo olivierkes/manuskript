@@ -13,10 +13,9 @@ from manuskript import settings
 from manuskript.enums import Outline
 from manuskript.functions import allPaths, drawProgress
 from manuskript.ui.editors.locker import locker
-from manuskript.ui.editors.textFormat import textFormat
 from manuskript.ui.editors.themes import findThemePath, generateTheme, setThemeEditorDatas
 from manuskript.ui.editors.themes import loadThemeDatas
-from manuskript.ui.views.textEditView import textEditView
+from manuskript.ui.views.MDEditView import MDEditView
 
 try:
     import enchant
@@ -35,11 +34,11 @@ class fullScreenEditor(QWidget):
         self._geometries = {}
 
         # Text editor
-        self.editor = textEditView(self,
-                                   index=index,
-                                   spellcheck=settings.spellcheck,
-                                   highlighting=True,
-                                   dict=settings.dict)
+        self.editor = MDEditView(self,
+                                index=index,
+                                spellcheck=settings.spellcheck,
+                                highlighting=True,
+                                dict=settings.dict)
         self.editor.setFrameStyle(QFrame.NoFrame)
         self.editor.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.editor.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
@@ -65,11 +64,7 @@ class fullScreenEditor(QWidget):
 
         self.topPanel.layout().addStretch(1)
 
-        # Formatting
-        self.textFormat = textFormat(self)
-        self.topPanel.layout().addWidget(self.textFormat)
-        self.topPanel.layout().addStretch(1)
-
+        # Close
         self.btnClose = QPushButton(self)
         self.btnClose.setIcon(qApp.style().standardIcon(QStyle.SP_DialogCloseButton))
         self.btnClose.clicked.connect(self.close)

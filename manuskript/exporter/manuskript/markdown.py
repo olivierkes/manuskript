@@ -5,7 +5,7 @@ from PyQt5.QtWidgets import QPlainTextEdit, QGroupBox, qApp, QVBoxLayout, QCheck
 
 from manuskript.exporter.manuskript.plainText import plainText
 from manuskript.functions import mainWindow
-from manuskript.ui.editors.MMDHighlighter import MMDHighlighter
+from manuskript.ui.highlighters import MMDHighlighter
 from manuskript.ui.exporters.manuskript.plainTextSettings import exporterSettings
 
 
