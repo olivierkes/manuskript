@@ -97,3 +97,7 @@ class treeView(QTreeView, dndView, outlineBasics):
             pass
         else:
             QTreeView.mousePressEvent(self, event)
+
+    def mouseReleaseEvent(self, event):
+        QTreeView.mouseReleaseEvent(self, event)
+        outlineBasics.mouseReleaseEvent(self, event)
