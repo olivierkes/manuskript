@@ -102,8 +102,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # Main Menu
         for i in [self.actSave, self.actSaveAs, self.actCloseProject,
-                  self.menuEdit, self.menuView, self.menuTools, self.menuHelp,
-                  self.actImport, self.actCompile, self.actSettings]:
+                  self.menuEdit, self.menuView, self.menuOrganize,
+                  self.menuTools, self.menuHelp, self.actImport,
+                  self.actCompile, self.actSettings]:
             i.setEnabled(False)
 
         # Main Menu:: File
@@ -122,6 +123,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.actCopy.triggered.connect(self.documentsCopy)
         self.actCut.triggered.connect(self.documentsCut)
         self.actPaste.triggered.connect(self.documentsPaste)
+        self.actRename.triggered.connect(self.documentsRename)
         self.actDuplicate.triggered.connect(self.documentsDuplicate)
         self.actDelete.triggered.connect(self.documentsDelete)
         self.actMoveUp.triggered.connect(self.documentsMoveUp)
@@ -209,7 +211,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def tabMainChanged(self):
         "Called when main tab changes."
-        self.menuDocuments.menuAction().setVisible(self.tabMain.currentIndex() == self.TabRedac)
+        tabIsEditor = self.tabMain.currentIndex() == self.TabRedac
+        self.menuOrganize.menuAction().setEnabled(tabIsEditor)
+        for i in [self.actCut,
+                  self.actCopy,
+                  self.actPaste,
+                  self.actDelete,
+                  self.actRename]:
+            i.setEnabled(tabIsEditor)
 
     def focusChanged(self, old, new):
         """
@@ -449,6 +458,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def documentsPaste(self):
         "Paste clipboard item(s) into selected item."
         if self._lastFocus: self._lastFocus.paste()
+    def documentsRename(self):
+        "Rename selected item."
+        if self._lastFocus: self._lastFocus.rename()
     def documentsDuplicate(self):
         "Duplicate selected item(s)."
         if self._lastFocus: self._lastFocus.duplicate()
@@ -559,8 +571,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         for i in [self.actOpen, self.menuRecents]:
             i.setEnabled(False)
         for i in [self.actSave, self.actSaveAs, self.actCloseProject,
-                  self.menuEdit, self.menuView, self.menuTools, self.menuHelp,
-                  self.actImport, self.actCompile, self.actSettings]:
+                  self.menuEdit, self.menuView, self.menuOrganize,
+                  self.menuTools, self.menuHelp, self.actImport,
+                  self.actCompile, self.actSettings]:
             i.setEnabled(True)
 
         # Add project name to Window's name
@@ -603,8 +616,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         for i in [self.actOpen, self.menuRecents]:
             i.setEnabled(True)
         for i in [self.actSave, self.actSaveAs, self.actCloseProject,
-                  self.menuEdit, self.menuView, self.menuTools, self.menuHelp,
-                  self.actImport, self.actCompile, self.actSettings]:
+                  self.menuEdit, self.menuView, self.menuOrganize,
+                  self.menuTools, self.menuHelp, self.actImport,
+                  self.actCompile, self.actSettings]:
             i.setEnabled(False)
 
         # Set Window's name - no project loaded
@@ -1140,12 +1154,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Help box
         references = [
             (self.lytTabOverview,
-             self.tr("Enter informations about your book, and yourself."),
+             self.tr("Enter information about your book, and yourself."),
              0),
             (self.lytSituation,
              self.tr(
                      """The basic situation, in the form of a 'What if...?' question. Ex: 'What if the most dangerous
-                     evil wizard could wasn't abled to kill a baby?' (Harry Potter)"""),
+                     evil wizard wasn't able to kill a baby?' (Harry Potter)"""),
              1),
             (self.lytSummary,
              self.tr(

@@ -588,6 +588,7 @@ class textEditView(QTextEdit):
             function = getattr(F.mainWindow().treeRedacOutline, functionName)
             function()
 
+    def rename(self): self.callMainTreeView("rename")
     def duplicate(self): self.callMainTreeView("duplicate")
     def moveUp(self): self.callMainTreeView("moveUp")
     def moveDown(self): self.callMainTreeView("moveDown")
