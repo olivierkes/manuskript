@@ -43,6 +43,7 @@ class welcome(QWidget, Ui_welcome):
         self.btnCreateText = self.btnCreate.text()
 
         self.populateTemplates()
+        self._templates = self.templates()
 
     def updateValues(self):
         # Auto load
@@ -163,7 +164,7 @@ class welcome(QWidget, Ui_welcome):
     def createFile(self, filename=None, overwrite=False):
         """When starting a new project, ask for a place to save it.
         Datas are not loaded from file, so they must be populated another way."""
-        if filename is None:
+        if not filename:
             filename = QFileDialog.getSaveFileName(
                            self,
                            self.tr("Create New Project"),
@@ -185,9 +186,9 @@ class welcome(QWidget, Ui_welcome):
             self.loadDefaultDatas()
             self.mw.loadProject(filename, loadFromFile=False)
 
-            ###############################################################################
-            # TEMPLATES
-            ###############################################################################
+    ###############################################################################
+    # TEMPLATES
+    ###############################################################################
 
     def templates(self):
         return [
@@ -221,7 +222,7 @@ class welcome(QWidget, Ui_welcome):
         ]
 
     def changeTemplate(self, item, column):
-        template = [i for i in self.templates() if i[0] == item.text(0)]
+        template = [i for i in self._templates if i[0] == item.text(0)]
         self.btnCreate.setText(self.btnCreateText)
 
         # Selected item is a template
@@ -233,7 +234,7 @@ class welcome(QWidget, Ui_welcome):
         elif item.data(0, Qt.UserRole):
             name = item.data(0, Qt.UserRole)
             # Clear templates
-            self.template = self.templates()[0]
+            self.template = self._templates[0]
             self.updateTemplate()
             # Change button text
             self.btnCreate.setText("Open {}".format(name))
@@ -390,7 +391,7 @@ class welcome(QWidget, Ui_welcome):
         settings.initDefaultValues()
 
         if self.template:
-            t = [i for i in self.templates() if i[0] == self.template[0]]
+            t = [i for i in self._templates if i[0] == self.template[0]]
             if t and t[0][2] == "Non-fiction":
                 settings.viewMode = "simple"
 
