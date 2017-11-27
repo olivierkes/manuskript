@@ -8,7 +8,7 @@ from PyQt5.QtWidgets import QVBoxLayout, qApp, QStyle
 from manuskript import settings
 from manuskript.functions import AUC, mainWindow
 from manuskript.ui.editors.editorWidget_ui import Ui_editorWidget_ui
-from manuskript.ui.views.textEditView import textEditView
+from manuskript.ui.views.MDEditView import MDEditView
 from manuskript.ui.tools.splitDialog import splitDialog
 
 
@@ -178,7 +178,7 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
         self.updateTabTitle()
 
         def addTitle(itm):
-            edt = textEditView(self, html="<h{l}>{t}</h{l}>".format(l=min(itm.level() + 1, 5), t=itm.title()),
+            edt = MDEditView(self, html="<h{l}>{t}</h{l}>".format(l=min(itm.level() + 1, 5), t=itm.title()),
                                autoResize=True)
             edt.setFrameShape(QFrame.NoFrame)
             self.txtEdits.append(edt)
@@ -191,7 +191,7 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
             l.addWidget(line)
 
         def addText(itm):
-            edt = textEditView(self,
+            edt = MDEditView(self,
                                index=itm.index(),
                                spellcheck=self.spellcheck,
                                dict=settings.dict,

@@ -10,7 +10,7 @@ from PyQt5.QtGui import QPixmap, QPainter, QColor, QBrush, QImage, QTextBlockFor
 from PyQt5.QtWidgets import qApp, QFrame
 
 from manuskript.functions import allPaths, appPath, findBackground, findFirstFile
-from manuskript.ui.views.textEditView import textEditView
+from manuskript.ui.views.MDEditView import MDEditView
 
 _thumbCache = {}
 
@@ -270,7 +270,7 @@ def setThemeEditorDatas(editor, themeDatas, pixmap, screenRect):
 
 def addThemePreviewText(pixmap, themeDatas, screenRect):
     # Text
-    previewText = textEditView(highlighting=True)
+    previewText = MDEditView(highlighting=True)
     previewText.setFrameStyle(QFrame.NoFrame)
     previewText.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
     previewText.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)

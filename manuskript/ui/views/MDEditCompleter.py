@@ -7,7 +7,7 @@ from PyQt5.QtGui import QTextCursor, QFont, QFontMetrics
 from PyQt5.QtWidgets import QAction, qApp, QToolTip, QTextEdit
 
 from manuskript.ui.editors.completer import completer
-from manuskript.ui.views.textEditView import textEditView
+from manuskript.ui.views.MDEditView import MDEditView
 from manuskript.models import references as Ref
 
 try:
@@ -16,10 +16,10 @@ except ImportError:
     enchant = None
 
 
-class textEditCompleter(textEditView):
+class MDEditCompleter(MDEditView):
     def __init__(self, parent=None, index=None, html=None, spellcheck=True, highlighting=False, dict="",
                  autoResize=False):
-        textEditView.__init__(self, parent=parent, index=index, html=html, spellcheck=spellcheck, highlighting=True,
+        MDEditView.__init__(self, parent=parent, index=index, html=html, spellcheck=spellcheck, highlighting=True,
                               dict=dict, autoResize=autoResize)
 
         self.completer = None
@@ -30,7 +30,7 @@ class textEditCompleter(textEditView):
         self.document().documentLayoutChanged.connect(self.getRefRects)
 
     def setCurrentModelIndex(self, index):
-        textEditView.setCurrentModelIndex(self, index)
+        MDEditView.setCurrentModelIndex(self, index)
         if self._index and not self.completer:
             self.setCompleter(completer())
 
@@ -69,10 +69,10 @@ class textEditCompleter(textEditView):
                 # else:
                 # QToolTip.hideText()
                 # return True
-                # return textEditView.event(self, event)
+                # return MDEditView.event(self, event)
 
     def createStandardContextMenu(self):
-        menu = textEditView.createStandardContextMenu(self)
+        menu = MDEditView.createStandardContextMenu(self)
 
         a = QAction(self.tr("Insert reference"), menu)
         a.triggered.connect(self.popupCompleter)
@@ -96,7 +96,7 @@ class textEditCompleter(textEditView):
 
         if not self.completer or not isShortcut:
             self.completer.setVisible(False)
-            textEditView.keyPressEvent(self, event)
+            MDEditView.keyPressEvent(self, event)
             return
 
         self.popupCompleter()
@@ -110,7 +110,7 @@ class textEditCompleter(textEditView):
             self.completer.popup(self.textUnderCursor(select=True))
 
     def mouseMoveEvent(self, event):
-        textEditView.mouseMoveEvent(self, event)
+        MDEditView.mouseMoveEvent(self, event)
 
         onRef = [r for r in self.refRects if r.contains(event.pos())]
 
@@ -127,7 +127,7 @@ class textEditCompleter(textEditView):
             QToolTip.showText(self.mapToGlobal(event.pos()), Ref.tooltip(ref))
 
     def mouseReleaseEvent(self, event):
-        textEditView.mouseReleaseEvent(self, event)
+        MDEditView.mouseReleaseEvent(self, event)
         onRef = [r for r in self.refRects if r.contains(event.pos())]
         if onRef:
             cursor = self.cursorForPosition(event.pos())
@@ -137,7 +137,7 @@ class textEditCompleter(textEditView):
                 qApp.restoreOverrideCursor()
 
     def resizeEvent(self, event):
-        textEditView.resizeEvent(self, event)
+        MDEditView.resizeEvent(self, event)
         self.getRefRects()
 
     def getRefRects(self):

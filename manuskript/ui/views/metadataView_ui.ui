@@ -132,7 +132,7 @@
        </widget>
       </item>
       <item>
-       <widget class="textEditView" name="txtSummaryFull">
+       <widget class="MDEditCompleter" name="txtSummaryFull">
         <property name="frameShape">
          <enum>QFrame::NoFrame</enum>
         </property>
@@ -172,7 +172,7 @@
        <number>0</number>
       </property>
       <item>
-       <widget class="textEditCompleter" name="txtNotes">
+       <widget class="MDEditCompleter" name="txtNotes">
         <property name="frameShape">
          <enum>QFrame::NoFrame</enum>
         </property>
@@ -228,9 +228,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>textEditView</class>
+   <class>MDEditCompleter</class>
    <extends>QTextEdit</extends>
-   <header>manuskript.ui.views.textEditView.h</header>
+   <header>manuskript.ui.views.MDEditCompleter.h</header>
   </customwidget>
   <customwidget>
    <class>lineEditView</class>
@@ -248,11 +248,6 @@
    <extends>QWidget</extends>
    <header>manuskript.ui.views.propertiesView.h</header>
    <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>textEditCompleter</class>
-   <extends>QTextEdit</extends>
-   <header>manuskript.ui.views.textEditCompleter.h</header>
   </customwidget>
   <customwidget>
    <class>revisions</class>

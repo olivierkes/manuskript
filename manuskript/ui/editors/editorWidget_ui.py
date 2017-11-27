@@ -2,8 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/editors/editorWidget_ui.ui'
 #
-# Created: Fri Apr  8 20:03:08 2016
-#      by: PyQt5 UI code generator 5.2.1
+# Created by: PyQt5 UI code generator 5.5.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -23,7 +22,7 @@ class Ui_editorWidget_ui(object):
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.text)
         self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.txtRedacText = textEditView(self.text)
+        self.txtRedacText = MDEditView(self.text)
         self.txtRedacText.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.txtRedacText.setObjectName("txtRedacText")
         self.horizontalLayout_2.addWidget(self.txtRedacText)
@@ -31,8 +30,8 @@ class Ui_editorWidget_ui(object):
         self.folder = QtWidgets.QWidget()
         self.folder.setObjectName("folder")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.folder)
-        self.verticalLayout.setSpacing(0)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName("verticalLayout")
         self.scroll = QtWidgets.QScrollArea(self.folder)
         self.scroll.setAutoFillBackground(True)
@@ -75,6 +74,6 @@ class Ui_editorWidget_ui(object):
         _translate = QtCore.QCoreApplication.translate
         editorWidget_ui.setWindowTitle(_translate("editorWidget_ui", "Form"))
 
-from manuskript.ui.views.outlineView import outlineView
-from manuskript.ui.views.textEditView import textEditView
+from manuskript.ui.views.MDEditView import MDEditView
 from manuskript.ui.views.corkView import corkView
+from manuskript.ui.views.outlineView import outlineView

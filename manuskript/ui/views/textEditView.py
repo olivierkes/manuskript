@@ -11,8 +11,8 @@ from manuskript.enums import Outline, World, Character, Plot
 from manuskript import functions as F
 from manuskript.models.outlineModel import outlineModel
 from manuskript.ui.editors.MDFunctions import MDFormatSelection
-from manuskript.ui.highlighters import BasicHighlighter, MarkdownHighlighter
-from manuskript.ui.highlighters import MMDHighlighter
+from manuskript.ui.highlighters import BasicHighlighter
+# from manuskript.ui.highlighters import MMDHighlighter
 from manuskript.ui.editors.textFormat import textFormat
 from manuskript.ui import style as S
 
@@ -39,6 +39,7 @@ class textEditView(QTextEdit):
         # When setting up a theme, this becomes true.
         self._fromTheme = False
         self._themeData = None
+        self._highlighterClass = BasicHighlighter
 
         self.spellcheck = spellcheck
         self.currentDict = dict if dict else settings.dict
@@ -85,9 +86,9 @@ class textEditView(QTextEdit):
         else:
             self.spellcheck = False
 
-        if self._highlighting and not self.highlighter:
-            self.highlighter = BasicHighlighter(self)
-            self.highlighter.setDefaultBlockFormat(self._defaultBlockFormat)
+        # if self._highlighting and not self.highlighter:
+        #     self.highlighter = self._highlighterClass(self)
+        #     self.highlighter.setDefaultBlockFormat(self._defaultBlockFormat)
 
     def getDefaultLocale(self):
         default_locale = enchant.get_default_language()
@@ -175,26 +176,9 @@ class textEditView(QTextEdit):
         self.updateText()
 
     def setupEditorForIndex(self, index):
-        # Let's say we use markdown everywhere...
-        self._textFormat = "md"
-
         # Setting highlighter
         if self._highlighting:
-            # # item = index.internalPointer()
-            # if self._column in [
-            #         Outline.text.value,
-            #         Outline.notes.value,
-            #         Character.summaryFull.value,
-            #         Character.notes.value,
-            #         World.description.value,
-            #         World.passion.value,
-            #         World.conflict.value,
-            #         ]:
-            #FIXME: subclass textEdit instad of doing stuff like that
-            self.highlighter = MarkdownHighlighter(self)
-            # else:
-            #     self.highlighter = BasicHighlighter(self)
-
+            self.highlighter = self._highlighterClass(self)
             self.highlighter.setDefaultBlockFormat(self._defaultBlockFormat)
             self.highlighter.updateColorScheme()
 
