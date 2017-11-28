@@ -206,6 +206,7 @@ class fullScreenEditor(QWidget):
         # self.lblWC.setPalette(p)
 
         self.update()
+        self.editor.centerCursor()
 
     def paintEvent(self, event):
         if self._background:
@@ -307,9 +308,20 @@ class myScrollBar(QScrollBar):
         self.timer.timeout.connect(lambda: self.parent().hideWidget(self))
         self.valueChanged.connect(lambda v: self.timer.start())
         self.valueChanged.connect(lambda: self.parent().showWidget(self))
+        self.rangeChanged.connect(self.rangeHasChanged)
 
     def setColor(self, color):
         self._color = color
+
+    def rangeHasChanged(self, min, max):
+        """
+        Adds viewport height to scrollbar max so that we can center cursor
+        on screen.
+        """
+        if settings.textEditor["alwaysCenter"]:
+            self.blockSignals(True)
+            self.setMaximum(max + self.parent().height())
+            self.blockSignals(False)
 
     def paintEvent(self, event):
         opt = QStyleOptionSlider()

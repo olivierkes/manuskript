@@ -51,17 +51,21 @@ class MDEditView(textEditView):
     # TypeWriterScrolling
     ###########################################################################
 
+    def setCurrentModelIndex(self, index):
+        textEditView.setCurrentModelIndex(self, index)
+        self.centerCursor()
+
     def cursorPositionHasChanged(self):
         self.centerCursor()
 
     def centerCursor(self, force=False):
         cursor = self.cursorRect()
+        scrollbar = self.verticalScrollBar()
         viewport = self.viewport().rect()
         if (force or settings.textEditor["alwaysCenter"]
                 or cursor.bottom() >= viewport.bottom()
                 or cursor.top() <= viewport.top()):
             offset = viewport.center() - cursor.center()
-            scrollbar = self.verticalScrollBar()
             scrollbar.setValue(scrollbar.value() - offset.y())
 
     def scrollBarRangeChanged(self, min, max):
