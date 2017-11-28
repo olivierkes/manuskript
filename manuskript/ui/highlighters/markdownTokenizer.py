@@ -260,7 +260,7 @@ class MarkdownTokenizer(HighlightTokenizer):
             else:
                 # Restart tokenizing on the previous line.
                 self.requestBacktrack()
-                False
+                return False
 
         return False
 
@@ -450,7 +450,6 @@ class MarkdownTokenizer(HighlightTokenizer):
                 MS.MarkdownStateBlockquote,
                 MS.MarkdownStateNumberedList,
                 MS.MarkdownStateBulletPointList,]:
-                self.requestBacktrack()
                 if self.lineBreakRegex.exactMatch(text):
                     token = Token()
                     token.type = MTT.TokenLineBreak
