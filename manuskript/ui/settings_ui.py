@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/settings_ui.ui'
 #
-# Created by: PyQt5 UI code generator 5.9
+# Created by: PyQt5 UI code generator 5.5.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -1291,6 +1291,13 @@ class Ui_Settings(object):
         self.chkEditorNoBlinking.setFont(font)
         self.chkEditorNoBlinking.setObjectName("chkEditorNoBlinking")
         self.formLayout_10.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.chkEditorNoBlinking)
+        self.chkEditorTypeWriterMode = QtWidgets.QCheckBox(self.groupBox_15)
+        font = QtGui.QFont()
+        font.setBold(False)
+        font.setWeight(50)
+        self.chkEditorTypeWriterMode.setFont(font)
+        self.chkEditorTypeWriterMode.setObjectName("chkEditorTypeWriterMode")
+        self.formLayout_10.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.chkEditorTypeWriterMode)
         self.verticalLayout_22.addWidget(self.groupBox_15)
         self.horizontalLayout_4.addLayout(self.verticalLayout_22)
         icon = QtGui.QIcon.fromTheme("view-text")
@@ -1480,7 +1487,6 @@ class Ui_Settings(object):
         self.layoutWidget = QtWidgets.QWidget(self.splitter)
         self.layoutWidget.setObjectName("layoutWidget")
         self.verticalLayout_14 = QtWidgets.QVBoxLayout(self.layoutWidget)
-        self.verticalLayout_14.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_14.setObjectName("verticalLayout_14")
         self.cmbThemeEdit = QtWidgets.QComboBox(self.layoutWidget)
         self.cmbThemeEdit.setObjectName("cmbThemeEdit")
@@ -1495,7 +1501,6 @@ class Ui_Settings(object):
         self.stackedWidgetPage1_2.setObjectName("stackedWidgetPage1_2")
         self.formLayout_4 = QtWidgets.QFormLayout(self.stackedWidgetPage1_2)
         self.formLayout_4.setFieldGrowthPolicy(QtWidgets.QFormLayout.AllNonFixedFieldsGrow)
-        self.formLayout_4.setContentsMargins(0, 0, 0, 0)
         self.formLayout_4.setObjectName("formLayout_4")
         self.label_17 = QtWidgets.QLabel(self.stackedWidgetPage1_2)
         self.label_17.setObjectName("label_17")
@@ -1527,7 +1532,6 @@ class Ui_Settings(object):
         self.stackedWidgetPage2_2.setObjectName("stackedWidgetPage2_2")
         self.formLayout_5 = QtWidgets.QFormLayout(self.stackedWidgetPage2_2)
         self.formLayout_5.setFieldGrowthPolicy(QtWidgets.QFormLayout.AllNonFixedFieldsGrow)
-        self.formLayout_5.setContentsMargins(0, 0, 0, 0)
         self.formLayout_5.setObjectName("formLayout_5")
         self.label_20 = QtWidgets.QLabel(self.stackedWidgetPage2_2)
         self.label_20.setObjectName("label_20")
@@ -1625,7 +1629,6 @@ class Ui_Settings(object):
         self.page_2.setObjectName("page_2")
         self.formLayout_7 = QtWidgets.QFormLayout(self.page_2)
         self.formLayout_7.setFieldGrowthPolicy(QtWidgets.QFormLayout.AllNonFixedFieldsGrow)
-        self.formLayout_7.setContentsMargins(0, 0, 0, 0)
         self.formLayout_7.setObjectName("formLayout_7")
         self.label_29 = QtWidgets.QLabel(self.page_2)
         self.label_29.setObjectName("label_29")
@@ -1675,7 +1678,6 @@ class Ui_Settings(object):
         self.stackedWidgetPage3_2.setObjectName("stackedWidgetPage3_2")
         self.formLayout_6 = QtWidgets.QFormLayout(self.stackedWidgetPage3_2)
         self.formLayout_6.setFieldGrowthPolicy(QtWidgets.QFormLayout.AllNonFixedFieldsGrow)
-        self.formLayout_6.setContentsMargins(0, 0, 0, 0)
         self.formLayout_6.setObjectName("formLayout_6")
         self.label_26 = QtWidgets.QLabel(self.stackedWidgetPage3_2)
         self.label_26.setObjectName("label_26")
@@ -1778,7 +1780,7 @@ class Ui_Settings(object):
         self.horizontalLayout_8.addWidget(self.stack)
 
         self.retranslateUi(Settings)
-        self.stack.setCurrentIndex(5)
+        self.stack.setCurrentIndex(2)
         self.tabViews.setCurrentIndex(3)
         self.themeStack.setCurrentIndex(1)
         self.themeEditStack.setCurrentIndex(3)
@@ -1970,6 +1972,7 @@ class Ui_Settings(object):
         self.chkEditorCursorWidth.setText(_translate("Settings", "Use block insertion of"))
         self.spnEditorCursorWidth.setSuffix(_translate("Settings", " px"))
         self.chkEditorNoBlinking.setText(_translate("Settings", "Disable blinking"))
+        self.chkEditorTypeWriterMode.setText(_translate("Settings", "Typewriter mode"))
         self.tabViews.setTabText(self.tabViews.indexOf(self.tab_4), _translate("Settings", "Text editor"))
         self.lblTitleLabels.setText(_translate("Settings", "Labels"))
         self.btnLabelColor.setShortcut(_translate("Settings", "Ctrl+S"))

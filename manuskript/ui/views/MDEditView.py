@@ -9,6 +9,7 @@ from PyQt5.QtGui import QTextCursor
 
 from manuskript.ui.views.textEditView import textEditView
 from manuskript.ui.highlighters import MarkdownHighlighter
+from manuskript import settings
 # from manuskript.ui.editors.textFormat import textFormat
 # from manuskript.ui.editors.MDFunctions import MDFormatSelection
 
@@ -28,6 +29,10 @@ class MDEditView(textEditView):
             # We have to setup things anew, for the highlighter notably
             self.setCurrentModelIndex(index)
 
+        self.cursorPositionChanged.connect(self.cursorPositionHasChanged)
+        self.verticalScrollBar().rangeChanged.connect(
+            self.scrollBarRangeChanged)
+
     # def focusInEvent(self, event):
     #     """Finds textFormatter and attach them to that view."""
     #     textEditView.focusInEvent(self, event)
@@ -41,6 +46,33 @@ class MDEditView(textEditView):
     #                                  Qt.FindChildrenRecursively):
     #             tF.updateFromIndex(self._index)
     #             tF.setTextEdit(self)
+
+    ###########################################################################
+    # TypeWriterScrolling
+    ###########################################################################
+
+    def cursorPositionHasChanged(self):
+        self.centerCursor()
+
+    def centerCursor(self, force=False):
+        cursor = self.cursorRect()
+        viewport = self.viewport().rect()
+        if (force or settings.textEditor["alwaysCenter"]
+                or cursor.bottom() >= viewport.bottom()
+                or cursor.top() <= viewport.top()):
+            offset = viewport.center() - cursor.center()
+            scrollbar = self.verticalScrollBar()
+            scrollbar.setValue(scrollbar.value() - offset.y())
+
+    def scrollBarRangeChanged(self, min, max):
+        """
+        Adds viewport height to scrollbar max so that we can center cursor
+        on screen.
+        """
+        if settings.textEditor["alwaysCenter"]:
+            self.verticalScrollBar().blockSignals(True)
+            self.verticalScrollBar().setMaximum(max + self.viewport().height())
+            self.verticalScrollBar().blockSignals(False)
 
     ###########################################################################
     # FORMATTING (#FIXME)
