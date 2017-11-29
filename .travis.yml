@@ -11,7 +11,7 @@ before_deploy:
 - pyinstaller manuskript.spec --clean
 - cd dist && zip $FILENAME -r manuskript && cd ..
 - ls dist
-- cp dist/$FILENAME dist/manuskript-develop.zip
+- cp dist/$FILENAME dist/manuskript-osx-develop.zip
 deploy:
   - provider: releases
     api_key:
@@ -22,7 +22,7 @@ deploy:
     on:
         tags: true
   - provider: script
-    script: "curl -T dist/manuskript-develop.zip -u hfpn_semaphoreci:$FTP_PASSWORD ftp://www.theologeek.ch/web/manuskript/releases"
+    script: "curl -T dist/manuskript-osx-develop.zip -u hfpn_semaphoreci:$FTP_PASSWORD ftp://www.theologeek.ch/web/manuskript/releases/ -v"
     skip_cleanup: true
     on:
         branch: develop
