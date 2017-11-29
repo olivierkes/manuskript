@@ -198,6 +198,8 @@ class settingsWindow(QWidget, Ui_Settings):
         self.spnEditorCursorWidth.setEnabled(opt["cursorWidth"] != 1)
         self.chkEditorNoBlinking.setChecked(opt["cursorNotBlinking"])
         self.chkEditorNoBlinking.stateChanged.connect(self.setApplicationCursorBlinking)
+        self.chkEditorTypeWriterMode.setChecked(opt["alwaysCenter"])
+        self.chkEditorTypeWriterMode.stateChanged.connect(self.updateEditorSettings)
             # Text areas
         self.chkEditorMaxWidth.setChecked(opt["maxWidth"] != 0)
         self.chkEditorMaxWidth.stateChanged.connect(self.updateEditorSettings)
@@ -479,6 +481,7 @@ class settingsWindow(QWidget, Ui_Settings):
             1 if not self.chkEditorCursorWidth.isChecked() else \
             self.spnEditorCursorWidth.value()
         self.spnEditorCursorWidth.setEnabled(self.chkEditorCursorWidth.isChecked())
+        settings.textEditor["alwaysCenter"] = self.chkEditorTypeWriterMode.isChecked()
 
         # Text area
         settings.textEditor["maxWidth"] = \
