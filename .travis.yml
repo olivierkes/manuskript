@@ -1,4 +1,3 @@
-# according to the internet Python envs are hard and it's better to build them from scratch
 language: cpp
 os:
 - osx
@@ -12,6 +11,8 @@ before_deploy:
 - pyinstaller manuskript.spec --clean
 - cd dist && zip $FILENAME -r manuskript && cd ..
 - ls dist
+- cp dist/$FILENAME dist/manuskript-develop.zip
+- "curl -T dist/manuskript-develop.zip -u hfpn_semaphoreci:$FTP_PASSWORD ftp://www.theologeek.ch/web/manuskript/releases"
 deploy:
   provider: releases
   api_key:
@@ -21,3 +22,6 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
+env:
+  global:
+    secure: LCEMJ4+mBd+2tzI3CDf7WMD+5tDMQbT5y/r7beKOa/c3+0Iyce3U5Q9dxYRB8Y3V46euLElySOQIdgBMp08h1Ph2L8oFvrgKwSk5/n8Nnvpe5NSmfkPPqIyiuxmKGecjsW8dJ0f18OVyN85JueOaSov6gMcqZkIQqKEw5CXdClg678wbNmfKcSO1oTe+UKZ+uJjeZGBlsPiID78dximbD59r6Au71gDb/iW124pSKcpluBHR2auUMi8WXoff3nvgbTm0So/K137OlB7pqzy5YHrqZg+kQ+SnLh47/TAjLclYEgbBRlrpBNMqmZXH+B99qhl0HdHglSGqltwEUc48r46j26lQFjqD5ng0XWZFS44MyBdQFdq/s4HyCzlQKranT/q6HFrRZQwsb7eFfJNS4JmaGX3LB7v+IQJh4vMVtizrIYenVwdeGMJWrRA+3VHO9GYTcvCDNpQG/ZWWcjLxxENtUlI+DVyNq7L8gZI5tFAHypsmcqweAq0II7rOwiNoj4Vib5vfvC2n6BAISTuojMMcBOHqOIci4WkroheZGtoF49kc936zOnOFPlauqkB8lq2AS4xd9Y4PDf6YGs+HE23Sx8Jy/c/WPKItQ+aP4nnIcgP8I6BCJfjSvZdAU+S/KzVd5Wrke7pwHiCX9T9hs8npFpNishDMTPChKTy7MRQ=
