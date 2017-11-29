@@ -17,6 +17,7 @@ from manuskript.ui.tools.splitDialog import splitDialog
 class outlineBasics(QAbstractItemView):
     def __init__(self, parent=None):
         self._indexesToOpen = None
+        self.menuCustomIcons = None
 
     def getSelection(self):
         sel = []
@@ -112,8 +113,6 @@ class outlineBasics(QAbstractItemView):
         self.actPaste.triggered.connect(self.paste)
         menu.addAction(self.actPaste)
 
-        menu.addSeparator()
-
         # Rename / duplicate / remove items
         self.actDelete = QAction(QIcon.fromTheme("edit-delete"),
                                  qApp.translate("outlineBasics", "&Delete"),
@@ -190,53 +189,50 @@ class outlineBasics(QAbstractItemView):
         menu.addSeparator()
 
         # Custom icons
-        self.menuCustomIcons = QMenu(qApp.translate("outlineBasics", "Set Custom Icon"), menu)
-        a = QAction(qApp.translate("outlineBasics", "Restore to default"), self.menuCustomIcons)
-        a.triggered.connect(lambda: self.setCustomIcon(""))
-        self.menuCustomIcons.addAction(a)
-        self.menuCustomIcons.addSeparator()
+        if self.menuCustomIcons:
+            menu.addMenu(self.menuCustomIcons)
+        else:
+            self.menuCustomIcons = QMenu(qApp.translate("outlineBasics", "Set Custom Icon"), menu)
+            a = QAction(qApp.translate("outlineBasics", "Restore to default"), self.menuCustomIcons)
+            a.triggered.connect(lambda: self.setCustomIcon(""))
+            self.menuCustomIcons.addAction(a)
+            self.menuCustomIcons.addSeparator()
 
-        txt = QLineEdit()
-        txt.textChanged.connect(self.filterLstIcons)
-        txt.setPlaceholderText("Filter icons")
-        txt.setStyleSheet("background: transparent; border: none;")
-        act = QWidgetAction(self.menuCustomIcons)
-        act.setDefaultWidget(txt)
-        self.menuCustomIcons.addAction(act)
+            txt = QLineEdit()
+            txt.textChanged.connect(self.filterLstIcons)
+            txt.setPlaceholderText("Filter icons")
+            txt.setStyleSheet("background: transparent; border: none;")
+            act = QWidgetAction(self.menuCustomIcons)
+            act.setDefaultWidget(txt)
+            self.menuCustomIcons.addAction(act)
 
-        self.lstIcons = QListWidget()
-        for i in customIcons():
-            item = QListWidgetItem()
-            item.setIcon(QIcon.fromTheme(i))
-            item.setData(Qt.UserRole, i)
-            item.setToolTip(i)
-            self.lstIcons.addItem(item)
-        self.lstIcons.itemClicked.connect(self.setCustomIconFromItem)
-        self.lstIcons.setViewMode(self.lstIcons.IconMode)
-        self.lstIcons.setUniformItemSizes(True)
-        self.lstIcons.setResizeMode(self.lstIcons.Adjust)
-        self.lstIcons.setMovement(self.lstIcons.Static)
-        self.lstIcons.setStyleSheet("background: transparent; background: none;")
-        self.filterLstIcons("")
-        act = QWidgetAction(self.menuCustomIcons)
-        act.setDefaultWidget(self.lstIcons)
-        self.menuCustomIcons.addAction(act)
+            self.lstIcons = QListWidget()
+            for i in customIcons():
+                item = QListWidgetItem()
+                item.setIcon(QIcon.fromTheme(i))
+                item.setData(Qt.UserRole, i)
+                item.setToolTip(i)
+                self.lstIcons.addItem(item)
+            self.lstIcons.itemClicked.connect(self.setCustomIconFromItem)
+            self.lstIcons.setViewMode(self.lstIcons.IconMode)
+            self.lstIcons.setUniformItemSizes(True)
+            self.lstIcons.setResizeMode(self.lstIcons.Adjust)
+            self.lstIcons.setMovement(self.lstIcons.Static)
+            self.lstIcons.setStyleSheet("background: transparent; background: none;")
+            self.filterLstIcons("")
+            act = QWidgetAction(self.menuCustomIcons)
+            act.setDefaultWidget(self.lstIcons)
+            self.menuCustomIcons.addAction(act)
 
-        menu.addMenu(self.menuCustomIcons)
+            menu.addMenu(self.menuCustomIcons)
 
         # Disabling stuff
-        if len(sel) > 0 and index.isValid() and not index.internalPointer().isFolder() \
-                or not clipboard.mimeData().hasFormat("application/xml"):
+        if not clipboard.mimeData().hasFormat("application/xml"):
             self.actPaste.setEnabled(False)
-
-        if len(sel) > 0 and index.isValid() and not index.internalPointer().isFolder():
-            self.actAddFolder.setEnabled(False)
-            self.actAddText.setEnabled(False)
 
         if len(sel) == 0:
             self.actCopy.setEnabled(False)
             self.actCut.setEnabled(False)
-            self.actDuplicate.setEnabled(False)
             self.actRename.setEnabled(False)
             self.actDelete.setEnabled(False)
             self.menuPOV.setEnabled(False)
@@ -298,7 +294,7 @@ class outlineBasics(QAbstractItemView):
         if len(self.getSelection()) == 0:
             index = self.rootIndex()
 
-        if mimeData is None:
+        if not mimeData:
             mimeData = qApp.clipboard().mimeData()
 
         self.model().dropMimeData(mimeData, Qt.CopyAction, -1, 0, index)
