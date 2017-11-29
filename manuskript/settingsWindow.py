@@ -92,6 +92,10 @@ class settingsWindow(QWidget, Ui_Settings):
 
         self.cmbTranslation.currentIndexChanged.connect(self.setTranslation)
 
+        f = qApp.font()
+        self.spnGeneralFontSize.setValue(f.pointSize())
+        self.spnGeneralFontSize.valueChanged.connect(self.setAppFontSize)
+
         self.txtAutoSave.setValidator(QIntValidator(0, 999, self))
         self.txtAutoSaveNoChanges.setValidator(QIntValidator(0, 999, self))
         self.chkAutoSave.setChecked(settings.autoSave)
@@ -301,6 +305,17 @@ class settingsWindow(QWidget, Ui_Settings):
         sttgs.setValue("applicationTranslation", path)
 
         # QMessageBox.information(self, "Warning", "You'll have to restart manuskript.")
+
+    def setAppFontSize(self, val):
+        """
+        Set application default font point size.
+        """
+        f = qApp.font()
+        f.setPointSize(val)
+        qApp.setFont(f)
+        mainWindow().setFont(f)
+        sttgs = QSettings(qApp.organizationName(), qApp.applicationName())
+        sttgs.setValue("appFontSize", val)
 
     def saveSettingsChanged(self):
         if self.txtAutoSave.text() in ["", "0"]:

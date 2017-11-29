@@ -57,6 +57,12 @@ def prepare(tests=False):
     QIcon.setThemeSearchPaths(QIcon.themeSearchPaths() + [appPath("icons")])
     QIcon.setThemeName("NumixMsk")
 
+    # Font siue
+    if settings.contains("appFontSize"):
+        f = qApp.font()
+        f.setPointSize(settings.value("appFontSize", type=int))
+        app.setFont(f)
+
     # Main window
     from manuskript.mainWindow import MainWindow
 
