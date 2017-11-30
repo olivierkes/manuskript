@@ -64,7 +64,13 @@ class welcome(QWidget, Ui_welcome):
         # Auto load last project
         autoLoad, last = self.getAutoLoadValues()
 
-        if autoLoad and last:
+        if self.mw._autoLoadProject:
+            project = self.mw._autoLoadProject
+            self.mw._autoLoadProject = None
+            self.appendToRecentFiles(project)
+            self.mw.loadProject(project)
+
+        elif autoLoad and last:
             self.mw.loadProject(last)
 
     def getAutoLoadValues(self):

@@ -71,6 +71,12 @@ def prepare(tests=False):
     # later if necessary
     MW._defaultCursorFlashTime = qApp.cursorFlashTime()
 
+    # Command line project
+    if len(sys.argv) > 1 and sys.argv[1][-4:] == ".msk":
+        if os.path.exists(sys.argv[1]):
+            path = os.path.abspath(sys.argv[1])
+            MW._autoLoadProject = path
+
     return app, MW
 
 def launch(MW = None):
