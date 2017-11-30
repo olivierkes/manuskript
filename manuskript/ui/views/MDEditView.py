@@ -11,11 +11,13 @@ from manuskript.ui.views.textEditView import textEditView
 from manuskript.ui.highlighters import MarkdownHighlighter
 from manuskript import settings
 from manuskript.ui.highlighters.markdownEnums import MarkdownState as MS
-# from manuskript.ui.editors.textFormat import textFormat
-# from manuskript.ui.editors.MDFunctions import MDFormatSelection
 
 
 class MDEditView(textEditView):
+
+    blockquoteRegex = QRegExp("^ {0,3}(>\\s*)+")
+    listRegex = QRegExp("^(\\s*)([+*-]|([0-9a-z])+([.\)]))(\\s+)")
+
     def __init__(self, parent=None, index=None, html=None, spellcheck=True,
                  highlighting=False, dict="", autoResize=False):
         textEditView.__init__(self, parent, index, html, spellcheck,
@@ -34,19 +36,131 @@ class MDEditView(textEditView):
         self.verticalScrollBar().rangeChanged.connect(
             self.scrollBarRangeChanged)
 
-    # def focusInEvent(self, event):
-    #     """Finds textFormatter and attach them to that view."""
-    #     textEditView.focusInEvent(self, event)
-    #
-    #     p = self.parent()
-    #     while p.parent():
-    #         p = p.parent()
-    #
-    #     if self._index:
-    #         for tF in p.findChildren(textFormat, QRegExp(".*"),
-    #                                  Qt.FindChildrenRecursively):
-    #             tF.updateFromIndex(self._index)
-    #             tF.setTextEdit(self)
+    ###########################################################################
+    # KEYPRESS
+    ###########################################################################
+
+    def keyPressEvent(self, event):
+        k = event.key()
+        m = event.modifiers()
+        cursor = self.textCursor()
+
+        # RETURN
+        if k == Qt.Key_Return:
+            if not cursor.hasSelection():
+                if m & Qt.ShiftModifier:
+                    # Insert Markdown-style line break
+                    cursor.insertText("  ")
+
+                if m & Qt.ControlModifier:
+                    cursor.insertText("\n")
+                else:
+                    self.handleCarriageReturn()
+            else:
+                textEditView.keyPressEvent(self, event)
+
+        # TAB
+        elif k == Qt.Key_Tab:
+            #self.indentText()
+            # FIXME
+            textEditView.keyPressEvent(self, event)
+        elif k == Qt.Key_Backtab:
+            #self.unindentText()
+            # FIXME
+            textEditView.keyPressEvent(self, event)
+
+        else:
+            textEditView.keyPressEvent(self, event)
+
+    # Thanks to GhostWriter, mainly
+    def handleCarriageReturn(self):
+        autoInsertText = "";
+        cursor = self.textCursor()
+        endList = False
+        moveBack = False
+        text = cursor.block().text()
+
+        if cursor.positionInBlock() < cursor.block().length() - 1:
+            autoInsertText = self.getPriorIndentation()
+            if cursor.positionInBlock() < len(autoInsertText):
+                autoInsertText = autoInsertText[:cursor.positionInBlock()]
+
+        else:
+            s = cursor.block().userState()
+
+            if s in [MS.MarkdownStateNumberedList,
+                     MS.MarkdownStateBulletPointList]:
+                self.listRegex.indexIn(text)
+                g = self.listRegex.capturedTexts()
+                    # 0 = "   a. " or "  * "
+                    # 1 = "   "       "  "
+                    # 2 =    "a."       "*"
+                    # 3 =    "a"          ""
+                    # 4 =     "."         ""
+                    # 5 =      " "        " "
+
+                # If the line of text is an empty list item, end the list.
+                if len(g[0].strip()) == len(text.strip()):
+                    endList = True
+
+                # Else increment the list number
+                elif g[3]:  # Numbered list
+                    try: # digit
+                        i = int(g[3])+1
+
+                    except: # letter
+                        i = chr(ord(g[3])+1)
+
+                    autoInsertText = "{}{}{}{}".format(
+                            g[1], i, g[4], g[5])
+
+                else:  # Bullet list
+                    autoInsertText = g[0]
+
+                if text[-2:] == "  ":
+                    autoInsertText = " " * len(autoInsertText)
+
+            elif s == MS.MarkdownStateBlockquote:
+                self.blockquoteRegex.indexIn(text)
+                g = self.blockquoteRegex.capturedTexts()
+                autoInsertText = g[0]
+
+            elif s in [MS.MarkdownStateInGithubCodeFence,
+                       MS.MarkdownStateInPandocCodeFence] and \
+                 cursor.block().previous().userState() != s:
+                autoInsertText = "\n" + text
+                moveBack = True
+
+            else:
+                autoInsertText = self.getPriorIndentation()
+
+        # Clear the list
+        if endList:
+            autoInsertText = self.getPriorIndentation()
+            cursor.movePosition(QTextCursor.StartOfBlock)
+            cursor.movePosition(QTextCursor.EndOfBlock, QTextCursor.KeepAnchor)
+            cursor.insertText(autoInsertText)
+            autoInsertText = ""
+
+        # Finally, we insert
+        cursor.insertText("\n" + autoInsertText)
+        if moveBack:
+            cursor.movePosition(QTextCursor.PreviousBlock)
+            self.setTextCursor(cursor)
+
+        self.ensureCursorVisible()
+
+    def getPriorIndentation(self):
+        text = self.textCursor().block().text()
+        l = len(text) - len(text.lstrip())
+        return text[:l]
+
+    def getPriorMarkdownBlockItemStart(self, itemRegex):
+        text = self.textCursor().block().text()
+        if itemRegex.indexIn(text) >= 0:
+            return text[itemRegex.matchedLength():]
+
+        return ""
 
     ###########################################################################
     # TypeWriterScrolling
@@ -159,7 +273,7 @@ class MDEditView(textEditView):
 
     def lineFormattingMarkup(self, markup):
         """
-        Adds (or remove if present) `markup` at the begining of block.
+        Adds `markup` at the begining of block.
         """
         cursor = self.textCursor()
         cursor.movePosition(cursor.StartOfBlock)
