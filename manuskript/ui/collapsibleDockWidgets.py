@@ -52,6 +52,7 @@ class collapsibleDockWidgets(QToolBar):
         self.currentGroup = None
 
         self.setStyleSheet(style.toolBarSS())
+        self.layout().setContentsMargins(0,0,0,0)
 
     def _dockWidgets(self):
         mw = self.parent()
@@ -61,7 +62,7 @@ class collapsibleDockWidgets(QToolBar):
     def addCustomWidget(self, text, widget, group=None, defaultVisibility=True):
         """
         Adds a custom widget to the toolbar.
-        
+
         `text` is the name that will displayed on the button to switch visibility.
         `widget` is the widget to control from the toolbar.
         `group` is an integer (or any hashable) if the current widget should not

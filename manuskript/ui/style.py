@@ -38,6 +38,7 @@ highlightedTextDark = F.mixColors(highlight, text, .3)
 highlightedTextLight = F.mixColors(highlight, highlightedText)
 midlighter = F.mixColors(mid, window, .4)
 textLight = F.mixColors(window, text)
+textLighter = F.mixColors(window, text, .85)
 
 
 #from manuskript.ui import style as S
@@ -160,25 +161,25 @@ def mainEditorTabSS():
     if not settings.textEditor["backgroundTransparent"]:
         SS = """
             QTabWidget::pane{{
-                margin-top: -1px;
-                border: 1px solid {borderColor};
+                margin-top: -{bw}px;
+                border: {bw}px solid {borderColor};
             }}
             QTabWidget::tab-bar{{
                 left:50px;
             }}
             QTabBar{{
-                background: transparent;
+                background: {bgColor};
                 border-radius: 0;
                 border: 0px;
             }}
             QTabBar::tab{{
                 padding: 2px 9px;
-                border: 1px solid {borderColor};
+                border: {bw}px solid {borderColor};
                 border-bottom: 0px;
             }}
             QTabBar::tab:selected{{
-                border: 1px solid {borderColor};
-                background: {bgColor};
+                border: {bw}px solid {borderColor};
+                background: {bgColorSelected};
                 border-bottom: 0px;
                 color: {foreground};
             }}
@@ -187,32 +188,34 @@ def mainEditorTabSS():
                 color: {highlightedText};
             }}
             """.format(
-                bgColor=settings.textEditor["background"],
+                bgColor=textLighter,
+                bgColorSelected=settings.textEditor["background"],
                 foreground=settings.textEditor["fontColor"],
                 borderColor=mid,
                 highlight=highlight,
                 highlightedText=highlightedText,
+                bw=0,
             )
     else:
         # Transparent text view
         SS = """
             QTabWidget::pane{{
-                margin-top: -1px;
+                margin-top: -{bw}px;
                 border: none;
             }}
             QTabWidget::tab-bar{{
                 left:50px;
             }}
             QTabBar{{
-                background: transparent;
+                background: {bgColor};
                 border: 0px;
             }}
             QTabBar::tab{{
                 padding: 2px 9px;
-                border: 1px solid {borderColor};
+                border: {bw}px solid {borderColor};
             }}
             QTabBar::tab:selected{{
-                border: 1px solid {borderColor};
+                border: {bw}px solid {borderColor};
                 background: {highlight};
                 color: {highlightedText};
             }}
@@ -221,10 +224,12 @@ def mainEditorTabSS():
                 color: {highlightedText};
             }}
             """.format(
-                highlight=highlight,
-                highlightedText=highlightedText,
+                bgColor=textLighter,
+                highlight=highlightLight,
+                highlightedText=text,
                 text=text,
                 borderColor=mid,
+                bw=0,
             )
 
     # Add scrollbar
@@ -237,9 +242,9 @@ def toolBarSS():
     return """
         QToolBar{{
             background:transparent;
-            border: 0;
-            border-left: 1px solid {border};
+            border:none;
             spacing: 0px;
+            margin-top:40px;
         }}
         QToolBar:separator{{
             border: none;
@@ -251,7 +256,7 @@ def toolBarSS():
 def verticalToolButtonSS():
     return """
         QToolButton{{
-            border: none;
+            border: 0;
             border-radius: 0px;
             background: transparent;
             margin: 0px;
@@ -267,7 +272,7 @@ def verticalToolButtonSS():
         }}
         """.format(
         borderColor=mid,
-        bgChecked=midlighter,
+        bgChecked=textLighter,
         bgHover=highlightLight,
     )
 
