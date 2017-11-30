@@ -10,6 +10,7 @@ from PyQt5.QtGui import QTextCursor
 from manuskript.ui.views.textEditView import textEditView
 from manuskript.ui.highlighters import MarkdownHighlighter
 from manuskript import settings
+from manuskript.ui.highlighters.markdownEnums import MarkdownState as MS
 # from manuskript.ui.editors.textFormat import textFormat
 # from manuskript.ui.editors.MDFunctions import MDFormatSelection
 
@@ -79,16 +80,8 @@ class MDEditView(textEditView):
             self.verticalScrollBar().blockSignals(False)
 
     ###########################################################################
-    # FORMATTING (#FIXME)
+    # FORMATTING
     ###########################################################################
-
-    def applyFormat(self, _format):
-
-        if self._textFormat == "md":
-            if _format == "Bold": self.bold()
-            elif _format == "Italic": self.italic()
-            elif _format == "Code": self.verbatim()
-            elif _format == "Clear": self.clearFormat()
 
     def bold(self): self.insertFormattingMarkup("**")
     def italic(self): self.insertFormattingMarkup("*")
@@ -96,6 +89,9 @@ class MDEditView(textEditView):
     def verbatim(self): self.insertFormattingMarkup("`")
     def superscript(self): self.insertFormattingMarkup("^")
     def subscript(self): self.insertFormattingMarkup("~")
+    def blockquote(self): self.lineFormattingMarkup("> ")
+    def orderedList(self): self.lineFormattingMarkup(" 1. ")
+    def unorderedList(self): self.lineFormattingMarkup("  - ")
 
     def selectWord(self, cursor):
         if cursor.selectedText():
@@ -161,6 +157,14 @@ class MDEditView(textEditView):
         self.selectBlock(cursor)
         cursor.insertText(text2)
 
+    def lineFormattingMarkup(self, markup):
+        """
+        Adds (or remove if present) `markup` at the begining of block.
+        """
+        cursor = self.textCursor()
+        cursor.movePosition(cursor.StartOfBlock)
+        cursor.insertText(markup)
+
     def insertFormattingMarkup(self, markup):
         cursor = self.textCursor()
 
@@ -211,8 +215,7 @@ class MDEditView(textEditView):
             ("~~(.*?)~~", "\\1", None), # strike
             ("\^(.*?)\^", "\\1", None), # superscript
             ("~(.*?)~", "\\1", None), # subscript
-            ("<!--(.*)-->", "\\1", re.S), # comments
-
+            ("<!--\s*(.*?)\s*-->", "\\1", re.S), # comments
 
             # LINES OR BLOCKS
             (r"^#*\s*(.+?)\s*", "\\1", re.M), # ATX

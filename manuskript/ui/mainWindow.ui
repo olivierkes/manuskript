@@ -2170,7 +2170,7 @@
      <addaction name="actFormatCommentLines"/>
      <addaction name="separator"/>
      <addaction name="actFormatList"/>
-     <addaction name="actFormatUnorderedList"/>
+     <addaction name="actFormatOrderedList"/>
      <addaction name="actFormatBlockquote"/>
      <addaction name="actFormatCommentBlock"/>
      <addaction name="separator"/>
@@ -2802,10 +2802,10 @@
     <string>&amp;Comment line(s)</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+C</string>
+    <string>Ctrl+D</string>
    </property>
   </action>
-  <action name="actFormatUnorderedList">
+  <action name="actFormatOrderedList">
    <property name="text">
     <string>&amp;Ordered list</string>
    </property>
