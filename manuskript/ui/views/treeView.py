@@ -90,14 +90,6 @@ class treeView(QTreeView, dndView, outlineBasics):
         dndView.dragMoveEvent(self, event)
         QTreeView.dragMoveEvent(self, event)
 
-    def mousePressEvent(self, event):
-        if event.button() == Qt.RightButton:
-            # Capture mouse press so that selection doesn't change
-            # on right click
-            pass
-        else:
-            QTreeView.mousePressEvent(self, event)
-
     def mouseReleaseEvent(self, event):
         QTreeView.mouseReleaseEvent(self, event)
         outlineBasics.mouseReleaseEvent(self, event)
