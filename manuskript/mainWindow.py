@@ -28,6 +28,7 @@ from manuskript.ui.mainWindow import Ui_MainWindow
 from manuskript.ui.tools.frequencyAnalyzer import frequencyAnalyzer
 from manuskript.ui.views.outlineDelegates import outlineCharacterDelegate
 from manuskript.ui.views.plotDelegate import plotDelegate
+from manuskript.ui.views.MDEditView import MDEditView
 
 # Spellcheck support
 from manuskript.ui.views.textEditView import textEditView
@@ -57,6 +58,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Var
         self.currentProject = None
         self._lastFocus = None
+        self._lastMDEditView = None
         self._defaultCursorFlashTime = 1000 # Overriden at startup with system
                                             # value. In manuskript.main.
 
@@ -113,19 +115,43 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.actSaveAs.triggered.connect(self.welcome.saveAsFile)
         self.actImport.triggered.connect(self.doImport)
         self.actCompile.triggered.connect(self.doCompile)
-        self.actLabels.triggered.connect(self.settingsLabel)
-        self.actStatus.triggered.connect(self.settingsStatus)
-        self.actSettings.triggered.connect(self.settingsWindow)
         self.actCloseProject.triggered.connect(self.closeProject)
         self.actQuit.triggered.connect(self.close)
 
-        # Main menu:: Documents
+        # Main menu:: Edit
         self.actCopy.triggered.connect(self.documentsCopy)
         self.actCut.triggered.connect(self.documentsCut)
         self.actPaste.triggered.connect(self.documentsPaste)
         self.actRename.triggered.connect(self.documentsRename)
         self.actDuplicate.triggered.connect(self.documentsDuplicate)
         self.actDelete.triggered.connect(self.documentsDelete)
+        self.actLabels.triggered.connect(self.settingsLabel)
+        self.actStatus.triggered.connect(self.settingsStatus)
+        self.actSettings.triggered.connect(self.settingsWindow)
+
+        # Main menu:: Edit:: Format
+        self.actHeaderSetextL1.triggered.connect(self.formatSetext1)
+        self.actHeaderSetextL2.triggered.connect(self.formatSetext2)
+        self.actHeaderAtxL1.triggered.connect(self.formatAtx1)
+        self.actHeaderAtxL2.triggered.connect(self.formatAtx2)
+        self.actHeaderAtxL3.triggered.connect(self.formatAtx3)
+        self.actHeaderAtxL4.triggered.connect(self.formatAtx4)
+        self.actHeaderAtxL5.triggered.connect(self.formatAtx5)
+        self.actHeaderAtxL6.triggered.connect(self.formatAtx6)
+        self.actFormatBold.triggered.connect(self.formatBold)
+        self.actFormatItalic.triggered.connect(self.formatItalic)
+        self.actFormatStrike.triggered.connect(self.formatStrike)
+        self.actFormatVerbatim.triggered.connect(self.formatVerbatim)
+        self.actFormatSuperscript.triggered.connect(self.formatSuperscript)
+        self.actFormatSubscript.triggered.connect(self.formatSubscript)
+        self.actFormatCommentLines.triggered.connect(self.formatCommentLines)
+        self.actFormatList.triggered.connect(self.formatList)
+        self.actFormatOrderedList.triggered.connect(self.formatOrderedList)
+        self.actFormatBlockquote.triggered.connect(self.formatBlockquote)
+        self.actFormatCommentBlock.triggered.connect(self.formatCommentBlock)
+        self.actFormatClear.triggered.connect(self.formatClear)
+
+        # Main menu:: Organize
         self.actMoveUp.triggered.connect(self.documentsMoveUp)
         self.actMoveDown.triggered.connect(self.documentsMoveDown)
         self.actSplitDialog.triggered.connect(self.documentsSplitDialog)
@@ -224,6 +250,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         """
         We get notified by qApp when focus changes, from old to new widget.
         """
+
+        # If new is a MDEditView, we keep it in memory
+        if issubclass(type(new), MDEditView):
+            self._lastMDEditView = new
+        else:
+            self._lastMDEditView = None
 
         # Determine which view had focus last, to send the keyboard shortcuts
         # to the right place
@@ -443,11 +475,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def openIndexes(self, indexes, newTab=True):
         self.mainEditor.openIndexes(indexes, newTab=True)
 
-    # Menu Documents #############################################################
+    # Menu #############################################################
 
-    # Functions called by the menu Documents
+    # Functions called by the menus
     # self._lastFocus is the last editor that had focus (either treeView or
     # mainEditor). So we just pass along the signal.
+
+    # Edit
 
     def documentsCopy(self):
         "Copy selected item(s)."
@@ -467,6 +501,38 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def documentsDelete(self):
         "Delete selected item(s)."
         if self._lastFocus: self._lastFocus.delete()
+
+    # Formats
+    def callLastMDEditView(self, functionName, param=[]):
+        """
+        If last focused widget was MDEditView, call the given function.
+        """
+        if self._lastMDEditView:
+            function = getattr(self._lastMDEditView, functionName)
+            function(*param)
+    def formatSetext1(self): self.callLastMDEditView("titleSetext", [1])
+    def formatSetext2(self): self.callLastMDEditView("titleSetext", [2])
+    def formatAtx1(self): self.callLastMDEditView("titleATX", [1])
+    def formatAtx2(self): self.callLastMDEditView("titleATX", [2])
+    def formatAtx3(self): self.callLastMDEditView("titleATX", [3])
+    def formatAtx4(self): self.callLastMDEditView("titleATX", [4])
+    def formatAtx5(self): self.callLastMDEditView("titleATX", [5])
+    def formatAtx6(self): self.callLastMDEditView("titleATX", [6])
+    def formatBold(self): self.callLastMDEditView("bold")
+    def formatItalic(self): self.callLastMDEditView("italic")
+    def formatStrike(self): self.callLastMDEditView("strike")
+    def formatVerbatim(self): self.callLastMDEditView("verbatim")
+    def formatSuperscript(self): self.callLastMDEditView("superscript")
+    def formatSubscript(self): self.callLastMDEditView("subscript")
+    def formatCommentLines(self): self.callLastMDEditView("commentLine")
+    def formatList(self): self.callLastMDEditView("unorderedList")
+    def formatOrderedList(self): self.callLastMDEditView("orderedList")
+    def formatBlockquote(self): self.callLastMDEditView("blockquote")
+    def formatCommentBlock(self): self.callLastMDEditView("comment")
+    def formatClear(self): self.callLastMDEditView("clearFormat")
+
+    # Organize
+
     def documentsMoveUp(self):
         "Move up selected item(s)."
         if self._lastFocus: self._lastFocus.moveUp()
