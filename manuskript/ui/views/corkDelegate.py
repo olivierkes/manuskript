@@ -216,10 +216,10 @@ class corkDelegate(QStyledItemDelegate):
 
         style = qApp.style()
 
-        def _rotate(angle):
-            p.translate(self.mainRect.center())
+        def _rotate(angle, rect=self.mainRect):
+            p.translate(rect.center())
             p.rotate(angle)
-            p.translate(-self.mainRect.center())
+            p.translate(-rect.center())
 
         def drawRect(r):
             p.save()
@@ -370,7 +370,7 @@ class corkDelegate(QStyledItemDelegate):
                 f.setBold(True)
                 p.setFont(f)
                 p.setPen(QColor(Qt.red).lighter(170))
-                _rotate(-35)
+                _rotate(-35, rect=self.cardRect)
                 p.drawText(self.cardRect, Qt.AlignCenter, it.text())
                 p.restore()
 
