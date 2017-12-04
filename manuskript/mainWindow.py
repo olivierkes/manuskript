@@ -7,7 +7,7 @@ from PyQt5.QtCore import (pyqtSignal, QSignalMapper, QTimer, QSettings, Qt,
                           QRegExp, QUrl, QSize, QModelIndex)
 from PyQt5.QtGui import QStandardItemModel, QIcon, QColor
 from PyQt5.QtWidgets import QMainWindow, QHeaderView, qApp, QMenu, QActionGroup, QAction, QStyle, QListWidgetItem, \
-    QLabel, QDockWidget
+    QLabel, QDockWidget, QWidget
 
 from manuskript import settings
 from manuskript.enums import Character, PlotStep, Plot, World, Outline
@@ -1139,6 +1139,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.toolbar.addCustomWidget(self.tr("Story line"), self.storylineView, self.TabRedac, False)
         if self._toolbarState:
             self.toolbar.restoreState(self._toolbarState)
+
+        # Hides navigation dock title bar
+        self.dckNavigation.setTitleBarWidget(QWidget(None))
 
         # Custom "tab" bar on the left
         self.lstTabs.setIconSize(QSize(48, 48))
