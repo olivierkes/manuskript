@@ -1167,6 +1167,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.tabMain.tabBar().hide()
         self.lstTabs.currentRowChanged.connect(self.tabMain.setCurrentIndex)
         self.lstTabs.item(self.TabDebug).setHidden(not self.SHOW_DEBUG_TAB)
+        self.tabMain.setTabEnabled(self.TabDebug, self.SHOW_DEBUG_TAB)
         self.tabMain.currentChanged.connect(self.lstTabs.setCurrentRow)
 
         # Splitters
