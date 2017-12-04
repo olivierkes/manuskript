@@ -3,7 +3,8 @@
 import imp
 import os
 
-from PyQt5.QtCore import pyqtSignal, QSignalMapper, QTimer, QSettings, Qt, QRegExp, QUrl, QSize
+from PyQt5.QtCore import (pyqtSignal, QSignalMapper, QTimer, QSettings, Qt,
+                          QRegExp, QUrl, QSize, QModelIndex)
 from PyQt5.QtGui import QStandardItemModel, QIcon, QColor
 from PyQt5.QtWidgets import QMainWindow, QHeaderView, qApp, QMenu, QActionGroup, QAction, QStyle, QListWidgetItem, \
     QLabel, QDockWidget
@@ -380,11 +381,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if self.mdlPlots.rowCount(subplotindex):
             self.updateSubPlotView()
 
-        # self.txtSubPlotSummary.setCurrentModelIndex(QModelIndex())
-        self.txtSubPlotSummary.setEnabled(False)
-        self._updatingSubPlot = True
-        self.txtSubPlotSummary.setPlainText("")
-        self._updatingSubPlot = False
+        self.txtSubPlotSummary.setCurrentModelIndex(QModelIndex())
         self.lstPlotPerso.selectionModel().clear()
 
     def updateSubPlotView(self):
@@ -418,31 +415,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.sldPlotImportance.setValue(int(imp))
 
     def changeCurrentSubPlot(self, index):
-        # Got segfaults when using textEditView model system, so ad hoc stuff.
         index = index.sibling(index.row(), PlotStep.summary)
-        item = self.mdlPlots.itemFromIndex(index)
-        if not item:
-            self.txtSubPlotSummary.setEnabled(False)
-            return
-        self.txtSubPlotSummary.setEnabled(True)
-        txt = item.text()
-        self._updatingSubPlot = True
-        self.txtSubPlotSummary.setPlainText(txt)
-        self._updatingSubPlot = False
-
-    def updateSubPlotSummary(self):
-        if self._updatingSubPlot:
-            return
-
-        index = self.lstSubPlots.currentIndex()
-        if not index.isValid():
-            return
-        index = index.sibling(index.row(), PlotStep.summary)
-        item = self.mdlPlots.itemFromIndex(index)
-
-        self._updatingSubPlot = True
-        item.setText(self.txtSubPlotSummary.toPlainText())
-        self._updatingSubPlot = False
+        self.txtSubPlotSummary.setColumn(PlotStep.summary)
+        self.txtSubPlotSummary.setCurrentModelIndex(index)
 
     def plotPersoSelectionChanged(self):
         "Enables or disables remove plot perso button."
@@ -831,8 +806,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.txtPlotFilter.textChanged.connect(self.lstPlots.setFilter, F.AUC)
         self.lstPlots.currentItemChanged.connect(self.changeCurrentPlot, F.AUC)
-        self.txtSubPlotSummary.document().contentsChanged.connect(
-                self.updateSubPlotSummary, F.AUC)
         self.lstSubPlots.clicked.connect(self.changeCurrentSubPlot, F.AUC)
 
         self.btnRedacAddFolder.clicked.connect(self.treeRedacOutline.addFolder, F.AUC)

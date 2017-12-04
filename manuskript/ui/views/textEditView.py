@@ -9,7 +9,7 @@ from PyQt5.QtWidgets import QWidget, QTextEdit, qApp, QAction, QMenu
 from manuskript import settings
 from manuskript.enums import Outline, World, Character, Plot
 from manuskript import functions as F
-from manuskript.models.outlineModel import outlineModel
+from manuskript.models import outlineModel, outlineItem
 from manuskript.ui.highlighters import BasicHighlighter
 from manuskript.ui import style as S
 
@@ -302,6 +302,10 @@ class textEditView(QTextEdit):
                 self.setEnabled(False)
                 return
                 # FIXME: self._indexes
+
+            if self._index.model() != outlineItem:
+                # The next stuff is only for outlineItems
+                return
 
             # We check if item is a child of the row about to be removed
             child = False
