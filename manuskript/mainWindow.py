@@ -51,6 +51,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     TabWorld = 4
     TabOutline = 5
     TabRedac = 6
+    TabDebug = 7
+
+    SHOW_DEBUG_TAB = False
 
     def __init__(self):
         QMainWindow.__init__(self)
@@ -966,7 +969,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.cheatSheet.setModels()
 
         # Debug
-        self.mdlFlatData.setVerticalHeaderLabels(["Infos générales", "Summary"])
+        self.mdlFlatData.setVerticalHeaderLabels(["Info", "Summary"])
         self.tblDebugFlatData.setModel(self.mdlFlatData)
         self.tblDebugPersos.setModel(self.mdlCharacter)
         self.tblDebugPersosInfos.setModel(self.mdlCharacter)
@@ -1160,6 +1163,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.lstTabs.addItem(item)
         self.tabMain.tabBar().hide()
         self.lstTabs.currentRowChanged.connect(self.tabMain.setCurrentIndex)
+        self.lstTabs.item(self.TabDebug).setHidden(not self.SHOW_DEBUG_TAB)
         self.tabMain.currentChanged.connect(self.lstTabs.setCurrentRow)
 
         # Splitters
