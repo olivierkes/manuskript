@@ -3,7 +3,7 @@
 
 import re
 
-from PyQt5.QtCore import QRegExp, Qt
+from PyQt5.QtCore import QRegExp, Qt, QTimer
 from PyQt5.QtGui import QTextCursor
 # from PyQt5.QtWidgets import
 
@@ -173,6 +173,9 @@ class MDEditView(textEditView):
 
     def cursorPositionHasChanged(self):
         self.centerCursor()
+        # Focus mode
+        if self.highlighter:
+            QTimer.singleShot(50, self.highlighter.rehighlight)
 
     def centerCursor(self, force=False):
         cursor = self.cursorRect()

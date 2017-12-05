@@ -105,7 +105,7 @@ class MarkdownHighlighter(BasicHighlighter):
                     line = block.layout().lineAt(i)
                     start = line.textStart()
                     end = line.textStart() + line.textLength()
-                    if start <= pos < end:
+                    if start <= pos <= end:
                         return (start, end)
             else:
                 return True
