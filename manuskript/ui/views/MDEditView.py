@@ -27,6 +27,7 @@ class MDEditView(textEditView):
         # Highlighter
         self._textFormat = "md"
         self._highlighterClass = MarkdownHighlighter
+        self._noFocusMode = False
 
         if index:
             # We have to setup things anew, for the highlighter notably

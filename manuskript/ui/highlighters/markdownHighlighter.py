@@ -68,6 +68,49 @@ class MarkdownHighlighter(BasicHighlighter):
         #f.setFamily("monospace")
         #self.document().setDefaultFont(f)
 
+    def transparentFormat(self, fmt, alpha=75):
+        """
+        Takes a QTextCharFormat and modify it with colors made transparent
+        using alpha channel. For focus mode
+        """
+        c = fmt.foreground().color()
+        c.setAlpha(alpha)
+        fmt.setForeground(QBrush(c))
+        b = fmt.background()
+        if b.style() != Qt.NoBrush:
+            c = b.color()
+            c.setAlpha(alpha)
+            fmt.setBackground(QBrush(b))
+
+    def unfocusConditions(self):
+        """
+        Returns:
+        - True if the text is suposed to be unfocused
+        - (start, end) if block is supposed to be unfocused except for that part.
+        """
+
+        if self.editor._noFocusMode or not settings.textEditor["focusMode"]:
+            return False
+
+        if settings.textEditor["focusMode"] == "paragraph":
+            return not self.currentBlock().contains(
+                self.editor.textCursor().position())
+        elif settings.textEditor["focusMode"] == "line":
+            if self.currentBlock().contains(
+                    self.editor.textCursor().position()):
+                block = self.currentBlock()
+                # Position of cursor in block
+                pos = self.editor.textCursor().position() - block.position()
+                for i in range(block.layout().lineCount()):
+                    line = block.layout().lineAt(i)
+                    start = line.textStart()
+                    end = line.textStart() + line.textLength()
+                    if start <= pos < end:
+                        return (start, end)
+            else:
+                return True
+        return False
+
     def doHighlightBlock(self, text):
         """
         Note:  Never set the QTextBlockFormat for a QTextBlock from within
@@ -85,7 +128,20 @@ class MarkdownHighlighter(BasicHighlighter):
         """
 
         lastState = self.currentBlockState()
-        self.setFormat(0, len(text), self._defaultCharFormat)
+        # self.setFormat(0, len(text), self._defaultCharFormat)
+
+        # Focus mode
+        unfocus = self.unfocusConditions()
+        if unfocus:
+            fmt = self.format(0)
+            fmt.setForeground(QBrush(self.defaultTextColor))
+            self.transparentFormat(fmt)
+            if type(unfocus) != bool:
+                start, end = unfocus
+                self.setFormat(0, start, fmt)
+                self.setFormat(end, len(text), fmt)
+            else:
+                self.setFormat(0, len(text), fmt)
 
         if self.tokenizer != None:
             self.tokenizer.clear()
@@ -388,6 +444,15 @@ class MarkdownHighlighter(BasicHighlighter):
                 fmt, markupFormat = self.formatsFromTheme(theme,
                                                           fmt,
                                                           markupFormat)
+
+            # Focus mode
+            unfocus = self.unfocusConditions()
+            if unfocus:
+                if (type(unfocus) == bool
+                        or token.position < unfocus[0]
+                        or unfocus[1] < token.position):
+                    self.transparentFormat(fmt)
+                    self.transparentFormat(markupFormat)
 
             # Format openning Markup
             self.setFormat(token.position, token.openingMarkupLength,

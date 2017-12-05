@@ -25,6 +25,7 @@ class MDEditCompleter(MDEditView):
         self.completer = None
         self.setMouseTracking(True)
         self.refRects = []
+        self._noFocusMode = True
 
         self.textChanged.connect(self.getRefRects)
         self.document().documentLayoutChanged.connect(self.getRefRects)

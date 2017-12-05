@@ -204,6 +204,11 @@ class settingsWindow(QWidget, Ui_Settings):
         self.chkEditorNoBlinking.stateChanged.connect(self.setApplicationCursorBlinking)
         self.chkEditorTypeWriterMode.setChecked(opt["alwaysCenter"])
         self.chkEditorTypeWriterMode.stateChanged.connect(self.updateEditorSettings)
+        self.cmbEditorFocusMode.setCurrentIndex(
+                0 if not opt["focusMode"] else
+                1 if opt["focusMode"] == "line" else
+                2)
+        self.cmbEditorFocusMode.currentIndexChanged.connect(self.updateEditorSettings)
             # Text areas
         self.chkEditorMaxWidth.setChecked(opt["maxWidth"] != 0)
         self.chkEditorMaxWidth.stateChanged.connect(self.updateEditorSettings)
@@ -497,6 +502,10 @@ class settingsWindow(QWidget, Ui_Settings):
             self.spnEditorCursorWidth.value()
         self.spnEditorCursorWidth.setEnabled(self.chkEditorCursorWidth.isChecked())
         settings.textEditor["alwaysCenter"] = self.chkEditorTypeWriterMode.isChecked()
+        settings.textEditor["focusMode"] = \
+            False if self.cmbEditorFocusMode.currentIndex() == 0 else \
+            "line" if self.cmbEditorFocusMode.currentIndex() == 1 else \
+            "paragraph"
 
         # Text area
         settings.textEditor["maxWidth"] = \

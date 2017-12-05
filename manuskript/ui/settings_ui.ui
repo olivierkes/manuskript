@@ -54,7 +54,7 @@
    <item>
     <widget class="QStackedWidget" name="stack">
      <property name="currentIndex">
-      <number>0</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="stackedWidgetPage1">
       <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -1697,7 +1697,7 @@
                  </font>
                 </property>
                 <property name="text">
-                 <string>Ne&amp;w style</string>
+                 <string>&amp;New style</string>
                 </property>
                </widget>
               </item>
@@ -2651,6 +2651,44 @@
                   <property name="text">
                    <string>Typewriter mode</string>
                   </property>
+                 </widget>
+                </item>
+                <item row="3" column="0">
+                 <widget class="QLabel" name="label_52">
+                  <property name="font">
+                   <font>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Focus mode</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="1">
+                 <widget class="QComboBox" name="cmbEditorFocusMode">
+                  <property name="font">
+                   <font>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <item>
+                   <property name="text">
+                    <string>None</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Line</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Paragraph</string>
+                   </property>
+                  </item>
                  </widget>
                 </item>
                </layout>

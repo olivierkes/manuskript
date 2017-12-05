@@ -75,6 +75,7 @@ textEditor = {
     "marginsTB": 20,
     "backgroundTransparent": False,
     "alwaysCenter": False,
+    "focusMode": False  # "line", "paragraph"
     }
 
 revisions = {
@@ -275,6 +276,7 @@ def load(string, fromString=False, protocol=None):
             "marginsTB": 20,
             "backgroundTransparent": False,      # Added in 0.6.0
             "alwaysCenter": False,               # Added in 0.7.0
+            "focusMode": False,
             }
 
         for k in added:

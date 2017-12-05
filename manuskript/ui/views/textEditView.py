@@ -67,6 +67,9 @@ class textEditView(QTextEdit):
 
         # self.document().contentsChanged.connect(lambda: print(self.objectName(), "Contents changed"))
 
+        # Focus mode
+        self.cursorPositionChanged.connect(self.cursorHasMoved)
+
         self.setEnabled(False)
 
         if index:
@@ -90,6 +93,10 @@ class textEditView(QTextEdit):
         if self._highlighting and not self.highlighter:
             self.highlighter = self._highlighterClass(self)
             self.highlighter.setDefaultBlockFormat(self._defaultBlockFormat)
+
+    def cursorHasMoved(self):
+        if self.highlighter:
+            self.highlighter.rehighlight()
 
     def getDefaultLocale(self):
         default_locale = enchant.get_default_language()
