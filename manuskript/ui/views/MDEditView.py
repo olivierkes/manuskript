@@ -28,6 +28,7 @@ class MDEditView(textEditView):
         self._textFormat = "md"
         self._highlighterClass = MarkdownHighlighter
         self._noFocusMode = False
+        self._lastCursorPosition = None
 
         if index:
             # We have to setup things anew, for the highlighter notably
@@ -174,8 +175,13 @@ class MDEditView(textEditView):
     def cursorPositionHasChanged(self):
         self.centerCursor()
         # Focus mode
-        if self.highlighter:
-            QTimer.singleShot(50, self.highlighter.rehighlight)
+        if self.highlighter and settings.textEditor["focusMode"]:
+            if self._lastCursorPosition:
+                self.highlighter.onHighlightBlockAtPosition(
+                    self._lastCursorPosition)
+            self._lastCursorPosition = self.textCursor().position()
+            self.highlighter.onHighlightBlockAtPosition(
+                self._lastCursorPosition)
 
     def centerCursor(self, force=False):
         cursor = self.cursorRect()
