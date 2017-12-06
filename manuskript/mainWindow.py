@@ -580,8 +580,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.mainEditor.updateFolderViewButtons(settings.folderView)
         self.mainEditor.tabSplitter.updateStyleSheet()
         self.tabMain.setCurrentIndex(settings.lastTab)
-        # We force to emit even if it opens on the current tab
-        self.tabMain.currentChanged.emit(settings.lastTab)
         self.mainEditor.updateCorkBackground()
         if settings.viewMode == "simple":
             self.setViewModeSimple()
@@ -620,6 +618,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                   self.menuTools, self.menuHelp, self.actImport,
                   self.actCompile, self.actSettings]:
             i.setEnabled(True)
+        # We force to emit even if it opens on the current tab
+        self.tabMain.currentChanged.emit(settings.lastTab)
 
         # Add project name to Window's name
         pName = os.path.split(project)[1]
