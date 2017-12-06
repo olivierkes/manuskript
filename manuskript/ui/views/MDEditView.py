@@ -177,11 +177,11 @@ class MDEditView(textEditView):
         # Focus mode
         if self.highlighter and settings.textEditor["focusMode"]:
             if self._lastCursorPosition:
-                self.highlighter.onHighlightBlockAtPosition(
-                    self._lastCursorPosition)
+                block = self.document().findBlock(self._lastCursorPosition)
+                self.highlighter.rehighlightBlock(block)
             self._lastCursorPosition = self.textCursor().position()
-            self.highlighter.onHighlightBlockAtPosition(
-                self._lastCursorPosition)
+            block = self.document().findBlock(self._lastCursorPosition)
+            self.highlighter.rehighlightBlock(block)
 
     def centerCursor(self, force=False):
         cursor = self.cursorRect()
