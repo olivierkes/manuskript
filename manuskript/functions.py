@@ -353,13 +353,31 @@ def customIcons():
 
     return sorted(r)
 
-def statusMessage(message, duration=5000):
+def statusMessage(message, duration=5000, importance=1):
     """
     Shows a message in MainWindow's status bar.
+    Importance: 0 = low, 1 = normal, 2 = important, 3 = critical.
     """
-    mainWindow().statusBar().show()
-    mainWindow().statusBar().showMessage(message, duration)
-    QTimer.singleShot(duration, mainWindow().statusBar().hide)
+    from manuskript.ui import style as S
+    MW.statusBar().hide()
+    MW.statusLabel.setText(message)
+    if importance == 0:
+        MW.statusLabel.setStyleSheet("color:{};".format(S.textLighter))
+    elif importance == 1:
+        MW.statusLabel.setStyleSheet("color:{};".format(S.textLight))
+    elif importance == 2:
+        MW.statusLabel.setStyleSheet("color:{}; font-weight: bold;".format(S.text))
+    elif importance == 3:
+        MW.statusLabel.setStyleSheet("color:red; font-weight: bold;")
+    MW.statusLabel.adjustSize()
+    g = MW.statusLabel.geometry()
+    # g.moveCenter(MW.mapFromGlobal(MW.geometry().center()))
+    s = MW.layout().spacing() / 2
+    g.setLeft(s)
+    g.moveBottom(MW.mapFromGlobal(MW.geometry().bottomLeft()).y() - s)
+    MW.statusLabel.setGeometry(g)
+    MW.statusLabel.show()
+    QTimer.singleShot(duration, MW.statusLabel.hide)
 
 def openURL(url):
     """

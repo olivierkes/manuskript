@@ -419,7 +419,8 @@ class outlineBasics(QAbstractItemView):
         # Check that we have at least 2 items
         if len(items) < 2:
             statusMessage(qApp.translate("outlineBasics",
-                          "Select at least two items. Folders are ignored."))
+                          "Select at least two items. Folders are ignored."),
+                          importance=2)
             return
 
         # Check that all share the same parent
@@ -427,7 +428,8 @@ class outlineBasics(QAbstractItemView):
         for i in items:
             if i.parent() != p:
                 statusMessage(qApp.translate("outlineBasics",
-                          "All items must be on the same level (share the same parent)."))
+                          "All items must be on the same level (share the same parent)."),
+                          importance=2)
                 return
 
         # Sort items by row

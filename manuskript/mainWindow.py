@@ -71,6 +71,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # UI
         self.setupMoreUi()
+        self.statusLabel = QLabel(self)
+        self.statusLabel.setAutoFillBackground(True)
+        self.statusLabel.hide()
 
         # Welcome
         self.welcome.updateValues()
@@ -550,7 +553,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if loadFromFile and not os.path.exists(project):
             print(self.tr("The file {} does not exist. Try again.").format(project))
             F.statusMessage(
-                    self.tr("The file {} does not exist. Try again.").format(project))
+                    self.tr("The file {} does not exist. Try again.", importance=3).format(project))
             return
 
         if loadFromFile:
@@ -763,14 +766,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         r = loadSave.saveProject()  # version=0
         self.saveTimerNoChanges.stop()
 
+        projectName = os.path.basename(self.currentProject)
         if r:
-            feedback = self.tr("Project {} saved.").format(self.currentProject)
+            feedback = self.tr("Project {} saved.").format(projectName)
+            F.statusMessage(feedback, importance=0)
         else:
-            feedback = self.tr("WARNING: Project {} not saved.").format(self.currentProject)
+            feedback = self.tr("WARNING: Project {} not saved.").format(projectName)
+            F.statusMessage(feedback, importance=3)
 
-        # Giving some feedback
+        # Giving some feedback in console
         print(feedback)
-        F.statusMessage(feedback)
 
     def loadEmptyDatas(self):
         self.mdlFlatData = QStandardItemModel(self)
@@ -791,13 +796,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if not errors:
             print(self.tr("Project {} loaded.").format(project))
             F.statusMessage(
-                    self.tr("Project {} loaded.").format(project), 5000)
+                    self.tr("Project {} loaded.").format(project), 2000)
         else:
             print(self.tr("Project {} loaded with some errors:").format(project))
             for e in errors:
                 print(self.tr(" * {} wasn't found in project file.").format(e))
             F.statusMessage(
-                    self.tr("Project {} loaded with some errors.").format(project), 5000)
+                    self.tr("Project {} loaded with some errors.").format(project), 5000, importance = 3)
 
     ###############################################################################
     # MAIN CONNECTIONS
