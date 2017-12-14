@@ -213,7 +213,7 @@ def colorifyPixmap(pixmap, color):
 
 
 def appPath(suffix=None):
-    p = os.path.realpath(os.path.join(os.path.split(__file__)[0], ".."))
+    p = os.path.realpath(os.path.join(os.path.split(__file__)[0], "../.."))
     if suffix:
         p = os.path.join(p, suffix)
     return p

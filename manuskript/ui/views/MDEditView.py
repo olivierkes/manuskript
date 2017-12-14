@@ -3,14 +3,16 @@
 
 import re
 
-from PyQt5.QtCore import QRegExp, Qt, QTimer
+from PyQt5.QtCore import QRegExp, Qt, QTimer, QRect, QPoint
 from PyQt5.QtGui import QTextCursor
-# from PyQt5.QtWidgets import
+from PyQt5.QtWidgets import qApp, QToolTip
 
 from manuskript.ui.views.textEditView import textEditView
 from manuskript.ui.highlighters import MarkdownHighlighter
 from manuskript import settings
 from manuskript.ui.highlighters.markdownEnums import MarkdownState as MS
+from manuskript.ui.highlighters.markdownTokenizer import MarkdownTokenizer as MT
+from manuskript import functions as F
 
 
 class MDEditView(textEditView):
@@ -37,6 +39,12 @@ class MDEditView(textEditView):
         self.cursorPositionChanged.connect(self.cursorPositionHasChanged)
         self.verticalScrollBar().rangeChanged.connect(
             self.scrollBarRangeChanged)
+
+        # Clickable things
+        self.clickRects = []
+        self.textChanged.connect(self.getClickRects)
+        self.document().documentLayoutChanged.connect(self.getClickRects)
+        self.setMouseTracking(True)
 
     ###########################################################################
     # KEYPRESS
@@ -435,3 +443,188 @@ class MDEditView(textEditView):
 
         self.selectBlock(cursor)
         cursor.insertText(text)
+
+    ###########################################################################
+    # CLICKABLE THINKS
+    ###########################################################################
+
+    def resizeEvent(self, event):
+        textEditView.resizeEvent(self, event)
+        self.getClickRects()
+
+    def scrollContentsBy(self, dx, dy):
+        textEditView.scrollContentsBy(self, dx, dy)
+        self.getClickRects()
+
+    def getClickRects(self):
+        """
+        Parses the whole texte to catch clickable things: links and images.
+        Stores the result so that it can be used elsewhere.
+        """
+        cursor = self.textCursor()
+        refs = []
+        text = self.toPlainText()
+        for rx in [
+                MT.imageRegex,
+                MT.automaticLinkRegex,
+                MT.inlineLinkRegex,
+            ]:
+            pos = 0
+            while rx.indexIn(text, pos) != -1:
+                cursor.setPosition(rx.pos())
+                r1 = self.cursorRect(cursor)
+                pos = rx.pos() + rx.matchedLength()
+                cursor.setPosition(pos)
+                r2 = self.cursorRect(cursor)
+                if r1.top() == r2.top():
+                    ct = ClickThing(
+                            QRect(r1.topLeft(), r2.bottomRight()),
+                            rx,
+                            rx.capturedTexts())
+                    refs.append(ct)
+                else:
+                    r1.setRight(self.viewport().geometry().right())
+                    refs.append(ClickThing(r1, rx, rx.capturedTexts()))
+                    r2.setLeft(self.viewport().geometry().left())
+                    refs.append(ClickThing(r2, rx, rx.capturedTexts()))
+                    # We check for middle lines
+                    cursor.setPosition(rx.pos())
+                    cursor.movePosition(cursor.Down)
+                    while self.cursorRect(cursor).top() != r2.top():
+                        r3 = self.cursorRect(cursor)
+                        r3.setLeft(self.viewport().geometry().left())
+                        r3.setRight(self.viewport().geometry().right())
+                        refs.append(ClickThing(r3, rx, rx.capturedTexts()))
+                        cursor.movePosition(cursor.Down)
+
+        self.clickRects = refs
+
+    def mouseMoveEvent(self, event):
+        """
+        When mouse moves, we show tooltip when appropriate.
+        """
+        textEditView.mouseMoveEvent(self, event)
+
+        onRect = [r for r in self.clickRects if r.rect.contains(event.pos())]
+
+        if not onRect:
+            qApp.restoreOverrideCursor()
+            QToolTip.hideText()
+            return
+
+        ct = onRect[0]
+        if not qApp.overrideCursor():
+            qApp.setOverrideCursor(Qt.PointingHandCursor)
+
+        if ct.regex == MT.automaticLinkRegex:
+            tooltip = ct.texts[2] or ct.texts[4]
+
+        elif ct.regex == MT.imageRegex:
+            tt = ("<p><b>" + ct.texts[1] + "</b></p>"
+                  +"<p><img src='data:image/png;base64,{}'></p>")
+            tooltip = None
+            pos = event.pos() + QPoint(0, ct.rect.height())
+            imageTooltiper.fromUrl(ct.texts[2], pos, self)
+
+        elif ct.regex == MT.inlineLinkRegex:
+            tooltip = ct.texts[1] or ct.texts[2]
+
+        if tooltip:
+            QToolTip.showText(self.mapToGlobal(event.pos()), tooltip)
+
+    def mouseReleaseEvent(self, event):
+        textEditView.mouseReleaseEvent(self, event)
+        onRect = [r for r in self.clickRects if r.rect.contains(event.pos())]
+        if onRect and event.modifiers() & Qt.ControlModifier:
+            ct = onRect[0]
+
+            if ct.regex == MT.automaticLinkRegex:
+                url = ct.texts[2] or ct.texts[4]
+            elif ct.regex == MT.imageRegex:
+                url = ct.texts[2]
+            elif ct.regex == MT.inlineLinkRegex:
+                url = ct.texts[2]
+
+            F.openURL(url)
+            qApp.restoreOverrideCursor()
+
+    # def paintEvent(self, event):
+    #     """
+    #     Only useful for debugging: shows which rects are detected for
+    #     clickable things.
+    #     """
+    #     textEditView.paintEvent(self, event)
+    #
+    #     # Debug: paint rects
+    #     from PyQt5.QtGui import QPainter
+    #     painter = QPainter(self.viewport())
+    #     painter.setPen(Qt.gray)
+    #     for r in self.clickRects:
+    #         painter.drawRect(r.rect)
+
+    def doTooltip(self, pos, message):
+        QToolTip.showText(self.mapToGlobal(pos), message)
+
+class ClickThing:
+    """
+    A simple class to remember QRect associated with clickable stuff.
+    """
+    def __init__(self, rect, regex, texts):
+        self.rect = rect
+        self.regex = regex
+        self.texts = texts
+
+from PyQt5.QtNetwork import QNetworkRequest, QNetworkAccessManager, QNetworkReply
+from PyQt5.QtCore import QIODevice, QUrl, QBuffer
+from PyQt5.QtGui import QPixmap
+
+class imageTooltiper:
+
+    cache = {}
+    manager = QNetworkAccessManager()
+    data = {}
+
+    def fromUrl(url, pos, editor):
+        cache = imageTooltiper.cache
+        imageTooltiper.editor = editor
+
+        if url in cache:
+            if not cache[url][0]:  # error, image was not found
+                imageTooltiper.tooltipError(cache[url][1], pos)
+            else:
+                imageTooltiper.tooltip(cache[url][1], pos)
+            return
+
+        try:
+            imageTooltiper.manager.finished.connect(imageTooltiper.finished, F.AUC)
+        except:
+            pass
+
+        request = QNetworkRequest(QUrl(url))
+        imageTooltiper.data[QUrl(url)] = (pos, url)
+        imageTooltiper.manager.get(request)
+
+    def finished(reply):
+        cache = imageTooltiper.cache
+        pos, url = imageTooltiper.data[reply.url()]
+        if reply.error() != QNetworkReply.NoError:
+            cache[url] = (False, reply.errorString())
+            imageTooltiper.tooltipError(reply.errorString(), pos)
+        else:
+            px = QPixmap()
+            px.loadFromData(reply.readAll())
+            px = px.scaled(800, 600, Qt.KeepAspectRatio)
+            cache[url] = (True, px)
+            imageTooltiper.tooltip(px, pos)
+
+    def tooltipError(message, pos):
+        imageTooltiper.editor.doTooltip(pos, message)
+
+    def tooltip(image, pos):
+        px = image
+        buffer = QBuffer()
+        buffer.open(QIODevice.WriteOnly)
+        px.save(buffer, "PNG", quality=100)
+        image = bytes(buffer.data().toBase64()).decode()
+        tt = "<p><img src='data:image/png;base64,{}'></p>".format(image)
+        imageTooltiper.editor.doTooltip(pos, tt)
