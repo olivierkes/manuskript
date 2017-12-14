@@ -530,6 +530,7 @@ class MDEditView(textEditView):
             tooltip = ct.texts[1] or ct.texts[2]
 
         if tooltip:
+            tooltip = self.tr("{} (CTRL+Click to open)").format(tooltip)
             QToolTip.showText(self.mapToGlobal(event.pos()), tooltip)
 
     def mouseReleaseEvent(self, event):
