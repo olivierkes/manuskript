@@ -95,6 +95,7 @@ class MarkdownHighlighter(BasicHighlighter):
         if settings.textEditor["focusMode"] == "paragraph":
             return not self.currentBlock().contains(
                 self.editor.textCursor().position())
+
         elif settings.textEditor["focusMode"] == "line":
             if self.currentBlock().contains(
                     self.editor.textCursor().position()):
@@ -109,6 +110,28 @@ class MarkdownHighlighter(BasicHighlighter):
                         return (start, end)
             else:
                 return True
+
+        elif settings.textEditor["focusMode"] == "sentence":
+            if self.currentBlock().contains(
+                    self.editor.textCursor().position()):
+                block = self.currentBlock()
+                # Position of cursor in block
+                pos = self.editor.textCursor().position() - block.position()
+                ENDChars = "!.?"
+                txt = block.text()
+                start = -1
+                for i in range(len(txt)):
+                    if start == -1: start = i
+                    if txt[i] in ENDChars:
+                        s = txt[start:i+1]
+                        if start <= pos <= start + len(s):
+                            return start, i+1
+                        start = -1
+                return (start, len(txt))
+
+            else:
+                return True
+
         return False
 
     def doHighlightBlock(self, text):

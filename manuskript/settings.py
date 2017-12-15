@@ -75,7 +75,7 @@ textEditor = {
     "marginsTB": 20,
     "backgroundTransparent": False,
     "alwaysCenter": False,
-    "focusMode": False  # "line", "paragraph"
+    "focusMode": False  # "line", "paragraph", "sentence"
     }
 
 revisions = {
