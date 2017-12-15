@@ -19,6 +19,9 @@ class MDEditView(textEditView):
 
     blockquoteRegex = QRegExp("^ {0,3}(>\\s*)+")
     listRegex = QRegExp("^(\\s*)([+*-]|([0-9a-z])+([.\)]))(\\s+)")
+    inlineLinkRegex = QRegExp("\\[([^\n]+)\\]\\(([^\n]+)\\)")
+    imageRegex = QRegExp("!\\[([^\n]*)\\]\\(([^\n]+)\\)")
+    automaticLinkRegex = QRegExp("(<([a-zA-Z]+\\:[^\n]+)>)|(<([^\n]+@[^\n]+)>)")
 
     def __init__(self, parent=None, index=None, html=None, spellcheck=True,
                  highlighting=False, dict="", autoResize=False):
@@ -465,9 +468,9 @@ class MDEditView(textEditView):
         refs = []
         text = self.toPlainText()
         for rx in [
-                MT.imageRegex,
-                MT.automaticLinkRegex,
-                MT.inlineLinkRegex,
+                self.imageRegex,
+                self.automaticLinkRegex,
+                self.inlineLinkRegex,
             ]:
             pos = 0
             while rx.indexIn(text, pos) != -1:
@@ -516,17 +519,17 @@ class MDEditView(textEditView):
         if not qApp.overrideCursor():
             qApp.setOverrideCursor(Qt.PointingHandCursor)
 
-        if ct.regex == MT.automaticLinkRegex:
+        if ct.regex == self.automaticLinkRegex:
             tooltip = ct.texts[2] or ct.texts[4]
 
-        elif ct.regex == MT.imageRegex:
+        elif ct.regex == self.imageRegex:
             tt = ("<p><b>" + ct.texts[1] + "</b></p>"
                   +"<p><img src='data:image/png;base64,{}'></p>")
             tooltip = None
             pos = event.pos() + QPoint(0, ct.rect.height())
             imageTooltiper.fromUrl(ct.texts[2], pos, self)
 
-        elif ct.regex == MT.inlineLinkRegex:
+        elif ct.regex == self.inlineLinkRegex:
             tooltip = ct.texts[1] or ct.texts[2]
 
         if tooltip:
@@ -539,11 +542,11 @@ class MDEditView(textEditView):
         if onRect and event.modifiers() & Qt.ControlModifier:
             ct = onRect[0]
 
-            if ct.regex == MT.automaticLinkRegex:
+            if ct.regex == self.automaticLinkRegex:
                 url = ct.texts[2] or ct.texts[4]
-            elif ct.regex == MT.imageRegex:
+            elif ct.regex == self.imageRegex:
                 url = ct.texts[2]
-            elif ct.regex == MT.inlineLinkRegex:
+            elif ct.regex == self.inlineLinkRegex:
                 url = ct.texts[2]
 
             F.openURL(url)
