@@ -198,7 +198,7 @@
         <location filename="../manuskript/exporter/pandoc/PDF.py" line="19"/>
         <source>a valid latex installation. See pandoc recommendations on:
                      &lt;a href=&quot;http://pandoc.org/installing.html&quot;&gt;http://pandoc.org/installing.html&lt;/a&gt;. If you want unicode support, you need xelatex.</source>
-        <translation>una instalación de latex valida. Vea las recomendaciones de pandoc en:
+        <translation>una instalación de latex válida. Vea las recomendaciones de pandoc en:
                      &lt;a href=&quot;http://pandoc.org/installing.html&quot;&gt;http://pandoc.org/installing.html&lt;/a&gt;. Si desea soporte unicode, necesitará xelatex.</translation>
     </message>
     <message>
