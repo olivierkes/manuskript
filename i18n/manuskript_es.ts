@@ -220,7 +220,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="117"/>
         <source>Convert to ePUB3</source>
-        <translation type="unfinished"></translation>
+        <translation>Convierte a ePUB3</translation>
     </message>
 </context>
 <context>
