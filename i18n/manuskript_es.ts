@@ -913,7 +913,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2417"/>
         <source>S&amp;nowflake</source>
-        <translation type="unfinished">Método Copo de Nieve</translation>
+        <translation>Copo de &amp;Nieve</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="507"/>
