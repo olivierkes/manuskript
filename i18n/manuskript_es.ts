@@ -6,12 +6,12 @@
     <message>
         <location filename="../manuskript/exporter/manuskript/__init__.py" line="15"/>
         <source>Default exporter, provides basic formats used by other exporters.</source>
-        <translation>Exportador por defecto que proporciona los formatos básicos que utilizan otros exportadores.</translation>
+        <translation>Exportador por defecto, proporciona los formatos básicos que utilizan otros exportadores.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="18"/>
         <source>Basic HTML output using python module &apos;markdown&apos;.</source>
-        <translation>Salida básica en HTML utilizando el módulo de python &apos;markdown&apos;.</translation>
+        <translation>Salida en HTML básico que utiliza el módulo de python &apos;markdown&apos;.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="19"/>
@@ -55,8 +55,8 @@
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="15"/>
         <source>Simplest export to plain text. Allows you to use your own markup not understood
                   by manuskript, for example &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</source>
-        <translation>La exportación más simple a texto plano. Te permite utilizar tu propio formato de marcado no conocido
-                   por manuskript, por ejemplo &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</translation>
+        <translation>La exportación más simple, a texto plano. Permite utilizar un formato de marcado propio,
+                   no conocido por manuskript. Por ejemplo &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="53"/>
@@ -107,18 +107,20 @@
         <location filename="../manuskript/exporter/pandoc/plainText.py" line="10"/>
         <source>Export to markdown, using pandoc. Allows more formatting options
     than the basic manuskript exporter.</source>
-        <translation>Exportar a markdown utilizando pandoc. Permite más opciones de formateo que el exportador básido de manuskript.</translation>
+        <translation>Exportar a markdown utilizando pandoc. Permite más opciones de formateo
+    que el exportador básico de manuskript.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/plainText.py" line="21"/>
         <source>reStructuredText is a lightweight markup language...</source>
-        <translation>reStructuredText es una lenguaje de marcado ligero...</translation>
+        <translation>reStructuredText es un lenguaje de marcado ligero...</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/plainText.py" line="31"/>
         <source>LaTeX is a word processor and document markup language used to create
                                               beautiful documents.</source>
-        <translation>LaTeX es un procesador de textos y lenguaje de marcado de documentos utilizado para crear documentos de gran calidad de formato.</translation>
+        <translation>LaTeX es un procesador de texto y lenguaje de marcado de documentos utilizado
+                                              para crear documentos de gran calidad.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="86"/>
@@ -153,12 +155,12 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="106"/>
         <source>Use reference-style links instead of inline links</source>
-        <translation>Utilizar enlaces referenciados en lugar de en el flujo del texto</translation>
+        <translation>Usar referencias para los enlaces en lugar de integrados en el texto</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="108"/>
         <source>Use ATX-style headers</source>
-        <translation>Utiliza cabeceras ATX</translation>
+        <translation>Utiliza cabeceras tipo ATX</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="110"/>
@@ -193,7 +195,7 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="133"/>
         <source>Line spacing:</source>
-        <translation>Espaciado de linea:</translation>
+        <translation>Espaciado de línea:</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/PDF.py" line="19"/>
@@ -207,9 +209,9 @@
         <source>The purpose of this format is to provide a way to exchange information
                                               between outliners and Internet services that can be browsed or controlled
                                               through an outliner.</source>
-        <translation>El proposito de este formato es proveer una manera para intercambiar información
-                                              entre outliners y servicios de Internet que puedan ser navegados o controlados
-                                              a través de un outliner.</translation>
+        <translation>El propósito de este formato es proporcionar una manera de intercambiar información
+                                              entre outliners y servicios de Internet que puedan ser explorados
+                                              o controlados a través de un outliner.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="102"/>
@@ -868,7 +870,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2401"/>
         <source>&amp;Simple</source>
-        <translation type="unfinished">&amp;Sencillo</translation>
+        <translation>&amp;Sencillo</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1310"/>
@@ -1202,7 +1204,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2546"/>
         <source>Sp&amp;lit at cursor</source>
-        <translation type="unfinished">Dividir en la posición del cursor</translation>
+        <translation>Di&amp;vidir en el cursor</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2549"/>
@@ -1272,7 +1274,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2558"/>
         <source>M&amp;erge</source>
-        <translation type="unfinished">M&amp;ezclar</translation>
+        <translation type="unfinished">Combinar</translation>
     </message>
 </context>
 <context>
@@ -1890,7 +1892,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1115"/>
         <source>&amp;Show wordcount</source>
-        <translation type="unfinished">Mostrar conteo de palabras</translation>
+        <translation type="unfinished">Mostrar contador de palabras</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1128"/>
@@ -2208,7 +2210,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/editors/editorWidget_ui.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formulario</translation>
+        <translation>Formulario</translation>
     </message>
 </context>
 <context>
@@ -2836,7 +2838,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="60"/>
         <source>Root</source>
-        <translation type="unfinished">Raíz</translation>
+        <translation>Raíz</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="74"/>
@@ -3041,7 +3043,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Climax</source>
-        <translation type="unfinished">Climax</translation>
+        <translation>Clímax</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3091,12 +3093,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>3. Climax</source>
-        <translation type="unfinished">3. Climax</translation>
+        <translation>3. Clímax</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>3. Ending</source>
-        <translation type="unfinished">3. Desenlace</translation>
+        <translation type="unfinished">3. Resolución</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -4027,7 +4029,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="430"/>
         <source>Final</source>
-        <translation type="unfinished">Desenlace</translation>
+        <translation type="unfinished">Final</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="162"/>
