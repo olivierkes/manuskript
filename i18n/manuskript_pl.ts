@@ -498,7 +498,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1633"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Imię i nazwisko</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="277"/>
