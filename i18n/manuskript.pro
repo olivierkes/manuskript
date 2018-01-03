@@ -93,3 +93,4 @@ TRANSLATIONS     += manuskript_fr.ts
 TRANSLATIONS     += manuskript_es.ts
 TRANSLATIONS     += manuskript_de.ts
 TRANSLATIONS     += manuskript_sv.ts
+TRANSLATIONS     += manuskript_pl.ts
