@@ -17,7 +17,7 @@ from manuskript.functions import mainWindow
 class pandocExporter(basicExporter):
 
     name = "Pandoc"
-    description = qApp.translate("Export", """<p>A universal document convertor. Can be used to convert markdown to a wide range of other
+    description = qApp.translate("Export", """<p>A universal document converter. Can be used to convert markdown to a wide range of other
     formats.</p>
     <p>Website: <a href="http://www.pandoc.org">http://pandoc.org/</a></p>
     """)

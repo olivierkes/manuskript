@@ -1063,7 +1063,7 @@
                    </font>
                   </property>
                   <property name="text">
-                   <string>Show &amp;wordcount</string>
+                   <string>Show &amp;word count</string>
                   </property>
                  </widget>
                 </item>
@@ -1133,7 +1133,7 @@
                    </font>
                   </property>
                   <property name="text">
-                   <string>&amp;Show wordcount</string>
+                   <string>&amp;Show word count</string>
                   </property>
                  </widget>
                 </item>
