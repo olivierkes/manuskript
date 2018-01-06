@@ -975,7 +975,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.cheatSheet.setModels()
 
         # Debug
-        self.mdlFlatData.setVerticalHeaderLabels(["Info", "Summary"])
+        self.mdlFlatData.setVerticalHeaderLabels(["General info", "Summary"])
         self.tblDebugFlatData.setModel(self.mdlFlatData)
         self.tblDebugPersos.setModel(self.mdlCharacter)
         self.tblDebugPersosInfos.setModel(self.mdlCharacter)

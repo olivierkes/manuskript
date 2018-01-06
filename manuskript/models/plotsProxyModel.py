@@ -20,7 +20,7 @@ class plotsProxyModel(QSortFilterProxyModel):
 
         # self.rootItem = QStandardItem()
         self.p1 = QStandardItem(self.tr("Main"))
-        self.p2 = QStandardItem(self.tr("Secundary"))
+        self.p2 = QStandardItem(self.tr("Secondary"))
         self.p3 = QStandardItem(self.tr("Minors"))
 
         self._cats = [

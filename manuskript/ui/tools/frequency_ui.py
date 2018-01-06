@@ -105,7 +105,7 @@ class Ui_FrequencyAnalyzer(object):
         FrequencyAnalyzer.setWindowTitle(_translate("FrequencyAnalyzer", "Frequency Analyzer"))
         self.groupBox.setTitle(_translate("FrequencyAnalyzer", "Settings"))
         self.label.setText(_translate("FrequencyAnalyzer", "Minimum size:"))
-        self.label_2.setText(_translate("FrequencyAnalyzer", "Exclude words (coma seperated):"))
+        self.label_2.setText(_translate("FrequencyAnalyzer", "Exclude words (comma separated):"))
         self.btnAnalyzeWord.setText(_translate("FrequencyAnalyzer", "Analyze"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("FrequencyAnalyzer", "Word frequency"))
         self.label_3.setText(_translate("FrequencyAnalyzer", "Number of words: from"))

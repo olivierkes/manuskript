@@ -60,7 +60,7 @@
               <item row="1" column="0">
                <widget class="QLabel" name="label_2">
                 <property name="text">
-                 <string>Exclude words (coma seperated):</string>
+                 <string>Exclude words (comma separated):</string>
                 </property>
                </widget>
               </item>

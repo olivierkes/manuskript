@@ -247,7 +247,7 @@ class worldModel(QStandardItemModel):
                     self.tr("Climate"),
                     self.tr("Topography"),
                     self.tr("Astronomy"),
-                    self.tr("Natural ressources"),
+                    self.tr("Natural resources"),
                     self.tr("Wild life"),
                     self.tr("Flora"),
                     self.tr("History"),
