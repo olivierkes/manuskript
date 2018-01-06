@@ -33,7 +33,7 @@ class abstractImporter:
     def startImport(self, filePath, parentItem, settingsWidget):
         """
         Takes a str path to the file/folder to import, and the settingsWidget
-        returnend by `self.settingsWidget()` containing the user set settings,
+        returned by `self.settingsWidget()` containing the user set settings,
         and return `outlineItem`s.
         """
         pass

@@ -209,7 +209,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 # Hide the dock
                 d.setVisible(False)
             else:
-                # Restore the dock's visibily based on stored value
+                # Restore the dock's visibility based on stored value
                 d.setVisible(self._dckVisibility[d.objectName()])
 
         # Lock is used only once, at start up. We can remove it
@@ -220,7 +220,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         """
         While switching to welcome screen, we have to hide all the docks.
         Otherwise one could use the search dock, and manuskript would crash.
-        Plus it's unncessary distraction.
+        Plus it's unnecessary distraction.
         But we also want to restore them to their visibility prior to switching,
         so we store states.
         """
@@ -631,7 +631,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.setWindowTitle(pName + " - " + self.tr("Manuskript"))
 
         # Stuff
-        # self.checkPersosID()  # Should'n be necessary any longer
+        # self.checkPersosID()  # Shouldn't be necessary any longer
 
         self.currentProject = project
         QSettings().setValue("lastProject", project)
@@ -698,7 +698,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 self.dckCheatSheet.objectName() : False,
                 self.dckSearch.objectName() : False,
             }
-        self._dckVisibility["LOCK"] = True  # prevent overiding loaded values
+        self._dckVisibility["LOCK"] = True  # prevent overriding loaded values
 
         if sttgns.contains("metadataState"):
             state = [False if v == "false" else True for v in sttgns.value("metadataState")]
@@ -711,7 +711,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if sttgns.contains("splitterRedacV"):
             self.splitterRedacV.restoreState(sttgns.value("splitterRedacV"))
         if sttgns.contains("toolbar"):
-            # self.toolbar is not initialized yet, so we just store balue
+            # self.toolbar is not initialized yet, so we just store value
             self._toolbarState = sttgns.value("toolbar")
         else:
             self._toolbarState = ""
@@ -746,7 +746,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.saveDatas()
 
             # closeEvent
-            # QMainWindow.closeEvent(self, event)  # Causin segfaults?
+            # QMainWindow.closeEvent(self, event)  # Causing segfaults?
 
     def startTimerNoChanges(self):
         if settings.autoSaveNoChanges:
@@ -1439,14 +1439,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def viewModeFictionVisibilitySwitch(self, val):
         """
-        Swtiches the visibility of some UI components useful for fiction only
+        Switches the visibility of some UI components useful for fiction only
         @param val: sets visibility to val
         """
 
-        # Menu navigation & boutton in toolbar
+        # Menu navigation & button in toolbar
         self.toolbar.setDockVisibility(self.dckNavigation, val)
 
-        # POV in metadatas
+        # POV in metadata
         from manuskript.ui.views.propertiesView import propertiesView
         for w in findWidgetsOfClass(propertiesView):
             w.lblPOV.setVisible(val)

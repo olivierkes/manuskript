@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
 
-# The loadSave file calls the propper functions to load and save file
+# The loadSave file calls the proper functions to load and save file
 # trying to detect the proper file format if it comes from an older version
 import os
 import zipfile

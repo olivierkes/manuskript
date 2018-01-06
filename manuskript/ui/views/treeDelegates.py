@@ -14,7 +14,7 @@ from manuskript.ui import style as S
 
 class treeTitleDelegate(QStyledItemDelegate):
     """The main purpose of ``treeTitleDelegate`` is to paint outline items
-    in the treeview with propers colors according to settings.
+    in the treeview with proper colors according to settings.
     """
 
     def __init__(self, parent=None):

@@ -243,7 +243,7 @@ class fullScreenEditor(QWidget):
         if hasattr(widget, "_autoHide") and not widget._autoHide:
             return
 
-        # Hides wiget in the bottom right corner
+        # Hides widget in the bottom right corner
         widget.move(self.geometry().bottomRight() + QPoint(1, 1))
 
     def showWidget(self, widget):

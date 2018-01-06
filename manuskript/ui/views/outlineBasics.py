@@ -331,7 +331,7 @@ class outlineBasics(QAbstractItemView):
 
     def duplicate(self):
         """
-        Duplicates item(s), while preserving clipbaord content.
+        Duplicates item(s), while preserving clipboard content.
         """
         mimeData = self.model().mimeData(self.selectionModel().selectedIndexes())
         self.paste(mimeData)
@@ -341,7 +341,7 @@ class outlineBasics(QAbstractItemView):
         Move selected items up or down.
         """
 
-        # we store selected indexesret
+        # we store selected indexes
         currentID = self.model().ID(self.currentIndex())
         selIDs = [self.model().ID(i) for i in self.selectedIndexes()]
 

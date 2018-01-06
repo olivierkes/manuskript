@@ -72,7 +72,7 @@ class generalSettings(QWidget, Ui_generalSettings):
 
     def splitScenes(self):
         """
-        Return wheter the user wants to split scenes.
+        Return whether the user wants to split scenes.
         If unchecked, returns False.
         If checked, returns the escaped split mark, or default (in placeholderText).
         """

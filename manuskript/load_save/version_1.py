@@ -4,7 +4,7 @@
 # Version 1 of file saving format.
 # Aims at providing a plain-text way of saving a project
 # (except for some elements), allowing collaborative work
-# versioning and third-partty editing.
+# versioning and third-party editing.
 
 import os
 import re
@@ -101,7 +101,7 @@ def saveProject(zip=None):
     Saves the project. If zip is False, the project is saved as a multitude of plain-text files for the most parts
     and some XML or zip? for settings and stuff.
     If zip is True, everything is saved as a single zipped file. Easier to carry around, but does not allow
-    collaborative work, versionning, or third-party editing.
+    collaborative work, versioning, or third-party editing.
     @param zip: if True, saves as a single file. If False, saves as plain-text. If None, tries to determine based on
     settings.
     @return: True if successful, False otherwise.
@@ -289,7 +289,7 @@ def saveProject(zip=None):
 
     ####################################################################################################################
     # Settings
-    # Saved in readable text (json) for easier versionning. But they mustn't be shared, it seems.
+    # Saved in readable text (json) for easier versioning. But they mustn't be shared, it seems.
     # Maybe include them only if zipped?
     # Well, for now, we keep them here...
 
@@ -833,7 +833,7 @@ def loadProject(project, zip=None):
     ####################################################################################################################
     # Texts
     # We read outline form the outline folder. If revisions are saved, then there's also a revisions.xml which contains
-    # everything, but the outline folder takes precedence (in cases it's been edited outside of manuksript.
+    # everything, but the outline folder takes precedence (in cases it's been edited outside of manuskript.
 
     mdl = mw.mdlOutline
     log("\nReading outline:")

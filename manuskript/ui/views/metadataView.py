@@ -93,7 +93,7 @@ class metadataView(QWidget, Ui_metadataView):
             # Behavior 2:
             # Allow edition of multiple indexes.
             # Bug: Multiple selections of items sometimes gets Notes/references
-            #      field to be ereased. See #10 on github.
+            #      field to be erased. See #10 on github.
             #self.txtSummarySentence.setCurrentModelIndexes(indexes)
             #self.txtSummaryFull.setCurrentModelIndexes(indexes)
             #self.txtNotes.setCurrentModelIndexes(indexes)

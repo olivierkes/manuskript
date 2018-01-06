@@ -30,7 +30,7 @@ def HTML2PlainText(html):
     if pandocConverter.isValid():
         return pandocConverter.convert(html, _from="html", to="plain")
 
-    # Last resort: probably resource ineficient
+    # Last resort: probably resource inefficient
     e = QTextEdit()
     e.setHtml(html)
     return e.toPlainText()

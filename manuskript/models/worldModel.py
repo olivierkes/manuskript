@@ -79,7 +79,7 @@ class worldModel(QStandardItemModel):
         return c
 
     def listAll(self):
-        """Returns a list of tupple ``(name, ID, path)`` for all items."""
+        """Returns a list of tuple ``(name, ID, path)`` for all items."""
         lst = []
 
         def readAll(item):

@@ -71,7 +71,7 @@ class collapsibleDockWidgets(QToolBar):
         `defaultVisibility` is the default visibility of the item when it is added.
             This allows for the widget to be added to `collapsibleDockWidgets` after
             they've been created but before they are shown, and yet specify their
-            desired visibility. Otherwise it creates troubes, see #167 on github:
+            desired visibility. Otherwise it creates troubles, see #167 on github:
             https://github.com/olivierkes/manuskript/issues/167.
         """
         a = QAction(text, self)

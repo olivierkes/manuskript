@@ -114,7 +114,7 @@ class characterModel(QAbstractItemModel):
             return QAbstractItemModel.flags(self, index)
 
 ###############################################################################
-# CHARACTER QUERRIES
+# CHARACTER QUERIES
 ###############################################################################
 
     def character(self, row):
@@ -133,7 +133,7 @@ class characterModel(QAbstractItemModel):
         return self.character(row).importance()
 
 ###############################################################################
-# MODEL QUERRIES
+# MODEL QUERIES
 ###############################################################################
 
     def getCharactersByImportance(self):
