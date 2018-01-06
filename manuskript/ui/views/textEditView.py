@@ -147,7 +147,7 @@ class textEditView(QTextEdit):
 
     def currentIndex(self):
         """
-        Getter function used to normalized views acces with QAbstractItemViews.
+        Getter function used to normalized views access with QAbstractItemViews.
         """
         if self._index:
             return self._index
@@ -156,7 +156,7 @@ class textEditView(QTextEdit):
 
     def getSelection(self):
         """
-        Getter function used to normalized views acces with QAbstractItemViews.
+        Getter function used to normalized views access with QAbstractItemViews.
         """
         return [self.currentIndex()]
 
@@ -227,7 +227,7 @@ class textEditView(QTextEdit):
                 QWidget#{name}{{
                     background: {bg};
                 }}""".format(
-                    # We style by name, otherwise all heriting widgets get the same
+                    # We style by name, otherwise all inheriting widgets get the same
                     # colored background, for example context menu.
                     name=self.parent().objectName(),
                     bg=background,
@@ -480,7 +480,7 @@ class textEditView(QTextEdit):
         QTextEdit.wheelEvent(self, event)
 
     class SpellAction(QAction):
-        """A special QAction that returns the text in a signal. Used for spellckech."""
+        """A special QAction that returns the text in a signal. Used for spellcheck."""
 
         correct = pyqtSignal(str)
 
@@ -584,7 +584,7 @@ class textEditView(QTextEdit):
 
     def callMainTreeView(self, functionName):
         """
-        The tree view in mainwindow must have same index as the text
+        The tree view in main window must have same index as the text
         edit that has focus. So we can pass it the call for documents
         edits like: duplicate, move up, etc.
         """

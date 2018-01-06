@@ -22,7 +22,7 @@ try:
     locale.setlocale(locale.LC_ALL, '')
 except:
     # Invalid locale, but not really a big deal because it's used only for
-    # number formating
+    # number formatting
     pass
 import time, os
 
@@ -261,7 +261,7 @@ class abstractModel(QAbstractItemModel):
         return Qt.CopyAction | Qt.MoveAction
 
     def canDropMimeData(self, data, action, row, column, parent):
-        """Ensures that we are not droping an item into itself."""
+        """Ensures that we are not dropping an item into itself."""
 
         if not data.hasFormat("application/xml"):
             return False
@@ -326,7 +326,7 @@ class abstractModel(QAbstractItemModel):
         # For example if selecting:
         #   - Parent
         #      - Child
-        # And draging them, items encoded in mime data are: [Parent, Child],
+        # And dragging them, items encoded in mime data are: [Parent, Child],
         # but Child is already contained in Parent, so if we do nothing we end
         # up with:
         #   - Parent

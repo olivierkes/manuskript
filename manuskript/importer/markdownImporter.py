@@ -52,7 +52,7 @@ class markdownImporter(abstractImporter):
 
         ```
         # Level 1
-        Some texte content.
+        Some text content.
         Level 1 will become a text element.
         # Level 1
         This content has no name.

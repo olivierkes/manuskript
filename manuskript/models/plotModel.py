@@ -44,7 +44,7 @@ class plotModel(QStandardItemModel):
             if item.child(i, PlotStep.ID):
                 _ID = item.child(i, PlotStep.ID).text()
 
-                # Don't know why sometimes name is None (while drag'n'droping
+                # Don't know why sometimes name is None (while drag'n'dropping
                 # several items)
                 if item.child(i, PlotStep.name):
                     name = item.child(i, PlotStep.name).text()
@@ -77,7 +77,7 @@ class plotModel(QStandardItemModel):
         return "0" # Default to "Minor"
 
     def getSubPlotTextsByID(self, plotID, subplotRaw):
-        """Returns a tuple (name, summary) for the suplot whose raw in the model
+        """Returns a tuple (name, summary) for the subplot whose raw in the model
         is ``subplotRaw``, of plot whose ID is ``plotID``.
         """
         plotIndex = self.getIndexFromID(plotID)

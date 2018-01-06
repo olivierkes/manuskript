@@ -97,7 +97,7 @@ def run():
     """
     # Need to return and keep `app` otherwise it gets deleted.
     app, MW = prepare()
-    # Seperating launch to avoid segfault, so it seem.
+    # Separating launch to avoid segfault, so it seem.
     # Cf. http://stackoverflow.com/questions/12433491/is-this-pyqt-4-python-bug-or-wrongly-behaving-code
     launch(MW)
 

@@ -89,7 +89,7 @@ def infos(ref):
     _type = match.group(1)
     _ref = match.group(2)
 
-    # A text or outine item
+    # A text or outline item
     if _type == TextLetter:
         m = mainWindow().mdlOutline
         idx = m.getIndexByID(_ref)

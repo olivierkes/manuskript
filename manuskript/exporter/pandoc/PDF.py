@@ -12,7 +12,7 @@ from manuskript.ui.views.PDFViewer import PDFViewer
 
 
 class PDF(abstractOutput):
-    """PDF Viewer using PDS.js. Cf. https://github.com/mozilla/pdf.js/wiki/Setup-PDF.js-in-a-website"""
+    """PDF Viewer using PDF.js. Cf. https://github.com/mozilla/pdf.js/wiki/Setup-PDF.js-in-a-website"""
 
     name = "PDF"
     description = qApp.translate("Export", "Needs latex to be installed.")

@@ -75,9 +75,9 @@ class welcome(QWidget, Ui_welcome):
 
     def getAutoLoadValues(self):
         """
-        Reads manuskript system's settings and returns a tupple:
+        Reads manuskript system's settings and returns a tuple:
         - `bool`: whether manuskript should automatically load
-                  the last openend project or display the
+                  the last opened project or display the
                   welcome widget.
         - `str`:  the absolute path to the last opened project.
         """
@@ -149,7 +149,7 @@ class welcome(QWidget, Ui_welcome):
 
     def saveAsFile(self):
         """File dialog that request a file, existing or not.
-        Save datas to that file, which then becomes the current project."""
+        Save data to that file, which then becomes the current project."""
         filename = QFileDialog.getSaveFileName(self,
                                                self.tr("Save project as..."),
                                                ".",
@@ -307,7 +307,7 @@ class welcome(QWidget, Ui_welcome):
     def templateAddLevel(self):
         if len(self.template[1]) > 0 and \
                         self.template[1][len(self.template[1]) - 1][1] == None:
-            # has word cound, so insert before
+            # has word count, so insert before
             self.template[1].insert(len(self.template[1]) - 1, (10, self.tr("Text")))
         else:
             # No word count, so insert at end
@@ -401,7 +401,7 @@ class welcome(QWidget, Ui_welcome):
             if t and t[0][2] == "Non-fiction":
                 settings.viewMode = "simple"
 
-        # Données
+        # Tasks
         self.mw.mdlFlatData = QStandardItemModel(2, 8, self.mw)
 
         # Persos

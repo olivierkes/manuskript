@@ -2,7 +2,7 @@
 # --!-- coding: utf8 --!--
 
 # Version 0 of file saving format.
-# Was used at the begining and up util version XXX when
+# Was used at the beginning and up until version XXX when
 # it was superseded by Version 1, which is more open and flexible
 import os
 import zipfile
@@ -184,7 +184,7 @@ def loadFilesFromZip(zipname):
 
 def loadStandardItemModelXML(mdl, xml, fromString=False):
     """Load data to a QStandardItemModel mdl from xml.
-    By default xml is a filename. If fromString=True, xml is a string containg the data."""
+    By default xml is a filename. If fromString=True, xml is a string containing the data."""
 
     # print(qApp.tr("Loading {}... ").format(xml), end="")
 

@@ -13,8 +13,8 @@ from manuskript.ui.editors.tabSplitter_ui import Ui_tabSplitter
 
 class tabSplitter(QWidget, Ui_tabSplitter):
     """
-    `tabSplitter` is used to have mutliple `outlineItem`s open, either in tabs
-    and/or in splitted views. Each tab contains an `editorWidget` which is responsible
+    `tabSplitter` is used to have multiple `outlineItem`s open, either in tabs
+    and/or in split views. Each tab contains an `editorWidget` which is responsible
     for showing one single `outlineItem` in several ways.
 
     `tabSplitter` is managed mainly through the `mainEditor` which is responsible
@@ -39,7 +39,7 @@ class tabSplitter(QWidget, Ui_tabSplitter):
         # try:
         #     self.tab.setTabBarAutoHide(True)
         # except AttributeError:
-        #     print("Info: install Qt 5.4 or higher to use tabbar auto-hide in editor.")
+        #     print("Info: install Qt 5.4 or higher to use tab bar auto-hide in editor.")
 
         # Button to split
         self.btnSplit = QPushButton(self)

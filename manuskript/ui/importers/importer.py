@@ -65,7 +65,7 @@ class importerDialog(QWidget, Ui_importer):
     def populateImportList(self):
 
         def addFormat(name, icon, identifier):
-            # Identifier serves to distingues 2 importers that would have the
+            # Identifier serves to distinguish 2 importers that would have the
             # same name.
             self.cmbImporters.addItem(QIcon.fromTheme(icon), name, identifier)
 
@@ -255,7 +255,7 @@ class importerDialog(QWidget, Ui_importer):
         # Signal every views that important model changes have happened.
         self.mw.mdlOutline.layoutChanged.emit()
 
-        # I'm getting seg fault over this message sometimes...
+        # I'm getting segfault over this message sometimes...
         # Using status bar message instead...
         #QMessageBox.information(self, self.tr("Import status"),
                                 #self.tr("Import Complete."))

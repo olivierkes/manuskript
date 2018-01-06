@@ -15,7 +15,7 @@ from manuskript import functions as F
 p = qApp.palette()
 # window = "#d6d2d0" #"#eee" / #eff0f1
 window = p.color(QPalette.Window).name()            # General background
-windowText = p.color(QPalette.WindowText).name()    # General foregroung
+windowText = p.color(QPalette.WindowText).name()    # General foreground
 base = p.color(QPalette.Base).name()                # Other background
 alternateBase = p.color(QPalette.AlternateBase).name() # Other background
 text = p.color(QPalette.Text).name()                # Base Text
@@ -68,7 +68,7 @@ def styleMainWindow(mw):
     mw.setStyleSheet(mainWindowSS())
     mw.lstTabs.verticalScrollBar().setStyleSheet(simpleScrollBarV())
 
-    # Custon palette?
+    # Custom palette?
     #qApp.setPalette(appPalette())
 
     mw.treeRedacOutline.setStyleSheet("""

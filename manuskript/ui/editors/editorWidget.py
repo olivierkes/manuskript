@@ -156,7 +156,7 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
     def setView(self):
         # index = mainWindow().treeRedacOutline.currentIndex()
 
-        # Couting the number of other selected items
+        # Counting the number of other selected items
         # sel = []
         # for i in mainWindow().treeRedacOutline.selectionModel().selection().indexes():
         # if i.column() != 0: continue

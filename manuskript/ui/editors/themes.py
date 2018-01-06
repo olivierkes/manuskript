@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
 
-# Lots of stuff from here comes from the excellet focuswriter.
+# Lots of stuff from here comes from the excellent focuswriter.
 import os
 import re
 

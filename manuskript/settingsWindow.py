@@ -486,7 +486,7 @@ class settingsWindow(QWidget, Ui_Settings):
 
     def updateEditorSettings(self):
         """
-        Stores settings for editor appareance.
+        Stores settings for editor appearance.
         """
 
         # Background

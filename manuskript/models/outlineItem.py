@@ -17,7 +17,7 @@ try:
     locale.setlocale(locale.LC_ALL, '')
 except:
     # Invalid locale, but not really a big deal because it's used only for
-    # number formating
+    # number formatting
     pass
 
 
