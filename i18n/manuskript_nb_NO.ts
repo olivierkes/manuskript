@@ -6,7 +6,7 @@
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="18"/>
         <source>Basic HTML output using python module &apos;markdown&apos;.</source>
-        <translation></translation>
+        <translation type="unfinished">Grunnleggende HTML-eksport via Python-modulen &apos;markdown&apos;.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="19"/>
@@ -31,7 +31,7 @@
     <message>
         <location filename="../manuskript/exporter/manuskript/__init__.py" line="15"/>
         <source>Default exporter, provides basic formats used by other exporters.</source>
-        <translation></translation>
+        <translation>Forvalgt eksportør, tilbyr grunnleggende format brukt av andre eksportører.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/markdown.py" line="59"/>
@@ -41,22 +41,22 @@
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="14"/>
         <source>Plain text</source>
-        <translation></translation>
+        <translation>Klartekst</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="63"/>
         <source>Chose output file...</source>
-        <translation></translation>
+        <translation>Velg utdatafil…</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/HTML.py" line="13"/>
         <source>A little known format modestly used. You know, web sites for example.</source>
-        <translation></translation>
+        <translation>Et lite kjent format i moderat bruk. Du vet, nettsider for eksempel.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/PDF.py" line="18"/>
         <source>Needs latex to be installed.</source>
-        <translation></translation>
+        <translation type="unfinished">Krever at LaTex er installert.</translation>
     </message>
     <message>
         <location filename="../manuskript/converters/pandocConverter.py" line="75"/>
@@ -66,12 +66,12 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="86"/>
         <source>Standalone document (not just a fragment)</source>
-        <translation></translation>
+        <translation>Frittstående dokument (ikke bare et fragment)</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="89"/>
         <source>Include a table of contents.</source>
-        <translation></translation>
+        <translation>Inkluder innholdsfortegnelse.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="92"/>
@@ -81,7 +81,7 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="95"/>
         <source>Typographically correct output</source>
-        <translation></translation>
+        <translation>Typografisk korrekt utdata</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="97"/>
