@@ -2,7 +2,7 @@
 # --!-- coding: utf8 --!--
 from PyQt5.QtCore import QModelIndex
 from PyQt5.QtCore import QSize
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QMimeData, QByteArray
 from PyQt5.QtGui import QStandardItem, QBrush, QFontMetrics
 from PyQt5.QtGui import QStandardItemModel, QColor
 from PyQt5.QtWidgets import QMenu, QAction, qApp
@@ -122,6 +122,14 @@ class worldModel(QStandardItemModel):
         path = " > ".join(path)
         return path
 
+    def copyRowFromIndex(self, index):
+        row_i = index.row()
+        row = []
+        for column_i in range(self.columnCount()):
+            item = self.itemFromIndex(index.sibling(row_i, column_i)).clone()
+            row.append(item)
+        return row
+
     ###############################################################################
     # ADDING AND REMOVE
     ###############################################################################
@@ -161,6 +169,42 @@ class worldModel(QStandardItemModel):
         while self.selectedIndexes():
             index = self.selectedIndexes()[0]
             self.removeRows(index.row(), 1, index.parent())
+
+    ###############################################################################
+    # DRAG & DROP
+    ###############################################################################
+
+    """Mime type for worldModel"""
+    MIME_TYPE = "application/x.manuskript.worldmodel"
+
+    def mimeTypes(self):
+        """Returns available MIME types
+
+        Returns only worldModel MIME type to allow only internal drag & drop"""
+        return [self.MIME_TYPE]
+
+    def mimeData(self, indexes):
+        """Returns dragged data as MIME data"""
+        mime_data = QMimeData()
+        """set MIME type"""
+        mime_data.setData(self.MIME_TYPE, QByteArray())
+        rows = []
+        for i in indexes:
+            """copy not move, because these rows will be deleted automatically
+            after dropMimeData"""
+            rows.append(self.copyRowFromIndex(i))
+        """mime_data.rows available only in the application"""
+        mime_data.rows = rows
+        return mime_data
+
+    def dropMimeData(self, mime_data, action, row, column, parent):
+        """insert MIME data"""
+        parent_item = self.itemFromIndex(parent)
+        if not parent_item:
+            parent_item = self.invisibleRootItem()
+        for row in mime_data.rows:
+            parent_item.appendRow(row)
+        return True
 
         ###############################################################################
         # TEMPLATES
