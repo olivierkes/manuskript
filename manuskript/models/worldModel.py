@@ -14,7 +14,7 @@ from manuskript.ui import style as S
 
 class worldModel(QStandardItemModel):
     def __init__(self, parent):
-        QStandardItemModel.__init__(self, 0, 3, parent)
+        QStandardItemModel.__init__(self, 0, len(World), parent)
         self.mw = mainWindow()
 
     ###############################################################################
