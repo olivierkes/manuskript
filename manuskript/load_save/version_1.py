@@ -647,7 +647,13 @@ def loadProject(project, zip=None):
         files = {}
         for dirpath, dirnames, filenames in os.walk(path):
             p = dirpath.replace(path, "")
+            # Skip directories that begin with a period
+            if p[:1] == ".":
+                continue
             for f in filenames:
+                # Skip filenames that begin with a period
+                if f[:1] == ".":
+                    continue
                 # mode = "r" + ("b" if f[-4:] in [".xml", "opml"] else "")
                 if f[-4:] in [".xml", "opml"]:
                     with open(os.path.join(dirpath, f), "rb") as fo:
