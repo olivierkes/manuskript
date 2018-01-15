@@ -217,13 +217,22 @@ class worldModel(QStandardItemModel):
         mime_data.rows = rows
         return mime_data
 
-    def dropMimeData(self, mime_data, action, row, column, parent):
+    def dropMimeData(self, mime_data, action, row_i, column_i, parent):
         """insert MIME data"""
         parent_item = self.itemFromIndex(parent)
         if not parent_item:
             parent_item = self.invisibleRootItem()
-        for row in mime_data.rows:
-            parent_item.appendRow(row)
+
+        """if place for drop is not specified row_i equals -1"""
+        if row_i == -1:
+            for row in mime_data.rows:
+                parent_item.appendRow(row)
+        else:
+            """reverse list of rows, because QStandardItem::insertRow inserts
+            before the index"""
+            for row in reversed(mime_data.rows):
+                parent_item.insertRow(row_i, row)
+
         return True
 
         ###############################################################################
