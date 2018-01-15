@@ -122,14 +122,6 @@ class worldModel(QStandardItemModel):
         path = " > ".join(path)
         return path
 
-    def copyRowFromIndex(self, index):
-        row_i = index.row()
-        row = []
-        for column_i in range(self.columnCount()):
-            item = self.itemFromIndex(index.sibling(row_i, column_i)).clone()
-            row.append(item)
-        return row
-
     ###############################################################################
     # ADDING AND REMOVE
     ###############################################################################
@@ -188,11 +180,39 @@ class worldModel(QStandardItemModel):
         mime_data = QMimeData()
         """set MIME type"""
         mime_data.setData(self.MIME_TYPE, QByteArray())
+
+        """row index is just a pair of item parent and row number"""
+        row_indexes = []
+        for index in indexes:
+            item = self.itemFromIndex(index)
+            parent = item.parent()
+            if parent is None:
+                parent = self.invisibleRootItem()
+            row_indexes.append((parent, item.row()))
+
+        def copyRowWithChildren(row_index):
+            """copy row and its children except for those that are in
+            row_indexes to avoid duplicates"""
+            parent, row_i = row_index
+
+            row = []
+            for column_i in range(parent.columnCount()):
+                original = parent.child(row_i, column_i)
+                copy = original.clone()
+                for child_row_i in range(original.rowCount()):
+                    child_row_index = (original, child_row_i)
+                    if child_row_index not in row_indexes:
+                        child_row = copyRowWithChildren(child_row_index)
+                        copy.appendRow(child_row)
+                row.append(copy)
+
+            return row
+
         rows = []
-        for i in indexes:
+        for i in row_indexes:
             """copy not move, because these rows will be deleted automatically
             after dropMimeData"""
-            rows.append(self.copyRowFromIndex(i))
+            rows.append(copyRowWithChildren(i))
         """mime_data.rows available only in the application"""
         mime_data.rows = rows
         return mime_data
