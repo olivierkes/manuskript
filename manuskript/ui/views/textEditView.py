@@ -2,7 +2,7 @@
 # --!-- coding: utf8 --!--
 import re
 
-from PyQt5.QtCore import QTimer, QModelIndex, Qt, QEvent, pyqtSignal, QRegExp, QLocale
+from PyQt5.QtCore import QTimer, QModelIndex, Qt, QEvent, pyqtSignal, QRegExp, QLocale, QPersistentModelIndex
 from PyQt5.QtGui import QTextBlockFormat, QTextCharFormat, QFont, QColor, QIcon, QMouseEvent, QTextCursor
 from PyQt5.QtWidgets import QWidget, QTextEdit, qApp, QAction, QMenu
 
@@ -106,10 +106,6 @@ class textEditView(QTextEdit):
             self._model.dataChanged.connect(self.update, F.AUC)
         except TypeError:
             pass
-        try:
-            self._model.rowsAboutToBeRemoved.connect(self.rowsAboutToBeRemoved, F.AUC)
-        except TypeError:
-            pass
 
     def setColumn(self, col):
         self._column = col
@@ -128,7 +124,7 @@ class textEditView(QTextEdit):
             self.setEnabled(True)
             if index.column() != self._column:
                 index = index.sibling(index.row(), self._column)
-            self._index = index
+            self._index = QPersistentModelIndex(index)
 
             self.setPlaceholderText(self._placeholderText)
 
@@ -169,7 +165,7 @@ class textEditView(QTextEdit):
                 self.setEnabled(True)
                 if i.column() != self._column:
                     i = i.sibling(i.row(), self._column)
-                self._indexes.append(i)
+                self._indexes.append(QPersistentModelIndex(i))
 
                 if not self._model:
                     self.setModel(i.model())
@@ -264,9 +260,9 @@ class textEditView(QTextEdit):
 
         if self._updateIndexFromID:
             # We have to update to a new index
-            self._index = self._index.model().getIndexByID(
-                self._updateIndexFromID,
-                self._column)
+            index = self._index.model().getIndexByID(self._updateIndexFromID,
+                                                     self._column)
+            self._index = QPersistentModelIndex(index)
             self._updateIndexFromID = None
 
         if self._index and self._index.isValid():
@@ -292,39 +288,6 @@ class textEditView(QTextEdit):
             if update:
                 self.updateText()
 
-    def rowsAboutToBeRemoved(self, parent, first, last):
-        if self._index and self._index.isValid():
-
-            # Has my _index just been removed?
-            if self._index.parent() == parent and \
-                                    first <= self._index.row() <= last:
-                self._index = None
-                self.setEnabled(False)
-                return
-                # FIXME: self._indexes
-
-            if self._index.model() != outlineItem:
-                # The next stuff is only for outlineItems
-                return
-
-            # We check if item is a child of the row about to be removed
-            child = False
-            p = self._index.parent()
-            while p:
-                if p == parent:
-                    child = True
-                    p = None
-                elif p.isValid():
-                    p = p.parent()
-                else:
-                    p = None
-            if child:
-                # Item might have moved (so will not be valid any more)
-                ID = self._index.internalPointer().ID()
-                # We store ID, and we update it in self.update (after the
-                # rows have been removed).
-                self._updateIndexFromID = ID
-
     def disconnectDocument(self):
         try:
             self.document().contentsChanged.disconnect(self.updateTimer.start)
@@ -341,9 +304,9 @@ class textEditView(QTextEdit):
         self._updating = True
         if self._index:
             self.disconnectDocument()
-            if self.toPlainText() != F.toString(self._model.data(self._index)):
+            if self.toPlainText() != F.toString(self._index.data()):
                 # print("    Updating plaintext")
-                self.document().setPlainText(F.toString(self._model.data(self._index)))
+                self.document().setPlainText(F.toString(self._index.data()))
             self.reconnectDocument()
 
         elif self._indexes:
@@ -378,10 +341,11 @@ class textEditView(QTextEdit):
         # print("Submitting", self.objectName())
         if self._index and self._index.isValid():
             # item = self._index.internalPointer()
-            if self.toPlainText() != self._model.data(self._index):
+            if self.toPlainText() != self._index.data():
                 # print("    Submitting plain text")
                 self._updating = True
-                self._model.setData(self._index, self.toPlainText())
+                self._model.setData(QModelIndex(self._index),
+                                    self.toPlainText())
                 self._updating = False
 
         elif self._indexes:
