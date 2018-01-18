@@ -35,10 +35,6 @@ class textEditView(QTextEdit):
         self.setAcceptRichText(False)
         # When setting up a theme, this becomes true.
         self._fromTheme = False
-        # Sometimes we need to update index because item has changed its
-        # position, so we only have it's ID as reference. We store it to
-        # update at the propper time.
-        self._updateIndexFromID = None
         self._themeData = None
         self._highlighterClass = BasicHighlighter
 
@@ -257,13 +253,6 @@ class textEditView(QTextEdit):
     def update(self, topLeft, bottomRight):
         if self._updating:
             return
-
-        if self._updateIndexFromID:
-            # We have to update to a new index
-            index = self._index.model().getIndexByID(self._updateIndexFromID,
-                                                     self._column)
-            self._index = QPersistentModelIndex(index)
-            self._updateIndexFromID = None
 
         if self._index and self._index.isValid():
 
