@@ -30,6 +30,7 @@ from manuskript.ui.tools.frequencyAnalyzer import frequencyAnalyzer
 from manuskript.ui.views.outlineDelegates import outlineCharacterDelegate
 from manuskript.ui.views.plotDelegate import plotDelegate
 from manuskript.ui.views.MDEditView import MDEditView
+from manuskript.ui.statusLabel import statusLabel
 
 # Spellcheck support
 from manuskript.ui.views.textEditView import textEditView
@@ -71,7 +72,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # UI
         self.setupMoreUi()
-        self.statusLabel = QLabel(self)
+        self.statusLabel = statusLabel(parent=self)
         self.statusLabel.setAutoFillBackground(True)
         self.statusLabel.hide()
 
