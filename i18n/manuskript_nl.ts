@@ -6,27 +6,27 @@
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="18"/>
         <source>Basic HTML output using python module &apos;markdown&apos;.</source>
-        <translation></translation>
+        <translation>Basis HTML uitvoer met de &apos;markdown&apos; python module.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="19"/>
         <source>python module &apos;markdown&apos;.</source>
-        <translation></translation>
+        <translation>python &apos;markdown&apos; module.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="53"/>
         <source>Markdown source</source>
-        <translation></translation>
+        <translation>Markdown code</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="54"/>
         <source>HTML Source</source>
-        <translation></translation>
+        <translation>HTML code</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="58"/>
         <source>HTML Output</source>
-        <translation></translation>
+        <translation>HTML uitvoer</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/__init__.py" line="15"/>
@@ -46,7 +46,7 @@
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="63"/>
         <source>Chose output file...</source>
-        <translation></translation>
+        <translation>Kies uitvoerbestand...</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/HTML.py" line="13"/>
@@ -56,17 +56,17 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/PDF.py" line="18"/>
         <source>Needs latex to be installed.</source>
-        <translation></translation>
+        <translation>Latex moet geïnstalleerd zijn.</translation>
     </message>
     <message>
         <location filename="../manuskript/converters/pandocConverter.py" line="75"/>
         <source>Error</source>
-        <translation></translation>
+        <translation>Fout</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="86"/>
         <source>Standalone document (not just a fragment)</source>
-        <translation></translation>
+        <translation type="unfinished">Alleenstaand document (niet alleen een fragment)</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="89"/>
