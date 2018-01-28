@@ -31,7 +31,7 @@
     <message>
         <location filename="../manuskript/exporter/manuskript/__init__.py" line="15"/>
         <source>Default exporter, provides basic formats used by other exporters.</source>
-        <translation></translation>
+        <translation type="unfinished">Standaard exporter, biedt basis formaten aan die door andere exporters gebruikt wordt.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/markdown.py" line="59"/>
@@ -41,7 +41,7 @@
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="14"/>
         <source>Plain text</source>
-        <translation></translation>
+        <translation>Tekst zonder opmaak</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="63"/>
@@ -71,7 +71,7 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="89"/>
         <source>Include a table of contents.</source>
-        <translation></translation>
+        <translation>Inhoudstafel invoegen.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="92"/>
@@ -81,72 +81,72 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="95"/>
         <source>Typographically correct output</source>
-        <translation></translation>
+        <translation>Typografisch correcte uitvoer</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="97"/>
         <source>Normalize the document (cleaner)</source>
-        <translation></translation>
+        <translation>Normaliseer</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="99"/>
         <source>Specify the base level for headers: </source>
-        <translation></translation>
+        <translation>Geef het basisniveau voor kopteksten: </translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="106"/>
         <source>Use reference-style links instead of inline links</source>
-        <translation></translation>
+        <translation>Referentie-stijl links gebruiken in plaats van inline links</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="108"/>
         <source>Use ATX-style headers</source>
-        <translation></translation>
+        <translation>Gebruik van ATX-stijl headers</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="110"/>
         <source>Self-contained html files, with no dependencies</source>
-        <translation></translation>
+        <translation>Zelfstandige html-bestanden, zonder afhankelijkheden</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="112"/>
         <source>Use &lt;q&gt; tags for quotes in HTML</source>
-        <translation></translation>
+        <translation>Gebruik &lt;q&gt;tags voor aanhalingstekens in HTML</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="114"/>
         <source>LaTeX engine used to produce the PDF.</source>
-        <translation></translation>
+        <translation>latex: het LaTeX-formaat.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="124"/>
         <source>Paper size:</source>
-        <translation></translation>
+        <translation>Papierformaat:</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="127"/>
         <source>Font size:</source>
-        <translation></translation>
+        <translation>Tekengrootte:</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="130"/>
         <source>Class:</source>
-        <translation></translation>
+        <translation>Klasse:</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="133"/>
         <source>Line spacing:</source>
-        <translation></translation>
+        <translation>Regelafstand:</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/outputFormats.py" line="10"/>
         <source>Books that don&apos;t kill trees.</source>
-        <translation></translation>
+        <translation>Boeken die bomen niet doden.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/outputFormats.py" line="20"/>
         <source>OpenDocument format. Used by LibreOffice for example.</source>
-        <translation></translation>
+        <translation>OpenDocument-indeling. Bijvoorbeeld gebruikt door LibreOffice.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/outputFormats.py" line="30"/>
