@@ -16,7 +16,7 @@ class PDF(abstractOutput):
 
     name = "PDF"
     description = qApp.translate("Export", "Needs LaTeX to be installed.")
-    InvalidBecause = qApp.translate("Export", """a valid LaTeX installation. See Pandoc recommendations on:
+    InvalidBecause = qApp.translate("Export", """a valid LaTeX installation. Pandoc recommendations can be found on:
                      <a href="https://pandoc.org/installing.html">pandoc.org/installing.html</a>. If you want Unicode support, you need XeLaTeX.""")
     icon = "application-pdf"
 
