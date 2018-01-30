@@ -51,7 +51,7 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/HTML.py" line="13"/>
         <source>A little known format modestly used. You know, web sites for example.</source>
-        <translation></translation>
+        <translation>Een weinig bekende en weinig gebruikte indeling. Voor websites bijvoorbeeld.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/PDF.py" line="18"/>
@@ -76,7 +76,7 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="92"/>
         <source>Number of sections level to include in TOC: </source>
-        <translation></translation>
+        <translation>Aantal niveau&apos;s op te nemen in de inhoudsopgave: </translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="95"/>
@@ -156,13 +156,14 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/plainText.py" line="21"/>
         <source>reStructuredText is a lightweight markup language...</source>
-        <translation></translation>
+        <translation>reStructuredText is een lichtgewicht opmaaktaal...</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/markdown.py" line="14"/>
         <source>Just like plain text, excepts adds markdown titles.
                           Presupposes that texts are formatted in markdown.</source>
-        <translation></translation>
+        <translation>Net als tekst zonder opmaak, met de uitzondering dat het markdown titels toevoegt.
+                          Veronderstelt dat de teksten zijn opgemaakt in markdown.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="15"/>
