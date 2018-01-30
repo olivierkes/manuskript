@@ -76,7 +76,7 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="92"/>
         <source>Number of sections level to include in TOC: </source>
-        <translation></translation>
+        <translation>Aantal niveau&apos;s voor de inhoudstafel: </translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="95"/>
@@ -111,7 +111,7 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="112"/>
         <source>Use &lt;q&gt; tags for quotes in HTML</source>
-        <translation></translation>
+        <translation>Gebruik &lt;q&gt; tags voor citaten in HTML</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="114"/>
