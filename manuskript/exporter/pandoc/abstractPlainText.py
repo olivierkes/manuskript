@@ -108,7 +108,7 @@ class pandocSettings(markdownSettings):
         "atx":          pandocSetting("--atx-headers", "checkbox", "markdown asciidoc",
                                     qApp.translate("Export", "Use ATX-style headers")),
         "self-contained": pandocSetting("--self-contained", "checkbox", "html",
-                                        qApp.translate("Export", "Self-contained html files, with no dependencies")),
+                                        qApp.translate("Export", "Self-contained HTML files, with no dependencies")),
         "q-tags":       pandocSetting("--html-q-tags", "checkbox", "html",
                                         qApp.translate("Export", "Use <q> tags for quotes in HTML")),
         "latex-engine": pandocSetting("--latex-engine=", "combo", "pdf",
