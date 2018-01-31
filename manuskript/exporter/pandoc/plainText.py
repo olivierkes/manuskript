@@ -18,7 +18,7 @@ class markdown(abstractPlainText):
 
 class reST(abstractPlainText):
     name = "reST"
-    description = qApp.translate("Export", """reStructuredText is a lightweight markup language...""")
+    description = qApp.translate("Export", """reStructuredText is a lightweight markup language…""")
 
     exportVarName = "lastPandocreST"
     toFormat = "rst"
