@@ -444,7 +444,7 @@ Use se receber um erro YAML.</translation>
     <message>
         <location filename="../manuskript/importer/mindMapImporter.py" line="56"/>
         <source>Mind Map Import</source>
-        <translation></translation>
+        <translation>Importação de mapa mental</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/mindMapImporter.py" line="56"/>
@@ -454,7 +454,7 @@ Use se receber um erro YAML.</translation>
     <message>
         <location filename="../manuskript/importer/mindMapImporter.py" line="71"/>
         <source>Mind Map import</source>
-        <translation></translation>
+        <translation>Importação de mapa mental</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/mindMapImporter.py" line="74"/>
@@ -1194,7 +1194,7 @@ Use se receber um erro YAML.</translation>
     <message encoding="UTF-8">
         <location filename="../manuskript/ui/mainWindow.ui" line="2534"/>
         <source>&amp;Split…</source>
-        <translation>&amp;Dividir...</translation>
+        <translation>&amp;Dividir…</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2537"/>
@@ -1382,7 +1382,7 @@ Use se receber um erro YAML.</translation>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="405"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If you check this option, your project will be save as one single file. Easier to copy or backup, but does not allow collaborative editing, or versionning.&lt;br/&gt;If this is unchecked, your project will be save as a folder containing many small files.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Se marcar esta opção, o seu projecto será gravado como um único ficheiro.&lt;/p&gt;&lt;pr&gt;É mais fácil de copiar, mas não permite edição colaborativa ou controlo de versões.&lt;/p&gt;&lt;p&gt;Se não estiver marcada, o seu projecto será gravado como uma pasta com muitos ficheiros pequenos.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Se marcar esta opção, o seu projecto será gravado como um único ficheiro.&lt;/p&gt;&lt;p&gt;É mais fácil de copiar, mas não permite edição colaborativa ou controlo de versões.&lt;/p&gt;&lt;p&gt;Se não estiver marcada, o seu projecto será gravado como uma pasta com muitos ficheiros pequenos.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="411"/>
@@ -1969,7 +1969,7 @@ Use se receber um erro YAML.</translation>
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="173"/>
         <source>Title</source>
-        <translation></translation>
+        <translation>Título</translation>
     </message>
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="175"/>
@@ -1989,17 +1989,17 @@ Use se receber um erro YAML.</translation>
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="181"/>
         <source>Compile</source>
-        <translation></translation>
+        <translation>Compilar</translation>
     </message>
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="183"/>
         <source>Word count</source>
-        <translation></translation>
+        <translation>Total de palavras</translation>
     </message>
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="185"/>
         <source>Goal</source>
-        <translation></translation>
+        <translation>Objectivo</translation>
     </message>
 </context>
 <context>
@@ -2903,7 +2903,7 @@ Use se receber um erro YAML.</translation>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="126"/>
         <source>Dup&amp;licate</source>
-        <translation></translation>
+        <translation>Dup&amp;licar</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="132"/>
@@ -2944,7 +2944,7 @@ Use se receber um erro YAML.</translation>
     <message>
         <location filename="../manuskript/models/outlineItem.py" line="232"/>
         <source>{} words</source>
-        <translation></translation>
+        <translation>{} palavras</translation>
     </message>
 </context>
 <context>
