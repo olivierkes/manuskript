@@ -15,7 +15,7 @@ except ImportError:
 
 class HTML(markdown):
     name = "HTML"
-    description = qApp.translate("Export", "Basic HTML output using The Python module 'markdown'.")
+    description = qApp.translate("Export", "Basic HTML output using the Python module 'markdown'.")
     InvalidBecause = qApp.translate("Export", "Python module 'markdown'.")
     icon = "text-html"
 
