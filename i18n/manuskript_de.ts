@@ -178,7 +178,8 @@ interpretiert werden können, wie zum Beispiel &lt;a href=&apos;www.fountain.io&
     formats.&lt;/p&gt;
     &lt;p&gt;Website: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
     </source>
-        <translation>&lt;p&gt;Ein universaler Dokumenten-Konverter. Kann zur Konvertierung von Markup in eine Reihe von anderen Formaten genutzt werden.
+        <translation>&lt;p&gt;Ein universaler Dokumenten-Konverter. Kann zur Konvertierung von Markup in eine Reihe von anderen Formaten genutzt
+    werden.&lt;/p&gt;
     &lt;p&gt;Website: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
     </translation>
     </message>
