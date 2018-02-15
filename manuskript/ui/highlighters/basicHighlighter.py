@@ -146,8 +146,9 @@ class BasicHighlighter(QSyntaxHighlighter):
             textedText = text + " "
 
         # Based on http://john.nachtimwald.com/2009/08/22/qplaintextedit-with-in-line-spell-check/
-        WORDS = r'(?iu)([\w\']+)[^\'\w]'
-        #        (?iu) means case insensitive and unicode
+        WORDS = r'(?iu)(((?!_)[\w\'])+)'
+        #         (?iu) means case insensitive and Unicode
+        #                (?!_) means perform negative lookahead to exclude "_" from pattern match.  See issue #283
         if hasattr(self.editor, "spellcheck") and self.editor.spellcheck:
             for word_object in re.finditer(WORDS, textedText):
                 if (self.editor._dict
