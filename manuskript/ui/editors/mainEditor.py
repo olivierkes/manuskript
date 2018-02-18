@@ -197,8 +197,9 @@ class mainEditor(QWidget, Ui_mainEditor):
             self.setCurrentModelIndex(i, newTab)
 
     def goToParentItem(self):
-        idx = self.currentEditor().currentIndex
-        self.mw.treeRedacOutline.setCurrentIndex(idx.parent())
+        if self.currentEditor():
+            idx = self.currentEditor().currentIndex
+            self.mw.treeRedacOutline.setCurrentIndex(idx.parent())
 
     def setCurrentModelIndex(self, index, newTab=False, tabWidget=None):
 
