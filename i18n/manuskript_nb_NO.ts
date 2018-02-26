@@ -212,7 +212,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="117"/>
         <source>Convert to ePUB3</source>
-        <translation></translation>
+        <translation>Konverter til ePUB3</translation>
     </message>
 </context>
 <context>
@@ -220,7 +220,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="14"/>
         <source>Manage Exporters</source>
-        <translation></translation>
+        <translation>Behandle eksportører</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="21"/>
@@ -235,7 +235,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="100"/>
         <source>Offers export to</source>
-        <translation></translation>
+        <translation>Tilbyr eksport til</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="184"/>
@@ -255,7 +255,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="233"/>
         <source>Path:</source>
-        <translation></translation>
+        <translation>Sti:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="258"/>
@@ -273,7 +273,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="14"/>
         <source>Frequency Analyzer</source>
-        <translation></translation>
+        <translation>Frekvensanalyse</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="24"/>
@@ -283,32 +283,32 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="37"/>
         <source>Settings</source>
-        <translation></translation>
+        <translation>Innstillinger</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="49"/>
         <source>Minimum size:</source>
-        <translation></translation>
+        <translation>Minimumsstørrelse:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="63"/>
         <source>Exclude words (coma seperated):</source>
-        <translation></translation>
+        <translation type="unfinished">Unnlat ord (kommainndelt):</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="156"/>
         <source>Analyze</source>
-        <translation></translation>
+        <translation>Analyser</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="107"/>
         <source>Phrase frequency</source>
-        <translation></translation>
+        <translation>Frasefrekvens</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="115"/>
         <source>Number of words: from</source>
-        <translation></translation>
+        <translation>Antall ord: fra</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="129"/>
@@ -333,7 +333,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="97"/>
         <source>Folder import</source>
-        <translation></translation>
+        <translation>Mappeimport</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="101"/>
@@ -352,12 +352,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="108"/>
         <source>Coma separated values</source>
-        <translation></translation>
+        <translation type="unfinished">Kommainndelte verdier</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="113"/>
         <source>Sort items by name</source>
-        <translation></translation>
+        <translation>Sorter elementer etter navn</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="117"/>
@@ -367,22 +367,22 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/importer/opmlImporter.py" line="65"/>
         <source>OPML Import</source>
-        <translation></translation>
+        <translation>OPML-import</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/opmlImporter.py" line="37"/>
         <source>File open failed.</source>
-        <translation></translation>
+        <translation>Filåpning mislyktes.</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/opmlImporter.py" line="65"/>
         <source>This does not appear to be a valid OPML file.</source>
-        <translation></translation>
+        <translation>Dette later ikke til å være en gyldig OPML-fil.</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="55"/>
         <source>Pandoc import</source>
-        <translation></translation>
+        <translation>Pandoc-import</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="58"/>
@@ -397,12 +397,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="66"/>
         <source>Import using:</source>
-        <translation></translation>
+        <translation>Importer med:</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="70"/>
         <source>Wrap lines:</source>
-        <translation></translation>
+        <translation>Linjebryting:</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="70"/>
@@ -437,7 +437,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/importer/mindMapImporter.py" line="90"/>
         <source>Untitled</source>
-        <translation></translation>
+        <translation>Uten tittel</translation>
     </message>
 </context>
 <context>
@@ -445,7 +445,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/MDEditCompleter.py" line="77"/>
         <source>Insert reference</source>
-        <translation></translation>
+        <translation>Sett inn referanse</translation>
     </message>
 </context>
 <context>
@@ -458,12 +458,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="169"/>
         <source>Title</source>
-        <translation></translation>
+        <translation>Tittel</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="179"/>
         <source>Subtitle</source>
-        <translation></translation>
+        <translation>Undertittel</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="189"/>
@@ -473,7 +473,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="199"/>
         <source>Volume</source>
-        <translation></translation>
+        <translation>Lydstyrke</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="226"/>
@@ -483,7 +483,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="236"/>
         <source>License</source>
-        <translation></translation>
+        <translation>Lisens</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="249"/>
@@ -503,32 +503,32 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1428"/>
         <source>Summary</source>
-        <translation></translation>
+        <translation>Sammendrag</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="322"/>
         <source>Situation:</source>
-        <translation></translation>
+        <translation>Situasjon:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1337"/>
         <source>Summary:</source>
-        <translation></translation>
+        <translation>Sammendrag:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="345"/>
         <source>One sentence</source>
-        <translation></translation>
+        <translation>Ei setning</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1441"/>
         <source>One paragraph</source>
-        <translation></translation>
+        <translation>Ett avsnitt</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1446"/>
         <source>One page</source>
-        <translation></translation>
+        <translation>Ei side</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1451"/>
@@ -538,37 +538,37 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="420"/>
         <source>One sentence summary</source>
-        <translation></translation>
+        <translation>Sammendrag i ei setning</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="502"/>
         <source>One paragraph summary</source>
-        <translation></translation>
+        <translation>Sammendrag i ett avsnitt</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="540"/>
         <source>Expand each sentence of your one paragraph summary to a paragraph</source>
-        <translation></translation>
+        <translation>Utvid hver setning fra din enkle avsnittsammendrag til et avsnitt</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="565"/>
         <source>One page summary</source>
-        <translation></translation>
+        <translation>Énsiderssammendrag</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="590"/>
         <source>Full summary</source>
-        <translation></translation>
+        <translation>Helhetlig sammendrag</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1074"/>
         <source>Next</source>
-        <translation></translation>
+        <translation>Neste</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="676"/>
         <source>What if...?</source>
-        <translation></translation>
+        <translation>Hva om…?</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="688"/>
@@ -578,7 +578,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="713"/>
         <source>Names</source>
-        <translation></translation>
+        <translation>Navn</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1584"/>
@@ -588,32 +588,32 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1183"/>
         <source>Basic info</source>
-        <translation></translation>
+        <translation>Grunnleggende info</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1202"/>
         <source>Importance</source>
-        <translation></translation>
+        <translation>Viktighet</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="829"/>
         <source>Motivation</source>
-        <translation></translation>
+        <translation>Motivasjon</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="839"/>
         <source>Goal</source>
-        <translation></translation>
+        <translation>Mål</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="849"/>
         <source>Conflict</source>
-        <translation></translation>
+        <translation>Konflikt</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="859"/>
         <source>Epiphany</source>
-        <translation></translation>
+        <translation>Åpenbarelse</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="869"/>
@@ -633,22 +633,22 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1011"/>
         <source>Detailed info</source>
-        <translation></translation>
+        <translation>Detaljert info</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2018"/>
         <source>Plots</source>
-        <translation></translation>
+        <translation>Handlinger</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1192"/>
         <source>Plot</source>
-        <translation></translation>
+        <translation>Handling</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1209"/>
         <source>Character(s)</source>
-        <translation></translation>
+        <translation>Karakter(er)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1643"/>
@@ -658,17 +658,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1223"/>
         <source>Result</source>
-        <translation></translation>
+        <translation>Resultat</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1315"/>
         <source>Resolution steps</source>
-        <translation></translation>
+        <translation>Løsningssteg</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2042"/>
         <source>World</source>
-        <translation></translation>
+        <translation>Verden</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1597"/>
@@ -678,7 +678,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1654"/>
         <source>More</source>
-        <translation></translation>
+        <translation>Mer</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1663"/>
@@ -688,12 +688,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1673"/>
         <source>Source of conflict</source>
-        <translation></translation>
+        <translation>Konfliktopphav</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1311"/>
         <source>Outline</source>
-        <translation></translation>
+        <translation>Utkast</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1851"/>
@@ -713,7 +713,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2005"/>
         <source>Persos</source>
-        <translation></translation>
+        <translation>Personer</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2066"/>
@@ -728,7 +728,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2104"/>
         <source>&amp;Recent</source>
-        <translation></translation>
+        <translation>&amp;Nylig</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2124"/>
@@ -738,12 +738,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2131"/>
         <source>&amp;Tools</source>
-        <translation></translation>
+        <translation>&amp;Verktøy</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2138"/>
         <source>&amp;Edit</source>
-        <translation></translation>
+        <translation>&amp;Rediger</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2152"/>
@@ -758,12 +758,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2186"/>
         <source>&amp;Cheat sheet</source>
-        <translation></translation>
+        <translation>&amp;Jukseark</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2220"/>
         <source>Sea&amp;rch</source>
-        <translation></translation>
+        <translation>&amp;Søk</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2257"/>
@@ -783,7 +783,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2304"/>
         <source>&amp;Save</source>
-        <translation></translation>
+        <translation>&amp;Lagre</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2307"/>
@@ -803,7 +803,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2328"/>
         <source>&amp;Quit</source>
-        <translation></translation>
+        <translation>&amp;Avslutt</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2331"/>
@@ -813,7 +813,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2346"/>
         <source>&amp;Show help texts</source>
-        <translation></translation>
+        <translation>&amp;Vis hjelpetekster</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2349"/>
@@ -823,7 +823,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2364"/>
         <source>&amp;Spellcheck</source>
-        <translation></translation>
+        <translation>&amp;Stavekontroll</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2367"/>
@@ -843,17 +843,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1309"/>
         <source>Tree</source>
-        <translation></translation>
+        <translation>Tre</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2401"/>
         <source>&amp;Simple</source>
-        <translation></translation>
+        <translation>&amp;Enkelt</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2409"/>
         <source>&amp;Fiction</source>
-        <translation></translation>
+        <translation>&amp;Skjønnlitteratur</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2417"/>
@@ -868,7 +868,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2436"/>
         <source>S&amp;ettings</source>
-        <translation></translation>
+        <translation>&amp;Innstillinger</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2439"/>
@@ -878,12 +878,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2448"/>
         <source>&amp;Close project</source>
-        <translation></translation>
+        <translation>&amp;Lukk prosjekt</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2457"/>
         <source>Co&amp;mpile</source>
-        <translation></translation>
+        <translation>&amp;Kompiler</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2460"/>
@@ -893,27 +893,27 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2465"/>
         <source>&amp;Frequency Analyzer</source>
-        <translation></translation>
+        <translation>&amp;Frevensanalyse</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="154"/>
         <source>Book information</source>
-        <translation></translation>
+        <translation>Bokinformasjon</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2474"/>
         <source>&amp;About</source>
-        <translation></translation>
+        <translation>&amp;Om</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2477"/>
         <source>About Manuskript</source>
-        <translation></translation>
+        <translation>Om Manuskript</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="507"/>
         <source>The file {} does not exist. Try again.</source>
-        <translation></translation>
+        <translation>Filen {} finnes ikke. Prøv igjen.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="625"/>
@@ -923,32 +923,32 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/mainWindow.py" line="723"/>
         <source>Project {} saved.</source>
-        <translation></translation>
+        <translation>Prosjekt {} lagret.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="725"/>
         <source>WARNING: Project {} not saved.</source>
-        <translation></translation>
+        <translation>ADVARSEL: Prosjekt {} er ikke lagret.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="749"/>
         <source>Project {} loaded.</source>
-        <translation></translation>
+        <translation>Prosjekt {} innlastet.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="752"/>
         <source>Project {} loaded with some errors:</source>
-        <translation></translation>
+        <translation>Prosjekt {} innlastet med noen feil:</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="754"/>
         <source> * {} wasn&apos;t found in project file.</source>
-        <translation></translation>
+        <translation> * {} ble ikke funnet i prosjektfila.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="755"/>
         <source>Project {} loaded with some errors.</source>
-        <translation></translation>
+        <translation>Prosjekt {} innlastet med noen feil.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1083"/>
@@ -958,17 +958,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1087"/>
         <source>Words: {}{}</source>
-        <translation></translation>
+        <translation>Ord: {}{}</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1095"/>
         <source>Book summary</source>
-        <translation></translation>
+        <translation>Boksammendrag</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1096"/>
         <source>Project tree</source>
-        <translation></translation>
+        <translation>Prosjekttre</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1097"/>
@@ -1000,7 +1000,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1171"/>
         <source>Create your characters.</source>
-        <translation></translation>
+        <translation>Opprett dine karakterer</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1174"/>
@@ -1020,7 +1020,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1183"/>
         <source>Write.</source>
-        <translation></translation>
+        <translation>Skriv.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1186"/>
@@ -1030,7 +1030,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1200"/>
         <source>Dictionary</source>
-        <translation></translation>
+        <translation>Ordbok</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1213"/>
@@ -1040,7 +1040,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1301"/>
         <source>Nothing</source>
-        <translation></translation>
+        <translation>Ingenting</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1302"/>
@@ -1055,12 +1055,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1304"/>
         <source>Progress</source>
-        <translation></translation>
+        <translation>Fremdrift</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1305"/>
         <source>Compile</source>
-        <translation></translation>
+        <translation>Kompiler</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1328"/>
@@ -1075,7 +1075,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1330"/>
         <source>Background color</source>
-        <translation></translation>
+        <translation>Bakgrunnsfarge</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1321"/>
@@ -1090,17 +1090,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1323"/>
         <source>Background</source>
-        <translation></translation>
+        <translation>Bakgrunn</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1324"/>
         <source>Border</source>
-        <translation></translation>
+        <translation>Kant</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1325"/>
         <source>Corner</source>
-        <translation></translation>
+        <translation>Hjørne</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1351"/>
@@ -1135,7 +1135,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2498"/>
         <source>&amp;Copy</source>
-        <translation></translation>
+        <translation>&amp;Kopier</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2501"/>
@@ -1155,7 +1155,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2522"/>
         <source>&amp;Paste</source>
-        <translation></translation>
+        <translation>&amp;Lim inn</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2525"/>
@@ -1165,7 +1165,7 @@ Use that if you get YAML related error.</source>
     <message encoding="UTF-8">
         <location filename="../manuskript/ui/mainWindow.ui" line="2534"/>
         <source>&amp;Split…</source>
-        <translation></translation>
+        <translation>&amp;Del opp…</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2537"/>
@@ -1230,7 +1230,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2618"/>
         <source>&amp;Rename</source>
-        <translation></translation>
+        <translation>&amp;Gi nytt navn</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2621"/>
@@ -1240,12 +1240,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2167"/>
         <source>Organi&amp;ze</source>
-        <translation></translation>
+        <translation>&amp;Organiser</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2558"/>
         <source>M&amp;erge</source>
-        <translation></translation>
+        <translation>&amp;Flett</translation>
     </message>
 </context>
 <context>
@@ -1253,7 +1253,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="14"/>
         <source>Settings</source>
-        <translation></translation>
+        <translation>Innstillinger</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="24"/>
@@ -1283,27 +1283,27 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2862"/>
         <source>Fullscreen</source>
-        <translation></translation>
+        <translation>Fullskjermsvisning</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="82"/>
         <source>General settings</source>
-        <translation></translation>
+        <translation>Hovedinnstillinger</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="98"/>
         <source>Application style</source>
-        <translation></translation>
+        <translation>Programstil</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="110"/>
         <source>You might need to restart manuskript in order to avoid some visual issues.</source>
-        <translation></translation>
+        <translation type="unfinished">Det kan hende du må starte Manuskript på nytt for å unngå visuelle problemer.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="139"/>
         <source>Application language</source>
-        <translation></translation>
+        <translation>Programspråk</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="151"/>
@@ -1313,22 +1313,22 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="180"/>
         <source>Loading</source>
-        <translation></translation>
+        <translation>Laster</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="192"/>
         <source>Automatically load last project on startup</source>
-        <translation></translation>
+        <translation>Last inn siste prosjekt automatisk ved oppstart</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="211"/>
         <source>Saving</source>
-        <translation></translation>
+        <translation>Lagrer</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="225"/>
         <source>Automatically save every</source>
-        <translation></translation>
+        <translation>Lagre automatisk hver</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="272"/>
@@ -1338,17 +1338,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="308"/>
         <source>If no changes during</source>
-        <translation></translation>
+        <translation>Hvis ingenting har endret seg på</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="355"/>
         <source>seconds.</source>
-        <translation></translation>
+        <translation>sekunder.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="389"/>
         <source>Save on quit</source>
-        <translation></translation>
+        <translation>Lagre ved avslutning</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="405"/>
@@ -1358,7 +1358,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="411"/>
         <source>Save to one single file</source>
-        <translation></translation>
+        <translation>Lagre i ei fil</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="469"/>
@@ -1373,12 +1373,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="495"/>
         <source>S&amp;mart remove</source>
-        <translation></translation>
+        <translation>&amp;Smart fjerning</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="510"/>
         <source>Keep:</source>
-        <translation></translation>
+        <translation>Behold:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="523"/>
