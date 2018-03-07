@@ -2,6 +2,7 @@
 # --!-- coding: utf8 --!--
 import re
 
+from PyQt5.Qt import QApplication
 from PyQt5.QtCore import QTimer, QModelIndex, Qt, QEvent, pyqtSignal, QRegExp, QLocale, QPersistentModelIndex
 from PyQt5.QtGui import QTextBlockFormat, QTextCharFormat, QFont, QColor, QIcon, QMouseEvent, QTextCursor
 from PyQt5.QtWidgets import QWidget, QTextEdit, qApp, QAction, QMenu
@@ -347,7 +348,12 @@ class textEditView(QTextEdit):
             self._updating = False
 
     def keyPressEvent(self, event):
-        QTextEdit.keyPressEvent(self, event)
+        if event.key() == Qt.Key_V and event.modifiers() & Qt.ControlModifier:
+            text = QApplication.clipboard().text()
+            self.insertPlainText(text)
+        else:
+            QTextEdit.keyPressEvent(self, event)
+
         if event.key() == Qt.Key_Space:
             self.submit()
 
