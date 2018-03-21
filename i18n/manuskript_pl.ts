@@ -2644,12 +2644,12 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings.py" line="343"/>
         <source>{}Level {} folder</source>
-        <translation type="unfinished"></translation>
+        <translation>{}Poziom {} folderu</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings.py" line="346"/>
         <source>{}Level {} text</source>
-        <translation type="unfinished"></translation>
+        <translation>{}Poziom {} tekstu</translation>
     </message>
 </context>
 <context>
@@ -3802,27 +3802,27 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message>
         <location filename="../manuskript/settingsWindow.py" line="598"/>
         <source>New status</source>
-        <translation type="unfinished"></translation>
+        <translation>Nowy status</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="619"/>
         <source>New label</source>
-        <translation type="unfinished"></translation>
+        <translation>Nowa etykieta</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="655"/>
         <source>newtheme</source>
-        <translation type="unfinished"></translation>
+        <translation>nowymotyw</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="665"/>
         <source>New theme</source>
-        <translation type="unfinished"></translation>
+        <translation>Nowy motyw</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="697"/>
         <source> (read-only)</source>
-        <translation type="unfinished"></translation>
+        <translation> (tylko-do-odczytu)</translation>
     </message>
 </context>
 <context>
@@ -3830,27 +3830,27 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message>
         <location filename="../manuskript/ui/views/sldImportance_ui.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Formularz</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/sldImportance_ui.ui" line="39"/>
         <source>TextLabel</source>
-        <translation type="unfinished"></translation>
+        <translation>EtykietaTekstowa</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/sldImportance.py" line="29"/>
         <source>Minor</source>
-        <translation type="unfinished"></translation>
+        <translation>Epizodyczny</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/sldImportance.py" line="30"/>
         <source>Secondary</source>
-        <translation type="unfinished"></translation>
+        <translation>Poboczny</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/sldImportance.py" line="31"/>
         <source>Main</source>
-        <translation type="unfinished"></translation>
+        <translation>Główny</translation>
     </message>
 </context>
 <context>
