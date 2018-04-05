@@ -302,7 +302,7 @@ class mainEditor(QWidget, Ui_mainEditor):
 
         wc = item.data(Outline.wordCount)
         goal = item.data(Outline.goal)
-        chars = len(item.data(Outline.text))  # there might be a better way
+        chars = item.data(Outline.charCount) # len(item.data(Outline.text)) 
         progress = item.data(Outline.goalPercentage)
         # mw = qApp.activeWindow()
 
