@@ -8,7 +8,7 @@ from manuskript.exporter.basic import basicFormat
 from manuskript.functions import mainWindow
 from manuskript.models import outlineItem
 from manuskript.ui.exporters.manuskript.plainTextSettings import exporterSettings
-
+import codecs
 
 class plainText(basicFormat):
     name = qApp.translate("Export", "Plain text")
@@ -98,7 +98,7 @@ class plainText(basicFormat):
             return
 
         if filename:
-            with open(filename, "w") as f:
+            with open(filename, "w", encoding='utf8') as f:
                 f.write(content)
 
     def preview(self, settingsWidget, previewWidget):
