@@ -306,6 +306,8 @@ class mainEditor(QWidget, Ui_mainEditor):
         progress = item.data(Outline.goalPercentage)
         # mw = qApp.activeWindow()
 
+        if not chars:
+            chars = 0
         if not wc:
             wc = 0
         if goal:
@@ -319,13 +321,13 @@ class mainEditor(QWidget, Ui_mainEditor):
             del p
             self.lblRedacProgress.setPixmap(self.px)
             self.lblRedacWC.setText(self.tr("({} chars) {}  words / {} ").format(
-                    chars,
+                    locale.format("%d", chars, grouping=True),
                     locale.format("%d", wc, grouping=True),
                     locale.format("%d", goal, grouping=True)))
         else:
             self.lblRedacProgress.hide()
             self.lblRedacWC.setText(self.tr("({} chars) {} words ").format(
-                    chars,
+                    locale.format("%d", chars, grouping=True),
                     locale.format("%d", wc, grouping=True)))
 
     ###############################################################################
