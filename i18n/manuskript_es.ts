@@ -1892,7 +1892,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1115"/>
         <source>&amp;Show wordcount</source>
-        <translation>Mostrar recuento de palabras</translation>
+        <translation>&amp;Mostrar recuento de palabras</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1128"/>
