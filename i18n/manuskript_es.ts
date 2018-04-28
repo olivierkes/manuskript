@@ -825,7 +825,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2328"/>
         <source>&amp;Quit</source>
-        <translation>&amp;Quitar</translation>
+        <translation>&amp;Cerrar</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2331"/>
@@ -1194,7 +1194,7 @@ Use that if you get YAML related error.</source>
     <message encoding="UTF-8">
         <location filename="../manuskript/ui/mainWindow.ui" line="2534"/>
         <source>&amp;Split…</source>
-        <translation type="unfinished">Dividir…</translation>
+        <translation>Dividir…</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2537"/>
@@ -1229,7 +1229,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2594"/>
         <source>&amp;Move Up</source>
-        <translation type="unfinished">Subir</translation>
+        <translation>Subir</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2597"/>
@@ -1239,7 +1239,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2606"/>
         <source>M&amp;ove Down</source>
-        <translation type="unfinished">Bajar</translation>
+        <translation>Bajar</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2609"/>
@@ -1254,7 +1254,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2582"/>
         <source>&amp;Delete</source>
-        <translation type="unfinished">Eliminar</translation>
+        <translation>Eliminar</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2618"/>
@@ -1274,7 +1274,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2558"/>
         <source>M&amp;erge</source>
-        <translation type="unfinished">Combinar</translation>
+        <translation>Combinar</translation>
     </message>
 </context>
 <context>
@@ -1847,7 +1847,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="983"/>
         <source>TextLabel</source>
-        <translation type="unfinished">EtiquetadeTexto</translation>
+        <translation>EtiquetadeTexto</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2618"/>
@@ -1877,22 +1877,22 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1045"/>
         <source>Show &amp;wordcount</source>
-        <translation type="unfinished">Mostrar contador de palabras</translation>
+        <translation>Mostrar recuento de palabras</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1058"/>
         <source>S&amp;how progress</source>
-        <translation type="unfinished">Mostrar progreso</translation>
+        <translation>Mostrar progreso</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1071"/>
         <source>Show summar&amp;y</source>
-        <translation type="unfinished">Mostrar resumen</translation>
+        <translation>Mostrar resumen</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1115"/>
         <source>&amp;Show wordcount</source>
-        <translation type="unfinished">Mostrar contador de palabras</translation>
+        <translation>Mostrar recuento de palabras</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1128"/>
@@ -1902,12 +1902,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1666"/>
         <source>Old st&amp;yle</source>
-        <translation type="unfinished">Estilo antiguo</translation>
+        <translation>Estilo antiguo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1679"/>
         <source>Ne&amp;w style</source>
-        <translation type="unfinished">Estilo nuevo</translation>
+        <translation>Estilo nuevo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2010"/>
@@ -2181,7 +2181,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/collapsibleDockWidgets.py" line="26"/>
         <source>Dock Widgets Toolbar</source>
-        <translation type="unfinished">Barra de herramientas de anclaje de componentes</translation>
+        <translation>Anclar Barra de Herramientas</translation>
     </message>
 </context>
 <context>
@@ -2444,12 +2444,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="788"/>
         <source>Replace ... with â¦</source>
-        <translation type="unfinished">Reemplazar ... con ...</translation>
+        <translation>Reemplazar ... con ...</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="795"/>
         <source>Replace --- with â</source>
-        <translation type="unfinished">Reemplazar --- con —</translation>
+        <translation>Reemplazar --- con —</translation>
     </message>
 </context>
 <context>
@@ -2551,12 +2551,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.ui" line="86"/>
         <source>Import under:</source>
-        <translation type="unfinished">Importar bajo:</translation>
+        <translation>Importar bajo:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.ui" line="93"/>
         <source>Import in a top-level folder</source>
-        <translation type="unfinished">Importar en una carpeta de nivel superior</translation>
+        <translation>Importar en una carpeta de nivel superior</translation>
     </message>
 </context>
 <context>
@@ -2873,7 +2873,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="87"/>
         <source>New &amp;Folder</source>
-        <translation type="unfinished">Nueva carpeta</translation>
+        <translation>Nueva carpeta</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="93"/>
@@ -2888,7 +2888,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="107"/>
         <source>C&amp;ut</source>
-        <translation type="unfinished">Cortar</translation>
+        <translation>Cortar</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="112"/>
@@ -2908,7 +2908,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="132"/>
         <source>&amp;Delete</source>
-        <translation type="unfinished">Eliminar</translation>
+        <translation>Eliminar</translation>
     </message>
 </context>
 <context>
@@ -3058,7 +3058,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>1. Setup</source>
-        <translation type="unfinished">1. Planteamiento</translation>
+        <translation>1. Planteamiento</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3078,7 +3078,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>2. Reversal</source>
-        <translation type="unfinished">2. Inversión</translation>
+        <translation>2. Cambio de rumbo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3088,7 +3088,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>3. Stand up</source>
-        <translation type="unfinished">3. Stand up</translation>
+        <translation>3. Recuperación</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3098,7 +3098,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>3. Ending</source>
-        <translation type="unfinished">3. Resolución</translation>
+        <translation>3. Resolución</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3964,7 +3964,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="278"/>
         <source>words each.</source>
-        <translation type="unfinished">palabras cada uno.</translation>
+        <translation>palabras cada una.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="281"/>
@@ -4029,7 +4029,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="430"/>
         <source>Final</source>
-        <translation type="unfinished">Final</translation>
+        <translation>Final</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="162"/>
