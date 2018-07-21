@@ -71,104 +71,106 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="89"/>
         <source>Include a table of contents.</source>
-        <translation></translation>
+        <translation>Inclua um índice.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="92"/>
         <source>Number of sections level to include in TOC: </source>
-        <translation></translation>
+        <translation>Número de seções a serem incluídas no TOC: </translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="95"/>
         <source>Typographically correct output</source>
-        <translation></translation>
+        <translation>Saída tipograficamente correta</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="97"/>
         <source>Normalize the document (cleaner)</source>
-        <translation></translation>
+        <translation>Normalize o documento (mais limpo)</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="99"/>
         <source>Specify the base level for headers: </source>
-        <translation></translation>
+        <translation>Especifique o nível base para os cabeçalhos: </translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="106"/>
         <source>Use reference-style links instead of inline links</source>
-        <translation></translation>
+        <translation>Use links de referência em vez de links in-line</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="108"/>
         <source>Use ATX-style headers</source>
-        <translation></translation>
+        <translation>Use cabeçalhos no estilo ATX</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="110"/>
         <source>Self-contained html files, with no dependencies</source>
-        <translation></translation>
+        <translation>Arquivos html independentes, sem dependências</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="112"/>
         <source>Use &lt;q&gt; tags for quotes in HTML</source>
-        <translation></translation>
+        <translation>Use as tags &lt;q&gt; para marcações em HTML</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="114"/>
         <source>LaTeX engine used to produce the PDF.</source>
-        <translation></translation>
+        <translation>Mecanismo LaTeX usado para produzir o PDF.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="124"/>
         <source>Paper size:</source>
-        <translation></translation>
+        <translation>Tamanho do papel:</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="127"/>
         <source>Font size:</source>
-        <translation></translation>
+        <translation>Tamanho da Fonte:</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="130"/>
         <source>Class:</source>
-        <translation></translation>
+        <translation>Classe:</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="133"/>
         <source>Line spacing:</source>
-        <translation></translation>
+        <translation>Espaçamento entre linhas:</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/outputFormats.py" line="10"/>
         <source>Books that don&apos;t kill trees.</source>
-        <translation></translation>
+        <translation>Livros que não matam árvores.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/outputFormats.py" line="20"/>
         <source>OpenDocument format. Used by LibreOffice for example.</source>
-        <translation></translation>
+        <translation>Formato OpenDocument. Usado pelo LibreOffice por exemplo.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/outputFormats.py" line="30"/>
         <source>Microsoft Office (.docx) document.</source>
-        <translation></translation>
+        <translation>Documento do Microsoft Office (.docx).</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/plainText.py" line="21"/>
         <source>reStructuredText is a lightweight markup language...</source>
-        <translation></translation>
+        <translation>reStructuredText é uma linguagem de marcação leve ...</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/markdown.py" line="14"/>
         <source>Just like plain text, excepts adds markdown titles.
                           Presupposes that texts are formatted in markdown.</source>
-        <translation></translation>
+        <translation>Assim como o texto simples, as exceções adicionam títulos de marcação.
+                          Pressupõe que os textos são formatados em markdown.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="15"/>
         <source>Simplest export to plain text. Allows you to use your own markup not understood
                   by manuskript, for example &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</source>
-        <translation></translation>
+        <translation>Exportação simples para texto simples. Permite que você use sua própria marcação não entendida
+                  pelo manuskript, por exemplo &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/__init__.py" line="20"/>
@@ -176,13 +178,16 @@
     formats.&lt;/p&gt;
     &lt;p&gt;Website: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
     </source>
-        <translation></translation>
+        <translation>&lt;p&gt;Um conversor de documentos universal. Pode ser usado para converter markdown em uma gama de outros formatos.&lt;/p&gt;
+    &lt;p&gt;Site: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
+    </translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/PDF.py" line="19"/>
         <source>a valid latex installation. See pandoc recommendations on:
                      &lt;a href=&quot;http://pandoc.org/installing.html&quot;&gt;http://pandoc.org/installing.html&lt;/a&gt;. If you want unicode support, you need xelatex.</source>
-        <translation></translation>
+        <translation>uma instalação de látex válida. Veja as recomendações sobre pandoc em:
+                     &lt;a href=&quot;http://pandoc.org/installing.html&quot;&gt;http://pandoc.org/installing.html&lt;/a&gt;. Se você quiser suporte unicode, você precisa do xelatex.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/plainText.py" line="10"/>
