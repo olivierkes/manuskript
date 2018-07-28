@@ -9,6 +9,9 @@
 .cache
 .directory
 .idea
+.project
+.pydevproject
+.settings/org.eclipse.core.resources.prefs
 ExportTest
 Notes.t2t
 dist
