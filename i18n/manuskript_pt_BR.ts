@@ -2586,17 +2586,17 @@ Use isso se você receber um erro relacionado ao YAML.</translation>
     <message>
         <location filename="../manuskript/ui/importers/importer_ui.ui" line="75"/>
         <source>Clear file</source>
-        <translation></translation>
+        <translation>Limpar o arquivo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/importers/importer_ui.ui" line="160"/>
         <source>Preview</source>
-        <translation></translation>
+        <translation>Pré-visualizar</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/importers/importer_ui.ui" line="138"/>
         <source>Settings</source>
-        <translation></translation>
+        <translation>Configurações</translation>
     </message>
 </context>
 <context>
@@ -2604,7 +2604,7 @@ Use isso se você receber um erro relacionado ao YAML.</translation>
     <message>
         <location filename="../manuskript/ui/views/lineEditView.py" line="112"/>
         <source>Various</source>
-        <translation></translation>
+        <translation>Vários</translation>
     </message>
 </context>
 <context>
@@ -2612,7 +2612,7 @@ Use isso se você receber um erro relacionado ao YAML.</translation>
     <message>
         <location filename="../manuskript/ui/editors/locker_ui.ui" line="14"/>
         <source>Form</source>
-        <translation></translation>
+        <translation>Formulário</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker_ui.ui" line="26"/>
@@ -2622,17 +2622,17 @@ Use isso se você receber um erro relacionado ao YAML.</translation>
     <message>
         <location filename="../manuskript/ui/editors/locker_ui.ui" line="33"/>
         <source>Word target</source>
-        <translation></translation>
+        <translation>Meta de palavras</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker_ui.ui" line="40"/>
         <source>Time target</source>
-        <translation></translation>
+        <translation>Meta de tempo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker_ui.ui" line="47"/>
         <source> words</source>
-        <translation></translation>
+        <translation> palavras</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker_ui.ui" line="63"/>
@@ -2667,12 +2667,12 @@ Use isso se você receber um erro relacionado ao YAML.</translation>
     <message>
         <location filename="../manuskript/ui/editors/locker.py" line="104"/>
         <source>{} remaining</source>
-        <translation></translation>
+        <translation>{} falatando</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker.py" line="109"/>
         <source>{} words remaining</source>
-        <translation></translation>
+        <translation>{} palavras restando</translation>
     </message>
 </context>
 <context>
@@ -2680,7 +2680,7 @@ Use isso se você receber um erro relacionado ao YAML.</translation>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.ui" line="14"/>
         <source>Form</source>
-        <translation></translation>
+        <translation>Formulário</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.ui" line="67"/>
@@ -2690,12 +2690,12 @@ Use isso se você receber um erro relacionado ao YAML.</translation>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.ui" line="83"/>
         <source>Index cards</source>
-        <translation></translation>
+        <translation>Cartões de índece</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.ui" line="102"/>
         <source>Outline</source>
-        <translation></translation>
+        <translation>Esboço</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.ui" line="198"/>
@@ -2705,7 +2705,7 @@ Use isso se você receber um erro relacionado ao YAML.</translation>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.ui" line="47"/>
         <source>Go to parent item</source>
-        <translation></translation>
+        <translation>Ir para item pai</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.ui" line="57"/>
@@ -2720,12 +2720,12 @@ Use isso se você receber um erro relacionado ao YAML.</translation>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="319"/>
         <source>{} words / {} </source>
-        <translation></translation>
+        <translation>{} palavras / {} </translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="324"/>
         <source>{} words </source>
-        <translation></translation>
+        <translation>{} palavras </translation>
     </message>
 </context>
 <context>
@@ -2741,7 +2741,7 @@ Use isso se você receber um erro relacionado ao YAML.</translation>
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.ui" line="14"/>
         <source>Form</source>
-        <translation></translation>
+        <translation>Formulário</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.ui" line="41"/>
@@ -2751,22 +2751,22 @@ Use isso se você receber um erro relacionado ao YAML.</translation>
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.ui" line="81"/>
         <source>Summary</source>
-        <translation></translation>
+        <translation>Sumário</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.ui" line="114"/>
         <source>One line summary</source>
-        <translation></translation>
+        <translation>Sumário de uma linha</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.ui" line="140"/>
         <source>Full summary</source>
-        <translation></translation>
+        <translation>Sumário completo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.ui" line="180"/>
         <source>Notes / References</source>
-        <translation></translation>
+        <translation>Notas / Referências</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.ui" line="190"/>
