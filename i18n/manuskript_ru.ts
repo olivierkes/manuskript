@@ -6,7 +6,7 @@
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="18"/>
         <source>Basic HTML output using python module &apos;markdown&apos;.</source>
-        <translation></translation>
+        <translation>Простая HTML разметка с использованием python модуля &apos;markdown&apos;.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="19"/>
@@ -31,32 +31,32 @@
     <message>
         <location filename="../manuskript/exporter/manuskript/__init__.py" line="15"/>
         <source>Default exporter, provides basic formats used by other exporters.</source>
-        <translation></translation>
+        <translation>Экспортер по умолчанию, предоставляет основные форматы, используемые другими экспортерами.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/markdown.py" line="59"/>
         <source>Preview with highlighter.</source>
-        <translation></translation>
+        <translation type="unfinished">Предварительный просмотр с highlighter.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="14"/>
         <source>Plain text</source>
-        <translation></translation>
+        <translation>Обычный текст</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="63"/>
         <source>Chose output file...</source>
-        <translation></translation>
+        <translation>Выбрать файл на выход...</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/HTML.py" line="13"/>
         <source>A little known format modestly used. You know, web sites for example.</source>
-        <translation></translation>
+        <translation>Мало известный формат, практически не используется. Вы знаете, для веб-сайтов на пример.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/PDF.py" line="18"/>
         <source>Needs latex to be installed.</source>
-        <translation></translation>
+        <translation>Необходим установленный latex.</translation>
     </message>
     <message>
         <location filename="../manuskript/converters/pandocConverter.py" line="75"/>
@@ -66,109 +66,111 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="86"/>
         <source>Standalone document (not just a fragment)</source>
-        <translation></translation>
+        <translation>Отдельный документ (а не фрагмент)</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="89"/>
         <source>Include a table of contents.</source>
-        <translation></translation>
+        <translation>Включить оглавление.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="92"/>
         <source>Number of sections level to include in TOC: </source>
-        <translation></translation>
+        <translation>Число уровней разделов для включения в оглавление: </translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="95"/>
         <source>Typographically correct output</source>
-        <translation></translation>
+        <translation>Типографски правильный вывод</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="97"/>
         <source>Normalize the document (cleaner)</source>
-        <translation></translation>
+        <translation>Нормализовать документа (уборщик)</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="99"/>
         <source>Specify the base level for headers: </source>
-        <translation></translation>
+        <translation>Укажите базовый уровень для заголовков: </translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="106"/>
         <source>Use reference-style links instead of inline links</source>
-        <translation></translation>
+        <translation type="unfinished">Использовать ссылку в виде ссылки, а не встроенные ссылки</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="108"/>
         <source>Use ATX-style headers</source>
-        <translation></translation>
+        <translation>Использование ATX-стиль заголовков</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="110"/>
         <source>Self-contained html files, with no dependencies</source>
-        <translation></translation>
+        <translation>Автономные HTML-файлы, без каких-либо зависимостей</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="112"/>
         <source>Use &lt;q&gt; tags for quotes in HTML</source>
-        <translation></translation>
+        <translation>Используйте теги &lt;q&gt; для цитат в HTML</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="114"/>
         <source>LaTeX engine used to produce the PDF.</source>
-        <translation></translation>
+        <translation>LaTeX использован для создания PDF.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="124"/>
         <source>Paper size:</source>
-        <translation></translation>
+        <translation>Размер бумаги:</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="127"/>
         <source>Font size:</source>
-        <translation></translation>
+        <translation>Размер шрифта:</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="130"/>
         <source>Class:</source>
-        <translation></translation>
+        <translation>Класс:</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="133"/>
         <source>Line spacing:</source>
-        <translation></translation>
+        <translation>Межстрочный интервал:</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/outputFormats.py" line="10"/>
         <source>Books that don&apos;t kill trees.</source>
-        <translation></translation>
+        <translation>Книги, которые не убивают деревья.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/outputFormats.py" line="20"/>
         <source>OpenDocument format. Used by LibreOffice for example.</source>
-        <translation></translation>
+        <translation>Формат OpenDocument. Используется LibreOffice например.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/outputFormats.py" line="30"/>
         <source>Microsoft Office (.docx) document.</source>
-        <translation></translation>
+        <translation>Документ Microsoft Office (.docx).</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/plainText.py" line="21"/>
         <source>reStructuredText is a lightweight markup language...</source>
-        <translation></translation>
+        <translation>reStructuredText — это легкий язык разметки...</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/markdown.py" line="14"/>
         <source>Just like plain text, excepts adds markdown titles.
                           Presupposes that texts are formatted in markdown.</source>
-        <translation></translation>
+        <translation type="unfinished">Как обычный текст, за исключением markdown заголовков.
+                          Предполагается, что тексты форматируются в markdown.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="15"/>
         <source>Simplest export to plain text. Allows you to use your own markup not understood
                   by manuskript, for example &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</source>
-        <translation></translation>
+        <translation>Простой экспорт в обычный текст. Позволяет вам использовать ваши собственные метки, не распознанные
+                  manuskript, например &lt;a href=&apos;www.fountain.io&apos;&gt;Фонтан&lt;/a&gt;.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/__init__.py" line="20"/>
@@ -176,43 +178,52 @@
     formats.&lt;/p&gt;
     &lt;p&gt;Website: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
     </source>
-        <translation></translation>
+        <translation>&lt;p&gt;Универсальный конвертер документов. Может использоваться для преобразования markdown в широкий 
+    диапазон других форматов.&lt;/p&gt;
+    &lt;p&gt;Вебсайт: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
+    </translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/PDF.py" line="19"/>
         <source>a valid latex installation. See pandoc recommendations on:
                      &lt;a href=&quot;http://pandoc.org/installing.html&quot;&gt;http://pandoc.org/installing.html&lt;/a&gt;. If you want unicode support, you need xelatex.</source>
-        <translation></translation>
+        <translation>действующая установка latex. См. рекомендации pandoc на:
+                     &lt;a href=&quot;http://pandoc.org/installing.html&quot;&gt;http://pandoc.org/installing.html&lt;/a&gt;. Если вам нужна поддержка юникода, вам необходим xelatex.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/plainText.py" line="10"/>
         <source>Export to markdown, using pandoc. Allows more formatting options
     than the basic manuskript exporter.</source>
-        <translation></translation>
+        <translation>Экспорт в markdown, используя pandoc. Имеет больше настроек форматирования,
+    чем экспортер manuskript.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/plainText.py" line="31"/>
         <source>LaTeX is a word processor and document markup language used to create
                                               beautiful documents.</source>
-        <translation></translation>
+        <translation>Latex это текстовый процессор и язык разметки документов, используемый для создания
+                                                красивых документов.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/plainText.py" line="42"/>
         <source>The purpose of this format is to provide a way to exchange information
                                               between outliners and Internet services that can be browsed or controlled
                                               through an outliner.</source>
-        <translation></translation>
+        <translation>Цель этого формата-обеспечить возможность обмена информацией
+                                              между планировщиком и интернет-сервисами, которые можно просматривать
+                                              или контролировать через планировщик.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="102"/>
         <source>Disable YAML metadata block.
 Use that if you get YAML related error.</source>
-        <translation></translation>
+        <translation>Отключить блок метаданных YAML.
+Используйте это, если получаете ошибки связанные с YAML.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="117"/>
         <source>Convert to ePUB3</source>
-        <translation></translation>
+        <translation>Преобразовать в ePUB3</translation>
     </message>
 </context>
 <context>
@@ -220,7 +231,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="14"/>
         <source>Manage Exporters</source>
-        <translation></translation>
+        <translation>Управление экспортерами</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="21"/>
@@ -235,7 +246,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="100"/>
         <source>Offers export to</source>
-        <translation></translation>
+        <translation>Экспортирует в</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="184"/>
@@ -255,7 +266,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="233"/>
         <source>Path:</source>
-        <translation></translation>
+        <translation>Путь:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="258"/>
@@ -273,7 +284,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="14"/>
         <source>Frequency Analyzer</source>
-        <translation></translation>
+        <translation>Частотный анализатор</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="24"/>
@@ -283,32 +294,32 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="37"/>
         <source>Settings</source>
-        <translation></translation>
+        <translation>Настройки</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="49"/>
         <source>Minimum size:</source>
-        <translation></translation>
+        <translation>Минимальный размер:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="63"/>
         <source>Exclude words (coma seperated):</source>
-        <translation></translation>
+        <translation>Исключить слова (через запятую):</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="156"/>
         <source>Analyze</source>
-        <translation></translation>
+        <translation>Анализировать</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="107"/>
         <source>Phrase frequency</source>
-        <translation></translation>
+        <translation>Частота фраз</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="115"/>
         <source>Number of words: from</source>
-        <translation></translation>
+        <translation type="unfinished">Количество слов: from</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="129"/>
@@ -328,12 +339,14 @@ Use that if you get YAML related error.</source>
         <source>&lt;b&gt;Info:&lt;/b&gt; A very simple
                         parser that will go through a markdown document and
                         create items for each titles.&lt;br/&gt;&amp;nbsp;</source>
-        <translation></translation>
+        <translation>&lt;b&gt;Информация:&lt;/b&gt; Очень простой
+                        парсер, который пройдет по документу markdown и
+                        создаст элементы для каждого заголовка.&lt;br/&gt;&amp;nbsp;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="97"/>
         <source>Folder import</source>
-        <translation></translation>
+        <translation>Импорт папки</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="101"/>
@@ -342,47 +355,51 @@ Use that if you get YAML related error.</source>
                         plaintext documents within (you chose which ones by extension)
                         are added as scene.&lt;/p&gt;
                         &lt;p&gt;Only text files are supported (not images, binary or others).&lt;/p&gt;</source>
-        <translation></translation>
+        <translation>&lt;p&gt;&lt;b&gt;Информация:&lt;/b&gt; Импортирует всю структуру каталогов. 
+                        Папки добавляются в виде папок, и текстовые документы в них
+                        (вы решили, какие из них по расширению)
+                        добавляются в качестве сцены.&lt;/p&gt;
+                        &lt;p&gt;Поддерживаются только текстовые файлы (не изображения, двоичный или другие).&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="108"/>
         <source>Include only those extensions:</source>
-        <translation></translation>
+        <translation>Включить только эти расширения:</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="108"/>
         <source>Coma separated values</source>
-        <translation></translation>
+        <translation>Значения через запятую</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="113"/>
         <source>Sort items by name</source>
-        <translation></translation>
+        <translation>Сортировка элементов по имени</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="117"/>
         <source>Import folder then files</source>
-        <translation></translation>
+        <translation>Импорт папки потом файлов</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/opmlImporter.py" line="65"/>
         <source>OPML Import</source>
-        <translation></translation>
+        <translation>Импорт OPML</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/opmlImporter.py" line="37"/>
         <source>File open failed.</source>
-        <translation></translation>
+        <translation>Файл открыть не удалось.</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/opmlImporter.py" line="65"/>
         <source>This does not appear to be a valid OPML file.</source>
-        <translation></translation>
+        <translation>Это не допустимый OPML файл.</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="55"/>
         <source>Pandoc import</source>
-        <translation></translation>
+        <translation>Импорт Pandoc</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="58"/>
@@ -392,17 +409,22 @@ Use that if you get YAML related error.</source>
                         then it will be imported in manuskript. One or the other
                         might give better result depending on your document.
                         &lt;br/&gt;&amp;nbsp;</source>
-        <translation></translation>
+        <translation>&lt;b&gt;Информация:&lt;/b&gt; Manuskript может
+                        импортировать из &lt;b&gt;markdown&lt;/b&gt; или &lt;b&gt;OPML&lt;/b&gt;. Pandoc
+                        может преобразовать ваш документ в любой из них (см. ниже),
+                        и тогда он будет импортирован в manuskript. Один или другой
+                        могут дать лучший результат, в зависимости от вашего документа.
+                        &lt;br/&gt;&amp;nbsp;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="66"/>
         <source>Import using:</source>
-        <translation></translation>
+        <translation>Импортировать используя:</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="70"/>
         <source>Wrap lines:</source>
-        <translation></translation>
+        <translation>Перенос строк:</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="70"/>
@@ -412,22 +434,27 @@ Use that if you get YAML related error.</source>
                         &lt;b&gt;none&lt;/b&gt;: no line wrap.&lt;br&gt;
                         &lt;b&gt;preserve&lt;/b&gt;: tries to preserves line wrap from the
                         original document.&lt;/p&gt;</source>
-        <translation></translation>
+        <translation>&lt;p&gt;Следует ли pandoc создать 
+                        косметические / не семантической разрывы?&lt;/p&gt;&lt;p&gt;
+                        &lt;b&gt;авто&lt;/b&gt;: разрывает на 72 символе.&lt;br&gt;
+                        &lt;b&gt;нет&lt;/b&gt;: без переноса строки.&lt;br&gt;
+                        &lt;b&gt;сохранить&lt;/b&gt;: старается сохранить разрывы строк из
+                        исходного документа.&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/mindMapImporter.py" line="56"/>
         <source>Mind Map Import</source>
-        <translation></translation>
+        <translation>Импорт Mind Map</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/mindMapImporter.py" line="56"/>
         <source>This does not appear to be a valid Mind Map file.</source>
-        <translation></translation>
+        <translation>Это не допустимый Mind Map файл.</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/mindMapImporter.py" line="71"/>
         <source>Mind Map import</source>
-        <translation></translation>
+        <translation>Импортировать Mind Map</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/mindMapImporter.py" line="74"/>
@@ -437,7 +464,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/importer/mindMapImporter.py" line="90"/>
         <source>Untitled</source>
-        <translation></translation>
+        <translation>Без имени</translation>
     </message>
 </context>
 <context>
@@ -445,7 +472,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/MDEditCompleter.py" line="77"/>
         <source>Insert reference</source>
-        <translation></translation>
+        <translation>Вставить ссылку</translation>
     </message>
 </context>
 <context>
@@ -458,12 +485,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="169"/>
         <source>Title</source>
-        <translation></translation>
+        <translation>Заголовок</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="179"/>
         <source>Subtitle</source>
-        <translation></translation>
+        <translation>Подзаголовок</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="189"/>
@@ -473,7 +500,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="199"/>
         <source>Volume</source>
-        <translation></translation>
+        <translation>Объем</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="226"/>
@@ -483,7 +510,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="236"/>
         <source>License</source>
-        <translation></translation>
+        <translation>Лицензия</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="249"/>
@@ -503,27 +530,27 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1428"/>
         <source>Summary</source>
-        <translation></translation>
+        <translation>Сводка</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="322"/>
         <source>Situation:</source>
-        <translation></translation>
+        <translation>Ситуация:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1337"/>
         <source>Summary:</source>
-        <translation></translation>
+        <translation>Краткое описание:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="345"/>
         <source>One sentence</source>
-        <translation></translation>
+        <translation>Одно предложение</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1441"/>
         <source>One paragraph</source>
-        <translation></translation>
+        <translation>Один абзац</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1446"/>
@@ -538,12 +565,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="420"/>
         <source>One sentence summary</source>
-        <translation></translation>
+        <translation>Сводка одной фразой</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="502"/>
         <source>One paragraph summary</source>
-        <translation></translation>
+        <translation>Сводка одним параграфом</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="540"/>
