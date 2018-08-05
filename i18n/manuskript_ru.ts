@@ -324,7 +324,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="129"/>
         <source>to</source>
-        <translation>то</translation>
+        <translation>до</translation>
     </message>
 </context>
 <context>
