@@ -73,10 +73,17 @@ class settingsWindow(QWidget, Ui_Settings):
         self.cmbTranslation.clear()
         tr = OrderedDict()
         tr["English"] = ""
-        tr["Français"] = "manuskript_fr.qm"
-        tr["Español"] = "manuskript_es.qm"
         tr["Deutsch"] = "manuskript_de.qm"
+        tr["Español"] = "manuskript_es.qm"
+        tr["Français"] = "manuskript_fr.qm"
+        tr["Norwegian Bokmål"] = "manuskript_nb_NO.qm"
+        tr["Dutch"] = "manuskript_nl.qm"
+        tr["Polish"] = "manuskript_pl.qm"
+        tr["Portuguese (Brazil)"] = "manuskript_pt_BR.qm"
+        tr["Portuguese (Portugal)"] = "manuskript_pt_PT.qm"
+        tr["Russian"] = "manuskript_ru.qm"
         tr["Svenska"] = "manuskript_sv.qm"
+        tr["Chinese"] = "manuskript_zh.qm"
         self.translations = tr
 
         for name in tr:
