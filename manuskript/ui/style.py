@@ -15,7 +15,7 @@ from manuskript import functions as F
 p = qApp.palette()
 # window = "#d6d2d0" #"#eee" / #eff0f1
 window = p.color(QPalette.Window).name()            # General background
-windowText = p.color(QPalette.WindowText).name()    # General foregroung
+windowText = p.color(QPalette.WindowText).name()    # General foreground
 base = p.color(QPalette.Base).name()                # Other background
 alternateBase = p.color(QPalette.AlternateBase).name() # Other background
 text = p.color(QPalette.Text).name()                # Base Text
@@ -24,11 +24,13 @@ button = p.color(QPalette.Button).name()            # Button background
 buttonText = p.color(QPalette.ButtonText).name()    # Button Text
 highlight = p.color(QPalette.Highlight).name()      # Other background
 highlightedText = p.color(QPalette.HighlightedText).name() # Base Text
+link = p.color(QPalette.Link).name()                # Link
+linkVisited = p.color(QPalette.LinkVisited).name()  # Link visited
 
 light = p.color(QPalette.Light).name()       # Lighter than Button color
 midlight = p.color(QPalette.Midlight).name() # Between Button and Light
-dark = p.color(QPalette.Dark).name()         # Darker than Button
 mid = p.color(QPalette.Mid).name()           # Between Button and Dark
+dark = p.color(QPalette.Dark).name()         # Darker than Button
 shadow = p.color(QPalette.Shadow).name()     # A very dark color
 
 highlightLight = F.mixColors(highlight, window, .3)
@@ -36,6 +38,7 @@ highlightedTextDark = F.mixColors(highlight, text, .3)
 highlightedTextLight = F.mixColors(highlight, highlightedText)
 midlighter = F.mixColors(mid, window, .4)
 textLight = F.mixColors(window, text)
+textLighter = F.mixColors(window, text, .85)
 
 
 #from manuskript.ui import style as S
@@ -65,7 +68,7 @@ def styleMainWindow(mw):
     mw.setStyleSheet(mainWindowSS())
     mw.lstTabs.verticalScrollBar().setStyleSheet(simpleScrollBarV())
 
-    # Custon palette?
+    # Custom palette?
     #qApp.setPalette(appPalette())
 
     mw.treeRedacOutline.setStyleSheet("""
@@ -158,25 +161,25 @@ def mainEditorTabSS():
     if not settings.textEditor["backgroundTransparent"]:
         SS = """
             QTabWidget::pane{{
-                margin-top: -1px;
-                border: 1px solid {borderColor};
+                margin-top: -{bw}px;
+                border: {bw}px solid {borderColor};
             }}
             QTabWidget::tab-bar{{
                 left:50px;
             }}
             QTabBar{{
-                background: transparent;
+                background: {bgColor};
                 border-radius: 0;
                 border: 0px;
             }}
             QTabBar::tab{{
                 padding: 2px 9px;
-                border: 1px solid {borderColor};
+                border: {bw}px solid {borderColor};
                 border-bottom: 0px;
             }}
             QTabBar::tab:selected{{
-                border: 1px solid {borderColor};
-                background: {bgColor};
+                border: {bw}px solid {borderColor};
+                background: {bgColorSelected};
                 border-bottom: 0px;
                 color: {foreground};
             }}
@@ -185,32 +188,34 @@ def mainEditorTabSS():
                 color: {highlightedText};
             }}
             """.format(
-                bgColor=settings.textEditor["background"],
+                bgColor=textLighter,
+                bgColorSelected=settings.textEditor["background"],
                 foreground=settings.textEditor["fontColor"],
                 borderColor=mid,
                 highlight=highlight,
                 highlightedText=highlightedText,
+                bw=0,
             )
     else:
         # Transparent text view
         SS = """
             QTabWidget::pane{{
-                margin-top: -1px;
+                margin-top: -{bw}px;
                 border: none;
             }}
             QTabWidget::tab-bar{{
                 left:50px;
             }}
             QTabBar{{
-                background: transparent;
+                background: {bgColor};
                 border: 0px;
             }}
             QTabBar::tab{{
                 padding: 2px 9px;
-                border: 1px solid {borderColor};
+                border: {bw}px solid {borderColor};
             }}
             QTabBar::tab:selected{{
-                border: 1px solid {borderColor};
+                border: {bw}px solid {borderColor};
                 background: {highlight};
                 color: {highlightedText};
             }}
@@ -219,10 +224,12 @@ def mainEditorTabSS():
                 color: {highlightedText};
             }}
             """.format(
-                highlight=highlight,
-                highlightedText=highlightedText,
+                bgColor=textLighter,
+                highlight=highlightLight,
+                highlightedText=text,
                 text=text,
                 borderColor=mid,
+                bw=0,
             )
 
     # Add scrollbar
@@ -235,9 +242,9 @@ def toolBarSS():
     return """
         QToolBar{{
             background:transparent;
-            border: 0;
-            border-left: 1px solid {border};
+            border:none;
             spacing: 0px;
+            margin-top:40px;
         }}
         QToolBar:separator{{
             border: none;
@@ -249,7 +256,7 @@ def toolBarSS():
 def verticalToolButtonSS():
     return """
         QToolButton{{
-            border: none;
+            border: 0;
             border-radius: 0px;
             background: transparent;
             margin: 0px;
@@ -265,7 +272,7 @@ def verticalToolButtonSS():
         }}
         """.format(
         borderColor=mid,
-        bgChecked=midlighter,
+        bgChecked=textLighter,
         bgHover=highlightLight,
     )
 

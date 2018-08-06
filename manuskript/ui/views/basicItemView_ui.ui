@@ -101,15 +101,15 @@
     </widget>
    </item>
    <item>
-    <widget class="textEditView" name="txtSummaryFull"/>
+    <widget class="MDEditCompleter" name="txtSummaryFull"/>
    </item>
   </layout>
  </widget>
  <customwidgets>
   <customwidget>
-   <class>textEditView</class>
+   <class>MDEditCompleter</class>
    <extends>QTextEdit</extends>
-   <header>manuskript.ui.views.textEditView.h</header>
+   <header>manuskript.ui.views.MDEditCompleter.h</header>
   </customwidget>
   <customwidget>
    <class>cmbOutlineCharacterChoser</class>

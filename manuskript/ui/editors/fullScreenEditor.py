@@ -13,10 +13,9 @@ from manuskript import settings
 from manuskript.enums import Outline
 from manuskript.functions import allPaths, drawProgress
 from manuskript.ui.editors.locker import locker
-from manuskript.ui.editors.textFormat import textFormat
 from manuskript.ui.editors.themes import findThemePath, generateTheme, setThemeEditorDatas
 from manuskript.ui.editors.themes import loadThemeDatas
-from manuskript.ui.views.textEditView import textEditView
+from manuskript.ui.views.MDEditView import MDEditView
 
 try:
     import enchant
@@ -35,11 +34,11 @@ class fullScreenEditor(QWidget):
         self._geometries = {}
 
         # Text editor
-        self.editor = textEditView(self,
-                                   index=index,
-                                   spellcheck=settings.spellcheck,
-                                   highlighting=True,
-                                   dict=settings.dict)
+        self.editor = MDEditView(self,
+                                index=index,
+                                spellcheck=settings.spellcheck,
+                                highlighting=True,
+                                dict=settings.dict)
         self.editor.setFrameStyle(QFrame.NoFrame)
         self.editor.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.editor.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
@@ -65,11 +64,7 @@ class fullScreenEditor(QWidget):
 
         self.topPanel.layout().addStretch(1)
 
-        # Formatting
-        self.textFormat = textFormat(self)
-        self.topPanel.layout().addWidget(self.textFormat)
-        self.topPanel.layout().addStretch(1)
-
+        # Close
         self.btnClose = QPushButton(self)
         self.btnClose.setIcon(qApp.style().standardIcon(QStyle.SP_DialogCloseButton))
         self.btnClose.clicked.connect(self.close)
@@ -211,6 +206,7 @@ class fullScreenEditor(QWidget):
         # self.lblWC.setPalette(p)
 
         self.update()
+        self.editor.centerCursor()
 
     def paintEvent(self, event):
         if self._background:
@@ -247,7 +243,7 @@ class fullScreenEditor(QWidget):
         if hasattr(widget, "_autoHide") and not widget._autoHide:
             return
 
-        # Hides wiget in the bottom right corner
+        # Hides widget in the bottom right corner
         widget.move(self.geometry().bottomRight() + QPoint(1, 1))
 
     def showWidget(self, widget):
@@ -273,9 +269,9 @@ class fullScreenEditor(QWidget):
         if self._index:
             item = self._index.internalPointer()
 
-        wc = item.data(Outline.wordCount.value)
-        goal = item.data(Outline.goal.value)
-        pg = item.data(Outline.goalPercentage.value)
+        wc = item.data(Outline.wordCount)
+        goal = item.data(Outline.goal)
+        pg = item.data(Outline.goalPercentage)
 
         if goal:
             rect = self.lblProgress.geometry()
@@ -312,9 +308,20 @@ class myScrollBar(QScrollBar):
         self.timer.timeout.connect(lambda: self.parent().hideWidget(self))
         self.valueChanged.connect(lambda v: self.timer.start())
         self.valueChanged.connect(lambda: self.parent().showWidget(self))
+        self.rangeChanged.connect(self.rangeHasChanged)
 
     def setColor(self, color):
         self._color = color
+
+    def rangeHasChanged(self, min, max):
+        """
+        Adds viewport height to scrollbar max so that we can center cursor
+        on screen.
+        """
+        if settings.textEditor["alwaysCenter"]:
+            self.blockSignals(True)
+            self.setMaximum(max + self.parent().height())
+            self.blockSignals(False)
 
     def paintEvent(self, event):
         opt = QStyleOptionSlider()

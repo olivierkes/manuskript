@@ -84,7 +84,7 @@ class revisions(QWidget, Ui_revisions):
 
     def updateMaybe(self, topLeft, bottomRight):
         if self._index and \
-                                topLeft.column() <= Outline.revisions.value <= bottomRight.column() and \
+                                topLeft.column() <= Outline.revisions <= bottomRight.column() and \
                                 topLeft.row() <= self._index.row() <= bottomRight.row():
             # self.update()
             self.updateTimer.start()
@@ -228,9 +228,9 @@ class revisions(QWidget, Ui_revisions):
         ts = i.data(Qt.UserRole)
         item = self._index.internalPointer()
         textBefore = [r[1] for r in item.revisions() if r[0] == ts][0]
-        index = self._index.sibling(self._index.row(), Outline.text.value)
+        index = self._index.sibling(self._index.row(), Outline.text)
         self._index.model().setData(index, textBefore)
-        # item.setData(Outline.text.value, textBefore)
+        # item.setData(Outline.text, textBefore)
 
     def delete(self):
         i = self.list.currentItem()

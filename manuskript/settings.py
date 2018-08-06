@@ -46,9 +46,9 @@ autoSaveDelay = 5
 autoSaveNoChanges = True
 autoSaveNoChangesDelay = 5
 saveOnQuit = True
-outlineViewColumns = [Outline.title.value, Outline.POV.value, Outline.status.value,
-                      Outline.compile.value, Outline.wordCount.value, Outline.goal.value,
-                      Outline.goalPercentage.value, Outline.label.value]
+outlineViewColumns = [Outline.title, Outline.POV, Outline.status,
+                      Outline.compile, Outline.wordCount, Outline.goal,
+                      Outline.goalPercentage, Outline.label]
 corkBackground = {
     "color": "#926239",
     "image": "writingdesk"
@@ -64,16 +64,18 @@ textEditor = {
     "misspelled": "#F00",
     "lineSpacing": 100,
     "tabWidth": 20,
-    "indent": True,
+    "indent": False,
     "spacingAbove": 5,
     "spacingBelow": 5,
     "textAlignment": 0, # 0: left, 1: center, 2: right, 3: justify
     "cursorWidth": 1,
     "cursorNotBlinking": False,
-    "maxWidth": 0,
+    "maxWidth": 600,
     "marginsLR": 0,
-    "marginsTB": 0,
+    "marginsTB": 20,
     "backgroundTransparent": False,
+    "alwaysCenter": False,
+    "focusMode": False  # "line", "paragraph", "sentence"
     }
 
 revisions = {
@@ -185,6 +187,8 @@ def load(string, fromString=False, protocol=None):
     #print("Loading:")
     #pp.pprint(allSettings)
 
+    # FIXME: use dict.update(dict) to update settings in newer versions.
+
     if "viewSettings" in allSettings:
         global viewSettings
         viewSettings = allSettings["viewSettings"]
@@ -267,10 +271,12 @@ def load(string, fromString=False, protocol=None):
             "textAlignment": 0,                 # Added in 0.5.0
             "cursorWidth": 1,
             "cursorNotBlinking": False,         # Added in 0.6.0
-            "maxWidth": 0,
+            "maxWidth": 600,
             "marginsLR": 0,
-            "marginsTB": 0,
+            "marginsTB": 20,
             "backgroundTransparent": False,      # Added in 0.6.0
+            "alwaysCenter": False,               # Added in 0.7.0
+            "focusMode": False,
             }
 
         for k in added:

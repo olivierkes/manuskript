@@ -14,14 +14,13 @@ from manuskript.version import getVersion
 
 faulthandler.enable()
 
-
-def run():
+def prepare(tests=False):
     app = QApplication(sys.argv)
-    app.setOrganizationName("manuskript")
+    app.setOrganizationName("manuskript"+("_tests" if tests else ""))
     app.setOrganizationDomain("www.theologeek.ch")
-    app.setApplicationName("manuskript")
+    app.setApplicationName("manuskript"+("_tests" if tests else ""))
     app.setApplicationVersion(getVersion())
-    
+
     print("Running manuskript version {}.".format(getVersion()))
     icon = QIcon()
     for i in [16, 32, 64, 128, 256, 512]:
@@ -57,25 +56,50 @@ def run():
 
     QIcon.setThemeSearchPaths(QIcon.themeSearchPaths() + [appPath("icons")])
     QIcon.setThemeName("NumixMsk")
-    # qApp.setWindowIcon(QIcon.fromTheme("im-aim"))
 
-    # Seperating launch to avoid segfault, so it seem.
-    # Cf. http://stackoverflow.com/questions/12433491/is-this-pyqt-4-python-bug-or-wrongly-behaving-code
-    launch()
+    # Font siue
+    if settings.contains("appFontSize"):
+        f = qApp.font()
+        f.setPointSize(settings.value("appFontSize", type=int))
+        app.setFont(f)
 
+    # Main window
+    from manuskript.mainWindow import MainWindow
 
-def launch():
-    from .mainWindow import MainWindow
-
-    main = MainWindow()
+    MW = MainWindow()
     # We store the system default cursor flash time to be able to restore it
     # later if necessary
-    main._defaultCursorFlashTime = qApp.cursorFlashTime()
-    main.show()
+    MW._defaultCursorFlashTime = qApp.cursorFlashTime()
+
+    # Command line project
+    if len(sys.argv) > 1 and sys.argv[1][-4:] == ".msk":
+        if os.path.exists(sys.argv[1]):
+            path = os.path.abspath(sys.argv[1])
+            MW._autoLoadProject = path
+
+    return app, MW
+
+def launch(MW = None):
+    if MW is None:
+        from manuskript.functions import mainWindow
+        MW = mainWindow()
+
+    MW.show()
 
     qApp.exec_()
     qApp.deleteLater()
 
+def run():
+    """
+    Run separates prepare and launch for two reasons:
+    1. I've read somewhere it helps with potential segfault (see comment below)
+    2. So that prepare can be used in tests, without running the whole thing
+    """
+    # Need to return and keep `app` otherwise it gets deleted.
+    app, MW = prepare()
+    # Separating launch to avoid segfault, so it seem.
+    # Cf. http://stackoverflow.com/questions/12433491/is-this-pyqt-4-python-bug-or-wrongly-behaving-code
+    launch(MW)
 
 if __name__ == "__main__":
     run()

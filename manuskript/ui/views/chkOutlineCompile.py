@@ -14,7 +14,7 @@ class chkOutlineCompile(QCheckBox):
     def __init__(self, parent=None):
         QCheckBox.__init__(self, parent)
         self.stateChanged.connect(self.submit)
-        self._column = Outline.compile.value
+        self._column = Outline.compile
         self._index = None
         self._indexes = None
         self._model = None
@@ -43,13 +43,7 @@ class chkOutlineCompile(QCheckBox):
 
     def getCheckedValue(self, index):
         item = index.internalPointer()
-        c = item.data(Outline.compile)
-        if c:
-            c = int(c)
-        else:
-            c = Qt.Unchecked
-
-        return c
+        return Qt.Checked if item.compile() else Qt.Unchecked
 
     def update(self, topLeft, bottomRight):
 

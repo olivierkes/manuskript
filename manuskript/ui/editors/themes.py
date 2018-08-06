@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
 
-# Lots of stuff from here comes from the excellet focuswriter.
+# Lots of stuff from here comes from the excellent focuswriter.
 import os
 import re
 
@@ -10,7 +10,7 @@ from PyQt5.QtGui import QPixmap, QPainter, QColor, QBrush, QImage, QTextBlockFor
 from PyQt5.QtWidgets import qApp, QFrame
 
 from manuskript.functions import allPaths, appPath, findBackground, findFirstFile
-from manuskript.ui.views.textEditView import textEditView
+from manuskript.ui.views.MDEditView import MDEditView
 
 _thumbCache = {}
 
@@ -89,13 +89,13 @@ def themeTextRect(themeDatas, screenRect):
 def createThemePreview(theme, screenRect, size=QSize(200, 120)):
     """
     Generates a QPixmap preview for given theme.
-    
+
     Theme can be either a string containing the filename of the ini
     file with the theme settings, or it can be a dict with the settings.
-    
+
     If theme is a filename, the result is cached.
     """
-    
+
     # Checking whether theme is a string or dict
     if type(theme) == str and os.path.exists(theme):
         # Theme is the path to an ini file
@@ -126,7 +126,7 @@ def createThemePreview(theme, screenRect, size=QSize(200, 120)):
     painter.setPen(Qt.white)
     painter.drawRect(QRect(w, h, w * 4, h * 5))
     painter.end()
-    
+
     # If theme is a themefile, we keep it in cache
     if fromFile:
         _thumbCache[theme] = [themeDatas, px]
@@ -265,11 +265,12 @@ def setThemeEditorDatas(editor, themeDatas, pixmap, screenRect):
     )
 
     editor._fromTheme = True
-
+    editor._themeData = themeDatas
+    editor.highlighter.updateColorScheme()
 
 def addThemePreviewText(pixmap, themeDatas, screenRect):
     # Text
-    previewText = textEditView(highlighting=True)
+    previewText = MDEditView(highlighting=True)
     previewText.setFrameStyle(QFrame.NoFrame)
     previewText.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
     previewText.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)

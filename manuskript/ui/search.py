@@ -84,16 +84,16 @@ class search(QWidget, Ui_search):
     def search(self):
         text = self.text.text()
 
-        # Chosing the right columns
+        # Choosing the right columns
         lstColumns = [
-            ("Title", Outline.title.value),
-            ("Text", Outline.text.value),
-            ("Summary", Outline.summarySentence.value),
-            ("Summary", Outline.summaryFull.value),
-            ("Notes", Outline.notes.value),
-            ("POV", Outline.POV.value),
-            ("Status", Outline.status.value),
-            ("Label", Outline.label.value),
+            ("Title", Outline.title),
+            ("Text", Outline.text),
+            ("Summary", Outline.summarySentence),
+            ("Summary", Outline.summaryFull),
+            ("Notes", Outline.notes),
+            ("POV", Outline.POV),
+            ("Status", Outline.status),
+            ("Label", Outline.label),
         ]
         columns = [c[1] for c in lstColumns if self.options[c[0]] or self.options["All"]]
 

@@ -15,8 +15,7 @@ from manuskript import settings
 from manuskript.enums import Outline
 from manuskript.functions import mainWindow, iconFromColor, appPath
 from manuskript.models.characterModel import characterModel
-from manuskript.models.outlineModel import outlineItem
-from manuskript.models.outlineModel import outlineModel
+from manuskript.models import outlineItem, outlineModel
 from manuskript.models.plotModel import plotModel
 from manuskript.models.worldModel import worldModel
 from manuskript.ui.welcome_ui import Ui_welcome
@@ -44,6 +43,7 @@ class welcome(QWidget, Ui_welcome):
         self.btnCreateText = self.btnCreate.text()
 
         self.populateTemplates()
+        self._templates = self.templates()
 
     def updateValues(self):
         # Auto load
@@ -64,14 +64,20 @@ class welcome(QWidget, Ui_welcome):
         # Auto load last project
         autoLoad, last = self.getAutoLoadValues()
 
-        if autoLoad and last:
+        if self.mw._autoLoadProject:
+            project = self.mw._autoLoadProject
+            self.mw._autoLoadProject = None
+            self.appendToRecentFiles(project)
+            self.mw.loadProject(project)
+
+        elif autoLoad and last:
             self.mw.loadProject(last)
 
     def getAutoLoadValues(self):
         """
-        Reads manuskript system's settings and returns a tupple:
+        Reads manuskript system's settings and returns a tuple:
         - `bool`: whether manuskript should automatically load
-                  the last openend project or display the
+                  the last opened project or display the
                   welcome widget.
         - `str`:  the absolute path to the last opened project.
         """
@@ -85,7 +91,8 @@ class welcome(QWidget, Ui_welcome):
         return autoLoad, last
 
     def setAutoLoad(self, v):
-        QSettings().setValue("autoLoad", v)
+        if type(v) == bool:
+            QSettings().setValue("autoLoad", v)
 
     ###############################################################################
     # RECENTS
@@ -142,7 +149,7 @@ class welcome(QWidget, Ui_welcome):
 
     def saveAsFile(self):
         """File dialog that request a file, existing or not.
-        Save datas to that file, which then becomes the current project."""
+        Save data to that file, which then becomes the current project."""
         filename = QFileDialog.getSaveFileName(self,
                                                self.tr("Save project as..."),
                                                ".",
@@ -160,18 +167,20 @@ class welcome(QWidget, Ui_welcome):
                 pName=pName[:-4]
             self.mw.setWindowTitle(pName + " - " + self.tr("Manuskript"))
 
-    def createFile(self):
+    def createFile(self, filename=None, overwrite=False):
         """When starting a new project, ask for a place to save it.
         Datas are not loaded from file, so they must be populated another way."""
-        filename = QFileDialog.getSaveFileName(self,
-                                               self.tr("Create New Project"),
-                                               ".",
-                                               self.tr("Manuskript project (*.msk)"))[0]
+        if not filename:
+            filename = QFileDialog.getSaveFileName(
+                           self,
+                           self.tr("Create New Project"),
+                           ".",
+                           self.tr("Manuskript project (*.msk)"))[0]
 
         if filename:
             if filename[-4:] != ".msk":
                 filename += ".msk"
-            if os.path.exists(filename):
+            if os.path.exists(filename) and not overwrite:
                 # Check if okay to overwrite existing project
                 result = QMessageBox.warning(self, self.tr("Warning"),
                     self.tr("Overwrite existing project {} ?").format(filename),
@@ -183,9 +192,9 @@ class welcome(QWidget, Ui_welcome):
             self.loadDefaultDatas()
             self.mw.loadProject(filename, loadFromFile=False)
 
-            ###############################################################################
-            # TEMPLATES
-            ###############################################################################
+    ###############################################################################
+    # TEMPLATES
+    ###############################################################################
 
     def templates(self):
         return [
@@ -219,7 +228,7 @@ class welcome(QWidget, Ui_welcome):
         ]
 
     def changeTemplate(self, item, column):
-        template = [i for i in self.templates() if i[0] == item.text(0)]
+        template = [i for i in self._templates if i[0] == item.text(0)]
         self.btnCreate.setText(self.btnCreateText)
 
         # Selected item is a template
@@ -231,7 +240,7 @@ class welcome(QWidget, Ui_welcome):
         elif item.data(0, Qt.UserRole):
             name = item.data(0, Qt.UserRole)
             # Clear templates
-            self.template = self.templates()[0]
+            self.template = self._templates[0]
             self.updateTemplate()
             # Change button text
             self.btnCreate.setText("Open {}".format(name))
@@ -298,7 +307,7 @@ class welcome(QWidget, Ui_welcome):
     def templateAddLevel(self):
         if len(self.template[1]) > 0 and \
                         self.template[1][len(self.template[1]) - 1][1] == None:
-            # has word cound, so insert before
+            # has word count, so insert before
             self.template[1].insert(len(self.template[1]) - 1, (10, self.tr("Text")))
         else:
             # No word count, so insert at end
@@ -388,11 +397,11 @@ class welcome(QWidget, Ui_welcome):
         settings.initDefaultValues()
 
         if self.template:
-            t = [i for i in self.templates() if i[0] == self.template[0]]
+            t = [i for i in self._templates if i[0] == self.template[0]]
             if t and t[0][2] == "Non-fiction":
                 settings.viewMode = "simple"
 
-        # Données
+        # Tasks
         self.mw.mdlFlatData = QStandardItemModel(2, 8, self.mw)
 
         # Persos
@@ -453,7 +462,7 @@ class welcome(QWidget, Ui_welcome):
                             _type=_type,
                             parent=parent)
                     if len(datas) == 2:
-                        item.setData(Outline.setGoal.value, datas[1][0])
+                        item.setData(Outline.setGoal, datas[1][0])
                         # parent.appendChild(item)
             else:
                 n = 0

@@ -22,7 +22,7 @@ class splitDialog(QInputDialog):
             <p>If one of the selected item is a folder, it will be applied
             recursively to <i>all</i> of it's children items.</p>
 
-            <p>The split mark can contain folling escape sequences:
+            <p>The split mark can contain following escape sequences:
                 <ul>
                     <li><b><code>\\n</code></b>: line break</li>
                     <li><b><code>\\t</code></b>: tab</li>

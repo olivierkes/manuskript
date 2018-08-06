@@ -379,7 +379,7 @@
                    </widget>
                   </item>
                   <item>
-                   <widget class="textEditView" name="txtSummarySentence">
+                   <widget class="MDEditCompleter" name="txtSummarySentence">
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
                       <horstretch>0</horstretch>
@@ -422,7 +422,7 @@
                      </widget>
                     </item>
                     <item>
-                     <widget class="textEditView" name="txtSummarySentence_2">
+                     <widget class="MDEditCompleter" name="txtSummarySentence_2">
                       <property name="sizePolicy">
                        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
                         <horstretch>0</horstretch>
@@ -466,7 +466,7 @@
                      </widget>
                     </item>
                     <item>
-                     <widget class="textEditView" name="txtSummaryPara"/>
+                     <widget class="MDEditCompleter" name="txtSummaryPara"/>
                     </item>
                     <item>
                      <widget class="QLabel" name="lblSummaryWCPara">
@@ -504,7 +504,7 @@
                      </widget>
                     </item>
                     <item>
-                     <widget class="textEditView" name="txtSummaryPara_2">
+                     <widget class="MDEditCompleter" name="txtSummaryPara_2">
                       <property name="readOnly">
                        <bool>true</bool>
                       </property>
@@ -542,7 +542,7 @@
                      </widget>
                     </item>
                     <item>
-                     <widget class="textEditView" name="txtSummaryPage"/>
+                     <widget class="MDEditCompleter" name="txtSummaryPage"/>
                     </item>
                     <item>
                      <widget class="QLabel" name="lblSummaryWCPage">
@@ -567,7 +567,7 @@
                      </widget>
                     </item>
                     <item>
-                     <widget class="textEditView" name="txtSummaryPage_2">
+                     <widget class="MDEditCompleter" name="txtSummaryPage_2">
                       <property name="readOnly">
                        <bool>true</bool>
                       </property>
@@ -592,7 +592,7 @@
                      </widget>
                     </item>
                     <item>
-                     <widget class="textEditView" name="txtSummaryFull"/>
+                     <widget class="MDEditCompleter" name="txtSummaryFull"/>
                     </item>
                     <item>
                      <widget class="QLabel" name="lblSummaryWCFull">
@@ -629,7 +629,7 @@
                   </property>
                   <property name="icon">
                    <iconset theme="go-next">
-                    <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
+                    <normaloff>.</normaloff>.</iconset>
                   </property>
                  </widget>
                 </item>
@@ -640,7 +640,7 @@
                   </property>
                   <property name="icon">
                    <iconset theme="go-next">
-                    <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
+                    <normaloff>.</normaloff>.</iconset>
                   </property>
                  </widget>
                 </item>
@@ -651,7 +651,7 @@
                   </property>
                   <property name="icon">
                    <iconset theme="go-next">
-                    <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
+                    <normaloff>.</normaloff>.</iconset>
                   </property>
                  </widget>
                 </item>
@@ -662,7 +662,7 @@
                   </property>
                   <property name="icon">
                    <iconset theme="go-next">
-                    <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
+                    <normaloff>.</normaloff>.</iconset>
                   </property>
                  </widget>
                 </item>
@@ -737,7 +737,7 @@
                     </property>
                     <property name="icon">
                      <iconset theme="list-add">
-                      <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
+                      <normaloff>.</normaloff>.</iconset>
                     </property>
                     <property name="flat">
                      <bool>true</bool>
@@ -751,7 +751,7 @@
                     </property>
                     <property name="icon">
                      <iconset theme="list-remove">
-                      <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
+                      <normaloff>.</normaloff>.</iconset>
                     </property>
                     <property name="flat">
                      <bool>true</bool>
@@ -774,7 +774,7 @@
               </widget>
               <widget class="QTabWidget" name="tabPersos">
                <property name="currentIndex">
-                <number>0</number>
+                <number>2</number>
                </property>
                <widget class="QWidget" name="info">
                 <attribute name="title">
@@ -815,8 +815,8 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>426</width>
-                      <height>688</height>
+                      <width>204</width>
+                      <height>606</height>
                      </rect>
                     </property>
                     <layout class="QFormLayout" name="formLayout_8">
@@ -831,7 +831,7 @@
                       </widget>
                      </item>
                      <item row="4" column="1">
-                      <widget class="textEditView" name="txtPersoMotivation"/>
+                      <widget class="MDEditCompleter" name="txtPersoMotivation"/>
                      </item>
                      <item row="5" column="0">
                       <widget class="QLabel" name="label_5">
@@ -841,7 +841,7 @@
                       </widget>
                      </item>
                      <item row="5" column="1">
-                      <widget class="textEditView" name="txtPersoGoal"/>
+                      <widget class="MDEditCompleter" name="txtPersoGoal"/>
                      </item>
                      <item row="6" column="0">
                       <widget class="QLabel" name="label_6">
@@ -851,7 +851,7 @@
                       </widget>
                      </item>
                      <item row="6" column="1">
-                      <widget class="textEditView" name="txtPersoConflict"/>
+                      <widget class="MDEditCompleter" name="txtPersoConflict"/>
                      </item>
                      <item row="7" column="0">
                       <widget class="QLabel" name="label_7">
@@ -861,7 +861,7 @@
                       </widget>
                      </item>
                      <item row="7" column="1">
-                      <widget class="textEditView" name="txtPersoEpiphany"/>
+                      <widget class="MDEditCompleter" name="txtPersoEpiphany"/>
                      </item>
                      <item row="8" column="0">
                       <widget class="QLabel" name="label_24">
@@ -871,7 +871,7 @@
                       </widget>
                      </item>
                      <item row="8" column="1">
-                      <widget class="textEditView" name="txtPersoSummarySentence"/>
+                      <widget class="MDEditCompleter" name="txtPersoSummarySentence"/>
                      </item>
                      <item row="9" column="0">
                       <widget class="QLabel" name="label_8">
@@ -881,7 +881,7 @@
                       </widget>
                      </item>
                      <item row="9" column="1">
-                      <widget class="textEditView" name="txtPersoSummaryPara"/>
+                      <widget class="MDEditCompleter" name="txtPersoSummaryPara"/>
                      </item>
                      <item row="10" column="1">
                       <layout class="QHBoxLayout" name="horizontalLayout_21">
@@ -905,7 +905,7 @@
                          </property>
                          <property name="icon">
                           <iconset theme="go-next">
-                           <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
+                           <normaloff>.</normaloff>.</iconset>
                          </property>
                          <property name="flat">
                           <bool>true</bool>
@@ -964,7 +964,7 @@
                 </attribute>
                 <layout class="QVBoxLayout" name="verticalLayout_17">
                  <item>
-                  <widget class="textEditView" name="txtPersoSummaryFull"/>
+                  <widget class="MDEditCompleter" name="txtPersoSummaryFull"/>
                  </item>
                  <item>
                   <layout class="QHBoxLayout" name="horizontalLayout_22">
@@ -988,7 +988,7 @@
                      </property>
                      <property name="icon">
                       <iconset theme="go-next">
-                       <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
+                       <normaloff>.</normaloff>.</iconset>
                      </property>
                     </widget>
                    </item>
@@ -1002,7 +1002,7 @@
                 </attribute>
                 <layout class="QHBoxLayout" name="horizontalLayout_30">
                  <item>
-                  <widget class="textEditView" name="txtPersoNotes"/>
+                  <widget class="MDEditCompleter" name="txtPersoNotes"/>
                  </item>
                 </layout>
                </widget>
@@ -1033,7 +1033,7 @@
                      </property>
                      <property name="icon">
                       <iconset theme="list-add">
-                       <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
+                       <normaloff>.</normaloff>.</iconset>
                      </property>
                     </widget>
                    </item>
@@ -1044,7 +1044,7 @@
                      </property>
                      <property name="icon">
                       <iconset theme="list-remove">
-                       <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
+                       <normaloff>.</normaloff>.</iconset>
                      </property>
                     </widget>
                    </item>
@@ -1075,7 +1075,7 @@
                      </property>
                      <property name="icon">
                       <iconset theme="go-next">
-                       <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
+                       <normaloff>.</normaloff>.</iconset>
                      </property>
                     </widget>
                    </item>
@@ -1136,7 +1136,7 @@
                     </property>
                     <property name="icon">
                      <iconset theme="list-add">
-                      <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
+                      <normaloff>.</normaloff>.</iconset>
                     </property>
                     <property name="flat">
                      <bool>true</bool>
@@ -1150,7 +1150,7 @@
                     </property>
                     <property name="icon">
                      <iconset theme="list-remove">
-                      <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
+                      <normaloff>.</normaloff>.</iconset>
                     </property>
                     <property name="flat">
                      <bool>true</bool>
@@ -1173,7 +1173,7 @@
               </widget>
               <widget class="QTabWidget" name="tabPlot">
                <property name="currentIndex">
-                <number>0</number>
+                <number>1</number>
                </property>
                <property name="documentMode">
                 <bool>true</bool>
@@ -1264,7 +1264,7 @@
                        </property>
                        <property name="icon">
                         <iconset theme="list-add">
-                         <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
+                         <normaloff>.</normaloff>.</iconset>
                        </property>
                        <property name="flat">
                         <bool>true</bool>
@@ -1281,7 +1281,7 @@
                        </property>
                        <property name="icon">
                         <iconset theme="list-remove">
-                         <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
+                         <normaloff>.</normaloff>.</iconset>
                        </property>
                        <property name="flat">
                         <bool>true</bool>
@@ -1303,10 +1303,10 @@
                   </widget>
                  </item>
                  <item row="3" column="1">
-                  <widget class="textEditView" name="txtPlotDescription"/>
+                  <widget class="MDEditCompleter" name="txtPlotDescription"/>
                  </item>
                  <item row="4" column="1">
-                  <widget class="textEditView" name="txtPlotResult"/>
+                  <widget class="MDEditCompleter" name="txtPlotResult"/>
                  </item>
                 </layout>
                </widget>
@@ -1338,7 +1338,7 @@
                    </property>
                    <layout class="QVBoxLayout" name="verticalLayout_11">
                     <item>
-                     <widget class="textEditView" name="txtSubPlotSummary"/>
+                     <widget class="MDEditCompleter" name="txtSubPlotSummary"/>
                     </item>
                    </layout>
                   </widget>
@@ -1355,7 +1355,7 @@
                      </property>
                      <property name="icon">
                       <iconset theme="list-add">
-                       <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
+                       <normaloff>.</normaloff>.</iconset>
                      </property>
                      <property name="shortcut">
                       <string>Ctrl+Return</string>
@@ -1375,7 +1375,7 @@
                      </property>
                      <property name="icon">
                       <iconset theme="list-remove">
-                       <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
+                       <normaloff>.</normaloff>.</iconset>
                      </property>
                      <property name="shortcut">
                       <string>Ctrl+Backspace</string>
@@ -1405,7 +1405,7 @@
                      </property>
                      <property name="icon">
                       <iconset theme="text-x-generic">
-                       <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
+                       <normaloff>.</normaloff>.</iconset>
                      </property>
                      <property name="checkable">
                       <bool>true</bool>
@@ -1461,21 +1461,21 @@
                   <widget class="QWidget" name="page">
                    <layout class="QHBoxLayout" name="horizontalLayout_6">
                     <item>
-                     <widget class="textEditView" name="txtPlotSummaryPara"/>
+                     <widget class="MDEditCompleter" name="txtPlotSummaryPara"/>
                     </item>
                    </layout>
                   </widget>
                   <widget class="QWidget" name="page_2">
                    <layout class="QHBoxLayout" name="horizontalLayout_10">
                     <item>
-                     <widget class="textEditView" name="txtPlotSummaryPage"/>
+                     <widget class="MDEditCompleter" name="txtPlotSummaryPage"/>
                     </item>
                    </layout>
                   </widget>
                   <widget class="QWidget" name="page_3">
                    <layout class="QHBoxLayout" name="horizontalLayout_13">
                     <item>
-                     <widget class="textEditView" name="txtPlotSummaryFull"/>
+                     <widget class="MDEditCompleter" name="txtPlotSummaryFull"/>
                     </item>
                    </layout>
                   </widget>
@@ -1531,6 +1531,15 @@
                   <property name="editTriggers">
                    <set>QAbstractItemView::EditKeyPressed</set>
                   </property>
+                  <property name="dragEnabled">
+                   <bool>true</bool>
+                  </property>
+                  <property name="dragDropMode">
+                   <enum>QAbstractItemView::InternalMove</enum>
+                  </property>
+                  <property name="defaultDropAction">
+                   <enum>Qt::MoveAction</enum>
+                  </property>
                   <property name="selectionMode">
                    <enum>QAbstractItemView::ExtendedSelection</enum>
                   </property>
@@ -1557,7 +1566,7 @@
                     </property>
                     <property name="icon">
                      <iconset theme="list-add">
-                      <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
+                      <normaloff>.</normaloff>.</iconset>
                     </property>
                     <property name="flat">
                      <bool>true</bool>
@@ -1571,7 +1580,7 @@
                     </property>
                     <property name="icon">
                      <iconset theme="list-remove">
-                      <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
+                      <normaloff>.</normaloff>.</iconset>
                     </property>
                     <property name="flat">
                      <bool>true</bool>
@@ -1645,7 +1654,7 @@
                   </widget>
                  </item>
                  <item row="1" column="1">
-                  <widget class="textEditCompleter" name="txtWorldDescription"/>
+                  <widget class="MDEditCompleter" name="txtWorldDescription"/>
                  </item>
                 </layout>
                </widget>
@@ -1665,7 +1674,7 @@
                   </widget>
                  </item>
                  <item row="0" column="1">
-                  <widget class="textEditCompleter" name="txtWorldPassion"/>
+                  <widget class="MDEditCompleter" name="txtWorldPassion"/>
                  </item>
                  <item row="1" column="0">
                   <widget class="QLabel" name="label_34">
@@ -1675,7 +1684,7 @@
                   </widget>
                  </item>
                  <item row="1" column="1">
-                  <widget class="textEditCompleter" name="txtWorldConflict"/>
+                  <widget class="MDEditCompleter" name="txtWorldConflict"/>
                  </item>
                 </layout>
                </widget>
@@ -1770,7 +1779,7 @@
                     </property>
                     <property name="icon">
                      <iconset theme="folder-new">
-                      <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
+                      <normaloff>.</normaloff>.</iconset>
                     </property>
                     <property name="flat">
                      <bool>true</bool>
@@ -1784,7 +1793,7 @@
                     </property>
                     <property name="icon">
                      <iconset theme="document-new">
-                      <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
+                      <normaloff>.</normaloff>.</iconset>
                     </property>
                     <property name="flat">
                      <bool>true</bool>
@@ -1798,7 +1807,7 @@
                     </property>
                     <property name="icon">
                      <iconset theme="list-remove">
-                      <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
+                      <normaloff>.</normaloff>.</iconset>
                     </property>
                     <property name="flat">
                      <bool>true</bool>
@@ -1825,7 +1834,7 @@
                     </property>
                     <property name="icon">
                      <iconset theme="text-x-generic">
-                      <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
+                      <normaloff>.</normaloff>.</iconset>
                     </property>
                     <property name="checkable">
                      <bool>true</bool>
@@ -1917,7 +1926,7 @@
                      </property>
                      <property name="icon">
                       <iconset theme="folder-new">
-                       <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
+                       <normaloff>.</normaloff>.</iconset>
                      </property>
                      <property name="flat">
                       <bool>true</bool>
@@ -1931,7 +1940,7 @@
                      </property>
                      <property name="icon">
                       <iconset theme="document-new">
-                       <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
+                       <normaloff>.</normaloff>.</iconset>
                      </property>
                      <property name="flat">
                       <bool>true</bool>
@@ -1945,7 +1954,7 @@
                      </property>
                      <property name="icon">
                       <iconset theme="list-remove">
-                       <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
+                       <normaloff>.</normaloff>.</iconset>
                      </property>
                      <property name="flat">
                       <bool>true</bool>
@@ -2137,11 +2146,52 @@
     <property name="title">
      <string>&amp;Edit</string>
     </property>
+    <widget class="QMenu" name="mnuFormat">
+     <property name="title">
+      <string>&amp;Format</string>
+     </property>
+     <property name="icon">
+      <iconset theme="format-text-bold">
+       <normaloff>.</normaloff>.</iconset>
+     </property>
+     <widget class="QMenu" name="mnuHeader">
+      <property name="title">
+       <string>&amp;Header</string>
+      </property>
+      <addaction name="actHeaderSetextL1"/>
+      <addaction name="actHeaderSetextL2"/>
+      <addaction name="separator"/>
+      <addaction name="actHeaderAtxL1"/>
+      <addaction name="actHeaderAtxL2"/>
+      <addaction name="actHeaderAtxL3"/>
+      <addaction name="actHeaderAtxL4"/>
+      <addaction name="actHeaderAtxL5"/>
+      <addaction name="actHeaderAtxL6"/>
+     </widget>
+     <addaction name="mnuHeader"/>
+     <addaction name="separator"/>
+     <addaction name="actFormatBold"/>
+     <addaction name="actFormatItalic"/>
+     <addaction name="actFormatStrike"/>
+     <addaction name="actFormatVerbatim"/>
+     <addaction name="actFormatSuperscript"/>
+     <addaction name="actFormatSubscript"/>
+     <addaction name="actFormatCommentLines"/>
+     <addaction name="separator"/>
+     <addaction name="actFormatList"/>
+     <addaction name="actFormatOrderedList"/>
+     <addaction name="actFormatBlockquote"/>
+     <addaction name="actFormatCommentBlock"/>
+     <addaction name="separator"/>
+     <addaction name="actFormatClear"/>
+    </widget>
     <addaction name="actCut"/>
     <addaction name="actCopy"/>
     <addaction name="actPaste"/>
     <addaction name="actDelete"/>
     <addaction name="actRename"/>
+    <addaction name="separator"/>
+    <addaction name="mnuFormat"/>
     <addaction name="separator"/>
     <addaction name="actLabels"/>
     <addaction name="actStatus"/>
@@ -2286,7 +2336,7 @@
   <action name="actOpen">
    <property name="icon">
     <iconset theme="document-open">
-     <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>&amp;Open</string>
@@ -2298,7 +2348,7 @@
   <action name="actSave">
    <property name="icon">
     <iconset theme="document-save">
-     <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>&amp;Save</string>
@@ -2310,7 +2360,7 @@
   <action name="actSaveAs">
    <property name="icon">
     <iconset theme="document-save-as">
-     <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Sa&amp;ve as...</string>
@@ -2322,7 +2372,7 @@
   <action name="actQuit">
    <property name="icon">
     <iconset theme="application-exit">
-     <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>&amp;Quit</string>
@@ -2340,7 +2390,7 @@
    </property>
    <property name="icon">
     <iconset theme="system-help">
-     <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>&amp;Show help texts</string>
@@ -2358,7 +2408,7 @@
    </property>
    <property name="icon">
     <iconset theme="tools-check-spelling">
-     <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>&amp;Spellcheck</string>
@@ -2430,7 +2480,7 @@
   <action name="actSettings">
    <property name="icon">
     <iconset theme="preferences-system">
-     <normaloff>../../../../../../../.designer/backup</normaloff>../../../../../../../.designer/backup</iconset>
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>S&amp;ettings</string>
@@ -2569,9 +2619,6 @@
    <property name="text">
     <string>Dupl&amp;icate</string>
    </property>
-   <property name="shortcut">
-    <string>Ctrl+D</string>
-   </property>
   </action>
   <action name="actDelete">
    <property name="icon">
@@ -2621,12 +2668,177 @@
     <string>F2</string>
    </property>
   </action>
+  <action name="actHeaderSetextL1">
+   <property name="text">
+    <string>&amp;Level 1 (setext)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Alt+1</string>
+   </property>
+  </action>
+  <action name="actHeaderSetextL2">
+   <property name="text">
+    <string>Level &amp;2</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Alt+2</string>
+   </property>
+  </action>
+  <action name="actHeaderAtxL1">
+   <property name="text">
+    <string>Level &amp;1 (atx)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+1</string>
+   </property>
+  </action>
+  <action name="actHeaderAtxL2">
+   <property name="text">
+    <string>L&amp;evel 2</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+2</string>
+   </property>
+  </action>
+  <action name="actHeaderAtxL3">
+   <property name="text">
+    <string>Level &amp;3</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+3</string>
+   </property>
+  </action>
+  <action name="actHeaderAtxL4">
+   <property name="text">
+    <string>Level &amp;4</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+4</string>
+   </property>
+  </action>
+  <action name="actHeaderAtxL5">
+   <property name="text">
+    <string>Level &amp;5</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+5</string>
+   </property>
+  </action>
+  <action name="actHeaderAtxL6">
+   <property name="text">
+    <string>Level &amp;6</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+6</string>
+   </property>
+  </action>
+  <action name="actFormatBold">
+   <property name="icon">
+    <iconset theme="format-text-bold">
+     <normaloff>.</normaloff>.</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Bold</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+B</string>
+   </property>
+  </action>
+  <action name="actFormatItalic">
+   <property name="icon">
+    <iconset theme="format-text-italic">
+     <normaloff>.</normaloff>.</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Italic</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+I</string>
+   </property>
+  </action>
+  <action name="actFormatStrike">
+   <property name="icon">
+    <iconset theme="format-text-strikethrough">
+     <normaloff>.</normaloff>.</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Strike</string>
+   </property>
+  </action>
+  <action name="actFormatVerbatim">
+   <property name="text">
+    <string>&amp;Verbatim</string>
+   </property>
+  </action>
+  <action name="actFormatSuperscript">
+   <property name="text">
+    <string>Su&amp;perscript</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl++</string>
+   </property>
+  </action>
+  <action name="actFormatSubscript">
+   <property name="text">
+    <string>Subsc&amp;ript</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+-</string>
+   </property>
+  </action>
+  <action name="actFormatCommentBlock">
+   <property name="text">
+    <string>Co&amp;mment block</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+C</string>
+   </property>
+  </action>
+  <action name="actFormatClear">
+   <property name="icon">
+    <iconset theme="format-text-none">
+     <normaloff>.</normaloff>.</iconset>
+   </property>
+   <property name="text">
+    <string>Clear &amp;formats</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+0</string>
+   </property>
+  </action>
+  <action name="actFormatCommentLines">
+   <property name="text">
+    <string>&amp;Comment line(s)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+D</string>
+   </property>
+  </action>
+  <action name="actFormatOrderedList">
+   <property name="text">
+    <string>&amp;Ordered list</string>
+   </property>
+  </action>
+  <action name="actFormatList">
+   <property name="icon">
+    <iconset theme="view-list">
+     <normaloff>.</normaloff>.</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Unordered list</string>
+   </property>
+  </action>
+  <action name="actFormatBlockquote">
+   <property name="text">
+    <string>B&amp;lockquote</string>
+   </property>
+  </action>
  </widget>
  <customwidgets>
   <customwidget>
-   <class>textEditView</class>
+   <class>MDEditCompleter</class>
    <extends>QTextEdit</extends>
-   <header>manuskript.ui.views.textEditView.h</header>
+   <header>manuskript.ui.views.MDEditCompleter.h</header>
   </customwidget>
   <customwidget>
    <class>lineEditView</class>
@@ -2694,11 +2906,6 @@
    <extends>QWidget</extends>
    <header>manuskript.ui.search.h</header>
    <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>textEditCompleter</class>
-   <extends>QTextEdit</extends>
-   <header>manuskript.ui.views.textEditCompleter.h</header>
   </customwidget>
   <customwidget>
    <class>storylineView</class>

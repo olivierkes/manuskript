@@ -114,7 +114,7 @@ class corkDelegate(QStyledItemDelegate):
 
         if self.editing == Outline.summarySentence:
             # One line summary
-            editor.setText(item.data(Outline.summarySentence.value))
+            editor.setText(item.data(Outline.summarySentence))
 
         elif self.editing == Outline.title:
             # Title
@@ -122,21 +122,21 @@ class corkDelegate(QStyledItemDelegate):
 
         elif self.editing == Outline.summaryFull:
             # Summary
-            editor.setPlainText(item.data(Outline.summaryFull.value))
+            editor.setPlainText(item.data(Outline.summaryFull))
 
     def setModelData(self, editor, model, index):
 
         if self.editing == Outline.summarySentence:
             # One line summary
-            model.setData(index.sibling(index.row(), Outline.summarySentence.value), editor.text())
+            model.setData(index.sibling(index.row(), Outline.summarySentence), editor.text())
 
         elif self.editing == Outline.title:
             # Title
-            model.setData(index, editor.text(), Outline.title.value)
+            model.setData(index, editor.text(), Outline.title)
 
         elif self.editing == Outline.summaryFull:
             # Summary
-            model.setData(index.sibling(index.row(), Outline.summaryFull.value), editor.toPlainText())
+            model.setData(index.sibling(index.row(), Outline.summaryFull), editor.toPlainText())
 
     def updateRects(self, option, index):
         if self.newStyle():
@@ -173,7 +173,7 @@ class corkDelegate(QStyledItemDelegate):
                                   self.mainRect.topRight() + QPoint(0, h))
         self.mainTextRect = QRect(self.mainLineRect.bottomLeft() + QPoint(0, margin),
                                   self.mainRect.bottomRight())
-        if not item.data(Outline.summarySentence.value):
+        if not item.data(Outline.summarySentence):
             self.mainTextRect.setTopLeft(self.mainLineRect.topLeft())
 
     def updateRects_v1(self, option, index):
@@ -194,9 +194,9 @@ class corkDelegate(QStyledItemDelegate):
                                   self.mainRect.topRight() + QPoint(0, iconSize))
         self.mainTextRect = QRect(self.mainLineRect.bottomLeft() + QPoint(0, margin),
                                   self.mainRect.bottomRight())
-        if not item.data(Outline.summarySentence.value):
+        if not item.data(Outline.summarySentence):
             self.mainTextRect.setTopLeft(self.mainLineRect.topLeft())
-        if item.data(Outline.label.value) in ["", "0", 0]:
+        if item.data(Outline.label) in ["", "0", 0]:
             self.titleRect.setBottomRight(self.labelRect.bottomRight() - QPoint(self.margin, self.margin))
 
     def paint(self, p, option, index):
@@ -216,10 +216,10 @@ class corkDelegate(QStyledItemDelegate):
 
         style = qApp.style()
 
-        def _rotate(angle):
-            p.translate(self.mainRect.center())
+        def _rotate(angle, rect=self.mainRect):
+            p.translate(rect.center())
             p.rotate(angle)
-            p.translate(-self.mainRect.center())
+            p.translate(-rect.center())
 
         def drawRect(r):
             p.save()
@@ -340,8 +340,8 @@ class corkDelegate(QStyledItemDelegate):
         p.restore()
 
             # One line summary background
-        lineSummary = item.data(Outline.summarySentence.value)
-        fullSummary = item.data(Outline.summaryFull.value)
+        lineSummary = item.data(Outline.summarySentence)
+        fullSummary = item.data(Outline.summaryFull)
 
             # Border
         if settings.viewSettings["Cork"]["Border"] != "Nothing":
@@ -359,7 +359,7 @@ class corkDelegate(QStyledItemDelegate):
             p.restore()
 
         # Draw status
-        status = item.data(Outline.status.value)
+        status = item.data(Outline.status)
         if status:
             it = mainWindow().mdlStatus.item(int(status), 0)
             if it != None:
@@ -370,7 +370,7 @@ class corkDelegate(QStyledItemDelegate):
                 f.setBold(True)
                 p.setFont(f)
                 p.setPen(QColor(Qt.red).lighter(170))
-                _rotate(-35)
+                _rotate(-35, rect=self.cardRect)
                 p.drawText(self.cardRect, Qt.AlignCenter, it.text())
                 p.restore()
 
@@ -476,8 +476,8 @@ class corkDelegate(QStyledItemDelegate):
                 p.drawLine(self.labelRect.topLeft(), self.labelRect.bottomLeft())
 
             # One line summary background
-        lineSummary = item.data(Outline.summarySentence.value)
-        fullSummary = item.data(Outline.summaryFull.value)
+        lineSummary = item.data(Outline.summarySentence)
+        fullSummary = item.data(Outline.summaryFull)
         if lineSummary or not fullSummary:
             m = self.margin
             r = self.mainLineRect.adjusted(-m, -m, m, m / 2)
@@ -556,7 +556,7 @@ class corkDelegate(QStyledItemDelegate):
 
         # Draw status
         mainRect = self.mainRect
-        status = item.data(Outline.status.value)
+        status = item.data(Outline.status)
         if status:
             it = mainWindow().mdlStatus.item(int(status), 0)
             if it != None:

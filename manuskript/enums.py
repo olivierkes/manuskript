@@ -2,14 +2,9 @@
 #--!-- coding: utf8 --!--
 
 
-# As seen on http://stackoverflow.com/questions/36932/how-can-i-represent-an-enum-in-python
+from enum import IntEnum
 
-from enum import Enum
-
-#def enum(**enums):
-    #return type(str('Enum'), (), enums)
-
-class Character(Enum):
+class Character(IntEnum):
     name = 0
     ID = 1
     importance = 2
@@ -22,7 +17,7 @@ class Character(Enum):
     summaryFull = 9
     notes = 10
 
-class Plot(Enum):
+class Plot(IntEnum):
     name = 0
     ID = 1
     importance = 2
@@ -32,20 +27,20 @@ class Plot(Enum):
     steps = 6
     summary = 7
 
-class PlotStep(Enum):
+class PlotStep(IntEnum):
     name = 0
     ID = 1
     meta = 2
     summary = 3
 
-class World(Enum):
+class World(IntEnum):
     name = 0
     ID = 1
     description = 2
     passion = 3
     conflict = 4
 
-class Outline(Enum):
+class Outline(IntEnum):
     title = 0
     ID = 1
     type = 2
@@ -65,3 +60,8 @@ class Outline(Enum):
     textFormat = 15
     revisions = 16
     customIcon = 17
+
+class Abstract(IntEnum):
+    title = 0
+    ID = 1
+    type = 2

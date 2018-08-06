@@ -1,14 +1,61 @@
 # Change Log
 
+## [0.6.0](https://github.com/olivierkes/manuskript/tree/0.6.0) (2017-11-29)
+[Full Changelog](https://github.com/olivierkes/manuskript/compare/0.5.0...0.6.0)
+
+**Implemented enhancements:**
+
+- Add markdown support of other tabs [\#232](https://github.com/olivierkes/manuskript/issues/232)
+- Translation automation [\#228](https://github.com/olivierkes/manuskript/issues/228)
+- Feature suggestion: Typewriter scrolling. [\#175](https://github.com/olivierkes/manuskript/issues/175)
+- Adds: document menu \(copy, paste, delete, duplicate, split, merge, etc.\) [\#229](https://github.com/olivierkes/manuskript/issues/229)
+- Add transparent text editor [\#216](https://github.com/olivierkes/manuskript/issues/216)
+- Add Mind Map Import [\#208](https://github.com/olivierkes/manuskript/issues/208)
+- Adds: Importer \(docx, html, opml, …\) [\#200](https://github.com/olivierkes/manuskript/issues/200)
+- Add a "Rename Item" option to context menu in the Tree view [\#189](https://github.com/olivierkes/manuskript/issues/189)
+- Pandoc output: add more custom settings [\#173](https://github.com/olivierkes/manuskript/issues/173)
+
+**Fixed bugs:**
+
+- Manuskript fails to run in Ubuntu 14.04 [\#225](https://github.com/olivierkes/manuskript/issues/225)
+- Program Crash on Import with images [\#213](https://github.com/olivierkes/manuskript/issues/213)
+- Missing default file extension when Saving As... [\#211](https://github.com/olivierkes/manuskript/issues/211)
+- One white pixel visible in full screen mode [\#210](https://github.com/olivierkes/manuskript/issues/210)
+- Accentueted characters on linux [\#207](https://github.com/olivierkes/manuskript/issues/207)
+- Manuskript crashes when creating new document on Ubuntu [\#198](https://github.com/olivierkes/manuskript/issues/198)
+- Editor tab should trim long titles [\#194](https://github.com/olivierkes/manuskript/issues/194)
+- Manuskript does not start with PyEnchant on MacOS [\#188](https://github.com/olivierkes/manuskript/issues/188)
+- Index card text almost invisible in dark themes. [\#183](https://github.com/olivierkes/manuskript/issues/183)
+- Accented characters not working [\#141](https://github.com/olivierkes/manuskript/issues/141)
+- Accent not working [\#105](https://github.com/olivierkes/manuskript/issues/105)
+- Accent marks not working [\#58](https://github.com/olivierkes/manuskript/issues/58)
+
+**Closed issues:**
+
+- new dalolog icon [\#237](https://github.com/olivierkes/manuskript/issues/237)
+- Cannot select folder on create new project [\#224](https://github.com/olivierkes/manuskript/issues/224)
+- Should pandoc be bundled with manuskript's packages? [\#190](https://github.com/olivierkes/manuskript/issues/190)
+- Odd word choices in English - Take 2 [\#181](https://github.com/olivierkes/manuskript/issues/181)
+
+**Merged pull requests:**
+
+- Change words issue 181 [\#231](https://github.com/olivierkes/manuskript/pull/231) ([gedakc](https://github.com/gedakc))
+- Add PyEnchant support to OSX builds [\#212](https://github.com/olivierkes/manuskript/pull/212) ([katafrakt](https://github.com/katafrakt))
+- Update README.md for 0.5.0 release [\#205](https://github.com/olivierkes/manuskript/pull/205) ([gedakc](https://github.com/gedakc))
+- \[WIP\] Add Travis CI support [\#203](https://github.com/olivierkes/manuskript/pull/203) ([katafrakt](https://github.com/katafrakt))
+- Get default enchant Dict language in more reliable way [\#202](https://github.com/olivierkes/manuskript/pull/202) ([katafrakt](https://github.com/katafrakt))
+- Expand german translation [\#193](https://github.com/olivierkes/manuskript/pull/193) ([ScullyBlue](https://github.com/ScullyBlue))
+- Adds: Import OPML [\#192](https://github.com/olivierkes/manuskript/pull/192) ([camstevenson](https://github.com/camstevenson))
+
 ## [0.5.0](https://github.com/olivierkes/manuskript/tree/0.5.0) (2017-10-31)
 [Full Changelog](https://github.com/olivierkes/manuskript/compare/0.4.0...0.5.0)
 
 **Implemented enhancements:**
 
-- Feature request: disable cursor blinking [\#165](https://github.com/olivierkes/manuskript/issues/165)
 - Swedish translation \(sv-SE\). [\#177](https://github.com/olivierkes/manuskript/issues/177)
 - Spanish transalation for manuskript 0.5.0 [\#174](https://github.com/olivierkes/manuskript/issues/174)
 - Suggestion: Configurable editor margins. [\#168](https://github.com/olivierkes/manuskript/issues/168)
+- Feature request: disable cursor blinking [\#165](https://github.com/olivierkes/manuskript/issues/165)
 - Suggestion: Block insertion cursor. [\#163](https://github.com/olivierkes/manuskript/issues/163)
 - New navigation icon design [\#159](https://github.com/olivierkes/manuskript/issues/159)
 - New flash card design [\#158](https://github.com/olivierkes/manuskript/issues/158)
@@ -30,6 +77,7 @@
 - Create new project ignores changes made to template levels before Create [\#171](https://github.com/olivierkes/manuskript/issues/171)
 - Several bugs in drag'n'dropping items [\#169](https://github.com/olivierkes/manuskript/issues/169)
 - Some panels require initial two clicks of RHS tab to hide [\#167](https://github.com/olivierkes/manuskript/issues/167)
+- Spell checker is active for partial words. [\#166](https://github.com/olivierkes/manuskript/issues/166)
 - Spell checking works but does not underline misspelled words [\#147](https://github.com/olivierkes/manuskript/issues/147)
 - Contrast Problem in Notes/Refences with Dark Background [\#143](https://github.com/olivierkes/manuskript/issues/143)
 - Crash when permissions don't allow saving [\#138](https://github.com/olivierkes/manuskript/issues/138)
@@ -58,6 +106,7 @@
 - Keyboard shortcuts aren't functioning, No undo feature.   [\#125](https://github.com/olivierkes/manuskript/issues/125)
 - Trojan in current windows installer? [\#112](https://github.com/olivierkes/manuskript/issues/112)
 - Manuskript no longer opening [\#106](https://github.com/olivierkes/manuskript/issues/106)
+- not working on Mac [\#35](https://github.com/olivierkes/manuskript/issues/35)
 
 **Merged pull requests:**
 

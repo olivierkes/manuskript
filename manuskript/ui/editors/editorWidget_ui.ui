@@ -46,7 +46,7 @@
         <number>0</number>
        </property>
        <item>
-        <widget class="textEditView" name="txtRedacText">
+        <widget class="MDEditView" name="txtRedacText">
          <property name="frameShape">
           <enum>QFrame::NoFrame</enum>
          </property>
@@ -147,12 +147,12 @@
   </layout>
  </widget>
  <customwidgets>
-  <customwidget>
-   <class>textEditView</class>
-   <extends>QTextEdit</extends>
-   <header>manuskript.ui.views.textEditView.h</header>
-  </customwidget>
-  <customwidget>
+   <customwidget>
+    <class>MDEditView</class>
+    <extends>QTextEdit</extends>
+    <header>manuskript.ui.views.MDEditView.h</header>
+   </customwidget>
+   <customwidget>
    <class>outlineView</class>
    <extends>QTreeView</extends>
    <header>manuskript.ui.views.outlineView.h</header>

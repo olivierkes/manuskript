@@ -89,7 +89,7 @@ def infos(ref):
     _type = match.group(1)
     _ref = match.group(2)
 
-    # A text or outine item
+    # A text or outline item
     if _type == TextLetter:
         m = mainWindow().mdlOutline
         idx = m.getIndexByID(_ref)
@@ -140,9 +140,9 @@ def infos(ref):
         path = " > ".join(pathStr)
 
         # Summaries and notes
-        ss = item.data(Outline.summarySentence.value)
-        ls = item.data(Outline.summaryFull.value)
-        notes = item.data(Outline.notes.value)
+        ss = item.data(Outline.summarySentence)
+        ls = item.data(Outline.summaryFull)
+        notes = item.data(Outline.notes)
 
         text = """<h1>{title}</h1>
         <p><b>{pathTitle}</b> {path}</p>
@@ -187,6 +187,9 @@ def infos(ref):
     elif _type == CharacterLetter:
         m = mainWindow().mdlCharacter
         c = m.getCharacterByID(int(_ref))
+        if c is None:
+            return qApp.translate("references", "Unknown reference: {}.").format(ref)
+
         index = c.index()
 
         name = c.name()
@@ -237,7 +240,7 @@ def infos(ref):
             idx = oM.getIndexByID(t)
             listPOV += "<li><a href='{link}'>{text}</a></li>".format(
                     link=textReference(t),
-                    text=oM.data(idx, Outline.title.value))
+                    text=oM.data(idx, Outline.title))
 
         text = """<h1>{name}</h1>
         {goto}
@@ -267,6 +270,9 @@ def infos(ref):
         index = m.getIndexFromID(_ref)
         name = m.getPlotNameByID(_ref)
 
+        if not index.isValid():
+            return qApp.translate("references", "Unknown reference: {}.").format(ref)
+
         # Titles
         descriptionTitle = qApp.translate("references", "Description")
         resultTitle = qApp.translate("references", "Result")
@@ -279,15 +285,15 @@ def infos(ref):
 
         # Description
         description = m.data(index.sibling(index.row(),
-                                           Plot.description.value))
+                                           Plot.description))
 
         # Result
         result = m.data(index.sibling(index.row(),
-                                      Plot.result.value))
+                                      Plot.result))
 
         # Characters
         pM = mainWindow().mdlCharacter
-        item = m.item(index.row(), Plot.characters.value)
+        item = m.item(index.row(), Plot.characters)
         characters = ""
         if item:
             for r in range(item.rowCount()):
@@ -298,12 +304,12 @@ def infos(ref):
 
         # Resolution steps
         steps = ""
-        item = m.item(index.row(), Plot.steps.value)
+        item = m.item(index.row(), Plot.steps)
         if item:
             for r in range(item.rowCount()):
-                title = item.child(r, PlotStep.name.value).text()
-                summary = item.child(r, PlotStep.summary.value).text()
-                meta = item.child(r, PlotStep.meta.value).text()
+                title = item.child(r, PlotStep.name).text()
+                summary = item.child(r, PlotStep.summary).text()
+                meta = item.child(r, PlotStep.meta).text()
                 if meta:
                     meta = " <span style='color:gray;'>({})</span>".format(meta)
                 steps += "<li><b>{title}</b>{summary}{meta}</li>".format(
@@ -342,6 +348,9 @@ def infos(ref):
         m = mainWindow().mdlWorld
         index = m.indexByID(_ref)
         name = m.name(index)
+
+        if not index.isValid():
+            return qApp.translate("references", "Unknown reference: {}.").format(ref)
 
         # Titles
         descriptionTitle = qApp.translate("references", "Description")
@@ -532,7 +541,9 @@ def refToLink(ref):
 
         elif _type == CharacterLetter:
             m = mainWindow().mdlCharacter
-            text = m.getCharacterByID(int(_ref)).name()
+            c = m.getCharacterByID(int(_ref))
+            if c:
+                text = c.name()
 
         elif _type == PlotLetter:
             m = mainWindow().mdlPlots
@@ -540,7 +551,9 @@ def refToLink(ref):
 
         elif _type == WorldLetter:
             m = mainWindow().mdlWorld
-            text = m.itemByID(_ref).text()
+            item = m.itemByID(_ref)
+            if item:
+                text = item.text()
 
         if text:
             return "<a href='{ref}'>{text}</a>".format(
@@ -549,11 +562,9 @@ def refToLink(ref):
         else:
             return ref
 
-
 def linkifyAllRefs(text):
     """Takes all the references in ``text`` and transform them into HMTL links."""
     return re.sub(RegEx, lambda m: refToLink(m.group(0)), text)
-
 
 def findReferencesTo(ref, parent=None, recursive=True):
     """List of text items containing references ref, and returns IDs.
@@ -570,8 +581,8 @@ def findReferencesTo(ref, parent=None, recursive=True):
     ref2 = ref[:-1] + "}"
 
     # Since it's a simple search (no regex), we search for both.
-    lst = parent.findItemsContaining(ref, [Outline.notes.value], recursive=recursive)
-    lst += parent.findItemsContaining(ref2, [Outline.notes.value], recursive=recursive)
+    lst = parent.findItemsContaining(ref, [Outline.notes], recursive=recursive)
+    lst += parent.findItemsContaining(ref2, [Outline.notes], recursive=recursive)
 
     return lst
 
@@ -585,12 +596,11 @@ def listReferences(ref, title=qApp.translate("references", "Referenced in:")):
         idx = oM.getIndexByID(t)
         listRefs += "<li><a href='{link}'>{text}</a></li>".format(
                 link=textReference(t),
-                text=oM.data(idx, Outline.title.value))
+                text=oM.data(idx, Outline.title))
 
     return "<h2>{title}</h2><ul>{ref}</ul>".format(
             title=title,
             ref=listRefs) if listRefs else ""
-
 
 def basicFormat(text):
     if not text:
@@ -598,7 +608,6 @@ def basicFormat(text):
     text = text.replace("\n", "<br>")
     text = linkifyAllRefs(text)
     return text
-
 
 def open(ref):
     """Identify ``ref`` and open it."""

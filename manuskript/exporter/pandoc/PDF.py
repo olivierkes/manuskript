@@ -12,12 +12,12 @@ from manuskript.ui.views.PDFViewer import PDFViewer
 
 
 class PDF(abstractOutput):
-    """PDF Viewer using PDS.js. Cf. https://github.com/mozilla/pdf.js/wiki/Setup-PDF.js-in-a-website"""
+    """PDF Viewer using PDF.js. Cf. https://github.com/mozilla/pdf.js/wiki/Setup-PDF.js-in-a-website"""
 
     name = "PDF"
-    description = qApp.translate("Export", "Needs latex to be installed.")
-    InvalidBecause = qApp.translate("Export", """a valid latex installation. See pandoc recommendations on:
-                     <a href="http://pandoc.org/installing.html">http://pandoc.org/installing.html</a>. If you want unicode support, you need xelatex.""")
+    description = qApp.translate("Export", "Needs LaTeX to be installed.")
+    InvalidBecause = qApp.translate("Export", """a valid LaTeX installation. Pandoc recommendations can be found on:
+                     <a href="https://pandoc.org/installing.html">pandoc.org/installing.html</a>. If you want Unicode support, you need XeLaTeX.""")
     icon = "application-pdf"
 
     exportVarName = "lastPandocPDF"

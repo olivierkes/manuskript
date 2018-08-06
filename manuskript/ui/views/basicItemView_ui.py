@@ -2,8 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/views/basicItemView_ui.ui'
 #
-# Created: Thu Mar  3 17:26:11 2016
-#      by: PyQt5 UI code generator 5.2.1
+# Created by: PyQt5 UI code generator 5.5.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -51,7 +50,7 @@ class Ui_basicItemView(object):
         self.label_9 = QtWidgets.QLabel(basicItemView)
         self.label_9.setObjectName("label_9")
         self.verticalLayout.addWidget(self.label_9)
-        self.txtSummaryFull = textEditView(basicItemView)
+        self.txtSummaryFull = MDEditCompleter(basicItemView)
         self.txtSummaryFull.setObjectName("txtSummaryFull")
         self.verticalLayout.addWidget(self.txtSummaryFull)
 
@@ -67,6 +66,6 @@ class Ui_basicItemView(object):
         self.txtSummarySentence.setPlaceholderText(_translate("basicItemView", "One line summary"))
         self.label_9.setText(_translate("basicItemView", "Few sentences summary:"))
 
+from manuskript.ui.views.MDEditCompleter import MDEditCompleter
 from manuskript.ui.views.cmbOutlineCharacterChoser import cmbOutlineCharacterChoser
 from manuskript.ui.views.lineEditView import lineEditView
-from manuskript.ui.views.textEditView import textEditView

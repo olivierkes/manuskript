@@ -4,7 +4,7 @@ from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QWidget, QAction
 
 from manuskript.enums import Outline
-from manuskript.models.outlineModel import outlineModel
+from manuskript.models import outlineModel
 from manuskript.ui.editors.textFormat_ui import Ui_textFormat
 
 
@@ -45,7 +45,7 @@ class textFormat(QWidget, Ui_textFormat):
             self.setVisible(False)
             return
 
-        if index.column() not in [Outline.text.value, Outline.notes.value]:
+        if index.column() not in [Outline.text, Outline.notes]:
             self.setVisible(False)
             return
 

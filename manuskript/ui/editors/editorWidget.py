@@ -2,12 +2,13 @@
 # --!-- coding: utf8 --!--
 from PyQt5.QtCore import pyqtSignal, QModelIndex
 from PyQt5.QtGui import QPalette
-from PyQt5.QtWidgets import QWidget, QFrame, QSpacerItem, QSizePolicy, QVBoxLayout
+from PyQt5.QtWidgets import QWidget, QFrame, QSpacerItem, QSizePolicy
+from PyQt5.QtWidgets import QVBoxLayout, qApp, QStyle
 
 from manuskript import settings
 from manuskript.functions import AUC, mainWindow
 from manuskript.ui.editors.editorWidget_ui import Ui_editorWidget_ui
-from manuskript.ui.views.textEditView import textEditView
+from manuskript.ui.views.MDEditView import MDEditView
 from manuskript.ui.tools.splitDialog import splitDialog
 
 
@@ -60,9 +61,36 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
 
         self._model = None
 
+        # Capture textEdit scrollbar, so that we can put it outside the margins.
+        self.txtEditScrollBar = self.txtRedacText.verticalScrollBar()
+        self.txtEditScrollBar.setParent(self)
+        self.stack.currentChanged.connect(self.setScrollBarVisibility)
+
         # def setModel(self, model):
         # self._model = model
         # self.setView()
+
+    def resizeEvent(self, event):
+        """
+        textEdit's scrollBar has been reparented to self. So we need to
+        update it's geomtry when self is resized, and put it where we want it
+        to be.
+        """
+        # Update scrollbar geometry
+        r = self.geometry()
+        w = 10  # Cf. style.mainEditorTabSS
+        r.setWidth(w)
+        r.moveRight(self.geometry().width())
+        self.txtEditScrollBar.setGeometry(r)
+
+        QWidget.resizeEvent(self, event)
+
+    def setScrollBarVisibility(self):
+        """
+        Since the texteEdit scrollBar has been reparented to self, it is not
+        hidden when stack changes. We have to do it manually.
+        """
+        self.txtEditScrollBar.setVisible(self.stack.currentIndex() == 0)
 
     def setFolderView(self, v):
         oldV = self.folderView
@@ -128,7 +156,7 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
     def setView(self):
         # index = mainWindow().treeRedacOutline.currentIndex()
 
-        # Couting the number of other selected items
+        # Counting the number of other selected items
         # sel = []
         # for i in mainWindow().treeRedacOutline.selectionModel().selection().indexes():
         # if i.column() != 0: continue
@@ -150,7 +178,7 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
         self.updateTabTitle()
 
         def addTitle(itm):
-            edt = textEditView(self, html="<h{l}>{t}</h{l}>".format(l=min(itm.level() + 1, 5), t=itm.title()),
+            edt = MDEditView(self, html="<h{l}>{t}</h{l}>".format(l=min(itm.level() + 1, 5), t=itm.title()),
                                autoResize=True)
             edt.setFrameShape(QFrame.NoFrame)
             self.txtEdits.append(edt)
@@ -163,7 +191,7 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
             l.addWidget(line)
 
         def addText(itm):
-            edt = textEditView(self,
+            edt = MDEditView(self,
                                index=itm.index(),
                                spellcheck=self.spellcheck,
                                dict=settings.dict,
@@ -214,7 +242,12 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
             w = QWidget()
             w.setObjectName("editorWidgetFolderText")
             l = QVBoxLayout(w)
-            w.setStyleSheet("background: {};".format(settings.textEditor["background"]))
+            opt = settings.textEditor
+            background = (opt["background"] if not opt["backgroundTransparent"]
+                          else "transparent")
+            w.setStyleSheet("background: {};".format(background))
+            self.stack.widget(1).setStyleSheet("background: {}"
+                                               .format(background))
             # self.scroll.setWidgetResizable(False)
 
             self.txtEdits = []

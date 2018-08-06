@@ -11,6 +11,7 @@
     "corkStyle": "new",
     "defaultTextType": "md",
     "dict": "en_US",
+    "dontShowDeleteWarning": false,
     "folderView": "cork",
     "frequencyAnalyzer": {
         "phraseMax": 5,
@@ -48,11 +49,16 @@
     "spellcheck": false,
     "textEditor": {
         "background": "#fff",
+        "backgroundTransparent": false,
+        "cursorNotBlinking": false,
         "cursorWidth": 1,
         "font": "DejaVu Sans,10,-1,5,50,0,0,0,0,0",
         "fontColor": "#000",
         "indent": true,
         "lineSpacing": 100,
+        "marginsLR": 0,
+        "marginsTB": 0,
+        "maxWidth": 0,
         "misspelled": "#F00",
         "spacingAbove": 5,
         "spacingBelow": 5,
@@ -78,7 +84,8 @@
             "Icon": "Nothing",
             "InfoFolder": "Summary",
             "InfoText": "Nothing",
-            "Text": "Compile"
+            "Text": "Compile",
+            "iconSize": 24
         }
     }
 }

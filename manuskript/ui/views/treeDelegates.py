@@ -14,7 +14,7 @@ from manuskript.ui import style as S
 
 class treeTitleDelegate(QStyledItemDelegate):
     """The main purpose of ``treeTitleDelegate`` is to paint outline items
-    in the treeview with propers colors according to settings.
+    in the treeview with proper colors according to settings.
     """
 
     def __init__(self, parent=None):
@@ -94,7 +94,7 @@ class treeTitleDelegate(QStyledItemDelegate):
                 # If text color is Compile and item is selected, we have
                 # to change the color
                 if settings.viewSettings["Outline"]["Text"] == "Compile" and \
-                   item.compile() in [0, "0"]:
+                   not item.compile():
                     col = mixColors(textColor, QColor(S.window))
                 painter.setPen(col)
             f = QFont(opt.font)
@@ -109,27 +109,27 @@ class treeTitleDelegate(QStyledItemDelegate):
                     extraText = item.childCount()
                     extraText = " [{}]".format(extraText)
                 elif settings.viewSettings["Tree"]["InfoFolder"] == "WC":
-                    extraText = item.data(Outline.wordCount.value)
+                    extraText = item.wordCount()
                     extraText = " ({})".format(extraText)
                 elif settings.viewSettings["Tree"]["InfoFolder"] == "Progress":
-                    extraText = int(toFloat(item.data(Outline.goalPercentage.value)) * 100)
+                    extraText = int(toFloat(item.data(Outline.goalPercentage)) * 100)
                     if extraText:
                         extraText = " ({}%)".format(extraText)
                 elif settings.viewSettings["Tree"]["InfoFolder"] == "Summary":
-                    extraText = item.data(Outline.summarySentence.value)
+                    extraText = item.data(Outline.summarySentence)
                     if extraText:
                         extraText = " - {}".format(extraText)
 
             if item.isText() and settings.viewSettings["Tree"]["InfoText"] != "Nothing":
                 if settings.viewSettings["Tree"]["InfoText"] == "WC":
-                    extraText = item.data(Outline.wordCount.value)
+                    extraText = item.wordCount()
                     extraText = " ({})".format(extraText)
                 elif settings.viewSettings["Tree"]["InfoText"] == "Progress":
-                    extraText = int(toFloat(item.data(Outline.goalPercentage.value)) * 100)
+                    extraText = int(toFloat(item.data(Outline.goalPercentage)) * 100)
                     if extraText:
                         extraText = " ({}%)".format(extraText)
                 elif settings.viewSettings["Tree"]["InfoText"] == "Summary":
-                    extraText = item.data(Outline.summarySentence.value)
+                    extraText = item.data(Outline.summarySentence)
                     if extraText:
                         extraText = " - {}".format(extraText)
 

@@ -2,7 +2,7 @@
 # --!-- coding: utf8 --!--
 
 from manuskript.importer.abstractImporter import abstractImporter
-from manuskript.models.outlineModel import outlineItem
+from manuskript.models import outlineItem
 from manuskript.enums import Outline
 from PyQt5.QtWidgets import qApp
 import re, os
@@ -52,7 +52,7 @@ class markdownImporter(abstractImporter):
 
         ```
         # Level 1
-        Some texte content.
+        Some text content.
         Level 1 will become a text element.
         # Level 1
         This content has no name.

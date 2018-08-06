@@ -1,15 +1,22 @@
-snowflake*
-*.pyc
+# List of file patterns for git to ignore.
+#
+# Please try to keep entries in alphabetical order :-)
+#
 *.lprof
-.directory
 *.msk
-Notes.t2t
 *.nja
-manuskript/pycallgraph.txt
-ExportTest
-icons/Numix
+*.pyc
+.cache
+.directory
 .idea
+.project
+.pydevproject
+.settings/org.eclipse.core.resources.prefs
+ExportTest
+Notes.t2t
 dist
 build
+icons/Numix
+manuskript/pycallgraph.txt
+snowflake*
 test-projects
-.cache

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>658</width>
-    <height>632</height>
+    <height>598</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -54,7 +54,7 @@
    <item>
     <widget class="QStackedWidget" name="stack">
      <property name="currentIndex">
-      <number>5</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="stackedWidgetPage1">
       <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -95,11 +95,14 @@
           </font>
          </property>
          <property name="title">
-          <string>Application style</string>
+          <string>Application settings</string>
          </property>
-         <layout class="QVBoxLayout" name="verticalLayout_5">
-          <item>
-           <widget class="QLabel" name="label_2">
+         <layout class="QFormLayout" name="formLayout_13">
+          <property name="fieldGrowthPolicy">
+           <enum>QFormLayout::FieldsStayAtSizeHint</enum>
+          </property>
+          <item row="3" column="0">
+           <widget class="QLabel" name="label_56">
             <property name="font">
              <font>
               <weight>50</weight>
@@ -107,14 +110,11 @@
              </font>
             </property>
             <property name="text">
-             <string>You might need to restart manuskript in order to avoid some visual issues.</string>
-            </property>
-            <property name="wordWrap">
-             <bool>true</bool>
+             <string>Style:</string>
             </property>
            </widget>
           </item>
-          <item>
+          <item row="3" column="1">
            <widget class="QComboBox" name="cmbStyle">
             <property name="font">
              <font>
@@ -124,23 +124,8 @@
             </property>
            </widget>
           </item>
-         </layout>
-        </widget>
-       </item>
-       <item>
-        <widget class="QGroupBox" name="groupBox_14">
-         <property name="font">
-          <font>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="title">
-          <string>Application language</string>
-         </property>
-         <layout class="QVBoxLayout" name="verticalLayout_20">
-          <item>
-           <widget class="QLabel" name="label_52">
+          <item row="6" column="0">
+           <widget class="QLabel" name="label_57">
             <property name="font">
              <font>
               <weight>50</weight>
@@ -148,20 +133,56 @@
              </font>
             </property>
             <property name="text">
-             <string>You will need to restart manuskript for the translation to take effect.</string>
-            </property>
-            <property name="wordWrap">
-             <bool>true</bool>
+             <string>Language:</string>
             </property>
            </widget>
           </item>
-          <item>
+          <item row="6" column="1">
            <widget class="QComboBox" name="cmbTranslation">
             <property name="font">
              <font>
               <weight>50</weight>
               <bold>false</bold>
              </font>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="0">
+           <widget class="QLabel" name="label_58">
+            <property name="font">
+             <font>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>Font size:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="1">
+           <widget class="QSpinBox" name="spnGeneralFontSize">
+            <property name="font">
+             <font>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0" colspan="2">
+           <widget class="QLabel" name="label_2">
+            <property name="font">
+             <font>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>You might need to restart manuskript in order for those settings to take effect properly and entirely.</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -1042,7 +1063,7 @@
                    </font>
                   </property>
                   <property name="text">
-                   <string>Show &amp;wordcount</string>
+                   <string>Show &amp;word count</string>
                   </property>
                  </widget>
                 </item>
@@ -1112,7 +1133,7 @@
                    </font>
                   </property>
                   <property name="text">
-                   <string>&amp;Show wordcount</string>
+                   <string>&amp;Show word count</string>
                   </property>
                  </widget>
                 </item>
@@ -1676,7 +1697,7 @@
                  </font>
                 </property>
                 <property name="text">
-                 <string>Ne&amp;w style</string>
+                 <string>&amp;New style</string>
                 </property>
                </widget>
               </item>
@@ -2617,6 +2638,62 @@
                   <property name="text">
                    <string>Disable blinking</string>
                   </property>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <widget class="QCheckBox" name="chkEditorTypeWriterMode">
+                  <property name="font">
+                   <font>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Typewriter mode</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="0">
+                 <widget class="QLabel" name="label_52">
+                  <property name="font">
+                   <font>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Focus mode</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="1">
+                 <widget class="QComboBox" name="cmbEditorFocusMode">
+                  <property name="font">
+                   <font>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <item>
+                   <property name="text">
+                    <string>None</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Sentence</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Line</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Paragraph</string>
+                   </property>
+                  </item>
                  </widget>
                 </item>
                </layout>

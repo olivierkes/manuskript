@@ -28,8 +28,8 @@ class plotModel(QStandardItemModel):
     def getPlotsByImportance(self):
         plots = [[], [], []]
         for i in range(self.rowCount()):
-            importance = self.item(i, Plot.importance.value).text()
-            ID = self.item(i, Plot.ID.value).text()
+            importance = self.item(i, Plot.importance).text()
+            ID = self.item(i, Plot.ID).text()
             plots[2 - toInt(importance)].append(ID)
         return plots
 
@@ -37,23 +37,23 @@ class plotModel(QStandardItemModel):
         index = self.getIndexFromID(ID)
         if not index.isValid():
             return
-        index = index.sibling(index.row(), Plot.steps.value)
+        index = index.sibling(index.row(), Plot.steps)
         item = self.itemFromIndex(index)
         lst = []
         for i in range(item.rowCount()):
-            if item.child(i, PlotStep.ID.value):
-                _ID = item.child(i, PlotStep.ID.value).text()
+            if item.child(i, PlotStep.ID):
+                _ID = item.child(i, PlotStep.ID).text()
 
-                # Don't know why sometimes name is None (while drag'n'droping
+                # Don't know why sometimes name is None (while drag'n'dropping
                 # several items)
-                if item.child(i, PlotStep.name.value):
-                    name = item.child(i, PlotStep.name.value).text()
+                if item.child(i, PlotStep.name):
+                    name = item.child(i, PlotStep.name).text()
                 else:
                     name = ""
 
                 # Don't know why sometimes summary is None
-                if item.child(i, PlotStep.summary.value):
-                    summary = item.child(i, PlotStep.summary.value).text()
+                if item.child(i, PlotStep.summary):
+                    summary = item.child(i, PlotStep.summary).text()
                 else:
                     summary = ""
 
@@ -62,32 +62,32 @@ class plotModel(QStandardItemModel):
 
     def getPlotNameByID(self, ID):
         for i in range(self.rowCount()):
-            _ID = self.item(i, Plot.ID.value).text()
+            _ID = self.item(i, Plot.ID).text()
             if _ID == ID or toInt(_ID) == ID:
-                name = self.item(i, Plot.name.value).text()
+                name = self.item(i, Plot.name).text()
                 return name
         return None
 
     def getPlotImportanceByID(self, ID):
         for i in range(self.rowCount()):
-            _ID = self.item(i, Plot.ID.value).text()
+            _ID = self.item(i, Plot.ID).text()
             if _ID == ID or toInt(_ID) == ID:
-                importance = self.item(i, Plot.importance.value).text()
+                importance = self.item(i, Plot.importance).text()
                 return importance
         return "0" # Default to "Minor"
 
     def getSubPlotTextsByID(self, plotID, subplotRaw):
-        """Returns a tuple (name, summary) for the suplot whose raw in the model
+        """Returns a tuple (name, summary) for the subplot whose raw in the model
         is ``subplotRaw``, of plot whose ID is ``plotID``.
         """
         plotIndex = self.getIndexFromID(plotID)
-        name = plotIndex.child(subplotRaw, PlotStep.name.value).data()
-        summary = plotIndex.child(subplotRaw, PlotStep.summary.value).data()
+        name = plotIndex.child(subplotRaw, PlotStep.name).data()
+        summary = plotIndex.child(subplotRaw, PlotStep.summary).data()
         return name, summary
 
     def getIndexFromID(self, ID):
         for i in range(self.rowCount()):
-            _ID = self.item(i, Plot.ID.value).text()
+            _ID = self.item(i, Plot.ID).text()
             if _ID == ID or toInt(_ID) == ID:
                 return self.index(i, 0)
         return QModelIndex()
@@ -115,8 +115,8 @@ class plotModel(QStandardItemModel):
         parentItem = self.itemFromIndex(parent)
         vals = []
         for i in range(self.rowCount(parent)):
-            index = self.index(i, Plot.ID.value, parent)
-            # item = self.item(i, Plot.ID.value)
+            index = self.index(i, Plot.ID, parent)
+            # item = self.item(i, Plot.ID)
             if index.isValid() and index.data():
                 vals.append(int(index.data()))
 
@@ -135,9 +135,9 @@ class plotModel(QStandardItemModel):
     def headerData(self, section, orientation, role=Qt.DisplayRole):
         if role == Qt.DisplayRole:
             if orientation == Qt.Horizontal:
-                if section == PlotStep.name.value:
+                if section == PlotStep.name:
                     return self.tr("Name")
-                elif section == PlotStep.meta.value:
+                elif section == PlotStep.meta:
                     return self.tr("Meta")
                 else:
                     return ""
@@ -148,8 +148,8 @@ class plotModel(QStandardItemModel):
 
     def data(self, index, role=Qt.DisplayRole):
         if index.parent().isValid() and \
-                        index.parent().column() == Plot.steps.value and \
-                        index.column() == PlotStep.meta.value:
+                        index.parent().column() == Plot.steps and \
+                        index.column() == PlotStep.meta:
             if role == Qt.TextAlignmentRole:
                 return Qt.AlignRight | Qt.AlignVCenter
             elif role == Qt.ForegroundRole:
@@ -165,8 +165,8 @@ class plotModel(QStandardItemModel):
         if not index.isValid():
             return
 
-        parent = index.sibling(index.row(), Plot.steps.value)
-        parentItem = self.item(index.row(), Plot.steps.value)
+        parent = index.sibling(index.row(), Plot.steps)
+        parentItem = self.item(index.row(), Plot.steps)
 
         if not parentItem:
             return
@@ -216,10 +216,10 @@ class plotModel(QStandardItemModel):
     def addPlotPerso(self, v):
         index = self.mw.lstPlots.currentPlotIndex()
         if index.isValid():
-            if not self.item(index.row(), Plot.characters.value):
-                self.setItem(index.row(), Plot.characters.value, QStandardItem())
+            if not self.item(index.row(), Plot.characters):
+                self.setItem(index.row(), Plot.characters, QStandardItem())
 
-            item = self.item(index.row(), Plot.characters.value)
+            item = self.item(index.row(), Plot.characters)
 
             # We check that the PersoID is not in the list yet
             for i in range(item.rowCount()):

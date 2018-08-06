@@ -65,25 +65,43 @@ class settingsWindow(QWidget, Ui_Settings):
 
         # General
         self.cmbStyle.addItems(list(QStyleFactory.keys()))
-        self.cmbStyle.setCurrentIndex([i.lower() for i in list(QStyleFactory.keys())].index(qApp.style().objectName()))
+        self.cmbStyle.setCurrentIndex(
+            [i.lower() for i in list(QStyleFactory.keys())]
+            .index(qApp.style().objectName()))
         self.cmbStyle.currentIndexChanged[str].connect(self.setStyle)
 
         self.cmbTranslation.clear()
         tr = OrderedDict()
         tr["English"] = ""
-        tr["Français"] = "manuskript_fr.qm"
-        tr["Español"] = "manuskript_es.qm"
         tr["Deutsch"] = "manuskript_de.qm"
+        tr["Español"] = "manuskript_es.qm"
+        tr["Français"] = "manuskript_fr.qm"
+        tr["Norwegian Bokmål"] = "manuskript_nb_NO.qm"
+        tr["Dutch"] = "manuskript_nl.qm"
+        tr["Polish"] = "manuskript_pl.qm"
+        tr["Portuguese (Brazil)"] = "manuskript_pt_BR.qm"
+        tr["Portuguese (Portugal)"] = "manuskript_pt_PT.qm"
+        tr["Russian"] = "manuskript_ru.qm"
         tr["Svenska"] = "manuskript_sv.qm"
+        tr["Chinese"] = "manuskript_zh.qm"
+        self.translations = tr
 
         for name in tr:
             self.cmbTranslation.addItem(name, tr[name])
 
         sttgs = QSettings(qApp.organizationName(), qApp.applicationName())
-        if sttgs.contains("applicationTranslation") and sttgs.value("applicationTranslation") in tr.values():
-            self.cmbTranslation.setCurrentText([i for i in tr if tr[i] == sttgs.value("applicationTranslation")][0])
+        if (sttgs.contains("applicationTranslation")
+            and sttgs.value("applicationTranslation") in tr.values()):
+            # Sets the correct translation
+            self.cmbTranslation.setCurrentText(
+                [i for i in tr
+                 if tr[i] == sttgs.value("applicationTranslation")][0])
 
         self.cmbTranslation.currentIndexChanged.connect(self.setTranslation)
+
+        f = qApp.font()
+        self.spnGeneralFontSize.setValue(f.pointSize())
+        self.spnGeneralFontSize.valueChanged.connect(self.setAppFontSize)
 
         self.txtAutoSave.setValidator(QIntValidator(0, 999, self))
         self.txtAutoSaveNoChanges.setValidator(QIntValidator(0, 999, self))
@@ -191,6 +209,14 @@ class settingsWindow(QWidget, Ui_Settings):
         self.spnEditorCursorWidth.setEnabled(opt["cursorWidth"] != 1)
         self.chkEditorNoBlinking.setChecked(opt["cursorNotBlinking"])
         self.chkEditorNoBlinking.stateChanged.connect(self.setApplicationCursorBlinking)
+        self.chkEditorTypeWriterMode.setChecked(opt["alwaysCenter"])
+        self.chkEditorTypeWriterMode.stateChanged.connect(self.updateEditorSettings)
+        self.cmbEditorFocusMode.setCurrentIndex(
+                0 if not opt["focusMode"] else
+                1 if opt["focusMode"] == "sentence" else
+                2 if opt["focusMode"] == "line" else
+                3)
+        self.cmbEditorFocusMode.currentIndexChanged.connect(self.updateEditorSettings)
             # Text areas
         self.chkEditorMaxWidth.setChecked(opt["maxWidth"] != 0)
         self.chkEditorMaxWidth.stateChanged.connect(self.updateEditorSettings)
@@ -293,6 +319,17 @@ class settingsWindow(QWidget, Ui_Settings):
 
         # QMessageBox.information(self, "Warning", "You'll have to restart manuskript.")
 
+    def setAppFontSize(self, val):
+        """
+        Set application default font point size.
+        """
+        f = qApp.font()
+        f.setPointSize(val)
+        qApp.setFont(f)
+        mainWindow().setFont(f)
+        sttgs = QSettings(qApp.organizationName(), qApp.applicationName())
+        sttgs.setValue("appFontSize", val)
+
     def saveSettingsChanged(self):
         if self.txtAutoSave.text() in ["", "0"]:
             self.txtAutoSave.setText("1")
@@ -355,14 +392,14 @@ class settingsWindow(QWidget, Ui_Settings):
 
     def outlineColumnsData(self):
         return {
-            self.chkOutlineTitle: Outline.title.value,
-            self.chkOutlinePOV: Outline.POV.value,
-            self.chkOutlineLabel: Outline.label.value,
-            self.chkOutlineStatus: Outline.status.value,
-            self.chkOutlineCompile: Outline.compile.value,
-            self.chkOutlineWordCount: Outline.wordCount.value,
-            self.chkOutlineGoal: Outline.goal.value,
-            self.chkOutlinePercentage: Outline.goalPercentage.value,
+            self.chkOutlineTitle: Outline.title,
+            self.chkOutlinePOV: Outline.POV,
+            self.chkOutlineLabel: Outline.label,
+            self.chkOutlineStatus: Outline.status,
+            self.chkOutlineCompile: Outline.compile,
+            self.chkOutlineWordCount: Outline.wordCount,
+            self.chkOutlineGoal: Outline.goal,
+            self.chkOutlinePercentage: Outline.goalPercentage,
         }
 
     def outlineColumnsChanged(self):
@@ -456,7 +493,7 @@ class settingsWindow(QWidget, Ui_Settings):
 
     def updateEditorSettings(self):
         """
-        Stores settings for editor appareance.
+        Stores settings for editor appearance.
         """
 
         # Background
@@ -472,6 +509,12 @@ class settingsWindow(QWidget, Ui_Settings):
             1 if not self.chkEditorCursorWidth.isChecked() else \
             self.spnEditorCursorWidth.value()
         self.spnEditorCursorWidth.setEnabled(self.chkEditorCursorWidth.isChecked())
+        settings.textEditor["alwaysCenter"] = self.chkEditorTypeWriterMode.isChecked()
+        settings.textEditor["focusMode"] = \
+            False if self.cmbEditorFocusMode.currentIndex() == 0 else \
+            "sentence" if self.cmbEditorFocusMode.currentIndex() == 1 else \
+            "line" if self.cmbEditorFocusMode.currentIndex() == 2 else \
+            "paragraph"
 
         # Text area
         settings.textEditor["maxWidth"] = \
@@ -571,8 +614,8 @@ class settingsWindow(QWidget, Ui_Settings):
         # px = QPixmap(64, 64)
         # px.fill(iconColor(self.mw.mdlLabels.item(index.row()).icon()))
         # self.btnLabelColor.setIcon(QIcon(px))
-        self.btnLabelColor.setStyleSheet(
-            "background:{};".format(iconColor(self.mw.mdlLabels.item(index.row()).icon()).name()))
+        self.btnLabelColor.setStyleSheet("background:{};".format(
+            iconColor(self.mw.mdlLabels.item(index.row()).icon()).name()))
         self.btnLabelColor.setEnabled(True)
 
     def addLabel(self):

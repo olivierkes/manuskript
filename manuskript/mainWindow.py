@@ -3,18 +3,19 @@
 import imp
 import os
 
-from PyQt5.QtCore import pyqtSignal, QSignalMapper, QTimer, QSettings, Qt, QRegExp, QUrl, QSize
+from PyQt5.QtCore import (pyqtSignal, QSignalMapper, QTimer, QSettings, Qt,
+                          QRegExp, QUrl, QSize, QModelIndex)
 from PyQt5.QtGui import QStandardItemModel, QIcon, QColor
 from PyQt5.QtWidgets import QMainWindow, QHeaderView, qApp, QMenu, QActionGroup, QAction, QStyle, QListWidgetItem, \
-    QLabel, QDockWidget
+    QLabel, QDockWidget, QWidget
 
 from manuskript import settings
 from manuskript.enums import Character, PlotStep, Plot, World, Outline
-from manuskript.functions import AUC, wordCount, appPath, findWidgetsOfClass
+from manuskript.functions import wordCount, appPath, findWidgetsOfClass
 import manuskript.functions as F
 from manuskript import loadSave
 from manuskript.models.characterModel import characterModel
-from manuskript.models.outlineModel import outlineModel
+from manuskript.models import outlineModel
 from manuskript.models.plotModel import plotModel
 from manuskript.models.worldModel import worldModel
 from manuskript.settingsWindow import settingsWindow
@@ -28,6 +29,8 @@ from manuskript.ui.mainWindow import Ui_MainWindow
 from manuskript.ui.tools.frequencyAnalyzer import frequencyAnalyzer
 from manuskript.ui.views.outlineDelegates import outlineCharacterDelegate
 from manuskript.ui.views.plotDelegate import plotDelegate
+from manuskript.ui.views.MDEditView import MDEditView
+from manuskript.ui.statusLabel import statusLabel
 
 # Spellcheck support
 from manuskript.ui.views.textEditView import textEditView
@@ -49,6 +52,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     TabWorld = 4
     TabOutline = 5
     TabRedac = 6
+    TabDebug = 7
+
+    SHOW_DEBUG_TAB = False
 
     def __init__(self):
         QMainWindow.__init__(self)
@@ -57,11 +63,18 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Var
         self.currentProject = None
         self._lastFocus = None
+        self._lastMDEditView = None
+        self._defaultCursorFlashTime = 1000 # Overriden at startup with system
+                                            # value. In manuskript.main.
+        self._autoLoadProject = None  # Used to load a command line project
 
         self.readSettings()
 
         # UI
         self.setupMoreUi()
+        self.statusLabel = statusLabel(parent=self)
+        self.statusLabel.setAutoFillBackground(True)
+        self.statusLabel.hide()
 
         # Welcome
         self.welcome.updateValues()
@@ -111,19 +124,43 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.actSaveAs.triggered.connect(self.welcome.saveAsFile)
         self.actImport.triggered.connect(self.doImport)
         self.actCompile.triggered.connect(self.doCompile)
-        self.actLabels.triggered.connect(self.settingsLabel)
-        self.actStatus.triggered.connect(self.settingsStatus)
-        self.actSettings.triggered.connect(self.settingsWindow)
         self.actCloseProject.triggered.connect(self.closeProject)
         self.actQuit.triggered.connect(self.close)
 
-        # Main menu:: Documents
+        # Main menu:: Edit
         self.actCopy.triggered.connect(self.documentsCopy)
         self.actCut.triggered.connect(self.documentsCut)
         self.actPaste.triggered.connect(self.documentsPaste)
         self.actRename.triggered.connect(self.documentsRename)
         self.actDuplicate.triggered.connect(self.documentsDuplicate)
         self.actDelete.triggered.connect(self.documentsDelete)
+        self.actLabels.triggered.connect(self.settingsLabel)
+        self.actStatus.triggered.connect(self.settingsStatus)
+        self.actSettings.triggered.connect(self.settingsWindow)
+
+        # Main menu:: Edit:: Format
+        self.actHeaderSetextL1.triggered.connect(self.formatSetext1)
+        self.actHeaderSetextL2.triggered.connect(self.formatSetext2)
+        self.actHeaderAtxL1.triggered.connect(self.formatAtx1)
+        self.actHeaderAtxL2.triggered.connect(self.formatAtx2)
+        self.actHeaderAtxL3.triggered.connect(self.formatAtx3)
+        self.actHeaderAtxL4.triggered.connect(self.formatAtx4)
+        self.actHeaderAtxL5.triggered.connect(self.formatAtx5)
+        self.actHeaderAtxL6.triggered.connect(self.formatAtx6)
+        self.actFormatBold.triggered.connect(self.formatBold)
+        self.actFormatItalic.triggered.connect(self.formatItalic)
+        self.actFormatStrike.triggered.connect(self.formatStrike)
+        self.actFormatVerbatim.triggered.connect(self.formatVerbatim)
+        self.actFormatSuperscript.triggered.connect(self.formatSuperscript)
+        self.actFormatSubscript.triggered.connect(self.formatSubscript)
+        self.actFormatCommentLines.triggered.connect(self.formatCommentLines)
+        self.actFormatList.triggered.connect(self.formatList)
+        self.actFormatOrderedList.triggered.connect(self.formatOrderedList)
+        self.actFormatBlockquote.triggered.connect(self.formatBlockquote)
+        self.actFormatCommentBlock.triggered.connect(self.formatCommentBlock)
+        self.actFormatClear.triggered.connect(self.formatClear)
+
+        # Main menu:: Organize
         self.actMoveUp.triggered.connect(self.documentsMoveUp)
         self.actMoveDown.triggered.connect(self.documentsMoveDown)
         self.actSplitDialog.triggered.connect(self.documentsSplitDialog)
@@ -173,7 +210,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 # Hide the dock
                 d.setVisible(False)
             else:
-                # Restore the dock's visibily based on stored value
+                # Restore the dock's visibility based on stored value
                 d.setVisible(self._dckVisibility[d.objectName()])
 
         # Lock is used only once, at start up. We can remove it
@@ -184,7 +221,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         """
         While switching to welcome screen, we have to hide all the docks.
         Otherwise one could use the search dock, and manuskript would crash.
-        Plus it's unncessary distraction.
+        Plus it's unnecessary distraction.
         But we also want to restore them to their visibility prior to switching,
         so we store states.
         """
@@ -222,6 +259,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         """
         We get notified by qApp when focus changes, from old to new widget.
         """
+
+        # If new is a MDEditView, we keep it in memory
+        if issubclass(type(new), MDEditView):
+            self._lastMDEditView = new
+        else:
+            self._lastMDEditView = None
 
         # Determine which view had focus last, to send the keyboard shortcuts
         # to the right place
@@ -335,21 +378,17 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.txtPlotResult.setCurrentModelIndex(index)
         self.sldPlotImportance.setCurrentModelIndex(index)
         self.lstPlotPerso.setRootIndex(index.sibling(index.row(),
-                                                     Plot.characters.value))
+                                                     Plot.characters))
 
         # Slider importance
         self.updatePlotImportance(index.row())
 
-        subplotindex = index.sibling(index.row(), Plot.steps.value)
+        subplotindex = index.sibling(index.row(), Plot.steps)
         self.lstSubPlots.setRootIndex(subplotindex)
         if self.mdlPlots.rowCount(subplotindex):
             self.updateSubPlotView()
 
-        # self.txtSubPlotSummary.setCurrentModelIndex(QModelIndex())
-        self.txtSubPlotSummary.setEnabled(False)
-        self._updatingSubPlot = True
-        self.txtSubPlotSummary.setPlainText("")
-        self._updatingSubPlot = False
+        self.txtSubPlotSummary.setCurrentModelIndex(QModelIndex())
         self.lstPlotPerso.selectionModel().clear()
 
     def updateSubPlotView(self):
@@ -360,22 +399,22 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         #        So instead we set their width to 0.
         #for i in range(self.mdlPlots.columnCount()):
             #self.lstSubPlots.hideColumn(i)
-        #self.lstSubPlots.showColumn(PlotStep.name.value)
-        #self.lstSubPlots.showColumn(PlotStep.meta.value)
+        #self.lstSubPlots.showColumn(PlotStep.name)
+        #self.lstSubPlots.showColumn(PlotStep.meta)
 
         self.lstSubPlots.horizontalHeader().setSectionResizeMode(
-                PlotStep.ID.value, QHeaderView.Fixed)
+                PlotStep.ID, QHeaderView.Fixed)
         self.lstSubPlots.horizontalHeader().setSectionResizeMode(
-                PlotStep.summary.value, QHeaderView.Fixed)
+                PlotStep.summary, QHeaderView.Fixed)
         self.lstSubPlots.horizontalHeader().resizeSection(
-                PlotStep.ID.value, 0)
+                PlotStep.ID, 0)
         self.lstSubPlots.horizontalHeader().resizeSection(
-                PlotStep.summary.value, 0)
+                PlotStep.summary, 0)
 
         self.lstSubPlots.horizontalHeader().setSectionResizeMode(
-                PlotStep.name.value, QHeaderView.Stretch)
+                PlotStep.name, QHeaderView.Stretch)
         self.lstSubPlots.horizontalHeader().setSectionResizeMode(
-                PlotStep.meta.value, QHeaderView.ResizeToContents)
+                PlotStep.meta, QHeaderView.ResizeToContents)
         self.lstSubPlots.verticalHeader().hide()
 
     def updatePlotImportance(self, ID):
@@ -383,31 +422,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.sldPlotImportance.setValue(int(imp))
 
     def changeCurrentSubPlot(self, index):
-        # Got segfaults when using textEditView model system, so ad hoc stuff.
-        index = index.sibling(index.row(), PlotStep.summary.value)
-        item = self.mdlPlots.itemFromIndex(index)
-        if not item:
-            self.txtSubPlotSummary.setEnabled(False)
-            return
-        self.txtSubPlotSummary.setEnabled(True)
-        txt = item.text()
-        self._updatingSubPlot = True
-        self.txtSubPlotSummary.setPlainText(txt)
-        self._updatingSubPlot = False
-
-    def updateSubPlotSummary(self):
-        if self._updatingSubPlot:
-            return
-
-        index = self.lstSubPlots.currentIndex()
-        if not index.isValid():
-            return
-        index = index.sibling(index.row(), PlotStep.summary.value)
-        item = self.mdlPlots.itemFromIndex(index)
-
-        self._updatingSubPlot = True
-        item.setText(self.txtSubPlotSummary.toPlainText())
-        self._updatingSubPlot = False
+        index = index.sibling(index.row(), PlotStep.summary)
+        self.txtSubPlotSummary.setColumn(PlotStep.summary)
+        self.txtSubPlotSummary.setCurrentModelIndex(index)
 
     def plotPersoSelectionChanged(self):
         "Enables or disables remove plot perso button."
@@ -441,11 +458,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def openIndexes(self, indexes, newTab=True):
         self.mainEditor.openIndexes(indexes, newTab=True)
 
-    # Menu Documents #############################################################
+    # Menu #############################################################
 
-    # Functions called by the menu Documents
+    # Functions called by the menus
     # self._lastFocus is the last editor that had focus (either treeView or
     # mainEditor). So we just pass along the signal.
+
+    # Edit
 
     def documentsCopy(self):
         "Copy selected item(s)."
@@ -465,6 +484,38 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def documentsDelete(self):
         "Delete selected item(s)."
         if self._lastFocus: self._lastFocus.delete()
+
+    # Formats
+    def callLastMDEditView(self, functionName, param=[]):
+        """
+        If last focused widget was MDEditView, call the given function.
+        """
+        if self._lastMDEditView:
+            function = getattr(self._lastMDEditView, functionName)
+            function(*param)
+    def formatSetext1(self): self.callLastMDEditView("titleSetext", [1])
+    def formatSetext2(self): self.callLastMDEditView("titleSetext", [2])
+    def formatAtx1(self): self.callLastMDEditView("titleATX", [1])
+    def formatAtx2(self): self.callLastMDEditView("titleATX", [2])
+    def formatAtx3(self): self.callLastMDEditView("titleATX", [3])
+    def formatAtx4(self): self.callLastMDEditView("titleATX", [4])
+    def formatAtx5(self): self.callLastMDEditView("titleATX", [5])
+    def formatAtx6(self): self.callLastMDEditView("titleATX", [6])
+    def formatBold(self): self.callLastMDEditView("bold")
+    def formatItalic(self): self.callLastMDEditView("italic")
+    def formatStrike(self): self.callLastMDEditView("strike")
+    def formatVerbatim(self): self.callLastMDEditView("verbatim")
+    def formatSuperscript(self): self.callLastMDEditView("superscript")
+    def formatSubscript(self): self.callLastMDEditView("subscript")
+    def formatCommentLines(self): self.callLastMDEditView("commentLine")
+    def formatList(self): self.callLastMDEditView("unorderedList")
+    def formatOrderedList(self): self.callLastMDEditView("orderedList")
+    def formatBlockquote(self): self.callLastMDEditView("blockquote")
+    def formatCommentBlock(self): self.callLastMDEditView("comment")
+    def formatClear(self): self.callLastMDEditView("clearFormat")
+
+    # Organize
+
     def documentsMoveUp(self):
         "Move up selected item(s)."
         if self._lastFocus: self._lastFocus.moveUp()
@@ -502,9 +553,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         It assumes that the datas have been populated in a different way."""
         if loadFromFile and not os.path.exists(project):
             print(self.tr("The file {} does not exist. Try again.").format(project))
-            self.statusBar().showMessage(
-                    self.tr("The file {} does not exist. Try again.").format(project),
-                    5000)
+            F.statusMessage(
+                    self.tr("The file {} does not exist. Try again.", importance=3).format(project))
             return
 
         if loadFromFile:
@@ -534,8 +584,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.mainEditor.updateFolderViewButtons(settings.folderView)
         self.mainEditor.tabSplitter.updateStyleSheet()
         self.tabMain.setCurrentIndex(settings.lastTab)
-        # We force to emit even if it opens on the current tab
-        self.tabMain.currentChanged.emit(settings.lastTab)
         self.mainEditor.updateCorkBackground()
         if settings.viewMode == "simple":
             self.setViewModeSimple()
@@ -574,6 +622,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                   self.menuTools, self.menuHelp, self.actImport,
                   self.actCompile, self.actSettings]:
             i.setEnabled(True)
+        # We force to emit even if it opens on the current tab
+        self.tabMain.currentChanged.emit(settings.lastTab)
 
         # Add project name to Window's name
         pName = os.path.split(project)[1]
@@ -582,7 +632,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.setWindowTitle(pName + " - " + self.tr("Manuskript"))
 
         # Stuff
-        # self.checkPersosID()  # Should'n be necessary any longer
+        # self.checkPersosID()  # Shouldn't be necessary any longer
 
         self.currentProject = project
         QSettings().setValue("lastProject", project)
@@ -649,7 +699,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 self.dckCheatSheet.objectName() : False,
                 self.dckSearch.objectName() : False,
             }
-        self._dckVisibility["LOCK"] = True  # prevent overiding loaded values
+        self._dckVisibility["LOCK"] = True  # prevent overriding loaded values
 
         if sttgns.contains("metadataState"):
             state = [False if v == "false" else True for v in sttgns.value("metadataState")]
@@ -662,7 +712,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if sttgns.contains("splitterRedacV"):
             self.splitterRedacV.restoreState(sttgns.value("splitterRedacV"))
         if sttgns.contains("toolbar"):
-            # self.toolbar is not initialized yet, so we just store balue
+            # self.toolbar is not initialized yet, so we just store value
             self._toolbarState = sttgns.value("toolbar")
         else:
             self._toolbarState = ""
@@ -697,7 +747,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.saveDatas()
 
             # closeEvent
-            # QMainWindow.closeEvent(self, event)  # Causin segfaults?
+            # QMainWindow.closeEvent(self, event)  # Causing segfaults?
 
     def startTimerNoChanges(self):
         if settings.autoSaveNoChanges:
@@ -717,14 +767,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         r = loadSave.saveProject()  # version=0
         self.saveTimerNoChanges.stop()
 
+        projectName = os.path.basename(self.currentProject)
         if r:
-            feedback = self.tr("Project {} saved.").format(self.currentProject)
+            feedback = self.tr("Project {} saved.").format(projectName)
+            F.statusMessage(feedback, importance=0)
         else:
-            feedback = self.tr("WARNING: Project {} not saved.").format(self.currentProject)
+            feedback = self.tr("WARNING: Project {} not saved.").format(projectName)
+            F.statusMessage(feedback, importance=3)
 
-        # Giving some feedback
+        # Giving some feedback in console
         print(feedback)
-        self.statusBar().showMessage(feedback, 5000)
 
     def loadEmptyDatas(self):
         self.mdlFlatData = QStandardItemModel(self)
@@ -744,14 +796,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Giving some feedback
         if not errors:
             print(self.tr("Project {} loaded.").format(project))
-            self.statusBar().showMessage(
-                    self.tr("Project {} loaded.").format(project), 5000)
+            F.statusMessage(
+                    self.tr("Project {} loaded.").format(project), 2000)
         else:
             print(self.tr("Project {} loaded with some errors:").format(project))
             for e in errors:
                 print(self.tr(" * {} wasn't found in project file.").format(e))
-            self.statusBar().showMessage(
-                    self.tr("Project {} loaded with some errors.").format(project), 5000)
+            F.statusMessage(
+                    self.tr("Project {} loaded with some errors.").format(project), 5000, importance = 3)
 
     ###############################################################################
     # MAIN CONNECTIONS
@@ -759,20 +811,18 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def makeUIConnections(self):
         "Connections that have to be made once only, even when a new project is loaded."
-        self.lstCharacters.currentItemChanged.connect(self.changeCurrentCharacter, AUC)
+        self.lstCharacters.currentItemChanged.connect(self.changeCurrentCharacter, F.AUC)
 
-        self.txtPlotFilter.textChanged.connect(self.lstPlots.setFilter, AUC)
-        self.lstPlots.currentItemChanged.connect(self.changeCurrentPlot, AUC)
-        self.txtSubPlotSummary.document().contentsChanged.connect(
-                self.updateSubPlotSummary, AUC)
-        self.lstSubPlots.clicked.connect(self.changeCurrentSubPlot, AUC)
+        self.txtPlotFilter.textChanged.connect(self.lstPlots.setFilter, F.AUC)
+        self.lstPlots.currentItemChanged.connect(self.changeCurrentPlot, F.AUC)
+        self.lstSubPlots.clicked.connect(self.changeCurrentSubPlot, F.AUC)
 
-        self.btnRedacAddFolder.clicked.connect(self.treeRedacOutline.addFolder, AUC)
-        self.btnOutlineAddFolder.clicked.connect(self.treeOutlineOutline.addFolder, AUC)
-        self.btnRedacAddText.clicked.connect(self.treeRedacOutline.addText, AUC)
-        self.btnOutlineAddText.clicked.connect(self.treeOutlineOutline.addText, AUC)
-        self.btnRedacRemoveItem.clicked.connect(self.outlineRemoveItemsRedac, AUC)
-        self.btnOutlineRemoveItem.clicked.connect(self.outlineRemoveItemsOutline, AUC)
+        self.btnRedacAddFolder.clicked.connect(self.treeRedacOutline.addFolder, F.AUC)
+        self.btnOutlineAddFolder.clicked.connect(self.treeOutlineOutline.addFolder, F.AUC)
+        self.btnRedacAddText.clicked.connect(self.treeRedacOutline.addText, F.AUC)
+        self.btnOutlineAddText.clicked.connect(self.treeOutlineOutline.addText, F.AUC)
+        self.btnRedacRemoveItem.clicked.connect(self.outlineRemoveItemsRedac, F.AUC)
+        self.btnOutlineRemoveItem.clicked.connect(self.outlineRemoveItemsOutline, F.AUC)
 
         self.tabMain.currentChanged.connect(self.toolbar.setCurrentGroup)
         self.tabMain.currentChanged.connect(self.tabMainChanged)
@@ -817,27 +867,27 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.lstCharacters.setCharactersModel(self.mdlCharacter)
         self.tblPersoInfos.setModel(self.mdlCharacter)
 
-        self.btnAddPerso.clicked.connect(self.mdlCharacter.addCharacter, AUC)
+        self.btnAddPerso.clicked.connect(self.mdlCharacter.addCharacter, F.AUC)
         try:
-            self.btnRmPerso.clicked.connect(self.lstCharacters.removeCharacter, AUC)
-            self.btnPersoColor.clicked.connect(self.lstCharacters.choseCharacterColor, AUC)
-            self.btnPersoAddInfo.clicked.connect(self.lstCharacters.addCharacterInfo, AUC)
-            self.btnPersoRmInfo.clicked.connect(self.lstCharacters.removeCharacterInfo, AUC)
+            self.btnRmPerso.clicked.connect(self.lstCharacters.removeCharacter, F.AUC)
+            self.btnPersoColor.clicked.connect(self.lstCharacters.choseCharacterColor, F.AUC)
+            self.btnPersoAddInfo.clicked.connect(self.lstCharacters.addCharacterInfo, F.AUC)
+            self.btnPersoRmInfo.clicked.connect(self.lstCharacters.removeCharacterInfo, F.AUC)
         except TypeError:
             # Connection has already been made
             pass
 
         for w, c in [
-            (self.txtPersoName, Character.name.value),
-            (self.sldPersoImportance, Character.importance.value),
-            (self.txtPersoMotivation, Character.motivation.value),
-            (self.txtPersoGoal, Character.goal.value),
-            (self.txtPersoConflict, Character.conflict.value),
-            (self.txtPersoEpiphany, Character.epiphany.value),
-            (self.txtPersoSummarySentence, Character.summarySentence.value),
-            (self.txtPersoSummaryPara, Character.summaryPara.value),
-            (self.txtPersoSummaryFull, Character.summaryFull.value),
-            (self.txtPersoNotes, Character.notes.value)
+            (self.txtPersoName, Character.name),
+            (self.sldPersoImportance, Character.importance),
+            (self.txtPersoMotivation, Character.motivation),
+            (self.txtPersoGoal, Character.goal),
+            (self.txtPersoConflict, Character.conflict),
+            (self.txtPersoEpiphany, Character.epiphany),
+            (self.txtPersoSummarySentence, Character.summarySentence),
+            (self.txtPersoSummaryPara, Character.summaryPara),
+            (self.txtPersoSummaryFull, Character.summaryFull),
+            (self.txtPersoNotes, Character.notes)
         ]:
             w.setModel(self.mdlCharacter)
             w.setColumn(c)
@@ -848,21 +898,21 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.lstPlotPerso.setModel(self.mdlPlots)
         self.lstPlots.setPlotModel(self.mdlPlots)
         self._updatingSubPlot = False
-        self.btnAddPlot.clicked.connect(self.mdlPlots.addPlot, AUC)
+        self.btnAddPlot.clicked.connect(self.mdlPlots.addPlot, F.AUC)
         self.btnRmPlot.clicked.connect(lambda:
-                                       self.mdlPlots.removePlot(self.lstPlots.currentPlotIndex()), AUC)
-        self.btnAddSubPlot.clicked.connect(self.mdlPlots.addSubPlot, AUC)
-        self.btnAddSubPlot.clicked.connect(self.updateSubPlotView, AUC)
-        self.btnRmSubPlot.clicked.connect(self.mdlPlots.removeSubPlot, AUC)
+                                       self.mdlPlots.removePlot(self.lstPlots.currentPlotIndex()), F.AUC)
+        self.btnAddSubPlot.clicked.connect(self.mdlPlots.addSubPlot, F.AUC)
+        self.btnAddSubPlot.clicked.connect(self.updateSubPlotView, F.AUC)
+        self.btnRmSubPlot.clicked.connect(self.mdlPlots.removeSubPlot, F.AUC)
         self.lstPlotPerso.selectionModel().selectionChanged.connect(self.plotPersoSelectionChanged)
-        self.btnRmPlotPerso.clicked.connect(self.mdlPlots.removePlotPerso, AUC)
-        self.lstSubPlots.selectionModel().currentRowChanged.connect(self.changeCurrentSubPlot, AUC)
+        self.btnRmPlotPerso.clicked.connect(self.mdlPlots.removePlotPerso, F.AUC)
+        self.lstSubPlots.selectionModel().currentRowChanged.connect(self.changeCurrentSubPlot, F.AUC)
 
         for w, c in [
-            (self.txtPlotName, Plot.name.value),
-            (self.txtPlotDescription, Plot.description.value),
-            (self.txtPlotResult, Plot.result.value),
-            (self.sldPlotImportance, Plot.importance.value),
+            (self.txtPlotName, Plot.name),
+            (self.txtPlotDescription, Plot.description),
+            (self.txtPlotResult, Plot.result),
+            (self.sldPlotImportance, Plot.importance),
         ]:
             w.setModel(self.mdlPlots)
             w.setColumn(c)
@@ -875,7 +925,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.plotCharacterDelegate = outlineCharacterDelegate(self.mdlCharacter, self)
         self.lstPlotPerso.setItemDelegate(self.plotCharacterDelegate)
         self.plotDelegate = plotDelegate(self)
-        self.lstSubPlots.setItemDelegateForColumn(PlotStep.meta.value, self.plotDelegate)
+        self.lstSubPlots.setItemDelegateForColumn(PlotStep.meta, self.plotDelegate)
 
         # World
         self.treeWorld.setModel(self.mdlWorld)
@@ -883,14 +933,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.treeWorld.hideColumn(i)
         self.treeWorld.showColumn(0)
         self.btnWorldEmptyData.setMenu(self.mdlWorld.emptyDataMenu())
-        self.treeWorld.selectionModel().selectionChanged.connect(self.changeCurrentWorld, AUC)
-        self.btnAddWorld.clicked.connect(self.mdlWorld.addItem, AUC)
-        self.btnRmWorld.clicked.connect(self.mdlWorld.removeItem, AUC)
+        self.treeWorld.selectionModel().selectionChanged.connect(self.changeCurrentWorld, F.AUC)
+        self.btnAddWorld.clicked.connect(self.mdlWorld.addItem, F.AUC)
+        self.btnRmWorld.clicked.connect(self.mdlWorld.removeItem, F.AUC)
         for w, c in [
-            (self.txtWorldName, World.name.value),
-            (self.txtWorldDescription, World.description.value),
-            (self.txtWorldPassion, World.passion.value),
-            (self.txtWorldConflict, World.conflict.value),
+            (self.txtWorldName, World.name),
+            (self.txtWorldDescription, World.description),
+            (self.txtWorldPassion, World.passion),
+            (self.txtWorldConflict, World.conflict),
         ]:
             w.setModel(self.mdlWorld)
             w.setColumn(c)
@@ -912,27 +962,27 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # self.redacEditor.setModel(self.mdlOutline)
         self.storylineView.setModels(self.mdlOutline, self.mdlCharacter, self.mdlPlots)
 
-        self.treeOutlineOutline.selectionModel().selectionChanged.connect(self.outlineItemEditor.selectionChanged, AUC)
-        self.treeOutlineOutline.clicked.connect(self.outlineItemEditor.selectionChanged, AUC)
+        self.treeOutlineOutline.selectionModel().selectionChanged.connect(self.outlineItemEditor.selectionChanged, F.AUC)
+        self.treeOutlineOutline.clicked.connect(self.outlineItemEditor.selectionChanged, F.AUC)
 
         # Sync selection
-        self.treeRedacOutline.selectionModel().selectionChanged.connect(self.redacMetadata.selectionChanged, AUC)
-        self.treeRedacOutline.clicked.connect(self.redacMetadata.selectionChanged, AUC)
+        self.treeRedacOutline.selectionModel().selectionChanged.connect(self.redacMetadata.selectionChanged, F.AUC)
+        self.treeRedacOutline.clicked.connect(self.redacMetadata.selectionChanged, F.AUC)
 
-        self.treeRedacOutline.selectionModel().selectionChanged.connect(self.mainEditor.selectionChanged, AUC)
+        self.treeRedacOutline.selectionModel().selectionChanged.connect(self.mainEditor.selectionChanged, F.AUC)
 
         # Cheat Sheet
         self.cheatSheet.setModels()
 
         # Debug
-        self.mdlFlatData.setVerticalHeaderLabels(["Infos générales", "Summary"])
+        self.mdlFlatData.setVerticalHeaderLabels(["General info", "Summary"])
         self.tblDebugFlatData.setModel(self.mdlFlatData)
         self.tblDebugPersos.setModel(self.mdlCharacter)
         self.tblDebugPersosInfos.setModel(self.mdlCharacter)
         self.tblDebugPersos.selectionModel().currentChanged.connect(
                 lambda: self.tblDebugPersosInfos.setRootIndex(self.mdlCharacter.index(
                         self.tblDebugPersos.selectionModel().currentIndex().row(),
-                        Character.name.value)), AUC)
+                        Character.name)), F.AUC)
 
         self.tblDebugPlots.setModel(self.mdlPlots)
         self.tblDebugPlotsPersos.setModel(self.mdlPlots)
@@ -940,11 +990,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.tblDebugPlots.selectionModel().currentChanged.connect(
                 lambda: self.tblDebugPlotsPersos.setRootIndex(self.mdlPlots.index(
                         self.tblDebugPlots.selectionModel().currentIndex().row(),
-                        Plot.characters.value)), AUC)
+                        Plot.characters)), F.AUC)
         self.tblDebugPlots.selectionModel().currentChanged.connect(
                 lambda: self.tblDebugSubPlots.setRootIndex(self.mdlPlots.index(
                         self.tblDebugPlots.selectionModel().currentIndex().row(),
-                        Plot.steps.value)), AUC)
+                        Plot.steps)), F.AUC)
         self.treeDebugWorld.setModel(self.mdlWorld)
         self.treeDebugOutline.setModel(self.mdlOutline)
         self.lstDebugLabels.setModel(self.mdlLabels)
@@ -1011,15 +1061,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.disconnectAll(self.tblDebugPersos.selectionModel().currentChanged,
                 lambda: self.tblDebugPersosInfos.setRootIndex(self.mdlCharacter.index(
                         self.tblDebugPersos.selectionModel().currentIndex().row(),
-                        Character.name.value)))
+                        Character.name)))
         self.disconnectAll(self.tblDebugPlots.selectionModel().currentChanged,
                 lambda: self.tblDebugPlotsPersos.setRootIndex(self.mdlPlots.index(
                         self.tblDebugPlots.selectionModel().currentIndex().row(),
-                        Plot.characters.value)))
+                        Plot.characters)))
         self.disconnectAll(self.tblDebugPlots.selectionModel().currentChanged,
                 lambda: self.tblDebugSubPlots.setRootIndex(self.mdlPlots.index(
                         self.tblDebugPlots.selectionModel().currentIndex().row(),
-                        Plot.steps.value)))
+                        Plot.steps)))
 
     ###############################################################################
     # HELP
@@ -1096,6 +1146,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if self._toolbarState:
             self.toolbar.restoreState(self._toolbarState)
 
+        # Hides navigation dock title bar
+        self.dckNavigation.setTitleBarWidget(QWidget(None))
+
         # Custom "tab" bar on the left
         self.lstTabs.setIconSize(QSize(48, 48))
         for i in range(self.tabMain.count()):
@@ -1119,6 +1172,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.lstTabs.addItem(item)
         self.tabMain.tabBar().hide()
         self.lstTabs.currentRowChanged.connect(self.tabMain.setCurrentIndex)
+        self.lstTabs.item(self.TabDebug).setHidden(not self.SHOW_DEBUG_TAB)
+        self.tabMain.setTabEnabled(self.TabDebug, self.SHOW_DEBUG_TAB)
         self.tabMain.currentChanged.connect(self.lstTabs.setCurrentRow)
 
         # Splitters
@@ -1187,7 +1242,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         for widget, text, pos in references:
             label = helpLabel(text, self)
-            self.actShowHelp.toggled.connect(label.setVisible, AUC)
+            self.actShowHelp.toggled.connect(label.setVisible, F.AUC)
             widget.layout().insertWidget(pos, label)
 
         self.actShowHelp.setChecked(False)
@@ -1199,17 +1254,17 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.updateMenuDict()
             self.menuTools.addMenu(self.menuDict)
 
-            self.actSpellcheck.toggled.connect(self.toggleSpellcheck, AUC)
-            self.dictChanged.connect(self.mainEditor.setDict, AUC)
-            self.dictChanged.connect(self.redacMetadata.setDict, AUC)
-            self.dictChanged.connect(self.outlineItemEditor.setDict, AUC)
+            self.actSpellcheck.toggled.connect(self.toggleSpellcheck, F.AUC)
+            self.dictChanged.connect(self.mainEditor.setDict, F.AUC)
+            self.dictChanged.connect(self.redacMetadata.setDict, F.AUC)
+            self.dictChanged.connect(self.outlineItemEditor.setDict, F.AUC)
 
         else:
             # No Spell check support
             self.actSpellcheck.setVisible(False)
             a = QAction(self.tr("Install PyEnchant to use spellcheck"), self)
             a.setIcon(self.style().standardIcon(QStyle.SP_MessageBoxWarning))
-            a.triggered.connect(self.openPyEnchantWebPage, AUC)
+            a.triggered.connect(self.openPyEnchantWebPage, F.AUC)
             self.menuTools.addAction(a)
 
     ###############################################################################
@@ -1229,7 +1284,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 settings.dict = enchant.get_default_language()
             if str(i[0]) == settings.dict:
                 a.setChecked(True)
-            a.triggered.connect(self.setDictionary, AUC)
+            a.triggered.connect(self.setDictionary, F.AUC)
             self.menuDictGroup.addAction(a)
             self.menuDict.addAction(a)
 
@@ -1347,7 +1402,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                     a.setData("{},{},{}".format(mnud, sd, vd))
                     if settings.viewSettings[mnud][sd] == vd:
                         a.setChecked(True)
-                    a.triggered.connect(self.setViewSettingsAction, AUC)
+                    a.triggered.connect(self.setViewSettingsAction, F.AUC)
                     agp.addAction(a)
                     m2.addAction(a)
                 m.addMenu(m2)
@@ -1385,22 +1440,22 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def viewModeFictionVisibilitySwitch(self, val):
         """
-        Swtiches the visibility of some UI components useful for fiction only
+        Switches the visibility of some UI components useful for fiction only
         @param val: sets visibility to val
         """
 
-        # Menu navigation & boutton in toolbar
+        # Menu navigation & button in toolbar
         self.toolbar.setDockVisibility(self.dckNavigation, val)
 
-        # POV in metadatas
+        # POV in metadata
         from manuskript.ui.views.propertiesView import propertiesView
         for w in findWidgetsOfClass(propertiesView):
             w.lblPOV.setVisible(val)
             w.cmbPOV.setVisible(val)
 
         # POV in outline view
-        if Outline.POV.value in settings.outlineViewColumns:
-            settings.outlineViewColumns.remove(Outline.POV.value)
+        if val is None and Outline.POV in settings.outlineViewColumns:
+            settings.outlineViewColumns.remove(Outline.POV)
 
         from manuskript.ui.views.outlineView import outlineView
         for w in findWidgetsOfClass(outlineView):

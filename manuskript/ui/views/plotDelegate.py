@@ -67,7 +67,7 @@ class plotDelegate(QStyledItemDelegate):
                 self.tr("Call to adventure"),
                 self.tr("Refusal of the call"),
                 self.tr("Meeting with mentor"),
-                self.tr("Corssing the Threshold"),
+                self.tr("Crossing the Threshold"),
                 self.tr("Tests"),
                 self.tr("Approach"),
                 self.tr("Abyss"),

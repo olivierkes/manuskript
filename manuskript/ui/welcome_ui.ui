@@ -187,7 +187,7 @@
                <bool>false</bool>
               </property>
               <property name="text">
-               <string>Add wordcount</string>
+               <string>Add word count</string>
               </property>
               <property name="icon">
                <iconset theme="applications-debugging"/>

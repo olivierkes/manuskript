@@ -10,7 +10,7 @@ from manuskript import settings
 from manuskript.enums import Outline
 from manuskript.functions import mainWindow, statusMessage
 from manuskript.functions import toInt, customIcons
-from manuskript.models.outlineModel import outlineItem
+from manuskript.models import outlineItem
 from manuskript.ui.tools.splitDialog import splitDialog
 
 
@@ -32,8 +32,10 @@ class outlineBasics(QAbstractItemView):
         if event.button() == Qt.RightButton:
             self.menu = self.makePopupMenu()
             self.menu.popup(event.globalPos())
-        else:
-            QAbstractItemView.mouseReleaseEvent(self, event)
+        # We don't call QAbstractItemView.mouseReleaseEvent because
+        # outlineBasics is never subclassed alone. So the others views
+        # (outlineView, corkView, treeView) that subclass outlineBasics
+        # call their respective mother class.
 
     def makePopupMenu(self):
         index = self.currentIndex()
@@ -329,7 +331,7 @@ class outlineBasics(QAbstractItemView):
 
     def duplicate(self):
         """
-        Duplicates item(s), while preserving clipbaord content.
+        Duplicates item(s), while preserving clipboard content.
         """
         mimeData = self.model().mimeData(self.selectionModel().selectedIndexes())
         self.paste(mimeData)
@@ -339,7 +341,7 @@ class outlineBasics(QAbstractItemView):
         Move selected items up or down.
         """
 
-        # we store selected indexesret
+        # we store selected indexes
         currentID = self.model().ID(self.currentIndex())
         selIDs = [self.model().ID(i) for i in self.selectedIndexes()]
 
@@ -417,7 +419,8 @@ class outlineBasics(QAbstractItemView):
         # Check that we have at least 2 items
         if len(items) < 2:
             statusMessage(qApp.translate("outlineBasics",
-                          "Select at least two items. Folders are ignored."))
+                          "Select at least two items. Folders are ignored."),
+                          importance=2)
             return
 
         # Check that all share the same parent
@@ -425,7 +428,8 @@ class outlineBasics(QAbstractItemView):
         for i in items:
             if i.parent() != p:
                 statusMessage(qApp.translate("outlineBasics",
-                          "All items must be on the same level (share the same parent)."))
+                          "All items must be on the same level (share the same parent)."),
+                          importance=2)
                 return
 
         # Sort items by row
@@ -435,15 +439,15 @@ class outlineBasics(QAbstractItemView):
 
     def setPOV(self, POV):
         for i in self.getSelection():
-            self.model().setData(i.sibling(i.row(), Outline.POV.value), str(POV))
+            self.model().setData(i.sibling(i.row(), Outline.POV), str(POV))
 
     def setStatus(self, status):
         for i in self.getSelection():
-            self.model().setData(i.sibling(i.row(), Outline.status.value), str(status))
+            self.model().setData(i.sibling(i.row(), Outline.status), str(status))
 
     def setLabel(self, label):
         for i in self.getSelection():
-            self.model().setData(i.sibling(i.row(), Outline.label.value), str(label))
+            self.model().setData(i.sibling(i.row(), Outline.label), str(label))
 
     def setCustomIcon(self, customIcon):
         for i in self.getSelection():

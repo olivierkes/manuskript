@@ -134,7 +134,7 @@ class Ui_welcome(object):
         self.tree.topLevelItem(1).setText(0, _translate("welcome", "Demo projects"))
         self.tree.setSortingEnabled(__sortingEnabled)
         self.btnAddLevel.setText(_translate("welcome", "Add level"))
-        self.btnAddWC.setText(_translate("welcome", "Add wordcount"))
+        self.btnAddWC.setText(_translate("welcome", "Add word count"))
         self.chkLoadLastProject.setText(_translate("welcome", "Next time, automatically open last project"))
         self.btnOpen.setText(_translate("welcome", "Open..."))
         self.btnRecent.setText(_translate("welcome", "Recent"))

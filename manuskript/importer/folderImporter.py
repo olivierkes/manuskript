@@ -3,7 +3,7 @@
 
 import os
 from manuskript.importer.abstractImporter import abstractImporter
-from manuskript.models.outlineModel import outlineItem
+from manuskript.models import outlineItem
 from manuskript.enums import Outline
 from PyQt5.QtWidgets import qApp
 
@@ -107,7 +107,7 @@ class folderImporter(abstractImporter):
         self.addSetting("ext", "text",
                         qApp.translate("Import", "Include only those extensions:"),
                         default="*.txt, *.md",
-                        tooltip=qApp.translate("Import", "Coma separated values")),
+                        tooltip=qApp.translate("Import", "Comma separated values")),
 
         self.addSetting("sortItems", "checkbox",
                         qApp.translate("Import", "Sort items by name"),

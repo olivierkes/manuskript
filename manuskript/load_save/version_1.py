@@ -4,7 +4,7 @@
 # Version 1 of file saving format.
 # Aims at providing a plain-text way of saving a project
 # (except for some elements), allowing collaborative work
-# versioning and third-partty editing.
+# versioning and third-party editing.
 
 import os
 import re
@@ -24,7 +24,7 @@ from lxml import etree as ET
 
 from manuskript.load_save.version_0 import loadFilesFromZip
 from manuskript.models.characterModel import CharacterInfo
-from manuskript.models.outlineModel import outlineItem
+from manuskript.models import outlineItem
 
 try:
     import zlib  # Used with zipfile for compression
@@ -101,7 +101,7 @@ def saveProject(zip=None):
     Saves the project. If zip is False, the project is saved as a multitude of plain-text files for the most parts
     and some XML or zip? for settings and stuff.
     If zip is True, everything is saved as a single zipped file. Easier to carry around, but does not allow
-    collaborative work, versionning, or third-party editing.
+    collaborative work, versioning, or third-party editing.
     @param zip: if True, saves as a single file. If False, saves as plain-text. If None, tries to determine based on
     settings.
     @return: True if successful, False otherwise.
@@ -289,7 +289,7 @@ def saveProject(zip=None):
 
     ####################################################################################################################
     # Settings
-    # Saved in readable text (json) for easier versionning. But they mustn't be shared, it seems.
+    # Saved in readable text (json) for easier versioning. But they mustn't be shared, it seems.
     # Maybe include them only if zipped?
     # Well, for now, we keep them here...
 
@@ -473,7 +473,7 @@ def addPlotItem(root, mdl, parent=QModelIndex()):
                     outline.attrib[w.name] = val
 
             # List characters as attrib
-            if y == Plot.characters.value:
+            if y == Plot.characters:
                 if mdl.hasChildren(index):
                     characters = []
                     for cX in range(mdl.rowCount(index)):
@@ -486,7 +486,7 @@ def addPlotItem(root, mdl, parent=QModelIndex()):
                     outline.attrib.pop(Plot.characters.name)
 
             # List resolution steps as sub items
-            elif y == Plot.steps.value:
+            elif y == Plot.steps:
                 if mdl.hasChildren(index):
                     for cX in range(mdl.rowCount(index)):
                         step = ET.SubElement(outline, "step")
@@ -603,7 +603,7 @@ def outlineToMMD(item):
             content += formatMetaData(attrib.name, str(val), 15)
 
     content += "\n\n"
-    content += item.data(Outline.text.value)
+    content += item.data(Outline.text)
 
     return content
 
@@ -647,7 +647,13 @@ def loadProject(project, zip=None):
         files = {}
         for dirpath, dirnames, filenames in os.walk(path):
             p = dirpath.replace(path, "")
+            # Skip directories that begin with a period
+            if p[:1] == ".":
+                continue
             for f in filenames:
+                # Skip filenames that begin with a period
+                if f[:1] == ".":
+                    continue
                 # mode = "r" + ("b" if f[-4:] in [".xml", "opml"] else "")
                 if f[-4:] in [".xml", "opml"]:
                     with open(os.path.join(dirpath, f), "rb") as fo:
@@ -762,16 +768,16 @@ def loadProject(project, zip=None):
             log("* Add plot: ", row[0].text())
 
             # Characters
-            if row[Plot.characters.value].text():
-                IDs = row[Plot.characters.value].text().split(",")
+            if row[Plot.characters].text():
+                IDs = row[Plot.characters].text().split(",")
                 item = QStandardItem()
                 for ID in IDs:
                     item.appendRow(QStandardItem(ID.strip()))
-                row[Plot.characters.value] = item
+                row[Plot.characters] = item
 
             # Subplots
             for step in plot:
-                row[Plot.steps.value].appendRow(
+                row[Plot.steps].appendRow(
                     getStandardItemRowFromXMLEnum(step, PlotStep)
                 )
 
@@ -833,7 +839,7 @@ def loadProject(project, zip=None):
     ####################################################################################################################
     # Texts
     # We read outline form the outline folder. If revisions are saved, then there's also a revisions.xml which contains
-    # everything, but the outline folder takes precedence (in cases it's been edited outside of manuksript.
+    # everything, but the outline folder takes precedence (in cases it's been edited outside of manuskript.
 
     mdl = mw.mdlOutline
     log("\nReading outline:")
@@ -929,18 +935,18 @@ def outlineFromMMD(text, parent):
     # Store metadata
     for k in md:
         if k in Outline.__members__:
-            item.setData(Outline.__members__[k].value, str(md[k]))
+            item.setData(Outline.__members__[k], str(md[k]))
 
     # Store body
-    item.setData(Outline.text.value, str(body))
+    item.setData(Outline.text, str(body))
 
     # Set file format to "md"
     # (Old version of manuskript had different file formats: text, t2t, html and md)
     # If file format is html, convert to plain text:
     if item.type() == "html":
-        item.setData(Outline.text.value, HTML2PlainText(body))
+        item.setData(Outline.text, HTML2PlainText(body))
     if item.type() in ["txt", "t2t", "html"]:
-        item.setData(Outline.type.value, "md")
+        item.setData(Outline.type, "md")
 
     return item
 

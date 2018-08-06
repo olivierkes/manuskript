@@ -78,7 +78,7 @@ class plotTreeView(QTreeWidget):
 
     def updateMaybe(self, topLeft, bottomRight):
         if topLeft.parent() != QModelIndex() and \
-           topLeft.column() <= PlotStep.name.value <= bottomRight.column() and \
+           topLeft.column() <= PlotStep.name <= bottomRight.column() and \
            self._showSubPlot:
             # Name's of Step has been updated, we update Items if showing
             # subplots.
@@ -86,11 +86,11 @@ class plotTreeView(QTreeWidget):
         elif topLeft.parent() != QModelIndex():
             return
 
-        if topLeft.column() <= Plot.name.value <= bottomRight.column():
+        if topLeft.column() <= Plot.name <= bottomRight.column():
             # Update name
             self.updateNames()
 
-        elif topLeft.column() <= Plot.importance.value <= bottomRight.column():
+        elif topLeft.column() <= Plot.importance <= bottomRight.column():
             # Importance changed
             self.updateItems()
 
