@@ -565,7 +565,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="420"/>
         <source>One sentence summary</source>
-        <translation>Одной фразой резюме</translation>
+        <translation>Описание одной фразой</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="502"/>
@@ -575,17 +575,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="540"/>
         <source>Expand each sentence of your one paragraph summary to a paragraph</source>
-        <translation>Разверните каждое предложение вашего резюме, абзац к абзацу</translation>
+        <translation>Разверните каждое предложение вашего описания одним абзацем к абзацу</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="565"/>
         <source>One page summary</source>
-        <translation>Одна страница резюме</translation>
+        <translation>Описание одной страницей</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="590"/>
         <source>Full summary</source>
-        <translation>Полное резюме</translation>
+        <translation>Полное описание</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1074"/>
@@ -785,7 +785,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2186"/>
         <source>&amp;Cheat sheet</source>
-        <translation>&amp;Обманный лист</translation>
+        <translation>&amp;Шпаргалка</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2220"/>
@@ -880,7 +880,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2409"/>
         <source>&amp;Fiction</source>
-        <translation>&amp;Вымасел</translation>
+        <translation>&amp;Вымысел</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2417"/>
@@ -930,12 +930,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2474"/>
         <source>&amp;About</source>
-        <translation>&amp;Описание</translation>
+        <translation>&amp;О программе</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2477"/>
         <source>About Manuskript</source>
-        <translation>Об Манускрипт</translation>
+        <translation>О Манускрипт</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="507"/>
@@ -1023,8 +1023,8 @@ Use that if you get YAML related error.</source>
         <location filename="../manuskript/mainWindow.py" line="1166"/>
         <source>Take time to think about a one sentence (~50 words) summary of your book. Then expand it to
                      a paragraph, then to a page, then to a full summary.</source>
-        <translation>Потратьте время, чтобы подумать одно предложении (~ 50 слов) о вашей книге. Затем дополните его до
-                      абзаца, затем до страницы, а затем полное резюме.</translation>
+        <translation>Потратьте время, чтобы придумать одно предложение (~50 слов) о вашей книге. Затем дополните его до
+                      абзаца, затем до страницы, а затем до полного резюме.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1171"/>
@@ -1943,7 +1943,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/about_ui.ui" line="17"/>
         <source>About Manuskript</source>
-        <translation>Об Манускрипт</translation>
+        <translation>О Манускрипт</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/about_ui.ui" line="50"/>
@@ -2040,12 +2040,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/basicItemView_ui.ui" line="92"/>
         <source>One line summary</source>
-        <translation>Одной строкой резюме</translation>
+        <translation>Описание одной строкой</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/basicItemView_ui.ui" line="99"/>
         <source>Few sentences summary:</source>
-        <translation>Несколько предложений резюме:</translation>
+        <translation>Описание в несколько предложений:</translation>
     </message>
 </context>
 <context>
@@ -2197,7 +2197,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/corkDelegate.py" line="62"/>
         <source>One line summary</source>
-        <translation>Одной строкой резюме</translation>
+        <translation>Описание одной строкой</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/corkDelegate.py" line="92"/>
@@ -2752,12 +2752,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.ui" line="81"/>
         <source>Summary</source>
-        <translation>Резюме</translation>
+        <translation>Сводка</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.ui" line="114"/>
         <source>One line summary</source>
-        <translation>Одна линия резюме</translation>
+        <translation>Описание одной строкой</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.ui" line="140"/>
@@ -2853,7 +2853,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="323"/>
         <source>About to remove</source>
-        <translation>О том, чтобы удалить</translation>
+        <translation>Удаление</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="323"/>
