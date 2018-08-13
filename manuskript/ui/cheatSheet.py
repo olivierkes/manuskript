@@ -71,6 +71,8 @@ class cheatSheet(QWidget, Ui_cheatSheet):
     def textChanged(self, text):
         if not text:
             self.hideList()
+            self.list.clear()
+            self.view.setText("")
         else:
             self.list.show()
 
@@ -146,7 +148,7 @@ class cheatSheet(QWidget, Ui_cheatSheet):
 
     def showInfos(self):
         self.hideList()
-        if self.list:
+        if self.list and len(self.txtFilter.text()) != 0:
             i = self.list.currentItem()
             ref = i.data(Qt.UserRole)
             if ref:
