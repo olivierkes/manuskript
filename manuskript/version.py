@@ -3,7 +3,7 @@
 # Single source the package version
 # https://packaging.python.org/guides/single-sourcing-package-version/
 
-__version__ = "0.6.0"
+__version__ = "0.7.0"
 
 def getVersion():
     return __version__

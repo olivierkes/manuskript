@@ -1,5 +1,58 @@
 # Change Log
 
+## [0.7.0](https://github.com/olivierkes/manuskript/tree/0.7.0) (2018-08-15)
+[Full Changelog](https://github.com/olivierkes/manuskript/compare/0.6.0...0.7.0)
+
+**Implemented enhancements:**
+
+- Display images as tooltip [\#270](https://github.com/olivierkes/manuskript/issues/270)
+- Focus mode [\#259](https://github.com/olivierkes/manuskript/issues/259)
+- Add: command line parameter to open project [\#223](https://github.com/olivierkes/manuskript/issues/223)
+- Moving World Items [\#219](https://github.com/olivierkes/manuskript/issues/219)
+- Make http links clickable in markdown editor [\#215](https://github.com/olivierkes/manuskript/issues/215)
+- Request for Bullets and Numbering option [\#123](https://github.com/olivierkes/manuskript/issues/123)
+- Markdown syntax highlighting [\#13](https://github.com/olivierkes/manuskript/issues/13)
+- Add moving World Items [\#298](https://github.com/olivierkes/manuskript/pull/298) ([JackXVII](https://github.com/JackXVII))
+
+**Fixed bugs:**
+
+- Crash if Cheatsheet filter term not found and Enter key pressed [\#354](https://github.com/olivierkes/manuskript/issues/354)
+- Overlay status bar prevents access to add/delete world item icons when displaying a message [\#307](https://github.com/olivierkes/manuskript/issues/307)
+- Deleting multiple World items leaves/creates two empty items [\#306](https://github.com/olivierkes/manuskript/issues/306)
+- Underline causes false spelling error [\#283](https://github.com/olivierkes/manuskript/issues/283)
+- Install on MacOsX failed [\#282](https://github.com/olivierkes/manuskript/issues/282)
+- .DS\_Store files let crash Manuskript when opening project [\#281](https://github.com/olivierkes/manuskript/issues/281)
+- Spell check is crashing the program [\#273](https://github.com/olivierkes/manuskript/issues/273)
+- Highlight Contrast Problem [\#272](https://github.com/olivierkes/manuskript/issues/272)
+- Segfault when pasting text with focus mode enabled [\#271](https://github.com/olivierkes/manuskript/issues/271)
+- Compile Check Box not working in Outline view [\#263](https://github.com/olivierkes/manuskript/issues/263)
+- Manuskript response slow with recent addition of focus mode [\#261](https://github.com/olivierkes/manuskript/issues/261)
+- Organize Menu is not disabled on startup [\#260](https://github.com/olivierkes/manuskript/issues/260)
+- Ctrl+tab gets trapped in Debug tab [\#249](https://github.com/olivierkes/manuskript/issues/249)
+- Index card status can spillover [\#246](https://github.com/olivierkes/manuskript/issues/246)
+- Cannot write a summary on a plot resolution step [\#240](https://github.com/olivierkes/manuskript/issues/240)
+- Format buttons in text editor window not working [\#59](https://github.com/olivierkes/manuskript/issues/59)
+- stop crash when click btnGoUp and current editor is None [\#318](https://github.com/olivierkes/manuskript/pull/318) ([Windspar](https://github.com/Windspar))
+- Avoid crash on spellcheck by ensuring enchant dictionary exists [\#303](https://github.com/olivierkes/manuskript/pull/303) ([gedakc](https://github.com/gedakc))
+- Skip loading directory and file names that begin with a period [\#302](https://github.com/olivierkes/manuskript/pull/302) ([gedakc](https://github.com/gedakc))
+
+**Closed issues:**
+
+- \[Feature request\] Russian translation [\#358](https://github.com/olivierkes/manuskript/issues/358)
+- Add polish translation  [\#289](https://github.com/olivierkes/manuskript/issues/289)
+- \[Feature request\] Accept first command line argument as project file name to open [\#278](https://github.com/olivierkes/manuskript/issues/278)
+- Status bar distracting when saving with current develop branch [\#262](https://github.com/olivierkes/manuskript/issues/262)
+- Editor Consistency [\#257](https://github.com/olivierkes/manuskript/issues/257)
+- French Tab in English Mode [\#253](https://github.com/olivierkes/manuskript/issues/253)
+- I want to translate it to portuguese [\#230](https://github.com/olivierkes/manuskript/issues/230)
+
+**Merged pull requests:**
+
+- Add automated script to create RPM package [\#368](https://github.com/olivierkes/manuskript/pull/368) ([gedakc](https://github.com/gedakc))
+- Fix Travix CI build error on OSX installing python3 [\#338](https://github.com/olivierkes/manuskript/pull/338) ([gedakc](https://github.com/gedakc))
+- Use QPersistentModelIndex in textEditView [\#308](https://github.com/olivierkes/manuskript/pull/308) ([JackXVII](https://github.com/JackXVII))
+- Build MacOS release with XCode 7.3 image [\#287](https://github.com/olivierkes/manuskript/pull/287) ([katafrakt](https://github.com/katafrakt))
+
 ## [0.6.0](https://github.com/olivierkes/manuskript/tree/0.6.0) (2017-11-29)
 [Full Changelog](https://github.com/olivierkes/manuskript/compare/0.5.0...0.6.0)
 
