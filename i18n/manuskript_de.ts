@@ -6,7 +6,7 @@
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="18"/>
         <source>Basic HTML output using python module &apos;markdown&apos;.</source>
-        <translation>Einfache HTML-Export nutzt das Python-Modul &quot;markdown&quot;.</translation>
+        <translation>Einfacher HTML-Export mit dem Python-Modul &quot;markdown&quot;.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="19"/>
@@ -66,7 +66,7 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="86"/>
         <source>Standalone document (not just a fragment)</source>
-        <translation>Alleinstehendes Dokument (nicht nur ein Fragment)</translation>
+        <translation>Eigenständiges Dokument (nicht nur ein Fragment)</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="89"/>
@@ -76,7 +76,7 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="92"/>
         <source>Number of sections level to include in TOC: </source>
-        <translation>Anzahl der angezeigten Ebenen im Inhaltsverzeichnis: </translation>
+        <translation>Anzahl der Ebenen im Inhaltsverzeichnis: </translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="95"/>
@@ -163,7 +163,7 @@
         <source>Just like plain text, excepts adds markdown titles.
                           Presupposes that texts are formatted in markdown.</source>
         <translation>Ähnlich Plaintext, erlaubt aber Hervorhebungen für Titel
-                          Setzt vorraus, dass Texte bereits in Markdown formatiert sind.</translation>
+                          Setzt voraus, dass Texte bereits in Markdown formatiert sind.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="15"/>
@@ -187,7 +187,7 @@ interpretiert werden können, wie zum Beispiel &lt;a href=&apos;www.fountain.io&
         <location filename="../manuskript/exporter/pandoc/PDF.py" line="19"/>
         <source>a valid latex installation. See pandoc recommendations on:
                      &lt;a href=&quot;http://pandoc.org/installing.html&quot;&gt;http://pandoc.org/installing.html&lt;/a&gt;. If you want unicode support, you need xelatex.</source>
-        <translation>eine funktionierende LaTex-Installation. Siehe Systemvorrausetzungen für Pandoc:
+        <translation>eine funktionierende LaTex-Installation. Siehe Systemvorausetzungen für Pandoc:
                      &lt;a href=&quot;http://pandoc.org/installing.html&quot;&gt;http://pandoc.org/installing.html&lt;/a&gt;. Wenn Unicode unterstützt werden soll, wird xelatex benötigt.</translation>
     </message>
     <message>
@@ -201,16 +201,16 @@ interpretiert werden können, wie zum Beispiel &lt;a href=&apos;www.fountain.io&
         <location filename="../manuskript/exporter/pandoc/plainText.py" line="31"/>
         <source>LaTeX is a word processor and document markup language used to create
                                               beautiful documents.</source>
-        <translation>LaTeX ist ein Textverarbeitungsprogramm und Dokumenten Markup-Language, das zur Erstellung
-                                              wunderschöner Dokumente benutzt wird.</translation>
+        <translation>LaTeX ist Textsatzprogramm und Markup-Language zur Erstellung
+                                              wunderschöner Dokumente.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/plainText.py" line="42"/>
         <source>The purpose of this format is to provide a way to exchange information
                                               between outliners and Internet services that can be browsed or controlled
                                               through an outliner.</source>
-        <translation>Der Zweck dieses Formats ist ein einfacher Weg zum Austausch von Informationen
-                                              zwischen Außenstehenden und Internetservices, die von Außenstehend
+        <translation>Dieses Format dient zum Austausch von Informationen
+                                              zwischen Outlinern und Internetservices, die von Outlinern
                                               durchsucht oder kontrolliert werden können.</translation>
     </message>
     <message>
@@ -289,7 +289,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="24"/>
         <source>Word frequency</source>
-        <translation>Häufigkeit von Wörtern</translation>
+        <translation>Worthäufigkeit</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="37"/>
@@ -332,16 +332,16 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/importer/markdownImporter.py" line="178"/>
         <source>Markdown import</source>
-        <translation type="unfinished">Abschriftenimport</translation>
+        <translation>Markdown-Import</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/markdownImporter.py" line="182"/>
         <source>&lt;b&gt;Info:&lt;/b&gt; A very simple
                         parser that will go through a markdown document and
                         create items for each titles.&lt;br/&gt;&amp;nbsp;</source>
-        <translation>&lt;b&gt;Info:&lt;/b&gt; Eine sehr einfache
-                        Syntaxanalyse, der einen Abschriftenbeleg durchläuft, und
-                        für jeden Titel eigene Einträge anlegen.&lt;br/&gt;&amp;nbsp;</translation>
+        <translation>&lt;b&gt;Info:&lt;/b&gt; Ein sehr einfacher
+                        Parser, der ein Markdown-Dokument durchläuft und
+                        für jeden Titel eigene Einträge anlegt.&lt;br/&gt;&amp;nbsp;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="97"/>
@@ -364,7 +364,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="108"/>
         <source>Include only those extensions:</source>
-        <translation>Nur diese Erweiterungen hinzufügen:</translation>
+        <translation>Nur diese Dateinamenerweiterungen hinzufügen:</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="108"/>
@@ -409,7 +409,12 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
                         then it will be imported in manuskript. One or the other
                         might give better result depending on your document.
                         &lt;br/&gt;&amp;nbsp;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Info:&lt;/b&gt; Manuskript kann
+                        &lt;b&gt;Markdown&lt;/b&gt; oder &lt;b&gt;OPML&lt;/b&gt; importieren. Pandoc konvertiert
+                        Ihr Dokument in das jeweilige Format, bevor
+                        Manuskript es importiert. Das Ergebnis
+                        hängt von der Art Ihres Dokuments ab.
+                        &lt;br/&gt;&amp;nbsp;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="66"/>
@@ -429,7 +434,11 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
                         &lt;b&gt;none&lt;/b&gt;: no line wrap.&lt;br&gt;
                         &lt;b&gt;preserve&lt;/b&gt;: tries to preserves line wrap from the
                         original document.&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;Soll pandoc
+                        jede einzelne Zeile umbrechen?&lt;/p&gt;&lt;p&gt;
+                        &lt;b&gt;auto&lt;/b&gt;: bricht nach 72 Zeichen um.&lt;br&gt;
+                        &lt;b&gt;none&lt;/b&gt;: keine Zeilenumbrüche.&lt;br&gt;
+                        &lt;b&gt;preserve&lt;/b&gt;: versucht, Umbrüche aus dem Originaldokument zu erhalten.&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/mindMapImporter.py" line="56"/>
@@ -520,7 +529,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1428"/>
         <source>Summary</source>
-        <translation>Inhaltsangabe</translation>
+        <translation>Zusammenfassung</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="322"/>
@@ -530,7 +539,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1337"/>
         <source>Summary:</source>
-        <translation>Inhaltsangabe:</translation>
+        <translation>Zusammenfassung:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="345"/>
@@ -550,32 +559,32 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1451"/>
         <source>Full</source>
-        <translation>Komplett</translation>
+        <translation>Ausführlich</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="420"/>
         <source>One sentence summary</source>
-        <translation>Inhaltsangabe in einem Satz</translation>
+        <translation>Zusammenfassung in einem Satz</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="502"/>
         <source>One paragraph summary</source>
-        <translation>Inhaltsangabe in einem Absatz</translation>
+        <translation>Zusammenfassung in einem Absatz</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="540"/>
         <source>Expand each sentence of your one paragraph summary to a paragraph</source>
-        <translation>Arbeite jeden Satz deiner Absatz-Inhaltsangabe zu einem eigenen Absatz aus</translation>
+        <translation>Erweitern Sie jeden Satz Ihrer Ein-Absatz-Zusammenfassung zu einem eigenen Absatz</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="565"/>
         <source>One page summary</source>
-        <translation>Inhaltsangabe auf einer Seite</translation>
+        <translation>Zusammenfassung auf einer Seite</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="590"/>
         <source>Full summary</source>
-        <translation>Vollständige Inhaltsangabe</translation>
+        <translation>Ausführliche Zusammenfassung</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1074"/>
@@ -610,7 +619,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1202"/>
         <source>Importance</source>
-        <translation>Wichtigkeit</translation>
+        <translation>Bedeutung</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="829"/>
@@ -635,12 +644,12 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="869"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One sentence&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Inhaltsangabe&lt;br/&gt;in einem Satz&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Handlung aus Sicht&lt;br/&gt;des Charakters&lt;br/&gt;in einem Satz&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="879"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One paragraph&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Inhaltsangabe&lt;br/&gt;in einem Absatz&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Handlung aus Sicht&lt;br/&gt;des Charakters&lt;br/&gt;in einem Absatz&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1001"/>
@@ -700,22 +709,22 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1663"/>
         <source>Source of passion</source>
-        <translation>Ursprung der Leidenschaft</translation>
+        <translation>Quelle der Leidenschaft</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1673"/>
         <source>Source of conflict</source>
-        <translation>Ursprung des Konflikts</translation>
+        <translation>Quelle des Konflikts</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1311"/>
         <source>Outline</source>
-        <translation>Reißbrett</translation>
+        <translation>Struktur</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1851"/>
         <source>Editor</source>
-        <translation>Redaktion</translation>
+        <translation>Textverarbeitung</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1982"/>
@@ -730,7 +739,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2005"/>
         <source>Persos</source>
-        <translation>Personen</translation>
+        <translation>Charaktere</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2066"/>
@@ -745,7 +754,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2104"/>
         <source>&amp;Recent</source>
-        <translation>&amp;Zuletzt verwendete Dokumente</translation>
+        <translation>&amp;Zuletzt verwendet</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2124"/>
@@ -870,7 +879,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2409"/>
         <source>&amp;Fiction</source>
-        <translation>&amp;fiktive Erzählung</translation>
+        <translation>&amp;Fiktionaler Text</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2417"/>
@@ -1007,19 +1016,19 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
         <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous
                      evil wizard wasn&apos;t able to kill a baby?&apos; (Harry Potter)</source>
         <translation>Die Ausgangssituation, in Form von &apos;Was wäre wenn ...?&quot; Fragen. Beispiel: &quot;Was wäre wenn der gefährlichste
-                     böse Zauberer nicht in der Lage wäre, ein Baby zu töten?&quot; (Harry Potter)</translation>
+                     böse Zauberer nicht einmal ein Baby töten könnte?&quot; (Harry Potter)</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1166"/>
         <source>Take time to think about a one sentence (~50 words) summary of your book. Then expand it to
                      a paragraph, then to a page, then to a full summary.</source>
-        <translation>Nimm dir Zeit, dir einen Satz zu überlegen (~50 Wörter), um dein Buch zusammenzufassen. Dann erweitere ihn
-                     zu einem Absatz, dann zu einer ganzen Seite und abschließend zu einer kompletten Zusammenfassung.</translation>
+        <translation>Nehmen Sie sich Zeit, sich einen Satz auszudenken (~15 Wörter), der Ihr Buch zusammenfasst. Dann erweitern Sie ihn
+                     zu einem Absatz, dann zu einer ganzen Seite und abschließend zu einer ausführlichen Zusammenfassung.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1171"/>
         <source>Create your characters.</source>
-        <translation>Erstelle deine Charaktere.</translation>
+        <translation>Erschaffen Sie Ihre Charaktere.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1174"/>
@@ -1034,7 +1043,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1180"/>
         <source>Create the outline of your masterpiece.</source>
-        <translation>Erstelle den Entwurf deines Meisterwerks.</translation>
+        <translation>Arbeiten Sie die Struktur Ihres Meisterwerks aus.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1183"/>
@@ -1069,7 +1078,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1303"/>
         <source>Label</source>
-        <translation>Beschriftung</translation>
+        <translation>Label</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1304"/>
