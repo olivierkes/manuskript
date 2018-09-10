@@ -200,29 +200,29 @@ class welcome(QWidget, Ui_welcome):
         return [
             (self.tr("Empty fiction"), [], "Fiction"),
             (self.tr("Novel"), [
-                (20, self.tr("Chapter")),
-                (5, self.tr("Scene")),
+                (20, self.tr("Chapters")),
+                (5, self.tr("Scenes")),
                 (500, None)  # A line with None is word count
             ], "Fiction"),
             (self.tr("Novella"), [
-                (10, self.tr("Chapter")),
-                (5, self.tr("Scene")),
+                (10, self.tr("Chapters")),
+                (5, self.tr("Scenes")),
                 (500, None)
             ], "Fiction"),
             (self.tr("Short Story"), [
-                (10, self.tr("Scene")),
+                (10, self.tr("Scenes")),
                 (1000, None)
             ], "Fiction"),
             (self.tr("Trilogy"), [
-                (3, self.tr("Book")),
-                (3, self.tr("Section")),
-                (10, self.tr("Chapter")),
-                (5, self.tr("Scene")),
+                (3, self.tr("Books")),
+                (3, self.tr("Sections")),
+                (10, self.tr("Chapters")),
+                (5, self.tr("Scenes")),
                 (500, None)
             ], "Fiction"),
             (self.tr("Empty non-fiction"), [], "Non-fiction"),
             (self.tr("Research paper"), [
-                (3, self.tr("Section")),
+                (3, self.tr("Sections")),
                 (1000, None)
             ], "Non-fiction")
         ]
