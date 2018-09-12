@@ -357,11 +357,14 @@ class settingsWindow(QWidget, Ui_Settings):
         opt = settings.revisions
         opt["keep"] = True if self.chkRevisionsKeep.checkState() else False
         opt["smartremove"] = self.chkRevisionRemove.isChecked()
-        opt["rules"][10 * 60] = 60 / self.spnRevisions10Mn.value()
-        opt["rules"][60 * 60] = 60 * 10 / self.spnRevisionsHour.value()
-        opt["rules"][60 * 60 * 24] = 60 * 60 / self.spnRevisionsDay.value()
-        opt["rules"][60 * 60 * 24 * 30] = 60 * 60 * 24 / self.spnRevisionsMonth.value()
-        opt["rules"][None] = 60 * 60 * 24 * 7 / self.spnRevisionsEternity.value()
+        try:
+            opt["rules"][10 * 60] = 60 / self.spnRevisions10Mn.value()
+            opt["rules"][60 * 60] = 60 * 10 / self.spnRevisionsHour.value()
+            opt["rules"][60 * 60 * 24] = 60 * 60 / self.spnRevisionsDay.value()
+            opt["rules"][60 * 60 * 24 * 30] = 60 * 60 * 24 / self.spnRevisionsMonth.value()
+            opt["rules"][None] = 60 * 60 * 24 * 7 / self.spnRevisionsEternity.value()
+        except ZeroDivisionError as err:
+            print("DEBUG: ", err)
 
     ####################################################################################################
     #                                           VIEWS                                                  #
