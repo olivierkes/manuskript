@@ -83,8 +83,11 @@ class pandocExporter(basicExporter):
 
         qApp.restoreOverrideCursor()
 
-        if stderr:
-            err = stderr.decode("utf-8")
+        if stderr or p.returncode != 0:
+            err = "ERROR on export" + "\n" \
+                + "Return code" + ": %d\n" % (p.returncode) \
+                + "Command and parameters" + ":\n%s\n" % (p.args) \
+                + "Stderr content" + ":\n" + stderr.decode("utf-8") 
             print(err)
             QMessageBox.critical(mainWindow().dialog, qApp.translate("Export", "Error"), err)
             return None
