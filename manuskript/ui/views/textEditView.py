@@ -162,7 +162,7 @@ class textEditView(QTextEdit):
                 self.setEnabled(True)
                 if i.column() != self._column:
                     i = i.sibling(i.row(), self._column)
-                self._indexes.append(QPersistentModelIndex(i))
+                self._indexes.append(QModelIndex(i)) # Was QPersistentModuleIndex. Would cause issues with lines 306-308, 315-316, and 343-347.
 
                 if not self._model:
                     self.setModel(i.model())
