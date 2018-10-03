@@ -162,7 +162,7 @@ class textEditView(QTextEdit):
                 self.setEnabled(True)
                 if i.column() != self._column:
                     i = i.sibling(i.row(), self._column)
-                self._indexes.append(QPersistentModelIndex(i))
+                self._indexes.append(QModelIndex(i))
 
                 if not self._model:
                     self.setModel(i.model())
