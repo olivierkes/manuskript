@@ -3978,7 +3978,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="278"/>
         <source>words each.</source>
-        <translation>слова каждого.</translation>
+        <translation>слов каждый.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="281"/>
