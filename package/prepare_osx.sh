@@ -4,6 +4,7 @@ brew update
 # upgrade to python 3.x
 brew upgrade python
 brew install enchant
+brew postinstall python # this installs pip
 sudo -H pip3 install --upgrade pip setuptools wheel
 pip3 install pyinstaller PyQt5 lxml pyenchant
 brew install qt hunspell
