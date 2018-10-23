@@ -127,15 +127,15 @@ class settingsWindow(QWidget, Ui_Settings):
         self.chkRevisionsKeep.stateChanged.connect(self.revisionsSettingsChanged)
         self.chkRevisionRemove.setChecked(opt["smartremove"])
         self.chkRevisionRemove.toggled.connect(self.revisionsSettingsChanged)
-        self.spnRevisions10Mn.setValue(60 / opt["rules"][10 * 60])
+        self.spnRevisions10Mn.setValue(self.__safeDivide(60, opt["rules"][10 * 60]))
         self.spnRevisions10Mn.valueChanged.connect(self.revisionsSettingsChanged)
-        self.spnRevisionsHour.setValue(60 * 10 / opt["rules"][60 * 60])
+        self.spnRevisionsHour.setValue(self.__safeDivide(60 * 10, opt["rules"][60 * 60]))
         self.spnRevisionsHour.valueChanged.connect(self.revisionsSettingsChanged)
-        self.spnRevisionsDay.setValue(60 * 60 / opt["rules"][60 * 60 * 24])
+        self.spnRevisionsDay.setValue(self.__safeDivide(60 * 60, opt["rules"][60 * 60 * 24]))
         self.spnRevisionsDay.valueChanged.connect(self.revisionsSettingsChanged)
-        self.spnRevisionsMonth.setValue(60 * 60 * 24 / opt["rules"][60 * 60 * 24 * 30])
+        self.spnRevisionsMonth.setValue(self.__safeDivide(60 * 60 * 24, opt["rules"][60 * 60 * 24 * 30]))
         self.spnRevisionsMonth.valueChanged.connect(self.revisionsSettingsChanged)
-        self.spnRevisionsEternity.setValue(60 * 60 * 24 * 7 / opt["rules"][None])
+        self.spnRevisionsEternity.setValue(self.__safeDivide(60 * 60 * 24 * 7, opt["rules"][None]))
         self.spnRevisionsEternity.valueChanged.connect(self.revisionsSettingsChanged)
 
         # Views
@@ -301,6 +301,13 @@ class settingsWindow(QWidget, Ui_Settings):
             self.lstMenu.setCurrentRow(tabs[tab])
         else:
             self.lstMenu.setCurrentRow(tab)
+
+    def __safeDivide(self, dividend, divisor):
+        if divisor == 0:
+            return 0
+        else:
+            return dividend / divisor
+
     ####################################################################################################
     #                                           GENERAL                                                #
     ####################################################################################################
@@ -357,11 +364,11 @@ class settingsWindow(QWidget, Ui_Settings):
         opt = settings.revisions
         opt["keep"] = True if self.chkRevisionsKeep.checkState() else False
         opt["smartremove"] = self.chkRevisionRemove.isChecked()
-        opt["rules"][10 * 60] = 60 / self.spnRevisions10Mn.value()
-        opt["rules"][60 * 60] = 60 * 10 / self.spnRevisionsHour.value()
-        opt["rules"][60 * 60 * 24] = 60 * 60 / self.spnRevisionsDay.value()
-        opt["rules"][60 * 60 * 24 * 30] = 60 * 60 * 24 / self.spnRevisionsMonth.value()
-        opt["rules"][None] = 60 * 60 * 24 * 7 / self.spnRevisionsEternity.value()
+        opt["rules"][10 * 60] = self.__safeDivide(60, self.spnRevisions10Mn.value())
+        opt["rules"][60 * 60] = self.__safeDivide(60 * 10, self.spnRevisionsHour.value())
+        opt["rules"][60 * 60 * 24] = self.__safeDivide(60 * 60, self.spnRevisionsDay.value())
+        opt["rules"][60 * 60 * 24 * 30] = self.__safeDivide(60 * 60 * 24, self.spnRevisionsMonth.value())
+        opt["rules"][None] = self.__safeDivide(60 * 60 * 24 * 7, self.spnRevisionsEternity.value())
 
     ####################################################################################################
     #                                           VIEWS                                                  #
