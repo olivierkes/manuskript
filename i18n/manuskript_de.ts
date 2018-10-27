@@ -61,7 +61,7 @@
     <message>
         <location filename="../manuskript/converters/pandocConverter.py" line="75"/>
         <source>Error</source>
-        <translation>Error</translation>
+        <translation>Fehler</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="86"/>
@@ -2852,7 +2852,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="323"/>
         <source>About to remove</source>
-        <translation type="unfinished"></translation>
+        <translation>Im Begriff, dies zu entfernen</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="323"/>
