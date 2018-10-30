@@ -1,12 +1,15 @@
-language: cpp
+language: generic
 os:
 - osx
+- linux
 osx_image: xcode7.3
 sudo: required
 install:
 - if [ "$TRAVIS_OS_NAME" = "osx" ]; then bash package/prepare_osx.sh; fi
+- if [ "$TRAVIS_OS_NAME" = "linux" ]; then bash package/prepare_linux.sh; fi
 script:
-- python3 package/dependency_test.py
+- if [ "$TRAVIS_OS_NAME" = "osx" ]; then python3 -m pytest -vs; fi
+- if [ "$TRAVIS_OS_NAME" = "linux" ]; then xvfb-run -s '-screen 0 640x480x24 +extension GLX' pytest -vs; fi
 before_deploy:
 - export FILENAME=manuskript-$TRAVIS_BRANCH-$TRAVIS_OS_NAME.zip
 - pyinstaller manuskript.spec --clean
