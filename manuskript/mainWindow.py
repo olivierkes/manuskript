@@ -417,8 +417,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 PlotStep.meta, QHeaderView.ResizeToContents)
         self.lstSubPlots.verticalHeader().hide()
 
-    def updatePlotImportance(self, ID):
-        imp = self.mdlPlots.getPlotImportanceByID(ID)
+    def updatePlotImportance(self, row):
+        imp = self.mdlPlots.getPlotImportanceByRow(row)
         self.sldPlotImportance.setValue(int(imp))
 
     def changeCurrentSubPlot(self, index):
