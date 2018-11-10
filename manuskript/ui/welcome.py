@@ -349,8 +349,8 @@ class welcome(QWidget, Ui_welcome):
             total = 0
 
         self.lblTotal.setText(self.tr("<b>Total:</b> {} words (~ {} pages)").format(
-                locale.format("%d", total, grouping=True),
-                locale.format("%d", total / 250, grouping=True)
+                locale.format_string("%d", total, grouping=True),
+                locale.format_string("%d", total / 250, grouping=True)
         ))
 
     def addTopLevelItem(self, name):

@@ -224,12 +224,12 @@ class outlineItem(abstractItem):
             wc = 0
         if goal:
             return qApp.translate("outlineItem", "{} words / {} ({})").format(
-                    locale.format("%d", wc, grouping=True),
-                    locale.format("%d", goal, grouping=True),
+                    locale.format_string("%d", wc, grouping=True),
+                    locale.format_string("%d", goal, grouping=True),
                     "{}%".format(str(int(progress * 100))))
         else:
             return qApp.translate("outlineItem", "{} words").format(
-                    locale.format("%d", wc, grouping=True))
+                    locale.format_string("%d", wc, grouping=True))
 
     #######################################################################
     # Tools: split and merge
