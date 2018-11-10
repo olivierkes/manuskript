@@ -137,7 +137,7 @@ def createThemePreview(theme, screenRect, size=QSize(200, 120)):
 def findThemePath(themeName):
     p = findFirstFile(re.escape("{}.theme".format(themeName)), "resources/themes")
     if not p:
-        return findFirstFile(".*\.theme", "resources/themes")
+        return findFirstFile(r".*\.theme", "resources/themes")
     else:
         return p
 

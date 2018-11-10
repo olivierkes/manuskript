@@ -91,7 +91,7 @@ class MarkdownTokenizer(HighlightTokenizer):
     strongRegex.setMinimal(True)
     strikethroughRegex = QRegExp("~~[^\\s]+.*[^\\s]+~~")
     strikethroughRegex.setMinimal(True)
-    superScriptRegex = QRegExp("\^([^\\s]|(\\\\\\s))+\^")  # Spaces must be escaped "\ "
+    superScriptRegex = QRegExp(r"\^([^\s]|(\\\\\s))+\^")  # Spaces must be escaped "\ "
     superScriptRegex.setMinimal(True)
     subScriptRegex = QRegExp("~([^\\s]|(\\\\\\s))+~")  # Spaces must be escaped "\ "
     subScriptRegex.setMinimal(True)
@@ -887,7 +887,7 @@ class MarkdownTokenizer(HighlightTokenizer):
         with the escaped characters replaced with a dummy character.
         """
 
-        return re.sub("\\\\.", "\$", text)
+        return re.sub("\\\\.", r"\$", text)
 
         #escape = False
         #escapedText = text
