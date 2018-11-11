@@ -36,6 +36,7 @@ class importerDialog(QWidget, Ui_importer):
 
         # Var
         self.mw = mw
+        self.settingsWidget = None
         self.fileName = ""
         self.setStyleSheet(style.mainWindowSS())
         self.tree.setStyleSheet("QTreeView{background:transparent;}")
@@ -196,7 +197,7 @@ class importerDialog(QWidget, Ui_importer):
 
         self.settingsWidget = generalSettings()
         #TODO: custom format widget
-        self.settingsWidget = F.settingsWidget(self.settingsWidget)
+        # self.settingsWidget = F.settingsWidget(self.settingsWidget)
 
         # Set the settings widget in place
         self.setGroupWidget(self.grpSettings, self.settingsWidget)
