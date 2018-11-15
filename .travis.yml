@@ -21,13 +21,13 @@ deploy:
     overwrite: true
     skip_cleanup: true
     on:
-        os: osx
+        condition: $TRAVIS_OS_NAME = osx
         tags: true
   - provider: script
     script: "curl -T dist/manuskript-osx-develop.zip -u hfpn_semaphoreci:$FTP_PASSWORD ftp://www.theologeek.ch/web/manuskript/releases/ -v"
     skip_cleanup: true
     on:
-        os: osx
+        condition: $TRAVIS_OS_NAME = osx
         branch: develop
 env:
   global:
