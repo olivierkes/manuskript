@@ -67,6 +67,9 @@ class pandocExporter(basicExporter):
             if var and item and item.text().strip():
                 args.append("--variable={}:{}".format(var, item.text().strip()))
 
+        # Add title metatadata required for pandoc >= 2.x
+        args.append("--metadata=title:{}".format(mainWindow().mdlFlatData.item(0, 0).text().strip()))
+
         qApp.setOverrideCursor(QCursor(Qt.WaitCursor))
 
         p = subprocess.Popen(

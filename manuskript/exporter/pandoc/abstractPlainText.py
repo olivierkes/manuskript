@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
+import re
+
 from PyQt5.QtGui import QTextCharFormat, QFont
 from PyQt5.QtWidgets import qApp, QVBoxLayout, QCheckBox, QWidget, QHBoxLayout, QLabel, QSpinBox, QComboBox
 
@@ -19,7 +21,14 @@ class abstractPlainText(markdown):
         self.exporter = exporter
 
     def settingsWidget(self):
-        w = pandocSettings(self, toFormat=self.toFormat)
+        # Get pandoc major version to determine valid command line options
+        p = re.compile(r'pandoc (\d+)\..*')
+        m = p.match(self.exporter.version())
+        if m:
+            majorVersion = m.group(1)
+        else:
+            majorVersion = ""
+        w = pandocSettings(self, majorVersion, toFormat=self.toFormat)
         w.loadSettings()
         return w
 
@@ -92,8 +101,10 @@ class pandocSettings(markdownSettings):
         "TOC-depth":    pandocSetting("--toc-depth=", "number", "",
                                       qApp.translate("Export", "Number of sections level to include in TOC: "),
                                       default=3, min=1, max=6),
+        # pandoc v1 only
         "smart":        pandocSetting("--smart", "checkbox", "",
                                       qApp.translate("Export", "Typographically correct output")),
+        # pandoc v1 only
         "normalize":    pandocSetting("--normalize", "checkbox", "",
                                       qApp.translate("Export", "Normalize the document (cleaner)")),
         "base-header":  pandocSetting("--base-header-level=", "number", "",
@@ -111,7 +122,12 @@ class pandocSettings(markdownSettings):
                                         qApp.translate("Export", "Self-contained HTML files, with no dependencies")),
         "q-tags":       pandocSetting("--html-q-tags", "checkbox", "html",
                                         qApp.translate("Export", "Use <q> tags for quotes in HTML")),
+        # pandoc v1 only
         "latex-engine": pandocSetting("--latex-engine=", "combo", "pdf",
+                                      qApp.translate("Export", "LaTeX engine used to produce the PDF."),
+                                      vals="pdflatex|lualatex|xelatex"),
+        # pandoc v2
+        "pdf-engine":   pandocSetting("--pdf-engine=", "combo", "pdf",
                                       qApp.translate("Export", "LaTeX engine used to produce the PDF."),
                                       vals="pdflatex|lualatex|xelatex"),
         "epub3":        pandocSetting("EXTepub3", "checkbox", "epub",
@@ -138,17 +154,24 @@ class pandocSettings(markdownSettings):
     }
 
 
-    def __init__(self, _format, toFormat=None, parent=None):
+    def __init__(self, _format, majorVersion="", toFormat=None, parent=None):
         markdownSettings.__init__(self, _format, parent)
 
         self.format = toFormat
+        self.majorVersion = majorVersion
 
         w = QWidget(self)
         w.setLayout(QVBoxLayout())
         self.grpPandocGeneral = self.collapsibleGroupBox(self.tr("General"), w)
 
-        self.addSettingsWidget("smart", self.grpPandocGeneral)
-        self.addSettingsWidget("normalize", self.grpPandocGeneral)
+        if majorVersion == "1":
+            # pandoc v1 only
+            self.addSettingsWidget("smart", self.grpPandocGeneral)
+            self.addSettingsWidget("normalize", self.grpPandocGeneral)
+        else:
+            # pandoc v2
+            self.settingsList.pop("smart", None)
+            self.settingsList.pop("normalize", None)
         self.addSettingsWidget("base-header", self.grpPandocGeneral)
         self.addSettingsWidget("standalone", self.grpPandocGeneral)
         self.addSettingsWidget("disable-YAML", self.grpPandocGeneral)
@@ -164,7 +187,14 @@ class pandocSettings(markdownSettings):
         self.addSettingsWidget("atx", self.grpPandocSpecific)
         self.addSettingsWidget("self-contained", self.grpPandocSpecific)
         self.addSettingsWidget("q-tags", self.grpPandocSpecific)
-        self.addSettingsWidget("latex-engine", self.grpPandocSpecific)
+        if majorVersion == "1":
+            # pandoc v1 only
+            self.addSettingsWidget("latex-engine", self.grpPandocSpecific)
+            self.settingsList.pop("pdf-engine", None)
+        else:
+            # pandoc v2
+            self.settingsList.pop("latex-engine", None)
+            self.addSettingsWidget("pdf-engine", self.grpPandocSpecific)
         self.addSettingsWidget("epub3", self.grpPandocSpecific)
 
         # PDF settings
