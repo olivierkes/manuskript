@@ -6,7 +6,7 @@
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="18"/>
         <source>Basic HTML output using python module &apos;markdown&apos;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Keluaran HTML dasar menggunakan modul python &apos;markdown&apos;.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="19"/>
@@ -76,7 +76,7 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="92"/>
         <source>Number of sections level to include in TOC: </source>
-        <translation type="unfinished"></translation>
+        <translation>Jumlah tingkat bagian untuk memasukkan dalam TOC: </translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="95"/>
