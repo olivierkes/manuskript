@@ -172,10 +172,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.actModeGroup = QActionGroup(self)
         self.actModeSimple.setActionGroup(self.actModeGroup)
         self.actModeFiction.setActionGroup(self.actModeGroup)
-        self.actModeSnowflake.setActionGroup(self.actModeGroup)
         self.actModeSimple.triggered.connect(self.setViewModeSimple)
         self.actModeFiction.triggered.connect(self.setViewModeFiction)
-        self.actModeSnowflake.setEnabled(False)
 
         # Main Menu:: Tool
         self.actToolFrequency.triggered.connect(self.frequencyAnalyzer)

@@ -2201,7 +2201,6 @@
      </property>
      <addaction name="actModeSimple"/>
      <addaction name="actModeFiction"/>
-     <addaction name="actModeSnowflake"/>
     </widget>
     <addaction name="menuMode"/>
     <addaction name="separator"/>
@@ -2451,14 +2450,6 @@
    </property>
    <property name="text">
     <string>&amp;Fiction</string>
-   </property>
-  </action>
-  <action name="actModeSnowflake">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>S&amp;nowflake</string>
    </property>
   </action>
   <action name="actViewCork">
