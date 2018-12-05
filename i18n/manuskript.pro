@@ -89,9 +89,12 @@ SOURCES +=  ../manuskript/ui/views/outlineBasics.py
 SOURCES +=  ../manuskript/ui/views/outlineDelegates.py
 SOURCES +=  ../manuskript/ui/collapsibleDockWidgets.py
 
-TRANSLATIONS     += manuskript_es.ts
 TRANSLATIONS     += manuskript_de.ts
+TRANSLATIONS     += manuskript_es.ts
 TRANSLATIONS     += manuskript_fr.ts
+TRANSLATIONS     += manuskript_hu.ts
+TRANSLATIONS     += manuskript_id.ts
+TRANSLATIONS     += manuskript_it.ts
 TRANSLATIONS     += manuskript_nb_NO.ts
 TRANSLATIONS     += manuskript_nl.ts
 TRANSLATIONS     += manuskript_pl.ts
