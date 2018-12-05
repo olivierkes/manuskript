@@ -6,7 +6,7 @@
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="18"/>
         <source>Basic HTML output using python module &apos;markdown&apos;.</source>
-        <translation>使用Python的&apos;markdown&apos;模块输出HTML。</translation>
+        <translation>使用Python的&apos;markdown&apos;模块输出基本HTML。</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="19"/>
