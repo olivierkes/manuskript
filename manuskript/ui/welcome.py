@@ -138,12 +138,18 @@ class welcome(QWidget, Ui_welcome):
     ###############################################################################
 
     def openFile(self):
+        sttgs = QSettings()
+        lastDirectory = sttgs.value("lastAccessedDirectory", defaultValue=".", type=str)
+        if lastDirectory != '.':
+            print(qApp.translate("lastAccessedDirectoryInfo", "Last accessed directory \"{}\" loaded.").format(lastDirectory))
+
         """File dialog that request an existing file. For opening project."""
         filename = QFileDialog.getOpenFileName(self,
                                                self.tr("Open project"),
-                                               ".",
+                                               lastDirectory,
                                                self.tr("Manuskript project (*.msk);;All files (*)"))[0]
         if filename:
+            sttgs.setValue("lastAccessedDirectory", os.path.dirname(filename))
             self.appendToRecentFiles(filename)
             self.mw.loadProject(filename)
 
