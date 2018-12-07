@@ -53,6 +53,18 @@ class welcome(QWidget, Ui_welcome):
         # Recent Files
         self.loadRecents()
 
+    def getLastAccessedDirectory(self):
+        sttgs = QSettings()
+        lastDirectory = sttgs.value("lastAccessedDirectory", defaultValue=".", type=str)
+        if lastDirectory != '.':
+            print(qApp.translate("lastAccessedDirectoryInfo", "Last accessed directory \"{}\" loaded.").format(
+                lastDirectory))
+        return lastDirectory
+
+    def setLastAccessedDirectory(self, dir):
+        sttgs = QSettings()
+        sttgs.setValue("lastAccessedDirectory", dir)
+
     ###############################################################################
     # AUTOLOAD
     ###############################################################################
@@ -138,10 +150,7 @@ class welcome(QWidget, Ui_welcome):
     ###############################################################################
 
     def openFile(self):
-        sttgs = QSettings()
-        lastDirectory = sttgs.value("lastAccessedDirectory", defaultValue=".", type=str)
-        if lastDirectory != '.':
-            print(qApp.translate("lastAccessedDirectoryInfo", "Last accessed directory \"{}\" loaded.").format(lastDirectory))
+        lastDirectory = self.getLastAccessedDirectory()
 
         """File dialog that request an existing file. For opening project."""
         filename = QFileDialog.getOpenFileName(self,
@@ -149,19 +158,22 @@ class welcome(QWidget, Ui_welcome):
                                                lastDirectory,
                                                self.tr("Manuskript project (*.msk);;All files (*)"))[0]
         if filename:
-            sttgs.setValue("lastAccessedDirectory", os.path.dirname(filename))
+            self.setLastAccessedDirectory(os.path.dirname(filename))
             self.appendToRecentFiles(filename)
             self.mw.loadProject(filename)
 
     def saveAsFile(self):
+        lastDirectory = self.getLastAccessedDirectory()
+
         """File dialog that request a file, existing or not.
         Save data to that file, which then becomes the current project."""
         filename = QFileDialog.getSaveFileName(self,
                                                self.tr("Save project as..."),
-                                               ".",
+                                               lastDirectory,
                                                self.tr("Manuskript project (*.msk)"))[0]
 
         if filename:
+            self.setLastAccessedDirectory(os.path.dirname(filename))
             if filename[-4:] != ".msk":
                 filename += ".msk"
             self.appendToRecentFiles(filename)
@@ -174,16 +186,19 @@ class welcome(QWidget, Ui_welcome):
             self.mw.setWindowTitle(pName + " - " + self.tr("Manuskript"))
 
     def createFile(self, filename=None, overwrite=False):
+        lastDirectory = self.getLastAccessedDirectory()
+
         """When starting a new project, ask for a place to save it.
         Datas are not loaded from file, so they must be populated another way."""
         if not filename:
             filename = QFileDialog.getSaveFileName(
                            self,
                            self.tr("Create New Project"),
-                           ".",
+                           lastDirectory,
                            self.tr("Manuskript project (*.msk)"))[0]
 
         if filename:
+            self.setLastAccessedDirectory(os.path.dirname(filename))
             if filename[-4:] != ".msk":
                 filename += ".msk"
             if os.path.exists(filename) and not overwrite:
