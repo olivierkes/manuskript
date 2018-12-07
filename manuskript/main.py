@@ -40,19 +40,31 @@ def prepare(tests=False):
 
     appTranslator = QTranslator()
     # By default: locale
-    translation = appPath(os.path.join("i18n", "manuskript_{}.qm".format(locale)))
+
+    def extractLocale(filename):
+        # len("manuskript_") = 13, len(".qm") = 3
+        return filename[11:-3] if len(filename) >= 16 else ""
+
+    def tryLoadTranslation(translation, source):
+        if appTranslator.load(appPath(os.path.join("i18n", translation))):
+            app.installTranslator(appTranslator)
+            print(app.tr("Loaded translation from {}: {}.").format(source, translation))
+            return True
+        else:
+            print(app.tr("Note: No translator found or loaded from {} for locale {}.").
+                  format(source, extractLocale(translation)))
+            return False
 
     # Load translation from settings
+    translation = ""
     if settings.contains("applicationTranslation"):
-        translation = appPath(os.path.join("i18n", settings.value("applicationTranslation")))
+        translation = settings.value("applicationTranslation")
         print("Found translation in settings:", translation)
 
-    if appTranslator.load(translation):
-        app.installTranslator(appTranslator)
-        print(app.tr("Loaded translation: {}.").format(translation))
-
-    else:
-        print(app.tr("Note: No translator found or loaded for locale {}.").format(locale))
+    if (translation != "" and not tryLoadTranslation(translation, "settings")) or translation == "":
+        # load from settings failed or not set, fallback
+        translation = "manuskript_{}.qm".format(locale)
+        tryLoadTranslation(translation, "system locale")
 
     QIcon.setThemeSearchPaths(QIcon.themeSearchPaths() + [appPath("icons")])
     QIcon.setThemeName("NumixMsk")
