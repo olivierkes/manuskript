@@ -38,7 +38,7 @@ def prepare(tests=False):
     # Translation process
     locale = QLocale.system().name()
 
-    appTranslator = QTranslator()
+    appTranslator = QTranslator(app)
     # By default: locale
     translation = appPath(os.path.join("i18n", "manuskript_{}.qm".format(locale)))
 
