@@ -38,7 +38,7 @@ def prepare(tests=False):
     # Translation process
     locale = QLocale.system().name()
 
-    appTranslator = QTranslator()
+    appTranslator = QTranslator(app)
     # By default: locale
 
     def extractLocale(filename):
