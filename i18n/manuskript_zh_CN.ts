@@ -689,7 +689,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1666"/>
         <source>Source of passion</source>
-        <translation>动机的来源</translation>
+        <translation>想法来源</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1676"/>
@@ -1396,12 +1396,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2804"/>
         <source>&amp;Ordered list</source>
-        <translation>Ctrl>有序列表（&amp;O）</translation>
+        <translation>有序列表（&amp;O）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2813"/>
         <source>&amp;Unordered list</source>
-        <translation>Ctrl>无序列表（&amp;U）</translation>
+        <translation>无序列表（&amp;U）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2818"/>
@@ -1411,12 +1411,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1368"/>
         <source>Remove selected plot step(s)</source>
-        <translation>Ctrl>删除选择的情节段</translation>
+        <translation>删除选择的情节段</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="554"/>
         <source>The file {} does not exist. Has it been moved or deleted?</source>
-        <translation>Ctrl>文件 {} 不存在。是否被移动或删除？</translation>
+        <translation>文件 {} 不存在。是否被移动或删除？</translation>
     </message>
 </context>
 <context>
