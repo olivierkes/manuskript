@@ -266,7 +266,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="258"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="273"/>
@@ -314,12 +314,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="115"/>
         <source>Number of words: from</source>
-        <translation type="unfinished"></translation>
+        <translation>字数：从</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="129"/>
         <source>to</source>
-        <translation type="unfinished"></translation>
+        <translation>到</translation>
     </message>
 </context>
 <context>
@@ -358,7 +358,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="108"/>
         <source>Comma separated values</source>
-        <translation type="unfinished">逗号分隔值</translation>
+        <translation>逗号分隔值</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="113"/>
@@ -368,12 +368,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="117"/>
         <source>Import folder then files</source>
-        <translation type="unfinished"></translation>
+        <translation>导入文件夹和文件</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/opmlImporter.py" line="65"/>
         <source>OPML Import</source>
-        <translation type="unfinished"></translation>
+        <translation>导入 OPML 文件</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/opmlImporter.py" line="37"/>
@@ -403,7 +403,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="66"/>
         <source>Import using:</source>
-        <translation type="unfinished"></translation>
+        <translation>使用的导入方法：</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="70"/>
@@ -423,27 +423,27 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/importer/mindMapImporter.py" line="56"/>
         <source>Mind Map Import</source>
-        <translation type="unfinished"></translation>
+        <translation>导入思维导图</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/mindMapImporter.py" line="56"/>
         <source>This does not appear to be a valid Mind Map file.</source>
-        <translation type="unfinished"></translation>
+        <translation>这不是一个合法的思维导图文件。</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/mindMapImporter.py" line="71"/>
         <source>Mind Map import</source>
-        <translation type="unfinished"></translation>
+        <translation>导入思维导图</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/mindMapImporter.py" line="74"/>
         <source>Import tip as:</source>
-        <translation type="unfinished"></translation>
+        <translation>导入 tip 为：</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/mindMapImporter.py" line="90"/>
         <source>Untitled</source>
-        <translation type="unfinished"></translation>
+        <translation>无标题</translation>
     </message>
 </context>
 <context>
@@ -451,7 +451,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/MDEditCompleter.py" line="78"/>
         <source>Insert reference</source>
-        <translation type="unfinished"></translation>
+        <translation>导入参考</translation>
     </message>
 </context>
 <context>
@@ -459,167 +459,167 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1627"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>通用</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="169"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>标题</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="179"/>
         <source>Subtitle</source>
-        <translation type="unfinished"></translation>
+        <translation>子标题</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="189"/>
         <source>Series</source>
-        <translation type="unfinished"></translation>
+        <translation>系列</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="199"/>
         <source>Volume</source>
-        <translation type="unfinished"></translation>
+        <translation>卷</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="226"/>
         <source>Genre</source>
-        <translation type="unfinished"></translation>
+        <translation>类型</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="236"/>
         <source>License</source>
-        <translation type="unfinished"></translation>
+        <translation>证书</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="249"/>
         <source>Author</source>
-        <translation type="unfinished"></translation>
+        <translation>作者</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1636"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>名字</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="277"/>
         <source>Email</source>
-        <translation type="unfinished"></translation>
+        <translation>EMail</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1422"/>
         <source>Summary</source>
-        <translation type="unfinished"></translation>
+        <translation>摘要</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="322"/>
         <source>Situation:</source>
-        <translation type="unfinished"></translation>
+        <translation>场景：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1337"/>
         <source>Summary:</source>
-        <translation type="unfinished"></translation>
+        <translation>摘要：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="345"/>
         <source>One sentence</source>
-        <translation type="unfinished"></translation>
+        <translation>一句话</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1435"/>
         <source>One paragraph</source>
-        <translation type="unfinished"></translation>
+        <translation>一段</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1440"/>
         <source>One page</source>
-        <translation type="unfinished"></translation>
+        <translation>一页</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1445"/>
         <source>Full</source>
-        <translation type="unfinished"></translation>
+        <translation>完整的</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="420"/>
         <source>One sentence summary</source>
-        <translation type="unfinished"></translation>
+        <translation>一句话摘要</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="502"/>
         <source>One paragraph summary</source>
-        <translation type="unfinished"></translation>
+        <translation>一段话摘要</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="540"/>
         <source>Expand each sentence of your one paragraph summary to a paragraph</source>
-        <translation type="unfinished"></translation>
+        <translation>将你的一段话摘要中的每个句子都展开为一段</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="565"/>
         <source>One page summary</source>
-        <translation type="unfinished"></translation>
+        <translation>一页摘要</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="590"/>
         <source>Full summary</source>
-        <translation type="unfinished"></translation>
+        <translation>完整摘要</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1074"/>
         <source>Next</source>
-        <translation type="unfinished"></translation>
+        <translation>下一个</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="676"/>
         <source>What if...?</source>
-        <translation type="unfinished"></translation>
+        <translation>如果……？</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="688"/>
         <source>Characters</source>
-        <translation type="unfinished"></translation>
+        <translation>角色</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="713"/>
         <source>Names</source>
-        <translation type="unfinished"></translation>
+        <translation>名字</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1587"/>
         <source>Filter</source>
-        <translation type="unfinished"></translation>
+        <translation>过滤</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1183"/>
         <source>Basic info</source>
-        <translation type="unfinished"></translation>
+        <translation>基本信息</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1202"/>
         <source>Importance</source>
-        <translation type="unfinished"></translation>
+        <translation>重要性</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="829"/>
         <source>Motivation</source>
-        <translation type="unfinished"></translation>
+        <translation>动机</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="839"/>
         <source>Goal</source>
-        <translation type="unfinished"></translation>
+        <translation>目标</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="849"/>
         <source>Conflict</source>
-        <translation type="unfinished"></translation>
+        <translation>冲突</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="859"/>
         <source>Epiphany</source>
-        <translation type="unfinished"></translation>
+        <translation>顿悟</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="869"/>
@@ -634,82 +634,82 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1001"/>
         <source>Notes</source>
-        <translation type="unfinished"></translation>
+        <translation>笔记</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1011"/>
         <source>Detailed info</source>
-        <translation type="unfinished"></translation>
+        <translation>详细信息</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2021"/>
         <source>Plots</source>
-        <translation type="unfinished"></translation>
+        <translation>情节</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1192"/>
         <source>Plot</source>
-        <translation type="unfinished"></translation>
+        <translation>情节</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1209"/>
         <source>Character(s)</source>
-        <translation type="unfinished"></translation>
+        <translation>角色</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1646"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>描述</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1223"/>
         <source>Result</source>
-        <translation type="unfinished"></translation>
+        <translation>结果</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1315"/>
         <source>Resolution steps</source>
-        <translation type="unfinished"></translation>
+        <translation>解决步骤</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2045"/>
         <source>World</source>
-        <translation type="unfinished"></translation>
+        <translation>世界</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1600"/>
         <source>Populates with empty data</source>
-        <translation type="unfinished"></translation>
+        <translation>生成空数据</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1657"/>
         <source>More</source>
-        <translation type="unfinished"></translation>
+        <translation>更多</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1666"/>
         <source>Source of passion</source>
-        <translation type="unfinished"></translation>
+        <translation>动机的来源</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1676"/>
         <source>Source of conflict</source>
-        <translation type="unfinished"></translation>
+        <translation>冲突来源</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1363"/>
         <source>Outline</source>
-        <translation type="unfinished"></translation>
+        <translation>大纲</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1854"/>
         <source>Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>编辑器</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1985"/>
         <source>Debug</source>
-        <translation type="unfinished"></translation>
+        <translation>Debug</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1998"/>
@@ -724,42 +724,42 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2069"/>
         <source>Labels</source>
-        <translation type="unfinished"></translation>
+        <translation>标签</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2103"/>
         <source>&amp;File</source>
-        <translation type="unfinished"></translation>
+        <translation>文件（&amp;F）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2107"/>
         <source>&amp;Recent</source>
-        <translation type="unfinished"></translation>
+        <translation>最近使用（&amp;R）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2127"/>
         <source>&amp;Help</source>
-        <translation type="unfinished"></translation>
+        <translation>帮助（&amp;H）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2134"/>
         <source>&amp;Tools</source>
-        <translation type="unfinished"></translation>
+        <translation>工具（&amp;T）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2141"/>
         <source>&amp;Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>编辑（&amp;E）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2196"/>
         <source>&amp;View</source>
-        <translation type="unfinished"></translation>
+        <translation>查看&amp;（V）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2200"/>
         <source>&amp;Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>模式（&amp;M）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2229"/>
@@ -769,97 +769,97 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2263"/>
         <source>Sea&amp;rch</source>
-        <translation type="unfinished"></translation>
+        <translation>搜索（&amp;R）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2300"/>
         <source>&amp;Navigation</source>
-        <translation type="unfinished"></translation>
+        <translation>导航（&amp;N）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2335"/>
         <source>&amp;Open</source>
-        <translation type="unfinished"></translation>
+        <translation>打开（&amp;O）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2338"/>
         <source>Ctrl+O</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+O</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2347"/>
         <source>&amp;Save</source>
-        <translation type="unfinished"></translation>
+        <translation>保存（&amp;S）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2350"/>
         <source>Ctrl+S</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+S</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2359"/>
         <source>Sa&amp;ve as...</source>
-        <translation type="unfinished"></translation>
+        <translation>另存为（&amp;V）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2362"/>
         <source>Ctrl+Shift+S</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Shift+S</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2371"/>
         <source>&amp;Quit</source>
-        <translation type="unfinished"></translation>
+        <translation>退出（&amp;Q）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2374"/>
         <source>Ctrl+Q</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Q</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2389"/>
         <source>&amp;Show help texts</source>
-        <translation type="unfinished"></translation>
+        <translation>显示帮助（&amp;S）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2392"/>
         <source>Ctrl+Shift+B</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Shift+B</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2407"/>
         <source>&amp;Spellcheck</source>
-        <translation type="unfinished"></translation>
+        <translation>拼写检查（&amp;S）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2410"/>
         <source>F9</source>
-        <translation type="unfinished"></translation>
+        <translation>F9</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2419"/>
         <source>&amp;Labels...</source>
-        <translation type="unfinished"></translation>
+        <translation>标签...（&amp;L）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2428"/>
         <source>&amp;Status...</source>
-        <translation type="unfinished"></translation>
+        <translation>状态...（&amp;S）</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1361"/>
         <source>Tree</source>
-        <translation type="unfinished"></translation>
+        <translation>树</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2444"/>
         <source>&amp;Simple</source>
-        <translation type="unfinished"></translation>
+        <translation>简单（&amp;S）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2452"/>
         <source>&amp;Fiction</source>
-        <translation type="unfinished"></translation>
+        <translation>虚构小说</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1362"/>
@@ -874,7 +874,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2474"/>
         <source>F8</source>
-        <translation type="unfinished"></translation>
+        <translation>F8</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2483"/>
@@ -889,7 +889,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2495"/>
         <source>F6</source>
-        <translation type="unfinished"></translation>
+        <translation>F6</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2500"/>
@@ -914,329 +914,329 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/mainWindow.py" line="672"/>
         <source>Manuskript</source>
-        <translation type="unfinished"></translation>
+        <translation>ManuSkript</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="771"/>
         <source>Project {} saved.</source>
-        <translation type="unfinished"></translation>
+        <translation>项目 {} 已保存。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="774"/>
         <source>WARNING: Project {} not saved.</source>
-        <translation type="unfinished"></translation>
+        <translation>警告：项目 {} 未保存。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="798"/>
         <source>Project {} loaded.</source>
-        <translation type="unfinished"></translation>
+        <translation>项目 {} 已载入。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="801"/>
         <source>Project {} loaded with some errors:</source>
-        <translation type="unfinished"></translation>
+        <translation>载入项目 {} 时出错：</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="803"/>
         <source> * {} wasn&apos;t found in project file.</source>
-        <translation type="unfinished"></translation>
+        <translation>* {} 没有在项目文件中找到。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="804"/>
         <source>Project {} loaded with some errors.</source>
-        <translation type="unfinished"></translation>
+        <translation>载入项目 {} 时遇到错误。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1130"/>
         <source> (~{} pages)</source>
-        <translation type="unfinished"></translation>
+        <translation>（约 {} 页）</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1134"/>
         <source>Words: {}{}</source>
-        <translation type="unfinished"></translation>
+        <translation>字数： {}{}</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1142"/>
         <source>Book summary</source>
-        <translation type="unfinished"></translation>
+        <translation>书籍摘要</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1143"/>
         <source>Project tree</source>
-        <translation type="unfinished"></translation>
+        <translation>项目树</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1144"/>
         <source>Metadata</source>
-        <translation type="unfinished"></translation>
+        <translation>元信息</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1145"/>
         <source>Story line</source>
-        <translation type="unfinished"></translation>
+        <translation>故事线</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1210"/>
         <source>Enter information about your book, and yourself.</source>
-        <translation type="unfinished"></translation>
+        <translation>输入有关你的书和你自己的信息。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1213"/>
         <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous
                      evil wizard wasn&apos;t able to kill a baby?&apos; (Harry Potter)</source>
-        <translation type="unfinished"></translation>
+        <translation>基本情况是形如&apos;如果...？&apos;的问题。例如：&apos;如果一个最危险的巫师没能成功杀死一个婴儿……？&apos;（哈利·波特）</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1218"/>
         <source>Take time to think about a one sentence (~50 words) summary of your book. Then expand it to
                      a paragraph, then to a page, then to a full summary.</source>
-        <translation type="unfinished"></translation>
+        <translation>花一些时间想一个 50 字左右的一句话摘要来描述你的书。然后将它扩展成一段，一页，最后写成一个完整的摘要。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1223"/>
         <source>Create your characters.</source>
-        <translation type="unfinished"></translation>
+        <translation>建立你的角色。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1226"/>
         <source>Develop plots.</source>
-        <translation type="unfinished"></translation>
+        <translation>构造情节。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1229"/>
         <source>Build worlds.  Create hierarchy of broad categories down to specific details.</source>
-        <translation type="unfinished"></translation>
+        <translation>构建世界。创造层次丰富包含方方面面的结构，直至具体细节。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1232"/>
         <source>Create the outline of your masterpiece.</source>
-        <translation type="unfinished"></translation>
+        <translation>建立你的作品的大纲。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1235"/>
         <source>Write.</source>
-        <translation type="unfinished"></translation>
+        <translation>写作。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1238"/>
         <source>Debug info. Sometimes useful.</source>
-        <translation type="unfinished"></translation>
+        <translation>Debug 信息。有时候是有用的。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1252"/>
         <source>Dictionary</source>
-        <translation type="unfinished"></translation>
+        <translation>字典</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1265"/>
         <source>Install PyEnchant to use spellcheck</source>
-        <translation type="unfinished"></translation>
+        <translation>安装 PyEnchant 以使用拼写检查。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1353"/>
         <source>Nothing</source>
-        <translation type="unfinished"></translation>
+        <translation>无</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1354"/>
         <source>POV</source>
-        <translation type="unfinished"></translation>
+        <translation>POV</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1355"/>
         <source>Label</source>
-        <translation type="unfinished"></translation>
+        <translation>标签</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1356"/>
         <source>Progress</source>
-        <translation type="unfinished"></translation>
+        <translation>进度</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1357"/>
         <source>Compile</source>
-        <translation type="unfinished"></translation>
+        <translation>编译</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1380"/>
         <source>Icon color</source>
-        <translation type="unfinished"></translation>
+        <translation>图标颜色</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1381"/>
         <source>Text color</source>
-        <translation type="unfinished"></translation>
+        <translation>文本颜色</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1382"/>
         <source>Background color</source>
-        <translation type="unfinished"></translation>
+        <translation>背景色</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1373"/>
         <source>Icon</source>
-        <translation type="unfinished"></translation>
+        <translation>图标</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1374"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation>文本</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1375"/>
         <source>Background</source>
-        <translation type="unfinished"></translation>
+        <translation>背景</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1376"/>
         <source>Border</source>
-        <translation type="unfinished"></translation>
+        <translation>边缘</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1377"/>
         <source>Corner</source>
-        <translation type="unfinished"></translation>
+        <translation>角落</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1351"/>
         <source>Add plot step</source>
-        <translation type="unfinished"></translation>
+        <translation>添加情节步骤</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2521"/>
         <source>&amp;Import…</source>
-        <translation type="unfinished"></translation>
+        <translation>导入（&amp;I）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2524"/>
         <source>F7</source>
-        <translation type="unfinished"></translation>
+        <translation>F7</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2533"/>
         <source>&amp;Copy</source>
-        <translation type="unfinished"></translation>
+        <translation>复制（&amp;C）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2536"/>
         <source>Ctrl+C</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+C</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2545"/>
         <source>C&amp;ut</source>
-        <translation type="unfinished"></translation>
+        <translation>剪切（&amp;U）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2548"/>
         <source>Ctrl+X</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+X</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2557"/>
         <source>&amp;Paste</source>
-        <translation type="unfinished"></translation>
+        <translation>粘贴（&amp;P）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2560"/>
         <source>Ctrl+V</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+V</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2569"/>
         <source>&amp;Split…</source>
-        <translation type="unfinished"></translation>
+        <translation>分割（&amp;S）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2572"/>
         <source>Ctrl+Shift+K</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Shift+K</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2581"/>
         <source>Sp&amp;lit at cursor</source>
-        <translation type="unfinished"></translation>
+        <translation>在光标处分割（&amp;L）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2584"/>
         <source>Ctrl+K</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+K</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2596"/>
         <source>Ctrl+M</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+M</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2799"/>
         <source>Ctrl+D</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+D</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2617"/>
         <source>Del</source>
-        <translation type="unfinished"></translation>
+        <translation>Del</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2626"/>
         <source>&amp;Move Up</source>
-        <translation type="unfinished"></translation>
+        <translation>向上移动（&amp;M）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2629"/>
         <source>Ctrl+Shift+Up</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Shift+Up</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2638"/>
         <source>M&amp;ove Down</source>
-        <translation type="unfinished"></translation>
+        <translation>向下移动（&amp;O）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2641"/>
         <source>Ctrl+Shift+Down</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Shift+Down</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2605"/>
         <source>Dupl&amp;icate</source>
-        <translation type="unfinished"></translation>
+        <translation>复写（&amp;I）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2614"/>
         <source>&amp;Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>删除（&amp;D）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2650"/>
         <source>&amp;Rename</source>
-        <translation type="unfinished"></translation>
+        <translation>重命名（&amp;R）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2653"/>
         <source>F2</source>
-        <translation type="unfinished"></translation>
+        <translation>F2</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2210"/>
         <source>Organi&amp;ze</source>
-        <translation type="unfinished"></translation>
+        <translation>管理（&amp;Z）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2593"/>
         <source>M&amp;erge</source>
-        <translation type="unfinished"></translation>
+        <translation>合并（&amp;E）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2145"/>
         <source>&amp;Format</source>
-        <translation type="unfinished"></translation>
+        <translation>格式（&amp;F）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2153"/>
         <source>&amp;Header</source>
-        <translation type="unfinished"></translation>
+        <translation>头（&amp;H）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2658"/>
@@ -1246,7 +1246,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2661"/>
         <source>Ctrl+Alt+1</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Alt+1</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2666"/>
@@ -1256,7 +1256,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2669"/>
         <source>Ctrl+Alt+2</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Alt+2</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2674"/>
@@ -1266,7 +1266,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2677"/>
         <source>Ctrl+1</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+1</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2682"/>
@@ -1276,7 +1276,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2685"/>
         <source>Ctrl+2</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+2</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2690"/>
@@ -1286,7 +1286,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2693"/>
         <source>Ctrl+3</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+3</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2698"/>
@@ -1296,7 +1296,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2701"/>
         <source>Ctrl+4</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+4</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2706"/>
@@ -1306,7 +1306,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2709"/>
         <source>Ctrl+5</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+5</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2714"/>
@@ -1316,107 +1316,107 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2717"/>
         <source>Ctrl+6</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+6</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2726"/>
         <source>&amp;Bold</source>
-        <translation type="unfinished"></translation>
+        <translation>加粗（&amp;B）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2729"/>
         <source>Ctrl+B</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+B</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2738"/>
         <source>&amp;Italic</source>
-        <translation type="unfinished"></translation>
+        <translation>斜体（&amp;I）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2741"/>
         <source>Ctrl+I</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+I</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2750"/>
         <source>&amp;Strike</source>
-        <translation type="unfinished"></translation>
+        <translation>删除线（&amp;S）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2755"/>
         <source>&amp;Verbatim</source>
-        <translation type="unfinished"></translation>
+        <translation>逐字（&amp;V）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2760"/>
         <source>Su&amp;perscript</source>
-        <translation type="unfinished"></translation>
+        <translation>上标（&amp;P）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2763"/>
         <source>Ctrl++</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl++</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2768"/>
         <source>Subsc&amp;ript</source>
-        <translation type="unfinished"></translation>
+        <translation>下标（&amp;R）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2771"/>
         <source>Ctrl+-</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+-</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2776"/>
         <source>Co&amp;mment block</source>
-        <translation type="unfinished"></translation>
+        <translation>注释块（&amp;M）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2779"/>
         <source>Ctrl+Shift+C</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Shift+C</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2788"/>
         <source>Clear &amp;formats</source>
-        <translation type="unfinished"></translation>
+        <translation>清除格式（&amp;F）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2791"/>
         <source>Ctrl+0</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+0</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2796"/>
         <source>&amp;Comment line(s)</source>
-        <translation type="unfinished"></translation>
+        <translation>行注释（&amp;C）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2804"/>
         <source>&amp;Ordered list</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl>有序列表（&amp;O）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2813"/>
         <source>&amp;Unordered list</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl>无序列表（&amp;U）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2818"/>
         <source>B&amp;lockquote</source>
-        <translation type="unfinished"></translation>
+        <translation>引用块（&amp;L）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1368"/>
         <source>Remove selected plot step(s)</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl>删除选择的情节段</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="554"/>
         <source>The file {} does not exist. Has it been moved or deleted?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl>文件 {} 不存在。是否被移动或删除？</translation>
     </message>
 </context>
 <context>
@@ -1509,7 +1509,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="426"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If you check this option, your project will be save as one single file. Easier to copy or backup, but does not allow collaborative editing, or versionning.&lt;br/&gt;If this is unchecked, your project will be save as a folder containing many small files.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;如果你勾选了这个选项，你的项目会被保存到单个文件中。更易于复制与备份，但不允许协作编辑或者版本控制。&lt;br/&gt;如果不勾选，你的项目会被保存为一个包含许多小文件的文件夹。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="432"/>
@@ -1568,7 +1568,7 @@ Use that if you get YAML related error.</source>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="782"/>
-        <source>Views Views settings</source>
+        <source>Views settings</source>
         <translation>查看设置</translation>
     </message>
     <message>
@@ -1594,7 +1594,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1942"/>
         <source>POV</source>
-        <translation type="unfinished"></translation>
+        <translation>POV</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1947"/>
@@ -1709,7 +1709,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2780"/>
         <source>Ctrl+S</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+S</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3160"/>
@@ -1779,7 +1779,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3542"/>
         <source>%</source>
-        <translation type="unfinished"></translation>
+        <translation>%</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3558"/>
@@ -2197,12 +2197,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/basicItemView_ui.ui" line="14"/>
         <source>Form</source>
-        <translation>表格</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/basicItemView_ui.ui" line="38"/>
         <source>POV:</source>
-        <translation type="unfinished"></translation>
+        <translation>POV：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/basicItemView_ui.ui" line="55"/>
@@ -2266,7 +2266,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/cheatSheet_ui.ui" line="14"/>
         <source>Form</source>
-        <translation>表格</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/cheatSheet_ui.ui" line="46"/>
@@ -2358,7 +2358,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/collapsibleDockWidgets.py" line="26"/>
         <source>Dock Widgets Toolbar</source>
-        <translation type="unfinished"></translation>
+        <translation>Dock Widgets 工具栏</translation>
     </message>
 </context>
 <context>
@@ -2366,7 +2366,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/editors/completer_ui.ui" line="14"/>
         <source>Form</source>
-        <translation>表格</translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -2387,7 +2387,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/editors/editorWidget_ui.ui" line="14"/>
         <source>Form</source>
-        <translation>表格</translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -2423,7 +2423,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/exporters/exporter.py" line="64"/>
         <source>{} (not implemented yet)</source>
-        <translation type="unfinished"></translation>
+        <translation>{} （尚未实现）</translation>
     </message>
 </context>
 <context>
@@ -2431,7 +2431,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="14"/>
         <source>Form</source>
-        <translation>表格</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="50"/>
@@ -2708,7 +2708,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.ui" line="41"/>
         <source>General</source>
-        <translation type="unfinished">通用</translation>
+        <translation>通用</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.ui" line="55"/>
@@ -2718,7 +2718,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.ui" line="65"/>
         <source>\n---\n</source>
-        <translation type="unfinished"></translation>
+        <translation>\n---\n</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.ui" line="72"/>
@@ -2728,12 +2728,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.ui" line="86"/>
         <source>Import under:</source>
-        <translation type="unfinished">导入到：</translation>
+        <translation>导入到：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.ui" line="93"/>
         <source>Import in a top-level folder</source>
-        <translation type="unfinished">导入到顶层文件夹</translation>
+        <translation>导入到顶层文件夹</translation>
     </message>
 </context>
 <context>
@@ -2790,7 +2790,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/editors/locker_ui.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker_ui.ui" line="26"/>
@@ -2835,7 +2835,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/editors/locker.py" line="100"/>
         <source>{}:{}</source>
-        <translation type="unfinished"></translation>
+        <translation>{}:{}</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker.py" line="102"/>
@@ -2858,7 +2858,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.ui" line="67"/>
@@ -2878,7 +2878,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.ui" line="198"/>
         <source>F11</source>
-        <translation type="unfinished"></translation>
+        <translation>F11</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.ui" line="47"/>
@@ -2888,7 +2888,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.ui" line="57"/>
         <source>Alt+Up</source>
-        <translation type="unfinished"></translation>
+        <translation>Alt+Up</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="243"/>
@@ -2911,7 +2911,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/exporter/manuskript/markdown.py" line="57"/>
         <source>Markdown</source>
-        <translation type="unfinished"></translation>
+        <translation>Markdown</translation>
     </message>
 </context>
 <context>
@@ -2919,7 +2919,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.ui" line="41"/>
@@ -3220,7 +3220,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Falling action</source>
-        <translation type="unfinished"></translation>
+        <translation>急转直下的行动</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3417,12 +3417,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/propertiesView_ui.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/propertiesView_ui.ui" line="195"/>
         <source>POV</source>
-        <translation type="unfinished"></translation>
+        <translation>POV</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/propertiesView_ui.ui" line="215"/>
@@ -3455,162 +3455,162 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/references.py" line="504"/>
         <source>Not a reference: {}.</source>
-        <translation type="unfinished"></translation>
+        <translation>不是一个参考文档：{}。</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="402"/>
         <source>Unknown reference: {}.</source>
-        <translation type="unfinished"></translation>
+        <translation>未知参考文档：{}。</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="103"/>
         <source>Path:</source>
-        <translation type="unfinished"></translation>
+        <translation>路径：</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="104"/>
         <source>Stats:</source>
-        <translation type="unfinished"></translation>
+        <translation>统计：</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="105"/>
         <source>POV:</source>
-        <translation type="unfinished"></translation>
+        <translation>POV：</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="106"/>
         <source>Status:</source>
-        <translation type="unfinished"></translation>
+        <translation>状态：</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="107"/>
         <source>Label:</source>
-        <translation type="unfinished"></translation>
+        <translation>标签：</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="108"/>
         <source>Short summary:</source>
-        <translation type="unfinished"></translation>
+        <translation>短摘要：</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="109"/>
         <source>Long summary:</source>
-        <translation type="unfinished"></translation>
+        <translation>长摘要：</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="110"/>
         <source>Notes:</source>
-        <translation type="unfinished"></translation>
+        <translation>笔记：</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="201"/>
         <source>Basic info</source>
-        <translation type="unfinished"></translation>
+        <translation>基本信息</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="202"/>
         <source>Detailed info</source>
-        <translation type="unfinished"></translation>
+        <translation>详细信息</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="203"/>
         <source>POV of:</source>
-        <translation type="unfinished"></translation>
+        <translation>POV 对象：</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="367"/>
         <source>Go to {}.</source>
-        <translation type="unfinished"></translation>
+        <translation>转到 {}。</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="362"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>描述</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="282"/>
         <source>Result</source>
-        <translation type="unfinished"></translation>
+        <translation>结果</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="283"/>
         <source>Characters</source>
-        <translation type="unfinished"></translation>
+        <translation>角色</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="284"/>
         <source>Resolution steps</source>
-        <translation type="unfinished"></translation>
+        <translation>解决步骤</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="363"/>
         <source>Passion</source>
-        <translation type="unfinished"></translation>
+        <translation>动机</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="364"/>
         <source>Conflict</source>
-        <translation type="unfinished"></translation>
+        <translation>冲突</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="501"/>
         <source>&lt;b&gt;Unknown reference:&lt;/b&gt; {}.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;未知参考&lt;/b&gt; {}。</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="509"/>
         <source>Folder: &lt;b&gt;{}&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>文件夹：&lt;b&gt;{}&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="511"/>
         <source>Text: &lt;b&gt;{}&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>文本：&lt;b&gt;{}&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="516"/>
         <source>Character: &lt;b&gt;{}&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>角色：&lt;b&gt;{}&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="519"/>
         <source>Plot: &lt;b&gt;{}&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>情节：&lt;b&gt;{}&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="522"/>
         <source>World: &lt;b&gt;{name}&lt;/b&gt;{path}</source>
-        <translation type="unfinished"></translation>
+        <translation>世界：&lt;b&gt;{name}&lt;/b&gt;{path}</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="596"/>
         <source>Referenced in:</source>
-        <translation type="unfinished"></translation>
+        <translation>引用于：</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="212"/>
         <source>Motivation</source>
-        <translation type="unfinished"></translation>
+        <translation>激励</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="213"/>
         <source>Goal</source>
-        <translation type="unfinished"></translation>
+        <translation>目标</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="215"/>
         <source>Epiphany</source>
-        <translation type="unfinished"></translation>
+        <translation>顿悟</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="216"/>
         <source>Short summary</source>
-        <translation type="unfinished"></translation>
+        <translation>短摘要</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="217"/>
         <source>Longer summary</source>
-        <translation type="unfinished"></translation>
+        <translation>长摘要</translation>
     </message>
 </context>
 <context>
@@ -3774,7 +3774,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="605"/>
         <source>New status</source>
-        <translation type="unfinished"></translation>
+        <translation>新建状态</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="626"/>
@@ -3784,17 +3784,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="662"/>
         <source>newtheme</source>
-        <translation type="unfinished"></translation>
+        <translation>新主题</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="672"/>
         <source>New theme</source>
-        <translation type="unfinished"></translation>
+        <translation>新建主题</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="704"/>
         <source> (read-only)</source>
-        <translation type="unfinished"></translation>
+        <translation> （只读）</translation>
     </message>
 </context>
 <context>
@@ -3903,7 +3903,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="324"/>
         <source>Various</source>
-        <translation type="unfinished"></translation>
+        <translation>可变的</translation>
     </message>
 </context>
 <context>
@@ -3911,47 +3911,47 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/editors/textFormat_ui.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/textFormat.py" line="18"/>
         <source>CTRL+B</source>
-        <translation type="unfinished"></translation>
+        <translation>CTRL+B</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/textFormat.py" line="19"/>
         <source>CTRL+I</source>
-        <translation type="unfinished"></translation>
+        <translation>CTRL+I</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/textFormat.py" line="20"/>
         <source>CTRL+U</source>
-        <translation type="unfinished"></translation>
+        <translation>CTRL+U</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/textFormat.py" line="21"/>
         <source>CTRL+P</source>
-        <translation type="unfinished"></translation>
+        <translation>CTRL+P</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/textFormat.py" line="22"/>
         <source>CTRL+L</source>
-        <translation type="unfinished"></translation>
+        <translation>CTRL+L</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/textFormat.py" line="23"/>
         <source>CTRL+E</source>
-        <translation type="unfinished"></translation>
+        <translation>CTRL+E</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/textFormat.py" line="24"/>
         <source>CTRL+R</source>
-        <translation type="unfinished"></translation>
+        <translation>CTRL+R</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/textFormat.py" line="25"/>
         <source>CTRL+J</source>
-        <translation type="unfinished"></translation>
+        <translation>CTRL+J</translation>
     </message>
 </context>
 <context>
@@ -3982,12 +3982,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/welcome_ui.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome_ui.ui" line="50"/>
         <source>1</source>
-        <translation type="unfinished"></translation>
+        <translation>1</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome_ui.ui" line="55"/>
@@ -4077,7 +4077,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="169"/>
         <source>Manuskript</source>
-        <translation type="unfinished"></translation>
+        <translation>ManuSkript</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="175"/>
@@ -4097,7 +4097,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="202"/>
         <source>Empty fiction</source>
-        <translation type="unfinished"></translation>
+        <translation>空虚构效果</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="424"/>
@@ -4127,12 +4127,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="224"/>
         <source>Empty non-fiction</source>
-        <translation type="unfinished"></translation>
+        <translation>空非虚构效果</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="285"/>
         <source>words each.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">字（每项）。</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="288"/>
@@ -4142,7 +4142,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="312"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation>文本</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="315"/>
@@ -4152,52 +4152,52 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="352"/>
         <source>&lt;b&gt;Total:&lt;/b&gt; {} words (~ {} pages)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&lt;b&gt;总计：&lt;/b&gt; {} 字 (约 {} 页)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="373"/>
         <source>Fiction</source>
-        <translation type="unfinished"></translation>
+        <translation>虚构小说</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="379"/>
         <source>Non-fiction</source>
-        <translation type="unfinished"></translation>
+        <translation>非虚构小说</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="422"/>
         <source>Idea</source>
-        <translation type="unfinished"></translation>
+        <translation>创意</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="423"/>
         <source>Note</source>
-        <translation type="unfinished"></translation>
+        <translation>笔记</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="426"/>
         <source>Research</source>
-        <translation type="unfinished"></translation>
+        <translation>研究</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="434"/>
         <source>TODO</source>
-        <translation type="unfinished"></translation>
+        <translation>TODO</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="435"/>
         <source>First draft</source>
-        <translation type="unfinished"></translation>
+        <translation>初稿</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="436"/>
         <source>Second draft</source>
-        <translation type="unfinished"></translation>
+        <translation>二稿</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="437"/>
         <source>Final</source>
-        <translation type="unfinished"></translation>
+        <translation>完成稿</translation>
     </message>
 </context>
 <context>
