@@ -95,7 +95,7 @@
           </font>
          </property>
          <property name="title">
-          <string>Application settings</string>
+          <string>Program settings</string>
          </property>
          <layout class="QFormLayout" name="formLayout_13">
           <property name="fieldGrowthPolicy">
@@ -179,7 +179,7 @@
              </font>
             </property>
             <property name="text">
-             <string>You might need to restart manuskript in order for those settings to take effect properly and entirely.</string>
+             <string>Restart Manuskript ensures all settings are applied.</string>
             </property>
             <property name="wordWrap">
              <bool>true</bool>
