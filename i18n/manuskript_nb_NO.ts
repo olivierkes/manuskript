@@ -185,7 +185,7 @@
         <location filename="../manuskript/exporter/pandoc/PDF.py" line="19"/>
         <source>a valid LaTeX installation. Pandoc recommendations can be found on:
                      &lt;a href=&quot;https://pandoc.org/installing.html&quot;&gt;pandoc.org/installing.html&lt;/a&gt;. If you want Unicode support, you need XeLaTeX.</source>
-        <translation type="unfinished"></translation>
+        <translation>en gyldig LaTeX-installasjon. Pandoc anbefalinger er å finne på: &lt;a href=&quot;https://pandoc.org/installing.html&quot;&gt;pandoc.org/installing.html&lt;/a&gt;. Hvis du ønsker Unicode-støtte, trenger du XeLaTeX.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/plainText.py" line="10"/>
@@ -1338,12 +1338,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2750"/>
         <source>&amp;Strike</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Gjennomstrek</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2755"/>
         <source>&amp;Verbatim</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Verbatim</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2760"/>
@@ -1368,7 +1368,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2776"/>
         <source>Co&amp;mment block</source>
-        <translation type="unfinished"></translation>
+        <translation>Ko&amp;mmentarblokk</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2779"/>
@@ -1388,17 +1388,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2796"/>
         <source>&amp;Comment line(s)</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Kommentarlinje(r)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2804"/>
         <source>&amp;Ordered list</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Anordnet liste</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2813"/>
         <source>&amp;Unordered list</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Ikke anordnet liste</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2818"/>
@@ -1413,7 +1413,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/mainWindow.py" line="554"/>
         <source>The file {} does not exist. Has it been moved or deleted?</source>
-        <translation type="unfinished"></translation>
+        <translation>Filen {} finnes ikke. Har den blitt flyttet eller slettet?</translation>
     </message>
 </context>
 <context>
@@ -4407,7 +4407,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="246"/>
         <source>Natural resources</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Naturlige ressurser</translation>
     </message>
 </context>
 </TS>
