@@ -179,7 +179,7 @@
              </font>
             </property>
             <property name="text">
-             <string>Manuskript may have to be restarted for all settings to take effect.</string>
+             <string>Restarting Manuskript ensures all settings take effect.</string>
             </property>
             <property name="wordWrap">
              <bool>true</bool>
