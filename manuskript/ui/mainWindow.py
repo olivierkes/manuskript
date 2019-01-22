@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/mainWindow.ui'
 #
-# Created by: PyQt5 UI code generator 5.5.1
+# Created by: PyQt5 UI code generator 5.11.3
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -378,7 +378,7 @@ class Ui_MainWindow(object):
         self.scrollAreaPersoInfos.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.scrollAreaPersoInfos.setObjectName("scrollAreaPersoInfos")
         self.scrollAreaPersoInfosWidget = QtWidgets.QWidget()
-        self.scrollAreaPersoInfosWidget.setGeometry(QtCore.QRect(0, 0, 204, 606))
+        self.scrollAreaPersoInfosWidget.setGeometry(QtCore.QRect(0, 0, 252, 664))
         self.scrollAreaPersoInfosWidget.setObjectName("scrollAreaPersoInfosWidget")
         self.formLayout_8 = QtWidgets.QFormLayout(self.scrollAreaPersoInfosWidget)
         self.formLayout_8.setFieldGrowthPolicy(QtWidgets.QFormLayout.AllNonFixedFieldsGrow)
@@ -833,6 +833,7 @@ class Ui_MainWindow(object):
         self.layoutWidget = QtWidgets.QWidget(self.splitterOutlineH)
         self.layoutWidget.setObjectName("layoutWidget")
         self.verticalLayout_14 = QtWidgets.QVBoxLayout(self.layoutWidget)
+        self.verticalLayout_14.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_14.setObjectName("verticalLayout_14")
         self.splitterOutlineV = QtWidgets.QSplitter(self.layoutWidget)
         self.splitterOutlineV.setOrientation(QtCore.Qt.Vertical)
@@ -1029,7 +1030,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.addWidget(self.stack)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1112, 30))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1112, 25))
         self.menubar.setObjectName("menubar")
         self.menuFile = QtWidgets.QMenu(self.menubar)
         self.menuFile.setObjectName("menuFile")
@@ -1270,6 +1271,8 @@ class Ui_MainWindow(object):
         self.actFormatList.setObjectName("actFormatList")
         self.actFormatBlockquote = QtWidgets.QAction(MainWindow)
         self.actFormatBlockquote.setObjectName("actFormatBlockquote")
+        self.actToolTargets = QtWidgets.QAction(MainWindow)
+        self.actToolTargets.setObjectName("actToolTargets")
         self.menuFile.addAction(self.actOpen)
         self.menuFile.addAction(self.menuRecents.menuAction())
         self.menuFile.addAction(self.actSave)
@@ -1284,6 +1287,7 @@ class Ui_MainWindow(object):
         self.menuHelp.addAction(self.actAbout)
         self.menuTools.addAction(self.actSpellcheck)
         self.menuTools.addAction(self.actToolFrequency)
+        self.menuTools.addAction(self.actToolTargets)
         self.mnuHeader.addAction(self.actHeaderSetextL1)
         self.mnuHeader.addAction(self.actHeaderSetextL2)
         self.mnuHeader.addSeparator()
@@ -1539,6 +1543,9 @@ class Ui_MainWindow(object):
         self.actFormatOrderedList.setText(_translate("MainWindow", "&Ordered list"))
         self.actFormatList.setText(_translate("MainWindow", "&Unordered list"))
         self.actFormatBlockquote.setText(_translate("MainWindow", "B&lockquote"))
+        self.actToolTargets.setText(_translate("MainWindow", "&Targets"))
+        self.actToolTargets.setToolTip(_translate("MainWindow", "Draft and session word count targets"))
+        self.actToolTargets.setShortcut(_translate("MainWindow", "Ctrl+,"))
 
 from manuskript.ui.cheatSheet import cheatSheet
 from manuskript.ui.editors.mainEditor import mainEditor
@@ -1554,3 +1561,13 @@ from manuskript.ui.views.sldImportance import sldImportance
 from manuskript.ui.views.storylineView import storylineView
 from manuskript.ui.views.treeView import treeView
 from manuskript.ui.welcome import welcome
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    MainWindow = QtWidgets.QMainWindow()
+    ui = Ui_MainWindow()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
+    sys.exit(app.exec_())
+

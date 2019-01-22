@@ -27,6 +27,7 @@ from manuskript.ui.exporters.exporter import exporterDialog
 from manuskript.ui.helpLabel import helpLabel
 from manuskript.ui.mainWindow import Ui_MainWindow
 from manuskript.ui.tools.frequencyAnalyzer import frequencyAnalyzer
+from manuskript.ui.tools.targets import targetsDialog
 from manuskript.ui.views.outlineDelegates import outlineCharacterDelegate
 from manuskript.ui.views.plotDelegate import plotDelegate
 from manuskript.ui.views.MDEditView import MDEditView
@@ -67,6 +68,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self._defaultCursorFlashTime = 1000 # Overriden at startup with system
                                             # value. In manuskript.main.
         self._autoLoadProject = None  # Used to load a command line project
+        self.sessionStartWordCount = 0  # Used to track session targets
 
         self.readSettings()
 
@@ -177,9 +179,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # Main Menu:: Tool
         self.actToolFrequency.triggered.connect(self.frequencyAnalyzer)
+        self.actToolTargets.triggered.connect(self.sessionTargets)
         self.actAbout.triggered.connect(self.about)
 
         self.makeUIConnections()
+
+        # Tools non-modal windows
+        self.td = None  # Targets Dialog
+        self.fw = None  # Frequency Window
 
         # self.loadProject(os.path.join(appPath(), "test_project.zip"))
 
@@ -635,6 +642,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.currentProject = project
         QSettings().setValue("lastProject", project)
 
+        item = self.mdlOutline.rootItem
+        wc = item.data(Outline.wordCount)
+        self.sessionStartWordCount = wc
+
         # Show main Window
         self.switchToProject()
 
@@ -746,6 +757,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
             # closeEvent
             # QMainWindow.closeEvent(self, event)  # Causing segfaults?
+
+        # Close non-modal windows if they are open.
+        if self.td:
+            self.td.close()
+        if self.fw:
+            self.fw.close()
 
     def startTimerNoChanges(self):
         if settings.autoSaveNoChanges:
@@ -1340,6 +1357,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def frequencyAnalyzer(self):
         self.fw = frequencyAnalyzer(self)
         self.fw.show()
+
+    def sessionTargets(self):
+        self.td = targetsDialog(self)
+        self.td.show()
 
     ###############################################################################
     # VIEW MENU
