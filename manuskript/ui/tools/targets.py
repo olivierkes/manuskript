@@ -17,7 +17,6 @@ class targetsDialog(QWidget, Ui_targets):
         self.setWindowIcon(QIcon(iconPic))
 
         self.session_reset.clicked.connect(self.resetSession)
-        #self.mw.onClose.connect(self.parentClosed)
         
         self.tick()
 
@@ -35,7 +34,6 @@ class targetsDialog(QWidget, Ui_targets):
     def resetSession(self):
         wc, _, _ = self.getDraftStats()
         self.mw.sessionStartWordCount = wc 
-        print('reset session')
         self.tick()
 
     @staticmethod
@@ -44,7 +42,6 @@ class targetsDialog(QWidget, Ui_targets):
 
     def tick(self):
         wc, goal, progress = self.getDraftStats()
-        print(wc, goal, progress)
         
         self.draft_wc_label.setText(locale.format("%d", wc, grouping=True))
         self.draft_goal_label.setText(locale.format("%d", goal, grouping=True))
@@ -57,10 +54,6 @@ class targetsDialog(QWidget, Ui_targets):
             self.session_progress_bar.setValue(0)
         else:
             self.session_progress_bar.setValue(self.progress_bar_value(session_wc / self.session_target.value()))
-        print(self.mw.sessionStartWordCount, session_wc, self.session_progress_bar.value())
 
     def closeEvent(self, event):
         self.timer = None
-
-    def parentClosed(self):
-        print('App closed')
