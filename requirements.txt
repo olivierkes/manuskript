@@ -1,0 +1,5 @@
+python-qt5
+lxml
+webkit
+pyenchant
+markdown
