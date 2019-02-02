@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="2.0" language="fr" sourcelanguage="en">
+<!DOCTYPE TS>
+<TS version="2.0" language="fr" sourcelanguage="en">
 <context>
     <name>Export</name>
     <message>
@@ -28,7 +29,7 @@
     formats.&lt;/p&gt;
     &lt;p&gt;Website: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
     </source>
-        <translation type="unfinished">&lt;p&gt;Convertisseur universel. Permet de convertir de markdown à un grand nombre de formats.&lt;/p&gt;
+        <translation>&lt;p&gt;Un convertisseur universel de document. Peut être utilisé pour convertir du markdown dans un grand nombre de formats.&lt;/p&gt;
 &lt;p&gt;Site internet: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
     </translation>
     </message>
@@ -1107,7 +1108,7 @@ Cochez ceci si vous avez des erreurs liées à YAML.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2521"/>
-        <source>&amp;Import&#xe2;&#x80;&#xa6;</source>
+        <source>&amp;Importâ¦</source>
         <translation>&amp;Importer…</translation>
     </message>
     <message>
@@ -1147,7 +1148,7 @@ Cochez ceci si vous avez des erreurs liées à YAML.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2569"/>
-        <source>&amp;Split&#xe2;&#x80;&#xa6;</source>
+        <source>&amp;Splitâ¦</source>
         <translation>&amp;Diviser…</translation>
     </message>
     <message>
@@ -2543,12 +2544,12 @@ des lignes:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="788"/>
-        <source>Replace ... with &#xe2;&#x80;&#xa6;</source>
+        <source>Replace ... with â¦</source>
         <translation>Remplacer ... avec …</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="795"/>
-        <source>Replace --- with &#xe2;&#x80;&#x94;</source>
+        <source>Replace --- with â</source>
         <translation>Remplacer --- avec —</translation>
     </message>
     <message>
