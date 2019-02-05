@@ -60,7 +60,7 @@ class plainText(basicFormat):
             filename = ""
 
         filename, filter = QFileDialog.getSaveFileName(settingsWidget.parent(),
-                                                       caption=qApp.translate("Export", "Chose output file..."),
+                                                       caption=qApp.translate("Export", "Choose output file..."),
                                                        filter=filter,
                                                        directory=filename)
 
