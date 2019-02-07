@@ -120,6 +120,10 @@ class fullScreenEditor(QWidget):
         # self.showMaximized()
         # self.show()
 
+    def __del__(self):
+        # print("Leaving fullScreenEditor via Destructor event", flush=True)
+        self.showNormal()
+
     def setLocked(self, val):
         self._locked = val
         self.btnClose.setVisible(not val)
@@ -221,6 +225,8 @@ class fullScreenEditor(QWidget):
     def keyPressEvent(self, event):
         if event.key() in [Qt.Key_Escape, Qt.Key_F11] and \
                 not self._locked:
+            # print("Leaving fullScreenEditor via keyPressEvent", flush=True)
+            self.showNormal()
             self.close()
         else:
             QWidget.keyPressEvent(self, event)
