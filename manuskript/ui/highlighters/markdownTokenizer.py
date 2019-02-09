@@ -279,7 +279,9 @@ class MarkdownTokenizer(HighlightTokenizer):
 
         if level > 0 and level < len(text):
             # Count how many pound signs are at the end of the text.
-            while escapedText[-trailingPoundCount -1] == "#":
+            # Ignore starting pound signs when calculating trailing signs
+            while level + trailingPoundCount < len(text) and \
+                    escapedText[-trailingPoundCount -1] == "#":
                 trailingPoundCount += 1
 
             token = Token()
