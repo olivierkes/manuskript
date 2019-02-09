@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-from PyQt5.QtWidgets import qApp
+from PyQt5.QtWidgets import qApp, QTextEdit
 from PyQt5.QtCore import QUrl
 
 from manuskript.exporter.manuskript import HTML as MskHTML
@@ -40,4 +40,8 @@ class HTML(abstractPlainText):
         previewWidget.widget(0).setPlainText(src)
         self.preparesTextEditView(previewWidget.widget(1), settings["Preview"]["PreviewFont"])
         previewWidget.widget(1).setPlainText(html)
-        previewWidget.widget(2).setHtml(html, QUrl.fromLocalFile(path))
+        w2 = previewWidget.widget(2)
+        if isinstance(w2, QTextEdit):
+            w2.setHtml(html)
+        else:
+            w2.setHtml(html, QUrl.fromLocalFile(path))
