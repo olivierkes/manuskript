@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="2.0" language="pl_PL" sourcelanguage="en">
+<!DOCTYPE TS>
+<TS version="2.0" language="pl_PL" sourcelanguage="en">
 <context>
     <name>Export</name>
     <message>
@@ -165,7 +166,7 @@ przez outliner.</translation>
     formats.&lt;/p&gt;
     &lt;p&gt;Website: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
     </source>
-        <translation type="unfinished">&lt;p&gt;Uniwersalny konwerter dokumentów. Może być używany do konwersji języka markdown do szerokiej gamy innych formatów.&lt;/p&gt;
+        <translation>&lt;p&gt;Uniwersalny konwerter dokumentów. Może być używany do konwersji języka Markdown do szerokiej gamy innych formatów.&lt;/p&gt;
 &lt;p&gt;Strona internetowa: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
     </translation>
     </message>
@@ -1045,7 +1046,7 @@ i stworzy pozycje dla każdego tytułu.&lt;br/&gt;&amp;nbsp;</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2658"/>
         <source>&amp;Level 1 (setext)</source>
-        <translation type="unfinished">&amp;Poziom 1 (setext)</translation>
+        <translation>&amp;Poziom 1 (setext)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2661"/>
@@ -1591,7 +1592,7 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="737"/>
         <source>revisions per week till the end of time</source>
-        <translation type="unfinished">korekty co tydzień od początku całego okresu</translation>
+        <translation>korekty co tydzień do końca świata</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="782"/>
@@ -1671,7 +1672,7 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1066"/>
         <source>Show &amp;word count</source>
-        <translation type="unfinished">Pokaż liczbę słó&amp;w</translation>
+        <translation>Pokaż liczbę słów</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1079"/>
@@ -1836,7 +1837,7 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2206"/>
         <source>Text area</source>
-        <translation type="unfinished">Obszar tekstowy</translation>
+        <translation>Obszar tekstu</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2218"/>
@@ -2242,7 +2243,7 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message>
         <location filename="../manuskript/models/characterModel.py" line="192"/>
         <source>Name</source>
-        <translation type="unfinished">Nazwa</translation>
+        <translation>Imię</translation>
     </message>
     <message>
         <location filename="../manuskript/models/characterModel.py" line="194"/>
@@ -2547,12 +2548,12 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="788"/>
-        <source>Replace ... with &#xe2;&#x80;&#xa6;</source>
-        <translation type="unfinished">Zastąp ... znakiem …</translation>
+        <source>Replace ... with â¦</source>
+        <translation>Zastąp ... znakiem â¦</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="795"/>
-        <source>Replace --- with &#xe2;&#x80;&#x94;</source>
+        <source>Replace --- with â</source>
         <translation type="unfinished">Zastąp --- znakiem —</translation>
     </message>
     <message>
@@ -2598,7 +2599,7 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1067"/>
         <source>If checked, uses regular expression for replacement. If unchecked, replaced as plain text.</source>
-        <translation type="unfinished">Jeśli zaznaczone, używaj regularnych wyrażeń dla zastępowania. Jeśli odznaczone, zastępuje jako zwykły tekst.</translation>
+        <translation>Jeśli zaznaczone, używaj regularnych wyrażeń do zastępowania. Jeśli odznaczone, zastępuje jako zwykły tekst.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1151"/>
@@ -3292,7 +3293,7 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Call to adventure</source>
-        <translation type="unfinished">Wezwanie do przygody</translation>
+        <translation>Zew przygody</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3411,7 +3412,7 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message>
         <location filename="../manuskript/models/plotsProxyModel.py" line="23"/>
         <source>Secondary</source>
-        <translation type="unfinished">Poboczni</translation>
+        <translation>Poboczne</translation>
     </message>
     <message>
         <location filename="../manuskript/models/plotsProxyModel.py" line="24"/>
@@ -3592,7 +3593,7 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message>
         <location filename="../manuskript/models/references.py" line="509"/>
         <source>Folder: &lt;b&gt;{}&lt;/b&gt;</source>
-        <translation type="unfinished">Folder: &lt;b&gt;{}&lt;/b&gt;</translation>
+        <translation>Folder: &lt;b&gt;1{}&lt;/b&gt;2</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="511"/>
