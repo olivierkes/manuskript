@@ -470,7 +470,7 @@ class textEditView(QTextEdit):
 
         # Check if the selected word is misspelled and offer spelling
         # suggestions if it is.
-        if cursor.hasSelection():
+        if self._dict and cursor.hasSelection():
             text = str(cursor.selectedText())
             valid = self._dict.check(text)
             selectedWord = cursor.selectedText()
