@@ -1,4 +1,5 @@
 # Manuskript
+[![Packaging status](https://repology.org/badge/tiny-repos/manuskript.svg)](https://repology.org/metapackage/manuskript/versions)
 
 [Manuskript](http://www.theologeek.ch/manuskript) is an open-source
 tool for writers.
