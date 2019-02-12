@@ -123,6 +123,7 @@ class fullScreenEditor(QWidget):
     def __del__(self):
         # print("Leaving fullScreenEditor via Destructor event", flush=True)
         self.showNormal()
+        self.close()
 
     def setLocked(self, val):
         self._locked = val
