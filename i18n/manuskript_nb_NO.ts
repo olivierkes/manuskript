@@ -1098,12 +1098,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1351"/>
         <source>Add plot step</source>
-        <translation type="unfinished"></translation>
+        <translation>Legg til plottsteg</translation>
     </message>
     <message encoding="UTF-8">
         <location filename="../manuskript/ui/mainWindow.ui" line="2521"/>
         <source>&amp;Import…</source>
-        <translation></translation>
+        <translation>&amp;Importer…</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2524"/>
@@ -1348,7 +1348,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2760"/>
         <source>Su&amp;perscript</source>
-        <translation type="unfinished"></translation>
+        <translation>He&amp;vet skrift</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2763"/>
@@ -1358,7 +1358,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2768"/>
         <source>Subsc&amp;ript</source>
-        <translation type="unfinished"></translation>
+        <translation>Senket sk&amp;rift</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2771"/>
@@ -1403,12 +1403,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2818"/>
         <source>B&amp;lockquote</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">B&amp;lokksitat</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1368"/>
         <source>Remove selected plot step(s)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Fjern valgte plottsteg</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="554"/>
@@ -1586,7 +1586,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1937"/>
         <source>Nothing</source>
-        <translation></translation>
+        <translation>Ingenting</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1942"/>
@@ -1601,12 +1601,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1952"/>
         <source>Progress</source>
-        <translation></translation>
+        <translation>Framdrift</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1957"/>
         <source>Compile</source>
-        <translation></translation>
+        <translation>Kompiler</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1779"/>
@@ -1616,12 +1616,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1827"/>
         <source>Background color:</source>
-        <translation></translation>
+        <translation>Bakgrunnsfarge:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1041"/>
         <source>Folders</source>
-        <translation></translation>
+        <translation>Mapper</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1053"/>
@@ -1631,12 +1631,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1162"/>
         <source>Show summary</source>
-        <translation></translation>
+        <translation>Vis sammendrag</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1105"/>
         <source>&amp;Nothing</source>
-        <translation></translation>
+        <translation>&amp;Ingenting</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1124"/>
@@ -1651,27 +1651,27 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1416"/>
         <source>Visible columns</source>
-        <translation></translation>
+        <translation>Synlige kolonner</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1428"/>
         <source>Goal</source>
-        <translation></translation>
+        <translation>Mål</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1444"/>
         <source>Word count</source>
-        <translation></translation>
+        <translation>Antall ord</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1460"/>
         <source>Percentage</source>
-        <translation></translation>
+        <translation>Prosentsats</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1540"/>
         <source>Title</source>
-        <translation></translation>
+        <translation>Tittel</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1571"/>
@@ -1681,7 +1681,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1716"/>
         <source>Item colors</source>
-        <translation></translation>
+        <translation>Elementfarger</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1875"/>
@@ -1691,12 +1691,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1923"/>
         <source>Corner color:</source>
-        <translation></translation>
+        <translation>Hjørnefarge:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1583"/>
         <source>Background</source>
-        <translation></translation>
+        <translation>Bakgrunn</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3418"/>
@@ -1726,27 +1726,27 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2104"/>
         <source>Family:</source>
-        <translation></translation>
+        <translation>Familie:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3461"/>
         <source>Size:</source>
-        <translation></translation>
+        <translation>Størrelse:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3475"/>
         <source>Misspelled:</source>
-        <translation></translation>
+        <translation>Feilstavet:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1999"/>
         <source>Background:</source>
-        <translation></translation>
+        <translation>Bakgrunn:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2315"/>
         <source>Paragraphs</source>
-        <translation></translation>
+        <translation>Avsnitt</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3502"/>
@@ -1806,7 +1806,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3000"/>
         <source>Edit</source>
-        <translation></translation>
+        <translation>Rediger</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3010"/>
@@ -1821,22 +1821,22 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3070"/>
         <source>Apply</source>
-        <translation></translation>
+        <translation>Legg til</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3083"/>
         <source>Cancel</source>
-        <translation></translation>
+        <translation>Avbryt</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3113"/>
         <source>Window Background</source>
-        <translation></translation>
+        <translation>Vindusbakgrunn</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3118"/>
         <source>Text Background</source>
-        <translation></translation>
+        <translation>Tekstbakgrunn</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3123"/>
@@ -1846,7 +1846,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3128"/>
         <source>Paragraph Options</source>
-        <translation></translation>
+        <translation>Avsnittsvalg</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3170"/>
@@ -1866,27 +1866,27 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3188"/>
         <source>Centered</source>
-        <translation></translation>
+        <translation>Sentrert</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3287"/>
         <source>Stretched</source>
-        <translation></translation>
+        <translation>Strukket</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3198"/>
         <source>Scaled</source>
-        <translation></translation>
+        <translation>Skalert</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3203"/>
         <source>Zoomed</source>
-        <translation></translation>
+        <translation>Forstørret</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3238"/>
         <source>Opacity:</source>
-        <translation></translation>
+        <translation>Dekkevne:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3264"/>
@@ -1896,12 +1896,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3652"/>
         <source>Left</source>
-        <translation></translation>
+        <translation>Venstre</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3661"/>
         <source>Center</source>
-        <translation></translation>
+        <translation>Sentrert</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3670"/>
@@ -1911,12 +1911,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3295"/>
         <source>Width:</source>
-        <translation></translation>
+        <translation>Bredde:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3346"/>
         <source>Corner radius:</source>
-        <translation></translation>
+        <translation>Hjørneradius:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3353"/>
@@ -1941,7 +1941,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2592"/>
         <source>Cursor</source>
-        <translation></translation>
+        <translation>Peker</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2604"/>
@@ -1951,22 +1951,22 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2327"/>
         <source>Alignment:</source>
-        <translation></translation>
+        <translation>Justering:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3679"/>
         <source>Justify</source>
-        <translation></translation>
+        <translation>Juster</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3691"/>
         <source>Alignment</source>
-        <translation></translation>
+        <translation>Justering</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="992"/>
         <source>Icon Size</source>
-        <translation></translation>
+        <translation>Ikonstørrelse</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1004"/>
@@ -2006,27 +2006,27 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1092"/>
         <source>Show summar&amp;y</source>
-        <translation></translation>
+        <translation>Vis sammendr&amp;ag</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1149"/>
         <source>Show p&amp;rogress</source>
-        <translation></translation>
+        <translation>Vis f&amp;remdrift</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1687"/>
         <source>Old st&amp;yle</source>
-        <translation></translation>
+        <translation>Gammel st&amp;il</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2031"/>
         <source>Transparent</source>
-        <translation></translation>
+        <translation>Gjennomsiktig</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2076"/>
         <source>Restore defaults</source>
-        <translation></translation>
+        <translation>Gjenopprett forvalg</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="113"/>
@@ -2046,7 +2046,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="182"/>
         <source>You might need to restart manuskript in order for those settings to take effect properly and entirely.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Det kan hende du må starte Manuskript på ny for at endringene skal tre i effekt ordentlig.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1066"/>
@@ -2104,7 +2104,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="490"/>
         <source>&amp;Add to dictionary</source>
-        <translation></translation>
+        <translation>&amp;Legg til i ordbok</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="503"/>
@@ -2117,7 +2117,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/about_ui.ui" line="17"/>
         <source>About Manuskript</source>
-        <translation></translation>
+        <translation>Om Manuskript</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/about_ui.ui" line="50"/>
@@ -2135,7 +2135,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/about.py" line="41"/>
         <source>Software Versions in Use:</source>
-        <translation></translation>
+        <translation type="unfinished">Programvareversjoner i bruk:</translation>
     </message>
 </context>
 <context>
@@ -2143,7 +2143,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="173"/>
         <source>Title</source>
-        <translation></translation>
+        <translation>Tittel</translation>
     </message>
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="175"/>
@@ -2163,17 +2163,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="181"/>
         <source>Compile</source>
-        <translation></translation>
+        <translation>Kompiler</translation>
     </message>
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="183"/>
         <source>Word count</source>
-        <translation></translation>
+        <translation>Antall ord</translation>
     </message>
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="185"/>
         <source>Goal</source>
-        <translation></translation>
+        <translation>Mål</translation>
     </message>
 </context>
 <context>
@@ -2181,7 +2181,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/main.py" line="52"/>
         <source>Loaded translation: {}.</source>
-        <translation></translation>
+        <translation>Lastet inn oversettelse: {}.</translation>
     </message>
     <message>
         <location filename="../manuskript/main.py" line="55"/>
@@ -2194,7 +2194,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/basicItemView_ui.ui" line="14"/>
         <source>Form</source>
-        <translation></translation>
+        <translation>Skjema</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/basicItemView_ui.ui" line="38"/>
@@ -2204,22 +2204,22 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/basicItemView_ui.ui" line="55"/>
         <source>Goal:</source>
-        <translation></translation>
+        <translation>Mål:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/basicItemView_ui.ui" line="80"/>
         <source>Word count</source>
-        <translation></translation>
+        <translation>Antall ord</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/basicItemView_ui.ui" line="92"/>
         <source>One line summary</source>
-        <translation></translation>
+        <translation>Énlinjessammendrag</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/basicItemView_ui.ui" line="99"/>
         <source>Few sentences summary:</source>
-        <translation></translation>
+        <translation>Sammendrag bestående av noen setninger:</translation>
     </message>
 </context>
 <context>
@@ -2227,7 +2227,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/characterModel.py" line="168"/>
         <source>New character</source>
-        <translation></translation>
+        <translation>Nytt tegn</translation>
     </message>
     <message>
         <location filename="../manuskript/models/characterModel.py" line="192"/>
@@ -2237,7 +2237,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/characterModel.py" line="194"/>
         <source>Value</source>
-        <translation></translation>
+        <translation>Verdi</translation>
     </message>
 </context>
 <context>
@@ -2245,12 +2245,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/characterTreeView.py" line="90"/>
         <source>Main</source>
-        <translation></translation>
+        <translation>Hoved</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/characterTreeView.py" line="90"/>
         <source>Secondary</source>
-        <translation></translation>
+        <translation>Sekundær</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/characterTreeView.py" line="90"/>
@@ -2263,12 +2263,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/cheatSheet_ui.ui" line="14"/>
         <source>Form</source>
-        <translation></translation>
+        <translation>Skjema</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/cheatSheet_ui.ui" line="46"/>
         <source>Filter (type the name of anything in your project)</source>
-        <translation></translation>
+        <translation>Filtrer (skriv inn navnet på noe i prosjektet ditt)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/cheatSheet.py" line="113"/>
@@ -2278,27 +2278,27 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/cheatSheet.py" line="113"/>
         <source>Secondary</source>
-        <translation></translation>
+        <translation>Sekundær</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/cheatSheet.py" line="113"/>
         <source>Main</source>
-        <translation></translation>
+        <translation>Hoved</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/cheatSheet.py" line="91"/>
         <source>Characters</source>
-        <translation></translation>
+        <translation>Tegn</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/cheatSheet.py" line="104"/>
         <source>Texts</source>
-        <translation></translation>
+        <translation>Tekster</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/cheatSheet.py" line="116"/>
         <source>Plots</source>
-        <translation></translation>
+        <translation>Plott</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/cheatSheet.py" line="120"/>
@@ -2316,12 +2316,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/cmbOutlineCharacterChoser.py" line="36"/>
         <source>Main</source>
-        <translation></translation>
+        <translation>Hoved</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/cmbOutlineCharacterChoser.py" line="36"/>
         <source>Secondary</source>
-        <translation></translation>
+        <translation>Sekundær</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/cmbOutlineCharacterChoser.py" line="36"/>
@@ -2331,7 +2331,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/cmbOutlineCharacterChoser.py" line="136"/>
         <source>Various</source>
-        <translation></translation>
+        <translation>Ymse</translation>
     </message>
 </context>
 <context>
@@ -2339,7 +2339,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/cmbOutlineLabelChoser.py" line="113"/>
         <source>Various</source>
-        <translation></translation>
+        <translation>Ymse</translation>
     </message>
 </context>
 <context>
@@ -2347,7 +2347,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/cmbOutlineStatusChoser.py" line="112"/>
         <source>Various</source>
-        <translation></translation>
+        <translation>Ymse</translation>
     </message>
 </context>
 <context>
@@ -2363,7 +2363,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/editors/completer_ui.ui" line="14"/>
         <source>Form</source>
-        <translation></translation>
+        <translation>Skjema</translation>
     </message>
 </context>
 <context>
@@ -2371,12 +2371,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/corkDelegate.py" line="62"/>
         <source>One line summary</source>
-        <translation></translation>
+        <translation>Énlinjessammendrag</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/corkDelegate.py" line="92"/>
         <source>Full summary</source>
-        <translation></translation>
+        <translation>Fullstendig sammendrag</translation>
     </message>
 </context>
 <context>
@@ -2384,7 +2384,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/editors/editorWidget_ui.ui" line="14"/>
         <source>Form</source>
-        <translation></translation>
+        <translation>Skjema</translation>
     </message>
 </context>
 <context>
@@ -2402,17 +2402,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/exporters/exporter_ui.ui" line="32"/>
         <source>Manage exporters</source>
-        <translation></translation>
+        <translation>Håndter eksportører</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exporter_ui.ui" line="103"/>
         <source>Preview</source>
-        <translation></translation>
+        <translation>Forhåndsvis</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exporter_ui.ui" line="81"/>
         <source>Settings</source>
-        <translation></translation>
+        <translation>Innstillinger</translation>
     </message>
 </context>
 <context>
@@ -2448,7 +2448,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="90"/>
         <source>Title</source>
-        <translation></translation>
+        <translation>Tittel</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings.py" line="326"/>
@@ -2493,27 +2493,27 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="229"/>
         <source>Separations</source>
-        <translation></translation>
+        <translation>Inndelinger</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="241"/>
         <source>Between folders:</source>
-        <translation></translation>
+        <translation>Mellom mapper:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings.py" line="86"/>
         <source>Empty line</source>
-        <translation></translation>
+        <translation>Tom linje</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings.py" line="105"/>
         <source>Custom</source>
-        <translation></translation>
+        <translation>Egendefinert</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="367"/>
         <source>Between texts:</source>
-        <translation></translation>
+        <translation>Mellom tekster:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="493"/>
@@ -2558,12 +2558,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1049"/>
         <source>Enabled</source>
-        <translation></translation>
+        <translation>Påskrudd</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1054"/>
         <source>Replace</source>
-        <translation></translation>
+        <translation>Erstatt</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1059"/>
@@ -2598,17 +2598,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1173"/>
         <source>Font size:</source>
-        <translation></translation>
+        <translation>Skriftstørrelse:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings.py" line="320"/>
         <source>Folder</source>
-        <translation></translation>
+        <translation>Mappe</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings.py" line="343"/>
         <source>{}Level {} folder</source>
-        <translation></translation>
+        <translation>{}Nivå {} mappe</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings.py" line="346"/>
@@ -2618,12 +2618,12 @@ Use that if you get YAML related error.</source>
     <message encoding="UTF-8">
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="788"/>
         <source>Replace ... with …</source>
-        <translation></translation>
+        <translation>Erstatt ... med …</translation>
     </message>
     <message encoding="UTF-8">
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="795"/>
         <source>Replace --- with —</source>
-        <translation></translation>
+        <translation>Erstatt --- med —</translation>
     </message>
 </context>
 <context>
@@ -2631,17 +2631,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="81"/>
         <source>Installed</source>
-        <translation></translation>
+        <translation>Installert</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="87"/>
         <source>Custom</source>
-        <translation></translation>
+        <translation>Egendefinert</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="93"/>
         <source>Not found</source>
-        <translation></translation>
+        <translation>Ikke funnet</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="96"/>
@@ -2656,7 +2656,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="126"/>
         <source>&lt;b&gt;Requires:&lt;/b&gt; </source>
-        <translation></translation>
+        <translation>&lt;b&gt;Krever:&lt;/b&gt; </translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="133"/>
@@ -2697,7 +2697,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="288"/>
         <source>{} words</source>
-        <translation></translation>
+        <translation>{} ord</translation>
     </message>
 </context>
 <context>
@@ -2842,12 +2842,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/editors/locker.py" line="104"/>
         <source>{} remaining</source>
-        <translation></translation>
+        <translation>{} gjenstår</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker.py" line="109"/>
         <source>{} words remaining</source>
-        <translation></translation>
+        <translation>{} ord gjenstår</translation>
     </message>
 </context>
 <context>
@@ -2855,7 +2855,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.ui" line="14"/>
         <source>Form</source>
-        <translation></translation>
+        <translation>Skjema</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.ui" line="67"/>
@@ -2865,7 +2865,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.ui" line="83"/>
         <source>Index cards</source>
-        <translation></translation>
+        <translation>Indekskort</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.ui" line="102"/>
@@ -2895,12 +2895,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="320"/>
         <source>{} words / {} </source>
-        <translation></translation>
+        <translation>{} ord / {} </translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="325"/>
         <source>{} words </source>
-        <translation></translation>
+        <translation>{} ord </translation>
     </message>
 </context>
 <context>
@@ -2916,7 +2916,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.ui" line="14"/>
         <source>Form</source>
-        <translation></translation>
+        <translation>Skjema</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.ui" line="41"/>
@@ -2926,17 +2926,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.ui" line="81"/>
         <source>Summary</source>
-        <translation></translation>
+        <translation>Sammendrag</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.ui" line="114"/>
         <source>One line summary</source>
-        <translation></translation>
+        <translation>Énlinjessammendrag</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.ui" line="140"/>
         <source>Full summary</source>
-        <translation></translation>
+        <translation>Fullstendig sammendrag</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.ui" line="180"/>
@@ -2946,7 +2946,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.ui" line="190"/>
         <source>Revisions</source>
-        <translation></translation>
+        <translation type="unfinished">Revisjoner</translation>
     </message>
 </context>
 <context>
@@ -2987,12 +2987,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="142"/>
         <source>Main</source>
-        <translation></translation>
+        <translation>Hoved</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="143"/>
         <source>Secondary</source>
-        <translation></translation>
+        <translation>Sekundær</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="144"/>
@@ -3002,12 +3002,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="197"/>
         <source>Set Custom Icon</source>
-        <translation></translation>
+        <translation type="unfinished">Sett egendefinert ikon</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="198"/>
         <source>Restore to default</source>
-        <translation></translation>
+        <translation>Tilbakestill til forvalg</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="61"/>
@@ -3027,7 +3027,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="313"/>
         <source>About to remove</source>
-        <translation></translation>
+        <translation type="unfinished">Iferd med å fjerne</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="313"/>
@@ -3047,7 +3047,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="88"/>
         <source>New &amp;Folder</source>
-        <translation></translation>
+        <translation>Ny &amp;mappe</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="94"/>
@@ -3057,7 +3057,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="108"/>
         <source>&amp;Copy</source>
-        <translation></translation>
+        <translation>&amp;Kopier</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="103"/>
@@ -3067,12 +3067,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="113"/>
         <source>&amp;Paste</source>
-        <translation></translation>
+        <translation>&amp;Lim inn</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="125"/>
         <source>&amp;Rename</source>
-        <translation></translation>
+        <translation>&amp;Gi nytt navn</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="119"/>
@@ -3090,12 +3090,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/outlineDelegates.py" line="143"/>
         <source>Main</source>
-        <translation></translation>
+        <translation>Hoved</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineDelegates.py" line="143"/>
         <source>Secondary</source>
-        <translation></translation>
+        <translation>Sekundær</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineDelegates.py" line="143"/>
@@ -3108,12 +3108,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/outlineItem.py" line="227"/>
         <source>{} words / {} ({})</source>
-        <translation></translation>
+        <translation>{} ord / {} ({})</translation>
     </message>
     <message>
         <location filename="../manuskript/models/outlineItem.py" line="232"/>
         <source>{} words</source>
-        <translation></translation>
+        <translation>{} ord</translation>
     </message>
 </context>
 <context>
@@ -3131,7 +3131,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="185"/>
         <source>Custom settings for {}</source>
-        <translation></translation>
+        <translation>Egendefinerte innstillinger for {}</translation>
     </message>
 </context>
 <context>
@@ -3139,7 +3139,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/persosProxyModel.py" line="16"/>
         <source>Main</source>
-        <translation></translation>
+        <translation>Hoved</translation>
     </message>
     <message>
         <location filename="../manuskript/models/persosProxyModel.py" line="17"/>
@@ -3162,7 +3162,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Promise</source>
-        <translation></translation>
+        <translation>Løfte</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3172,27 +3172,27 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Progress</source>
-        <translation></translation>
+        <translation>Framdrift</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Resolution</source>
-        <translation></translation>
+        <translation>Løsning</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Try / Fail</source>
-        <translation></translation>
+        <translation>Prøv / feil</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>No and</source>
-        <translation></translation>
+        <translation type="unfinished">Nei, og</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Yes but</source>
-        <translation></translation>
+        <translation type="unfinished">Ja, men</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3227,22 +3227,22 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>1. Setup</source>
-        <translation></translation>
+        <translation>1. Oppsett</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>1. Inciting event</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">1. Igangsettende hendelse</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>1. Turning point</source>
-        <translation></translation>
+        <translation>1. Vendepunkt</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>2. Choice</source>
-        <translation></translation>
+        <translation>2. Valg</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3252,7 +3252,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>2. Disaster</source>
-        <translation></translation>
+        <translation>2. Katastrofe</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3267,7 +3267,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>3. Ending</source>
-        <translation></translation>
+        <translation>3. Slutt</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3297,7 +3297,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Tests</source>
-        <translation></translation>
+        <translation>Tester</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3462,7 +3462,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/references.py" line="103"/>
         <source>Path:</source>
-        <translation></translation>
+        <translation>Sti:</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="104"/>
@@ -3487,12 +3487,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/references.py" line="108"/>
         <source>Short summary:</source>
-        <translation></translation>
+        <translation>Kort sammendrag:</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="109"/>
         <source>Long summary:</source>
-        <translation></translation>
+        <translation>Langt sammendrag:</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="110"/>
@@ -3502,12 +3502,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/references.py" line="201"/>
         <source>Basic info</source>
-        <translation></translation>
+        <translation>Grunnleggende info</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="202"/>
         <source>Detailed info</source>
-        <translation></translation>
+        <translation>Detaljert info</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="203"/>
@@ -3527,7 +3527,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/references.py" line="282"/>
         <source>Result</source>
-        <translation></translation>
+        <translation>Resultat</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="283"/>
@@ -3547,17 +3547,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/references.py" line="364"/>
         <source>Conflict</source>
-        <translation></translation>
+        <translation>Konflikt</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="501"/>
         <source>&lt;b&gt;Unknown reference:&lt;/b&gt; {}.</source>
-        <translation></translation>
+        <translation>&lt;b&gt;Ukjent referanse:&lt;/b&gt; {}.</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="509"/>
         <source>Folder: &lt;b&gt;{}&lt;/b&gt;</source>
-        <translation></translation>
+        <translation>Mappe: &lt;b&gt;{}&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="511"/>
@@ -3572,7 +3572,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/references.py" line="519"/>
         <source>Plot: &lt;b&gt;{}&lt;/b&gt;</source>
-        <translation></translation>
+        <translation>Plott: &lt;b&gt;{}&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="522"/>
@@ -3587,27 +3587,27 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/references.py" line="212"/>
         <source>Motivation</source>
-        <translation></translation>
+        <translation>Motivasjon</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="213"/>
         <source>Goal</source>
-        <translation></translation>
+        <translation>Mål</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="215"/>
         <source>Epiphany</source>
-        <translation></translation>
+        <translation type="unfinished">Åpenbaring</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="216"/>
         <source>Short summary</source>
-        <translation></translation>
+        <translation>Kort sammendrag</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="217"/>
         <source>Longer summary</source>
-        <translation></translation>
+        <translation>Lengre sammendrag</translation>
     </message>
 </context>
 <context>
@@ -3635,7 +3635,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="45"/>
         <source>Show modifications</source>
-        <translation></translation>
+        <translation>Vis endringer</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="52"/>
@@ -3665,27 +3665,27 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="114"/>
         <source>{} days ago</source>
-        <translation></translation>
+        <translation>{} dager siden</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="116"/>
         <source>1 day ago</source>
-        <translation></translation>
+        <translation type="unfinished">i går</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="118"/>
         <source>{} hours ago</source>
-        <translation></translation>
+        <translation>{} timer siden</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="120"/>
         <source>{} minutes ago</source>
-        <translation></translation>
+        <translation>{} minutter siden</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="122"/>
         <source>{} seconds ago</source>
-        <translation></translation>
+        <translation>{} sekunder siden</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="183"/>
@@ -3695,7 +3695,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="263"/>
         <source>Clear all</source>
-        <translation></translation>
+        <translation>Tøm alt</translation>
     </message>
 </context>
 <context>
@@ -3703,27 +3703,27 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/search_ui.ui" line="14"/>
         <source>Form</source>
-        <translation></translation>
+        <translation>Skjema</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search_ui.ui" line="46"/>
         <source>Search for...</source>
-        <translation></translation>
+        <translation>Søk etter…</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="43"/>
         <source>Search in:</source>
-        <translation></translation>
+        <translation>Søk i:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="47"/>
         <source>All</source>
-        <translation></translation>
+        <translation>Alle</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="48"/>
         <source>Title</source>
-        <translation></translation>
+        <translation>Tittel</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="49"/>
@@ -3733,7 +3733,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/search.py" line="50"/>
         <source>Summary</source>
-        <translation></translation>
+        <translation>Sammendrag</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="51"/>
@@ -3819,7 +3819,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/sldImportance.py" line="31"/>
         <source>Main</source>
-        <translation></translation>
+        <translation>Hoved</translation>
     </message>
 </context>
 <context>
@@ -3841,12 +3841,26 @@ Use that if you get YAML related error.</source>
 
             &lt;p&gt;&lt;b&gt;Mark:&lt;/b&gt;&lt;/p&gt;
             </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">
+            &lt;p&gt;Del valgte element(er) ved gitt merke.&lt;/p&gt;
+
+            &lt;p&gt;Hvis ett av de valgte elementene er en mappe, vil det bli utført
+            rekursivt for &lt;i&gt;alle&lt;/i&gt; dens underelementer.&lt;/p&gt;
+
+            &lt;p&gt;Delingsmerket kan inneholde følgende skiftesekvenser:
+                &lt;ul&gt;
+                    &lt;li&gt;&lt;b&gt;&lt;code&gt;\n&lt;/code&gt;&lt;/b&gt;: Linjeskift&lt;/li&gt;
+                    &lt;li&gt;&lt;b&gt;&lt;code&gt;\t&lt;/code&gt;&lt;/b&gt;: Tab&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/p&gt;
+
+            &lt;p&gt;&lt;b&gt;Merke:&lt;/b&gt;&lt;/p&gt;
+            </translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="47"/>
         <source>Split &apos;{}&apos;</source>
-        <translation></translation>
+        <translation>Del &apos;{}&apos;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="51"/>
@@ -3882,7 +3896,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/editors/tabSplitter.py" line="156"/>
         <source>Split horizontally</source>
-        <translation></translation>
+        <translation>Del vannrett</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/tabSplitter.py" line="166"/>
@@ -3892,7 +3906,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/editors/tabSplitter.py" line="202"/>
         <source>Split vertically</source>
-        <translation></translation>
+        <translation>Del loddrett</translation>
     </message>
 </context>
 <context>
@@ -3900,7 +3914,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="324"/>
         <source>Various</source>
-        <translation></translation>
+        <translation>Ymse</translation>
     </message>
 </context>
 <context>
@@ -3956,22 +3970,22 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/treeView.py" line="48"/>
         <source>Expand {}</source>
-        <translation></translation>
+        <translation>Utvid {}</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/treeView.py" line="52"/>
         <source>Collapse {}</source>
-        <translation></translation>
+        <translation>Fold sammen {}</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/treeView.py" line="59"/>
         <source>Expand All</source>
-        <translation></translation>
+        <translation>Utvid alle</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/treeView.py" line="63"/>
         <source>Collapse All</source>
-        <translation></translation>
+        <translation>Fold sammen alle</translation>
     </message>
 </context>
 <context>
@@ -3979,7 +3993,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/welcome_ui.ui" line="14"/>
         <source>Form</source>
-        <translation></translation>
+        <translation>Skjema</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome_ui.ui" line="50"/>
@@ -3989,22 +4003,22 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/welcome_ui.ui" line="55"/>
         <source>Templates</source>
-        <translation></translation>
+        <translation>Maler</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome_ui.ui" line="86"/>
         <source>Empty</source>
-        <translation></translation>
+        <translation>Tom</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="203"/>
         <source>Novel</source>
-        <translation></translation>
+        <translation>Roman</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="208"/>
         <source>Novella</source>
-        <translation></translation>
+        <translation type="unfinished">Novelle</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="213"/>
@@ -4019,12 +4033,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="386"/>
         <source>Demo projects</source>
-        <translation></translation>
+        <translation>Demoprosjekter</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome_ui.ui" line="177"/>
         <source>Add level</source>
-        <translation></translation>
+        <translation>Legg til nivå</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome_ui.ui" line="190"/>
@@ -4049,7 +4063,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/welcome_ui.ui" line="258"/>
         <source>Create</source>
-        <translation></translation>
+        <translation>Opprett</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="143"/>
@@ -4059,17 +4073,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="143"/>
         <source>Manuskript project (*.msk);;All files (*)</source>
-        <translation></translation>
+        <translation>Manuskript-prosjekt (*.msk);;Alle filer (*)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="154"/>
         <source>Save project as...</source>
-        <translation></translation>
+        <translation>Lagre prosjekt som…</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="175"/>
         <source>Manuskript project (*.msk)</source>
-        <translation></translation>
+        <translation>Manuskript-prosjekt (*.msk)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="169"/>
@@ -4079,17 +4093,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="175"/>
         <source>Create New Project</source>
-        <translation></translation>
+        <translation>Opprett nytt prosjekt</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="186"/>
         <source>Warning</source>
-        <translation></translation>
+        <translation>Advarsel</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="186"/>
         <source>Overwrite existing project {} ?</source>
-        <translation></translation>
+        <translation>Overskriv eksisterende prosjekt {}?</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="202"/>
@@ -4109,7 +4123,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="217"/>
         <source>Trilogy</source>
-        <translation></translation>
+        <translation>Trilogi</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="217"/>
@@ -4119,7 +4133,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="225"/>
         <source>Section</source>
-        <translation></translation>
+        <translation>Avsnitt</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="224"/>
@@ -4129,7 +4143,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="285"/>
         <source>words each.</source>
-        <translation></translation>
+        <translation>ord hver.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="288"/>
@@ -4144,7 +4158,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="315"/>
         <source>Something</source>
-        <translation></translation>
+        <translation>Noe</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="352"/>
@@ -4184,17 +4198,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="435"/>
         <source>First draft</source>
-        <translation></translation>
+        <translation>Første utkast</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="436"/>
         <source>Second draft</source>
-        <translation></translation>
+        <translation>Andre utkast</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="437"/>
         <source>Final</source>
-        <translation></translation>
+        <translation type="unfinished">Sluttprodukt</translation>
     </message>
 </context>
 <context>
@@ -4227,12 +4241,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="246"/>
         <source>Astronomy</source>
-        <translation></translation>
+        <translation>Astronomi</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="246"/>
         <source>Wild life</source>
-        <translation></translation>
+        <translation>Dyreliv</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="246"/>
@@ -4242,67 +4256,67 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="246"/>
         <source>History</source>
-        <translation></translation>
+        <translation>Historikk</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="246"/>
         <source>Races</source>
-        <translation></translation>
+        <translation>Raser</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="246"/>
         <source>Diseases</source>
-        <translation></translation>
+        <translation>Sykdommer</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Cultural</source>
-        <translation></translation>
+        <translation>Kulturelle egenskaper</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Customs</source>
-        <translation></translation>
+        <translation>Skikker</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Food</source>
-        <translation></translation>
+        <translation>Mat</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Languages</source>
-        <translation></translation>
+        <translation>Språk</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Education</source>
-        <translation></translation>
+        <translation>Utdanning</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Dresses</source>
-        <translation></translation>
+        <translation>Bekledning</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Science</source>
-        <translation></translation>
+        <translation>Forskning</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Calendar</source>
-        <translation></translation>
+        <translation>Kalender</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Bodily language</source>
-        <translation></translation>
+        <translation>Kroppsspråk</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Ethics</source>
-        <translation></translation>
+        <translation>Etikk</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
@@ -4312,32 +4326,32 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Government</source>
-        <translation></translation>
+        <translation>Myndigheter</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Politics</source>
-        <translation></translation>
+        <translation>Politikk</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Gender roles</source>
-        <translation></translation>
+        <translation>Kjønnsroller</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Music and arts</source>
-        <translation></translation>
+        <translation>Musikk og kunst</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Architecture</source>
-        <translation></translation>
+        <translation>Arkitektur</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Military</source>
-        <translation></translation>
+        <translation>Militær</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
@@ -4347,62 +4361,62 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Courtship</source>
-        <translation></translation>
+        <translation type="unfinished">Oppvartning</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Demography</source>
-        <translation></translation>
+        <translation type="unfinished">Demografi</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Transportation</source>
-        <translation></translation>
+        <translation>Transport</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Medicine</source>
-        <translation></translation>
+        <translation>Medisin</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="280"/>
         <source>Magic system</source>
-        <translation></translation>
+        <translation>Magisystem</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="280"/>
         <source>Rules</source>
-        <translation></translation>
+        <translation>Regler</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="280"/>
         <source>Organization</source>
-        <translation></translation>
+        <translation>Organisasjon</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="280"/>
         <source>Magical objects</source>
-        <translation></translation>
+        <translation>Magiske objekter</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="280"/>
         <source>Magical places</source>
-        <translation></translation>
+        <translation>Magiske steder</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="280"/>
         <source>Magical races</source>
-        <translation></translation>
+        <translation>Magiske raser</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="287"/>
         <source>Important places</source>
-        <translation></translation>
+        <translation>Viktige steder</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="288"/>
         <source>Important objects</source>
-        <translation></translation>
+        <translation>Viktige objekter</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="246"/>
