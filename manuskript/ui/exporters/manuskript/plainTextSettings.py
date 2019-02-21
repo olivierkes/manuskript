@@ -128,7 +128,7 @@ class exporterSettings(QWidget, Ui_exporterSettings):
     def loadSettings(self):
         filename = self.getSettingsPath()
         if os.path.exists(filename):
-            with open(filename) as f:
+            with open(filename, "r", encoding="utf-8") as f:
                 self.settings = json.load(f)
             self.updateFromSettings()
 
@@ -138,7 +138,7 @@ class exporterSettings(QWidget, Ui_exporterSettings):
 
     def writeSettings(self):
         self.getSettings()
-        with open(self.getSettingsPath(), 'w') as f:
+        with open(self.getSettingsPath(), 'w', encoding="utf-8") as f:
             # json.dumps(json.loads(json.dumps(allSettings)), indent=4, sort_keys=True)
             json.dump(self.settings, f, indent=4, sort_keys=True)
 
