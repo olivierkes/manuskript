@@ -44,7 +44,7 @@ class folderImporter(abstractImporter):
                 fName, fExt = os.path.splitext(f)
                 if fExt.lower() in ext:
                     try:
-                        with open(os.path.join(dirpath, f), "r") as fr:
+                        with open(os.path.join(dirpath, f), "r", encoding="utf-8") as fr:
                             content = fr.read()
                         child = outlineItem(title=fName, _type="md", parent=item)
                         child._data[Outline.text] = content
