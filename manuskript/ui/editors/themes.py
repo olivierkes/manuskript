@@ -249,12 +249,14 @@ def setThemeEditorDatas(editor, themeDatas, pixmap, screenRect):
     # editor.setFont(f)
 
     editor.setStyleSheet("""
-        background: transparent;
-        color: {foreground};
-        font-family: {ff};
-        font-size: {fs};
-        selection-color: {sc};
-        selection-background-color: {sbc};
+        QTextEdit {{
+            background: transparent;
+            color: {foreground};
+            font-family: {ff};
+            font-size: {fs};
+            selection-color: {sc};
+            selection-background-color: {sbc};
+        }}
         """.format(
             foreground=themeDatas["Text/Color"],
             ff=f.family(),
