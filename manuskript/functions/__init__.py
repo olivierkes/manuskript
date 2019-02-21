@@ -12,7 +12,6 @@ from PyQt5.QtGui import QDesktopServices
 from PyQt5.QtWidgets import qApp, QTextEdit
 
 from manuskript.enums import Outline
-from manuskript.functions.spellchecker import Spellchecker
 
 # Used to detect multiple connections
 AUC = Qt.AutoConnection | Qt.UniqueConnection
@@ -398,3 +397,6 @@ def inspect():
             s.lineno,
             s.function))
         print("   " + "".join(s.code_context))
+
+# Spellchecker loads writablePath from this file, so we need to load it after they get defined
+from manuskript.functions.spellchecker import Spellchecker

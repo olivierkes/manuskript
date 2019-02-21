@@ -1255,10 +1255,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         else:
             # No Spell check support
             self.actSpellcheck.setVisible(False)
-            a = QAction(self.tr("Install PyEnchant to use spellcheck"), self)
-            a.setIcon(self.style().standardIcon(QStyle.SP_MessageBoxWarning))
-            a.triggered.connect(self.openPyEnchantWebPage, F.AUC)
-            self.menuTools.addAction(a)
+            for lib in Spellchecker.supportedLibraries():
+                a = QAction(self.tr("Install {} to use spellcheck").format(lib), self)
+                a.setIcon(self.style().standardIcon(QStyle.SP_MessageBoxWarning))
+                # Need to bound the lib argument otherwise the lambda uses the same lib value across all calls
+                def gen_slot_cb(l):
+                    return lambda: self.openSpellcheckWebPage(l)
+                a.triggered.connect(gen_slot_cb(lib), F.AUC)
+                self.menuTools.addAction(a)
+
 
     ###############################################################################
     # SPELLCHECK
@@ -1270,16 +1275,25 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             return
 
         self.menuDict.clear()
-        for i in Spellchecker.availableDictionaries():
-            a = QAction(i, self)
-            a.setCheckable(True)
-            if settings.dict is None:
-                settings.dict = Spellchecker.getDefaultDictionary()
-            if i == settings.dict:
-                a.setChecked(True)
-            a.triggered.connect(self.setDictionary, F.AUC)
-            self.menuDictGroup.addAction(a)
+        for lib, dicts in Spellchecker.availableDictionaries().items():
+            if len(dicts) > 1:
+                a = QAction(lib, self)
+            else:
+                a = QAction(self.tr("{} is not installed").format(lib), self)
+            a.setEnabled(False)
             self.menuDict.addAction(a)
+            for i in dicts:
+                a = QAction(i, self)
+                a.data = lib
+                a.setCheckable(True)
+                if settings.dict is None:
+                    settings.dict = Spellchecker.getDefaultDictionary()
+                if Spellchecker.normalizeDictName(lib, i) == settings.dict:
+                    a.setChecked(True)
+                a.triggered.connect(self.setDictionary, F.AUC)
+                self.menuDictGroup.addAction(a)
+                self.menuDict.addAction(a)
+            self.menuDict.addSeparator()
 
     def setDictionary(self):
         if not Spellchecker.isInstalled():
@@ -1288,15 +1302,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         for i in self.menuDictGroup.actions():
             if i.isChecked():
                 # self.dictChanged.emit(i.text().replace("&", ""))
-                settings.dict = i.text().replace("&", "")
+                settings.dict = Spellchecker.normalizeDictName(i.data, i.text().replace("&", ""))
 
                 # Find all textEditView from self, and toggle spellcheck
                 for w in self.findChildren(textEditView, QRegExp(".*"),
                                            Qt.FindChildrenRecursively):
                     w.setDict(settings.dict)
 
-    def openPyEnchantWebPage(self):
-        F.openURL(Spellchecker.getLibraryURL())
+    def openSpellcheckWebPage(self, lib):
+        F.openURL(Spellchecker.getLibraryURL(lib))
 
     def toggleSpellcheck(self, val):
         settings.spellcheck = val
