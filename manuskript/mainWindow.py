@@ -34,15 +34,10 @@ from manuskript.ui.statusLabel import statusLabel
 
 # Spellcheck support
 from manuskript.ui.views.textEditView import textEditView
-
-try:
-    import enchant
-except ImportError:
-    enchant = None
-
+from manuskript.functions import Spellchecker
 
 class MainWindow(QMainWindow, Ui_MainWindow):
-    dictChanged = pyqtSignal(str)
+    # dictChanged = pyqtSignal(str)
 
     # Tab indexes
     TabInfos = 0
@@ -1246,16 +1241,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.actShowHelp.setChecked(False)
 
         # Spellcheck
-        if enchant:
+        if Spellchecker.isInstalled():
             self.menuDict = QMenu(self.tr("Dictionary"))
             self.menuDictGroup = QActionGroup(self)
             self.updateMenuDict()
             self.menuTools.addMenu(self.menuDict)
 
             self.actSpellcheck.toggled.connect(self.toggleSpellcheck, F.AUC)
-            self.dictChanged.connect(self.mainEditor.setDict, F.AUC)
-            self.dictChanged.connect(self.redacMetadata.setDict, F.AUC)
-            self.dictChanged.connect(self.outlineItemEditor.setDict, F.AUC)
+            # self.dictChanged.connect(self.mainEditor.setDict, F.AUC)
+            # self.dictChanged.connect(self.redacMetadata.setDict, F.AUC)
+            # self.dictChanged.connect(self.outlineItemEditor.setDict, F.AUC)
 
         else:
             # No Spell check support
@@ -1271,23 +1266,23 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def updateMenuDict(self):
 
-        if not enchant:
+        if not Spellchecker.isInstalled():
             return
 
         self.menuDict.clear()
-        for i in enchant.list_dicts():
-            a = QAction(str(i[0]), self)
+        for i in Spellchecker.availableDictionaries():
+            a = QAction(i, self)
             a.setCheckable(True)
             if settings.dict is None:
-                settings.dict = enchant.get_default_language()
-            if str(i[0]) == settings.dict:
+                settings.dict = Spellchecker.getDefaultDictionary()
+            if i == settings.dict:
                 a.setChecked(True)
             a.triggered.connect(self.setDictionary, F.AUC)
             self.menuDictGroup.addAction(a)
             self.menuDict.addAction(a)
 
     def setDictionary(self):
-        if not enchant:
+        if not Spellchecker.isInstalled():
             return
 
         for i in self.menuDictGroup.actions():
@@ -1301,7 +1296,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                     w.setDict(settings.dict)
 
     def openPyEnchantWebPage(self):
-        F.openURL("http://pythonhosted.org/pyenchant/")
+        F.openURL(Spellchecker.getLibraryURL())
 
     def toggleSpellcheck(self, val):
         settings.spellcheck = val

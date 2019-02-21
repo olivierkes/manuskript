@@ -16,11 +16,7 @@ from manuskript.ui.editors.locker import locker
 from manuskript.ui.editors.themes import findThemePath, generateTheme, setThemeEditorDatas
 from manuskript.ui.editors.themes import loadThemeDatas
 from manuskript.ui.views.MDEditView import MDEditView
-
-try:
-    import enchant
-except ImportError:
-    enchant = None
+from manuskript.functions import Spellchecker
 
 
 class fullScreenEditor(QWidget):
@@ -53,7 +49,7 @@ class fullScreenEditor(QWidget):
         # self.topPanel.layout().addStretch(1)
 
         # Spell checking
-        if enchant:
+        if Spellchecker.isInstalled():
             self.btnSpellCheck = QPushButton(self)
             self.btnSpellCheck.setFlat(True)
             self.btnSpellCheck.setIcon(QIcon.fromTheme("tools-check-spelling"))

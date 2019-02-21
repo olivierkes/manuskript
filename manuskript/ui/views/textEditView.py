@@ -13,12 +13,7 @@ from manuskript import functions as F
 from manuskript.models import outlineModel, outlineItem
 from manuskript.ui.highlighters import BasicHighlighter
 from manuskript.ui import style as S
-
-try:
-    import enchant
-except ImportError:
-    enchant = None
-
+from manuskript.functions import Spellchecker
 
 class textEditView(QTextEdit):
     def __init__(self, parent=None, index=None, html=None, spellcheck=None,
@@ -77,28 +72,15 @@ class textEditView(QTextEdit):
             self.setReadOnly(True)
 
         # Spellchecking
-        if enchant and self.spellcheck:
-            try:
-                self._dict = enchant.Dict(self.currentDict if self.currentDict
-                                          else self.getDefaultLocale())
-            except enchant.errors.DictNotFoundError:
-                self.spellcheck = False
+        if self.spellcheck:
+            self._dict = Spellchecker.getDictionary(self.currentDict)
 
-        else:
+        if not self._dict:
             self.spellcheck = False
 
         if self._highlighting and not self.highlighter:
             self.highlighter = self._highlighterClass(self)
             self.highlighter.setDefaultBlockFormat(self._defaultBlockFormat)
-
-    def getDefaultLocale(self):
-        default_locale = enchant.get_default_language()
-        if default_locale is None:
-            default_locale = QLocale.system().name()
-        if default_locale is None:
-            default_locale = enchant.list_dicts()[0][0]
-
-        return default_locale
 
     def setModel(self, model):
         self._model = model
@@ -389,20 +371,18 @@ class textEditView(QTextEdit):
 
     def setDict(self, d):
         self.currentDict = d
-        if d and enchant.dict_exists(d):
-            self._dict = enchant.Dict(d)
+        if d:
+            self._dict = Spellchecker.getDictionary(d)
         if self.highlighter:
             self.highlighter.rehighlight()
 
     def toggleSpellcheck(self, v):
         self.spellcheck = v
-        if enchant and self.spellcheck and not self._dict:
-            if self.currentDict and enchant.dict_exists(self.currentDict):
-                self._dict = enchant.Dict(self.currentDict)
-            elif enchant.get_default_language() and enchant.dict_exists(enchant.get_default_language()):
-                self._dict = enchant.Dict(enchant.get_default_language())
-            else:
-                self.spellcheck = False
+        if self.spellcheck and not self._dict:
+            self._dict = Spellchecker.getDictionary(self.currentDict)
+
+        if not self._dict:
+            self.spellcheck = False
 
         if self.highlighter:
             self.highlighter.rehighlight()
@@ -475,12 +455,12 @@ class textEditView(QTextEdit):
         # suggestions if it is.
         if self._dict and cursor.hasSelection():
             text = str(cursor.selectedText())
-            valid = self._dict.check(text)
+            valid = not self._dict.isMisspelled(text)
             selectedWord = cursor.selectedText()
             if not valid:
                 spell_menu = QMenu(self.tr('Spelling Suggestions'), self)
                 spell_menu.setIcon(F.themeIcon("spelling"))
-                for word in self._dict.suggest(text):
+                for word in self._dict.getSuggestions(text):
                     action = self.SpellAction(word, spell_menu)
                     action.correct.connect(self.correctWord)
                     spell_menu.addAction(action)
@@ -499,7 +479,7 @@ class textEditView(QTextEdit):
                     # popup_menu.insertSeparator(popup_menu.actions()[0])
 
             # If word was added to custom dict, give the possibility to remove it
-            elif valid and self._dict.is_added(selectedWord):
+            elif valid and self._dict.isCustomWord(selectedWord):
                 popup_menu.insertSeparator(popup_menu.actions()[0])
                 # Adds: remove from dictionary
                 rmAction = QAction(self.tr("&Remove from custom dictionary"), popup_menu)
@@ -524,12 +504,12 @@ class textEditView(QTextEdit):
 
     def addWordToDict(self):
         word = self.sender().data()
-        self._dict.add(word)
+        self._dict.addWord(word)
         self.highlighter.rehighlight()
 
     def rmWordFromDict(self):
         word = self.sender().data()
-        self._dict.remove(word)
+        self._dict.removeWord(word)
         self.highlighter.rehighlight()
 
     ###############################################################################

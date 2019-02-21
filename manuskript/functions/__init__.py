@@ -12,6 +12,7 @@ from PyQt5.QtGui import QDesktopServices
 from PyQt5.QtWidgets import qApp, QTextEdit
 
 from manuskript.enums import Outline
+from manuskript.functions.spellchecker import Spellchecker
 
 # Used to detect multiple connections
 AUC = Qt.AutoConnection | Qt.UniqueConnection

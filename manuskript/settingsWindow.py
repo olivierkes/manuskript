@@ -26,11 +26,6 @@ from manuskript.ui.views.textEditView import textEditView
 from manuskript.ui.welcome import welcome
 from manuskript.ui import style as S
 
-try:
-    import enchant
-except ImportError:
-    enchant = None
-
 
 class settingsWindow(QWidget, Ui_Settings):
     def __init__(self, mainWindow):
