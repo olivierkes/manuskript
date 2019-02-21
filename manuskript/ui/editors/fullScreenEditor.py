@@ -312,10 +312,13 @@ class myScrollBar(QScrollBar):
         self.timer = QTimer()
         self.timer.setInterval(500)
         self.timer.setSingleShot(True)
-        self.timer.timeout.connect(lambda: self.parent().hideWidget(self))
+        self.timer.timeout.connect(self.hide)
         self.valueChanged.connect(lambda v: self.timer.start())
         self.valueChanged.connect(lambda: self.parent().showWidget(self))
         self.rangeChanged.connect(self.rangeHasChanged)
+
+    def hide(self):
+        self.parent().hideWidget(self)
 
     def setColor(self, color):
         self._color = color
