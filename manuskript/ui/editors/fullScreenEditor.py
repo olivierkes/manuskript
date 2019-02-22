@@ -2,7 +2,7 @@
 # --!-- coding: utf8 --!--
 import os
 
-from PyQt5.QtCore import Qt, QSize, QPoint, QRect, QEvent, QTimer
+from PyQt5.QtCore import Qt, QSize, QPoint, QRect, QEvent, QTime, QTimer
 from PyQt5.QtGui import QFontMetrics, QColor, QBrush, QPalette, QPainter, QPixmap
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QFrame, QWidget, QPushButton, qApp, QStyle, QComboBox, QLabel, QScrollBar, \
@@ -107,14 +107,19 @@ class fullScreenEditor(QWidget):
         self.lblProgress.setMaximumSize(QSize(200, 14))
         self.lblProgress.setMinimumSize(QSize(100, 14))
         self.lblWC = QLabel(self)
+        self.lblClock = myClockLabel(self)
         self.bottomPanel.layout().addWidget(self.lblWC)
         self.bottomPanel.layout().addWidget(self.lblProgress)
+        self.bottomPanel.layout().addSpacing(15)
+        self.bottomPanel.layout().addWidget(self.lblClock)
         self.updateStatusBar()
 
         self.bottomPanel.layout().addSpacing(24)
         self.bottomPanel.addDisplay(self.tr("Theme selector"), 'bottom-theme', (self.lstThemes, themeLabel))
         self.bottomPanel.addDisplay(self.tr("Word count"), 'bottom-wc', (self.lblWC, ))
         self.bottomPanel.addDisplay(self.tr("Progress"), 'bottom-progress', (self.lblProgress, ))
+        self.bottomPanel.addDisplay(self.tr("Clock"), 'bottom-clock', (self.lblClock, ))
+        self.bottomPanel.addSetting(self.tr("Clock: Show Seconds"), 'clock-show-seconds', True)
         self.bottomPanel.setAutoHideVariable('autohide-bottom')
         self.topPanel.setAutoHideVariable('autohide-top')
         self.leftPanel.setAutoHideVariable('autohide-left')
@@ -401,9 +406,15 @@ class myPanel(QWidget):
             self.setDisplay(settings.fullscreenSettings[config_name], display)
 
     def setDisplay(self, value, display):
-        for w in display[2]:
-            w.show() if value else w.hide()
+        if display[2]:
+            for w in display[2]:
+                w.show() if value else w.hide()
         settings.fullscreenSettings[display[1]] = value
+
+    def addSetting(self, label, config_name, default=True):
+        if settings.fullscreenSettings.get(config_name, None) is None:
+            settings.fullscreenSettings[config_name] = default
+        self.addDisplay(label, config_name, None)
 
     def mouseReleaseEvent(self, event):
         if event.button() == Qt.RightButton:
@@ -418,10 +429,35 @@ class myPanel(QWidget):
             for item in self._displays:
                 a = QAction(item[0], m)
                 a.setCheckable(True)
-                a.setChecked(item[2][0].isVisible())
+                if item[2]:
+                    a.setChecked(item[2][0].isVisible())
+                else:
+                    a.setChecked(settings.fullscreenSettings[item[1]])
                 def gen_cb(disp):
                     return lambda v: self.setDisplay(v, disp)
                 a.toggled.connect(gen_cb(item))
                 m.addAction(a)
             m.popup(self.mapToGlobal(event.pos()))
             self._m = m
+
+class myClockLabel(QLabel):
+    
+
+    def __init__(self, parent=None):
+        QLabel.__init__(self, parent)
+        
+        self.updateClock()
+        self.timer = QTimer()
+        self.timer.setInterval(1000)
+        self.timer.timeout.connect(self.updateClock)
+        self.timer.start()
+
+
+    def updateClock(self):
+        time = QTime.currentTime()
+        if settings.fullscreenSettings.get("clock-show-seconds", True):
+            timeStr = time.toString("hh:mm:ss")
+        else:
+            timeStr = time.toString("hh:mm")
+
+        self.setText(timeStr)
