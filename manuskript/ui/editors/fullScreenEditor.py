@@ -98,7 +98,8 @@ class fullScreenEditor(QWidget):
         # self.lstThemes.setCurrentText(settings.fullScreenTheme)
         self.lstThemes.currentTextChanged.connect(self.setTheme)
         self.lstThemes.setMaximumSize(QSize(300, QFontMetrics(qApp.font()).height()))
-        self.bottomPanel.layout().addWidget(QLabel(self.tr("Theme:"), self))
+        themeLabel = QLabel(self.tr("Theme:"), self)
+        self.bottomPanel.layout().addWidget(themeLabel)
         self.bottomPanel.layout().addWidget(self.lstThemes)
         self.bottomPanel.layout().addStretch(1)
 
@@ -111,6 +112,9 @@ class fullScreenEditor(QWidget):
         self.updateStatusBar()
 
         self.bottomPanel.layout().addSpacing(24)
+        self.bottomPanel.addDisplay(self.tr("Theme selector"), (self.lstThemes, themeLabel))
+        self.bottomPanel.addDisplay(self.tr("Word count"), (self.lblWC, ))
+        self.bottomPanel.addDisplay(self.tr("Progress"), (self.lblProgress, ))
 
         # Connection
         self._index.model().dataChanged.connect(self.dataChanged)
@@ -360,6 +364,7 @@ class myPanel(QWidget):
         self.setAttribute(Qt.WA_TranslucentBackground)
         self._autoHide = True
         self._m = None
+        self._displays = []
 
         if not vertical:
             self.setLayout(QHBoxLayout())
@@ -378,6 +383,13 @@ class myPanel(QWidget):
     def setAutoHide(self, value):
         self._autoHide = value
 
+    def addDisplay(self, name, widgets):
+        self._displays.append((name, widgets))
+
+    def setDisplay(self, value, widgets):
+        for w in widgets:
+            w.show() if value else w.hide()
+
     def mouseReleaseEvent(self, event):
         if event.button() == Qt.RightButton:
             if self._m:
@@ -388,5 +400,13 @@ class myPanel(QWidget):
             a.setChecked(self._autoHide)
             a.toggled.connect(self.setAutoHide)
             m.addAction(a)
+            for item in self._displays:
+                a = QAction(item[0], m)
+                a.setCheckable(True)
+                a.setChecked(item[1][0].isVisible())
+                def gen_cb(w):
+                    return lambda v: self.setDisplay(v, w)
+                a.toggled.connect(gen_cb(item[1]))
+                m.addAction(a)
             m.popup(self.mapToGlobal(event.pos()))
             self._m = m
