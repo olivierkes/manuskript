@@ -34,6 +34,12 @@ viewSettings = {
         },
     }
 
+fullscreenSettings = {
+    "autohide-top": True,
+    "autohide-bottom": True,
+    "autohide-left": True,
+    }
+
 # Application
 spellcheck = False
 dict = None
@@ -119,10 +125,11 @@ def save(filename=None, protocol=None):
     global spellcheck, dict, corkSliderFactor, viewSettings, corkSizeFactor, folderView, lastTab, openIndexes, \
            autoSave, autoSaveDelay, saveOnQuit, autoSaveNoChanges, autoSaveNoChangesDelay, outlineViewColumns, \
            corkBackground, corkStyle, fullScreenTheme, defaultTextType, textEditor, revisions, frequencyAnalyzer, viewMode, \
-           saveToZip, dontShowDeleteWarning
+           saveToZip, dontShowDeleteWarning, fullscreenSettings
 
     allSettings = {
         "viewSettings": viewSettings,
+        "fullscreenSettings": fullscreenSettings,
         "dict": dict,
         "spellcheck": spellcheck,
         "corkSizeFactor": corkSizeFactor,
@@ -198,6 +205,10 @@ def load(string, fromString=False, protocol=None):
             ]:
             if not name in viewSettings[cat]:
                 viewSettings[cat][name] = default
+
+    if "fullscreenSettings" in allSettings:
+        global fullscreenSettings
+        fullscreenSettings = allSettings["fullscreenSettings"]
 
     if "dict" in allSettings:
         global dict

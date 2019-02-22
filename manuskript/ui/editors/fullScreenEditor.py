@@ -112,9 +112,12 @@ class fullScreenEditor(QWidget):
         self.updateStatusBar()
 
         self.bottomPanel.layout().addSpacing(24)
-        self.bottomPanel.addDisplay(self.tr("Theme selector"), (self.lstThemes, themeLabel))
-        self.bottomPanel.addDisplay(self.tr("Word count"), (self.lblWC, ))
-        self.bottomPanel.addDisplay(self.tr("Progress"), (self.lblProgress, ))
+        self.bottomPanel.addDisplay(self.tr("Theme selector"), 'bottom-theme', (self.lstThemes, themeLabel))
+        self.bottomPanel.addDisplay(self.tr("Word count"), 'bottom-wc', (self.lblWC, ))
+        self.bottomPanel.addDisplay(self.tr("Progress"), 'bottom-progress', (self.lblProgress, ))
+        self.bottomPanel.setAutoHideVariable('autohide-bottom')
+        self.topPanel.setAutoHideVariable('autohide-top')
+        self.leftPanel.setAutoHideVariable('autohide-left')
 
         # Connection
         self._index.model().dataChanged.connect(self.dataChanged)
@@ -364,6 +367,7 @@ class myPanel(QWidget):
         self.setAttribute(Qt.WA_TranslucentBackground)
         self._autoHide = True
         self._m = None
+        self._autoHideVar = None
         self._displays = []
 
         if not vertical:
@@ -382,13 +386,24 @@ class myPanel(QWidget):
 
     def setAutoHide(self, value):
         self._autoHide = value
+        if self._autoHideVar:
+            settings.fullscreenSettings[self._autoHideVar] = value
 
-    def addDisplay(self, name, widgets):
-        self._displays.append((name, widgets))
+    def setAutoHideVariable(self, name):
+        if name:
+            self.setAutoHide(settings.fullscreenSettings[name])
+        self._autoHideVar = name
 
-    def setDisplay(self, value, widgets):
-        for w in widgets:
+    def addDisplay(self, label, config_name, widgets):
+        display = (label, config_name, widgets)
+        self._displays.append(display)
+        if settings.fullscreenSettings.get(config_name, None) is not None:
+            self.setDisplay(settings.fullscreenSettings[config_name], display)
+
+    def setDisplay(self, value, display):
+        for w in display[2]:
             w.show() if value else w.hide()
+        settings.fullscreenSettings[display[1]] = value
 
     def mouseReleaseEvent(self, event):
         if event.button() == Qt.RightButton:
@@ -403,10 +418,10 @@ class myPanel(QWidget):
             for item in self._displays:
                 a = QAction(item[0], m)
                 a.setCheckable(True)
-                a.setChecked(item[1][0].isVisible())
-                def gen_cb(w):
-                    return lambda v: self.setDisplay(v, w)
-                a.toggled.connect(gen_cb(item[1]))
+                a.setChecked(item[2][0].isVisible())
+                def gen_cb(disp):
+                    return lambda v: self.setDisplay(v, disp)
+                a.toggled.connect(gen_cb(item))
                 m.addAction(a)
             m.popup(self.mapToGlobal(event.pos()))
             self._m = m
