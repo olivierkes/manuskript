@@ -61,6 +61,8 @@ class fullScreenEditor(QWidget):
             self.btnSpellCheck.setChecked(self.editor.spellcheck)
             self.btnSpellCheck.toggled.connect(self.editor.toggleSpellcheck)
             self.topPanel.layout().addWidget(self.btnSpellCheck)
+        else:
+            self.btnSpellCheck = None
 
         self.topPanel.layout().addStretch(1)
 
@@ -115,6 +117,9 @@ class fullScreenEditor(QWidget):
         self.updateStatusBar()
 
         self.bottomPanel.layout().addSpacing(24)
+
+        if self.btnSpellCheck:
+            self.topPanel.addDisplay(self.tr("Spellcheck"), 'top-spellcheck', (self.btnSpellCheck, ))
         self.bottomPanel.addDisplay(self.tr("Theme selector"), 'bottom-theme', (self.lstThemes, themeLabel))
         self.bottomPanel.addDisplay(self.tr("Word count"), 'bottom-wc', (self.lblWC, ))
         self.bottomPanel.addDisplay(self.tr("Progress"), 'bottom-progress', (self.lblProgress, ))
