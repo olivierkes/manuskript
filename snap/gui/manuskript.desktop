@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Manuskript
+Comment=An open source tool for writers
+Keywords=manuskript;office;write;edit;novel;text;msk
+Exec=manuskript
+Terminal=false
+Type=Application
+Icon=/snap/manuskript/current/icons/Manuskript/manuskript.svg
+Categories=Office;WordProcessor;
