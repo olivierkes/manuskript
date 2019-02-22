@@ -21,7 +21,7 @@ except ImportError:
 
 
 class textEditView(QTextEdit):
-    def __init__(self, parent=None, index=None, html=None, spellcheck=True,
+    def __init__(self, parent=None, index=None, html=None, spellcheck=None,
                  highlighting=False, dict="", autoResize=False):
         QTextEdit.__init__(self, parent)
         self._column = Outline.text
@@ -38,6 +38,9 @@ class textEditView(QTextEdit):
         self._fromTheme = False
         self._themeData = None
         self._highlighterClass = BasicHighlighter
+
+        if spellcheck is None:
+            spellcheck = settings.spellcheck
 
         self.spellcheck = spellcheck
         self.currentDict = dict if dict else settings.dict
