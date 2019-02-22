@@ -36,7 +36,7 @@ class corkView(QListView, dndView, outlineBasics):
             background-attachment: fixed;
             }}""".format(
                 color=settings.corkBackground["color"],
-                url=img
+                url=img.replace("\\", "/")
         ))
 
     def dragMoveEvent(self, event):
