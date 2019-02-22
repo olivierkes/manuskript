@@ -65,6 +65,11 @@ class fullScreenEditor(QWidget):
             self.btnSpellCheck = None
 
         self.topPanel.layout().addStretch(1)
+        item = self._index.internalPointer()
+        title = item.data(Outline.title)
+        self.lblTitle = QLabel(title, self)
+        self.topPanel.layout().addWidget(self.lblTitle)
+        self.topPanel.layout().addStretch(1)
 
         # Close
         self.btnClose = QPushButton(self)
@@ -120,6 +125,7 @@ class fullScreenEditor(QWidget):
 
         if self.btnSpellCheck:
             self.topPanel.addDisplay(self.tr("Spellcheck"), 'top-spellcheck', (self.btnSpellCheck, ))
+        self.topPanel.addDisplay(self.tr("Title"), 'top-title', (self.lblTitle, ))
         self.bottomPanel.addDisplay(self.tr("Theme selector"), 'bottom-theme', (self.lstThemes, themeLabel))
         self.bottomPanel.addDisplay(self.tr("Word count"), 'bottom-wc', (self.lblWC, ))
         self.bottomPanel.addDisplay(self.tr("Progress"), 'bottom-progress', (self.lblProgress, ))
