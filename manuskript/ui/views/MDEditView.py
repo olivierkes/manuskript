@@ -23,7 +23,7 @@ class MDEditView(textEditView):
     imageRegex = QRegExp("!\\[([^\n]*)\\]\\(([^\n]+)\\)")
     automaticLinkRegex = QRegExp("(<([a-zA-Z]+\\:[^\n]+)>)|(<([^\n]+@[^\n]+)>)")
 
-    def __init__(self, parent=None, index=None, html=None, spellcheck=True,
+    def __init__(self, parent=None, index=None, html=None, spellcheck=None,
                  highlighting=False, dict="", autoResize=False):
         textEditView.__init__(self, parent, index, html, spellcheck,
                               highlighting=True, dict=dict,

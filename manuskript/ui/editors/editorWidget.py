@@ -54,7 +54,7 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
         self.dictChanged.connect(self.txtRedacText.setDict, AUC)
         self.txtRedacText.setHighlighting(True)
         self.currentDict = ""
-        self.spellcheck = True
+        self.spellcheck = settings.spellcheck
         self.folderView = "cork"
         self.mw = mainWindow()
         self._tabWidget = None  # set by mainEditor on creation
