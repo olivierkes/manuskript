@@ -14,6 +14,11 @@ try:
 except ImportError:
     pyspellchecker = None
 
+try:
+    import symspellpy
+except ImportError:
+    symspellpy = None
+
 
 class Spellchecker:
     dictionaries = {}
@@ -307,3 +312,105 @@ class PySpellcheckerDictionary(BasicDictionary):
 Spellchecker.registerImplementation(PySpellcheckerDictionary)
 
 
+class SymSpellDictionary(BasicDictionary):
+    CUSTOM_COUNT = 1
+    DISTANCE = 2
+
+    def __init__(self, name):
+        BasicDictionary.__init__(self, name)
+
+        self._dict = symspellpy.SymSpell(self.DISTANCE)
+
+        cachePath = self.getCachedDictionaryPath()
+        try:
+            self._dict.load_pickle(cachePath)
+        except:
+            if pyspellchecker:
+                path = os.path.join(pyspellchecker.__path__[0], "resources", "{}.json.gz".format(self.name))
+                if os.path.exists(path):
+                    with gzip.open(path, "rt", encoding='utf-8') as f:
+                        data = json.loads(f.read())
+                        for key in data:
+                            self._dict.create_dictionary_entry(key, data[key])
+                    self._dict.save_pickle(cachePath)
+        for word in self._customDict:
+            self._dict.create_dictionary_entry(word, self.CUSTOM_COUNT)
+
+    def getCachedDictionaryPath(self):
+        return os.path.join(self.getResourcesPath(), "{}.sym.gz".format(self.name))
+
+    @staticmethod
+    def getLibraryName():
+        return "symspellpy"
+
+    @staticmethod
+    def getLibraryURL():
+        return "https://github.com/mammothb/symspellpy"
+
+    @staticmethod
+    def isInstalled():
+        return symspellpy is not None
+
+    @classmethod
+    def availableDictionaries(cls):
+        if SymSpellDictionary.isInstalled():
+            files = glob.glob(os.path.join(cls.getResourcesPath(), "*.sym.gz"))
+            dictionaries = set()
+            for file in files:
+                dictionaries.add(os.path.basename(file)[:-7])
+            return list(dictionaries.union(PySpellcheckerDictionary.availableDictionaries()))
+        return []
+
+    @staticmethod
+    def getDefaultDictionary():
+        if not SymSpellDictionary.isInstalled():
+            return None
+
+        return PySpellcheckerDictionary.getDefaultDictionary()
+
+    def isMisspelled(self, word):
+        suggestions = self._dict.lookup(word.lower(), symspellpy.Verbosity.TOP)
+        if len(suggestions) > 0 and suggestions[0].distance == 0:
+            return False
+        # Try the word as is, since a dictionary might have uppercase letter as part
+        # of it's spelling ("I'm" or "January" for example)
+        suggestions = self._dict.lookup(word, symspellpy.Verbosity.TOP)
+        if len(suggestions) > 0 and suggestions[0].distance == 0:
+            return False
+        return True
+
+    def getSuggestions(self, word):
+        upper = word.isupper()
+        upper1 = word[0].isupper()
+        suggestions = self._dict.lookup_compound(word, 2)
+        suggestions.extend(self._dict.lookup(word, symspellpy.Verbosity.CLOSEST))
+        candidates = []
+        for sug in suggestions:
+            if upper:
+                term = sug.term.upper()
+            elif upper1:
+                term = sug.term[0].upper() + sug.term[1:]
+            else:
+                term = sug.term
+            if sug.distance > 0 and not term in candidates:
+                candidates.append(term)
+        return candidates
+
+    def addWord(self, word):
+        BasicDictionary.addWord(self, word)
+        self._dict.create_dictionary_entry(word.lower(), self.CUSTOM_COUNT)
+
+    def removeWord(self, word):
+        BasicDictionary.removeWord(self, word)
+        # Need to do this for now because library doesn't support removing a word
+        self._reloadDict()
+
+    def _reloadDict(self):
+        self._dict = symspellpy.SymSpell(self.DISTANCE)
+
+        cachePath = self.getCachedDictionaryPath()
+        self._dict.load_pickle(cachePath)
+        for word in self._customDict:
+            self._dict.create_dictionary_entry(word, self.CUSTOM_COUNT)
+
+Spellchecker.registerImplementation(SymSpellDictionary)
