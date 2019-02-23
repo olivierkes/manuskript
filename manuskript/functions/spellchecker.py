@@ -1,5 +1,5 @@
 
-import os, gzip, json
+import os, gzip, json, glob
 from PyQt5.QtCore import QLocale
 from collections import OrderedDict
 from manuskript.functions import writablePath
@@ -22,6 +22,10 @@ class Spellchecker:
 
     def __init__(self):
         pass
+
+    @staticmethod
+    def registerImplementation(impl):
+        Spellchecker.implementations.append(impl)
 
     @staticmethod
     def isInstalled():
@@ -73,14 +77,6 @@ class Spellchecker:
             return urls.get(lib, None)
         return urls
 
-    
-    @staticmethod
-    def getResourcesPath(library):
-        path = os.path.join(writablePath(), "resources", "dictionaries", library)
-        if not os.path.exists(path):
-            os.makedirs(path)
-        return path
-
     @staticmethod
     def getDictionary(dictionary):
         if not dictionary:
@@ -98,7 +94,7 @@ class Spellchecker:
             d = Spellchecker.dictionaries.get(dictionary, None)
             if d is None:
                 for impl in Spellchecker.implementations:
-                    if lib == impl.getLibraryName():
+                    if impl.isInstalled() and lib == impl.getLibraryName():
                         d = impl(name)
                         Spellchecker.dictionaries[dictionary] = d
                         break
@@ -109,11 +105,24 @@ class Spellchecker:
 
 class BasicDictionary:
     def __init__(self, name):
-        pass
+        self._lang = name
+        if not self._lang:
+            self._lang = self.getDefaultDictionary()
+
+        self._customDict = set()
+        customPath = self.getCustomDictionaryPath()
+        try:
+            with gzip.open(customPath, "rt", encoding='utf-8') as f:
+                self._customDict = set(json.loads(f.read()))
+                for word in self._customDict:
+                    self._dict.create_dictionary_entry(word, self.CUSTOM_COUNT)
+        except:
+            # If error loading the file, overwrite with empty dictionary
+            self._saveCustomDict()
 
     @property
     def name(self):
-        raise NotImplemented
+        return self._lang
 
     @staticmethod
     def getLibraryName():
@@ -142,13 +151,35 @@ class BasicDictionary:
         raise NotImplemented
 
     def isCustomWord(self, word):
-        raise NotImplemented
+        return word.lower() in self._customDict
 
     def addWord(self, word):
-        raise NotImplemented
+        word = word.lower()
+        if not word in self._customDict:
+            self._customDict.add(word)
+            self._saveCustomDict()
 
     def removeWord(self, word):
-        raise NotImplemented
+        word = word.lower()
+        if word in self._customDict:
+            self._customDict.remove(word)
+            self._saveCustomDict()
+
+    @classmethod
+    def getResourcesPath(cls):
+        path = os.path.join(writablePath(), "resources", "dictionaries", cls.getLibraryName())
+        if not os.path.exists(path):
+            os.makedirs(path)
+        return path
+
+    def getCustomDictionaryPath(self):
+        return os.path.join(self.getResourcesPath(), "{}.json.gz".format(self._lang))
+
+    def _saveCustomDict(self):
+        customPath = self.getCustomDictionaryPath()
+        with gzip.open(customPath, "wt") as f:
+            f.write(json.dumps(list(self._customDict)))
+
 
 class EnchantDictionary(BasicDictionary):
 
@@ -157,11 +188,7 @@ class EnchantDictionary(BasicDictionary):
         if not (self._lang and enchant.dict_exists(self._lang)):
             self._lang = self.getDefaultDictionary()
 
-        self._dict = enchant.Dict(self._lang)
-
-    @property
-    def name(self):
-        return self._lang
+        self._dict = enchant.DictWithPWL(self._lang, self.getCustomDictionaryPath())
 
     @staticmethod
     def getLibraryName():
@@ -211,36 +238,19 @@ class EnchantDictionary(BasicDictionary):
 
     def removeWord(self, word):
         self._dict.remove(word)
-Spellchecker.implementations.append(EnchantDictionary)
 
+    def getCustomDictionaryPath(self):
+        return os.path.join(self.getResourcesPath(), "{}.txt".format(self.name))
+
+Spellchecker.implementations.append(EnchantDictionary)
 
 class PySpellcheckerDictionary(BasicDictionary):
 
     def __init__(self, name):
-        self._lang = name
-        if not self._lang:
-            self._lang = self.getDefaultDictionary()
+        BasicDictionary.__init__(self, name)
 
-        self._dict = pyspellchecker.SpellChecker(self._lang)
-        self._customDict = None
-        customPath = self.getCustomDictionaryPath()
-        try:
-            self._customDict = pyspellchecker.SpellChecker(local_dictionary=customPath)
-            self._dict.word_frequency.load_dictionary(customPath)
-        except:
-            # If error loading the file, overwrite with empty dictionary
-            with gzip.open(customPath, "wt") as f:
-                f.write(json.dumps({}))
-                
-        self._customDict = pyspellchecker.SpellChecker(local_dictionary=customPath)
-        self._dict.word_frequency.load_dictionary(customPath)
-
-    def getCustomDictionaryPath(self):
-        return os.path.join(Spellchecker.getResourcesPath(self.getLibraryName()), "{}.json.gz".format(self._lang))
-
-    @property
-    def name(self):
-        return self._lang
+        self._dict = pyspellchecker.SpellChecker(self.name)
+        self._dict.word_frequency.load_words(self._customDict)
 
     @staticmethod
     def getLibraryName():
@@ -257,9 +267,11 @@ class PySpellcheckerDictionary(BasicDictionary):
     @staticmethod
     def availableDictionaries():
         if PySpellcheckerDictionary.isInstalled():
-            # TODO: If pyspellchecker eventually adds a way to get this list
-            # programmatically or if the list changes, we need to update it here
-            return ["de", "en", "es", "fr", "pt"]
+            dictionaries = []
+            files = glob.glob(os.path.join(pyspellchecker.__path__[0], "resources", "*.json.gz"))
+            for file in files:
+                dictionaries.append(os.path.basename(file)[:-8])
+            return dictionaries
         return []
 
     @staticmethod
@@ -284,17 +296,14 @@ class PySpellcheckerDictionary(BasicDictionary):
             candidates.remove(word)
         return candidates
 
-    def isCustomWord(self, word):
-        return len(self._customDict.known([word])) > 0
-
     def addWord(self, word):
-        self._dict.word_frequency.add(word)
-        self._customDict.word_frequency.add(word)
-        self._customDict.export(self.getCustomDictionaryPath(), gzipped=True)
+        BasicDictionary.addWord(self, word)
+        self._dict.word_frequency.add(word.lower())
 
     def removeWord(self, word):
-        self._dict.word_frequency.remove(word)
-        self._customDict.word_frequency.remove(word)
-        self._customDict.export(self.getCustomDictionaryPath(), gzipped=True)
+        BasicDictionary.removeWord(self, word)
+        self._dict.word_frequency.remove(word.lower())
 
-Spellchecker.implementations.append(PySpellcheckerDictionary)
+Spellchecker.registerImplementation(PySpellcheckerDictionary)
+
+
