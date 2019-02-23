@@ -203,7 +203,7 @@ class outlineBasics(QAbstractItemView):
             txt = QLineEdit()
             txt.textChanged.connect(self.filterLstIcons)
             txt.setPlaceholderText("Filter icons")
-            txt.setStyleSheet("background: transparent; border: none;")
+            txt.setStyleSheet("QLineEdit { background: transparent; border: none; }")
             act = QWidgetAction(self.menuCustomIcons)
             act.setDefaultWidget(txt)
             self.menuCustomIcons.addAction(act)

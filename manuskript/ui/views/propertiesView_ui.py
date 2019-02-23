@@ -20,7 +20,7 @@ class Ui_propertiesView(object):
         font.setBold(True)
         font.setWeight(75)
         self.txtTitle.setFont(font)
-        self.txtTitle.setStyleSheet("background:transparent;")
+        self.txtTitle.setStyleSheet("QLineEdit { background:transparent; }")
         self.txtTitle.setFrame(False)
         self.txtTitle.setObjectName("txtTitle")
         self.verticalLayout.addWidget(self.txtTitle)
