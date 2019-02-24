@@ -1255,8 +1255,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         else:
             # No Spell check support
             self.actSpellcheck.setVisible(False)
-            for lib in Spellchecker.supportedLibraries():
-                a = QAction(self.tr("Install {} to use spellcheck").format(lib), self)
+            for lib, requirement in Spellchecker.supportedLibraries().items():
+                a = QAction(self.tr("Install {}{} to use spellcheck").format(lib, requirement or ""), self)
                 a.setIcon(self.style().standardIcon(QStyle.SP_MessageBoxWarning))
                 # Need to bound the lib argument otherwise the lambda uses the same lib value across all calls
                 def gen_slot_cb(l):
@@ -1275,11 +1275,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             return
 
         self.menuDict.clear()
-        for lib, dicts in Spellchecker.availableDictionaries().items():
-            if len(dicts) > 1:
+        dictionaries = Spellchecker.availableDictionaries()
+        for lib, dicts in dictionaries.items():
+            if len(dicts) > 0:
                 a = QAction(lib, self)
             else:
-                a = QAction(self.tr("{} is not installed").format(lib), self)
+                a = QAction(self.tr("{} has no installed dictionaries").format(lib), self)
             a.setEnabled(False)
             self.menuDict.addAction(a)
             for i in dicts:
@@ -1294,6 +1295,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 self.menuDictGroup.addAction(a)
                 self.menuDict.addAction(a)
             self.menuDict.addSeparator()
+
+        for lib, requirement in Spellchecker.supportedLibraries().items():
+            if lib not in dictionaries:
+                a = QAction(self.tr("{}{} is not installed").format(lib, requirement or ""), self)
+                a.setEnabled(False)
+                self.menuDict.addAction(a)
+                self.menuDict.addSeparator()
 
     def setDictionary(self):
         if not Spellchecker.isInstalled():

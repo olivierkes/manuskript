@@ -14,8 +14,14 @@ try:
 except ImportError:
     pyspellchecker = None
 
+SYMSPELLPY_MIN_VERSION = "6.3.8"
 try:
     import symspellpy
+    import distutils.version
+
+    if distutils.version.LooseVersion(symspellpy.__version__) < SYMSPELLPY_MIN_VERSION:
+        symspellpy = None
+    
 except ImportError:
     symspellpy = None
 
@@ -41,9 +47,9 @@ class Spellchecker:
 
     @staticmethod
     def supportedLibraries():
-        libs = []
+        libs = OrderedDict()
         for impl in Spellchecker.implementations:
-            libs.append(impl.getLibraryName())
+            libs[impl.getLibraryName()] = impl.getLibraryRequirement()
         return libs
 
     @staticmethod
@@ -58,7 +64,8 @@ class Spellchecker:
     def availableDictionaries():
         dictionaries = OrderedDict()
         for impl in Spellchecker.implementations:
-            dictionaries[impl.getLibraryName()] = impl.availableDictionaries()
+            if impl.isInstalled():
+                dictionaries[impl.getLibraryName()] = impl.availableDictionaries()
         return dictionaries
 
     @staticmethod
@@ -132,6 +139,10 @@ class BasicDictionary:
     @staticmethod
     def getLibraryName():
         raise NotImplemented
+
+    @staticmethod
+    def getLibraryRequirement():
+        return None
 
     @staticmethod
     def getLibraryURL():
@@ -247,8 +258,6 @@ class EnchantDictionary(BasicDictionary):
     def getCustomDictionaryPath(self):
         return os.path.join(self.getResourcesPath(), "{}.txt".format(self.name))
 
-Spellchecker.implementations.append(EnchantDictionary)
-
 class PySpellcheckerDictionary(BasicDictionary):
 
     def __init__(self, name):
@@ -309,9 +318,6 @@ class PySpellcheckerDictionary(BasicDictionary):
         BasicDictionary.removeWord(self, word)
         self._dict.word_frequency.remove(word.lower())
 
-Spellchecker.registerImplementation(PySpellcheckerDictionary)
-
-
 class SymSpellDictionary(BasicDictionary):
     CUSTOM_COUNT = 1
     DISTANCE = 2
@@ -323,7 +329,9 @@ class SymSpellDictionary(BasicDictionary):
 
         cachePath = self.getCachedDictionaryPath()
         try:
-            self._dict.load_pickle(cachePath)
+            if not self._dict.load_pickle(cachePath, False):
+                raise Exception("Can't load cached dictionary. " +
+                                "File might be corrupted or incompatible with installed symspellpy version")
         except:
             if pyspellchecker:
                 path = os.path.join(pyspellchecker.__path__[0], "resources", "{}.json.gz".format(self.name))
@@ -332,16 +340,20 @@ class SymSpellDictionary(BasicDictionary):
                         data = json.loads(f.read())
                         for key in data:
                             self._dict.create_dictionary_entry(key, data[key])
-                    self._dict.save_pickle(cachePath)
+                    self._dict.save_pickle(cachePath, False)
         for word in self._customDict:
             self._dict.create_dictionary_entry(word, self.CUSTOM_COUNT)
 
     def getCachedDictionaryPath(self):
-        return os.path.join(self.getResourcesPath(), "{}.sym.gz".format(self.name))
+        return os.path.join(self.getResourcesPath(), "{}.sym".format(self.name))
 
     @staticmethod
     def getLibraryName():
         return "symspellpy"
+
+    @staticmethod
+    def getLibraryRequirement():
+        return ">= " + SYMSPELLPY_MIN_VERSION
 
     @staticmethod
     def getLibraryURL():
@@ -354,11 +366,14 @@ class SymSpellDictionary(BasicDictionary):
     @classmethod
     def availableDictionaries(cls):
         if SymSpellDictionary.isInstalled():
-            files = glob.glob(os.path.join(cls.getResourcesPath(), "*.sym.gz"))
-            dictionaries = set()
+            files = glob.glob(os.path.join(cls.getResourcesPath(), "*.sym"))
+            dictionaries = []
             for file in files:
-                dictionaries.add(os.path.basename(file)[:-7])
-            return list(dictionaries.union(PySpellcheckerDictionary.availableDictionaries()))
+                dictionaries.append(os.path.basename(file)[:-4])
+            for sp_dict in PySpellcheckerDictionary.availableDictionaries():
+                if not sp_dict in dictionaries:
+                    dictionaries.append(sp_dict)
+            return dictionaries
         return []
 
     @staticmethod
@@ -402,15 +417,11 @@ class SymSpellDictionary(BasicDictionary):
 
     def removeWord(self, word):
         BasicDictionary.removeWord(self, word)
-        # Need to do this for now because library doesn't support removing a word
-        self._reloadDict()
+        # Since 6.3.8
+        self._dict.delete_dictionary_entry(word)
 
-    def _reloadDict(self):
-        self._dict = symspellpy.SymSpell(self.DISTANCE)
 
-        cachePath = self.getCachedDictionaryPath()
-        self._dict.load_pickle(cachePath)
-        for word in self._customDict:
-            self._dict.create_dictionary_entry(word, self.CUSTOM_COUNT)
-
+# Register the implementations in order of priority
+Spellchecker.implementations.append(EnchantDictionary)
 Spellchecker.registerImplementation(SymSpellDictionary)
+Spellchecker.registerImplementation(PySpellcheckerDictionary)
