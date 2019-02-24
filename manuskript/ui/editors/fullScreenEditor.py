@@ -3,7 +3,7 @@
 import os
 
 from PyQt5.QtCore import Qt, QSize, QPoint, QRect, QEvent, QTime, QTimer
-from PyQt5.QtGui import QFontMetrics, QColor, QBrush, QPalette, QPainter, QPixmap
+from PyQt5.QtGui import QFontMetrics, QColor, QBrush, QPalette, QPainter, QPixmap, QCursor
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QFrame, QWidget, QPushButton, qApp, QStyle, QComboBox, QLabel, QScrollBar, \
     QStyleOptionSlider, QHBoxLayout, QVBoxLayout, QMenu, QAction
@@ -11,6 +11,7 @@ from PyQt5.QtWidgets import QFrame, QWidget, QPushButton, qApp, QStyle, QComboBo
 # Spell checker support
 from manuskript import settings
 from manuskript.enums import Outline
+from manuskript.models import outlineItem
 from manuskript.functions import allPaths, drawProgress
 from manuskript.ui.editors.locker import locker
 from manuskript.ui.editors.themes import findThemePath, generateTheme, setThemeEditorDatas
@@ -60,23 +61,52 @@ class fullScreenEditor(QWidget):
             self.btnSpellCheck.setCheckable(True)
             self.btnSpellCheck.setChecked(self.editor.spellcheck)
             self.btnSpellCheck.toggled.connect(self.editor.toggleSpellcheck)
-            self.topPanel.layout().addWidget(self.btnSpellCheck)
         else:
             self.btnSpellCheck = None
 
-        self.topPanel.layout().addStretch(1)
-        item = self._index.internalPointer()
-        title = item.data(Outline.title)
-        self.lblTitle = QLabel(title, self)
-        self.topPanel.layout().addWidget(self.lblTitle)
-        self.topPanel.layout().addStretch(1)
+        # Navigation Buttons
+        self.btnPrevious = QPushButton(self)
+        self.btnPrevious.setFlat(True)
+        self.btnPrevious.setIcon(QIcon.fromTheme("arrow-left"))
+        self.btnPrevious.clicked.connect(self.switchPreviousItem)
+        self.btnNext = QPushButton(self)
+        self.btnNext.setFlat(True)
+        self.btnNext.setIcon(QIcon.fromTheme("arrow-right"))
+        self.btnNext.clicked.connect(self.switchNextItem)
+
+        # Title/Path and New document Buttons
+        self.lblTitle = myTitle(self)
+        self.wPath = myPath(self)
+        self.btnNew = QPushButton(self)
+        self.btnNew.setFlat(True)
+        self.btnNew.setIcon(QIcon.fromTheme("document-new"))
+        self.btnNew.clicked.connect(self.createNewText)
 
         # Close
         self.btnClose = QPushButton(self)
         self.btnClose.setIcon(qApp.style().standardIcon(QStyle.SP_DialogCloseButton))
         self.btnClose.clicked.connect(self.close)
         self.btnClose.setFlat(True)
+
+        # Top panel Layout
+        if self.btnSpellCheck:
+            self.topPanel.layout().addWidget(self.btnSpellCheck)
+        self.topPanel.layout().addStretch(5)
+
+        self.topPanel.layout().addWidget(self.btnPrevious)
+        self.topPanel.layout().addStretch(1)
+
+        self.topPanel.layout().addWidget(self.lblTitle)
+        self.topPanel.layout().addWidget(self.wPath)
+        self.topPanel.layout().addSpacing(15)
+        self.topPanel.layout().addWidget(self.btnNew)
+
+        self.topPanel.layout().addStretch(1)
+        self.topPanel.layout().addWidget(self.btnNext)
+
+        self.topPanel.layout().addStretch(5)
         self.topPanel.layout().addWidget(self.btnClose)
+        self.updateTopBar()
 
         # Left Panel
         self._locked = False
@@ -123,9 +153,19 @@ class fullScreenEditor(QWidget):
 
         self.bottomPanel.layout().addSpacing(24)
 
+        # Default display is path instead of title.
+        if settings.fullscreenSettings.get('top-path', True) and \
+                settings.fullscreenSettings.get('top-title', True):
+            settings.fullscreenSettings['top-path'] = True
+            settings.fullscreenSettings['top-title'] = False
+
+        # Add displays
         if self.btnSpellCheck:
             self.topPanel.addDisplay(self.tr("Spellcheck"), 'top-spellcheck', (self.btnSpellCheck, ))
+        self.topPanel.addDisplay(self.tr("Path"), 'top-path', (self.wPath, ))
         self.topPanel.addDisplay(self.tr("Title"), 'top-title', (self.lblTitle, ))
+        self.topPanel.addDisplay(self.tr("Navigation"), 'top-navigation', (self.btnPrevious, self.btnNext))
+        self.topPanel.addDisplay(self.tr("New document"), 'top-new-doc', (self.btnNew, ))
         self.bottomPanel.addDisplay(self.tr("Theme selector"), 'bottom-theme', (self.lstThemes, themeLabel))
         self.bottomPanel.addDisplay(self.tr("Word count"), 'bottom-wc', (self.lblWC, ))
         self.bottomPanel.addDisplay(self.tr("Progress"), 'bottom-progress', (self.lblProgress, ))
@@ -252,6 +292,14 @@ class fullScreenEditor(QWidget):
             # print("Leaving fullScreenEditor via keyPressEvent", flush=True)
             self.showNormal()
             self.close()
+        elif (event.modifiers() & Qt.AltModifier) and \
+                event.key() in [Qt.Key_PageUp, Qt.Key_PageDown, Qt.Key_Left, Qt.Key_Right]:
+            if event.key() in [Qt.Key_PageUp, Qt.Key_Left]:
+                success = self.switchPreviousItem()
+            if event.key() in [Qt.Key_PageDown, Qt.Key_Right]:
+                success = self.switchNextItem()
+            if not success:
+                QWidget.keyPressEvent(self, event)
         else:
             QWidget.keyPressEvent(self, event)
 
@@ -295,6 +343,15 @@ class fullScreenEditor(QWidget):
         if topLeft.row() <= self._index.row() <= bottomRight.row():
             self.updateStatusBar()
 
+    def updateTopBar(self):
+        item = self._index.internalPointer()
+        previousItem = self.previousTextItem(item)
+        nextItem = self.nextTextItem(item)
+        self.btnPrevious.setEnabled(previousItem is not None)
+        self.btnNext.setEnabled(nextItem is not None)
+        self.lblTitle.setText(item.title())
+        self.wPath.setItem(item)
+
     def updateStatusBar(self):
         if self._index:
             item = self._index.internalPointer()
@@ -326,6 +383,102 @@ class fullScreenEditor(QWidget):
             elif not wc:
                 self.locker.spnWordTarget.setValue(goal)
 
+    def setCurrentModelIndex(self, index):
+        self._index = index
+        self.editor.setCurrentModelIndex(index)
+        self.updateTopBar()
+        self.updateStatusBar()
+
+    def switchPreviousItem(self):
+        item = self._index.internalPointer()
+        previousItem = self.previousTextItem(item)
+        if previousItem:
+            self.setCurrentModelIndex(previousItem.index())
+            return True
+        return False
+
+    def switchNextItem(self):
+        item = self._index.internalPointer()
+        nextItem = self.nextTextItem(item)
+        if nextItem:
+            self.setCurrentModelIndex(nextItem.index())
+            return True
+        return False
+
+    def switchToItem(self, item):
+        item = self.firstTextItem(item)
+        if item:
+            self.setCurrentModelIndex(item.index())
+        
+    def createNewText(self):
+        item = self._index.internalPointer()
+        newItem = outlineItem(title=qApp.translate("outlineBasics", "New"), _type=settings.defaultTextType)
+        self._index.model().insertItem(newItem, item.row() + 1, item.parent().index())
+        self.setCurrentModelIndex(newItem.index())
+
+    def previousModelItem(self, item):
+        parent = item.parent()
+        if not parent:
+            # Root has no sibling
+            return None
+
+        row = parent.childItems.index(item)
+        if row > 0:
+            return parent.child(row - 1)
+        return self.previousModelItem(parent)
+
+    def nextModelItem(self, item):
+        parent = item.parent()
+        if not parent:
+            # Root has no sibling
+            return None
+
+        row = parent.childItems.index(item)
+        if row + 1 < parent.childCount():
+            return parent.child(row + 1)
+        return self.nextModelItem(parent)
+
+    def previousTextItem(self, item):
+        previous = self.previousModelItem(item)
+
+        while previous:
+            last = self.lastTextItem(previous)
+            if last:
+                return last
+            previous = self.previousModelItem(previous)
+        return None
+        
+    def nextTextItem(self, item):
+        if item.isFolder() and item.childCount() > 0:
+            next = item.child(0)
+        else:
+            next = self.nextModelItem(item)
+
+        while next:
+            first = self.firstTextItem(next)
+            if first:
+                return first
+            next = self.nextModelItem(next)
+        return None
+
+    def firstTextItem(self, item):
+        if item.isText():
+            return item
+        for child in item.children():
+            first = self.firstTextItem(child)
+            if first:
+                return first
+        return None
+
+    def lastTextItem(self, item):
+        if item.isText():
+            return item
+        for child in reversed(item.children()):
+            last = self.lastTextItem(child)
+            if last:
+                return last
+        return None
+        
 
 class myScrollBar(QScrollBar):
     def __init__(self, color=Qt.white, parent=None):
@@ -450,6 +603,82 @@ class myPanel(QWidget):
                 m.addAction(a)
             m.popup(self.mapToGlobal(event.pos()))
             self._m = m
+
+# Path and title are mutually exclusive so let's override QLabel so it can
+# hide myPath when myTitle is shown and vice-versa
+class myTitle(QLabel):
+    def __init__(self, parent=None):
+        QLabel.__init__(self, parent)
+        self.editor = parent
+
+    def showEvent(self, ev):
+        self.editor.wPath.hide()
+        settings.fullscreenSettings['top-path'] = False
+        return QWidget.showEvent(self, ev)
+
+
+class myPath(QWidget):
+    def __init__(self, parent=None):
+        QWidget.__init__(self, parent)
+        self.editor = parent
+        self.setAttribute(Qt.WA_TranslucentBackground)
+        self.setLayout(QHBoxLayout())
+        self.layout().setContentsMargins(0, 0, 0, 0)
+
+    def showEvent(self, ev):
+        self.editor.lblTitle.hide()
+        settings.fullscreenSettings['top-title'] = False
+        return QWidget.showEvent(self, ev)
+
+    def setItem(self, item):
+        self._item = item
+        path = self.getItemPath(item)
+        layout = self.layout()
+        while layout.count() > 0:
+            li = layout.takeAt(0)
+            w = li.widget()
+            w.deleteLater()
+
+        def gen_cb(i):
+            return lambda: self.popupPath(i)
+        # Skip Root
+        for i in path[1:]:
+            btn = QPushButton(i.title(), self)
+            btn.setFlat(True)
+            btn.clicked.connect(gen_cb(i))
+            self.layout().addWidget(btn)
+            if i.isFolder():
+                lblSeparator = QLabel(" > ", self)
+                #lblSeparator = QLabel(self)
+                #lblSeparator.setPixmap(QIcon.fromTheme("view-list-tree").pixmap(24,24))
+                self.layout().addWidget(lblSeparator)
+
+    def popupPath(self, item):
+        m = QMenu()
+        def gen_cb(i):
+            return lambda: self.editor.switchToItem(i)
+
+        for i in item.siblings():
+            a = QAction(i.title(), m)
+            if i == item:
+                a.setIcon(QIcon.fromTheme("stock_yes"))
+                a.setEnabled(False)
+            elif self.editor.firstTextItem(i) is None:
+                a.setEnabled(False)
+            else:
+                a.triggered.connect(gen_cb(i))
+            m.addAction(a)
+        m.popup(QCursor.pos())
+        self._m = m
+
+    def getItemPath(self, item):
+        path = [item]
+        parent = item.parent()
+        while parent:
+            path.insert(0, parent)
+            parent = parent.parent()
+        return path
+        
 
 class myClockLabel(QLabel):
     

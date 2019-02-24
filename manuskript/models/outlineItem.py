@@ -80,6 +80,16 @@ class outlineItem(abstractItem):
     def wordCount(self):
         return self._data.get(self.enum.wordCount, 0)
 
+    def __str__(self):
+        return "{id}: {folder}{title}{children}".format(
+            id=self.ID(),
+            folder="*" if self.isFolder() else "",
+            title=self.data(self.enum.title),
+            children="" if self.isText() else "({})".format(self.childCount())
+            )
+
+    __repr__ = __str__
+
     #######################################################################
     # Data
     #######################################################################
