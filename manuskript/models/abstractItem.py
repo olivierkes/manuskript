@@ -122,6 +122,7 @@ class abstractItem():
     def row(self):
         if self.parent():
             return self.parent().childItems.index(self)
+        return None
 
     def appendChild(self, child):
         self.insertChild(self.childCount(), child)
@@ -176,6 +177,11 @@ class abstractItem():
         item = self.__class__(xml=self.toXML())
         item.setData(self.enum.ID, None)
         return item
+
+    def siblings(self):
+        if self.parent():
+            return self.parent().children()
+        return []
 
     ###############################################################################
     # IDS
