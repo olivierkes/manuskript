@@ -91,14 +91,58 @@ def prepare(tests=False):
 
     return app, MW
 
-def launch(MW = None):
+def launch(app, MW = None):
     if MW is None:
         from manuskript.functions import mainWindow
         MW = mainWindow()
 
     MW.show()
 
-    qApp.exec_()
+    # Support for IPython Jupyter QT Console as a debugging aid.
+    # Last argument must be --console to enable it
+    # Code reference : 
+    # https://github.com/ipython/ipykernel/blob/master/examples/embedding/ipkernel_qtapp.py
+    # https://github.com/ipython/ipykernel/blob/master/examples/embedding/internal_ipkernel.py
+    if len(sys.argv) > 1 and sys.argv[-1] == "--console":
+        try:
+            from IPython.lib.kernel import connect_qtconsole
+            from ipykernel.kernelapp import IPKernelApp
+            # Only to ensure matplotlib QT mainloop integration is available
+            import matplotlib
+
+            # Create IPython kernel within our application
+            kernel = IPKernelApp.instance()
+            
+            # Initialize it and use matplotlib for main event loop integration with QT
+            kernel.initialize(['python', '--matplotlib=qt'])
+
+            # Create the console in a new process and connect
+            console = connect_qtconsole(kernel.abs_connection_file, profile=kernel.profile)
+
+            # Export MW and app variable to the console's namespace
+            kernel.shell.user_ns['MW'] = MW
+            kernel.shell.user_ns['app'] = app
+            kernel.shell.user_ns['kernel'] = kernel
+            kernel.shell.user_ns['console'] = console
+
+            # When we close manuskript, make sure we close the console process and stop the
+            # IPython kernel's mainloop, otherwise the app will never finish.
+            def console_cleanup():
+                app.quit()
+                console.kill()
+                kernel.io_loop.stop()
+            app.lastWindowClosed.connect(console_cleanup)
+
+            # Very important, IPython-specific step: this gets GUI event loop
+            # integration going, and it replaces calling app.exec_()
+            kernel.start()
+        except Exception as e:
+            print("Console mode requested but error initializing IPython : %s" % str(e))
+            print("To make use of the Interactive IPython QT Console, make sure you install : ")
+            print("$ pip3 install ipython qtconsole matplotlib")
+            qApp.exec_()
+    else:
+        qApp.exec_()
     qApp.deleteLater()
 
 def run():
@@ -111,7 +155,7 @@ def run():
     app, MW = prepare()
     # Separating launch to avoid segfault, so it seem.
     # Cf. http://stackoverflow.com/questions/12433491/is-this-pyqt-4-python-bug-or-wrongly-behaving-code
-    launch(MW)
+    launch(app, MW)
 
 if __name__ == "__main__":
     run()
