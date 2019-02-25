@@ -359,6 +359,7 @@ class myPanel(QWidget):
         self.show()
         self.setAttribute(Qt.WA_TranslucentBackground)
         self._autoHide = True
+        self._m = None
 
         if not vertical:
             self.setLayout(QHBoxLayout())
@@ -379,6 +380,8 @@ class myPanel(QWidget):
 
     def mouseReleaseEvent(self, event):
         if event.button() == Qt.RightButton:
+            if self._m:
+                self._m.deleteLater()
             m = QMenu()
             a = QAction(self.tr("Auto-hide"), m)
             a.setCheckable(True)
