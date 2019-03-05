@@ -21,154 +21,156 @@
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="54"/>
         <source>HTML Source</source>
-        <translation type="unfinished"></translation>
+        <translation>الشفرة المصدرية HTML</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="58"/>
         <source>HTML Output</source>
-        <translation type="unfinished"></translation>
+        <translation>البيانات المخرجة HTML</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/__init__.py" line="15"/>
         <source>Default exporter, provides basic formats used by other exporters.</source>
-        <translation type="unfinished"></translation>
+        <translation>المُصدّر الإفتراضي، يعطي صيغ بسيطة تستخدمها المُصدّرات الأخرى.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/markdown.py" line="59"/>
         <source>Preview with highlighter.</source>
-        <translation type="unfinished"></translation>
+        <translation>استعراض مع وضع الإبانة.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="14"/>
         <source>Plain text</source>
-        <translation type="unfinished"></translation>
+        <translation>نص عادي</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="63"/>
         <source>Chose output file...</source>
-        <translation type="unfinished"></translation>
+        <translation>حدد ملف الحفظ...</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/HTML.py" line="13"/>
         <source>A little known format modestly used. You know, web sites for example.</source>
-        <translation type="unfinished"></translation>
+        <translation>صيغة ليست بتلك الشهرة وتستخدم بشكل متواضع، مثلاً في مواقع الأنترنت.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/PDF.py" line="18"/>
         <source>Needs LaTeX to be installed.</source>
-        <translation type="unfinished"></translation>
+        <translation>يحتاج أن يكون LaTeX مثبتاً.</translation>
     </message>
     <message>
         <location filename="../manuskript/converters/pandocConverter.py" line="75"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>خطأ</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="96"/>
         <source>Standalone document (not just a fragment)</source>
-        <translation type="unfinished"></translation>
+        <translation>مستند مُستقل (ليس مجرد جزء)</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="99"/>
         <source>Include a table of contents.</source>
-        <translation type="unfinished"></translation>
+        <translation>ضمّن جدول محتويات.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="102"/>
         <source>Number of sections level to include in TOC: </source>
-        <translation type="unfinished"></translation>
+        <translation>كم مستوى من الأجزاء ستُضمّن في جدول المحتويات: </translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="106"/>
         <source>Typographically correct output</source>
-        <translation type="unfinished"></translation>
+        <translation>ناتج المخرجات صحيح بشكل طباعي</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="109"/>
         <source>Normalize the document (cleaner)</source>
-        <translation type="unfinished"></translation>
+        <translation>تسوية المستند (مُنظف)</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="111"/>
         <source>Specify the base level for headers: </source>
-        <translation type="unfinished"></translation>
+        <translation>حدد المستوى الأساس للعناوين الرئسية </translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="118"/>
         <source>Use reference-style links instead of inline links</source>
-        <translation type="unfinished"></translation>
+        <translation>استخدم روابط ذات شكل مفهرس بدلاً من الروابط بين السطور</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="120"/>
         <source>Use ATX-style headers</source>
-        <translation type="unfinished"></translation>
+        <translation>استخدم شكل ATX للعناوين الرأسية</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="122"/>
         <source>Self-contained HTML files, with no dependencies</source>
-        <translation type="unfinished"></translation>
+        <translation>ملفات HTML مصنوعة بشكل مستقل بحيث لاتحتاج لملحقات وتبعات</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="124"/>
         <source>Use &lt;q&gt; tags for quotes in HTML</source>
-        <translation type="unfinished"></translation>
+        <translation>استخدم وسوم &lt;q&gt; للاقتباسات في HTML</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="131"/>
         <source>LaTeX engine used to produce the PDF.</source>
-        <translation type="unfinished"></translation>
+        <translation>اُستخدم محرك LaTeX لإنتاج PDF.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="141"/>
         <source>Paper size:</source>
-        <translation type="unfinished"></translation>
+        <translation>حجم الورقة:</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="144"/>
         <source>Font size:</source>
-        <translation type="unfinished"></translation>
+        <translation>حجم الخط:</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="147"/>
         <source>Class:</source>
-        <translation type="unfinished"></translation>
+        <translation>الفئة (Class):</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="150"/>
         <source>Line spacing:</source>
-        <translation type="unfinished"></translation>
+        <translation>تباعد الأسطر:</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/outputFormats.py" line="10"/>
         <source>Books that don&apos;t kill trees.</source>
-        <translation type="unfinished"></translation>
+        <translation>الكتب التي لا تقتل الشجر.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/outputFormats.py" line="20"/>
         <source>OpenDocument format. Used by LibreOffice for example.</source>
-        <translation type="unfinished"></translation>
+        <translation>صيغة المستند المفتوح (OpenDocument). وتستخدم من قبل LibreOffice مثلاً.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/outputFormats.py" line="30"/>
         <source>Microsoft Office (.docx) document.</source>
-        <translation type="unfinished"></translation>
+        <translation>مستند بصيغة مايكروسوفت أوفيس (.docx).</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/plainText.py" line="21"/>
         <source>reStructuredText is a lightweight markup language.</source>
-        <translation type="unfinished"></translation>
+        <translation>صيغة reStructuredText هي لغة ترميزية خفيفة.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/markdown.py" line="14"/>
         <source>Just like plain text, excepts adds markdown titles.
                           Presupposes that texts are formatted in markdown.</source>
-        <translation type="unfinished"></translation>
+        <translation>مثلا النصوص العادية لكنها تختلف بكونها تضيف عناوين مارك داون (markdown).
+                          على إفتراض أن النصوص مكتوبة بصيغة مارك داون.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="15"/>
         <source>Simplest export to plain text. Allows you to use your own markup not understood
                   by manuskript, for example &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation>الإخراج الأسهل للنصوص العادية. تسمح لك باستخدام صيغة ترميز لا يفهمها  
+                  هذا التطبيق (manuskript) مثل صيغة &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/__init__.py" line="20"/>
@@ -176,43 +178,52 @@
     formats.&lt;/p&gt;
     &lt;p&gt;Website: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
     </source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;محول مستندات شامل. يمكن استخدامه لتحويل صيغة مارك داون لصيغ متعددة
+    أخرى.&lt;/p&gt;
+    &lt;p&gt;موقعه: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
+    </translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/PDF.py" line="19"/>
         <source>a valid LaTeX installation. Pandoc recommendations can be found on:
                      &lt;a href=&quot;https://pandoc.org/installing.html&quot;&gt;pandoc.org/installing.html&lt;/a&gt;. If you want Unicode support, you need XeLaTeX.</source>
-        <translation type="unfinished"></translation>
+        <translation>تثبيت LaTeX بشكل صحيح. توصيات Pandoc يمكن إيجادها على:
+                     &lt;a href=&quot;https://pandoc.org/installing.html&quot;&gt;pandoc.org/installing.html&lt;/a&gt;. إذا احتجت دعم يونيكود فستحتاج XeLaTeX.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/plainText.py" line="10"/>
         <source>Export to markdown, using pandoc. Allows more formatting options
     than the basic manuskript exporter.</source>
-        <translation type="unfinished"></translation>
+        <translation>تصدير لمارك داون (markdown)، باستخدام pandoc. يسمح بخيارات ترميزية أكثر
+    من مُصدر التطبيق البسيط.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/plainText.py" line="31"/>
         <source>LaTeX is a word processor and document markup language used to create
                                               beautiful documents.</source>
-        <translation type="unfinished"></translation>
+        <translation>LaTeX هي لغة ترميزية للمستندات ومعالج كتابي لإنشاء
+                                              مستندات جميلة.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/plainText.py" line="42"/>
         <source>The purpose of this format is to provide a way to exchange information
                                               between outliners and Internet services that can be browsed or controlled
                                               through an outliner.</source>
-        <translation type="unfinished"></translation>
+        <translation>الغرض من هذه الصيغة هو لإعطاء طريقة لتبادل المعلومات
+                                              بين محررات النصوص (outliners) وخدمات الأنتزنت التي يمكن استعراضها او التحكم بها
+                                              عبر المحررات تلك.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="114"/>
         <source>Disable YAML metadata block.
 Use that if you get YAML related error.</source>
-        <translation type="unfinished"></translation>
+        <translation>تعطيل  كتلة البيانات الوصفة ذات صيغة YAML.
+استخدم هذا الخيار عند تعرضك لخطأ YAML.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="134"/>
         <source>Convert to ePUB3</source>
-        <translation type="unfinished"></translation>
+        <translation>تحويل إلى ePUB3</translation>
     </message>
 </context>
 <context>
@@ -220,52 +231,52 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="14"/>
         <source>Manage Exporters</source>
-        <translation type="unfinished"></translation>
+        <translation>تحكم بالمُصدرات</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="21"/>
         <source>Manuskript</source>
-        <translation type="unfinished"></translation>
+        <translation>مانيوسكريبت</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="66"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>وصف</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="100"/>
         <source>Offers export to</source>
-        <translation type="unfinished"></translation>
+        <translation>يقدم تصدير إلى</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="184"/>
         <source>Status</source>
-        <translation type="unfinished"></translation>
+        <translation>الحالة</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="190"/>
         <source>Status:</source>
-        <translation type="unfinished"></translation>
+        <translation>الحالة:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="210"/>
         <source>Version:</source>
-        <translation type="unfinished"></translation>
+        <translation>النسخة:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="233"/>
         <source>Path:</source>
-        <translation type="unfinished"></translation>
+        <translation>المسار:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="258"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="273"/>
         <source>{HelpText}</source>
-        <translation type="unfinished"></translation>
+        <translation>{HelpText}</translation>
     </message>
 </context>
 <context>
@@ -273,47 +284,47 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="14"/>
         <source>Frequency Analyzer</source>
-        <translation type="unfinished"></translation>
+        <translation>محلل التكرار</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="24"/>
         <source>Word frequency</source>
-        <translation type="unfinished"></translation>
+        <translation>تكرار الكلمة</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="37"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>الإعدادات</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="49"/>
         <source>Minimum size:</source>
-        <translation type="unfinished"></translation>
+        <translation>الحجم الأدنى:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="63"/>
         <source>Exclude words (comma separated):</source>
-        <translation type="unfinished"></translation>
+        <translation>استبعاد كلمات (مفصولة بفاصلة):</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="156"/>
         <source>Analyze</source>
-        <translation type="unfinished"></translation>
+        <translation>تحليل</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="107"/>
         <source>Phrase frequency</source>
-        <translation type="unfinished"></translation>
+        <translation>تكرار العبارة</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="115"/>
         <source>Number of words: from</source>
-        <translation type="unfinished"></translation>
+        <translation>عدد الكلمات: من</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="129"/>
         <source>to</source>
-        <translation type="unfinished"></translation>
+        <translation>إلى</translation>
     </message>
 </context>
 <context>
@@ -321,7 +332,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/importer/markdownImporter.py" line="178"/>
         <source>Markdown import</source>
-        <translation type="unfinished"></translation>
+        <translation>استيراد مارك داون (Markdown)</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/markdownImporter.py" line="182"/>
