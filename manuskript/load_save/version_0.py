@@ -178,7 +178,10 @@ def loadFilesFromZip(zipname):
     zf = zipfile.ZipFile(zipname)
     files = {}
     for f in zf.namelist():
-        files[os.path.normpath(f)] = zf.read(f)
+        # Some archiving programs (e.g. 7-Zip) also store entries for the directories when
+        # creating an archive. We have no use for these entries; skip them entirely.
+        if f[-1:] != '/':
+            files[os.path.normpath(f)] = zf.read(f)
     return files
 
 
