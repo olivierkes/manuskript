@@ -147,8 +147,8 @@ class fullScreenEditor(QWidget):
         # Colors
         if self._themeDatas["Foreground/Color"] == self._themeDatas["Background/Color"] or \
                         self._themeDatas["Foreground/Opacity"] < 5:
-            self._bgcolor = QColor(self._themeDatas["Text/Color"])
-            self._fgcolor = QColor(self._themeDatas["Background/Color"])
+            self._fgcolor = QColor(self._themeDatas["Text/Color"])
+            self._bgcolor = QColor(self._themeDatas["Background/Color"])
         else:
             self._bgcolor = QColor(self._themeDatas["Foreground/Color"])
             self._bgcolor.setAlpha(self._themeDatas["Foreground/Opacity"] * 255 / 100)
@@ -202,7 +202,7 @@ class fullScreenEditor(QWidget):
         p.setBrush(QPalette.ButtonText, self._fgcolor)
         p.setBrush(QPalette.WindowText, self._fgcolor)
 
-        for panel in (self.bottomPanel, self.topPanel):
+        for panel in (self.bottomPanel, self.topPanel, self.leftPanel):
             for i in range(panel.layout().count()):
                 item = panel.layout().itemAt(i)
                 if item.widget():
