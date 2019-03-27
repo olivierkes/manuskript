@@ -464,16 +464,16 @@ class textEditView(QTextEdit):
                     action = self.SpellAction(word, spell_menu)
                     action.correct.connect(self.correctWord)
                     spell_menu.addAction(action)
+                popup_menu.insertSeparator(popup_menu.actions()[0])
+                # Adds: add to dictionary
+                addAction = QAction(self.tr("&Add to dictionary"), popup_menu)
+                addAction.setIcon(QIcon.fromTheme("list-add"))
+                addAction.triggered.connect(self.addWordToDict)
+                addAction.setData(selectedWord)
+                popup_menu.insertAction(popup_menu.actions()[0], addAction)
                 # Only add the spelling suggests to the menu if there are
                 # suggestions.
                 if len(spell_menu.actions()) != 0:
-                    popup_menu.insertSeparator(popup_menu.actions()[0])
-                    # Adds: add to dictionary
-                    addAction = QAction(self.tr("&Add to dictionary"), popup_menu)
-                    addAction.setIcon(QIcon.fromTheme("list-add"))
-                    addAction.triggered.connect(self.addWordToDict)
-                    addAction.setData(selectedWord)
-                    popup_menu.insertAction(popup_menu.actions()[0], addAction)
                     # Adds: suggestions
                     popup_menu.insertMenu(popup_menu.actions()[0], spell_menu)
                     # popup_menu.insertSeparator(popup_menu.actions()[0])
