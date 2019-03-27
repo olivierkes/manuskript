@@ -1276,6 +1276,24 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.menuDict.clear()
         dictionaries = Spellchecker.availableDictionaries()
+
+        # Set first run dictionary
+        if settings.dict is None:
+            settings.dict = Spellchecker.getDefaultDictionary()
+
+        # Check if project dict is unavailable on this machine
+        dict_available = False
+        for lib, dicts in dictionaries.items():
+            if dict_available:
+                break
+            for i in dicts:
+                if Spellchecker.normalizeDictName(lib, i) == settings.dict:
+                    dict_available = True
+                    break
+        # Reset dict to default one if it's unavailable
+        if not dict_available:
+            settings.dict = Spellchecker.getDefaultDictionary()
+
         for lib, dicts in dictionaries.items():
             if len(dicts) > 0:
                 a = QAction(lib, self)
@@ -1287,14 +1305,17 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 a = QAction(i, self)
                 a.data = lib
                 a.setCheckable(True)
-                if settings.dict is None:
-                    settings.dict = Spellchecker.getDefaultDictionary()
                 if Spellchecker.normalizeDictName(lib, i) == settings.dict:
                     a.setChecked(True)
                 a.triggered.connect(self.setDictionary, F.AUC)
                 self.menuDictGroup.addAction(a)
                 self.menuDict.addAction(a)
             self.menuDict.addSeparator()
+
+        # If a new dictionary was chosen, apply the change and re-enable spellcheck if it was enabled.
+        if not dict_available:
+            self.setDictionary()
+            self.toggleSpellcheck(settings.spellcheck)
 
         for lib, requirement in Spellchecker.supportedLibraries().items():
             if lib not in dictionaries:
