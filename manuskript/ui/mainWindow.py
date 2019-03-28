@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/mainWindow.ui'
 #
-# Created by: PyQt5 UI code generator 5.5.1
+# Created by: PyQt5 UI code generator 5.10.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -833,6 +833,7 @@ class Ui_MainWindow(object):
         self.layoutWidget = QtWidgets.QWidget(self.splitterOutlineH)
         self.layoutWidget.setObjectName("layoutWidget")
         self.verticalLayout_14 = QtWidgets.QVBoxLayout(self.layoutWidget)
+        self.verticalLayout_14.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_14.setObjectName("verticalLayout_14")
         self.splitterOutlineV = QtWidgets.QSplitter(self.layoutWidget)
         self.splitterOutlineV.setOrientation(QtCore.Qt.Vertical)
@@ -1168,6 +1169,8 @@ class Ui_MainWindow(object):
         self.actCompile.setObjectName("actCompile")
         self.actToolFrequency = QtWidgets.QAction(MainWindow)
         self.actToolFrequency.setObjectName("actToolFrequency")
+        self.actToolTodo = QtWidgets.QAction(MainWindow)
+        self.actToolTodo.setObjectName("actToolTodo")
         self.actAbout = QtWidgets.QAction(MainWindow)
         icon = QtGui.QIcon.fromTheme("stock_view-details")
         self.actAbout.setIcon(icon)
@@ -1284,6 +1287,7 @@ class Ui_MainWindow(object):
         self.menuHelp.addAction(self.actAbout)
         self.menuTools.addAction(self.actSpellcheck)
         self.menuTools.addAction(self.actToolFrequency)
+        self.menuTools.addAction(self.actToolTodo)
         self.mnuHeader.addAction(self.actHeaderSetextL1)
         self.mnuHeader.addAction(self.actHeaderSetextL2)
         self.mnuHeader.addSeparator()
@@ -1479,6 +1483,7 @@ class Ui_MainWindow(object):
         self.actCompile.setText(_translate("MainWindow", "Co&mpile"))
         self.actCompile.setShortcut(_translate("MainWindow", "F6"))
         self.actToolFrequency.setText(_translate("MainWindow", "&Frequency Analyzer"))
+        self.actToolTodo.setText(_translate("MainWindow", "&Todo List"))
         self.actAbout.setText(_translate("MainWindow", "&About"))
         self.actAbout.setToolTip(_translate("MainWindow", "About Manuskript"))
         self.actImport.setText(_translate("MainWindow", "&Import…"))

@@ -2135,6 +2135,7 @@
     </property>
     <addaction name="actSpellcheck"/>
     <addaction name="actToolFrequency"/>
+    <addaction name="actToolTodo"/>
    </widget>
    <widget class="QMenu" name="menuEdit">
     <property name="title">
@@ -2498,6 +2499,11 @@
   <action name="actToolFrequency">
    <property name="text">
     <string>&amp;Frequency Analyzer</string>
+   </property>
+  </action>
+  <action name="actToolTodo">
+   <property name="text">
+    <string>&amp;Todo List</string>
    </property>
   </action>
   <action name="actAbout">
