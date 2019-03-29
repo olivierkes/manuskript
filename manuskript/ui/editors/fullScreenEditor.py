@@ -91,20 +91,16 @@ class fullScreenEditor(QWidget):
         # Top panel Layout
         if self.btnSpellCheck:
             self.topPanel.layout().addWidget(self.btnSpellCheck)
-        self.topPanel.layout().addStretch(5)
-
-        self.topPanel.layout().addWidget(self.btnPrevious)
-        self.topPanel.layout().addStretch(1)
-
-        self.topPanel.layout().addWidget(self.lblTitle)
-        self.topPanel.layout().addWidget(self.wPath)
         self.topPanel.layout().addSpacing(15)
+        self.topPanel.layout().addWidget(self.btnPrevious)
+        self.topPanel.layout().addWidget(self.btnNext)
         self.topPanel.layout().addWidget(self.btnNew)
 
         self.topPanel.layout().addStretch(1)
-        self.topPanel.layout().addWidget(self.btnNext)
+        self.topPanel.layout().addWidget(self.lblTitle)
+        self.topPanel.layout().addWidget(self.wPath)
+        self.topPanel.layout().addStretch(1)
 
-        self.topPanel.layout().addStretch(5)
         self.topPanel.layout().addWidget(self.btnClose)
         self.updateTopBar()
 
