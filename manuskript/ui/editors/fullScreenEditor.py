@@ -165,6 +165,7 @@ class fullScreenEditor(QWidget):
         self.bottomPanel.addDisplay(self.tr("Theme selector"), 'bottom-theme', (self.lstThemes, themeLabel))
         self.bottomPanel.addDisplay(self.tr("Word count"), 'bottom-wc', (self.lblWC, ))
         self.bottomPanel.addDisplay(self.tr("Progress"), 'bottom-progress', (self.lblProgress, ))
+        self.bottomPanel.addSetting(self.tr("Progress: Auto Show/Hide"), 'progress-auto-show', True)
         self.bottomPanel.addDisplay(self.tr("Clock"), 'bottom-clock', (self.lblClock, ))
         self.bottomPanel.addSetting(self.tr("Clock: Show Seconds"), 'clock-show-seconds', True)
         self.bottomPanel.setAutoHideVariable('autohide-bottom')
@@ -357,18 +358,22 @@ class fullScreenEditor(QWidget):
         pg = item.data(Outline.goalPercentage)
 
         if goal:
-            rect = self.lblProgress.geometry()
-            rect = QRect(QPoint(0, 0), rect.size())
-            self.px = QPixmap(rect.size())
-            self.px.fill(Qt.transparent)
-            p = QPainter(self.px)
-            drawProgress(p, rect, pg, 2)
-            p.end()
-            self.lblProgress.setPixmap(self.px)
+            if settings.fullscreenSettings.get("progress-auto-show", True):
+                self.lblProgress.show()
             self.lblWC.setText(self.tr("{} words / {}").format(wc, goal))
         else:
-            self.lblProgress.hide()
+            if settings.fullscreenSettings.get("progress-auto-show", True):
+                self.lblProgress.hide()
             self.lblWC.setText(self.tr("{} words").format(wc))
+            pg = 0
+        rect = self.lblProgress.geometry()
+        rect = QRect(QPoint(0, 0), rect.size())
+        self.px = QPixmap(rect.size())
+        self.px.fill(Qt.transparent)
+        p = QPainter(self.px)
+        drawProgress(p, rect, pg, 2)
+        p.end()
+        self.lblProgress.setPixmap(self.px)
 
         self.locker.setWordCount(wc)
         # If there's a goal, then we update the locker target's number of word accordingly
