@@ -27,7 +27,7 @@ from manuskript.ui.exporters.exporter import exporterDialog
 from manuskript.ui.helpLabel import helpLabel
 from manuskript.ui.mainWindow import Ui_MainWindow
 from manuskript.ui.tools.frequencyAnalyzer import frequencyAnalyzer
-from manuskript.ui.tools.todoList import todoList
+from manuskript.ui.tools.commentList import commentList
 from manuskript.ui.views.outlineDelegates import outlineCharacterDelegate
 from manuskript.ui.views.plotDelegate import plotDelegate
 from manuskript.ui.views.MDEditView import MDEditView
@@ -178,7 +178,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # Main Menu:: Tool
         self.actToolFrequency.triggered.connect(self.frequencyAnalyzer)
-        self.actToolTodo.triggered.connect(self.todoList)
+        self.actToolComments.triggered.connect(self.commentList)
         self.actAbout.triggered.connect(self.about)
 
         self.makeUIConnections()
@@ -1343,8 +1343,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.fw = frequencyAnalyzer(self)
         self.fw.show()
 
-    def todoList(self):
-        self.tl = todoList(self)
+    def commentList(self):
+        self.tl = commentList(self)
         self.tl.show()
 
     ###############################################################################
