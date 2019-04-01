@@ -73,14 +73,13 @@ class fullScreenEditor(QWidget):
         self.btnNext.setFlat(True)
         self.btnNext.setIcon(QIcon.fromTheme("arrow-right"))
         self.btnNext.clicked.connect(self.switchNextItem)
-
-        # Title/Path and New document Buttons
-        self.lblTitle = myTitle(self)
-        self.wPath = myPath(self)
         self.btnNew = QPushButton(self)
         self.btnNew.setFlat(True)
         self.btnNew.setIcon(QIcon.fromTheme("document-new"))
         self.btnNew.clicked.connect(self.createNewText)
+
+        # Path and New Text Buttons
+        self.wPath = myPath(self)
 
         # Close
         self.btnClose = QPushButton(self)
@@ -97,7 +96,6 @@ class fullScreenEditor(QWidget):
         self.topPanel.layout().addWidget(self.btnNew)
 
         self.topPanel.layout().addStretch(1)
-        self.topPanel.layout().addWidget(self.lblTitle)
         self.topPanel.layout().addWidget(self.wPath)
         self.topPanel.layout().addStretch(1)
 
@@ -149,24 +147,19 @@ class fullScreenEditor(QWidget):
 
         self.bottomPanel.layout().addSpacing(24)
 
-        # Default display is path instead of title.
-        if settings.fullscreenSettings.get('top-path', True) and \
-                settings.fullscreenSettings.get('top-title', True):
-            settings.fullscreenSettings['top-path'] = True
-            settings.fullscreenSettings['top-title'] = False
-
-        # Add displays
+        # Add Widget Settings
         if self.btnSpellCheck:
-            self.topPanel.addDisplay(self.tr("Spellcheck"), 'top-spellcheck', (self.btnSpellCheck, ))
-        self.topPanel.addDisplay(self.tr("Path"), 'top-path', (self.wPath, ))
-        self.topPanel.addDisplay(self.tr("Title"), 'top-title', (self.lblTitle, ))
-        self.topPanel.addDisplay(self.tr("Navigation"), 'top-navigation', (self.btnPrevious, self.btnNext))
-        self.topPanel.addDisplay(self.tr("New document"), 'top-new-doc', (self.btnNew, ))
-        self.bottomPanel.addDisplay(self.tr("Theme selector"), 'bottom-theme', (self.lstThemes, themeLabel))
-        self.bottomPanel.addDisplay(self.tr("Word count"), 'bottom-wc', (self.lblWC, ))
-        self.bottomPanel.addDisplay(self.tr("Progress"), 'bottom-progress', (self.lblProgress, ))
+            self.topPanel.addWidgetSetting(self.tr("Spellcheck"), 'top-spellcheck', (self.btnSpellCheck, ))
+        self.topPanel.addWidgetSetting(self.tr("Navigation"), 'top-navigation', (self.btnPrevious, self.btnNext))
+        self.topPanel.addWidgetSetting(self.tr("New Text"), 'top-new-doc', (self.btnNew, ))
+        self.topPanel.addWidgetSetting(self.tr("Title"), 'top-title', (self.wPath, ))
+        self.topPanel.addSetting(self.tr("Title: Show Full Path"), 'title-show-full-path', True)
+        self.topPanel.setSettingCallback('title-show-full-path', lambda var, val: self.updateTopBar())
+        self.bottomPanel.addWidgetSetting(self.tr("Theme selector"), 'bottom-theme', (self.lstThemes, themeLabel))
+        self.bottomPanel.addWidgetSetting(self.tr("Word count"), 'bottom-wc', (self.lblWC, ))
+        self.bottomPanel.addWidgetSetting(self.tr("Progress"), 'bottom-progress', (self.lblProgress, ))
         self.bottomPanel.addSetting(self.tr("Progress: Auto Show/Hide"), 'progress-auto-show', True)
-        self.bottomPanel.addDisplay(self.tr("Clock"), 'bottom-clock', (self.lblClock, ))
+        self.bottomPanel.addWidgetSetting(self.tr("Clock"), 'bottom-clock', (self.lblClock, ))
         self.bottomPanel.addSetting(self.tr("Clock: Show Seconds"), 'clock-show-seconds', True)
         self.bottomPanel.setAutoHideVariable('autohide-bottom')
         self.topPanel.setAutoHideVariable('autohide-top')
@@ -346,7 +339,6 @@ class fullScreenEditor(QWidget):
         nextItem = self.nextTextItem(item)
         self.btnPrevious.setEnabled(previousItem is not None)
         self.btnNext.setEnabled(nextItem is not None)
-        self.lblTitle.setText(item.title())
         self.wPath.setItem(item)
 
     def updateStatusBar(self):
@@ -538,7 +530,8 @@ class myPanel(QWidget):
         self._autoHide = True
         self._m = None
         self._autoHideVar = None
-        self._displays = []
+        self._settings = []
+        self._callbacks = {}
 
         if not vertical:
             self.setLayout(QHBoxLayout())
@@ -554,32 +547,40 @@ class myPanel(QWidget):
         painter = QPainter(self)
         painter.fillRect(r, self._color)
 
+    def _setConfig(self, config_name, value):
+        settings.fullscreenSettings[config_name] = value
+        if config_name in self._callbacks:
+            self._callbacks[config_name](config_name, value)
+
+    def _setSettingValue(self, setting, value):
+        if setting[2]:
+            for w in setting[2]:
+                w.show() if value else w.hide()
+        self._setConfig(setting[1], value)
+
     def setAutoHide(self, value):
         self._autoHide = value
         if self._autoHideVar:
-            settings.fullscreenSettings[self._autoHideVar] = value
+            self._setConfig(self._autoHideVar, value)
 
     def setAutoHideVariable(self, name):
         if name:
             self.setAutoHide(settings.fullscreenSettings[name])
         self._autoHideVar = name
 
-    def addDisplay(self, label, config_name, widgets):
-        display = (label, config_name, widgets)
-        self._displays.append(display)
+    def addWidgetSetting(self, label, config_name, widgets):
+        setting = (label, config_name, widgets)
+        self._settings.append(setting)
         if settings.fullscreenSettings.get(config_name, None) is not None:
-            self.setDisplay(settings.fullscreenSettings[config_name], display)
-
-    def setDisplay(self, value, display):
-        if display[2]:
-            for w in display[2]:
-                w.show() if value else w.hide()
-        settings.fullscreenSettings[display[1]] = value
+            self._setSettingValue(setting, settings.fullscreenSettings[config_name])
 
     def addSetting(self, label, config_name, default=True):
         if settings.fullscreenSettings.get(config_name, None) is None:
-            settings.fullscreenSettings[config_name] = default
-        self.addDisplay(label, config_name, None)
+            self._setConfig(config_name, default)
+        self.addWidgetSetting(label, config_name, None)
+
+    def setSettingCallback(self, config_name, callback):
+        self._callbacks[config_name] = callback
 
     def mouseReleaseEvent(self, event):
         if event.button() == Qt.RightButton:
@@ -591,32 +592,19 @@ class myPanel(QWidget):
             a.setChecked(self._autoHide)
             a.toggled.connect(self.setAutoHide)
             m.addAction(a)
-            for item in self._displays:
+            for item in self._settings:
                 a = QAction(item[0], m)
                 a.setCheckable(True)
                 if item[2]:
                     a.setChecked(item[2][0].isVisible())
                 else:
                     a.setChecked(settings.fullscreenSettings[item[1]])
-                def gen_cb(disp):
-                    return lambda v: self.setDisplay(v, disp)
+                def gen_cb(setting):
+                    return lambda v: self._setSettingValue(setting, v)
                 a.toggled.connect(gen_cb(item))
                 m.addAction(a)
             m.popup(self.mapToGlobal(event.pos()))
             self._m = m
-
-# Path and title are mutually exclusive so let's override QLabel so it can
-# hide myPath when myTitle is shown and vice-versa
-class myTitle(QLabel):
-    def __init__(self, parent=None):
-        QLabel.__init__(self, parent)
-        self.editor = parent
-
-    def showEvent(self, ev):
-        self.editor.wPath.hide()
-        settings.fullscreenSettings['top-path'] = False
-        return QWidget.showEvent(self, ev)
-
 
 class myPath(QWidget):
     def __init__(self, parent=None):
@@ -625,11 +613,6 @@ class myPath(QWidget):
         self.setAttribute(Qt.WA_TranslucentBackground)
         self.setLayout(QHBoxLayout())
         self.layout().setContentsMargins(0, 0, 0, 0)
-
-    def showEvent(self, ev):
-        self.editor.lblTitle.hide()
-        settings.fullscreenSettings['top-title'] = False
-        return QWidget.showEvent(self, ev)
 
     def setItem(self, item):
         self._item = item
@@ -644,6 +627,9 @@ class myPath(QWidget):
             return lambda: self.popupPath(i)
         # Skip Root
         for i in path[1:]:
+            if not settings.fullscreenSettings.get("title-show-full-path", True) and \
+                    i.isFolder():
+                continue
             btn = QPushButton(i.title(), self)
             btn.setFlat(True)
             btn.clicked.connect(gen_cb(i))
