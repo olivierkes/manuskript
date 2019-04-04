@@ -74,6 +74,7 @@ class settingsWindow(QWidget, Ui_Settings):
         self.cmbTranslation.clear()
         tr = OrderedDict()
         tr["English"] = ""
+        tr["Arabic (Saudi Arabia)"] = "manuskript_ar_SA.qm"
         tr["Deutsch"] = "manuskript_de.qm"
         tr["Español"] = "manuskript_es.qm"
         tr["Français"] = "manuskript_fr.qm"
@@ -87,6 +88,7 @@ class settingsWindow(QWidget, Ui_Settings):
         tr["Portuguese (Portugal)"] = "manuskript_pt_PT.qm"
         tr["Russian"] = "manuskript_ru.qm"
         tr["Svenska"] = "manuskript_sv.qm"
+        tr["Ukranian"] = "manuskript_uk.qm"
         tr["Chinese (Simplified)"] = "manuskript_zh_CN.qm"
         self.translations = tr
 
