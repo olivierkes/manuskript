@@ -57,11 +57,6 @@
                   inte förstås av Manuskript, t.ex. &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/manuskript/plainText.py" line="63"/>
-        <source>Chose output file...</source>
-        <translation>Välj utdata-fil...</translation>
-    </message>
-    <message>
         <location filename="../manuskript/exporter/pandoc/HTML.py" line="13"/>
         <source>A little known format modestly used. You know, web sites for example.</source>
         <translation>Ett relativt okänt format som används blygsamt, t.ex. på websidor.</translation>
@@ -222,6 +217,17 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="134"/>
         <source>Convert to ePUB3</source>
         <translation>Konvertera till ePUB3</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/exporter/manuskript/plainText.py" line="47"/>
+        <source>Error processing regular expression : 
+{}</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/exporter/manuskript/plainText.py" line="69"/>
+        <source>Choose output file...</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2069,7 +2075,7 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="182"/>
-        <source>You might need to restart manuskript in order for those settings to take effect properly and entirely.</source>
+        <source>Restarting Manuskript ensures all settings take effect.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2121,17 +2127,17 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
 <context>
     <name>SpellAction</name>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="479"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="482"/>
         <source>Spelling Suggestions</source>
         <translation>Stavningsförslag</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="490"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="493"/>
         <source>&amp;Add to dictionary</source>
         <translation>&amp;Lägg till i ordbok</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="503"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="506"/>
         <source>&amp;Remove from custom dictionary</source>
         <translation>&amp;Ta bort från ordbok</translation>
     </message>
@@ -2204,13 +2210,13 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
     <name>app</name>
     <message>
         <location filename="../manuskript/main.py" line="52"/>
-        <source>Loaded translation: {}.</source>
-        <translation>Laddade översättning: {}.</translation>
+        <source>Loaded translation from {}: {}.</source>
+        <translation type="unfinished">Laddade översättning: {}.</translation>
     </message>
     <message>
         <location filename="../manuskript/main.py" line="55"/>
-        <source>Note: No translator found or loaded for locale {}.</source>
-        <translation>OBS: Ingen översättning hittades eller laddades för språk {}.</translation>
+        <source>Note: No translator found or loaded from {} for locale {}.</source>
+        <translation type="unfinished">OBS: Ingen översättning hittades eller laddades för språk {}.</translation>
     </message>
 </context>
 <context>
@@ -2709,19 +2715,74 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
 <context>
     <name>fullScreenEditor</name>
     <message>
-        <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="101"/>
+        <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="132"/>
         <source>Theme:</source>
         <translation>Tema:</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="285"/>
+        <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="355"/>
         <source>{} words / {}</source>
         <translation>{} ord / {}</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="288"/>
+        <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="359"/>
         <source>{} words</source>
         <translation>{} ord</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="152"/>
+        <source>Spellcheck</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="153"/>
+        <source>Navigation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="154"/>
+        <source>New Text</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="155"/>
+        <source>Title</source>
+        <translation type="unfinished">Titel</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="156"/>
+        <source>Title: Show Full Path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="158"/>
+        <source>Theme selector</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="159"/>
+        <source>Word count</source>
+        <translation type="unfinished">Antal ord</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="160"/>
+        <source>Progress</source>
+        <translation type="unfinished">Framsteg</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="161"/>
+        <source>Progress: Auto Show/Hide</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="162"/>
+        <source>Clock</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="163"/>
+        <source>Clock: Show Seconds</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2779,8 +2840,8 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/importers/importer_ui.ui" line="45"/>
-        <source>Chose file</source>
-        <translation>Välj fil</translation>
+        <source>Choose file</source>
+        <translation type="unfinished">Välj fil</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/importers/importer_ui.ui" line="75"/>
@@ -2796,6 +2857,14 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
         <location filename="../manuskript/ui/importers/importer_ui.ui" line="138"/>
         <source>Settings</source>
         <translation>Inställningar</translation>
+    </message>
+</context>
+<context>
+    <name>lastAccessedDirectoryInfo</name>
+    <message>
+        <location filename="../manuskript/ui/welcome.py" line="60"/>
+        <source>Last accessed directory &quot;{}&quot; loaded.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2976,7 +3045,7 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
 <context>
     <name>myPanel</name>
     <message>
-        <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="373"/>
+        <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="590"/>
         <source>Auto-hide</source>
         <translation>Göm automatiskt</translation>
     </message>
@@ -3130,12 +3199,12 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
 <context>
     <name>outlineItem</name>
     <message>
-        <location filename="../manuskript/models/outlineItem.py" line="227"/>
+        <location filename="../manuskript/models/outlineItem.py" line="237"/>
         <source>{} words / {} ({})</source>
         <translation>{} ord / {} ({})</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/outlineItem.py" line="232"/>
+        <location filename="../manuskript/models/outlineItem.py" line="242"/>
         <source>{} words</source>
         <translation>{} ord</translation>
     </message>
@@ -3793,29 +3862,55 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
 <context>
     <name>settingsWindow</name>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="605"/>
+        <location filename="../manuskript/settingsWindow.py" line="647"/>
         <source>New status</source>
         <translation>Ny status</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="626"/>
+        <location filename="../manuskript/settingsWindow.py" line="668"/>
         <source>New label</source>
         <translation>Ny etikett</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="662"/>
+        <location filename="../manuskript/settingsWindow.py" line="704"/>
         <source>newtheme</source>
         <translation>newtheme</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="672"/>
+        <location filename="../manuskript/settingsWindow.py" line="714"/>
         <source>New theme</source>
         <translation>Nytt tema</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="704"/>
+        <location filename="../manuskript/settingsWindow.py" line="746"/>
         <source> (read-only)</source>
         <translation> (skrivskyddad)</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/settingsWindow.py" line="507"/>
+        <source>Open Image</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/settingsWindow.py" line="507"/>
+        <source>Image files (*.jpg; *.jpeg; *.png)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/settingsWindow.py" line="523"/>
+        <source>Error</source>
+        <translation type="unfinished">Fel</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/settingsWindow.py" line="520"/>
+        <source>Unable to load selected file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/settingsWindow.py" line="523"/>
+        <source>Unable to add selected image:
+{}</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3936,7 +4031,7 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
 <context>
     <name>textEditView</name>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="324"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="327"/>
         <source>Various</source>
         <translation>Diverse</translation>
     </message>
@@ -4035,27 +4130,27 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
         <translation>Tom</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="203"/>
+        <location filename="../manuskript/ui/welcome.py" line="224"/>
         <source>Novel</source>
         <translation>Roman</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="208"/>
+        <location filename="../manuskript/ui/welcome.py" line="229"/>
         <source>Novella</source>
         <translation>Längre novell</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="213"/>
+        <location filename="../manuskript/ui/welcome.py" line="234"/>
         <source>Short Story</source>
         <translation>Kortare novell</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="225"/>
+        <location filename="../manuskript/ui/welcome.py" line="246"/>
         <source>Research paper</source>
         <translation>Uppsats</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="386"/>
+        <location filename="../manuskript/ui/welcome.py" line="407"/>
         <source>Demo projects</source>
         <translation>Demoprojekt</translation>
     </message>
@@ -4090,147 +4185,147 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
         <translation>Skapa</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="143"/>
+        <location filename="../manuskript/ui/welcome.py" line="157"/>
         <source>Open project</source>
         <translation>Öppna projekt</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="143"/>
+        <location filename="../manuskript/ui/welcome.py" line="157"/>
         <source>Manuskript project (*.msk);;All files (*)</source>
         <translation>Manuskript-projekt (*.msk);;Alla filer (*)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="154"/>
+        <location filename="../manuskript/ui/welcome.py" line="171"/>
         <source>Save project as...</source>
         <translation>Spara projekt som...</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="175"/>
+        <location filename="../manuskript/ui/welcome.py" line="195"/>
         <source>Manuskript project (*.msk)</source>
         <translation>Manuskript-projekt (*.msk)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="169"/>
+        <location filename="../manuskript/ui/welcome.py" line="187"/>
         <source>Manuskript</source>
         <translation>Manuskript</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="175"/>
+        <location filename="../manuskript/ui/welcome.py" line="195"/>
         <source>Create New Project</source>
         <translation>Skapa Nytt Projekt</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="186"/>
+        <location filename="../manuskript/ui/welcome.py" line="207"/>
         <source>Warning</source>
         <translation>Varning</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="186"/>
+        <location filename="../manuskript/ui/welcome.py" line="207"/>
         <source>Overwrite existing project {} ?</source>
         <translation>Skriv över existerande projekt {} ?</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="202"/>
+        <location filename="../manuskript/ui/welcome.py" line="223"/>
         <source>Empty fiction</source>
         <translation>Tom skönlitteratur</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="424"/>
+        <location filename="../manuskript/ui/welcome.py" line="445"/>
         <source>Chapter</source>
         <translation>Kapitel</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="425"/>
+        <location filename="../manuskript/ui/welcome.py" line="446"/>
         <source>Scene</source>
         <translation>Scen</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="217"/>
+        <location filename="../manuskript/ui/welcome.py" line="238"/>
         <source>Trilogy</source>
         <translation>Trilogi</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="217"/>
+        <location filename="../manuskript/ui/welcome.py" line="238"/>
         <source>Book</source>
         <translation>Bok</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="225"/>
+        <location filename="../manuskript/ui/welcome.py" line="246"/>
         <source>Section</source>
         <translation>Avsnitt</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="224"/>
+        <location filename="../manuskript/ui/welcome.py" line="245"/>
         <source>Empty non-fiction</source>
         <translation>Tom facklitteratur</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="285"/>
+        <location filename="../manuskript/ui/welcome.py" line="306"/>
         <source>words each.</source>
         <translation>ord vardera.</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="288"/>
+        <location filename="../manuskript/ui/welcome.py" line="309"/>
         <source>of</source>
         <translation>av</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="312"/>
+        <location filename="../manuskript/ui/welcome.py" line="333"/>
         <source>Text</source>
         <translation>Text</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="315"/>
+        <location filename="../manuskript/ui/welcome.py" line="336"/>
         <source>Something</source>
         <translation>Någonting</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="352"/>
+        <location filename="../manuskript/ui/welcome.py" line="373"/>
         <source>&lt;b&gt;Total:&lt;/b&gt; {} words (~ {} pages)</source>
         <translation>&lt;b&gt;Total:&lt;/b&gt; {} ord (~ {} sidor)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="373"/>
+        <location filename="../manuskript/ui/welcome.py" line="394"/>
         <source>Fiction</source>
         <translation>Skönlitteratur</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="379"/>
+        <location filename="../manuskript/ui/welcome.py" line="400"/>
         <source>Non-fiction</source>
         <translation>Facklitteratur</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="422"/>
+        <location filename="../manuskript/ui/welcome.py" line="443"/>
         <source>Idea</source>
         <translation>Idé</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="423"/>
+        <location filename="../manuskript/ui/welcome.py" line="444"/>
         <source>Note</source>
         <translation>Anteckning</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="426"/>
+        <location filename="../manuskript/ui/welcome.py" line="447"/>
         <source>Research</source>
         <translation>Referensinformation</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="434"/>
+        <location filename="../manuskript/ui/welcome.py" line="455"/>
         <source>TODO</source>
         <translation>Att Göra</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="435"/>
+        <location filename="../manuskript/ui/welcome.py" line="456"/>
         <source>First draft</source>
         <translation>Första utkast</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="436"/>
+        <location filename="../manuskript/ui/welcome.py" line="457"/>
         <source>Second draft</source>
         <translation>Andra utkast</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="437"/>
+        <location filename="../manuskript/ui/welcome.py" line="458"/>
         <source>Final</source>
         <translation>Slutgiltig</translation>
     </message>
