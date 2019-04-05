@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="2.0" language="pt_PT" sourcelanguage="">
+<!DOCTYPE TS>
+<TS version="2.0" language="pt_PT" sourcelanguage="">
 <context>
     <name>Export</name>
     <message>
@@ -223,12 +224,13 @@ Use se receber um erro YAML.</translation>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="47"/>
         <source>Error processing regular expression : 
 {}</source>
-        <translation type="unfinished"></translation>
+        <translation>Erro ao processar a expressão regular: 
+{}</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="69"/>
         <source>Choose output file...</source>
-        <translation type="unfinished"></translation>
+        <translation>Escolha o ficheiro de saída...</translation>
     </message>
 </context>
 <context>
@@ -1512,7 +1514,7 @@ Use se receber um erro YAML.</translation>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="182"/>
         <source>Restarting Manuskript ensures all settings take effect.</source>
-        <translation type="unfinished">Poderá ter de reiniciar o Manuskript para que as novas definições tenham efeito total e adequado.</translation>
+        <translation>Reiniciar o Manuskript garante que as definições tenham efeito.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="201"/>
@@ -2212,12 +2214,12 @@ Use se receber um erro YAML.</translation>
     <message>
         <location filename="../manuskript/main.py" line="52"/>
         <source>Loaded translation from {}: {}.</source>
-        <translation type="unfinished">Tradução carregada: {}.</translation>
+        <translation>Tradução carregada de {}: {}.</translation>
     </message>
     <message>
         <location filename="../manuskript/main.py" line="55"/>
         <source>Note: No translator found or loaded from {} for locale {}.</source>
-        <translation type="unfinished">Nota: sem tradutor para a configuração regional {}.</translation>
+        <translation>Nota: sem tradutor encontrado ou carregado de {} para a configuração regional {}.</translation>
     </message>
 </context>
 <context>
@@ -2733,57 +2735,57 @@ Use se receber um erro YAML.</translation>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="152"/>
         <source>Spellcheck</source>
-        <translation type="unfinished"></translation>
+        <translation>Ortografia</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="153"/>
         <source>Navigation</source>
-        <translation type="unfinished"></translation>
+        <translation>Navegação</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="154"/>
         <source>New Text</source>
-        <translation type="unfinished"></translation>
+        <translation>Novo texto</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="155"/>
         <source>Title</source>
-        <translation type="unfinished">Título</translation>
+        <translation>Título</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="156"/>
         <source>Title: Show Full Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Título: mostrar caminho completo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="158"/>
         <source>Theme selector</source>
-        <translation type="unfinished"></translation>
+        <translation>Selector de tema</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="159"/>
         <source>Word count</source>
-        <translation type="unfinished">Total de palavras</translation>
+        <translation>Total de palavras</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="160"/>
         <source>Progress</source>
-        <translation type="unfinished">Progresso</translation>
+        <translation>Progresso</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="161"/>
         <source>Progress: Auto Show/Hide</source>
-        <translation type="unfinished"></translation>
+        <translation>Progresso mostrar/ocultar automático</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="162"/>
         <source>Clock</source>
-        <translation type="unfinished"></translation>
+        <translation>Relógio</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="163"/>
         <source>Clock: Show Seconds</source>
-        <translation type="unfinished"></translation>
+        <translation>Relógio: mostrar segundos</translation>
     </message>
 </context>
 <context>
@@ -2842,7 +2844,7 @@ Use se receber um erro YAML.</translation>
     <message>
         <location filename="../manuskript/ui/importers/importer_ui.ui" line="45"/>
         <source>Choose file</source>
-        <translation type="unfinished">Escolha o ficheiro</translation>
+        <translation>Escolha o ficheiro</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/importers/importer_ui.ui" line="75"/>
@@ -2865,7 +2867,7 @@ Use se receber um erro YAML.</translation>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="60"/>
         <source>Last accessed directory &quot;{}&quot; loaded.</source>
-        <translation type="unfinished"></translation>
+        <translation>Carregada a última pasta acedida &quot;{}&quot;.</translation>
     </message>
 </context>
 <context>
@@ -3895,28 +3897,29 @@ Use se receber um erro YAML.</translation>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="507"/>
         <source>Open Image</source>
-        <translation type="unfinished"></translation>
+        <translation>Abrir imagem</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="507"/>
         <source>Image files (*.jpg; *.jpeg; *.png)</source>
-        <translation type="unfinished"></translation>
+        <translation>Ficheiros de imagem (*.jpg; *.jpeg; *.png)</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="523"/>
         <source>Error</source>
-        <translation type="unfinished">Erro</translation>
+        <translation>Erro</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="520"/>
         <source>Unable to load selected file</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossível carregar o ficheiro seleccionado</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="523"/>
         <source>Unable to add selected image:
 {}</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossível adicionar a imagem seleccionada:
+{}</translation>
     </message>
 </context>
 <context>
