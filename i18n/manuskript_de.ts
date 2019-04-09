@@ -514,7 +514,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="236"/>
         <source>License</source>
-        <translation>Linzenz</translation>
+        <translation>Lizenz</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="249"/>
