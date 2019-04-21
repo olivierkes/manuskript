@@ -527,7 +527,7 @@ class MDEditView(textEditView):
                   +"<p><img src='data:image/png;base64,{}'></p>")
             tooltip = None
             pos = event.pos() + QPoint(0, ct.rect.height())
-            imageTooltiper.fromUrl(ct.texts[2], pos, self)
+            ImageTooltip.fromUrl(ct.texts[2], pos, self)
 
         elif ct.regex == self.inlineLinkRegex:
             tooltip = ct.texts[1] or ct.texts[2]
@@ -582,53 +582,85 @@ from PyQt5.QtNetwork import QNetworkRequest, QNetworkAccessManager, QNetworkRepl
 from PyQt5.QtCore import QIODevice, QUrl, QBuffer
 from PyQt5.QtGui import QPixmap
 
-class imageTooltiper:
+class ImageTooltip:
+    """
+    This class handles the retrieving and caching of images in order to display these in tooltips.
+    """
 
     cache = {}
     manager = QNetworkAccessManager()
-    data = {}
+    processing = {}
 
     def fromUrl(url, pos, editor):
-        cache = imageTooltiper.cache
-        imageTooltiper.editor = editor
+        """
+        Shows the image tooltip for the given url if available, or requests it for future use.
+        """
+        ImageTooltip.editor = editor
 
-        if url in cache:
-            if not cache[url][0]:  # error, image was not found
-                imageTooltiper.tooltipError(cache[url][1], pos)
-            else:
-                imageTooltiper.tooltip(cache[url][1], pos)
-            return
+        if ImageTooltip.showTooltip(url, pos):
+            return # the url already exists in the cache
 
         try:
-            imageTooltiper.manager.finished.connect(imageTooltiper.finished, F.AUC)
+            ImageTooltip.manager.finished.connect(ImageTooltip.finished, F.AUC)
         except:
-            pass
+            pass # already connected
 
-        request = QNetworkRequest(QUrl(url))
-        imageTooltiper.data[QUrl(url)] = (pos, url)
-        imageTooltiper.manager.get(request)
+        qurl = QUrl(url)
+        if (qurl in ImageTooltip.processing):
+            return # one download is more than enough
+
+        # Request the image for later processing.
+        request = QNetworkRequest(qurl)
+        ImageTooltip.processing[qurl] = (pos, url)
+        ImageTooltip.manager.get(request)
 
     def finished(reply):
-        cache = imageTooltiper.cache
-        pos, url = imageTooltiper.data[reply.url()]
+        """
+        After retrieving an image, we add it to the cache.
+        """
+        cache = ImageTooltip.cache
+
+        # Update cache with retrieved data.
+        pos, url = ImageTooltip.processing[reply.request().url()]
         if reply.error() != QNetworkReply.NoError:
             cache[url] = (False, reply.errorString())
-            imageTooltiper.tooltipError(reply.errorString(), pos)
         else:
             px = QPixmap()
             px.loadFromData(reply.readAll())
             px = px.scaled(800, 600, Qt.KeepAspectRatio)
             cache[url] = (True, px)
-            imageTooltiper.tooltip(px, pos)
+        del ImageTooltip.processing[reply.request().url()]
+
+        ImageTooltip.showTooltip(url, pos)
+
+    def showTooltip(url, pos):
+        """
+        Show a tooltip for the given url based on cached information.
+        """
+        cache = ImageTooltip.cache
+
+        if url in cache:
+            if not cache[url][0]:  # error, image was not found
+                ImageTooltip.tooltipError(cache[url][1], pos)
+            else:
+                ImageTooltip.tooltip(cache[url][1], pos)
+            return True
+        return False
 
     def tooltipError(message, pos):
-        imageTooltiper.editor.doTooltip(pos, message)
+        """
+        Display a tooltip with an error message at the given position.
+        """
+        ImageTooltip.editor.doTooltip(pos, message)
 
     def tooltip(image, pos):
+        """
+        Display a tooltip with an image at the given position.
+        """
         px = image
         buffer = QBuffer()
         buffer.open(QIODevice.WriteOnly)
         px.save(buffer, "PNG", quality=100)
         image = bytes(buffer.data().toBase64()).decode()
         tt = "<p><img src='data:image/png;base64,{}'></p>".format(image)
-        imageTooltiper.editor.doTooltip(pos, tt)
+        ImageTooltip.editor.doTooltip(pos, tt)
