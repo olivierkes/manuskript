@@ -7,7 +7,7 @@ from PyQt5.QtCore import (pyqtSignal, QSignalMapper, QTimer, QSettings, Qt, QPoi
                           QRegExp, QUrl, QSize, QModelIndex)
 from PyQt5.QtGui import QStandardItemModel, QIcon, QColor
 from PyQt5.QtWidgets import QMainWindow, QHeaderView, qApp, QMenu, QActionGroup, QAction, QStyle, QListWidgetItem, \
-    QLabel, QDockWidget, QWidget
+    QLabel, QDockWidget, QWidget, QMessageBox
 
 from manuskript import settings
 from manuskript.enums import Character, PlotStep, Plot, World, Outline
@@ -57,6 +57,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # Var
         self.currentProject = None
+        self.projectDirty = None  # has the user made any unsaved changes ?
         self._lastFocus = None
         self._lastMDEditView = None
         self._defaultCursorFlashTime = 1000 # Overriden at startup with system
@@ -272,6 +273,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 self._lastFocus = new
                 break
             new = new.parent()
+
+    def projectName(self):
+        """
+        Returns a user-friendly name for the loaded project.
+        """
+        pName = os.path.split(self.currentProject)[1]
+        if pName.endswith('.msk'):
+            pName=pName[:-4]
+        return pName
 
     ###############################################################################
     # SUMMARY
@@ -618,33 +628,68 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # We force to emit even if it opens on the current tab
         self.tabMain.currentChanged.emit(settings.lastTab)
 
+        # Make sure we can update the window title later.
+        self.currentProject = project
+        self.projectDirty = False
+        QSettings().setValue("lastProject", project)
+
         # Add project name to Window's name
-        pName = os.path.split(project)[1]
-        if pName.endswith('.msk'):
-            pName=pName[:-4]
-        self.setWindowTitle(pName + " - " + self.tr("Manuskript"))
+        self.setWindowTitle(self.projectName() + " - " + self.tr("Manuskript"))
 
         # Stuff
         # self.checkPersosID()  # Shouldn't be necessary any longer
 
-        self.currentProject = project
-        QSettings().setValue("lastProject", project)
-
         # Show main Window
         self.switchToProject()
+
+    def handleUnsavedChanges(self):
+        """
+        There may be some currently unsaved changes, but the action the user triggered
+        will result in the project or application being closed. To save, or not to save?
+
+        Or just bail out entirely?
+
+        Sometimes it is best to just ask.
+        """
+
+        if not self.projectDirty:
+            return True  # no unsaved changes, all is good
+
+        msg = QMessageBox(QMessageBox.Question,
+            self.tr("Save project?"),
+            "<p><b>" +
+                self.tr("Save changes to project \"{}\" before closing?").format(self.projectName()) +
+            "</b></p>" +
+            "<p>" +
+                self.tr("Your changes will be lost if you don't save them.") +
+            "</p>",
+            QMessageBox.Save | QMessageBox.Discard | QMessageBox.Cancel)
+
+        ret = msg.exec()
+
+        if ret == QMessageBox.Cancel:
+            return False  # the situation has not been handled, cancel action
+
+        if ret == QMessageBox.Save:
+            self.saveDatas()
+
+        return True  # the situation has been handled
+
 
     def closeProject(self):
 
         if not self.currentProject:
             return
 
+        # Make sure data is saved.
+        if not self.handleUnsavedChanges():
+            return  # user
+
         # Close open tabs in editor
         self.mainEditor.closeAllTabs()
 
-        # Save datas
-        self.saveDatas()
-
         self.currentProject = None
+        self.projectDirty = None
         QSettings().setValue("lastProject", "")
 
         # Clear datas
@@ -711,23 +756,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self._toolbarState = ""
 
     def closeEvent(self, event):
-        # Save State and geometry and other things
-        sttgns = QSettings(qApp.organizationName(), qApp.applicationName())
-        sttgns.setValue("geometry", self.saveGeometry())
-        sttgns.setValue("windowState", self.saveState())
-        sttgns.setValue("metadataState", self.redacMetadata.saveState())
-        sttgns.setValue("revisionsState", self.redacMetadata.revisions.saveState())
-        sttgns.setValue("splitterRedacH", self.splitterRedacH.saveState())
-        sttgns.setValue("splitterRedacV", self.splitterRedacV.saveState())
-        sttgns.setValue("toolbar", self.toolbar.saveState())
-
-        # If we are not in the welcome window, we update the visibility
-        # of the docks widgets
-        if self.stack.currentIndex() == 1:
-            self.updateDockVisibility()
-        # Storing the visibility of docks to restore it on restart
-        sttgns.setValue("docks", self._dckVisibility)
-
         # Specific settings to save before quitting
         settings.lastTab = self.tabMain.currentIndex()
 
@@ -735,14 +763,42 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             # Remembering the current items (stores outlineItem's ID)
             settings.openIndexes = self.mainEditor.tabSplitter.openIndexes()
 
-        # Save data from models
-        if self.currentProject and settings.saveOnQuit:
-            self.saveDatas()
+            # Save data from models
+            if settings.saveOnQuit:
+                self.saveDatas()
+            elif not self.handleUnsavedChanges():
+                event.ignore() # user opted to cancel the close action
 
             # closeEvent
             # QMainWindow.closeEvent(self, event)  # Causing segfaults?
 
+        # User may have canceled close event, so make sure we indeed want to close.
+        # This is necessary because self.updateDockVisibility() hides UI elements.
+        if event.isAccepted():
+            # Save State and geometry and other things
+            appSettings = QSettings(qApp.organizationName(), qApp.applicationName())
+            appSettings.setValue("geometry", self.saveGeometry())
+            appSettings.setValue("windowState", self.saveState())
+            appSettings.setValue("metadataState", self.redacMetadata.saveState())
+            appSettings.setValue("revisionsState", self.redacMetadata.revisions.saveState())
+            appSettings.setValue("splitterRedacH", self.splitterRedacH.saveState())
+            appSettings.setValue("splitterRedacV", self.splitterRedacV.saveState())
+            appSettings.setValue("toolbar", self.toolbar.saveState())
+
+            # If we are not in the welcome window, we update the visibility
+            # of the docks widgets
+            if self.stack.currentIndex() == 1:
+                self.updateDockVisibility()
+
+            # Storing the visibility of docks to restore it on restart
+            appSettings.setValue("docks", self._dckVisibility)
+
     def startTimerNoChanges(self):
+        """
+        Something changed in the project that requires auto-saving.
+        """
+        self.projectDirty = True
+
         if settings.autoSaveNoChanges:
             self.saveTimerNoChanges.start()
 
@@ -757,11 +813,17 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.currentProject = projectName
             QSettings().setValue("lastProject", projectName)
 
-        r = loadSave.saveProject()  # version=0
+        # Stop the timer before saving: if auto-saving fails (bugs out?) we don't want it
+        # to keep trying and continuously hitting the failure condition. Nor do we want to
+        # risk a scenario where the timer somehow triggers a new save while saving.
         self.saveTimerNoChanges.stop()
+
+        r = loadSave.saveProject()  # version=0
 
         projectName = os.path.basename(self.currentProject)
         if r:
+            self.projectDirty = False  # successful save, clear dirty flag
+
             feedback = self.tr("Project {} saved.").format(projectName)
             F.statusMessage(feedback, importance=0)
         else:
