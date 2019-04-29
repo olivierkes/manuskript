@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# --!-- coding: utf8 --!--
 
 import os, gzip, json, glob
 from PyQt5.QtCore import QLocale
