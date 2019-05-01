@@ -3650,12 +3650,12 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/models/references.py" line="509"/>
         <source>Folder: &lt;b&gt;{}&lt;/b&gt;</source>
-        <translation>Ordner:&lt;b&gt;{]&lt;/b&gt;</translation>
+        <translation>Ordner:&lt;b&gt;{}&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="511"/>
         <source>Text: &lt;b&gt;{}&lt;/b&gt;</source>
-        <translation>Text:&lt;b&gt;{]&lt;/b&gt;</translation>
+        <translation>Text:&lt;b&gt;{}&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="516"/>
