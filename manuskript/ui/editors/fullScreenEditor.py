@@ -23,6 +23,7 @@ from manuskript.functions import Spellchecker
 class fullScreenEditor(QWidget):
     def __init__(self, index, parent=None):
         QWidget.__init__(self, parent)
+        self.setAttribute(Qt.WA_DeleteOnClose, True)
         self._background = None
         self._index = index
         self._theme = findThemePath(settings.fullScreenTheme)
@@ -80,7 +81,7 @@ class fullScreenEditor(QWidget):
         # Close
         self.btnClose = QPushButton(self)
         self.btnClose.setIcon(qApp.style().standardIcon(QStyle.SP_DialogCloseButton))
-        self.btnClose.clicked.connect(self.close)
+        self.btnClose.clicked.connect(self.leaveFullscreen)
         self.btnClose.setFlat(True)
 
         # Top panel Layout
@@ -171,6 +172,10 @@ class fullScreenEditor(QWidget):
 
     def __del__(self):
         # print("Leaving fullScreenEditor via Destructor event", flush=True)
+        self.showNormal()
+        self.close()
+
+    def leaveFullscreen(self):
         self.showNormal()
         self.close()
 
