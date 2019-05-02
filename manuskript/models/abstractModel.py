@@ -92,9 +92,15 @@ class abstractModel(QAbstractItemModel):
         """
         return self.rootItem.findItemsContaining(text, columns, mainWindow(), caseSensitive)
 
-    def getItemByID(self, ID):
+    def getItemByID(self, ID, ignore=None):
+        """Returns the item whose ID is `ID`, unless this item matches `ignore`."""
+
         def search(item):
             if item.ID() == ID:
+                if item == ignore:
+                    # The item we really want won't be found in the children of this
+                    # particular item anymore; stop searching this branch entirely.
+                    return None
                 return item
             for c in item.children():
                 r = search(c)
@@ -104,9 +110,12 @@ class abstractModel(QAbstractItemModel):
         item = search(self.rootItem)
         return item
 
-    def getIndexByID(self, ID, column=0):
-        "Returns the index of item whose ID is `ID`. If none, returns QModelIndex()."
-        item = self.getItemByID(ID)
+    def getIndexByID(self, ID, column=0, ignore=None):
+        """Returns the index of item whose ID is `ID`. If none, returns QModelIndex().
+
+        If `ignore` is set, it will not return that item if found as valid match for the ID"""
+
+        item = self.getItemByID(ID, ignore=ignore)
         if not item:
             return QModelIndex()
         else:
@@ -119,7 +128,10 @@ class abstractModel(QAbstractItemModel):
         childItem = index.internalPointer()
         parentItem = childItem.parent()
 
-        if parentItem == self.rootItem:
+        # Check whether the parent is the root, or is otherwise invalid.
+        # That is to say: no parent or the parent lacks a parent.
+        if (parentItem == self.rootItem) or \
+           (parentItem is None) or (parentItem.parent() is None):
             return QModelIndex()
 
         return self.createIndex(parentItem.row(), 0, parentItem)

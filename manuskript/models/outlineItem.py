@@ -178,13 +178,11 @@ class outlineItem(abstractItem):
 
     def removeChild(self, row):
         r = abstractItem.removeChild(self, row)
-        # Might be causing segfault when updateWordCount emits dataChanged
-        self.updateWordCount(emit=False)
+        self.updateWordCount()
         return r
 
-    def updateWordCount(self, emit=True):
-        """Update word count for item and parents.
-        If emit is False, no signal is emitted (sometimes cause segfault)"""
+    def updateWordCount(self):
+        """Update word count for item and parents."""
         if not self.isFolder():
             setGoal = F.toInt(self.data(self.enum.setGoal))
             goal = F.toInt(self.data(self.enum.goal))
@@ -219,12 +217,11 @@ class outlineItem(abstractItem):
             else:
                 self.setData(self.enum.goalPercentage, "")
 
-        if emit:
-            self.emitDataChanged([self.enum.goal, self.enum.setGoal,
-                                  self.enum.wordCount, self.enum.goalPercentage])
+        self.emitDataChanged([self.enum.goal, self.enum.setGoal,
+                              self.enum.wordCount, self.enum.goalPercentage])
 
         if self.parent():
-            self.parent().updateWordCount(emit)
+            self.parent().updateWordCount()
 
     def stats(self):
         wc = self.data(enums.Outline.wordCount)
