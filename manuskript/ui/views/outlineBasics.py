@@ -383,7 +383,7 @@ class outlineBasics(QAbstractItemView):
 
         parentItem.childItems.insert(index.row() + delta,
                                      parentItem.childItems.pop(index.row()))
-        parentItem.updateWordCount(emit=False)
+        parentItem.updateWordCount()
 
     def moveUp(self): self.move(-1)
     def moveDown(self): self.move(+1)

@@ -293,16 +293,14 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
 
         try:
             self._model.dataChanged.connect(self.modelDataChanged, AUC)
-            self._model.rowsInserted.connect(self.updateIndexFromID, AUC)
-            self._model.rowsRemoved.connect(self.updateIndexFromID, AUC)
-            #self.mw.mdlOutline.rowsAboutToBeRemoved.connect(self.rowsAboutToBeRemoved, AUC)
+            self._model.rowsAboutToBeRemoved.connect(self.rowsAboutToBeRemoved, AUC)
         except TypeError:
             pass
 
         self.updateStatusBar()
 
     def setCurrentModelIndex(self, index=None):
-        if index.isValid():
+        if index and index.isValid():
             self.currentIndex = index
             self._model = index.model()
             self.currentID = self._model.ID(index)
@@ -313,17 +311,26 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
         if self._model:
             self.setView()
 
-    def updateIndexFromID(self):
+    def updateIndexFromID(self, fallback=None, ignore=None):
         """
         Index might have changed (through drag an drop), so we keep current
         item's ID and update index. Item might have been deleted too.
-        """
-        idx = self._model.getIndexByID(self.currentID)
 
-        # If we have an ID but the ID does not exist, it has been deleted
+        It will ignore the passed model item to avoid ambiguity during times
+        of inconsistent state.
+        """
+        idx = self._model.getIndexByID(self.currentID, ignore=ignore)
+
+        # If we have an ID but the ID does not exist, it has been deleted.
         if self.currentID and idx == QModelIndex():
-            # Item has been deleted, we open the parent instead
-            self.setCurrentModelIndex(self.currentIndex.parent())
+            # If we are given a fallback item to display, do so.
+            if fallback:
+                self.setCurrentModelIndex(fallback)
+            else:
+                # After tab closing is implemented, any calls to `updateIndexFromID`
+                # should be re-evaluated to match the desired behaviour.
+                raise NotImplementedError("implement tab closing")
+
             # FIXME: selection in self.mw.treeRedacOutline is not updated
             #        but we cannot simply setCurrentIndex through treeRedacOutline
             #        because this might be a tab in the background / out of focus
@@ -337,19 +344,39 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
             self.setView()
 
     def modelDataChanged(self, topLeft, bottomRight):
-        # if self.currentID:
-        # self.updateIndexFromID()
-        if not self.currentIndex:
-            return
+        if not self.currentIndex.isValid():
+            return  # Just to be safe.
+
+        # We are only concerned with minor changes to the current index,
+        # so there is no need to call updateIndexFromID() nor setView().
         if topLeft.row() <= self.currentIndex.row() <= bottomRight.row():
+            self.updateTabTitle()
             self.updateStatusBar()
 
-    #def rowsAboutToBeRemoved(self, parent, first, last):
-        #if self.currentIndex:
-            #if self.currentIndex.parent() == parent and \
-                                    #first <= self.currentIndex.row() <= last:
-                ## Item deleted, close tab
-                #self.mw.mainEditor.tab.removeTab(self.mw.mainEditor.tab.indexOf(self))
+    def rowsAboutToBeRemoved(self, parent, first, last):
+        if not self.currentIndex.isValid():
+            return  # Just to be safe.
+
+        # Look for a common ancestor to verify whether the deleted rows include our index in their hierarchy.
+        childItem = self.currentIndex
+        ancestorCandidate = childItem.parent()  # start at folder above current item
+        while (ancestorCandidate != parent):
+            childItem = ancestorCandidate
+            ancestorCandidate = childItem.parent()
+
+            if not ancestorCandidate.isValid():
+                return  # we ran out of ancestors without finding the matching QModelIndex
+
+        # My sanity advocates a healthy dose of paranoia. (Just to be safe.)
+        if ancestorCandidate != parent:
+            return  # we did not find our shared ancestor
+
+        # Verify our origins come from the relevant first..last range.
+        if first <= childItem.row() <= last:
+            # If the row in question was actually moved, there is a duplicate item
+            # already inserted elsewhere in the tree. Try to update this tab view,
+            # but make sure we exclude ourselves from the search for a replacement.
+            self.updateIndexFromID(fallback=parent, ignore=self.currentIndex.internalPointer())
 
     def updateStatusBar(self):
         # Update progress
@@ -359,7 +386,7 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
         if not mw:
             return
 
-        mw.mainEditor.updateStats()
+        mw.mainEditor.tabChanged()
 
     def toggleSpellcheck(self, v):
         self.spellcheck = v

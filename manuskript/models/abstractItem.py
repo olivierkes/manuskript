@@ -141,6 +141,9 @@ class abstractItem():
         @return: the removed abstractItem
         """
         r = self.childItems.pop(row)
+        # Disassociate the child from its parent and the model.
+        r._parent = None
+        r.setModel(None)
         return r
 
     def parent(self):
