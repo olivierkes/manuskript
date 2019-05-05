@@ -1,4 +1,9 @@
 # -*- mode: python -*-
+import distutils.util
+
+COMPILING_PLATFORM = distutils.util.get_platform()
+if "macosx" and "x86_64" in COMPILING_PLATFORM:
+    platform = 'mac'
 
 block_cipher = None
 
@@ -38,3 +43,11 @@ coll = COLLECT(exe,
                strip=False,
                upx=True,
                name='manuskript')
+
+# also build an app bundle on macOS
+if platform == 'mac':
+    app = BUNDLE(coll,
+        name='Manuskript.app',
+        icon=os.path.join(SPECPATH, 'icons/Manuskript/Manuskript.icns'),
+        bundle_identifier=None,
+        info_plist={'NSHighResolutionCapable': True,'LSBackgroundOnly': False})

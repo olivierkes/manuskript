@@ -5,6 +5,6 @@ if [ z"$FILENAME" = "z" ]; then
     exit 1
 fi
 pyinstaller manuskript.spec --clean
-cd dist && zip $FILENAME -r manuskript && cd ..
+cd dist && zip $FILENAME -r Manuskript.app && cd ..
 ls dist
 cp dist/$FILENAME dist/manuskript-osx-develop.zip
