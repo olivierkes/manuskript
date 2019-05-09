@@ -9,6 +9,7 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIcon, QFont
 from PyQt5.QtWidgets import QTextEdit, qApp
 from lxml import etree as ET
+import re
 
 from manuskript import enums
 
@@ -20,6 +21,9 @@ class abstractItem():
 
     # Used for XML export
     name = "abstractItem"
+
+    # Regexp from https://stackoverflow.com/questions/8733233/filtering-out-certain-bytes-in-python
+    valid_xml_re = re.compile(u'[^\u0020-\uD7FF\u0009\u000A\u000D\uE000-\uFFFD\U00010000-\U0010FFFF]+')
 
     def __init__(self, model=None, title="", _type="abstract", xml=None, parent=None, ID=None):
 
@@ -258,6 +262,9 @@ class abstractItem():
     # We want to force some data even if they're empty
     XMLForce = []
 
+    def cleanTextForXML(self, text):
+        return self.valid_xml_re.sub('', text)
+
     def toXML(self):
         """
         Returns a string containing the item (and children) in XML.
@@ -272,7 +279,7 @@ class abstractItem():
                 continue
             val = self.data(attrib)
             if val or attrib in self.XMLForce:
-                item.set(attrib.name, str(val))
+                item.set(attrib.name, self.cleanTextForXML(str(val)))
 
         # Saving lastPath
         item.set("lastPath", self._lastPath)
