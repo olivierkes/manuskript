@@ -3,7 +3,7 @@
 import imp
 import os
 
-from PyQt5.QtCore import (pyqtSignal, QSignalMapper, QTimer, QSettings, Qt,
+from PyQt5.QtCore import (pyqtSignal, QSignalMapper, QTimer, QSettings, Qt, QPoint,
                           QRegExp, QUrl, QSize, QModelIndex)
 from PyQt5.QtGui import QStandardItemModel, QIcon, QColor
 from PyQt5.QtWidgets import QMainWindow, QHeaderView, qApp, QMenu, QActionGroup, QAction, QStyle, QListWidgetItem, \
@@ -1068,14 +1068,17 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     # HELP
     ###############################################################################
 
+    def centerChildWindow(self, win):
+        r = win.geometry()
+        r2 = self.geometry()
+        win.move(r2.center() - QPoint(r.width()/2, r.height()/2))
+
     def about(self):
         self.dialog = aboutDialog(mw=self)
         self.dialog.setFixedSize(self.dialog.size())
         self.dialog.show()
         # Center about dialog
-        r = self.dialog.geometry()
-        r2 = self.geometry()
-        self.dialog.move(r2.center() - r.center())
+        self.centerChildWindow(self.dialog)
 
     ###############################################################################
     # GENERAL AKA UNSORTED
@@ -1364,9 +1367,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.sw.hide()
         self.sw.setWindowModality(Qt.ApplicationModal)
         self.sw.setWindowFlags(Qt.Dialog)
-        r = self.sw.geometry()
-        r2 = self.geometry()
-        self.sw.move(r2.center() - r.center())
+        self.centerChildWindow(self.sw)
         if tab:
             self.sw.setTab(tab)
         self.sw.show()
@@ -1508,15 +1509,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def doImport(self):
         self.dialog = importerDialog(mw=self)
         self.dialog.show()
+        self.centerChildWindow(self.dialog)
 
-        r = self.dialog.geometry()
-        r2 = self.geometry()
-        self.dialog.move(r2.center() - r.center())
 
     def doCompile(self):
         self.dialog = exporterDialog(mw=self)
         self.dialog.show()
-
-        r = self.dialog.geometry()
-        r2 = self.geometry()
-        self.dialog.move(r2.center() - r.center())
+        self.centerChildWindow(self.dialog)
