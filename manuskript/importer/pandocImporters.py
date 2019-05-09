@@ -38,6 +38,9 @@ class pandocImporter(abstractImporter):
 
         r = pandocExporter().run(args)
 
+        if r is None:
+            return None
+
         if formatTo == "opml":
             return self.opmlImporter.startImport("", parentItem,
                                             settingsWidget, fromString=r)
