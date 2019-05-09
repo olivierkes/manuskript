@@ -483,7 +483,7 @@ class outlineItem(abstractItem):
         for r in rev:
             revItem = ET.Element("revision")
             revItem.set("timestamp", str(r[0]))
-            revItem.set("text", r[1])
+            revItem.set("text", self.cleanTextForXML(r[1]))
             item.append(revItem)
 
         return item
