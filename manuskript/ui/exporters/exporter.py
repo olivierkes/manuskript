@@ -3,7 +3,7 @@
 import json
 import os
 
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QPoint
 from PyQt5.QtGui import QBrush, QColor, QIcon
 from PyQt5.QtWidgets import QWidget, QStyle
 
@@ -138,7 +138,7 @@ class exporterDialog(QWidget, Ui_exporter):
 
         r = self.dialog.geometry()
         r2 = self.geometry()
-        self.dialog.move(r2.center() - r.center())
+        self.dialog.move(r2.center() - QPoint(r.width()/2, r.height()/2))
 
         self.dialog.exportersMightHaveChanged.connect(self.populateExportList)
 
