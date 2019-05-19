@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="2.0" language="ru" sourcelanguage="">
+<!DOCTYPE TS>
+<TS version="2.0" language="ru" sourcelanguage="">
 <context>
     <name>Export</name>
     <message>
@@ -223,12 +224,13 @@ Use that if you get YAML related error.</source>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="47"/>
         <source>Error processing regular expression : 
 {}</source>
-        <translation type="unfinished"></translation>
+        <translation>Обработка ошибок регулярное выражение: 
+{}</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="69"/>
         <source>Choose output file...</source>
-        <translation type="unfinished"></translation>
+        <translation>Выберите выходной файл ...</translation>
     </message>
 </context>
 <context>
@@ -374,7 +376,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="108"/>
         <source>Comma separated values</source>
-        <translation type="unfinished">Значения через запятую</translation>
+        <translation>Значения, разделенные запятыми</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="113"/>
@@ -1369,7 +1371,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2750"/>
         <source>&amp;Strike</source>
-        <translation type="unfinished">&amp;Удар</translation>
+        <translation>&amp;Зачеркнутый</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2755"/>
@@ -2077,7 +2079,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="182"/>
         <source>Restarting Manuskript ensures all settings take effect.</source>
-        <translation type="unfinished">Возможно, вам придется перезапустить manuskript, чтобы эти настройки вступили в силу должным образом и полностью.</translation>
+        <translation>Перезапуск Manuskript гарантирует, что все настройки вступят в силу.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1066"/>
@@ -2212,12 +2214,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/main.py" line="52"/>
         <source>Loaded translation from {}: {}.</source>
-        <translation type="unfinished">Загружен перевод: {}.</translation>
+        <translation>Загружается перевод с {}: {}.</translation>
     </message>
     <message>
         <location filename="../manuskript/main.py" line="55"/>
         <source>Note: No translator found or loaded from {} for locale {}.</source>
-        <translation type="unfinished">Примечание: переводчик не найден или не загружен для языка {}.</translation>
+        <translation>Примечание: Переводчик не найден и не загружен из {} для локали {}.</translation>
     </message>
 </context>
 <context>
@@ -2733,57 +2735,57 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="152"/>
         <source>Spellcheck</source>
-        <translation type="unfinished"></translation>
+        <translation>Проверка орфографии</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="153"/>
         <source>Navigation</source>
-        <translation type="unfinished"></translation>
+        <translation>Навигация</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="154"/>
         <source>New Text</source>
-        <translation type="unfinished"></translation>
+        <translation>Новый текст</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="155"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>Заголовок</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="156"/>
         <source>Title: Show Full Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Название: Показать полный путь</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="158"/>
         <source>Theme selector</source>
-        <translation type="unfinished"></translation>
+        <translation>Выбор темы</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="159"/>
         <source>Word count</source>
-        <translation type="unfinished">Количество слов</translation>
+        <translation>Количество слов</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="160"/>
         <source>Progress</source>
-        <translation type="unfinished">Прогресс</translation>
+        <translation>Прогресс</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="161"/>
         <source>Progress: Auto Show/Hide</source>
-        <translation type="unfinished"></translation>
+        <translation>Прогресс: Авто Показать/Скрыть</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="162"/>
         <source>Clock</source>
-        <translation type="unfinished"></translation>
+        <translation>Часы</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="163"/>
         <source>Clock: Show Seconds</source>
-        <translation type="unfinished"></translation>
+        <translation>Часы: Показать секунды</translation>
     </message>
 </context>
 <context>
@@ -2842,7 +2844,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/importers/importer_ui.ui" line="45"/>
         <source>Choose file</source>
-        <translation type="unfinished">Выберите файл</translation>
+        <translation>Выберите файл</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/importers/importer_ui.ui" line="75"/>
@@ -2865,7 +2867,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="60"/>
         <source>Last accessed directory &quot;{}&quot; loaded.</source>
-        <translation type="unfinished"></translation>
+        <translation>Загружается Последний доступ к каталогу &quot;{}&quot;.</translation>
     </message>
 </context>
 <context>
@@ -3890,28 +3892,29 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="507"/>
         <source>Open Image</source>
-        <translation type="unfinished"></translation>
+        <translation>Открытое изображение</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="507"/>
         <source>Image files (*.jpg; *.jpeg; *.png)</source>
-        <translation type="unfinished"></translation>
+        <translation>Файлы изображений (*.jpg *.jpeg *.png)</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="523"/>
         <source>Error</source>
-        <translation type="unfinished">Ошибка</translation>
+        <translation>Ошибка</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="520"/>
         <source>Unable to load selected file</source>
-        <translation type="unfinished"></translation>
+        <translation>Не удалось загрузить выбранный файл</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="523"/>
         <source>Unable to add selected image:
 {}</source>
-        <translation type="unfinished"></translation>
+        <translation>Невозможно добавить выбранное изображение:
+{}</translation>
     </message>
 </context>
 <context>
