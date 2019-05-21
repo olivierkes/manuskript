@@ -36,7 +36,7 @@
     <message>
         <location filename="../manuskript/exporter/manuskript/markdown.py" line="59"/>
         <source>Preview with highlighter.</source>
-        <translation>ハイライトのプレビュー</translation>
+        <translation>構文を強調表示しての事前確認する。</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="14"/>
@@ -157,15 +157,15 @@
         <location filename="../manuskript/exporter/manuskript/markdown.py" line="14"/>
         <source>Just like plain text, excepts adds markdown titles.
                           Presupposes that texts are formatted in markdown.</source>
-        <translation>マークダウンと同じ形でタイトルが追加できることを除いて、プレーンテキストと同じである。
+        <translation>マークダウンと同じ形で見出しが追加できることを除いて、プレーンテキストと同じである。
                           テキストはマークダウンでフォーマットされていることを前提としている。</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="15"/>
         <source>Simplest export to plain text. Allows you to use your own markup not understood
                   by manuskript, for example &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</source>
-        <translation>プレーンテキストにエクスポートする最も簡単な設定です。
-                  &lt;a href=&apos;www.fountain.io&apos;&gt;噴水&lt;/a&gt;など、Manuskriptにはないカスタムタグを使用できます。</translation>
+        <translation>プレーンテキストに出力する最も簡単な設定です。
+                  &lt;a href=&apos;www.fountain.io&apos;&gt;噴水&lt;/a&gt;など、Manuskriptにはないタグを使用できます。</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/__init__.py" line="20"/>
@@ -185,8 +185,8 @@
         <location filename="../manuskript/exporter/pandoc/plainText.py" line="10"/>
         <source>Export to markdown, using pandoc. Allows more formatting options
     than the basic manuskript exporter.</source>
-        <translation>pandocを使用してマークダウンにエクスポートする。pandocはHaskell製のドキュメント変換ツールであり、様々な文書形式に対応している。
-      pandocは、manuskriptの標準エクスポート機能よりも高機能である。</translation>
+        <translation>pandocを使用してマークダウンに出力する。pandocはHaskell製のドキュメント変換ツールであり、様々な文書形式に対応している。
+      pandocは、manuskriptの標準出力機能よりも高機能である。</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/plainText.py" line="31"/>
@@ -231,7 +231,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="14"/>
         <source>Manage Exporters</source>
-        <translation>エクスポート機能の管理</translation>
+        <translation>出力機能の管理</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="21"/>
@@ -368,7 +368,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="113"/>
         <source>Sort items by name</source>
-        <translation>アイテムを名前順に並べ替える</translation>
+        <translation>項目を名前順に並べ替える</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="117"/>
@@ -464,17 +464,17 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1627"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>全般</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="169"/>
         <source>Title</source>
-        <translation></translation>
+        <translation>表題</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="179"/>
         <source>Subtitle</source>
-        <translation>副題</translation>
+        <translation>子表題</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="189"/>
@@ -514,7 +514,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1422"/>
         <source>Summary</source>
-        <translation>概要：</translation>
+        <translation>要約：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="322"/>
@@ -524,7 +524,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1337"/>
         <source>Summary:</source>
-        <translation>概要：</translation>
+        <translation>要約：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="345"/>
@@ -549,12 +549,12 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="420"/>
         <source>One sentence summary</source>
-        <translation>一文の概要</translation>
+        <translation>一文の要約</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="502"/>
         <source>One paragraph summary</source>
-        <translation>一段落の概要</translation>
+        <translation>一段落の要約</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="540"/>
@@ -564,12 +564,12 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="565"/>
         <source>One page summary</source>
-        <translation>1ページの概要</translation>
+        <translation>1ページの要約</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="590"/>
         <source>Full summary</source>
-        <translation>全体の概要</translation>
+        <translation>全体の要約</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1074"/>
@@ -584,7 +584,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="688"/>
         <source>Characters</source>
-        <translation>役割</translation>
+        <translation>登場人物</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="713"/>
@@ -629,12 +629,12 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="869"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One sentence&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;一文&lt;br/&gt;概要&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;一文&lt;br/&gt;要約&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="879"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One paragraph&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;一段落&lt;br/&gt;概要&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;一段落&lt;br/&gt;要約&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1001"/>
@@ -659,7 +659,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1209"/>
         <source>Character(s)</source>
-        <translation>役割</translation>
+        <translation>登場人物</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1646"/>
@@ -964,7 +964,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/mainWindow.py" line="1142"/>
         <source>Book summary</source>
-        <translation type="unfinished"></translation>
+        <translation>本の要約</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1143"/>
@@ -996,13 +996,13 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
         <location filename="../manuskript/mainWindow.py" line="1218"/>
         <source>Take time to think about a one sentence (~50 words) summary of your book. Then expand it to
                      a paragraph, then to a page, then to a full summary.</source>
-        <translation>あなたの本の概要を50単語ほどで考えてください。この作業は時間をかけるべきでしょう。
-                     それを段落、ページに落とし込み、最後に完全な概要を書きます。</translation>
+        <translation>あなたの本の要約を50単語ほどで考えてください。この作業は時間をかけるべきでしょう。
+                     それを段落、ページに落とし込み、最後に完全な要約を書きます。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1223"/>
         <source>Create your characters.</source>
-        <translation>あなたの役割を作成してください。</translation>
+        <translation>あなたの登場人物を作りましょう。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1226"/>
@@ -1392,37 +1392,37 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2791"/>
         <source>Ctrl+0</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+0</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2796"/>
         <source>&amp;Comment line(s)</source>
-        <translation type="unfinished"></translation>
+        <translation>注釈行 (&amp;C)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2804"/>
         <source>&amp;Ordered list</source>
-        <translation type="unfinished"></translation>
+        <translation>番号リスト (&amp;O)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2813"/>
         <source>&amp;Unordered list</source>
-        <translation type="unfinished"></translation>
+        <translation>番号なしリスト (&amp;U)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2818"/>
         <source>B&amp;lockquote</source>
-        <translation type="unfinished"></translation>
+        <translation>引用符 (&amp;B)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1368"/>
         <source>Remove selected plot step(s)</source>
-        <translation type="unfinished"></translation>
+        <translation>選択したプロットを削除する</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="554"/>
         <source>The file {} does not exist. Has it been moved or deleted?</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイル {} は存在しません。移動または削除しましたか？</translation>
     </message>
 </context>
 <context>
@@ -1430,12 +1430,12 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="14"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>設定</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="24"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>全般</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="480"/>
@@ -1465,12 +1465,12 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="82"/>
         <source>General settings</source>
-        <translation type="unfinished"></translation>
+        <translation>全般の設定</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="98"/>
         <source>Application settings</source>
-        <translation type="unfinished"></translation>
+        <translation>アプリケーションの設定</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="201"/>
@@ -1515,7 +1515,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="426"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If you check this option, your project will be save as one single file. Easier to copy or backup, but does not allow collaborative editing, or versionning.&lt;br/&gt;If this is unchecked, your project will be save as a folder containing many small files.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;この設定を有効にすると、プロジェクトは単一のファイルとして保存されます。コピーやバックアップは簡単ですが、多人数での共同編集やバージョン管理には不向きです。&lt;br/&gt;この設定を無効にした場合、プロジェクトは多数の小さなファイルとして、指定のフォルダに保存されます。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="432"/>
@@ -1585,12 +1585,12 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1987"/>
         <source>Colors</source>
-        <translation type="unfinished"></translation>
+        <translation>色</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1731"/>
         <source>Icon color:</source>
-        <translation type="unfinished"></translation>
+        <translation>アイコンの色：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1937"/>
@@ -1600,7 +1600,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1942"/>
         <source>POV</source>
-        <translation type="unfinished"></translation>
+        <translation>POV</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1947"/>
@@ -1620,17 +1620,17 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1779"/>
         <source>Text color:</source>
-        <translation type="unfinished"></translation>
+        <translation>文字色：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1827"/>
         <source>Background color:</source>
-        <translation type="unfinished"></translation>
+        <translation>背景色：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1041"/>
         <source>Folders</source>
-        <translation type="unfinished"></translation>
+        <translation>フォルダ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1053"/>
@@ -1640,7 +1640,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1162"/>
         <source>Show summary</source>
-        <translation type="unfinished"></translation>
+        <translation>要約を閲覧</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1105"/>
@@ -1655,7 +1655,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1224"/>
         <source>Outline</source>
-        <translation type="unfinished"></translation>
+        <translation>概要</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1416"/>
@@ -1680,7 +1680,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1540"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>表題</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1571"/>
@@ -1690,27 +1690,27 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1716"/>
         <source>Item colors</source>
-        <translation type="unfinished"></translation>
+        <translation>項目の色</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1875"/>
         <source>Border color:</source>
-        <translation type="unfinished"></translation>
+        <translation>線の色：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1923"/>
         <source>Corner color:</source>
-        <translation type="unfinished"></translation>
+        <translation>角の色：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1583"/>
         <source>Background</source>
-        <translation type="unfinished"></translation>
+        <translation>背景</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3418"/>
         <source>Color:</source>
-        <translation type="unfinished"></translation>
+        <translation>色：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2780"/>
@@ -1725,7 +1725,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1973"/>
         <source>Text editor</source>
-        <translation type="unfinished"></translation>
+        <translation>テキストエディタ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2092"/>
@@ -1795,7 +1795,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3622"/>
         <source> px</source>
-        <translation type="unfinished"></translation>
+        <translation> px</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3644"/>
@@ -1860,12 +1860,12 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3170"/>
         <source>Type:</source>
-        <translation>タイプ：</translation>
+        <translation>型：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3178"/>
         <source>No Image</source>
-        <translation type="unfinished"></translation>
+        <translation>画像なし</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3183"/>
@@ -1965,7 +1965,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3679"/>
         <source>Justify</source>
-        <translation type="unfinished"></translation>
+        <translation>校正</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3691"/>
@@ -2152,12 +2152,12 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="173"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>表題</translation>
     </message>
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="175"/>
         <source>POV</source>
-        <translation type="unfinished"></translation>
+        <translation>POV</translation>
     </message>
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="177"/>
@@ -2208,7 +2208,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/views/basicItemView_ui.ui" line="38"/>
         <source>POV:</source>
-        <translation type="unfinished"></translation>
+        <translation>POV：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/basicItemView_ui.ui" line="55"/>
@@ -2223,12 +2223,12 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/views/basicItemView_ui.ui" line="92"/>
         <source>One line summary</source>
-        <translation type="unfinished"></translation>
+        <translation>一行の要約</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/basicItemView_ui.ui" line="99"/>
         <source>Few sentences summary:</source>
-        <translation type="unfinished"></translation>
+        <translation>文章の要約：</translation>
     </message>
 </context>
 <context>
@@ -2236,17 +2236,17 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/models/characterModel.py" line="168"/>
         <source>New character</source>
-        <translation type="unfinished"></translation>
+        <translation>新しい登場人物</translation>
     </message>
     <message>
         <location filename="../manuskript/models/characterModel.py" line="192"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>名前</translation>
     </message>
     <message>
         <location filename="../manuskript/models/characterModel.py" line="194"/>
         <source>Value</source>
-        <translation type="unfinished"></translation>
+        <translation>値</translation>
     </message>
 </context>
 <context>
@@ -2259,12 +2259,12 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/views/characterTreeView.py" line="90"/>
         <source>Secondary</source>
-        <translation type="unfinished"></translation>
+        <translation>第二項</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/characterTreeView.py" line="90"/>
         <source>Minor</source>
-        <translation type="unfinished"></translation>
+        <translation>重要ではない</translation>
     </message>
 </context>
 <context>
@@ -2277,17 +2277,17 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/cheatSheet_ui.ui" line="46"/>
         <source>Filter (type the name of anything in your project)</source>
-        <translation type="unfinished"></translation>
+        <translation>絞り込み (プロジェクト内の任意の名前)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/cheatSheet.py" line="113"/>
         <source>Minor</source>
-        <translation type="unfinished"></translation>
+        <translation>重要ではない</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/cheatSheet.py" line="113"/>
         <source>Secondary</source>
-        <translation type="unfinished"></translation>
+        <translation>第二項</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/cheatSheet.py" line="113"/>
@@ -2297,22 +2297,22 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/cheatSheet.py" line="91"/>
         <source>Characters</source>
-        <translation type="unfinished"></translation>
+        <translation>登場人物</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/cheatSheet.py" line="104"/>
         <source>Texts</source>
-        <translation type="unfinished"></translation>
+        <translation>テキスト</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/cheatSheet.py" line="116"/>
         <source>Plots</source>
-        <translation type="unfinished"></translation>
+        <translation>プロット</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/cheatSheet.py" line="120"/>
         <source>World</source>
-        <translation type="unfinished"></translation>
+        <translation>世界</translation>
     </message>
 </context>
 <context>
@@ -2330,12 +2330,12 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/views/cmbOutlineCharacterChoser.py" line="36"/>
         <source>Secondary</source>
-        <translation type="unfinished"></translation>
+        <translation>第二項</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/cmbOutlineCharacterChoser.py" line="36"/>
         <source>Minor</source>
-        <translation type="unfinished"></translation>
+        <translation>重要ではない</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/cmbOutlineCharacterChoser.py" line="136"/>
@@ -2364,7 +2364,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/collapsibleDockWidgets.py" line="26"/>
         <source>Dock Widgets Toolbar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dock Widgets Toolbar</translation>
     </message>
 </context>
 <context>
@@ -2380,12 +2380,12 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/views/corkDelegate.py" line="62"/>
         <source>One line summary</source>
-        <translation type="unfinished"></translation>
+        <translation>一行の要約</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/corkDelegate.py" line="92"/>
         <source>Full summary</source>
-        <translation type="unfinished"></translation>
+        <translation>すべての要約</translation>
     </message>
 </context>
 <context>
@@ -2401,27 +2401,27 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/exporters/exporter_ui.ui" line="65"/>
         <source>Export</source>
-        <translation type="unfinished"></translation>
+        <translation>出力</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exporter_ui.ui" line="22"/>
         <source>Export to:</source>
-        <translation type="unfinished"></translation>
+        <translation>出力先：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exporter_ui.ui" line="32"/>
         <source>Manage exporters</source>
-        <translation type="unfinished"></translation>
+        <translation>出力機能の管理</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exporter_ui.ui" line="103"/>
         <source>Preview</source>
-        <translation type="unfinished"></translation>
+        <translation>事前確認 (プレビュー)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exporter_ui.ui" line="81"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>設定</translation>
     </message>
 </context>
 <context>
@@ -2429,7 +2429,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/exporters/exporter.py" line="64"/>
         <source>{} (not implemented yet)</source>
-        <translation type="unfinished"></translation>
+        <translation>{} (まだ実装されていません)</translation>
     </message>
 </context>
 <context>
@@ -2447,47 +2447,47 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="56"/>
         <source>Decide here what will be included in the final export.</source>
-        <translation type="unfinished"></translation>
+        <translation>最終的に出力する物を決定します。</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="85"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation>型</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="90"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>表題</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings.py" line="326"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation>テキスト</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="118"/>
         <source>I need more granularity</source>
-        <translation type="unfinished"></translation>
+        <translation>細かい粒度が必要です</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="127"/>
         <source>Fi&amp;lters</source>
-        <translation type="unfinished"></translation>
+        <translation>絞り込み (&amp;L)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="142"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Filters what items will be included in the final export.&lt;br/&gt;&lt;span style=&quot; color:#773333;&quot;&gt;(Not fully implemented yet.)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;最終の出力に含める項目を絞り込みます。&lt;br/&gt;&lt;span style=&quot; color:#773333;&quot;&gt;(注意：この機能は、まだ完全ではなく、実験的な実装です)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="149"/>
         <source>Ignore compile status (include all items)</source>
-        <translation>編纂の状態を無視する (すべての要素を含める)</translation>
+        <translation>編纂の状態を無視する (すべての項目を含める)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="156"/>
         <source>Subitems of:</source>
-        <translation type="unfinished"></translation>
+        <translation>子項目：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="170"/>
@@ -2502,72 +2502,72 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="229"/>
         <source>Separations</source>
-        <translation type="unfinished"></translation>
+        <translation>分離</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="241"/>
         <source>Between folders:</source>
-        <translation type="unfinished"></translation>
+        <translation>フォルダ間：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings.py" line="86"/>
         <source>Empty line</source>
-        <translation type="unfinished"></translation>
+        <translation>空行</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings.py" line="105"/>
         <source>Custom</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Custom</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="367"/>
         <source>Between texts:</source>
-        <translation type="unfinished"></translation>
+        <translation>文章間：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="493"/>
         <source>Between folder and text:</source>
-        <translation type="unfinished"></translation>
+        <translation>フォルダとテキストの間：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="619"/>
         <source>Between text and folder:</source>
-        <translation type="unfinished"></translation>
+        <translation>テキストとフォルダの間：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="764"/>
         <source>Transformations</source>
-        <translation type="unfinished"></translation>
+        <translation>変換</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="773"/>
         <source>Typographic replacements:</source>
-        <translation type="unfinished"></translation>
+        <translation>構文の置換：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="802"/>
         <source>Replace double quotes (&quot;) with:</source>
-        <translation type="unfinished"></translation>
+        <translation>二重引用符 (&quot;) を、次に置き換える：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="911"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation type="unfinished"></translation>
+        <translation>一重引用符 (&apos;) を、次に置き換える：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1020"/>
         <source>Remove multiple spaces</source>
-        <translation type="unfinished"></translation>
+        <translation>重複した空白を削除</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1030"/>
         <source>Custom replacements:</source>
-        <translation type="unfinished"></translation>
+        <translation>カスタム置換：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1049"/>
         <source>Enabled</source>
-        <translation type="unfinished"></translation>
+        <translation>有効</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1054"/>
@@ -2592,7 +2592,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1151"/>
         <source>Preview</source>
-        <translation type="unfinished"></translation>
+        <translation>事前確認 (プレビュー)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1157"/>
@@ -2617,12 +2617,12 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings.py" line="343"/>
         <source>{}Level {} folder</source>
-        <translation type="unfinished"></translation>
+        <translation>{}レベル {} フォルダ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings.py" line="346"/>
         <source>{}Level {} text</source>
-        <translation type="unfinished"></translation>
+        <translation>{}レベル {} テキスト</translation>
     </message>
     <message encoding="UTF-8">
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="788"/>
@@ -2645,17 +2645,17 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="87"/>
         <source>Custom</source>
-        <translation type="unfinished"></translation>
+        <translation>カスタム</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="93"/>
         <source>Not found</source>
-        <translation type="unfinished"></translation>
+        <translation>見つかりません</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="96"/>
         <source>{} not found. Install it, or set path manually.</source>
-        <translation type="unfinished"></translation>
+        <translation>{} は、見つかりません。インストールするか、もしくは、実行ファイルを手動でパスに指定してください。</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="124"/>
@@ -2726,12 +2726,12 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="155"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>表題</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="156"/>
         <source>Title: Show Full Path</source>
-        <translation type="unfinished"></translation>
+        <translation>表題：フルパスを表示</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="158"/>
@@ -2769,7 +2769,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.ui" line="41"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>全般</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.ui" line="55"/>
@@ -2779,12 +2779,12 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.ui" line="65"/>
         <source>\n---\n</source>
-        <translation type="unfinished"></translation>
+        <translation>\n---\n</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.ui" line="72"/>
         <source>Trim long titles (&gt; 32 chars)</source>
-        <translation type="unfinished"></translation>
+        <translation>長い表題を削る (表題は32文字まで)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.ui" line="86"/>
@@ -2794,7 +2794,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.ui" line="93"/>
         <source>Import in a top-level folder</source>
-        <translation type="unfinished"></translation>
+        <translation>最上位フォルダにインポート</translation>
     </message>
 </context>
 <context>
@@ -2830,7 +2830,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/importers/importer_ui.ui" line="160"/>
         <source>Preview</source>
-        <translation type="unfinished"></translation>
+        <translation>事前確認 (プレビュー)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/importers/importer_ui.ui" line="138"/>
@@ -2843,7 +2843,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/welcome.py" line="60"/>
         <source>Last accessed directory &quot;{}&quot; loaded.</source>
-        <translation type="unfinished"></translation>
+        <translation>最後にアクセスしたディレクトリ &quot;{}&quot; がロードされました。</translation>
     </message>
 </context>
 <context>
@@ -2869,12 +2869,12 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/editors/locker_ui.ui" line="33"/>
         <source>Word target</source>
-        <translation type="unfinished"></translation>
+        <translation>対象単語</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker_ui.ui" line="40"/>
         <source>Time target</source>
-        <translation type="unfinished"></translation>
+        <translation>時間目標</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker_ui.ui" line="47"/>
@@ -2884,37 +2884,37 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/editors/locker_ui.ui" line="63"/>
         <source> minutes</source>
-        <translation type="unfinished"></translation>
+        <translation> 分</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker_ui.ui" line="79"/>
         <source>Lock !</source>
-        <translation type="unfinished"></translation>
+        <translation>ロック！</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker.py" line="94"/>
         <source>~{} h.</source>
-        <translation type="unfinished"></translation>
+        <translation>~{} 時.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker.py" line="96"/>
         <source>~{} mn.</source>
-        <translation type="unfinished"></translation>
+        <translation>~{} 分.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker.py" line="100"/>
         <source>{}:{}</source>
-        <translation type="unfinished"></translation>
+        <translation>{}:{}</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker.py" line="102"/>
         <source>{} s.</source>
-        <translation type="unfinished"></translation>
+        <translation>{} 秒.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker.py" line="104"/>
         <source>{} remaining</source>
-        <translation type="unfinished"></translation>
+        <translation>残り {}</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker.py" line="109"/>
@@ -2932,32 +2932,32 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.ui" line="67"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation>テキスト</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.ui" line="83"/>
         <source>Index cards</source>
-        <translation type="unfinished"></translation>
+        <translation>索引目録</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.ui" line="102"/>
         <source>Outline</source>
-        <translation type="unfinished"></translation>
+        <translation>概要</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.ui" line="198"/>
         <source>F11</source>
-        <translation type="unfinished"></translation>
+        <translation>F11</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.ui" line="47"/>
         <source>Go to parent item</source>
-        <translation type="unfinished"></translation>
+        <translation>親の項目に移動</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.ui" line="57"/>
         <source>Alt+Up</source>
-        <translation type="unfinished"></translation>
+        <translation>Alt+Up</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="243"/>
@@ -2980,7 +2980,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/exporter/manuskript/markdown.py" line="57"/>
         <source>Markdown</source>
-        <translation type="unfinished"></translation>
+        <translation>Markdown</translation>
     </message>
 </context>
 <context>
@@ -2993,32 +2993,32 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.ui" line="41"/>
         <source>Properties</source>
-        <translation type="unfinished"></translation>
+        <translation>属性</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.ui" line="81"/>
         <source>Summary</source>
-        <translation type="unfinished"></translation>
+        <translation>要約</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.ui" line="114"/>
         <source>One line summary</source>
-        <translation type="unfinished"></translation>
+        <translation>一行の要約</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.ui" line="140"/>
         <source>Full summary</source>
-        <translation type="unfinished"></translation>
+        <translation>すべての要約</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.ui" line="180"/>
         <source>Notes / References</source>
-        <translation type="unfinished"></translation>
+        <translation>ノート/参照</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.ui" line="190"/>
         <source>Revisions</source>
-        <translation type="unfinished"></translation>
+        <translation>改訂</translation>
     </message>
 </context>
 <context>
@@ -3026,7 +3026,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="590"/>
         <source>Auto-hide</source>
-        <translation type="unfinished"></translation>
+        <translation>自動的に隠す</translation>
     </message>
 </context>
 <context>
@@ -3034,7 +3034,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="134"/>
         <source>Set POV</source>
-        <translation type="unfinished"></translation>
+        <translation>POV 設置</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="136"/>
@@ -3064,22 +3064,22 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="143"/>
         <source>Secondary</source>
-        <translation type="unfinished"></translation>
+        <translation>第二項</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="144"/>
         <source>Minor</source>
-        <translation type="unfinished"></translation>
+        <translation>重要ではない</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="197"/>
         <source>Set Custom Icon</source>
-        <translation type="unfinished"></translation>
+        <translation>カスタムアイコンを設定</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="198"/>
         <source>Restore to default</source>
-        <translation type="unfinished"></translation>
+        <translation>標準値に戻す</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="61"/>
@@ -3089,67 +3089,67 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="75"/>
         <source>Open {} items in new tabs</source>
-        <translation type="unfinished"></translation>
+        <translation>新しいタブで {} 項目を開く</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="78"/>
         <source>Open {} in a new tab</source>
-        <translation type="unfinished"></translation>
+        <translation>新しいタブで {} を開く</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="313"/>
         <source>About to remove</source>
-        <translation type="unfinished"></translation>
+        <translation>削除しようとしています</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="313"/>
         <source>&lt;p&gt;&lt;b&gt;You&apos;re about to delete {} item(s).&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Are you sure?&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;&lt;b&gt;あなたは {} 個の項目を削除しようとしています。&lt;/b&gt;&lt;/p&gt;&lt;p&gt;よろしいですか？&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="421"/>
         <source>Select at least two items. Folders are ignored.</source>
-        <translation type="unfinished"></translation>
+        <translation>少なくとも2つの項目を選択してください。フォルダは無視されます。</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="430"/>
         <source>All items must be on the same level (share the same parent).</source>
-        <translation type="unfinished"></translation>
+        <translation>すべての項目は同じレベルになければなりません (同じ親を持ちます)。</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="88"/>
         <source>New &amp;Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>新しいフォルダ (&amp;F)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="94"/>
         <source>New &amp;Text</source>
-        <translation type="unfinished"></translation>
+        <translation>新しいテキスト (&amp;T)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="108"/>
         <source>&amp;Copy</source>
-        <translation type="unfinished"></translation>
+        <translation>コピー (&amp;C)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="103"/>
         <source>C&amp;ut</source>
-        <translation type="unfinished"></translation>
+        <translation>切り取り (&amp;U)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="113"/>
         <source>&amp;Paste</source>
-        <translation type="unfinished"></translation>
+        <translation>貼り付け (&amp;P)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="125"/>
         <source>&amp;Rename</source>
-        <translation type="unfinished"></translation>
+        <translation>名前を変更 (&amp;R)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="119"/>
         <source>&amp;Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>削除 (&amp;D)</translation>
     </message>
 </context>
 <context>
@@ -3167,12 +3167,12 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/views/outlineDelegates.py" line="143"/>
         <source>Secondary</source>
-        <translation type="unfinished"></translation>
+        <translation>第二項</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineDelegates.py" line="143"/>
         <source>Minor</source>
-        <translation type="unfinished"></translation>
+        <translation>重要ではない</translation>
     </message>
 </context>
 <context>
@@ -3193,7 +3193,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="166"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>全般</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="180"/>
@@ -3216,12 +3216,12 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/models/persosProxyModel.py" line="17"/>
         <source>Secondary</source>
-        <translation type="unfinished"></translation>
+        <translation>第二項</translation>
     </message>
     <message>
         <location filename="../manuskript/models/persosProxyModel.py" line="18"/>
         <source>Minors</source>
-        <translation type="unfinished"></translation>
+        <translation>重要ではない</translation>
     </message>
 </context>
 <context>
@@ -3229,7 +3229,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>全般</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3412,7 +3412,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/models/plotModel.py" line="140"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>名前</translation>
     </message>
     <message>
         <location filename="../manuskript/models/plotModel.py" line="142"/>
@@ -3432,12 +3432,12 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/models/plotModel.py" line="246"/>
         <source>Secondary</source>
-        <translation type="unfinished"></translation>
+        <translation>第二項</translation>
     </message>
     <message>
         <location filename="../manuskript/models/plotModel.py" line="246"/>
         <source>Minor</source>
-        <translation type="unfinished"></translation>
+        <translation>重要ではない</translation>
     </message>
 </context>
 <context>
@@ -3450,12 +3450,12 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/views/plotTreeView.py" line="128"/>
         <source>Secondary</source>
-        <translation type="unfinished"></translation>
+        <translation>第二項</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotTreeView.py" line="128"/>
         <source>Minor</source>
-        <translation type="unfinished"></translation>
+        <translation>重要ではない</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotTreeView.py" line="189"/>
@@ -3473,12 +3473,12 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/models/plotsProxyModel.py" line="23"/>
         <source>Secondary</source>
-        <translation type="unfinished"></translation>
+        <translation>第二項</translation>
     </message>
     <message>
         <location filename="../manuskript/models/plotsProxyModel.py" line="24"/>
         <source>Minors</source>
-        <translation type="unfinished"></translation>
+        <translation>重要ではない</translation>
     </message>
 </context>
 <context>
@@ -3559,12 +3559,12 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/models/references.py" line="108"/>
         <source>Short summary:</source>
-        <translation type="unfinished"></translation>
+        <translation>短い要約：</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="109"/>
         <source>Long summary:</source>
-        <translation type="unfinished"></translation>
+        <translation>長い要約：</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="110"/>
@@ -3604,7 +3604,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/models/references.py" line="283"/>
         <source>Characters</source>
-        <translation type="unfinished"></translation>
+        <translation>登場人物</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="284"/>
@@ -3639,7 +3639,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/models/references.py" line="516"/>
         <source>Character: &lt;b&gt;{}&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>登場人物： &lt;b&gt;{}&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="519"/>
@@ -3649,7 +3649,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/models/references.py" line="522"/>
         <source>World: &lt;b&gt;{name}&lt;/b&gt;{path}</source>
-        <translation type="unfinished"></translation>
+        <translation>世界：&lt;b&gt;{name}&lt;/b&gt;{path}</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="596"/>
@@ -3674,12 +3674,12 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/models/references.py" line="216"/>
         <source>Short summary</source>
-        <translation type="unfinished"></translation>
+        <translation>より短い要約</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="217"/>
         <source>Longer summary</source>
-        <translation type="unfinished"></translation>
+        <translation>より長い要約</translation>
     </message>
 </context>
 <context>
@@ -3717,57 +3717,57 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/revisions.py" line="60"/>
         <source>Show spaces</source>
-        <translation type="unfinished"></translation>
+        <translation>空白を表示</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="66"/>
         <source>Show modifications only</source>
-        <translation type="unfinished"></translation>
+        <translation>変更のみを表示</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="110"/>
         <source>{} years ago</source>
-        <translation type="unfinished"></translation>
+        <translation>{} 年前</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="112"/>
         <source>{} months ago</source>
-        <translation type="unfinished"></translation>
+        <translation>{} ヶ月前</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="114"/>
         <source>{} days ago</source>
-        <translation type="unfinished"></translation>
+        <translation>{} 日前</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="116"/>
         <source>1 day ago</source>
-        <translation type="unfinished"></translation>
+        <translation>1 日前</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="118"/>
         <source>{} hours ago</source>
-        <translation type="unfinished"></translation>
+        <translation>{} 時間前</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="120"/>
         <source>{} minutes ago</source>
-        <translation type="unfinished"></translation>
+        <translation>{} 分前</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="122"/>
         <source>{} seconds ago</source>
-        <translation type="unfinished"></translation>
+        <translation>{} 秒前</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="183"/>
         <source>Line {}:</source>
-        <translation type="unfinished"></translation>
+        <translation>行 {}：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="263"/>
         <source>Clear all</source>
-        <translation type="unfinished"></translation>
+        <translation>すべて消去</translation>
     </message>
 </context>
 <context>
@@ -3780,42 +3780,42 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/search_ui.ui" line="46"/>
         <source>Search for...</source>
-        <translation type="unfinished"></translation>
+        <translation>検索する...</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="43"/>
         <source>Search in:</source>
-        <translation type="unfinished"></translation>
+        <translation>で検索：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="47"/>
         <source>All</source>
-        <translation type="unfinished"></translation>
+        <translation>すべて</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="48"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>表題</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="49"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation>テキスト</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="50"/>
         <source>Summary</source>
-        <translation type="unfinished"></translation>
+        <translation>要約</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="51"/>
         <source>Notes</source>
-        <translation type="unfinished"></translation>
+        <translation>ノート</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="52"/>
         <source>POV</source>
-        <translation type="unfinished"></translation>
+        <translation>POV</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="53"/>
@@ -3835,7 +3835,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/search.py" line="68"/>
         <source>Case sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>大文字と小文字を区別</translation>
     </message>
 </context>
 <context>
@@ -3863,33 +3863,34 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/settingsWindow.py" line="746"/>
         <source> (read-only)</source>
-        <translation type="unfinished"></translation>
+        <translation> (読み取り専用)</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="507"/>
         <source>Open Image</source>
-        <translation type="unfinished"></translation>
+        <translation>画像を開く</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="507"/>
         <source>Image files (*.jpg; *.jpeg; *.png)</source>
-        <translation type="unfinished"></translation>
+        <translation>画像 (*.jpg; *.jpeg; *.png)</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="523"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Error</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="520"/>
         <source>Unable to load selected file</source>
-        <translation type="unfinished"></translation>
+        <translation>選択したファイルを読み込めませんでした</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="523"/>
         <source>Unable to add selected image:
 {}</source>
-        <translation type="unfinished"></translation>
+        <translation>選択した画像を追加できません：
+{}</translation>
     </message>
 </context>
 <context>
@@ -3907,12 +3908,12 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/views/sldImportance.py" line="29"/>
         <source>Minor</source>
-        <translation type="unfinished"></translation>
+        <translation>重要ではない</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/sldImportance.py" line="30"/>
         <source>Secondary</source>
-        <translation type="unfinished"></translation>
+        <translation>第二項</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/sldImportance.py" line="31"/>
@@ -3944,12 +3945,12 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="47"/>
         <source>Split &apos;{}&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>分割 &apos;{}&apos;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="51"/>
         <source>Split items</source>
-        <translation type="unfinished"></translation>
+        <translation>選択した項目を分割する</translation>
     </message>
 </context>
 <context>
@@ -3962,12 +3963,12 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/views/storylineView.py" line="36"/>
         <source>Show Plots</source>
-        <translation type="unfinished"></translation>
+        <translation>プロットを表示</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/storylineView.py" line="43"/>
         <source>Show Characters</source>
-        <translation type="unfinished"></translation>
+        <translation>登場人物を表示</translation>
     </message>
 </context>
 <context>
@@ -3975,22 +3976,22 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/editors/tabSplitter.py" line="65"/>
         <source>Open selected items in that view.</source>
-        <translation type="unfinished"></translation>
+        <translation>この画面で選択した項目を開きます。</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/tabSplitter.py" line="156"/>
         <source>Split horizontally</source>
-        <translation type="unfinished"></translation>
+        <translation>画面を水平方向に分割する</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/tabSplitter.py" line="166"/>
         <source>Close split</source>
-        <translation type="unfinished"></translation>
+        <translation>画面の分割を閉じる</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/tabSplitter.py" line="202"/>
         <source>Split vertically</source>
-        <translation type="unfinished"></translation>
+        <translation>縦に分割</translation>
     </message>
 </context>
 <context>
@@ -4011,42 +4012,42 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/editors/textFormat.py" line="18"/>
         <source>CTRL+B</source>
-        <translation type="unfinished"></translation>
+        <translation>CTRL+B</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/textFormat.py" line="19"/>
         <source>CTRL+I</source>
-        <translation type="unfinished"></translation>
+        <translation>CTRL+I</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/textFormat.py" line="20"/>
         <source>CTRL+U</source>
-        <translation type="unfinished"></translation>
+        <translation>CTRL+U</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/textFormat.py" line="21"/>
         <source>CTRL+P</source>
-        <translation type="unfinished"></translation>
+        <translation>CTRL+P</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/textFormat.py" line="22"/>
         <source>CTRL+L</source>
-        <translation type="unfinished"></translation>
+        <translation>CTRL+L</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/textFormat.py" line="23"/>
         <source>CTRL+E</source>
-        <translation type="unfinished"></translation>
+        <translation>CTRL+E</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/textFormat.py" line="24"/>
         <source>CTRL+R</source>
-        <translation type="unfinished"></translation>
+        <translation>CTRL+R</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/textFormat.py" line="25"/>
         <source>CTRL+J</source>
-        <translation type="unfinished"></translation>
+        <translation>CTRL+J</translation>
     </message>
 </context>
 <context>
@@ -4054,22 +4055,22 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/views/treeView.py" line="48"/>
         <source>Expand {}</source>
-        <translation type="unfinished"></translation>
+        <translation>展開 {}</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/treeView.py" line="52"/>
         <source>Collapse {}</source>
-        <translation type="unfinished"></translation>
+        <translation>折り畳む {}</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/treeView.py" line="59"/>
         <source>Expand All</source>
-        <translation type="unfinished"></translation>
+        <translation>すべて展開</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/treeView.py" line="63"/>
         <source>Collapse All</source>
-        <translation type="unfinished"></translation>
+        <translation>すべて折り畳む</translation>
     </message>
 </context>
 <context>
@@ -4082,47 +4083,47 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/welcome_ui.ui" line="50"/>
         <source>1</source>
-        <translation type="unfinished"></translation>
+        <translation>1</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome_ui.ui" line="55"/>
         <source>Templates</source>
-        <translation type="unfinished"></translation>
+        <translation>テンプレート</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome_ui.ui" line="86"/>
         <source>Empty</source>
-        <translation type="unfinished"></translation>
+        <translation>空</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="224"/>
         <source>Novel</source>
-        <translation type="unfinished"></translation>
+        <translation>小説</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="229"/>
         <source>Novella</source>
-        <translation type="unfinished"></translation>
+        <translation>中編小説</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="234"/>
         <source>Short Story</source>
-        <translation type="unfinished"></translation>
+        <translation>短編小説</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="246"/>
         <source>Research paper</source>
-        <translation type="unfinished"></translation>
+        <translation>研究論文</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="407"/>
         <source>Demo projects</source>
-        <translation type="unfinished"></translation>
+        <translation>デモプロジェクト</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome_ui.ui" line="177"/>
         <source>Add level</source>
-        <translation type="unfinished"></translation>
+        <translation>レベルを追加</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome_ui.ui" line="190"/>
@@ -4132,62 +4133,62 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/welcome_ui.ui" line="213"/>
         <source>Next time, automatically open last project</source>
-        <translation type="unfinished"></translation>
+        <translation>次回起動時は、前回終了時に開いていたプロジェクトを自動的に開く</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome_ui.ui" line="238"/>
         <source>Open...</source>
-        <translation type="unfinished"></translation>
+        <translation>開く...</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome_ui.ui" line="248"/>
         <source>Recent</source>
-        <translation type="unfinished"></translation>
+        <translation>最近使った</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome_ui.ui" line="258"/>
         <source>Create</source>
-        <translation type="unfinished"></translation>
+        <translation>作成</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="157"/>
         <source>Open project</source>
-        <translation type="unfinished"></translation>
+        <translation>プロジェクトを開く</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="157"/>
         <source>Manuskript project (*.msk);;All files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Manuskript project (*.msk);;All files (*)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="171"/>
         <source>Save project as...</source>
-        <translation type="unfinished"></translation>
+        <translation>名前を付けてプロジェクトを保存...</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="195"/>
         <source>Manuskript project (*.msk)</source>
-        <translation type="unfinished"></translation>
+        <translation>Manuskript project (*.msk)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="187"/>
         <source>Manuskript</source>
-        <translation type="unfinished"></translation>
+        <translation>Manuskript</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="195"/>
         <source>Create New Project</source>
-        <translation type="unfinished"></translation>
+        <translation>新しいプロジェクトを作成する</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="207"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>警告</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="207"/>
         <source>Overwrite existing project {} ?</source>
-        <translation type="unfinished"></translation>
+        <translation>既存のプロジェクト {} を上書きしますか？</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="223"/>
@@ -4197,27 +4198,27 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/welcome.py" line="445"/>
         <source>Chapter</source>
-        <translation type="unfinished"></translation>
+        <translation>チャプター</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="446"/>
         <source>Scene</source>
-        <translation type="unfinished"></translation>
+        <translation>シーン</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="238"/>
         <source>Trilogy</source>
-        <translation type="unfinished"></translation>
+        <translation>三部作</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="238"/>
         <source>Book</source>
-        <translation type="unfinished"></translation>
+        <translation>本</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="246"/>
         <source>Section</source>
-        <translation type="unfinished"></translation>
+        <translation>セクション</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="245"/>
@@ -4237,7 +4238,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/welcome.py" line="333"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation>テキスト</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="336"/>
@@ -4262,37 +4263,37 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/welcome.py" line="443"/>
         <source>Idea</source>
-        <translation type="unfinished"></translation>
+        <translation>アイディア</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="444"/>
         <source>Note</source>
-        <translation type="unfinished"></translation>
+        <translation>ノート</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="447"/>
         <source>Research</source>
-        <translation type="unfinished"></translation>
+        <translation>研究</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="455"/>
         <source>TODO</source>
-        <translation type="unfinished"></translation>
+        <translation>TODO</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="456"/>
         <source>First draft</source>
-        <translation type="unfinished"></translation>
+        <translation>初稿</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="457"/>
         <source>Second draft</source>
-        <translation type="unfinished"></translation>
+        <translation>第二稿</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="458"/>
         <source>Final</source>
-        <translation type="unfinished"></translation>
+        <translation>決定稿</translation>
     </message>
 </context>
 <context>
@@ -4300,212 +4301,212 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/models/worldModel.py" line="134"/>
         <source>New item</source>
-        <translation type="unfinished"></translation>
+        <translation>新しい項目</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="246"/>
         <source>Fantasy world building</source>
-        <translation type="unfinished"></translation>
+        <translation>空想の世界を築く</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="246"/>
         <source>Physical</source>
-        <translation type="unfinished"></translation>
+        <translation>自然</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="246"/>
         <source>Climate</source>
-        <translation type="unfinished"></translation>
+        <translation>気候</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="246"/>
         <source>Topography</source>
-        <translation type="unfinished"></translation>
+        <translation>地形</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="246"/>
         <source>Astronomy</source>
-        <translation type="unfinished"></translation>
+        <translation>天文</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="246"/>
         <source>Wild life</source>
-        <translation type="unfinished"></translation>
+        <translation>野生動物</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="246"/>
         <source>Flora</source>
-        <translation type="unfinished"></translation>
+        <translation>植物</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="246"/>
         <source>History</source>
-        <translation type="unfinished"></translation>
+        <translation>歴史</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="246"/>
         <source>Races</source>
-        <translation type="unfinished"></translation>
+        <translation>人種・民族・種族</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="246"/>
         <source>Diseases</source>
-        <translation type="unfinished"></translation>
+        <translation>病気</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Cultural</source>
-        <translation type="unfinished"></translation>
+        <translation>文化</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Customs</source>
-        <translation type="unfinished"></translation>
+        <translation>風習</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Food</source>
-        <translation type="unfinished"></translation>
+        <translation>食</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Languages</source>
-        <translation type="unfinished"></translation>
+        <translation>言語</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Education</source>
-        <translation type="unfinished"></translation>
+        <translation>学問</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Dresses</source>
-        <translation type="unfinished"></translation>
+        <translation>服装</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Science</source>
-        <translation type="unfinished"></translation>
+        <translation>科学</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Calendar</source>
-        <translation type="unfinished"></translation>
+        <translation>暦</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Bodily language</source>
-        <translation type="unfinished"></translation>
+        <translation>身振り手振り等の仕草による意思の伝え方</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Ethics</source>
-        <translation type="unfinished"></translation>
+        <translation>倫理</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Religion</source>
-        <translation type="unfinished"></translation>
+        <translation>宗教</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Government</source>
-        <translation type="unfinished"></translation>
+        <translation>統治体</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Politics</source>
-        <translation type="unfinished"></translation>
+        <translation>政治</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Gender roles</source>
-        <translation type="unfinished"></translation>
+        <translation>性別による役割</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Music and arts</source>
-        <translation type="unfinished"></translation>
+        <translation>音楽、芸術</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Architecture</source>
-        <translation type="unfinished"></translation>
+        <translation>建築術</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Military</source>
-        <translation type="unfinished"></translation>
+        <translation>軍事</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Technology</source>
-        <translation type="unfinished"></translation>
+        <translation>技術</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Courtship</source>
-        <translation type="unfinished"></translation>
+        <translation>求婚</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Demography</source>
-        <translation type="unfinished"></translation>
+        <translation>人口統計</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Transportation</source>
-        <translation type="unfinished"></translation>
+        <translation>交通</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Medicine</source>
-        <translation type="unfinished"></translation>
+        <translation>医療</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="280"/>
         <source>Magic system</source>
-        <translation type="unfinished"></translation>
+        <translation>魔術体系</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="280"/>
         <source>Rules</source>
-        <translation type="unfinished"></translation>
+        <translation>規則・規範</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="280"/>
         <source>Organization</source>
-        <translation type="unfinished"></translation>
+        <translation>団体</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="280"/>
         <source>Magical objects</source>
-        <translation type="unfinished"></translation>
+        <translation>魔術道具</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="280"/>
         <source>Magical places</source>
-        <translation type="unfinished"></translation>
+        <translation>魔術の場所</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="280"/>
         <source>Magical races</source>
-        <translation type="unfinished"></translation>
+        <translation>魔術による品種</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="287"/>
         <source>Important places</source>
-        <translation type="unfinished"></translation>
+        <translation>重要な場所</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="288"/>
         <source>Important objects</source>
-        <translation type="unfinished"></translation>
+        <translation>重要な道具</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="246"/>
         <source>Natural resources</source>
-        <translation type="unfinished"></translation>
+        <translation>天然資源</translation>
     </message>
 </context>
 </TS>
