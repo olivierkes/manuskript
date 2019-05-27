@@ -286,18 +286,19 @@ class welcome(QWidget, Ui_welcome):
 
         k = 0
         hasWC = False
-        for d in self.template[1]:
+        for templateIndex, d in enumerate(self.template[1]):
             spin = QSpinBox(self)
             spin.setRange(0, 999999)
             spin.setValue(d[0])
             # Storing the level of the template in that spinbox, so we can use
             # it to update the template when valueChanged on that spinbox
             # (we do that in self.updateWordCount for convenience).
-            spin.setProperty("templateIndex", self.template[1].index(d))
+            spin.setProperty("templateIndex", templateIndex)
             spin.valueChanged.connect(self.updateWordCount)
-
             if d[1] != None:
                 txt = QLineEdit(self)
+                txt.setProperty("templateIndex", templateIndex)
+                txt.textEdited.connect(self.updateWordCount)
                 txt.setText(d[1])
 
             else:
@@ -360,11 +361,20 @@ class welcome(QWidget, Ui_welcome):
                                    Qt.FindChildrenRecursively):
             total = total * s.value()
 
-            # Update self.template to reflect the changed values
+            # Update self.template to reflect the changed count values
             templateIndex = s.property("templateIndex")
             self.template[1][templateIndex] = (
                 s.value(),
                 self.template[1][templateIndex][1])
+
+        for t in self.findChildren(QLineEdit, QRegExp(".*"),
+                                   Qt.FindChildrenRecursively):
+            # Update self.template to reflect the changed name values
+            templateIndex = t.property("templateIndex")
+            if templateIndex is not None :
+                self.template[1][templateIndex] = (
+                self.template[1][templateIndex][0],
+                t.text())
 
         if total == 1:
             total = 0
