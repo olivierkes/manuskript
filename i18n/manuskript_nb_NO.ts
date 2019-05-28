@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="2.0" language="nb_NO" sourcelanguage="">
+<!DOCTYPE TS>
+<TS version="2.0" language="nb_NO" sourcelanguage="">
 <context>
     <name>Export</name>
     <message>
@@ -215,12 +216,13 @@ Use that if you get YAML related error.</source>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="47"/>
         <source>Error processing regular expression : 
 {}</source>
-        <translation type="unfinished"></translation>
+        <translation>Feil under behandling av regulært uttrykk:
+{}</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="69"/>
         <source>Choose output file...</source>
-        <translation type="unfinished"></translation>
+        <translation>Velg utdatafil…</translation>
     </message>
 </context>
 <context>
@@ -1233,7 +1235,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2145"/>
         <source>&amp;Format</source>
-        <translation>&amp;Format</translation>
+        <translation>&amp;Formater</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2153"/>
@@ -2191,7 +2193,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/main.py" line="55"/>
         <source>Note: No translator found or loaded from {} for locale {}.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Merk: Fant ingen oversetter, eller lastet fra {} for lokaliteten {}.</translation>
     </message>
 </context>
 <context>
@@ -2707,17 +2709,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="152"/>
         <source>Spellcheck</source>
-        <translation type="unfinished"></translation>
+        <translation>Stavekontroll</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="153"/>
         <source>Navigation</source>
-        <translation type="unfinished"></translation>
+        <translation>Navigasjon</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="154"/>
         <source>New Text</source>
-        <translation type="unfinished"></translation>
+        <translation>Ny tekst</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="155"/>
@@ -2727,37 +2729,37 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="156"/>
         <source>Title: Show Full Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Tittel: Vis full sti</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="158"/>
         <source>Theme selector</source>
-        <translation type="unfinished"></translation>
+        <translation>Draktvalg</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="159"/>
         <source>Word count</source>
-        <translation type="unfinished"></translation>
+        <translation>Ordtelling</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="160"/>
         <source>Progress</source>
-        <translation type="unfinished"></translation>
+        <translation>Framdrift</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="161"/>
         <source>Progress: Auto Show/Hide</source>
-        <translation type="unfinished"></translation>
+        <translation>Framdrift: Automatisk visning/skjuling</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="162"/>
         <source>Clock</source>
-        <translation type="unfinished"></translation>
+        <translation>Klokke</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="163"/>
         <source>Clock: Show Seconds</source>
-        <translation type="unfinished"></translation>
+        <translation>Klokke: Vis sekunder</translation>
     </message>
 </context>
 <context>
@@ -2816,7 +2818,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/importers/importer_ui.ui" line="45"/>
         <source>Choose file</source>
-        <translation type="unfinished"></translation>
+        <translation>Velg fil</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/importers/importer_ui.ui" line="75"/>
@@ -2839,7 +2841,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="60"/>
         <source>Last accessed directory &quot;{}&quot; loaded.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sist brukte mappe &quot;{}&quot; valgt.</translation>
     </message>
 </context>
 <context>
@@ -3864,28 +3866,29 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="507"/>
         <source>Open Image</source>
-        <translation type="unfinished"></translation>
+        <translation>Åpne bilde</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="507"/>
         <source>Image files (*.jpg; *.jpeg; *.png)</source>
-        <translation type="unfinished"></translation>
+        <translation>Bildefiler (*.jpg; *.jpeg; *.png)</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="523"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Feil</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="520"/>
         <source>Unable to load selected file</source>
-        <translation type="unfinished"></translation>
+        <translation>Kunne ikke laste inn valgt fil</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="523"/>
         <source>Unable to add selected image:
 {}</source>
-        <translation type="unfinished"></translation>
+        <translation>Kunne ikke legge til valgt bilde:
+{}</translation>
     </message>
 </context>
 <context>
