@@ -168,7 +168,7 @@
     formats.&lt;/p&gt;
     &lt;p&gt;Website: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
     </source>
-        <translation>&lt;p&gt;Un convertitore di documenti universale. Può essere usato per convertire markdown in una vasta gamma di altri
+        <translation>&lt;p&gt;Un convertitore di documenti universale. Può essere usato per convertire Markdown in una vasta gamma di altri
     formati.&lt;/p&gt;
     &lt;p&gt;Sito web: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
     </translation>
@@ -1386,7 +1386,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2760"/>
         <source>Su&amp;perscript</source>
-        <translation>Su&amp;perscript</translation>
+        <translation>A&amp;pice</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2763"/>
@@ -1396,7 +1396,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2768"/>
         <source>Subsc&amp;ript</source>
-        <translation>Subsc&amp;ript</translation>
+        <translation>P&amp;edice</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2771"/>
@@ -1406,7 +1406,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2776"/>
         <source>Co&amp;mment block</source>
-        <translation>Co&amp;mment block</translation>
+        <translation>Blocco di co&amp;mmenti</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2779"/>
@@ -1441,7 +1441,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2818"/>
         <source>B&amp;lockquote</source>
-        <translation>B&amp;lockquote</translation>
+        <translation>Citazione (b&amp;locco)</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="554"/>
@@ -2219,7 +2219,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/main.py" line="55"/>
         <source>Note: No translator found or loaded from {} for locale {}.</source>
-        <translation>Nota: nessun traduttore trovato o caricato per la lingua scelta {}.</translation>
+        <translation>Nota: nessun traduttore trovato o caricato da {} per la lingua {}.</translation>
     </message>
 </context>
 <context>
