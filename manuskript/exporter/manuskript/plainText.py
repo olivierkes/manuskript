@@ -11,8 +11,8 @@ from manuskript.ui.exporters.manuskript.plainTextSettings import exporterSetting
 import codecs
 
 class plainText(basicFormat):
-    name = qApp.translate("Export", "Plaintext")
-    description = qApp.translate("Export", """Simplest export to plaintext. Allows you to use your own markup not understood
+    name = qApp.translate("Export", "Plain text")
+    description = qApp.translate("Export", """Simplest export to plain text. Allows you to use your own markup not understood
                   by Manuskript, for example <a href='www.fountain.io'>Fountain</a>.""")
     implemented = True
     requires = {
