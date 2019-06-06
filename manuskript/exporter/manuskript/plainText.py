@@ -13,7 +13,7 @@ import codecs
 class plainText(basicFormat):
     name = qApp.translate("Export", "Plain text")
     description = qApp.translate("Export", """Simplest export to plain text. Allows you to use your own markup not understood
-                  by manuskript, for example <a href='www.fountain.io'>Fountain</a>.""")
+                  by Manuskript, for example <a href='www.fountain.io'>Fountain</a>.""")
     implemented = True
     requires = {
         "Settings": True,
@@ -45,7 +45,7 @@ class plainText(basicFormat):
             return self.concatenate(mainWindow().mdlOutline.rootItem, settings)
         except re.error as e:
             QMessageBox.warning(mainWindow().dialog, qApp.translate("Export", "Error"),
-                                qApp.translate("Export", "Error processing regular expression : \n{}").format(str(e)))
+                                qApp.translate("Export", "Could not process regular expression: \n{}").format(str(e)))
             return ""
 
     def getExportFilename(self, settingsWidget, varName=None, filter=None):
@@ -65,7 +65,7 @@ class plainText(basicFormat):
             filename = ""
 
         filename, filter = QFileDialog.getSaveFileName(settingsWidget.parent(),
-                                                       caption=qApp.translate("Export", "Choose output file..."),
+                                                       caption=qApp.translate("Export", "Choose output file…"),
                                                        filter=filter,
                                                        directory=filename)
 
@@ -99,7 +99,7 @@ class plainText(basicFormat):
         content = self.output(settingsWidget)
 
         if not content:
-            print("Error: content is empty. Nothing saved.")
+            print("Error: No content. Nothing saved.")
             return
 
         if filename:
