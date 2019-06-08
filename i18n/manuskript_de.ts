@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="2.0" language="de_DE" sourcelanguage="">
+<!DOCTYPE TS>
+<TS version="2.0" language="de_DE" sourcelanguage="">
 <context>
     <name>Export</name>
     <message>
@@ -223,12 +224,13 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="47"/>
         <source>Error processing regular expression : 
 {}</source>
-        <translation type="unfinished"></translation>
+        <translation>Fehler bei der Verarbeitung eines regulären Ausdruckes:
+{}</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="69"/>
         <source>Choose output file...</source>
-        <translation type="unfinished"></translation>
+        <translation>Ausgabe-Datei wählen</translation>
     </message>
 </context>
 <context>
@@ -1268,102 +1270,102 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2658"/>
         <source>&amp;Level 1 (setext)</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Level 1 (setext)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2661"/>
         <source>Ctrl+Alt+1</source>
-        <translation type="unfinished"></translation>
+        <translation>Strg+Alt+1</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2666"/>
         <source>Level &amp;2</source>
-        <translation type="unfinished"></translation>
+        <translation>Level &amp;2</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2669"/>
         <source>Ctrl+Alt+2</source>
-        <translation type="unfinished"></translation>
+        <translation>Strg+Alt+2</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2674"/>
         <source>Level &amp;1 (atx)</source>
-        <translation type="unfinished"></translation>
+        <translation>Level &amp;1 (atx)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2677"/>
         <source>Ctrl+1</source>
-        <translation type="unfinished"></translation>
+        <translation>Strg+1</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2682"/>
         <source>L&amp;evel 2</source>
-        <translation type="unfinished"></translation>
+        <translation>L&amp;evel 2</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2685"/>
         <source>Ctrl+2</source>
-        <translation type="unfinished"></translation>
+        <translation>Strg+2</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2690"/>
         <source>Level &amp;3</source>
-        <translation type="unfinished"></translation>
+        <translation>Level &amp;3</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2693"/>
         <source>Ctrl+3</source>
-        <translation type="unfinished"></translation>
+        <translation>Strg+3</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2698"/>
         <source>Level &amp;4</source>
-        <translation type="unfinished"></translation>
+        <translation>Level &amp;4</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2701"/>
         <source>Ctrl+4</source>
-        <translation type="unfinished"></translation>
+        <translation>Strg+4</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2706"/>
         <source>Level &amp;5</source>
-        <translation type="unfinished"></translation>
+        <translation>Level &amp;5</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2709"/>
         <source>Ctrl+5</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+5</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2714"/>
         <source>Level &amp;6</source>
-        <translation type="unfinished"></translation>
+        <translation>Level &amp;6</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2717"/>
         <source>Ctrl+6</source>
-        <translation type="unfinished"></translation>
+        <translation>Strg+6</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2726"/>
         <source>&amp;Bold</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Fett</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2729"/>
         <source>Ctrl+B</source>
-        <translation type="unfinished"></translation>
+        <translation>Strg+B</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2738"/>
         <source>&amp;Italic</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Kursiv</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2741"/>
         <source>Ctrl+I</source>
-        <translation type="unfinished"></translation>
+        <translation>Strg+I</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2750"/>
@@ -1383,7 +1385,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2763"/>
         <source>Ctrl++</source>
-        <translation type="unfinished"></translation>
+        <translation>Strg++</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2768"/>
@@ -1393,17 +1395,17 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2771"/>
         <source>Ctrl+-</source>
-        <translation type="unfinished"></translation>
+        <translation>Strg+-</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2776"/>
         <source>Co&amp;mment block</source>
-        <translation type="unfinished"></translation>
+        <translation>Ko&amp;mmentarblock</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2779"/>
         <source>Ctrl+Shift+C</source>
-        <translation type="unfinished"></translation>
+        <translation>Strg+Umschalt+C</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2788"/>
@@ -1413,22 +1415,22 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2791"/>
         <source>Ctrl+0</source>
-        <translation type="unfinished"></translation>
+        <translation>Strg+0</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2796"/>
         <source>&amp;Comment line(s)</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Kommentarzeile(n)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2804"/>
         <source>&amp;Ordered list</source>
-        <translation type="unfinished"></translation>
+        <translation>Ge&amp;ordnete Liste</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2813"/>
         <source>&amp;Unordered list</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Ungeordnete Liste</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2818"/>
@@ -1438,12 +1440,12 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1368"/>
         <source>Remove selected plot step(s)</source>
-        <translation type="unfinished"></translation>
+        <translation>Ausgewählte Plot-Schritt(e) entfernen</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="554"/>
         <source>The file {} does not exist. Has it been moved or deleted?</source>
-        <translation type="unfinished"></translation>
+        <translation>Die Datei {} existiert nicht. Wurde sie verschoben oder gelöscht?</translation>
     </message>
 </context>
 <context>
@@ -1581,7 +1583,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="611"/>
         <source>revisions per hour for the last day</source>
-        <translation>REvisionen pro Stunde am letzten Tag</translation>
+        <translation>Revisionen pro Stunde am letzten Tag</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="624"/>
@@ -2061,12 +2063,12 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="113"/>
         <source>Style:</source>
-        <translation type="unfinished"></translation>
+        <translation>Stil:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="136"/>
         <source>Language:</source>
-        <translation type="unfinished"></translation>
+        <translation>Sprache:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="159"/>
@@ -2076,7 +2078,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="182"/>
         <source>Restarting Manuskript ensures all settings take effect.</source>
-        <translation type="unfinished"></translation>
+        <translation>Wenn Sie Manuskript neu starten, werden alle Einstellungen wirksam.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1066"/>
