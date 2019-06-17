@@ -36,7 +36,7 @@
     <message>
         <location filename="../manuskript/exporter/manuskript/markdown.py" line="59"/>
         <source>Preview with highlighter.</source>
-        <translation>Vooruitblik met markeringen</translation>
+        <translation>Vooruitblik met markeringen.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="14"/>
@@ -164,7 +164,8 @@
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="15"/>
         <source>Simplest export to plain text. Allows you to use your own markup not understood
                   by manuskript, for example &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</source>
-        <translation></translation>
+        <translation>Simpelste export naar ongemarkeerde text. Laat je je eigen markup gebruiken die niet begrepen wordt
+                  door manuskript, bijvoorbeeld &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/__init__.py" line="20"/>
@@ -187,13 +188,15 @@
         <location filename="../manuskript/exporter/pandoc/plainText.py" line="10"/>
         <source>Export to markdown, using pandoc. Allows more formatting options
     than the basic manuskript exporter.</source>
-        <translation></translation>
+        <translation>Exporteer naar markdown, doormiddel van pandoc. Zorgt voor meer opmaak opties
+    dan de basis manuscript exporteur.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/plainText.py" line="31"/>
         <source>LaTeX is a word processor and document markup language used to create
                                               beautiful documents.</source>
-        <translation></translation>
+        <translation>LaTeX is een woorden verwerker en documenten markup taal die gebruikt wordt om
+                                              schitterende documenten te maken.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/plainText.py" line="42"/>
