@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="2.0" language="pt_PT" sourcelanguage="">
+<!DOCTYPE TS>
+<TS version="2.0" language="pt_PT" sourcelanguage="">
 <context>
     <name>Export</name>
     <message>
@@ -211,7 +212,7 @@ Use se receber um erro YAML.</translation>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="15"/>
         <source>Simplest export to plain text. Allows you to use your own markup not understood
                   by Manuskript, for example &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</source>
-        <translation type="unfinished">Exportação para texto simples. Permite utilizar a sua própria marcação não compreendida
+        <translation>Exportação simples para texto. Permite utilizar a sua própria marcação não compreendida
                   pelo Manuskript, por exemplo &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</translation>
     </message>
     <message>
@@ -223,13 +224,13 @@ Use se receber um erro YAML.</translation>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="47"/>
         <source>Could not process regular expression: 
 {}</source>
-        <translation type="unfinished">Erro ao processar a expressão regular: 
+        <translation>Impossível processar a expressão regular: 
 {}</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="69"/>
-        <source>Choose output file&#xe2;&#x80;&#xa6;</source>
-        <translation type="unfinished">Escolha o ficheiro de saída...</translation>
+        <source>Choose output fileâ¦</source>
+        <translation>Escolha o ficheiro de saída</translation>
     </message>
 </context>
 <context>
@@ -1445,17 +1446,17 @@ Use se receber um erro YAML.</translation>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1264"/>
         <source>Install {}{} to use spellcheck</source>
-        <translation type="unfinished"></translation>
+        <translation>Instalar {}{} para verificar a ortografia</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1306"/>
         <source>{} has no installed dictionaries</source>
-        <translation type="unfinished"></translation>
+        <translation>{} não tem dicionários instalados</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1327"/>
         <source>{}{} is not installed</source>
-        <translation type="unfinished"></translation>
+        <translation>{}{} não está instalado</translation>
     </message>
 </context>
 <context>
