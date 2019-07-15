@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="2.0" language="it" sourcelanguage="">
+<!DOCTYPE TS>
+<TS version="2.0" language="it" sourcelanguage="">
 <context>
     <name>Export</name>
     <message>
@@ -158,7 +159,7 @@
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="15"/>
         <source>Simplest export to plain text. Allows you to use your own markup not understood
                   by Manuskript, for example &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</source>
-        <translation type="unfinished">La più semplice esportazione in testo piano. Ti permette di usare il tuo markup non riconosciuto
+        <translation>La più semplice esportazione in testo piano. Ti permette di usare il tuo markup non riconosciuto
                   da Manuskript, per esempio &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</translation>
     </message>
     <message>
@@ -223,13 +224,13 @@ Usalo se ottieni un errore relativo a YAML.</translation>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="47"/>
         <source>Could not process regular expression: 
 {}</source>
-        <translation type="unfinished">Errore durante l&apos;elaborazione dell&apos;espressione regolare:
+        <translation>Errore durante l&apos;elaborazione dell&apos;espressione regolare:
 {}</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="69"/>
-        <source>Choose output file&#xe2;&#x80;&#xa6;</source>
-        <translation type="unfinished">Scegli il file di output ...</translation>
+        <source>Choose output fileâ¦</source>
+        <translation>Scegli il file di output ...</translation>
     </message>
 </context>
 <context>
@@ -1445,17 +1446,17 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1264"/>
         <source>Install {}{} to use spellcheck</source>
-        <translation type="unfinished"></translation>
+        <translation>Installa {}{} per usare il correttore ortografico</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1306"/>
         <source>{} has no installed dictionaries</source>
-        <translation type="unfinished"></translation>
+        <translation>{} non vi sono dizionari installati</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1327"/>
         <source>{}{} is not installed</source>
-        <translation type="unfinished"></translation>
+        <translation>{}{} non è installato</translation>
     </message>
 </context>
 <context>
