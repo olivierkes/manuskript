@@ -57,7 +57,8 @@ def drawProgress(painter, rect, progress, radius=0):
     painter.setBrush(QBrush(colorFromProgress(progress)))
 
     r2 = QRect(rect)
-    r2.setWidth(r2.width() * min(progress, 1))
+    r2.setWidth(r2.width() * min(toInt(progress), 1))
+    #                            ^^^^^ Avoid crash - issue #561
     painter.drawRoundedRect(r2, radius, radius)
 
 
