@@ -9,7 +9,7 @@ from PyQt5.QtWidgets import QWidget, qApp
 
 from manuskript import settings
 from manuskript.enums import Outline
-from manuskript.functions import AUC, mainWindow, drawProgress, appPath
+from manuskript.functions import AUC, mainWindow, drawProgress, appPath, toInt
 from manuskript.ui import style
 from manuskript.ui.editors.editorWidget import editorWidget
 from manuskript.ui.editors.fullScreenEditor import fullScreenEditor
@@ -319,7 +319,8 @@ class mainEditor(QWidget, Ui_mainEditor):
             self.lblRedacProgress.setPixmap(self.px)
             self.lblRedacWC.setText(self.tr("{} words / {} ").format(
                     locale.format_string("%d", wc, grouping=True),
-                    locale.format_string("%d", goal, grouping=True)))
+                    locale.format_string("%d", toInt(goal), grouping=True)))
+                    #                          ^^^^^ Avoid crash - issue #561
         else:
             self.lblRedacProgress.hide()
             self.lblRedacWC.setText(self.tr("{} words ").format(
