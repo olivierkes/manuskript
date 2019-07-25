@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="2.0" language="nb_NO" sourcelanguage="">
+<!DOCTYPE TS>
+<TS version="2.0" language="nb_NO" sourcelanguage="">
 <context>
     <name>Export</name>
     <message>
@@ -162,7 +163,8 @@
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="15"/>
         <source>Simplest export to plain text. Allows you to use your own markup not understood
                   by Manuskript, for example &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Enkleste eksport til kartekst. Tillater deg å bruke ditt egen oppmerking, som ikke forstås
+av Manuskript, for eksempel &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/__init__.py" line="20"/>
@@ -220,7 +222,7 @@ Use that if you get YAML related error.</source>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="69"/>
-        <source>Choose output file&#xe2;&#x80;&#xa6;</source>
+        <source>Choose output fileâ¦</source>
         <translation type="unfinished">Velg utdatafil…</translation>
     </message>
 </context>
@@ -1419,17 +1421,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1264"/>
         <source>Install {}{} to use spellcheck</source>
-        <translation type="unfinished"></translation>
+        <translation>Installer {}{} for å bruke stavekontroll</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1306"/>
         <source>{} has no installed dictionaries</source>
-        <translation type="unfinished"></translation>
+        <translation>{} har ingen installerte ordbøker</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1327"/>
         <source>{}{} is not installed</source>
-        <translation type="unfinished"></translation>
+        <translation>{}{} er ikke installert</translation>
     </message>
 </context>
 <context>
