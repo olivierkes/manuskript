@@ -4529,7 +4529,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="246"/>
         <source>Natural resources</source>
-        <translation type="unfinished">Naturlige ressurser</translation>
+        <translation>Naturressurser</translation>
     </message>
 </context>
 </TS>
