@@ -695,6 +695,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Clear datas
         self.loadEmptyDatas()
         self.saveTimer.stop()
+        self.saveTimerNoChanges.stop()
         loadSave.clearSaveCache()
 
         self.breakConnections()
@@ -817,6 +818,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # to keep trying and continuously hitting the failure condition. Nor do we want to
         # risk a scenario where the timer somehow triggers a new save while saving.
         self.saveTimerNoChanges.stop()
+
+        if self.currentProject is None:
+            # No UI feedback here as this code path indicates a race condition that happens
+            # after the user has already closed the project through some way. But in that
+            # scenario, this code should not be reachable to begin with.
+            print("Bug: there is no current project to save.")
+            return
 
         r = loadSave.saveProject()  # version=0
 
