@@ -118,7 +118,14 @@ def saveProject(zip=None):
     # List of files to be moved
     moves = []
 
+    # MainWindow interaction things.
     mw = mainWindow()
+    project = mw.currentProject
+
+    # Sanity check (see PR-583): make sure we actually have a current project.
+    if project is None:
+        print("Error: cannot save project because there is no current project in the UI.")
+        return False
 
     # File format version
     files.append(("MANUSKRIPT", "1"))
@@ -295,10 +302,8 @@ def saveProject(zip=None):
 
     files.append(("settings.txt", settings.save(protocol=0)))
 
-    project = mw.currentProject
-
     # We check if the file exist and we have write access. If the file does
-    # not exists, we check the parent folder, because it might be a new project.
+    # not exist, we check the parent folder, because it might be a new project.
     if os.path.exists(project) and not os.access(project, os.W_OK) or \
        not os.path.exists(project) and not os.access(os.path.dirname(project), os.W_OK):
         print("Error: you don't have write access to save this project there.")
