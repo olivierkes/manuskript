@@ -122,9 +122,8 @@ class importerDialog(QWidget, Ui_importer):
         F = self._format
 
         options = QFileDialog.Options()
-        options |= QFileDialog.DontUseNativeDialog
         if F.fileFormat == "<<folder>>":
-            options = QFileDialog.DontUseNativeDialog | QFileDialog.ShowDirsOnly
+            options = QFileDialog.ShowDirsOnly
             fileName = QFileDialog.getExistingDirectory(self, "Select import folder",
                                                         "", options=options)
         else:
