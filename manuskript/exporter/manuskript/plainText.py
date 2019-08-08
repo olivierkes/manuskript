@@ -75,8 +75,8 @@ class plainText(basicFormat):
             s[varName] = filename
             settingsWidget.settings["Output"] = s
 
-        # Save settings
-        settingsWidget.writeSettings()
+            # Save settings
+            settingsWidget.writeSettings()
 
         return filename
 
@@ -84,14 +84,15 @@ class plainText(basicFormat):
         settings = settingsWidget.getSettings()
 
         filename = self.getExportFilename(settingsWidget)
-        settingsWidget.writeSettings()
-        content = self.output(settingsWidget)
-
-        if not content:
-            print("Error: No content. Nothing saved.")
-            return
 
         if filename:
+            settingsWidget.writeSettings()
+            content = self.output(settingsWidget)
+
+            if not content:
+                print("Error: No content. Nothing saved.")
+                return
+
             with open(filename, "w", encoding='utf8') as f:
                 f.write(content)
 
