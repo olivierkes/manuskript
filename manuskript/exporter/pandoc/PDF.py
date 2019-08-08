@@ -23,6 +23,7 @@ class PDF(abstractOutput):
     exportVarName = "lastPandocPDF"
     toFormat = "pdf"
     exportFilter = "PDF files (*.pdf);; Any files (*)"
+    exportDefaultSuffix = ".pdf"
     requires = {
         "Settings": True,
         "Preview": True,

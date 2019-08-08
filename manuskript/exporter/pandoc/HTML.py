@@ -16,6 +16,7 @@ class HTML(abstractPlainText):
     exportVarName = "lastPandocHTML"
     toFormat = "html"
     exportFilter = "HTML files (*.html);; Any files (*)"
+    exportDefaultSuffix = ".html"
     requires = {
         "Settings": True,
         "Preview": True,

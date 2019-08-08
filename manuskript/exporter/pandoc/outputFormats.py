@@ -13,6 +13,7 @@ class ePub(abstractOutput):
     exportVarName = "lastPandocePub"
     toFormat = "epub"
     exportFilter = "ePub files (*.epub);; Any files (*)"
+    exportDefaultSuffix = ".epub"
 
 
 class OpenDocument(abstractOutput):
@@ -23,6 +24,7 @@ class OpenDocument(abstractOutput):
     toFormat = "odt"
     icon = "application-vnd.oasis.opendocument.text"
     exportFilter = "OpenDocument files (*.odt);; Any files (*)"
+    exportDefaultSuffix = ".odt"
 
 
 class DocX(abstractOutput):
@@ -33,4 +35,5 @@ class DocX(abstractOutput):
     toFormat = "docx"
     icon = "application-vnd.openxmlformats-officedocument.wordprocessingml.document"
     exportFilter = "DocX files (*.docx);; Any files (*)"
+    exportDefaultSuffix = ".docx"
 

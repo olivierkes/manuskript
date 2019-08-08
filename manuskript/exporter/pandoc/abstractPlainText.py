@@ -16,6 +16,7 @@ class abstractPlainText(markdown):
     toFormat = "SUBCLASSME"
     icon = "SUBCLASSME"
     exportFilter = "SUBCLASSME"
+    exportDefaultSuffix = ".SUBCLASSME"
 
     def __init__(self, exporter):
         self.exporter = exporter

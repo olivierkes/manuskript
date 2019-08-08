@@ -16,6 +16,7 @@ class markdown(plainText):
 
     exportVarName = "lastManuskriptMarkdown"
     exportFilter = "Markdown files (*.md);; Any files (*)"
+    exportDefaultSuffix = ".md"
     icon = "text-x-markdown"
 
     def settingsWidget(self):
