@@ -21,6 +21,7 @@ class HTML(markdown):
 
     exportVarName = "lastManuskriptHTML"
     exportFilter = "HTML files (*.html);; Any files (*)"
+    exportDefaultSuffix = ".html"
 
     def isValid(self):
         return MD is not None

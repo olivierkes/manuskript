@@ -14,6 +14,7 @@ class markdown(abstractPlainText):
     exportVarName = "lastPandocMarkdown"
     toFormat = "markdown"
     exportFilter = "Markdown files (*.md);; Any files (*)"
+    exportDefaultSuffix = ".md"
 
 
 class reST(abstractPlainText):
@@ -24,6 +25,7 @@ class reST(abstractPlainText):
     toFormat = "rst"
     icon = "text-plain"
     exportFilter = "reST files (*.rst);; Any files (*)"
+    exportDefaultSuffix = ".rst"
 
 
 class latex(abstractPlainText):
@@ -35,6 +37,7 @@ class latex(abstractPlainText):
     toFormat = "latex"
     icon = "text-x-tex"
     exportFilter = "Tex files (*.tex);; Any files (*)"
+    exportDefaultSuffix = ".tex"
 
 
 class OPML(abstractPlainText):
@@ -47,5 +50,5 @@ class OPML(abstractPlainText):
     toFormat = "opml"
     icon = "text-x-opml+xml"
     exportFilter = "OPML files (*.opml);; Any files (*)"
-
+    exportDefaultSuffix = ".opml"
 

@@ -5,7 +5,7 @@ from PyQt5.QtGui import QFont, QTextCharFormat
 from PyQt5.QtWidgets import QPlainTextEdit, qApp, QFrame, QFileDialog, QMessageBox
 
 from manuskript.exporter.basic import basicFormat
-from manuskript.functions import mainWindow
+from manuskript.functions import mainWindow, getSaveFileNameWithSuffix
 from manuskript.models import outlineItem
 from manuskript.ui.exporters.manuskript.plainTextSettings import exporterSettings
 import codecs
@@ -24,6 +24,7 @@ class plainText(basicFormat):
     # Default settings used in self.getExportFilename. For easy subclassing when exporting plaintext.
     exportVarName = "lastPlainText"
     exportFilter = "Text files (*.txt);; Any files (*)"
+    exportDefaultSuffix = ".txt"  # qt ignores the period, but it is clearer in our code to have it
 
     def __init__(self):
         pass
@@ -64,27 +65,15 @@ class plainText(basicFormat):
         else:
             filename = ""
 
-        filename, filter = QFileDialog.getSaveFileName(settingsWidget.parent(),
-                                                       caption=qApp.translate("Export", "Choose output file…"),
-                                                       filter=filter,
-                                                       directory=filename)
+        filename, filter = getSaveFileNameWithSuffix(settingsWidget.parent(),
+                                                     caption=qApp.translate("Export", "Choose output file…"),
+                                                     filter=filter,
+                                                     directory=filename,
+                                                     defaultSuffix=self.exportDefaultSuffix)
 
         if filename:
             s[varName] = filename
             settingsWidget.settings["Output"] = s
-
-            # Auto adds extension if necessary
-            try:
-                # Extract the extension from "Some name (*.ext)"
-                ext = filter.split("(")[1].split(")")[0]
-                ext = ext.split(".")[1]
-                if " " in ext:  # In case there are multiple extensions: "Images (*.png *.jpg)"
-                    ext = ext.split(" ")[0]
-            except:
-                ext = ""
-
-            if ext and filename[-len(ext)-1:] != ".{}".format(ext):
-                filename += "." + ext
 
         # Save settings
         settingsWidget.writeSettings()
