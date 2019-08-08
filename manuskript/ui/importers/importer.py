@@ -196,8 +196,8 @@ class importerDialog(QWidget, Ui_importer):
         self.grpPreview.setEnabled(True)
 
         self.settingsWidget = generalSettings()
-        #TODO: custom format widget
-        # self.settingsWidget = F.settingsWidget(self.settingsWidget)
+        #TODO: custom format widget to match exporter visuals?
+        self.settingsWidget = F.settingsWidget(self.settingsWidget)
 
         # Set the settings widget in place
         self.setGroupWidget(self.grpSettings, self.settingsWidget)
