@@ -399,7 +399,8 @@ def getSaveFileNameWithSuffix(parent, caption, directory, filter, options=None, 
     if defaultSuffix:
         dialog.setDefaultSuffix(defaultSuffix)
     dialog.setFileMode(QFileDialog.AnyFile)
-    dialog.setSupportedSchemes(("file",))
+    if hasattr(dialog, 'setSupportedSchemes'): # Pre-Qt5.6 lacks this.
+        dialog.setSupportedSchemes(("file",))
     dialog.setAcceptMode(QFileDialog.AcceptSave)
     if selectedFilter:
         dialog.selectNameFilter(selectedFilter)
