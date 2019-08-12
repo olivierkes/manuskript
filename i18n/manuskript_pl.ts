@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="2.0" language="pl_PL" sourcelanguage="en">
+<!DOCTYPE TS>
+<TS version="2.0" language="pl_PL" sourcelanguage="en">
 <context>
     <name>Export</name>
     <message>
@@ -224,7 +225,7 @@ przez outliner.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="69"/>
-        <source>Choose output file&#xe2;&#x80;&#xa6;</source>
+        <source>Choose output fileâ¦</source>
         <translation type="unfinished">Wybierz plik wyjściowy...</translation>
     </message>
 </context>
@@ -632,7 +633,7 @@ i stworzy pozycje dla każdego tytułu.&lt;br/&gt;&amp;nbsp;</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="859"/>
         <source>Epiphany</source>
-        <translation type="unfinished">Epifania (olśnienie)</translation>
+        <translation>Epifania (olśnienie)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="869"/>
@@ -742,7 +743,7 @@ i stworzy pozycje dla każdego tytułu.&lt;br/&gt;&amp;nbsp;</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2008"/>
         <source>Persos</source>
-        <translation type="unfinished">Osoby</translation>
+        <translation>Osoby</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2069"/>
@@ -902,7 +903,7 @@ i stworzy pozycje dla każdego tytułu.&lt;br/&gt;&amp;nbsp;</translation>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1402"/>
         <source>Index cards</source>
-        <translation type="unfinished">Karty katalogowe</translation>
+        <translation>Karty katalogowe</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2471"/>
@@ -1157,7 +1158,7 @@ i stworzy pozycje dla każdego tytułu.&lt;br/&gt;&amp;nbsp;</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2755"/>
         <source>&amp;Verbatim</source>
-        <translation type="unfinished">&amp;Dosłownie</translation>
+        <translation>&amp;Dosłownie</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2760"/>
@@ -1227,7 +1228,7 @@ i stworzy pozycje dla każdego tytułu.&lt;br/&gt;&amp;nbsp;</translation>
     <message>
         <location filename="../manuskript/mainWindow.py" line="667"/>
         <source>Manuskript</source>
-        <translation type="unfinished">Manuskript</translation>
+        <translation>Manuskript</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="766"/>
@@ -1350,7 +1351,7 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message>
         <location filename="../manuskript/mainWindow.py" line="1394"/>
         <source>POV</source>
-        <translation type="unfinished">Punkt widzenia</translation>
+        <translation>Punkt widzenia</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1395"/>
@@ -1365,7 +1366,7 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message>
         <location filename="../manuskript/mainWindow.py" line="1397"/>
         <source>Compile</source>
-        <translation type="unfinished">Kompiluj</translation>
+        <translation>Kompiluj</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1420"/>
@@ -1410,7 +1411,7 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message encoding="UTF-8">
         <location filename="../manuskript/ui/mainWindow.ui" line="2521"/>
         <source>&amp;Import…</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;importuj…</translation>
     </message>
     <message encoding="UTF-8">
         <location filename="../manuskript/ui/mainWindow.ui" line="2569"/>
@@ -1463,7 +1464,7 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="34"/>
         <source>Views</source>
-        <translation type="unfinished">Widoki</translation>
+        <translation>Widoki</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2733"/>
@@ -1613,7 +1614,7 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="782"/>
         <source>Views settings</source>
-        <translation type="unfinished">Ustawienia widoku</translation>
+        <translation>Ustawienia widoku</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="800"/>
@@ -1823,7 +1824,7 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2031"/>
         <source>Transparent</source>
-        <translation type="unfinished">Przezroczysty</translation>
+        <translation>Przezroczysty</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2076"/>
@@ -2103,12 +2104,12 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3353"/>
         <source>Margins:</source>
-        <translation type="unfinished">Marginesy zewnętrzne:</translation>
+        <translation>Marginesy zewnętrzne:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3382"/>
         <source>Padding:</source>
-        <translation type="unfinished">Marginesy wewnętrzne:</translation>
+        <translation>Marginesy wewnętrzne:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3438"/>
@@ -2136,7 +2137,7 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="486"/>
         <source>&amp;Remove from custom dictionary</source>
-        <translation type="unfinished">&amp;Usuń ze słownika użytkownika</translation>
+        <translation>&amp;Usuń ze słownika użytkownika</translation>
     </message>
 </context>
 <context>
@@ -2149,7 +2150,7 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message>
         <location filename="../manuskript/ui/about_ui.ui" line="50"/>
         <source>Manuskript</source>
-        <translation type="unfinished">Manuskript</translation>
+        <translation>Manuskript</translation>
     </message>
 </context>
 <context>
@@ -2485,7 +2486,7 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="118"/>
         <source>I need more granularity</source>
-        <translation type="unfinished">Potrzebuję większej ziarnistości</translation>
+        <translation>Potrzebuję większej ziarnistości</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="127"/>
@@ -2564,12 +2565,12 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="788"/>
-        <source>Replace ... with &#xe2;&#x80;&#xa6;</source>
+        <source>Replace ... with â¦</source>
         <translation>Zastąp ... znakiem â¦</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="795"/>
-        <source>Replace --- with &#xe2;&#x80;&#x94;</source>
+        <source>Replace --- with â</source>
         <translation type="unfinished">Zastąp --- znakiem —</translation>
     </message>
     <message>
@@ -2640,7 +2641,7 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings.py" line="320"/>
         <source>Folder</source>
-        <translation type="unfinished">Folder</translation>
+        <translation>Folder</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings.py" line="343"/>
@@ -3322,7 +3323,7 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>1. Inciting event</source>
-        <translation type="unfinished">Przekraczanie progu</translation>
+        <translation type="unfinished">1. Rozpoczęcie akcji</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3342,7 +3343,7 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>2. Disaster</source>
-        <translation type="unfinished">2. Katastrofa</translation>
+        <translation>2. Katastrofa</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
