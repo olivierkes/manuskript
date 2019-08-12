@@ -1416,7 +1416,7 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message encoding="UTF-8">
         <location filename="../manuskript/ui/mainWindow.ui" line="2569"/>
         <source>&amp;Split…</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Podziel...</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1368"/>
@@ -1759,7 +1759,7 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1571"/>
         <source>Index cards</source>
-        <translation type="unfinished">Karty indeksu</translation>
+        <translation>Karty katalogowe</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1583"/>
