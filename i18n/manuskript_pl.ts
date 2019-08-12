@@ -158,7 +158,7 @@ przez outliner.</translation>
         <location filename="../manuskript/exporter/pandoc/PDF.py" line="19"/>
         <source>a valid LaTeX installation. Pandoc recommendations can be found on:
                      &lt;a href=&quot;https://pandoc.org/installing.html&quot;&gt;pandoc.org/installing.html&lt;/a&gt;. If you want Unicode support, you need XeLaTeX.</source>
-        <translation type="unfinished">prawidłowa instalacja latex. Zobacz rekomendacje pandoc na: &lt;a href=&quot;http://pandoc.org/installing.html&quot;&gt;http://pandoc.org/installing.html&lt;/a&gt;. Jeśli chcesz wsparcia unicode potrzebujesz xelatex.</translation>
+        <translation>prawidłowa instalacja LaTeX. Zobacz rekomendacje pandoc na: &lt;a href=&quot;http://pandoc.org/installing.html&quot;&gt;http://pandoc.org/installing.html&lt;/a&gt;. Jeśli chcesz wsparcia unicode, potrzebujesz XeLateX.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/__init__.py" line="20"/>
@@ -693,7 +693,7 @@ i stworzy pozycje dla każdego tytułu.&lt;br/&gt;&amp;nbsp;</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1351"/>
         <source>Add plot step</source>
-        <translation type="unfinished">Dodaj krok wątku (Ctrl+Enter)</translation>
+        <translation>Dodaj etap fabuły</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2045"/>
@@ -1421,12 +1421,12 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1368"/>
         <source>Remove selected plot step(s)</source>
-        <translation type="unfinished"></translation>
+        <translation>Usuń wybrany(e) etapy fabuły</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="549"/>
         <source>The file {} does not exist. Has it been moved or deleted?</source>
-        <translation type="unfinished"></translation>
+        <translation>Plik {} nie istnieje. Czy został przeniesiony lub skasowany?</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1264"/>
