@@ -682,8 +682,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             return
 
         # Make sure data is saved.
-        if not self.handleUnsavedChanges():
-            return  # user
+        if (self.projectDirty and settings.saveOnQuit == True):
+             self.saveDatas()
+        elif not self.handleUnsavedChanges():
+             return  # user cancelled action
 
         # Close open tabs in editor
         self.mainEditor.closeAllTabs()
