@@ -138,6 +138,7 @@ def save(filename=None, protocol=None):
         "openIndexes": openIndexes,
         "autoSave":autoSave,
         "autoSaveDelay":autoSaveDelay,
+        # TODO: Settings Cleanup Task -- Rename saveOnQuit to saveOnProjectClose -- see PR #615
         "saveOnQuit":saveOnQuit,
         "autoSaveNoChanges":autoSaveNoChanges,
         "autoSaveNoChangesDelay":autoSaveNoChangesDelay,
