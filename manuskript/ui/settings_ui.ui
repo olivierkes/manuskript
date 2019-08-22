@@ -407,7 +407,7 @@
              </font>
             </property>
             <property name="text">
-             <string>Save on quit</string>
+             <string>Save on project close</string>
             </property>
             <property name="checked">
              <bool>true</bool>
