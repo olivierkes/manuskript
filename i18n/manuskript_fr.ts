@@ -739,7 +739,7 @@ Cochez ceci si vous avez des erreurs liées à YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="676"/>
         <source>What if...?</source>
-        <translation>Et si...?</translation>
+        <translation>Et si... ?</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1402"/>
