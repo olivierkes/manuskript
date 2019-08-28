@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="2.0" language="fr" sourcelanguage="en">
+<!DOCTYPE TS>
+<TS version="2.0" language="fr" sourcelanguage="en">
 <context>
     <name>Export</name>
     <message>
@@ -220,7 +221,7 @@ Cochez ceci si vous avez des erreurs liées à YAML.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="69"/>
-        <source>Choose output file&#xe2;&#x80;&#xa6;</source>
+        <source>Choose output fileâ¦</source>
         <translation type="unfinished">Choisir le fichier de sortie...</translation>
     </message>
 </context>
@@ -738,7 +739,7 @@ Cochez ceci si vous avez des erreurs liées à YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="676"/>
         <source>What if...?</source>
-        <translation>Et si...?</translation>
+        <translation>Et si... ?</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1402"/>
@@ -1109,7 +1110,7 @@ Cochez ceci si vous avez des erreurs liées à YAML.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2521"/>
-        <source>&amp;Import&#xe2;&#x80;&#xa6;</source>
+        <source>&amp;Importâ¦</source>
         <translation>&amp;Importer…</translation>
     </message>
     <message>
@@ -1149,7 +1150,7 @@ Cochez ceci si vous avez des erreurs liées à YAML.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2569"/>
-        <source>&amp;Split&#xe2;&#x80;&#xa6;</source>
+        <source>&amp;Splitâ¦</source>
         <translation>&amp;Diviser…</translation>
     </message>
     <message>
@@ -1340,7 +1341,7 @@ Cochez ceci si vous avez des erreurs liées à YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2741"/>
         <source>Ctrl+I</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+I</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2750"/>
@@ -2560,12 +2561,12 @@ des lignes:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="788"/>
-        <source>Replace ... with &#xe2;&#x80;&#xa6;</source>
+        <source>Replace ... with â¦</source>
         <translation>Remplacer ... avec …</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="795"/>
-        <source>Replace --- with &#xe2;&#x80;&#x94;</source>
+        <source>Replace --- with â</source>
         <translation>Remplacer --- avec —</translation>
     </message>
     <message>

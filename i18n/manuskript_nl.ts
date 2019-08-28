@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="2.0" language="nl" sourcelanguage="">
+<!DOCTYPE TS>
+<TS version="2.0" language="nl" sourcelanguage="">
 <context>
     <name>Export</name>
     <message>
@@ -224,7 +225,7 @@ Use that if you get YAML related error.</source>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="69"/>
-        <source>Choose output file&#xe2;&#x80;&#xa6;</source>
+        <source>Choose output fileâ¦</source>
         <translation type="unfinished">Kies uitvoerbestand.....</translation>
     </message>
 </context>
@@ -1308,7 +1309,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2709"/>
         <source>Ctrl+5</source>
-        <translation type="unfinished">Ctrl+5</translation>
+        <translation>Ctrl+5</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2714"/>
@@ -1318,32 +1319,32 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2717"/>
         <source>Ctrl+6</source>
-        <translation type="unfinished">Ctrl+6</translation>
+        <translation>Ctrl+6</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2726"/>
         <source>&amp;Bold</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Dikgedrukt</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2729"/>
         <source>Ctrl+B</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+B</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2738"/>
         <source>&amp;Italic</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Schuingedrukt</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2741"/>
         <source>Ctrl+I</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+I</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2750"/>
         <source>&amp;Strike</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Doorgestreept</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2755"/>
@@ -1358,7 +1359,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2763"/>
         <source>Ctrl++</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl++</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2768"/>
@@ -1368,7 +1369,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2771"/>
         <source>Ctrl+-</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+-</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2776"/>

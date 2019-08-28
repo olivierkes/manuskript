@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="2.0" language="zh" sourcelanguage="en">
+<!DOCTYPE TS>
+<TS version="2.0" language="zh" sourcelanguage="en">
 <context>
     <name>Export</name>
     <message>
@@ -222,7 +223,7 @@ Use that if you get YAML related error.</source>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="69"/>
-        <source>Choose output file&#xe2;&#x80;&#xa6;</source>
+        <source>Choose output fileâ¦</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -236,7 +237,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="21"/>
         <source>Manuskript</source>
-        <translation type="unfinished"></translation>
+        <translation>ManuSkript</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="66"/>
@@ -1105,7 +1106,7 @@ Use that if you get YAML related error.</source>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2521"/>
-        <source>&amp;Import&#xe2;&#x80;&#xa6;</source>
+        <source>&amp;Importâ¦</source>
         <translation type="unfinished">导入（&amp;I）</translation>
     </message>
     <message>
@@ -1145,7 +1146,7 @@ Use that if you get YAML related error.</source>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2569"/>
-        <source>&amp;Split&#xe2;&#x80;&#xa6;</source>
+        <source>&amp;Splitâ¦</source>
         <translation type="unfinished">分割（&amp;S）</translation>
     </message>
     <message>
@@ -2635,12 +2636,12 @@ Use that if you get YAML related error.</source>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="788"/>
-        <source>Replace ... with &#xe2;&#x80;&#xa6;</source>
+        <source>Replace ... with â¦</source>
         <translation type="unfinished">将 ... 替换为 …</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="795"/>
-        <source>Replace --- with &#xe2;&#x80;&#x94;</source>
+        <source>Replace --- with â</source>
         <translation type="unfinished">将 --- 替换为 —</translation>
     </message>
 </context>
