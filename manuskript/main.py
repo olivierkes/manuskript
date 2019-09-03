@@ -3,16 +3,48 @@
 import faulthandler
 import os
 import sys
+import re
 
 import manuskript.ui.views.webView
+from PyQt5.Qt import qVersion
 from PyQt5.QtCore import QLocale, QTranslator, QSettings
 from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QApplication, qApp
+from PyQt5.QtWidgets import QApplication, qApp, QMessageBox
 
 from manuskript.functions import appPath, writablePath
 from manuskript.version import getVersion
 
 faulthandler.enable()
+
+def warnAboutBuggyLibraries(app):
+    """Some bugs are out of our reach to fix. The user needs to be warned and perhaps take action themselves."""
+
+    # (Py)Qt 5.11 and 5.12 have a bug that can cause crashes when simply setting up
+    # various UI elements. This has been reported and verified to happen in the
+    # Export (Compile) screen, but due to the nature of the bug, we cannot be sure
+    # it won't cause random crashes in other parts of the application. (PR-612)
+
+    if re.match("^5\\.1[12](\\.?|$)", qVersion()):
+        warning1 = "The version of PyQt you are using ({}) is known to have a bug that can cause Manuskript to crash."
+        warning2 = "It is recommended that you upgrade to the latest version of PyQt."
+
+        # Don't translate for debug log.
+        print("WARNING:", warning1.format(qVersion()), warning2)
+
+        msg = QMessageBox(QMessageBox.Warning,
+            app.tr("You may experience crashes."),
+            "<p><b>" +
+                app.tr(warning1).format(qVersion()) +
+            "</b></p>" +
+            "<p>" +
+                app.tr(warning2) +
+            "</p>",
+            QMessageBox.Ignore | QMessageBox.Abort)
+
+        # Dialogs without a choice on them are just asking to be ignored...
+        # But with the option to 'Abort'...? Maybe someone will actually read it.
+        if msg.exec() == QMessageBox.Abort:
+            sys.exit(1)
 
 def prepare(tests=False):
     app = QApplication(sys.argv)
@@ -92,6 +124,8 @@ def prepare(tests=False):
     return app, MW
 
 def launch(app, MW = None):
+    warnAboutBuggyLibraries(app)
+
     if MW is None:
         from manuskript.functions import mainWindow
         MW = mainWindow()
