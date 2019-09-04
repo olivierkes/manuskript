@@ -74,30 +74,33 @@ def prepare(tests=False):
     appTranslator = QTranslator(app)
     # By default: locale
 
-    def extractLocale(filename):
-        # len("manuskript_") = 13, len(".qm") = 3
-        return filename[11:-3] if len(filename) >= 16 else ""
-
     def tryLoadTranslation(translation, source):
-        if appTranslator.load(appPath(os.path.join("i18n", translation))):
+        if appTranslator.load(translation, appPath("i18n")):
             app.installTranslator(appTranslator)
-            print(app.tr("Loaded translation from {}: {}.").format(source, translation))
+            print("Loaded translation: {}".format(translation))
             return True
         else:
-            print(app.tr("Note: No translator found or loaded from {} for locale {}.").
-                  format(source, extractLocale(translation)))
+            print("No translation found or loaded. ({})".format(translation))
             return False
 
-    # Load translation from settings
+    # Load application translation
     translation = ""
+    source = "default"
     if settings.contains("applicationTranslation"):
+        # Use the language configured by the user.
         translation = settings.value("applicationTranslation")
-        print("Found translation in settings:", translation)
-
-    if (translation != "" and not tryLoadTranslation(translation, "settings")) or translation == "":
-        # load from settings failed or not set, fallback
+        source = "user setting"
+    else:
+        # Auto-detect based on system locale.
         translation = "manuskript_{}.qm".format(locale)
-        tryLoadTranslation(translation, "system locale")
+        source = "system locale"
+        # Note: a missing translation should default to builtin translation,
+        #   meaning a missing 'manuskript_en_US.qm' is not a problem at all.
+
+    print("Preferred translation: {} (based on {})".format(("builtin" if translation == "" else translation), source))
+    if (translation != ""):  # empty string == 'no translation, use builtin'
+        if not tryLoadTranslation(translation, source):
+            print("Falling back on the builtin translation.")
 
     def respectSystemDarkThemeSetting():
         """Adjusts the Qt theme to match the OS 'dark theme' setting configured by the user."""
