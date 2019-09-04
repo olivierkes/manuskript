@@ -36,19 +36,52 @@ def prepare(tests=False):
         app.setStyle(style)
 
     # Translation process
-    locale = QLocale.system().name()
-
     appTranslator = QTranslator(app)
     # By default: locale
 
     def tryLoadTranslation(translation, source):
+        """Tries to load and activate a given translation for use."""
         if appTranslator.load(translation, appPath("i18n")):
             app.installTranslator(appTranslator)
             print("Loaded translation: {}".format(translation))
+            # Note: QTranslator.load() does some fancy heuristics where it simplifies
+            #   the given locale until it is 'close enough' if the given filename does
+            #   not work out. For example, if given 'i18n/manuskript_en_US.qm', it tries:
+            #      * i18n/manuskript_en_US.qm.qm
+            #      * i18n/manuskript_en_US.qm
+            #      * i18n/manuskript_en_US
+            #      * i18n/manuskript_en.qm
+            #      * i18n/manuskript_en
+            #      * i18n/manuskript.qm
+            #      * i18n/manuskript
+            #   We have no way to determining what it eventually went with, so mind your
+            #   filenames when you observe strange behaviour with the loaded translations.
             return True
         else:
             print("No translation found or loaded. ({})".format(translation))
             return False
+
+    def activateTranslation(translation, source):
+        """Loads the most suitable translation based on the available information."""
+        using_builtin_translation = True
+
+        if (translation != ""):  # empty string == 'no translation, use builtin'
+            if isinstance(translation, str):
+                if tryLoadTranslation(translation, source):
+                    using_builtin_translation = False
+            else:  # A list of language codes to try. Once something works, we're done.
+                # This logic is loosely based on the working of QTranslator.load(QLocale, ...);
+                # it allows us to more accurately detect the language used for the user interface.
+                for language_code in translation:
+                    lc = language_code.replace('-', '_')
+                    if lc.lower() == 'en_US'.lower():
+                        break
+                    if tryLoadTranslation("manuskript_{}.qm".format(lc), source):
+                        using_builtin_translation = False
+                        break
+
+        if using_builtin_translation:
+            print("Using the builtin translation.")
 
     # Load application translation
     translation = ""
@@ -59,15 +92,11 @@ def prepare(tests=False):
         source = "user setting"
     else:
         # Auto-detect based on system locale.
-        translation = "manuskript_{}.qm".format(locale)
-        source = "system locale"
-        # Note: a missing translation should default to builtin translation,
-        #   meaning a missing 'manuskript_en_US.qm' is not a problem at all.
+        translation = QLocale().uiLanguages()
+        source = "available ui languages"
 
     print("Preferred translation: {} (based on {})".format(("builtin" if translation == "" else translation), source))
-    if (translation != ""):  # empty string == 'no translation, use builtin'
-        if not tryLoadTranslation(translation, source):
-            print("Falling back on the builtin translation.")
+    activateTranslation(translation, source)
 
     QIcon.setThemeSearchPaths(QIcon.themeSearchPaths() + [appPath("icons")])
     QIcon.setThemeName("NumixMsk")
