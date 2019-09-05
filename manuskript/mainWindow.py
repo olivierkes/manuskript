@@ -1280,7 +1280,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
              0),
             (self.lytSituation,
              self.tr(
-                     """The basic situation, in the form of a 'What if...?' question. Ex: 'What if the most dangerous
+                     """The basic situation, in the form of a 'What if…?' question. Ex: 'What if the most dangerous
                      evil wizard wasn't able to kill a baby?' (Harry Potter)"""),
              1),
             (self.lytSummary,
