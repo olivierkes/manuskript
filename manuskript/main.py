@@ -2,14 +2,15 @@
 
 import faulthandler
 import os
+import platform
 import sys
 import re
 
 import manuskript.ui.views.webView
 from PyQt5.Qt import qVersion
-from PyQt5.QtCore import QLocale, QTranslator, QSettings
-from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QApplication, qApp, QMessageBox
+from PyQt5.QtCore import QLocale, QTranslator, QSettings, Qt
+from PyQt5.QtGui import QIcon, QColor, QPalette
+from PyQt5.QtWidgets import QApplication, qApp, QMessageBox, QStyleFactory
 
 from manuskript.functions import appPath, writablePath
 from manuskript.version import getVersion
@@ -97,6 +98,48 @@ def prepare(tests=False):
         # load from settings failed or not set, fallback
         translation = "manuskript_{}.qm".format(locale)
         tryLoadTranslation(translation, "system locale")
+
+    def respectSystemDarkThemeSetting():
+        """Adjusts the Qt theme to match the OS 'dark theme' setting configured by the user."""
+        if platform.system() is not 'Windows':
+            return
+
+        # Basic Windows 10 Dark Theme support.
+        # Source: https://forum.qt.io/topic/101391/windows-10-dark-theme/4
+        themeSettings = QSettings("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", QSettings.NativeFormat)
+        if themeSettings.value("AppsUseLightTheme") == 0:
+            darkPalette = QPalette()
+            darkColor = QColor(45,45,45)
+            disabledColor = QColor(127,127,127)
+            darkPalette.setColor(QPalette.Window, darkColor)
+            darkPalette.setColor(QPalette.WindowText, Qt.GlobalColor.white)
+            darkPalette.setColor(QPalette.Base, QColor(18,18,18))
+            darkPalette.setColor(QPalette.AlternateBase, darkColor)
+            darkPalette.setColor(QPalette.ToolTipBase, Qt.GlobalColor.white)
+            darkPalette.setColor(QPalette.ToolTipText, Qt.GlobalColor.white)
+            darkPalette.setColor(QPalette.Text, Qt.GlobalColor.white)
+            darkPalette.setColor(QPalette.Disabled, QPalette.Text, disabledColor)
+            darkPalette.setColor(QPalette.Button, darkColor)
+            darkPalette.setColor(QPalette.ButtonText, Qt.GlobalColor.white)
+            darkPalette.setColor(QPalette.Disabled, QPalette.ButtonText, disabledColor)
+            darkPalette.setColor(QPalette.BrightText, Qt.GlobalColor.red)
+            darkPalette.setColor(QPalette.Link, QColor(42, 130, 218))
+
+            darkPalette.setColor(QPalette.Highlight, QColor(42, 130, 218))
+            darkPalette.setColor(QPalette.HighlightedText, Qt.GlobalColor.black)
+            darkPalette.setColor(QPalette.Disabled, QPalette.HighlightedText, disabledColor)
+
+            # Fixes ugly (not to mention hard to read) disabled menu items.
+            # Source: https://bugreports.qt.io/browse/QTBUG-10322?focusedCommentId=371060#comment-371060
+            darkPalette.setColor(QPalette.Disabled, QPalette.Light, Qt.GlobalColor.transparent)
+
+            app.setPalette(darkPalette)
+
+            # This broke the Settings Dialog at one point... and then it stopped breaking it.
+            # TODO: Why'd it break? Check if tooltips look OK... and if not, make them look OK.
+            #app.setStyleSheet("QToolTip { color: #ffffff; background-color: #2a82da; border: 1px solid white; }")
+
+    respectSystemDarkThemeSetting()
 
     QIcon.setThemeSearchPaths(QIcon.themeSearchPaths() + [appPath("icons")])
     QIcon.setThemeName("NumixMsk")
