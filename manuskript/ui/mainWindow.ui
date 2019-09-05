@@ -673,7 +673,7 @@
                 <item>
                  <widget class="lineEditView" name="txtSummarySituation">
                   <property name="placeholderText">
-                   <string>What if...?</string>
+                   <string>What if…?</string>
                   </property>
                  </widget>
                 </item>
@@ -2356,7 +2356,7 @@
      <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
-    <string>Sa&amp;ve as...</string>
+    <string>Sa&amp;ve as…</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+S</string>
@@ -2416,7 +2416,7 @@
      <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
-    <string>&amp;Labels...</string>
+    <string>&amp;Labels…</string>
    </property>
   </action>
   <action name="actStatus">
@@ -2425,7 +2425,7 @@
      <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
-    <string>&amp;Status...</string>
+    <string>&amp;Status…</string>
    </property>
   </action>
   <action name="actViewTree">
