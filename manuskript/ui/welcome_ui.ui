@@ -235,7 +235,7 @@
         <item>
          <widget class="QPushButton" name="btnOpen">
           <property name="text">
-           <string>Open...</string>
+           <string>Open…</string>
           </property>
           <property name="icon">
            <iconset theme="document-open"/>
