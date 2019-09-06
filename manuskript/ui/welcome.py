@@ -168,7 +168,7 @@ class welcome(QWidget, Ui_welcome):
         """File dialog that request a file, existing or not.
         Save data to that file, which then becomes the current project."""
         filename = QFileDialog.getSaveFileName(self,
-                                               self.tr("Save project as..."),
+                                               self.tr("Save project as…"),
                                                lastDirectory,
                                                self.tr("Manuskript project (*.msk)"))[0]
 
