@@ -785,7 +785,7 @@
           <item row="0" column="0">
            <widget class="QCheckBox" name="chkTransEllipse">
             <property name="text">
-             <string>Replace ... with …</string>
+             <string>Replace … with …</string>
             </property>
            </widget>
           </item>
