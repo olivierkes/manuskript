@@ -43,7 +43,7 @@
         <bool>false</bool>
        </property>
        <property name="placeholderText">
-        <string>Search for...</string>
+        <string>Search for…</string>
        </property>
        <property name="clearButtonEnabled">
         <bool>true</bool>
