@@ -591,6 +591,8 @@ class ImageTooltip:
     manager = QNetworkAccessManager()
     processing = {}
 
+    supportedSchemes = ("", "file", "http", "https")
+
     def fromUrl(url, pos, editor):
         """
         Shows the image tooltip for the given url if available, or requests it for future use.
@@ -605,23 +607,64 @@ class ImageTooltip:
         except:
             pass # already connected
 
-        qurl = QUrl(url)
-        if (qurl in ImageTooltip.processing):
+        qurl = QUrl.fromUserInput(url)
+        if (qurl == QUrl()):
+            ImageTooltip.cache[url] = (False, ImageTooltip.manager.tr("The image path or URL is incomplete or malformed."))
+            ImageTooltip.showTooltip(url, pos)
+            return # empty QUrl means it failed completely
+        elif (qurl.scheme() not in ImageTooltip.supportedSchemes):
+            # QUrl.fromUserInput() can occasionally deduce an incorrect scheme,
+            # which produces an error message regarding an unknown scheme. (Yay!)
+            # But it also breaks all possible methods to try and associate the
+            # reply with the original request in finished(), since reply.request()
+            # is completely and utterly butchered for all tracking needs. :'(
+            # (The QNetworkRequest, .url() and .originatingObject() can all change.)
+
+            # Test case (Linux): ![image](C:\test_root.jpg)
+            ImageTooltip.cache[url] = (False, ImageTooltip.manager.tr("The protocol \"{}\" is not supported.").format(qurl.scheme()))
+            ImageTooltip.showTooltip(url, pos)
+            return # no more request/reply chaos, please!
+        elif (qurl in ImageTooltip.processing):
             return # one download is more than enough
 
         # Request the image for later processing.
         request = QNetworkRequest(qurl)
         ImageTooltip.processing[qurl] = (pos, url)
-        ImageTooltip.manager.get(request)
+        reply = ImageTooltip.manager.get(request)
+
+        # On Linux the finished() signal is not triggered when the url resembles
+        # 'file://X:/...'. But because it completes instantly, we can manually
+        # trigger the code to keep our processing dictionary neat & clean.
+        if reply.error() == 302:  # QNetworkReply.ProtocolInvalidOperationError
+            ImageTooltip.finished(reply)
 
     def finished(reply):
         """
         After retrieving an image, we add it to the cache.
         """
         cache = ImageTooltip.cache
+        url_key = reply.request().url()
+        pos, url = None, None
+
+        if url_key in ImageTooltip.processing:
+            # Obtain the information associated with this request.
+            pos, url = ImageTooltip.processing[url_key]
+            del ImageTooltip.processing[url_key]
+        elif len(ImageTooltip.processing) == 0:
+            # We are not processing anything. Maybe it is a spurious signal,
+            # or maybe the 'reply.error() == 302' workaround in fromUrl() has
+            # been fixed in Qt. Whatever the reason, we can assume this request
+            # has already been handled, and needs no more work from us.
+            return
+        else:
+            # Somehow we lost track. Log what we can to hopefully figure it out.
+            print("Warning: unable to match fetched data for tooltip to original request.")
+            print("- Completed request:", url_key)
+            print("- Status upon finishing:", reply.error(), reply.errorString())
+            print("- Currently processing:", ImageTooltip.processing)
+            return
 
         # Update cache with retrieved data.
-        pos, url = ImageTooltip.processing[reply.request().url()]
         if reply.error() != QNetworkReply.NoError:
             cache[url] = (False, reply.errorString())
         else:
@@ -629,7 +672,6 @@ class ImageTooltip:
             px.loadFromData(reply.readAll())
             px = px.scaled(800, 600, Qt.KeepAspectRatio)
             cache[url] = (True, px)
-        del ImageTooltip.processing[reply.request().url()]
 
         ImageTooltip.showTooltip(url, pos)
 
