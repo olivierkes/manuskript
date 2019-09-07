@@ -6,27 +6,27 @@
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="18"/>
         <source>Basic HTML output using the Python module &apos;markdown&apos;.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">以Python語言的markdown樣式輸出基本HTML。</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="19"/>
         <source>Python module &apos;markdown&apos;.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Python語言模組“Markdown”。</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="53"/>
         <source>Markdown source</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Markdown源碼</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="54"/>
         <source>HTML Source</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">HTML源碼</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="58"/>
         <source>HTML Output</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">HTML輸出</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/__init__.py" line="15"/>
@@ -36,12 +36,12 @@
     <message>
         <location filename="../manuskript/exporter/manuskript/markdown.py" line="59"/>
         <source>Preview with highlighter.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">以熒光筆模式預覽</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="14"/>
         <source>Plain text</source>
-        <translation type="unfinished"></translation>
+        <translation>純文本</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/HTML.py" line="13"/>
@@ -51,22 +51,22 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/PDF.py" line="18"/>
         <source>Needs LaTeX to be installed.</source>
-        <translation type="unfinished"></translation>
+        <translation>需要安裝 LaTeX。</translation>
     </message>
     <message>
         <location filename="../manuskript/converters/pandocConverter.py" line="75"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>錯誤</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="96"/>
         <source>Standalone document (not just a fragment)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">獨立文件（不只是分段）</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="99"/>
         <source>Include a table of contents.</source>
-        <translation type="unfinished"></translation>
+        <translation>包含一個目錄。</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="102"/>
@@ -76,57 +76,57 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="106"/>
         <source>Typographically correct output</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">排版正確的輸出</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="109"/>
         <source>Normalize the document (cleaner)</source>
-        <translation type="unfinished"></translation>
+        <translation>規範化檔案（整理）</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="111"/>
         <source>Specify the base level for headers: </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">選擇默認的Header級別 </translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="118"/>
         <source>Use reference-style links instead of inline links</source>
-        <translation type="unfinished"></translation>
+        <translation>使用引用樣式連結而不是內聯連結</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="120"/>
         <source>Use ATX-style headers</source>
-        <translation type="unfinished"></translation>
+        <translation>使用 ATX 樣式 Headers</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="122"/>
         <source>Self-contained HTML files, with no dependencies</source>
-        <translation type="unfinished"></translation>
+        <translation>獨立的 HTML 檔案，無依賴項</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="124"/>
         <source>Use &lt;q&gt; tags for quotes in HTML</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">在 HTML 中為引號使用&lt;q&gt;標記</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="131"/>
         <source>LaTeX engine used to produce the PDF.</source>
-        <translation type="unfinished"></translation>
+        <translation>PDF使用 LaTeX 引擎生成。</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="141"/>
         <source>Paper size:</source>
-        <translation type="unfinished"></translation>
+        <translation>紙張大小：</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="144"/>
         <source>Font size:</source>
-        <translation type="unfinished"></translation>
+        <translation>字體大小：</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="147"/>
         <source>Class:</source>
-        <translation type="unfinished"></translation>
+        <translation>類別：</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="150"/>
