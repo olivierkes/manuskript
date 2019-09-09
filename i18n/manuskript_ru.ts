@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="2.0" language="ru" sourcelanguage="">
+<!DOCTYPE TS>
+<TS version="2.0" language="ru" sourcelanguage="">
 <context>
     <name>Export</name>
     <message>
@@ -223,13 +224,13 @@ Use that if you get YAML related error.</source>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="47"/>
         <source>Could not process regular expression: 
 {}</source>
-        <translation type="unfinished">Обработка ошибок регулярное выражение: 
+        <translation>Не удалось обработать регулярное выражение: 
 {}</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="69"/>
-        <source>Choose output file&#xe2;&#x80;&#xa6;</source>
-        <translation type="unfinished">Выберите выходной файл ...</translation>
+        <source>Choose output fileâ¦</source>
+        <translation>Выберите выходной файлâ¦</translation>
     </message>
 </context>
 <context>
@@ -1445,17 +1446,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1264"/>
         <source>Install {}{} to use spellcheck</source>
-        <translation type="unfinished"></translation>
+        <translation>Установите {}{}, чтобы использовать проверку орфографии</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1306"/>
         <source>{} has no installed dictionaries</source>
-        <translation type="unfinished"></translation>
+        <translation>{} не имеет установленных словарей</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1327"/>
         <source>{}{} is not installed</source>
-        <translation type="unfinished"></translation>
+        <translation>{}{} не установлен</translation>
     </message>
 </context>
 <context>
@@ -3973,10 +3974,11 @@ Use that if you get YAML related error.</source>
 
             &lt;p&gt;&lt;b&gt;Mark:&lt;/b&gt;&lt;/p&gt;
             </source>
-        <translation type="unfinished">
+        <translation>
             &lt;p&gt;разделить выбранный элемент(ы) по данной метке.&lt;/p&gt;
 
-            &lt;p&gt;Если один из выбранных элементов папка, она будет применяться последовательно &lt;i&gt;все&lt;/i&gt; у дочерних элементов.&lt;/p&gt;
+            &lt;p&gt;Если один из выбранных элементов папка, она будет применяться 
+            последовательно &lt;i&gt;все&lt;/i&gt; у дочерних элементов.&lt;/p&gt;
 
             &lt;p&gt;Знак разделения может содержать следующие управляющие последовательности:
                 &lt;ul&gt;
