@@ -25,6 +25,9 @@ icon: icons/Manuskript/manuskript.svg
 apps:
   manuskript:
     command: desktop-launch $SNAP/bin/manuskript
+    environment:
+      # Fallback to XWayland if running in a Wayland session.
+      DISABLE_WAYLAND: 1
     plugs:
     - desktop
     - desktop-legacy
