@@ -2,7 +2,9 @@
 # --!-- coding: utf8 --!--
 import imp
 import os
+import re
 
+from PyQt5.Qt import qVersion, PYQT_VERSION_STR
 from PyQt5.QtCore import (pyqtSignal, QSignalMapper, QTimer, QSettings, Qt, QPoint,
                           QRegExp, QUrl, QSize, QModelIndex)
 from PyQt5.QtGui import QStandardItemModel, QIcon, QColor
@@ -1580,6 +1582,35 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     ###############################################################################
 
     def doImport(self):
+        # Warn about buggy Qt versions and import crash
+        #
+        # (Py)Qt 5.11 and 5.12 have a bug that can cause crashes when simply
+        # setting up various UI elements.
+        # This has been reported and verified to happen with File -> Import.
+        # See PR #611.
+        if re.match("^5\\.1[12](\\.?|$)", qVersion()):
+            warning1 = self.tr("PyQt / Qt versions 5.11 and 5.12 are known to cause a crash which might result in a loss of data.")
+            warning2 = self.tr("PyQt {} and Qt {} are in use.").format(qVersion(), PYQT_VERSION_STR)
+
+            # Don't translate for debug log.
+            print("WARNING:", warning1, warning2)
+
+            msg = QMessageBox(QMessageBox.Warning,
+                self.tr("Proceeding might crash and lose data"),
+                "<p><b>" +
+                    warning1 +
+                "</b></p>" +
+                "<p>" +
+                    warning2 +
+                "</p>",
+                QMessageBox.Abort | QMessageBox.Ignore)
+            msg.setDefaultButton(QMessageBox.Abort)
+
+            # Return because user heeds warning
+            if msg.exec() == QMessageBox.Abort:
+                return
+
+        # Proceed with Import
         self.dialog = importerDialog(mw=self)
         self.dialog.show()
         self.centerChildWindow(self.dialog)
