@@ -73,7 +73,7 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
     def resizeEvent(self, event):
         """
         textEdit's scrollBar has been reparented to self. So we need to
-        update it's geomtry when self is resized, and put it where we want it
+        update it's geometry when self is resized, and put it where we want it
         to be.
         """
         # Update scrollbar geometry

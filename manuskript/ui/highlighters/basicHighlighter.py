@@ -86,7 +86,7 @@ class BasicHighlighter(QSyntaxHighlighter):
 
     def doHighlightBlock(self, text):
         """
-        Virtual funtion to subclass.
+        Virtual function to subclass.
         """
         pass
 

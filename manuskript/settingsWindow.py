@@ -87,7 +87,7 @@ class settingsWindow(QWidget, Ui_Settings):
         tr["Russian"] = "manuskript_ru.qm"
         tr["Svenska"] = "manuskript_sv.qm"
         tr["Turkish"] = "manuskript_tr.qm"
-        tr["Ukranian"] = "manuskript_uk.qm"
+        tr["Ukrainian"] = "manuskript_uk.qm"
         tr["Chinese (Simplified)"] = "manuskript_zh_CN.qm"
         self.translations = tr
 
