@@ -62,7 +62,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.projectDirty = None  # has the user made any unsaved changes ?
         self._lastFocus = None
         self._lastMDEditView = None
-        self._defaultCursorFlashTime = 1000 # Overriden at startup with system
+        self._defaultCursorFlashTime = 1000 # Overridden at startup with system
                                             # value. In manuskript.main.
         self._autoLoadProject = None  # Used to load a command line project
 

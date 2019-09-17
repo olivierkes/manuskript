@@ -243,7 +243,7 @@ class MDEditView(textEditView):
     def comment(self):
         cursor = self.textCursor()
 
-        # Select begining and end of words
+        # Select beginning and end of words
         self.selectWord(cursor)
 
         if cursor.hasSelection():
@@ -294,7 +294,7 @@ class MDEditView(textEditView):
 
     def lineFormattingMarkup(self, markup):
         """
-        Adds `markup` at the begining of block.
+        Adds `markup` at the beginning of block.
         """
         cursor = self.textCursor()
         cursor.movePosition(cursor.StartOfBlock)
@@ -303,7 +303,7 @@ class MDEditView(textEditView):
     def insertFormattingMarkup(self, markup):
         cursor = self.textCursor()
 
-        # Select begining and end of words
+        # Select beginning and end of words
         self.selectWord(cursor)
 
         if cursor.hasSelection():

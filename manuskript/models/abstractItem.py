@@ -16,7 +16,7 @@ from manuskript import enums
 
 class abstractItem():
 
-    # Enum kept on the class for easier acces
+    # Enum kept on the class for easier access
     enum = enums.Abstract
 
     # Used for XML export
@@ -105,7 +105,7 @@ class abstractItem():
         return self._data[self.enum.type]
 
     #######################################################################
-    # Parent / Children managment
+    # Parent / Children management
     #######################################################################
 
     def child(self, row):

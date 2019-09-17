@@ -20,8 +20,8 @@ app, MW = main.prepare(tests=True)
 #        self.btnAddSubPlot.clicked.connect(self.updateSubPlotView, F.AUC)
 #        Yet the disconnectAll() function has been called.
 #        Workaround: we remove the necessity for connection to be unique. This
-#        works for now, but could create issues later one when we want to tests
-#        those specific functionnality. Maybe it will be called several times.
+#        works for now, but could create issues later on when we want to test
+#        this specific functionality. Maybe it will be called several times?
 #        At that moment, we will need to catch the exception in the MainWindow,
 #        or better: understand why it happens at all, and only on some signals.
 from manuskript import functions as F

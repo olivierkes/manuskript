@@ -365,7 +365,7 @@ class MarkdownTokenizer(HighlightTokenizer):
                     spaceCount += 1
 
                     # If this list item is the first in the list, ensure the
-                    # number of spaces preceeding the bullet point does not
+                    # number of spaces preceding the bullet point does not
                     # exceed three, as that would indicate a code block rather
                     # than a bullet point list.
 
@@ -832,15 +832,15 @@ class MarkdownTokenizer(HighlightTokenizer):
                         markupStartCount=0, markupEndCount=0,
                         replaceMarkupChars=False, replaceAllChars=False):
         """
-        Tokenizes a block of text, searching for all occurrances of regex.
-        Occurrances are set to the given token type and added to the list of
+        Tokenizes a block of text, searching for all occurrences of regex.
+        Occurrences are set to the given token type and added to the list of
         tokens.  The markupStartCount and markupEndCount values are used to
-        indicate how many markup special characters preceed and follow the
+        indicate how many markup special characters precede and follow the
         main text, respectively.
 
         For example, if the matched string is "**bold**", and
         markupStartCount = 2 and markupEndCount = 2, then the asterisks
-        preceeding and following the word "bold" will be set as opening and
+        preceding and following the word "bold" will be set as opening and
         closing markup in the token.
 
         If replaceMarkupChars is true, then the markupStartCount and
