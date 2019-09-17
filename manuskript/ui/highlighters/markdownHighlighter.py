@@ -676,7 +676,7 @@ class MarkdownHighlighter(BasicHighlighter):
                 spellingErrorFormat = self.format(startIndex)
                 spellingErrorFormat.setUnderlineColor(self.spellingErrorColor)
                 spellingErrorFormat.setUnderlineStyle(
-                    qApp.stlye().styleHint(QStyle.SH_SpellCheckUnderlineStyle))
+                    qApp.style().styleHint(QStyle.SH_SpellCheckUnderlineStyle))
 
                 self.setFormat(startIndex, length, spellingErrorFormat)
 
