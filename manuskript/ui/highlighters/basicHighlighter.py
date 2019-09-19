@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# -*- coding: utf8 -*-
+# -*- coding: utf-8 -*-
 
 import re
 
@@ -146,9 +146,12 @@ class BasicHighlighter(QSyntaxHighlighter):
             textedText = text + " "
 
         # Based on http://john.nachtimwald.com/2009/08/22/qplaintextedit-with-in-line-spell-check/
-        WORDS = r'(?iu)(((?!_)[\w\'])+)'
+        WORDS = r'(?iu)((?:[^_\W]|\')+)[^A-Za-z0-9\']'
         #         (?iu) means case insensitive and Unicode
-        #                (?!_) means perform negative lookahead to exclude "_" from pattern match.  See issue #283
+        #              ((?:[^_\W]|\')+) means words exclude underscores but include apostrophes
+        #                              [^A-Za-z0-9\'] used with above hack to prevent spellcheck while typing word
+        #
+        # See also https://stackoverflow.com/questions/2062169/regex-w-in-utf-8
         if hasattr(self.editor, "spellcheck") and self.editor.spellcheck:
             for word_object in re.finditer(WORDS, textedText):
                 if (self.editor._dict
