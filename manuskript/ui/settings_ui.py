@@ -1855,7 +1855,7 @@ class Ui_Settings(object):
         self.chkAutoSaveNoChanges.setText(_translate("Settings", "If no changes during"))
         self.label_14.setText(_translate("Settings", "seconds."))
         self.chkSaveOnQuit.setText(_translate("Settings", "Save on project close"))
-        self.chkSaveToZip.setToolTip(_translate("Settings", "<html><head/><body><p>If you check this option, your project will be saved as one single file. Easier to copy or backup, but does not allow collaborative editing, or versioning.<br/>If this is unchecked, your project will be save as a folder containing many small files.</p></body></html>"))
+        self.chkSaveToZip.setToolTip(_translate("Settings", "<html><head/><body><p>If you check this option, your project will be saved as one single file. Easier to copy or backup, but does not allow collaborative editing, or versioning.<br/>If this is unchecked, your project will be saved as a folder containing many small files.</p></body></html>"))
         self.chkSaveToZip.setText(_translate("Settings", "Save to one single file"))
         self.lblTitleGeneral_2.setText(_translate("Settings", "Revisions"))
         self.label_44.setText(_translate("Settings", "Revisions are a way to keep track of modifications. For each text item, it stores any changes you make to the main text, allowing you to see and restoring previous versions."))
