@@ -85,7 +85,7 @@ textEditor = {
     }
 
 revisions = {
-    "keep": True,
+    "keep": False,
     "smartremove": True,
     "rules": collections.OrderedDict({
         10 * 60:            60,                     # One per minute for the last 10mn

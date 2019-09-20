@@ -59,9 +59,6 @@ def test_outlineItemsProperties(outlineItemFolder, outlineItemText):
     text.setData(text.enum.goal, 4)
     assert text.data(text.enum.goalPercentage) == .5
 
-    # revisions
-    assert text.data(text.enum.revisions) == []
-
 def test_modelStuff(outlineModelBasic):
     """
     Tests with children items.
@@ -125,16 +122,6 @@ def test_modelStuff(outlineModelBasic):
             folder.enum.label, folder.enum.status]
     assert folder.findItemsContaining("VALUE", cols,  MW, True) == []
     assert folder.findItemsContaining("VALUE", cols,  MW, False) == [text2.ID()]
-
-    # Revisions
-    text2.clearAllRevisions()
-    assert text2.revisions() == []
-    text2.setData(text2.enum.text, "Some value.")
-    assert len(text2.revisions()) == 1
-    text2.setData(text2.enum.text, "Some new value.")
-    assert len(text2.revisions()) == 1  # Auto clean
-    text2.deleteRevision(text2.revisions()[0][0])
-    assert len(text2.revisions()) == 0
 
     # Model, count and copy
     k = folder._model
