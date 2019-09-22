@@ -23,6 +23,27 @@ def wordCount(text):
     t = [l for l in t if l]
     return len(t)
 
+validate_ok = lambda *args, **kwargs: True
+def uiParse(input, default, converter, validator=validate_ok):
+    """
+    uiParse is a utility function that intends to make it easy to convert
+    user input to data that falls in the range of expected values the
+    program is expecting to handle.
+
+    It swallows all exceptions that happen during conversion.
+    The validator should return True to permit the converted value.
+    """
+    result = default
+    try:
+        result = converter(input)
+    except:
+        pass  # failed to convert
+
+    # Whitelist default value in case default type differs from converter output.
+    if (result != default) and not validator(result):
+        result = default
+    return result
+
 
 def toInt(text):
     if text:
@@ -50,6 +71,7 @@ def toString(text):
 
 def drawProgress(painter, rect, progress, radius=0):
     from manuskript.ui import style as S
+    progress = toFloat(progress)  # handle invalid input (issue #561)
     painter.setPen(Qt.NoPen)
     painter.setBrush(QColor(S.base)) # "#dddddd"
     painter.drawRoundedRect(rect, radius, radius)
@@ -57,8 +79,7 @@ def drawProgress(painter, rect, progress, radius=0):
     painter.setBrush(QBrush(colorFromProgress(progress)))
 
     r2 = QRect(rect)
-    r2.setWidth(r2.width() * min(toInt(progress), 1))
-    #                            ^^^^^ Avoid crash - issue #561
+    r2.setWidth(r2.width() * min(progress, 1))
     painter.drawRoundedRect(r2, radius, radius)
 
 
