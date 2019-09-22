@@ -769,6 +769,19 @@
          </property>
         </spacer>
        </item>
+       <item>
+        <widget class="QLabel" name="label_revisionDeprecation">
+         <property name="text">
+          <string>&lt;p&gt;&lt;b&gt;The Revisions feature has been at the source of many reported issues. In this version of Manuskript it has been turned off by default for new projects in order to provide the best experience.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Why aren't these issues fixed already? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;We need your help to make Manuskript better!&lt;/a&gt;&lt;/p&gt;</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+         <property name="openExternalLinks">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
      <widget class="QWidget" name="stackedWidgetPage2">
