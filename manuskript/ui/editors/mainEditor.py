@@ -9,7 +9,7 @@ from PyQt5.QtWidgets import QWidget, qApp
 
 from manuskript import settings
 from manuskript.enums import Outline
-from manuskript.functions import AUC, mainWindow, drawProgress, appPath, toInt
+from manuskript.functions import AUC, mainWindow, drawProgress, appPath, uiParse
 from manuskript.ui import style
 from manuskript.ui.editors.editorWidget import editorWidget
 from manuskript.ui.editors.fullScreenEditor import fullScreenEditor
@@ -303,7 +303,9 @@ class mainEditor(QWidget, Ui_mainEditor):
         wc = item.data(Outline.wordCount)
         goal = item.data(Outline.goal)
         progress = item.data(Outline.goalPercentage)
-        # mw = qApp.activeWindow()
+
+        goal = uiParse(goal, None, int, lambda x: x>=0)
+        progress = uiParse(progress, 0.0, float)
 
         if not wc:
             wc = 0
@@ -319,8 +321,7 @@ class mainEditor(QWidget, Ui_mainEditor):
             self.lblRedacProgress.setPixmap(self.px)
             self.lblRedacWC.setText(self.tr("{} words / {} ").format(
                     locale.format_string("%d", wc, grouping=True),
-                    locale.format_string("%d", toInt(goal), grouping=True)))
-                    #                          ^^^^^ Avoid crash - issue #561
+                    locale.format_string("%d", goal, grouping=True)))
         else:
             self.lblRedacProgress.hide()
             self.lblRedacWC.setText(self.tr("{} words ").format(
