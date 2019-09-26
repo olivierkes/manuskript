@@ -6,12 +6,12 @@
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="18"/>
         <source>Basic HTML output using the Python module &apos;markdown&apos;.</source>
-        <translation type="unfinished">Einfacher HTML-Export mit dem Python-Modul &quot;markdown&quot;.</translation>
+        <translation>Einfacher HTML-Export mit dem Python-Modul „markdown“.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="19"/>
         <source>Python module &apos;markdown&apos;.</source>
-        <translation type="unfinished">Python-Modul &apos;markdown&apos;.</translation>
+        <translation>Python-Modul „markdown“.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="53"/>
@@ -51,7 +51,7 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/PDF.py" line="18"/>
         <source>Needs LaTeX to be installed.</source>
-        <translation type="unfinished">LaTEX muss installiert sein.</translation>
+        <translation>LaTeX muss installiert sein.</translation>
     </message>
     <message>
         <location filename="../manuskript/converters/pandocConverter.py" line="75"/>
@@ -101,7 +101,7 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="122"/>
         <source>Self-contained HTML files, with no dependencies</source>
-        <translation type="unfinished">In sich geschlossene HTML-Dateien, ohne Abhängigkeiten</translation>
+        <translation>Eigenständige HTML-Dateien, ohne Abhängigkeiten</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="124"/>
@@ -151,7 +151,7 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/plainText.py" line="21"/>
         <source>reStructuredText is a lightweight markup language.</source>
-        <translation type="unfinished">reStructuredText (reST) ist eine leichtgewichtige Auszeichnungssprache …</translation>
+        <translation>reStructuredText ist eine leichtgewichtige Auszeichnungssprache.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/markdown.py" line="14"/>
@@ -230,7 +230,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="69"/>
         <source>Choose output fileâ¦</source>
-        <translation type="unfinished">Ausgabe-Datei wählen</translation>
+        <translation>Ausgabe-Datei wählenâ¦</translation>
     </message>
 </context>
 <context>
