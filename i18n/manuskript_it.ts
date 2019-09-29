@@ -230,7 +230,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="69"/>
         <source>Choose output fileâ¦</source>
-        <translation>Scegli il file di output ...</translation>
+        <translation>Scegli il file di output</translation>
     </message>
 </context>
 <context>
