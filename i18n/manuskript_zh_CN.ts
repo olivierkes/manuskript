@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="zh" sourcelanguage="en">
+<!DOCTYPE TS><TS version="2.0" language="zh" sourcelanguage="en">
 <context>
     <name>Export</name>
     <message>
@@ -14,17 +13,17 @@
         <translation>Python模块&apos;markdown&apos;。</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/manuskript/HTML.py" line="53"/>
+        <location filename="../manuskript/exporter/manuskript/HTML.py" line="54"/>
         <source>Markdown source</source>
         <translation>Markdown 源文件</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/manuskript/HTML.py" line="54"/>
+        <location filename="../manuskript/exporter/manuskript/HTML.py" line="55"/>
         <source>HTML Source</source>
         <translation>HTML 源文件</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/manuskript/HTML.py" line="58"/>
+        <location filename="../manuskript/exporter/manuskript/HTML.py" line="59"/>
         <source>HTML Output</source>
         <translation>HTML 输出</translation>
     </message>
@@ -34,7 +33,7 @@
         <translation>默认的导出工具提供了一些其他导出工具使用的基本格式。</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/manuskript/markdown.py" line="59"/>
+        <location filename="../manuskript/exporter/manuskript/markdown.py" line="60"/>
         <source>Preview with highlighter.</source>
         <translation>带高亮的预览。</translation>
     </message>
@@ -59,77 +58,77 @@
         <translation>错误</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="96"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="97"/>
         <source>Standalone document (not just a fragment)</source>
         <translation>独立文档（不仅是片段）</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="99"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="100"/>
         <source>Include a table of contents.</source>
         <translation>包括目录。</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="102"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="103"/>
         <source>Number of sections level to include in TOC: </source>
         <translation>目录中需要包含的段落级别数量： </translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="106"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="107"/>
         <source>Typographically correct output</source>
         <translation>排版正确的输出</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="109"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="110"/>
         <source>Normalize the document (cleaner)</source>
         <translation>规范化文档（清理器）</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="111"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="112"/>
         <source>Specify the base level for headers: </source>
         <translation>选择默认的 Header 级别： </translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="118"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="119"/>
         <source>Use reference-style links instead of inline links</source>
         <translation>使用引用链接而不是内联链接</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="120"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="121"/>
         <source>Use ATX-style headers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="122"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="123"/>
         <source>Self-contained HTML files, with no dependencies</source>
         <translation>自包含的无依赖 HTML 文档</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="124"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="125"/>
         <source>Use &lt;q&gt; tags for quotes in HTML</source>
         <translation>使用 &lt;q&gt; 标签来在 HTML 中表示引用</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="131"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="132"/>
         <source>LaTeX engine used to produce the PDF.</source>
         <translation>用于生成 PDF 的 LaTeX 引擎。</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="141"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="142"/>
         <source>Paper size:</source>
         <translation>纸张尺寸:</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="144"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="145"/>
         <source>Font size:</source>
         <translation>字体大小:</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="147"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="148"/>
         <source>Class:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="150"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="151"/>
         <source>Line spacing:</source>
         <translation>行间距:</translation>
     </message>
@@ -139,17 +138,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/outputFormats.py" line="20"/>
+        <location filename="../manuskript/exporter/pandoc/outputFormats.py" line="21"/>
         <source>OpenDocument format. Used by LibreOffice for example.</source>
         <translation>OpenDocument 格式，LibreOffice 等软件使用。</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/outputFormats.py" line="30"/>
+        <location filename="../manuskript/exporter/pandoc/outputFormats.py" line="32"/>
         <source>Microsoft Office (.docx) document.</source>
         <translation>Microsoft Office (.docx) 文档。</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/plainText.py" line="21"/>
+        <location filename="../manuskript/exporter/pandoc/plainText.py" line="22"/>
         <source>reStructuredText is a lightweight markup language.</source>
         <translation>reStructuredText 是一个轻量级的标记语言。</translation>
     </message>
@@ -168,11 +167,11 @@
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/__init__.py" line="20"/>
-        <source>&lt;p&gt;A universal document converter. Can be used to convert markdown to a wide range of other
+        <source>&lt;p&gt;A universal document converter. Can be used to convert Markdown to a wide range of other
     formats.&lt;/p&gt;
     &lt;p&gt;Website: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
     </source>
-        <translation>&lt;p&gt;一个通用的转换器，可以把 markdown 转为很多种其他的格式&lt;/p&gt;
+        <translation type="unfinished">&lt;p&gt;一个通用的转换器，可以把 markdown 转为很多种其他的格式&lt;/p&gt;
     &lt;p&gt;官网：&lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
     </translation>
     </message>
@@ -190,13 +189,13 @@
       的格式化选项。</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/plainText.py" line="31"/>
+        <location filename="../manuskript/exporter/pandoc/plainText.py" line="33"/>
         <source>LaTeX is a word processor and document markup language used to create
                                               beautiful documents.</source>
         <translation>LaTeX 是一种文字处理器和文档标记语言，用于创建漂亮的文档。</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/plainText.py" line="42"/>
+        <location filename="../manuskript/exporter/pandoc/plainText.py" line="45"/>
         <source>The purpose of this format is to provide a way to exchange information
                                               between outliners and Internet services that can be browsed or controlled
                                               through an outliner.</source>
@@ -204,26 +203,26 @@
                                               方式。</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="114"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="115"/>
         <source>Disable YAML metadata block.
 Use that if you get YAML related error.</source>
         <translation>关闭 YAML 元数据块。
 如果你遇到了 YAML 有关的问题，可以尝试使用它。</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="134"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="135"/>
         <source>Convert to ePUB3</source>
         <translation>导出为 ePUB3</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/manuskript/plainText.py" line="47"/>
+        <location filename="../manuskript/exporter/manuskript/plainText.py" line="48"/>
         <source>Could not process regular expression: 
 {}</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/manuskript/plainText.py" line="69"/>
-        <source>Choose output fileâ¦</source>
+        <location filename="../manuskript/exporter/manuskript/plainText.py" line="70"/>
+        <source>Choose output file&#xe2;&#x80;&#xa6;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -703,7 +702,7 @@ Use that if you get YAML related error.</source>
         <translation>冲突来源</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1403"/>
+        <location filename="../manuskript/mainWindow.py" line="1477"/>
         <source>Outline</source>
         <translation>大纲</translation>
     </message>
@@ -853,7 +852,7 @@ Use that if you get YAML related error.</source>
         <translation>状态...（&amp;S）</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1401"/>
+        <location filename="../manuskript/mainWindow.py" line="1475"/>
         <source>Tree</source>
         <translation>树</translation>
     </message>
@@ -868,7 +867,7 @@ Use that if you get YAML related error.</source>
         <translation>虚构小说</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1402"/>
+        <location filename="../manuskript/mainWindow.py" line="1476"/>
         <source>Index cards</source>
         <translation>索引卡</translation>
     </message>
@@ -918,184 +917,184 @@ Use that if you get YAML related error.</source>
         <translation>关于 Manuskript</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="667"/>
+        <location filename="../manuskript/mainWindow.py" line="717"/>
         <source>Manuskript</source>
         <translation>ManuSkript</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="766"/>
+        <location filename="../manuskript/mainWindow.py" line="840"/>
         <source>Project {} saved.</source>
         <translation>项目 {} 已保存。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="769"/>
+        <location filename="../manuskript/mainWindow.py" line="843"/>
         <source>WARNING: Project {} not saved.</source>
         <translation>警告：项目 {} 未保存。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="793"/>
+        <location filename="../manuskript/mainWindow.py" line="867"/>
         <source>Project {} loaded.</source>
         <translation>项目 {} 已载入。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="796"/>
+        <location filename="../manuskript/mainWindow.py" line="870"/>
         <source>Project {} loaded with some errors:</source>
         <translation>载入项目 {} 时出错：</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="798"/>
+        <location filename="../manuskript/mainWindow.py" line="872"/>
         <source> * {} wasn&apos;t found in project file.</source>
         <translation>* {} 没有在项目文件中找到。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="799"/>
+        <location filename="../manuskript/mainWindow.py" line="873"/>
         <source>Project {} loaded with some errors.</source>
         <translation>载入项目 {} 时遇到错误。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1128"/>
+        <location filename="../manuskript/mainWindow.py" line="1202"/>
         <source> (~{} pages)</source>
         <translation>（约 {} 页）</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1132"/>
+        <location filename="../manuskript/mainWindow.py" line="1206"/>
         <source>Words: {}{}</source>
         <translation>字数： {}{}</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1140"/>
+        <location filename="../manuskript/mainWindow.py" line="1214"/>
         <source>Book summary</source>
         <translation>书籍摘要</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1141"/>
+        <location filename="../manuskript/mainWindow.py" line="1215"/>
         <source>Project tree</source>
         <translation>项目树</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1142"/>
+        <location filename="../manuskript/mainWindow.py" line="1216"/>
         <source>Metadata</source>
         <translation>元信息</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1143"/>
+        <location filename="../manuskript/mainWindow.py" line="1217"/>
         <source>Story line</source>
         <translation>故事线</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1208"/>
+        <location filename="../manuskript/mainWindow.py" line="1282"/>
         <source>Enter information about your book, and yourself.</source>
         <translation>输入有关你的书和你自己的信息。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1211"/>
+        <location filename="../manuskript/mainWindow.py" line="1285"/>
         <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous
                      evil wizard wasn&apos;t able to kill a baby?&apos; (Harry Potter)</source>
         <translation>基本情况是形如&apos;如果...？&apos;的问题。例如：&apos;如果一个最危险的巫师没能成功杀死一个婴儿……？&apos;（哈利·波特）</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1216"/>
+        <location filename="../manuskript/mainWindow.py" line="1290"/>
         <source>Take time to think about a one sentence (~50 words) summary of your book. Then expand it to
                      a paragraph, then to a page, then to a full summary.</source>
         <translation>花一些时间想一个 50 字左右的一句话摘要来描述你的书。然后将它扩展成一段，一页，最后写成一个完整的摘要。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1221"/>
+        <location filename="../manuskript/mainWindow.py" line="1295"/>
         <source>Create your characters.</source>
         <translation>建立你的角色。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1224"/>
+        <location filename="../manuskript/mainWindow.py" line="1298"/>
         <source>Develop plots.</source>
         <translation>构造情节。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1227"/>
+        <location filename="../manuskript/mainWindow.py" line="1301"/>
         <source>Build worlds.  Create hierarchy of broad categories down to specific details.</source>
         <translation>构建世界。创造层次丰富包含方方面面的结构，直至具体细节。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1230"/>
+        <location filename="../manuskript/mainWindow.py" line="1304"/>
         <source>Create the outline of your masterpiece.</source>
         <translation>建立你的作品的大纲。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1233"/>
+        <location filename="../manuskript/mainWindow.py" line="1307"/>
         <source>Write.</source>
         <translation>写作。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1236"/>
+        <location filename="../manuskript/mainWindow.py" line="1310"/>
         <source>Debug info. Sometimes useful.</source>
         <translation>Debug 信息。有时候是有用的。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1250"/>
+        <location filename="../manuskript/mainWindow.py" line="1324"/>
         <source>Dictionary</source>
         <translation>字典</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1393"/>
+        <location filename="../manuskript/mainWindow.py" line="1467"/>
         <source>Nothing</source>
         <translation>无</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1394"/>
+        <location filename="../manuskript/mainWindow.py" line="1468"/>
         <source>POV</source>
         <translation>POV</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1395"/>
+        <location filename="../manuskript/mainWindow.py" line="1469"/>
         <source>Label</source>
         <translation>标签</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1396"/>
+        <location filename="../manuskript/mainWindow.py" line="1470"/>
         <source>Progress</source>
         <translation>进度</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1397"/>
+        <location filename="../manuskript/mainWindow.py" line="1471"/>
         <source>Compile</source>
         <translation>编译</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1420"/>
+        <location filename="../manuskript/mainWindow.py" line="1494"/>
         <source>Icon color</source>
         <translation>图标颜色</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1421"/>
+        <location filename="../manuskript/mainWindow.py" line="1495"/>
         <source>Text color</source>
         <translation>文本颜色</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1422"/>
+        <location filename="../manuskript/mainWindow.py" line="1496"/>
         <source>Background color</source>
         <translation>背景色</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1413"/>
+        <location filename="../manuskript/mainWindow.py" line="1487"/>
         <source>Icon</source>
         <translation>图标</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1414"/>
+        <location filename="../manuskript/mainWindow.py" line="1488"/>
         <source>Text</source>
         <translation>文本</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1415"/>
+        <location filename="../manuskript/mainWindow.py" line="1489"/>
         <source>Background</source>
         <translation>背景</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1416"/>
+        <location filename="../manuskript/mainWindow.py" line="1490"/>
         <source>Border</source>
         <translation>边缘</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1417"/>
+        <location filename="../manuskript/mainWindow.py" line="1491"/>
         <source>Corner</source>
         <translation>角落</translation>
     </message>
@@ -1106,7 +1105,7 @@ Use that if you get YAML related error.</source>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2521"/>
-        <source>&amp;Importâ¦</source>
+        <source>&amp;Import&#xe2;&#x80;&#xa6;</source>
         <translation type="unfinished">导入（&amp;I）</translation>
     </message>
     <message>
@@ -1146,7 +1145,7 @@ Use that if you get YAML related error.</source>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2569"/>
-        <source>&amp;Splitâ¦</source>
+        <source>&amp;Split&#xe2;&#x80;&#xa6;</source>
         <translation type="unfinished">分割（&amp;S）</translation>
     </message>
     <message>
@@ -1415,23 +1414,53 @@ Use that if you get YAML related error.</source>
         <translation>删除选择的情节段</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="549"/>
+        <location filename="../manuskript/mainWindow.py" line="561"/>
         <source>The file {} does not exist. Has it been moved or deleted?</source>
         <translation>文件 {} 不存在。是否被移动或删除？</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1264"/>
+        <location filename="../manuskript/mainWindow.py" line="1338"/>
         <source>Install {}{} to use spellcheck</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1306"/>
+        <location filename="../manuskript/mainWindow.py" line="1380"/>
         <source>{} has no installed dictionaries</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1327"/>
+        <location filename="../manuskript/mainWindow.py" line="1401"/>
         <source>{}{} is not installed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/mainWindow.py" line="660"/>
+        <source>Save project?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/mainWindow.py" line="660"/>
+        <source>Save changes to project &quot;{}&quot; before closing?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/mainWindow.py" line="660"/>
+        <source>Your changes will be lost if you don&apos;t save them.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/mainWindow.py" line="1594"/>
+        <source>PyQt / Qt versions 5.11 and 5.12 are known to cause a crash which might result in a loss of data.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/mainWindow.py" line="1595"/>
+        <source>PyQt {} and Qt {} are in use.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/mainWindow.py" line="1600"/>
+        <source>Proceeding might crash and lose data</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1458,17 +1487,17 @@ Use that if you get YAML related error.</source>
         <translation>查看</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2733"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2761"/>
         <source>Labels</source>
         <translation>标签</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2865"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2893"/>
         <source>Status</source>
         <translation>状态</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2939"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2967"/>
         <source>Fullscreen</source>
         <translation>全屏</translation>
     </message>
@@ -1519,13 +1548,13 @@ Use that if you get YAML related error.</source>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="410"/>
-        <source>Save on quit</source>
-        <translation>退出时保存</translation>
+        <source>Save on project close</source>
+        <translation type="unfinished">退出时保存</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="426"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If you check this option, your project will be save as one single file. Easier to copy or backup, but does not allow collaborative editing, or versionning.&lt;br/&gt;If this is unchecked, your project will be save as a folder containing many small files.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;如果你勾选了这个选项，你的项目会被保存到单个文件中。更易于复制与备份，但不允许协作编辑或者版本控制。&lt;br/&gt;如果不勾选，你的项目会被保存为一个包含许多小文件的文件夹。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If you check this option, your project will be saved as one single file. Easier to copy or backup, but does not allow collaborative editing, or versioning.&lt;br/&gt;If this is unchecked, your project will be saved as a folder containing many small files.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;如果你勾选了这个选项，你的项目会被保存到单个文件中。更易于复制与备份，但不允许协作编辑或者版本控制。&lt;br/&gt;如果不勾选，你的项目会被保存为一个包含许多小文件的文件夹。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="432"/>
@@ -1563,487 +1592,487 @@ Use that if you get YAML related error.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="598"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="601"/>
         <source>revisions per minute for the last 10 minutes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="611"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="614"/>
         <source>revisions per hour for the last day</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="624"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="627"/>
         <source>revisions per 10 minutes for the last hour</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="737"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="752"/>
         <source>revisions per week till the end of time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="782"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="810"/>
         <source>Views settings</source>
         <translation>查看设置</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="800"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="828"/>
         <source>Tree</source>
         <translation>树</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1987"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2015"/>
         <source>Colors</source>
         <translation>颜色</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1731"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1759"/>
         <source>Icon color:</source>
         <translation>图标颜色：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1937"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1965"/>
         <source>Nothing</source>
         <translation>不显示</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1942"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1970"/>
         <source>POV</source>
         <translation>POV</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1947"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1975"/>
         <source>Label</source>
         <translation>标签</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1952"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1980"/>
         <source>Progress</source>
         <translation>进度</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1957"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1985"/>
         <source>Compile</source>
         <translation>编译</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1779"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1807"/>
         <source>Text color:</source>
         <translation>文本颜色：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1827"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1855"/>
         <source>Background color:</source>
         <translation>背景色：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1041"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1069"/>
         <source>Folders</source>
         <translation>文件夹</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1053"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1081"/>
         <source>Show ite&amp;m count</source>
         <translation>显示条目数量（&amp;M）</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1162"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1190"/>
         <source>Show summary</source>
         <translation>显示概要</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1105"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1133"/>
         <source>&amp;Nothing</source>
         <translation>不显示（&amp;N）</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1124"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1152"/>
         <source>Text</source>
         <translation>文本</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1224"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1252"/>
         <source>Outline</source>
         <translation>大纲</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1416"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1444"/>
         <source>Visible columns</source>
         <translation>可见列</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1428"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1456"/>
         <source>Goal</source>
         <translation>目标</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1444"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1472"/>
         <source>Word count</source>
         <translation>字数统计</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1460"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1488"/>
         <source>Percentage</source>
         <translation>百分比</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1540"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1568"/>
         <source>Title</source>
         <translation>标题</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1571"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1599"/>
         <source>Index cards</source>
         <translation>索引卡</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1716"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1744"/>
         <source>Item colors</source>
         <translation>条目颜色</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1875"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1903"/>
         <source>Border color:</source>
         <translation>边界颜色：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1923"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1951"/>
         <source>Corner color:</source>
         <translation>角落颜色：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1583"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1611"/>
         <source>Background</source>
         <translation>背景</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3418"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3446"/>
         <source>Color:</source>
         <translation>颜色：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2780"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2808"/>
         <source>Ctrl+S</source>
         <translation>Ctrl+S</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3160"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3188"/>
         <source>Image:</source>
         <translation>图像：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1973"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2001"/>
         <source>Text editor</source>
         <translation>文本编辑器</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2092"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2120"/>
         <source>Font</source>
         <translation>字体</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2104"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2132"/>
         <source>Family:</source>
         <translation>字体：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3461"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3489"/>
         <source>Size:</source>
         <translation>大小：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3475"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3503"/>
         <source>Misspelled:</source>
         <translation>拼写错误：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1999"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2027"/>
         <source>Background:</source>
         <translation>背景：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2315"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2343"/>
         <source>Paragraphs</source>
         <translation>段落</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3502"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3530"/>
         <source>Line spacing:</source>
         <translation>行间距：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3510"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3538"/>
         <source>Single</source>
         <translation>单个</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3515"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3543"/>
         <source>1.5 lines</source>
         <translation>1.5 行</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3520"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3548"/>
         <source>Double</source>
         <translation>两倍</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3525"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3553"/>
         <source>Proportional</source>
         <translation>成比例</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3542"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3570"/>
         <source>%</source>
         <translation>%</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3558"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3586"/>
         <source>Tab width:</source>
         <translation>Tab 宽度：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3622"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3650"/>
         <source> px</source>
         <translation> 像素</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3644"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3672"/>
         <source>Indent 1st line</source>
         <translation>首行缩进</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3587"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3615"/>
         <source>Spacing:</source>
         <translation>间距：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2986"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3014"/>
         <source>New</source>
         <translation>新建</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3000"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3028"/>
         <source>Edit</source>
         <translation>编辑</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3010"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3038"/>
         <source>Delete</source>
         <translation>删除</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3054"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3082"/>
         <source>Theme name:</source>
         <translation>主题名：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3070"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3098"/>
         <source>Apply</source>
         <translation>应用</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3083"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3111"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3113"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3141"/>
         <source>Window Background</source>
         <translation>窗口背景</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3118"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3146"/>
         <source>Text Background</source>
         <translation>文本背景</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3123"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3151"/>
         <source>Text Options</source>
         <translation>文本选项</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3128"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3156"/>
         <source>Paragraph Options</source>
         <translation>段落选项</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3170"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3198"/>
         <source>Type:</source>
         <translation>类型：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3178"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3206"/>
         <source>No Image</source>
         <translation>无图像</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3183"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3211"/>
         <source>Tiled</source>
         <translation>平铺</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3188"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3216"/>
         <source>Centered</source>
         <translation>中心</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3287"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3315"/>
         <source>Stretched</source>
         <translation>拉伸</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3198"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3226"/>
         <source>Scaled</source>
         <translation>成比例</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3203"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3231"/>
         <source>Zoomed</source>
         <translation>放大</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3238"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3266"/>
         <source>Opacity:</source>
         <translation>透明度：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3264"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3292"/>
         <source>Position:</source>
         <translation>位置：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3652"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3680"/>
         <source>Left</source>
         <translation>左</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3661"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3689"/>
         <source>Center</source>
         <translation>中心</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3670"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3698"/>
         <source>Right</source>
         <translation>右</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3295"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3323"/>
         <source>Width:</source>
         <translation>宽度：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3346"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3374"/>
         <source>Corner radius:</source>
         <translation>角落半径：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3353"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3381"/>
         <source>Margins:</source>
         <translation>外间距：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3382"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3410"/>
         <source>Padding:</source>
         <translation>内间距：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3438"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3466"/>
         <source>Font:</source>
         <translation>字体：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1675"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1703"/>
         <source>Style</source>
         <translation>样式</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2592"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2620"/>
         <source>Cursor</source>
         <translation>光标</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2604"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2632"/>
         <source>Use block insertion of</source>
         <translation>使用块级插入</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2327"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2355"/>
         <source>Alignment:</source>
         <translation>对齐：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3679"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3707"/>
         <source>Justify</source>
         <translation>校正</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3691"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3719"/>
         <source>Alignment</source>
         <translation>对齐</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="992"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1020"/>
         <source>Icon Size</source>
         <translation>图标大小</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1004"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1032"/>
         <source>TextLabel</source>
         <translation>文本标签</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2639"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2667"/>
         <source>Disable blinking</source>
         <translation>关闭闪烁</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2206"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2234"/>
         <source>Text area</source>
         <translation>文本框</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2218"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2246"/>
         <source>Max width</source>
         <translation>最大宽度</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2250"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2278"/>
         <source>Left/Right margins:</source>
         <translation>左右外间距：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2279"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2307"/>
         <source>Top/Bottom margins:</source>
         <translation>上下外间距：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1079"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1107"/>
         <source>S&amp;how progress</source>
         <translation>显示进度（&amp;H）</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1092"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1120"/>
         <source>Show summar&amp;y</source>
         <translation>显示概要（&amp;Y）</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1149"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1177"/>
         <source>Show p&amp;rogress</source>
         <translation>显示进度（&amp;R）</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1687"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1715"/>
         <source>Old st&amp;yle</source>
         <translation>旧样式（&amp;Y）</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2031"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2059"/>
         <source>Transparent</source>
         <translation>透明</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2076"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2104"/>
         <source>Restore defaults</source>
         <translation>恢复默认值</translation>
     </message>
@@ -2068,49 +2097,54 @@ Use that if you get YAML related error.</source>
         <translation type="unfinished">你需要重启 manuskript 以使得设置正确生效。</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1066"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1094"/>
         <source>Show &amp;word count</source>
         <translation>显示字数（&amp;W）</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1136"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1164"/>
         <source>&amp;Show word count</source>
         <translation>显示字数（&amp;S)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1700"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1728"/>
         <source>&amp;New style</source>
         <translation>新样式(&amp;N)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2652"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2680"/>
         <source>Typewriter mode</source>
         <translation>打字机模式</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2665"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2693"/>
         <source>Focus mode</source>
         <translation>专注模式</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2679"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2707"/>
         <source>None</source>
         <translation>无</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2684"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2712"/>
         <source>Sentence</source>
         <translation>句子</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2689"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2717"/>
         <source>Line</source>
         <translation>行</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2694"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2722"/>
         <source>Paragraph</source>
         <translation>段落</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/settings_ui.ui" line="775"/>
+        <source>&lt;p&gt;&lt;b&gt;The Revisions feature has been at the source of many reported issues. In this version of Manuskript it has been turned off by default for new projects in order to provide the best experience.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Why aren&apos;t these issues fixed already? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;We need your help to make Manuskript better!&lt;/a&gt;&lt;/p&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2193,19 +2227,6 @@ Use that if you get YAML related error.</source>
         <location filename="../manuskript/models/abstractModel.py" line="197"/>
         <source>Goal</source>
         <translation>目标</translation>
-    </message>
-</context>
-<context>
-    <name>app</name>
-    <message>
-        <location filename="../manuskript/main.py" line="52"/>
-        <source>Loaded translation from {}: {}.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../manuskript/main.py" line="55"/>
-        <source>Note: No translator found or loaded from {} for locale {}.</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2636,12 +2657,12 @@ Use that if you get YAML related error.</source>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="788"/>
-        <source>Replace ... with â¦</source>
+        <source>Replace ... with &#xe2;&#x80;&#xa6;</source>
         <translation type="unfinished">将 ... 替换为 …</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="795"/>
-        <source>Replace --- with â</source>
+        <source>Replace --- with &#xe2;&#x80;&#x94;</source>
         <translation type="unfinished">将 --- 替换为 —</translation>
     </message>
 </context>
@@ -2975,12 +2996,12 @@ Use that if you get YAML related error.</source>
         <translation>根</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/editors/mainEditor.py" line="320"/>
+        <location filename="../manuskript/ui/editors/mainEditor.py" line="322"/>
         <source>{} words / {} </source>
         <translation>{} 字 / {} </translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/editors/mainEditor.py" line="325"/>
+        <location filename="../manuskript/ui/editors/mainEditor.py" line="327"/>
         <source>{} words </source>
         <translation>{} 字 </translation>
     </message>
@@ -2988,7 +3009,7 @@ Use that if you get YAML related error.</source>
 <context>
     <name>markdownSettings</name>
     <message>
-        <location filename="../manuskript/exporter/manuskript/markdown.py" line="57"/>
+        <location filename="../manuskript/exporter/manuskript/markdown.py" line="58"/>
         <source>Markdown</source>
         <translation>Markdown</translation>
     </message>
@@ -3201,17 +3222,17 @@ Use that if you get YAML related error.</source>
 <context>
     <name>pandocSettings</name>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="166"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="167"/>
         <source>General</source>
         <translation>通用</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="180"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="181"/>
         <source>Table of Content</source>
         <translation>内容表格（TOC）</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="185"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="186"/>
         <source>Custom settings for {}</source>
         <translation>{} 的自定义设置</translation>
     </message>
@@ -3851,52 +3872,52 @@ Use that if you get YAML related error.</source>
 <context>
     <name>settingsWindow</name>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="644"/>
+        <location filename="../manuskript/settingsWindow.py" line="648"/>
         <source>New status</source>
         <translation>新建状态</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="665"/>
+        <location filename="../manuskript/settingsWindow.py" line="669"/>
         <source>New label</source>
         <translation>新标签</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="701"/>
+        <location filename="../manuskript/settingsWindow.py" line="705"/>
         <source>newtheme</source>
         <translation>新主题</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="711"/>
+        <location filename="../manuskript/settingsWindow.py" line="715"/>
         <source>New theme</source>
         <translation>新建主题</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="743"/>
+        <location filename="../manuskript/settingsWindow.py" line="747"/>
         <source> (read-only)</source>
         <translation> （只读）</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="504"/>
+        <location filename="../manuskript/settingsWindow.py" line="508"/>
         <source>Open Image</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="504"/>
+        <location filename="../manuskript/settingsWindow.py" line="508"/>
         <source>Image files (*.jpg; *.jpeg; *.png)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="520"/>
+        <location filename="../manuskript/settingsWindow.py" line="524"/>
         <source>Error</source>
         <translation type="unfinished">错误</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="517"/>
+        <location filename="../manuskript/settingsWindow.py" line="521"/>
         <source>Unable to load selected file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="520"/>
+        <location filename="../manuskript/settingsWindow.py" line="524"/>
         <source>Unable to add selected image:
 {}</source>
         <translation type="unfinished"></translation>
