@@ -1,7 +1,94 @@
 # Change Log
 
-## [0.9.0](https://github.com/olivierkes/manuskript/tree/0.9.0) (2019-04-04)
+## [0.10.0](https://github.com/olivierkes/manuskript/tree/0.10.0) (2019-09-30)
+[Full Changelog](https://github.com/olivierkes/manuskript/compare/0.9.0...0.10.0)
 
+**Implemented enhancements:**
+
+- Add non-enchant spellcheck support [\#505](https://github.com/olivierkes/manuskript/issues/505)
+- Basic dark theme support \(Windows 10\) [\#630](https://github.com/olivierkes/manuskript/pull/630) ([worstje](https://github.com/worstje))
+- Refactor spellchecker code and add other spellcheck library support [\#507](https://github.com/olivierkes/manuskript/pull/507) ([kakaroto](https://github.com/kakaroto))
+
+**Fixed bugs:**
+
+- Impossible to change UI language to english if your system locale isn't set to an anglophonic country [\#619](https://github.com/olivierkes/manuskript/issues/619)
+- All Imports are crashing [\#611](https://github.com/olivierkes/manuskript/issues/611)
+- When compiling, it overwrite files without asking [\#608](https://github.com/olivierkes/manuskript/issues/608)
+- Crash when exporting with pandoc as custom path only [\#563](https://github.com/olivierkes/manuskript/issues/563)
+- Crash on insertion of new page character [\#562](https://github.com/olivierkes/manuskript/issues/562)
+- Crash on adding word goal in outline [\#561](https://github.com/olivierkes/manuskript/issues/561)
+- Crash in Windows 10 when drag and drop [\#559](https://github.com/olivierkes/manuskript/issues/559)
+- Image crash: When using tooltip on an incomplete image filename [\#549](https://github.com/olivierkes/manuskript/issues/549)
+- pandoc export crashes if project title is empty [\#535](https://github.com/olivierkes/manuskript/issues/535)
+- editor/cork options wrong after deleting a text [\#516](https://github.com/olivierkes/manuskript/issues/516)
+-  crash on import directory [\#500](https://github.com/olivierkes/manuskript/issues/500)
+- Inconsistent and/or undesirable window placements [\#481](https://github.com/olivierkes/manuskript/issues/481)
+- Crash when deleting folder with files in tree view [\#479](https://github.com/olivierkes/manuskript/issues/479)
+- New level 'unit' is reset [\#468](https://github.com/olivierkes/manuskript/issues/468)
+- Lowering number of saved revisions below 1 crashes program [\#381](https://github.com/olivierkes/manuskript/issues/381)
+- ValueError: All strings must be XML compatible: Unicode or ASCII, no NULL bytes or control characters [\#31](https://github.com/olivierkes/manuskript/issues/31)
+- OS X: cannot leave fullscreen mode [\#24](https://github.com/olivierkes/manuskript/issues/24)
+
+**Closed issues:**
+
+- Word count goal progress bar broken in develop. [\#652](https://github.com/olivierkes/manuskript/issues/652)
+- Fullscreen mode causes spike in CPU [\#643](https://github.com/olivierkes/manuskript/issues/643)
+- Italian dictionary [\#638](https://github.com/olivierkes/manuskript/issues/638)
+- Manuskript 9.0 crashes when creating new project or opening existing project  [\#631](https://github.com/olivierkes/manuskript/issues/631)
+- Spell Check Not working [\#625](https://github.com/olivierkes/manuskript/issues/625)
+- story line feature crashing [\#620](https://github.com/olivierkes/manuskript/issues/620)
+- Manuskript me fastidio un documento de word [\#616](https://github.com/olivierkes/manuskript/issues/616)
+- Feature request: Option to vertically center text input line on screen in fullscreen mode [\#602](https://github.com/olivierkes/manuskript/issues/602)
+- Italian translation not applied, application still english. [\#599](https://github.com/olivierkes/manuskript/issues/599)
+- File Randomly won't open [\#597](https://github.com/olivierkes/manuskript/issues/597)
+- Adding Persian\(Farsi\) in Weblate [\#596](https://github.com/olivierkes/manuskript/issues/596)
+- Importing images into Manuskript [\#593](https://github.com/olivierkes/manuskript/issues/593)
+- British English translation [\#592](https://github.com/olivierkes/manuskript/issues/592)
+- utf-8' codec can't decode byte 0xff in position 0 [\#591](https://github.com/olivierkes/manuskript/issues/591)
+- Issue with saving as directory [\#589](https://github.com/olivierkes/manuskript/issues/589)
+- Crashes in outliner [\#582](https://github.com/olivierkes/manuskript/issues/582)
+- Headings h4 not translated from Markdown to ODF [\#580](https://github.com/olivierkes/manuskript/issues/580)
+- \[BUG\] Shim error [\#579](https://github.com/olivierkes/manuskript/issues/579)
+- Crash when edit text [\#555](https://github.com/olivierkes/manuskript/issues/555)
+- Unusual environment failure [\#547](https://github.com/olivierkes/manuskript/issues/547)
+- Won't run \(Arch Linux\) [\#546](https://github.com/olivierkes/manuskript/issues/546)
+- Rendre extensible les modèles d'intrigue [\#329](https://github.com/olivierkes/manuskript/issues/329)
+
+**Merged pull requests:**
+
+- Changes to Revisions UI [\#655](https://github.com/olivierkes/manuskript/pull/655) ([worstje](https://github.com/worstje))
+- Restore progress bar functionality [\#654](https://github.com/olivierkes/manuskript/pull/654) ([worstje](https://github.com/worstje))
+- Default keep revisions to disabled, and remove tests for revisions [\#653](https://github.com/olivierkes/manuskript/pull/653) ([gedakc](https://github.com/gedakc))
+- Fix word recognition for spell checker, ignore active partial words [\#651](https://github.com/olivierkes/manuskript/pull/651) ([gedakc](https://github.com/gedakc))
+- Fix typo missed in previous commit [\#648](https://github.com/olivierkes/manuskript/pull/648) ([luzpaz](https://github.com/luzpaz))
+- Fix source typo [\#645](https://github.com/olivierkes/manuskript/pull/645) ([luzpaz](https://github.com/luzpaz))
+- Move Qt 5.11 / 5.12 version warning to Import invocation [\#642](https://github.com/olivierkes/manuskript/pull/642) ([gedakc](https://github.com/gedakc))
+- Add DISABLE\_WAYLAND to snapcraft.yaml [\#637](https://github.com/olivierkes/manuskript/pull/637) ([gedakc](https://github.com/gedakc))
+- Further refinement of image tooltips \(issue \#593\) [\#629](https://github.com/olivierkes/manuskript/pull/629) ([worstje](https://github.com/worstje))
+- Reworking of the translation loading process \(issue \#619\) [\#627](https://github.com/olivierkes/manuskript/pull/627) ([worstje](https://github.com/worstje))
+- change markdown to "Markdown" in.... [\#624](https://github.com/olivierkes/manuskript/pull/624) ([leela52452](https://github.com/leela52452))
+- Fix tab key order, and default window tab for character & plot panes [\#623](https://github.com/olivierkes/manuskript/pull/623) ([gedakc](https://github.com/gedakc))
+- Add British English Translation updates [\#621](https://github.com/olivierkes/manuskript/pull/621) ([gedakc](https://github.com/gedakc))
+- Do not prompt "Save project?" when \_Save on quit\_ setting enabled [\#615](https://github.com/olivierkes/manuskript/pull/615) ([gedakc](https://github.com/gedakc))
+- Fix exports silently overwriting files \(fixes \#608\) & small fix to dialog logic [\#613](https://github.com/olivierkes/manuskript/pull/613) ([worstje](https://github.com/worstje))
+- Working Pandoc import \(fixes \#611\) & small dialog UI update. [\#612](https://github.com/olivierkes/manuskript/pull/612) ([worstje](https://github.com/worstje))
+- Fix Linux Travis CI build error - pyenv: version `3.6.3' not installed [\#610](https://github.com/olivierkes/manuskript/pull/610) ([gedakc](https://github.com/gedakc))
+- Fix crash when setting word Goal on new Text \(scene\) in Outline pane [\#609](https://github.com/olivierkes/manuskript/pull/609) ([gedakc](https://github.com/gedakc))
+- Spelling: Manuscript, could not, process, … No content [\#588](https://github.com/olivierkes/manuskript/pull/588) ([comradekingu](https://github.com/comradekingu))
+- fix issue \#468 'unit' is reset [\#587](https://github.com/olivierkes/manuskript/pull/587) ([NocturnalFred](https://github.com/NocturnalFred))
+- Fix pandoc export crashes is project title is empty [\#585](https://github.com/olivierkes/manuskript/pull/585) ([gedakc](https://github.com/gedakc))
+- Track dirty state and have the UI behave accordingly [\#583](https://github.com/olivierkes/manuskript/pull/583) ([worstje](https://github.com/worstje))
+- Fix crash if invalid character is inserted into the text. [\#578](https://github.com/olivierkes/manuskript/pull/578) ([kakaroto](https://github.com/kakaroto))
+- Fix crash if using a custom pandoc installation [\#577](https://github.com/olivierkes/manuskript/pull/577) ([kakaroto](https://github.com/kakaroto))
+- Fix dialog windows being created outside the desktop area [\#576](https://github.com/olivierkes/manuskript/pull/576) ([kakaroto](https://github.com/kakaroto))
+- Fix occasional crashes when \(re\)moving items [\#571](https://github.com/olivierkes/manuskript/pull/571) ([worstje](https://github.com/worstje))
+- trying to resolve full screen exit issues on macOS [\#569](https://github.com/olivierkes/manuskript/pull/569) ([dschanoeh](https://github.com/dschanoeh))
+- Fix typos in translation format placeholders that lead to crash [\#566](https://github.com/olivierkes/manuskript/pull/566) ([RaphaelWimmer](https://github.com/RaphaelWimmer))
+- Fixed \#549 and refactored the image tooltip code [\#558](https://github.com/olivierkes/manuskript/pull/558) ([worstje](https://github.com/worstje))
+- Fix typo [\#548](https://github.com/olivierkes/manuskript/pull/548) ([Acid147](https://github.com/Acid147))
+- Fix misc. typos [\#489](https://github.com/olivierkes/manuskript/pull/489) ([luzpaz](https://github.com/luzpaz))
+
+## [0.9.0](https://github.com/olivierkes/manuskript/tree/0.9.0) (2019-04-04)
 [Full Changelog](https://github.com/olivierkes/manuskript/compare/0.8.0...0.9.0)
 
 **Implemented enhancements:**
@@ -29,6 +116,7 @@
 - Editor does not show text [\#472](https://github.com/olivierkes/manuskript/issues/472)
 - Application crashes when trying to save "…" [\#461](https://github.com/olivierkes/manuskript/issues/461)
 - Feature Request: script writing interface for manuskript  [\#435](https://github.com/olivierkes/manuskript/issues/435)
+- suggestion: Use sudo for your Fedora install instructions, not su -c [\#573](https://github.com/olivierkes/manuskript/issues/573)
 - Chinese translation filename suffix [\#428](https://github.com/olivierkes/manuskript/issues/428)
 
 **Merged pull requests:**
