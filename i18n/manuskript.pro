@@ -109,3 +109,4 @@ TRANSLATIONS     += manuskript_sv.ts
 TRANSLATIONS     += manuskript_tr.ts
 TRANSLATIONS     += manuskript_uk.ts
 TRANSLATIONS     += manuskript_zh_CN.ts
+TRANSLATIONS     += manuskript_zh_HANT.ts
