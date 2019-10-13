@@ -12,12 +12,14 @@
 .project
 .pydevproject
 .settings/org.eclipse.core.resources.prefs
+.vscode
 ExportTest
 Notes.t2t
 dist
 build
 icons/Numix
 manuskript/pycallgraph.txt
+manuskript.log
 snowflake*
 test-projects
 main.pyproject.user
