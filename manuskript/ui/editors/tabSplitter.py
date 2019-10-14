@@ -10,6 +10,8 @@ from manuskript.functions import mainWindow, appPath
 from manuskript.ui import style
 from manuskript.ui.editors.tabSplitter_ui import Ui_tabSplitter
 
+import logging
+LOGGER = logging.getLogger(__name__)
 
 class tabSplitter(QWidget, Ui_tabSplitter):
     """
@@ -39,7 +41,7 @@ class tabSplitter(QWidget, Ui_tabSplitter):
         # try:
         #     self.tab.setTabBarAutoHide(True)
         # except AttributeError:
-        #     print("Info: install Qt 5.4 or higher to use tab bar auto-hide in editor.")
+        #     LOGGER.info("Install Qt 5.4 or higher to use tab bar auto-hide in editor.")
 
         # Button to split
         self.btnSplit = QPushButton(self)

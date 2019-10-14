@@ -26,6 +26,9 @@ from manuskript.load_save.version_0 import loadFilesFromZip
 from manuskript.models.characterModel import CharacterInfo
 from manuskript.models import outlineItem
 
+import logging
+LOGGER = logging.getLogger(__name__)
+
 try:
     import zlib  # Used with zipfile for compression
 
@@ -125,7 +128,7 @@ def saveProject(zip=None):
 
     # Sanity check (see PR-583): make sure we actually have a current project.
     if project == None:
-        print("Error: cannot save project because there is no current project in the UI.")
+        LOGGER.error("Cannot save project because there is no current project in the UI.")
         return False
 
     # File format version
@@ -307,7 +310,7 @@ def saveProject(zip=None):
     # not exist, we check the parent folder, because it might be a new project.
     if os.path.exists(project) and not os.access(project, os.W_OK) or \
        not os.path.exists(project) and not os.access(os.path.dirname(project), os.W_OK):
-        print("Error: you don't have write access to save this project there.")
+        LOGGER.error("You don't have write access to save this project there.")
         return False
 
     ####################################################################################################################
@@ -924,7 +927,7 @@ def addTextItems(mdl, odict, parent=None):
             item._lastPath = odict[k + ":lastPath"]
 
         elif not ":lastPath" in k and k != "folder.txt":
-            print("* Strange things in file {}".format(k))
+            LOGGER.debug("Strange things in file %s".format(k))
 
 
 def outlineFromMMD(text, parent):

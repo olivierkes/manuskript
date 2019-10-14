@@ -8,6 +8,9 @@ from PyQt5.QtWidgets import qApp
 
 from manuskript.enums import Outline
 
+import logging
+LOGGER = logging.getLogger(__name__)
+
 # TODO: move some/all of those settings to application settings and not project settings
 #       in order to allow a shared project between several writers
 
@@ -187,7 +190,7 @@ def load(string, fromString=False, protocol=None):
             allSettings = pickle.load(f)
 
         except:
-            print("{} doesn't exist, cannot load settings.".format(string))
+            LOGGER.error("Cannot load settings, {} does not exist.".format(string))
             return
     else:
         if protocol == 0:

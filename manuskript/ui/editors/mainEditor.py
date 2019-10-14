@@ -20,6 +20,9 @@ try:
 except:
     pass
 
+import logging
+LOGGER = logging.getLogger(__name__)
+
 class mainEditor(QWidget, Ui_mainEditor):
     """
     `mainEditor` is responsible for opening `outlineItem`s and offering information
@@ -389,7 +392,6 @@ class mainEditor(QWidget, Ui_mainEditor):
     ###############################################################################
 
     def setDict(self, dict):
-        print(dict)
         for w in self.allAllTabs():
             w.setDict(dict)
 

@@ -9,6 +9,9 @@ from PyQt5.QtWidgets import *
 from manuskript.ui.highlighters import MarkdownState as MS
 from manuskript.ui.highlighters import MarkdownTokenType as MTT
 
+import logging
+LOGGER = logging.getLogger(__name__)
+
 # This file is simply a python translation of GhostWriter's Tokenizer.
 # http://wereturtle.github.io/ghostwriter/
 # GPLV3+.
@@ -56,7 +59,7 @@ class HighlightTokenizer:
         self.tokens.append(token)
 
         if token.type == -1:
-            print("Error here", token.position, token.length)
+            LOGGER.error("Token type invalid: position %s, length %s.", token.position, token.length)
 
     def setState(self, state):
         self.state = state

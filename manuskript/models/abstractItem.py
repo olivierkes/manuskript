@@ -13,6 +13,8 @@ import re
 
 from manuskript import enums
 
+import logging
+LOGGER = logging.getLogger(__name__)
 
 class abstractItem():
 
@@ -209,7 +211,7 @@ class abstractItem():
         self.IDs = self.listAllIDs()
 
         if max([self.IDs.count(i) for i in self.IDs if i]) != 1:
-            print("WARNING ! There are some items with same IDs:", [i for i in self.IDs if i and self.IDs.count(i) != 1])
+            LOGGER.warning("There are some items with overlapping IDs: %s", [i for i in self.IDs if i and self.IDs.count(i) != 1])
 
         def checkChildren(item):
             for c in item.children():
