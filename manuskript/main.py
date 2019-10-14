@@ -7,7 +7,6 @@ import sys
 import signal
 
 import manuskript.logging
-import manuskript.ui.views.webView
 from PyQt5.QtCore import QLocale, QTranslator, QSettings, Qt
 from PyQt5.QtGui import QIcon, QColor, QPalette
 from PyQt5.QtWidgets import QApplication, qApp, QStyleFactory
@@ -34,7 +33,9 @@ def prepare(arguments, tests=False):
     # Handle all sorts of Qt logging messages in Python.
     manuskript.logging.integrateQtLogging()
 
-    LOGGER.info("Running manuskript version {}.".format(getVersion()))
+    # Log all the versions for less headaches.
+    manuskript.logging.logVersionInformation()
+
     icon = QIcon()
     for i in [16, 32, 64, 128, 256, 512]:
         icon.addFile(appPath("icons/Manuskript/icon-{}px.png".format(i)))

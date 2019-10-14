@@ -4,14 +4,16 @@
 # standard python `logging` module, this module will take care of specific
 # manuskript needs to keep it separate from the rest of the logic.
 
-from manuskript.functions import writablePath
 import os
 import logging
 
+from manuskript.functions import writablePath
+from importlib import  import_module
+
+LOGGER = logging.getLogger(__name__)
+
 LOGFORMAT_CONSOLE = "%(levelname)s> %(message)s"
 LOGFORMAT_FILE = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-
-logger = logging.getLogger(__name__)
 
 def setUp(console_level=logging.WARN):
     """Sets up a convenient environment for logging.
@@ -37,7 +39,7 @@ def setUp(console_level=logging.WARN):
     ch.setFormatter(logging.Formatter(LOGFORMAT_CONSOLE))
     root_logger.addHandler(ch)
 
-    logger.debug("Logging to STDERR.")
+    LOGGER.debug("Logging to STDERR.")
 
 
 def logToFile(file_level=logging.DEBUG, logfile=None):
@@ -65,9 +67,9 @@ def logToFile(file_level=logging.DEBUG, logfile=None):
         root_logger.addHandler(fh)
 
         # Use INFO level to make it easier to find for users.
-        logger.info("Logging to file: %s", logfile)
+        LOGGER.info("Logging to file: %s", logfile)
     except Exception as ex:
-        logger.warning("Cannot log to file '%s'. Reason: %s", logfile, ex)
+        LOGGER.warning("Cannot log to file '%s'. Reason: %s", logfile, ex)
 
 
 # Qt has its own logging facility that we would like to integrate into our own.
@@ -104,3 +106,109 @@ def integrateQtLogging():
     # on giving, even when it isn't actually at fault. I hate you, Qt.
 
     qInstallMessageHandler(qtMessageHandler)
+
+
+def versionTupleToString(t):
+    """A bit of generic tuple conversion code that hopefully handles all the
+    different sorts of tuples we may come across while logging versions.
+
+    None                -> "N/A"
+    (,)                 -> "N/A"
+    (2, 4, 6)           -> "2.4.6"
+    (2, 4, "alpha", 8)  -> "2.4-alpha.8"
+    """
+
+    s = []
+    if t is None or len(t) == 0:
+        return "N/A"
+    else:
+        s.append(str(t[0]))
+
+    def version_chunk(v):
+        if isinstance(v, str):
+            return "-", str(v)
+        else:
+            return ".", str(v)
+
+    s.extend(f for p in t[1:] for f in version_chunk(p))
+    return "".join(s)
+
+def attributesFromOptionalModule(module, *attributes):
+    """It is nice to cut down on the try-except boilerplate by
+    putting this logic into its own function.
+
+    Returns as many values as there are attributes.
+    A value will be None if it failed to get the attribute."""
+
+    assert(len(attributes) != 0)
+    v = []
+    try:
+        m = import_module(module)
+
+        for a in attributes:
+            v.append(getattr(m, a, None))
+    except ImportError:
+        v.extend(None for _ in range(len(attributes)))
+
+    if len(v) == 1:
+        # Return the value directly so we can use it in an expression.
+        return v[0]
+    else:
+        # The list is consumed as a part of the unpacking syntax.
+        return v
+
+def logVersionInformation(logger=None):
+    """Logs all important runtime information neatly together.
+
+    Due to the generic nature, use the manuskript logger by default."""
+
+    if not logger:
+        logger = logging.getLogger("manuskript")
+
+    vt2s = versionTupleToString
+    afom = attributesFromOptionalModule
+
+    # Basic system information.
+    from platform import python_version, platform, processor, machine
+    logger.info("Operating System: %s", platform())
+    logger.info("Hardware: %s / %s", machine(), processor())
+
+    # Manuskript and Python info.
+    from manuskript.version import getVersion
+    logger.info("Manuskript %s (Python %s)", getVersion(), python_version())
+
+    # Installed Python packages.
+
+    # PyQt + Qt
+    from PyQt5.Qt import PYQT_VERSION_STR, qVersion
+    from PyQt5.QtCore import QT_VERSION_STR
+    logger.info("* PyQt %s (compiled against Qt %s)", PYQT_VERSION_STR, QT_VERSION_STR)
+    logger.info("  * Qt %s (runtime)", qVersion())
+
+    # Lxml
+    # See: https://lxml.de/FAQ.html#i-think-i-have-found-a-bug-in-lxml-what-should-i-do
+    from lxml import etree
+    logger.info("* lxml.etree %s",                vt2s(etree.LXML_VERSION))
+    logger.info("  * libxml   %s (compiled: %s)", vt2s(etree.LIBXML_VERSION), vt2s(etree.LIBXML_COMPILED_VERSION))
+    logger.info("  * libxslt  %s (compiled: %s)", vt2s(etree.LIBXSLT_VERSION), vt2s(etree.LIBXSLT_COMPILED_VERSION))
+
+    # Spellcheckers. (Optional)
+    enchant_mod_ver, enchant_lib_ver = afom("enchant", "__version__", "get_enchant_version")
+    if enchant_lib_ver:
+        enchant_lib_ver = enchant_lib_ver()
+        if isinstance(enchant_lib_ver, bytes):  # PyEnchant version < 3.0.2
+            enchant_lib_ver = enchant_lib_ver.decode('utf-8')
+    logger.info("* pyEnchant %s (libenchant: %s)", enchant_mod_ver or "N/A", enchant_lib_ver or "N/A")
+
+    logger.info("* pySpellChecker %s", afom("spellchecker", "__version__") or "N/A")
+    logger.info("* Symspellpy %s", afom("symspellpy", "__version__") or "N/A")
+
+    # Markdown. (Optional)
+    logger.info("* Markdown %s", afom("markdown", "__version__") or "N/A")
+
+    # Web rendering engine
+    from manuskript.ui.views.webView import webEngine
+    logger.info("Web rendering engine: %s", webEngine)
+
+    # Do not collect version information for Pandoc; that would require
+    # executing `pandov -v` and parsing the output, all of which is too slow.
