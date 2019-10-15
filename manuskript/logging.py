@@ -157,6 +157,8 @@ def attributesFromOptionalModule(module, *attributes):
         # The list is consumed as a part of the unpacking syntax.
         return v
 
+import pathlib
+
 def logVersionInformation(logger=None):
     """Logs all important runtime information neatly together.
 
@@ -174,8 +176,11 @@ def logVersionInformation(logger=None):
     logger.info("Hardware: %s / %s", machine(), processor())
 
     # Manuskript and Python info.
+    from manuskript.functions import getGitRevisionAsString, getManuskriptPath
     from manuskript.version import getVersion
-    logger.info("Manuskript %s (Python %s)", getVersion(), python_version())
+    logger.info("Manuskript %s%s (Python %s)", getVersion(),
+                    getGitRevisionAsString(getManuskriptPath(), short=True),
+                    python_version())
 
     # Installed Python packages.
 
