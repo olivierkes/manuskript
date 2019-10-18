@@ -59,7 +59,7 @@ def logToFile(file_level=logging.DEBUG, logfile=None):
     # log files may not be in our users best interest for the time
     # being. (Unfortunately.)
     try:
-        fh = logging.FileHandler(logfile, mode='w')
+        fh = logging.FileHandler(logfile, mode='w', encoding='utf-8')
         fh.setLevel(file_level)
         fh.setFormatter(logging.Formatter(LOGFORMAT_FILE))
 
