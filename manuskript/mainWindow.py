@@ -1596,7 +1596,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             print("WARNING:", warning1, warning2)
 
             msg = QMessageBox(QMessageBox.Warning,
-                self.tr("Proceeding might crash and lose data"),
+                self.tr("Proceeding might cause a crash and dataloss"),
                 "<p><b>" +
                     warning1 +
                 "</b></p>" +
