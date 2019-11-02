@@ -5,6 +5,7 @@
 # manuskript needs to keep it separate from the rest of the logic.
 
 import os
+import sys
 import logging
 
 from manuskript.functions import writablePath
@@ -39,6 +40,9 @@ def setUp(console_level=logging.WARN):
     ch.setFormatter(logging.Formatter(LOGFORMAT_CONSOLE))
     root_logger.addHandler(ch)
 
+    # Any exceptions we did not account for need to be logged.
+    logFutureExceptions()
+
     LOGGER.debug("Logging to STDERR.")
 
 
@@ -70,6 +74,68 @@ def logToFile(file_level=logging.DEBUG, logfile=None):
         LOGGER.info("Logging to file: %s", logfile)
     except Exception as ex:
         LOGGER.warning("Cannot log to file '%s'. Reason: %s", logfile, ex)
+
+# Log uncaught and unraisable exceptions.
+
+# Uncaught exceptions trigger moments before a thread is terminated due to
+# an uncaught exception. It is the final stop, and as such is very likely
+# to be the reason Manuskript suddenly closed on the user without warning.
+# (It can also happen on other threads, but it is a bad thing regardless!)
+def handle_uncaught_exception(exc_type, exc_value, exc_traceback):
+    # Allow Ctrl+C for script execution to keep functioning as-is.
+    if issubclass(exc_type, KeyboardInterrupt):
+        sys.__excepthook__(exc_type, exc_value, exc_traceback)
+        return # default exception hook handled it
+
+    # Anything that reaches this handler can be considered a deal-breaker.
+    LOGGER.critical("An unhandled exception has occurred!", exc_info=(exc_type, exc_value, exc_traceback))
+
+    # Exit the program to preserve PyQt 'functionality' that is broken by
+    # having our own uncaught exception hook. For more information, see:
+    #   https://stackoverflow.com/questions/49065371/why-does-sys-excepthook-behave-differently-when-wrapped
+    sys.exit(1)
+
+    # Note that without it, unhandled Python exceptions thrown while in the
+    # bowels of Qt may be written to the log multiple times. Under the motto
+    # of failing fast and not having a misleading log file, this appears to
+    # be the best course of action.
+
+
+# The situation with threads and uncaught exceptions is fraught in peril.
+# Hopefully this solves our problems on more recent versions of Python.
+def handle_uncaught_thread_exception(args):
+    if issubclass(exc_type, SystemExit):
+        return # match behaviour of default hook, see manual
+
+    # Anything that reaches this handler can be considered a minor deal-breaker.
+    LOGGER.error("An unhandled exception has occurred in a thread: %s", repr(args.thread),
+                    exc_info=(args.exc_type, args.exc_value, args.exc_traceback))
+
+
+# Unraisable exceptions are exceptions that failed to be raised to a caller
+# due to the nature of the exception. Examples: __del__(), GC error, etc.
+# Logging these may expose bugs / errors that would otherwise go unnoticed.
+def handle_unraisable_exception(unraisable):
+    # Log as warning because the application is likely to limp along with
+    # no serious side effects; a resource leak is the most likely.
+    LOGGER.warning("%s: %s", unraisable.err_msg or "Exception ignored in", repr(unraisable.object),
+                    exc_info=(unraisable.exc_type, unraisable.exc_value, unraisable.exc_traceback))
+
+
+# Because we are already somewhat careful in regards to the order of code
+# execution when it comes to setting up the logging environment, this has
+# been put in its own function as opposed to letting a direct import handle it.
+def logFutureExceptions():
+    """Log all the interesting exceptions that may happen in the future."""
+    sys.excepthook = handle_uncaught_exception
+    try:
+        import threading # threading module was optional pre-3.7
+        if hasattr(threading, "excepthook"):  # Python 3.8+
+            threading.excepthook = handle_uncaught_thread_exception
+    except:
+        pass
+    if hasattr(sys, "unraisablehook"):  # Python 3.8+
+        sys.unraisablehook = handle_unraisable_exception
 
 
 # Qt has its own logging facility that we would like to integrate into our own.
