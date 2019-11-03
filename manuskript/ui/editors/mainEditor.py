@@ -254,6 +254,7 @@ class mainEditor(QWidget, Ui_mainEditor):
     def cut(self): self.currentEditor().cut()
     def paste(self): self.currentEditor().paste()
     def rename(self): self.currentEditor().rename()
+    def find(self, text, options): self.currentEditor().find(text, options)
     def duplicate(self): self.currentEditor().duplicate()
     def delete(self): self.currentEditor().delete()
     def moveUp(self): self.currentEditor().moveUp()

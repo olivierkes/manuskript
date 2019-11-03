@@ -2183,6 +2183,7 @@
     <addaction name="actCopy"/>
     <addaction name="actPaste"/>
     <addaction name="actDelete"/>
+    <addaction name="actFind"/>
     <addaction name="actRename"/>
     <addaction name="separator"/>
     <addaction name="mnuFormat"/>
@@ -2558,6 +2559,18 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+V</string>
+   </property>
+  </action>
+  <action name="actFind">
+   <property name="icon">
+    <iconset theme="edit-find">
+     <normaloff>.</normaloff>.</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Find</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+F</string>
    </property>
   </action>
   <action name="actSplitDialog">

@@ -424,6 +424,8 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
         if self.getCurrentItemView(): self.getCurrentItemView().paste()
     def rename(self):
         if self.getCurrentItemView(): self.getCurrentItemView().rename()
+    def find(self, text, options):
+        if self.getCurrentItemView(): self.getCurrentItemView().find(text, options)
     def duplicate(self):
         if self.getCurrentItemView(): self.getCurrentItemView().duplicate()
     def delete(self):
