@@ -7,9 +7,11 @@
 import os
 import sys
 import logging
+import pathlib
 
 from manuskript.functions import writablePath
 from importlib import  import_module
+from pprint import pformat
 
 LOGGER = logging.getLogger(__name__)
 
@@ -223,9 +225,7 @@ def attributesFromOptionalModule(module, *attributes):
         # The list is consumed as a part of the unpacking syntax.
         return v
 
-import pathlib
-
-def logVersionInformation(logger=None):
+def logRuntimeInformation(logger=None):
     """Logs all important runtime information neatly together.
 
     Due to the generic nature, use the manuskript logger by default."""
@@ -240,6 +240,29 @@ def logVersionInformation(logger=None):
     from platform import python_version, platform, processor, machine
     logger.info("Operating System: %s", platform())
     logger.info("Hardware: %s / %s", machine(), processor())
+
+    # Information about the running instance. See:
+    #   https://pyinstaller.readthedocs.io/en/v3.3.1/runtime-information.html
+    #   http://www.py2exe.org/index.cgi/Py2exeEnvironment
+    #   https://cx-freeze.readthedocs.io/en/latest/faq.html#data-files
+    frozen = getattr(sys, 'frozen', False)
+    if frozen:
+        logger.info("Running in a frozen (packaged) state.")
+        logger.debug("* sys.frozen = %s", pformat(frozen))
+
+        # PyInstaller, py2exe and cx_Freeze modules are not accessible while frozen,
+        # so logging their version is (to my knowledge) impossible without including
+        # special steps into the distribution process. But some traces do exist...
+        logger.debug("* sys._MEIPASS = %s", getattr(sys, '_MEIPASS', "N/A"))  # PyInstaller bundle
+        # cx_Freeze and py2exe do not appear to leave anything similar exposed.
+    else:
+        logger.info("Running from unpackaged source code.")
+
+    # File not found? These bits of information might help.
+    logger.debug("* sys.executable = %s", pformat(sys.executable))
+    logger.debug("* sys.argv = %s", pformat(sys.argv))
+    logger.debug("* sys.path = %s", pformat(sys.path))
+    logger.debug("* sys.prefix = %s", pformat(sys.prefix))
 
     # Manuskript and Python info.
     from manuskript.functions import getGitRevisionAsString, getManuskriptPath

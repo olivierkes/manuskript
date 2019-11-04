@@ -34,7 +34,7 @@ def prepare(arguments, tests=False):
     manuskript.logging.integrateQtLogging()
 
     # Log all the versions for less headaches.
-    manuskript.logging.logVersionInformation()
+    manuskript.logging.logRuntimeInformation()
 
     icon = QIcon()
     for i in [16, 32, 64, 128, 256, 512]:
