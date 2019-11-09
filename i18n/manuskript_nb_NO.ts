@@ -1554,7 +1554,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="426"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If you check this option, your project will be saved as one single file. Easier to copy or backup, but does not allow collaborative editing, or versioning.&lt;br/&gt;If this is unchecked, your project will be saved as a folder containing many small files.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hvis du velger denne innstillinger, vil prosjektet ditt lagres som én fil. Enklere å kopiere eller sikkerhetskopiere, men tillater ikke samarbeidsredigering, eller versjonering.&lt;br/&gt;Hvis dette velges bort, vil prosjektet lagres som en mappe, hvis innhold er mange små filer.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="432"/>
@@ -2144,7 +2144,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="775"/>
         <source>&lt;p&gt;&lt;b&gt;The Revisions feature has been at the source of many reported issues. In this version of Manuskript it has been turned off by default for new projects in order to provide the best experience.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Why aren&apos;t these issues fixed already? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;We need your help to make Manuskript better!&lt;/a&gt;&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&lt;p&gt;&lt;b&gt;Versjoneringsfunksjonen har bitt påklagd mye. I denne versjonen av Manuskript er det skrudd av som forvalg for nye prosjekter for å tilby best mulig opplevelse.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Hvorfor er ikke disse problemene fikset allerede? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;Vi trenger din hjelp til å forbedre Manuskript.&lt;/a&gt;&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
