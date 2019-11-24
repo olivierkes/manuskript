@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="2.0" language="de_DE" sourcelanguage="">
+<!DOCTYPE TS>
+<TS version="2.1" language="de_DE">
 <context>
     <name>Export</name>
     <message>
@@ -163,7 +164,7 @@
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="15"/>
         <source>Simplest export to plain text. Allows you to use your own markup not understood
                   by Manuskript, for example &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</source>
-        <translation type="unfinished">Einfacher Export in Plaintext. Erlaubt die Benutzung von Markups, die von Manuskript nicht
+        <translation>Einfacher Export in Plaintext. Erlaubt die Benutzung von Markups, die von Manuskript nicht
 interpretiert werden können, wie zum Beispiel &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</translation>
     </message>
     <message>
@@ -172,7 +173,7 @@ interpretiert werden können, wie zum Beispiel &lt;a href=&apos;www.fountain.io&
     formats.&lt;/p&gt;
     &lt;p&gt;Website: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
     </source>
-        <translation type="unfinished">&lt;p&gt;Ein universaler Dokumenten-Konverter. Kann zur Konvertierung von Markup in eine Reihe von anderen Formaten genutzt
+        <translation>&lt;p&gt;Ein universaler Dokumenten-Konverter. Kann zur Konvertierung von Markup in eine Reihe von anderen Formaten genutzt
     werden.&lt;/p&gt;
     &lt;p&gt;Website: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
     </translation>
@@ -181,7 +182,7 @@ interpretiert werden können, wie zum Beispiel &lt;a href=&apos;www.fountain.io&
         <location filename="../manuskript/exporter/pandoc/PDF.py" line="19"/>
         <source>a valid LaTeX installation. Pandoc recommendations can be found on:
                      &lt;a href=&quot;https://pandoc.org/installing.html&quot;&gt;pandoc.org/installing.html&lt;/a&gt;. If you want Unicode support, you need XeLaTeX.</source>
-        <translation type="unfinished">eine funktionierende LaTex-Installation. Siehe Systemvorausetzungen für Pandoc:
+        <translation>eine funktionierende LaTex-Installation. Siehe Systemvorausetzungen für Pandoc:
                      &lt;a href=&quot;http://pandoc.org/installing.html&quot;&gt;http://pandoc.org/installing.html&lt;/a&gt;. Wenn Unicode unterstützt werden soll, wird xelatex benötigt.</translation>
     </message>
     <message>
@@ -223,12 +224,12 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="48"/>
         <source>Could not process regular expression: 
 {}</source>
-        <translation type="unfinished">Fehler bei der Verarbeitung eines regulären Ausdruckes:
+        <translation>Fehler bei der Verarbeitung eines regulären Ausdruckes:
 {}</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="70"/>
-        <source>Choose output file&#xe2;&#x80;&#xa6;</source>
+        <source>Choose output fileâ¦</source>
         <translation>Ausgabe-Datei wählenâ¦</translation>
     </message>
 </context>
@@ -310,7 +311,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="63"/>
         <source>Exclude words (comma separated):</source>
-        <translation type="unfinished">Wörter ausschließen: &lt;br&gt;(Trennung durch Komma):</translation>
+        <translation>Wörter ausschließen: &lt;br&gt;(Trennen mit Komma):</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="156"/>
@@ -375,7 +376,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="108"/>
         <source>Comma separated values</source>
-        <translation type="unfinished">Komma-getrennte Werte</translation>
+        <translation>Komma-getrennte Werte</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="113"/>
@@ -1124,9 +1125,9 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1351"/>
         <source>Add plot step</source>
-        <translation type="unfinished">Füge Handlungsschritt hinzu (Strg+Enter)</translation>
+        <translation>Füge Handlungsschritt hinzu (Strg+Enter)</translation>
     </message>
-    <message encoding="UTF-8">
+    <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2521"/>
         <source>&amp;Import…</source>
         <translation>&amp;Importieren …</translation>
@@ -1166,7 +1167,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
         <source>Ctrl+V</source>
         <translation>Strg+V</translation>
     </message>
-    <message encoding="UTF-8">
+    <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2569"/>
         <source>&amp;Split…</source>
         <translation>&amp;Aufteilen …</translation>
@@ -1259,7 +1260,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2153"/>
         <source>&amp;Header</source>
-        <translation type="unfinished"></translation>
+        <translation>Übersc&amp;hrift</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2658"/>
@@ -1364,17 +1365,17 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2750"/>
         <source>&amp;Strike</source>
-        <translation type="unfinished"></translation>
+        <translation>Durchge&amp;strichen</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2755"/>
         <source>&amp;Verbatim</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Wörtlich</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2760"/>
         <source>Su&amp;perscript</source>
-        <translation type="unfinished"></translation>
+        <translation>H&amp;ochgestellt</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2763"/>
@@ -1384,7 +1385,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2768"/>
         <source>Subsc&amp;ript</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Tiefgestellt</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2771"/>
@@ -1404,7 +1405,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2788"/>
         <source>Clear &amp;formats</source>
-        <translation type="unfinished"></translation>
+        <translation>Formatierungen &amp;löschen</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2791"/>
@@ -1429,7 +1430,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2818"/>
         <source>B&amp;lockquote</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Blockzitat</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1368"/>
@@ -1444,47 +1445,47 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1338"/>
         <source>Install {}{} to use spellcheck</source>
-        <translation type="unfinished"></translation>
+        <translation>Installlieren Sie {}{}, für eine Rechtschreibprüfung</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1380"/>
         <source>{} has no installed dictionaries</source>
-        <translation type="unfinished"></translation>
+        <translation>Für {} sind keine Wörterbücher installiert</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1401"/>
         <source>{}{} is not installed</source>
-        <translation type="unfinished"></translation>
+        <translation>{}{} ist nicht installiert</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="660"/>
         <source>Save project?</source>
-        <translation type="unfinished"></translation>
+        <translation>Projekt speichern?</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="660"/>
         <source>Save changes to project &quot;{}&quot; before closing?</source>
-        <translation type="unfinished"></translation>
+        <translation>Änderungen an Projekt &quot;{}&quot; vor dem Schließen speichern?</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="660"/>
         <source>Your changes will be lost if you don&apos;t save them.</source>
-        <translation type="unfinished"></translation>
+        <translation>Wenn Sie nicht speichern, gehen Ihre Änderungen verloren.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1594"/>
         <source>PyQt / Qt versions 5.11 and 5.12 are known to cause a crash which might result in a loss of data.</source>
-        <translation type="unfinished"></translation>
+        <translation>Es ist bekannt, dass PyQt / Qt in den Versionen 5.11 und 5.12 Abstürze verursacht, wodurch Daten verloren gehen könnten.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1595"/>
         <source>PyQt {} and Qt {} are in use.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sie verwenden PyQt {} und Qt {}.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1600"/>
         <source>Proceeding might crash and lose data</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Wenn Sie fortfahren, könnte das einen Absturz und Datenverlust zur Folge haben</translation>
     </message>
 </context>
 <context>
@@ -1532,7 +1533,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="98"/>
         <source>Application settings</source>
-        <translation type="unfinished">Benutzeroberfläche</translation>
+        <translation>Anwendungseinstellungen</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="201"/>
@@ -1572,12 +1573,12 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="410"/>
         <source>Save on project close</source>
-        <translation type="unfinished">Speichert beim Schließen</translation>
+        <translation>Projekt beim Schließen speichern</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="426"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If you check this option, your project will be saved as one single file. Easier to copy or backup, but does not allow collaborative editing, or versioning.&lt;br/&gt;If this is unchecked, your project will be saved as a folder containing many small files.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Wenn diese Option ausgewählt wurde, wird das Projekt in einer einzigen Datei gespeichert. Es ist leichter zu kopieren oder zu sichern, aber nicht für gemeinsame Bearbeitung oder Versionierung geeignet.&lt;br/&gt;Wenn diese Option nicht ausgewählt wurde, wird das Projekt in vielen kleinen einzelnen Dateien gespeichert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Wenn Sie diese Option auswählen, wird das Projekt in einer einzigen Datei gespeichert. Es ist dann leichter zu kopieren oder zu sichern, aber nicht für gemeinsame Bearbeitung oder Versionierung geeignet.&lt;br/&gt;Wenn Sie diese Option nicht auswählen, wird das Projekt in einem Ordner mit vielen kleinen einzelnen Dateien gespeichert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="432"/>
@@ -2112,7 +2113,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="159"/>
         <source>Font size:</source>
-        <translation type="unfinished">Schriftgröße:</translation>
+        <translation>Schriftgröße:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="182"/>
@@ -2122,37 +2123,37 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1094"/>
         <source>Show &amp;word count</source>
-        <translation type="unfinished">Anzahl der &amp;Wörter anzeigen</translation>
+        <translation>Anzahl der &amp;Wörter anzeigen</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1164"/>
         <source>&amp;Show word count</source>
-        <translation type="unfinished"></translation>
+        <translation>Anzahl der &amp;Wörter anzeigen</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1728"/>
         <source>&amp;New style</source>
-        <translation type="unfinished">&amp;Neuer Stile</translation>
+        <translation>&amp;Neuer Stil</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2680"/>
         <source>Typewriter mode</source>
-        <translation type="unfinished">Schreibmaschinen Modus</translation>
+        <translation>Schreibmaschinenmodus</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2693"/>
         <source>Focus mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Ablenkungsfreier Modus</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2707"/>
         <source>None</source>
-        <translation type="unfinished">Nichts</translation>
+        <translation>Keiner</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2712"/>
         <source>Sentence</source>
-        <translation type="unfinished">Satz</translation>
+        <translation>Satz</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2717"/>
@@ -2162,12 +2163,12 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2722"/>
         <source>Paragraph</source>
-        <translation type="unfinished">Absatz</translation>
+        <translation>Absatz</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="775"/>
         <source>&lt;p&gt;&lt;b&gt;The Revisions feature has been at the source of many reported issues. In this version of Manuskript it has been turned off by default for new projects in order to provide the best experience.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Why aren&apos;t these issues fixed already? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;We need your help to make Manuskript better!&lt;/a&gt;&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;&lt;b&gt;Das Feature &quot;Revisionen&quot; war die Quelle von vielen Problemberichten. In dieser Version von Manuskript ist es deswegen für besseren Bedienkomfort bei neuen Projekten standardmäßig deaktiviert.&lt;/b&gt;&lt;/p&gt;Warum sind diese Probleme noch nicht behoben?&lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;Wir brauchen Ihre Hilfe, um Manuskript zu verbessern!&lt;/a&gt;&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
@@ -2678,12 +2679,12 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
         <source>{}Level {} text</source>
         <translation>{}Level {} Text</translation>
     </message>
-    <message encoding="UTF-8">
+    <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="788"/>
         <source>Replace ... with …</source>
         <translation>... ersetzen durch …</translation>
     </message>
-    <message encoding="UTF-8">
+    <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="795"/>
         <source>Replace --- with —</source>
         <translation>--- ersetzen durch —</translation>
@@ -2765,12 +2766,12 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="149"/>
         <source>Spellcheck</source>
-        <translation type="unfinished">Rechtschreibprüfung</translation>
+        <translation>Rechtschreibprüfung</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="150"/>
         <source>Navigation</source>
-        <translation type="unfinished">Navigation</translation>
+        <translation>Navigation</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="151"/>
@@ -2780,32 +2781,32 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="152"/>
         <source>Title</source>
-        <translation type="unfinished">Titel</translation>
+        <translation>Titel</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="153"/>
         <source>Title: Show Full Path</source>
-        <translation type="unfinished">Titel: Zeige kompletten Dateipfad</translation>
+        <translation>Titel: Zeige kompletten Dateipfad</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="155"/>
         <source>Theme selector</source>
-        <translation type="unfinished"></translation>
+        <translation>Thema auswählen</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="156"/>
         <source>Word count</source>
-        <translation type="unfinished">Wortanzahl</translation>
+        <translation>Wortanzahl</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="157"/>
         <source>Progress</source>
-        <translation type="unfinished">Fortschritt</translation>
+        <translation>Fortschritt</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="158"/>
         <source>Progress: Auto Show/Hide</source>
-        <translation type="unfinished"></translation>
+        <translation>Fortschritt: Automatisch Zeigen/Verstecken</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="159"/>
@@ -2815,7 +2816,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="160"/>
         <source>Clock: Show Seconds</source>
-        <translation type="unfinished"></translation>
+        <translation>Uhr: Zeige Sekunden</translation>
     </message>
 </context>
 <context>
@@ -2874,7 +2875,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/importers/importer_ui.ui" line="45"/>
         <source>Choose file</source>
-        <translation type="unfinished">Datei wählen</translation>
+        <translation>Datei wählen</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/importers/importer_ui.ui" line="75"/>
@@ -2897,7 +2898,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="60"/>
         <source>Last accessed directory &quot;{}&quot; loaded.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zuletzt verwendeten Ordner &quot;{}&quot; geladen.</translation>
     </message>
 </context>
 <context>
@@ -3270,7 +3271,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/models/persosProxyModel.py" line="17"/>
         <source>Secondary</source>
-        <translation type="unfinished">Sekundär</translation>
+        <translation>Sekundär</translation>
     </message>
     <message>
         <location filename="../manuskript/models/persosProxyModel.py" line="18"/>
@@ -3358,7 +3359,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>1. Inciting event</source>
-        <translation type="unfinished">Übertreten der Schwelle</translation>
+        <translation>Auslösendes Ereignis</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3527,7 +3528,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/models/plotsProxyModel.py" line="23"/>
         <source>Secondary</source>
-        <translation type="unfinished">Sekundär</translation>
+        <translation>Sekundär</translation>
     </message>
     <message>
         <location filename="../manuskript/models/plotsProxyModel.py" line="24"/>
@@ -3922,28 +3923,29 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="508"/>
         <source>Open Image</source>
-        <translation type="unfinished"></translation>
+        <translation>Bild öffnen</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="508"/>
         <source>Image files (*.jpg; *.jpeg; *.png)</source>
-        <translation type="unfinished"></translation>
+        <translation>Bilddateien</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="524"/>
         <source>Error</source>
-        <translation type="unfinished">Fehler</translation>
+        <translation>Fehler</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="521"/>
         <source>Unable to load selected file</source>
-        <translation type="unfinished"></translation>
+        <translation>Laden der Datei fehlgeschlagen</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="524"/>
         <source>Unable to add selected image:
 {}</source>
-        <translation type="unfinished"></translation>
+        <translation>Hinzufügen des Bildes fehgeschlagen:
+{}</translation>
     </message>
 </context>
 <context>
@@ -3993,13 +3995,13 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
 
             &lt;p&gt;&lt;b&gt;Mark:&lt;/b&gt;&lt;/p&gt;
             </source>
-        <translation type="unfinished">
+        <translation>
             &lt;p&gt;Ausgewählte(s) Element(e) an der angegebenen Markierung aufteilen&lt;/p&gt;
 
             &lt;p&gt;Wenn eines der ausgewählten Elemente ein Ordner ist, wird es
             rekursiv auf &lt;i&gt;alle&lt;/i&gt; untergeordneten Elemente übertragen.&lt;/p&gt;
 
-            &lt;p&gt;Die Trennmarkierung kann folgende Escape-Sequenzen enthalten:
+            &lt;p&gt;Die Trennmarkierung kann folgende Escape-Zeichen enthalten:
                 &lt;ul&gt;
                     &lt;li&gt;&lt;b&gt;&lt;code&gt;\n&lt;/code&gt;&lt;/b&gt;: Zeilenumbruch&lt;/li&gt;
                     &lt;li&gt;&lt;b&gt;&lt;code&gt;\t&lt;/code&gt;&lt;/b&gt;: Tab&lt;/li&gt;
@@ -4195,7 +4197,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/welcome_ui.ui" line="190"/>
         <source>Add word count</source>
-        <translation type="unfinished">Wortziel festlegen</translation>
+        <translation>Wortziel festlegen</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome_ui.ui" line="213"/>
@@ -4488,7 +4490,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Gender roles</source>
-        <translation>Geschlichterrollen</translation>
+        <translation>Geschlechterrollen</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
@@ -4573,7 +4575,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="246"/>
         <source>Natural resources</source>
-        <translation type="unfinished"></translation>
+        <translation>Natürliche Ressourcen</translation>
     </message>
 </context>
 </TS>
