@@ -4275,7 +4275,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="238"/>
         <source>Trilogy</source>
-        <translation>Triologie</translation>
+        <translation>Trilogie</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="238"/>
