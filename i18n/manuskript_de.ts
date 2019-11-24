@@ -396,7 +396,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/importer/opmlImporter.py" line="37"/>
         <source>File open failed.</source>
-        <translation>Öffnen der Datei fehlgeschlagen</translation>
+        <translation>Öffnen der Datei fehlgeschlagen.</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/opmlImporter.py" line="65"/>
