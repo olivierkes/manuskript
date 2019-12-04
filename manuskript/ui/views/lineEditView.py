@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
+from PyQt5.QtCore import QMutex
 from PyQt5.QtWidgets import QLineEdit
 
 from manuskript.enums import Outline
@@ -13,7 +14,7 @@ class lineEditView(QLineEdit):
         self._indexes = None
         self._index = None
         self._placeholderText = None
-        self._updating = False
+        self._updating = QMutex()
 
     def setModel(self, model):
         self._model = model
@@ -55,16 +56,15 @@ class lineEditView(QLineEdit):
                 self._model.setData(self._index, self.text())
 
         elif self._indexes:
-            self._updating = True
+            self._updating.lock()
             for i in self._indexes:
                 # item = i.internalPointer()
                 if self.text() != self._model.data(i):
                     self._model.setData(i, self.text())
-            self._updating = False
+            self._updating.unlock()
 
     def update(self, topLeft, bottomRight):
-
-        if self._updating:
+        if not self._updating.tryLock():
             # We are currently putting data in the model, so no updates
             return
 
@@ -79,6 +79,8 @@ class lineEditView(QLineEdit):
                     update = True
             if update:
                 self.updateText()
+        
+        self._updating.unlock()
 
     def updateText(self):
         if self._index:
