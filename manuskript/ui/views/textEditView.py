@@ -262,6 +262,8 @@ class textEditView(QTextEdit):
                     update = True
             if update:
                 self.updateText()
+        
+        self._updating.unlock()
 
     def disconnectDocument(self):
         try:
