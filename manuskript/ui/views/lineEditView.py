@@ -50,39 +50,39 @@ class lineEditView(QLineEdit):
         self.updateText()
 
     def submit(self):
+        self._updating.lock()
+        text = self.text()
+        self._updating.unlock()
+
         if self._index:
             # item = self._index.internalPointer()
-            if self.text() != self._model.data(self._index):
-                self._model.setData(self._index, self.text())
+            if text != self._model.data(self._index):
+                self._model.setData(self._index, text)
 
         elif self._indexes:
-            self._updating.lock()
             for i in self._indexes:
                 # item = i.internalPointer()
-                if self.text() != self._model.data(i):
-                    self._model.setData(i, self.text())
-            self._updating.unlock()
+                if text != self._model.data(i):
+                    self._model.setData(i, text)
 
     def update(self, topLeft, bottomRight):
-        if not self._updating.tryLock():
-            # We are currently putting data in the model, so no updates
-            return
+        update = False
 
         if self._index:
             if topLeft.row() <= self._index.row() <= bottomRight.row():
-                self.updateText()
+                update = True
 
         elif self._indexes:
-            update = False
             for i in self._indexes:
                 if topLeft.row() <= i.row() <= bottomRight.row():
                     update = True
-            if update:
-                self.updateText()
-        
-        self._updating.unlock()
+
+        if update:
+            self.updateText()
 
     def updateText(self):
+        self._updating.lock()
+
         if self._index:
             # item = self._index.internalPointer()
             # txt = toString(item.data(self._column))
@@ -112,3 +112,6 @@ class lineEditView(QLineEdit):
                     self._placeholderText = self.placeholderText()
 
                 self.setPlaceholderText(self.tr("Various"))
+
+        self._updating.unlock()
+
