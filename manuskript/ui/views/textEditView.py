@@ -3,7 +3,7 @@
 import re
 
 from PyQt5.Qt import QApplication
-from PyQt5.QtCore import QTimer, QModelIndex, Qt, QEvent, pyqtSignal, QRegExp, QLocale, QPersistentModelIndex
+from PyQt5.QtCore import QTimer, QModelIndex, Qt, QEvent, pyqtSignal, QRegExp, QLocale, QPersistentModelIndex, QMutex
 from PyQt5.QtGui import QTextBlockFormat, QTextCharFormat, QFont, QColor, QIcon, QMouseEvent, QTextCursor
 from PyQt5.QtWidgets import QWidget, QTextEdit, qApp, QAction, QMenu
 
@@ -24,7 +24,7 @@ class textEditView(QTextEdit):
         self._indexes = None
         self._model = None
         self._placeholderText = self.placeholderText()
-        self._updating = False
+        self._updating = QMutex()
         self._item = None
         self._highlighting = highlighting
         self._textFormat = "text"
@@ -237,11 +237,9 @@ class textEditView(QTextEdit):
             self.highlighter.setDefaultBlockFormat(self._defaultBlockFormat)
 
     def update(self, topLeft, bottomRight):
-        if self._updating:
-            return
+        update = False
 
         if self._index and self._index.isValid():
-
             if topLeft.parent() != self._index.parent():
                 return
 
@@ -253,15 +251,15 @@ class textEditView(QTextEdit):
 
             if topLeft.row() <= self._index.row() <= bottomRight.row():
                 if topLeft.column() <= self._column <= bottomRight.column():
-                    self.updateText()
+                    update = True
 
         elif self._indexes:
-            update = False
             for i in self._indexes:
                 if topLeft.row() <= i.row() <= bottomRight.row():
                     update = True
-            if update:
-                self.updateText()
+
+        if update:
+            self.updateText()
 
     def disconnectDocument(self):
         try:
@@ -273,10 +271,9 @@ class textEditView(QTextEdit):
         self.document().contentsChanged.connect(self.updateTimer.start, F.AUC)
 
     def updateText(self):
-        if self._updating:
-            return
+        self._updating.lock()
+
         # print("Updating", self.objectName())
-        self._updating = True
         if self._index:
             self.disconnectDocument()
             if self.toPlainText() != F.toString(self._index.data()):
@@ -307,30 +304,29 @@ class textEditView(QTextEdit):
 
                 self.setPlaceholderText(self.tr("Various"))
             self.reconnectDocument()
-        self._updating = False
+
+        self._updating.unlock()
 
     def submit(self):
         self.updateTimer.stop()
-        if self._updating:
-            return
+
+        self._updating.lock()
+        text = self.toPlainText()
+        self._updating.unlock()
+
         # print("Submitting", self.objectName())
         if self._index and self._index.isValid():
             # item = self._index.internalPointer()
-            if self.toPlainText() != self._index.data():
+            if text != self._index.data():
                 # print("    Submitting plain text")
-                self._updating = True
-                self._model.setData(QModelIndex(self._index),
-                                    self.toPlainText())
-                self._updating = False
+                self._model.setData(QModelIndex(self._index), text)
 
         elif self._indexes:
-            self._updating = True
             for i in self._indexes:
                 item = i.internalPointer()
-                if self.toPlainText() != F.toString(item.data(self._column)):
+                if text != F.toString(item.data(self._column)):
                     print("Submitting many indexes")
-                    self._model.setData(i, self.toPlainText())
-            self._updating = False
+                    self._model.setData(i, text)
 
     def keyPressEvent(self, event):
         if event.key() == Qt.Key_V and event.modifiers() & Qt.ControlModifier:
