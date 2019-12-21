@@ -9,7 +9,7 @@ from PyQt5.QtCore import (pyqtSignal, QSignalMapper, QTimer, QSettings, Qt, QPoi
                           QRegExp, QUrl, QSize, QModelIndex)
 from PyQt5.QtGui import QStandardItemModel, QIcon, QColor
 from PyQt5.QtWidgets import QMainWindow, QHeaderView, qApp, QMenu, QActionGroup, QAction, QStyle, QListWidgetItem, \
-    QLabel, QDockWidget, QWidget, QMessageBox
+    QLabel, QDockWidget, QWidget, QMessageBox, QLineEdit
 
 from manuskript import settings
 from manuskript.enums import Character, PlotStep, Plot, World, Outline
@@ -129,6 +129,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.actCopy.triggered.connect(self.documentsCopy)
         self.actCut.triggered.connect(self.documentsCut)
         self.actPaste.triggered.connect(self.documentsPaste)
+        self.actSearch.triggered.connect(self.doSearch)
         self.actRename.triggered.connect(self.documentsRename)
         self.actDuplicate.triggered.connect(self.documentsDuplicate)
         self.actDelete.triggered.connect(self.documentsDelete)
@@ -499,6 +500,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def documentsPaste(self):
         "Paste clipboard item(s) into selected item."
         if self._lastFocus: self._lastFocus.paste()
+    def doSearch(self):
+        "Do a global search."
+        self.dckSearch.show()
+        self.dckSearch.activateWindow()
+        searchTextInput = self.dckSearch.findChild(QLineEdit, 'searchTextInput')
+        searchTextInput.setFocus()
+        searchTextInput.selectAll()
     def documentsRename(self):
         "Rename selected item."
         if self._lastFocus: self._lastFocus.rename()
