@@ -1444,47 +1444,47 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/mainWindow.py" line="1338"/>
         <source>Install {}{} to use spellcheck</source>
-        <translation type="unfinished"></translation>
+        <translation>Instale {}{} para usar a verificação ortográfica</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1380"/>
         <source>{} has no installed dictionaries</source>
-        <translation type="unfinished"></translation>
+        <translation>{} não possui dicionários instalados</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1401"/>
         <source>{}{} is not installed</source>
-        <translation type="unfinished"></translation>
+        <translation>{}{} não está instalado</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="660"/>
         <source>Save project?</source>
-        <translation type="unfinished"></translation>
+        <translation>Salvar o projeto?</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="660"/>
         <source>Save changes to project &quot;{}&quot; before closing?</source>
-        <translation type="unfinished"></translation>
+        <translation>Salvar mudanças no projeto &quot;{}&quot; antes de fechar?</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="660"/>
         <source>Your changes will be lost if you don&apos;t save them.</source>
-        <translation type="unfinished"></translation>
+        <translation>Suas mudanças vão perder se você não salvá-las.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1594"/>
         <source>PyQt / Qt versions 5.11 and 5.12 are known to cause a crash which might result in a loss of data.</source>
-        <translation type="unfinished"></translation>
+        <translation>PyQt / Qt versão 5.11 e 5.12 são conhecidas para causar travamentos e podem resultar em perda de dados.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1595"/>
         <source>PyQt {} and Qt {} are in use.</source>
-        <translation type="unfinished"></translation>
+        <translation>PyQt {} e Qt {} estão em uso.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1600"/>
         <source>Proceeding might crash and lose data</source>
-        <translation type="unfinished"></translation>
+        <translation>Continuando pode travar e perder dados</translation>
     </message>
 </context>
 <context>
@@ -1532,7 +1532,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="98"/>
         <source>Application settings</source>
-        <translation type="unfinished">Estilo da aplicação</translation>
+        <translation>Configurações do aplicativo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="201"/>
@@ -1572,12 +1572,12 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="410"/>
         <source>Save on project close</source>
-        <translation type="unfinished">Salvar ao sair</translation>
+        <translation>Salvar ao sair</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="426"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If you check this option, your project will be saved as one single file. Easier to copy or backup, but does not allow collaborative editing, or versioning.&lt;br/&gt;If this is unchecked, your project will be saved as a folder containing many small files.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Se você marcar essa opção, seu projeto será salvo como um único arquivo. Mais fácil de copiar ou fazer backup, mas não permite edição colaborativa ou controle de versão.&lt;br/&gt;Se isso não for verificado, seu projeto será salvo como uma pasta contendo muitos arquivos pequenos.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Se você marcar essa opção, seu projeto será salvo como um único arquivo. Mais fácil de copiar ou fazer backup, mas não permite edição colaborativa ou controle de versão.&lt;br/&gt;Se não for marcado aqui, o seu projeto será salvo como uma pasta contendo muitos arquivos pequenos.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="432"/>
@@ -2102,72 +2102,72 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="113"/>
         <source>Style:</source>
-        <translation type="unfinished"></translation>
+        <translation>Estilo:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="136"/>
         <source>Language:</source>
-        <translation type="unfinished"></translation>
+        <translation>Idioma:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="159"/>
         <source>Font size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tamanho da fonte:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="182"/>
         <source>Restarting Manuskript ensures all settings take effect.</source>
-        <translation type="unfinished"></translation>
+        <translation>Reiniciar o Manuskript para garantir que as configurações façam efeitos.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1094"/>
         <source>Show &amp;word count</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar a contagem de &amp;palavras</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1164"/>
         <source>&amp;Show word count</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Mostrar a contagem de palavras</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1728"/>
         <source>&amp;New style</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Novo estilo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2680"/>
         <source>Typewriter mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Modo máquina de escrever</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2693"/>
         <source>Focus mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Modo de foco</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2707"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Nenhum</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2712"/>
         <source>Sentence</source>
-        <translation type="unfinished"></translation>
+        <translation>Sentença</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2717"/>
         <source>Line</source>
-        <translation type="unfinished"></translation>
+        <translation>Linha</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2722"/>
         <source>Paragraph</source>
-        <translation type="unfinished"></translation>
+        <translation>Parágrafo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="775"/>
         <source>&lt;p&gt;&lt;b&gt;The Revisions feature has been at the source of many reported issues. In this version of Manuskript it has been turned off by default for new projects in order to provide the best experience.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Why aren&apos;t these issues fixed already? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;We need your help to make Manuskript better!&lt;/a&gt;&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;&lt;b&gt;As ferramentas de revisões são fontes de muitos problemas reportadas. Nesta versão do Manuskript, ele foi desativado por padrão para novos projetos, a fim de fornecer a melhor experiência.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Por que esses problemas já não foram corrigidos? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;Nós precisamos de sua ajuda para fazer o Manuskript melhor!&lt;/a&gt;&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
@@ -2765,57 +2765,57 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="149"/>
         <source>Spellcheck</source>
-        <translation type="unfinished"></translation>
+        <translation>Verificador ortográfico</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="150"/>
         <source>Navigation</source>
-        <translation type="unfinished"></translation>
+        <translation>Navegação</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="151"/>
         <source>New Text</source>
-        <translation type="unfinished"></translation>
+        <translation>Novo texto</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="152"/>
         <source>Title</source>
-        <translation type="unfinished">Título</translation>
+        <translation>Título</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="153"/>
         <source>Title: Show Full Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Título: Mostrar o caminho completo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="155"/>
         <source>Theme selector</source>
-        <translation type="unfinished"></translation>
+        <translation>Seletor de tema</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="156"/>
         <source>Word count</source>
-        <translation type="unfinished">Contagem de palavras</translation>
+        <translation>Contagem de palavras</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="157"/>
         <source>Progress</source>
-        <translation type="unfinished">Progresso</translation>
+        <translation>Progresso</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="158"/>
         <source>Progress: Auto Show/Hide</source>
-        <translation type="unfinished"></translation>
+        <translation>Progresso: Auto Mostrar/Esconder</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="159"/>
         <source>Clock</source>
-        <translation type="unfinished"></translation>
+        <translation>Relógio</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="160"/>
         <source>Clock: Show Seconds</source>
-        <translation type="unfinished"></translation>
+        <translation>Relógio: Mostrar Segundos</translation>
     </message>
 </context>
 <context>
@@ -2874,7 +2874,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/importers/importer_ui.ui" line="45"/>
         <source>Choose file</source>
-        <translation type="unfinished">Escolha o arquivo</translation>
+        <translation>Escolha o arquivo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/importers/importer_ui.ui" line="75"/>
@@ -2897,7 +2897,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/welcome.py" line="60"/>
         <source>Last accessed directory &quot;{}&quot; loaded.</source>
-        <translation type="unfinished"></translation>
+        <translation>Último diretório acessado &quot;{}&quot;.</translation>
     </message>
 </context>
 <context>
@@ -3270,7 +3270,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/models/persosProxyModel.py" line="17"/>
         <source>Secondary</source>
-        <translation type="unfinished">Secundário</translation>
+        <translation>Secundário</translation>
     </message>
     <message>
         <location filename="../manuskript/models/persosProxyModel.py" line="18"/>
@@ -3527,7 +3527,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/models/plotsProxyModel.py" line="23"/>
         <source>Secondary</source>
-        <translation type="unfinished">Secundário</translation>
+        <translation>Secundário</translation>
     </message>
     <message>
         <location filename="../manuskript/models/plotsProxyModel.py" line="24"/>
@@ -3922,28 +3922,29 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/settingsWindow.py" line="508"/>
         <source>Open Image</source>
-        <translation type="unfinished"></translation>
+        <translation>Abrir Imagem</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="508"/>
         <source>Image files (*.jpg; *.jpeg; *.png)</source>
-        <translation type="unfinished"></translation>
+        <translation>Arquivos de imagem (*.jpg; *.jpeg; *.png)</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="524"/>
         <source>Error</source>
-        <translation type="unfinished">Erro</translation>
+        <translation>Erro</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="521"/>
         <source>Unable to load selected file</source>
-        <translation type="unfinished"></translation>
+        <translation>Incapaz de carregar o arquivo selecionado</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="524"/>
         <source>Unable to add selected image:
 {}</source>
-        <translation type="unfinished"></translation>
+        <translation>Incapaz de adicionar a imagem selecionada:
+{}</translation>
     </message>
 </context>
 <context>
@@ -3993,7 +3994,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
 
             &lt;p&gt;&lt;b&gt;Mark:&lt;/b&gt;&lt;/p&gt;
             </source>
-        <translation type="unfinished">
+        <translation>
             &lt;p&gt;Dividir o(s) item(ns) selecionado(s) na marca indicada.&lt;/p&gt;
 
             &lt;p&gt;Se um dos itens selecionados for uma pasta, ele será aplicado recursivamente para &lt;i&gt;todos&lt;/i&gt; seus itens filhos.&lt;/p&gt;
@@ -4194,7 +4195,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/welcome_ui.ui" line="190"/>
         <source>Add word count</source>
-        <translation type="unfinished">Adicionar contagem de palavras</translation>
+        <translation>Adicionar contagem de palavras</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome_ui.ui" line="213"/>
@@ -4572,7 +4573,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/models/worldModel.py" line="246"/>
         <source>Natural resources</source>
-        <translation type="unfinished"></translation>
+        <translation>Recursos naturais</translation>
     </message>
 </context>
 </TS>
