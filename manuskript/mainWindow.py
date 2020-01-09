@@ -1596,7 +1596,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             print("WARNING:", warning1, warning2)
 
             msg = QMessageBox(QMessageBox.Warning,
-                self.tr("Proceeding might crash and lose data"),
+                self.tr("Proceed with import at your own risk"),
                 "<p><b>" +
                     warning1 +
                 "</b></p>" +
