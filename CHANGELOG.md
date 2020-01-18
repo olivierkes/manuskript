@@ -1,6 +1,34 @@
-# Change Log
+# Changelog
+
+## [0.11.0](https://github.com/olivierkes/manuskript/tree/0.11.0) (2020-01-18)
+
+[Full Changelog](https://github.com/olivierkes/manuskript/compare/0.10.0...HEAD)
+
+**Fixed bugs:**
+
+- Ctrl+Space destroys and Ctrl+Z can't recover [\#703](https://github.com/olivierkes/manuskript/issues/703)
+- References Mysteriously Delete in Summary and Reference/Notes Fields [\#688](https://github.com/olivierkes/manuskript/issues/688)
+- After use of ctrl-z or ctrl-v Manuskript goes in inactive State [\#672](https://github.com/olivierkes/manuskript/issues/672)
+- Cut and Paste - Comment Field - First shows, then disappiers [\#670](https://github.com/olivierkes/manuskript/issues/670)
+- 0.10.0 crash using Windows dark mode [\#659](https://github.com/olivierkes/manuskript/issues/659)
+
+**Closed issues:**
+
+- Can't get the program to open [\#686](https://github.com/olivierkes/manuskript/issues/686)
+- Default for separator between folders should be pagebreak [\#680](https://github.com/olivierkes/manuskript/issues/680)
+- \[Feature Request\] Automatically calculate folder word count goal [\#664](https://github.com/olivierkes/manuskript/issues/664)
+
+**Merged pull requests:**
+
+- Change wording of import warning for PyQt/Qt versions 5.11 and 5.12 [\#715](https://github.com/olivierkes/manuskript/pull/715) ([gedakc](https://github.com/gedakc))
+- Remove support for macOS X Sierra \(10.12\) in Travis CI build [\#713](https://github.com/olivierkes/manuskript/pull/713) ([gedakc](https://github.com/gedakc))
+- Fixed bugs caused by parallel access during multithreading [\#706](https://github.com/olivierkes/manuskript/pull/706) ([TheJackiMonster](https://github.com/TheJackiMonster))
+- More german translations [\#701](https://github.com/olivierkes/manuskript/pull/701) ([argail1980](https://github.com/argail1980))
+- Fixed translation mistake. Trilogy translates to Trilogie in German [\#700](https://github.com/olivierkes/manuskript/pull/700) ([argail1980](https://github.com/argail1980))
+- Fix for Windows 10 Dark Theme on older Qt versions [\#660](https://github.com/olivierkes/manuskript/pull/660) ([worstje](https://github.com/worstje))
 
 ## [0.10.0](https://github.com/olivierkes/manuskript/tree/0.10.0) (2019-09-30)
+
 [Full Changelog](https://github.com/olivierkes/manuskript/compare/0.9.0...0.10.0)
 
 **Implemented enhancements:**
@@ -31,28 +59,28 @@
 
 **Closed issues:**
 
-- Word count goal progress bar broken in develop. [\#652](https://github.com/olivierkes/manuskript/issues/652)
 - Fullscreen mode causes spike in CPU [\#643](https://github.com/olivierkes/manuskript/issues/643)
 - Italian dictionary [\#638](https://github.com/olivierkes/manuskript/issues/638)
 - Manuskript 9.0 crashes when creating new project or opening existing project  [\#631](https://github.com/olivierkes/manuskript/issues/631)
 - Spell Check Not working [\#625](https://github.com/olivierkes/manuskript/issues/625)
-- story line feature crashing [\#620](https://github.com/olivierkes/manuskript/issues/620)
 - Manuskript me fastidio un documento de word [\#616](https://github.com/olivierkes/manuskript/issues/616)
 - Feature request: Option to vertically center text input line on screen in fullscreen mode [\#602](https://github.com/olivierkes/manuskript/issues/602)
-- Italian translation not applied, application still english. [\#599](https://github.com/olivierkes/manuskript/issues/599)
 - File Randomly won't open [\#597](https://github.com/olivierkes/manuskript/issues/597)
-- Adding Persian\(Farsi\) in Weblate [\#596](https://github.com/olivierkes/manuskript/issues/596)
-- Importing images into Manuskript [\#593](https://github.com/olivierkes/manuskript/issues/593)
-- British English translation [\#592](https://github.com/olivierkes/manuskript/issues/592)
 - utf-8' codec can't decode byte 0xff in position 0 [\#591](https://github.com/olivierkes/manuskript/issues/591)
 - Issue with saving as directory [\#589](https://github.com/olivierkes/manuskript/issues/589)
-- Crashes in outliner [\#582](https://github.com/olivierkes/manuskript/issues/582)
 - Headings h4 not translated from Markdown to ODF [\#580](https://github.com/olivierkes/manuskript/issues/580)
 - \[BUG\] Shim error [\#579](https://github.com/olivierkes/manuskript/issues/579)
 - Crash when edit text [\#555](https://github.com/olivierkes/manuskript/issues/555)
 - Unusual environment failure [\#547](https://github.com/olivierkes/manuskript/issues/547)
 - Won't run \(Arch Linux\) [\#546](https://github.com/olivierkes/manuskript/issues/546)
 - Rendre extensible les modèles d'intrigue [\#329](https://github.com/olivierkes/manuskript/issues/329)
+- Word count goal progress bar broken in develop. [\#652](https://github.com/olivierkes/manuskript/issues/652)
+- story line feature crashing [\#620](https://github.com/olivierkes/manuskript/issues/620)
+- Italian translation not applied, application still english. [\#599](https://github.com/olivierkes/manuskript/issues/599)
+- Adding Persian\(Farsi\) in Weblate [\#596](https://github.com/olivierkes/manuskript/issues/596)
+- Importing images into Manuskript [\#593](https://github.com/olivierkes/manuskript/issues/593)
+- British English translation [\#592](https://github.com/olivierkes/manuskript/issues/592)
+- Crashes in outliner [\#582](https://github.com/olivierkes/manuskript/issues/582)
 
 **Merged pull requests:**
 
@@ -89,6 +117,7 @@
 - Fix misc. typos [\#489](https://github.com/olivierkes/manuskript/pull/489) ([luzpaz](https://github.com/luzpaz))
 
 ## [0.9.0](https://github.com/olivierkes/manuskript/tree/0.9.0) (2019-04-04)
+
 [Full Changelog](https://github.com/olivierkes/manuskript/compare/0.8.0...0.9.0)
 
 **Implemented enhancements:**
@@ -149,6 +178,7 @@
 - translation suffix, change translation load order [\#430](https://github.com/olivierkes/manuskript/pull/430) ([lingsamuel](https://github.com/lingsamuel))
 
 ## [0.8.0](https://github.com/olivierkes/manuskript/tree/0.8.0) (2018-12-05)
+
 [Full Changelog](https://github.com/olivierkes/manuskript/compare/0.7.0...0.8.0)
 
 **Fixed bugs:**
@@ -187,6 +217,7 @@
 - Moved incorrectly placed parameter to correct place. Closes \#377. [\#389](https://github.com/olivierkes/manuskript/pull/389) ([RiderExMachina](https://github.com/RiderExMachina))
 
 ## [0.7.0](https://github.com/olivierkes/manuskript/tree/0.7.0) (2018-08-15)
+
 [Full Changelog](https://github.com/olivierkes/manuskript/compare/0.6.0...0.7.0)
 
 **Implemented enhancements:**
@@ -245,6 +276,7 @@
 - Build MacOS release with XCode 7.3 image [\#287](https://github.com/olivierkes/manuskript/pull/287) ([katafrakt](https://github.com/katafrakt))
 
 ## [0.6.0](https://github.com/olivierkes/manuskript/tree/0.6.0) (2017-11-29)
+
 [Full Changelog](https://github.com/olivierkes/manuskript/compare/0.5.0...0.6.0)
 
 **Implemented enhancements:**
@@ -289,6 +321,7 @@
 - Adds: Import OPML [\#192](https://github.com/olivierkes/manuskript/pull/192) ([camstevenson](https://github.com/camstevenson))
 
 ## [0.5.0](https://github.com/olivierkes/manuskript/tree/0.5.0) (2017-10-31)
+
 [Full Changelog](https://github.com/olivierkes/manuskript/compare/0.4.0...0.5.0)
 
 **Implemented enhancements:**
@@ -367,6 +400,7 @@
 - Fixes: incorrect reference to 32px icon [\#97](https://github.com/olivierkes/manuskript/pull/97) ([gedakc](https://github.com/gedakc))
 
 ## [0.4.0](https://github.com/olivierkes/manuskript/tree/0.4.0) (2017-05-25)
+
 [Full Changelog](https://github.com/olivierkes/manuskript/compare/0.3.0...0.4.0)
 
 **Implemented enhancements:**
@@ -439,6 +473,7 @@
 - Added spanish translation \(and changed "chuleta" for "guía rápida"\). [\#66](https://github.com/olivierkes/manuskript/pull/66) ([jmgaguilera](https://github.com/jmgaguilera))
 
 ## [0.3.0](https://github.com/olivierkes/manuskript/tree/0.3.0) (2016-03-31)
+
 [Full Changelog](https://github.com/olivierkes/manuskript/compare/0.2.0...0.3.0)
 
 **Fixed bugs:**
@@ -453,6 +488,7 @@
 - Windows installation issue [\#16](https://github.com/olivierkes/manuskript/issues/16)
 
 ## [0.2.0](https://github.com/olivierkes/manuskript/tree/0.2.0) (2016-02-28)
+
 [Full Changelog](https://github.com/olivierkes/manuskript/compare/0.1.1...0.2.0)
 
 **Fixed bugs:**
@@ -461,6 +497,7 @@
 - Save file doesn't automatically add .msk [\#2](https://github.com/olivierkes/manuskript/issues/2)
 
 ## [0.1.1](https://github.com/olivierkes/manuskript/tree/0.1.1) (2016-02-08)
+
 [Full Changelog](https://github.com/olivierkes/manuskript/compare/0.1.0...0.1.1)
 
 **Fixed bugs:**
@@ -469,5 +506,8 @@
 
 ## [0.1.0](https://github.com/olivierkes/manuskript/tree/0.1.0) (2016-02-06)
 
+[Full Changelog](https://github.com/olivierkes/manuskript/compare/5df82d5e2de7cadd75b013c48ce4575688dd804a...0.1.0)
 
-\* *This Change Log was automatically generated by [github_changelog_generator](https://github.com/skywinder/Github-Changelog-Generator)*
+
+
+\* *This Changelog was automatically generated by [github_changelog_generator](https://github.com/github-changelog-generator/github-changelog-generator)*
