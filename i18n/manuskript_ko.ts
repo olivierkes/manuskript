@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="ko" sourcelanguage="">
+<!DOCTYPE TS><TS version="2.0" language="ko" sourcelanguage="">
 <context>
     <name>Export</name>
     <message>
@@ -226,7 +225,7 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="70"/>
-        <source>Choose output fileâ¦</source>
+        <source>Choose output file&#xe2;&#x80;&#xa6;</source>
         <translation>내보낼 파일을 고르세요...</translation>
     </message>
 </context>
@@ -1480,8 +1479,8 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1600"/>
-        <source>Proceeding might crash and lose data</source>
-        <translation>속행 시 충돌과 데이터 손실 우려</translation>
+        <source>Proceed with import at your own risk</source>
+        <translation type="unfinished">속행 시 충돌과 데이터 손실 우려</translation>
     </message>
 </context>
 <context>
@@ -1714,7 +1713,7 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1252"/>
         <source>Outline</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">개요</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1444"/>
@@ -2170,17 +2169,17 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
 <context>
     <name>SpellAction</name>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="462"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="458"/>
         <source>Spelling Suggestions</source>
         <translation>추천 단어</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="470"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="466"/>
         <source>&amp;Add to dictionary</source>
         <translation>사전에 추가(&amp;A)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="486"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="482"/>
         <source>&amp;Remove from custom dictionary</source>
         <translation>사용자 사전에서 제거(&amp;R)</translation>
     </message>
@@ -2371,7 +2370,7 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
     <message>
         <location filename="../manuskript/ui/views/cmbOutlineCharacterChoser.py" line="34"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">끔</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/cmbOutlineCharacterChoser.py" line="36"/>
@@ -2792,7 +2791,7 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="156"/>
         <source>Word count</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">낱말 수</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="157"/>
@@ -2900,9 +2899,9 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
 <context>
     <name>lineEditView</name>
     <message>
-        <location filename="../manuskript/ui/views/lineEditView.py" line="112"/>
+        <location filename="../manuskript/ui/views/lineEditView.py" line="114"/>
         <source>Various</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">여럿</translation>
     </message>
 </context>
 <context>
@@ -2993,7 +2992,7 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.ui" line="102"/>
         <source>Outline</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">개요</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.ui" line="198"/>
@@ -3090,7 +3089,7 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="136"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">끔</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="163"/>
@@ -3105,22 +3104,22 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="283"/>
         <source>New</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">추가</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="142"/>
         <source>Main</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">주연</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="143"/>
         <source>Secondary</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">조연</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="144"/>
         <source>Minor</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">단역</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="197"/>
@@ -3208,7 +3207,7 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
     <message>
         <location filename="../manuskript/ui/views/outlineDelegates.py" line="141"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">끔</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineDelegates.py" line="143"/>
@@ -3262,12 +3261,12 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
     <message>
         <location filename="../manuskript/models/persosProxyModel.py" line="16"/>
         <source>Main</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">주연</translation>
     </message>
     <message>
         <location filename="../manuskript/models/persosProxyModel.py" line="17"/>
         <source>Secondary</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">조연</translation>
     </message>
     <message>
         <location filename="../manuskript/models/persosProxyModel.py" line="18"/>
@@ -3280,7 +3279,7 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">일반</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3295,7 +3294,7 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Progress</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">진척</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3463,7 +3462,7 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
     <message>
         <location filename="../manuskript/models/plotModel.py" line="140"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">이름</translation>
     </message>
     <message>
         <location filename="../manuskript/models/plotModel.py" line="142"/>
@@ -3478,17 +3477,17 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
     <message>
         <location filename="../manuskript/models/plotModel.py" line="246"/>
         <source>Main</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">주연</translation>
     </message>
     <message>
         <location filename="../manuskript/models/plotModel.py" line="246"/>
         <source>Secondary</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">조연</translation>
     </message>
     <message>
         <location filename="../manuskript/models/plotModel.py" line="246"/>
         <source>Minor</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">단역</translation>
     </message>
 </context>
 <context>
@@ -3496,17 +3495,17 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
     <message>
         <location filename="../manuskript/ui/views/plotTreeView.py" line="128"/>
         <source>Main</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">주연</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotTreeView.py" line="128"/>
         <source>Secondary</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">조연</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotTreeView.py" line="128"/>
         <source>Minor</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">단역</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotTreeView.py" line="189"/>
@@ -3519,12 +3518,12 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
     <message>
         <location filename="../manuskript/models/plotsProxyModel.py" line="22"/>
         <source>Main</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">주연</translation>
     </message>
     <message>
         <location filename="../manuskript/models/plotsProxyModel.py" line="23"/>
         <source>Secondary</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">조연</translation>
     </message>
     <message>
         <location filename="../manuskript/models/plotsProxyModel.py" line="24"/>
@@ -3557,7 +3556,7 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
     <message>
         <location filename="../manuskript/ui/views/propertiesView_ui.ui" line="255"/>
         <source>Compile</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">엮기</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/propertiesView_ui.ui" line="269"/>
@@ -3567,7 +3566,7 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
     <message>
         <location filename="../manuskript/ui/views/propertiesView_ui.ui" line="291"/>
         <source>Word count</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">낱말 수</translation>
     </message>
 </context>
 <context>
@@ -3625,12 +3624,12 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
     <message>
         <location filename="../manuskript/models/references.py" line="201"/>
         <source>Basic info</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">기본 정보</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="202"/>
         <source>Detailed info</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">상세 정보</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="203"/>
@@ -3645,12 +3644,12 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
     <message>
         <location filename="../manuskript/models/references.py" line="362"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">설명</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="282"/>
         <source>Result</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">결과</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="283"/>
@@ -3753,7 +3752,7 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="260"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">제거</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="45"/>
@@ -3861,7 +3860,7 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
     <message>
         <location filename="../manuskript/ui/search.py" line="51"/>
         <source>Notes</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">비고</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="52"/>
@@ -3892,52 +3891,52 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
 <context>
     <name>settingsWindow</name>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="648"/>
+        <location filename="../manuskript/settingsWindow.py" line="649"/>
         <source>New status</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="669"/>
+        <location filename="../manuskript/settingsWindow.py" line="670"/>
         <source>New label</source>
         <translation>새 라벨</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="705"/>
+        <location filename="../manuskript/settingsWindow.py" line="706"/>
         <source>newtheme</source>
         <translation>새테마</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="715"/>
+        <location filename="../manuskript/settingsWindow.py" line="716"/>
         <source>New theme</source>
         <translation>새 테마</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="747"/>
+        <location filename="../manuskript/settingsWindow.py" line="748"/>
         <source> (read-only)</source>
         <translation> (읽기 전용)</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="508"/>
+        <location filename="../manuskript/settingsWindow.py" line="509"/>
         <source>Open Image</source>
         <translation>그림 열기</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="508"/>
+        <location filename="../manuskript/settingsWindow.py" line="509"/>
         <source>Image files (*.jpg; *.jpeg; *.png)</source>
         <translation>그림 파일 (*.jpg; *.jpeg; *.png)</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="524"/>
+        <location filename="../manuskript/settingsWindow.py" line="525"/>
         <source>Error</source>
         <translation>오류</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="521"/>
+        <location filename="../manuskript/settingsWindow.py" line="522"/>
         <source>Unable to load selected file</source>
         <translation>선택한 파일을 불러올 수 없음</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="524"/>
+        <location filename="../manuskript/settingsWindow.py" line="525"/>
         <source>Unable to add selected image:
 {}</source>
         <translation>선택한 그림을 추가할 수 없습니다:
@@ -3959,17 +3958,17 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
     <message>
         <location filename="../manuskript/ui/views/sldImportance.py" line="29"/>
         <source>Minor</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">단역</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/sldImportance.py" line="30"/>
         <source>Secondary</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">조연</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/sldImportance.py" line="31"/>
         <source>Main</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">주연</translation>
     </message>
 </context>
 <context>
@@ -4048,9 +4047,9 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
 <context>
     <name>textEditView</name>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="309"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="306"/>
         <source>Various</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">여럿</translation>
     </message>
 </context>
 <context>
@@ -4289,7 +4288,7 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="334"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">글</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="337"/>

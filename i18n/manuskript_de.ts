@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="de_DE">
+<!DOCTYPE TS><TS version="2.0" language="de_DE" sourcelanguage="">
 <context>
     <name>Export</name>
     <message>
@@ -229,7 +228,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="70"/>
-        <source>Choose output fileâ¦</source>
+        <source>Choose output file&#xe2;&#x80;&#xa6;</source>
         <translation>Ausgabe-Datei wählenâ¦</translation>
     </message>
 </context>
@@ -1129,8 +1128,8 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2521"/>
-        <source>&amp;Import…</source>
-        <translation>&amp;Importieren …</translation>
+        <source>&amp;Import&#xe2;&#x80;&#xa6;</source>
+        <translation type="unfinished">&amp;Importieren …</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2524"/>
@@ -1169,8 +1168,8 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2569"/>
-        <source>&amp;Split…</source>
-        <translation>&amp;Aufteilen …</translation>
+        <source>&amp;Split&#xe2;&#x80;&#xa6;</source>
+        <translation type="unfinished">&amp;Aufteilen …</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2572"/>
@@ -1484,7 +1483,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1600"/>
-        <source>Proceeding might crash and lose data</source>
+        <source>Proceed with import at your own risk</source>
         <translation type="unfinished">Wenn Sie fortfahren, könnte das einen Absturz und Datenverlust zur Folge haben</translation>
     </message>
 </context>
@@ -2174,17 +2173,17 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
 <context>
     <name>SpellAction</name>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="462"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="458"/>
         <source>Spelling Suggestions</source>
         <translation>Korrekturvorschläge</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="470"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="466"/>
         <source>&amp;Add to dictionary</source>
         <translation>Zum Wörterbuch &amp;hinzufügen</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="486"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="482"/>
         <source>&amp;Remove from custom dictionary</source>
         <translation>Aus dem Wörterbuch &amp;entfernen</translation>
     </message>
@@ -2681,13 +2680,13 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="788"/>
-        <source>Replace ... with …</source>
-        <translation>... ersetzen durch …</translation>
+        <source>Replace ... with &#xe2;&#x80;&#xa6;</source>
+        <translation type="unfinished">... ersetzen durch …</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="795"/>
-        <source>Replace --- with —</source>
-        <translation>--- ersetzen durch —</translation>
+        <source>Replace --- with &#xe2;&#x80;&#x94;</source>
+        <translation type="unfinished">--- ersetzen durch —</translation>
     </message>
 </context>
 <context>
@@ -2904,7 +2903,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
 <context>
     <name>lineEditView</name>
     <message>
-        <location filename="../manuskript/ui/views/lineEditView.py" line="112"/>
+        <location filename="../manuskript/ui/views/lineEditView.py" line="114"/>
         <source>Various</source>
         <translation>Verschiedenes</translation>
     </message>
@@ -3896,52 +3895,52 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
 <context>
     <name>settingsWindow</name>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="648"/>
+        <location filename="../manuskript/settingsWindow.py" line="649"/>
         <source>New status</source>
         <translation>Neuer Status</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="669"/>
+        <location filename="../manuskript/settingsWindow.py" line="670"/>
         <source>New label</source>
         <translation>Neue Beschriftung</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="705"/>
+        <location filename="../manuskript/settingsWindow.py" line="706"/>
         <source>newtheme</source>
         <translation>Neues Thema</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="715"/>
+        <location filename="../manuskript/settingsWindow.py" line="716"/>
         <source>New theme</source>
         <translation>Neues Thema</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="747"/>
+        <location filename="../manuskript/settingsWindow.py" line="748"/>
         <source> (read-only)</source>
         <translation> (schreibgeschützt)</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="508"/>
+        <location filename="../manuskript/settingsWindow.py" line="509"/>
         <source>Open Image</source>
         <translation>Bild öffnen</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="508"/>
+        <location filename="../manuskript/settingsWindow.py" line="509"/>
         <source>Image files (*.jpg; *.jpeg; *.png)</source>
         <translation>Bilddateien</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="524"/>
+        <location filename="../manuskript/settingsWindow.py" line="525"/>
         <source>Error</source>
         <translation>Fehler</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="521"/>
+        <location filename="../manuskript/settingsWindow.py" line="522"/>
         <source>Unable to load selected file</source>
         <translation>Laden der Datei fehlgeschlagen</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="524"/>
+        <location filename="../manuskript/settingsWindow.py" line="525"/>
         <source>Unable to add selected image:
 {}</source>
         <translation>Hinzufügen des Bildes fehgeschlagen:
@@ -4066,7 +4065,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
 <context>
     <name>textEditView</name>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="309"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="306"/>
         <source>Various</source>
         <translation>Verschiedenes</translation>
     </message>

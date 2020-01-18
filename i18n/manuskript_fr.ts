@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="fr" sourcelanguage="en">
+<!DOCTYPE TS><TS version="2.0" language="fr" sourcelanguage="en">
 <context>
     <name>Export</name>
     <message>
@@ -222,7 +221,7 @@ Cochez ceci si vous avez des erreurs liées à YAML.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="70"/>
-        <source>Choose output fileâ¦</source>
+        <source>Choose output file&#xe2;&#x80;&#xa6;</source>
         <translation type="unfinished">Choisir le fichier de sortie...</translation>
     </message>
 </context>
@@ -1111,7 +1110,7 @@ Cochez ceci si vous avez des erreurs liées à YAML.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2521"/>
-        <source>&amp;Importâ¦</source>
+        <source>&amp;Import&#xe2;&#x80;&#xa6;</source>
         <translation>&amp;Importer…</translation>
     </message>
     <message>
@@ -1151,7 +1150,7 @@ Cochez ceci si vous avez des erreurs liées à YAML.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2569"/>
-        <source>&amp;Splitâ¦</source>
+        <source>&amp;Split&#xe2;&#x80;&#xa6;</source>
         <translation>&amp;Diviser…</translation>
     </message>
     <message>
@@ -1466,7 +1465,7 @@ Cochez ceci si vous avez des erreurs liées à YAML.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1600"/>
-        <source>Proceeding might crash and lose data</source>
+        <source>Proceed with import at your own risk</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2157,17 +2156,17 @@ des lignes:</translation>
 <context>
     <name>SpellAction</name>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="462"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="458"/>
         <source>Spelling Suggestions</source>
         <translation>Suggestions</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="470"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="466"/>
         <source>&amp;Add to dictionary</source>
         <translation>&amp;Ajouter au dictionnaire</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="486"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="482"/>
         <source>&amp;Remove from custom dictionary</source>
         <translation>&amp;Supprimer du dictionnaire</translation>
     </message>
@@ -2584,12 +2583,12 @@ des lignes:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="788"/>
-        <source>Replace ... with â¦</source>
+        <source>Replace ... with &#xe2;&#x80;&#xa6;</source>
         <translation>Remplacer ... avec …</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="795"/>
-        <source>Replace --- with â</source>
+        <source>Replace --- with &#xe2;&#x80;&#x94;</source>
         <translation>Remplacer --- avec —</translation>
     </message>
     <message>
@@ -2887,7 +2886,7 @@ des lignes:</translation>
 <context>
     <name>lineEditView</name>
     <message>
-        <location filename="../manuskript/ui/views/lineEditView.py" line="112"/>
+        <location filename="../manuskript/ui/views/lineEditView.py" line="114"/>
         <source>Various</source>
         <translation>Différentes valeurs</translation>
     </message>
@@ -3879,52 +3878,52 @@ des lignes:</translation>
 <context>
     <name>settingsWindow</name>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="648"/>
+        <location filename="../manuskript/settingsWindow.py" line="649"/>
         <source>New status</source>
         <translation>Nouveau status</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="669"/>
+        <location filename="../manuskript/settingsWindow.py" line="670"/>
         <source>New label</source>
         <translation>Nouveau label</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="705"/>
+        <location filename="../manuskript/settingsWindow.py" line="706"/>
         <source>newtheme</source>
         <translation>nouveautheme</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="715"/>
+        <location filename="../manuskript/settingsWindow.py" line="716"/>
         <source>New theme</source>
         <translation>Nouveau Thème</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="747"/>
+        <location filename="../manuskript/settingsWindow.py" line="748"/>
         <source> (read-only)</source>
         <translation>(lecture seule)</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="508"/>
+        <location filename="../manuskript/settingsWindow.py" line="509"/>
         <source>Open Image</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="508"/>
+        <location filename="../manuskript/settingsWindow.py" line="509"/>
         <source>Image files (*.jpg; *.jpeg; *.png)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="524"/>
+        <location filename="../manuskript/settingsWindow.py" line="525"/>
         <source>Error</source>
         <translation type="unfinished">Erreur</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="521"/>
+        <location filename="../manuskript/settingsWindow.py" line="522"/>
         <source>Unable to load selected file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="524"/>
+        <location filename="../manuskript/settingsWindow.py" line="525"/>
         <source>Unable to add selected image:
 {}</source>
         <translation type="unfinished"></translation>
@@ -4047,7 +4046,7 @@ des lignes:</translation>
 <context>
     <name>textEditView</name>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="309"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="306"/>
         <source>Various</source>
         <translation>Différentes valeurs</translation>
     </message>

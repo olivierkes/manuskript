@@ -1482,7 +1482,7 @@ Akkor használja ezt, ha YAML-hoz kapcsolódó gondjai vannak.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1600"/>
-        <source>Proceeding might crash and lose data</source>
+        <source>Proceed with import at your own risk</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2172,17 +2172,17 @@ Akkor használja ezt, ha YAML-hoz kapcsolódó gondjai vannak.</translation>
 <context>
     <name>SpellAction</name>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="462"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="458"/>
         <source>Spelling Suggestions</source>
         <translation>Helyesírási javaslatok</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="470"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="466"/>
         <source>&amp;Add to dictionary</source>
         <translation>&amp;Hozzáadás a szótárhoz</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="486"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="482"/>
         <source>&amp;Remove from custom dictionary</source>
         <translation>&amp;Eltávolítás az egyéni szótárból</translation>
     </message>
@@ -2902,7 +2902,7 @@ Akkor használja ezt, ha YAML-hoz kapcsolódó gondjai vannak.</translation>
 <context>
     <name>lineEditView</name>
     <message>
-        <location filename="../manuskript/ui/views/lineEditView.py" line="112"/>
+        <location filename="../manuskript/ui/views/lineEditView.py" line="114"/>
         <source>Various</source>
         <translation>Különféle</translation>
     </message>
@@ -3894,52 +3894,52 @@ Akkor használja ezt, ha YAML-hoz kapcsolódó gondjai vannak.</translation>
 <context>
     <name>settingsWindow</name>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="648"/>
+        <location filename="../manuskript/settingsWindow.py" line="649"/>
         <source>New status</source>
         <translation>Új státusz</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="669"/>
+        <location filename="../manuskript/settingsWindow.py" line="670"/>
         <source>New label</source>
         <translation>Új címke</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="705"/>
+        <location filename="../manuskript/settingsWindow.py" line="706"/>
         <source>newtheme</source>
         <translation>újtéma</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="715"/>
+        <location filename="../manuskript/settingsWindow.py" line="716"/>
         <source>New theme</source>
         <translation>Új téma</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="747"/>
+        <location filename="../manuskript/settingsWindow.py" line="748"/>
         <source> (read-only)</source>
         <translation> (csak-olvasható)</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="508"/>
+        <location filename="../manuskript/settingsWindow.py" line="509"/>
         <source>Open Image</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="508"/>
+        <location filename="../manuskript/settingsWindow.py" line="509"/>
         <source>Image files (*.jpg; *.jpeg; *.png)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="524"/>
+        <location filename="../manuskript/settingsWindow.py" line="525"/>
         <source>Error</source>
         <translation type="unfinished">Hiba</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="521"/>
+        <location filename="../manuskript/settingsWindow.py" line="522"/>
         <source>Unable to load selected file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="524"/>
+        <location filename="../manuskript/settingsWindow.py" line="525"/>
         <source>Unable to add selected image:
 {}</source>
         <translation type="unfinished"></translation>
@@ -4063,7 +4063,7 @@ Akkor használja ezt, ha YAML-hoz kapcsolódó gondjai vannak.</translation>
 <context>
     <name>textEditView</name>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="309"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="306"/>
         <source>Various</source>
         <translation>Különféle</translation>
     </message>

@@ -1484,7 +1484,7 @@ Use that if you get YAML related error.</source>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1600"/>
-        <source>Proceeding might crash and lose data</source>
+        <source>Proceed with import at your own risk</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2174,17 +2174,17 @@ Use that if you get YAML related error.</source>
 <context>
     <name>SpellAction</name>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="462"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="458"/>
         <source>Spelling Suggestions</source>
         <translation>Варианты правописания</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="470"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="466"/>
         <source>&amp;Add to dictionary</source>
         <translation>&amp;Добавить в словарь</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="486"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="482"/>
         <source>&amp;Remove from custom dictionary</source>
         <translation>&amp;Удалить из пользовательского словаря</translation>
     </message>
@@ -2904,7 +2904,7 @@ Use that if you get YAML related error.</source>
 <context>
     <name>lineEditView</name>
     <message>
-        <location filename="../manuskript/ui/views/lineEditView.py" line="112"/>
+        <location filename="../manuskript/ui/views/lineEditView.py" line="114"/>
         <source>Various</source>
         <translation>Различные</translation>
     </message>
@@ -3896,52 +3896,52 @@ Use that if you get YAML related error.</source>
 <context>
     <name>settingsWindow</name>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="648"/>
+        <location filename="../manuskript/settingsWindow.py" line="649"/>
         <source>New status</source>
         <translation>Новый статус</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="669"/>
+        <location filename="../manuskript/settingsWindow.py" line="670"/>
         <source>New label</source>
         <translation>Новая метка</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="705"/>
+        <location filename="../manuskript/settingsWindow.py" line="706"/>
         <source>newtheme</source>
         <translation>Новая тема</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="715"/>
+        <location filename="../manuskript/settingsWindow.py" line="716"/>
         <source>New theme</source>
         <translation>Новая тема</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="747"/>
+        <location filename="../manuskript/settingsWindow.py" line="748"/>
         <source> (read-only)</source>
         <translation> (только чтение)</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="508"/>
+        <location filename="../manuskript/settingsWindow.py" line="509"/>
         <source>Open Image</source>
         <translation>Открытое изображение</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="508"/>
+        <location filename="../manuskript/settingsWindow.py" line="509"/>
         <source>Image files (*.jpg; *.jpeg; *.png)</source>
         <translation>Файлы изображений (*.jpg *.jpeg *.png)</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="524"/>
+        <location filename="../manuskript/settingsWindow.py" line="525"/>
         <source>Error</source>
         <translation>Ошибка</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="521"/>
+        <location filename="../manuskript/settingsWindow.py" line="522"/>
         <source>Unable to load selected file</source>
         <translation>Не удалось загрузить выбранный файл</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="524"/>
+        <location filename="../manuskript/settingsWindow.py" line="525"/>
         <source>Unable to add selected image:
 {}</source>
         <translation>Невозможно добавить выбранное изображение:
@@ -4066,7 +4066,7 @@ Use that if you get YAML related error.</source>
 <context>
     <name>textEditView</name>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="309"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="306"/>
         <source>Various</source>
         <translation>Различные</translation>
     </message>
