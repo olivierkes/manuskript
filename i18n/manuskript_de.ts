@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="2.0" language="de_DE" sourcelanguage="">
+<!DOCTYPE TS>
+<TS version="2.0" language="de_DE" sourcelanguage="">
 <context>
     <name>Export</name>
     <message>
@@ -228,7 +229,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="70"/>
-        <source>Choose output file&#xe2;&#x80;&#xa6;</source>
+        <source>Choose output fileâ¦</source>
         <translation>Ausgabe-Datei wählenâ¦</translation>
     </message>
 </context>
@@ -1128,8 +1129,8 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2521"/>
-        <source>&amp;Import&#xe2;&#x80;&#xa6;</source>
-        <translation type="unfinished">&amp;Importieren …</translation>
+        <source>&amp;Importâ¦</source>
+        <translation>&amp;Importieren</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2524"/>
@@ -1168,8 +1169,8 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2569"/>
-        <source>&amp;Split&#xe2;&#x80;&#xa6;</source>
-        <translation type="unfinished">&amp;Aufteilen …</translation>
+        <source>&amp;Splitâ¦</source>
+        <translation>&amp;Aufteilen</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2572"/>
@@ -1484,7 +1485,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1600"/>
         <source>Proceed with import at your own risk</source>
-        <translation type="unfinished">Wenn Sie fortfahren, könnte das einen Absturz und Datenverlust zur Folge haben</translation>
+        <translation>Wenn Sie fortfahren, könnte das einen Absturz und Datenverlust zur Folge haben</translation>
     </message>
 </context>
 <context>
@@ -2680,13 +2681,13 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="788"/>
-        <source>Replace ... with &#xe2;&#x80;&#xa6;</source>
-        <translation type="unfinished">... ersetzen durch …</translation>
+        <source>Replace ... with â¦</source>
+        <translation>Ersetze ... durch</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="795"/>
-        <source>Replace --- with &#xe2;&#x80;&#x94;</source>
-        <translation type="unfinished">--- ersetzen durch —</translation>
+        <source>Replace --- with â</source>
+        <translation>Ersetze --- durch</translation>
     </message>
 </context>
 <context>
