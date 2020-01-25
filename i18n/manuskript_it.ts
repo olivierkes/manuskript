@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="2.0" language="it" sourcelanguage="">
+<!DOCTYPE TS>
+<TS version="2.0" language="it" sourcelanguage="">
 <context>
     <name>Export</name>
     <message>
@@ -228,7 +229,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="70"/>
-        <source>Choose output file&#xe2;&#x80;&#xa6;</source>
+        <source>Choose output fileâ¦</source>
         <translation>Scegli il file di output</translation>
     </message>
 </context>
@@ -1485,7 +1486,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1600"/>
         <source>Proceed with import at your own risk</source>
-        <translation type="unfinished">Il procedimento potrebbe arrestarsi in modo anomalo e perdere dati</translation>
+        <translation>Procedere con l&apos;importazione a proprio rischio</translation>
     </message>
 </context>
 <context>
