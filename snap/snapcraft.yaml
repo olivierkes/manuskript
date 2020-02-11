@@ -21,6 +21,9 @@ grade: stable
 confinement: strict
 base: core18
 icon: icons/Manuskript/manuskript.svg
+layout:
+  /usr/share/pandoc/data/templates:
+    bind: $SNAP/usr/share/pandoc/data/templates
 
 apps:
   manuskript:
