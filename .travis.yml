@@ -2,7 +2,7 @@ language: generic
 os:
 - osx
 - linux
-osx_image: xcode11.3
+osx_image: xcode11
 sudo: required
 install:
 - if [ "$TRAVIS_OS_NAME" = "osx" ]; then package/prepare_osx.sh; fi
