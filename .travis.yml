@@ -2,8 +2,8 @@ language: generic
 os:
 - osx
 - linux
-osx_image: xcode11.1
-sudo: required
+osx_image: xcode10.3
+#sudo: required
 install:
 - if [ "$TRAVIS_OS_NAME" = "osx" ]; then package/prepare_osx.sh; fi
 - if [ "$TRAVIS_OS_NAME" = "linux" ]; then package/prepare_linux.sh; fi
@@ -14,19 +14,21 @@ before_deploy:
 - export FILENAME=manuskript-$TRAVIS_BRANCH-$TRAVIS_OS_NAME.zip
 - if [ "$TRAVIS_OS_NAME" = "osx" ]; then package/build_osx.sh; fi
 deploy:
-  provider: releases
+  - provider: releases
     api_key:
-      secure: IU5bKpG5h4i39XdneuVWW2S2VTwNbTQCi6gSxFelSC7KNA3by2Zq3DLOs35duiNOJGds82n0AKelc++/HEuey2jZYBioVfO/TQnt2hvkFdMfCboy/d79W0vHMw8eD33b3w1sLUiq6ltVtOMoH99YakGD3bsvpVIXZV4pTIUVcwBM6GpQtFUL5JZVN1QVSpphyK85WtrV8FfnjXi5QLDlP9txQ6bthkMYMxl6aOTLt3ImZwd4HVVypMs3YWbidrYnB5ZNmChTNEdMT6QyjDoZSQ5bYY3TMf+N3oL1mE9/m99RmZGNeaPtQO0SXDyaqA9KsqxZK3TdFUcphf7mqf+s94VaQmaHs/Is0o5D4zh+I72Md4wgT5WLmkVjI5HTCLh1E8fKvyb3OewpaJJ6bjz62pKEudXi+DTg1TfexaZHrvou/+EGFs0FSZ1nTwSQ1umA70T2I8NI0J/x2bcm4I2lVc3KfJE0piTbj06xP54GS4qOxx+6wjG2FlBZwhLevU0h3GKjdJBAIRDsxt1lCNCdN48pXJsWEvn9SvLQy9SC7XhF1ib6HYRBL+HJBeDg0HSqUjbJGPeDcFbm0OC+QbPAV7LEaWS0AUoucCcNFnUWRtdWFC+6rAR5KMMoAnUHYZFR/u2y9qdKY8+Ea5YT+fM0zvtEGkDd8MlxXInql5o79GA=
-  file: dist/manuskript-osx-develop.zip
-  on:
-    repo: sijpkes/manuskript
-    branch: develop
-  provider: script
+        secure: IU5bKpG5h4i39XdneuVWW2S2VTwNbTQCi6gSxFelSC7KNA3by2Zq3DLOs35duiNOJGds82n0AKelc++/HEuey2jZYBioVfO/TQnt2hvkFdMfCboy/d79W0vHMw8eD33b3w1sLUiq6ltVtOMoH99YakGD3bsvpVIXZV4pTIUVcwBM6GpQtFUL5JZVN1QVSpphyK85WtrV8FfnjXi5QLDlP9txQ6bthkMYMxl6aOTLt3ImZwd4HVVypMs3YWbidrYnB5ZNmChTNEdMT6QyjDoZSQ5bYY3TMf+N3oL1mE9/m99RmZGNeaPtQO0SXDyaqA9KsqxZK3TdFUcphf7mqf+s94VaQmaHs/Is0o5D4zh+I72Md4wgT5WLmkVjI5HTCLh1E8fKvyb3OewpaJJ6bjz62pKEudXi+DTg1TfexaZHrvou/+EGFs0FSZ1nTwSQ1umA70T2I8NI0J/x2bcm4I2lVc3KfJE0piTbj06xP54GS4qOxx+6wjG2FlBZwhLevU0h3GKjdJBAIRDsxt1lCNCdN48pXJsWEvn9SvLQy9SC7XhF1ib6HYRBL+HJBeDg0HSqUjbJGPeDcFbm0OC+QbPAV7LEaWS0AUoucCcNFnUWRtdWFC+6rAR5KMMoAnUHYZFR/u2y9qdKY8+Ea5YT+fM0zvtEGkDd8MlxXInql5o79GA=
+    file: dist/$FILENAME
+    overwrite: true
+    cleanup: false
+    on:
+        condition: $TRAVIS_OS_NAME = osx
+        tags: true
+  - provider: script
     script: "curl -T dist/manuskript-osx-develop.zip -u hfpn_semaphoreci:$FTP_PASSWORD ftp://www.theologeek.ch/web/manuskript/releases/ -v"
-    skip_cleanup: true
-  on:
-    condition: $TRAVIS_OS_NAME = osx
-    branch: develop
+    cleanup: false
+    on:
+        condition: $TRAVIS_OS_NAME = osx
+        branch: develop
 env:
   global:
     secure: LCEMJ4+mBd+2tzI3CDf7WMD+5tDMQbT5y/r7beKOa/c3+0Iyce3U5Q9dxYRB8Y3V46euLElySOQIdgBMp08h1Ph2L8oFvrgKwSk5/n8Nnvpe5NSmfkPPqIyiuxmKGecjsW8dJ0f18OVyN85JueOaSov6gMcqZkIQqKEw5CXdClg678wbNmfKcSO1oTe+UKZ+uJjeZGBlsPiID78dximbD59r6Au71gDb/iW124pSKcpluBHR2auUMi8WXoff3nvgbTm0So/K137OlB7pqzy5YHrqZg+kQ+SnLh47/TAjLclYEgbBRlrpBNMqmZXH+B99qhl0HdHglSGqltwEUc48r46j26lQFjqD5ng0XWZFS44MyBdQFdq/s4HyCzlQKranT/q6HFrRZQwsb7eFfJNS4JmaGX3LB7v+IQJh4vMVtizrIYenVwdeGMJWrRA+3VHO9GYTcvCDNpQG/ZWWcjLxxENtUlI+DVyNq7L8gZI5tFAHypsmcqweAq0II7rOwiNoj4Vib5vfvC2n6BAISTuojMMcBOHqOIci4WkroheZGtoF49kc936zOnOFPlauqkB8lq2AS4xd9Y4PDf6YGs+HE23Sx8Jy/c/WPKItQ+aP4nnIcgP8I6BCJfjSvZdAU+S/KzVd5Wrke7pwHiCX9T9hs8npFpNishDMTPChKTy7MRQ=
