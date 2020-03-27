@@ -89,6 +89,9 @@ class outlineItem(abstractItem):
             )
 
     __repr__ = __str__
+    
+    def charCount(self):
+        return self._data.get(self.enum.charCount, 0)
 
     #######################################################################
     # Data
@@ -154,6 +157,7 @@ class outlineItem(abstractItem):
         if column == E.text:
             wc = F.wordCount(data)
             self.setData(E.wordCount, wc)
+            self.setData(E.charCount, len(data)) 
 
         if column == E.compile:
             # Title changes when compile changes
@@ -195,9 +199,12 @@ class outlineItem(abstractItem):
 
         else:
             wc = 0
+            cc = 0
             for c in self.children():
                 wc += F.toInt(c.data(self.enum.wordCount))
+                cc += F.toInt(c.data(self.enum.charCount))
             self._data[self.enum.wordCount] = wc
+            self._data[self.enum.charCount] = cc
 
             setGoal = F.toInt(self.data(self.enum.setGoal))
             goal = F.toInt(self.data(self.enum.goal))
@@ -467,6 +474,7 @@ class outlineItem(abstractItem):
 
     # We don't want to write some datas (computed)
     XMLExclude = [enums.Outline.wordCount,
+                  enums.Outline.charCount,
                   enums.Outline.goal,
                   enums.Outline.goalPercentage,
                   enums.Outline.revisions]
