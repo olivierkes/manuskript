@@ -304,6 +304,7 @@ class mainEditor(QWidget, Ui_mainEditor):
         cc = item.data(Outline.charCount)
         wc = item.data(Outline.wordCount)
         goal = item.data(Outline.goal)
+        chars = item.data(Outline.charCount) # len(item.data(Outline.text)) 
         progress = item.data(Outline.goalPercentage)
 
         goal = uiParse(goal, None, int, lambda x: x>=0)
