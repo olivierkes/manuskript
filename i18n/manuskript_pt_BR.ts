@@ -16,7 +16,7 @@
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="54"/>
         <source>Markdown source</source>
-        <translation>Fonte de Markdown</translation>
+        <translation>Fonte em Markdown</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="55"/>
@@ -66,12 +66,12 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="100"/>
         <source>Include a table of contents.</source>
-        <translation>Inclua um índice.</translation>
+        <translation>Incluir um índice.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="103"/>
         <source>Number of sections level to include in TOC: </source>
-        <translation>Número de seções a serem incluídas no TOC: </translation>
+        <translation>Número de nível de seções a serem incluídas no índice: </translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="107"/>
@@ -81,22 +81,22 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="110"/>
         <source>Normalize the document (cleaner)</source>
-        <translation>Normalize o documento (mais limpo)</translation>
+        <translation>Normalizar o documento (mais limpo)</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="112"/>
         <source>Specify the base level for headers: </source>
-        <translation>Especifique o nível base para os cabeçalhos: </translation>
+        <translation>Especificar o nível base para os cabeçalhos: </translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="119"/>
         <source>Use reference-style links instead of inline links</source>
-        <translation>Use links de referência em vez de links in-line</translation>
+        <translation>Usar links com estilo de referência em vez de links in-line</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="121"/>
         <source>Use ATX-style headers</source>
-        <translation>Use cabeçalhos no estilo ATX</translation>
+        <translation>Usar cabeçalhos no estilo ATX</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="123"/>
