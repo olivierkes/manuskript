@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="2.0" language="pt_BR" sourcelanguage="">
+<!DOCTYPE TS>
+<TS version="2.0" language="pt_BR" sourcelanguage="">
 <context>
     <name>Export</name>
     <message>
@@ -226,7 +227,7 @@ Use isso se você receber um erro relacionado ao YAML.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="70"/>
-        <source>Choose output file&#xe2;&#x80;&#xa6;</source>
+        <source>Choose output fileâ¦</source>
         <translation>Escolha o arquivo de saída</translation>
     </message>
 </context>
@@ -1483,7 +1484,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/mainWindow.py" line="1600"/>
         <source>Proceed with import at your own risk</source>
-        <translation type="unfinished">Continuando pode travar e perder dados</translation>
+        <translation>Proceder com a importação por sua conta e risco</translation>
     </message>
 </context>
 <context>
