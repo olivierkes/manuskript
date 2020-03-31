@@ -346,6 +346,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Slider importance
         self.updateCharacterImportance(c.ID())
 
+        # POV state
+        self.updateCharacterPOVState(c.ID())
+
         # Character Infos
         self.tblPersoInfos.setRootIndex(index)
 
@@ -365,6 +368,18 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def updateCharacterImportance(self, ID):
         c = self.mdlCharacter.getCharacterByID(ID)
         self.sldPersoImportance.setValue(int(c.importance()))
+
+    def updateCharacterPOVState(self, ID):
+        c = self.mdlCharacter.getCharacterByID(ID)
+        self.disconnectAll(self.chkPersoPOV.stateChanged, self.lstCharacters.changeCharacterPOVState)
+
+        if c.pov():
+            self.chkPersoPOV.setCheckState(Qt.Checked)
+        else:
+            self.chkPersoPOV.setCheckState(Qt.Unchecked)
+
+        self.chkPersoPOV.stateChanged.connect(self.lstCharacters.changeCharacterPOVState, F.AUC)
+        self.chkPersoPOV.setEnabled(len(self.mdlOutline.findItemsByPOV(ID)) == 0)
 
     ###############################################################################
     # PLOTS
@@ -935,9 +950,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.tblPersoInfos.setModel(self.mdlCharacter)
 
         self.btnAddPerso.clicked.connect(self.mdlCharacter.addCharacter, F.AUC)
+
         try:
             self.btnRmPerso.clicked.connect(self.lstCharacters.removeCharacter, F.AUC)
+
             self.btnPersoColor.clicked.connect(self.lstCharacters.choseCharacterColor, F.AUC)
+            self.chkPersoPOV.stateChanged.connect(self.lstCharacters.changeCharacterPOVState, F.AUC)
+
             self.btnPersoAddInfo.clicked.connect(self.lstCharacters.addCharacterInfo, F.AUC)
             self.btnPersoRmInfo.clicked.connect(self.lstCharacters.removeCharacterInfo, F.AUC)
         except TypeError:
@@ -1091,7 +1110,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Characters
         self.disconnectAll(self.btnAddPerso.clicked, self.mdlCharacter.addCharacter)
         self.disconnectAll(self.btnRmPerso.clicked, self.lstCharacters.removeCharacter)
+
         self.disconnectAll(self.btnPersoColor.clicked, self.lstCharacters.choseCharacterColor)
+        self.disconnectAll(self.chkPersoPOV.stateChanged, self.lstCharacters.changeCharacterPOVState)
+
         self.disconnectAll(self.btnPersoAddInfo.clicked, self.lstCharacters.addCharacterInfo)
         self.disconnectAll(self.btnPersoRmInfo.clicked, self.lstCharacters.removeCharacterInfo)
 
