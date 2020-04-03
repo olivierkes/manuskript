@@ -2168,7 +2168,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="775"/>
         <source>&lt;p&gt;&lt;b&gt;The Revisions feature has been at the source of many reported issues. In this version of Manuskript it has been turned off by default for new projects in order to provide the best experience.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Why aren&apos;t these issues fixed already? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;We need your help to make Manuskript better!&lt;/a&gt;&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;Das Feature &quot;Revisionen&quot; war die Quelle von vielen Problemberichten. In dieser Version von Manuskript ist es deswegen für besseren Bedienkomfort bei neuen Projekten standardmäßig deaktiviert.&lt;/b&gt;&lt;/p&gt;Warum sind diese Probleme noch nicht behoben?&lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;Wir brauchen Ihre Hilfe, um Manuskript zu verbessern!&lt;/a&gt;&lt;/p&gt;</translation>
+        <translation>&lt;p&gt;&lt;b&gt;Das Feature &quot;Revisionen&quot; war die Quelle von vielen Problemberichten. In dieser Version von Manuskript ist es deswegen für besseren Bedienkomfort bei neuen Projekten standardmäßig deaktiviert.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Warum sind diese Probleme noch nicht behoben?&lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;Wir brauchen Ihre Hilfe, um Manuskript zu verbessern!&lt;/a&gt;&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
