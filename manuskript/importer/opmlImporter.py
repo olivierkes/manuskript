@@ -121,4 +121,4 @@ class opmlImporter(abstractImporter):
         s = cls.restoreNewLines(inString)
         s = ''.join(s.split())
 
-        return len(s) is 0
+        return len(s) == 0

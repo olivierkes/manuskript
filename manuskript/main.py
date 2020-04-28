@@ -101,7 +101,7 @@ def prepare(tests=False):
 
     def respectSystemDarkThemeSetting():
         """Adjusts the Qt theme to match the OS 'dark theme' setting configured by the user."""
-        if platform.system() is not 'Windows':
+        if platform.system() != 'Windows':
             return
 
         # Basic Windows 10 Dark Theme support.
