@@ -41,7 +41,7 @@
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="14"/>
         <source>Plain text</source>
-        <translation type="unfinished"></translation>
+        <translation>Απλό κείμενο</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/HTML.py" line="13"/>
@@ -51,12 +51,12 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/PDF.py" line="18"/>
         <source>Needs LaTeX to be installed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Χρειάζεται να εγκατασταθεί το LaTex.</translation>
     </message>
     <message>
         <location filename="../manuskript/converters/pandocConverter.py" line="75"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Σφάλμα</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="97"/>
@@ -66,7 +66,7 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="100"/>
         <source>Include a table of contents.</source>
-        <translation type="unfinished"></translation>
+        <translation>Συμπεριλάβετε έναν πίνακα περιεχομένων.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="103"/>
@@ -76,17 +76,17 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="107"/>
         <source>Typographically correct output</source>
-        <translation type="unfinished"></translation>
+        <translation>Τυπογραφικά σωστή έξοδος</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="110"/>
         <source>Normalize the document (cleaner)</source>
-        <translation type="unfinished"></translation>
+        <translation>Ομαλοποίηση του εγγράφου (καθαρότερο)</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="112"/>
         <source>Specify the base level for headers: </source>
-        <translation type="unfinished"></translation>
+        <translation>Καθορίστε το επίπεδο βάσης για κεφαλίδες: </translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="119"/>
