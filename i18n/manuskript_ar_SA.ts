@@ -16,7 +16,7 @@
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="54"/>
         <source>Markdown source</source>
-        <translation type="unfinished"></translation>
+        <translation>مصدر تخفيض السعر</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="55"/>
