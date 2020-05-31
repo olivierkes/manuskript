@@ -948,9 +948,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Characters
         self.lstCharacters.setCharactersModel(self.mdlCharacter)
         self.tblPersoInfos.setModel(self.mdlCharacter)
-
-        self.btnAddPerso.clicked.connect(self.mdlCharacter.addCharacter, F.AUC)
-
+        self.btnAddPerso.clicked.connect(self.lstCharacters.addCharacter, F.AUC)
         try:
             self.btnRmPerso.clicked.connect(self.lstCharacters.removeCharacter, F.AUC)
 

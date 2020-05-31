@@ -165,12 +165,13 @@ class characterModel(QAbstractItemModel):
 # ADDING / REMOVING
 ###############################################################################
 
-    def addCharacter(self):
+    def addCharacter(self, importance = 0):
         """
         Creates a new character
+        @param importance: the importance level of the character
         @return: the character
         """
-        c = Character(model=self, name=self.tr("New character"))
+        c = Character(model=self, name=self.tr("New character"), importance = importance)
         self.beginInsertRows(QModelIndex(), len(self.characters), len(self.characters))
         self.characters.append(c)
         self.endInsertRows()
@@ -228,7 +229,7 @@ class characterModel(QAbstractItemModel):
 ###############################################################################
 
 class Character():
-    def __init__(self, model, name="No name"):
+    def __init__(self, model, name="No name", importance = 0):
         self._model = model
         self.lastPath = ""
 
@@ -236,7 +237,7 @@ class Character():
         self._data[C.name.value] = name
         self.assignUniqueID()
         self.assignRandomColor()
-        self._data[C.importance.value] = "0"
+        self._data[C.importance.value] = str(importance)
         self._data[C.pov.value] = "True"
 
         self.infos = []
