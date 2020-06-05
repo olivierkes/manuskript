@@ -128,8 +128,7 @@ class BasicDictionary:
         try:
             with gzip.open(customPath, "rt", encoding='utf-8') as f:
                 self._customDict = set(json.loads(f.read()))
-                for word in self._customDict:
-                    self._dict.create_dictionary_entry(word, self.CUSTOM_COUNT)
+                self.addCustomEntries(self._customDict)
         except:
             # If error loading the file, overwrite with empty dictionary
             self._saveCustomDict()
@@ -197,6 +196,19 @@ class BasicDictionary:
         customPath = self.getCustomDictionaryPath()
         with gzip.open(customPath, "wt") as f:
             f.write(json.dumps(list(self._customDict)))
+    
+    def addCustomEntries(self, words):
+        """
+        Adds words from the custom dictionary, or another custom set of words 
+        (such as character names), to the spellcheching engine. This method
+        does not permenantly add the given words to the custom dictionary,
+        it only loads the words into the spell-checking engine.
+
+        Takes any iterable of string entries.
+        """
+        for word in words:
+            self._dict.create_dictionary_entry(word, self.CUSTOM_COUNT)
+
 
 
 class EnchantDictionary(BasicDictionary):
