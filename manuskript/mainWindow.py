@@ -9,7 +9,7 @@ from PyQt5.QtCore import (pyqtSignal, QSignalMapper, QTimer, QSettings, Qt, QPoi
                           QRegExp, QUrl, QSize, QModelIndex)
 from PyQt5.QtGui import QStandardItemModel, QIcon, QColor
 from PyQt5.QtWidgets import QMainWindow, QHeaderView, qApp, QMenu, QActionGroup, QAction, QStyle, QListWidgetItem, \
-    QLabel, QDockWidget, QWidget, QMessageBox
+    QLabel, QDockWidget, QWidget, QMessageBox, QInputDialog
 
 from manuskript import settings
 from manuskript.enums import Character, PlotStep, Plot, World, Outline
@@ -26,6 +26,7 @@ from manuskript.ui.about import aboutDialog
 from manuskript.ui.collapsibleDockWidgets import collapsibleDockWidgets
 from manuskript.ui.importers.importer import importerDialog
 from manuskript.ui.exporters.exporter import exporterDialog
+from manuskript.ui.findDialog import FindDialog
 from manuskript.ui.helpLabel import helpLabel
 from manuskript.ui.mainWindow import Ui_MainWindow
 from manuskript.ui.tools.frequencyAnalyzer import frequencyAnalyzer
@@ -129,6 +130,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.actCopy.triggered.connect(self.documentsCopy)
         self.actCut.triggered.connect(self.documentsCut)
         self.actPaste.triggered.connect(self.documentsPaste)
+        self.actFind.triggered.connect(self.doFind)
         self.actRename.triggered.connect(self.documentsRename)
         self.actDuplicate.triggered.connect(self.documentsDuplicate)
         self.actDelete.triggered.connect(self.documentsDelete)
@@ -247,6 +249,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         for i in [self.actCut,
                   self.actCopy,
                   self.actPaste,
+                  self.actFind,
                   self.actDelete,
                   self.actRename]:
             i.setEnabled(tabIsEditor)
@@ -1620,3 +1623,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.dialog = exporterDialog(mw=self)
         self.dialog.show()
         self.centerChildWindow(self.dialog)
+        
+    def doFind(self):
+        if self._lastFocus and self._lastFocus == self.mainEditor:
+            f = FindDialog(self, ew=self.mainEditor)
+            f.exec_()

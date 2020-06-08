@@ -2,11 +2,13 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/mainWindow.ui'
 #
-# Created by: PyQt5 UI code generator 5.5.1
+# Created by: PyQt5 UI code generator 5.12.3
 #
 # WARNING! All changes made in this file will be lost!
 
+
 from PyQt5 import QtCore, QtGui, QtWidgets
+
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -833,6 +835,7 @@ class Ui_MainWindow(object):
         self.layoutWidget = QtWidgets.QWidget(self.splitterOutlineH)
         self.layoutWidget.setObjectName("layoutWidget")
         self.verticalLayout_14 = QtWidgets.QVBoxLayout(self.layoutWidget)
+        self.verticalLayout_14.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_14.setObjectName("verticalLayout_14")
         self.splitterOutlineV = QtWidgets.QSplitter(self.layoutWidget)
         self.splitterOutlineV.setOrientation(QtCore.Qt.Vertical)
@@ -1188,6 +1191,10 @@ class Ui_MainWindow(object):
         icon = QtGui.QIcon.fromTheme("edit-paste")
         self.actPaste.setIcon(icon)
         self.actPaste.setObjectName("actPaste")
+        self.actFind = QtWidgets.QAction(MainWindow)
+        icon = QtGui.QIcon.fromTheme("edit-find")
+        self.actFind.setIcon(icon)
+        self.actFind.setObjectName("actFind")
         self.actSplitDialog = QtWidgets.QAction(MainWindow)
         icon = QtGui.QIcon.fromTheme("split")
         self.actSplitDialog.setIcon(icon)
@@ -1313,6 +1320,7 @@ class Ui_MainWindow(object):
         self.menuEdit.addAction(self.actCopy)
         self.menuEdit.addAction(self.actPaste)
         self.menuEdit.addAction(self.actDelete)
+        self.menuEdit.addAction(self.actFind)
         self.menuEdit.addAction(self.actRename)
         self.menuEdit.addSeparator()
         self.menuEdit.addAction(self.mnuFormat.menuAction())
@@ -1585,6 +1593,8 @@ class Ui_MainWindow(object):
         self.actCut.setShortcut(_translate("MainWindow", "Ctrl+X"))
         self.actPaste.setText(_translate("MainWindow", "&Paste"))
         self.actPaste.setShortcut(_translate("MainWindow", "Ctrl+V"))
+        self.actFind.setText(_translate("MainWindow", "&Find"))
+        self.actFind.setShortcut(_translate("MainWindow", "Ctrl+F"))
         self.actSplitDialog.setText(_translate("MainWindow", "&Split…"))
         self.actSplitDialog.setShortcut(_translate("MainWindow", "Ctrl+Shift+K"))
         self.actSplitCursor.setText(_translate("MainWindow", "Sp&lit at cursor"))
@@ -1635,7 +1645,6 @@ class Ui_MainWindow(object):
         self.actFormatOrderedList.setText(_translate("MainWindow", "&Ordered list"))
         self.actFormatList.setText(_translate("MainWindow", "&Unordered list"))
         self.actFormatBlockquote.setText(_translate("MainWindow", "B&lockquote"))
-
 from manuskript.ui.cheatSheet import cheatSheet
 from manuskript.ui.editors.mainEditor import mainEditor
 from manuskript.ui.search import search
