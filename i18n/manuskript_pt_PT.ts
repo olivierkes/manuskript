@@ -2169,7 +2169,7 @@ Use se receber um erro YAML.</translation>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="775"/>
         <source>&lt;p&gt;&lt;b&gt;The Revisions feature has been at the source of many reported issues. In this version of Manuskript it has been turned off by default for new projects in order to provide the best experience.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Why aren&apos;t these issues fixed already? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;We need your help to make Manuskript better!&lt;/a&gt;&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;A funcionalidade Revisões tem sido fonte de muitos erros reportados. Nesta versão do Manuskript, foi desligada por predefinição para novos projectos, de forma a proporcionar amelhor experiência.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Porque é que estes erros ainda não foram reparados? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;Precisamos da sua ajuda para tornar o  Manuskript melhor!&lt;/a&gt;&lt;/p&gt;</translation>
+        <translation>&lt;p&gt;&lt;b&gt;A funcionalidade Revisões tem sido fonte de muitos erros reportados. Nesta versão do Manuskript, foi desligada por predefinição para novos projectos, de forma a proporcionar a melhor experiência.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Porque é que estes erros ainda não foram reparados? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;Precisamos da sua ajuda para tornar o Manuskript melhor!&lt;/a&gt;&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
