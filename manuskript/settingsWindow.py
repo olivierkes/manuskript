@@ -185,6 +185,9 @@ class settingsWindow(QWidget, Ui_Settings):
             lambda v: self.lblTreeIconSize.setText("{}x{}".format(v, v)))
         self.sldTreeIconSize.setValue(settings.viewSettings["Tree"]["iconSize"])
 
+        self.chkCountSpaces.setChecked(settings.countSpaces);
+        self.chkCountSpaces.stateChanged.connect(self.countSpacesChanged)
+
         self.rdoCorkOldStyle.setChecked(settings.corkStyle == "old")
         self.rdoCorkNewStyle.setChecked(settings.corkStyle == "new")
         self.rdoCorkNewStyle.toggled.connect(self.setCorkStyle)
@@ -456,6 +459,11 @@ class settingsWindow(QWidget, Ui_Settings):
             self.mw.treeRedacOutline.setIconSize(QSize(iconSize, iconSize))
 
         self.mw.treeRedacOutline.viewport().update()
+
+    def countSpacesChanged(self):
+        settings.countSpaces = True if self.chkCountSpaces.checkState() else False
+
+        self.mw.mainEditor.updateStats()
 
     def setCorkColor(self):
         color = QColor(settings.corkBackground["color"])

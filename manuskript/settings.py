@@ -48,6 +48,7 @@ folderView = "cork"
 lastTab = 0
 openIndexes = [""]
 progressChars = False
+countSpaces = True
 autoSave = False
 autoSaveDelay = 5
 autoSaveNoChanges = True
@@ -138,6 +139,7 @@ def save(filename=None, protocol=None):
         "lastTab": lastTab,
         "openIndexes": openIndexes,
         "progressChars": progressChars,
+        "countSpaces": countSpaces,
         "autoSave":autoSave,
         "autoSaveDelay":autoSaveDelay,
         # TODO: Settings Cleanup Task -- Rename saveOnQuit to saveOnProjectClose -- see PR #615
@@ -240,6 +242,10 @@ def load(string, fromString=False, protocol=None):
     if "progressChars" in allSettings:
         global progressChars
         progressChars = allSettings["progressChars"]
+
+    if "countSpaces" in allSettings:
+        global countSpaces
+        countSpaces = allSettings["countSpaces"]
 
     if "autoSave" in allSettings:
         global autoSave

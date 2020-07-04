@@ -122,7 +122,7 @@ class outlineItem(abstractItem):
 
         elif role == Qt.FontRole:
             f = QFont()
-            if column == E.wordCount and self.isFolder():
+            if (column == E.wordCount or column == E.charCount) and self.isFolder():
                 f.setItalic(True)
             elif column == E.goal and self.isFolder() and not self.data(E.setGoal):
                 f.setItalic(True)
@@ -143,7 +143,7 @@ class outlineItem(abstractItem):
 
         # Checking if we will have to recount words
         updateWordCount = False
-        if column in [E.wordCount, E.goal, E.setGoal]:
+        if column in [E.wordCount, E.charCount, E.goal, E.setGoal]:
             updateWordCount = not column in self._data or self._data[column] != data
 
         # Stuff to do before
@@ -156,8 +156,9 @@ class outlineItem(abstractItem):
         # Stuff to do afterwards
         if column == E.text:
             wc = F.wordCount(data)
+            cc = F.charCount(data, settings.countSpaces)
             self.setData(E.wordCount, wc)
-            self.setData(E.charCount, len(data)) 
+            self.setData(E.charCount, cc)
 
         if column == E.compile:
             # Title changes when compile changes
@@ -225,7 +226,8 @@ class outlineItem(abstractItem):
                 self.setData(self.enum.goalPercentage, "")
 
         self.emitDataChanged([self.enum.goal, self.enum.setGoal,
-                              self.enum.wordCount, self.enum.goalPercentage])
+                              self.enum.wordCount, self.enum.charCount,
+                              self.enum.goalPercentage])
 
         if self.parent():
             self.parent().updateWordCount()
