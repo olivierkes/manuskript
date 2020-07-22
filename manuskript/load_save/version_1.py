@@ -655,6 +655,9 @@ def loadProject(project, zip=None):
                 if f[-4:] in [".xml", "opml"]:
                     with open(os.path.join(dirpath, f), "rb") as fo:
                         files[os.path.join(p, f)] = fo.read()
+                elif f[-4:] in [".png", "jpeg",".jpg","bmp","tiff",".gif",".pdf"]:
+                    # ignore file
+                    pass
                 else:
                     with open(os.path.join(dirpath, f), "r", encoding="utf8") as fo:
                         files[os.path.join(p, f)] = fo.read()
