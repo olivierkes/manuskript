@@ -531,7 +531,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="277"/>
         <source>Email</source>
-        <translation>Email</translation>
+        <translation>E-Mail</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1422"/>
@@ -1012,8 +1012,8 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
         <location filename="../manuskript/mainWindow.py" line="1285"/>
         <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous
                      evil wizard wasn&apos;t able to kill a baby?&apos; (Harry Potter)</source>
-        <translation>Die Ausgangssituation, in Form von &apos;Was wäre wenn ...?&quot; Fragen. Beispiel: &quot;Was wäre wenn der gefährlichste
-                     böse Zauberer nicht einmal ein Baby töten könnte?&quot; (Harry Potter)</translation>
+        <translation>Die Ausgangssituation, in Form von „Was wäre wenn ...?“ Fragen. Beispiel: „Was wäre wenn der gefährlichste
+                     böse Zauberer nicht einmal ein Baby töten könnte?“ (Harry Potter)</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1290"/>
@@ -1255,7 +1255,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2145"/>
         <source>&amp;Format</source>
-        <translation>&amp;Formatieren</translation>
+        <translation>&amp;Format</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2153"/>
@@ -1465,7 +1465,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/mainWindow.py" line="660"/>
         <source>Save changes to project &quot;{}&quot; before closing?</source>
-        <translation>Änderungen an Projekt &quot;{}&quot; vor dem Schließen speichern?</translation>
+        <translation>Änderungen an Projekt „{}“ vor dem Schließen speichern?</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="660"/>
@@ -2898,7 +2898,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="60"/>
         <source>Last accessed directory &quot;{}&quot; loaded.</source>
-        <translation>Zuletzt verwendeten Ordner &quot;{}&quot; geladen.</translation>
+        <translation>Zuletzt verwendeten Ordner „{}“ geladen.</translation>
     </message>
 </context>
 <context>
@@ -4014,7 +4014,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="47"/>
         <source>Split &apos;{}&apos;</source>
-        <translation>„{}” aufteilen</translation>
+        <translation>„{}“ aufteilen</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="51"/>
