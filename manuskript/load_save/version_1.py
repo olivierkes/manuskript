@@ -391,14 +391,6 @@ def saveProject(zip=None):
 
         # Removing phantoms
         for path in [p for p in cache if p not in [p for p, c in files]]:
-            filename = os.path.join(dir, folder, path)
-            log("* Removing", path)
-
-            if os.path.isdir(filename):
-                shutil.rmtree(filename)
-
-            else:  # elif os.path.exists(filename)
-                os.remove(filename)
 
             # Clear cache
             cache.pop(path, 0)
