@@ -181,12 +181,12 @@ Use se receber um erro YAML.</translation>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="18"/>
         <source>Basic HTML output using the Python module &apos;markdown&apos;.</source>
-        <translation>Saída HTML básica utilizando o módulo &quot;markdown&quot; do Python.</translation>
+        <translation>Saída HTML básica utilizando o módulo markdown do Python.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="19"/>
         <source>Python module &apos;markdown&apos;.</source>
-        <translation>Módulo &quot;markdown&quot; do Python.</translation>
+        <translation>Módulo markdown do Python.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="54"/>
@@ -537,7 +537,7 @@ Use se receber um erro YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="277"/>
         <source>Email</source>
-        <translation>Email</translation>
+        <translation>E-mail</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1422"/>
@@ -1333,8 +1333,8 @@ Use se receber um erro YAML.</translation>
         <location filename="../manuskript/mainWindow.py" line="1285"/>
         <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous
                      evil wizard wasn&apos;t able to kill a baby?&apos; (Harry Potter)</source>
-        <translation>A situação básica, na forma de pergunta &quot;E se...?&quot;. E.g.: &quot;E se o mais maligno e perigoso
-                     feiticeiro não fosse capaz de matar um bebé?&quot; (Harry Potter)</translation>
+        <translation>A situação básica, na forma de pergunta «E se...?». E.g.: «E se o mais maligno e perigoso
+                     feiticeiro não fosse capaz de matar um bebé?» (Harry Potter)</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1290"/>
@@ -1466,7 +1466,7 @@ Use se receber um erro YAML.</translation>
     <message>
         <location filename="../manuskript/mainWindow.py" line="660"/>
         <source>Save changes to project &quot;{}&quot; before closing?</source>
-        <translation>Gravar alterações ao projecto &quot;{}&quot; antes de fechar?</translation>
+        <translation>Gravar alterações ao projecto «{}» antes de fechar?</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="660"/>
@@ -2899,7 +2899,7 @@ Use se receber um erro YAML.</translation>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="60"/>
         <source>Last accessed directory &quot;{}&quot; loaded.</source>
-        <translation>Carregada a última pasta acedida &quot;{}&quot;.</translation>
+        <translation>Carregada a última pasta acedida «{}».</translation>
     </message>
 </context>
 <context>
@@ -4020,7 +4020,7 @@ Use se receber um erro YAML.</translation>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="47"/>
         <source>Split &apos;{}&apos;</source>
-        <translation>Dividir &quot;{}&quot;</translation>
+        <translation>Dividir «{}»</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="51"/>
