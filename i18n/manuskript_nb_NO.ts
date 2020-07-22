@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="2.0" language="nb_NO" sourcelanguage="">
+<!DOCTYPE TS>
+<TS version="2.0" language="nb_NO" sourcelanguage="">
 <context>
     <name>Export</name>
     <message>
@@ -221,7 +222,7 @@ Use that if you get YAML related error.</source>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="70"/>
-        <source>Choose output file&#xe2;&#x80;&#xa6;</source>
+        <source>Choose output fileâ¦</source>
         <translation type="unfinished">Velg utdatafil…</translation>
     </message>
 </context>
@@ -508,7 +509,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="277"/>
         <source>Email</source>
-        <translation></translation>
+        <translation>E-post</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1422"/>
@@ -2873,7 +2874,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="60"/>
         <source>Last accessed directory &quot;{}&quot; loaded.</source>
-        <translation>Sist brukte mappe &quot;{}&quot; valgt.</translation>
+        <translation>Sist brukte mappe «{}» valgt.</translation>
     </message>
 </context>
 <context>
