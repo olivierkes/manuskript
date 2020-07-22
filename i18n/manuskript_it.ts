@@ -532,7 +532,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="277"/>
         <source>Email</source>
-        <translation></translation>
+        <translation>E-mail</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1422"/>
@@ -1013,8 +1013,8 @@ Usalo se ottieni un errore relativo a YAML.</translation>
         <location filename="../manuskript/mainWindow.py" line="1285"/>
         <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous
                      evil wizard wasn&apos;t able to kill a baby?&apos; (Harry Potter)</source>
-        <translation>La situazione iniziale, in forma di domanda tipo &apos;Cosa succede se...?&apos;. Es: &apos;Cosa succede se il pericoloso
-                     mago cattivo non riesce ad uccidere un bambino?&apos; (Harry Potter)</translation>
+        <translation>La situazione iniziale, in forma di domanda tipo «Cosa succede se...?». Es: «Cosa succede se il pericoloso
+                     mago cattivo non riesce ad uccidere un bambino?» (Harry Potter)</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1290"/>
@@ -1466,7 +1466,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/mainWindow.py" line="660"/>
         <source>Save changes to project &quot;{}&quot; before closing?</source>
-        <translation>Salvare i cambiamenti del progetto&quot;{}&quot; prima di chiuderlo?</translation>
+        <translation>Salvare i cambiamenti del progetto «{}» prima di chiuderlo?</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="660"/>
@@ -2899,7 +2899,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="60"/>
         <source>Last accessed directory &quot;{}&quot; loaded.</source>
-        <translation>L&apos;ultima directory accessibile &quot;{}&quot; è stata caricata.</translation>
+        <translation>L&apos;ultima directory accessibile «{}» è stata caricata.</translation>
     </message>
 </context>
 <context>
