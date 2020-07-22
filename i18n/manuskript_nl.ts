@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="2.0" language="nl" sourcelanguage="">
+<!DOCTYPE TS>
+<TS version="2.0" language="nl" sourcelanguage="">
 <context>
     <name>Export</name>
     <message>
@@ -227,7 +228,7 @@ Gebruik dit bij een YAML gerelateerde foutmelding.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="70"/>
-        <source>Choose output file&#xe2;&#x80;&#xa6;</source>
+        <source>Choose output fileâ¦</source>
         <translation type="unfinished">Kies uitvoerbestand.....</translation>
     </message>
 </context>
@@ -514,7 +515,7 @@ Gebruik dit bij een YAML gerelateerde foutmelding.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="277"/>
         <source>Email</source>
-        <translation></translation>
+        <translation>E-mail</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1422"/>
