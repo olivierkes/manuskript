@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="2.0" language="en_GB" sourcelanguage="en_US">
+<!DOCTYPE TS>
+<TS version="2.0" language="en_GB" sourcelanguage="en_US">
 <context>
     <name>Export</name>
     <message>
@@ -160,7 +161,10 @@ Use that if you get YAML related error.</source>
     formats.&lt;/p&gt;
     &lt;p&gt;Website: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
     </source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;A universal document converter. Can be used to convert Markdown to a wide range of other
+    formats.&lt;/p&gt;
+    &lt;p&gt;Website: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
+    </translation>
     </message>
     <message>
         <location filename="../manuskript/converters/pandocConverter.py" line="75"/>
@@ -201,7 +205,8 @@ Use that if you get YAML related error.</source>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="15"/>
         <source>Simplest export to plain text. Allows you to use your own markup not understood
                   by Manuskript, for example &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Simplest export to plain text. Allows you to use your own markup not understood
+                  by Manuskript, for example &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/__init__.py" line="15"/>
@@ -212,12 +217,13 @@ Use that if you get YAML related error.</source>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="48"/>
         <source>Could not process regular expression: 
 {}</source>
-        <translation type="unfinished"></translation>
+        <translation>Could not process regular expression: 
+{}</translation>
     </message>
     <message encoding="UTF-8">
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="70"/>
         <source>Choose output file…</source>
-        <translation type="unfinished"></translation>
+        <translation>Choose output file…</translation>
     </message>
 </context>
 <context>
@@ -508,7 +514,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="277"/>
         <source>Email</source>
-        <translation></translation>
+        <translation>E-mail</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1422"/>
@@ -937,8 +943,8 @@ Use that if you get YAML related error.</source>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2521"/>
-        <source>&amp;Import&#xe2;&#x80;&#xa6;</source>
-        <translation type="unfinished"></translation>
+        <source>&amp;Importâ¦</source>
+        <translation>&amp;Importâ¦</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2524"/>
@@ -977,8 +983,8 @@ Use that if you get YAML related error.</source>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2569"/>
-        <source>&amp;Split&#xe2;&#x80;&#xa6;</source>
-        <translation type="unfinished"></translation>
+        <source>&amp;Splitâ¦</source>
+        <translation>&amp;Splitâ¦</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2572"/>
@@ -1430,32 +1436,32 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/mainWindow.py" line="660"/>
         <source>Save project?</source>
-        <translation type="unfinished"></translation>
+        <translation>Save project?</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="660"/>
         <source>Save changes to project &quot;{}&quot; before closing?</source>
-        <translation type="unfinished"></translation>
+        <translation>Save changes to project ‘{}’ before closing?</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="660"/>
         <source>Your changes will be lost if you don&apos;t save them.</source>
-        <translation type="unfinished"></translation>
+        <translation>Your changes will be lost if you don&apos;t save them.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1594"/>
         <source>PyQt / Qt versions 5.11 and 5.12 are known to cause a crash which might result in a loss of data.</source>
-        <translation type="unfinished"></translation>
+        <translation>PyQt / Qt versions 5.11 and 5.12 are known to cause a crash which might result in a loss of data.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1595"/>
         <source>PyQt {} and Qt {} are in use.</source>
-        <translation type="unfinished"></translation>
+        <translation>PyQt {} and Qt {} are in use.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1600"/>
         <source>Proceed with import at your own risk</source>
-        <translation type="unfinished"></translation>
+        <translation>Proceed with import at your own risk</translation>
     </message>
 </context>
 <context>
@@ -1563,12 +1569,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="410"/>
         <source>Save on project close</source>
-        <translation type="unfinished"></translation>
+        <translation>Save on project close</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="426"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If you check this option, your project will be saved as one single file. Easier to copy or backup, but does not allow collaborative editing, or versioning.&lt;br/&gt;If this is unchecked, your project will be saved as a folder containing many small files.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If you check this option, your project will be saved as one single file. Easier to copy or backup, but does not allow collaborative editing, or versioning.&lt;br/&gt;If this is unchecked, your project will be saved as a folder containing many small files.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="432"/>
@@ -2138,7 +2144,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="775"/>
         <source>&lt;p&gt;&lt;b&gt;The Revisions feature has been at the source of many reported issues. In this version of Manuskript it has been turned off by default for new projects in order to provide the best experience.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Why aren&apos;t these issues fixed already? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;We need your help to make Manuskript better!&lt;/a&gt;&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;&lt;b&gt;The Revisions feature has been at the source of many reported issues. In this version of Manuskript it has been turned off by default for new projects in order to provide the best experience.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Why aren&apos;t these issues fixed already? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;We need your help to make Manuskript better!&lt;/a&gt;&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
@@ -2571,13 +2577,13 @@ Use that if you get YAML related error.</source>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="788"/>
-        <source>Replace ... with &#xe2;&#x80;&#xa6;</source>
-        <translation type="unfinished"></translation>
+        <source>Replace ... with â¦</source>
+        <translation>Replace ... with â¦</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="795"/>
-        <source>Replace --- with &#xe2;&#x80;&#x94;</source>
-        <translation type="unfinished"></translation>
+        <source>Replace --- with â</source>
+        <translation>Replace --- with â</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="802"/>
@@ -2868,7 +2874,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="60"/>
         <source>Last accessed directory &quot;{}&quot; loaded.</source>
-        <translation></translation>
+        <translation>Last accessed directory ‘{}’ loaded.</translation>
     </message>
 </context>
 <context>
