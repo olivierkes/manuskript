@@ -171,16 +171,69 @@ class BasicDictionary:
         return word.lower() in self._customDict
 
     def addWord(self, word):
+        """
+        Add a word to the custom dictionary.
+
+        It is safe to call this method multiple times with the same word,
+        it will not be added twice.
+        """
         word = word.lower()
         if not word in self._customDict:
             self._customDict.add(word)
             self._saveCustomDict()
 
     def removeWord(self, word):
+        """
+        Remove a word from the custom dictionary.
+
+        It is safe to call this method multiple times with the same word,
+        or with words that are not found in the custom dictionary. In
+        this situation the call does nothing.
+        """
         word = word.lower()
         if word in self._customDict:
             self._customDict.remove(word)
             self._saveCustomDict()
+
+    def addWords(self, words):
+        """
+        Add a list of words to the custom dictionary.
+
+        It is safe to call this method multiple times with the same word,
+        it will not be added twice.
+
+        This is more efficient than calling `removeWord` in a loop, as 
+        here changes are not committed to disk until the end.
+        """
+        changesMade = False
+        for word in words:
+            word = word.lower()
+            if not word in self._customDict:
+                self._customDict.add(word)
+                changesMade = True
+        if changesMade:
+            self._saveCustomDict()
+
+    def removeWords(self, words):
+        """
+        Remove a list of words from the custom dictionary.
+
+        It is safe to call this method multiple times with the same word,
+        or with words that are not found in the custom dictionary. In
+        this situation the call does nothing.
+
+        This is more efficient than calling `removeWord` in a loop, as 
+        here changes are not committed to disk until the end.
+        """
+        changesMade = False
+        for word in words:
+            word = word.lower()
+            if word in self._customDict:
+                self._customDict.remove(word)
+                changesMade = True
+        if changesMade:
+            self._saveCustomDict()
+
 
     @classmethod
     def getResourcesPath(cls):
@@ -201,7 +254,7 @@ class BasicDictionary:
         """
         Adds words from the custom dictionary, or another custom set of words 
         (such as character names), to the spellcheching engine. This method
-        does not permenantly add the given words to the custom dictionary,
+        does not permanently add the given words to the custom dictionary,
         it only loads the words into the spell-checking engine.
 
         Takes any iterable of string entries.
@@ -268,6 +321,14 @@ class EnchantDictionary(BasicDictionary):
 
     def removeWord(self, word):
         self._dict.remove(word)
+    
+    def addWords(self, words):
+        for word in words:
+            self._dict.add(word)
+    
+    def removeWords(self, words):
+        for word in words:
+            self._dict.remove(word)
 
     def getCustomDictionaryPath(self):
         return os.path.join(self.getResourcesPath(), "{}.txt".format(self.name))
@@ -331,6 +392,16 @@ class PySpellcheckerDictionary(BasicDictionary):
     def removeWord(self, word):
         BasicDictionary.removeWord(self, word)
         self._dict.word_frequency.remove(word.lower())
+
+    def addWords(self, words):
+        BasicDictionary.addWords(self, words)
+        for word in words:
+            self._dict.word_frequency.add(word.lower())
+
+    def removeWords(self, words):
+        BasicDictionary.removeWords(self, words)
+        for word in words:
+            self._dict.word_frequency.remove(word.lower())
 
 class SymSpellDictionary(BasicDictionary):
     CUSTOM_COUNT = 1
@@ -433,6 +504,17 @@ class SymSpellDictionary(BasicDictionary):
         BasicDictionary.removeWord(self, word)
         # Since 6.3.8
         self._dict.delete_dictionary_entry(word)
+    
+    def addWords(self, words):
+        BasicDictionary.addWords(self, words)
+        for word in words:
+            self._dict.create_dictionary_entry(word.lower(), self.CUSTOM_COUNT)
+
+    def removeWords(self, words):
+        BasicDictionary.removeWords(self, words)
+        # Since 6.3.8
+        for word in words:
+            self._dict.delete_dictionary_entry(word)
 
 
 # Register the implementations in order of priority
