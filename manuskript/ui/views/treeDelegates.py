@@ -34,8 +34,8 @@ class treeTitleDelegate(QStyledItemDelegate):
         opt = QStyleOptionViewItem(option)
         self.initStyleOption(opt, index)
 
-        iconRect = style.subElementRect(style.SE_ItemViewItemDecoration, opt)
-        textRect = style.subElementRect(style.SE_ItemViewItemText, opt)
+        iconRect = style.subElementRect(style.SE_ItemViewItemDecoration, opt, None)
+        textRect = style.subElementRect(style.SE_ItemViewItemText, opt, None)
 
         # Background
         style.drawPrimitive(style.PE_PanelItemViewItem, opt, painter)
