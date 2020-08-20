@@ -223,7 +223,8 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="48"/>
         <source>Could not process regular expression: 
 {}</source>
-        <translation type="unfinished"></translation>
+        <translation>Kunde inte behandla uttrycket: 
+{}</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="70"/>
