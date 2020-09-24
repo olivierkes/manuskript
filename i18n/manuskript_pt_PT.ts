@@ -16,7 +16,7 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="103"/>
         <source>Number of sections level to include in TOC: </source>
-        <translation>Quantidade de níveis de secção a incluir no índice: </translation>
+        <translation>Número de níveis de secção a incluir no índice: </translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="107"/>
@@ -126,8 +126,8 @@ Use se receber um erro YAML.</translation>
         <location filename="../manuskript/exporter/pandoc/plainText.py" line="10"/>
         <source>Export to markdown, using pandoc. Allows more formatting options
     than the basic manuskript exporter.</source>
-        <translation>exportar para markdown, a usar pandoc. Permite mais opções
-    de formatação que o exportador do Manuskript.</translation>
+        <translation>Exportar para markdown com o pandoc. Permite mais opções
+    de formatação que o exportador básico do Manuskript.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/plainText.py" line="22"/>
@@ -168,7 +168,7 @@ Use se receber um erro YAML.</translation>
     formats.&lt;/p&gt;
     &lt;p&gt;Website: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
     </source>
-        <translation>&lt;p&gt;Um conversor de documentos universal. Pode ser utilizado para converter Markdown para uma vasta quantidade 
+        <translation>&lt;p&gt;Um conversor de documentos universal. Pode ser utilizado para converter Markdown para um vasto número 
     de outros formatos.&lt;/p&gt;
     &lt;p&gt;Página web: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
     </translation>
@@ -181,7 +181,7 @@ Use se receber um erro YAML.</translation>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="18"/>
         <source>Basic HTML output using the Python module &apos;markdown&apos;.</source>
-        <translation>Saída HTML básica a utilizar o módulo markdown do Python.</translation>
+        <translation>Saída HTML básica via módulo &quot;markdown&quot; do Python.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="19"/>
@@ -326,7 +326,7 @@ Use se receber um erro YAML.</translation>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="115"/>
         <source>Number of words: from</source>
-        <translation>Quantidade de palavras: de</translation>
+        <translation>Número de palavras: de</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="129"/>
@@ -419,14 +419,14 @@ Use se receber um erro YAML.</translation>
         <translation>&lt;b&gt;Informação:&lt;/b&gt; o Manuskript pode
                         importar de &lt;b&gt;markdown&lt;/b&gt; ou &lt;b&gt;OPML&lt;/b&gt;. O Pandoc vai
                         converter o seu documento para um deles (veja a opção abaixo) e
-                        será depois importado ao Manuskript. Um ou outro
-                        poderão dar um melhor resultado, a depender do documento.
+                        será depois importado para o Manuskript. Um ou outro
+                        poderão dar um melhor resultado, dependendo do documento.
                         &lt;br/&gt;&amp;nbsp;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="69"/>
         <source>Import using:</source>
-        <translation>Importar a usar:</translation>
+        <translation>Importar via:</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="73"/>
@@ -1609,7 +1609,7 @@ Use se receber um erro YAML.</translation>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="490"/>
         <source>Revisions are a way to keep track of modifications. For each text item, it stores any changes you make to the main text, allowing you to see and restoring previous versions.</source>
-        <translation>As revisões são uma forma de manter um registo das modificações. Para cada item de texto, armazena as alterações ao texto principal, que permite ver e restaurar versões anteriores.</translation>
+        <translation>As revisões são uma forma de manter um registo das modificações. Para cada item de texto, armazenam as alterações ao texto principal, o que permite ver e restaurar versões anteriores.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="500"/>
@@ -1629,7 +1629,7 @@ Use se receber um erro YAML.</translation>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="544"/>
         <source>Smart remove allows you to keep only a certain number of revisions. It is strongly recommended to use it, lest you file will becomes full of thousands of insignificant changes.</source>
-        <translation>A remoção inteligente mantém só uma certa quantidade de revisões. Recomenda-se vivamente que a use, para que o seu ficheiro não fique repleto de alterações insignificantes.</translation>
+        <translation>A remoção inteligente mantém só um certo número de revisões. Recomenda-se vivamente que a use, para que o seu ficheiro não fique repleto de alterações insignificantes.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="560"/>
@@ -2925,7 +2925,7 @@ Use se receber um erro YAML.</translation>
     <message>
         <location filename="../manuskript/ui/editors/locker_ui.ui" line="33"/>
         <source>Word target</source>
-        <translation>Quantidade de palavras</translation>
+        <translation>Objectivo de palavras</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker_ui.ui" line="40"/>
@@ -2988,7 +2988,7 @@ Use se receber um erro YAML.</translation>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.ui" line="47"/>
         <source>Go to parent item</source>
-        <translation>Ir à item-mãe</translation>
+        <translation>Ir ao item-mãe</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.ui" line="57"/>
