@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="2.0" language="ja" sourcelanguage="">
+<!DOCTYPE TS>
+<TS version="2.0" language="ja" sourcelanguage="">
 <context>
     <name>Export</name>
     <message>
@@ -10,17 +11,17 @@
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="19"/>
         <source>Python module &apos;markdown&apos;.</source>
-        <translation>Pythonモジュール &apos;markdown&apos;</translation>
+        <translation>Pythonモジュール &apos;markdown&apos;.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="54"/>
         <source>Markdown source</source>
-        <translation>Markdown source</translation>
+        <translation>Markdown ソース</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="55"/>
         <source>HTML Source</source>
-        <translation>HTML Source</translation>
+        <translation>HTML ソース</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="59"/>
@@ -35,12 +36,12 @@
     <message>
         <location filename="../manuskript/exporter/manuskript/markdown.py" line="60"/>
         <source>Preview with highlighter.</source>
-        <translation>構文を強調表示しての事前確認する。</translation>
+        <translation>構文をハイライトで事前確認する。</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="14"/>
         <source>Plain text</source>
-        <translation>Plain text</translation>
+        <translation>プレーンテキスト</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/HTML.py" line="13"/>
@@ -55,7 +56,7 @@
     <message>
         <location filename="../manuskript/converters/pandocConverter.py" line="75"/>
         <source>Error</source>
-        <translation>Error</translation>
+        <translation>エラー</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="97"/>
@@ -135,7 +136,7 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/outputFormats.py" line="10"/>
         <source>Books that don&apos;t kill trees.</source>
-        <translation type="unfinished"></translation>
+        <translation>ツリーを破棄しない本</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/outputFormats.py" line="21"/>
@@ -145,7 +146,7 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/outputFormats.py" line="32"/>
         <source>Microsoft Office (.docx) document.</source>
-        <translation>Microsoft Office 文書 (.docx)</translation>
+        <translation>Microsoft Office (.docx)文書 。</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/plainText.py" line="22"/>
@@ -221,7 +222,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="70"/>
-        <source>Choose output file&#xe2;&#x80;&#xa6;</source>
+        <source>Choose output fileâ¦</source>
         <translation type="unfinished">出力ファイルを選択...</translation>
     </message>
 </context>
@@ -275,7 +276,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="273"/>
         <source>{HelpText}</source>
-        <translation type="unfinished"></translation>
+        <translation>{HelpText}</translation>
     </message>
 </context>
 <context>
@@ -447,7 +448,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/importer/mindMapImporter.py" line="90"/>
         <source>Untitled</source>
-        <translation>Untitled</translation>
+        <translation>無題</translation>
     </message>
 </context>
 <context>
@@ -468,12 +469,12 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="169"/>
         <source>Title</source>
-        <translation>表題</translation>
+        <translation>タイトル</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="179"/>
         <source>Subtitle</source>
-        <translation>子表題</translation>
+        <translation>サブタイトル</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="189"/>
@@ -688,7 +689,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1657"/>
         <source>More</source>
-        <translation type="unfinished"></translation>
+        <translation>もっと</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1666"/>
@@ -898,7 +899,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2500"/>
         <source>&amp;Frequency Analyzer</source>
-        <translation type="unfinished"></translation>
+        <translation>単語の頻度数解析</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="154"/>
@@ -978,7 +979,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/mainWindow.py" line="1217"/>
         <source>Story line</source>
-        <translation type="unfinished"></translation>
+        <translation>ストーリーライン</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1282"/>
@@ -1041,7 +1042,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/mainWindow.py" line="1468"/>
         <source>POV</source>
-        <translation>POV</translation>
+        <translation>視点</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1469"/>
@@ -1146,7 +1147,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message encoding="UTF-8">
         <location filename="../manuskript/ui/mainWindow.ui" line="2569"/>
         <source>&amp;Split…</source>
-        <translation>分割</translation>
+        <translation>分割…</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2572"/>
@@ -1534,7 +1535,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="293"/>
         <source>minutes.</source>
-        <translation>分</translation>
+        <translation>分。</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="329"/>
@@ -1544,7 +1545,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="376"/>
         <source>seconds.</source>
-        <translation>秒</translation>
+        <translation>秒。</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="410"/>
@@ -4189,7 +4190,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/welcome.py" line="157"/>
         <source>Manuskript project (*.msk);;All files (*)</source>
-        <translation>Manuskript project (*.msk);;All files (*)</translation>
+        <translation>Manuskript プロジェクト (*.msk);;すべてのファイル (*)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="171"/>
@@ -4199,7 +4200,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/welcome.py" line="195"/>
         <source>Manuskript project (*.msk)</source>
-        <translation>Manuskript project (*.msk)</translation>
+        <translation>Manuskript プロジェクト (*.msk)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="187"/>
