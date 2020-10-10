@@ -136,7 +136,7 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/outputFormats.py" line="10"/>
         <source>Books that don&apos;t kill trees.</source>
-        <translation>ツリーを破棄しない本</translation>
+        <translation>本のツリーを破棄しない。</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/outputFormats.py" line="21"/>
@@ -924,37 +924,37 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/mainWindow.py" line="840"/>
         <source>Project {} saved.</source>
-        <translation type="unfinished"></translation>
+        <translation>プロジェクト {} が保存されました。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="843"/>
         <source>WARNING: Project {} not saved.</source>
-        <translation type="unfinished"></translation>
+        <translation>警告：プロジェクト {} は保存されていません。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="867"/>
         <source>Project {} loaded.</source>
-        <translation type="unfinished"></translation>
+        <translation>プロジェクト {} が読み込まれました。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="870"/>
         <source>Project {} loaded with some errors:</source>
-        <translation type="unfinished"></translation>
+        <translation>プロジェクト {} にいくつかのエラーが読み込まれました：</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="872"/>
         <source> * {} wasn&apos;t found in project file.</source>
-        <translation type="unfinished"></translation>
+        <translation> * {} がプロジェクトファイルに見つかりませんでした。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="873"/>
         <source>Project {} loaded with some errors.</source>
-        <translation type="unfinished"></translation>
+        <translation>プロジェクト {} にいくつかのエラーが読み込まれました。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1202"/>
         <source> (~{} pages)</source>
-        <translation type="unfinished"></translation>
+        <translation> (~{} ページ)</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1206"/>
@@ -1022,7 +1022,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/mainWindow.py" line="1307"/>
         <source>Write.</source>
-        <translation type="unfinished"></translation>
+        <translation>書く。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1310"/>
@@ -1037,7 +1037,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/mainWindow.py" line="1467"/>
         <source>Nothing</source>
-        <translation type="unfinished"></translation>
+        <translation>無し</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1468"/>
@@ -1242,27 +1242,27 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2658"/>
         <source>&amp;Level 1 (setext)</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;レベル1 (setext)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2661"/>
         <source>Ctrl+Alt+1</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Alt+1</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2666"/>
         <source>Level &amp;2</source>
-        <translation type="unfinished"></translation>
+        <translation>レベル &amp;2</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2669"/>
         <source>Ctrl+Alt+2</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Alt+2</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2674"/>
         <source>Level &amp;1 (atx)</source>
-        <translation type="unfinished"></translation>
+        <translation>レベル &amp;1 (atx)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2677"/>
@@ -1272,7 +1272,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2682"/>
         <source>L&amp;evel 2</source>
-        <translation type="unfinished"></translation>
+        <translation>L&amp;evel 2</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2685"/>
@@ -1327,7 +1327,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2729"/>
         <source>Ctrl+B</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+B</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2738"/>
@@ -1337,7 +1337,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2741"/>
         <source>Ctrl+I</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+I</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2750"/>
@@ -1422,47 +1422,47 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/mainWindow.py" line="1338"/>
         <source>Install {}{} to use spellcheck</source>
-        <translation type="unfinished"></translation>
+        <translation>スペルチェックを使用するには {}{} をインストールします</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1380"/>
         <source>{} has no installed dictionaries</source>
-        <translation type="unfinished"></translation>
+        <translation>{} には辞書がインストールされていません</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1401"/>
         <source>{}{} is not installed</source>
-        <translation type="unfinished"></translation>
+        <translation>{}{} がインストールされていません</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="660"/>
         <source>Save project?</source>
-        <translation type="unfinished"></translation>
+        <translation>プロジェクトを保存しますか？</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="660"/>
         <source>Save changes to project &quot;{}&quot; before closing?</source>
-        <translation type="unfinished"></translation>
+        <translation>閉じる前にプロジェクト &quot;{}&quot; への変更を保存しますか？</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="660"/>
         <source>Your changes will be lost if you don&apos;t save them.</source>
-        <translation type="unfinished"></translation>
+        <translation>保存しないと、変更内容は失われます。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1594"/>
         <source>PyQt / Qt versions 5.11 and 5.12 are known to cause a crash which might result in a loss of data.</source>
-        <translation type="unfinished"></translation>
+        <translation>PyQt / Qtバージョン5.11および5.12は、データの損失につながる可能性のあるクラッシュを引き起こすことがわかっています。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1595"/>
         <source>PyQt {} and Qt {} are in use.</source>
-        <translation type="unfinished"></translation>
+        <translation>PyQt {} と Qt {} が使用されています。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1600"/>
         <source>Proceed with import at your own risk</source>
-        <translation type="unfinished"></translation>
+        <translation>自己責任でインポートを続行</translation>
     </message>
 </context>
 <context>
@@ -2286,7 +2286,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/views/characterTreeView.py" line="90"/>
         <source>Main</source>
-        <translation type="unfinished"></translation>
+        <translation>メイン</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/characterTreeView.py" line="90"/>
@@ -2372,7 +2372,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/views/cmbOutlineCharacterChoser.py" line="136"/>
         <source>Various</source>
-        <translation type="unfinished"></translation>
+        <translation>雑多</translation>
     </message>
 </context>
 <context>
@@ -2380,7 +2380,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/views/cmbOutlineLabelChoser.py" line="113"/>
         <source>Various</source>
-        <translation type="unfinished"></translation>
+        <translation>雑多</translation>
     </message>
 </context>
 <context>
@@ -2388,7 +2388,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/views/cmbOutlineStatusChoser.py" line="112"/>
         <source>Various</source>
-        <translation type="unfinished"></translation>
+        <translation>雑多</translation>
     </message>
 </context>
 <context>
