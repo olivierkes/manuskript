@@ -1451,7 +1451,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1594"/>
         <source>PyQt / Qt versions 5.11 and 5.12 are known to cause a crash which might result in a loss of data.</source>
-        <translation>PyQt / Qt-versjonene 5.11 og 5.12 er kjent for å forårsake kræsj som kan resultere i datatap.</translation>
+        <translation>PyQt / Qt-versjonene 5.11 og 5.12 er kjent for å forårsake krasj som kan resultere i datatap.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1595"/>
@@ -1461,7 +1461,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1600"/>
         <source>Proceed with import at your own risk</source>
-        <translation type="unfinished">Å fortsette kan forårsake kræsj og datatap</translation>
+        <translation>Å fortsette kan forårsake krasj og datatap</translation>
     </message>
 </context>
 <context>
