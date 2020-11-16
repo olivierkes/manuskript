@@ -66,7 +66,7 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="100"/>
         <source>Include a table of contents.</source>
-        <translation>Erzeuge ein Inhaltsverzeichnis.</translation>
+        <translation>Füge ein Inhaltsverzeichnis ein.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="103"/>
@@ -651,12 +651,12 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="869"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One sentence&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Handlung aus Sicht&lt;br/&gt;des Charakters&lt;br/&gt;in einem Satz&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Zusammenfassung&lt;br/&gt;in einem Satz&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="879"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One paragraph&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Handlung aus Sicht&lt;br/&gt;des Charakters&lt;br/&gt;in einem Absatz&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Zusammenfassung&lt;br/&gt;in einem Absatz&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1001"/>
@@ -2484,7 +2484,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/exporters/exporter.py" line="64"/>
         <source>{} (not implemented yet)</source>
-        <translation>{} (noch nicht implimentiert)</translation>
+        <translation>{} (noch nicht implementiert)</translation>
     </message>
 </context>
 <context>
@@ -2532,7 +2532,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="142"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Filters what items will be included in the final export.&lt;br/&gt;&lt;span style=&quot; color:#773333;&quot;&gt;(Not fully implemented yet.)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Filtert, welche Objekte beim finalen Export mit einbezogen werden sollen.&lt;br/&gt;&lt;span style=&quot; color:#773333;&quot;&gt;(Noch nicht vollständig implimentiert.)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Filtert, welche Objekte beim finalen Export mit einbezogen werden sollen.&lt;br/&gt;&lt;span style=&quot; color:#773333;&quot;&gt;(Noch nicht vollständig implementiert.)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="149"/>
