@@ -164,7 +164,7 @@
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="15"/>
         <source>Simplest export to plain text. Allows you to use your own markup not understood
                   by Manuskript, for example &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</source>
-        <translation>Einfacher Export in Plaintext. Erlaubt die Benutzung von Markups, die von Manuskript nicht
+        <translation>Einfachster Export als reine Textdatei. Erlaubt die Benutzung von Markups, die von Manuskript nicht
 interpretiert werden können, wie zum Beispiel &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</translation>
     </message>
     <message>
@@ -224,7 +224,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="48"/>
         <source>Could not process regular expression: 
 {}</source>
-        <translation>Fehler bei der Verarbeitung eines regulären Ausdruckes:
+        <translation>Konnte regulären Ausdruck nicht verarbeiten: 
 {}</translation>
     </message>
     <message>
