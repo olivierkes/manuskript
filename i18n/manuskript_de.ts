@@ -1405,7 +1405,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2788"/>
         <source>Clear &amp;formats</source>
-        <translation>Formatierungen &amp;löschen</translation>
+        <translation>&amp;Formatierung löschen</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2791"/>
@@ -1445,12 +1445,12 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1338"/>
         <source>Install {}{} to use spellcheck</source>
-        <translation>Installlieren Sie {}{}, für eine Rechtschreibprüfung</translation>
+        <translation>Installieren Sie {}{} um die Rechtschreibprüfung zu nutzen</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1380"/>
         <source>{} has no installed dictionaries</source>
-        <translation>Für {} sind keine Wörterbücher installiert</translation>
+        <translation>{} hat keine installierten Wörterbücher</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1401"/>
