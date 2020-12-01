@@ -224,12 +224,13 @@ Use that if you get YAML related error.</source>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="48"/>
         <source>Could not process regular expression: 
 {}</source>
-        <translation type="unfinished"></translation>
+        <translation>لايمكن تنفيذ ومعالجة التعبير النمطي (regular expression): 
+{}</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="70"/>
         <source>Choose output fileâ¦</source>
-        <translation type="unfinished"></translation>
+        <translation>اختر ملف الإخراجâ¦</translation>
     </message>
 </context>
 <context>
@@ -345,12 +346,14 @@ Use that if you get YAML related error.</source>
         <source>&lt;b&gt;Info:&lt;/b&gt; A very simple
                         parser that will go through a markdown document and
                         create items for each titles.&lt;br/&gt;&amp;nbsp;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;معلومات:&lt;/b&gt; بسيط جداً
+                        معالج يأخذ مستند مارك داون (markdown) و
+                        ينشأ عناصر لكل العناوين.&lt;br/&gt;&amp;nbsp;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="97"/>
         <source>Folder import</source>
-        <translation type="unfinished"></translation>
+        <translation>إستيراد مجلد</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="101"/>
@@ -359,47 +362,51 @@ Use that if you get YAML related error.</source>
                         plaintext documents within (you chose which ones by extension)
                         are added as scene.&lt;/p&gt;
                         &lt;p&gt;Only text files are supported (not images, binary or others).&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;&lt;b&gt;معلومات:&lt;/b&gt; يستورد 
+                        مجلد بصيغتة الكاملة حيث تُضاف المجلدات كمجلدات، و
+                        والمستندات النصية ضمنها (تحددها بواسطة نوع إمتداد الملف)
+                        تضاف كمشاهد.&lt;/p&gt;
+                        &lt;p&gt;فقط الملفات النصية مدعومة (الصور والملفات الأخرى ليست مدعومة).&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="108"/>
         <source>Include only those extensions:</source>
-        <translation type="unfinished"></translation>
+        <translation>ضمن فقط هذه الإمتدادات:</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="108"/>
         <source>Comma separated values</source>
-        <translation type="unfinished"></translation>
+        <translation>قيم مفصولة بفاصلة</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="113"/>
         <source>Sort items by name</source>
-        <translation type="unfinished"></translation>
+        <translation>رتب العناصر بالاسم</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="117"/>
         <source>Import folder then files</source>
-        <translation type="unfinished"></translation>
+        <translation>استورد مجلد ثم الملفات</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/opmlImporter.py" line="65"/>
         <source>OPML Import</source>
-        <translation type="unfinished"></translation>
+        <translation>استيراد OPML</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/opmlImporter.py" line="37"/>
         <source>File open failed.</source>
-        <translation type="unfinished"></translation>
+        <translation>فشل بفتح الملف.</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/opmlImporter.py" line="65"/>
         <source>This does not appear to be a valid OPML file.</source>
-        <translation type="unfinished"></translation>
+        <translation>هذا لا يبدو أنه ملف OPML صالح.</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="58"/>
         <source>Pandoc import</source>
-        <translation type="unfinished"></translation>
+        <translation>استيراد Pandoc</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="61"/>
@@ -409,17 +416,22 @@ Use that if you get YAML related error.</source>
                         then it will be imported in manuskript. One or the other
                         might give better result depending on your document.
                         &lt;br/&gt;&amp;nbsp;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;معلومات:&lt;/b&gt; يمكن لمانيوسكربت 
+                        الاستيراد من صيغ &lt;b&gt;مارك داون&lt;/b&gt; أو &lt;b&gt;OPML&lt;/b&gt;. سيقوم Pandoc 
+                        بتحويل مستندك لأحدها (راجع الخيار بالأسفل), و عندها
+                        سيتم اسيترادها لمانيوسكربت. إحداها قد
+                         ستعطيك نتائج أفضل بناءاً على مستندك .
+                        &lt;br/&gt;&amp;nbsp;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="69"/>
         <source>Import using:</source>
-        <translation type="unfinished"></translation>
+        <translation>استيراد بإستخدام:</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="73"/>
         <source>Wrap lines:</source>
-        <translation type="unfinished"></translation>
+        <translation>إلتفاف السطور:</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="73"/>
@@ -429,32 +441,37 @@ Use that if you get YAML related error.</source>
                         &lt;b&gt;none&lt;/b&gt;: no line wrap.&lt;br&gt;
                         &lt;b&gt;preserve&lt;/b&gt;: tries to preserves line wrap from the
                         original document.&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;هل يجب ل pandoc أن ينشأ
+                         مساحات جمالية بين الفقرات؟&lt;/p&gt;&lt;p&gt;
+                        &lt;b&gt;تلقائي&lt;/b&gt;: إلتفاف للسطر بعد 72 حرف.&lt;br&gt;
+                        &lt;b&gt;لاشيء&lt;/b&gt;: بدون إلتفات للسطر.&lt;br&gt;
+                        &lt;b&gt;محافظ&lt;/b&gt;:يحاول أن يحتفظ بإلتفات السطور من
+                        المستند الأصلي.&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/mindMapImporter.py" line="56"/>
         <source>Mind Map Import</source>
-        <translation type="unfinished"></translation>
+        <translation>استيراد خريطة ذهنية</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/mindMapImporter.py" line="56"/>
         <source>This does not appear to be a valid Mind Map file.</source>
-        <translation type="unfinished"></translation>
+        <translation>هذا لا يبدو أن ملف خريطة ذهنية (Mind MAP) صالح.</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/mindMapImporter.py" line="71"/>
         <source>Mind Map import</source>
-        <translation type="unfinished"></translation>
+        <translation>استيراد خريطة ذهنية</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/mindMapImporter.py" line="74"/>
         <source>Import tip as:</source>
-        <translation type="unfinished"></translation>
+        <translation>استيراد التلميح بصيغة:</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/mindMapImporter.py" line="90"/>
         <source>Untitled</source>
-        <translation type="unfinished"></translation>
+        <translation>بدون عنوان</translation>
     </message>
 </context>
 <context>
@@ -462,7 +479,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/MDEditCompleter.py" line="73"/>
         <source>Insert reference</source>
-        <translation type="unfinished"></translation>
+        <translation>إدراج مرجع</translation>
     </message>
 </context>
 <context>
@@ -470,202 +487,202 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1627"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>عام</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="169"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>عنوان</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="179"/>
         <source>Subtitle</source>
-        <translation type="unfinished"></translation>
+        <translation>عنوان فرعي</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="189"/>
         <source>Series</source>
-        <translation type="unfinished"></translation>
+        <translation>سلسلة</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="199"/>
         <source>Volume</source>
-        <translation type="unfinished"></translation>
+        <translation>مجلد</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="226"/>
         <source>Genre</source>
-        <translation type="unfinished"></translation>
+        <translation>النوع الأدبي</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="236"/>
         <source>License</source>
-        <translation type="unfinished"></translation>
+        <translation>الترخيص</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="249"/>
         <source>Author</source>
-        <translation type="unfinished"></translation>
+        <translation>المؤلف</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1636"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>الاسم</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="277"/>
         <source>Email</source>
-        <translation type="unfinished"></translation>
+        <translation>البريد الإلكتروني</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1422"/>
         <source>Summary</source>
-        <translation type="unfinished"></translation>
+        <translation>الملخص</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="322"/>
         <source>Situation:</source>
-        <translation type="unfinished"></translation>
+        <translation>الموقف:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1337"/>
         <source>Summary:</source>
-        <translation type="unfinished"></translation>
+        <translation>الملخص:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="345"/>
         <source>One sentence</source>
-        <translation type="unfinished"></translation>
+        <translation>جملة واحدة</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1435"/>
         <source>One paragraph</source>
-        <translation type="unfinished"></translation>
+        <translation>فقرة واحدة</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1440"/>
         <source>One page</source>
-        <translation type="unfinished"></translation>
+        <translation>صفحة واحدة</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1445"/>
         <source>Full</source>
-        <translation type="unfinished"></translation>
+        <translation>كامل</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="420"/>
         <source>One sentence summary</source>
-        <translation type="unfinished"></translation>
+        <translation>ملخص بجملة واحدة</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="502"/>
         <source>One paragraph summary</source>
-        <translation type="unfinished"></translation>
+        <translation>ملخص بفقرة واحدة</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="540"/>
         <source>Expand each sentence of your one paragraph summary to a paragraph</source>
-        <translation type="unfinished"></translation>
+        <translation>وسع كل جملة من ملخص بفقرة واحدة الخاصة بك لفقرة</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="565"/>
         <source>One page summary</source>
-        <translation type="unfinished"></translation>
+        <translation>ملخص بصفحة واحدة</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="590"/>
         <source>Full summary</source>
-        <translation type="unfinished"></translation>
+        <translation>ملخص كامل</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1074"/>
         <source>Next</source>
-        <translation type="unfinished"></translation>
+        <translation>التالي</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="676"/>
         <source>What if...?</source>
-        <translation type="unfinished"></translation>
+        <translation>ماذا لو ... ؟</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="688"/>
         <source>Characters</source>
-        <translation type="unfinished"></translation>
+        <translation>الشخصيات</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="713"/>
         <source>Names</source>
-        <translation type="unfinished"></translation>
+        <translation>الأسماء</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1587"/>
         <source>Filter</source>
-        <translation type="unfinished"></translation>
+        <translation>مرشح</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1183"/>
         <source>Basic info</source>
-        <translation type="unfinished"></translation>
+        <translation>معلومات بسيطة</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1202"/>
         <source>Importance</source>
-        <translation type="unfinished"></translation>
+        <translation>الأهمية</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="829"/>
         <source>Motivation</source>
-        <translation type="unfinished"></translation>
+        <translation>الدافع</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="839"/>
         <source>Goal</source>
-        <translation type="unfinished"></translation>
+        <translation>الهدف</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="849"/>
         <source>Conflict</source>
-        <translation type="unfinished"></translation>
+        <translation>النزاع</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="859"/>
         <source>Epiphany</source>
-        <translation type="unfinished"></translation>
+        <translation>الالهام</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="869"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One sentence&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;جملة واحدة &lt;br/&gt;ملخص&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="879"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One paragraph&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;فقرة واحدة&lt;br/&gt;ملخص&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1001"/>
         <source>Notes</source>
-        <translation type="unfinished"></translation>
+        <translation>ملاحظات</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1011"/>
         <source>Detailed info</source>
-        <translation type="unfinished"></translation>
+        <translation>معلومات مفصلة</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2021"/>
         <source>Plots</source>
-        <translation type="unfinished"></translation>
+        <translation>الحبكات</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1192"/>
         <source>Plot</source>
-        <translation type="unfinished"></translation>
+        <translation>الحبكة</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1209"/>
         <source>Character(s)</source>
-        <translation type="unfinished"></translation>
+        <translation>الشخصية/ات</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1646"/>
@@ -675,57 +692,57 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1223"/>
         <source>Result</source>
-        <translation type="unfinished"></translation>
+        <translation>الناتج</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1315"/>
         <source>Resolution steps</source>
-        <translation type="unfinished"></translation>
+        <translation>خطوات الوصول لنتيجة</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2045"/>
         <source>World</source>
-        <translation type="unfinished"></translation>
+        <translation>العالم</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1600"/>
         <source>Populates with empty data</source>
-        <translation type="unfinished"></translation>
+        <translation>إملاً ببيانات فارغة</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1657"/>
         <source>More</source>
-        <translation type="unfinished"></translation>
+        <translation>أكثر</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1666"/>
         <source>Source of passion</source>
-        <translation type="unfinished"></translation>
+        <translation>مصدر الشغف</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1676"/>
         <source>Source of conflict</source>
-        <translation type="unfinished"></translation>
+        <translation>مصدر النزاع</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1477"/>
         <source>Outline</source>
-        <translation type="unfinished"></translation>
+        <translation>النقاط العريضة (الملخص)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1854"/>
         <source>Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>محرر</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1985"/>
         <source>Debug</source>
-        <translation type="unfinished"></translation>
+        <translation>إيجاد الأخطاء</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1998"/>
         <source>FlatData</source>
-        <translation type="unfinished"></translation>
+        <translation>FlatData</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2008"/>
@@ -735,62 +752,62 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2069"/>
         <source>Labels</source>
-        <translation type="unfinished"></translation>
+        <translation>عناوين</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2103"/>
         <source>&amp;File</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;ملف</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2107"/>
         <source>&amp;Recent</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;أخيرة</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2127"/>
         <source>&amp;Help</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;مساعدة</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2134"/>
         <source>&amp;Tools</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;أدوات</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2141"/>
         <source>&amp;Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;تحرير</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2196"/>
         <source>&amp;View</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;عرض</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2200"/>
         <source>&amp;Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;الأسلوب</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2229"/>
         <source>&amp;Cheat sheet</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;برشامة الغش</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2263"/>
         <source>Sea&amp;rch</source>
-        <translation type="unfinished"></translation>
+        <translation>بحث</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2300"/>
         <source>&amp;Navigation</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;تنقل</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2335"/>
         <source>&amp;Open</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;فتح</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2338"/>
@@ -800,7 +817,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2347"/>
         <source>&amp;Save</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;حفظ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2350"/>
@@ -810,7 +827,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2359"/>
         <source>Sa&amp;ve as...</source>
-        <translation type="unfinished"></translation>
+        <translation>حفظ بصيغة...</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2362"/>
@@ -820,7 +837,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2371"/>
         <source>&amp;Quit</source>
-        <translation type="unfinished"></translation>
+        <translation>إغلاق</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2374"/>
@@ -830,7 +847,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2389"/>
         <source>&amp;Show help texts</source>
-        <translation type="unfinished"></translation>
+        <translation>عرض نصوص المساعدة</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2392"/>
@@ -840,7 +857,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2407"/>
         <source>&amp;Spellcheck</source>
-        <translation type="unfinished"></translation>
+        <translation>المدقق الإملائي</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2410"/>
@@ -850,37 +867,37 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2419"/>
         <source>&amp;Labels...</source>
-        <translation type="unfinished"></translation>
+        <translation>عناوين...</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2428"/>
         <source>&amp;Status...</source>
-        <translation type="unfinished"></translation>
+        <translation>الحالة....</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1475"/>
         <source>Tree</source>
-        <translation type="unfinished"></translation>
+        <translation>شجرة</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2444"/>
         <source>&amp;Simple</source>
-        <translation type="unfinished"></translation>
+        <translation>بسيط</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2452"/>
         <source>&amp;Fiction</source>
-        <translation type="unfinished"></translation>
+        <translation>خيال</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1476"/>
         <source>Index cards</source>
-        <translation type="unfinished"></translation>
+        <translation>بطاقات فهرسة</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2471"/>
         <source>S&amp;ettings</source>
-        <translation type="unfinished"></translation>
+        <translation>ضبط</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2474"/>
@@ -890,12 +907,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2483"/>
         <source>&amp;Close project</source>
-        <translation type="unfinished"></translation>
+        <translation>إغلاق المشروع</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2492"/>
         <source>Co&amp;mpile</source>
-        <translation type="unfinished"></translation>
+        <translation>معالجة</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2495"/>
@@ -905,22 +922,22 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2500"/>
         <source>&amp;Frequency Analyzer</source>
-        <translation type="unfinished"></translation>
+        <translation>محلل التكرار</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="154"/>
         <source>Book information</source>
-        <translation type="unfinished"></translation>
+        <translation>معلومات الكتاب</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2509"/>
         <source>&amp;About</source>
-        <translation type="unfinished"></translation>
+        <translation>حول</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2512"/>
         <source>About Manuskript</source>
-        <translation type="unfinished"></translation>
+        <translation>حول مانيوسكربت</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="717"/>
@@ -930,189 +947,191 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/mainWindow.py" line="840"/>
         <source>Project {} saved.</source>
-        <translation type="unfinished"></translation>
+        <translation>مانيوسكربت</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="843"/>
         <source>WARNING: Project {} not saved.</source>
-        <translation type="unfinished"></translation>
+        <translation>تنبيه: المشروع {} لم يتم حفظه.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="867"/>
         <source>Project {} loaded.</source>
-        <translation type="unfinished"></translation>
+        <translation>المشروع {} تم تحميله.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="870"/>
         <source>Project {} loaded with some errors:</source>
-        <translation type="unfinished"></translation>
+        <translation>المشروع {} تم تحميله مع بعض الأخطاء:</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="872"/>
         <source> * {} wasn&apos;t found in project file.</source>
-        <translation type="unfinished"></translation>
+        <translation> * {} لم يتم إيجاده في ملف المشروع.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="873"/>
         <source>Project {} loaded with some errors.</source>
-        <translation type="unfinished"></translation>
+        <translation>المشروع {} تم تحميله مع بعض الاخطاء.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1202"/>
         <source> (~{} pages)</source>
-        <translation type="unfinished"></translation>
+        <translation> (~{} صفحة)</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1206"/>
         <source>Words: {}{}</source>
-        <translation type="unfinished"></translation>
+        <translation>كلمات: {}{}</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1214"/>
         <source>Book summary</source>
-        <translation type="unfinished"></translation>
+        <translation>ملخص الكتاب</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1215"/>
         <source>Project tree</source>
-        <translation type="unfinished"></translation>
+        <translation>شجرة المشروع</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1216"/>
         <source>Metadata</source>
-        <translation type="unfinished"></translation>
+        <translation>البيانات الوصفية</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1217"/>
         <source>Story line</source>
-        <translation type="unfinished"></translation>
+        <translation>حبكة القصة</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1282"/>
         <source>Enter information about your book, and yourself.</source>
-        <translation type="unfinished"></translation>
+        <translation>أدخل معلومات عن كتابك وعن نفسك.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1285"/>
         <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous
                      evil wizard wasn&apos;t able to kill a baby?&apos; (Harry Potter)</source>
-        <translation type="unfinished"></translation>
+        <translation>الموقف بشكل مبسط، بصيغة &apos;ماذا لو ...؟&apos;. مثلاً: &apos;مذا لو كان أخطر وأشر 
+                     السحرة غير قادر على قتل طفل؟&apos; (من رواية هاري بورتر)</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1290"/>
         <source>Take time to think about a one sentence (~50 words) summary of your book. Then expand it to
                      a paragraph, then to a page, then to a full summary.</source>
-        <translation type="unfinished"></translation>
+        <translation>خذ وقتك لتفكر في ملخص من جملة واحدة (~50 كلمة) ثم توسع بها
+                     لتصبح فقرة، ثم صفحة، ثم ملخصاً كاملاً.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1295"/>
         <source>Create your characters.</source>
-        <translation type="unfinished"></translation>
+        <translation>انشأ شخصياتك.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1298"/>
         <source>Develop plots.</source>
-        <translation type="unfinished"></translation>
+        <translation>طور الحبكات.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1301"/>
         <source>Build worlds.  Create hierarchy of broad categories down to specific details.</source>
-        <translation type="unfinished"></translation>
+        <translation>قم بناء العوالم. إنشاء تدرجاً من أشياء عامة إلى التفاصيل الصغيرة.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1304"/>
         <source>Create the outline of your masterpiece.</source>
-        <translation type="unfinished"></translation>
+        <translation>انشأ الخطوط العريضة لإبداعك.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1307"/>
         <source>Write.</source>
-        <translation type="unfinished"></translation>
+        <translation>اكتب.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1310"/>
         <source>Debug info. Sometimes useful.</source>
-        <translation type="unfinished"></translation>
+        <translation>معلومات إيجاد الأخطاء. مفيدة أحيانا.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1324"/>
         <source>Dictionary</source>
-        <translation type="unfinished"></translation>
+        <translation>قاموس</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1467"/>
         <source>Nothing</source>
-        <translation type="unfinished"></translation>
+        <translation>لا شيء</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1468"/>
         <source>POV</source>
-        <translation type="unfinished"></translation>
+        <translation>وجهة نظر (POV)</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1469"/>
         <source>Label</source>
-        <translation type="unfinished"></translation>
+        <translation>عنوان</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1470"/>
         <source>Progress</source>
-        <translation type="unfinished"></translation>
+        <translation>الإنجاز</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1471"/>
         <source>Compile</source>
-        <translation type="unfinished"></translation>
+        <translation>معالجة</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1494"/>
         <source>Icon color</source>
-        <translation type="unfinished"></translation>
+        <translation>لون الأيقونة</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1495"/>
         <source>Text color</source>
-        <translation type="unfinished"></translation>
+        <translation>لون النص</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1496"/>
         <source>Background color</source>
-        <translation type="unfinished"></translation>
+        <translation>لون الخلفية</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1487"/>
         <source>Icon</source>
-        <translation type="unfinished"></translation>
+        <translation>الأيقونة</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1488"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation>النص</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1489"/>
         <source>Background</source>
-        <translation type="unfinished"></translation>
+        <translation>الخلفية</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1490"/>
         <source>Border</source>
-        <translation type="unfinished"></translation>
+        <translation>الحدود</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1491"/>
         <source>Corner</source>
-        <translation type="unfinished"></translation>
+        <translation>الزوايا</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1351"/>
         <source>Add plot step</source>
-        <translation type="unfinished"></translation>
+        <translation>أضف خطوة حبكة</translation>
     </message>
     <message encoding="UTF-8">
         <location filename="../manuskript/ui/mainWindow.ui" line="2521"/>
         <source>&amp;Import…</source>
-        <translation type="unfinished"></translation>
+        <translation>استيراد…</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2524"/>
@@ -1122,7 +1141,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2533"/>
         <source>&amp;Copy</source>
-        <translation type="unfinished"></translation>
+        <translation>نسخ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2536"/>
@@ -1132,7 +1151,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2545"/>
         <source>C&amp;ut</source>
-        <translation type="unfinished"></translation>
+        <translation>قص</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2548"/>
@@ -1142,7 +1161,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2557"/>
         <source>&amp;Paste</source>
-        <translation type="unfinished"></translation>
+        <translation>لصق</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2560"/>
@@ -1152,7 +1171,7 @@ Use that if you get YAML related error.</source>
     <message encoding="UTF-8">
         <location filename="../manuskript/ui/mainWindow.ui" line="2569"/>
         <source>&amp;Split…</source>
-        <translation type="unfinished"></translation>
+        <translation>تجزيء…</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2572"/>
@@ -1162,7 +1181,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2581"/>
         <source>Sp&amp;lit at cursor</source>
-        <translation type="unfinished"></translation>
+        <translation>تجزيء عند مؤشر الفأرة</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2584"/>
@@ -1187,7 +1206,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2626"/>
         <source>&amp;Move Up</source>
-        <translation type="unfinished"></translation>
+        <translation>تحريك للأعلى</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2629"/>
@@ -1197,7 +1216,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2638"/>
         <source>M&amp;ove Down</source>
-        <translation type="unfinished"></translation>
+        <translation>تحريك للأسفل</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2641"/>
@@ -1207,17 +1226,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2605"/>
         <source>Dupl&amp;icate</source>
-        <translation type="unfinished"></translation>
+        <translation>إنشاء نسخة أخرى</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2614"/>
         <source>&amp;Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>حذف</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2650"/>
         <source>&amp;Rename</source>
-        <translation type="unfinished"></translation>
+        <translation>إعادة تسمية</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2653"/>
@@ -1227,22 +1246,22 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2210"/>
         <source>Organi&amp;ze</source>
-        <translation type="unfinished"></translation>
+        <translation>ترتيب</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2593"/>
         <source>M&amp;erge</source>
-        <translation type="unfinished"></translation>
+        <translation>دمج</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2145"/>
         <source>&amp;Format</source>
-        <translation type="unfinished"></translation>
+        <translation>صيغة</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2153"/>
         <source>&amp;Header</source>
-        <translation type="unfinished"></translation>
+        <translation>هامش رأسي</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2658"/>
@@ -1327,7 +1346,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2726"/>
         <source>&amp;Bold</source>
-        <translation type="unfinished"></translation>
+        <translation>عريض</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2729"/>
@@ -1337,7 +1356,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2738"/>
         <source>&amp;Italic</source>
-        <translation type="unfinished"></translation>
+        <translation>مائل</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2741"/>
@@ -1347,17 +1366,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2750"/>
         <source>&amp;Strike</source>
-        <translation type="unfinished"></translation>
+        <translation>يتوسطه خط</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2755"/>
         <source>&amp;Verbatim</source>
-        <translation type="unfinished"></translation>
+        <translation>اطناب</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2760"/>
         <source>Su&amp;perscript</source>
-        <translation type="unfinished"></translation>
+        <translation>نص علوي</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2763"/>
@@ -1367,7 +1386,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2768"/>
         <source>Subsc&amp;ript</source>
-        <translation type="unfinished"></translation>
+        <translation>نص سفلي</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2771"/>
@@ -1377,7 +1396,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2776"/>
         <source>Co&amp;mment block</source>
-        <translation type="unfinished"></translation>
+        <translation>كتلة تعليقية</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2779"/>
@@ -1387,7 +1406,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2788"/>
         <source>Clear &amp;formats</source>
-        <translation type="unfinished"></translation>
+        <translation>إزالة التنسيقات</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2791"/>
@@ -1397,77 +1416,77 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2796"/>
         <source>&amp;Comment line(s)</source>
-        <translation type="unfinished"></translation>
+        <translation>سطور تعليق</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2804"/>
         <source>&amp;Ordered list</source>
-        <translation type="unfinished"></translation>
+        <translation>قائمة مرقمة</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2813"/>
         <source>&amp;Unordered list</source>
-        <translation type="unfinished"></translation>
+        <translation>قائمة غير مرقمة</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2818"/>
         <source>B&amp;lockquote</source>
-        <translation type="unfinished"></translation>
+        <translation>كتلة اقتباس</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1368"/>
         <source>Remove selected plot step(s)</source>
-        <translation type="unfinished"></translation>
+        <translation>إزالة خطوات الحبكة المحددة</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="561"/>
         <source>The file {} does not exist. Has it been moved or deleted?</source>
-        <translation type="unfinished"></translation>
+        <translation>الملف {} غير موجود. هل قمت بنقله أو حذفه؟</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1338"/>
         <source>Install {}{} to use spellcheck</source>
-        <translation type="unfinished"></translation>
+        <translation>تثبيت {}{} لإستخدام التدقيق الإملائي</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1380"/>
         <source>{} has no installed dictionaries</source>
-        <translation type="unfinished"></translation>
+        <translation>{} لا يملك قواميس مثبتة</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1401"/>
         <source>{}{} is not installed</source>
-        <translation type="unfinished"></translation>
+        <translation>{}{} غير مثبت</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="660"/>
         <source>Save project?</source>
-        <translation type="unfinished"></translation>
+        <translation>حفظ المشروع؟</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="660"/>
         <source>Save changes to project &quot;{}&quot; before closing?</source>
-        <translation type="unfinished"></translation>
+        <translation>حفظ التغييرات على المشروع &quot;{}&quot; قبل الإغلاق؟</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="660"/>
         <source>Your changes will be lost if you don&apos;t save them.</source>
-        <translation type="unfinished"></translation>
+        <translation>ستفقد تغييراتك إن لم تقم بحظها.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1594"/>
         <source>PyQt / Qt versions 5.11 and 5.12 are known to cause a crash which might result in a loss of data.</source>
-        <translation type="unfinished"></translation>
+        <translation>النسخ 5.11 و 5.12 من PyQt / Qt معروفة بالتسبب بمشاكل قد تجعلك تفقد بيانات.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1595"/>
         <source>PyQt {} and Qt {} are in use.</source>
-        <translation type="unfinished"></translation>
+        <translation>PyQt {} و Qt {} هي مايتم استخدامه.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1600"/>
         <source>Proceed with import at your own risk</source>
-        <translation type="unfinished"></translation>
+        <translation>استمر بالإستيراد على مسؤوليتك</translation>
     </message>
 </context>
 <context>
@@ -1480,282 +1499,282 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="24"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>عام</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="480"/>
         <source>Revisions</source>
-        <translation type="unfinished"></translation>
+        <translation>المراجعات</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="34"/>
         <source>Views</source>
-        <translation type="unfinished"></translation>
+        <translation>العرض</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2761"/>
         <source>Labels</source>
-        <translation type="unfinished"></translation>
+        <translation>العناوين</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2893"/>
         <source>Status</source>
-        <translation type="unfinished">الحالة</translation>
+        <translation>الحالة</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2967"/>
         <source>Fullscreen</source>
-        <translation type="unfinished"></translation>
+        <translation>ملأ الشاشة</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="82"/>
         <source>General settings</source>
-        <translation type="unfinished"></translation>
+        <translation>اعدادات عامة</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="98"/>
         <source>Application settings</source>
-        <translation type="unfinished"></translation>
+        <translation>اعدادات التطبيق</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="201"/>
         <source>Loading</source>
-        <translation type="unfinished"></translation>
+        <translation>جار التحميل</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="213"/>
         <source>Automatically load last project on startup</source>
-        <translation type="unfinished"></translation>
+        <translation>قم بتحميل آخر مشروع عند البدء</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="232"/>
         <source>Saving</source>
-        <translation type="unfinished"></translation>
+        <translation>جار الحفظ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="246"/>
         <source>Automatically save every</source>
-        <translation type="unfinished"></translation>
+        <translation>تلقائيا حفظ كل</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="293"/>
         <source>minutes.</source>
-        <translation type="unfinished"></translation>
+        <translation>دقيقة.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="329"/>
         <source>If no changes during</source>
-        <translation type="unfinished"></translation>
+        <translation>إن لم يكن هناك تغييرات خلال</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="376"/>
         <source>seconds.</source>
-        <translation type="unfinished"></translation>
+        <translation>ثانية.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="410"/>
         <source>Save on project close</source>
-        <translation type="unfinished"></translation>
+        <translation>حفظ عند إغلاق المشروع</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="426"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If you check this option, your project will be saved as one single file. Easier to copy or backup, but does not allow collaborative editing, or versioning.&lt;br/&gt;If this is unchecked, your project will be saved as a folder containing many small files.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;إن قمت بتحدد هذا الخيار، مشروعك سيتم حفظه كملف واحد. بذلك يصبح أسهل للنسخ والحفظ الآمن كنسخة احتياطية، لكن لن يسمح بالتعديل الجماعي أو النسخ المؤرخة.&lt;br/&gt;إن لم تحدد الخيار فسيتم حفظه كمجلد يحوي ملفات صغيرة كثيرة.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="432"/>
         <source>Save to one single file</source>
-        <translation type="unfinished"></translation>
+        <translation>حفظ لملف واحد فردي</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="490"/>
         <source>Revisions are a way to keep track of modifications. For each text item, it stores any changes you make to the main text, allowing you to see and restoring previous versions.</source>
-        <translation type="unfinished"></translation>
+        <translation>المراجعات أو النسخ المؤرخة هي طريقة لمعرفة التغييرات بين التعديلات المختلفة. لكل عنصر نصي يتم حفظ التغييرات على النص الأساسي ويسمح لك بعرض أو استرداد النسخ السابقة.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="500"/>
         <source>Keep revisions</source>
-        <translation type="unfinished"></translation>
+        <translation>احتفظ بالمراجعات</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="516"/>
         <source>S&amp;mart remove</source>
-        <translation type="unfinished"></translation>
+        <translation>إزالة ذكية</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="531"/>
         <source>Keep:</source>
-        <translation type="unfinished"></translation>
+        <translation>احتفاظ:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="544"/>
         <source>Smart remove allows you to keep only a certain number of revisions. It is strongly recommended to use it, lest you file will becomes full of thousands of insignificant changes.</source>
-        <translation type="unfinished"></translation>
+        <translation>الإزالة الذكية تسمح لك بالأبقاء على عدد معين من المرجعات. وهو موصى به بشدة لكي لايصبح لديك عدد هائل من الملفات والتغييرات القديمة غير المرغوبة.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="560"/>
         <source>revisions per day for the last month</source>
-        <translation type="unfinished"></translation>
+        <translation>مراجعات لكل يوم لآخر شهر</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="601"/>
         <source>revisions per minute for the last 10 minutes</source>
-        <translation type="unfinished"></translation>
+        <translation>مرجعات لكل دقيقة لآخر عشر دقائق</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="614"/>
         <source>revisions per hour for the last day</source>
-        <translation type="unfinished"></translation>
+        <translation>مراجعات لكل ساعة لآخر يوم</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="627"/>
         <source>revisions per 10 minutes for the last hour</source>
-        <translation type="unfinished"></translation>
+        <translation>مراجعات لكل 10 دقائق لآخر ساعة</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="752"/>
         <source>revisions per week till the end of time</source>
-        <translation type="unfinished"></translation>
+        <translation>مراجعات لكل أسبوع حتى نهاية العالم</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="810"/>
         <source>Views settings</source>
-        <translation type="unfinished"></translation>
+        <translation>اعدادات العرض</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="828"/>
         <source>Tree</source>
-        <translation type="unfinished"></translation>
+        <translation>شجرة</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2015"/>
         <source>Colors</source>
-        <translation type="unfinished"></translation>
+        <translation>ألوان</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1759"/>
         <source>Icon color:</source>
-        <translation type="unfinished"></translation>
+        <translation>لون الأيقونة:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1965"/>
         <source>Nothing</source>
-        <translation type="unfinished"></translation>
+        <translation>لا شيء</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1970"/>
         <source>POV</source>
-        <translation type="unfinished"></translation>
+        <translation>وجهة نظر (POV)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1975"/>
         <source>Label</source>
-        <translation type="unfinished"></translation>
+        <translation>عنوان</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1980"/>
         <source>Progress</source>
-        <translation type="unfinished"></translation>
+        <translation>انجاز</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1985"/>
         <source>Compile</source>
-        <translation type="unfinished"></translation>
+        <translation>معالجة</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1807"/>
         <source>Text color:</source>
-        <translation type="unfinished"></translation>
+        <translation>لون النص:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1855"/>
         <source>Background color:</source>
-        <translation type="unfinished"></translation>
+        <translation>لون الخلفية:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1069"/>
         <source>Folders</source>
-        <translation type="unfinished"></translation>
+        <translation>المجلدات</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1081"/>
         <source>Show ite&amp;m count</source>
-        <translation type="unfinished"></translation>
+        <translation>عرض عدد العناصر</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1190"/>
         <source>Show summary</source>
-        <translation type="unfinished"></translation>
+        <translation>عرض الملخص</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1133"/>
         <source>&amp;Nothing</source>
-        <translation type="unfinished"></translation>
+        <translation>لا شيء</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1152"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation>نص</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1252"/>
         <source>Outline</source>
-        <translation type="unfinished"></translation>
+        <translation>موجز</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1444"/>
         <source>Visible columns</source>
-        <translation type="unfinished"></translation>
+        <translation>الأعمدة الظاهرة</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1456"/>
         <source>Goal</source>
-        <translation type="unfinished"></translation>
+        <translation>الهدف</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1472"/>
         <source>Word count</source>
-        <translation type="unfinished"></translation>
+        <translation>عدد الكلمات</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1488"/>
         <source>Percentage</source>
-        <translation type="unfinished"></translation>
+        <translation>النسبة المؤية</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1568"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>العنوان</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1599"/>
         <source>Index cards</source>
-        <translation type="unfinished"></translation>
+        <translation>بطاقات الفهرسة</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1744"/>
         <source>Item colors</source>
-        <translation type="unfinished"></translation>
+        <translation>لون العناصر</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1903"/>
         <source>Border color:</source>
-        <translation type="unfinished"></translation>
+        <translation>لون الحدود:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1951"/>
         <source>Corner color:</source>
-        <translation type="unfinished"></translation>
+        <translation>لون الزوايا:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1611"/>
         <source>Background</source>
-        <translation type="unfinished"></translation>
+        <translation>الخلفية</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3446"/>
         <source>Color:</source>
-        <translation type="unfinished"></translation>
+        <translation>لون:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2808"/>
@@ -1765,42 +1784,42 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3188"/>
         <source>Image:</source>
-        <translation type="unfinished"></translation>
+        <translation>صورة:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2001"/>
         <source>Text editor</source>
-        <translation type="unfinished"></translation>
+        <translation>نص المحرر</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2120"/>
         <source>Font</source>
-        <translation type="unfinished"></translation>
+        <translation>الخط</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2132"/>
         <source>Family:</source>
-        <translation type="unfinished"></translation>
+        <translation>عائلة الخط:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3489"/>
         <source>Size:</source>
-        <translation type="unfinished"></translation>
+        <translation>الحجم:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3503"/>
         <source>Misspelled:</source>
-        <translation type="unfinished"></translation>
+        <translation>خط إملائي:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2027"/>
         <source>Background:</source>
-        <translation type="unfinished"></translation>
+        <translation>الخلفية:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2343"/>
         <source>Paragraphs</source>
-        <translation type="unfinished"></translation>
+        <translation>الفقرات</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3530"/>
@@ -1810,22 +1829,22 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3538"/>
         <source>Single</source>
-        <translation type="unfinished"></translation>
+        <translation>فردي</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3543"/>
         <source>1.5 lines</source>
-        <translation type="unfinished"></translation>
+        <translation>1.5 سطر</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3548"/>
         <source>Double</source>
-        <translation type="unfinished"></translation>
+        <translation>مزدوج</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3553"/>
         <source>Proportional</source>
-        <translation type="unfinished"></translation>
+        <translation>نسبي</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3570"/>
@@ -1855,172 +1874,172 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3014"/>
         <source>New</source>
-        <translation type="unfinished"></translation>
+        <translation>جديد</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3028"/>
         <source>Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>تحرير</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3038"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>حذف</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3082"/>
         <source>Theme name:</source>
-        <translation type="unfinished"></translation>
+        <translation>اسم المظهر:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3098"/>
         <source>Apply</source>
-        <translation type="unfinished"></translation>
+        <translation>تطبيق</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3111"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>إلغاء الأمر</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3141"/>
         <source>Window Background</source>
-        <translation type="unfinished"></translation>
+        <translation>خلفية النافذة</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3146"/>
         <source>Text Background</source>
-        <translation type="unfinished"></translation>
+        <translation>خلفية النص</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3151"/>
         <source>Text Options</source>
-        <translation type="unfinished"></translation>
+        <translation>خيارات النص</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3156"/>
         <source>Paragraph Options</source>
-        <translation type="unfinished"></translation>
+        <translation>خيارات الفقرة</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3198"/>
         <source>Type:</source>
-        <translation type="unfinished"></translation>
+        <translation>النوع:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3206"/>
         <source>No Image</source>
-        <translation type="unfinished"></translation>
+        <translation>بلا صورة</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3211"/>
         <source>Tiled</source>
-        <translation type="unfinished"></translation>
+        <translation>مبلط</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3216"/>
         <source>Centered</source>
-        <translation type="unfinished"></translation>
+        <translation>متوسط</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3315"/>
         <source>Stretched</source>
-        <translation type="unfinished"></translation>
+        <translation>مشدود</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3226"/>
         <source>Scaled</source>
-        <translation type="unfinished"></translation>
+        <translation>محجم</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3231"/>
         <source>Zoomed</source>
-        <translation type="unfinished"></translation>
+        <translation>موسع</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3266"/>
         <source>Opacity:</source>
-        <translation type="unfinished"></translation>
+        <translation>الشفافية:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3292"/>
         <source>Position:</source>
-        <translation type="unfinished"></translation>
+        <translation>الموضع:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3680"/>
         <source>Left</source>
-        <translation type="unfinished"></translation>
+        <translation>يسار</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3689"/>
         <source>Center</source>
-        <translation type="unfinished"></translation>
+        <translation>وسط</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3698"/>
         <source>Right</source>
-        <translation type="unfinished"></translation>
+        <translation>يمين</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3323"/>
         <source>Width:</source>
-        <translation type="unfinished"></translation>
+        <translation>العرض:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3374"/>
         <source>Corner radius:</source>
-        <translation type="unfinished"></translation>
+        <translation>قطر الزاوية:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3381"/>
         <source>Margins:</source>
-        <translation type="unfinished"></translation>
+        <translation>الهوامش الخارجية:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3410"/>
         <source>Padding:</source>
-        <translation type="unfinished"></translation>
+        <translation>الهوامش الداخلية:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3466"/>
         <source>Font:</source>
-        <translation type="unfinished"></translation>
+        <translation>الخط:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1703"/>
         <source>Style</source>
-        <translation type="unfinished"></translation>
+        <translation>الشكل</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2620"/>
         <source>Cursor</source>
-        <translation type="unfinished"></translation>
+        <translation>المؤشر</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2632"/>
         <source>Use block insertion of</source>
-        <translation type="unfinished"></translation>
+        <translation>استخدم الإدراج الكتلي من</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2355"/>
         <source>Alignment:</source>
-        <translation type="unfinished"></translation>
+        <translation>التموضع:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3707"/>
         <source>Justify</source>
-        <translation type="unfinished"></translation>
+        <translation>ملأ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3719"/>
         <source>Alignment</source>
-        <translation type="unfinished"></translation>
+        <translation>التموضع</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1020"/>
         <source>Icon Size</source>
-        <translation type="unfinished"></translation>
+        <translation>حجم الأيقونة</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1032"/>
@@ -2035,12 +2054,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2234"/>
         <source>Text area</source>
-        <translation type="unfinished"></translation>
+        <translation>مساحة النص</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2246"/>
         <source>Max width</source>
-        <translation type="unfinished"></translation>
+        <translation>العرض الأقصى</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2278"/>
