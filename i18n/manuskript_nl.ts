@@ -151,7 +151,7 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/plainText.py" line="22"/>
         <source>reStructuredText is a lightweight markup language.</source>
-        <translation type="unfinished">reStructuredText is een lichtgewicht opmaaktaal...</translation>
+        <translation>reStructuredText is een lichtgewicht opmaaktaal.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/markdown.py" line="14"/>
@@ -164,8 +164,7 @@
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="15"/>
         <source>Simplest export to plain text. Allows you to use your own markup not understood
                   by Manuskript, for example &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</source>
-        <translation type="unfinished">Simpelste export naar ongemarkeerde text. Laat je je eigen markup gebruiken die niet begrepen wordt
-                  door manuskript, bijvoorbeeld &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</translation>
+        <translation>Simpelste export naar ongemarkeerde text. Laat je je eigen markup gebruiken die niet begrepen wordt door manuskript, bijvoorbeeld &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/__init__.py" line="20"/>
@@ -173,8 +172,9 @@
     formats.&lt;/p&gt;
     &lt;p&gt;Website: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
     </source>
-        <translation type="unfinished">&lt;p&gt;Een universele documentconverter. Kan worden gebruikt om de markdown om te zetten in een breed scala van andere formaten.&lt;/p&gt;
-&lt;p&gt;Website: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
+        <translation>&lt;p&gt;Een universele documentconverter. Kan worden gebruikt om de markdown om te zetten in een breed scala van andere 
+    formaten.&lt;/p&gt;
+    &lt;p&gt;Website: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
     </translation>
     </message>
     <message>
@@ -223,13 +223,13 @@ Gebruik dit bij een YAML gerelateerde foutmelding.</translation>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="48"/>
         <source>Could not process regular expression: 
 {}</source>
-        <translation type="unfinished">Fout bij de verwerking van reguliere expressie :
+        <translation>Kon de reguliere expressie niet verwerken :
 {}</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="70"/>
         <source>Choose output fileâ¦</source>
-        <translation type="unfinished">Kies uitvoerbestand.....</translation>
+        <translation>Kies uitvoerbestandâ¦</translation>
     </message>
 </context>
 <context>
@@ -1247,7 +1247,7 @@ Gebruik dit bij een YAML gerelateerde foutmelding.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2658"/>
         <source>&amp;Level 1 (setext)</source>
-        <translation type="unfinished">Niveau 1 (setext)</translation>
+        <translation>&amp;Niveau 1 (setext)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2661"/>
@@ -1352,7 +1352,7 @@ Gebruik dit bij een YAML gerelateerde foutmelding.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2755"/>
         <source>&amp;Verbatim</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Letterlijk</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2760"/>
