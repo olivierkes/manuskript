@@ -42,11 +42,19 @@ class abstractItem():
         if xml is not None:
             self.setFromXML(xml)
 
+        if parent:
+            # add this as a child to the parent, and link to the outlineModel of the parent
+            parent.appendChild(self)
+        elif not model:
+            print("Warning: floating outline item (has no parent or associated Outline model).")
+
         if ID:
             self._data[self.enum.ID] = ID
+            self._model.updateAvailableIDs(ID)  # Informs the ID distributor that this ID number has been used
+        else:
+            self._data[self.enum.ID] = self._model.requestNewID()
 
-        if parent:
-            parent.appendChild(self)
+
 
     #######################################################################
     # Model
@@ -135,8 +143,6 @@ class abstractItem():
         self.childItems.insert(row, child)
         child._parent = self
         child.setModel(self._model)
-        if not child.ID():
-            child.getUniqueID()
 
     def removeChild(self, row):
         """
@@ -195,7 +201,7 @@ class abstractItem():
     ###############################################################################
 
     def getUniqueID(self, recursive=False):
-        self.setData(self.enum.ID, self._model.rootItem.findUniqueID())
+        self.setData(self.enum.ID, self._model.requestNewID())
 
         if recursive:
             for c in self.children():
@@ -226,14 +232,6 @@ class abstractItem():
             IDs.extend(c.listAllIDs())
         return IDs
 
-    def findUniqueID(self):
-        IDs = [int(i) for i in self.IDs]
-        k = 1
-        while k in IDs:
-            k += 1
-        self.IDs.append(str(k))
-        return str(k)
-
     #######################################################################
     # Data
     #######################################################################
@@ -249,6 +247,9 @@ class abstractItem():
     def setData(self, column, data, role=Qt.DisplayRole):
         # Setting data
         self._data[column] = data
+
+        if column == self.enum.ID:
+            self._model.updateAvailableIDs(data)
 
         # Emit signal
         self.emitDataChanged(cols=[column]) # new in 0.5.0

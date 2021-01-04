@@ -934,8 +934,10 @@ def outlineFromMMD(text, parent):
     @return: outlineItem
     """
 
-    item = outlineItem(parent=parent)
     md, body = parseMMDFile(text, asDict=True)
+
+    # Assign ID on creation, to avoid generating a new ID for this object
+    item = outlineItem(parent=parent, ID=md.pop('ID'))
 
     # Store metadata
     for k in md:
