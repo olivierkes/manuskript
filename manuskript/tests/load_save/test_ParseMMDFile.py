@@ -14,6 +14,8 @@ TEXT = BASE + '\n'
 TEXT_WITH_NONE_AT_START = "None:           hello\n" + TEXT
 TEXT_WITH_NONE_AT_END = BASE + "None:           hello\n\n"
 TEXT_WITH_HANGING_SPACE = BASE + "     "
+CONTENT = "Once upon a time, there was a dog"
+TEXT_WITH_CONTENT = TEXT + CONTENT
 
 
 def test_empty_string():
@@ -71,3 +73,9 @@ def test_text_hanging_space():
         ('title', 'TheExampleNovel'),
         ('ID', '42')
     ], '')
+
+
+def test_text_with_content():
+    """The scene has text."""
+    result = parseMMDFile(TEXT_WITH_CONTENT)
+    assert result[1] == CONTENT
