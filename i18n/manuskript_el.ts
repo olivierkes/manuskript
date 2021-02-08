@@ -504,67 +504,67 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="277"/>
         <source>Email</source>
-        <translation>Διευθύνσεις ηλεκτ. ταχυδ.</translation>
+        <translation>Ηλεκτρονικό ταχυδρομείο</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1422"/>
         <source>Summary</source>
-        <translation type="unfinished"></translation>
+        <translation>Περίληψη</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="322"/>
         <source>Situation:</source>
-        <translation type="unfinished"></translation>
+        <translation>Κατάσταση:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1337"/>
         <source>Summary:</source>
-        <translation type="unfinished"></translation>
+        <translation>Περίληψη:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="345"/>
         <source>One sentence</source>
-        <translation type="unfinished"></translation>
+        <translation>Μία πρόταση</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1435"/>
         <source>One paragraph</source>
-        <translation type="unfinished"></translation>
+        <translation>Μία παράγραφος</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1440"/>
         <source>One page</source>
-        <translation type="unfinished"></translation>
+        <translation>Μία σελίδα</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1445"/>
         <source>Full</source>
-        <translation type="unfinished"></translation>
+        <translation>Πλήρης</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="420"/>
         <source>One sentence summary</source>
-        <translation type="unfinished"></translation>
+        <translation>Περίληψη μίας πρότασης</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="502"/>
         <source>One paragraph summary</source>
-        <translation type="unfinished"></translation>
+        <translation>Περίληψη μίας παραγράφου</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="540"/>
         <source>Expand each sentence of your one paragraph summary to a paragraph</source>
-        <translation type="unfinished"></translation>
+        <translation>Αναπτύξτε κάθε πρόταση της περίληψης παραγράφου σε μια παράγραφο</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="565"/>
         <source>One page summary</source>
-        <translation type="unfinished"></translation>
+        <translation>Περίληψη μίας σελίδας</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="590"/>
         <source>Full summary</source>
-        <translation type="unfinished"></translation>
+        <translation>Πλήρης περίληψη</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1074"/>
