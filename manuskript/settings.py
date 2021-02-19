@@ -34,6 +34,12 @@ viewSettings = {
         },
     }
 
+fullscreenSettings = {
+    "autohide-top": True,
+    "autohide-bottom": True,
+    "autohide-left": True,
+    }
+
 # Application
 spellcheck = False
 dict = None
@@ -79,7 +85,7 @@ textEditor = {
     }
 
 revisions = {
-    "keep": True,
+    "keep": False,
     "smartremove": True,
     "rules": collections.OrderedDict({
         10 * 60:            60,                     # One per minute for the last 10mn
@@ -119,10 +125,11 @@ def save(filename=None, protocol=None):
     global spellcheck, dict, corkSliderFactor, viewSettings, corkSizeFactor, folderView, lastTab, openIndexes, \
            autoSave, autoSaveDelay, saveOnQuit, autoSaveNoChanges, autoSaveNoChangesDelay, outlineViewColumns, \
            corkBackground, corkStyle, fullScreenTheme, defaultTextType, textEditor, revisions, frequencyAnalyzer, viewMode, \
-           saveToZip, dontShowDeleteWarning
+           saveToZip, dontShowDeleteWarning, fullscreenSettings
 
     allSettings = {
         "viewSettings": viewSettings,
+        "fullscreenSettings": fullscreenSettings,
         "dict": dict,
         "spellcheck": spellcheck,
         "corkSizeFactor": corkSizeFactor,
@@ -131,6 +138,7 @@ def save(filename=None, protocol=None):
         "openIndexes": openIndexes,
         "autoSave":autoSave,
         "autoSaveDelay":autoSaveDelay,
+        # TODO: Settings Cleanup Task -- Rename saveOnQuit to saveOnProjectClose -- see PR #615
         "saveOnQuit":saveOnQuit,
         "autoSaveNoChanges":autoSaveNoChanges,
         "autoSaveNoChangesDelay":autoSaveNoChangesDelay,
@@ -198,6 +206,10 @@ def load(string, fromString=False, protocol=None):
             ]:
             if not name in viewSettings[cat]:
                 viewSettings[cat][name] = default
+
+    if "fullscreenSettings" in allSettings:
+        global fullscreenSettings
+        fullscreenSettings = allSettings["fullscreenSettings"]
 
     if "dict" in allSettings:
         global dict

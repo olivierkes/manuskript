@@ -35,7 +35,7 @@
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">background:transparent;</string>
+      <string notr="true">QLineEdit { background:transparent; }</string>
      </property>
      <property name="frame">
       <bool>false</bool>

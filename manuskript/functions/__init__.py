@@ -9,7 +9,7 @@ from PyQt5.QtCore import Qt, QRect, QStandardPaths, QObject, QRegExp, QDir
 from PyQt5.QtCore import QUrl, QTimer
 from PyQt5.QtGui import QBrush, QIcon, QPainter, QColor, QImage, QPixmap
 from PyQt5.QtGui import QDesktopServices
-from PyQt5.QtWidgets import qApp, QTextEdit
+from PyQt5.QtWidgets import qApp, QFileDialog, QTextEdit
 
 from manuskript.enums import Outline
 
@@ -22,6 +22,27 @@ def wordCount(text):
     t = text.strip().replace(" ", "\n").split("\n")
     t = [l for l in t if l]
     return len(t)
+
+validate_ok = lambda *args, **kwargs: True
+def uiParse(input, default, converter, validator=validate_ok):
+    """
+    uiParse is a utility function that intends to make it easy to convert
+    user input to data that falls in the range of expected values the
+    program is expecting to handle.
+
+    It swallows all exceptions that happen during conversion.
+    The validator should return True to permit the converted value.
+    """
+    result = default
+    try:
+        result = converter(input)
+    except:
+        pass  # failed to convert
+
+    # Whitelist default value in case default type differs from converter output.
+    if (result != default) and not validator(result):
+        result = default
+    return result
 
 
 def toInt(text):
@@ -50,6 +71,7 @@ def toString(text):
 
 def drawProgress(painter, rect, progress, radius=0):
     from manuskript.ui import style as S
+    progress = toFloat(progress)  # handle invalid input (issue #561)
     painter.setPen(Qt.NoPen)
     painter.setBrush(QColor(S.base)) # "#dddddd"
     painter.drawRoundedRect(rect, radius, radius)
@@ -385,6 +407,28 @@ def openURL(url):
     """
     QDesktopServices.openUrl(QUrl(url))
 
+def getSaveFileNameWithSuffix(parent, caption, directory, filter, options=None, selectedFilter=None, defaultSuffix=None):
+    """
+    A reimplemented version of QFileDialog.getSaveFileName() because we would like to make use
+    of the QFileDialog.defaultSuffix property that getSaveFileName() does not let us adjust.
+
+    Note: knowing the selected filter is not an invitation to change the chosen filename later.
+    """
+    dialog = QFileDialog(parent=parent, caption=caption, directory=directory, filter=filter)
+    if options:
+        dialog.setOptions(options)
+    if defaultSuffix:
+        dialog.setDefaultSuffix(defaultSuffix)
+    dialog.setFileMode(QFileDialog.AnyFile)
+    if hasattr(dialog, 'setSupportedSchemes'): # Pre-Qt5.6 lacks this.
+        dialog.setSupportedSchemes(("file",))
+    dialog.setAcceptMode(QFileDialog.AcceptSave)
+    if selectedFilter:
+        dialog.selectNameFilter(selectedFilter)
+    if (dialog.exec() == QFileDialog.Accepted):
+        return dialog.selectedFiles()[0], dialog.selectedNameFilter()
+    return None, None
+
 def inspect():
     """
     Debugging tool. Call it to see a stack of calls up to that point.
@@ -397,3 +441,6 @@ def inspect():
             s.lineno,
             s.function))
         print("   " + "".join(s.code_context))
+
+# Spellchecker loads writablePath from this file, so we need to load it after they get defined
+from manuskript.functions.spellchecker import Spellchecker

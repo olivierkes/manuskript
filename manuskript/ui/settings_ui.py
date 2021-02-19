@@ -2,11 +2,13 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/settings_ui.ui'
 #
-# Created by: PyQt5 UI code generator 5.9
+# Created by: PyQt5 UI code generator 5.13.0
 #
 # WARNING! All changes made in this file will be lost!
 
+
 from PyQt5 import QtCore, QtGui, QtWidgets
+
 
 class Ui_Settings(object):
     def setupUi(self, Settings):
@@ -288,6 +290,7 @@ class Ui_Settings(object):
         font.setWeight(50)
         self.spnRevisions10Mn.setFont(font)
         self.spnRevisions10Mn.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.spnRevisions10Mn.setMinimum(1)
         self.spnRevisions10Mn.setMaximum(999)
         self.spnRevisions10Mn.setProperty("value", 1)
         self.spnRevisions10Mn.setObjectName("spnRevisions10Mn")
@@ -324,6 +327,7 @@ class Ui_Settings(object):
         font.setWeight(50)
         self.spnRevisionsDay.setFont(font)
         self.spnRevisionsDay.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.spnRevisionsDay.setMinimum(1)
         self.spnRevisionsDay.setMaximum(999)
         self.spnRevisionsDay.setProperty("value", 1)
         self.spnRevisionsDay.setObjectName("spnRevisionsDay")
@@ -339,6 +343,7 @@ class Ui_Settings(object):
         font.setWeight(50)
         self.spnRevisionsHour.setFont(font)
         self.spnRevisionsHour.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.spnRevisionsHour.setMinimum(1)
         self.spnRevisionsHour.setMaximum(999)
         self.spnRevisionsHour.setProperty("value", 1)
         self.spnRevisionsHour.setObjectName("spnRevisionsHour")
@@ -354,6 +359,7 @@ class Ui_Settings(object):
         font.setWeight(50)
         self.spnRevisionsMonth.setFont(font)
         self.spnRevisionsMonth.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.spnRevisionsMonth.setMinimum(1)
         self.spnRevisionsMonth.setMaximum(999)
         self.spnRevisionsMonth.setProperty("value", 1)
         self.spnRevisionsMonth.setObjectName("spnRevisionsMonth")
@@ -369,6 +375,7 @@ class Ui_Settings(object):
         font.setWeight(50)
         self.spnRevisionsEternity.setFont(font)
         self.spnRevisionsEternity.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.spnRevisionsEternity.setMinimum(1)
         self.spnRevisionsEternity.setMaximum(999)
         self.spnRevisionsEternity.setProperty("value", 1)
         self.spnRevisionsEternity.setObjectName("spnRevisionsEternity")
@@ -383,6 +390,11 @@ class Ui_Settings(object):
         self.verticalLayout.addWidget(self.chkRevisionRemove)
         spacerItem3 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout.addItem(spacerItem3)
+        self.label_revisionDeprecation = QtWidgets.QLabel(self.page_3)
+        self.label_revisionDeprecation.setWordWrap(True)
+        self.label_revisionDeprecation.setOpenExternalLinks(True)
+        self.label_revisionDeprecation.setObjectName("label_revisionDeprecation")
+        self.verticalLayout.addWidget(self.label_revisionDeprecation)
         self.stack.addWidget(self.page_3)
         self.stackedWidgetPage2 = QtWidgets.QWidget()
         self.stackedWidgetPage2.setObjectName("stackedWidgetPage2")
@@ -1532,7 +1544,6 @@ class Ui_Settings(object):
         self.stackedWidgetPage1_2.setObjectName("stackedWidgetPage1_2")
         self.formLayout_4 = QtWidgets.QFormLayout(self.stackedWidgetPage1_2)
         self.formLayout_4.setFieldGrowthPolicy(QtWidgets.QFormLayout.AllNonFixedFieldsGrow)
-        self.formLayout_4.setContentsMargins(0, 0, 0, 0)
         self.formLayout_4.setObjectName("formLayout_4")
         self.label_17 = QtWidgets.QLabel(self.stackedWidgetPage1_2)
         self.label_17.setObjectName("label_17")
@@ -1564,7 +1575,6 @@ class Ui_Settings(object):
         self.stackedWidgetPage2_2.setObjectName("stackedWidgetPage2_2")
         self.formLayout_5 = QtWidgets.QFormLayout(self.stackedWidgetPage2_2)
         self.formLayout_5.setFieldGrowthPolicy(QtWidgets.QFormLayout.AllNonFixedFieldsGrow)
-        self.formLayout_5.setContentsMargins(0, 0, 0, 0)
         self.formLayout_5.setObjectName("formLayout_5")
         self.label_20 = QtWidgets.QLabel(self.stackedWidgetPage2_2)
         self.label_20.setObjectName("label_20")
@@ -1662,7 +1672,6 @@ class Ui_Settings(object):
         self.page_2.setObjectName("page_2")
         self.formLayout_7 = QtWidgets.QFormLayout(self.page_2)
         self.formLayout_7.setFieldGrowthPolicy(QtWidgets.QFormLayout.AllNonFixedFieldsGrow)
-        self.formLayout_7.setContentsMargins(0, 0, 0, 0)
         self.formLayout_7.setObjectName("formLayout_7")
         self.label_29 = QtWidgets.QLabel(self.page_2)
         self.label_29.setObjectName("label_29")
@@ -1712,7 +1721,6 @@ class Ui_Settings(object):
         self.stackedWidgetPage3_2.setObjectName("stackedWidgetPage3_2")
         self.formLayout_6 = QtWidgets.QFormLayout(self.stackedWidgetPage3_2)
         self.formLayout_6.setFieldGrowthPolicy(QtWidgets.QFormLayout.AllNonFixedFieldsGrow)
-        self.formLayout_6.setContentsMargins(0, 0, 0, 0)
         self.formLayout_6.setObjectName("formLayout_6")
         self.label_26 = QtWidgets.QLabel(self.stackedWidgetPage3_2)
         self.label_26.setObjectName("label_26")
@@ -1846,7 +1854,7 @@ class Ui_Settings(object):
         self.label_56.setText(_translate("Settings", "Style:"))
         self.label_57.setText(_translate("Settings", "Language:"))
         self.label_58.setText(_translate("Settings", "Font size:"))
-        self.label_2.setText(_translate("Settings", "You might need to restart manuskript in order for those settings to take effect properly and entirely."))
+        self.label_2.setText(_translate("Settings", "Restarting Manuskript ensures all settings take effect."))
         self.groupBox_10.setTitle(_translate("Settings", "Loading"))
         self.chkAutoLoad.setText(_translate("Settings", "Automatically load last project on startup"))
         self.groupBox.setTitle(_translate("Settings", "Saving"))
@@ -1854,8 +1862,8 @@ class Ui_Settings(object):
         self.label.setText(_translate("Settings", "minutes."))
         self.chkAutoSaveNoChanges.setText(_translate("Settings", "If no changes during"))
         self.label_14.setText(_translate("Settings", "seconds."))
-        self.chkSaveOnQuit.setText(_translate("Settings", "Save on quit"))
-        self.chkSaveToZip.setToolTip(_translate("Settings", "<html><head/><body><p>If you check this option, your project will be save as one single file. Easier to copy or backup, but does not allow collaborative editing, or versionning.<br/>If this is unchecked, your project will be save as a folder containing many small files.</p></body></html>"))
+        self.chkSaveOnQuit.setText(_translate("Settings", "Save on project close"))
+        self.chkSaveToZip.setToolTip(_translate("Settings", "<html><head/><body><p>If you check this option, your project will be saved as one single file. Easier to copy or backup, but does not allow collaborative editing, or versioning.<br/>If this is unchecked, your project will be saved as a folder containing many small files.</p></body></html>"))
         self.chkSaveToZip.setText(_translate("Settings", "Save to one single file"))
         self.lblTitleGeneral_2.setText(_translate("Settings", "Revisions"))
         self.label_44.setText(_translate("Settings", "Revisions are a way to keep track of modifications. For each text item, it stores any changes you make to the main text, allowing you to see and restoring previous versions."))
@@ -1868,6 +1876,7 @@ class Ui_Settings(object):
         self.label_49.setText(_translate("Settings", "revisions per hour for the last day"))
         self.label_48.setText(_translate("Settings", "revisions per 10 minutes for the last hour"))
         self.label_51.setText(_translate("Settings", "revisions per week till the end of time"))
+        self.label_revisionDeprecation.setText(_translate("Settings", "<p><b>The Revisions feature has been at the source of many reported issues. In this version of Manuskript it has been turned off by default for new projects in order to provide the best experience.</b></p><p>Why aren\'t these issues fixed already? <a href=\"https://www.theologeek.ch/manuskript/contribute/\">We need your help to make Manuskript better!</a></p>"))
         self.lblTitleViews.setText(_translate("Settings", "Views settings"))
         self.groupBox_3.setTitle(_translate("Settings", "Colors"))
         self.label_3.setText(_translate("Settings", "Icon color:"))
@@ -2075,4 +2084,3 @@ class Ui_Settings(object):
         self.cmbThemeAlignment.setItemText(2, _translate("Settings", "Right"))
         self.cmbThemeAlignment.setItemText(3, _translate("Settings", "Justify"))
         self.label_53.setText(_translate("Settings", "Alignment"))
-

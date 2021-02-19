@@ -36,6 +36,7 @@ class importerDialog(QWidget, Ui_importer):
 
         # Var
         self.mw = mw
+        self.settingsWidget = None
         self.fileName = ""
         self.setStyleSheet(style.mainWindowSS())
         self.tree.setStyleSheet("QTreeView{background:transparent;}")
@@ -121,9 +122,8 @@ class importerDialog(QWidget, Ui_importer):
         F = self._format
 
         options = QFileDialog.Options()
-        options |= QFileDialog.DontUseNativeDialog
         if F.fileFormat == "<<folder>>":
-            options = QFileDialog.DontUseNativeDialog | QFileDialog.ShowDirsOnly
+            options = QFileDialog.ShowDirsOnly
             fileName = QFileDialog.getExistingDirectory(self, "Select import folder",
                                                         "", options=options)
         else:
@@ -195,7 +195,7 @@ class importerDialog(QWidget, Ui_importer):
         self.grpPreview.setEnabled(True)
 
         self.settingsWidget = generalSettings()
-        #TODO: custom format widget
+        #TODO: custom format widget to match exporter visuals?
         self.settingsWidget = F.settingsWidget(self.settingsWidget)
 
         # Set the settings widget in place

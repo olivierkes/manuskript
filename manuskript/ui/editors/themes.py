@@ -137,7 +137,7 @@ def createThemePreview(theme, screenRect, size=QSize(200, 120)):
 def findThemePath(themeName):
     p = findFirstFile(re.escape("{}.theme".format(themeName)), "resources/themes")
     if not p:
-        return findFirstFile(".*\.theme", "resources/themes")
+        return findFirstFile(r".*\.theme", "resources/themes")
     else:
         return p
 
@@ -249,12 +249,14 @@ def setThemeEditorDatas(editor, themeDatas, pixmap, screenRect):
     # editor.setFont(f)
 
     editor.setStyleSheet("""
-        background: transparent;
-        color: {foreground};
-        font-family: {ff};
-        font-size: {fs};
-        selection-color: {sc};
-        selection-background-color: {sbc};
+        QTextEdit {{
+            background: transparent;
+            color: {foreground};
+            font-family: {ff};
+            font-size: {fs};
+            selection-color: {sc};
+            selection-background-color: {sbc};
+        }}
         """.format(
             foreground=themeDatas["Text/Color"],
             ff=f.family(),

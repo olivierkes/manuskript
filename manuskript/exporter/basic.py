@@ -59,7 +59,7 @@ class basicExporter:
             run = self.customPath
         else:
             print("Error: no command for", self.name)
-            return
+            return None
         r = subprocess.check_output([run] + args)  # timeout=.2
         return r.decode("utf-8")
 

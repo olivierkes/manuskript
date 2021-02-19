@@ -124,7 +124,7 @@
            <enum>QTabWidget::Rounded</enum>
           </property>
           <property name="currentIndex">
-           <number>3</number>
+           <number>0</number>
           </property>
           <property name="documentMode">
            <bool>true</bool>
@@ -774,7 +774,7 @@
               </widget>
               <widget class="QTabWidget" name="tabPersos">
                <property name="currentIndex">
-                <number>2</number>
+                <number>0</number>
                </property>
                <widget class="QWidget" name="info">
                 <attribute name="title">
@@ -1173,7 +1173,7 @@
               </widget>
               <widget class="QTabWidget" name="tabPlot">
                <property name="currentIndex">
-                <number>1</number>
+                <number>0</number>
                </property>
                <property name="documentMode">
                 <bool>true</bool>
@@ -1348,7 +1348,7 @@
                    <item>
                     <widget class="QPushButton" name="btnAddSubPlot">
                      <property name="toolTip">
-                      <string>Add plot step (CTRL+Enter)</string>
+                      <string>Add plot step</string>
                      </property>
                      <property name="text">
                       <string/>
@@ -1356,9 +1356,6 @@
                      <property name="icon">
                       <iconset theme="list-add">
                        <normaloff>.</normaloff>.</iconset>
-                     </property>
-                     <property name="shortcut">
-                      <string>Ctrl+Return</string>
                      </property>
                      <property name="flat">
                       <bool>true</bool>
@@ -1368,7 +1365,7 @@
                    <item>
                     <widget class="QPushButton" name="btnRmSubPlot">
                      <property name="toolTip">
-                      <string>Remove selected plot step(s) (CTRL+Backspace)</string>
+                      <string>Remove selected plot step(s)</string>
                      </property>
                      <property name="text">
                       <string/>
@@ -1376,9 +1373,6 @@
                      <property name="icon">
                       <iconset theme="list-remove">
                        <normaloff>.</normaloff>.</iconset>
-                     </property>
-                     <property name="shortcut">
-                      <string>Ctrl+Backspace</string>
                      </property>
                      <property name="flat">
                       <bool>true</bool>
@@ -1997,7 +1991,7 @@
                <enum>QTabWidget::West</enum>
               </property>
               <property name="currentIndex">
-               <number>2</number>
+               <number>0</number>
               </property>
               <widget class="QWidget" name="tab_9">
                <attribute name="title">
@@ -2207,7 +2201,6 @@
      </property>
      <addaction name="actModeSimple"/>
      <addaction name="actModeFiction"/>
-     <addaction name="actModeSnowflake"/>
     </widget>
     <addaction name="menuMode"/>
     <addaction name="separator"/>
@@ -2457,14 +2450,6 @@
    </property>
    <property name="text">
     <string>&amp;Fiction</string>
-   </property>
-  </action>
-  <action name="actModeSnowflake">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>S&amp;nowflake</string>
    </property>
   </action>
   <action name="actViewCork">
@@ -2914,6 +2899,105 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>tabMain</tabstop>
+  <tabstop>txtGeneralTitle</tabstop>
+  <tabstop>txtGeneralSubtitle</tabstop>
+  <tabstop>txtGeneralSerie</tabstop>
+  <tabstop>txtGeneralVolume</tabstop>
+  <tabstop>txtGeneralGenre</tabstop>
+  <tabstop>txtGeneralLicense</tabstop>
+  <tabstop>txtGeneralAuthor</tabstop>
+  <tabstop>txtGeneralEmail</tabstop>
+  <tabstop>cmbSummary</tabstop>
+  <tabstop>txtSummarySentence</tabstop>
+  <tabstop>txtSummarySentence_2</tabstop>
+  <tabstop>txtSummaryPara</tabstop>
+  <tabstop>txtSummaryPara_2</tabstop>
+  <tabstop>txtSummaryPage</tabstop>
+  <tabstop>txtSummaryPage_2</tabstop>
+  <tabstop>txtSummaryFull</tabstop>
+  <tabstop>btnStepThree</tabstop>
+  <tabstop>btnStepTwo</tabstop>
+  <tabstop>btnStepFive</tabstop>
+  <tabstop>btnStepSeven</tabstop>
+  <tabstop>txtSummarySituation</tabstop>
+  <tabstop>lstCharacters</tabstop>
+  <tabstop>btnAddPerso</tabstop>
+  <tabstop>btnRmPerso</tabstop>
+  <tabstop>txtPersosFilter</tabstop>
+  <tabstop>tabPersos</tabstop>
+  <tabstop>scrollAreaPersoInfos</tabstop>
+  <tabstop>txtPersoName</tabstop>
+  <tabstop>btnPersoColor</tabstop>
+  <tabstop>txtPersoMotivation</tabstop>
+  <tabstop>txtPersoGoal</tabstop>
+  <tabstop>txtPersoConflict</tabstop>
+  <tabstop>txtPersoEpiphany</tabstop>
+  <tabstop>txtPersoSummarySentence</tabstop>
+  <tabstop>txtPersoSummaryPara</tabstop>
+  <tabstop>btnStepFour</tabstop>
+  <tabstop>txtPersoSummaryFull</tabstop>
+  <tabstop>btnStepSix</tabstop>
+  <tabstop>txtPersoNotes</tabstop>
+  <tabstop>tblPersoInfos</tabstop>
+  <tabstop>btnPersoAddInfo</tabstop>
+  <tabstop>btnPersoRmInfo</tabstop>
+  <tabstop>lineEdit</tabstop>
+  <tabstop>btnStepEight</tabstop>
+  <tabstop>lstPlots</tabstop>
+  <tabstop>btnAddPlot</tabstop>
+  <tabstop>btnRmPlot</tabstop>
+  <tabstop>txtPlotFilter</tabstop>
+  <tabstop>tabPlot</tabstop>
+  <tabstop>txtPlotName</tabstop>
+  <tabstop>lstPlotPerso</tabstop>
+  <tabstop>btnAddPlotPerso</tabstop>
+  <tabstop>btnRmPlotPerso</tabstop>
+  <tabstop>txtPlotDescription</tabstop>
+  <tabstop>txtPlotResult</tabstop>
+  <tabstop>lstSubPlots</tabstop>
+  <tabstop>txtSubPlotSummary</tabstop>
+  <tabstop>btnAddSubPlot</tabstop>
+  <tabstop>btnRmSubPlot</tabstop>
+  <tabstop>btnShowSubPlotSummary</tabstop>
+  <tabstop>comboBox_2</tabstop>
+  <tabstop>txtPlotSummaryPara</tabstop>
+  <tabstop>txtPlotSummaryPage</tabstop>
+  <tabstop>txtPlotSummaryFull</tabstop>
+  <tabstop>treeWorld</tabstop>
+  <tabstop>btnAddWorld</tabstop>
+  <tabstop>btnRmWorld</tabstop>
+  <tabstop>txtWorldFilter</tabstop>
+  <tabstop>btnWorldEmptyData</tabstop>
+  <tabstop>tabWorld</tabstop>
+  <tabstop>txtWorldName</tabstop>
+  <tabstop>txtWorldDescription</tabstop>
+  <tabstop>txtWorldPassion</tabstop>
+  <tabstop>txtWorldConflict</tabstop>
+  <tabstop>lstOutlinePlots</tabstop>
+  <tabstop>treeOutlineOutline</tabstop>
+  <tabstop>btnOutlineAddFolder</tabstop>
+  <tabstop>btnOutlineAddText</tabstop>
+  <tabstop>btnOutlineRemoveItem</tabstop>
+  <tabstop>btnPlanShowDetails</tabstop>
+  <tabstop>treeRedacOutline</tabstop>
+  <tabstop>btnRedacAddFolder</tabstop>
+  <tabstop>btnRedacAddText</tabstop>
+  <tabstop>btnRedacRemoveItem</tabstop>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>tblDebugFlatData</tabstop>
+  <tabstop>tblDebugPersos</tabstop>
+  <tabstop>tblDebugPersosInfos</tabstop>
+  <tabstop>tblDebugPlots</tabstop>
+  <tabstop>tblDebugPlotsPersos</tabstop>
+  <tabstop>tblDebugSubPlots</tabstop>
+  <tabstop>treeDebugWorld</tabstop>
+  <tabstop>treeDebugOutline</tabstop>
+  <tabstop>lstDebugLabels</tabstop>
+  <tabstop>lstDebugStatus</tabstop>
+  <tabstop>lstTabs</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>

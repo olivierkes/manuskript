@@ -97,7 +97,7 @@ class Ui_importer(object):
         _translate = QtCore.QCoreApplication.translate
         importer.setWindowTitle(_translate("importer", "Import"))
         self.label.setText(_translate("importer", "Format:"))
-        self.btnChoseFile.setText(_translate("importer", "Chose file"))
+        self.btnChoseFile.setText(_translate("importer", "Choose file"))
         self.btnClearFileName.setToolTip(_translate("importer", "Clear file"))
         self.btnPreview.setText(_translate("importer", "Preview"))
         self.btnImport.setText(_translate("importer", "Import"))

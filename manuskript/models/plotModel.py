@@ -68,10 +68,9 @@ class plotModel(QStandardItemModel):
                 return name
         return None
 
-    def getPlotImportanceByID(self, ID):
+    def getPlotImportanceByRow(self, row):
         for i in range(self.rowCount()):
-            _ID = self.item(i, Plot.ID).text()
-            if _ID == ID or toInt(_ID) == ID:
+            if i == row:
                 importance = self.item(i, Plot.importance).text()
                 return importance
         return "0" # Default to "Minor"

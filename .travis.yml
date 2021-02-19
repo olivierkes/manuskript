@@ -1,18 +1,18 @@
-language: cpp
+language: generic
 os:
 - osx
-osx_image: xcode7.3
+- linux
+osx_image: xcode11
 sudo: required
 install:
-- if [ "$TRAVIS_OS_NAME" = "osx" ]; then bash package/prepare_osx.sh; fi
+- if [ "$TRAVIS_OS_NAME" = "osx" ]; then package/prepare_osx.sh; fi
+- if [ "$TRAVIS_OS_NAME" = "linux" ]; then package/prepare_linux.sh; fi
 script:
-- python3 package/dependency_test.py
+- if [ "$TRAVIS_OS_NAME" = "osx" ]; then python3 -B -m pytest -vs; fi
+- if [ "$TRAVIS_OS_NAME" = "linux" ]; then xvfb-run -s '-screen 0 640x480x24 +extension GLX' pytest -vs; fi
 before_deploy:
 - export FILENAME=manuskript-$TRAVIS_BRANCH-$TRAVIS_OS_NAME.zip
-- pyinstaller manuskript.spec --clean
-- cd dist && zip $FILENAME -r manuskript && cd ..
-- ls dist
-- cp dist/$FILENAME dist/manuskript-osx-develop.zip
+- if [ "$TRAVIS_OS_NAME" = "osx" ]; then package/build_osx.sh; fi
 deploy:
   - provider: releases
     api_key:
@@ -21,11 +21,13 @@ deploy:
     overwrite: true
     skip_cleanup: true
     on:
+        condition: $TRAVIS_OS_NAME = osx
         tags: true
   - provider: script
     script: "curl -T dist/manuskript-osx-develop.zip -u hfpn_semaphoreci:$FTP_PASSWORD ftp://www.theologeek.ch/web/manuskript/releases/ -v"
     skip_cleanup: true
     on:
+        condition: $TRAVIS_OS_NAME = osx
         branch: develop
 env:
   global:

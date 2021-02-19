@@ -9,7 +9,7 @@ from PyQt5.QtWidgets import QWidget, qApp
 
 from manuskript import settings
 from manuskript.enums import Outline
-from manuskript.functions import AUC, mainWindow, drawProgress, appPath
+from manuskript.functions import AUC, mainWindow, drawProgress, appPath, uiParse
 from manuskript.ui import style
 from manuskript.ui.editors.editorWidget import editorWidget
 from manuskript.ui.editors.fullScreenEditor import fullScreenEditor
@@ -304,7 +304,9 @@ class mainEditor(QWidget, Ui_mainEditor):
         goal = item.data(Outline.goal)
         chars = item.data(Outline.charCount) # len(item.data(Outline.text)) 
         progress = item.data(Outline.goalPercentage)
-        # mw = qApp.activeWindow()
+
+        goal = uiParse(goal, None, int, lambda x: x>=0)
+        progress = uiParse(progress, 0.0, float)
 
         if not chars:
             chars = 0

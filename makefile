@@ -20,32 +20,35 @@ profile:
 
 compile:
 	cd manuskript && python3 setup.py build_ext --inplace
-	
+
 callgraph:
 	cd manuskript; pycallgraph myoutput -- main.py
 
 translation:
 	pylupdate5 -noobsolete i18n/manuskript.pro
-	
+
 linguist:
 	linguist i18n/manuskript_fr.ts
 	lrelease i18n/manuskript_fr.ts
-	
+
 i18n: $(QMs)
 
 pyinstaller:
 	python3 /usr/local/bin/pyinstaller manuskript.spec
 
+snappkg:
+	snapcraft snap
+
 stats:
 	python3 libs/gh-release-stats.py olivierkes manuskript -d
 
 %_rc.py : %.qrc
-	pyrcc5 "$<" -o "$@" 
+	pyrcc5 "$<" -o "$@"
 
 %.py : %.ui
-# 	pyuic4  "$<" > "$@" 
-	pyuic5  "$<" > "$@" 
-	
+# 	pyuic4  "$<" > "$@"
+	pyuic5  "$<" > "$@"
+
 %.qm:  %.ts
 	lrelease "$<"
 

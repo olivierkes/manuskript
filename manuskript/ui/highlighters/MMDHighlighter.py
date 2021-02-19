@@ -11,19 +11,19 @@ from manuskript.ui.highlighters import BasicHighlighter
 class MMDHighlighter(BasicHighlighter):
 
     MARKDOWN_REGEX = {
-        'Bold':             '(\*\*)(.+?)(\*\*)',
+        'Bold':             r'(\*\*)(.+?)(\*\*)',
         'Bold2':            '(__)(.+?)(__)',
-        'Italic':           '(\*)([^\*].+?[^\*])(\*)',
+        'Italic':           r'(\*)([^\*].+?[^\*])(\*)',
         'Italic2':          '(_)([^_].+?[^_])(_)',
-        'Title':            '^(#+)(\s*)(.*)(#*)',
+        'Title':            r'^(#+)(\s*)(.*)(#*)',
         'HTML':             '<.+?>',
         'Blockquotes':      '^(> )+.*$',
-        'OrderedList':      '^\d+\.\s+',
-        'UnorderedList':    '^[\*\+-]\s+',
-        'Code':             '^\s{4,}.*$',
-        'Links-inline':     '(\[)(.*?)(\])(\()(.*?)(\))',
-        'Links-ref':        '(\[)(.*?)(\])\s?(\[)(.*?)(\])',
-        'Links-ref2':       '^\s{,3}(\[)(.*?)(\]:)\s+([^\s]*)\s*(.*?)*$',
+        'OrderedList':      r'^\d+\.\s+',
+        'UnorderedList':    r'^[\*\+-]\s+',
+        'Code':             r'^\s{4,}.*$',
+        'Links-inline':     r'(\[)(.*?)(\])(\()(.*?)(\))',
+        'Links-ref':        r'(\[)(.*?)(\])\s?(\[)(.*?)(\])',
+        'Links-ref2':       r'^\s{,3}(\[)(.*?)(\]:)\s+([^\s]*)\s*(.*?)*$',
     }
 
     def __init__(self, editor, style="Default"):

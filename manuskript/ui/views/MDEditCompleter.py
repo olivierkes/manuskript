@@ -10,11 +10,6 @@ from manuskript.ui.editors.completer import completer
 from manuskript.ui.views.MDEditView import MDEditView
 from manuskript.models import references as Ref
 
-try:
-    import enchant
-except ImportError:
-    enchant = None
-
 
 class MDEditCompleter(MDEditView):
     def __init__(self, parent=None, index=None, html=None, spellcheck=True, highlighting=False, dict="",

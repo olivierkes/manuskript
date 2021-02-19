@@ -179,7 +179,7 @@
              </font>
             </property>
             <property name="text">
-             <string>You might need to restart manuskript in order for those settings to take effect properly and entirely.</string>
+             <string>Restarting Manuskript ensures all settings take effect.</string>
             </property>
             <property name="wordWrap">
              <bool>true</bool>
@@ -407,7 +407,7 @@
              </font>
             </property>
             <property name="text">
-             <string>Save on quit</string>
+             <string>Save on project close</string>
             </property>
             <property name="checked">
              <bool>true</bool>
@@ -423,7 +423,7 @@
              </font>
             </property>
             <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If you check this option, your project will be save as one single file. Easier to copy or backup, but does not allow collaborative editing, or versionning.&lt;br/&gt;If this is unchecked, your project will be save as a folder containing many small files.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If you check this option, your project will be saved as one single file. Easier to copy or backup, but does not allow collaborative editing, or versioning.&lt;br/&gt;If this is unchecked, your project will be saved as a folder containing many small files.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="statusTip">
              <string/>
@@ -578,6 +578,9 @@
             <property name="alignment">
              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
             </property>
+            <property name="minimum">
+             <number>1</number>
+            </property>
             <property name="maximum">
              <number>999</number>
             </property>
@@ -642,6 +645,9 @@
             <property name="alignment">
              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
             </property>
+            <property name="minimum">
+             <number>1</number>
+            </property>
             <property name="maximum">
              <number>999</number>
             </property>
@@ -666,6 +672,9 @@
             </property>
             <property name="alignment">
              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+            <property name="minimum">
+             <number>1</number>
             </property>
             <property name="maximum">
              <number>999</number>
@@ -692,6 +701,9 @@
             <property name="alignment">
              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
             </property>
+            <property name="minimum">
+             <number>1</number>
+            </property>
             <property name="maximum">
              <number>999</number>
             </property>
@@ -716,6 +728,9 @@
             </property>
             <property name="alignment">
              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+            <property name="minimum">
+             <number>1</number>
             </property>
             <property name="maximum">
              <number>999</number>
@@ -753,6 +768,19 @@
           </size>
          </property>
         </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_revisionDeprecation">
+         <property name="text">
+          <string>&lt;p&gt;&lt;b&gt;The Revisions feature has been at the source of many reported issues. In this version of Manuskript it has been turned off by default for new projects in order to provide the best experience.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Why aren't these issues fixed already? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;We need your help to make Manuskript better!&lt;/a&gt;&lt;/p&gt;</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+         <property name="openExternalLinks">
+          <bool>true</bool>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>

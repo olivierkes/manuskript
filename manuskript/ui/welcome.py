@@ -53,6 +53,18 @@ class welcome(QWidget, Ui_welcome):
         # Recent Files
         self.loadRecents()
 
+    def getLastAccessedDirectory(self):
+        sttgs = QSettings()
+        lastDirectory = sttgs.value("lastAccessedDirectory", defaultValue=".", type=str)
+        if lastDirectory != '.':
+            print(qApp.translate("lastAccessedDirectoryInfo", "Last accessed directory \"{}\" loaded.").format(
+                lastDirectory))
+        return lastDirectory
+
+    def setLastAccessedDirectory(self, dir):
+        sttgs = QSettings()
+        sttgs.setValue("lastAccessedDirectory", dir)
+
     ###############################################################################
     # AUTOLOAD
     ###############################################################################
@@ -138,24 +150,30 @@ class welcome(QWidget, Ui_welcome):
     ###############################################################################
 
     def openFile(self):
+        lastDirectory = self.getLastAccessedDirectory()
+
         """File dialog that request an existing file. For opening project."""
         filename = QFileDialog.getOpenFileName(self,
                                                self.tr("Open project"),
-                                               ".",
+                                               lastDirectory,
                                                self.tr("Manuskript project (*.msk);;All files (*)"))[0]
         if filename:
+            self.setLastAccessedDirectory(os.path.dirname(filename))
             self.appendToRecentFiles(filename)
             self.mw.loadProject(filename)
 
     def saveAsFile(self):
+        lastDirectory = self.getLastAccessedDirectory()
+
         """File dialog that request a file, existing or not.
         Save data to that file, which then becomes the current project."""
         filename = QFileDialog.getSaveFileName(self,
                                                self.tr("Save project as..."),
-                                               ".",
+                                               lastDirectory,
                                                self.tr("Manuskript project (*.msk)"))[0]
 
         if filename:
+            self.setLastAccessedDirectory(os.path.dirname(filename))
             if filename[-4:] != ".msk":
                 filename += ".msk"
             self.appendToRecentFiles(filename)
@@ -168,16 +186,19 @@ class welcome(QWidget, Ui_welcome):
             self.mw.setWindowTitle(pName + " - " + self.tr("Manuskript"))
 
     def createFile(self, filename=None, overwrite=False):
+        lastDirectory = self.getLastAccessedDirectory()
+
         """When starting a new project, ask for a place to save it.
         Datas are not loaded from file, so they must be populated another way."""
         if not filename:
             filename = QFileDialog.getSaveFileName(
                            self,
                            self.tr("Create New Project"),
-                           ".",
+                           lastDirectory,
                            self.tr("Manuskript project (*.msk)"))[0]
 
         if filename:
+            self.setLastAccessedDirectory(os.path.dirname(filename))
             if filename[-4:] != ".msk":
                 filename += ".msk"
             if os.path.exists(filename) and not overwrite:
@@ -265,18 +286,19 @@ class welcome(QWidget, Ui_welcome):
 
         k = 0
         hasWC = False
-        for d in self.template[1]:
+        for templateIndex, d in enumerate(self.template[1]):
             spin = QSpinBox(self)
             spin.setRange(0, 999999)
             spin.setValue(d[0])
             # Storing the level of the template in that spinbox, so we can use
             # it to update the template when valueChanged on that spinbox
             # (we do that in self.updateWordCount for convenience).
-            spin.setProperty("templateIndex", self.template[1].index(d))
+            spin.setProperty("templateIndex", templateIndex)
             spin.valueChanged.connect(self.updateWordCount)
-
             if d[1] != None:
                 txt = QLineEdit(self)
+                txt.setProperty("templateIndex", templateIndex)
+                txt.textEdited.connect(self.updateWordCount)
                 txt.setText(d[1])
 
             else:
@@ -339,18 +361,27 @@ class welcome(QWidget, Ui_welcome):
                                    Qt.FindChildrenRecursively):
             total = total * s.value()
 
-            # Update self.template to reflect the changed values
+            # Update self.template to reflect the changed count values
             templateIndex = s.property("templateIndex")
             self.template[1][templateIndex] = (
                 s.value(),
                 self.template[1][templateIndex][1])
 
+        for t in self.findChildren(QLineEdit, QRegExp(".*"),
+                                   Qt.FindChildrenRecursively):
+            # Update self.template to reflect the changed name values
+            templateIndex = t.property("templateIndex")
+            if templateIndex is not None :
+                self.template[1][templateIndex] = (
+                self.template[1][templateIndex][0],
+                t.text())
+
         if total == 1:
             total = 0
 
         self.lblTotal.setText(self.tr("<b>Total:</b> {} words (~ {} pages)").format(
-                locale.format("%d", total, grouping=True),
-                locale.format("%d", total / 250, grouping=True)
+                locale.format_string("%d", total, grouping=True),
+                locale.format_string("%d", total / 250, grouping=True)
         ))
 
     def addTopLevelItem(self, name):

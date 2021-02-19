@@ -9,17 +9,21 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIcon, QFont
 from PyQt5.QtWidgets import QTextEdit, qApp
 from lxml import etree as ET
+import re
 
 from manuskript import enums
 
 
 class abstractItem():
 
-    # Enum kept on the class for easier acces
+    # Enum kept on the class for easier access
     enum = enums.Abstract
 
     # Used for XML export
     name = "abstractItem"
+
+    # Regexp from https://stackoverflow.com/questions/8733233/filtering-out-certain-bytes-in-python
+    valid_xml_re = re.compile(u'[^\u0020-\uD7FF\u0009\u000A\u000D\uE000-\uFFFD\U00010000-\U0010FFFF]+')
 
     def __init__(self, model=None, title="", _type="abstract", xml=None, parent=None, ID=None):
 
@@ -101,7 +105,7 @@ class abstractItem():
         return self._data[self.enum.type]
 
     #######################################################################
-    # Parent / Children managment
+    # Parent / Children management
     #######################################################################
 
     def child(self, row):
@@ -122,6 +126,7 @@ class abstractItem():
     def row(self):
         if self.parent():
             return self.parent().childItems.index(self)
+        return None
 
     def appendChild(self, child):
         self.insertChild(self.childCount(), child)
@@ -140,6 +145,9 @@ class abstractItem():
         @return: the removed abstractItem
         """
         r = self.childItems.pop(row)
+        # Disassociate the child from its parent and the model.
+        r._parent = None
+        r.setModel(None)
         return r
 
     def parent(self):
@@ -176,6 +184,11 @@ class abstractItem():
         item = self.__class__(xml=self.toXML())
         item.setData(self.enum.ID, None)
         return item
+
+    def siblings(self):
+        if self.parent():
+            return self.parent().children()
+        return []
 
     ###############################################################################
     # IDS
@@ -249,6 +262,9 @@ class abstractItem():
     # We want to force some data even if they're empty
     XMLForce = []
 
+    def cleanTextForXML(self, text):
+        return self.valid_xml_re.sub('', text)
+
     def toXML(self):
         """
         Returns a string containing the item (and children) in XML.
@@ -263,7 +279,7 @@ class abstractItem():
                 continue
             val = self.data(attrib)
             if val or attrib in self.XMLForce:
-                item.set(attrib.name, str(val))
+                item.set(attrib.name, self.cleanTextForXML(str(val)))
 
         # Saving lastPath
         item.set("lastPath", self._lastPath)

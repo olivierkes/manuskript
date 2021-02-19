@@ -29,7 +29,7 @@ With Manuskript you can:
 * View [Story line](http://www.theologeek.ch/manuskript/2016/02/28/story-line/)
 * Compose with
   [fiction or non-fiction templates and writing modes](http://www.theologeek.ch/manuskript/2016/03/31/writing-modes-simple-fiction/)
-* Export to HTML, ePub, OpenDocument, DocX, PDF, and
+* Import and export document formats such as HTML, ePub, OpenDocument, DocX, and
   [more](https://github.com/olivierkes/manuskript/wiki/Import-and-Export-capabilities)
 
 

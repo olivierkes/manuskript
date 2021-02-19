@@ -203,7 +203,7 @@ class outlineBasics(QAbstractItemView):
             txt = QLineEdit()
             txt.textChanged.connect(self.filterLstIcons)
             txt.setPlaceholderText("Filter icons")
-            txt.setStyleSheet("background: transparent; border: none;")
+            txt.setStyleSheet("QLineEdit { background: transparent; border: none; }")
             act = QWidgetAction(self.menuCustomIcons)
             act.setDefaultWidget(txt)
             self.menuCustomIcons.addAction(act)
@@ -383,7 +383,7 @@ class outlineBasics(QAbstractItemView):
 
         parentItem.childItems.insert(index.row() + delta,
                                      parentItem.childItems.pop(index.row()))
-        parentItem.updateWordCount(emit=False)
+        parentItem.updateWordCount()
 
     def moveUp(self): self.move(-1)
     def moveDown(self): self.move(+1)

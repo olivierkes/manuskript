@@ -83,6 +83,15 @@ class outlineItem(abstractItem):
     def charCount(self):
         return self._data.get(self.enum.charCount, 0)
 
+    def __str__(self):
+        return "{id}: {folder}{title}{children}".format(
+            id=self.ID(),
+            folder="*" if self.isFolder() else "",
+            title=self.data(self.enum.title),
+            children="" if self.isText() else "({})".format(self.childCount())
+            )
+
+    __repr__ = __str__
 
     #######################################################################
     # Data
@@ -173,13 +182,11 @@ class outlineItem(abstractItem):
 
     def removeChild(self, row):
         r = abstractItem.removeChild(self, row)
-        # Might be causing segfault when updateWordCount emits dataChanged
-        self.updateWordCount(emit=False)
+        self.updateWordCount()
         return r
 
-    def updateWordCount(self, emit=True):
-        """Update word count for item and parents.
-        If emit is False, no signal is emitted (sometimes cause segfault)"""
+    def updateWordCount(self):
+        """Update word count for item and parents."""
         if not self.isFolder():
             setGoal = F.toInt(self.data(self.enum.setGoal))
             goal = F.toInt(self.data(self.enum.goal))
@@ -217,12 +224,11 @@ class outlineItem(abstractItem):
             else:
                 self.setData(self.enum.goalPercentage, "")
 
-        if emit:
-            self.emitDataChanged([self.enum.goal, self.enum.setGoal,
-                                  self.enum.wordCount, self.enum.goalPercentage])
+        self.emitDataChanged([self.enum.goal, self.enum.setGoal,
+                              self.enum.wordCount, self.enum.goalPercentage])
 
         if self.parent():
-            self.parent().updateWordCount(emit)
+            self.parent().updateWordCount()
 
     def stats(self):
         wc = self.data(enums.Outline.wordCount)
@@ -232,12 +238,12 @@ class outlineItem(abstractItem):
             wc = 0
         if goal:
             return qApp.translate("outlineItem", "{} words / {} ({})").format(
-                    locale.format("%d", wc, grouping=True),
-                    locale.format("%d", goal, grouping=True),
+                    locale.format_string("%d", wc, grouping=True),
+                    locale.format_string("%d", goal, grouping=True),
                     "{}%".format(str(int(progress * 100))))
         else:
             return qApp.translate("outlineItem", "{} words").format(
-                    locale.format("%d", wc, grouping=True))
+                    locale.format_string("%d", wc, grouping=True))
 
     #######################################################################
     # Tools: split and merge
@@ -482,7 +488,7 @@ class outlineItem(abstractItem):
         for r in rev:
             revItem = ET.Element("revision")
             revItem.set("timestamp", str(r[0]))
-            revItem.set("text", r[1])
+            revItem.set("text", self.cleanTextForXML(r[1]))
             item.append(revItem)
 
         return item
