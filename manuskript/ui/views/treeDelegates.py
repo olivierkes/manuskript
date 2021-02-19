@@ -111,6 +111,9 @@ class treeTitleDelegate(QStyledItemDelegate):
                 elif settings.viewSettings["Tree"]["InfoFolder"] == "WC":
                     extraText = item.wordCount()
                     extraText = " ({})".format(extraText)
+                elif settings.viewSettings["Tree"]["InfoFolder"] == "CC":
+                    extraText = item.charCount()
+                    extraText = " ({})".format(extraText)
                 elif settings.viewSettings["Tree"]["InfoFolder"] == "Progress":
                     extraText = int(toFloat(item.data(Outline.goalPercentage)) * 100)
                     if extraText:
@@ -123,6 +126,9 @@ class treeTitleDelegate(QStyledItemDelegate):
             if item.isText() and settings.viewSettings["Tree"]["InfoText"] != "Nothing":
                 if settings.viewSettings["Tree"]["InfoText"] == "WC":
                     extraText = item.wordCount()
+                    extraText = " ({})".format(extraText)
+                elif settings.viewSettings["Tree"]["InfoText"] == "CC":
+                    extraText = item.charCount()
                     extraText = " ({})".format(extraText)
                 elif settings.viewSettings["Tree"]["InfoText"] == "Progress":
                     extraText = int(toFloat(item.data(Outline.goalPercentage)) * 100)
