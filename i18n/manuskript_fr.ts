@@ -5,7 +5,7 @@
     <message>
         <location filename="../manuskript/exporter/manuskript/__init__.py" line="15"/>
         <source>Default exporter, provides basic formats used by other exporters.</source>
-        <translation>Exporteur de base, fournit les formats de base utilisés par les autres exporteurs.</translation>
+        <translation>Exportateur de base, fournit les formats de base utilisés par les autres exportateurs.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="18"/>
@@ -28,7 +28,7 @@
     formats.&lt;/p&gt;
     &lt;p&gt;Website: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
     </source>
-        <translation>&lt;p&gt;Un convertisseur universel de document. Peut être utilisé pour convertir du Markdown dans un grand nombre de formats.&lt;/p&gt;
+        <translation>&lt;p&gt;Un convertisseur universel de documents. Peut être utilisé pour convertir du Markdown dans un grand nombre de formats.&lt;/p&gt;
 &lt;p&gt;Site internet : &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
     </translation>
     </message>
@@ -36,7 +36,7 @@
         <location filename="../manuskript/exporter/manuskript/markdown.py" line="14"/>
         <source>Just like plain text, excepts adds markdown titles.
                           Presupposes that texts are formatted in markdown.</source>
-        <translation>Comme en texte brute, mais rajoute les titres markdown.</translation>
+        <translation>Comme en texte brut, mais ajoute les titres markdown.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/markdown.py" line="60"/>
@@ -46,7 +46,7 @@
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="14"/>
         <source>Plain text</source>
-        <translation>Texte brute</translation>
+        <translation>Texte brut</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="15"/>
@@ -99,7 +99,7 @@ Par exemple &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</trans
         <location filename="../manuskript/exporter/pandoc/plainText.py" line="10"/>
         <source>Export to markdown, using pandoc. Allows more formatting options
     than the basic manuskript exporter.</source>
-        <translation>Export vers markdown en utilisant pandoc. Permet plus de possibilités que l&apos;exporteur basique intégré à manuskript.</translation>
+        <translation>Export vers markdown en utilisant pandoc. Permet plus de possibilités que l&apos;exportateur basique intégré à manuskript.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/plainText.py" line="22"/>
@@ -110,7 +110,7 @@ Par exemple &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</trans
         <location filename="../manuskript/exporter/pandoc/plainText.py" line="33"/>
         <source>LaTeX is a word processor and document markup language used to create
                                               beautiful documents.</source>
-        <translation>LaTeX est une suite d&apos;outil et un format utilisé pour créer des documents magnifiques.</translation>
+        <translation>LaTeX est une suite d&apos;outils et un format utilisé pour créer des documents magnifiques.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="97"/>
@@ -125,7 +125,7 @@ Par exemple &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</trans
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="103"/>
         <source>Number of sections level to include in TOC: </source>
-        <translation>Nombre de niveau à inclure dans la table des matières: </translation>
+        <translation>Nombre de niveaux à inclure dans la table des matières : </translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="107"/>
@@ -140,7 +140,7 @@ Par exemple &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</trans
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="112"/>
         <source>Specify the base level for headers: </source>
-        <translation>Spécifier le niveau de base pour les titres: </translation>
+        <translation>Spécifier le niveau de base pour les titres : </translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="119"/>
@@ -191,7 +191,7 @@ Par exemple &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</trans
         <location filename="../manuskript/exporter/pandoc/PDF.py" line="19"/>
         <source>a valid LaTeX installation. Pandoc recommendations can be found on:
                      &lt;a href=&quot;https://pandoc.org/installing.html&quot;&gt;pandoc.org/installing.html&lt;/a&gt;. If you want Unicode support, you need XeLaTeX.</source>
-        <translation type="unfinished">nécessite une installation latex valide. Voir les recommendations de pandoc sur &lt;a href=&quot;http://pandoc.org/installing.html&quot;&gt;http://pandoc.org/installing.html&lt;/a&gt;. Pour le support unicode, il vous faut xelatex.</translation>
+        <translation type="unfinished">nécessite une installation LaTeX valide. Voir les recommandations de pandoc sur &lt;a href=&quot;http://pandoc.org/installing.html&quot;&gt;http://pandoc.org/installing.html&lt;/a&gt;. Pour le support unicode, il vous faut XeLaTeX.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/plainText.py" line="45"/>
@@ -222,7 +222,7 @@ Cochez ceci si vous avez des erreurs liées à YAML.</translation>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="70"/>
         <source>Choose output file&#xe2;&#x80;&#xa6;</source>
-        <translation type="unfinished">Choisir le fichier de sortie...</translation>
+        <translation type="unfinished">Choisir le fichier de sortie…</translation>
     </message>
 </context>
 <context>
@@ -230,7 +230,7 @@ Cochez ceci si vous avez des erreurs liées à YAML.</translation>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="14"/>
         <source>Manage Exporters</source>
-        <translation>Gérer les Exporteurs</translation>
+        <translation>Gérer les Exportateurs</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="21"/>
@@ -250,27 +250,27 @@ Cochez ceci si vous avez des erreurs liées à YAML.</translation>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="184"/>
         <source>Status</source>
-        <translation>Status</translation>
+        <translation>Statut</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="190"/>
         <source>Status:</source>
-        <translation>Status :</translation>
+        <translation>Statut :</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="210"/>
         <source>Version:</source>
-        <translation>Version:</translation>
+        <translation>Version :</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="233"/>
         <source>Path:</source>
-        <translation>Chemin:</translation>
+        <translation>Chemin :</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="258"/>
         <source>...</source>
-        <translation>...</translation>
+        <translation>…</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="273"/>
@@ -298,7 +298,7 @@ Cochez ceci si vous avez des erreurs liées à YAML.</translation>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="49"/>
         <source>Minimum size:</source>
-        <translation>Taille minimum:</translation>
+        <translation>Taille minimum :</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="63"/>
@@ -318,7 +318,7 @@ Cochez ceci si vous avez des erreurs liées à YAML.</translation>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="115"/>
         <source>Number of words: from</source>
-        <translation>Nombre de mots: de</translation>
+        <translation>Nombre de mots : de</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="129"/>
@@ -355,7 +355,7 @@ Cochez ceci si vous avez des erreurs liées à YAML.</translation>
                         are added as scene.&lt;/p&gt;
                         &lt;p&gt;Only text files are supported (not images, binary or others).&lt;/p&gt;</source>
         <translation>&lt;p&gt;&lt;b&gt;Info:&lt;/b&gt; Importe la structure d&apos;un dossier. Les dossiers sont crées comme dossiers, et les documents textes sont ajoutés comme des scènes.&lt;/p&gt;
-&lt;p&gt;Seulement les fichiers textes sont supportés (pas les images, fichiers binaires ou autres).&lt;/p&gt;</translation>
+&lt;p&gt;Seuls les fichiers textes sont pris en charge (pas les images, fichiers binaires ou autres).&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="108"/>
@@ -375,7 +375,7 @@ Cochez ceci si vous avez des erreurs liées à YAML.</translation>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="117"/>
         <source>Import folder then files</source>
-        <translation>Importer les dossiers en premier</translation>
+        <translation>Importer les dossiers puis les fichiers/translation>
     </message>
     <message>
         <location filename="../manuskript/importer/opmlImporter.py" line="65"/>
@@ -385,7 +385,7 @@ Cochez ceci si vous avez des erreurs liées à YAML.</translation>
     <message>
         <location filename="../manuskript/importer/opmlImporter.py" line="37"/>
         <source>File open failed.</source>
-        <translation>Echec de l&apos;ouverture du fichier</translation>
+        <translation>Échec de l&apos;ouverture du fichier</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/opmlImporter.py" line="65"/>
@@ -410,12 +410,12 @@ Cochez ceci si vous avez des erreurs liées à YAML.</translation>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="69"/>
         <source>Import using:</source>
-        <translation>Importer via:</translation>
+        <translation>Importer via :</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="73"/>
         <source>Wrap lines:</source>
-        <translation>Replier les lignes:</translation>
+        <translation>Replier les lignes :</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="73"/>
@@ -425,8 +425,8 @@ Cochez ceci si vous avez des erreurs liées à YAML.</translation>
                         &lt;b&gt;none&lt;/b&gt;: no line wrap.&lt;br&gt;
                         &lt;b&gt;preserve&lt;/b&gt;: tries to preserves line wrap from the
                         original document.&lt;/p&gt;</source>
-        <translation>&lt;p&gt;Pandoc doit-il créer des retours à la lignes cosmétiques/non-sémantiques?&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;auto&lt;/b&gt;: plier les lignes à 72 charactères.&lt;br&gt;
+        <translation>&lt;p&gt;Pandoc doit-il créer des retours à la ligne cosmétiques/non-sémantiques?&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;auto&lt;/b&gt;: retour à la ligne après 72 caractères.&lt;br&gt;
 &lt;b&gt;none&lt;/b&gt;: pas de retours à la lignes.&lt;br&gt;
 &lt;b&gt;preserve&lt;/b&gt;: essaie de préserver les retours à la lignes du document original.&lt;/p&gt;</translation>
     </message>
@@ -448,7 +448,7 @@ Cochez ceci si vous avez des erreurs liées à YAML.</translation>
     <message>
         <location filename="../manuskript/importer/mindMapImporter.py" line="74"/>
         <source>Import tip as:</source>
-        <translation>Importer les pointes comme:</translation>
+        <translation>Importer les astuces comme :</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/mindMapImporter.py" line="90"/>
@@ -494,7 +494,7 @@ Cochez ceci si vous avez des erreurs liées à YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="236"/>
         <source>License</source>
-        <translation>License</translation>
+        <translation>Licence</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="249"/>
@@ -729,17 +729,17 @@ Cochez ceci si vous avez des erreurs liées à YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="322"/>
         <source>Situation:</source>
-        <translation>Situation:</translation>
+        <translation>Situation :</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1337"/>
         <source>Summary:</source>
-        <translation>Résumé:</translation>
+        <translation>Résumé :</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="676"/>
         <source>What if...?</source>
-        <translation>Et si... ?</translation>
+        <translation>Et si… ?</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1476"/>
@@ -839,7 +839,7 @@ Cochez ceci si vous avez des erreurs liées à YAML.</translation>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1215"/>
         <source>Project tree</source>
-        <translation>Arborescence</translation>
+        <translation>Arborescence du projet</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1216"/>
@@ -854,7 +854,7 @@ Cochez ceci si vous avez des erreurs liées à YAML.</translation>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1295"/>
         <source>Create your characters.</source>
-        <translation>Créez ici vos personnage.</translation>
+        <translation>Créez ici vos personnages.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1298"/>
@@ -874,7 +874,7 @@ Cochez ceci si vous avez des erreurs liées à YAML.</translation>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1310"/>
         <source>Debug info. Sometimes useful.</source>
-        <translation>Des informations pour débugger des fois pendant qu&apos;on code c&apos;est utile.</translation>
+        <translation>Des informations pour débugger pendant qu&apos;on code c&apos;est parfois utile.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1324"/>
@@ -889,7 +889,7 @@ Cochez ceci si vous avez des erreurs liées à YAML.</translation>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1468"/>
         <source>POV</source>
-        <translation>POV</translation>
+        <translation>Pt de vue</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1469"/>
@@ -919,7 +919,7 @@ Cochez ceci si vous avez des erreurs liées à YAML.</translation>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1487"/>
         <source>Icon</source>
-        <translation>Icone</translation>
+        <translation>Icône</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1488"/>
@@ -1004,7 +1004,7 @@ Cochez ceci si vous avez des erreurs liées à YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2389"/>
         <source>&amp;Show help texts</source>
-        <translation>&amp;Afficher les bulles d&apos;aides</translation>
+        <translation>&amp;Afficher les bulles d&apos;aide</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2407"/>
@@ -1019,7 +1019,7 @@ Cochez ceci si vous avez des erreurs liées à YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2428"/>
         <source>&amp;Status...</source>
-        <translation>&amp;Status…</translation>
+        <translation>&amp;Statut…</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2444"/>
@@ -1054,7 +1054,7 @@ Cochez ceci si vous avez des erreurs liées à YAML.</translation>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1217"/>
         <source>Story line</source>
-        <translation></translation>
+        <translation><Fil narratif/translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1285"/>
@@ -1081,7 +1081,7 @@ Cochez ceci si vous avez des erreurs liées à YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2509"/>
         <source>&amp;About</source>
-        <translation>&amp;A propos</translation>
+        <translation>&amp;À propos</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2512"/>
@@ -1096,12 +1096,12 @@ Cochez ceci si vous avez des erreurs liées à YAML.</translation>
     <message>
         <location filename="../manuskript/mainWindow.py" line="843"/>
         <source>WARNING: Project {} not saved.</source>
-        <translation>ATTENTION: Le projet {} n&apos;a pas été enregistré.</translation>
+        <translation>ATTENTION : Le projet {} n&apos;a pas été enregistré.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1301"/>
         <source>Build worlds.  Create hierarchy of broad categories down to specific details.</source>
-        <translation>Construire des mondes. Crée une hierarchie en partant des catégories les plus larges jusqu&apos;au détails les plus spécifiques.</translation>
+        <translation>Construire des mondes. Crée une hiérarchie en partant des catégories les plus larges jusqu&apos;aux détails les plus spécifiques.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1351"/>
