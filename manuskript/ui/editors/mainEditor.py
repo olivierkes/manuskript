@@ -302,11 +302,14 @@ class mainEditor(QWidget, Ui_mainEditor):
 
         wc = item.data(Outline.wordCount)
         goal = item.data(Outline.goal)
+        chars = item.data(Outline.charCount) # len(item.data(Outline.text)) 
         progress = item.data(Outline.goalPercentage)
 
         goal = uiParse(goal, None, int, lambda x: x>=0)
         progress = uiParse(progress, 0.0, float)
 
+        if not chars:
+            chars = 0
         if not wc:
             wc = 0
         if goal:
@@ -319,13 +322,15 @@ class mainEditor(QWidget, Ui_mainEditor):
             drawProgress(p, rect, progress, 2)
             del p
             self.lblRedacProgress.setPixmap(self.px)
-            self.lblRedacWC.setText(self.tr("{} words / {} ").format(
-                    locale.format_string("%d", wc, grouping=True),
-                    locale.format_string("%d", goal, grouping=True)))
+            self.lblRedacWC.setText(self.tr("({} chars) {}  words / {} ").format(
+                    locale.format("%d", chars, grouping=True),
+                    locale.format("%d", wc, grouping=True),
+                    locale.format("%d", goal, grouping=True)))
         else:
             self.lblRedacProgress.hide()
-            self.lblRedacWC.setText(self.tr("{} words ").format(
-                    locale.format_string("%d", wc, grouping=True)))
+            self.lblRedacWC.setText(self.tr("({} chars) {} words ").format(
+                    locale.format("%d", chars, grouping=True),
+                    locale.format("%d", wc, grouping=True)))
 
     ###############################################################################
     # VIEWS
