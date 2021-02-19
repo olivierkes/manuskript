@@ -5,6 +5,7 @@ from PyQt5.QtGui import QIntValidator
 
 from manuskript.enums import Outline
 from manuskript.ui.views.propertiesView_ui import Ui_propertiesView
+from manuskript.models.characterPOVModel import characterPOVModel
 
 
 class propertiesView(QWidget, Ui_propertiesView):
@@ -14,7 +15,7 @@ class propertiesView(QWidget, Ui_propertiesView):
         self.txtGoal.setColumn(Outline.setGoal)
 
     def setModels(self, mdlOutline, mdlCharacter, mdlLabels, mdlStatus):
-        self.cmbPOV.setModels(mdlCharacter, mdlOutline)
+        self.cmbPOV.setModels(characterPOVModel(mdlCharacter), mdlOutline)
         self.cmbLabel.setModels(mdlLabels, mdlOutline)
         self.cmbStatus.setModels(mdlStatus, mdlOutline)
         self.chkCompile.setModel(mdlOutline)

@@ -40,6 +40,7 @@ characterMap = OrderedDict([
     (Character.name, "Name"),
     (Character.ID,   "ID"),
     (Character.importance, "Importance"),
+    (Character.pov, "POV"),
     (Character.motivation, "Motivation"),
     (Character.goal, "Goal"),
     (Character.conflict, "Conflict"),
@@ -47,7 +48,7 @@ characterMap = OrderedDict([
     (Character.summarySentence, "Phrase Summary"),
     (Character.summaryPara, "Paragraph Summary"),
     (Character.summaryFull, "Full Summary"),
-    (Character.notes, "Notes"),
+    (Character.notes, "Notes")
 ])
 
 # If true, logs infos while saving and loading.

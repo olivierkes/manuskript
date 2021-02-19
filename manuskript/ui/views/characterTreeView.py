@@ -130,22 +130,30 @@ class characterTreeView(QTreeWidget):
     def choseCharacterColor(self):
         ID = self.currentCharacterID()
         c = self._model.getCharacterByID(ID)
+
         if c:
             color = iconColor(c.icon)
         else:
             color = Qt.white
+
         self.colorDialog = QColorDialog(color, mainWindow())
         color = self.colorDialog.getColor(color)
+
         if color.isValid():
             c.setColor(color)
             mainWindow().updateCharacterColor(ID)
+
+    def changeCharacterPOVState(self, state):
+        ID = self.currentCharacterID()
+        c = self._model.getCharacterByID(ID)
+        c.setPOVEnabled(state == Qt.Checked)
+        mainWindow().updateCharacterPOVState(ID)
 
     def addCharacterInfo(self):
         self._model.addCharacterInfo(self.currentCharacterID())
 
     def removeCharacterInfo(self):
-        self._model.removeCharacterInfo(self.currentCharacterID(),
-                                        )
+        self._model.removeCharacterInfo(self.currentCharacterID())
 
     def currentCharacterID(self):
         ID = None

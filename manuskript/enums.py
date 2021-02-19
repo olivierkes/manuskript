@@ -16,6 +16,7 @@ class Character(IntEnum):
     summaryPara = 8
     summaryFull = 9
     notes = 10
+    pov = 11
 
 class Plot(IntEnum):
     name = 0
