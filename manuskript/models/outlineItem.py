@@ -80,6 +80,9 @@ class outlineItem(abstractItem):
     def wordCount(self):
         return self._data.get(self.enum.wordCount, 0)
 
+    def charCount(self):
+        return self._data.get(self.enum.charCount, 0)
+
     def __str__(self):
         return "{id}: {folder}{title}{children}".format(
             id=self.ID(),
