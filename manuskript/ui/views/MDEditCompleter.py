@@ -106,13 +106,18 @@ class MDEditCompleter(MDEditView):
             self.completer.popup(self.textUnderCursor(select=True))
 
     def mouseMoveEvent(self, event):
+        """
+        When mouse moves, we show tooltip when appropriate.
+        """
+        self.beginTooltipMoveEvent()
         MDEditView.mouseMoveEvent(self, event)
+        self.endTooltipMoveEvent()
 
         onRef = [r for r in self.refRects if r.contains(event.pos())]
 
         if not onRef:
             qApp.restoreOverrideCursor()
-            QToolTip.hideText()
+            self.hideTooltip()
             return
 
         cursor = self.cursorForPosition(event.pos())
@@ -120,7 +125,8 @@ class MDEditCompleter(MDEditView):
         if ref:
             if not qApp.overrideCursor():
                 qApp.setOverrideCursor(Qt.PointingHandCursor)
-            QToolTip.showText(self.mapToGlobal(event.pos()), Ref.tooltip(ref))
+
+            self.showTooltip(self.mapToGlobal(event.pos()), Ref.tooltip(ref))
 
     def mouseReleaseEvent(self, event):
         MDEditView.mouseReleaseEvent(self, event)

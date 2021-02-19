@@ -111,6 +111,9 @@ class settingsWindow(QWidget, Ui_Settings):
         self.spnGeneralFontSize.setValue(f.pointSize())
         self.spnGeneralFontSize.valueChanged.connect(self.setAppFontSize)
 
+        self.chkProgressChars.setChecked(settings.progressChars);
+        self.chkProgressChars.stateChanged.connect(self.charSettingsChanged)
+
         self.txtAutoSave.setValidator(QIntValidator(0, 999, self))
         self.txtAutoSaveNoChanges.setValidator(QIntValidator(0, 999, self))
         self.chkAutoSave.setChecked(settings.autoSave)
@@ -164,10 +167,12 @@ class settingsWindow(QWidget, Ui_Settings):
         for item, what, value in [
             (self.rdoTreeItemCount, "InfoFolder", "Count"),
             (self.rdoTreeWC, "InfoFolder", "WC"),
+            (self.rdoTreeCC, "InfoFolder", "CC"),
             (self.rdoTreeProgress, "InfoFolder", "Progress"),
             (self.rdoTreeSummary, "InfoFolder", "Summary"),
             (self.rdoTreeNothing, "InfoFolder", "Nothing"),
             (self.rdoTreeTextWC, "InfoText", "WC"),
+            (self.rdoTreeTextCC, "InfoText", "CC"),
             (self.rdoTreeTextProgress, "InfoText", "Progress"),
             (self.rdoTreeTextSummary, "InfoText", "Summary"),
             (self.rdoTreeTextNothing, "InfoText", "Nothing"),
@@ -179,6 +184,9 @@ class settingsWindow(QWidget, Ui_Settings):
         self.sldTreeIconSize.valueChanged.connect(
             lambda v: self.lblTreeIconSize.setText("{}x{}".format(v, v)))
         self.sldTreeIconSize.setValue(settings.viewSettings["Tree"]["iconSize"])
+
+        self.chkCountSpaces.setChecked(settings.countSpaces);
+        self.chkCountSpaces.stateChanged.connect(self.countSpacesChanged)
 
         self.rdoCorkOldStyle.setChecked(settings.corkStyle == "old")
         self.rdoCorkNewStyle.setChecked(settings.corkStyle == "new")
@@ -338,6 +346,11 @@ class settingsWindow(QWidget, Ui_Settings):
         sttgs = QSettings(qApp.organizationName(), qApp.applicationName())
         sttgs.setValue("appFontSize", val)
 
+    def charSettingsChanged(self):
+        settings.progressChars = True if self.chkProgressChars.checkState() else False
+
+        self.mw.mainEditor.updateStats()
+
     def saveSettingsChanged(self):
         if self.txtAutoSave.text() in ["", "0"]:
             self.txtAutoSave.setText("1")
@@ -427,10 +440,12 @@ class settingsWindow(QWidget, Ui_Settings):
         for item, what, value in [
             (self.rdoTreeItemCount, "InfoFolder", "Count"),
             (self.rdoTreeWC, "InfoFolder", "WC"),
+            (self.rdoTreeCC, "InfoFolder", "CC"),
             (self.rdoTreeProgress, "InfoFolder", "Progress"),
             (self.rdoTreeSummary, "InfoFolder", "Summary"),
             (self.rdoTreeNothing, "InfoFolder", "Nothing"),
             (self.rdoTreeTextWC, "InfoText", "WC"),
+            (self.rdoTreeTextCC, "InfoText", "CC"),
             (self.rdoTreeTextProgress, "InfoText", "Progress"),
             (self.rdoTreeTextSummary, "InfoText", "Summary"),
             (self.rdoTreeTextNothing, "InfoText", "Nothing"),
@@ -444,6 +459,11 @@ class settingsWindow(QWidget, Ui_Settings):
             self.mw.treeRedacOutline.setIconSize(QSize(iconSize, iconSize))
 
         self.mw.treeRedacOutline.viewport().update()
+
+    def countSpacesChanged(self):
+        settings.countSpaces = True if self.chkCountSpaces.checkState() else False
+
+        self.mw.mainEditor.updateStats()
 
     def setCorkColor(self):
         color = QColor(settings.corkBackground["color"])

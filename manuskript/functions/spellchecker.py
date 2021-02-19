@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
 
-import os, gzip, json, glob
+import os, gzip, json, glob, re
 from PyQt5.QtCore import QLocale
 from collections import OrderedDict
 from manuskript.functions import writablePath
@@ -27,6 +27,11 @@ try:
 except ImportError:
     symspellpy = None
 
+
+try:
+    import language_check as languagetool
+except:
+    languagetool = None
 
 class Spellchecker:
     dictionaries = {}
@@ -117,6 +122,17 @@ class Spellchecker:
             pass
         return None
 
+class BasicMatch:
+    def __init__(self, startIndex, endIndex):
+        self.start = startIndex
+        self.end = endIndex
+        self.locqualityissuetype = 'misspelling'
+        self.replacements = []
+        self.msg = ''
+
+    def getWord(self, text):
+        return text[self.start:self.end]
+
 class BasicDictionary:
     def __init__(self, name):
         self._lang = name
@@ -162,11 +178,44 @@ class BasicDictionary:
     def availableDictionaries():
         raise NotImplemented
 
+    def checkText(self, text):
+        # Based on http://john.nachtimwald.com/2009/08/22/qplaintextedit-with-in-line-spell-check/
+        WORDS = r'(?iu)((?:[^_\W]|\')+)[^A-Za-z0-9\']'
+        #         (?iu) means case insensitive and Unicode
+        #              ((?:[^_\W]|\')+) means words exclude underscores but include apostrophes
+        #                              [^A-Za-z0-9\'] used with above hack to prevent spellcheck while typing word
+        #
+        # See also https://stackoverflow.com/questions/2062169/regex-w-in-utf-8
+
+        matches = []
+
+        for word_object in re.finditer(WORDS, text):
+            word = word_object.group(1)
+
+            if (self.isMisspelled(word) and not self.isCustomWord(word)):
+                matches.append(BasicMatch(
+                    word_object.start(1), word_object.end(1)
+                ))
+
+        return matches
+
     def isMisspelled(self, word):
         raise NotImplemented
 
     def getSuggestions(self, word):
         raise NotImplemented
+
+    def findSuggestions(self, text, start, end):
+        if start < end:
+            word = text[start:end]
+
+            if (self.isMisspelled(word) and not self.isCustomWord(word)):
+                match = BasicMatch(start, end)
+                match.replacements = self.getSuggestions(word)
+
+                return [ match ]
+
+        return []
 
     def isCustomWord(self, word):
         return word.lower() in self._customDict
@@ -247,6 +296,9 @@ class EnchantDictionary(BasicDictionary):
 
     def getSuggestions(self, word):
         return self._dict.suggest(word)
+
+    def findSuggestions(self, text, start, end):
+        return []
 
     def isCustomWord(self, word):
         return self._dict.is_added(word)
@@ -422,8 +474,152 @@ class SymSpellDictionary(BasicDictionary):
         # Since 6.3.8
         self._dict.delete_dictionary_entry(word)
 
+class LanguageToolCache:
+
+    def __init__(self, tool, text):
+        self._length = len(text)
+        self._matches = self._buildMatches(tool, text)
+
+    def getMatches(self):
+        return self._matches
+
+    def _buildMatches(self, tool, text):
+        matches = []
+
+        for match in tool.check(text):
+            start = match.offset
+            end = start + match.errorlength
+
+            basic_match = BasicMatch(start, end)
+            basic_match.locqualityissuetype = match.locqualityissuetype
+            basic_match.replacements = match.replacements
+            basic_match.msg = match.msg
+
+            matches.append(basic_match)
+
+        return matches
+
+    def update(self, tool, text):
+        if len(text) != self._length:
+            self._matches = self._buildMatches(tool, text)
+
+class LanguageToolDictionary(BasicDictionary):
+
+    def __init__(self, name):
+        BasicDictionary.__init__(self, name)
+
+        if not (self._lang and self._lang in languagetool.get_languages()):
+            self._lang = self.getDefaultDictionary()
+
+        self._tool = languagetool.LanguageTool(self._lang)
+        self._cache = {}
+
+    @staticmethod
+    def getLibraryName():
+        return "LanguageCheck"
+
+    @staticmethod
+    def getLibraryURL():
+        return "https://pypi.org/project/language-check/"
+
+    @staticmethod
+    def isInstalled():
+        if languagetool is not None:
+
+            # This check, if Java is installed, is necessary to
+            # make sure LanguageTool can be run without problems.
+            #
+            return (os.system('java -version') == 0)
+
+        return False
+
+    @staticmethod
+    def availableDictionaries():
+        if LanguageToolDictionary.isInstalled():
+            languages = list(languagetool.get_languages())
+            languages.sort()
+            return languages
+        return []
+
+    @staticmethod
+    def getDefaultDictionary():
+        if not LanguageToolDictionary.isInstalled():
+            return None
+
+        default_locale = languagetool.get_locale_language()
+        if default_locale and not default_locale in languagetool.get_languages():
+            default_locale = None
+
+        if default_locale is None:
+            default_locale = QLocale.system().name()
+        if default_locale is None:
+            default_locale = self.availableDictionaries()[0]
+
+        return default_locale
+
+    def checkText(self, text):
+        matches = []
+
+        if len(text) == 0:
+            return matches
+
+        textId = hash(text)
+        cacheEntry = None
+
+        if not textId in self._cache:
+            cacheEntry = LanguageToolCache(self._tool, text)
+
+            self._cache[textId] = cacheEntry
+        else:
+            cacheEntry = self._cache[textId]
+            cacheEntry.update(self._tool, text)
+
+        for match in cacheEntry.getMatches():
+            word = match.getWord(text)
+
+            if not (match.locqualityissuetype == 'misspelling' and self.isCustomWord(word)):
+                matches.append(match)
+
+        return matches
+
+    def isMisspelled(self, word):
+        if self.isCustomWord(word):
+            return False
+
+        for match in self.checkText(word):
+            if match.locqualityissuetype == 'misspelling':
+                return True
+
+        return False
+
+    def getSuggestions(self, word):
+        suggestions = []
+
+        for match in self.checkText(word):
+            suggestions += match.replacements
+
+        return suggestions
+
+    def findSuggestions(self, text, start, end):
+        matches = []
+        checked = self.checkText(text)
+
+        if start == end:
+            # Check for containing area:
+            for match in checked:
+                if (start >= match.start and start <= match.end):
+                    matches.append(match)
+        else:
+            # Check for overlapping area:
+            for match in checked:
+                if (match.end > start and match.start < end):
+                    matches.append(match)
+
+        return matches
+
 
 # Register the implementations in order of priority
-Spellchecker.implementations.append(EnchantDictionary)
+Spellchecker.registerImplementation(EnchantDictionary)
 Spellchecker.registerImplementation(SymSpellDictionary)
 Spellchecker.registerImplementation(PySpellcheckerDictionary)
+Spellchecker.registerImplementation(LanguageToolDictionary)
