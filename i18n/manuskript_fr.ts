@@ -2659,7 +2659,7 @@ des lignes:</translation>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings.py" line="320"/>
         <source>Folder</source>
-        <translation>Dosser</translation>
+        <translation>Dossier</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings.py" line="343"/>
