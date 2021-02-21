@@ -59,11 +59,16 @@ class settingsWindow(QWidget, Ui_Settings):
         self.lstMenu.setMaximumWidth(140)
         self.lstMenu.setMinimumWidth(140)
 
+        lowerKeys = [i.lower() for i in list(QStyleFactory.keys())]
+
         # General
         self.cmbStyle.addItems(list(QStyleFactory.keys()))
-        self.cmbStyle.setCurrentIndex(
-            [i.lower() for i in list(QStyleFactory.keys())]
-            .index(qApp.style().objectName()))
+
+        try:
+            self.cmbStyle.setCurrentIndex(lowerKeys.index(qApp.style().objectName()))
+        except ValueError:
+            self.cmbStyle.setCurrentIndex(0)
+
         self.cmbStyle.currentIndexChanged[str].connect(self.setStyle)
 
         self.cmbTranslation.clear()
