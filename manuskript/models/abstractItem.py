@@ -39,7 +39,7 @@ class abstractItem():
         self._data[self.enum.title] = title
         self._data[self.enum.type] = _type
 
-        if xml is not None:
+        if xml != None:
             self.setFromXML(xml)
 
         if ID:

@@ -153,7 +153,7 @@ class characterModel(QAbstractItemModel):
         return r
 
     def getCharacterByID(self, ID):
-        if ID is not None:
+        if ID != None:
             ID = str(ID)
             for c in self.characters:
                 if c.ID() == ID:

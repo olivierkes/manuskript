@@ -46,8 +46,8 @@ def test_several():
     assert F.iconColor(icon).name().lower() == "#ff0000"
 
     # themeIcon
-    assert F.themeIcon("text") is not None
-    assert F.themeIcon("nonexistingname") is not None
+    assert F.themeIcon("text") != None
+    assert F.themeIcon("nonexistingname") != None
 
     # randomColor
     c1 = F.randomColor()
@@ -75,10 +75,10 @@ def test_outlineItemColors():
 
 def test_paths():
 
-    assert F.appPath() is not None
-    assert F.writablePath is not None
+    assert F.appPath() != None
+    assert F.writablePath != None
     assert len(F.allPaths("suffix")) == 2
-    assert F.tempFile("yop") is not None
+    assert F.tempFile("yop") != None
     f = F.findBackground("spacedreams.jpg")
     assert "resources/backgrounds/spacedreams.jpg" in f
     assert len(F.customIcons()) > 1
@@ -87,8 +87,8 @@ def test_mainWindow():
 
     from PyQt5.QtWidgets import QWidget, QLCDNumber
 
-    assert F.mainWindow() is not None
-    assert F.MW is not None
+    assert F.mainWindow() != None
+    assert F.MW != None
 
     F.statusMessage("Test")
     F.printObjects()

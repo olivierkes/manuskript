@@ -371,7 +371,7 @@ class welcome(QWidget, Ui_welcome):
                                    Qt.FindChildrenRecursively):
             # Update self.template to reflect the changed name values
             templateIndex = t.property("templateIndex")
-            if templateIndex is not None :
+            if templateIndex != None :
                 self.template[1][templateIndex] = (
                 self.template[1][templateIndex][0],
                 t.text())

@@ -96,7 +96,7 @@ class collapsibleDockWidgets(QToolBar):
     def setCurrentGroup(self, group):
         self.currentGroup = group
         for btn, action, widget, grp in self.otherWidgets:
-            if not grp == group or grp is None:
+            if not grp == group or grp == None:
                 action.setVisible(False)
             else:
                 action.setVisible(True)

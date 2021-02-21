@@ -130,9 +130,9 @@ def test_modelStuff(outlineModelBasic):
     folder.setModel(k)
     assert folder.columnCount() == len(folder.enum)
     text1 = text2.copy()
-    assert text1.ID() is None
+    assert text1.ID() == None
     folder.appendChild(text1)
-    assert text1.ID() is not None
+    assert text1.ID() != None
     assert folder.childCountRecursive() == 2
     assert text1.path() == "Folder > Text"
     assert len(text1.pathID()) == 2

@@ -338,8 +338,8 @@ class fullScreenEditor(QWidget):
         item = self._index.internalPointer()
         previousItem = self.previousTextItem(item)
         nextItem = self.nextTextItem(item)
-        self.btnPrevious.setEnabled(previousItem is not None)
-        self.btnNext.setEnabled(nextItem is not None)
+        self.btnPrevious.setEnabled(previousItem != None)
+        self.btnNext.setEnabled(nextItem != None)
         self.wPath.setItem(item)
 
     def updateStatusBar(self):
@@ -572,11 +572,11 @@ class myPanel(QWidget):
     def addWidgetSetting(self, label, config_name, widgets):
         setting = (label, config_name, widgets)
         self._settings.append(setting)
-        if settings.fullscreenSettings.get(config_name, None) is not None:
+        if settings.fullscreenSettings.get(config_name, None) != None:
             self._setSettingValue(setting, settings.fullscreenSettings[config_name])
 
     def addSetting(self, label, config_name, default=True):
-        if settings.fullscreenSettings.get(config_name, None) is None:
+        if settings.fullscreenSettings.get(config_name, None) == None:
             self._setConfig(config_name, default)
         self.addWidgetSetting(label, config_name, None)
 
@@ -651,7 +651,7 @@ class myPath(QWidget):
             if i == item:
                 a.setIcon(QIcon.fromTheme("stock_yes"))
                 a.setEnabled(False)
-            elif self.editor.firstTextItem(i) is None:
+            elif self.editor.firstTextItem(i) == None:
                 a.setEnabled(False)
             else:
                 a.triggered.connect(gen_cb(i))

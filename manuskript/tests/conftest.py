@@ -12,7 +12,7 @@ def MW():
     """
     from manuskript import functions as F
     MW = F.mainWindow()
-    assert MW is not None
+    assert MW != None
     assert MW == F.MW
 
     return MW
@@ -23,7 +23,7 @@ def MWNoProject(MW):
     Take the MainWindow and close andy possibly open project.
     """
     MW.closeProject()
-    assert MW.currentProject is None
+    assert MW.currentProject == None
     return MW
 
 @pytest.fixture
@@ -35,9 +35,9 @@ def MWEmptyProject(MW):
     tf = tempfile.NamedTemporaryFile(suffix=".msk")
 
     MW.closeProject()
-    assert MW.currentProject is None
+    assert MW.currentProject == None
     MW.welcome.createFile(tf.name, overwrite=True)
-    assert MW.currentProject is not None
+    assert MW.currentProject != None
     return MW
 
     # If using with: @pytest.fixture(scope='session', autouse=True)
@@ -67,6 +67,6 @@ def MWSampleProject(MW):
     shutil.copyfile(src, tf.name)
     shutil.copytree(src[:-4], tf.name[:-4])
     MW.loadProject(tf.name)
-    assert MW.currentProject is not None
+    assert MW.currentProject != None
 
     return MW

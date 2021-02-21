@@ -111,7 +111,7 @@ class Spellchecker:
             (lib, name) = values
         try:
             d = Spellchecker.dictionaries.get(dictionary, None)
-            if d is None:
+            if d == None:
                 for impl in Spellchecker.implementations:
                     if impl.isInstalled() and lib == impl.getLibraryName():
                         d = impl(name)
@@ -267,7 +267,7 @@ class EnchantDictionary(BasicDictionary):
 
     @staticmethod
     def isInstalled():
-        return enchant is not None
+        return enchant != None
 
     @staticmethod
     def availableDictionaries():
@@ -284,9 +284,9 @@ class EnchantDictionary(BasicDictionary):
         if default_locale and not enchant.dict_exists(default_locale):
             default_locale = None
 
-        if default_locale is None:
+        if default_locale == None:
             default_locale = QLocale.system().name()
-        if default_locale is None:
+        if default_locale == None:
             default_locale = self.availableDictionaries()[0]
 
         return default_locale
@@ -330,7 +330,7 @@ class PySpellcheckerDictionary(BasicDictionary):
 
     @staticmethod
     def isInstalled():
-        return pyspellchecker is not None
+        return pyspellchecker != None
 
     @staticmethod
     def availableDictionaries():
@@ -350,7 +350,7 @@ class PySpellcheckerDictionary(BasicDictionary):
         default_locale = QLocale.system().name()
         if default_locale:
             default_locale = default_locale[0:2]
-        if default_locale is None:
+        if default_locale == None:
             default_locale = "en"
 
         return default_locale
@@ -415,7 +415,7 @@ class SymSpellDictionary(BasicDictionary):
 
     @staticmethod
     def isInstalled():
-        return symspellpy is not None
+        return symspellpy != None
 
     @classmethod
     def availableDictionaries(cls):
@@ -524,7 +524,7 @@ class LanguageToolDictionary(BasicDictionary):
 
     @staticmethod
     def isInstalled():
-        if languagetool is not None:
+        if languagetool != None:
 
             # This check, if Java is installed, is necessary to
             # make sure LanguageTool can be run without problems.
@@ -550,9 +550,9 @@ class LanguageToolDictionary(BasicDictionary):
         if default_locale and not default_locale in languagetool.get_languages():
             default_locale = None
 
-        if default_locale is None:
+        if default_locale == None:
             default_locale = QLocale.system().name()
-        if default_locale is None:
+        if default_locale == None:
             default_locale = self.availableDictionaries()[0]
 
         return default_locale

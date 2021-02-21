@@ -131,7 +131,7 @@ class abstractModel(QAbstractItemModel):
         # Check whether the parent is the root, or is otherwise invalid.
         # That is to say: no parent or the parent lacks a parent.
         if (parentItem == self.rootItem) or \
-           (parentItem is None) or (parentItem.parent() is None):
+           (parentItem == None) or (parentItem.parent() == None):
             return QModelIndex()
 
         return self.createIndex(parentItem.row(), 0, parentItem)
@@ -283,7 +283,7 @@ class abstractModel(QAbstractItemModel):
 
         # # Gets encoded mime data to retrieve the item
         items = self.decodeMimeData(data)
-        if items is None:
+        if items == None:
             return False
 
         # We check if parent is not a child of one of the items
@@ -321,7 +321,7 @@ class abstractModel(QAbstractItemModel):
             return None
         encodedData = bytes(data.data("application/xml")).decode()
         root = ET.XML(encodedData)
-        if root is None:
+        if root == None:
             return None
 
         if root.tag != "outlineItems":
@@ -381,7 +381,7 @@ class abstractModel(QAbstractItemModel):
 
         items = self.decodeMimeData(data)
 
-        if items is None:
+        if items == None:
             return False
 
         if column > 0:

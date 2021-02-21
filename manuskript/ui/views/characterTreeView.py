@@ -66,7 +66,7 @@ class characterTreeView(QTreeWidget):
             for child in range(item.childCount()):
                 sub = item.child(child)
                 ID = sub.data(0, Qt.UserRole)
-                if ID is not None:
+                if ID != None:
                     # Update name
                     c = self._model.getCharacterByID(ID)
                     name = c.name()
@@ -124,8 +124,8 @@ class characterTreeView(QTreeWidget):
         curr_importance = 0
 
         # check if an item is selected
-        if curr_item is not None:
-            if curr_item.parent() is None:
+        if curr_item != None:
+            if curr_item.parent() == None:
                 # this is a top-level category, so find its importance
                 # get the current text, then look up the importance level
                 text = curr_item.text(0)

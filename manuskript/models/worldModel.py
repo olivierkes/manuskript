@@ -189,7 +189,7 @@ class worldModel(QStandardItemModel):
         for index in indexes:
             item = self.itemFromIndex(index)
             parent = item.parent()
-            if parent is None:
+            if parent == None:
                 parent = self.invisibleRootItem()
             row_indexes.append((parent, item.row()))
 

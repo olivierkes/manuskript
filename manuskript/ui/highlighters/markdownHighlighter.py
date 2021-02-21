@@ -713,7 +713,7 @@ class MarkdownHighlighter(BasicHighlighter):
 
         # FIXME: TypeError: could not convert 'TextBlockData' to 'QTextBlockUserData'
         # blockData = self.currentBlockUserData()
-        # if blockData is None:
+        # if blockData == None:
         #     blockData = TextBlockData(self.document(), self.currentBlock())
         #
         # self.setCurrentBlockUserData(blockData)

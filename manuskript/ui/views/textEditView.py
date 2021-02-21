@@ -34,7 +34,7 @@ class textEditView(QTextEdit):
         self._themeData = None
         self._highlighterClass = BasicHighlighter
 
-        if spellcheck is None:
+        if spellcheck == None:
             spellcheck = settings.spellcheck
 
         self.spellcheck = spellcheck

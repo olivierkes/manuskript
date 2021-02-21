@@ -101,7 +101,7 @@ def prepare(tests=False):
 
     def respectSystemDarkThemeSetting():
         """Adjusts the Qt theme to match the OS 'dark theme' setting configured by the user."""
-        if platform.system() is not 'Windows':
+        if platform.system() != 'Windows':
             return
 
         # Basic Windows 10 Dark Theme support.
@@ -168,7 +168,7 @@ def prepare(tests=False):
 
 def launch(app, MW = None):
 
-    if MW is None:
+    if MW == None:
         from manuskript.functions import mainWindow
         MW = mainWindow()
 
@@ -176,7 +176,7 @@ def launch(app, MW = None):
 
     # Support for IPython Jupyter QT Console as a debugging aid.
     # Last argument must be --console to enable it
-    # Code reference : 
+    # Code reference :
     # https://github.com/ipython/ipykernel/blob/master/examples/embedding/ipkernel_qtapp.py
     # https://github.com/ipython/ipykernel/blob/master/examples/embedding/internal_ipkernel.py
     if len(sys.argv) > 1 and sys.argv[-1] == "--console":
@@ -188,7 +188,7 @@ def launch(app, MW = None):
 
             # Create IPython kernel within our application
             kernel = IPKernelApp.instance()
-            
+
             # Initialize it and use matplotlib for main event loop integration with QT
             kernel.initialize(['python', '--matplotlib=qt'])
 

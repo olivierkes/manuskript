@@ -120,7 +120,7 @@ class mainEditor(QWidget, Ui_mainEditor):
         return self.tabSplitter.tab
 
     def currentEditor(self, tabWidget=None):
-        if tabWidget is None:
+        if tabWidget == None:
             tabWidget = self.currentTabWidget()
         return tabWidget.currentWidget()
         # return self.tab.currentWidget()
@@ -153,7 +153,7 @@ class mainEditor(QWidget, Ui_mainEditor):
 
     def allTabs(self, tabWidget=None):
         """Returns all the tabs from the given tabWidget. If tabWidget is None, from the current tabWidget."""
-        if tabWidget is None:
+        if tabWidget == None:
             tabWidget = self.currentTabWidget()
         return [tabWidget.widget(i) for i in range(tabWidget.count())]
 
@@ -205,7 +205,7 @@ class mainEditor(QWidget, Ui_mainEditor):
 
         title = self.getIndexTitle(index)
 
-        if tabWidget is None:
+        if tabWidget == None:
             tabWidget = self.currentTabWidget()
 
         # Checking if tab is already opened
