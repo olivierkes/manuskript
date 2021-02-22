@@ -482,12 +482,13 @@ class textEditView(QTextEdit):
     def createStandardContextMenu(self):
         popup_menu = QTextEdit.createStandardContextMenu(self)
 
+        cursor = self.textCursor()
+        selectedWord = cursor.selectedText() if cursor.hasSelection() else None
+
         if not self.spellcheck:
             return popup_menu
 
-        cursor = self.textCursor()
         suggestions = []
-        selectedWord = None
 
         # Check for any suggestions for corrections at the cursors position
         if self._dict != None:
@@ -498,6 +499,8 @@ class textEditView(QTextEdit):
             # Select the word under the cursor if necessary.
             # But only if there is no selection (otherwise it's impossible to select more text to copy/cut)
             if not cursor.hasSelection() and len(suggestions) == 0:
+                old_position = cursor.position()
+
                 cursor.select(QTextCursor.WordUnderCursor)
                 self.setTextCursor(cursor)
 
@@ -507,8 +510,11 @@ class textEditView(QTextEdit):
                     # Check if the selected word is misspelled and offer spelling
                     # suggestions if it is.
                     suggestions = self._dict.findSuggestions(text, cursor.selectionStart(), cursor.selectionEnd())
-        elif cursor.hasSelection():
-            selectedWord = cursor.selectedText()
+
+                if len(suggestions) == 0:
+                    cursor.clearSelection()
+                    cursor.setPosition(old_position, QTextCursor.MoveAnchor)
+                    self.setTextCursor(cursor)
 
         if len(suggestions) > 0 or selectedWord != None:
             valid = len(suggestions) == 0
@@ -523,7 +529,7 @@ class textEditView(QTextEdit):
                     spell_menu = QMenu(self.tr('Spelling Suggestions'), self)
                     spell_menu.setIcon(F.themeIcon("spelling"))
 
-                    if (match.end > match.start and not selectedWord):
+                    if (match.end > match.start and selectedWord == None):
                         # Select the actual area of the match
                         cursor = self.textCursor()
                         cursor.setPosition(match.start, QTextCursor.MoveAnchor);
