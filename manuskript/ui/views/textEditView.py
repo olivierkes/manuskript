@@ -14,6 +14,8 @@ from manuskript.models import outlineModel, outlineItem
 from manuskript.ui.highlighters import BasicHighlighter
 from manuskript.ui import style as S
 from manuskript.functions import Spellchecker
+from manuskript.models.characterModel import Character, CharacterInfo
+
 
 class textEditView(QTextEdit):
     def __init__(self, parent=None, index=None, html=None, spellcheck=None,
@@ -165,9 +167,9 @@ class textEditView(QTextEdit):
 
     def loadFontSettings(self):
         if self._fromTheme or \
-                not self._index or \
-                    type(self._index.model()) != outlineModel or \
-                    self._column != Outline.text:
+            not self._index or \
+                type(self._index.model()) != outlineModel or \
+                self._column != Outline.text:
             return
 
         opt = settings.textEditor
@@ -175,7 +177,7 @@ class textEditView(QTextEdit):
         f.fromString(opt["font"])
         background = (opt["background"] if not opt["backgroundTransparent"]
                       else "transparent")
-        foreground = opt["fontColor"] # if not opt["backgroundTransparent"]
+        foreground = opt["fontColor"]  # if not opt["backgroundTransparent"]
         #                               else S.text
         # self.setFont(f)
         self.setStyleSheet("""QTextEdit{{
@@ -187,15 +189,16 @@ class textEditView(QTextEdit):
             {maxWidth}
             }}
             """.format(
-                bg=background,
-                foreground=foreground,
-                ff=f.family(),
-                fs="{}pt".format(str(f.pointSize())),
-                mTB = opt["marginsTB"],
-                mLR = opt["marginsLR"],
-                maxWidth = "max-width: {}px;".format(opt["maxWidth"]) if opt["maxWidth"] else "",
-                )
-            )
+            bg=background,
+            foreground=foreground,
+            ff=f.family(),
+            fs="{}pt".format(str(f.pointSize())),
+            mTB=opt["marginsTB"],
+            mLR=opt["marginsLR"],
+            maxWidth="max-width: {}px;".format(
+                opt["maxWidth"]) if opt["maxWidth"] else "",
+        )
+        )
         self._defaultFontSize = f.pointSize()
 
         # We set the parent background to the editor's background in case
@@ -207,11 +210,11 @@ class textEditView(QTextEdit):
                 QWidget#{name}{{
                     background: {bg};
                 }}""".format(
-                    # We style by name, otherwise all inheriting widgets get the same
-                    # colored background, for example context menu.
-                    name=self.parent().objectName(),
-                    bg=background,
-                ))
+                # We style by name, otherwise all inheriting widgets get the same
+                # colored background, for example context menu.
+                name=self.parent().objectName(),
+                bg=background,
+            ))
 
         cf = QTextCharFormat()
         # cf.setFont(f)
@@ -472,18 +475,73 @@ class textEditView(QTextEdit):
             QAction.__init__(self, *args)
 
             self.triggered.connect(lambda x: self.correct.emit(
-                    str(self.text())))
+                str(self.text())))
 
     def contextMenuEvent(self, event):
         # Based on http://john.nachtimwald.com/2009/08/22/qplaintextedit-with-in-line-spell-check/
         popup_menu = self.createStandardContextMenu()
         popup_menu.exec_(event.globalPos())
 
+    def newCharacter(self):
+        text = self.sender().data()
+        print("new character!", text)
+        # switch to character page
+        mw = F.mainWindow()
+        mw.tabMain.setCurrentIndex(mw.TabPersos)
+        # add character
+        c = mw.mdlCharacter.addCharacter(name=text)
+        # switch to character
+        item = mw.lstCharacters.getItemByID(c.ID())
+        mw.lstCharacters.setCurrentItem(item)
+
+    def newPlotItem(self):
+        text = self.sender().data()
+        print("new plot item!", text)
+        # switch to plot page
+        mw = F.mainWindow()
+        mw.tabMain.setCurrentIndex(mw.TabPlots)
+        # add character
+        p, ID = mw.mdlPlots.addPlot(text)
+        # switch to character
+        plotIndex = mw.mdlPlots.getIndexFromID(ID.text())
+        # segfaults for some reason
+        # mw.lstSubPlots.setCurrentIndex(plotIndex)
+
+    def newWorldItem(self):
+        text = self.sender().data()
+        print("new world item!", text)
+        mw = F.mainWindow()
+        mw.tabMain.setCurrentIndex(mw.TabWorld)
+        item = mw.mdlWorld.addItem(title=text)
+        mw.treeWorld.setCurrentIndex(
+            mw.mdlWorld.indexFromItem(item))
+
     def createStandardContextMenu(self):
         popup_menu = QTextEdit.createStandardContextMenu(self)
 
         cursor = self.textCursor()
-        selectedWord = cursor.selectedText() if cursor.hasSelection() else None
+        # add "new <something>" buttons at end
+        if cursor.hasSelection():
+            selectedWord = cursor.selectedText() if cursor.hasSelection() else None
+            # new character
+            charAction = QAction(self.tr("&New Character"), popup_menu)
+            charAction.setIcon(F.themeIcon("characters"))
+            charAction.triggered.connect(self.newCharacter)
+            charAction.setData(selectedWord)
+            popup_menu.insertAction(None, charAction)
+            # new plot item
+            plotAction = QAction(self.tr("&New Plot Item"), popup_menu)
+            plotAction.setIcon(F.themeIcon("plots"))
+            plotAction.triggered.connect(self.newPlotItem)
+            plotAction.setData(selectedWord)
+            popup_menu.insertAction(None, plotAction)
+            # new world item
+            worldAction = QAction(self.tr("&New World Item"), popup_menu)
+            worldAction.setIcon(F.themeIcon("world"))
+            worldAction.triggered.connect(self.newWorldItem)
+            worldAction.setData(selectedWord)
+            popup_menu.insertAction(None, worldAction)
+
 
         if not self.spellcheck:
             return popup_menu
@@ -518,7 +576,6 @@ class textEditView(QTextEdit):
 
         if len(suggestions) > 0 or selectedWord != None:
             valid = len(suggestions) == 0
-
             if not valid:
                 # I think it should focus on one type of error at a time.
                 match = suggestions[0]
@@ -597,7 +654,8 @@ class textEditView(QTextEdit):
             elif self._dict.isCustomWord(selectedWord):
                 popup_menu.insertSeparator(popup_menu.actions()[0])
                 # Adds: remove from dictionary
-                rmAction = QAction(self.tr("&Remove from custom dictionary"), popup_menu)
+                rmAction = QAction(
+                    self.tr("&Remove from custom dictionary"), popup_menu)
                 rmAction.setIcon(QIcon.fromTheme("list-remove"))
                 rmAction.triggered.connect(self.rmWordFromDict)
                 rmAction.setData(selectedWord)

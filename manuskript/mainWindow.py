@@ -378,8 +378,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         else:
             self.chkPersoPOV.setCheckState(Qt.Unchecked)
 
-        self.chkPersoPOV.stateChanged.connect(self.lstCharacters.changeCharacterPOVState, F.AUC)
-        self.chkPersoPOV.setEnabled(len(self.mdlOutline.findItemsByPOV(ID)) == 0)
+        try:
+            self.chkPersoPOV.stateChanged.connect(self.lstCharacters.changeCharacterPOVState, F.AUC)
+            self.chkPersoPOV.setEnabled(len(self.mdlOutline.findItemsByPOV(ID)) == 0)
+        except TypeError:
+            #don't know what's up with this
+            pass
 
     ###############################################################################
     # PLOTS
