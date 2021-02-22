@@ -165,14 +165,17 @@ class characterModel(QAbstractItemModel):
 # ADDING / REMOVING
 ###############################################################################
 
-    def addCharacter(self, importance = 0):
+    def addCharacter(self, importance = 0, name="New character"):
         """
         Creates a new character
         @param importance: the importance level of the character
         @return: the character
         """
-        c = Character(model=self, name=self.tr("New character"), importance = importance)
-        self.beginInsertRows(QModelIndex(), len(self.characters), len(self.characters))
+        if not name:
+            name="New Character"
+        c = Character(model=self, name=self.tr(name), importance = importance)
+        self.beginInsertRows(QModelIndex(), len(
+            self.characters), len(self.characters))
         self.characters.append(c)
         self.endInsertRows()
         return c
@@ -184,7 +187,8 @@ class characterModel(QAbstractItemModel):
         @return: nothing
         """
         c = self.getCharacterByID(ID)
-        self.beginRemoveRows(QModelIndex(), self.characters.index(c), self.characters.index(c))
+        self.beginRemoveRows(QModelIndex(), self.characters.index(
+            c), self.characters.index(c))
         self.characters.remove(c)
         self.endRemoveRows()
 
@@ -204,7 +208,8 @@ class characterModel(QAbstractItemModel):
     def addCharacterInfo(self, ID):
         c = self.getCharacterByID(ID)
         self.beginInsertRows(c.index(), len(c.infos), len(c.infos))
-        c.infos.append(CharacterInfo(c, description="Description", value="Value"))
+        c.infos.append(CharacterInfo(
+            c, description="Description", value="Value"))
         self.endInsertRows()
 
         mainWindow().updatePersoInfoView()
@@ -228,6 +233,7 @@ class characterModel(QAbstractItemModel):
 # CHARACTER
 ###############################################################################
 
+
 class Character():
     def __init__(self, model, name="No name", importance = 0):
         self._model = model
@@ -244,6 +250,9 @@ class Character():
 
     def name(self):
         return self._data[C.name.value]
+
+    def setName(self, value):
+        self._data[C.name.value] = value
 
     def importance(self):
         return self._data[C.importance.value]
@@ -315,6 +324,7 @@ class Character():
         for i in self.infos:
             r.append((i.description, i.value))
         return r
+
 
 class CharacterInfo():
     def __init__(self, character, description="", value=""):
