@@ -516,25 +516,24 @@ class textEditView(QTextEdit):
         mw.treeWorld.setCurrentIndex(
             mw.mdlWorld.indexFromItem(item))
 
-    def createStandardContextMenu(self):
-        popup_menu = QTextEdit.createStandardContextMenu(self)
 
-        cursor = self.textCursor()
+    def appendContextMenuEntriesForWord(self, popup_menu, selectedWord):
         # add "new <something>" buttons at end
-        if cursor.hasSelection():
-            selectedWord = cursor.selectedText() if cursor.hasSelection() else None
+        if selectedWord != None:
             # new character
             charAction = QAction(self.tr("&New Character"), popup_menu)
             charAction.setIcon(F.themeIcon("characters"))
             charAction.triggered.connect(self.newCharacter)
             charAction.setData(selectedWord)
             popup_menu.insertAction(None, charAction)
+
             # new plot item
             plotAction = QAction(self.tr("&New Plot Item"), popup_menu)
             plotAction.setIcon(F.themeIcon("plots"))
             plotAction.triggered.connect(self.newPlotItem)
             plotAction.setData(selectedWord)
             popup_menu.insertAction(None, plotAction)
+
             # new world item
             worldAction = QAction(self.tr("&New World Item"), popup_menu)
             worldAction.setIcon(F.themeIcon("world"))
@@ -542,9 +541,16 @@ class textEditView(QTextEdit):
             worldAction.setData(selectedWord)
             popup_menu.insertAction(None, worldAction)
 
+        return popup_menu
+
+    def createStandardContextMenu(self):
+        popup_menu = QTextEdit.createStandardContextMenu(self)
+
+        cursor = self.textCursor()
+        selectedWord = cursor.selectedText() if cursor.hasSelection() else None
 
         if not self.spellcheck:
-            return popup_menu
+            return self.appendContextMenuEntriesForWord(popup_menu, selectedWord)
 
         suggestions = []
 
@@ -574,8 +580,13 @@ class textEditView(QTextEdit):
                     cursor.setPosition(old_position, QTextCursor.MoveAnchor)
                     self.setTextCursor(cursor)
 
+                    selectedWord = None
+
+        popup_menu = self.appendContextMenuEntriesForWord(popup_menu, selectedWord)
+
         if len(suggestions) > 0 or selectedWord != None:
             valid = len(suggestions) == 0
+
             if not valid:
                 # I think it should focus on one type of error at a time.
                 match = suggestions[0]
