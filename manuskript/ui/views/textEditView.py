@@ -490,14 +490,14 @@ class textEditView(QTextEdit):
         selectedWord = None
 
         # Check for any suggestions for corrections at the cursors position
-        if self._dict:
+        if self._dict != None:
             text = self.toPlainText()
 
             suggestions = self._dict.findSuggestions(text, cursor.selectionStart(), cursor.selectionEnd())
 
             # Select the word under the cursor if necessary.
             # But only if there is no selection (otherwise it's impossible to select more text to copy/cut)
-            if (not cursor.hasSelection() and len(suggestions) == 0):
+            if not cursor.hasSelection() and len(suggestions) == 0:
                 cursor.select(QTextCursor.WordUnderCursor)
                 self.setTextCursor(cursor)
 
@@ -507,8 +507,10 @@ class textEditView(QTextEdit):
                     # Check if the selected word is misspelled and offer spelling
                     # suggestions if it is.
                     suggestions = self._dict.findSuggestions(text, cursor.selectionStart(), cursor.selectionEnd())
+        elif cursor.hasSelection():
+            selectedWord = cursor.selectedText()
 
-        if (len(suggestions) > 0 or selectedWord):
+        if len(suggestions) > 0 or selectedWord != None:
             valid = len(suggestions) == 0
 
             if not valid:

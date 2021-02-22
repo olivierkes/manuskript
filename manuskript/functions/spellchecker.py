@@ -297,9 +297,6 @@ class EnchantDictionary(BasicDictionary):
     def getSuggestions(self, word):
         return self._dict.suggest(word)
 
-    def findSuggestions(self, text, start, end):
-        return []
-
     def isCustomWord(self, word):
         return self._dict.is_added(word)
 
