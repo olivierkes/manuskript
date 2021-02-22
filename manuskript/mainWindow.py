@@ -952,8 +952,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Characters
         self.lstCharacters.setCharactersModel(self.mdlCharacter)
         self.tblPersoInfos.setModel(self.mdlCharacter)
-        self.btnAddPerso.clicked.connect(self.lstCharacters.addCharacter, F.AUC)
         try:
+            self.btnAddPerso.clicked.connect(self.lstCharacters.addCharacter, F.AUC)
             self.btnRmPerso.clicked.connect(self.lstCharacters.removeCharacter, F.AUC)
 
             self.btnPersoColor.clicked.connect(self.lstCharacters.choseCharacterColor, F.AUC)
@@ -1110,7 +1110,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Break connections for UI elements that were connected in makeConnections()
 
         # Characters
-        self.disconnectAll(self.btnAddPerso.clicked, self.mdlCharacter.addCharacter)
+        self.disconnectAll(self.btnAddPerso.clicked, self.lstCharacters.addCharacter)
         self.disconnectAll(self.btnRmPerso.clicked, self.lstCharacters.removeCharacter)
 
         self.disconnectAll(self.btnPersoColor.clicked, self.lstCharacters.choseCharacterColor)
