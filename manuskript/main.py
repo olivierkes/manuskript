@@ -4,6 +4,7 @@ import faulthandler
 import os
 import platform
 import sys
+import signal
 
 import manuskript.ui.views.webView
 from PyQt5.QtCore import QLocale, QTranslator, QSettings, Qt
@@ -15,11 +16,12 @@ from manuskript.version import getVersion
 
 faulthandler.enable()
 
+
 def prepare(tests=False):
     app = QApplication(sys.argv)
-    app.setOrganizationName("manuskript"+("_tests" if tests else ""))
+    app.setOrganizationName("manuskript" + ("_tests" if tests else ""))
     app.setOrganizationDomain("www.theologeek.ch")
-    app.setApplicationName("manuskript"+("_tests" if tests else ""))
+    app.setApplicationName("manuskript" + ("_tests" if tests else ""))
     app.setApplicationVersion(getVersion())
 
     print("Running manuskript version {}.".format(getVersion()))
@@ -38,6 +40,7 @@ def prepare(tests=False):
 
     # Translation process
     appTranslator = QTranslator(app)
+
     # By default: locale
 
     def tryLoadTranslation(translation, source):
@@ -106,14 +109,16 @@ def prepare(tests=False):
 
         # Basic Windows 10 Dark Theme support.
         # Source: https://forum.qt.io/topic/101391/windows-10-dark-theme/4
-        themeSettings = QSettings("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", QSettings.NativeFormat)
+        themeSettings = QSettings(
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize",
+            QSettings.NativeFormat)
         if themeSettings.value("AppsUseLightTheme") == 0:
             darkPalette = QPalette()
-            darkColor = QColor(45,45,45)
-            disabledColor = QColor(127,127,127)
+            darkColor = QColor(45, 45, 45)
+            disabledColor = QColor(127, 127, 127)
             darkPalette.setColor(QPalette.Window, darkColor)
             darkPalette.setColor(QPalette.WindowText, Qt.white)
-            darkPalette.setColor(QPalette.Base, QColor(18,18,18))
+            darkPalette.setColor(QPalette.Base, QColor(18, 18, 18))
             darkPalette.setColor(QPalette.AlternateBase, darkColor)
             darkPalette.setColor(QPalette.ToolTipBase, Qt.white)
             darkPalette.setColor(QPalette.ToolTipText, Qt.white)
@@ -137,7 +142,7 @@ def prepare(tests=False):
 
             # This broke the Settings Dialog at one point... and then it stopped breaking it.
             # TODO: Why'd it break? Check if tooltips look OK... and if not, make them look OK.
-            #app.setStyleSheet("QToolTip { color: #ffffff; background-color: #2a82da; border: 1px solid white; }")
+            # app.setStyleSheet("QToolTip { color: #ffffff; background-color: #2a82da; border: 1px solid white; }")
 
     respectSystemDarkThemeSetting()
 
@@ -166,8 +171,8 @@ def prepare(tests=False):
 
     return app, MW
 
-def launch(app, MW = None):
 
+def launch(app, MW=None):
     if MW == None:
         from manuskript.functions import mainWindow
         MW = mainWindow()
@@ -207,6 +212,7 @@ def launch(app, MW = None):
                 app.quit()
                 console.kill()
                 kernel.io_loop.stop()
+
             app.lastWindowClosed.connect(console_cleanup)
 
             # Very important, IPython-specific step: this gets GUI event loop
@@ -221,6 +227,20 @@ def launch(app, MW = None):
         qApp.exec_()
     qApp.deleteLater()
 
+
+def sigint_handler(sig, MW):
+    def handler(*args):
+        MW.close()
+        print(f'{sig} received, quit.')
+
+    return handler
+
+
+def setup_signal_handlers(MW):
+    signal.signal(signal.SIGINT, sigint_handler("SIGINT", MW))
+    signal.signal(signal.SIGTERM, sigint_handler("SIGTERM", MW))
+
+
 def run():
     """
     Run separates prepare and launch for two reasons:
@@ -229,9 +249,11 @@ def run():
     """
     # Need to return and keep `app` otherwise it gets deleted.
     app, MW = prepare()
+    setup_signal_handlers(MW)
     # Separating launch to avoid segfault, so it seem.
     # Cf. http://stackoverflow.com/questions/12433491/is-this-pyqt-4-python-bug-or-wrongly-behaving-code
     launch(app, MW)
+
 
 if __name__ == "__main__":
     run()
