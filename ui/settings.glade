@@ -565,8 +565,6 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="receives-default">False</property>
-                    <property name="margin-left">12</property>
-                    <property name="margin-right">12</property>
                     <property name="margin-start">12</property>
                     <property name="margin-end">12</property>
                     <property name="margin-top">12</property>
@@ -587,8 +585,6 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="receives-default">False</property>
-                    <property name="margin-left">12</property>
-                    <property name="margin-right">12</property>
                     <property name="margin-start">12</property>
                     <property name="margin-end">12</property>
                     <property name="margin-top">12</property>
@@ -2540,13 +2536,9 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                             <child>
                               <object class="GtkFontButton">
                                 <property name="visible">True</property>
-                                <property name="can-focus">True</property>
-                                <property name="receives-default">True</property>
-                                <property name="font">Sans 12</property>
-                                <property name="language">en-us</property>
+                                <property name="can-focus">False</property>
+                                <property name="receives-default">False</property>
                                 <property name="level">GTK_FONT_CHOOSER_LEVEL_FAMILY</property>
-                                <property name="preview-text"/>
-                                <property name="show-preview-entry">False</property>
                                 <property name="title" translatable="yes">Pick a font family</property>
                                 <property name="use-font">True</property>
                                 <property name="show-style">False</property>
@@ -2880,30 +2872,13 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                 <property name="model">text_alignment</property>
                                 <property name="active">0</property>
                                 <child>
-                                  <object class="GtkCellRendererPixbuf">
-                                    <property name="cell-background-gdk">#000000000000</property>
-                                    <property name="cell-background-rgba">rgba(0,0,0,0)</property>
-                                    <property name="xpad">2</property>
-                                    <property name="ypad">2</property>
-                                    <property name="xalign">0</property>
-                                  </object>
+                                  <object class="GtkCellRendererPixbuf"/>
                                   <attributes>
                                     <attribute name="icon-name">2</attribute>
                                   </attributes>
                                 </child>
                                 <child>
-                                  <object class="GtkCellRendererText">
-                                    <property name="cell-background-gdk">#000000000000</property>
-                                    <property name="cell-background-rgba">rgba(0,0,0,0)</property>
-                                    <property name="xpad">2</property>
-                                    <property name="ypad">2</property>
-                                    <property name="xalign">0</property>
-                                    <property name="background-gdk">#000000000000</property>
-                                    <property name="font">Normal</property>
-                                    <property name="foreground-gdk">#000000000000</property>
-                                    <property name="background-rgba">rgba(0,0,0,0)</property>
-                                    <property name="foreground-rgba">rgba(0,0,0,0)</property>
-                                  </object>
+                                  <object class="GtkCellRendererText"/>
                                   <attributes>
                                     <attribute name="text">0</attribute>
                                   </attributes>
@@ -2949,18 +2924,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                 <property name="model">line_spacing</property>
                                 <property name="active">0</property>
                                 <child>
-                                  <object class="GtkCellRendererText">
-                                    <property name="cell-background-gdk">#000000000000</property>
-                                    <property name="cell-background-rgba">rgba(0,0,0,0)</property>
-                                    <property name="xpad">2</property>
-                                    <property name="ypad">2</property>
-                                    <property name="xalign">0</property>
-                                    <property name="background-gdk">#000000000000</property>
-                                    <property name="font">Normal</property>
-                                    <property name="foreground-gdk">#000000000000</property>
-                                    <property name="background-rgba">rgba(0,0,0,0)</property>
-                                    <property name="foreground-rgba">rgba(0,0,0,0)</property>
-                                  </object>
+                                  <object class="GtkCellRendererText"/>
                                   <attributes>
                                     <attribute name="text">0</attribute>
                                   </attributes>
@@ -3314,18 +3278,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                 <property name="model">focus_modes</property>
                                 <property name="active">0</property>
                                 <child>
-                                  <object class="GtkCellRendererText">
-                                    <property name="cell-background-gdk">#000000000000</property>
-                                    <property name="cell-background-rgba">rgba(0,0,0,0)</property>
-                                    <property name="xpad">2</property>
-                                    <property name="ypad">2</property>
-                                    <property name="xalign">0</property>
-                                    <property name="background-gdk">#000000000000</property>
-                                    <property name="font">Normal</property>
-                                    <property name="foreground-gdk">#000000000000</property>
-                                    <property name="background-rgba">rgba(0,0,0,0)</property>
-                                    <property name="foreground-rgba">rgba(0,0,0,0)</property>
-                                  </object>
+                                  <object class="GtkCellRendererText"/>
                                   <attributes>
                                     <attribute name="text">0</attribute>
                                   </attributes>
@@ -3463,7 +3416,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               <object class="GtkImage">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
-                                <property name="stock">gtk-add</property>
+                                <property name="icon-name">list-add</property>
                               </object>
                             </child>
                           </object>
@@ -3482,7 +3435,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               <object class="GtkImage">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
-                                <property name="stock">gtk-remove</property>
+                                <property name="icon-name">list-remove</property>
                               </object>
                             </child>
                           </object>
@@ -3577,7 +3530,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               <object class="GtkImage">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
-                                <property name="stock">gtk-add</property>
+                                <property name="icon-name">list-add</property>
                               </object>
                             </child>
                           </object>
@@ -3596,7 +3549,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               <object class="GtkImage">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
-                                <property name="stock">gtk-remove</property>
+                                <property name="icon-name">list-remove</property>
                               </object>
                             </child>
                           </object>
@@ -3680,11 +3633,6 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                 <child>
                                   <object class="GtkCellRendererText">
                                     <property name="alignment">center</property>
-                                    <property name="background-gdk">#000000000000</property>
-                                    <property name="font">Normal</property>
-                                    <property name="foreground-gdk">#000000000000</property>
-                                    <property name="background-rgba">rgba(0,0,0,0)</property>
-                                    <property name="foreground-rgba">rgba(0,0,0,0)</property>
                                   </object>
                                   <attributes>
                                     <attribute name="text">0</attribute>
@@ -3717,7 +3665,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               <object class="GtkImage">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
-                                <property name="stock">gtk-add</property>
+                                <property name="icon-name">list-add</property>
                               </object>
                             </child>
                           </object>
@@ -3736,7 +3684,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               <object class="GtkImage">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
-                                <property name="stock">gtk-edit</property>
+                                <property name="icon-name">gtk-edit</property>
                               </object>
                             </child>
                           </object>
@@ -3755,7 +3703,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               <object class="GtkImage">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
-                                <property name="stock">gtk-remove</property>
+                                <property name="icon-name">list-remove</property>
                               </object>
                             </child>
                           </object>
