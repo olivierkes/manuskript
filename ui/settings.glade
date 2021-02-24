@@ -282,10 +282,12 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
   </object>
   <object class="HdyPreferencesWindow">
     <property name="can-focus">False</property>
+    <property name="title" translatable="yes">Settings</property>
     <child>
       <object class="HdyPreferencesPage">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
+        <property name="icon-name">applications-system-symbolic</property>
         <property name="title" translatable="yes">General</property>
         <child>
           <object class="HdyPreferencesGroup">
@@ -607,6 +609,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
       <object class="HdyPreferencesPage">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
+        <property name="icon-name">emoji-recent-symbolic</property>
         <property name="title" translatable="yes">Revisions</property>
         <child>
           <object class="HdyPreferencesGroup">
@@ -724,6 +727,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                     <property name="visible">True</property>
                                     <property name="can-focus">False</property>
                                     <property name="label" translatable="yes">revisions per minute for the last 10 minutes</property>
+                                    <property name="wrap">True</property>
                                   </object>
                                   <packing>
                                     <property name="expand">False</property>
@@ -765,6 +769,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                     <property name="visible">True</property>
                                     <property name="can-focus">False</property>
                                     <property name="label" translatable="yes">revisions per 10 minutes for the last hour</property>
+                                    <property name="wrap">True</property>
                                   </object>
                                   <packing>
                                     <property name="expand">False</property>
@@ -806,6 +811,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                     <property name="visible">True</property>
                                     <property name="can-focus">False</property>
                                     <property name="label" translatable="yes">revisions per hour for the last day</property>
+                                    <property name="wrap">True</property>
                                   </object>
                                   <packing>
                                     <property name="expand">False</property>
@@ -847,6 +853,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                     <property name="visible">True</property>
                                     <property name="can-focus">False</property>
                                     <property name="label" translatable="yes">revisions per day for the last month</property>
+                                    <property name="wrap">True</property>
                                   </object>
                                   <packing>
                                     <property name="expand">False</property>
@@ -888,6 +895,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                     <property name="visible">True</property>
                                     <property name="can-focus">False</property>
                                     <property name="label" translatable="yes">revisions per week till the end of time</property>
+                                    <property name="wrap">True</property>
                                   </object>
                                   <packing>
                                     <property name="expand">False</property>
@@ -951,35 +959,38 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkBox">
+                          <object class="GtkFlowBox">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
+                            <property name="margin-top">12</property>
+                            <property name="max-children-per-line">2</property>
                             <child>
-                              <object class="GtkLabel">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="label" translatable="yes">Why aren't these issues fixed already?</property>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">0</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkLinkButton">
-                                <property name="label" translatable="yes">We need your help to make Manuskript better!</property>
+                              <object class="GtkFlowBoxChild">
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
-                                <property name="receives-default">True</property>
-                                <property name="relief">none</property>
-                                <property name="uri">https://www.theologeek.ch/manuskript/contribute/</property>
+                                <child>
+                                  <object class="GtkLabel">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="label" translatable="yes">Why aren't these issues fixed already?</property>
+                                  </object>
+                                </child>
                               </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">1</property>
-                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkFlowBoxChild">
+                                <property name="visible">True</property>
+                                <property name="can-focus">True</property>
+                                <child>
+                                  <object class="GtkLinkButton">
+                                    <property name="label" translatable="yes">We need your help to make Manuskript better!</property>
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">True</property>
+                                    <property name="receives-default">True</property>
+                                    <property name="uri">https://www.theologeek.ch/manuskript/contribute/</property>
+                                  </object>
+                                </child>
+                              </object>
                             </child>
                           </object>
                           <packing>
@@ -1014,6 +1025,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
       <object class="HdyPreferencesPage">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
+        <property name="icon-name">applications-graphics-symbolic</property>
         <property name="title" translatable="yes">Views</property>
         <child>
           <object class="HdyPreferencesGroup">
@@ -1285,249 +1297,246 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                 <property name="can-focus">True</property>
                 <property name="title">Folders &amp; Texts</property>
                 <child>
-                  <object class="GtkBox">
+                  <object class="GtkFlowBox">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="margin-start">12</property>
                     <property name="margin-end">12</property>
                     <property name="margin-top">12</property>
                     <property name="margin-bottom">12</property>
-                    <property name="spacing">12</property>
-                    <property name="homogeneous">True</property>
+                    <property name="column-spacing">12</property>
+                    <property name="row-spacing">12</property>
+                    <property name="max-children-per-line">2</property>
                     <child>
-                      <object class="GtkFrame">
+                      <object class="GtkFlowBoxChild">
                         <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="label-xalign">0</property>
-                        <property name="shadow-type">none</property>
+                        <property name="can-focus">True</property>
                         <child>
-                          <object class="GtkBox">
+                          <object class="GtkFrame">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
-                            <property name="margin-top">8</property>
-                            <property name="orientation">vertical</property>
-                            <property name="spacing">4</property>
+                            <property name="label-xalign">0</property>
+                            <property name="shadow-type">none</property>
                             <child>
-                              <object class="GtkRadioButton" id="radiobutton1">
-                                <property name="label" translatable="yes">Show item count</property>
+                              <object class="GtkBox">
                                 <property name="visible">True</property>
-                                <property name="can-focus">True</property>
-                                <property name="receives-default">False</property>
-                                <property name="active">True</property>
-                                <property name="draw-indicator">True</property>
-                                <property name="group">radiobutton2</property>
+                                <property name="can-focus">False</property>
+                                <property name="margin-top">8</property>
+                                <property name="orientation">vertical</property>
+                                <property name="spacing">4</property>
+                                <child>
+                                  <object class="GtkRadioButton" id="radiobutton1">
+                                    <property name="label" translatable="yes">Show item count</property>
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">True</property>
+                                    <property name="receives-default">False</property>
+                                    <property name="draw-indicator">True</property>
+                                    <property name="group">radiobutton2</property>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">0</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkRadioButton" id="radiobutton2">
+                                    <property name="label" translatable="yes">Show word count</property>
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">True</property>
+                                    <property name="receives-default">False</property>
+                                    <property name="draw-indicator">True</property>
+                                    <property name="group">radiobutton1</property>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">1</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkRadioButton">
+                                    <property name="label" translatable="yes">Show char count</property>
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">True</property>
+                                    <property name="receives-default">False</property>
+                                    <property name="draw-indicator">True</property>
+                                    <property name="group">radiobutton1</property>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">2</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkRadioButton">
+                                    <property name="label" translatable="yes">Show progress</property>
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">True</property>
+                                    <property name="receives-default">False</property>
+                                    <property name="draw-indicator">True</property>
+                                    <property name="group">radiobutton1</property>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">3</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkRadioButton">
+                                    <property name="label" translatable="yes">Show summary</property>
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">True</property>
+                                    <property name="receives-default">False</property>
+                                    <property name="draw-indicator">True</property>
+                                    <property name="group">radiobutton1</property>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">4</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkRadioButton">
+                                    <property name="label" translatable="yes">Show nothing</property>
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">True</property>
+                                    <property name="receives-default">False</property>
+                                    <property name="draw-indicator">True</property>
+                                    <property name="group">radiobutton1</property>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">5</property>
+                                  </packing>
+                                </child>
                               </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">0</property>
-                              </packing>
                             </child>
-                            <child>
-                              <object class="GtkRadioButton" id="radiobutton2">
-                                <property name="label" translatable="yes">Show word count</property>
+                            <child type="label">
+                              <object class="GtkLabel">
                                 <property name="visible">True</property>
-                                <property name="can-focus">True</property>
-                                <property name="receives-default">False</property>
-                                <property name="active">True</property>
-                                <property name="draw-indicator">True</property>
-                                <property name="group">radiobutton1</property>
+                                <property name="can-focus">False</property>
+                                <property name="label" translatable="yes">Folders</property>
+                                <attributes>
+                                  <attribute name="weight" value="semibold"/>
+                                </attributes>
                               </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">1</property>
-                              </packing>
                             </child>
-                            <child>
-                              <object class="GtkRadioButton">
-                                <property name="label" translatable="yes">Show char count</property>
-                                <property name="visible">True</property>
-                                <property name="can-focus">True</property>
-                                <property name="receives-default">False</property>
-                                <property name="active">True</property>
-                                <property name="draw-indicator">True</property>
-                                <property name="group">radiobutton1</property>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">2</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkRadioButton">
-                                <property name="label" translatable="yes">Show progress</property>
-                                <property name="visible">True</property>
-                                <property name="can-focus">True</property>
-                                <property name="receives-default">False</property>
-                                <property name="active">True</property>
-                                <property name="draw-indicator">True</property>
-                                <property name="group">radiobutton1</property>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">3</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkRadioButton">
-                                <property name="label" translatable="yes">Show summary</property>
-                                <property name="visible">True</property>
-                                <property name="can-focus">True</property>
-                                <property name="receives-default">False</property>
-                                <property name="active">True</property>
-                                <property name="draw-indicator">True</property>
-                                <property name="group">radiobutton1</property>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">4</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkRadioButton">
-                                <property name="label" translatable="yes">Show nothing</property>
-                                <property name="visible">True</property>
-                                <property name="can-focus">True</property>
-                                <property name="receives-default">False</property>
-                                <property name="active">True</property>
-                                <property name="draw-indicator">True</property>
-                                <property name="group">radiobutton1</property>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">5</property>
-                              </packing>
-                            </child>
-                          </object>
-                        </child>
-                        <child type="label">
-                          <object class="GtkLabel">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="label" translatable="yes">Folders</property>
-                            <attributes>
-                              <attribute name="weight" value="semibold"/>
-                            </attributes>
                           </object>
                         </child>
                       </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
-                      </packing>
                     </child>
                     <child>
-                      <object class="GtkFrame">
+                      <object class="GtkFlowBoxChild">
                         <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="label-xalign">0</property>
-                        <property name="shadow-type">none</property>
+                        <property name="can-focus">True</property>
                         <child>
-                          <object class="GtkBox">
+                          <object class="GtkFrame">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
-                            <property name="margin-top">8</property>
-                            <property name="orientation">vertical</property>
-                            <property name="spacing">4</property>
+                            <property name="label-xalign">0</property>
+                            <property name="shadow-type">none</property>
                             <child>
-                              <object class="GtkRadioButton" id="radiobutton4">
-                                <property name="label" translatable="yes">Show word count</property>
+                              <object class="GtkBox">
                                 <property name="visible">True</property>
-                                <property name="can-focus">True</property>
-                                <property name="receives-default">False</property>
-                                <property name="draw-indicator">True</property>
-                                <property name="group">radiobutton3</property>
+                                <property name="can-focus">False</property>
+                                <property name="margin-top">8</property>
+                                <property name="orientation">vertical</property>
+                                <property name="spacing">4</property>
+                                <child>
+                                  <object class="GtkRadioButton" id="radiobutton4">
+                                    <property name="label" translatable="yes">Show word count</property>
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">True</property>
+                                    <property name="receives-default">False</property>
+                                    <property name="draw-indicator">True</property>
+                                    <property name="group">radiobutton3</property>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">1</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkRadioButton" id="radiobutton3">
+                                    <property name="label" translatable="yes">Show char count</property>
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">True</property>
+                                    <property name="receives-default">False</property>
+                                    <property name="draw-indicator">True</property>
+                                    <property name="group">radiobutton4</property>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">2</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkRadioButton">
+                                    <property name="label" translatable="yes">Show progress</property>
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">True</property>
+                                    <property name="receives-default">False</property>
+                                    <property name="draw-indicator">True</property>
+                                    <property name="group">radiobutton4</property>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">3</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkRadioButton">
+                                    <property name="label" translatable="yes">Show summary</property>
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">True</property>
+                                    <property name="receives-default">False</property>
+                                    <property name="draw-indicator">True</property>
+                                    <property name="group">radiobutton4</property>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">4</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkRadioButton">
+                                    <property name="label" translatable="yes">Show nothing</property>
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">True</property>
+                                    <property name="receives-default">False</property>
+                                    <property name="draw-indicator">True</property>
+                                    <property name="group">radiobutton4</property>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">5</property>
+                                  </packing>
+                                </child>
                               </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">1</property>
-                              </packing>
                             </child>
-                            <child>
-                              <object class="GtkRadioButton" id="radiobutton3">
-                                <property name="label" translatable="yes">Show char count</property>
+                            <child type="label">
+                              <object class="GtkLabel">
                                 <property name="visible">True</property>
-                                <property name="can-focus">True</property>
-                                <property name="receives-default">False</property>
-                                <property name="draw-indicator">True</property>
-                                <property name="group">radiobutton4</property>
+                                <property name="can-focus">False</property>
+                                <property name="label" translatable="yes">Text</property>
+                                <attributes>
+                                  <attribute name="weight" value="semibold"/>
+                                </attributes>
                               </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">2</property>
-                              </packing>
                             </child>
-                            <child>
-                              <object class="GtkRadioButton">
-                                <property name="label" translatable="yes">Show progress</property>
-                                <property name="visible">True</property>
-                                <property name="can-focus">True</property>
-                                <property name="receives-default">False</property>
-                                <property name="draw-indicator">True</property>
-                                <property name="group">radiobutton4</property>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">3</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkRadioButton">
-                                <property name="label" translatable="yes">Show summary</property>
-                                <property name="visible">True</property>
-                                <property name="can-focus">True</property>
-                                <property name="receives-default">False</property>
-                                <property name="draw-indicator">True</property>
-                                <property name="group">radiobutton4</property>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">4</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkRadioButton">
-                                <property name="label" translatable="yes">Show nothing</property>
-                                <property name="visible">True</property>
-                                <property name="can-focus">True</property>
-                                <property name="receives-default">False</property>
-                                <property name="draw-indicator">True</property>
-                                <property name="group">radiobutton4</property>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">5</property>
-                              </packing>
-                            </child>
-                          </object>
-                        </child>
-                        <child type="label">
-                          <object class="GtkLabel">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="label" translatable="yes">Text</property>
-                            <attributes>
-                              <attribute name="weight" value="semibold"/>
-                            </attributes>
                           </object>
                         </child>
                       </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
-                      </packing>
                     </child>
                   </object>
                 </child>
@@ -1744,8 +1753,6 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                         <property name="activate-on-single-click">False</property>
                         <child>
                           <object class="GtkFlowBoxChild">
-                            <property name="width-request">100</property>
-                            <property name="height-request">80</property>
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <child>
@@ -1761,8 +1768,6 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                         </child>
                         <child>
                           <object class="GtkFlowBoxChild">
-                            <property name="width-request">100</property>
-                            <property name="height-request">80</property>
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <child>
@@ -1778,8 +1783,6 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                         </child>
                         <child>
                           <object class="GtkFlowBoxChild">
-                            <property name="width-request">100</property>
-                            <property name="height-request">80</property>
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <child>
@@ -1795,8 +1798,6 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                         </child>
                         <child>
                           <object class="GtkFlowBoxChild">
-                            <property name="width-request">100</property>
-                            <property name="height-request">80</property>
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <child>
@@ -1812,8 +1813,6 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                         </child>
                         <child>
                           <object class="GtkFlowBoxChild">
-                            <property name="width-request">100</property>
-                            <property name="height-request">80</property>
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <child>
@@ -1829,8 +1828,6 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                         </child>
                         <child>
                           <object class="GtkFlowBoxChild">
-                            <property name="width-request">100</property>
-                            <property name="height-request">80</property>
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <child>
@@ -1846,8 +1843,6 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                         </child>
                         <child>
                           <object class="GtkFlowBoxChild">
-                            <property name="width-request">100</property>
-                            <property name="height-request">80</property>
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <child>
@@ -1863,8 +1858,6 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                         </child>
                         <child>
                           <object class="GtkFlowBoxChild">
-                            <property name="width-request">100</property>
-                            <property name="height-request">80</property>
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <child>
@@ -2549,7 +2542,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
                                 <property name="receives-default">True</property>
-                                <property name="font">Sans</property>
+                                <property name="font">Sans 12</property>
                                 <property name="language">en-us</property>
                                 <property name="level">GTK_FONT_CHOOSER_LEVEL_FAMILY</property>
                                 <property name="preview-text"/>
@@ -3379,6 +3372,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
       <object class="HdyPreferencesPage">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
+        <property name="icon-name">emoji-symbols-symbolic</property>
         <property name="title" translatable="yes">Labels</property>
         <child>
           <object class="HdyPreferencesGroup">
@@ -3520,6 +3514,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
       <object class="HdyPreferencesPage">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
+        <property name="icon-name">emoji-flags-symbolic</property>
         <property name="title" translatable="yes">Status</property>
         <child>
           <object class="HdyPreferencesGroup">
@@ -3633,6 +3628,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
       <object class="HdyPreferencesPage">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
+        <property name="icon-name">video-display-symbolic</property>
         <property name="title" translatable="yes">Fullscreen</property>
         <child>
           <object class="HdyPreferencesGroup">
