@@ -4278,7 +4278,7 @@ Use se receber um erro YAML.</translation>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="456"/>
         <source>Scene</source>
-        <translation>cenas</translation>
+        <translation>Cena</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="238"/>
