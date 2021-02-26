@@ -6,22 +6,22 @@
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="18"/>
         <source>Basic HTML output using the Python module &apos;markdown&apos;.</source>
-        <translation>Saída HTML básica a utilizar o módulo markdown do Python.</translation>
+        <translation>Saída HTML básica utilizando o módulo Markdown do Python.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="19"/>
         <source>Python module &apos;markdown&apos;.</source>
-        <translation>Módulo markdown do Python.</translation>
+        <translation>Módulo Markdown do Python.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="54"/>
         <source>Markdown source</source>
-        <translation>Fonte markdown</translation>
+        <translation>Origem Markdown</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="55"/>
         <source>HTML Source</source>
-        <translation>Fonte HTML</translation>
+        <translation>Origem HTML</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="59"/>
@@ -46,7 +46,7 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/HTML.py" line="13"/>
         <source>A little known format modestly used. You know, web sites for example.</source>
-        <translation>Um formato mal conhecido e pouco utilizado. Sabe, em websites, por exemplo.</translation>
+        <translation>Um formato mal conhecido e pouco utilizado. Como em sítios web, por exemplo.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/PDF.py" line="18"/>
@@ -61,7 +61,7 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="97"/>
         <source>Standalone document (not just a fragment)</source>
-        <translation>Documento independente (não só fragmento)</translation>
+        <translation>Documento independente (não só um fragmento)</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="100"/>
@@ -111,7 +111,7 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="132"/>
         <source>LaTeX engine used to produce the PDF.</source>
-        <translation>Motor LaTex usado para produzir o PDF.</translation>
+        <translation>Motor LaTeX usado para produzir o PDF.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="142"/>
@@ -157,8 +157,8 @@
         <location filename="../manuskript/exporter/manuskript/markdown.py" line="14"/>
         <source>Just like plain text, excepts adds markdown titles.
                           Presupposes that texts are formatted in markdown.</source>
-        <translation>Tal como texto simples, excepto adição de títulos markdown.
-                          Pressupõe que os textos estão formatados em markdown.</translation>
+        <translation>Tal como texto simples, excepto adição de títulos Markdown.
+                          Pressupõe que os textos estão formatados em Markdown.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="15"/>
@@ -189,7 +189,7 @@
         <location filename="../manuskript/exporter/pandoc/plainText.py" line="10"/>
         <source>Export to markdown, using pandoc. Allows more formatting options
     than the basic manuskript exporter.</source>
-        <translation>exportar para markdown, a usar pandoc. Permite mais opções
+        <translation>exportar para Markdown, utilizando o pandoc. Permite mais opções
     de formatação que o exportador do Manuskript.</translation>
     </message>
     <message>
@@ -339,7 +339,7 @@ Use se receber um erro YAML.</translation>
     <message>
         <location filename="../manuskript/importer/markdownImporter.py" line="178"/>
         <source>Markdown import</source>
-        <translation>Importação markdown</translation>
+        <translation>Importação Markdown</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/markdownImporter.py" line="182"/>
@@ -347,7 +347,7 @@ Use se receber um erro YAML.</translation>
                         parser that will go through a markdown document and
                         create items for each titles.&lt;br/&gt;&amp;nbsp;</source>
         <translation>&lt;b&gt;Informação:&lt;/b&gt; um analisador
-                        muito simples que percorre um documento markdown
+                        muito simples que percorre um documento Markdown
                         e cria itens para cada título.&lt;br/&gt;&amp;nbsp;</translation>
     </message>
     <message>
@@ -417,16 +417,16 @@ Use se receber um erro YAML.</translation>
                         might give better result depending on your document.
                         &lt;br/&gt;&amp;nbsp;</source>
         <translation>&lt;b&gt;Informação:&lt;/b&gt; o Manuskript pode
-                        importar de &lt;b&gt;markdown&lt;/b&gt; ou &lt;b&gt;OPML&lt;/b&gt;. O Pandoc vai
+                        importar de &lt;b&gt;Markdown&lt;/b&gt; ou &lt;b&gt;OPML&lt;/b&gt;. O Pandoc vai
                         converter o seu documento para um deles (veja a opção abaixo) e
-                        será depois importado ao Manuskript. Um ou outro
-                        poderão dar um melhor resultado, a depender do documento.
+                        será depois importado para o Manuskript. Um ou outro
+                        poderão dar um melhor resultado, dependendo do documento.
                         &lt;br/&gt;&amp;nbsp;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="69"/>
         <source>Import using:</source>
-        <translation>Importar a usar:</translation>
+        <translation>Importar utilizando:</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="73"/>
@@ -443,15 +443,15 @@ Use se receber um erro YAML.</translation>
                         original document.&lt;/p&gt;</source>
         <translation>&lt;p&gt;Deve o Pandoc criar
                         quebras de linha cosméticas/não-semânticas?&lt;/p&gt;&lt;p&gt;
-                        &lt;b&gt;automática&lt;/b&gt;: quebra aos 72 caracteres.&lt;br&gt;
-                        &lt;b&gt;nenhuma&lt;/b&gt;: sem quebra de linhas.&lt;br&gt;
+                        &lt;b&gt;automática&lt;/b&gt;: quebra aos 72 caracteres?&lt;br&gt;
+                        &lt;b&gt;nenhuma&lt;/b&gt;: sem quebra de linhas?&lt;br&gt;
                         &lt;b&gt;preservar&lt;/b&gt;: tenta preservar a quebra de linhas
-                        do documento original.&lt;/p&gt;</translation>
+                        do documento original?&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/mindMapImporter.py" line="56"/>
         <source>Mind Map Import</source>
-        <translation>Importação de mapa mental</translation>
+        <translation>Importar mapa mental</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/mindMapImporter.py" line="56"/>
@@ -461,7 +461,7 @@ Use se receber um erro YAML.</translation>
     <message>
         <location filename="../manuskript/importer/mindMapImporter.py" line="71"/>
         <source>Mind Map import</source>
-        <translation>Importação de mapa mental</translation>
+        <translation>Importar mapa mental</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/mindMapImporter.py" line="74"/>
@@ -532,7 +532,7 @@ Use se receber um erro YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="277"/>
         <source>Email</source>
-        <translation>Email</translation>
+        <translation>Correio</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1422"/>
@@ -4268,12 +4268,12 @@ Use se receber um erro YAML.</translation>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="455"/>
         <source>Chapter</source>
-        <translation>capítulos</translation>
+        <translation>Capítulo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="456"/>
         <source>Scene</source>
-        <translation>cenas</translation>
+        <translation>Cena</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="238"/>
@@ -4283,12 +4283,12 @@ Use se receber um erro YAML.</translation>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="238"/>
         <source>Book</source>
-        <translation>livros</translation>
+        <translation>Livro</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="246"/>
         <source>Section</source>
-        <translation>secções</translation>
+        <translation>Secção</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="245"/>
