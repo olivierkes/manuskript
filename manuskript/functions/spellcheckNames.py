@@ -28,19 +28,19 @@ class SpellcheckNames:
             self.dictionary.addWords(self.characterNames)
     
 
-    def onCharacterModelChanged(self, newModel = None):
+    def onCharacterModelChanged(self, newModel):
         """
         Updates the spellchecking dictionary with the changes
         to names in the character model.
 
-        The optional parameter is to pass an entirely new 
+        Call this to pass an entirely new 
         character should that need ever arise.
-
-        Call this when any changes have been made to character 
-        names.
         """
-        if newModel is not None:
-            self.mdlCharacter = newModel
+        self.mdlCharacter = newModel
+        self._updateAll()
+    
+
+    def _updateAll(self):
         if self.mdlCharacter is None:
             # No character model has been initialized yet
             return
@@ -52,6 +52,19 @@ class SpellcheckNames:
         if self.dictionary is not None:
             self.dictionary.addWords(addedNames)
             self.dictionary.removeWords(removedNames)
+    
+
+    def onCharacterModelUpdated(self, index):
+        """
+        Updates the spellchecking dictionary with the changes
+        to names in the character model.
+
+        Call this when any changes have been made to character 
+        names.
+        """
+        # TODO we could read the passed index and be smarter about what to update
+        self._updateAll()
+
 
 
 

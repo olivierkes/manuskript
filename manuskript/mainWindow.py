@@ -626,7 +626,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # Also set the custom names spellchecker to update when character names are changed
         self.namesSpellchecker.onCharacterModelChanged(self.mdlCharacter)
-        self.mdlCharacter.dataChanged.connect(self.namesSpellchecker.onCharacterModelChanged)
+        self.mdlCharacter.dataChanged.connect(self.namesSpellchecker.onCharacterModelUpdated)
 
         # UI
         for i in [self.actOpen, self.menuRecents]:

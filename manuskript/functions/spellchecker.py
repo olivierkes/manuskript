@@ -202,7 +202,7 @@ class BasicDictionary:
         It is safe to call this method multiple times with the same word,
         it will not be added twice.
 
-        This is more efficient than calling `removeWord` in a loop, as 
+        This is more efficient than calling `addWord` in a loop, as 
         here changes are not committed to disk until the end.
         """
         changesMade = False
