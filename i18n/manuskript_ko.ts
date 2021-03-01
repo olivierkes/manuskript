@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="2.0" language="ko" sourcelanguage="">
+<!DOCTYPE TS>
+<TS version="2.0" language="ko" sourcelanguage="">
 <context>
     <name>Export</name>
     <message>
@@ -225,7 +226,7 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="70"/>
-        <source>Choose output file&#xe2;&#x80;&#xa6;</source>
+        <source>Choose output fileâ¦</source>
         <translation>내보낼 파일을 고르세요...</translation>
     </message>
 </context>
@@ -536,7 +537,7 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="322"/>
         <source>Situation:</source>
-        <translation>대목:</translation>
+        <translation>상황:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1337"/>
@@ -641,7 +642,7 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="859"/>
         <source>Epiphany</source>
-        <translation type="unfinished"></translation>
+        <translation>깨달음</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="869"/>
@@ -696,7 +697,7 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2045"/>
         <source>World</source>
-        <translation>세계</translation>
+        <translation>세계관</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1600"/>
@@ -711,12 +712,12 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1666"/>
         <source>Source of passion</source>
-        <translation type="unfinished"></translation>
+        <translation>열정 소재</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1676"/>
         <source>Source of conflict</source>
-        <translation type="unfinished"></translation>
+        <translation>갈등 소재</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1477"/>
@@ -726,7 +727,7 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1854"/>
         <source>Editor</source>
-        <translation>편집기</translation>
+        <translation>편집</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1985"/>
@@ -741,7 +742,7 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2008"/>
         <source>Persos</source>
-        <translation type="unfinished"></translation>
+        <translation>페르소스</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2069"/>
@@ -1110,17 +1111,17 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1490"/>
         <source>Border</source>
-        <translation type="unfinished"></translation>
+        <translation>테두리</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1491"/>
         <source>Corner</source>
-        <translation type="unfinished"></translation>
+        <translation>모서리</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1351"/>
         <source>Add plot step</source>
-        <translation>사건 더하기</translation>
+        <translation>플롯 추가</translation>
     </message>
     <message encoding="UTF-8">
         <location filename="../manuskript/ui/mainWindow.ui" line="2521"/>
@@ -1365,7 +1366,7 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2755"/>
         <source>&amp;Verbatim</source>
-        <translation type="unfinished"></translation>
+        <translation>축약(&amp;V)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2760"/>
@@ -1498,7 +1499,7 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="480"/>
         <source>Revisions</source>
-        <translation type="unfinished"></translation>
+        <translation>수정본</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="34"/>
@@ -1558,12 +1559,12 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="329"/>
         <source>If no changes during</source>
-        <translation type="unfinished"></translation>
+        <translation>잠시 펜을 놓은</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="376"/>
         <source>seconds.</source>
-        <translation type="unfinished"></translation>
+        <translation>초마다.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="410"/>
@@ -1583,12 +1584,12 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="490"/>
         <source>Revisions are a way to keep track of modifications. For each text item, it stores any changes you make to the main text, allowing you to see and restoring previous versions.</source>
-        <translation type="unfinished"></translation>
+        <translation>수정본은 고쳐쓴 자취를 보여줍니다. 본문의 변화를 갈무리하여, 글 항목마다 이전 판의 글을 보고 되살리실 수 있습니다.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="500"/>
         <source>Keep revisions</source>
-        <translation type="unfinished"></translation>
+        <translation>수정본 보존</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="516"/>
@@ -1598,37 +1599,37 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="531"/>
         <source>Keep:</source>
-        <translation type="unfinished"></translation>
+        <translation>남겨두기:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="544"/>
         <source>Smart remove allows you to keep only a certain number of revisions. It is strongly recommended to use it, lest you file will becomes full of thousands of insignificant changes.</source>
-        <translation type="unfinished"></translation>
+        <translation>주기적 삭제 기능은 일정한 수의 수정본만 남깁니다. 쓸데없는 변경 사항을 없애 파일 용량을 줄이고자 한다면, 강력히 추천하는 바입니다.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="560"/>
         <source>revisions per day for the last month</source>
-        <translation type="unfinished"></translation>
+        <translation>개 수정본(지난 달 것은 하루마다)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="601"/>
         <source>revisions per minute for the last 10 minutes</source>
-        <translation type="unfinished"></translation>
+        <translation>개 수정본(10분 전 것은 1분마다)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="614"/>
         <source>revisions per hour for the last day</source>
-        <translation type="unfinished"></translation>
+        <translation>개 수정본(어제 것은 시간마다)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="627"/>
         <source>revisions per 10 minutes for the last hour</source>
-        <translation type="unfinished"></translation>
+        <translation>개 수정본(한 시간 전 것은 10분마다)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="752"/>
         <source>revisions per week till the end of time</source>
-        <translation type="unfinished"></translation>
+        <translation>개 수정본(기간이 지난 것은 주마다)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="810"/>
@@ -1758,7 +1759,7 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1951"/>
         <source>Corner color:</source>
-        <translation type="unfinished"></translation>
+        <translation>모서리 색:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1611"/>
@@ -2013,7 +2014,7 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2632"/>
         <source>Use block insertion of</source>
-        <translation type="unfinished"></translation>
+        <translation>블록 삽입</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2355"/>
@@ -2163,7 +2164,7 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="775"/>
         <source>&lt;p&gt;&lt;b&gt;The Revisions feature has been at the source of many reported issues. In this version of Manuskript it has been turned off by default for new projects in order to provide the best experience.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Why aren&apos;t these issues fixed already? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;We need your help to make Manuskript better!&lt;/a&gt;&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;&lt;b&gt;수정본 기능은 많은 문제의 원인으로 보고되어 왔습니다. 이번 판의 Manuskript는 최상의 경험을 제공하고자 이 기능을 새 프로젝트에서는 기본적으로 꺼 놓았습니다.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;이 문제에 대한 해결책이 있으신가요? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;저희는 여러분의 도움이 필요합니다!&lt;/a&gt;&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
@@ -2253,7 +2254,7 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
     <message>
         <location filename="../manuskript/ui/views/basicItemView_ui.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>형식</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/basicItemView_ui.ui" line="38"/>
@@ -2322,7 +2323,7 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
     <message>
         <location filename="../manuskript/ui/cheatSheet_ui.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>형식</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/cheatSheet_ui.ui" line="46"/>
@@ -2422,7 +2423,7 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
     <message>
         <location filename="../manuskript/ui/editors/completer_ui.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>형식</translation>
     </message>
 </context>
 <context>
@@ -2443,7 +2444,7 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
     <message>
         <location filename="../manuskript/ui/editors/editorWidget_ui.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>형식</translation>
     </message>
 </context>
 <context>
@@ -2487,7 +2488,7 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>형식</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="50"/>
@@ -2567,7 +2568,7 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings.py" line="105"/>
         <source>Custom</source>
-        <translation type="unfinished"></translation>
+        <translation>임의 설정</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="367"/>
@@ -2612,7 +2613,7 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1030"/>
         <source>Custom replacements:</source>
-        <translation type="unfinished"></translation>
+        <translation>임의 변환:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1049"/>
@@ -4556,7 +4557,7 @@ YAML에 문제가 있을 때 사용하십시오.</translation>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="246"/>
         <source>Natural resources</source>
-        <translation type="unfinished"></translation>
+        <translation>소재</translation>
     </message>
 </context>
 </TS>
