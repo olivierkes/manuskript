@@ -184,7 +184,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Automated spellcheck dictionary control mechanism
         # (Coordinates between character model and spellchecker to
         # automatically add and remove character names from the dictionary)
-        self.namesSpellchecker = SpellcheckNames()
+        self.namesSpellchecker = SpellcheckNames(self.refreshSpellcheck)
 
     def updateDockVisibility(self, restore=False):
         """
@@ -1437,6 +1437,18 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         for w in self.findChildren(textEditView, QRegExp(".*"),
                                    Qt.FindChildrenRecursively):
             w.toggleSpellcheck(val)
+    
+    def refreshSpellcheck(self):
+        """
+        Refresh the spellchecking in all text views (such as 
+        after a new word is added to the dictionary)
+        """
+        if not settings.spellcheck:
+            return
+        for w in self.findChildren(textEditView, QRegExp(".*"),
+                                   Qt.FindChildrenRecursively):
+            w.toggleSpellcheck(settings.spellcheck)
+
 
     ###############################################################################
     # SETTINGS

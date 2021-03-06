@@ -9,10 +9,11 @@ class SpellcheckNames:
     track other proper names, such as place names.
     """
 
-    def __init__(self):
+    def __init__(self, onChangedCallback):
         self.mdlCharacter = None
         self.dictionary = None
         self.characterNames = set()
+        self.onChangedCallback = onChangedCallback
     
 
     def onDictionaryChanged(self, newDictionary):
@@ -52,6 +53,8 @@ class SpellcheckNames:
         if self.dictionary is not None:
             self.dictionary.addWords(addedNames)
             self.dictionary.removeWords(removedNames)
+            if addedNames or removedNames:
+                self.onChangedCallback()
     
 
     def onCharacterModelUpdated(self, index):
