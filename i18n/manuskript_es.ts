@@ -30,8 +30,8 @@
     &lt;p&gt;Website: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
     </source>
         <translation>&lt;p&gt;Convertidor de documentos universal. Se puede utilizar para convertir Markdown a un amplio
-     conjunto de otros formatos.&lt;/p&gt;
-    &lt;p&gt;Web: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
+ conjunto de otros formatos.&lt;/p&gt;
+ &lt;p&gt;Web: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
     </translation>
     </message>
     <message>
@@ -55,8 +55,8 @@
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="15"/>
         <source>Simplest export to plain text. Allows you to use your own markup not understood
                   by Manuskript, for example &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</source>
-        <translation>Exportación simple a texto plano. Te permite utilizar un formato de marcado propio,
-                   no conocido por manuskript. Por ejemplo &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</translation>
+        <translation>La exportación más simple, a texto plano. Permite utilizar un formato de marcado propio,
+                   no conocido por Manuskript. Por ejemplo &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="54"/>
@@ -224,7 +224,7 @@ Use that if you get YAML related error.</source>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="48"/>
         <source>Could not process regular expression: 
 {}</source>
-        <translation>No pudo procesar la expresión regular: 
+        <translation>No se puede procesar la expresión regular:
 {}</translation>
     </message>
     <message>
@@ -1446,12 +1446,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1338"/>
         <source>Install {}{} to use spellcheck</source>
-        <translation>Instale {}{} para usar el revisor ortográfico</translation>
+        <translation>Instala {}{} para usar el corrector ortográfico</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1380"/>
         <source>{} has no installed dictionaries</source>
-        <translation>{} no ha instalado diccionarios</translation>
+        <translation>{} no tiene instalado ningún diccionario</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1401"/>
@@ -1471,22 +1471,22 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/mainWindow.py" line="660"/>
         <source>Your changes will be lost if you don&apos;t save them.</source>
-        <translation>Tus cambios se perderán si no los grabas.</translation>
+        <translation>Tus cambios se perderán si no los guardas.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1594"/>
         <source>PyQt / Qt versions 5.11 and 5.12 are known to cause a crash which might result in a loss of data.</source>
-        <translation type="unfinished"></translation>
+        <translation>Es conocido que las versiones PyQt / Qt 5.11 y 5.12 pueden causar errores que resulten en pérdida de datos.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1595"/>
         <source>PyQt {} and Qt {} are in use.</source>
-        <translation type="unfinished"></translation>
+        <translation>PyQt {} y Qt {} están en uso.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1600"/>
         <source>Proceed with import at your own risk</source>
-        <translation>Proceda a la importación bajo su propio riesgo</translation>
+        <translation>Proceda con la importación bajo su propio riesgo</translation>
     </message>
 </context>
 <context>
@@ -1994,7 +1994,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="426"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If you check this option, your project will be saved as one single file. Easier to copy or backup, but does not allow collaborative editing, or versioning.&lt;br/&gt;If this is unchecked, your project will be saved as a folder containing many small files.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Si marcas esta opción, tu proyecto se grabará en un único archivo. Más facil de copiar o guardar, pero no permitirá edición colaborativa o distintas versiones.&lt;br/&gt;Si está desmarcada, tu proyecto se grabará como una carpeta conteniendo multiples archivos pequeños.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Si marcas esta opción, tu proyecto se grabará en un único archivo. Más fácil de copiar o guardar, pero no permitirá edición colaborativa o distintas versiones.&lt;br/&gt;Si está desmarcada, tu proyecto se grabará como una carpeta conteniendo múltiples archivos pequeños.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="432"/>
@@ -2169,7 +2169,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="775"/>
         <source>&lt;p&gt;&lt;b&gt;The Revisions feature has been at the source of many reported issues. In this version of Manuskript it has been turned off by default for new projects in order to provide the best experience.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Why aren&apos;t these issues fixed already? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;We need your help to make Manuskript better!&lt;/a&gt;&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;&lt;b&gt;La función Revisiones ha sido el origen de muchos de los problemas reportados. En esta versión de Manuskript, se ha desactivado por defecto para nuevos proyectos con el fin de brindar la mejor experiencia.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;¿Porqué no se han solucionado todavía estos problemas? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;Necesitamos tu ayuda para hacer Manuskript mejor!&lt;/a&gt;&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
@@ -2683,7 +2683,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="788"/>
         <source>Replace ... with â¦</source>
-        <translation>Reemplazar ... con ...</translation>
+        <translation>Reemplazar ... por â¦</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="795"/>
@@ -3996,20 +3996,20 @@ Use that if you get YAML related error.</source>
 
             &lt;p&gt;&lt;b&gt;Mark:&lt;/b&gt;&lt;/p&gt;
             </source>
-        <translation type="unfinished">
+        <translation>
             &lt;p&gt;Divide los elemento(s) seleccionado(s) en la marca indicada.&lt;/p&gt;
 
-            &lt;p&gt;Si uno de los elementos seleccionados es una carpeta, se aplicará
-            recursivamente a &lt;i&gt;todos&lt;/i&gt; sus elementos hijos.&lt;/p&gt;
+ &lt;p&gt;Si uno de los elementos seleccionados es una carpeta, se aplicará
+ recursivamente a &lt;i&gt;todos&lt;/i&gt; sus elementos hijos.&lt;/p&gt;
 
-            &lt;p&gt;La marca de división puede contener las siguientes secuencias de escape:
-                &lt;ul&gt;
-                    &lt;li&gt;&lt;b&gt;&lt;code&gt;\n&lt;/code&gt;&lt;/b&gt;: salto de línea&lt;/li&gt;
-                    &lt;li&gt;&lt;b&gt;&lt;code&gt;\t&lt;/code&gt;&lt;/b&gt;: tabulador&lt;/li&gt;
-                &lt;/ul&gt;
-            &lt;/p&gt;
+ &lt;p&gt;La marca de división puede contener las siguientes secuencias de escape:
+ &lt;ul&gt;
+ &lt;li&gt;&lt;b&gt;&lt;code&gt;\n&lt;/code&gt;&lt;/b&gt;: salto de línea&lt;/li&gt;
+ &lt;li&gt;&lt;b&gt;&lt;code&gt;\t&lt;/code&gt;&lt;/b&gt;: tabulador&lt;/li&gt;
+ &lt;/ul&gt;
+ &lt;/p&gt;
 
-            &lt;p&gt;&lt;b&gt;Marca:&lt;/b&gt;&lt;/p&gt;
+ &lt;p&gt;&lt;b&gt;Marca:&lt;/b&gt;&lt;/p&gt;
             </translation>
     </message>
     <message>
