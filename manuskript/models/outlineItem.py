@@ -80,6 +80,9 @@ class outlineItem(abstractItem):
     def wordCount(self):
         return self._data.get(self.enum.wordCount, 0)
 
+    def charCount(self):
+        return self._data.get(self.enum.charCount, 0)
+
     def __str__(self):
         return "{id}: {folder}{title}{children}".format(
             id=self.ID(),
@@ -89,6 +92,9 @@ class outlineItem(abstractItem):
             )
 
     __repr__ = __str__
+    
+    def charCount(self):
+        return self._data.get(self.enum.charCount, 0)
 
     #######################################################################
     # Data
@@ -119,7 +125,7 @@ class outlineItem(abstractItem):
 
         elif role == Qt.FontRole:
             f = QFont()
-            if column == E.wordCount and self.isFolder():
+            if (column == E.wordCount or column == E.charCount) and self.isFolder():
                 f.setItalic(True)
             elif column == E.goal and self.isFolder() and not self.data(E.setGoal):
                 f.setItalic(True)
@@ -140,7 +146,7 @@ class outlineItem(abstractItem):
 
         # Checking if we will have to recount words
         updateWordCount = False
-        if column in [E.wordCount, E.goal, E.setGoal]:
+        if column in [E.wordCount, E.charCount, E.goal, E.setGoal]:
             updateWordCount = not column in self._data or self._data[column] != data
 
         # Stuff to do before
@@ -153,7 +159,9 @@ class outlineItem(abstractItem):
         # Stuff to do afterwards
         if column == E.text:
             wc = F.wordCount(data)
+            cc = F.charCount(data, settings.countSpaces)
             self.setData(E.wordCount, wc)
+            self.setData(E.charCount, cc)
 
         if column == E.compile:
             # Title changes when compile changes
@@ -195,9 +203,12 @@ class outlineItem(abstractItem):
 
         else:
             wc = 0
+            cc = 0
             for c in self.children():
                 wc += F.toInt(c.data(self.enum.wordCount))
+                cc += F.toInt(c.data(self.enum.charCount))
             self._data[self.enum.wordCount] = wc
+            self._data[self.enum.charCount] = cc
 
             setGoal = F.toInt(self.data(self.enum.setGoal))
             goal = F.toInt(self.data(self.enum.goal))
@@ -218,7 +229,8 @@ class outlineItem(abstractItem):
                 self.setData(self.enum.goalPercentage, "")
 
         self.emitDataChanged([self.enum.goal, self.enum.setGoal,
-                              self.enum.wordCount, self.enum.goalPercentage])
+                              self.enum.wordCount, self.enum.charCount,
+                              self.enum.goalPercentage])
 
         if self.parent():
             self.parent().updateWordCount()
@@ -467,6 +479,7 @@ class outlineItem(abstractItem):
 
     # We don't want to write some datas (computed)
     XMLExclude = [enums.Outline.wordCount,
+                  enums.Outline.charCount,
                   enums.Outline.goal,
                   enums.Outline.goalPercentage,
                   enums.Outline.revisions]

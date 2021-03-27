@@ -55,7 +55,7 @@ def test_general(MWSampleProject):
         state = settings()
         assert chk.isChecked() == state
         chk.setChecked(not state)
-        assert chk.isChecked() is not state
+        assert chk.isChecked() != state
 
     # Loading and Saving
     SW.txtAutoSave.setText("0")
@@ -86,7 +86,7 @@ def test_general(MWSampleProject):
     SW.chkOutlineTitle.setChecked(Qt.Unchecked)
     SW.chkOutlineTitle.setChecked(Qt.Checked)
     # Can't test because of the dialog
-    # assert SW.setCorkColor() is None
+    # assert SW.setCorkColor() == None
     SW.sldTreeIconSize.setValue(SW.sldTreeIconSize.value() + 1)
     SW.rdoCorkNewStyle.toggled.emit(True)
     SW.cmbCorkImage.currentIndexChanged.emit(0)
@@ -98,7 +98,7 @@ def test_general(MWSampleProject):
     # Test editor
     switchCheckBoxAndAssert(SW.chkEditorBackgroundTransparent,
                             lambda: S.textEditor["backgroundTransparent"])
-    assert SW.restoreEditorColors() is None
+    assert SW.restoreEditorColors() == None
     switchCheckBoxAndAssert(SW.chkEditorNoBlinking,
                             lambda: S.textEditor["cursorNotBlinking"])
     # Twice on purpose: set and restore
@@ -108,7 +108,7 @@ def test_general(MWSampleProject):
     SW.updateAllWidgets()
 
     # Labels
-    assert SW.updateLabelColor(MW.mdlLabels.item(1).index()) is None
+    assert SW.updateLabelColor(MW.mdlLabels.item(1).index()) == None
     rc = MW.mdlLabels.rowCount()
     SW.addLabel()
     SW.lstLabels.setCurrentIndex(
@@ -150,7 +150,7 @@ def test_general(MWSampleProject):
     for i in range(4):
         SW.updateLineSpacing(i)
         SW.updateUIFromTheme() # No time to wait on timer
-    assert SW._editingTheme is not None
+    assert SW._editingTheme != None
     SW.resize(SW.geometry().size()) # resizeEvent
     #TODO: other edit test (see SW.loadTheme
     SW.saveTheme()

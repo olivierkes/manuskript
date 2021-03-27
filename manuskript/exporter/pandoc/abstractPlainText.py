@@ -75,7 +75,7 @@ class pandocSetting:
         """Return whether the specific setting is active with the given format."""
 
         # Empty formats means all
-        if self.formats is "":
+        if self.formats == "":
             return True
 
         # "html" in "html markdown latex"

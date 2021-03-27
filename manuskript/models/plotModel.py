@@ -73,7 +73,7 @@ class plotModel(QStandardItemModel):
             if i == row:
                 importance = self.item(i, Plot.importance).text()
                 return importance
-        return "0" # Default to "Minor"
+        return "0"  # Default to "Minor"
 
     def getSubPlotTextsByID(self, plotID, subplotRaw):
         """Returns a tuple (name, summary) for the subplot whose raw in the model
@@ -102,12 +102,15 @@ class plotModel(QStandardItemModel):
     # ADDING / REMOVING
     ###############################################################################
 
-    def addPlot(self):
-        p = QStandardItem(self.tr("New plot"))
+    def addPlot(self, name="New plot"):
+        if not name:
+            name="New Plot"
+        p = QStandardItem(self.tr(name))
         _id = QStandardItem(self.getUniqueID())
         importance = QStandardItem(str(0))
         self.appendRow([p, _id, importance, QStandardItem("Characters"),
                         QStandardItem(), QStandardItem(), QStandardItem("Resolution steps")])
+        return p, _id
 
     def getUniqueID(self, parent=QModelIndex()):
         """Returns an unused ID"""
@@ -147,8 +150,8 @@ class plotModel(QStandardItemModel):
 
     def data(self, index, role=Qt.DisplayRole):
         if index.parent().isValid() and \
-                        index.parent().column() == Plot.steps and \
-                        index.column() == PlotStep.meta:
+                index.parent().column() == Plot.steps and \
+                index.column() == PlotStep.meta:
             if role == Qt.TextAlignmentRole:
                 return Qt.AlignRight | Qt.AlignVCenter
             elif role == Qt.ForegroundRole:
@@ -186,7 +189,8 @@ class plotModel(QStandardItemModel):
             # Don't know why, if summary is in third position, then drag/drop deletes it...
             parentItem.appendRow([p, _id, QStandardItem(), summary])
             # Select last index
-            self.mw.lstSubPlots.setCurrentIndex(parent.child(self.rowCount(parent) - 1, 0))
+            self.mw.lstSubPlots.setCurrentIndex(
+                parent.child(self.rowCount(parent) - 1, 0))
 
     def removeSubPlot(self):
         """

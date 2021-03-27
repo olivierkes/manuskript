@@ -47,7 +47,7 @@ class mindMapImporter(abstractImporter):
         node = root.find("node")
         items = []
 
-        if node is not None:
+        if node != None:
             items.extend(self.parseItems(node, parentItem))
             ret = True
 
@@ -97,7 +97,7 @@ class mindMapImporter(abstractImporter):
         # Rich text content
         content = ""
         content = underElement.find("richcontent")
-        if content is not None:
+        if content != None:
             # In Freemind, can be note or node
             # Note: it's a note
             # Node: it's the title of the node, in rich text
@@ -130,7 +130,7 @@ class mindMapImporter(abstractImporter):
         children = underElement.findall('node')
 
         # Process children
-        if children is not None and len(children) > 0:
+        if children != None and len(children) > 0:
             for c in children:
                 items.extend(self.parseItems(c, item))
 

@@ -136,6 +136,9 @@ class worldModel(QStandardItemModel):
         _id = QStandardItem(self.getUniqueID())
         row = [name, _id] + [QStandardItem() for i in range(2, len(World))]
         parent.appendRow(row)
+
+        self.mw.treeWorld.setExpanded(self.selectedIndex(), True)
+        self.mw.treeWorld.setCurrentIndex(self.indexFromItem(name))
         return name
 
     def getUniqueID(self):
@@ -186,7 +189,7 @@ class worldModel(QStandardItemModel):
         for index in indexes:
             item = self.itemFromIndex(index)
             parent = item.parent()
-            if parent is None:
+            if parent == None:
                 parent = self.invisibleRootItem()
             row_indexes.append((parent, item.row()))
 

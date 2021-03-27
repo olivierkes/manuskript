@@ -69,7 +69,7 @@ class treeView(QTreeView, dndView, outlineBasics):
         return menu
 
     def expandCurrentIndex(self, index=None):
-        if index is None or type(index) == bool:
+        if index == None or type(index) == bool:
             index = self._indexesToOpen[0]  # self.currentIndex()
 
         self.expand(index)
@@ -78,7 +78,7 @@ class treeView(QTreeView, dndView, outlineBasics):
             self.expandCurrentIndex(index=idx)
 
     def collapseCurrentIndex(self, index=None):
-        if index is None or type(index) == bool:
+        if index == None or type(index) == bool:
             index = self._indexesToOpen[0]  # self.currentIndex()
 
         self.collapse(index)

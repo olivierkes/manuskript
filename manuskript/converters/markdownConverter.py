@@ -26,7 +26,7 @@ class markdownConverter(abstractConverter):
 
     @classmethod
     def isValid(self):
-        return MD is not None
+        return MD != None
 
     @classmethod
     def convert(self, markdown):

@@ -16,6 +16,7 @@ class Character(IntEnum):
     summaryPara = 8
     summaryFull = 9
     notes = 10
+    pov = 11
 
 class Plot(IntEnum):
     name = 0
@@ -60,6 +61,7 @@ class Outline(IntEnum):
     textFormat = 15
     revisions = 16
     customIcon = 17
+    charCount = 18 
 
 class Abstract(IntEnum):
     title = 0

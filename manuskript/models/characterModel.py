@@ -132,6 +132,9 @@ class characterModel(QAbstractItemModel):
     def importance(self, row):
         return self.character(row).importance()
 
+    def pov(self, row):
+        return self.character(row).pov()
+
 ###############################################################################
 # MODEL QUERIES
 ###############################################################################
@@ -143,29 +146,36 @@ class characterModel(QAbstractItemModel):
         @return: array of array of ´character´, by importance.
         """
         r = [[], [], []]
+
         for c in self.characters:
             r[2-int(c.importance())].append(c)
+
         return r
 
     def getCharacterByID(self, ID):
-        if ID is not None:
+        if ID != None:
             ID = str(ID)
             for c in self.characters:
                 if c.ID() == ID:
                     return c
+
         return None
 
 ###############################################################################
 # ADDING / REMOVING
 ###############################################################################
 
-    def addCharacter(self):
+    def addCharacter(self, importance = 0, name="New character"):
         """
         Creates a new character
+        @param importance: the importance level of the character
         @return: the character
         """
-        c = Character(model=self, name=self.tr("New character"))
-        self.beginInsertRows(QModelIndex(), len(self.characters), len(self.characters))
+        if not name:
+            name="New Character"
+        c = Character(model=self, name=self.tr(name), importance = importance)
+        self.beginInsertRows(QModelIndex(), len(
+            self.characters), len(self.characters))
         self.characters.append(c)
         self.endInsertRows()
         return c
@@ -177,7 +187,8 @@ class characterModel(QAbstractItemModel):
         @return: nothing
         """
         c = self.getCharacterByID(ID)
-        self.beginRemoveRows(QModelIndex(), self.characters.index(c), self.characters.index(c))
+        self.beginRemoveRows(QModelIndex(), self.characters.index(
+            c), self.characters.index(c))
         self.characters.remove(c)
         self.endRemoveRows()
 
@@ -197,7 +208,8 @@ class characterModel(QAbstractItemModel):
     def addCharacterInfo(self, ID):
         c = self.getCharacterByID(ID)
         self.beginInsertRows(c.index(), len(c.infos), len(c.infos))
-        c.infos.append(CharacterInfo(c, description="Description", value="Value"))
+        c.infos.append(CharacterInfo(
+            c, description="Description", value="Value"))
         self.endInsertRows()
 
         mainWindow().updatePersoInfoView()
@@ -221,8 +233,9 @@ class characterModel(QAbstractItemModel):
 # CHARACTER
 ###############################################################################
 
+
 class Character():
-    def __init__(self, model, name="No name"):
+    def __init__(self, model, name="No name", importance = 0):
         self._model = model
         self.lastPath = ""
 
@@ -230,12 +243,16 @@ class Character():
         self._data[C.name.value] = name
         self.assignUniqueID()
         self.assignRandomColor()
-        self._data[C.importance.value] = "0"
+        self._data[C.importance.value] = str(importance)
+        self._data[C.pov.value] = "True"
 
         self.infos = []
 
     def name(self):
         return self._data[C.name.value]
+
+    def setName(self, value):
+        self._data[C.name.value] = value
 
     def importance(self):
         return self._data[C.importance.value]
@@ -274,6 +291,22 @@ class Character():
         """
         return iconColor(self.icon)
 
+    def setPOVEnabled(self, enabled):
+        if enabled != self.pov():
+            if enabled:
+                self._data[C.pov.value] = 'True'
+            else:
+                self._data[C.pov.value] = 'False'
+
+            try:
+                self._model.dataChanged.emit(self.index(), self.index())
+            except:
+                # If it is the initialisation, won't be able to emit
+                pass
+
+    def pov(self):
+        return self._data[C.pov.value] == 'True'
+
     def assignUniqueID(self, parent=QModelIndex()):
         """Assigns an unused character ID."""
         vals = []
@@ -291,6 +324,7 @@ class Character():
         for i in self.infos:
             r.append((i.description, i.value))
         return r
+
 
 class CharacterInfo():
     def __init__(self, character, description="", value=""):

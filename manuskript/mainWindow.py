@@ -275,7 +275,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.mainEditor
             ]
 
-        while new is not None:
+        while new != None:
             if new in targets:
                 self._lastFocus = new
                 break
@@ -351,6 +351,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Slider importance
         self.updateCharacterImportance(c.ID())
 
+        # POV state
+        self.updateCharacterPOVState(c.ID())
+
         # Character Infos
         self.tblPersoInfos.setRootIndex(index)
 
@@ -370,6 +373,22 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def updateCharacterImportance(self, ID):
         c = self.mdlCharacter.getCharacterByID(ID)
         self.sldPersoImportance.setValue(int(c.importance()))
+
+    def updateCharacterPOVState(self, ID):
+        c = self.mdlCharacter.getCharacterByID(ID)
+        self.disconnectAll(self.chkPersoPOV.stateChanged, self.lstCharacters.changeCharacterPOVState)
+
+        if c.pov():
+            self.chkPersoPOV.setCheckState(Qt.Checked)
+        else:
+            self.chkPersoPOV.setCheckState(Qt.Unchecked)
+
+        try:
+            self.chkPersoPOV.stateChanged.connect(self.lstCharacters.changeCharacterPOVState, F.AUC)
+            self.chkPersoPOV.setEnabled(len(self.mdlOutline.findItemsByPOV(ID)) == 0)
+        except TypeError:
+            #don't know what's up with this
+            pass
 
     ###############################################################################
     # PLOTS
@@ -832,7 +851,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # risk a scenario where the timer somehow triggers a new save while saving.
         self.saveTimerNoChanges.stop()
 
-        if self.currentProject is None:
+        if self.currentProject == None:
             # No UI feedback here as this code path indicates a race condition that happens
             # after the user has already closed the project through some way. But in that
             # scenario, this code should not be reachable to begin with.
@@ -942,11 +961,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Characters
         self.lstCharacters.setCharactersModel(self.mdlCharacter)
         self.tblPersoInfos.setModel(self.mdlCharacter)
-
-        self.btnAddPerso.clicked.connect(self.mdlCharacter.addCharacter, F.AUC)
         try:
+            self.btnAddPerso.clicked.connect(self.lstCharacters.addCharacter, F.AUC)
             self.btnRmPerso.clicked.connect(self.lstCharacters.removeCharacter, F.AUC)
+
             self.btnPersoColor.clicked.connect(self.lstCharacters.choseCharacterColor, F.AUC)
+            self.chkPersoPOV.stateChanged.connect(self.lstCharacters.changeCharacterPOVState, F.AUC)
+
             self.btnPersoAddInfo.clicked.connect(self.lstCharacters.addCharacterInfo, F.AUC)
             self.btnPersoRmInfo.clicked.connect(self.lstCharacters.removeCharacterInfo, F.AUC)
         except TypeError:
@@ -1087,7 +1108,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # disconnect only removes one connection at a time.
         while True:
             try:
-                if oldHandler is not None:
+                if oldHandler != None:
                     signal.disconnect(oldHandler)
                 else:
                     signal.disconnect()
@@ -1098,9 +1119,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Break connections for UI elements that were connected in makeConnections()
 
         # Characters
-        self.disconnectAll(self.btnAddPerso.clicked, self.mdlCharacter.addCharacter)
+        self.disconnectAll(self.btnAddPerso.clicked, self.lstCharacters.addCharacter)
         self.disconnectAll(self.btnRmPerso.clicked, self.lstCharacters.removeCharacter)
+
         self.disconnectAll(self.btnPersoColor.clicked, self.lstCharacters.choseCharacterColor)
+        self.disconnectAll(self.chkPersoPOV.stateChanged, self.lstCharacters.changeCharacterPOVState)
+
         self.disconnectAll(self.btnPersoAddInfo.clicked, self.lstCharacters.addCharacterInfo)
         self.disconnectAll(self.btnPersoRmInfo.clicked, self.lstCharacters.removeCharacterInfo)
 
@@ -1364,7 +1388,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         dictionaries = Spellchecker.availableDictionaries()
 
         # Set first run dictionary
-        if settings.dict is None:
+        if settings.dict == None:
             settings.dict = Spellchecker.getDefaultDictionary()
 
         # Check if project dict is unavailable on this machine
@@ -1587,7 +1611,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             w.cmbPOV.setVisible(val)
 
         # POV in outline view
-        if val is None and Outline.POV in settings.outlineViewColumns:
+        if val == None and Outline.POV in settings.outlineViewColumns:
             settings.outlineViewColumns.remove(Outline.POV)
 
         from manuskript.ui.views.outlineView import outlineView

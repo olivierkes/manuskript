@@ -506,13 +506,15 @@ class MDEditView(textEditView):
         """
         When mouse moves, we show tooltip when appropriate.
         """
+        self.beginTooltipMoveEvent()
         textEditView.mouseMoveEvent(self, event)
+        self.endTooltipMoveEvent()
 
         onRect = [r for r in self.clickRects if r.rect.contains(event.pos())]
 
         if not onRect:
             qApp.restoreOverrideCursor()
-            QToolTip.hideText()
+            self.hideTooltip()
             return
 
         ct = onRect[0]
@@ -534,7 +536,7 @@ class MDEditView(textEditView):
 
         if tooltip:
             tooltip = self.tr("{} (CTRL+Click to open)").format(tooltip)
-            QToolTip.showText(self.mapToGlobal(event.pos()), tooltip)
+            self.showTooltip(self.mapToGlobal(event.pos()), tooltip)
 
     def mouseReleaseEvent(self, event):
         textEditView.mouseReleaseEvent(self, event)

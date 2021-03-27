@@ -23,6 +23,14 @@ def wordCount(text):
     t = [l for l in t if l]
     return len(t)
 
+def charCount(text, use_spaces = True):
+    t = text.strip()
+
+    if not use_spaces:
+        t = t.replace(" ", "")
+
+    return len(t)
+
 validate_ok = lambda *args, **kwargs: True
 def uiParse(input, default, converter, validator=validate_ok):
     """
