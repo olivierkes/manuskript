@@ -36,7 +36,7 @@ from manuskript.ui.statusLabel import statusLabel
 
 # Spellcheck support
 from manuskript.ui.views.textEditView import textEditView
-from manuskript.functions import Spellchecker
+from manuskript.functions import Spellchecker, SpellcheckNames
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     # dictChanged = pyqtSignal(str)
@@ -180,6 +180,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.makeUIConnections()
 
         # self.loadProject(os.path.join(appPath(), "test_project.zip"))
+
+        # Automated spellcheck dictionary control mechanism
+        # (Coordinates between character model and spellchecker to
+        # automatically add and remove character names from the dictionary)
+        self.namesSpellchecker = SpellcheckNames(self.refreshSpellcheck)
 
     def updateDockVisibility(self, restore=False):
         """
@@ -637,6 +642,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.saveTimerNoChanges.timeout.connect(self.saveDatas)
         self.saveTimerNoChanges.stop()
+
+        # Also set the custom names spellchecker to update when character names are changed
+        self.namesSpellchecker.onCharacterModelChanged(self.mdlCharacter)
+        self.mdlCharacter.dataChanged.connect(self.namesSpellchecker.onCharacterModelUpdated)
 
         # UI
         for i in [self.actOpen, self.menuRecents]:
@@ -1438,6 +1447,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 for w in self.findChildren(textEditView, QRegExp(".*"),
                                            Qt.FindChildrenRecursively):
                     w.setDict(settings.dict)
+                
+                # Trigger the special names custom dictionary to update
+                self.namesSpellchecker.onDictionaryChanged(Spellchecker.getDictionary(settings.dict))
 
     def openSpellcheckWebPage(self, lib):
         F.openURL(Spellchecker.getLibraryURL(lib))
@@ -1449,6 +1461,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         for w in self.findChildren(textEditView, QRegExp(".*"),
                                    Qt.FindChildrenRecursively):
             w.toggleSpellcheck(val)
+    
+    def refreshSpellcheck(self):
+        """
+        Refresh the spellchecking in all text views (such as 
+        after a new word is added to the dictionary)
+        """
+        if settings.spellcheck:
+            self.toggleSpellcheck(settings.spellcheck)
+
 
     ###############################################################################
     # SETTINGS

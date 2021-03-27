@@ -12,6 +12,7 @@
 .project
 .pydevproject
 .settings/org.eclipse.core.resources.prefs
+.vscode
 ExportTest
 Notes.t2t
 dist
