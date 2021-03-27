@@ -1,3 +1,5 @@
+from ..enums import Character as C
+
 
 class SpellcheckNames:
     """
@@ -46,15 +48,17 @@ class SpellcheckNames:
             # No character model has been initialized yet
             return
         # Get the differences between the current and previous names
-        currentNames = set(character.name() for character in self.mdlCharacter.characters)
+        currentNames = set(name 
+            for character in self.mdlCharacter.characters
+            for name in character.name().split()) # Add given names and surname seperately
         addedNames = currentNames - self.characterNames
         removedNames = self.characterNames - currentNames
         self.characterNames = currentNames
-        if self.dictionary is not None:
-            self.dictionary.addWords(addedNames)
+        # Actually update the dictionary
+        if self.dictionary is not None and (addedNames or removedNames):
             self.dictionary.removeWords(removedNames)
-            if addedNames or removedNames:
-                self.onChangedCallback()
+            self.dictionary.addWords(addedNames)
+            self.onChangedCallback()
     
 
     def onCharacterModelUpdated(self, index):
@@ -65,7 +69,12 @@ class SpellcheckNames:
         Call this when any changes have been made to character 
         names.
         """
-        # TODO we could read the passed index and be smarter about what to update
+        if index.column() != C.name:
+            # Only update the dictionary if the name has changed, not anything 
+            # else about the character
+            return
+        # There's not really a good way to get the original value of the name,
+        # so we still just call updateAll.
         self._updateAll()
 
 

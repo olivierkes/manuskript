@@ -1443,11 +1443,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         Refresh the spellchecking in all text views (such as 
         after a new word is added to the dictionary)
         """
-        if not settings.spellcheck:
-            return
-        for w in self.findChildren(textEditView, QRegExp(".*"),
-                                   Qt.FindChildrenRecursively):
-            w.toggleSpellcheck(settings.spellcheck)
+        if settings.spellcheck:
+            self.toggleSpellcheck(settings.spellcheck)
 
 
     ###############################################################################
