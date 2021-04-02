@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#--!-- coding: utf8 --!--
+# --!-- coding: utf8 --!--
 
 
 from enum import IntEnum
@@ -17,6 +17,7 @@ class Character(IntEnum):
     summaryFull = 9
     notes = 10
     pov = 11
+    infos = 12
 
 class Plot(IntEnum):
     name = 0
@@ -67,3 +68,18 @@ class Abstract(IntEnum):
     title = 0
     ID = 1
     type = 2
+
+class FlatData(IntEnum):
+    summarySituation = 0,
+    summarySentence = 1,
+    summaryPara = 2,
+    summaryPage = 3,
+    summaryFull = 4
+
+class Model(IntEnum):
+    Character = 0
+    Plot = 1
+    PlotStep = 2
+    World = 3
+    Outline = 4
+    FlatData = 5

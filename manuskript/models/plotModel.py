@@ -8,12 +8,15 @@ from PyQt5.QtGui import QStandardItem
 from PyQt5.QtGui import QStandardItemModel
 from PyQt5.QtWidgets import QAction, QMenu
 
-from manuskript.enums import Plot
-from manuskript.enums import PlotStep
+from manuskript.enums import Plot, PlotStep, Model
 from manuskript.functions import toInt, mainWindow
+from manuskript.models.searchResultModel import searchResultModel
+from manuskript.searchLabels import PlotSearchLabels, PLOT_STEP_COLUMNS_OFFSET
+from manuskript.functions import search
+from manuskript.models.searchableModel import searchableModel
+from manuskript.models.searchableItem import searchableItem
 
-
-class plotModel(QStandardItemModel):
+class plotModel(QStandardItemModel, searchableModel):
     def __init__(self, parent):
         QStandardItemModel.__init__(self, 0, 3, parent)
         self.setHorizontalHeaderLabels([i.name for i in Plot])
@@ -266,3 +269,118 @@ class plotModel(QStandardItemModel):
 
         mpr.mapped.connect(self.addPlotPerso)
         self.mw.btnAddPlotPerso.setMenu(menu)
+
+    #######################################################################
+    # Search
+    #######################################################################
+    def searchableItems(self):
+        items = []
+
+        for i in range(self.rowCount()):
+            items.append(plotItemSearchWrapper(i, self.item, self.mw.mdlCharacter.getCharacterByID))
+
+        return items
+
+
+class plotItemSearchWrapper(searchableItem):
+    def __init__(self, rowIndex, getItem, getCharacterByID):
+        self.rowIndex = rowIndex
+        self.getItem = getItem
+        self.getCharacterByID = getCharacterByID
+        super().__init__(PlotSearchLabels)
+
+    def searchOccurrences(self, searchRegex, column):
+        results = []
+
+        plotName = self.getItem(self.rowIndex, Plot.name).text()
+        if column >= PLOT_STEP_COLUMNS_OFFSET:
+            results += self.searchInPlotSteps(self.rowIndex, plotName, column, column - PLOT_STEP_COLUMNS_OFFSET, searchRegex, False)
+        else:
+            item_name = self.getItem(self.rowIndex, Plot.name).text()
+            if column == Plot.characters:
+                charactersList = self.getItem(self.rowIndex, Plot.characters)
+
+                for i in range(charactersList.rowCount()):
+                    characterID = charactersList.child(i).text()
+
+                    character = self.getCharacterByID(characterID)
+                    if character:
+                        columnText = character.name()
+
+                        characterResults = search(searchRegex, columnText)
+                        if len(characterResults):
+                            # We will highlight the full character row in the plot characters list, so we
+                            # return the row index instead of the match start and end positions.
+                            results += [
+                                searchResultModel(Model.Plot, self.getItem(self.rowIndex, Plot.ID).text(), column,
+                                             self.translate(item_name),
+                                             self.searchPath(column),
+                                             [(i, 0)], context) for start, end, context in
+                                search(searchRegex, columnText)]
+            else:
+                results += super().searchOccurrences(searchRegex, column)
+                if column == Plot.name:
+                    results += self.searchInPlotSteps(self.rowIndex, plotName, Plot.name, PlotStep.name,
+                                                      searchRegex, False)
+                elif column == Plot.summary:
+                    results += self.searchInPlotSteps(self.rowIndex, plotName, Plot.summary, PlotStep.summary,
+                                                      searchRegex, True)
+
+        return results
+
+    def searchModel(self):
+        return Model.Plot
+
+    def searchID(self):
+        return self.getItem(self.rowIndex, Plot.ID).text()
+
+    def searchTitle(self, column):
+        return self.getItem(self.rowIndex, Plot.name).text()
+
+    def searchPath(self, column):
+        def _path(item):
+            path = []
+
+            if item.parent():
+                path += _path(item.parent())
+            path.append(item.text())
+
+            return path
+
+        return [self.translate("Plot")] + _path(self.getItem(self.rowIndex, Plot.name)) + [self.translate(self.searchColumnLabel(column))]
+
+    def searchData(self, column):
+        return self.getItem(self.rowIndex, column).text()
+
+    def plotStepPath(self, plotName, plotStepName, column):
+        return [self.translate("Plot"), plotName, plotStepName, self.translate(self.searchColumnLabel(column))]
+
+    def searchInPlotSteps(self, plotIndex, plotName, plotColumn, plotStepColumn, searchRegex, searchInsidePlotStep):
+        results = []
+
+        # Plot step info can be found in two places: the own list of plot steps (this is the case for ie. name and meta
+        # fields) and "inside" the plot step once it is selected in the list (as it's the case for the summary).
+        if searchInsidePlotStep:
+            # We are searching *inside* the plot step, so we return both the row index (for selecting the right plot
+            # step in the list), and (start, end) positions of the match inside the text field for highlighting it.
+            getSearchData = lambda rowIndex, start, end, context: ([(rowIndex, 0), (start, end)], context)
+        else:
+            # We are searching *in the plot step row*, so we only return the row index for selecting the right plot
+            # step in the list when highlighting search results.
+            getSearchData = lambda rowIndex, start, end, context: ([(rowIndex, 0)], context)
+
+        item = self.getItem(plotIndex, Plot.steps)
+        for i in range(item.rowCount()):
+            if item.child(i, PlotStep.ID):
+                plotStepName = item.child(i, PlotStep.name).text()
+                plotStepText = item.child(i, plotStepColumn).text()
+
+                # We will highlight the full plot step row in the plot steps list, so we
+                # return the row index instead of the match start and end positions.
+                results += [searchResultModel(Model.PlotStep, self.getItem(plotIndex, Plot.ID).text(), plotStepColumn,
+                                         self.translate(plotStepName),
+                                         self.plotStepPath(plotName, plotStepName, plotColumn),
+                                         *getSearchData(i, start, end, context)) for start, end, context in
+                            search(searchRegex, plotStepText)]
+
+        return results

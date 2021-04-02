@@ -3,11 +3,14 @@
 from PyQt5.QtCore import QModelIndex, Qt, QAbstractItemModel, QVariant
 from PyQt5.QtGui import QIcon, QPixmap, QColor
 
-from manuskript.functions import randomColor, iconColor, mainWindow
-from manuskript.enums import Character as C
+from manuskript.functions import randomColor, iconColor, mainWindow, search
+from manuskript.enums import Character as C, Model
+from manuskript.searchLabels import CharacterSearchLabels
 
+from manuskript.models.searchableModel import searchableModel
+from manuskript.models.searchableItem import searchableItem
 
-class characterModel(QAbstractItemModel):
+class characterModel(QAbstractItemModel, searchableModel):
 
     def __init__(self, parent):
         QAbstractItemModel.__init__(self, parent)
@@ -229,12 +232,14 @@ class characterModel(QAbstractItemModel):
             c.infos.pop(r)
             self.endRemoveRows()
 
+    def searchableItems(self):
+        return self.characters
+
 ###############################################################################
 # CHARACTER
 ###############################################################################
 
-
-class Character():
+class Character(searchableItem):
     def __init__(self, model, name="No name", importance = 0):
         self._model = model
         self.lastPath = ""
@@ -247,6 +252,8 @@ class Character():
         self._data[C.pov.value] = "True"
 
         self.infos = []
+
+        super().__init__(CharacterSearchLabels)
 
     def name(self):
         return self._data[C.name.value]
@@ -262,6 +269,12 @@ class Character():
 
     def index(self, column=0):
         return self._model.indexFromItem(self, column)
+
+    def data(self, column):
+        if column == "Info":
+            return self.infos
+        else:
+            return self._data.get(column, None)
 
     def assignRandomColor(self):
         """
@@ -324,6 +337,41 @@ class Character():
         for i in self.infos:
             r.append((i.description, i.value))
         return r
+
+    def searchTitle(self, column):
+        return self.name()
+
+    def searchOccurrences(self, searchRegex, column):
+        results = []
+
+        data = self.searchData(column)
+        if isinstance(data, list):
+            for i in range(0, len(data)):
+                # For detailed info we will highlight the full row, so we pass the row index
+                # to the highlighter instead of the (startPos, endPos) of the match itself.
+                results += [self.wrapSearchOccurrence(column, i, 0, context) for
+                            (startPos, endPos, context) in search(searchRegex, data[i].description)]
+                results += [self.wrapSearchOccurrence(column, i, 0, context) for
+                            (startPos, endPos, context) in search(searchRegex, data[i].value)]
+        else:
+            results += super().searchOccurrences(searchRegex, column)
+
+        return results
+
+    def searchID(self):
+        return self.ID()
+
+    def searchPath(self, column):
+        return [self.translate("Characters"), self.name(), self.translate(self.searchColumnLabel(column))]
+
+    def searchData(self, column):
+        if column == C.infos:
+            return self.infos
+        else:
+            return self.data(column)
+
+    def searchModel(self):
+        return Model.Character
 
 
 class CharacterInfo():

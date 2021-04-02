@@ -8,10 +8,13 @@ from PyQt5.QtGui import QFont, QIcon
 from PyQt5.QtWidgets import qApp
 from lxml import etree as ET
 from manuskript.models.abstractItem import abstractItem
+from manuskript.models.searchableItem import searchableItem
 from manuskript import enums
 from manuskript import functions as F
 from manuskript import settings
 from manuskript.converters import HTML2PlainText
+from manuskript.searchLabels import OutlineSearchLabels
+from manuskript.enums import Outline, Model
 
 try:
     locale.setlocale(locale.LC_ALL, '')
@@ -21,7 +24,7 @@ except:
     pass
 
 
-class outlineItem(abstractItem):
+class outlineItem(abstractItem, searchableItem):
 
     enum = enums.Outline
 
@@ -30,6 +33,7 @@ class outlineItem(abstractItem):
 
     def __init__(self, model=None, title="", _type="folder", xml=None, parent=None, ID=None):
         abstractItem.__init__(self, model, title, _type, xml, parent, ID)
+        searchableItem.__init__(self, OutlineSearchLabels)
 
         self.defaultTextType = None
         if not self._data.get(self.enum.compile):
@@ -355,8 +359,7 @@ class outlineItem(abstractItem):
 
         return lst
 
-    def findItemsContaining(self, text, columns, mainWindow=F.mainWindow(),
-                            caseSensitive=False, recursive=True):
+    def findItemsContaining(self, text, columns, mainWindow=F.mainWindow(), caseSensitive=False, recursive=True):
         """Returns a list if IDs of all subitems
         containing ``text`` in columns ``columns``
         (being a list of int).
@@ -369,16 +372,14 @@ class outlineItem(abstractItem):
 
         return lst
 
-    def itemContains(self, text, columns, mainWindow=F.mainWindow(),
-                     caseSensitive=False):
+    def itemContains(self, text, columns, mainWindow=F.mainWindow(), caseSensitive=False):
         lst = []
         text = text.lower() if not caseSensitive else text
         for c in columns:
-
             if c == self.enum.POV and self.POV():
-                c = mainWindow.mdlCharacter.getCharacterByID(self.POV())
-                if c:
-                    searchIn = c.name()
+                character = mainWindow.mdlCharacter.getCharacterByID(self.POV())
+                if character:
+                    searchIn = character.name()
                 else:
                     searchIn = ""
                     print("Character POV not found:", self.POV())
@@ -393,7 +394,6 @@ class outlineItem(abstractItem):
                 searchIn = self.data(c)
 
             searchIn = searchIn.lower() if not caseSensitive else searchIn
-
             if text in searchIn:
                 if not self.ID() in lst:
                     lst.append(self.ID())
@@ -515,3 +515,39 @@ class outlineItem(abstractItem):
         for child in root:
             if child.tag == "revision":
                 self.appendRevision(child.attrib["timestamp"], child.attrib["text"])
+
+    #######################################################################
+    # Search
+    #######################################################################
+    def searchModel(self):
+        return Model.Outline
+
+    def searchID(self):
+        return self.data(Outline.ID)
+
+    def searchTitle(self, column):
+        return self.title()
+
+    def searchPath(self, column):
+        return [self.translate("Outline")] + self.path().split(' > ') + [self.translate(self.searchColumnLabel(column))]
+
+    def searchData(self, column):
+        mainWindow = F.mainWindow()
+
+        searchData = None
+
+        if column == self.enum.POV and self.POV():
+            character = mainWindow.mdlCharacter.getCharacterByID(self.POV())
+            if character:
+                searchData = character.name()
+
+        elif column == self.enum.status:
+            searchData = mainWindow.mdlStatus.item(F.toInt(self.status()), 0).text()
+
+        elif column == self.enum.label:
+            searchData = mainWindow.mdlLabels.item(F.toInt(self.label()), 0).text()
+
+        else:
+            searchData = self.data(column)
+
+        return searchData

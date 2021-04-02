@@ -19,12 +19,12 @@ class Ui_search(object):
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setSpacing(0)
         self.horizontalLayout.setObjectName("horizontalLayout")
-        self.text = QtWidgets.QLineEdit(search)
-        self.text.setInputMask("")
-        self.text.setFrame(False)
-        self.text.setClearButtonEnabled(True)
-        self.text.setObjectName("text")
-        self.horizontalLayout.addWidget(self.text)
+        self.searchTextInput = QtWidgets.QLineEdit(search)
+        self.searchTextInput.setInputMask("")
+        self.searchTextInput.setFrame(False)
+        self.searchTextInput.setClearButtonEnabled(True)
+        self.searchTextInput.setObjectName("searchTextInput")
+        self.horizontalLayout.addWidget(self.searchTextInput)
         self.btnOptions = QtWidgets.QPushButton(search)
         self.btnOptions.setText("")
         icon = QtGui.QIcon.fromTheme("edit-find")
@@ -45,5 +45,5 @@ class Ui_search(object):
     def retranslateUi(self, search):
         _translate = QtCore.QCoreApplication.translate
         search.setWindowTitle(_translate("search", "Form"))
-        self.text.setPlaceholderText(_translate("search", "Search for..."))
+        self.searchTextInput.setPlaceholderText(_translate("search", "Search for..."))
 

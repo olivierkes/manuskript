@@ -2203,6 +2203,7 @@
     <addaction name="actCopy"/>
     <addaction name="actPaste"/>
     <addaction name="actDelete"/>
+    <addaction name="actSearch"/>
     <addaction name="actRename"/>
     <addaction name="separator"/>
     <addaction name="mnuFormat"/>
@@ -2836,6 +2837,17 @@
   <action name="actFormatBlockquote">
    <property name="text">
     <string>B&amp;lockquote</string>
+   </property>
+  </action>
+  <action name="actSearch">
+   <property name="icon">
+    <iconset theme="edit-find"/>
+   </property>
+   <property name="text">
+    <string>Search</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+F</string>
    </property>
   </action>
  </widget>

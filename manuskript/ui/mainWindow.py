@@ -1282,6 +1282,10 @@ class Ui_MainWindow(object):
         self.actFormatList.setObjectName("actFormatList")
         self.actFormatBlockquote = QtWidgets.QAction(MainWindow)
         self.actFormatBlockquote.setObjectName("actFormatBlockquote")
+        self.actSearch = QtWidgets.QAction(MainWindow)
+        icon = QtGui.QIcon.fromTheme("edit-find")
+        self.actSearch.setIcon(icon)
+        self.actSearch.setObjectName("actSearch")
         self.menuFile.addAction(self.actOpen)
         self.menuFile.addAction(self.menuRecents.menuAction())
         self.menuFile.addAction(self.actSave)
@@ -1325,6 +1329,7 @@ class Ui_MainWindow(object):
         self.menuEdit.addAction(self.actCopy)
         self.menuEdit.addAction(self.actPaste)
         self.menuEdit.addAction(self.actDelete)
+        self.menuEdit.addAction(self.actSearch)
         self.menuEdit.addAction(self.actRename)
         self.menuEdit.addSeparator()
         self.menuEdit.addAction(self.mnuFormat.menuAction())
@@ -1648,6 +1653,9 @@ class Ui_MainWindow(object):
         self.actFormatOrderedList.setText(_translate("MainWindow", "&Ordered list"))
         self.actFormatList.setText(_translate("MainWindow", "&Unordered list"))
         self.actFormatBlockquote.setText(_translate("MainWindow", "B&lockquote"))
+        self.actSearch.setText(_translate("MainWindow", "Search"))
+        self.actSearch.setShortcut(_translate("MainWindow", "Ctrl+F"))
+
 from manuskript.ui.cheatSheet import cheatSheet
 from manuskript.ui.editors.mainEditor import mainEditor
 from manuskript.ui.search import search
