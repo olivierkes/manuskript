@@ -537,7 +537,7 @@ Use se receber um erro YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="277"/>
         <source>Email</source>
-        <translation>E-mail</translation>
+        <translation>Email</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1422"/>
