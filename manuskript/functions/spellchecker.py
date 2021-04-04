@@ -28,8 +28,14 @@ except ImportError:
     symspellpy = None
 
 
+use_language_check = False
+
 try:
-    import language_check as languagetool
+    try:
+        import language_tool_python as languagetool
+    except:
+        import language_check as languagetool
+        use_language_check = True
 except:
     languagetool = None
 
@@ -471,6 +477,24 @@ class SymSpellDictionary(BasicDictionary):
         # Since 6.3.8
         self._dict.delete_dictionary_entry(word)
 
+def get_languagetool_match_errorLength(match):
+    if use_language_check:
+        return match.errorlength
+    else:
+        return match.errorLength
+
+def get_languagetool_match_ruleIssueType(match):
+    if use_language_check:
+        return match.locqualityissuetype
+    else:
+        return match.ruleIssueType
+
+def get_languagetool_match_message(match):
+    if use_language_check:
+        return match.msg
+    else:
+        return match.message
+
 class LanguageToolCache:
 
     def __init__(self, tool, text):
@@ -485,12 +509,12 @@ class LanguageToolCache:
 
         for match in tool.check(text):
             start = match.offset
-            end = start + match.errorlength
+            end = start + get_languagetool_match_errorLength(match)
 
             basic_match = BasicMatch(start, end)
-            basic_match.locqualityissuetype = match.locqualityissuetype
+            basic_match.locqualityissuetype = get_languagetool_match_ruleIssueType(match)
             basic_match.replacements = match.replacements
-            basic_match.msg = match.msg
+            basic_match.msg = get_languagetool_match_message(match)
 
             matches.append(basic_match)
 
@@ -500,12 +524,18 @@ class LanguageToolCache:
         if len(text) != self._length:
             self._matches = self._buildMatches(tool, text)
 
+def get_languagetool_languages():
+    if use_language_check:
+        return languagetool.get_languages()
+    else:
+        return languagetool.LanguageTool()._get_languages()
+
 class LanguageToolDictionary(BasicDictionary):
 
     def __init__(self, name):
         BasicDictionary.__init__(self, name)
 
-        if not (self._lang and self._lang in languagetool.get_languages()):
+        if not (self._lang and self._lang in get_languagetool_languages()):
             self._lang = self.getDefaultDictionary()
 
         self._tool = languagetool.LanguageTool(self._lang)
@@ -513,11 +543,14 @@ class LanguageToolDictionary(BasicDictionary):
 
     @staticmethod
     def getLibraryName():
-        return "LanguageCheck"
+        return "LanguageTool"
 
     @staticmethod
     def getLibraryURL():
-        return "https://pypi.org/project/language-check/"
+        if use_language_check:
+            return "https://pypi.org/project/language-check/"
+        else:
+            return "https://pypi.org/project/language-tool-python/"
 
     @staticmethod
     def isInstalled():
@@ -533,9 +566,10 @@ class LanguageToolDictionary(BasicDictionary):
     @staticmethod
     def availableDictionaries():
         if LanguageToolDictionary.isInstalled():
-            languages = list(languagetool.get_languages())
+            languages = list(get_languagetool_languages())
             languages.sort()
             return languages
+
         return []
 
     @staticmethod
@@ -544,7 +578,8 @@ class LanguageToolDictionary(BasicDictionary):
             return None
 
         default_locale = languagetool.get_locale_language()
-        if default_locale and not default_locale in languagetool.get_languages():
+
+        if default_locale and not default_locale in get_languagetool_languages():
             default_locale = None
 
         if default_locale == None:
