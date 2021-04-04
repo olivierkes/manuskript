@@ -27,6 +27,8 @@ class corkView(QListView, dndView, outlineBasics):
     def updateBackground(self):
         if settings.corkBackground["image"] != "":
             img = findBackground(settings.corkBackground["image"])
+            if img == None:
+                img = ""
         else:
             # No background image
             img = ""
