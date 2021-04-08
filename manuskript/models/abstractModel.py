@@ -40,12 +40,21 @@ class abstractModel(QAbstractItemModel):
     """
     def __init__(self, parent):
         QAbstractItemModel.__init__(self, parent)
-
-        self.rootItem = outlineItem(self, title="Root", ID="0")
+        self.nextAvailableID = 1
 
         # Stores removed item, in order to remove them on disk when saving, depending on the file format.
         self.removed = []
         self._removingRows = False
+
+    def requestNewID(self):
+        newID = self.nextAvailableID
+        self.nextAvailableID += 1
+        return str(newID)
+
+    # Call this if loading an ID from file rather than assigning a new one.
+    def updateAvailableIDs(self, addedID):
+        if int(addedID) >= self.nextAvailableID:
+            self.nextAvailableID = int(addedID) + 1
 
     def index(self, row, column, parent):
 
