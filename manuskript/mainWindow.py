@@ -794,6 +794,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             # Remembering the current items (stores outlineItem's ID)
             settings.openIndexes = self.mainEditor.tabSplitter.openIndexes()
 
+            # Call close on the main window to clean children widgets
+            if self.mainEditor:
+                self.mainEditor.close()
+
             # Save data from models
             if settings.saveOnQuit:
                 self.saveDatas()
