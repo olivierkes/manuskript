@@ -313,7 +313,7 @@ class outlineLabelDelegate(QStyledItemDelegate):
         idx = self.mdlLabels.indexFromItem(item)
         opt = QStyleOptionViewItem(option)
         self.initStyleOption(opt, idx)
-        s = qApp.style().sizeFromContents(QStyle.CT_ItemViewItem, opt, QSize())
+        s = qApp.style().sizeFromContents(QStyle.CT_ItemViewItem, opt, QSize(), None)
         if s.width() > 150:
             s.setWidth(150)
         elif s.width() < 50:
