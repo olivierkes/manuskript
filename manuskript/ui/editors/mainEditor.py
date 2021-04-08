@@ -5,7 +5,7 @@ import locale
 from PyQt5.QtCore import QModelIndex, QRect, QPoint
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QPixmap, QPainter, QIcon
-from PyQt5.QtWidgets import QWidget, qApp
+from PyQt5.QtWidgets import QWidget, qApp, QDesktopWidget
 
 from manuskript import settings
 from manuskript.enums import Outline
@@ -379,7 +379,10 @@ class mainEditor(QWidget, Ui_mainEditor):
 
     def showFullScreen(self):
         if self.currentEditor():
-            self._fullScreen = fullScreenEditor(self.currentEditor().currentIndex)
+            currentScreenNumber = QDesktopWidget().screenNumber(widget=self)
+            self._fullScreen = fullScreenEditor(
+                self.currentEditor().currentIndex,
+                screenNumber=currentScreenNumber)
 
     ###############################################################################
     # DICT AND STUFF LIKE THAT
