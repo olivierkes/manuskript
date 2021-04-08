@@ -40,6 +40,7 @@ characterMap = OrderedDict([
     (Character.name, "Name"),
     (Character.ID,   "ID"),
     (Character.importance, "Importance"),
+    (Character.pov, "POV"),
     (Character.motivation, "Motivation"),
     (Character.goal, "Goal"),
     (Character.conflict, "Conflict"),
@@ -47,7 +48,7 @@ characterMap = OrderedDict([
     (Character.summarySentence, "Phrase Summary"),
     (Character.summaryPara, "Paragraph Summary"),
     (Character.summaryFull, "Full Summary"),
-    (Character.notes, "Notes"),
+    (Character.notes, "Notes")
 ])
 
 # If true, logs infos while saving and loading.
@@ -106,7 +107,7 @@ def saveProject(zip=None):
     settings.
     @return: True if successful, False otherwise.
     """
-    if zip is None:
+    if zip == None:
         zip = settings.saveToZip
 
     log("\n\nSaving to:", "zip" if zip else "folder")
@@ -123,7 +124,7 @@ def saveProject(zip=None):
     project = mw.currentProject
 
     # Sanity check (see PR-583): make sure we actually have a current project.
-    if project is None:
+    if project == None:
         print("Error: cannot save project because there is no current project in the UI.")
         return False
 
@@ -197,7 +198,7 @@ def saveProject(zip=None):
         # We skip the first row, which is empty and transparent
         for i in range(1, mdl.rowCount()):
             color = ""
-            if mdl.data(mdl.index(i, 0), Qt.DecorationRole) is not None:
+            if mdl.data(mdl.index(i, 0), Qt.DecorationRole) != None:
                 color = iconColor(mdl.data(mdl.index(i, 0), Qt.DecorationRole)).name(QColor.HexRgb)
                 color = color if color != "#ff000000" else "#00000000"
 
@@ -900,7 +901,7 @@ def addTextItems(mdl, odict, parent=None):
     @param odict: OrderedDict
     @return: nothing
     """
-    if parent is None:
+    if parent == None:
         parent = mdl.rootItem
 
     for k in odict:

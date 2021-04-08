@@ -6,7 +6,7 @@ from PyQt5.QtCore import Qt, QSize, QPoint, QRect, QEvent, QTime, QTimer
 from PyQt5.QtGui import QFontMetrics, QColor, QBrush, QPalette, QPainter, QPixmap, QCursor
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QFrame, QWidget, QPushButton, qApp, QStyle, QComboBox, QLabel, QScrollBar, \
-    QStyleOptionSlider, QHBoxLayout, QVBoxLayout, QMenu, QAction
+    QStyleOptionSlider, QHBoxLayout, QVBoxLayout, QMenu, QAction, QDesktopWidget
 
 # Spell checker support
 from manuskript import settings
@@ -21,7 +21,7 @@ from manuskript.functions import Spellchecker
 
 
 class fullScreenEditor(QWidget):
-    def __init__(self, index, parent=None):
+    def __init__(self, index, parent=None, screenNumber=None):
         QWidget.__init__(self, parent)
         self.setAttribute(Qt.WA_DeleteOnClose, True)
         self._background = None
@@ -161,6 +161,12 @@ class fullScreenEditor(QWidget):
         self.bottomPanel.setAutoHideVariable('autohide-bottom')
         self.topPanel.setAutoHideVariable('autohide-top')
         self.leftPanel.setAutoHideVariable('autohide-left')
+
+        # Set the screen to the same screen as the main window
+        if screenNumber is not None:
+            screenres = QDesktopWidget().screenGeometry(screenNumber);
+            self.move(QPoint(screenres.x(), screenres.y()));
+            self.resize(screenres.width(), screenres.height());
 
         # Connection
         self._index.model().dataChanged.connect(self.dataChanged)
@@ -338,8 +344,8 @@ class fullScreenEditor(QWidget):
         item = self._index.internalPointer()
         previousItem = self.previousTextItem(item)
         nextItem = self.nextTextItem(item)
-        self.btnPrevious.setEnabled(previousItem is not None)
-        self.btnNext.setEnabled(nextItem is not None)
+        self.btnPrevious.setEnabled(previousItem != None)
+        self.btnNext.setEnabled(nextItem != None)
         self.wPath.setItem(item)
 
     def updateStatusBar(self):
@@ -572,11 +578,11 @@ class myPanel(QWidget):
     def addWidgetSetting(self, label, config_name, widgets):
         setting = (label, config_name, widgets)
         self._settings.append(setting)
-        if settings.fullscreenSettings.get(config_name, None) is not None:
+        if settings.fullscreenSettings.get(config_name, None) != None:
             self._setSettingValue(setting, settings.fullscreenSettings[config_name])
 
     def addSetting(self, label, config_name, default=True):
-        if settings.fullscreenSettings.get(config_name, None) is None:
+        if settings.fullscreenSettings.get(config_name, None) == None:
             self._setConfig(config_name, default)
         self.addWidgetSetting(label, config_name, None)
 
@@ -651,7 +657,7 @@ class myPath(QWidget):
             if i == item:
                 a.setIcon(QIcon.fromTheme("stock_yes"))
                 a.setEnabled(False)
-            elif self.editor.firstTextItem(i) is None:
+            elif self.editor.firstTextItem(i) == None:
                 a.setEnabled(False)
             else:
                 a.triggered.connect(gen_cb(i))

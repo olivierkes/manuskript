@@ -51,10 +51,10 @@ class plainText(basicFormat):
 
     def getExportFilename(self, settingsWidget, varName=None, filter=None):
 
-        if varName is None:
+        if varName == None:
             varName = self.exportVarName
 
-        if filter is None:
+        if filter == None:
             filter = self.exportFilter
 
         settings = settingsWidget.getSettings()

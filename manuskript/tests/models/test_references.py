@@ -39,7 +39,7 @@ def test_references(MWSampleProject):
     assert "\n" in Ref.infos(Ref.plotReference(plotID))
     assert "Not a ref" in Ref.infos("<invalid>")
     assert "Unknown" in Ref.infos(Ref.plotReference("999"))
-    assert Ref.shortInfos(Ref.plotReference(plotID)) is not None
+    assert Ref.shortInfos(Ref.plotReference(plotID)) != None
     assert Ref.shortInfos(Ref.plotReference("999")) == None
     assert Ref.shortInfos("<invalidref>") == -1
 
@@ -50,7 +50,7 @@ def test_references(MWSampleProject):
     charID = IDs[0]
     assert "\n" in Ref.infos(Ref.characterReference(charID))
     assert "Unknown" in Ref.infos(Ref.characterReference("999"))
-    assert Ref.shortInfos(Ref.characterReference(charID)) is not None
+    assert Ref.shortInfos(Ref.characterReference(charID)) != None
     assert Ref.shortInfos(Ref.characterReference("999")) == None
     assert Ref.shortInfos("<invalidref>") == -1
 
@@ -62,7 +62,7 @@ def test_references(MWSampleProject):
 
     assert "\n" in Ref.infos(Ref.textReference(textID))
     assert "Unknown" in Ref.infos(Ref.textReference("999"))
-    assert Ref.shortInfos(Ref.textReference(textID)) is not None
+    assert Ref.shortInfos(Ref.textReference(textID)) != None
     assert Ref.shortInfos(Ref.textReference("999")) == None
     assert Ref.shortInfos("<invalidref>") == -1
 
@@ -73,7 +73,7 @@ def test_references(MWSampleProject):
 
     assert "\n" in Ref.infos(Ref.worldReference(worldID))
     assert "Unknown" in Ref.infos(Ref.worldReference("999"))
-    assert Ref.shortInfos(Ref.worldReference(worldID)) is not None
+    assert Ref.shortInfos(Ref.worldReference(worldID)) != None
     assert Ref.shortInfos(Ref.worldReference("999")) == None
     assert Ref.shortInfos("<invalidref>") == -1
 
@@ -84,9 +84,9 @@ def test_references(MWSampleProject):
 
     # Titles
     for ref in refs:
-        assert Ref.title(ref) is not None
-    assert Ref.title("<invalid>") is None
-    assert Ref.title(Ref.plotReference("999")) is None
+        assert Ref.title(ref) != None
+    assert Ref.title("<invalid>") == None
+    assert Ref.title(Ref.plotReference("999")) == None
 
     # Other stuff
     assert Ref.type(Ref.plotReference(plotID)) == Ref.PlotLetter
@@ -94,10 +94,10 @@ def test_references(MWSampleProject):
     assert "Unknown" in Ref.tooltip(Ref.worldReference("999"))
     assert "Not a ref" in Ref.tooltip("<invalid>")
     for ref in refs:
-        assert Ref.tooltip(ref) is not None
+        assert Ref.tooltip(ref) != None
 
     # Links
-    assert Ref.refToLink("<invalid>") is None
+    assert Ref.refToLink("<invalid>") == None
     assert Ref.refToLink(Ref.plotReference("999")) == Ref.plotReference("999")
     assert Ref.refToLink(Ref.characterReference("999")) == Ref.characterReference("999")
     assert Ref.refToLink(Ref.textReference("999")) == Ref.textReference("999")
@@ -106,7 +106,7 @@ def test_references(MWSampleProject):
         assert "<a href" in Ref.refToLink(ref)
 
     # Open
-    assert Ref.open("<invalid>") is None
+    assert Ref.open("<invalid>") == None
     assert Ref.open(Ref.plotReference("999")) == False
     assert Ref.open(Ref.characterReference("999")) == False
     assert Ref.open(Ref.textReference("999")) == False

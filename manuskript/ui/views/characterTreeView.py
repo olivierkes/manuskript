@@ -29,6 +29,8 @@ class characterTreeView(QTreeWidget):
         self._rootItem = QTreeWidgetItem()
         self.insertTopLevelItem(0, self._rootItem)
 
+        self.importanceMap = {self.tr("Main"):2, self.tr("Secondary"):1, self.tr("Minor"):0}
+
     def setCharactersModel(self, model):
         self._model = model
         self._model.dataChanged.connect(self.updateMaybe)
@@ -64,7 +66,7 @@ class characterTreeView(QTreeWidget):
             for child in range(item.childCount()):
                 sub = item.child(child)
                 ID = sub.data(0, Qt.UserRole)
-                if ID is not None:
+                if ID != None:
                     # Update name
                     c = self._model.getCharacterByID(ID)
                     name = c.name()
@@ -86,11 +88,9 @@ class characterTreeView(QTreeWidget):
         self.clear()
         characters = self._model.getCharactersByImportance()
 
-        h = [self.tr("Main"), self.tr("Secondary"), self.tr("Minor")]
-
-        for i in range(3):
+        for i, importanceLevel in enumerate(self.importanceMap):
             # Create category item
-            cat = QTreeWidgetItem(self, [h[i]])
+            cat = QTreeWidgetItem(self, [importanceLevel])
             cat.setBackground(0, QBrush(QColor(S.highlightLight)))
             cat.setForeground(0, QBrush(QColor(S.highlightedTextDark)))
             cat.setTextAlignment(0, Qt.AlignCenter)
@@ -119,6 +119,24 @@ class characterTreeView(QTreeWidget):
         self.expandAll()
         self._updating = False
 
+    def addCharacter(self):
+        curr_item = self.currentItem()
+        curr_importance = 0
+
+        # check if an item is selected
+        if curr_item != None:
+            if curr_item.parent() == None:
+                # this is a top-level category, so find its importance
+                # get the current text, then look up the importance level
+                text = curr_item.text(0)
+                curr_importance = self.importanceMap[text]
+            else:
+                # get the importance from the currently-highlighted character
+                curr_character = self.currentCharacter()
+                curr_importance = curr_character.importance()
+
+        self._model.addCharacter(importance=curr_importance)
+
     def removeCharacter(self):
         """
         Removes selected character.
@@ -130,22 +148,30 @@ class characterTreeView(QTreeWidget):
     def choseCharacterColor(self):
         ID = self.currentCharacterID()
         c = self._model.getCharacterByID(ID)
+
         if c:
             color = iconColor(c.icon)
         else:
             color = Qt.white
+
         self.colorDialog = QColorDialog(color, mainWindow())
         color = self.colorDialog.getColor(color)
+
         if color.isValid():
             c.setColor(color)
             mainWindow().updateCharacterColor(ID)
+
+    def changeCharacterPOVState(self, state):
+        ID = self.currentCharacterID()
+        c = self._model.getCharacterByID(ID)
+        c.setPOVEnabled(state == Qt.Checked)
+        mainWindow().updateCharacterPOVState(ID)
 
     def addCharacterInfo(self):
         self._model.addCharacterInfo(self.currentCharacterID())
 
     def removeCharacterInfo(self):
-        self._model.removeCharacterInfo(self.currentCharacterID(),
-                                        )
+        self._model.removeCharacterInfo(self.currentCharacterID())
 
     def currentCharacterID(self):
         ID = None

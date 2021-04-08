@@ -187,7 +187,7 @@ def infos(ref):
     elif _type == CharacterLetter:
         m = mainWindow().mdlCharacter
         c = m.getCharacterByID(int(_ref))
-        if c is None:
+        if c == None:
             return qApp.translate("references", "Unknown reference: {}.").format(ref)
 
         index = c.index()

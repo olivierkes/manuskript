@@ -145,8 +145,8 @@ class tabSplitter(QWidget, Ui_tabSplitter):
 
     def split(self, toggled=None, state=None):
 
-        if state is None and self.splitState == 0 or state == 1:
-            if self.secondTab is None:
+        if state == None and self.splitState == 0 or state == 1:
+            if self.secondTab == None:
                 self.addSecondTab()
 
             self.splitState = 1
@@ -155,8 +155,8 @@ class tabSplitter(QWidget, Ui_tabSplitter):
             self.btnSplit.setIcon(QIcon.fromTheme("split-vertical"))
             self.btnSplit.setToolTip(self.tr("Split horizontally"))
 
-        elif state is None and self.splitState == 1 or state == 2:
-            if self.secondTab is None:
+        elif state == None and self.splitState == 1 or state == 2:
+            if self.secondTab == None:
                 self.addSecondTab()
 
             self.splitter.setOrientation(Qt.Vertical)
@@ -212,7 +212,7 @@ class tabSplitter(QWidget, Ui_tabSplitter):
     #     self.btnSplit.setGeometry(QRect(0, 0, 24, 24))
 
     def focusChanged(self, old, new):
-        if self.secondTab is None or new is None:
+        if self.secondTab == None or new == None:
             return
 
         oldFT = self.focusTab
