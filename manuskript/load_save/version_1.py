@@ -392,14 +392,6 @@ def saveProject(zip=None):
 
         # Removing phantoms
         for path in [p for p in cache if p not in [p for p, c in files]]:
-            filename = os.path.join(dir, folder, path)
-            log("* Removing", path)
-
-            if os.path.isdir(filename):
-                shutil.rmtree(filename)
-
-            else:  # elif os.path.exists(filename)
-                os.remove(filename)
 
             # Clear cache
             cache.pop(path, 0)
@@ -664,6 +656,9 @@ def loadProject(project, zip=None):
                 if f[-4:] in [".xml", "opml"]:
                     with open(os.path.join(dirpath, f), "rb") as fo:
                         files[os.path.join(p, f)] = fo.read()
+                elif f[-4:] in [".png", "jpeg",".jpg","bmp","tiff",".gif",".pdf"]:
+                    # ignore file
+                    pass
                 else:
                     with open(os.path.join(dirpath, f), "r", encoding="utf8") as fo:
                         files[os.path.join(p, f)] = fo.read()
