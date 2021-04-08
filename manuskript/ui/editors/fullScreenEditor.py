@@ -6,7 +6,7 @@ from PyQt5.QtCore import Qt, QSize, QPoint, QRect, QEvent, QTime, QTimer
 from PyQt5.QtGui import QFontMetrics, QColor, QBrush, QPalette, QPainter, QPixmap, QCursor
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QFrame, QWidget, QPushButton, qApp, QStyle, QComboBox, QLabel, QScrollBar, \
-    QStyleOptionSlider, QHBoxLayout, QVBoxLayout, QMenu, QAction
+    QStyleOptionSlider, QHBoxLayout, QVBoxLayout, QMenu, QAction, QDesktopWidget
 
 # Spell checker support
 from manuskript import settings
@@ -21,7 +21,7 @@ from manuskript.functions import Spellchecker
 
 
 class fullScreenEditor(QWidget):
-    def __init__(self, index, parent=None):
+    def __init__(self, index, parent=None, screenNumber=None):
         QWidget.__init__(self, parent)
         self.setAttribute(Qt.WA_DeleteOnClose, True)
         self._background = None
@@ -161,6 +161,12 @@ class fullScreenEditor(QWidget):
         self.bottomPanel.setAutoHideVariable('autohide-bottom')
         self.topPanel.setAutoHideVariable('autohide-top')
         self.leftPanel.setAutoHideVariable('autohide-left')
+
+        # Set the screen to the same screen as the main window
+        if screenNumber is not None:
+            screenres = QDesktopWidget().screenGeometry(screenNumber);
+            self.move(QPoint(screenres.x(), screenres.y()));
+            self.resize(screenres.width(), screenres.height());
 
         # Connection
         self._index.model().dataChanged.connect(self.dataChanged)
