@@ -67,6 +67,7 @@ class mainEditor(QWidget, Ui_mainEditor):
         QWidget.__init__(self, parent)
         self.setupUi(self)
         self._updating = False
+        self._fullScreen = None
 
         self.mw = mainWindow()
 
@@ -156,7 +157,6 @@ class mainEditor(QWidget, Ui_mainEditor):
 
     def close(self):
         if self._fullScreen is not None:
-            LOGGER.error(self._fullScreen)
             self._fullScreen.leaveFullscreen()
 
     def allTabs(self, tabWidget=None):
