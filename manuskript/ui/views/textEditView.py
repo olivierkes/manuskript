@@ -17,6 +17,9 @@ from manuskript.functions import Spellchecker
 from manuskript.models.characterModel import Character, CharacterInfo
 
 
+import logging
+LOGGER = logging.getLogger(__name__)
+
 class textEditView(QTextEdit):
     def __init__(self, parent=None, index=None, html=None, spellcheck=None,
                  highlighting=False, dict="", autoResize=False):
@@ -58,13 +61,13 @@ class textEditView(QTextEdit):
         self.updateTimer.setInterval(500)
         self.updateTimer.setSingleShot(True)
         self.updateTimer.timeout.connect(self.submit)
-        # self.updateTimer.timeout.connect(lambda: print("Timeout"))
+        # self.updateTimer.timeout.connect(lambda: LOGGER.debug("Timeout."))
 
         self.updateTimer.stop()
         self.document().contentsChanged.connect(self.updateTimer.start, F.AUC)
-        # self.document().contentsChanged.connect(lambda: print("Document changed"))
+        # self.document().contentsChanged.connect(lambda: LOGGER.debug("Document changed."))
 
-        # self.document().contentsChanged.connect(lambda: print(self.objectName(), "Contents changed"))
+        # self.document().contentsChanged.connect(lambda: LOGGER.debug("Contents changed: %s", self.objectName()))
 
         self.setEnabled(False)
 
@@ -248,7 +251,7 @@ class textEditView(QTextEdit):
             if topLeft.parent() != self._index.parent():
                 return
 
-                # print("Model changed: ({}:{}), ({}:{}/{}), ({}:{}) for {} of {}".format(
+                # LOGGER.debug("Model changed: ({}:{}), ({}:{}/{}), ({}:{}) for {} of {}".format(
                 # topLeft.row(), topLeft.column(),
                 # self._index.row(), self._index.row(), self._column,
                 # bottomRight.row(), bottomRight.column(),
@@ -278,11 +281,11 @@ class textEditView(QTextEdit):
     def updateText(self):
         self._updating.lock()
 
-        # print("Updating", self.objectName())
+        # LOGGER.debug("Updating %s", self.objectName())
         if self._index:
             self.disconnectDocument()
             if self.toPlainText() != F.toString(self._index.data()):
-                # print("    Updating plaintext")
+                # LOGGER.debug("    Updating plaintext")
                 self.document().setPlainText(F.toString(self._index.data()))
             self.reconnectDocument()
 
@@ -319,18 +322,18 @@ class textEditView(QTextEdit):
         text = self.toPlainText()
         self._updating.unlock()
 
-        # print("Submitting", self.objectName())
+        # LOGGER.debug("Submitting %s", self.objectName())
         if self._index and self._index.isValid():
             # item = self._index.internalPointer()
             if text != self._index.data():
-                # print("    Submitting plain text")
+                # LOGGER.debug("    Submitting plain text")
                 self._model.setData(QModelIndex(self._index), text)
 
         elif self._indexes:
             for i in self._indexes:
                 item = i.internalPointer()
                 if text != F.toString(item.data(self._column)):
-                    print("Submitting many indexes")
+                    LOGGER.debug("Submitting many indexes")
                     self._model.setData(i, text)
 
     def keyPressEvent(self, event):
@@ -484,7 +487,7 @@ class textEditView(QTextEdit):
 
     def newCharacter(self):
         text = self.sender().data()
-        print("new character!", text)
+        LOGGER.debug(f'New character: {text}')
         # switch to character page
         mw = F.mainWindow()
         mw.tabMain.setCurrentIndex(mw.TabPersos)
@@ -496,7 +499,7 @@ class textEditView(QTextEdit):
 
     def newPlotItem(self):
         text = self.sender().data()
-        print("new plot item!", text)
+        LOGGER.debug(f'New plot item: {text}')
         # switch to plot page
         mw = F.mainWindow()
         mw.tabMain.setCurrentIndex(mw.TabPlots)
@@ -509,7 +512,7 @@ class textEditView(QTextEdit):
 
     def newWorldItem(self):
         text = self.sender().data()
-        print("new world item!", text)
+        LOGGER.debug(f'New world item: {text}')
         mw = F.mainWindow()
         mw.tabMain.setCurrentIndex(mw.TabWorld)
         item = mw.mdlWorld.addItem(title=text)

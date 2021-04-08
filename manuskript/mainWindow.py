@@ -38,6 +38,9 @@ from manuskript.ui.statusLabel import statusLabel
 from manuskript.ui.views.textEditView import textEditView
 from manuskript.functions import Spellchecker
 
+import logging
+LOGGER = logging.getLogger(__name__)
+
 class MainWindow(QMainWindow, Ui_MainWindow):
     # dictChanged = pyqtSignal(str)
 
@@ -584,7 +587,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         If ``loadFromFile`` is False, then it does not load datas from file.
         It assumes that the datas have been populated in a different way."""
         if loadFromFile and not os.path.exists(project):
-            print(self.tr("The file {} does not exist. Has it been moved or deleted?").format(project))
+            LOGGER.warning("The file {} does not exist. Has it been moved or deleted?".format(project))
             F.statusMessage(
                     self.tr("The file {} does not exist. Has it been moved or deleted?").format(project), importance=3)
             return
@@ -639,7 +642,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.mdlCharacter.dataChanged.connect(self.startTimerNoChanges)
         self.mdlPlots.dataChanged.connect(self.startTimerNoChanges)
         self.mdlWorld.dataChanged.connect(self.startTimerNoChanges)
-        # self.mdlPersosInfos.dataChanged.connect(self.startTimerNoChanges)
         self.mdlStatus.dataChanged.connect(self.startTimerNoChanges)
         self.mdlLabels.dataChanged.connect(self.startTimerNoChanges)
 
@@ -664,9 +666,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # Add project name to Window's name
         self.setWindowTitle(self.projectName() + " - " + self.tr("Manuskript"))
-
-        # Stuff
-        # self.checkPersosID()  # Shouldn't be necessary any longer
 
         # Show main Window
         self.switchToProject()
@@ -854,7 +853,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             # No UI feedback here as this code path indicates a race condition that happens
             # after the user has already closed the project through some way. But in that
             # scenario, this code should not be reachable to begin with.
-            print("Bug: there is no current project to save.")
+            LOGGER.error("There is no current project to save.")
             return
 
         r = loadSave.saveProject()  # version=0
@@ -865,18 +864,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
             feedback = self.tr("Project {} saved.").format(projectName)
             F.statusMessage(feedback, importance=0)
+            LOGGER.info("Project {} saved.".format(projectName))
         else:
             feedback = self.tr("WARNING: Project {} not saved.").format(projectName)
             F.statusMessage(feedback, importance=3)
-
-        # Giving some feedback in console
-        print(feedback)
+            LOGGER.warning("Project {} not saved.".format(projectName))
 
     def loadEmptyDatas(self):
         self.mdlFlatData = QStandardItemModel(self)
         self.mdlCharacter = characterModel(self)
-        # self.mdlPersosProxy = persosProxyModel(self)
-        # self.mdlPersosInfos = QStandardItemModel(self)
         self.mdlLabels = QStandardItemModel(self)
         self.mdlStatus = QStandardItemModel(self)
         self.mdlPlots = plotModel(self)
@@ -889,13 +885,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # Giving some feedback
         if not errors:
-            print(self.tr("Project {} loaded.").format(project))
+            LOGGER.info("Project {} loaded.".format(project))
             F.statusMessage(
                     self.tr("Project {} loaded.").format(project), 2000)
         else:
-            print(self.tr("Project {} loaded with some errors:").format(project))
+            LOGGER.error("Project {} loaded with some errors:".format(project))
             for e in errors:
-                print(self.tr(" * {} wasn't found in project file.").format(e))
+                LOGGER.error(" * {} wasn't found in project file.".format(e))
             F.statusMessage(
                     self.tr("Project {} loaded with some errors.").format(project), 5000, importance = 3)
 
@@ -1531,7 +1527,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.menuView.addMenu(self.menuMode)
         self.menuView.addSeparator()
 
-        # print("Generating menus with", settings.viewSettings)
+        # LOGGER.debug("Generating menus with %s.", settings.viewSettings)
 
         for mnu, mnud, icon in menus:
             m = QMenu(mnu, self.menuView)
@@ -1625,7 +1621,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             warning2 = self.tr("PyQt {} and Qt {} are in use.").format(qVersion(), PYQT_VERSION_STR)
 
             # Don't translate for debug log.
-            print("WARNING:", warning1, warning2)
+            LOGGER.warning(warning1)
+            LOGGER.warning(warning2)
 
             msg = QMessageBox(QMessageBox.Warning,
                 self.tr("Proceed with import at your own risk"),

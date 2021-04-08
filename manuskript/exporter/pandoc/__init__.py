@@ -13,6 +13,8 @@ from manuskript.exporter.pandoc.outputFormats import ePub, OpenDocument, DocX
 from manuskript.exporter.pandoc.plainText import reST, markdown, latex, OPML
 from manuskript.functions import mainWindow
 
+import logging
+LOGGER = logging.getLogger(__name__)
 
 class pandocExporter(basicExporter):
 
@@ -53,7 +55,7 @@ class pandocExporter(basicExporter):
         elif self.isValid() == 1:
             run = self.customPath
         else:
-            print("Error: no command for pandoc")
+            LOGGER.error("No command for pandoc.")
             return None
         args = [run] + args
 
@@ -101,7 +103,7 @@ class pandocExporter(basicExporter):
                 + "Return code" + ": %d\n" % (p.returncode) \
                 + "Command and parameters" + ":\n%s\n" % (p.args) \
                 + "Stderr content" + ":\n" + stderr.decode("utf-8") 
-            print(err)
+            LOGGER.error(err)
             QMessageBox.critical(mainWindow().dialog, qApp.translate("Export", "Error"), err)
             return None
 

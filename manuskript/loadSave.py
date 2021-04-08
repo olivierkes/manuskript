@@ -9,6 +9,8 @@ import zipfile
 import manuskript.load_save.version_0 as v0
 import manuskript.load_save.version_1 as v1
 
+import logging
+LOGGER = logging.getLogger(__name__)
 
 def saveProject(version=None):
 
@@ -57,8 +59,8 @@ def loadProject(project):
         with open(project, "r", encoding="utf-8") as f:
             version = int(f.read())
 
-    print("Loading:", project)
-    print("Detected file format version: {}. Zip: {}.".format(version, isZip))
+    LOGGER.info("Loading: %s", project)
+    LOGGER.info("Detected file format version: {}. Zip: {}.".format(version, isZip))
 
     if version == 0:
         v0.loadProject(project)

@@ -12,6 +12,8 @@ import manuskript.ui.style as S
 from manuskript import settings
 from manuskript import functions as F
 
+import logging
+LOGGER = logging.getLogger(__name__)
 
 class BasicHighlighter(QSyntaxHighlighter):
     def __init__(self, editor):
@@ -130,14 +132,14 @@ class BasicHighlighter(QSyntaxHighlighter):
         before you do any custom highlighting. Or implement doHighlightBlock.
         """
 
-        #print(">", self.currentBlock().document().availableUndoSteps())
+        #LOGGER.debug("undoSteps before: %s", self.currentBlock().document().availableUndoSteps())
         c = QTextCursor(self.currentBlock())
         #c.joinPreviousEditBlock()
         bf = QTextBlockFormat(self._defaultBlockFormat)
         if bf != c.blockFormat():
             c.setBlockFormat(bf)
         #c.endEditBlock()
-        #print(" ", self.currentBlock().document().availableUndoSteps())
+        #LOGGER.debug("undoSteps after: %s", self.currentBlock().document().availableUndoSteps())
 
         # self.setFormat(0, len(text), self._defaultCharFormat)
 

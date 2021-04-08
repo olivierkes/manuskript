@@ -26,6 +26,8 @@ except:
     pass
 import time, os
 
+import logging
+LOGGER = logging.getLogger(__name__)
 
 class abstractModel(QAbstractItemModel):
     """
@@ -83,7 +85,7 @@ class abstractModel(QAbstractItemModel):
         if len(parent.children()) == 0:
             return None
 
-        # print(item.title(), [i.title() for i in parent.children()])
+        #LOGGER.debug("%s: %s", item.title(), [i.title() for i in parent.children()])
 
         row = parent.children().index(item)
         col = column
@@ -177,7 +179,7 @@ class abstractModel(QAbstractItemModel):
 
             # self.dataChanged.emit(index.sibling(index.row(), 0),
             # index.sibling(index.row(), max([i.value for i in Outline])))
-            # print("Model emit", index.row(), index.column())
+            # LOGGER.debug("Model dataChanged emit: %s, %s", index.row(), index.column())
             self.dataChanged.emit(index, index)
 
             if index.column() == Outline.type:

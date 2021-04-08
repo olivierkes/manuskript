@@ -19,6 +19,8 @@ from manuskript.ui.editors.themes import loadThemeDatas
 from manuskript.ui.views.MDEditView import MDEditView
 from manuskript.functions import Spellchecker
 
+import logging
+LOGGER = logging.getLogger(__name__)
 
 class fullScreenEditor(QWidget):
     def __init__(self, index, parent=None, screenNumber=None):
@@ -177,7 +179,7 @@ class fullScreenEditor(QWidget):
         # self.show()
 
     def __del__(self):
-        # print("Leaving fullScreenEditor via Destructor event", flush=True)
+        LOGGER.debug("Leaving fullScreenEditor via Destructor event.")
         self.showNormal()
         self.close()
 
@@ -286,7 +288,7 @@ class fullScreenEditor(QWidget):
     def keyPressEvent(self, event):
         if event.key() in [Qt.Key_Escape, Qt.Key_F11] and \
                 not self._locked:
-            # print("Leaving fullScreenEditor via keyPressEvent", flush=True)
+            LOGGER.debug("Leaving fullScreenEditor via keyPressEvent.")
             self.showNormal()
             self.close()
         elif (event.modifiers() & Qt.AltModifier) and \

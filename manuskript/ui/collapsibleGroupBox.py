@@ -6,6 +6,8 @@ from PyQt5.QtWidgets import QSizePolicy, QGroupBox, QWidget, QStylePainter, QSty
     QStyle, QStyleOptionFrame, QStyleOptionFocusRect
 from manuskript.ui import style as S
 
+import logging
+LOGGER = logging.getLogger(__name__)
 
 class collapsibleGroupBox(QGroupBox):
     def __init__(self, parent=None):
@@ -25,7 +27,7 @@ class collapsibleGroupBox(QGroupBox):
             self.tempWidget.setLayout(self.layout())
             # Set empty layout
             l = QVBoxLayout()
-            # print(l.contentsMargins().left(), l.contentsMargins().bottom(), l.contentsMargins().top(), )
+            # LOGGER.debug("Bounds: %s, %s, %s, %s", l.contentsMargins().left(), l.contentsMargins().bottom(), l.contentsMargins().top(), l.contentsMargins().right())
             l.setContentsMargins(0, 0, 0, 0)
             self.setLayout(l)
             self.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Maximum)

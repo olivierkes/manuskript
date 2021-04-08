@@ -7,6 +7,8 @@ from manuskript.enums import Outline
 from manuskript.ui.views.propertiesView_ui import Ui_propertiesView
 from manuskript.models.characterPOVModel import characterPOVModel
 
+import logging
+LOGGER = logging.getLogger(__name__)
 
 class propertiesView(QWidget, Ui_propertiesView):
     def __init__(self, parent=None):
@@ -39,7 +41,7 @@ class propertiesView(QWidget, Ui_propertiesView):
     def selectionChanged(self, sourceView):
 
         indexes = self.getIndexes(sourceView)
-        # print(indexes)
+        # LOGGER.debug("selectionChanged indexes: %s", indexes)
         if len(indexes) == 0:
             self.setEnabled(False)
 

@@ -23,6 +23,8 @@ except:
     # number formatting
     pass
 
+import logging
+LOGGER = logging.getLogger(__name__)
 
 class outlineItem(abstractItem, searchableItem):
 
@@ -382,7 +384,7 @@ class outlineItem(abstractItem, searchableItem):
                     searchIn = character.name()
                 else:
                     searchIn = ""
-                    print("Character POV not found:", self.POV())
+                    LOGGER.error("Character POV not found: %s", self.POV())
 
             elif c == self.enum.status:
                 searchIn = mainWindow.mdlStatus.item(F.toInt(self.status()), 0).text()

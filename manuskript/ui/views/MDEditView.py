@@ -14,6 +14,8 @@ from manuskript.ui.highlighters.markdownEnums import MarkdownState as MS
 from manuskript.ui.highlighters.markdownTokenizer import MarkdownTokenizer as MT
 from manuskript import functions as F
 
+import logging
+LOGGER = logging.getLogger(__name__)
 
 class MDEditView(textEditView):
 
@@ -660,10 +662,10 @@ class ImageTooltip:
             return
         else:
             # Somehow we lost track. Log what we can to hopefully figure it out.
-            print("Warning: unable to match fetched data for tooltip to original request.")
-            print("- Completed request:", url_key)
-            print("- Status upon finishing:", reply.error(), reply.errorString())
-            print("- Currently processing:", ImageTooltip.processing)
+            LOGGER.warning("Unable to match fetched data for tooltip to original request.")
+            LOGGER.warning("- Completed request: %s", url_key)
+            LOGGER.warning("- Status upon finishing: %s, %s", reply.error(), reply.errorString())
+            LOGGER.warning("- Currently processing: %s", ImageTooltip.processing)
             return
 
         # Update cache with retrieved data.
