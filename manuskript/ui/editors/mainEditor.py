@@ -67,6 +67,7 @@ class mainEditor(QWidget, Ui_mainEditor):
         QWidget.__init__(self, parent)
         self.setupUi(self)
         self._updating = False
+        self._fullScreen = None
 
         self.mw = mainWindow()
 
@@ -153,6 +154,10 @@ class mainEditor(QWidget, Ui_mainEditor):
 
         for ts in reversed(self.allTabSplitters()):
             ts.closeSplit()
+
+    def close(self):
+        if self._fullScreen is not None:
+            self._fullScreen.leaveFullscreen()
 
     def allTabs(self, tabWidget=None):
         """Returns all the tabs from the given tabWidget. If tabWidget is None, from the current tabWidget."""
@@ -386,6 +391,11 @@ class mainEditor(QWidget, Ui_mainEditor):
             self._fullScreen = fullScreenEditor(
                 self.currentEditor().currentIndex,
                 screenNumber=currentScreenNumber)
+            # Clean the variable when closing fullscreen prevent errors
+            self._fullScreen.exited.connect(self.clearFullScreen)
+
+    def clearFullScreen(self):
+        self._fullScreen = None
 
     ###############################################################################
     # DICT AND STUFF LIKE THAT

@@ -2,7 +2,7 @@
 # --!-- coding: utf8 --!--
 import os
 
-from PyQt5.QtCore import Qt, QSize, QPoint, QRect, QEvent, QTime, QTimer
+from PyQt5.QtCore import Qt, QSize, QPoint, QRect, QEvent, QTime, QTimer, pyqtSignal
 from PyQt5.QtGui import QFontMetrics, QColor, QBrush, QPalette, QPainter, QPixmap, QCursor
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QFrame, QWidget, QPushButton, qApp, QStyle, QComboBox, QLabel, QScrollBar, \
@@ -23,6 +23,8 @@ import logging
 LOGGER = logging.getLogger(__name__)
 
 class fullScreenEditor(QWidget):
+    exited = pyqtSignal()
+
     def __init__(self, index, parent=None, screenNumber=None):
         QWidget.__init__(self, parent)
         self.setAttribute(Qt.WA_DeleteOnClose, True)
@@ -178,13 +180,13 @@ class fullScreenEditor(QWidget):
         # self.showMaximized()
         # self.show()
 
-    def __del__(self):
-        LOGGER.debug("Leaving fullScreenEditor via Destructor event.")
-        self.showNormal()
-        self.close()
-
     def leaveFullscreen(self):
+        self.__exit__("Leaving fullScreenEditor via leaveFullScreen.")
+
+    def __exit__(self, message):
+        LOGGER.debug(message)
         self.showNormal()
+        self.exited.emit()
         self.close()
 
     def setLocked(self, val):
@@ -288,9 +290,7 @@ class fullScreenEditor(QWidget):
     def keyPressEvent(self, event):
         if event.key() in [Qt.Key_Escape, Qt.Key_F11] and \
                 not self._locked:
-            LOGGER.debug("Leaving fullScreenEditor via keyPressEvent.")
-            self.showNormal()
-            self.close()
+            self.__exit__("Leaving fullScreenEditor via keyPressEvent.")
         elif (event.modifiers() & Qt.AltModifier) and \
                 event.key() in [Qt.Key_PageUp, Qt.Key_PageDown, Qt.Key_Left, Qt.Key_Right]:
             if event.key() in [Qt.Key_PageUp, Qt.Key_Left]:
