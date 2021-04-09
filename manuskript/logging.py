@@ -6,6 +6,7 @@
 
 import os
 import sys
+import time
 import logging
 import pathlib
 
@@ -48,6 +49,62 @@ def setUp(console_level=logging.WARN):
     LOGGER.debug("Logging to STDERR.")
 
 
+def getDefaultLogFile():
+    """Returns a filename to log to inside {datadir}/logs/.
+
+    It also prunes old logs so that we do not hog disk space excessively over time.
+    """
+    # Ensure logs directory exists.
+    logsPath = os.path.join(writablePath(), "logs")
+    os.makedirs(logsPath, exist_ok=True)
+    # Prune irrelevant log files. They are only kept for 35 days.
+    try:  # Guard against os.scandir() in the name of paranoia.
+        now = time.time()
+        with os.scandir(logsPath) as it:
+            for f in it:
+                try:  # Avoid triggering outer try-except inside loop.
+                    if f.is_dir():
+                        continue  # If a subdirectory exists for whatever reason, don't touch it.
+                    if (now - f.stat().st_ctime) // (24 * 3600) >= 35:
+                        os.remove(f)
+                except OSError:
+                    continue  # Fail silently, but make sure we check other files.
+    except OSError:
+        pass  # Fail silently. Don't explode and prevent Manuskript from starting.
+    return os.path.join(logsPath, "%Y-%m-%d_%H-%M-%S_manuskript#%#.log")
+
+
+def formatLogName(formatString, pid=None, now=None):
+    """A minor hack on top of `strftime()` to support an identifier for the process ID.
+
+    We want to support this in case some genius manages to start two manuskript processes
+    during the exact same second, causing a conflict in log filenames.
+
+    Additionally, there is a tiny chance that the pid could actually end up relevant when
+    observing strange behaviour with a Manuskript process but having multiple instances open.
+    """
+    if pid == None:
+        pid = os.getpid()
+    if now == None:
+        now = time.localtime()
+
+    # Replace %# that is NOT preceded by %. Although this is not a perfect solution,
+    # it is good enough because it is unlikely anyone would want to format '%pid'.
+    lidx = 0
+    while True:  # This could be neater with the := operator of Python 3.8 ...
+        fidx = formatString.find("%#", lidx)
+        if fidx == -1:
+            break
+        elif (fidx == 0) or (formatString[fidx-1] != "%"):
+            formatString = formatString[:fidx] + str(pid) + formatString[fidx+2:]
+            lidx = fidx + len(str(pid)) - 2
+        else:  # skip and avoid endless loop
+            lidx = fidx + 1
+
+    # Finally apply strftime normally.
+    return time.strftime(formatString, now)
+
+
 def logToFile(file_level=logging.DEBUG, logfile=None):
     """Sets up the FileHandler that logs to a file.
 
@@ -57,7 +114,9 @@ def logToFile(file_level=logging.DEBUG, logfile=None):
     To log file: >DEBUG, timestamped.    (All the details.)"""
 
     if logfile is None:
-        logfile = os.path.join(writablePath(), "manuskript.log")
+        logfile = getDefaultLogFile()
+
+    logfile = formatLogName(logfile)
 
     # Log with extreme prejudice; everything goes to the log file.
     # Because Qt gave me a megabyte-sized logfile while testing, it
