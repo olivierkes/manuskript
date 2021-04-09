@@ -184,7 +184,7 @@ class fullScreenEditor(QWidget):
         self.__exit__("Leaving fullScreenEditor via leaveFullScreen.")
 
     def __exit__(self, message):
-        print(message)
+        LOGGER.debug(message)
         self.showNormal()
         self.exited.emit()
         self.close()
