@@ -47,14 +47,9 @@ class abstractItem():
         if parent:
             # add this as a child to the parent, and link to the outlineModel of the parent
             parent.appendChild(self)
-        elif not model:
-            print("Warning: floating outline item (has no parent or associated Outline model).")
 
         if ID:
             self._data[self.enum.ID] = ID
-            self._model.updateAvailableIDs(ID)  # Informs the ID distributor that this ID number has been used
-        elif model:
-            self._data[self.enum.ID] = self._model.requestNewID()
 
 
 
@@ -64,6 +59,11 @@ class abstractItem():
 
     def setModel(self, model):
         self._model = model
+        if not self.ID():
+            self.getUniqueID()
+        elif model:
+            # if we are setting a model update it's ID
+            self._model.updateAvailableIDs(self.ID())
         for c in self.children():
             c.setModel(model)
 
