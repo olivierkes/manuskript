@@ -53,7 +53,7 @@ class abstractItem():
         if ID:
             self._data[self.enum.ID] = ID
             self._model.updateAvailableIDs(ID)  # Informs the ID distributor that this ID number has been used
-        else:
+        elif model:
             self._data[self.enum.ID] = self._model.requestNewID()
 
 
