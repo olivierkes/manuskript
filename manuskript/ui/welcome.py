@@ -2,7 +2,7 @@
 # --!-- coding: utf8 --!--
 
 import locale
-import imp
+import importlib
 import os
 
 from PyQt5.QtCore import QSettings, QRegExp, Qt, QDir
@@ -427,7 +427,7 @@ class welcome(QWidget, Ui_welcome):
         """Initialize a basic Manuskript project."""
 
         # Empty settings
-        imp.reload(settings)
+        importlib.reload(settings)
         settings.initDefaultValues()
         self.mw.loadEmptyDatas()
 
