@@ -7,8 +7,8 @@ import sys
 import pathlib
 from random import *
 
-from PyQt5.QtCore import Qt, QRect, QStandardPaths, QObject, QRegExp, QDir
-from PyQt5.QtCore import QUrl, QTimer
+from PyQt5.QtCore import Qt, QRect, QStandardPaths, QObject, QProcess, QRegExp
+from PyQt5.QtCore import QDir, QUrl, QTimer
 from PyQt5.QtGui import QBrush, QIcon, QPainter, QColor, QImage, QPixmap
 from PyQt5.QtGui import QDesktopServices
 from PyQt5.QtWidgets import qApp, QFileDialog
@@ -539,6 +539,42 @@ def getGitRevisionAsString(base_path, short=False):
     except Exception as e:
         LOGGER.warning("Failed to obtain Git revision: %s", e)
         return "#ERROR"
+
+def showInFolder(path, open_file_as_fallback=False):
+    '''
+    Show a file or folder in explorer/finder, highlighting it where possible.
+    Source: https://stackoverflow.com/a/46019091/3388962
+    '''
+    path = os.path.abspath(path)
+    dirPath = path if os.path.isdir(path) else os.path.dirname(path)
+    if sys.platform == 'win32':
+        args = []
+        args.append('/select,')
+        args.append(QDir.toNativeSeparators(path))
+        if QProcess.startDetached('explorer', args):
+            return True
+    elif sys.platform == 'darwin':
+        args = []
+        args.append('-e')
+        args.append('tell application "Finder"')
+        args.append('-e')
+        args.append('activate')
+        args.append('-e')
+        args.append('select POSIX file "%s"' % path)
+        args.append('-e')
+        args.append('end tell')
+        args.append('-e')
+        args.append('return')
+        if not QProcess.execute('/usr/bin/osascript', args):
+            return True
+        #if not QtCore.QProcess.execute('/usr/bin/open', [dirPath]):
+        #    return
+    # TODO: Linux is not implemented. It has many file managers (nautilus, xdg-open, etc.)
+    # each of which needs special ways to highlight a file in a file manager window.
+
+    # Fallback.
+    return QDesktopServices.openUrl(QUrl(path if open_file_as_fallback else dirPath))
+
 
 # Spellchecker loads writablePath from this file, so we need to load it after they get defined
 from manuskript.functions.spellchecker import Spellchecker

@@ -136,6 +136,16 @@ def logToFile(file_level=logging.DEBUG, logfile=None):
     except Exception as ex:
         LOGGER.warning("Cannot log to file '%s'. Reason: %s", logfile, ex)
 
+
+def getLogFilePath():
+    """Extracts a filename we are logging to from the first FileHandler we find."""
+    root_logger = logging.getLogger()
+    for handler in root_logger.handlers:
+        if isinstance(handler, logging.FileHandler):
+            return handler.baseFilename
+    return None
+
+
 # Log uncaught and unraisable exceptions.
 
 # Uncaught exceptions trigger moments before a thread is terminated due to
