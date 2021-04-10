@@ -11,6 +11,7 @@
 .idea
 .project
 .pydevproject
+.python-version
 .settings/org.eclipse.core.resources.prefs
 .vscode
 ExportTest

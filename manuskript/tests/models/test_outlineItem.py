@@ -123,10 +123,10 @@ def test_modelStuff(outlineModelBasic):
     assert folder.findItemsContaining("VALUE", cols,  MW, True) == []
     assert folder.findItemsContaining("VALUE", cols,  MW, False) == [text2.ID()]
 
-    # Model, count and copy
+    # Model, count and copy    
     k = folder._model
-    folder.setModel(14)
-    assert text2._model == 14
+    folder.setModel(None)
+    assert text2._model is None
     folder.setModel(k)
     assert folder.columnCount() == len(folder.enum)
     text1 = text2.copy()

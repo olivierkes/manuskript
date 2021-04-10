@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-import imp
+import importlib
 import os
 import re
 
@@ -594,7 +594,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         if loadFromFile:
             # Load empty settings
-            imp.reload(settings)
+            importlib.reload(settings)
             settings.initDefaultValues()
 
             # Load data

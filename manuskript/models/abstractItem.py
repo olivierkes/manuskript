@@ -250,7 +250,8 @@ class abstractItem():
         # Setting data
         self._data[column] = data
 
-        if column == self.enum.ID:
+        # The _model will be none during splitting
+        if self._model and column == self.enum.ID:
             self._model.updateAvailableIDs(data)
 
         # Emit signal
