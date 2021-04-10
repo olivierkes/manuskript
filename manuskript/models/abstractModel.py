@@ -438,22 +438,9 @@ class abstractModel(QAbstractItemModel):
             
             for item in items:
                 if item.ID() in IDs:
-                    def makeNewID(item):    
-                        k = 1
-                        while True: # Python doesn't have "Do...While"
-                            ks = str(k)
-                            if ks not in IDs:
-                                item.setData(Outline.ID,ks)
-                                IDs.append(ks) #Keep track of new IDs allocated.
-                                for c in item.children():
-                                    makeNewID(c)
-                                break # Actual Loop Exit
-                            else:
-                                k = k+1 # Try the next candidate ID
-                                
-                    makeNewID(item)       
+                    item.getUniqueID(recursive=true)
+
         r = self.insertItems(items, beginRow, parent)
-        
         
         return r
 
