@@ -542,3 +542,4 @@ def getGitRevisionAsString(base_path, short=False):
 
 # Spellchecker loads writablePath from this file, so we need to load it after they get defined
 from manuskript.functions.spellchecker import Spellchecker
+from manuskript.functions.spellcheckNames import SpellcheckNames
