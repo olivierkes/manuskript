@@ -538,10 +538,10 @@ def get_languagetool_locale_language():
 
 class LanguageToolDictionary(BasicDictionary):
 
-    if use_language_check:
-        _tool = None
-    else:
+    if languagetool:
         _tool = languagetool.LanguageTool()
+    else:
+        _tool = None
 
     def __init__(self, name):
         BasicDictionary.__init__(self, name)
