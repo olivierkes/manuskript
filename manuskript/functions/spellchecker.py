@@ -524,11 +524,11 @@ class LanguageToolCache:
         if len(text) != self._length:
             self._matches = self._buildMatches(tool, text)
 
-def get_languagetool_languages():
+def get_languagetool_languages(tool):
     if use_language_check:
         return languagetool.get_languages()
     else:
-        return languagetool.LanguageTool()._get_languages()
+        return tool._get_languages()
 
 def get_languagetool_locale_language():
     if use_language_check:
@@ -538,13 +538,18 @@ def get_languagetool_locale_language():
 
 class LanguageToolDictionary(BasicDictionary):
 
+    if use_language_check:
+        _tool = None
+    else:
+        _tool = languagetool.LanguageTool()
+
     def __init__(self, name):
         BasicDictionary.__init__(self, name)
 
-        if not (self._lang and self._lang in get_languagetool_languages()):
+        if not (self._lang and self._lang in get_languagetool_languages(self._tool)):
             self._lang = self.getDefaultDictionary()
 
-        self._tool = languagetool.LanguageTool(self._lang)
+        self._tool.language(self._lang)
         self._cache = {}
 
     @staticmethod
@@ -572,7 +577,7 @@ class LanguageToolDictionary(BasicDictionary):
     @staticmethod
     def availableDictionaries():
         if LanguageToolDictionary.isInstalled():
-            languages = list(get_languagetool_languages())
+            languages = list(get_languagetool_languages(LanguageToolDictionary._tool))
             languages.sort()
             return languages
 
@@ -585,7 +590,7 @@ class LanguageToolDictionary(BasicDictionary):
 
         default_locale = get_languagetool_locale_language()
 
-        if default_locale and not default_locale in get_languagetool_languages():
+        if default_locale and not default_locale in get_languagetool_languages(LanguageToolDictionary._tool):
             default_locale = None
 
         if default_locale == None:
