@@ -530,6 +530,12 @@ def get_languagetool_languages():
     else:
         return languagetool.LanguageTool()._get_languages()
 
+def get_languagetool_locale_language():
+    if use_language_check:
+        return languagetool.get_locale_language()
+    else:
+        return languagetool.utils.get_locale_language()
+
 class LanguageToolDictionary(BasicDictionary):
 
     def __init__(self, name):
@@ -577,7 +583,7 @@ class LanguageToolDictionary(BasicDictionary):
         if not LanguageToolDictionary.isInstalled():
             return None
 
-        default_locale = languagetool.get_locale_language()
+        default_locale = get_languagetool_locale_language()
 
         if default_locale and not default_locale in get_languagetool_languages():
             default_locale = None
