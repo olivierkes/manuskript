@@ -13,9 +13,10 @@ from PyQt5.QtWidgets import QMainWindow, QHeaderView, qApp, QMenu, QActionGroup,
 
 from manuskript import settings
 from manuskript.enums import Character, PlotStep, Plot, World, Outline
-from manuskript.functions import wordCount, appPath, findWidgetsOfClass
+from manuskript.functions import wordCount, appPath, findWidgetsOfClass, openURL, showInFolder
 import manuskript.functions as F
 from manuskript import loadSave
+from manuskript.logging import getLogFilePath
 from manuskript.models.characterModel import characterModel
 from manuskript.models import outlineModel
 from manuskript.models.plotModel import plotModel
@@ -179,6 +180,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # Main Menu:: Tool
         self.actToolFrequency.triggered.connect(self.frequencyAnalyzer)
+        self.actSupport.triggered.connect(self.support)
+        self.actLocateLog.triggered.connect(self.locateLogFile)
         self.actAbout.triggered.connect(self.about)
 
         self.makeUIConnections()
@@ -1178,6 +1181,50 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         r = win.geometry()
         r2 = self.geometry()
         win.move(r2.center() - QPoint(r.width()/2, r.height()/2))
+
+    def support(self):
+        openURL("https://github.com/olivierkes/manuskript/wiki/Technical-Support")
+
+    def locateLogFile(self):
+        logfile = getLogFilePath()
+
+        # Make sure we are even logging to a file.
+        if not logfile:
+            QMessageBox(QMessageBox.Information,
+                self.tr("Sorry!"),
+                "<p><b>" +
+                    self.tr("This session is not being logged.") +
+                "</b></p>",
+                QMessageBox.Ok).exec()
+            return
+
+        # Remind user that log files are at their best once they are complete.
+        msg = QMessageBox(QMessageBox.Information,
+            self.tr("A log file is a Work in Progress!"),
+            "<p><b>" +
+                self.tr("The log file \"{}\" will continue to be written to until Manuskript is closed.").format(os.path.basename(logfile)) +
+            "</b></p>" +
+            "<p>" +
+                self.tr("It will now be displayed in your file manager, but is of limited use until you close Manuskript.") +
+            "</p>",
+            QMessageBox.Ok)
+
+        ret = msg.exec()
+
+        # Open the filemanager.
+        if ret == QMessageBox.Ok:
+            if not showInFolder(logfile):
+                # If everything convenient fails, at least make sure the user can browse to its location manually.
+                QMessageBox(QMessageBox.Critical,
+                    self.tr("Error!"),
+                    "<p><b>" +
+                        self.tr("An error was encountered while trying to show the log file below in your file manager.") +
+                    "</b></p>" +
+                    "<p>" +
+                        logfile +
+                    "</p>",
+                    QMessageBox.Ok).exec()
+
 
     def about(self):
         self.dialog = aboutDialog(mw=self)
