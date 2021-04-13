@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="2.0" language="pl_PL" sourcelanguage="en">
+<!DOCTYPE TS>
+<TS version="2.0" language="pl_PL" sourcelanguage="en">
 <context>
     <name>Export</name>
     <message>
@@ -224,7 +225,7 @@ przez outliner.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="70"/>
-        <source>Choose output file&#xe2;&#x80;&#xa6;</source>
+        <source>Choose output fileâ¦</source>
         <translation>Wybierz plik wyjściowy</translation>
     </message>
 </context>
@@ -1460,17 +1461,17 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message>
         <location filename="../manuskript/mainWindow.py" line="1594"/>
         <source>PyQt / Qt versions 5.11 and 5.12 are known to cause a crash which might result in a loss of data.</source>
-        <translation type="unfinished"></translation>
+        <translation>Wersje Qt 5.11 i 5.12 mogą spowodować błąd skutkujący utratą danych.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1595"/>
         <source>PyQt {} and Qt {} are in use.</source>
-        <translation type="unfinished"></translation>
+        <translation>PyQt i Qt są używane.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1600"/>
         <source>Proceed with import at your own risk</source>
-        <translation type="unfinished"></translation>
+        <translation>Kontynuujesz import na własne ryzyko</translation>
     </message>
 </context>
 <context>
@@ -1578,12 +1579,12 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="410"/>
         <source>Save on project close</source>
-        <translation type="unfinished">Zapisz przy zamknięciu</translation>
+        <translation>Zapisz przy zamykaniu projektu</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="426"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If you check this option, your project will be saved as one single file. Easier to copy or backup, but does not allow collaborative editing, or versioning.&lt;br/&gt;If this is unchecked, your project will be saved as a folder containing many small files.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Jeśli wybierzesz tę opcję twój projekt zostanie zapisany jako pojedynczy plik. Łatwiej go kopiować lub tworzyć kopi zapasową, ale nie pozwala on na współpracę w zespole i wersjonowanie.&lt;br/&gt;Jeśli ta opcja jest odznaczona twój projekt zostanie zapisany jako folder zawierający wiele małych plików.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Jeśli wybierzesz tę opcję twój projekt zostanie zapisany jako pojedynczy plik. Będzie łatwiej go kopiować lub tworzyć kopię zapasową, ale nie pozwala on na współpracę w zespole i wersjonowanie.&lt;br/&gt;Jeśli ta opcja jest odznaczona twój projekt zostanie zapisany jako folder zawierający wiele małych plików.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="432"/>
@@ -2153,7 +2154,7 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="775"/>
         <source>&lt;p&gt;&lt;b&gt;The Revisions feature has been at the source of many reported issues. In this version of Manuskript it has been turned off by default for new projects in order to provide the best experience.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Why aren&apos;t these issues fixed already? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;We need your help to make Manuskript better!&lt;/a&gt;&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;&lt;b&gt;Opcja Poprawek była źródłem zgłaszania wielu błędów. W tej wersji Manuskripta jest ona domyślnie wyłączona przy tworzeniu nowych projektów dla zapewnienia najwyższej stabilności&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Dlaczego problemy nie zostały jeszcze rozwiązane? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;Potrzebujemy twojej pomocy by uczynić Manuskript jeszcze lepszym! &lt;/a&gt;&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
@@ -2586,12 +2587,12 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="788"/>
-        <source>Replace ... with &#xe2;&#x80;&#xa6;</source>
+        <source>Replace ... with â¦</source>
         <translation>Zastąp ... znakiem â¦</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="795"/>
-        <source>Replace --- with &#xe2;&#x80;&#x94;</source>
+        <source>Replace --- with â</source>
         <translation>Zastąp --- znakiem —</translation>
     </message>
     <message>
@@ -2776,7 +2777,7 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="155"/>
         <source>Theme selector</source>
-        <translation type="unfinished">Wybór motywów</translation>
+        <translation>Wybór motywu</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="156"/>
@@ -2883,7 +2884,7 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message>
         <location filename="../manuskript/ui/welcome.py" line="60"/>
         <source>Last accessed directory &quot;{}&quot; loaded.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ostatnio używana lokalizacja &quot;{}&quot; została załadowana.</translation>
     </message>
 </context>
 <context>
@@ -3980,7 +3981,21 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
 
             &lt;p&gt;&lt;b&gt;Mark:&lt;/b&gt;&lt;/p&gt;
             </source>
-        <translation type="unfinished"></translation>
+        <translation>
+            &lt;p&gt;Podziel zaznaczone elementy na danym symbolu.&lt;/p&gt;
+
+            &lt;p&gt;Jeśli jeden z zaznaczonych elementów jest w folderze będzie ono zastosowane
+            rekursywnie dla &lt;i&gt;wszystkich&lt;/i&gt; elementów dzieci.&lt;/p&gt;
+
+            &lt;p&gt;Znak podziału może zawierać następujące sekwencje:
+                &lt;ul&gt;
+                    &lt;li&gt;&lt;b&gt;&lt;code&gt;\n&lt;/code&gt;&lt;/b&gt;: koniec wiersza&lt;/li&gt;
+                    &lt;li&gt;&lt;b&gt;&lt;code&gt;\t&lt;/code&gt;&lt;/b&gt;: tabulator&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/p&gt;
+
+            &lt;p&gt;&lt;b&gt;Znak:&lt;/b&gt;&lt;/p&gt;
+            </translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="47"/>
