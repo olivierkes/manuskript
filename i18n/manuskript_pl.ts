@@ -53,7 +53,7 @@ Włącz tę opcję jeśli otrzymasz błąd związany z YAML.</translation>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="123"/>
         <source>Self-contained HTML files, with no dependencies</source>
-        <translation type="unfinished">Samozawierające pliki html, bez plików zależnych</translation>
+        <translation>Samowystarczalne pliki html, bez plików zależnych</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="125"/>
