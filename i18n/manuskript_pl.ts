@@ -166,7 +166,8 @@ przez outliner.</translation>
     formats.&lt;/p&gt;
     &lt;p&gt;Website: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
     </source>
-        <translation type="unfinished">&lt;p&gt;Uniwersalny konwerter dokumentów. Może być używany do konwersji języka Markdown do szerokiej gamy innych formatów.&lt;/p&gt;
+        <translation>&lt;p&gt;Uniwersalny konwerter dokumentów. Może być używany do konwersji języka Markdown do szerokiej gamy innych. 
+formatów.&lt;/p&gt;
 &lt;p&gt;Strona internetowa: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
     </translation>
     </message>
@@ -1436,12 +1437,12 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message>
         <location filename="../manuskript/mainWindow.py" line="1380"/>
         <source>{} has no installed dictionaries</source>
-        <translation type="unfinished">{} nie ma zainstalowanych słowników</translation>
+        <translation>{} nie ma zainstalowanych słowników</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1401"/>
         <source>{}{} is not installed</source>
-        <translation type="unfinished">{}{} jest niezainstalowany</translation>
+        <translation>{}{} jest niezainstalowany</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="660"/>
@@ -2757,7 +2758,7 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="150"/>
         <source>Navigation</source>
-        <translation type="unfinished">Nawigacja</translation>
+        <translation>Nawigacja</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="151"/>
@@ -2772,7 +2773,7 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="153"/>
         <source>Title: Show Full Path</source>
-        <translation type="unfinished">Tytuł: pokaż pełną ścieżkę</translation>
+        <translation>Tytuł: pokaż pełną ścieżkę</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="155"/>
@@ -2792,7 +2793,7 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="158"/>
         <source>Progress: Auto Show/Hide</source>
-        <translation type="unfinished">Postęp: automatycznie pokaż/ukryj</translation>
+        <translation>Postęp: automatycznie pokaż/ukryj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="159"/>
@@ -3345,7 +3346,7 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>1. Inciting event</source>
-        <translation type="unfinished">1. Rozpoczęcie akcji</translation>
+        <translation>1. Podżeganie do działania</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -4288,7 +4289,7 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message>
         <location filename="../manuskript/ui/welcome.py" line="310"/>
         <source>of</source>
-        <translation type="unfinished">z</translation>
+        <translation>z</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="334"/>
