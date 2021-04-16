@@ -538,19 +538,23 @@ def get_languagetool_locale_language():
 
 class LanguageToolDictionary(BasicDictionary):
 
-    if languagetool:
-        _tool = languagetool.LanguageTool()
-    else:
-        _tool = None
+    _tool = None
 
     def __init__(self, name):
         BasicDictionary.__init__(self, name)
 
-        if not (self._lang and self._lang in get_languagetool_languages(self._tool)):
+        if not (self._lang and self._lang in get_languagetool_languages(self.getTool())):
             self._lang = self.getDefaultDictionary()
 
-        self._tool.language(self._lang)
+        self.tool = languagetool.LanguageTool(self._lang)
         self._cache = {}
+
+    @staticmethod
+    def getTool():
+        if LanguageToolDictionary._tool == None:
+            LanguageToolDictionary._tool = languagetool.LanguageTool()
+
+        return LanguageToolDictionary._tool
 
     @staticmethod
     def getLibraryName():
@@ -577,7 +581,8 @@ class LanguageToolDictionary(BasicDictionary):
     @staticmethod
     def availableDictionaries():
         if LanguageToolDictionary.isInstalled():
-            languages = list(get_languagetool_languages(LanguageToolDictionary._tool))
+            tool = LanguageToolDictionary.getTool()
+            languages = list(get_languagetool_languages(tool))
             languages.sort()
             return languages
 
@@ -589,8 +594,9 @@ class LanguageToolDictionary(BasicDictionary):
             return None
 
         default_locale = get_languagetool_locale_language()
+        tool = LanguageToolDictionary.getTool()
 
-        if default_locale and not default_locale in get_languagetool_languages(LanguageToolDictionary._tool):
+        if default_locale and not default_locale in get_languagetool_languages(tool):
             default_locale = None
 
         if default_locale == None:
@@ -610,12 +616,12 @@ class LanguageToolDictionary(BasicDictionary):
         cacheEntry = None
 
         if not textId in self._cache:
-            cacheEntry = LanguageToolCache(self._tool, text)
+            cacheEntry = LanguageToolCache(self.tool, text)
 
             self._cache[textId] = cacheEntry
         else:
             cacheEntry = self._cache[textId]
-            cacheEntry.update(self._tool, text)
+            cacheEntry.update(self.tool, text)
 
         for match in cacheEntry.getMatches():
             word = match.getWord(text)
