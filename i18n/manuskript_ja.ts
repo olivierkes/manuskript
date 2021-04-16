@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="ja" sourcelanguage="">
+<!DOCTYPE TS><TS version="2.0" language="ja" sourcelanguage="">
 <context>
     <name>Export</name>
     <message>
@@ -39,7 +38,7 @@
         <translation>構文をハイライトで事前確認する。</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/manuskript/plainText.py" line="14"/>
+        <location filename="../manuskript/exporter/manuskript/plainText.py" line="17"/>
         <source>Plain text</source>
         <translation>プレーンテキスト</translation>
     </message>
@@ -54,82 +53,82 @@
         <translation>LaTeXをインストールする必要があります。</translation>
     </message>
     <message>
-        <location filename="../manuskript/converters/pandocConverter.py" line="75"/>
+        <location filename="../manuskript/converters/pandocConverter.py" line="76"/>
         <source>Error</source>
         <translation>エラー</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="97"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="96"/>
         <source>Standalone document (not just a fragment)</source>
         <translation>独立文書 (単なる断片ではない)</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="100"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="99"/>
         <source>Include a table of contents.</source>
         <translation>目次に含める。</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="103"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="102"/>
         <source>Number of sections level to include in TOC: </source>
         <translation>目次に含めるセクションレベルの数： </translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="107"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="106"/>
         <source>Typographically correct output</source>
         <translation>印刷上正しく出力</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="110"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="109"/>
         <source>Normalize the document (cleaner)</source>
         <translation>文書の正規化 (整理)</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="112"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="111"/>
         <source>Specify the base level for headers: </source>
         <translation>見出しのデフォルトレベルを指定します。 </translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="119"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="118"/>
         <source>Use reference-style links instead of inline links</source>
         <translation>インラインリンクの代わりに、参照リンクを使用</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="121"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="120"/>
         <source>Use ATX-style headers</source>
         <translation>ATX形式のスタイルを使用</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="123"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="122"/>
         <source>Self-contained HTML files, with no dependencies</source>
         <translation>外部依存のない自己完結型のHTMLファイル</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="125"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="124"/>
         <source>Use &lt;q&gt; tags for quotes in HTML</source>
         <translation>HTMLで引用符を示すには、`&lt;q&gt;`タグを使用</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="132"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="131"/>
         <source>LaTeX engine used to produce the PDF.</source>
         <translation>PDFを生成するためには、LaTeXエンジンを使用する。</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="142"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="141"/>
         <source>Paper size:</source>
         <translation>用紙サイズ：</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="145"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="144"/>
         <source>Font size:</source>
         <translation>フォントサイズ：</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="148"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="147"/>
         <source>Class:</source>
         <translation>Class：</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="151"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="150"/>
         <source>Line spacing:</source>
         <translation>行間：</translation>
     </message>
@@ -161,14 +160,14 @@
                           テキストはマークダウンでフォーマットされていることを前提としている。</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/manuskript/plainText.py" line="15"/>
+        <location filename="../manuskript/exporter/manuskript/plainText.py" line="18"/>
         <source>Simplest export to plain text. Allows you to use your own markup not understood
                   by Manuskript, for example &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</source>
         <translation type="unfinished">プレーンテキストに出力する最も簡単な設定です。
                   &lt;a href=&apos;www.fountain.io&apos;&gt;噴水&lt;/a&gt;など、Manuskriptにはないタグを使用できます。</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/__init__.py" line="20"/>
+        <location filename="../manuskript/exporter/pandoc/__init__.py" line="22"/>
         <source>&lt;p&gt;A universal document converter. Can be used to convert Markdown to a wide range of other
     formats.&lt;/p&gt;
     &lt;p&gt;Website: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
@@ -208,27 +207,27 @@
                                               方法を提供します。</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="115"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="114"/>
         <source>Disable YAML metadata block.
 Use that if you get YAML related error.</source>
         <translation>YAMLメタデータブロックを無効にします。
 YAML関連のエラーが発生した場合は、このオプションを有効にして、再度試してください。</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="135"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="134"/>
         <source>Convert to ePUB3</source>
         <translation>ePUB3に変換</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/manuskript/plainText.py" line="48"/>
+        <location filename="../manuskript/exporter/manuskript/plainText.py" line="51"/>
         <source>Could not process regular expression: 
 {}</source>
         <translation>正規表現の処理中にエラーが発生しました：
 {}</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/manuskript/plainText.py" line="70"/>
-        <source>Choose output fileâ¦</source>
+        <location filename="../manuskript/exporter/manuskript/plainText.py" line="71"/>
+        <source>Choose output file&#xe2;&#x80;&#xa6;</source>
         <translation>出力ファイルを選択¦</translation>
     </message>
 </context>
@@ -336,12 +335,12 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
 <context>
     <name>Import</name>
     <message>
-        <location filename="../manuskript/importer/markdownImporter.py" line="178"/>
+        <location filename="../manuskript/importer/markdownImporter.py" line="175"/>
         <source>Markdown import</source>
         <translation>マークダウンの読み込み</translation>
     </message>
     <message>
-        <location filename="../manuskript/importer/markdownImporter.py" line="182"/>
+        <location filename="../manuskript/importer/markdownImporter.py" line="179"/>
         <source>&lt;b&gt;Info:&lt;/b&gt; A very simple
                         parser that will go through a markdown document and
                         create items for each titles.&lt;br/&gt;&amp;nbsp;</source>
@@ -350,12 +349,12 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
                         非常にシンプルなパーサーです。&lt;br/&gt;&amp;nbsp;</translation>
     </message>
     <message>
-        <location filename="../manuskript/importer/folderImporter.py" line="97"/>
+        <location filename="../manuskript/importer/folderImporter.py" line="96"/>
         <source>Folder import</source>
         <translation>フォルダーを追加</translation>
     </message>
     <message>
-        <location filename="../manuskript/importer/folderImporter.py" line="101"/>
+        <location filename="../manuskript/importer/folderImporter.py" line="100"/>
         <source>&lt;p&gt;&lt;b&gt;Info:&lt;/b&gt; Imports a whole
                         directory structure. Folders are added as folders, and
                         plaintext documents within (you chose which ones by extension)
@@ -368,47 +367,47 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
                         &lt;p&gt;テキストファイルのみ対応しています（画像、バイナリ等はサポートされていません）。&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../manuskript/importer/folderImporter.py" line="108"/>
+        <location filename="../manuskript/importer/folderImporter.py" line="107"/>
         <source>Include only those extensions:</source>
         <translation>次の拡張子のみを追加する：</translation>
     </message>
     <message>
-        <location filename="../manuskript/importer/folderImporter.py" line="108"/>
+        <location filename="../manuskript/importer/folderImporter.py" line="107"/>
         <source>Comma separated values</source>
         <translation>カンマ区切り値</translation>
     </message>
     <message>
-        <location filename="../manuskript/importer/folderImporter.py" line="113"/>
+        <location filename="../manuskript/importer/folderImporter.py" line="112"/>
         <source>Sort items by name</source>
         <translation>項目を名前順に並べ替える</translation>
     </message>
     <message>
-        <location filename="../manuskript/importer/folderImporter.py" line="117"/>
+        <location filename="../manuskript/importer/folderImporter.py" line="116"/>
         <source>Import folder then files</source>
         <translation>フォルダとファイルを追加</translation>
     </message>
     <message>
-        <location filename="../manuskript/importer/opmlImporter.py" line="65"/>
+        <location filename="../manuskript/importer/opmlImporter.py" line="64"/>
         <source>OPML Import</source>
         <translation>OPML 読み込み</translation>
     </message>
     <message>
-        <location filename="../manuskript/importer/opmlImporter.py" line="37"/>
+        <location filename="../manuskript/importer/opmlImporter.py" line="36"/>
         <source>File open failed.</source>
         <translation>ファイルを開くことができません。</translation>
     </message>
     <message>
-        <location filename="../manuskript/importer/opmlImporter.py" line="65"/>
+        <location filename="../manuskript/importer/opmlImporter.py" line="64"/>
         <source>This does not appear to be a valid OPML file.</source>
         <translation>これは有効なOPMLファイルではありません。</translation>
     </message>
     <message>
-        <location filename="../manuskript/importer/pandocImporters.py" line="58"/>
+        <location filename="../manuskript/importer/pandocImporters.py" line="57"/>
         <source>Pandoc import</source>
         <translation>Pandoc 追加</translation>
     </message>
     <message>
-        <location filename="../manuskript/importer/pandocImporters.py" line="61"/>
+        <location filename="../manuskript/importer/pandocImporters.py" line="60"/>
         <source>&lt;b&gt;Info:&lt;/b&gt; Manuskript can
                         import from &lt;b&gt;markdown&lt;/b&gt; or &lt;b&gt;OPML&lt;/b&gt;. Pandoc will
                         convert your document to either (see option below), and
@@ -423,17 +422,17 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
                         &lt;br/&gt;&amp;nbsp;</translation>
     </message>
     <message>
-        <location filename="../manuskript/importer/pandocImporters.py" line="69"/>
+        <location filename="../manuskript/importer/pandocImporters.py" line="68"/>
         <source>Import using:</source>
         <translation>インポートの使用:</translation>
     </message>
     <message>
-        <location filename="../manuskript/importer/pandocImporters.py" line="73"/>
+        <location filename="../manuskript/importer/pandocImporters.py" line="72"/>
         <source>Wrap lines:</source>
         <translation>行を折り返す：</translation>
     </message>
     <message>
-        <location filename="../manuskript/importer/pandocImporters.py" line="73"/>
+        <location filename="../manuskript/importer/pandocImporters.py" line="72"/>
         <source>&lt;p&gt;Should pandoc create
                         cosmetic / non-semantic line-breaks?&lt;/p&gt;&lt;p&gt;
                         &lt;b&gt;auto&lt;/b&gt;: wraps at 72 characters.&lt;br&gt;
@@ -448,27 +447,27 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
                         行の折り返しを保持します。&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../manuskript/importer/mindMapImporter.py" line="56"/>
+        <location filename="../manuskript/importer/mindMapImporter.py" line="55"/>
         <source>Mind Map Import</source>
         <translation>Mind Mapのインポート</translation>
     </message>
     <message>
-        <location filename="../manuskript/importer/mindMapImporter.py" line="56"/>
+        <location filename="../manuskript/importer/mindMapImporter.py" line="55"/>
         <source>This does not appear to be a valid Mind Map file.</source>
         <translation>これは有効なマインドマップのファイルではありません。</translation>
     </message>
     <message>
-        <location filename="../manuskript/importer/mindMapImporter.py" line="71"/>
+        <location filename="../manuskript/importer/mindMapImporter.py" line="70"/>
         <source>Mind Map import</source>
         <translation>Mind Map インポート</translation>
     </message>
     <message>
-        <location filename="../manuskript/importer/mindMapImporter.py" line="74"/>
+        <location filename="../manuskript/importer/mindMapImporter.py" line="73"/>
         <source>Import tip as:</source>
         <translation>インポートのヒントは以下のとおりです。</translation>
     </message>
     <message>
-        <location filename="../manuskript/importer/mindMapImporter.py" line="90"/>
+        <location filename="../manuskript/importer/mindMapImporter.py" line="89"/>
         <source>Untitled</source>
         <translation>無題</translation>
     </message>
@@ -484,7 +483,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="1627"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="1647"/>
         <source>General</source>
         <translation>全般</translation>
     </message>
@@ -524,7 +523,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
         <translation>作者</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="1636"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="1656"/>
         <source>Name</source>
         <translation>名前</translation>
     </message>
@@ -534,7 +533,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
         <translation>電子メール</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="1422"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="1442"/>
         <source>Summary</source>
         <translation>要約：</translation>
     </message>
@@ -544,7 +543,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
         <translation>シチュエーション：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="1337"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="1357"/>
         <source>Summary:</source>
         <translation>要約：</translation>
     </message>
@@ -554,17 +553,17 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
         <translation>一文</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="1435"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="1455"/>
         <source>One paragraph</source>
         <translation>一段落</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="1440"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="1460"/>
         <source>One page</source>
         <translation>一ページ</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="1445"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="1465"/>
         <source>Full</source>
         <translation>全体</translation>
     </message>
@@ -594,7 +593,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
         <translation>全体の要約</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="1074"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="1094"/>
         <source>Next</source>
         <translation>次へ</translation>
     </message>
@@ -614,312 +613,312 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
         <translation>名前</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="1587"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="1607"/>
         <source>Filter</source>
         <translation>フィルター</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="1183"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="1203"/>
         <source>Basic info</source>
         <translation>基本情報</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="1202"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="1222"/>
         <source>Importance</source>
         <translation>重要設定</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="829"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="880"/>
         <source>Motivation</source>
         <translation>動機づけ</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="839"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="890"/>
         <source>Goal</source>
         <translation>目的</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="849"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="900"/>
         <source>Conflict</source>
         <translation>対立</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="859"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="910"/>
         <source>Epiphany</source>
         <translation>本質・意味・悟り</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="869"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="920"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One sentence&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;一文&lt;br/&gt;要約&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="879"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="930"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One paragraph&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;一段落&lt;br/&gt;要約&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="1001"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="1021"/>
         <source>Notes</source>
         <translation>備考</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="1011"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="1031"/>
         <source>Detailed info</source>
         <translation>詳細情報</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2021"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2041"/>
         <source>Plots</source>
         <translation>プロット</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="1192"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="1212"/>
         <source>Plot</source>
         <translation>プロット</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="1209"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="1229"/>
         <source>Character(s)</source>
         <translation>登場人物</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="1646"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="1666"/>
         <source>Description</source>
         <translation>説明</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="1223"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="1243"/>
         <source>Result</source>
         <translation>結果</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="1315"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="1335"/>
         <source>Resolution steps</source>
         <translation>解決手順</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2045"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2065"/>
         <source>World</source>
         <translation>世界</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="1600"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="1620"/>
         <source>Populates with empty data</source>
         <translation>空データの生成</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="1657"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="1677"/>
         <source>More</source>
         <translation>もっと</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="1666"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="1686"/>
         <source>Source of passion</source>
         <translation>情熱の源 (行動原理)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="1676"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="1696"/>
         <source>Source of conflict</source>
         <translation>対立の原因</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1477"/>
+        <location filename="../manuskript/mainWindow.py" line="1554"/>
         <source>Outline</source>
         <translation>概要</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="1854"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="1874"/>
         <source>Editor</source>
         <translation>編集者</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="1985"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2005"/>
         <source>Debug</source>
         <translation>デバッグ</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="1998"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2018"/>
         <source>FlatData</source>
         <translation>フラットデータ</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2008"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2028"/>
         <source>Persos</source>
         <translation type="unfinished">人</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2069"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2089"/>
         <source>Labels</source>
         <translation>ラベル</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2103"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2123"/>
         <source>&amp;File</source>
         <translation>ファイル (&amp;F)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2107"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2127"/>
         <source>&amp;Recent</source>
         <translation>最近使用したファイル (&amp;R)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2127"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2147"/>
         <source>&amp;Help</source>
         <translation>ヘルプ (&amp;H)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2134"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2158"/>
         <source>&amp;Tools</source>
         <translation>ツール (&amp;T)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2141"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2165"/>
         <source>&amp;Edit</source>
         <translation>編集 (&amp;E)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2196"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2221"/>
         <source>&amp;View</source>
         <translation>閲覧 (&amp;V)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2200"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2225"/>
         <source>&amp;Mode</source>
         <translation>モード (&amp;M)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2229"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2254"/>
         <source>&amp;Cheat sheet</source>
         <translation>備忘録</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2263"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2288"/>
         <source>Sea&amp;rch</source>
         <translation>検索 (&amp;R)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2300"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2325"/>
         <source>&amp;Navigation</source>
         <translation>ナビゲーション (&amp;N)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2335"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2360"/>
         <source>&amp;Open</source>
         <translation>開く (&amp;O)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2338"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2363"/>
         <source>Ctrl+O</source>
         <translation>Ctrl+O</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2347"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2372"/>
         <source>&amp;Save</source>
         <translation>保存 (&amp;S)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2350"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2375"/>
         <source>Ctrl+S</source>
         <translation>Ctrl+S</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2359"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2384"/>
         <source>Sa&amp;ve as...</source>
         <translation>名前を付けて保存... (&amp;V)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2362"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2387"/>
         <source>Ctrl+Shift+S</source>
         <translation>Ctrl+Shift+S</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2371"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2396"/>
         <source>&amp;Quit</source>
         <translation>終了 (&amp;Q)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2374"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2399"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2389"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2414"/>
         <source>&amp;Show help texts</source>
         <translation>ヘルプ文書を表示 (&amp;S)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2392"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2417"/>
         <source>Ctrl+Shift+B</source>
         <translation>Ctrl+Shift+B</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2407"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2432"/>
         <source>&amp;Spellcheck</source>
         <translation>スペルチェック</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2410"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2435"/>
         <source>F9</source>
         <translation>F9</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2419"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2444"/>
         <source>&amp;Labels...</source>
         <translation>ラベル... (&amp;L)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2428"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2453"/>
         <source>&amp;Status...</source>
         <translation>状態... (&amp;S)</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1475"/>
+        <location filename="../manuskript/mainWindow.py" line="1552"/>
         <source>Tree</source>
         <translation>ツリー</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2444"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2469"/>
         <source>&amp;Simple</source>
         <translation>シンプル</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2452"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2477"/>
         <source>&amp;Fiction</source>
         <translation>フィクション</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1476"/>
+        <location filename="../manuskript/mainWindow.py" line="1553"/>
         <source>Index cards</source>
         <translation>索引カード</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2471"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2496"/>
         <source>S&amp;ettings</source>
         <translation>設定</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2474"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2499"/>
         <source>F8</source>
         <translation>F8</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2483"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2508"/>
         <source>&amp;Close project</source>
         <translation>プロジェクトを閉じる (&amp;C)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2492"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2517"/>
         <source>Co&amp;mpile</source>
         <translation>コンパイル</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2495"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2520"/>
         <source>F6</source>
         <translation>F6</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2500"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2525"/>
         <source>&amp;Frequency Analyzer</source>
         <translation>単語の頻度数解析</translation>
     </message>
@@ -929,563 +928,666 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
         <translation>本の情報</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2509"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2534"/>
         <source>&amp;About</source>
         <translation>About (&amp;A)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2512"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2537"/>
         <source>About Manuskript</source>
         <translation>Manuskriptについて</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="717"/>
+        <location filename="../manuskript/mainWindow.py" line="746"/>
         <source>Manuskript</source>
         <translation>Manuskript</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="840"/>
+        <location filename="../manuskript/mainWindow.py" line="872"/>
         <source>Project {} saved.</source>
-        <translation>プロジェクト {} が保存されました。</translation>
+        <translation type="unfinished"> * {} がプロジェクトファイルに見つかりませんでした。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="843"/>
+        <location filename="../manuskript/mainWindow.py" line="876"/>
         <source>WARNING: Project {} not saved.</source>
         <translation>警告：プロジェクト {} は保存されていません。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="867"/>
+        <location filename="../manuskript/mainWindow.py" line="896"/>
         <source>Project {} loaded.</source>
         <translation>プロジェクト {} が読み込まれました。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="870"/>
-        <source>Project {} loaded with some errors:</source>
-        <translation>プロジェクト {} にいくつかのエラーが読み込まれました：</translation>
-    </message>
-    <message>
-        <location filename="../manuskript/mainWindow.py" line="872"/>
-        <source> * {} wasn&apos;t found in project file.</source>
-        <translation> * {} がプロジェクトファイルに見つかりませんでした。</translation>
-    </message>
-    <message>
-        <location filename="../manuskript/mainWindow.py" line="873"/>
+        <location filename="../manuskript/mainWindow.py" line="902"/>
         <source>Project {} loaded with some errors.</source>
         <translation>プロジェクト {} にいくつかのエラーが読み込まれました。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1202"/>
+        <location filename="../manuskript/mainWindow.py" line="1280"/>
         <source> (~{} pages)</source>
         <translation> (~{} ページ)</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1206"/>
+        <location filename="../manuskript/mainWindow.py" line="1283"/>
         <source>Words: {}{}</source>
         <translation>字数：{}{}</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1214"/>
+        <location filename="../manuskript/mainWindow.py" line="1291"/>
         <source>Book summary</source>
         <translation>本の要約</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1215"/>
+        <location filename="../manuskript/mainWindow.py" line="1292"/>
         <source>Project tree</source>
         <translation>プロジェクトツリー</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1216"/>
+        <location filename="../manuskript/mainWindow.py" line="1293"/>
         <source>Metadata</source>
         <translation>メタデータ</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1217"/>
+        <location filename="../manuskript/mainWindow.py" line="1294"/>
         <source>Story line</source>
         <translation>ストーリーライン</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1282"/>
+        <location filename="../manuskript/mainWindow.py" line="1359"/>
         <source>Enter information about your book, and yourself.</source>
         <translation>あなたの本とあなた自身に関する情報を入力してください。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1285"/>
+        <location filename="../manuskript/mainWindow.py" line="1362"/>
         <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous
                      evil wizard wasn&apos;t able to kill a baby?&apos; (Harry Potter)</source>
         <translation>基本的な状況、「もしも・・・？」形式の質問です。 例：「最も危険で邪悪な
                      魔法使いが、赤ん坊を殺せなかったら？」 (ハリー・ポッター)</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1290"/>
+        <location filename="../manuskript/mainWindow.py" line="1367"/>
         <source>Take time to think about a one sentence (~50 words) summary of your book. Then expand it to
                      a paragraph, then to a page, then to a full summary.</source>
         <translation>あなたの本の要約を50単語ほどで考えてください。この作業は時間をかけるべきでしょう。
                      それを段落、ページに落とし込み、最後に完全な要約を書きます。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1295"/>
+        <location filename="../manuskript/mainWindow.py" line="1372"/>
         <source>Create your characters.</source>
         <translation>あなたの登場人物を作りましょう。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1298"/>
+        <location filename="../manuskript/mainWindow.py" line="1375"/>
         <source>Develop plots.</source>
         <translation>プロットを作成します。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1301"/>
+        <location filename="../manuskript/mainWindow.py" line="1378"/>
         <source>Build worlds.  Create hierarchy of broad categories down to specific details.</source>
         <translation>世界を創造しましょう。Manuskriptは、一般的なものから詳細なものまで、様々な設定を作成します。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1304"/>
+        <location filename="../manuskript/mainWindow.py" line="1381"/>
         <source>Create the outline of your masterpiece.</source>
         <translation>あなたの傑作の輪郭を作ります。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1307"/>
+        <location filename="../manuskript/mainWindow.py" line="1384"/>
         <source>Write.</source>
         <translation>書く。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1310"/>
+        <location filename="../manuskript/mainWindow.py" line="1387"/>
         <source>Debug info. Sometimes useful.</source>
         <translation>デバッグ情報。時に便利なものです。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1324"/>
+        <location filename="../manuskript/mainWindow.py" line="1401"/>
         <source>Dictionary</source>
         <translation>辞書</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1467"/>
+        <location filename="../manuskript/mainWindow.py" line="1544"/>
         <source>Nothing</source>
         <translation>無し</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1468"/>
+        <location filename="../manuskript/mainWindow.py" line="1545"/>
         <source>POV</source>
         <translation>POV</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1469"/>
+        <location filename="../manuskript/mainWindow.py" line="1546"/>
         <source>Label</source>
         <translation>ラベル</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1470"/>
+        <location filename="../manuskript/mainWindow.py" line="1547"/>
         <source>Progress</source>
         <translation>進捗</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1471"/>
+        <location filename="../manuskript/mainWindow.py" line="1548"/>
         <source>Compile</source>
         <translation>編纂</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1494"/>
+        <location filename="../manuskript/mainWindow.py" line="1571"/>
         <source>Icon color</source>
         <translation>アイコンの色</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1495"/>
+        <location filename="../manuskript/mainWindow.py" line="1572"/>
         <source>Text color</source>
         <translation>文字色</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1496"/>
+        <location filename="../manuskript/mainWindow.py" line="1573"/>
         <source>Background color</source>
         <translation>背景色</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1487"/>
+        <location filename="../manuskript/mainWindow.py" line="1564"/>
         <source>Icon</source>
         <translation>アイコン</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1488"/>
+        <location filename="../manuskript/mainWindow.py" line="1565"/>
         <source>Text</source>
         <translation>テキスト</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1489"/>
+        <location filename="../manuskript/mainWindow.py" line="1566"/>
         <source>Background</source>
         <translation>背景</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1490"/>
+        <location filename="../manuskript/mainWindow.py" line="1567"/>
         <source>Border</source>
         <translation>境界線</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1491"/>
+        <location filename="../manuskript/mainWindow.py" line="1568"/>
         <source>Corner</source>
         <translation>角</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="1351"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="1371"/>
         <source>Add plot step</source>
         <translation>プロットステップを追加</translation>
     </message>
     <message encoding="UTF-8">
-        <location filename="../manuskript/ui/mainWindow.ui" line="2521"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2546"/>
         <source>&amp;Import…</source>
         <translation>インポート…</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2524"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2549"/>
         <source>F7</source>
         <translation>F7</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2533"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2558"/>
         <source>&amp;Copy</source>
         <translation>コピー</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2536"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2561"/>
         <source>Ctrl+C</source>
         <translation>Ctrl+C</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2545"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2570"/>
         <source>C&amp;ut</source>
         <translation>切り取り</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2548"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2573"/>
         <source>Ctrl+X</source>
         <translation>Ctrl+X</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2557"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2582"/>
         <source>&amp;Paste</source>
         <translation>貼り付け</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2560"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2585"/>
         <source>Ctrl+V</source>
         <translation>Ctrl+V</translation>
     </message>
     <message encoding="UTF-8">
-        <location filename="../manuskript/ui/mainWindow.ui" line="2569"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2594"/>
         <source>&amp;Split…</source>
         <translation>分割…</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2572"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2597"/>
         <source>Ctrl+Shift+K</source>
         <translation>Ctrl+Shift+K</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2581"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2606"/>
         <source>Sp&amp;lit at cursor</source>
         <translation>カーソル位置で分割</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2584"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2609"/>
         <source>Ctrl+K</source>
         <translation>Ctrl+K</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2596"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2621"/>
         <source>Ctrl+M</source>
         <translation>Ctrl+M</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2799"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2824"/>
         <source>Ctrl+D</source>
         <translation>Ctrl+D</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2617"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2642"/>
         <source>Del</source>
         <translation>Del</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2626"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2651"/>
         <source>&amp;Move Up</source>
         <translation>上に移動 (&amp;M)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2629"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2654"/>
         <source>Ctrl+Shift+Up</source>
         <translation>Ctrl+Shift+Up</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2638"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2663"/>
         <source>M&amp;ove Down</source>
         <translation>下に移動 (&amp;O)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2641"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2666"/>
         <source>Ctrl+Shift+Down</source>
         <translation>Ctrl+Shift+Down</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2605"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2630"/>
         <source>Dupl&amp;icate</source>
         <translation>コピー</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2614"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2639"/>
         <source>&amp;Delete</source>
         <translation>削除</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2650"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2675"/>
         <source>&amp;Rename</source>
         <translation>名前の変更</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2653"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2678"/>
         <source>F2</source>
         <translation>F2</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2210"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2235"/>
         <source>Organi&amp;ze</source>
         <translation>整理</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2593"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2618"/>
         <source>M&amp;erge</source>
         <translation>マージ</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2145"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2169"/>
         <source>&amp;Format</source>
         <translation>フォーマット</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2153"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2177"/>
         <source>&amp;Header</source>
         <translation>ヘッダ</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2658"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2683"/>
         <source>&amp;Level 1 (setext)</source>
         <translation>&amp;レベル1 (setext)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2661"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2686"/>
         <source>Ctrl+Alt+1</source>
         <translation>Ctrl+Alt+1</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2666"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2691"/>
         <source>Level &amp;2</source>
         <translation>レベル &amp;2</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2669"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2694"/>
         <source>Ctrl+Alt+2</source>
         <translation>Ctrl+Alt+2</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2674"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2699"/>
         <source>Level &amp;1 (atx)</source>
         <translation>レベル &amp;1 (atx)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2677"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2702"/>
         <source>Ctrl+1</source>
         <translation>Ctrl+1</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2682"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2707"/>
         <source>L&amp;evel 2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2685"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2710"/>
         <source>Ctrl+2</source>
         <translation>Ctrl+2</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2690"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2715"/>
         <source>Level &amp;3</source>
         <translation>レベル &amp;3</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2693"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2718"/>
         <source>Ctrl+3</source>
         <translation>Ctrl+3</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2698"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2723"/>
         <source>Level &amp;4</source>
         <translation>レベル &amp;4</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2701"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2726"/>
         <source>Ctrl+4</source>
         <translation>Ctrl+4</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2706"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2731"/>
         <source>Level &amp;5</source>
         <translation>レベル &amp;5</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2709"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2734"/>
         <source>Ctrl+5</source>
         <translation>Ctrl+5</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2714"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2739"/>
         <source>Level &amp;6</source>
         <translation>レベル &amp;6</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2717"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2742"/>
         <source>Ctrl+6</source>
         <translation>Ctrl+6</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2726"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2751"/>
         <source>&amp;Bold</source>
         <translation>&amp;太字</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2729"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2754"/>
         <source>Ctrl+B</source>
         <translation>Ctrl+B</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2738"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2763"/>
         <source>&amp;Italic</source>
         <translation>斜体(&amp;I)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2741"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2766"/>
         <source>Ctrl+I</source>
         <translation>Ctrl+I</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2750"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2775"/>
         <source>&amp;Strike</source>
         <translation>取消し線(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2755"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2780"/>
         <source>&amp;Verbatim</source>
         <translation>等幅(&amp;V)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2760"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2785"/>
         <source>Su&amp;perscript</source>
         <translation>上付き文字 (&amp;P)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2763"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2788"/>
         <source>Ctrl++</source>
         <translation>Ctrl++</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2768"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2793"/>
         <source>Subsc&amp;ript</source>
         <translation>下付き文字(&amp;R)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2771"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2796"/>
         <source>Ctrl+-</source>
         <translation>Ctrl+-</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2776"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2801"/>
         <source>Co&amp;mment block</source>
         <translation>コメントブロック (&amp;M)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2779"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2804"/>
         <source>Ctrl+Shift+C</source>
         <translation>Ctrl+Shift+C</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2788"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2813"/>
         <source>Clear &amp;formats</source>
         <translation>書式をクリア (&amp;F)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2791"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2816"/>
         <source>Ctrl+0</source>
         <translation>Ctrl+0</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2796"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2821"/>
         <source>&amp;Comment line(s)</source>
         <translation>注釈行 (&amp;C)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2804"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2829"/>
         <source>&amp;Ordered list</source>
         <translation>番号リスト (&amp;O)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2813"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2838"/>
         <source>&amp;Unordered list</source>
         <translation>番号なしリスト (&amp;U)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="2818"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2843"/>
         <source>B&amp;lockquote</source>
         <translation>引用符 (&amp;B)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.ui" line="1368"/>
+        <location filename="../manuskript/ui/mainWindow.ui" line="1388"/>
         <source>Remove selected plot step(s)</source>
         <translation>選択したプロットを削除する</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="561"/>
+        <location filename="../manuskript/mainWindow.py" line="594"/>
         <source>The file {} does not exist. Has it been moved or deleted?</source>
         <translation>ファイル {} は存在しません。移動または削除しましたか？</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1338"/>
+        <location filename="../manuskript/mainWindow.py" line="1415"/>
         <source>Install {}{} to use spellcheck</source>
         <translation>スペルチェックを使用するには {}{} をインストールします</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1380"/>
+        <location filename="../manuskript/mainWindow.py" line="1457"/>
         <source>{} has no installed dictionaries</source>
         <translation>{} には辞書がインストールされていません</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1401"/>
+        <location filename="../manuskript/mainWindow.py" line="1478"/>
         <source>{}{} is not installed</source>
         <translation>{}{} がインストールされていません</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="660"/>
+        <location filename="../manuskript/mainWindow.py" line="689"/>
         <source>Save project?</source>
         <translation>プロジェクトを保存しますか？</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="660"/>
+        <location filename="../manuskript/mainWindow.py" line="689"/>
         <source>Save changes to project &quot;{}&quot; before closing?</source>
         <translation>閉じる前にプロジェクト &quot;{}&quot; への変更を保存しますか？</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="660"/>
+        <location filename="../manuskript/mainWindow.py" line="689"/>
         <source>Your changes will be lost if you don&apos;t save them.</source>
         <translation>保存しないと、変更内容は失われます。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1594"/>
+        <location filename="../manuskript/mainWindow.py" line="1671"/>
         <source>PyQt / Qt versions 5.11 and 5.12 are known to cause a crash which might result in a loss of data.</source>
         <translation>PyQt / Qtバージョン5.11および5.12は、データの損失につながる可能性のあるクラッシュを引き起こすことがわかっています。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1595"/>
+        <location filename="../manuskript/mainWindow.py" line="1672"/>
         <source>PyQt {} and Qt {} are in use.</source>
         <translation>PyQt {} と Qt {} が使用されています。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1600"/>
+        <location filename="../manuskript/mainWindow.py" line="1678"/>
         <source>Proceed with import at your own risk</source>
         <translation>自己責任でインポートを続行</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/mainWindow.ui" line="862"/>
+        <source>Allow POV</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2852"/>
+        <source>Search</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2855"/>
+        <source>Ctrl+F</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2860"/>
+        <source>&amp;Technical Support</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2863"/>
+        <source>How to obtain technical support for Manuskript.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2866"/>
+        <source>F1</source>
+        <translation type="unfinished">F1</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2871"/>
+        <source>&amp;Locate log file...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2874"/>
+        <source>Locate log file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2877"/>
+        <source>Locate the diagnostic log file used for this session.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/mainWindow.ui" line="2880"/>
+        <source>Shift+F1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/mainWindow.py" line="1193"/>
+        <source>Sorry!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/mainWindow.py" line="1193"/>
+        <source>This session is not being logged.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/mainWindow.py" line="1202"/>
+        <source>A log file is a Work in Progress!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/mainWindow.py" line="1202"/>
+        <source>The log file &quot;{}&quot; will continue to be written to until Manuskript is closed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/mainWindow.py" line="1202"/>
+        <source>It will now be displayed in your file manager, but is of limited use until you close Manuskript.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/mainWindow.py" line="1218"/>
+        <source>Error!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/mainWindow.py" line="1218"/>
+        <source>An error was encountered while trying to show the log file below in your file manager.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/search.py" line="45"/>
+        <source>F3</source>
+        <translation type="unfinished">F3</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/search.py" line="46"/>
+        <source>Shift+F3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/search.py" line="50"/>
+        <source>Situation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/search.py" line="51"/>
+        <source>Status</source>
+        <translation type="unfinished">状態</translation>
+    </message>
+</context>
+<context>
+    <name>Search</name>
+    <message>
+        <location filename="../manuskript/ui/search.py" line="40"/>
+        <source>No results found</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1501,7 +1603,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
         <translation>全般</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="480"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="526"/>
         <source>Revisions</source>
         <translation>改訂</translation>
     </message>
@@ -1511,17 +1613,17 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
         <translation>ビュー</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2761"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2891"/>
         <source>Labels</source>
         <translation>ラベル</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2893"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3023"/>
         <source>Status</source>
         <translation>状態</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2967"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3097"/>
         <source>Fullscreen</source>
         <translation>全画面表示</translation>
     </message>
@@ -1536,657 +1638,708 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
         <translation>アプリケーションの設定</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="201"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="247"/>
         <source>Loading</source>
         <translation>読み込み中</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="213"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="259"/>
         <source>Automatically load last project on startup</source>
         <translation>起動時、前回の終了時に開いていたプロジェクトを開く</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="232"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="278"/>
         <source>Saving</source>
         <translation>自動保存</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="246"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="292"/>
         <source>Automatically save every</source>
         <translation>自動保存の間隔</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="293"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="339"/>
         <source>minutes.</source>
         <translation>分。</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="329"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="375"/>
         <source>If no changes during</source>
         <translation>変更がない場合</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="376"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="422"/>
         <source>seconds.</source>
         <translation>秒。</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="410"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="456"/>
         <source>Save on project close</source>
         <translation>プロジェクト終了時に保存</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="426"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="472"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If you check this option, your project will be saved as one single file. Easier to copy or backup, but does not allow collaborative editing, or versioning.&lt;br/&gt;If this is unchecked, your project will be saved as a folder containing many small files.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;この設定を有効にすると、プロジェクトは単一のファイルとして保存されます。コピーやバックアップは簡単ですが、多人数での共同編集やバージョン管理には不向きです。&lt;br/&gt;この設定を無効にした場合、プロジェクトは多数の小さなファイルとして、指定のフォルダに保存されます。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="432"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="478"/>
         <source>Save to one single file</source>
         <translation>単一のファイルに保存</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="490"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="536"/>
         <source>Revisions are a way to keep track of modifications. For each text item, it stores any changes you make to the main text, allowing you to see and restoring previous versions.</source>
         <translation>リビジョンは、変更を追跡するための機能です。各テキストは、メインテキストに加えた変更点を保存し、以前のバージョンを表示・複合できるようになっています。</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="500"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="546"/>
         <source>Keep revisions</source>
         <translation>改訂の継続</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="516"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="562"/>
         <source>S&amp;mart remove</source>
         <translation>定期的な削除</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="531"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="577"/>
         <source>Keep:</source>
         <translation>保留：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="544"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="590"/>
         <source>Smart remove allows you to keep only a certain number of revisions. It is strongly recommended to use it, lest you file will becomes full of thousands of insignificant changes.</source>
         <translation>定期的な削除を利用すると、リビジョンの保存数を制限できます。この機能は、有効にすることを強くお勧めします。この機能を使用しない場合、リビジョンのファイルが数千もの数に膨らむ恐れがあります。</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="560"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="606"/>
         <source>revisions per day for the last month</source>
         <translation>先月の一日あたりの改訂</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="601"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="647"/>
         <source>revisions per minute for the last 10 minutes</source>
         <translation>過去10分間における1分あたりの改訂</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="614"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="660"/>
         <source>revisions per hour for the last day</source>
         <translation>最終日の1時間あたりの改訂</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="627"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="673"/>
         <source>revisions per 10 minutes for the last hour</source>
         <translation>過去1時間における10分ごとの改訂</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="752"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="798"/>
         <source>revisions per week till the end of time</source>
         <translation>終了時まで週ごとの改訂</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="810"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="856"/>
         <source>Views settings</source>
         <translation>ビューの設定</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="828"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="874"/>
         <source>Tree</source>
         <translation>ツリー</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2015"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2145"/>
         <source>Colors</source>
         <translation>色</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1759"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1889"/>
         <source>Icon color:</source>
         <translation>アイコンの色：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1965"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2095"/>
         <source>Nothing</source>
         <translation>無し</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1970"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2100"/>
         <source>POV</source>
         <translation>POV</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1975"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2105"/>
         <source>Label</source>
         <translation>ラベル</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1980"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2110"/>
         <source>Progress</source>
         <translation>進捗</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1985"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2115"/>
         <source>Compile</source>
         <translation>編纂</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1807"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1937"/>
         <source>Text color:</source>
         <translation>文字色：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1855"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1985"/>
         <source>Background color:</source>
         <translation>背景色：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1069"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1168"/>
         <source>Folders</source>
         <translation>フォルダ</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1081"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1180"/>
         <source>Show ite&amp;m count</source>
         <translation>項目数を表示(&amp;M)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1190"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1315"/>
         <source>Show summary</source>
         <translation>要約を閲覧</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1133"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1245"/>
         <source>&amp;Nothing</source>
         <translation>無し(&amp;N)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1152"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1264"/>
         <source>Text</source>
         <translation>テキスト</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1252"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1382"/>
         <source>Outline</source>
         <translation>概要</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1444"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1574"/>
         <source>Visible columns</source>
         <translation>表示列</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1456"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1586"/>
         <source>Goal</source>
         <translation>目的</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1472"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1602"/>
         <source>Word count</source>
         <translation>単語数</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1488"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1618"/>
         <source>Percentage</source>
         <translation>割合 (%)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1568"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1698"/>
         <source>Title</source>
         <translation>表題</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1599"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1729"/>
         <source>Index cards</source>
         <translation>索引目録</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1744"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1874"/>
         <source>Item colors</source>
         <translation>項目の色</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1903"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2033"/>
         <source>Border color:</source>
         <translation>線の色：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1951"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2081"/>
         <source>Corner color:</source>
         <translation>角の色：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1611"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1741"/>
         <source>Background</source>
         <translation>背景</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3446"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3576"/>
         <source>Color:</source>
         <translation>色：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2808"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2938"/>
         <source>Ctrl+S</source>
         <translation>Ctrl+S</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3188"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3318"/>
         <source>Image:</source>
         <translation>画像：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2001"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2131"/>
         <source>Text editor</source>
         <translation>テキストエディタ</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2120"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2250"/>
         <source>Font</source>
         <translation>フォント</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2132"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2262"/>
         <source>Family:</source>
         <translation>字体：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3489"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3619"/>
         <source>Size:</source>
         <translation>大きさ：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3503"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3633"/>
         <source>Misspelled:</source>
         <translation>綴り間違い：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2027"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2157"/>
         <source>Background:</source>
         <translation>背景：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2343"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2473"/>
         <source>Paragraphs</source>
         <translation>段落</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3530"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3660"/>
         <source>Line spacing:</source>
         <translation>行間隔：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3538"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3668"/>
         <source>Single</source>
         <translation>シングル</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3543"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3673"/>
         <source>1.5 lines</source>
         <translation>1.5 行</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3548"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3678"/>
         <source>Double</source>
         <translation>2倍</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3553"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3683"/>
         <source>Proportional</source>
         <translation>プロポーショナル</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3570"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3700"/>
         <source>%</source>
         <translation>%</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3586"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3716"/>
         <source>Tab width:</source>
         <translation>タブ幅：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3650"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3780"/>
         <source> px</source>
         <translation> px</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3672"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3802"/>
         <source>Indent 1st line</source>
         <translation>1行目を字下げ</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3615"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3745"/>
         <source>Spacing:</source>
         <translation>間隔：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3014"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3144"/>
         <source>New</source>
         <translation>新規</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3028"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3158"/>
         <source>Edit</source>
         <translation>編集</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3038"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3168"/>
         <source>Delete</source>
         <translation>削除</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3082"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3212"/>
         <source>Theme name:</source>
         <translation>主題名：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3098"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3228"/>
         <source>Apply</source>
         <translation>適用</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3111"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3241"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3141"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3271"/>
         <source>Window Background</source>
         <translation>ウィンドウの背景</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3146"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3276"/>
         <source>Text Background</source>
         <translation>テキストの背景</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3151"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3281"/>
         <source>Text Options</source>
         <translation>テキストオプション</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3156"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3286"/>
         <source>Paragraph Options</source>
         <translation>段落オプション</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3198"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3328"/>
         <source>Type:</source>
         <translation>型：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3206"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3336"/>
         <source>No Image</source>
         <translation>画像なし</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3211"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3341"/>
         <source>Tiled</source>
         <translation>タイル</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3216"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3346"/>
         <source>Centered</source>
         <translation>中央揃え</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3315"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3445"/>
         <source>Stretched</source>
         <translation>伸縮</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3226"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3356"/>
         <source>Scaled</source>
         <translation>縮尺</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3231"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3361"/>
         <source>Zoomed</source>
         <translation>拡大</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3266"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3396"/>
         <source>Opacity:</source>
         <translation>透明度：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3292"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3422"/>
         <source>Position:</source>
         <translation>位置：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3680"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3810"/>
         <source>Left</source>
         <translation>左</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3689"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3819"/>
         <source>Center</source>
         <translation>中央</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3698"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3828"/>
         <source>Right</source>
         <translation>右</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3323"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3453"/>
         <source>Width:</source>
         <translation>幅：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3374"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3504"/>
         <source>Corner radius:</source>
         <translation>角の半径：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3381"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3511"/>
         <source>Margins:</source>
         <translation>外側余白：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3410"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3540"/>
         <source>Padding:</source>
         <translation>内側余白：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3466"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3596"/>
         <source>Font:</source>
         <translation>フォント：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1703"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1833"/>
         <source>Style</source>
         <translation>スタイル</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2620"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2750"/>
         <source>Cursor</source>
         <translation>カーソル</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2632"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2762"/>
         <source>Use block insertion of</source>
         <translation>ブロック挿入を使用</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2355"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2485"/>
         <source>Alignment:</source>
         <translation>位置合わせ：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3707"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3837"/>
         <source>Justify</source>
         <translation>校正</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="3719"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="3849"/>
         <source>Alignment</source>
         <translation>位置合わせ</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1020"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1066"/>
         <source>Icon Size</source>
         <translation>アイコンの大きさ</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1032"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1078"/>
         <source>TextLabel</source>
         <translation>テキストラベル</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2667"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2797"/>
         <source>Disable blinking</source>
         <translation>点滅を無効にする</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2234"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2364"/>
         <source>Text area</source>
         <translation>テキストエリア</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2246"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2376"/>
         <source>Max width</source>
         <translation>最大幅</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2278"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2408"/>
         <source>Left/Right margins:</source>
         <translation>左右の外側余白：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2307"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2437"/>
         <source>Top/Bottom margins:</source>
         <translation>上下の外側余白：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1107"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1219"/>
         <source>S&amp;how progress</source>
         <translation>進捗状況を表示 (&amp;H)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1120"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1232"/>
         <source>Show summar&amp;y</source>
         <translation>要約を表示 (&amp;Y)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1177"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1302"/>
         <source>Show p&amp;rogress</source>
         <translation>進行状況を表示 (&amp;S)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1715"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1845"/>
         <source>Old st&amp;yle</source>
         <translation>旧スタイル (&amp;Y)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2059"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2189"/>
         <source>Transparent</source>
         <translation>透過 (Transparent)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2104"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2234"/>
         <source>Restore defaults</source>
         <translation>デフォルトに戻す</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="113"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="138"/>
         <source>Style:</source>
         <translation>スタイル：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="136"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="161"/>
         <source>Language:</source>
         <translation>言語：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="159"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="184"/>
         <source>Font size:</source>
         <translation>フォントサイズ：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="182"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="112"/>
         <source>Restarting Manuskript ensures all settings take effect.</source>
         <translation>設定を有効にするためには、Manuskriptを再起動してください。</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1094"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1193"/>
         <source>Show &amp;word count</source>
         <translation>単語数を表示 (&amp;W)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1164"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1276"/>
         <source>&amp;Show word count</source>
         <translation>単語数を表示 (&amp;S)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="1728"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1858"/>
         <source>&amp;New style</source>
         <translation>新しいスタイル</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2680"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2810"/>
         <source>Typewriter mode</source>
         <translation>タイプライターモード</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2693"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2823"/>
         <source>Focus mode</source>
         <translation>集中モード (Zen mode)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2707"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2837"/>
         <source>None</source>
         <translation>いいえ</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2712"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2842"/>
         <source>Sentence</source>
         <translation>文</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2717"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2847"/>
         <source>Line</source>
         <translation>行</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="2722"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="2852"/>
         <source>Paragraph</source>
         <translation>段落</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/settings_ui.ui" line="775"/>
+        <location filename="../manuskript/ui/settings_ui.ui" line="821"/>
         <source>&lt;p&gt;&lt;b&gt;The Revisions feature has been at the source of many reported issues. In this version of Manuskript it has been turned off by default for new projects in order to provide the best experience.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Why aren&apos;t these issues fixed already? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;We need your help to make Manuskript better!&lt;/a&gt;&lt;/p&gt;</source>
         <translation>&lt;p&gt;&lt;b&gt;改訂機能は、多数報告された問題の原因となっています。このバージョンのManuskriptでは、最高のエクスペリエンスを提供するために、新規プロジェクトの既定でオフになっています。&lt;/b&gt;&lt;/p&gt;&lt;p&gt;なぜ問題はまだ修正されていないのですか？&lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;Manuskriptをより良くするために、あなたの助けが必要です！&lt;/a&gt;&lt;/p&gt;</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/settings_ui.ui" line="211"/>
+        <source>Show progress in chars next
+ to words</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1113"/>
+        <source>Char/Word Counter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1137"/>
+        <source>Count spaces as chars</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1206"/>
+        <source>Show char c&amp;ount</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/settings_ui.ui" line="1289"/>
+        <source>Sho&amp;w char count</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>SpellAction</name>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="458"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="600"/>
         <source>Spelling Suggestions</source>
         <translation>綴りの候補</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="466"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="618"/>
         <source>&amp;Add to dictionary</source>
         <translation>辞書を追加 (&amp;A)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="482"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="671"/>
         <source>&amp;Remove from custom dictionary</source>
         <translation>カスタム辞書から削除 (&amp;R)</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/views/textEditView.py" line="527"/>
+        <source>&amp;New Character</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/views/textEditView.py" line="534"/>
+        <source>&amp;New Plot Item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/views/textEditView.py" line="541"/>
+        <source>&amp;New World Item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/views/textEditView.py" line="642"/>
+        <source>&amp;Correction Suggestions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/views/textEditView.py" line="651"/>
+        <source>&amp;Correction Suggestion</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2218,37 +2371,37 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
 <context>
     <name>abstractModel</name>
     <message>
-        <location filename="../manuskript/models/abstractModel.py" line="185"/>
+        <location filename="../manuskript/models/abstractModel.py" line="199"/>
         <source>Title</source>
         <translation>表題</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/abstractModel.py" line="187"/>
+        <location filename="../manuskript/models/abstractModel.py" line="201"/>
         <source>POV</source>
         <translation>POV</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/abstractModel.py" line="189"/>
+        <location filename="../manuskript/models/abstractModel.py" line="203"/>
         <source>Label</source>
         <translation>ラベル</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/abstractModel.py" line="191"/>
+        <location filename="../manuskript/models/abstractModel.py" line="205"/>
         <source>Status</source>
         <translation>状態</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/abstractModel.py" line="193"/>
+        <location filename="../manuskript/models/abstractModel.py" line="207"/>
         <source>Compile</source>
         <translation>編纂</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/abstractModel.py" line="195"/>
+        <location filename="../manuskript/models/abstractModel.py" line="209"/>
         <source>Word count</source>
         <translation>単語数</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/abstractModel.py" line="197"/>
+        <location filename="../manuskript/models/abstractModel.py" line="211"/>
         <source>Goal</source>
         <translation>目的</translation>
     </message>
@@ -2289,17 +2442,12 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
 <context>
     <name>characterModel</name>
     <message>
-        <location filename="../manuskript/models/characterModel.py" line="168"/>
-        <source>New character</source>
-        <translation>新しい登場人物</translation>
-    </message>
-    <message>
-        <location filename="../manuskript/models/characterModel.py" line="192"/>
+        <location filename="../manuskript/models/characterModel.py" line="205"/>
         <source>Name</source>
         <translation>名前</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/characterModel.py" line="194"/>
+        <location filename="../manuskript/models/characterModel.py" line="207"/>
         <source>Value</source>
         <translation>値</translation>
     </message>
@@ -2307,17 +2455,17 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
 <context>
     <name>characterTreeView</name>
     <message>
-        <location filename="../manuskript/ui/views/characterTreeView.py" line="90"/>
+        <location filename="../manuskript/ui/views/characterTreeView.py" line="32"/>
         <source>Main</source>
         <translation>メイン</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/characterTreeView.py" line="90"/>
+        <location filename="../manuskript/ui/views/characterTreeView.py" line="32"/>
         <source>Secondary</source>
         <translation>セカンダリ</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/characterTreeView.py" line="90"/>
+        <location filename="../manuskript/ui/views/characterTreeView.py" line="32"/>
         <source>Minor</source>
         <translation>マイナー</translation>
     </message>
@@ -2433,12 +2581,12 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
 <context>
     <name>corkDelegate</name>
     <message>
-        <location filename="../manuskript/ui/views/corkDelegate.py" line="62"/>
+        <location filename="../manuskript/ui/views/corkDelegate.py" line="70"/>
         <source>One line summary</source>
         <translation>一行の要約</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/corkDelegate.py" line="92"/>
+        <location filename="../manuskript/ui/views/corkDelegate.py" line="100"/>
         <source>Full summary</source>
         <translation>すべての要約</translation>
     </message>
@@ -2749,72 +2897,72 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
 <context>
     <name>fullScreenEditor</name>
     <message>
-        <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="129"/>
+        <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="133"/>
         <source>Theme:</source>
         <translation>主題：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="356"/>
+        <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="364"/>
         <source>{} words / {}</source>
         <translation>{} 単語 / {}</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="360"/>
+        <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="368"/>
         <source>{} words</source>
         <translation>{} 単語</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="149"/>
+        <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="153"/>
         <source>Spellcheck</source>
         <translation>綴り照合</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="150"/>
+        <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="154"/>
         <source>Navigation</source>
         <translation>ナビゲーション</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="151"/>
+        <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="155"/>
         <source>New Text</source>
         <translation>新規テキスト</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="152"/>
+        <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="156"/>
         <source>Title</source>
         <translation>表題</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="153"/>
+        <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="157"/>
         <source>Title: Show Full Path</source>
         <translation>表題：フルパスを表示</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="155"/>
+        <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="159"/>
         <source>Theme selector</source>
         <translation>主題の選択</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="156"/>
+        <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="160"/>
         <source>Word count</source>
         <translation>単語数</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="157"/>
+        <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="161"/>
         <source>Progress</source>
         <translation>進捗</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="158"/>
+        <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="162"/>
         <source>Progress: Auto Show/Hide</source>
         <translation>進捗： Auto Show/Hide</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="159"/>
+        <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="163"/>
         <source>Clock</source>
         <translation>時計</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="160"/>
+        <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="164"/>
         <source>Clock: Show Seconds</source>
         <translation>時計: 秒を表示</translation>
     </message>
@@ -2891,14 +3039,6 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
         <location filename="../manuskript/ui/importers/importer_ui.ui" line="138"/>
         <source>Settings</source>
         <translation>設定</translation>
-    </message>
-</context>
-<context>
-    <name>lastAccessedDirectoryInfo</name>
-    <message>
-        <location filename="../manuskript/ui/welcome.py" line="60"/>
-        <source>Last accessed directory &quot;{}&quot; loaded.</source>
-        <translation>最後にアクセスしたディレクトリ &quot;{}&quot; がロードされました。</translation>
     </message>
 </context>
 <context>
@@ -3015,19 +3155,34 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
         <translation>Alt+Up</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/editors/mainEditor.py" line="243"/>
+        <location filename="../manuskript/ui/editors/mainEditor.py" line="251"/>
         <source>Root</source>
         <translation>ルート</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/editors/mainEditor.py" line="322"/>
-        <source>{} words / {} </source>
-        <translation>{} 単語 / {} </translation>
-    </message>
-    <message>
-        <location filename="../manuskript/ui/editors/mainEditor.py" line="327"/>
+        <location filename="../manuskript/ui/editors/mainEditor.py" line="358"/>
         <source>{} words </source>
         <translation>{} 単語 </translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/editors/mainEditor.py" line="339"/>
+        <source>({} chars) {}  words / {} </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/editors/mainEditor.py" line="345"/>
+        <source>{}  words / {} </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/editors/mainEditor.py" line="360"/>
+        <source>{} chars</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/editors/mainEditor.py" line="354"/>
+        <source>{} chars </source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3079,7 +3234,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
 <context>
     <name>myPanel</name>
     <message>
-        <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="591"/>
+        <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="599"/>
         <source>Auto-hide</source>
         <translation>自動的に隠す</translation>
     </message>
@@ -3233,12 +3388,12 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
 <context>
     <name>outlineItem</name>
     <message>
-        <location filename="../manuskript/models/outlineItem.py" line="234"/>
+        <location filename="../manuskript/models/outlineItem.py" line="251"/>
         <source>{} words / {} ({})</source>
         <translation>{} 単語 / {} ({})</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/outlineItem.py" line="239"/>
+        <location filename="../manuskript/models/outlineItem.py" line="256"/>
         <source>{} words</source>
         <translation>{} 単語</translation>
     </message>
@@ -3246,17 +3401,17 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
 <context>
     <name>pandocSettings</name>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="167"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="166"/>
         <source>General</source>
         <translation>全般</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="181"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="180"/>
         <source>Table of Content</source>
         <translation>目次</translation>
     </message>
     <message>
-        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="186"/>
+        <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="185"/>
         <source>Custom settings for {}</source>
         <translation>{}のカスタム設定</translation>
     </message>
@@ -3460,37 +3615,32 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
 <context>
     <name>plotModel</name>
     <message>
-        <location filename="../manuskript/models/plotModel.py" line="108"/>
-        <source>New plot</source>
-        <translation>新しいプロット</translation>
-    </message>
-    <message>
-        <location filename="../manuskript/models/plotModel.py" line="140"/>
+        <location filename="../manuskript/models/plotModel.py" line="144"/>
         <source>Name</source>
         <translation>名前</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/plotModel.py" line="142"/>
+        <location filename="../manuskript/models/plotModel.py" line="146"/>
         <source>Meta</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/models/plotModel.py" line="177"/>
+        <location filename="../manuskript/models/plotModel.py" line="179"/>
         <source>New step</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/models/plotModel.py" line="246"/>
+        <location filename="../manuskript/models/plotModel.py" line="249"/>
         <source>Main</source>
         <translation>メイン</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/plotModel.py" line="246"/>
+        <location filename="../manuskript/models/plotModel.py" line="249"/>
         <source>Secondary</source>
         <translation>セカンダリ</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/plotModel.py" line="246"/>
+        <location filename="../manuskript/models/plotModel.py" line="249"/>
         <source>Minor</source>
         <translation>マイナー</translation>
     </message>
@@ -3498,22 +3648,22 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
 <context>
     <name>plotTreeView</name>
     <message>
-        <location filename="../manuskript/ui/views/plotTreeView.py" line="128"/>
+        <location filename="../manuskript/ui/views/plotTreeView.py" line="127"/>
         <source>Main</source>
         <translation>メイン</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/plotTreeView.py" line="128"/>
+        <location filename="../manuskript/ui/views/plotTreeView.py" line="127"/>
         <source>Secondary</source>
         <translation>セカンダリ</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/plotTreeView.py" line="128"/>
+        <location filename="../manuskript/ui/views/plotTreeView.py" line="127"/>
         <source>Minor</source>
         <translation>マイナー</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/plotTreeView.py" line="189"/>
+        <location filename="../manuskript/ui/views/plotTreeView.py" line="187"/>
         <source>**Plot:** {}</source>
         <translation>**プロット:** {}</translation>
     </message>
@@ -3577,52 +3727,52 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
 <context>
     <name>references</name>
     <message>
-        <location filename="../manuskript/models/references.py" line="504"/>
+        <location filename="../manuskript/models/references.py" line="501"/>
         <source>Not a reference: {}.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/models/references.py" line="402"/>
+        <location filename="../manuskript/models/references.py" line="399"/>
         <source>Unknown reference: {}.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/models/references.py" line="103"/>
+        <location filename="../manuskript/models/references.py" line="106"/>
         <source>Path:</source>
         <translation type="unfinished">パス：</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/references.py" line="104"/>
+        <location filename="../manuskript/models/references.py" line="107"/>
         <source>Stats:</source>
         <translation>統計:</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/references.py" line="105"/>
+        <location filename="../manuskript/models/references.py" line="108"/>
         <source>POV:</source>
         <translation type="unfinished">POV：</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/references.py" line="106"/>
+        <location filename="../manuskript/models/references.py" line="109"/>
         <source>Status:</source>
         <translation>状態：</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/references.py" line="107"/>
+        <location filename="../manuskript/models/references.py" line="110"/>
         <source>Label:</source>
         <translation>ラベル：</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/references.py" line="108"/>
+        <location filename="../manuskript/models/references.py" line="111"/>
         <source>Short summary:</source>
         <translation>短い要約：</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/references.py" line="109"/>
+        <location filename="../manuskript/models/references.py" line="112"/>
         <source>Long summary:</source>
         <translation>長い要約：</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/references.py" line="110"/>
+        <location filename="../manuskript/models/references.py" line="113"/>
         <source>Notes:</source>
         <translation>ノート:</translation>
     </message>
@@ -3642,72 +3792,72 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/models/references.py" line="367"/>
+        <location filename="../manuskript/models/references.py" line="364"/>
         <source>Go to {}.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/models/references.py" line="362"/>
+        <location filename="../manuskript/models/references.py" line="359"/>
         <source>Description</source>
         <translation type="unfinished">説明</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/references.py" line="282"/>
+        <location filename="../manuskript/models/references.py" line="281"/>
         <source>Result</source>
         <translation type="unfinished">結果</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/references.py" line="283"/>
+        <location filename="../manuskript/models/references.py" line="282"/>
         <source>Characters</source>
         <translation>登場人物</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/references.py" line="284"/>
+        <location filename="../manuskript/models/references.py" line="283"/>
         <source>Resolution steps</source>
         <translation type="unfinished">解決手順</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/references.py" line="363"/>
+        <location filename="../manuskript/models/references.py" line="360"/>
         <source>Passion</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/models/references.py" line="364"/>
+        <location filename="../manuskript/models/references.py" line="361"/>
         <source>Conflict</source>
         <translation type="unfinished">対立</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/references.py" line="501"/>
+        <location filename="../manuskript/models/references.py" line="498"/>
         <source>&lt;b&gt;Unknown reference:&lt;/b&gt; {}.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/models/references.py" line="509"/>
+        <location filename="../manuskript/models/references.py" line="506"/>
         <source>Folder: &lt;b&gt;{}&lt;/b&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/models/references.py" line="511"/>
+        <location filename="../manuskript/models/references.py" line="508"/>
         <source>Text: &lt;b&gt;{}&lt;/b&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/models/references.py" line="516"/>
+        <location filename="../manuskript/models/references.py" line="513"/>
         <source>Character: &lt;b&gt;{}&lt;/b&gt;</source>
         <translation>登場人物： &lt;b&gt;{}&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/references.py" line="519"/>
+        <location filename="../manuskript/models/references.py" line="516"/>
         <source>Plot: &lt;b&gt;{}&lt;/b&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/models/references.py" line="522"/>
+        <location filename="../manuskript/models/references.py" line="519"/>
         <source>World: &lt;b&gt;{name}&lt;/b&gt;{path}</source>
         <translation>世界：&lt;b&gt;{name}&lt;/b&gt;{path}</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/references.py" line="596"/>
+        <location filename="../manuskript/models/references.py" line="592"/>
         <source>Referenced in:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3742,7 +3892,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/revisions_ui.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">フォーム</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions_ui.ui" line="107"/>
@@ -3750,12 +3900,12 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/revisions.py" line="259"/>
+        <location filename="../manuskript/ui/revisions.py" line="257"/>
         <source>Restore</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/revisions.py" line="260"/>
+        <location filename="../manuskript/ui/revisions.py" line="258"/>
         <source>Delete</source>
         <translation type="unfinished">削除</translation>
     </message>
@@ -3815,12 +3965,12 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
         <translation>{} 秒前</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/revisions.py" line="183"/>
+        <location filename="../manuskript/ui/revisions.py" line="182"/>
         <source>Line {}:</source>
         <translation>行 {}：</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/revisions.py" line="263"/>
+        <location filename="../manuskript/ui/revisions.py" line="261"/>
         <source>Clear all</source>
         <translation>すべて消去</translation>
     </message>
@@ -3830,118 +3980,63 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/search_ui.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">フォーム</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search_ui.ui" line="46"/>
         <source>Search for...</source>
         <translation>検索する...</translation>
     </message>
-    <message>
-        <location filename="../manuskript/ui/search.py" line="43"/>
-        <source>Search in:</source>
-        <translation>で検索：</translation>
-    </message>
-    <message>
-        <location filename="../manuskript/ui/search.py" line="47"/>
-        <source>All</source>
-        <translation>すべて</translation>
-    </message>
-    <message>
-        <location filename="../manuskript/ui/search.py" line="48"/>
-        <source>Title</source>
-        <translation>表題</translation>
-    </message>
-    <message>
-        <location filename="../manuskript/ui/search.py" line="49"/>
-        <source>Text</source>
-        <translation>テキスト</translation>
-    </message>
-    <message>
-        <location filename="../manuskript/ui/search.py" line="50"/>
-        <source>Summary</source>
-        <translation>要約</translation>
-    </message>
-    <message>
-        <location filename="../manuskript/ui/search.py" line="51"/>
-        <source>Notes</source>
-        <translation>ノート</translation>
-    </message>
-    <message>
-        <location filename="../manuskript/ui/search.py" line="52"/>
-        <source>POV</source>
-        <translation>POV</translation>
-    </message>
-    <message>
-        <location filename="../manuskript/ui/search.py" line="53"/>
-        <source>Status</source>
-        <translation>状態</translation>
-    </message>
-    <message>
-        <location filename="../manuskript/ui/search.py" line="54"/>
-        <source>Label</source>
-        <translation>ラベル</translation>
-    </message>
-    <message>
-        <location filename="../manuskript/ui/search.py" line="64"/>
-        <source>Options:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../manuskript/ui/search.py" line="68"/>
-        <source>Case sensitive</source>
-        <translation>大文字と小文字を区別</translation>
-    </message>
 </context>
 <context>
     <name>settingsWindow</name>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="649"/>
+        <location filename="../manuskript/settingsWindow.py" line="674"/>
         <source>New status</source>
         <translation>新しい状態</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="670"/>
+        <location filename="../manuskript/settingsWindow.py" line="695"/>
         <source>New label</source>
         <translation>新しいラベル</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="706"/>
+        <location filename="../manuskript/settingsWindow.py" line="731"/>
         <source>newtheme</source>
         <translation>新しい主題</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="716"/>
+        <location filename="../manuskript/settingsWindow.py" line="741"/>
         <source>New theme</source>
         <translation>新しい主題</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="748"/>
+        <location filename="../manuskript/settingsWindow.py" line="773"/>
         <source> (read-only)</source>
         <translation> (読み取り専用)</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="509"/>
+        <location filename="../manuskript/settingsWindow.py" line="534"/>
         <source>Open Image</source>
         <translation>画像を開く</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="509"/>
+        <location filename="../manuskript/settingsWindow.py" line="534"/>
         <source>Image files (*.jpg; *.jpeg; *.png)</source>
         <translation>画像 (*.jpg; *.jpeg; *.png)</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="525"/>
+        <location filename="../manuskript/settingsWindow.py" line="550"/>
         <source>Error</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="522"/>
+        <location filename="../manuskript/settingsWindow.py" line="547"/>
         <source>Unable to load selected file</source>
         <translation>選択したファイルを読み込めませんでした</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="525"/>
+        <location filename="../manuskript/settingsWindow.py" line="550"/>
         <source>Unable to add selected image:
 {}</source>
         <translation>選択した画像を追加できません：
@@ -3953,7 +4048,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/views/sldImportance_ui.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">フォーム</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/sldImportance_ui.ui" line="39"/>
@@ -4013,7 +4108,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/views/storylineView_ui.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">フォーム</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/storylineView.py" line="36"/>
@@ -4029,22 +4124,22 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
 <context>
     <name>tabSplitter</name>
     <message>
-        <location filename="../manuskript/ui/editors/tabSplitter.py" line="65"/>
+        <location filename="../manuskript/ui/editors/tabSplitter.py" line="67"/>
         <source>Open selected items in that view.</source>
         <translation>この画面で選択した項目を開きます。</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/editors/tabSplitter.py" line="156"/>
+        <location filename="../manuskript/ui/editors/tabSplitter.py" line="158"/>
         <source>Split horizontally</source>
         <translation>画面を水平方向に分割する</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/editors/tabSplitter.py" line="166"/>
+        <location filename="../manuskript/ui/editors/tabSplitter.py" line="168"/>
         <source>Close split</source>
         <translation>画面の分割を閉じる</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/editors/tabSplitter.py" line="202"/>
+        <location filename="../manuskript/ui/editors/tabSplitter.py" line="204"/>
         <source>Split vertically</source>
         <translation>縦に分割</translation>
     </message>
@@ -4052,9 +4147,9 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
 <context>
     <name>textEditView</name>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="306"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="313"/>
         <source>Various</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">雑多</translation>
     </message>
 </context>
 <context>
@@ -4062,7 +4157,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/editors/textFormat_ui.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">フォーム</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/textFormat.py" line="18"/>
@@ -4133,7 +4228,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/welcome_ui.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">フォーム</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome_ui.ui" line="50"/>
@@ -4151,27 +4246,27 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
         <translation>空</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="224"/>
+        <location filename="../manuskript/ui/welcome.py" line="225"/>
         <source>Novel</source>
         <translation>小説</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="229"/>
+        <location filename="../manuskript/ui/welcome.py" line="230"/>
         <source>Novella</source>
         <translation>中編小説</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="234"/>
+        <location filename="../manuskript/ui/welcome.py" line="235"/>
         <source>Short Story</source>
         <translation>短編小説</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="246"/>
+        <location filename="../manuskript/ui/welcome.py" line="247"/>
         <source>Research paper</source>
         <translation>研究論文</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="417"/>
+        <location filename="../manuskript/ui/welcome.py" line="418"/>
         <source>Demo projects</source>
         <translation>デモプロジェクト</translation>
     </message>
@@ -4206,147 +4301,147 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
         <translation>作成</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="157"/>
+        <location filename="../manuskript/ui/welcome.py" line="158"/>
         <source>Open project</source>
         <translation>プロジェクトを開く</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="157"/>
+        <location filename="../manuskript/ui/welcome.py" line="158"/>
         <source>Manuskript project (*.msk);;All files (*)</source>
         <translation>Manuskript プロジェクト (*.msk);;すべてのファイル (*)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="171"/>
+        <location filename="../manuskript/ui/welcome.py" line="172"/>
         <source>Save project as...</source>
         <translation>名前を付けてプロジェクトを保存...</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="195"/>
+        <location filename="../manuskript/ui/welcome.py" line="196"/>
         <source>Manuskript project (*.msk)</source>
         <translation>Manuskript プロジェクト (*.msk)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="187"/>
+        <location filename="../manuskript/ui/welcome.py" line="188"/>
         <source>Manuskript</source>
         <translation>Manuskript</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="195"/>
+        <location filename="../manuskript/ui/welcome.py" line="196"/>
         <source>Create New Project</source>
         <translation>新しいプロジェクトを作成する</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="207"/>
+        <location filename="../manuskript/ui/welcome.py" line="208"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="207"/>
+        <location filename="../manuskript/ui/welcome.py" line="208"/>
         <source>Overwrite existing project {} ?</source>
         <translation>既存のプロジェクト {} を上書きしますか？</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="223"/>
+        <location filename="../manuskript/ui/welcome.py" line="224"/>
         <source>Empty fiction</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="455"/>
+        <location filename="../manuskript/ui/welcome.py" line="448"/>
         <source>Chapter</source>
         <translation>チャプター</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="456"/>
+        <location filename="../manuskript/ui/welcome.py" line="449"/>
         <source>Scene</source>
         <translation>シーン</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="238"/>
+        <location filename="../manuskript/ui/welcome.py" line="239"/>
         <source>Trilogy</source>
         <translation>三部作</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="238"/>
+        <location filename="../manuskript/ui/welcome.py" line="239"/>
         <source>Book</source>
         <translation>本</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="246"/>
+        <location filename="../manuskript/ui/welcome.py" line="247"/>
         <source>Section</source>
         <translation>セクション</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="245"/>
+        <location filename="../manuskript/ui/welcome.py" line="246"/>
         <source>Empty non-fiction</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="307"/>
+        <location filename="../manuskript/ui/welcome.py" line="308"/>
         <source>words each.</source>
         <translation>単語 (各項目)。</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="310"/>
+        <location filename="../manuskript/ui/welcome.py" line="311"/>
         <source>of</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="334"/>
+        <location filename="../manuskript/ui/welcome.py" line="335"/>
         <source>Text</source>
         <translation>テキスト</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="337"/>
+        <location filename="../manuskript/ui/welcome.py" line="338"/>
         <source>Something</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="383"/>
+        <location filename="../manuskript/ui/welcome.py" line="384"/>
         <source>&lt;b&gt;Total:&lt;/b&gt; {} words (~ {} pages)</source>
         <translation>&lt;b&gt;合計：&lt;/b&gt; {} 単語 (約 {} ページ)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="404"/>
+        <location filename="../manuskript/ui/welcome.py" line="405"/>
         <source>Fiction</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="410"/>
+        <location filename="../manuskript/ui/welcome.py" line="411"/>
         <source>Non-fiction</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="453"/>
+        <location filename="../manuskript/ui/welcome.py" line="446"/>
         <source>Idea</source>
         <translation>アイディア</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="454"/>
+        <location filename="../manuskript/ui/welcome.py" line="447"/>
         <source>Note</source>
         <translation>ノート</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="457"/>
+        <location filename="../manuskript/ui/welcome.py" line="450"/>
         <source>Research</source>
         <translation>研究</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="465"/>
+        <location filename="../manuskript/ui/welcome.py" line="457"/>
         <source>TODO</source>
         <translation>TODO</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="466"/>
+        <location filename="../manuskript/ui/welcome.py" line="458"/>
         <source>First draft</source>
         <translation>初稿</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="467"/>
+        <location filename="../manuskript/ui/welcome.py" line="459"/>
         <source>Second draft</source>
         <translation>第二稿</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="468"/>
+        <location filename="../manuskript/ui/welcome.py" line="460"/>
         <source>Final</source>
         <translation>決定稿</translation>
     </message>
@@ -4354,212 +4449,212 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
 <context>
     <name>worldModel</name>
     <message>
-        <location filename="../manuskript/models/worldModel.py" line="134"/>
+        <location filename="../manuskript/models/worldModel.py" line="136"/>
         <source>New item</source>
         <translation>新しい項目</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/worldModel.py" line="246"/>
+        <location filename="../manuskript/models/worldModel.py" line="251"/>
         <source>Fantasy world building</source>
         <translation>空想の世界を築く</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/worldModel.py" line="246"/>
+        <location filename="../manuskript/models/worldModel.py" line="251"/>
         <source>Physical</source>
         <translation>自然</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/worldModel.py" line="246"/>
+        <location filename="../manuskript/models/worldModel.py" line="251"/>
         <source>Climate</source>
         <translation>気候</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/worldModel.py" line="246"/>
+        <location filename="../manuskript/models/worldModel.py" line="251"/>
         <source>Topography</source>
         <translation>地形</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/worldModel.py" line="246"/>
+        <location filename="../manuskript/models/worldModel.py" line="251"/>
         <source>Astronomy</source>
         <translation>天文</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/worldModel.py" line="246"/>
+        <location filename="../manuskript/models/worldModel.py" line="251"/>
         <source>Wild life</source>
         <translation>野生動物</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/worldModel.py" line="246"/>
+        <location filename="../manuskript/models/worldModel.py" line="251"/>
         <source>Flora</source>
         <translation>植物</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/worldModel.py" line="246"/>
+        <location filename="../manuskript/models/worldModel.py" line="251"/>
         <source>History</source>
         <translation>歴史</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/worldModel.py" line="246"/>
+        <location filename="../manuskript/models/worldModel.py" line="251"/>
         <source>Races</source>
         <translation>人種・民族・種族</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/worldModel.py" line="246"/>
+        <location filename="../manuskript/models/worldModel.py" line="251"/>
         <source>Diseases</source>
         <translation>病気</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/worldModel.py" line="257"/>
+        <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Cultural</source>
         <translation>文化</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/worldModel.py" line="257"/>
+        <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Customs</source>
         <translation>風習</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/worldModel.py" line="257"/>
+        <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Food</source>
         <translation>食</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/worldModel.py" line="257"/>
+        <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Languages</source>
         <translation>言語</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/worldModel.py" line="257"/>
+        <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Education</source>
         <translation>学問</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/worldModel.py" line="257"/>
+        <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Dresses</source>
         <translation>服装</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/worldModel.py" line="257"/>
+        <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Science</source>
         <translation>科学</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/worldModel.py" line="257"/>
+        <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Calendar</source>
         <translation>暦</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/worldModel.py" line="257"/>
+        <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Bodily language</source>
         <translation>身振り手振り等の仕草による意思の伝え方</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/worldModel.py" line="257"/>
+        <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Ethics</source>
         <translation>倫理</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/worldModel.py" line="257"/>
+        <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Religion</source>
         <translation>宗教</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/worldModel.py" line="257"/>
+        <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Government</source>
         <translation>統治体</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/worldModel.py" line="257"/>
+        <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Politics</source>
         <translation>政治</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/worldModel.py" line="257"/>
+        <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Gender roles</source>
         <translation>性別による役割</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/worldModel.py" line="257"/>
+        <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Music and arts</source>
         <translation>音楽、芸術</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/worldModel.py" line="257"/>
+        <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Architecture</source>
         <translation>建築術</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/worldModel.py" line="257"/>
+        <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Military</source>
         <translation>軍事</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/worldModel.py" line="257"/>
+        <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Technology</source>
         <translation>技術</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/worldModel.py" line="257"/>
+        <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Courtship</source>
         <translation>求婚</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/worldModel.py" line="257"/>
+        <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Demography</source>
         <translation>人口統計</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/worldModel.py" line="257"/>
+        <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Transportation</source>
         <translation>交通</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/worldModel.py" line="257"/>
+        <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Medicine</source>
         <translation>医療</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/worldModel.py" line="280"/>
+        <location filename="../manuskript/models/worldModel.py" line="285"/>
         <source>Magic system</source>
         <translation>魔術体系</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/worldModel.py" line="280"/>
+        <location filename="../manuskript/models/worldModel.py" line="285"/>
         <source>Rules</source>
         <translation>規則・規範</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/worldModel.py" line="280"/>
+        <location filename="../manuskript/models/worldModel.py" line="285"/>
         <source>Organization</source>
         <translation>団体</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/worldModel.py" line="280"/>
+        <location filename="../manuskript/models/worldModel.py" line="285"/>
         <source>Magical objects</source>
         <translation>魔術道具</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/worldModel.py" line="280"/>
+        <location filename="../manuskript/models/worldModel.py" line="285"/>
         <source>Magical places</source>
         <translation>魔術の場所</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/worldModel.py" line="280"/>
+        <location filename="../manuskript/models/worldModel.py" line="285"/>
         <source>Magical races</source>
         <translation>魔術による品種</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/worldModel.py" line="287"/>
+        <location filename="../manuskript/models/worldModel.py" line="292"/>
         <source>Important places</source>
         <translation>重要な場所</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/worldModel.py" line="288"/>
+        <location filename="../manuskript/models/worldModel.py" line="293"/>
         <source>Important objects</source>
         <translation>重要な道具</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/worldModel.py" line="246"/>
+        <location filename="../manuskript/models/worldModel.py" line="251"/>
         <source>Natural resources</source>
         <translation>天然資源</translation>
     </message>
