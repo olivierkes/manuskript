@@ -6,17 +6,17 @@
     <message>
         <location filename="../manuskript/exporter/manuskript/__init__.py" line="15"/>
         <source>Default exporter, provides basic formats used by other exporters.</source>
-        <translation>Exporteur de base, fournit les formats de base utilisés par les autres exporteurs.</translation>
+        <translation>Exportateur de base, fournit les formats de base utilisés par les autres exportateurs.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="18"/>
         <source>Basic HTML output using the Python module &apos;markdown&apos;.</source>
-        <translation>Format HTML de base, utilisant le module python &apos;markdown&apos;.</translation>
+        <translation>Format HTML de base, utilisant le module Python &apos;markdown&apos;.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="19"/>
         <source>Python module &apos;markdown&apos;.</source>
-        <translation>module python &apos;markdown&apos;.</translation>
+        <translation>Module Python &apos;markdown&apos;.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/HTML.py" line="13"/>
@@ -37,7 +37,8 @@
         <location filename="../manuskript/exporter/manuskript/markdown.py" line="14"/>
         <source>Just like plain text, excepts adds markdown titles.
                           Presupposes that texts are formatted in markdown.</source>
-        <translation>Comme en texte brute, mais rajoute les titres markdown.</translation>
+        <translation>Comme en texte brut, mais rajoute les titres markdown.
+Présuppose que les textes sont formatés en markdown.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/markdown.py" line="60"/>
@@ -47,7 +48,7 @@
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="14"/>
         <source>Plain text</source>
-        <translation>Texte brute</translation>
+        <translation>Texte brut</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="15"/>
@@ -100,7 +101,8 @@ Par exemple &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</trans
         <location filename="../manuskript/exporter/pandoc/plainText.py" line="10"/>
         <source>Export to markdown, using pandoc. Allows more formatting options
     than the basic manuskript exporter.</source>
-        <translation>Export vers markdown en utilisant pandoc. Permet plus de possibilités que l&apos;exporteur basique intégré à manuskript.</translation>
+        <translation>Exporte vers markdown en utilisant pandoc. Permet plus de possibilités
+que l&apos;exportateur basique intégré à manuskript.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/plainText.py" line="22"/>
