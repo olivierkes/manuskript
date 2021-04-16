@@ -1402,7 +1402,7 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message encoding="UTF-8">
         <location filename="../manuskript/ui/mainWindow.ui" line="2546"/>
         <source>&amp;Import…</source>
-        <translation>&amp;importuj…</translation>
+        <translation>&amp;Import…</translation>
     </message>
     <message encoding="UTF-8">
         <location filename="../manuskript/ui/mainWindow.ui" line="2594"/>
@@ -2238,7 +2238,7 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3511"/>
         <source>Margins:</source>
-        <translation>Marginesy zewnętrzne:</translation>
+        <translation>Marginesy:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3540"/>
