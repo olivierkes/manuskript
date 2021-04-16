@@ -3,6 +3,9 @@
 
 import re
 
+import logging
+LOGGER = logging.getLogger(__name__)
+
 ###############################################################################
 # SHORT REFERENCES
 ###############################################################################
@@ -187,7 +190,7 @@ def infos(ref):
     elif _type == CharacterLetter:
         m = mainWindow().mdlCharacter
         c = m.getCharacterByID(int(_ref))
-        if c is None:
+        if c == None:
             return qApp.translate("references", "Unknown reference: {}.").format(ref)
 
         index = c.index()
@@ -627,7 +630,7 @@ def open(ref):
             mw.lstCharacters.setCurrentItem(item)
             return True
 
-        print("Error: Ref {} not found".format(ref))
+        LOGGER.error("Character reference {} not found.".format(ref))
         return False
 
     elif _type == TextLetter:
@@ -639,7 +642,7 @@ def open(ref):
             mw.mainEditor.setCurrentModelIndex(index, newTab=True)
             return True
         else:
-            print("Ref not found")
+            LOGGER.error("Text reference {} not found.".format(ref))
             return False
 
     elif _type == PlotLetter:
@@ -651,7 +654,7 @@ def open(ref):
             mw.lstPlots.setCurrentItem(item)
             return True
 
-        print("Ref not found")
+        LOGGER.error("Plot reference {} not found.".format(ref))
         return False
 
     elif _type == WorldLetter:
@@ -664,8 +667,8 @@ def open(ref):
                     mw.mdlWorld.indexFromItem(item))
             return True
 
-        print("Ref not found")
+        LOGGER.error("World reference {} not found.".format(ref))
         return False
 
-    print("Ref not implemented")
+    LOGGER.error("Unable to identify reference type: {}.".format(ref))
     return False

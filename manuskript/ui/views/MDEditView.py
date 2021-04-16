@@ -14,6 +14,8 @@ from manuskript.ui.highlighters.markdownEnums import MarkdownState as MS
 from manuskript.ui.highlighters.markdownTokenizer import MarkdownTokenizer as MT
 from manuskript import functions as F
 
+import logging
+LOGGER = logging.getLogger(__name__)
 
 class MDEditView(textEditView):
 
@@ -506,13 +508,15 @@ class MDEditView(textEditView):
         """
         When mouse moves, we show tooltip when appropriate.
         """
+        self.beginTooltipMoveEvent()
         textEditView.mouseMoveEvent(self, event)
+        self.endTooltipMoveEvent()
 
         onRect = [r for r in self.clickRects if r.rect.contains(event.pos())]
 
         if not onRect:
             qApp.restoreOverrideCursor()
-            QToolTip.hideText()
+            self.hideTooltip()
             return
 
         ct = onRect[0]
@@ -534,7 +538,7 @@ class MDEditView(textEditView):
 
         if tooltip:
             tooltip = self.tr("{} (CTRL+Click to open)").format(tooltip)
-            QToolTip.showText(self.mapToGlobal(event.pos()), tooltip)
+            self.showTooltip(self.mapToGlobal(event.pos()), tooltip)
 
     def mouseReleaseEvent(self, event):
         textEditView.mouseReleaseEvent(self, event)
@@ -658,10 +662,10 @@ class ImageTooltip:
             return
         else:
             # Somehow we lost track. Log what we can to hopefully figure it out.
-            print("Warning: unable to match fetched data for tooltip to original request.")
-            print("- Completed request:", url_key)
-            print("- Status upon finishing:", reply.error(), reply.errorString())
-            print("- Currently processing:", ImageTooltip.processing)
+            LOGGER.warning("Unable to match fetched data for tooltip to original request.")
+            LOGGER.warning("- Completed request: %s", url_key)
+            LOGGER.warning("- Status upon finishing: %s, %s", reply.error(), reply.errorString())
+            LOGGER.warning("- Currently processing: %s", ImageTooltip.processing)
             return
 
         # Update cache with retrieved data.

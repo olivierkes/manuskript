@@ -38,7 +38,7 @@ class pandocImporter(abstractImporter):
 
         r = pandocExporter().run(args)
 
-        if r is None:
+        if r == None:
             return None
 
         if formatTo == "opml":

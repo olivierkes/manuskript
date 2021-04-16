@@ -8,7 +8,7 @@ class blockUserData(QTextBlockUserData):
     def getUserData(block):
         """Returns userData if it exists, or a blank one."""
         data = block.userData()
-        if data is None:
+        if data == None:
             data = blockUserData()
         return data
 

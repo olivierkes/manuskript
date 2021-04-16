@@ -12,13 +12,14 @@ import manuskript.ui.style as S
 from manuskript import settings
 from manuskript import functions as F
 
+import logging
+LOGGER = logging.getLogger(__name__)
 
 class BasicHighlighter(QSyntaxHighlighter):
     def __init__(self, editor):
         QSyntaxHighlighter.__init__(self, editor.document())
 
         self.editor = editor
-        self._misspelledColor = Qt.red
         self._defaultBlockFormat = QTextBlockFormat()
         self._defaultCharFormat = QTextCharFormat()
         self.defaultTextColor = QColor(S.text)
@@ -26,6 +27,40 @@ class BasicHighlighter(QSyntaxHighlighter):
         self.markupColor = QColor(S.textLight)
         self.linkColor = QColor(S.link)
         self.spellingErrorColor = QColor(Qt.red)
+
+        # Matches during checking can be separated by their type (all of them listed here):
+        # https://languagetool.org/development/api/org/languagetool/rules/ITSIssueType.html
+        #
+        # These are the colors for actual spell-, grammar- and style-checking:
+        self._errorColors = {
+            'addition' : QColor(255, 215, 0),               # gold
+            'characters' : QColor(135, 206, 235),           # sky blue
+            'duplication' : QColor(0, 255, 255),            # cyan / aqua
+            'formatting' : QColor(0, 128, 128),             # teal
+            'grammar' : QColor(0, 0, 255),                  # blue
+            'inconsistency' : QColor(128, 128, 0),          # olive
+            'inconsistententities' : QColor(46, 139, 87),   # sea green
+            'internationalization' : QColor(255, 165, 0),   # orange
+            'legal' : QColor(255, 69, 0),                   # orange red
+            'length' : QColor(47, 79, 79),                  # dark slate gray
+            'localespecificcontent' : QColor(188, 143, 143),# rosy brown
+            'localeviolation' : QColor(128, 0, 0),          # maroon
+            'markup' : QColor(128, 0, 128),                 # purple
+            'misspelling' : QColor(255, 0, 0),              # red
+            'mistranslation' : QColor(255, 0, 255),         # magenta / fuchsia
+            'nonconformance' : QColor(255, 218, 185),       # peach puff
+            'numbers' : QColor(65, 105, 225),               # royal blue
+            'omission' : QColor(255, 20, 147),              # deep pink
+            'other' : QColor(138, 43, 226),                 # blue violet
+            'patternproblem' : QColor(0, 128, 0),           # green
+            'register' : QColor(112,128,144),               # slate gray
+            'style' : QColor(0, 255, 0),                    # lime
+            'terminology' : QColor(0, 0, 128),              # navy
+            'typographical' : QColor(255, 255, 0),          # yellow
+            'uncategorized' : QColor(128, 128, 128),        # gray
+            'untranslated' : QColor(210, 105, 30),          # chocolate
+            'whitespace' : QColor(192, 192, 192)            # silver
+        }
 
     def setDefaultBlockFormat(self, bf):
         self._defaultBlockFormat = bf
@@ -36,7 +71,7 @@ class BasicHighlighter(QSyntaxHighlighter):
         self.rehighlight()
 
     def setMisspelledColor(self, color):
-        self._misspelledColor = color
+        self._errorColors['misspelled'] = color
 
     def updateColorScheme(self, rehighlight=True):
         """
@@ -97,14 +132,14 @@ class BasicHighlighter(QSyntaxHighlighter):
         before you do any custom highlighting. Or implement doHighlightBlock.
         """
 
-        #print(">", self.currentBlock().document().availableUndoSteps())
+        #LOGGER.debug("undoSteps before: %s", self.currentBlock().document().availableUndoSteps())
         c = QTextCursor(self.currentBlock())
         #c.joinPreviousEditBlock()
         bf = QTextBlockFormat(self._defaultBlockFormat)
         if bf != c.blockFormat():
             c.setBlockFormat(bf)
         #c.endEditBlock()
-        #print(" ", self.currentBlock().document().availableUndoSteps())
+        #LOGGER.debug("undoSteps after: %s", self.currentBlock().document().availableUndoSteps())
 
         # self.setFormat(0, len(text), self._defaultCharFormat)
 
@@ -134,32 +169,25 @@ class BasicHighlighter(QSyntaxHighlighter):
                            txt.end() - txt.start(),
                            fmt)
 
-        # Spell checking
+        if hasattr(self.editor, "spellcheck") and self.editor.spellcheck and self.editor._dict:
+            # Spell checking
 
-        # Following algorithm would not check words at the end of line.
-        # This hacks adds a space to every line where the text cursor is not
-        # So that it doesn't spellcheck while typing, but still spellchecks at
-        # end of lines. See github's issue #166.
-        textedText = text
-        if self.currentBlock().position() + len(text) != \
-           self.editor.textCursor().position():
-            textedText = text + " "
+            # Following algorithm would not check words at the end of line.
+            # This hacks adds a space to every line where the text cursor is not
+            # So that it doesn't spellcheck while typing, but still spellchecks at
+            # end of lines. See github's issue #166.
+            textedText = text
+            if self.currentBlock().position() + len(text) != \
+               self.editor.textCursor().position():
+                textedText = text + " "
 
-        # Based on http://john.nachtimwald.com/2009/08/22/qplaintextedit-with-in-line-spell-check/
-        WORDS = r'(?iu)((?:[^_\W]|\')+)[^A-Za-z0-9\']'
-        #         (?iu) means case insensitive and Unicode
-        #              ((?:[^_\W]|\')+) means words exclude underscores but include apostrophes
-        #                              [^A-Za-z0-9\'] used with above hack to prevent spellcheck while typing word
-        #
-        # See also https://stackoverflow.com/questions/2062169/regex-w-in-utf-8
-        if hasattr(self.editor, "spellcheck") and self.editor.spellcheck:
-            for word_object in re.finditer(WORDS, textedText):
-                if (self.editor._dict
-                        and self.editor._dict.isMisspelled(word_object.group(1))):
-                    format = self.format(word_object.start(1))
-                    format.setUnderlineColor(self._misspelledColor)
+            # The text should only be checked once as a whole
+            for match in self.editor._dict.checkText(textedText):
+                if match.locqualityissuetype in self._errorColors:
+                    highlight_color = self._errorColors[match.locqualityissuetype]
+
+                    format = self.format(match.start)
+                    format.setUnderlineColor(highlight_color)
                     # SpellCheckUnderline fails with some fonts
                     format.setUnderlineStyle(QTextCharFormat.WaveUnderline)
-                    self.setFormat(word_object.start(1),
-                                   word_object.end(1) - word_object.start(1),
-                                   format)
+                    self.setFormat(match.start, match.end - match.start, format)

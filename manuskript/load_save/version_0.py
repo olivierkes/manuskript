@@ -16,6 +16,9 @@ from manuskript import settings
 from manuskript.functions import iconColor, iconFromColorString, mainWindow
 from manuskript.models.characterModel import Character, CharacterInfo
 
+import logging
+LOGGER = logging.getLogger(__name__)
+
 try:
     import zlib  # Used with zipfile for compression
 
@@ -37,7 +40,7 @@ def saveProject():
 
     files.append((saveStandardItemModelXML(mw.mdlFlatData),
                   "flatModel.xml"))
-    print("ERROR: file format 0 does not save characters !")
+    LOGGER.error("File format 0 does not save characters!")
     # files.append((saveStandardItemModelXML(mw.mdlCharacter),
     #               "perso.xml"))
     files.append((saveStandardItemModelXML(mw.mdlWorld),
@@ -91,7 +94,7 @@ def saveStandardItemModelXML(mdl, xml=None):
     data = ET.SubElement(root, "data")
     saveItem(data, mdl)
 
-    # print(qApp.tr("Saving to {}.").format(xml))
+    # LOGGER.info("Saving to {}.".format(xml))
     if xml:
         ET.ElementTree(root).write(xml, encoding="UTF-8", xml_declaration=True, pretty_print=True)
     else:
@@ -189,13 +192,13 @@ def loadStandardItemModelXML(mdl, xml, fromString=False):
     """Load data to a QStandardItemModel mdl from xml.
     By default xml is a filename. If fromString=True, xml is a string containing the data."""
 
-    # print(qApp.tr("Loading {}... ").format(xml), end="")
+    # LOGGER.info("Loading {}...".format(xml))
 
     if not fromString:
         try:
             tree = ET.parse(xml)
         except:
-            print("Failed.")
+            LOGGER.error("Failed to load XML for QStandardItemModel (%s).", xml)
             return
     else:
         root = ET.fromstring(xml)
@@ -210,7 +213,7 @@ def loadStandardItemModelXML(mdl, xml, fromString=False):
     for l in root.find("header").find("vertical").findall("label"):
         vLabels.append(l.attrib["text"])
 
-    # print(root.find("header").find("vertical").text)
+    # LOGGER.debug(root.find("header").find("vertical").text)
 
     # mdl.setVerticalHeaderLabels(vLabels)
     # mdl.setHorizontalHeaderLabels(hLabels)

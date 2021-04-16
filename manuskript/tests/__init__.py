@@ -13,7 +13,8 @@ QApplication([])
 
 # Create app and mainWindow
 from manuskript import main
-app, MW = main.prepare(tests=True)
+arguments = main.process_commandline([])
+app, MW = main.prepare(arguments, tests=True)
 
 # FIXME: Again, don't know why, but when closing a project and then reopening
 #        one, we get a `TypeError: connection is not unique` in MainWindow:

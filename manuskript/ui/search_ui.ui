@@ -35,7 +35,7 @@
       <number>0</number>
      </property>
      <item>
-      <widget class="QLineEdit" name="text">
+      <widget class="QLineEdit" name="searchTextInput">
        <property name="inputMask">
         <string/>
        </property>

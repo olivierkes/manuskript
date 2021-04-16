@@ -8,6 +8,9 @@ from PyQt5.QtWidgets import qApp
 
 from manuskript.enums import Outline
 
+import logging
+LOGGER = logging.getLogger(__name__)
+
 # TODO: move some/all of those settings to application settings and not project settings
 #       in order to allow a shared project between several writers
 
@@ -47,6 +50,8 @@ corkSizeFactor = 100
 folderView = "cork"
 lastTab = 0
 openIndexes = [""]
+progressChars = False
+countSpaces = True
 autoSave = False
 autoSaveDelay = 5
 autoSaveNoChanges = True
@@ -123,7 +128,7 @@ def initDefaultValues():
 def save(filename=None, protocol=None):
 
     global spellcheck, dict, corkSliderFactor, viewSettings, corkSizeFactor, folderView, lastTab, openIndexes, \
-           autoSave, autoSaveDelay, saveOnQuit, autoSaveNoChanges, autoSaveNoChangesDelay, outlineViewColumns, \
+           progressChars, autoSave, autoSaveDelay, saveOnQuit, autoSaveNoChanges, autoSaveNoChangesDelay, outlineViewColumns, \
            corkBackground, corkStyle, fullScreenTheme, defaultTextType, textEditor, revisions, frequencyAnalyzer, viewMode, \
            saveToZip, dontShowDeleteWarning, fullscreenSettings
 
@@ -136,6 +141,8 @@ def save(filename=None, protocol=None):
         "folderView": folderView,
         "lastTab": lastTab,
         "openIndexes": openIndexes,
+        "progressChars": progressChars,
+        "countSpaces": countSpaces,
         "autoSave":autoSave,
         "autoSaveDelay":autoSaveDelay,
         # TODO: Settings Cleanup Task -- Rename saveOnQuit to saveOnProjectClose -- see PR #615
@@ -183,7 +190,7 @@ def load(string, fromString=False, protocol=None):
             allSettings = pickle.load(f)
 
         except:
-            print("{} doesn't exist, cannot load settings.".format(string))
+            LOGGER.error("Cannot load settings, {} does not exist.".format(string))
             return
     else:
         if protocol == 0:
@@ -234,6 +241,14 @@ def load(string, fromString=False, protocol=None):
     if "openIndexes" in allSettings:
         global openIndexes
         openIndexes = allSettings["openIndexes"]
+
+    if "progressChars" in allSettings:
+        global progressChars
+        progressChars = allSettings["progressChars"]
+
+    if "countSpaces" in allSettings:
+        global countSpaces
+        countSpaces = allSettings["countSpaces"]
 
     if "autoSave" in allSettings:
         global autoSave

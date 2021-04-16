@@ -5,7 +5,7 @@ import locale
 from PyQt5.QtCore import QModelIndex, QRect, QPoint
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QPixmap, QPainter, QIcon
-from PyQt5.QtWidgets import QWidget, qApp
+from PyQt5.QtWidgets import QWidget, qApp, QDesktopWidget
 
 from manuskript import settings
 from manuskript.enums import Outline
@@ -19,6 +19,9 @@ try:
     locale.setlocale(locale.LC_ALL, '')
 except:
     pass
+
+import logging
+LOGGER = logging.getLogger(__name__)
 
 class mainEditor(QWidget, Ui_mainEditor):
     """
@@ -64,6 +67,7 @@ class mainEditor(QWidget, Ui_mainEditor):
         QWidget.__init__(self, parent)
         self.setupUi(self)
         self._updating = False
+        self._fullScreen = None
 
         self.mw = mainWindow()
 
@@ -120,7 +124,7 @@ class mainEditor(QWidget, Ui_mainEditor):
         return self.tabSplitter.tab
 
     def currentEditor(self, tabWidget=None):
-        if tabWidget is None:
+        if tabWidget == None:
             tabWidget = self.currentTabWidget()
         return tabWidget.currentWidget()
         # return self.tab.currentWidget()
@@ -151,9 +155,13 @@ class mainEditor(QWidget, Ui_mainEditor):
         for ts in reversed(self.allTabSplitters()):
             ts.closeSplit()
 
+    def close(self):
+        if self._fullScreen is not None:
+            self._fullScreen.leaveFullscreen()
+
     def allTabs(self, tabWidget=None):
         """Returns all the tabs from the given tabWidget. If tabWidget is None, from the current tabWidget."""
-        if tabWidget is None:
+        if tabWidget == None:
             tabWidget = self.currentTabWidget()
         return [tabWidget.widget(i) for i in range(tabWidget.count())]
 
@@ -205,7 +213,7 @@ class mainEditor(QWidget, Ui_mainEditor):
 
         title = self.getIndexTitle(index)
 
-        if tabWidget is None:
+        if tabWidget == None:
             tabWidget = self.currentTabWidget()
 
         # Checking if tab is already opened
@@ -292,6 +300,7 @@ class mainEditor(QWidget, Ui_mainEditor):
             return
 
         index = self.currentEditor().currentIndex
+        
         if index.isValid():
             item = index.internalPointer()
         else:
@@ -300,15 +309,21 @@ class mainEditor(QWidget, Ui_mainEditor):
         if not item:
             item = self.mw.mdlOutline.rootItem
 
+        cc = item.data(Outline.charCount)
         wc = item.data(Outline.wordCount)
         goal = item.data(Outline.goal)
+        chars = item.data(Outline.charCount) # len(item.data(Outline.text)) 
         progress = item.data(Outline.goalPercentage)
 
         goal = uiParse(goal, None, int, lambda x: x>=0)
         progress = uiParse(progress, 0.0, float)
 
+        if not cc:
+            cc = 0
+        
         if not wc:
             wc = 0
+
         if goal:
             self.lblRedacProgress.show()
             rect = self.lblRedacProgress.geometry()
@@ -319,13 +334,31 @@ class mainEditor(QWidget, Ui_mainEditor):
             drawProgress(p, rect, progress, 2)
             del p
             self.lblRedacProgress.setPixmap(self.px)
-            self.lblRedacWC.setText(self.tr("{} words / {} ").format(
-                    locale.format_string("%d", wc, grouping=True),
-                    locale.format_string("%d", goal, grouping=True)))
+
+            if settings.progressChars:
+                self.lblRedacWC.setText(self.tr("({} chars) {}  words / {} ").format(
+                        locale.format("%d", cc, grouping=True),
+                        locale.format("%d", wc, grouping=True),
+                        locale.format("%d", goal, grouping=True)))
+                self.lblRedacWC.setToolTip("")
+            else:
+                self.lblRedacWC.setText(self.tr("{}  words / {} ").format(
+                        locale.format("%d", wc, grouping=True),
+                        locale.format("%d", goal, grouping=True)))
+                self.lblRedacWC.setToolTip(self.tr("{} chars").format(
+                        locale.format("%d", cc, grouping=True)))
         else:
             self.lblRedacProgress.hide()
-            self.lblRedacWC.setText(self.tr("{} words ").format(
-                    locale.format_string("%d", wc, grouping=True)))
+
+            if settings.progressChars:
+                self.lblRedacWC.setText(self.tr("{} chars ").format(
+                        locale.format("%d", cc, grouping=True)))
+                self.lblRedacWC.setToolTip("")
+            else:
+                self.lblRedacWC.setText(self.tr("{} words ").format(
+                        locale.format("%d", wc, grouping=True)))
+                self.lblRedacWC.setToolTip(self.tr("{} chars").format(
+                        locale.format("%d", cc, grouping=True)))
 
     ###############################################################################
     # VIEWS
@@ -354,14 +387,21 @@ class mainEditor(QWidget, Ui_mainEditor):
 
     def showFullScreen(self):
         if self.currentEditor():
-            self._fullScreen = fullScreenEditor(self.currentEditor().currentIndex)
+            currentScreenNumber = QDesktopWidget().screenNumber(widget=self)
+            self._fullScreen = fullScreenEditor(
+                self.currentEditor().currentIndex,
+                screenNumber=currentScreenNumber)
+            # Clean the variable when closing fullscreen prevent errors
+            self._fullScreen.exited.connect(self.clearFullScreen)
+
+    def clearFullScreen(self):
+        self._fullScreen = None
 
     ###############################################################################
     # DICT AND STUFF LIKE THAT
     ###############################################################################
 
     def setDict(self, dict):
-        print(dict)
         for w in self.allAllTabs():
             w.setDict(dict)
 

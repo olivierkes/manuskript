@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-import re
+import re, textwrap
 
 from PyQt5.Qt import QApplication
 from PyQt5.QtCore import QTimer, QModelIndex, Qt, QEvent, pyqtSignal, QRegExp, QLocale, QPersistentModelIndex, QMutex
 from PyQt5.QtGui import QTextBlockFormat, QTextCharFormat, QFont, QColor, QIcon, QMouseEvent, QTextCursor
-from PyQt5.QtWidgets import QWidget, QTextEdit, qApp, QAction, QMenu
+from PyQt5.QtWidgets import QWidget, QTextEdit, qApp, QAction, QMenu, QToolTip
 
 from manuskript import settings
 from manuskript.enums import Outline, World, Character, Plot
@@ -14,6 +14,11 @@ from manuskript.models import outlineModel, outlineItem
 from manuskript.ui.highlighters import BasicHighlighter
 from manuskript.ui import style as S
 from manuskript.functions import Spellchecker
+from manuskript.models.characterModel import Character, CharacterInfo
+
+
+import logging
+LOGGER = logging.getLogger(__name__)
 
 class textEditView(QTextEdit):
     def __init__(self, parent=None, index=None, html=None, spellcheck=None,
@@ -34,7 +39,7 @@ class textEditView(QTextEdit):
         self._themeData = None
         self._highlighterClass = BasicHighlighter
 
-        if spellcheck is None:
+        if spellcheck == None:
             spellcheck = settings.spellcheck
 
         self.spellcheck = spellcheck
@@ -47,6 +52,8 @@ class textEditView(QTextEdit):
         self.highlightWord = ""
         self.highligtCS = False
         self._dict = None
+        self._tooltip = { 'depth' : 0, 'active' : 0 }
+
         # self.document().contentsChanged.connect(self.submit, F.AUC)
 
         # Submit text changed only after 500ms without modifications
@@ -54,13 +61,13 @@ class textEditView(QTextEdit):
         self.updateTimer.setInterval(500)
         self.updateTimer.setSingleShot(True)
         self.updateTimer.timeout.connect(self.submit)
-        # self.updateTimer.timeout.connect(lambda: print("Timeout"))
+        # self.updateTimer.timeout.connect(lambda: LOGGER.debug("Timeout."))
 
         self.updateTimer.stop()
         self.document().contentsChanged.connect(self.updateTimer.start, F.AUC)
-        # self.document().contentsChanged.connect(lambda: print("Document changed"))
+        # self.document().contentsChanged.connect(lambda: LOGGER.debug("Document changed."))
 
-        # self.document().contentsChanged.connect(lambda: print(self.objectName(), "Contents changed"))
+        # self.document().contentsChanged.connect(lambda: LOGGER.debug("Contents changed: %s", self.objectName()))
 
         self.setEnabled(False)
 
@@ -163,9 +170,9 @@ class textEditView(QTextEdit):
 
     def loadFontSettings(self):
         if self._fromTheme or \
-                not self._index or \
-                    type(self._index.model()) != outlineModel or \
-                    self._column != Outline.text:
+            not self._index or \
+                type(self._index.model()) != outlineModel or \
+                self._column != Outline.text:
             return
 
         opt = settings.textEditor
@@ -173,7 +180,7 @@ class textEditView(QTextEdit):
         f.fromString(opt["font"])
         background = (opt["background"] if not opt["backgroundTransparent"]
                       else "transparent")
-        foreground = opt["fontColor"] # if not opt["backgroundTransparent"]
+        foreground = opt["fontColor"]  # if not opt["backgroundTransparent"]
         #                               else S.text
         # self.setFont(f)
         self.setStyleSheet("""QTextEdit{{
@@ -185,15 +192,16 @@ class textEditView(QTextEdit):
             {maxWidth}
             }}
             """.format(
-                bg=background,
-                foreground=foreground,
-                ff=f.family(),
-                fs="{}pt".format(str(f.pointSize())),
-                mTB = opt["marginsTB"],
-                mLR = opt["marginsLR"],
-                maxWidth = "max-width: {}px;".format(opt["maxWidth"]) if opt["maxWidth"] else "",
-                )
-            )
+            bg=background,
+            foreground=foreground,
+            ff=f.family(),
+            fs="{}pt".format(str(f.pointSize())),
+            mTB=opt["marginsTB"],
+            mLR=opt["marginsLR"],
+            maxWidth="max-width: {}px;".format(
+                opt["maxWidth"]) if opt["maxWidth"] else "",
+        )
+        )
         self._defaultFontSize = f.pointSize()
 
         # We set the parent background to the editor's background in case
@@ -205,11 +213,11 @@ class textEditView(QTextEdit):
                 QWidget#{name}{{
                     background: {bg};
                 }}""".format(
-                    # We style by name, otherwise all inheriting widgets get the same
-                    # colored background, for example context menu.
-                    name=self.parent().objectName(),
-                    bg=background,
-                ))
+                # We style by name, otherwise all inheriting widgets get the same
+                # colored background, for example context menu.
+                name=self.parent().objectName(),
+                bg=background,
+            ))
 
         cf = QTextCharFormat()
         # cf.setFont(f)
@@ -243,7 +251,7 @@ class textEditView(QTextEdit):
             if topLeft.parent() != self._index.parent():
                 return
 
-                # print("Model changed: ({}:{}), ({}:{}/{}), ({}:{}) for {} of {}".format(
+                # LOGGER.debug("Model changed: ({}:{}), ({}:{}/{}), ({}:{}) for {} of {}".format(
                 # topLeft.row(), topLeft.column(),
                 # self._index.row(), self._index.row(), self._column,
                 # bottomRight.row(), bottomRight.column(),
@@ -273,11 +281,11 @@ class textEditView(QTextEdit):
     def updateText(self):
         self._updating.lock()
 
-        # print("Updating", self.objectName())
+        # LOGGER.debug("Updating %s", self.objectName())
         if self._index:
             self.disconnectDocument()
             if self.toPlainText() != F.toString(self._index.data()):
-                # print("    Updating plaintext")
+                # LOGGER.debug("    Updating plaintext")
                 self.document().setPlainText(F.toString(self._index.data()))
             self.reconnectDocument()
 
@@ -314,18 +322,18 @@ class textEditView(QTextEdit):
         text = self.toPlainText()
         self._updating.unlock()
 
-        # print("Submitting", self.objectName())
+        # LOGGER.debug("Submitting %s", self.objectName())
         if self._index and self._index.isValid():
             # item = self._index.internalPointer()
             if text != self._index.data():
-                # print("    Submitting plain text")
+                # LOGGER.debug("    Submitting plain text")
                 self._model.setData(QModelIndex(self._index), text)
 
         elif self._indexes:
             for i in self._indexes:
                 item = i.internalPointer()
                 if text != F.toString(item.data(self._column)):
-                    print("Submitting many indexes")
+                    LOGGER.debug("Submitting many indexes")
                     self._model.setData(i, text)
 
     def keyPressEvent(self, event):
@@ -393,6 +401,49 @@ class textEditView(QTextEdit):
                                 Qt.LeftButton, Qt.LeftButton, Qt.NoModifier)
         QTextEdit.mousePressEvent(self, event)
 
+    def beginTooltipMoveEvent(self):
+        self._tooltip['depth'] += 1
+
+    def endTooltipMoveEvent(self):
+        self._tooltip['depth'] -= 1
+
+    def showTooltip(self, pos, text):
+        QToolTip.showText(pos, text)
+        self._tooltip['active'] = self._tooltip['depth']
+
+    def hideTooltip(self):
+        if self._tooltip['active'] == self._tooltip['depth']:
+            QToolTip.hideText()
+
+    def mouseMoveEvent(self, event):
+        """
+        When mouse moves, we show tooltip when appropriate.
+        """
+        self.beginTooltipMoveEvent()
+        QTextEdit.mouseMoveEvent(self, event)
+        self.endTooltipMoveEvent()
+
+        match = None
+
+        # Check if the selected word has any suggestions for correction
+        if self.spellcheck and self._dict:
+            cursor = self.cursorForPosition(event.pos())
+
+            # Searches for correlating/overlapping matches
+            suggestions = self._dict.findSuggestions(self.toPlainText(), cursor.selectionStart(), cursor.selectionEnd())
+
+            if len(suggestions) > 0:
+                # I think it should focus on one type of error at a time.
+                match = suggestions[0]
+
+        if match:
+            # Wrap the message into a fitting width
+            msg_lines = textwrap.wrap(match.msg, 48)
+
+            self.showTooltip(event.globalPos(), "\n".join(msg_lines))
+        else:
+            self.hideTooltip()
+
     def wheelEvent(self, event):
         """
         We catch wheelEvent if key modifier is CTRL to change font size.
@@ -427,58 +478,198 @@ class textEditView(QTextEdit):
             QAction.__init__(self, *args)
 
             self.triggered.connect(lambda x: self.correct.emit(
-                    str(self.text())))
+                str(self.text())))
 
     def contextMenuEvent(self, event):
         # Based on http://john.nachtimwald.com/2009/08/22/qplaintextedit-with-in-line-spell-check/
         popup_menu = self.createStandardContextMenu()
         popup_menu.exec_(event.globalPos())
 
+    def newCharacter(self):
+        text = self.sender().data()
+        LOGGER.debug(f'New character: {text}')
+        # switch to character page
+        mw = F.mainWindow()
+        mw.tabMain.setCurrentIndex(mw.TabPersos)
+        # add character
+        c = mw.mdlCharacter.addCharacter(name=text)
+        # switch to character
+        item = mw.lstCharacters.getItemByID(c.ID())
+        mw.lstCharacters.setCurrentItem(item)
+
+    def newPlotItem(self):
+        text = self.sender().data()
+        LOGGER.debug(f'New plot item: {text}')
+        # switch to plot page
+        mw = F.mainWindow()
+        mw.tabMain.setCurrentIndex(mw.TabPlots)
+        # add character
+        p, ID = mw.mdlPlots.addPlot(text)
+        # switch to character
+        plotIndex = mw.mdlPlots.getIndexFromID(ID.text())
+        # segfaults for some reason
+        # mw.lstSubPlots.setCurrentIndex(plotIndex)
+
+    def newWorldItem(self):
+        text = self.sender().data()
+        LOGGER.debug(f'New world item: {text}')
+        mw = F.mainWindow()
+        mw.tabMain.setCurrentIndex(mw.TabWorld)
+        item = mw.mdlWorld.addItem(title=text)
+        mw.treeWorld.setCurrentIndex(
+            mw.mdlWorld.indexFromItem(item))
+
+
+    def appendContextMenuEntriesForWord(self, popup_menu, selectedWord):
+        # add "new <something>" buttons at end
+        if selectedWord != None:
+            # new character
+            charAction = QAction(self.tr("&New Character"), popup_menu)
+            charAction.setIcon(F.themeIcon("characters"))
+            charAction.triggered.connect(self.newCharacter)
+            charAction.setData(selectedWord)
+            popup_menu.insertAction(None, charAction)
+
+            # new plot item
+            plotAction = QAction(self.tr("&New Plot Item"), popup_menu)
+            plotAction.setIcon(F.themeIcon("plots"))
+            plotAction.triggered.connect(self.newPlotItem)
+            plotAction.setData(selectedWord)
+            popup_menu.insertAction(None, plotAction)
+
+            # new world item
+            worldAction = QAction(self.tr("&New World Item"), popup_menu)
+            worldAction.setIcon(F.themeIcon("world"))
+            worldAction.triggered.connect(self.newWorldItem)
+            worldAction.setData(selectedWord)
+            popup_menu.insertAction(None, worldAction)
+
+        return popup_menu
+
     def createStandardContextMenu(self):
         popup_menu = QTextEdit.createStandardContextMenu(self)
 
-        if not self.spellcheck:
-            return popup_menu
-
-        # Select the word under the cursor.
-        # But only if there is no selection (otherwise it's impossible to select more text to copy/cut)
         cursor = self.textCursor()
-        if not cursor.hasSelection():
-            cursor.select(QTextCursor.WordUnderCursor)
-            self.setTextCursor(cursor)
+        selectedWord = cursor.selectedText() if cursor.hasSelection() else None
 
-        # Check if the selected word is misspelled and offer spelling
-        # suggestions if it is.
-        if self._dict and cursor.hasSelection():
-            text = str(cursor.selectedText())
-            valid = not self._dict.isMisspelled(text)
-            selectedWord = cursor.selectedText()
+        if not self.spellcheck:
+            return self.appendContextMenuEntriesForWord(popup_menu, selectedWord)
+
+        suggestions = []
+
+        # Check for any suggestions for corrections at the cursors position
+        if self._dict != None:
+            text = self.toPlainText()
+
+            suggestions = self._dict.findSuggestions(text, cursor.selectionStart(), cursor.selectionEnd())
+
+            # Select the word under the cursor if necessary.
+            # But only if there is no selection (otherwise it's impossible to select more text to copy/cut)
+            if not cursor.hasSelection() and len(suggestions) == 0:
+                old_position = cursor.position()
+
+                cursor.select(QTextCursor.WordUnderCursor)
+                self.setTextCursor(cursor)
+
+                if cursor.hasSelection():
+                    selectedWord = cursor.selectedText()
+
+                    # Check if the selected word is misspelled and offer spelling
+                    # suggestions if it is.
+                    suggestions = self._dict.findSuggestions(text, cursor.selectionStart(), cursor.selectionEnd())
+
+                if len(suggestions) == 0:
+                    cursor.clearSelection()
+                    cursor.setPosition(old_position, QTextCursor.MoveAnchor)
+                    self.setTextCursor(cursor)
+
+                    selectedWord = None
+
+        popup_menu = self.appendContextMenuEntriesForWord(popup_menu, selectedWord)
+
+        if len(suggestions) > 0 or selectedWord != None:
+            valid = len(suggestions) == 0
+
             if not valid:
-                spell_menu = QMenu(self.tr('Spelling Suggestions'), self)
-                spell_menu.setIcon(F.themeIcon("spelling"))
-                for word in self._dict.getSuggestions(text):
-                    action = self.SpellAction(word, spell_menu)
-                    action.correct.connect(self.correctWord)
-                    spell_menu.addAction(action)
+                # I think it should focus on one type of error at a time.
+                match = suggestions[0]
+
                 popup_menu.insertSeparator(popup_menu.actions()[0])
-                # Adds: add to dictionary
-                addAction = QAction(self.tr("&Add to dictionary"), popup_menu)
-                addAction.setIcon(QIcon.fromTheme("list-add"))
-                addAction.triggered.connect(self.addWordToDict)
-                addAction.setData(selectedWord)
-                popup_menu.insertAction(popup_menu.actions()[0], addAction)
-                # Only add the spelling suggests to the menu if there are
-                # suggestions.
-                if len(spell_menu.actions()) != 0:
-                    # Adds: suggestions
-                    popup_menu.insertMenu(popup_menu.actions()[0], spell_menu)
-                    # popup_menu.insertSeparator(popup_menu.actions()[0])
+
+                if match.locqualityissuetype == 'misspelling':
+                    spell_menu = QMenu(self.tr('Spelling Suggestions'), self)
+                    spell_menu.setIcon(F.themeIcon("spelling"))
+
+                    if (match.end > match.start and selectedWord == None):
+                        # Select the actual area of the match
+                        cursor = self.textCursor()
+                        cursor.setPosition(match.start, QTextCursor.MoveAnchor);
+                        cursor.setPosition(match.end, QTextCursor.KeepAnchor);
+                        self.setTextCursor(cursor)
+
+                        selectedWord = cursor.selectedText()
+
+                    for word in match.replacements:
+                        action = self.SpellAction(word, spell_menu)
+                        action.correct.connect(self.correctWord)
+                        spell_menu.addAction(action)
+
+                    # Adds: add to dictionary
+                    addAction = QAction(self.tr("&Add to dictionary"), popup_menu)
+                    addAction.setIcon(QIcon.fromTheme("list-add"))
+                    addAction.triggered.connect(self.addWordToDict)
+                    addAction.setData(selectedWord)
+
+                    popup_menu.insertAction(popup_menu.actions()[0], addAction)
+
+                    # Only add the spelling suggests to the menu if there are
+                    # suggestions.
+                    if len(match.replacements) > 0:
+                        # Adds: suggestions
+                        popup_menu.insertMenu(popup_menu.actions()[0], spell_menu)
+                else:
+                    correct_menu = None
+                    correct_action = None
+
+                    if (len(match.replacements) > 0 and match.end > match.start):
+                        # Select the actual area of the match
+                        cursor = self.textCursor()
+                        cursor.setPosition(match.start, QTextCursor.MoveAnchor);
+                        cursor.setPosition(match.end, QTextCursor.KeepAnchor);
+                        self.setTextCursor(cursor)
+
+                        if len(match.replacements) > 0:
+                            correct_menu = QMenu(self.tr('&Correction Suggestions'), self)
+                            correct_menu.setIcon(F.themeIcon("spelling"))
+
+                            for word in match.replacements:
+                                action = self.SpellAction(word, correct_menu)
+                                action.correct.connect(self.correctWord)
+                                correct_menu.addAction(action)
+
+                    if correct_menu == None:
+                        correct_action = QAction(self.tr('&Correction Suggestion'), popup_menu)
+                        correct_action.setIcon(F.themeIcon("spelling"))
+                        correct_action.setEnabled(False)
+
+                    # Wrap the message into a fitting width
+                    msg_lines = textwrap.wrap(match.msg, 48)
+
+                    # Insert the lines of the message backwards
+                    for i in range(0, len(msg_lines)):
+                        popup_menu.insertSection(popup_menu.actions()[0], msg_lines[len(msg_lines) - (i + 1)])
+
+                    if correct_menu != None:
+                        popup_menu.insertMenu(popup_menu.actions()[0], correct_menu)
+                    else:
+                        popup_menu.insertAction(popup_menu.actions()[0], correct_action)
 
             # If word was added to custom dict, give the possibility to remove it
-            elif valid and self._dict.isCustomWord(selectedWord):
+            elif self._dict.isCustomWord(selectedWord):
                 popup_menu.insertSeparator(popup_menu.actions()[0])
                 # Adds: remove from dictionary
-                rmAction = QAction(self.tr("&Remove from custom dictionary"), popup_menu)
+                rmAction = QAction(
+                    self.tr("&Remove from custom dictionary"), popup_menu)
                 rmAction.setIcon(QIcon.fromTheme("list-remove"))
                 rmAction.triggered.connect(self.rmWordFromDict)
                 rmAction.setData(selectedWord)

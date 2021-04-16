@@ -24,7 +24,7 @@ class HTML(markdown):
     exportDefaultSuffix = ".html"
 
     def isValid(self):
-        return MD is not None
+        return MD != None
 
     def settingsWidget(self):
         w = markdownSettings(self)

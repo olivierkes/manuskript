@@ -4,8 +4,9 @@ import faulthandler
 import os
 import platform
 import sys
+import signal
 
-import manuskript.ui.views.webView
+import manuskript.logging
 from PyQt5.QtCore import QLocale, QTranslator, QSettings, Qt
 from PyQt5.QtGui import QIcon, QColor, QPalette
 from PyQt5.QtWidgets import QApplication, qApp, QStyleFactory
@@ -15,14 +16,26 @@ from manuskript.version import getVersion
 
 faulthandler.enable()
 
-def prepare(tests=False):
+import logging
+LOGGER = logging.getLogger(__name__)
+
+def prepare(arguments, tests=False):
     app = QApplication(sys.argv)
-    app.setOrganizationName("manuskript"+("_tests" if tests else ""))
+    app.setOrganizationName("manuskript" + ("_tests" if tests else ""))
     app.setOrganizationDomain("www.theologeek.ch")
-    app.setApplicationName("manuskript"+("_tests" if tests else ""))
+    app.setApplicationName("manuskript" + ("_tests" if tests else ""))
     app.setApplicationVersion(getVersion())
 
-    print("Running manuskript version {}.".format(getVersion()))
+    # Beginning logging to a file. This cannot be done earlier due to the
+    # default location of the log file being dependent on QApplication.
+    manuskript.logging.logToFile(logfile=arguments.logfile)
+
+    # Handle all sorts of Qt logging messages in Python.
+    manuskript.logging.integrateQtLogging()
+
+    # Log all the versions for less headaches.
+    manuskript.logging.logRuntimeInformation()
+
     icon = QIcon()
     for i in [16, 32, 64, 128, 256, 512]:
         icon.addFile(appPath("icons/Manuskript/icon-{}px.png".format(i)))
@@ -38,13 +51,14 @@ def prepare(tests=False):
 
     # Translation process
     appTranslator = QTranslator(app)
+
     # By default: locale
 
     def tryLoadTranslation(translation, source):
         """Tries to load and activate a given translation for use."""
         if appTranslator.load(translation, appPath("i18n")):
             app.installTranslator(appTranslator)
-            print("Loaded translation: {}".format(translation))
+            LOGGER.info("Loaded translation: {}".format(translation))
             # Note: QTranslator.load() does some fancy heuristics where it simplifies
             #   the given locale until it is 'close enough' if the given filename does
             #   not work out. For example, if given 'i18n/manuskript_en_US.qm', it tries:
@@ -59,7 +73,7 @@ def prepare(tests=False):
             #   filenames when you observe strange behaviour with the loaded translations.
             return True
         else:
-            print("No translation found or loaded. ({})".format(translation))
+            LOGGER.info("No translation found or loaded. ({})".format(translation))
             return False
 
     def activateTranslation(translation, source):
@@ -82,7 +96,7 @@ def prepare(tests=False):
                         break
 
         if using_builtin_translation:
-            print("Using the builtin translation.")
+            LOGGER.info("Using the builtin translation. (U.S. English)")
 
     # Load application translation
     translation = ""
@@ -96,24 +110,26 @@ def prepare(tests=False):
         translation = QLocale().uiLanguages()
         source = "available ui languages"
 
-    print("Preferred translation: {} (based on {})".format(("builtin" if translation == "" else translation), source))
+    LOGGER.info("Preferred translation: {} (based on {})".format(("builtin" if translation == "" else translation), source))
     activateTranslation(translation, source)
 
     def respectSystemDarkThemeSetting():
         """Adjusts the Qt theme to match the OS 'dark theme' setting configured by the user."""
-        if platform.system() is not 'Windows':
+        if platform.system() != 'Windows':
             return
 
         # Basic Windows 10 Dark Theme support.
         # Source: https://forum.qt.io/topic/101391/windows-10-dark-theme/4
-        themeSettings = QSettings("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", QSettings.NativeFormat)
+        themeSettings = QSettings(
+            "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize",
+            QSettings.NativeFormat)
         if themeSettings.value("AppsUseLightTheme") == 0:
             darkPalette = QPalette()
-            darkColor = QColor(45,45,45)
-            disabledColor = QColor(127,127,127)
+            darkColor = QColor(45, 45, 45)
+            disabledColor = QColor(127, 127, 127)
             darkPalette.setColor(QPalette.Window, darkColor)
             darkPalette.setColor(QPalette.WindowText, Qt.white)
-            darkPalette.setColor(QPalette.Base, QColor(18,18,18))
+            darkPalette.setColor(QPalette.Base, QColor(18, 18, 18))
             darkPalette.setColor(QPalette.AlternateBase, darkColor)
             darkPalette.setColor(QPalette.ToolTipBase, Qt.white)
             darkPalette.setColor(QPalette.ToolTipText, Qt.white)
@@ -137,7 +153,7 @@ def prepare(tests=False):
 
             # This broke the Settings Dialog at one point... and then it stopped breaking it.
             # TODO: Why'd it break? Check if tooltips look OK... and if not, make them look OK.
-            #app.setStyleSheet("QToolTip { color: #ffffff; background-color: #2a82da; border: 1px solid white; }")
+            # app.setStyleSheet("QToolTip { color: #ffffff; background-color: #2a82da; border: 1px solid white; }")
 
     respectSystemDarkThemeSetting()
 
@@ -159,16 +175,17 @@ def prepare(tests=False):
     MW._defaultCursorFlashTime = qApp.cursorFlashTime()
 
     # Command line project
-    if len(sys.argv) > 1 and sys.argv[1][-4:] == ".msk":
+    #if len(sys.argv) > 1 and sys.argv[1][-4:] == ".msk":
+    if arguments.filename is not None and arguments.filename[-4:] == ".msk":
+        #TODO: integrate better with argparsing.
         if os.path.exists(sys.argv[1]):
             path = os.path.abspath(sys.argv[1])
             MW._autoLoadProject = path
 
     return app, MW
 
-def launch(app, MW = None):
-
-    if MW is None:
+def launch(arguments, app, MW = None):
+    if MW == None:
         from manuskript.functions import mainWindow
         MW = mainWindow()
 
@@ -176,10 +193,10 @@ def launch(app, MW = None):
 
     # Support for IPython Jupyter QT Console as a debugging aid.
     # Last argument must be --console to enable it
-    # Code reference : 
+    # Code reference :
     # https://github.com/ipython/ipykernel/blob/master/examples/embedding/ipkernel_qtapp.py
     # https://github.com/ipython/ipykernel/blob/master/examples/embedding/internal_ipkernel.py
-    if len(sys.argv) > 1 and sys.argv[-1] == "--console":
+    if arguments.console:
         try:
             from IPython.lib.kernel import connect_qtconsole
             from ipykernel.kernelapp import IPKernelApp
@@ -188,7 +205,7 @@ def launch(app, MW = None):
 
             # Create IPython kernel within our application
             kernel = IPKernelApp.instance()
-            
+
             # Initialize it and use matplotlib for main event loop integration with QT
             kernel.initialize(['python', '--matplotlib=qt'])
 
@@ -207,6 +224,7 @@ def launch(app, MW = None):
                 app.quit()
                 console.kill()
                 kernel.io_loop.stop()
+
             app.lastWindowClosed.connect(console_cleanup)
 
             # Very important, IPython-specific step: this gets GUI event loop
@@ -221,17 +239,61 @@ def launch(app, MW = None):
         qApp.exec_()
     qApp.deleteLater()
 
+
+def sigint_handler(sig, MW):
+    def handler(*args):
+        # Log before winding down to preserve order of cause and effect.
+        LOGGER.info(f'{sig} received. Quitting...')
+        MW.close()
+        print(f'{sig} received, quit.')
+
+    return handler
+
+
+def setup_signal_handlers(MW):
+    signal.signal(signal.SIGINT, sigint_handler("SIGINT", MW))
+    signal.signal(signal.SIGTERM, sigint_handler("SIGTERM", MW))
+
+
+def process_commandline(argv):
+    import argparse
+    parser = argparse.ArgumentParser(description="Run the manuskript application.")
+    parser.add_argument("--console", help="open the IPython Jupyter QT Console as a debugging aid",
+                        action="store_true")
+    parser.add_argument("-v", "--verbose", action="count", default=1, help="lower the threshold for messages logged to the terminal")
+    parser.add_argument("-L", "--logfile", default=None, help="override the default log file location")
+    parser.add_argument("filename", nargs="?", metavar="FILENAME", help="the manuskript project (.msk) to open")
+
+    args = parser.parse_args(args=argv)
+
+    # Verbosity logic, see: https://gist.github.com/ms5/9f6df9c42a5f5435be0e
+    #args.verbose = 70 - (10*args.verbose) if args.verbose > 0 else 0
+
+    # Users cannot report what they do not notice: show CRITICAL, ERROR and WARNING always.
+    # Note that the default is set to 1, so account for that.
+    args.verbose = 40 - (10*args.verbose) if args.verbose > 0 else 0
+
+    return args
+
+
 def run():
     """
     Run separates prepare and launch for two reasons:
     1. I've read somewhere it helps with potential segfault (see comment below)
     2. So that prepare can be used in tests, without running the whole thing
     """
+    # Parse command-line arguments.
+    arguments = process_commandline(sys.argv)
+    # Initialize logging. (Does not include Qt integration yet.)
+    manuskript.logging.setUp(console_level=arguments.verbose)
+
     # Need to return and keep `app` otherwise it gets deleted.
-    app, MW = prepare()
+    app, MW = prepare(arguments)
+    setup_signal_handlers(MW)
     # Separating launch to avoid segfault, so it seem.
     # Cf. http://stackoverflow.com/questions/12433491/is-this-pyqt-4-python-bug-or-wrongly-behaving-code
-    launch(app, MW)
+    launch(arguments, app, MW)
+
 
 if __name__ == "__main__":
     run()

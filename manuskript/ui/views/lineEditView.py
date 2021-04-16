@@ -31,7 +31,7 @@ class lineEditView(QLineEdit):
             self._index = index
             self._model = index.model()
             # self.item = index.internalPointer()
-            if self._placeholderText is not None:
+            if self._placeholderText != None:
                 self.setPlaceholderText(self._placeholderText)
             self.textEdited.connect(self.submit)
             self.updateText()

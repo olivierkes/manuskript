@@ -31,7 +31,7 @@ class PDF(abstractOutput):
 
     def isValid(self):
         path = shutil.which("pdflatex") or shutil.which("xelatex")
-        return path is not None
+        return path != None
 
     def output(self, settingsWidget, outputfile=None):
         args = settingsWidget.runnableSettings()

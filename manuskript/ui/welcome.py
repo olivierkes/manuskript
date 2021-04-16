@@ -2,7 +2,7 @@
 # --!-- coding: utf8 --!--
 
 import locale
-import imp
+import importlib
 import os
 
 from PyQt5.QtCore import QSettings, QRegExp, Qt, QDir
@@ -20,6 +20,9 @@ from manuskript.models.plotModel import plotModel
 from manuskript.models.worldModel import worldModel
 from manuskript.ui.welcome_ui import Ui_welcome
 from manuskript.ui import style as S
+
+import logging
+LOGGER = logging.getLogger(__name__)
 
 try:
     locale.setlocale(locale.LC_ALL, '')
@@ -57,8 +60,7 @@ class welcome(QWidget, Ui_welcome):
         sttgs = QSettings()
         lastDirectory = sttgs.value("lastAccessedDirectory", defaultValue=".", type=str)
         if lastDirectory != '.':
-            print(qApp.translate("lastAccessedDirectoryInfo", "Last accessed directory \"{}\" loaded.").format(
-                lastDirectory))
+            LOGGER.info("Last accessed directory \"{}\" loaded.".format(lastDirectory))
         return lastDirectory
 
     def setLastAccessedDirectory(self, dir):
@@ -371,7 +373,7 @@ class welcome(QWidget, Ui_welcome):
                                    Qt.FindChildrenRecursively):
             # Update self.template to reflect the changed name values
             templateIndex = t.property("templateIndex")
-            if templateIndex is not None :
+            if templateIndex != None :
                 self.template[1][templateIndex] = (
                 self.template[1][templateIndex][0],
                 t.text())
@@ -422,10 +424,12 @@ class welcome(QWidget, Ui_welcome):
         self.tree.expandAll()
 
     def loadDefaultDatas(self):
+        """Initialize a basic Manuskript project."""
 
         # Empty settings
-        imp.reload(settings)
+        importlib.reload(settings)
         settings.initDefaultValues()
+        self.mw.loadEmptyDatas()
 
         if self.template:
             t = [i for i in self._templates if i[0] == self.template[0]]
@@ -433,20 +437,10 @@ class welcome(QWidget, Ui_welcome):
                 settings.viewMode = "simple"
 
         # Tasks
-        self.mw.mdlFlatData = QStandardItemModel(2, 8, self.mw)
-
-        # Persos
-        # self.mw.mdlPersos = QStandardItemModel(0, 0, self.mw)
-        self.mw.mdlCharacter = characterModel(self.mw)
-        # self.mdlPersosProxy = None # persosProxyModel() # None
-        # self.mw.mdlPersosProxy = persosProxyModel(self.mw)
-
-        # self.mw.mdlPersosInfos = QStandardItemModel(1, 0, self.mw)
-        # self.mw.mdlPersosInfos.insertColumn(0, [QStandardItem("ID")])
-        # self.mw.mdlPersosInfos.setHorizontalHeaderLabels(["Description"])
+        self.mw.mdlFlatData.setRowCount(2)     # data from: infos.txt, summary.txt
+        self.mw.mdlFlatData.setColumnCount(8)  # version_1.py: len(infos.txt) == 8
 
         # Labels
-        self.mw.mdlLabels = QStandardItemModel(self.mw)
         for color, text in [
             (Qt.transparent, ""),
             (Qt.yellow, self.tr("Idea")),
@@ -458,7 +452,6 @@ class welcome(QWidget, Ui_welcome):
             self.mw.mdlLabels.appendRow(QStandardItem(iconFromColor(color), text))
 
         # Status
-        self.mw.mdlStatus = QStandardItemModel(self.mw)
         for text in [
             "",
             self.tr("TODO"),
@@ -468,14 +461,9 @@ class welcome(QWidget, Ui_welcome):
         ]:
             self.mw.mdlStatus.appendRow(QStandardItem(text))
 
-        # Plot
-        self.mw.mdlPlots = plotModel(self.mw)
+        # Plot (nothing special needed)
 
         # Outline
-        self.mw.mdlOutline = outlineModel(self.mw)
-
-        # World
-        self.mw.mdlWorld = worldModel(self.mw)
 
         root = self.mw.mdlOutline.rootItem
         _type = "md"
@@ -509,3 +497,5 @@ class welcome(QWidget, Ui_welcome):
 
         if self.template and self.template[1]:
             addElement(root, self.template[1])
+
+        # World (nothing special needed)

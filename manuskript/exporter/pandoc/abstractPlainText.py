@@ -75,7 +75,7 @@ class pandocSetting:
         """Return whether the specific setting is active with the given format."""
 
         # Empty formats means all
-        if self.formats is "":
+        if self.formats == "":
             return True
 
         # "html" in "html markdown latex"
@@ -108,9 +108,9 @@ class pandocSettings(markdownSettings):
         # pandoc v1 only
         "normalize":    pandocSetting("--normalize", "checkbox", "",
                                       qApp.translate("Export", "Normalize the document (cleaner)")),
-        "base-header":  pandocSetting("--base-header-level=", "number", "",
+        "base-header":  pandocSetting("--shift-heading-level-by=", "number", "",
                                       qApp.translate("Export", "Specify the base level for headers: "),
-                                      default=1, min=1),
+                                      default=0, min=0),
         "disable-YAML": pandocSetting("EXT-yaml_metadata_block", "checkbox", "",
                                       qApp.translate("Export", "Disable YAML metadata block.\nUse that if you get YAML related error.")),
 

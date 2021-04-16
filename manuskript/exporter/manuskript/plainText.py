@@ -10,6 +10,9 @@ from manuskript.models import outlineItem
 from manuskript.ui.exporters.manuskript.plainTextSettings import exporterSettings
 import codecs
 
+import logging
+LOGGER = logging.getLogger(__name__)
+
 class plainText(basicFormat):
     name = qApp.translate("Export", "Plain text")
     description = qApp.translate("Export", """Simplest export to plain text. Allows you to use your own markup not understood
@@ -51,10 +54,10 @@ class plainText(basicFormat):
 
     def getExportFilename(self, settingsWidget, varName=None, filter=None):
 
-        if varName is None:
+        if varName == None:
             varName = self.exportVarName
 
-        if filter is None:
+        if filter == None:
             filter = self.exportFilter
 
         settings = settingsWidget.getSettings()
@@ -90,7 +93,7 @@ class plainText(basicFormat):
             content = self.output(settingsWidget)
 
             if not content:
-                print("Error: No content. Nothing saved.")
+                LOGGER.error("No content. Nothing saved.")
                 return
 
             with open(filename, "w", encoding='utf8') as f:
