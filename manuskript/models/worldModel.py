@@ -317,7 +317,7 @@ class worldModel(QStandardItemModel, searchableModel):
                     i = self.addItem(d[0], parent)
                     addItems(d[1], i)
 
-        addItems(data, None)
+        addItems(data, self.invisibleRootItem())
         self.mw.treeWorld.expandAll()
 
     ###############################################################################
