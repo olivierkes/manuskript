@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="2.0" language="pt_PT" sourcelanguage="">
+<!DOCTYPE TS>
+<TS version="2.0" language="pt_PT" sourcelanguage="">
 <context>
     <name>Export</name>
     <message>
@@ -228,7 +229,7 @@ Use se receber um erro YAML.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="71"/>
-        <source>Choose output file&#xe2;&#x80;&#xa6;</source>
+        <source>Choose output fileâ¦</source>
         <translation>Escolha o ficheiro de saída</translation>
     </message>
 </context>
@@ -1266,7 +1267,7 @@ Use se receber um erro YAML.</translation>
     <message>
         <location filename="../manuskript/mainWindow.py" line="872"/>
         <source>Project {} saved.</source>
-        <translation type="unfinished"> * {} não encontrado no ficheiro do projecto.</translation>
+        <translation>Projecto {} gravado.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="876"/>
@@ -1480,107 +1481,107 @@ Use se receber um erro YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="862"/>
         <source>Allow POV</source>
-        <translation type="unfinished"></translation>
+        <translation>Permitir PDV</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2852"/>
         <source>Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Procurar</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2855"/>
         <source>Ctrl+F</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+F</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2860"/>
         <source>&amp;Technical Support</source>
-        <translation type="unfinished"></translation>
+        <translation>Apoio &amp;técnico</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2863"/>
         <source>How to obtain technical support for Manuskript.</source>
-        <translation type="unfinished"></translation>
+        <translation>Como obter apoio técnico para o Manuskript.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2866"/>
         <source>F1</source>
-        <translation type="unfinished">F1</translation>
+        <translation>F1</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2871"/>
         <source>&amp;Locate log file...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Localizar diário...</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2874"/>
         <source>Locate log file</source>
-        <translation type="unfinished"></translation>
+        <translation>Localizar diário</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2877"/>
         <source>Locate the diagnostic log file used for this session.</source>
-        <translation type="unfinished"></translation>
+        <translation>Localizar o ficheiro de diagnóstico desta sessão.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2880"/>
         <source>Shift+F1</source>
-        <translation type="unfinished"></translation>
+        <translation>Shift+F1</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1193"/>
         <source>Sorry!</source>
-        <translation type="unfinished"></translation>
+        <translation>Desculpe!</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1193"/>
         <source>This session is not being logged.</source>
-        <translation type="unfinished"></translation>
+        <translation>Esta sessão não está a ser monitorizada.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1202"/>
         <source>A log file is a Work in Progress!</source>
-        <translation type="unfinished"></translation>
+        <translation>Um diário é um trabalho em curso!</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1202"/>
         <source>The log file &quot;{}&quot; will continue to be written to until Manuskript is closed.</source>
-        <translation type="unfinished"></translation>
+        <translation>O diário &quot;{}&quot; continuará a ser escrito até fechar o Manuskript.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1202"/>
         <source>It will now be displayed in your file manager, but is of limited use until you close Manuskript.</source>
-        <translation type="unfinished"></translation>
+        <translation>Aparecerá agora no seu gestor de ficheiros, mas tem uma utilização limitada até que feche o Manuskript.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1218"/>
         <source>Error!</source>
-        <translation type="unfinished"></translation>
+        <translation>Erro!</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1218"/>
         <source>An error was encountered while trying to show the log file below in your file manager.</source>
-        <translation type="unfinished"></translation>
+        <translation>Foi encontrado um erro ao tentar mostrar o diário abaixo no seu gestor de ficheiros.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="45"/>
         <source>F3</source>
-        <translation type="unfinished">F3</translation>
+        <translation>F3</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="46"/>
         <source>Shift+F3</source>
-        <translation type="unfinished"></translation>
+        <translation>Shift+F3</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="50"/>
         <source>Situation</source>
-        <translation type="unfinished"></translation>
+        <translation>Situação</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="51"/>
         <source>Status</source>
-        <translation type="unfinished">Estado</translation>
+        <translation>Estado</translation>
     </message>
 </context>
 <context>
@@ -1588,7 +1589,7 @@ Use se receber um erro YAML.</translation>
     <message>
         <location filename="../manuskript/ui/search.py" line="40"/>
         <source>No results found</source>
-        <translation type="unfinished"></translation>
+        <translation>Sem resultados</translation>
     </message>
 </context>
 <context>
@@ -2277,27 +2278,28 @@ Use se receber um erro YAML.</translation>
         <location filename="../manuskript/ui/settings_ui.ui" line="211"/>
         <source>Show progress in chars next
  to words</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar progresso em caracteres
+junto a palavras</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1113"/>
         <source>Char/Word Counter</source>
-        <translation type="unfinished"></translation>
+        <translation>Total de caracteres/palavras</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1137"/>
         <source>Count spaces as chars</source>
-        <translation type="unfinished"></translation>
+        <translation>Contar espaços como caracteres</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1206"/>
         <source>Show char c&amp;ount</source>
-        <translation type="unfinished"></translation>
+        <translation>M&amp;ostrar total de caracteres</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1289"/>
         <source>Sho&amp;w char count</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Mostrar total de caracteres</translation>
     </message>
 </context>
 <context>
@@ -2320,27 +2322,27 @@ Use se receber um erro YAML.</translation>
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="527"/>
         <source>&amp;New Character</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Novo carácter</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="534"/>
         <source>&amp;New Plot Item</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Novo item de enredo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="541"/>
         <source>&amp;New World Item</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Novo item do mundo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="642"/>
         <source>&amp;Correction Suggestions</source>
-        <translation type="unfinished"></translation>
+        <translation>Sugestões de &amp;correcção</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="651"/>
         <source>&amp;Correction Suggestion</source>
-        <translation type="unfinished"></translation>
+        <translation>Sugestão de &amp;correcção</translation>
     </message>
 </context>
 <context>
@@ -3168,22 +3170,22 @@ Use se receber um erro YAML.</translation>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="339"/>
         <source>({} chars) {}  words / {} </source>
-        <translation type="unfinished"></translation>
+        <translation>({} caracteres) {}  palavras / {} </translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="345"/>
         <source>{}  words / {} </source>
-        <translation type="unfinished"></translation>
+        <translation>{}  palavras / {} </translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="360"/>
         <source>{} chars</source>
-        <translation type="unfinished"></translation>
+        <translation>{} caracteres</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="354"/>
         <source>{} chars </source>
-        <translation type="unfinished"></translation>
+        <translation>{} caracteres </translation>
     </message>
 </context>
 <context>

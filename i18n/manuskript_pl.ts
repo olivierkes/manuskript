@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="2.0" language="pl_PL" sourcelanguage="en">
+<!DOCTYPE TS>
+<TS version="2.0" language="pl_PL" sourcelanguage="en">
 <context>
     <name>Export</name>
     <message>
@@ -225,7 +226,7 @@ formatów.&lt;/p&gt;
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="71"/>
-        <source>Choose output file&#xe2;&#x80;&#xa6;</source>
+        <source>Choose output fileâ¦</source>
         <translation>Wybierz plik wyjściowy</translation>
     </message>
 </context>
@@ -1233,7 +1234,7 @@ i stworzy pozycje dla każdego tytułu.&lt;br/&gt;&amp;nbsp;</translation>
     <message>
         <location filename="../manuskript/mainWindow.py" line="872"/>
         <source>Project {} saved.</source>
-        <translation type="unfinished"> * {} nie znaleziono w pliku projektu.</translation>
+        <translation>Projekt {} zapisany.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="876"/>
@@ -1401,7 +1402,7 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message encoding="UTF-8">
         <location filename="../manuskript/ui/mainWindow.ui" line="2546"/>
         <source>&amp;Import…</source>
-        <translation>&amp;importuj…</translation>
+        <translation>&amp;Import…</translation>
     </message>
     <message encoding="UTF-8">
         <location filename="../manuskript/ui/mainWindow.ui" line="2594"/>
@@ -1466,107 +1467,107 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="862"/>
         <source>Allow POV</source>
-        <translation type="unfinished"></translation>
+        <translation>Pozwól na punkt widzenia</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2852"/>
         <source>Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Szukaj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2855"/>
         <source>Ctrl+F</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+F</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2860"/>
         <source>&amp;Technical Support</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Pomoc techniczna</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2863"/>
         <source>How to obtain technical support for Manuskript.</source>
-        <translation type="unfinished"></translation>
+        <translation>Jak uzyskać pomoc techniczną dla Manuskriptu.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2866"/>
         <source>F1</source>
-        <translation type="unfinished">F1</translation>
+        <translation>F1</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2871"/>
         <source>&amp;Locate log file...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Lokalizuj plik logu...</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2874"/>
         <source>Locate log file</source>
-        <translation type="unfinished"></translation>
+        <translation>Lokalizuj plik logu</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2877"/>
         <source>Locate the diagnostic log file used for this session.</source>
-        <translation type="unfinished"></translation>
+        <translation>Lokalizuj diagnostyczny plik logu użyty dla tej sesji.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2880"/>
         <source>Shift+F1</source>
-        <translation type="unfinished"></translation>
+        <translation>Shift+F1</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1193"/>
         <source>Sorry!</source>
-        <translation type="unfinished"></translation>
+        <translation>Przepraszam!</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1193"/>
         <source>This session is not being logged.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta sesja nie jest logowana.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1202"/>
         <source>A log file is a Work in Progress!</source>
-        <translation type="unfinished"></translation>
+        <translation>Plik logu jest opracowywany!</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1202"/>
         <source>The log file &quot;{}&quot; will continue to be written to until Manuskript is closed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Plik logu &quot;{}&quot; będzie tworzony do czasu zamknięcia Manuskriptu.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1202"/>
         <source>It will now be displayed in your file manager, but is of limited use until you close Manuskript.</source>
-        <translation type="unfinished"></translation>
+        <translation>Będzie teraz wyświetlany w eksploratorze plików, ale będzie ograniczony dopóki nie zamkniesz Manuskriptu.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1218"/>
         <source>Error!</source>
-        <translation type="unfinished"></translation>
+        <translation>Błąd!</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1218"/>
         <source>An error was encountered while trying to show the log file below in your file manager.</source>
-        <translation type="unfinished"></translation>
+        <translation>Podczas próby pokazania pliku logu w eksploratorze plików pojawił się błąd.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="45"/>
         <source>F3</source>
-        <translation type="unfinished">F3</translation>
+        <translation>F3</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="46"/>
         <source>Shift+F3</source>
-        <translation type="unfinished"></translation>
+        <translation>Shift+F3</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="50"/>
         <source>Situation</source>
-        <translation type="unfinished"></translation>
+        <translation>Sytuacja</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="51"/>
         <source>Status</source>
-        <translation type="unfinished">Status</translation>
+        <translation>Status</translation>
     </message>
 </context>
 <context>
@@ -1574,7 +1575,7 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message>
         <location filename="../manuskript/ui/search.py" line="40"/>
         <source>No results found</source>
-        <translation type="unfinished"></translation>
+        <translation>Nie znaleziono wyników</translation>
     </message>
 </context>
 <context>
@@ -1892,7 +1893,7 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1729"/>
         <source>Index cards</source>
-        <translation>Karty katalogowe</translation>
+        <translation>Indeksy</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1741"/>
@@ -2237,7 +2238,7 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3511"/>
         <source>Margins:</source>
-        <translation>Marginesy zewnętrzne:</translation>
+        <translation>Marginesy:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3540"/>
@@ -2263,27 +2264,28 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
         <location filename="../manuskript/ui/settings_ui.ui" line="211"/>
         <source>Show progress in chars next
  to words</source>
-        <translation type="unfinished"></translation>
+        <translation>Pokaż postęp znaków obok
+słów</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1113"/>
         <source>Char/Word Counter</source>
-        <translation type="unfinished"></translation>
+        <translation>Licznik Znaków/Słów</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1137"/>
         <source>Count spaces as chars</source>
-        <translation type="unfinished"></translation>
+        <translation>Licz spacje jako znaki</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1206"/>
         <source>Show char c&amp;ount</source>
-        <translation type="unfinished"></translation>
+        <translation>Pokaż liczbę znaków</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1289"/>
         <source>Sho&amp;w char count</source>
-        <translation type="unfinished"></translation>
+        <translation>Pokaż liczbę znaków</translation>
     </message>
 </context>
 <context>
@@ -2306,27 +2308,27 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="527"/>
         <source>&amp;New Character</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Nowy bohater</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="534"/>
         <source>&amp;New Plot Item</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Nowy przedmiot</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="541"/>
         <source>&amp;New World Item</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Nowy element Świata</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="642"/>
         <source>&amp;Correction Suggestions</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Sugestie poprawek</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="651"/>
         <source>&amp;Correction Suggestion</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Sugestia poprawki</translation>
     </message>
 </context>
 <context>
@@ -2736,12 +2738,12 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="788"/>
-        <source>Replace ... with &#xe2;&#x80;&#xa6;</source>
+        <source>Replace ... with â¦</source>
         <translation>Zastąp ... znakiem â¦</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="795"/>
-        <source>Replace --- with &#xe2;&#x80;&#x94;</source>
+        <source>Replace --- with â</source>
         <translation>Zastąp --- znakiem —</translation>
     </message>
     <message>
@@ -3154,22 +3156,22 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="339"/>
         <source>({} chars) {}  words / {} </source>
-        <translation type="unfinished"></translation>
+        <translation>({} znaki) {}  słowa / {} </translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="345"/>
         <source>{}  words / {} </source>
-        <translation type="unfinished"></translation>
+        <translation>{}  słowa / {} </translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="360"/>
         <source>{} chars</source>
-        <translation type="unfinished"></translation>
+        <translation>{} znaki</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="354"/>
         <source>{} chars </source>
-        <translation type="unfinished"></translation>
+        <translation>{} znaki </translation>
     </message>
 </context>
 <context>
@@ -4206,7 +4208,7 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message>
         <location filename="../manuskript/ui/views/treeView.py" line="48"/>
         <source>Expand {}</source>
-        <translation>Maksymalizuj {}</translation>
+        <translation>Powiększ {}</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/treeView.py" line="52"/>
@@ -4562,7 +4564,7 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Government</source>
-        <translation>Rząd (ustrój polityczny)</translation>
+        <translation>Władza (ustrój polityczny)</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
