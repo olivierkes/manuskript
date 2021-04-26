@@ -53,6 +53,8 @@ cd $DIR
 git clone $REPOSITORY
 cd manuskript
 
+PKG_VERSION=$(grep -E "__version__.*\".*\"" "manuskript/version.py" | cut -d\" -f2)
+
 # Run PyInstaller to create the build:
 WINEPREFIX=$PREFIX WINEARCH="win32" wine pyinstaller manuskript.spec
 cat build/manuskript/warn-manuskript.txt
@@ -70,10 +72,12 @@ rm api-ms-win-*
 ### comment: Seems to work fine...
 #WINEPREFIX=$PREFIX WINEARCH="win32" wine manuskript.exe
 
+ZIP_NAME=manuskript-$PKG_VERSION-win32.zip
+
 # Package everything together:
 cd ..
-zip -r manuskript.zip manuskript
-mv manuskript.zip $EXEC_DIR
+zip -r $ZIP_NAME manuskript
+mv $ZIP_NAME $EXEC_DIR
 
 # Cleanup everything:
 ### comment: removing the local git repository 

@@ -56,7 +56,8 @@ echo_do eval "mkdir -p $Dest/$AppName-$AppVersion/{usr/share/applications,usr/bi
 
 echo "### Copying manuskript content"
 echo_do eval "rsync -a --exclude=.git --include='*.msk' \
-    --exclude-from='$Root/.gitignore' \
+    --exclude=.github \
+	--exclude-from='$Root/.gitignore' \
     --exclude=rpmbuild \
     --exclude={.codeclimate.yml,.gitignore,.travis.yml} \
     $ScriptPath/../  $Dest/$AppName-$AppVersion/usr/share/manuskript"
