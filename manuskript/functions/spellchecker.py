@@ -552,7 +552,10 @@ class LanguageToolDictionary(BasicDictionary):
     @staticmethod
     def getTool():
         if LanguageToolDictionary._tool == None:
-            LanguageToolDictionary._tool = languagetool.LanguageTool()
+            try:
+                LanguageToolDictionary._tool = languagetool.LanguageTool()
+            except:
+                return None
 
         return LanguageToolDictionary._tool
 
@@ -569,7 +572,7 @@ class LanguageToolDictionary(BasicDictionary):
 
     @staticmethod
     def isInstalled():
-        if languagetool != None:
+        if (languagetool != None) and (LanguageToolDictionary.getTool() != None):
 
             # This check, if Java is installed, is necessary to
             # make sure LanguageTool can be run without problems.
