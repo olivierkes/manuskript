@@ -6,7 +6,7 @@
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="18"/>
         <source>Basic HTML output using the Python module &apos;markdown&apos;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Βασική έξοδος HTML με τη χρήση της ενότητας &apos;markdown&apos; της Python.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="19"/>
@@ -164,7 +164,8 @@
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="15"/>
         <source>Simplest export to plain text. Allows you to use your own markup not understood
                   by Manuskript, for example &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Απλούστερη εξαγωγή σε απλό κείμενο. Σας επιτρέπει να χρησιμοποιήσετε τη δική σας σήμανση που δεν είναι κατανοητή
+  από το Manuskript, για παράδειγμα &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/__init__.py" line="20"/>
