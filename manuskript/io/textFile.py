@@ -8,8 +8,8 @@ class TextFile(AbstractFile):
 
     def load(self):
         with open(self.path, 'rb') as file:
-            return file.read()
+            return file.read().decode('utf-8')
 
     def save(self, content):
         with open(self.path, 'wb') as file:
-            file.write(content)
+            file.write(content.encode('utf-8'))

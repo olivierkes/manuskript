@@ -11,14 +11,16 @@ sys.path.insert(1, os.path.join(os.path.dirname(realpath), '..'))
 import manuskript.io as io
 import manuskript.data as data
 
-path = os.path.join(sys.path[1], "sample-projects/book-of-acts/settings.txt")
+path = os.path.join(sys.path[1], "sample-projects/book-of-acts")
 
-settings = io.JsonFile(path)
-result = settings.load()
+settings = data.Settings(path)
 
-print(result)
+settings.load()
+settings.save()
 
-plots = data.Plots(os.path.join(sys.path[1], "sample-projects/book-of-acts/plots.xml"))
+print(settings.properties)
+
+plots = data.Plots(path)
 
 plots.load()
 plots.save()

@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
 
+import os
+
 from lxml import etree
 from enum import Enum, unique
 from manuskript.data.unique_id import UniqueIDHost, UniqueID
@@ -66,7 +68,7 @@ class PlotLine:
 class Plots:
 
     def __init__(self, path):
-        self.file = XmlFile(path)
+        self.file = XmlFile(os.path.join(path, "plots.xml"))
         self.host = UniqueIDHost()
         self.lines = dict()
 

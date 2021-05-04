@@ -11,4 +11,4 @@ class JsonFile(TextFile):
         return json.loads(TextFile.load(self))
 
     def save(self, content):
-        TextFile.save(self, json.dumps(content))
+        TextFile.save(self, json.dumps(content, indent=4, sort_keys=True))
