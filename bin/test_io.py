@@ -24,3 +24,16 @@ plots = data.Plots(path)
 
 plots.load()
 plots.save()
+
+revs = data.Revisions(path)
+
+revs.load()
+
+statusHost = data.StatusHost(path)
+
+statusHost.load()
+
+for status in statusHost:
+    print("--" + str(status))
+
+statusHost.save()
