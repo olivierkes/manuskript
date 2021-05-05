@@ -135,8 +135,12 @@ class Plots:
             cls.loadPlotLine(plots, element)
 
     def load(self):
-        tree = self.file.load()
-        Plots.loadPlots(self, tree.getroot())
+        try:
+            tree = self.file.load()
+            Plots.loadPlots(self, tree.getroot())
+        except FileNotFoundError:
+            self.host.reset()
+            self.lines.clear()
 
     @classmethod
     def saveElementAttribute(cls, element: etree.Element, name: str, value):

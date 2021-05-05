@@ -13,27 +13,19 @@ import manuskript.data as data
 
 path = os.path.join(sys.path[1], "sample-projects/book-of-acts")
 
-settings = data.Settings(path)
+project = data.Project(path + ".msk")
+project.load()
 
-settings.load()
-settings.save()
+settings = project.settings
 
 print(settings.properties)
 
-plots = data.Plots(path)
+plots = project.plots
 
-plots.load()
-plots.save()
+revs = project.revisions
 
-revs = data.Revisions(path)
-
-revs.load()
-
-statusHost = data.StatusHost(path)
-
-statusHost.load()
-
-for status in statusHost:
+for status in project.statuses:
     print("--" + str(status))
 
-statusHost.save()
+settings.set("saveToZip", True)
+project.save()

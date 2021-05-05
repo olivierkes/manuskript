@@ -48,8 +48,12 @@ class StatusHost:
         return self.statuses.values().__iter__()
 
     def load(self):
-        text = self.file.load()
-        self.statuses.clear()
+        try:
+            text = self.file.load()
+            self.statuses.clear()
+        except FileNotFoundError:
+            self.statuses.clear()
+            return
 
         if len(text) <= 1:
             return

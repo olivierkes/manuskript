@@ -78,5 +78,10 @@ class Revisions:
                 cls.loadRevisionOutline(revisions, child, element)
 
     def load(self):
-        tree = self.file.load()
-        Revisions.loadRevisionOutline(self, tree.getroot(), None)
+        try:
+            tree = self.file.load()
+            self.outline.clear()
+
+            Revisions.loadRevisionOutline(self, tree.getroot(), None)
+        except FileNotFoundError:
+            self.outline.clear()

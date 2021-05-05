@@ -15,6 +15,15 @@ class Settings:
         if initDefault:
             Settings.loadDefaultSettings(self)
 
+    def get(self, key: str):
+        return self.properties.get(key)
+
+    def isEnabled(self, key: str) -> bool:
+        return self.properties.get(key, False) is True
+
+    def set(self, key: str, value):
+        self.properties[key] = value
+
     def __iter__(self):
         return self.properties.__iter__()
 
@@ -113,7 +122,10 @@ class Settings:
         }
 
     def load(self):
-        self.properties = self.file.load()
+        try:
+            self.properties = self.file.load()
+        except FileNotFoundError:
+            Settings.loadDefaultSettings(self)
 
     def save(self):
         self.file.save(self.properties)
