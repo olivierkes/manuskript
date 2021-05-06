@@ -40,9 +40,12 @@ class Project:
     def save(self):
         print("Save project: " + str(self.file.path) + " " + str(self.file.dir_path))
 
+        saveToZip = self.settings.isEnabled("saveToZip")
+        self.file.setZipFile(saveToZip)
+
         self.statuses.save()
         self.settings.save()
         self.plots.save()
         #self.revisions.save()
 
-        self.file.save(self.settings.isEnabled("saveToZip"))
+        self.file.save(saveToZip)

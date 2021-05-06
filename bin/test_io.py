@@ -29,3 +29,6 @@ for status in project.statuses:
 
 settings.set("saveToZip", True)
 project.save()
+
+settings.set("saveToZip", False)
+project.save()

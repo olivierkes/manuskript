@@ -34,7 +34,10 @@ class MskFile(TextFile, ZipFile):
 
         if not zipFile:
             self.dir_path = os.path.splitext(self.path)[0]
-            os.mkdir(self.dir_path)
+
+            if not os.path.isdir(self.dir_path):
+                os.mkdir(self.dir_path)
+
             ZipFile.load(self)
 
         self.zipFile = zipFile
