@@ -13,22 +13,35 @@ import manuskript.data as data
 
 path = os.path.join(sys.path[1], "sample-projects/book-of-acts")
 
-project = data.Project(path + ".msk")
-project.load()
+#project = data.Project(path + ".msk")
+#project.load()
 
-settings = project.settings
+#settings = project.settings
 
-print(settings.properties)
+#print(settings.properties)
 
-plots = project.plots
+#plots = project.plots
 
-revs = project.revisions
+#revs = project.revisions
 
-for status in project.statuses:
-    print("--" + str(status))
+#for status in project.statuses:
+#    print("--" + str(status))
 
-settings.set("saveToZip", True)
-project.save()
+#settings.set("saveToZip", True)
+#project.save()
 
-settings.set("saveToZip", False)
-project.save()
+#settings.set("saveToZip", False)
+#project.save()
+
+mmd = io.MmdFile(path + "/outline/0-Jerusalem/0-Chapter_1/0-Introduction.md")
+
+meta, _ = mmd.loadMMD()
+
+print(meta)
+
+meta, body = mmd.load()
+
+print(meta)
+print(body)
+
+mmd.save((meta, body))

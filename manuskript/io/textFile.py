@@ -7,9 +7,9 @@ from manuskript.io.abstractFile import AbstractFile
 class TextFile(AbstractFile):
 
     def load(self):
-        with open(self.path, 'rb') as file:
-            return file.read().decode('utf-8')
+        with open(self.path, 'rt', encoding='utf-8') as file:
+            return file.read()
 
     def save(self, content):
-        with open(self.path, 'wb') as file:
-            file.write(content.encode('utf-8'))
+        with open(self.path, 'wt', encoding='utf-8') as file:
+            file.write(content)
