@@ -17,7 +17,10 @@ class Summary:
         self.full = None
 
     def load(self):
-        metadata, _ = self.file.loadMMD(True)
+        try:
+            metadata, _ = self.file.loadMMD(True)
+        except FileNotFoundError:
+            metadata = dict()
 
         self.sentence = metadata.get("Sentence", None)
         self.paragraph = metadata.get("Paragraph", None)

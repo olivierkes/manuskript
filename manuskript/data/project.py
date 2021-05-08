@@ -2,7 +2,9 @@
 # --!-- coding: utf8 --!--
 
 from zipfile import BadZipFile
+from manuskript.data.info import Info
 from manuskript.data.summary import Summary
+from manuskript.data.labels import LabelHost
 from manuskript.data.status import StatusHost
 from manuskript.data.settings import Settings
 from manuskript.data.plots import Plots
@@ -16,7 +18,9 @@ class Project:
     def __init__(self, path):
         self.file = MskFile(path)
 
+        self.info = Info(self.file.dir_path)
         self.summary = Summary(self.file.dir_path)
+        self.labels = LabelHost(self.file.dir_path)
         self.statuses = StatusHost(self.file.dir_path)
         self.settings = Settings(self.file.dir_path)
         self.plots = Plots(self.file.dir_path)
@@ -34,7 +38,9 @@ class Project:
         except FileNotFoundError:
             return
 
+        self.info.load()
         self.summary.load()
+        self.labels.load()
         self.statuses.load()
         self.settings.load()
         self.plots.load()
@@ -47,7 +53,9 @@ class Project:
         saveToZip = self.settings.isEnabled("saveToZip")
         self.file.setZipFile(saveToZip)
 
-        self.summary.load()
+        self.info.save()
+        self.summary.save()
+        self.labels.save()
         self.statuses.save()
         self.settings.save()
         self.plots.save()

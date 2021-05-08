@@ -15,23 +15,3 @@ path = os.path.join(sys.path[1], "sample-projects/book-of-acts")
 
 project = data.Project(path + ".msk")
 project.load()
-
-for item in project.outline.all():
-    print(str(item.title) + " " + str(item.goal))
-
-settings = project.settings
-
-print(settings.properties)
-
-plots = project.plots
-
-revs = project.revisions
-
-for status in project.statuses:
-    print("--" + str(status))
-
-#settings.set("saveToZip", True)
-#project.save()
-
-#settings.set("saveToZip", False)
-#project.save()
