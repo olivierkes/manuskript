@@ -5,7 +5,7 @@ import os
 
 from enum import Enum, unique
 from manuskript.data.goal import Goal
-from manuskript.data.unique_id import UniqueIDHost, UniqueID
+from manuskript.data.unique_id import UniqueIDHost
 from manuskript.io.mmdFile import MmdFile
 
 
@@ -23,8 +23,8 @@ class OutlineItem:
         self.outline = outline
         self.state = OutlineState.UNDEFINED
 
-        self.title = ""
         self.UID = None
+        self.title = ""
         self.type = ""
         self.summarySentence = None
         self.summaryFull = None

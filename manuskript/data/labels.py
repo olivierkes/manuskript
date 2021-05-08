@@ -67,6 +67,6 @@ class LabelHost:
         metadata = dict()
 
         for label in self.labels:
-            metadata[label.name] = str(label.color)
+            metadata[label.name] = label.color
 
         self.file.save((metadata, None))
