@@ -8,6 +8,11 @@ from manuskript.io.abstractFile import AbstractFile
 
 class MmdFile(AbstractFile):
 
+    def __init__(self, path, metaSpacing = 16):
+        AbstractFile.__init__(self, path)
+
+        self.metaSpacing = metaSpacing
+
     def loadMMD(self, ignoreBody: bool = True):
         metadata = dict()
         body = None
@@ -34,10 +39,10 @@ class MmdFile(AbstractFile):
                 if not (m is None):
                     metaValue += "\n" + m.group(2)
                 elif line == "\n":
-                    if not (metaKey is None):
-                        metadata[metaKey] = metaValue
-
                     break
+
+            if not (metaKey is None):
+                metadata[metaKey] = metaValue
 
             if not ignoreBody:
                 body = file.read()
@@ -49,13 +54,16 @@ class MmdFile(AbstractFile):
 
     def save(self, content):
         metadata, body = content
-        metaSpacing = 0
+        metaSpacing = self.metaSpacing
 
         for key in metadata.keys():
             metaSpacing = max(metaSpacing, len(key) + 2)
 
         with open(self.path, 'wt', encoding='utf-8') as file:
             for (key, value) in metadata.items():
+                if value is None:
+                    continue
+
                 spacing = metaSpacing - (len(key) + 2)
                 lines = value.split("\n")
 
@@ -64,6 +72,5 @@ class MmdFile(AbstractFile):
                 for line in lines[1:]:
                     file.write(metaSpacing * " " + line + "\n")
 
-            file.write("\n")
             if not (body is None):
-                file.write(body)
+                file.write("\n" + body)
