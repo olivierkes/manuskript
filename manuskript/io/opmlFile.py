@@ -7,10 +7,12 @@ from manuskript.io.xmlFile import XmlFile
 
 class OpmlOutlineItem:
 
-    def __init__(self, tag="outline"):
-        self.tag = tag
+    def __init__(self):
         self.attributes = dict()
-        self.children = []
+        self.children = list()
+
+    def __iter__(self):
+        return self.children.__iter__()
 
     def keys(self):
         return self.attributes.keys()
@@ -23,7 +25,7 @@ class OpmlFile(XmlFile):
 
     @classmethod
     def loadOutline(cls, element):
-        outline = OpmlOutlineItem(element.tag)
+        outline = OpmlOutlineItem()
 
         for key in element.keys():
             outline.attributes[key] = element.get(key)
@@ -37,25 +39,37 @@ class OpmlFile(XmlFile):
         tree = XmlFile.load(self)
         root = tree.getroot()
 
-        return OpmlFile.loadOutline(root)
+        if root.tag != "opml":
+            raise IOError("No valid OPML!")
+
+        body = root.find("body")
+
+        if body is None:
+            return []
+
+        return [OpmlFile.loadOutline(element) for element in body.getchildren()]
 
     @classmethod
-    def saveOutline(cls, outline, parent=None):
-        if parent is None:
-            element = etree.Element(outline.tag)
-        else:
-            element = etree.SubElement(parent, outline.tag)
+    def saveOutline(cls, outline, parent):
+        element = etree.SubElement(parent, "outline")
 
-        for key in outline.keys():
-            element.attrib[key] = outline.attributes[key]
+        for (key, value) in outline.attributes.items():
+            if value is None:
+                continue
+
+            element.attrib[key] = value
 
         for child in outline.children:
             cls.saveOutline(child, element)
 
-        return element
-
     def save(self, content):
-        root = OpmlFile.saveOutline(content)
-        tree = etree.ElementTree(root)
+        root = etree.Element("opml")
+        root.set("version", "1.0")
 
+        body = etree.SubElement(root, "body")
+
+        for outline in content:
+            OpmlFile.saveOutline(outline, body)
+
+        tree = etree.ElementTree(root)
         XmlFile.save(self, tree)

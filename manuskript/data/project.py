@@ -9,6 +9,7 @@ from manuskript.data.status import StatusHost
 from manuskript.data.settings import Settings
 from manuskript.data.characters import Characters
 from manuskript.data.plots import Plots
+from manuskript.data.world import World
 from manuskript.data.outline import Outline
 from manuskript.data.revisions import Revisions
 from manuskript.io.mskFile import MskFile
@@ -26,6 +27,7 @@ class Project:
         self.settings = Settings(self.file.dir_path)
         self.characters = Characters(self.file.dir_path)
         self.plots = Plots(self.file.dir_path)
+        self.world = World(self.file.dir_path)
         self.outline = Outline(self.file.dir_path)
         self.revisions = Revisions(self.file.dir_path)
 
@@ -47,6 +49,7 @@ class Project:
         self.settings.load()
         self.characters.load()
         self.plots.load()
+        self.world.load()
         self.outline.load()
         self.revisions.load()
 
@@ -63,6 +66,7 @@ class Project:
         self.settings.save()
         self.characters.save()
         self.plots.save()
+        self.world.save()
         self.outline.save()
         #self.revisions.save()
 
