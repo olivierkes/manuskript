@@ -3,6 +3,7 @@
 
 import os
 
+from collections import OrderedDict
 from manuskript.data.color import Color
 from manuskript.data.unique_id import UniqueIDHost
 from manuskript.io.mmdFile import MmdFile
@@ -17,7 +18,7 @@ class Character:
         self.UID = None
         self.name = None
         self.importance = None
-        self.pov = True
+        self.POV = None
         self.motivation = None
         self.goal = None
         self.conflict = None
@@ -28,6 +29,9 @@ class Character:
         self.notes = None
         self.color = None
         self.details = dict()
+
+    def allowPOV(self) -> bool:
+        return True if self.POV is None else self.POV
 
     @classmethod
     def loadAttribute(cls, metadata: dict, name: str, defaultValue=None):
@@ -47,7 +51,7 @@ class Character:
         self.UID = self.characters.host.loadID(int(ID))
         self.name = Character.loadAttribute(metadata, "Name", None)
         self.importance = Character.loadAttribute(metadata, "Importance", None)
-        self.pov = Character.loadAttribute(metadata, "POV", True)
+        self.POV = Character.loadAttribute(metadata, "POV", None)
         self.motivation = Character.loadAttribute(metadata, "Motivation", None)
         self.goal = Character.loadAttribute(metadata, "Goal", None)
         self.conflict = Character.loadAttribute(metadata, "Conflict", None)
@@ -64,15 +68,12 @@ class Character:
             self.details[key] = value
 
     def save(self):
-        metadata = dict()
+        metadata = OrderedDict()
 
-        for (key, value) in self.details.items():
-            metadata[key] = value
-
-        metadata["ID"] = str(self.UID.value)
         metadata["Name"] = self.name
+        metadata["ID"] = str(self.UID.value)
         metadata["Importance"] = self.importance
-        metadata["POV"] = self.pov
+        metadata["POV"] = self.POV
         metadata["Motivation"] = self.motivation
         metadata["Goal"] = self.goal
         metadata["Conflict"] = self.conflict
@@ -82,6 +83,10 @@ class Character:
         metadata["Full Summary"] = self.summaryFull
         metadata["Notes"] = self.notes
         metadata["Color"] = self.color
+
+        for (key, value) in self.details.items():
+            if not (key in metadata):
+                metadata[key] = value
 
         self.file.save((metadata, None))
 

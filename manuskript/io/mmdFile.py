@@ -8,7 +8,7 @@ from manuskript.io.abstractFile import AbstractFile
 
 class MmdFile(AbstractFile):
 
-    def __init__(self, path, metaSpacing = 16):
+    def __init__(self, path, metaSpacing=16):
         AbstractFile.__init__(self, path)
 
         self.metaSpacing = metaSpacing
@@ -56,7 +56,10 @@ class MmdFile(AbstractFile):
         metadata, body = content
         metaSpacing = self.metaSpacing
 
-        for key in metadata.keys():
+        for (key, value) in metadata.items():
+            if value is None:
+                continue
+
             metaSpacing = max(metaSpacing, len(key) + 2)
 
         with open(self.path, 'wt', encoding='utf-8') as file:
@@ -65,7 +68,7 @@ class MmdFile(AbstractFile):
                     continue
 
                 spacing = metaSpacing - (len(key) + 2)
-                lines = value.split("\n")
+                lines = str(value).split("\n")
 
                 file.write(key + ": " + spacing * " " + lines[0] + "\n")
 

@@ -14,3 +14,5 @@ path = os.path.join(sys.path[1], "sample-projects/book-of-acts")
 
 project = data.Project(path + ".msk")
 project.load()
+
+project.save()

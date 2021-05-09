@@ -3,6 +3,7 @@
 
 import os
 
+from collections import OrderedDict
 from enum import Enum, unique
 from manuskript.data.goal import Goal
 from manuskript.data.unique_id import UniqueIDHost
@@ -56,13 +57,13 @@ class OutlineItem:
 
     @classmethod
     def saveMetadata(cls, item):
-        metadata = dict()
+        metadata = OrderedDict()
 
         if item.UID is None:
             return metadata
 
-        metadata["ID"] = str(item.UID.value)
         metadata["title"] = item.title
+        metadata["ID"] = str(item.UID.value)
         metadata["type"] = item.type
         metadata["summarySentence"] = item.summarySentence
         metadata["summaryFull"] = item.summaryFull
@@ -71,7 +72,7 @@ class OutlineItem:
         metadata["label"] = item.label
         metadata["status"] = item.status
         metadata["compile"] = item.compile
-        metadata["setGoal"] = str(item.goal)
+        metadata["setGoal"] = item.goal
 
         return metadata
 
@@ -101,6 +102,7 @@ class OutlineText(OutlineItem):
 
     def save(self):
         if self.state == OutlineState.OPTIMIZED:
+            self.outline.host.removeID(self.UID)
             self.load(False)
 
         metadata = OutlineItem.saveMetadata(self)
@@ -163,7 +165,7 @@ class OutlineFolder(OutlineItem):
     def save(self):
         self.type = "folder"
         metadata = OutlineItem.saveMetadata(self)
-        self.file.save((metadata, ""))
+        self.file.save((metadata, "\n"))
 
 
 class Outline:

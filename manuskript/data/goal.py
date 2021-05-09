@@ -13,11 +13,14 @@ class GoalKind(Enum):
 class Goal:
 
     def __init__(self, value: int = 0, kind: GoalKind = GoalKind.WORDS):
-        self.value = 0
+        self.value = value
         self.kind = kind
 
     def __str__(self):
-        return str(self.value) + " " + self.kind.name.lower()
+        if self.kind != GoalKind.WORDS:
+            return str(self.value) + " " + self.kind.name.lower()
+        else:
+            return str(self.value)
 
     @classmethod
     def parse(cls, string: str):
