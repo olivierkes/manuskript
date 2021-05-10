@@ -6,7 +6,7 @@
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="18"/>
         <source>Basic HTML output using the Python module &apos;markdown&apos;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Βασική έξοδος HTML με τη χρήση της ενότητας &apos;markdown&apos; της Python.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="19"/>
@@ -164,7 +164,8 @@
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="15"/>
         <source>Simplest export to plain text. Allows you to use your own markup not understood
                   by Manuskript, for example &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Απλούστερη εξαγωγή σε απλό κείμενο. Σας επιτρέπει να χρησιμοποιήσετε τη δική σας σήμανση που δεν είναι κατανοητή
+  από το Manuskript, για παράδειγμα &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/__init__.py" line="20"/>
@@ -208,7 +209,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="135"/>
         <source>Convert to ePUB3</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετατροπή σε ePUB3</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="48"/>
@@ -227,42 +228,42 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="14"/>
         <source>Manage Exporters</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαχείριση εξαγωγέων</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="21"/>
         <source>Manuskript</source>
-        <translation type="unfinished"></translation>
+        <translation>Μάνουσκριπτ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="66"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Περιγραφή</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="100"/>
         <source>Offers export to</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσφέρει εξαγωγή σε</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="184"/>
         <source>Status</source>
-        <translation type="unfinished"></translation>
+        <translation>Καθεστώς</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="190"/>
         <source>Status:</source>
-        <translation type="unfinished"></translation>
+        <translation>Καθεστώς:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="210"/>
         <source>Version:</source>
-        <translation type="unfinished"></translation>
+        <translation>Έκδοση:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="233"/>
         <source>Path:</source>
-        <translation type="unfinished"></translation>
+        <translation>Μονοπάτι:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="258"/>
@@ -272,7 +273,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="273"/>
         <source>{HelpText}</source>
-        <translation type="unfinished"></translation>
+        <translation>{Κείμενο βοηθείας}</translation>
     </message>
 </context>
 <context>
@@ -280,32 +281,32 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="14"/>
         <source>Frequency Analyzer</source>
-        <translation type="unfinished"></translation>
+        <translation>Αναλυτής συχνότητας</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="24"/>
         <source>Word frequency</source>
-        <translation type="unfinished"></translation>
+        <translation>Συχνότητα λέξεων</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="37"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Ρυθμίσεις</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="49"/>
         <source>Minimum size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ελάχιστο μέγεθος:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="63"/>
         <source>Exclude words (comma separated):</source>
-        <translation type="unfinished"></translation>
+        <translation>Αποκλείστε λέξεις (διαχωρισμένες με κόμμα):</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="156"/>
         <source>Analyze</source>
-        <translation type="unfinished"></translation>
+        <translation>Ανάλυση</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="107"/>
