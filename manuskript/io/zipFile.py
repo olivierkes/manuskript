@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
 
-import tempfile
+import os
 import shutil
+import tempfile
 
 from zipfile import ZipFile as _ZipFile
 from manuskript.io.abstractFile import AbstractFile
@@ -49,3 +50,7 @@ class ZipFile(AbstractFile):
 
         shutil.make_archive(self.path, 'zip', self.dir_path)
         shutil.move(self.path + ".zip", self.path)
+
+    def remove(self):
+        if os.path.exists(self.path):
+            os.remove(self.path)

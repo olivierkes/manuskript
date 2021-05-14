@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
 
+import os
+
 from zipfile import BadZipFile
 from manuskript.data.info import Info
 from manuskript.data.summary import Summary
@@ -33,6 +35,15 @@ class Project:
 
     def __del__(self):
         del self.file
+
+    def getName(self):
+        parts = os.path.split(self.file.path)
+        name = parts[-1]
+
+        if name.endswith('.msk'):
+            name = name[:-4]
+
+        return name
 
     def load(self):
         try:

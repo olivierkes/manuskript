@@ -12,3 +12,6 @@ class AbstractFile:
 
     def save(self, content):
         raise IOError('Saving undefined!')
+
+    def remove(self):
+        raise IOError('Removing undefined!')

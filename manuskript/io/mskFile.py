@@ -61,3 +61,9 @@ class MskFile(TextFile, ZipFile):
             ZipFile.save(self)
         else:
             TextFile.save(self, "1")
+
+    def remove(self):
+        if os.path.isdir(self.dir_path):
+            shutil.rmtree(self.dir_path)
+
+        ZipFile.remove(self)

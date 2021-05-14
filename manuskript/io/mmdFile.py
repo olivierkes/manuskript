@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-
+import os
 import re
 
 from manuskript.io.abstractFile import AbstractFile
@@ -77,3 +77,7 @@ class MmdFile(AbstractFile):
 
             if not (body is None):
                 file.write("\n" + body)
+
+    def remove(self):
+        if os.path.exists(self.path):
+            os.remove(self.path)
