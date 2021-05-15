@@ -4483,12 +4483,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Transportation</source>
-        <translation type="unfinished"></translation>
+        <translation>Μέσα Μεταφοράς</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Medicine</source>
-        <translation type="unfinished"></translation>
+        <translation>Ιατρική</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="280"/>
@@ -4498,7 +4498,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="280"/>
         <source>Rules</source>
-        <translation type="unfinished"></translation>
+        <translation>Κανονισμοί</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="280"/>
@@ -4528,7 +4528,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="288"/>
         <source>Important objects</source>
-        <translation type="unfinished"></translation>
+        <translation>Σημαντικά αντικείμενα</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="246"/>
