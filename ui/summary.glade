@@ -599,7 +599,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
               </packing>
             </child>
             <child>
-              <object class="GtkButton">
+              <object class="GtkButton" id="next_button">
                 <property name="label" translatable="yes">Next</property>
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>

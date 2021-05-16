@@ -18,8 +18,8 @@ class SummaryView:
         self.widget = builder.get_object("summary_view")
         self.stack = builder.get_object("stack")
 
-        stackCombo = builder.get_object("stack_combo")
-        stackCombo.connect("changed", self.summaryStackChanged)
+        self.stackCombo = builder.get_object("stack_combo")
+        self.stackCombo.connect("changed", self.summaryStackChanged)
 
         self.situationBuffer = builder.get_object("situation")
 
@@ -35,12 +35,15 @@ class SummaryView:
         self.fullBuffer = builder.get_object("summary_full")
         self.fullLabel = builder.get_object("full_label")
 
-        self.situationBuffer.connect("deleted-text", self.situationDeletedText)
-        self.situationBuffer.connect("inserted-text", self.situationInsertedText)
+        self.situationBuffer.connect("deleted-text", self._situationDeletedText)
+        self.situationBuffer.connect("inserted-text", self._situationInsertedText)
         self.oneSentenceBuffer.connect("changed", self.summaryOneSentenceChanged)
         self.oneParagraphBuffer.connect("changed", self.summaryOneParagraphChanged)
         self.onePageBuffer.connect("changed", self.summaryOnePageChanged)
         self.fullBuffer.connect("changed", self.summaryFullChanged)
+
+        self.nextButton = builder.get_object("next_button")
+        self.nextButton.connect("clicked", self.nextClicked)
 
     def show(self):
         self.widget.show_all()
@@ -54,15 +57,16 @@ class SummaryView:
         model = combo.get_model()
         page = model[tree_iter][1]
 
+        self.nextButton.set_visible(not (model.iter_next(tree_iter) is None))
         self.stack.set_visible_child_name(page)
 
     def situationChanged(self, buffer: Gtk.EntryBuffer):
         print(buffer.get_text())
 
-    def situationDeletedText(self, buffer: Gtk.EntryBuffer, position, count):
+    def _situationDeletedText(self, buffer: Gtk.EntryBuffer, position, count):
         self.situationChanged(buffer)
 
-    def situationInsertedText(self, buffer: Gtk.EntryBuffer, position, value, count):
+    def _situationInsertedText(self, buffer: Gtk.EntryBuffer, position, value, count):
         self.situationChanged(buffer)
 
     def summaryOneSentenceChanged(self, buffer: Gtk.TextBuffer):
@@ -96,3 +100,17 @@ class SummaryView:
         text = buffer.get_text(start_iter, end_iter, False)
 
         self.fullLabel.set_text("Words: {} (~{} pages)".format(WordCounter.count(text), PageCounter.count(text)))
+
+    def nextClicked(self, button: Gtk.Button):
+        tree_iter = self.stackCombo.get_active_iter()
+
+        if tree_iter is None:
+            return
+
+        model = self.stackCombo.get_model()
+        tree_iter = model.iter_next(tree_iter)
+
+        if tree_iter is None:
+            return
+        else:
+            self.stackCombo.set_active_iter(tree_iter)

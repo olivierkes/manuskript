@@ -25,6 +25,14 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
   <!-- interface-name Manuskript -->
   <!-- interface-description Manuskript is an open-source tool for writers. -->
   <!-- interface-copyright 2015-2021 Olivier Keshavjee et al. -->
+  <object class="GtkEntryBuffer" id="email"/>
+  <object class="GtkEntryBuffer" id="genre"/>
+  <object class="GtkEntryBuffer" id="license"/>
+  <object class="GtkEntryBuffer" id="name"/>
+  <object class="GtkEntryBuffer" id="series"/>
+  <object class="GtkEntryBuffer" id="subtitle"/>
+  <object class="GtkEntryBuffer" id="title"/>
+  <object class="GtkEntryBuffer" id="volume"/>
   <object class="GtkScrolledWindow" id="general_view">
     <property name="visible">True</property>
     <property name="can-focus">True</property>
@@ -95,6 +103,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                           <object class="GtkEntry">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
+                            <property name="buffer">title</property>
                           </object>
                           <packing>
                             <property name="expand">True</property>
@@ -130,6 +139,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                           <object class="GtkEntry">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
+                            <property name="buffer">subtitle</property>
                           </object>
                           <packing>
                             <property name="expand">True</property>
@@ -165,6 +175,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                           <object class="GtkEntry">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
+                            <property name="buffer">series</property>
                           </object>
                           <packing>
                             <property name="expand">True</property>
@@ -200,6 +211,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                           <object class="GtkEntry">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
+                            <property name="buffer">volume</property>
                           </object>
                           <packing>
                             <property name="expand">True</property>
@@ -235,6 +247,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                           <object class="GtkEntry">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
+                            <property name="buffer">genre</property>
                           </object>
                           <packing>
                             <property name="expand">True</property>
@@ -270,6 +283,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                           <object class="GtkEntry">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
+                            <property name="buffer">license</property>
                           </object>
                           <packing>
                             <property name="expand">True</property>
@@ -350,6 +364,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                           <object class="GtkEntry">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
+                            <property name="buffer">name</property>
                           </object>
                           <packing>
                             <property name="expand">True</property>
@@ -385,6 +400,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                           <object class="GtkEntry">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
+                            <property name="buffer">email</property>
                           </object>
                           <packing>
                             <property name="expand">True</property>
