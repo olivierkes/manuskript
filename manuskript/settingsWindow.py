@@ -16,15 +16,15 @@ from manuskript import settings
 from manuskript.enums import Outline
 from manuskript.functions import allPaths, iconColor, writablePath, appPath, findWidgetsOfClass
 from manuskript.functions import mainWindow, findBackground, themeIcon
-from manuskript.ui.editors.tabSplitter import tabSplitter
-from manuskript.ui.editors.themes import createThemePreview
-from manuskript.ui.editors.themes import getThemeName
-from manuskript.ui.editors.themes import loadThemeDatas
-from manuskript.ui.settings_ui import Ui_Settings
-from manuskript.ui.views.outlineView import outlineView
-from manuskript.ui.views.textEditView import textEditView
-from manuskript.ui.welcome import welcome
-from manuskript.ui import style as S
+from manuskript.ui_qt.editors.tabSplitter import tabSplitter
+from manuskript.ui_qt.editors.themes import createThemePreview
+from manuskript.ui_qt.editors.themes import getThemeName
+from manuskript.ui_qt.editors.themes import loadThemeDatas
+from manuskript.ui_qt.settings_ui import Ui_Settings
+from manuskript.ui_qt.views.outlineView import outlineView
+from manuskript.ui_qt.views.textEditView import textEditView
+from manuskript.ui_qt.welcome import welcome
+from manuskript.ui_qt import style as S
 
 
 class settingsWindow(QWidget, Ui_Settings):

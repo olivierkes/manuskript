@@ -25,7 +25,42 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
   <!-- interface-name Manuskript -->
   <!-- interface-description Manuskript is an open-source tool for writers. -->
   <!-- interface-copyright 2015-2021 Olivier Keshavjee et al. -->
-  <object class="GtkScrolledWindow">
+  <object class="GtkListStore" id="importance_store">
+    <columns>
+      <!-- column-name name -->
+      <column type="gchararray"/>
+    </columns>
+    <data>
+      <row>
+        <col id="0" translatable="yes">Main</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">Secondary</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">Minor</col>
+      </row>
+    </data>
+  </object>
+  <object class="GtkListStore" id="info_store">
+    <columns>
+      <!-- column-name name -->
+      <column type="gchararray"/>
+      <!-- column-name value -->
+      <column type="gchararray"/>
+    </columns>
+    <data>
+      <row>
+        <col id="0" translatable="yes">Test</col>
+        <col id="1" translatable="yes">Hallo Welt</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">Blub</col>
+        <col id="1" translatable="yes">43</col>
+      </row>
+    </data>
+  </object>
+  <object class="GtkScrolledWindow" id="characters_view">
     <property name="visible">True</property>
     <property name="can-focus">True</property>
     <property name="shadow-type">in</property>
@@ -823,40 +858,5 @@ summary</property>
         </child>
       </object>
     </child>
-  </object>
-  <object class="GtkListStore" id="importance_store">
-    <columns>
-      <!-- column-name name -->
-      <column type="gchararray"/>
-    </columns>
-    <data>
-      <row>
-        <col id="0" translatable="yes">Main</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">Secondary</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">Minor</col>
-      </row>
-    </data>
-  </object>
-  <object class="GtkListStore" id="info_store">
-    <columns>
-      <!-- column-name name -->
-      <column type="gchararray"/>
-      <!-- column-name value -->
-      <column type="gchararray"/>
-    </columns>
-    <data>
-      <row>
-        <col id="0" translatable="yes">Test</col>
-        <col id="1" translatable="yes">Hallo Welt</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">Blub</col>
-        <col id="1" translatable="yes">43</col>
-      </row>
-    </data>
   </object>
 </interface>

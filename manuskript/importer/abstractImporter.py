@@ -7,8 +7,8 @@ import subprocess
 from PyQt5.QtCore import QSettings
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QCheckBox, QHBoxLayout, \
                             QLabel, QSpinBox, QComboBox, QLineEdit
-from manuskript.ui.collapsibleGroupBox2 import collapsibleGroupBox2
-from manuskript.ui import style
+from manuskript.ui_qt.collapsibleGroupBox2 import collapsibleGroupBox2
+from manuskript.ui_qt import style
 
 
 class abstractImporter:

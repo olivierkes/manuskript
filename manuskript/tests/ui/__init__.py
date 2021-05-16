@@ -1,4 +1,4 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
 
-"""Tests for stuff in ui."""
+"""Tests for stuff in ui_qt."""

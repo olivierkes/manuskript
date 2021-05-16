@@ -8,7 +8,7 @@ from PyQt5.QtWidgets import QMenu, QAction, qApp
 
 from manuskript.enums import World, Model
 from manuskript.functions import mainWindow
-from manuskript.ui import style as S
+from manuskript.ui_qt import style as S
 from manuskript.models.searchableModel import searchableModel
 from manuskript.models.searchableItem import searchableItem
 from manuskript.searchLabels import WorldSearchLabels

@@ -119,10 +119,10 @@ def initDefaultValues():
     """
     global textEditor
     if not textEditor["background"]:
-        from manuskript.ui import style as S
+        from manuskript.ui_qt import style as S
         textEditor["background"] = S.base
     if not textEditor["fontColor"]:
-        from manuskript.ui import style as S
+        from manuskript.ui_qt import style as S
         textEditor["fontColor"] = S.text
 
 def save(filename=None, protocol=None):

@@ -370,7 +370,7 @@ def logRuntimeInformation(logger=None):
     logger.info("* Markdown %s", afom("markdown", "__version__") or "N/A")
 
     # Web rendering engine
-    from manuskript.ui.views.webView import webEngine
+    from manuskript.ui_qt.views.webView import webEngine
     logger.info("Web rendering engine: %s", webEngine)
 
     # Do not collect version information for Pandoc; that would require

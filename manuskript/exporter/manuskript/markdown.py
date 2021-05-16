@@ -5,8 +5,8 @@ from PyQt5.QtWidgets import QPlainTextEdit, QGroupBox, qApp, QVBoxLayout, QCheck
 
 from manuskript.exporter.manuskript.plainText import plainText
 from manuskript.functions import mainWindow
-from manuskript.ui.highlighters import MMDHighlighter
-from manuskript.ui.exporters.manuskript.plainTextSettings import exporterSettings
+from manuskript.ui_qt.highlighters import MMDHighlighter
+from manuskript.ui_qt.exporters.manuskript.plainTextSettings import exporterSettings
 
 
 class markdown(plainText):

@@ -25,7 +25,49 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
   <!-- interface-name Manuskript -->
   <!-- interface-description Manuskript is an open-source tool for writers. -->
   <!-- interface-copyright 2015-2021 Olivier Keshavjee et al. -->
-  <object class="GtkScrolledWindow">
+  <object class="GtkListStore" id="character_store">
+    <columns>
+      <!-- column-name name -->
+      <column type="gchararray"/>
+      <!-- column-name color -->
+      <column type="GdkPixbuf"/>
+    </columns>
+  </object>
+  <object class="GtkTreeStore" id="outline_store">
+    <columns>
+      <!-- column-name title -->
+      <column type="gchararray"/>
+      <!-- column-name label -->
+      <column type="gchararray"/>
+      <!-- column-name status -->
+      <column type="gchararray"/>
+      <!-- column-name compile -->
+      <column type="gboolean"/>
+      <!-- column-name count -->
+      <column type="gulong"/>
+      <!-- column-name goal -->
+      <column type="gulong"/>
+    </columns>
+  </object>
+  <object class="GtkTreeStore" id="plot_main_store">
+    <columns>
+      <!-- column-name name -->
+      <column type="gchararray"/>
+    </columns>
+  </object>
+  <object class="GtkTreeStore" id="plot_minor_store">
+    <columns>
+      <!-- column-name name -->
+      <column type="gchararray"/>
+    </columns>
+  </object>
+  <object class="GtkTreeStore" id="plot_secondary_store">
+    <columns>
+      <!-- column-name name -->
+      <column type="gchararray"/>
+    </columns>
+  </object>
+  <object class="GtkScrolledWindow" id="outline_view">
     <property name="visible">True</property>
     <property name="can-focus">True</property>
     <property name="shadow-type">in</property>
@@ -502,53 +544,5 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
         </child>
       </object>
     </child>
-  </object>
-  <object class="GtkListStore" id="character_store">
-    <columns>
-      <!-- column-name name -->
-      <column type="gchararray"/>
-      <!-- column-name color -->
-      <column type="GdkPixbuf"/>
-    </columns>
-    <data>
-      <row>
-        <col id="0" translatable="yes">Test</col>
-        <col id="1"/>
-      </row>
-    </data>
-  </object>
-  <object class="GtkTreeStore" id="outline_store">
-    <columns>
-      <!-- column-name title -->
-      <column type="gchararray"/>
-      <!-- column-name label -->
-      <column type="gchararray"/>
-      <!-- column-name status -->
-      <column type="gchararray"/>
-      <!-- column-name compile -->
-      <column type="gboolean"/>
-      <!-- column-name count -->
-      <column type="gulong"/>
-      <!-- column-name goal -->
-      <column type="gulong"/>
-    </columns>
-  </object>
-  <object class="GtkTreeStore" id="plot_main_store">
-    <columns>
-      <!-- column-name name -->
-      <column type="gchararray"/>
-    </columns>
-  </object>
-  <object class="GtkTreeStore" id="plot_minor_store">
-    <columns>
-      <!-- column-name name -->
-      <column type="gchararray"/>
-    </columns>
-  </object>
-  <object class="GtkTreeStore" id="plot_secondary_store">
-    <columns>
-      <!-- column-name name -->
-      <column type="gchararray"/>
-    </columns>
   </object>
 </interface>

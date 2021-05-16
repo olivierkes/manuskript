@@ -25,11 +25,38 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
   <!-- interface-name Manuskript -->
   <!-- interface-description Manuskript is an open-source tool for writers. -->
   <!-- interface-copyright 2015-2021 Olivier Keshavjee et al. -->
+  <object class="GtkEntryBuffer" id="situation"/>
   <object class="GtkTextBuffer" id="summary_full"/>
   <object class="GtkTextBuffer" id="summary_one_page"/>
   <object class="GtkTextBuffer" id="summary_one_paragraph"/>
   <object class="GtkTextBuffer" id="summary_one_sentence"/>
-  <object class="GtkScrolledWindow">
+  <object class="GtkListStore" id="summary_store">
+    <columns>
+      <!-- column-name name -->
+      <column type="gchararray"/>
+      <!-- column-name page -->
+      <column type="gchararray"/>
+    </columns>
+    <data>
+      <row>
+        <col id="0" translatable="yes">One sentence</col>
+        <col id="1" translatable="yes">page_one_sentence</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">One paragraph</col>
+        <col id="1" translatable="yes">page_one_paragraph</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">One page</col>
+        <col id="1" translatable="yes">page_one_page</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">Full</col>
+        <col id="1" translatable="yes">page_full</col>
+      </row>
+    </data>
+  </object>
+  <object class="GtkScrolledWindow" id="summary_view">
     <property name="visible">True</property>
     <property name="can-focus">True</property>
     <property name="shadow-type">in</property>
@@ -81,6 +108,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                   <object class="GtkEntry">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
+                    <property name="buffer">situation</property>
                     <property name="placeholder-text" translatable="yes">What if...?</property>
                   </object>
                   <packing>
@@ -89,7 +117,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkComboBox">
+                  <object class="GtkComboBox" id="stack_combo">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="model">summary_store</property>
@@ -107,7 +135,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkStack">
+                  <object class="GtkStack" id="stack">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="hexpand">True</property>
@@ -150,7 +178,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkLabel">
+                          <object class="GtkLabel" id="one_sentence_label">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="label" translatable="yes">Words: 0</property>
@@ -272,7 +300,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkLabel">
+                              <object class="GtkLabel" id="one_paragraph_label">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                                 <property name="label" translatable="yes">Words: 0</property>
@@ -403,7 +431,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkLabel">
+                              <object class="GtkLabel" id="one_page_label">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                                 <property name="label" translatable="yes">Words: 0 (~0.0 pages)</property>
@@ -520,7 +548,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkLabel">
+                              <object class="GtkLabel" id="full_label">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                                 <property name="label" translatable="yes">Words: 0 (~0.0 pages)</property>
@@ -591,31 +619,5 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
         </child>
       </object>
     </child>
-  </object>
-  <object class="GtkListStore" id="summary_store">
-    <columns>
-      <!-- column-name name -->
-      <column type="gchararray"/>
-      <!-- column-name page -->
-      <column type="gchararray"/>
-    </columns>
-    <data>
-      <row>
-        <col id="0" translatable="yes">One sentence</col>
-        <col id="1" translatable="yes">page_one_sentence</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">One paragraph</col>
-        <col id="1" translatable="yes">page_one_paragraph</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">One page</col>
-        <col id="1" translatable="yes">page_one_page</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">Full</col>
-        <col id="1" translatable="yes">page_full</col>
-      </row>
-    </data>
   </object>
 </interface>

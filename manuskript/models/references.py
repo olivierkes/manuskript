@@ -20,7 +20,7 @@ from manuskript.enums import Character
 from manuskript.enums import Plot
 from manuskript.enums import PlotStep
 from manuskript.functions import mainWindow, mixColors
-from manuskript.ui import style as S
+from manuskript.ui_qt import style as S
 
 
 RegEx = r"{(\w):(\d+):?.*?}"

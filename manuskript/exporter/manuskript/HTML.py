@@ -4,8 +4,8 @@ from PyQt5.QtCore import Qt, QUrl
 from PyQt5.QtWidgets import QPlainTextEdit, qApp, QTabWidget, QFrame, QTextEdit
 
 from manuskript.exporter.manuskript.markdown import markdown, markdownSettings
-from manuskript.ui.views.webView import webView
-from manuskript.ui.exporters.manuskript.plainTextSettings import exporterSettings
+from manuskript.ui_qt.views.webView import webView
+from manuskript.ui_qt.exporters.manuskript.plainTextSettings import exporterSettings
 import os
 
 try:

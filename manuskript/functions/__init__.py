@@ -83,7 +83,7 @@ def toString(text):
 
 
 def drawProgress(painter, rect, progress, radius=0):
-    from manuskript.ui import style as S
+    from manuskript.ui_qt import style as S
     progress = toFloat(progress)  # handle invalid input (issue #561)
     painter.setPen(Qt.NoPen)
     painter.setBrush(QColor(S.base)) # "#dddddd"
@@ -199,7 +199,7 @@ def mixColors(col1, col2, f=.5):
 
 def outlineItemColors(item):
 
-    from manuskript.ui import style as S
+    from manuskript.ui_qt import style as S
 
     """Takes an OutlineItem and returns a dict of colors."""
     colors = {}
@@ -393,7 +393,7 @@ def statusMessage(message, duration=5000, importance=1):
     Shows a message in MainWindow's status bar.
     Importance: 0 = low, 1 = normal, 2 = important, 3 = critical.
     """
-    from manuskript.ui import style as S
+    from manuskript.ui_qt import style as S
     MW.statusBar().hide()
     MW.statusLabel.setText(message)
     if importance == 0:

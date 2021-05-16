@@ -22,21 +22,21 @@ from manuskript.models import outlineModel
 from manuskript.models.plotModel import plotModel
 from manuskript.models.worldModel import worldModel
 from manuskript.settingsWindow import settingsWindow
-from manuskript.ui import style
-from manuskript.ui.about import aboutDialog
-from manuskript.ui.collapsibleDockWidgets import collapsibleDockWidgets
-from manuskript.ui.importers.importer import importerDialog
-from manuskript.ui.exporters.exporter import exporterDialog
-from manuskript.ui.helpLabel import helpLabel
-from manuskript.ui.mainWindow import Ui_MainWindow
-from manuskript.ui.tools.frequencyAnalyzer import frequencyAnalyzer
-from manuskript.ui.views.outlineDelegates import outlineCharacterDelegate
-from manuskript.ui.views.plotDelegate import plotDelegate
-from manuskript.ui.views.MDEditView import MDEditView
-from manuskript.ui.statusLabel import statusLabel
+from manuskript.ui_qt import style
+from manuskript.ui_qt.about import aboutDialog
+from manuskript.ui_qt.collapsibleDockWidgets import collapsibleDockWidgets
+from manuskript.ui_qt.importers.importer import importerDialog
+from manuskript.ui_qt.exporters.exporter import exporterDialog
+from manuskript.ui_qt.helpLabel import helpLabel
+from manuskript.ui_qt.mainWindow import Ui_MainWindow
+from manuskript.ui_qt.tools.frequencyAnalyzer import frequencyAnalyzer
+from manuskript.ui_qt.views.outlineDelegates import outlineCharacterDelegate
+from manuskript.ui_qt.views.plotDelegate import plotDelegate
+from manuskript.ui_qt.views.MDEditView import MDEditView
+from manuskript.ui_qt.statusLabel import statusLabel
 
 # Spellcheck support
-from manuskript.ui.views.textEditView import textEditView
+from manuskript.ui_qt.views.textEditView import textEditView
 from manuskript.functions import Spellchecker
 
 import logging
@@ -1639,7 +1639,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.toolbar.setDockVisibility(self.dckNavigation, val)
 
         # POV in metadata
-        from manuskript.ui.views.propertiesView import propertiesView
+        from manuskript.ui_qt.views.propertiesView import propertiesView
         for w in findWidgetsOfClass(propertiesView):
             w.lblPOV.setVisible(val)
             w.cmbPOV.setVisible(val)
@@ -1648,7 +1648,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if val == None and Outline.POV in settings.outlineViewColumns:
             settings.outlineViewColumns.remove(Outline.POV)
 
-        from manuskript.ui.views.outlineView import outlineView
+        from manuskript.ui_qt.views.outlineView import outlineView
         for w in findWidgetsOfClass(outlineView):
             w.hideColumns()
 

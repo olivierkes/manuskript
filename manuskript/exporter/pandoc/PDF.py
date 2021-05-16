@@ -8,7 +8,7 @@ from PyQt5.QtWidgets import qApp
 
 from manuskript.exporter.pandoc.abstractOutput import abstractOutput
 from manuskript.functions import tempFile
-from manuskript.ui.views.PDFViewer import PDFViewer
+from manuskript.ui_qt.views.PDFViewer import PDFViewer
 
 
 class PDF(abstractOutput):

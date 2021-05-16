@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
 
-from manuskript.ui.searchMenu import searchMenu
+from manuskript.ui_qt.searchMenu import searchMenu
 from manuskript.enums import Outline, Character, FlatData, World, Plot, PlotStep, Model
 from manuskript.searchLabels import PLOT_STEP_COLUMNS_OFFSET
 

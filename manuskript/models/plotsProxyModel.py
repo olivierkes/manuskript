@@ -9,7 +9,7 @@ from PyQt5.QtGui import QColor
 from PyQt5.QtGui import QStandardItem
 
 from manuskript.enums import Plot
-from manuskript.ui import style as S
+from manuskript.ui_qt import style as S
 
 
 class plotsProxyModel(QSortFilterProxyModel):

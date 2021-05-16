@@ -25,7 +25,19 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
   <!-- interface-name Manuskript -->
   <!-- interface-description Manuskript is an open-source tool for writers. -->
   <!-- interface-copyright 2015-2021 Olivier Keshavjee et al. -->
-  <object class="GtkScrolledWindow">
+  <object class="GtkTreeStore" id="world_store">
+    <columns>
+      <!-- column-name name -->
+      <column type="gchararray"/>
+      <!-- column-name description -->
+      <column type="gchararray"/>
+      <!-- column-name passion -->
+      <column type="gchararray"/>
+      <!-- column-name conflict -->
+      <column type="gchararray"/>
+    </columns>
+  </object>
+  <object class="GtkScrolledWindow" id="world_view">
     <property name="visible">True</property>
     <property name="can-focus">True</property>
     <property name="shadow-type">in</property>
@@ -390,17 +402,5 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
         </child>
       </object>
     </child>
-  </object>
-  <object class="GtkTreeStore" id="world_store">
-    <columns>
-      <!-- column-name name -->
-      <column type="gchararray"/>
-      <!-- column-name description -->
-      <column type="gchararray"/>
-      <!-- column-name passion -->
-      <column type="gchararray"/>
-      <!-- column-name conflict -->
-      <column type="gchararray"/>
-    </columns>
   </object>
 </interface>

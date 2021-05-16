@@ -2,7 +2,7 @@
 #--!-- coding: utf8 --!--
 
 from manuskript import enums
-from manuskript.ui import style as S
+from manuskript.ui_qt import style as S
 
 
 class persosProxyModel(QSortFilterProxyModel):

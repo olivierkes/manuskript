@@ -25,7 +25,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
   <!-- interface-name Manuskript -->
   <!-- interface-description Manuskript is an open-source tool for writers. -->
   <!-- interface-copyright 2015-2021 Olivier Keshavjee et al. -->
-  <object class="GtkScrolledWindow">
+  <object class="GtkScrolledWindow" id="general_view">
     <property name="visible">True</property>
     <property name="can-focus">True</property>
     <property name="shadow-type">in</property>

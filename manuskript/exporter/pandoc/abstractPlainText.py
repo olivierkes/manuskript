@@ -6,7 +6,7 @@ from PyQt5.QtGui import QTextCharFormat, QFont
 from PyQt5.QtWidgets import qApp, QVBoxLayout, QCheckBox, QWidget, QHBoxLayout, QLabel, QSpinBox, QComboBox
 
 from manuskript.exporter.manuskript.markdown import markdown, markdownSettings
-from manuskript.ui.collapsibleGroupBox2 import collapsibleGroupBox2
+from manuskript.ui_qt.collapsibleGroupBox2 import collapsibleGroupBox2
 
 
 class abstractPlainText(markdown):

@@ -108,7 +108,7 @@ def prepare(arguments, tests=False):
     else:
         # Auto-detect based on system locale.
         translation = QLocale().uiLanguages()
-        source = "available ui languages"
+        source = "available ui_qt languages"
 
     LOGGER.info("Preferred translation: {} (based on {})".format(("builtin" if translation == "" else translation), source))
     activateTranslation(translation, source)
