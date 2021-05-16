@@ -48,7 +48,7 @@ class SummaryView:
     def show(self):
         self.widget.show_all()
 
-    def summaryStackChanged(self, combo):
+    def summaryStackChanged(self, combo: Gtk.ComboBox):
         tree_iter = combo.get_active_iter()
 
         if tree_iter is None:

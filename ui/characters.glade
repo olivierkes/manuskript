@@ -25,6 +25,17 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
   <!-- interface-name Manuskript -->
   <!-- interface-description Manuskript is an open-source tool for writers. -->
   <!-- interface-copyright 2015-2021 Olivier Keshavjee et al. -->
+  <object class="GtkTextBuffer" id="conflict"/>
+  <object class="GtkListStore" id="details_store">
+    <columns>
+      <!-- column-name name -->
+      <column type="gchararray"/>
+      <!-- column-name value -->
+      <column type="gchararray"/>
+    </columns>
+  </object>
+  <object class="GtkTextBuffer" id="epiphany"/>
+  <object class="GtkTextBuffer" id="goal"/>
   <object class="GtkListStore" id="importance_store">
     <columns>
       <!-- column-name name -->
@@ -42,24 +53,12 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
       </row>
     </data>
   </object>
-  <object class="GtkListStore" id="info_store">
-    <columns>
-      <!-- column-name name -->
-      <column type="gchararray"/>
-      <!-- column-name value -->
-      <column type="gchararray"/>
-    </columns>
-    <data>
-      <row>
-        <col id="0" translatable="yes">Test</col>
-        <col id="1" translatable="yes">Hallo Welt</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">Blub</col>
-        <col id="1" translatable="yes">43</col>
-      </row>
-    </data>
-  </object>
+  <object class="GtkTextBuffer" id="motivation"/>
+  <object class="GtkEntryBuffer" id="name"/>
+  <object class="GtkTextBuffer" id="notes"/>
+  <object class="GtkTextBuffer" id="one_paragraph_summary"/>
+  <object class="GtkTextBuffer" id="one_sentence_summary"/>
+  <object class="GtkTextBuffer" id="summary"/>
   <object class="GtkScrolledWindow" id="characters_view">
     <property name="visible">True</property>
     <property name="can-focus">True</property>
@@ -111,12 +110,11 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                             </child>
                             <child>
                               <object class="GtkListBox">
-                                <property name="height-request">80</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                               </object>
                               <packing>
-                                <property name="expand">True</property>
+                                <property name="expand">False</property>
                                 <property name="fill">True</property>
                                 <property name="position">1</property>
                               </packing>
@@ -135,12 +133,11 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                             </child>
                             <child>
                               <object class="GtkListBox">
-                                <property name="height-request">80</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                               </object>
                               <packing>
-                                <property name="expand">True</property>
+                                <property name="expand">False</property>
                                 <property name="fill">True</property>
                                 <property name="position">3</property>
                               </packing>
@@ -159,7 +156,6 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                             </child>
                             <child>
                               <object class="GtkListBox">
-                                <property name="height-request">80</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                               </object>
@@ -269,7 +265,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                     <property name="row-spacing">8</property>
                     <property name="column-spacing">8</property>
                     <child>
-                      <object class="GtkLabel" id="label16">
+                      <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="valign">start</property>
@@ -284,7 +280,7 @@ summary</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="label15">
+                      <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="valign">start</property>
@@ -299,7 +295,7 @@ summary</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="label14">
+                      <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="valign">start</property>
@@ -313,7 +309,7 @@ summary</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="label13">
+                      <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="valign">start</property>
@@ -327,7 +323,7 @@ summary</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="label12">
+                      <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="valign">start</property>
@@ -353,6 +349,7 @@ summary</property>
                             <property name="height-request">100</property>
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
+                            <property name="buffer">one_paragraph_summary</property>
                           </object>
                         </child>
                         <child type="label_item">
@@ -377,6 +374,7 @@ summary</property>
                             <property name="height-request">100</property>
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
+                            <property name="buffer">one_sentence_summary</property>
                           </object>
                         </child>
                         <child type="label_item">
@@ -401,6 +399,7 @@ summary</property>
                             <property name="height-request">100</property>
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
+                            <property name="buffer">epiphany</property>
                           </object>
                         </child>
                         <child type="label_item">
@@ -425,6 +424,7 @@ summary</property>
                             <property name="height-request">100</property>
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
+                            <property name="buffer">conflict</property>
                           </object>
                         </child>
                         <child type="label_item">
@@ -449,6 +449,7 @@ summary</property>
                             <property name="height-request">100</property>
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
+                            <property name="buffer">goal</property>
                           </object>
                         </child>
                         <child type="label_item">
@@ -473,6 +474,7 @@ summary</property>
                             <property name="height-request">100</property>
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
+                            <property name="buffer">motivation</property>
                           </object>
                         </child>
                         <child type="label_item">
@@ -485,7 +487,7 @@ summary</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="label11">
+                      <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="valign">start</property>
@@ -499,7 +501,7 @@ summary</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="label10">
+                      <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="label" translatable="yes">Importance</property>
@@ -516,7 +518,7 @@ summary</property>
                         <property name="can-focus">False</property>
                         <property name="spacing">4</property>
                         <child>
-                          <object class="GtkComboBox">
+                          <object class="GtkComboBox" id="importance">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="model">importance_store</property>
@@ -535,7 +537,7 @@ summary</property>
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkCheckButton">
+                          <object class="GtkCheckButton" id="allow_POV">
                             <property name="label" translatable="yes">Allow POV</property>
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
@@ -556,7 +558,7 @@ summary</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="label9">
+                      <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="label" translatable="yes">Name</property>
@@ -576,6 +578,7 @@ summary</property>
                           <object class="GtkEntry">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
+                            <property name="buffer">name</property>
                           </object>
                           <packing>
                             <property name="expand">True</property>
@@ -584,7 +587,7 @@ summary</property>
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkColorButton">
+                          <object class="GtkColorButton" id="color">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <property name="receives-default">True</property>
@@ -628,6 +631,7 @@ summary</property>
                       <object class="GtkTextView">
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
+                        <property name="buffer">summary</property>
                       </object>
                     </child>
                     <child type="label_item">
@@ -663,6 +667,7 @@ summary</property>
                       <object class="GtkTextView">
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
+                        <property name="buffer">notes</property>
                       </object>
                     </child>
                     <child type="label_item">
@@ -713,17 +718,19 @@ summary</property>
                                   <object class="GtkTreeView">
                                     <property name="visible">True</property>
                                     <property name="can-focus">True</property>
-                                    <property name="model">info_store</property>
+                                    <property name="model">details_store</property>
                                     <property name="search-column">0</property>
                                     <property name="enable-grid-lines">both</property>
                                     <child internal-child="selection">
-                                      <object class="GtkTreeSelection"/>
+                                      <object class="GtkTreeSelection" id="details_selection"/>
                                     </child>
                                     <child>
                                       <object class="GtkTreeViewColumn">
                                         <property name="title" translatable="yes">Name</property>
                                         <child>
-                                          <object class="GtkCellRendererText"/>
+                                          <object class="GtkCellRendererText" id="details_name">
+                                            <property name="editable">True</property>
+                                          </object>
                                           <attributes>
                                             <attribute name="text">0</attribute>
                                           </attributes>
@@ -734,7 +741,9 @@ summary</property>
                                       <object class="GtkTreeViewColumn">
                                         <property name="title" translatable="yes">Value</property>
                                         <child>
-                                          <object class="GtkCellRendererText"/>
+                                          <object class="GtkCellRendererText" id="details_value">
+                                            <property name="editable">True</property>
+                                          </object>
                                           <attributes>
                                             <attribute name="text">1</attribute>
                                           </attributes>
@@ -763,7 +772,7 @@ summary</property>
                         <property name="can-focus">False</property>
                         <property name="spacing">4</property>
                         <child>
-                          <object class="GtkButton">
+                          <object class="GtkButton" id="add_details">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <property name="receives-default">True</property>
@@ -782,7 +791,7 @@ summary</property>
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkButton">
+                          <object class="GtkButton" id="remove_details">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <property name="receives-default">True</property>
@@ -804,6 +813,7 @@ summary</property>
                           <object class="GtkEntry">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
+                            <property name="placeholder-text" translatable="yes">Filter</property>
                           </object>
                           <packing>
                             <property name="expand">True</property>

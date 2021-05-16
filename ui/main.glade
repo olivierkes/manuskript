@@ -28,6 +28,8 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
   <!-- interface-copyright 2015-2021 Olivier Keshavjee et al. -->
   <object class="HdyApplicationWindow" id="main_window">
     <property name="can-focus">False</property>
+    <property name="default-width">1600</property>
+    <property name="default-height">900</property>
     <child>
       <object class="GtkBox">
         <property name="visible">True</property>
@@ -678,7 +680,6 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
           <object class="GtkPaned">
             <property name="visible">True</property>
             <property name="can-focus">True</property>
-            <property name="position">100</property>
             <property name="wide-handle">True</property>
             <child>
               <object class="GtkBox">
@@ -699,7 +700,6 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
               <object class="GtkPaned">
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
-                <property name="position">300</property>
                 <property name="wide-handle">True</property>
                 <child>
                   <object class="GtkStack" id="main_stack">

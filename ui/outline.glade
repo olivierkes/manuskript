@@ -109,7 +109,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                     </child>
                   </object>
                   <packing>
-                    <property name="expand">True</property>
+                    <property name="expand">False</property>
                     <property name="fill">True</property>
                     <property name="position">1</property>
                   </packing>
@@ -137,7 +137,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                     </child>
                   </object>
                   <packing>
-                    <property name="expand">True</property>
+                    <property name="expand">False</property>
                     <property name="fill">True</property>
                     <property name="position">3</property>
                   </packing>
@@ -172,8 +172,8 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                 </child>
               </object>
               <packing>
-                <property name="resize">False</property>
-                <property name="shrink">True</property>
+                <property name="resize">True</property>
+                <property name="shrink">False</property>
               </packing>
             </child>
             <child>
@@ -537,7 +537,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
               </object>
               <packing>
                 <property name="resize">True</property>
-                <property name="shrink">True</property>
+                <property name="shrink">False</property>
               </packing>
             </child>
           </object>

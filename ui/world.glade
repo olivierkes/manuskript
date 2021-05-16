@@ -49,6 +49,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
           <object class="GtkPaned">
             <property name="visible">True</property>
             <property name="can-focus">True</property>
+            <property name="wide-handle">True</property>
             <child>
               <object class="GtkBox">
                 <property name="visible">True</property>
