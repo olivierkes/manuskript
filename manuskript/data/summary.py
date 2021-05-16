@@ -11,6 +11,7 @@ class Summary:
     def __init__(self, path):
         self.file = MmdFile(os.path.join(path, "summary.txt"), 13)
 
+        self.situation = None
         self.sentence = None
         self.paragraph = None
         self.page = None
@@ -22,6 +23,7 @@ class Summary:
         except FileNotFoundError:
             metadata = dict()
 
+        self.situation = metadata.get("Situation", None)
         self.sentence = metadata.get("Sentence", None)
         self.paragraph = metadata.get("Paragraph", None)
         self.page = metadata.get("Page", None)
@@ -30,6 +32,7 @@ class Summary:
     def save(self):
         metadata = dict()
 
+        metadata["Situation"] = self.situation
         metadata["Sentence"] = self.sentence
         metadata["Paragraph"] = self.paragraph
         metadata["Page"] = self.page

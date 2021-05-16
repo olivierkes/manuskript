@@ -6,10 +6,15 @@ import gi
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
 
+from manuskript.data import Info
+from manuskript.util import validString, invalidString
+
 
 class GeneralView:
 
-    def __init__(self):
+    def __init__(self, info: Info):
+        self.info = info
+
         builder = Gtk.Builder()
         builder.add_from_file("ui/general.glade")
 
@@ -23,6 +28,15 @@ class GeneralView:
         self.licenseBuffer = builder.get_object("license")
         self.nameBuffer = builder.get_object("name")
         self.emailBuffer = builder.get_object("email")
+
+        self.titleBuffer.set_text(validString(self.info.title), -1)
+        self.subtitleBuffer.set_text(validString(self.info.subtitle), -1)
+        self.seriesBuffer.set_text(validString(self.info.serie), -1)
+        self.volumeBuffer.set_text(validString(self.info.volume), -1)
+        self.genreBuffer.set_text(validString(self.info.genre), -1)
+        self.licenseBuffer.set_text(validString(self.info.license), -1)
+        self.nameBuffer.set_text(validString(self.info.author), -1)
+        self.emailBuffer.set_text(validString(self.info.email), -1)
 
         self.titleBuffer.connect("deleted-text", self._titleDeletedText)
         self.titleBuffer.connect("inserted-text", self._titleInsertedText)
@@ -42,28 +56,28 @@ class GeneralView:
         self.emailBuffer.connect("inserted-text", self._emailInsertedText)
 
     def titleChanged(self, buffer: Gtk.EntryBuffer):
-        print("title: " + buffer.get_text())
+        self.info.title = invalidString(buffer.get_text())
 
     def subtitleChanged(self, buffer: Gtk.EntryBuffer):
-        print("subtitle: " + buffer.get_text())
+        self.info.subtitle = invalidString(buffer.get_text())
 
     def seriesChanged(self, buffer: Gtk.EntryBuffer):
-        print("series: " + buffer.get_text())
+        self.info.serie = invalidString(buffer.get_text())
 
     def volumeChanged(self, buffer: Gtk.EntryBuffer):
-        print("volume: " + buffer.get_text())
+        self.info.volume = invalidString(buffer.get_text())
 
     def genreChanged(self, buffer: Gtk.EntryBuffer):
-        print("genre: " + buffer.get_text())
+        self.info.genre = invalidString(buffer.get_text())
 
     def licenseChanged(self, buffer: Gtk.EntryBuffer):
-        print("license: " + buffer.get_text())
+        self.info.license = invalidString(buffer.get_text())
 
     def nameChanged(self, buffer: Gtk.EntryBuffer):
-        print("name: " + buffer.get_text())
+        self.info.author = invalidString(buffer.get_text())
 
     def emailChanged(self, buffer: Gtk.EntryBuffer):
-        print("email: " + buffer.get_text())
+        self.info.email = invalidString(buffer.get_text())
 
     def _titleDeletedText(self, buffer: Gtk.EntryBuffer, position, count):
         self.titleChanged(buffer)

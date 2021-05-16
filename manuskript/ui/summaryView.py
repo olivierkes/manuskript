@@ -6,12 +6,15 @@ import gi
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
 
-from manuskript.util import WordCounter, PageCounter
+from manuskript.data import Summary
+from manuskript.util import WordCounter, PageCounter, validString, invalidString
 
 
 class SummaryView:
 
-    def __init__(self):
+    def __init__(self, summary: Summary):
+        self.summary = summary
+
         builder = Gtk.Builder()
         builder.add_from_file("ui/summary.glade")
 
@@ -22,17 +25,22 @@ class SummaryView:
         self.stackCombo.connect("changed", self.summaryStackChanged)
 
         self.situationBuffer = builder.get_object("situation")
+        self.situationBuffer.set_text(validString(self.summary.situation), -1)
 
         self.oneSentenceBuffer = builder.get_object("summary_one_sentence")
+        self.oneSentenceBuffer.set_text(validString(self.summary.sentence), -1)
         self.oneSentenceLabel = builder.get_object("one_sentence_label")
 
         self.oneParagraphBuffer = builder.get_object("summary_one_paragraph")
+        self.oneParagraphBuffer.set_text(validString(self.summary.paragraph), -1)
         self.oneParagraphLabel = builder.get_object("one_paragraph_label")
 
         self.onePageBuffer = builder.get_object("summary_one_page")
+        self.onePageBuffer.set_text(validString(self.summary.page), -1)
         self.onePageLabel = builder.get_object("one_page_label")
 
         self.fullBuffer = builder.get_object("summary_full")
+        self.fullBuffer.set_text(validString(self.summary.full), -1)
         self.fullLabel = builder.get_object("full_label")
 
         self.situationBuffer.connect("deleted-text", self._situationDeletedText)
@@ -61,7 +69,7 @@ class SummaryView:
         self.stack.set_visible_child_name(page)
 
     def situationChanged(self, buffer: Gtk.EntryBuffer):
-        print(buffer.get_text())
+        self.summary.situation = invalidString(buffer.get_text())
 
     def _situationDeletedText(self, buffer: Gtk.EntryBuffer, position, count):
         self.situationChanged(buffer)
@@ -76,6 +84,7 @@ class SummaryView:
         text = buffer.get_text(start_iter, end_iter, False)
 
         self.oneSentenceLabel.set_text("Words: {}".format(WordCounter.count(text)))
+        self.summary.sentence = invalidString(text)
 
     def summaryOneParagraphChanged(self, buffer: Gtk.TextBuffer):
         start_iter = buffer.get_start_iter()
@@ -84,6 +93,7 @@ class SummaryView:
         text = buffer.get_text(start_iter, end_iter, False)
 
         self.oneParagraphLabel.set_text("Words: {}".format(WordCounter.count(text)))
+        self.summary.paragraph = invalidString(text)
 
     def summaryOnePageChanged(self, buffer: Gtk.TextBuffer):
         start_iter = buffer.get_start_iter()
@@ -92,6 +102,7 @@ class SummaryView:
         text = buffer.get_text(start_iter, end_iter, False)
 
         self.onePageLabel.set_text("Words: {} (~{} pages)".format(WordCounter.count(text), PageCounter.count(text)))
+        self.summary.page = invalidString(text)
 
     def summaryFullChanged(self, buffer: Gtk.TextBuffer):
         start_iter = buffer.get_start_iter()
@@ -100,6 +111,7 @@ class SummaryView:
         text = buffer.get_text(start_iter, end_iter, False)
 
         self.fullLabel.set_text("Words: {} (~{} pages)".format(WordCounter.count(text), PageCounter.count(text)))
+        self.summary.full = invalidString(text)
 
     def nextClicked(self, button: Gtk.Button):
         tree_iter = self.stackCombo.get_active_iter()
