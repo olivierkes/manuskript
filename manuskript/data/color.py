@@ -11,6 +11,9 @@ class Color:
         self.green = green
         self.blue = blue
 
+    def getRGB(self):
+        return (self.red << 24) | (self.green << 16) | (self.blue << 8)
+
     def __str__(self):
         return "#%02x%02x%02x" % (self.red, self.green, self.blue)
 

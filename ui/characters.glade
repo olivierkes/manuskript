@@ -25,6 +25,27 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
   <!-- interface-name Manuskript -->
   <!-- interface-description Manuskript is an open-source tool for writers. -->
   <!-- interface-copyright 2015-2021 Olivier Keshavjee et al. -->
+  <object class="GtkListStore" id="characters_store">
+    <columns>
+      <!-- column-name ID -->
+      <column type="gint"/>
+      <!-- column-name name -->
+      <column type="gchararray"/>
+      <!-- column-name color -->
+      <column type="GdkPixbuf"/>
+      <!-- column-name importance -->
+      <column type="gint"/>
+    </columns>
+  </object>
+  <object class="GtkTreeModelFilter" id="main_characters_store">
+    <property name="child-model">characters_store</property>
+  </object>
+  <object class="GtkTreeModelFilter" id="minor_characters_store">
+    <property name="child-model">characters_store</property>
+  </object>
+  <object class="GtkTreeModelFilter" id="secondary_characters_store">
+    <property name="child-model">characters_store</property>
+  </object>
   <object class="GtkTextBuffer" id="conflict"/>
   <object class="GtkListStore" id="details_store">
     <columns>
@@ -109,9 +130,30 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkListBox">
+                              <object class="GtkTreeView">
                                 <property name="visible">True</property>
-                                <property name="can-focus">False</property>
+                                <property name="can-focus">True</property>
+                                <property name="model">main_characters_store</property>
+                                <property name="headers-visible">False</property>
+                                <child internal-child="selection">
+                                  <object class="GtkTreeSelection" id="main_character_selection"/>
+                                </child>
+                                <child>
+                                  <object class="GtkTreeViewColumn">
+                                    <child>
+                                      <object class="GtkCellRendererPixbuf"/>
+                                      <attributes>
+                                        <attribute name="pixbuf">2</attribute>
+                                      </attributes>
+                                    </child>
+                                    <child>
+                                      <object class="GtkCellRendererText"/>
+                                      <attributes>
+                                        <attribute name="text">1</attribute>
+                                      </attributes>
+                                    </child>
+                                  </object>
+                                </child>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -132,9 +174,30 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkListBox">
+                              <object class="GtkTreeView">
                                 <property name="visible">True</property>
-                                <property name="can-focus">False</property>
+                                <property name="can-focus">True</property>
+                                <property name="model">secondary_characters_store</property>
+                                <property name="headers-visible">False</property>
+                                <child internal-child="selection">
+                                  <object class="GtkTreeSelection" id="secondary_character_selection"/>
+                                </child>
+                                <child>
+                                  <object class="GtkTreeViewColumn">
+                                    <child>
+                                      <object class="GtkCellRendererPixbuf"/>
+                                      <attributes>
+                                        <attribute name="pixbuf">2</attribute>
+                                      </attributes>
+                                    </child>
+                                    <child>
+                                      <object class="GtkCellRendererText"/>
+                                      <attributes>
+                                        <attribute name="text">1</attribute>
+                                      </attributes>
+                                    </child>
+                                  </object>
+                                </child>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -155,12 +218,33 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkListBox">
+                              <object class="GtkTreeView">
                                 <property name="visible">True</property>
-                                <property name="can-focus">False</property>
+                                <property name="can-focus">True</property>
+                                <property name="model">minor_characters_store</property>
+                                <property name="headers-visible">False</property>
+                                <child internal-child="selection">
+                                  <object class="GtkTreeSelection" id="minor_character_selection"/>
+                                </child>
+                                <child>
+                                  <object class="GtkTreeViewColumn">
+                                    <child>
+                                      <object class="GtkCellRendererPixbuf"/>
+                                      <attributes>
+                                        <attribute name="pixbuf">2</attribute>
+                                      </attributes>
+                                    </child>
+                                    <child>
+                                      <object class="GtkCellRendererText"/>
+                                      <attributes>
+                                        <attribute name="text">1</attribute>
+                                      </attributes>
+                                    </child>
+                                  </object>
+                                </child>
                               </object>
                               <packing>
-                                <property name="expand">True</property>
+                                <property name="expand">False</property>
                                 <property name="fill">True</property>
                                 <property name="position">5</property>
                               </packing>
@@ -349,6 +433,7 @@ summary</property>
                             <property name="height-request">100</property>
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
+                            <property name="wrap-mode">word-char</property>
                             <property name="buffer">one_paragraph_summary</property>
                           </object>
                         </child>
@@ -374,6 +459,7 @@ summary</property>
                             <property name="height-request">100</property>
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
+                            <property name="wrap-mode">word-char</property>
                             <property name="buffer">one_sentence_summary</property>
                           </object>
                         </child>
@@ -399,6 +485,7 @@ summary</property>
                             <property name="height-request">100</property>
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
+                            <property name="wrap-mode">word-char</property>
                             <property name="buffer">epiphany</property>
                           </object>
                         </child>
@@ -424,6 +511,7 @@ summary</property>
                             <property name="height-request">100</property>
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
+                            <property name="wrap-mode">word-char</property>
                             <property name="buffer">conflict</property>
                           </object>
                         </child>
@@ -449,6 +537,7 @@ summary</property>
                             <property name="height-request">100</property>
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
+                            <property name="wrap-mode">word-char</property>
                             <property name="buffer">goal</property>
                           </object>
                         </child>
@@ -474,6 +563,7 @@ summary</property>
                             <property name="height-request">100</property>
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
+                            <property name="wrap-mode">word-char</property>
                             <property name="buffer">motivation</property>
                           </object>
                         </child>
@@ -631,6 +721,7 @@ summary</property>
                       <object class="GtkTextView">
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
+                        <property name="wrap-mode">word-char</property>
                         <property name="buffer">summary</property>
                       </object>
                     </child>
@@ -667,6 +758,7 @@ summary</property>
                       <object class="GtkTextView">
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
+                        <property name="wrap-mode">word-char</property>
                         <property name="buffer">notes</property>
                       </object>
                     </child>

@@ -5,6 +5,7 @@ import os
 
 from collections import OrderedDict
 from manuskript.data.color import Color
+from manuskript.data.importance import Importance
 from manuskript.data.unique_id import UniqueIDHost
 from manuskript.io.mmdFile import MmdFile
 
@@ -48,9 +49,11 @@ class Character:
         if ID is None:
             raise IOError("Character is missing ID!")
 
+        importance = Character.loadAttribute(metadata, "Importance", None)
+
         self.UID = self.characters.host.loadID(int(ID))
         self.name = Character.loadAttribute(metadata, "Name", None)
-        self.importance = Character.loadAttribute(metadata, "Importance", None)
+        self.importance = Importance.fromRawString(importance)
         self.POV = Character.loadAttribute(metadata, "POV", None)
         self.motivation = Character.loadAttribute(metadata, "Motivation", None)
         self.goal = Character.loadAttribute(metadata, "Goal", None)
@@ -72,7 +75,7 @@ class Character:
 
         metadata["Name"] = self.name
         metadata["ID"] = str(self.UID.value)
-        metadata["Importance"] = self.importance
+        metadata["Importance"] = Importance.toRawString(self.importance)
         metadata["POV"] = self.POV
         metadata["Motivation"] = self.motivation
         metadata["Goal"] = self.goal
@@ -96,10 +99,16 @@ class Characters:
     def __init__(self, path):
         self.dir_path = os.path.join(path, "characters")
         self.host = UniqueIDHost()
-        self.characters = list()
+        self.data = dict()
+
+    def __iter__(self):
+        return self.data.values().__iter__()
+
+    def getByID(self, ID: int) -> Character:
+        return self.data.get(ID, None)
 
     def load(self):
-        self.characters.clear()
+        self.data.clear()
 
         for name in os.listdir(self.dir_path):
             path = os.path.join(self.dir_path, name)
@@ -114,8 +123,8 @@ class Characters:
             except FileNotFoundError:
                 continue
 
-            self.characters.append(character)
+            self.data[character.UID.value] = character
 
     def save(self):
-        for character in self.characters:
+        for character in self.data.values():
             character.save()

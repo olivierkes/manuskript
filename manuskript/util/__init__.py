@@ -10,3 +10,11 @@ def validString(invalid: str) -> str:
 
 def invalidString(valid: str) -> str:
     return None if len(valid) == 0 else valid
+
+
+def validInt(invalid: int) -> int:
+    return 0 if invalid is None else invalid
+
+
+def invalidInt(valid: int) -> int:
+    return None if valid == 0 else valid

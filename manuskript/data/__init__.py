@@ -4,6 +4,7 @@
 from manuskript.data.characters import Characters, Character
 from manuskript.data.color import Color
 from manuskript.data.goal import GoalKind, Goal
+from manuskript.data.importance import Importance
 from manuskript.data.info import Info
 from manuskript.data.labels import LabelHost, Label
 from manuskript.data.outline import Outline, OutlineFolder, OutlineText

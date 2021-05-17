@@ -5,15 +5,9 @@ import os
 
 from lxml import etree
 from enum import Enum, unique
+from manuskript.data.importance import Importance
 from manuskript.data.unique_id import UniqueIDHost, UniqueID
 from manuskript.io.xmlFile import XmlFile
-
-
-@unique
-class PlotImportance(Enum):
-    MINOR = 0
-    SECONDARY = 1
-    MAIN = 2
 
 
 class PlotStep:
@@ -32,7 +26,7 @@ class PlotStep:
 
 class PlotLine:
 
-    def __init__(self, plots, UID: UniqueID, name: str, importance: PlotImportance = PlotImportance.MINOR):
+    def __init__(self, plots, UID: UniqueID, name: str, importance: Importance = Importance.MINOR):
         self.plots = plots
         self.host = UniqueIDHost()
 
@@ -72,12 +66,12 @@ class Plots:
         self.host = UniqueIDHost()
         self.lines = dict()
 
-    def addLine(self, name: str, importance: PlotImportance = PlotImportance.MINOR):
+    def addLine(self, name: str, importance: Importance = Importance.MINOR):
         line = PlotLine(self, self.host.newID(), name, importance)
         self.lines[line.UID.value] = line
         return line
 
-    def loadLine(self, ID: int, name: str, importance: PlotImportance = PlotImportance.MINOR):
+    def loadLine(self, ID: int, name: str, importance: Importance = Importance.MINOR):
         line = PlotLine(self, self.host.loadID(ID), name, importance)
         self.lines[line.UID.value] = line
         return line
@@ -110,7 +104,7 @@ class Plots:
         if ID is None:
             return
 
-        importance = PlotImportance(int(element.get("importance", 0)))
+        importance = Importance.fromRawString(element.get("importance", None))
         line = plots.loadLine(int(ID), element.get("name"), importance)
         line.description = element.get("description")
         line.result = element.get("result")
@@ -169,7 +163,7 @@ class Plots:
 
         cls.saveElementAttribute(element, "name", line.name)
         cls.saveElementAttribute(element, "ID", line.UID.value)
-        cls.saveElementAttribute(element, "importance", line.importance.value)
+        cls.saveElementAttribute(element, "importance", Importance.toRawString(line.importance))
         cls.saveElementAttribute(element, "characters", characters)
         cls.saveElementAttribute(element, "description", line.description)
         cls.saveElementAttribute(element, "result", line.result)
