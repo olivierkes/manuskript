@@ -4305,22 +4305,22 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="465"/>
         <source>TODO</source>
-        <translation type="unfinished"></translation>
+        <translation>ΝΑ ΚΑΝΩ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="466"/>
         <source>First draft</source>
-        <translation type="unfinished"></translation>
+        <translation>Πρώτο προσχέδιο</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="467"/>
         <source>Second draft</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεύτερο προσχέδιο</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="468"/>
         <source>Final</source>
-        <translation type="unfinished"></translation>
+        <translation>Τελικό</translation>
     </message>
 </context>
 <context>
@@ -4328,12 +4328,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="134"/>
         <source>New item</source>
-        <translation type="unfinished"></translation>
+        <translation>Νέο στοιχείο</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="246"/>
         <source>Fantasy world building</source>
-        <translation type="unfinished"></translation>
+        <translation>Χτίσιμο κόσμου φαντασίας</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="246"/>
@@ -4523,7 +4523,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="287"/>
         <source>Important places</source>
-        <translation type="unfinished"></translation>
+        <translation>Σημαντικά μέρη</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="288"/>
