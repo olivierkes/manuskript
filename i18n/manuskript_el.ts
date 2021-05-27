@@ -380,7 +380,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/importer/opmlImporter.py" line="37"/>
         <source>File open failed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Το άνοιγμα του αρχείου απέτυχε.</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/opmlImporter.py" line="65"/>
@@ -390,7 +390,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="58"/>
         <source>Pandoc import</source>
-        <translation type="unfinished"></translation>
+        <translation>Εισαγωγή Pandoc</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="61"/>
@@ -4468,17 +4468,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Technology</source>
-        <translation type="unfinished"></translation>
+        <translation>Τεχνολογία</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Courtship</source>
-        <translation type="unfinished"></translation>
+        <translation>Φλερτ</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Demography</source>
-        <translation type="unfinished"></translation>
+        <translation>Δημογραφία</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
@@ -4493,7 +4493,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="280"/>
         <source>Magic system</source>
-        <translation type="unfinished"></translation>
+        <translation>Μαγικό σύστημα</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="280"/>
@@ -4503,22 +4503,22 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="280"/>
         <source>Organization</source>
-        <translation type="unfinished"></translation>
+        <translation>Οργανισμός</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="280"/>
         <source>Magical objects</source>
-        <translation type="unfinished"></translation>
+        <translation>Μαγικά αντικείμενα</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="280"/>
         <source>Magical places</source>
-        <translation type="unfinished"></translation>
+        <translation>Μαγικά μέρη</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="280"/>
         <source>Magical races</source>
-        <translation type="unfinished"></translation>
+        <translation>Μαγικοί αγώνες</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="287"/>
