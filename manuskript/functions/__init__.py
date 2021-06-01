@@ -24,17 +24,14 @@ MW = None
 
 
 def wordCount(text):
-    t = text.strip().replace(" ", "\n").split("\n")
-    t = [l for l in t if l]
-    return len(t)
+    return len(re.findall(r"\S+", text))
+
 
 def charCount(text, use_spaces = True):
-    t = text.strip()
-
-    if not use_spaces:
-        t = t.replace(" ", "")
-
-    return len(t)
+    if use_spaces:
+        return len(re.findall(r"[\S ]", text))
+    else:
+        return len(re.findall(r"\S", text))
 
 validate_ok = lambda *args, **kwargs: True
 def uiParse(input, default, converter, validator=validate_ok):

@@ -1,26 +1,24 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+import re
+
 
 class CharCounter:
 
     @classmethod
     def count(cls, text: str, use_spaces: bool = False):
-        t = text.strip()
-
-        if not use_spaces:
-            t = t.replace(" ", "")
-
-        return len(t)
+        if use_spaces:
+            return len(re.findall(r"[\S ]", text))
+        else:
+            return len(re.findall(r"\S", text))
 
 
 class WordCounter:
 
     @classmethod
     def count(cls, text: str):
-        t = text.strip().replace(" ", "\n").split("\n")
-        t = [l for l in t if len(l) > 0]
-        return len(t)
+        return len(re.findall(r"\S+", text))
 
 
 class PageCounter:
