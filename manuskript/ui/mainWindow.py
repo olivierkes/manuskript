@@ -11,7 +11,7 @@ from gi.repository import Gtk, Handy
 Handy.init()
 
 from manuskript.data import Project
-from manuskript.ui import GeneralView, SummaryView, CharactersView, PlotView, WorldView, OutlineView, EditorView
+from manuskript.ui.views import *
 
 
 class MainWindow:

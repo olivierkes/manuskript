@@ -25,30 +25,29 @@ class SummaryView:
         self.stackCombo.connect("changed", self.summaryStackChanged)
 
         self.situationBuffer = builder.get_object("situation")
-        self.situationBuffer.set_text(validString(self.summary.situation), -1)
-
-        self.oneSentenceBuffer = builder.get_object("summary_one_sentence")
-        self.oneSentenceBuffer.set_text(validString(self.summary.sentence), -1)
-        self.oneSentenceLabel = builder.get_object("one_sentence_label")
-
-        self.oneParagraphBuffer = builder.get_object("summary_one_paragraph")
-        self.oneParagraphBuffer.set_text(validString(self.summary.paragraph), -1)
-        self.oneParagraphLabel = builder.get_object("one_paragraph_label")
-
-        self.onePageBuffer = builder.get_object("summary_one_page")
-        self.onePageBuffer.set_text(validString(self.summary.page), -1)
-        self.onePageLabel = builder.get_object("one_page_label")
-
-        self.fullBuffer = builder.get_object("summary_full")
-        self.fullBuffer.set_text(validString(self.summary.full), -1)
-        self.fullLabel = builder.get_object("full_label")
-
         self.situationBuffer.connect("deleted-text", self._situationDeletedText)
         self.situationBuffer.connect("inserted-text", self._situationInsertedText)
+        self.situationBuffer.set_text(validString(self.summary.situation), -1)
+
+        self.oneSentenceLabel = builder.get_object("one_sentence_label")
+        self.oneSentenceBuffer = builder.get_object("summary_one_sentence")
         self.oneSentenceBuffer.connect("changed", self.summaryOneSentenceChanged)
+        self.oneSentenceBuffer.set_text(validString(self.summary.sentence), -1)
+
+        self.oneParagraphLabel = builder.get_object("one_paragraph_label")
+        self.oneParagraphBuffer = builder.get_object("summary_one_paragraph")
         self.oneParagraphBuffer.connect("changed", self.summaryOneParagraphChanged)
+        self.oneParagraphBuffer.set_text(validString(self.summary.paragraph), -1)
+
+        self.onePageLabel = builder.get_object("one_page_label")
+        self.onePageBuffer = builder.get_object("summary_one_page")
         self.onePageBuffer.connect("changed", self.summaryOnePageChanged)
+        self.onePageBuffer.set_text(validString(self.summary.page), -1)
+
+        self.fullLabel = builder.get_object("full_label")
+        self.fullBuffer = builder.get_object("summary_full")
         self.fullBuffer.connect("changed", self.summaryFullChanged)
+        self.fullBuffer.set_text(validString(self.summary.full), -1)
 
         self.nextButton = builder.get_object("next_button")
         self.nextButton.connect("clicked", self.nextClicked)
