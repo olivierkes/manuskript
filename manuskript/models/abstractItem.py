@@ -203,6 +203,9 @@ class abstractItem():
     ###############################################################################
 
     def getUniqueID(self, recursive=False):
+        if not self._model:
+            return
+
         self.setData(self.enum.ID, self._model.requestNewID())
 
         if recursive:
