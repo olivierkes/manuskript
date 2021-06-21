@@ -168,10 +168,13 @@ def loadProject(project):
     else:
         errors.append("outline.xml")
 
-    if "settings.pickle" in files:
-        settings.load(files["settings.pickle"], fromString=True)
+    if "settings.txt" in files:
+        settings.load(files["settings.txt"], fromString=True, protocol=0)
     else:
-        errors.append("settings.pickle")
+        errors.append("settings.txt")
+
+    if "settings.pickle" in files:
+        LOGGER.info("Pickle settings files are no longer supported for security reasons. You can delete it from your data.")
 
     return errors
 
