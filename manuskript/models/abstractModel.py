@@ -38,7 +38,7 @@ class abstractModel(QAbstractItemModel):
     - Interface with QModelIndex and stuff
     - XML Import / Export
     - Drag'n'drop
-    
+
     Row => item/abstractModel/etc.
     Col => data sub-element. Col 1 (second counting) is ID for all model types.
 
@@ -429,19 +429,19 @@ class abstractModel(QAbstractItemModel):
         # In case of copy actions, items might be duplicates, so we need new IDs.
         # But they might not be, if we cut, then paste. Paste is a Copy Action.
         # The first paste would not need new IDs. But subsequent ones will.
-        
+
         # Recursively change the existing IDs to new, unique values. No need to strip out the old
         # even if they are not duplicated in pasting. There is no practical need for ID conservation.
 
         if action == Qt.CopyAction:
             IDs = self.rootItem.listAllIDs()
-            
+
             for item in items:
                 if item.ID() in IDs:
-                    item.getUniqueID(recursive=true)
+                    item.getUniqueID(recursive=True)
 
         r = self.insertItems(items, beginRow, parent)
-        
+
         return r
 
     ################# ADDING AND REMOVING #################
@@ -461,12 +461,12 @@ class abstractModel(QAbstractItemModel):
         # Insert only if parent is folder
         if parentItem.isFolder():
             self.beginInsertRows(parent, row, row + len(items) - 1) # Create space.
-            
+
             for i in items:
                 parentItem.insertChild(row + items.index(i), i)
-            
+
             self.endInsertRows()
-            
+
             return True
 
         else:
@@ -519,7 +519,7 @@ class abstractModel(QAbstractItemModel):
         else:
             parentItem = parent.internalPointer()
 
-        self._removingRows = True 
+        self._removingRows = True
         # Views that are updating can easily know
         # if this is due to row removal.
         self.beginRemoveRows(parent, row, row + count - 1)
