@@ -4,6 +4,7 @@
 import os
 
 from zipfile import BadZipFile
+from manuskript.data.version import Version, CURRENT_MSK_VERSION
 from manuskript.data.info import Info
 from manuskript.data.summary import Summary
 from manuskript.data.labels import LabelHost
@@ -22,6 +23,7 @@ class Project:
     def __init__(self, path):
         self.file = MskFile(path)
 
+        self.version = Version(self.file.dir_path)
         self.info = Info(self.file.dir_path)
         self.summary = Summary(self.file.dir_path)
         self.labels = LabelHost(self.file.dir_path)
@@ -45,14 +47,22 @@ class Project:
 
         return name
 
+    def getVersion(self) -> int:
+        return self.version.value
+
+    def canUpgradeVersion(self) -> bool:
+        return self.version.value < CURRENT_MSK_VERSION
+
+    def upgradeVersion(self):
+        self.version.value = CURRENT_MSK_VERSION
+
     def load(self):
         try:
             self.file.load()
-        except BadZipFile:
-            return
-        except FileNotFoundError:
+        except BadZipFile or FileNotFoundError:
             return
 
+        self.version.load()
         self.info.load()
         self.summary.load()
         self.labels.load()
@@ -68,8 +78,11 @@ class Project:
 
     def save(self):
         saveToZip = self.settings.isEnabled("saveToZip")
-        self.file.setZipFile(saveToZip)
 
+        self.file.setZipFile(saveToZip)
+        self.file.setVersion(self.version.value)
+
+        self.version.save()
         self.info.save()
         self.summary.save()
         self.labels.save()

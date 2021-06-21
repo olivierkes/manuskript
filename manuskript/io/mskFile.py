@@ -4,19 +4,28 @@
 import os
 import shutil
 
+from zipfile import ZipFile as _ZipFile, BadZipFile
 from manuskript.io.textFile import TextFile
 from manuskript.io.zipFile import ZipFile
+from manuskript.util import safeInt
+from manuskript.data.version import LEGACY_MSK_VERSION
 
 
 class MskFile(TextFile, ZipFile):
 
     def __init__(self, path):
-        dir_path = os.path.splitext(path)[0]
-
-        if (not os.path.isdir(dir_path)) or (os.path.getsize(path) > 1):
+        try:
+            _ZipFile(path)
             dir_path = None
+        except BadZipFile:
+            dir_path = os.path.splitext(path)[0]
+
+            if not os.path.isdir(dir_path):
+                dir_path = None
 
         self.zipFile = dir_path is None
+        self.version = str(LEGACY_MSK_VERSION)
+
         ZipFile.__init__(self, path, dir_path)
 
     def __del__(self):
@@ -42,13 +51,19 @@ class MskFile(TextFile, ZipFile):
 
         self.zipFile = zipFile
 
+    def getVersion(self) -> int:
+        return safeInt(self.version, LEGACY_MSK_VERSION)
+
+    def setVersion(self, version: int):
+        self.version = str(version)
+
     def load(self):
         if self.zipFile:
             ZipFile.load(self)
         else:
-            value = TextFile.load(self)
+            self.version = TextFile.load(self)
 
-            if value == "1":
+            if self.getVersion() > LEGACY_MSK_VERSION:
                 self.setZipFile(False)
 
         return self.zipFile
@@ -60,7 +75,7 @@ class MskFile(TextFile, ZipFile):
         if self.zipFile:
             ZipFile.save(self)
         else:
-            TextFile.save(self, "1")
+            TextFile.save(self, self.version)
 
     def remove(self):
         if os.path.isdir(self.dir_path):

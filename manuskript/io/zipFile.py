@@ -31,8 +31,9 @@ class ZipFile(AbstractFile):
             self.tmp = tempfile.TemporaryDirectory()
             self.dir_path = self.tmp.name
 
-        archive = _ZipFile(self.path)
-        archive.extractall(self.dir_path)
+        with _ZipFile(self.path) as archive:
+            archive.extractall(self.dir_path)
+
         return self.dir_path
 
     def save(self, content=None):

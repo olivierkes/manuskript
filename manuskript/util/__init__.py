@@ -4,6 +4,16 @@
 from manuskript.util.counter import CharCounter, WordCounter, PageCounter
 
 
+def safeInt(s: str, d: int) -> int:
+    if s is None:
+        return d
+
+    try:
+        return int(s)
+    except ValueError:
+        return d
+
+
 def validString(invalid: str) -> str:
     return "" if invalid is None else invalid
 
