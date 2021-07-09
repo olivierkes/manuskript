@@ -20,6 +20,10 @@ import logging
 LOGGER = logging.getLogger(__name__)
 
 def prepare(arguments, tests=False):
+    # Qt WebEngine demands this attribute be set _before_ we create our QApplication object.
+    QApplication.setAttribute(Qt.AA_ShareOpenGLContexts, True)
+
+    # Create the foundation that provides our Qt application with its event loop.
     app = QApplication(sys.argv)
     app.setOrganizationName("manuskript" + ("_tests" if tests else ""))
     app.setOrganizationDomain("www.theologeek.ch")
@@ -160,7 +164,7 @@ def prepare(arguments, tests=False):
     QIcon.setThemeSearchPaths(QIcon.themeSearchPaths() + [appPath("icons")])
     QIcon.setThemeName("NumixMsk")
 
-    # Font siue
+    # Font size
     if settings.contains("appFontSize"):
         f = qApp.font()
         f.setPointSize(settings.value("appFontSize", type=int))
