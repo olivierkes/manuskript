@@ -20,7 +20,11 @@ from manuskript.models.characterModel import Character, CharacterInfo
 import logging
 LOGGER = logging.getLogger(__name__)
 
+# See implementation of QTextDocument::toPlainText()
+PLAIN_TRANSLATION_TABLE = {0x2028: "\n", 0x2029: "\n", 0xfdd0: "\n", 0xfdd1: "\n"}
+
 class textEditView(QTextEdit):
+
     def __init__(self, parent=None, index=None, html=None, spellcheck=None,
                  highlighting=False, dict="", autoResize=False):
         QTextEdit.__init__(self, parent)
@@ -278,13 +282,20 @@ class textEditView(QTextEdit):
     def reconnectDocument(self):
         self.document().contentsChanged.connect(self.updateTimer.start, F.AUC)
 
+    def toIdealText(self):
+        """QTextDocument::toPlainText() replaces NBSP with spaces, which we don't want.
+        QTextDocument::toRawText() replaces nothing, but that leaves fancy paragraph and line separators that users would likely complain about.
+        This reimplements toPlainText(), except without the NBSP destruction."""
+        return self.document().toRawText().translate(PLAIN_TRANSLATION_TABLE)
+    toPlainText = toIdealText
+
     def updateText(self):
         self._updating.lock()
 
         # LOGGER.debug("Updating %s", self.objectName())
         if self._index:
             self.disconnectDocument()
-            if self.toPlainText() != F.toString(self._index.data()):
+            if self.toIdealText() != F.toString(self._index.data()):
                 # LOGGER.debug("    Updating plaintext")
                 self.document().setPlainText(F.toString(self._index.data()))
             self.reconnectDocument()
@@ -319,7 +330,7 @@ class textEditView(QTextEdit):
         self.updateTimer.stop()
 
         self._updating.lock()
-        text = self.toPlainText()
+        text = self.toIdealText()
         self._updating.unlock()
 
         # LOGGER.debug("Submitting %s", self.objectName())
