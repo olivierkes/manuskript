@@ -500,7 +500,10 @@ class MDEditView(textEditView):
                         r3.setLeft(self.viewport().geometry().left())
                         r3.setRight(self.viewport().geometry().right())
                         refs.append(ClickThing(r3, rx, rx.capturedTexts()))
-                        cursor.movePosition(cursor.Down)
+                        if not cursor.movePosition(cursor.Down):
+                            # Super-rare failure. Leaving log message for future investigation.
+                            LOGGER.debug("Failed to move cursor down while calculating clickables. Aborting.")
+                            break
 
         self.clickRects = refs
 

@@ -20,6 +20,10 @@ import logging
 LOGGER = logging.getLogger(__name__)
 
 def prepare(arguments, tests=False):
+    # Qt WebEngine demands this attribute be set _before_ we create our QApplication object.
+    QApplication.setAttribute(Qt.AA_ShareOpenGLContexts, True)
+
+    # Create the foundation that provides our Qt application with its event loop.
     app = QApplication(sys.argv)
     app.setOrganizationName("manuskript" + ("_tests" if tests else ""))
     app.setOrganizationDomain("www.theologeek.ch")
@@ -160,7 +164,7 @@ def prepare(arguments, tests=False):
     QIcon.setThemeSearchPaths(QIcon.themeSearchPaths() + [appPath("icons")])
     QIcon.setThemeName("NumixMsk")
 
-    # Font siue
+    # Font size
     if settings.contains("appFontSize"):
         f = qApp.font()
         f.setPointSize(settings.value("appFontSize", type=int))
@@ -175,12 +179,12 @@ def prepare(arguments, tests=False):
     MW._defaultCursorFlashTime = qApp.cursorFlashTime()
 
     # Command line project
-    #if len(sys.argv) > 1 and sys.argv[1][-4:] == ".msk":
     if arguments.filename is not None and arguments.filename[-4:] == ".msk":
-        #TODO: integrate better with argparsing.
-        if os.path.exists(sys.argv[1]):
-            path = os.path.abspath(sys.argv[1])
-            MW._autoLoadProject = path
+        # The file is verified to already exist during argument parsing.
+        # Our ".msk" check has been moved there too for better feedback,
+        # but leaving it here to err on the side of caution.
+        path = os.path.abspath(arguments.filename)
+        MW._autoLoadProject = path
 
     return app, MW
 
@@ -255,6 +259,15 @@ def setup_signal_handlers(MW):
     signal.signal(signal.SIGTERM, sigint_handler("SIGTERM", MW))
 
 
+def is_valid_project(parser, arg):
+    if arg[-4:] != ".msk":
+        parser.error("only manuskript projects (.msk) are supported!")
+    if not os.path.isfile(arg):
+        parser.error("the project %s does not exist!" % arg)
+    else:
+        return arg
+
+
 def process_commandline(argv):
     import argparse
     parser = argparse.ArgumentParser(description="Run the manuskript application.")
@@ -262,7 +275,8 @@ def process_commandline(argv):
                         action="store_true")
     parser.add_argument("-v", "--verbose", action="count", default=1, help="lower the threshold for messages logged to the terminal")
     parser.add_argument("-L", "--logfile", default=None, help="override the default log file location")
-    parser.add_argument("filename", nargs="?", metavar="FILENAME", help="the manuskript project (.msk) to open")
+    parser.add_argument("filename", nargs="?", metavar="FILENAME", help="the manuskript project (.msk) to open",
+                        type=lambda x: is_valid_project(parser, x))
 
     args = parser.parse_args(args=argv)
 
@@ -283,7 +297,7 @@ def run():
     2. So that prepare can be used in tests, without running the whole thing
     """
     # Parse command-line arguments.
-    arguments = process_commandline(sys.argv)
+    arguments = process_commandline(sys.argv[1:])
     # Initialize logging. (Does not include Qt integration yet.)
     manuskript.logging.setUp(console_level=arguments.verbose)
 

@@ -98,7 +98,7 @@ class outlineItem(abstractItem, searchableItem):
             )
 
     __repr__ = __str__
-    
+
     def charCount(self):
         return self._data.get(self.enum.charCount, 0)
 
@@ -116,6 +116,9 @@ class outlineItem(abstractItem, searchableItem):
                 return []
 
             else:
+                # Used to verify nbsp characters not getting clobbered.
+                #if column == E.text:
+                #    print("GET", str(role), "-->", str([hex(ord(x)) for x in data]))
                 return data
 
         elif role == Qt.DecorationRole and column == E.title:
@@ -158,6 +161,8 @@ class outlineItem(abstractItem, searchableItem):
         # Stuff to do before
         if column == E.text:
             self.addRevision()
+            # Used to verify nbsp characters not getting clobbered.
+            #print("SET", str(role), "-->", str([hex(ord(x)) for x in data]))
 
         # Calling base class implementation
         abstractItem.setData(self, column, data, role)
