@@ -65,6 +65,9 @@ cd dist/manuskript
 ### comment: We don't need bluetooth anyway... ^^'
 rm Qt5Bluetooth.dll
 
+# Remove this library (causing a crash on Windows 7):
+rm ucrtbase.dll
+
 # Remove unnecessary libraries:
 rm api-ms-win-*
 
