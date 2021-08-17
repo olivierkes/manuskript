@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="2.0" language="uk" sourcelanguage="">
+<!DOCTYPE TS>
+<TS version="2.0" language="uk" sourcelanguage="">
 <context>
     <name>Export</name>
     <message>
@@ -227,7 +228,7 @@ Use that if you get YAML related error.</source>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="71"/>
-        <source>Choose output file&#xe2;&#x80;&#xa6;</source>
+        <source>Choose output fileâ¦</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -900,7 +901,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2508"/>
         <source>&amp;Close project</source>
-        <translation>&amp;Закрити проект</translation>
+        <translation>&amp;Закрити проєкт</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2517"/>
@@ -940,22 +941,22 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/mainWindow.py" line="872"/>
         <source>Project {} saved.</source>
-        <translation>Проект {} збережено.</translation>
+        <translation>Проєкт {} збережено.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="876"/>
         <source>WARNING: Project {} not saved.</source>
-        <translation>УВАГА: Проект {} не збережено.</translation>
+        <translation>УВАГА: Проєкт {} не збережено.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="896"/>
         <source>Project {} loaded.</source>
-        <translation>Проект {} завантажено.</translation>
+        <translation>Проєкт {} завантажено.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="902"/>
         <source>Project {} loaded with some errors.</source>
-        <translation>Проект {} завантажено з кількома помилками.</translation>
+        <translation>Проєкт {} завантажено з кількома помилками.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1280"/>
@@ -975,7 +976,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1292"/>
         <source>Project tree</source>
-        <translation>Дерево проекту</translation>
+        <translation>Дерево проєкту</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1293"/>
