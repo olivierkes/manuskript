@@ -312,13 +312,14 @@ class outlineBasics(QAbstractItemView):
         selection = self.getSelection()
 
         if not settings.dontShowDeleteWarning:
-            titles = "".join(["<li>{}</li>".format(s.internalPointer().title())
-                              for s in selection])
+            titlesList = "".join(["<li>{}</li>".format(s.internalPointer().title())
+                                  for s in selection])
             msg = QMessageBox(QMessageBox.Warning,
                 qApp.translate("outlineBasics", "About to remove"),
                 qApp.translate("outlineBasics",
-                    "<p><b>You're about to delete the following {} item(s):</b></p><ul>{}</ul><p>Are you sure?</p>"
-                    ).format(len(selection), titles),
+                    "<p><b>You're about to delete {} item(s).</b></p><p>Are you sure?</p>"
+                    ).format(len(selection)) +
+                    "<ul>{}</ul>".format(titlesList),
                 QMessageBox.Yes | QMessageBox.Cancel)
 
             chk = QCheckBox("&Don't show this warning in the future.")
