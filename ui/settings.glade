@@ -94,24 +94,6 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
       <!-- column-name preview -->
       <column type="GdkPixbuf"/>
     </columns>
-    <data>
-      <row>
-        <col id="0" translatable="yes">spacedreams</col>
-        <col id="1"/>
-      </row>
-      <row>
-        <col id="0" translatable="yes">writingdesk</col>
-        <col id="1"/>
-      </row>
-      <row>
-        <col id="0" translatable="yes">Gentle Blues</col>
-        <col id="1"/>
-      </row>
-      <row>
-        <col id="0" translatable="yes">oldschool</col>
-        <col id="1"/>
-      </row>
-    </data>
   </object>
   <object class="GtkFileFilter" id="image_file_filter">
     <mime-types>
@@ -280,9 +262,11 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
     <property name="step-increment">1</property>
     <property name="page-increment">10</property>
   </object>
-  <object class="HdyPreferencesWindow">
+  <object class="HdyPreferencesWindow" id="settings_window">
     <property name="can-focus">False</property>
     <property name="title" translatable="yes">Settings</property>
+    <property name="window-position">center-on-parent</property>
+    <property name="type-hint">dialog</property>
     <child>
       <object class="HdyPreferencesPage">
         <property name="visible">True</property>
@@ -2538,11 +2522,6 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                                 <property name="receives-default">False</property>
-                                <property name="level">GTK_FONT_CHOOSER_LEVEL_FAMILY</property>
-                                <property name="title" translatable="yes">Pick a font family</property>
-                                <property name="use-font">True</property>
-                                <property name="show-style">False</property>
-                                <property name="show-size">False</property>
                               </object>
                               <packing>
                                 <property name="expand">True</property>

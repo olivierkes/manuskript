@@ -83,7 +83,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <child>
-                      <object class="GtkMenuItem">
+                      <object class="GtkMenuItem" id="open_menu_item">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="label" translatable="yes">_Open</property>
@@ -91,7 +91,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       </object>
                     </child>
                     <child>
-                      <object class="GtkMenuItem">
+                      <object class="GtkMenuItem" id="recent_menu_item">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="label" translatable="yes">_Recent</property>
@@ -99,7 +99,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       </object>
                     </child>
                     <child>
-                      <object class="GtkMenuItem">
+                      <object class="GtkMenuItem" id="save_menu_item">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="label" translatable="yes">_Save</property>
@@ -107,7 +107,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       </object>
                     </child>
                     <child>
-                      <object class="GtkMenuItem">
+                      <object class="GtkMenuItem" id="saveas_menu_item">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="label" translatable="yes">_Save as...</property>
@@ -115,7 +115,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       </object>
                     </child>
                     <child>
-                      <object class="GtkMenuItem">
+                      <object class="GtkMenuItem" id="close_menu_item">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="label" translatable="yes">_Close project</property>
@@ -129,7 +129,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       </object>
                     </child>
                     <child>
-                      <object class="GtkMenuItem">
+                      <object class="GtkMenuItem" id="import_menu_item">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="label" translatable="yes">_Import...</property>
@@ -137,7 +137,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       </object>
                     </child>
                     <child>
-                      <object class="GtkMenuItem">
+                      <object class="GtkMenuItem" id="compile_menu_item">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="label" translatable="yes">_Compile</property>
@@ -151,7 +151,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       </object>
                     </child>
                     <child>
-                      <object class="GtkMenuItem">
+                      <object class="GtkMenuItem" id="quit_menu_item">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="label" translatable="yes">_Quit</property>
@@ -173,7 +173,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <child>
-                      <object class="GtkMenuItem">
+                      <object class="GtkMenuItem" id="cut_menu_item">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="label" translatable="yes">_Cut</property>
@@ -181,7 +181,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       </object>
                     </child>
                     <child>
-                      <object class="GtkMenuItem">
+                      <object class="GtkMenuItem" id="copy_menu_item">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="label" translatable="yes">_Copy</property>
@@ -189,7 +189,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       </object>
                     </child>
                     <child>
-                      <object class="GtkMenuItem">
+                      <object class="GtkMenuItem" id="paste_menu_item">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="label" translatable="yes">_Paste</property>
@@ -197,7 +197,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       </object>
                     </child>
                     <child>
-                      <object class="GtkMenuItem">
+                      <object class="GtkMenuItem" id="delete_menu_item">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="label" translatable="yes">_Delete</property>
@@ -205,7 +205,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       </object>
                     </child>
                     <child>
-                      <object class="GtkMenuItem">
+                      <object class="GtkMenuItem" id="rename_menu_item">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="label" translatable="yes">_Rename</property>
@@ -239,7 +239,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                     <property name="visible">True</property>
                                     <property name="can-focus">False</property>
                                     <child>
-                                      <object class="GtkMenuItem">
+                                      <object class="GtkMenuItem" id="header1_setext_menu_item">
                                         <property name="visible">True</property>
                                         <property name="can-focus">False</property>
                                         <property name="label" translatable="yes">_Level 1 (setext)</property>
@@ -247,7 +247,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                       </object>
                                     </child>
                                     <child>
-                                      <object class="GtkMenuItem">
+                                      <object class="GtkMenuItem" id="header2_setext_menu_item">
                                         <property name="visible">True</property>
                                         <property name="can-focus">False</property>
                                         <property name="label" translatable="yes">_Level 2</property>
@@ -261,7 +261,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                       </object>
                                     </child>
                                     <child>
-                                      <object class="GtkMenuItem">
+                                      <object class="GtkMenuItem" id="header1_atx_menu_item">
                                         <property name="visible">True</property>
                                         <property name="can-focus">False</property>
                                         <property name="label" translatable="yes">_Level 1 (atx)</property>
@@ -269,7 +269,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                       </object>
                                     </child>
                                     <child>
-                                      <object class="GtkMenuItem">
+                                      <object class="GtkMenuItem" id="header2_atx_menu_item">
                                         <property name="visible">True</property>
                                         <property name="can-focus">False</property>
                                         <property name="label" translatable="yes">_Level 2</property>
@@ -277,7 +277,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                       </object>
                                     </child>
                                     <child>
-                                      <object class="GtkMenuItem">
+                                      <object class="GtkMenuItem" id="header3_atx_menu_item">
                                         <property name="visible">True</property>
                                         <property name="can-focus">False</property>
                                         <property name="label" translatable="yes">_Level 3</property>
@@ -285,7 +285,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                       </object>
                                     </child>
                                     <child>
-                                      <object class="GtkMenuItem">
+                                      <object class="GtkMenuItem" id="header4_atx_menu_item">
                                         <property name="visible">True</property>
                                         <property name="can-focus">False</property>
                                         <property name="label" translatable="yes">_Level 4</property>
@@ -293,7 +293,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                       </object>
                                     </child>
                                     <child>
-                                      <object class="GtkMenuItem">
+                                      <object class="GtkMenuItem" id="header5_atx_menu_item">
                                         <property name="visible">True</property>
                                         <property name="can-focus">False</property>
                                         <property name="label" translatable="yes">_Level 5</property>
@@ -301,7 +301,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                       </object>
                                     </child>
                                     <child>
-                                      <object class="GtkMenuItem">
+                                      <object class="GtkMenuItem" id="header6_atx_menu_item">
                                         <property name="visible">True</property>
                                         <property name="can-focus">False</property>
                                         <property name="label" translatable="yes">_Level 6</property>
@@ -319,7 +319,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               </object>
                             </child>
                             <child>
-                              <object class="GtkMenuItem">
+                              <object class="GtkMenuItem" id="bold_menu_item">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                                 <property name="label" translatable="yes">_Bold</property>
@@ -327,7 +327,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               </object>
                             </child>
                             <child>
-                              <object class="GtkMenuItem">
+                              <object class="GtkMenuItem" id="italic_menu_item">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                                 <property name="label" translatable="yes">_Italic</property>
@@ -335,7 +335,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               </object>
                             </child>
                             <child>
-                              <object class="GtkMenuItem">
+                              <object class="GtkMenuItem" id="strike_menu_item">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                                 <property name="label" translatable="yes">_Strike</property>
@@ -343,7 +343,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               </object>
                             </child>
                             <child>
-                              <object class="GtkMenuItem">
+                              <object class="GtkMenuItem" id="verbatim_menu_item">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                                 <property name="label" translatable="yes">_Verbatim</property>
@@ -351,7 +351,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               </object>
                             </child>
                             <child>
-                              <object class="GtkMenuItem">
+                              <object class="GtkMenuItem" id="superscript_menu_item">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                                 <property name="label" translatable="yes">_Superscript</property>
@@ -359,7 +359,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               </object>
                             </child>
                             <child>
-                              <object class="GtkMenuItem">
+                              <object class="GtkMenuItem" id="subscript_menu_item">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                                 <property name="label" translatable="yes">_Subscript</property>
@@ -367,7 +367,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               </object>
                             </child>
                             <child>
-                              <object class="GtkMenuItem">
+                              <object class="GtkMenuItem" id="comment_menu_item">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                                 <property name="label" translatable="yes">_Comment line(s)</property>
@@ -381,7 +381,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               </object>
                             </child>
                             <child>
-                              <object class="GtkMenuItem">
+                              <object class="GtkMenuItem" id="unordered_list_menu_item">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                                 <property name="label" translatable="yes">_Unordered list</property>
@@ -389,7 +389,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               </object>
                             </child>
                             <child>
-                              <object class="GtkMenuItem">
+                              <object class="GtkMenuItem" id="ordered_list_menu_item">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                                 <property name="label" translatable="yes">_Ordered list</property>
@@ -397,7 +397,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               </object>
                             </child>
                             <child>
-                              <object class="GtkMenuItem">
+                              <object class="GtkMenuItem" id="blockquote_menu_item">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                                 <property name="label" translatable="yes">_Blockquote</property>
@@ -405,7 +405,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               </object>
                             </child>
                             <child>
-                              <object class="GtkMenuItem">
+                              <object class="GtkMenuItem" id="comment_block_menu_item">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                                 <property name="label" translatable="yes">_Comment block</property>
@@ -419,7 +419,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               </object>
                             </child>
                             <child>
-                              <object class="GtkMenuItem">
+                              <object class="GtkMenuItem" id="clear_formats_menu_item">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                                 <property name="label" translatable="yes">_Clear formats</property>
@@ -437,7 +437,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       </object>
                     </child>
                     <child>
-                      <object class="GtkMenuItem">
+                      <object class="GtkMenuItem" id="labels_menu_item">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="label" translatable="yes">_Labels...</property>
@@ -445,7 +445,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       </object>
                     </child>
                     <child>
-                      <object class="GtkMenuItem">
+                      <object class="GtkMenuItem" id="status_menu_item">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="label" translatable="yes">_Status...</property>
@@ -453,7 +453,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       </object>
                     </child>
                     <child>
-                      <object class="GtkMenuItem">
+                      <object class="GtkMenuItem" id="settings_menu_item">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="label" translatable="yes">_Settings</property>
@@ -475,7 +475,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <child>
-                      <object class="GtkMenuItem">
+                      <object class="GtkMenuItem" id="moveup_menu_item">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="label" translatable="yes">_Move Up</property>
@@ -483,7 +483,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       </object>
                     </child>
                     <child>
-                      <object class="GtkMenuItem">
+                      <object class="GtkMenuItem" id="movedown_menu_item">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="label" translatable="yes">_Move Down</property>
@@ -497,7 +497,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       </object>
                     </child>
                     <child>
-                      <object class="GtkMenuItem">
+                      <object class="GtkMenuItem" id="merge_menu_item">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="label" translatable="yes">_Merge</property>
@@ -505,7 +505,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       </object>
                     </child>
                     <child>
-                      <object class="GtkMenuItem">
+                      <object class="GtkMenuItem" id="split_menu_item">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="label" translatable="yes">_Split...</property>
@@ -513,7 +513,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       </object>
                     </child>
                     <child>
-                      <object class="GtkMenuItem">
+                      <object class="GtkMenuItem" id="splitat_menu_item">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="label" translatable="yes">_Split at cursor</property>
@@ -545,22 +545,22 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <child>
-                              <object class="GtkRadioMenuItem" id="radiomenuitem1">
+                              <object class="GtkRadioMenuItem" id="mode_simple_menu_item">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                                 <property name="label" translatable="yes">_Simple</property>
                                 <property name="use-underline">True</property>
                                 <property name="active">True</property>
-                                <property name="group">radiomenuitem2</property>
+                                <property name="group">mode_fiction_menu_item</property>
                               </object>
                             </child>
                             <child>
-                              <object class="GtkRadioMenuItem" id="radiomenuitem2">
+                              <object class="GtkRadioMenuItem" id="mode_fiction_menu_item">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                                 <property name="label" translatable="yes">_Fiction</property>
                                 <property name="use-underline">True</property>
-                                <property name="group">radiomenuitem1</property>
+                                <property name="group">mode_simple_menu_item</property>
                               </object>
                             </child>
                           </object>
@@ -574,7 +574,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       </object>
                     </child>
                     <child>
-                      <object class="GtkMenuItem">
+                      <object class="GtkMenuItem" id="tree_menu_item">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="label" translatable="yes">_Tree</property>
@@ -582,7 +582,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       </object>
                     </child>
                     <child>
-                      <object class="GtkMenuItem">
+                      <object class="GtkMenuItem" id="index_cards_menu_item">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="label" translatable="yes">_Index cards</property>
@@ -590,7 +590,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       </object>
                     </child>
                     <child>
-                      <object class="GtkMenuItem">
+                      <object class="GtkMenuItem" id="structure_menu_item">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="label" translatable="yes">_Structure</property>
@@ -612,7 +612,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <child>
-                      <object class="GtkCheckMenuItem">
+                      <object class="GtkCheckMenuItem" id="spellcheck_menu_item">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="label" translatable="yes">_Spellcheck</property>
@@ -620,7 +620,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       </object>
                     </child>
                     <child>
-                      <object class="GtkMenuItem">
+                      <object class="GtkMenuItem" id="frequency_menu_item">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="label" translatable="yes">_Frequency Analyzer</property>
@@ -628,7 +628,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       </object>
                     </child>
                     <child>
-                      <object class="GtkMenuItem">
+                      <object class="GtkMenuItem" id="dictionary_menu_item">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="label" translatable="yes">_Dictionary</property>
@@ -650,7 +650,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <child>
-                      <object class="GtkCheckMenuItem">
+                      <object class="GtkCheckMenuItem" id="show_help_menu_item">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="label" translatable="yes">_Show help texts</property>
@@ -658,7 +658,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       </object>
                     </child>
                     <child>
-                      <object class="GtkMenuItem">
+                      <object class="GtkMenuItem" id="about_menu_item">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="label" translatable="yes">_About</property>
