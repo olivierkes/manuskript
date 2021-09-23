@@ -6,27 +6,27 @@
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="18"/>
         <source>Basic HTML output using the Python module &apos;markdown&apos;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Simpla HTML-eligo per la Python-modulo «markdown».</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="19"/>
         <source>Python module &apos;markdown&apos;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Python-modulo «markdown».</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="54"/>
         <source>Markdown source</source>
-        <translation type="unfinished"></translation>
+        <translation>Markdown-fonto</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="55"/>
         <source>HTML Source</source>
-        <translation type="unfinished"></translation>
+        <translation>HTML-fonto</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="59"/>
         <source>HTML Output</source>
-        <translation type="unfinished"></translation>
+        <translation>HTML-eligo</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/__init__.py" line="15"/>
@@ -41,7 +41,7 @@
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="14"/>
         <source>Plain text</source>
-        <translation type="unfinished"></translation>
+        <translation>Simpla teksto</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/HTML.py" line="13"/>
@@ -51,12 +51,12 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/PDF.py" line="18"/>
         <source>Needs LaTeX to be installed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Postulas instalon de LaTeX.</translation>
     </message>
     <message>
         <location filename="../manuskript/converters/pandocConverter.py" line="75"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Eraro</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="97"/>
@@ -66,7 +66,7 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="100"/>
         <source>Include a table of contents.</source>
-        <translation type="unfinished"></translation>
+        <translation>Enmeti enhavtabelon.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="103"/>
@@ -76,7 +76,7 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="107"/>
         <source>Typographically correct output</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipografie ĝusta eligo</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="110"/>
@@ -106,52 +106,52 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="125"/>
         <source>Use &lt;q&gt; tags for quotes in HTML</source>
-        <translation type="unfinished"></translation>
+        <translation>Uzi elementojn &lt;q&gt; por citiloj en HTML</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="132"/>
         <source>LaTeX engine used to produce the PDF.</source>
-        <translation type="unfinished"></translation>
+        <translation>LaTeX-modulo por fari PDF.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="142"/>
         <source>Paper size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Formato:</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="145"/>
         <source>Font size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipargrando:</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="148"/>
         <source>Class:</source>
-        <translation type="unfinished"></translation>
+        <translation>Klaso:</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="151"/>
         <source>Line spacing:</source>
-        <translation type="unfinished"></translation>
+        <translation>Spaco inter linioj:</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/outputFormats.py" line="10"/>
         <source>Books that don&apos;t kill trees.</source>
-        <translation type="unfinished"></translation>
+        <translation>Libroj, kiuj ne mortigas arbojn.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/outputFormats.py" line="21"/>
         <source>OpenDocument format. Used by LibreOffice for example.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dosierformo OpenDocument. Uzata de LibreOffice, ekzemple.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/outputFormats.py" line="32"/>
         <source>Microsoft Office (.docx) document.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dokumento de Microsoft Office (.docx).</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/plainText.py" line="22"/>
         <source>reStructuredText is a lightweight markup language.</source>
-        <translation type="unfinished"></translation>
+        <translation>reStructuredText estas simpla marklingvo.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/markdown.py" line="14"/>
@@ -231,12 +231,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="21"/>
         <source>Manuskript</source>
-        <translation type="unfinished"></translation>
+        <translation>Manuskript</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="66"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Priskribo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="100"/>
@@ -246,32 +246,32 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="184"/>
         <source>Status</source>
-        <translation type="unfinished"></translation>
+        <translation>Stato</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="190"/>
         <source>Status:</source>
-        <translation type="unfinished"></translation>
+        <translation>Stato:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="210"/>
         <source>Version:</source>
-        <translation type="unfinished"></translation>
+        <translation>Versio:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="233"/>
         <source>Path:</source>
-        <translation type="unfinished"></translation>
+        <translation>Dosierindiko:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="258"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation>…</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="273"/>
         <source>{HelpText}</source>
-        <translation type="unfinished"></translation>
+        <translation>{HelpText}</translation>
     </message>
 </context>
 <context>
@@ -279,32 +279,32 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="14"/>
         <source>Frequency Analyzer</source>
-        <translation type="unfinished"></translation>
+        <translation>Oftecanalizilo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="24"/>
         <source>Word frequency</source>
-        <translation type="unfinished"></translation>
+        <translation>Vortofteco</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="37"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Agordoj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="49"/>
         <source>Minimum size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Minimuma grando:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="63"/>
         <source>Exclude words (comma separated):</source>
-        <translation type="unfinished"></translation>
+        <translation>Ekskluzivi la jenajn vortojn (kome disigitajn):</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="156"/>
         <source>Analyze</source>
-        <translation type="unfinished"></translation>
+        <translation>Analizi</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="107"/>
@@ -314,12 +314,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="115"/>
         <source>Number of words: from</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombro de vortoj: inter</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="129"/>
         <source>to</source>
-        <translation type="unfinished"></translation>
+        <translation>kaj</translation>
     </message>
 </context>
 <context>
@@ -327,7 +327,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/importer/markdownImporter.py" line="178"/>
         <source>Markdown import</source>
-        <translation type="unfinished"></translation>
+        <translation>Enporti Markdown</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/markdownImporter.py" line="182"/>
@@ -339,7 +339,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="97"/>
         <source>Folder import</source>
-        <translation type="unfinished"></translation>
+        <translation>Enporti dosierujon</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="101"/>
@@ -353,17 +353,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="108"/>
         <source>Include only those extensions:</source>
-        <translation type="unfinished"></translation>
+        <translation>Inkluzivi nur la jenajn dosiersufiksojn:</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="108"/>
         <source>Comma separated values</source>
-        <translation type="unfinished"></translation>
+        <translation>Kome disigitaj valoroj</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="113"/>
         <source>Sort items by name</source>
-        <translation type="unfinished"></translation>
+        <translation>Ordigi laŭ nomo</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="117"/>
@@ -373,22 +373,22 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/importer/opmlImporter.py" line="65"/>
         <source>OPML Import</source>
-        <translation type="unfinished"></translation>
+        <translation>Enporti OPML</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/opmlImporter.py" line="37"/>
         <source>File open failed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Malsukcesis malfermi dosieron.</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/opmlImporter.py" line="65"/>
         <source>This does not appear to be a valid OPML file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiu ŝajne ne estas valida OPML-dosiero.</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="58"/>
         <source>Pandoc import</source>
-        <translation type="unfinished"></translation>
+        <translation>Enporti Pandoc</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="61"/>
@@ -443,7 +443,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/importer/mindMapImporter.py" line="90"/>
         <source>Untitled</source>
-        <translation type="unfinished"></translation>
+        <translation>Sentitola</translation>
     </message>
 </context>
 <context>
@@ -451,7 +451,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/MDEditCompleter.py" line="73"/>
         <source>Insert reference</source>
-        <translation type="unfinished"></translation>
+        <translation>Enmeti referencon</translation>
     </message>
 </context>
 <context>
@@ -459,97 +459,97 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1627"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>Ĝenerala</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="169"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>Titolo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="179"/>
         <source>Subtitle</source>
-        <translation type="unfinished"></translation>
+        <translation>Subtitolo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="189"/>
         <source>Series</source>
-        <translation type="unfinished"></translation>
+        <translation>Serio</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="199"/>
         <source>Volume</source>
-        <translation type="unfinished"></translation>
+        <translation>Volumo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="226"/>
         <source>Genre</source>
-        <translation type="unfinished"></translation>
+        <translation>Ĝenro</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="236"/>
         <source>License</source>
-        <translation type="unfinished"></translation>
+        <translation>Permesilo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="249"/>
         <source>Author</source>
-        <translation type="unfinished"></translation>
+        <translation>Aŭtoro</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1636"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nomo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="277"/>
         <source>Email</source>
-        <translation type="unfinished"></translation>
+        <translation>Retpoŝta adreso</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1422"/>
         <source>Summary</source>
-        <translation type="unfinished"></translation>
+        <translation>Resumo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="322"/>
         <source>Situation:</source>
-        <translation type="unfinished"></translation>
+        <translation>Situacio:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1337"/>
         <source>Summary:</source>
-        <translation type="unfinished"></translation>
+        <translation>Resumo:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="345"/>
         <source>One sentence</source>
-        <translation type="unfinished"></translation>
+        <translation>Unufraze</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1435"/>
         <source>One paragraph</source>
-        <translation type="unfinished"></translation>
+        <translation>Unualinee</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1440"/>
         <source>One page</source>
-        <translation type="unfinished"></translation>
+        <translation>Unupaĝe</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1445"/>
         <source>Full</source>
-        <translation type="unfinished"></translation>
+        <translation>Plene</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="420"/>
         <source>One sentence summary</source>
-        <translation type="unfinished"></translation>
+        <translation>Unufraza resumo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="502"/>
         <source>One paragraph summary</source>
-        <translation type="unfinished"></translation>
+        <translation>Unualinea resumo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="540"/>
@@ -559,12 +559,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="565"/>
         <source>One page summary</source>
-        <translation type="unfinished"></translation>
+        <translation>Unupaĝa resumo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="590"/>
         <source>Full summary</source>
-        <translation type="unfinished"></translation>
+        <translation>Plena resumo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1074"/>
@@ -574,97 +574,97 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="676"/>
         <source>What if...?</source>
-        <translation type="unfinished"></translation>
+        <translation>Kio se…?</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="688"/>
         <source>Characters</source>
-        <translation type="unfinished"></translation>
+        <translation>Roluloj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="713"/>
         <source>Names</source>
-        <translation type="unfinished"></translation>
+        <translation>Nomoj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1587"/>
         <source>Filter</source>
-        <translation type="unfinished"></translation>
+        <translation>Filtri</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1183"/>
         <source>Basic info</source>
-        <translation type="unfinished"></translation>
+        <translation>Bazaj informoj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1202"/>
         <source>Importance</source>
-        <translation type="unfinished"></translation>
+        <translation>Graveco</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="829"/>
         <source>Motivation</source>
-        <translation type="unfinished"></translation>
+        <translation>Instigo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="839"/>
         <source>Goal</source>
-        <translation type="unfinished"></translation>
+        <translation>Celo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="849"/>
         <source>Conflict</source>
-        <translation type="unfinished"></translation>
+        <translation>Konflikto</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="859"/>
         <source>Epiphany</source>
-        <translation type="unfinished"></translation>
+        <translation>Ekscio</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="869"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One sentence&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Unufraza&lt;br/&gt;resumo&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="879"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One paragraph&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Unualinea&lt;br/&gt;resumo&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1001"/>
         <source>Notes</source>
-        <translation type="unfinished"></translation>
+        <translation>Notoj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1011"/>
         <source>Detailed info</source>
-        <translation type="unfinished"></translation>
+        <translation>Detaloj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2021"/>
         <source>Plots</source>
-        <translation type="unfinished"></translation>
+        <translation>Intrigoj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1192"/>
         <source>Plot</source>
-        <translation type="unfinished"></translation>
+        <translation>Intrigo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1209"/>
         <source>Character(s)</source>
-        <translation type="unfinished"></translation>
+        <translation>Rolulo(j)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1646"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Priskribo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1223"/>
         <source>Result</source>
-        <translation type="unfinished"></translation>
+        <translation>Rezulto</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1315"/>
@@ -674,7 +674,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2045"/>
         <source>World</source>
-        <translation type="unfinished"></translation>
+        <translation>Mondo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1600"/>
@@ -684,17 +684,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1657"/>
         <source>More</source>
-        <translation type="unfinished"></translation>
+        <translation>Pli</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1666"/>
         <source>Source of passion</source>
-        <translation type="unfinished"></translation>
+        <translation>Fonto de pasio</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1676"/>
         <source>Source of conflict</source>
-        <translation type="unfinished"></translation>
+        <translation>Fonto de konflikto</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1477"/>
@@ -704,12 +704,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1854"/>
         <source>Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Redaktilo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1985"/>
         <source>Debug</source>
-        <translation type="unfinished"></translation>
+        <translation>Sencimigi</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1998"/>
@@ -724,12 +724,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2069"/>
         <source>Labels</source>
-        <translation type="unfinished"></translation>
+        <translation>Etikedoj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2103"/>
         <source>&amp;File</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Dosiero</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2107"/>
@@ -739,27 +739,27 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2127"/>
         <source>&amp;Help</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Helpo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2134"/>
         <source>&amp;Tools</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Iloj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2141"/>
         <source>&amp;Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>R&amp;edakti</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2196"/>
         <source>&amp;View</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Vidi</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2200"/>
         <source>&amp;Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Reĝi&amp;mo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2229"/>
@@ -769,17 +769,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2263"/>
         <source>Sea&amp;rch</source>
-        <translation type="unfinished"></translation>
+        <translation>Se&amp;rĉi</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2300"/>
         <source>&amp;Navigation</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Navigi</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2335"/>
         <source>&amp;Open</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Malfermi</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2338"/>
@@ -789,7 +789,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2347"/>
         <source>&amp;Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Kon&amp;servi</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2350"/>
@@ -799,7 +799,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2359"/>
         <source>Sa&amp;ve as...</source>
-        <translation type="unfinished"></translation>
+        <translation>Konser&amp;vi kiel…</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2362"/>
@@ -829,7 +829,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2407"/>
         <source>&amp;Spellcheck</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Literumilo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2410"/>
@@ -839,37 +839,37 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2419"/>
         <source>&amp;Labels...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Etikedoj…</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2428"/>
         <source>&amp;Status...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Stato…</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1475"/>
         <source>Tree</source>
-        <translation type="unfinished"></translation>
+        <translation>Arbo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2444"/>
         <source>&amp;Simple</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Simpla</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2452"/>
         <source>&amp;Fiction</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Fikcio</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1476"/>
         <source>Index cards</source>
-        <translation type="unfinished"></translation>
+        <translation>Indekskartoj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2471"/>
         <source>S&amp;ettings</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Agordoj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2474"/>
@@ -879,7 +879,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2483"/>
         <source>&amp;Close project</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Malfermi projekton</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2492"/>
@@ -894,47 +894,47 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2500"/>
         <source>&amp;Frequency Analyzer</source>
-        <translation type="unfinished"></translation>
+        <translation>O&amp;ftecanalizilo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="154"/>
         <source>Book information</source>
-        <translation type="unfinished"></translation>
+        <translation>Informoj pri libro</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2509"/>
         <source>&amp;About</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Pri</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2512"/>
         <source>About Manuskript</source>
-        <translation type="unfinished"></translation>
+        <translation>Pri Manuskript</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="717"/>
         <source>Manuskript</source>
-        <translation type="unfinished"></translation>
+        <translation>Manuskript</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="840"/>
         <source>Project {} saved.</source>
-        <translation type="unfinished"></translation>
+        <translation>Projekto {} konserviĝis.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="843"/>
         <source>WARNING: Project {} not saved.</source>
-        <translation type="unfinished"></translation>
+        <translation>AVERTO: Projekto {} ne konservita.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="867"/>
         <source>Project {} loaded.</source>
-        <translation type="unfinished"></translation>
+        <translation>Projekto {} ŝargiĝis.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="870"/>
         <source>Project {} loaded with some errors:</source>
-        <translation type="unfinished"></translation>
+        <translation>Projekto {} ŝargiĝis malgraŭ eraroj:</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="872"/>
@@ -949,37 +949,37 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1202"/>
         <source> (~{} pages)</source>
-        <translation type="unfinished"></translation>
+        <translation> (~{} paĝoj)</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1206"/>
         <source>Words: {}{}</source>
-        <translation type="unfinished"></translation>
+        <translation>Vortoj: {}{}</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1214"/>
         <source>Book summary</source>
-        <translation type="unfinished"></translation>
+        <translation>Resumo de libro</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1215"/>
         <source>Project tree</source>
-        <translation type="unfinished"></translation>
+        <translation>Projektarbo</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1216"/>
         <source>Metadata</source>
-        <translation type="unfinished"></translation>
+        <translation>Metadatenoj</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1217"/>
         <source>Story line</source>
-        <translation type="unfinished"></translation>
+        <translation>Intrigo</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1282"/>
         <source>Enter information about your book, and yourself.</source>
-        <translation type="unfinished"></translation>
+        <translation>Tajpu informojn pri via libro kaj vi mem.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1285"/>
@@ -996,12 +996,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1295"/>
         <source>Create your characters.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kreu viajn rolulojn.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1298"/>
         <source>Develop plots.</source>
-        <translation type="unfinished"></translation>
+        <translation>Disvolvu intrigojn.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1301"/>
@@ -1016,7 +1016,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1307"/>
         <source>Write.</source>
-        <translation type="unfinished"></translation>
+        <translation>Verku.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1310"/>
@@ -1026,27 +1026,27 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1324"/>
         <source>Dictionary</source>
-        <translation type="unfinished"></translation>
+        <translation>Vortaro</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1467"/>
         <source>Nothing</source>
-        <translation type="unfinished"></translation>
+        <translation>Nenio</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1468"/>
         <source>POV</source>
-        <translation type="unfinished"></translation>
+        <translation>Perspektivo</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1469"/>
         <source>Label</source>
-        <translation type="unfinished"></translation>
+        <translation>Etikedo</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1470"/>
         <source>Progress</source>
-        <translation type="unfinished"></translation>
+        <translation>Progreso</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1471"/>
@@ -1056,42 +1056,42 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1494"/>
         <source>Icon color</source>
-        <translation type="unfinished"></translation>
+        <translation>Koloro de piktogramo</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1495"/>
         <source>Text color</source>
-        <translation type="unfinished"></translation>
+        <translation>Koloro de teksto</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1496"/>
         <source>Background color</source>
-        <translation type="unfinished"></translation>
+        <translation>Fonkoloro</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1487"/>
         <source>Icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Piktogramo</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1488"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation>Teksto</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1489"/>
         <source>Background</source>
-        <translation type="unfinished"></translation>
+        <translation>Fono</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1490"/>
         <source>Border</source>
-        <translation type="unfinished"></translation>
+        <translation>Limo</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1491"/>
         <source>Corner</source>
-        <translation type="unfinished"></translation>
+        <translation>Angulo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1351"/>
@@ -1111,7 +1111,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2533"/>
         <source>&amp;Copy</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Kopii</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2536"/>
@@ -1131,7 +1131,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2557"/>
         <source>&amp;Paste</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Alglui</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2560"/>
@@ -1176,7 +1176,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2626"/>
         <source>&amp;Move Up</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Movi supren</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2629"/>
@@ -1186,7 +1186,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2638"/>
         <source>M&amp;ove Down</source>
-        <translation type="unfinished"></translation>
+        <translation>M&amp;ovi malsupren</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2641"/>
@@ -1216,7 +1216,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2210"/>
         <source>Organi&amp;ze</source>
-        <translation type="unfinished"></translation>
+        <translation>Organi&amp;zi</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2593"/>
@@ -1236,7 +1236,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2658"/>
         <source>&amp;Level 1 (setext)</source>
-        <translation type="unfinished"></translation>
+        <translation>Nive&amp;lo 1 (setext)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2661"/>
@@ -1246,7 +1246,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2666"/>
         <source>Level &amp;2</source>
-        <translation type="unfinished"></translation>
+        <translation>Nivelo &amp;2</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2669"/>
@@ -1256,7 +1256,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2674"/>
         <source>Level &amp;1 (atx)</source>
-        <translation type="unfinished"></translation>
+        <translation>Nivelo &amp;1 (atx)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2677"/>
@@ -1266,7 +1266,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2682"/>
         <source>L&amp;evel 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Niv&amp;elo 2</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2685"/>
@@ -1276,7 +1276,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2690"/>
         <source>Level &amp;3</source>
-        <translation type="unfinished"></translation>
+        <translation>Nivelo &amp;3</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2693"/>
@@ -1286,7 +1286,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2698"/>
         <source>Level &amp;4</source>
-        <translation type="unfinished"></translation>
+        <translation>Nivelo &amp;4</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2701"/>
@@ -1296,7 +1296,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2706"/>
         <source>Level &amp;5</source>
-        <translation type="unfinished"></translation>
+        <translation>Nivelo &amp;5</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2709"/>
@@ -1306,7 +1306,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2714"/>
         <source>Level &amp;6</source>
-        <translation type="unfinished"></translation>
+        <translation>Nivelo &amp;6</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2717"/>
@@ -1316,7 +1316,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2726"/>
         <source>&amp;Bold</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Grasa</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2729"/>
@@ -1326,7 +1326,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2738"/>
         <source>&amp;Italic</source>
-        <translation type="unfinished"></translation>
+        <translation>Obl&amp;ikva</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2741"/>
@@ -1336,7 +1336,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2750"/>
         <source>&amp;Strike</source>
-        <translation type="unfinished"></translation>
+        <translation>Tra&amp;strekita</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2755"/>
@@ -1346,7 +1346,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2760"/>
         <source>Su&amp;perscript</source>
-        <translation type="unfinished"></translation>
+        <translation>Su&amp;pra indico</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2763"/>
@@ -1356,7 +1356,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2768"/>
         <source>Subsc&amp;ript</source>
-        <translation type="unfinished"></translation>
+        <translation>Malsup&amp;ra indico</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2771"/>
@@ -1391,17 +1391,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2804"/>
         <source>&amp;Ordered list</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Ordita listo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2813"/>
         <source>&amp;Unordered list</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Neordita listo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2818"/>
         <source>B&amp;lockquote</source>
-        <translation type="unfinished"></translation>
+        <translation>Citob&amp;loko</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1368"/>
@@ -1426,12 +1426,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1401"/>
         <source>{}{} is not installed</source>
-        <translation type="unfinished"></translation>
+        <translation>{}{} ne estas instalita</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="660"/>
         <source>Save project?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ĉu konservi projekton?</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="660"/>
@@ -1464,52 +1464,52 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="14"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Agordoj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="24"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>Ĝenerala</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="480"/>
         <source>Revisions</source>
-        <translation type="unfinished"></translation>
+        <translation>Revizioj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="34"/>
         <source>Views</source>
-        <translation type="unfinished"></translation>
+        <translation>Vidoj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2761"/>
         <source>Labels</source>
-        <translation type="unfinished"></translation>
+        <translation>Etikedoj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2893"/>
         <source>Status</source>
-        <translation type="unfinished"></translation>
+        <translation>Stato</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2967"/>
         <source>Fullscreen</source>
-        <translation type="unfinished"></translation>
+        <translation>Plenekrane</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="82"/>
         <source>General settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Ĝeneralaj agordoj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="98"/>
         <source>Application settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Agordoj pri la progamo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="201"/>
         <source>Loading</source>
-        <translation type="unfinished"></translation>
+        <translation>Ŝargante</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="213"/>
@@ -1519,7 +1519,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="232"/>
         <source>Saving</source>
-        <translation type="unfinished"></translation>
+        <translation>Konservante</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="246"/>
@@ -1544,7 +1544,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="410"/>
         <source>Save on project close</source>
-        <translation type="unfinished"></translation>
+        <translation>Konservi dum fermo de projekto</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="426"/>
@@ -1574,7 +1574,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="531"/>
         <source>Keep:</source>
-        <translation type="unfinished"></translation>
+        <translation>Konservi:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="544"/>
@@ -1614,37 +1614,37 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="828"/>
         <source>Tree</source>
-        <translation type="unfinished"></translation>
+        <translation>Arbo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2015"/>
         <source>Colors</source>
-        <translation type="unfinished"></translation>
+        <translation>Koloroj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1759"/>
         <source>Icon color:</source>
-        <translation type="unfinished"></translation>
+        <translation>Koloro de piktogramo:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1965"/>
         <source>Nothing</source>
-        <translation type="unfinished"></translation>
+        <translation>Nenio</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1970"/>
         <source>POV</source>
-        <translation type="unfinished"></translation>
+        <translation>Perspektivo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1975"/>
         <source>Label</source>
-        <translation type="unfinished"></translation>
+        <translation>Etikedo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1980"/>
         <source>Progress</source>
-        <translation type="unfinished"></translation>
+        <translation>Progreso</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1985"/>
@@ -1654,17 +1654,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1807"/>
         <source>Text color:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekstkoloro:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1855"/>
         <source>Background color:</source>
-        <translation type="unfinished"></translation>
+        <translation>Fonkoloro:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1069"/>
         <source>Folders</source>
-        <translation type="unfinished"></translation>
+        <translation>Dosierujoj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1081"/>
@@ -1674,17 +1674,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1190"/>
         <source>Show summary</source>
-        <translation type="unfinished"></translation>
+        <translation>Montri resumon</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1133"/>
         <source>&amp;Nothing</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Nenio</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1152"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation>Teksto</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1252"/>
@@ -1699,12 +1699,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1456"/>
         <source>Goal</source>
-        <translation type="unfinished"></translation>
+        <translation>Celo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1472"/>
         <source>Word count</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombro de vortoj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1488"/>
@@ -1714,12 +1714,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1568"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>Titolo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1599"/>
         <source>Index cards</source>
-        <translation type="unfinished"></translation>
+        <translation>Indekskartoj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1744"/>
@@ -1734,17 +1734,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1951"/>
         <source>Corner color:</source>
-        <translation type="unfinished"></translation>
+        <translation>Koloro de angulo:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1611"/>
         <source>Background</source>
-        <translation type="unfinished"></translation>
+        <translation>Fono</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3446"/>
         <source>Color:</source>
-        <translation type="unfinished"></translation>
+        <translation>Koloro:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2808"/>
@@ -1754,27 +1754,27 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3188"/>
         <source>Image:</source>
-        <translation type="unfinished"></translation>
+        <translation>Bildo:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2001"/>
         <source>Text editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekstredaktilo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2120"/>
         <source>Font</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiparo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2132"/>
         <source>Family:</source>
-        <translation type="unfinished"></translation>
+        <translation>Familio:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3489"/>
         <source>Size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Grando:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3503"/>
@@ -1784,17 +1784,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2027"/>
         <source>Background:</source>
-        <translation type="unfinished"></translation>
+        <translation>Fono:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2343"/>
         <source>Paragraphs</source>
-        <translation type="unfinished"></translation>
+        <translation>Alineoj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3530"/>
         <source>Line spacing:</source>
-        <translation type="unfinished"></translation>
+        <translation>Spaco inter linioj:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3538"/>
@@ -1819,7 +1819,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3570"/>
         <source>%</source>
-        <translation type="unfinished"></translation>
+        <translation>%</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3586"/>
@@ -1844,12 +1844,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3014"/>
         <source>New</source>
-        <translation type="unfinished"></translation>
+        <translation>Nova</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3028"/>
         <source>Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>Redakti</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3038"/>
@@ -1869,7 +1869,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3111"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Nuligi</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3141"/>
@@ -1894,12 +1894,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3198"/>
         <source>Type:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipo:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3206"/>
         <source>No Image</source>
-        <translation type="unfinished"></translation>
+        <translation>Sen bildo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3211"/>
@@ -1954,12 +1954,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3323"/>
         <source>Width:</source>
-        <translation type="unfinished"></translation>
+        <translation>Larĝo:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3374"/>
         <source>Corner radius:</source>
-        <translation type="unfinished"></translation>
+        <translation>Angulradiuso:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3381"/>
@@ -1974,7 +1974,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3466"/>
         <source>Font:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiparo:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1703"/>
@@ -1984,7 +1984,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2620"/>
         <source>Cursor</source>
-        <translation type="unfinished"></translation>
+        <translation>Kursoro</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2632"/>
@@ -2009,7 +2009,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1020"/>
         <source>Icon Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Grando de piktogramo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1032"/>
@@ -2029,7 +2029,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2246"/>
         <source>Max width</source>
-        <translation type="unfinished"></translation>
+        <translation>Maksimuma larĝo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2278"/>
@@ -2044,17 +2044,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1107"/>
         <source>S&amp;how progress</source>
-        <translation type="unfinished"></translation>
+        <translation>Montri &amp;progreson</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1120"/>
         <source>Show summar&amp;y</source>
-        <translation type="unfinished"></translation>
+        <translation>Montri r&amp;esumon</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1177"/>
         <source>Show p&amp;rogress</source>
-        <translation type="unfinished"></translation>
+        <translation>Montri p&amp;rogreson</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1715"/>
@@ -2074,17 +2074,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="113"/>
         <source>Style:</source>
-        <translation type="unfinished"></translation>
+        <translation>Stilo:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="136"/>
         <source>Language:</source>
-        <translation type="unfinished"></translation>
+        <translation>Lingvo:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="159"/>
         <source>Font size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipargrando:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="182"/>
@@ -2104,37 +2104,37 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1728"/>
         <source>&amp;New style</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Nova stilo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2680"/>
         <source>Typewriter mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Skribmaŝina reĝimo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2693"/>
         <source>Focus mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Fokusiga reĝimo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2707"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Nenio</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2712"/>
         <source>Sentence</source>
-        <translation type="unfinished"></translation>
+        <translation>Frazo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2717"/>
         <source>Line</source>
-        <translation type="unfinished"></translation>
+        <translation>Linio</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2722"/>
         <source>Paragraph</source>
-        <translation type="unfinished"></translation>
+        <translation>Alineo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="775"/>
@@ -2165,12 +2165,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/about_ui.ui" line="17"/>
         <source>About Manuskript</source>
-        <translation type="unfinished"></translation>
+        <translation>Pri Manuskript</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/about_ui.ui" line="50"/>
         <source>Manuskript</source>
-        <translation type="unfinished"></translation>
+        <translation>Manuskript</translation>
     </message>
 </context>
 <context>
@@ -2178,7 +2178,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/about.py" line="28"/>
         <source>Version</source>
-        <translation type="unfinished"></translation>
+        <translation>Versio</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/about.py" line="41"/>
@@ -2191,22 +2191,22 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="185"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>Titolo</translation>
     </message>
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="187"/>
         <source>POV</source>
-        <translation type="unfinished"></translation>
+        <translation>Perspektivo</translation>
     </message>
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="189"/>
         <source>Label</source>
-        <translation type="unfinished"></translation>
+        <translation>Etikedo</translation>
     </message>
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="191"/>
         <source>Status</source>
-        <translation type="unfinished"></translation>
+        <translation>Stato</translation>
     </message>
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="193"/>
@@ -2216,7 +2216,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="195"/>
         <source>Word count</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombro de vortoj</translation>
     </message>
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="197"/>
@@ -2244,7 +2244,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/basicItemView_ui.ui" line="80"/>
         <source>Word count</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombro de vortoj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/basicItemView_ui.ui" line="92"/>
@@ -2267,12 +2267,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/characterModel.py" line="192"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nomo</translation>
     </message>
     <message>
         <location filename="../manuskript/models/characterModel.py" line="194"/>
         <source>Value</source>
-        <translation type="unfinished"></translation>
+        <translation>Valoro</translation>
     </message>
 </context>
 <context>
@@ -2328,17 +2328,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/cheatSheet.py" line="104"/>
         <source>Texts</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekstoj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/cheatSheet.py" line="116"/>
         <source>Plots</source>
-        <translation type="unfinished"></translation>
+        <translation>Intrigoj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/cheatSheet.py" line="120"/>
         <source>World</source>
-        <translation type="unfinished"></translation>
+        <translation>Mondo</translation>
     </message>
 </context>
 <context>
@@ -2346,7 +2346,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/cmbOutlineCharacterChoser.py" line="34"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Nenio</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/cmbOutlineCharacterChoser.py" line="36"/>
@@ -2447,7 +2447,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/exporters/exporter_ui.ui" line="81"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Agordoj</translation>
     </message>
 </context>
 <context>
@@ -2468,7 +2468,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="50"/>
         <source>Content</source>
-        <translation type="unfinished"></translation>
+        <translation>Enhavo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="56"/>
@@ -2483,12 +2483,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="90"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>Titolo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings.py" line="326"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation>Teksto</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="118"/>
@@ -2518,12 +2518,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="170"/>
         <source>Labels</source>
-        <translation type="unfinished"></translation>
+        <translation>Etikedoj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="177"/>
         <source>Status</source>
-        <translation type="unfinished"></translation>
+        <translation>Stato</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="229"/>
@@ -2623,22 +2623,22 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1157"/>
         <source>Font</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiparo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1163"/>
         <source>Font:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiparo:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1173"/>
         <source>Font size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipargrando:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings.py" line="320"/>
         <source>Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Dosierujo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings.py" line="343"/>
@@ -2676,22 +2676,22 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="93"/>
         <source>Not found</source>
-        <translation type="unfinished"></translation>
+        <translation>Ne trovita</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="96"/>
         <source>{} not found. Install it, or set path manually.</source>
-        <translation type="unfinished"></translation>
+        <translation>{} ne troviĝis. Instalu ĝin aŭ agordu dosierindikon permane.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="124"/>
         <source>&lt;b&gt;Status:&lt;/b&gt; uninstalled.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Stato:&lt;/b&gt; malinstalita.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="126"/>
         <source>&lt;b&gt;Requires:&lt;/b&gt; </source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Postulas:&lt;/b&gt; </translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="133"/>
@@ -2714,7 +2714,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/tools/frequencyAnalyzer.py" line="108"/>
         <source>Word</source>
-        <translation type="unfinished"></translation>
+        <translation>Vorto</translation>
     </message>
 </context>
 <context>
@@ -2732,27 +2732,27 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="360"/>
         <source>{} words</source>
-        <translation type="unfinished"></translation>
+        <translation>{} vortoj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="149"/>
         <source>Spellcheck</source>
-        <translation type="unfinished"></translation>
+        <translation>Literumilo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="150"/>
         <source>Navigation</source>
-        <translation type="unfinished"></translation>
+        <translation>Navigado</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="151"/>
         <source>New Text</source>
-        <translation type="unfinished"></translation>
+        <translation>Nova teksto</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="152"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>Titolo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="153"/>
@@ -2767,12 +2767,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="156"/>
         <source>Word count</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombro de vortoj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="157"/>
         <source>Progress</source>
-        <translation type="unfinished"></translation>
+        <translation>Progreso</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="158"/>
@@ -2782,7 +2782,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="159"/>
         <source>Clock</source>
-        <translation type="unfinished"></translation>
+        <translation>Horloĝo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="160"/>
@@ -2805,7 +2805,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.ui" line="65"/>
         <source>\n---\n</source>
-        <translation type="unfinished"></translation>
+        <translation>\n---\n</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.ui" line="72"/>
@@ -2836,7 +2836,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/importers/importer_ui.ui" line="119"/>
         <source>Import</source>
-        <translation type="unfinished"></translation>
+        <translation>Enporti</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/importers/importer_ui.ui" line="22"/>
@@ -2846,7 +2846,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/importers/importer_ui.ui" line="45"/>
         <source>Choose file</source>
-        <translation type="unfinished"></translation>
+        <translation>Elekti dosieron</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/importers/importer_ui.ui" line="75"/>
@@ -2905,12 +2905,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/editors/locker_ui.ui" line="47"/>
         <source> words</source>
-        <translation type="unfinished"></translation>
+        <translation> vortoj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker_ui.ui" line="63"/>
         <source> minutes</source>
-        <translation type="unfinished"></translation>
+        <translation> minutoj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker_ui.ui" line="79"/>
@@ -2920,22 +2920,22 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/editors/locker.py" line="94"/>
         <source>~{} h.</source>
-        <translation type="unfinished"></translation>
+        <translation>~{} h</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker.py" line="96"/>
         <source>~{} mn.</source>
-        <translation type="unfinished"></translation>
+        <translation>~{} min</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker.py" line="100"/>
         <source>{}:{}</source>
-        <translation type="unfinished"></translation>
+        <translation>{}:{}</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker.py" line="102"/>
         <source>{} s.</source>
-        <translation type="unfinished"></translation>
+        <translation>{} s</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker.py" line="104"/>
@@ -2958,12 +2958,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.ui" line="67"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation>Teksto</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.ui" line="83"/>
         <source>Index cards</source>
-        <translation type="unfinished"></translation>
+        <translation>Indekskartoj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.ui" line="102"/>
@@ -2988,17 +2988,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="243"/>
         <source>Root</source>
-        <translation type="unfinished"></translation>
+        <translation>Radiko</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="322"/>
         <source>{} words / {} </source>
-        <translation type="unfinished"></translation>
+        <translation>{} vortoj / {} </translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="327"/>
         <source>{} words </source>
-        <translation type="unfinished"></translation>
+        <translation>{} vortoj </translation>
     </message>
 </context>
 <context>
@@ -3006,7 +3006,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/exporter/manuskript/markdown.py" line="58"/>
         <source>Markdown</source>
-        <translation type="unfinished"></translation>
+        <translation>Markdown</translation>
     </message>
 </context>
 <context>
@@ -3024,22 +3024,22 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.ui" line="81"/>
         <source>Summary</source>
-        <translation type="unfinished"></translation>
+        <translation>Resumo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.ui" line="114"/>
         <source>One line summary</source>
-        <translation type="unfinished"></translation>
+        <translation>Unulinia resumo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.ui" line="140"/>
         <source>Full summary</source>
-        <translation type="unfinished"></translation>
+        <translation>Plena resumo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.ui" line="180"/>
         <source>Notes / References</source>
-        <translation type="unfinished"></translation>
+        <translation>Notoj / referencoj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.ui" line="190"/>
@@ -3065,7 +3065,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="136"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Nenio</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="163"/>
@@ -3080,7 +3080,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="283"/>
         <source>New</source>
-        <translation type="unfinished"></translation>
+        <translation>Nova</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="142"/>
@@ -3183,7 +3183,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/outlineDelegates.py" line="141"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Nenio</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineDelegates.py" line="143"/>
@@ -3211,7 +3211,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/outlineItem.py" line="239"/>
         <source>{} words</source>
-        <translation type="unfinished"></translation>
+        <translation>{} vortoj</translation>
     </message>
 </context>
 <context>
@@ -3219,12 +3219,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="167"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>Ĝenerala</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="181"/>
         <source>Table of Content</source>
-        <translation type="unfinished"></translation>
+        <translation>Enhavtabelo</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="186"/>
@@ -3255,7 +3255,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>Ĝenerala</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3265,37 +3265,37 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Problem</source>
-        <translation type="unfinished"></translation>
+        <translation>Problemo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Progress</source>
-        <translation type="unfinished"></translation>
+        <translation>Progreso</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Resolution</source>
-        <translation type="unfinished"></translation>
+        <translation>Solvo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Try / Fail</source>
-        <translation type="unfinished"></translation>
+        <translation>Provi / malsukcesi</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>No and</source>
-        <translation type="unfinished"></translation>
+        <translation>Ne, kaj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Yes but</source>
-        <translation type="unfinished"></translation>
+        <translation>Jes, sed</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Freytag&apos;s pyramid</source>
-        <translation type="unfinished"></translation>
+        <translation>Piramido de Freytag</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3310,7 +3310,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Climax</source>
-        <translation type="unfinished"></translation>
+        <translation>Klimakso</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3320,7 +3320,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Three acts</source>
-        <translation type="unfinished"></translation>
+        <translation>Tri aktoj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3340,17 +3340,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>2. Choice</source>
-        <translation type="unfinished"></translation>
+        <translation>2. Elekto</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>2. Reversal</source>
-        <translation type="unfinished"></translation>
+        <translation>2. Renverso</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>2. Disaster</source>
-        <translation type="unfinished"></translation>
+        <translation>2. Katastrofo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3360,72 +3360,72 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>3. Climax</source>
-        <translation type="unfinished"></translation>
+        <translation>3. Klimakso</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>3. Ending</source>
-        <translation type="unfinished"></translation>
+        <translation>3. Fino</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Hero&apos;s journey</source>
-        <translation type="unfinished"></translation>
+        <translation>Vojaĝo de la heroo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Ordinary world</source>
-        <translation type="unfinished"></translation>
+        <translation>Ordinara mondo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Call to adventure</source>
-        <translation type="unfinished"></translation>
+        <translation>Voko al aventuro</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Refusal of the call</source>
-        <translation type="unfinished"></translation>
+        <translation>Rifuzo de la alvoko</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Meeting with mentor</source>
-        <translation type="unfinished"></translation>
+        <translation>Renkontiĝo kun mentoro</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Tests</source>
-        <translation type="unfinished"></translation>
+        <translation>Ekzamenoj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Approach</source>
-        <translation type="unfinished"></translation>
+        <translation>Alproksimiĝo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Abyss</source>
-        <translation type="unfinished"></translation>
+        <translation>Abismo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Reward / Revelation</source>
-        <translation type="unfinished"></translation>
+        <translation>Rekompenco / rivelo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Transformation</source>
-        <translation type="unfinished"></translation>
+        <translation>Transformiĝo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Atonement</source>
-        <translation type="unfinished"></translation>
+        <translation>Rebonigo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Return</source>
-        <translation type="unfinished"></translation>
+        <translation>Reveno</translation>
     </message>
 </context>
 <context>
@@ -3433,12 +3433,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/plotModel.py" line="108"/>
         <source>New plot</source>
-        <translation type="unfinished"></translation>
+        <translation>Nova intrigo</translation>
     </message>
     <message>
         <location filename="../manuskript/models/plotModel.py" line="140"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nomo</translation>
     </message>
     <message>
         <location filename="../manuskript/models/plotModel.py" line="142"/>
@@ -3486,7 +3486,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/plotTreeView.py" line="189"/>
         <source>**Plot:** {}</source>
-        <translation type="unfinished"></translation>
+        <translation>**Intrigo:** {}</translation>
     </message>
 </context>
 <context>
@@ -3517,17 +3517,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/propertiesView_ui.ui" line="195"/>
         <source>POV</source>
-        <translation type="unfinished"></translation>
+        <translation>Perspektivo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/propertiesView_ui.ui" line="215"/>
         <source>Status</source>
-        <translation type="unfinished"></translation>
+        <translation>Stato</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/propertiesView_ui.ui" line="235"/>
         <source>Label</source>
-        <translation type="unfinished"></translation>
+        <translation>Etikedo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/propertiesView_ui.ui" line="255"/>
@@ -3537,12 +3537,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/propertiesView_ui.ui" line="269"/>
         <source>Goal</source>
-        <translation type="unfinished"></translation>
+        <translation>Celo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/propertiesView_ui.ui" line="291"/>
         <source>Word count</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombro de vortoj</translation>
     </message>
 </context>
 <context>
@@ -3550,12 +3550,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/references.py" line="504"/>
         <source>Not a reference: {}.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ne estas referenco: {}.</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="402"/>
         <source>Unknown reference: {}.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nekonata referenco: {}.</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="103"/>
@@ -3565,72 +3565,72 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/references.py" line="104"/>
         <source>Stats:</source>
-        <translation type="unfinished"></translation>
+        <translation>Statistikoj:</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="105"/>
         <source>POV:</source>
-        <translation type="unfinished"></translation>
+        <translation>Perspektivo:</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="106"/>
         <source>Status:</source>
-        <translation type="unfinished"></translation>
+        <translation>Stato:</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="107"/>
         <source>Label:</source>
-        <translation type="unfinished"></translation>
+        <translation>Etikedo:</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="108"/>
         <source>Short summary:</source>
-        <translation type="unfinished"></translation>
+        <translation>Mallonga resumo:</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="109"/>
         <source>Long summary:</source>
-        <translation type="unfinished"></translation>
+        <translation>Longa resumo:</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="110"/>
         <source>Notes:</source>
-        <translation type="unfinished"></translation>
+        <translation>Notoj:</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="201"/>
         <source>Basic info</source>
-        <translation type="unfinished"></translation>
+        <translation>Bazaj informoj</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="202"/>
         <source>Detailed info</source>
-        <translation type="unfinished"></translation>
+        <translation>Detaloj</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="203"/>
         <source>POV of:</source>
-        <translation type="unfinished"></translation>
+        <translation>Perspektivo de:</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="367"/>
         <source>Go to {}.</source>
-        <translation type="unfinished"></translation>
+        <translation>Iri al {}.</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="362"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Priskribo</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="282"/>
         <source>Result</source>
-        <translation type="unfinished"></translation>
+        <translation>Rezulto</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="283"/>
         <source>Characters</source>
-        <translation type="unfinished"></translation>
+        <translation>Roluloj</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="284"/>
@@ -3640,72 +3640,72 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/references.py" line="363"/>
         <source>Passion</source>
-        <translation type="unfinished"></translation>
+        <translation>Pasio</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="364"/>
         <source>Conflict</source>
-        <translation type="unfinished"></translation>
+        <translation>Konflikto</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="501"/>
         <source>&lt;b&gt;Unknown reference:&lt;/b&gt; {}.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Nekonata referenco:&lt;/b&gt; {}.</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="509"/>
         <source>Folder: &lt;b&gt;{}&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Dosierujo: &lt;b&gt;{}&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="511"/>
         <source>Text: &lt;b&gt;{}&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Teksto: &lt;b&gt;{}&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="516"/>
         <source>Character: &lt;b&gt;{}&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Rolulo: &lt;b&gt;{}&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="519"/>
         <source>Plot: &lt;b&gt;{}&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Intrigo: &lt;b&gt;{}&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="522"/>
         <source>World: &lt;b&gt;{name}&lt;/b&gt;{path}</source>
-        <translation type="unfinished"></translation>
+        <translation>Monto: &lt;b&gt;{name}&lt;/b&gt;{path}</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="596"/>
         <source>Referenced in:</source>
-        <translation type="unfinished"></translation>
+        <translation>Referencita en:</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="212"/>
         <source>Motivation</source>
-        <translation type="unfinished"></translation>
+        <translation>Instigo</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="213"/>
         <source>Goal</source>
-        <translation type="unfinished"></translation>
+        <translation>Celo</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="215"/>
         <source>Epiphany</source>
-        <translation type="unfinished"></translation>
+        <translation>Ekscio</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="216"/>
         <source>Short summary</source>
-        <translation type="unfinished"></translation>
+        <translation>Mallonga resumo</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="217"/>
         <source>Longer summary</source>
-        <translation type="unfinished"></translation>
+        <translation>Longa resumo</translation>
     </message>
 </context>
 <context>
@@ -3718,7 +3718,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/revisions_ui.ui" line="107"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Opcioj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="259"/>
@@ -3743,7 +3743,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="60"/>
         <source>Show spaces</source>
-        <translation type="unfinished"></translation>
+        <translation>Montri spacetojn</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="66"/>
@@ -3753,42 +3753,42 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="110"/>
         <source>{} years ago</source>
-        <translation type="unfinished"></translation>
+        <translation>antaŭ {} jaroj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="112"/>
         <source>{} months ago</source>
-        <translation type="unfinished"></translation>
+        <translation>antaŭ {} monatoj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="114"/>
         <source>{} days ago</source>
-        <translation type="unfinished"></translation>
+        <translation>antaŭ {} tagoj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="116"/>
         <source>1 day ago</source>
-        <translation type="unfinished"></translation>
+        <translation>antaŭ 1 tago</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="118"/>
         <source>{} hours ago</source>
-        <translation type="unfinished"></translation>
+        <translation>antaŭ {} horoj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="120"/>
         <source>{} minutes ago</source>
-        <translation type="unfinished"></translation>
+        <translation>antaŭ {} minutoj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="122"/>
         <source>{} seconds ago</source>
-        <translation type="unfinished"></translation>
+        <translation>antaŭ {} sekundoj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="183"/>
         <source>Line {}:</source>
-        <translation type="unfinished"></translation>
+        <translation>Linio {}:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="263"/>
@@ -3806,57 +3806,57 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/search_ui.ui" line="46"/>
         <source>Search for...</source>
-        <translation type="unfinished"></translation>
+        <translation>Serĉi…</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="43"/>
         <source>Search in:</source>
-        <translation type="unfinished"></translation>
+        <translation>Serĉi en:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="47"/>
         <source>All</source>
-        <translation type="unfinished"></translation>
+        <translation>Ĉio</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="48"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>Titolo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="49"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation>Teksto</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="50"/>
         <source>Summary</source>
-        <translation type="unfinished"></translation>
+        <translation>Resumo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="51"/>
         <source>Notes</source>
-        <translation type="unfinished"></translation>
+        <translation>Notoj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="52"/>
         <source>POV</source>
-        <translation type="unfinished"></translation>
+        <translation>Perspektivo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="53"/>
         <source>Status</source>
-        <translation type="unfinished"></translation>
+        <translation>Stato</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="54"/>
         <source>Label</source>
-        <translation type="unfinished"></translation>
+        <translation>Etikedo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="64"/>
         <source>Options:</source>
-        <translation type="unfinished"></translation>
+        <translation>Opcioj:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="68"/>
@@ -3869,12 +3869,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="649"/>
         <source>New status</source>
-        <translation type="unfinished"></translation>
+        <translation>Nova stato</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="670"/>
         <source>New label</source>
-        <translation type="unfinished"></translation>
+        <translation>Nova etikedo</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="706"/>
@@ -3889,22 +3889,22 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="748"/>
         <source> (read-only)</source>
-        <translation type="unfinished"></translation>
+        <translation> (nurlega)</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="509"/>
         <source>Open Image</source>
-        <translation type="unfinished"></translation>
+        <translation>Malfermi bildon</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="509"/>
         <source>Image files (*.jpg; *.jpeg; *.png)</source>
-        <translation type="unfinished"></translation>
+        <translation>Bildodosieroj (*.jpg; *.jpeg; *.png)</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="525"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Eraro</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="522"/>
@@ -4080,22 +4080,22 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/treeView.py" line="48"/>
         <source>Expand {}</source>
-        <translation type="unfinished"></translation>
+        <translation>Malkaŝi {}</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/treeView.py" line="52"/>
         <source>Collapse {}</source>
-        <translation type="unfinished"></translation>
+        <translation>Kaŝi {}</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/treeView.py" line="59"/>
         <source>Expand All</source>
-        <translation type="unfinished"></translation>
+        <translation>Malkaŝi ĉion</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/treeView.py" line="63"/>
         <source>Collapse All</source>
-        <translation type="unfinished"></translation>
+        <translation>Kaŝi ĉion</translation>
     </message>
 </context>
 <context>
@@ -4108,52 +4108,52 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/welcome_ui.ui" line="50"/>
         <source>1</source>
-        <translation type="unfinished"></translation>
+        <translation>1</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome_ui.ui" line="55"/>
         <source>Templates</source>
-        <translation type="unfinished"></translation>
+        <translation>Ŝablonoj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome_ui.ui" line="86"/>
         <source>Empty</source>
-        <translation type="unfinished"></translation>
+        <translation>Malplena</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="224"/>
         <source>Novel</source>
-        <translation type="unfinished"></translation>
+        <translation>Romano</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="229"/>
         <source>Novella</source>
-        <translation type="unfinished"></translation>
+        <translation>Romaneto</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="234"/>
         <source>Short Story</source>
-        <translation type="unfinished"></translation>
+        <translation>Novelo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="246"/>
         <source>Research paper</source>
-        <translation type="unfinished"></translation>
+        <translation>Scienca artikolo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="417"/>
         <source>Demo projects</source>
-        <translation type="unfinished"></translation>
+        <translation>Ekzemplaj projektoj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome_ui.ui" line="177"/>
         <source>Add level</source>
-        <translation type="unfinished"></translation>
+        <translation>Aldoni nivelon</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome_ui.ui" line="190"/>
         <source>Add word count</source>
-        <translation type="unfinished"></translation>
+        <translation>Enmeti nombron de vortoj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome_ui.ui" line="213"/>
@@ -4163,7 +4163,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/welcome_ui.ui" line="238"/>
         <source>Open...</source>
-        <translation type="unfinished"></translation>
+        <translation>Malfermi…</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome_ui.ui" line="248"/>
@@ -4173,42 +4173,42 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/welcome_ui.ui" line="258"/>
         <source>Create</source>
-        <translation type="unfinished"></translation>
+        <translation>Krei</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="157"/>
         <source>Open project</source>
-        <translation type="unfinished"></translation>
+        <translation>Malfermi projekton</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="157"/>
         <source>Manuskript project (*.msk);;All files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Manuskript-projekto (*.msk);;Ĉiuj dosieroj (*)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="171"/>
         <source>Save project as...</source>
-        <translation type="unfinished"></translation>
+        <translation>Konservi projekton kiel…</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="195"/>
         <source>Manuskript project (*.msk)</source>
-        <translation type="unfinished"></translation>
+        <translation>Manuskript-projekto (*.msk)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="187"/>
         <source>Manuskript</source>
-        <translation type="unfinished"></translation>
+        <translation>Manuskript</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="195"/>
         <source>Create New Project</source>
-        <translation type="unfinished"></translation>
+        <translation>Krei novan projekton</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="207"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>Averto</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="207"/>
@@ -4218,37 +4218,37 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="223"/>
         <source>Empty fiction</source>
-        <translation type="unfinished"></translation>
+        <translation>Malplena fikcio</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="455"/>
         <source>Chapter</source>
-        <translation type="unfinished"></translation>
+        <translation>Ĉapitro</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="456"/>
         <source>Scene</source>
-        <translation type="unfinished"></translation>
+        <translation>Sceno</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="238"/>
         <source>Trilogy</source>
-        <translation type="unfinished"></translation>
+        <translation>Trilogio</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="238"/>
         <source>Book</source>
-        <translation type="unfinished"></translation>
+        <translation>Libro</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="246"/>
         <source>Section</source>
-        <translation type="unfinished"></translation>
+        <translation>Sekcio</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="245"/>
         <source>Empty non-fiction</source>
-        <translation type="unfinished"></translation>
+        <translation>Malplena nefikcio</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="307"/>
@@ -4263,62 +4263,62 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="334"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation>Teksto</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="337"/>
         <source>Something</source>
-        <translation type="unfinished"></translation>
+        <translation>Io</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="383"/>
         <source>&lt;b&gt;Total:&lt;/b&gt; {} words (~ {} pages)</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Entute:&lt;/b&gt; {} vortoj (~ {} paĝoj)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="404"/>
         <source>Fiction</source>
-        <translation type="unfinished"></translation>
+        <translation>Fikcio</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="410"/>
         <source>Non-fiction</source>
-        <translation type="unfinished"></translation>
+        <translation>Nefikcio</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="453"/>
         <source>Idea</source>
-        <translation type="unfinished"></translation>
+        <translation>Ideo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="454"/>
         <source>Note</source>
-        <translation type="unfinished"></translation>
+        <translation>Noto</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="457"/>
         <source>Research</source>
-        <translation type="unfinished"></translation>
+        <translation>Informokolektado</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="465"/>
         <source>TODO</source>
-        <translation type="unfinished"></translation>
+        <translation>FARENDA</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="466"/>
         <source>First draft</source>
-        <translation type="unfinished"></translation>
+        <translation>Unua malneto</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="467"/>
         <source>Second draft</source>
-        <translation type="unfinished"></translation>
+        <translation>Dua malneto</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="468"/>
         <source>Final</source>
-        <translation type="unfinished"></translation>
+        <translation>Neto</translation>
     </message>
 </context>
 <context>
@@ -4326,147 +4326,147 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="134"/>
         <source>New item</source>
-        <translation type="unfinished"></translation>
+        <translation>Nova ero</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="246"/>
         <source>Fantasy world building</source>
-        <translation type="unfinished"></translation>
+        <translation>Konstruado de fantasta mondo</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="246"/>
         <source>Physical</source>
-        <translation type="unfinished"></translation>
+        <translation>Fizika</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="246"/>
         <source>Climate</source>
-        <translation type="unfinished"></translation>
+        <translation>Klimato</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="246"/>
         <source>Topography</source>
-        <translation type="unfinished"></translation>
+        <translation>Topografio</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="246"/>
         <source>Astronomy</source>
-        <translation type="unfinished"></translation>
+        <translation>Astronomio</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="246"/>
         <source>Wild life</source>
-        <translation type="unfinished"></translation>
+        <translation>Faŭno</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="246"/>
         <source>Flora</source>
-        <translation type="unfinished"></translation>
+        <translation>Flaŭro</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="246"/>
         <source>History</source>
-        <translation type="unfinished"></translation>
+        <translation>Historio</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="246"/>
         <source>Races</source>
-        <translation type="unfinished"></translation>
+        <translation>Rasoj</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="246"/>
         <source>Diseases</source>
-        <translation type="unfinished"></translation>
+        <translation>Malsanoj</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Cultural</source>
-        <translation type="unfinished"></translation>
+        <translation>Kultura</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Customs</source>
-        <translation type="unfinished"></translation>
+        <translation>Kutimoj</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Food</source>
-        <translation type="unfinished"></translation>
+        <translation>Manĝo</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Languages</source>
-        <translation type="unfinished"></translation>
+        <translation>Lingvoj</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Education</source>
-        <translation type="unfinished"></translation>
+        <translation>Eduko</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Dresses</source>
-        <translation type="unfinished"></translation>
+        <translation>Vesto</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Science</source>
-        <translation type="unfinished"></translation>
+        <translation>Scienco</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Calendar</source>
-        <translation type="unfinished"></translation>
+        <translation>Kalendaro</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Bodily language</source>
-        <translation type="unfinished"></translation>
+        <translation>Korpolingvo</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Ethics</source>
-        <translation type="unfinished"></translation>
+        <translation>Etiko</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Religion</source>
-        <translation type="unfinished"></translation>
+        <translation>Religio</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Government</source>
-        <translation type="unfinished"></translation>
+        <translation>Registaro</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Politics</source>
-        <translation type="unfinished"></translation>
+        <translation>Politiko</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Gender roles</source>
-        <translation type="unfinished"></translation>
+        <translation>Seksroloj</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Music and arts</source>
-        <translation type="unfinished"></translation>
+        <translation>Muziko kaj artoj</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Architecture</source>
-        <translation type="unfinished"></translation>
+        <translation>Arkitekturo</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Military</source>
-        <translation type="unfinished"></translation>
+        <translation>Milito</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Technology</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekniko</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
@@ -4476,62 +4476,62 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Demography</source>
-        <translation type="unfinished"></translation>
+        <translation>Demografio</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Transportation</source>
-        <translation type="unfinished"></translation>
+        <translation>Transporto</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Medicine</source>
-        <translation type="unfinished"></translation>
+        <translation>Medicino</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="280"/>
         <source>Magic system</source>
-        <translation type="unfinished"></translation>
+        <translation>Magisistemo</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="280"/>
         <source>Rules</source>
-        <translation type="unfinished"></translation>
+        <translation>Reguloj</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="280"/>
         <source>Organization</source>
-        <translation type="unfinished"></translation>
+        <translation>Organizo</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="280"/>
         <source>Magical objects</source>
-        <translation type="unfinished"></translation>
+        <translation>Magiaĵoj</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="280"/>
         <source>Magical places</source>
-        <translation type="unfinished"></translation>
+        <translation>Magiejoj</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="280"/>
         <source>Magical races</source>
-        <translation type="unfinished"></translation>
+        <translation>Magiuloj</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="287"/>
         <source>Important places</source>
-        <translation type="unfinished"></translation>
+        <translation>Gravaj lokoj</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="288"/>
         <source>Important objects</source>
-        <translation type="unfinished"></translation>
+        <translation>Gravaj objektoj</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="246"/>
         <source>Natural resources</source>
-        <translation type="unfinished"></translation>
+        <translation>Resursoj</translation>
     </message>
 </context>
 </TS>
