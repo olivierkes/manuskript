@@ -308,7 +308,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkComboBox">
+                      <object class="GtkComboBox" id="general_language">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="model">languages_store</property>
@@ -359,7 +359,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkSpinButton">
+                      <object class="GtkSpinButton" id="general_font_size">
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <property name="input-purpose">number</property>
@@ -394,7 +394,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                 <property name="can-focus">True</property>
                 <property name="title">Automatic loading</property>
                 <child>
-                  <object class="GtkCheckButton">
+                  <object class="GtkCheckButton" id="automatic_load">
                     <property name="label" translatable="yes">Automatically load last project on startup</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
@@ -434,7 +434,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                     <property name="margin-bottom">12</property>
                     <property name="spacing">12</property>
                     <child>
-                      <object class="GtkCheckButton">
+                      <object class="GtkCheckButton" id="auto_save">
                         <property name="label" translatable="yes">Automatically save every</property>
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
@@ -448,7 +448,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkSpinButton">
+                      <object class="GtkSpinButton" id="auto_save_delay">
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <property name="text" translatable="yes">0</property>
@@ -494,7 +494,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                     <property name="margin-bottom">12</property>
                     <property name="spacing">12</property>
                     <child>
-                      <object class="GtkCheckButton">
+                      <object class="GtkCheckButton" id="auto_save_nochanges">
                         <property name="label" translatable="yes">If no changes during</property>
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
@@ -508,7 +508,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkSpinButton">
+                      <object class="GtkSpinButton" id="auto_save_nochanges_delay">
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <property name="text" translatable="yes">0</property>
@@ -544,7 +544,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                 <property name="can-focus">True</property>
                 <property name="title">Save on closure</property>
                 <child>
-                  <object class="GtkCheckButton">
+                  <object class="GtkCheckButton" id="save_on_quit">
                     <property name="label" translatable="yes">Save on project close</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
@@ -564,7 +564,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                 <property name="can-focus">True</property>
                 <property name="title">Single file mode</property>
                 <child>
-                  <object class="GtkCheckButton">
+                  <object class="GtkCheckButton" id="save_to_zip">
                     <property name="label" translatable="yes">Save to one single file</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
@@ -603,7 +603,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                 <property name="can-focus">True</property>
                 <property name="title">Keep revisions</property>
                 <child>
-                  <object class="GtkCheckButton">
+                  <object class="GtkCheckButton" id="revisions_keep">
                     <property name="label" translatable="yes">Keep revisions</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
@@ -623,7 +623,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                 <property name="can-focus">True</property>
                 <property name="title">Smart remove</property>
                 <child>
-                  <object class="GtkCheckButton">
+                  <object class="GtkCheckButton" id="revisions_smartremove">
                     <property name="label" translatable="yes">Smart remove</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
@@ -2522,6 +2522,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                                 <property name="receives-default">False</property>
+                                <property name="font">Sans 12</property>
                               </object>
                               <packing>
                                 <property name="expand">True</property>

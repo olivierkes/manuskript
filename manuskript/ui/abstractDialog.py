@@ -28,13 +28,13 @@ class AbstractDialog:
         builder.add_from_file(self.builderTemplatePath)
 
         self.window = builder.get_object(self.builderObjectId)
-        self.window.connect("destroy", self.__destroyWindow)
+        self.window.connect("destroy", self._destroyWindow)
         self.window.set_transient_for(self.mainWindow.window)
         self.window.set_modal(True)
 
         self.initWindow(builder, self.window)
 
-    def __destroyWindow(self, window: Gtk.Widget):
+    def _destroyWindow(self, window: Gtk.Widget):
         self.window = None
 
     def show(self):

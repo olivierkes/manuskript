@@ -16,13 +16,25 @@ class Settings:
             Settings.loadDefaultSettings(self)
 
     def get(self, key: str):
-        return self.properties.get(key)
+        props = self.properties
+        path = key.split(".")
+
+        for part in path[:-1]:
+            props = props.get(part)
+
+        return props.get(path[-1:][0])
 
     def isEnabled(self, key: str) -> bool:
         return self.properties.get(key, False) is True
 
     def set(self, key: str, value):
-        self.properties[key] = value
+        props = self.properties
+        path = key.split(".")
+
+        for part in path[:-1]:
+            props = props.get(part)
+
+        props[path[-1:][0]] = value
 
     def __iter__(self):
         return self.properties.__iter__()

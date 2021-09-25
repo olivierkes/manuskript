@@ -73,6 +73,12 @@ class MainWindow:
         MainWindow.bindMenuItem(builder, "settings_menu_item", self.openSettings)
         MainWindow.bindMenuItem(builder, "about_menu_item", self.openAbout)
 
+    def getProject(self):
+        return self.project
+
+    def getSettings(self):
+        return self.getProject().settings
+
     def openSettings(self, menuItem: Gtk.MenuItem):
         self.settingsWindow.show()
 
