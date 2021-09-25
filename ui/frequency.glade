@@ -48,7 +48,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
     <property name="step-increment">1</property>
     <property name="page-increment">10</property>
   </object>
-  <object class="HdyWindow">
+  <object class="HdyWindow" id="frequency_window">
     <property name="can-focus">False</property>
     <child>
       <object class="GtkBox">
@@ -65,7 +65,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                 <property name="can-focus">False</property>
                 <property name="title" translatable="yes">Frequency analyzer</property>
                 <child>
-                  <object class="GtkButton">
+                  <object class="GtkButton" id="backward">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="receives-default">True</property>
@@ -81,7 +81,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                   </object>
                 </child>
                 <child>
-                  <object class="GtkButton">
+                  <object class="GtkButton" id="forward">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="receives-default">True</property>

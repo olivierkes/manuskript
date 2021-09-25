@@ -14,6 +14,7 @@ from manuskript.data import Project
 from manuskript.ui.views import *
 
 from manuskript.ui.aboutDialog import AboutDialog
+from manuskript.ui.frequencyWindow import FrequencyWindow
 from manuskript.ui.settingsWindow import SettingsWindow
 
 
@@ -68,9 +69,11 @@ class MainWindow:
         self.editorView = MainWindow.packViewIntoSlot(builder, "editor_slot", EditorView)
 
         self.aboutDialog = AboutDialog(self)
+        self.frequencyWindow = FrequencyWindow(self)
         self.settingsWindow = SettingsWindow(self)
 
         MainWindow.bindMenuItem(builder, "settings_menu_item", self.openSettings)
+        MainWindow.bindMenuItem(builder, "frequency_menu_item", self.openFrequency)
         MainWindow.bindMenuItem(builder, "about_menu_item", self.openAbout)
 
     def getProject(self):
@@ -81,6 +84,9 @@ class MainWindow:
 
     def openSettings(self, menuItem: Gtk.MenuItem):
         self.settingsWindow.show()
+
+    def openFrequency(self, menuItem: Gtk.MenuItem):
+        self.frequencyWindow.show()
 
     def openAbout(self, menuItem: Gtk.MenuItem):
         self.aboutDialog.show()
