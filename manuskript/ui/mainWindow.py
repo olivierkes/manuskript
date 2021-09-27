@@ -6,15 +6,15 @@ import gi
 gi.require_version("Gtk", "3.0")
 gi.require_version("Handy", "1")
 
-from gi.repository import Gtk, Handy
+from gi.repository import GObject, Gtk, Handy
 
 Handy.init()
 
 from manuskript.data import Project
 from manuskript.ui.views import *
 
+from manuskript.ui.tools import *
 from manuskript.ui.aboutDialog import AboutDialog
-from manuskript.ui.frequencyWindow import FrequencyWindow
 from manuskript.ui.settingsWindow import SettingsWindow
 
 
@@ -60,6 +60,16 @@ class MainWindow:
         self.window = builder.get_object("main_window")
         self.window.connect("destroy", Gtk.main_quit)
 
+        self.headerBar = builder.get_object("header_bar")
+        self.leaflet = builder.get_object("leaflet")
+        self.viewSwitcherBar = builder.get_object("view_switcher_bar")
+
+        self.headerBar.set_subtitle(self.project.info.title)
+
+        self.leaflet.bind_property("folded", self.viewSwitcherBar, "reveal", GObject.BindingFlags.SYNC_CREATE)
+        self.leaflet.bind_property("folded", self.headerBar, "show-close-button", GObject.BindingFlags.SYNC_CREATE |
+                                   GObject.BindingFlags.INVERT_BOOLEAN)
+
         self.generalView = MainWindow.packViewIntoSlot(builder, "general_slot", GeneralView, self.project.info)
         self.summaryView = MainWindow.packViewIntoSlot(builder, "summary_slot", SummaryView, self.project.summary)
         self.charactersView = MainWindow.packViewIntoSlot(builder, "characters_slot", CharactersView, self.project.characters)
@@ -100,3 +110,6 @@ class MainWindow:
     def run(self):
         self.show()
         Gtk.main()
+
+    def _notifyProperty(self, window, property):
+        print(property.name)

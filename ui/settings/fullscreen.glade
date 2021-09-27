@@ -27,6 +27,14 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
   <!-- interface-name Manuskript -->
   <!-- interface-description Manuskript is an open-source tool for writers. -->
   <!-- interface-copyright 2015-2021 Olivier Keshavjee et al. -->
+  <object class="GtkListStore" id="fullscreen_theme_store">
+    <columns>
+      <!-- column-name name -->
+      <column type="gchararray"/>
+      <!-- column-name preview -->
+      <column type="GdkPixbuf"/>
+    </columns>
+  </object>
   <object class="HdyPreferencesPage" id="fullscreen_page">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
@@ -41,7 +49,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
           <object class="HdyPreferencesRow">
             <property name="visible">True</property>
             <property name="can-focus">True</property>
-            <property name="title">Edit labels</property>
+            <property name="title">Edit themes</property>
             <child>
               <object class="GtkBox">
                 <property name="visible">True</property>
@@ -178,13 +186,5 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
         </child>
       </object>
     </child>
-  </object>
-  <object class="GtkListStore" id="fullscreen_theme_store">
-    <columns>
-      <!-- column-name name -->
-      <column type="gchararray"/>
-      <!-- column-name preview -->
-      <column type="GdkPixbuf"/>
-    </columns>
   </object>
 </interface>

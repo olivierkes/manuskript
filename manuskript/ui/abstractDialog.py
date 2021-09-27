@@ -41,7 +41,7 @@ class AbstractDialog:
         if self.window is None:
             self.__initWindow()
 
-        self.window.show_all()
+        self.window.show()
 
     def hide(self):
         if self.window is None:
