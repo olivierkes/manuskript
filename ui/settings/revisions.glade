@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.38.2 
+
+Copyright (C) 2015-2021 Olivier Keshavjee et al.
+
+This file is part of Manuskript.
+
+Manuskript is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Manuskript is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<interface>
+  <requires lib="gtk+" version="3.24"/>
+  <requires lib="libhandy" version="0.0"/>
+  <!-- interface-local-resource-path ../ -->
+  <!-- interface-license-type gplv3 -->
+  <!-- interface-name Manuskript -->
+  <!-- interface-description Manuskript is an open-source tool for writers. -->
+  <!-- interface-copyright 2015-2021 Olivier Keshavjee et al. -->
+  <object class="HdyPreferencesPage" id="revisions_page">
+  	<property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="icon-name">emoji-recent-symbolic</property>
+    <property name="title" translatable="yes">Revisions</property>
+    <child>
+      <object class="HdyPreferencesGroup">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="description" translatable="yes">Revisions are a way to keep track of modifications. For each text item, it stores any changes you make to the main text, allowing you to see and restoring previous versions.</property>
+        <property name="title" translatable="yes">Revisions</property>
+        <child>
+          <object class="HdyPreferencesRow">
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="title">Keep revisions</property>
+            <child>
+              <object class="GtkCheckButton" id="revisions_keep">
+                <property name="label" translatable="yes">Keep revisions</property>
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="receives-default">False</property>
+                <property name="margin-start">12</property>
+                <property name="margin-end">12</property>
+                <property name="margin-top">12</property>
+                <property name="margin-bottom">12</property>
+                <property name="draw-indicator">True</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="HdyPreferencesRow">
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="title">Smart remove</property>
+            <child>
+              <object class="GtkCheckButton" id="revisions_smartremove">
+                <property name="label" translatable="yes">Smart remove</property>
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="receives-default">False</property>
+                <property name="margin-start">24</property>
+                <property name="margin-end">12</property>
+                <property name="margin-top">12</property>
+                <property name="margin-bottom">12</property>
+                <property name="draw-indicator">True</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="HdyPreferencesRow">
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="title">Revision delays</property>
+            <child>
+              <object class="GtkBox">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="orientation">vertical</property>
+                <property name="spacing">12</property>
+                <child>
+                  <object class="GtkFrame">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="margin-start">24</property>
+                    <property name="margin-end">12</property>
+                    <property name="margin-top">12</property>
+                    <property name="margin-bottom">12</property>
+                    <property name="label-xalign">0</property>
+                    <property name="shadow-type">none</property>
+                    <child>
+                      <object class="GtkBox">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="margin-start">12</property>
+                        <property name="margin-end">2</property>
+                        <property name="margin-top">12</property>
+                        <property name="margin-bottom">2</property>
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">8</property>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="halign">start</property>
+                            <property name="label" translatable="yes">Keep:</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkBox">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="halign">start</property>
+                            <property name="spacing">8</property>
+                            <child>
+                              <object class="GtkSpinButton">
+                                <property name="visible">True</property>
+                                <property name="can-focus">True</property>
+                                <property name="input-purpose">number</property>
+                                <property name="adjustment">revision_delay1</property>
+                                <property name="numeric">True</property>
+                                <property name="value">1</property>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <property name="label" translatable="yes">revisions per minute for the last 10 minutes</property>
+                                <property name="wrap">True</property>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkBox">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="halign">start</property>
+                            <property name="spacing">8</property>
+                            <child>
+                              <object class="GtkSpinButton">
+                                <property name="visible">True</property>
+                                <property name="can-focus">True</property>
+                                <property name="text" translatable="yes">1</property>
+                                <property name="input-purpose">number</property>
+                                <property name="adjustment">revision_delay2</property>
+                                <property name="numeric">True</property>
+                                <property name="value">1</property>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <property name="label" translatable="yes">revisions per 10 minutes for the last hour</property>
+                                <property name="wrap">True</property>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">2</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkBox">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="halign">start</property>
+                            <property name="spacing">8</property>
+                            <child>
+                              <object class="GtkSpinButton">
+                                <property name="visible">True</property>
+                                <property name="can-focus">True</property>
+                                <property name="text" translatable="yes">1</property>
+                                <property name="input-purpose">number</property>
+                                <property name="adjustment">revision_delay3</property>
+                                <property name="numeric">True</property>
+                                <property name="value">1</property>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <property name="label" translatable="yes">revisions per hour for the last day</property>
+                                <property name="wrap">True</property>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">3</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkBox">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="halign">start</property>
+                            <property name="spacing">8</property>
+                            <child>
+                              <object class="GtkSpinButton">
+                                <property name="visible">True</property>
+                                <property name="can-focus">True</property>
+                                <property name="text" translatable="yes">1</property>
+                                <property name="input-purpose">number</property>
+                                <property name="adjustment">revision_delay4</property>
+                                <property name="numeric">True</property>
+                                <property name="value">1</property>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <property name="label" translatable="yes">revisions per day for the last month</property>
+                                <property name="wrap">True</property>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">4</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkBox">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="halign">start</property>
+                            <property name="spacing">8</property>
+                            <child>
+                              <object class="GtkSpinButton">
+                                <property name="visible">True</property>
+                                <property name="can-focus">True</property>
+                                <property name="text" translatable="yes">1</property>
+                                <property name="input-purpose">number</property>
+                                <property name="adjustment">revision_delay5</property>
+                                <property name="numeric">True</property>
+                                <property name="value">1</property>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <property name="label" translatable="yes">revisions per week till the end of time</property>
+                                <property name="wrap">True</property>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">5</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <placeholder/>
+                        </child>
+                      </object>
+                    </child>
+                    <child type="label">
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="margin-end">12</property>
+                        <property name="label" translatable="yes">Smart remove allows you to keep only a certain number of revisions. It is strongly recommended to use it, lest you file will becomes full of thousands of insignificant changes.</property>
+                        <property name="wrap">True</property>
+                        <property name="xalign">0.10000000149011612</property>
+                      </object>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkBox">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="margin-start">12</property>
+                    <property name="margin-end">12</property>
+                    <property name="margin-top">12</property>
+                    <property name="margin-bottom">12</property>
+                    <property name="orientation">vertical</property>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">The Revisions feature has been at the source of many reported issues. In this version of Manuskript it has been turned off by default for new projects in order to provide the best experience.</property>
+                        <property name="wrap">True</property>
+                        <property name="xalign">0.10000000149011612</property>
+                        <attributes>
+                          <attribute name="weight" value="semibold"/>
+                        </attributes>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkFlowBox">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="margin-top">12</property>
+                        <property name="max-children-per-line">2</property>
+                        <child>
+                          <object class="GtkFlowBoxChild">
+                            <property name="visible">True</property>
+                            <property name="can-focus">True</property>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <property name="label" translatable="yes">Why aren't these issues fixed already?</property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkFlowBoxChild">
+                            <property name="visible">True</property>
+                            <property name="can-focus">True</property>
+                            <child>
+                              <object class="GtkLinkButton">
+                                <property name="label" translatable="yes">We need your help to make Manuskript better!</property>
+                                <property name="visible">True</property>
+                                <property name="can-focus">True</property>
+                                <property name="receives-default">True</property>
+                                <property name="uri">https://www.theologeek.ch/manuskript/contribute/</property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="pack-type">end</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkAdjustment" id="revision_delay1">
+    <property name="lower">1</property>
+    <property name="upper">999</property>
+    <property name="value">1</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="revision_delay2">
+    <property name="lower">1</property>
+    <property name="upper">999</property>
+    <property name="value">1</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="revision_delay3">
+    <property name="lower">1</property>
+    <property name="upper">999</property>
+    <property name="value">1</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="revision_delay4">
+    <property name="lower">1</property>
+    <property name="upper">999</property>
+    <property name="value">1</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="revision_delay5">
+    <property name="lower">1</property>
+    <property name="upper">999</property>
+    <property name="value">1</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">10</property>
+  </object>
+</interface>
