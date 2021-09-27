@@ -423,22 +423,6 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       </object>
                     </child>
                     <child>
-                      <object class="GtkMenuItem" id="labels_menu_item">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="label" translatable="yes">_Labels...</property>
-                        <property name="use-underline">True</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkMenuItem" id="status_menu_item">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="label" translatable="yes">_Status...</property>
-                        <property name="use-underline">True</property>
-                      </object>
-                    </child>
-                    <child>
                       <object class="GtkMenuItem" id="settings_menu_item">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
