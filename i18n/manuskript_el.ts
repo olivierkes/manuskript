@@ -6,7 +6,7 @@
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="18"/>
         <source>Basic HTML output using the Python module &apos;markdown&apos;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Βασική έξοδος HTML με τη χρήση της ενότητας &apos;markdown&apos; της Python.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="19"/>
@@ -164,7 +164,8 @@
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="15"/>
         <source>Simplest export to plain text. Allows you to use your own markup not understood
                   by Manuskript, for example &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Απλούστερη εξαγωγή σε απλό κείμενο. Σας επιτρέπει να χρησιμοποιήσετε τη δική σας σήμανση που δεν είναι κατανοητή
+  από το Manuskript, για παράδειγμα &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/__init__.py" line="20"/>
@@ -208,7 +209,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="135"/>
         <source>Convert to ePUB3</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετατροπή σε ePUB3</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="48"/>
@@ -227,42 +228,42 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="14"/>
         <source>Manage Exporters</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαχείριση εξαγωγέων</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="21"/>
         <source>Manuskript</source>
-        <translation type="unfinished"></translation>
+        <translation>Μάνουσκριπτ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="66"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Περιγραφή</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="100"/>
         <source>Offers export to</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσφέρει εξαγωγή σε</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="184"/>
         <source>Status</source>
-        <translation type="unfinished"></translation>
+        <translation>Καθεστώς</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="190"/>
         <source>Status:</source>
-        <translation type="unfinished"></translation>
+        <translation>Καθεστώς:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="210"/>
         <source>Version:</source>
-        <translation type="unfinished"></translation>
+        <translation>Έκδοση:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="233"/>
         <source>Path:</source>
-        <translation type="unfinished"></translation>
+        <translation>Μονοπάτι:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="258"/>
@@ -272,7 +273,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="273"/>
         <source>{HelpText}</source>
-        <translation type="unfinished"></translation>
+        <translation>{Κείμενο βοηθείας}</translation>
     </message>
 </context>
 <context>
@@ -280,32 +281,32 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="14"/>
         <source>Frequency Analyzer</source>
-        <translation type="unfinished"></translation>
+        <translation>Αναλυτής συχνότητας</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="24"/>
         <source>Word frequency</source>
-        <translation type="unfinished"></translation>
+        <translation>Συχνότητα λέξεων</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="37"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Ρυθμίσεις</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="49"/>
         <source>Minimum size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ελάχιστο μέγεθος:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="63"/>
         <source>Exclude words (comma separated):</source>
-        <translation type="unfinished"></translation>
+        <translation>Αποκλείστε λέξεις (διαχωρισμένες με κόμμα):</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="156"/>
         <source>Analyze</source>
-        <translation type="unfinished"></translation>
+        <translation>Ανάλυση</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="107"/>
@@ -379,7 +380,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/importer/opmlImporter.py" line="37"/>
         <source>File open failed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Το άνοιγμα του αρχείου απέτυχε.</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/opmlImporter.py" line="65"/>
@@ -389,7 +390,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="58"/>
         <source>Pandoc import</source>
-        <translation type="unfinished"></translation>
+        <translation>Εισαγωγή Pandoc</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="61"/>
@@ -4304,22 +4305,22 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="465"/>
         <source>TODO</source>
-        <translation type="unfinished"></translation>
+        <translation>ΝΑ ΚΑΝΩ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="466"/>
         <source>First draft</source>
-        <translation type="unfinished"></translation>
+        <translation>Πρώτο προσχέδιο</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="467"/>
         <source>Second draft</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεύτερο προσχέδιο</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="468"/>
         <source>Final</source>
-        <translation type="unfinished"></translation>
+        <translation>Τελικό</translation>
     </message>
 </context>
 <context>
@@ -4327,12 +4328,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="134"/>
         <source>New item</source>
-        <translation type="unfinished"></translation>
+        <translation>Νέο στοιχείο</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="246"/>
         <source>Fantasy world building</source>
-        <translation type="unfinished"></translation>
+        <translation>Χτίσιμο κόσμου φαντασίας</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="246"/>
@@ -4467,67 +4468,67 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Technology</source>
-        <translation type="unfinished"></translation>
+        <translation>Τεχνολογία</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Courtship</source>
-        <translation type="unfinished"></translation>
+        <translation>Φλερτ</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Demography</source>
-        <translation type="unfinished"></translation>
+        <translation>Δημογραφία</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Transportation</source>
-        <translation type="unfinished"></translation>
+        <translation>Μέσα Μεταφοράς</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="257"/>
         <source>Medicine</source>
-        <translation type="unfinished"></translation>
+        <translation>Ιατρική</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="280"/>
         <source>Magic system</source>
-        <translation type="unfinished"></translation>
+        <translation>Μαγικό σύστημα</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="280"/>
         <source>Rules</source>
-        <translation type="unfinished"></translation>
+        <translation>Κανονισμοί</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="280"/>
         <source>Organization</source>
-        <translation type="unfinished"></translation>
+        <translation>Οργανισμός</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="280"/>
         <source>Magical objects</source>
-        <translation type="unfinished"></translation>
+        <translation>Μαγικά αντικείμενα</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="280"/>
         <source>Magical places</source>
-        <translation type="unfinished"></translation>
+        <translation>Μαγικά μέρη</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="280"/>
         <source>Magical races</source>
-        <translation type="unfinished"></translation>
+        <translation>Μαγικοί αγώνες</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="287"/>
         <source>Important places</source>
-        <translation type="unfinished"></translation>
+        <translation>Σημαντικά μέρη</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="288"/>
         <source>Important objects</source>
-        <translation type="unfinished"></translation>
+        <translation>Σημαντικά αντικείμενα</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="246"/>

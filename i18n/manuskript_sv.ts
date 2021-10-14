@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="2.0" language="sv" sourcelanguage="en">
+<!DOCTYPE TS>
+<TS version="2.0" language="sv" sourcelanguage="en">
 <context>
     <name>Export</name>
     <message>
@@ -53,7 +54,7 @@
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="18"/>
         <source>Simplest export to plain text. Allows you to use your own markup not understood
                   by Manuskript, for example &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</source>
-        <translation type="unfinished">Enkel export till ren text. Låter dig använda egna markup-format som annars
+        <translation>Enkel export till ren text. Låter dig använda egna markup-format som annars
                   inte förstås av Manuskript, t.ex. &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</translation>
     </message>
     <message>
@@ -67,9 +68,9 @@
     formats.&lt;/p&gt;
     &lt;p&gt;Website: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
     </source>
-        <translation type="unfinished">&lt;p&gt;Universellt konverteringsverktyg för dokument. Kan användas för att konvertera markdown till många olika
+        <translation>&lt;p&gt;Universellt konverteringsverktyg för dokument. Kan användas för att konvertera markdown till många olika
     format.&lt;/p&gt;
-    &lt;p&gt;Websida: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;Hemsida: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
     </translation>
     </message>
     <message>
@@ -101,8 +102,8 @@
         <location filename="../manuskript/exporter/pandoc/PDF.py" line="19"/>
         <source>a valid LaTeX installation. Pandoc recommendations can be found on:
                      &lt;a href=&quot;https://pandoc.org/installing.html&quot;&gt;pandoc.org/installing.html&lt;/a&gt;. If you want Unicode support, you need XeLaTeX.</source>
-        <translation type="unfinished">en giltig LaTex-installation. Se vad pandoc rekommenderar på:
-                     &lt;a href=&quot;http://pandoc.org/installing.html&quot;&gt;http://pandoc.org/installing.html&lt;/a&gt;. Vill du ha stöd för unicode behöver du xelatex.</translation>
+        <translation>en giltig LaTex-installation. Pandoc-rekommendationer kan hittas här:
+                     &lt;a href=&quot;http://pandoc.org/installing.html&quot;&gt;pandoc.org/installing.html&lt;/a&gt;. Vill du ha stöd för Unicode så behöver du XeLaTeX.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/plainText.py" line="10"/>
@@ -227,7 +228,7 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="71"/>
-        <source>Choose output file&#xe2;&#x80;&#xa6;</source>
+        <source>Choose output fileâ¦</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2749,12 +2750,12 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="788"/>
-        <source>Replace ... with &#xe2;&#x80;&#xa6;</source>
+        <source>Replace ... with â¦</source>
         <translation>Ersätt ... med â¦</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="795"/>
-        <source>Replace --- with &#xe2;&#x80;&#x94;</source>
+        <source>Replace --- with â</source>
         <translation>Ersätt --- med —</translation>
     </message>
     <message>
