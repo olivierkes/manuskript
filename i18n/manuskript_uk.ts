@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="uk" sourcelanguage="">
+<TS version="2.1" language="uk">
 <context>
     <name>Export</name>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="18"/>
         <source>Basic HTML output using the Python module &apos;markdown&apos;.</source>
-        <translation type="unfinished">Звичайний вивід HTML з уживанням модуля Python &apos;markdown&apos;.</translation>
+        <translation type="unfinished">Звичайний вивід HTML з уживанням модуля Python 'markdown'.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="19"/>
         <source>Python module &apos;markdown&apos;.</source>
-        <translation type="unfinished">Модуль Python &apos;markdown&apos;.</translation>
+        <translation type="unfinished">Модуль Python 'markdown'.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="54"/>
@@ -101,7 +101,7 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="124"/>
         <source>Use &lt;q&gt; tags for quotes in HTML</source>
-        <translation>Використувати тег &lt;p&gt; для цитувань у HTML</translation>
+        <translation>Використувати тег &amp;lt;p&amp;gt; для цитувань у HTML</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="131"/>
@@ -160,7 +160,7 @@
         <source>Simplest export to plain text. Allows you to use your own markup not understood
                   by Manuskript, for example &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</source>
         <translation type="unfinished">Найпростіший експорт у звичайний текст. Дозволяє використувати власні мови розмітки, що їх не підтримує
-                  manuskript, наприклад &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</translation>
+                  manuskript, наприклад &amp;lt;a href='www.fountain.io'&amp;gt;Fountain&amp;lt;/a&amp;gt;.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/__init__.py" line="22"/>
@@ -168,9 +168,9 @@
     formats.&lt;/p&gt;
     &lt;p&gt;Website: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
     </source>
-        <translation type="unfinished">&lt;p&gt;Загальний конвертер документів. Ним можна конвертувати markdown у безліч інших
-    форматів.&lt;/p&gt;
-    &lt;p&gt;Сторінка: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
+        <translation type="unfinished">&amp;lt;p&amp;gt;Загальний конвертер документів. Ним можна конвертувати markdown у безліч інших
+    форматів.&amp;lt;/p&amp;gt;
+    &amp;lt;p&amp;gt;Сторінка: &amp;lt;a href=&amp;quot;http://www.pandoc.org&amp;quot;&amp;gt;http://pandoc.org/&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;
     </translation>
     </message>
     <message>
@@ -178,7 +178,7 @@
         <source>a valid LaTeX installation. Pandoc recommendations can be found on:
                      &lt;a href=&quot;https://pandoc.org/installing.html&quot;&gt;pandoc.org/installing.html&lt;/a&gt;. If you want Unicode support, you need XeLaTeX.</source>
         <translation type="unfinished">встановлений робочий дистрибутив LaTeX. Перевірте рекомендації pandoc на:
-                     &lt;a href=&quot;http://pandoc.org/installing.html&quot;&gt;http://pandoc.org/installing.html&lt;/a&gt;. Якщо ви потребуєте підтримки unicode, оберіть xelatex.</translation>
+                     &amp;lt;a href=&amp;quot;http://pandoc.org/installing.html&amp;quot;&amp;gt;http://pandoc.org/installing.html&amp;lt;/a&amp;gt;. Якщо ви потребуєте підтримки unicode, оберіть xelatex.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/plainText.py" line="10"/>
@@ -228,7 +228,7 @@ Use that if you get YAML related error.</source>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="71"/>
-        <source>Choose output fileâ¦</source>
+        <source>Choose output file&#xe2;&#x80;&#xa6;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -345,9 +345,9 @@ Use that if you get YAML related error.</source>
         <source>&lt;b&gt;Info:&lt;/b&gt; A very simple
                         parser that will go through a markdown document and
                         create items for each titles.&lt;br/&gt;&amp;nbsp;</source>
-        <translation>&lt;b&gt;Інфо:&lt;/b&gt; Дуже простий
+        <translation>&amp;lt;b&amp;gt;Інфо:&amp;lt;/b&amp;gt; Дуже простий
                         аналізатор, який пройде документом markdown і
-                        створить елементи на кожний заголовок.&lt;br/&gt;&amp;nbsp;</translation>
+                        створить елементи на кожний заголовок.&amp;lt;br/&amp;gt;&amp;nbsp;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="96"/>
@@ -361,11 +361,11 @@ Use that if you get YAML related error.</source>
                         plaintext documents within (you chose which ones by extension)
                         are added as scene.&lt;/p&gt;
                         &lt;p&gt;Only text files are supported (not images, binary or others).&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;Інфо:&lt;/b&gt; Імпортує
+        <translation>&amp;lt;p&amp;gt;&amp;lt;b&amp;gt;Інфо:&amp;lt;/b&amp;gt; Імпортує
                         структуру тек цілком. Теки буде додано як теки, а
                         внутрішні документи звичайного тексту (ви обираєте, які саме за типом файлу)
-                        як сцени.&lt;/p&gt;
-                        &lt;p&gt;Підтримувано лише текстові файли, а не зображення, двійкові тощо.&lt;/p&gt;</translation>
+                        як сцени.&amp;lt;/p&amp;gt;
+                        &amp;lt;p&amp;gt;Підтримувано лише текстові файли, а не зображення, двійкові тощо.&amp;lt;/p&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="107"/>
@@ -415,12 +415,12 @@ Use that if you get YAML related error.</source>
                         then it will be imported in manuskript. One or the other
                         might give better result depending on your document.
                         &lt;br/&gt;&amp;nbsp;</source>
-        <translation>&lt;b&gt;Info:&lt;/b&gt; Манускрипт може
-                        імпортувати з &lt;b&gt;markdown&lt;/b&gt; чи &lt;b&gt;OPML&lt;/b&gt;. Pandoc 
+        <translation>&amp;lt;b&amp;gt;Info:&amp;lt;/b&amp;gt; Манускрипт може
+                        імпортувати з &amp;lt;b&amp;gt;markdown&amp;lt;/b&amp;gt; чи &amp;lt;b&amp;gt;OPML&amp;lt;/b&amp;gt;. Pandoc 
                         конвертує ваш документ у будь-який з них (див. параметри), і
                         імпортує результат у Манускрипт. Один із двох
                         може дати кращий результат залежно від джерельного документу.
-                        &lt;br/&gt;&amp;nbsp;</translation>
+                        &amp;lt;br/&amp;gt;&amp;nbsp;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="68"/>
@@ -521,7 +521,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1656"/>
         <source>Name</source>
-        <translation>Ім&apos;я</translation>
+        <translation>Ім'я</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="277"/>
@@ -646,12 +646,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="920"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One sentence&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Переказ одним&lt;br/&gt;реченням&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&amp;lt;html&amp;gt;&amp;lt;head/&amp;gt;&amp;lt;body&amp;gt;&amp;lt;p align=&amp;quot;right&amp;quot;&amp;gt;Переказ одним&amp;lt;br/&amp;gt;реченням&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="930"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One paragraph&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Переказ одним&lt;br/&gt;абзацом&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&amp;lt;html&amp;gt;&amp;lt;head/&amp;gt;&amp;lt;body&amp;gt;&amp;lt;p align=&amp;quot;right&amp;quot;&amp;gt;Переказ одним&amp;lt;br/&amp;gt;абзацом&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1021"/>
@@ -1110,7 +1110,7 @@ Use that if you get YAML related error.</source>
         <source>Add plot step</source>
         <translation type="unfinished"></translation>
     </message>
-    <message encoding="UTF-8">
+    <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2546"/>
         <source>&amp;Import…</source>
         <translation type="unfinished"></translation>
@@ -1150,7 +1150,7 @@ Use that if you get YAML related error.</source>
         <source>Ctrl+V</source>
         <translation type="unfinished"></translation>
     </message>
-    <message encoding="UTF-8">
+    <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2594"/>
         <source>&amp;Split…</source>
         <translation type="unfinished"></translation>
@@ -2296,42 +2296,42 @@ Use that if you get YAML related error.</source>
 <context>
     <name>SpellAction</name>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="600"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="611"/>
         <source>Spelling Suggestions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="618"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="629"/>
         <source>&amp;Add to dictionary</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="671"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="682"/>
         <source>&amp;Remove from custom dictionary</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="527"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="538"/>
         <source>&amp;New Character</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="534"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="545"/>
         <source>&amp;New Plot Item</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="541"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="552"/>
         <source>&amp;New World Item</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="642"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="653"/>
         <source>&amp;Correction Suggestions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="651"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="662"/>
         <source>&amp;Correction Suggestion</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2438,7 +2438,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/characterModel.py" line="205"/>
         <source>Name</source>
-        <translation type="unfinished">Ім&apos;я</translation>
+        <translation type="unfinished">Ім'я</translation>
     </message>
     <message>
         <location filename="../manuskript/models/characterModel.py" line="207"/>
@@ -2821,12 +2821,12 @@ Use that if you get YAML related error.</source>
         <source>{}Level {} text</source>
         <translation type="unfinished"></translation>
     </message>
-    <message encoding="UTF-8">
+    <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="788"/>
         <source>Replace ... with …</source>
         <translation type="unfinished"></translation>
     </message>
-    <message encoding="UTF-8">
+    <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="795"/>
         <source>Replace --- with —</source>
         <translation type="unfinished"></translation>
@@ -3301,22 +3301,17 @@ Use that if you get YAML related error.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/outlineBasics.py" line="313"/>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="328"/>
         <source>About to remove</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/outlineBasics.py" line="313"/>
-        <source>&lt;p&gt;&lt;b&gt;You&apos;re about to delete {} item(s).&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Are you sure?&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../manuskript/ui/views/outlineBasics.py" line="421"/>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="434"/>
         <source>Select at least two items. Folders are ignored.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/outlineBasics.py" line="430"/>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="443"/>
         <source>All items must be on the same level (share the same parent).</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3355,6 +3350,16 @@ Use that if you get YAML related error.</source>
         <source>&amp;Delete</source>
         <translation type="unfinished">&amp;Вилучити</translation>
     </message>
+    <message>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="315"/>
+        <source>You&apos;re about to delete {} item(s).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="325"/>
+        <source>Are you sure?</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>outlineCharacterDelegate</name>
@@ -3382,12 +3387,12 @@ Use that if you get YAML related error.</source>
 <context>
     <name>outlineItem</name>
     <message>
-        <location filename="../manuskript/models/outlineItem.py" line="251"/>
+        <location filename="../manuskript/models/outlineItem.py" line="256"/>
         <source>{} words / {} ({})</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/models/outlineItem.py" line="256"/>
+        <location filename="../manuskript/models/outlineItem.py" line="261"/>
         <source>{} words</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3611,7 +3616,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/plotModel.py" line="144"/>
         <source>Name</source>
-        <translation type="unfinished">Ім&apos;я</translation>
+        <translation type="unfinished">Ім'я</translation>
     </message>
     <message>
         <location filename="../manuskript/models/plotModel.py" line="146"/>
@@ -4140,7 +4145,7 @@ Use that if you get YAML related error.</source>
 <context>
     <name>textEditView</name>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="313"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="324"/>
         <source>Various</source>
         <translation type="unfinished"></translation>
     </message>

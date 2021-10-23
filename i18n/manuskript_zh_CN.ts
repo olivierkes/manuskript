@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="zh" sourcelanguage="en">
+<TS version="2.1" language="zh" sourcelanguage="en">
 <context>
     <name>Export</name>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="18"/>
         <source>Basic HTML output using the Python module &apos;markdown&apos;.</source>
-        <translation>使用Python的&apos;markdown&apos;模块输出HTML。</translation>
+        <translation>使用Python的'markdown'模块输出HTML。</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="19"/>
         <source>Python module &apos;markdown&apos;.</source>
-        <translation>Python模块&apos;markdown&apos;。</translation>
+        <translation>Python模块'markdown'。</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="54"/>
@@ -106,7 +106,7 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="124"/>
         <source>Use &lt;q&gt; tags for quotes in HTML</source>
-        <translation>使用 &lt;q&gt; 标签来在 HTML 中表示引用</translation>
+        <translation>使用 &amp;lt;q&amp;gt; 标签来在 HTML 中表示引用</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="131"/>
@@ -165,7 +165,7 @@
         <source>Simplest export to plain text. Allows you to use your own markup not understood
                   by Manuskript, for example &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</source>
         <translation>简单导出到纯文本。你可以使用 Manuskript 中不识别的自定义
-标记，例如 &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;。</translation>
+标记，例如 &amp;lt;a href='www.fountain.io'&amp;gt;Fountain&amp;lt;/a&amp;gt;。</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/__init__.py" line="22"/>
@@ -173,8 +173,8 @@
     formats.&lt;/p&gt;
     &lt;p&gt;Website: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
     </source>
-        <translation>&lt;p&gt;一个通用的转换器，可以把 markdown 转为很多种其他的格式&lt;/p&gt;
-    &lt;p&gt;官网：&lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
+        <translation>&amp;lt;p&amp;gt;一个通用的转换器，可以把 markdown 转为很多种其他的格式&amp;lt;/p&amp;gt;
+    &amp;lt;p&amp;gt;官网：&amp;lt;a href=&amp;quot;http://www.pandoc.org&amp;quot;&amp;gt;http://pandoc.org/&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;
     </translation>
     </message>
     <message>
@@ -182,7 +182,7 @@
         <source>a valid LaTeX installation. Pandoc recommendations can be found on:
                      &lt;a href=&quot;https://pandoc.org/installing.html&quot;&gt;pandoc.org/installing.html&lt;/a&gt;. If you want Unicode support, you need XeLaTeX.</source>
         <translation>一个有效的 LaTeX 安装. Pandoc 推荐可以在以下找到：
-                     &lt;a href=&quot;https://pandoc.org/installing.html&quot;&gt;pandoc.org/installing.html&lt;/a&gt;. 如果你想要 Unicode 支持，你需要 XeLaTeX。</translation>
+                     &amp;lt;a href=&amp;quot;https://pandoc.org/installing.html&amp;quot;&amp;gt;pandoc.org/installing.html&amp;lt;/a&amp;gt;. 如果你想要 Unicode 支持，你需要 XeLaTeX。</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/plainText.py" line="10"/>
@@ -226,8 +226,8 @@ Use that if you get YAML related error.</source>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="71"/>
-        <source>Choose output fileâ¦</source>
-        <translation>选择导出文件地址</translation>
+        <source>Choose output file&#xe2;&#x80;&#xa6;</source>
+        <translation type="unfinished">选择导出文件地址</translation>
     </message>
 </context>
 <context>
@@ -343,9 +343,9 @@ Use that if you get YAML related error.</source>
         <source>&lt;b&gt;Info:&lt;/b&gt; A very simple
                         parser that will go through a markdown document and
                         create items for each titles.&lt;br/&gt;&amp;nbsp;</source>
-        <translation>&lt;b&gt;信息：&lt;/b&gt;一个非常简单的
+        <translation>&amp;lt;b&amp;gt;信息：&amp;lt;/b&amp;gt;一个非常简单的
                         遍历 Markdown 文本和为每个标题创建项目的
-                        语法分析器&lt;br/&gt;&amp;nbsp;</translation>
+                        语法分析器&amp;lt;br/&amp;gt;&amp;nbsp;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="96"/>
@@ -359,11 +359,11 @@ Use that if you get YAML related error.</source>
                         plaintext documents within (you chose which ones by extension)
                         are added as scene.&lt;/p&gt;
                         &lt;p&gt;Only text files are supported (not images, binary or others).&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;信息&lt;/b&gt; 导入为一个整体的
+        <translation>&amp;lt;p&amp;gt;&amp;lt;b&amp;gt;信息&amp;lt;/b&amp;gt; 导入为一个整体的
                         文档结构。文件夹被添加为文件夹，
                         内部的纯文本文档 (你可以通过拓展选择其中的几个)
-                        被添加为场景&lt;/p&gt;
-                        &lt;p&gt;仅支持文本文档 (不支持图片、二进制文件等其他格式)。&lt;/p&gt;</translation>
+                        被添加为场景&amp;lt;/p&amp;gt;
+                        &amp;lt;p&amp;gt;仅支持文本文档 (不支持图片、二进制文件等其他格式)。&amp;lt;/p&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="107"/>
@@ -413,12 +413,12 @@ Use that if you get YAML related error.</source>
                         then it will be imported in manuskript. One or the other
                         might give better result depending on your document.
                         &lt;br/&gt;&amp;nbsp;</source>
-        <translation>&lt;b&gt;信息&lt;/b&gt; Manuskript 能够
-                        从 &lt;b&gt;markdown&lt;/b&gt; 或者&lt;b&gt;OPML&lt;/b&gt;导入。Pandoc 将会
+        <translation>&amp;lt;b&amp;gt;信息&amp;lt;/b&amp;gt; Manuskript 能够
+                        从 &amp;lt;b&amp;gt;markdown&amp;lt;/b&amp;gt; 或者&amp;lt;b&amp;gt;OPML&amp;lt;/b&amp;gt;导入。Pandoc 将会
                         将你的文档转化为其中的一个 (见下方选项)，然后
                         再将其导入 Manuskript。两者中的一个
                         效果不同，这取决于你的文档。
-                        &lt;br/&gt;&amp;nbsp;</translation>
+                        &amp;lt;br/&amp;gt;&amp;nbsp;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="68"/>
@@ -644,12 +644,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="920"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One sentence&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;单句&lt;br/&gt;概述&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&amp;lt;html&amp;gt;&amp;lt;head/&amp;gt;&amp;lt;body&amp;gt;&amp;lt;p align=&amp;quot;right&amp;quot;&amp;gt;单句&amp;lt;br/&amp;gt;概述&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="930"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One paragraph&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;单段&lt;br/&gt;概述&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&amp;lt;html&amp;gt;&amp;lt;head/&amp;gt;&amp;lt;body&amp;gt;&amp;lt;p align=&amp;quot;right&amp;quot;&amp;gt;单段&amp;lt;br/&amp;gt;概述&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1021"/>
@@ -995,7 +995,7 @@ Use that if you get YAML related error.</source>
         <location filename="../manuskript/mainWindow.py" line="1362"/>
         <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous
                      evil wizard wasn&apos;t able to kill a baby?&apos; (Harry Potter)</source>
-        <translation>基本情况是形如&apos;如果...？&apos;的问题。例如：&apos;如果一个最危险的巫师没能成功杀死一个婴儿……？&apos;（哈利·波特）</translation>
+        <translation>基本情况是形如'如果...？'的问题。例如：'如果一个最危险的巫师没能成功杀死一个婴儿……？'（哈利·波特）</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1367"/>
@@ -1110,7 +1110,7 @@ Use that if you get YAML related error.</source>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2546"/>
-        <source>&amp;Importâ¦</source>
+        <source>&amp;Import&#xe2;&#x80;&#xa6;</source>
         <translation type="unfinished">导入（&amp;I）</translation>
     </message>
     <message>
@@ -1150,7 +1150,7 @@ Use that if you get YAML related error.</source>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2594"/>
-        <source>&amp;Splitâ¦</source>
+        <source>&amp;Split&#xe2;&#x80;&#xa6;</source>
         <translation type="unfinished">分割（&amp;S）</translation>
     </message>
     <message>
@@ -1672,7 +1672,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="472"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If you check this option, your project will be saved as one single file. Easier to copy or backup, but does not allow collaborative editing, or versioning.&lt;br/&gt;If this is unchecked, your project will be saved as a folder containing many small files.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;如果你勾选了这个选项，你的项目会被保存到单个文件中。这更易于复制与备份，但无法协作编辑或者进行版本控制。&lt;br/&gt;如果不勾选，你的项目会被保存为一个包含许多小文件的文件夹。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&amp;lt;html&amp;gt;&amp;lt;head/&amp;gt;&amp;lt;body&amp;gt;&amp;lt;p&amp;gt;如果你勾选了这个选项，你的项目会被保存到单个文件中。这更易于复制与备份，但无法协作编辑或者进行版本控制。&amp;lt;br/&amp;gt;如果不勾选，你的项目会被保存为一个包含许多小文件的文件夹。&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="478"/>
@@ -2262,7 +2262,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="821"/>
         <source>&lt;p&gt;&lt;b&gt;The Revisions feature has been at the source of many reported issues. In this version of Manuskript it has been turned off by default for new projects in order to provide the best experience.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Why aren&apos;t these issues fixed already? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;We need your help to make Manuskript better!&lt;/a&gt;&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;历史版本功能被报告存在许多问题。在这个版本的 Manuskript 中，当创建新项目时，它被默认关闭以提供最佳体验。&lt;/b&gt;&lt;/p&gt;&lt;p&gt;为什么这些问题还没有被修复？&lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;我们需要你的帮助来改善 Manuskript ！&lt;/a&gt;&lt;/p&gt;</translation>
+        <translation>&amp;lt;p&amp;gt;&amp;lt;b&amp;gt;历史版本功能被报告存在许多问题。在这个版本的 Manuskript 中，当创建新项目时，它被默认关闭以提供最佳体验。&amp;lt;/b&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;为什么这些问题还没有被修复？&amp;lt;a href=&amp;quot;https://www.theologeek.ch/manuskript/contribute/&amp;quot;&amp;gt;我们需要你的帮助来改善 Manuskript ！&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="211"/>
@@ -2294,42 +2294,42 @@ Use that if you get YAML related error.</source>
 <context>
     <name>SpellAction</name>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="600"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="611"/>
         <source>Spelling Suggestions</source>
         <translation>拼写建议</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="618"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="629"/>
         <source>&amp;Add to dictionary</source>
         <translation>加入字典（&amp;A）</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="671"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="682"/>
         <source>&amp;Remove from custom dictionary</source>
         <translation>从个人字典中删除（&amp;R）</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="527"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="538"/>
         <source>&amp;New Character</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="534"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="545"/>
         <source>&amp;New Plot Item</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="541"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="552"/>
         <source>&amp;New World Item</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="642"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="653"/>
         <source>&amp;Correction Suggestions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="651"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="662"/>
         <source>&amp;Correction Suggestion</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2672,7 +2672,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="142"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Filters what items will be included in the final export.&lt;br/&gt;&lt;span style=&quot; color:#773333;&quot;&gt;(Not fully implemented yet.)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;项目过滤器会被包括在最终导出中&lt;br/&gt;&lt;span style=&quot; color:#773333;&quot;&gt;(尚未完全应用。)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&amp;lt;html&amp;gt;&amp;lt;head/&amp;gt;&amp;lt;body&amp;gt;&amp;lt;p&amp;gt;项目过滤器会被包括在最终导出中&amp;lt;br/&amp;gt;&amp;lt;span style=&amp;quot; color:#773333;&amp;quot;&amp;gt;(尚未完全应用。)&amp;lt;/span&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="149"/>
@@ -2742,12 +2742,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="802"/>
         <source>Replace double quotes (&quot;) with:</source>
-        <translation>将双引号（&quot;）替换为：</translation>
+        <translation>将双引号（&amp;quot;）替换为：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="911"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>将单引号（&apos;）替换为：</translation>
+        <translation>将单引号（'）替换为：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1020"/>
@@ -2821,12 +2821,12 @@ Use that if you get YAML related error.</source>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="788"/>
-        <source>Replace ... with â¦</source>
+        <source>Replace ... with &#xe2;&#x80;&#xa6;</source>
         <translation type="unfinished">将 ... 替换为 …</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="795"/>
-        <source>Replace --- with â</source>
+        <source>Replace --- with &#xe2;&#x80;&#x94;</source>
         <translation type="unfinished">将 --- 替换为 —</translation>
     </message>
 </context>
@@ -2855,12 +2855,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="124"/>
         <source>&lt;b&gt;Status:&lt;/b&gt; uninstalled.</source>
-        <translation>&lt;b&gt;状态：&lt;/b&gt; 未安装。</translation>
+        <translation>&amp;lt;b&amp;gt;状态：&amp;lt;/b&amp;gt; 未安装。</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="126"/>
         <source>&lt;b&gt;Requires:&lt;/b&gt; </source>
-        <translation>&lt;b&gt;需要：&lt;/b&gt; </translation>
+        <translation>&amp;lt;b&amp;gt;需要：&amp;lt;/b&amp;gt; </translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="133"/>
@@ -3299,22 +3299,17 @@ Use that if you get YAML related error.</source>
         <translation>在新标签页打开 {}</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/outlineBasics.py" line="313"/>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="328"/>
         <source>About to remove</source>
         <translation>关于删除</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/outlineBasics.py" line="313"/>
-        <source>&lt;p&gt;&lt;b&gt;You&apos;re about to delete {} item(s).&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Are you sure?&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;你即将删除 {} 。&lt;/b&gt;&lt;/p&gt;&lt;p&gt;是否确认？&lt;/p&gt;</translation>
-    </message>
-    <message>
-        <location filename="../manuskript/ui/views/outlineBasics.py" line="421"/>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="434"/>
         <source>Select at least two items. Folders are ignored.</source>
         <translation>选择最后两项条目。忽略文件夹。</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/outlineBasics.py" line="430"/>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="443"/>
         <source>All items must be on the same level (share the same parent).</source>
         <translation>所有条目都需要同级（具有相同的父项）。</translation>
     </message>
@@ -3353,6 +3348,16 @@ Use that if you get YAML related error.</source>
         <source>&amp;Delete</source>
         <translation>删除（&amp;D）</translation>
     </message>
+    <message>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="315"/>
+        <source>You&apos;re about to delete {} item(s).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="325"/>
+        <source>Are you sure?</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>outlineCharacterDelegate</name>
@@ -3380,12 +3385,12 @@ Use that if you get YAML related error.</source>
 <context>
     <name>outlineItem</name>
     <message>
-        <location filename="../manuskript/models/outlineItem.py" line="251"/>
+        <location filename="../manuskript/models/outlineItem.py" line="256"/>
         <source>{} words / {} ({})</source>
         <translation>{} 字 / {} （{}）</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/outlineItem.py" line="256"/>
+        <location filename="../manuskript/models/outlineItem.py" line="261"/>
         <source>{} words</source>
         <translation>{} 字</translation>
     </message>
@@ -3821,32 +3826,32 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/references.py" line="498"/>
         <source>&lt;b&gt;Unknown reference:&lt;/b&gt; {}.</source>
-        <translation>&lt;b&gt;未知参考&lt;/b&gt; {}。</translation>
+        <translation>&amp;lt;b&amp;gt;未知参考&amp;lt;/b&amp;gt; {}。</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="506"/>
         <source>Folder: &lt;b&gt;{}&lt;/b&gt;</source>
-        <translation>文件夹：&lt;b&gt;{}&lt;/b&gt;</translation>
+        <translation>文件夹：&amp;lt;b&amp;gt;{}&amp;lt;/b&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="508"/>
         <source>Text: &lt;b&gt;{}&lt;/b&gt;</source>
-        <translation>文本：&lt;b&gt;{}&lt;/b&gt;</translation>
+        <translation>文本：&amp;lt;b&amp;gt;{}&amp;lt;/b&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="513"/>
         <source>Character: &lt;b&gt;{}&lt;/b&gt;</source>
-        <translation>角色：&lt;b&gt;{}&lt;/b&gt;</translation>
+        <translation>角色：&amp;lt;b&amp;gt;{}&amp;lt;/b&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="516"/>
         <source>Plot: &lt;b&gt;{}&lt;/b&gt;</source>
-        <translation>情节：&lt;b&gt;{}&lt;/b&gt;</translation>
+        <translation>情节：&amp;lt;b&amp;gt;{}&amp;lt;/b&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="519"/>
         <source>World: &lt;b&gt;{name}&lt;/b&gt;{path}</source>
-        <translation>世界：&lt;b&gt;{name}&lt;/b&gt;{path}</translation>
+        <translation>世界：&amp;lt;b&amp;gt;{name}&amp;lt;/b&amp;gt;{path}</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="592"/>
@@ -4138,7 +4143,7 @@ Use that if you get YAML related error.</source>
 <context>
     <name>textEditView</name>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="313"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="324"/>
         <source>Various</source>
         <translation>可变的</translation>
     </message>
@@ -4389,7 +4394,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="384"/>
         <source>&lt;b&gt;Total:&lt;/b&gt; {} words (~ {} pages)</source>
-        <translation type="unfinished">&lt;b&gt;总计：&lt;/b&gt; {} 字 (约 {} 页)</translation>
+        <translation type="unfinished">&amp;lt;b&amp;gt;总计：&amp;lt;/b&amp;gt; {} 字 (约 {} 页)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="405"/>

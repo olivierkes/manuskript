@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="sv" sourcelanguage="en">
+<TS version="2.1" language="sv" sourcelanguage="en">
 <context>
     <name>Export</name>
     <message>
@@ -11,12 +11,12 @@
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="18"/>
         <source>Basic HTML output using the Python module &apos;markdown&apos;.</source>
-        <translation type="unfinished">Grundläggande HTML-export via python-modulen &apos;markdown&apos;.</translation>
+        <translation type="unfinished">Grundläggande HTML-export via python-modulen 'markdown'.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="19"/>
         <source>Python module &apos;markdown&apos;.</source>
-        <translation type="unfinished">python-modulen &apos;markdown&apos;.</translation>
+        <translation type="unfinished">python-modulen 'markdown'.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="54"/>
@@ -55,7 +55,7 @@
         <source>Simplest export to plain text. Allows you to use your own markup not understood
                   by Manuskript, for example &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</source>
         <translation>Enkel export till ren text. Låter dig använda egna markup-format som annars
-                  inte förstås av Manuskript, t.ex. &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</translation>
+                  inte förstås av Manuskript, t.ex. &amp;lt;a href='www.fountain.io'&amp;gt;Fountain&amp;lt;/a&amp;gt;.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/HTML.py" line="13"/>
@@ -68,9 +68,9 @@
     formats.&lt;/p&gt;
     &lt;p&gt;Website: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
     </source>
-        <translation>&lt;p&gt;Universellt konverteringsverktyg för dokument. Kan användas för att konvertera markdown till många olika
-    format.&lt;/p&gt;
-    &lt;p&gt;Hemsida: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
+        <translation>&amp;lt;p&amp;gt;Universellt konverteringsverktyg för dokument. Kan användas för att konvertera markdown till många olika
+    format.&amp;lt;/p&amp;gt;
+    &amp;lt;p&amp;gt;Hemsida: &amp;lt;a href=&amp;quot;http://www.pandoc.org&amp;quot;&amp;gt;http://pandoc.org/&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;
     </translation>
     </message>
     <message>
@@ -103,7 +103,7 @@
         <source>a valid LaTeX installation. Pandoc recommendations can be found on:
                      &lt;a href=&quot;https://pandoc.org/installing.html&quot;&gt;pandoc.org/installing.html&lt;/a&gt;. If you want Unicode support, you need XeLaTeX.</source>
         <translation>en giltig LaTex-installation. Pandoc-rekommendationer kan hittas här:
-                     &lt;a href=&quot;http://pandoc.org/installing.html&quot;&gt;pandoc.org/installing.html&lt;/a&gt;. Vill du ha stöd för Unicode så behöver du XeLaTeX.</translation>
+                     &amp;lt;a href=&amp;quot;http://pandoc.org/installing.html&amp;quot;&amp;gt;pandoc.org/installing.html&amp;lt;/a&amp;gt;. Vill du ha stöd för Unicode så behöver du XeLaTeX.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/plainText.py" line="10"/>
@@ -180,7 +180,7 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="124"/>
         <source>Use &lt;q&gt; tags for quotes in HTML</source>
-        <translation>Använd &lt;q&gt;-taggar för citat i HTML</translation>
+        <translation>Använd &amp;lt;q&amp;gt;-taggar för citat i HTML</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="131"/>
@@ -228,7 +228,7 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="71"/>
-        <source>Choose output fileâ¦</source>
+        <source>Choose output file&#xe2;&#x80;&#xa6;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -345,9 +345,9 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
         <source>&lt;b&gt;Info:&lt;/b&gt; A very simple
                         parser that will go through a markdown document and
                         create items for each titles.&lt;br/&gt;&amp;nbsp;</source>
-        <translation>&lt;b&gt;Info:&lt;/b&gt; En väldigt enkel
+        <translation>&amp;lt;b&amp;gt;Info:&amp;lt;/b&amp;gt; En väldigt enkel
                         tolk som kommer att gå genom ett Markdown-dokument
-                        och skapar objekt för varje titel.&lt;br/&gt;&amp;nbsp;</translation>
+                        och skapar objekt för varje titel.&amp;lt;br/&amp;gt;&amp;nbsp;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="96"/>
@@ -361,11 +361,11 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
                         plaintext documents within (you chose which ones by extension)
                         are added as scene.&lt;/p&gt;
                         &lt;p&gt;Only text files are supported (not images, binary or others).&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;Info:&lt;/b&gt; Importerar en hel
+        <translation>&amp;lt;p&amp;gt;&amp;lt;b&amp;gt;Info:&amp;lt;/b&amp;gt; Importerar en hel
                         katalogstruktur. Mappar läggs till som mappar, och
                         vanliga textdokument inuti (du väljer vilka efter filändelse)
-                        läggs till som scener.&lt;/p&gt;
-                        &lt;p&gt;Endast textfiler stöds (inte bilder, binärer eller annat).&lt;/p&gt;</translation>
+                        läggs till som scener.&amp;lt;/p&amp;gt;
+                        &amp;lt;p&amp;gt;Endast textfiler stöds (inte bilder, binärer eller annat).&amp;lt;/p&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="107"/>
@@ -415,12 +415,12 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
                         then it will be imported in manuskript. One or the other
                         might give better result depending on your document.
                         &lt;br/&gt;&amp;nbsp;</source>
-        <translation>&lt;b&gt;Info:&lt;/b&gt; Manuskript kan
-                        importera från &lt;b&gt;markdown&lt;/b&gt; eller &lt;b&gt;OPML&lt;/b&gt;. Pandoc kommer att
+        <translation>&amp;lt;b&amp;gt;Info:&amp;lt;/b&amp;gt; Manuskript kan
+                        importera från &amp;lt;b&amp;gt;markdown&amp;lt;/b&amp;gt; eller &amp;lt;b&amp;gt;OPML&amp;lt;/b&amp;gt;. Pandoc kommer att
                         konvertera ditt dokument till endera (se alterntiv nedan), och
                         sedan kommer det att importeras i manuskript. Endera kan ge
                         bättre resultat beroende på ditt dokument.
-                        &lt;br/&gt;&amp;nbsp;</translation>
+                        &amp;lt;br/&amp;gt;&amp;nbsp;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="68"/>
@@ -440,12 +440,12 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
                         &lt;b&gt;none&lt;/b&gt;: no line wrap.&lt;br&gt;
                         &lt;b&gt;preserve&lt;/b&gt;: tries to preserves line wrap from the
                         original document.&lt;/p&gt;</source>
-        <translation>&lt;p&gt;Ska pandoc skapa
-                        kosmetiska / icke-semantiska radbrytningar?&lt;/p&gt;&lt;p&gt;
-                        &lt;b&gt;auto&lt;/b&gt;: radbryter efter 72 tecken.&lt;br&gt;
-                        &lt;b&gt;none&lt;/b&gt;: inga radbrytningar.&lt;br&gt;
-                        &lt;b&gt;preserve&lt;/b&gt;: försöker att bevara radbrytningar från
-                        originaldokumentet.&lt;/p&gt;</translation>
+        <translation>&amp;lt;p&amp;gt;Ska pandoc skapa
+                        kosmetiska / icke-semantiska radbrytningar?&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;
+                        &amp;lt;b&amp;gt;auto&amp;lt;/b&amp;gt;: radbryter efter 72 tecken.&amp;lt;br&amp;gt;
+                        &amp;lt;b&amp;gt;none&amp;lt;/b&amp;gt;: inga radbrytningar.&amp;lt;br&amp;gt;
+                        &amp;lt;b&amp;gt;preserve&amp;lt;/b&amp;gt;: försöker att bevara radbrytningar från
+                        originaldokumentet.&amp;lt;/p&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/mindMapImporter.py" line="55"/>
@@ -651,12 +651,12 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="920"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One sentence&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Sammanfattning i en&lt;br/&gt;mening&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&amp;lt;html&amp;gt;&amp;lt;head/&amp;gt;&amp;lt;body&amp;gt;&amp;lt;p align=&amp;quot;right&amp;quot;&amp;gt;Sammanfattning i en&amp;lt;br/&amp;gt;mening&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="930"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One paragraph&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Sammanfattning i ett&lt;br/&gt;stycke&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&amp;lt;html&amp;gt;&amp;lt;head/&amp;gt;&amp;lt;body&amp;gt;&amp;lt;p align=&amp;quot;right&amp;quot;&amp;gt;Sammanfattning i ett&amp;lt;br/&amp;gt;stycke&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1222"/>
@@ -1002,8 +1002,8 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
         <location filename="../manuskript/mainWindow.py" line="1362"/>
         <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous
                      evil wizard wasn&apos;t able to kill a baby?&apos; (Harry Potter)</source>
-        <translation>Den grundläggande situationen i form av en &quot;Tänk om...?&quot;-mening. Exempel: &apos;Tänk om världens farligaste
-                     onda trollkarl misslyckades med att döda en baby?&apos; (Harry Potter)</translation>
+        <translation>Den grundläggande situationen i form av en &amp;quot;Tänk om...?&amp;quot;-mening. Exempel: 'Tänk om världens farligaste
+                     onda trollkarl misslyckades med att döda en baby?' (Harry Potter)</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1367"/>
@@ -1117,7 +1117,7 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
         <source>Add plot step</source>
         <translation type="unfinished">Lägg till nytt steg i handlingen (CTRL+Enter)</translation>
     </message>
-    <message encoding="UTF-8">
+    <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2546"/>
         <source>&amp;Import…</source>
         <translation>&amp;Importera…</translation>
@@ -1157,7 +1157,7 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
         <source>Ctrl+V</source>
         <translation>Ctrl+V</translation>
     </message>
-    <message encoding="UTF-8">
+    <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2594"/>
         <source>&amp;Split…</source>
         <translation>&amp;Dela…</translation>
@@ -1681,7 +1681,7 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="472"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If you check this option, your project will be saved as one single file. Easier to copy or backup, but does not allow collaborative editing, or versioning.&lt;br/&gt;If this is unchecked, your project will be saved as a folder containing many small files.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Markeras detta alternativ sparas ditt projekt som en samlad fil. Detta gör det lättare att ta en backup eller göra en kopia, men tillåter inte gemensam redigering eller versionshantering.&lt;br/&gt;Markeras alternativet inte sparas ditt projekt som en mapp med många små filer.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="unfinished">&amp;lt;html&amp;gt;&amp;lt;head/&amp;gt;&amp;lt;body&amp;gt;&amp;lt;p&amp;gt;Markeras detta alternativ sparas ditt projekt som en samlad fil. Detta gör det lättare att ta en backup eller göra en kopia, men tillåter inte gemensam redigering eller versionshantering.&amp;lt;br/&amp;gt;Markeras alternativet inte sparas ditt projekt som en mapp med många små filer.&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="478"/>
@@ -2303,42 +2303,42 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
 <context>
     <name>SpellAction</name>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="600"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="611"/>
         <source>Spelling Suggestions</source>
         <translation>Stavningsförslag</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="618"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="629"/>
         <source>&amp;Add to dictionary</source>
         <translation>&amp;Lägg till i ordbok</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="671"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="682"/>
         <source>&amp;Remove from custom dictionary</source>
         <translation>&amp;Ta bort från ordbok</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="527"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="538"/>
         <source>&amp;New Character</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="534"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="545"/>
         <source>&amp;New Plot Item</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="541"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="552"/>
         <source>&amp;New World Item</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="642"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="653"/>
         <source>&amp;Correction Suggestions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="651"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="662"/>
         <source>&amp;Correction Suggestion</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2681,7 +2681,7 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="142"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Filters what items will be included in the final export.&lt;br/&gt;&lt;span style=&quot; color:#773333;&quot;&gt;(Not fully implemented yet.)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Filtrerar vilka objekt som inkluderas i det exporterade materialet.&lt;br/&gt;&lt;span style=&quot; color:#773333;&quot;&gt;(Ej helt implementerat ännu.)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&amp;lt;html&amp;gt;&amp;lt;head/&amp;gt;&amp;lt;body&amp;gt;&amp;lt;p&amp;gt;Filtrerar vilka objekt som inkluderas i det exporterade materialet.&amp;lt;br/&amp;gt;&amp;lt;span style=&amp;quot; color:#773333;&amp;quot;&amp;gt;(Ej helt implementerat ännu.)&amp;lt;/span&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="149"/>
@@ -2750,23 +2750,23 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="788"/>
-        <source>Replace ... with â¦</source>
-        <translation>Ersätt ... med â¦</translation>
+        <source>Replace ... with &#xe2;&#x80;&#xa6;</source>
+        <translation type="unfinished">Ersätt ... med â¦</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="795"/>
-        <source>Replace --- with â</source>
-        <translation>Ersätt --- med —</translation>
+        <source>Replace --- with &#xe2;&#x80;&#x94;</source>
+        <translation type="unfinished">Ersätt --- med —</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="802"/>
         <source>Replace double quotes (&quot;) with:</source>
-        <translation>Ersätt dubbla citattecken (&quot;) med:</translation>
+        <translation>Ersätt dubbla citattecken (&amp;quot;) med:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="911"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>Ersätt enkla citattecken (&apos;) med:</translation>
+        <translation>Ersätt enkla citattecken (') med:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1020"/>
@@ -2864,12 +2864,12 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="124"/>
         <source>&lt;b&gt;Status:&lt;/b&gt; uninstalled.</source>
-        <translation>&lt;b&gt;Status:&lt;/b&gt; avinstallerad.</translation>
+        <translation>&amp;lt;b&amp;gt;Status:&amp;lt;/b&amp;gt; avinstallerad.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="126"/>
         <source>&lt;b&gt;Requires:&lt;/b&gt; </source>
-        <translation>&lt;b&gt;Kräver:&lt;/b&gt; </translation>
+        <translation>&amp;lt;b&amp;gt;Kräver:&amp;lt;/b&amp;gt; </translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="133"/>
@@ -2988,7 +2988,7 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.ui" line="72"/>
         <source>Trim long titles (&gt; 32 chars)</source>
-        <translation>Trimma långa titlar (&gt; 32 tecken)</translation>
+        <translation>Trimma långa titlar (&amp;gt; 32 tecken)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.ui" line="86"/>
@@ -3308,22 +3308,17 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
         <translation>Öppna {} i en ny flik</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/outlineBasics.py" line="313"/>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="328"/>
         <source>About to remove</source>
         <translation>Håller på att ta bort</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/outlineBasics.py" line="313"/>
-        <source>&lt;p&gt;&lt;b&gt;You&apos;re about to delete {} item(s).&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Are you sure?&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;Du håller på att ta bort {} objekt.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Är du säker?&lt;/p&gt;</translation>
-    </message>
-    <message>
-        <location filename="../manuskript/ui/views/outlineBasics.py" line="421"/>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="434"/>
         <source>Select at least two items. Folders are ignored.</source>
         <translation>Välj åtminstone två objekt. Mappar hoppas över.</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/outlineBasics.py" line="430"/>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="443"/>
         <source>All items must be on the same level (share the same parent).</source>
         <translation>Alla objekt måste vara på samma nivå (dela samma förälder).</translation>
     </message>
@@ -3362,6 +3357,16 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
         <source>&amp;Delete</source>
         <translation>&amp;Ta bort</translation>
     </message>
+    <message>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="315"/>
+        <source>You&apos;re about to delete {} item(s).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="325"/>
+        <source>Are you sure?</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>outlineCharacterDelegate</name>
@@ -3389,12 +3394,12 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
 <context>
     <name>outlineItem</name>
     <message>
-        <location filename="../manuskript/models/outlineItem.py" line="251"/>
+        <location filename="../manuskript/models/outlineItem.py" line="256"/>
         <source>{} words / {} ({})</source>
         <translation>{} ord / {} ({})</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/outlineItem.py" line="256"/>
+        <location filename="../manuskript/models/outlineItem.py" line="261"/>
         <source>{} words</source>
         <translation>{} ord</translation>
     </message>
@@ -3855,32 +3860,32 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
     <message>
         <location filename="../manuskript/models/references.py" line="498"/>
         <source>&lt;b&gt;Unknown reference:&lt;/b&gt; {}.</source>
-        <translation>&lt;b&gt;Okänd referens:&lt;/b&gt; {}.</translation>
+        <translation>&amp;lt;b&amp;gt;Okänd referens:&amp;lt;/b&amp;gt; {}.</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="506"/>
         <source>Folder: &lt;b&gt;{}&lt;/b&gt;</source>
-        <translation>Mapp: &lt;b&gt;{}&lt;/b&gt;</translation>
+        <translation>Mapp: &amp;lt;b&amp;gt;{}&amp;lt;/b&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="508"/>
         <source>Text: &lt;b&gt;{}&lt;/b&gt;</source>
-        <translation>Text: &lt;b&gt;{}&lt;/b&gt;</translation>
+        <translation>Text: &amp;lt;b&amp;gt;{}&amp;lt;/b&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="513"/>
         <source>Character: &lt;b&gt;{}&lt;/b&gt;</source>
-        <translation>Karaktär: &lt;b&gt;{}&lt;/b&gt;</translation>
+        <translation>Karaktär: &amp;lt;b&amp;gt;{}&amp;lt;/b&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="516"/>
         <source>Plot: &lt;b&gt;{}&lt;/b&gt;</source>
-        <translation>Handling: &lt;b&gt;{}&lt;/b&gt;</translation>
+        <translation>Handling: &amp;lt;b&amp;gt;{}&amp;lt;/b&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="519"/>
         <source>World: &lt;b&gt;{name}&lt;/b&gt;{path}</source>
-        <translation>Värld: &lt;b&gt;{name}&lt;/b&gt;{path}</translation>
+        <translation>Värld: &amp;lt;b&amp;gt;{name}&amp;lt;/b&amp;gt;{path}</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="592"/>
@@ -4091,25 +4096,25 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
             &lt;p&gt;&lt;b&gt;Mark:&lt;/b&gt;&lt;/p&gt;
             </source>
         <translation type="unfinished">
-            &lt;p&gt;Dela markerade objekt vid det angivna märket.&lt;/p&gt;
+            &amp;lt;p&amp;gt;Dela markerade objekt vid det angivna märket.&amp;lt;/p&amp;gt;
 
-            &lt;p&gt;Om ett av de markerade objekten är en mapp kommer
-            detta att tillämpas rekursivt för &lt;i&gt;alla&lt;/i&gt; dess barnobjekt.&lt;/p&gt;
+            &amp;lt;p&amp;gt;Om ett av de markerade objekten är en mapp kommer
+            detta att tillämpas rekursivt för &amp;lt;i&amp;gt;alla&amp;lt;/i&amp;gt; dess barnobjekt.&amp;lt;/p&amp;gt;
 
-            &lt;p&gt;Delningsmärket kan innehålla följande kontrollsekvenser:
-                &lt;ul&gt;
-                    &lt;li&gt;&lt;b&gt;&lt;code&gt;\n&lt;/code&gt;&lt;/b&gt;: radbrytning&lt;/li&gt;
-                    &lt;li&gt;&lt;b&gt;&lt;code&gt;\t&lt;/code&gt;&lt;/b&gt;: tabb&lt;/li&gt;
-                &lt;/ul&gt;
-            &lt;/p&gt;
+            &amp;lt;p&amp;gt;Delningsmärket kan innehålla följande kontrollsekvenser:
+                &amp;lt;ul&amp;gt;
+                    &amp;lt;li&amp;gt;&amp;lt;b&amp;gt;&amp;lt;code&amp;gt;\n&amp;lt;/code&amp;gt;&amp;lt;/b&amp;gt;: radbrytning&amp;lt;/li&amp;gt;
+                    &amp;lt;li&amp;gt;&amp;lt;b&amp;gt;&amp;lt;code&amp;gt;\t&amp;lt;/code&amp;gt;&amp;lt;/b&amp;gt;: tabb&amp;lt;/li&amp;gt;
+                &amp;lt;/ul&amp;gt;
+            &amp;lt;/p&amp;gt;
 
-            &lt;p&gt;&lt;b&gt;Märke:&lt;/b&gt;&lt;/p&gt;
+            &amp;lt;p&amp;gt;&amp;lt;b&amp;gt;Märke:&amp;lt;/b&amp;gt;&amp;lt;/p&amp;gt;
             </translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="47"/>
         <source>Split &apos;{}&apos;</source>
-        <translation>Dela &apos;{}&apos;</translation>
+        <translation>Dela '{}'</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="51"/>
@@ -4161,7 +4166,7 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
 <context>
     <name>textEditView</name>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="313"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="324"/>
         <source>Various</source>
         <translation>Diverse</translation>
     </message>
@@ -4412,7 +4417,7 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="384"/>
         <source>&lt;b&gt;Total:&lt;/b&gt; {} words (~ {} pages)</source>
-        <translation>&lt;b&gt;Total:&lt;/b&gt; {} ord (~ {} sidor)</translation>
+        <translation>&amp;lt;b&amp;gt;Total:&amp;lt;/b&amp;gt; {} ord (~ {} sidor)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="405"/>

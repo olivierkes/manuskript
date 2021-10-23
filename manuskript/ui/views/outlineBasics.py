@@ -310,11 +310,24 @@ class outlineBasics(QAbstractItemView):
         Shows a warning, and then deletes currently selected indexes.
         """
         if not settings.dontShowDeleteWarning:
+            msgInfo = list()
+            msgInfo.append("<p><b>")
+            msgInfo.append(qApp.translate("outlineBasics", "You're about to delete {} item(s).").format(
+                len(self.getSelection())
+            ))
+
+            msgInfo.append("</b></p><ul>")
+            for i in self.getSelection():
+                title = self.model().data(i.sibling(i.row(), Outline.title))
+                msgInfo.append("<li>{}</li>".format(str(title)))
+
+            msgInfo.append("</ul><p>")
+            msgInfo.append(qApp.translate("outlineBasics", "Are you sure?"))
+            msgInfo.append("</p>")
+
             msg = QMessageBox(QMessageBox.Warning,
                 qApp.translate("outlineBasics", "About to remove"),
-                qApp.translate("outlineBasics",
-                    "<p><b>You're about to delete {} item(s).</b></p><p>Are you sure?</p>"
-                    ).format(len(self.getSelection())),
+                "".join(msgInfo),
                 QMessageBox.Yes | QMessageBox.Cancel)
 
             chk = QCheckBox("&Don't show this warning in the future.")

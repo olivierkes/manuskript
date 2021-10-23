@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="2.0" language="ar_SA" sourcelanguage="">
+<!DOCTYPE TS>
+<TS version="2.1" language="ar_SA">
 <context>
     <name>Export</name>
     <message>
@@ -105,7 +106,7 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="124"/>
         <source>Use &lt;q&gt; tags for quotes in HTML</source>
-        <translation>استخدم وسوم &lt;q&gt; للاقتباسات في HTML</translation>
+        <translation>استخدم وسوم &amp;lt;q&amp;gt; للاقتباسات في HTML</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="131"/>
@@ -164,7 +165,7 @@
         <source>Simplest export to plain text. Allows you to use your own markup not understood
                   by Manuskript, for example &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</source>
         <translation type="unfinished">الإخراج الأسهل للنصوص العادية. تسمح لك باستخدام صيغة ترميز لا يفهمها  
-                  هذا التطبيق (manuskript) مثل صيغة &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</translation>
+                  هذا التطبيق (manuskript) مثل صيغة &amp;lt;a href='www.fountain.io'&amp;gt;Fountain&amp;lt;/a&amp;gt;.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/__init__.py" line="22"/>
@@ -172,9 +173,9 @@
     formats.&lt;/p&gt;
     &lt;p&gt;Website: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
     </source>
-        <translation type="unfinished">&lt;p&gt;محول مستندات شامل. يمكن استخدامه لتحويل صيغة مارك داون لصيغ متعددة
-    أخرى.&lt;/p&gt;
-    &lt;p&gt;موقعه: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
+        <translation type="unfinished">&amp;lt;p&amp;gt;محول مستندات شامل. يمكن استخدامه لتحويل صيغة مارك داون لصيغ متعددة
+    أخرى.&amp;lt;/p&amp;gt;
+    &amp;lt;p&amp;gt;موقعه: &amp;lt;a href=&amp;quot;http://www.pandoc.org&amp;quot;&amp;gt;http://pandoc.org/&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;
     </translation>
     </message>
     <message>
@@ -182,7 +183,7 @@
         <source>a valid LaTeX installation. Pandoc recommendations can be found on:
                      &lt;a href=&quot;https://pandoc.org/installing.html&quot;&gt;pandoc.org/installing.html&lt;/a&gt;. If you want Unicode support, you need XeLaTeX.</source>
         <translation>تثبيت LaTeX بشكل صحيح. توصيات Pandoc يمكن إيجادها على:
-                     &lt;a href=&quot;https://pandoc.org/installing.html&quot;&gt;pandoc.org/installing.html&lt;/a&gt;. إذا احتجت دعم يونيكود فستحتاج XeLaTeX.</translation>
+                     &amp;lt;a href=&amp;quot;https://pandoc.org/installing.html&amp;quot;&amp;gt;pandoc.org/installing.html&amp;lt;/a&amp;gt;. إذا احتجت دعم يونيكود فستحتاج XeLaTeX.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/plainText.py" line="10"/>
@@ -229,7 +230,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="71"/>
         <source>Choose output file&#xe2;&#x80;&#xa6;</source>
-        <translation>اختر ملف الإخراجâ¦</translation>
+        <translation type="unfinished">اختر ملف الإخراجâ¦</translation>
     </message>
 </context>
 <context>
@@ -345,9 +346,9 @@ Use that if you get YAML related error.</source>
         <source>&lt;b&gt;Info:&lt;/b&gt; A very simple
                         parser that will go through a markdown document and
                         create items for each titles.&lt;br/&gt;&amp;nbsp;</source>
-        <translation>&lt;b&gt;معلومات:&lt;/b&gt; بسيط جداً
+        <translation>&amp;lt;b&amp;gt;معلومات:&amp;lt;/b&amp;gt; بسيط جداً
                         معالج يأخذ مستند مارك داون (markdown) و
-                        ينشأ عناصر لكل العناوين.&lt;br/&gt;&amp;nbsp;</translation>
+                        ينشأ عناصر لكل العناوين.&amp;lt;br/&amp;gt;&amp;nbsp;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="96"/>
@@ -361,11 +362,11 @@ Use that if you get YAML related error.</source>
                         plaintext documents within (you chose which ones by extension)
                         are added as scene.&lt;/p&gt;
                         &lt;p&gt;Only text files are supported (not images, binary or others).&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;معلومات:&lt;/b&gt; يستورد 
+        <translation>&amp;lt;p&amp;gt;&amp;lt;b&amp;gt;معلومات:&amp;lt;/b&amp;gt; يستورد 
                         مجلد بصيغتة الكاملة حيث تُضاف المجلدات كمجلدات، و
                         والمستندات النصية ضمنها (تحددها بواسطة نوع إمتداد الملف)
-                        تضاف كمشاهد.&lt;/p&gt;
-                        &lt;p&gt;فقط الملفات النصية مدعومة (الصور والملفات الأخرى ليست مدعومة).&lt;/p&gt;</translation>
+                        تضاف كمشاهد.&amp;lt;/p&amp;gt;
+                        &amp;lt;p&amp;gt;فقط الملفات النصية مدعومة (الصور والملفات الأخرى ليست مدعومة).&amp;lt;/p&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="107"/>
@@ -415,12 +416,12 @@ Use that if you get YAML related error.</source>
                         then it will be imported in manuskript. One or the other
                         might give better result depending on your document.
                         &lt;br/&gt;&amp;nbsp;</source>
-        <translation>&lt;b&gt;معلومات:&lt;/b&gt; يمكن لمانيوسكربت 
-                        الاستيراد من صيغ &lt;b&gt;مارك داون&lt;/b&gt; أو &lt;b&gt;OPML&lt;/b&gt;. سيقوم Pandoc 
+        <translation>&amp;lt;b&amp;gt;معلومات:&amp;lt;/b&amp;gt; يمكن لمانيوسكربت 
+                        الاستيراد من صيغ &amp;lt;b&amp;gt;مارك داون&amp;lt;/b&amp;gt; أو &amp;lt;b&amp;gt;OPML&amp;lt;/b&amp;gt;. سيقوم Pandoc 
                         بتحويل مستندك لأحدها (راجع الخيار بالأسفل), و عندها
                         سيتم اسيترادها لمانيوسكربت. إحداها قد
                          ستعطيك نتائج أفضل بناءاً على مستندك .
-                        &lt;br/&gt;&amp;nbsp;</translation>
+                        &amp;lt;br/&amp;gt;&amp;nbsp;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="68"/>
@@ -440,12 +441,12 @@ Use that if you get YAML related error.</source>
                         &lt;b&gt;none&lt;/b&gt;: no line wrap.&lt;br&gt;
                         &lt;b&gt;preserve&lt;/b&gt;: tries to preserves line wrap from the
                         original document.&lt;/p&gt;</source>
-        <translation>&lt;p&gt;هل يجب ل pandoc أن ينشأ
-                         مساحات جمالية بين الفقرات؟&lt;/p&gt;&lt;p&gt;
-                        &lt;b&gt;تلقائي&lt;/b&gt;: إلتفاف للسطر بعد 72 حرف.&lt;br&gt;
-                        &lt;b&gt;لاشيء&lt;/b&gt;: بدون إلتفات للسطر.&lt;br&gt;
-                        &lt;b&gt;محافظ&lt;/b&gt;:يحاول أن يحتفظ بإلتفات السطور من
-                        المستند الأصلي.&lt;/p&gt;</translation>
+        <translation>&amp;lt;p&amp;gt;هل يجب ل pandoc أن ينشأ
+                         مساحات جمالية بين الفقرات؟&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;
+                        &amp;lt;b&amp;gt;تلقائي&amp;lt;/b&amp;gt;: إلتفاف للسطر بعد 72 حرف.&amp;lt;br&amp;gt;
+                        &amp;lt;b&amp;gt;لاشيء&amp;lt;/b&amp;gt;: بدون إلتفات للسطر.&amp;lt;br&amp;gt;
+                        &amp;lt;b&amp;gt;محافظ&amp;lt;/b&amp;gt;:يحاول أن يحتفظ بإلتفات السطور من
+                        المستند الأصلي.&amp;lt;/p&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/mindMapImporter.py" line="55"/>
@@ -651,12 +652,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="920"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One sentence&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;جملة واحدة &lt;br/&gt;ملخص&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&amp;lt;html&amp;gt;&amp;lt;head/&amp;gt;&amp;lt;body&amp;gt;&amp;lt;p align=&amp;quot;right&amp;quot;&amp;gt;جملة واحدة &amp;lt;br/&amp;gt;ملخص&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="930"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One paragraph&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;فقرة واحدة&lt;br/&gt;ملخص&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&amp;lt;html&amp;gt;&amp;lt;head/&amp;gt;&amp;lt;body&amp;gt;&amp;lt;p align=&amp;quot;right&amp;quot;&amp;gt;فقرة واحدة&amp;lt;br/&amp;gt;ملخص&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1021"/>
@@ -1002,8 +1003,8 @@ Use that if you get YAML related error.</source>
         <location filename="../manuskript/mainWindow.py" line="1362"/>
         <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous
                      evil wizard wasn&apos;t able to kill a baby?&apos; (Harry Potter)</source>
-        <translation>الموقف بشكل مبسط، بصيغة &apos;ماذا لو ...؟&apos;. مثلاً: &apos;مذا لو كان أخطر وأشر 
-                     السحرة غير قادر على قتل طفل؟&apos; (من رواية هاري بورتر)</translation>
+        <translation>الموقف بشكل مبسط، بصيغة 'ماذا لو ...؟'. مثلاً: 'مذا لو كان أخطر وأشر 
+                     السحرة غير قادر على قتل طفل؟' (من رواية هاري بورتر)</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1367"/>
@@ -1117,7 +1118,7 @@ Use that if you get YAML related error.</source>
         <source>Add plot step</source>
         <translation>أضف خطوة حبكة</translation>
     </message>
-    <message encoding="UTF-8">
+    <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2546"/>
         <source>&amp;Import…</source>
         <translation>استيراد…</translation>
@@ -1157,7 +1158,7 @@ Use that if you get YAML related error.</source>
         <source>Ctrl+V</source>
         <translation type="unfinished"></translation>
     </message>
-    <message encoding="UTF-8">
+    <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2594"/>
         <source>&amp;Split…</source>
         <translation>تجزيء…</translation>
@@ -1455,7 +1456,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/mainWindow.py" line="689"/>
         <source>Save changes to project &quot;{}&quot; before closing?</source>
-        <translation>حفظ التغييرات على المشروع &quot;{}&quot; قبل الإغلاق؟</translation>
+        <translation>حفظ التغييرات على المشروع &amp;quot;{}&amp;quot; قبل الإغلاق؟</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="689"/>
@@ -1681,7 +1682,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="472"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If you check this option, your project will be saved as one single file. Easier to copy or backup, but does not allow collaborative editing, or versioning.&lt;br/&gt;If this is unchecked, your project will be saved as a folder containing many small files.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;إن قمت بتحدد هذا الخيار، مشروعك سيتم حفظه كملف واحد. بذلك يصبح أسهل للنسخ والحفظ الآمن كنسخة احتياطية، لكن لن يسمح بالتعديل الجماعي أو النسخ المؤرخة.&lt;br/&gt;إن لم تحدد الخيار فسيتم حفظه كمجلد يحوي ملفات صغيرة كثيرة.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&amp;lt;html&amp;gt;&amp;lt;head/&amp;gt;&amp;lt;body&amp;gt;&amp;lt;p&amp;gt;إن قمت بتحدد هذا الخيار، مشروعك سيتم حفظه كملف واحد. بذلك يصبح أسهل للنسخ والحفظ الآمن كنسخة احتياطية، لكن لن يسمح بالتعديل الجماعي أو النسخ المؤرخة.&amp;lt;br/&amp;gt;إن لم تحدد الخيار فسيتم حفظه كمجلد يحوي ملفات صغيرة كثيرة.&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="478"/>
@@ -2303,42 +2304,42 @@ Use that if you get YAML related error.</source>
 <context>
     <name>SpellAction</name>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="600"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="611"/>
         <source>Spelling Suggestions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="618"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="629"/>
         <source>&amp;Add to dictionary</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="671"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="682"/>
         <source>&amp;Remove from custom dictionary</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="527"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="538"/>
         <source>&amp;New Character</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="534"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="545"/>
         <source>&amp;New Plot Item</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="541"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="552"/>
         <source>&amp;New World Item</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="642"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="653"/>
         <source>&amp;Correction Suggestions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="651"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="662"/>
         <source>&amp;Correction Suggestion</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2828,12 +2829,12 @@ Use that if you get YAML related error.</source>
         <source>{}Level {} text</source>
         <translation type="unfinished"></translation>
     </message>
-    <message encoding="UTF-8">
+    <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="788"/>
         <source>Replace ... with …</source>
         <translation type="unfinished"></translation>
     </message>
-    <message encoding="UTF-8">
+    <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="795"/>
         <source>Replace --- with —</source>
         <translation type="unfinished"></translation>
@@ -3308,22 +3309,17 @@ Use that if you get YAML related error.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/outlineBasics.py" line="313"/>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="328"/>
         <source>About to remove</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/outlineBasics.py" line="313"/>
-        <source>&lt;p&gt;&lt;b&gt;You&apos;re about to delete {} item(s).&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Are you sure?&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../manuskript/ui/views/outlineBasics.py" line="421"/>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="434"/>
         <source>Select at least two items. Folders are ignored.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/outlineBasics.py" line="430"/>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="443"/>
         <source>All items must be on the same level (share the same parent).</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3362,6 +3358,16 @@ Use that if you get YAML related error.</source>
         <source>&amp;Delete</source>
         <translation type="unfinished">حذف</translation>
     </message>
+    <message>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="315"/>
+        <source>You&apos;re about to delete {} item(s).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="325"/>
+        <source>Are you sure?</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>outlineCharacterDelegate</name>
@@ -3389,12 +3395,12 @@ Use that if you get YAML related error.</source>
 <context>
     <name>outlineItem</name>
     <message>
-        <location filename="../manuskript/models/outlineItem.py" line="251"/>
+        <location filename="../manuskript/models/outlineItem.py" line="256"/>
         <source>{} words / {} ({})</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/models/outlineItem.py" line="256"/>
+        <location filename="../manuskript/models/outlineItem.py" line="261"/>
         <source>{} words</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4147,7 +4153,7 @@ Use that if you get YAML related error.</source>
 <context>
     <name>textEditView</name>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="313"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="324"/>
         <source>Various</source>
         <translation type="unfinished"></translation>
     </message>

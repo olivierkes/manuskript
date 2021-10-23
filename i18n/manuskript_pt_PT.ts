@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="pt_PT" sourcelanguage="">
+<TS version="2.1" language="pt_PT">
 <context>
     <name>Export</name>
     <message>
@@ -58,7 +58,7 @@ Use se receber um erro YAML.</translation>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="124"/>
         <source>Use &lt;q&gt; tags for quotes in HTML</source>
-        <translation>Usar etiquetas &lt;q&gt; para citações em HTML</translation>
+        <translation>Usar etiquetas &amp;lt;q&amp;gt; para citações em HTML</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="131"/>
@@ -160,7 +160,7 @@ Use se receber um erro YAML.</translation>
         <source>a valid LaTeX installation. Pandoc recommendations can be found on:
                      &lt;a href=&quot;https://pandoc.org/installing.html&quot;&gt;pandoc.org/installing.html&lt;/a&gt;. If you want Unicode support, you need XeLaTeX.</source>
         <translation>uma instalação LaTeX válida. Pode encontrar as recomendações Pandoc em:
-                     &lt;a href=&quot;https://pandoc.org/installing.html&quot;&gt;1pandoc.org/installing.html&lt;/a&gt;2. Se desejar suporte Unicode, precisará do XeLaTeX.</translation>
+                     &amp;lt;a href=&amp;quot;https://pandoc.org/installing.html&amp;quot;&amp;gt;1pandoc.org/installing.html&amp;lt;/a&amp;gt;2. Se desejar suporte Unicode, precisará do XeLaTeX.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/__init__.py" line="22"/>
@@ -168,9 +168,9 @@ Use se receber um erro YAML.</translation>
     formats.&lt;/p&gt;
     &lt;p&gt;Website: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
     </source>
-        <translation>&lt;p&gt;Um conversor de documentos universal. Pode ser utilizado para converter Markdown para um vasto número 
-    de outros formatos.&lt;/p&gt;
-    &lt;p&gt;Página web: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
+        <translation>&amp;lt;p&amp;gt;Um conversor de documentos universal. Pode ser utilizado para converter Markdown para um vasto número 
+    de outros formatos.&amp;lt;/p&amp;gt;
+    &amp;lt;p&amp;gt;Página web: &amp;lt;a href=&amp;quot;http://www.pandoc.org&amp;quot;&amp;gt;http://pandoc.org/&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;
     </translation>
     </message>
     <message>
@@ -181,7 +181,7 @@ Use se receber um erro YAML.</translation>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="18"/>
         <source>Basic HTML output using the Python module &apos;markdown&apos;.</source>
-        <translation>Saída HTML básica via módulo &quot;markdown&quot; do Python.</translation>
+        <translation>Saída HTML básica via módulo &amp;quot;markdown&amp;quot; do Python.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="19"/>
@@ -213,7 +213,7 @@ Use se receber um erro YAML.</translation>
         <source>Simplest export to plain text. Allows you to use your own markup not understood
                   by Manuskript, for example &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</source>
         <translation>Exportação simples para texto. Permite utilizar a sua própria marcação não compreendida
-                  pelo Manuskript, por exemplo &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</translation>
+                  pelo Manuskript, por exemplo &amp;lt;a href='www.fountain.io'&amp;gt;Fountain&amp;lt;/a&amp;gt;.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/__init__.py" line="15"/>
@@ -229,8 +229,8 @@ Use se receber um erro YAML.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="71"/>
-        <source>Choose output fileâ¦</source>
-        <translation>Escolha o ficheiro de saída</translation>
+        <source>Choose output file&#xe2;&#x80;&#xa6;</source>
+        <translation type="unfinished">Escolha o ficheiro de saída</translation>
     </message>
 </context>
 <context>
@@ -346,9 +346,9 @@ Use se receber um erro YAML.</translation>
         <source>&lt;b&gt;Info:&lt;/b&gt; A very simple
                         parser that will go through a markdown document and
                         create items for each titles.&lt;br/&gt;&amp;nbsp;</source>
-        <translation>&lt;b&gt;Informação:&lt;/b&gt; um analisador
+        <translation>&amp;lt;b&amp;gt;Informação:&amp;lt;/b&amp;gt; um analisador
                         muito simples que percorre um documento markdown
-                        e cria itens para cada título.&lt;br/&gt;&amp;nbsp;</translation>
+                        e cria itens para cada título.&amp;lt;br/&amp;gt;&amp;nbsp;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="96"/>
@@ -362,11 +362,11 @@ Use se receber um erro YAML.</translation>
                         plaintext documents within (you chose which ones by extension)
                         are added as scene.&lt;/p&gt;
                         &lt;p&gt;Only text files are supported (not images, binary or others).&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;Informação:&lt;/b&gt; importa uma estrutura
+        <translation>&amp;lt;p&amp;gt;&amp;lt;b&amp;gt;Informação:&amp;lt;/b&amp;gt; importa uma estrutura
                         de pastas completa. As pastas são adicionadas como
                         pastas e os documentos de texto (escolha sua por extensão)
-                        são adicionados como cenas.&lt;/p&gt;
-                        &lt;p&gt;Só são suportados ficheiros de texto (nem imagens, binários ou outros).&lt;/p&gt;</translation>
+                        são adicionados como cenas.&amp;lt;/p&amp;gt;
+                        &amp;lt;p&amp;gt;Só são suportados ficheiros de texto (nem imagens, binários ou outros).&amp;lt;/p&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="107"/>
@@ -416,12 +416,12 @@ Use se receber um erro YAML.</translation>
                         then it will be imported in manuskript. One or the other
                         might give better result depending on your document.
                         &lt;br/&gt;&amp;nbsp;</source>
-        <translation>&lt;b&gt;Informação:&lt;/b&gt; o Manuskript pode
-                        importar de &lt;b&gt;markdown&lt;/b&gt; ou &lt;b&gt;OPML&lt;/b&gt;. O Pandoc vai
+        <translation>&amp;lt;b&amp;gt;Informação:&amp;lt;/b&amp;gt; o Manuskript pode
+                        importar de &amp;lt;b&amp;gt;markdown&amp;lt;/b&amp;gt; ou &amp;lt;b&amp;gt;OPML&amp;lt;/b&amp;gt;. O Pandoc vai
                         converter o seu documento para um deles (veja a opção abaixo) e
                         será depois importado para o Manuskript. Um ou outro
                         poderão dar um melhor resultado, dependendo do documento.
-                        &lt;br/&gt;&amp;nbsp;</translation>
+                        &amp;lt;br/&amp;gt;&amp;nbsp;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="68"/>
@@ -441,12 +441,12 @@ Use se receber um erro YAML.</translation>
                         &lt;b&gt;none&lt;/b&gt;: no line wrap.&lt;br&gt;
                         &lt;b&gt;preserve&lt;/b&gt;: tries to preserves line wrap from the
                         original document.&lt;/p&gt;</source>
-        <translation>&lt;p&gt;Deve o Pandoc criar
-                        quebras de linha cosméticas/não-semânticas?&lt;/p&gt;&lt;p&gt;
-                        &lt;b&gt;automática&lt;/b&gt;: quebra aos 72 caracteres.&lt;br&gt;
-                        &lt;b&gt;nenhuma&lt;/b&gt;: sem quebra de linhas.&lt;br&gt;
-                        &lt;b&gt;preservar&lt;/b&gt;: tenta preservar a quebra de linhas
-                        do documento original.&lt;/p&gt;</translation>
+        <translation>&amp;lt;p&amp;gt;Deve o Pandoc criar
+                        quebras de linha cosméticas/não-semânticas?&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;
+                        &amp;lt;b&amp;gt;automática&amp;lt;/b&amp;gt;: quebra aos 72 caracteres.&amp;lt;br&amp;gt;
+                        &amp;lt;b&amp;gt;nenhuma&amp;lt;/b&amp;gt;: sem quebra de linhas.&amp;lt;br&amp;gt;
+                        &amp;lt;b&amp;gt;preservar&amp;lt;/b&amp;gt;: tenta preservar a quebra de linhas
+                        do documento original.&amp;lt;/p&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/mindMapImporter.py" line="55"/>
@@ -652,12 +652,12 @@ Use se receber um erro YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="920"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One sentence&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;left&quot;&gt;Sinopse&lt;br/&gt;numa frase&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&amp;lt;html&amp;gt;&amp;lt;head/&amp;gt;&amp;lt;body&amp;gt;&amp;lt;p align=&amp;quot;left&amp;quot;&amp;gt;Sinopse&amp;lt;br/&amp;gt;numa frase&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="930"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One paragraph&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;left&quot;&gt;Sinopse&lt;br/&gt;num parágrafo&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&amp;lt;html&amp;gt;&amp;lt;head/&amp;gt;&amp;lt;body&amp;gt;&amp;lt;p align=&amp;quot;left&amp;quot;&amp;gt;Sinopse&amp;lt;br/&amp;gt;num parágrafo&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1222"/>
@@ -964,7 +964,7 @@ Use se receber um erro YAML.</translation>
         <source>About Manuskript</source>
         <translation>Acerca do Manuskript</translation>
     </message>
-    <message encoding="UTF-8">
+    <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2546"/>
         <source>&amp;Import…</source>
         <translation>&amp;Importar…</translation>
@@ -1004,7 +1004,7 @@ Use se receber um erro YAML.</translation>
         <source>Ctrl+V</source>
         <translation>Ctrl+V</translation>
     </message>
-    <message encoding="UTF-8">
+    <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2594"/>
         <source>&amp;Split…</source>
         <translation>Di&amp;vidir…</translation>
@@ -1546,7 +1546,7 @@ Use se receber um erro YAML.</translation>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1202"/>
         <source>The log file &quot;{}&quot; will continue to be written to until Manuskript is closed.</source>
-        <translation>O diário &quot;{}&quot; continuará a ser escrito até fechar o Manuskript.</translation>
+        <translation>O diário &amp;quot;{}&amp;quot; continuará a ser escrito até fechar o Manuskript.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1202"/>
@@ -1702,7 +1702,7 @@ Use se receber um erro YAML.</translation>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="472"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If you check this option, your project will be saved as one single file. Easier to copy or backup, but does not allow collaborative editing, or versioning.&lt;br/&gt;If this is unchecked, your project will be saved as a folder containing many small files.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Se marcar esta opção, o seu projecto será gravado como um único ficheiro. É mais fácil de copiar, mas não permite edição colaborativa ou controlo de versões.&lt;br/&gt;Se desmarcada, o projecto será gravado como uma pasta com muitos ficheiros pequenos.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&amp;lt;html&amp;gt;&amp;lt;head/&amp;gt;&amp;lt;body&amp;gt;&amp;lt;p&amp;gt;Se marcar esta opção, o seu projecto será gravado como um único ficheiro. É mais fácil de copiar, mas não permite edição colaborativa ou controlo de versões.&amp;lt;br/&amp;gt;Se desmarcada, o projecto será gravado como uma pasta com muitos ficheiros pequenos.&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="478"/>
@@ -2272,7 +2272,7 @@ Use se receber um erro YAML.</translation>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="821"/>
         <source>&lt;p&gt;&lt;b&gt;The Revisions feature has been at the source of many reported issues. In this version of Manuskript it has been turned off by default for new projects in order to provide the best experience.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Why aren&apos;t these issues fixed already? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;We need your help to make Manuskript better!&lt;/a&gt;&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;A funcionalidade Revisões tem sido fonte de muitos erros reportados. Nesta versão do Manuskript, foi desligada por predefinição para novos projectos, de forma a proporcionar a melhor experiência.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Porque é que estes erros ainda não foram reparados? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;Precisamos da sua ajuda para tornar o Manuskript melhor!&lt;/a&gt;&lt;/p&gt;</translation>
+        <translation>&amp;lt;p&amp;gt;&amp;lt;b&amp;gt;A funcionalidade Revisões tem sido fonte de muitos erros reportados. Nesta versão do Manuskript, foi desligada por predefinição para novos projectos, de forma a proporcionar a melhor experiência.&amp;lt;/b&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;Porque é que estes erros ainda não foram reparados? &amp;lt;a href=&amp;quot;https://www.theologeek.ch/manuskript/contribute/&amp;quot;&amp;gt;Precisamos da sua ajuda para tornar o Manuskript melhor!&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="211"/>
@@ -2305,42 +2305,42 @@ junto a palavras</translation>
 <context>
     <name>SpellAction</name>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="600"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="611"/>
         <source>Spelling Suggestions</source>
         <translation>Sugestões ortográficas</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="618"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="629"/>
         <source>&amp;Add to dictionary</source>
         <translation>&amp;Adicionar ao dicionário</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="671"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="682"/>
         <source>&amp;Remove from custom dictionary</source>
         <translation>&amp;Remover do dicionário pessoal</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="527"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="538"/>
         <source>&amp;New Character</source>
         <translation>&amp;Novo carácter</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="534"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="545"/>
         <source>&amp;New Plot Item</source>
         <translation>&amp;Novo item de enredo</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="541"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="552"/>
         <source>&amp;New World Item</source>
         <translation>&amp;Novo item do mundo</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="642"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="653"/>
         <source>&amp;Correction Suggestions</source>
         <translation>Sugestões de &amp;correcção</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="651"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="662"/>
         <source>&amp;Correction Suggestion</source>
         <translation>Sugestão de &amp;correcção</translation>
     </message>
@@ -2683,7 +2683,7 @@ junto a palavras</translation>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="142"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Filters what items will be included in the final export.&lt;br/&gt;&lt;span style=&quot; color:#773333;&quot;&gt;(Not fully implemented yet.)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Filtra que itens serão incluídos na exportação final.&lt;br/&gt;&lt;span style=&quot; color:#773333;&quot;&gt;(ainda não está completamente implementado)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&amp;lt;html&amp;gt;&amp;lt;head/&amp;gt;&amp;lt;body&amp;gt;&amp;lt;p&amp;gt;Filtra que itens serão incluídos na exportação final.&amp;lt;br/&amp;gt;&amp;lt;span style=&amp;quot; color:#773333;&amp;quot;&amp;gt;(ainda não está completamente implementado)&amp;lt;/span&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="149"/>
@@ -2750,12 +2750,12 @@ junto a palavras</translation>
         <source>Typographic replacements:</source>
         <translation>Substituições tipográficas:</translation>
     </message>
-    <message encoding="UTF-8">
+    <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="788"/>
         <source>Replace ... with …</source>
         <translation>Substituir ... por …</translation>
     </message>
-    <message encoding="UTF-8">
+    <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="795"/>
         <source>Replace --- with —</source>
         <translation>Substituir --- por —</translation>
@@ -2763,12 +2763,12 @@ junto a palavras</translation>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="802"/>
         <source>Replace double quotes (&quot;) with:</source>
-        <translation>Substituir aspas duplas (&quot;) por:</translation>
+        <translation>Substituir aspas duplas (&amp;quot;) por:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="911"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>Substituir aspas simples (&apos;) por:</translation>
+        <translation>Substituir aspas simples (') por:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1020"/>
@@ -2866,12 +2866,12 @@ junto a palavras</translation>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="124"/>
         <source>&lt;b&gt;Status:&lt;/b&gt; uninstalled.</source>
-        <translation>&lt;b&gt;Estado:&lt;/b&gt; não instalado.</translation>
+        <translation>&amp;lt;b&amp;gt;Estado:&amp;lt;/b&amp;gt; não instalado.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="126"/>
         <source>&lt;b&gt;Requires:&lt;/b&gt; </source>
-        <translation>&lt;b&gt;Requer:&lt;/b&gt; </translation>
+        <translation>&amp;lt;b&amp;gt;Requer:&amp;lt;/b&amp;gt; </translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="133"/>
@@ -2990,7 +2990,7 @@ junto a palavras</translation>
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.ui" line="72"/>
         <source>Trim long titles (&gt; 32 chars)</source>
-        <translation>Aparar títulos longos (&gt;32 caracteres)</translation>
+        <translation>Aparar títulos longos (&amp;gt;32 caracteres)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.ui" line="86"/>
@@ -3345,24 +3345,29 @@ junto a palavras</translation>
         <translation>Novo</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/outlineBasics.py" line="313"/>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="328"/>
         <source>About to remove</source>
         <translation>Prestes a remover</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/outlineBasics.py" line="313"/>
-        <source>&lt;p&gt;&lt;b&gt;You&apos;re about to delete {} item(s).&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Are you sure?&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;Está prestes a eliminar {} item(ns).&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Tem a certeza?&lt;/p&gt;</translation>
-    </message>
-    <message>
-        <location filename="../manuskript/ui/views/outlineBasics.py" line="421"/>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="434"/>
         <source>Select at least two items. Folders are ignored.</source>
         <translation>Seleccione pelo menos dois itens. As pastas são ignoradas.</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/outlineBasics.py" line="430"/>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="443"/>
         <source>All items must be on the same level (share the same parent).</source>
         <translation>Todos os itens têm de estar no mesmo nível (partilhar a mesma mãe).</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="315"/>
+        <source>You&apos;re about to delete {} item(s).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="325"/>
+        <source>Are you sure?</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3391,12 +3396,12 @@ junto a palavras</translation>
 <context>
     <name>outlineItem</name>
     <message>
-        <location filename="../manuskript/models/outlineItem.py" line="251"/>
+        <location filename="../manuskript/models/outlineItem.py" line="256"/>
         <source>{} words / {} ({})</source>
         <translation>{} palavras/{} ({})</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/outlineItem.py" line="256"/>
+        <location filename="../manuskript/models/outlineItem.py" line="261"/>
         <source>{} words</source>
         <translation>{} palavras</translation>
     </message>
@@ -3862,32 +3867,32 @@ junto a palavras</translation>
     <message>
         <location filename="../manuskript/models/references.py" line="498"/>
         <source>&lt;b&gt;Unknown reference:&lt;/b&gt; {}.</source>
-        <translation>&lt;b&gt;Referência desconhecida:&lt;/b&gt; {}.</translation>
+        <translation>&amp;lt;b&amp;gt;Referência desconhecida:&amp;lt;/b&amp;gt; {}.</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="506"/>
         <source>Folder: &lt;b&gt;{}&lt;/b&gt;</source>
-        <translation>Pasta: &lt;b&gt;{}&lt;/b&gt;</translation>
+        <translation>Pasta: &amp;lt;b&amp;gt;{}&amp;lt;/b&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="508"/>
         <source>Text: &lt;b&gt;{}&lt;/b&gt;</source>
-        <translation>Texto: &lt;b&gt;{}&lt;/b&gt;</translation>
+        <translation>Texto: &amp;lt;b&amp;gt;{}&amp;lt;/b&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="513"/>
         <source>Character: &lt;b&gt;{}&lt;/b&gt;</source>
-        <translation>Personagem: &lt;b&gt;{}&lt;/b&gt;</translation>
+        <translation>Personagem: &amp;lt;b&amp;gt;{}&amp;lt;/b&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="516"/>
         <source>Plot: &lt;b&gt;{}&lt;/b&gt;</source>
-        <translation>Enredo: &lt;b&gt;{}&lt;/b&gt;</translation>
+        <translation>Enredo: &amp;lt;b&amp;gt;{}&amp;lt;/b&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="519"/>
         <source>World: &lt;b&gt;{name}&lt;/b&gt;{path}</source>
-        <translation>Mundo: &lt;b&gt;{name}&lt;/b&gt;{path}</translation>
+        <translation>Mundo: &amp;lt;b&amp;gt;{name}&amp;lt;/b&amp;gt;{path}</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="592"/>
@@ -4099,19 +4104,19 @@ junto a palavras</translation>
             &lt;p&gt;&lt;b&gt;Mark:&lt;/b&gt;&lt;/p&gt;
             </source>
         <translation>
-            &lt;p&gt;Divide os itens seleccionados na marca indicada.&lt;/p&gt;
+            &amp;lt;p&amp;gt;Divide os itens seleccionados na marca indicada.&amp;lt;/p&amp;gt;
 
-            &lt;p&gt;Se um dos itens for uma pasta, será aplicado
-            recursivamente a &lt;i&gt;todos&lt;/i&gt; os itens-filho.&lt;/p&gt;
+            &amp;lt;p&amp;gt;Se um dos itens for uma pasta, será aplicado
+            recursivamente a &amp;lt;i&amp;gt;todos&amp;lt;/i&amp;gt; os itens-filho.&amp;lt;/p&amp;gt;
 
-            &lt;p&gt;A marca de divisão pode conter as seguintes sequências:
-                &lt;ul&gt;
-                    &lt;li&gt;&lt;b&gt;&lt;code&gt;\n&lt;/code&gt;&lt;/b&gt;: quebra de linha&lt;/li&gt;
-                    &lt;li&gt;&lt;b&gt;&lt;code&gt;\t&lt;/code&gt;&lt;/b&gt;: tabulação&lt;/li&gt;
-                &lt;/ul&gt;
-            &lt;/p&gt;
+            &amp;lt;p&amp;gt;A marca de divisão pode conter as seguintes sequências:
+                &amp;lt;ul&amp;gt;
+                    &amp;lt;li&amp;gt;&amp;lt;b&amp;gt;&amp;lt;code&amp;gt;\n&amp;lt;/code&amp;gt;&amp;lt;/b&amp;gt;: quebra de linha&amp;lt;/li&amp;gt;
+                    &amp;lt;li&amp;gt;&amp;lt;b&amp;gt;&amp;lt;code&amp;gt;\t&amp;lt;/code&amp;gt;&amp;lt;/b&amp;gt;: tabulação&amp;lt;/li&amp;gt;
+                &amp;lt;/ul&amp;gt;
+            &amp;lt;/p&amp;gt;
 
-            &lt;p&gt;&lt;b&gt;Marca:&lt;/b&gt;&lt;/p&gt;
+            &amp;lt;p&amp;gt;&amp;lt;b&amp;gt;Marca:&amp;lt;/b&amp;gt;&amp;lt;/p&amp;gt;
             </translation>
     </message>
     <message>
@@ -4169,7 +4174,7 @@ junto a palavras</translation>
 <context>
     <name>textEditView</name>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="313"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="324"/>
         <source>Various</source>
         <translation>Vários</translation>
     </message>
@@ -4420,7 +4425,7 @@ junto a palavras</translation>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="384"/>
         <source>&lt;b&gt;Total:&lt;/b&gt; {} words (~ {} pages)</source>
-        <translation>&lt;b&gt;Total:&lt;/b&gt; {} palavras (~ {} páginas)</translation>
+        <translation>&amp;lt;b&amp;gt;Total:&amp;lt;/b&amp;gt; {} palavras (~ {} páginas)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="405"/>

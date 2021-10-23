@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="2.0" language="hu" sourcelanguage="">
+<!DOCTYPE TS>
+<TS version="2.1" language="hu">
 <context>
     <name>Export</name>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="18"/>
         <source>Basic HTML output using the Python module &apos;markdown&apos;.</source>
-        <translation type="unfinished">Alap HTML kimenet a python &apos;markdown&apos; modult használva.</translation>
+        <translation type="unfinished">Alap HTML kimenet a python 'markdown' modult használva.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="19"/>
         <source>Python module &apos;markdown&apos;.</source>
-        <translation type="unfinished">python modul &apos;markdown&apos;.</translation>
+        <translation type="unfinished">python modul 'markdown'.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="54"/>
@@ -100,7 +101,7 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="124"/>
         <source>Use &lt;q&gt; tags for quotes in HTML</source>
-        <translation>Használja a &lt;q&gt; címkéket a HTML idézetekhez</translation>
+        <translation>Használja a &amp;lt;q&amp;gt; címkéket a HTML idézetekhez</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="131"/>
@@ -159,7 +160,7 @@
         <source>Simplest export to plain text. Allows you to use your own markup not understood
                   by Manuskript, for example &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</source>
         <translation type="unfinished">A legegyszerűbb lehetőség sima szöveg exportálására. Lehetővé teszi saját jelölőnyelv használatát, melyet
-                  a  manuskript nem tud feldolgozni, mint például a &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</translation>
+                  a  manuskript nem tud feldolgozni, mint például a &amp;lt;a href='www.fountain.io'&amp;gt;Fountain&amp;lt;/a&amp;gt;.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/__init__.py" line="22"/>
@@ -167,9 +168,9 @@
     formats.&lt;/p&gt;
     &lt;p&gt;Website: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
     </source>
-        <translation type="unfinished">&lt;p&gt;Univerzális dokumentum konvertáló. Arra használható , hogy markdown tartalmakat alakítson át
-egy egész sor más formátumra&lt;/p&gt;
-    &lt;p&gt;Weboldald: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
+        <translation type="unfinished">&amp;lt;p&amp;gt;Univerzális dokumentum konvertáló. Arra használható , hogy markdown tartalmakat alakítson át
+egy egész sor más formátumra&amp;lt;/p&amp;gt;
+    &amp;lt;p&amp;gt;Weboldald: &amp;lt;a href=&amp;quot;http://www.pandoc.org&amp;quot;&amp;gt;http://pandoc.org/&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;
     </translation>
     </message>
     <message>
@@ -177,7 +178,7 @@ egy egész sor más formátumra&lt;/p&gt;
         <source>a valid LaTeX installation. Pandoc recommendations can be found on:
                      &lt;a href=&quot;https://pandoc.org/installing.html&quot;&gt;pandoc.org/installing.html&lt;/a&gt;. If you want Unicode support, you need XeLaTeX.</source>
         <translation type="unfinished">egy érvényes latex telepítés. Lásd a pandoc javaslatait erre:
-                     &lt;a href=&quot;http://pandoc.org/installing.html&quot;&gt;http://pandoc.org/installing.html&lt;/a&gt;. Unicode támogatáshoz szüksége van a xelatex -re.</translation>
+                     &amp;lt;a href=&amp;quot;http://pandoc.org/installing.html&amp;quot;&amp;gt;http://pandoc.org/installing.html&amp;lt;/a&amp;gt;. Unicode támogatáshoz szüksége van a xelatex -re.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/plainText.py" line="10"/>
@@ -344,9 +345,9 @@ Akkor használja ezt, ha YAML-hoz kapcsolódó gondjai vannak.</translation>
         <source>&lt;b&gt;Info:&lt;/b&gt; A very simple
                         parser that will go through a markdown document and
                         create items for each titles.&lt;br/&gt;&amp;nbsp;</source>
-        <translation>&lt;b&gt;Infó:&lt;/b&gt; Egy nagyon egyszerű
+        <translation>&amp;lt;b&amp;gt;Infó:&amp;lt;/b&amp;gt; Egy nagyon egyszerű
                         elemző, amely végigfut a dokumentum markdown-ján és
-                        elemeket hoz létre minden egyes címhez.&lt;br/&gt;&amp;nbsp;</translation>
+                        elemeket hoz létre minden egyes címhez.&amp;lt;br/&amp;gt;&amp;nbsp;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="96"/>
@@ -360,11 +361,11 @@ Akkor használja ezt, ha YAML-hoz kapcsolódó gondjai vannak.</translation>
                         plaintext documents within (you chose which ones by extension)
                         are added as scene.&lt;/p&gt;
                         &lt;p&gt;Only text files are supported (not images, binary or others).&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;Infó:&lt;/b&gt; Teljes mappastruktúra importálása.
+        <translation>&amp;lt;p&amp;gt;&amp;lt;b&amp;gt;Infó:&amp;lt;/b&amp;gt; Teljes mappastruktúra importálása.
                         A mappák mappaként adódnak hozzá, és az azokban lévő 
                         egyszerű szöveges dokumentumok  (kiválaszthatja melyek, kiterjesztés alapján)
-                        pedig, mint jelentek adódnak hozzá..&lt;/p&gt;
-                        &lt;p&gt;Csak szövegfájlokat támogat (sem képeket, sem bináris állományokat vagy egyebet nem támogat).&lt;/p&gt;</translation>
+                        pedig, mint jelentek adódnak hozzá..&amp;lt;/p&amp;gt;
+                        &amp;lt;p&amp;gt;Csak szövegfájlokat támogat (sem képeket, sem bináris állományokat vagy egyebet nem támogat).&amp;lt;/p&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="107"/>
@@ -414,12 +415,12 @@ Akkor használja ezt, ha YAML-hoz kapcsolódó gondjai vannak.</translation>
                         then it will be imported in manuskript. One or the other
                         might give better result depending on your document.
                         &lt;br/&gt;&amp;nbsp;</source>
-        <translation>&lt;b&gt;Infó:&lt;/b&gt;A  Manuskript képes
-                        importálni  &lt;b&gt;markdown-ból&lt;/b&gt; vagy &lt;b&gt;OPML-ből&lt;/b&gt;. A Pandoc 
+        <translation>&amp;lt;b&amp;gt;Infó:&amp;lt;/b&amp;gt;A  Manuskript képes
+                        importálni  &amp;lt;b&amp;gt;markdown-ból&amp;lt;/b&amp;gt; vagy &amp;lt;b&amp;gt;OPML-ből&amp;lt;/b&amp;gt;. A Pandoc 
                         konvertálni fogja az dokumentumát mindkettőről (lássa a lenti beállításokat), 
                         majd importálja őket . A dokumentuma típusától függően
                         egyik lehetőség jobb eredménnyel járhat, mint  a másik.
-                        &lt;br/&gt;&amp;nbsp;</translation>
+                        &amp;lt;br/&amp;gt;&amp;nbsp;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="68"/>
@@ -439,11 +440,11 @@ Akkor használja ezt, ha YAML-hoz kapcsolódó gondjai vannak.</translation>
                         &lt;b&gt;none&lt;/b&gt;: no line wrap.&lt;br&gt;
                         &lt;b&gt;preserve&lt;/b&gt;: tries to preserves line wrap from the
                         original document.&lt;/p&gt;</source>
-        <translation>&lt;p&gt;Szükséges, hogy a pandoc
-                        szépítő / nem-szemantikus sortöréseket hozzon létre?&lt;/p&gt;&lt;p&gt;
-                        &lt;b&gt;automatikus&lt;/b&gt;: a 72. karakternél töri.&lt;br&gt;
-                        &lt;b&gt;egyik sem&lt;/b&gt;: nincs sortörés.&lt;br&gt;
-                        &lt;b&gt;megőrzés&lt;/b&gt;:megpróbálja megőrizni az eredeti sortöréseket.&lt;/p&gt;</translation>
+        <translation>&amp;lt;p&amp;gt;Szükséges, hogy a pandoc
+                        szépítő / nem-szemantikus sortöréseket hozzon létre?&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;
+                        &amp;lt;b&amp;gt;automatikus&amp;lt;/b&amp;gt;: a 72. karakternél töri.&amp;lt;br&amp;gt;
+                        &amp;lt;b&amp;gt;egyik sem&amp;lt;/b&amp;gt;: nincs sortörés.&amp;lt;br&amp;gt;
+                        &amp;lt;b&amp;gt;megőrzés&amp;lt;/b&amp;gt;:megpróbálja megőrizni az eredeti sortöréseket.&amp;lt;/p&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/mindMapImporter.py" line="55"/>
@@ -649,12 +650,12 @@ Akkor használja ezt, ha YAML-hoz kapcsolódó gondjai vannak.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="920"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One sentence&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Egy mondat&lt;br/&gt;összefoglaló&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&amp;lt;html&amp;gt;&amp;lt;head/&amp;gt;&amp;lt;body&amp;gt;&amp;lt;p align=&amp;quot;right&amp;quot;&amp;gt;Egy mondat&amp;lt;br/&amp;gt;összefoglaló&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="930"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One paragraph&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Egy bekezdés&lt;br/&gt;összefoglaló&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&amp;lt;html&amp;gt;&amp;lt;head/&amp;gt;&amp;lt;body&amp;gt;&amp;lt;p align=&amp;quot;right&amp;quot;&amp;gt;Egy bekezdés&amp;lt;br/&amp;gt;összefoglaló&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1021"/>
@@ -1000,8 +1001,8 @@ Akkor használja ezt, ha YAML-hoz kapcsolódó gondjai vannak.</translation>
         <location filename="../manuskript/mainWindow.py" line="1362"/>
         <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous
                      evil wizard wasn&apos;t able to kill a baby?&apos; (Harry Potter)</source>
-        <translation>Az alapszituáció &apos;Mi lenne ha...?&apos; kérdésként feltéve. Pl.. &apos;Mi lenne ha a legveszélyesebb
-&apos;                     gonosz varázsló ne lenne képes megölni egy csecsemőt?&apos; (Harry Potter)</translation>
+        <translation>Az alapszituáció 'Mi lenne ha...?' kérdésként feltéve. Pl.. 'Mi lenne ha a legveszélyesebb
+'                     gonosz varázsló ne lenne képes megölni egy csecsemőt?' (Harry Potter)</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1367"/>
@@ -1115,7 +1116,7 @@ Akkor használja ezt, ha YAML-hoz kapcsolódó gondjai vannak.</translation>
         <source>Add plot step</source>
         <translation type="unfinished">Cselekmény lépés hozzáadása (CTRL+Enter)</translation>
     </message>
-    <message encoding="UTF-8">
+    <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2546"/>
         <source>&amp;Import…</source>
         <translation>&amp;Importálás…</translation>
@@ -1155,7 +1156,7 @@ Akkor használja ezt, ha YAML-hoz kapcsolódó gondjai vannak.</translation>
         <source>Ctrl+V</source>
         <translation>Ctrl+V</translation>
     </message>
-    <message encoding="UTF-8">
+    <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2594"/>
         <source>&amp;Split…</source>
         <translation>&amp;Felosztás…</translation>
@@ -1679,7 +1680,7 @@ Akkor használja ezt, ha YAML-hoz kapcsolódó gondjai vannak.</translation>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="472"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If you check this option, your project will be saved as one single file. Easier to copy or backup, but does not allow collaborative editing, or versioning.&lt;br/&gt;If this is unchecked, your project will be saved as a folder containing many small files.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ha ezt a lehetőséget bejelöli, a projektje egyetlen fájlként kerül mentésre. Így egyszerűbb másolni vagy biztonsági mentést készíteni róla, de elesik a csapatmunka és a verziókezelés lehetőségétől.&lt;br/&gt;Amennyiben nincs bejelölve, a projektje mappaként kerül mentésre, amely sok kis fáljt tartalmaz&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="unfinished">&amp;lt;html&amp;gt;&amp;lt;head/&amp;gt;&amp;lt;body&amp;gt;&amp;lt;p&amp;gt;Ha ezt a lehetőséget bejelöli, a projektje egyetlen fájlként kerül mentésre. Így egyszerűbb másolni vagy biztonsági mentést készíteni róla, de elesik a csapatmunka és a verziókezelés lehetőségétől.&amp;lt;br/&amp;gt;Amennyiben nincs bejelölve, a projektje mappaként kerül mentésre, amely sok kis fáljt tartalmaz&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="478"/>
@@ -2301,42 +2302,42 @@ Akkor használja ezt, ha YAML-hoz kapcsolódó gondjai vannak.</translation>
 <context>
     <name>SpellAction</name>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="600"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="611"/>
         <source>Spelling Suggestions</source>
         <translation>Helyesírási javaslatok</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="618"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="629"/>
         <source>&amp;Add to dictionary</source>
         <translation>&amp;Hozzáadás a szótárhoz</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="671"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="682"/>
         <source>&amp;Remove from custom dictionary</source>
         <translation>&amp;Eltávolítás az egyéni szótárból</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="527"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="538"/>
         <source>&amp;New Character</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="534"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="545"/>
         <source>&amp;New Plot Item</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="541"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="552"/>
         <source>&amp;New World Item</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="642"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="653"/>
         <source>&amp;Correction Suggestions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="651"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="662"/>
         <source>&amp;Correction Suggestion</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2679,7 +2680,7 @@ Akkor használja ezt, ha YAML-hoz kapcsolódó gondjai vannak.</translation>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="142"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Filters what items will be included in the final export.&lt;br/&gt;&lt;span style=&quot; color:#773333;&quot;&gt;(Not fully implemented yet.)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Azt szűri, hogy mi kerüljön bele a végső exportálásba&lt;br/&gt;&lt;span style=&quot; color:#773333;&quot;&gt;(Nem teljesen kifejlesztett.)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&amp;lt;html&amp;gt;&amp;lt;head/&amp;gt;&amp;lt;body&amp;gt;&amp;lt;p&amp;gt;Azt szűri, hogy mi kerüljön bele a végső exportálásba&amp;lt;br/&amp;gt;&amp;lt;span style=&amp;quot; color:#773333;&amp;quot;&amp;gt;(Nem teljesen kifejlesztett.)&amp;lt;/span&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="149"/>
@@ -2749,12 +2750,12 @@ Akkor használja ezt, ha YAML-hoz kapcsolódó gondjai vannak.</translation>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="802"/>
         <source>Replace double quotes (&quot;) with:</source>
-        <translation>Dupla idézőjelet (&quot;) cseréje ezzel:</translation>
+        <translation>Dupla idézőjelet (&amp;quot;) cseréje ezzel:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="911"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>Egyszeri idézőjelek (&apos;) cseréje ezzel:</translation>
+        <translation>Egyszeri idézőjelek (') cseréje ezzel:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1020"/>
@@ -2826,12 +2827,12 @@ Akkor használja ezt, ha YAML-hoz kapcsolódó gondjai vannak.</translation>
         <source>{}Level {} text</source>
         <translation>{}Szint {} szöveg</translation>
     </message>
-    <message encoding="UTF-8">
+    <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="788"/>
         <source>Replace ... with …</source>
         <translation>Csere ... ezzel …</translation>
     </message>
-    <message encoding="UTF-8">
+    <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="795"/>
         <source>Replace --- with —</source>
         <translation>Csere --- ezzel —</translation>
@@ -2862,12 +2863,12 @@ Akkor használja ezt, ha YAML-hoz kapcsolódó gondjai vannak.</translation>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="124"/>
         <source>&lt;b&gt;Status:&lt;/b&gt; uninstalled.</source>
-        <translation>&lt;b&gt;Státusz:&lt;/b&gt; nincs telepítve.</translation>
+        <translation>&amp;lt;b&amp;gt;Státusz:&amp;lt;/b&amp;gt; nincs telepítve.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="126"/>
         <source>&lt;b&gt;Requires:&lt;/b&gt; </source>
-        <translation>&lt;b&gt;Követelmény:&lt;/b&gt; </translation>
+        <translation>&amp;lt;b&amp;gt;Követelmény:&amp;lt;/b&amp;gt; </translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="133"/>
@@ -2986,7 +2987,7 @@ Akkor használja ezt, ha YAML-hoz kapcsolódó gondjai vannak.</translation>
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.ui" line="72"/>
         <source>Trim long titles (&gt; 32 chars)</source>
-        <translation>Hosszú címek nyirbálása (&gt; 32 karakter)</translation>
+        <translation>Hosszú címek nyirbálása (&amp;gt; 32 karakter)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.ui" line="86"/>
@@ -3306,22 +3307,17 @@ Akkor használja ezt, ha YAML-hoz kapcsolódó gondjai vannak.</translation>
         <translation>{} megnyitása új fülön</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/outlineBasics.py" line="313"/>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="328"/>
         <source>About to remove</source>
         <translation>Eltávolítás</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/outlineBasics.py" line="313"/>
-        <source>&lt;p&gt;&lt;b&gt;You&apos;re about to delete {} item(s).&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Are you sure?&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;Ezzel törli a következő eleme(ke)t {} .&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Biztos benne?&lt;/p&gt;</translation>
-    </message>
-    <message>
-        <location filename="../manuskript/ui/views/outlineBasics.py" line="421"/>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="434"/>
         <source>Select at least two items. Folders are ignored.</source>
         <translation>Válasszon ki legalább két elemet. A mappákat figyelmen kívül hagyja.</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/outlineBasics.py" line="430"/>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="443"/>
         <source>All items must be on the same level (share the same parent).</source>
         <translation>Minden elemnek ugyanazon a szinten kell lennie (közös szülőn kell osztoznia).</translation>
     </message>
@@ -3360,6 +3356,16 @@ Akkor használja ezt, ha YAML-hoz kapcsolódó gondjai vannak.</translation>
         <source>&amp;Delete</source>
         <translation>&amp;Törlés</translation>
     </message>
+    <message>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="315"/>
+        <source>You&apos;re about to delete {} item(s).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="325"/>
+        <source>Are you sure?</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>outlineCharacterDelegate</name>
@@ -3387,12 +3393,12 @@ Akkor használja ezt, ha YAML-hoz kapcsolódó gondjai vannak.</translation>
 <context>
     <name>outlineItem</name>
     <message>
-        <location filename="../manuskript/models/outlineItem.py" line="251"/>
+        <location filename="../manuskript/models/outlineItem.py" line="256"/>
         <source>{} words / {} ({})</source>
         <translation>{} szó / {} ({})</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/outlineItem.py" line="256"/>
+        <location filename="../manuskript/models/outlineItem.py" line="261"/>
         <source>{} words</source>
         <translation>{} szó</translation>
     </message>
@@ -3828,32 +3834,32 @@ Akkor használja ezt, ha YAML-hoz kapcsolódó gondjai vannak.</translation>
     <message>
         <location filename="../manuskript/models/references.py" line="498"/>
         <source>&lt;b&gt;Unknown reference:&lt;/b&gt; {}.</source>
-        <translation>&lt;b&gt;Ismeretlen hivatkozás:&lt;/b&gt; {}.</translation>
+        <translation>&amp;lt;b&amp;gt;Ismeretlen hivatkozás:&amp;lt;/b&amp;gt; {}.</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="506"/>
         <source>Folder: &lt;b&gt;{}&lt;/b&gt;</source>
-        <translation>Mappa: &lt;b&gt;{}&lt;/b&gt;</translation>
+        <translation>Mappa: &amp;lt;b&amp;gt;{}&amp;lt;/b&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="508"/>
         <source>Text: &lt;b&gt;{}&lt;/b&gt;</source>
-        <translation>Szöveg: &lt;b&gt;{}&lt;/b&gt;</translation>
+        <translation>Szöveg: &amp;lt;b&amp;gt;{}&amp;lt;/b&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="513"/>
         <source>Character: &lt;b&gt;{}&lt;/b&gt;</source>
-        <translation>Szereplő: &lt;b&gt;{}&lt;/b&gt;</translation>
+        <translation>Szereplő: &amp;lt;b&amp;gt;{}&amp;lt;/b&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="516"/>
         <source>Plot: &lt;b&gt;{}&lt;/b&gt;</source>
-        <translation>Cselekmény: &lt;b&gt;{}&lt;/b&gt;</translation>
+        <translation>Cselekmény: &amp;lt;b&amp;gt;{}&amp;lt;/b&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="519"/>
         <source>World: &lt;b&gt;{name}&lt;/b&gt;{path}</source>
-        <translation>Világ: &lt;b&gt;{name}&lt;/b&gt;{path}</translation>
+        <translation>Világ: &amp;lt;b&amp;gt;{name}&amp;lt;/b&amp;gt;{path}</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="592"/>
@@ -4089,25 +4095,25 @@ Akkor használja ezt, ha YAML-hoz kapcsolódó gondjai vannak.</translation>
             &lt;p&gt;&lt;b&gt;Mark:&lt;/b&gt;&lt;/p&gt;
             </source>
         <translation type="unfinished">
-            &lt;p&gt;Kiválasztott elem(ek) vágása a megadott jelnél.&lt;/p&gt;
+            &amp;lt;p&amp;gt;Kiválasztott elem(ek) vágása a megadott jelnél.&amp;lt;/p&amp;gt;
 
-            &lt;p&gt;Ha a kiválasztott elem egy mappa, a végrehajtás
-            örökletesen történik  &lt;i&gt;minden&lt;/i&gt; gyermek elemre.&lt;/p&gt;
+            &amp;lt;p&amp;gt;Ha a kiválasztott elem egy mappa, a végrehajtás
+            örökletesen történik  &amp;lt;i&amp;gt;minden&amp;lt;/i&amp;gt; gyermek elemre.&amp;lt;/p&amp;gt;
 
-            &lt;p&gt;A megosztott jel tartalmazhatja a következő menekülési szekvenciákat:
-                &lt;ul&gt;
-                    &lt;li&gt;&lt;b&gt;&lt;code&gt;\n&lt;/code&gt;&lt;/b&gt;: sortörés&lt;/li&gt;
-                    &lt;li&gt;&lt;b&gt;&lt;code&gt;\t&lt;/code&gt;&lt;/b&gt;: tabulátor&lt;/li&gt;
-                &lt;/ul&gt;
-            &lt;/p&gt;
+            &amp;lt;p&amp;gt;A megosztott jel tartalmazhatja a következő menekülési szekvenciákat:
+                &amp;lt;ul&amp;gt;
+                    &amp;lt;li&amp;gt;&amp;lt;b&amp;gt;&amp;lt;code&amp;gt;\n&amp;lt;/code&amp;gt;&amp;lt;/b&amp;gt;: sortörés&amp;lt;/li&amp;gt;
+                    &amp;lt;li&amp;gt;&amp;lt;b&amp;gt;&amp;lt;code&amp;gt;\t&amp;lt;/code&amp;gt;&amp;lt;/b&amp;gt;: tabulátor&amp;lt;/li&amp;gt;
+                &amp;lt;/ul&amp;gt;
+            &amp;lt;/p&amp;gt;
 
-            &lt;p&gt;&lt;b&gt;Jel:&lt;/b&gt;&lt;/p&gt;
+            &amp;lt;p&amp;gt;&amp;lt;b&amp;gt;Jel:&amp;lt;/b&amp;gt;&amp;lt;/p&amp;gt;
             </translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="47"/>
         <source>Split &apos;{}&apos;</source>
-        <translation>Vágás &apos;{}&apos;</translation>
+        <translation>Vágás '{}'</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="51"/>
@@ -4159,7 +4165,7 @@ Akkor használja ezt, ha YAML-hoz kapcsolódó gondjai vannak.</translation>
 <context>
     <name>textEditView</name>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="313"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="324"/>
         <source>Various</source>
         <translation>Különféle</translation>
     </message>
@@ -4410,7 +4416,7 @@ Akkor használja ezt, ha YAML-hoz kapcsolódó gondjai vannak.</translation>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="384"/>
         <source>&lt;b&gt;Total:&lt;/b&gt; {} words (~ {} pages)</source>
-        <translation>&lt;b&gt;Összesen:&lt;/b&gt; {} szó (~ {} oldal)</translation>
+        <translation>&amp;lt;b&amp;gt;Összesen:&amp;lt;/b&amp;gt; {} szó (~ {} oldal)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="405"/>

@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="2.0" language="ja" sourcelanguage="">
+<!DOCTYPE TS>
+<TS version="2.1" language="ja">
 <context>
     <name>Export</name>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="18"/>
         <source>Basic HTML output using the Python module &apos;markdown&apos;.</source>
-        <translation>Pythonの &apos;markdown&apos;モジュールを使ってHTMLを出力する。</translation>
+        <translation>Pythonの 'markdown'モジュールを使ってHTMLを出力する。</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="19"/>
         <source>Python module &apos;markdown&apos;.</source>
-        <translation>Pythonモジュール &apos;markdown&apos;.</translation>
+        <translation>Pythonモジュール 'markdown'.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="54"/>
@@ -105,7 +106,7 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="124"/>
         <source>Use &lt;q&gt; tags for quotes in HTML</source>
-        <translation>HTMLで引用符を示すには、`&lt;q&gt;`タグを使用</translation>
+        <translation>HTMLで引用符を示すには、`&amp;lt;q&amp;gt;`タグを使用</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="131"/>
@@ -164,7 +165,7 @@
         <source>Simplest export to plain text. Allows you to use your own markup not understood
                   by Manuskript, for example &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</source>
         <translation type="unfinished">プレーンテキストに出力する最も簡単な設定です。
-                  &lt;a href=&apos;www.fountain.io&apos;&gt;噴水&lt;/a&gt;など、Manuskriptにはないタグを使用できます。</translation>
+                  &amp;lt;a href='www.fountain.io'&amp;gt;噴水&amp;lt;/a&amp;gt;など、Manuskriptにはないタグを使用できます。</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/__init__.py" line="22"/>
@@ -172,9 +173,9 @@
     formats.&lt;/p&gt;
     &lt;p&gt;Website: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
     </source>
-        <translation>&lt;p&gt;ユニバーサル文書コンバータ。Markdownを様々な形式に
-    変換出来ます。&lt;/p&gt;
-    &lt;p&gt;Website: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
+        <translation>&amp;lt;p&amp;gt;ユニバーサル文書コンバータ。Markdownを様々な形式に
+    変換出来ます。&amp;lt;/p&amp;gt;
+    &amp;lt;p&amp;gt;Website: &amp;lt;a href=&amp;quot;http://www.pandoc.org&amp;quot;&amp;gt;http://pandoc.org/&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;
     </translation>
     </message>
     <message>
@@ -182,7 +183,7 @@
         <source>a valid LaTeX installation. Pandoc recommendations can be found on:
                      &lt;a href=&quot;https://pandoc.org/installing.html&quot;&gt;pandoc.org/installing.html&lt;/a&gt;. If you want Unicode support, you need XeLaTeX.</source>
         <translation>有効なLaTeXのインストール。Pandocの推奨事項は次の場所で確認できます:
-                     &lt;a href=&quot;https://pandoc.org/installing.html&quot;&gt;pandoc.org/installing.html&lt;/a&gt;Unicodeをサポートする場合、XeLaTeXが必要です。</translation>
+                     &amp;lt;a href=&amp;quot;https://pandoc.org/installing.html&amp;quot;&amp;gt;pandoc.org/installing.html&amp;lt;/a&amp;gt;Unicodeをサポートする場合、XeLaTeXが必要です。</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/plainText.py" line="10"/>
@@ -228,7 +229,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="71"/>
         <source>Choose output file&#xe2;&#x80;&#xa6;</source>
-        <translation>出力ファイルを選択¦</translation>
+        <translation type="unfinished">出力ファイルを選択¦</translation>
     </message>
 </context>
 <context>
@@ -344,9 +345,9 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
         <source>&lt;b&gt;Info:&lt;/b&gt; A very simple
                         parser that will go through a markdown document and
                         create items for each titles.&lt;br/&gt;&amp;nbsp;</source>
-        <translation>&lt;b&gt;情報:&lt;/b&gt; マークダウンドキュメントを調べ、
+        <translation>&amp;lt;b&amp;gt;情報:&amp;lt;/b&amp;gt; マークダウンドキュメントを調べ、
                         各タイトルのアイテムを作成する
-                        非常にシンプルなパーサーです。&lt;br/&gt;&amp;nbsp;</translation>
+                        非常にシンプルなパーサーです。&amp;lt;br/&amp;gt;&amp;nbsp;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="96"/>
@@ -360,11 +361,11 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
                         plaintext documents within (you chose which ones by extension)
                         are added as scene.&lt;/p&gt;
                         &lt;p&gt;Only text files are supported (not images, binary or others).&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;情報:&lt;/b&gt; ディレクトリ構造全体を
+        <translation>&amp;lt;p&amp;gt;&amp;lt;b&amp;gt;情報:&amp;lt;/b&amp;gt; ディレクトリ構造全体を
                         インポートします。 フォルダはフォルダとして追加され、
                         その中のプレーンテキストドキュメント (拡張で選択したもの)
-                        がシーンとして追加されます。&lt;/p&gt;
-                        &lt;p&gt;テキストファイルのみ対応しています（画像、バイナリ等はサポートされていません）。&lt;/p&gt;</translation>
+                        がシーンとして追加されます。&amp;lt;/p&amp;gt;
+                        &amp;lt;p&amp;gt;テキストファイルのみ対応しています（画像、バイナリ等はサポートされていません）。&amp;lt;/p&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="107"/>
@@ -414,12 +415,12 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
                         then it will be imported in manuskript. One or the other
                         might give better result depending on your document.
                         &lt;br/&gt;&amp;nbsp;</source>
-        <translation>&lt;b&gt;情報:&lt;/b&gt; Manuskriptは
-                        &lt;b&gt;markdown&lt;/b&gt; や &lt;b&gt;OPML&lt;/b&gt;からインポート可能です。 Pandocは
+        <translation>&amp;lt;b&amp;gt;情報:&amp;lt;/b&amp;gt; Manuskriptは
+                        &amp;lt;b&amp;gt;markdown&amp;lt;/b&amp;gt; や &amp;lt;b&amp;gt;OPML&amp;lt;/b&amp;gt;からインポート可能です。 Pandocは
                         ドキュメントをいずれかに変換し（以下のオプションを参照）、
                         manuskriptにインポートされます。ドキュメントによっては、
                         どちらか一方が良い結果が得られる場合があります。
-                        &lt;br/&gt;&amp;nbsp;</translation>
+                        &amp;lt;br/&amp;gt;&amp;nbsp;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="68"/>
@@ -439,12 +440,12 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
                         &lt;b&gt;none&lt;/b&gt;: no line wrap.&lt;br&gt;
                         &lt;b&gt;preserve&lt;/b&gt;: tries to preserves line wrap from the
                         original document.&lt;/p&gt;</source>
-        <translation>&lt;p&gt;pandocは、
-                        表面的/非セマンティックな改行を作成する必要がありますか？&lt;/p&gt;&lt;p&gt;
-                        &lt;b&gt;自動&lt;/b&gt;: 72文字で折り返します。&lt;br&gt;
-                        &lt;b&gt;無し&lt;/b&gt;: 行の折り返しはありません。&lt;br&gt;
-                        &lt;b&gt;保存&lt;/b&gt;: 元のドキュメントから
-                        行の折り返しを保持します。&lt;/p&gt;</translation>
+        <translation>&amp;lt;p&amp;gt;pandocは、
+                        表面的/非セマンティックな改行を作成する必要がありますか？&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;
+                        &amp;lt;b&amp;gt;自動&amp;lt;/b&amp;gt;: 72文字で折り返します。&amp;lt;br&amp;gt;
+                        &amp;lt;b&amp;gt;無し&amp;lt;/b&amp;gt;: 行の折り返しはありません。&amp;lt;br&amp;gt;
+                        &amp;lt;b&amp;gt;保存&amp;lt;/b&amp;gt;: 元のドキュメントから
+                        行の折り返しを保持します。&amp;lt;/p&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/mindMapImporter.py" line="55"/>
@@ -650,12 +651,12 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="920"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One sentence&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;一文&lt;br/&gt;要約&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&amp;lt;html&amp;gt;&amp;lt;head/&amp;gt;&amp;lt;body&amp;gt;&amp;lt;p align=&amp;quot;right&amp;quot;&amp;gt;一文&amp;lt;br/&amp;gt;要約&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="930"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One paragraph&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;一段落&lt;br/&gt;要約&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&amp;lt;html&amp;gt;&amp;lt;head/&amp;gt;&amp;lt;body&amp;gt;&amp;lt;p align=&amp;quot;right&amp;quot;&amp;gt;一段落&amp;lt;br/&amp;gt;要約&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1021"/>
@@ -1116,7 +1117,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
         <source>Add plot step</source>
         <translation>プロットステップを追加</translation>
     </message>
-    <message encoding="UTF-8">
+    <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2546"/>
         <source>&amp;Import…</source>
         <translation>インポート…</translation>
@@ -1156,7 +1157,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
         <source>Ctrl+V</source>
         <translation>Ctrl+V</translation>
     </message>
-    <message encoding="UTF-8">
+    <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2594"/>
         <source>&amp;Split…</source>
         <translation>分割…</translation>
@@ -1454,7 +1455,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/mainWindow.py" line="689"/>
         <source>Save changes to project &quot;{}&quot; before closing?</source>
-        <translation>閉じる前にプロジェクト &quot;{}&quot; への変更を保存しますか？</translation>
+        <translation>閉じる前にプロジェクト &amp;quot;{}&amp;quot; への変更を保存しますか？</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="689"/>
@@ -1680,7 +1681,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="472"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If you check this option, your project will be saved as one single file. Easier to copy or backup, but does not allow collaborative editing, or versioning.&lt;br/&gt;If this is unchecked, your project will be saved as a folder containing many small files.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;この設定を有効にすると、プロジェクトは単一のファイルとして保存されます。コピーやバックアップは簡単ですが、多人数での共同編集やバージョン管理には不向きです。&lt;br/&gt;この設定を無効にした場合、プロジェクトは多数の小さなファイルとして、指定のフォルダに保存されます。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&amp;lt;html&amp;gt;&amp;lt;head/&amp;gt;&amp;lt;body&amp;gt;&amp;lt;p&amp;gt;この設定を有効にすると、プロジェクトは単一のファイルとして保存されます。コピーやバックアップは簡単ですが、多人数での共同編集やバージョン管理には不向きです。&amp;lt;br/&amp;gt;この設定を無効にした場合、プロジェクトは多数の小さなファイルとして、指定のフォルダに保存されます。&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="478"/>
@@ -2270,7 +2271,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="821"/>
         <source>&lt;p&gt;&lt;b&gt;The Revisions feature has been at the source of many reported issues. In this version of Manuskript it has been turned off by default for new projects in order to provide the best experience.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Why aren&apos;t these issues fixed already? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;We need your help to make Manuskript better!&lt;/a&gt;&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;改訂機能は、多数報告された問題の原因となっています。このバージョンのManuskriptでは、最高のエクスペリエンスを提供するために、新規プロジェクトの既定でオフになっています。&lt;/b&gt;&lt;/p&gt;&lt;p&gt;なぜ問題はまだ修正されていないのですか？&lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;Manuskriptをより良くするために、あなたの助けが必要です！&lt;/a&gt;&lt;/p&gt;</translation>
+        <translation>&amp;lt;p&amp;gt;&amp;lt;b&amp;gt;改訂機能は、多数報告された問題の原因となっています。このバージョンのManuskriptでは、最高のエクスペリエンスを提供するために、新規プロジェクトの既定でオフになっています。&amp;lt;/b&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;なぜ問題はまだ修正されていないのですか？&amp;lt;a href=&amp;quot;https://www.theologeek.ch/manuskript/contribute/&amp;quot;&amp;gt;Manuskriptをより良くするために、あなたの助けが必要です！&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="211"/>
@@ -2302,42 +2303,42 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
 <context>
     <name>SpellAction</name>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="600"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="611"/>
         <source>Spelling Suggestions</source>
         <translation>綴りの候補</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="618"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="629"/>
         <source>&amp;Add to dictionary</source>
         <translation>辞書を追加 (&amp;A)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="671"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="682"/>
         <source>&amp;Remove from custom dictionary</source>
         <translation>カスタム辞書から削除 (&amp;R)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="527"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="538"/>
         <source>&amp;New Character</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="534"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="545"/>
         <source>&amp;New Plot Item</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="541"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="552"/>
         <source>&amp;New World Item</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="642"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="653"/>
         <source>&amp;Correction Suggestions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="651"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="662"/>
         <source>&amp;Correction Suggestion</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2680,7 +2681,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="142"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Filters what items will be included in the final export.&lt;br/&gt;&lt;span style=&quot; color:#773333;&quot;&gt;(Not fully implemented yet.)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;最終の出力に含める項目を絞り込みます。&lt;br/&gt;&lt;span style=&quot; color:#773333;&quot;&gt;(注意：この機能は、まだ完全ではなく、実験的な実装です)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&amp;lt;html&amp;gt;&amp;lt;head/&amp;gt;&amp;lt;body&amp;gt;&amp;lt;p&amp;gt;最終の出力に含める項目を絞り込みます。&amp;lt;br/&amp;gt;&amp;lt;span style=&amp;quot; color:#773333;&amp;quot;&amp;gt;(注意：この機能は、まだ完全ではなく、実験的な実装です)&amp;lt;/span&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="149"/>
@@ -2750,12 +2751,12 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="802"/>
         <source>Replace double quotes (&quot;) with:</source>
-        <translation>二重引用符 (&quot;) を、次に置き換える：</translation>
+        <translation>二重引用符 (&amp;quot;) を、次に置き換える：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="911"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>一重引用符 (&apos;) を、次に置き換える：</translation>
+        <translation>一重引用符 (') を、次に置き換える：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1020"/>
@@ -2827,12 +2828,12 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
         <source>{}Level {} text</source>
         <translation>{}レベル {} テキスト</translation>
     </message>
-    <message encoding="UTF-8">
+    <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="788"/>
         <source>Replace ... with …</source>
         <translation>… を … に置き換える</translation>
     </message>
-    <message encoding="UTF-8">
+    <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="795"/>
         <source>Replace --- with —</source>
         <translation>--- を — に置き換える</translation>
@@ -2863,12 +2864,12 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="124"/>
         <source>&lt;b&gt;Status:&lt;/b&gt; uninstalled.</source>
-        <translation>&lt;b&gt;状態：&lt;/b&gt; uninstalled.</translation>
+        <translation>&amp;lt;b&amp;gt;状態：&amp;lt;/b&amp;gt; uninstalled.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="126"/>
         <source>&lt;b&gt;Requires:&lt;/b&gt; </source>
-        <translation>&lt;b&gt;必要：&lt;/b&gt; </translation>
+        <translation>&amp;lt;b&amp;gt;必要：&amp;lt;/b&amp;gt; </translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="133"/>
@@ -3307,22 +3308,17 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
         <translation>新しいタブで {} を開く</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/outlineBasics.py" line="313"/>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="328"/>
         <source>About to remove</source>
         <translation>削除しようとしています</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/outlineBasics.py" line="313"/>
-        <source>&lt;p&gt;&lt;b&gt;You&apos;re about to delete {} item(s).&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Are you sure?&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;{} 個の項目を削除しようとしています。&lt;/b&gt;&lt;/p&gt;&lt;p&gt;よろしいですか？&lt;/p&gt;</translation>
-    </message>
-    <message>
-        <location filename="../manuskript/ui/views/outlineBasics.py" line="421"/>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="434"/>
         <source>Select at least two items. Folders are ignored.</source>
         <translation>少なくとも2つの項目を選択してください。フォルダは無視されます。</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/outlineBasics.py" line="430"/>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="443"/>
         <source>All items must be on the same level (share the same parent).</source>
         <translation>すべての項目は同じレベルになければなりません (同じ親を持ちます)。</translation>
     </message>
@@ -3361,6 +3357,16 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
         <source>&amp;Delete</source>
         <translation>削除 (&amp;D)</translation>
     </message>
+    <message>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="315"/>
+        <source>You&apos;re about to delete {} item(s).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="325"/>
+        <source>Are you sure?</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>outlineCharacterDelegate</name>
@@ -3388,12 +3394,12 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
 <context>
     <name>outlineItem</name>
     <message>
-        <location filename="../manuskript/models/outlineItem.py" line="251"/>
+        <location filename="../manuskript/models/outlineItem.py" line="256"/>
         <source>{} words / {} ({})</source>
         <translation>{} 単語 / {} ({})</translation>
     </message>
     <message>
-        <location filename="../manuskript/models/outlineItem.py" line="256"/>
+        <location filename="../manuskript/models/outlineItem.py" line="261"/>
         <source>{} words</source>
         <translation>{} 単語</translation>
     </message>
@@ -3844,7 +3850,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/models/references.py" line="513"/>
         <source>Character: &lt;b&gt;{}&lt;/b&gt;</source>
-        <translation>登場人物： &lt;b&gt;{}&lt;/b&gt;</translation>
+        <translation>登場人物： &amp;lt;b&amp;gt;{}&amp;lt;/b&amp;gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="516"/>
@@ -3854,7 +3860,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/models/references.py" line="519"/>
         <source>World: &lt;b&gt;{name}&lt;/b&gt;{path}</source>
-        <translation>世界：&lt;b&gt;{name}&lt;/b&gt;{path}</translation>
+        <translation>世界：&amp;lt;b&amp;gt;{name}&amp;lt;/b&amp;gt;{path}</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="592"/>
@@ -4095,7 +4101,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="47"/>
         <source>Split &apos;{}&apos;</source>
-        <translation>分割 &apos;{}&apos;</translation>
+        <translation>分割 '{}'</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="51"/>
@@ -4147,7 +4153,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
 <context>
     <name>textEditView</name>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="313"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="324"/>
         <source>Various</source>
         <translation type="unfinished">雑多</translation>
     </message>
@@ -4398,7 +4404,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/welcome.py" line="384"/>
         <source>&lt;b&gt;Total:&lt;/b&gt; {} words (~ {} pages)</source>
-        <translation>&lt;b&gt;合計：&lt;/b&gt; {} 単語 (約 {} ページ)</translation>
+        <translation>&amp;lt;b&amp;gt;合計：&amp;lt;/b&amp;gt; {} 単語 (約 {} ページ)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="405"/>
