@@ -172,24 +172,25 @@ def randomColor(mix=None):
     b = randint(0, 255)
 
     if mix:
-        r = (r + mix.red()) / 2
-        g = (g + mix.green()) / 2
-        b = (b + mix.blue()) / 2
+        r = int((r + mix.red()) / 2)
+        g = int((g + mix.green()) / 2)
+        b = int((b + mix.blue()) / 2)
 
     return QColor(r, g, b)
 
 
-def mixColors(col1, col2, f=.5):
+def mixColors(col1, col2, f=0.5):
     fromString = False
     if type(col1) == str:
         fromString = True
         col1 = QColor(col1)
     if type(col2) == str:
         col2 = QColor(col2)
-    f2 = 1-f
-    r = col1.red() * f + col2.red() * f2
-    g = col1.green() * f + col2.green() * f2
-    b = col1.blue() * f + col2.blue() * f2
+
+    f2 = 1.0 - f
+    r = int(col1.red() * f + col2.red() * f2)
+    g = int(col1.green() * f + col2.green() * f2)
+    b = int(col1.blue() * f + col2.blue() * f2)
 
     return QColor(r, g, b) if not fromString else QColor(r, g, b).name()
 
