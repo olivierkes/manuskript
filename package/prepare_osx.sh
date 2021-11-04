@@ -4,7 +4,7 @@ brew update &
 while true; do
   ps -p$! 2>& 1>/dev/null
   if [ $? = 0 ]; then
-    echo "still updating..."; sleep 5
+    echo "still updating..."; sleep 5m
   else
     break
   fi
