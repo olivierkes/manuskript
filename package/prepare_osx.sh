@@ -1,9 +1,6 @@
 #!/bin/bash
 set -ev   # display each line executed along with output
-
-# `travis_wait` is to ensure the build in the CI does not time out after 10 minutes without output:
-# (remove `travis_wait` to run this script locally or alias it as short forwarding of commands)
-travis_wait brew update
+brew update
 
 # Upgrade to python 3.x
 brew upgrade python
