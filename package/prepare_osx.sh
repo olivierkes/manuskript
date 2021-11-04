@@ -1,6 +1,14 @@
 #!/bin/bash
 set -ev   # display each line executed along with output
-brew update
+brew update &
+while true; do
+  ps -p$! 2>& 1>/dev/null
+  if [ $? = 0 ]; then
+    echo "still updating..."; sleep 5
+  else
+    break
+  fi
+done
 
 # Upgrade to python 3.x
 brew upgrade python
