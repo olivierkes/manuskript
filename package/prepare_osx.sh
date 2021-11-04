@@ -1,17 +1,10 @@
 #!/bin/bash
 set -ev   # display each line executed along with output
-brew update &
-while true; do
-  ps -p$! 2>& 1>/dev/null
-  if [ $? = 0 ]; then
-    echo "still updating..."; sleep 5m
-  else
-    break
-  fi
-done
+# brew update # (safe the CI some time)
 
 # Upgrade to python 3.x
-brew upgrade python
+# brew upgrade python # (should be fine)
+
 brew install enchant
 brew postinstall python   # this installs pip
 sudo -H pip3 install --upgrade pip setuptools wheel
