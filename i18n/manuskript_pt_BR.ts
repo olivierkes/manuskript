@@ -1,16 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE TS>
 <TS version="2.1" language="pt_BR">
 <context>
     <name>Export</name>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="18"/>
-        <source>Basic HTML output using the Python module &apos;markdown&apos;.</source>
+        <source>Basic HTML output using the Python module 'markdown'.</source>
         <translation>Saída HTML básica usando o módulo Python 'markdown'.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="19"/>
-        <source>Python module &apos;markdown&apos;.</source>
+        <source>Python module 'markdown'.</source>
         <translation>Módulo Python 'markdown'.</translation>
     </message>
     <message>
@@ -106,7 +106,7 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="124"/>
         <source>Use &lt;q&gt; tags for quotes in HTML</source>
-        <translation>Use as tags &amp;lt;q&amp;gt; para marcações em HTML</translation>
+        <translation>Use as tags &lt;q&gt; para marcações em HTML</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="131"/>
@@ -135,7 +135,7 @@
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/outputFormats.py" line="10"/>
-        <source>Books that don&apos;t kill trees.</source>
+        <source>Books that don't kill trees.</source>
         <translation>Livros que não matam árvores.</translation>
     </message>
     <message>
@@ -163,26 +163,26 @@
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="18"/>
         <source>Simplest export to plain text. Allows you to use your own markup not understood
-                  by Manuskript, for example &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</source>
+                  by Manuskript, for example &lt;a href='www.fountain.io'&gt;Fountain&lt;/a&gt;.</source>
         <translation>Exportação simples para texto simples. Permite que você use sua própria marcação não entendida
-                  pelo manuskript, por exemplo &amp;lt;a href='www.fountain.io'&amp;gt;Fountain&amp;lt;/a&amp;gt;.</translation>
+                  pelo manuskript, por exemplo &lt;a href='www.fountain.io'&gt;Fountain&lt;/a&gt;.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/__init__.py" line="22"/>
         <source>&lt;p&gt;A universal document converter. Can be used to convert Markdown to a wide range of other
     formats.&lt;/p&gt;
-    &lt;p&gt;Website: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;Website: &lt;a href="http://www.pandoc.org"&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
     </source>
-        <translation>&amp;lt;p&amp;gt;Um conversor de documentos universal. Pode ser usado para converter Markdown em uma gama de outros formatos.&amp;lt;/p&amp;gt;
-    &amp;lt;p&amp;gt;Site: &amp;lt;a href=&amp;quot;http://www.pandoc.org&amp;quot;&amp;gt;http://pandoc.org/&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;
+        <translation>&lt;p&gt;Um conversor de documentos universal. Pode ser usado para converter Markdown em uma gama de outros formatos.&lt;/p&gt;
+    &lt;p&gt;Site: &lt;a href="http://www.pandoc.org"&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
     </translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/PDF.py" line="19"/>
         <source>a valid LaTeX installation. Pandoc recommendations can be found on:
-                     &lt;a href=&quot;https://pandoc.org/installing.html&quot;&gt;pandoc.org/installing.html&lt;/a&gt;. If you want Unicode support, you need XeLaTeX.</source>
+                     &lt;a href="https://pandoc.org/installing.html"&gt;pandoc.org/installing.html&lt;/a&gt;. If you want Unicode support, you need XeLaTeX.</source>
         <translation>uma instalação LaTeX válida. Veja as recomendações sobre pandoc em:
-                     &amp;lt;a href=&amp;quot;http://pandoc.org/installing.html&amp;quot;&amp;gt;http://pandoc.org/installing.html&amp;lt;/a&amp;gt;. Se você quiser suporte unicode, você precisa do XeLaTeX.</translation>
+                     &lt;a href="http://pandoc.org/installing.html"&gt;http://pandoc.org/installing.html&lt;/a&gt;. Se você quiser suporte unicode, você precisa do XeLaTeX.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/plainText.py" line="10"/>
@@ -227,7 +227,7 @@ Use isso se você receber um erro relacionado ao YAML.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="71"/>
-        <source>Choose output file&#xe2;&#x80;&#xa6;</source>
+        <source>Choose output fileâ¦</source>
         <translation type="unfinished">Escolha o arquivo de saída</translation>
     </message>
 </context>
@@ -241,7 +241,7 @@ Use isso se você receber um erro relacionado ao YAML.</translation>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="21"/>
         <source>Manuskript</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="66"/>
@@ -276,12 +276,12 @@ Use isso se você receber um erro relacionado ao YAML.</translation>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="258"/>
         <source>...</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="273"/>
         <source>{HelpText}</source>
-        <translation></translation>
+        <translation/>
     </message>
 </context>
 <context>
@@ -360,11 +360,11 @@ Use isso se você receber um erro relacionado ao YAML.</translation>
                         plaintext documents within (you chose which ones by extension)
                         are added as scene.&lt;/p&gt;
                         &lt;p&gt;Only text files are supported (not images, binary or others).&lt;/p&gt;</source>
-        <translation>&amp;lt;p&amp;gt;&amp;lt;b&amp;gt;Info:&amp;lt;/b&amp;gt; Importa toda
+        <translation>&lt;p&gt;&lt;b&gt;Info:&lt;/b&gt; Importa toda
                         estrutura do diretório. Pastas são adicionadas as pastas, e
                         e os documentos de textos dentro (você escolhe quais, por extensão)
-                        são adicionados como cenas.&amp;lt;/p&amp;gt;
-                        &amp;lt;p&amp;gt;Somente arquivos de texto são suportados (imagens, arquivos binários e outros não).&amp;lt;/p&amp;gt;</translation>
+                        são adicionados como cenas.&lt;/p&gt;
+                        &lt;p&gt;Somente arquivos de texto são suportados (imagens, arquivos binários e outros não).&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="107"/>
@@ -439,12 +439,12 @@ Use isso se você receber um erro relacionado ao YAML.</translation>
                         &lt;b&gt;none&lt;/b&gt;: no line wrap.&lt;br&gt;
                         &lt;b&gt;preserve&lt;/b&gt;: tries to preserves line wrap from the
                         original document.&lt;/p&gt;</source>
-        <translation>&amp;lt;p&amp;gt;O pandoc pode criar
-                        cosmética/ linhas de quebra não semântica?&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;
-                        &amp;lt;b&amp;gt;auto&amp;lt;/b&amp;gt;: quebra de 72 caracteres.&amp;lt;br&amp;gt;
-                        &amp;lt;b&amp;gt;nenhum&amp;lt;/b&amp;gt;: sem quebra de linha&amp;lt;br&amp;gt;
-                        &amp;lt;b&amp;gt;preservar&amp;lt;/b&amp;gt;: tenta preservar a quebra de linha do
-                        documento original.&amp;lt;/p&amp;gt;</translation>
+        <translation>&lt;p&gt;O pandoc pode criar
+                        cosmética/ linhas de quebra não semântica?&lt;/p&gt;&lt;p&gt;
+                        &lt;b&gt;auto&lt;/b&gt;: quebra de 72 caracteres.&lt;br&gt;
+                        &lt;b&gt;nenhum&lt;/b&gt;: sem quebra de linha&lt;br&gt;
+                        &lt;b&gt;preservar&lt;/b&gt;: tenta preservar a quebra de linha do
+                        documento original.&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/mindMapImporter.py" line="55"/>
@@ -500,12 +500,12 @@ Use isso se você receber um erro relacionado ao YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="189"/>
         <source>Series</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="199"/>
         <source>Volume</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="226"/>
@@ -649,13 +649,13 @@ Use isso se você receber um erro relacionado ao YAML.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="920"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One sentence&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&amp;lt;html&amp;gt;&amp;lt;head/&amp;gt;&amp;lt;body&amp;gt;&amp;lt;p align=&amp;quot;right&amp;quot;&amp;gt;Uma sentença&amp;lt;br/&amp;gt;sumário&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;</translation>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align="right"&gt;One sentence&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align="right"&gt;Uma sentença&lt;br/&gt;sumário&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="930"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One paragraph&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&amp;lt;html&amp;gt;&amp;lt;head/&amp;gt;&amp;lt;body&amp;gt;&amp;lt;p align=&amp;quot;right&amp;quot;&amp;gt;Um parágrafo&amp;lt;br/&amp;gt;sumário&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;</translation>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align="right"&gt;One paragraph&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align="right"&gt;Um parágrafo&lt;br/&gt;sumário&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1021"/>
@@ -730,7 +730,7 @@ Use isso se você receber um erro relacionado ao YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1874"/>
         <source>Editor</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2005"/>
@@ -810,7 +810,7 @@ Use isso se você receber um erro relacionado ao YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2363"/>
         <source>Ctrl+O</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2372"/>
@@ -820,7 +820,7 @@ Use isso se você receber um erro relacionado ao YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2375"/>
         <source>Ctrl+S</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2384"/>
@@ -830,7 +830,7 @@ Use isso se você receber um erro relacionado ao YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2387"/>
         <source>Ctrl+Shift+S</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2396"/>
@@ -840,7 +840,7 @@ Use isso se você receber um erro relacionado ao YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2399"/>
         <source>Ctrl+Q</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2414"/>
@@ -850,7 +850,7 @@ Use isso se você receber um erro relacionado ao YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2417"/>
         <source>Ctrl+Shift+B</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2432"/>
@@ -860,7 +860,7 @@ Use isso se você receber um erro relacionado ao YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2435"/>
         <source>F9</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2444"/>
@@ -870,7 +870,7 @@ Use isso se você receber um erro relacionado ao YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2453"/>
         <source>&amp;Status...</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1552"/>
@@ -900,7 +900,7 @@ Use isso se você receber um erro relacionado ao YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2499"/>
         <source>F8</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2508"/>
@@ -915,7 +915,7 @@ Use isso se você receber um erro relacionado ao YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2520"/>
         <source>F6</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2525"/>
@@ -940,7 +940,7 @@ Use isso se você receber um erro relacionado ao YAML.</translation>
     <message>
         <location filename="../manuskript/mainWindow.py" line="746"/>
         <source>Manuskript</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="872"/>
@@ -999,8 +999,8 @@ Use isso se você receber um erro relacionado ao YAML.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1362"/>
-        <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous
-                     evil wizard wasn&apos;t able to kill a baby?&apos; (Harry Potter)</source>
+        <source>The basic situation, in the form of a 'What if...?' question. Ex: 'What if the most dangerous
+                     evil wizard wasn't able to kill a baby?' (Harry Potter)</source>
         <translation>A situação básica, na forma de um questionamento tipo 'e se ...'. Ex: 
 'E se o mais perigoso malvado feiticeiro não foi capaz de matar um bebê?' (Harry Potter)</translation>
     </message>
@@ -1124,7 +1124,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2549"/>
         <source>F7</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2558"/>
@@ -1134,7 +1134,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2561"/>
         <source>Ctrl+C</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2570"/>
@@ -1144,7 +1144,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2573"/>
         <source>Ctrl+X</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2582"/>
@@ -1154,7 +1154,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2585"/>
         <source>Ctrl+V</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2594"/>
@@ -1164,7 +1164,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2597"/>
         <source>Ctrl+Shift+K</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2606"/>
@@ -1174,22 +1174,22 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2609"/>
         <source>Ctrl+K</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2621"/>
         <source>Ctrl+M</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2824"/>
         <source>Ctrl+D</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2642"/>
         <source>Del</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2651"/>
@@ -1199,7 +1199,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2654"/>
         <source>Ctrl+Shift+Up</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2663"/>
@@ -1209,7 +1209,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2666"/>
         <source>Ctrl+Shift+Down</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2630"/>
@@ -1229,7 +1229,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2678"/>
         <source>F2</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2235"/>
@@ -1453,12 +1453,12 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="689"/>
-        <source>Save changes to project &quot;{}&quot; before closing?</source>
-        <translation>Salvar mudanças no projeto &amp;quot;{}&amp;quot; antes de fechar?</translation>
+        <source>Save changes to project "{}" before closing?</source>
+        <translation>Salvar mudanças no projeto "{}" antes de fechar?</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="689"/>
-        <source>Your changes will be lost if you don&apos;t save them.</source>
+        <source>Your changes will be lost if you don't save them.</source>
         <translation>Suas mudanças vão perder se você não salvá-las.</translation>
     </message>
     <message>
@@ -1479,107 +1479,107 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="862"/>
         <source>Allow POV</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2852"/>
         <source>Search</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2855"/>
         <source>Ctrl+F</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2860"/>
         <source>&amp;Technical Support</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2863"/>
         <source>How to obtain technical support for Manuskript.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2866"/>
         <source>F1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2871"/>
         <source>&amp;Locate log file...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2874"/>
         <source>Locate log file</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2877"/>
         <source>Locate the diagnostic log file used for this session.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2880"/>
         <source>Shift+F1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1193"/>
         <source>Sorry!</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1193"/>
         <source>This session is not being logged.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1202"/>
         <source>A log file is a Work in Progress!</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1202"/>
-        <source>The log file &quot;{}&quot; will continue to be written to until Manuskript is closed.</source>
-        <translation type="unfinished"></translation>
+        <source>The log file "{}" will continue to be written to until Manuskript is closed.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1202"/>
         <source>It will now be displayed in your file manager, but is of limited use until you close Manuskript.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1218"/>
         <source>Error!</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1218"/>
         <source>An error was encountered while trying to show the log file below in your file manager.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="45"/>
         <source>F3</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="46"/>
         <source>Shift+F3</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="50"/>
         <source>Situation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="51"/>
         <source>Status</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1587,7 +1587,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/search.py" line="40"/>
         <source>No results found</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1620,7 +1620,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3023"/>
         <source>Status</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3097"/>
@@ -1680,7 +1680,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="472"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If you check this option, your project will be saved as one single file. Easier to copy or backup, but does not allow collaborative editing, or versioning.&lt;br/&gt;If this is unchecked, your project will be saved as a folder containing many small files.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&amp;lt;html&amp;gt;&amp;lt;head/&amp;gt;&amp;lt;body&amp;gt;&amp;lt;p&amp;gt;Se você marcar essa opção, seu projeto será salvo como um único arquivo. Mais fácil de copiar ou fazer backup, mas não permite edição colaborativa ou controle de versão.&amp;lt;br/&amp;gt;Se não for marcado aqui, o seu projeto será salvo como uma pasta contendo muitos arquivos pequenos.&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Se você marcar essa opção, seu projeto será salvo como um único arquivo. Mais fácil de copiar ou fazer backup, mas não permite edição colaborativa ou controle de versão.&lt;br/&gt;Se não for marcado aqui, o seu projeto será salvo como uma pasta contendo muitos arquivos pequenos.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="478"/>
@@ -1880,7 +1880,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2938"/>
         <source>Ctrl+S</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3318"/>
@@ -1950,7 +1950,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3700"/>
         <source>%</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3716"/>
@@ -1960,7 +1960,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3780"/>
         <source> px</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3802"/>
@@ -2115,7 +2115,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2750"/>
         <source>Cursor</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2762"/>
@@ -2269,34 +2269,34 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="821"/>
-        <source>&lt;p&gt;&lt;b&gt;The Revisions feature has been at the source of many reported issues. In this version of Manuskript it has been turned off by default for new projects in order to provide the best experience.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Why aren&apos;t these issues fixed already? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;We need your help to make Manuskript better!&lt;/a&gt;&lt;/p&gt;</source>
-        <translation>&amp;lt;p&amp;gt;&amp;lt;b&amp;gt;As ferramentas de revisões são fontes de muitos problemas reportadas. Nesta versão do Manuskript, ele foi desativado por padrão para novos projetos, a fim de fornecer a melhor experiência.&amp;lt;/b&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;Por que esses problemas já não foram corrigidos? &amp;lt;a href=&amp;quot;https://www.theologeek.ch/manuskript/contribute/&amp;quot;&amp;gt;Nós precisamos de sua ajuda para fazer o Manuskript melhor!&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;</translation>
+        <source>&lt;p&gt;&lt;b&gt;The Revisions feature has been at the source of many reported issues. In this version of Manuskript it has been turned off by default for new projects in order to provide the best experience.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Why aren't these issues fixed already? &lt;a href="https://www.theologeek.ch/manuskript/contribute/"&gt;We need your help to make Manuskript better!&lt;/a&gt;&lt;/p&gt;</source>
+        <translation>&lt;p&gt;&lt;b&gt;As ferramentas de revisões são fontes de muitos problemas reportadas. Nesta versão do Manuskript, ele foi desativado por padrão para novos projetos, a fim de fornecer a melhor experiência.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Por que esses problemas já não foram corrigidos? &lt;a href="https://www.theologeek.ch/manuskript/contribute/"&gt;Nós precisamos de sua ajuda para fazer o Manuskript melhor!&lt;/a&gt;&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="211"/>
         <source>Show progress in chars next
  to words</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1113"/>
         <source>Char/Word Counter</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1137"/>
         <source>Count spaces as chars</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1206"/>
         <source>Show char c&amp;ount</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1289"/>
         <source>Sho&amp;w char count</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2319,27 +2319,27 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="538"/>
         <source>&amp;New Character</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="545"/>
         <source>&amp;New Plot Item</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="552"/>
         <source>&amp;New World Item</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="653"/>
         <source>&amp;Correction Suggestions</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="662"/>
         <source>&amp;Correction Suggestion</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2352,7 +2352,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/about_ui.ui" line="50"/>
         <source>Manuskript</source>
-        <translation></translation>
+        <translation/>
     </message>
 </context>
 <context>
@@ -2360,7 +2360,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/about.py" line="28"/>
         <source>Version</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/about.py" line="41"/>
@@ -2383,12 +2383,12 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="203"/>
         <source>Label</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="205"/>
         <source>Status</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="207"/>
@@ -2444,7 +2444,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/models/characterModel.py" line="205"/>
         <source>Name</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/models/characterModel.py" line="207"/>
@@ -2467,7 +2467,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/views/characterTreeView.py" line="32"/>
         <source>Minor</source>
-        <translation></translation>
+        <translation/>
     </message>
 </context>
 <context>
@@ -2485,7 +2485,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/cheatSheet.py" line="113"/>
         <source>Minor</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/cheatSheet.py" line="113"/>
@@ -2515,7 +2515,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/cheatSheet.py" line="120"/>
         <source>World</source>
-        <translation></translation>
+        <translation/>
     </message>
 </context>
 <context>
@@ -2523,7 +2523,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/views/cmbOutlineCharacterChoser.py" line="34"/>
         <source>None</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/views/cmbOutlineCharacterChoser.py" line="36"/>
@@ -2538,7 +2538,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/views/cmbOutlineCharacterChoser.py" line="36"/>
         <source>Minor</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/views/cmbOutlineCharacterChoser.py" line="136"/>
@@ -2604,12 +2604,12 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/exporters/exporter_ui.ui" line="65"/>
         <source>Export</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exporter_ui.ui" line="22"/>
         <source>Export to:</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exporter_ui.ui" line="32"/>
@@ -2645,7 +2645,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="50"/>
         <source>Content</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="56"/>
@@ -2655,7 +2655,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="85"/>
         <source>Type</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="90"/>
@@ -2665,7 +2665,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings.py" line="326"/>
         <source>Text</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="118"/>
@@ -2679,8 +2679,8 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="142"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Filters what items will be included in the final export.&lt;br/&gt;&lt;span style=&quot; color:#773333;&quot;&gt;(Not fully implemented yet.)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&amp;lt;html&amp;gt;&amp;lt;head/&amp;gt;&amp;lt;body&amp;gt;&amp;lt;p&amp;gt;Filtra quais itens serão incluídos na exportação final.&amp;lt;br/&amp;gt;&amp;lt;span style=&amp;quot; color:#773333;&amp;quot;&amp;gt;(Não está completamente implementado.)&amp;lt;/span&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;</translation>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Filters what items will be included in the final export.&lt;br/&gt;&lt;span style=" color:#773333;"&gt;(Not fully implemented yet.)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Filtra quais itens serão incluídos na exportação final.&lt;br/&gt;&lt;span style=" color:#773333;"&gt;(Não está completamente implementado.)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="149"/>
@@ -2695,12 +2695,12 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="170"/>
         <source>Labels</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="177"/>
         <source>Status</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="229"/>
@@ -2740,7 +2740,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="764"/>
         <source>Transformations</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="773"/>
@@ -2749,12 +2749,12 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="802"/>
-        <source>Replace double quotes (&quot;) with:</source>
-        <translation>Substitua aspas duplas (&amp;quot;) por:</translation>
+        <source>Replace double quotes (") with:</source>
+        <translation>Substitua aspas duplas (") por:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="911"/>
-        <source>Replace single quotes (&apos;) with:</source>
+        <source>Replace single quotes (') with:</source>
         <translation>Substitua as aspas simples(') por:</translation>
     </message>
     <message>
@@ -2780,12 +2780,12 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1059"/>
         <source>With</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1064"/>
         <source>RegExp</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1067"/>
@@ -2800,12 +2800,12 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1157"/>
         <source>Font</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1163"/>
         <source>Font:</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1173"/>
@@ -2825,7 +2825,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings.py" line="346"/>
         <source>{}Level {} text</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="788"/>
@@ -2863,12 +2863,12 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="124"/>
         <source>&lt;b&gt;Status:&lt;/b&gt; uninstalled.</source>
-        <translation>&amp;lt;b&amp;gt;Situação:&amp;lt;/b&amp;gt; desinstalado.</translation>
+        <translation>&lt;b&gt;Situação:&lt;/b&gt; desinstalado.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="126"/>
         <source>&lt;b&gt;Requires:&lt;/b&gt; </source>
-        <translation>&amp;lt;b&amp;gt;Requer:&amp;lt;/b&amp;gt; </translation>
+        <translation>&lt;b&gt;Requer:&lt;/b&gt; </translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="133"/>
@@ -2886,12 +2886,12 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/tools/frequencyAnalyzer.py" line="108"/>
         <source>Frequency</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequencyAnalyzer.py" line="108"/>
         <source>Word</source>
-        <translation></translation>
+        <translation/>
     </message>
 </context>
 <context>
@@ -2899,7 +2899,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="133"/>
         <source>Theme:</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="364"/>
@@ -2972,7 +2972,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.ui" line="41"/>
         <source>General</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.ui" line="55"/>
@@ -2982,12 +2982,12 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.ui" line="65"/>
         <source>\n---\n</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.ui" line="72"/>
         <source>Trim long titles (&gt; 32 chars)</source>
-        <translation>Apare títulos longos (&amp;gt; 32 letras)</translation>
+        <translation>Apare títulos longos (&gt; 32 letras)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.ui" line="86"/>
@@ -3004,7 +3004,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <name>helpLabel</name>
     <message>
         <location filename="../manuskript/ui/helpLabel.py" line="12"/>
-        <source>If you don&apos;t wanna see me, you can hide me in Help menu.</source>
+        <source>If you don't wanna see me, you can hide me in Help menu.</source>
         <translation>Se você não quiser me ver, pode me esconder no menu Ajuda.</translation>
     </message>
 </context>
@@ -3013,12 +3013,12 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/importers/importer_ui.ui" line="119"/>
         <source>Import</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/importers/importer_ui.ui" line="22"/>
         <source>Format:</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/importers/importer_ui.ui" line="45"/>
@@ -3059,7 +3059,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/editors/locker_ui.ui" line="26"/>
         <source>Lock screen:</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker_ui.ui" line="33"/>
@@ -3079,32 +3079,32 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/editors/locker_ui.ui" line="63"/>
         <source> minutes</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker_ui.ui" line="79"/>
         <source>Lock !</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker.py" line="94"/>
         <source>~{} h.</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker.py" line="96"/>
         <source>~{} mn.</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker.py" line="100"/>
         <source>{}:{}</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker.py" line="102"/>
         <source>{} s.</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker.py" line="104"/>
@@ -3127,7 +3127,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.ui" line="67"/>
         <source>Text</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.ui" line="83"/>
@@ -3142,7 +3142,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.ui" line="198"/>
         <source>F11</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.ui" line="47"/>
@@ -3152,12 +3152,12 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.ui" line="57"/>
         <source>Alt+Up</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="251"/>
         <source>Root</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="358"/>
@@ -3167,22 +3167,22 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="339"/>
         <source>({} chars) {}  words / {} </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="345"/>
         <source>{}  words / {} </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="360"/>
         <source>{} chars</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="354"/>
         <source>{} chars </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3190,7 +3190,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/exporter/manuskript/markdown.py" line="58"/>
         <source>Markdown</source>
-        <translation></translation>
+        <translation/>
     </message>
 </context>
 <context>
@@ -3203,7 +3203,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.ui" line="41"/>
         <source>Properties</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.ui" line="81"/>
@@ -3249,22 +3249,22 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="136"/>
         <source>None</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="163"/>
         <source>Set Status</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="179"/>
         <source>Set Label</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="283"/>
         <source>New</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="142"/>
@@ -3279,7 +3279,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="144"/>
         <source>Minor</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="197"/>
@@ -3294,17 +3294,17 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="61"/>
         <source>Root</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="75"/>
         <source>Open {} items in new tabs</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="78"/>
         <source>Open {} in a new tab</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="328"/>
@@ -3329,7 +3329,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="94"/>
         <source>New &amp;Text</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="108"/>
@@ -3339,7 +3339,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="103"/>
         <source>C&amp;ut</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="113"/>
@@ -3354,17 +3354,17 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="119"/>
         <source>&amp;Delete</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="315"/>
-        <source>You&apos;re about to delete {} item(s).</source>
-        <translation type="unfinished"></translation>
+        <source>You're about to delete {} item(s).</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="325"/>
         <source>Are you sure?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3372,7 +3372,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/views/outlineDelegates.py" line="141"/>
         <source>None</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineDelegates.py" line="143"/>
@@ -3387,7 +3387,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/views/outlineDelegates.py" line="143"/>
         <source>Minor</source>
-        <translation></translation>
+        <translation/>
     </message>
 </context>
 <context>
@@ -3408,12 +3408,12 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="166"/>
         <source>General</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="180"/>
         <source>Table of Content</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="185"/>
@@ -3444,7 +3444,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>General</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3483,7 +3483,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
-        <source>Freytag&apos;s pyramid</source>
+        <source>Freytag's pyramid</source>
         <translation>Pirâmide de Freytag</translation>
     </message>
     <message>
@@ -3558,7 +3558,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
-        <source>Hero&apos;s journey</source>
+        <source>Hero's journey</source>
         <translation>Jornada do herói</translation>
     </message>
     <message>
@@ -3604,7 +3604,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Transformation</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3614,7 +3614,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Return</source>
-        <translation></translation>
+        <translation/>
     </message>
 </context>
 <context>
@@ -3622,12 +3622,12 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/models/plotModel.py" line="144"/>
         <source>Name</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/models/plotModel.py" line="146"/>
         <source>Meta</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/models/plotModel.py" line="179"/>
@@ -3647,7 +3647,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/models/plotModel.py" line="249"/>
         <source>Minor</source>
-        <translation></translation>
+        <translation/>
     </message>
 </context>
 <context>
@@ -3665,7 +3665,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/views/plotTreeView.py" line="127"/>
         <source>Minor</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotTreeView.py" line="187"/>
@@ -3706,12 +3706,12 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/views/propertiesView_ui.ui" line="215"/>
         <source>Status</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/views/propertiesView_ui.ui" line="235"/>
         <source>Label</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/views/propertiesView_ui.ui" line="255"/>
@@ -3749,7 +3749,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/models/references.py" line="107"/>
         <source>Stats:</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="108"/>
@@ -3759,12 +3759,12 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/models/references.py" line="109"/>
         <source>Status:</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="110"/>
         <source>Label:</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="111"/>
@@ -3779,7 +3779,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/models/references.py" line="113"/>
         <source>Notes:</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="201"/>
@@ -3799,12 +3799,12 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/models/references.py" line="364"/>
         <source>Go to {}.</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="359"/>
         <source>Description</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="281"/>
@@ -3834,32 +3834,32 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/models/references.py" line="498"/>
         <source>&lt;b&gt;Unknown reference:&lt;/b&gt; {}.</source>
-        <translation>&amp;lt;b&amp;gt;Referência Desconhecida:&amp;lt;/b&amp;gt; {}.</translation>
+        <translation>&lt;b&gt;Referência Desconhecida:&lt;/b&gt; {}.</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="506"/>
         <source>Folder: &lt;b&gt;{}&lt;/b&gt;</source>
-        <translation>Pasta: &amp;lt;b&amp;gt;{}&amp;lt;/b&amp;gt;</translation>
+        <translation>Pasta: &lt;b&gt;{}&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="508"/>
         <source>Text: &lt;b&gt;{}&lt;/b&gt;</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="513"/>
         <source>Character: &lt;b&gt;{}&lt;/b&gt;</source>
-        <translation>Personagem: &amp;lt;b&amp;gt;{}&amp;lt;/b&amp;gt;</translation>
+        <translation>Personagem: &lt;b&gt;{}&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="516"/>
         <source>Plot: &lt;b&gt;{}&lt;/b&gt;</source>
-        <translation>Enredo: &amp;lt;b&amp;gt;{}&amp;lt;/b&amp;gt;</translation>
+        <translation>Enredo: &lt;b&gt;{}&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="519"/>
         <source>World: &lt;b&gt;{name}&lt;/b&gt;{path}</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="592"/>
@@ -3902,7 +3902,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/revisions_ui.ui" line="107"/>
         <source>Options</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="257"/>
@@ -3912,7 +3912,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/revisions.py" line="258"/>
         <source>Delete</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="45"/>
@@ -3972,7 +3972,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/revisions.py" line="182"/>
         <source>Line {}:</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="261"/>
@@ -3998,12 +3998,12 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/settingsWindow.py" line="674"/>
         <source>New status</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="695"/>
         <source>New label</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="731"/>
@@ -4013,7 +4013,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/settingsWindow.py" line="741"/>
         <source>New theme</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="773"/>
@@ -4063,7 +4063,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/views/sldImportance.py" line="29"/>
         <source>Minor</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/views/sldImportance.py" line="30"/>
@@ -4084,7 +4084,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
             &lt;p&gt;Split selected item(s) at the given mark.&lt;/p&gt;
 
             &lt;p&gt;If one of the selected item is a folder, it will be applied
-            recursively to &lt;i&gt;all&lt;/i&gt; of it&apos;s children items.&lt;/p&gt;
+            recursively to &lt;i&gt;all&lt;/i&gt; of it's children items.&lt;/p&gt;
 
             &lt;p&gt;The split mark can contain following escape sequences:
                 &lt;ul&gt;
@@ -4096,23 +4096,23 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
             &lt;p&gt;&lt;b&gt;Mark:&lt;/b&gt;&lt;/p&gt;
             </source>
         <translation>
-            &amp;lt;p&amp;gt;Dividir o(s) item(ns) selecionado(s) na marca indicada.&amp;lt;/p&amp;gt;
+            &lt;p&gt;Dividir o(s) item(ns) selecionado(s) na marca indicada.&lt;/p&gt;
 
-            &amp;lt;p&amp;gt;Se um dos itens selecionados for uma pasta, ele será aplicado recursivamente para &amp;lt;i&amp;gt;todos&amp;lt;/i&amp;gt; seus itens filhos.&amp;lt;/p&amp;gt;
+            &lt;p&gt;Se um dos itens selecionados for uma pasta, ele será aplicado recursivamente para &lt;i&gt;todos&lt;/i&gt; seus itens filhos.&lt;/p&gt;
 
-            &amp;lt;p&amp;gt;A marca de divisão pode conter as seguintes sequências de escape:
-                &amp;lt;ul&amp;gt;
-                    &amp;lt;li&amp;gt;&amp;lt;b&amp;gt;&amp;lt;code&amp;gt;\n&amp;lt;/code&amp;gt;&amp;lt;/b&amp;gt;: quebra de linha&amp;lt;/li&amp;gt;
-                    &amp;lt;li&amp;gt;&amp;lt;b&amp;gt;&amp;lt;code&amp;gt;\t&amp;lt;/code&amp;gt;&amp;lt;/b&amp;gt;: tabulação&amp;lt;/li&amp;gt;
-                &amp;lt;/ul&amp;gt;
-            &amp;lt;/p&amp;gt;
+            &lt;p&gt;A marca de divisão pode conter as seguintes sequências de escape:
+                &lt;ul&gt;
+                    &lt;li&gt;&lt;b&gt;&lt;code&gt;\n&lt;/code&gt;&lt;/b&gt;: quebra de linha&lt;/li&gt;
+                    &lt;li&gt;&lt;b&gt;&lt;code&gt;\t&lt;/code&gt;&lt;/b&gt;: tabulação&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/p&gt;
 
-            &amp;lt;p&amp;gt;&amp;lt;b&amp;gt;Marcador:&amp;lt;/b&amp;gt;&amp;lt;/p&amp;gt;
+            &lt;p&gt;&lt;b&gt;Marcador:&lt;/b&gt;&lt;/p&gt;
             </translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="47"/>
-        <source>Split &apos;{}&apos;</source>
+        <source>Split '{}'</source>
         <translation>Separar '{}'</translation>
     </message>
     <message>
@@ -4180,42 +4180,42 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/editors/textFormat.py" line="18"/>
         <source>CTRL+B</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/textFormat.py" line="19"/>
         <source>CTRL+I</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/textFormat.py" line="20"/>
         <source>CTRL+U</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/textFormat.py" line="21"/>
         <source>CTRL+P</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/textFormat.py" line="22"/>
         <source>CTRL+L</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/textFormat.py" line="23"/>
         <source>CTRL+E</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/textFormat.py" line="24"/>
         <source>CTRL+R</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/textFormat.py" line="25"/>
         <source>CTRL+J</source>
-        <translation></translation>
+        <translation/>
     </message>
 </context>
 <context>
@@ -4251,7 +4251,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/welcome_ui.ui" line="50"/>
         <source>1</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome_ui.ui" line="55"/>
@@ -4306,12 +4306,12 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/welcome_ui.ui" line="238"/>
         <source>Open...</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome_ui.ui" line="248"/>
         <source>Recent</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome_ui.ui" line="258"/>
@@ -4321,7 +4321,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/welcome.py" line="158"/>
         <source>Open project</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="158"/>
@@ -4341,7 +4341,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/welcome.py" line="188"/>
         <source>Manuskript</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="196"/>
@@ -4381,7 +4381,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/welcome.py" line="239"/>
         <source>Book</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="247"/>
@@ -4401,12 +4401,12 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/welcome.py" line="311"/>
         <source>of</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="335"/>
         <source>Text</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="338"/>
@@ -4416,7 +4416,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/welcome.py" line="384"/>
         <source>&lt;b&gt;Total:&lt;/b&gt; {} words (~ {} pages)</source>
-        <translation>&amp;lt;b&amp;gt;Total:&amp;lt;/b&amp;gt; {} palavras (~ {} páginas)</translation>
+        <translation>&lt;b&gt;Total:&lt;/b&gt; {} palavras (~ {} páginas)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="405"/>
@@ -4431,12 +4431,12 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/welcome.py" line="446"/>
         <source>Idea</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="447"/>
         <source>Note</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="450"/>
@@ -4446,7 +4446,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/welcome.py" line="457"/>
         <source>TODO</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="458"/>
@@ -4461,7 +4461,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/welcome.py" line="460"/>
         <source>Final</source>
-        <translation></translation>
+        <translation/>
     </message>
 </context>
 <context>
@@ -4469,7 +4469,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/models/worldModel.py" line="136"/>
         <source>New item</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="251"/>
@@ -4504,7 +4504,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/models/worldModel.py" line="251"/>
         <source>Flora</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="251"/>
@@ -4524,7 +4524,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Cultural</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
@@ -4609,7 +4609,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Technology</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE TS>
 <TS version="2.1" language="pl_PL" sourcelanguage="en">
 <context>
@@ -58,7 +58,7 @@ Włącz tę opcję jeśli otrzymasz błąd związany z YAML.</translation>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="124"/>
         <source>Use &lt;q&gt; tags for quotes in HTML</source>
-        <translation>Użyj taga &amp;lt;q&amp;gt; dla cytatów w HTML</translation>
+        <translation>Użyj taga &lt;q&gt; dla cytatów w HTML</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="131"/>
@@ -109,7 +109,7 @@ Zakłada, że teksty są sformatowane za pomocą znaczników.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/outputFormats.py" line="10"/>
-        <source>Books that don&apos;t kill trees.</source>
+        <source>Books that don't kill trees.</source>
         <translation>Książki, które nie zabijają drzew.</translation>
     </message>
     <message>
@@ -157,18 +157,18 @@ przez outliner.</translation>
     <message>
         <location filename="../manuskript/exporter/pandoc/PDF.py" line="19"/>
         <source>a valid LaTeX installation. Pandoc recommendations can be found on:
-                     &lt;a href=&quot;https://pandoc.org/installing.html&quot;&gt;pandoc.org/installing.html&lt;/a&gt;. If you want Unicode support, you need XeLaTeX.</source>
-        <translation>prawidłowa instalacja LaTeX. Zobacz rekomendacje pandoc na: &amp;lt;a href=&amp;quot;http://pandoc.org/installing.html&amp;quot;&amp;gt;http://pandoc.org/installing.html&amp;lt;/a&amp;gt;. Jeśli chcesz wsparcia unicode, potrzebujesz XeLateX.</translation>
+                     &lt;a href="https://pandoc.org/installing.html"&gt;pandoc.org/installing.html&lt;/a&gt;. If you want Unicode support, you need XeLaTeX.</source>
+        <translation>prawidłowa instalacja LaTeX. Zobacz rekomendacje pandoc na: &lt;a href="http://pandoc.org/installing.html"&gt;http://pandoc.org/installing.html&lt;/a&gt;. Jeśli chcesz wsparcia unicode, potrzebujesz XeLateX.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/__init__.py" line="22"/>
         <source>&lt;p&gt;A universal document converter. Can be used to convert Markdown to a wide range of other
     formats.&lt;/p&gt;
-    &lt;p&gt;Website: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;Website: &lt;a href="http://www.pandoc.org"&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
     </source>
-        <translation>&amp;lt;p&amp;gt;Uniwersalny konwerter dokumentów. Może być używany do konwersji języka Markdown do szerokiej gamy innych. 
-formatów.&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;Strona internetowa: &amp;lt;a href=&amp;quot;http://www.pandoc.org&amp;quot;&amp;gt;http://pandoc.org/&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;
+        <translation>&lt;p&gt;Uniwersalny konwerter dokumentów. Może być używany do konwersji języka Markdown do szerokiej gamy innych. 
+formatów.&lt;/p&gt;
+&lt;p&gt;Strona internetowa: &lt;a href="http://www.pandoc.org"&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
     </translation>
     </message>
     <message>
@@ -178,12 +178,12 @@ formatów.&amp;lt;/p&amp;gt;
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="18"/>
-        <source>Basic HTML output using the Python module &apos;markdown&apos;.</source>
+        <source>Basic HTML output using the Python module 'markdown'.</source>
         <translation>Podstawowe wyjście HTML używające modułu Python 'markdown'.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="19"/>
-        <source>Python module &apos;markdown&apos;.</source>
+        <source>Python module 'markdown'.</source>
         <translation>moduł Python 'markdown'.</translation>
     </message>
     <message>
@@ -209,8 +209,8 @@ formatów.&amp;lt;/p&amp;gt;
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="18"/>
         <source>Simplest export to plain text. Allows you to use your own markup not understood
-                  by Manuskript, for example &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</source>
-        <translation>Najprostszy eksport do zwykłego tekstu. Pozwala na użycie własnego języka markup niezrozumiałego dla manuskript, na przykład &amp;lt;a href='www.fountain.io'&amp;gt;Fountain&amp;lt;/a&amp;gt;.</translation>
+                  by Manuskript, for example &lt;a href='www.fountain.io'&gt;Fountain&lt;/a&gt;.</source>
+        <translation>Najprostszy eksport do zwykłego tekstu. Pozwala na użycie własnego języka markup niezrozumiałego dla manuskript, na przykład &lt;a href='www.fountain.io'&gt;Fountain&lt;/a&gt;.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/__init__.py" line="15"/>
@@ -226,7 +226,7 @@ formatów.&amp;lt;/p&amp;gt;
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="71"/>
-        <source>Choose output file&#xe2;&#x80;&#xa6;</source>
+        <source>Choose output fileâ¦</source>
         <translation type="unfinished">Wybierz plik wyjściowy</translation>
     </message>
 </context>
@@ -359,8 +359,8 @@ i stworzy pozycje dla każdego tytułu.&amp;lt;br/&amp;gt;&amp;nbsp;</translatio
                         plaintext documents within (you chose which ones by extension)
                         are added as scene.&lt;/p&gt;
                         &lt;p&gt;Only text files are supported (not images, binary or others).&lt;/p&gt;</source>
-        <translation>&amp;lt;p&amp;gt;&amp;lt;b&amp;gt;Informacja:&amp;lt;/b&amp;gt;Importuje strukturę całego katalogu. Foldery  są dodawane jako foldery a pliki tekstowe wewnątrz folderów (ty wybierasz które poprzez rozszerzenie) jako sceny.&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;Wspierane są tylko pliki tekstowe (nie obrazy, pliki binarne, inne).&amp;lt;/p&amp;gt;</translation>
+        <translation>&lt;p&gt;&lt;b&gt;Informacja:&lt;/b&gt;Importuje strukturę całego katalogu. Foldery  są dodawane jako foldery a pliki tekstowe wewnątrz folderów (ty wybierasz które poprzez rozszerzenie) jako sceny.&lt;/p&gt;
+&lt;p&gt;Wspierane są tylko pliki tekstowe (nie obrazy, pliki binarne, inne).&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="107"/>
@@ -430,10 +430,10 @@ i stworzy pozycje dla każdego tytułu.&amp;lt;br/&amp;gt;&amp;nbsp;</translatio
                         &lt;b&gt;none&lt;/b&gt;: no line wrap.&lt;br&gt;
                         &lt;b&gt;preserve&lt;/b&gt;: tries to preserves line wrap from the
                         original document.&lt;/p&gt;</source>
-        <translation>&amp;lt;p&amp;gt;Czy pandoc powinien stworzyć kosmetyczne/niesemantyczne przerywanie wierszy?&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;&amp;lt;b&amp;gt;automatycznie&amp;lt;/b&amp;gt;: zawija do 72 znaków.&amp;lt;br&amp;gt;
-&amp;lt;b&amp;gt;brak&amp;lt;/b&amp;gt;: nie zawija wierszy.&amp;lt;br&amp;gt;
-&amp;lt;b&amp;gt;zachowaj&amp;lt;/b&amp;gt;: próbuje zachować zawijanie wierszy z oryginalnego dokumentu.&amp;lt;/p&amp;gt;</translation>
+        <translation>&lt;p&gt;Czy pandoc powinien stworzyć kosmetyczne/niesemantyczne przerywanie wierszy?&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;automatycznie&lt;/b&gt;: zawija do 72 znaków.&lt;br&gt;
+&lt;b&gt;brak&lt;/b&gt;: nie zawija wierszy.&lt;br&gt;
+&lt;b&gt;zachowaj&lt;/b&gt;: próbuje zachować zawijanie wierszy z oryginalnego dokumentu.&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/mindMapImporter.py" line="55"/>
@@ -638,13 +638,13 @@ i stworzy pozycje dla każdego tytułu.&amp;lt;br/&amp;gt;&amp;nbsp;</translatio
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="920"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One sentence&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&amp;lt;html&amp;gt;&amp;lt;head/&amp;gt;&amp;lt;body&amp;gt;&amp;lt;p align=&amp;quot;right&amp;quot;&amp;gt;Podsumowanie&amp;lt;br/&amp;gt; w jednym zdaniu&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;</translation>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align="right"&gt;One sentence&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align="right"&gt;Podsumowanie&lt;br/&gt; w jednym zdaniu&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="930"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One paragraph&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&amp;lt;html&amp;gt;&amp;lt;head/&amp;gt;&amp;lt;body&amp;gt;&amp;lt;p align=&amp;quot;right&amp;quot;&amp;gt;Podsumowanie&amp;lt;br/&amp;gt; w jednym akapicie&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;</translation>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align="right"&gt;One paragraph&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align="right"&gt;Podsumowanie&lt;br/&gt; w jednym akapicie&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1222"/>
@@ -1288,9 +1288,9 @@ i stworzy pozycje dla każdego tytułu.&amp;lt;br/&amp;gt;&amp;nbsp;</translatio
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1362"/>
-        <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous
-                     evil wizard wasn&apos;t able to kill a baby?&apos; (Harry Potter)</source>
-        <translation>Podstawowa sytuacja, sformułowana jako pytanie &amp;quot;Co jeśli...?&amp;quot;. Na przykład: &amp;quot;Co jeśli najniebezpieczniejszy zły czarownik nie mógł zabić dziecka?&amp;quot; (Harry Potter)</translation>
+        <source>The basic situation, in the form of a 'What if...?' question. Ex: 'What if the most dangerous
+                     evil wizard wasn't able to kill a baby?' (Harry Potter)</source>
+        <translation>Podstawowa sytuacja, sformułowana jako pytanie "Co jeśli...?". Na przykład: "Co jeśli najniebezpieczniejszy zły czarownik nie mógł zabić dziecka?" (Harry Potter)</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1367"/>
@@ -1441,12 +1441,12 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="689"/>
-        <source>Save changes to project &quot;{}&quot; before closing?</source>
-        <translation>Zapisać zmiany w projekcie &amp;quot;{}&amp;quot; przed zamknięciem?</translation>
+        <source>Save changes to project "{}" before closing?</source>
+        <translation>Zapisać zmiany w projekcie "{}" przed zamknięciem?</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="689"/>
-        <source>Your changes will be lost if you don&apos;t save them.</source>
+        <source>Your changes will be lost if you don't save them.</source>
         <translation>Twoje postępy zostaną utracone jeśli ich nie zapiszesz.</translation>
     </message>
     <message>
@@ -1531,8 +1531,8 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1202"/>
-        <source>The log file &quot;{}&quot; will continue to be written to until Manuskript is closed.</source>
-        <translation>Plik logu &amp;quot;{}&amp;quot; będzie tworzony do czasu zamknięcia Manuskriptu.</translation>
+        <source>The log file "{}" will continue to be written to until Manuskript is closed.</source>
+        <translation>Plik logu "{}" będzie tworzony do czasu zamknięcia Manuskriptu.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1202"/>
@@ -1688,7 +1688,7 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="472"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If you check this option, your project will be saved as one single file. Easier to copy or backup, but does not allow collaborative editing, or versioning.&lt;br/&gt;If this is unchecked, your project will be saved as a folder containing many small files.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&amp;lt;html&amp;gt;&amp;lt;head/&amp;gt;&amp;lt;body&amp;gt;&amp;lt;p&amp;gt;Jeśli wybierzesz tę opcję twój projekt zostanie zapisany jako pojedynczy plik. Będzie łatwiej go kopiować lub tworzyć kopię zapasową, ale nie pozwala on na współpracę w zespole i wersjonowanie.&amp;lt;br/&amp;gt;Jeśli ta opcja jest odznaczona twój projekt zostanie zapisany jako folder zawierający wiele małych plików.&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Jeśli wybierzesz tę opcję twój projekt zostanie zapisany jako pojedynczy plik. Będzie łatwiej go kopiować lub tworzyć kopię zapasową, ale nie pozwala on na współpracę w zespole i wersjonowanie.&lt;br/&gt;Jeśli ta opcja jest odznaczona twój projekt zostanie zapisany jako folder zawierający wiele małych plików.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="478"/>
@@ -2257,8 +2257,8 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="821"/>
-        <source>&lt;p&gt;&lt;b&gt;The Revisions feature has been at the source of many reported issues. In this version of Manuskript it has been turned off by default for new projects in order to provide the best experience.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Why aren&apos;t these issues fixed already? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;We need your help to make Manuskript better!&lt;/a&gt;&lt;/p&gt;</source>
-        <translation>&amp;lt;p&amp;gt;&amp;lt;b&amp;gt;Opcja Poprawek była źródłem zgłaszania wielu błędów. W tej wersji Manuskripta jest ona domyślnie wyłączona przy tworzeniu nowych projektów dla zapewnienia najwyższej stabilności&amp;lt;/b&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;Dlaczego problemy nie zostały jeszcze rozwiązane? &amp;lt;a href=&amp;quot;https://www.theologeek.ch/manuskript/contribute/&amp;quot;&amp;gt;Potrzebujemy twojej pomocy by uczynić Manuskript jeszcze lepszym! &amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;</translation>
+        <source>&lt;p&gt;&lt;b&gt;The Revisions feature has been at the source of many reported issues. In this version of Manuskript it has been turned off by default for new projects in order to provide the best experience.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Why aren't these issues fixed already? &lt;a href="https://www.theologeek.ch/manuskript/contribute/"&gt;We need your help to make Manuskript better!&lt;/a&gt;&lt;/p&gt;</source>
+        <translation>&lt;p&gt;&lt;b&gt;Opcja Poprawek była źródłem zgłaszania wielu błędów. W tej wersji Manuskripta jest ona domyślnie wyłączona przy tworzeniu nowych projektów dla zapewnienia najwyższej stabilności&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Dlaczego problemy nie zostały jeszcze rozwiązane? &lt;a href="https://www.theologeek.ch/manuskript/contribute/"&gt;Potrzebujemy twojej pomocy by uczynić Manuskript jeszcze lepszym! &lt;/a&gt;&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="211"/>
@@ -2668,8 +2668,8 @@ słów</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="142"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Filters what items will be included in the final export.&lt;br/&gt;&lt;span style=&quot; color:#773333;&quot;&gt;(Not fully implemented yet.)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&amp;lt;html&amp;gt;&amp;lt;head/&amp;gt;&amp;lt;body&amp;gt;&amp;lt;p&amp;gt;Filtruje które elementy będą zawarte w ostatecznym eksporcie.&amp;lt;br/&amp;gt;&amp;lt;span style=&amp;quot; color:#773333;&amp;quot;&amp;gt;(Jeszcze nie w pełni zaimplementowane.)&amp;lt;/span&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;</translation>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Filters what items will be included in the final export.&lt;br/&gt;&lt;span style=" color:#773333;"&gt;(Not fully implemented yet.)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Filtruje które elementy będą zawarte w ostatecznym eksporcie.&lt;br/&gt;&lt;span style=" color:#773333;"&gt;(Jeszcze nie w pełni zaimplementowane.)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="149"/>
@@ -2738,22 +2738,22 @@ słów</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="788"/>
-        <source>Replace ... with &#xe2;&#x80;&#xa6;</source>
+        <source>Replace ... with â¦</source>
         <translation type="unfinished">Zastąp ... znakiem â¦</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="795"/>
-        <source>Replace --- with &#xe2;&#x80;&#x94;</source>
+        <source>Replace --- with â</source>
         <translation type="unfinished">Zastąp --- znakiem —</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="802"/>
-        <source>Replace double quotes (&quot;) with:</source>
-        <translation>Zastąp podwójne cudzysłowy (&amp;quot;) znakiem:</translation>
+        <source>Replace double quotes (") with:</source>
+        <translation>Zastąp podwójne cudzysłowy (") znakiem:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="911"/>
-        <source>Replace single quotes (&apos;) with:</source>
+        <source>Replace single quotes (') with:</source>
         <translation>Zastąp pojedyncze cudzysłowy (') znakiem:</translation>
     </message>
     <message>
@@ -2852,12 +2852,12 @@ słów</translation>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="124"/>
         <source>&lt;b&gt;Status:&lt;/b&gt; uninstalled.</source>
-        <translation>&amp;lt;b&amp;gt;Status:&amp;lt;/b&amp;gt; odinstalowane.</translation>
+        <translation>&lt;b&gt;Status:&lt;/b&gt; odinstalowane.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="126"/>
         <source>&lt;b&gt;Requires:&lt;/b&gt; </source>
-        <translation>&amp;lt;b&amp;gt;Wymaga:&amp;lt;/b&amp;gt; </translation>
+        <translation>&lt;b&gt;Wymaga:&lt;/b&gt; </translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="133"/>
@@ -2976,7 +2976,7 @@ słów</translation>
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.ui" line="72"/>
         <source>Trim long titles (&gt; 32 chars)</source>
-        <translation>Przytnij długie tytuły (&amp;gt; 32 znaki)</translation>
+        <translation>Przytnij długie tytuły (&gt; 32 znaki)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.ui" line="86"/>
@@ -2993,7 +2993,7 @@ słów</translation>
     <name>helpLabel</name>
     <message>
         <location filename="../manuskript/ui/helpLabel.py" line="12"/>
-        <source>If you don&apos;t wanna see me, you can hide me in Help menu.</source>
+        <source>If you don't wanna see me, you can hide me in Help menu.</source>
         <translation>Jeśli nie chcesz nie widzieć możesz mnie ukryć w menu Pomoc.</translation>
     </message>
 </context>
@@ -3347,13 +3347,13 @@ słów</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="315"/>
-        <source>You&apos;re about to delete {} item(s).</source>
-        <translation type="unfinished"></translation>
+        <source>You're about to delete {} item(s).</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="325"/>
         <source>Are you sure?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3472,7 +3472,7 @@ słów</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
-        <source>Freytag&apos;s pyramid</source>
+        <source>Freytag's pyramid</source>
         <translation>Piramida Freytaga</translation>
     </message>
     <message>
@@ -3547,7 +3547,7 @@ słów</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
-        <source>Hero&apos;s journey</source>
+        <source>Hero's journey</source>
         <translation>Podróż bohatera</translation>
     </message>
     <message>
@@ -3848,32 +3848,32 @@ słów</translation>
     <message>
         <location filename="../manuskript/models/references.py" line="498"/>
         <source>&lt;b&gt;Unknown reference:&lt;/b&gt; {}.</source>
-        <translation>&amp;lt;b&amp;gt;Nieznana referencja:&amp;lt;/b&amp;gt; {}.</translation>
+        <translation>&lt;b&gt;Nieznana referencja:&lt;/b&gt; {}.</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="506"/>
         <source>Folder: &lt;b&gt;{}&lt;/b&gt;</source>
-        <translation>Folder: &amp;lt;b&amp;gt;1{}&amp;lt;/b&amp;gt;2</translation>
+        <translation>Folder: &lt;b&gt;1{}&lt;/b&gt;2</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="508"/>
         <source>Text: &lt;b&gt;{}&lt;/b&gt;</source>
-        <translation>Tekst: &amp;lt;b&amp;gt;{}&amp;lt;/b&amp;gt;</translation>
+        <translation>Tekst: &lt;b&gt;{}&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="513"/>
         <source>Character: &lt;b&gt;{}&lt;/b&gt;</source>
-        <translation>Postać: &amp;lt;b&amp;gt;{}&amp;lt;/b&amp;gt;</translation>
+        <translation>Postać: &lt;b&gt;{}&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="516"/>
         <source>Plot: &lt;b&gt;{}&lt;/b&gt;</source>
-        <translation>Wątek: &amp;lt;b&amp;gt;{}&amp;lt;/b&amp;gt;</translation>
+        <translation>Wątek: &lt;b&gt;{}&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="519"/>
         <source>World: &lt;b&gt;{name}&lt;/b&gt;{path}</source>
-        <translation>Świat: &amp;lt;b&amp;gt;{nazwa}&amp;lt;/b&amp;gt;{ścieżka}</translation>
+        <translation>Świat: &lt;b&gt;{nazwa}&lt;/b&gt;{ścieżka}</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="592"/>
@@ -4073,7 +4073,7 @@ słów</translation>
             &lt;p&gt;Split selected item(s) at the given mark.&lt;/p&gt;
 
             &lt;p&gt;If one of the selected item is a folder, it will be applied
-            recursively to &lt;i&gt;all&lt;/i&gt; of it&apos;s children items.&lt;/p&gt;
+            recursively to &lt;i&gt;all&lt;/i&gt; of it's children items.&lt;/p&gt;
 
             &lt;p&gt;The split mark can contain following escape sequences:
                 &lt;ul&gt;
@@ -4085,24 +4085,24 @@ słów</translation>
             &lt;p&gt;&lt;b&gt;Mark:&lt;/b&gt;&lt;/p&gt;
             </source>
         <translation>
-            &amp;lt;p&amp;gt;Podziel zaznaczone elementy na danym symbolu.&amp;lt;/p&amp;gt;
+            &lt;p&gt;Podziel zaznaczone elementy na danym symbolu.&lt;/p&gt;
 
-            &amp;lt;p&amp;gt;Jeśli jeden z zaznaczonych elementów jest w folderze będzie ono zastosowane
-            rekursywnie dla &amp;lt;i&amp;gt;wszystkich&amp;lt;/i&amp;gt; elementów dzieci.&amp;lt;/p&amp;gt;
+            &lt;p&gt;Jeśli jeden z zaznaczonych elementów jest w folderze będzie ono zastosowane
+            rekursywnie dla &lt;i&gt;wszystkich&lt;/i&gt; elementów dzieci.&lt;/p&gt;
 
-            &amp;lt;p&amp;gt;Znak podziału może zawierać następujące sekwencje:
-                &amp;lt;ul&amp;gt;
-                    &amp;lt;li&amp;gt;&amp;lt;b&amp;gt;&amp;lt;code&amp;gt;\n&amp;lt;/code&amp;gt;&amp;lt;/b&amp;gt;: koniec wiersza&amp;lt;/li&amp;gt;
-                    &amp;lt;li&amp;gt;&amp;lt;b&amp;gt;&amp;lt;code&amp;gt;\t&amp;lt;/code&amp;gt;&amp;lt;/b&amp;gt;: tabulator&amp;lt;/li&amp;gt;
-                &amp;lt;/ul&amp;gt;
-            &amp;lt;/p&amp;gt;
+            &lt;p&gt;Znak podziału może zawierać następujące sekwencje:
+                &lt;ul&gt;
+                    &lt;li&gt;&lt;b&gt;&lt;code&gt;\n&lt;/code&gt;&lt;/b&gt;: koniec wiersza&lt;/li&gt;
+                    &lt;li&gt;&lt;b&gt;&lt;code&gt;\t&lt;/code&gt;&lt;/b&gt;: tabulator&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/p&gt;
 
-            &amp;lt;p&amp;gt;&amp;lt;b&amp;gt;Znak:&amp;lt;/b&amp;gt;&amp;lt;/p&amp;gt;
+            &lt;p&gt;&lt;b&gt;Znak:&lt;/b&gt;&lt;/p&gt;
             </translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="47"/>
-        <source>Split &apos;{}&apos;</source>
+        <source>Split '{}'</source>
         <translation>Rozdziel '{}'</translation>
     </message>
     <message>
@@ -4406,7 +4406,7 @@ słów</translation>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="384"/>
         <source>&lt;b&gt;Total:&lt;/b&gt; {} words (~ {} pages)</source>
-        <translation>&amp;lt;b&amp;gt;Łącznie:&amp;lt;/b&amp;gt; {} słów (~ {} stron)</translation>
+        <translation>&lt;b&gt;Łącznie:&lt;/b&gt; {} słów (~ {} stron)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="405"/>

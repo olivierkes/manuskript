@@ -1,16 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE TS>
 <TS version="2.1" language="it">
 <context>
     <name>Export</name>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="18"/>
-        <source>Basic HTML output using the Python module &apos;markdown&apos;.</source>
+        <source>Basic HTML output using the Python module 'markdown'.</source>
         <translation>Output HTML di base che utilizza il modulo Python 'markdown'.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="19"/>
-        <source>Python module &apos;markdown&apos;.</source>
+        <source>Python module 'markdown'.</source>
         <translation>modulo Python 'markdown'.</translation>
     </message>
     <message>
@@ -101,7 +101,7 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="124"/>
         <source>Use &lt;q&gt; tags for quotes in HTML</source>
-        <translation>Usa &amp;lt;q&amp;gt; tags per le virgolette in HTML</translation>
+        <translation>Usa &lt;q&gt; tags per le virgolette in HTML</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="131"/>
@@ -130,7 +130,7 @@
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/outputFormats.py" line="10"/>
-        <source>Books that don&apos;t kill trees.</source>
+        <source>Books that don't kill trees.</source>
         <translation>Libri per i quali non serve abbattere gli alberi.</translation>
     </message>
     <message>
@@ -158,27 +158,27 @@
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="18"/>
         <source>Simplest export to plain text. Allows you to use your own markup not understood
-                  by Manuskript, for example &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</source>
+                  by Manuskript, for example &lt;a href='www.fountain.io'&gt;Fountain&lt;/a&gt;.</source>
         <translation>La più semplice esportazione in testo piano. Ti permette di usare il tuo markup non riconosciuto
-                  da Manuskript, per esempio &amp;lt;a href='www.fountain.io'&amp;gt;Fountain&amp;lt;/a&amp;gt;.</translation>
+                  da Manuskript, per esempio &lt;a href='www.fountain.io'&gt;Fountain&lt;/a&gt;.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/__init__.py" line="22"/>
         <source>&lt;p&gt;A universal document converter. Can be used to convert Markdown to a wide range of other
     formats.&lt;/p&gt;
-    &lt;p&gt;Website: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;Website: &lt;a href="http://www.pandoc.org"&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
     </source>
-        <translation>&amp;lt;p&amp;gt;Un convertitore di documenti universale. Può essere usato per convertire Markdown in una vasta gamma di altri
-    formati.&amp;lt;/p&amp;gt;
-    &amp;lt;p&amp;gt;Sito web: &amp;lt;a href=&amp;quot;http://www.pandoc.org&amp;quot;&amp;gt;http://pandoc.org/&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;
+        <translation>&lt;p&gt;Un convertitore di documenti universale. Può essere usato per convertire Markdown in una vasta gamma di altri
+    formati.&lt;/p&gt;
+    &lt;p&gt;Sito web: &lt;a href="http://www.pandoc.org"&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
     </translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/PDF.py" line="19"/>
         <source>a valid LaTeX installation. Pandoc recommendations can be found on:
-                     &lt;a href=&quot;https://pandoc.org/installing.html&quot;&gt;pandoc.org/installing.html&lt;/a&gt;. If you want Unicode support, you need XeLaTeX.</source>
+                     &lt;a href="https://pandoc.org/installing.html"&gt;pandoc.org/installing.html&lt;/a&gt;. If you want Unicode support, you need XeLaTeX.</source>
         <translation>una installazione LaTeX valida. Le raccomandazioni su Pandoc possono essere trovate su:
-                     &amp;lt;a href=&amp;quot;https://pandoc.org/installing.html&amp;quot;&amp;gt;pandoc.org/installing.html&amp;lt;/a&amp;gt;. Se vuoi il supporto a Unicode, hai bisogno di XeLaTeX.</translation>
+                     &lt;a href="https://pandoc.org/installing.html"&gt;pandoc.org/installing.html&lt;/a&gt;. Se vuoi il supporto a Unicode, hai bisogno di XeLaTeX.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/plainText.py" line="10"/>
@@ -229,7 +229,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="71"/>
-        <source>Choose output file&#xe2;&#x80;&#xa6;</source>
+        <source>Choose output fileâ¦</source>
         <translation type="unfinished">Scegli il file di output</translation>
     </message>
 </context>
@@ -243,7 +243,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="21"/>
         <source>Manuskript</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="66"/>
@@ -278,7 +278,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="258"/>
         <source>...</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="273"/>
@@ -362,11 +362,11 @@ Usalo se ottieni un errore relativo a YAML.</translation>
                         plaintext documents within (you chose which ones by extension)
                         are added as scene.&lt;/p&gt;
                         &lt;p&gt;Only text files are supported (not images, binary or others).&lt;/p&gt;</source>
-        <translation>&amp;lt;p&amp;gt;&amp;lt;b&amp;gt;Info:&amp;lt;/b&amp;gt; Importa l'intera
+        <translation>&lt;p&gt;&lt;b&gt;Info:&lt;/b&gt; Importa l'intera
                         struttura di una directory. Le cartelle sono aggiunte come cartelle, e
                         i documenti di testo al loro interno (scegli tu quali in base all'estensione)
-                        sono aggiunti come scene.&amp;lt;/p&amp;gt;
-                        &amp;lt;p&amp;gt;Sono supportati solo i files di testo (non immagini, binari o altro).&amp;lt;/p&amp;gt;</translation>
+                        sono aggiunti come scene.&lt;/p&gt;
+                        &lt;p&gt;Sono supportati solo i files di testo (non immagini, binari o altro).&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="107"/>
@@ -441,12 +441,12 @@ Usalo se ottieni un errore relativo a YAML.</translation>
                         &lt;b&gt;none&lt;/b&gt;: no line wrap.&lt;br&gt;
                         &lt;b&gt;preserve&lt;/b&gt;: tries to preserves line wrap from the
                         original document.&lt;/p&gt;</source>
-        <translation>&amp;lt;p&amp;gt;Pandoc deve creare
-                        delle cosmetiche / non-semantiche interruzioni di linea?&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;
-                        &amp;lt;b&amp;gt;auto&amp;lt;/b&amp;gt;: a capo a 72 caratteri.&amp;lt;br&amp;gt;
-                        &amp;lt;b&amp;gt;nessuno&amp;lt;/b&amp;gt;: nessuna interruzione.&amp;lt;br&amp;gt;
-                        &amp;lt;b&amp;gt;preserva&amp;lt;/b&amp;gt;: tenta di preservare le interruzioni di linea del
-                        documento originale.&amp;lt;/p&amp;gt;</translation>
+        <translation>&lt;p&gt;Pandoc deve creare
+                        delle cosmetiche / non-semantiche interruzioni di linea?&lt;/p&gt;&lt;p&gt;
+                        &lt;b&gt;auto&lt;/b&gt;: a capo a 72 caratteri.&lt;br&gt;
+                        &lt;b&gt;nessuno&lt;/b&gt;: nessuna interruzione.&lt;br&gt;
+                        &lt;b&gt;preserva&lt;/b&gt;: tenta di preservare le interruzioni di linea del
+                        documento originale.&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/mindMapImporter.py" line="55"/>
@@ -507,7 +507,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="199"/>
         <source>Volume</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="226"/>
@@ -651,13 +651,13 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="920"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One sentence&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&amp;lt;html&amp;gt;&amp;lt;head/&amp;gt;&amp;lt;body&amp;gt;&amp;lt;p align=&amp;quot;right&amp;quot;&amp;gt;Una frase&amp;lt;br/&amp;gt;riassunto&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;</translation>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align="right"&gt;One sentence&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align="right"&gt;Una frase&lt;br/&gt;riassunto&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="930"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One paragraph&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&amp;lt;html&amp;gt;&amp;lt;head/&amp;gt;&amp;lt;body&amp;gt;&amp;lt;p align=&amp;quot;right&amp;quot;&amp;gt;Un paragrafo&amp;lt;br/&amp;gt;riassunto&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;</translation>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align="right"&gt;One paragraph&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align="right"&gt;Un paragrafo&lt;br/&gt;riassunto&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1021"/>
@@ -757,7 +757,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2123"/>
         <source>&amp;File</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2127"/>
@@ -812,7 +812,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2363"/>
         <source>Ctrl+O</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2372"/>
@@ -822,7 +822,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2375"/>
         <source>Ctrl+S</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2384"/>
@@ -832,7 +832,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2387"/>
         <source>Ctrl+Shift+S</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2396"/>
@@ -842,7 +842,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2399"/>
         <source>Ctrl+Q</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2414"/>
@@ -852,7 +852,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2417"/>
         <source>Ctrl+Shift+B</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2432"/>
@@ -862,7 +862,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2435"/>
         <source>F9</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2444"/>
@@ -902,7 +902,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2499"/>
         <source>F8</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2508"/>
@@ -917,7 +917,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2520"/>
         <source>F6</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2525"/>
@@ -942,7 +942,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/mainWindow.py" line="746"/>
         <source>Manuskript</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="872"/>
@@ -1001,8 +1001,8 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1362"/>
-        <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous
-                     evil wizard wasn&apos;t able to kill a baby?&apos; (Harry Potter)</source>
+        <source>The basic situation, in the form of a 'What if...?' question. Ex: 'What if the most dangerous
+                     evil wizard wasn't able to kill a baby?' (Harry Potter)</source>
         <translation>La situazione iniziale, in forma di domanda tipo «Cosa succede se...?». Es: «Cosa succede se il pericoloso
                      mago cattivo non riesce ad uccidere un bambino?» (Harry Potter)</translation>
     </message>
@@ -1056,7 +1056,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1545"/>
         <source>POV</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1546"/>
@@ -1126,7 +1126,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2549"/>
         <source>F7</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2558"/>
@@ -1136,7 +1136,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2561"/>
         <source>Ctrl+C</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2570"/>
@@ -1146,7 +1146,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2573"/>
         <source>Ctrl+X</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2582"/>
@@ -1156,7 +1156,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2585"/>
         <source>Ctrl+V</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2594"/>
@@ -1166,7 +1166,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2597"/>
         <source>Ctrl+Shift+K</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2606"/>
@@ -1176,17 +1176,17 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2609"/>
         <source>Ctrl+K</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2621"/>
         <source>Ctrl+M</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2824"/>
         <source>Ctrl+D</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2642"/>
@@ -1231,7 +1231,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2678"/>
         <source>F2</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2235"/>
@@ -1455,12 +1455,12 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="689"/>
-        <source>Save changes to project &quot;{}&quot; before closing?</source>
+        <source>Save changes to project "{}" before closing?</source>
         <translation>Salvare i cambiamenti del progetto «{}» prima di chiuderlo?</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="689"/>
-        <source>Your changes will be lost if you don&apos;t save them.</source>
+        <source>Your changes will be lost if you don't save them.</source>
         <translation>I cambiamenti apportati andranno persi se non li salvi.</translation>
     </message>
     <message>
@@ -1545,8 +1545,8 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1202"/>
-        <source>The log file &quot;{}&quot; will continue to be written to until Manuskript is closed.</source>
-        <translation>Il file di log &amp;quot;{}&amp;quot; continuerà ad essere scritto finché Manuskript non sarà chiuso.</translation>
+        <source>The log file "{}" will continue to be written to until Manuskript is closed.</source>
+        <translation>Il file di log "{}" continuerà ad essere scritto finché Manuskript non sarà chiuso.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1202"/>
@@ -1682,7 +1682,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="472"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If you check this option, your project will be saved as one single file. Easier to copy or backup, but does not allow collaborative editing, or versioning.&lt;br/&gt;If this is unchecked, your project will be saved as a folder containing many small files.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&amp;lt;html&amp;gt;&amp;lt;head/&amp;gt;&amp;lt;body&amp;gt;&amp;lt;p&amp;gt;Se spunti questa opzione, il progetto sarà salvato come singolo file. Sarà più facile la copia o il backup, ma non consentirà l' editing collaborativo, o il versionning.&amp;lt;br/&amp;gt;Se non la spunti, il progetto sarà salvato come una cartella contenente molti piccoli files.&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Se spunti questa opzione, il progetto sarà salvato come singolo file. Sarà più facile la copia o il backup, ma non consentirà l' editing collaborativo, o il versionning.&lt;br/&gt;Se non la spunti, il progetto sarà salvato come una cartella contenente molti piccoli files.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="478"/>
@@ -1767,7 +1767,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2100"/>
         <source>POV</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2105"/>
@@ -1882,7 +1882,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2938"/>
         <source>Ctrl+S</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3318"/>
@@ -1897,7 +1897,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2250"/>
         <source>Font</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2262"/>
@@ -1952,7 +1952,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3700"/>
         <source>%</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3716"/>
@@ -1962,7 +1962,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3780"/>
         <source> px</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3802"/>
@@ -2107,7 +2107,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3596"/>
         <source>Font:</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1833"/>
@@ -2271,8 +2271,8 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="821"/>
-        <source>&lt;p&gt;&lt;b&gt;The Revisions feature has been at the source of many reported issues. In this version of Manuskript it has been turned off by default for new projects in order to provide the best experience.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Why aren&apos;t these issues fixed already? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;We need your help to make Manuskript better!&lt;/a&gt;&lt;/p&gt;</source>
-        <translation>&amp;lt;p&amp;gt;&amp;lt;b&amp;gt; La funzione Revisioni è all'origine di molti problemi segnalati. In questa versione di Manuskript è stata disattivata per impostazione predefinita per i nuovi progetti al fine di fornire la migliore esperienza.&amp;lt;/b&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt; Perché questi problemi non sono già stati risolti? &amp;lt;a href=&amp;quot;https://www.theologeek.ch/manuskript/contribute/&amp;quot;&amp;gt; Abbiamo bisogno del tuo aiuto per migliorare Manuskript!&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;</translation>
+        <source>&lt;p&gt;&lt;b&gt;The Revisions feature has been at the source of many reported issues. In this version of Manuskript it has been turned off by default for new projects in order to provide the best experience.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Why aren't these issues fixed already? &lt;a href="https://www.theologeek.ch/manuskript/contribute/"&gt;We need your help to make Manuskript better!&lt;/a&gt;&lt;/p&gt;</source>
+        <translation>&lt;p&gt;&lt;b&gt; La funzione Revisioni è all'origine di molti problemi segnalati. In questa versione di Manuskript è stata disattivata per impostazione predefinita per i nuovi progetti al fine di fornire la migliore esperienza.&lt;/b&gt;&lt;/p&gt;&lt;p&gt; Perché questi problemi non sono già stati risolti? &lt;a href="https://www.theologeek.ch/manuskript/contribute/"&gt; Abbiamo bisogno del tuo aiuto per migliorare Manuskript!&lt;/a&gt;&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="211"/>
@@ -2355,7 +2355,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/ui/about_ui.ui" line="50"/>
         <source>Manuskript</source>
-        <translation></translation>
+        <translation/>
     </message>
 </context>
 <context>
@@ -2381,7 +2381,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="201"/>
         <source>POV</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="203"/>
@@ -2419,7 +2419,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/ui/views/basicItemView_ui.ui" line="38"/>
         <source>POV:</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/views/basicItemView_ui.ui" line="55"/>
@@ -2682,8 +2682,8 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="142"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Filters what items will be included in the final export.&lt;br/&gt;&lt;span style=&quot; color:#773333;&quot;&gt;(Not fully implemented yet.)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&amp;lt;html&amp;gt;&amp;lt;head/&amp;gt;&amp;lt;body&amp;gt;&amp;lt;p&amp;gt;Filtra gli elementi da includere nell'esportazione finale.&amp;lt;br/&amp;gt;&amp;lt;span style=&amp;quot; color:#773333;&amp;quot;&amp;gt;(Non ancora implementato completamente.)&amp;lt;/span&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;</translation>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Filters what items will be included in the final export.&lt;br/&gt;&lt;span style=" color:#773333;"&gt;(Not fully implemented yet.)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Filtra gli elementi da includere nell'esportazione finale.&lt;br/&gt;&lt;span style=" color:#773333;"&gt;(Non ancora implementato completamente.)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="149"/>
@@ -2752,12 +2752,12 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="802"/>
-        <source>Replace double quotes (&quot;) with:</source>
-        <translation>Sostituisci le doppie virgolette (&amp;quot;) con:</translation>
+        <source>Replace double quotes (") with:</source>
+        <translation>Sostituisci le doppie virgolette (") con:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="911"/>
-        <source>Replace single quotes (&apos;) with:</source>
+        <source>Replace single quotes (') with:</source>
         <translation>Sostituisci le singole virgolette (') con:</translation>
     </message>
     <message>
@@ -2788,7 +2788,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1064"/>
         <source>RegExp</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1067"/>
@@ -2803,12 +2803,12 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1157"/>
         <source>Font</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1163"/>
         <source>Font:</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1173"/>
@@ -2866,12 +2866,12 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="124"/>
         <source>&lt;b&gt;Status:&lt;/b&gt; uninstalled.</source>
-        <translation>&amp;lt;b&amp;gt;Stato:&amp;lt;/b&amp;gt; non installato.</translation>
+        <translation>&lt;b&gt;Stato:&lt;/b&gt; non installato.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="126"/>
         <source>&lt;b&gt;Requires:&lt;/b&gt; </source>
-        <translation>&amp;lt;b&amp;gt;Richiede:&amp;lt;/b&amp;gt; </translation>
+        <translation>&lt;b&gt;Richiede:&lt;/b&gt; </translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="133"/>
@@ -2985,12 +2985,12 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.ui" line="65"/>
         <source>\n---\n</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.ui" line="72"/>
         <source>Trim long titles (&gt; 32 chars)</source>
-        <translation>Taglia i titoli lunghi (&amp;gt; 32 caratteri)</translation>
+        <translation>Taglia i titoli lunghi (&gt; 32 caratteri)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.ui" line="86"/>
@@ -3007,7 +3007,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <name>helpLabel</name>
     <message>
         <location filename="../manuskript/ui/helpLabel.py" line="12"/>
-        <source>If you don&apos;t wanna see me, you can hide me in Help menu.</source>
+        <source>If you don't wanna see me, you can hide me in Help menu.</source>
         <translation>Se non vuoi vedermi, puoi nascondermi nel menu Guida.</translation>
     </message>
 </context>
@@ -3092,7 +3092,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/ui/editors/locker.py" line="94"/>
         <source>~{} h.</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker.py" line="96"/>
@@ -3102,7 +3102,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/ui/editors/locker.py" line="100"/>
         <source>{}:{}</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker.py" line="102"/>
@@ -3145,7 +3145,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.ui" line="198"/>
         <source>F11</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.ui" line="47"/>
@@ -3155,7 +3155,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.ui" line="57"/>
         <source>Alt+Up</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="251"/>
@@ -3193,7 +3193,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/exporter/manuskript/markdown.py" line="58"/>
         <source>Markdown</source>
-        <translation></translation>
+        <translation/>
     </message>
 </context>
 <context>
@@ -3361,13 +3361,13 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="315"/>
-        <source>You&apos;re about to delete {} item(s).</source>
-        <translation type="unfinished"></translation>
+        <source>You're about to delete {} item(s).</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="325"/>
         <source>Are you sure?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3486,7 +3486,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
-        <source>Freytag&apos;s pyramid</source>
+        <source>Freytag's pyramid</source>
         <translation>Piramide di Freytag</translation>
     </message>
     <message>
@@ -3561,7 +3561,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
-        <source>Hero&apos;s journey</source>
+        <source>Hero's journey</source>
         <translation>Il viaggio dell'eroe</translation>
     </message>
     <message>
@@ -3630,7 +3630,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/models/plotModel.py" line="146"/>
         <source>Meta</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/models/plotModel.py" line="179"/>
@@ -3704,7 +3704,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/ui/views/propertiesView_ui.ui" line="195"/>
         <source>POV</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/views/propertiesView_ui.ui" line="215"/>
@@ -3757,7 +3757,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/models/references.py" line="108"/>
         <source>POV:</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="109"/>
@@ -3837,32 +3837,32 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/models/references.py" line="498"/>
         <source>&lt;b&gt;Unknown reference:&lt;/b&gt; {}.</source>
-        <translation>&amp;lt;b&amp;gt;Riferimento sconosciuto:&amp;lt;/b&amp;gt; {}.</translation>
+        <translation>&lt;b&gt;Riferimento sconosciuto:&lt;/b&gt; {}.</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="506"/>
         <source>Folder: &lt;b&gt;{}&lt;/b&gt;</source>
-        <translation>Cartella: &amp;lt;b&amp;gt;{}&amp;lt;/b&amp;gt;</translation>
+        <translation>Cartella: &lt;b&gt;{}&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="508"/>
         <source>Text: &lt;b&gt;{}&lt;/b&gt;</source>
-        <translation>Testo: &amp;lt;b&amp;gt;{}&amp;lt;/b&amp;gt;</translation>
+        <translation>Testo: &lt;b&gt;{}&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="513"/>
         <source>Character: &lt;b&gt;{}&lt;/b&gt;</source>
-        <translation>Personaggio: &amp;lt;b&amp;gt;{}&amp;lt;/b&amp;gt;</translation>
+        <translation>Personaggio: &lt;b&gt;{}&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="516"/>
         <source>Plot: &lt;b&gt;{}&lt;/b&gt;</source>
-        <translation>Trama: &amp;lt;b&amp;gt;{}&amp;lt;/b&amp;gt;</translation>
+        <translation>Trama: &lt;b&gt;{}&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="519"/>
         <source>World: &lt;b&gt;{name}&lt;/b&gt;{path}</source>
-        <translation>Mondo: &amp;lt;b&amp;gt;{nome}&amp;lt;/b&amp;gt;{percorso}</translation>
+        <translation>Mondo: &lt;b&gt;{nome}&lt;/b&gt;{percorso}</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="592"/>
@@ -4087,7 +4087,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
             &lt;p&gt;Split selected item(s) at the given mark.&lt;/p&gt;
 
             &lt;p&gt;If one of the selected item is a folder, it will be applied
-            recursively to &lt;i&gt;all&lt;/i&gt; of it&apos;s children items.&lt;/p&gt;
+            recursively to &lt;i&gt;all&lt;/i&gt; of it's children items.&lt;/p&gt;
 
             &lt;p&gt;The split mark can contain following escape sequences:
                 &lt;ul&gt;
@@ -4099,24 +4099,24 @@ Usalo se ottieni un errore relativo a YAML.</translation>
             &lt;p&gt;&lt;b&gt;Mark:&lt;/b&gt;&lt;/p&gt;
             </source>
         <translation>
-            &amp;lt;p&amp;gt;Dividi l'elemento(i) selezionato nel punto indicato.&amp;lt;/p&amp;gt;
+            &lt;p&gt;Dividi l'elemento(i) selezionato nel punto indicato.&lt;/p&gt;
 
-            &amp;lt;p&amp;gt;Se uno degli oggetti selezionati è una cartella, sarà applicato
-            ricorsivamente a &amp;lt;i&amp;gt;tutti&amp;lt;/i&amp;gt; gli elementi figli.&amp;lt;/p&amp;gt;
+            &lt;p&gt;Se uno degli oggetti selezionati è una cartella, sarà applicato
+            ricorsivamente a &lt;i&gt;tutti&lt;/i&gt; gli elementi figli.&lt;/p&gt;
 
-            &amp;lt;p&amp;gt;Il punto di divisione può contenere le seguenti sequenze di fuga:
-                &amp;lt;ul&amp;gt;
-                    &amp;lt;li&amp;gt;&amp;lt;b&amp;gt;&amp;lt;code&amp;gt;\n&amp;lt;/code&amp;gt;&amp;lt;/b&amp;gt;: interruzione di linea&amp;lt;/li&amp;gt;
-                    &amp;lt;li&amp;gt;&amp;lt;b&amp;gt;&amp;lt;code&amp;gt;\t&amp;lt;/code&amp;gt;&amp;lt;/b&amp;gt;: tab&amp;lt;/li&amp;gt;
-                &amp;lt;/ul&amp;gt;
-            &amp;lt;/p&amp;gt;
+            &lt;p&gt;Il punto di divisione può contenere le seguenti sequenze di fuga:
+                &lt;ul&gt;
+                    &lt;li&gt;&lt;b&gt;&lt;code&gt;\n&lt;/code&gt;&lt;/b&gt;: interruzione di linea&lt;/li&gt;
+                    &lt;li&gt;&lt;b&gt;&lt;code&gt;\t&lt;/code&gt;&lt;/b&gt;: tab&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/p&gt;
 
-            &amp;lt;p&amp;gt;&amp;lt;b&amp;gt;Mark:&amp;lt;/b&amp;gt;&amp;lt;/p&amp;gt;
+            &lt;p&gt;&lt;b&gt;Mark:&lt;/b&gt;&lt;/p&gt;
             </translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="47"/>
-        <source>Split &apos;{}&apos;</source>
+        <source>Split '{}'</source>
         <translation>Dividi '{}'</translation>
     </message>
     <message>
@@ -4184,42 +4184,42 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/ui/editors/textFormat.py" line="18"/>
         <source>CTRL+B</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/textFormat.py" line="19"/>
         <source>CTRL+I</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/textFormat.py" line="20"/>
         <source>CTRL+U</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/textFormat.py" line="21"/>
         <source>CTRL+P</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/textFormat.py" line="22"/>
         <source>CTRL+L</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/textFormat.py" line="23"/>
         <source>CTRL+E</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/textFormat.py" line="24"/>
         <source>CTRL+R</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/textFormat.py" line="25"/>
         <source>CTRL+J</source>
-        <translation></translation>
+        <translation/>
     </message>
 </context>
 <context>
@@ -4255,7 +4255,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/ui/welcome_ui.ui" line="50"/>
         <source>1</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome_ui.ui" line="55"/>
@@ -4345,7 +4345,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="188"/>
         <source>Manuskript</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="196"/>
@@ -4420,7 +4420,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="384"/>
         <source>&lt;b&gt;Total:&lt;/b&gt; {} words (~ {} pages)</source>
-        <translation>&amp;lt;b&amp;gt;Totale:&amp;lt;/b&amp;gt; {} parole (~ {} pagine)</translation>
+        <translation>&lt;b&gt;Totale:&lt;/b&gt; {} parole (~ {} pagine)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="405"/>
@@ -4435,7 +4435,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="446"/>
         <source>Idea</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="447"/>
@@ -4450,7 +4450,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="457"/>
         <source>TODO</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="458"/>
@@ -4508,7 +4508,7 @@ Usalo se ottieni un errore relativo a YAML.</translation>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="251"/>
         <source>Flora</source>
-        <translation></translation>
+        <translation/>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="251"/>
