@@ -230,7 +230,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="71"/>
         <source>Choose output fileâ¦</source>
-        <translation type="unfinished">Ausgabe-Datei wählenâ¦</translation>
+        <translation>Ausgabe-Datei wählenâ¦</translation>
     </message>
 </context>
 <context>
@@ -1120,7 +1120,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2546"/>
         <source>&amp;Importâ¦</source>
-        <translation type="unfinished">&amp;Importieren</translation>
+        <translation>&amp;Importierenâ¦</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2549"/>
@@ -1160,7 +1160,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2594"/>
         <source>&amp;Splitâ¦</source>
-        <translation type="unfinished">&amp;Aufteilen</translation>
+        <translation>&amp;Aufteilenâ¦</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2597"/>
@@ -2832,12 +2832,12 @@ Wörtern an</translation>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="788"/>
         <source>Replace ... with â¦</source>
-        <translation type="unfinished">Ersetze ... durch</translation>
+        <translation>Ersetze ... durch â¦</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="795"/>
         <source>Replace --- with â</source>
-        <translation type="unfinished">Ersetze --- durch</translation>
+        <translation>Ersetze --- durch â</translation>
     </message>
 </context>
 <context>
