@@ -119,8 +119,29 @@
           "type": "archive",
           "url": "https://github.com/olivierkes/manuskript/archive/0.12.0.zip",
           "sha256": "676da858d0a3bb658234191b2b36c56dbb07f03371469990de34f7701842c441"
-        }
-      ]
+        },
+		{
+		  "type": "file",
+		  "path": "ch.theologeek.Manuskript.desktop"
+		},
+		{
+		  "type": "file",
+		  "path": "ch.theologeek.Manuskript.appdata.xml"
+		}
+      ],
+	  "post-install": [
+		  /* install icons in several resolutions */
+		  "install -Dm644 icons/Manuskript/icon-16px.png /app/share/icons/hicolor/16x16/ch.theologeek.Manuskript.png",
+		  "install -Dm644 icons/Manuskript/icon-32px.png /app/share/icons/hicolor/32x32/ch.theologeek.Manuskript.png",
+		  "install -Dm644 icons/Manuskript/icon-64px.png /app/share/icons/hicolor/64x64/ch.theologeek.Manuskript.png",
+		  "install -Dm644 icons/Manuskript/icon-128px.png /app/share/icons/hicolor/128x128/ch.theologeek.Manuskript.png",
+		  "install -Dm644 icons/Manuskript/icon-256px.png /app/share/icons/hicolor/256x256/ch.theologeek.Manuskript.png",
+		  "install -Dm644 icons/Manuskript/icon-512px.png /app/share/icons/hicolor/512x512/ch.theologeek.Manuskript.png",
+		  
+		  /* install desktop file and application data */
+		  "install -Dm644 ch.theologeek.Manuskript.desktop /app/share/desktop/ch.theologeek.Manuskript.desktop",
+		  "install -Dm644 ch.theologeek.Manuskript.appdata.xml /app/share/appdata/ch.theologeek.Manuskript.appdata.xml"
+	  ]
     }
   ]
 }

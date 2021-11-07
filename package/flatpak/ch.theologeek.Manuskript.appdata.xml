@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2021 Tobias Frisch -->
+<component type="desktop">
+	<id>ch.theologeek.Manuskript</id>
+	<metadata_license>CC0-1.0</metadata_license>
+	<project_license>GPL-3.0</project_license>
+
+	<name>Manuskript</name>
+	<summary>A open-source tool for writers</summary>
+	<description>
+		<p>
+		</p>
+	</description>
+
+	<screenshots>
+		<screenshot type="default">
+			<image>http://www.theologeek.ch/manuskript/wp-content/uploads/2017/11/manuskript-0.5.0-main-view.jpg</image>
+		</screenshot>
+	</screenshots>
+
+	<url type="homepage">http://www.theologeek.ch/manuskript</url>
+
+	<update_contact>thejackimonster_at_gmail.com</update_contact>
+
+	<launchable type="desktop-id">ch.theologeek.Manuskript.desktop</launchable>
+	<releases>
+		<release version="0.12.0" date="2021-04-30" />
+	</releases>
+</component>
