@@ -9,8 +9,21 @@
 	<name>Manuskript</name>
 	<summary>A open-source tool for writers</summary>
 	<description>
-		<p>
-		</p>
+		<p>Manuskript provides a rich environment to help writers create their first draft and then further refine and edit their masterpiece.</p>
+		<p>With Manuskript you can:</p>
+		<ul>
+			<li>Grow your premise from one sentence, to a paragraph, to a full summary</li>
+			<li>Create characters</li>
+			<li>Conceive plots</li>
+			<li>Construct outlines (Outline mode and/or Index cards)</li>
+			<li>Write with focus (Distraction free mode)</li>
+			<li>Build worlds</li>
+			<li>Track items</li>
+			<li>Edit and re-organize chapters and scenes</li>
+			<li>View Story line</li>
+			<li>Compose with fiction or non-fiction templates and writing modes</li>
+			<li>Import and export document formats such as HTML, ePub, OpenDocument, DocX, and more</li>
+		</ul>
 	</description>
 
 	<screenshots>
