@@ -83,13 +83,6 @@
       ]
     },
     {
-      "name": "texlive-extension",
-      "buildsystem": "simple",
-      "build-commands": [
-        "mkdir /app/texlive"
-      ]
-    },
-    {
       "name": "pandoc",
       "buildsystem": "simple",
       "build-commands": [
@@ -101,7 +94,16 @@
           "url": "https://github.com/jgm/pandoc/releases/download/2.14.2/pandoc-2.14.2-linux-amd64.tar.gz",
           "sha256": "1a0548b15255b1c11722f3d4e12fc7a652edf8c9a329a8458f1e765517aec1be"
         }
-      ]
+      ],
+	  "modules": [
+		{
+		  "name": "texlive-extension",
+		  "buildsystem": "simple",
+		  "build-commands": [
+			"mkdir /app/texlive"
+		  ]
+		}
+	  ]
     },
     {
       "name": "manuskript",
