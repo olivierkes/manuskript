@@ -1,11 +1,10 @@
 [Desktop Entry]
-Version=0.12.0
 Type=Application
 Terminal=false
 Name=Manuskript
 TryExec=manuskript
 Exec=manuskript
-Icon=ch.theologeek.Manuskript.png
+Icon=ch.theologeek.Manuskript
 Categories=Office;WordProcessor;
 Keywords=manuskript;office;write;edit;novel;text;msk
 Comment=An open source tool for writers
