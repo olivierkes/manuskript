@@ -5,7 +5,7 @@ DIR=$(mktemp -d /tmp/manuskript-windows.XXXXXX)
 PREFIX=$DIR/.wine
 
 # Install Python:
-PY_DOWNLOAD="https://www.python.org/ftp/python/3.8.9/python-3.8.9.exe"
+PY_DOWNLOAD="https://www.python.org/ftp/python/3.8.10/python-3.8.10.exe"
 PY_SETUP=$(echo $PY_DOWNLOAD | tr '/' ' ' | awk '{ print $(NF) }')
 
 if [ ! -e $PY_SETUP ]; then
@@ -15,7 +15,7 @@ fi
 WINEPREFIX=$PREFIX WINEARCH="win32" wine $PY_SETUP /quiet InstallAllUsers=1 PrependPath=1 Include_test=0
 
 # Install Pandoc:
-PAN_DOWNLOAD="https://github.com/jgm/pandoc/releases/download/2.13/pandoc-2.13-windows-x86_64.msi"
+PAN_DOWNLOAD="https://github.com/jgm/pandoc/releases/download/2.16.1/pandoc-2.16.1-windows-x86_64.msi"
 PAN_SETUP=$(echo $PAN_DOWNLOAD | tr '/' ' ' | awk '{ print $(NF) }')
 
 if [ ! -e $PAN_SETUP ]; then
