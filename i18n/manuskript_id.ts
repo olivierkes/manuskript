@@ -46,12 +46,12 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/HTML.py" line="13"/>
         <source>A little known format modestly used. You know, web sites for example.</source>
-        <translation>Sedikit format yang dikenal dengan sederhana digunakan. Anda tahu, situs web misalnya.</translation>
+        <translation>Format yang sedikit lebih sering digunakan. Anda tahu, untuk situs web misalnya.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/PDF.py" line="18"/>
         <source>Needs LaTeX to be installed.</source>
-        <translation>Membutuhkan latex untuk dipasang.</translation>
+        <translation>Membutuhkan LaTeX untuk dipasang.</translation>
     </message>
     <message>
         <location filename="../manuskript/converters/pandocConverter.py" line="76"/>
@@ -159,7 +159,8 @@ Apabila teks tersebut diformat dalam bentuk markdown.</translation>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="18"/>
         <source>Simplest export to plain text. Allows you to use your own markup not understood
                   by Manuskript, for example &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ekspor tersimpel ke teks biasa. Memungkinkan anda untuk menggunakan markup anda sendiri yang tidak
+                  dimengerti Manuskript, contohnya &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/__init__.py" line="22"/>
@@ -167,13 +168,17 @@ Apabila teks tersebut diformat dalam bentuk markdown.</translation>
     formats.&lt;/p&gt;
     &lt;p&gt;Website: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
     </source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;Sebuah konverter dokumen universal. Bisa digunakan untuk mengubah Markdown ke berbagai
+    format.&lt;/p&gt;
+    &lt;p&gt;Situs web: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
+    </translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/PDF.py" line="19"/>
         <source>a valid LaTeX installation. Pandoc recommendations can be found on:
                      &lt;a href=&quot;https://pandoc.org/installing.html&quot;&gt;pandoc.org/installing.html&lt;/a&gt;. If you want Unicode support, you need XeLaTeX.</source>
-        <translation type="unfinished"></translation>
+        <translation>instalasi LaTeX yang valid. Rekomendasi Pandoc bisa ditemukan di:
+                     &lt;a href=&quot;https://pandoc.org/installing.html&quot;&gt;pandoc.org/installing.html&lt;/a&gt;. Jika anda menginginkan dukungan Unicode, anda perlu XeLaTeX.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/plainText.py" line="10"/>
@@ -213,7 +218,7 @@ Gunakan itu jika anda mendapat eror yang berkaitan dengan YAML.</translation>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="122"/>
         <source>Self-contained HTML files, with no dependencies</source>
-        <translation type="unfinished"></translation>
+        <translation>File HTML mandiri, tidak memerlukan ketergantungan</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="51"/>
@@ -411,17 +416,22 @@ Gunakan itu jika anda mendapat eror yang berkaitan dengan YAML.</translation>
                         then it will be imported in manuskript. One or the other
                         might give better result depending on your document.
                         &lt;br/&gt;&amp;nbsp;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Info:&lt;/b&gt; Manuskript bisa
+                        mengimpor dari  &lt;b&gt;mardown&lt;/b&gt; atau &lt;b&gt;OPML&lt;/b&gt;. Pandoc akan
+                        mengkonversi dokumen anda ke (lihat opsi di bawah), dan
+                        kemudian akan mengimpor kembali ke manuskript. Kualitas hasil
+                        dipengaruhi oleh dokumen anda.
+                        &lt;br/&gt;&amp;nbsp;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="68"/>
         <source>Import using:</source>
-        <translation type="unfinished"></translation>
+        <translation>Impor menggunakan:</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="72"/>
         <source>Wrap lines:</source>
-        <translation type="unfinished"></translation>
+        <translation>Pemecahan baris:</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="72"/>
@@ -436,17 +446,17 @@ Gunakan itu jika anda mendapat eror yang berkaitan dengan YAML.</translation>
     <message>
         <location filename="../manuskript/importer/mindMapImporter.py" line="55"/>
         <source>Mind Map Import</source>
-        <translation type="unfinished"></translation>
+        <translation>Impor Mind Map</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/mindMapImporter.py" line="55"/>
         <source>This does not appear to be a valid Mind Map file.</source>
-        <translation type="unfinished"></translation>
+        <translation>File anda bukanlah file Mind Map yang valid.</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/mindMapImporter.py" line="70"/>
         <source>Mind Map import</source>
-        <translation type="unfinished"></translation>
+        <translation>Impor Mind Map</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/mindMapImporter.py" line="73"/>
@@ -456,7 +466,7 @@ Gunakan itu jika anda mendapat eror yang berkaitan dengan YAML.</translation>
     <message>
         <location filename="../manuskript/importer/mindMapImporter.py" line="89"/>
         <source>Untitled</source>
-        <translation type="unfinished"></translation>
+        <translation>Tanpa judul</translation>
     </message>
 </context>
 <context>
@@ -464,7 +474,7 @@ Gunakan itu jika anda mendapat eror yang berkaitan dengan YAML.</translation>
     <message>
         <location filename="../manuskript/ui/views/MDEditCompleter.py" line="73"/>
         <source>Insert reference</source>
-        <translation type="unfinished"></translation>
+        <translation>Masukan referensi</translation>
     </message>
 </context>
 <context>
@@ -472,47 +482,47 @@ Gunakan itu jika anda mendapat eror yang berkaitan dengan YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1647"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>Umum</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="169"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>Judul</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="179"/>
         <source>Subtitle</source>
-        <translation type="unfinished"></translation>
+        <translation>Subjudul</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="189"/>
         <source>Series</source>
-        <translation type="unfinished"></translation>
+        <translation>Seri</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="199"/>
         <source>Volume</source>
-        <translation type="unfinished"></translation>
+        <translation>Jilid</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="226"/>
         <source>Genre</source>
-        <translation type="unfinished"></translation>
+        <translation>Genre</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="236"/>
         <source>License</source>
-        <translation type="unfinished"></translation>
+        <translation>Lisensi</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="249"/>
         <source>Author</source>
-        <translation type="unfinished"></translation>
+        <translation>Pengarang</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1656"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nama</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="277"/>
@@ -522,212 +532,212 @@ Gunakan itu jika anda mendapat eror yang berkaitan dengan YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1442"/>
         <source>Summary</source>
-        <translation type="unfinished"></translation>
+        <translation>Ringkasan</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="322"/>
         <source>Situation:</source>
-        <translation type="unfinished"></translation>
+        <translation>Situasi:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1357"/>
         <source>Summary:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ringkasan:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="345"/>
         <source>One sentence</source>
-        <translation type="unfinished"></translation>
+        <translation>Satu kalimat</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1455"/>
         <source>One paragraph</source>
-        <translation type="unfinished"></translation>
+        <translation>Satu paragraf</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1460"/>
         <source>One page</source>
-        <translation type="unfinished"></translation>
+        <translation>Satu halaman</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1465"/>
         <source>Full</source>
-        <translation type="unfinished"></translation>
+        <translation>Penuh</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="420"/>
         <source>One sentence summary</source>
-        <translation type="unfinished"></translation>
+        <translation>Ringkasan satu kalimat</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="502"/>
         <source>One paragraph summary</source>
-        <translation type="unfinished"></translation>
+        <translation>Ringkasan satu paragraf</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="540"/>
         <source>Expand each sentence of your one paragraph summary to a paragraph</source>
-        <translation type="unfinished"></translation>
+        <translation>Kembangkan tiap kalimat dari paragraf ringkasan ke sebuah paragraf baru</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="565"/>
         <source>One page summary</source>
-        <translation type="unfinished"></translation>
+        <translation>Ringkasan satu halaman</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="590"/>
         <source>Full summary</source>
-        <translation type="unfinished"></translation>
+        <translation>Ringkasan penuh</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1094"/>
         <source>Next</source>
-        <translation type="unfinished"></translation>
+        <translation>Selanjutnya</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="676"/>
         <source>What if...?</source>
-        <translation type="unfinished"></translation>
+        <translation>Bagaimana jika...?</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="688"/>
         <source>Characters</source>
-        <translation type="unfinished"></translation>
+        <translation>Karakter</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="713"/>
         <source>Names</source>
-        <translation type="unfinished"></translation>
+        <translation>Nama</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1607"/>
         <source>Filter</source>
-        <translation type="unfinished"></translation>
+        <translation>Filter</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1203"/>
         <source>Basic info</source>
-        <translation type="unfinished"></translation>
+        <translation>Info dasar</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1222"/>
         <source>Importance</source>
-        <translation type="unfinished"></translation>
+        <translation>Kepentingan</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="880"/>
         <source>Motivation</source>
-        <translation type="unfinished"></translation>
+        <translation>Motivasi</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="890"/>
         <source>Goal</source>
-        <translation type="unfinished"></translation>
+        <translation>Tujuan</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="900"/>
         <source>Conflict</source>
-        <translation type="unfinished"></translation>
+        <translation>Konflik</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="910"/>
         <source>Epiphany</source>
-        <translation type="unfinished"></translation>
+        <translation>Pencerahan</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="920"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One sentence&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Satu kalimat&lt;br/&gt;ringkasan&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="930"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One paragraph&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Satu paragraf&lt;br/&gt;ringkasan&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1021"/>
         <source>Notes</source>
-        <translation type="unfinished"></translation>
+        <translation>Catatan</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1031"/>
         <source>Detailed info</source>
-        <translation type="unfinished"></translation>
+        <translation>Info detail</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2041"/>
         <source>Plots</source>
-        <translation type="unfinished"></translation>
+        <translation>Alur</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1212"/>
         <source>Plot</source>
-        <translation type="unfinished"></translation>
+        <translation>Alur</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1229"/>
         <source>Character(s)</source>
-        <translation type="unfinished"></translation>
+        <translation>Karakter</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1666"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Deskripsi</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1243"/>
         <source>Result</source>
-        <translation type="unfinished"></translation>
+        <translation>Hasil</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1335"/>
         <source>Resolution steps</source>
-        <translation type="unfinished"></translation>
+        <translation>Langkah-langkah resolusi</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2065"/>
         <source>World</source>
-        <translation type="unfinished"></translation>
+        <translation>Dunia</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1620"/>
         <source>Populates with empty data</source>
-        <translation type="unfinished"></translation>
+        <translation>Populasi dengan data kosong</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1677"/>
         <source>More</source>
-        <translation type="unfinished"></translation>
+        <translation>Lebih</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1686"/>
         <source>Source of passion</source>
-        <translation type="unfinished"></translation>
+        <translation>Sumber semangat</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1696"/>
         <source>Source of conflict</source>
-        <translation type="unfinished"></translation>
+        <translation>Sumber konflik</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1554"/>
         <source>Outline</source>
-        <translation type="unfinished"></translation>
+        <translation>Garis besar</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1874"/>
         <source>Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Editor</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2005"/>
         <source>Debug</source>
-        <translation type="unfinished"></translation>
+        <translation>Debug</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2018"/>
         <source>FlatData</source>
-        <translation type="unfinished"></translation>
+        <translation>FlatData</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2028"/>
@@ -737,37 +747,37 @@ Gunakan itu jika anda mendapat eror yang berkaitan dengan YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2089"/>
         <source>Labels</source>
-        <translation type="unfinished"></translation>
+        <translation>Label</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2123"/>
         <source>&amp;File</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;File</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2127"/>
         <source>&amp;Recent</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Baru</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2147"/>
         <source>&amp;Help</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Bantuan</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2158"/>
         <source>&amp;Tools</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Alat</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2165"/>
         <source>&amp;Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Edit</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2221"/>
         <source>&amp;View</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Gambaran</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2225"/>
@@ -787,27 +797,27 @@ Gunakan itu jika anda mendapat eror yang berkaitan dengan YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2325"/>
         <source>&amp;Navigation</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Navigasi</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2360"/>
         <source>&amp;Open</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Buka</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2363"/>
         <source>Ctrl+O</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+O</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2372"/>
         <source>&amp;Save</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Simpan</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2375"/>
         <source>Ctrl+S</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+S</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2384"/>
@@ -817,27 +827,27 @@ Gunakan itu jika anda mendapat eror yang berkaitan dengan YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2387"/>
         <source>Ctrl+Shift+S</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Shift+S</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2396"/>
         <source>&amp;Quit</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Keluar</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2399"/>
         <source>Ctrl+Q</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Q</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2414"/>
         <source>&amp;Show help texts</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Tunjukan teks bantuan</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2417"/>
         <source>Ctrl+Shift+B</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Shift+B</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2432"/>
@@ -847,37 +857,37 @@ Gunakan itu jika anda mendapat eror yang berkaitan dengan YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2435"/>
         <source>F9</source>
-        <translation type="unfinished"></translation>
+        <translation>F9</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2444"/>
         <source>&amp;Labels...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Label...</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2453"/>
         <source>&amp;Status...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Status...</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1552"/>
         <source>Tree</source>
-        <translation type="unfinished"></translation>
+        <translation>Pohon</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2469"/>
         <source>&amp;Simple</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Simpel</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2477"/>
         <source>&amp;Fiction</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Fiksi</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1553"/>
         <source>Index cards</source>
-        <translation type="unfinished"></translation>
+        <translation>Kartu indeks</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2496"/>
@@ -887,12 +897,12 @@ Gunakan itu jika anda mendapat eror yang berkaitan dengan YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2499"/>
         <source>F8</source>
-        <translation type="unfinished"></translation>
+        <translation>F8</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2508"/>
         <source>&amp;Close project</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Tutup pekerjaan</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2517"/>
@@ -902,47 +912,47 @@ Gunakan itu jika anda mendapat eror yang berkaitan dengan YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2520"/>
         <source>F6</source>
-        <translation type="unfinished"></translation>
+        <translation>F6</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2525"/>
         <source>&amp;Frequency Analyzer</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Penganalisis Frekuensi</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="154"/>
         <source>Book information</source>
-        <translation type="unfinished"></translation>
+        <translation>Informasi buku</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2534"/>
         <source>&amp;About</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Tentang</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2537"/>
         <source>About Manuskript</source>
-        <translation type="unfinished"></translation>
+        <translation>Tentang Manuskript</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="746"/>
         <source>Manuskript</source>
-        <translation type="unfinished"></translation>
+        <translation>Manuskript</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="872"/>
         <source>Project {} saved.</source>
-        <translation type="unfinished"></translation>
+        <translation>Pekerjaan {} disimpan.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="876"/>
         <source>WARNING: Project {} not saved.</source>
-        <translation type="unfinished"></translation>
+        <translation>PERHATIAN: Pekerjaan {} belum tersimpan.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="896"/>
         <source>Project {} loaded.</source>
-        <translation type="unfinished"></translation>
+        <translation>Pekerjaan {} diproses.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="902"/>
@@ -952,22 +962,22 @@ Gunakan itu jika anda mendapat eror yang berkaitan dengan YAML.</translation>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1280"/>
         <source> (~{} pages)</source>
-        <translation type="unfinished"></translation>
+        <translation> (~{} halaman)</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1283"/>
         <source>Words: {}{}</source>
-        <translation type="unfinished"></translation>
+        <translation>Kata: {}{}</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1291"/>
         <source>Book summary</source>
-        <translation type="unfinished"></translation>
+        <translation>Ringkasan buku</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1292"/>
         <source>Project tree</source>
-        <translation type="unfinished"></translation>
+        <translation>Pohon proyek</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1293"/>
@@ -977,59 +987,61 @@ Gunakan itu jika anda mendapat eror yang berkaitan dengan YAML.</translation>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1294"/>
         <source>Story line</source>
-        <translation type="unfinished"></translation>
+        <translation>Jalan cerita</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1359"/>
         <source>Enter information about your book, and yourself.</source>
-        <translation type="unfinished"></translation>
+        <translation>Masukan informasi tentang buku anda, dan tentang diri anda.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1362"/>
         <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous
                      evil wizard wasn&apos;t able to kill a baby?&apos; (Harry Potter)</source>
-        <translation type="unfinished"></translation>
+        <translation>Situasi dasar, dalam bentuk pertanyaan &apos;Bagaiaman jika...?&apos;. Cth: &apos;Bagaimana jika 
+                     penyihir jahat paling berbahaya tidak mampu membunuh seorang bayi?&apos; (Harry Potter)</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1367"/>
         <source>Take time to think about a one sentence (~50 words) summary of your book. Then expand it to
                      a paragraph, then to a page, then to a full summary.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ambil waktu untuk memikirkan sebuah kalimat (~50 kata) ringkasan untuk buku anda. Kemudian kembangkan
+                     menjadi sebuah paragraf, kemudian menjadi halaman, kemudian menjadi ringkasan penuh.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1372"/>
         <source>Create your characters.</source>
-        <translation type="unfinished"></translation>
+        <translation>Buat karakter anda.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1375"/>
         <source>Develop plots.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kembangkan alur.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1378"/>
         <source>Build worlds.  Create hierarchy of broad categories down to specific details.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bangun dunia.  Buat hirarki dari kategori yang luas menjadi detail spesifik.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1381"/>
         <source>Create the outline of your masterpiece.</source>
-        <translation type="unfinished"></translation>
+        <translation>Buat garis besar karya besar anda.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1384"/>
         <source>Write.</source>
-        <translation type="unfinished"></translation>
+        <translation>Tulis.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1387"/>
         <source>Debug info. Sometimes useful.</source>
-        <translation type="unfinished"></translation>
+        <translation>Info debug. Sesuatu yang berguna.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1401"/>
         <source>Dictionary</source>
-        <translation type="unfinished"></translation>
+        <translation>Diksi</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1544"/>
@@ -1039,17 +1051,17 @@ Gunakan itu jika anda mendapat eror yang berkaitan dengan YAML.</translation>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1545"/>
         <source>POV</source>
-        <translation type="unfinished"></translation>
+        <translation>Sudut Pandang</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1546"/>
         <source>Label</source>
-        <translation type="unfinished"></translation>
+        <translation>Label</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1547"/>
         <source>Progress</source>
-        <translation type="unfinished"></translation>
+        <translation>Kemajuan</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1548"/>
@@ -1059,57 +1071,57 @@ Gunakan itu jika anda mendapat eror yang berkaitan dengan YAML.</translation>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1571"/>
         <source>Icon color</source>
-        <translation type="unfinished"></translation>
+        <translation>Warna ikon</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1572"/>
         <source>Text color</source>
-        <translation type="unfinished"></translation>
+        <translation>Warna teks</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1573"/>
         <source>Background color</source>
-        <translation type="unfinished"></translation>
+        <translation>Warna latar belakang</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1564"/>
         <source>Icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Ikon</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1565"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation>Teks</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1566"/>
         <source>Background</source>
-        <translation type="unfinished"></translation>
+        <translation>Latar belakang</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1567"/>
         <source>Border</source>
-        <translation type="unfinished"></translation>
+        <translation>Garis tepi</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1568"/>
         <source>Corner</source>
-        <translation type="unfinished"></translation>
+        <translation>Ujung</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1371"/>
         <source>Add plot step</source>
-        <translation type="unfinished"></translation>
+        <translation>Tambahkan langkah alur</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2546"/>
         <source>&amp;Import…</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Impor…</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2549"/>
         <source>F7</source>
-        <translation type="unfinished"></translation>
+        <translation>F7</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2558"/>
@@ -1119,7 +1131,7 @@ Gunakan itu jika anda mendapat eror yang berkaitan dengan YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2561"/>
         <source>Ctrl+C</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+C</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2570"/>
@@ -1129,17 +1141,17 @@ Gunakan itu jika anda mendapat eror yang berkaitan dengan YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2573"/>
         <source>Ctrl+X</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+X</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2582"/>
         <source>&amp;Paste</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Tempel</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2585"/>
         <source>Ctrl+V</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+V</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2594"/>
@@ -1149,7 +1161,7 @@ Gunakan itu jika anda mendapat eror yang berkaitan dengan YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2597"/>
         <source>Ctrl+Shift+K</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Shift+K</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2606"/>
@@ -1159,17 +1171,17 @@ Gunakan itu jika anda mendapat eror yang berkaitan dengan YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2609"/>
         <source>Ctrl+K</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+K</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2621"/>
         <source>Ctrl+M</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+M</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2824"/>
         <source>Ctrl+D</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+D</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2642"/>
@@ -1179,12 +1191,12 @@ Gunakan itu jika anda mendapat eror yang berkaitan dengan YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2651"/>
         <source>&amp;Move Up</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Pindahkan ke atas</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2654"/>
         <source>Ctrl+Shift+Up</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Shift+Up</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2663"/>
@@ -1194,7 +1206,7 @@ Gunakan itu jika anda mendapat eror yang berkaitan dengan YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2666"/>
         <source>Ctrl+Shift+Down</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Shift+Down</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2630"/>
@@ -1204,7 +1216,7 @@ Gunakan itu jika anda mendapat eror yang berkaitan dengan YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2639"/>
         <source>&amp;Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Hapus</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2675"/>
@@ -1214,7 +1226,7 @@ Gunakan itu jika anda mendapat eror yang berkaitan dengan YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2678"/>
         <source>F2</source>
-        <translation type="unfinished"></translation>
+        <translation>F2</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2235"/>
@@ -1229,17 +1241,17 @@ Gunakan itu jika anda mendapat eror yang berkaitan dengan YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1388"/>
         <source>Remove selected plot step(s)</source>
-        <translation type="unfinished"></translation>
+        <translation>Hapus langkah alur yang dipilih</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2169"/>
         <source>&amp;Format</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Format</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2177"/>
         <source>&amp;Header</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Header</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2683"/>
@@ -1249,7 +1261,7 @@ Gunakan itu jika anda mendapat eror yang berkaitan dengan YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2686"/>
         <source>Ctrl+Alt+1</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Alt+1</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2691"/>
