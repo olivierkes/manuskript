@@ -50,7 +50,11 @@ pip_install() {
 pip_install --upgrade pip
 
 # Install required dependencies:
-pip_install pyinstaller
+
+# Version 4.4 does not cause the issue with lxml (potential fallback)
+pip_install https://github.com/pyinstaller/pyinstaller/archive/develop.zip
+#pip_install pyinstaller==4.4
+
 pip_install lxml
 pip_install PyQt5
 
