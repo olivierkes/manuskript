@@ -1,22 +1,22 @@
 name: manuskript
+title: Manuskript
 version: overwritten
-version-script: grep -E  "__version__.*\".*\"" "manuskript/version.py" | cut -d\" -f2
 summary: Manuskript is an open-source tool for writers.
 description: |
   Manuskript provides a rich environment to help writers create their first draft and then further refine and edit their masterpiece.
   With Manuskript you can:
-    Grow your premise from one sentence, to a paragraph, to a full summary
-    Create characters
-    Conceive plots
-    Construct outlines (Outline mode and/or Index cards)
-    Write with focus (Distraction free mode)
-    Build worlds
-    Track items
-    Edit and re-organize chapters and scenes
-    View Story line
-    Compose with fiction or non-fiction templates and writing modes
-    Export to HTML, ePub, OpenDocument, DocX, PDF, and more
-    Additionally Manuskript can help in many more ways with a spell checker, markdown highlighter, frequency analyzer, and automatic save in open and plain text file format.
+  * Grow your premise from one sentence, to a paragraph, to a full summary
+  * Create characters
+  * Conceive plots
+  * Construct outlines (Outline mode and/or Index cards)
+  * Write with focus (Distraction free mode)
+  * Build worlds
+  * Track items
+  * Edit and re-organize chapters and scenes
+  * View Story line
+  * Compose with fiction or non-fiction templates and writing modes
+  * Export to HTML, ePub, OpenDocument, DocX, PDF, and more
+  * Additionally Manuskript can help in many more ways with a spell checker, markdown highlighter, frequency analyzer, and automatic save in open and plain text file format.
 grade: stable
 confinement: strict
 base: core18
@@ -27,7 +27,7 @@ layout:
 
 apps:
   manuskript:
-    command: desktop-launch $SNAP/bin/manuskript
+    command: bin/desktop-launch $SNAP/bin/manuskript
     environment:
       # Fallback to XWayland if running in a Wayland session.
       DISABLE_WAYLAND: 1
@@ -39,6 +39,7 @@ apps:
     - x11
     - opengl
     - home
+    - network-manager # (Seems to be necessary on older Ubuntu to open the window)
 
 parts:
   desktop-qt5:
@@ -67,12 +68,15 @@ parts:
     - locales-all
     - xdg-user-dirs
     - fcitx-frontend-qt5
+    - libxcursor1
+    - libgtk2.0-0
 
   manuskript:
     after: [desktop-qt5]
     plugin: dump
     source: https://github.com/olivierkes/manuskript.git
     source-type: git
+    source-branch: 'master'
     build-packages:
       - python3
       - python3-pyqt5
@@ -86,6 +90,8 @@ parts:
       - texlive-latex-recommended
       - texlive-fonts-recommended
       - texlive-luatex
+    override-pull: |
+      snapcraftctl pull
     stage-packages:
       - python3
       - python3-pyqt5
@@ -101,3 +107,8 @@ parts:
       - texlive-latex-recommended
       - texlive-fonts-recommended
       - texlive-luatex
+    override-build: |
+      snapcraftctl build
+
+      version="$(grep -E  '__version__.*\".*\"' 'manuskript/version.py' | cut -d\" -f2)"
+      snapcraftctl set-version "$version"
