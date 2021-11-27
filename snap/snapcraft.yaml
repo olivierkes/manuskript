@@ -89,7 +89,9 @@ parts:
       - pandoc
       - texlive-latex-recommended
       - texlive-fonts-recommended
+      - texlive-latex-extra
       - texlive-luatex
+      - texlive-xetex
     override-pull: |
       snapcraftctl pull
 
