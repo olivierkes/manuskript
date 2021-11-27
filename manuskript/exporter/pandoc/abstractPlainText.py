@@ -8,6 +8,9 @@ from PyQt5.QtWidgets import qApp, QVBoxLayout, QCheckBox, QWidget, QHBoxLayout, 
 from manuskript.exporter.manuskript.markdown import markdown, markdownSettings
 from manuskript.ui.collapsibleGroupBox2 import collapsibleGroupBox2
 
+import logging
+LOGGER = logging.getLogger(__name__)
+
 
 class abstractPlainText(markdown):
     name = "SUBCLASSME"
@@ -23,13 +26,15 @@ class abstractPlainText(markdown):
 
     def settingsWidget(self):
         # Get pandoc major version to determine valid command line options
-        p = re.compile(r'pandoc (\d+)\..*')
+        p = re.compile(r'pandoc (\d+)\.(\d+).*')
         m = p.match(self.exporter.version())
         if m:
             majorVersion = m.group(1)
+            minorVersion = m.group(2)
         else:
             majorVersion = ""
-        w = pandocSettings(self, majorVersion, toFormat=self.toFormat)
+            minorVersion = ""
+        w = pandocSettings(self, majorVersion, minorVersion, toFormat=self.toFormat)
         w.loadSettings()
         return w
 
@@ -56,8 +61,35 @@ class abstractPlainText(markdown):
         previewWidget.setPlainText(r)
 
 
+def versionAsInt(version):
+    if version is None:
+        return 0
+
+    try:
+        return int(version)
+    except ValueError:
+        return 0
+
+
+def versionToIntArray(version):
+    if version is None:
+        return [0, 0]
+
+    p = re.compile(r'(\d+)\.(\d+).*')
+    m = p.match(version)
+    if m:
+        majorVersion = m.group(1)
+        minorVersion = m.group(2)
+    else:
+        majorVersion = ""
+        minorVersion = ""
+
+    return [ versionAsInt(majorVersion), versionAsInt(minorVersion) ]
+
+
 class pandocSetting:
-    def __init__(self, arg, type, format, label, widget=None, default=None, min=None, max=None, vals=None, suffix=""):
+    def __init__(self, arg, type, format, label, widget=None, default=None, min=None, max=None, vals=None, suffix="",
+                 minVersion=None, maxVersion=None, specific=False, toc=False):
         self.arg = arg  # start with EXT for extensions
         self.type = type
         self.label = label
@@ -70,6 +102,10 @@ class pandocSetting:
         self.max = max
         self.vals = vals.split("|") if vals else []
         self.suffix = suffix
+        self.minVersion = versionToIntArray(minVersion)
+        self.maxVersion = versionToIntArray(maxVersion)
+        self.specific = specific
+        self.toc = toc
 
     def isValid(self, format):
         """Return whether the specific setting is active with the given format."""
@@ -88,6 +124,26 @@ class pandocSetting:
 
         return False
 
+    def isCompatible(self, majorVersion, minorVersion):
+        majorNumber = versionAsInt(majorVersion)
+        minorNumber = versionAsInt(minorVersion)
+
+        if (majorNumber < self.minVersion[0]) or ((majorNumber == self.minVersion[0]) and
+                                                  (minorNumber < self.minVersion[1])):
+            return False
+
+        if (self.maxVersion[0] == 0) and (self.maxVersion[1] == 0):
+            return True
+
+        return (majorNumber < self.maxVersion[0]) or ((majorNumber == self.maxVersion[0]) and
+                                                      (minorNumber <= self.maxVersion[1]))
+
+    def isSpecific(self):
+        return self.specific
+
+    def isTOC(self):
+        return self.toc
+
 
 class pandocSettings(markdownSettings):
 
@@ -97,111 +153,111 @@ class pandocSettings(markdownSettings):
                                     qApp.translate("Export", "Standalone document (not just a fragment)"),
                                     default=True),
         "TOC":          pandocSetting("--toc", "checkbox", "",
-                                      qApp.translate("Export", "Include a table of contents.")),
+                                      qApp.translate("Export", "Include a table of contents."), toc=True),
 
         "TOC-depth":    pandocSetting("--toc-depth=", "number", "",
                                       qApp.translate("Export", "Number of sections level to include in TOC: "),
-                                      default=3, min=1, max=6),
+                                      default=3, min=1, max=6, toc=True, minVersion="1.10"),
         # pandoc v1 only
         "smart":        pandocSetting("--smart", "checkbox", "",
-                                      qApp.translate("Export", "Typographically correct output")),
+                                      qApp.translate("Export", "Typographically correct output"),
+                                      maxVersion="1.19.2.4"),
         # pandoc v1 only
         "normalize":    pandocSetting("--normalize", "checkbox", "",
-                                      qApp.translate("Export", "Normalize the document (cleaner)")),
-        "base-header":  pandocSetting("--shift-heading-level-by=", "number", "",
+                                      qApp.translate("Export", "Normalize the document (cleaner)"),
+                                      minVersion="1.8", maxVersion="1.19.2.4"),
+        # pandoc v1.5 to 2.7.3
+        "base-header": pandocSetting("--base-header-level=", "number", "",
+                                     qApp.translate("Export", "Specify the base level for headers: "),
+                                     default=1, min=1, minVersion="1.5", maxVersion="2.7.3"),
+        # pandoc v2.8+
+        "shift-heading":  pandocSetting("--shift-heading-level-by=", "number", "",
                                       qApp.translate("Export", "Specify the base level for headers: "),
-                                      default=0, min=0),
+                                      default=0, min=0, minVersion="2.8"),
         "disable-YAML": pandocSetting("EXT-yaml_metadata_block", "checkbox", "",
-                                      qApp.translate("Export", "Disable YAML metadata block.\nUse that if you get YAML related error.")),
+                                      qApp.translate("Export", "Disable YAML metadata block.\nUse that if you get YAML related error."),
+                                      minVersion="1.12"),
 
         # Specific
         "ref-link":     pandocSetting("--reference-links", "checkbox", "markdown rst",
-                                    qApp.translate("Export", "Use reference-style links instead of inline links")),
+                                      qApp.translate("Export", "Use reference-style links instead of inline links"),
+                                      specific=True),
+        # pandoc v1.9 to v2.11.1
         "atx":          pandocSetting("--atx-headers", "checkbox", "markdown asciidoc",
-                                    qApp.translate("Export", "Use ATX-style headers")),
+                                      qApp.translate("Export", "Use ATX-style headers"), specific=True,
+                                      minVersion="1.9", maxVersion="2.11.1"),
+        # pandoc v2.11.2+
+        "atx-heading": pandocSetting("--markdown-headings=atx|setext", "checkbox", "markdown asciidoc",
+                                     qApp.translate("Export", "Use ATX-style headers"), specific=True,
+                                     minVersion="2.11.2"),
         "self-contained": pandocSetting("--self-contained", "checkbox", "html",
-                                        qApp.translate("Export", "Self-contained HTML files, with no dependencies")),
+                                        qApp.translate("Export", "Self-contained HTML files, with no dependencies"),
+                                        specific=True, minVersion="1.9"),
         "q-tags":       pandocSetting("--html-q-tags", "checkbox", "html",
-                                        qApp.translate("Export", "Use <q> tags for quotes in HTML")),
+                                      qApp.translate("Export", "Use <q> tags for quotes in HTML"), specific=True,
+                                      minVersion="1.10"),
         # pandoc v1 only
         "latex-engine": pandocSetting("--latex-engine=", "combo", "pdf",
                                       qApp.translate("Export", "LaTeX engine used to produce the PDF."),
-                                      vals="pdflatex|lualatex|xelatex"),
+                                      vals="pdflatex|lualatex|xelatex", specific=True,
+                                      minVersion="1.9", maxVersion="1.19.2.4"),
         # pandoc v2
         "pdf-engine":   pandocSetting("--pdf-engine=", "combo", "pdf",
                                       qApp.translate("Export", "LaTeX engine used to produce the PDF."),
-                                      vals="pdflatex|lualatex|xelatex"),
+                                      vals="pdflatex|lualatex|xelatex", minVersion="2.0", specific=True),
         "epub3":        pandocSetting("EXTepub3", "checkbox", "epub",
-                                        qApp.translate("Export", "Convert to ePUB3")),
-    }
-
-    pdfSettings = {
+                                      qApp.translate("Export", "Convert to ePUB3"), specific=True,
+                                      minVersion="1.10"),
 
         # PDF
         "latex-ps":     pandocSetting("--variable=papersize:", "combo", "pdf latex",  # FIXME: does not work with default template
                                       qApp.translate("Export", "Paper size:"),
-                                      vals="letter|A4|A5"),
+                                      vals="letter|A4|A5", specific=True, minVersion="1.4"),
         "latex-fs":     pandocSetting("--variable=fontsize:", "number", "pdf latex",  # FIXME: does not work with default template
                                       qApp.translate("Export", "Font size:"),
-                                      min=8, max=88, default=12, suffix="pt"),
+                                      min=8, max=88, default=12, suffix="pt", specific=True, minVersion="1.4"),
         "latex-class":  pandocSetting("--variable=documentclass:", "combo", "pdf latex",
                                      qApp.translate("Export", "Class:"),
-                                     vals="article|report|book|memoir"),
+                                     vals="article|report|book|memoir", specific=True, minVersion="1.4"),
         "latex-ls":     pandocSetting("--variable=linestretch:", "combo", "pdf latex",
                                      qApp.translate("Export", "Line spacing:"),
-                                     vals="1|1.25|1.5|2"),
+                                     vals="1|1.25|1.5|2", specific=True, minVersion="1.4"),
 
         # FIXME: complete with http://pandoc.org/README.html#variables-for-latex
     }
 
 
-    def __init__(self, _format, majorVersion="", toFormat=None, parent=None):
+    def __init__(self, _format, majorVersion="", minorVersion="", toFormat=None, parent=None):
         markdownSettings.__init__(self, _format, parent)
 
         self.format = toFormat
         self.majorVersion = majorVersion
+        self.minorVersion = minorVersion
+
+        dropSettings = []
+
+        for key, setting in self.settingsList.items():
+            if not setting.isCompatible(self.majorVersion, self.minorVersion):
+                dropSettings.append(key)
+
+        LOGGER.info(f'Using pandoc settings: {self.majorVersion}.{self.minorVersion}, dropping: {dropSettings}')
+
+        for key in dropSettings:
+            self.settingsList.pop(key, None)
 
         w = QWidget(self)
         w.setLayout(QVBoxLayout())
         self.grpPandocGeneral = self.collapsibleGroupBox(self.tr("General"), w)
-
-        if majorVersion == "1":
-            # pandoc v1 only
-            self.addSettingsWidget("smart", self.grpPandocGeneral)
-            self.addSettingsWidget("normalize", self.grpPandocGeneral)
-        else:
-            # pandoc v2
-            self.settingsList.pop("smart", None)
-            self.settingsList.pop("normalize", None)
-        self.addSettingsWidget("base-header", self.grpPandocGeneral)
-        self.addSettingsWidget("standalone", self.grpPandocGeneral)
-        self.addSettingsWidget("disable-YAML", self.grpPandocGeneral)
-
+        self.grpPandocSpecific = self.collapsibleGroupBox(self.tr("Custom settings for {}").format(self.format), w)
         self.grpPandocTOC = self.collapsibleGroupBox(self.tr("Table of Content"), w)
 
-        self.addSettingsWidget("TOC", self.grpPandocTOC)
-        self.addSettingsWidget("TOC-depth", self.grpPandocTOC)
-
-        self.grpPandocSpecific = self.collapsibleGroupBox(self.tr("Custom settings for {}").format(self.format), w)
-
-        self.addSettingsWidget("ref-link", self.grpPandocSpecific)
-        self.addSettingsWidget("atx", self.grpPandocSpecific)
-        self.addSettingsWidget("self-contained", self.grpPandocSpecific)
-        self.addSettingsWidget("q-tags", self.grpPandocSpecific)
-        if majorVersion == "1":
-            # pandoc v1 only
-            self.addSettingsWidget("latex-engine", self.grpPandocSpecific)
-            self.settingsList.pop("pdf-engine", None)
-        else:
-            # pandoc v2
-            self.settingsList.pop("latex-engine", None)
-            self.addSettingsWidget("pdf-engine", self.grpPandocSpecific)
-        self.addSettingsWidget("epub3", self.grpPandocSpecific)
-
-        # PDF settings
-        self.settingsList.update(self.pdfSettings)
-        for i in self.pdfSettings:
-            self.addSettingsWidget(i, self.grpPandocSpecific)
+        for key, setting in self.settingsList.items():
+            if setting.isTOC():
+                self.addSettingsWidget(key, self.grpPandocTOC)
+            elif setting.isSpecific():
+                self.addSettingsWidget(key, self.grpPandocSpecific)
+            else:
+                self.addSettingsWidget(key, self.grpPandocGeneral)
 
         self.toolBox.insertItem(self.toolBox.count() - 1, w, "Pandoc")
         self.toolBox.layout().setSpacing(0)  # Not sure why this is needed, but hey...
