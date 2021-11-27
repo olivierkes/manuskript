@@ -1,6 +1,5 @@
 name: manuskript
 title: Manuskript
-version: overwritten
 summary: Manuskript is an open-source tool for writers.
 description: |
   Manuskript provides a rich environment to help writers create their first draft and then further refine and edit their masterpiece.
@@ -92,6 +91,9 @@ parts:
       - texlive-luatex
     override-pull: |
       snapcraftctl pull
+
+      version="$(grep -E  '__version__.*\".*\"' 'manuskript/version.py' | cut -d\" -f2)"
+      snapcraftctl set-version "$version"
     stage-packages:
       - python3
       - python3-pyqt5
@@ -109,6 +111,3 @@ parts:
       - texlive-luatex
     override-build: |
       snapcraftctl build
-
-      version="$(grep -E  '__version__.*\".*\"' 'manuskript/version.py' | cut -d\" -f2)"
-      snapcraftctl set-version "$version"
