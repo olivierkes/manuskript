@@ -897,13 +897,13 @@ def addTextItems(mdl, odict, parent=None):
     @param odict: OrderedDict
     @return: nothing
     """
-    if parent == None:
+    if parent is None:
         parent = mdl.rootItem
 
     for k in odict:
 
         # In case k is a folder:
-        if type(odict[k]) == OrderedDict and "folder.txt" in odict[k]:
+        if (type(odict[k]) == OrderedDict) and ("folder.txt" in odict[k]):
 
             # Adds folder
             LOGGER.debug("{}* Adds {} to {} (folder)".format("  " * parent.level(), k, parent.title()))
@@ -913,13 +913,18 @@ def addTextItems(mdl, odict, parent=None):
             # Read content
             addTextItems(mdl, odict[k], parent=item)
 
-        # k is not a folder
-        elif type(odict[k]) == str and k != "folder.txt" and not ":lastPath" in k:
-            LOGGER.debug("{}* Adds {} to {} (file)".format("  " * parent.level(), k, parent.title()))
-            item = outlineFromMMD(odict[k], parent=parent)
-            item._lastPath = odict[k + ":lastPath"]
+        if (":lastPath" in k) or (k == "folder.txt"):
+            continue
 
-        elif not ":lastPath" in k and k != "folder.txt":
+        # k is not a folder
+        if type(odict[k]) == str:
+            try:
+                LOGGER.debug("{}* Adds {} to {} (file)".format("  " * parent.level(), k, parent.title()))
+                item = outlineFromMMD(odict[k], parent=parent)
+                item._lastPath = odict[k + ":lastPath"]
+            except KeyError:
+                LOGGER.error("Failed to add file " + str(k))
+        else:
             LOGGER.debug("Strange things in file %s".format(k))
 
 
