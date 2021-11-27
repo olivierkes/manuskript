@@ -16,6 +16,7 @@ description: |
   * Compose with fiction or non-fiction templates and writing modes
   * Export to HTML, ePub, OpenDocument, DocX, PDF, and more
   * Additionally Manuskript can help in many more ways with a spell checker, markdown highlighter, frequency analyzer, and automatic save in open and plain text file format.
+adopt-info: manuskript
 grade: stable
 confinement: strict
 base: core18
