@@ -231,12 +231,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="21"/>
         <source>Manuskript</source>
-        <translation type="unfinished"></translation>
+        <translation>मॅन्यूस्क्रिप्ट</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="66"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>वर्णन</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="100"/>
@@ -246,27 +246,27 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="184"/>
         <source>Status</source>
-        <translation type="unfinished"></translation>
+        <translation>स्थिती</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="190"/>
         <source>Status:</source>
-        <translation type="unfinished"></translation>
+        <translation>स्थिती:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="210"/>
         <source>Version:</source>
-        <translation type="unfinished"></translation>
+        <translation>आवृत्ती:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="233"/>
         <source>Path:</source>
-        <translation type="unfinished"></translation>
+        <translation>मार्ग:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="258"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="273"/>
@@ -284,42 +284,42 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="24"/>
         <source>Word frequency</source>
-        <translation type="unfinished"></translation>
+        <translation>शब्दांची वारंवारता</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="37"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>पर्याय</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="49"/>
         <source>Minimum size:</source>
-        <translation type="unfinished"></translation>
+        <translation>किमान आकार:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="63"/>
         <source>Exclude words (comma separated):</source>
-        <translation type="unfinished"></translation>
+        <translation>हे शब्द वगळा (स्वल्पविरामाने वेगळे केलेले):</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="156"/>
         <source>Analyze</source>
-        <translation type="unfinished"></translation>
+        <translation>विश्लेषण</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="107"/>
         <source>Phrase frequency</source>
-        <translation type="unfinished"></translation>
+        <translation>वाक्यांशाची वारंवारता</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="115"/>
         <source>Number of words: from</source>
-        <translation type="unfinished"></translation>
+        <translation>शब्दांची संख्या: यापासून</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="129"/>
         <source>to</source>
-        <translation type="unfinished"></translation>
+        <translation>यापर्यंत</translation>
     </message>
 </context>
 <context>
@@ -327,7 +327,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/importer/markdownImporter.py" line="175"/>
         <source>Markdown import</source>
-        <translation type="unfinished"></translation>
+        <translation>मार्कडाउन आयात</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/markdownImporter.py" line="179"/>
@@ -339,7 +339,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="96"/>
         <source>Folder import</source>
-        <translation type="unfinished"></translation>
+        <translation>फोल्डर आयात</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="100"/>
@@ -443,7 +443,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/importer/mindMapImporter.py" line="89"/>
         <source>Untitled</source>
-        <translation type="unfinished"></translation>
+        <translation>अशीर्षकांकित</translation>
     </message>
 </context>
 <context>
@@ -451,7 +451,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/MDEditCompleter.py" line="73"/>
         <source>Insert reference</source>
-        <translation type="unfinished"></translation>
+        <translation>उल्लेख समाविष्ट करा</translation>
     </message>
 </context>
 <context>
@@ -459,167 +459,167 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1647"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>साधारण</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="169"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>शीर्षक</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="179"/>
         <source>Subtitle</source>
-        <translation type="unfinished"></translation>
+        <translation>उपशीर्षक</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="189"/>
         <source>Series</source>
-        <translation type="unfinished"></translation>
+        <translation>मालिका</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="199"/>
         <source>Volume</source>
-        <translation type="unfinished"></translation>
+        <translation>ग्रंथ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="226"/>
         <source>Genre</source>
-        <translation type="unfinished"></translation>
+        <translation>लेखनशैली</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="236"/>
         <source>License</source>
-        <translation type="unfinished"></translation>
+        <translation>परवाला</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="249"/>
         <source>Author</source>
-        <translation type="unfinished"></translation>
+        <translation>लेखक</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1656"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>नाव</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="277"/>
         <source>Email</source>
-        <translation type="unfinished"></translation>
+        <translation>ईमेल</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1442"/>
         <source>Summary</source>
-        <translation type="unfinished"></translation>
+        <translation>सारांश</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="322"/>
         <source>Situation:</source>
-        <translation type="unfinished"></translation>
+        <translation>परिस्थिती:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1357"/>
         <source>Summary:</source>
-        <translation type="unfinished"></translation>
+        <translation>सारांश:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="345"/>
         <source>One sentence</source>
-        <translation type="unfinished"></translation>
+        <translation>एका वाक्यात</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1455"/>
         <source>One paragraph</source>
-        <translation type="unfinished"></translation>
+        <translation>एका परिच्छेदात</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1460"/>
         <source>One page</source>
-        <translation type="unfinished"></translation>
+        <translation>एका पानात</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1465"/>
         <source>Full</source>
-        <translation type="unfinished"></translation>
+        <translation>संपूर्ण</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="420"/>
         <source>One sentence summary</source>
-        <translation type="unfinished"></translation>
+        <translation>एका वाक्यात सारांश</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="502"/>
         <source>One paragraph summary</source>
-        <translation type="unfinished"></translation>
+        <translation>एका परिच्छेदात सारांश</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="540"/>
         <source>Expand each sentence of your one paragraph summary to a paragraph</source>
-        <translation type="unfinished"></translation>
+        <translation>आपल्या एक परिच्छेदाच्या सारांशाचे प्रत्येक वाक्य विस्तारून त्याचे परिच्छेद बनवा</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="565"/>
         <source>One page summary</source>
-        <translation type="unfinished"></translation>
+        <translation>एका पानाचा सारांश</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="590"/>
         <source>Full summary</source>
-        <translation type="unfinished"></translation>
+        <translation>संपूर्ण सारांश</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1094"/>
         <source>Next</source>
-        <translation type="unfinished"></translation>
+        <translation>पुढचे</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="676"/>
         <source>What if...?</source>
-        <translation type="unfinished"></translation>
+        <translation>जर असे झाले तर...?</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="688"/>
         <source>Characters</source>
-        <translation type="unfinished"></translation>
+        <translation>पात्र</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="713"/>
         <source>Names</source>
-        <translation type="unfinished"></translation>
+        <translation>नावे</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1607"/>
         <source>Filter</source>
-        <translation type="unfinished"></translation>
+        <translation>गाळा</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1203"/>
         <source>Basic info</source>
-        <translation type="unfinished"></translation>
+        <translation>मूलभूत माहिती</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1222"/>
         <source>Importance</source>
-        <translation type="unfinished"></translation>
+        <translation>महत्त्व</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="880"/>
         <source>Motivation</source>
-        <translation type="unfinished"></translation>
+        <translation>प्रेरणा</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="890"/>
         <source>Goal</source>
-        <translation type="unfinished"></translation>
+        <translation>उद्देश</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="900"/>
         <source>Conflict</source>
-        <translation type="unfinished"></translation>
+        <translation>संघर्ष</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="910"/>
         <source>Epiphany</source>
-        <translation type="unfinished"></translation>
+        <translation>एपिफनी</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="920"/>
@@ -634,47 +634,47 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1021"/>
         <source>Notes</source>
-        <translation type="unfinished"></translation>
+        <translation>टिप्पण्या</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1031"/>
         <source>Detailed info</source>
-        <translation type="unfinished"></translation>
+        <translation>तपशीलवार माहिती</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2041"/>
         <source>Plots</source>
-        <translation type="unfinished"></translation>
+        <translation>कथानके</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1212"/>
         <source>Plot</source>
-        <translation type="unfinished"></translation>
+        <translation>कथानक</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1229"/>
         <source>Character(s)</source>
-        <translation type="unfinished"></translation>
+        <translation>पात्र</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1666"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>वर्णन</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1243"/>
         <source>Result</source>
-        <translation type="unfinished"></translation>
+        <translation>परिणाम</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1335"/>
         <source>Resolution steps</source>
-        <translation type="unfinished"></translation>
+        <translation>निश्चयाची पावलं</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2065"/>
         <source>World</source>
-        <translation type="unfinished"></translation>
+        <translation>जग</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1620"/>
@@ -684,32 +684,32 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1677"/>
         <source>More</source>
-        <translation type="unfinished"></translation>
+        <translation>अधिक</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1686"/>
         <source>Source of passion</source>
-        <translation type="unfinished"></translation>
+        <translation>आवेशाचे स्रोत</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1696"/>
         <source>Source of conflict</source>
-        <translation type="unfinished"></translation>
+        <translation>संघर्षाचे स्रोत</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1554"/>
         <source>Outline</source>
-        <translation type="unfinished"></translation>
+        <translation>आराखडा</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1874"/>
         <source>Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>संपादक</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2005"/>
         <source>Debug</source>
-        <translation type="unfinished"></translation>
+        <translation>डीबग</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2018"/>
@@ -949,27 +949,27 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1291"/>
         <source>Book summary</source>
-        <translation type="unfinished"></translation>
+        <translation>पुस्तकाचे सारांश</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1292"/>
         <source>Project tree</source>
-        <translation type="unfinished"></translation>
+        <translation>प्रकल्पवृक्ष</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1293"/>
         <source>Metadata</source>
-        <translation type="unfinished"></translation>
+        <translation>मेटाडॅटा</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1294"/>
         <source>Story line</source>
-        <translation type="unfinished"></translation>
+        <translation>कथा रेषा</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1359"/>
         <source>Enter information about your book, and yourself.</source>
-        <translation type="unfinished"></translation>
+        <translation>आपल्या पुस्तकाविषयी व स्वतःविषयी माहिती प्रविष्ट करा.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1362"/>
@@ -986,12 +986,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1372"/>
         <source>Create your characters.</source>
-        <translation type="unfinished"></translation>
+        <translation>आपले पात्र निर्माण करा.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1375"/>
         <source>Develop plots.</source>
-        <translation type="unfinished"></translation>
+        <translation>कथानके विकसित करा.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1378"/>
@@ -1001,92 +1001,92 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1381"/>
         <source>Create the outline of your masterpiece.</source>
-        <translation type="unfinished"></translation>
+        <translation>आपल्या उत्कृष्ट कृतीचा आराखडा निर्माण करा.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1384"/>
         <source>Write.</source>
-        <translation type="unfinished"></translation>
+        <translation>लिहा.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1387"/>
         <source>Debug info. Sometimes useful.</source>
-        <translation type="unfinished"></translation>
+        <translation>डीबग माहिती. कधीकधी कामात येते.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1401"/>
         <source>Dictionary</source>
-        <translation type="unfinished"></translation>
+        <translation>शब्दकोश</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1544"/>
         <source>Nothing</source>
-        <translation type="unfinished"></translation>
+        <translation>काही नाही</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1545"/>
         <source>POV</source>
-        <translation type="unfinished"></translation>
+        <translation>दृष्टिकोण</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1546"/>
         <source>Label</source>
-        <translation type="unfinished"></translation>
+        <translation>खूणचिठ्ठी</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1547"/>
         <source>Progress</source>
-        <translation type="unfinished"></translation>
+        <translation>प्रगती</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1548"/>
         <source>Compile</source>
-        <translation type="unfinished"></translation>
+        <translation>संकलन करा</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1571"/>
         <source>Icon color</source>
-        <translation type="unfinished"></translation>
+        <translation>आयकनचा रंग</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1572"/>
         <source>Text color</source>
-        <translation type="unfinished"></translation>
+        <translation>मजकूराचा रंग</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1573"/>
         <source>Background color</source>
-        <translation type="unfinished"></translation>
+        <translation>पार्श्वभूमीचा रंग</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1564"/>
         <source>Icon</source>
-        <translation type="unfinished"></translation>
+        <translation>आयकन</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1565"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation>मजकूर</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1566"/>
         <source>Background</source>
-        <translation type="unfinished"></translation>
+        <translation>पार्श्वभूमी</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1567"/>
         <source>Border</source>
-        <translation type="unfinished"></translation>
+        <translation>सीमा</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1568"/>
         <source>Corner</source>
-        <translation type="unfinished"></translation>
+        <translation>कोपरा</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1371"/>
         <source>Add plot step</source>
-        <translation type="unfinished"></translation>
+        <translation>कथानकात पाऊल जोडा</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2546"/>
@@ -1456,7 +1456,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2852"/>
         <source>Search</source>
-        <translation type="unfinished"></translation>
+        <translation>शोधा</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2855"/>
@@ -1767,7 +1767,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1168"/>
         <source>Folders</source>
-        <translation type="unfinished"></translation>
+        <translation>फोल्डर</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1180"/>
