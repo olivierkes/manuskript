@@ -5,5 +5,5 @@ Keywords=manuskript;office;write;edit;novel;text;msk
 Exec=manuskript
 Terminal=false
 Type=Application
-Icon=/snap/manuskript/current/icons/Manuskript/manuskript.svg
+Icon=${SNAP}/meta/gui/manuskript.svg
 Categories=Office;WordProcessor;
