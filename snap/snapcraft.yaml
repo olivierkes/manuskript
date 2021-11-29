@@ -71,8 +71,20 @@ parts:
     - libxcursor1
     - libgtk2.0-0
 
+  pip-fix:
+    plugin: nil
+    stage-packages:
+      - python3-distutils
+      - python3-setuptools
+
+  pyspellchecker:
+    after: [pip-fix]
+    plugin: python
+    python-version: python3
+    source: https://github.com/barrust/pyspellchecker.git
+
   manuskript:
-    after: [desktop-qt5]
+    after: [desktop-qt5,pyspellchecker]
     plugin: dump
     source: https://github.com/olivierkes/manuskript.git
     source-type: git
