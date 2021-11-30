@@ -197,6 +197,8 @@ class characterTreeView(QTreeWidget):
 
     def mouseDoubleClickEvent(self, event):
         item = self.currentItem()
+        if item is None:
+            return
         # Catching double clicks to forbid collapsing of toplevel items
         if item.parent():
             QTreeWidget.mouseDoubleClickEvent(self, event)
