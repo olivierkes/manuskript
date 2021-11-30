@@ -142,8 +142,10 @@ class characterTreeView(QTreeWidget):
         Removes selected character.
         """
         ID = self.currentCharacterID()
-        if ID:
-            self._model.removeCharacter(ID)
+        if ID is None:
+            return None
+        self._model.removeCharacter(ID)
+        return ID
 
     def choseCharacterColor(self):
         ID = self.currentCharacterID()

@@ -392,6 +392,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             #don't know what's up with this
             pass
 
+    def deleteCharacter(self):
+        ID = self.lstCharacters.removeCharacter()
+        if ID is None:
+            return
+        for itemID in self.mdlOutline.findItemsByPOV(ID):
+            item = self.mdlOutline.getItemByID(itemID)
+            if item:
+                item.resetPOV()
+
     ###############################################################################
     # PLOTS
     ###############################################################################
@@ -965,7 +974,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.tblPersoInfos.setModel(self.mdlCharacter)
         try:
             self.btnAddPerso.clicked.connect(self.lstCharacters.addCharacter, F.AUC)
-            self.btnRmPerso.clicked.connect(self.lstCharacters.removeCharacter, F.AUC)
+            self.btnRmPerso.clicked.connect(self.deleteCharacter, F.AUC)
 
             self.btnPersoColor.clicked.connect(self.lstCharacters.choseCharacterColor, F.AUC)
             self.chkPersoPOV.stateChanged.connect(self.lstCharacters.changeCharacterPOVState, F.AUC)
@@ -1122,7 +1131,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # Characters
         self.disconnectAll(self.btnAddPerso.clicked, self.lstCharacters.addCharacter)
-        self.disconnectAll(self.btnRmPerso.clicked, self.lstCharacters.removeCharacter)
+        self.disconnectAll(self.btnRmPerso.clicked, self.deleteCharacter)
 
         self.disconnectAll(self.btnPersoColor.clicked, self.lstCharacters.choseCharacterColor)
         self.disconnectAll(self.chkPersoPOV.stateChanged, self.lstCharacters.changeCharacterPOVState)

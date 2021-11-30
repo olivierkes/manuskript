@@ -71,6 +71,9 @@ class outlineItem(abstractItem, searchableItem):
     def POV(self):
         return self.data(self.enum.POV)
 
+    def resetPOV(self):
+        self.setData(self.enum.POV, None)
+
     def status(self):
         return self.data(self.enum.status)
 
