@@ -51,6 +51,8 @@ class abstractItem():
         if ID:
             self._data[self.enum.ID] = ID
 
+            if self._model:
+                self._model.updateAvailableIDs(ID)
 
 
     #######################################################################
