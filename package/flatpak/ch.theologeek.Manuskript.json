@@ -2,6 +2,8 @@
   "app-id": "ch.theologeek.Manuskript",
   "runtime": "org.kde.Platform",
   "runtime-version": "5.15-21.08",
+  "base": "io.qt.qtwebengine.BaseApp",
+  "base-version": "5.15-21.08",
   "sdk": "org.kde.Sdk",
   "add-extensions": {
       "org.freedesktop.Sdk.Extension.texlive": {
@@ -24,50 +26,41 @@
     
     /* add paths of TeXlive Flatpak extension binaries */
     "--env=PATH=/usr/bin:/app/bin:/app/texlive/bin:/app/texlive/bin/x86_64-linux:/app/texlive/bin/aarch64-linux"
+    
+    /* allow using the QtWebEngine */
+    "--env=QTWEBENGINEPROCESS_PATH=/app/bin/QtWebEngineProcess"
   ],
   "modules": [
     "python3-modules.json",
+    {
+      "name": "sip",
+      "buildsystem": "simple",
+      "build-commands": [
+        "python3 configure.py -b ${FLATPAK_DEST}/bin -d ${FLATPAK_DEST}/lib/python3.9/site-packages -e ${FLATPAK_DEST}/include -v ${FLATPAK_DEST}/share/sip --stubsdir=/app/lib/python3.9/site-packages --sip-module PyQt5.sip",
+        "make -j $FLATPAK_BUILDER_N_JOBS",
+        "make install"
+      ],
+      "sources": [
+      	{
+          "type" : "archive",
+          "url" : "https://distfiles.macports.org/py-sip/sip-4.19.22.tar.gz",
+          "sha256" : "e1b768824ec1a2ee38dd536b6b6b3d06de27b00a2f5f55470d1b512306e3be45"
+        }
+      ]
+    },
 	{
       "name" : "pyqt5",
-      "config-opts" : [
-        "--disable-static",
-        "--enable-x11"
+      "buildsystem": "simple",
+      "build-commands": [
+        "python3 configure.py --confirm-license --sip-incdir=/app/include --bindir=/app/bin --destdir=/app/lib/python3.9/site-packages --designer-plugindir=/app/lib/plugins/designer --qml-plugindir=/app/lib/plugins/PyQt5 --sipdir=/app/share/sip --stubsdir=/app/lib/python3.9/site-packages/PyQt5 --sip=/app/bin/sip",
+        "make -j $FLATPAK_BUILDER_N_JOBS",
+        "make install"
       ],
       "sources" : [
         {
           "type" : "archive",
           "url": "https://files.pythonhosted.org/packages/4d/81/b9a66a28fb9a7bbeb60e266f06ebc4703e7e42b99e3609bf1b58ddd232b9/PyQt5-5.14.2.tar.gz",
           "sha256": "bd230c6fd699eabf1ceb51e13a8b79b74c00a80272c622427b80141a22269eb0"
-        },
-        {
-          "type": "script",
-          "commands": [
-            "python3 configure.py --assume-shared --confirm-license --no-designer-plugin --no-qml-plugin --sysroot=/app --qsci-api --qsci-api-destdir=/app/qsci --sipdir=/app/share/sip --sip=/app/bin/sip --sip-incdir=/app/include QMAKE_CFLAGS_RELEASE='-I/usr/include/python3.9/' QMAKE_CXXFLAGS_RELEASE='-I/usr/include/python3.9/'"
-          ],
-          "dest-filename": "configure"
-        }
-      ],
-      "modules" : [
-        {
-          "name" : "sip",
-          "sources" : [
-            {
-              "type" : "archive",
-              "url" : "https://distfiles.macports.org/py-sip/sip-4.19.22.tar.gz",
-              "sha256" : "e1b768824ec1a2ee38dd536b6b6b3d06de27b00a2f5f55470d1b512306e3be45"
-            },
-            {
-              "type": "script",
-              "commands": [
-                "python3 configure.py --sip-module PyQt5.sip -b ${FLATPAK_DEST}/bin -d ${FLATPAK_DEST}/lib/python3.9/site-packages -e ${FLATPAK_DEST}/include -v ${FLATPAK_DEST}/share/sip --stubsdir=${FLATPAK_DEST}/lib/python3.9/site-packages"
-              ],
-              "dest-filename": "configure"
-            }
-          ],
-          "cleanup": [
-            "/bin",
-            "/include"
-          ]
         }
       ]
     },
