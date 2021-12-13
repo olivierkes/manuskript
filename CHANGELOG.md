@@ -1,6 +1,6 @@
 # Changelog
 
-## [0.13.0](https://github.com/olivierkes/manuskript/tree/HEAD)
+## [0.13.1](https://github.com/olivierkes/manuskript/tree/HEAD)
 
 [Full Changelog](https://github.com/olivierkes/manuskript/compare/0.12.0...HEAD)
 
