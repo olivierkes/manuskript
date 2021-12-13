@@ -153,15 +153,15 @@ class corkDelegate(QStyledItemDelegate):
             self.updateRects_v1(option, index)
 
     def updateRects_v2(self, option, index):
-        margin = self.margin * 2
-        iconSize = max(24 * self.factor, 18)
+        margin = int(self.margin * 2)
+        iconSize = int(max(24 * self.factor, 18))
         item = index.internalPointer()
         fm = QFontMetrics(option.font)
-        h = fm.lineSpacing()
+        h = int(fm.lineSpacing())
 
         self.itemRect = option.rect.adjusted(margin, margin, -margin, -margin)
 
-        top = 15 * self.factor
+        top = int(15 * self.factor)
         self.topRect = QRect(self.itemRect)
         self.topRect.setHeight(top)
 
@@ -169,8 +169,8 @@ class corkDelegate(QStyledItemDelegate):
                          self.itemRect.bottomRight())
         self.iconRect = QRect(self.cardRect.topLeft() + QPoint(margin, margin),
                               QSize(iconSize, iconSize))
-        self.labelRect = QRect(self.cardRect.topRight() - QPoint(margin + self.factor * 18, 1),
-                               self.cardRect.topRight() + QPoint(- margin - self.factor * 4, self.factor * 24))
+        self.labelRect = QRect(self.cardRect.topRight() - QPoint(int(margin + self.factor * 18), 1),
+                               self.cardRect.topRight() + QPoint(int(-margin - self.factor * 4), int(self.factor * 24)))
         self.titleRect = QRect(self.iconRect.topRight() + QPoint(margin, 0),
                                self.labelRect.bottomLeft() - QPoint(margin, margin))
         self.titleRect.setBottom(self.iconRect.bottom())
@@ -185,8 +185,8 @@ class corkDelegate(QStyledItemDelegate):
             self.mainTextRect.setTopLeft(self.mainLineRect.topLeft())
 
     def updateRects_v1(self, option, index):
-        margin = self.margin
-        iconSize = max(16 * self.factor, 12)
+        margin = int(self.margin)
+        iconSize = int(max(16 * self.factor, 12))
         item = index.internalPointer()
         self.itemRect = option.rect.adjusted(margin, margin, -margin, -margin)
         self.iconRect = QRect(self.itemRect.topLeft() + QPoint(margin, margin), QSize(iconSize, iconSize))
@@ -270,8 +270,8 @@ class corkDelegate(QStyledItemDelegate):
         if item.isFolder():
             itemPoly = QPolygonF([
                 self.topRect.topLeft(),
-                self.topRect.topLeft() + QPoint(self.topRect.width() * .35, 0),
-                self.cardRect.topLeft() + QPoint(self.topRect.width() * .45, 0),
+                self.topRect.topLeft() + QPoint(int(self.topRect.width() * .35), 0),
+                self.cardRect.topLeft() + QPoint(int(self.topRect.width() * .45), 0),
                 self.cardRect.topRight(),
                 self.cardRect.bottomRight(),
                 self.cardRect.bottomLeft()

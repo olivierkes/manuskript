@@ -1189,7 +1189,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def centerChildWindow(self, win):
         r = win.geometry()
         r2 = self.geometry()
-        win.move(r2.center() - QPoint(r.width()/2, r.height()/2))
+        win.move(r2.center() - QPoint(int(r.width()/2), int(r.height()/2)))
 
     def support(self):
         openURL("https://github.com/olivierkes/manuskript/wiki/Technical-Support")

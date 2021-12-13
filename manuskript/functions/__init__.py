@@ -89,7 +89,7 @@ def drawProgress(painter, rect, progress, radius=0):
     painter.setBrush(QBrush(colorFromProgress(progress)))
 
     r2 = QRect(rect)
-    r2.setWidth(r2.width() * min(progress, 1))
+    r2.setWidth(int(r2.width() * min(progress, 1)))
     painter.drawRoundedRect(r2, radius, radius)
 
 
@@ -405,7 +405,7 @@ def statusMessage(message, duration=5000, importance=1):
     MW.statusLabel.adjustSize()
     g = MW.statusLabel.geometry()
     # g.moveCenter(MW.mapFromGlobal(MW.geometry().center()))
-    s = MW.layout().spacing() / 2
+    s = int(MW.layout().spacing() / 2)
     g.setLeft(s)
     g.moveBottom(MW.mapFromGlobal(MW.geometry().bottomLeft()).y() - s)
     MW.statusLabel.setGeometry(g)

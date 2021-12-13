@@ -215,7 +215,7 @@ class fullScreenEditor(QWidget):
             self._bgcolor = QColor(self._themeDatas["Background/Color"])
         else:
             self._bgcolor = QColor(self._themeDatas["Foreground/Color"])
-            self._bgcolor.setAlpha(self._themeDatas["Foreground/Opacity"] * 255 / 100)
+            self._bgcolor.setAlpha(int(self._themeDatas["Foreground/Opacity"] * 255 / 100))
             self._fgcolor = QColor(self._themeDatas["Text/Color"])
             if self._themeDatas["Text/Color"] == self._themeDatas["Foreground/Color"]:
                 self._fgcolor = QColor(self._themeDatas["Background/Color"])
@@ -239,7 +239,7 @@ class fullScreenEditor(QWidget):
         r = self.locker.geometry()
         r.moveTopLeft(QPoint(
                 0,
-                self.geometry().height() / 2 - r.height() / 2
+                int(self.geometry().height() / 2 - r.height() / 2)
         ))
         self.leftPanel.setGeometry(r)
         self.hideWidget(self.leftPanel)

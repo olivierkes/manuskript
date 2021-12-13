@@ -138,7 +138,7 @@ class exporterDialog(QWidget, Ui_exporter):
 
         r = self.dialog.geometry()
         r2 = self.geometry()
-        self.dialog.move(r2.center() - QPoint(r.width()/2, r.height()/2))
+        self.dialog.move(r2.center() - QPoint(int(r.width()/2), int(r.height()/2)))
 
         self.dialog.exportersMightHaveChanged.connect(self.populateExportList)
 
