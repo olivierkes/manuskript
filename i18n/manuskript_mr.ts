@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="he" sourcelanguage="">
+<TS version="2.1" language="mr">
 <context>
     <name>Export</name>
     <message>
@@ -21,7 +21,7 @@
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="55"/>
         <source>HTML Source</source>
-        <translation>מקור HTML</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="59"/>
@@ -41,7 +41,7 @@
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="17"/>
         <source>Plain text</source>
-        <translation type="unfinished"></translation>
+        <translation>साधं मजकूर</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/HTML.py" line="13"/>
@@ -56,7 +56,7 @@
     <message>
         <location filename="../manuskript/converters/pandocConverter.py" line="76"/>
         <source>Error</source>
-        <translation>שגיאה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="96"/>
@@ -116,12 +116,12 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="141"/>
         <source>Paper size:</source>
-        <translation type="unfinished"></translation>
+        <translation>पानाचा आकार:</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="144"/>
         <source>Font size:</source>
-        <translation>גודל גופן:</translation>
+        <translation>फाँटचा आकार:</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="147"/>
@@ -131,7 +131,7 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="150"/>
         <source>Line spacing:</source>
-        <translation type="unfinished"></translation>
+        <translation>ओळींमधले अंतर:</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/outputFormats.py" line="10"/>
@@ -226,17 +226,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="14"/>
         <source>Manage Exporters</source>
-        <translation type="unfinished"></translation>
+        <translation>निर्यातदारांची व्यवस्था करा</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="21"/>
         <source>Manuskript</source>
-        <translation type="unfinished"></translation>
+        <translation>मॅन्यूस्क्रिप्ट</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="66"/>
         <source>Description</source>
-        <translation>תיאור</translation>
+        <translation>वर्णन</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="100"/>
@@ -246,27 +246,27 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="184"/>
         <source>Status</source>
-        <translation type="unfinished"></translation>
+        <translation>स्थिती</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="190"/>
         <source>Status:</source>
-        <translation type="unfinished"></translation>
+        <translation>स्थिती:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="210"/>
         <source>Version:</source>
-        <translation>גרסה:</translation>
+        <translation>आवृत्ती:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="233"/>
         <source>Path:</source>
-        <translation>נתיב:</translation>
+        <translation>मार्ग:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="258"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="273"/>
@@ -279,47 +279,47 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="14"/>
         <source>Frequency Analyzer</source>
-        <translation type="unfinished"></translation>
+        <translation>वारंवारता विश्लेषक</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="24"/>
         <source>Word frequency</source>
-        <translation type="unfinished"></translation>
+        <translation>शब्दांची वारंवारता</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="37"/>
         <source>Settings</source>
-        <translation>הגדרות</translation>
+        <translation>पर्याय</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="49"/>
         <source>Minimum size:</source>
-        <translation type="unfinished"></translation>
+        <translation>किमान आकार:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="63"/>
         <source>Exclude words (comma separated):</source>
-        <translation type="unfinished"></translation>
+        <translation>हे शब्द वगळा (स्वल्पविरामाने वेगळे केलेले):</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="156"/>
         <source>Analyze</source>
-        <translation type="unfinished"></translation>
+        <translation>विश्लेषण</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="107"/>
         <source>Phrase frequency</source>
-        <translation type="unfinished"></translation>
+        <translation>वाक्यांशाची वारंवारता</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="115"/>
         <source>Number of words: from</source>
-        <translation type="unfinished"></translation>
+        <translation>शब्दांची संख्या: यापासून</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="129"/>
         <source>to</source>
-        <translation type="unfinished"></translation>
+        <translation>यापर्यंत</translation>
     </message>
 </context>
 <context>
@@ -327,7 +327,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/importer/markdownImporter.py" line="175"/>
         <source>Markdown import</source>
-        <translation type="unfinished"></translation>
+        <translation>मार्कडाउन आयात</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/markdownImporter.py" line="179"/>
@@ -339,7 +339,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="96"/>
         <source>Folder import</source>
-        <translation type="unfinished"></translation>
+        <translation>फोल्डर आयात</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="100"/>
@@ -373,12 +373,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/importer/opmlImporter.py" line="64"/>
         <source>OPML Import</source>
-        <translation>ייבוא OPML</translation>
+        <translation>ओ.पी.एम.एल. आयात</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/opmlImporter.py" line="36"/>
         <source>File open failed.</source>
-        <translation>פתיחת הקובץ נכשלה.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/importer/opmlImporter.py" line="64"/>
@@ -388,7 +388,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="57"/>
         <source>Pandoc import</source>
-        <translation type="unfinished"></translation>
+        <translation>पॅनडॉक आयात</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="60"/>
@@ -403,12 +403,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="68"/>
         <source>Import using:</source>
-        <translation type="unfinished"></translation>
+        <translation>याने आयात करा:</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="72"/>
         <source>Wrap lines:</source>
-        <translation type="unfinished"></translation>
+        <translation>ओळींचा ओघ वळवावा:</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="72"/>
@@ -443,7 +443,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/importer/mindMapImporter.py" line="89"/>
         <source>Untitled</source>
-        <translation>ללא שם</translation>
+        <translation>अशीर्षकांकित</translation>
     </message>
 </context>
 <context>
@@ -451,7 +451,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/MDEditCompleter.py" line="73"/>
         <source>Insert reference</source>
-        <translation type="unfinished"></translation>
+        <translation>उल्लेख समाविष्ट करा</translation>
     </message>
 </context>
 <context>
@@ -459,167 +459,167 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1647"/>
         <source>General</source>
-        <translation>כללי</translation>
+        <translation>साधारण</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="169"/>
         <source>Title</source>
-        <translation>כותרת</translation>
+        <translation>शीर्षक</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="179"/>
         <source>Subtitle</source>
-        <translation>הערה</translation>
+        <translation>उपशीर्षक</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="189"/>
         <source>Series</source>
-        <translation>סדרה</translation>
+        <translation>मालिका</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="199"/>
         <source>Volume</source>
-        <translation type="unfinished"></translation>
+        <translation>ग्रंथ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="226"/>
         <source>Genre</source>
-        <translation>סוגה</translation>
+        <translation>लेखनशैली</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="236"/>
         <source>License</source>
-        <translation>רישיון</translation>
+        <translation>परवाला</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="249"/>
         <source>Author</source>
-        <translation type="unfinished"></translation>
+        <translation>लेखक</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1656"/>
         <source>Name</source>
-        <translation>שם</translation>
+        <translation>नाव</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="277"/>
         <source>Email</source>
-        <translation>דוא״ל</translation>
+        <translation>ईमेल</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1442"/>
         <source>Summary</source>
-        <translation>תקציר</translation>
+        <translation>सारांश</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="322"/>
         <source>Situation:</source>
-        <translation type="unfinished"></translation>
+        <translation>परिस्थिती:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1357"/>
         <source>Summary:</source>
-        <translation>תקציר:</translation>
+        <translation>सारांश:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="345"/>
         <source>One sentence</source>
-        <translation>משפט אחד</translation>
+        <translation>एका वाक्यात</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1455"/>
         <source>One paragraph</source>
-        <translation>פסקה אחת</translation>
+        <translation>एका परिच्छेदात</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1460"/>
         <source>One page</source>
-        <translation>עמוד אחד</translation>
+        <translation>एका पानात</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1465"/>
         <source>Full</source>
-        <translation type="unfinished"></translation>
+        <translation>संपूर्ण</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="420"/>
         <source>One sentence summary</source>
-        <translation>תקציר במשפט אחד</translation>
+        <translation>एका वाक्यात सारांश</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="502"/>
         <source>One paragraph summary</source>
-        <translation>תקציר בפסקה אחת</translation>
+        <translation>एका परिच्छेदात सारांश</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="540"/>
         <source>Expand each sentence of your one paragraph summary to a paragraph</source>
-        <translation type="unfinished"></translation>
+        <translation>आपल्या एक परिच्छेदाच्या सारांशाचे प्रत्येक वाक्य विस्तारून त्याचे परिच्छेद बनवा</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="565"/>
         <source>One page summary</source>
-        <translation type="unfinished"></translation>
+        <translation>एका पानाचा सारांश</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="590"/>
         <source>Full summary</source>
-        <translation type="unfinished"></translation>
+        <translation>संपूर्ण सारांश</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1094"/>
         <source>Next</source>
-        <translation>קדימה</translation>
+        <translation>पुढचे</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="676"/>
         <source>What if...?</source>
-        <translation>מה אם...?</translation>
+        <translation>जर असे झाले तर...?</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="688"/>
         <source>Characters</source>
-        <translation>דמויות</translation>
+        <translation>पात्र</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="713"/>
         <source>Names</source>
-        <translation>שמות</translation>
+        <translation>नावे</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1607"/>
         <source>Filter</source>
-        <translation>סינון</translation>
+        <translation>गाळा</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1203"/>
         <source>Basic info</source>
-        <translation type="unfinished"></translation>
+        <translation>मूलभूत माहिती</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1222"/>
         <source>Importance</source>
-        <translation>חשיבות</translation>
+        <translation>महत्त्व</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="880"/>
         <source>Motivation</source>
-        <translation>מניע</translation>
+        <translation>प्रेरणा</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="890"/>
         <source>Goal</source>
-        <translation>מטרה</translation>
+        <translation>उद्देश</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="900"/>
         <source>Conflict</source>
-        <translation type="unfinished"></translation>
+        <translation>संघर्ष</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="910"/>
         <source>Epiphany</source>
-        <translation type="unfinished"></translation>
+        <translation>एपिफनी</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="920"/>
@@ -634,47 +634,47 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1021"/>
         <source>Notes</source>
-        <translation>הערות</translation>
+        <translation>टिप्पण्या</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1031"/>
         <source>Detailed info</source>
-        <translation type="unfinished"></translation>
+        <translation>तपशीलवार माहिती</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2041"/>
         <source>Plots</source>
-        <translation>עלילות</translation>
+        <translation>कथानके</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1212"/>
         <source>Plot</source>
-        <translation>עלילה</translation>
+        <translation>कथानक</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1229"/>
         <source>Character(s)</source>
-        <translation>דמו(יו)ת</translation>
+        <translation>पात्र</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1666"/>
         <source>Description</source>
-        <translation>תיאור</translation>
+        <translation>वर्णन</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1243"/>
         <source>Result</source>
-        <translation type="unfinished"></translation>
+        <translation>परिणाम</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1335"/>
         <source>Resolution steps</source>
-        <translation type="unfinished"></translation>
+        <translation>निश्चयाची पावलं</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2065"/>
         <source>World</source>
-        <translation>עולם</translation>
+        <translation>जग</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1620"/>
@@ -684,32 +684,32 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1677"/>
         <source>More</source>
-        <translation>עוד</translation>
+        <translation>अधिक</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1686"/>
         <source>Source of passion</source>
-        <translation type="unfinished"></translation>
+        <translation>आवेशाचे स्रोत</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1696"/>
         <source>Source of conflict</source>
-        <translation type="unfinished"></translation>
+        <translation>संघर्षाचे स्रोत</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1554"/>
         <source>Outline</source>
-        <translation type="unfinished"></translation>
+        <translation>आराखडा</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1874"/>
         <source>Editor</source>
-        <translation>עורך</translation>
+        <translation>संपादक</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2005"/>
         <source>Debug</source>
-        <translation type="unfinished"></translation>
+        <translation>डीबग</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2018"/>
@@ -724,42 +724,42 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2089"/>
         <source>Labels</source>
-        <translation>תוויות</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2123"/>
         <source>&amp;File</source>
-        <translation>&amp;קובץ</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2127"/>
         <source>&amp;Recent</source>
-        <translation>נפתחו ל&amp;אחרונה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2147"/>
         <source>&amp;Help</source>
-        <translation>&amp;עזרה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2158"/>
         <source>&amp;Tools</source>
-        <translation>&amp;כלים</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2165"/>
         <source>&amp;Edit</source>
-        <translation>ע&amp;ריכה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2221"/>
         <source>&amp;View</source>
-        <translation>&amp;תצוגה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2225"/>
         <source>&amp;Mode</source>
-        <translation>מ&amp;צב</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2254"/>
@@ -769,17 +769,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2288"/>
         <source>Sea&amp;rch</source>
-        <translation>חי&amp;פוש</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2325"/>
         <source>&amp;Navigation</source>
-        <translation>ני&amp;ווט</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2360"/>
         <source>&amp;Open</source>
-        <translation>&amp;פתיחה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2363"/>
@@ -809,7 +809,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2396"/>
         <source>&amp;Quit</source>
-        <translation>&amp;יציאה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2399"/>
@@ -829,7 +829,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2432"/>
         <source>&amp;Spellcheck</source>
-        <translation>ב&amp;דיקת איות</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2435"/>
@@ -849,7 +849,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1552"/>
         <source>Tree</source>
-        <translation>עץ</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2469"/>
@@ -869,7 +869,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2496"/>
         <source>S&amp;ettings</source>
-        <translation>ה&amp;גדרות</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2499"/>
@@ -899,17 +899,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="154"/>
         <source>Book information</source>
-        <translation type="unfinished"></translation>
+        <translation>पुस्तकाविषयी माहिती</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2534"/>
         <source>&amp;About</source>
-        <translation>על &amp;אודות</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2537"/>
         <source>About Manuskript</source>
-        <translation type="unfinished"></translation>
+        <translation>मॅन्यूस्क्रिप्टविषयी माहिती</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="746"/>
@@ -944,32 +944,32 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1283"/>
         <source>Words: {}{}</source>
-        <translation>מילים: {}{}</translation>
+        <translation>शब्द: {}{}</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1291"/>
         <source>Book summary</source>
-        <translation type="unfinished"></translation>
+        <translation>पुस्तकाचे सारांश</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1292"/>
         <source>Project tree</source>
-        <translation type="unfinished"></translation>
+        <translation>प्रकल्पवृक्ष</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1293"/>
         <source>Metadata</source>
-        <translation>נתוני על</translation>
+        <translation>मेटाडॅटा</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1294"/>
         <source>Story line</source>
-        <translation type="unfinished"></translation>
+        <translation>कथा रेषा</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1359"/>
         <source>Enter information about your book, and yourself.</source>
-        <translation type="unfinished"></translation>
+        <translation>आपल्या पुस्तकाविषयी व स्वतःविषयी माहिती प्रविष्ट करा.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1362"/>
@@ -986,12 +986,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1372"/>
         <source>Create your characters.</source>
-        <translation type="unfinished"></translation>
+        <translation>आपले पात्र निर्माण करा.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1375"/>
         <source>Develop plots.</source>
-        <translation type="unfinished"></translation>
+        <translation>कथानके विकसित करा.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1378"/>
@@ -1001,92 +1001,92 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1381"/>
         <source>Create the outline of your masterpiece.</source>
-        <translation type="unfinished"></translation>
+        <translation>आपल्या उत्कृष्ट कृतीचा आराखडा निर्माण करा.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1384"/>
         <source>Write.</source>
-        <translation type="unfinished"></translation>
+        <translation>लिहा.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1387"/>
         <source>Debug info. Sometimes useful.</source>
-        <translation type="unfinished"></translation>
+        <translation>डीबग माहिती. कधीकधी कामात येते.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1401"/>
         <source>Dictionary</source>
-        <translation>מילון</translation>
+        <translation>शब्दकोश</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1544"/>
         <source>Nothing</source>
-        <translation type="unfinished"></translation>
+        <translation>काही नाही</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1545"/>
         <source>POV</source>
-        <translation type="unfinished"></translation>
+        <translation>दृष्टिकोण</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1546"/>
         <source>Label</source>
-        <translation>תווית</translation>
+        <translation>खूणचिठ्ठी</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1547"/>
         <source>Progress</source>
-        <translation>תהליך</translation>
+        <translation>प्रगती</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1548"/>
         <source>Compile</source>
-        <translation type="unfinished"></translation>
+        <translation>संकलन करा</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1571"/>
         <source>Icon color</source>
-        <translation type="unfinished"></translation>
+        <translation>आयकनचा रंग</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1572"/>
         <source>Text color</source>
-        <translation>צבע טקסט</translation>
+        <translation>मजकूराचा रंग</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1573"/>
         <source>Background color</source>
-        <translation type="unfinished"></translation>
+        <translation>पार्श्वभूमीचा रंग</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1564"/>
         <source>Icon</source>
-        <translation>סמל</translation>
+        <translation>आयकन</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1565"/>
         <source>Text</source>
-        <translation>טקסט</translation>
+        <translation>मजकूर</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1566"/>
         <source>Background</source>
-        <translation>רקע</translation>
+        <translation>पार्श्वभूमी</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1567"/>
         <source>Border</source>
-        <translation type="unfinished"></translation>
+        <translation>सीमा</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1568"/>
         <source>Corner</source>
-        <translation type="unfinished"></translation>
+        <translation>कोपरा</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1371"/>
         <source>Add plot step</source>
-        <translation type="unfinished"></translation>
+        <translation>कथानकात पाऊल जोडा</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2546"/>
@@ -1421,7 +1421,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/mainWindow.py" line="689"/>
         <source>Save project?</source>
-        <translation type="unfinished"></translation>
+        <translation>प्रकल्प सुरक्षित करायचे का?</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="689"/>
@@ -1456,7 +1456,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2852"/>
         <source>Search</source>
-        <translation type="unfinished"></translation>
+        <translation>शोधा</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2855"/>
@@ -1602,12 +1602,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="82"/>
         <source>General settings</source>
-        <translation type="unfinished"></translation>
+        <translation>साधारण पर्याय</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="98"/>
         <source>Application settings</source>
-        <translation type="unfinished"></translation>
+        <translation>अ‍ॅप्लिकेशन पर्याय</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="247"/>
@@ -1667,7 +1667,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="546"/>
         <source>Keep revisions</source>
-        <translation type="unfinished"></translation>
+        <translation>पुनरावृत्त्या ठेवा</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="562"/>
@@ -1712,7 +1712,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="856"/>
         <source>Views settings</source>
-        <translation type="unfinished"></translation>
+        <translation>दृश्य पर्याय</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="874"/>
@@ -1727,7 +1727,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1889"/>
         <source>Icon color:</source>
-        <translation type="unfinished"></translation>
+        <translation>प्रतीक रंग:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2095"/>
@@ -1757,17 +1757,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1937"/>
         <source>Text color:</source>
-        <translation type="unfinished"></translation>
+        <translation>मजकूराचे रंग:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1985"/>
         <source>Background color:</source>
-        <translation type="unfinished"></translation>
+        <translation>पार्श्वभूमीचे रंग:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1168"/>
         <source>Folders</source>
-        <translation type="unfinished"></translation>
+        <translation>फोल्डर</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1180"/>
@@ -1777,7 +1777,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1315"/>
         <source>Show summary</source>
-        <translation type="unfinished"></translation>
+        <translation>सारांश दाखवा</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1245"/>
@@ -1797,7 +1797,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1574"/>
         <source>Visible columns</source>
-        <translation type="unfinished"></translation>
+        <translation>दिसणारे स्तंभ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1586"/>
@@ -1807,7 +1807,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1602"/>
         <source>Word count</source>
-        <translation type="unfinished"></translation>
+        <translation>शब्द गणना</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1618"/>
@@ -1827,17 +1827,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1874"/>
         <source>Item colors</source>
-        <translation type="unfinished"></translation>
+        <translation>वस्तूंचे रंग</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2033"/>
         <source>Border color:</source>
-        <translation type="unfinished"></translation>
+        <translation>सीमेचा रंग:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2081"/>
         <source>Corner color:</source>
-        <translation type="unfinished"></translation>
+        <translation>कोपर्‍यांचा रंग:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1741"/>
@@ -1862,7 +1862,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2131"/>
         <source>Text editor</source>
-        <translation type="unfinished"></translation>
+        <translation>मजकूर संपादक</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2250"/>
@@ -1897,7 +1897,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3660"/>
         <source>Line spacing:</source>
-        <translation type="unfinished"></translation>
+        <translation>ओळींमधले अंतर:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3668"/>
@@ -1907,7 +1907,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3673"/>
         <source>1.5 lines</source>
-        <translation type="unfinished"></translation>
+        <translation>१.५ ओळी</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3678"/>
@@ -1927,7 +1927,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3716"/>
         <source>Tab width:</source>
-        <translation type="unfinished"></translation>
+        <translation>टॅब रुंदी:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3780"/>
@@ -1962,7 +1962,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3212"/>
         <source>Theme name:</source>
-        <translation type="unfinished"></translation>
+        <translation>थीमचे नाव:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3228"/>
@@ -1977,22 +1977,22 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3271"/>
         <source>Window Background</source>
-        <translation type="unfinished"></translation>
+        <translation>विंडोची पार्श्वभूमी</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3276"/>
         <source>Text Background</source>
-        <translation type="unfinished"></translation>
+        <translation>मजकूराची पार्श्वभूमी</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3281"/>
         <source>Text Options</source>
-        <translation type="unfinished"></translation>
+        <translation>मजकूर पर्याय</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3286"/>
         <source>Paragraph Options</source>
-        <translation type="unfinished"></translation>
+        <translation>परिच्छेद पर्याय</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3328"/>
@@ -2002,7 +2002,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3336"/>
         <source>No Image</source>
-        <translation type="unfinished"></translation>
+        <translation>चित्र नाही</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3341"/>
@@ -2062,7 +2062,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3504"/>
         <source>Corner radius:</source>
-        <translation type="unfinished"></translation>
+        <translation>कोपर्‍याची त्रिज्या:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3511"/>
@@ -2112,7 +2112,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1066"/>
         <source>Icon Size</source>
-        <translation type="unfinished"></translation>
+        <translation>प्रतीकाचे आकार</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1078"/>
@@ -2122,27 +2122,27 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2797"/>
         <source>Disable blinking</source>
-        <translation type="unfinished"></translation>
+        <translation>मिचकावणे अक्षम करा</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2364"/>
         <source>Text area</source>
-        <translation type="unfinished"></translation>
+        <translation>मजकूर क्षेत्र</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2376"/>
         <source>Max width</source>
-        <translation type="unfinished"></translation>
+        <translation>कमाल रूंदी</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2408"/>
         <source>Left/Right margins:</source>
-        <translation type="unfinished"></translation>
+        <translation>डावीकडचा/उजवीकडचे समास:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2437"/>
         <source>Top/Bottom margins:</source>
-        <translation type="unfinished"></translation>
+        <translation>वरचे/खालचे समास:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1219"/>
@@ -2187,7 +2187,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="184"/>
         <source>Font size:</source>
-        <translation type="unfinished"></translation>
+        <translation>फाँट आकार:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="112"/>
@@ -2212,12 +2212,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2810"/>
         <source>Typewriter mode</source>
-        <translation type="unfinished"></translation>
+        <translation>टाइपराइटर पद्धत</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2823"/>
         <source>Focus mode</source>
-        <translation type="unfinished"></translation>
+        <translation>लक्ष्य पद्धत</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2837"/>
@@ -2253,7 +2253,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1113"/>
         <source>Char/Word Counter</source>
-        <translation type="unfinished"></translation>
+        <translation>वर्ण/शब्द गणक</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1137"/>
@@ -2274,42 +2274,42 @@ Use that if you get YAML related error.</source>
 <context>
     <name>SpellAction</name>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="600"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="611"/>
         <source>Spelling Suggestions</source>
-        <translation type="unfinished"></translation>
+        <translation>शुद्धलेखनाचे सल्ले</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="618"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="629"/>
         <source>&amp;Add to dictionary</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="671"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="682"/>
         <source>&amp;Remove from custom dictionary</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="527"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="538"/>
         <source>&amp;New Character</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="534"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="545"/>
         <source>&amp;New Plot Item</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="541"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="552"/>
         <source>&amp;New World Item</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="642"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="653"/>
         <source>&amp;Correction Suggestions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="651"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="662"/>
         <source>&amp;Correction Suggestion</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2319,7 +2319,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/about_ui.ui" line="17"/>
         <source>About Manuskript</source>
-        <translation type="unfinished"></translation>
+        <translation>मॅन्यूस्क्रिप्टविषयी माहिती</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/about_ui.ui" line="50"/>
@@ -2370,7 +2370,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="209"/>
         <source>Word count</source>
-        <translation type="unfinished"></translation>
+        <translation>शब्द गणना</translation>
     </message>
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="211"/>
@@ -2398,7 +2398,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/basicItemView_ui.ui" line="80"/>
         <source>Word count</source>
-        <translation type="unfinished"></translation>
+        <translation>शब्द गणना</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/basicItemView_ui.ui" line="92"/>
@@ -2560,7 +2560,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/corkDelegate.py" line="100"/>
         <source>Full summary</source>
-        <translation type="unfinished"></translation>
+        <translation>पूर्ण सारांश</translation>
     </message>
 </context>
 <context>
@@ -2581,12 +2581,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/exporters/exporter_ui.ui" line="22"/>
         <source>Export to:</source>
-        <translation type="unfinished"></translation>
+        <translation>यात निर्यात करा:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exporter_ui.ui" line="32"/>
         <source>Manage exporters</source>
-        <translation type="unfinished"></translation>
+        <translation>निर्यातदार सांभाळा</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exporter_ui.ui" line="103"/>
@@ -2682,12 +2682,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="241"/>
         <source>Between folders:</source>
-        <translation type="unfinished"></translation>
+        <translation>फोल्डरांमध्ये:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings.py" line="86"/>
         <source>Empty line</source>
-        <translation type="unfinished"></translation>
+        <translation>रिकामी ओळ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings.py" line="105"/>
@@ -2697,7 +2697,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="367"/>
         <source>Between texts:</source>
-        <translation type="unfinished"></translation>
+        <translation>मजकुरांमध्ये:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="493"/>
@@ -2782,7 +2782,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1173"/>
         <source>Font size:</source>
-        <translation type="unfinished"></translation>
+        <translation>फाँट आकार:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings.py" line="320"/>
@@ -2825,7 +2825,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="93"/>
         <source>Not found</source>
-        <translation type="unfinished"></translation>
+        <translation>सापडले नाही</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="96"/>
@@ -2835,7 +2835,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="124"/>
         <source>&lt;b&gt;Status:&lt;/b&gt; uninstalled.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;स्थिती:&lt;/b&gt; विस्थापित.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="126"/>
@@ -2881,7 +2881,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="368"/>
         <source>{} words</source>
-        <translation type="unfinished"></translation>
+        <translation>{} शब्द</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="153"/>
@@ -2896,7 +2896,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="155"/>
         <source>New Text</source>
-        <translation type="unfinished"></translation>
+        <translation>नवीन मजकूर</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="156"/>
@@ -2911,12 +2911,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="159"/>
         <source>Theme selector</source>
-        <translation type="unfinished"></translation>
+        <translation>थीम निवडक</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="160"/>
         <source>Word count</source>
-        <translation type="unfinished"></translation>
+        <translation>शब्द गणना</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="161"/>
@@ -2995,7 +2995,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/importers/importer_ui.ui" line="45"/>
         <source>Choose file</source>
-        <translation type="unfinished"></translation>
+        <translation>फाइल निवडा</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/importers/importer_ui.ui" line="75"/>
@@ -3031,17 +3031,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/editors/locker_ui.ui" line="26"/>
         <source>Lock screen:</source>
-        <translation type="unfinished"></translation>
+        <translation>स्क्रीन लॉक करा:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker_ui.ui" line="33"/>
         <source>Word target</source>
-        <translation type="unfinished"></translation>
+        <translation>शब्दांचे लक्ष्य</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker_ui.ui" line="40"/>
         <source>Time target</source>
-        <translation type="unfinished"></translation>
+        <translation>वेळेचे लक्ष्य</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker_ui.ui" line="47"/>
@@ -3056,17 +3056,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/editors/locker_ui.ui" line="79"/>
         <source>Lock !</source>
-        <translation type="unfinished"></translation>
+        <translation>लॉक!</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker.py" line="94"/>
         <source>~{} h.</source>
-        <translation type="unfinished"></translation>
+        <translation>~{} ता.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker.py" line="96"/>
         <source>~{} mn.</source>
-        <translation type="unfinished"></translation>
+        <translation>~{} मि.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker.py" line="100"/>
@@ -3076,12 +3076,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/editors/locker.py" line="102"/>
         <source>{} s.</source>
-        <translation type="unfinished"></translation>
+        <translation>{} से.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker.py" line="104"/>
         <source>{} remaining</source>
-        <translation type="unfinished"></translation>
+        <translation>{} उरले आहेत</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker.py" line="109"/>
@@ -3134,7 +3134,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="358"/>
         <source>{} words </source>
-        <translation type="unfinished"></translation>
+        <translation>{} शब्द </translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="339"/>
@@ -3149,12 +3149,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="360"/>
         <source>{} chars</source>
-        <translation type="unfinished"></translation>
+        <translation>{} वर्ण</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="354"/>
         <source>{} chars </source>
-        <translation type="unfinished"></translation>
+        <translation>{} वर्ण </translation>
     </message>
 </context>
 <context>
@@ -3190,7 +3190,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.ui" line="140"/>
         <source>Full summary</source>
-        <translation type="unfinished"></translation>
+        <translation>पूर्ण सारांश</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.ui" line="180"/>
@@ -3216,7 +3216,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="134"/>
         <source>Set POV</source>
-        <translation type="unfinished"></translation>
+        <translation>दृष्टीकोन सेट करा</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="136"/>
@@ -3226,12 +3226,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="163"/>
         <source>Set Status</source>
-        <translation type="unfinished"></translation>
+        <translation>स्थिती सेट करा</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="179"/>
         <source>Set Label</source>
-        <translation type="unfinished"></translation>
+        <translation>खूणचिट्ठी सेट करा</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="283"/>
@@ -3271,30 +3271,25 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="75"/>
         <source>Open {} items in new tabs</source>
-        <translation>פתיחת {} פריטים בלשוניות חדשות</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="78"/>
         <source>Open {} in a new tab</source>
-        <translation>פתיחת {} בלשונית חדשה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/outlineBasics.py" line="313"/>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="328"/>
         <source>About to remove</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/outlineBasics.py" line="313"/>
-        <source>&lt;p&gt;&lt;b&gt;You&apos;re about to delete {} item(s).&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Are you sure?&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../manuskript/ui/views/outlineBasics.py" line="421"/>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="434"/>
         <source>Select at least two items. Folders are ignored.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/outlineBasics.py" line="430"/>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="443"/>
         <source>All items must be on the same level (share the same parent).</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3333,6 +3328,16 @@ Use that if you get YAML related error.</source>
         <source>&amp;Delete</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="315"/>
+        <source>You&apos;re about to delete {} item(s).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/views/outlineBasics.py" line="325"/>
+        <source>Are you sure?</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>outlineCharacterDelegate</name>
@@ -3360,14 +3365,14 @@ Use that if you get YAML related error.</source>
 <context>
     <name>outlineItem</name>
     <message>
-        <location filename="../manuskript/models/outlineItem.py" line="251"/>
+        <location filename="../manuskript/models/outlineItem.py" line="256"/>
         <source>{} words / {} ({})</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/models/outlineItem.py" line="256"/>
+        <location filename="../manuskript/models/outlineItem.py" line="261"/>
         <source>{} words</source>
-        <translation type="unfinished"></translation>
+        <translation>{} शब्द</translation>
     </message>
 </context>
 <context>
@@ -3441,17 +3446,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>No and</source>
-        <translation type="unfinished"></translation>
+        <translation>नाही आणि</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Yes but</source>
-        <translation>כן אבל</translation>
+        <translation>हो पण</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Freytag&apos;s pyramid</source>
-        <translation type="unfinished"></translation>
+        <translation>फ्रेटॅगचा पिरॅमिड</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3461,7 +3466,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Rising action</source>
-        <translation type="unfinished"></translation>
+        <translation>चढती क्रिया</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3471,17 +3476,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Falling action</source>
-        <translation type="unfinished"></translation>
+        <translation>घसरती क्रिया</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Three acts</source>
-        <translation type="unfinished"></translation>
+        <translation>तीन कार्य</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>1. Setup</source>
-        <translation type="unfinished"></translation>
+        <translation>१. व्यवस्था</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3496,17 +3501,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>2. Choice</source>
-        <translation type="unfinished"></translation>
+        <translation>२. निर्णय</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>2. Reversal</source>
-        <translation type="unfinished"></translation>
+        <translation>२. परावर्तन</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>2. Disaster</source>
-        <translation type="unfinished"></translation>
+        <translation>२. आपत्ती</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3516,22 +3521,22 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>3. Climax</source>
-        <translation type="unfinished"></translation>
+        <translation>३. परिसीमा</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>3. Ending</source>
-        <translation type="unfinished"></translation>
+        <translation>३. शेवट</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Hero&apos;s journey</source>
-        <translation type="unfinished"></translation>
+        <translation>नायकाचा प्रवास</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Ordinary world</source>
-        <translation type="unfinished"></translation>
+        <translation>साधे जग</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3599,7 +3604,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/plotModel.py" line="179"/>
         <source>New step</source>
-        <translation type="unfinished"></translation>
+        <translation>नवीन पाऊल</translation>
     </message>
     <message>
         <location filename="../manuskript/models/plotModel.py" line="249"/>
@@ -3693,7 +3698,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/propertiesView_ui.ui" line="291"/>
         <source>Word count</source>
-        <translation type="unfinished"></translation>
+        <translation>शब्द गणना</translation>
     </message>
 </context>
 <context>
@@ -3736,12 +3741,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/references.py" line="111"/>
         <source>Short summary:</source>
-        <translation type="unfinished"></translation>
+        <translation>छोटा सारांश:</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="112"/>
         <source>Long summary:</source>
-        <translation type="unfinished"></translation>
+        <translation>मोठा सारांश:</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="113"/>
@@ -3751,17 +3756,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/references.py" line="201"/>
         <source>Basic info</source>
-        <translation type="unfinished"></translation>
+        <translation>मूळ माहिती</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="202"/>
         <source>Detailed info</source>
-        <translation type="unfinished"></translation>
+        <translation>तपशीलवार माहिती</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="203"/>
         <source>POV of:</source>
-        <translation type="unfinished"></translation>
+        <translation>यांचे दृष्टिकोण:</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="364"/>
@@ -3806,17 +3811,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/references.py" line="506"/>
         <source>Folder: &lt;b&gt;{}&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>फोल्डर: &lt;b&gt;{}&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="508"/>
         <source>Text: &lt;b&gt;{}&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>मजकूर: &lt;b&gt;{}&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="513"/>
         <source>Character: &lt;b&gt;{}&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>पात्र: &lt;b&gt;{}&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="516"/>
@@ -3826,12 +3831,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/references.py" line="519"/>
         <source>World: &lt;b&gt;{name}&lt;/b&gt;{path}</source>
-        <translation type="unfinished"></translation>
+        <translation>जग: &lt;b&gt;{name}&lt;/b&gt;{path}</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="592"/>
         <source>Referenced in:</source>
-        <translation type="unfinished"></translation>
+        <translation>यात संदर्भित:</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="212"/>
@@ -3851,12 +3856,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/references.py" line="216"/>
         <source>Short summary</source>
-        <translation type="unfinished"></translation>
+        <translation>छोटा सारांश</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="217"/>
         <source>Longer summary</source>
-        <translation type="unfinished"></translation>
+        <translation>मोठा सारांश</translation>
     </message>
 </context>
 <context>
@@ -3884,7 +3889,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="45"/>
         <source>Show modifications</source>
-        <translation type="unfinished"></translation>
+        <translation>बदल दाखवा</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="52"/>
@@ -3894,7 +3899,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="60"/>
         <source>Show spaces</source>
-        <translation type="unfinished"></translation>
+        <translation>स्पेस दाखवा</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="66"/>
@@ -3939,7 +3944,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="182"/>
         <source>Line {}:</source>
-        <translation type="unfinished"></translation>
+        <translation>ओळ {}:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="261"/>
@@ -3957,7 +3962,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/search_ui.ui" line="46"/>
         <source>Search for...</source>
-        <translation type="unfinished"></translation>
+        <translation>याचा शोध घ्या...</translation>
     </message>
 </context>
 <context>
@@ -3965,12 +3970,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="674"/>
         <source>New status</source>
-        <translation type="unfinished"></translation>
+        <translation>नवीन स्थिती</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="695"/>
         <source>New label</source>
-        <translation type="unfinished"></translation>
+        <translation>नवीन खूणचिट्ठी</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="731"/>
@@ -3980,7 +3985,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="741"/>
         <source>New theme</source>
-        <translation type="unfinished"></translation>
+        <translation>नवीन थीम</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="773"/>
@@ -3990,7 +3995,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="534"/>
         <source>Open Image</source>
-        <translation>פתיחת תמונה</translation>
+        <translation>चित्र उघडा</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="534"/>
@@ -4066,12 +4071,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="47"/>
         <source>Split &apos;{}&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>&apos;{}&apos; विभाजित करा</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="51"/>
         <source>Split items</source>
-        <translation type="unfinished"></translation>
+        <translation>वस्तू विभाजित करा</translation>
     </message>
 </context>
 <context>
@@ -4089,7 +4094,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/storylineView.py" line="43"/>
         <source>Show Characters</source>
-        <translation type="unfinished"></translation>
+        <translation>पात्र दाखवा</translation>
     </message>
 </context>
 <context>
@@ -4102,23 +4107,23 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/editors/tabSplitter.py" line="158"/>
         <source>Split horizontally</source>
-        <translation type="unfinished"></translation>
+        <translation>क्षैतिज रूपात विभाजन करा</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/tabSplitter.py" line="168"/>
         <source>Close split</source>
-        <translation type="unfinished"></translation>
+        <translation>विभाजन बंद करा</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/tabSplitter.py" line="204"/>
         <source>Split vertically</source>
-        <translation type="unfinished"></translation>
+        <translation>अनुलंब रूपात विभाजन करा</translation>
     </message>
 </context>
 <context>
     <name>textEditView</name>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="313"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="324"/>
         <source>Various</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4176,7 +4181,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/treeView.py" line="48"/>
         <source>Expand {}</source>
-        <translation type="unfinished"></translation>
+        <translation>विस्तार करा {}</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/treeView.py" line="52"/>
@@ -4186,7 +4191,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/treeView.py" line="59"/>
         <source>Expand All</source>
-        <translation type="unfinished"></translation>
+        <translation>सर्वाचा विस्तार करा</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/treeView.py" line="63"/>
@@ -4234,7 +4239,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="247"/>
         <source>Research paper</source>
-        <translation type="unfinished"></translation>
+        <translation>संशोधन पत्र</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="418"/>
@@ -4244,7 +4249,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/welcome_ui.ui" line="177"/>
         <source>Add level</source>
-        <translation type="unfinished"></translation>
+        <translation>स्तर जोडा</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome_ui.ui" line="190"/>
@@ -4259,7 +4264,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/welcome_ui.ui" line="238"/>
         <source>Open...</source>
-        <translation>פתיחה...</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome_ui.ui" line="248"/>
@@ -4274,7 +4279,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="158"/>
         <source>Open project</source>
-        <translation>פתיחת מיזם</translation>
+        <translation>प्रकल्प उघडा</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="158"/>
@@ -4314,7 +4319,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="224"/>
         <source>Empty fiction</source>
-        <translation type="unfinished"></translation>
+        <translation>रिकामे कल्पित असलेले साहित्य</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="448"/>
@@ -4344,7 +4349,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="246"/>
         <source>Empty non-fiction</source>
-        <translation type="unfinished"></translation>
+        <translation>रिकामे कल्पित नसलेले साहित्य</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="308"/>
@@ -4404,12 +4409,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="458"/>
         <source>First draft</source>
-        <translation type="unfinished"></translation>
+        <translation>पहिला मसूदा</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="459"/>
         <source>Second draft</source>
-        <translation type="unfinished"></translation>
+        <translation>दुसरा मसूदा</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="460"/>
@@ -4422,7 +4427,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="136"/>
         <source>New item</source>
-        <translation type="unfinished"></translation>
+        <translation>नवीन वस्तू</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="251"/>
@@ -4452,7 +4457,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="251"/>
         <source>Wild life</source>
-        <translation type="unfinished"></translation>
+        <translation>वन्यजीव</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="251"/>
@@ -4517,7 +4522,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Bodily language</source>
-        <translation type="unfinished"></translation>
+        <translation>देहबोली</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
@@ -4542,7 +4547,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Gender roles</source>
-        <translation type="unfinished"></translation>
+        <translation>लिंग भूमिका</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
@@ -4587,7 +4592,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="285"/>
         <source>Magic system</source>
-        <translation type="unfinished"></translation>
+        <translation>जादूची पद्धत</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="285"/>
@@ -4602,32 +4607,32 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="285"/>
         <source>Magical objects</source>
-        <translation type="unfinished"></translation>
+        <translation>जादूच्या वस्तू</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="285"/>
         <source>Magical places</source>
-        <translation type="unfinished"></translation>
+        <translation>जादूच्या जागी</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="285"/>
         <source>Magical races</source>
-        <translation type="unfinished"></translation>
+        <translation>जादूच्या जाती</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="292"/>
         <source>Important places</source>
-        <translation type="unfinished"></translation>
+        <translation>महत्त्वाच्या जागा</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="293"/>
         <source>Important objects</source>
-        <translation type="unfinished"></translation>
+        <translation>महत्त्वाच्या वस्तू</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="251"/>
         <source>Natural resources</source>
-        <translation type="unfinished"></translation>
+        <translation>प्राकृतिक साधने</translation>
     </message>
 </context>
 </TS>
