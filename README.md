@@ -3,6 +3,8 @@
 [Manuskript](http://www.theologeek.ch/manuskript) is an open-source
 tool for writers.
 
+[![manuskript](https://snapcraft.io/manuskript/badge.svg)](https://snapcraft.io/manuskript)
+
 Manuskript runs on GNU/Linux, Mac OS X, and Windows.
 
 ![Main view](http://www.theologeek.ch/manuskript/wp-content/uploads/2017/11/manuskript-0.5.0-main-view.jpg)
