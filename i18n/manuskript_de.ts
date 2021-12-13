@@ -1646,7 +1646,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="259"/>
         <source>Automatically load last project on startup</source>
-        <translation>Läd automatisch das letzte Projekt beim Start</translation>
+        <translation>Beim Start automatisch das letzte Projekt laden</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="278"/>
