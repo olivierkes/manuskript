@@ -2231,7 +2231,7 @@ Nutze das, wenn du YAML-Errors bekommst.</translation>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1276"/>
         <source>&amp;Show word count</source>
-        <translation>Anzahl der &amp;Wörter anzeigen</translation>
+        <translation>Anzahl der Wörter anzeigen</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1858"/>
