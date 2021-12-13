@@ -1,16 +1,70 @@
 # Changelog
 
-## [0.12.0](https://github.com/olivierkes/manuskript/tree/0.12.0) (2021-04-30)
+## [0.13.0](https://github.com/olivierkes/manuskript/tree/HEAD)
 
-[Full Changelog](https://github.com/olivierkes/manuskript/compare/0.11.0...HEAD)
+[Full Changelog](https://github.com/olivierkes/manuskript/compare/0.12.0...HEAD)
 
 **Implemented enhancements:**
 
+- Stripping down the install for low resource machines [\#956](https://github.com/olivierkes/manuskript/issues/956)
+- Add filename/titles to warning dialog box when deleting files or folders [\#931](https://github.com/olivierkes/manuskript/issues/931)
+- \[Request\] Additional Package formats: AppImage \(also note Flatpak, Snap\) [\#71](https://github.com/olivierkes/manuskript/issues/71)
+
+**Fixed bugs:**
+
+- Character Detailed Info Crash [\#971](https://github.com/olivierkes/manuskript/issues/971)
+- Fail to launch [\#967](https://github.com/olivierkes/manuskript/issues/967)
+- Critical error when running on Fedora 35 \(manuskript won't start\) [\#957](https://github.com/olivierkes/manuskript/issues/957)
+- Can't open Manuskript executable "manuskript-0.12.0-win32" and "manuskript-0.12.0-fix-7e05b72-win32" on windows 7 professional. [\#951](https://github.com/olivierkes/manuskript/issues/951)
+- Software crashes when I try to add a new character detail. [\#945](https://github.com/olivierkes/manuskript/issues/945)
+- It crashes when I double click characters name's frame [\#937](https://github.com/olivierkes/manuskript/issues/937)
+- calling pandoc 2.5 is broken with the later versions [\#922](https://github.com/olivierkes/manuskript/issues/922)
+- Entry Point Error, how can I solve this ? [\#911](https://github.com/olivierkes/manuskript/issues/911)
+- Issues pertaining to the wrong table being referenced in the "Detailed info" tab on the "Characters" pane [\#910](https://github.com/olivierkes/manuskript/issues/910)
+- Upgraded from 0.11 to 0.12, open from command line and dolphin broken [\#898](https://github.com/olivierkes/manuskript/issues/898)
+- IndexError in characterModel.py [\#896](https://github.com/olivierkes/manuskript/issues/896)
+- Error on export return code: 43 [\#886](https://github.com/olivierkes/manuskript/issues/886)
+- Issue installing v12 on Win7 64bit [\#872](https://github.com/olivierkes/manuskript/issues/872)
+- well, now it don't even open... [\#870](https://github.com/olivierkes/manuskript/issues/870)
+- Overlapping IDs repeating [\#865](https://github.com/olivierkes/manuskript/issues/865)
+- crash on character details frame [\#843](https://github.com/olivierkes/manuskript/issues/843)
+- POV selection changes if character is deleted and a new one is added [\#808](https://github.com/olivierkes/manuskript/issues/808)
+- Crashhhh [\#791](https://github.com/olivierkes/manuskript/issues/791)
+- Manuskript runs amok, with Project \(Project is added\) [\#729](https://github.com/olivierkes/manuskript/issues/729)
+
+**Security fixes:**
+
+- Possible security issue [\#891](https://github.com/olivierkes/manuskript/issues/891)
+
+**Closed issues:**
+
+- Ubuntu snap on edge channel not updated with v12 [\#955](https://github.com/olivierkes/manuskript/issues/955)
+- Installed on chromebook \(linux\), no issues, opened it up and it has no words? [\#925](https://github.com/olivierkes/manuskript/issues/925)
+- App crashing when adding detailed info to character. [\#920](https://github.com/olivierkes/manuskript/issues/920)
+- Ubuntu 21.04, Manuskrip not installing or working with .deb snap or repository. [\#900](https://github.com/olivierkes/manuskript/issues/900)
+- \(Windows, 0.12.0\) "GetDaylightFlag" not found in "kernel32.dll" [\#889](https://github.com/olivierkes/manuskript/issues/889)
+- Text pasted in Summary or Notes/References disappears [\#873](https://github.com/olivierkes/manuskript/issues/873)
+- Linux missing dependency? [\#847](https://github.com/olivierkes/manuskript/issues/847)
+- Flatpak package [\#425](https://github.com/olivierkes/manuskript/issues/425)
+
+**Merged pull requests:**
+
+- Fixes for a number of reported bugs [\#901](https://github.com/olivierkes/manuskript/pull/901) ([worstje](https://github.com/worstje))
+- Kill old insecure pickle setting files \(untested\) [\#895](https://github.com/olivierkes/manuskript/pull/895) ([zeth](https://github.com/zeth))
+- Deal with race condition. [\#894](https://github.com/olivierkes/manuskript/pull/894) ([zeth](https://github.com/zeth))
+- Someone was in a JavaScript mood? [\#893](https://github.com/olivierkes/manuskript/pull/893) ([zeth](https://github.com/zeth))
+
+## [0.12.0](https://github.com/olivierkes/manuskript/tree/0.12.0) (2021-04-30)
+
+[Full Changelog](https://github.com/olivierkes/manuskript/compare/0.11.0...0.12.0)
+
+**Implemented enhancements:**
+
+- \[Feature Request\] Word counter in full screen mode [\#723](https://github.com/olivierkes/manuskript/issues/723)
 - Improving user-friendliness of log files [\#852](https://github.com/olivierkes/manuskript/issues/852)
 - \[Feature Request\] Add spell check for Chinese. [\#822](https://github.com/olivierkes/manuskript/issues/822)
 - Number of characters instead of number of words? [\#774](https://github.com/olivierkes/manuskript/issues/774)
 - Italian spellchecker [\#730](https://github.com/olivierkes/manuskript/issues/730)
-- \[Feature Request\] Word counter in full screen mode [\#723](https://github.com/olivierkes/manuskript/issues/723)
 - Word count statistics incorrect when using Chinese characters [\#607](https://github.com/olivierkes/manuskript/issues/607)
 - select which monitor in full screen mode [\#456](https://github.com/olivierkes/manuskript/issues/456)
 - \[feature request\] Scene Search [\#376](https://github.com/olivierkes/manuskript/issues/376)
@@ -19,6 +73,8 @@
 
 **Fixed bugs:**
 
+- Can't open any file [\#758](https://github.com/olivierkes/manuskript/issues/758)
+- Main major and minor character are not functional [\#698](https://github.com/olivierkes/manuskript/issues/698)
 - Using a world building template is broken [\#866](https://github.com/olivierkes/manuskript/issues/866)
 - Slow startup when using language\_tool\_python in the test python setup [\#862](https://github.com/olivierkes/manuskript/issues/862)
 - When using the + on editor or outline the application crashes [\#855](https://github.com/olivierkes/manuskript/issues/855)
@@ -28,26 +84,25 @@
 - Crash on showing settingsWindow.py [\#817](https://github.com/olivierkes/manuskript/issues/817)
 - Python syntax warning upon installation [\#792](https://github.com/olivierkes/manuskript/issues/792)
 - Right click → Insert Reference buggy when search term is followed by punctuation [\#781](https://github.com/olivierkes/manuskript/issues/781)
-- Can't open any file [\#758](https://github.com/olivierkes/manuskript/issues/758)
 - Error on export when using pandoc [\#736](https://github.com/olivierkes/manuskript/issues/736)
 - Snap Package: All types of export with pandoc fail with error 97 [\#709](https://github.com/olivierkes/manuskript/issues/709)
-- Main major and minor character are not functional [\#698](https://github.com/olivierkes/manuskript/issues/698)
 - export error \(pandoc\) [\#590](https://github.com/olivierkes/manuskript/issues/590)
 
 **Closed issues:**
 
-- Small bug with LanguageTool [\#860](https://github.com/olivierkes/manuskript/issues/860)
 - Help! Can't open MSK.file [\#759](https://github.com/olivierkes/manuskript/issues/759)
 - Can't run Manuskript [\#742](https://github.com/olivierkes/manuskript/issues/742)
 - Manuskript Crashes on Project Open [\#741](https://github.com/olivierkes/manuskript/issues/741)
 - Program crashes randomly and then never opens again even after reinstall [\#665](https://github.com/olivierkes/manuskript/issues/665)
 - PLOT Character Error Message [\#519](https://github.com/olivierkes/manuskript/issues/519)
-- Program crashes on copy and paste [\#441](https://github.com/olivierkes/manuskript/issues/441)
 - Enable/Disable POV-Option for Characters [\#335](https://github.com/olivierkes/manuskript/issues/335)
 - Show character count progress indicator [\#334](https://github.com/olivierkes/manuskript/issues/334)
+- Small bug with LanguageTool [\#860](https://github.com/olivierkes/manuskript/issues/860)
 
 **Merged pull requests:**
 
+- Hyphens no longer counted in word count [\#816](https://github.com/olivierkes/manuskript/pull/816) ([James-Joe](https://github.com/James-Joe))
+- - adding characters count. Implementing \#334 [\#339](https://github.com/olivierkes/manuskript/pull/339) ([lechbaczynski](https://github.com/lechbaczynski))
 - Fix missing root when using world building template [\#867](https://github.com/olivierkes/manuskript/pull/867) ([belug23](https://github.com/belug23))
 - Add configuration for github actions to test linux on pull requests [\#864](https://github.com/olivierkes/manuskript/pull/864) ([belug23](https://github.com/belug23))
 - Fix errors when language tool isn't installed [\#863](https://github.com/olivierkes/manuskript/pull/863) ([belug23](https://github.com/belug23))
@@ -77,7 +132,6 @@
 - Add global search [\#717](https://github.com/olivierkes/manuskript/pull/717) ([moisesjbc](https://github.com/moisesjbc))
 - added 3 buttons to the textEditView that allow quickly adding new items [\#690](https://github.com/olivierkes/manuskript/pull/690) ([nagolinc](https://github.com/nagolinc))
 - Logging and command-line arguments [\#667](https://github.com/olivierkes/manuskript/pull/667) ([worstje](https://github.com/worstje))
-- adding characters count. Implementing \#334 [\#339](https://github.com/olivierkes/manuskript/pull/339) ([lechbaczynski](https://github.com/lechbaczynski))
 
 ## [0.11.0](https://github.com/olivierkes/manuskript/tree/0.11.0) (2020-01-18)
 
@@ -142,28 +196,28 @@
 
 **Closed issues:**
 
-- Word count goal progress bar broken in develop. [\#652](https://github.com/olivierkes/manuskript/issues/652)
 - Fullscreen mode causes spike in CPU [\#643](https://github.com/olivierkes/manuskript/issues/643)
 - Italian dictionary [\#638](https://github.com/olivierkes/manuskript/issues/638)
 - Manuskript 9.0 crashes when creating new project or opening existing project  [\#631](https://github.com/olivierkes/manuskript/issues/631)
 - Spell Check Not working [\#625](https://github.com/olivierkes/manuskript/issues/625)
-- story line feature crashing [\#620](https://github.com/olivierkes/manuskript/issues/620)
 - Manuskript me fastidio un documento de word [\#616](https://github.com/olivierkes/manuskript/issues/616)
 - Feature request: Option to vertically center text input line on screen in fullscreen mode [\#602](https://github.com/olivierkes/manuskript/issues/602)
-- Italian translation not applied, application still english. [\#599](https://github.com/olivierkes/manuskript/issues/599)
 - File Randomly won't open [\#597](https://github.com/olivierkes/manuskript/issues/597)
-- Adding Persian\(Farsi\) in Weblate [\#596](https://github.com/olivierkes/manuskript/issues/596)
-- Importing images into Manuskript [\#593](https://github.com/olivierkes/manuskript/issues/593)
-- British English translation [\#592](https://github.com/olivierkes/manuskript/issues/592)
 - utf-8' codec can't decode byte 0xff in position 0 [\#591](https://github.com/olivierkes/manuskript/issues/591)
 - Issue with saving as directory [\#589](https://github.com/olivierkes/manuskript/issues/589)
-- Crashes in outliner [\#582](https://github.com/olivierkes/manuskript/issues/582)
 - Headings h4 not translated from Markdown to ODF [\#580](https://github.com/olivierkes/manuskript/issues/580)
 - \[BUG\] Shim error [\#579](https://github.com/olivierkes/manuskript/issues/579)
 - Crash when edit text [\#555](https://github.com/olivierkes/manuskript/issues/555)
 - Unusual environment failure [\#547](https://github.com/olivierkes/manuskript/issues/547)
 - Won't run \(Arch Linux\) [\#546](https://github.com/olivierkes/manuskript/issues/546)
 - Rendre extensible les modèles d'intrigue [\#329](https://github.com/olivierkes/manuskript/issues/329)
+- Word count goal progress bar broken in develop. [\#652](https://github.com/olivierkes/manuskript/issues/652)
+- story line feature crashing [\#620](https://github.com/olivierkes/manuskript/issues/620)
+- Italian translation not applied, application still english. [\#599](https://github.com/olivierkes/manuskript/issues/599)
+- Adding Persian\(Farsi\) in Weblate [\#596](https://github.com/olivierkes/manuskript/issues/596)
+- Importing images into Manuskript [\#593](https://github.com/olivierkes/manuskript/issues/593)
+- British English translation [\#592](https://github.com/olivierkes/manuskript/issues/592)
+- Crashes in outliner [\#582](https://github.com/olivierkes/manuskript/issues/582)
 
 **Merged pull requests:**
 
@@ -196,7 +250,7 @@
 - trying to resolve full screen exit issues on macOS [\#569](https://github.com/olivierkes/manuskript/pull/569) ([dschanoeh](https://github.com/dschanoeh))
 - Fix typos in translation format placeholders that lead to crash [\#566](https://github.com/olivierkes/manuskript/pull/566) ([RaphaelWimmer](https://github.com/RaphaelWimmer))
 - Fixed \#549 and refactored the image tooltip code [\#558](https://github.com/olivierkes/manuskript/pull/558) ([worstje](https://github.com/worstje))
-- Fix typo [\#548](https://github.com/olivierkes/manuskript/pull/548) ([Acid147](https://github.com/Acid147))
+- Fix typo [\#548](https://github.com/olivierkes/manuskript/pull/548) ([vulpivia](https://github.com/vulpivia))
 - Fix misc. typos [\#489](https://github.com/olivierkes/manuskript/pull/489) ([luzpaz](https://github.com/luzpaz))
 
 ## [0.9.0](https://github.com/olivierkes/manuskript/tree/0.9.0) (2019-04-04)
@@ -205,7 +259,6 @@
 
 **Implemented enhancements:**
 
-- Add non-enchant spellcheck support [\#505](https://github.com/olivierkes/manuskript/issues/505)
 - Fullscreen editor suggestions [\#527](https://github.com/olivierkes/manuskript/issues/527)
 - \[Feature Request\] Keyboard shortcuts in Full-Screen mode [\#444](https://github.com/olivierkes/manuskript/issues/444)
 - \[Feature Request\] Add Ability to Add Image When Creating Fullscreen Theme [\#399](https://github.com/olivierkes/manuskript/issues/399)
