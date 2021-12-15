@@ -7,4 +7,5 @@ sudo apt-get -qq install python3-pip python3-dev \
 
 pyenv local 3.6.7
 python3 --version
+sudo pip3 install --upgrade pip setuptools wheel
 pip3 install pyqt5==5.9 lxml pytest pytest-faulthandler
