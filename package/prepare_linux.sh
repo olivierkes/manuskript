@@ -6,6 +6,5 @@ sudo apt-get -qq install python3-pip python3-dev \
      mesa-utils libgl1-mesa-glx libgl1-mesa-dev
 
 pyenv local 3.6.7
-python --version
-easy_install pip
-pip install pyqt5==5.9 lxml pytest pytest-faulthandler
+python3 --version
+pip3 install pyqt5==5.9 lxml pytest pytest-faulthandler
