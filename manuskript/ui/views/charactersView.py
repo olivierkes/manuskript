@@ -92,6 +92,7 @@ class CharactersView:
         self.character = None
 
         self.colorButton.set_rgba(rgbaFromColor(character.color))
+        self.importanceCombo.set_active(Importance.asValue(character.importance))
         self.allowPOVCheck.set_active(character.allowPOV())
 
         self.nameBuffer.set_text(validString(character.name), -1)
@@ -153,15 +154,18 @@ class CharactersView:
         self.character.color = Color(red, green, blue)
 
     def importanceChanged(self, combo: Gtk.ComboBox):
+        if self.character is None:
+            return
+
         tree_iter = combo.get_active_iter()
 
         if tree_iter is None:
             return
 
         model = combo.get_model()
-        name = model[tree_iter][0]
+        value = model[tree_iter][1]
 
-        print("blub " + name)
+        self.character.importance = Importance(value)
 
     def allowPOVToggled(self, button: Gtk.ToggleButton):
         if self.character is None:
