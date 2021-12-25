@@ -86,6 +86,18 @@ class CharactersView:
         self.summaryBuffer = builder.get_object("summary")
         self.notesBuffer = builder.get_object("notes")
 
+        self.nameBuffer.connect("deleted-text", self.nameDeletedText)
+        self.nameBuffer.connect("inserted-text", self.nameInsertedText)
+
+        self.motivationBuffer.connect("changed", self.motivationChanged)
+        self.goalBuffer.connect("changed", self.goalChanged)
+        self.conflictBuffer.connect("changed", self.conflictChanged)
+        self.epiphanyBuffer.connect("changed", self.epiphanyChanged)
+        self.oneSentenceBuffer.connect("changed", self.oneSentenceChanged)
+        self.oneParagraphBuffer.connect("changed", self.oneParagraphChanged)
+        self.summaryBuffer.connect("changed", self.summaryChanged)
+        self.notesBuffer.connect("changed", self.notesChanged)
+
         self.unloadCharacterData()
 
     def loadCharacterData(self, character: Character):
@@ -164,7 +176,16 @@ class CharactersView:
         green = int(color.green * 255)
         blue = int(color.blue * 255)
 
-        self.character.color = Color(red, green, blue)
+        color = Color(red, green, blue)
+
+        self.character.color = color
+
+        character_id = self.character.UID.value
+
+        for row in self.charactersStore:
+            if row[0] == character_id:
+                row[2] = pixbufFromColor(color)
+                break
 
     def importanceChanged(self, combo: Gtk.ComboBox):
         if self.character is None:
@@ -269,6 +290,116 @@ class CharactersView:
         model.set_value(tree_iter, 1, text)
 
         self.character.details[name] = text
+
+    def nameChanged(self, buffer: Gtk.EntryBuffer):
+        if self.character is None:
+            return
+
+        text = buffer.get_text()
+        name = invalidString(text)
+
+        self.character.name = name
+
+        character_id = self.character.UID.value
+
+        for row in self.charactersStore:
+            if row[0] == character_id:
+                row[1] = validString(name)
+                break
+
+    def nameDeletedText(self, buffer: Gtk.EntryBuffer, position: int, n_chars: int):
+        self.nameChanged(buffer)
+
+    def nameInsertedText(self, buffer: Gtk.EntryBuffer, position: int, chars: str, n_chars: int):
+        self.nameChanged(buffer)
+
+    def motivationChanged(self, buffer: Gtk.TextBuffer):
+        if self.character is None:
+            return
+
+        start_iter = buffer.get_start_iter()
+        end_iter = buffer.get_end_iter()
+
+        text = buffer.get_text(start_iter, end_iter, False)
+
+        self.character.motivation = invalidString(text)
+
+    def goalChanged(self, buffer: Gtk.TextBuffer):
+        if self.character is None:
+            return
+
+        start_iter = buffer.get_start_iter()
+        end_iter = buffer.get_end_iter()
+
+        text = buffer.get_text(start_iter, end_iter, False)
+
+        self.character.goal = invalidString(text)
+
+    def conflictChanged(self, buffer: Gtk.TextBuffer):
+        if self.character is None:
+            return
+
+        start_iter = buffer.get_start_iter()
+        end_iter = buffer.get_end_iter()
+
+        text = buffer.get_text(start_iter, end_iter, False)
+
+        self.character.conflict = invalidString(text)
+
+    def epiphanyChanged(self, buffer: Gtk.TextBuffer):
+        if self.character is None:
+            return
+
+        start_iter = buffer.get_start_iter()
+        end_iter = buffer.get_end_iter()
+
+        text = buffer.get_text(start_iter, end_iter, False)
+
+        self.character.epiphany = invalidString(text)
+
+    def oneSentenceChanged(self, buffer: Gtk.TextBuffer):
+        if self.character is None:
+            return
+
+        start_iter = buffer.get_start_iter()
+        end_iter = buffer.get_end_iter()
+
+        text = buffer.get_text(start_iter, end_iter, False)
+
+        self.character.summarySentence = invalidString(text)
+
+    def oneParagraphChanged(self, buffer: Gtk.TextBuffer):
+        if self.character is None:
+            return
+
+        start_iter = buffer.get_start_iter()
+        end_iter = buffer.get_end_iter()
+
+        text = buffer.get_text(start_iter, end_iter, False)
+
+        self.character.summaryParagraph = invalidString(text)
+
+    def summaryChanged(self, buffer: Gtk.TextBuffer):
+        if self.character is None:
+            return
+
+        start_iter = buffer.get_start_iter()
+        end_iter = buffer.get_end_iter()
+
+        text = buffer.get_text(start_iter, end_iter, False)
+
+        self.character.summaryFull = invalidString(text)
+
+    def notesChanged(self, buffer: Gtk.TextBuffer):
+        if self.character is None:
+            return
+
+        start_iter = buffer.get_start_iter()
+        end_iter = buffer.get_end_iter()
+
+        text = buffer.get_text(start_iter, end_iter, False)
+
+        self.character.notes = invalidString(text)
 
     def show(self):
         self.widget.show_all()
