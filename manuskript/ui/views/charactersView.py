@@ -39,9 +39,9 @@ class CharactersView:
         self.secondaryCharactersStore = builder.get_object("secondary_characters_store")
         self.minorCharactersStore = builder.get_object("minor_characters_store")
 
-        self.mainCharactersStore.set_visible_func(lambda model, iter, userdata: model[iter][3] == 2)
-        self.secondaryCharactersStore.set_visible_func(lambda model, iter, userdata: model[iter][3] == 1)
-        self.minorCharactersStore.set_visible_func(lambda model, iter, userdata: model[iter][3] == 0)
+        self.mainCharactersStore.set_visible_func(lambda model, iter, userdata: model[iter][3] == Importance.MAIN.value)
+        self.secondaryCharactersStore.set_visible_func(lambda model, iter, userdata: model[iter][3] == Importance.SECONDARY.value)
+        self.minorCharactersStore.set_visible_func(lambda model, iter, userdata: model[iter][3] == Importance.MINOR.value)
 
         self.mainCharactersStore.refilter()
         self.secondaryCharactersStore.refilter()
@@ -165,7 +165,32 @@ class CharactersView:
         model = combo.get_model()
         value = model[tree_iter][1]
 
-        self.character.importance = Importance(value)
+        importance = Importance.fromValue(value)
+
+        if (importance is None) or (self.character.importance == importance):
+            return
+
+        self.character.importance = importance
+
+        character_id = self.character.UID.value
+
+        for row in self.charactersStore:
+            if row[0] == character_id:
+                row[3] = Importance.asValue(importance)
+                break
+
+        self.mainCharactersStore.refilter()
+        self.secondaryCharactersStore.refilter()
+        self.minorCharactersStore.refilter()
+
+        selection = self.characterSelections[importance.value]
+        tree_view = selection.get_tree_view()
+        model = tree_view.get_model()
+
+        for row in model:
+            if row[0] == character_id:
+                selection.select_iter(row.iter)
+                break
 
     def allowPOVToggled(self, button: Gtk.ToggleButton):
         if self.character is None:

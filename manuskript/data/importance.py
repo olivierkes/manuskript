@@ -11,6 +11,10 @@ class Importance(Enum):
     MAIN = 2
 
     @classmethod
+    def fromValue(cls, value: int):
+        return None if (value < 0) or (value > 2) else Importance(value)
+
+    @classmethod
     def asValue(cls, importance):
         return 0 if importance is None else importance.value
 
