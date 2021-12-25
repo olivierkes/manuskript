@@ -105,6 +105,17 @@ class CharactersView:
         self.summaryBuffer.set_text(validString(character.summaryFull), -1)
         self.notesBuffer.set_text(validString(character.notes), -1)
 
+        self.detailsStore.clear()
+
+        for (key, value) in character.details.items():
+            tree_iter = self.detailsStore.append()
+
+            if tree_iter is None:
+                continue
+
+            self.detailsStore.set_value(tree_iter, 0, str(key))
+            self.detailsStore.set_value(tree_iter, 1, str(value))
+
         self.character = character
 
     def unloadCharacterData(self):
@@ -122,6 +133,8 @@ class CharactersView:
         self.oneParagraphBuffer.set_text("", -1)
         self.summaryBuffer.set_text("", -1)
         self.notesBuffer.set_text("", -1)
+
+        self.detailsStore.clear()
 
     def characterSelectionChanged(self, selection: Gtk.TreeSelection):
         model, tree_iter = selection.get_selected()
@@ -199,37 +212,63 @@ class CharactersView:
         self.character.POV = button.get_active()
 
     def addDetailsClicked(self, button: Gtk.Button):
+        if self.character is None:
+            return
+
         tree_iter = self.detailsStore.append()
 
         if tree_iter is None:
             return
 
-        self.detailsStore.set_value(tree_iter, 0, "Description")
-        self.detailsStore.set_value(tree_iter, 1, "Value")
+        name = "Description"
+        value = "Value"
+
+        self.detailsStore.set_value(tree_iter, 0, name)
+        self.detailsStore.set_value(tree_iter, 1, value)
+
+        self.character.details[name] = value
 
     def removeDetailsClicked(self, button: Gtk.Button):
+        if self.character is None:
+            return
+
         model, tree_iter = self.detailsSelection.get_selected()
 
         if (model is None) or (tree_iter is None):
             return
 
+        name = model.get_value(tree_iter, 0)
         model.remove(tree_iter)
 
+        self.character.details.pop(name)
+
     def detailsNameEdited(self, renderer: Gtk.CellRendererText, path: str, text: str):
+        if self.character is None:
+            return
+
         model, tree_iter = self.detailsSelection.get_selected()
 
         if (model is None) or (tree_iter is None):
             return
 
+        name = model.get_value(tree_iter, 0)
         model.set_value(tree_iter, 0, text)
 
+        self.character.details[text] = self.character.details.pop(name)
+
     def detailsValueEdited(self, renderer: Gtk.CellRendererText, path: str, text: str):
+        if self.character is None:
+            return
+
         model, tree_iter = self.detailsSelection.get_selected()
 
         if (model is None) or (tree_iter is None):
             return
 
+        name = model.get_value(tree_iter, 0)
         model.set_value(tree_iter, 1, text)
+
+        self.character.details[name] = text
 
     def show(self):
         self.widget.show_all()
