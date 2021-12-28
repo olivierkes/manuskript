@@ -1516,7 +1516,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2874"/>
         <source>Locate log file</source>
-        <translation>Abrir archivo de registro...</translation>
+        <translation>Localizar archivo de registro</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2877"/>
@@ -2278,7 +2278,7 @@ Use that if you get YAML related error.</source>
         <location filename="../manuskript/ui/settings_ui.ui" line="211"/>
         <source>Show progress in chars next
  to words</source>
-        <translation type="unfinished">Mostrar progreso en caracteres junto
+        <translation>Mostrar progreso en caracteres junto
  a las palabras</translation>
     </message>
     <message>
@@ -2294,12 +2294,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1206"/>
         <source>Show char c&amp;ount</source>
-        <translation type="unfinished">Mostrar caracteres c&amp;ontados</translation>
+        <translation>Mostrar c&amp;uenta de caracteres</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1289"/>
         <source>Sho&amp;w char count</source>
-        <translation type="unfinished">Mos&amp;trar conteo de caracteres</translation>
+        <translation>Mos&amp;trar conteo de caracteres</translation>
     </message>
 </context>
 <context>
@@ -2833,12 +2833,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="788"/>
         <source>Replace ... with â¦</source>
-        <translation type="unfinished">Reemplazar ... por â¦</translation>
+        <translation>Reemplazar ... por â¦</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="795"/>
         <source>Replace --- with â</source>
-        <translation type="unfinished">Reemplazar --- con —</translation>
+        <translation>Reemplazar --- con â</translation>
     </message>
 </context>
 <context>
