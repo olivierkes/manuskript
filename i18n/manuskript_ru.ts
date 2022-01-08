@@ -31,7 +31,7 @@
     <message>
         <location filename="../manuskript/exporter/manuskript/__init__.py" line="15"/>
         <source>Default exporter, provides basic formats used by other exporters.</source>
-        <translation>Основная программа экспорта, предоставляет форматы, используемые другими программами.</translation>
+        <translation>Основная программа экспорта, преобразует в форматы, используемые другими программами.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/markdown.py" line="60"/>
