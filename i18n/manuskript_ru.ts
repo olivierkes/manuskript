@@ -1481,7 +1481,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="862"/>
         <source>Allow POV</source>
-        <translation>Излагать от лица</translation>
+        <translation>Изложение от его лица</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2852"/>
@@ -1692,7 +1692,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="536"/>
         <source>Revisions are a way to keep track of modifications. For each text item, it stores any changes you make to the main text, allowing you to see and restoring previous versions.</source>
-        <translation>Версии - это способ отслеживания изменений. Для каждого элемента сохраняются все изменения, внесенные в текст, что позволяет просматривать и восстанавливать предыдущие версии.</translation>
+        <translation>Версии — это способ отслеживания изменений. Для каждого элемента сохраняются все изменения, внесенные в текст, что позволяет просматривать и восстанавливать его предыдущее состояние.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="546"/>
@@ -1757,7 +1757,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1889"/>
         <source>Icon color:</source>
-        <translation>Цвета значков:</translation>
+        <translation>Цвет значков:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2095"/>
@@ -1922,7 +1922,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2473"/>
         <source>Paragraphs</source>
-        <translation>Пункты</translation>
+        <translation>Параметры абзаца</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3660"/>
@@ -1932,7 +1932,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3668"/>
         <source>Single</source>
-        <translation>Одиночный</translation>
+        <translation>Одинарный</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3673"/>
@@ -1962,7 +1962,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3780"/>
         <source> px</source>
-        <translation> пикс.</translation>
+        <translation> пикселей</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3802"/>
@@ -2072,7 +2072,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3810"/>
         <source>Left</source>
-        <translation>Слева</translation>
+        <translation>По левому краю</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3819"/>
@@ -2082,7 +2082,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3828"/>
         <source>Right</source>
-        <translation>Справа</translation>
+        <translation>По правому краю</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3453"/>
@@ -2177,17 +2177,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1219"/>
         <source>S&amp;how progress</source>
-        <translation>П&amp;оказать прогресс</translation>
+        <translation>П&amp;оказывать прогресс</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1232"/>
         <source>Show summar&amp;y</source>
-        <translation>Показать описа&amp;ние</translation>
+        <translation>Показывать описа&amp;ние</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1302"/>
         <source>Show p&amp;rogress</source>
-        <translation>Показать п&amp;рогресс</translation>
+        <translation>Показывать п&amp;рогресс</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1845"/>
@@ -2278,7 +2278,7 @@ Use that if you get YAML related error.</source>
         <location filename="../manuskript/ui/settings_ui.ui" line="211"/>
         <source>Show progress in chars next
  to words</source>
-        <translation>Показывать прогресс в символах
+        <translation>Показывать объем в символах
  и словах</translation>
     </message>
     <message>
@@ -2327,7 +2327,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="545"/>
         <source>&amp;New Plot Item</source>
-        <translation>&amp;Новый шаг сюжета</translation>
+        <translation>&amp;Новая сюжетная линия</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="552"/>
@@ -3282,7 +3282,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="144"/>
         <source>Minor</source>
-        <translation>Эпизод</translation>
+        <translation>Эпизодический</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="197"/>
@@ -3385,7 +3385,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/outlineDelegates.py" line="143"/>
         <source>Secondary</source>
-        <translation>Вторичный</translation>
+        <translation>Второго плана</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineDelegates.py" line="143"/>
@@ -3640,12 +3640,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/plotModel.py" line="249"/>
         <source>Main</source>
-        <translation>Главный</translation>
+        <translation>Главная</translation>
     </message>
     <message>
         <location filename="../manuskript/models/plotModel.py" line="249"/>
         <source>Secondary</source>
-        <translation>Второстепенный</translation>
+        <translation>Вторичная</translation>
     </message>
     <message>
         <location filename="../manuskript/models/plotModel.py" line="249"/>
@@ -3681,12 +3681,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/plotsProxyModel.py" line="22"/>
         <source>Main</source>
-        <translation>Главный</translation>
+        <translation>Главная</translation>
     </message>
     <message>
         <location filename="../manuskript/models/plotsProxyModel.py" line="23"/>
         <source>Secondary</source>
-        <translation>Второстепенный</translation>
+        <translation>Вторичная</translation>
     </message>
     <message>
         <location filename="../manuskript/models/plotsProxyModel.py" line="24"/>
