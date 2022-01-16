@@ -488,7 +488,7 @@ class corkDelegate(QStyledItemDelegate):
         fullSummary = item.data(Outline.summaryFull)
         if lineSummary or not fullSummary:
             m = self.margin
-            r = self.mainLineRect.adjusted(-m, -m, m, m / 2)
+            r = self.mainLineRect.adjusted(-m, -m, m, int(m / 2))
             p.save()
             p.setPen(Qt.NoPen)
             p.setBrush(QColor("#EEE"))
