@@ -177,6 +177,9 @@ class pandocSettings(markdownSettings):
         "disable-YAML": pandocSetting("EXT-yaml_metadata_block", "checkbox", "",
                                       qApp.translate("Export", "Disable YAML metadata block.\nUse that if you get YAML related error."),
                                       minVersion="1.12"),
+        "hard-line-breaks": pandocSetting("EXT-hard_line_block", "checkbox", "",
+                                      qApp.translate("Export", "Enable the support on markdown for line break on new line."),
+                                      minVersion="1.16"),
 
         # Specific
         "ref-link":     pandocSetting("--reference-links", "checkbox", "markdown rst",
@@ -367,6 +370,8 @@ class pandocSettings(markdownSettings):
                     extensions += "-yaml_metadata_block"
                 if name == "epub3" and s.widget.isChecked():
                     toFormat = "epub3"
+                if name == "hard-line-breaks" and s.widget.isChecked():
+                    extensions += "+hard_line_breaks"
 
         r = ["--from=markdown" + extensions,
              "--to={}".format(toFormat)]
