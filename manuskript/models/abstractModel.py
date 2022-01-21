@@ -438,7 +438,18 @@ class abstractModel(QAbstractItemModel):
 
             for item in items:
                 if item.ID() in IDs:
-                    item.getUniqueID(recursive=True)
+                    # Items don't get new IDs, because they are not part of a model yet,
+                    # so the following call does nothing:
+                    # item.getUniqueID(recursive=True)
+
+                    # Instead we need to remove IDs (recursively) in all copied items, so that they
+                    # will receive new ones when inserted within the model.
+                    def removeIDs(i):
+                        i.setData(item.enum.ID, None)
+                        for c in i.children():
+                            removeIDs(c)
+
+                    removeIDs(item)
 
         r = self.insertItems(items, beginRow, parent)
 
