@@ -224,14 +224,22 @@ class abstractItem():
         if max([self.IDs.count(i) for i in self.IDs if i]) != 1:
             LOGGER.warning("There are some items with overlapping IDs: %s", [i for i in self.IDs if i and self.IDs.count(i) != 1])
 
+        _IDs = [self.ID()]
         def checkChildren(item):
+            "Check recursively every children and give them unique, non-empty, non-zero IDs."
             for c in item.children():
                 _id = c.ID()
-                if not _id or _id == "0":
+                if not _id or _id == "0" or _id in _IDs:
                     c.getUniqueID()
+                    LOGGER.warning("* Item {} '{}' is given new unique ID: '{}'".format(_id, c.title(), c.ID()))
+                _IDs.append(_id)
                 checkChildren(c)
 
         checkChildren(self)
+
+        # Not sure if self.IDs is still useful (it was used in the old unique ID generating system at least).
+        # It might be deleted everywhere. But just in the meantime, it should at least be up to date.
+        self.IDs = self.listAllIDs()
 
     def listAllIDs(self):
         IDs = [self.ID()]
