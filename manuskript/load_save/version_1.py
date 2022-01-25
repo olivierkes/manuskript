@@ -327,7 +327,6 @@ def saveProject(zip=None):
     # Save to plain text
 
     else:
-
         global cache
 
         # Project path
@@ -378,11 +377,17 @@ def saveProject(zip=None):
                 LOGGER.debug("* Writing file {} ({})".format(path, "not in cache" if path not in cache else "different"))
                 # mode = "w" + ("b" if type(content) == bytes else "")
                 if type(content) == bytes:
-                    with open(filename, "wb") as f:
-                        f.write(content)
+                    try:
+                        with open(filename, "wb") as f:
+                            f.write(content)
+                    except PermissionError as e:
+                        LOGGER.error("Cannot open file " + filename + " for writing: " + e.strerror)
                 else:
-                    with open(filename, "w", encoding='utf8') as f:
-                        f.write(content)
+                    try:
+                        with open(filename, "w", encoding='utf8') as f:
+                            f.write(content)
+                    except PermissionError as e:
+                        LOGGER.error("Cannot open file " + filename + " for writing: " + e.strerror)
 
                 cache[path] = content
 
@@ -412,8 +417,12 @@ def saveProject(zip=None):
                     pass
 
         # Write the project file's content
-        with open(project, "w", encoding='utf8') as f:
-            f.write("1")  # Format number
+        try:
+            with open(project, "w", encoding='utf8') as f:
+                f.write("1")  # Format number
+        except PermissionError as e:
+            LOGGER.error("Cannot open file " + project + " for writing: " + e.strerror)
+            return False
 
         return True
 
