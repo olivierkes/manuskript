@@ -13,6 +13,8 @@ from manuskript.enums import Model
 from manuskript.models.flatDataModelWrapper import flatDataModelWrapper
 from manuskript.ui.searchMenu import searchMenu
 from manuskript.ui.highlighters.searchResultHighlighters.searchResultHighlighter import searchResultHighlighter
+import logging
+LOGGER = logging.getLogger(__name__)
 
 
 class search(QWidget, Ui_search):
@@ -69,21 +71,30 @@ class search(QWidget, Ui_search):
             self.openItem(self.result.currentItem())
 
     def prepareRegex(self, searchText):
-        import re
+        rtn = None
+        try:
+            import re
 
-        flags = re.UNICODE
+            flags = re.UNICODE
 
-        if self.searchMenu.caseSensitive() is False:
-            flags |= re.IGNORECASE
+            if self.searchMenu.caseSensitive() is False:
+                flags |= re.IGNORECASE
 
-        if self.searchMenu.regex() is False:
-            searchText = re.escape(searchText)
+            if self.searchMenu.regex() is False:
+                searchText = re.escape(searchText)
 
-        if self.searchMenu.matchWords() is True:
-            # Source: https://stackoverflow.com/a/15863102
-            searchText = r'\b' + searchText + r'\b'
+            if self.searchMenu.matchWords() is True:
+                # Source: https://stackoverflow.com/a/15863102
+                searchText = r'\b' + searchText + r'\b'
 
-        return re.compile(searchText, flags)
+            rtn = re.compile(searchText, flags)
+        except re.error as e:
+            LOGGER.info("Problem preparing regular expression: " + e.msg)
+            rtn = None
+        except Exception as e:
+            LOGGER.info("Problem preparing regular expression")
+            rtn = None
+        return rtn
 
     def search(self):
         self.result.clear()
@@ -91,30 +102,33 @@ class search(QWidget, Ui_search):
 
         searchText = self.searchTextInput.text()
         if len(searchText) > 0:
+            results = list()
             searchRegex = self.prepareRegex(searchText)
-            results = []
+            if searchRegex is not None:
+                # Set override cursor
+                qApp.setOverrideCursor(Qt.WaitCursor)
 
-            # Set override cursor
-            qApp.setOverrideCursor(Qt.WaitCursor)
+                for model, modelName in [
+                    (mainWindow().mdlOutline, Model.Outline),
+                    (mainWindow().mdlCharacter, Model.Character),
+                    (flatDataModelWrapper(mainWindow().mdlFlatData), Model.FlatData),
+                    (mainWindow().mdlWorld, Model.World),
+                    (mainWindow().mdlPlots, Model.Plot)
+                ]:
+                    filteredColumns = self.searchMenu.columns(modelName)
 
-            for model, modelName in [
-                (mainWindow().mdlOutline, Model.Outline),
-                (mainWindow().mdlCharacter, Model.Character),
-                (flatDataModelWrapper(mainWindow().mdlFlatData), Model.FlatData),
-                (mainWindow().mdlWorld, Model.World),
-                (mainWindow().mdlPlots, Model.Plot)
-            ]:
-                filteredColumns = self.searchMenu.columns(modelName)
+                    # Searching
+                    if len(filteredColumns):
+                        results += model.searchOccurrences(searchRegex, filteredColumns)
 
-                # Searching
-                if len(filteredColumns):
-                    results += model.searchOccurrences(searchRegex, filteredColumns)
+                # Showing results
+                self.generateResultsLists(results)
 
-            # Showing results
-            self.generateResultsLists(results)
-
-            # Remove override cursor
-            qApp.restoreOverrideCursor()
+                # Remove override cursor
+                qApp.restoreOverrideCursor()
+            else:
+                # No results to generate if there is a problem with the regex
+                self.generateResultsLists(list())
 
     def generateResultsLists(self, results):
         self.noResultsLabel.setVisible(len(results) == 0)
@@ -130,6 +144,7 @@ class search(QWidget, Ui_search):
 
     def leaveEvent(self, event):
         self.delegate.mouseLeave()
+
 
 class listResultDelegate(QStyledItemDelegate):
     def __init__(self, parent=None):
