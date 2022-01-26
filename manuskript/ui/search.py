@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
+import re
+
 from PyQt5.QtCore import Qt, QRect, QEvent, QCoreApplication
 from PyQt5.QtGui import QPalette, QFontMetrics, QKeySequence
 from PyQt5.QtWidgets import QWidget, qApp, QListWidgetItem, QStyledItemDelegate, QStyle, QLabel, QToolTip, QShortcut
@@ -25,6 +27,7 @@ class search(QWidget, Ui_search):
         self.setupUi(self)
 
         self.searchTextInput.returnPressed.connect(self.search)
+        self.searchTextInput.textChanged.connect(self.updateSearchFeedback)
 
         self.searchMenu = searchMenu()
         self.btnOptions.setMenu(self.searchMenu)
@@ -70,23 +73,20 @@ class search(QWidget, Ui_search):
         if 0 < self.result.currentRow() < self.result.count():
             self.openItem(self.result.currentItem())
 
+    def updateSearchFeedback(self, search_string):
+        palette = QPalette()
+        try:
+            self.compileRegex(search_string)
+        except Exception as e:
+            # From https://stackoverflow.com/questions/27432456/python-qlineedit-text-color
+            palette.setColor(QPalette.Text, Qt.red)
+
+        self.searchTextInput.setPalette(palette)
+
     def prepareRegex(self, searchText):
-        import re
         rtn = None
         try:
-            flags = re.UNICODE
-
-            if self.searchMenu.caseSensitive() is False:
-                flags |= re.IGNORECASE
-
-            if self.searchMenu.regex() is False:
-                searchText = re.escape(searchText)
-
-            if self.searchMenu.matchWords() is True:
-                # Source: https://stackoverflow.com/a/15863102
-                searchText = r'\b' + searchText + r'\b'
-
-            rtn = re.compile(searchText, flags)
+            rtn = self.compileRegex(searchText)
         except re.error as e:
             LOGGER.info("Problem preparing regular expression: " + e.msg)
             rtn = None
@@ -94,6 +94,22 @@ class search(QWidget, Ui_search):
             LOGGER.info("Problem preparing regular expression")
             rtn = None
         return rtn
+
+    def compileRegex(self, searchText):
+        # Intentionally throws exceptions for use elsewhere
+        flags = re.UNICODE
+
+        if self.searchMenu.caseSensitive() is False:
+            flags |= re.IGNORECASE
+
+        if self.searchMenu.regex() is False:
+            searchText = re.escape(searchText)
+
+        if self.searchMenu.matchWords() is True:
+            # Source: https://stackoverflow.com/a/15863102
+            searchText = r'\b' + searchText + r'\b'
+
+        return re.compile(searchText, flags)
 
     def search(self):
         self.result.clear()
