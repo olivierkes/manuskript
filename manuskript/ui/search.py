@@ -71,10 +71,9 @@ class search(QWidget, Ui_search):
             self.openItem(self.result.currentItem())
 
     def prepareRegex(self, searchText):
+        import re
         rtn = None
         try:
-            import re
-
             flags = re.UNICODE
 
             if self.searchMenu.caseSensitive() is False:
