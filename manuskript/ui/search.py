@@ -31,6 +31,7 @@ class search(QWidget, Ui_search):
 
         self.searchMenu = searchMenu()
         self.btnOptions.setMenu(self.searchMenu)
+        self.searchMenu.triggered.connect(self.onSearchMenuChange)
 
         self.delegate = listResultDelegate(self)
         self.result.setItemDelegate(self.delegate)
@@ -72,6 +73,10 @@ class search(QWidget, Ui_search):
 
         if 0 < self.result.currentRow() < self.result.count():
             self.openItem(self.result.currentItem())
+
+    def onSearchMenuChange(self):
+        search_string = self.searchTextInput.text()
+        self.updateSearchFeedback(search_string)
 
     def updateSearchFeedback(self, search_string):
         palette = QPalette()
