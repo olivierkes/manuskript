@@ -51,7 +51,7 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/PDF.py" line="18"/>
         <source>Needs LaTeX to be installed.</source>
-        <translation>Необходим установленный пакет LaTeX.</translation>
+        <translation>Необходим установленный LaTeX.</translation>
     </message>
     <message>
         <location filename="../manuskript/converters/pandocConverter.py" line="76"/>
@@ -4011,7 +4011,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="731"/>
         <source>newtheme</source>
-        <translation>Новая тема</translation>
+        <translation>новаятема</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="741"/>
@@ -4395,7 +4395,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="246"/>
         <source>Empty non-fiction</source>
-        <translation>Научный текст</translation>
+        <translation>Обычный текст</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="308"/>
@@ -4415,7 +4415,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="338"/>
         <source>Something</source>
-        <translation>Что-то</translation>
+        <translation>Введите текст</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="384"/>
@@ -4430,7 +4430,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="411"/>
         <source>Non-fiction</source>
-        <translation>Научно-популярный</translation>
+        <translation>Обычный</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="446"/>
