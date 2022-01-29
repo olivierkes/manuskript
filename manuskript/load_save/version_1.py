@@ -429,13 +429,14 @@ def saveProject(zip=None):
             LOGGER.error("Cannot open file " + project + " for writing: " + e.strerror)
             filesWithPermissionErrors.append(project)
 
-        dlg = ListDialog()
-        dlg.setModal(True)
-        dlg.setWindowTitle(dlg.tr("Files not saved"))
-        dlg.label.setText(dlg.tr("The following files were not saved and appear to be open in another program"))
-        for f in filesWithPermissionErrors:
-            QListWidgetItem(f, dlg.listWidget)
-        dlg.exec()
+        if len(filesWithPermissionErrors) > 0:
+            dlg = ListDialog()
+            dlg.setModal(True)
+            dlg.setWindowTitle(dlg.tr("Files not saved"))
+            dlg.label.setText(dlg.tr("The following files were not saved and appear to be open in another program"))
+            for f in filesWithPermissionErrors:
+                QListWidgetItem(f, dlg.listWidget)
+            dlg.exec()
 
         if project in filesWithPermissionErrors:
             return False
@@ -646,7 +647,8 @@ def loadProject(project, zip=None):
     """
 
     mw = mainWindow()
-    errors = []
+    errors = list()
+    filesWithPermissionErrors = list()
 
     ####################################################################################################################
     # Read and store everything in a dict
@@ -685,8 +687,14 @@ def loadProject(project, zip=None):
                     with open(os.path.join(dirpath, f), "rb") as fo:
                         files[os.path.join(p, f)] = fo.read()
                 else:
-                    with open(os.path.join(dirpath, f), "r", encoding="utf8") as fo:
-                        files[os.path.join(p, f)] = fo.read()
+                    try:
+                        filename = os.path.join(dirpath, f)
+                        with open(filename, "r", encoding="utf8") as fo:
+                            files[os.path.join(p, f)] = fo.read()
+                    except PermissionError as e:
+                        LOGGER.error("Cannot open file " + filename + ": " + e.strerror)
+                        errors.append(fo)
+                        filesWithPermissionErrors.append(filename)
 
         # Saves to cache (only if we loaded from disk and not zip)
         global cache
@@ -910,6 +918,15 @@ def loadProject(project, zip=None):
 
     # Check IDS
     mdl.rootItem.checkIDs()
+
+    if len(filesWithPermissionErrors) > 0:
+        dlg = ListDialog()
+        dlg.setModal(True)
+        dlg.setWindowTitle(dlg.tr("Files not loaded"))
+        dlg.label.setText(dlg.tr("The following files were not loaded and appear to be open in another program"))
+        for f in filesWithPermissionErrors:
+            QListWidgetItem(f, dlg.listWidget)
+        dlg.exec()
 
     return errors
 
