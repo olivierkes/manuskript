@@ -15,6 +15,7 @@ from collections import OrderedDict
 
 from PyQt5.QtCore import Qt, QModelIndex
 from PyQt5.QtGui import QColor, QStandardItem
+from PyQt5.QtWidgets import QListWidgetItem
 
 from manuskript import settings
 from manuskript.enums import Character, World, Plot, PlotStep, Outline
@@ -25,6 +26,7 @@ from lxml import etree as ET
 from manuskript.load_save.version_0 import loadFilesFromZip
 from manuskript.models.characterModel import CharacterInfo
 from manuskript.models import outlineItem
+from manuskript.ui.listDialog import ListDialog
 
 import logging
 LOGGER = logging.getLogger(__name__)
@@ -328,6 +330,7 @@ def saveProject(zip=None):
 
     else:
         global cache
+        filesWithPermissionErrors = list()
 
         # Project path
         dir = os.path.dirname(project)
@@ -382,12 +385,14 @@ def saveProject(zip=None):
                             f.write(content)
                     except PermissionError as e:
                         LOGGER.error("Cannot open file " + filename + " for writing: " + e.strerror)
+                        filesWithPermissionErrors.append(filename)
                 else:
                     try:
                         with open(filename, "w", encoding='utf8') as f:
                             f.write(content)
                     except PermissionError as e:
                         LOGGER.error("Cannot open file " + filename + " for writing: " + e.strerror)
+                        filesWithPermissionErrors.append(filename)
 
                 cache[path] = content
 
@@ -422,8 +427,18 @@ def saveProject(zip=None):
                 f.write("1")  # Format number
         except PermissionError as e:
             LOGGER.error("Cannot open file " + project + " for writing: " + e.strerror)
-            return False
+            filesWithPermissionErrors.append(project)
 
+        dlg = ListDialog()
+        dlg.setModal(True)
+        dlg.setWindowTitle(dlg.tr("Files not saved"))
+        dlg.label.setText(dlg.tr("The following files were not saved and appear to be open in another program"))
+        for f in filesWithPermissionErrors:
+            QListWidgetItem(f, dlg.listWidget)
+        dlg.exec()
+
+        if project in filesWithPermissionErrors:
+            return False
         return True
 
 
