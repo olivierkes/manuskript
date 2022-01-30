@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
+import re
+
 from PyQt5.QtCore import Qt, QRect, QEvent, QCoreApplication
 from PyQt5.QtGui import QPalette, QFontMetrics, QKeySequence
 from PyQt5.QtWidgets import QWidget, qApp, QListWidgetItem, QStyledItemDelegate, QStyle, QLabel, QToolTip, QShortcut
@@ -13,6 +15,8 @@ from manuskript.enums import Model
 from manuskript.models.flatDataModelWrapper import flatDataModelWrapper
 from manuskript.ui.searchMenu import searchMenu
 from manuskript.ui.highlighters.searchResultHighlighters.searchResultHighlighter import searchResultHighlighter
+import logging
+LOGGER = logging.getLogger(__name__)
 
 
 class search(QWidget, Ui_search):
@@ -23,9 +27,11 @@ class search(QWidget, Ui_search):
         self.setupUi(self)
 
         self.searchTextInput.returnPressed.connect(self.search)
+        self.searchTextInput.textChanged.connect(self.updateSearchFeedback)
 
         self.searchMenu = searchMenu()
         self.btnOptions.setMenu(self.searchMenu)
+        self.searchMenu.triggered.connect(self.onSearchMenuChange)
 
         self.delegate = listResultDelegate(self)
         self.result.setItemDelegate(self.delegate)
@@ -68,9 +74,34 @@ class search(QWidget, Ui_search):
         if 0 < self.result.currentRow() < self.result.count():
             self.openItem(self.result.currentItem())
 
-    def prepareRegex(self, searchText):
-        import re
+    def onSearchMenuChange(self):
+        search_string = self.searchTextInput.text()
+        self.updateSearchFeedback(search_string)
 
+    def updateSearchFeedback(self, search_string):
+        palette = QPalette()
+        try:
+            self.compileRegex(search_string)
+        except Exception as e:
+            # From https://stackoverflow.com/questions/27432456/python-qlineedit-text-color
+            palette.setColor(QPalette.Text, Qt.red)
+
+        self.searchTextInput.setPalette(palette)
+
+    def prepareRegex(self, searchText):
+        rtn = None
+        try:
+            rtn = self.compileRegex(searchText)
+        except re.error as e:
+            LOGGER.info("Problem preparing regular expression: " + e.msg)
+            rtn = None
+        except Exception as e:
+            LOGGER.info("Problem preparing regular expression")
+            rtn = None
+        return rtn
+
+    def compileRegex(self, searchText):
+        # Intentionally throws exceptions for use elsewhere
         flags = re.UNICODE
 
         if self.searchMenu.caseSensitive() is False:
@@ -91,30 +122,33 @@ class search(QWidget, Ui_search):
 
         searchText = self.searchTextInput.text()
         if len(searchText) > 0:
+            results = list()
             searchRegex = self.prepareRegex(searchText)
-            results = []
+            if searchRegex is not None:
+                # Set override cursor
+                qApp.setOverrideCursor(Qt.WaitCursor)
 
-            # Set override cursor
-            qApp.setOverrideCursor(Qt.WaitCursor)
+                for model, modelName in [
+                    (mainWindow().mdlOutline, Model.Outline),
+                    (mainWindow().mdlCharacter, Model.Character),
+                    (flatDataModelWrapper(mainWindow().mdlFlatData), Model.FlatData),
+                    (mainWindow().mdlWorld, Model.World),
+                    (mainWindow().mdlPlots, Model.Plot)
+                ]:
+                    filteredColumns = self.searchMenu.columns(modelName)
 
-            for model, modelName in [
-                (mainWindow().mdlOutline, Model.Outline),
-                (mainWindow().mdlCharacter, Model.Character),
-                (flatDataModelWrapper(mainWindow().mdlFlatData), Model.FlatData),
-                (mainWindow().mdlWorld, Model.World),
-                (mainWindow().mdlPlots, Model.Plot)
-            ]:
-                filteredColumns = self.searchMenu.columns(modelName)
+                    # Searching
+                    if len(filteredColumns):
+                        results += model.searchOccurrences(searchRegex, filteredColumns)
 
-                # Searching
-                if len(filteredColumns):
-                    results += model.searchOccurrences(searchRegex, filteredColumns)
+                # Showing results
+                self.generateResultsLists(results)
 
-            # Showing results
-            self.generateResultsLists(results)
-
-            # Remove override cursor
-            qApp.restoreOverrideCursor()
+                # Remove override cursor
+                qApp.restoreOverrideCursor()
+            else:
+                # No results to generate if there is a problem with the regex
+                self.generateResultsLists(list())
 
     def generateResultsLists(self, results):
         self.noResultsLabel.setVisible(len(results) == 0)
@@ -130,6 +164,7 @@ class search(QWidget, Ui_search):
 
     def leaveEvent(self, event):
         self.delegate.mouseLeave()
+
 
 class listResultDelegate(QStyledItemDelegate):
     def __init__(self, parent=None):
