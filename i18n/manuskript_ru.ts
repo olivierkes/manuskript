@@ -507,7 +507,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="199"/>
         <source>Volume</source>
-        <translation>Объем</translation>
+        <translation>Том</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="226"/>
