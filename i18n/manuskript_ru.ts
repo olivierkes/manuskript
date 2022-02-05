@@ -702,7 +702,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2065"/>
         <source>World</source>
-        <translation>Окружение</translation>
+        <translation>Вселенная</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1620"/>
@@ -792,12 +792,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2254"/>
         <source>&amp;Cheat sheet</source>
-        <translation>Памятка</translation>
+        <translation>Пам&amp;ятка</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2288"/>
         <source>Sea&amp;rch</source>
-        <translation>Поиск</translation>
+        <translation>&amp;Поиск</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2325"/>
@@ -807,7 +807,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2360"/>
         <source>&amp;Open</source>
-        <translation>Открыть</translation>
+        <translation>&amp;Открыть</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2363"/>
@@ -847,7 +847,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2414"/>
         <source>&amp;Show help texts</source>
-        <translation>&amp;Показывать подсказки</translation>
+        <translation>&amp;Показать подсказки</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2417"/>
@@ -1026,7 +1026,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1378"/>
         <source>Build worlds.  Create hierarchy of broad categories down to specific details.</source>
-        <translation>Опишите окружение. От общих описаний переходите к конкретным деталям.</translation>
+        <translation>Опишите вымышленный мир. От общих описаний переходите к конкретным деталям.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1381"/>
@@ -1046,7 +1046,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1401"/>
         <source>Dictionary</source>
-        <translation>&amp;Орфография</translation>
+        <translation>Ор&amp;фография</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1544"/>
@@ -2312,7 +2312,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="629"/>
         <source>&amp;Add to dictionary</source>
-        <translation>Добавить в словарь</translation>
+        <translation>До&amp;бавить в словарь</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="682"/>
@@ -2322,17 +2322,17 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="538"/>
         <source>&amp;New Character</source>
-        <translation>&amp;Новый символ</translation>
+        <translation>Новый &amp;персонаж</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="545"/>
         <source>&amp;New Plot Item</source>
-        <translation>&amp;Новая сюжетная линия</translation>
+        <translation>Новая &amp;сюжетная линия</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="552"/>
         <source>&amp;New World Item</source>
-        <translation>&amp;Новый элемент окружения</translation>
+        <translation>Новая &amp;деталь</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="653"/>
@@ -2518,7 +2518,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/cheatSheet.py" line="120"/>
         <source>World</source>
-        <translation>Окружение</translation>
+        <translation>Вселенная</translation>
     </message>
 </context>
 <context>
@@ -3247,7 +3247,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="134"/>
         <source>Set POV</source>
-        <translation>Сменить рассказчика</translation>
+        <translation>Рассказчик</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="136"/>
@@ -3567,7 +3567,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Ordinary world</source>
-        <translation>Обычное окружение</translation>
+        <translation>Обычный мир</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3862,7 +3862,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/references.py" line="519"/>
         <source>World: &lt;b&gt;{name}&lt;/b&gt;{path}</source>
-        <translation>Окружение: &lt;b&gt;{name}&lt;/b&gt;{path}</translation>
+        <translation>Вселенная: &lt;b&gt;{name}&lt;/b&gt;{path}</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="592"/>
@@ -4478,12 +4478,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="251"/>
         <source>Fantasy world building</source>
-        <translation>Создание окружения</translation>
+        <translation>Создание вселенной</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="251"/>
         <source>Physical</source>
-        <translation>Физика</translation>
+        <translation>Природа</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="251"/>
@@ -4523,7 +4523,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="251"/>
         <source>Diseases</source>
-        <translation>Болезни</translation>
+        <translation>Заболевания</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
@@ -4533,7 +4533,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Customs</source>
-        <translation>Разное</translation>
+        <translation>Обычаи</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
@@ -4568,7 +4568,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Bodily language</source>
-        <translation>Жесты</translation>
+        <translation>Язык тела</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
@@ -4583,7 +4583,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Government</source>
-        <translation>Правительство</translation>
+        <translation>Государство</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
@@ -4648,12 +4648,12 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="285"/>
         <source>Organization</source>
-        <translation>Организации</translation>
+        <translation>Принципы</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="285"/>
         <source>Magical objects</source>
-        <translation>Магические предметы</translation>
+        <translation>Волшебные предметы</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="285"/>
@@ -4663,7 +4663,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="285"/>
         <source>Magical races</source>
-        <translation>Расы магов</translation>
+        <translation>Виды существ</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="292"/>
