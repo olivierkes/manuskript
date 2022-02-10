@@ -430,13 +430,13 @@ def saveProject(zip=None):
             filesWithPermissionErrors.append(project)
 
         if len(filesWithPermissionErrors) > 0:
-            dlg = ListDialog()
+            dlg = ListDialog(mw)
             dlg.setModal(True)
             dlg.setWindowTitle(dlg.tr("Files not saved"))
             dlg.label.setText(dlg.tr("The following files were not saved and appear to be open in another program"))
             for f in filesWithPermissionErrors:
                 QListWidgetItem(f, dlg.listWidget)
-            dlg.exec()
+            dlg.open()
 
         if project in filesWithPermissionErrors:
             return False
@@ -920,13 +920,13 @@ def loadProject(project, zip=None):
     mdl.rootItem.checkIDs()
 
     if len(filesWithPermissionErrors) > 0:
-        dlg = ListDialog()
+        dlg = ListDialog(mw)
         dlg.setModal(True)
         dlg.setWindowTitle(dlg.tr("Files not loaded"))
         dlg.label.setText(dlg.tr("The following files were not loaded and appear to be open in another program"))
         for f in filesWithPermissionErrors:
             QListWidgetItem(f, dlg.listWidget)
-        dlg.exec()
+        dlg.open()
 
     return errors
 
