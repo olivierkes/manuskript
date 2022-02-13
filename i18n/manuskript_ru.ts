@@ -1226,7 +1226,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2675"/>
         <source>&amp;Rename</source>
-        <translation>&amp;Переименовать</translation>
+        <translation>Пере&amp;именовать</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2678"/>
@@ -3352,7 +3352,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="125"/>
         <source>&amp;Rename</source>
-        <translation>&amp;Переименовать</translation>
+        <translation>Пере&amp;именовать</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="119"/>
@@ -4071,7 +4071,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/sldImportance.py" line="30"/>
         <source>Secondary</source>
-        <translation>Второстепенный</translation>
+        <translation>Второго плана</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/sldImportance.py" line="31"/>
@@ -4648,7 +4648,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="285"/>
         <source>Organization</source>
-        <translation>Принципы</translation>
+        <translation>Принципы действия</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="285"/>
