@@ -305,7 +305,7 @@ class welcome(QWidget, Ui_welcome):
 
             else:
                 hasWC = True
-                txt = QLabel(self.tr("words each."), self)
+                txt = QLabel(self.tr("words/chars each."), self)
 
             if k != 0:
                 of = QLabel(self.tr("of"), self)
@@ -381,9 +381,10 @@ class welcome(QWidget, Ui_welcome):
         if total == 1:
             total = 0
 
-        self.lblTotal.setText(self.tr("<b>Total:</b> {} words (~ {} pages)").format(
+        self.lblTotal.setText(self.tr("<b>Total:</b> {} words/chars (~ words: {} pages / chars: {} pages)").format(
                 locale.format_string("%d", total, grouping=True),
-                locale.format_string("%d", total / 250, grouping=True)
+                locale.format_string("%d", total / 250, grouping=True),
+                locale.format_string("%d", total / 500, grouping=True)
         ))
 
     def addTopLevelItem(self, name):

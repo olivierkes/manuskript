@@ -237,8 +237,10 @@ class outlineItem(abstractItem, searchableItem):
                     goal += F.toInt(c.data(self.enum.goal))
                 self._data[self.enum.goal] = goal
 
-            if goal:
+            if goal and not settings.countCharMode:
                 self.setData(self.enum.goalPercentage, wc / float(goal))
+            elif goal and settings.countCharMode:
+                self.setData(self.enum.goalPercentage, cc / float(goal))
             else:
                 self.setData(self.enum.goalPercentage, "")
 
