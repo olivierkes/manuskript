@@ -190,8 +190,10 @@ class settingsWindow(QWidget, Ui_Settings):
             lambda v: self.lblTreeIconSize.setText("{}x{}".format(v, v)))
         self.sldTreeIconSize.setValue(settings.viewSettings["Tree"]["iconSize"])
 
-        self.chkCountSpaces.setChecked(settings.countSpaces);
+        self.chkCountSpaces.setChecked(settings.countSpaces)
         self.chkCountSpaces.stateChanged.connect(self.countSpacesChanged)
+        self.chkCountCharMode.setChecked(settings.countCharMode)
+        self.chkCountCharMode.stateChanged.connect(self.countCharModeChanged)
 
         self.rdoCorkOldStyle.setChecked(settings.corkStyle == "old")
         self.rdoCorkNewStyle.setChecked(settings.corkStyle == "new")
@@ -467,6 +469,11 @@ class settingsWindow(QWidget, Ui_Settings):
 
     def countSpacesChanged(self):
         settings.countSpaces = True if self.chkCountSpaces.checkState() else False
+
+        self.mw.mainEditor.updateStats()
+
+    def countCharModeChanged(self):
+        settings.countCharMode = True if self.chkCountCharMode.checkState() else False
 
         self.mw.mainEditor.updateStats()
 

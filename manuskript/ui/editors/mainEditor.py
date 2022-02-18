@@ -324,7 +324,7 @@ class mainEditor(QWidget, Ui_mainEditor):
         if not wc:
             wc = 0
 
-        if goal:
+        if goal and not settings.countCharMode:
             self.lblRedacProgress.show()
             rect = self.lblRedacProgress.geometry()
             rect = QRect(QPoint(0, 0), rect.size())
@@ -345,8 +345,31 @@ class mainEditor(QWidget, Ui_mainEditor):
                 self.lblRedacWC.setText(self.tr("{}  words / {} ").format(
                         locale.format("%d", wc, grouping=True),
                         locale.format("%d", goal, grouping=True)))
-                self.lblRedacWC.setToolTip(self.tr("{} chars").format(
+                self.lblRedacWC.setToolTip(self.tr("{} chars ").format(
                         locale.format("%d", cc, grouping=True)))
+        elif goal and settings.countCharMode:
+            self.lblRedacProgress.show()
+            rect = self.lblRedacProgress.geometry()
+            rect = QRect(QPoint(0, 0), rect.size())
+            self.px = QPixmap(rect.size())
+            self.px.fill(Qt.transparent)
+            p = QPainter(self.px)
+            drawProgress(p, rect, progress, 2)
+            del p
+            self.lblRedacProgress.setPixmap(self.px)
+
+            if settings.progressChars:
+                self.lblRedacWC.setText(self.tr("({} words) {}  chars / {} ").format(
+                        locale.format("%d", wc, grouping=True),
+                        locale.format("%d", cc, grouping=True),
+                        locale.format("%d", goal, grouping=True)))
+                self.lblRedacWC.setToolTip("")
+            else:
+                self.lblRedacWC.setText(self.tr("{}  chars / {} ").format(
+                        locale.format("%d", cc, grouping=True),
+                        locale.format("%d", goal, grouping=True)))
+                self.lblRedacWC.setToolTip(self.tr("{} words").format(
+                        locale.format("%d", wc, grouping=True)))
         else:
             self.lblRedacProgress.hide()
 

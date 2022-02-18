@@ -51,6 +51,7 @@ lastTab = 0
 openIndexes = [""]
 progressChars = False
 countSpaces = True
+countCharMode = False
 autoSave = False
 autoSaveDelay = 5
 autoSaveNoChanges = True

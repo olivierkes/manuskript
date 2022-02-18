@@ -253,7 +253,6 @@ class BasicDictionary:
         with gzip.open(customPath, "wt") as f:
             f.write(json.dumps(list(self._customDict)))
 
-
 class EnchantDictionary(BasicDictionary):
 
     def __init__(self, name):
