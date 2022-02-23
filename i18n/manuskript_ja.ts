@@ -164,8 +164,8 @@
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="18"/>
         <source>Simplest export to plain text. Allows you to use your own markup not understood
                   by Manuskript, for example &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</source>
-        <translation type="unfinished">プレーンテキストに出力する最も簡単な設定です。
-                  &lt;a href=&apos;www.fountain.io&apos;&gt;噴水&lt;/a&gt;など、Manuskriptにはないタグを使用できます。</translation>
+        <translation>プレーンテキストに出力する最も簡単な設定です。
+                  &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;など、Manuskriptにはないタグを使用できます。</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/__init__.py" line="22"/>
@@ -746,7 +746,7 @@ YAML関連のエラーが発生した場合は、このオプションを有効�
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2028"/>
         <source>Persos</source>
-        <translation type="unfinished">人</translation>
+        <translation>人物</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2089"/>
