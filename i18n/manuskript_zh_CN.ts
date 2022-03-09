@@ -4459,7 +4459,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="251"/>
         <source>Physical</source>
-        <translation type="unfinished"></translation>
+        <translation>自然规律</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="251"/>
@@ -4474,7 +4474,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="251"/>
         <source>Astronomy</source>
-        <translation type="unfinished"></translation>
+        <translation>天体与天文</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="251"/>
