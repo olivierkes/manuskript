@@ -173,54 +173,65 @@ Pretpostavlja da su tekstovi formatirani u markdown-u.</translation>
     formats.&lt;/p&gt;
     &lt;p&gt;Website: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
     </source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;Univerzalni pretvarač dokumenta. Koristi se za pretvaranje Markdown u mnoge druge
+formate.&lt;/p&gt;
+&lt;p&gt;Web-stranica:&lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
+    </translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/PDF.py" line="19"/>
         <source>a valid LaTeX installation. Pandoc recommendations can be found on:
                      &lt;a href=&quot;https://pandoc.org/installing.html&quot;&gt;pandoc.org/installing.html&lt;/a&gt;. If you want Unicode support, you need XeLaTeX.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ispravna instalacija LaTeX. Prijedloge Pandoc-a je sada moguće pronaći:
+&lt;a href=&quot;https://pandoc.org/installing.html&quot;&gt;pandoc.org/installing.html&lt;/a&gt;. Ako želite podršku za Unicode, instalirajte
+XeLaTeX.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/plainText.py" line="10"/>
         <source>Export to markdown, using pandoc. Allows more formatting options
     than the basic manuskript exporter.</source>
-        <translation type="unfinished"></translation>
+        <translation>Izvezite dokument u markdown, koristeći pandoc. Omogućuje više opcija formatiranja
+usporedo s osnovnim manuskript izvozom.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/plainText.py" line="33"/>
         <source>LaTeX is a word processor and document markup language used to create
                                               beautiful documents.</source>
-        <translation type="unfinished"></translation>
+        <translation>LaTex je program za obradu teksta i jezik markup koji omogućuje stvaranje
+prekrasnih dokumenata.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/plainText.py" line="45"/>
         <source>The purpose of this format is to provide a way to exchange information
                                               between outliners and Internet services that can be browsed or controlled
                                               through an outliner.</source>
-        <translation type="unfinished"></translation>
+        <translation>Svrha ovog formata je da omogući izmjenu informacija
+između korisnika internetskih usluga koje
+ je moguće pretražiti.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="114"/>
         <source>Disable YAML metadata block.
 Use that if you get YAML related error.</source>
-        <translation type="unfinished"></translation>
+        <translation>Onemogućite YAML metapodatke,
+ako dobijete grešku vezanu uz YAML.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="134"/>
         <source>Convert to ePUB3</source>
-        <translation type="unfinished"></translation>
+        <translation>Pretvorite u ePUB3</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="51"/>
         <source>Could not process regular expression: 
 {}</source>
-        <translation type="unfinished"></translation>
+        <translation>Nemoguće obraditi uobičajeni izraz:
+{}</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="71"/>
         <source>Choose output fileâ¦</source>
-        <translation type="unfinished"></translation>
+        <translation>Odaerite oblik datoteke</translation>
     </message>
 </context>
 <context>
@@ -228,52 +239,52 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="14"/>
         <source>Manage Exporters</source>
-        <translation type="unfinished"></translation>
+        <translation>Upravljajte izvozima</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="21"/>
         <source>Manuskript</source>
-        <translation type="unfinished"></translation>
+        <translation>Manuskript</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="66"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Opis</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="100"/>
         <source>Offers export to</source>
-        <translation type="unfinished"></translation>
+        <translation>Omogućuje izvoz u</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="184"/>
         <source>Status</source>
-        <translation type="unfinished"></translation>
+        <translation>Status</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="190"/>
         <source>Status:</source>
-        <translation type="unfinished"></translation>
+        <translation>Status:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="210"/>
         <source>Version:</source>
-        <translation type="unfinished"></translation>
+        <translation>Inačica:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="233"/>
         <source>Path:</source>
-        <translation type="unfinished"></translation>
+        <translation>Mjesto:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="258"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="273"/>
         <source>{HelpText}</source>
-        <translation type="unfinished"></translation>
+        <translation>{HelpText}</translation>
     </message>
 </context>
 <context>
@@ -281,47 +292,47 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="14"/>
         <source>Frequency Analyzer</source>
-        <translation type="unfinished"></translation>
+        <translation>Analiza učestalosti</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="24"/>
         <source>Word frequency</source>
-        <translation type="unfinished"></translation>
+        <translation>Učestalost riječi</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="37"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Postavke</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="49"/>
         <source>Minimum size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Minimalna veličina:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="63"/>
         <source>Exclude words (comma separated):</source>
-        <translation type="unfinished"></translation>
+        <translation>Izdvojite riječi (odvojite svaku zarezom):</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="156"/>
         <source>Analyze</source>
-        <translation type="unfinished"></translation>
+        <translation>Analiziraj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="107"/>
         <source>Phrase frequency</source>
-        <translation type="unfinished"></translation>
+        <translation>Učestalost izraza</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="115"/>
         <source>Number of words: from</source>
-        <translation type="unfinished"></translation>
+        <translation>Broj riječi: od</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.ui" line="129"/>
         <source>to</source>
-        <translation type="unfinished"></translation>
+        <translation>do</translation>
     </message>
 </context>
 <context>
@@ -329,19 +340,21 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/importer/markdownImporter.py" line="175"/>
         <source>Markdown import</source>
-        <translation type="unfinished"></translation>
+        <translation>Uvoz markdown</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/markdownImporter.py" line="179"/>
         <source>&lt;b&gt;Info:&lt;/b&gt; A very simple
                         parser that will go through a markdown document and
                         create items for each titles.&lt;br/&gt;&amp;nbsp;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;O:&lt;/b&gt;Vrlo jednostavan
+program koji za vas skenira markdown dokument 
+i stvara oznake za svaki naslov.&lt;br/&gt;&amp;nbsp;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="96"/>
         <source>Folder import</source>
-        <translation type="unfinished"></translation>
+        <translation>Uvoz mape</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="100"/>
@@ -350,47 +363,51 @@ Use that if you get YAML related error.</source>
                         plaintext documents within (you chose which ones by extension)
                         are added as scene.&lt;/p&gt;
                         &lt;p&gt;Only text files are supported (not images, binary or others).&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;&lt;b&gt;O:&lt;/b&gt; Uvozi cjelovit
+direktorij. Mape su dodane kao mape, a
+jednostavni tekstovi unutar mapa (vi određujete koji tako da odaberete točnu ekstenziju)
+su dodani kao scena.&lt;/p&gt;
+&lt;p&gt;Isključivo tekstovi su podržani (ne slike, binarni i ostalo).&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="107"/>
         <source>Include only those extensions:</source>
-        <translation type="unfinished"></translation>
+        <translation>Uključi samo ove ekstenzije:</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="107"/>
         <source>Comma separated values</source>
-        <translation type="unfinished"></translation>
+        <translation>Vrijednosti odvojene zarezom</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="112"/>
         <source>Sort items by name</source>
-        <translation type="unfinished"></translation>
+        <translation>Rasporedi datoteke po imenu</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="116"/>
         <source>Import folder then files</source>
-        <translation type="unfinished"></translation>
+        <translation>Uvezi mapu, a nakon toga datoteke</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/opmlImporter.py" line="64"/>
         <source>OPML Import</source>
-        <translation type="unfinished"></translation>
+        <translation>OPML uvoz</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/opmlImporter.py" line="36"/>
         <source>File open failed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nemoguće otvoriti datoteku.</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/opmlImporter.py" line="64"/>
         <source>This does not appear to be a valid OPML file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ovo nije valjana OPML datoteka.</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="57"/>
         <source>Pandoc import</source>
-        <translation type="unfinished"></translation>
+        <translation>Pandoc uvoz</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="60"/>
@@ -400,17 +417,21 @@ Use that if you get YAML related error.</source>
                         then it will be imported in manuskript. One or the other
                         might give better result depending on your document.
                         &lt;br/&gt;&amp;nbsp;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;O:&lt;/b&gt; Manuskript podržava
+uvoz sa strane markdown ili OPML. Pandoc
+će pretvoriti vašu datoteku u jedno ili drugi (vidi opcije ispod), te
+će je uvesti u manuskript. Koji format će vam dati bolji rezultat ovisi o vašem dokumentu.
+&lt;br/&gt;&amp;nbsp;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="68"/>
         <source>Import using:</source>
-        <translation type="unfinished"></translation>
+        <translation>Uvezi pomoću:</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="72"/>
         <source>Wrap lines:</source>
-        <translation type="unfinished"></translation>
+        <translation>Suzite retke:</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/pandocImporters.py" line="72"/>
@@ -420,32 +441,37 @@ Use that if you get YAML related error.</source>
                         &lt;b&gt;none&lt;/b&gt;: no line wrap.&lt;br&gt;
                         &lt;b&gt;preserve&lt;/b&gt;: tries to preserves line wrap from the
                         original document.&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;Želite li da pandoc stvori
+uredne / nesemantičke uvlake između redaka?&lt;/p&gt;&lt;p&gt;
+&lt;b&gt;automatski&lt;b&gt;: uvlači nakon 72 karaktera.&lt;b&gt;
+&lt;b&gt;ništa&lt;b&gt;: bez uvlake.&lt;b&gt;
+&lt;b&gt;sačuvaj&lt;b&gt;: pokušava sačuvati uvlake iz
+originalnog dokumenta.&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/mindMapImporter.py" line="55"/>
         <source>Mind Map Import</source>
-        <translation type="unfinished"></translation>
+        <translation>Uvoz Umne Mape</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/mindMapImporter.py" line="55"/>
         <source>This does not appear to be a valid Mind Map file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ovo nije valjana datoteka Umne Mape.</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/mindMapImporter.py" line="70"/>
         <source>Mind Map import</source>
-        <translation type="unfinished"></translation>
+        <translation>Uvoz Umne Mape</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/mindMapImporter.py" line="73"/>
         <source>Import tip as:</source>
-        <translation type="unfinished"></translation>
+        <translation>Uvezi kao:</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/mindMapImporter.py" line="89"/>
         <source>Untitled</source>
-        <translation type="unfinished"></translation>
+        <translation>Neimenovano</translation>
     </message>
 </context>
 <context>
@@ -453,7 +479,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/MDEditCompleter.py" line="73"/>
         <source>Insert reference</source>
-        <translation type="unfinished"></translation>
+        <translation>Dodaj referencu</translation>
     </message>
 </context>
 <context>
@@ -461,1099 +487,1100 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1647"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>Općenito</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="169"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>Naslov</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="179"/>
         <source>Subtitle</source>
-        <translation type="unfinished"></translation>
+        <translation>Podnaslov</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="189"/>
         <source>Series</source>
-        <translation type="unfinished"></translation>
+        <translation>Serija</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="199"/>
         <source>Volume</source>
-        <translation type="unfinished"></translation>
+        <translation>Broj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="226"/>
         <source>Genre</source>
-        <translation type="unfinished"></translation>
+        <translation>Žanr</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="236"/>
         <source>License</source>
-        <translation type="unfinished"></translation>
+        <translation>Licenca</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="249"/>
         <source>Author</source>
-        <translation type="unfinished"></translation>
+        <translation>Autor</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1656"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Ime</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="277"/>
         <source>Email</source>
-        <translation type="unfinished"></translation>
+        <translation>Email</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1442"/>
         <source>Summary</source>
-        <translation type="unfinished"></translation>
+        <translation>Sažetak</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="322"/>
         <source>Situation:</source>
-        <translation type="unfinished"></translation>
+        <translation>Situacija:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1357"/>
         <source>Summary:</source>
-        <translation type="unfinished"></translation>
+        <translation>Sažetak:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="345"/>
         <source>One sentence</source>
-        <translation type="unfinished"></translation>
+        <translation>Jedna rečenica</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1455"/>
         <source>One paragraph</source>
-        <translation type="unfinished"></translation>
+        <translation>Jedan paragraf</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1460"/>
         <source>One page</source>
-        <translation type="unfinished"></translation>
+        <translation>Jedna stranica</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1465"/>
         <source>Full</source>
-        <translation type="unfinished"></translation>
+        <translation>Cjelovit</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="420"/>
         <source>One sentence summary</source>
-        <translation type="unfinished"></translation>
+        <translation>Sažetak u jednoj rečenici</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="502"/>
         <source>One paragraph summary</source>
-        <translation type="unfinished"></translation>
+        <translation>Sažetak u jednom paragrafu</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="540"/>
         <source>Expand each sentence of your one paragraph summary to a paragraph</source>
-        <translation type="unfinished"></translation>
+        <translation>Proširite svaku rečenicu svog paragrafa u još jedan paragraf</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="565"/>
         <source>One page summary</source>
-        <translation type="unfinished"></translation>
+        <translation>Sažetak u jednoj stranici</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="590"/>
         <source>Full summary</source>
-        <translation type="unfinished"></translation>
+        <translation>Cjelovit sažetak</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1094"/>
         <source>Next</source>
-        <translation type="unfinished"></translation>
+        <translation>Sljedeće</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="676"/>
         <source>What if...?</source>
-        <translation type="unfinished"></translation>
+        <translation>Što bi bilo kad bi bilo...?</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="688"/>
         <source>Characters</source>
-        <translation type="unfinished"></translation>
+        <translation>Likovi</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="713"/>
         <source>Names</source>
-        <translation type="unfinished"></translation>
+        <translation>Imena</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1607"/>
         <source>Filter</source>
-        <translation type="unfinished"></translation>
+        <translation>Filtar</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1203"/>
         <source>Basic info</source>
-        <translation type="unfinished"></translation>
+        <translation>Osnovne informacije</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1222"/>
         <source>Importance</source>
-        <translation type="unfinished"></translation>
+        <translation>Važnost</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="880"/>
         <source>Motivation</source>
-        <translation type="unfinished"></translation>
+        <translation>Motivacija</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="890"/>
         <source>Goal</source>
-        <translation type="unfinished"></translation>
+        <translation>Cilj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="900"/>
         <source>Conflict</source>
-        <translation type="unfinished"></translation>
+        <translation>Sukob</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="910"/>
         <source>Epiphany</source>
-        <translation type="unfinished"></translation>
+        <translation>Prosvjetljenje</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="920"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One sentence&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Sažetaku u&lt;br/&gt;jednoj rečenici&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="930"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One paragraph&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Sažetak u&lt;br/&gt;jednom pragrafu&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1021"/>
         <source>Notes</source>
-        <translation type="unfinished"></translation>
+        <translation>Bilješke</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1031"/>
         <source>Detailed info</source>
-        <translation type="unfinished"></translation>
+        <translation>Detaljan opis</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2041"/>
         <source>Plots</source>
-        <translation type="unfinished"></translation>
+        <translation>Fabule</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1212"/>
         <source>Plot</source>
-        <translation type="unfinished"></translation>
+        <translation>Fabula</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1229"/>
         <source>Character(s)</source>
-        <translation type="unfinished"></translation>
+        <translation>Lik(ovi)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1666"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Opis</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1243"/>
         <source>Result</source>
-        <translation type="unfinished"></translation>
+        <translation>Rezultat</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1335"/>
         <source>Resolution steps</source>
-        <translation type="unfinished"></translation>
+        <translation>Koraci raspleta</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2065"/>
         <source>World</source>
-        <translation type="unfinished"></translation>
+        <translation>Svijet</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1620"/>
         <source>Populates with empty data</source>
-        <translation type="unfinished"></translation>
+        <translation>Ispunjeno praznim informacijama</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1677"/>
         <source>More</source>
-        <translation type="unfinished"></translation>
+        <translation>Više</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1686"/>
         <source>Source of passion</source>
-        <translation type="unfinished"></translation>
+        <translation>Izvor strasti</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1696"/>
         <source>Source of conflict</source>
-        <translation type="unfinished"></translation>
+        <translation>Uzrok sukoba</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1554"/>
         <source>Outline</source>
-        <translation type="unfinished"></translation>
+        <translation>Obris</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1874"/>
         <source>Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Uređivač</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2005"/>
         <source>Debug</source>
-        <translation type="unfinished"></translation>
+        <translation>Debug</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2018"/>
         <source>FlatData</source>
-        <translation type="unfinished"></translation>
+        <translation>Prazni podatci</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2028"/>
         <source>Persos</source>
-        <translation type="unfinished"></translation>
+        <translation>persos</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2089"/>
         <source>Labels</source>
-        <translation type="unfinished"></translation>
+        <translation>Oznake</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2123"/>
         <source>&amp;File</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Dokument</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2127"/>
         <source>&amp;Recent</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Nedavno</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2147"/>
         <source>&amp;Help</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Pomoć</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2158"/>
         <source>&amp;Tools</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Alati</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2165"/>
         <source>&amp;Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Uredi</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2221"/>
         <source>&amp;View</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Pregled</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2225"/>
         <source>&amp;Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Način</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2254"/>
         <source>&amp;Cheat sheet</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Šalabahter</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2288"/>
         <source>Sea&amp;rch</source>
-        <translation type="unfinished"></translation>
+        <translation>Pre&amp;traži</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2325"/>
         <source>&amp;Navigation</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Navigacija</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2360"/>
         <source>&amp;Open</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Otvori</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2363"/>
         <source>Ctrl+O</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+O</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2372"/>
         <source>&amp;Save</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Spremi</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2375"/>
         <source>Ctrl+S</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+S</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2384"/>
         <source>Sa&amp;ve as...</source>
-        <translation type="unfinished"></translation>
+        <translation>Spre&amp;mi kao...</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2387"/>
         <source>Ctrl+Shift+S</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Shift+S</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2396"/>
         <source>&amp;Quit</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Izađi</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2399"/>
         <source>Ctrl+Q</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Q</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2414"/>
         <source>&amp;Show help texts</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Prikaži pomoćne tekstove</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2417"/>
         <source>Ctrl+Shift+B</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Shift+B</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2432"/>
         <source>&amp;Spellcheck</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Provjera pravopisa</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2435"/>
         <source>F9</source>
-        <translation type="unfinished"></translation>
+        <translation>F9</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2444"/>
         <source>&amp;Labels...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Oznake...</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2453"/>
         <source>&amp;Status...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Status...</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1552"/>
         <source>Tree</source>
-        <translation type="unfinished"></translation>
+        <translation>Stablo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2469"/>
         <source>&amp;Simple</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Jednostavno</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2477"/>
         <source>&amp;Fiction</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Fikcija</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1553"/>
         <source>Index cards</source>
-        <translation type="unfinished"></translation>
+        <translation>Indeks kartice</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2496"/>
         <source>S&amp;ettings</source>
-        <translation type="unfinished"></translation>
+        <translation>Po&amp;stavke</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2499"/>
         <source>F8</source>
-        <translation type="unfinished"></translation>
+        <translation>F8</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2508"/>
         <source>&amp;Close project</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Zatvori projekt</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2517"/>
         <source>Co&amp;mpile</source>
-        <translation type="unfinished"></translation>
+        <translation>Sa&amp;stavi</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2520"/>
         <source>F6</source>
-        <translation type="unfinished"></translation>
+        <translation>F6</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2525"/>
         <source>&amp;Frequency Analyzer</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Analiza učestalosti</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="154"/>
         <source>Book information</source>
-        <translation type="unfinished"></translation>
+        <translation>O knjizi</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2534"/>
         <source>&amp;About</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;O</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2537"/>
         <source>About Manuskript</source>
-        <translation type="unfinished"></translation>
+        <translation>O Manuskriptu</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="746"/>
         <source>Manuskript</source>
-        <translation type="unfinished"></translation>
+        <translation>Manuskript</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="872"/>
         <source>Project {} saved.</source>
-        <translation type="unfinished"></translation>
+        <translation>Projekt {} spremljen.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="876"/>
         <source>WARNING: Project {} not saved.</source>
-        <translation type="unfinished"></translation>
+        <translation>UPOZORENJE: Projekt {} nije spremljen.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="896"/>
         <source>Project {} loaded.</source>
-        <translation type="unfinished"></translation>
+        <translation>Projekt {} učitan.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="902"/>
         <source>Project {} loaded with some errors.</source>
-        <translation type="unfinished"></translation>
+        <translation>Projekt {} je učitan s nekim greškama.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1280"/>
         <source> (~{} pages)</source>
-        <translation type="unfinished"></translation>
+        <translation> (~{} stranice)</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1283"/>
         <source>Words: {}{}</source>
-        <translation type="unfinished"></translation>
+        <translation>Riječi: {}{}</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1291"/>
         <source>Book summary</source>
-        <translation type="unfinished"></translation>
+        <translation>Sažetak knjige</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1292"/>
         <source>Project tree</source>
-        <translation type="unfinished"></translation>
+        <translation>Razvoj projekta</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1293"/>
         <source>Metadata</source>
-        <translation type="unfinished"></translation>
+        <translation>Meta podaci</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1294"/>
         <source>Story line</source>
-        <translation type="unfinished"></translation>
+        <translation>Radnja priče</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1359"/>
         <source>Enter information about your book, and yourself.</source>
-        <translation type="unfinished"></translation>
+        <translation>Unesite informacije o knjizi i o sebi.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1362"/>
         <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous
                      evil wizard wasn&apos;t able to kill a baby?&apos; (Harry Potter)</source>
-        <translation type="unfinished"></translation>
+        <translation>Uobičajena situacija, u obliku &apos;Što bi bilo kad bi bilo...?&apos; pitanja. Primjer: &apos;Što bi bilo kada opasni i zao čarobnjak ne bi moga ubiti bebu?&apos; (Harry Potter)</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1367"/>
         <source>Take time to think about a one sentence (~50 words) summary of your book. Then expand it to
                      a paragraph, then to a page, then to a full summary.</source>
-        <translation type="unfinished"></translation>
+        <translation>Uzmite si vremena i promislite o jednoj rečenici (~50 riječi) kao sažetku svoje knjige. Onda tu rečenicu proširite
+u paragraf pa u jednu stranicu i na kraju u jedan cjelovit sažetak.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1372"/>
         <source>Create your characters.</source>
-        <translation type="unfinished"></translation>
+        <translation>Stvorite likove.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1375"/>
         <source>Develop plots.</source>
-        <translation type="unfinished"></translation>
+        <translation>Razradite fabulu.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1378"/>
         <source>Build worlds.  Create hierarchy of broad categories down to specific details.</source>
-        <translation type="unfinished"></translation>
+        <translation>Gradite svjetove. Napravite hijerarhiju u svim mogućim kategorijama , do same njezine srži.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1381"/>
         <source>Create the outline of your masterpiece.</source>
-        <translation type="unfinished"></translation>
+        <translation>Stvorite obris svog remek-djela.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1384"/>
         <source>Write.</source>
-        <translation type="unfinished"></translation>
+        <translation>Pišite.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1387"/>
         <source>Debug info. Sometimes useful.</source>
-        <translation type="unfinished"></translation>
+        <translation>Informacije o Debug. Ponekad može biti korisno.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1401"/>
         <source>Dictionary</source>
-        <translation type="unfinished"></translation>
+        <translation>Rječnik</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1544"/>
         <source>Nothing</source>
-        <translation type="unfinished"></translation>
+        <translation>Ništa</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1545"/>
         <source>POV</source>
-        <translation type="unfinished"></translation>
+        <translation>Perspektiva</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1546"/>
         <source>Label</source>
-        <translation type="unfinished"></translation>
+        <translation>Oznaka</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1547"/>
         <source>Progress</source>
-        <translation type="unfinished"></translation>
+        <translation>Napredak</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1548"/>
         <source>Compile</source>
-        <translation type="unfinished"></translation>
+        <translation>Sastavi</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1571"/>
         <source>Icon color</source>
-        <translation type="unfinished"></translation>
+        <translation>Boja ikone</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1572"/>
         <source>Text color</source>
-        <translation type="unfinished"></translation>
+        <translation>Boja teksta</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1573"/>
         <source>Background color</source>
-        <translation type="unfinished"></translation>
+        <translation>Boja pozadine</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1564"/>
         <source>Icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Ikona</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1565"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekst</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1566"/>
         <source>Background</source>
-        <translation type="unfinished"></translation>
+        <translation>Pozadina</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1567"/>
         <source>Border</source>
-        <translation type="unfinished"></translation>
+        <translation>Obrub</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1568"/>
         <source>Corner</source>
-        <translation type="unfinished"></translation>
+        <translation>Kut</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1371"/>
         <source>Add plot step</source>
-        <translation type="unfinished"></translation>
+        <translation>Dodajte stepenicu fabuli</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2546"/>
         <source>&amp;Importâ¦</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Uveziâ¦</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2549"/>
         <source>F7</source>
-        <translation type="unfinished"></translation>
+        <translation>F7</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2558"/>
         <source>&amp;Copy</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Kopiraj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2561"/>
         <source>Ctrl+C</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+C</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2570"/>
         <source>C&amp;ut</source>
-        <translation type="unfinished"></translation>
+        <translation>Iz&amp;reži</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2573"/>
         <source>Ctrl+X</source>
-        <translation type="unfinished"></translation>
+        <translation>CTRL+X</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2582"/>
         <source>&amp;Paste</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Zalijepi</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2585"/>
         <source>Ctrl+V</source>
-        <translation type="unfinished"></translation>
+        <translation>CTRL+V</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2594"/>
         <source>&amp;Splitâ¦</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Razdvojiâ¦</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2597"/>
         <source>Ctrl+Shift+K</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Shift+K</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2606"/>
         <source>Sp&amp;lit at cursor</source>
-        <translation type="unfinished"></translation>
+        <translation>Raz&amp;dvoji na mjestu pokazivača</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2609"/>
         <source>Ctrl+K</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+K</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2621"/>
         <source>Ctrl+M</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+M</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2824"/>
         <source>Ctrl+D</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+D</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2642"/>
         <source>Del</source>
-        <translation type="unfinished"></translation>
+        <translation>Del</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2651"/>
         <source>&amp;Move Up</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Pomakni Gore</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2654"/>
         <source>Ctrl+Shift+Up</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Shift+Up</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2663"/>
         <source>M&amp;ove Down</source>
-        <translation type="unfinished"></translation>
+        <translation>P&amp;omakni Dolje</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2666"/>
         <source>Ctrl+Shift+Down</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Shift+Down</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2630"/>
         <source>Dupl&amp;icate</source>
-        <translation type="unfinished"></translation>
+        <translation>Dupl&amp;iciraj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2639"/>
         <source>&amp;Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Obriši</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2675"/>
         <source>&amp;Rename</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Preimenuj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2678"/>
         <source>F2</source>
-        <translation type="unfinished"></translation>
+        <translation>F2</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2235"/>
         <source>Organi&amp;ze</source>
-        <translation type="unfinished"></translation>
+        <translation>Organi&amp;ziraj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2618"/>
         <source>M&amp;erge</source>
-        <translation type="unfinished"></translation>
+        <translation>S&amp;topi</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2169"/>
         <source>&amp;Format</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Formatiraj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2177"/>
         <source>&amp;Header</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Uzglavlje</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2683"/>
         <source>&amp;Level 1 (setext)</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Razina 1 (setekst)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2686"/>
         <source>Ctrl+Alt+1</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Alt+1</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2691"/>
         <source>Level &amp;2</source>
-        <translation type="unfinished"></translation>
+        <translation>Razina &amp;2</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2694"/>
         <source>Ctrl+Alt+2</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Alt+2</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2699"/>
         <source>Level &amp;1 (atx)</source>
-        <translation type="unfinished"></translation>
+        <translation>Razina &amp;1 (atx)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2702"/>
         <source>Ctrl+1</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+1</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2707"/>
         <source>L&amp;evel 2</source>
-        <translation type="unfinished"></translation>
+        <translation>R&amp;azina 2</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2710"/>
         <source>Ctrl+2</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+1</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2715"/>
         <source>Level &amp;3</source>
-        <translation type="unfinished"></translation>
+        <translation>Razina &amp;3</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2718"/>
         <source>Ctrl+3</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+1</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2723"/>
         <source>Level &amp;4</source>
-        <translation type="unfinished"></translation>
+        <translation>Razina &amp;4</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2726"/>
         <source>Ctrl+4</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+4</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2731"/>
         <source>Level &amp;5</source>
-        <translation type="unfinished"></translation>
+        <translation>Razina &amp;5</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2734"/>
         <source>Ctrl+5</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+5</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2739"/>
         <source>Level &amp;6</source>
-        <translation type="unfinished"></translation>
+        <translation>Razina &amp;6</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2742"/>
         <source>Ctrl+6</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+6</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2751"/>
         <source>&amp;Bold</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Podebljano</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2754"/>
         <source>Ctrl+B</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+B</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2763"/>
         <source>&amp;Italic</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Kurziv</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2766"/>
         <source>Ctrl+I</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+I</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2775"/>
         <source>&amp;Strike</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Precrtano</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2780"/>
         <source>&amp;Verbatim</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Doslovno</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2785"/>
         <source>Su&amp;perscript</source>
-        <translation type="unfinished"></translation>
+        <translation>Su&amp;perskripta</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2788"/>
         <source>Ctrl++</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl++</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2793"/>
         <source>Subsc&amp;ript</source>
-        <translation type="unfinished"></translation>
+        <translation>Sub&amp;skripta</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2796"/>
         <source>Ctrl+-</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+-</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2801"/>
         <source>Co&amp;mment block</source>
-        <translation type="unfinished"></translation>
+        <translation>Po&amp;lje za komentar</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2804"/>
         <source>Ctrl+Shift+C</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Shift+C</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2813"/>
         <source>Clear &amp;formats</source>
-        <translation type="unfinished"></translation>
+        <translation>Očisti &amp;formati</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2816"/>
         <source>Ctrl+0</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+0</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2821"/>
         <source>&amp;Comment line(s)</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Red(ovi) komentara</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2829"/>
         <source>&amp;Ordered list</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Poredana lista</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2838"/>
         <source>&amp;Unordered list</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Neporedana lista</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2843"/>
         <source>B&amp;lockquote</source>
-        <translation type="unfinished"></translation>
+        <translation>B&amp;lokiraj citat</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1388"/>
         <source>Remove selected plot step(s)</source>
-        <translation type="unfinished"></translation>
+        <translation>Obriši odabrane/i korak(e) razvoja fabule</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="594"/>
         <source>The file {} does not exist. Has it been moved or deleted?</source>
-        <translation type="unfinished"></translation>
+        <translation>Datoteka {} ne postoji. Možda ste je premjestili ili izbrisali?</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1415"/>
         <source>Install {}{} to use spellcheck</source>
-        <translation type="unfinished"></translation>
+        <translation>Instalirajte {}{} kako biste koristili provjeru pravopisa</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1457"/>
         <source>{} has no installed dictionaries</source>
-        <translation type="unfinished"></translation>
+        <translation>{} nema instaliranih rječnika</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1478"/>
         <source>{}{} is not installed</source>
-        <translation type="unfinished"></translation>
+        <translation>{}{} nije instaliran</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="689"/>
         <source>Save project?</source>
-        <translation type="unfinished"></translation>
+        <translation>Spremiti projekt?</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="689"/>
         <source>Save changes to project &quot;{}&quot; before closing?</source>
-        <translation type="unfinished"></translation>
+        <translation>Spremiti promjene na projektu &quot;{}&quot; prije zatvaranja?</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="689"/>
         <source>Your changes will be lost if you don&apos;t save them.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vaše promjene u protivnom neće biti spremljene.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1671"/>
         <source>PyQt / Qt versions 5.11 and 5.12 are known to cause a crash which might result in a loss of data.</source>
-        <translation type="unfinished"></translation>
+        <translation>PyQt / Qt inačice 5.11 i 5.12 mogu uzrokovati pad programa što može uzrokovati gubitak podataka.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1672"/>
         <source>PyQt {} and Qt {} are in use.</source>
-        <translation type="unfinished"></translation>
+        <translation>PyQt {} i Qt {} se trenutačno koriste.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1678"/>
         <source>Proceed with import at your own risk</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastavite s uvozom na svoj vlastiti rizik</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="862"/>
         <source>Allow POV</source>
-        <translation type="unfinished"></translation>
+        <translation>Omogući perspektivu</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2852"/>
         <source>Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Traži</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2855"/>
         <source>Ctrl+F</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+F</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2860"/>
         <source>&amp;Technical Support</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Tehnička Podrška</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2863"/>
         <source>How to obtain technical support for Manuskript.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kako dobiti tehničku podršku za Manuskript.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2866"/>
         <source>F1</source>
-        <translation type="unfinished"></translation>
+        <translation>F1</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2871"/>
         <source>&amp;Locate log file...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Pronađi log datoteku...</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2874"/>
         <source>Locate log file</source>
-        <translation type="unfinished"></translation>
+        <translation>Pronađi log datoteku</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2877"/>
         <source>Locate the diagnostic log file used for this session.</source>
-        <translation type="unfinished"></translation>
+        <translation>Pronađi log datoteku dijagnoze korištene tijekom ove sesije.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2880"/>
         <source>Shift+F1</source>
-        <translation type="unfinished"></translation>
+        <translation>Shift+F1</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1193"/>
         <source>Sorry!</source>
-        <translation type="unfinished"></translation>
+        <translation>Ispričavamo se!</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1193"/>
         <source>This session is not being logged.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ova sesija nije praćena.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1202"/>
         <source>A log file is a Work in Progress!</source>
-        <translation type="unfinished"></translation>
+        <translation>Log datoteka je Rad u Tijeku!</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1202"/>
         <source>The log file &quot;{}&quot; will continue to be written to until Manuskript is closed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Log datoteka &quot;{}&quot; će biti pisana sve dok se Manuskript ne zatvori.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1202"/>
         <source>It will now be displayed in your file manager, but is of limited use until you close Manuskript.</source>
-        <translation type="unfinished"></translation>
+        <translation>Biti će trenutačno prikazana u vašem eksploreru za datoteke, ali je njegovo korištenje ograničeno sve dok ne zatvorite Manuskript.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1218"/>
         <source>Error!</source>
-        <translation type="unfinished"></translation>
+        <translation>Greška!</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1218"/>
         <source>An error was encountered while trying to show the log file below in your file manager.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dogodila se greška prilikom pokušaja prikazivanja log datoteke u vašem eksploreru za datoteke.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="45"/>
         <source>F3</source>
-        <translation type="unfinished"></translation>
+        <translation>F3</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="46"/>
         <source>Shift+F3</source>
-        <translation type="unfinished"></translation>
+        <translation>Shift+F3</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="50"/>
         <source>Situation</source>
-        <translation type="unfinished"></translation>
+        <translation>Situacija</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="51"/>
         <source>Status</source>
-        <translation type="unfinished"></translation>
+        <translation>Status</translation>
     </message>
 </context>
 <context>
@@ -1561,7 +1588,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/search.py" line="40"/>
         <source>No results found</source>
-        <translation type="unfinished"></translation>
+        <translation>Nema pronađenih rezultata</translation>
     </message>
 </context>
 <context>
@@ -1569,97 +1596,97 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="14"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Postavke</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="24"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>Općenito</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="526"/>
         <source>Revisions</source>
-        <translation type="unfinished"></translation>
+        <translation>Ispravljanja</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="34"/>
         <source>Views</source>
-        <translation type="unfinished"></translation>
+        <translation>Pregledi</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2891"/>
         <source>Labels</source>
-        <translation type="unfinished"></translation>
+        <translation>Oznake</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3023"/>
         <source>Status</source>
-        <translation type="unfinished"></translation>
+        <translation>Status</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3097"/>
         <source>Fullscreen</source>
-        <translation type="unfinished"></translation>
+        <translation>Cijeli zaslon</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="82"/>
         <source>General settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Općenite postavke</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="98"/>
         <source>Application settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Postavke aplikacije</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="247"/>
         <source>Loading</source>
-        <translation type="unfinished"></translation>
+        <translation>Učitavanje</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="259"/>
         <source>Automatically load last project on startup</source>
-        <translation type="unfinished"></translation>
+        <translation>Odmah učitaj zadnje spremljen projekt prilikom pokretanja</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="278"/>
         <source>Saving</source>
-        <translation type="unfinished"></translation>
+        <translation>Spremanje</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="292"/>
         <source>Automatically save every</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatski spremi svakih</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="339"/>
         <source>minutes.</source>
-        <translation type="unfinished"></translation>
+        <translation>minuta.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="375"/>
         <source>If no changes during</source>
-        <translation type="unfinished"></translation>
+        <translation>Ako nije bilo promjena tijekom</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="422"/>
         <source>seconds.</source>
-        <translation type="unfinished"></translation>
+        <translation>sekunda.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="456"/>
         <source>Save on project close</source>
-        <translation type="unfinished"></translation>
+        <translation>Spremi projekt pri zatvaranju</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="472"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If you check this option, your project will be saved as one single file. Easier to copy or backup, but does not allow collaborative editing, or versioning.&lt;br/&gt;If this is unchecked, your project will be saved as a folder containing many small files.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ako odaberete ovu opciju, vaš projekt će biti spremljen kao samostalna datoteka. Lakše ju je kopirati i sigurnosno kopirati, ali je onemogućeno zajedničko korištenje.&lt;br/&gt;Ako ovo nije odabrano, vaš projekt će biti spremljen kao mapa koja sadrži puno malih datoteka.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="478"/>
         <source>Save to one single file</source>
-        <translation type="unfinished"></translation>
+        <translation>Spremi kao samostalnu datoteku</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="536"/>
