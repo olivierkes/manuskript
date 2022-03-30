@@ -63,6 +63,6 @@ def loadProject(project):
     LOGGER.info("Detected file format version: {}. Zip: {}.".format(version, isZip))
 
     if version == 0:
-        v0.loadProject(project)
+        return v0.loadProject(project)
     else:
-        v1.loadProject(project, zip=isZip)
+        return v1.loadProject(project, zip=isZip)
