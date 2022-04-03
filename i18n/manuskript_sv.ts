@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
 <TS version="2.1" language="sv" sourcelanguage="en">
 <context>
@@ -10,13 +10,13 @@
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="18"/>
-        <source>Basic HTML output using the Python module 'markdown'.</source>
-        <translation type="unfinished">Grundläggande HTML-export via python-modulen 'markdown'.</translation>
+        <source>Basic HTML output using the Python module &apos;markdown&apos;.</source>
+        <translation>Grundläggande HTML-utmatning genom användning av python-modulen &apos;markdown&apos;.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="19"/>
-        <source>Python module 'markdown'.</source>
-        <translation type="unfinished">python-modulen 'markdown'.</translation>
+        <source>Python module &apos;markdown&apos;.</source>
+        <translation>Python-modulen &apos;markdown&apos;.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="54"/>
@@ -53,9 +53,9 @@
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="18"/>
         <source>Simplest export to plain text. Allows you to use your own markup not understood
-                  by Manuskript, for example &lt;a href='www.fountain.io'&gt;Fountain&lt;/a&gt;.</source>
+                  by Manuskript, for example &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</source>
         <translation>Enkel export till ren text. Låter dig använda egna markup-format som annars
-                  inte förstås av Manuskript, t.ex. &lt;a href='www.fountain.io'&gt;Fountain&lt;/a&gt;.</translation>
+                  inte förstås av Manuskript, t.ex. &lt;a href=&apos;www.fountain.io&apos;&gt;Fountain&lt;/a&gt;.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/HTML.py" line="13"/>
@@ -66,11 +66,11 @@
         <location filename="../manuskript/exporter/pandoc/__init__.py" line="22"/>
         <source>&lt;p&gt;A universal document converter. Can be used to convert Markdown to a wide range of other
     formats.&lt;/p&gt;
-    &lt;p&gt;Website: &lt;a href="http://www.pandoc.org"&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;Website: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
     </source>
         <translation>&lt;p&gt;Universellt konverteringsverktyg för dokument. Kan användas för att konvertera markdown till många olika
     format.&lt;/p&gt;
-    &lt;p&gt;Hemsida: &lt;a href="http://www.pandoc.org"&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;Hemsida: &lt;a href=&quot;http://www.pandoc.org&quot;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
     </translation>
     </message>
     <message>
@@ -80,7 +80,7 @@
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/outputFormats.py" line="10"/>
-        <source>Books that don't kill trees.</source>
+        <source>Books that don&apos;t kill trees.</source>
         <translation>Böcker som inte mördar träd.</translation>
     </message>
     <message>
@@ -96,14 +96,14 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/PDF.py" line="18"/>
         <source>Needs LaTeX to be installed.</source>
-        <translation type="unfinished">Kräver att LaTex är installerat.</translation>
+        <translation>Kräver att LaTeX är installerat.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/PDF.py" line="19"/>
         <source>a valid LaTeX installation. Pandoc recommendations can be found on:
-                     &lt;a href="https://pandoc.org/installing.html"&gt;pandoc.org/installing.html&lt;/a&gt;. If you want Unicode support, you need XeLaTeX.</source>
+                     &lt;a href=&quot;https://pandoc.org/installing.html&quot;&gt;pandoc.org/installing.html&lt;/a&gt;. If you want Unicode support, you need XeLaTeX.</source>
         <translation>en giltig LaTex-installation. Pandoc-rekommendationer kan hittas här:
-                     &lt;a href="http://pandoc.org/installing.html"&gt;pandoc.org/installing.html&lt;/a&gt;. Vill du ha stöd för Unicode så behöver du XeLaTeX.</translation>
+                     &lt;a href=&quot;http://pandoc.org/installing.html&quot;&gt;pandoc.org/installing.html&lt;/a&gt;. Vill du ha stöd för Unicode så behöver du XeLaTeX.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/plainText.py" line="10"/>
@@ -229,7 +229,7 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="71"/>
         <source>Choose output fileâ¦</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -650,13 +650,13 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="920"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align="right"&gt;One sentence&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align="right"&gt;Sammanfattning i en&lt;br/&gt;mening&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One sentence&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Sammanfattning i en&lt;br/&gt;mening&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="930"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align="right"&gt;One paragraph&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align="right"&gt;Sammanfattning i ett&lt;br/&gt;stycke&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One paragraph&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Sammanfattning i ett&lt;br/&gt;stycke&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1222"/>
@@ -1000,10 +1000,10 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1362"/>
-        <source>The basic situation, in the form of a 'What if...?' question. Ex: 'What if the most dangerous
-                     evil wizard wasn't able to kill a baby?' (Harry Potter)</source>
-        <translation>Den grundläggande situationen i form av en "Tänk om...?"-mening. Exempel: 'Tänk om världens farligaste
-                     onda trollkarl misslyckades med att döda en baby?' (Harry Potter)</translation>
+        <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous
+                     evil wizard wasn&apos;t able to kill a baby?&apos; (Harry Potter)</source>
+        <translation>Den grundläggande situationen i form av en &quot;Tänk om...?&quot;-mening. Exempel: &apos;Tänk om världens farligaste
+                     onda trollkarl misslyckades med att döda en baby?&apos; (Harry Potter)</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1367"/>
@@ -1245,262 +1245,262 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2169"/>
         <source>&amp;Format</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Formatera</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2177"/>
         <source>&amp;Header</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Huvud</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2683"/>
         <source>&amp;Level 1 (setext)</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Nivå 1 (setext)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2686"/>
         <source>Ctrl+Alt+1</source>
-        <translation type="unfinished"/>
+        <translation>Ctrl+Alt+1</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2691"/>
         <source>Level &amp;2</source>
-        <translation type="unfinished"/>
+        <translation>Nivå &amp;2</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2694"/>
         <source>Ctrl+Alt+2</source>
-        <translation type="unfinished"/>
+        <translation>Ctrl+Alt+2</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2699"/>
         <source>Level &amp;1 (atx)</source>
-        <translation type="unfinished"/>
+        <translation>Nivå &amp;1 (atx)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2702"/>
         <source>Ctrl+1</source>
-        <translation type="unfinished"/>
+        <translation>Ctrl+1</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2707"/>
         <source>L&amp;evel 2</source>
-        <translation type="unfinished"/>
+        <translation>N&amp;ivå 2</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2710"/>
         <source>Ctrl+2</source>
-        <translation type="unfinished"/>
+        <translation>Ctrl+2</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2715"/>
         <source>Level &amp;3</source>
-        <translation type="unfinished"/>
+        <translation>Nivå &amp;3</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2718"/>
         <source>Ctrl+3</source>
-        <translation type="unfinished"/>
+        <translation>Ctrl+3</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2723"/>
         <source>Level &amp;4</source>
-        <translation type="unfinished"/>
+        <translation>Nivå &amp;4</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2726"/>
         <source>Ctrl+4</source>
-        <translation type="unfinished"/>
+        <translation>Ctrl+4</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2731"/>
         <source>Level &amp;5</source>
-        <translation type="unfinished"/>
+        <translation>Nivå &amp;5</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2734"/>
         <source>Ctrl+5</source>
-        <translation type="unfinished"/>
+        <translation>Ctrl+5</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2739"/>
         <source>Level &amp;6</source>
-        <translation type="unfinished"/>
+        <translation>Nivå &amp;6</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2742"/>
         <source>Ctrl+6</source>
-        <translation type="unfinished"/>
+        <translation>Ctrl+6</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2751"/>
         <source>&amp;Bold</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Fet</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2754"/>
         <source>Ctrl+B</source>
-        <translation type="unfinished"/>
+        <translation>Ctrl+B</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2763"/>
         <source>&amp;Italic</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Kursiv</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2766"/>
         <source>Ctrl+I</source>
-        <translation type="unfinished"/>
+        <translation>Ctrl+I</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2775"/>
         <source>&amp;Strike</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Genomstruken</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2780"/>
         <source>&amp;Verbatim</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">&amp;Ordagrann</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2785"/>
         <source>Su&amp;perscript</source>
-        <translation type="unfinished"/>
+        <translation>Su&amp;perskript</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2788"/>
         <source>Ctrl++</source>
-        <translation type="unfinished"/>
+        <translation>Ctrl++</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2793"/>
         <source>Subsc&amp;ript</source>
-        <translation type="unfinished"/>
+        <translation>Undersk&amp;ript</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2796"/>
         <source>Ctrl+-</source>
-        <translation type="unfinished"/>
+        <translation>Ctrl+-</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2801"/>
         <source>Co&amp;mment block</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2804"/>
         <source>Ctrl+Shift+C</source>
-        <translation type="unfinished"/>
+        <translation>Ctrl+Shift+C</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2813"/>
         <source>Clear &amp;formats</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2816"/>
         <source>Ctrl+0</source>
-        <translation type="unfinished"/>
+        <translation>Ctrl+0</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2821"/>
         <source>&amp;Comment line(s)</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2829"/>
         <source>&amp;Ordered list</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2838"/>
         <source>&amp;Unordered list</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2843"/>
         <source>B&amp;lockquote</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1388"/>
         <source>Remove selected plot step(s)</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="594"/>
         <source>The file {} does not exist. Has it been moved or deleted?</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1415"/>
         <source>Install {}{} to use spellcheck</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1457"/>
         <source>{} has no installed dictionaries</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1478"/>
         <source>{}{} is not installed</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="689"/>
         <source>Save project?</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="689"/>
-        <source>Save changes to project "{}" before closing?</source>
-        <translation type="unfinished"/>
+        <source>Save changes to project &quot;{}&quot; before closing?</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="689"/>
-        <source>Your changes will be lost if you don't save them.</source>
-        <translation type="unfinished"/>
+        <source>Your changes will be lost if you don&apos;t save them.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1671"/>
         <source>PyQt / Qt versions 5.11 and 5.12 are known to cause a crash which might result in a loss of data.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1672"/>
         <source>PyQt {} and Qt {} are in use.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1678"/>
         <source>Proceed with import at your own risk</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="862"/>
         <source>Allow POV</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2852"/>
         <source>Search</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2855"/>
         <source>Ctrl+F</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2860"/>
         <source>&amp;Technical Support</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2863"/>
         <source>How to obtain technical support for Manuskript.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2866"/>
@@ -1510,57 +1510,57 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2871"/>
         <source>&amp;Locate log file...</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2874"/>
         <source>Locate log file</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2877"/>
         <source>Locate the diagnostic log file used for this session.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2880"/>
         <source>Shift+F1</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1193"/>
         <source>Sorry!</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1193"/>
         <source>This session is not being logged.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1202"/>
         <source>A log file is a Work in Progress!</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1202"/>
-        <source>The log file "{}" will continue to be written to until Manuskript is closed.</source>
-        <translation type="unfinished"/>
+        <source>The log file &quot;{}&quot; will continue to be written to until Manuskript is closed.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1202"/>
         <source>It will now be displayed in your file manager, but is of limited use until you close Manuskript.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1218"/>
         <source>Error!</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1218"/>
         <source>An error was encountered while trying to show the log file below in your file manager.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="45"/>
@@ -1570,12 +1570,12 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
     <message>
         <location filename="../manuskript/ui/search.py" line="46"/>
         <source>Shift+F3</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="50"/>
         <source>Situation</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="51"/>
@@ -1588,7 +1588,7 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
     <message>
         <location filename="../manuskript/ui/search.py" line="40"/>
         <source>No results found</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2206,12 +2206,12 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="138"/>
         <source>Style:</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="161"/>
         <source>Language:</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="184"/>
@@ -2221,32 +2221,32 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="112"/>
         <source>Restarting Manuskript ensures all settings take effect.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1193"/>
         <source>Show &amp;word count</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1276"/>
         <source>&amp;Show word count</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1858"/>
         <source>&amp;New style</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2810"/>
         <source>Typewriter mode</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2823"/>
         <source>Focus mode</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2837"/>
@@ -2256,48 +2256,48 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2842"/>
         <source>Sentence</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2847"/>
         <source>Line</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2852"/>
         <source>Paragraph</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="821"/>
-        <source>&lt;p&gt;&lt;b&gt;The Revisions feature has been at the source of many reported issues. In this version of Manuskript it has been turned off by default for new projects in order to provide the best experience.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Why aren't these issues fixed already? &lt;a href="https://www.theologeek.ch/manuskript/contribute/"&gt;We need your help to make Manuskript better!&lt;/a&gt;&lt;/p&gt;</source>
-        <translation type="unfinished"/>
+        <source>&lt;p&gt;&lt;b&gt;The Revisions feature has been at the source of many reported issues. In this version of Manuskript it has been turned off by default for new projects in order to provide the best experience.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Why aren&apos;t these issues fixed already? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;We need your help to make Manuskript better!&lt;/a&gt;&lt;/p&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="211"/>
         <source>Show progress in chars next
  to words</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1113"/>
         <source>Char/Word Counter</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1137"/>
         <source>Count spaces as chars</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1206"/>
         <source>Show char c&amp;ount</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1289"/>
         <source>Sho&amp;w char count</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2320,27 +2320,27 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="538"/>
         <source>&amp;New Character</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="545"/>
         <source>&amp;New Plot Item</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="552"/>
         <source>&amp;New World Item</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="653"/>
         <source>&amp;Correction Suggestions</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="662"/>
         <source>&amp;Correction Suggestion</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2680,8 +2680,8 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="142"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Filters what items will be included in the final export.&lt;br/&gt;&lt;span style=" color:#773333;"&gt;(Not fully implemented yet.)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Filtrerar vilka objekt som inkluderas i det exporterade materialet.&lt;br/&gt;&lt;span style=" color:#773333;"&gt;(Ej helt implementerat ännu.)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Filters what items will be included in the final export.&lt;br/&gt;&lt;span style=&quot; color:#773333;&quot;&gt;(Not fully implemented yet.)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Filtrerar vilka objekt som inkluderas i det exporterade materialet.&lt;br/&gt;&lt;span style=&quot; color:#773333;&quot;&gt;(Ej helt implementerat ännu.)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="149"/>
@@ -2760,13 +2760,13 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="802"/>
-        <source>Replace double quotes (") with:</source>
-        <translation>Ersätt dubbla citattecken (") med:</translation>
+        <source>Replace double quotes (&quot;) with:</source>
+        <translation>Ersätt dubbla citattecken (&quot;) med:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="911"/>
-        <source>Replace single quotes (') with:</source>
-        <translation>Ersätt enkla citattecken (') med:</translation>
+        <source>Replace single quotes (&apos;) with:</source>
+        <translation>Ersätt enkla citattecken (&apos;) med:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1020"/>
@@ -2915,17 +2915,17 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="153"/>
         <source>Spellcheck</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="154"/>
         <source>Navigation</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="155"/>
         <source>New Text</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="156"/>
@@ -2935,12 +2935,12 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="157"/>
         <source>Title: Show Full Path</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="159"/>
         <source>Theme selector</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="160"/>
@@ -2955,17 +2955,17 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="162"/>
         <source>Progress: Auto Show/Hide</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="163"/>
         <source>Clock</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="164"/>
         <source>Clock: Show Seconds</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3005,7 +3005,7 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
     <name>helpLabel</name>
     <message>
         <location filename="../manuskript/ui/helpLabel.py" line="12"/>
-        <source>If you don't wanna see me, you can hide me in Help menu.</source>
+        <source>If you don&apos;t wanna see me, you can hide me in Help menu.</source>
         <translation>Om du inte vill se mig kan du gömma mig via Hjälp-menyn.</translation>
     </message>
 </context>
@@ -3168,22 +3168,22 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="339"/>
         <source>({} chars) {}  words / {} </source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="345"/>
         <source>{}  words / {} </source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="360"/>
         <source>{} chars</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="354"/>
         <source>{} chars </source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3359,13 +3359,13 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="315"/>
-        <source>You're about to delete {} item(s).</source>
-        <translation type="unfinished"/>
+        <source>You&apos;re about to delete {} item(s).</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="325"/>
         <source>Are you sure?</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3484,7 +3484,7 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
-        <source>Freytag's pyramid</source>
+        <source>Freytag&apos;s pyramid</source>
         <translation>Freytags pyramid</translation>
     </message>
     <message>
@@ -3559,7 +3559,7 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
-        <source>Hero's journey</source>
+        <source>Hero&apos;s journey</source>
         <translation>Hjälteresan</translation>
     </message>
     <message>
@@ -4024,12 +4024,12 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="534"/>
         <source>Open Image</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="534"/>
         <source>Image files (*.jpg; *.jpeg; *.png)</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="550"/>
@@ -4039,13 +4039,13 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="547"/>
         <source>Unable to load selected file</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="550"/>
         <source>Unable to add selected image:
 {}</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4084,7 +4084,7 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
             &lt;p&gt;Split selected item(s) at the given mark.&lt;/p&gt;
 
             &lt;p&gt;If one of the selected item is a folder, it will be applied
-            recursively to &lt;i&gt;all&lt;/i&gt; of it's children items.&lt;/p&gt;
+            recursively to &lt;i&gt;all&lt;/i&gt; of it&apos;s children items.&lt;/p&gt;
 
             &lt;p&gt;The split mark can contain following escape sequences:
                 &lt;ul&gt;
@@ -4113,8 +4113,8 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="47"/>
-        <source>Split '{}'</source>
-        <translation>Dela '{}'</translation>
+        <source>Split &apos;{}&apos;</source>
+        <translation>Dela &apos;{}&apos;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="51"/>
@@ -4675,7 +4675,7 @@ Använd detta om du får ett felmeddelande angående YAML.</translation>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="251"/>
         <source>Natural resources</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
