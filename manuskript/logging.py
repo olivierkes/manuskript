@@ -218,10 +218,12 @@ from PyQt5.Qt import QtMsgType
 def qtMessageHandler(msg_type, msg_log_context, msg_string):
     """Forwards Qt messages to Python logging system."""
     # Convert Qt msg type to logging level
-    log_level = [logging.DEBUG,
-                 logging.WARNING,
-                 logging.ERROR,
-                 logging.FATAL] [ int(msg_type) ]
+    msg_type_index = int(msg_type)
+    log_levels = [logging.DEBUG, logging.INFO, logging.WARNING, logging.ERROR, logging.FATAL]
+    if (msg_type_index >= 0) and (msg_type_index < len(log_levels)):
+        log_level = log_levels[msg_type_index]
+    else:
+        log_level = log_levels[-1]
     qtcl = logging.getLogger(msg_log_context.category or "qt.???")
     # Some information may not be available unless using a PyQt debug build.
     # See: https://www.riverbankcomputing.com/static/Docs/PyQt5/api/qtcore/qmessagelogcontext.html
