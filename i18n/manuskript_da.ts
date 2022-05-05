@@ -6,42 +6,42 @@
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="18"/>
         <source>Basic HTML output using the Python module &apos;markdown&apos;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Grundlæggende HTML-output ved hjælp af Python-modulet &apos;markdown&apos;.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="19"/>
         <source>Python module &apos;markdown&apos;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Python modul &apos;markdown&apos;.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="54"/>
         <source>Markdown source</source>
-        <translation type="unfinished"></translation>
+        <translation>Markdown kilde</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="55"/>
         <source>HTML Source</source>
-        <translation type="unfinished"></translation>
+        <translation>HTML kilde</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="59"/>
         <source>HTML Output</source>
-        <translation type="unfinished"></translation>
+        <translation>HTML-output</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/__init__.py" line="15"/>
         <source>Default exporter, provides basic formats used by other exporters.</source>
-        <translation type="unfinished"></translation>
+        <translation>Standardeksportør, giver grundlæggende formater, der bruges af andre eksportører.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/markdown.py" line="60"/>
         <source>Preview with highlighter.</source>
-        <translation type="unfinished"></translation>
+        <translation>Forhåndsvisning med highlighter.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/plainText.py" line="17"/>
         <source>Plain text</source>
-        <translation type="unfinished"></translation>
+        <translation>Simpel tekst</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/HTML.py" line="13"/>
