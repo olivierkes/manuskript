@@ -12,7 +12,7 @@ from PyQt5.QtWidgets import QFrame, QWidget, QPushButton, qApp, QStyle, QComboBo
 from manuskript import settings
 from manuskript.enums import Outline
 from manuskript.models import outlineItem
-from manuskript.functions import allPaths, drawProgress
+from manuskript.functions import allPaths, drawProgress, safeTranslate
 from manuskript.ui.editors.locker import locker
 from manuskript.ui.editors.themes import findThemePath, generateTheme, setThemeEditorDatas
 from manuskript.ui.editors.themes import loadThemeDatas
@@ -414,7 +414,7 @@ class fullScreenEditor(QWidget):
         
     def createNewText(self):
         item = self._index.internalPointer()
-        newItem = outlineItem(title=qApp.translate("outlineBasics", "New"), _type=settings.defaultTextType)
+        newItem = outlineItem(title=safeTranslate(qApp, "outlineBasics", "New"), _type=settings.defaultTextType)
         self._index.model().insertItem(newItem, item.row() + 1, item.parent().index())
         self.setCurrentModelIndex(newItem.index())
 

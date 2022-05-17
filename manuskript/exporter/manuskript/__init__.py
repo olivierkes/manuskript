@@ -6,13 +6,13 @@ from manuskript.exporter.basic import basicExporter, basicFormat
 from manuskript.exporter.manuskript.HTML import HTML
 from manuskript.exporter.manuskript.markdown import markdown
 from manuskript.exporter.manuskript.plainText import plainText
-from manuskript.functions import appPath
+from manuskript.functions import appPath, safeTranslate
 
 
 class manuskriptExporter(basicExporter):
 
     name = "Manuskript"
-    description = qApp.translate("Export", "Default exporter, provides basic formats used by other exporters.")
+    description = safeTranslate(qApp, "Export", "Default exporter, provides basic formats used by other exporters.")
     exportTo = [
         plainText(),
         markdown(),

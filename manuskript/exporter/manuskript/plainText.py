@@ -5,7 +5,7 @@ from PyQt5.QtGui import QFont, QTextCharFormat
 from PyQt5.QtWidgets import QPlainTextEdit, qApp, QFrame, QFileDialog, QMessageBox
 
 from manuskript.exporter.basic import basicFormat
-from manuskript.functions import mainWindow, getSaveFileNameWithSuffix
+from manuskript.functions import mainWindow, getSaveFileNameWithSuffix, safeTranslate
 from manuskript.models import outlineItem
 from manuskript.ui.exporters.manuskript.plainTextSettings import exporterSettings
 import codecs
@@ -14,8 +14,8 @@ import logging
 LOGGER = logging.getLogger(__name__)
 
 class plainText(basicFormat):
-    name = qApp.translate("Export", "Plain text")
-    description = qApp.translate("Export", """Simplest export to plain text. Allows you to use your own markup not understood
+    name = safeTranslate(qApp, "Export", "Plain text")
+    description = safeTranslate(qApp, "Export", """Simplest export to plain text. Allows you to use your own markup not understood
                   by Manuskript, for example <a href='www.fountain.io'>Fountain</a>.""")
     implemented = True
     requires = {
@@ -48,8 +48,8 @@ class plainText(basicFormat):
         try:
             return self.concatenate(mainWindow().mdlOutline.rootItem, settings)
         except re.error as e:
-            QMessageBox.warning(mainWindow().dialog, qApp.translate("Export", "Error"),
-                                qApp.translate("Export", "Could not process regular expression: \n{}").format(str(e)))
+            QMessageBox.warning(mainWindow().dialog, safeTranslate(qApp, "Export", "Error"),
+                                safeTranslate(qApp, "Export", "Could not process regular expression: \n{}").format(str(e)))
             return ""
 
     def getExportFilename(self, settingsWidget, varName=None, filter=None):
@@ -69,7 +69,7 @@ class plainText(basicFormat):
             filename = ""
 
         filename, filter = getSaveFileNameWithSuffix(settingsWidget.parent(),
-                                                     caption=qApp.translate("Export", "Choose output file…"),
+                                                     caption=safeTranslate(qApp, "Export", "Choose output file…"),
                                                      filter=filter,
                                                      directory=filename,
                                                      defaultSuffix=self.exportDefaultSuffix)

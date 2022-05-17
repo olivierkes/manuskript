@@ -7,6 +7,7 @@ from PyQt5.QtWidgets import qApp, QVBoxLayout, QCheckBox, QWidget, QHBoxLayout, 
 
 from manuskript.exporter.manuskript.markdown import markdown, markdownSettings
 from manuskript.ui.collapsibleGroupBox2 import collapsibleGroupBox2
+from manuskript.functions import safeTranslate
 
 import logging
 LOGGER = logging.getLogger(__name__)
@@ -150,80 +151,80 @@ class pandocSettings(markdownSettings):
     settingsList = {
         # General
         "standalone": pandocSetting("--standalone", "checkbox", "",
-                                    qApp.translate("Export", "Standalone document (not just a fragment)"),
+                                    safeTranslate(qApp, "Export", "Standalone document (not just a fragment)"),
                                     default=True),
         "TOC":          pandocSetting("--toc", "checkbox", "",
-                                      qApp.translate("Export", "Include a table of contents."), toc=True),
+                                      safeTranslate(qApp, "Export", "Include a table of contents."), toc=True),
 
         "TOC-depth":    pandocSetting("--toc-depth=", "number", "",
-                                      qApp.translate("Export", "Number of sections level to include in TOC: "),
+                                      safeTranslate(qApp, "Export", "Number of sections level to include in TOC: "),
                                       default=3, min=1, max=6, toc=True, minVersion="1.10"),
         # pandoc v1 only
         "smart":        pandocSetting("--smart", "checkbox", "",
-                                      qApp.translate("Export", "Typographically correct output"),
+                                      safeTranslate(qApp, "Export", "Typographically correct output"),
                                       maxVersion="1.19.2.4"),
         # pandoc v1 only
         "normalize":    pandocSetting("--normalize", "checkbox", "",
-                                      qApp.translate("Export", "Normalize the document (cleaner)"),
+                                      safeTranslate(qApp, "Export", "Normalize the document (cleaner)"),
                                       minVersion="1.8", maxVersion="1.19.2.4"),
         # pandoc v1.5 to 2.7.3
         "base-header": pandocSetting("--base-header-level=", "number", "",
-                                     qApp.translate("Export", "Specify the base level for headers: "),
+                                     safeTranslate(qApp, "Export", "Specify the base level for headers: "),
                                      default=1, min=1, minVersion="1.5", maxVersion="2.7.3"),
         # pandoc v2.8+
         "shift-heading":  pandocSetting("--shift-heading-level-by=", "number", "",
-                                      qApp.translate("Export", "Specify the base level for headers: "),
+                                      safeTranslate(qApp, "Export", "Specify the base level for headers: "),
                                       default=0, min=0, minVersion="2.8"),
         "disable-YAML": pandocSetting("EXT-yaml_metadata_block", "checkbox", "",
-                                      qApp.translate("Export", "Disable YAML metadata block.\nUse that if you get YAML related error."),
+                                      safeTranslate(qApp, "Export", "Disable YAML metadata block.\nUse that if you get YAML related error."),
                                       minVersion="1.12"),
         "hard-line-breaks": pandocSetting("EXT-hard_line_block", "checkbox", "",
-                                      qApp.translate("Export", "Enable the support on markdown for line break on new line."),
+                                      safeTranslate(qApp, "Export", "Enable the support on markdown for line break on new line."),
                                       minVersion="1.16"),
 
         # Specific
         "ref-link":     pandocSetting("--reference-links", "checkbox", "markdown rst",
-                                      qApp.translate("Export", "Use reference-style links instead of inline links"),
+                                      safeTranslate(qApp, "Export", "Use reference-style links instead of inline links"),
                                       specific=True),
         # pandoc v1.9 to v2.11.1
         "atx":          pandocSetting("--atx-headers", "checkbox", "markdown asciidoc",
-                                      qApp.translate("Export", "Use ATX-style headers"), specific=True,
+                                      safeTranslate(qApp, "Export", "Use ATX-style headers"), specific=True,
                                       minVersion="1.9", maxVersion="2.11.1"),
         # pandoc v2.11.2+
         "atx-heading": pandocSetting("--markdown-headings=atx|setext", "checkbox", "markdown asciidoc",
-                                     qApp.translate("Export", "Use ATX-style headers"), specific=True,
+                                     safeTranslate(qApp, "Export", "Use ATX-style headers"), specific=True,
                                      minVersion="2.11.2"),
         "self-contained": pandocSetting("--self-contained", "checkbox", "html",
-                                        qApp.translate("Export", "Self-contained HTML files, with no dependencies"),
+                                        safeTranslate(qApp, "Export", "Self-contained HTML files, with no dependencies"),
                                         specific=True, minVersion="1.9"),
         "q-tags":       pandocSetting("--html-q-tags", "checkbox", "html",
-                                      qApp.translate("Export", "Use <q> tags for quotes in HTML"), specific=True,
+                                      safeTranslate(qApp, "Export", "Use <q> tags for quotes in HTML"), specific=True,
                                       minVersion="1.10"),
         # pandoc v1 only
         "latex-engine": pandocSetting("--latex-engine=", "combo", "pdf",
-                                      qApp.translate("Export", "LaTeX engine used to produce the PDF."),
+                                      safeTranslate(qApp, "Export", "LaTeX engine used to produce the PDF."),
                                       vals="pdflatex|lualatex|xelatex", specific=True,
                                       minVersion="1.9", maxVersion="1.19.2.4"),
         # pandoc v2
         "pdf-engine":   pandocSetting("--pdf-engine=", "combo", "pdf",
-                                      qApp.translate("Export", "LaTeX engine used to produce the PDF."),
+                                      safeTranslate(qApp, "Export", "LaTeX engine used to produce the PDF."),
                                       vals="pdflatex|lualatex|xelatex", minVersion="2.0", specific=True),
         "epub3":        pandocSetting("EXTepub3", "checkbox", "epub",
-                                      qApp.translate("Export", "Convert to ePUB3"), specific=True,
+                                      safeTranslate(qApp, "Export", "Convert to ePUB3"), specific=True,
                                       minVersion="1.10"),
 
         # PDF
         "latex-ps":     pandocSetting("--variable=papersize:", "combo", "pdf latex",  # FIXME: does not work with default template
-                                      qApp.translate("Export", "Paper size:"),
+                                      safeTranslate(qApp, "Export", "Paper size:"),
                                       vals="letter|A4|A5", specific=True, minVersion="1.4"),
         "latex-fs":     pandocSetting("--variable=fontsize:", "number", "pdf latex",  # FIXME: does not work with default template
-                                      qApp.translate("Export", "Font size:"),
+                                      safeTranslate(qApp, "Export", "Font size:"),
                                       min=8, max=88, default=12, suffix="pt", specific=True, minVersion="1.4"),
         "latex-class":  pandocSetting("--variable=documentclass:", "combo", "pdf latex",
-                                     qApp.translate("Export", "Class:"),
+                                     safeTranslate(qApp, "Export", "Class:"),
                                      vals="article|report|book|memoir", specific=True, minVersion="1.4"),
         "latex-ls":     pandocSetting("--variable=linestretch:", "combo", "pdf latex",
-                                     qApp.translate("Export", "Line spacing:"),
+                                     safeTranslate(qApp, "Export", "Line spacing:"),
                                      vals="1|1.25|1.5|2", specific=True, minVersion="1.4"),
 
         # FIXME: complete with http://pandoc.org/README.html#variables-for-latex

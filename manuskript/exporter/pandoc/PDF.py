@@ -7,7 +7,7 @@ from PyQt5.QtCore import QUrl
 from PyQt5.QtWidgets import qApp
 
 from manuskript.exporter.pandoc.abstractOutput import abstractOutput
-from manuskript.functions import tempFile
+from manuskript.functions import tempFile, safeTranslate
 from manuskript.ui.views.PDFViewer import PDFViewer
 
 
@@ -15,8 +15,8 @@ class PDF(abstractOutput):
     """PDF Viewer using PDF.js. Cf. https://github.com/mozilla/pdf.js/wiki/Setup-PDF.js-in-a-website"""
 
     name = "PDF"
-    description = qApp.translate("Export", "Needs LaTeX to be installed.")
-    InvalidBecause = qApp.translate("Export", """a valid LaTeX installation. Pandoc recommendations can be found on:
+    description = safeTranslate(qApp, "Export", "Needs LaTeX to be installed.")
+    InvalidBecause = safeTranslate(qApp, "Export", """a valid LaTeX installation. Pandoc recommendations can be found on:
                      <a href="https://pandoc.org/installing.html">pandoc.org/installing.html</a>. If you want Unicode support, you need XeLaTeX.""")
     icon = "application-pdf"
 

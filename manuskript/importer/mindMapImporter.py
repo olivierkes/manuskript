@@ -5,9 +5,10 @@ from PyQt5.QtWidgets import qApp, QMessageBox
 from manuskript.models import outlineItem
 from manuskript.enums import Outline
 from lxml import etree as ET
-from manuskript.functions import mainWindow
+from manuskript.functions import mainWindow, safeTranslate
 from manuskript.importer.abstractImporter import abstractImporter
 from manuskript.converters import HTML2MD, HTML2PlainText
+
 
 class mindMapImporter(abstractImporter):
 
@@ -54,8 +55,8 @@ class mindMapImporter(abstractImporter):
         if not ret:
             QMessageBox.critical(
                 settingsWidget,
-                qApp.translate("Import", "Mind Map Import"),
-                qApp.translate("Import", "This does not appear to be a valid Mind Map file."))
+                safeTranslate(qApp, "Import", "Mind Map Import"),
+                safeTranslate(qApp, "Import", "This does not appear to be a valid Mind Map file."))
 
             return None
 
@@ -68,10 +69,10 @@ class mindMapImporter(abstractImporter):
 
         # Add group
         group = self.addGroup(widget.toolBox.widget(0),
-                              qApp.translate("Import", "Mind Map import"))
+                              safeTranslate(qApp, "Import", "Mind Map import"))
 
         self.addSetting("importTipAs", "combo",
-                        qApp.translate("Import", "Import tip as:"),
+                        safeTranslate(qApp, "Import", "Import tip as:"),
                         vals="Text|Folder",
                        )
 
@@ -86,7 +87,7 @@ class mindMapImporter(abstractImporter):
         # Title
         title = underElement.get('TEXT', "").replace("\n", " ")
         if not title:
-            title = qApp.translate("Import", "Untitled")
+            title = safeTranslate(qApp, "Import", "Untitled")
 
         item = outlineItem(parent=parentItem, title=title)
         items.append(item)

@@ -5,6 +5,8 @@ import os
 from manuskript.importer.abstractImporter import abstractImporter
 from manuskript.models import outlineItem
 from manuskript.enums import Outline
+from manuskript.functions import safeTranslate
+
 from PyQt5.QtWidgets import qApp
 
 
@@ -94,27 +96,27 @@ class folderImporter(abstractImporter):
 
         # Add group
         group = self.addGroup(widget.toolBox.widget(0),
-                              qApp.translate("Import", "Folder import"))
+                              safeTranslate(qApp, "Import", "Folder import"))
         #group = cls.addPage(widget, "Folder import")
 
         self.addSetting("info", "label",
-                        qApp.translate("Import", """<p><b>Info:</b> Imports a whole
+                        safeTranslate(qApp, "Import", """<p><b>Info:</b> Imports a whole
                         directory structure. Folders are added as folders, and
                         plaintext documents within (you chose which ones by extension)
                         are added as scene.</p>
                         <p>Only text files are supported (not images, binary or others).</p>"""))
 
         self.addSetting("ext", "text",
-                        qApp.translate("Import", "Include only those extensions:"),
+                        safeTranslate(qApp, "Import", "Include only those extensions:"),
                         default="*.txt, *.md",
-                        tooltip=qApp.translate("Import", "Comma separated values")),
+                        tooltip=safeTranslate(qApp, "Import", "Comma separated values")),
 
         self.addSetting("sortItems", "checkbox",
-                        qApp.translate("Import", "Sort items by name"),
+                        safeTranslate(qApp, "Import", "Sort items by name"),
                         default=True),
 
         self.addSetting("separateFolderFiles", "checkbox",
-                        qApp.translate("Import", "Import folder then files"),
+                        safeTranslate(qApp, "Import", "Import folder then files"),
                         default=True),
 
         self.addSettingsTo(group)

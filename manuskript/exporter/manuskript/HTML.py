@@ -6,6 +6,8 @@ from PyQt5.QtWidgets import QPlainTextEdit, qApp, QTabWidget, QFrame, QTextEdit
 from manuskript.exporter.manuskript.markdown import markdown, markdownSettings
 from manuskript.ui.views.webView import webView
 from manuskript.ui.exporters.manuskript.plainTextSettings import exporterSettings
+from manuskript.functions import safeTranslate
+
 import os
 
 try:
@@ -15,8 +17,8 @@ except ImportError:
 
 class HTML(markdown):
     name = "HTML"
-    description = qApp.translate("Export", "Basic HTML output using the Python module 'markdown'.")
-    InvalidBecause = qApp.translate("Export", "Python module 'markdown'.")
+    description = safeTranslate(qApp, "Export", "Basic HTML output using the Python module 'markdown'.")
+    InvalidBecause = safeTranslate(qApp, "Export", "Python module 'markdown'.")
     icon = "text-html"
 
     exportVarName = "lastManuskriptHTML"
@@ -51,12 +53,12 @@ class HTML(markdown):
         w1 = QPlainTextEdit()
         w1.setFrameShape(QFrame.NoFrame)
         w1.setReadOnly(True)
-        t.addTab(w0, qApp.translate("Export", "Markdown source"))
-        t.addTab(w1, qApp.translate("Export", "HTML Source"))
+        t.addTab(w0, safeTranslate(qApp, "Export", "Markdown source"))
+        t.addTab(w1, safeTranslate(qApp, "Export", "HTML Source"))
         
         if webView:
             w2 = webView()
-            t.addTab(w2, qApp.translate("Export", "HTML Output"))
+            t.addTab(w2, safeTranslate(qApp, "Export", "HTML Output"))
 
         t.setCurrentIndex(2)
         return t

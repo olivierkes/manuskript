@@ -19,7 +19,7 @@ from manuskript.enums import Outline
 from manuskript.enums import Character
 from manuskript.enums import Plot
 from manuskript.enums import PlotStep
-from manuskript.functions import mainWindow, mixColors
+from manuskript.functions import mainWindow, mixColors, safeTranslate
 from manuskript.ui import style as S
 
 
@@ -87,7 +87,7 @@ def infos(ref):
     """
     match = re.fullmatch(RegEx, ref)
     if not match:
-        return qApp.translate("references", "Not a reference: {}.").format(ref)
+        return safeTranslate(qApp, "references", "Not a reference: {}.").format(ref)
 
     _type = match.group(1)
     _ref = match.group(2)
@@ -98,19 +98,19 @@ def infos(ref):
         idx = m.getIndexByID(_ref)
 
         if not idx.isValid():
-            return qApp.translate("references", "Unknown reference: {}.").format(ref)
+            return safeTranslate(qApp, "references", "Unknown reference: {}.").format(ref)
 
         item = idx.internalPointer()
 
         # Titles
-        pathTitle = qApp.translate("references", "Path:")
-        statsTitle = qApp.translate("references", "Stats:")
-        POVTitle = qApp.translate("references", "POV:")
-        statusTitle = qApp.translate("references", "Status:")
-        labelTitle = qApp.translate("references", "Label:")
-        ssTitle = qApp.translate("references", "Short summary:")
-        lsTitle = qApp.translate("references", "Long summary:")
-        notesTitle = qApp.translate("references", "Notes:")
+        pathTitle = safeTranslate(qApp, "references", "Path:")
+        statsTitle = safeTranslate(qApp, "references", "Stats:")
+        POVTitle = safeTranslate(qApp, "references", "POV:")
+        statusTitle = safeTranslate(qApp, "references", "Status:")
+        labelTitle = safeTranslate(qApp, "references", "Label:")
+        ssTitle = safeTranslate(qApp, "references", "Short summary:")
+        lsTitle = safeTranslate(qApp, "references", "Long summary:")
+        notesTitle = safeTranslate(qApp, "references", "Notes:")
 
         # The POV of the scene
         POV = ""
@@ -191,30 +191,30 @@ def infos(ref):
         m = mainWindow().mdlCharacter
         c = m.getCharacterByID(int(_ref))
         if c == None:
-            return qApp.translate("references", "Unknown reference: {}.").format(ref)
+            return safeTranslate(qApp, "references", "Unknown reference: {}.").format(ref)
 
         index = c.index()
 
         name = c.name()
 
         # Titles
-        basicTitle = qApp.translate("references", "Basic info")
-        detailedTitle = qApp.translate("references", "Detailed info")
-        POVof = qApp.translate("references", "POV of:")
+        basicTitle = safeTranslate(qApp, "references", "Basic info")
+        detailedTitle = safeTranslate(qApp, "references", "Detailed info")
+        POVof = safeTranslate(qApp, "references", "POV of:")
 
         # Goto (link)
-        goto = qApp.translate("references", "Go to {}.")
+        goto = safeTranslate(qApp, "references", "Go to {}.")
         goto = goto.format(refToLink(ref))
 
         # basic infos
         basic = []
         for i in [
-            (Character.motivation, qApp.translate("references", "Motivation"), False),
-            (Character.goal, qApp.translate("references", "Goal"), False),
-            (Character.conflict, qApp.translate("references", "Conflict"), False),
-            (Character.epiphany, qApp.translate("references", "Epiphany"), False),
-            (Character.summarySentence, qApp.translate("references", "Short summary"), True),
-            (Character.summaryPara, qApp.translate("references", "Longer summary"), True),
+            (Character.motivation, safeTranslate(qApp, "references", "Motivation"), False),
+            (Character.goal, safeTranslate(qApp, "references", "Goal"), False),
+            (Character.conflict, safeTranslate(qApp, "references", "Conflict"), False),
+            (Character.epiphany, safeTranslate(qApp, "references", "Epiphany"), False),
+            (Character.summarySentence, safeTranslate(qApp, "references", "Short summary"), True),
+            (Character.summaryPara, safeTranslate(qApp, "references", "Longer summary"), True),
         ]:
 
             val = m.data(index.sibling(index.row(), i[0].value))
@@ -274,16 +274,16 @@ def infos(ref):
         name = m.getPlotNameByID(_ref)
 
         if not index.isValid():
-            return qApp.translate("references", "Unknown reference: {}.").format(ref)
+            return safeTranslate(qApp, "references", "Unknown reference: {}.").format(ref)
 
         # Titles
-        descriptionTitle = qApp.translate("references", "Description")
-        resultTitle = qApp.translate("references", "Result")
-        charactersTitle = qApp.translate("references", "Characters")
-        stepsTitle = qApp.translate("references", "Resolution steps")
+        descriptionTitle = safeTranslate(qApp, "references", "Description")
+        resultTitle = safeTranslate(qApp, "references", "Result")
+        charactersTitle = safeTranslate(qApp, "references", "Characters")
+        stepsTitle = safeTranslate(qApp, "references", "Resolution steps")
 
         # Goto (link)
-        goto = qApp.translate("references", "Go to {}.")
+        goto = safeTranslate(qApp, "references", "Go to {}.")
         goto = goto.format(refToLink(ref))
 
         # Description
@@ -353,15 +353,15 @@ def infos(ref):
         name = m.name(index)
 
         if not index.isValid():
-            return qApp.translate("references", "Unknown reference: {}.").format(ref)
+            return safeTranslate(qApp, "references", "Unknown reference: {}.").format(ref)
 
         # Titles
-        descriptionTitle = qApp.translate("references", "Description")
-        passionTitle = qApp.translate("references", "Passion")
-        conflictTitle = qApp.translate("references", "Conflict")
+        descriptionTitle = safeTranslate(qApp, "references", "Description")
+        passionTitle = safeTranslate(qApp, "references", "Passion")
+        conflictTitle = safeTranslate(qApp, "references", "Conflict")
 
         # Goto (link)
-        goto = qApp.translate("references", "Go to {}.")
+        goto = safeTranslate(qApp, "references", "Go to {}.")
         goto = goto.format(refToLink(ref))
 
         # Description
@@ -396,7 +396,7 @@ def infos(ref):
         return text
 
     else:
-        return qApp.translate("references", "Unknown reference: {}.").format(ref)
+        return safeTranslate(qApp, "references", "Unknown reference: {}.").format(ref)
 
 
 def shortInfos(ref):
@@ -495,28 +495,28 @@ def tooltip(ref):
     infos = shortInfos(ref)
 
     if not infos:
-        return qApp.translate("references", "<b>Unknown reference:</b> {}.").format(ref)
+        return safeTranslate(qApp, "references", "<b>Unknown reference:</b> {}.").format(ref)
 
     if infos == -1:
-        return qApp.translate("references", "Not a reference: {}.").format(ref)
+        return safeTranslate(qApp, "references", "Not a reference: {}.").format(ref)
 
 
     if infos["type"] == TextLetter:
         if infos["text_type"] == "folder":
-            tt = qApp.translate("references", "Folder: <b>{}</b>").format(infos["title"])
+            tt = safeTranslate(qApp, "references", "Folder: <b>{}</b>").format(infos["title"])
         else:
-            tt = qApp.translate("references", "Text: <b>{}</b>").format(infos["title"])
+            tt = safeTranslate(qApp, "references", "Text: <b>{}</b>").format(infos["title"])
         tt += "<br><i>{}</i>".format(infos["path"])
         return tt
 
     elif infos["type"] == CharacterLetter:
-        return qApp.translate("references", "Character: <b>{}</b>").format(infos["title"])
+        return safeTranslate(qApp, "references", "Character: <b>{}</b>").format(infos["title"])
 
     elif infos["type"] == PlotLetter:
-        return qApp.translate("references", "Plot: <b>{}</b>").format(infos["title"])
+        return safeTranslate(qApp, "references", "Plot: <b>{}</b>").format(infos["title"])
 
     elif infos["type"] == WorldLetter:
-        return qApp.translate("references", "World: <b>{name}</b>{path}").format(
+        return safeTranslate(qApp, "references", "World: <b>{name}</b>{path}").format(
                     name=infos["title"],
                     path=" <span style='color:gray;'>({})</span>".format(infos["path"]) if infos["path"] else "")
 
@@ -589,7 +589,7 @@ def findReferencesTo(ref, parent=None, recursive=True):
 
     return lst
 
-def listReferences(ref, title=qApp.translate("references", "Referenced in:")):
+def listReferences(ref, title=safeTranslate(qApp, "references", "Referenced in:")):
     oM = mainWindow().mdlOutline
     listRefs = ""
 

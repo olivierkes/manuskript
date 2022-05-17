@@ -3,11 +3,12 @@
 from PyQt5.QtWidgets import qApp
 
 from manuskript.exporter.pandoc.abstractOutput import abstractOutput
+from manuskript.functions import safeTranslate
 
 
 class ePub(abstractOutput):
     name = "ePub"
-    description = qApp.translate("Export", """Books that don't kill trees.""")
+    description = safeTranslate(qApp, "Export", """Books that don't kill trees.""")
     icon = "application-epub+zip"
 
     exportVarName = "lastPandocePub"
@@ -18,7 +19,7 @@ class ePub(abstractOutput):
 
 class OpenDocument(abstractOutput):
     name = "OpenDocument"
-    description = qApp.translate("Export", "OpenDocument format. Used by LibreOffice for example.")
+    description = safeTranslate(qApp, "Export", "OpenDocument format. Used by LibreOffice for example.")
 
     exportVarName = "lastPandocODT"
     toFormat = "odt"
@@ -29,7 +30,7 @@ class OpenDocument(abstractOutput):
 
 class DocX(abstractOutput):
     name = "DocX"
-    description = qApp.translate("Export", "Microsoft Office (.docx) document.")
+    description = safeTranslate(qApp, "Export", "Microsoft Office (.docx) document.")
 
     exportVarName = "lastPandocDocX"
     toFormat = "docx"

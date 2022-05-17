@@ -5,8 +5,9 @@ from PyQt5.QtWidgets import qApp, QMessageBox
 from manuskript.models import outlineItem
 from manuskript.enums import Outline
 from lxml import etree as ET
-from manuskript.functions import mainWindow
+from manuskript.functions import mainWindow, safeTranslate
 from manuskript.importer.abstractImporter import abstractImporter
+
 
 class opmlImporter(abstractImporter):
 
@@ -34,8 +35,8 @@ class opmlImporter(abstractImporter):
                     opmlContent = opmlFile.read()
             except:
                 QMessageBox.critical(settingsWidget,
-                                    qApp.translate("Import", "OPML Import"),
-                                    qApp.translate("Import", "File open failed."))
+                                    safeTranslate(qApp, "Import", "OPML Import"),
+                                    safeTranslate(qApp, "Import", "File open failed."))
                 return None
 
         elif fromString == "":
@@ -63,8 +64,8 @@ class opmlImporter(abstractImporter):
         if not ret:
             QMessageBox.critical(
                 settingsWidget,
-                qApp.translate("Import", "OPML Import"),
-                qApp.translate("Import", "This does not appear to be a valid OPML file."))
+                safeTranslate(qApp, "Import", "OPML Import"),
+                safeTranslate(qApp, "Import", "This does not appear to be a valid OPML file."))
 
             return None
 

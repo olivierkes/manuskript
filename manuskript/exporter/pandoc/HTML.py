@@ -5,12 +5,14 @@ from PyQt5.QtCore import QUrl
 
 from manuskript.exporter.manuskript import HTML as MskHTML
 from manuskript.exporter.pandoc.abstractPlainText import abstractPlainText
+from manuskript.functions import safeTranslate
+
 import os
 
 
 class HTML(abstractPlainText):
     name = "HTML"
-    description = qApp.translate("Export", """A little known format modestly used. You know, web sites for example.""")
+    description = safeTranslate(qApp, "Export", """A little known format modestly used. You know, web sites for example.""")
     icon = "text-html"
 
     exportVarName = "lastPandocHTML"

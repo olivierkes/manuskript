@@ -23,6 +23,12 @@ AUC = Qt.AutoConnection | Qt.UniqueConnection
 MW = None
 
 
+def safeTranslate(qApp, group, text):
+    try:
+        return qApp.translate(group, text)
+    except:
+        return text
+
 def wordCount(text):
     return len(re.findall(r"\S+", text))
 

@@ -9,7 +9,7 @@ from PyQt5.QtWidgets import QAbstractItemView, qApp, QMenu, QAction, \
 from manuskript import settings
 from manuskript.enums import Outline
 from manuskript.functions import mainWindow, statusMessage
-from manuskript.functions import toInt, customIcons
+from manuskript.functions import toInt, customIcons, safeTranslate
 from manuskript.models import outlineItem
 from manuskript.ui.tools.splitDialog import splitDialog
 
@@ -58,24 +58,24 @@ class outlineBasics(QAbstractItemView):
             title = mouseIndex.internalPointer().title()
 
         else:
-            title = qApp.translate("outlineBasics", "Root")
+            title = safeTranslate(qApp, "outlineBasics", "Root")
 
         if len(title) > 25:
             title = title[:25] + "…"
 
         # Open Item action
         self.actOpen = QAction(QIcon.fromTheme("go-right"),
-                               qApp.translate("outlineBasics", "Open {}".format(title)),
+                               safeTranslate(qApp, "outlineBasics", "Open {}".format(title)),
                                menu)
         self.actOpen.triggered.connect(self.openItem)
         menu.addAction(self.actOpen)
 
         # Open item(s) in new tab
         if mouseIndex in sel and len(sel) > 1:
-            actionTitle = qApp.translate("outlineBasics", "Open {} items in new tabs").format(len(sel))
+            actionTitle = safeTranslate(qApp, "outlineBasics", "Open {} items in new tabs").format(len(sel))
             self._indexesToOpen = sel
         else:
-            actionTitle = qApp.translate("outlineBasics", "Open {} in a new tab").format(title)
+            actionTitle = safeTranslate(qApp, "outlineBasics", "Open {} in a new tab").format(title)
             self._indexesToOpen = [mouseIndex]
 
         self.actNewTab = QAction(QIcon.fromTheme("go-right"), actionTitle, menu)
@@ -86,13 +86,13 @@ class outlineBasics(QAbstractItemView):
 
         # Add text / folder
         self.actAddFolder = QAction(QIcon.fromTheme("folder-new"),
-                                    qApp.translate("outlineBasics", "New &Folder"),
+                                    safeTranslate(qApp, "outlineBasics", "New &Folder"),
                                     menu)
         self.actAddFolder.triggered.connect(self.addFolder)
         menu.addAction(self.actAddFolder)
 
         self.actAddText = QAction(QIcon.fromTheme("document-new"),
-                                  qApp.translate("outlineBasics", "New &Text"),
+                                  safeTranslate(qApp, "outlineBasics", "New &Text"),
                                   menu)
         self.actAddText.triggered.connect(self.addText)
         menu.addAction(self.actAddText)
@@ -101,29 +101,29 @@ class outlineBasics(QAbstractItemView):
 
         # Copy, cut, paste, duplicate
         self.actCut = QAction(QIcon.fromTheme("edit-cut"),
-                              qApp.translate("outlineBasics", "C&ut"), menu)
+                              safeTranslate(qApp, "outlineBasics", "C&ut"), menu)
         self.actCut.triggered.connect(self.cut)
         menu.addAction(self.actCut)
 
         self.actCopy = QAction(QIcon.fromTheme("edit-copy"),
-                               qApp.translate("outlineBasics", "&Copy"), menu)
+                               safeTranslate(qApp, "outlineBasics", "&Copy"), menu)
         self.actCopy.triggered.connect(self.copy)
         menu.addAction(self.actCopy)
 
         self.actPaste = QAction(QIcon.fromTheme("edit-paste"),
-                                qApp.translate("outlineBasics", "&Paste"), menu)
+                                safeTranslate(qApp, "outlineBasics", "&Paste"), menu)
         self.actPaste.triggered.connect(self.paste)
         menu.addAction(self.actPaste)
 
         # Rename / duplicate / remove items
         self.actDelete = QAction(QIcon.fromTheme("edit-delete"),
-                                 qApp.translate("outlineBasics", "&Delete"),
+                                 safeTranslate(qApp, "outlineBasics", "&Delete"),
                                  menu)
         self.actDelete.triggered.connect(self.delete)
         menu.addAction(self.actDelete)
 
         self.actRename = QAction(QIcon.fromTheme("edit-rename"),
-                                 qApp.translate("outlineBasics", "&Rename"),
+                                 safeTranslate(qApp, "outlineBasics", "&Rename"),
                                  menu)
         self.actRename.triggered.connect(self.rename)
         menu.addAction(self.actRename)
@@ -131,17 +131,17 @@ class outlineBasics(QAbstractItemView):
         menu.addSeparator()
 
         # POV
-        self.menuPOV = QMenu(qApp.translate("outlineBasics", "Set POV"), menu)
+        self.menuPOV = QMenu(safeTranslate(qApp, "outlineBasics", "Set POV"), menu)
         mw = mainWindow()
-        a = QAction(QIcon.fromTheme("dialog-no"), qApp.translate("outlineBasics", "None"), self.menuPOV)
+        a = QAction(QIcon.fromTheme("dialog-no"), safeTranslate(qApp, "outlineBasics", "None"), self.menuPOV)
         a.triggered.connect(lambda: self.setPOV(""))
         self.menuPOV.addAction(a)
         self.menuPOV.addSeparator()
 
         menus = []
-        for i in [qApp.translate("outlineBasics", "Main"),
-                  qApp.translate("outlineBasics", "Secondary"),
-                  qApp.translate("outlineBasics", "Minor")]:
+        for i in [safeTranslate(qApp, "outlineBasics", "Main"),
+                  safeTranslate(qApp, "outlineBasics", "Secondary"),
+                  safeTranslate(qApp, "outlineBasics", "Minor")]:
             m = QMenu(i, self.menuPOV)
             menus.append(m)
             self.menuPOV.addMenu(m)
@@ -160,8 +160,8 @@ class outlineBasics(QAbstractItemView):
         menu.addMenu(self.menuPOV)
 
         # Status
-        self.menuStatus = QMenu(qApp.translate("outlineBasics", "Set Status"), menu)
-        # a = QAction(QIcon.fromTheme("dialog-no"), qApp.translate("outlineBasics", "None"), self.menuStatus)
+        self.menuStatus = QMenu(safeTranslate(qApp, "outlineBasics", "Set Status"), menu)
+        # a = QAction(QIcon.fromTheme("dialog-no"), safeTranslate(qApp, "outlineBasics", "None"), self.menuStatus)
         # a.triggered.connect(lambda: self.setStatus(""))
         # self.menuStatus.addAction(a)
         # self.menuStatus.addSeparator()
@@ -176,7 +176,7 @@ class outlineBasics(QAbstractItemView):
         menu.addMenu(self.menuStatus)
 
         # Labels
-        self.menuLabel = QMenu(qApp.translate("outlineBasics", "Set Label"), menu)
+        self.menuLabel = QMenu(safeTranslate(qApp, "outlineBasics", "Set Label"), menu)
         mpr = QSignalMapper(self.menuLabel)
         for i in range(mw.mdlLabels.rowCount()):
             a = QAction(mw.mdlLabels.item(i, 0).icon(),
@@ -194,8 +194,8 @@ class outlineBasics(QAbstractItemView):
         if self.menuCustomIcons:
             menu.addMenu(self.menuCustomIcons)
         else:
-            self.menuCustomIcons = QMenu(qApp.translate("outlineBasics", "Set Custom Icon"), menu)
-            a = QAction(qApp.translate("outlineBasics", "Restore to default"), self.menuCustomIcons)
+            self.menuCustomIcons = QMenu(safeTranslate(qApp, "outlineBasics", "Set Custom Icon"), menu)
+            a = QAction(safeTranslate(qApp, "outlineBasics", "Restore to default"), self.menuCustomIcons)
             a.triggered.connect(lambda: self.setCustomIcon(""))
             self.menuCustomIcons.addAction(a)
             self.menuCustomIcons.addSeparator()
@@ -280,7 +280,7 @@ class outlineBasics(QAbstractItemView):
         if _type == "text":
             _type = settings.defaultTextType
 
-        item = outlineItem(title=qApp.translate("outlineBasics", "New"), _type=_type)
+        item = outlineItem(title=safeTranslate(qApp, "outlineBasics", "New"), _type=_type)
         self.model().appendItem(item, parent)
 
     def copy(self):
@@ -312,7 +312,7 @@ class outlineBasics(QAbstractItemView):
         if not settings.dontShowDeleteWarning:
             msgInfo = list()
             msgInfo.append("<p><b>")
-            msgInfo.append(qApp.translate("outlineBasics", "You're about to delete {} item(s).").format(
+            msgInfo.append(safeTranslate(qApp, "outlineBasics", "You're about to delete {} item(s).").format(
                 len(self.getSelection())
             ))
 
@@ -322,11 +322,11 @@ class outlineBasics(QAbstractItemView):
                 msgInfo.append("<li>{}</li>".format(str(title)))
 
             msgInfo.append("</ul><p>")
-            msgInfo.append(qApp.translate("outlineBasics", "Are you sure?"))
+            msgInfo.append(safeTranslate(qApp, "outlineBasics", "Are you sure?"))
             msgInfo.append("</p>")
 
             msg = QMessageBox(QMessageBox.Warning,
-                qApp.translate("outlineBasics", "About to remove"),
+                safeTranslate(qApp, "outlineBasics", "About to remove"),
                 "".join(msgInfo),
                 QMessageBox.Yes | QMessageBox.Cancel)
 
@@ -431,7 +431,7 @@ class outlineBasics(QAbstractItemView):
 
         # Check that we have at least 2 items
         if len(items) < 2:
-            statusMessage(qApp.translate("outlineBasics",
+            statusMessage(safeTranslate(qApp, "outlineBasics",
                           "Select at least two items. Folders are ignored."),
                           importance=2)
             return
@@ -440,7 +440,7 @@ class outlineBasics(QAbstractItemView):
         p = items[0].parent()
         for i in items:
             if i.parent() != p:
-                statusMessage(qApp.translate("outlineBasics",
+                statusMessage(safeTranslate(qApp, "outlineBasics",
                           "All items must be on the same level (share the same parent)."),
                           importance=2)
                 return

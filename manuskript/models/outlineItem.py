@@ -256,12 +256,12 @@ class outlineItem(abstractItem, searchableItem):
         if not wc:
             wc = 0
         if goal:
-            return qApp.translate("outlineItem", "{} words / {} ({})").format(
+            return F.safeTranslate(qApp, "outlineItem", "{} words / {} ({})").format(
                     locale.format_string("%d", wc, grouping=True),
                     locale.format_string("%d", goal, grouping=True),
                     "{}%".format(str(int(progress * 100))))
         else:
-            return qApp.translate("outlineItem", "{} words").format(
+            return F.safeTranslate(qApp, "outlineItem", "{} words").format(
                     locale.format_string("%d", wc, grouping=True))
 
     #######################################################################

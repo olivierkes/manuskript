@@ -11,7 +11,7 @@ from manuskript.exporter.pandoc.HTML import HTML
 from manuskript.exporter.pandoc.PDF import PDF
 from manuskript.exporter.pandoc.outputFormats import ePub, OpenDocument, DocX
 from manuskript.exporter.pandoc.plainText import reST, markdown, latex, OPML
-from manuskript.functions import mainWindow
+from manuskript.functions import mainWindow, safeTranslate
 
 import logging
 LOGGER = logging.getLogger(__name__)
@@ -19,7 +19,7 @@ LOGGER = logging.getLogger(__name__)
 class pandocExporter(basicExporter):
 
     name = "Pandoc"
-    description = qApp.translate("Export", """<p>A universal document converter. Can be used to convert Markdown to a wide range of other
+    description = safeTranslate(qApp, "Export", """<p>A universal document converter. Can be used to convert Markdown to a wide range of other
     formats.</p>
     <p>Website: <a href="http://www.pandoc.org">http://pandoc.org/</a></p>
     """)
@@ -106,7 +106,7 @@ class pandocExporter(basicExporter):
                 + "Stderr content:\n" + stderr.decode("utf-8")
             if p.returncode != 0:
                 LOGGER.error(err)
-                QMessageBox.critical(mainWindow().dialog, qApp.translate("Export", "Error"), err)
+                QMessageBox.critical(mainWindow().dialog, safeTranslate(qApp, "Export", "Error"), err)
             else:
                 LOGGER.warning(err)
             return None

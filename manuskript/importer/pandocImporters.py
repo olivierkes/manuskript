@@ -5,6 +5,8 @@ from manuskript.importer.abstractImporter import abstractImporter
 from manuskript.exporter.pandoc import pandocExporter
 from manuskript.importer.opmlImporter import opmlImporter
 from manuskript.importer.markdownImporter import markdownImporter
+from manuskript.functions import safeTranslate
+
 from PyQt5.QtWidgets import qApp
 
 
@@ -55,10 +57,10 @@ class pandocImporter(abstractImporter):
 
         # Add group
         group = self.addGroup(widget.toolBox.widget(0),
-                              qApp.translate("Import", "Pandoc import"))
+                              safeTranslate(qApp, "Import", "Pandoc import"))
 
         self.addSetting("info", "label",
-                        qApp.translate("Import", """<b>Info:</b> Manuskript can
+                        safeTranslate(qApp, "Import", """<b>Info:</b> Manuskript can
                         import from <b>markdown</b> or <b>OPML</b>. Pandoc will
                         convert your document to either (see option below), and
                         then it will be imported in manuskript. One or the other
@@ -66,14 +68,14 @@ class pandocImporter(abstractImporter):
                         <br/>&nbsp;"""))
 
         self.addSetting("formatTo", "combo",
-                        qApp.translate("Import", "Import using:"),
+                        safeTranslate(qApp, "Import", "Import using:"),
                         vals="markdown|OPML")
 
         self.addSetting("wrap", "combo",
-                        qApp.translate("Import", "Wrap lines:"),
+                        safeTranslate(qApp, "Import", "Wrap lines:"),
                         vals="auto|none|preserve",
                         default="none",
-                        tooltip=qApp.translate("Import", """<p>Should pandoc create
+                        tooltip=safeTranslate(qApp, "Import", """<p>Should pandoc create
                         cosmetic / non-semantic line-breaks?</p><p>
                         <b>auto</b>: wraps at 72 characters.<br>
                         <b>none</b>: no line wrap.<br>

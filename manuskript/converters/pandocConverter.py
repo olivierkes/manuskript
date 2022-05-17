@@ -9,7 +9,7 @@ from PyQt5.QtWidgets import qApp, QMessageBox
 from PyQt5.QtGui import QCursor
 
 from manuskript.converters import abstractConverter
-from manuskript.functions import mainWindow
+from manuskript.functions import mainWindow, safeTranslate
 
 import logging
 LOGGER = logging.getLogger(__name__)
@@ -74,7 +74,7 @@ class pandocConverter(abstractConverter):
             err = stderr.decode("utf-8")
             LOGGER.error(err)
             QMessageBox.critical(mainWindow().dialog,
-                                 qApp.translate("Export", "Error"), err)
+                                 safeTranslate(qApp, "Export", "Error"), err)
             return None
 
         return stdout.decode("utf-8")

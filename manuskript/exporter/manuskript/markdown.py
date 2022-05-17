@@ -4,14 +4,14 @@ from PyQt5.QtGui import QTextCharFormat, QFont
 from PyQt5.QtWidgets import QPlainTextEdit, QGroupBox, qApp, QVBoxLayout, QCheckBox
 
 from manuskript.exporter.manuskript.plainText import plainText
-from manuskript.functions import mainWindow
+from manuskript.functions import mainWindow, safeTranslate
 from manuskript.ui.highlighters import MMDHighlighter
 from manuskript.ui.exporters.manuskript.plainTextSettings import exporterSettings
 
 
 class markdown(plainText):
     name = "Markdown"
-    description = qApp.translate("Export", """Just like plain text, excepts adds markdown titles.
+    description = safeTranslate(qApp, "Export", """Just like plain text, excepts adds markdown titles.
                           Presupposes that texts are formatted in markdown.""")
 
     exportVarName = "lastManuskriptMarkdown"
@@ -57,7 +57,7 @@ class markdownSettings(exporterSettings):
         w = self.toolBox.widget(self.toolBox.count() - 1)
         self.grpMarkdown = QGroupBox(self.tr("Markdown"))
         self.grpMarkdown.setLayout(QVBoxLayout())
-        self.chkMarkdownHighlighter = QCheckBox(qApp.translate("Export", "Preview with highlighter."))
+        self.chkMarkdownHighlighter = QCheckBox(safeTranslate(qApp, "Export", "Preview with highlighter."))
         self.grpMarkdown.layout().addWidget(self.chkMarkdownHighlighter)
 
         w.layout().insertWidget(w.layout().count() - 1, self.grpMarkdown)
