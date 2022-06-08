@@ -1,8 +1,48 @@
 # Changelog
 
-## [0.13.1](https://github.com/olivierkes/manuskript/tree/HEAD)
+## [0.14.0](https://github.com/olivierkes/manuskript/tree/0.14.0) (2022-06-08)
 
-[Full Changelog](https://github.com/olivierkes/manuskript/compare/0.12.0...HEAD)
+[Full Changelog](https://github.com/olivierkes/manuskript/compare/0.13.1...0.14.0)
+
+**Implemented enhancements:**
+
+- \[Feature Request\] Full Compile Export [\#1034](https://github.com/olivierkes/manuskript/issues/1034)
+- Cleaning up the flatpak [\#1029](https://github.com/olivierkes/manuskript/issues/1029)
+
+**Fixed bugs:**
+
+- Crashing when I'm trying to create the 1st project [\#1035](https://github.com/olivierkes/manuskript/issues/1035)
+- crash on the "Outline" section [\#1032](https://github.com/olivierkes/manuskript/issues/1032)
+- Manuskript crashing while booting [\#1021](https://github.com/olivierkes/manuskript/issues/1021)
+- \[Bug\] double click causes crash in outline or plots view [\#1014](https://github.com/olivierkes/manuskript/issues/1014)
+- Re-ordering items in the outline causes data loss/text overwritting [\#1001](https://github.com/olivierkes/manuskript/issues/1001)
+- An unhandled exception has occurred! on cheatsheet [\#994](https://github.com/olivierkes/manuskript/issues/994)
+- Crash when changing index card style [\#992](https://github.com/olivierkes/manuskript/issues/992)
+- Regex search causes crash [\#989](https://github.com/olivierkes/manuskript/issues/989)
+- Crash when project file is open in another application [\#950](https://github.com/olivierkes/manuskript/issues/950)
+- outliner folder gets renamed and contents replaced when dragged over other folder, only in upward direction [\#719](https://github.com/olivierkes/manuskript/issues/719)
+
+**Closed issues:**
+
+- Creating empty language file hr-HR [\#1023](https://github.com/olivierkes/manuskript/issues/1023)
+- Creating project from template dialog has fixed size [\#996](https://github.com/olivierkes/manuskript/issues/996)
+- Russian translation [\#990](https://github.com/olivierkes/manuskript/issues/990)
+- \[Windows Version\] Two program windows pop up [\#327](https://github.com/olivierkes/manuskript/issues/327)
+
+**Merged pull requests:**
+
+- catch AttributeError in plotTreeView double click event \(fixes \#1014\) [\#1015](https://github.com/olivierkes/manuskript/pull/1015) ([amconners](https://github.com/amconners))
+- Change welcome page spacer size policy to allow welcome to expand to fill most of screen \(fixes olivierkes\#996\) [\#1007](https://github.com/olivierkes/manuskript/pull/1007) ([jdanielp](https://github.com/jdanielp))
+- Fix crash when files are locked for writing \(Fixes olivierkes\#950\) [\#1004](https://github.com/olivierkes/manuskript/pull/1004) ([jdanielp](https://github.com/jdanielp))
+- Fix crash when regex is not valid \(Fixes olivierkes\#989\) [\#1003](https://github.com/olivierkes/manuskript/pull/1003) ([jdanielp](https://github.com/jdanielp))
+- Potential fix for \#719, \#1001: data loss when reordering items in upward direction [\#1002](https://github.com/olivierkes/manuskript/pull/1002) ([olivierkes](https://github.com/olivierkes))
+- hard\_line\_breaks support [\#1000](https://github.com/olivierkes/manuskript/pull/1000) ([Mte90](https://github.com/Mte90))
+- Fix for \#992 and \#998 [\#999](https://github.com/olivierkes/manuskript/pull/999) ([amconners](https://github.com/amconners))
+- Write a test for ParseMMDFile function. [\#831](https://github.com/olivierkes/manuskript/pull/831) ([zeth](https://github.com/zeth))
+
+## [0.13.1](https://github.com/olivierkes/manuskript/tree/0.13.1) (2021-12-13)
+
+[Full Changelog](https://github.com/olivierkes/manuskript/compare/0.12.0...0.13.1)
 
 **Implemented enhancements:**
 

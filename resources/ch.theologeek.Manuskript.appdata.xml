@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2021 Tobias Frisch -->
+<!-- Copyright 2021-2022 Tobias Frisch -->
 <component type="desktop">
 	<id>ch.theologeek.Manuskript</id>
 	<metadata_license>CC0-1.0</metadata_license>
@@ -38,6 +38,7 @@
 
 	<launchable type="desktop-id">ch.theologeek.Manuskript.desktop</launchable>
 	<releases>
+		<release version="0.14.0" date="2022-06-08" />
 		<release version="0.13.1" date="2021-12-13" />
 		<release version="0.12.0" date="2021-04-30" />
 	</releases>
