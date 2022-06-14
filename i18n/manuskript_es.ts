@@ -420,7 +420,7 @@ Use that if you get YAML related error.</source>
                         importar desde &lt;b&gt;;markdown&lt;/b&gt; u &lt;b&gt;OPML&lt;/b&gt;. Pandoc convertirá
                         su documento a uno de ellos (vea la opción de debajo), y
                         después se importará en Manuskript. Dependiendo de su documento
-                        podríaa obtener mejores resultados con uno u otro.
+                        podría obtener mejores resultados con uno u otro.
                         &lt;br/&gt;&amp;nbsp;</translation>
     </message>
     <message>
