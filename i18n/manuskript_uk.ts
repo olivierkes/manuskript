@@ -66,7 +66,7 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="99"/>
         <source>Include a table of contents.</source>
-        <translation>Включити зміст.</translation>
+        <translation>Долучити зміст.</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="102"/>
@@ -370,7 +370,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="107"/>
         <source>Include only those extensions:</source>
-        <translation>Включити лише наступні розширення:</translation>
+        <translation>Долучити лише наступні розширення:</translation>
     </message>
     <message>
         <location filename="../manuskript/importer/folderImporter.py" line="107"/>
