@@ -6,12 +6,12 @@
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="18"/>
         <source>Basic HTML output using the Python module &apos;markdown&apos;.</source>
-        <translation>使用Python的&apos;markdown&apos;模块输出HTML。</translation>
+        <translation>使用 Python 的“markdown”模块输出 HTML。</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="19"/>
         <source>Python module &apos;markdown&apos;.</source>
-        <translation>Python模块&apos;markdown&apos;。</translation>
+        <translation>Python 模块“markdown”。</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/manuskript/HTML.py" line="54"/>
@@ -904,7 +904,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2517"/>
         <source>Co&amp;mpile</source>
-        <translation>编译（&amp;M）</translation>
+        <translation>导出（&amp;M）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2520"/>
@@ -1062,7 +1062,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1548"/>
         <source>Compile</source>
-        <translation>编译</translation>
+        <translation>导出</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1571"/>
@@ -1242,7 +1242,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2177"/>
         <source>&amp;Header</source>
-        <translation>头（&amp;H）</translation>
+        <translation>标题（&amp;H）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2683"/>
@@ -1773,7 +1773,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2115"/>
         <source>Compile</source>
-        <translation>编译</translation>
+        <translation>导出</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1937"/>
@@ -2386,7 +2386,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="207"/>
         <source>Compile</source>
-        <translation>编译</translation>
+        <translation>导出</translation>
     </message>
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="209"/>
@@ -2460,7 +2460,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/characterTreeView.py" line="32"/>
         <source>Minor</source>
-        <translation>不重要的</translation>
+        <translation>不重要</translation>
     </message>
 </context>
 <context>
@@ -2478,7 +2478,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/cheatSheet.py" line="113"/>
         <source>Minor</source>
-        <translation>不重要的</translation>
+        <translation>不重要</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/cheatSheet.py" line="113"/>
@@ -2531,7 +2531,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/cmbOutlineCharacterChoser.py" line="36"/>
         <source>Minor</source>
-        <translation>不重要的</translation>
+        <translation>不重要</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/cmbOutlineCharacterChoser.py" line="136"/>
@@ -2678,7 +2678,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="149"/>
         <source>Ignore compile status (include all items)</source>
-        <translation>忽略编译状态（包括所有条目）</translation>
+        <translation>忽略导出状态（包括所有条目）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="156"/>
@@ -3272,7 +3272,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="144"/>
         <source>Minor</source>
-        <translation>不重要的</translation>
+        <translation>不重要</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="197"/>
@@ -3380,7 +3380,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/outlineDelegates.py" line="143"/>
         <source>Minor</source>
-        <translation>不重要的</translation>
+        <translation>不重要</translation>
     </message>
 </context>
 <context>
@@ -3429,7 +3429,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/persosProxyModel.py" line="18"/>
         <source>Minors</source>
-        <translation>不重要的</translation>
+        <translation>不重要</translation>
     </message>
 </context>
 <context>
@@ -3640,7 +3640,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/plotModel.py" line="249"/>
         <source>Minor</source>
-        <translation>不重要的</translation>
+        <translation>不重要</translation>
     </message>
 </context>
 <context>
@@ -3658,7 +3658,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/plotTreeView.py" line="127"/>
         <source>Minor</source>
-        <translation>不重要的</translation>
+        <translation>不重要</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotTreeView.py" line="187"/>
@@ -3681,7 +3681,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/models/plotsProxyModel.py" line="24"/>
         <source>Minors</source>
-        <translation>不重要的</translation>
+        <translation>不重要</translation>
     </message>
 </context>
 <context>
@@ -3709,7 +3709,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/propertiesView_ui.ui" line="255"/>
         <source>Compile</source>
-        <translation>编译</translation>
+        <translation>导出</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/propertiesView_ui.ui" line="269"/>
@@ -4056,7 +4056,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/views/sldImportance.py" line="29"/>
         <source>Minor</source>
-        <translation type="unfinished">不重要的</translation>
+        <translation type="unfinished">不重要</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/sldImportance.py" line="30"/>
@@ -4341,7 +4341,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="224"/>
         <source>Empty fiction</source>
-        <translation>空虚构效果</translation>
+        <translation>空白虚构作品</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="448"/>
@@ -4371,7 +4371,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="246"/>
         <source>Empty non-fiction</source>
-        <translation>空非虚构效果</translation>
+        <translation>空白非虚构作品</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="308"/>
@@ -4426,7 +4426,7 @@ Use that if you get YAML related error.</source>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="457"/>
         <source>TODO</source>
-        <translation>TODO</translation>
+        <translation>待修编</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="458"/>
