@@ -12,7 +12,7 @@ export HOMEBREW_NO_AUTO_UPDATE=1 # (please let it go, homebrew!)
 brew install enchant
 brew postinstall python   # this installs pip
 sudo -H pip3 install --upgrade pip setuptools wheel
-pip3 install pyinstaller PyQt5 lxml pyenchant pytest pytest-faulthandler
+pip3 install pyinstaller PyQt5 lxml pyenchant pytest pytest-faulthandler pillow dmgbuild
 brew install hunspell
 # Fooling PyEnchant as described in the wiki.
 #   https://github.com/olivierkes/manuskript/wiki/Package-manuskript-for-OS-X
