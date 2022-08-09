@@ -14,7 +14,10 @@ from PyQt5.QtWidgets import QApplication, qApp, QStyleFactory
 from manuskript.functions import appPath, writablePath
 from manuskript.version import getVersion
 
-faulthandler.enable()
+try:
+    faulthandler.enable()
+except AttributeError:
+    print("Faulthandler failed")
 
 import logging
 LOGGER = logging.getLogger(__name__)
