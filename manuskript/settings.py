@@ -108,7 +108,7 @@ frequencyAnalyzer = {
 }
 
 viewMode = "fiction"  # simple, fiction
-saveToZip = True
+saveToZip = False
 dontShowDeleteWarning = False
 
 def initDefaultValues():

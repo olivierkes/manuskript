@@ -10,6 +10,7 @@ from manuskript.searchLabels import CharacterSearchLabels
 from manuskript.models.searchableModel import searchableModel
 from manuskript.models.searchableItem import searchableItem
 
+
 class characterModel(QAbstractItemModel, searchableModel):
 
     def __init__(self, parent):
@@ -168,17 +169,17 @@ class characterModel(QAbstractItemModel, searchableModel):
 # ADDING / REMOVING
 ###############################################################################
 
-    def addCharacter(self, importance = 0, name="New character"):
+    def addCharacter(self, importance=0, name=None):
         """
         Creates a new character
         @param importance: the importance level of the character
         @return: the character
         """
         if not name:
-            name="New Character"
-        c = Character(model=self, name=self.tr(name), importance = importance)
-        self.beginInsertRows(QModelIndex(), len(
-            self.characters), len(self.characters))
+            name = self.tr("New character")
+
+        c = Character(model=self, name=self.tr(name), importance=importance)
+        self.beginInsertRows(QModelIndex(), len(self.characters), len(self.characters))
         self.characters.append(c)
         self.endInsertRows()
         return c
@@ -212,7 +213,10 @@ class characterModel(QAbstractItemModel, searchableModel):
         c = self.getCharacterByID(ID)
         self.beginInsertRows(c.index(), len(c.infos), len(c.infos))
         c.infos.append(CharacterInfo(
-            c, description="Description", value="Value"))
+            c,
+            description=self.tr("Description"),
+            value=self.tr("Value")
+        ))
         self.endInsertRows()
 
         mainWindow().updatePersoInfoView()
@@ -239,13 +243,17 @@ class characterModel(QAbstractItemModel, searchableModel):
 # CHARACTER
 ###############################################################################
 
+
 class Character(searchableItem):
-    def __init__(self, model, name="No name", importance = 0):
+
+    def __init__(self, model, name=None, importance=0):
         self._model = model
         self.lastPath = ""
 
-        self._data = {}
-        self._data[C.name.value] = name
+        if not name:
+            name = self.translate("Unknown")
+
+        self._data = {C.name.value: name}
         self.assignUniqueID()
         self.assignRandomColor()
         self._data[C.importance.value] = str(importance)
