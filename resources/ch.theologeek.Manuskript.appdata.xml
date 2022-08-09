@@ -28,11 +28,29 @@
 
 	<screenshots>
 		<screenshot type="default">
-			<image>http://www.theologeek.ch/manuskript/wp-content/uploads/2017/11/manuskript-0.5.0-main-view.jpg</image>
+			<image>https://www.theologeek.ch/manuskript/wp-content/uploads/2022/08/screenshot01.png</image>
+		</screenshot>
+		<screenshot>
+			<image>https://www.theologeek.ch/manuskript/wp-content/uploads/2022/08/screenshot02.png</image>
+		</screenshot>
+		<screenshot>
+			<image>https://www.theologeek.ch/manuskript/wp-content/uploads/2022/08/screenshot03.png</image>
+		</screenshot>
+		<screenshot>
+			<image>https://www.theologeek.ch/manuskript/wp-content/uploads/2022/08/screenshot04.png</image>
+		</screenshot>
+		<screenshot>
+			<image>https://www.theologeek.ch/manuskript/wp-content/uploads/2022/08/screenshot05.png</image>
 		</screenshot>
 	</screenshots>
 
 	<url type="homepage">http://www.theologeek.ch/manuskript</url>
+	<url type="bugtracker">https://github.com/olivierkes/manuskript/issues</url>
+	<url type="help">https://www.theologeek.ch/manuskript/category/features</url>
+	
+	<url type="translate">https://hosted.weblate.org/projects/manuskript/translations</url>
+	<url type="vcs-browser">https://github.com/olivierkes/manuskript</url>
+	<url type="contribute">https://github.com/olivierkes/manuskript/wiki#contributing</url>
 
 	<update_contact>thejackimonster_at_gmail.com</update_contact>
 
