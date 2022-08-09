@@ -6,7 +6,9 @@ from manuskript.models.searchResultModel import searchResultModel
 from manuskript.functions import search
 from PyQt5.QtCore import QCoreApplication
 
-class searchableItem():
+
+class searchableItem:
+
     def __init__(self, searchColumnLabels):
         self._searchColumnLabels = searchColumnLabels
 

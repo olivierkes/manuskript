@@ -105,9 +105,10 @@ class plotModel(QStandardItemModel, searchableModel):
     # ADDING / REMOVING
     ###############################################################################
 
-    def addPlot(self, name="New plot"):
+    def addPlot(self, name=None):
         if not name:
-            name="New Plot"
+            name = self.tr("New plot")
+
         p = QStandardItem(self.tr(name))
         _id = QStandardItem(self.getUniqueID())
         importance = QStandardItem(str(0))
