@@ -2085,12 +2085,12 @@
     <message>
         <location filename="../manuskript/models/characterModel.py" line="179"/>
         <source>New character</source>
-        <translation type="unfinished"></translation>
+        <translation>Новий персонаж</translation>
     </message>
     <message>
         <location filename="../manuskript/models/characterModel.py" line="215"/>
         <source>Description</source>
-        <translation type="unfinished">Опис</translation>
+        <translation>Опис</translation>
     </message>
 </context>
 <context>
@@ -2396,7 +2396,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="911"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>Замінювати одинарні лапки (') на:</translation>
+        <translation>Замінювати одинарні лапки (&apos;) на:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1020"/>
@@ -3152,7 +3152,7 @@
     <message>
         <location filename="../manuskript/models/plotModel.py" line="110"/>
         <source>New plot</source>
-        <translation type="unfinished"></translation>
+        <translation>Новий сюжет</translation>
     </message>
 </context>
 <context>
