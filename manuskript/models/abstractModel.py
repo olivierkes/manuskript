@@ -29,6 +29,7 @@ import time, os
 import logging
 LOGGER = logging.getLogger(__name__)
 
+
 class abstractModel(QAbstractItemModel):
     """
     Abstract model is the base class for all others models we use.
@@ -45,6 +46,7 @@ class abstractModel(QAbstractItemModel):
     """
     def __init__(self, parent):
         QAbstractItemModel.__init__(self, parent)
+        self.rootItem = None
         self.nextAvailableID = 1
 
         # Stores removed item, in order to remove them on disk when saving, depending on the file format.
@@ -62,7 +64,6 @@ class abstractModel(QAbstractItemModel):
             self.nextAvailableID = int(addedID) + 1
 
     def index(self, row, column, parent):
-
         if not self.hasIndex(row, column, parent):
             return QModelIndex()
 
@@ -70,6 +71,9 @@ class abstractModel(QAbstractItemModel):
             parentItem = self.rootItem
         else:
             parentItem = parent.internalPointer()
+
+        if not parentItem:
+            return QModelIndex()
 
         childItem = parentItem.child(row)
         if childItem:
@@ -85,10 +89,8 @@ class abstractModel(QAbstractItemModel):
         if not parent:
             parent = self.rootItem
 
-        if len(parent.children()) == 0:
+        if (not parent) or (len(parent.children()) == 0):
             return None
-
-        #LOGGER.debug("%s: %s", item.title(), [i.title() for i in parent.children()])
 
         row = parent.children().index(item)
         col = column
@@ -104,6 +106,9 @@ class abstractModel(QAbstractItemModel):
         Returns a list of IDs of all items containing `text`
         in columns `columns` (being a list of int).
         """
+        if not self.rootItem:
+            return list()
+
         return self.rootItem.findItemsContaining(text, columns, mainWindow(), caseSensitive)
 
     def getItemByID(self, ID, ignore=None):
@@ -120,6 +125,9 @@ class abstractModel(QAbstractItemModel):
                 r = search(c)
                 if r:
                     return r
+
+        if not self.rootItem:
+            return None
 
         item = search(self.rootItem)
         return item
@@ -145,7 +153,7 @@ class abstractModel(QAbstractItemModel):
         # Check whether the parent is the root, or is otherwise invalid.
         # That is to say: no parent or the parent lacks a parent.
         if (parentItem == self.rootItem) or \
-           (parentItem == None) or (parentItem.parent() == None):
+           (not parentItem) or (not parentItem.parent()):
             return QModelIndex()
 
         return self.createIndex(parentItem.row(), 0, parentItem)
@@ -159,13 +167,21 @@ class abstractModel(QAbstractItemModel):
         else:
             parentItem = parent.internalPointer()
 
+        if not parentItem:
+            return 0
+
         return parentItem.childCount()
 
     def columnCount(self, parent=QModelIndex()):
         if parent.isValid():
-            return parent.internalPointer().columnCount()
+            parentItem = parent.internalPointer()
         else:
-            return self.rootItem.columnCount()
+            parentItem = self.rootItem
+
+        if not parentItem:
+            return 0
+
+        return parentItem.columnCount()
 
     def data(self, index, role=Qt.DisplayRole):
         if not index.isValid():
@@ -224,8 +240,6 @@ class abstractModel(QAbstractItemModel):
         else:
             return QVariant()
 
-        return True
-
     def maxLevel(self):
         """Returns the max depth of the model."""
         def depth(item, d=-1):
@@ -234,6 +248,9 @@ class abstractModel(QAbstractItemModel):
             for c in item.children():
                 r = max(r, depth(c, d))
             return r
+
+        if not self.rootItem:
+            return 0
 
         d = depth(self.rootItem)
         return d
@@ -297,7 +314,7 @@ class abstractModel(QAbstractItemModel):
 
         # # Gets encoded mime data to retrieve the item
         items = self.decodeMimeData(data)
-        if items == None:
+        if not items:
             return False
 
         # We check if parent is not a child of one of the items
@@ -319,6 +336,9 @@ class abstractModel(QAbstractItemModel):
         else:
             parentItem = parent.internalPointer()
 
+        if not parentItem:
+            return False
+
         for item in items:
             # Get parentItem's parents IDs in a list
             path = parentItem.pathID()  # path to item in the form [(ID, title), ...]
@@ -335,7 +355,7 @@ class abstractModel(QAbstractItemModel):
             return None
         encodedData = bytes(data.data("application/xml")).decode()
         root = ET.XML(encodedData)
-        if root == None:
+        if not root:
             return None
 
         if root.tag != "outlineItems":
@@ -452,7 +472,6 @@ class abstractModel(QAbstractItemModel):
                     removeIDs(item)
 
         r = self.insertItems(items, beginRow, parent)
-
         return r
 
     ################# ADDING AND REMOVING #################
@@ -465,6 +484,9 @@ class abstractModel(QAbstractItemModel):
             parentItem = self.rootItem
         else:
             parentItem = parent.internalPointer()
+
+        if not parentItem:
+            return False
 
         if parent.isValid() and parent.column() != 0:
             parent = parentItem.index()
@@ -488,6 +510,9 @@ class abstractModel(QAbstractItemModel):
             parentItem = self.rootItem
         else:
             parentItem = parent.internalPointer()
+
+        if not parentItem:
+            return
 
         if parent.isValid() and parent.column() != 0:
             parent = parentItem.index()
@@ -530,6 +555,9 @@ class abstractModel(QAbstractItemModel):
         else:
             parentItem = parent.internalPointer()
 
+        if not parentItem:
+            return False
+
         self._removingRows = True
         # Views that are updating can easily know
         # if this is due to row removal.
@@ -557,10 +585,15 @@ class abstractModel(QAbstractItemModel):
     ################# XML / saving / loading #################
 
     def saveToXML(self, xml=None):
+        if not self.rootItem:
+            return str()
+
         "If xml (filename) is given, saves the items to xml. Otherwise returns as string."
         root = ET.XML(self.rootItem.toXML())
+
         if xml:
             ET.ElementTree(root).write(xml, encoding="UTF-8", xml_declaration=True, pretty_print=True)
+            return str()
         else:
             return ET.tostring(root, encoding="UTF-8", xml_declaration=True, pretty_print=True)
 
@@ -577,6 +610,10 @@ class abstractModel(QAbstractItemModel):
     def indexFromPath(self, path):
         path = path.split(",")
         item = self.rootItem
+
+        if not item:
+            return None
+
         for p in path:
             if p != "" and int(p) < item.childCount():
                 item = item.child(int(p))
