@@ -94,22 +94,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.mprWordCount.setMapping(t, i)
         self.mprWordCount.mapped.connect(self.wordCount)
 
-        # Snowflake Method Cycle
-        self.mapperCycle = QSignalMapper(self)
-        for t, i in [
-            (self.btnStepTwo, 0),
-            (self.btnStepThree, 1),
-            (self.btnStepFour, 2),
-            (self.btnStepFive, 3),
-            (self.btnStepSix, 4),
-            (self.btnStepSeven, 5),
-            (self.btnStepEight, 6)
-        ]:
-            t.clicked.connect(self.mapperCycle.map)
-            self.mapperCycle.setMapping(t, i)
-
-        self.mapperCycle.mapped.connect(self.clickCycle)
-        self.cmbSummary.currentIndexChanged.connect(self.summaryPageChanged)
         self.cmbSummary.setCurrentIndex(0)
         self.cmbSummary.currentIndexChanged.emit(0)
 
@@ -291,20 +275,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if pName.endswith('.msk'):
             pName=pName[:-4]
         return pName
-
-    ###############################################################################
-    # SUMMARY
-    ###############################################################################
-
-    def summaryPageChanged(self, index):
-        fractalButtons = [
-            self.btnStepTwo,
-            self.btnStepThree,
-            self.btnStepFive,
-            self.btnStepSeven,
-        ]
-        for b in fractalButtons:
-            b.setVisible(fractalButtons.index(b) == index)
 
     ###############################################################################
     # OUTLINE
@@ -1245,28 +1215,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     ###############################################################################
     # GENERAL AKA UNSORTED
     ###############################################################################
-
-    def clickCycle(self, i):
-        if i == 0:  # step 2 - paragraph summary
-            self.tabMain.setCurrentIndex(self.TabSummary)
-            self.tabSummary.setCurrentIndex(1)
-        if i == 1:  # step 3 - characters summary
-            self.tabMain.setCurrentIndex(self.TabPersos)
-            self.tabPersos.setCurrentIndex(0)
-        if i == 2:  # step 4 - page summary
-            self.tabMain.setCurrentIndex(self.TabSummary)
-            self.tabSummary.setCurrentIndex(2)
-        if i == 3:  # step 5 - characters description
-            self.tabMain.setCurrentIndex(self.TabPersos)
-            self.tabPersos.setCurrentIndex(1)
-        if i == 4:  # step 6 - four page synopsis
-            self.tabMain.setCurrentIndex(self.TabSummary)
-            self.tabSummary.setCurrentIndex(3)
-        if i == 5:  # step 7 - full character charts
-            self.tabMain.setCurrentIndex(self.TabPersos)
-            self.tabPersos.setCurrentIndex(2)
-        if i == 6:  # step 8 - scene list
-            self.tabMain.setCurrentIndex(self.TabPlots)
 
     def wordCount(self, i):
 

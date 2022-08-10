@@ -326,7 +326,6 @@
                <widget class="QLabel" name="label_9">
                 <property name="font">
                  <font>
-                  <weight>75</weight>
                   <bold>true</bold>
                  </font>
                 </property>
@@ -335,11 +334,21 @@
                 </property>
                </widget>
               </item>
+              <item row="0" column="1">
+               <layout class="QVBoxLayout" name="lytSituation">
+                <item>
+                 <widget class="lineEditView" name="txtSummarySituation">
+                  <property name="placeholderText">
+                   <string>What if...?</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
               <item row="1" column="0">
                <widget class="QLabel" name="label_29">
                 <property name="font">
                  <font>
-                  <weight>75</weight>
                   <bold>true</bold>
                  </font>
                 </property>
@@ -619,78 +628,6 @@
                 </widget>
                </widget>
               </item>
-              <item row="3" column="1">
-               <layout class="QHBoxLayout" name="horizontalLayout_5">
-                <item>
-                 <spacer name="horizontalSpacer_8">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>40</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item>
-                 <widget class="QPushButton" name="btnStepThree">
-                  <property name="text">
-                   <string>Next</string>
-                  </property>
-                  <property name="icon">
-                   <iconset theme="go-next">
-                    <normaloff>.</normaloff>.</iconset>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QPushButton" name="btnStepTwo">
-                  <property name="text">
-                   <string>Next</string>
-                  </property>
-                  <property name="icon">
-                   <iconset theme="go-next">
-                    <normaloff>.</normaloff>.</iconset>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QPushButton" name="btnStepFive">
-                  <property name="text">
-                   <string>Next</string>
-                  </property>
-                  <property name="icon">
-                   <iconset theme="go-next">
-                    <normaloff>.</normaloff>.</iconset>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QPushButton" name="btnStepSeven">
-                  <property name="text">
-                   <string>Next</string>
-                  </property>
-                  <property name="icon">
-                   <iconset theme="go-next">
-                    <normaloff>.</normaloff>.</iconset>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item row="0" column="1">
-               <layout class="QVBoxLayout" name="lytSituation">
-                <item>
-                 <widget class="lineEditView" name="txtSummarySituation">
-                  <property name="placeholderText">
-                   <string>What if...?</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
              </layout>
             </item>
            </layout>
@@ -786,7 +723,7 @@
               </widget>
               <widget class="QTabWidget" name="tabPersos">
                <property name="currentIndex">
-                <number>0</number>
+                <number>3</number>
                </property>
                <widget class="QWidget" name="info">
                 <attribute name="title">
@@ -827,8 +764,8 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>429</width>
-                      <height>719</height>
+                      <width>453</width>
+                      <height>699</height>
                      </rect>
                     </property>
                     <layout class="QFormLayout" name="formLayout_8">
@@ -855,6 +792,13 @@
                         </widget>
                        </item>
                       </layout>
+                     </item>
+                     <item row="4" column="0">
+                      <widget class="QLabel" name="label_18">
+                       <property name="text">
+                        <string>Importance</string>
+                       </property>
+                      </widget>
                      </item>
                      <item row="4" column="1">
                       <layout class="QHBoxLayout" name="horizontalLayout_20">
@@ -946,44 +890,6 @@
                      <item row="11" column="1">
                       <widget class="MDEditCompleter" name="txtPersoSummaryPara"/>
                      </item>
-                     <item row="12" column="1">
-                      <layout class="QHBoxLayout" name="horizontalLayout_21">
-                       <item>
-                        <spacer name="horizontalSpacer_3">
-                         <property name="orientation">
-                          <enum>Qt::Horizontal</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>40</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                        </spacer>
-                       </item>
-                       <item>
-                        <widget class="QPushButton" name="btnStepFour">
-                         <property name="text">
-                          <string>Next</string>
-                         </property>
-                         <property name="icon">
-                          <iconset theme="go-next">
-                           <normaloff>.</normaloff>.</iconset>
-                         </property>
-                         <property name="flat">
-                          <bool>true</bool>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </item>
-                     <item row="4" column="0">
-                      <widget class="QLabel" name="label_18">
-                       <property name="text">
-                        <string>Importance</string>
-                       </property>
-                      </widget>
-                     </item>
                     </layout>
                    </widget>
                   </widget>
@@ -997,34 +903,6 @@
                 <layout class="QVBoxLayout" name="verticalLayout_17">
                  <item>
                   <widget class="MDEditCompleter" name="txtPersoSummaryFull"/>
-                 </item>
-                 <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_22">
-                   <item>
-                    <spacer name="horizontalSpacer_4">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>40</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                   <item>
-                    <widget class="QPushButton" name="btnStepSix">
-                     <property name="text">
-                      <string>Next</string>
-                     </property>
-                     <property name="icon">
-                      <iconset theme="go-next">
-                       <normaloff>.</normaloff>.</iconset>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
                  </item>
                 </layout>
                </widget>
@@ -1099,17 +977,6 @@
                       </size>
                      </property>
                     </spacer>
-                   </item>
-                   <item>
-                    <widget class="QPushButton" name="btnStepEight">
-                     <property name="text">
-                      <string>Next</string>
-                     </property>
-                     <property name="icon">
-                      <iconset theme="go-next">
-                       <normaloff>.</normaloff>.</iconset>
-                     </property>
-                    </widget>
                    </item>
                   </layout>
                  </item>
@@ -2127,7 +1994,7 @@
      <x>0</x>
      <y>0</y>
      <width>1112</width>
-     <height>21</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -2286,7 +2153,6 @@
       <widget class="cheatSheet" name="cheatSheet" native="true">
        <property name="font">
         <font>
-         <weight>50</weight>
          <bold>false</bold>
         </font>
        </property>
@@ -2320,7 +2186,6 @@
       <widget class="search" name="widget" native="true">
        <property name="font">
         <font>
-         <weight>50</weight>
          <bold>false</bold>
         </font>
        </property>
@@ -2991,10 +2856,6 @@
   <tabstop>txtSummaryPage</tabstop>
   <tabstop>txtSummaryPage_2</tabstop>
   <tabstop>txtSummaryFull</tabstop>
-  <tabstop>btnStepThree</tabstop>
-  <tabstop>btnStepTwo</tabstop>
-  <tabstop>btnStepFive</tabstop>
-  <tabstop>btnStepSeven</tabstop>
   <tabstop>txtSummarySituation</tabstop>
   <tabstop>lstCharacters</tabstop>
   <tabstop>btnAddPerso</tabstop>
@@ -3010,15 +2871,12 @@
   <tabstop>txtPersoEpiphany</tabstop>
   <tabstop>txtPersoSummarySentence</tabstop>
   <tabstop>txtPersoSummaryPara</tabstop>
-  <tabstop>btnStepFour</tabstop>
   <tabstop>txtPersoSummaryFull</tabstop>
-  <tabstop>btnStepSix</tabstop>
   <tabstop>txtPersoNotes</tabstop>
   <tabstop>tblPersoInfos</tabstop>
   <tabstop>btnPersoAddInfo</tabstop>
   <tabstop>btnPersoRmInfo</tabstop>
   <tabstop>lineEdit</tabstop>
-  <tabstop>btnStepEight</tabstop>
   <tabstop>lstPlots</tabstop>
   <tabstop>btnAddPlot</tabstop>
   <tabstop>btnRmPlot</tabstop>
