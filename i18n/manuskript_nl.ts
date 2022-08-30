@@ -16,7 +16,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="66"/>
         <source>Description</source>
-        <translation>Omschrijving</translation>
+        <translation>Beschrijving</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="100"/>
@@ -290,7 +290,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1033"/>
         <source>Notes</source>
-        <translation></translation>
+        <translation>Notities</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1043"/>
@@ -315,7 +315,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1678"/>
         <source>Description</source>
-        <translation></translation>
+        <translation>Beschrijving</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1255"/>
@@ -330,7 +330,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2077"/>
         <source>World</source>
-        <translation></translation>
+        <translation>Wereld</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1632"/>
@@ -385,7 +385,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2135"/>
         <source>&amp;File</source>
-        <translation></translation>
+        <translation>&amp;Bestand</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2139"/>
@@ -410,7 +410,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2233"/>
         <source>&amp;View</source>
-        <translation></translation>
+        <translation>&amp;Beeld</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2237"/>
@@ -430,7 +430,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2337"/>
         <source>&amp;Navigation</source>
-        <translation></translation>
+        <translation>&amp;Navigatie</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2372"/>
@@ -455,7 +455,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2396"/>
         <source>Sa&amp;ve as...</source>
-        <translation></translation>
+        <translation>Op&amp;slaan als...</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2399"/>
@@ -1114,7 +1114,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2864"/>
         <source>Search</source>
-        <translation>Zoek</translation>
+        <translation>Z&amp;oek</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2867"/>
@@ -2844,7 +2844,7 @@
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.ui" line="41"/>
         <source>Properties</source>
-        <translation></translation>
+        <translation>Eigenschappen</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.ui" line="81"/>
@@ -2900,7 +2900,7 @@
     <message>
         <location filename="../manuskript/ui/views/outlineDelegates.py" line="143"/>
         <source>Minor</source>
-        <translation></translation>
+        <translation>Ondergeschikt</translation>
     </message>
 </context>
 <context>
@@ -3147,7 +3147,7 @@
     <message>
         <location filename="../manuskript/models/plotModel.py" line="250"/>
         <source>Minor</source>
-        <translation></translation>
+        <translation>Ondergeschikt</translation>
     </message>
     <message>
         <location filename="../manuskript/models/plotModel.py" line="110"/>
@@ -3170,7 +3170,7 @@
     <message>
         <location filename="../manuskript/ui/views/plotTreeView.py" line="127"/>
         <source>Minor</source>
-        <translation></translation>
+        <translation>Ondergeschikt</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotTreeView.py" line="187"/>
@@ -3405,7 +3405,7 @@
     <message>
         <location filename="../manuskript/ui/views/sldImportance.py" line="29"/>
         <source>Minor</source>
-        <translation></translation>
+        <translation>Ondergeschikt</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/sldImportance.py" line="30"/>
@@ -3634,7 +3634,7 @@
     <message>
         <location filename="../manuskript/ui/welcome_ui.ui" line="177"/>
         <source>Add level</source>
-        <translation></translation>
+        <translation>Voeg niveau toe</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome_ui.ui" line="190"/>
@@ -3817,7 +3817,7 @@
     <message>
         <location filename="../manuskript/models/worldModel.py" line="251"/>
         <source>Fantasy world building</source>
-        <translation>Fantasie wereldbouwen</translation>
+        <translation>Fantasiewereld bouwen</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="251"/>
