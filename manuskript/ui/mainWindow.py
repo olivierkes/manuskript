@@ -76,14 +76,21 @@ class MainWindow:
         self.frequencyWindow = FrequencyWindow(self)
         self.settingsWindow = SettingsWindow(self)
 
+        self.windows = [
+            self.startupWindow,
+            self.aboutDialog,
+            self.frequencyWindow,
+            self.settingsWindow
+        ]
+
         bindMenuItem(builder, "open_menu_item", self.openAction)
         bindMenuItem(builder, "save_menu_item", self.saveAction)
         bindMenuItem(builder, "close_menu_item", self.closeAction)
         bindMenuItem(builder, "quit_menu_item", self.quitAction)
 
-        bindMenuItem(builder, "settings_menu_item", self.openSettings)
-        bindMenuItem(builder, "frequency_menu_item", self.openFrequency)
-        bindMenuItem(builder, "about_menu_item", self.openAbout)
+        bindMenuItem(builder, "settings_menu_item", self.settingsAction)
+        bindMenuItem(builder, "frequency_menu_item", self.frequencyAction)
+        bindMenuItem(builder, "about_menu_item", self.aboutAction)
 
     def getProject(self):
         return self.project
@@ -99,18 +106,21 @@ class MainWindow:
         self.startupWindow.show()
 
     def quitAction(self, menuItem: Gtk.MenuItem):
+        for window in self.windows:
+            window.hide()
+
         self.exit()
 
     def getSettings(self):
         return self.getProject().settings
 
-    def openSettings(self, menuItem: Gtk.MenuItem):
+    def settingsAction(self, menuItem: Gtk.MenuItem):
         self.settingsWindow.show()
 
-    def openFrequency(self, menuItem: Gtk.MenuItem):
+    def frequencyAction(self, menuItem: Gtk.MenuItem):
         self.frequencyWindow.show()
 
-    def openAbout(self, menuItem: Gtk.MenuItem):
+    def aboutAction(self, menuItem: Gtk.MenuItem):
         self.aboutDialog.show()
 
     def show(self):
@@ -127,6 +137,11 @@ class MainWindow:
         Gtk.main()
 
     def exit(self):
+        for window in self.windows:
+            if window.isVisible():
+                self.hide()
+                return
+
         self.window.destroy()
 
     def _notifyProperty(self, window, property):

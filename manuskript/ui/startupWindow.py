@@ -10,6 +10,7 @@ from manuskript.data import Template, TemplateLevel, TemplateKind
 from manuskript.util import validInt, validString
 
 from manuskript.ui.abstractDialog import AbstractDialog
+from manuskript.ui.startup import TemplateEntry
 from manuskript.ui.util import bindMenuItem
 
 
@@ -19,6 +20,7 @@ class StartupWindow(AbstractDialog):
         AbstractDialog.__init__(self, mainWindow, "ui/startup.glade", "startup_window")
 
         self.templates = Template.getDefaultTemplates()
+        self.template = None
 
         self.headerBar = None
         self.templatesLeaflet = None
@@ -29,6 +31,10 @@ class StartupWindow(AbstractDialog):
         self.demoTemplatesStore = None
 
         self.templateSelections = list()
+        self.templateLevelsListbox = None
+
+        self.addLevelButton = None
+        self.addGoalButton = None
 
     def initWindow(self, builder, window):
         self.headerBar = builder.get_object("header_bar")
@@ -40,6 +46,8 @@ class StartupWindow(AbstractDialog):
 
         bindMenuItem(builder, "open_menu_item", self.mainWindow.openAction)
         bindMenuItem(builder, "quit_menu_item", self.mainWindow.quitAction)
+
+        bindMenuItem(builder, "about_menu_item", self.mainWindow.aboutAction)
 
         self.templatesStore = builder.get_object("templates_store")
 
@@ -79,6 +87,38 @@ class StartupWindow(AbstractDialog):
         for selection in self.templateSelections:
             selection.connect("changed", self.templateSelectionChanged)
 
+        self.templateLevelsListbox = builder.get_object("template_levels_listbox")
+
+        self.addLevelButton = builder.get_object("add_level_button")
+        self.addGoalButton = builder.get_object("add_goal_button")
+
+        self.addLevelButton.connect("clicked", self.addLevelClicked)
+        self.addGoalButton.connect("clicked", self.addGoalClicked)
+
+    def loadTemplate(self, template: Template):
+        self.template = template
+        self.templateLevelsListbox.foreach(lambda child: self.templateLevelsListbox.remove(child))
+
+        self.addLevelButton.set_sensitive(self.template is not None)
+        self.addGoalButton.set_sensitive((self.template is not None) and (self.template.goal is None))
+
+        if self.template is None:
+            return
+
+        for level in self.template.levels:
+            entry = TemplateEntry(self)
+            entry.bindTemplate(template, level)
+
+            self.templateLevelsListbox.add(entry.widget)
+            entry.show()
+
+        if template.goal is not None:
+            entry = TemplateEntry(self)
+            entry.bindTemplate(template)
+
+            self.templateLevelsListbox.add(entry.widget)
+            entry.show()
+
     def templateSelectionChanged(self, selection: Gtk.TreeSelection):
         model, tree_iter = selection.get_selected()
 
@@ -90,6 +130,19 @@ class StartupWindow(AbstractDialog):
                 other.unselect_all()
 
         index = model[tree_iter][0]
-        template = self.templates[index]
 
-        print(template.name)
+        self.loadTemplate(self.templates[index] if (index >= 0) and (index < len(self.templates)) else None)
+
+    def addLevelClicked(self, button: Gtk.Button):
+        if self.template is None:
+            return
+
+        self.template.addLevel()
+        self.loadTemplate(self.template)
+
+    def addGoalClicked(self, button: Gtk.Button):
+        if self.template is None:
+            return
+
+        self.template.addGoal()
+        self.loadTemplate(self.template)

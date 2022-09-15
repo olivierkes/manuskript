@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.38.2 
+<!-- Generated with glade 3.40.0 
 
 Copyright (C) 2015-2021 Olivier Keshavjee et al.
 
@@ -360,9 +360,11 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                   <object class="GtkFlowBox">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
-                    <property name="column-spacing">1</property>
+                    <property name="column-spacing">4</property>
+                    <property name="row-spacing">4</property>
                     <property name="max-children-per-line">4</property>
                     <property name="selection-mode">none</property>
+                    <property name="activate-on-single-click">False</property>
                     <child>
                       <object class="GtkFlowBoxChild">
                         <property name="visible">True</property>

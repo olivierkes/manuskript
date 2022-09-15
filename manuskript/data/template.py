@@ -22,7 +22,7 @@ class TemplateKind(Enum):
 
 class TemplateLevel:
 
-    def __init__(self, size: int = 1, name: str = None):
+    def __init__(self, size: int = 10, name: str = None):
         self.size = max(size, 1)
         self.name = name
 
@@ -46,6 +46,20 @@ class Template:
             levelNames.append("Text")
 
         self.levelNames = levelNames
+
+    def addLevel(self):
+        index = min(len(self.levels), len(self.levelNames) - 1)
+
+        if index < 0:
+            return
+
+        self.levels.append(TemplateLevel(name=self.levelNames[index]))
+
+    def addGoal(self, value: int = 500):
+        if self.goal is not None:
+            return
+
+        self.goal = Goal(value)
 
     @classmethod
     def getDefaultTemplates(cls):

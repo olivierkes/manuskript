@@ -314,9 +314,11 @@
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <child>
-                          <object class="GtkListBox">
+                          <object class="GtkListBox" id="template_levels_listbox">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
+                            <property name="selection-mode">none</property>
+                            <property name="activate-on-single-click">False</property>
                           </object>
                         </child>
                       </object>
@@ -348,7 +350,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton">
+                      <object class="GtkButton" id="add_level_button">
                         <property name="label" translatable="yes">Add level</property>
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
@@ -361,8 +363,8 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton">
-                        <property name="label" translatable="yes">Add word count</property>
+                      <object class="GtkButton" id="add_goal_button">
+                        <property name="label" translatable="yes">Add goal</property>
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <property name="receives-default">True</property>
