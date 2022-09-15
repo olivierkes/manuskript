@@ -17,6 +17,7 @@ from manuskript.ui.tools import *
 from manuskript.ui.aboutDialog import AboutDialog
 from manuskript.ui.settingsWindow import SettingsWindow
 from manuskript.ui.startupWindow import StartupWindow
+from manuskript.ui.util import bindMenuItem
 
 
 class MainWindow:
@@ -41,15 +42,6 @@ class MainWindow:
 
         slot.pack_start(view.widget, True, True, 0)
         return view
-
-    @classmethod
-    def bindMenuItem(cls, builder, id, action):
-        menuItem = builder.get_object(id)
-
-        if menuItem is None:
-            return
-
-        menuItem.connect("activate", action)
 
     def __init__(self, path):
         self.project = Project(path)
@@ -84,25 +76,30 @@ class MainWindow:
         self.frequencyWindow = FrequencyWindow(self)
         self.settingsWindow = SettingsWindow(self)
 
-        MainWindow.bindMenuItem(builder, "open_menu_item", self.openProject)
-        MainWindow.bindMenuItem(builder, "save_menu_item", self.saveProject)
-        MainWindow.bindMenuItem(builder, "close_menu_item", self.closeProject)
-        MainWindow.bindMenuItem(builder, "settings_menu_item", self.openSettings)
-        MainWindow.bindMenuItem(builder, "frequency_menu_item", self.openFrequency)
-        MainWindow.bindMenuItem(builder, "about_menu_item", self.openAbout)
+        bindMenuItem(builder, "open_menu_item", self.openAction)
+        bindMenuItem(builder, "save_menu_item", self.saveAction)
+        bindMenuItem(builder, "close_menu_item", self.closeAction)
+        bindMenuItem(builder, "quit_menu_item", self.quitAction)
+
+        bindMenuItem(builder, "settings_menu_item", self.openSettings)
+        bindMenuItem(builder, "frequency_menu_item", self.openFrequency)
+        bindMenuItem(builder, "about_menu_item", self.openAbout)
 
     def getProject(self):
         return self.project
 
-    def openProject(self, menuItem: Gtk.MenuItem):
+    def openAction(self, menuItem: Gtk.MenuItem):
         pass
 
-    def saveProject(self, menuItem: Gtk.MenuItem):
+    def saveAction(self, menuItem: Gtk.MenuItem):
         self.getProject().save()
 
-    def closeProject(self, menuItem: Gtk.MenuItem):
+    def closeAction(self, menuItem: Gtk.MenuItem):
         self.hide()
         self.startupWindow.show()
+
+    def quitAction(self, menuItem: Gtk.MenuItem):
+        self.exit()
 
     def getSettings(self):
         return self.getProject().settings
@@ -129,7 +126,7 @@ class MainWindow:
         self.show()
         Gtk.main()
 
-    def close(self):
+    def exit(self):
         self.window.destroy()
 
     def _notifyProperty(self, window, property):

@@ -13,7 +13,7 @@ class GoalKind(Enum):
 class Goal:
 
     def __init__(self, value: int = 0, kind: GoalKind = GoalKind.WORDS):
-        self.value = value
+        self.value = max(value, 0)
         self.kind = kind
 
     def __str__(self):

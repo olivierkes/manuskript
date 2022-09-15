@@ -18,6 +18,7 @@ def rgbaFromColor(color: Color) -> Gdk.RGBA:
     rgba.alpha = 1.
     return rgba
 
+
 def pixbufFromColor(color: Color) -> GdkPixbuf:
     if color is None:
         return None
@@ -25,3 +26,12 @@ def pixbufFromColor(color: Color) -> GdkPixbuf:
     pixbuf = GdkPixbuf.Pixbuf.new(GdkPixbuf.Colorspace.RGB, False, 8, 16, 16)
     pixbuf.fill(color.getRGB())
     return pixbuf
+
+
+def bindMenuItem(builder, id, action):
+    menuItem = builder.get_object(id)
+
+    if menuItem is None:
+        return
+
+    menuItem.connect("activate", action)

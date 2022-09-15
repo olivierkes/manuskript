@@ -9,25 +9,29 @@
     <property name="limit">10</property>
     <property name="sort-type">mru</property>
   </object>
-  <object class="GtkListStore" id="template_store">
+  <object class="GtkListStore" id="templates_store">
     <columns>
       <!-- column-name ID -->
       <column type="gint"/>
       <!-- column-name name -->
       <column type="gchararray"/>
+      <!-- column-name kind -->
+      <column type="gint"/>
     </columns>
   </object>
-  <object class="GtkTreeModelFilter" id="demo_store">
-    <property name="child-model">template_store</property>
+  <object class="GtkTreeModelFilter" id="demo_templates_store">
+    <property name="child-model">templates_store</property>
   </object>
-  <object class="GtkTreeModelFilter" id="fiction_store">
-    <property name="child-model">template_store</property>
+  <object class="GtkTreeModelFilter" id="fiction_templates_store">
+    <property name="child-model">templates_store</property>
   </object>
-  <object class="GtkTreeModelFilter" id="nonfiction_store">
-    <property name="child-model">template_store</property>
+  <object class="GtkTreeModelFilter" id="nonfiction_templates_store">
+    <property name="child-model">templates_store</property>
   </object>
   <object class="HdyApplicationWindow" id="startup_window">
     <property name="can-focus">False</property>
+    <property name="default-width">900</property>
+    <property name="default-height">550</property>
     <child>
       <object class="GtkBox">
         <property name="visible">True</property>
@@ -70,12 +74,24 @@
                       <object class="GtkMenuItem" id="open_menu_item">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">_Open</property>
+                        <property name="use-underline">True</property>
                       </object>
                     </child>
                     <child>
                       <object class="GtkMenuItem" id="recent_menu_item">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">_Recent</property>
+                        <property name="use-underline">True</property>
+                        <child type="submenu">
+                          <object class="GtkRecentChooserMenu" id="recent_chooser_menu1">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="limit">10</property>
+                            <property name="sort-type">mru</property>
+                          </object>
+                        </child>
                       </object>
                     </child>
                     <child>
@@ -88,6 +104,8 @@
                       <object class="GtkMenuItem" id="quit_menu_item">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">_Quit</property>
+                        <property name="use-underline">True</property>
                       </object>
                     </child>
                   </object>
@@ -108,12 +126,16 @@
                       <object class="GtkCheckMenuItem" id="show_help_menu_item">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">_Show help texts</property>
+                        <property name="use-underline">True</property>
                       </object>
                     </child>
                     <child>
                       <object class="GtkMenuItem" id="about_menu_item">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">_About</property>
+                        <property name="use-underline">True</property>
                       </object>
                     </child>
                   </object>
@@ -128,7 +150,7 @@
           </packing>
         </child>
         <child>
-          <object class="HdyLeaflet" id="template_leaflet">
+          <object class="HdyLeaflet" id="templates_leaflet">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="margin-start">4</property>
@@ -169,10 +191,10 @@
                           <object class="GtkTreeView">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
-                            <property name="model">fiction_store</property>
+                            <property name="model">fiction_templates_store</property>
                             <property name="headers-visible">False</property>
                             <child internal-child="selection">
-                              <object class="GtkTreeSelection" id="fiction_selection"/>
+                              <object class="GtkTreeSelection" id="fiction_template_selection"/>
                             </child>
                             <child>
                               <object class="GtkTreeViewColumn">
@@ -207,10 +229,10 @@
                           <object class="GtkTreeView">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
-                            <property name="model">nonfiction_store</property>
+                            <property name="model">nonfiction_templates_store</property>
                             <property name="headers-visible">False</property>
                             <child internal-child="selection">
-                              <object class="GtkTreeSelection" id="nonfiction_selection"/>
+                              <object class="GtkTreeSelection" id="nonfiction_template_selection"/>
                             </child>
                             <child>
                               <object class="GtkTreeViewColumn">
@@ -245,10 +267,10 @@
                           <object class="GtkTreeView">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
-                            <property name="model">demo_store</property>
+                            <property name="model">demo_templates_store</property>
                             <property name="headers-visible">False</property>
                             <child internal-child="selection">
-                              <object class="GtkTreeSelection" id="demo_selection"/>
+                              <object class="GtkTreeSelection" id="demo_template_selection"/>
                             </child>
                             <child>
                               <object class="GtkTreeViewColumn">

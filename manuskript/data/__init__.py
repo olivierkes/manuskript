@@ -14,5 +14,6 @@ from manuskript.data.revisions import Revisions
 from manuskript.data.settings import Settings
 from manuskript.data.status import StatusHost, Status
 from manuskript.data.summary import Summary
+from manuskript.data.template import Template, TemplateLevel, TemplateKind
 from manuskript.data.unique_id import UniqueIDHost, UniqueID
 from manuskript.data.version import Version

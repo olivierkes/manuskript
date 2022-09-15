@@ -38,7 +38,7 @@ class AbstractDialog:
         self.window = None
 
         if not self.mainWindow.isVisible():
-            self.mainWindow.close()
+            self.mainWindow.exit()
 
     def show(self):
         if self.window is None:
