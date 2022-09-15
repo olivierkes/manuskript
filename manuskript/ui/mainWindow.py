@@ -16,6 +16,7 @@ from manuskript.ui.views import *
 from manuskript.ui.tools import *
 from manuskript.ui.aboutDialog import AboutDialog
 from manuskript.ui.settingsWindow import SettingsWindow
+from manuskript.ui.startupWindow import StartupWindow
 
 
 class MainWindow:
@@ -78,16 +79,30 @@ class MainWindow:
         self.outlineView = MainWindow.packViewIntoSlot(builder, "outline_slot", OutlineView)
         self.editorView = MainWindow.packViewIntoSlot(builder, "editor_slot", EditorView)
 
+        self.startupWindow = StartupWindow(self)
         self.aboutDialog = AboutDialog(self)
         self.frequencyWindow = FrequencyWindow(self)
         self.settingsWindow = SettingsWindow(self)
 
+        MainWindow.bindMenuItem(builder, "open_menu_item", self.openProject)
+        MainWindow.bindMenuItem(builder, "save_menu_item", self.saveProject)
+        MainWindow.bindMenuItem(builder, "close_menu_item", self.closeProject)
         MainWindow.bindMenuItem(builder, "settings_menu_item", self.openSettings)
         MainWindow.bindMenuItem(builder, "frequency_menu_item", self.openFrequency)
         MainWindow.bindMenuItem(builder, "about_menu_item", self.openAbout)
 
     def getProject(self):
         return self.project
+
+    def openProject(self, menuItem: Gtk.MenuItem):
+        pass
+
+    def saveProject(self, menuItem: Gtk.MenuItem):
+        self.getProject().save()
+
+    def closeProject(self, menuItem: Gtk.MenuItem):
+        self.hide()
+        self.startupWindow.show()
 
     def getSettings(self):
         return self.getProject().settings
@@ -107,9 +122,15 @@ class MainWindow:
     def hide(self):
         self.window.hide()
 
+    def isVisible(self):
+        return self.window.get_property("visible")
+
     def run(self):
         self.show()
         Gtk.main()
+
+    def close(self):
+        self.window.destroy()
 
     def _notifyProperty(self, window, property):
         print(property.name)

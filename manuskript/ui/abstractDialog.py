@@ -37,6 +37,9 @@ class AbstractDialog:
     def _destroyWindow(self, window: Gtk.Widget):
         self.window = None
 
+        if not self.mainWindow.isVisible():
+            self.mainWindow.close()
+
     def show(self):
         if self.window is None:
             self.__initWindow()
@@ -48,3 +51,9 @@ class AbstractDialog:
             return
 
         self.window.hide()
+
+    def isVisible(self):
+        if self.window is None:
+            return False
+
+        return self.window.get_property("visible")

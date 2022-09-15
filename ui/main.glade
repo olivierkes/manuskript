@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.38.2 
+<!-- Generated with glade 3.40.0 
 
 Copyright (C) 2015-2021 Olivier Keshavjee et al.
 
@@ -82,6 +82,14 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                         <property name="can-focus">False</property>
                         <property name="label" translatable="yes">_Recent</property>
                         <property name="use-underline">True</property>
+                        <child type="submenu">
+                          <object class="GtkRecentChooserMenu" id="recent_chooser_menu">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="limit">10</property>
+                            <property name="sort-type">mru</property>
+                          </object>
+                        </child>
                       </object>
                     </child>
                     <child>
