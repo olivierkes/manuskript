@@ -16,9 +16,12 @@ class Goal:
         self.value = max(value, 0)
         self.kind = kind
 
+    def prettyString(self):
+        return str(self.value) + " " + self.kind.name.lower()
+
     def __str__(self):
         if self.kind != GoalKind.WORDS:
-            return str(self.value) + " " + self.kind.name.lower()
+            return self.prettyString()
         else:
             return str(self.value)
 

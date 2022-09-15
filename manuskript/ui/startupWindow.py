@@ -33,6 +33,7 @@ class StartupWindow(AbstractDialog):
         self.templateSelections = list()
         self.templateLevelsListbox = None
 
+        self.goalLabel = None
         self.addLevelButton = None
         self.addGoalButton = None
 
@@ -89,6 +90,7 @@ class StartupWindow(AbstractDialog):
 
         self.templateLevelsListbox = builder.get_object("template_levels_listbox")
 
+        self.goalLabel = builder.get_object("goal_label")
         self.addLevelButton = builder.get_object("add_level_button")
         self.addGoalButton = builder.get_object("add_goal_button")
 
@@ -107,17 +109,19 @@ class StartupWindow(AbstractDialog):
 
         for level in self.template.levels:
             entry = TemplateEntry(self)
-            entry.bindTemplate(template, level)
+            entry.bindTemplate(self.template, level)
 
             self.templateLevelsListbox.add(entry.widget)
             entry.show()
 
-        if template.goal is not None:
+        if self.template.goal is not None:
             entry = TemplateEntry(self)
-            entry.bindTemplate(template)
+            entry.bindTemplate(self.template)
 
             self.templateLevelsListbox.add(entry.widget)
             entry.show()
+
+        self.goalLabel.set_text(self.template.getGoalString())
 
     def templateSelectionChanged(self, selection: Gtk.TreeSelection):
         model, tree_iter = selection.get_selected()

@@ -61,6 +61,16 @@ class Template:
 
         self.goal = Goal(value)
 
+    def getGoalString(self):
+        if self.goal is None:
+            return "?"
+
+        value = self.goal.value
+        for level in self.levels:
+            value = value * level.size
+
+        return Goal(value, self.goal.kind).prettyString()
+
     @classmethod
     def getDefaultTemplates(cls):
         templates = list()
