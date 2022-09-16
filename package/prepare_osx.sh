@@ -4,7 +4,7 @@ set -ev   # display each line executed along with output
 # seriously the CI needs to stop testing 99% of the time if homebrew has updates or not
 export HOMEBREW_NO_AUTO_UPDATE=1 # (please let it go, homebrew!)
 
-# brew update # (safe the CI some time)
+brew update # (safe the CI some time)
 
 # Upgrade to python 3.x
 # brew upgrade python # (should be fine)
