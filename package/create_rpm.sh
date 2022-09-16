@@ -55,10 +55,14 @@ echo "### Creating tarball folder structure"
 echo_do eval "mkdir -p $Dest/$AppName-$AppVersion/{usr/share/applications,usr/bin/}"
 
 echo "### Copying manuskript content"
-echo_do eval "rsync -a --exclude=.git --include='*.msk' \
+echo_do eval "rsync -a --exclude=.git \
+    --include='*.msk' \
     --exclude=.github \
-	--exclude-from='$Root/.gitignore' \
+    --exclude-from='$Root/.gitignore' \
     --exclude=rpmbuild \
+    --exclude=dist \
+    --exclude=snap \
+    --exclude=package \
     --exclude={.codeclimate.yml,.gitignore,.travis.yml} \
     $ScriptPath/../  $Dest/$AppName-$AppVersion/usr/share/manuskript"
 # Note:  Files manuskript and manuskript.desktop are same as in Debian

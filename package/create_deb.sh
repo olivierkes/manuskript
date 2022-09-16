@@ -36,7 +36,13 @@ echo " [✓]"
 # Using the current direction as source
 
 echo -n "Copying manuskript content"
-rsync -a --exclude=.git --include="*.msk" --exclude-from="$Root/.gitignore" \
+rsync -a --exclude=.git \
+	 --exclude=dist \
+	 --exclude=rpmbuild \
+	 --exclude=snap \
+	 --exclude=package \
+	 --include="*.msk" \
+	 --exclude-from="$Root/.gitignore" \
       "$ScriptPath/../"  "$Dest/usr/share/manuskript"
 cp "$ScriptPath/create_deb/manuskript" "$Dest/usr/bin/manuskript"
 cp "$ScriptPath/create_deb/manuskript.desktop" \
@@ -57,7 +63,7 @@ sudo chown root:root -R "$Dest"
 
 # Use xz compression to make sure Debian can handle it!
 echo "Creating the package…"
-dpkg -b -Zxz "$Dest"
+dpkg-deb -b -Zxz "$Dest"
 
 echo -n "Removing build folder"
 sudo rm -r "$Dest"
