@@ -182,8 +182,8 @@ formate.&lt;/p&gt;
         <location filename="../manuskript/exporter/pandoc/PDF.py" line="19"/>
         <source>a valid LaTeX installation. Pandoc recommendations can be found on:
                      &lt;a href=&quot;https://pandoc.org/installing.html&quot;&gt;pandoc.org/installing.html&lt;/a&gt;. If you want Unicode support, you need XeLaTeX.</source>
-        <translation>Ispravna instalacija LaTeX. Prijedloge Pandoc-a je sada moguće pronaći na:
-                            &lt;a href=&quot;https://pandoc.org/installing.html&quot;&gt;pandoc.org/installing.html&lt;/a&gt;. Ako želite podršku za Unicode, instalirajte
+        <translation>ispravna LaTeX instalacija. Pandoc prijedlozi se sada mogu pronaći na:
+                     &lt;a href=&quot;https://pandoc.org/installing.html&quot;&gt;pandoc.org/installing.html&lt;/a&gt;. Ako želite podršku za Unicode, instalirajte
 XeLaTeX.</translation>
     </message>
     <message>
