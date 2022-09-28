@@ -259,12 +259,12 @@ ako dobijete grešku vezanu uz YAML.</translation>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="184"/>
         <source>Status</source>
-        <translation>Status</translation>
+        <translation>Stanje</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="190"/>
         <source>Status:</source>
-        <translation>Status:</translation>
+        <translation>Stanje:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="210"/>
@@ -557,7 +557,7 @@ originalnog dokumenta.&lt;/p&gt;</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1455"/>
         <source>One paragraph</source>
-        <translation>Jedan paragraf</translation>
+        <translation>Jedan odlomak</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1460"/>
@@ -577,12 +577,12 @@ originalnog dokumenta.&lt;/p&gt;</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="502"/>
         <source>One paragraph summary</source>
-        <translation>Sažetak u jednom paragrafu</translation>
+        <translation>Sažetak u jednom odlomku</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="540"/>
         <source>Expand each sentence of your one paragraph summary to a paragraph</source>
-        <translation>Proširite svaku rečenicu svog paragrafa u još jedan paragraf</translation>
+        <translation>Proširite svaku rečenicu vašeg sažetka jednog odlomka u odlomak</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="565"/>
@@ -657,7 +657,7 @@ originalnog dokumenta.&lt;/p&gt;</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="930"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One paragraph&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Sažetak u&lt;br/&gt;jednom pragrafu&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Sažetak u&lt;br/&gt;jednom odlomku&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1021"/>
@@ -872,7 +872,7 @@ originalnog dokumenta.&lt;/p&gt;</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2453"/>
         <source>&amp;Status...</source>
-        <translation>&amp;Status...</translation>
+        <translation>&amp;Stanje...</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1552"/>
@@ -1010,8 +1010,8 @@ originalnog dokumenta.&lt;/p&gt;</translation>
         <location filename="../manuskript/mainWindow.py" line="1367"/>
         <source>Take time to think about a one sentence (~50 words) summary of your book. Then expand it to
                      a paragraph, then to a page, then to a full summary.</source>
-        <translation>Uzmite si vremena i promislite o jednoj rečenici (~50 riječi) kao sažetku svoje knjige. Onda tu rečenicu proširite
-u paragraf pa u jednu stranicu i na kraju u jedan cjelovit sažetak.</translation>
+        <translation>Uzmite si vremena i promislite o jednoj rečenici (ca. 50 riječi) sažetka vaše knjige. Onda tu rečenicu proširite
+u odlomak, zatim u jednu stranicu i na kraju u jedan cjelovit sažetak.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1372"/>
@@ -1581,7 +1581,7 @@ u paragraf pa u jednu stranicu i na kraju u jedan cjelovit sažetak.</translatio
     <message>
         <location filename="../manuskript/ui/search.py" line="51"/>
         <source>Status</source>
-        <translation>Status</translation>
+        <translation>Stanje</translation>
     </message>
 </context>
 <context>
@@ -1622,7 +1622,7 @@ u paragraf pa u jednu stranicu i na kraju u jedan cjelovit sažetak.</translatio
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3023"/>
         <source>Status</source>
-        <translation>Status</translation>
+        <translation>Stanje</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3097"/>
@@ -1922,7 +1922,7 @@ u paragraf pa u jednu stranicu i na kraju u jedan cjelovit sažetak.</translatio
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2473"/>
         <source>Paragraphs</source>
-        <translation>Paragrafi</translation>
+        <translation>Odlomci</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3660"/>
@@ -2007,32 +2007,32 @@ u paragraf pa u jednu stranicu i na kraju u jedan cjelovit sažetak.</translatio
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3271"/>
         <source>Window Background</source>
-        <translation>Pozadina Prozora</translation>
+        <translation>Pozadina prozora</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3276"/>
         <source>Text Background</source>
-        <translation>Pozadina Teksta</translation>
+        <translation>Pozadina teksta</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3281"/>
         <source>Text Options</source>
-        <translation>Opcije Teksta</translation>
+        <translation>Opcije teksta</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3286"/>
         <source>Paragraph Options</source>
-        <translation>Opcije Paragrafa</translation>
+        <translation>Opcije odlomaka</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3328"/>
         <source>Type:</source>
-        <translation>Tip:</translation>
+        <translation>Vrsta:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3336"/>
         <source>No Image</source>
-        <translation>Nema Slike</translation>
+        <translation>Bez slike</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="3341"/>
@@ -2267,7 +2267,7 @@ u paragraf pa u jednu stranicu i na kraju u jedan cjelovit sažetak.</translatio
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2852"/>
         <source>Paragraph</source>
-        <translation>Paragraf</translation>
+        <translation>Odlomak</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="821"/>
@@ -2391,7 +2391,7 @@ riječi</translation>
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="205"/>
         <source>Status</source>
-        <translation>Status</translation>
+        <translation>Stanje</translation>
     </message>
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="207"/>
@@ -2658,7 +2658,7 @@ riječi</translation>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="85"/>
         <source>Type</source>
-        <translation>Tip</translation>
+        <translation>Vrsta</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="90"/>
@@ -2678,17 +2678,17 @@ riječi</translation>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="127"/>
         <source>Fi&amp;lters</source>
-        <translation>Fi&amp;lteri</translation>
+        <translation>Fi&amp;ltri</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="142"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Filters what items will be included in the final export.&lt;br/&gt;&lt;span style=&quot; color:#773333;&quot;&gt;(Not fully implemented yet.)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Filtrira koji će predmeti biti uključeni u završni izvoz.&lt;br/&gt;&lt;span style=&quot; color:#773333;&quot;&gt;(Nije cjelovito dovršeno...još)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Filtrira predmete koji će biti uključeni u završni izvoz.&lt;br/&gt;&lt;span style=&quot; color:#773333;&quot;&gt;(Još nije potpuno implementirano)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="149"/>
         <source>Ignore compile status (include all items)</source>
-        <translation>Ignoriraj status sastavljanja (uključi sve predmete)</translation>
+        <translation>Ignoriraj stanje sastavljanja (uključi sve predmete)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="156"/>
@@ -2703,7 +2703,7 @@ riječi</translation>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="177"/>
         <source>Status</source>
-        <translation>Status</translation>
+        <translation>Stanje</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="229"/>
@@ -2866,12 +2866,12 @@ riječi</translation>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="124"/>
         <source>&lt;b&gt;Status:&lt;/b&gt; uninstalled.</source>
-        <translation>&lt;b&gt;Status:&lt;/b&gt; deinstalirano.</translation>
+        <translation>&lt;b&gt;Stanje:&lt;/b&gt; neinstalirano.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="126"/>
         <source>&lt;b&gt;Requires:&lt;/b&gt; </source>
-        <translation>&lt;b&gt;Zahtjeva:&lt;/b&gt; </translation>
+        <translation>&lt;b&gt;Zahtijeva:&lt;/b&gt; </translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="133"/>
@@ -3257,7 +3257,7 @@ riječi</translation>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="163"/>
         <source>Set Status</source>
-        <translation>Postavi Status</translation>
+        <translation>Postavi stanje</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineBasics.py" line="179"/>
@@ -3709,7 +3709,7 @@ riječi</translation>
     <message>
         <location filename="../manuskript/ui/views/propertiesView_ui.ui" line="215"/>
         <source>Status</source>
-        <translation>Status</translation>
+        <translation>Stanje</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/propertiesView_ui.ui" line="235"/>
@@ -3762,7 +3762,7 @@ riječi</translation>
     <message>
         <location filename="../manuskript/models/references.py" line="109"/>
         <source>Status:</source>
-        <translation>Status:</translation>
+        <translation>Stanje:</translation>
     </message>
     <message>
         <location filename="../manuskript/models/references.py" line="110"/>
@@ -4001,7 +4001,7 @@ riječi</translation>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="674"/>
         <source>New status</source>
-        <translation>Novi status</translation>
+        <translation>Novo stanje</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="695"/>
