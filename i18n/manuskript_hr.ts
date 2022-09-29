@@ -747,7 +747,7 @@ originalnog dokumenta.&lt;/p&gt;</translation>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2028"/>
         <source>Persos</source>
-        <translation>persos</translation>
+        <translation>Osobe</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2089"/>
