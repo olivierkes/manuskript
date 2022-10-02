@@ -345,12 +345,12 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1698"/>
         <source>Source of passion</source>
-        <translation>열정 소재</translation>
+        <translation>열망의 근원</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="1708"/>
         <source>Source of conflict</source>
-        <translation>갈등 소재</translation>
+        <translation>갈등의 근원</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1563"/>
@@ -420,7 +420,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2266"/>
         <source>&amp;Cheat sheet</source>
-        <translation>협서(&amp;C)</translation>
+        <translation>치트 시트(&amp;C)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2300"/>
@@ -445,7 +445,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2384"/>
         <source>&amp;Save</source>
-        <translation>갈무리(&amp;S)</translation>
+        <translation>저장(&amp;S)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2387"/>
@@ -455,7 +455,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2396"/>
         <source>Sa&amp;ve as...</source>
-        <translation>다른 이름으로 갈무리... (&amp;v)</translation>
+        <translation>다른 이름으로 저장... (&amp;v)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2399"/>
@@ -505,7 +505,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1561"/>
         <source>Tree</source>
-        <translation>나무</translation>
+        <translation>트리</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2481"/>
@@ -575,12 +575,12 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="881"/>
         <source>Project {} saved.</source>
-        <translation type="unfinished"> * {}을(를) 프로젝트 파일에서 찾지 못했습니다.</translation>
+        <translation>프로젝트 {}(이)가 저장되었습니다.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="885"/>
         <source>WARNING: Project {} not saved.</source>
-        <translation>경고: 프로젝트 {}을(를) 갈무리하지 않았습니다.</translation>
+        <translation>경고: 프로젝트 {}을(를) 저장하지 않았습니다.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="905"/>
@@ -799,7 +799,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2618"/>
         <source>Sp&amp;lit at cursor</source>
-        <translation>커서로 쪼개기(&amp;l)</translation>
+        <translation>커서 위치에서 쪼개기(&amp;l)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2621"/>
@@ -1014,7 +1014,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2813"/>
         <source>Co&amp;mment block</source>
-        <translation type="unfinished"></translation>
+        <translation>영역을 주석 처리(&amp;M)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2816"/>
@@ -1034,7 +1034,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2833"/>
         <source>&amp;Comment line(s)</source>
-        <translation type="unfinished"></translation>
+        <translation>줄을 주석 처리(&amp;C)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2841"/>
@@ -1079,22 +1079,22 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="698"/>
         <source>Save project?</source>
-        <translation>프로젝트 갈무리?</translation>
+        <translation>프로젝트를 저장합니까?</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="698"/>
         <source>Save changes to project &quot;{}&quot; before closing?</source>
-        <translation>프로젝트 “{}”를 닫기 전에 변경 사항을 갈무리하시겠습니까?</translation>
+        <translation>프로젝트 “{}”를 닫기 전에 변경 사항을 저장하시겠습니까?</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="698"/>
         <source>Your changes will be lost if you don&apos;t save them.</source>
-        <translation>갈무리하지 않으면 고친 것을 날려 버립니다.</translation>
+        <translation>저장하지 않으면 작업한 내용을 잃습니다.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1680"/>
         <source>PyQt / Qt versions 5.11 and 5.12 are known to cause a crash which might result in a loss of data.</source>
-        <translation>PyQt / Qt 버전 5.11과 5.12는 충돌을 일으켜 데이터를 날리는 것으로 알려져 있습니다.</translation>
+        <translation>PyQt / Qt 버전 5.11 및 5.12는 충돌을 일으켜 데이터가 손실될 수 있습니다.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1681"/>
@@ -1104,7 +1104,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1687"/>
         <source>Proceed with import at your own risk</source>
-        <translation type="unfinished">속행 시 충돌과 데이터 손실 우려</translation>
+        <translation>무시하고 불러오기 진행</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="874"/>
@@ -1295,7 +1295,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="375"/>
         <source>If no changes during</source>
-        <translation>잠시 펜을 놓은</translation>
+        <translation>변경되지 않은 시간</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="422"/>
@@ -1305,22 +1305,22 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="456"/>
         <source>Save on project close</source>
-        <translation>프로젝트를 닫을 때 갈무리도 하기</translation>
+        <translation>프로젝트를 닫을 때 저장하기</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="472"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If you check this option, your project will be saved as one single file. Easier to copy or backup, but does not allow collaborative editing, or versioning.&lt;br/&gt;If this is unchecked, your project will be saved as a folder containing many small files.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;이 옵션에 체크하면 프로젝트를 홑파일로 갈무리합니다. 복사와 백업이 간단하지만, 합작품을 만들거나 여러 버전으로 나누지 못합니다.&lt;br/&gt;체크를 해제하면 프로젝트를 여러 파일이 들어있는 폴더로 갈무리합니다.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;이 옵션에 체크하면 프로젝트를 단일 파일로 저장합니다. 복사와 백업이 간단하지만, 공동 편집을 하거나 버전 구분을 하지 못합니다.&lt;br/&gt;체크를 해제하면 프로젝트를 여러 파일이 들어있는 폴더로 저장합니다.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="478"/>
         <source>Save to one single file</source>
-        <translation>홑파일로 갈무리</translation>
+        <translation>단일 파일로 저장</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="536"/>
         <source>Revisions are a way to keep track of modifications. For each text item, it stores any changes you make to the main text, allowing you to see and restoring previous versions.</source>
-        <translation>수정본은 고쳐쓴 자취를 보여줍니다. 본문의 변화를 갈무리하여, 글 항목마다 이전 판의 글을 보고 되살리실 수 있습니다.</translation>
+        <translation>수정본은 변경된 이력을 추적합니다. 각 문서마다 변화가 있으면 저장하고 이전 버전의 글을 확인 및 복구할 수 있습니다.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="546"/>
@@ -1330,7 +1330,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="562"/>
         <source>S&amp;mart remove</source>
-        <translation>주기적 삭제(&amp;m)</translation>
+        <translation>스마트 삭제(&amp;m)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="577"/>
@@ -1340,7 +1340,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="590"/>
         <source>Smart remove allows you to keep only a certain number of revisions. It is strongly recommended to use it, lest you file will becomes full of thousands of insignificant changes.</source>
-        <translation>주기적 삭제 기능은 일정한 수의 수정본만 남깁니다. 쓸데없는 변경 사항을 없애 파일 용량을 줄이고자 한다면, 강력히 추천하는 바입니다.</translation>
+        <translation>스마트 삭제 기능은 일정한 개수의 수정본만 남깁니다. 사소한 변경 사항을 정리하여 파일 용량을 줄이기 위하여 강력히 추천합니다.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="606"/>
@@ -2066,7 +2066,7 @@
     <message>
         <location filename="../manuskript/ui/views/basicItemView_ui.ui" line="99"/>
         <source>Few sentences summary:</source>
-        <translation>몇 마디 요약:</translation>
+        <translation>몇 문장으로 요약:</translation>
     </message>
 </context>
 <context>
@@ -2120,7 +2120,7 @@
     <message>
         <location filename="../manuskript/ui/cheatSheet_ui.ui" line="46"/>
         <source>Filter (type the name of anything in your project)</source>
-        <translation>(프로젝트 내 아무 이름이나) 훑기</translation>
+        <translation>(프로젝트 내 아무 이름이나) 필터</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/cheatSheet.py" line="113"/>
@@ -2310,12 +2310,12 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="118"/>
         <source>I need more granularity</source>
-        <translation>세밀하게 고르고 싶습니다</translation>
+        <translation>더 세밀하게</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="127"/>
         <source>Fi&amp;lters</source>
-        <translation>추리기(&amp;l)</translation>
+        <translation>필터(&amp;l)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="142"/>
@@ -2395,7 +2395,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="911"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>작은따옴표(')를 대신할 것:</translation>
+        <translation>작은따옴표(&apos;)를 대신할 것:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1020"/>
@@ -4002,7 +4002,7 @@
     <message>
         <location filename="../manuskript/models/worldModel.py" line="251"/>
         <source>Natural resources</source>
-        <translation>소재</translation>
+        <translation>천연 자원</translation>
     </message>
 </context>
 </TS>
