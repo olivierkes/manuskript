@@ -23,17 +23,7 @@ class CharactersView:
         self.widget = builder.get_object("characters_view")
 
         self.charactersStore = builder.get_object("characters_store")
-
-        for character in self.characters:
-            tree_iter = self.charactersStore.append()
-
-            if tree_iter is None:
-                continue
-
-            self.charactersStore.set_value(tree_iter, 0, character.UID.value)
-            self.charactersStore.set_value(tree_iter, 1, validString(character.name))
-            self.charactersStore.set_value(tree_iter, 2, pixbufFromColor(character.color))
-            self.charactersStore.set_value(tree_iter, 3, Importance.asValue(character.importance))
+        self.refreshCharacterStore()
 
         self.mainCharactersStore = builder.get_object("main_characters_store")
         self.secondaryCharactersStore = builder.get_object("secondary_characters_store")
@@ -55,6 +45,16 @@ class CharactersView:
 
         for selection in self.characterSelections:
             selection.connect("changed", self.characterSelectionChanged)
+
+        self.addCharacterButton = builder.get_object("add_character")
+        self.removeCharacterButton = builder.get_object("remove_character")
+        self.filterCharactersBuffer = builder.get_object("filter_characters")
+
+        self.addCharacterButton.connect("clicked", self.addCharacterClicked)
+        self.removeCharacterButton.connect("clicked", self.removeCharacterClicked)
+
+        self.filterCharactersBuffer.connect("deleted-text", self.filterCharactersDeletedText)
+        self.filterCharactersBuffer.connect("inserted-text", self.filterCharactersInsertedText)
 
         self.colorButton = builder.get_object("color")
         self.importanceCombo = builder.get_object("importance")
@@ -99,6 +99,20 @@ class CharactersView:
         self.notesBuffer.connect("changed", self.notesChanged)
 
         self.unloadCharacterData()
+
+    def refreshCharacterStore(self):
+        self.charactersStore.clear()
+
+        for character in self.characters:
+            tree_iter = self.charactersStore.append()
+
+            if tree_iter is None:
+                continue
+
+            self.charactersStore.set_value(tree_iter, 0, character.UID.value)
+            self.charactersStore.set_value(tree_iter, 1, validString(character.name))
+            self.charactersStore.set_value(tree_iter, 2, pixbufFromColor(character.color))
+            self.charactersStore.set_value(tree_iter, 3, Importance.asValue(character.importance))
 
     def loadCharacterData(self, character: Character):
         self.character = None
@@ -165,6 +179,30 @@ class CharactersView:
             self.unloadCharacterData()
         else:
             self.loadCharacterData(character)
+
+    def addCharacterClicked(self, button: Gtk.Button):
+        character = self.characters.add()
+
+        if character is None:
+            return
+
+        self.refreshCharacterStore()
+
+    def removeCharacterClicked(self, button: Gtk.Button):
+        if self.character is None:
+            return
+
+        self.character.remove()
+        self.refreshCharacterStore()
+
+    def filterCharactersChanged(self, buffer: Gtk.EntryBuffer):
+        pass
+
+    def filterCharactersDeletedText(self, buffer: Gtk.EntryBuffer, position: int, n_chars: int):
+        self.filterCharactersChanged(buffer)
+
+    def filterCharactersInsertedText(self, buffer: Gtk.EntryBuffer, position: int, chars: str, n_chars: int):
+        self.filterCharactersChanged(buffer)
 
     def colorSet(self, button: Gtk.ColorButton):
         if self.character is None:

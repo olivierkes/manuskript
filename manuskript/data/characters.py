@@ -8,6 +8,7 @@ from manuskript.data.color import Color
 from manuskript.data.importance import Importance
 from manuskript.data.unique_id import UniqueIDHost
 from manuskript.io.mmdFile import MmdFile
+from manuskript.util import safeFilename
 
 
 class Character:
@@ -33,6 +34,12 @@ class Character:
 
     def allowPOV(self) -> bool:
         return True if self.POV is None else self.POV
+
+    def remove(self):
+        if self.UID is None:
+            return
+
+        self.characters.removeByID(self.UID.value)
 
     @classmethod
     def loadAttribute(cls, metadata: dict, name: str, defaultValue=None):
@@ -104,14 +111,37 @@ class Characters:
     def __iter__(self):
         return self.data.values().__iter__()
 
+    def add(self, name: str = None) -> Character | None:
+        if name is None:
+            name = "New character"
+
+        UID = self.host.newID()
+        filename = safeFilename("%s-%s" % (str(UID), name), "txt")
+
+        path = os.path.join(self.dir_path, filename)
+
+        if os.path.exists(filename):
+            return None
+
+        character = Character(path, self)
+        character.UID = UID
+        character.name = name
+
+        self.data[character.UID.value] = character
+
+        return character
+
     def getByID(self, ID: int) -> Character:
         return self.data.get(ID, None)
+
+    def removeByID(self, ID: int):
+        self.data.pop(ID)
 
     def load(self):
         self.data.clear()
 
-        for name in os.listdir(self.dir_path):
-            path = os.path.join(self.dir_path, name)
+        for filename in os.listdir(self.dir_path):
+            path = os.path.join(self.dir_path, filename)
 
             if not os.path.isfile(path):
                 continue

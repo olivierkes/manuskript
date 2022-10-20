@@ -12,19 +12,16 @@ from manuskript.data import Color
 
 def rgbaFromColor(color: Color) -> Gdk.RGBA:
     rgba = Gdk.RGBA()
-    rgba.red = color.red / 255.
-    rgba.green = color.green / 255.
-    rgba.blue = color.blue / 255.
+    rgba.red = 0 if color is None else color.red / 255.
+    rgba.green = 0 if color is None else color.green / 255.
+    rgba.blue = 0 if color is None else color.blue / 255.
     rgba.alpha = 1.
     return rgba
 
 
 def pixbufFromColor(color: Color) -> GdkPixbuf:
-    if color is None:
-        return None
-
     pixbuf = GdkPixbuf.Pixbuf.new(GdkPixbuf.Colorspace.RGB, False, 8, 16, 16)
-    pixbuf.fill(color.getRGB())
+    pixbuf.fill(0 if color is None else color.getRGB())
     return pixbuf
 
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.38.2 
+<!-- Generated with glade 3.40.0 
 
 Copyright (C) 2015-2021 Olivier Keshavjee et al.
 
@@ -56,6 +56,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
     </columns>
   </object>
   <object class="GtkTextBuffer" id="epiphany"/>
+  <object class="GtkEntryBuffer" id="filter_characters"/>
   <object class="GtkTextBuffer" id="goal"/>
   <object class="GtkListStore" id="importance_store">
     <columns>
@@ -274,7 +275,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                     <property name="margin-bottom">8</property>
                     <property name="spacing">4</property>
                     <child>
-                      <object class="GtkButton">
+                      <object class="GtkButton" id="add_character">
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <property name="receives-default">True</property>
@@ -293,7 +294,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton">
+                      <object class="GtkButton" id="remove_character">
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <property name="receives-default">True</property>
@@ -315,6 +316,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       <object class="GtkEntry">
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
+                        <property name="buffer">filter_characters</property>
                         <property name="placeholder-text" translatable="yes">Filter</property>
                       </object>
                       <packing>

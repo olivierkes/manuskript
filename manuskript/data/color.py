@@ -19,6 +19,9 @@ class Color:
 
     @classmethod
     def parse(cls, string: str):
+        if string is None:
+            return None
+
         colorPattern = re.compile(r"\#([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})")
 
         m = colorPattern.match(string)
