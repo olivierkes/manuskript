@@ -25,9 +25,12 @@ class CharactersView:
         self.charactersStore = builder.get_object("characters_store")
         self.refreshCharacterStore()
 
+        self.filteredCharactersStore = builder.get_object("filtered_characters_store")
         self.mainCharactersStore = builder.get_object("main_characters_store")
         self.secondaryCharactersStore = builder.get_object("secondary_characters_store")
         self.minorCharactersStore = builder.get_object("minor_characters_store")
+
+        self.filteredCharactersStore.set_visible_func(self.filterCharacters)
 
         self.mainCharactersStore.set_visible_func(lambda model, iter, userdata: model[iter][3] == Importance.MAIN.value)
         self.secondaryCharactersStore.set_visible_func(lambda model, iter, userdata: model[iter][3] == Importance.SECONDARY.value)
@@ -195,8 +198,14 @@ class CharactersView:
         self.character.remove()
         self.refreshCharacterStore()
 
+    def filterCharacters(self, model, iter, userdata):
+        name = validString(model[iter][1])
+        text = self.filterCharactersBuffer.get_text()
+
+        return text in name
+
     def filterCharactersChanged(self, buffer: Gtk.EntryBuffer):
-        pass
+        self.filteredCharactersStore.refilter()
 
     def filterCharactersDeletedText(self, buffer: Gtk.EntryBuffer, position: int, n_chars: int):
         self.filterCharactersChanged(buffer)

@@ -37,14 +37,17 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
       <column type="gint"/>
     </columns>
   </object>
-  <object class="GtkTreeModelFilter" id="main_characters_store">
+  <object class="GtkTreeModelFilter" id="filtered_characters_store">
     <property name="child-model">characters_store</property>
+  </object>
+  <object class="GtkTreeModelFilter" id="main_characters_store">
+    <property name="child-model">filtered_characters_store</property>
   </object>
   <object class="GtkTreeModelFilter" id="minor_characters_store">
-    <property name="child-model">characters_store</property>
+    <property name="child-model">filtered_characters_store</property>
   </object>
   <object class="GtkTreeModelFilter" id="secondary_characters_store">
-    <property name="child-model">characters_store</property>
+    <property name="child-model">filtered_characters_store</property>
   </object>
   <object class="GtkTextBuffer" id="conflict"/>
   <object class="GtkListStore" id="details_store">
