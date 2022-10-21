@@ -26,6 +26,11 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
   <!-- interface-name Manuskript -->
   <!-- interface-description Manuskript is an open-source tool for writers. -->
   <!-- interface-copyright 2015-2021 Olivier Keshavjee et al. -->
+  <object class="GtkRecentFilter" id="recent_filter">
+    <patterns>
+      <pattern>*.msk</pattern>
+    </patterns>
+  </object>
   <object class="HdyApplicationWindow" id="main_window">
     <property name="can-focus">False</property>
     <property name="default-width">1600</property>
@@ -86,6 +91,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                           <object class="GtkRecentChooserMenu" id="recent_chooser_menu">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
+                            <property name="filter">recent_filter</property>
                             <property name="limit">10</property>
                             <property name="sort-type">mru</property>
                           </object>
