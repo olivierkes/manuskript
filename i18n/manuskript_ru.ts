@@ -631,15 +631,15 @@
         <location filename="../manuskript/mainWindow.py" line="1371"/>
         <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous
                      evil wizard wasn&apos;t able to kill a baby?&apos; (Harry Potter)</source>
-        <translation>Основная ситуация, в виде вопроса 'Что, если?..'. Например: «Что, если самый опасный
-                      злой волшебник не смог бы убить ребенка? (Гарри Поттер)</translation>
+        <translation>Основная ситуация, в виде вопроса &apos;Что, если?..&apos;. Например: «Что, если самый опасный
+&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; злой волшебник не смог бы убить ребенка? (Гарри Поттер)</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1376"/>
         <source>Take time to think about a one sentence (~50 words) summary of your book. Then expand it to
                      a paragraph, then to a page, then to a full summary.</source>
         <translation>Потратьте время, чтобы придумать одно предложение (~50 слов) о вашей книге. Затем дополните его до
-                      абзаца, затем до страницы, а затем — до полного описания.</translation>
+&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; абзаца, затем до страницы, а затем — до полного описания.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1381"/>
@@ -2085,12 +2085,12 @@
     <message>
         <location filename="../manuskript/models/characterModel.py" line="179"/>
         <source>New character</source>
-        <translation type="unfinished"></translation>
+        <translation>Новый герой</translation>
     </message>
     <message>
         <location filename="../manuskript/models/characterModel.py" line="215"/>
         <source>Description</source>
-        <translation type="unfinished">Описание</translation>
+        <translation>Описание</translation>
     </message>
 </context>
 <context>
@@ -2396,7 +2396,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="911"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>Заменить одинарные кавычки (') на:</translation>
+        <translation>Заменить одинарные кавычки (&apos;) на:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1020"/>
@@ -3152,7 +3152,7 @@
     <message>
         <location filename="../manuskript/models/plotModel.py" line="110"/>
         <source>New plot</source>
-        <translation type="unfinished"></translation>
+        <translation>Новая линия</translation>
     </message>
 </context>
 <context>
@@ -3456,7 +3456,7 @@
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="47"/>
         <source>Split &apos;{}&apos;</source>
-        <translation>Разделить '{}'</translation>
+        <translation>Разделить &apos;{}&apos;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="51"/>
