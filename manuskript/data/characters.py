@@ -4,7 +4,6 @@
 import os
 
 from collections import OrderedDict
-from collections.abc import Callable
 
 from manuskript.data.color import Color
 from manuskript.data.importance import Importance

@@ -144,8 +144,8 @@ class CharactersView:
             if tree_iter is None:
                 continue
 
-            self.detailsStore.set_value(tree_iter, 0, str(key))
-            self.detailsStore.set_value(tree_iter, 1, str(value))
+            self.detailsStore.set_value(tree_iter, 0, validString(key))
+            self.detailsStore.set_value(tree_iter, 1, validString(value))
 
         self.character = character
 

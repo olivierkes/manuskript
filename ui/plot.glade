@@ -49,16 +49,16 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
     </columns>
     <data>
       <row>
-        <col id="0" translatable="yes">Main</col>
-        <col id="1">2</col>
+        <col id="0" translatable="yes">Minor</col>
+        <col id="1">0</col>
       </row>
       <row>
         <col id="0" translatable="yes">Secondary</col>
         <col id="1">1</col>
       </row>
       <row>
-        <col id="0" translatable="yes">Minor</col>
-        <col id="1">0</col>
+        <col id="0" translatable="yes">Main</col>
+        <col id="1">2</col>
       </row>
     </data>
   </object>
@@ -87,20 +87,13 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
   </object>
   <object class="GtkListStore" id="resolution_steps_store">
     <columns>
+      <!-- column-name ID -->
+      <column type="gint"/>
       <!-- column-name name -->
       <column type="gchararray"/>
       <!-- column-name meta -->
       <column type="gchararray"/>
-      <!-- column-name summary -->
-      <column type="gchararray"/>
     </columns>
-    <data>
-      <row>
-        <col id="0" translatable="yes">New step</col>
-        <col id="1" translatable="yes">Problem</col>
-        <col id="2" translatable="yes">test</col>
-      </row>
-    </data>
   </object>
   <object class="GtkTextBuffer" id="result"/>
   <object class="GtkTextBuffer" id="step_summary"/>
@@ -672,15 +665,17 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                     <property name="search-column">0</property>
                                     <property name="enable-grid-lines">both</property>
                                     <child internal-child="selection">
-                                      <object class="GtkTreeSelection"/>
+                                      <object class="GtkTreeSelection" id="resolution_steps_selection"/>
                                     </child>
                                     <child>
                                       <object class="GtkTreeViewColumn">
                                         <property name="title" translatable="yes">Name</property>
                                         <child>
-                                          <object class="GtkCellRendererText"/>
+                                          <object class="GtkCellRendererText" id="resolution_steps_name">
+                                            <property name="editable">True</property>
+                                          </object>
                                           <attributes>
-                                            <attribute name="text">0</attribute>
+                                            <attribute name="text">1</attribute>
                                           </attributes>
                                         </child>
                                       </object>
@@ -689,9 +684,11 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                       <object class="GtkTreeViewColumn">
                                         <property name="title" translatable="yes">Meta</property>
                                         <child>
-                                          <object class="GtkCellRendererText"/>
+                                          <object class="GtkCellRendererText" id="resolution_steps_meta">
+                                            <property name="editable">True</property>
+                                          </object>
                                           <attributes>
-                                            <attribute name="text">1</attribute>
+                                            <attribute name="text">2</attribute>
                                           </attributes>
                                         </child>
                                       </object>

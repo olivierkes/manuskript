@@ -88,6 +88,13 @@ class PlotLine:
 
         self.links.call(LinkAction.UPDATE, self.UID, self)
 
+    def getStepByID(self, ID: int) -> PlotStep | None:
+        for step in self.steps:
+            if step.UID.value == ID:
+                return step
+
+        return None
+
     def __iter__(self):
         return self.steps.__iter__()
 

@@ -70,6 +70,21 @@ class PlotView:
 
         self.importanceCombo = builder.get_object("importance")
 
+        self.importanceCombo.connect("changed", self.importanceChanged)
+
+        self.resolutionStepsStore = builder.get_object("resolution_steps_store")
+        self.resolutionStepsSelection = builder.get_object("resolution_steps_selection")
+        self.addResolutionStepButton = builder.get_object("add_resolution_step")
+        self.removeResolutionStepButton = builder.get_object("remove_resolution_step")
+        self.resolutionStepsNameRenderer = builder.get_object("resolution_steps_name")
+        self.resolutionStepsMetaRenderer = builder.get_object("resolution_steps_meta")
+
+        self.resolutionStepsSelection.connect("changed", self.resolutionStepsSelectionChanged)
+        self.addResolutionStepButton.connect("clicked", self.addResolutionStepClicked)
+        self.removeResolutionStepButton.connect("clicked", self.removeResolutionStepClicked)
+        self.resolutionStepsNameRenderer.connect("edited", self.resolutionStepsNameEdited)
+        self.resolutionStepsMetaRenderer.connect("edited", self.resolutionStepsMetaEdited)
+
         self.nameBuffer = builder.get_object("name")
         self.descriptionBuffer = builder.get_object("description")
         self.resultBuffer = builder.get_object("result")
@@ -86,6 +101,8 @@ class PlotView:
         self.descriptionBuffer.connect("changed", self.descriptionChanged)
         self.resultBuffer.connect("changed", self.resultChanged)
         self.stepSummaryBuffer.connect("changed", self.stepSummaryChanged)
+
+        self.unloadPlotData()
 
     def refreshPlotsStore(self):
         self.plotsStore.clear()
@@ -131,6 +148,18 @@ class PlotView:
         self.descriptionBuffer.set_text(validString(plotLine.description), -1)
         self.resultBuffer.set_text(validString(plotLine.result), -1)
 
+        self.resolutionStepsStore.clear()
+
+        for step in plotLine:
+            tree_iter = self.resolutionStepsStore.append()
+
+            if tree_iter is None:
+                continue
+
+            self.resolutionStepsStore.set_value(tree_iter, 0, validInt(step.UID.value))
+            self.resolutionStepsStore.set_value(tree_iter, 1, validString(step.name))
+            self.resolutionStepsStore.set_value(tree_iter, 2, validString(step.meta))
+
         self.plotLine = plotLine
 
         if self.plotLine is not None:
@@ -149,6 +178,10 @@ class PlotView:
         self.descriptionBuffer.set_text("", -1)
         self.resultBuffer.set_text("", -1)
         self.stepSummaryBuffer.set_text("", -1)
+
+        self.resolutionStepsStore.clear()
+
+        self.plotCharactersStore.refilter()
 
     def plotSelectionChanged(self, selection: Gtk.TreeSelection):
         model, tree_iter = selection.get_selected()
@@ -201,6 +234,120 @@ class PlotView:
 
     def filterPlotsInsertedText(self, buffer: Gtk.EntryBuffer, position: int, chars: str, n_chars: int):
         self.filterPlotsChanged(buffer)
+
+    def importanceChanged(self, combo: Gtk.ComboBox):
+        if self.plotLine is None:
+            return
+
+        tree_iter = combo.get_active_iter()
+
+        if tree_iter is None:
+            return
+
+        model = combo.get_model()
+        value = model[tree_iter][1]
+
+        importance = Importance.fromValue(value)
+
+        if (importance is None) or (self.plotLine.importance == importance):
+            return
+
+        self.plotLine.importance = importance
+
+        plot_id = self.plotLine.UID.value
+
+        for row in self.plotsStore:
+            if row[0] == plot_id:
+                row[2] = Importance.asValue(importance)
+                break
+
+        self.mainPlotsStore.refilter()
+        self.secondaryPlotsStore.refilter()
+        self.minorPlotsStore.refilter()
+
+        selection = self.plotSelections[importance.value]
+        tree_view = selection.get_tree_view()
+        model = tree_view.get_model()
+
+        for row in model:
+            if row[0] == plot_id:
+                selection.select_iter(row.iter)
+                break
+
+    def resolutionStepsSelectionChanged(self, selection: Gtk.TreeSelection):
+        model, tree_iter = selection.get_selected()
+
+        self.plotStep = None
+
+        if (tree_iter is None) or (self.plotLine is None):
+            self.stepSummaryBuffer.set_text("", -1)
+            return
+
+        plotStep = self.plotLine.getStepByID(model[tree_iter][0])
+
+        if plotStep is None:
+            self.stepSummaryBuffer.set_text("", -1)
+        else:
+            self.stepSummaryBuffer.set_text(validString(plotStep.summary), -1)
+
+            self.plotStep = plotStep
+
+    def addResolutionStepClicked(self, button: Gtk.Button):
+        if self.plotLine is None:
+            return
+
+        tree_iter = self.resolutionStepsStore.append()
+
+        if tree_iter is None:
+            return
+
+        name = "New step"
+        meta = "Problem"
+
+        step = self.plotLine.addStep(name, meta)
+
+        self.resolutionStepsStore.set_value(tree_iter, 0, validInt(step.UID.value))
+        self.resolutionStepsStore.set_value(tree_iter, 1, validString(step.name))
+        self.resolutionStepsStore.set_value(tree_iter, 2, validString(step.meta))
+
+    def removeResolutionStepClicked(self, button: Gtk.Button):
+        if (self.plotLine is None) or (self.plotStep is None):
+            return
+
+        model, tree_iter = self.resolutionStepsSelection.get_selected()
+
+        if (model is None) or (tree_iter is None):
+            return
+
+        model.remove(tree_iter)
+
+        self.plotLine.removeStep(self.plotStep)
+
+    def resolutionStepsNameEdited(self, renderer: Gtk.CellRendererText, path: str, text: str):
+        if self.plotStep is None:
+            return
+
+        model, tree_iter = self.resolutionStepsSelection.get_selected()
+
+        if (model is None) or (tree_iter is None):
+            return
+
+        model.set_value(tree_iter, 1, text)
+
+        self.plotStep.name = invalidString(text)
+
+    def resolutionStepsMetaEdited(self, renderer: Gtk.CellRendererText, path: str, text: str):
+        if self.plotStep is None:
+            return
+
+        model, tree_iter = self.resolutionStepsSelection.get_selected()
+
+        if (model is None) or (tree_iter is None):
+            return
+
+        model.set_value(tree_iter, 2, text)
+
+        self.plotStep.meta = invalidString(text)
 
     def nameChanged(self, buffer: Gtk.EntryBuffer):
         if self.plotLine is None:
