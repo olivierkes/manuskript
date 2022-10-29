@@ -4,6 +4,8 @@
 import os
 
 from collections import OrderedDict
+from collections.abc import Callable
+
 from manuskript.data.color import Color
 from manuskript.data.importance import Importance
 from manuskript.data.unique_id import UniqueIDHost
@@ -16,6 +18,7 @@ class Character:
     def __init__(self, path, characters):
         self.file = MmdFile(path, 21)
         self.characters = characters
+        self.links = list()
 
         self.UID = None
         self.name = None
@@ -32,14 +35,21 @@ class Character:
         self.color = None
         self.details = dict()
 
+    def link(self, callback: Callable[[int], None]):
+        self.links.append(callback)
+
+    def unlink(self, callback: Callable[[int], None]):
+        self.links.remove(callback)
+
     def allowPOV(self) -> bool:
         return True if self.POV is None else self.POV
 
     def remove(self):
-        if self.UID is None:
-            return
+        for link in self.links:
+            link(self.UID.value)
 
-        self.characters.removeByID(self.UID.value)
+        self.links.clear()
+        self.characters.remove(self)
 
     @classmethod
     def loadAttribute(cls, metadata: dict, name: str, defaultValue=None):
@@ -134,8 +144,9 @@ class Characters:
     def getByID(self, ID: int) -> Character:
         return self.data.get(ID, None)
 
-    def removeByID(self, ID: int):
-        self.data.pop(ID)
+    def remove(self, character: Character):
+        self.host.removeID(character.UID)
+        self.data.pop(character.UID.value)
 
     def load(self):
         self.data.clear()

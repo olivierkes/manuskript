@@ -30,7 +30,7 @@ class Project:
         self.statuses = StatusHost(self.file.dir_path)
         self.settings = Settings(self.file.dir_path)
         self.characters = Characters(self.file.dir_path)
-        self.plots = Plots(self.file.dir_path)
+        self.plots = Plots(self.file.dir_path, self.characters)
         self.world = World(self.file.dir_path)
         self.outline = Outline(self.file.dir_path)
         self.revisions = Revisions(self.file.dir_path)

@@ -4,7 +4,7 @@
 import os
 
 from lxml import etree
-from enum import Enum, unique
+from manuskript.data.characters import Characters
 from manuskript.data.importance import Importance
 from manuskript.data.unique_id import UniqueIDHost, UniqueID
 from manuskript.io.xmlFile import XmlFile
@@ -26,9 +26,12 @@ class PlotStep:
 
 class PlotLine:
 
-    def __init__(self, plots, UID: UniqueID, name: str, importance: Importance = Importance.MINOR):
+    def __init__(self, plots, UID: UniqueID, name: str = None, importance: Importance = Importance.MINOR):
         self.plots = plots
         self.host = UniqueIDHost()
+
+        if name is None:
+            name = "New plot"
 
         self.UID = UID
         self.name = name
@@ -37,6 +40,24 @@ class PlotLine:
         self.description = ""
         self.result = ""
         self.steps = list()
+
+    def addCharacterByID(self, ID: int):
+        character = self.plots.characters.getByID(ID)
+
+        if character is None:
+            return
+
+        character.link(self.removeCharacterByID)
+        self.characters.append(character.UID.value)
+
+    def removeCharacterByID(self, ID: int):
+        character = self.plots.characters.getByID(ID)
+
+        if character is None:
+            self.characters.remove(ID)
+        else:
+            character.unlink(self.removeCharacterByID)
+            self.characters.remove(character.UID.value)
 
     def addStep(self, name: str, meta: str = "", summary: str = ""):
         step = PlotStep(self, self.host.newID(), name, meta, summary)
@@ -61,17 +82,18 @@ class PlotLine:
 
 class Plots:
 
-    def __init__(self, path):
+    def __init__(self, path, characters: Characters):
         self.file = XmlFile(os.path.join(path, "plots.xml"))
         self.host = UniqueIDHost()
+        self.characters = characters
         self.lines = dict()
 
-    def addLine(self, name: str, importance: Importance = Importance.MINOR):
+    def addLine(self, name: str = None, importance: Importance = Importance.MINOR):
         line = PlotLine(self, self.host.newID(), name, importance)
         self.lines[line.UID.value] = line
         return line
 
-    def loadLine(self, ID: int, name: str, importance: Importance = Importance.MINOR):
+    def loadLine(self, ID: int, name: str = None, importance: Importance = Importance.MINOR):
         line = PlotLine(self, self.host.loadID(ID), name, importance)
         self.lines[line.UID.value] = line
         return line
@@ -79,6 +101,9 @@ class Plots:
     def removeLine(self, line: PlotLine):
         self.host.removeID(line.UID)
         self.lines.pop(line.UID.value)
+
+    def getLineByID(self, ID: int) -> PlotLine:
+        return self.lines.get(ID, None)
 
     def __iter__(self):
         return self.lines.values().__iter__()
@@ -110,10 +135,13 @@ class Plots:
         line.result = element.get("result")
 
         for characterID in element.get("characters", "").split(','):
-            #TODO: Character loadings/adding should link to models!
-
             try:
-                line.characters.append(int(characterID))
+                character = plots.characters.getByID(int(characterID))
+
+                if character is None:
+                    continue
+
+                line.addCharacterByID(character.UID.value)
             except ValueError:
                 continue
 

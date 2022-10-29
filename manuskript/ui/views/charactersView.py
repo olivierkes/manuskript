@@ -30,7 +30,13 @@ class CharactersView:
         self.secondaryCharactersStore = builder.get_object("secondary_characters_store")
         self.minorCharactersStore = builder.get_object("minor_characters_store")
 
+        self.filterCharactersBuffer = builder.get_object("filter_characters")
+
+        self.filterCharactersBuffer.connect("deleted-text", self.filterCharactersDeletedText)
+        self.filterCharactersBuffer.connect("inserted-text", self.filterCharactersInsertedText)
+
         self.filteredCharactersStore.set_visible_func(self.filterCharacters)
+        self.filteredCharactersStore.refilter()
 
         self.mainCharactersStore.set_visible_func(lambda model, iter, userdata: model[iter][3] == Importance.MAIN.value)
         self.secondaryCharactersStore.set_visible_func(lambda model, iter, userdata: model[iter][3] == Importance.SECONDARY.value)
@@ -51,13 +57,9 @@ class CharactersView:
 
         self.addCharacterButton = builder.get_object("add_character")
         self.removeCharacterButton = builder.get_object("remove_character")
-        self.filterCharactersBuffer = builder.get_object("filter_characters")
 
         self.addCharacterButton.connect("clicked", self.addCharacterClicked)
         self.removeCharacterButton.connect("clicked", self.removeCharacterClicked)
-
-        self.filterCharactersBuffer.connect("deleted-text", self.filterCharactersDeletedText)
-        self.filterCharactersBuffer.connect("inserted-text", self.filterCharactersInsertedText)
 
         self.colorButton = builder.get_object("color")
         self.importanceCombo = builder.get_object("importance")
@@ -184,10 +186,14 @@ class CharactersView:
             self.loadCharacterData(character)
 
     def addCharacterClicked(self, button: Gtk.Button):
-        character = self.characters.add()
+        name = invalidString(self.filterCharactersBuffer.get_text())
+        character = self.characters.add(name)
 
         if character is None:
             return
+
+        if self.character is not None:
+            character.importance = self.character.importance
 
         self.refreshCharacterStore()
 
@@ -200,9 +206,9 @@ class CharactersView:
 
     def filterCharacters(self, model, iter, userdata):
         name = validString(model[iter][1])
-        text = self.filterCharactersBuffer.get_text()
+        text = validString(self.filterCharactersBuffer.get_text())
 
-        return text in name
+        return text.lower() in name.lower()
 
     def filterCharactersChanged(self, buffer: Gtk.EntryBuffer):
         self.filteredCharactersStore.refilter()
