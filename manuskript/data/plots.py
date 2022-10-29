@@ -4,8 +4,9 @@
 import os
 
 from lxml import etree
-from manuskript.data.characters import Characters
+from manuskript.data.characters import Characters, Character
 from manuskript.data.importance import Importance
+from manuskript.data.links import LinkAction, Links
 from manuskript.data.unique_id import UniqueIDHost, UniqueID
 from manuskript.io.xmlFile import XmlFile
 
@@ -29,6 +30,7 @@ class PlotLine:
     def __init__(self, plots, UID: UniqueID, name: str = None, importance: Importance = Importance.MINOR):
         self.plots = plots
         self.host = UniqueIDHost()
+        self.links = Links()
 
         if name is None:
             name = "New plot"
@@ -41,37 +43,50 @@ class PlotLine:
         self.result = ""
         self.steps = list()
 
-    def addCharacterByID(self, ID: int):
-        character = self.plots.characters.getByID(ID)
+    def __linkActionCharacter(self, action: LinkAction, UID: UniqueID, character):
+        if action == LinkAction.DELETE:
+            self.removeCharacter(character, False)
 
+        self.links.call(LinkAction.UPDATE, self.UID, self)
+
+    def addCharacter(self, character: Character):
         if character is None:
             return
 
-        character.link(self.removeCharacterByID)
+        character.links.add(self.__linkActionCharacter)
+
         self.characters.append(character.UID.value)
+        self.links.call(LinkAction.UPDATE, self.UID, self)
 
-    def removeCharacterByID(self, ID: int):
-        character = self.plots.characters.getByID(ID)
-
+    def removeCharacter(self, character: Character, unlink: bool = True):
         if character is None:
-            self.characters.remove(ID)
-        else:
-            character.unlink(self.removeCharacterByID)
-            self.characters.remove(character.UID.value)
+            return
+
+        if unlink:
+            character.links.remove(self.__linkActionCharacter)
+
+        self.characters.remove(character.UID.value)
+        self.links.call(LinkAction.UPDATE, self.UID, self)
 
     def addStep(self, name: str, meta: str = "", summary: str = ""):
         step = PlotStep(self, self.host.newID(), name, meta, summary)
         self.steps.append(step)
+
+        self.links.call(LinkAction.UPDATE, self.UID, self)
         return step
 
     def loadStep(self, ID: int, name: str, meta: str = "", summary: str = ""):
         step = PlotStep(self, self.host.loadID(ID), name, meta, summary)
         self.steps.append(step)
+
+        self.links.call(LinkAction.UPDATE, self.UID, self)
         return step
 
     def removeStep(self, step: PlotStep):
         self.host.removeID(step.UID)
         self.steps.remove(step)
+
+        self.links.call(LinkAction.UPDATE, self.UID, self)
 
     def __iter__(self):
         return self.steps.__iter__()
@@ -96,9 +111,13 @@ class Plots:
     def loadLine(self, ID: int, name: str = None, importance: Importance = Importance.MINOR):
         line = PlotLine(self, self.host.loadID(ID), name, importance)
         self.lines[line.UID.value] = line
+
+        line.links.call(LinkAction.RELOAD, line.UID, line)
         return line
 
     def removeLine(self, line: PlotLine):
+        line.links.call(LinkAction.DELETE, line.UID, line)
+
         self.host.removeID(line.UID)
         self.lines.pop(line.UID.value)
 
@@ -136,12 +155,7 @@ class Plots:
 
         for characterID in element.get("characters", "").split(','):
             try:
-                character = plots.characters.getByID(int(characterID))
-
-                if character is None:
-                    continue
-
-                line.addCharacterByID(character.UID.value)
+                line.addCharacter(plots.characters.getByID(int(characterID)))
             except ValueError:
                 continue
 

@@ -6,7 +6,7 @@ import gi
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
 
-from manuskript.data import Plots, PlotLine, PlotStep, Importance
+from manuskript.data import Plots, PlotLine, PlotStep, Importance, LinkAction
 from manuskript.ui.util import rgbaFromColor, pixbufFromColor
 from manuskript.util import validString, invalidString, validInt, invalidInt
 
@@ -27,7 +27,7 @@ class PlotView:
         self.refreshPlotsStore()
 
         self.charactersStore = builder.get_object("characters_store")
-        self.refreshCharacterStore()
+        self.refreshCharactersStore()
 
         self.filteredPlotsStore = builder.get_object("filtered_plots_store")
         self.mainPlotsStore = builder.get_object("main_plots_store")
@@ -100,7 +100,7 @@ class PlotView:
             self.plotsStore.set_value(tree_iter, 1, validString(plotLine.name))
             self.plotsStore.set_value(tree_iter, 2, Importance.asValue(plotLine.importance))
 
-    def refreshCharacterStore(self):
+    def refreshCharactersStore(self):
         self.charactersStore.clear()
 
         for character in self.plots.characters:
@@ -113,7 +113,16 @@ class PlotView:
             self.charactersStore.set_value(tree_iter, 1, validString(character.name))
             self.charactersStore.set_value(tree_iter, 2, pixbufFromColor(character.color))
 
+    def __linkActionPlotLine(self, action, UID, plotLine):
+        if action == LinkAction.DELETE:
+            return
+
+        self.plotCharactersStore.refilter()
+
     def loadPlotData(self, plotLine: PlotLine):
+        if self.plotLine is not None:
+            self.plotLine.links.remove(self.__linkActionPlotLine)
+
         self.plotLine = None
 
         self.importanceCombo.set_active(Importance.asValue(plotLine.importance))
@@ -124,9 +133,16 @@ class PlotView:
 
         self.plotLine = plotLine
 
+        if self.plotLine is not None:
+            self.plotLine.links.add(self.__linkActionPlotLine)
+
+        self.refreshCharactersStore()
         self.plotCharactersStore.refilter()
 
     def unloadPlotData(self):
+        if self.plotLine is not None:
+            self.plotLine.links.remove(self.__linkActionPlotLine)
+
         self.plotLine = None
 
         self.nameBuffer.set_text("", -1)

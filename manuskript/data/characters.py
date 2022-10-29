@@ -8,6 +8,7 @@ from collections.abc import Callable
 
 from manuskript.data.color import Color
 from manuskript.data.importance import Importance
+from manuskript.data.links import LinkAction, Links
 from manuskript.data.unique_id import UniqueIDHost
 from manuskript.io.mmdFile import MmdFile
 from manuskript.util import safeFilename
@@ -18,7 +19,7 @@ class Character:
     def __init__(self, path, characters):
         self.file = MmdFile(path, 21)
         self.characters = characters
-        self.links = list()
+        self.links = Links()
 
         self.UID = None
         self.name = None
@@ -35,20 +36,11 @@ class Character:
         self.color = None
         self.details = dict()
 
-    def link(self, callback: Callable[[int], None]):
-        self.links.append(callback)
-
-    def unlink(self, callback: Callable[[int], None]):
-        self.links.remove(callback)
-
     def allowPOV(self) -> bool:
         return True if self.POV is None else self.POV
 
     def remove(self):
-        for link in self.links:
-            link(self.UID.value)
-
-        self.links.clear()
+        self.links.call(LinkAction.DELETE, self.UID, self)
         self.characters.remove(self)
 
     @classmethod
@@ -86,6 +78,8 @@ class Character:
 
         for (key, value) in metadata.items():
             self.details[key] = value
+
+        self.links.call(LinkAction.RELOAD, self.UID, self)
 
     def save(self):
         metadata = OrderedDict()
