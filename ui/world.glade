@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.38.2 
+<!-- Generated with glade 3.40.0 
 
 Copyright (C) 2015-2021 Olivier Keshavjee et al.
 
@@ -25,17 +25,21 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
   <!-- interface-name Manuskript -->
   <!-- interface-description Manuskript is an open-source tool for writers. -->
   <!-- interface-copyright 2015-2021 Olivier Keshavjee et al. -->
+  <object class="GtkTextBuffer" id="description"/>
+  <object class="GtkEntryBuffer" id="filter_world"/>
+  <object class="GtkEntryBuffer" id="name"/>
+  <object class="GtkTextBuffer" id="source_of_conflict"/>
+  <object class="GtkTextBuffer" id="source_of_passion"/>
   <object class="GtkTreeStore" id="world_store">
     <columns>
+      <!-- column-name ID -->
+      <column type="gint"/>
       <!-- column-name name -->
       <column type="gchararray"/>
-      <!-- column-name description -->
-      <column type="gchararray"/>
-      <!-- column-name passion -->
-      <column type="gchararray"/>
-      <!-- column-name conflict -->
-      <column type="gchararray"/>
     </columns>
+  </object>
+  <object class="GtkTreeModelFilter" id="filtered_world_store">
+    <property name="child-model">world_store</property>
   </object>
   <object class="GtkScrolledWindow" id="world_view">
     <property name="visible">True</property>
@@ -69,14 +73,14 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <child>
-                          <object class="GtkTreeView">
+                          <object class="GtkTreeView" id="world_tree_view">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
-                            <property name="model">world_store</property>
+                            <property name="model">filtered_world_store</property>
                             <property name="search-column">0</property>
                             <property name="enable-tree-lines">True</property>
                             <child internal-child="selection">
-                              <object class="GtkTreeSelection"/>
+                              <object class="GtkTreeSelection" id="world_selection"/>
                             </child>
                             <child>
                               <object class="GtkTreeViewColumn">
@@ -84,7 +88,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                 <child>
                                   <object class="GtkCellRendererText"/>
                                   <attributes>
-                                    <attribute name="text">0</attribute>
+                                    <attribute name="text">1</attribute>
                                   </attributes>
                                 </child>
                               </object>
@@ -109,7 +113,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                     <property name="margin-bottom">8</property>
                     <property name="spacing">4</property>
                     <child>
-                      <object class="GtkButton">
+                      <object class="GtkButton" id="add_to_world">
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <property name="receives-default">True</property>
@@ -128,7 +132,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton">
+                      <object class="GtkButton" id="remove_from_world">
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <property name="receives-default">True</property>
@@ -150,6 +154,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       <object class="GtkEntry">
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
+                        <property name="buffer">filter_world</property>
                         <property name="placeholder-text" translatable="yes">Filter</property>
                       </object>
                       <packing>
@@ -216,6 +221,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               <object class="GtkEntry">
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="buffer">name</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -249,6 +255,8 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                     <property name="height-request">300</property>
                                     <property name="visible">True</property>
                                     <property name="can-focus">True</property>
+                                    <property name="wrap-mode">word-char</property>
+                                    <property name="buffer">description</property>
                                   </object>
                                 </child>
                                 <child type="label_item">
@@ -323,6 +331,8 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                     <property name="height-request">300</property>
                                     <property name="visible">True</property>
                                     <property name="can-focus">True</property>
+                                    <property name="wrap-mode">word-char</property>
+                                    <property name="buffer">source_of_passion</property>
                                   </object>
                                 </child>
                                 <child type="label_item">
@@ -361,6 +371,8 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                     <property name="height-request">300</property>
                                     <property name="visible">True</property>
                                     <property name="can-focus">True</property>
+                                    <property name="wrap-mode">word-char</property>
+                                    <property name="buffer">source_of_conflict</property>
                                   </object>
                                 </child>
                                 <child type="label_item">

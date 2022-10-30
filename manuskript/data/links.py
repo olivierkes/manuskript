@@ -22,7 +22,8 @@ class Links:
         self.callbacks.append(callback)
 
     def remove(self, callback: Callable[[LinkAction, UniqueID, any], None]):
-        self.callbacks.remove(callback)
+        if callback in self.callbacks:
+            self.callbacks.remove(callback)
 
     def call(self, action: LinkAction, UID: UniqueID, host: any):
         for callback in self.callbacks:

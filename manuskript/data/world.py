@@ -19,6 +19,12 @@ class WorldItem:
         self.conflict = None
         self.children = list()
 
+    def remove(self):
+        for child in self.children:
+            child.remove()
+
+        self.world.removeItem(self)
+
     def __iter__(self):
         return self.children.__iter__()
 
@@ -47,6 +53,9 @@ class World:
     def removeItem(self, item: WorldItem):
         self.host.removeID(item.UID)
         self.items.pop(item.UID.value)
+
+    def getItemByID(self, ID: int) -> WorldItem:
+        return self.items.get(ID, None)
 
     def __iter__(self):
         return self.items.values().__iter__()
