@@ -175,6 +175,15 @@ class OutlineFolder(OutlineItem):
 
         return count
 
+    def goalCount(self) -> int:
+        count = super().goalCount()
+
+        if self.goal is None:
+            for item in self.items:
+                count += item.goalCount()
+
+        return count
+
     def load(self, _: bool = True):
         metadata, _ = self.file.loadMMD(True)
         OutlineItem.loadMetadata(self, metadata)
