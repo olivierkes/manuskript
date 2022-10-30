@@ -59,7 +59,7 @@ class WorldView:
 
         self.unloadWorldData()
 
-    def __appendWorldItem(self, worldItem: WorldItem, parent_iter = None):
+    def __appendWorldItem(self, worldItem: WorldItem, parent_iter=None):
         tree_iter = self.worldStore.append(parent_iter)
 
         if tree_iter is None:

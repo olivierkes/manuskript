@@ -1,18 +1,12 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
 
-from enum import Enum, unique
-
-
-@unique
-class GoalKind(Enum):
-    WORDS = 0
-    CHARACTERS = 1
+from manuskript.util import CounterKind, countText
 
 
 class Goal:
 
-    def __init__(self, value: int = 0, kind: GoalKind = GoalKind.WORDS):
+    def __init__(self, value: int = 0, kind: CounterKind = CounterKind.WORDS):
         self.value = max(value, 0)
         self.kind = kind
 
@@ -20,10 +14,13 @@ class Goal:
         return str(self.value) + " " + self.kind.name.lower()
 
     def __str__(self):
-        if self.kind != GoalKind.WORDS:
+        if self.kind != CounterKind.WORDS:
             return self.prettyString()
         else:
             return str(self.value)
+
+    def count(self, text: str):
+        return countText(text, self.kind)
 
     @classmethod
     def parse(cls, string: str):
@@ -34,7 +31,7 @@ class Goal:
 
         try:
             value = int(parts[0])
-            kind = GoalKind[parts[1].upper()] if len(parts) > 1 else GoalKind.WORDS
+            kind = CounterKind[parts[1].upper()] if len(parts) > 1 else CounterKind.WORDS
         except ValueError:
             return None
 

@@ -3,6 +3,15 @@
 
 import re
 
+from enum import Enum, unique
+
+
+@unique
+class CounterKind(Enum):
+    WORDS = 0
+    CHARACTERS = 1
+    PAGES = 2
+
 
 class CharCounter:
 

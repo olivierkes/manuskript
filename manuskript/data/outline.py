@@ -6,8 +6,10 @@ import os
 from collections import OrderedDict
 from enum import Enum, unique
 from manuskript.data.goal import Goal
+from manuskript.data.plots import Plots
 from manuskript.data.unique_id import UniqueIDHost
 from manuskript.io.mmdFile import MmdFile
+from manuskript.util import CounterKind, countText, validString
 
 
 @unique
@@ -43,7 +45,9 @@ class OutlineItem:
         if ID is None:
             return
 
-        item.UID = item.outline.host.loadID(int(ID))
+        if (item.UID is None) or (item.UID.value != int(ID)):
+            item.UID = item.outline.host.loadID(int(ID))
+
         item.title = metadata.get("title", None)
         item.type = metadata.get("type", "md")
         item.summarySentence = metadata.get("summarySentence", None)
@@ -76,6 +80,12 @@ class OutlineItem:
 
         return metadata
 
+    def textCount(self, counterKind: CounterKind = None) -> int:
+        return 0
+
+    def goalCount(self) -> int:
+        return 0 if self.goal is None else self.goal.value
+
     def load(self, optimized: bool = True):
         raise IOError('Loading undefined!')
 
@@ -89,6 +99,12 @@ class OutlineText(OutlineItem):
         OutlineItem.__init__(self, path, outline)
 
         self.text = ""
+
+    def textCount(self, counterKind: CounterKind = None) -> int:
+        if counterKind is None:
+            counterKind = CounterKind.WORDS if self.goal is None else self.goal.kind
+
+        return super().textCount(counterKind) + countText(self.text, counterKind)
 
     def load(self, optimized: bool = True):
         metadata, body = self.file.loadMMD(optimized)
@@ -126,6 +142,7 @@ class OutlineFolder(OutlineItem):
 
         names = os.listdir(folder.dir_path)
         names.remove("folder.txt")
+        names.sort()
 
         for name in names:
             path = os.path.join(folder.dir_path, name)
@@ -146,6 +163,17 @@ class OutlineFolder(OutlineItem):
             for item in folder.items:
                 if type(item) is OutlineFolder:
                     cls.loadItems(outline, item, recursive)
+
+    def textCount(self, counterKind: CounterKind = None) -> int:
+        if counterKind is None:
+            counterKind = CounterKind.WORDS if self.goal is None else self.goal.kind
+
+        count = super().textCount(counterKind)
+
+        for item in self.items:
+            count += item.textCount(counterKind)
+
+        return count
 
     def load(self, _: bool = True):
         metadata, _ = self.file.loadMMD(True)
@@ -170,13 +198,21 @@ class OutlineFolder(OutlineItem):
 
 class Outline:
 
-    def __init__(self, path):
+    def __init__(self, path, plots: Plots):
         self.dir_path = os.path.join(path, "outline")
         self.host = UniqueIDHost()
+        self.plots = plots
         self.items = list()
 
     def __iter__(self):
         return self.items.__iter__()
+
+    def getItemByID(self, ID: int) -> OutlineItem | None:
+        for item in self.all():
+            if item.UID.value == ID:
+                return item
+
+        return None
 
     def all(self):
         result = list()
@@ -196,7 +232,10 @@ class Outline:
     def load(self):
         self.items.clear()
 
-        for name in os.listdir(self.dir_path):
+        names = os.listdir(self.dir_path)
+        names.sort()
+
+        for name in names:
             path = os.path.join(self.dir_path, name)
 
             if os.path.isdir(path):

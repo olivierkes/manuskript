@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.38.2 
+<!-- Generated with glade 3.40.0 
 
 Copyright (C) 2015-2021 Olivier Keshavjee et al.
 
@@ -25,16 +25,24 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
   <!-- interface-name Manuskript -->
   <!-- interface-description Manuskript is an open-source tool for writers. -->
   <!-- interface-copyright 2015-2021 Olivier Keshavjee et al. -->
-  <object class="GtkListStore" id="character_store">
+  <object class="GtkListStore" id="characters_store">
     <columns>
+      <!-- column-name ID -->
+      <column type="gint"/>
       <!-- column-name name -->
       <column type="gchararray"/>
       <!-- column-name color -->
       <column type="GdkPixbuf"/>
     </columns>
   </object>
+  <object class="GtkTextBuffer" id="few_sentences_summary"/>
+  <object class="GtkEntryBuffer" id="filter_outline"/>
+  <object class="GtkEntryBuffer" id="goal"/>
+  <object class="GtkEntryBuffer" id="one_line_summary"/>
   <object class="GtkTreeStore" id="outline_store">
     <columns>
+      <!-- column-name ID -->
+      <column type="gint"/>
       <!-- column-name title -->
       <column type="gchararray"/>
       <!-- column-name label -->
@@ -47,25 +55,31 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
       <column type="gulong"/>
       <!-- column-name goal -->
       <column type="gulong"/>
+      <!-- column-name progress -->
+      <column type="gint"/>
     </columns>
   </object>
-  <object class="GtkTreeStore" id="plot_main_store">
+  <object class="GtkTreeModelFilter" id="filtered_outline_store">
+    <property name="child-model">outline_store</property>
+  </object>
+  <object class="GtkListStore" id="plots_store">
     <columns>
+      <!-- column-name ID -->
+      <column type="gint"/>
       <!-- column-name name -->
       <column type="gchararray"/>
+      <!-- column-name importance -->
+      <column type="gint"/>
     </columns>
   </object>
-  <object class="GtkTreeStore" id="plot_minor_store">
-    <columns>
-      <!-- column-name name -->
-      <column type="gchararray"/>
-    </columns>
+  <object class="GtkTreeModelFilter" id="main_plots_store">
+    <property name="child-model">plots_store</property>
   </object>
-  <object class="GtkTreeStore" id="plot_secondary_store">
-    <columns>
-      <!-- column-name name -->
-      <column type="gchararray"/>
-    </columns>
+  <object class="GtkTreeModelFilter" id="minor_plots_store">
+    <property name="child-model">plots_store</property>
+  </object>
+  <object class="GtkTreeModelFilter" id="secondary_plots_store">
+    <property name="child-model">plots_store</property>
   </object>
   <object class="GtkScrolledWindow" id="outline_view">
     <property name="visible">True</property>
@@ -102,10 +116,21 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                   <object class="GtkTreeView">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
-                    <property name="model">plot_main_store</property>
+                    <property name="model">main_plots_store</property>
+                    <property name="headers-visible">False</property>
                     <property name="search-column">0</property>
                     <child internal-child="selection">
-                      <object class="GtkTreeSelection"/>
+                      <object class="GtkTreeSelection" id="main_plot_selection"/>
+                    </child>
+                    <child>
+                      <object class="GtkTreeViewColumn">
+                        <child>
+                          <object class="GtkCellRendererText"/>
+                          <attributes>
+                            <attribute name="text">1</attribute>
+                          </attributes>
+                        </child>
+                      </object>
                     </child>
                   </object>
                   <packing>
@@ -130,10 +155,21 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                   <object class="GtkTreeView">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
-                    <property name="model">plot_secondary_store</property>
+                    <property name="model">secondary_plots_store</property>
+                    <property name="headers-visible">False</property>
                     <property name="search-column">0</property>
                     <child internal-child="selection">
-                      <object class="GtkTreeSelection"/>
+                      <object class="GtkTreeSelection" id="secondary_plot_selection"/>
+                    </child>
+                    <child>
+                      <object class="GtkTreeViewColumn">
+                        <child>
+                          <object class="GtkCellRendererText"/>
+                          <attributes>
+                            <attribute name="text">1</attribute>
+                          </attributes>
+                        </child>
+                      </object>
                     </child>
                   </object>
                   <packing>
@@ -158,10 +194,21 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                   <object class="GtkTreeView">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
-                    <property name="model">plot_minor_store</property>
+                    <property name="model">minor_plots_store</property>
+                    <property name="headers-visible">False</property>
                     <property name="search-column">0</property>
                     <child internal-child="selection">
-                      <object class="GtkTreeSelection"/>
+                      <object class="GtkTreeSelection" id="minor_plot_selection"/>
+                    </child>
+                    <child>
+                      <object class="GtkTreeViewColumn">
+                        <child>
+                          <object class="GtkCellRendererText"/>
+                          <attributes>
+                            <attribute name="text">1</attribute>
+                          </attributes>
+                        </child>
+                      </object>
                     </child>
                   </object>
                   <packing>
@@ -206,11 +253,11 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               <object class="GtkTreeView">
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
-                                <property name="model">outline_store</property>
+                                <property name="model">filtered_outline_store</property>
                                 <property name="search-column">0</property>
-                                <property name="enable-grid-lines">both</property>
+                                <property name="enable-tree-lines">True</property>
                                 <child internal-child="selection">
-                                  <object class="GtkTreeSelection"/>
+                                  <object class="GtkTreeSelection" id="outline_selection"/>
                                 </child>
                                 <child>
                                   <object class="GtkTreeViewColumn">
@@ -218,7 +265,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                     <child>
                                       <object class="GtkCellRendererText"/>
                                       <attributes>
-                                        <attribute name="text">0</attribute>
+                                        <attribute name="text">1</attribute>
                                       </attributes>
                                     </child>
                                   </object>
@@ -229,7 +276,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                     <child>
                                       <object class="GtkCellRendererCombo"/>
                                       <attributes>
-                                        <attribute name="text">1</attribute>
+                                        <attribute name="text">2</attribute>
                                       </attributes>
                                     </child>
                                   </object>
@@ -240,7 +287,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                     <child>
                                       <object class="GtkCellRendererCombo"/>
                                       <attributes>
-                                        <attribute name="text">2</attribute>
+                                        <attribute name="text">3</attribute>
                                       </attributes>
                                     </child>
                                   </object>
@@ -251,7 +298,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                     <child>
                                       <object class="GtkCellRendererToggle"/>
                                       <attributes>
-                                        <attribute name="active">3</attribute>
+                                        <attribute name="active">4</attribute>
                                       </attributes>
                                     </child>
                                   </object>
@@ -260,9 +307,9 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                   <object class="GtkTreeViewColumn">
                                     <property name="title" translatable="yes">Word count</property>
                                     <child>
-                                      <object class="GtkCellRendererText"/>
+                                      <object class="GtkCellRendererSpin"/>
                                       <attributes>
-                                        <attribute name="text">4</attribute>
+                                        <attribute name="text">5</attribute>
                                       </attributes>
                                     </child>
                                   </object>
@@ -271,9 +318,9 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                   <object class="GtkTreeViewColumn">
                                     <property name="title" translatable="yes">Goal</property>
                                     <child>
-                                      <object class="GtkCellRendererText"/>
+                                      <object class="GtkCellRendererSpin"/>
                                       <attributes>
-                                        <attribute name="text">5</attribute>
+                                        <attribute name="text">6</attribute>
                                       </attributes>
                                     </child>
                                   </object>
@@ -284,7 +331,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                     <child>
                                       <object class="GtkCellRendererProgress"/>
                                       <attributes>
-                                        <attribute name="value">4</attribute>
+                                        <attribute name="value">7</attribute>
                                       </attributes>
                                     </child>
                                   </object>
@@ -311,7 +358,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                     <property name="can-focus">False</property>
                     <property name="spacing">4</property>
                     <child>
-                      <object class="GtkButton">
+                      <object class="GtkButton" id="add_folder">
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <property name="receives-default">True</property>
@@ -330,7 +377,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton">
+                      <object class="GtkButton" id="add_text">
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <property name="receives-default">True</property>
@@ -349,7 +396,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton">
+                      <object class="GtkButton" id="remove">
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <property name="receives-default">True</property>
@@ -371,6 +418,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       <object class="GtkEntry">
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
+                        <property name="buffer">filter_outline</property>
                         <property name="placeholder-text" translatable="yes">Filter</property>
                       </object>
                       <packing>
@@ -407,6 +455,8 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               <object class="GtkEntry">
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="buffer">goal</property>
+                                <property name="placeholder-text" translatable="yes">0</property>
                                 <property name="input-purpose">digits</property>
                               </object>
                               <packing>
@@ -433,17 +483,17 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               <object class="GtkComboBox">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
-                                <property name="model">character_store</property>
+                                <property name="model">characters_store</property>
                                 <child>
                                   <object class="GtkCellRendererText"/>
                                   <attributes>
-                                    <attribute name="text">0</attribute>
+                                    <attribute name="text">1</attribute>
                                   </attributes>
                                 </child>
                                 <child>
                                   <object class="GtkCellRendererPixbuf"/>
                                   <attributes>
-                                    <attribute name="pixbuf">1</attribute>
+                                    <attribute name="pixbuf">2</attribute>
                                   </attributes>
                                 </child>
                               </object>
@@ -478,6 +528,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                           <object class="GtkEntry">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
+                            <property name="buffer">one_line_summary</property>
                             <property name="placeholder-text" translatable="yes">One line summary</property>
                           </object>
                           <packing>
@@ -512,6 +563,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
                                 <property name="wrap-mode">word-char</property>
+                                <property name="buffer">few_sentences_summary</property>
                               </object>
                             </child>
                             <child type="label_item">

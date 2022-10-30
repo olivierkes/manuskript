@@ -2,7 +2,8 @@
 # -*- coding: utf-8 -*-
 
 import re
-from manuskript.util.counter import CharCounter, WordCounter, PageCounter
+
+from manuskript.util.counter import CounterKind, CharCounter, WordCounter, PageCounter
 
 
 def safeInt(s: str, d: int) -> int:
@@ -15,16 +16,16 @@ def safeInt(s: str, d: int) -> int:
         return d
 
 
-def validString(invalid: str) -> str:
-    return "" if invalid is None else invalid
+def validString(invalid) -> str:
+    return "" if invalid is None else str(invalid)
 
 
 def invalidString(valid: str) -> str:
     return None if len(valid) == 0 else valid
 
 
-def validInt(invalid: int) -> int:
-    return 0 if invalid is None else invalid
+def validInt(invalid) -> int:
+    return 0 if invalid is None else int(invalid)
 
 
 def invalidInt(valid: int) -> int:
@@ -46,3 +47,17 @@ def safeFilename(filename: str, extension: str = None) -> str:
         name = "_" + name
 
     return re.sub(r"[^a-zA-Z0-9._\-+()]", "_", name)
+
+
+def countText(text: str, kind: CounterKind = CounterKind.WORDS):
+    if text is None:
+        return 0
+
+    if kind == CounterKind.CHARACTERS:
+        return CharCounter.count(text)
+    elif kind == CounterKind.WORDS:
+        return WordCounter.count(text)
+    elif kind == CounterKind.PAGES:
+        return PageCounter.count(text)
+    else:
+        return 0

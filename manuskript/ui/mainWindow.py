@@ -68,7 +68,7 @@ class MainWindow:
         self.charactersView = MainWindow.packViewIntoSlot(builder, "characters_slot", CharactersView, self.project.characters)
         self.plotView = MainWindow.packViewIntoSlot(builder, "plot_slot", PlotView, self.project.plots)
         self.worldView = MainWindow.packViewIntoSlot(builder, "world_slot", WorldView, self.project.world)
-        self.outlineView = MainWindow.packViewIntoSlot(builder, "outline_slot", OutlineView)
+        self.outlineView = MainWindow.packViewIntoSlot(builder, "outline_slot", OutlineView, self.project.outline)
         self.editorView = MainWindow.packViewIntoSlot(builder, "editor_slot", EditorView)
 
         self.startupWindow = StartupWindow(self)
