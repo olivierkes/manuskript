@@ -9,8 +9,11 @@ from manuskript.io.opmlFile import OpmlFile, OpmlOutlineItem
 
 class WorldItem:
 
-    def __init__(self, world, UID: UniqueID, name: str):
+    def __init__(self, world, UID: UniqueID, name: str = None):
         self.world = world
+
+        if name is None:
+            name = "New item"
 
         self.UID = UID
         self.name = name
@@ -40,17 +43,30 @@ class World:
         self.items = dict()
         self.top = list()
 
-    def addItem(self, name: str) -> WorldItem:
+    def addItem(self, name: str = None, parent: WorldItem = None) -> WorldItem:
         item = WorldItem(self, self.host.newID(), name)
+
+        if parent is None:
+            self.top.append(item)
+        else:
+            parent.children.append(item)
+
         self.items[item.UID.value] = item
         return item
 
-    def loadItem(self, ID: int, name: str) -> WorldItem:
+    def loadItem(self, ID: int, name: str = None) -> WorldItem:
         item = WorldItem(self, self.host.loadID(ID), name)
         self.items[item.UID.value] = item
         return item
 
     def removeItem(self, item: WorldItem):
+        for __item in self.items.values():
+            if item in __item.children:
+                __item.children.remove(item)
+
+        if item in self.top:
+            self.top.remove(item)
+
         self.host.removeID(item.UID)
         self.items.pop(item.UID.value)
 

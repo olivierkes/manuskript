@@ -21,6 +21,8 @@ class WorldView:
 
         self.widget = builder.get_object("world_view")
 
+        self.worldTreeView = builder.get_object("world_tree_view")
+
         self.worldStore = builder.get_object("world_store")
         self.refreshWorldStore()
 
@@ -37,8 +39,11 @@ class WorldView:
 
         self.worldSelection.connect("changed", self.worldSelectionChanged)
 
-        self.worldTreeView = builder.get_object("world_tree_view")
-        self.worldTreeView.expand_all()
+        self.addToWorldButton = builder.get_object("add_to_world")
+        self.removeFromWorldButton = builder.get_object("remove_from_world")
+
+        self.addToWorldButton.connect("clicked", self.addToWorldClicked)
+        self.removeFromWorldButton.connect("clicked", self.removeFromWorldClicked)
 
         self.nameBuffer = builder.get_object("name")
         self.descriptionBuffer = builder.get_object("description")
@@ -72,6 +77,8 @@ class WorldView:
         for item in self.world.top:
             self.__appendWorldItem(item)
 
+        self.worldTreeView.expand_all()
+
     def loadWorldData(self, worldItem: WorldItem):
         self.worldItem = None
 
@@ -103,6 +110,22 @@ class WorldView:
             self.unloadWorldData()
         else:
             self.loadWorldData(worldItem)
+
+    def addToWorldClicked(self, button: Gtk.Button):
+        name = invalidString(self.filterWorldBuffer.get_text())
+        worldItem = self.world.addItem(name, self.worldItem)
+
+        if worldItem is None:
+            return
+
+        self.refreshWorldStore()
+
+    def removeFromWorldClicked(self, button: Gtk.Button):
+        if self.worldItem is None:
+            return
+
+        self.worldItem.remove()
+        self.refreshWorldStore()
 
     def __matchWorldItemByText(self, worldItem: WorldItem, text: str):
         for item in worldItem:
