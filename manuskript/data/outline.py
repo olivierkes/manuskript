@@ -6,7 +6,9 @@ import os
 from collections import OrderedDict
 from enum import Enum, unique
 from manuskript.data.goal import Goal
+from manuskript.data.labels import LabelHost
 from manuskript.data.plots import Plots
+from manuskript.data.status import StatusHost
 from manuskript.data.unique_id import UniqueIDHost
 from manuskript.io.mmdFile import MmdFile
 from manuskript.util import CounterKind, countText, validString
@@ -207,10 +209,12 @@ class OutlineFolder(OutlineItem):
 
 class Outline:
 
-    def __init__(self, path, plots: Plots):
+    def __init__(self, path, plots: Plots, labels: LabelHost, statuses: StatusHost):
         self.dir_path = os.path.join(path, "outline")
         self.host = UniqueIDHost()
         self.plots = plots
+        self.labels = labels
+        self.statuses = statuses
         self.items = list()
 
     def __iter__(self):

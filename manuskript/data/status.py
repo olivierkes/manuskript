@@ -55,11 +55,10 @@ class StatusHost:
             self.statuses.clear()
             return
 
-        if len(text) <= 1:
+        if (len(text) <= 1) or (text[len(text) - 1] != "\n"):
             return
 
         text = text[:-1]
-
         if len(text) <= 0:
             return
 

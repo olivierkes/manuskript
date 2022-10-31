@@ -22,6 +22,12 @@ class OutlineView:
 
         self.widget = builder.get_object("outline_view")
 
+        self.labelStore = builder.get_object("label_store")
+        self.refreshLabelStore()
+
+        self.statusStore = builder.get_object("status_store")
+        self.refreshStatusStore()
+
         self.plotsStore = builder.get_object("plots_store")
         self.refreshPlotsStore()
 
@@ -82,6 +88,29 @@ class OutlineView:
         self.fewSentencesSummaryBuffer.connect("changed", self.fewSentencesSummaryChanged)
 
         self.unloadOutlineData()
+
+    def refreshLabelStore(self):
+        self.labelStore.clear()
+
+        for label in self.outline.labels:
+            tree_iter = self.labelStore.append()
+
+            if tree_iter is None:
+                continue
+
+            self.labelStore.set_value(tree_iter, 0, validString(label.name))
+            self.labelStore.set_value(tree_iter, 1, pixbufFromColor(label.color))
+
+    def refreshStatusStore(self):
+        self.statusStore.clear()
+
+        for status in self.outline.statuses:
+            tree_iter = self.statusStore.append()
+
+            if tree_iter is None:
+                continue
+
+            self.statusStore.set_value(tree_iter, 0, validString(status.name))
 
     def refreshPlotsStore(self):
         self.plotsStore.clear()

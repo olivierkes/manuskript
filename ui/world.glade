@@ -175,7 +175,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
               </object>
               <packing>
                 <property name="resize">True</property>
-                <property name="shrink">False</property>
+                <property name="shrink">True</property>
               </packing>
             </child>
             <child>
@@ -408,7 +408,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
               </object>
               <packing>
                 <property name="resize">True</property>
-                <property name="shrink">False</property>
+                <property name="shrink">True</property>
               </packing>
             </child>
           </object>

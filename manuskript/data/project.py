@@ -32,7 +32,7 @@ class Project:
         self.characters = Characters(self.file.dir_path)
         self.plots = Plots(self.file.dir_path, self.characters)
         self.world = World(self.file.dir_path)
-        self.outline = Outline(self.file.dir_path, self.plots)
+        self.outline = Outline(self.file.dir_path, self.plots, self.labels, self.statuses)
         self.revisions = Revisions(self.file.dir_path)
 
     def __del__(self):
