@@ -148,8 +148,14 @@ class OutlineView:
             outlineItem.load(False)
 
         if type(outlineItem) is OutlineFolder:
+            icon = "folder-symbolic"
+
             for item in outlineItem:
                 self.__appendOutlineItem(item, tree_iter)
+        elif type(outlineItem) is OutlineText:
+            icon = "emblem-documents-symbolic"
+        else:
+            icon = "folder-documents-symbolic"
 
         wordCount = validInt(outlineItem.textCount())
         goal = validInt(outlineItem.goalCount())
@@ -168,6 +174,7 @@ class OutlineView:
         self.outlineStore.set_value(tree_iter, 5, wordCount)
         self.outlineStore.set_value(tree_iter, 6, goal)
         self.outlineStore.set_value(tree_iter, 7, progress)
+        self.outlineStore.set_value(tree_iter, 8, icon)
 
     def refreshOutlineStore(self):
         self.outlineStore.clear()

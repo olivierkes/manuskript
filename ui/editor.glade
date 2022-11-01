@@ -56,6 +56,8 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
       <column type="gulong"/>
       <!-- column-name progress -->
       <column type="gint"/>
+      <!-- column-name icon -->
+      <column type="gchararray"/>
     </columns>
   </object>
   <object class="GtkListStore" id="status_store">
@@ -98,6 +100,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                             <property name="can-focus">True</property>
                             <property name="model">outline_store</property>
                             <property name="headers-visible">False</property>
+                            <property name="enable-tree-lines">True</property>
                             <child internal-child="selection">
                               <object class="GtkTreeSelection" id="outline_selection"/>
                             </child>
@@ -105,6 +108,9 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               <object class="GtkTreeViewColumn">
                                 <child>
                                   <object class="GtkCellRendererPixbuf"/>
+                                  <attributes>
+                                    <attribute name="icon-name">8</attribute>
+                                  </attributes>
                                 </child>
                                 <child>
                                   <object class="GtkCellRendererText"/>
@@ -290,6 +296,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                     <property name="visible">True</property>
                                     <property name="can-focus">True</property>
                                     <property name="model">outline_store</property>
+                                    <property name="enable-tree-lines">True</property>
                                     <child internal-child="selection">
                                       <object class="GtkTreeSelection"/>
                                     </child>
@@ -299,6 +306,12 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                         <property name="min-width">50</property>
                                         <property name="title" translatable="yes">Title</property>
                                         <property name="expand">True</property>
+                                        <child>
+                                          <object class="GtkCellRendererPixbuf"/>
+                                          <attributes>
+                                            <attribute name="icon-name">8</attribute>
+                                          </attributes>
+                                        </child>
                                         <child>
                                           <object class="GtkCellRendererText">
                                             <property name="editable">True</property>
