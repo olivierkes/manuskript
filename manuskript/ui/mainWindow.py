@@ -69,7 +69,7 @@ class MainWindow:
         self.plotView = MainWindow.packViewIntoSlot(builder, "plot_slot", PlotView, self.project.plots)
         self.worldView = MainWindow.packViewIntoSlot(builder, "world_slot", WorldView, self.project.world)
         self.outlineView = MainWindow.packViewIntoSlot(builder, "outline_slot", OutlineView, self.project.outline)
-        self.editorView = MainWindow.packViewIntoSlot(builder, "editor_slot", EditorView)
+        self.editorView = MainWindow.packViewIntoSlot(builder, "editor_slot", EditorView, self.project)
 
         self.startupWindow = StartupWindow(self)
         self.aboutDialog = AboutDialog(self)
@@ -144,5 +144,5 @@ class MainWindow:
 
         self.window.destroy()
 
-    def _notifyProperty(self, window, property):
-        print(property.name)
+    def _notify(self, obj: GObject.Object, pspec: GObject.ParamSpec):
+        print(pspec.name + " = " + str(obj.get_property(pspec.name)))
