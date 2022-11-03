@@ -16,27 +16,27 @@
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="66"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Popis</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="100"/>
         <source>Offers export to</source>
-        <translation type="unfinished"></translation>
+        <translation>Ponúka výstup do</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="184"/>
         <source>Status</source>
-        <translation type="unfinished"></translation>
+        <translation>Stav</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="190"/>
         <source>Status:</source>
-        <translation type="unfinished"></translation>
+        <translation>Stav:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="210"/>
         <source>Version:</source>
-        <translation type="unfinished"></translation>
+        <translation>Verzia:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.ui" line="233"/>
