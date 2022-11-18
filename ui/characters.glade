@@ -344,7 +344,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
               </packing>
             </child>
             <child>
-              <object class="GtkNotebook">
+              <object class="GtkNotebook" id="character_notebook">
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <child>

@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
+import collections
 import os
 import re
 
@@ -14,7 +15,7 @@ class MmdFile(AbstractFile):
         self.metaSpacing = metaSpacing
 
     def loadMMD(self, ignoreBody: bool = True):
-        metadata = dict()
+        metadata = collections.OrderedDict()
         body = None
 
         metaPattern = re.compile(r"^([^\s].*?):\s*(.*)\n$")

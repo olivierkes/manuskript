@@ -20,6 +20,7 @@ class WorldView:
         builder.add_from_file("ui/world.glade")
 
         self.widget = builder.get_object("world_view")
+        self.notebook = builder.get_object("world_notebook")
 
         self.worldTreeView = builder.get_object("world_tree_view")
 
@@ -88,9 +89,11 @@ class WorldView:
         self.sourceOfConflictBuffer.set_text(validString(worldItem.conflict), -1)
 
         self.worldItem = worldItem
+        self.notebook.set_sensitive(True)
 
     def unloadWorldData(self):
         self.worldItem = None
+        self.notebook.set_sensitive(False)
 
         self.nameBuffer.set_text("", -1)
         self.descriptionBuffer.set_text("", -1)

@@ -22,6 +22,7 @@ class PlotView:
         builder.add_from_file("ui/plot.glade")
 
         self.widget = builder.get_object("plot_view")
+        self.notebook = builder.get_object("plot_notebook")
 
         self.plotsStore = builder.get_object("plots_store")
         self.refreshPlotsStore()
@@ -161,6 +162,7 @@ class PlotView:
             self.resolutionStepsStore.set_value(tree_iter, 2, validString(step.meta))
 
         self.plotLine = plotLine
+        self.notebook.set_sensitive(True)
 
         if self.plotLine is not None:
             self.plotLine.links.add(self.__linkActionPlotLine)
@@ -173,6 +175,7 @@ class PlotView:
             self.plotLine.links.remove(self.__linkActionPlotLine)
 
         self.plotLine = None
+        self.notebook.set_sensitive(False)
 
         self.nameBuffer.set_text("", -1)
         self.descriptionBuffer.set_text("", -1)

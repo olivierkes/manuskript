@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
 
+import collections
 import os
 
 from manuskript.io.textFile import TextFile
@@ -27,10 +28,15 @@ class StatusHost:
 
     def __init__(self, path):
         self.file = TextFile(os.path.join(path, "status.txt"))
-        self.statuses = dict()
+        self.statuses = collections.OrderedDict()
 
-    def addStatus(self, name: str):
-        self.statuses[name] = Status(self, name)
+    def addStatus(self, name: str = None):
+        if name is None:
+            name = "New Status"
+
+        status = Status(self, name)
+        self.statuses[name] = status
+        return status
 
     def removeStatus(self, name: str):
         self.statuses.pop(name)

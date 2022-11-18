@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
 
+import collections
 import os
 
 from manuskript.data.color import Color
@@ -29,10 +30,15 @@ class LabelHost:
 
     def __init__(self, path):
         self.file = MmdFile(os.path.join(path, "labels.txt"), 21)
-        self.labels = dict()
+        self.labels = collections.OrderedDict()
 
-    def addLabel(self, name: str, color: Color):
-        self.labels[name] = Label(self, name, color)
+    def addLabel(self, name: str = None, color: Color = None):
+        if name is None:
+            name = "New Label"
+
+        label = Label(self, name, color)
+        self.labels[name] = label
+        return label
 
     def removeLabel(self, name: str):
         self.labels.pop(name)
@@ -64,7 +70,7 @@ class LabelHost:
             self.addLabel(name, Color.parse(value))
 
     def save(self):
-        metadata = dict()
+        metadata = collections.OrderedDict()
 
         for (name, label) in self.labels.items():
             metadata[name] = label.color

@@ -10,19 +10,22 @@ Handy.init()
 
 from manuskript.ui.abstractDialog import AbstractDialog
 
-from manuskript.data import Settings
+from manuskript.data import Project, Settings
 from manuskript.ui.settings import *
 
 
 class SettingsWindow(AbstractDialog):
 
     @classmethod
-    def packPage(cls, window, page_cls, settings: Settings):
+    def packPage(cls, window, page_cls, settings: Settings, data=None):
         if window is None:
             return None
 
         try:
-            page = page_cls(settings)
+            if data is None:
+                page = page_cls(settings)
+            else:
+                page = page_cls(settings, data)
         except Exception as e:
             print(e)
             return None
@@ -44,12 +47,18 @@ class SettingsWindow(AbstractDialog):
         self.fullscreenPage = None
 
     def initWindow(self, builder, window):
-        self.generalPage = SettingsWindow.packPage(window, GeneralPage, self.getSettings())
-        self.revisionsPage = SettingsWindow.packPage(window, RevisionsPage, self.getSettings())
-        self.viewsPage = SettingsWindow.packPage(window, ViewsPage, self.getSettings())
-        self.labelsPage = SettingsWindow.packPage(window, LabelsPage, self.getSettings())
-        self.statusPage = SettingsWindow.packPage(window, StatusPage, self.getSettings())
-        self.fullscreenPage = SettingsWindow.packPage(window, FullscreenPage, self.getSettings())
+        project = self.getProject()
+        settings = self.getSettings()
+
+        self.generalPage = SettingsWindow.packPage(window, GeneralPage, settings)
+        self.revisionsPage = SettingsWindow.packPage(window, RevisionsPage, settings)
+        self.viewsPage = SettingsWindow.packPage(window, ViewsPage, settings)
+        self.labelsPage = SettingsWindow.packPage(window, LabelsPage, settings, project.labels)
+        self.statusPage = SettingsWindow.packPage(window, StatusPage, settings, project.statuses)
+        self.fullscreenPage = SettingsWindow.packPage(window, FullscreenPage, settings)
 
     def getSettings(self) -> Settings:
         return self.mainWindow.getSettings()
+
+    def getProject(self) -> Project:
+        return self.mainWindow.getProject()

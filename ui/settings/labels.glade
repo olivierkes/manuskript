@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.38.2 
+<!-- Generated with glade 3.40.0 
 
 Copyright (C) 2015-2021 Olivier Keshavjee et al.
 
@@ -27,6 +27,14 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
   <!-- interface-name Manuskript -->
   <!-- interface-description Manuskript is an open-source tool for writers. -->
   <!-- interface-copyright 2015-2021 Olivier Keshavjee et al. -->
+  <object class="GtkListStore" id="label_store">
+    <columns>
+      <!-- column-name name -->
+      <column type="gchararray"/>
+      <!-- column-name color -->
+      <column type="GdkPixbuf"/>
+    </columns>
+  </object>
   <object class="HdyPreferencesPage" id="labels_page">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
@@ -68,9 +76,30 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <child>
-                              <object class="GtkListBox">
+                              <object class="GtkTreeView">
                                 <property name="visible">True</property>
-                                <property name="can-focus">False</property>
+                                <property name="can-focus">True</property>
+                                <property name="model">label_store</property>
+                                <property name="headers-visible">False</property>
+                                <child internal-child="selection">
+                                  <object class="GtkTreeSelection" id="label_selection"/>
+                                </child>
+                                <child>
+                                  <object class="GtkTreeViewColumn">
+                                    <child>
+                                      <object class="GtkCellRendererPixbuf"/>
+                                      <attributes>
+                                        <attribute name="pixbuf">1</attribute>
+                                      </attributes>
+                                    </child>
+                                    <child>
+                                      <object class="GtkCellRendererText"/>
+                                      <attributes>
+                                        <attribute name="text">0</attribute>
+                                      </attributes>
+                                    </child>
+                                  </object>
+                                </child>
                               </object>
                             </child>
                           </object>
@@ -83,7 +112,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkColorButton">
+                      <object class="GtkColorButton" id="color">
                         <property name="width-request">48</property>
                         <property name="height-request">48</property>
                         <property name="visible">True</property>
@@ -113,7 +142,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                     <property name="valign">start</property>
                     <property name="spacing">8</property>
                     <child>
-                      <object class="GtkButton">
+                      <object class="GtkButton" id="add_label">
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <property name="receives-default">True</property>
@@ -132,7 +161,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton">
+                      <object class="GtkButton" id="remove_label">
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <property name="receives-default">True</property>

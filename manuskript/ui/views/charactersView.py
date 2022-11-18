@@ -21,6 +21,7 @@ class CharactersView:
         builder.add_from_file("ui/characters.glade")
 
         self.widget = builder.get_object("characters_view")
+        self.notebook = builder.get_object("character_notebook")
 
         self.charactersStore = builder.get_object("characters_store")
         self.refreshCharacterStore()
@@ -65,7 +66,7 @@ class CharactersView:
         self.importanceCombo = builder.get_object("importance")
         self.allowPOVCheck = builder.get_object("allow_POV")
 
-        self.colorSetSignal = self.colorButton.connect("color-set", self.colorSet)
+        self.colorButton.connect("color-set", self.colorSet)
         self.importanceCombo.connect("changed", self.importanceChanged)
         self.allowPOVCheck.connect("toggled", self.allowPOVToggled)
 
@@ -148,9 +149,11 @@ class CharactersView:
             self.detailsStore.set_value(tree_iter, 1, validString(value))
 
         self.character = character
+        self.notebook.set_sensitive(True)
 
     def unloadCharacterData(self):
         self.character = None
+        self.notebook.set_sensitive(False)
 
         self.colorButton.set_rgba(rgbaFromColor(Color(0, 0, 0)))
         self.allowPOVCheck.set_active(False)
