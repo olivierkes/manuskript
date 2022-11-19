@@ -93,7 +93,9 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                       </attributes>
                                     </child>
                                     <child>
-                                      <object class="GtkCellRendererText"/>
+                                      <object class="GtkCellRendererText" id="label_name">
+                                        <property name="editable">True</property>
+                                      </object>
                                       <attributes>
                                         <attribute name="text">0</attribute>
                                       </attributes>

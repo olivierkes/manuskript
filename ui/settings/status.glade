@@ -80,7 +80,9 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                             <child>
                               <object class="GtkTreeViewColumn">
                                 <child>
-                                  <object class="GtkCellRendererText"/>
+                                  <object class="GtkCellRendererText" id="status_name">
+                                    <property name="editable">True</property>
+                                  </object>
                                   <attributes>
                                     <attribute name="text">0</attribute>
                                   </attributes>

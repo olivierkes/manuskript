@@ -32,7 +32,7 @@ class LabelHost:
         self.file = MmdFile(os.path.join(path, "labels.txt"), 21)
         self.labels = collections.OrderedDict()
 
-    def addLabel(self, name: str = None, color: Color = None):
+    def addLabel(self, name: str = None, color: Color = None) -> Label:
         if name is None:
             name = "New Label"
 
@@ -40,17 +40,43 @@ class LabelHost:
         self.labels[name] = label
         return label
 
-    def removeLabel(self, name: str):
-        self.labels.pop(name)
+    def removeLabel(self, name: str) -> Label:
+        return self.labels.pop(name)
 
     def renameLabel(self, oldName: str, newName: str):
-        label = self.labels.get(oldName)
-        label.name = newName
-        self.labels[newName] = label
-        self.labels.pop(oldName)
+        match = False
+        drop = [oldName]
 
-    def getLabel(self, name: str):
+        for name, label in self.labels.items():
+            if match:
+                drop.append(name)
+            elif name == oldName:
+                label.name = newName
+                match = True
+
+        if not match:
+            return
+
+        labels = list()
+        for name in drop:
+            labels.append(self.labels.pop(name))
+
+        for label in labels:
+            self.labels[label.name] = label
+
+    def getLabel(self, name: str) -> Label:
         return self.labels.get(name)
+
+    def getLabelByID(self, id: int) -> Label | None:
+        index = 0
+
+        for label in self.labels.values():
+            if index == id:
+                return label
+
+            index += 1
+
+        return None
 
     def __iter__(self):
         return self.labels.values().__iter__()

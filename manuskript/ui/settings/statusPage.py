@@ -35,6 +35,9 @@ class StatusPage:
         self.addButton.connect("clicked", self.addClicked)
         self.removeButton.connect("clicked", self.removeClicked)
 
+        self.statusNameRenderer = builder.get_object("status_name")
+        self.statusNameRenderer.connect("edited", self.statusNameEdited)
+
         self.unloadStatusData()
 
     def refreshStatusStore(self):
@@ -94,3 +97,18 @@ class StatusPage:
         model.remove(tree_iter)
 
         self.statuses.removeStatus(name)
+
+    def statusNameEdited(self, renderer: Gtk.CellRendererText, path: str, text: str):
+        if self.status is None:
+            return
+
+        model, tree_iter = self.statusSelection.get_selected()
+
+        if (model is None) or (tree_iter is None):
+            return
+
+        name = model.get_value(tree_iter, 0)
+        model.set_value(tree_iter, 0, text)
+
+        self.statuses.renameStatus(name, text)
+

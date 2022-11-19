@@ -39,6 +39,9 @@ class LabelsPage:
         self.colorButton = builder.get_object("color")
         self.colorButton.connect("color-set", self.colorSet)
 
+        self.labelNameRenderer = builder.get_object("label_name")
+        self.labelNameRenderer.connect("edited", self.labelNameEdited)
+
         self.unloadLabelData()
 
     def refreshLabelStore(self):
@@ -129,3 +132,17 @@ class LabelsPage:
             if row[0] == character_name:
                 row[1] = pixbufFromColor(color)
                 break
+
+    def labelNameEdited(self, renderer: Gtk.CellRendererText, path: str, text: str):
+        if self.label is None:
+            return
+
+        model, tree_iter = self.labelSelection.get_selected()
+
+        if (model is None) or (tree_iter is None):
+            return
+
+        name = model.get_value(tree_iter, 0)
+        model.set_value(tree_iter, 0, text)
+
+        self.labels.renameLabel(name, text)

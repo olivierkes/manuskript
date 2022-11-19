@@ -30,7 +30,7 @@ class StatusHost:
         self.file = TextFile(os.path.join(path, "status.txt"))
         self.statuses = collections.OrderedDict()
 
-    def addStatus(self, name: str = None):
+    def addStatus(self, name: str = None) -> Status:
         if name is None:
             name = "New Status"
 
@@ -38,17 +38,43 @@ class StatusHost:
         self.statuses[name] = status
         return status
 
-    def removeStatus(self, name: str):
-        self.statuses.pop(name)
+    def removeStatus(self, name: str) -> Status:
+        return self.statuses.pop(name)
 
     def renameStatus(self, oldName: str, newName: str):
-        status = self.statuses.get(oldName)
-        status.name = newName
-        self.statuses[newName] = status
-        self.statuses.pop(oldName)
+        match = False
+        drop = [oldName]
 
-    def getStatus(self, name: str):
+        for name, status in self.statuses.items():
+            if match:
+                drop.append(name)
+            elif name == oldName:
+                status.name = newName
+                match = True
+
+        if not match:
+            return
+
+        statuses = list()
+        for name in drop:
+            statuses.append(self.statuses.pop(name))
+
+        for status in statuses:
+            self.statuses[status.name] = status
+
+    def getStatus(self, name: str) -> Status:
         return self.statuses.get(name)
+
+    def getStatusByID(self, id: int) -> Status | None:
+        index = 0
+
+        for status in self.statuses.values():
+            if index == id:
+                return status
+
+            index += 1
+
+        return None
 
     def __iter__(self):
         return self.statuses.values().__iter__()
