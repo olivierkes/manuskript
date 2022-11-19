@@ -2163,7 +2163,7 @@
   </widget>
   <widget class="QDockWidget" name="dckSearch">
    <property name="windowTitle">
-    <string>Sea&amp;rch</string>
+    <string>Search</string>
    </property>
    <attribute name="dockWidgetArea">
     <number>2</number>
