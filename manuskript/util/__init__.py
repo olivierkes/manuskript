@@ -61,3 +61,11 @@ def countText(text: str, kind: CounterKind = CounterKind.WORDS):
         return PageCounter.count(text)
     else:
         return 0
+
+def safeFraction(value, low, high) -> float:
+    if value < low:
+        return 0.0
+    elif value > high:
+        return 1.0
+    else:
+        return 1.0 * (value - low) / (high - low)

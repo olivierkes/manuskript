@@ -347,7 +347,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
               </packing>
             </child>
             <child>
-              <object class="GtkStack">
+              <object class="GtkStack" id="view_stack">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <child>
@@ -381,8 +381,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                             </child>
                           </object>
                           <packing>
-                            <property name="name">page0</property>
-                            <property name="title" translatable="yes">page0</property>
+                            <property name="name">page_text</property>
                             <property name="icon-name">view-continuous-symbolic</property>
                           </packing>
                         </child>
@@ -400,14 +399,14 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                     <property name="visible">True</property>
                                     <property name="can-focus">False</property>
                                     <property name="homogeneous">True</property>
+                                    <property name="activate-on-single-click">False</property>
                                   </object>
                                 </child>
                               </object>
                             </child>
                           </object>
                           <packing>
-                            <property name="name">page1</property>
-                            <property name="title" translatable="yes">page1</property>
+                            <property name="name">page_grid</property>
                             <property name="icon-name">view-grid-symbolic</property>
                             <property name="position">1</property>
                           </packing>
@@ -547,8 +546,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                             </child>
                           </object>
                           <packing>
-                            <property name="name">page2</property>
-                            <property name="title" translatable="yes">page2</property>
+                            <property name="name">page_tree</property>
                             <property name="icon-name">view-list-symbolic</property>
                             <property name="position">2</property>
                           </packing>
@@ -601,7 +599,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkProgressBar">
+                          <object class="GtkProgressBar" id="counter_progress">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="valign">center</property>
@@ -642,8 +640,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                     </child>
                   </object>
                   <packing>
-                    <property name="name">page0</property>
-                    <property name="title" translatable="yes">page0</property>
+                    <property name="name">page_stack</property>
                   </packing>
                 </child>
                 <child>
@@ -664,6 +661,9 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               <object class="GtkTextView">
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="wrap-mode">word-char</property>
+                                <property name="buffer">editor_text</property>
+                                <property name="input-hints">GTK_INPUT_HINT_SPELLCHECK | GTK_INPUT_HINT_WORD_COMPLETION | GTK_INPUT_HINT_NONE</property>
                               </object>
                             </child>
                           </object>
@@ -724,7 +724,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkLabel">
+                          <object class="GtkLabel" id="counter">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="margin-start">8</property>
@@ -748,8 +748,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                     </child>
                   </object>
                   <packing>
-                    <property name="name">page1</property>
-                    <property name="title" translatable="yes">page1</property>
+                    <property name="name">page_text</property>
                     <property name="position">1</property>
                   </packing>
                 </child>

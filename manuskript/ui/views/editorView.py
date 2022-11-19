@@ -6,10 +6,10 @@ import gi
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Pango
 
-from manuskript.data import Project, OutlineFolder, OutlineText, OutlineItem, OutlineState
+from manuskript.data import Project, OutlineFolder, OutlineText, OutlineItem, OutlineState, Goal
 from manuskript.ui.editor import GridItem
 from manuskript.ui.util import pixbufFromColor, iconByOutlineItemType
-from manuskript.util import validString, validInt
+from manuskript.util import validString, validInt, safeFraction
 
 import inspect
 
@@ -19,6 +19,7 @@ class EditorView:
     def __init__(self, project: Project):
         self.project = project
         self.outlineItem = None
+        self.editorItems = list()
 
         builder = Gtk.Builder()
         builder.add_from_file("ui/editor.glade")
@@ -34,7 +35,7 @@ class EditorView:
         self.outlineStore = builder.get_object("outline_store")
         self.refreshOutlineStore()
 
-        self.editorItems = list()
+        self.viewStack = builder.get_object("view_stack")
 
         self.editorTextBuffer = builder.get_object("editor_text")
         self.editorFlowbox = builder.get_object("editor_flowbox")
@@ -48,6 +49,9 @@ class EditorView:
 
         for button in self.upButtons:
             button.connect("clicked", self.upButtonClicked)
+
+        self.counterLabel = builder.get_object("counter")
+        self.counterProgressBar = builder.get_object("counter_progress")
 
         self.unloadOutlineData()
 
@@ -115,9 +119,25 @@ class EditorView:
             self.__appendOutlineItem(item)
 
     def loadOutlineData(self, outlineItem: OutlineItem):
-        self.outlineItem = None
+        if outlineItem is None:
+            self.unloadOutlineData()
+            return
 
+        self.outlineItem = None
         self.loadEditorData(outlineItem)
+
+        if type(outlineItem) is OutlineText:
+            self.viewStack.set_visible_child_name("page_text")
+        else:
+            self.viewStack.set_visible_child_name("page_stack")
+
+        goalKind = outlineItem.goalKind()
+        textCount = outlineItem.textCount(goalKind)
+        goalCount = outlineItem.goalCount()
+
+        self.counterLabel.set_text("{0} {1}".format(textCount, goalKind.name.lower()))
+        self.counterProgressBar.set_text("{0} / {1} {2}".format(textCount, goalCount, goalKind.name.lower()))
+        self.counterProgressBar.set_fraction(safeFraction(textCount, 0, goalCount))
 
         self.outlineItem = outlineItem
 
@@ -125,6 +145,14 @@ class EditorView:
         self.outlineItem = None
 
         self.loadEditorData(None)
+
+        goalKind = self.project.outline.goalKind()
+        textCount = self.project.outline.textCount(goalKind)
+        goalCount = self.project.outline.goalCount()
+
+        self.counterLabel.set_text("{0} {1}".format(textCount, goalKind.name.lower()))
+        self.counterProgressBar.set_text("{0} / {1} {2}".format(textCount, goalCount, goalKind.name.lower()))
+        self.counterProgressBar.set_fraction(safeFraction(textCount, 0, goalCount))
 
     def __appendOutlineItemText(self, outlineItem: OutlineItem):
         end_iter = self.editorTextBuffer.get_end_iter()
@@ -187,7 +215,7 @@ class EditorView:
         if (index < 0) or (index >= len(self.editorItems)):
             return
 
-        self.loadEditorData(self.editorItems[index])
+        self.loadOutlineData(self.editorItems[index])
 
     def upButtonClicked(self, button: Gtk.Button):
         if self.outlineItem is None:
