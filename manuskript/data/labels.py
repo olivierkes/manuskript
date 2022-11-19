@@ -10,8 +10,9 @@ from manuskript.io.mmdFile import MmdFile
 
 class Label:
 
-    def __init__(self, host, name: str, color: Color):
+    def __init__(self, host, index: int, name: str, color: Color):
         self.host = host
+        self.ID = index
 
         self.name = name
         self.color = color
@@ -36,7 +37,7 @@ class LabelHost:
         if name is None:
             name = "New Label"
 
-        label = Label(self, name, color)
+        label = Label(self, 1+len(self.labels), name, color)
         self.labels[name] = label
         return label
 
@@ -67,11 +68,14 @@ class LabelHost:
     def getLabel(self, name: str) -> Label:
         return self.labels.get(name)
 
-    def getLabelByID(self, id: int) -> Label | None:
-        index = 0
+    def getLabelByID(self, ID: int | None) -> Label | None:
+        if ID is None:
+            return None
 
+        index = 1
         for label in self.labels.values():
-            if index == id:
+            if index == ID:
+                assert label.ID == ID
                 return label
 
             index += 1

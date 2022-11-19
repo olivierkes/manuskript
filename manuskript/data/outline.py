@@ -6,12 +6,12 @@ import os
 from collections import OrderedDict
 from enum import Enum, unique
 from manuskript.data.goal import Goal
-from manuskript.data.labels import LabelHost
+from manuskript.data.labels import LabelHost, Label
 from manuskript.data.plots import Plots
-from manuskript.data.status import StatusHost
+from manuskript.data.status import StatusHost, Status
 from manuskript.data.unique_id import UniqueIDHost
 from manuskript.io.mmdFile import MmdFile
-from manuskript.util import CounterKind, countText, validString
+from manuskript.util import CounterKind, countText, safeInt
 
 
 @unique
@@ -50,14 +50,20 @@ class OutlineItem:
         if (item.UID is None) or (item.UID.value != int(ID)):
             item.UID = item.outline.host.loadID(int(ID))
 
+        def loadLabelByID(outline, labelID: str) -> Label:
+            return outline.labels.getLabelByID(safeInt(labelID, 0))
+
+        def loadStatusByID(outline, statusID: str) -> Label:
+            return outline.statuses.getStatusByID(safeInt(statusID, 0))
+
         item.title = metadata.get("title", None)
         item.type = metadata.get("type", "md")
         item.summarySentence = metadata.get("summarySentence", None)
         item.summaryFull = metadata.get("summaryFull", None)
         item.POV = metadata.get("POV", None)
         item.notes = metadata.get("notes", None)
-        item.label = metadata.get("label", None)
-        item.status = metadata.get("status", None)
+        item.label = loadLabelByID(item.outline, metadata.get("label", None))
+        item.status = loadStatusByID(item.outline, metadata.get("status", None))
         item.compile = metadata.get("compile")
         item.goal = Goal.parse(metadata.get("setGoal", None))
 
@@ -75,8 +81,8 @@ class OutlineItem:
         metadata["summaryFull"] = item.summaryFull
         metadata["POV"] = item.POV
         metadata["notes"] = item.notes
-        metadata["label"] = item.label
-        metadata["status"] = item.status
+        metadata["label"] = None if item is None else item.label.ID
+        metadata["status"] = None if item is None else item.status.ID
         metadata["compile"] = item.compile
         metadata["setGoal"] = item.goal
 

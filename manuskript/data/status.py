@@ -9,8 +9,9 @@ from manuskript.io.textFile import TextFile
 
 class Status:
 
-    def __init__(self, host, name: str):
+    def __init__(self, host, index: int, name: str):
         self.host = host
+        self.ID = index
 
         self.name = name
 
@@ -34,7 +35,7 @@ class StatusHost:
         if name is None:
             name = "New Status"
 
-        status = Status(self, name)
+        status = Status(self, 1+len(self.statuses), name)
         self.statuses[name] = status
         return status
 
@@ -65,11 +66,14 @@ class StatusHost:
     def getStatus(self, name: str) -> Status:
         return self.statuses.get(name)
 
-    def getStatusByID(self, id: int) -> Status | None:
-        index = 0
+    def getStatusByID(self, ID: int | None) -> Status | None:
+        if ID is None:
+            return None
 
+        index = 1
         for status in self.statuses.values():
-            if index == id:
+            if index == ID:
+                assert status.ID == ID
                 return status
 
             index += 1
