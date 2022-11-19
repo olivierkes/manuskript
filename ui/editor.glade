@@ -30,6 +30,132 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
     <property name="step-increment">1</property>
     <property name="page-increment">10</property>
   </object>
+  <object class="GtkTextTagTable" id="editor_tag_table">
+    <child type="tag">
+      <object class="GtkTextTag" id="h1_tag">
+        <property name="name">h1</property>
+        <property name="font">Normal</property>
+        <property name="variant">title-caps</property>
+        <property name="weight">700</property>
+        <property name="scale">2</property>
+        <property name="pixels-above-lines">4</property>
+        <property name="pixels-below-lines">4</property>
+        <property name="editable">False</property>
+      </object>
+    </child>
+    <child type="tag">
+      <object class="GtkTextTag">
+        <property name="font">Normal</property>
+      </object>
+    </child>
+    <child type="tag">
+      <object class="GtkTextTag">
+        <property name="font">Normal</property>
+      </object>
+    </child>
+    <child type="tag">
+      <object class="GtkTextTag">
+        <property name="font">Normal</property>
+      </object>
+    </child>
+    <child type="tag">
+      <object class="GtkTextTag" id="h2_tag">
+        <property name="name">h2</property>
+        <property name="font">Normal</property>
+        <property name="variant">title-caps</property>
+        <property name="weight">700</property>
+        <property name="scale">1.5</property>
+        <property name="pixels-above-lines">8</property>
+        <property name="pixels-below-lines">8</property>
+        <property name="editable">False</property>
+      </object>
+    </child>
+    <child type="tag">
+      <object class="GtkTextTag" id="h3_tag">
+        <property name="name">h3</property>
+        <property name="font">Normal</property>
+        <property name="variant">title-caps</property>
+        <property name="weight">700</property>
+        <property name="scale">1.1699999999999999</property>
+        <property name="pixels-above-lines">12</property>
+        <property name="pixels-below-lines">12</property>
+        <property name="editable">False</property>
+      </object>
+    </child>
+    <child type="tag">
+      <object class="GtkTextTag" id="h4_tag">
+        <property name="name">h4</property>
+        <property name="font">Normal</property>
+        <property name="variant">title-caps</property>
+        <property name="weight">700</property>
+        <property name="pixels-above-lines">16</property>
+        <property name="pixels-below-lines">16</property>
+        <property name="editable">False</property>
+      </object>
+    </child>
+    <child type="tag">
+      <object class="GtkTextTag" id="h5_tag">
+        <property name="name">h5</property>
+        <property name="font">Normal</property>
+        <property name="variant">title-caps</property>
+        <property name="weight">700</property>
+        <property name="scale">0.82999999999999996</property>
+        <property name="pixels-above-lines">20</property>
+        <property name="pixels-below-lines">20</property>
+        <property name="editable">False</property>
+      </object>
+    </child>
+    <child type="tag">
+      <object class="GtkTextTag" id="h6_tag">
+        <property name="name">h6</property>
+        <property name="font">Normal</property>
+        <property name="variant">title-caps</property>
+        <property name="weight">700</property>
+        <property name="scale">0.67</property>
+        <property name="pixels-above-lines">24</property>
+        <property name="pixels-below-lines">24</property>
+        <property name="editable">False</property>
+      </object>
+    </child>
+    <child type="tag">
+      <object class="GtkTextTag" id="b_tag">
+        <property name="name">b</property>
+        <property name="font">Normal</property>
+        <property name="weight">700</property>
+      </object>
+    </child>
+    <child type="tag">
+      <object class="GtkTextTag" id="i_tag">
+        <property name="name">i</property>
+        <property name="font">Normal</property>
+        <property name="style">italic</property>
+      </object>
+    </child>
+    <child type="tag">
+      <object class="GtkTextTag" id="s_tag">
+        <property name="name">s</property>
+        <property name="font">Normal</property>
+        <property name="strikethrough">True</property>
+      </object>
+    </child>
+    <child type="tag">
+      <object class="GtkTextTag" id="u_tag">
+        <property name="name">u</property>
+        <property name="font">Normal</property>
+        <property name="underline">single</property>
+      </object>
+    </child>
+    <child type="tag">
+      <object class="GtkTextTag" id="none_tag">
+        <property name="name">none</property>
+        <property name="font">Normal</property>
+        <property name="editable">False</property>
+      </object>
+    </child>
+  </object>
+  <object class="GtkTextBuffer" id="editor_text">
+    <property name="tag-table">editor_tag_table</property>
+  </object>
   <object class="GtkListStore" id="label_store">
     <columns>
       <!-- column-name name -->
@@ -246,6 +372,8 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                   <object class="GtkTextView">
                                     <property name="visible">True</property>
                                     <property name="can-focus">True</property>
+                                    <property name="wrap-mode">word-char</property>
+                                    <property name="buffer">editor_text</property>
                                   </object>
                                 </child>
                               </object>
@@ -267,9 +395,10 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                                 <child>
-                                  <object class="GtkFlowBox">
+                                  <object class="GtkFlowBox" id="editor_flowbox">
                                     <property name="visible">True</property>
                                     <property name="can-focus">False</property>
+                                    <property name="homogeneous">True</property>
                                   </object>
                                 </child>
                               </object>
