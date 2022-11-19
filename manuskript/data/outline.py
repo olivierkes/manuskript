@@ -40,6 +40,16 @@ class OutlineItem:
         self.compile = True
         self.goal = None
 
+    def parentItem(self):
+        for item in self.outline.all():
+            if item.contains(self):
+                return item
+
+        return None
+
+    def contains(self, item):
+        return False
+
     @classmethod
     def loadMetadata(cls, item, metadata: dict):
         ID = metadata.get("ID")
@@ -143,6 +153,9 @@ class OutlineFolder(OutlineItem):
 
     def __iter__(self):
         return self.items.__iter__()
+
+    def contains(self, item):
+        return item in self.items
 
     @classmethod
     def loadItems(cls, outline, folder, recursive: bool = True):

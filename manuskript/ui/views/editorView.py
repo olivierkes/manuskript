@@ -6,9 +6,10 @@ import gi
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Pango
 
-from manuskript.data import Project, Outline, OutlineFolder, OutlineText, OutlineItem, OutlineState, Plots, PlotLine, Characters, Character, Importance, Goal
-from manuskript.ui.util import rgbaFromColor, pixbufFromColor
-from manuskript.util import validString, invalidString, validInt, invalidInt, CounterKind, countText
+from manuskript.data import Project, OutlineFolder, OutlineText, OutlineItem, OutlineState
+from manuskript.ui.editor import GridItem
+from manuskript.ui.util import pixbufFromColor, iconByOutlineItemType
+from manuskript.util import validString, validInt
 
 import inspect
 
@@ -17,6 +18,7 @@ class EditorView:
 
     def __init__(self, project: Project):
         self.project = project
+        self.outlineItem = None
 
         builder = Gtk.Builder()
         builder.add_from_file("ui/editor.glade")
@@ -32,10 +34,22 @@ class EditorView:
         self.outlineStore = builder.get_object("outline_store")
         self.refreshOutlineStore()
 
-        self.editorTextBuffer = builder.get_object("editor_text")
+        self.editorItems = list()
 
+        self.editorTextBuffer = builder.get_object("editor_text")
         self.editorFlowbox = builder.get_object("editor_flowbox")
-        self.loadEditorData(None)
+
+        self.editorFlowbox.connect("child-activated", self.editorFlowboxChildActivated)
+
+        self.upButtons = [
+            builder.get_object("up"),
+            builder.get_object("up_")
+        ]
+
+        for button in self.upButtons:
+            button.connect("clicked", self.upButtonClicked)
+
+        self.unloadOutlineData()
 
     def refreshLabelStore(self):
         self.labelStore.clear()
@@ -60,15 +74,6 @@ class EditorView:
 
             self.statusStore.set_value(tree_iter, 0, validString(status.name))
 
-    @classmethod
-    def __getIconByOutlineType(cls, outlineItem: OutlineItem):
-        if type(outlineItem) is OutlineFolder:
-            return "folder-symbolic"
-        elif type(outlineItem) is OutlineText:
-            return "emblem-documents-symbolic"
-        else:
-            return "folder-documents-symbolic"
-
     def __appendOutlineItem(self, outlineItem: OutlineItem, parent_iter=None):
         tree_iter = self.outlineStore.append(parent_iter)
 
@@ -78,7 +83,7 @@ class EditorView:
         if outlineItem.state != OutlineState.COMPLETE:
             outlineItem.load(False)
 
-        icon = EditorView.__getIconByOutlineType(outlineItem)
+        icon = iconByOutlineItemType(outlineItem)
 
         if type(outlineItem) is OutlineFolder:
             for item in outlineItem:
@@ -109,6 +114,18 @@ class EditorView:
         for item in self.project.outline.items:
             self.__appendOutlineItem(item)
 
+    def loadOutlineData(self, outlineItem: OutlineItem):
+        self.outlineItem = None
+
+        self.loadEditorData(outlineItem)
+
+        self.outlineItem = outlineItem
+
+    def unloadOutlineData(self):
+        self.outlineItem = None
+
+        self.loadEditorData(None)
+
     def __appendOutlineItemText(self, outlineItem: OutlineItem):
         end_iter = self.editorTextBuffer.get_end_iter()
 
@@ -136,38 +153,47 @@ class EditorView:
             return False
 
     def loadEditorData(self, outlineItem: OutlineItem | None):
-        self.editorTextBuffer.set_text("")
+        self.editorItems = list()
+        self.outlineItem = None
 
-        for item in self.project.outline.items:
+        start_iter, end_iter = self.editorTextBuffer.get_bounds()
+        self.editorTextBuffer.delete(start_iter, end_iter)
+
+        if outlineItem is None:
+            self.editorItems = self.project.outline.items
+        elif type(outlineItem) is OutlineFolder:
+            self.editorItems = outlineItem.items
+        elif type(outlineItem) is OutlineText:
+            self.__appendOutlineItemText(outlineItem)
+
+        self.editorFlowbox.foreach(self.editorFlowbox.remove)
+        if len(self.editorItems) <= 0:
+            self.outlineItem = outlineItem
+            return
+
+        for item in self.editorItems:
             self.__appendOutlineItemText(item)
 
-        for item in self.project.outline.items:
-            child = Gtk.FlowBoxChild()
+        for item in self.editorItems:
+            self.editorFlowbox.insert(GridItem(item).widget, -1)
 
-            hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
-            vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+        self.outlineItem = outlineItem
 
-            icon = EditorView.__getIconByOutlineType(item)
+    def editorFlowboxChildActivated(self, box: Gtk.FlowBox, child: Gtk.FlowBoxChild):
+        if child is None:
+            return
 
-            iconImage = Gtk.Image.new_from_icon_name(icon, Gtk.IconSize.MENU)
-            titleLabel = Gtk.Label(item.title)
-            summaryLabel = Gtk.Label(item.summaryFull)
+        index = child.get_index()
+        if (index < 0) or (index >= len(self.editorItems)):
+            return
 
-            titleLabel.set_ellipsize(Pango.EllipsizeMode.END)
-            summaryLabel.set_ellipsize(Pango.EllipsizeMode.END)
-            summaryLabel.set_line_wrap_mode(Pango.WrapMode.WORD_CHAR)
-            summaryLabel.set_line_wrap(True)
-            summaryLabel.set_max_width_chars(20)
+        self.loadEditorData(self.editorItems[index])
 
-            hbox.pack_start(iconImage, False, True, 4)
-            hbox.pack_start(titleLabel, False, True, 4)
+    def upButtonClicked(self, button: Gtk.Button):
+        if self.outlineItem is None:
+            return
 
-            vbox.pack_start(hbox, False, True, 4)
-            vbox.pack_start(summaryLabel, False, True, 4)
-
-            child.add(vbox)
-
-            self.editorFlowbox.add(child)
+        self.loadOutlineData(self.outlineItem.parentItem())
 
     def show(self):
         self.widget.show_all()

@@ -374,6 +374,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                     <property name="can-focus">True</property>
                                     <property name="wrap-mode">word-char</property>
                                     <property name="buffer">editor_text</property>
+                                    <property name="input-hints">GTK_INPUT_HINT_SPELLCHECK | GTK_INPUT_HINT_WORD_COMPLETION | GTK_INPUT_HINT_NONE</property>
                                   </object>
                                 </child>
                               </object>
@@ -569,7 +570,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                         <property name="margin-bottom">2</property>
                         <property name="spacing">4</property>
                         <child>
-                          <object class="GtkButton">
+                          <object class="GtkButton" id="up">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <property name="receives-default">True</property>
@@ -678,15 +679,13 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       <object class="GtkBox">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <property name="margin-left">2</property>
-                        <property name="margin-right">2</property>
                         <property name="margin-start">2</property>
                         <property name="margin-end">2</property>
                         <property name="margin-top">2</property>
                         <property name="margin-bottom">2</property>
                         <property name="spacing">4</property>
                         <child>
-                          <object class="GtkButton">
+                          <object class="GtkButton" id="up_">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <property name="receives-default">True</property>
@@ -728,8 +727,6 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
-                            <property name="margin-left">8</property>
-                            <property name="margin-right">8</property>
                             <property name="margin-start">8</property>
                             <property name="margin-end">8</property>
                             <property name="label" translatable="yes">0 words</property>

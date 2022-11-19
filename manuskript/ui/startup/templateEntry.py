@@ -66,4 +66,3 @@ class TemplateEntry:
 
     def show(self):
         self.widget.show_all()
-

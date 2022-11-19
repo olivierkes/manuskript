@@ -7,7 +7,7 @@ gi.require_version('Gdk', '3.0')
 gi.require_version('GdkPixbuf', '2.0')
 from gi.repository import GdkPixbuf, Gdk
 
-from manuskript.data import Color
+from manuskript.data import Color, OutlineItem, OutlineText, OutlineFolder
 
 
 def rgbaFromColor(color: Color) -> Gdk.RGBA:
@@ -32,3 +32,12 @@ def bindMenuItem(builder, id, action):
         return
 
     menuItem.connect("activate", action)
+
+
+def iconByOutlineItemType(outlineItem: OutlineItem) -> str:
+    if type(outlineItem) is OutlineFolder:
+        return "folder-symbolic"
+    elif type(outlineItem) is OutlineText:
+        return "emblem-documents-symbolic"
+    else:
+        return "folder-documents-symbolic"
