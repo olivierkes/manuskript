@@ -95,12 +95,7 @@ class EditorView:
 
         wordCount = validInt(outlineItem.textCount())
         goal = validInt(outlineItem.goalCount())
-        progress = 0
-
-        if goal > wordCount:
-            progress = 100 * wordCount / goal
-        elif goal > 0:
-            progress = 100
+        progress = 100 * safeFraction(wordCount, 0, goal)
 
         self.outlineStore.set_value(tree_iter, 0, outlineItem.UID.value)
         self.outlineStore.set_value(tree_iter, 1, validString(outlineItem.title))
