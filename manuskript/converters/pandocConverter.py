@@ -9,8 +9,10 @@ from PyQt5.QtWidgets import qApp, QMessageBox
 from PyQt5.QtGui import QCursor
 
 from manuskript.converters import abstractConverter
-from manuskript.functions import mainWindow
+from manuskript.functions import mainWindow, safeTranslate
 
+import logging
+LOGGER = logging.getLogger(__name__)
 
 class pandocConverter(abstractConverter):
 
@@ -38,7 +40,7 @@ class pandocConverter(abstractConverter):
     @classmethod
     def convert(self, src, _from="markdown", to="html", args=None, outputfile=None):
         if not self.isValid:
-            print("ERROR: pandocConverter is called but not valid.")
+            LOGGER.error("pandocConverter is called but not valid.")
             return ""
 
         cmd = [self.runCmd()]
@@ -70,9 +72,9 @@ class pandocConverter(abstractConverter):
 
         if stderr:
             err = stderr.decode("utf-8")
-            print(err)
+            LOGGER.error(err)
             QMessageBox.critical(mainWindow().dialog,
-                                 qApp.translate("Export", "Error"), err)
+                                 safeTranslate(qApp, "Export", "Error"), err)
             return None
 
         return stdout.decode("utf-8")

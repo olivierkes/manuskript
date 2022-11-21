@@ -10,6 +10,7 @@ class abstractOutput(abstractPlainText):
     toFormat = "SUBCLASSME"
     icon = "SUBCLASSME"
     exportFilter = "SUBCLASSME"
+    exportDefaultSuffix = ".SUBCLASSME"
     requires = {
         "Settings": True,
         "Preview": False,

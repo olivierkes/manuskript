@@ -2,11 +2,13 @@
 
 import collections
 import json
-import pickle
 
 from PyQt5.QtWidgets import qApp
 
 from manuskript.enums import Outline
+
+import logging
+LOGGER = logging.getLogger(__name__)
 
 # TODO: move some/all of those settings to application settings and not project settings
 #       in order to allow a shared project between several writers
@@ -34,6 +36,12 @@ viewSettings = {
         },
     }
 
+fullscreenSettings = {
+    "autohide-top": True,
+    "autohide-bottom": True,
+    "autohide-left": True,
+    }
+
 # Application
 spellcheck = False
 dict = None
@@ -41,6 +49,8 @@ corkSizeFactor = 100
 folderView = "cork"
 lastTab = 0
 openIndexes = [""]
+progressChars = False
+countSpaces = True
 autoSave = False
 autoSaveDelay = 5
 autoSaveNoChanges = True
@@ -79,7 +89,7 @@ textEditor = {
     }
 
 revisions = {
-    "keep": True,
+    "keep": False,
     "smartremove": True,
     "rules": collections.OrderedDict({
         10 * 60:            60,                     # One per minute for the last 10mn
@@ -98,7 +108,7 @@ frequencyAnalyzer = {
 }
 
 viewMode = "fiction"  # simple, fiction
-saveToZip = True
+saveToZip = False
 dontShowDeleteWarning = False
 
 def initDefaultValues():
@@ -117,20 +127,24 @@ def initDefaultValues():
 def save(filename=None, protocol=None):
 
     global spellcheck, dict, corkSliderFactor, viewSettings, corkSizeFactor, folderView, lastTab, openIndexes, \
-           autoSave, autoSaveDelay, saveOnQuit, autoSaveNoChanges, autoSaveNoChangesDelay, outlineViewColumns, \
+           progressChars, autoSave, autoSaveDelay, saveOnQuit, autoSaveNoChanges, autoSaveNoChangesDelay, outlineViewColumns, \
            corkBackground, corkStyle, fullScreenTheme, defaultTextType, textEditor, revisions, frequencyAnalyzer, viewMode, \
-           saveToZip, dontShowDeleteWarning
+           saveToZip, dontShowDeleteWarning, fullscreenSettings
 
     allSettings = {
         "viewSettings": viewSettings,
+        "fullscreenSettings": fullscreenSettings,
         "dict": dict,
         "spellcheck": spellcheck,
         "corkSizeFactor": corkSizeFactor,
         "folderView": folderView,
         "lastTab": lastTab,
         "openIndexes": openIndexes,
+        "progressChars": progressChars,
+        "countSpaces": countSpaces,
         "autoSave":autoSave,
         "autoSaveDelay":autoSaveDelay,
+        # TODO: Settings Cleanup Task -- Rename saveOnQuit to saveOnProjectClose -- see PR #615
         "saveOnQuit":saveOnQuit,
         "autoSaveNoChanges":autoSaveNoChanges,
         "autoSaveNoChangesDelay":autoSaveNoChangesDelay,
@@ -151,37 +165,21 @@ def save(filename=None, protocol=None):
     #print("Saving:")
     #pp.pprint(allSettings)
 
-    if filename:
-        f = open(filename, "wb")
-        pickle.dump(allSettings, f)
-    else:
-        if protocol == 0:
-            # This looks stupid
-            # But a simple json.dumps with sort_keys will throw a TypeError
-            # because of unorderable types.
-            return json.dumps(json.loads(json.dumps(allSettings)), indent=4, sort_keys=True)
-        else:
-           return pickle.dumps(allSettings)
+    # This looks stupid
+    # But a simple json.dumps with sort_keys will throw a TypeError
+    # because of unorderable types.
+    return json.dumps(json.loads(json.dumps(allSettings)), indent=4, sort_keys=True)
 
 
 def load(string, fromString=False, protocol=None):
-    """Load settings from 'string'. 'string' is the filename of the pickle dump.
-    If fromString=True, string is the data of the pickle dumps."""
+    """fromString=True is deprecated, it shouldn't be used."""
     global allSettings
 
-    if not fromString:
-        try:
-            f = open(string, "rb")
-            allSettings = pickle.load(f)
+    if not string:
+        LOGGER.error("Cannot load settings.")
+        return
 
-        except:
-            print("{} doesn't exist, cannot load settings.".format(string))
-            return
-    else:
-        if protocol == 0:
-            allSettings = json.loads(string)
-        else:
-            allSettings = pickle.loads(string)
+    allSettings = json.loads(string)
 
     #pp=pprint.PrettyPrinter(indent=4, compact=False)
     #print("Loading:")
@@ -198,6 +196,10 @@ def load(string, fromString=False, protocol=None):
             ]:
             if not name in viewSettings[cat]:
                 viewSettings[cat][name] = default
+
+    if "fullscreenSettings" in allSettings:
+        global fullscreenSettings
+        fullscreenSettings = allSettings["fullscreenSettings"]
 
     if "dict" in allSettings:
         global dict
@@ -222,6 +224,14 @@ def load(string, fromString=False, protocol=None):
     if "openIndexes" in allSettings:
         global openIndexes
         openIndexes = allSettings["openIndexes"]
+
+    if "progressChars" in allSettings:
+        global progressChars
+        progressChars = allSettings["progressChars"]
+
+    if "countSpaces" in allSettings:
+        global countSpaces
+        countSpaces = allSettings["countSpaces"]
 
     if "autoSave" in allSettings:
         global autoSave

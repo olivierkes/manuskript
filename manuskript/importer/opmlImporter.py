@@ -5,8 +5,9 @@ from PyQt5.QtWidgets import qApp, QMessageBox
 from manuskript.models import outlineItem
 from manuskript.enums import Outline
 from lxml import etree as ET
-from manuskript.functions import mainWindow
+from manuskript.functions import mainWindow, safeTranslate
 from manuskript.importer.abstractImporter import abstractImporter
+
 
 class opmlImporter(abstractImporter):
 
@@ -34,8 +35,8 @@ class opmlImporter(abstractImporter):
                     opmlContent = opmlFile.read()
             except:
                 QMessageBox.critical(settingsWidget,
-                                    qApp.translate("Import", "OPML Import"),
-                                    qApp.translate("Import", "File open failed."))
+                                    safeTranslate(qApp, "Import", "OPML Import"),
+                                    safeTranslate(qApp, "Import", "File open failed."))
                 return None
 
         elif fromString == "":
@@ -52,10 +53,10 @@ class opmlImporter(abstractImporter):
         bodyNode = opmlNode.find("body")
         items = []
 
-        if bodyNode is not None:
+        if bodyNode != None:
             outlineEls = bodyNode.findall("outline")
 
-            if outlineEls is not None:
+            if outlineEls != None:
                 for element in outlineEls:
                     items.extend(cls.parseItems(element, parentItem))
                 ret = True
@@ -63,8 +64,8 @@ class opmlImporter(abstractImporter):
         if not ret:
             QMessageBox.critical(
                 settingsWidget,
-                qApp.translate("Import", "OPML Import"),
-                qApp.translate("Import", "This does not appear to be a valid OPML file."))
+                safeTranslate(qApp, "Import", "OPML Import"),
+                safeTranslate(qApp, "Import", "This does not appear to be a valid OPML file."))
 
             return None
 
@@ -74,19 +75,20 @@ class opmlImporter(abstractImporter):
     def parseItems(cls, underElement, parentItem=None):
         items = []
         title = underElement.get('text')
-        if title is not None:
-
+        if title != None:
             card = outlineItem(parent=parentItem, title=title)
             items.append(card)
 
             body = ""
             note = underElement.get('_note')
-            if note is not None and not cls.isWhitespaceOnly(note):
+
+            if note != None and not cls.isWhitespaceOnly(note):
                 #body = cls.restoreNewLines(note)
                 body = note
 
             children = underElement.findall('outline')
-            if children is not None and len(children) > 0:
+
+            if children != None and len(children) > 0:
                 for el in children:
                     items.extend(cls.parseItems(el, card))
             else:
@@ -121,4 +123,4 @@ class opmlImporter(abstractImporter):
         s = cls.restoreNewLines(inString)
         s = ''.join(s.split())
 
-        return len(s) is 0
+        return len(s) == 0

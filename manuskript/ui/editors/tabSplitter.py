@@ -10,6 +10,8 @@ from manuskript.functions import mainWindow, appPath
 from manuskript.ui import style
 from manuskript.ui.editors.tabSplitter_ui import Ui_tabSplitter
 
+import logging
+LOGGER = logging.getLogger(__name__)
 
 class tabSplitter(QWidget, Ui_tabSplitter):
     """
@@ -39,7 +41,7 @@ class tabSplitter(QWidget, Ui_tabSplitter):
         # try:
         #     self.tab.setTabBarAutoHide(True)
         # except AttributeError:
-        #     print("Info: install Qt 5.4 or higher to use tab bar auto-hide in editor.")
+        #     LOGGER.info("Install Qt 5.4 or higher to use tab bar auto-hide in editor.")
 
         # Button to split
         self.btnSplit = QPushButton(self)
@@ -145,8 +147,8 @@ class tabSplitter(QWidget, Ui_tabSplitter):
 
     def split(self, toggled=None, state=None):
 
-        if state is None and self.splitState == 0 or state == 1:
-            if self.secondTab is None:
+        if state == None and self.splitState == 0 or state == 1:
+            if self.secondTab == None:
                 self.addSecondTab()
 
             self.splitState = 1
@@ -155,8 +157,8 @@ class tabSplitter(QWidget, Ui_tabSplitter):
             self.btnSplit.setIcon(QIcon.fromTheme("split-vertical"))
             self.btnSplit.setToolTip(self.tr("Split horizontally"))
 
-        elif state is None and self.splitState == 1 or state == 2:
-            if self.secondTab is None:
+        elif state == None and self.splitState == 1 or state == 2:
+            if self.secondTab == None:
                 self.addSecondTab()
 
             self.splitter.setOrientation(Qt.Vertical)
@@ -212,7 +214,7 @@ class tabSplitter(QWidget, Ui_tabSplitter):
     #     self.btnSplit.setGeometry(QRect(0, 0, 24, 24))
 
     def focusChanged(self, old, new):
-        if self.secondTab is None or new is None:
+        if self.secondTab == None or new == None:
             return
 
         oldFT = self.focusTab

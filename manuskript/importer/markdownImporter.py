@@ -4,6 +4,8 @@
 from manuskript.importer.abstractImporter import abstractImporter
 from manuskript.models import outlineItem
 from manuskript.enums import Outline
+from manuskript.functions import safeTranslate
+
 from PyQt5.QtWidgets import qApp
 import re, os
 
@@ -63,7 +65,7 @@ class markdownImporter(abstractImporter):
 
         if not fromString:
             # Read file
-            with open(filePath, "r") as f:
+            with open(filePath, "r", encoding="utf-8") as f:
                 txt = f.read()
         else:
             txt = fromString
@@ -173,11 +175,11 @@ class markdownImporter(abstractImporter):
 
         # Add group
         group = self.addGroup(widget.toolBox.widget(0),
-                              qApp.translate("Import", "Markdown import"))
+                              safeTranslate(qApp, "Import", "Markdown import"))
         #group = cls.addPage(widget, "Folder import")
 
         self.addSetting("info", "label",
-                        qApp.translate("Import", """<b>Info:</b> A very simple
+                        safeTranslate(qApp, "Import", """<b>Info:</b> A very simple
                         parser that will go through a markdown document and
                         create items for each titles.<br/>&nbsp;"""))
 

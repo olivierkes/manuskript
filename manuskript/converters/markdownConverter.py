@@ -11,6 +11,9 @@ from PyQt5.QtGui import QCursor
 from manuskript.converters import abstractConverter
 from manuskript.functions import mainWindow
 
+import logging
+LOGGER = logging.getLogger(__name__)
+
 try:
     import markdown as MD
 except ImportError:
@@ -26,12 +29,12 @@ class markdownConverter(abstractConverter):
 
     @classmethod
     def isValid(self):
-        return MD is not None
+        return MD != None
 
     @classmethod
     def convert(self, markdown):
         if not self.isValid:
-            print("ERROR: markdownConverter is called but not valid.")
+            LOGGER.error("markdownConverter is called but not valid.")
             return ""
 
         html = MD.markdown(markdown)

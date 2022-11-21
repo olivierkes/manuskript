@@ -1,11 +1,13 @@
 # Manuskript
 
-[Manuskript](http://www.theologeek.ch/manuskript) is an open-source
+[Manuskript](https://www.theologeek.ch/manuskript) is an open-source
 tool for writers.
+
+[![manuskript](https://snapcraft.io/manuskript/badge.svg)](https://snapcraft.io/manuskript)
 
 Manuskript runs on GNU/Linux, Mac OS X, and Windows.
 
-![Main view](http://www.theologeek.ch/manuskript/wp-content/uploads/2017/11/manuskript-0.5.0-main-view.jpg)
+![Main view](https://www.theologeek.ch/manuskript/wp-content/uploads/2017/11/manuskript-0.5.0-main-view.jpg)
 
 ## Features
 
@@ -18,34 +20,34 @@ With Manuskript you can:
 * Create characters
 * Conceive plots
 * Construct outlines
-  ([Outline mode](http://www.theologeek.ch/manuskript/2016/02/05/outliner/)
+  ([Outline mode](https://www.theologeek.ch/manuskript/2016/02/05/outliner/)
   and/or
-  [Index cards](http://www.theologeek.ch/manuskript/2016/02/05/index-cards/))
+  [Index cards](https://www.theologeek.ch/manuskript/2016/02/05/index-cards/))
 * Write with focus
   ([Distraction free mode](https://github.com/olivierkes/manuskript/wiki/Full-screen-mode))
 * Build worlds
 * [Track items](https://github.com/olivierkes/manuskript/wiki/How-to-keep-track-of-important-items)
 * Edit and re-organize chapters and scenes
-* View [Story line](http://www.theologeek.ch/manuskript/2016/02/28/story-line/)
+* View [Story line](https://www.theologeek.ch/manuskript/2016/02/28/story-line/)
 * Compose with
-  [fiction or non-fiction templates and writing modes](http://www.theologeek.ch/manuskript/2016/03/31/writing-modes-simple-fiction/)
-* Export to HTML, ePub, OpenDocument, DocX, PDF, and
+  [fiction or non-fiction templates and writing modes](https://www.theologeek.ch/manuskript/2016/03/31/writing-modes-simple-fiction/)
+* Import and export document formats such as HTML, ePub, OpenDocument, DocX, and
   [more](https://github.com/olivierkes/manuskript/wiki/Import-and-Export-capabilities)
 
 
 Additionally Manuskript can help in many more ways with a spell
 checker, markdown highlighter,
-[frequency analyzer](http://www.theologeek.ch/manuskript/2016/02/08/frequency-analyzer/),
+[frequency analyzer](https://www.theologeek.ch/manuskript/2016/02/08/frequency-analyzer/),
 and automatic save in
-[open and plain text file format](http://www.theologeek.ch/manuskript/2016/03/31/open-plain-text-file-format/).
+[open and plain text file format](https://www.theologeek.ch/manuskript/2016/03/31/open-plain-text-file-format/).
 
 ## Download
 
-[Download](http://www.theologeek.ch/manuskript/download) and install Manuskript today.
+[Download](https://www.theologeek.ch/manuskript/download) and install Manuskript today.
 
 ## HowTo's
 
-See the [Wiki](http://github.com/olivierkes/manuskript/wiki) for more
+See the [Wiki](https://github.com/olivierkes/manuskript/wiki) for more
 detailed instructions on how to install and use Manuskript.
 
 ## Contribute
@@ -56,7 +58,7 @@ You can help improve Manuskript by reporting
 and
 [translating to other languages](https://github.com/olivierkes/manuskript/wiki/Translate-Manuskript).
 See also
-[Manuskript Contribute page](http://www.theologeek.ch/manuskript/contribute/).
+[Manuskript Contribute page](https://www.theologeek.ch/manuskript/contribute/).
 
 Manuskript is written in Python3 and PyQt5.
 

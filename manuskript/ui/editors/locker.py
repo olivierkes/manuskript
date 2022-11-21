@@ -105,6 +105,6 @@ class locker(QWidget, Ui_locker):
                     text))
 
         # Word locked
-        elif self._target is not None:
+        elif self._target != None:
             self.btnLock.setText(self.tr("{} words remaining").format(
                     self._target - self._words))

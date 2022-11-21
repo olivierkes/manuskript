@@ -30,13 +30,19 @@ echo " [✓]"
 # wget https://github.com/olivierkes/manuskript/archive/$AppVersion.tar.gz
 # tar -xvf $AppVersion.tar.gz
 # rm $AppVersion.tar.gz
-# mv manuskript-0.5.0 manuskript
+# mv manuskript-0.14.0 manuskript
 # popd
 
 # Using the current direction as source
 
 echo -n "Copying manuskript content"
-rsync -a --exclude=.git --include="*.msk" --exclude-from="$Root/.gitignore" \
+rsync -a --exclude=.git \
+	 --exclude=dist \
+	 --exclude=rpmbuild \
+	 --exclude=snap \
+	 --exclude=package \
+	 --include="*.msk" \
+	 --exclude-from="$Root/.gitignore" \
       "$ScriptPath/../"  "$Dest/usr/share/manuskript"
 cp "$ScriptPath/create_deb/manuskript" "$Dest/usr/bin/manuskript"
 cp "$ScriptPath/create_deb/manuskript.desktop" \
@@ -55,8 +61,9 @@ echo " [✓]"
 echo "Your root password might now be asked to finish setting permissions:"
 sudo chown root:root -R "$Dest"
 
+# Use xz compression to make sure Debian can handle it!
 echo "Creating the package…"
-dpkg -b "$Dest"
+dpkg-deb -b -Zxz "$Dest"
 
 echo -n "Removing build folder"
 sudo rm -r "$Dest"

@@ -85,7 +85,7 @@ class MarkdownHighlighter(BasicHighlighter):
     def unfocusConditions(self):
         """
         Returns:
-        - True if the text is suposed to be unfocused
+        - True if the text is supposed to be unfocused
         - (start, end) if block is supposed to be unfocused except for that part.
         """
 
@@ -283,7 +283,7 @@ class MarkdownHighlighter(BasicHighlighter):
         theme = {
             "markup": markup}
 
-        #Exemple:
+        #Example:
             #"color": Qt.red,
             #"deltaSize": 10,
             #"background": Qt.yellow,
@@ -477,7 +477,7 @@ class MarkdownHighlighter(BasicHighlighter):
                     self.transparentFormat(fmt)
                     self.transparentFormat(markupFormat)
 
-            # Format openning Markup
+            # Format opening Markup
             self.setFormat(token.position, token.openingMarkupLength,
                            markupFormat)
 
@@ -676,7 +676,7 @@ class MarkdownHighlighter(BasicHighlighter):
                 spellingErrorFormat = self.format(startIndex)
                 spellingErrorFormat.setUnderlineColor(self.spellingErrorColor)
                 spellingErrorFormat.setUnderlineStyle(
-                    qApp.stlye().styleHint(QStyle.SH_SpellCheckUnderlineStyle))
+                    qApp.style().styleHint(QStyle.SH_SpellCheckUnderlineStyle))
 
                 self.setFormat(startIndex, length, spellingErrorFormat)
 
@@ -713,7 +713,7 @@ class MarkdownHighlighter(BasicHighlighter):
 
         # FIXME: TypeError: could not convert 'TextBlockData' to 'QTextBlockUserData'
         # blockData = self.currentBlockUserData()
-        # if blockData is None:
+        # if blockData == None:
         #     blockData = TextBlockData(self.document(), self.currentBlock())
         #
         # self.setCurrentBlockUserData(blockData)

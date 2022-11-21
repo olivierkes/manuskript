@@ -1,12 +1,18 @@
 #!/bin/bash
 set -ev   # display each line executed along with output
-brew update
+
+# seriously the CI needs to stop testing 99% of the time if homebrew has updates or not
+export HOMEBREW_NO_AUTO_UPDATE=1 # (please let it go, homebrew!)
+
+# brew update # (safe the CI some time)
+
 # Upgrade to python 3.x
-brew upgrade python
+# brew upgrade python # (should be fine)
+
 brew install enchant
 brew postinstall python   # this installs pip
 sudo -H pip3 install --upgrade pip setuptools wheel
-pip3 install pyinstaller PyQt5 lxml pyenchant pytest pytest-faulthandler
+pip3 install pyinstaller PyQt5 lxml pyenchant pytest pytest-faulthandler pillow dmgbuild
 brew install hunspell
 # Fooling PyEnchant as described in the wiki.
 #   https://github.com/olivierkes/manuskript/wiki/Package-manuskript-for-OS-X

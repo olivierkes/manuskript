@@ -59,9 +59,6 @@ def test_outlineItemsProperties(outlineItemFolder, outlineItemText):
     text.setData(text.enum.goal, 4)
     assert text.data(text.enum.goalPercentage) == .5
 
-    # revisions
-    assert text.data(text.enum.revisions) == []
-
 def test_modelStuff(outlineModelBasic):
     """
     Tests with children items.
@@ -126,26 +123,16 @@ def test_modelStuff(outlineModelBasic):
     assert folder.findItemsContaining("VALUE", cols,  MW, True) == []
     assert folder.findItemsContaining("VALUE", cols,  MW, False) == [text2.ID()]
 
-    # Revisions
-    text2.clearAllRevisions()
-    assert text2.revisions() == []
-    text2.setData(text2.enum.text, "Some value.")
-    assert len(text2.revisions()) == 1
-    text2.setData(text2.enum.text, "Some new value.")
-    assert len(text2.revisions()) == 1  # Auto clean
-    text2.deleteRevision(text2.revisions()[0][0])
-    assert len(text2.revisions()) == 0
-
-    # Model, count and copy
+    # Model, count and copy    
     k = folder._model
-    folder.setModel(14)
-    assert text2._model == 14
+    folder.setModel(None)
+    assert text2._model is None
     folder.setModel(k)
     assert folder.columnCount() == len(folder.enum)
     text1 = text2.copy()
-    assert text1.ID() is None
+    assert text1.ID() == None
     folder.appendChild(text1)
-    assert text1.ID() is not None
+    assert text1.ID() != None
     assert folder.childCountRecursive() == 2
     assert text1.path() == "Folder > Text"
     assert len(text1.pathID()) == 2

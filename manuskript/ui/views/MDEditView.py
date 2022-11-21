@@ -14,6 +14,8 @@ from manuskript.ui.highlighters.markdownEnums import MarkdownState as MS
 from manuskript.ui.highlighters.markdownTokenizer import MarkdownTokenizer as MT
 from manuskript import functions as F
 
+import logging
+LOGGER = logging.getLogger(__name__)
 
 class MDEditView(textEditView):
 
@@ -23,7 +25,7 @@ class MDEditView(textEditView):
     imageRegex = QRegExp("!\\[([^\n]*)\\]\\(([^\n]+)\\)")
     automaticLinkRegex = QRegExp("(<([a-zA-Z]+\\:[^\n]+)>)|(<([^\n]+@[^\n]+)>)")
 
-    def __init__(self, parent=None, index=None, html=None, spellcheck=True,
+    def __init__(self, parent=None, index=None, html=None, spellcheck=None,
                  highlighting=False, dict="", autoResize=False):
         textEditView.__init__(self, parent, index, html, spellcheck,
                               highlighting=True, dict=dict,
@@ -243,7 +245,7 @@ class MDEditView(textEditView):
     def comment(self):
         cursor = self.textCursor()
 
-        # Select begining and end of words
+        # Select beginning and end of words
         self.selectWord(cursor)
 
         if cursor.hasSelection():
@@ -294,7 +296,7 @@ class MDEditView(textEditView):
 
     def lineFormattingMarkup(self, markup):
         """
-        Adds `markup` at the begining of block.
+        Adds `markup` at the beginning of block.
         """
         cursor = self.textCursor()
         cursor.movePosition(cursor.StartOfBlock)
@@ -303,7 +305,7 @@ class MDEditView(textEditView):
     def insertFormattingMarkup(self, markup):
         cursor = self.textCursor()
 
-        # Select begining and end of words
+        # Select beginning and end of words
         self.selectWord(cursor)
 
         if cursor.hasSelection():
@@ -498,7 +500,10 @@ class MDEditView(textEditView):
                         r3.setLeft(self.viewport().geometry().left())
                         r3.setRight(self.viewport().geometry().right())
                         refs.append(ClickThing(r3, rx, rx.capturedTexts()))
-                        cursor.movePosition(cursor.Down)
+                        if not cursor.movePosition(cursor.Down):
+                            # Super-rare failure. Leaving log message for future investigation.
+                            LOGGER.debug("Failed to move cursor down while calculating clickables. Aborting.")
+                            break
 
         self.clickRects = refs
 
@@ -506,13 +511,15 @@ class MDEditView(textEditView):
         """
         When mouse moves, we show tooltip when appropriate.
         """
+        self.beginTooltipMoveEvent()
         textEditView.mouseMoveEvent(self, event)
+        self.endTooltipMoveEvent()
 
         onRect = [r for r in self.clickRects if r.rect.contains(event.pos())]
 
         if not onRect:
             qApp.restoreOverrideCursor()
-            QToolTip.hideText()
+            self.hideTooltip()
             return
 
         ct = onRect[0]
@@ -527,14 +534,14 @@ class MDEditView(textEditView):
                   +"<p><img src='data:image/png;base64,{}'></p>")
             tooltip = None
             pos = event.pos() + QPoint(0, ct.rect.height())
-            imageTooltiper.fromUrl(ct.texts[2], pos, self)
+            ImageTooltip.fromUrl(ct.texts[2], pos, self)
 
         elif ct.regex == self.inlineLinkRegex:
             tooltip = ct.texts[1] or ct.texts[2]
 
         if tooltip:
             tooltip = self.tr("{} (CTRL+Click to open)").format(tooltip)
-            QToolTip.showText(self.mapToGlobal(event.pos()), tooltip)
+            self.showTooltip(self.mapToGlobal(event.pos()), tooltip)
 
     def mouseReleaseEvent(self, event):
         textEditView.mouseReleaseEvent(self, event)
@@ -582,53 +589,127 @@ from PyQt5.QtNetwork import QNetworkRequest, QNetworkAccessManager, QNetworkRepl
 from PyQt5.QtCore import QIODevice, QUrl, QBuffer
 from PyQt5.QtGui import QPixmap
 
-class imageTooltiper:
+class ImageTooltip:
+    """
+    This class handles the retrieving and caching of images in order to display these in tooltips.
+    """
 
     cache = {}
     manager = QNetworkAccessManager()
-    data = {}
+    processing = {}
+
+    supportedSchemes = ("", "file", "http", "https")
 
     def fromUrl(url, pos, editor):
-        cache = imageTooltiper.cache
-        imageTooltiper.editor = editor
+        """
+        Shows the image tooltip for the given url if available, or requests it for future use.
+        """
+        ImageTooltip.editor = editor
 
-        if url in cache:
-            if not cache[url][0]:  # error, image was not found
-                imageTooltiper.tooltipError(cache[url][1], pos)
-            else:
-                imageTooltiper.tooltip(cache[url][1], pos)
-            return
+        if ImageTooltip.showTooltip(url, pos):
+            return # the url already exists in the cache
 
         try:
-            imageTooltiper.manager.finished.connect(imageTooltiper.finished, F.AUC)
+            ImageTooltip.manager.finished.connect(ImageTooltip.finished, F.AUC)
         except:
-            pass
+            pass # already connected
 
-        request = QNetworkRequest(QUrl(url))
-        imageTooltiper.data[QUrl(url)] = (pos, url)
-        imageTooltiper.manager.get(request)
+        qurl = QUrl.fromUserInput(url)
+        if (qurl == QUrl()):
+            ImageTooltip.cache[url] = (False, ImageTooltip.manager.tr("The image path or URL is incomplete or malformed."))
+            ImageTooltip.showTooltip(url, pos)
+            return # empty QUrl means it failed completely
+        elif (qurl.scheme() not in ImageTooltip.supportedSchemes):
+            # QUrl.fromUserInput() can occasionally deduce an incorrect scheme,
+            # which produces an error message regarding an unknown scheme. (Yay!)
+            # But it also breaks all possible methods to try and associate the
+            # reply with the original request in finished(), since reply.request()
+            # is completely and utterly butchered for all tracking needs. :'(
+            # (The QNetworkRequest, .url() and .originatingObject() can all change.)
+
+            # Test case (Linux): ![image](C:\test_root.jpg)
+            ImageTooltip.cache[url] = (False, ImageTooltip.manager.tr("The protocol \"{}\" is not supported.").format(qurl.scheme()))
+            ImageTooltip.showTooltip(url, pos)
+            return # no more request/reply chaos, please!
+        elif (qurl in ImageTooltip.processing):
+            return # one download is more than enough
+
+        # Request the image for later processing.
+        request = QNetworkRequest(qurl)
+        ImageTooltip.processing[qurl] = (pos, url)
+        reply = ImageTooltip.manager.get(request)
+
+        # On Linux the finished() signal is not triggered when the url resembles
+        # 'file://X:/...'. But because it completes instantly, we can manually
+        # trigger the code to keep our processing dictionary neat & clean.
+        if reply.error() == 302:  # QNetworkReply.ProtocolInvalidOperationError
+            ImageTooltip.finished(reply)
 
     def finished(reply):
-        cache = imageTooltiper.cache
-        pos, url = imageTooltiper.data[reply.url()]
+        """
+        After retrieving an image, we add it to the cache.
+        """
+        cache = ImageTooltip.cache
+        url_key = reply.request().url()
+        pos, url = None, None
+
+        if url_key in ImageTooltip.processing:
+            # Obtain the information associated with this request.
+            pos, url = ImageTooltip.processing[url_key]
+            del ImageTooltip.processing[url_key]
+        elif len(ImageTooltip.processing) == 0:
+            # We are not processing anything. Maybe it is a spurious signal,
+            # or maybe the 'reply.error() == 302' workaround in fromUrl() has
+            # been fixed in Qt. Whatever the reason, we can assume this request
+            # has already been handled, and needs no more work from us.
+            return
+        else:
+            # Somehow we lost track. Log what we can to hopefully figure it out.
+            LOGGER.warning("Unable to match fetched data for tooltip to original request.")
+            LOGGER.warning("- Completed request: %s", url_key)
+            LOGGER.warning("- Status upon finishing: %s, %s", reply.error(), reply.errorString())
+            LOGGER.warning("- Currently processing: %s", ImageTooltip.processing)
+            return
+
+        # Update cache with retrieved data.
         if reply.error() != QNetworkReply.NoError:
             cache[url] = (False, reply.errorString())
-            imageTooltiper.tooltipError(reply.errorString(), pos)
         else:
             px = QPixmap()
             px.loadFromData(reply.readAll())
             px = px.scaled(800, 600, Qt.KeepAspectRatio)
             cache[url] = (True, px)
-            imageTooltiper.tooltip(px, pos)
+
+        ImageTooltip.showTooltip(url, pos)
+
+    def showTooltip(url, pos):
+        """
+        Show a tooltip for the given url based on cached information.
+        """
+        cache = ImageTooltip.cache
+
+        if url in cache:
+            if not cache[url][0]:  # error, image was not found
+                ImageTooltip.tooltipError(cache[url][1], pos)
+            else:
+                ImageTooltip.tooltip(cache[url][1], pos)
+            return True
+        return False
 
     def tooltipError(message, pos):
-        imageTooltiper.editor.doTooltip(pos, message)
+        """
+        Display a tooltip with an error message at the given position.
+        """
+        ImageTooltip.editor.doTooltip(pos, message)
 
     def tooltip(image, pos):
+        """
+        Display a tooltip with an image at the given position.
+        """
         px = image
         buffer = QBuffer()
         buffer.open(QIODevice.WriteOnly)
         px.save(buffer, "PNG", quality=100)
         image = bytes(buffer.data().toBase64()).decode()
         tt = "<p><img src='data:image/png;base64,{}'></p>".format(image)
-        imageTooltiper.editor.doTooltip(pos, tt)
+        ImageTooltip.editor.doTooltip(pos, tt)

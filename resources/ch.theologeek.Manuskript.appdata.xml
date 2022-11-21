@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2021-2022 Tobias Frisch -->
+<component type="desktop">
+	<id>ch.theologeek.Manuskript</id>
+	<metadata_license>CC0-1.0</metadata_license>
+	<project_license>GPL-3.0</project_license>
+	<content_rating type="oars-1.1" />
+
+	<name>Manuskript</name>
+	<summary>An open-source tool for writers</summary>
+	<description>
+		<p>Manuskript provides a rich environment to help writers create their first draft and then further refine and edit their masterpiece.</p>
+		<p>With Manuskript you can:</p>
+		<ul>
+			<li>Grow your premise from one sentence, to a paragraph, to a full summary</li>
+			<li>Create characters</li>
+			<li>Conceive plots</li>
+			<li>Construct outlines (Outline mode and/or Index cards)</li>
+			<li>Write with focus (Distraction free mode)</li>
+			<li>Build worlds</li>
+			<li>Track items</li>
+			<li>Edit and re-organize chapters and scenes</li>
+			<li>View Story line</li>
+			<li>Compose with fiction or non-fiction templates and writing modes</li>
+			<li>Import and export document formats such as HTML, ePub, OpenDocument, DocX, and more</li>
+		</ul>
+	</description>
+
+	<screenshots>
+		<screenshot type="default">
+			<image>https://www.theologeek.ch/manuskript/wp-content/uploads/2022/08/screenshot01.png</image>
+		</screenshot>
+		<screenshot>
+			<image>https://www.theologeek.ch/manuskript/wp-content/uploads/2022/08/screenshot02.png</image>
+		</screenshot>
+		<screenshot>
+			<image>https://www.theologeek.ch/manuskript/wp-content/uploads/2022/08/screenshot03.png</image>
+		</screenshot>
+		<screenshot>
+			<image>https://www.theologeek.ch/manuskript/wp-content/uploads/2022/08/screenshot04.png</image>
+		</screenshot>
+		<screenshot>
+			<image>https://www.theologeek.ch/manuskript/wp-content/uploads/2022/08/screenshot05.png</image>
+		</screenshot>
+	</screenshots>
+
+	<url type="homepage">http://www.theologeek.ch/manuskript</url>
+	<url type="bugtracker">https://github.com/olivierkes/manuskript/issues</url>
+	<url type="help">https://www.theologeek.ch/manuskript/category/features</url>
+	
+	<url type="translate">https://hosted.weblate.org/projects/manuskript/translations</url>
+	<url type="vcs-browser">https://github.com/olivierkes/manuskript</url>
+	<url type="contribute">https://github.com/olivierkes/manuskript/wiki#contributing</url>
+
+	<update_contact>thejackimonster_at_gmail.com</update_contact>
+
+	<launchable type="desktop-id">ch.theologeek.Manuskript.desktop</launchable>
+	<releases>
+		<release version="0.14.0" date="2022-06-08" />
+		<release version="0.13.1" date="2021-12-13" />
+		<release version="0.12.0" date="2021-04-30" />
+	</releases>
+</component>

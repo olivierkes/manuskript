@@ -237,11 +237,11 @@ class outlineGoalPercentageDelegate(QStyledItemDelegate):
         rect = option.rect.adjusted(margin, margin, -margin, -margin)
 
         # Move
-        rect.translate(level * rect.width() / 10, 0)
-        rect.setWidth(rect.width() - level * rect.width() / 10)
+        rect.translate(int(level * rect.width() / 10), 0)
+        rect.setWidth(int(rect.width() - level * rect.width() / 10))
 
-        rect.setHeight(height)
-        rect.setTop(option.rect.top() + (option.rect.height() - height) / 2)
+        rect.setHeight(int(height))
+        rect.setTop(int(option.rect.top() + (option.rect.height() - height) / 2))
 
         drawProgress(painter, rect, p)  # from functions
 
@@ -313,7 +313,7 @@ class outlineLabelDelegate(QStyledItemDelegate):
         idx = self.mdlLabels.indexFromItem(item)
         opt = QStyleOptionViewItem(option)
         self.initStyleOption(opt, idx)
-        s = qApp.style().sizeFromContents(QStyle.CT_ItemViewItem, opt, QSize())
+        s = qApp.style().sizeFromContents(QStyle.CT_ItemViewItem, opt, QSize(), None)
         if s.width() > 150:
             s.setWidth(150)
         elif s.width() < 50:

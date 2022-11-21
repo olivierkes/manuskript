@@ -1,0 +1,128 @@
+name: manuskript
+title: Manuskript
+summary: Manuskript is an open-source tool for writers.
+description: |
+  Manuskript provides a rich environment to help writers create their first draft and then further refine and edit their masterpiece.
+  With Manuskript you can:
+  * Grow your premise from one sentence, to a paragraph, to a full summary
+  * Create characters
+  * Conceive plots
+  * Construct outlines (Outline mode and/or Index cards)
+  * Write with focus (Distraction free mode)
+  * Build worlds
+  * Track items
+  * Edit and re-organize chapters and scenes
+  * View Story line
+  * Compose with fiction or non-fiction templates and writing modes
+  * Export to HTML, ePub, OpenDocument, DocX, PDF, and more
+  * Additionally Manuskript can help in many more ways with a spell checker, markdown highlighter, frequency analyzer, and automatic save in open and plain text file format.
+adopt-info: manuskript
+grade: stable
+confinement: strict
+base: core18
+icon: icons/Manuskript/manuskript.svg
+layout:
+  /usr/share/pandoc/data/templates:
+    bind: $SNAP/usr/share/pandoc/data/templates
+
+apps:
+  manuskript:
+    command: bin/desktop-launch $SNAP/bin/manuskript
+    environment:
+      # Fallback to XWayland if running in a Wayland session.
+      DISABLE_WAYLAND: 1
+    plugs:
+    - desktop
+    - desktop-legacy
+    - unity7
+    - wayland
+    - x11
+    - opengl
+    - home
+    - network-manager # (Seems to be necessary on older Ubuntu to open the window)
+
+parts:
+  desktop-qt5:
+    build-packages:
+    - build-essential
+    - qtbase5-dev
+    - dpkg-dev
+    make-parameters:
+    - FLAVOR=qt5
+    plugin: make
+    source: https://github.com/ubuntu/snapcraft-desktop-helpers.git
+    source-subdir: qt
+    stage-packages:
+    - libxkbcommon0
+    - ttf-ubuntu-font-family
+    - dmz-cursor-theme
+    - light-themes
+    - adwaita-icon-theme
+    - gnome-themes-standard
+    - shared-mime-info
+    - libqt5gui5
+    - libgdk-pixbuf2.0-0
+    - libqt5svg5
+    - try:
+      - appmenu-qt5
+    - locales-all
+    - xdg-user-dirs
+    - fcitx-frontend-qt5
+    - libxcursor1
+    - libgtk2.0-0
+
+  pip-fix:
+    plugin: nil
+    stage-packages:
+      - python3-distutils
+      - python3-setuptools
+
+  pyspellchecker:
+    after: [pip-fix]
+    plugin: python
+    python-version: python3
+    source: https://github.com/barrust/pyspellchecker.git
+
+  manuskript:
+    after: [desktop-qt5,pyspellchecker]
+    plugin: dump
+    source: https://github.com/olivierkes/manuskript.git
+    source-type: git
+    source-branch: 'master'
+    build-packages:
+      - python3
+      - python3-pyqt5
+      - python3-pyqt5.qtwebkit
+      - libqt5svg5
+      - python3-lxml
+      - zlib1g
+      - python3-enchant
+      - python3-markdown
+      - pandoc
+      - texlive-latex-recommended
+      - texlive-fonts-recommended
+      - texlive-latex-extra
+      - texlive-luatex
+      - texlive-xetex
+    override-pull: |
+      snapcraftctl pull
+
+      version="$(grep -E  '__version__.*\".*\"' 'manuskript/version.py' | cut -d\" -f2)"
+      snapcraftctl set-version "$version"
+    stage-packages:
+      - python3
+      - python3-pyqt5
+      - python3-pyqt5.qtwebkit
+      - libqt5svg5
+      - python3-lxml
+      - zlib1g
+      - libc-bin
+      - locales
+      - python3-enchant
+      - python3-markdown
+      - pandoc
+      - texlive-latex-recommended
+      - texlive-fonts-recommended
+      - texlive-luatex
+    override-build: |
+      snapcraftctl build

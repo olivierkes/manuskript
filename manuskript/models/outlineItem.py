@@ -8,10 +8,13 @@ from PyQt5.QtGui import QFont, QIcon
 from PyQt5.QtWidgets import qApp
 from lxml import etree as ET
 from manuskript.models.abstractItem import abstractItem
+from manuskript.models.searchableItem import searchableItem
 from manuskript import enums
 from manuskript import functions as F
 from manuskript import settings
 from manuskript.converters import HTML2PlainText
+from manuskript.searchLabels import OutlineSearchLabels
+from manuskript.enums import Outline, Model
 
 try:
     locale.setlocale(locale.LC_ALL, '')
@@ -20,8 +23,10 @@ except:
     # number formatting
     pass
 
+import logging
+LOGGER = logging.getLogger(__name__)
 
-class outlineItem(abstractItem):
+class outlineItem(abstractItem, searchableItem):
 
     enum = enums.Outline
 
@@ -30,6 +35,7 @@ class outlineItem(abstractItem):
 
     def __init__(self, model=None, title="", _type="folder", xml=None, parent=None, ID=None):
         abstractItem.__init__(self, model, title, _type, xml, parent, ID)
+        searchableItem.__init__(self, OutlineSearchLabels)
 
         self.defaultTextType = None
         if not self._data.get(self.enum.compile):
@@ -65,6 +71,9 @@ class outlineItem(abstractItem):
     def POV(self):
         return self.data(self.enum.POV)
 
+    def resetPOV(self):
+        self.setData(self.enum.POV, None)
+
     def status(self):
         return self.data(self.enum.status)
 
@@ -80,6 +89,22 @@ class outlineItem(abstractItem):
     def wordCount(self):
         return self._data.get(self.enum.wordCount, 0)
 
+    def charCount(self):
+        return self._data.get(self.enum.charCount, 0)
+
+    def __str__(self):
+        return "{id}: {folder}{title}{children}".format(
+            id=self.ID(),
+            folder="*" if self.isFolder() else "",
+            title=self.data(self.enum.title),
+            children="" if self.isText() else "({})".format(self.childCount())
+            )
+
+    __repr__ = __str__
+
+    def charCount(self):
+        return self._data.get(self.enum.charCount, 0)
+
     #######################################################################
     # Data
     #######################################################################
@@ -94,6 +119,9 @@ class outlineItem(abstractItem):
                 return []
 
             else:
+                # Used to verify nbsp characters not getting clobbered.
+                #if column == E.text:
+                #    print("GET", str(role), "-->", str([hex(ord(x)) for x in data]))
                 return data
 
         elif role == Qt.DecorationRole and column == E.title:
@@ -109,7 +137,7 @@ class outlineItem(abstractItem):
 
         elif role == Qt.FontRole:
             f = QFont()
-            if column == E.wordCount and self.isFolder():
+            if (column == E.wordCount or column == E.charCount) and self.isFolder():
                 f.setItalic(True)
             elif column == E.goal and self.isFolder() and not self.data(E.setGoal):
                 f.setItalic(True)
@@ -130,12 +158,14 @@ class outlineItem(abstractItem):
 
         # Checking if we will have to recount words
         updateWordCount = False
-        if column in [E.wordCount, E.goal, E.setGoal]:
+        if column in [E.wordCount, E.charCount, E.goal, E.setGoal]:
             updateWordCount = not column in self._data or self._data[column] != data
 
         # Stuff to do before
         if column == E.text:
             self.addRevision()
+            # Used to verify nbsp characters not getting clobbered.
+            #print("SET", str(role), "-->", str([hex(ord(x)) for x in data]))
 
         # Calling base class implementation
         abstractItem.setData(self, column, data, role)
@@ -143,7 +173,9 @@ class outlineItem(abstractItem):
         # Stuff to do afterwards
         if column == E.text:
             wc = F.wordCount(data)
+            cc = F.charCount(data, settings.countSpaces)
             self.setData(E.wordCount, wc)
+            self.setData(E.charCount, cc)
 
         if column == E.compile:
             # Title changes when compile changes
@@ -168,13 +200,11 @@ class outlineItem(abstractItem):
 
     def removeChild(self, row):
         r = abstractItem.removeChild(self, row)
-        # Might be causing segfault when updateWordCount emits dataChanged
-        self.updateWordCount(emit=False)
+        self.updateWordCount()
         return r
 
-    def updateWordCount(self, emit=True):
-        """Update word count for item and parents.
-        If emit is False, no signal is emitted (sometimes cause segfault)"""
+    def updateWordCount(self):
+        """Update word count for item and parents."""
         if not self.isFolder():
             setGoal = F.toInt(self.data(self.enum.setGoal))
             goal = F.toInt(self.data(self.enum.goal))
@@ -187,9 +217,12 @@ class outlineItem(abstractItem):
 
         else:
             wc = 0
+            cc = 0
             for c in self.children():
                 wc += F.toInt(c.data(self.enum.wordCount))
+                cc += F.toInt(c.data(self.enum.charCount))
             self._data[self.enum.wordCount] = wc
+            self._data[self.enum.charCount] = cc
 
             setGoal = F.toInt(self.data(self.enum.setGoal))
             goal = F.toInt(self.data(self.enum.goal))
@@ -209,12 +242,12 @@ class outlineItem(abstractItem):
             else:
                 self.setData(self.enum.goalPercentage, "")
 
-        if emit:
-            self.emitDataChanged([self.enum.goal, self.enum.setGoal,
-                                  self.enum.wordCount, self.enum.goalPercentage])
+        self.emitDataChanged([self.enum.goal, self.enum.setGoal,
+                              self.enum.wordCount, self.enum.charCount,
+                              self.enum.goalPercentage])
 
         if self.parent():
-            self.parent().updateWordCount(emit)
+            self.parent().updateWordCount()
 
     def stats(self):
         wc = self.data(enums.Outline.wordCount)
@@ -223,12 +256,12 @@ class outlineItem(abstractItem):
         if not wc:
             wc = 0
         if goal:
-            return qApp.translate("outlineItem", "{} words / {} ({})").format(
+            return F.safeTranslate(qApp, "outlineItem", "{} words / {} ({})").format(
                     locale.format_string("%d", wc, grouping=True),
                     locale.format_string("%d", goal, grouping=True),
                     "{}%".format(str(int(progress * 100))))
         else:
-            return qApp.translate("outlineItem", "{} words").format(
+            return F.safeTranslate(qApp, "outlineItem", "{} words").format(
                     locale.format_string("%d", wc, grouping=True))
 
     #######################################################################
@@ -336,8 +369,7 @@ class outlineItem(abstractItem):
 
         return lst
 
-    def findItemsContaining(self, text, columns, mainWindow=F.mainWindow(),
-                            caseSensitive=False, recursive=True):
+    def findItemsContaining(self, text, columns, mainWindow=F.mainWindow(), caseSensitive=False, recursive=True):
         """Returns a list if IDs of all subitems
         containing ``text`` in columns ``columns``
         (being a list of int).
@@ -350,19 +382,17 @@ class outlineItem(abstractItem):
 
         return lst
 
-    def itemContains(self, text, columns, mainWindow=F.mainWindow(),
-                     caseSensitive=False):
+    def itemContains(self, text, columns, mainWindow=F.mainWindow(), caseSensitive=False):
         lst = []
         text = text.lower() if not caseSensitive else text
         for c in columns:
-
             if c == self.enum.POV and self.POV():
-                c = mainWindow.mdlCharacter.getCharacterByID(self.POV())
-                if c:
-                    searchIn = c.name()
+                character = mainWindow.mdlCharacter.getCharacterByID(self.POV())
+                if character:
+                    searchIn = character.name()
                 else:
                     searchIn = ""
-                    print("Character POV not found:", self.POV())
+                    LOGGER.error("Character POV not found: %s", self.POV())
 
             elif c == self.enum.status:
                 searchIn = mainWindow.mdlStatus.item(F.toInt(self.status()), 0).text()
@@ -374,7 +404,6 @@ class outlineItem(abstractItem):
                 searchIn = self.data(c)
 
             searchIn = searchIn.lower() if not caseSensitive else searchIn
-
             if text in searchIn:
                 if not self.ID() in lst:
                     lst.append(self.ID())
@@ -460,6 +489,7 @@ class outlineItem(abstractItem):
 
     # We don't want to write some datas (computed)
     XMLExclude = [enums.Outline.wordCount,
+                  enums.Outline.charCount,
                   enums.Outline.goal,
                   enums.Outline.goalPercentage,
                   enums.Outline.revisions]
@@ -473,7 +503,7 @@ class outlineItem(abstractItem):
         for r in rev:
             revItem = ET.Element("revision")
             revItem.set("timestamp", str(r[0]))
-            revItem.set("text", r[1])
+            revItem.set("text", self.cleanTextForXML(r[1]))
             item.append(revItem)
 
         return item
@@ -495,3 +525,39 @@ class outlineItem(abstractItem):
         for child in root:
             if child.tag == "revision":
                 self.appendRevision(child.attrib["timestamp"], child.attrib["text"])
+
+    #######################################################################
+    # Search
+    #######################################################################
+    def searchModel(self):
+        return Model.Outline
+
+    def searchID(self):
+        return self.data(Outline.ID)
+
+    def searchTitle(self, column):
+        return self.title()
+
+    def searchPath(self, column):
+        return [self.translate("Outline")] + self.path().split(' > ') + [self.translate(self.searchColumnLabel(column))]
+
+    def searchData(self, column):
+        mainWindow = F.mainWindow()
+
+        searchData = None
+
+        if column == self.enum.POV and self.POV():
+            character = mainWindow.mdlCharacter.getCharacterByID(self.POV())
+            if character:
+                searchData = character.name()
+
+        elif column == self.enum.status:
+            searchData = mainWindow.mdlStatus.item(F.toInt(self.status()), 0).text()
+
+        elif column == self.enum.label:
+            searchData = mainWindow.mdlLabels.item(F.toInt(self.label()), 0).text()
+
+        else:
+            searchData = self.data(column)
+
+        return searchData

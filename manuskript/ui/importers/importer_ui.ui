@@ -42,7 +42,7 @@
      <item>
       <widget class="QPushButton" name="btnChoseFile">
        <property name="text">
-        <string>Chose file</string>
+        <string>Choose file</string>
        </property>
        <property name="icon">
         <iconset theme="document-import"/>

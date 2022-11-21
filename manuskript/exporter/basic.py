@@ -10,6 +10,8 @@ from PyQt5.QtWidgets import QWidget
 from manuskript.models import outlineItem
 from manuskript.functions import mainWindow
 
+import logging
+LOGGER = logging.getLogger(__name__)
 
 class basicExporter:
 
@@ -58,8 +60,8 @@ class basicExporter:
         elif self.isValid() == 1:
             run = self.customPath
         else:
-            print("Error: no command for", self.name)
-            return
+            LOGGER.error("No command for %s.", self.name)
+            return None
         r = subprocess.check_output([run] + args)  # timeout=.2
         return r.decode("utf-8")
 
@@ -71,7 +73,7 @@ class basicExporter:
         # try:
         #     output = subprocess.check_output(cmdl, stdin=cmd.stdout, stderr=subprocess.STDOUT)  # , cwd="/tmp"
         # except subprocess.CalledProcessError as e:
-        #     print("Error!")
+        #     LOGGER.error("Failed to read from process output.")
         #     return text
         # cmd.wait()
         #

@@ -2,8 +2,7 @@
 
 # Form implementation generated from reading ui file 'manuskript/ui/tools/frequency_ui.ui'
 #
-# Created: Mon Feb  8 13:54:01 2016
-#      by: PyQt5 UI code generator 5.2.1
+# Created by: PyQt5 UI code generator 5.5.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -24,12 +23,11 @@ class Ui_FrequencyAnalyzer(object):
         self.splitter = QtWidgets.QSplitter(self.tab)
         self.splitter.setOrientation(QtCore.Qt.Horizontal)
         self.splitter.setObjectName("splitter")
-        self.widget = QtWidgets.QWidget(self.splitter)
-        self.widget.setObjectName("widget")
-        self.verticalLayout = QtWidgets.QVBoxLayout(self.widget)
-        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.layoutWidget = QtWidgets.QWidget(self.splitter)
+        self.layoutWidget.setObjectName("layoutWidget")
+        self.verticalLayout = QtWidgets.QVBoxLayout(self.layoutWidget)
         self.verticalLayout.setObjectName("verticalLayout")
-        self.groupBox = QtWidgets.QGroupBox(self.widget)
+        self.groupBox = QtWidgets.QGroupBox(self.layoutWidget)
         self.groupBox.setObjectName("groupBox")
         self.formLayout = QtWidgets.QFormLayout(self.groupBox)
         self.formLayout.setFieldGrowthPolicy(QtWidgets.QFormLayout.AllNonFixedFieldsGrow)
@@ -50,11 +48,11 @@ class Ui_FrequencyAnalyzer(object):
         self.txtWordExclude.setObjectName("txtWordExclude")
         self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.txtWordExclude)
         self.verticalLayout.addWidget(self.groupBox)
-        self.progressBarWord = QtWidgets.QProgressBar(self.widget)
+        self.progressBarWord = QtWidgets.QProgressBar(self.layoutWidget)
         self.progressBarWord.setProperty("value", 0)
         self.progressBarWord.setObjectName("progressBarWord")
         self.verticalLayout.addWidget(self.progressBarWord)
-        self.btnAnalyzeWord = QtWidgets.QPushButton(self.widget)
+        self.btnAnalyzeWord = QtWidgets.QPushButton(self.layoutWidget)
         self.btnAnalyzeWord.setObjectName("btnAnalyzeWord")
         self.verticalLayout.addWidget(self.btnAnalyzeWord)
         self.tblWord = QtWidgets.QTableView(self.splitter)
@@ -97,7 +95,7 @@ class Ui_FrequencyAnalyzer(object):
         self.horizontalLayout.addWidget(self.tabWidget)
 
         self.retranslateUi(FrequencyAnalyzer)
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(FrequencyAnalyzer)
 
     def retranslateUi(self, FrequencyAnalyzer):

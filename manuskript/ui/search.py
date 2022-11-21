@@ -1,147 +1,186 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-from PyQt5.QtCore import Qt, QRect
-from PyQt5.QtGui import QPalette, QFontMetrics
-from PyQt5.QtWidgets import QWidget, QMenu, QAction, qApp, QListWidgetItem, QStyledItemDelegate, QStyle
+import re
 
-from manuskript.enums import Outline
+from PyQt5.QtCore import Qt, QRect, QEvent, QCoreApplication
+from PyQt5.QtGui import QPalette, QFontMetrics, QKeySequence
+from PyQt5.QtWidgets import QWidget, qApp, QListWidgetItem, QStyledItemDelegate, QStyle, QLabel, QToolTip, QShortcut
+
+
 from manuskript.functions import mainWindow
 from manuskript.ui import style
 from manuskript.ui.search_ui import Ui_search
-from manuskript.models import references as Ref
+from manuskript.enums import Model
+
+from manuskript.models.flatDataModelWrapper import flatDataModelWrapper
+from manuskript.ui.searchMenu import searchMenu
+from manuskript.ui.highlighters.searchResultHighlighters.searchResultHighlighter import searchResultHighlighter
+import logging
+LOGGER = logging.getLogger(__name__)
 
 
 class search(QWidget, Ui_search):
     def __init__(self, parent=None):
+        _translate = QCoreApplication.translate
+
         QWidget.__init__(self, parent)
         self.setupUi(self)
 
-        self.options = {
-            "All": True,
-            "Title": True,
-            "Text": True,
-            "Summary": False,
-            "Notes": False,
-            "POV": False,
-            "Status": False,
-            "Label": False,
-            "CS": True
-        }
+        self.searchTextInput.returnPressed.connect(self.search)
+        self.searchTextInput.textChanged.connect(self.updateSearchFeedback)
 
-        self.text.returnPressed.connect(self.search)
-        self.generateOptionMenu()
+        self.searchMenu = searchMenu()
+        self.btnOptions.setMenu(self.searchMenu)
+        self.searchMenu.triggered.connect(self.onSearchMenuChange)
 
         self.delegate = listResultDelegate(self)
         self.result.setItemDelegate(self.delegate)
+        self.result.setMouseTracking(True)
         self.result.itemClicked.connect(self.openItem)
 
         self.result.setStyleSheet(style.searchResultSS())
-        self.text.setStyleSheet(style.lineEditSS())
+        self.searchTextInput.setStyleSheet(style.lineEditSS())
 
-    def generateOptionMenu(self):
-        self.menu = QMenu(self)
-        a = QAction(self.tr("Search in:"), self.menu)
-        a.setEnabled(False)
-        self.menu.addAction(a)
-        for i, d in [
-            (self.tr("All"), "All"),
-            (self.tr("Title"), "Title"),
-            (self.tr("Text"), "Text"),
-            (self.tr("Summary"), "Summary"),
-            (self.tr("Notes"), "Notes"),
-            (self.tr("POV"), "POV"),
-            (self.tr("Status"), "Status"),
-            (self.tr("Label"), "Label"),
-        ]:
-            a = QAction(i, self.menu)
-            a.setCheckable(True)
-            a.setChecked(self.options[d])
-            a.setData(d)
-            a.triggered.connect(self.updateOptions)
-            self.menu.addAction(a)
-        self.menu.addSeparator()
+        self.searchResultHighlighter = searchResultHighlighter()
 
-        a = QAction(self.tr("Options:"), self.menu)
-        a.setEnabled(False)
-        self.menu.addAction(a)
-        for i, d in [
-            (self.tr("Case sensitive"), "CS"),
-        ]:
-            a = QAction(i, self.menu)
-            a.setCheckable(True)
-            a.setChecked(self.options[d])
-            a.setData(d)
-            a.triggered.connect(self.updateOptions)
-            self.menu.addAction(a)
-        self.menu.addSeparator()
+        self.noResultsLabel = QLabel(_translate("Search", "No results found"), self.result)
+        self.noResultsLabel.setVisible(False)
+        self.noResultsLabel.setStyleSheet("QLabel {color: gray;}")
 
-        self.btnOptions.setMenu(self.menu)
+        # Add shortcuts for navigating through search results
+        QShortcut(QKeySequence(_translate("MainWindow", "F3")), self.searchTextInput, self.nextSearchResult)
+        QShortcut(QKeySequence(_translate("MainWindow", "Shift+F3")), self.searchTextInput, self.previousSearchResult)
 
-    def updateOptions(self):
-        a = self.sender()
-        self.options[a.data()] = a.isChecked()
+        # These texts are already included in translation files but including ":" at the end. We force here the
+        # translation for them without ":"
+        _translate("MainWindow", "Situation")
+        _translate("MainWindow", "Status")
+
+    def nextSearchResult(self):
+        if self.result.currentRow() < self.result.count() - 1:
+            self.result.setCurrentRow(self.result.currentRow() + 1)
+        else:
+            self.result.setCurrentRow(0)
+
+        if 0 < self.result.currentRow() < self.result.count():
+            self.openItem(self.result.currentItem())
+
+    def previousSearchResult(self):
+        if self.result.currentRow() > 0:
+            self.result.setCurrentRow(self.result.currentRow() - 1)
+        else:
+            self.result.setCurrentRow(self.result.count() - 1)
+
+        if 0 < self.result.currentRow() < self.result.count():
+            self.openItem(self.result.currentItem())
+
+    def onSearchMenuChange(self):
+        search_string = self.searchTextInput.text()
+        self.updateSearchFeedback(search_string)
+
+    def updateSearchFeedback(self, search_string):
+        palette = QPalette()
+        try:
+            self.compileRegex(search_string)
+        except Exception as e:
+            # From https://stackoverflow.com/questions/27432456/python-qlineedit-text-color
+            palette.setColor(QPalette.Text, Qt.red)
+
+        self.searchTextInput.setPalette(palette)
+
+    def prepareRegex(self, searchText):
+        rtn = None
+        try:
+            rtn = self.compileRegex(searchText)
+        except re.error as e:
+            LOGGER.info("Problem preparing regular expression: " + e.msg)
+            rtn = None
+        except Exception as e:
+            LOGGER.info("Problem preparing regular expression")
+            rtn = None
+        return rtn
+
+    def compileRegex(self, searchText):
+        # Intentionally throws exceptions for use elsewhere
+        flags = re.UNICODE
+
+        if self.searchMenu.caseSensitive() is False:
+            flags |= re.IGNORECASE
+
+        if self.searchMenu.regex() is False:
+            searchText = re.escape(searchText)
+
+        if self.searchMenu.matchWords() is True:
+            # Source: https://stackoverflow.com/a/15863102
+            searchText = r'\b' + searchText + r'\b'
+
+        return re.compile(searchText, flags)
 
     def search(self):
-        text = self.text.text()
-
-        # Choosing the right columns
-        lstColumns = [
-            ("Title", Outline.title),
-            ("Text", Outline.text),
-            ("Summary", Outline.summarySentence),
-            ("Summary", Outline.summaryFull),
-            ("Notes", Outline.notes),
-            ("POV", Outline.POV),
-            ("Status", Outline.status),
-            ("Label", Outline.label),
-        ]
-        columns = [c[1] for c in lstColumns if self.options[c[0]] or self.options["All"]]
-
-        # Setting override cursor
-        qApp.setOverrideCursor(Qt.WaitCursor)
-
-        # Searching
-        model = mainWindow().mdlOutline
-        results = model.findItemsContaining(text, columns, self.options["CS"])
-
-        # Showing results
         self.result.clear()
-        for r in results:
-            index = model.getIndexByID(r)
-            if not index.isValid():
-                continue
-            item = index.internalPointer()
-            i = QListWidgetItem(item.title(), self.result)
-            i.setData(Qt.UserRole, r)
-            i.setData(Qt.UserRole + 1, item.path())
-            self.result.addItem(i)
+        self.result.setCurrentRow(0)
 
-        # Removing override cursor
-        qApp.restoreOverrideCursor()
+        searchText = self.searchTextInput.text()
+        if len(searchText) > 0:
+            results = list()
+            searchRegex = self.prepareRegex(searchText)
+            if searchRegex is not None:
+                # Set override cursor
+                qApp.setOverrideCursor(Qt.WaitCursor)
+
+                for model, modelName in [
+                    (mainWindow().mdlOutline, Model.Outline),
+                    (mainWindow().mdlCharacter, Model.Character),
+                    (flatDataModelWrapper(mainWindow().mdlFlatData), Model.FlatData),
+                    (mainWindow().mdlWorld, Model.World),
+                    (mainWindow().mdlPlots, Model.Plot)
+                ]:
+                    filteredColumns = self.searchMenu.columns(modelName)
+
+                    # Searching
+                    if len(filteredColumns):
+                        results += model.searchOccurrences(searchRegex, filteredColumns)
+
+                # Showing results
+                self.generateResultsLists(results)
+
+                # Remove override cursor
+                qApp.restoreOverrideCursor()
+            else:
+                # No results to generate if there is a problem with the regex
+                self.generateResultsLists(list())
+
+    def generateResultsLists(self, results):
+        self.noResultsLabel.setVisible(len(results) == 0)
+        for result in results:
+            item = QListWidgetItem(result.title(), self.result)
+            item.setData(Qt.UserRole, result)
+            item.setData(Qt.UserRole + 1, ' > '.join(result.path()))
+            item.setData(Qt.UserRole + 2, result.context())
+            self.result.addItem(item)
 
     def openItem(self, item):
-        r = Ref.textReference(item.data(Qt.UserRole))
-        Ref.open(r)
-        # mw = mainWindow()
-        # index = mw.mdlOutline.getIndexByID(item.data(Qt.UserRole))
-        # mw.mainEditor.setCurrentModelIndex(index, newTab=True)
+        self.searchResultHighlighter.highlightSearchResult(item.data(Qt.UserRole))
+
+    def leaveEvent(self, event):
+        self.delegate.mouseLeave()
 
 
 class listResultDelegate(QStyledItemDelegate):
     def __init__(self, parent=None):
         QStyledItemDelegate.__init__(self, parent)
+        self._tooltipRowIndex = -1
 
     def paint(self, painter, option, index):
         extra = index.data(Qt.UserRole + 1)
+
         if not extra:
             return QStyledItemDelegate.paint(self, painter, option, index)
-
         else:
             if option.state & QStyle.State_Selected:
                 painter.fillRect(option.rect, option.palette.color(QPalette.Highlight))
 
             title = index.data()
-            extra = " - {}".format(extra)
             painter.drawText(option.rect.adjusted(2, 1, 0, 0), Qt.AlignLeft, title)
 
             fm = QFontMetrics(option.font)
@@ -153,5 +192,18 @@ class listResultDelegate(QStyledItemDelegate):
                 painter.setPen(Qt.white)
             else:
                 painter.setPen(Qt.gray)
-            painter.drawText(r.adjusted(2, 1, 0, 0), Qt.AlignLeft, extra)
+            painter.drawText(r.adjusted(2, 1, 0, 0), Qt.AlignLeft, " - {}".format(extra))
             painter.restore()
+
+    def editorEvent(self, event, model, option, index):
+        if event.type() == QEvent.MouseMove and self._tooltipRowIndex != index.row():
+            self._tooltipRowIndex = index.row()
+            context = index.data(Qt.UserRole + 2)
+            extra = index.data(Qt.UserRole + 1)
+            QToolTip.showText(event.globalPos(),
+                              "<p>#" + str(index.row()) + " - " + extra + "</p><p>" + context + "</p>")
+            return True
+        return False
+
+    def mouseLeave(self):
+        self._tooltipRowIndex = -1

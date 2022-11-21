@@ -30,7 +30,7 @@ class aboutDialog(QWidget, Ui_about):
             + "&nbsp;"*5 + """<a href="http://www.theologeek.ch/manuskript/">
                                 http://www.theologeek.ch/manuskript/
                                </a><br>"""
-            + "&nbsp;"*5 + "Copyright © 2015-2018 Olivier Keshavjee<br>"
+            + "&nbsp;"*5 + "Copyright © 2015-2020 Olivier Keshavjee<br>"
             + "&nbsp;"*5 + """<a href="https://www.gnu.org/licenses/gpl-3.0.en.html">
                                 GNU General Public License Version 3
                             </a><br>"""

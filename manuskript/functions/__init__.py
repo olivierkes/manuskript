@@ -3,25 +3,62 @@
 
 import os
 import re
+import sys
+import pathlib
 from random import *
 
-from PyQt5.QtCore import Qt, QRect, QStandardPaths, QObject, QRegExp, QDir
-from PyQt5.QtCore import QUrl, QTimer
+from PyQt5.QtCore import Qt, QRect, QStandardPaths, QObject, QProcess, QRegExp
+from PyQt5.QtCore import QDir, QUrl, QTimer
 from PyQt5.QtGui import QBrush, QIcon, QPainter, QColor, QImage, QPixmap
 from PyQt5.QtGui import QDesktopServices
-from PyQt5.QtWidgets import qApp, QTextEdit
+from PyQt5.QtWidgets import qApp, QFileDialog
 
 from manuskript.enums import Outline
+
+import logging
+LOGGER = logging.getLogger(__name__)
 
 # Used to detect multiple connections
 AUC = Qt.AutoConnection | Qt.UniqueConnection
 MW = None
 
 
+def safeTranslate(qApp, group, text):
+    try:
+        return qApp.translate(group, text)
+    except:
+        return text
+
 def wordCount(text):
-    t = text.strip().replace(" ", "\n").split("\n")
-    t = [l for l in t if l]
-    return len(t)
+    return len(re.findall(r"\S+", text))
+
+
+def charCount(text, use_spaces = True):
+    if use_spaces:
+        return len(re.findall(r"[\S ]", text))
+    else:
+        return len(re.findall(r"\S", text))
+
+validate_ok = lambda *args, **kwargs: True
+def uiParse(input, default, converter, validator=validate_ok):
+    """
+    uiParse is a utility function that intends to make it easy to convert
+    user input to data that falls in the range of expected values the
+    program is expecting to handle.
+
+    It swallows all exceptions that happen during conversion.
+    The validator should return True to permit the converted value.
+    """
+    result = default
+    try:
+        result = converter(input)
+    except:
+        pass  # failed to convert
+
+    # Whitelist default value in case default type differs from converter output.
+    if (result != default) and not validator(result):
+        result = default
+    return result
 
 
 def toInt(text):
@@ -50,6 +87,7 @@ def toString(text):
 
 def drawProgress(painter, rect, progress, radius=0):
     from manuskript.ui import style as S
+    progress = toFloat(progress)  # handle invalid input (issue #561)
     painter.setPen(Qt.NoPen)
     painter.setBrush(QColor(S.base)) # "#dddddd"
     painter.drawRoundedRect(rect, radius, radius)
@@ -57,7 +95,7 @@ def drawProgress(painter, rect, progress, radius=0):
     painter.setBrush(QBrush(colorFromProgress(progress)))
 
     r2 = QRect(rect)
-    r2.setWidth(r2.width() * min(progress, 1))
+    r2.setWidth(int(r2.width() * min(progress, 1)))
     painter.drawRoundedRect(r2, radius, radius)
 
 
@@ -140,24 +178,25 @@ def randomColor(mix=None):
     b = randint(0, 255)
 
     if mix:
-        r = (r + mix.red()) / 2
-        g = (g + mix.green()) / 2
-        b = (b + mix.blue()) / 2
+        r = int((r + mix.red()) / 2)
+        g = int((g + mix.green()) / 2)
+        b = int((b + mix.blue()) / 2)
 
     return QColor(r, g, b)
 
 
-def mixColors(col1, col2, f=.5):
+def mixColors(col1, col2, f=0.5):
     fromString = False
     if type(col1) == str:
         fromString = True
         col1 = QColor(col1)
     if type(col2) == str:
         col2 = QColor(col2)
-    f2 = 1-f
-    r = col1.red() * f + col2.red() * f2
-    g = col1.green() * f + col2.green() * f2
-    b = col1.blue() * f + col2.blue() * f2
+
+    f2 = 1.0 - f
+    r = int(col1.red() * f + col2.red() * f2)
+    g = int(col1.green() * f + col2.green() * f2)
+    b = int(col1.blue() * f + col2.blue() * f2)
 
     return QColor(r, g, b) if not fromString else QColor(r, g, b).name()
 
@@ -372,7 +411,7 @@ def statusMessage(message, duration=5000, importance=1):
     MW.statusLabel.adjustSize()
     g = MW.statusLabel.geometry()
     # g.moveCenter(MW.mapFromGlobal(MW.geometry().center()))
-    s = MW.layout().spacing() / 2
+    s = int(MW.layout().spacing() / 2)
     g.setLeft(s)
     g.moveBottom(MW.mapFromGlobal(MW.geometry().bottomLeft()).y() - s)
     MW.statusLabel.setGeometry(g)
@@ -384,6 +423,28 @@ def openURL(url):
     Opens url (string) in browser using desktop default application.
     """
     QDesktopServices.openUrl(QUrl(url))
+
+def getSaveFileNameWithSuffix(parent, caption, directory, filter, options=None, selectedFilter=None, defaultSuffix=None):
+    """
+    A reimplemented version of QFileDialog.getSaveFileName() because we would like to make use
+    of the QFileDialog.defaultSuffix property that getSaveFileName() does not let us adjust.
+
+    Note: knowing the selected filter is not an invitation to change the chosen filename later.
+    """
+    dialog = QFileDialog(parent=parent, caption=caption, directory=directory, filter=filter)
+    if options:
+        dialog.setOptions(options)
+    if defaultSuffix:
+        dialog.setDefaultSuffix(defaultSuffix)
+    dialog.setFileMode(QFileDialog.AnyFile)
+    if hasattr(dialog, 'setSupportedSchemes'): # Pre-Qt5.6 lacks this.
+        dialog.setSupportedSchemes(("file",))
+    dialog.setAcceptMode(QFileDialog.AcceptSave)
+    if selectedFilter:
+        dialog.selectNameFilter(selectedFilter)
+    if (dialog.exec() == QFileDialog.Accepted):
+        return dialog.selectedFiles()[0], dialog.selectedNameFilter()
+    return None, None
 
 def inspect():
     """
@@ -397,3 +458,127 @@ def inspect():
             s.lineno,
             s.function))
         print("   " + "".join(s.code_context))
+
+
+def search(searchRegex, text):
+    """
+    Search all occurrences of a regex in a text.
+
+    :param searchRegex:    a regex object with the search to perform
+    :param text:            text to search on
+    :return:                list of tuples (startPos, endPos)
+    """
+    if text is not None:
+        return [(m.start(), m.end(), getSearchResultContext(text, m.start(), m.end())) for m in searchRegex.finditer(text)]
+    else:
+        return []
+
+def getSearchResultContext(text, startPos, endPos):
+    matchSize = endPos - startPos
+    maxContextSize = max(matchSize, 600)
+    extraContextSize = int((maxContextSize - matchSize) / 2)
+    separator = "[...]"
+
+    context = ""
+
+    i = startPos - 1
+    while i > 0 and (startPos - i) < extraContextSize and text[i] != '\n':
+        i -= 1
+    contextStartPos = i
+    if i > 0:
+        context += separator + " "
+    context += text[contextStartPos:startPos].replace('\n', '')
+
+    context += '<b>' + text[startPos:endPos].replace('\n', '') + '</b>'
+
+    i = endPos
+    while i < len(text) and (i - endPos) < extraContextSize and text[i] != '\n':
+        i += 1
+    contextEndPos = i
+
+    context += text[endPos:contextEndPos].replace('\n', '')
+    if i < len(text):
+        context += " " + separator
+
+    return context
+
+
+# Based on answer by jfs at:
+#  https://stackoverflow.com/questions/3718657/how-to-properly-determine-current-script-directory
+def getManuskriptPath(follow_symlinks=True):
+    """Used to obtain the path Manuskript is located at."""
+    if getattr(sys, 'frozen', False): # py2exe, PyInstaller, cx_Freeze
+        path = os.path.abspath(sys.executable)
+    else:
+        import inspect
+        path = inspect.getabsfile(getManuskriptPath) + "/../.."
+    if follow_symlinks:
+        path = os.path.realpath(path)
+    return os.path.dirname(path)
+
+# Based on answer by kagronik at:
+#   https://stackoverflow.com/questions/14989858/get-the-current-git-hash-in-a-python-script
+def getGitRevision(base_path):
+    """Get git revision without relying on external processes or libraries."""
+    git_dir = pathlib.Path(base_path) / '.git'
+    if not git_dir.exists():
+        return None
+
+    with (git_dir / 'HEAD').open('r') as head:
+        ref = head.readline().split(' ')[-1].strip()
+
+    with (git_dir / ref).open('r') as git_hash:
+        return git_hash.readline().strip()
+
+def getGitRevisionAsString(base_path, short=False):
+    """Catches errors and presents a nice string."""
+    try:
+        rev = getGitRevision(base_path)
+        if rev is not None:
+            if short:
+                rev = rev[:7]
+            return "#" + rev
+        else:
+            return ""  # not a git repository
+    except Exception as e:
+        LOGGER.warning("Failed to obtain Git revision: %s", e)
+        return "#ERROR"
+
+def showInFolder(path, open_file_as_fallback=False):
+    '''
+    Show a file or folder in explorer/finder, highlighting it where possible.
+    Source: https://stackoverflow.com/a/46019091/3388962
+    '''
+    path = os.path.abspath(path)
+    dirPath = path if os.path.isdir(path) else os.path.dirname(path)
+    if sys.platform == 'win32':
+        args = []
+        args.append('/select,')
+        args.append(QDir.toNativeSeparators(path))
+        if QProcess.startDetached('explorer', args):
+            return True
+    elif sys.platform == 'darwin':
+        args = []
+        args.append('-e')
+        args.append('tell application "Finder"')
+        args.append('-e')
+        args.append('activate')
+        args.append('-e')
+        args.append('select POSIX file "%s"' % path)
+        args.append('-e')
+        args.append('end tell')
+        args.append('-e')
+        args.append('return')
+        if not QProcess.execute('/usr/bin/osascript', args):
+            return True
+        #if not QtCore.QProcess.execute('/usr/bin/open', [dirPath]):
+        #    return
+    # TODO: Linux is not implemented. It has many file managers (nautilus, xdg-open, etc.)
+    # each of which needs special ways to highlight a file in a file manager window.
+
+    # Fallback.
+    return QDesktopServices.openUrl(QUrl(path if open_file_as_fallback else dirPath))
+
+
+# Spellchecker loads writablePath from this file, so we need to load it after they get defined
+from manuskript.functions.spellchecker import Spellchecker

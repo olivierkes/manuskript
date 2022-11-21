@@ -200,6 +200,9 @@ class plotTreeView(QTreeWidget):
 
     def mouseDoubleClickEvent(self, event):
         item = self.currentItem()
+        if not item:
+            return
+        
         # Catching double clicks to forbid collapsing of toplevel items
         if item.parent():
             QTreeWidget.mouseDoubleClickEvent(self, event)

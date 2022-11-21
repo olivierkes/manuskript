@@ -2,18 +2,21 @@
 # --!-- coding: utf8 --!--
 import re
 from PyQt5.QtGui import QFont, QTextCharFormat
-from PyQt5.QtWidgets import QPlainTextEdit, qApp, QFrame, QFileDialog
+from PyQt5.QtWidgets import QPlainTextEdit, qApp, QFrame, QFileDialog, QMessageBox
 
 from manuskript.exporter.basic import basicFormat
-from manuskript.functions import mainWindow
+from manuskript.functions import mainWindow, getSaveFileNameWithSuffix, safeTranslate
 from manuskript.models import outlineItem
 from manuskript.ui.exporters.manuskript.plainTextSettings import exporterSettings
 import codecs
 
+import logging
+LOGGER = logging.getLogger(__name__)
+
 class plainText(basicFormat):
-    name = qApp.translate("Export", "Plain text")
-    description = qApp.translate("Export", """Simplest export to plain text. Allows you to use your own markup not understood
-                  by manuskript, for example <a href='www.fountain.io'>Fountain</a>.""")
+    name = safeTranslate(qApp, "Export", "Plain text")
+    description = safeTranslate(qApp, "Export", """Simplest export to plain text. Allows you to use your own markup not understood
+                  by Manuskript, for example <a href='www.fountain.io'>Fountain</a>.""")
     implemented = True
     requires = {
         "Settings": True,
@@ -24,6 +27,7 @@ class plainText(basicFormat):
     # Default settings used in self.getExportFilename. For easy subclassing when exporting plaintext.
     exportVarName = "lastPlainText"
     exportFilter = "Text files (*.txt);; Any files (*)"
+    exportDefaultSuffix = ".txt"  # qt ignores the period, but it is clearer in our code to have it
 
     def __init__(self):
         pass
@@ -41,14 +45,19 @@ class plainText(basicFormat):
 
     def output(self, settingsWidget):
         settings = settingsWidget.getSettings()
-        return self.concatenate(mainWindow().mdlOutline.rootItem, settings)
+        try:
+            return self.concatenate(mainWindow().mdlOutline.rootItem, settings)
+        except re.error as e:
+            QMessageBox.warning(mainWindow().dialog, safeTranslate(qApp, "Export", "Error"),
+                                safeTranslate(qApp, "Export", "Could not process regular expression: \n{}").format(str(e)))
+            return ""
 
     def getExportFilename(self, settingsWidget, varName=None, filter=None):
 
-        if varName is None:
+        if varName == None:
             varName = self.exportVarName
 
-        if filter is None:
+        if filter == None:
             filter = self.exportFilter
 
         settings = settingsWidget.getSettings()
@@ -59,30 +68,18 @@ class plainText(basicFormat):
         else:
             filename = ""
 
-        filename, filter = QFileDialog.getSaveFileName(settingsWidget.parent(),
-                                                       caption=qApp.translate("Export", "Chose output file..."),
-                                                       filter=filter,
-                                                       directory=filename)
+        filename, filter = getSaveFileNameWithSuffix(settingsWidget.parent(),
+                                                     caption=safeTranslate(qApp, "Export", "Choose output file…"),
+                                                     filter=filter,
+                                                     directory=filename,
+                                                     defaultSuffix=self.exportDefaultSuffix)
 
         if filename:
             s[varName] = filename
             settingsWidget.settings["Output"] = s
 
-            # Auto adds extension if necessary
-            try:
-                # Extract the extension from "Some name (*.ext)"
-                ext = filter.split("(")[1].split(")")[0]
-                ext = ext.split(".")[1]
-                if " " in ext:  # In case there are multiple extensions: "Images (*.png *.jpg)"
-                    ext = ext.split(" ")[0]
-            except:
-                ext = ""
-
-            if ext and filename[-len(ext)-1:] != ".{}".format(ext):
-                filename += "." + ext
-
-        # Save settings
-        settingsWidget.writeSettings()
+            # Save settings
+            settingsWidget.writeSettings()
 
         return filename
 
@@ -90,14 +87,15 @@ class plainText(basicFormat):
         settings = settingsWidget.getSettings()
 
         filename = self.getExportFilename(settingsWidget)
-        settingsWidget.writeSettings()
-        content = self.output(settingsWidget)
-
-        if not content:
-            print("Error: content is empty. Nothing saved.")
-            return
 
         if filename:
+            settingsWidget.writeSettings()
+            content = self.output(settingsWidget)
+
+            if not content:
+                LOGGER.error("No content. Nothing saved.")
+                return
+
             with open(filename, "w", encoding='utf8') as f:
                 f.write(content)
 

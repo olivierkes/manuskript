@@ -3,11 +3,15 @@
 from PyQt5.QtCore import QModelIndex, Qt, QAbstractItemModel, QVariant
 from PyQt5.QtGui import QIcon, QPixmap, QColor
 
-from manuskript.functions import randomColor, iconColor, mainWindow
-from manuskript.enums import Character as C
+from manuskript.functions import randomColor, iconColor, mainWindow, search
+from manuskript.enums import Character as C, Model
+from manuskript.searchLabels import CharacterSearchLabels
+
+from manuskript.models.searchableModel import searchableModel
+from manuskript.models.searchableItem import searchableItem
 
 
-class characterModel(QAbstractItemModel):
+class characterModel(QAbstractItemModel, searchableModel):
 
     def __init__(self, parent):
         QAbstractItemModel.__init__(self, parent)
@@ -132,6 +136,9 @@ class characterModel(QAbstractItemModel):
     def importance(self, row):
         return self.character(row).importance()
 
+    def pov(self, row):
+        return self.character(row).pov()
+
 ###############################################################################
 # MODEL QUERIES
 ###############################################################################
@@ -143,28 +150,35 @@ class characterModel(QAbstractItemModel):
         @return: array of array of ´character´, by importance.
         """
         r = [[], [], []]
+
         for c in self.characters:
             r[2-int(c.importance())].append(c)
+
         return r
 
     def getCharacterByID(self, ID):
-        if ID is not None:
+        if ID != None:
             ID = str(ID)
             for c in self.characters:
                 if c.ID() == ID:
                     return c
+
         return None
 
 ###############################################################################
 # ADDING / REMOVING
 ###############################################################################
 
-    def addCharacter(self):
+    def addCharacter(self, importance=0, name=None):
         """
         Creates a new character
+        @param importance: the importance level of the character
         @return: the character
         """
-        c = Character(model=self, name=self.tr("New character"))
+        if not name:
+            name = self.tr("New character")
+
+        c = Character(model=self, name=self.tr(name), importance=importance)
         self.beginInsertRows(QModelIndex(), len(self.characters), len(self.characters))
         self.characters.append(c)
         self.endInsertRows()
@@ -177,7 +191,8 @@ class characterModel(QAbstractItemModel):
         @return: nothing
         """
         c = self.getCharacterByID(ID)
-        self.beginRemoveRows(QModelIndex(), self.characters.index(c), self.characters.index(c))
+        self.beginRemoveRows(QModelIndex(), self.characters.index(
+            c), self.characters.index(c))
         self.characters.remove(c)
         self.endRemoveRows()
 
@@ -197,7 +212,11 @@ class characterModel(QAbstractItemModel):
     def addCharacterInfo(self, ID):
         c = self.getCharacterByID(ID)
         self.beginInsertRows(c.index(), len(c.infos), len(c.infos))
-        c.infos.append(CharacterInfo(c, description="Description", value="Value"))
+        c.infos.append(CharacterInfo(
+            c,
+            description=self.tr("Description"),
+            value=self.tr("Value")
+        ))
         self.endInsertRows()
 
         mainWindow().updatePersoInfoView()
@@ -217,25 +236,38 @@ class characterModel(QAbstractItemModel):
             c.infos.pop(r)
             self.endRemoveRows()
 
+    def searchableItems(self):
+        return self.characters
+
 ###############################################################################
 # CHARACTER
 ###############################################################################
 
-class Character():
-    def __init__(self, model, name="No name"):
+
+class Character(searchableItem):
+
+    def __init__(self, model, name=None, importance=0):
         self._model = model
         self.lastPath = ""
 
-        self._data = {}
-        self._data[C.name.value] = name
+        if not name:
+            name = self.translate("Unknown")
+
+        self._data = {C.name.value: name}
         self.assignUniqueID()
         self.assignRandomColor()
-        self._data[C.importance.value] = "0"
+        self._data[C.importance.value] = str(importance)
+        self._data[C.pov.value] = "True"
 
         self.infos = []
 
+        super().__init__(CharacterSearchLabels)
+
     def name(self):
         return self._data[C.name.value]
+
+    def setName(self, value):
+        self._data[C.name.value] = value
 
     def importance(self):
         return self._data[C.importance.value]
@@ -245,6 +277,12 @@ class Character():
 
     def index(self, column=0):
         return self._model.indexFromItem(self, column)
+
+    def data(self, column):
+        if column == "Info":
+            return self.infos
+        else:
+            return self._data.get(column, None)
 
     def assignRandomColor(self):
         """
@@ -274,6 +312,22 @@ class Character():
         """
         return iconColor(self.icon)
 
+    def setPOVEnabled(self, enabled):
+        if enabled != self.pov():
+            if enabled:
+                self._data[C.pov.value] = 'True'
+            else:
+                self._data[C.pov.value] = 'False'
+
+            try:
+                self._model.dataChanged.emit(self.index(), self.index())
+            except:
+                # If it is the initialisation, won't be able to emit
+                pass
+
+    def pov(self):
+        return self._data[C.pov.value] == 'True'
+
     def assignUniqueID(self, parent=QModelIndex()):
         """Assigns an unused character ID."""
         vals = []
@@ -291,6 +345,42 @@ class Character():
         for i in self.infos:
             r.append((i.description, i.value))
         return r
+
+    def searchTitle(self, column):
+        return self.name()
+
+    def searchOccurrences(self, searchRegex, column):
+        results = []
+
+        data = self.searchData(column)
+        if isinstance(data, list):
+            for i in range(0, len(data)):
+                # For detailed info we will highlight the full row, so we pass the row index
+                # to the highlighter instead of the (startPos, endPos) of the match itself.
+                results += [self.wrapSearchOccurrence(column, i, 0, context) for
+                            (startPos, endPos, context) in search(searchRegex, data[i].description)]
+                results += [self.wrapSearchOccurrence(column, i, 0, context) for
+                            (startPos, endPos, context) in search(searchRegex, data[i].value)]
+        else:
+            results += super().searchOccurrences(searchRegex, column)
+
+        return results
+
+    def searchID(self):
+        return self.ID()
+
+    def searchPath(self, column):
+        return [self.translate("Characters"), self.name(), self.translate(self.searchColumnLabel(column))]
+
+    def searchData(self, column):
+        if column == C.infos:
+            return self.infos
+        else:
+            return self.data(column)
+
+    def searchModel(self):
+        return Model.Character
+
 
 class CharacterInfo():
     def __init__(self, character, description="", value=""):

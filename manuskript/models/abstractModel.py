@@ -26,6 +26,9 @@ except:
     pass
 import time, os
 
+import logging
+LOGGER = logging.getLogger(__name__)
+
 
 class abstractModel(QAbstractItemModel):
     """
@@ -37,18 +40,30 @@ class abstractModel(QAbstractItemModel):
     - XML Import / Export
     - Drag'n'drop
 
+    Row => item/abstractModel/etc.
+    Col => data sub-element. Col 1 (second counting) is ID for all model types.
+
     """
     def __init__(self, parent):
         QAbstractItemModel.__init__(self, parent)
-
-        self.rootItem = outlineItem(self, title="Root", ID="0")
+        self.rootItem = None
+        self.nextAvailableID = 1
 
         # Stores removed item, in order to remove them on disk when saving, depending on the file format.
         self.removed = []
         self._removingRows = False
 
-    def index(self, row, column, parent):
+    def requestNewID(self):
+        newID = self.nextAvailableID
+        self.nextAvailableID += 1
+        return str(newID)
 
+    # Call this if loading an ID from file rather than assigning a new one.
+    def updateAvailableIDs(self, addedID):
+        if int(addedID) >= self.nextAvailableID:
+            self.nextAvailableID = int(addedID) + 1
+
+    def index(self, row, column, parent):
         if not self.hasIndex(row, column, parent):
             return QModelIndex()
 
@@ -56,6 +71,9 @@ class abstractModel(QAbstractItemModel):
             parentItem = self.rootItem
         else:
             parentItem = parent.internalPointer()
+
+        if not parentItem:
+            return QModelIndex()
 
         childItem = parentItem.child(row)
         if childItem:
@@ -71,10 +89,8 @@ class abstractModel(QAbstractItemModel):
         if not parent:
             parent = self.rootItem
 
-        if len(parent.children()) == 0:
+        if (not parent) or (len(parent.children()) == 0):
             return None
-
-        # print(item.title(), [i.title() for i in parent.children()])
 
         row = parent.children().index(item)
         col = column
@@ -90,23 +106,38 @@ class abstractModel(QAbstractItemModel):
         Returns a list of IDs of all items containing `text`
         in columns `columns` (being a list of int).
         """
+        if not self.rootItem:
+            return list()
+
         return self.rootItem.findItemsContaining(text, columns, mainWindow(), caseSensitive)
 
-    def getItemByID(self, ID):
+    def getItemByID(self, ID, ignore=None):
+        """Returns the item whose ID is `ID`, unless this item matches `ignore`."""
+
         def search(item):
             if item.ID() == ID:
+                if item == ignore:
+                    # The item we really want won't be found in the children of this
+                    # particular item anymore; stop searching this branch entirely.
+                    return None
                 return item
             for c in item.children():
                 r = search(c)
                 if r:
                     return r
 
+        if not self.rootItem:
+            return None
+
         item = search(self.rootItem)
         return item
 
-    def getIndexByID(self, ID, column=0):
-        "Returns the index of item whose ID is `ID`. If none, returns QModelIndex()."
-        item = self.getItemByID(ID)
+    def getIndexByID(self, ID, column=0, ignore=None):
+        """Returns the index of item whose ID is `ID`. If none, returns QModelIndex().
+
+        If `ignore` is set, it will not return that item if found as valid match for the ID"""
+
+        item = self.getItemByID(ID, ignore=ignore)
         if not item:
             return QModelIndex()
         else:
@@ -119,7 +150,10 @@ class abstractModel(QAbstractItemModel):
         childItem = index.internalPointer()
         parentItem = childItem.parent()
 
-        if parentItem == self.rootItem:
+        # Check whether the parent is the root, or is otherwise invalid.
+        # That is to say: no parent or the parent lacks a parent.
+        if (parentItem == self.rootItem) or \
+           (not parentItem) or (not parentItem.parent()):
             return QModelIndex()
 
         return self.createIndex(parentItem.row(), 0, parentItem)
@@ -133,13 +167,21 @@ class abstractModel(QAbstractItemModel):
         else:
             parentItem = parent.internalPointer()
 
+        if not parentItem:
+            return 0
+
         return parentItem.childCount()
 
     def columnCount(self, parent=QModelIndex()):
         if parent.isValid():
-            return parent.internalPointer().columnCount()
+            parentItem = parent.internalPointer()
         else:
-            return self.rootItem.columnCount()
+            parentItem = self.rootItem
+
+        if not parentItem:
+            return 0
+
+        return parentItem.columnCount()
 
     def data(self, index, role=Qt.DisplayRole):
         if not index.isValid():
@@ -156,7 +198,7 @@ class abstractModel(QAbstractItemModel):
 
             # self.dataChanged.emit(index.sibling(index.row(), 0),
             # index.sibling(index.row(), max([i.value for i in Outline])))
-            # print("Model emit", index.row(), index.column())
+            # LOGGER.debug("Model dataChanged emit: %s, %s", index.row(), index.column())
             self.dataChanged.emit(index, index)
 
             if index.column() == Outline.type:
@@ -198,8 +240,6 @@ class abstractModel(QAbstractItemModel):
         else:
             return QVariant()
 
-        return True
-
     def maxLevel(self):
         """Returns the max depth of the model."""
         def depth(item, d=-1):
@@ -208,6 +248,9 @@ class abstractModel(QAbstractItemModel):
             for c in item.children():
                 r = max(r, depth(c, d))
             return r
+
+        if not self.rootItem:
+            return 0
 
         d = depth(self.rootItem)
         return d
@@ -271,7 +314,7 @@ class abstractModel(QAbstractItemModel):
 
         # # Gets encoded mime data to retrieve the item
         items = self.decodeMimeData(data)
-        if items is None:
+        if not items:
             return False
 
         # We check if parent is not a child of one of the items
@@ -293,6 +336,9 @@ class abstractModel(QAbstractItemModel):
         else:
             parentItem = parent.internalPointer()
 
+        if not parentItem:
+            return False
+
         for item in items:
             # Get parentItem's parents IDs in a list
             path = parentItem.pathID()  # path to item in the form [(ID, title), ...]
@@ -309,7 +355,7 @@ class abstractModel(QAbstractItemModel):
             return None
         encodedData = bytes(data.data("application/xml")).decode()
         root = ET.XML(encodedData)
-        if root is None:
+        if not root:
             return None
 
         if root.tag != "outlineItems":
@@ -369,7 +415,7 @@ class abstractModel(QAbstractItemModel):
 
         items = self.decodeMimeData(data)
 
-        if items is None:
+        if items == None:
             return False
 
         if column > 0:
@@ -403,21 +449,29 @@ class abstractModel(QAbstractItemModel):
         # In case of copy actions, items might be duplicates, so we need new IDs.
         # But they might not be, if we cut, then paste. Paste is a Copy Action.
         # The first paste would not need new IDs. But subsequent ones will.
+
+        # Recursively change the existing IDs to new, unique values. No need to strip out the old
+        # even if they are not duplicated in pasting. There is no practical need for ID conservation.
+
         if action == Qt.CopyAction:
             IDs = self.rootItem.listAllIDs()
 
             for item in items:
                 if item.ID() in IDs:
-                    # Recursively remove ID. So will get a new one when inserted.
-                    def stripID(item):
-                        item.setData(Outline.ID, None)
-                        for c in item.children():
-                            stripID(c)
+                    # Items don't get new IDs, because they are not part of a model yet,
+                    # so the following call does nothing:
+                    # item.getUniqueID(recursive=True)
 
-                    stripID(item)
+                    # Instead we need to remove IDs (recursively) in all copied items, so that they
+                    # will receive new ones when inserted within the model.
+                    def removeIDs(i):
+                        i.setData(item.enum.ID, None)
+                        for c in i.children():
+                            removeIDs(c)
+
+                    removeIDs(item)
 
         r = self.insertItems(items, beginRow, parent)
-
         return r
 
     ################# ADDING AND REMOVING #################
@@ -431,12 +485,15 @@ class abstractModel(QAbstractItemModel):
         else:
             parentItem = parent.internalPointer()
 
+        if not parentItem:
+            return False
+
         if parent.isValid() and parent.column() != 0:
             parent = parentItem.index()
 
         # Insert only if parent is folder
         if parentItem.isFolder():
-            self.beginInsertRows(parent, row, row + len(items) - 1)
+            self.beginInsertRows(parent, row, row + len(items) - 1) # Create space.
 
             for i in items:
                 parentItem.insertChild(row + items.index(i), i)
@@ -453,6 +510,9 @@ class abstractModel(QAbstractItemModel):
             parentItem = self.rootItem
         else:
             parentItem = parent.internalPointer()
+
+        if not parentItem:
+            return
 
         if parent.isValid() and parent.column() != 0:
             parent = parentItem.index()
@@ -495,8 +555,12 @@ class abstractModel(QAbstractItemModel):
         else:
             parentItem = parent.internalPointer()
 
-        self._removingRows = True  # Views that are updating can easily know
-                                   # if this is due to row removal.
+        if not parentItem:
+            return False
+
+        self._removingRows = True
+        # Views that are updating can easily know
+        # if this is due to row removal.
         self.beginRemoveRows(parent, row, row + count - 1)
         for i in range(count):
             item = parentItem.removeChild(row)
@@ -521,10 +585,15 @@ class abstractModel(QAbstractItemModel):
     ################# XML / saving / loading #################
 
     def saveToXML(self, xml=None):
+        if not self.rootItem:
+            return str()
+
         "If xml (filename) is given, saves the items to xml. Otherwise returns as string."
         root = ET.XML(self.rootItem.toXML())
+
         if xml:
             ET.ElementTree(root).write(xml, encoding="UTF-8", xml_declaration=True, pretty_print=True)
+            return str()
         else:
             return ET.tostring(root, encoding="UTF-8", xml_declaration=True, pretty_print=True)
 
@@ -541,6 +610,10 @@ class abstractModel(QAbstractItemModel):
     def indexFromPath(self, path):
         path = path.split(",")
         item = self.rootItem
+
+        if not item:
+            return None
+
         for p in path:
             if p != "" and int(p) < item.childCount():
                 item = item.child(int(p))

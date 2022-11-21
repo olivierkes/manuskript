@@ -55,8 +55,11 @@ class completer(QWidget, Ui_completer):
         self.text.setFocus(Qt.PopupFocusReason)
 
     def submit(self):
-        i = self.list.currentItem()
-        self.activated.emit(i.data(Qt.UserRole))
+        item = self.list.currentItem()
+
+        if item:
+            self.activated.emit(item.data(Qt.UserRole))
+
         self.hide()
 
     def keyPressEvent(self, event):

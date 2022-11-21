@@ -1,18 +1,20 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-from PyQt5.QtCore import QModelIndex
-from PyQt5.QtCore import QSize
+from PyQt5.QtCore import QModelIndex, QSize
 from PyQt5.QtCore import Qt, QMimeData, QByteArray
 from PyQt5.QtGui import QStandardItem, QBrush, QFontMetrics
 from PyQt5.QtGui import QStandardItemModel, QColor
 from PyQt5.QtWidgets import QMenu, QAction, qApp
 
-from manuskript.enums import World
+from manuskript.enums import World, Model
 from manuskript.functions import mainWindow
 from manuskript.ui import style as S
+from manuskript.models.searchableModel import searchableModel
+from manuskript.models.searchableItem import searchableItem
+from manuskript.searchLabels import WorldSearchLabels
 
 
-class worldModel(QStandardItemModel):
+class worldModel(QStandardItemModel, searchableModel):
     def __init__(self, parent):
         QStandardItemModel.__init__(self, 0, len(World), parent)
         self.mw = mainWindow()
@@ -136,6 +138,9 @@ class worldModel(QStandardItemModel):
         _id = QStandardItem(self.getUniqueID())
         row = [name, _id] + [QStandardItem() for i in range(2, len(World))]
         parent.appendRow(row)
+
+        self.mw.treeWorld.setExpanded(self.selectedIndex(), True)
+        self.mw.treeWorld.setCurrentIndex(self.indexFromItem(name))
         return name
 
     def getUniqueID(self):
@@ -186,7 +191,7 @@ class worldModel(QStandardItemModel):
         for index in indexes:
             item = self.itemFromIndex(index)
             parent = item.parent()
-            if parent is None:
+            if parent == None:
                 parent = self.invisibleRootItem()
             row_indexes.append((parent, item.row()))
 
@@ -312,7 +317,7 @@ class worldModel(QStandardItemModel):
                     i = self.addItem(d[0], parent)
                     addItems(d[1], i)
 
-        addItems(data, None)
+        addItems(data, self.invisibleRootItem())
         self.mw.treeWorld.expandAll()
 
     ###############################################################################
@@ -353,3 +358,51 @@ class worldModel(QStandardItemModel):
                 return QSize(0, h + 6)
 
         return QStandardItemModel.data(self, index, role)
+
+    #######################################################################
+    # Search
+    #######################################################################
+    def searchableItems(self):
+        def readAll(item):
+            items = [WorldItemSearchWrapper(item, self.itemID(item), self.indexFromItem(item), self.data)]
+
+            for c in self.children(item):
+                items += readAll(c)
+
+            return items
+
+        return readAll(self.invisibleRootItem())
+
+class WorldItemSearchWrapper(searchableItem):
+    def __init__(self, item, itemID, itemIndex, getColumnData):
+        super().__init__(WorldSearchLabels)
+        self.item = item
+        self.itemID = itemID
+        self.itemIndex = itemIndex
+        self.getColumnData = getColumnData
+
+    def searchModel(self):
+        return Model.World
+
+    def searchID(self):
+        return self.itemID
+
+    def searchTitle(self, column):
+        return self.item.text()
+
+    def searchPath(self, column):
+
+        def _path(item):
+            path = []
+
+            if item.parent():
+                path += _path(item.parent())
+            path.append(item.text())
+
+            return path
+
+        return [self.translate("World")] + _path(self.item) + [self.translate(self.searchColumnLabel(column))]
+
+    def searchData(self, column):
+        return self.getColumnData(self.itemIndex.sibling(self.itemIndex.row(), column))
+

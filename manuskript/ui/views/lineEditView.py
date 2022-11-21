@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
+from PyQt5.QtCore import QMutex
 from PyQt5.QtWidgets import QLineEdit
 
 from manuskript.enums import Outline
@@ -13,7 +14,7 @@ class lineEditView(QLineEdit):
         self._indexes = None
         self._index = None
         self._placeholderText = None
-        self._updating = False
+        self._updating = QMutex()
 
     def setModel(self, model):
         self._model = model
@@ -30,7 +31,7 @@ class lineEditView(QLineEdit):
             self._index = index
             self._model = index.model()
             # self.item = index.internalPointer()
-            if self._placeholderText is not None:
+            if self._placeholderText != None:
                 self.setPlaceholderText(self._placeholderText)
             self.textEdited.connect(self.submit)
             self.updateText()
@@ -49,38 +50,39 @@ class lineEditView(QLineEdit):
         self.updateText()
 
     def submit(self):
+        self._updating.lock()
+        text = self.text()
+        self._updating.unlock()
+
         if self._index:
             # item = self._index.internalPointer()
-            if self.text() != self._model.data(self._index):
-                self._model.setData(self._index, self.text())
+            if text != self._model.data(self._index):
+                self._model.setData(self._index, text)
 
         elif self._indexes:
-            self._updating = True
             for i in self._indexes:
                 # item = i.internalPointer()
-                if self.text() != self._model.data(i):
-                    self._model.setData(i, self.text())
-            self._updating = False
+                if text != self._model.data(i):
+                    self._model.setData(i, text)
 
     def update(self, topLeft, bottomRight):
-
-        if self._updating:
-            # We are currently putting data in the model, so no updates
-            return
+        update = False
 
         if self._index:
             if topLeft.row() <= self._index.row() <= bottomRight.row():
-                self.updateText()
+                update = True
 
         elif self._indexes:
-            update = False
             for i in self._indexes:
                 if topLeft.row() <= i.row() <= bottomRight.row():
                     update = True
-            if update:
-                self.updateText()
+
+        if update:
+            self.updateText()
 
     def updateText(self):
+        self._updating.lock()
+
         if self._index:
             # item = self._index.internalPointer()
             # txt = toString(item.data(self._column))
@@ -110,3 +112,6 @@ class lineEditView(QLineEdit):
                     self._placeholderText = self.placeholderText()
 
                 self.setPlaceholderText(self.tr("Various"))
+
+        self._updating.unlock()
+

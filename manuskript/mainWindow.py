@@ -1,19 +1,22 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-import imp
+import importlib
 import os
+import re
 
-from PyQt5.QtCore import (pyqtSignal, QSignalMapper, QTimer, QSettings, Qt,
+from PyQt5.Qt import qVersion, PYQT_VERSION_STR
+from PyQt5.QtCore import (pyqtSignal, QSignalMapper, QTimer, QSettings, Qt, QPoint,
                           QRegExp, QUrl, QSize, QModelIndex)
 from PyQt5.QtGui import QStandardItemModel, QIcon, QColor
 from PyQt5.QtWidgets import QMainWindow, QHeaderView, qApp, QMenu, QActionGroup, QAction, QStyle, QListWidgetItem, \
-    QLabel, QDockWidget, QWidget
+    QLabel, QDockWidget, QWidget, QMessageBox, QLineEdit
 
 from manuskript import settings
 from manuskript.enums import Character, PlotStep, Plot, World, Outline
-from manuskript.functions import wordCount, appPath, findWidgetsOfClass
+from manuskript.functions import wordCount, appPath, findWidgetsOfClass, openURL, showInFolder
 import manuskript.functions as F
 from manuskript import loadSave
+from manuskript.logging import getLogFilePath
 from manuskript.models.characterModel import characterModel
 from manuskript.models import outlineModel
 from manuskript.models.plotModel import plotModel
@@ -35,15 +38,13 @@ from manuskript.ui.statusLabel import statusLabel
 
 # Spellcheck support
 from manuskript.ui.views.textEditView import textEditView
+from manuskript.functions import Spellchecker
 
-try:
-    import enchant
-except ImportError:
-    enchant = None
-
+import logging
+LOGGER = logging.getLogger(__name__)
 
 class MainWindow(QMainWindow, Ui_MainWindow):
-    dictChanged = pyqtSignal(str)
+    # dictChanged = pyqtSignal(str)
 
     # Tab indexes
     TabInfos = 0
@@ -63,9 +64,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # Var
         self.currentProject = None
+        self.projectDirty = None  # has the user made any unsaved changes ?
         self._lastFocus = None
         self._lastMDEditView = None
-        self._defaultCursorFlashTime = 1000 # Overriden at startup with system
+        self._defaultCursorFlashTime = 1000 # Overridden at startup with system
                                             # value. In manuskript.main.
         self._autoLoadProject = None  # Used to load a command line project
         self.sessionStartWordCount = 0  # Used to track session targets
@@ -94,22 +96,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.mprWordCount.setMapping(t, i)
         self.mprWordCount.mapped.connect(self.wordCount)
 
-        # Snowflake Method Cycle
-        self.mapperCycle = QSignalMapper(self)
-        for t, i in [
-            (self.btnStepTwo, 0),
-            (self.btnStepThree, 1),
-            (self.btnStepFour, 2),
-            (self.btnStepFive, 3),
-            (self.btnStepSix, 4),
-            (self.btnStepSeven, 5),
-            (self.btnStepEight, 6)
-        ]:
-            t.clicked.connect(self.mapperCycle.map)
-            self.mapperCycle.setMapping(t, i)
-
-        self.mapperCycle.mapped.connect(self.clickCycle)
-        self.cmbSummary.currentIndexChanged.connect(self.summaryPageChanged)
         self.cmbSummary.setCurrentIndex(0)
         self.cmbSummary.currentIndexChanged.emit(0)
 
@@ -133,6 +119,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.actCopy.triggered.connect(self.documentsCopy)
         self.actCut.triggered.connect(self.documentsCut)
         self.actPaste.triggered.connect(self.documentsPaste)
+        self.actSearch.triggered.connect(self.doSearch)
         self.actRename.triggered.connect(self.documentsRename)
         self.actDuplicate.triggered.connect(self.documentsDuplicate)
         self.actDelete.triggered.connect(self.documentsDelete)
@@ -180,6 +167,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Main Menu:: Tool
         self.actToolFrequency.triggered.connect(self.frequencyAnalyzer)
         self.actToolTargets.triggered.connect(self.sessionTargets)
+        self.actSupport.triggered.connect(self.support)
+        self.actLocateLog.triggered.connect(self.locateLogFile)
         self.actAbout.triggered.connect(self.about)
 
         self.makeUIConnections()
@@ -279,25 +268,20 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.mainEditor
             ]
 
-        while new is not None:
+        while new != None:
             if new in targets:
                 self._lastFocus = new
                 break
             new = new.parent()
 
-    ###############################################################################
-    # SUMMARY
-    ###############################################################################
-
-    def summaryPageChanged(self, index):
-        fractalButtons = [
-            self.btnStepTwo,
-            self.btnStepThree,
-            self.btnStepFive,
-            self.btnStepSeven,
-        ]
-        for b in fractalButtons:
-            b.setVisible(fractalButtons.index(b) == index)
+    def projectName(self):
+        """
+        Returns a user-friendly name for the loaded project.
+        """
+        pName = os.path.split(self.currentProject)[1]
+        if pName.endswith('.msk'):
+            pName=pName[:-4]
+        return pName
 
     ###############################################################################
     # OUTLINE
@@ -346,6 +330,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Slider importance
         self.updateCharacterImportance(c.ID())
 
+        # POV state
+        self.updateCharacterPOVState(c.ID())
+
         # Character Infos
         self.tblPersoInfos.setRootIndex(index)
 
@@ -365,6 +352,31 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def updateCharacterImportance(self, ID):
         c = self.mdlCharacter.getCharacterByID(ID)
         self.sldPersoImportance.setValue(int(c.importance()))
+
+    def updateCharacterPOVState(self, ID):
+        c = self.mdlCharacter.getCharacterByID(ID)
+        self.disconnectAll(self.chkPersoPOV.stateChanged, self.lstCharacters.changeCharacterPOVState)
+
+        if c.pov():
+            self.chkPersoPOV.setCheckState(Qt.Checked)
+        else:
+            self.chkPersoPOV.setCheckState(Qt.Unchecked)
+
+        try:
+            self.chkPersoPOV.stateChanged.connect(self.lstCharacters.changeCharacterPOVState, F.AUC)
+            self.chkPersoPOV.setEnabled(len(self.mdlOutline.findItemsByPOV(ID)) == 0)
+        except TypeError:
+            #don't know what's up with this
+            pass
+
+    def deleteCharacter(self):
+        ID = self.lstCharacters.removeCharacter()
+        if ID is None:
+            return
+        for itemID in self.mdlOutline.findItemsByPOV(ID):
+            item = self.mdlOutline.getItemByID(itemID)
+            if item:
+                item.resetPOV()
 
     ###############################################################################
     # PLOTS
@@ -480,6 +492,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def documentsPaste(self):
         "Paste clipboard item(s) into selected item."
         if self._lastFocus: self._lastFocus.paste()
+    def doSearch(self):
+        "Do a global search."
+        self.dckSearch.show()
+        self.dckSearch.activateWindow()
+        searchTextInput = self.dckSearch.findChild(QLineEdit, 'searchTextInput')
+        searchTextInput.setFocus()
+        searchTextInput.selectAll()
     def documentsRename(self):
         "Rename selected item."
         if self._lastFocus: self._lastFocus.rename()
@@ -557,14 +576,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         If ``loadFromFile`` is False, then it does not load datas from file.
         It assumes that the datas have been populated in a different way."""
         if loadFromFile and not os.path.exists(project):
-            print(self.tr("The file {} does not exist. Has it been moved or deleted?").format(project))
+            LOGGER.warning("The file {} does not exist. Has it been moved or deleted?".format(project))
             F.statusMessage(
                     self.tr("The file {} does not exist. Has it been moved or deleted?").format(project), importance=3)
             return
 
         if loadFromFile:
             # Load empty settings
-            imp.reload(settings)
+            importlib.reload(settings)
             settings.initDefaultValues()
 
             # Load data
@@ -612,7 +631,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.mdlCharacter.dataChanged.connect(self.startTimerNoChanges)
         self.mdlPlots.dataChanged.connect(self.startTimerNoChanges)
         self.mdlWorld.dataChanged.connect(self.startTimerNoChanges)
-        # self.mdlPersosInfos.dataChanged.connect(self.startTimerNoChanges)
         self.mdlStatus.dataChanged.connect(self.startTimerNoChanges)
         self.mdlLabels.dataChanged.connect(self.startTimerNoChanges)
 
@@ -630,42 +648,76 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # We force to emit even if it opens on the current tab
         self.tabMain.currentChanged.emit(settings.lastTab)
 
-        # Add project name to Window's name
-        pName = os.path.split(project)[1]
-        if pName.endswith('.msk'):
-            pName=pName[:-4]
-        self.setWindowTitle(pName + " - " + self.tr("Manuskript"))
-
-        # Stuff
-        # self.checkPersosID()  # Shouldn't be necessary any longer
-
+        # Make sure we can update the window title later.
         self.currentProject = project
+        self.projectDirty = False
         QSettings().setValue("lastProject", project)
 
         item = self.mdlOutline.rootItem
         wc = item.data(Outline.wordCount)
         self.sessionStartWordCount = wc
+        # Add project name to Window's name
+        self.setWindowTitle(self.projectName() + " - " + self.tr("Manuskript"))
 
         # Show main Window
         self.switchToProject()
+
+    def handleUnsavedChanges(self):
+        """
+        There may be some currently unsaved changes, but the action the user triggered
+        will result in the project or application being closed. To save, or not to save?
+
+        Or just bail out entirely?
+
+        Sometimes it is best to just ask.
+        """
+
+        if not self.projectDirty:
+            return True  # no unsaved changes, all is good
+
+        msg = QMessageBox(QMessageBox.Question,
+            self.tr("Save project?"),
+            "<p><b>" +
+                self.tr("Save changes to project \"{}\" before closing?").format(self.projectName()) +
+            "</b></p>" +
+            "<p>" +
+                self.tr("Your changes will be lost if you don't save them.") +
+            "</p>",
+            QMessageBox.Save | QMessageBox.Discard | QMessageBox.Cancel)
+
+        ret = msg.exec()
+
+        if ret == QMessageBox.Cancel:
+            return False  # the situation has not been handled, cancel action
+
+        if ret == QMessageBox.Save:
+            self.saveDatas()
+
+        return True  # the situation has been handled
+
 
     def closeProject(self):
 
         if not self.currentProject:
             return
 
+        # Make sure data is saved.
+        if (self.projectDirty and settings.saveOnQuit == True):
+             self.saveDatas()
+        elif not self.handleUnsavedChanges():
+             return  # user cancelled action
+
         # Close open tabs in editor
         self.mainEditor.closeAllTabs()
 
-        # Save datas
-        self.saveDatas()
-
         self.currentProject = None
+        self.projectDirty = None
         QSettings().setValue("lastProject", "")
 
         # Clear datas
         self.loadEmptyDatas()
         self.saveTimer.stop()
+        self.saveTimerNoChanges.stop()
         loadSave.clearSaveCache()
 
         self.breakConnections()
@@ -727,23 +779,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self._toolbarState = ""
 
     def closeEvent(self, event):
-        # Save State and geometry and other things
-        sttgns = QSettings(qApp.organizationName(), qApp.applicationName())
-        sttgns.setValue("geometry", self.saveGeometry())
-        sttgns.setValue("windowState", self.saveState())
-        sttgns.setValue("metadataState", self.redacMetadata.saveState())
-        sttgns.setValue("revisionsState", self.redacMetadata.revisions.saveState())
-        sttgns.setValue("splitterRedacH", self.splitterRedacH.saveState())
-        sttgns.setValue("splitterRedacV", self.splitterRedacV.saveState())
-        sttgns.setValue("toolbar", self.toolbar.saveState())
-
-        # If we are not in the welcome window, we update the visibility
-        # of the docks widgets
-        if self.stack.currentIndex() == 1:
-            self.updateDockVisibility()
-        # Storing the visibility of docks to restore it on restart
-        sttgns.setValue("docks", self._dckVisibility)
-
         # Specific settings to save before quitting
         settings.lastTab = self.tabMain.currentIndex()
 
@@ -751,9 +786,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             # Remembering the current items (stores outlineItem's ID)
             settings.openIndexes = self.mainEditor.tabSplitter.openIndexes()
 
-        # Save data from models
-        if self.currentProject and settings.saveOnQuit:
-            self.saveDatas()
+            # Call close on the main window to clean children widgets
+            if self.mainEditor:
+                self.mainEditor.close()
+
+            # Save data from models
+            if settings.saveOnQuit:
+                self.saveDatas()
+            elif not self.handleUnsavedChanges():
+                event.ignore() # user opted to cancel the close action
 
             # closeEvent
             # QMainWindow.closeEvent(self, event)  # Causing segfaults?
@@ -764,7 +805,33 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if self.fw:
             self.fw.close()
 
+        # User may have canceled close event, so make sure we indeed want to close.
+        # This is necessary because self.updateDockVisibility() hides UI elements.
+        if event.isAccepted():
+            # Save State and geometry and other things
+            appSettings = QSettings(qApp.organizationName(), qApp.applicationName())
+            appSettings.setValue("geometry", self.saveGeometry())
+            appSettings.setValue("windowState", self.saveState())
+            appSettings.setValue("metadataState", self.redacMetadata.saveState())
+            appSettings.setValue("revisionsState", self.redacMetadata.revisions.saveState())
+            appSettings.setValue("splitterRedacH", self.splitterRedacH.saveState())
+            appSettings.setValue("splitterRedacV", self.splitterRedacV.saveState())
+            appSettings.setValue("toolbar", self.toolbar.saveState())
+
+            # If we are not in the welcome window, we update the visibility
+            # of the docks widgets
+            if self.stack.currentIndex() == 1:
+                self.updateDockVisibility()
+
+            # Storing the visibility of docks to restore it on restart
+            appSettings.setValue("docks", self._dckVisibility)
+
     def startTimerNoChanges(self):
+        """
+        Something changed in the project that requires auto-saving.
+        """
+        self.projectDirty = True
+
         if settings.autoSaveNoChanges:
             self.saveTimerNoChanges.start()
 
@@ -779,25 +846,35 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.currentProject = projectName
             QSettings().setValue("lastProject", projectName)
 
-        r = loadSave.saveProject()  # version=0
+        # Stop the timer before saving: if auto-saving fails (bugs out?) we don't want it
+        # to keep trying and continuously hitting the failure condition. Nor do we want to
+        # risk a scenario where the timer somehow triggers a new save while saving.
         self.saveTimerNoChanges.stop()
+
+        if self.currentProject == None:
+            # No UI feedback here as this code path indicates a race condition that happens
+            # after the user has already closed the project through some way. But in that
+            # scenario, this code should not be reachable to begin with.
+            LOGGER.error("There is no current project to save.")
+            return
+
+        r = loadSave.saveProject()  # version=0
 
         projectName = os.path.basename(self.currentProject)
         if r:
+            self.projectDirty = False  # successful save, clear dirty flag
+
             feedback = self.tr("Project {} saved.").format(projectName)
             F.statusMessage(feedback, importance=0)
+            LOGGER.info("Project {} saved.".format(projectName))
         else:
             feedback = self.tr("WARNING: Project {} not saved.").format(projectName)
             F.statusMessage(feedback, importance=3)
-
-        # Giving some feedback in console
-        print(feedback)
+            LOGGER.warning("Project {} not saved.".format(projectName))
 
     def loadEmptyDatas(self):
         self.mdlFlatData = QStandardItemModel(self)
         self.mdlCharacter = characterModel(self)
-        # self.mdlPersosProxy = persosProxyModel(self)
-        # self.mdlPersosInfos = QStandardItemModel(self)
         self.mdlLabels = QStandardItemModel(self)
         self.mdlStatus = QStandardItemModel(self)
         self.mdlPlots = plotModel(self)
@@ -810,13 +887,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # Giving some feedback
         if not errors:
-            print(self.tr("Project {} loaded.").format(project))
+            LOGGER.info("Project {} loaded.".format(project))
             F.statusMessage(
                     self.tr("Project {} loaded.").format(project), 2000)
         else:
-            print(self.tr("Project {} loaded with some errors:").format(project))
+            LOGGER.error("Project {} loaded with some errors:".format(project))
             for e in errors:
-                print(self.tr(" * {} wasn't found in project file.").format(e))
+                LOGGER.error(" * {} wasn't found in project file.".format(e))
             F.statusMessage(
                     self.tr("Project {} loaded with some errors.").format(project), 5000, importance = 3)
 
@@ -881,11 +958,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Characters
         self.lstCharacters.setCharactersModel(self.mdlCharacter)
         self.tblPersoInfos.setModel(self.mdlCharacter)
-
-        self.btnAddPerso.clicked.connect(self.mdlCharacter.addCharacter, F.AUC)
         try:
-            self.btnRmPerso.clicked.connect(self.lstCharacters.removeCharacter, F.AUC)
+            self.btnAddPerso.clicked.connect(self.lstCharacters.addCharacter, F.AUC)
+            self.btnRmPerso.clicked.connect(self.deleteCharacter, F.AUC)
+
             self.btnPersoColor.clicked.connect(self.lstCharacters.choseCharacterColor, F.AUC)
+            self.chkPersoPOV.stateChanged.connect(self.lstCharacters.changeCharacterPOVState, F.AUC)
+
             self.btnPersoAddInfo.clicked.connect(self.lstCharacters.addCharacterInfo, F.AUC)
             self.btnPersoRmInfo.clicked.connect(self.lstCharacters.removeCharacterInfo, F.AUC)
         except TypeError:
@@ -1026,7 +1105,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # disconnect only removes one connection at a time.
         while True:
             try:
-                if oldHandler is not None:
+                if oldHandler != None:
                     signal.disconnect(oldHandler)
                 else:
                     signal.disconnect()
@@ -1037,9 +1116,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Break connections for UI elements that were connected in makeConnections()
 
         # Characters
-        self.disconnectAll(self.btnAddPerso.clicked, self.mdlCharacter.addCharacter)
-        self.disconnectAll(self.btnRmPerso.clicked, self.lstCharacters.removeCharacter)
+        self.disconnectAll(self.btnAddPerso.clicked, self.lstCharacters.addCharacter)
+        self.disconnectAll(self.btnRmPerso.clicked, self.deleteCharacter)
+
         self.disconnectAll(self.btnPersoColor.clicked, self.lstCharacters.choseCharacterColor)
+        self.disconnectAll(self.chkPersoPOV.stateChanged, self.lstCharacters.changeCharacterPOVState)
+
         self.disconnectAll(self.btnPersoAddInfo.clicked, self.lstCharacters.addCharacterInfo)
         self.disconnectAll(self.btnPersoRmInfo.clicked, self.lstCharacters.removeCharacterInfo)
 
@@ -1090,40 +1172,65 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     # HELP
     ###############################################################################
 
+    def centerChildWindow(self, win):
+        r = win.geometry()
+        r2 = self.geometry()
+        win.move(r2.center() - QPoint(int(r.width()/2), int(r.height()/2)))
+
+    def support(self):
+        openURL("https://github.com/olivierkes/manuskript/wiki/Technical-Support")
+
+    def locateLogFile(self):
+        logfile = getLogFilePath()
+
+        # Make sure we are even logging to a file.
+        if not logfile:
+            QMessageBox(QMessageBox.Information,
+                self.tr("Sorry!"),
+                "<p><b>" +
+                    self.tr("This session is not being logged.") +
+                "</b></p>",
+                QMessageBox.Ok).exec()
+            return
+
+        # Remind user that log files are at their best once they are complete.
+        msg = QMessageBox(QMessageBox.Information,
+            self.tr("A log file is a Work in Progress!"),
+            "<p><b>" +
+                self.tr("The log file \"{}\" will continue to be written to until Manuskript is closed.").format(os.path.basename(logfile)) +
+            "</b></p>" +
+            "<p>" +
+                self.tr("It will now be displayed in your file manager, but is of limited use until you close Manuskript.") +
+            "</p>",
+            QMessageBox.Ok)
+
+        ret = msg.exec()
+
+        # Open the filemanager.
+        if ret == QMessageBox.Ok:
+            if not showInFolder(logfile):
+                # If everything convenient fails, at least make sure the user can browse to its location manually.
+                QMessageBox(QMessageBox.Critical,
+                    self.tr("Error!"),
+                    "<p><b>" +
+                        self.tr("An error was encountered while trying to show the log file below in your file manager.") +
+                    "</b></p>" +
+                    "<p>" +
+                        logfile +
+                    "</p>",
+                    QMessageBox.Ok).exec()
+
+
     def about(self):
         self.dialog = aboutDialog(mw=self)
         self.dialog.setFixedSize(self.dialog.size())
         self.dialog.show()
         # Center about dialog
-        r = self.dialog.geometry()
-        r2 = self.geometry()
-        self.dialog.move(r2.center() - r.center())
+        self.centerChildWindow(self.dialog)
 
     ###############################################################################
     # GENERAL AKA UNSORTED
     ###############################################################################
-
-    def clickCycle(self, i):
-        if i == 0:  # step 2 - paragraph summary
-            self.tabMain.setCurrentIndex(self.TabSummary)
-            self.tabSummary.setCurrentIndex(1)
-        if i == 1:  # step 3 - characters summary
-            self.tabMain.setCurrentIndex(self.TabPersos)
-            self.tabPersos.setCurrentIndex(0)
-        if i == 2:  # step 4 - page summary
-            self.tabMain.setCurrentIndex(self.TabSummary)
-            self.tabSummary.setCurrentIndex(2)
-        if i == 3:  # step 5 - characters description
-            self.tabMain.setCurrentIndex(self.TabPersos)
-            self.tabPersos.setCurrentIndex(1)
-        if i == 4:  # step 6 - four page synopsis
-            self.tabMain.setCurrentIndex(self.TabSummary)
-            self.tabSummary.setCurrentIndex(3)
-        if i == 5:  # step 7 - full character charts
-            self.tabMain.setCurrentIndex(self.TabPersos)
-            self.tabPersos.setCurrentIndex(2)
-        if i == 6:  # step 8 - scene list
-            self.tabMain.setCurrentIndex(self.TabPlots)
 
     def wordCount(self, i):
 
@@ -1263,24 +1370,29 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.actShowHelp.setChecked(False)
 
         # Spellcheck
-        if enchant:
+        if Spellchecker.isInstalled():
             self.menuDict = QMenu(self.tr("Dictionary"))
             self.menuDictGroup = QActionGroup(self)
             self.updateMenuDict()
             self.menuTools.addMenu(self.menuDict)
 
             self.actSpellcheck.toggled.connect(self.toggleSpellcheck, F.AUC)
-            self.dictChanged.connect(self.mainEditor.setDict, F.AUC)
-            self.dictChanged.connect(self.redacMetadata.setDict, F.AUC)
-            self.dictChanged.connect(self.outlineItemEditor.setDict, F.AUC)
+            # self.dictChanged.connect(self.mainEditor.setDict, F.AUC)
+            # self.dictChanged.connect(self.redacMetadata.setDict, F.AUC)
+            # self.dictChanged.connect(self.outlineItemEditor.setDict, F.AUC)
 
         else:
             # No Spell check support
             self.actSpellcheck.setVisible(False)
-            a = QAction(self.tr("Install PyEnchant to use spellcheck"), self)
-            a.setIcon(self.style().standardIcon(QStyle.SP_MessageBoxWarning))
-            a.triggered.connect(self.openPyEnchantWebPage, F.AUC)
-            self.menuTools.addAction(a)
+            for lib, requirement in Spellchecker.supportedLibraries().items():
+                a = QAction(self.tr("Install {}{} to use spellcheck").format(lib, requirement or ""), self)
+                a.setIcon(self.style().standardIcon(QStyle.SP_MessageBoxWarning))
+                # Need to bound the lib argument otherwise the lambda uses the same lib value across all calls
+                def gen_slot_cb(l):
+                    return lambda: self.openSpellcheckWebPage(l)
+                a.triggered.connect(gen_slot_cb(lib), F.AUC)
+                self.menuTools.addAction(a)
+
 
     ###############################################################################
     # SPELLCHECK
@@ -1288,37 +1400,75 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def updateMenuDict(self):
 
-        if not enchant:
+        if not Spellchecker.isInstalled():
             return
 
         self.menuDict.clear()
-        for i in enchant.list_dicts():
-            a = QAction(str(i[0]), self)
-            a.setCheckable(True)
-            if settings.dict is None:
-                settings.dict = enchant.get_default_language()
-            if str(i[0]) == settings.dict:
-                a.setChecked(True)
-            a.triggered.connect(self.setDictionary, F.AUC)
-            self.menuDictGroup.addAction(a)
+        dictionaries = Spellchecker.availableDictionaries()
+
+        # Set first run dictionary
+        if settings.dict == None:
+            settings.dict = Spellchecker.getDefaultDictionary()
+
+        # Check if project dict is unavailable on this machine
+        dict_available = False
+        for lib, dicts in dictionaries.items():
+            if dict_available:
+                break
+            for i in dicts:
+                if Spellchecker.normalizeDictName(lib, i) == settings.dict:
+                    dict_available = True
+                    break
+        # Reset dict to default one if it's unavailable
+        if not dict_available:
+            settings.dict = Spellchecker.getDefaultDictionary()
+
+        for lib, dicts in dictionaries.items():
+            if len(dicts) > 0:
+                a = QAction(lib, self)
+            else:
+                a = QAction(self.tr("{} has no installed dictionaries").format(lib), self)
+            a.setEnabled(False)
             self.menuDict.addAction(a)
+            for i in dicts:
+                a = QAction(i, self)
+                a.data = lib
+                a.setCheckable(True)
+                if Spellchecker.normalizeDictName(lib, i) == settings.dict:
+                    a.setChecked(True)
+                a.triggered.connect(self.setDictionary, F.AUC)
+                self.menuDictGroup.addAction(a)
+                self.menuDict.addAction(a)
+            self.menuDict.addSeparator()
+
+        # If a new dictionary was chosen, apply the change and re-enable spellcheck if it was enabled.
+        if not dict_available:
+            self.setDictionary()
+            self.toggleSpellcheck(settings.spellcheck)
+
+        for lib, requirement in Spellchecker.supportedLibraries().items():
+            if lib not in dictionaries:
+                a = QAction(self.tr("{}{} is not installed").format(lib, requirement or ""), self)
+                a.setEnabled(False)
+                self.menuDict.addAction(a)
+                self.menuDict.addSeparator()
 
     def setDictionary(self):
-        if not enchant:
+        if not Spellchecker.isInstalled():
             return
 
         for i in self.menuDictGroup.actions():
             if i.isChecked():
                 # self.dictChanged.emit(i.text().replace("&", ""))
-                settings.dict = i.text().replace("&", "")
+                settings.dict = Spellchecker.normalizeDictName(i.data, i.text().replace("&", ""))
 
                 # Find all textEditView from self, and toggle spellcheck
                 for w in self.findChildren(textEditView, QRegExp(".*"),
                                            Qt.FindChildrenRecursively):
                     w.setDict(settings.dict)
 
-    def openPyEnchantWebPage(self):
-        F.openURL("http://pythonhosted.org/pyenchant/")
+    def openSpellcheckWebPage(self, lib):
+        F.openURL(Spellchecker.getLibraryURL(lib))
 
     def toggleSpellcheck(self, val):
         settings.spellcheck = val
@@ -1343,9 +1493,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.sw.hide()
         self.sw.setWindowModality(Qt.ApplicationModal)
         self.sw.setWindowFlags(Qt.Dialog)
-        r = self.sw.geometry()
-        r2 = self.geometry()
-        self.sw.move(r2.center() - r.center())
+        self.centerChildWindow(self.sw)
         if tab:
             self.sw.setTab(tab)
         self.sw.show()
@@ -1357,6 +1505,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def frequencyAnalyzer(self):
         self.fw = frequencyAnalyzer(self)
         self.fw.show()
+        self.centerChildWindow(self.fw)
 
     def sessionTargets(self):
         self.td = targetsDialog(self)
@@ -1406,7 +1555,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.menuView.addMenu(self.menuMode)
         self.menuView.addSeparator()
 
-        # print("Generating menus with", settings.viewSettings)
+        # LOGGER.debug("Generating menus with %s.", settings.viewSettings)
 
         for mnu, mnud, icon in menus:
             m = QMenu(mnu, self.menuView)
@@ -1473,7 +1622,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             w.cmbPOV.setVisible(val)
 
         # POV in outline view
-        if val is None and Outline.POV in settings.outlineViewColumns:
+        if val == None and Outline.POV in settings.outlineViewColumns:
             settings.outlineViewColumns.remove(Outline.POV)
 
         from manuskript.ui.views.outlineView import outlineView
@@ -1489,17 +1638,42 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     ###############################################################################
 
     def doImport(self):
+        # Warn about buggy Qt versions and import crash
+        #
+        # (Py)Qt 5.11 and 5.12 have a bug that can cause crashes when simply
+        # setting up various UI elements.
+        # This has been reported and verified to happen with File -> Import.
+        # See PR #611.
+        if re.match("^5\\.1[12](\\.?|$)", qVersion()):
+            warning1 = self.tr("PyQt / Qt versions 5.11 and 5.12 are known to cause a crash which might result in a loss of data.")
+            warning2 = self.tr("PyQt {} and Qt {} are in use.").format(qVersion(), PYQT_VERSION_STR)
+
+            # Don't translate for debug log.
+            LOGGER.warning(warning1)
+            LOGGER.warning(warning2)
+
+            msg = QMessageBox(QMessageBox.Warning,
+                self.tr("Proceed with import at your own risk"),
+                "<p><b>" +
+                    warning1 +
+                "</b></p>" +
+                "<p>" +
+                    warning2 +
+                "</p>",
+                QMessageBox.Abort | QMessageBox.Ignore)
+            msg.setDefaultButton(QMessageBox.Abort)
+
+            # Return because user heeds warning
+            if msg.exec() == QMessageBox.Abort:
+                return
+
+        # Proceed with Import
         self.dialog = importerDialog(mw=self)
         self.dialog.show()
+        self.centerChildWindow(self.dialog)
 
-        r = self.dialog.geometry()
-        r2 = self.geometry()
-        self.dialog.move(r2.center() - r.center())
 
     def doCompile(self):
         self.dialog = exporterDialog(mw=self)
         self.dialog.show()
-
-        r = self.dialog.geometry()
-        r2 = self.geometry()
-        self.dialog.move(r2.center() - r.center())
+        self.centerChildWindow(self.dialog)

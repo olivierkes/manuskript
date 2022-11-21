@@ -83,7 +83,7 @@ def themeTextRect(themeDatas, screenRect):
     elif themeDatas["Foreground/Position"] == 3:  # Stretched
         x = margin
         width = screenRect.width() - 2 * margin
-    return QRect(x, y, width, height)
+    return QRect(int(x), int(y), int(width), int(height))
 
 
 def createThemePreview(theme, screenRect, size=QSize(200, 120)):
@@ -116,13 +116,13 @@ def createThemePreview(theme, screenRect, size=QSize(200, 120)):
 
     px = QPixmap(pixmap).scaled(size, Qt.KeepAspectRatio)
 
-    w = px.width() / 10
-    h = px.height() / 10
+    w = int(px.width() / 10)
+    h = int(px.height() / 10)
     r = themeTextRect(themeDatas, screenRect)
 
     painter = QPainter(px)
     painter.drawPixmap(QRect(w, h, w * 4, h * 5), pixmap,
-                       QRect(r.topLeft() - QPoint(w / 3, h / 3), QSize(w * 4, h * 5)))
+                       QRect(r.topLeft() - QPoint(int(w / 3), int(h / 3)), QSize(w * 4, h * 5)))
     painter.setPen(Qt.white)
     painter.drawRect(QRect(w, h, w * 4, h * 5))
     painter.end()
@@ -164,15 +164,15 @@ def generateTheme(themeDatas, screenRect):
                 elif _type == 5:  # Zoomed
                     scaled.scale(screenRect.size(), Qt.KeepAspectRatioByExpanding)
 
-                painter.drawImage((screenRect.width() - scaled.width()) / 2,
-                                  (screenRect.height() - scaled.height()) / 2, img.scaled(scaled))
+                painter.drawImage(int((screenRect.width() - scaled.width()) / 2),
+                                  int((screenRect.height() - scaled.height()) / 2), img.scaled(scaled))
 
     # Text Background
     textRect = themeTextRect(themeDatas, screenRect)
 
     painter.save()
     color = QColor(themeDatas["Foreground/Color"])
-    color.setAlpha(themeDatas["Foreground/Opacity"] * 255 / 100)
+    color.setAlpha(int(themeDatas["Foreground/Opacity"] * 255 / 100))
     painter.setBrush(color)
     painter.setPen(Qt.NoPen)
     r = themeDatas["Foreground/Rounding"]
@@ -249,12 +249,14 @@ def setThemeEditorDatas(editor, themeDatas, pixmap, screenRect):
     # editor.setFont(f)
 
     editor.setStyleSheet("""
-        background: transparent;
-        color: {foreground};
-        font-family: {ff};
-        font-size: {fs};
-        selection-color: {sc};
-        selection-background-color: {sbc};
+        QTextEdit {{
+            background: transparent;
+            color: {foreground};
+            font-family: {ff};
+            font-size: {fs};
+            selection-color: {sc};
+            selection-background-color: {sbc};
+        }}
         """.format(
             foreground=themeDatas["Text/Color"],
             ff=f.family(),

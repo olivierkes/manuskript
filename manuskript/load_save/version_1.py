@@ -15,6 +15,7 @@ from collections import OrderedDict
 
 from PyQt5.QtCore import Qt, QModelIndex
 from PyQt5.QtGui import QColor, QStandardItem
+from PyQt5.QtWidgets import QListWidgetItem
 
 from manuskript import settings
 from manuskript.enums import Character, World, Plot, PlotStep, Outline
@@ -25,6 +26,10 @@ from lxml import etree as ET
 from manuskript.load_save.version_0 import loadFilesFromZip
 from manuskript.models.characterModel import CharacterInfo
 from manuskript.models import outlineItem
+from manuskript.ui.listDialog import ListDialog
+
+import logging
+LOGGER = logging.getLogger(__name__)
 
 try:
     import zlib  # Used with zipfile for compression
@@ -40,6 +45,7 @@ characterMap = OrderedDict([
     (Character.name, "Name"),
     (Character.ID,   "ID"),
     (Character.importance, "Importance"),
+    (Character.pov, "POV"),
     (Character.motivation, "Motivation"),
     (Character.goal, "Goal"),
     (Character.conflict, "Conflict"),
@@ -47,11 +53,9 @@ characterMap = OrderedDict([
     (Character.summarySentence, "Phrase Summary"),
     (Character.summaryPara, "Paragraph Summary"),
     (Character.summaryFull, "Full Summary"),
-    (Character.notes, "Notes"),
+    (Character.notes, "Notes")
 ])
 
-# If true, logs infos while saving and loading.
-LOG = False
 
 def formatMetaData(name, value, tabLength=10):
 
@@ -91,11 +95,6 @@ def slugify(name):
     return newName
 
 
-def log(*args):
-    if LOG:
-        print(" ".join(str(a) for a in args))
-
-
 def saveProject(zip=None):
     """
     Saves the project. If zip is False, the project is saved as a multitude of plain-text files for the most parts
@@ -106,10 +105,10 @@ def saveProject(zip=None):
     settings.
     @return: True if successful, False otherwise.
     """
-    if zip is None:
+    if zip == None:
         zip = settings.saveToZip
 
-    log("\n\nSaving to:", "zip" if zip else "folder")
+    LOGGER.info("Saving to: %s", "zip" if zip else "folder")
 
     # List of files to be written
     files = []
@@ -118,7 +117,14 @@ def saveProject(zip=None):
     # List of files to be moved
     moves = []
 
+    # MainWindow interaction things.
     mw = mainWindow()
+    project = mw.currentProject
+
+    # Sanity check (see PR-583): make sure we actually have a current project.
+    if project == None:
+        LOGGER.error("Cannot save project because there is no current project in the UI.")
+        return False
 
     # File format version
     files.append(("MANUSKRIPT", "1"))
@@ -190,7 +196,7 @@ def saveProject(zip=None):
         # We skip the first row, which is empty and transparent
         for i in range(1, mdl.rowCount()):
             color = ""
-            if mdl.data(mdl.index(i, 0), Qt.DecorationRole) is not None:
+            if mdl.data(mdl.index(i, 0), Qt.DecorationRole) != None:
                 color = iconColor(mdl.data(mdl.index(i, 0), Qt.DecorationRole)).name(QColor.HexRgb)
                 color = color if color != "#ff000000" else "#00000000"
 
@@ -295,13 +301,11 @@ def saveProject(zip=None):
 
     files.append(("settings.txt", settings.save(protocol=0)))
 
-    project = mw.currentProject
-
     # We check if the file exist and we have write access. If the file does
-    # not exists, we check the parent folder, because it might be a new project.
+    # not exist, we check the parent folder, because it might be a new project.
     if os.path.exists(project) and not os.access(project, os.W_OK) or \
        not os.path.exists(project) and not os.access(os.path.dirname(project), os.W_OK):
-        print("Error: you don't have write access to save this project there.")
+        LOGGER.error("You don't have write access to save this project there.")
         return False
 
     ####################################################################################################################
@@ -325,8 +329,8 @@ def saveProject(zip=None):
     # Save to plain text
 
     else:
-
         global cache
+        filesWithPermissionErrors = list()
 
         # Project path
         dir = os.path.dirname(project)
@@ -335,7 +339,7 @@ def saveProject(zip=None):
         folder = os.path.splitext(os.path.basename(project))[0]
 
         # Debug
-        log("\nSaving to folder", folder)
+        LOGGER.debug("Saving to folder %s", folder)
 
         # If cache is empty (meaning we haven't loaded from disk), we wipe folder, just to be sure.
         if not cache:
@@ -352,7 +356,7 @@ def saveProject(zip=None):
             # Move the old file to the new place
             try:
                 os.replace(oldPath, newPath)
-                log("* Renaming/moving {} to {}".format(old, new))
+                LOGGER.debug("* Renaming/moving {} to {}".format(old, new))
             except FileNotFoundError:
                 # Maybe parent folder has been renamed
                 pass
@@ -362,7 +366,7 @@ def saveProject(zip=None):
             for f in cache:
                 f2 = f.replace(old, new)
                 if f2 != f:
-                    log("  * Updating cache:", f, f2)
+                    LOGGER.debug("  * Updating cache: %s, %s", f, f2)
                 cache2[f2] = cache[f]
             cache = cache2
 
@@ -373,21 +377,29 @@ def saveProject(zip=None):
 
             # Check if content is in cache, and write if necessary
             if path not in cache or cache[path] != content:
-                log("* Writing file {} ({})".format(path, "not in cache" if path not in cache else "different"))
+                LOGGER.debug("* Writing file {} ({})".format(path, "not in cache" if path not in cache else "different"))
                 # mode = "w" + ("b" if type(content) == bytes else "")
                 if type(content) == bytes:
-                    with open(filename, "wb") as f:
-                        f.write(content)
+                    try:
+                        with open(filename, "wb") as f:
+                            f.write(content)
+                    except PermissionError as e:
+                        LOGGER.error("Cannot open file " + filename + " for writing: " + e.strerror)
+                        filesWithPermissionErrors.append(filename)
                 else:
-                    with open(filename, "w", encoding='utf8') as f:
-                        f.write(content)
+                    try:
+                        with open(filename, "w", encoding='utf8') as f:
+                            f.write(content)
+                    except PermissionError as e:
+                        LOGGER.error("Cannot open file " + filename + " for writing: " + e.strerror)
+                        filesWithPermissionErrors.append(filename)
 
                 cache[path] = content
 
         # Removing phantoms
         for path in [p for p in cache if p not in [p for p, c in files]]:
             filename = os.path.join(dir, folder, path)
-            log("* Removing", path)
+            LOGGER.debug("* Removing %s", path)
 
             if os.path.isdir(filename):
                 shutil.rmtree(filename)
@@ -404,15 +416,30 @@ def saveProject(zip=None):
                 newDir = os.path.join(root, dir)
                 try:
                     os.removedirs(newDir)
-                    log("* Removing empty directory:", newDir)
+                    LOGGER.debug("* Removing empty directory: %s", newDir)
                 except:
                     # Directory not empty, we don't remove.
                     pass
 
         # Write the project file's content
-        with open(project, "w", encoding='utf8') as f:
-            f.write("1")  # Format number
+        try:
+            with open(project, "w", encoding='utf8') as f:
+                f.write("1")  # Format number
+        except PermissionError as e:
+            LOGGER.error("Cannot open file " + project + " for writing: " + e.strerror)
+            filesWithPermissionErrors.append(project)
 
+        if len(filesWithPermissionErrors) > 0:
+            dlg = ListDialog(mw)
+            dlg.setModal(True)
+            dlg.setWindowTitle(dlg.tr("Files not saved"))
+            dlg.label.setText(dlg.tr("The following files were not saved and appear to be open in another program"))
+            for f in filesWithPermissionErrors:
+                QListWidgetItem(f, dlg.listWidget)
+            dlg.open()
+
+        if project in filesWithPermissionErrors:
+            return False
         return True
 
 
@@ -530,8 +557,8 @@ def exportOutlineItem(root):
         lp = child._lastPath
         if lp and spath != lp:
             moves.append((lp, spath))
-            log(child.title(), "has been renamed (", lp, " → ", spath, ")")
-            log(" → We mark for moving:", lp)
+            LOGGER.debug("%s has been renamed (%s → %s)", child.title(), lp,  spath)
+            LOGGER.debug(" → We mark for moving: %s", lp)
 
         # Updates item last's path
         child._lastPath = spath
@@ -547,7 +574,7 @@ def exportOutlineItem(root):
             files.append((spath, content))
 
         else:
-            log("Unknown type")
+            LOGGER.debug("Unknown type: %s", child.type())
 
         f, m, r = exportOutlineItem(child)
         files += f
@@ -620,12 +647,13 @@ def loadProject(project, zip=None):
     """
 
     mw = mainWindow()
-    errors = []
+    errors = list()
+    filesWithPermissionErrors = list()
 
     ####################################################################################################################
     # Read and store everything in a dict
 
-    log("\nLoading {} ({})".format(project, "ZIP" if zip else "not zip"))
+    LOGGER.debug("Loading {} ({})".format(project, "zip" if zip else "folder"))
     if zip:
         files = loadFilesFromZip(project)
 
@@ -659,8 +687,14 @@ def loadProject(project, zip=None):
                     with open(os.path.join(dirpath, f), "rb") as fo:
                         files[os.path.join(p, f)] = fo.read()
                 else:
-                    with open(os.path.join(dirpath, f), "r", encoding="utf8") as fo:
-                        files[os.path.join(p, f)] = fo.read()
+                    try:
+                        filename = os.path.join(dirpath, f)
+                        with open(filename, "r", encoding="utf8") as fo:
+                            files[os.path.join(p, f)] = fo.read()
+                    except PermissionError as e:
+                        LOGGER.error("Cannot open file " + filename + ": " + e.strerror)
+                        errors.append(fo)
+                        filesWithPermissionErrors.append(filename)
 
         # Saves to cache (only if we loaded from disk and not zip)
         global cache
@@ -689,7 +723,7 @@ def loadProject(project, zip=None):
     mdl = mw.mdlLabels
     mdl.appendRow(QStandardItem(""))  # Empty = No labels
     if "labels.txt" in files:
-        log("\nReading labels:")
+        LOGGER.debug("Reading labels:")
         for s in files["labels.txt"].split("\n"):
             if not s:
                 continue
@@ -697,7 +731,7 @@ def loadProject(project, zip=None):
             m = re.search(r"^(.*?):\s*(.*)$", s)
             txt = m.group(1)
             col = m.group(2)
-            log("* Add status: {} ({})".format(txt, col))
+            LOGGER.debug("* Add status: {} ({})".format(txt, col))
             icon = iconFromColorString(col)
             mdl.appendRow(QStandardItem(icon, txt))
 
@@ -710,11 +744,11 @@ def loadProject(project, zip=None):
     mdl = mw.mdlStatus
     mdl.appendRow(QStandardItem(""))  # Empty = No status
     if "status.txt" in files:
-        log("\nReading Status:")
+        LOGGER.debug("Reading status:")
         for s in files["status.txt"].split("\n"):
             if not s:
                 continue
-            log("* Add status:", s)
+            LOGGER.debug("* Add status: %s", s)
             mdl.appendRow(QStandardItem(s))
     else:
         errors.append("status.txt")
@@ -756,7 +790,7 @@ def loadProject(project, zip=None):
 
     mdl = mw.mdlPlots
     if "plots.xml" in files:
-        log("\nReading plots:")
+        LOGGER.debug("Reading plots:")
         # xml = bytearray(files["plots.xml"], "utf-8")
         root = ET.fromstring(files["plots.xml"])
 
@@ -765,7 +799,7 @@ def loadProject(project, zip=None):
             row = getStandardItemRowFromXMLEnum(plot, Plot)
 
             # Log
-            log("* Add plot: ", row[0].text())
+            LOGGER.debug("* Add plot: %s", row[0].text())
 
             # Characters
             if row[Plot.characters].text():
@@ -792,7 +826,7 @@ def loadProject(project, zip=None):
 
     mdl = mw.mdlWorld
     if "world.opml" in files:
-        log("\nReading World:")
+        LOGGER.debug("Reading World:")
         # xml = bytearray(files["plots.xml"], "utf-8")
         root = ET.fromstring(files["world.opml"])
         body = root.find("body")
@@ -808,7 +842,7 @@ def loadProject(project, zip=None):
     # Characters
 
     mdl = mw.mdlCharacter
-    log("\nReading Characters:")
+    LOGGER.debug("Reading Characters:")
     for f in [f for f in files if "characters" in f]:
         md, body = parseMMDFile(files[f])
         c = mdl.addCharacter()
@@ -834,7 +868,7 @@ def loadProject(project, zip=None):
             else:
                 c.infos.append(CharacterInfo(c, desc, val))
 
-        log("* Adds {} ({})".format(c.name(), c.ID()))
+        LOGGER.debug("* Adds {} ({})".format(c.name(), c.ID()))
 
     ####################################################################################################################
     # Texts
@@ -842,14 +876,14 @@ def loadProject(project, zip=None):
     # everything, but the outline folder takes precedence (in cases it's been edited outside of manuskript.
 
     mdl = mw.mdlOutline
-    log("\nReading outline:")
+    LOGGER.debug("Reading outline:")
     paths = [f for f in files if "outline" in f]
     outline = OrderedDict()
 
     # We create a structure of imbricated OrderedDict to store the whole tree.
     for f in paths:
         split = f.split(os.path.sep)[1:]
-        # log("* ", split)
+        # LOGGER.debug("* %s", split)
 
         last = ""
         parent = outline
@@ -885,6 +919,15 @@ def loadProject(project, zip=None):
     # Check IDS
     mdl.rootItem.checkIDs()
 
+    if len(filesWithPermissionErrors) > 0:
+        dlg = ListDialog(mw)
+        dlg.setModal(True)
+        dlg.setWindowTitle(dlg.tr("Files not loaded"))
+        dlg.label.setText(dlg.tr("The following files were not loaded and appear to be open in another program"))
+        for f in filesWithPermissionErrors:
+            QListWidgetItem(f, dlg.listWidget)
+        dlg.open()
+
     return errors
 
 
@@ -901,24 +944,29 @@ def addTextItems(mdl, odict, parent=None):
     for k in odict:
 
         # In case k is a folder:
-        if type(odict[k]) == OrderedDict and "folder.txt" in odict[k]:
+        if (type(odict[k]) == OrderedDict) and ("folder.txt" in odict[k]):
 
             # Adds folder
-            log("{}* Adds {} to {} (folder)".format("  " * parent.level(), k, parent.title()))
+            LOGGER.debug("{}* Adds {} to {} (folder)".format("  " * parent.level(), k, parent.title()))
             item = outlineFromMMD(odict[k]["folder.txt"], parent=parent)
             item._lastPath = odict[k + ":lastPath"]
 
             # Read content
             addTextItems(mdl, odict[k], parent=item)
 
-        # k is not a folder
-        elif type(odict[k]) == str and k != "folder.txt" and not ":lastPath" in k:
-            log("{}* Adds {} to {} (file)".format("  " * parent.level(), k, parent.title()))
-            item = outlineFromMMD(odict[k], parent=parent)
-            item._lastPath = odict[k + ":lastPath"]
+        if (":lastPath" in k) or (k == "folder.txt"):
+            continue
 
-        elif not ":lastPath" in k and k != "folder.txt":
-            print("* Strange things in file {}".format(k))
+        # k is not a folder
+        if type(odict[k]) == str:
+            try:
+                LOGGER.debug("{}* Adds {} to {} (file)".format("  " * parent.level(), k, parent.title()))
+                item = outlineFromMMD(odict[k], parent=parent)
+                item._lastPath = odict[k + ":lastPath"]
+            except KeyError:
+                LOGGER.error("Failed to add file " + str(k))
+        else:
+            LOGGER.debug("Strange things in file %s".format(k))
 
 
 def outlineFromMMD(text, parent):
@@ -929,8 +977,10 @@ def outlineFromMMD(text, parent):
     @return: outlineItem
     """
 
-    item = outlineItem(parent=parent)
     md, body = parseMMDFile(text, asDict=True)
+
+    # Assign ID on creation, to avoid generating a new ID for this object
+    item = outlineItem(parent=parent, ID=md.pop('ID'))
 
     # Store metadata
     for k in md:
@@ -968,17 +1018,19 @@ def appendRevisions(mdl, root):
             # Get root's ID
             ID = root.attrib["ID"]
             if not ID:
-                log("* Serious problem: no ID!")
+                LOGGER.debug("* Serious problem: no ID!")
+                LOGGER.error("Revision has no ID associated!")
                 continue
 
             # Find outline item in model
             item = mdl.getItemByID(ID)
             if not item:
-                log("* Error: no item whose ID is", ID)
+                LOGGER.debug("* Error: no item whose ID is %s", ID)
+                LOGGER.error("Could not identify the item matching the revision ID.")
                 continue
 
             # Store revision
-            log("* Appends revision ({}) to {}".format(child.attrib["timestamp"], item.title()))
+            LOGGER.debug("* Appends revision ({}) to {}".format(child.attrib["timestamp"], item.title()))
             item.appendRevision(child.attrib["timestamp"], child.attrib["text"])
 
 
@@ -990,7 +1042,7 @@ def getOutlineItem(item, enum):
     @return: [QStandardItem]
     """
     row = getStandardItemRowFromXMLEnum(item, enum)
-    log("* Add worldItem:", row[0].text())
+    LOGGER.debug("* Add worldItem: %s", row[0].text())
     for child in item:
         sub = getOutlineItem(child, enum)
         row[0].appendRow(sub)

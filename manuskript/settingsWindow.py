@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
 import os
+import shutil
 from collections import OrderedDict
 
 from PyQt5.QtCore import QSize, QSettings, QRegExp, QTranslator, QObject
@@ -8,7 +9,7 @@ from PyQt5.QtCore import Qt, QTimer
 from PyQt5.QtGui import QIntValidator, QIcon, QFont, QColor, QPixmap, QStandardItem, QPainter
 from PyQt5.QtGui import QStyleHints
 from PyQt5.QtWidgets import QStyleFactory, QWidget, QStyle, QColorDialog, QListWidgetItem, QMessageBox
-from PyQt5.QtWidgets import qApp
+from PyQt5.QtWidgets import qApp, QFileDialog
 
 # Spell checker support
 from manuskript import settings
@@ -24,11 +25,6 @@ from manuskript.ui.views.outlineView import outlineView
 from manuskript.ui.views.textEditView import textEditView
 from manuskript.ui.welcome import welcome
 from manuskript.ui import style as S
-
-try:
-    import enchant
-except ImportError:
-    enchant = None
 
 
 class settingsWindow(QWidget, Ui_Settings):
@@ -63,30 +59,44 @@ class settingsWindow(QWidget, Ui_Settings):
         self.lstMenu.setMaximumWidth(140)
         self.lstMenu.setMinimumWidth(140)
 
+        lowerKeys = [i.lower() for i in list(QStyleFactory.keys())]
+
         # General
         self.cmbStyle.addItems(list(QStyleFactory.keys()))
-        self.cmbStyle.setCurrentIndex(
-            [i.lower() for i in list(QStyleFactory.keys())]
-            .index(qApp.style().objectName()))
+
+        try:
+            self.cmbStyle.setCurrentIndex(lowerKeys.index(qApp.style().objectName()))
+        except ValueError:
+            self.cmbStyle.setCurrentIndex(0)
+
         self.cmbStyle.currentIndexChanged[str].connect(self.setStyle)
 
         self.cmbTranslation.clear()
         tr = OrderedDict()
         tr["English"] = ""
-        tr["Deutsch"] = "manuskript_de.qm"
-        tr["Español"] = "manuskript_es.qm"
-        tr["Français"] = "manuskript_fr.qm"
+        tr["Arabic (Saudi Arabia)"] = "manuskript_ar_SA.qm"
+        tr["German"] = "manuskript_de.qm"
+        tr["English (Great Britain)"] = "manuskript_en_GB.qm"
+        tr["Spanish"] = "manuskript_es.qm"
+        tr["Persian"] = "manuskript_fa.qm"
+        tr["French"] = "manuskript_fr.qm"
         tr["Hungarian"] = "manuskript_hu.qm"
         tr["Indonesian"] = "manuskript_id.qm"
         tr["Italian"] = "manuskript_it.qm"
+        tr["Japanese"] = "manuskript_ja.qm"
+        tr["Korean"] = "manuskript_ko.qm"
         tr["Norwegian Bokmål"] = "manuskript_nb_NO.qm"
         tr["Dutch"] = "manuskript_nl.qm"
         tr["Polish"] = "manuskript_pl.qm"
         tr["Portuguese (Brazil)"] = "manuskript_pt_BR.qm"
         tr["Portuguese (Portugal)"] = "manuskript_pt_PT.qm"
+        tr["Romanian"] = "manuskript_ro.qm"
         tr["Russian"] = "manuskript_ru.qm"
         tr["Svenska"] = "manuskript_sv.qm"
+        tr["Turkish"] = "manuskript_tr.qm"
+        tr["Ukrainian"] = "manuskript_uk.qm"
         tr["Chinese (Simplified)"] = "manuskript_zh_CN.qm"
+        tr["Chinese (Traditional)"] = "manuskript_zh_HANT.qm"
         self.translations = tr
 
         for name in tr:
@@ -105,6 +115,9 @@ class settingsWindow(QWidget, Ui_Settings):
         f = qApp.font()
         self.spnGeneralFontSize.setValue(f.pointSize())
         self.spnGeneralFontSize.valueChanged.connect(self.setAppFontSize)
+
+        self.chkProgressChars.setChecked(settings.progressChars);
+        self.chkProgressChars.stateChanged.connect(self.charSettingsChanged)
 
         self.txtAutoSave.setValidator(QIntValidator(0, 999, self))
         self.txtAutoSaveNoChanges.setValidator(QIntValidator(0, 999, self))
@@ -130,15 +143,15 @@ class settingsWindow(QWidget, Ui_Settings):
         self.chkRevisionsKeep.stateChanged.connect(self.revisionsSettingsChanged)
         self.chkRevisionRemove.setChecked(opt["smartremove"])
         self.chkRevisionRemove.toggled.connect(self.revisionsSettingsChanged)
-        self.spnRevisions10Mn.setValue(60 / opt["rules"][10 * 60])
+        self.spnRevisions10Mn.setValue(int(60 / opt["rules"][10 * 60]))
         self.spnRevisions10Mn.valueChanged.connect(self.revisionsSettingsChanged)
-        self.spnRevisionsHour.setValue(60 * 10 / opt["rules"][60 * 60])
+        self.spnRevisionsHour.setValue(int(60 * 10 / opt["rules"][60 * 60]))
         self.spnRevisionsHour.valueChanged.connect(self.revisionsSettingsChanged)
-        self.spnRevisionsDay.setValue(60 * 60 / opt["rules"][60 * 60 * 24])
+        self.spnRevisionsDay.setValue(int(60 * 60 / opt["rules"][60 * 60 * 24]))
         self.spnRevisionsDay.valueChanged.connect(self.revisionsSettingsChanged)
-        self.spnRevisionsMonth.setValue(60 * 60 * 24 / opt["rules"][60 * 60 * 24 * 30])
+        self.spnRevisionsMonth.setValue(int(60 * 60 * 24 / opt["rules"][60 * 60 * 24 * 30]))
         self.spnRevisionsMonth.valueChanged.connect(self.revisionsSettingsChanged)
-        self.spnRevisionsEternity.setValue(60 * 60 * 24 * 7 / opt["rules"][None])
+        self.spnRevisionsEternity.setValue(int(60 * 60 * 24 * 7 / opt["rules"][None]))
         self.spnRevisionsEternity.valueChanged.connect(self.revisionsSettingsChanged)
 
         # Views
@@ -159,10 +172,12 @@ class settingsWindow(QWidget, Ui_Settings):
         for item, what, value in [
             (self.rdoTreeItemCount, "InfoFolder", "Count"),
             (self.rdoTreeWC, "InfoFolder", "WC"),
+            (self.rdoTreeCC, "InfoFolder", "CC"),
             (self.rdoTreeProgress, "InfoFolder", "Progress"),
             (self.rdoTreeSummary, "InfoFolder", "Summary"),
             (self.rdoTreeNothing, "InfoFolder", "Nothing"),
             (self.rdoTreeTextWC, "InfoText", "WC"),
+            (self.rdoTreeTextCC, "InfoText", "CC"),
             (self.rdoTreeTextProgress, "InfoText", "Progress"),
             (self.rdoTreeTextSummary, "InfoText", "Summary"),
             (self.rdoTreeTextNothing, "InfoText", "Nothing"),
@@ -174,6 +189,9 @@ class settingsWindow(QWidget, Ui_Settings):
         self.sldTreeIconSize.valueChanged.connect(
             lambda v: self.lblTreeIconSize.setText("{}x{}".format(v, v)))
         self.sldTreeIconSize.setValue(settings.viewSettings["Tree"]["iconSize"])
+
+        self.chkCountSpaces.setChecked(settings.countSpaces);
+        self.chkCountSpaces.stateChanged.connect(self.countSpacesChanged)
 
         self.rdoCorkOldStyle.setChecked(settings.corkStyle == "old")
         self.rdoCorkNewStyle.setChecked(settings.corkStyle == "new")
@@ -333,6 +351,11 @@ class settingsWindow(QWidget, Ui_Settings):
         sttgs = QSettings(qApp.organizationName(), qApp.applicationName())
         sttgs.setValue("appFontSize", val)
 
+    def charSettingsChanged(self):
+        settings.progressChars = True if self.chkProgressChars.checkState() else False
+
+        self.mw.mainEditor.updateStats()
+
     def saveSettingsChanged(self):
         if self.txtAutoSave.text() in ["", "0"]:
             self.txtAutoSave.setText("1")
@@ -422,10 +445,12 @@ class settingsWindow(QWidget, Ui_Settings):
         for item, what, value in [
             (self.rdoTreeItemCount, "InfoFolder", "Count"),
             (self.rdoTreeWC, "InfoFolder", "WC"),
+            (self.rdoTreeCC, "InfoFolder", "CC"),
             (self.rdoTreeProgress, "InfoFolder", "Progress"),
             (self.rdoTreeSummary, "InfoFolder", "Summary"),
             (self.rdoTreeNothing, "InfoFolder", "Nothing"),
             (self.rdoTreeTextWC, "InfoText", "WC"),
+            (self.rdoTreeTextCC, "InfoText", "CC"),
             (self.rdoTreeTextProgress, "InfoText", "Progress"),
             (self.rdoTreeTextSummary, "InfoText", "Summary"),
             (self.rdoTreeTextNothing, "InfoText", "Nothing"),
@@ -439,6 +464,11 @@ class settingsWindow(QWidget, Ui_Settings):
             self.mw.treeRedacOutline.setIconSize(QSize(iconSize, iconSize))
 
         self.mw.treeRedacOutline.viewport().update()
+
+    def countSpacesChanged(self):
+        settings.countSpaces = True if self.chkCountSpaces.checkState() else False
+
+        self.mw.mainEditor.updateStats()
 
     def setCorkColor(self):
         color = QColor(settings.corkBackground["color"])
@@ -458,12 +488,24 @@ class settingsWindow(QWidget, Ui_Settings):
         self.btnCorkColor.setStyleSheet("background:{};".format(settings.corkBackground["color"]))
 
     def setCorkBackground(self, i):
+        # Check if combobox was reset
+        if i == -1:
+            return
+
         img = self.cmbCorkImage.itemData(i)
         img = os.path.basename(img)
         if img:
             settings.corkBackground["image"] = img
         else:
-            settings.corkBackground["image"] = ""
+            txt = self.cmbCorkImage.itemText(i)
+            if txt == "":
+                settings.corkBackground["image"] = ""
+            else:
+                img = self.addBackgroundImage()
+                if img:
+                    self.populatesCmbBackgrounds(self.cmbCorkImage)
+                    settings.corkBackground["image"] = img
+                self.setCorkImageDefault()
         # Update Cork view
         self.mw.mainEditor.updateCorkBackground()
 
@@ -482,7 +524,33 @@ class settingsWindow(QWidget, Ui_Settings):
                     px = QPixmap(os.path.join(p, l)).scaled(128, 64, Qt.KeepAspectRatio)
                     cmb.addItem(QIcon(px), "", os.path.join(p, l))
 
+        cmb.addItem(QIcon.fromTheme("list-add"), " ", "")
         cmb.setIconSize(QSize(128, 64))
+
+    def addBackgroundImage(self):
+        lastDirectory = self.mw.welcome.getLastAccessedDirectory()
+
+        """File dialog that request an existing file. For opening an image."""
+        filename = QFileDialog.getOpenFileName(self,
+                                               self.tr("Open Image"),
+                                               lastDirectory,
+                                               self.tr("Image files (*.jpg; *.jpeg; *.png)"))[0]
+        if filename:
+            try:
+                px = QPixmap()
+                valid = px.load(filename)
+                del px
+                if valid:
+                    shutil.copy(filename, writablePath("resources/backgrounds"))
+                    return os.path.basename(filename)
+                else:
+                    QMessageBox.warning(self, self.tr("Error"),
+                                        self.tr("Unable to load selected file"))
+            except Exception as e:
+                QMessageBox.warning(self, self.tr("Error"),
+                                    self.tr("Unable to add selected image:\n{}").format(str(e)))
+        return None
+                
 
     def setCorkImageDefault(self):
         if settings.corkBackground["image"] != "":
@@ -868,12 +936,26 @@ class settingsWindow(QWidget, Ui_Settings):
         self.timerUpdateFSPreview.start()
 
     def updateThemeBackground(self, i):
-        img = self.cmbCorkImage.itemData(i)
+        # Check if combobox was reset
+        if i == -1:
+            return
+
+        img = self.cmbThemeBackgroundImage.itemData(i)
 
         if img:
             self._themeData["Background/ImageFile"] = os.path.split(img)[1]
         else:
-            self._themeData["Background/ImageFile"] = ""
+            txt = self.cmbThemeBackgroundImage.itemText(i)
+            if txt == "":
+                self._themeData["Background/ImageFile"] = ""
+            else:
+                img = self.addBackgroundImage()
+                if img:
+                    self.populatesCmbBackgrounds(self.cmbThemeBackgroundImage)
+                    self._themeData["Background/ImageFile"] = img
+                i = self.cmbThemeBackgroundImage.findData(self._themeData["Background/ImageFile"], flags=Qt.MatchContains)
+                if i != -1:
+                    self.cmbThemeBackgroundImage.setCurrentIndex(i)
         self.updatePreview()
 
     def getThemeColor(self, key):

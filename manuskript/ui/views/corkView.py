@@ -27,6 +27,8 @@ class corkView(QListView, dndView, outlineBasics):
     def updateBackground(self):
         if settings.corkBackground["image"] != "":
             img = findBackground(settings.corkBackground["image"])
+            if img == None:
+                img = ""
         else:
             # No background image
             img = ""
@@ -36,7 +38,7 @@ class corkView(QListView, dndView, outlineBasics):
             background-attachment: fixed;
             }}""".format(
                 color=settings.corkBackground["color"],
-                url=img
+                url=img.replace("\\", "/")
         ))
 
     def dragMoveEvent(self, event):

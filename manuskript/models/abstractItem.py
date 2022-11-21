@@ -9,17 +9,23 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIcon, QFont
 from PyQt5.QtWidgets import QTextEdit, qApp
 from lxml import etree as ET
+import re
 
 from manuskript import enums
 
+import logging
+LOGGER = logging.getLogger(__name__)
 
 class abstractItem():
 
-    # Enum kept on the class for easier acces
+    # Enum kept on the class for easier access
     enum = enums.Abstract
 
     # Used for XML export
     name = "abstractItem"
+
+    # Regexp from https://stackoverflow.com/questions/8733233/filtering-out-certain-bytes-in-python
+    valid_xml_re = re.compile(u'[^\u0020-\uD7FF\u0009\u000A\u000D\uE000-\uFFFD\U00010000-\U0010FFFF]+')
 
     def __init__(self, model=None, title="", _type="abstract", xml=None, parent=None, ID=None):
 
@@ -35,14 +41,19 @@ class abstractItem():
         self._data[self.enum.title] = title
         self._data[self.enum.type] = _type
 
-        if xml is not None:
+        if xml != None:
             self.setFromXML(xml)
+
+        if parent:
+            # add this as a child to the parent, and link to the outlineModel of the parent
+            parent.appendChild(self)
 
         if ID:
             self._data[self.enum.ID] = ID
 
-        if parent:
-            parent.appendChild(self)
+            if self._model:
+                self._model.updateAvailableIDs(ID)
+
 
     #######################################################################
     # Model
@@ -50,6 +61,11 @@ class abstractItem():
 
     def setModel(self, model):
         self._model = model
+        if not self.ID():
+            self.getUniqueID()
+        elif model:
+            # if we are setting a model update it's ID
+            self._model.updateAvailableIDs(self.ID())
         for c in self.children():
             c.setModel(model)
 
@@ -101,7 +117,7 @@ class abstractItem():
         return self._data[self.enum.type]
 
     #######################################################################
-    # Parent / Children managment
+    # Parent / Children management
     #######################################################################
 
     def child(self, row):
@@ -122,6 +138,7 @@ class abstractItem():
     def row(self):
         if self.parent():
             return self.parent().childItems.index(self)
+        return None
 
     def appendChild(self, child):
         self.insertChild(self.childCount(), child)
@@ -130,8 +147,6 @@ class abstractItem():
         self.childItems.insert(row, child)
         child._parent = self
         child.setModel(self._model)
-        if not child.ID():
-            child.getUniqueID()
 
     def removeChild(self, row):
         """
@@ -140,6 +155,9 @@ class abstractItem():
         @return: the removed abstractItem
         """
         r = self.childItems.pop(row)
+        # Disassociate the child from its parent and the model.
+        r._parent = None
+        r.setModel(None)
         return r
 
     def parent(self):
@@ -177,12 +195,20 @@ class abstractItem():
         item.setData(self.enum.ID, None)
         return item
 
+    def siblings(self):
+        if self.parent():
+            return self.parent().children()
+        return []
+
     ###############################################################################
     # IDS
     ###############################################################################
 
     def getUniqueID(self, recursive=False):
-        self.setData(self.enum.ID, self._model.rootItem.findUniqueID())
+        if not self._model:
+            return
+
+        self.setData(self.enum.ID, self._model.requestNewID())
 
         if recursive:
             for c in self.children():
@@ -196,30 +222,30 @@ class abstractItem():
         self.IDs = self.listAllIDs()
 
         if max([self.IDs.count(i) for i in self.IDs if i]) != 1:
-            print("WARNING ! There are some items with same IDs:", [i for i in self.IDs if i and self.IDs.count(i) != 1])
+            LOGGER.warning("There are some items with overlapping IDs: %s", [i for i in self.IDs if i and self.IDs.count(i) != 1])
 
+        _IDs = [self.ID()]
         def checkChildren(item):
+            "Check recursively every children and give them unique, non-empty, non-zero IDs."
             for c in item.children():
                 _id = c.ID()
-                if not _id or _id == "0":
+                if not _id or _id == "0" or _id in _IDs:
                     c.getUniqueID()
+                    LOGGER.warning("* Item {} '{}' is given new unique ID: '{}'".format(_id, c.title(), c.ID()))
+                _IDs.append(_id)
                 checkChildren(c)
 
         checkChildren(self)
+
+        # Not sure if self.IDs is still useful (it was used in the old unique ID generating system at least).
+        # It might be deleted everywhere. But just in the meantime, it should at least be up to date.
+        self.IDs = self.listAllIDs()
 
     def listAllIDs(self):
         IDs = [self.ID()]
         for c in self.children():
             IDs.extend(c.listAllIDs())
         return IDs
-
-    def findUniqueID(self):
-        IDs = [int(i) for i in self.IDs]
-        k = 1
-        while k in IDs:
-            k += 1
-        self.IDs.append(str(k))
-        return str(k)
 
     #######################################################################
     # Data
@@ -237,6 +263,10 @@ class abstractItem():
         # Setting data
         self._data[column] = data
 
+        # The _model will be none during splitting
+        if self._model and column == self.enum.ID:
+            self._model.updateAvailableIDs(data)
+
         # Emit signal
         self.emitDataChanged(cols=[column]) # new in 0.5.0
 
@@ -248,6 +278,9 @@ class abstractItem():
     XMLExclude = []
     # We want to force some data even if they're empty
     XMLForce = []
+
+    def cleanTextForXML(self, text):
+        return self.valid_xml_re.sub('', text)
 
     def toXML(self):
         """
@@ -263,7 +296,7 @@ class abstractItem():
                 continue
             val = self.data(attrib)
             if val or attrib in self.XMLForce:
-                item.set(attrib.name, str(val))
+                item.set(attrib.name, self.cleanTextForXML(str(val)))
 
         # Saving lastPath
         item.set("lastPath", self._lastPath)

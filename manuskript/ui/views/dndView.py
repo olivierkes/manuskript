@@ -13,7 +13,6 @@ class dndView(QAbstractItemView):
 
     def dragMoveEvent(self, event):
         # return QAbstractItemView.dragMoveEvent(self, event)
-        # print(a)
         if event.keyboardModifiers() & Qt.ControlModifier:
             event.setDropAction(Qt.CopyAction)
         else:

@@ -16,6 +16,9 @@ from manuskript import settings
 from manuskript.functions import iconColor, iconFromColorString, mainWindow
 from manuskript.models.characterModel import Character, CharacterInfo
 
+import logging
+LOGGER = logging.getLogger(__name__)
+
 try:
     import zlib  # Used with zipfile for compression
 
@@ -37,7 +40,7 @@ def saveProject():
 
     files.append((saveStandardItemModelXML(mw.mdlFlatData),
                   "flatModel.xml"))
-    print("ERROR: file format 0 does not save characters !")
+    LOGGER.error("File format 0 does not save characters!")
     # files.append((saveStandardItemModelXML(mw.mdlCharacter),
     #               "perso.xml"))
     files.append((saveStandardItemModelXML(mw.mdlWorld),
@@ -91,7 +94,7 @@ def saveStandardItemModelXML(mdl, xml=None):
     data = ET.SubElement(root, "data")
     saveItem(data, mdl)
 
-    # print(qApp.tr("Saving to {}.").format(xml))
+    # LOGGER.info("Saving to {}.".format(xml))
     if xml:
         ET.ElementTree(root).write(xml, encoding="UTF-8", xml_declaration=True, pretty_print=True)
     else:
@@ -165,10 +168,13 @@ def loadProject(project):
     else:
         errors.append("outline.xml")
 
-    if "settings.pickle" in files:
-        settings.load(files["settings.pickle"], fromString=True)
+    if "settings.txt" in files:
+        settings.load(files["settings.txt"], fromString=True, protocol=0)
     else:
-        errors.append("settings.pickle")
+        errors.append("settings.txt")
+
+    if "settings.pickle" in files:
+        LOGGER.info("Pickle settings files are no longer supported for security reasons. You can delete it from your data.")
 
     return errors
 
@@ -178,7 +184,10 @@ def loadFilesFromZip(zipname):
     zf = zipfile.ZipFile(zipname)
     files = {}
     for f in zf.namelist():
-        files[os.path.normpath(f)] = zf.read(f)
+        # Some archiving programs (e.g. 7-Zip) also store entries for the directories when
+        # creating an archive. We have no use for these entries; skip them entirely.
+        if f[-1:] != '/':
+            files[os.path.normpath(f)] = zf.read(f)
     return files
 
 
@@ -186,13 +195,13 @@ def loadStandardItemModelXML(mdl, xml, fromString=False):
     """Load data to a QStandardItemModel mdl from xml.
     By default xml is a filename. If fromString=True, xml is a string containing the data."""
 
-    # print(qApp.tr("Loading {}... ").format(xml), end="")
+    # LOGGER.info("Loading {}...".format(xml))
 
     if not fromString:
         try:
             tree = ET.parse(xml)
         except:
-            print("Failed.")
+            LOGGER.error("Failed to load XML for QStandardItemModel (%s).", xml)
             return
     else:
         root = ET.fromstring(xml)
@@ -207,7 +216,7 @@ def loadStandardItemModelXML(mdl, xml, fromString=False):
     for l in root.find("header").find("vertical").findall("label"):
         vLabels.append(l.attrib["text"])
 
-    # print(root.find("header").find("vertical").text)
+    # LOGGER.debug(root.find("header").find("vertical").text)
 
     # mdl.setVerticalHeaderLabels(vLabels)
     # mdl.setHorizontalHeaderLabels(hLabels)
