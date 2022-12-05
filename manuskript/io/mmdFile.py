@@ -48,6 +48,9 @@ class MmdFile(AbstractFile):
             if not ignoreBody:
                 body = file.read()
 
+                if (len(body) > 0) and (body[0] == "\n"):
+                    body = body[1:]
+
         return metadata, body
 
     def load(self):
