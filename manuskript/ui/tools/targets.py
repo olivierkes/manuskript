@@ -8,7 +8,9 @@ from manuskript.enums import Outline
 from manuskript.functions import appPath
 from manuskript.ui.tools.targets_ui import Ui_targets
 
-class targetsDialog(QWidget, Ui_targets):
+
+class TargetsDialog(QWidget, Ui_targets):
+
     def __init__(self, parent=None, mw=None):
         QWidget.__init__(self)
         self.mw = parent
@@ -26,10 +28,16 @@ class targetsDialog(QWidget, Ui_targets):
 
     def getDraftStats(self):
         item = self.mw.mdlOutline.rootItem
+
         wc = item.data(Outline.wordCount)
         goal = item.data(Outline.goal)
         progress = item.data(Outline.goalPercentage)
-        return (wc, goal, progress)
+
+        return (
+            int(wc) if wc != "" else 0,
+            int(goal) if goal != "" else 0,
+            float(progress) if progress != "" else 0.0
+        )
 
     def resetSession(self):
         wc, _, _ = self.getDraftStats()
@@ -38,18 +46,19 @@ class targetsDialog(QWidget, Ui_targets):
 
     @staticmethod
     def progress_bar_value(value):
-        return min(max(float(value) * 100, 0), 100)
+        return int(min(max(float(value) * 100, 0), 100))
 
     def tick(self):
         wc, goal, progress = self.getDraftStats()
         
-        self.draft_wc_label.setText(locale.format("%d", wc, grouping=True))
-        self.draft_goal_label.setText(locale.format("%d", goal, grouping=True))
+        self.draft_wc_label.setText(locale.format_string("%d", wc, grouping=True))
+        self.draft_goal_label.setText(locale.format_string("%d", goal, grouping=True))
         # limit to 0-100 for display
-        self.draft_progress_bar.setValue(self.progress_bar_value(progress))  
+        self.draft_progress_bar.setValue(self.progress_bar_value(progress))
 
-        session_wc = wc - self.mw.sessionStartWordCount
-        self.session_wc_label.setText(locale.format("%d", session_wc, grouping=True))
+        session_wc = wc - int(self.mw.sessionStartWordCount)
+
+        self.session_wc_label.setText(locale.format_string("%d", session_wc, grouping=True))
         if self.session_target.value() == 0:
             self.session_progress_bar.setValue(0)
         else:

@@ -30,7 +30,7 @@ from manuskript.ui.exporters.exporter import exporterDialog
 from manuskript.ui.helpLabel import helpLabel
 from manuskript.ui.mainWindow import Ui_MainWindow
 from manuskript.ui.tools.frequencyAnalyzer import frequencyAnalyzer
-from manuskript.ui.tools.targets import targetsDialog
+from manuskript.ui.tools.targets import TargetsDialog
 from manuskript.ui.views.outlineDelegates import outlineCharacterDelegate
 from manuskript.ui.views.plotDelegate import plotDelegate
 from manuskript.ui.views.MDEditView import MDEditView
@@ -655,7 +655,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         item = self.mdlOutline.rootItem
         wc = item.data(Outline.wordCount)
-        self.sessionStartWordCount = wc
+        self.sessionStartWordCount = int(wc) if wc != "" else 0
         # Add project name to Window's name
         self.setWindowTitle(self.projectName() + " - " + self.tr("Manuskript"))
 
@@ -1508,8 +1508,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.centerChildWindow(self.fw)
 
     def sessionTargets(self):
-        self.td = targetsDialog(self)
+        self.td = TargetsDialog(self)
         self.td.show()
+        self.centerChildWindow(self.td)
 
     ###############################################################################
     # VIEW MENU
