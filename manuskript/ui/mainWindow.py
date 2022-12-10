@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'manuskript/ui/mainWindow.ui'
+# Form implementation generated from reading ui file '.\manuskript\ui\mainWindow.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.7
 #
@@ -1505,8 +1505,8 @@ class Ui_MainWindow(object):
         self.menuView.setTitle(_translate("MainWindow", "&View"))
         self.menuMode.setTitle(_translate("MainWindow", "&Mode"))
         self.menuOrganize.setTitle(_translate("MainWindow", "Organi&ze"))
-        self.dckCheatSheet.setWindowTitle(_translate("MainWindow", "&Cheat sheet"))
-        self.dckSearch.setWindowTitle(_translate("MainWindow", "Sea&rch"))
+        self.dckCheatSheet.setWindowTitle(_translate("MainWindow", "Cheat Sheet"))
+        self.dckSearch.setWindowTitle(_translate("MainWindow", "Search"))
         self.dckNavigation.setWindowTitle(_translate("MainWindow", "&Navigation"))
         self.actOpen.setText(_translate("MainWindow", "&Open"))
         self.actOpen.setShortcut(_translate("MainWindow", "Ctrl+O"))
