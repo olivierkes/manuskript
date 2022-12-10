@@ -2038,6 +2038,7 @@
     </property>
     <addaction name="actSpellcheck"/>
     <addaction name="actToolFrequency"/>
+    <addaction name="actToolTargets"/>
    </widget>
    <widget class="QMenu" name="menuEdit">
     <property name="title">
@@ -2720,6 +2721,15 @@
     <string>B&amp;lockquote</string>
    </property>
   </action>
+  <action name="actToolTargets">
+   <property name="text">
+    <string>&amp;Targets</string>
+   </property>
+   <property name="toolTip">
+    <string>Draft and session word count targets</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+,</string>
   <action name="actSearch">
    <property name="icon">
     <iconset theme="edit-find">
