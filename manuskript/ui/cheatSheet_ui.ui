@@ -56,9 +56,8 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset theme="go-bottom">
-         <normaloff/>
-        </iconset>
+        <iconset theme="edit-find-replace">
+         <normaloff>.</normaloff>.</iconset>
        </property>
        <property name="checkable">
         <bool>true</bool>

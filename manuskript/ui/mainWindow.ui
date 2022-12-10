@@ -136,7 +136,7 @@
            <enum>QTabWidget::Rounded</enum>
           </property>
           <property name="currentIndex">
-           <number>2</number>
+           <number>0</number>
           </property>
           <property name="documentMode">
            <bool>true</bool>
@@ -764,8 +764,8 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>453</width>
-                      <height>699</height>
+                      <width>227</width>
+                      <height>562</height>
                      </rect>
                     </property>
                     <layout class="QFormLayout" name="formLayout_8">
@@ -1446,7 +1446,7 @@
                    <bool>false</bool>
                   </attribute>
                   <attribute name="headerDefaultSectionSize">
-                   <number>35</number>
+                   <number>43</number>
                   </attribute>
                  </widget>
                 </item>
@@ -1994,7 +1994,7 @@
      <x>0</x>
      <y>0</y>
      <width>1112</width>
-     <height>23</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -2130,7 +2130,7 @@
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QDockWidget" name="dckCheatSheet">
    <property name="windowTitle">
-    <string>&amp;Cheat sheet</string>
+    <string>Cheatsheet</string>
    </property>
    <attribute name="dockWidgetArea">
     <number>2</number>
@@ -2199,7 +2199,7 @@
     <set>QDockWidget::DockWidgetClosable|QDockWidget::DockWidgetMovable</set>
    </property>
    <property name="windowTitle">
-    <string>&amp;Navigation</string>
+    <string>Navigation</string>
    </property>
    <attribute name="dockWidgetArea">
     <number>1</number>
@@ -2654,12 +2654,12 @@
   </action>
   <action name="actFormatVerbatim">
    <property name="text">
-    <string>&amp;Verbatim</string>
+    <string>Verbatim</string>
    </property>
   </action>
   <action name="actFormatSuperscript">
    <property name="text">
-    <string>Su&amp;perscript</string>
+    <string>Superscript</string>
    </property>
    <property name="shortcut">
     <string>Ctrl++</string>
@@ -2667,7 +2667,7 @@
   </action>
   <action name="actFormatSubscript">
    <property name="text">
-    <string>Subsc&amp;ript</string>
+    <string>Subscript</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+-</string>
@@ -2675,7 +2675,7 @@
   </action>
   <action name="actFormatCommentBlock">
    <property name="text">
-    <string>Co&amp;mment block</string>
+    <string>Comment block</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+C</string>
@@ -2717,7 +2717,7 @@
   </action>
   <action name="actFormatBlockquote">
    <property name="text">
-    <string>B&amp;lockquote</string>
+    <string>Blockquote</string>
    </property>
   </action>
   <action name="actSearch">
@@ -2734,7 +2734,7 @@
   </action>
   <action name="actSupport">
    <property name="text">
-    <string>&amp;Technical Support</string>
+    <string>Technical Support</string>
    </property>
    <property name="toolTip">
     <string>How to obtain technical support for Manuskript.</string>
