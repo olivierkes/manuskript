@@ -445,7 +445,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2133"/>
         <source>Cheat Sheet</source>
-        <translation type="unfinished">&amp;Cábula</translation>
+        <translation>&amp;Cábula</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2202"/>
@@ -2396,7 +2396,7 @@ junto a palavras</translation>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="911"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>Substituir aspas simples (') por:</translation>
+        <translation>Substituir aspas simples (&apos;) por:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1020"/>
