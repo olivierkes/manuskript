@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '.\manuskript\ui\mainWindow.ui'
+# Form implementation generated from reading ui file 'manuskript/ui/mainWindow.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.7
 #
@@ -1599,7 +1599,6 @@ class Ui_MainWindow(object):
         self.actToolTargets.setText(_translate("MainWindow", "&Targets"))
         self.actToolTargets.setToolTip(_translate("MainWindow", "Draft and session word count targets"))
         self.actToolTargets.setShortcut(_translate("MainWindow", "Ctrl+,"))
-
         self.actSearch.setText(_translate("MainWindow", "Search"))
         self.actSearch.setShortcut(_translate("MainWindow", "Ctrl+F"))
         self.actSupport.setText(_translate("MainWindow", "&Technical Support"))
@@ -1623,13 +1622,3 @@ from manuskript.ui.views.sldImportance import sldImportance
 from manuskript.ui.views.storylineView import storylineView
 from manuskript.ui.views.treeView import treeView
 from manuskript.ui.welcome import welcome
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
-    sys.exit(app.exec_())
-

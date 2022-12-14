@@ -2729,7 +2729,9 @@
     <string>Draft and session word count targets</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+,</string>
+	<string>Ctrl+,</string>
+   </property>
+  </action>
   <action name="actSearch">
    <property name="icon">
     <iconset theme="edit-find">
