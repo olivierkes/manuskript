@@ -1,0 +1,66 @@
+# This workflow is used to run pytest and confirm 
+# that Linux builds meet the pytest requirements for the project.
+
+name: Build for Windows
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the develop branch
+  push:
+    branches: [ develop ]
+  pull_request:
+    branches: [ develop ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  windows_build:
+    name: Building for Windows ${{ matrix.python_version }} on ${{ matrix.os }}
+    # The type of runner that the job will run on
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        # https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs
+        python-version: [3.9]
+        os: [ubuntu-20.04]
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    - uses: actions/checkout@v3
+    - uses: devopsx/gha-focal-i386-fix@master #https://github.com/devopsx/gha-focal-i386-fix # https://github.com/actions/runner-images/issues/4589#issuecomment-1100899313
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Get Last Commit SHA Hash
+      id: vars
+      run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+    - name: Install Python build dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyqt5==5.15.7 lxml pytest pytest-faulthandler
+        pip install pyinstaller
+    - name: Add WineHQ Sources  
+      run: |
+        sudo dpkg --add-architecture i386
+        sudo mkdir -pm755 /etc/apt/keyrings
+        sudo wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
+        sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/focal/winehq-focal.sources
+        sudo apt-get update -qq
+
+    - name: Install WineHQ Devel # https://github.com/actions/runner-images/issues/4589#issuecomment-1100899313
+      run: |
+        sudo apt-get install -yqq winehq-staging --install-recommends
+        wine --version
+    - name: Build for Windows
+      run: |
+        echo "Running pyinstaller with manuskript_version of $manuskript_version"
+        xvfb-run -s '-screen 0 1920x1080x24 +extension GLX' pyinstaller ./manuskript.spec 
+      env:
+        manuskript_version: ${{ steps.vars.outputs.sha_short }}
+    - name: Run Original Build Script
+      run: |
+        xvfb-run -s '-screen 0 1920x1080x24 +extension GLX' bash ./package/build_for_windows.sh
+      env:
+        manuskript_version: ${{ steps.vars.outputs.sha_short }}
