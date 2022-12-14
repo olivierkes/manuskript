@@ -278,11 +278,11 @@ class Character(searchableItem):
     def index(self, column=0):
         return self._model.indexFromItem(self, column)
 
-    def data(self, column):
+    def data(self, column, role=Qt.DisplayRole):
         if column == "Info":
             return self.infos
         else:
-            return self._data.get(column, None)
+            return self._data.get(column, role)
 
     def assignRandomColor(self):
         """

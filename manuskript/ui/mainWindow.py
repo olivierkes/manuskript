@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'manuskript/ui/mainWindow.ui'
+# Form implementation generated from reading ui file '.\manuskript\ui\mainWindow.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.7
 #
@@ -1228,6 +1228,8 @@ class Ui_MainWindow(object):
         self.actFormatList.setObjectName("actFormatList")
         self.actFormatBlockquote = QtWidgets.QAction(MainWindow)
         self.actFormatBlockquote.setObjectName("actFormatBlockquote")
+        self.actToolTargets = QtWidgets.QAction(MainWindow)
+        self.actToolTargets.setObjectName("actToolTargets")
         self.actSearch = QtWidgets.QAction(MainWindow)
         icon = QtGui.QIcon.fromTheme("edit-find")
         self.actSearch.setIcon(icon)
@@ -1254,6 +1256,7 @@ class Ui_MainWindow(object):
         self.menuHelp.addAction(self.actAbout)
         self.menuTools.addAction(self.actSpellcheck)
         self.menuTools.addAction(self.actToolFrequency)
+        self.menuTools.addAction(self.actToolTargets)
         self.mnuHeader.addAction(self.actHeaderSetextL1)
         self.mnuHeader.addAction(self.actHeaderSetextL2)
         self.mnuHeader.addSeparator()
@@ -1505,8 +1508,8 @@ class Ui_MainWindow(object):
         self.menuView.setTitle(_translate("MainWindow", "&View"))
         self.menuMode.setTitle(_translate("MainWindow", "&Mode"))
         self.menuOrganize.setTitle(_translate("MainWindow", "Organi&ze"))
-        self.dckCheatSheet.setWindowTitle(_translate("MainWindow", "&Cheat sheet"))
-        self.dckSearch.setWindowTitle(_translate("MainWindow", "Sea&rch"))
+        self.dckCheatSheet.setWindowTitle(_translate("MainWindow", "Cheat Sheet"))
+        self.dckSearch.setWindowTitle(_translate("MainWindow", "Search"))
         self.dckNavigation.setWindowTitle(_translate("MainWindow", "&Navigation"))
         self.actOpen.setText(_translate("MainWindow", "&Open"))
         self.actOpen.setShortcut(_translate("MainWindow", "Ctrl+O"))
@@ -1593,6 +1596,10 @@ class Ui_MainWindow(object):
         self.actFormatOrderedList.setText(_translate("MainWindow", "&Ordered list"))
         self.actFormatList.setText(_translate("MainWindow", "&Unordered list"))
         self.actFormatBlockquote.setText(_translate("MainWindow", "B&lockquote"))
+        self.actToolTargets.setText(_translate("MainWindow", "&Targets"))
+        self.actToolTargets.setToolTip(_translate("MainWindow", "Draft and session word count targets"))
+        self.actToolTargets.setShortcut(_translate("MainWindow", "Ctrl+,"))
+
         self.actSearch.setText(_translate("MainWindow", "Search"))
         self.actSearch.setShortcut(_translate("MainWindow", "Ctrl+F"))
         self.actSupport.setText(_translate("MainWindow", "&Technical Support"))
@@ -1616,3 +1623,13 @@ from manuskript.ui.views.sldImportance import sldImportance
 from manuskript.ui.views.storylineView import storylineView
 from manuskript.ui.views.treeView import treeView
 from manuskript.ui.welcome import welcome
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    MainWindow = QtWidgets.QMainWindow()
+    ui = Ui_MainWindow()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
+    sys.exit(app.exec_())
+

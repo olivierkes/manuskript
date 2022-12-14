@@ -30,6 +30,7 @@ from manuskript.ui.exporters.exporter import exporterDialog
 from manuskript.ui.helpLabel import helpLabel
 from manuskript.ui.mainWindow import Ui_MainWindow
 from manuskript.ui.tools.frequencyAnalyzer import frequencyAnalyzer
+from manuskript.ui.tools.targets import TargetsDialog
 from manuskript.ui.views.outlineDelegates import outlineCharacterDelegate
 from manuskript.ui.views.plotDelegate import plotDelegate
 from manuskript.ui.views.MDEditView import MDEditView
@@ -69,6 +70,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self._defaultCursorFlashTime = 1000 # Overridden at startup with system
                                             # value. In manuskript.main.
         self._autoLoadProject = None  # Used to load a command line project
+        self.sessionStartWordCount = 0  # Used to track session targets
 
         self.readSettings()
 
@@ -164,11 +166,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # Main Menu:: Tool
         self.actToolFrequency.triggered.connect(self.frequencyAnalyzer)
+        self.actToolTargets.triggered.connect(self.sessionTargets)
         self.actSupport.triggered.connect(self.support)
         self.actLocateLog.triggered.connect(self.locateLogFile)
         self.actAbout.triggered.connect(self.about)
 
         self.makeUIConnections()
+
+        # Tools non-modal windows
+        self.td = None  # Targets Dialog
+        self.fw = None  # Frequency Window
 
         # self.loadProject(os.path.join(appPath(), "test_project.zip"))
 
@@ -646,6 +653,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.projectDirty = False
         QSettings().setValue("lastProject", project)
 
+        item = self.mdlOutline.rootItem
+        wc = item.data(Outline.wordCount)
+        self.sessionStartWordCount = int(wc) if wc != "" else 0
         # Add project name to Window's name
         self.setWindowTitle(self.projectName() + " - " + self.tr("Manuskript"))
 
@@ -788,6 +798,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
             # closeEvent
             # QMainWindow.closeEvent(self, event)  # Causing segfaults?
+
+        # Close non-modal windows if they are open.
+        if self.td:
+            self.td.close()
+        if self.fw:
+            self.fw.close()
 
         # User may have canceled close event, so make sure we indeed want to close.
         # This is necessary because self.updateDockVisibility() hides UI elements.
@@ -1490,6 +1506,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.fw = frequencyAnalyzer(self)
         self.fw.show()
         self.centerChildWindow(self.fw)
+
+    def sessionTargets(self):
+        self.td = TargetsDialog(self)
+        self.td.show()
+        self.centerChildWindow(self.td)
 
     ###############################################################################
     # VIEW MENU
