@@ -47,9 +47,9 @@ jobs:
         manuskript_version: ${{ steps.vars.outputs.sha_short }}
     - name: Remove W7 File Issues # https://github.com/olivierkes/manuskript/blob/develop/package/build_for_windows.sh#L85
       run: |
-        powershell Remove-Item ./dist/manuskript/Qt5Bluetooth.dll
-        powershell Remove-Item ./dist/manuskript/ucrtbase.dll
-        powershell Remove-Item ./dist/manuskript/api-ms-win-*
+        powershell Remove-Item ./dist/manuskript/Qt5Bluetooth.dll;
+        powershell Remove-Item ./dist/manuskript/ucrtbase.dll;
+        powershell Remove-Item ./dist/manuskript/api-ms-win-*;
 
     # https://docs.github.com/en/actions/using-workflows/storing-workflow-data-as-artifacts
     - name: Upload Artifacts
