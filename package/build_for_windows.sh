@@ -1,11 +1,11 @@
-#!/bin/bashwine
+#!/bin/sh
 EXEC_DIR=$(pwd)
 
 DIR=$(mktemp -d /tmp/manuskript-windows.XXXXXX)
 PREFIX=$DIR/.wine
 
-BUILD_ARCH="win64" #win32, win64
-PY_VERSION="3.9.2" #Version must always be three digirs to comply with PY_DIR for some reason.  idk.
+BUILD_ARCH="win32"
+PY_VERSION="3.8.10"
 
 PY_NAME="python-$PY_VERSION"
 
@@ -21,32 +21,19 @@ if [ ! -e $PY_SETUP ]; then
 	wget $PY_DOWNLOAD
 fi
 
-# Need to init the wineboot _first_ it seems. 
-# https://forum.manjaro.org/t/wine-could-not-load-kernel32-dll-status-c0000135/69811/2
-# https://github.com/ValveSoftware/Proton/issues/4269#issuecomment-757346213
-# https://github.com/Frogging-Family/community-patches/issues/75
-# https://bugs.winehq.org/show_bug.cgi?id=51086
-
-echo TEST!!! LISTING WINE PREFIX AND BUILDARCH
-echo $PREFIX $BUILDARCH
-
-WINEARCH=$BUILD_ARCH winecfg
-WINEARCH=$BUILD_ARCH wineboot --init
-
-WINEARCH=$BUILD_ARCH xvfb-run -s '-screen 0 1920x1080x24 +extension GLX' wine64 $PY_SETUP /quiet InstallAllUsers=0 PrependPath=1 Include_test=0 Include_pip=1
+WINEPREFIX=$PREFIX WINEARCH=$BUILD_ARCH wine $PY_SETUP /quiet InstallAllUsers=1 PrependPath=1 Include_test=0
 
 # Install Pandoc:
 PAN_DOWNLOAD="https://github.com/jgm/pandoc/releases/download/2.16.1/pandoc-2.16.1-windows-x86_64.msi"
-
 PAN_SETUP=$(echo $PAN_DOWNLOAD | tr '/' ' ' | awk '{ print $(NF) }')
 
 if [ ! -e $PAN_SETUP ]; then
 	wget $PAN_DOWNLOAD
 fi
 
-wine $PAN_SETUP /qn /norestart
+WINEPREFIX=$PREFIX WINEARCH=$BUILD_ARCH wine $PAN_SETUP /qn /norestart
 
-PY_DIR="Python$(echo $PY_VERSION | sed -e s/\\./\ /g - | awk '{ print $1$2$3 }')"
+PY_DIR="Python$(echo $PY_VERSION | sed -e s/\\./\ /g - | awk '{ print $1$2 }')"
 
 if [ "$BUILD_ARCH" = "win32" ]; then
 	PY_DIR="$PY_DIR-32"
@@ -56,7 +43,7 @@ fi
 cd $PREFIX/drive_c/Program\ Files/$PY_DIR/
 
 pip_install() {
-	wine python.exe Scripts/pip.exe install $@
+	WINEPREFIX=$PREFIX WINEARCH=$BUILD_ARCH wine python.exe Scripts/pip.exe install $@
 }
 
 # Upgrade pip to mitigate problems:
@@ -64,7 +51,9 @@ pip_install --upgrade pip
 
 # Install required dependencies:
 
-pip_install pyinstaller
+# Version 4.4 does not cause the issue with lxml (potential fallback)
+pip_install https://github.com/pyinstaller/pyinstaller/archive/develop.zip
+#pip_install pyinstaller==4.4
 
 pip_install lxml
 pip_install PyQt5
@@ -86,7 +75,7 @@ cd manuskript
 PKG_VERSION=$(grep -E "__version__.*\".*\"" "manuskript/version.py" | cut -d\" -f2)
 
 # Run PyInstaller to create the build:
-xvfb-run -s '-screen 0 1920x1080x24 +extension GLX' wine pyinstaller manuskript.spec
+WINEPREFIX=$PREFIX WINEARCH=$BUILD_ARCH wine pyinstaller manuskript.spec
 cat build/manuskript/warn-manuskript.txt
 
 cd dist/manuskript
@@ -103,7 +92,7 @@ rm api-ms-win-*
 
 # Test Manuskript:
 ### comment: Seems to work fine...
-xvfb-run -s '-screen 0 1920x1080x24 +extension GLX' wine manuskript.exe &
+WINEPREFIX=$PREFIX WINEARCH=$BUILD_ARCH wine manuskript.exe &
 WINE_TEST_PID=$!
 
 sleep 5
