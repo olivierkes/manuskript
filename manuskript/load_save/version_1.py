@@ -964,9 +964,9 @@ def addTextItems(mdl, odict, parent=None):
                 item = outlineFromMMD(odict[k], parent=parent)
                 item._lastPath = odict[k + ":lastPath"]
             except KeyError:
-                LOGGER.error("Failed to add file " + str(k))
+                LOGGER.error(f"Failed to add file {k}")
         else:
-            LOGGER.debug("Strange things in file %s".format(k))
+            LOGGER.debug(f"Strange things in file {k}")
 
 
 def outlineFromMMD(text, parent):

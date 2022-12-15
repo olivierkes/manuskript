@@ -1,5 +1,9 @@
-# This workflow is used to run pytest and confirm 
-# that Linux builds meet the pytest requirements for the project.
+# This workflow is used to run the pyinstaller spec
+# and produce a Windows build directory as artifact.
+
+# In the future it'll also need to confirm that all
+# of the translations and UI files are built from 
+# scratch as a condition of the tests with pytest.
 
 name: Build for Windows
 
@@ -21,46 +25,29 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        # https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs
         python-version: [3.9]
-        os: [ubuntu-20.04]
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
+        os: [windows-latest]
     steps:
+    # We use the version from this commit and not just the current branch.  This is for R&D builds too.
     - uses: actions/checkout@v3
-    - uses: devopsx/gha-focal-i386-fix@master #https://github.com/devopsx/gha-focal-i386-fix # https://github.com/actions/runner-images/issues/4589#issuecomment-1100899313
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
-    - name: Get Last Commit SHA Hash
-      id: vars
-      run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+    # These should be moved to a pyproject.toml file down the line.
     - name: Install Python build dependencies
       run: |
-        python -m pip install --upgrade pip
-        pip install pyqt5==5.15.7 lxml pytest pytest-faulthandler
+        python -m pip install --upgrade pip 
+        pip install pyqt5==5.15.7 lxml pytest pytest-faulthandler language_tool_python symspellpy pyspellchecker pyenchant
         pip install pyinstaller
-    - name: Add WineHQ Sources  
+    - name: pyinstaller build
       run: |
-        sudo dpkg --add-architecture i386
-        sudo mkdir -pm755 /etc/apt/keyrings
-        sudo wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
-        sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/focal/winehq-focal.sources
-        sudo apt-get update -qq
-
-    - name: Install WineHQ Devel # https://github.com/actions/runner-images/issues/4589#issuecomment-1100899313
-      run: |
-        sudo apt-get install -yqq winehq-staging --install-recommends
-        wine --version
-    - name: Build for Windows
-      run: |
-        echo "Running pyinstaller with manuskript_version of $manuskript_version"
-        xvfb-run -s '-screen 0 1920x1080x24 +extension GLX' pyinstaller ./manuskript.spec 
-      env:
+        pyinstaller ./manuskript.spec
+      env: 
         manuskript_version: ${{ steps.vars.outputs.sha_short }}
-    - name: Run Original Build Script
-      run: |
-        xvfb-run -s '-screen 0 1920x1080x24 +extension GLX' bash ./package/build_for_windows.sh
-      env:
-        manuskript_version: ${{ steps.vars.outputs.sha_short }}
+    # https://docs.github.com/en/actions/using-workflows/storing-workflow-data-as-artifacts
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: manuskript_windows
+        path: ./dist/manuskript/
