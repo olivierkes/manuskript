@@ -415,7 +415,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2133"/>
         <source>Cheat Sheet</source>
-        <translation type="unfinished">Шпаргалка</translation>
+        <translation>Шпаргалка</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2202"/>
@@ -2386,7 +2386,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="911"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>Замінювати одинарні лапки (') на:</translation>
+        <translation>Замінювати одинарні лапки (&apos;) на:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1020"/>
