@@ -469,7 +469,7 @@ def search(searchRegex, text):
     :return:                list of tuples (startPos, endPos)
     """
     if text is not None:
-        return [(m.start(), m.end(), getSearchResultContext(text, m.start(), m.end())) for m in searchRegex.finditer(text)]
+        return [(m.start(), m.end(), getSearchResultContext(text, m.start(), m.end())) for m in searchRegex.finditer(str(text))]
     else:
         return []
 
