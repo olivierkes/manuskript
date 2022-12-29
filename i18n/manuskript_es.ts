@@ -410,7 +410,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2133"/>
         <source>Cheat Sheet</source>
-        <translation type="unfinished">&amp;Guía rápida</translation>
+        <translation>Hoja de referencia</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2202"/>
@@ -2080,7 +2080,7 @@
     <message>
         <location filename="../manuskript/models/characterModel.py" line="215"/>
         <source>Description</source>
-        <translation type="unfinished">Descripción</translation>
+        <translation>Descripción</translation>
     </message>
 </context>
 <context>
@@ -2386,7 +2386,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="911"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>Reemplazar comillas simples (') con:</translation>
+        <translation>Reemplazar comillas simples (&apos;) con:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1020"/>
@@ -2460,13 +2460,13 @@
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="788"/>
-        <source>Replace ... with &#xe2;&#x80;&#xa6;</source>
-        <translation type="unfinished">Reemplazar ... por â¦</translation>
+        <source>Replace ... with â¦</source>
+        <translation>Substituir ... por …</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="795"/>
-        <source>Replace --- with &#xe2;&#x80;&#x94;</source>
-        <translation type="unfinished">Reemplazar --- con â</translation>
+        <source>Replace --- with â</source>
+        <translation>Reemplaza --- por â</translation>
     </message>
 </context>
 <context>
@@ -3446,7 +3446,7 @@
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="47"/>
         <source>Split &apos;{}&apos;</source>
-        <translation>Dividir '{}'</translation>
+        <translation>Dividir &apos;{}&apos;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="51"/>
