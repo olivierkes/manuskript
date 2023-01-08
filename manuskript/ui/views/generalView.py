@@ -54,6 +54,8 @@ class GeneralView:
         self.nameBuffer.connect("inserted-text", self._nameInsertedText)
         self.emailBuffer.connect("deleted-text", self._emailDeletedText)
         self.emailBuffer.connect("inserted-text", self._emailInsertedText)
+        
+        # now the tip of the day
 
     def titleChanged(self, buffer: Gtk.EntryBuffer):
         self.info.title = invalidString(buffer.get_text())
