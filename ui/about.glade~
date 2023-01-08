@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.38.2 
+
+Copyright (C) 2015-2021 Olivier Keshavjee et al.
+
+This file is part of Manuskript.
+
+Manuskript is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Manuskript is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<interface>
+  <requires lib="gtk+" version="3.24"/>
+  <!-- interface-local-resource-path . -->
+  <!-- interface-license-type gplv3 -->
+  <!-- interface-name Manuskript -->
+  <!-- interface-description Manuskript is an open-source tool for writers. -->
+  <!-- interface-copyright 2015-2021 Olivier Keshavjee et al. -->
+  <object class="GtkAboutDialog" id="about_dialog">
+    <property name="can-focus">False</property>
+    <property name="window-position">center-on-parent</property>
+    <property name="type-hint">dialog</property>
+    <property name="program-name">Manuskript</property>
+    <property name="version">0.12.0</property>
+    <property name="copyright" translatable="yes">Copyright © 2015-2021 Olivier Keshavjee et al.</property>
+    <property name="website">https://www.theologeek.ch/manuskript/</property>
+    <property name="authors">Olivier Keshavjee 
+Curtis Gedak 
+Youness Alaoui 
+Olivier 
+Jan Wester 
+Allan Nordhøy 
+TheJackiMonster 
+Tim D'Annecy 
+Tobias Frisch 
+LingSamuel 
+pindarogb 
+bart deruyter 
+Norbert Kowalczyk 
+Cam Stevenson 
+anonymous 
+JackXVII 
+José Miguel González Aguilera 
+Paweł Świątkowski 
+Pedro Albuquerque 
+Hosted Weblate 
+Joni 
+Riccardo Mangili 
+Viktor S 
+ijet 
+kutunesirka 
+Fabian Beil 
+Lech Baczynski 
+Mateusz Mendel 
+PanDedoctor 
+Pedro Albuquerque 
+Roberto Díez 
+Sarasa Kisaragi 
+Sebastian Rasmussen 
+Tom Wardill 
+ditokp 
+luz.paz 
+Abdulrahman ☕️ 
+Andreas Kleinert 
+Carlos 
+Carlos Bidea 
+King Fung Ng 
+Nathan 
+Omer Acar 
+Samuele Rini 
+Swann Martinet 
+Windspar 
+bentleyjoakes 
+bepolymathe 
+saboarpad 
+차용택 
+Acid147 
+Alexander Klar 
+Ali Khomami P 
+Chris 
+Daan 
+DarkRedman 
+Elizabeth Sherrock 
+Frederike Preugschas 
+JackXVII 
+Jakub Rey 
+Jan-Niklas Meier 
+John Bintz 
+Mariana Badarnih 
+Michal Čihař 
+Nick de Bruin 
+NocturnalFred 
+Paweł Świątkowski 
+Raphael Wimmer 
+Riccardo Man 
+RiderExMachina 
+Stefano Romanò 
+Unknown 
+Vincent M 
+Vladimir Ivakin 
+Weblate 
+William W Wold 
+goofy-mdn 
+leela 
+murth 
+nagolinc 
+nicxxx 
+obw 
+peter88213 
+ssantos </property>
+	<property name="logo">../icons/Manuskript/logo-400x104.png</property>
+    <property name="license-type">gpl-3-0</property>
+    <child internal-child="vbox">
+      <object class="GtkBox">
+        <property name="can-focus">False</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">2</property>
+        <child internal-child="action_area">
+          <object class="GtkButtonBox">
+            <property name="can-focus">False</property>
+            <property name="layout-style">end</property>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
