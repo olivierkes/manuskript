@@ -1,0 +1,5 @@
+Name:                Barnabas
+ID:                  5
+Importance:          1
+POV:                 True
+Color:               #a9b0b6

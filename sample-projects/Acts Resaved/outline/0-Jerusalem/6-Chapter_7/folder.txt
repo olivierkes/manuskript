@@ -1,0 +1,8 @@
+title:          Chapter 7
+ID:             11
+type:           folder
+compile:        2
+setGoal:        1000
+charCount:      7382
+
+

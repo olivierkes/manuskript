@@ -1,0 +1,8 @@
+title:          Judea and Samaria
+ID:             34
+type:           folder
+POV:            0
+compile:        2
+charCount:      22301
+
+
