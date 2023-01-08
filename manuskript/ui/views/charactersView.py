@@ -8,7 +8,7 @@ from gi.repository import Gtk
 
 from manuskript.data import Characters, Character, Importance, Color
 from manuskript.ui.util import rgbaFromColor, pixbufFromColor
-from manuskript.util import validString, invalidString, validInt, invalidInt
+from manuskript.util import validString, invalidString, validInt, invalidInt, unique_name_checker
 
 
 class CharactersView:
@@ -305,7 +305,7 @@ class CharactersView:
         if tree_iter is None:
             return
 
-        name = "Description"
+        name = unique_name_checker.get_unique_name_for_dictionary(self.character.details, "Description")
         value = "Value"
 
         self.detailsStore.set_value(tree_iter, 0, name)
@@ -347,11 +347,12 @@ class CharactersView:
 
         if (model is None) or (tree_iter is None):
             return
-
+        
+        text_to_set = unique_name_checker.get_unique_name_for_dictionary(self.character.details, text)
         name = model.get_value(tree_iter, 0)
-        model.set_value(tree_iter, 0, text)
+        model.set_value(tree_iter, 0, text_to_set)
 
-        self.character.details[text] = self.character.details.pop(name)
+        self.character.details[text_to_set] = self.character.details.pop(name)
 
     def detailsValueEdited(self, renderer: Gtk.CellRendererText, path: str, text: str):
         if self.character is None:

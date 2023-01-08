@@ -4,6 +4,7 @@
 import re
 
 from manuskript.util.counter import CounterKind, CharCounter, WordCounter, PageCounter
+from manuskript.util.unique_name_checker import*
 
 
 def safeInt(s: str, d: int) -> int:

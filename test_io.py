@@ -16,9 +16,8 @@ LOGO_FILE = 'icons/Manuskript/manuskript.svg'
 
 from manuskript.ui import MainWindow
 
-#path = os.path.join(sys.path[1], "sample-projects/The Test Of The Rings")
 
-window = MainWindow("sample-projects/The Test Of The Rings" + ".msk")
+window = MainWindow("sample-projects/Acts Resaved" + ".msk")
 # Let's make this a bit fancier
 window.window.set_icon(GdkPixbuf.Pixbuf.new_from_file(LOGO_FILE))
 

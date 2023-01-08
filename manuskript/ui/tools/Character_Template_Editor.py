@@ -11,6 +11,7 @@ from gi.repository import GObject, Gtk, Handy
 
 # Manuskript
 from manuskript.ui.abstractDialog import AbstractDialog
+from manuskript.util import unique_name_checker
 
 # I lifted a lot of this code from frequencyWindow
 # With a bit more stuff from charactersView
@@ -84,7 +85,7 @@ class CharacterTemplateEditorWindow(AbstractDialog):
         if tree_iter is None:
             return
 
-        name = "Description"
+        name = unique_name_checker.get_unique_name_for_dictionary(self.mainWindow.project.character_template.details, "Description")
         value = "Value"
 
         self.detailsStore.set_value(tree_iter, 0, name)
@@ -110,11 +111,11 @@ class CharacterTemplateEditorWindow(AbstractDialog):
 
         if (model is None) or (tree_iter is None):
             return
-
+        text_to_set = unique_name_checker.get_unique_name_for_dictionary(self.mainWindow.project.character_template.details, text)
         name = model.get_value(tree_iter, 0)
-        model.set_value(tree_iter, 0, text)
+        model.set_value(tree_iter, 0, text_to_set)
         # There was an error with this line but it didn't seem to do anything bad.
-        self.mainWindow.project.character_template.details[text] = self.mainWindow.project.character_template.details.pop(name)
+        self.mainWindow.project.character_template.details[text_to_set] = self.mainWindow.project.character_template.details.pop(name)
 
     def detailsValueEdited(self, renderer: Gtk.CellRendererText, path: str, text: str):
 

@@ -178,18 +178,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="label" translatable="yes">This won't work if you have duplicate names in the name Pane.
-
-This is an error I'll have to talk to jackimonster about...</property>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">2</property>
-                      </packing>
+                      <placeholder/>
                     </child>
                   </object>
                   <packing>
