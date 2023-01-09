@@ -530,7 +530,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2394"/>
         <source>Co&amp;mpile</source>
-        <translation>엮기(&amp;m)</translation>
+        <translation>조판하기(&amp;m)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2397"/>
@@ -600,7 +600,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1249"/>
         <source>Project tree</source>
-        <translation>프로젝트 나무</translation>
+        <translation>프로젝트 트리</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1250"/>
@@ -634,7 +634,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1329"/>
         <source>Create your characters.</source>
-        <translation>등장인물을 만듭시다.</translation>
+        <translation>등장인물을 만듭니다.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1332"/>
@@ -649,7 +649,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1338"/>
         <source>Create the outline of your masterpiece.</source>
-        <translation>당신이 만들 걸작의 테두리를 쳐 봅시다.</translation>
+        <translation>당신이 만들 걸작의 윤곽을 그립니다.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1341"/>
@@ -1265,12 +1265,12 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="259"/>
         <source>Automatically load last project on startup</source>
-        <translation>시작하자마자 알아서 마지막 프로젝트 불러오기</translation>
+        <translation>시작할 때 마지막으로 열었던 프로젝트 불러오기</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="278"/>
         <source>Saving</source>
-        <translation>갈무리</translation>
+        <translation>저장</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="292"/>
@@ -1280,7 +1280,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="339"/>
         <source>minutes.</source>
-        <translation>분마다 갈무리하기.</translation>
+        <translation>분마다 저장하기.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="375"/>
@@ -1730,7 +1730,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1833"/>
         <source>Style</source>
-        <translation>맵시</translation>
+        <translation>스타일</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2750"/>
@@ -1810,7 +1810,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1845"/>
         <source>Old st&amp;yle</source>
-        <translation>옛 품새(&amp;r)</translation>
+        <translation>이전 스타일(&amp;r)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2189"/>
@@ -1825,7 +1825,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="138"/>
         <source>Style:</source>
-        <translation>맵시:</translation>
+        <translation>스타일:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="161"/>
@@ -1855,7 +1855,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1858"/>
         <source>&amp;New style</source>
-        <translation>새로운 품새(&amp;N)</translation>
+        <translation>새 스타일(&amp;N)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="2810"/>
@@ -2385,7 +2385,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="911"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>작은따옴표(')를 대신할 것:</translation>
+        <translation>작은따옴표(&apos;)를 대신할 것:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1020"/>
@@ -3649,7 +3649,7 @@
     <message>
         <location filename="../manuskript/ui/welcome.py" line="172"/>
         <source>Save project as...</source>
-        <translation>다른 이름으로 프로젝트 갈무리...</translation>
+        <translation>다른 이름으로 프로젝트 저장...</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="196"/>
