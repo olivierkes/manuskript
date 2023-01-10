@@ -65,7 +65,7 @@ class MainWindow:
 
         self.generalView = MainWindow.packViewIntoSlot(builder, "general_slot", GeneralView, self.project.info)
         self.summaryView = MainWindow.packViewIntoSlot(builder, "summary_slot", SummaryView, self.project.summary)
-        self.charactersView = MainWindow.packViewIntoSlot(builder, "characters_slot", CharactersView, self.project.characters)
+        self.charactersView = MainWindow.packViewIntoSlot(builder, "characters_slot", CharactersView, self.project) # Just project because we need it for characters and the template
         self.plotView = MainWindow.packViewIntoSlot(builder, "plot_slot", PlotView, self.project.plots)
         self.worldView = MainWindow.packViewIntoSlot(builder, "world_slot", WorldView, self.project.world)
         self.outlineView = MainWindow.packViewIntoSlot(builder, "outline_slot", OutlineView, self.project.outline)
@@ -74,12 +74,14 @@ class MainWindow:
         self.startupWindow = StartupWindow(self)
         self.aboutDialog = AboutDialog(self)
         self.frequencyWindow = FrequencyWindow(self)
+        self.character_template_window = CharacterTemplateEditorWindow(self)
         self.settingsWindow = SettingsWindow(self)
 
         self.windows = [
             self.startupWindow,
             self.aboutDialog,
             self.frequencyWindow,
+            self.character_template_window,
             self.settingsWindow
         ]
 
@@ -90,6 +92,7 @@ class MainWindow:
 
         bindMenuItem(builder, "settings_menu_item", self.settingsAction)
         bindMenuItem(builder, "frequency_menu_item", self.frequencyAction)
+        bindMenuItem(builder, "character_details_template_editor", self.character_details_template_editor_action)
         bindMenuItem(builder, "about_menu_item", self.aboutAction)
 
     def getProject(self):
@@ -119,6 +122,9 @@ class MainWindow:
 
     def frequencyAction(self, menuItem: Gtk.MenuItem):
         self.frequencyWindow.show()
+        
+    def character_details_template_editor_action(self, menuItem: Gtk.MenuItem):
+        self.character_template_window.show()
 
     def aboutAction(self, menuItem: Gtk.MenuItem):
         self.aboutDialog.show()

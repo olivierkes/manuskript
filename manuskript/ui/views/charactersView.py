@@ -8,13 +8,14 @@ from gi.repository import Gtk
 
 from manuskript.data import Characters, Character, Importance, Color
 from manuskript.ui.util import rgbaFromColor, pixbufFromColor
-from manuskript.util import validString, invalidString, validInt, invalidInt
+from manuskript.util import validString, invalidString, validInt, invalidInt, unique_name_checker
 
 
 class CharactersView:
 
-    def __init__(self, characters: Characters):
-        self.characters = characters
+    def __init__(self,project):
+        self.character_template = project.character_template # The template for detailed info
+        self.characters = project.characters
         self.character = None
 
         builder = Gtk.Builder()
@@ -74,13 +75,19 @@ class CharactersView:
         self.detailsSelection = builder.get_object("details_selection")
         self.addDetailsButton = builder.get_object("add_details")
         self.removeDetailsButton = builder.get_object("remove_details")
+        self.append_details_template_button = builder.get_object("appened_details_template")
         self.detailsNameRenderer = builder.get_object("details_name")
         self.detailsValueRenderer = builder.get_object("details_value")
 
         self.addDetailsButton.connect("clicked", self.addDetailsClicked)
         self.removeDetailsButton.connect("clicked", self.removeDetailsClicked)
+        # This is to append the template
+        self.append_details_template_button.connect("clicked", self.append_template_clicked)
+
         self.detailsNameRenderer.connect("edited", self.detailsNameEdited)
         self.detailsValueRenderer.connect("edited", self.detailsValueEdited)
+        
+        
 
         self.nameBuffer = builder.get_object("name")
         self.motivationBuffer = builder.get_object("motivation")
@@ -105,6 +112,7 @@ class CharactersView:
         self.notesBuffer.connect("changed", self.notesChanged)
 
         self.unloadCharacterData()
+        
 
     def refreshCharacterStore(self):
         self.charactersStore.clear()
@@ -297,7 +305,7 @@ class CharactersView:
         if tree_iter is None:
             return
 
-        name = "Description"
+        name = unique_name_checker.get_unique_name_for_dictionary(self.character.details, "Description")
         value = "Value"
 
         self.detailsStore.set_value(tree_iter, 0, name)
@@ -318,6 +326,18 @@ class CharactersView:
         model.remove(tree_iter)
 
         self.character.details.pop(name)
+        
+    # This is the the template code
+    # It appends the template onto the code
+    def append_template_clicked(self, button):
+        if self.character is None:
+            return
+        # This following bit could be turned into a def
+        for x in self.character_template.details:
+            self.character.details[x]= self.character_template.details[x]
+
+        #We have to reload the charecter
+        self.loadCharacterData(self.character)
 
     def detailsNameEdited(self, renderer: Gtk.CellRendererText, path: str, text: str):
         if self.character is None:
@@ -327,11 +347,12 @@ class CharactersView:
 
         if (model is None) or (tree_iter is None):
             return
-
+        
+        text_to_set = unique_name_checker.get_unique_name_for_dictionary(self.character.details, text)
         name = model.get_value(tree_iter, 0)
-        model.set_value(tree_iter, 0, text)
+        model.set_value(tree_iter, 0, text_to_set)
 
-        self.character.details[text] = self.character.details.pop(name)
+        self.character.details[text_to_set] = self.character.details.pop(name)
 
     def detailsValueEdited(self, renderer: Gtk.CellRendererText, path: str, text: str):
         if self.character is None:

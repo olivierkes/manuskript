@@ -1,9 +1,12 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
 
+# Imports
+# Python bundled modules
 import os
 
 from zipfile import BadZipFile
+# Manuskript modules
 from manuskript.data.version import Version, CURRENT_MSK_VERSION
 from manuskript.data.info import Info
 from manuskript.data.summary import Summary
@@ -15,6 +18,9 @@ from manuskript.data.plots import Plots
 from manuskript.data.world import World
 from manuskript.data.outline import Outline
 from manuskript.data.revisions import Revisions
+# This is for the charecter template
+from manuskript.data.characters_template import CharacterDetailTemplate
+
 from manuskript.io.mskFile import MskFile
 
 
@@ -34,6 +40,7 @@ class Project:
         self.world = World(self.file.dir_path)
         self.outline = Outline(self.file.dir_path, self.plots, self.labels, self.statuses)
         self.revisions = Revisions(self.file.dir_path)
+        self.character_template = CharacterDetailTemplate()
 
     def __del__(self):
         del self.file
