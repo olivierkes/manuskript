@@ -238,11 +238,15 @@ class Outline:
         self.labels = labels
         self.statuses = statuses
         self.items = list()
+        self.cache = dict()
 
     def __iter__(self):
         return self.items.__iter__()
 
     def getItemByID(self, ID: int) -> OutlineItem | None:
+        if ID in self.cache:
+            return self.cache.get(ID)
+
         for item in self.all():
             if item.UID.value == ID:
                 return item
@@ -255,6 +259,7 @@ class Outline:
 
         while len(queue) > 0:
             item = queue.pop()
+            self.cache[item.UID.value] = item
 
             if type(item) is OutlineFolder:
                 for child in item:
@@ -289,6 +294,7 @@ class Outline:
 
     def load(self):
         self.items.clear()
+        self.cache.clear()
 
         names = os.listdir(self.dir_path)
         names.sort()

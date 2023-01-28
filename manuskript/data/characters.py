@@ -144,6 +144,9 @@ class Characters:
     def load(self):
         self.data.clear()
 
+        if not os.path.isdir(self.dir_path):
+            return
+
         for filename in os.listdir(self.dir_path):
             path = os.path.join(self.dir_path, filename)
 
@@ -160,5 +163,9 @@ class Characters:
             self.data[character.UID.value] = character
 
     def save(self):
+        if not self.data:
+            return
+
+        os.makedirs(self.dir_path, exist_ok=True)
         for character in self.data.values():
             character.save()
