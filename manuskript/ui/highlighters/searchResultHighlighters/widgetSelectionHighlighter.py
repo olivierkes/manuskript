@@ -46,13 +46,19 @@ class widgetSelectionHighlighter():
     def _highlightTextEditSearchResult(self, textEdit, startPos, endPos, clearOnFocusOut):
         # On focus out, clear text edit selection.
         oldTextCursor = textEdit.textCursor()
-        if clearOnFocusOut:
-            self.generateClearHandler(textEdit, lambda widget: widget.setTextCursor(oldTextCursor))
-
-        # Highlight search result on the text edit.
         c = textEdit.textCursor()
         c.setPosition(startPos)
         c.setPosition(endPos, QTextCursor.KeepAnchor)
+
+        if clearOnFocusOut:
+            def clearSelection(widget):
+                cur = widget.textCursor()
+                if cur.hasSelection() and cur.anchor() == startPos and cur.position() == endPos:
+                    widget.setTextCursor(oldTextCursor)
+
+            self.generateClearHandler(textEdit, clearSelection)
+
+        # Highlight search result on the text edit.
         textEdit.setTextCursor(c)
 
     def _highlightLineEditSearchResult(self, lineEdit, startPos, endPos, clearOnFocusOut):
