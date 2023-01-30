@@ -337,28 +337,28 @@ class mainEditor(QWidget, Ui_mainEditor):
 
             if settings.progressChars:
                 self.lblRedacWC.setText(self.tr("({} chars) {}  words / {} ").format(
-                        locale.format("%d", cc, grouping=True),
-                        locale.format("%d", wc, grouping=True),
-                        locale.format("%d", goal, grouping=True)))
+                        locale.format_string("%d", cc, grouping=True),
+                        locale.format_string("%d", wc, grouping=True),
+                        locale.format_string("%d", goal, grouping=True)))
                 self.lblRedacWC.setToolTip("")
             else:
                 self.lblRedacWC.setText(self.tr("{}  words / {} ").format(
-                        locale.format("%d", wc, grouping=True),
-                        locale.format("%d", goal, grouping=True)))
+                        locale.format_string("%d", wc, grouping=True),
+                        locale.format_string("%d", goal, grouping=True)))
                 self.lblRedacWC.setToolTip(self.tr("{} chars").format(
-                        locale.format("%d", cc, grouping=True)))
+                        locale.format_string("%d", cc, grouping=True)))
         else:
             self.lblRedacProgress.hide()
 
             if settings.progressChars:
                 self.lblRedacWC.setText(self.tr("{} chars ").format(
-                        locale.format("%d", cc, grouping=True)))
+                        locale.format_string("%d", cc, grouping=True)))
                 self.lblRedacWC.setToolTip("")
             else:
                 self.lblRedacWC.setText(self.tr("{} words ").format(
-                        locale.format("%d", wc, grouping=True)))
+                        locale.format_string("%d", wc, grouping=True)))
                 self.lblRedacWC.setToolTip(self.tr("{} chars").format(
-                        locale.format("%d", cc, grouping=True)))
+                        locale.format_string("%d", cc, grouping=True)))
 
     ###############################################################################
     # VIEWS
