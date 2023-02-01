@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>681</width>
-    <height>598</height>
+    <width>803</width>
+    <height>623</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -259,7 +259,7 @@
              <string>Automatically load last project on startup</string>
             </property>
             <property name="checked">
-             <bool>true</bool>
+             <bool>false</bool>
             </property>
            </widget>
           </item>
@@ -292,7 +292,7 @@
                <string>Automatically save every</string>
               </property>
               <property name="checked">
-               <bool>true</bool>
+               <bool>false</bool>
               </property>
              </widget>
             </item>
@@ -375,7 +375,7 @@
                <string>If no changes during</string>
               </property>
               <property name="checked">
-               <bool>true</bool>
+               <bool>false</bool>
               </property>
              </widget>
             </item>
@@ -456,7 +456,7 @@
              <string>Save on project close</string>
             </property>
             <property name="checked">
-             <bool>true</bool>
+             <bool>false</bool>
             </property>
            </widget>
           </item>
@@ -478,7 +478,7 @@
              <string>Save to one single file</string>
             </property>
             <property name="checked">
-             <bool>true</bool>
+             <bool>false</bool>
             </property>
            </widget>
           </item>

@@ -714,7 +714,7 @@ def loadProject(project, zip=None):
         errors.append("settings.txt")
 
     # Just to be sure
-    settings.saveToZip = zip
+    settings.saveToZip = True if zip else False
     settings.defaultTextType = "md"
 
     ####################################################################################################################
