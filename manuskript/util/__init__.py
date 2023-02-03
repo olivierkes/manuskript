@@ -62,6 +62,7 @@ def countText(text: str, kind: CounterKind = CounterKind.WORDS):
     else:
         return 0
 
+
 def safeFraction(value, low, high) -> float:
     if value < low:
         return 0.0

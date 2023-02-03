@@ -28,7 +28,7 @@ class TemplateEntry:
         self.entryStack = builder.get_object("entry_stack")
         self.deleteButton = builder.get_object("delete_button")
 
-        self.deleteButton.connect("clicked", self.deleteClicked)
+        self.deleteButton.connect("clicked", self._deleteClicked)
 
     def bindTemplate(self, template: Template, level: TemplateLevel = None):
         self.template = template
@@ -49,7 +49,7 @@ class TemplateEntry:
 
             self.entryStack.set_visible_child_name("page_entry")
 
-    def deleteClicked(self, button: Gtk.Button):
+    def _deleteClicked(self, button: Gtk.Button):
         if self.template is None:
             return
 

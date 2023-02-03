@@ -28,19 +28,19 @@ class LabelsPage:
         self.refreshLabelStore()
 
         self.labelSelection = builder.get_object("label_selection")
-        self.labelSelection.connect("changed", self.labelSelectionChanged)
+        self.labelSelection.connect("changed", self._labelSelectionChanged)
 
         self.addButton = builder.get_object("add_label")
         self.removeButton = builder.get_object("remove_label")
 
-        self.addButton.connect("clicked", self.addClicked)
-        self.removeButton.connect("clicked", self.removeClicked)
+        self.addButton.connect("clicked", self._addClicked)
+        self.removeButton.connect("clicked", self._removeClicked)
 
         self.colorButton = builder.get_object("color")
-        self.colorButton.connect("color-set", self.colorSet)
+        self.colorButton.connect("color-set", self._colorSet)
 
         self.labelNameRenderer = builder.get_object("label_name")
-        self.labelNameRenderer.connect("edited", self.labelNameEdited)
+        self.labelNameRenderer.connect("edited", self._labelNameEdited)
 
         self.unloadLabelData()
 
@@ -70,7 +70,7 @@ class LabelsPage:
 
         self.colorButton.set_rgba(rgbaFromColor(Color(0, 0, 0)))
 
-    def labelSelectionChanged(self, selection: Gtk.TreeSelection):
+    def _labelSelectionChanged(self, selection: Gtk.TreeSelection):
         model, tree_iter = selection.get_selected()
 
         if tree_iter is None:
@@ -84,7 +84,7 @@ class LabelsPage:
         else:
             self.loadLabelData(label)
 
-    def addClicked(self, button: Gtk.Button):
+    def _addClicked(self, button: Gtk.Button):
         label = self.labels.addLabel()
 
         if label is None:
@@ -98,7 +98,7 @@ class LabelsPage:
         self.labelStore.set_value(tree_iter, 0, label.name)
         self.labelStore.set_value(tree_iter, 1, pixbufFromColor(label.color))
 
-    def removeClicked(self, button: Gtk.Button):
+    def _removeClicked(self, button: Gtk.Button):
         if self.label is None:
             return
 
@@ -112,7 +112,7 @@ class LabelsPage:
 
         self.labels.removeLabel(name)
 
-    def colorSet(self, button: Gtk.ColorButton):
+    def _colorSet(self, button: Gtk.ColorButton):
         if self.label is None:
             return
 
@@ -133,7 +133,7 @@ class LabelsPage:
                 row[1] = pixbufFromColor(color)
                 break
 
-    def labelNameEdited(self, renderer: Gtk.CellRendererText, path: str, text: str):
+    def _labelNameEdited(self, renderer: Gtk.CellRendererText, path: str, text: str):
         if self.label is None:
             return
 

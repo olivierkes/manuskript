@@ -69,11 +69,11 @@ class StartupWindow(AbstractDialog):
         self.demoTemplatesStore = builder.get_object("demo_templates_store")
 
         self.fictionTemplatesStore.set_visible_func(
-            lambda model, iter, userdata: model[iter][2] == TemplateKind.FICTION.value)
+            lambda model, iterator, userdata: model[iterator][2] == TemplateKind.FICTION.value)
         self.nonfictionTemplatesStore.set_visible_func(
-            lambda model, iter, userdata: model[iter][2] == TemplateKind.NONFICTION.value)
+            lambda model, iterator, userdata: model[iterator][2] == TemplateKind.NONFICTION.value)
         self.demoTemplatesStore.set_visible_func(
-            lambda model, iter, userdata: model[iter][2] == TemplateKind.DEMO.value)
+            lambda model, iterator, userdata: model[iterator][2] == TemplateKind.DEMO.value)
 
         self.fictionTemplatesStore.refilter()
         self.nonfictionTemplatesStore.refilter()
@@ -86,7 +86,7 @@ class StartupWindow(AbstractDialog):
         ]
 
         for selection in self.templateSelections:
-            selection.connect("changed", self.templateSelectionChanged)
+            selection.connect("changed", self._templateSelectionChanged)
 
         self.templateLevelsListbox = builder.get_object("template_levels_listbox")
 
@@ -94,8 +94,8 @@ class StartupWindow(AbstractDialog):
         self.addLevelButton = builder.get_object("add_level_button")
         self.addGoalButton = builder.get_object("add_goal_button")
 
-        self.addLevelButton.connect("clicked", self.addLevelClicked)
-        self.addGoalButton.connect("clicked", self.addGoalClicked)
+        self.addLevelButton.connect("clicked", self._addLevelClicked)
+        self.addGoalButton.connect("clicked", self._addGoalClicked)
 
     def loadTemplate(self, template: Template):
         self.template = template
@@ -123,7 +123,7 @@ class StartupWindow(AbstractDialog):
 
         self.goalLabel.set_text(self.template.getGoalString())
 
-    def templateSelectionChanged(self, selection: Gtk.TreeSelection):
+    def _templateSelectionChanged(self, selection: Gtk.TreeSelection):
         model, tree_iter = selection.get_selected()
 
         if tree_iter is None:
@@ -137,14 +137,14 @@ class StartupWindow(AbstractDialog):
 
         self.loadTemplate(self.templates[index] if (index >= 0) and (index < len(self.templates)) else None)
 
-    def addLevelClicked(self, button: Gtk.Button):
+    def _addLevelClicked(self, button: Gtk.Button):
         if self.template is None:
             return
 
         self.template.addLevel()
         self.loadTemplate(self.template)
 
-    def addGoalClicked(self, button: Gtk.Button):
+    def _addGoalClicked(self, button: Gtk.Button):
         if self.template is None:
             return
 

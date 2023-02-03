@@ -11,8 +11,6 @@ from manuskript.ui.editor import GridItem
 from manuskript.ui.util import pixbufFromColor, iconByOutlineItemType
 from manuskript.util import validString, validInt, safeFraction
 
-import inspect
-
 
 class EditorView:
 
@@ -40,7 +38,7 @@ class EditorView:
         self.editorTextBuffer = builder.get_object("editor_text")
         self.editorFlowbox = builder.get_object("editor_flowbox")
 
-        self.editorFlowbox.connect("child-activated", self.editorFlowboxChildActivated)
+        self.editorFlowbox.connect("child-activated", self._editorFlowboxChildActivated)
 
         self.upButtons = [
             builder.get_object("up"),
@@ -48,7 +46,7 @@ class EditorView:
         ]
 
         for button in self.upButtons:
-            button.connect("clicked", self.upButtonClicked)
+            button.connect("clicked", self._upButtonClicked)
 
         self.counterLabel = builder.get_object("counter")
         self.counterProgressBar = builder.get_object("counter_progress")
@@ -202,7 +200,7 @@ class EditorView:
 
         self.outlineItem = outlineItem
 
-    def editorFlowboxChildActivated(self, box: Gtk.FlowBox, child: Gtk.FlowBoxChild):
+    def _editorFlowboxChildActivated(self, box: Gtk.FlowBox, child: Gtk.FlowBoxChild):
         if child is None:
             return
 
@@ -212,7 +210,7 @@ class EditorView:
 
         self.loadOutlineData(self.editorItems[index])
 
-    def upButtonClicked(self, button: Gtk.Button):
+    def _upButtonClicked(self, button: Gtk.Button):
         if self.outlineItem is None:
             return
 

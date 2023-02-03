@@ -37,18 +37,18 @@ class PlotView:
 
         self.filterPlotsBuffer = builder.get_object("filter_plots")
 
-        self.filterPlotsBuffer.connect("deleted-text", self.filterPlotsDeletedText)
-        self.filterPlotsBuffer.connect("inserted-text", self.filterPlotsInsertedText)
+        self.filterPlotsBuffer.connect("deleted-text", self._filterPlotsDeletedText)
+        self.filterPlotsBuffer.connect("inserted-text", self._filterPlotsInsertedText)
 
-        self.filteredPlotsStore.set_visible_func(self.filterPlots)
+        self.filteredPlotsStore.set_visible_func(self._filterPlots)
         self.filteredPlotsStore.refilter()
 
         self.mainPlotsStore.set_visible_func(
-            lambda model, iter, userdata: model[iter][2] == Importance.MAIN.value)
+            lambda model, iterator, userdata: model[iterator][2] == Importance.MAIN.value)
         self.secondaryPlotsStore.set_visible_func(
-            lambda model, iter, userdata: model[iter][2] == Importance.SECONDARY.value)
+            lambda model, iterator, userdata: model[iterator][2] == Importance.SECONDARY.value)
         self.minorPlotsStore.set_visible_func(
-            lambda model, iter, userdata: model[iter][2] == Importance.MINOR.value)
+            lambda model, iterator, userdata: model[iterator][2] == Importance.MINOR.value)
 
         self.mainPlotsStore.refilter()
         self.secondaryPlotsStore.refilter()
@@ -61,17 +61,17 @@ class PlotView:
         ]
 
         for selection in self.plotSelections:
-            selection.connect("changed", self.plotSelectionChanged)
+            selection.connect("changed", self._plotSelectionChanged)
 
         self.addPlotButton = builder.get_object("add_plot")
         self.removePlotButton = builder.get_object("remove_plot")
 
-        self.addPlotButton.connect("clicked", self.addPlotClicked)
-        self.removePlotButton.connect("clicked", self.removePlotClicked)
+        self.addPlotButton.connect("clicked", self._addPlotClicked)
+        self.removePlotButton.connect("clicked", self._removePlotClicked)
 
         self.importanceCombo = builder.get_object("importance")
 
-        self.importanceCombo.connect("changed", self.importanceChanged)
+        self.importanceCombo.connect("changed", self._importanceChanged)
 
         self.resolutionStepsStore = builder.get_object("resolution_steps_store")
         self.resolutionStepsSelection = builder.get_object("resolution_steps_selection")
@@ -80,28 +80,28 @@ class PlotView:
         self.resolutionStepsNameRenderer = builder.get_object("resolution_steps_name")
         self.resolutionStepsMetaRenderer = builder.get_object("resolution_steps_meta")
 
-        self.resolutionStepsSelection.connect("changed", self.resolutionStepsSelectionChanged)
-        self.addResolutionStepButton.connect("clicked", self.addResolutionStepClicked)
-        self.removeResolutionStepButton.connect("clicked", self.removeResolutionStepClicked)
-        self.resolutionStepsNameRenderer.connect("edited", self.resolutionStepsNameEdited)
-        self.resolutionStepsMetaRenderer.connect("edited", self.resolutionStepsMetaEdited)
+        self.resolutionStepsSelection.connect("changed", self._resolutionStepsSelectionChanged)
+        self.addResolutionStepButton.connect("clicked", self._addResolutionStepClicked)
+        self.removeResolutionStepButton.connect("clicked", self._removeResolutionStepClicked)
+        self.resolutionStepsNameRenderer.connect("edited", self._resolutionStepsNameEdited)
+        self.resolutionStepsMetaRenderer.connect("edited", self._resolutionStepsMetaEdited)
 
         self.nameBuffer = builder.get_object("name")
         self.descriptionBuffer = builder.get_object("description")
         self.resultBuffer = builder.get_object("result")
         self.stepSummaryBuffer = builder.get_object("step_summary")
 
-        self.nameBuffer.connect("deleted-text", self.nameDeletedText)
-        self.nameBuffer.connect("inserted-text", self.nameInsertedText)
+        self.nameBuffer.connect("deleted-text", self._nameDeletedText)
+        self.nameBuffer.connect("inserted-text", self._nameInsertedText)
 
         self.plotCharactersStore = builder.get_object("plot_characters_store")
 
-        self.plotCharactersStore.set_visible_func(self.filterPlotCharacters)
+        self.plotCharactersStore.set_visible_func(self._filterPlotCharacters)
         self.plotCharactersStore.refilter()
 
-        self.descriptionBuffer.connect("changed", self.descriptionChanged)
-        self.resultBuffer.connect("changed", self.resultChanged)
-        self.stepSummaryBuffer.connect("changed", self.stepSummaryChanged)
+        self.descriptionBuffer.connect("changed", self._descriptionChanged)
+        self.resultBuffer.connect("changed", self._resultChanged)
+        self.stepSummaryBuffer.connect("changed", self._stepSummaryChanged)
 
         self.unloadPlotData()
 
@@ -186,7 +186,7 @@ class PlotView:
 
         self.plotCharactersStore.refilter()
 
-    def plotSelectionChanged(self, selection: Gtk.TreeSelection):
+    def _plotSelectionChanged(self, selection: Gtk.TreeSelection):
         model, tree_iter = selection.get_selected()
 
         if tree_iter is None:
@@ -204,7 +204,7 @@ class PlotView:
         else:
             self.loadPlotData(plotLine)
 
-    def addPlotClicked(self, button: Gtk.Button):
+    def _addPlotClicked(self, button: Gtk.Button):
         name = invalidString(self.filterPlotsBuffer.get_text())
         plotLine = self.plots.addLine(name)
 
@@ -216,29 +216,29 @@ class PlotView:
 
         self.refreshPlotsStore()
 
-    def removePlotClicked(self, button: Gtk.Button):
+    def _removePlotClicked(self, button: Gtk.Button):
         if self.plotLine is None:
             return
 
         self.plots.removeLine(self.plotLine)
         self.refreshPlotsStore()
 
-    def filterPlots(self, model, iter, userdata):
-        name = validString(model[iter][1])
+    def _filterPlots(self, model, iterator, userdata):
+        name = validString(model[iterator][1])
         text = validString(self.filterPlotsBuffer.get_text())
 
         return text.lower() in name.lower()
 
-    def filterPlotsChanged(self, buffer: Gtk.EntryBuffer):
+    def __filterPlotsChanged(self, buffer: Gtk.EntryBuffer):
         self.filteredPlotsStore.refilter()
 
-    def filterPlotsDeletedText(self, buffer: Gtk.EntryBuffer, position: int, n_chars: int):
-        self.filterPlotsChanged(buffer)
+    def _filterPlotsDeletedText(self, buffer: Gtk.EntryBuffer, position: int, n_chars: int):
+        self.__filterPlotsChanged(buffer)
 
-    def filterPlotsInsertedText(self, buffer: Gtk.EntryBuffer, position: int, chars: str, n_chars: int):
-        self.filterPlotsChanged(buffer)
+    def _filterPlotsInsertedText(self, buffer: Gtk.EntryBuffer, position: int, chars: str, n_chars: int):
+        self.__filterPlotsChanged(buffer)
 
-    def importanceChanged(self, combo: Gtk.ComboBox):
+    def _importanceChanged(self, combo: Gtk.ComboBox):
         if self.plotLine is None:
             return
 
@@ -277,7 +277,7 @@ class PlotView:
                 selection.select_iter(row.iter)
                 break
 
-    def resolutionStepsSelectionChanged(self, selection: Gtk.TreeSelection):
+    def _resolutionStepsSelectionChanged(self, selection: Gtk.TreeSelection):
         model, tree_iter = selection.get_selected()
 
         self.plotStep = None
@@ -295,7 +295,7 @@ class PlotView:
 
             self.plotStep = plotStep
 
-    def addResolutionStepClicked(self, button: Gtk.Button):
+    def _addResolutionStepClicked(self, button: Gtk.Button):
         if self.plotLine is None:
             return
 
@@ -313,7 +313,7 @@ class PlotView:
         self.resolutionStepsStore.set_value(tree_iter, 1, validString(step.name))
         self.resolutionStepsStore.set_value(tree_iter, 2, validString(step.meta))
 
-    def removeResolutionStepClicked(self, button: Gtk.Button):
+    def _removeResolutionStepClicked(self, button: Gtk.Button):
         if (self.plotLine is None) or (self.plotStep is None):
             return
 
@@ -326,7 +326,7 @@ class PlotView:
 
         self.plotLine.removeStep(self.plotStep)
 
-    def resolutionStepsNameEdited(self, renderer: Gtk.CellRendererText, path: str, text: str):
+    def _resolutionStepsNameEdited(self, renderer: Gtk.CellRendererText, path: str, text: str):
         if self.plotStep is None:
             return
 
@@ -339,7 +339,7 @@ class PlotView:
 
         self.plotStep.name = invalidString(text)
 
-    def resolutionStepsMetaEdited(self, renderer: Gtk.CellRendererText, path: str, text: str):
+    def _resolutionStepsMetaEdited(self, renderer: Gtk.CellRendererText, path: str, text: str):
         if self.plotStep is None:
             return
 
@@ -352,7 +352,7 @@ class PlotView:
 
         self.plotStep.meta = invalidString(text)
 
-    def nameChanged(self, buffer: Gtk.EntryBuffer):
+    def __nameChanged(self, buffer: Gtk.EntryBuffer):
         if self.plotLine is None:
             return
 
@@ -368,21 +368,21 @@ class PlotView:
                 row[1] = validString(name)
                 break
 
-    def nameDeletedText(self, buffer: Gtk.EntryBuffer, position: int, n_chars: int):
-        self.nameChanged(buffer)
+    def _nameDeletedText(self, buffer: Gtk.EntryBuffer, position: int, n_chars: int):
+        self.__nameChanged(buffer)
 
-    def nameInsertedText(self, buffer: Gtk.EntryBuffer, position: int, chars: str, n_chars: int):
-        self.nameChanged(buffer)
+    def _nameInsertedText(self, buffer: Gtk.EntryBuffer, position: int, chars: str, n_chars: int):
+        self.__nameChanged(buffer)
 
-    def filterPlotCharacters(self, model, iter, userdata):
-        ID = validInt(model[iter][0])
+    def _filterPlotCharacters(self, model, iterator, userdata):
+        ID = validInt(model[iterator][0])
 
         if self.plotLine is None:
             return False
 
         return ID in self.plotLine.characters
 
-    def descriptionChanged(self, buffer: Gtk.TextBuffer):
+    def _descriptionChanged(self, buffer: Gtk.TextBuffer):
         if self.plotLine is None:
             return
 
@@ -393,7 +393,7 @@ class PlotView:
 
         self.plotLine.description = invalidString(text)
 
-    def resultChanged(self, buffer: Gtk.TextBuffer):
+    def _resultChanged(self, buffer: Gtk.TextBuffer):
         if self.plotLine is None:
             return
 
@@ -404,7 +404,7 @@ class PlotView:
 
         self.plotLine.result = invalidString(text)
 
-    def stepSummaryChanged(self, buffer: Gtk.TextBuffer):
+    def _stepSummaryChanged(self, buffer: Gtk.TextBuffer):
         if self.plotStep is None:
             return
 

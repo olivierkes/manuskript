@@ -33,15 +33,18 @@ class CharactersView:
 
         self.filterCharactersBuffer = builder.get_object("filter_characters")
 
-        self.filterCharactersBuffer.connect("deleted-text", self.filterCharactersDeletedText)
-        self.filterCharactersBuffer.connect("inserted-text", self.filterCharactersInsertedText)
+        self.filterCharactersBuffer.connect("deleted-text", self._filterCharactersDeletedText)
+        self.filterCharactersBuffer.connect("inserted-text", self._filterCharactersInsertedText)
 
-        self.filteredCharactersStore.set_visible_func(self.filterCharacters)
+        self.filteredCharactersStore.set_visible_func(self._filterCharacters)
         self.filteredCharactersStore.refilter()
 
-        self.mainCharactersStore.set_visible_func(lambda model, iter, userdata: model[iter][3] == Importance.MAIN.value)
-        self.secondaryCharactersStore.set_visible_func(lambda model, iter, userdata: model[iter][3] == Importance.SECONDARY.value)
-        self.minorCharactersStore.set_visible_func(lambda model, iter, userdata: model[iter][3] == Importance.MINOR.value)
+        self.mainCharactersStore.set_visible_func(lambda model, iterator, userdata:
+                                                  model[iterator][3] == Importance.MAIN.value)
+        self.secondaryCharactersStore.set_visible_func(lambda model, iterator, userdata:
+                                                       model[iterator][3] == Importance.SECONDARY.value)
+        self.minorCharactersStore.set_visible_func(lambda model, iterator, userdata:
+                                                   model[iterator][3] == Importance.MINOR.value)
 
         self.mainCharactersStore.refilter()
         self.secondaryCharactersStore.refilter()
@@ -54,21 +57,21 @@ class CharactersView:
         ]
 
         for selection in self.characterSelections:
-            selection.connect("changed", self.characterSelectionChanged)
+            selection.connect("changed", self._characterSelectionChanged)
 
         self.addCharacterButton = builder.get_object("add_character")
         self.removeCharacterButton = builder.get_object("remove_character")
 
-        self.addCharacterButton.connect("clicked", self.addCharacterClicked)
-        self.removeCharacterButton.connect("clicked", self.removeCharacterClicked)
+        self.addCharacterButton.connect("clicked", self._addCharacterClicked)
+        self.removeCharacterButton.connect("clicked", self._removeCharacterClicked)
 
         self.colorButton = builder.get_object("color")
         self.importanceCombo = builder.get_object("importance")
         self.allowPOVCheck = builder.get_object("allow_POV")
 
-        self.colorButton.connect("color-set", self.colorSet)
-        self.importanceCombo.connect("changed", self.importanceChanged)
-        self.allowPOVCheck.connect("toggled", self.allowPOVToggled)
+        self.colorButton.connect("color-set", self._colorSet)
+        self.importanceCombo.connect("changed", self._importanceChanged)
+        self.allowPOVCheck.connect("toggled", self._allowPOVToggled)
 
         self.detailsStore = builder.get_object("details_store")
         self.detailsSelection = builder.get_object("details_selection")
@@ -77,10 +80,10 @@ class CharactersView:
         self.detailsNameRenderer = builder.get_object("details_name")
         self.detailsValueRenderer = builder.get_object("details_value")
 
-        self.addDetailsButton.connect("clicked", self.addDetailsClicked)
-        self.removeDetailsButton.connect("clicked", self.removeDetailsClicked)
-        self.detailsNameRenderer.connect("edited", self.detailsNameEdited)
-        self.detailsValueRenderer.connect("edited", self.detailsValueEdited)
+        self.addDetailsButton.connect("clicked", self._addDetailsClicked)
+        self.removeDetailsButton.connect("clicked", self._removeDetailsClicked)
+        self.detailsNameRenderer.connect("edited", self._detailsNameEdited)
+        self.detailsValueRenderer.connect("edited", self._detailsValueEdited)
 
         self.nameBuffer = builder.get_object("name")
         self.motivationBuffer = builder.get_object("motivation")
@@ -92,17 +95,17 @@ class CharactersView:
         self.summaryBuffer = builder.get_object("summary")
         self.notesBuffer = builder.get_object("notes")
 
-        self.nameBuffer.connect("deleted-text", self.nameDeletedText)
-        self.nameBuffer.connect("inserted-text", self.nameInsertedText)
+        self.nameBuffer.connect("deleted-text", self._nameDeletedText)
+        self.nameBuffer.connect("inserted-text", self._nameInsertedText)
 
-        self.motivationBuffer.connect("changed", self.motivationChanged)
-        self.goalBuffer.connect("changed", self.goalChanged)
-        self.conflictBuffer.connect("changed", self.conflictChanged)
-        self.epiphanyBuffer.connect("changed", self.epiphanyChanged)
-        self.oneSentenceBuffer.connect("changed", self.oneSentenceChanged)
-        self.oneParagraphBuffer.connect("changed", self.oneParagraphChanged)
-        self.summaryBuffer.connect("changed", self.summaryChanged)
-        self.notesBuffer.connect("changed", self.notesChanged)
+        self.motivationBuffer.connect("changed", self._motivationChanged)
+        self.goalBuffer.connect("changed", self._goalChanged)
+        self.conflictBuffer.connect("changed", self._conflictChanged)
+        self.epiphanyBuffer.connect("changed", self._epiphanyChanged)
+        self.oneSentenceBuffer.connect("changed", self._oneSentenceChanged)
+        self.oneParagraphBuffer.connect("changed", self._oneParagraphChanged)
+        self.summaryBuffer.connect("changed", self._summaryChanged)
+        self.notesBuffer.connect("changed", self._notesChanged)
 
         self.unloadCharacterData()
 
@@ -170,7 +173,7 @@ class CharactersView:
 
         self.detailsStore.clear()
 
-    def characterSelectionChanged(self, selection: Gtk.TreeSelection):
+    def _characterSelectionChanged(self, selection: Gtk.TreeSelection):
         model, tree_iter = selection.get_selected()
 
         if tree_iter is None:
@@ -188,7 +191,7 @@ class CharactersView:
         else:
             self.loadCharacterData(character)
 
-    def addCharacterClicked(self, button: Gtk.Button):
+    def _addCharacterClicked(self, button: Gtk.Button):
         name = invalidString(self.filterCharactersBuffer.get_text())
         character = self.characters.add(name)
 
@@ -200,29 +203,29 @@ class CharactersView:
 
         self.refreshCharacterStore()
 
-    def removeCharacterClicked(self, button: Gtk.Button):
+    def _removeCharacterClicked(self, button: Gtk.Button):
         if self.character is None:
             return
 
         self.character.remove()
         self.refreshCharacterStore()
 
-    def filterCharacters(self, model, iter, userdata):
-        name = validString(model[iter][1])
+    def _filterCharacters(self, model, iterator, userdata):
+        name = validString(model[iterator][1])
         text = validString(self.filterCharactersBuffer.get_text())
 
         return text.lower() in name.lower()
 
-    def filterCharactersChanged(self, buffer: Gtk.EntryBuffer):
+    def __filterCharactersChanged(self, buffer: Gtk.EntryBuffer):
         self.filteredCharactersStore.refilter()
 
-    def filterCharactersDeletedText(self, buffer: Gtk.EntryBuffer, position: int, n_chars: int):
-        self.filterCharactersChanged(buffer)
+    def _filterCharactersDeletedText(self, buffer: Gtk.EntryBuffer, position: int, n_chars: int):
+        self.__filterCharactersChanged(buffer)
 
-    def filterCharactersInsertedText(self, buffer: Gtk.EntryBuffer, position: int, chars: str, n_chars: int):
-        self.filterCharactersChanged(buffer)
+    def _filterCharactersInsertedText(self, buffer: Gtk.EntryBuffer, position: int, chars: str, n_chars: int):
+        self.__filterCharactersChanged(buffer)
 
-    def colorSet(self, button: Gtk.ColorButton):
+    def _colorSet(self, button: Gtk.ColorButton):
         if self.character is None:
             return
 
@@ -243,7 +246,7 @@ class CharactersView:
                 row[2] = pixbufFromColor(color)
                 break
 
-    def importanceChanged(self, combo: Gtk.ComboBox):
+    def _importanceChanged(self, combo: Gtk.ComboBox):
         if self.character is None:
             return
 
@@ -282,13 +285,13 @@ class CharactersView:
                 selection.select_iter(row.iter)
                 break
 
-    def allowPOVToggled(self, button: Gtk.ToggleButton):
+    def _allowPOVToggled(self, button: Gtk.ToggleButton):
         if self.character is None:
             return
 
         self.character.POV = button.get_active()
 
-    def addDetailsClicked(self, button: Gtk.Button):
+    def _addDetailsClicked(self, button: Gtk.Button):
         if self.character is None:
             return
 
@@ -305,7 +308,7 @@ class CharactersView:
 
         self.character.details[name] = value
 
-    def removeDetailsClicked(self, button: Gtk.Button):
+    def _removeDetailsClicked(self, button: Gtk.Button):
         if self.character is None:
             return
 
@@ -319,7 +322,7 @@ class CharactersView:
 
         self.character.details.pop(name)
 
-    def detailsNameEdited(self, renderer: Gtk.CellRendererText, path: str, text: str):
+    def _detailsNameEdited(self, renderer: Gtk.CellRendererText, path: str, text: str):
         if self.character is None:
             return
 
@@ -333,7 +336,7 @@ class CharactersView:
 
         self.character.details[text] = self.character.details.pop(name)
 
-    def detailsValueEdited(self, renderer: Gtk.CellRendererText, path: str, text: str):
+    def _detailsValueEdited(self, renderer: Gtk.CellRendererText, path: str, text: str):
         if self.character is None:
             return
 
@@ -347,7 +350,7 @@ class CharactersView:
 
         self.character.details[name] = text
 
-    def nameChanged(self, buffer: Gtk.EntryBuffer):
+    def __nameChanged(self, buffer: Gtk.EntryBuffer):
         if self.character is None:
             return
 
@@ -363,13 +366,13 @@ class CharactersView:
                 row[1] = validString(name)
                 break
 
-    def nameDeletedText(self, buffer: Gtk.EntryBuffer, position: int, n_chars: int):
-        self.nameChanged(buffer)
+    def _nameDeletedText(self, buffer: Gtk.EntryBuffer, position: int, n_chars: int):
+        self.__nameChanged(buffer)
 
-    def nameInsertedText(self, buffer: Gtk.EntryBuffer, position: int, chars: str, n_chars: int):
-        self.nameChanged(buffer)
+    def _nameInsertedText(self, buffer: Gtk.EntryBuffer, position: int, chars: str, n_chars: int):
+        self.__nameChanged(buffer)
 
-    def motivationChanged(self, buffer: Gtk.TextBuffer):
+    def _motivationChanged(self, buffer: Gtk.TextBuffer):
         if self.character is None:
             return
 
@@ -380,7 +383,7 @@ class CharactersView:
 
         self.character.motivation = invalidString(text)
 
-    def goalChanged(self, buffer: Gtk.TextBuffer):
+    def _goalChanged(self, buffer: Gtk.TextBuffer):
         if self.character is None:
             return
 
@@ -391,7 +394,7 @@ class CharactersView:
 
         self.character.goal = invalidString(text)
 
-    def conflictChanged(self, buffer: Gtk.TextBuffer):
+    def _conflictChanged(self, buffer: Gtk.TextBuffer):
         if self.character is None:
             return
 
@@ -402,7 +405,7 @@ class CharactersView:
 
         self.character.conflict = invalidString(text)
 
-    def epiphanyChanged(self, buffer: Gtk.TextBuffer):
+    def _epiphanyChanged(self, buffer: Gtk.TextBuffer):
         if self.character is None:
             return
 
@@ -413,7 +416,7 @@ class CharactersView:
 
         self.character.epiphany = invalidString(text)
 
-    def oneSentenceChanged(self, buffer: Gtk.TextBuffer):
+    def _oneSentenceChanged(self, buffer: Gtk.TextBuffer):
         if self.character is None:
             return
 
@@ -424,7 +427,7 @@ class CharactersView:
 
         self.character.summarySentence = invalidString(text)
 
-    def oneParagraphChanged(self, buffer: Gtk.TextBuffer):
+    def _oneParagraphChanged(self, buffer: Gtk.TextBuffer):
         if self.character is None:
             return
 
@@ -435,7 +438,7 @@ class CharactersView:
 
         self.character.summaryParagraph = invalidString(text)
 
-    def summaryChanged(self, buffer: Gtk.TextBuffer):
+    def _summaryChanged(self, buffer: Gtk.TextBuffer):
         if self.character is None:
             return
 
@@ -446,7 +449,7 @@ class CharactersView:
 
         self.character.summaryFull = invalidString(text)
 
-    def notesChanged(self, buffer: Gtk.TextBuffer):
+    def _notesChanged(self, buffer: Gtk.TextBuffer):
         if self.character is None:
             return
 

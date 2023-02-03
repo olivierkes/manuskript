@@ -27,16 +27,16 @@ class StatusPage:
         self.refreshStatusStore()
 
         self.statusSelection = builder.get_object("status_selection")
-        self.statusSelection.connect("changed", self.statusSelectionChanged)
+        self.statusSelection.connect("changed", self._statusSelectionChanged)
 
         self.addButton = builder.get_object("add_status")
         self.removeButton = builder.get_object("remove_status")
 
-        self.addButton.connect("clicked", self.addClicked)
-        self.removeButton.connect("clicked", self.removeClicked)
+        self.addButton.connect("clicked", self._addClicked)
+        self.removeButton.connect("clicked", self._removeClicked)
 
         self.statusNameRenderer = builder.get_object("status_name")
-        self.statusNameRenderer.connect("edited", self.statusNameEdited)
+        self.statusNameRenderer.connect("edited", self._statusNameEdited)
 
         self.unloadStatusData()
 
@@ -57,7 +57,7 @@ class StatusPage:
     def unloadStatusData(self):
         self.status = None
 
-    def statusSelectionChanged(self, selection: Gtk.TreeSelection):
+    def _statusSelectionChanged(self, selection: Gtk.TreeSelection):
         model, tree_iter = selection.get_selected()
 
         if tree_iter is None:
@@ -71,7 +71,7 @@ class StatusPage:
         else:
             self.loadStatusData(status)
 
-    def addClicked(self, button: Gtk.Button):
+    def _addClicked(self, button: Gtk.Button):
         status = self.statuses.addStatus()
 
         if status is None:
@@ -84,7 +84,7 @@ class StatusPage:
 
         self.statusStore.set_value(tree_iter, 0, status.name)
 
-    def removeClicked(self, button: Gtk.Button):
+    def _removeClicked(self, button: Gtk.Button):
         if self.status is None:
             return
 
@@ -98,7 +98,7 @@ class StatusPage:
 
         self.statuses.removeStatus(name)
 
-    def statusNameEdited(self, renderer: Gtk.CellRendererText, path: str, text: str):
+    def _statusNameEdited(self, renderer: Gtk.CellRendererText, path: str, text: str):
         if self.status is None:
             return
 
