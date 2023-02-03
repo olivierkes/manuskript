@@ -4,6 +4,7 @@
 import os
 
 from collections import OrderedDict
+from concurrent.futures import ThreadPoolExecutor
 from enum import Enum, unique
 from manuskript.data.goal import Goal
 from manuskript.data.labels import LabelHost, Label
@@ -120,12 +121,20 @@ class OutlineText(OutlineItem):
         OutlineItem.__init__(self, path, outline)
 
         self.text = ""
+        self.cache = dict()
 
     def textCount(self, counterKind: CounterKind = None) -> int:
         if counterKind is None:
             counterKind = self.goalKind()
 
-        return super().textCount(counterKind) + countText(self.text, counterKind)
+        textHash = hash(self.text)
+        if textHash not in self.cache:
+            self.cache.clear()
+            self.cache[textHash] = True
+
+        if counterKind.name not in self.cache:
+            self.cache[counterKind.name] = super().textCount(counterKind) + countText(self.text, counterKind)
+        return self.cache[counterKind.name]
 
     def load(self, optimized: bool = True):
         metadata, body = self.file.loadMMD(optimized)
@@ -184,9 +193,8 @@ class OutlineFolder(OutlineItem):
             folder.items.append(item)
 
         if recursive:
-            for item in folder.items:
-                if type(item) is OutlineFolder:
-                    cls.loadItems(outline, item, recursive)
+            for item in filter(lambda outlineItem: type(outlineItem) is OutlineFolder, folder.items):
+                cls.loadItems(outline, item, recursive)
 
     def textCount(self, counterKind: CounterKind = None) -> int:
         if counterKind is None:
@@ -219,9 +227,8 @@ class OutlineFolder(OutlineItem):
             item.save()
 
         if recursive:
-            for item in folder.items:
-                if type(item) is OutlineFolder:
-                    cls.saveItems(item, recursive)
+            for item in filter(lambda outlineItem: type(outlineItem) is OutlineFolder, folder.items):
+                cls.saveItems(item, recursive)
 
     def save(self):
         self.type = "folder"
@@ -314,14 +321,12 @@ class Outline:
 
             self.items.append(item)
 
-        for item in self.items:
-            if type(item) is OutlineFolder:
-                OutlineFolder.loadItems(self, item, True)
+        for item in filter(lambda outlineItem: type(outlineItem) is OutlineFolder, self.items):
+            OutlineFolder.loadItems(self, item, True)
 
     def save(self):
         for item in self.items:
             item.save()
 
-        for item in self.items:
-            if type(item) is OutlineFolder:
-                OutlineFolder.saveItems(item, True)
+        for item in filter(lambda outlineItem: type(outlineItem) is OutlineFolder, self.items):
+            OutlineFolder.saveItems(item, True)
