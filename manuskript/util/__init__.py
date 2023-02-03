@@ -3,6 +3,7 @@
 
 import re
 import time
+import traceback
 
 from manuskript.util.counter import CounterKind, CharCounter, WordCounter, PageCounter
 
@@ -65,7 +66,7 @@ def countText(text: str, kind: CounterKind = CounterKind.WORDS):
 
 
 def safeFraction(value, low, high) -> float:
-    if value < low:
+    if value < low or high <= low:
         return 0.0
     elif value > high:
         return 1.0
