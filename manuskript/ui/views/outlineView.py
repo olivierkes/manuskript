@@ -4,7 +4,7 @@
 import gi
 
 gi.require_version("Gtk", "3.0")
-from gi.repository import Gtk
+from gi.repository import GObject, Gtk
 
 from manuskript.data import Outline, OutlineFolder, OutlineText, OutlineItem, OutlineState, Plots, PlotLine, Characters, Character, Importance, Goal
 from manuskript.ui.util import rgbaFromColor, pixbufFromColor
@@ -16,6 +16,7 @@ class OutlineView:
     def __init__(self, outline: Outline):
         self.outline = outline
         self.outlineItem = None
+        self.outlineCompletion = []
 
         builder = Gtk.Builder()
         builder.add_from_file("ui/outline.glade")
@@ -138,20 +139,9 @@ class OutlineView:
             self.charactersStore.set_value(tree_iter, 1, validString(character.name))
             self.charactersStore.set_value(tree_iter, 2, pixbufFromColor(character.color))
 
-    def __appendOutlineItem(self, outlineItem: OutlineItem, parent_iter=None):
-        tree_iter = self.outlineStore.append(parent_iter)
-
-        if tree_iter is None:
-            return
-
-        if outlineItem.state != OutlineState.COMPLETE:
-            outlineItem.load(False)
-
+    def __updateOutlineItem(self, tree_iter, outlineItem: OutlineItem):
         if type(outlineItem) is OutlineFolder:
             icon = "folder-symbolic"
-
-            for item in outlineItem:
-                self.__appendOutlineItem(item, tree_iter)
         elif type(outlineItem) is OutlineText:
             icon = "emblem-documents-symbolic"
         else:
@@ -175,6 +165,34 @@ class OutlineView:
         self.outlineStore.set_value(tree_iter, 6, goal)
         self.outlineStore.set_value(tree_iter, 7, progress)
         self.outlineStore.set_value(tree_iter, 8, icon)
+
+    def __completeOutlineItem(self):
+        (tree_iter, outlineItem) = self.outlineCompletion.pop(0)
+
+        if outlineItem.state != OutlineState.COMPLETE:
+            outlineItem.load(False)
+
+        self.__updateOutlineItem(tree_iter, outlineItem)
+
+        return len(self.outlineCompletion) > 0
+
+    def __appendOutlineItem(self, outlineItem: OutlineItem, parent_iter=None):
+        tree_iter = self.outlineStore.append(parent_iter)
+
+        if tree_iter is None:
+            return
+
+        if type(outlineItem) is OutlineFolder:
+            for item in outlineItem:
+                self.__appendOutlineItem(item, tree_iter)
+
+        if outlineItem.state != OutlineState.COMPLETE:
+            if len(self.outlineCompletion) == 0:
+                GObject.idle_add(self.__completeOutlineItem)
+
+            self.outlineCompletion.append((tree_iter, outlineItem))
+
+        self.__updateOutlineItem(tree_iter, outlineItem)
 
     def refreshOutlineStore(self):
         self.outlineStore.clear()

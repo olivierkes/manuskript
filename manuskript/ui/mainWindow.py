@@ -18,6 +18,7 @@ from manuskript.ui.aboutDialog import AboutDialog
 from manuskript.ui.settingsWindow import SettingsWindow
 from manuskript.ui.startupWindow import StartupWindow
 from manuskript.ui.util import bindMenuItem
+from manuskript.util import profileTime
 
 
 class MainWindow:
@@ -31,9 +32,9 @@ class MainWindow:
 
         try:
             if data is None:
-                view = view_cls()
+                view = profileTime(view_cls)
             else:
-                view = view_cls(data)
+                view = profileTime(view_cls, data)
         except Exception:
             return None
 

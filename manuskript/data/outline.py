@@ -212,10 +212,18 @@ class OutlineFolder(OutlineItem):
 
         return count
 
-    def load(self, _: bool = True):
+    def load(self, optimized: bool = True):
         metadata, _ = self.file.loadMMD(True)
         OutlineItem.loadMetadata(self, metadata)
-        self.state = OutlineState.COMPLETE
+
+        if optimized:
+            self.state = OutlineState.OPTIMIZED
+        else:
+            for item in self.items:
+                if item.state != OutlineState.COMPLETE:
+                    return
+
+            self.state = OutlineState.COMPLETE
 
     @classmethod
     def saveItems(cls, folder, recursive: bool = True):

@@ -9,6 +9,8 @@ _char_pattern_with_spaces = re.compile(r"[\S ]")
 _char_pattern_without_spaces = re.compile(r"\S")
 _word_pattern = re.compile(r"\S+")
 
+_whitespace = " \t\r\n"
+
 
 @unique
 class CounterKind(Enum):
