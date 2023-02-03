@@ -201,18 +201,14 @@ class OutlineFolder(OutlineItem):
             counterKind = self.goalKind()
 
         count = super().textCount(counterKind)
-
-        for item in self.items:
-            count += item.textCount(counterKind)
-
+        count += sum(item.textCount(counterKind) for item in self.items)
         return count
 
     def goalCount(self) -> int:
         count = super().goalCount()
 
         if self.goal is None:
-            for item in self.items:
-                count += item.goalCount()
+            count += sum(item.goalCount() for item in self.items)
 
         return count
 
@@ -280,11 +276,7 @@ class Outline:
         if counterKind is None:
             counterKind = self.goalKind()
 
-        count = 0
-        for item in self.items:
-            count += item.textCount(counterKind)
-
-        return count
+        return sum(item.textCount(counterKind) for item in self.items)
 
     def goalKind(self) -> CounterKind:
         if len(self.items) > 0:
@@ -293,11 +285,7 @@ class Outline:
         return CounterKind.WORDS
 
     def goalCount(self) -> int:
-        count = 0
-        for item in self.items:
-            count += item.goalCount()
-
-        return count
+        return sum(item.goalCount() for item in self.items)
 
     def load(self):
         self.items.clear()
