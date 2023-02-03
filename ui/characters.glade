@@ -795,10 +795,7 @@ summary</property>
                   <object class="GtkBox">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
-                    <property name="margin-start">8</property>
-                    <property name="margin-end">8</property>
-                    <property name="margin-top">8</property>
-                    <property name="margin-bottom">8</property>
+                    <property name="border-width">8</property>
                     <property name="orientation">vertical</property>
                     <property name="spacing">8</property>
                     <child>

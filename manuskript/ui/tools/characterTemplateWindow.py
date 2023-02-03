@@ -11,81 +11,75 @@ from gi.repository import GObject, Gtk, Handy
 
 # Manuskript
 from manuskript.ui.abstractDialog import AbstractDialog
-from manuskript.util import unique_name_checker
+from manuskript.util import unique_name_checker, invalidString, validString
+
 
 # I lifted a lot of this code from frequencyWindow
 # With a bit more stuff from charactersView
 
-class CharacterTemplateEditorWindow(AbstractDialog):
+class CharacterTemplateWindow(AbstractDialog):
 
     def __init__(self, mainWindow):
-        AbstractDialog.__init__(self, mainWindow, "ui/character_details_template_editor.glade", "character_details_template_editor")
+        AbstractDialog.__init__(self, mainWindow, "ui/character_details_template_editor.glade",
+                                "character_details_template_editor")
 
         self.headerBar = None
         self.back = None
-        self.wordLeaflet = None
-        self.analyzeWords = None
-        self.analyzePhrases = None
+
+        self.detailsStore = None
+        self.detailsSelection = None
+        self.addDetailsButton = None
+        self.removeDetailsButton = None
+        self.appendDetailsTemplateButton = None
+        self.detailsNameRenderer = None
+        self.detailsValueRenderer = None
 
     def initWindow(self, builder, window):
         self.headerBar = builder.get_object("header_bar")
         self.back = builder.get_object("back")
-        
-        self.character_leaflet = builder.get_object("character_details_leaflet")
-
-        self.character_leaflet.bind_property("folded", self.back, "visible", GObject.BindingFlags.SYNC_CREATE)
-        self.character_leaflet.bind_property("folded", self.headerBar, "show-close-button", GObject.BindingFlags.SYNC_CREATE |
-                                       GObject.BindingFlags.INVERT_BOOLEAN)
-
 
         self.back.connect("clicked", self._backClicked)
         
-        #Liking Stuff stole from charactersView
+        # Liking Stuff stole from charactersView
         self.detailsStore = builder.get_object("details_store")
         self.detailsSelection = builder.get_object("details_selection")
         self.addDetailsButton = builder.get_object("add_details")
         self.removeDetailsButton = builder.get_object("remove_details")
-        self.append_details_template_button = builder.get_object("appened_details_template")
+        self.appendDetailsTemplateButton = builder.get_object("appened_details_template")
         self.detailsNameRenderer = builder.get_object("details_name")
         self.detailsValueRenderer = builder.get_object("details_value")
         
-        self.addDetailsButton.connect("clicked", self.addDetailsClicked)
-        self.removeDetailsButton.connect("clicked", self.removeDetailsClicked)
+        self.addDetailsButton.connect("clicked", self._addDetailsClicked)
+        self.removeDetailsButton.connect("clicked", self._removeDetailsClicked)
 
-        self.detailsNameRenderer.connect("edited", self.detailsNameEdited)
-        self.detailsValueRenderer.connect("edited", self.detailsValueEdited)
+        self.detailsNameRenderer.connect("edited", self._detailsNameEdited)
+        self.detailsValueRenderer.connect("edited", self._detailsValueEdited)
         
-        self.populate_tree()
-        
-
+        self.loadCharacterTemplate()
 
     def _backClicked(self, button: Gtk.Button):
-        if self.wordLeaflet.get_visible_child_name() == "wordlist_view":
-            self.wordLeaflet.set_visible_child_name("wordfilter_view")
-        else:
-            self.hide()
+        self.hide()
             
     # So this adds any previously added parts to the template
-    def populate_tree(self):
+    def loadCharacterTemplate(self):
         for name, value in self.mainWindow.project.character_template.details.items():
             tree_iter = self.detailsStore.append()
             
             if tree_iter is None:
                 return
 
-
             self.detailsStore.set_value(tree_iter, 0, name)
             self.detailsStore.set_value(tree_iter, 1, value)            
     
 # Functions stole From charactersView
-    def addDetailsClicked(self, button: Gtk.Button):
-
+    def _addDetailsClicked(self, button: Gtk.Button):
         tree_iter = self.detailsStore.append()
 
         if tree_iter is None:
             return
 
-        name = unique_name_checker.get_unique_name_for_dictionary(self.mainWindow.project.character_template.details, "Description")
+        name = unique_name_checker.get_unique_name_for_dictionary(self.mainWindow.project.character_template.details,
+                                                                  "Description")
         value = "Value"
 
         self.detailsStore.set_value(tree_iter, 0, name)
@@ -93,8 +87,7 @@ class CharacterTemplateEditorWindow(AbstractDialog):
         
         self.mainWindow.project.character_template.details[name] = value
 
-    def removeDetailsClicked(self, button: Gtk.Button):
-
+    def _removeDetailsClicked(self, button: Gtk.Button):
         model, tree_iter = self.detailsSelection.get_selected()
 
         if (model is None) or (tree_iter is None):
@@ -105,20 +98,20 @@ class CharacterTemplateEditorWindow(AbstractDialog):
 
         self.mainWindow.project.character_template.details.pop(name)
 
-    def detailsNameEdited(self, renderer: Gtk.CellRendererText, path: str, text: str):
-
+    def _detailsNameEdited(self, renderer: Gtk.CellRendererText, path: str, text: str):
         model, tree_iter = self.detailsSelection.get_selected()
 
         if (model is None) or (tree_iter is None):
             return
-        text_to_set = unique_name_checker.get_unique_name_for_dictionary(self.mainWindow.project.character_template.details, text)
+        text_to_set = unique_name_checker.get_unique_name_for_dictionary(
+            self.mainWindow.project.character_template.details, text)
         name = model.get_value(tree_iter, 0)
         model.set_value(tree_iter, 0, text_to_set)
         # There was an error with this line but it didn't seem to do anything bad.
-        self.mainWindow.project.character_template.details[text_to_set] = self.mainWindow.project.character_template.details.pop(name)
+        self.mainWindow.project.character_template.details[text_to_set] = \
+            self.mainWindow.project.character_template.details.pop(name)
 
-    def detailsValueEdited(self, renderer: Gtk.CellRendererText, path: str, text: str):
-
+    def _detailsValueEdited(self, renderer: Gtk.CellRendererText, path: str, text: str):
         model, tree_iter = self.detailsSelection.get_selected()
 
         if (model is None) or (tree_iter is None):
@@ -128,23 +121,3 @@ class CharacterTemplateEditorWindow(AbstractDialog):
         model.set_value(tree_iter, 1, text)
 
         self.mainWindow.project.character_template.details[name] = text
-
-    def nameChanged(self, buffer: Gtk.EntryBuffer):
-
-        text = buffer.get_text()
-        name = invalidString(text)
-
-        self.character.name = name
-
-        character_id = self.character.UID.value
-
-        for row in self.charactersStore:
-            if row[0] == character_id:
-                row[1] = validString(name)
-                break
-
-    def nameDeletedText(self, buffer: Gtk.EntryBuffer, position: int, n_chars: int):
-        self.nameChanged(buffer)
-
-    def nameInsertedText(self, buffer: Gtk.EntryBuffer, position: int, chars: str, n_chars: int):
-        self.nameChanged(buffer)
