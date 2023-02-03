@@ -4,14 +4,12 @@
 import gi
 
 gi.require_version("Gtk", "3.0")
-from gi.repository import Gtk, Pango
+from gi.repository import GObject, Gtk, Pango
 
 from manuskript.data import Project, OutlineFolder, OutlineText, OutlineItem, OutlineState, Goal
 from manuskript.ui.editor import GridItem
 from manuskript.ui.util import pixbufFromColor, iconByOutlineItemType
 from manuskript.util import validString, validInt, safeFraction
-
-import inspect
 
 
 class EditorView:
@@ -19,6 +17,7 @@ class EditorView:
     def __init__(self, project: Project):
         self.project = project
         self.outlineItem = None
+        self.outlineCompletion = []
         self.editorItems = list()
 
         builder = Gtk.Builder()
@@ -40,7 +39,7 @@ class EditorView:
         self.editorTextBuffer = builder.get_object("editor_text")
         self.editorFlowbox = builder.get_object("editor_flowbox")
 
-        self.editorFlowbox.connect("child-activated", self.editorFlowboxChildActivated)
+        self.editorFlowbox.connect("child-activated", self._editorFlowboxChildActivated)
 
         self.upButtons = [
             builder.get_object("up"),
@@ -48,7 +47,7 @@ class EditorView:
         ]
 
         for button in self.upButtons:
-            button.connect("clicked", self.upButtonClicked)
+            button.connect("clicked", self._upButtonClicked)
 
         self.counterLabel = builder.get_object("counter")
         self.counterProgressBar = builder.get_object("counter_progress")
@@ -78,20 +77,8 @@ class EditorView:
 
             self.statusStore.set_value(tree_iter, 0, validString(status.name))
 
-    def __appendOutlineItem(self, outlineItem: OutlineItem, parent_iter=None):
-        tree_iter = self.outlineStore.append(parent_iter)
-
-        if tree_iter is None:
-            return
-
-        if outlineItem.state != OutlineState.COMPLETE:
-            outlineItem.load(False)
-
+    def __updateOutlineItem(self, tree_iter, outlineItem: OutlineItem):
         icon = iconByOutlineItemType(outlineItem)
-
-        if type(outlineItem) is OutlineFolder:
-            for item in outlineItem:
-                self.__appendOutlineItem(item, tree_iter)
 
         wordCount = validInt(outlineItem.textCount())
         goal = validInt(outlineItem.goalCount())
@@ -106,6 +93,34 @@ class EditorView:
         self.outlineStore.set_value(tree_iter, 6, goal)
         self.outlineStore.set_value(tree_iter, 7, progress)
         self.outlineStore.set_value(tree_iter, 8, icon)
+
+    def __completeOutlineItem(self):
+        (tree_iter, outlineItem) = self.outlineCompletion.pop(0)
+
+        if outlineItem.state != OutlineState.COMPLETE:
+            outlineItem.load(False)
+
+        self.__updateOutlineItem(tree_iter, outlineItem)
+
+        return len(self.outlineCompletion) > 0
+
+    def __appendOutlineItem(self, outlineItem: OutlineItem, parent_iter=None):
+        tree_iter = self.outlineStore.append(parent_iter)
+
+        if tree_iter is None:
+            return
+
+        if type(outlineItem) is OutlineFolder:
+            for item in outlineItem:
+                self.__appendOutlineItem(item, tree_iter)
+
+        if outlineItem.state != OutlineState.COMPLETE:
+            if len(self.outlineCompletion) == 0:
+                GObject.idle_add(self.__completeOutlineItem)
+
+            self.outlineCompletion.append((tree_iter, outlineItem))
+
+        self.__updateOutlineItem(tree_iter, outlineItem)
 
     def refreshOutlineStore(self):
         self.outlineStore.clear()
@@ -202,7 +217,7 @@ class EditorView:
 
         self.outlineItem = outlineItem
 
-    def editorFlowboxChildActivated(self, box: Gtk.FlowBox, child: Gtk.FlowBoxChild):
+    def _editorFlowboxChildActivated(self, box: Gtk.FlowBox, child: Gtk.FlowBoxChild):
         if child is None:
             return
 
@@ -212,7 +227,7 @@ class EditorView:
 
         self.loadOutlineData(self.editorItems[index])
 
-    def upButtonClicked(self, button: Gtk.Button):
+    def _upButtonClicked(self, button: Gtk.Button):
         if self.outlineItem is None:
             return
 

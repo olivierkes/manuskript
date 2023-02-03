@@ -18,6 +18,7 @@ from manuskript.ui.aboutDialog import AboutDialog
 from manuskript.ui.settingsWindow import SettingsWindow
 from manuskript.ui.startupWindow import StartupWindow
 from manuskript.ui.util import bindMenuItem
+from manuskript.util import profileTime
 
 
 class MainWindow:
@@ -31,9 +32,9 @@ class MainWindow:
 
         try:
             if data is None:
-                view = view_cls()
+                view = profileTime(view_cls)
             else:
-                view = view_cls(data)
+                view = profileTime(view_cls, data)
         except Exception:
             return None
 
@@ -65,7 +66,7 @@ class MainWindow:
 
         self.generalView = MainWindow.packViewIntoSlot(builder, "general_slot", GeneralView, self.project.info)
         self.summaryView = MainWindow.packViewIntoSlot(builder, "summary_slot", SummaryView, self.project.summary)
-        self.charactersView = MainWindow.packViewIntoSlot(builder, "characters_slot", CharactersView, self.project) # Just project because we need it for characters and the template
+        self.charactersView = MainWindow.packViewIntoSlot(builder, "characters_slot", CharactersView, self.project)
         self.plotView = MainWindow.packViewIntoSlot(builder, "plot_slot", PlotView, self.project.plots)
         self.worldView = MainWindow.packViewIntoSlot(builder, "world_slot", WorldView, self.project.world)
         self.outlineView = MainWindow.packViewIntoSlot(builder, "outline_slot", OutlineView, self.project.outline)
@@ -74,41 +75,41 @@ class MainWindow:
         self.startupWindow = StartupWindow(self)
         self.aboutDialog = AboutDialog(self)
         self.frequencyWindow = FrequencyWindow(self)
-        self.character_template_window = CharacterTemplateEditorWindow(self)
+        self.characterTemplateWindow = CharacterTemplateEditorWindow(self)
         self.settingsWindow = SettingsWindow(self)
 
         self.windows = [
             self.startupWindow,
             self.aboutDialog,
             self.frequencyWindow,
-            self.character_template_window,
+            self.characterTemplateWindow,
             self.settingsWindow
         ]
 
-        bindMenuItem(builder, "open_menu_item", self.openAction)
-        bindMenuItem(builder, "save_menu_item", self.saveAction)
-        bindMenuItem(builder, "close_menu_item", self.closeAction)
-        bindMenuItem(builder, "quit_menu_item", self.quitAction)
+        bindMenuItem(builder, "open_menu_item", self._openAction)
+        bindMenuItem(builder, "save_menu_item", self._saveAction)
+        bindMenuItem(builder, "close_menu_item", self._closeAction)
+        bindMenuItem(builder, "quit_menu_item", self._quitAction)
 
-        bindMenuItem(builder, "settings_menu_item", self.settingsAction)
-        bindMenuItem(builder, "frequency_menu_item", self.frequencyAction)
-        bindMenuItem(builder, "character_details_template_editor", self.character_details_template_editor_action)
-        bindMenuItem(builder, "about_menu_item", self.aboutAction)
+        bindMenuItem(builder, "settings_menu_item", self._settingsAction)
+        bindMenuItem(builder, "frequency_menu_item", self._frequencyAction)
+        bindMenuItem(builder, "character_details_template_editor", self._characterDetailsTemplateEditorAction)
+        bindMenuItem(builder, "about_menu_item", self._aboutAction)
 
     def getProject(self):
         return self.project
 
-    def openAction(self, menuItem: Gtk.MenuItem):
+    def _openAction(self, menuItem: Gtk.MenuItem):
         pass
 
-    def saveAction(self, menuItem: Gtk.MenuItem):
+    def _saveAction(self, menuItem: Gtk.MenuItem):
         self.getProject().save()
 
-    def closeAction(self, menuItem: Gtk.MenuItem):
+    def _closeAction(self, menuItem: Gtk.MenuItem):
         self.hide()
         self.startupWindow.show()
 
-    def quitAction(self, menuItem: Gtk.MenuItem):
+    def _quitAction(self, menuItem: Gtk.MenuItem):
         for window in self.windows:
             window.hide()
 
@@ -117,16 +118,16 @@ class MainWindow:
     def getSettings(self):
         return self.getProject().settings
 
-    def settingsAction(self, menuItem: Gtk.MenuItem):
+    def _settingsAction(self, menuItem: Gtk.MenuItem):
         self.settingsWindow.show()
 
-    def frequencyAction(self, menuItem: Gtk.MenuItem):
+    def _frequencyAction(self, menuItem: Gtk.MenuItem):
         self.frequencyWindow.show()
         
-    def character_details_template_editor_action(self, menuItem: Gtk.MenuItem):
-        self.character_template_window.show()
+    def _characterDetailsTemplateEditorAction(self, menuItem: Gtk.MenuItem):
+        self.characterTemplateWindow.show()
 
-    def aboutAction(self, menuItem: Gtk.MenuItem):
+    def _aboutAction(self, menuItem: Gtk.MenuItem):
         self.aboutDialog.show()
 
     def show(self):

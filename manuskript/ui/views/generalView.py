@@ -55,77 +55,77 @@ class GeneralView:
         self.emailBuffer.connect("deleted-text", self._emailDeletedText)
         self.emailBuffer.connect("inserted-text", self._emailInsertedText)
 
-    def titleChanged(self, buffer: Gtk.EntryBuffer):
+    def __titleChanged(self, buffer: Gtk.EntryBuffer):
         self.info.title = invalidString(buffer.get_text())
 
-    def subtitleChanged(self, buffer: Gtk.EntryBuffer):
+    def __subtitleChanged(self, buffer: Gtk.EntryBuffer):
         self.info.subtitle = invalidString(buffer.get_text())
 
-    def seriesChanged(self, buffer: Gtk.EntryBuffer):
+    def __seriesChanged(self, buffer: Gtk.EntryBuffer):
         self.info.serie = invalidString(buffer.get_text())
 
-    def volumeChanged(self, buffer: Gtk.EntryBuffer):
+    def __volumeChanged(self, buffer: Gtk.EntryBuffer):
         self.info.volume = invalidString(buffer.get_text())
 
-    def genreChanged(self, buffer: Gtk.EntryBuffer):
+    def __genreChanged(self, buffer: Gtk.EntryBuffer):
         self.info.genre = invalidString(buffer.get_text())
 
-    def licenseChanged(self, buffer: Gtk.EntryBuffer):
+    def __licenseChanged(self, buffer: Gtk.EntryBuffer):
         self.info.license = invalidString(buffer.get_text())
 
-    def nameChanged(self, buffer: Gtk.EntryBuffer):
+    def __nameChanged(self, buffer: Gtk.EntryBuffer):
         self.info.author = invalidString(buffer.get_text())
 
-    def emailChanged(self, buffer: Gtk.EntryBuffer):
+    def __emailChanged(self, buffer: Gtk.EntryBuffer):
         self.info.email = invalidString(buffer.get_text())
 
     def _titleDeletedText(self, buffer: Gtk.EntryBuffer, position, count):
-        self.titleChanged(buffer)
+        self.__titleChanged(buffer)
 
     def _titleInsertedText(self, buffer: Gtk.EntryBuffer, position, value, count):
-        self.titleChanged(buffer)
+        self.__titleChanged(buffer)
 
     def _subtitleDeletedText(self, buffer: Gtk.EntryBuffer, position, count):
-        self.subtitleChanged(buffer)
+        self.__subtitleChanged(buffer)
 
     def _subtitleInsertedText(self, buffer: Gtk.EntryBuffer, position, value, count):
-        self.subtitleChanged(buffer)
+        self.__subtitleChanged(buffer)
 
     def _seriesDeletedText(self, buffer: Gtk.EntryBuffer, position, count):
-        self.seriesChanged(buffer)
+        self.__seriesChanged(buffer)
 
     def _seriesInsertedText(self, buffer: Gtk.EntryBuffer, position, value, count):
-        self.seriesChanged(buffer)
+        self.__seriesChanged(buffer)
 
     def _volumeDeletedText(self, buffer: Gtk.EntryBuffer, position, count):
-        self.volumeChanged(buffer)
+        self.__volumeChanged(buffer)
 
     def _volumeInsertedText(self, buffer: Gtk.EntryBuffer, position, value, count):
-        self.volumeChanged(buffer)
+        self.__volumeChanged(buffer)
 
     def _genreDeletedText(self, buffer: Gtk.EntryBuffer, position, count):
-        self.genreChanged(buffer)
+        self.__genreChanged(buffer)
 
     def _genreInsertedText(self, buffer: Gtk.EntryBuffer, position, value, count):
-        self.genreChanged(buffer)
+        self.__genreChanged(buffer)
 
     def _licenseDeletedText(self, buffer: Gtk.EntryBuffer, position, count):
-        self.licenseChanged(buffer)
+        self.__licenseChanged(buffer)
 
     def _licenseInsertedText(self, buffer: Gtk.EntryBuffer, position, value, count):
-        self.licenseChanged(buffer)
+        self.__licenseChanged(buffer)
 
     def _nameDeletedText(self, buffer: Gtk.EntryBuffer, position, count):
-        self.nameChanged(buffer)
+        self.__nameChanged(buffer)
 
     def _nameInsertedText(self, buffer: Gtk.EntryBuffer, position, value, count):
-        self.nameChanged(buffer)
+        self.__nameChanged(buffer)
 
     def _emailDeletedText(self, buffer: Gtk.EntryBuffer, position, count):
-        self.emailChanged(buffer)
+        self.__emailChanged(buffer)
 
     def _emailInsertedText(self, buffer: Gtk.EntryBuffer, position, value, count):
-        self.emailChanged(buffer)
+        self.__emailChanged(buffer)
 
     def show(self):
         self.widget.show_all()

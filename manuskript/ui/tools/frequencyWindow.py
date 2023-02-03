@@ -27,8 +27,10 @@ class FrequencyWindow(AbstractDialog):
         self.analyzeWords = builder.get_object("analyze_words")
         self.analyzePhrases = builder.get_object("analyze_phrases")
 
-        self.wordLeaflet.bind_property("folded", self.back, "visible", GObject.BindingFlags.SYNC_CREATE)
-        self.wordLeaflet.bind_property("folded", self.headerBar, "show-close-button", GObject.BindingFlags.SYNC_CREATE |
+        self.wordLeaflet.bind_property("folded", self.back, "visible",
+                                       GObject.BindingFlags.SYNC_CREATE)
+        self.wordLeaflet.bind_property("folded", self.headerBar, "show-close-button",
+                                       GObject.BindingFlags.SYNC_CREATE |
                                        GObject.BindingFlags.INVERT_BOOLEAN)
 
         self.back.connect("clicked", self._backClicked)

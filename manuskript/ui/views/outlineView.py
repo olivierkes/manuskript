@@ -4,7 +4,7 @@
 import gi
 
 gi.require_version("Gtk", "3.0")
-from gi.repository import Gtk
+from gi.repository import GObject, Gtk
 
 from manuskript.data import Outline, OutlineFolder, OutlineText, OutlineItem, OutlineState, Plots, PlotLine, Characters, Character, Importance, Goal
 from manuskript.ui.util import rgbaFromColor, pixbufFromColor
@@ -16,6 +16,7 @@ class OutlineView:
     def __init__(self, outline: Outline):
         self.outline = outline
         self.outlineItem = None
+        self.outlineCompletion = []
 
         builder = Gtk.Builder()
         builder.add_from_file("ui/outline.glade")
@@ -42,11 +43,11 @@ class OutlineView:
         self.minorPlotsStore = builder.get_object("minor_plots_store")
 
         self.mainPlotsStore.set_visible_func(
-            lambda model, iter, userdata: model[iter][2] == Importance.MAIN.value)
+            lambda model, iterator, userdata: model[iterator][2] == Importance.MAIN.value)
         self.secondaryPlotsStore.set_visible_func(
-            lambda model, iter, userdata: model[iter][2] == Importance.SECONDARY.value)
+            lambda model, iterator, userdata: model[iterator][2] == Importance.SECONDARY.value)
         self.minorPlotsStore.set_visible_func(
-            lambda model, iter, userdata: model[iter][2] == Importance.MINOR.value)
+            lambda model, iterator, userdata: model[iterator][2] == Importance.MINOR.value)
 
         self.mainPlotsStore.refilter()
         self.secondaryPlotsStore.refilter()
@@ -59,33 +60,33 @@ class OutlineView:
         ]
 
         for selection in self.plotSelections:
-            selection.connect("changed", self.plotSelectionChanged)
+            selection.connect("changed", self._plotSelectionChanged)
 
         self.filterOutlineBuffer = builder.get_object("filter_outline")
 
-        self.filterOutlineBuffer.connect("deleted-text", self.filterOutlineDeletedText)
-        self.filterOutlineBuffer.connect("inserted-text", self.filterOutlineInsertedText)
+        self.filterOutlineBuffer.connect("deleted-text", self._filterOutlineDeletedText)
+        self.filterOutlineBuffer.connect("inserted-text", self._filterOutlineInsertedText)
 
         self.filteredOutlineStore = builder.get_object("filtered_outline_store")
 
-        self.filteredOutlineStore.set_visible_func(self.filterOutline)
+        self.filteredOutlineStore.set_visible_func(self._filterOutline)
         self.filteredOutlineStore.refilter()
 
         self.outlineSelection = builder.get_object("outline_selection")
 
-        self.outlineSelection.connect("changed", self.outlineSelectionChanged)
+        self.outlineSelection.connect("changed", self._outlineSelectionChanged)
 
         self.goalBuffer = builder.get_object("goal")
         self.oneLineSummaryBuffer = builder.get_object("one_line_summary")
         self.fewSentencesSummaryBuffer = builder.get_object("few_sentences_summary")
 
-        self.goalBuffer.connect("deleted-text", self.goalDeletedText)
-        self.goalBuffer.connect("inserted-text", self.goalInsertedText)
+        self.goalBuffer.connect("deleted-text", self._goalDeletedText)
+        self.goalBuffer.connect("inserted-text", self._goalInsertedText)
 
-        self.oneLineSummaryBuffer.connect("deleted-text", self.oneLineSummaryDeletedText)
-        self.oneLineSummaryBuffer.connect("inserted-text", self.oneLineSummaryInsertedText)
+        self.oneLineSummaryBuffer.connect("deleted-text", self._oneLineSummaryDeletedText)
+        self.oneLineSummaryBuffer.connect("inserted-text", self._oneLineSummaryInsertedText)
 
-        self.fewSentencesSummaryBuffer.connect("changed", self.fewSentencesSummaryChanged)
+        self.fewSentencesSummaryBuffer.connect("changed", self._fewSentencesSummaryChanged)
 
         self.unloadOutlineData()
 
@@ -138,20 +139,9 @@ class OutlineView:
             self.charactersStore.set_value(tree_iter, 1, validString(character.name))
             self.charactersStore.set_value(tree_iter, 2, pixbufFromColor(character.color))
 
-    def __appendOutlineItem(self, outlineItem: OutlineItem, parent_iter=None):
-        tree_iter = self.outlineStore.append(parent_iter)
-
-        if tree_iter is None:
-            return
-
-        if outlineItem.state != OutlineState.COMPLETE:
-            outlineItem.load(False)
-
+    def __updateOutlineItem(self, tree_iter, outlineItem: OutlineItem):
         if type(outlineItem) is OutlineFolder:
             icon = "folder-symbolic"
-
-            for item in outlineItem:
-                self.__appendOutlineItem(item, tree_iter)
         elif type(outlineItem) is OutlineText:
             icon = "emblem-documents-symbolic"
         else:
@@ -176,13 +166,41 @@ class OutlineView:
         self.outlineStore.set_value(tree_iter, 7, progress)
         self.outlineStore.set_value(tree_iter, 8, icon)
 
+    def __completeOutlineItem(self):
+        (tree_iter, outlineItem) = self.outlineCompletion.pop(0)
+
+        if outlineItem.state != OutlineState.COMPLETE:
+            outlineItem.load(False)
+
+        self.__updateOutlineItem(tree_iter, outlineItem)
+
+        return len(self.outlineCompletion) > 0
+
+    def __appendOutlineItem(self, outlineItem: OutlineItem, parent_iter=None):
+        tree_iter = self.outlineStore.append(parent_iter)
+
+        if tree_iter is None:
+            return
+
+        if type(outlineItem) is OutlineFolder:
+            for item in outlineItem:
+                self.__appendOutlineItem(item, tree_iter)
+
+        if outlineItem.state != OutlineState.COMPLETE:
+            if len(self.outlineCompletion) == 0:
+                GObject.idle_add(self.__completeOutlineItem)
+
+            self.outlineCompletion.append((tree_iter, outlineItem))
+
+        self.__updateOutlineItem(tree_iter, outlineItem)
+
     def refreshOutlineStore(self):
         self.outlineStore.clear()
 
         for item in self.outline.items:
             self.__appendOutlineItem(item)
 
-    def plotSelectionChanged(self, selection: Gtk.TreeSelection):
+    def _plotSelectionChanged(self, selection: Gtk.TreeSelection):
         model, tree_iter = selection.get_selected()
 
         if tree_iter is None:
@@ -208,7 +226,7 @@ class OutlineView:
         self.oneLineSummaryBuffer.set_text("", -1)
         self.fewSentencesSummaryBuffer.set_text("", -1)
 
-    def outlineSelectionChanged(self, selection: Gtk.TreeSelection):
+    def _outlineSelectionChanged(self, selection: Gtk.TreeSelection):
         model, tree_iter = selection.get_selected()
 
         if tree_iter is None:
@@ -231,8 +249,8 @@ class OutlineView:
         title = validString(outlineItem.title)
         return text in title.lower()
 
-    def filterOutline(self, model, iter, userdata):
-        outlineItem = self.outline.getItemByID(model[iter][0])
+    def _filterOutline(self, model, iterator, userdata):
+        outlineItem = self.outline.getItemByID(model[iterator][0])
 
         if outlineItem is None:
             return False
@@ -240,16 +258,16 @@ class OutlineView:
         text = validString(self.filterOutlineBuffer.get_text())
         return self.__matchOutlineItemByText(outlineItem, text.lower())
 
-    def filterOutlineChanged(self, buffer: Gtk.EntryBuffer):
+    def __filterOutlineChanged(self, buffer: Gtk.EntryBuffer):
         self.filteredOutlineStore.refilter()
 
-    def filterOutlineDeletedText(self, buffer: Gtk.EntryBuffer, position: int, n_chars: int):
-        self.filterOutlineChanged(buffer)
+    def _filterOutlineDeletedText(self, buffer: Gtk.EntryBuffer, position: int, n_chars: int):
+        self.__filterOutlineChanged(buffer)
 
-    def filterOutlineInsertedText(self, buffer: Gtk.EntryBuffer, position: int, chars: str, n_chars: int):
-        self.filterOutlineChanged(buffer)
+    def _filterOutlineInsertedText(self, buffer: Gtk.EntryBuffer, position: int, chars: str, n_chars: int):
+        self.__filterOutlineChanged(buffer)
 
-    def goalChanged(self, buffer: Gtk.EntryBuffer):
+    def __goalChanged(self, buffer: Gtk.EntryBuffer):
         if self.outlineItem is None:
             return
 
@@ -274,13 +292,13 @@ class OutlineView:
                 row[7] = progress
                 break
 
-    def goalDeletedText(self, buffer: Gtk.EntryBuffer, position: int, n_chars: int):
-        self.goalChanged(buffer)
+    def _goalDeletedText(self, buffer: Gtk.EntryBuffer, position: int, n_chars: int):
+        self.__goalChanged(buffer)
 
-    def goalInsertedText(self, buffer: Gtk.EntryBuffer, position: int, chars: str, n_chars: int):
-        self.goalChanged(buffer)
+    def _goalInsertedText(self, buffer: Gtk.EntryBuffer, position: int, chars: str, n_chars: int):
+        self.__goalChanged(buffer)
 
-    def oneLineSummaryChanged(self, buffer: Gtk.EntryBuffer):
+    def __oneLineSummaryChanged(self, buffer: Gtk.EntryBuffer):
         if self.outlineItem is None:
             return
 
@@ -289,13 +307,13 @@ class OutlineView:
 
         self.outlineItem.summarySentence = summary
 
-    def oneLineSummaryDeletedText(self, buffer: Gtk.EntryBuffer, position: int, n_chars: int):
-        self.oneLineSummaryChanged(buffer)
+    def _oneLineSummaryDeletedText(self, buffer: Gtk.EntryBuffer, position: int, n_chars: int):
+        self.__oneLineSummaryChanged(buffer)
 
-    def oneLineSummaryInsertedText(self, buffer: Gtk.EntryBuffer, position: int, chars: str, n_chars: int):
-        self.oneLineSummaryChanged(buffer)
+    def _oneLineSummaryInsertedText(self, buffer: Gtk.EntryBuffer, position: int, chars: str, n_chars: int):
+        self.__oneLineSummaryChanged(buffer)
 
-    def fewSentencesSummaryChanged(self, buffer: Gtk.TextBuffer):
+    def _fewSentencesSummaryChanged(self, buffer: Gtk.TextBuffer):
         if self.outlineItem is None:
             return
 

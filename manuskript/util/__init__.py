@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import re
+import time
 
 from manuskript.util.counter import CounterKind, CharCounter, WordCounter, PageCounter
 
@@ -62,6 +63,7 @@ def countText(text: str, kind: CounterKind = CounterKind.WORDS):
     else:
         return 0
 
+
 def safeFraction(value, low, high) -> float:
     if value < low:
         return 0.0
@@ -69,3 +71,11 @@ def safeFraction(value, low, high) -> float:
         return 1.0
     else:
         return 1.0 * (value - low) / (high - low)
+
+
+def profileTime(func, *args):
+    start = time.perf_counter()
+    result = func(*args)
+    end = time.perf_counter()
+    print("{}.{}: {}".format(func.__module__, func.__name__, end - start))
+    return result

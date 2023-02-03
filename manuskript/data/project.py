@@ -22,6 +22,7 @@ from manuskript.data.revisions import Revisions
 from manuskript.data.characters_template import CharacterDetailTemplate
 
 from manuskript.io.mskFile import MskFile
+from manuskript.util import profileTime
 
 
 class Project:
@@ -69,17 +70,17 @@ class Project:
         except BadZipFile or FileNotFoundError:
             return
 
-        self.version.load()
-        self.info.load()
-        self.summary.load()
-        self.labels.load()
-        self.statuses.load()
-        self.settings.load()
-        self.characters.load()
-        self.plots.load()
-        self.world.load()
-        self.outline.load()
-        self.revisions.load()
+        profileTime(self.version.load)
+        profileTime(self.info.load)
+        profileTime(self.summary.load)
+        profileTime(self.labels.load)
+        profileTime(self.statuses.load)
+        profileTime(self.settings.load)
+        profileTime(self.characters.load)
+        profileTime(self.plots.load)
+        profileTime(self.world.load)
+        profileTime(self.outline.load)
+        profileTime(self.revisions.load)
 
         self.file.setZipFile(self.settings.isEnabled("saveToZip"))
 

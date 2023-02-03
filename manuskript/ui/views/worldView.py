@@ -30,33 +30,33 @@ class WorldView:
         self.filteredWorldStore = builder.get_object("filtered_world_store")
         self.filterWorldBuffer = builder.get_object("filter_world")
 
-        self.filterWorldBuffer.connect("deleted-text", self.filterWorldDeletedText)
-        self.filterWorldBuffer.connect("inserted-text", self.filterWorldInsertedText)
+        self.filterWorldBuffer.connect("deleted-text", self._filterWorldDeletedText)
+        self.filterWorldBuffer.connect("inserted-text", self._filterWorldInsertedText)
 
-        self.filteredWorldStore.set_visible_func(self.filterWorld)
+        self.filteredWorldStore.set_visible_func(self._filterWorld)
         self.filteredWorldStore.refilter()
 
         self.worldSelection = builder.get_object("world_selection")
 
-        self.worldSelection.connect("changed", self.worldSelectionChanged)
+        self.worldSelection.connect("changed", self._worldSelectionChanged)
 
         self.addToWorldButton = builder.get_object("add_to_world")
         self.removeFromWorldButton = builder.get_object("remove_from_world")
 
-        self.addToWorldButton.connect("clicked", self.addToWorldClicked)
-        self.removeFromWorldButton.connect("clicked", self.removeFromWorldClicked)
+        self.addToWorldButton.connect("clicked", self._addToWorldClicked)
+        self.removeFromWorldButton.connect("clicked", self._removeFromWorldClicked)
 
         self.nameBuffer = builder.get_object("name")
         self.descriptionBuffer = builder.get_object("description")
         self.sourceOfPassionBuffer = builder.get_object("source_of_passion")
         self.sourceOfConflictBuffer = builder.get_object("source_of_conflict")
 
-        self.nameBuffer.connect("deleted-text", self.nameDeletedText)
-        self.nameBuffer.connect("inserted-text", self.nameInsertedText)
+        self.nameBuffer.connect("deleted-text", self._nameDeletedText)
+        self.nameBuffer.connect("inserted-text", self._nameInsertedText)
 
-        self.descriptionBuffer.connect("changed", self.descriptionChanged)
-        self.sourceOfPassionBuffer.connect("changed", self.sourceOfPassionChanged)
-        self.sourceOfConflictBuffer.connect("changed", self.sourceOfConflictChanged)
+        self.descriptionBuffer.connect("changed", self._descriptionChanged)
+        self.sourceOfPassionBuffer.connect("changed", self._sourceOfPassionChanged)
+        self.sourceOfConflictBuffer.connect("changed", self._sourceOfConflictChanged)
 
         self.unloadWorldData()
 
@@ -100,7 +100,7 @@ class WorldView:
         self.sourceOfPassionBuffer.set_text("", -1)
         self.sourceOfConflictBuffer.set_text("", -1)
 
-    def worldSelectionChanged(self, selection: Gtk.TreeSelection):
+    def _worldSelectionChanged(self, selection: Gtk.TreeSelection):
         model, tree_iter = selection.get_selected()
 
         if tree_iter is None:
@@ -114,7 +114,7 @@ class WorldView:
         else:
             self.loadWorldData(worldItem)
 
-    def addToWorldClicked(self, button: Gtk.Button):
+    def _addToWorldClicked(self, button: Gtk.Button):
         name = invalidString(self.filterWorldBuffer.get_text())
         worldItem = self.world.addItem(name, self.worldItem)
 
@@ -123,7 +123,7 @@ class WorldView:
 
         self.refreshWorldStore()
 
-    def removeFromWorldClicked(self, button: Gtk.Button):
+    def _removeFromWorldClicked(self, button: Gtk.Button):
         if self.worldItem is None:
             return
 
@@ -138,8 +138,8 @@ class WorldView:
         name = validString(worldItem.name)
         return text in name.lower()
 
-    def filterWorld(self, model, iter, userdata):
-        worldItem = self.world.getItemByID(model[iter][0])
+    def _filterWorld(self, model, iterator, userdata):
+        worldItem = self.world.getItemByID(model[iterator][0])
 
         if worldItem is None:
             return False
@@ -147,16 +147,16 @@ class WorldView:
         text = validString(self.filterWorldBuffer.get_text())
         return self.__matchWorldItemByText(worldItem, text.lower())
 
-    def filterWorldChanged(self, buffer: Gtk.EntryBuffer):
+    def __filterWorldChanged(self, buffer: Gtk.EntryBuffer):
         self.filteredWorldStore.refilter()
 
-    def filterWorldDeletedText(self, buffer: Gtk.EntryBuffer, position: int, n_chars: int):
-        self.filterWorldChanged(buffer)
+    def _filterWorldDeletedText(self, buffer: Gtk.EntryBuffer, position: int, n_chars: int):
+        self.__filterWorldChanged(buffer)
 
-    def filterWorldInsertedText(self, buffer: Gtk.EntryBuffer, position: int, chars: str, n_chars: int):
-        self.filterWorldChanged(buffer)
+    def _filterWorldInsertedText(self, buffer: Gtk.EntryBuffer, position: int, chars: str, n_chars: int):
+        self.__filterWorldChanged(buffer)
 
-    def nameChanged(self, buffer: Gtk.EntryBuffer):
+    def __nameChanged(self, buffer: Gtk.EntryBuffer):
         if self.worldItem is None:
             return
 
@@ -172,13 +172,13 @@ class WorldView:
                 row[1] = validString(name)
                 break
 
-    def nameDeletedText(self, buffer: Gtk.EntryBuffer, position: int, n_chars: int):
-        self.nameChanged(buffer)
+    def _nameDeletedText(self, buffer: Gtk.EntryBuffer, position: int, n_chars: int):
+        self.__nameChanged(buffer)
 
-    def nameInsertedText(self, buffer: Gtk.EntryBuffer, position: int, chars: str, n_chars: int):
-        self.nameChanged(buffer)
+    def _nameInsertedText(self, buffer: Gtk.EntryBuffer, position: int, chars: str, n_chars: int):
+        self.__nameChanged(buffer)
 
-    def descriptionChanged(self, buffer: Gtk.TextBuffer):
+    def _descriptionChanged(self, buffer: Gtk.TextBuffer):
         if self.worldItem is None:
             return
 
@@ -189,7 +189,7 @@ class WorldView:
 
         self.worldItem.description = invalidString(text)
 
-    def sourceOfPassionChanged(self, buffer: Gtk.TextBuffer):
+    def _sourceOfPassionChanged(self, buffer: Gtk.TextBuffer):
         if self.worldItem is None:
             return
 
@@ -200,7 +200,7 @@ class WorldView:
 
         self.worldItem.passion = invalidString(text)
 
-    def sourceOfConflictChanged(self, buffer: Gtk.TextBuffer):
+    def _sourceOfConflictChanged(self, buffer: Gtk.TextBuffer):
         if self.worldItem is None:
             return
 
