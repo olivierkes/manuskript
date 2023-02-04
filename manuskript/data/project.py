@@ -19,7 +19,7 @@ from manuskript.data.world import World
 from manuskript.data.outline import Outline
 from manuskript.data.revisions import Revisions
 # This is for the charecter template
-from manuskript.data.characters_template import CharacterDetailTemplate
+from manuskript.data.characters_templates import CharacterDetailTemplates
 
 from manuskript.io.mskFile import MskFile
 from manuskript.util import profileTime
@@ -41,7 +41,7 @@ class Project:
         self.world = World(self.file.dir_path)
         self.outline = Outline(self.file.dir_path, self.plots, self.labels, self.statuses)
         self.revisions = Revisions(self.file.dir_path)
-        self.character_template = CharacterDetailTemplate()
+        self.character_templates = CharacterDetailTemplates() # TODO: RENAME PROPERALLY
 
     def __del__(self):
         del self.file

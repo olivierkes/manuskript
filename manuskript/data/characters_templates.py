@@ -7,21 +7,22 @@ import os
 from collections import OrderedDict
 
 
-# So this is a template for charecter details
-# It is edited by the Charecter Template Editor
-# Most of the code is taken from charecters.py
+# So this is a template for character details
+# It is edited by the Character Template Editor
+# Most of the code is taken from characters.py
 # I think this should have a custom save that's like a .json file in the main part of the manuskript save
 
 #Main Class
-class CharacterDetailTemplate:
-
-    details = {'Age':'','Birthdate':'',
+class CharacterDetailTemplates:
+# Basic Template
+    templates = {'Basic Human':
+                {'Age':'','Birthdate':'',
                'Eye Color':'','Hair Color':'',
-               'Handed':''} # We'll make a default template
-    
+               'Handed':''},
+                }
 
  
-    # TODO saving
+    # TODO: saving
     def save(self):
         pass
 

@@ -75,14 +75,12 @@ class MainWindow:
         self.startupWindow = StartupWindow(self)
         self.aboutDialog = AboutDialog(self)
         self.frequencyWindow = FrequencyWindow(self)
-        self.characterTemplateWindow = CharacterTemplateWindow(self)
         self.settingsWindow = SettingsWindow(self)
 
         self.windows = [
             self.startupWindow,
             self.aboutDialog,
             self.frequencyWindow,
-            self.characterTemplateWindow,
             self.settingsWindow
         ]
 

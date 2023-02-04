@@ -14,7 +14,7 @@ from manuskript.util import validString, invalidString, validInt, invalidInt, un
 class CharactersView:
 
     def __init__(self, project):
-        self.characterTemplate = project.character_template # The template for detailed info
+        self.characterTemplates = project.character_templates # The template for detailed info
         self.characters = project.characters
         self.character = None
 
@@ -78,13 +78,19 @@ class CharactersView:
         self.detailsSelection = builder.get_object("details_selection")
         self.addDetailsButton = builder.get_object("add_details")
         self.removeDetailsButton = builder.get_object("remove_details")
-        self.appendDetailsTemplateButton = builder.get_object("appened_details_template")
+        self.charecterDetailsMenuButton = builder.get_object("characters_details_menu_button")
+        self.newTemplateButton = builder.get_object("new_template_button")
+        self.newTemplateEntry = builder.get_object("new_template_entry")
+        self.newTemplateEntryBuffer = builder.get_object("new_template_entry_buffer")
+        self.charecterDetailsMenuAppendBox = builder.get_object("template_select_box")
+        self.charecterDetailsMenuTemplateBox = builder.get_object("template_select_box2")
         self.detailsNameRenderer = builder.get_object("details_name")
         self.detailsValueRenderer = builder.get_object("details_value")
 
         self.addDetailsButton.connect("clicked", self._addDetailsClicked)
         self.removeDetailsButton.connect("clicked", self._removeDetailsClicked)
-        self.appendDetailsTemplateButton.connect("clicked", self._appendTemplateClicked)
+        self.charecterDetailsMenuButton.connect("clicked", self._onCharecterDetailsMenuClicked)
+        self.newTemplateButton.connect("clicked", self._onNewTemplateButtonClicked)
         self.detailsNameRenderer.connect("edited", self._detailsNameEdited)
         self.detailsValueRenderer.connect("edited", self._detailsValueEdited)
 
@@ -325,16 +331,55 @@ class CharactersView:
         model.remove(tree_iter)
 
         self.character.details.pop(name)
+        
+    def _updateCharecterDetailsMenu(self):
+        def clear_container(container):
+            data = container.get_children()
+            for d in data:
+                container.remove(d)
+        clear_container( self.charecterDetailsMenuAppendBox)
+        clear_container(self.charecterDetailsMenuTemplateBox)
+        for x in self.characterTemplates.templates:
+            button = Gtk.Button(label=x,) # TODO: turn into ModelButton
+            button.connect("clicked", self._appendTemplateClicked, x)
+            self.charecterDetailsMenuAppendBox.add(button)
+            # Now we do the buttons for charecterDetailsMenuTemplateBox
+            button2 = Gtk.Button(label=x,) # TODO: turn into ModelButton
+            button2.connect("clicked", self._updateTemplateClicked, x)
+            self.charecterDetailsMenuTemplateBox.add(button2)
 
-    def _appendTemplateClicked(self, button: Gtk.Button):
+        self.charecterDetailsMenuAppendBox.show_all()
+        self.charecterDetailsMenuTemplateBox.show_all()
+
+    def _onCharecterDetailsMenuClicked(self, button: Gtk.MenuButton):
+        self._updateCharecterDetailsMenu()
+        
+    def _updateTemplateClicked(self, button: Gtk.ModelButton, template):
+        if self.character is None:
+            return
+        self.characterTemplates.templates[template] = self.character.details  # TODO: Add A warning? Or should there be undo/ redo when revisions are written.
+
+    def _appendTemplateClicked(self, button: Gtk.ModelButton, template):
         if self.character is None:
             return
         # This following bit could be turned into a def
-        for (key, value) in self.characterTemplate.details.items():
+        for (key, value) in self.characterTemplates.templates[template].items():
             self.character.details[key]= value
 
-        #We have to reload the charecter
+       # We have to reload the character
         self.loadCharacterData(self.character)
+
+    def _onNewTemplateButtonClicked(self, button: Gtk.Button):
+        text = self.newTemplateEntryBuffer.get_text()
+        if text == "":
+            return
+        if text in self.characterTemplates.templates:
+            new_text = unique_name_checker.get_unique_name_for_dictionary(self.characterTemplates.templates, text)
+            self.newTemplateEntryBuffer.set_text(new_text, -1)  # TODO: Add a warning
+            return
+        else:
+            self.characterTemplates.templates[text] = self.character.details
+            self._updateCharecterDetailsMenu()
 
     def _detailsNameEdited(self, renderer: Gtk.CellRendererText, path: str, text: str):
         if self.character is None:
@@ -477,3 +522,4 @@ class CharactersView:
 
     def show(self):
         self.widget.show_all()
+
