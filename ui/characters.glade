@@ -935,7 +935,7 @@ summary</property>
                         </child>
                         <child>
                           <object class="GtkButton" id="appened_details_template">
-                            <property name="label" translatable="yes">Append Detail Template</property>
+                            <property name="label" translatable="yes">Append Template</property>
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <property name="receives-default">True</property>
