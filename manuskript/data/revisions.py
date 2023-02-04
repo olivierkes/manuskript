@@ -4,6 +4,8 @@
 import os
 
 from lxml import etree
+
+from manuskript.data.abstractData import AbstractData
 from manuskript.io.xmlFile import XmlFile
 
 
@@ -34,10 +36,11 @@ class RevisionOutline:
         self.revisions.load()
 
 
-class Revisions:
+class Revisions(AbstractData):
 
     def __init__(self, path):
-        self.file = XmlFile(os.path.join(path, "revisions.xml"))
+        AbstractData.__init__(self, os.path.join(path, "revisions.xml"))
+        self.file = XmlFile(self.dataPath)
         self.outline = dict()
 
     def __iter__(self):
@@ -78,10 +81,22 @@ class Revisions:
                 cls.loadRevisionOutline(revisions, child, element)
 
     def load(self):
+        self.outline.clear()
+
+        AbstractData.load(self)
+
         try:
             tree = self.file.load()
-            self.outline.clear()
 
             Revisions.loadRevisionOutline(self, tree.getroot(), None)
+
+            self.complete()
         except FileNotFoundError:
-            self.outline.clear()
+            self.complete(False)
+
+    def save(self):
+        AbstractData.save(self)
+
+        # TODO
+
+        self.complete()

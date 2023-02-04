@@ -16,23 +16,23 @@ class MskFile(TextFile, ZipFile):
     def __init__(self, path):
         try:
             _ZipFile(path)
-            dir_path = None
+            directoryPath = None
         except BadZipFile:
-            dir_path = os.path.splitext(path)[0]
+            directoryPath = os.path.splitext(path)[0]
 
-            if not os.path.isdir(dir_path):
-                dir_path = None
+            if not os.path.isdir(directoryPath):
+                directoryPath = None
 
-        self.zipFile = dir_path is None
+        self.zipFile = directoryPath is None
         self.version = str(LEGACY_MSK_VERSION)
 
-        ZipFile.__init__(self, path, dir_path)
+        ZipFile.__init__(self, path, directoryPath)
 
     def __del__(self):
         ZipFile.__del__(self)
 
-        if self.isZipFile() and (self.tmp is None) and not (self.dir_path is None):
-            shutil.rmtree(self.dir_path)
+        if self.isZipFile() and (self.tmp is None) and not (self.directoryPath is None):
+            shutil.rmtree(self.directoryPath)
 
     def isZipFile(self) -> bool:
         return self.zipFile
@@ -42,10 +42,10 @@ class MskFile(TextFile, ZipFile):
             return
 
         if not zipFile:
-            self.dir_path = os.path.splitext(self.path)[0]
+            self.directoryPath = os.path.splitext(self.path)[0]
 
-            if not os.path.isdir(self.dir_path):
-                os.mkdir(self.dir_path)
+            if not os.path.isdir(self.directoryPath):
+                os.mkdir(self.directoryPath)
 
             ZipFile.load(self)
 
@@ -78,7 +78,7 @@ class MskFile(TextFile, ZipFile):
             TextFile.save(self, self.version)
 
     def remove(self):
-        if os.path.isdir(self.dir_path):
-            shutil.rmtree(self.dir_path)
+        if os.path.isdir(self.directoryPath):
+            shutil.rmtree(self.directoryPath)
 
         ZipFile.remove(self)

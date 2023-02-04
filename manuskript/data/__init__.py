@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
 
+from manuskript.data.abstractData import DataStatus
 from manuskript.data.characters import Characters, Character
 from manuskript.data.color import Color
 from manuskript.data.goal import Goal

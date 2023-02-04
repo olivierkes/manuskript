@@ -11,30 +11,30 @@ from manuskript.io.abstractFile import AbstractFile
 
 class ZipFile(AbstractFile):
 
-    def __init__(self, path, dir_path=None):
+    def __init__(self, path, directoryPath=None):
         AbstractFile.__init__(self, path)
 
-        if dir_path is None:
+        if directoryPath is None:
             self.tmp = tempfile.TemporaryDirectory()
-            dir_path = self.tmp.name
+            directoryPath = self.tmp.name
         else:
             self.tmp = None
 
-        self.dir_path = dir_path
+        self.directoryPath = directoryPath
 
     def __del__(self):
         if not (self.tmp is None):
             self.tmp.cleanup()
 
     def load(self):
-        if self.dir_path is None:
+        if self.directoryPath is None:
             self.tmp = tempfile.TemporaryDirectory()
-            self.dir_path = self.tmp.name
+            self.directoryPath = self.tmp.name
 
         with _ZipFile(self.path) as archive:
-            archive.extractall(self.dir_path)
+            archive.extractall(self.directoryPath)
 
-        return self.dir_path
+        return self.directoryPath
 
     def save(self, content=None):
         if not (content is None):
@@ -42,14 +42,14 @@ class ZipFile(AbstractFile):
                 self.tmp.cleanup()
 
             self.tmp = None
-            self.dir_path = content
-        elif self.dir_path is None:
+            self.directoryPath = content
+        elif self.directoryPath is None:
             if self.tmp is None:
                 self.tmp = tempfile.TemporaryDirectory()
 
-            self.dir_path = self.tmp.name
+            self.directoryPath = self.tmp.name
 
-        shutil.make_archive(self.path, 'zip', self.dir_path)
+        shutil.make_archive(self.path, 'zip', self.directoryPath)
         shutil.move(self.path + ".zip", self.path)
 
     def remove(self):

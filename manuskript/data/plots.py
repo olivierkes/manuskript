@@ -4,6 +4,8 @@
 import os
 
 from lxml import etree
+
+from manuskript.data.abstractData import AbstractData
 from manuskript.data.characters import Characters, Character
 from manuskript.data.importance import Importance
 from manuskript.data.links import LinkAction, Links
@@ -102,10 +104,11 @@ class PlotLine:
         self.plots.save()
 
 
-class Plots:
+class Plots(AbstractData):
 
     def __init__(self, path, characters: Characters):
-        self.file = XmlFile(os.path.join(path, "plots.xml"))
+        AbstractData.__init__(self, os.path.join(path, "plots.xml"))
+        self.file = XmlFile(self.dataPath)
         self.host = UniqueIDHost()
         self.characters = characters
         self.lines = dict()
@@ -171,19 +174,22 @@ class Plots:
 
     @classmethod
     def loadPlots(cls, plots, root: etree.Element):
-        plots.host.reset()
-        plots.lines.clear()
-
         for element in root.findall("plot"):
             cls.loadPlotLine(plots, element)
 
     def load(self):
+        self.host.reset()
+        self.lines.clear()
+
+        AbstractData.load(self)
+
         try:
             tree = self.file.load()
             Plots.loadPlots(self, tree.getroot())
+
+            self.complete()
         except FileNotFoundError:
-            self.host.reset()
-            self.lines.clear()
+            self.complete(False)
 
     @classmethod
     def saveElementAttribute(cls, element: etree.Element, name: str, value):
@@ -230,5 +236,8 @@ class Plots:
         return root
 
     def save(self):
+        AbstractData.save(self)
+
         tree = etree.ElementTree(Plots.savePlots(self))
         self.file.save(tree)
+        self.complete()

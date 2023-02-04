@@ -4,6 +4,8 @@
 import os
 
 from zipfile import BadZipFile
+
+from manuskript.data.abstractData import AbstractData
 from manuskript.data.version import Version, CURRENT_MSK_VERSION
 from manuskript.data.info import Info
 from manuskript.data.summary import Summary
@@ -19,22 +21,23 @@ from manuskript.io.mskFile import MskFile
 from manuskript.util import profileTime
 
 
-class Project:
+class Project(AbstractData):
 
     def __init__(self, path):
-        self.file = MskFile(path)
+        AbstractData.__init__(self, path)
+        self.file = MskFile(self.dataPath)
 
-        self.version = Version(self.file.dir_path)
-        self.info = Info(self.file.dir_path)
-        self.summary = Summary(self.file.dir_path)
-        self.labels = LabelHost(self.file.dir_path)
-        self.statuses = StatusHost(self.file.dir_path)
-        self.settings = Settings(self.file.dir_path)
-        self.characters = Characters(self.file.dir_path)
-        self.plots = Plots(self.file.dir_path, self.characters)
-        self.world = World(self.file.dir_path)
-        self.outline = Outline(self.file.dir_path, self.plots, self.labels, self.statuses)
-        self.revisions = Revisions(self.file.dir_path)
+        self.version = Version(self.file.directoryPath)
+        self.info = Info(self.file.directoryPath)
+        self.summary = Summary(self.file.directoryPath)
+        self.labels = LabelHost(self.file.directoryPath)
+        self.statuses = StatusHost(self.file.directoryPath)
+        self.settings = Settings(self.file.directoryPath)
+        self.characters = Characters(self.file.directoryPath)
+        self.plots = Plots(self.file.directoryPath, self.characters)
+        self.world = World(self.file.directoryPath)
+        self.outline = Outline(self.file.directoryPath, self.plots, self.labels, self.statuses)
+        self.revisions = Revisions(self.file.directoryPath)
 
     def __del__(self):
         del self.file
@@ -58,9 +61,12 @@ class Project:
         self.version.value = CURRENT_MSK_VERSION
 
     def load(self):
+        AbstractData.load(self)
+
         try:
             self.file.load()
         except BadZipFile or FileNotFoundError:
+            self.complete(False)
             return
 
         profileTime(self.version.load)
@@ -76,8 +82,10 @@ class Project:
         profileTime(self.revisions.load)
 
         self.file.setZipFile(self.settings.isEnabled("saveToZip"))
+        self.complete()
 
     def save(self):
+        AbstractData.save(self)
         saveToZip = self.settings.isEnabled("saveToZip")
 
         self.file.setZipFile(saveToZip)
@@ -96,3 +104,4 @@ class Project:
         #self.revisions.save()
 
         self.file.save(saveToZip)
+        self.complete()

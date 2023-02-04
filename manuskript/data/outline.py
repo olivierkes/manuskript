@@ -4,12 +4,13 @@
 import os
 
 from collections import OrderedDict
-from concurrent.futures import ThreadPoolExecutor
 from enum import Enum, unique
+
+from manuskript.data.abstractData import AbstractData, DataStatus
 from manuskript.data.goal import Goal
 from manuskript.data.labels import LabelHost, Label
 from manuskript.data.plots import Plots
-from manuskript.data.status import StatusHost, Status
+from manuskript.data.status import StatusHost
 from manuskript.data.unique_id import UniqueIDHost
 from manuskript.io.mmdFile import MmdFile
 from manuskript.util import CounterKind, countText, safeInt
@@ -22,10 +23,11 @@ class OutlineState(Enum):
     COMPLETE = 2
 
 
-class OutlineItem:
+class OutlineItem(AbstractData):
 
     def __init__(self, path, outline):
-        self.file = MmdFile(path)
+        AbstractData.__init__(self, path)
+        self.file = MmdFile(self.dataPath)
         self.outline = outline
         self.state = OutlineState.UNDEFINED
 
@@ -108,11 +110,19 @@ class OutlineItem:
     def goalCount(self) -> int:
         return 0 if self.goal is None else self.goal.value
 
+    def complete(self, statusCompletion: bool = True, optimized: bool = True):
+        AbstractData.complete(self, statusCompletion)
+
+        if self.dataStatus != DataStatus.LOADED:
+            return
+
+        self.state = OutlineState.OPTIMIZED if optimized else OutlineState.COMPLETE
+
     def load(self, optimized: bool = True):
-        raise IOError('Loading undefined!')
+        AbstractData.load(self)
 
     def save(self):
-        raise IOError('Saving undefined!')
+        AbstractData.save(self)
 
 
 class OutlineText(OutlineItem):
@@ -137,31 +147,35 @@ class OutlineText(OutlineItem):
         return self.cache[counterKind.name]
 
     def load(self, optimized: bool = True):
+        OutlineItem.load(self)
+
         metadata, body = self.file.loadMMD(optimized)
         OutlineItem.loadMetadata(self, metadata)
 
         if not optimized:
             self.text = body
-            self.state = OutlineState.COMPLETE
-        elif self.state == OutlineState.UNDEFINED:
-            self.state = OutlineState.OPTIMIZED
+
+        self.complete(optimized=optimized)
 
     def save(self):
         if self.state == OutlineState.OPTIMIZED:
             self.outline.host.removeID(self.UID)
             self.load(False)
 
+        OutlineItem.save(self)
+
         metadata = OutlineItem.saveMetadata(self)
         self.file.save((metadata, self.text))
+        self.complete()
 
 
 class OutlineFolder(OutlineItem):
 
     def __init__(self, path, outline):
-        self.dir_path = path
-        self.items = list()
+        OutlineItem.__init__(self, os.path.join(path, "folder.txt"), outline)
 
-        OutlineItem.__init__(self, os.path.join(self.dir_path, "folder.txt"), outline)
+        self.folderPath = path
+        self.items = list()
 
     def __iter__(self):
         return self.items.__iter__()
@@ -173,12 +187,12 @@ class OutlineFolder(OutlineItem):
     def loadItems(cls, outline, folder, recursive: bool = True):
         folder.items.clear()
 
-        names = os.listdir(folder.dir_path)
+        names = os.listdir(folder.folderPath)
         names.remove("folder.txt")
         names.sort()
 
         for name in names:
-            path = os.path.join(folder.dir_path, name)
+            path = os.path.join(folder.folderPath, name)
 
             if os.path.isdir(path):
                 item = OutlineFolder(path, outline)
@@ -213,17 +227,15 @@ class OutlineFolder(OutlineItem):
         return count
 
     def load(self, optimized: bool = True):
+        OutlineItem.load(self)
+
         metadata, _ = self.file.loadMMD(True)
         OutlineItem.loadMetadata(self, metadata)
 
-        if optimized:
-            self.state = OutlineState.OPTIMIZED
-        else:
-            for item in self.items:
-                if item.state != OutlineState.COMPLETE:
-                    return
+        if not optimized:
+            optimized = any(item.state != OutlineState.COMPLETE for item in self.items)
 
-            self.state = OutlineState.COMPLETE
+        self.complete(optimized=optimized)
 
     @classmethod
     def saveItems(cls, folder, recursive: bool = True):
@@ -236,14 +248,18 @@ class OutlineFolder(OutlineItem):
 
     def save(self):
         self.type = "folder"
+
+        OutlineItem.save(self)
+
         metadata = OutlineItem.saveMetadata(self)
         self.file.save((metadata, "\n"))
+        self.complete()
 
 
-class Outline:
+class Outline(AbstractData):
 
     def __init__(self, path, plots: Plots, labels: LabelHost, statuses: StatusHost):
-        self.dir_path = os.path.join(path, "outline")
+        AbstractData.__init__(self, os.path.join(path, "outline"))
         self.host = UniqueIDHost()
         self.plots = plots
         self.labels = labels
@@ -299,11 +315,13 @@ class Outline:
         self.items.clear()
         self.cache.clear()
 
-        names = os.listdir(self.dir_path)
+        AbstractData.load(self)
+
+        names = os.listdir(self.dataPath)
         names.sort()
 
         for name in names:
-            path = os.path.join(self.dir_path, name)
+            path = os.path.join(self.dataPath, name)
 
             if os.path.isdir(path):
                 item = OutlineFolder(path, self)
@@ -320,9 +338,20 @@ class Outline:
         for item in filter(lambda outlineItem: type(outlineItem) is OutlineFolder, self.items):
             OutlineFolder.loadItems(self, item, True)
 
+        self.complete()
+
     def save(self):
+        AbstractData.save(self)
+
+        if not self.items:
+            self.complete()
+            return
+
+        os.makedirs(self.dataPath, exist_ok=True)
         for item in self.items:
             item.save()
 
         for item in filter(lambda outlineItem: type(outlineItem) is OutlineFolder, self.items):
             OutlineFolder.saveItems(item, True)
+
+        self.complete()

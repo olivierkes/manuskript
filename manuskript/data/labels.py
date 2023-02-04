@@ -4,6 +4,7 @@
 import collections
 import os
 
+from manuskript.data.abstractData import AbstractData
 from manuskript.data.color import Color
 from manuskript.io.mmdFile import MmdFile
 
@@ -27,10 +28,11 @@ class Label:
         self.host.save()
 
 
-class LabelHost:
+class LabelHost(AbstractData):
 
     def __init__(self, path):
-        self.file = MmdFile(os.path.join(path, "labels.txt"), 21)
+        AbstractData.__init__(self, os.path.join(path, "labels.txt"))
+        self.file = MmdFile(self.dataPath, 21)
         self.labels = collections.OrderedDict()
 
     def addLabel(self, name: str = None, color: Color = None) -> Label:
@@ -86,11 +88,13 @@ class LabelHost:
         return self.labels.values().__iter__()
 
     def load(self):
+        self.labels.clear()
+        AbstractData.load(self)
+
         try:
             metadata, _ = self.file.loadMMD(True)
-            self.labels.clear()
         except FileNotFoundError:
-            self.labels.clear()
+            self.complete(False)
             return
 
         for (name, value) in metadata.items():
@@ -99,10 +103,14 @@ class LabelHost:
 
             self.addLabel(name, Color.parse(value))
 
+        self.complete()
+
     def save(self):
+        AbstractData.save(self)
         metadata = collections.OrderedDict()
 
         for (name, label) in self.labels.items():
             metadata[name] = label.color
 
         self.file.save((metadata, None))
+        self.complete()

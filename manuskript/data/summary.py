@@ -3,13 +3,15 @@
 
 import os
 
+from manuskript.data.abstractData import AbstractData
 from manuskript.io.mmdFile import MmdFile
 
 
-class Summary:
+class Summary(AbstractData):
 
     def __init__(self, path):
-        self.file = MmdFile(os.path.join(path, "summary.txt"), 13)
+        AbstractData.__init__(self, os.path.join(path, "summary.txt"))
+        self.file = MmdFile(self.dataPath, 13)
 
         self.situation = None
         self.sentence = None
@@ -18,6 +20,8 @@ class Summary:
         self.full = None
 
     def load(self):
+        AbstractData.load(self)
+
         try:
             metadata, _ = self.file.loadMMD(True)
         except FileNotFoundError:
@@ -28,8 +32,10 @@ class Summary:
         self.paragraph = metadata.get("Paragraph", None)
         self.page = metadata.get("Page", None)
         self.full = metadata.get("Full", None)
+        self.complete()
 
     def save(self):
+        AbstractData.save(self)
         metadata = dict()
 
         metadata["Situation"] = self.situation
@@ -39,3 +45,4 @@ class Summary:
         metadata["Full"] = self.full
 
         self.file.save((metadata, None))
+        self.complete()

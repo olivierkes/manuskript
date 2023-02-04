@@ -5,6 +5,7 @@ import os
 
 from collections import OrderedDict
 
+from manuskript.data.abstractData import AbstractData
 from manuskript.data.color import Color
 from manuskript.data.importance import Importance
 from manuskript.data.links import LinkAction, Links
@@ -13,10 +14,11 @@ from manuskript.io.mmdFile import MmdFile
 from manuskript.util import safeFilename
 
 
-class Character:
+class Character(AbstractData):
 
     def __init__(self, path, characters):
-        self.file = MmdFile(path, 21)
+        AbstractData.__init__(self, path)
+        self.file = MmdFile(self.dataPath, 21)
         self.characters = characters
         self.links = Links()
 
@@ -50,6 +52,8 @@ class Character:
             return defaultValue
 
     def load(self):
+        AbstractData.load(self)
+
         metadata, _ = self.file.loadMMD(True)
 
         ID = Character.loadAttribute(metadata, "ID")
@@ -79,8 +83,11 @@ class Character:
             self.details[key] = value
 
         self.links.call(LinkAction.RELOAD, self.UID, self)
+        self.complete()
 
     def save(self):
+        AbstractData.save(self)
+
         metadata = OrderedDict()
 
         metadata["Name"] = self.name
@@ -102,12 +109,13 @@ class Character:
                 metadata[key] = value
 
         self.file.save((metadata, None))
+        self.complete()
 
 
-class Characters:
+class Characters(AbstractData):
 
     def __init__(self, path):
-        self.dir_path = os.path.join(path, "characters")
+        AbstractData.__init__(self, os.path.join(path, "characters"))
         self.host = UniqueIDHost()
         self.data = dict()
 
@@ -121,7 +129,7 @@ class Characters:
         UID = self.host.newID()
         filename = safeFilename("%s-%s" % (str(UID), name), "txt")
 
-        path = os.path.join(self.dir_path, filename)
+        path = os.path.join(self.dataPath, filename)
 
         if os.path.exists(filename):
             return None
@@ -143,12 +151,14 @@ class Characters:
 
     def load(self):
         self.data.clear()
+        AbstractData.load(self)
 
-        if not os.path.isdir(self.dir_path):
+        if not os.path.isdir(self.dataPath):
+            self.complete(False)
             return
 
-        for filename in os.listdir(self.dir_path):
-            path = os.path.join(self.dir_path, filename)
+        for filename in os.listdir(self.dataPath):
+            path = os.path.join(self.dataPath, filename)
 
             if not os.path.isfile(path):
                 continue
@@ -162,10 +172,16 @@ class Characters:
 
             self.data[character.UID.value] = character
 
+        self.complete()
+
     def save(self):
+        AbstractData.save(self)
+
         if not self.data:
             return
 
-        os.makedirs(self.dir_path, exist_ok=True)
+        os.makedirs(self.dataPath, exist_ok=True)
         for character in self.data.values():
             character.save()
+
+        self.complete(False)
