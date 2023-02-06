@@ -8,7 +8,6 @@ import os
 from zipfile import BadZipFile
 
 # Manuskript modules
-=======
 
 from manuskript.data.abstractData import AbstractData
 from manuskript.data.version import Version, CURRENT_MSK_VERSION
@@ -30,7 +29,7 @@ from manuskript.util import profileTime
 
 
 class Project(AbstractData):
-      def __init__(self, path):
+    def __init__(self, path):
         AbstractData.__init__(self, path)
         self.file = MskFile(self.dataPath)
 
@@ -45,6 +44,8 @@ class Project(AbstractData):
         self.world = World(self.file.directoryPath)
         self.outline = Outline(self.file.directoryPath, self.plots, self.labels, self.statuses)
         self.revisions = Revisions(self.file.directoryPath)
+        self.character_templates = CharacterDetailTemplates() # TODO: RENAME PROPERALLY
+
 
     def __del__(self):
         del self.file
