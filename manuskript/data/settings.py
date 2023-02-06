@@ -3,13 +3,15 @@
 
 import os
 
+from manuskript.data.abstractData import AbstractData
 from manuskript.io.jsonFile import JsonFile
 
 
-class Settings:
+class Settings(AbstractData):
 
     def __init__(self, path, initDefault: bool = True):
-        self.file = JsonFile(os.path.join(path, "settings.txt"))
+        AbstractData.__init__(self, os.path.join(path, "settings.txt"))
+        self.file = JsonFile(self.dataPath)
         self.properties = dict()
 
         if initDefault:
@@ -134,10 +136,17 @@ class Settings:
         }
 
     def load(self):
+        AbstractData.load(self)
+
         try:
             self.properties = self.file.load()
         except FileNotFoundError:
             Settings.loadDefaultSettings(self)
 
+        self.complete()
+
     def save(self):
+        AbstractData.save(self)
+
         self.file.save(self.properties)
+        self.complete()

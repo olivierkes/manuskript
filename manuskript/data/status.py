@@ -4,6 +4,7 @@
 import collections
 import os
 
+from manuskript.data.abstractData import AbstractData
 from manuskript.io.textFile import TextFile
 
 
@@ -25,10 +26,11 @@ class Status:
         self.host.save()
 
 
-class StatusHost:
+class StatusHost(AbstractData):
 
     def __init__(self, path):
-        self.file = TextFile(os.path.join(path, "status.txt"))
+        AbstractData.__init__(self, os.path.join(path, "status.txt"))
+        self.file = TextFile(self.dataPath)
         self.statuses = collections.OrderedDict()
 
     def addStatus(self, name: str = None) -> Status:
@@ -84,22 +86,32 @@ class StatusHost:
         return self.statuses.values().__iter__()
 
     def load(self):
+        self.statuses.clear()
+
+        AbstractData.load(self)
+
         try:
             text = self.file.load()
-            self.statuses.clear()
         except FileNotFoundError:
-            self.statuses.clear()
+            self.complete(False)
             return
 
         if (len(text) <= 1) or (text[len(text) - 1] != "\n"):
+            self.complete(False)
             return
 
         text = text[:-1]
         if len(text) <= 0:
+            self.complete(False)
             return
 
         for name in text.split("\n"):
             self.addStatus(name)
 
+        self.complete()
+
     def save(self):
+        AbstractData.save(self)
+
         self.file.save("\n".join(self.statuses.keys()) + "\n")
+        self.complete()

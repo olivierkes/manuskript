@@ -3,13 +3,15 @@
 
 import os
 
+from manuskript.data.abstractData import AbstractData
 from manuskript.io.mmdFile import MmdFile
 
 
-class Info:
+class Info(AbstractData):
 
     def __init__(self, path):
-        self.file = MmdFile(os.path.join(path, "infos.txt"), 16)
+        AbstractData.__init__(self, os.path.join(path, "infos.txt"))
+        self.file = MmdFile(self.dataPath, 16)
 
         self.title = None
         self.subtitle = None
@@ -21,6 +23,8 @@ class Info:
         self.email = None
 
     def load(self):
+        AbstractData.load(self)
+
         try:
             metadata, _ = self.file.loadMMD(True)
         except FileNotFoundError:
@@ -34,8 +38,10 @@ class Info:
         self.license = metadata.get("License", None)
         self.author = metadata.get("Author", None)
         self.email = metadata.get("Email", None)
+        self.complete()
 
     def save(self):
+        AbstractData.save(self)
         metadata = dict()
 
         metadata["Title"] = self.title
@@ -48,3 +54,4 @@ class Info:
         metadata["Email"] = self.email
 
         self.file.save((metadata, None))
+        self.complete()

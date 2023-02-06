@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
+
 from collections.abc import Callable
 from enum import Enum, unique
 

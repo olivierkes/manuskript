@@ -3,6 +3,7 @@
 
 import os
 
+from manuskript.data.abstractData import AbstractData
 from manuskript.data.unique_id import UniqueIDHost, UniqueID
 from manuskript.io.opmlFile import OpmlFile, OpmlOutlineItem
 
@@ -35,10 +36,11 @@ class WorldItem:
         self.world.load()
 
 
-class World:
+class World(AbstractData):
 
     def __init__(self, path):
-        self.file = OpmlFile(os.path.join(path, "world.opml"))
+        AbstractData.__init__(self, os.path.join(path, "world.opml"))
+        self.file = OpmlFile(self.dataPath)
         self.host = UniqueIDHost()
         self.items = dict()
         self.top = list()
@@ -100,11 +102,13 @@ class World:
         return item
 
     def load(self):
+        self.items.clear()
+        self.top.clear()
+
+        AbstractData.load(self)
+
         try:
             outlines = self.file.load()
-
-            self.items.clear()
-            self.top.clear()
 
             for outline in outlines:
                 item = World.loadWorldItem(self, outline)
@@ -113,9 +117,10 @@ class World:
                     continue
 
                 self.top.append(item)
+
+            self.complete()
         except FileNotFoundError:
-            self.items.clear()
-            self.top.clear()
+            self.complete(False)
 
     @classmethod
     def saveWorldItem(cls, item: WorldItem):
@@ -133,9 +138,11 @@ class World:
         return outline
 
     def save(self):
+        AbstractData.save(self)
         outlines = list()
 
         for item in self.top:
             outlines.append(World.saveWorldItem(item))
 
         self.file.save(outlines)
+        self.complete()
