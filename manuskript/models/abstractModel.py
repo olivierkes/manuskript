@@ -355,7 +355,7 @@ class abstractModel(QAbstractItemModel):
             return None
         encodedData = bytes(data.data("application/xml")).decode()
         root = ET.XML(encodedData)
-        if not root:
+        if root is None:
             return None
 
         if root.tag != "outlineItems":
