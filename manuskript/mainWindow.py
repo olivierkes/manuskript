@@ -266,9 +266,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         targets = [
             self.treeRedacOutline,
             self.mainEditor
-            ]
+        ]
 
-        while new != None:
+        while new is not None:
             if new in targets:
                 self._lastFocus = new
                 break
@@ -851,7 +851,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # risk a scenario where the timer somehow triggers a new save while saving.
         self.saveTimerNoChanges.stop()
 
-        if self.currentProject == None:
+        if self.currentProject is None:
             # No UI feedback here as this code path indicates a race condition that happens
             # after the user has already closed the project through some way. But in that
             # scenario, this code should not be reachable to begin with.
@@ -1407,7 +1407,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         dictionaries = Spellchecker.availableDictionaries()
 
         # Set first run dictionary
-        if settings.dict == None:
+        if settings.dict is None:
             settings.dict = Spellchecker.getDefaultDictionary()
 
         # Check if project dict is unavailable on this machine
@@ -1623,7 +1623,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             w.cmbPOV.setVisible(val)
 
         # POV in outline view
-        if val == None and Outline.POV in settings.outlineViewColumns:
+        if val is None and Outline.POV in settings.outlineViewColumns:
             settings.outlineViewColumns.remove(Outline.POV)
 
         from manuskript.ui.views.outlineView import outlineView

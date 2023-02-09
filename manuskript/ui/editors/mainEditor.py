@@ -143,6 +143,9 @@ class mainEditor(QWidget, Ui_mainEditor):
         self.updateThingsVisible(index)
 
     def updateMainTreeView(self, index):
+        if not index.isValid():
+            return
+
         self._updating = True
         self.mw.treeRedacOutline.setCurrentIndex(index)
         self._updating = False
