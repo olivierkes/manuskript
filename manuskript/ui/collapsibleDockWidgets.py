@@ -93,6 +93,11 @@ class collapsibleDockWidgets(QToolBar):
         # btn.defaultAction().setChecked(event.type() == QEvent.Show)
         # return False
 
+    def switchActionByWidget(self, widget, visibility=True):
+        for _btn, _action, _widget, _grp in self.otherWidgets:
+            if widget == _widget:
+                _btn.setChecked(visibility)
+
     def setCurrentGroup(self, group):
         self.currentGroup = group
         for btn, action, widget, grp in self.otherWidgets:

@@ -38,8 +38,7 @@ class outlineSearchResultHighlighter(abstractSearchResultHighlighter):
         # Metadata columns are inside a splitter widget that my be hidden, so we show them.
         if parentName:
             metadataViewWidget = mainWindow().findChild(metadataView, "redacMetadata")
-            metadataViewWidget.show()
-            metadataViewWidget.findChild(collapsibleGroupBox2, parentName).button.setChecked(True)
+            mainWindow().toolbar.switchActionByWidget(metadataViewWidget)
             widget = metadataViewWidget.findChild(editorClass, editorName)
         else:
             widget = mainWindow().mainEditor.currentEditor().findChild(editorClass, editorName)
