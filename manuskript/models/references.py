@@ -301,9 +301,12 @@ def infos(ref):
         if item:
             for r in range(item.rowCount()):
                 ID = item.child(r, 0).text()
-                characters += "<li><a href='{link}'>{text}</a>".format(
-                        link=characterReference(ID),
-                        text=pM.getCharacterByID(ID).name())
+                character = pM.getCharacterByID(ID)
+
+                if character is not None:
+                    characters += "<li><a href='{link}'>{text}</a>".format(
+                            link=characterReference(ID),
+                            text=character.name())
 
         # Resolution steps
         steps = ""
