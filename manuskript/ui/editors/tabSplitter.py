@@ -4,6 +4,7 @@ import locale
 
 from PyQt5.QtCore import QModelIndex, QRect, QPoint, Qt, QObject, QSize
 from PyQt5.QtGui import QIcon, QPalette
+from PyQt5.QtGui import QDropEvent, QDragEnterEvent
 from PyQt5.QtWidgets import QWidget, QPushButton, qApp
 
 from manuskript.functions import mainWindow, appPath
@@ -79,6 +80,19 @@ class tabSplitter(QWidget, Ui_tabSplitter):
         self.tab.tabCloseRequested.connect(self.closeTab)
         self.tab.currentChanged.connect(self.mainEditor.tabChanged)
         qApp.focusChanged.connect(self.focusChanged)
+
+        self.setAcceptDrops(True)
+
+    def dragEnterEvent(self, event: QDragEnterEvent) -> None:
+        if event.mimeData().hasFormat('application/xml'):
+            event.accept()
+        else:
+            event.ignore()
+
+    def dropEvent(self, event: QDropEvent) -> None:
+        itemID = mainWindow().mdlOutline.decodeMimeData(event.mimeData())[0].ID()
+        itemIndex = mainWindow().mdlOutline.getIndexByID(itemID)
+        self.mainEditor.setCurrentModelIndex(itemIndex, tabWidget = self.tab)
 
     def updateStyleSheet(self):
         self.setStyleSheet(style.mainEditorTabSS())

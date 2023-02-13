@@ -217,6 +217,11 @@ class mainEditor(QWidget, Ui_mainEditor):
         title = self.getIndexTitle(index)
 
         if tabWidget == None:
+            # no tabWidget specified, update all tabs of views that are a target
+            for ts in self.allTabSplitters():
+                if ts.isTarget:
+                    self.setCurrentModelIndex(index, newTab, tabWidget=ts.tab)
+            # additionally always update the current tabWidget
             tabWidget = self.currentTabWidget()
 
         # Checking if tab is already opened
