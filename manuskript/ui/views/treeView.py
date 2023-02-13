@@ -90,6 +90,12 @@ class treeView(QTreeView, dndView, outlineBasics):
         dndView.dragMoveEvent(self, event)
         QTreeView.dragMoveEvent(self, event)
 
+    def mousePressEvent(self, event):
+        # Prevent selecting item while right-clicking for popup menu!
+        if event.button() != Qt.RightButton:
+            QTreeView.mousePressEvent(self, event)
+            outlineBasics.mousePressEvent(self, event)
+
     def mouseReleaseEvent(self, event):
         QTreeView.mouseReleaseEvent(self, event)
         outlineBasics.mouseReleaseEvent(self, event)
