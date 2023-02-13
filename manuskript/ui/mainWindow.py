@@ -701,7 +701,7 @@ class Ui_MainWindow(object):
         self.treeWorld.setDefaultDropAction(QtCore.Qt.MoveAction)
         self.treeWorld.setSelectionMode(QtWidgets.QAbstractItemView.ExtendedSelection)
         self.treeWorld.setIndentation(15)
-        self.treeWorld.setRootIsDecorated(False)
+        self.treeWorld.setRootIsDecorated(True)
         self.treeWorld.setObjectName("treeWorld")
         self.treeWorld.header().setVisible(False)
         self.treeWorld.header().setDefaultSectionSize(35)
