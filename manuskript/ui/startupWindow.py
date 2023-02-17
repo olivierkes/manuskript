@@ -45,10 +45,10 @@ class StartupWindow(AbstractDialog):
                                             GObject.BindingFlags.SYNC_CREATE |
                                             GObject.BindingFlags.INVERT_BOOLEAN)
 
-        bindMenuItem(builder, "open_menu_item", self.mainWindow.openAction)
-        bindMenuItem(builder, "quit_menu_item", self.mainWindow.quitAction)
+        bindMenuItem(builder, "open_menu_item", self.mainWindow._openAction)
+        bindMenuItem(builder, "quit_menu_item", self.mainWindow._quitAction)
 
-        bindMenuItem(builder, "about_menu_item", self.mainWindow.aboutAction)
+        bindMenuItem(builder, "about_menu_item", self.mainWindow._aboutAction)
 
         self.templatesStore = builder.get_object("templates_store")
 
