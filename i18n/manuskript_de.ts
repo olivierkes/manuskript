@@ -107,12 +107,12 @@
     <message>
         <location filename="../manuskript/ui/listDialog_ui.py" line="43"/>
         <source>Title</source>
-        <translation type="unfinished">Titel</translation>
+        <translation>Titel</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/listDialog_ui.py" line="44"/>
         <source>Text</source>
-        <translation type="unfinished">Text</translation>
+        <translation>Text</translation>
     </message>
 </context>
 <context>
@@ -120,12 +120,12 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="619"/>
         <source>The image path or URL is incomplete or malformed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Der Dateipfad oder die URL des Bildes ist unvollständig oder fehlerhaft.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="631"/>
         <source>The protocol &quot;{}&quot; is not supported.</source>
-        <translation type="unfinished"></translation>
+        <translation>Das Protokoll &quot;{}&quot; wird nicht unterstützt.</translation>
     </message>
 </context>
 <context>
@@ -141,7 +141,7 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="543"/>
         <source>{} (CTRL+Click to open)</source>
-        <translation type="unfinished"></translation>
+        <translation>{} (Strg+Mausklick zum Öffnen)</translation>
     </message>
 </context>
 <context>
@@ -1238,17 +1238,17 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1599"/>
         <source>&amp;Targets</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Ziele</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1600"/>
         <source>Draft and session word count targets</source>
-        <translation type="unfinished"></translation>
+        <translation>Ziele bezüglich Wortanzahl für Entwürfe und die Sitzung</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2732"/>
         <source>Ctrl+,</source>
-        <translation type="unfinished"></translation>
+        <translation>Strg+,</translation>
     </message>
 </context>
 <context>
@@ -2276,22 +2276,22 @@ Wörtern an</translation>
     <message>
         <location filename="../manuskript/load_save/version_1.py" line="435"/>
         <source>Files not saved</source>
-        <translation type="unfinished"></translation>
+        <translation>Nicht gespeicherte Dateien</translation>
     </message>
     <message>
         <location filename="../manuskript/load_save/version_1.py" line="436"/>
         <source>The following files were not saved and appear to be open in another program</source>
-        <translation type="unfinished"></translation>
+        <translation>Die folgenden Dateien wurden nicht gespeichert, da ein anderes Programm auf sie zugreift</translation>
     </message>
     <message>
         <location filename="../manuskript/load_save/version_1.py" line="925"/>
         <source>Files not loaded</source>
-        <translation type="unfinished"></translation>
+        <translation>Nicht geladene Dateien</translation>
     </message>
     <message>
         <location filename="../manuskript/load_save/version_1.py" line="926"/>
         <source>The following files were not loaded and appear to be open in another program</source>
-        <translation type="unfinished"></translation>
+        <translation>Die folgenden Dateien wurden nicht geladen, da ein anderes Programm auf sie zugreift</translation>
     </message>
 </context>
 <context>
@@ -2458,7 +2458,7 @@ Wörtern an</translation>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>Einfache Anführungszeichen (') ersetzen durch:</translation>
+        <translation>Einfache Anführungszeichen (&apos;) ersetzen durch:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>
@@ -2533,12 +2533,12 @@ Wörtern an</translation>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="542"/>
         <source>Replace ... with …</source>
-        <translation type="unfinished"></translation>
+        <translation>Ersetze ... mit …</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="543"/>
         <source>Replace --- with —</source>
-        <translation type="unfinished"></translation>
+        <translation>Ersetze --- mit —</translation>
     </message>
 </context>
 <context>
@@ -3402,27 +3402,27 @@ Wörtern an</translation>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="31"/>
         <source>Case sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>Groß- und Kleinschreibung berücksichtigen</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="32"/>
         <source>Match words</source>
-        <translation type="unfinished"></translation>
+        <translation>Ganze Worttreffer</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="33"/>
         <source>Regex</source>
-        <translation type="unfinished"></translation>
+        <translation>Regulärer Ausdruck</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="39"/>
         <source>Search in:</source>
-        <translation type="unfinished"></translation>
+        <translation>Suche innerhalb von:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="51"/>
         <source>Options:</source>
-        <translation type="unfinished"></translation>
+        <translation>Optionen:</translation>
     </message>
 </context>
 <context>
@@ -3600,47 +3600,47 @@ Wörtern an</translation>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="128"/>
         <source>Project Targets</source>
-        <translation type="unfinished"></translation>
+        <translation>Projektziele</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="129"/>
         <source>Draft Target</source>
-        <translation type="unfinished"></translation>
+        <translation>Entwurfsziele</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="136"/>
         <source>0</source>
-        <translation type="unfinished">0</translation>
+        <translation>0</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="137"/>
         <source>of</source>
-        <translation type="unfinished">von</translation>
+        <translation>von</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="132"/>
         <source>10,000</source>
-        <translation type="unfinished"></translation>
+        <translation>10.000</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="133"/>
         <source>Words</source>
-        <translation type="unfinished"></translation>
+        <translation>Wörter</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="134"/>
         <source>Session Target</source>
-        <translation type="unfinished"></translation>
+        <translation>Sitzungsziel</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="135"/>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Zurücksetzen</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="138"/>
         <source>words</source>
-        <translation type="unfinished"></translation>
+        <translation>Wörter</translation>
     </message>
 </context>
 <context>
