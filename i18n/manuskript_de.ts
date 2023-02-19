@@ -415,7 +415,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2133"/>
         <source>Cheat Sheet</source>
-        <translation type="unfinished">&amp;Spickzettel</translation>
+        <translation>Spickzettel</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2202"/>
@@ -2386,7 +2386,7 @@ Wörtern an</translation>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="911"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>Einfache Anführungszeichen (') ersetzen durch:</translation>
+        <translation>Einfache Anführungszeichen (&apos;) ersetzen durch:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1020"/>
@@ -2460,13 +2460,13 @@ Wörtern an</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="788"/>
-        <source>Replace ... with &#xe2;&#x80;&#xa6;</source>
-        <translation type="unfinished">Ersetze ... durch â¦</translation>
+        <source>Replace ... with â¦</source>
+        <translation>Ersetze ... durch â¦</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="795"/>
-        <source>Replace --- with &#xe2;&#x80;&#x94;</source>
-        <translation type="unfinished">Ersetze --- durch â</translation>
+        <source>Replace --- with â</source>
+        <translation>Ersetze --- durch â</translation>
     </message>
 </context>
 <context>

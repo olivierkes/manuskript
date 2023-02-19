@@ -2833,12 +2833,12 @@ pored broja riječi</translation>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="788"/>
         <source>Replace ... with â¦</source>
-        <translation>Zamijeni ... sa …</translation>
+        <translation>Zamijeni … s â¦</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="795"/>
         <source>Replace --- with â</source>
-        <translation>Zamijeni --- sa —</translation>
+        <translation>Zamijeni --- s â</translation>
     </message>
 </context>
 <context>

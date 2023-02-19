@@ -621,8 +621,8 @@
         <location filename="../manuskript/mainWindow.py" line="1319"/>
         <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous
                      evil wizard wasn&apos;t able to kill a baby?&apos; (Harry Potter)</source>
-        <translation>A situação básica, na forma de um questionamento tipo 'e se ...'. Ex: 
-'E se o mais perigoso malvado feiticeiro não foi capaz de matar um bebê?' (Harry Potter)</translation>
+        <translation>A situação básica, na forma de um questionamento tipo &apos;e se ...&apos;. Ex: 
+&apos;E se o mais perigoso malvado feiticeiro não foi capaz de matar um bebê?&apos; (Harry Potter)</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1324"/>
@@ -1917,7 +1917,7 @@ próx. às palavras</translation>
     <message>
         <location filename="../manuskript/ui/settings_ui.ui" line="1289"/>
         <source>Sho&amp;w char count</source>
-        <translation type="unfinished"></translation>
+        <translation>Exibir contagem de caracteres</translation>
     </message>
 </context>
 <context>
@@ -1940,12 +1940,12 @@ próx. às palavras</translation>
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="538"/>
         <source>&amp;New Character</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Novo Personagem</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="545"/>
         <source>&amp;New Plot Item</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Novo Fragmento da Trama</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="552"/>
@@ -2386,7 +2386,7 @@ próx. às palavras</translation>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="911"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>Substitua as aspas simples(') por:</translation>
+        <translation>Substitua as aspas simples(&apos;) por:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.ui" line="1020"/>
@@ -3445,7 +3445,7 @@ próx. às palavras</translation>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="47"/>
         <source>Split &apos;{}&apos;</source>
-        <translation>Separar '{}'</translation>
+        <translation>Separar &apos;{}&apos;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="51"/>
