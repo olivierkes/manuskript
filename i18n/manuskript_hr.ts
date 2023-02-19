@@ -107,12 +107,12 @@
     <message>
         <location filename="../manuskript/ui/listDialog_ui.py" line="43"/>
         <source>Title</source>
-        <translation type="unfinished">Naslov</translation>
+        <translation>Naslov</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/listDialog_ui.py" line="44"/>
         <source>Text</source>
-        <translation type="unfinished">Tekst</translation>
+        <translation>Tekst</translation>
     </message>
 </context>
 <context>
@@ -120,12 +120,12 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="619"/>
         <source>The image path or URL is incomplete or malformed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Staza do slike ili URL su nepotpuni ili neispravni.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="631"/>
         <source>The protocol &quot;{}&quot; is not supported.</source>
-        <translation type="unfinished"></translation>
+        <translation>Protokol „{}” nije podržan.</translation>
     </message>
 </context>
 <context>
@@ -141,7 +141,7 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="543"/>
         <source>{} (CTRL+Click to open)</source>
-        <translation type="unfinished"></translation>
+        <translation>{} (CTRL+pritisni tipku miša za otvaranje)</translation>
     </message>
 </context>
 <context>
@@ -1223,32 +1223,32 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1511"/>
         <source>Cheat Sheet</source>
-        <translation type="unfinished"></translation>
+        <translation>Šalabahter</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1541"/>
         <source>&amp;Import…</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Uvezi …</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1549"/>
         <source>&amp;Split…</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Podijeli …</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1599"/>
         <source>&amp;Targets</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Ciljevi</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1600"/>
         <source>Draft and session word count targets</source>
-        <translation type="unfinished"></translation>
+        <translation>Ciljani broj riječi skica i sesija</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2732"/>
         <source>Ctrl+,</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+,</translation>
     </message>
 </context>
 <context>
@@ -2124,12 +2124,12 @@ pored broja riječi</translation>
     <message>
         <location filename="../manuskript/models/characterModel.py" line="179"/>
         <source>New character</source>
-        <translation type="unfinished"></translation>
+        <translation>Novi znak</translation>
     </message>
     <message>
         <location filename="../manuskript/models/characterModel.py" line="215"/>
         <source>Description</source>
-        <translation type="unfinished">Opis</translation>
+        <translation>Opis</translation>
     </message>
 </context>
 <context>
@@ -2276,22 +2276,22 @@ pored broja riječi</translation>
     <message>
         <location filename="../manuskript/load_save/version_1.py" line="435"/>
         <source>Files not saved</source>
-        <translation type="unfinished"></translation>
+        <translation>Nespremljene datoteke</translation>
     </message>
     <message>
         <location filename="../manuskript/load_save/version_1.py" line="436"/>
         <source>The following files were not saved and appear to be open in another program</source>
-        <translation type="unfinished"></translation>
+        <translation>Sljedeće datoteke nisu spremljene i čini se da su otvorene u jednom drugom programu</translation>
     </message>
     <message>
         <location filename="../manuskript/load_save/version_1.py" line="925"/>
         <source>Files not loaded</source>
-        <translation type="unfinished"></translation>
+        <translation>Neučitane datoteke</translation>
     </message>
     <message>
         <location filename="../manuskript/load_save/version_1.py" line="926"/>
         <source>The following files were not loaded and appear to be open in another program</source>
-        <translation type="unfinished"></translation>
+        <translation>Sljedeće datoteke nisu učitane i čini se da su otvorene u jednom drugom programu</translation>
     </message>
 </context>
 <context>
@@ -2458,7 +2458,7 @@ pored broja riječi</translation>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>Zamijeni jednostruke navodnike (') sa:</translation>
+        <translation>Zamijeni jednostruke navodnike (&apos;) sa:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>
@@ -2533,12 +2533,12 @@ pored broja riječi</translation>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="542"/>
         <source>Replace ... with …</source>
-        <translation type="unfinished"></translation>
+        <translation>Zamijeni ... s …</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="543"/>
         <source>Replace --- with —</source>
-        <translation type="unfinished"></translation>
+        <translation>Zamijeni --- s —</translation>
     </message>
 </context>
 <context>
@@ -3214,7 +3214,7 @@ pored broja riječi</translation>
     <message>
         <location filename="../manuskript/models/plotModel.py" line="110"/>
         <source>New plot</source>
-        <translation type="unfinished"></translation>
+        <translation>Novi zaplet</translation>
     </message>
 </context>
 <context>
@@ -3402,27 +3402,27 @@ pored broja riječi</translation>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="31"/>
         <source>Case sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>Razlikuj velika i mala slova</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="32"/>
         <source>Match words</source>
-        <translation type="unfinished"></translation>
+        <translation>Pronađi jendake riječi</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="33"/>
         <source>Regex</source>
-        <translation type="unfinished"></translation>
+        <translation>Regularni izraz</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="39"/>
         <source>Search in:</source>
-        <translation type="unfinished"></translation>
+        <translation>Traži u:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="51"/>
         <source>Options:</source>
-        <translation type="unfinished"></translation>
+        <translation>Opcije:</translation>
     </message>
 </context>
 <context>
@@ -3600,47 +3600,47 @@ pored broja riječi</translation>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="128"/>
         <source>Project Targets</source>
-        <translation type="unfinished"></translation>
+        <translation>Ciljevi projekta</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="129"/>
         <source>Draft Target</source>
-        <translation type="unfinished"></translation>
+        <translation>Ciljevi skica</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="136"/>
         <source>0</source>
-        <translation type="unfinished">0</translation>
+        <translation>0</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="137"/>
         <source>of</source>
-        <translation type="unfinished">od</translation>
+        <translation>od</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="132"/>
         <source>10,000</source>
-        <translation type="unfinished"></translation>
+        <translation>10.000</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="133"/>
         <source>Words</source>
-        <translation type="unfinished"></translation>
+        <translation>Riječi</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="134"/>
         <source>Session Target</source>
-        <translation type="unfinished"></translation>
+        <translation>Cilj sesije</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="135"/>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Obnovi</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="138"/>
         <source>words</source>
-        <translation type="unfinished"></translation>
+        <translation>riječi</translation>
     </message>
 </context>
 <context>
