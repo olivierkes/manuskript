@@ -83,6 +83,8 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
         </child>
         <child>
           <object class="GtkLabel" id="summary">
+            <property name="width-request">150</property>
+            <property name="height-request">50</property>
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="wrap">True</property>

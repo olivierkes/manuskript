@@ -34,11 +34,21 @@ class EditorView:
         self.outlineStore = builder.get_object("outline_store")
         self.refreshOutlineStore()
 
+        self.outlineView = builder.get_object("outline_view")
+        self.editorOutlineView = builder.get_object("editor_outline_view")
+
+        self.outlineSelection = builder.get_object("outline_selection")
+        self.editorOutlineSelection = builder.get_object("editor_outline_selection")
+
+        self.outlineSelection.connect("changed", self._outlineSelectionChanged)
+        self.editorOutlineSelection.connect("changed", self._editorOutlineSelectionChanged)
+
         self.viewStack = builder.get_object("view_stack")
 
         self.editorTextBuffer = builder.get_object("editor_text")
         self.editorFlowbox = builder.get_object("editor_flowbox")
 
+        self.editorFlowbox.connect("selected-children-changed", self._editorFlowboxSelectionChanged)
         self.editorFlowbox.connect("child-activated", self._editorFlowboxChildActivated)
 
         self.upButtons = [
@@ -128,6 +138,19 @@ class EditorView:
         for item in self.project.outline.items:
             self.__appendOutlineItem(item)
 
+    def __selectOutlineStoreRow(self, row: Gtk.TreeModelRow):
+        path = row.model.get_path(row.iter)
+
+        if not self.outlineView.row_expanded(path):
+            self.outlineView.expand_to_path(path)
+        if not self.editorOutlineView.row_expanded(path):
+            self.editorOutlineView.expand_to_path(path)
+
+        if not self.outlineSelection.path_is_selected(path):
+            self.outlineSelection.select_path(path)
+        if not self.editorOutlineSelection.path_is_selected(path):
+            self.editorOutlineSelection.select_path(path)
+
     def loadOutlineData(self, outlineItem: OutlineItem):
         if outlineItem is None:
             self.unloadOutlineData()
@@ -153,7 +176,6 @@ class EditorView:
 
     def unloadOutlineData(self):
         self.outlineItem = None
-
         self.loadEditorData(None)
 
         goalKind = self.project.outline.goalKind()
@@ -190,7 +212,7 @@ class EditorView:
         else:
             return False
 
-    def loadEditorData(self, outlineItem: OutlineItem | None):
+    def loadEditorData(self, outlineItem: OutlineItem | None = None):
         self.editorItems = list()
         self.outlineItem = None
 
@@ -217,6 +239,82 @@ class EditorView:
 
         self.outlineItem = outlineItem
 
+    def _outlineSelectionChanged(self, selection: Gtk.TreeSelection):
+        model, tree_iter = selection.get_selected()
+
+        if tree_iter is None:
+            self.unloadOutlineData()
+            return
+
+        outlineItem = self.project.outline.getItemByID(model[tree_iter][0])
+
+        self.loadOutlineData(outlineItem)
+
+    def _editorOutlineSelectionChanged(self, selection: Gtk.TreeSelection):
+        model, tree_iter = selection.get_selected()
+
+        if tree_iter is None:
+            return
+
+        outlineItem = self.project.outline.getItemByID(model[tree_iter][0])
+
+    def _editorFlowboxSelectionChanged(self, box: Gtk.FlowBox):
+        children = box.get_selected_children()
+        child = children[0] if len(children) > 0 else None
+
+        if child is None:
+            self.editorOutlineSelection.unselect_all()
+            return
+
+        index = child.get_index()
+        if (index < 0) or (index >= len(self.editorItems)):
+            return
+
+        outlineItem = self.editorItems[index]
+
+        def selectOutlineItem(model: Gtk.TreeModel, path: Gtk.TreePath, _iter: Gtk.TreeIter, outline_id: int):
+            if model[_iter][0] != outline_id:
+                return False
+
+            parent_iter = model.iter_parent(_iter)
+            parent_path = None if parent_iter is None else model.get_path(parent_iter)
+
+            if (parent_path is not None) and (not self.editorOutlineView.row_expanded(parent_path)):
+                self.editorOutlineView.expand_to_path(parent_path)
+
+            if not self.editorOutlineSelection.path_is_selected(path):
+                self.editorOutlineSelection.select_path(path)
+
+            return True
+
+        self.outlineStore.foreach(selectOutlineItem, outlineItem.UID.value)
+
+    def __openOutlineItem(self, outlineItem: OutlineItem | None):
+        if outlineItem is None:
+            self.outlineSelection.unselect_all()
+            self.editorOutlineSelection.unselect_all()
+            return
+
+        def selectOutlineItem(model: Gtk.TreeModel, path: Gtk.TreePath, _iter: Gtk.TreeIter, outline_id: int):
+            if model[_iter][0] != outline_id:
+                return False
+
+            if not self.editorOutlineView.row_expanded(path):
+                self.editorOutlineView.expand_to_path(path)
+
+            if not self.outlineView.row_expanded(path):
+                self.outlineView.expand_to_path(path)
+
+            if not self.outlineSelection.path_is_selected(path):
+                self.outlineSelection.select_path(path)
+
+            if not self.editorOutlineSelection.path_is_selected(path):
+                self.editorOutlineSelection.select_path(path)
+
+            return True
+
+        self.outlineStore.foreach(selectOutlineItem, outlineItem.UID.value)
+
     def _editorFlowboxChildActivated(self, box: Gtk.FlowBox, child: Gtk.FlowBoxChild):
         if child is None:
             return
@@ -225,13 +323,13 @@ class EditorView:
         if (index < 0) or (index >= len(self.editorItems)):
             return
 
-        self.loadOutlineData(self.editorItems[index])
+        self.__openOutlineItem(self.editorItems[index])
 
     def _upButtonClicked(self, button: Gtk.Button):
         if self.outlineItem is None:
             return
 
-        self.loadOutlineData(self.outlineItem.parentItem())
+        self.__openOutlineItem(self.outlineItem.parentItem())
 
     def show(self):
         self.widget.show_all()

@@ -221,7 +221,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <child>
-                          <object class="GtkTreeView">
+                          <object class="GtkTreeView" id="outline_view">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <property name="model">outline_store</property>
@@ -398,6 +398,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                   <object class="GtkFlowBox" id="editor_flowbox">
                                     <property name="visible">True</property>
                                     <property name="can-focus">False</property>
+                                    <property name="valign">start</property>
                                     <property name="homogeneous">True</property>
                                     <property name="activate-on-single-click">False</property>
                                   </object>
@@ -421,13 +422,13 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                                 <child>
-                                  <object class="GtkTreeView">
+                                  <object class="GtkTreeView" id="editor_outline_view">
                                     <property name="visible">True</property>
                                     <property name="can-focus">True</property>
                                     <property name="model">outline_store</property>
                                     <property name="enable-tree-lines">True</property>
                                     <child internal-child="selection">
-                                      <object class="GtkTreeSelection"/>
+                                      <object class="GtkTreeSelection" id="editor_outline_selection"/>
                                     </child>
                                     <child>
                                       <object class="GtkTreeViewColumn">
