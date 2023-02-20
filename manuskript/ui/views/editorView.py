@@ -34,6 +34,8 @@ class EditorView:
         self.outlineStore = builder.get_object("outline_store")
         self.refreshOutlineStore()
 
+        self.editorOutlineStore = builder.get_object("editor_outline_store")
+
         self.outlineView = builder.get_object("outline_view")
         self.editorOutlineView = builder.get_object("editor_outline_view")
 
@@ -112,6 +114,14 @@ class EditorView:
 
         self.__updateOutlineItem(tree_iter, outlineItem)
 
+        completedItem = outlineItem
+        while completedItem is not None:
+            if completedItem in self.editorItems:
+                self.loadOutlineData(self.outlineItem)
+                break
+
+            completedItem = completedItem.parentItem()
+
         return len(self.outlineCompletion) > 0
 
     def __appendOutlineItem(self, outlineItem: OutlineItem, parent_iter=None):
@@ -137,6 +147,34 @@ class EditorView:
 
         for item in self.project.outline.items:
             self.__appendOutlineItem(item)
+
+    def __updateEditorOutlineItem(self, list_iter, outlineItem: OutlineItem):
+        icon = iconByOutlineItemType(outlineItem)
+
+        wordCount = validInt(outlineItem.textCount())
+        goal = validInt(outlineItem.goalCount())
+        progress = 100 * safeFraction(wordCount, 0, goal)
+
+        self.editorOutlineStore.set_value(list_iter, 0, outlineItem.UID.value)
+        self.editorOutlineStore.set_value(list_iter, 1, validString(outlineItem.title))
+        self.editorOutlineStore.set_value(list_iter, 2, validString(outlineItem.label))
+        self.editorOutlineStore.set_value(list_iter, 3, validString(outlineItem.status))
+        self.editorOutlineStore.set_value(list_iter, 4, outlineItem.compile)
+        self.editorOutlineStore.set_value(list_iter, 5, wordCount)
+        self.editorOutlineStore.set_value(list_iter, 6, goal)
+        self.editorOutlineStore.set_value(list_iter, 7, progress)
+        self.editorOutlineStore.set_value(list_iter, 8, icon)
+
+    def refreshEditorOutlineStore(self):
+        self.editorOutlineStore.clear()
+
+        for outlineItem in self.editorItems:
+            list_iter = self.editorOutlineStore.append()
+
+            if list_iter is None:
+                continue
+
+            self.__updateEditorOutlineItem(list_iter, outlineItem)
 
     def __selectOutlineStoreRow(self, row: Gtk.TreeModelRow):
         path = row.model.get_path(row.iter)
@@ -237,6 +275,7 @@ class EditorView:
         for item in self.editorItems:
             self.editorFlowbox.insert(GridItem(item).widget, -1)
 
+        self.refreshEditorOutlineStore()
         self.outlineItem = outlineItem
 
     def _outlineSelectionChanged(self, selection: Gtk.TreeSelection):
@@ -257,6 +296,17 @@ class EditorView:
             return
 
         outlineItem = self.project.outline.getItemByID(model[tree_iter][0])
+
+        try:
+            index = self.editorItems.index(outlineItem)
+        except ValueError:
+            self.editorFlowbox.unselect_all()
+            return
+
+        for child in self.editorFlowbox.get_children():
+            if index == child.get_index():
+                self.editorFlowbox.select_child(child)
+                break
 
     def _editorFlowboxSelectionChanged(self, box: Gtk.FlowBox):
         children = box.get_selected_children()

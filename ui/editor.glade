@@ -25,6 +25,28 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
   <!-- interface-name Manuskript -->
   <!-- interface-description Manuskript is an open-source tool for writers. -->
   <!-- interface-copyright 2015-2021 Olivier Keshavjee et al. -->
+  <object class="GtkListStore" id="editor_outline_store">
+    <columns>
+      <!-- column-name ID -->
+      <column type="gint"/>
+      <!-- column-name title -->
+      <column type="gchararray"/>
+      <!-- column-name label -->
+      <column type="gchararray"/>
+      <!-- column-name status -->
+      <column type="gchararray"/>
+      <!-- column-name compile -->
+      <column type="gboolean"/>
+      <!-- column-name count -->
+      <column type="gulong"/>
+      <!-- column-name goal -->
+      <column type="gulong"/>
+      <!-- column-name progress -->
+      <column type="gint"/>
+      <!-- column-name icon -->
+      <column type="gchararray"/>
+    </columns>
+  </object>
   <object class="GtkAdjustment" id="editor_scale_adjustment">
     <property name="upper">100</property>
     <property name="step-increment">1</property>
@@ -425,7 +447,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                   <object class="GtkTreeView" id="editor_outline_view">
                                     <property name="visible">True</property>
                                     <property name="can-focus">True</property>
-                                    <property name="model">outline_store</property>
+                                    <property name="model">editor_outline_store</property>
                                     <property name="enable-tree-lines">True</property>
                                     <child internal-child="selection">
                                       <object class="GtkTreeSelection" id="editor_outline_selection"/>
