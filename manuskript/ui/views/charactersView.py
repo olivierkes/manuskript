@@ -362,9 +362,7 @@ class CharactersView:
     def _appendTemplateClicked(self, button: Gtk.ModelButton, template):
         if self.character is None:
             return
-        # This following bit could be turned into a def
-        for (key, value) in self.characterTemplates.templates[template].items():
-            self.character.details[key]= value
+        self.character.details.update(self.characterTemplates.templates[template])
 
        # We have to reload the character
         self.loadCharacterData(self.character)
