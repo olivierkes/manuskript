@@ -3605,7 +3605,7 @@
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="129"/>
         <source>Draft Target</source>
-        <translation>objetivos del diseño</translation>
+        <translation>Objetivos del borrador</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="136"/>
