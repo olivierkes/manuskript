@@ -212,19 +212,28 @@ class EditorView:
         self.counterProgressBar.set_text("{0} / {1} {2}".format(textCount, goalCount, goalKind.name.lower()))
         self.counterProgressBar.set_fraction(safeFraction(textCount, 0, goalCount))
 
-    def __appendOutlineItemText(self, outlineItem: OutlineItem):
+    def __appendOutlineItemText(self, outlineItem: OutlineItem, level: int = 1):
         end_iter = self.editorTextBuffer.get_end_iter()
 
         if type(outlineItem) is OutlineFolder:
             if self.editorTextBuffer.get_line_count() > 1:
                 self.editorTextBuffer.insert_with_tags_by_name(end_iter, "\n", "none")
 
+            headerTag = "h{0}".format(min(level, 6))
             end_iter = self.editorTextBuffer.get_end_iter()
 
-            self.editorTextBuffer.insert_with_tags_by_name(end_iter, outlineItem.title + "\n", "h1")
+            self.editorTextBuffer.insert_with_tags_by_name(end_iter, outlineItem.title + "\n", headerTag)
+
+            firstItem = True
 
             for item in outlineItem:
-                self.__appendOutlineItemText(item)
+                if firstItem:
+                    firstItem = False
+                else:
+                    end_iter = self.editorTextBuffer.get_end_iter()
+                    self.editorTextBuffer.insert_with_tags_by_name(end_iter, "\n", "none")
+
+                self.__appendOutlineItemText(item, level + 1)
 
             return True
         elif type(outlineItem) is OutlineText:
@@ -233,7 +242,19 @@ class EditorView:
             if (outlineText.text is None) or (len(outlineText.text) <= 0):
                 return False
 
-            self.editorTextBuffer.insert(end_iter, outlineText.text)
+            paragraphs = outlineText.text.split("\n")
+            firstParagraph = True
+
+            for paragraph in paragraphs:
+                if firstParagraph:
+                    firstParagraph = False
+                else:
+                    self.editorTextBuffer.insert_with_tags_by_name(end_iter, "\n", "none")
+                    end_iter = self.editorTextBuffer.get_end_iter()
+
+                self.editorTextBuffer.insert_with_tags_by_name(end_iter, paragraph, "p")
+                end_iter = self.editorTextBuffer.get_end_iter()
+
             return True
         else:
             return False
@@ -252,13 +273,16 @@ class EditorView:
         elif type(outlineItem) is OutlineText:
             self.__appendOutlineItemText(outlineItem)
 
+        if outlineItem is None:
+            for item in self.editorItems:
+                self.__appendOutlineItemText(item)
+        else:
+            self.__appendOutlineItemText(outlineItem)
+
         self.editorFlowbox.foreach(self.editorFlowbox.remove)
         if len(self.editorItems) <= 0:
             self.outlineItem = outlineItem
             return
-
-        for item in self.editorItems:
-            self.__appendOutlineItemText(item)
 
         for item in self.editorItems:
             self.editorFlowbox.insert(GridItem(item).widget, -1)

@@ -76,11 +76,6 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
       </object>
     </child>
     <child type="tag">
-      <object class="GtkTextTag">
-        <property name="font">Normal</property>
-      </object>
-    </child>
-    <child type="tag">
       <object class="GtkTextTag" id="h2_tag">
         <property name="name">h2</property>
         <property name="font">Normal</property>
@@ -172,6 +167,13 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
         <property name="name">none</property>
         <property name="font">Normal</property>
         <property name="editable">False</property>
+      </object>
+    </child>
+    <child type="tag">
+      <object class="GtkTextTag" id="p_tag">
+        <property name="name">p</property>
+        <property name="font">Normal</property>
+        <property name="indent">20</property>
       </object>
     </child>
   </object>
