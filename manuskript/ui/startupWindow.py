@@ -45,10 +45,10 @@ class StartupWindow(AbstractDialog):
                                             GObject.BindingFlags.SYNC_CREATE |
                                             GObject.BindingFlags.INVERT_BOOLEAN)
 
-        bindMenuItem(builder, "open_menu_item", self.mainWindow.openAction)
-        bindMenuItem(builder, "quit_menu_item", self.mainWindow.quitAction)
+        bindMenuItem(builder, "open_menu_item", self._openAction)
+        bindMenuItem(builder, "quit_menu_item", self._quitAction)
 
-        bindMenuItem(builder, "about_menu_item", self.mainWindow.aboutAction)
+        bindMenuItem(builder, "about_menu_item", self._aboutAction)
 
         self.templatesStore = builder.get_object("templates_store")
 
@@ -150,3 +150,12 @@ class StartupWindow(AbstractDialog):
 
         self.template.addGoal()
         self.loadTemplate(self.template)
+
+    def _openAction(self, menuItem: Gtk.MenuItem):
+        self.mainWindow.openProject()
+
+    def _quitAction(self, menuItem: Gtk.MenuItem):
+        self.mainWindow.exit(True)
+
+    def _aboutAction(self, menuItem: Gtk.MenuItem):
+        self.mainWindow.aboutDialog.show()
