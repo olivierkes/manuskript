@@ -1497,7 +1497,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2001"/>
         <source>Goal</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">उद्देश</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2002"/>
@@ -2070,7 +2070,7 @@
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="227"/>
         <source>Goal</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">उद्देश</translation>
     </message>
 </context>
 <context>
@@ -2126,7 +2126,7 @@
     <message>
         <location filename="../manuskript/models/characterModel.py" line="215"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">वर्णन</translation>
     </message>
 </context>
 <context>
@@ -2177,7 +2177,7 @@
     <message>
         <location filename="../manuskript/ui/cheatSheet.py" line="91"/>
         <source>Characters</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">पात्र</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/cheatSheet.py" line="104"/>
@@ -3285,7 +3285,7 @@
     <message>
         <location filename="../manuskript/ui/views/propertiesView_ui.py" line="184"/>
         <source>Goal</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">उद्देश</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/propertiesView_ui.py" line="185"/>

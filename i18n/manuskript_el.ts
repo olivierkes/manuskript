@@ -344,7 +344,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1486"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Περιγραφή</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1471"/>
@@ -1246,7 +1246,7 @@
     <message>
         <location filename="../manuskript/ui/search.py" line="57"/>
         <source>Status</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Καθεστώς</translation>
     </message>
 </context>
 <context>
@@ -1287,7 +1287,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2096"/>
         <source>Status</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Καθεστώς</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2097"/>
@@ -2055,7 +2055,7 @@
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="221"/>
         <source>Status</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Καθεστώς</translation>
     </message>
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="223"/>
@@ -2126,7 +2126,7 @@
     <message>
         <location filename="../manuskript/models/characterModel.py" line="215"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Περιγραφή</translation>
     </message>
 </context>
 <context>
@@ -2400,7 +2400,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="526"/>
         <source>Status</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Καθεστώς</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="540"/>
@@ -2908,7 +2908,7 @@
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.py" line="96"/>
         <source>Summary</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Περίληψη</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.py" line="97"/>
@@ -3270,7 +3270,7 @@
     <message>
         <location filename="../manuskript/ui/views/propertiesView_ui.py" line="181"/>
         <source>Status</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Καθεστώς</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/propertiesView_ui.py" line="182"/>

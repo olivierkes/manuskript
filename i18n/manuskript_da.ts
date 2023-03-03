@@ -344,7 +344,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1486"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Beskrivelse</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1471"/>
@@ -2126,7 +2126,7 @@
     <message>
         <location filename="../manuskript/models/characterModel.py" line="215"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Beskrivelse</translation>
     </message>
 </context>
 <context>

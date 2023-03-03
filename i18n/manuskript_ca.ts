@@ -112,7 +112,7 @@
     <message>
         <location filename="../manuskript/ui/listDialog_ui.py" line="44"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Text</translation>
     </message>
 </context>
 <context>
@@ -344,7 +344,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1486"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Descripció</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1471"/>
@@ -1246,7 +1246,7 @@
     <message>
         <location filename="../manuskript/ui/search.py" line="57"/>
         <source>Status</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Estat</translation>
     </message>
 </context>
 <context>
@@ -1287,7 +1287,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2096"/>
         <source>Status</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Estat</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2097"/>
@@ -1482,7 +1482,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1974"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Text</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2009"/>
@@ -2055,7 +2055,7 @@
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="221"/>
         <source>Status</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Estat</translation>
     </message>
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="223"/>
@@ -2126,7 +2126,7 @@
     <message>
         <location filename="../manuskript/models/characterModel.py" line="215"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Descripció</translation>
     </message>
 </context>
 <context>
@@ -2365,7 +2365,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="519"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Text</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="520"/>
@@ -2400,7 +2400,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="526"/>
         <source>Status</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Estat</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="540"/>
@@ -2827,7 +2827,7 @@
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.py" line="96"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Text</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.py" line="97"/>
@@ -3270,7 +3270,7 @@
     <message>
         <location filename="../manuskript/ui/views/propertiesView_ui.py" line="181"/>
         <source>Status</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Estat</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/propertiesView_ui.py" line="182"/>
@@ -3869,7 +3869,7 @@
     <message>
         <location filename="../manuskript/ui/welcome.py" line="335"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Text</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="338"/>
