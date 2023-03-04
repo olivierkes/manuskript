@@ -1324,7 +1324,7 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1924"/>
         <source>Automatically save every</source>
-        <translation>Salvar automaticamente todos</translation>
+        <translation>Salvar automaticamente a cada</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1925"/>
