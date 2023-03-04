@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>681</width>
-    <height>598</height>
+    <width>803</width>
+    <height>623</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -90,7 +90,6 @@
         <widget class="QGroupBox" name="groupBox_2">
          <property name="font">
           <font>
-           <weight>75</weight>
            <bold>true</bold>
           </font>
          </property>
@@ -104,7 +103,6 @@
              <widget class="QLabel" name="label_2">
               <property name="font">
                <font>
-                <weight>50</weight>
                 <bold>false</bold>
                </font>
               </property>
@@ -130,7 +128,6 @@
                  <widget class="QLabel" name="label_56">
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -143,7 +140,6 @@
                  <widget class="QComboBox" name="cmbStyle">
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -153,7 +149,6 @@
                  <widget class="QLabel" name="label_57">
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -166,7 +161,6 @@
                  <widget class="QComboBox" name="cmbTranslation">
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -176,7 +170,6 @@
                  <widget class="QLabel" name="label_58">
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -189,7 +182,6 @@
                  <widget class="QSpinBox" name="spnGeneralFontSize">
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -199,20 +191,6 @@
               </item>
               <item>
                <layout class="QFormLayout" name="formLayout_15">
-                <item row="0" column="1">
-                 <widget class="QCheckBox" name="chkProgressChars">
-                  <property name="font">
-                   <font>
-                    <weight>50</weight>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string>Show progress in chars next
- to words</string>
-                  </property>
-                 </widget>
-                </item>
                 <item row="0" column="0">
                  <spacer name="horizontalSpacer_6">
                   <property name="orientation">
@@ -225,6 +203,19 @@
                    </size>
                   </property>
                  </spacer>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QCheckBox" name="chkProgressChars">
+                  <property name="font">
+                   <font>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Show progress in chars next
+ to words</string>
+                  </property>
+                 </widget>
                 </item>
                </layout>
               </item>
@@ -239,7 +230,6 @@
         <widget class="QGroupBox" name="groupBox_10">
          <property name="font">
           <font>
-           <weight>75</weight>
            <bold>true</bold>
           </font>
          </property>
@@ -251,7 +241,6 @@
            <widget class="QCheckBox" name="chkAutoLoad">
             <property name="font">
              <font>
-              <weight>50</weight>
               <bold>false</bold>
              </font>
             </property>
@@ -259,7 +248,7 @@
              <string>Automatically load last project on startup</string>
             </property>
             <property name="checked">
-             <bool>true</bool>
+             <bool>false</bool>
             </property>
            </widget>
           </item>
@@ -270,7 +259,6 @@
         <widget class="QGroupBox" name="groupBox">
          <property name="font">
           <font>
-           <weight>75</weight>
            <bold>true</bold>
           </font>
          </property>
@@ -284,7 +272,6 @@
              <widget class="QCheckBox" name="chkAutoSave">
               <property name="font">
                <font>
-                <weight>50</weight>
                 <bold>false</bold>
                </font>
               </property>
@@ -292,7 +279,7 @@
                <string>Automatically save every</string>
               </property>
               <property name="checked">
-               <bool>true</bool>
+               <bool>false</bool>
               </property>
              </widget>
             </item>
@@ -312,7 +299,6 @@
               </property>
               <property name="font">
                <font>
-                <weight>50</weight>
                 <bold>false</bold>
                </font>
               </property>
@@ -331,7 +317,6 @@
              <widget class="QLabel" name="label">
               <property name="font">
                <font>
-                <weight>50</weight>
                 <bold>false</bold>
                </font>
               </property>
@@ -344,7 +329,6 @@
              <spacer name="horizontalSpacer_3">
               <property name="font">
                <font>
-                <weight>50</weight>
                 <bold>false</bold>
                </font>
               </property>
@@ -367,7 +351,6 @@
              <widget class="QCheckBox" name="chkAutoSaveNoChanges">
               <property name="font">
                <font>
-                <weight>50</weight>
                 <bold>false</bold>
                </font>
               </property>
@@ -375,7 +358,7 @@
                <string>If no changes during</string>
               </property>
               <property name="checked">
-               <bool>true</bool>
+               <bool>false</bool>
               </property>
              </widget>
             </item>
@@ -395,7 +378,6 @@
               </property>
               <property name="font">
                <font>
-                <weight>50</weight>
                 <bold>false</bold>
                </font>
               </property>
@@ -414,7 +396,6 @@
              <widget class="QLabel" name="label_14">
               <property name="font">
                <font>
-                <weight>50</weight>
                 <bold>false</bold>
                </font>
               </property>
@@ -427,7 +408,6 @@
              <spacer name="horizontalSpacer_4">
               <property name="font">
                <font>
-                <weight>50</weight>
                 <bold>false</bold>
                </font>
               </property>
@@ -448,7 +428,6 @@
            <widget class="QCheckBox" name="chkSaveOnQuit">
             <property name="font">
              <font>
-              <weight>50</weight>
               <bold>false</bold>
              </font>
             </property>
@@ -456,7 +435,7 @@
              <string>Save on project close</string>
             </property>
             <property name="checked">
-             <bool>true</bool>
+             <bool>false</bool>
             </property>
            </widget>
           </item>
@@ -464,7 +443,6 @@
            <widget class="QCheckBox" name="chkSaveToZip">
             <property name="font">
              <font>
-              <weight>50</weight>
               <bold>false</bold>
              </font>
             </property>
@@ -478,7 +456,7 @@
              <string>Save to one single file</string>
             </property>
             <property name="checked">
-             <bool>true</bool>
+             <bool>false</bool>
             </property>
            </widget>
           </item>
@@ -554,7 +532,6 @@
         <widget class="QGroupBox" name="chkRevisionRemove">
          <property name="font">
           <font>
-           <weight>75</weight>
            <bold>true</bold>
           </font>
          </property>
@@ -569,7 +546,6 @@
            <widget class="QLabel" name="label_46">
             <property name="font">
              <font>
-              <weight>50</weight>
               <bold>false</bold>
              </font>
             </property>
@@ -582,7 +558,6 @@
            <widget class="QLabel" name="label_45">
             <property name="font">
              <font>
-              <weight>50</weight>
               <bold>false</bold>
              </font>
             </property>
@@ -598,7 +573,6 @@
            <widget class="QLabel" name="label_50">
             <property name="font">
              <font>
-              <weight>50</weight>
               <bold>false</bold>
              </font>
             </property>
@@ -617,7 +591,6 @@
             </property>
             <property name="font">
              <font>
-              <weight>50</weight>
               <bold>false</bold>
              </font>
             </property>
@@ -639,7 +612,6 @@
            <widget class="QLabel" name="label_47">
             <property name="font">
              <font>
-              <weight>50</weight>
               <bold>false</bold>
              </font>
             </property>
@@ -652,7 +624,6 @@
            <widget class="QLabel" name="label_49">
             <property name="font">
              <font>
-              <weight>50</weight>
               <bold>false</bold>
              </font>
             </property>
@@ -665,7 +636,6 @@
            <widget class="QLabel" name="label_48">
             <property name="font">
              <font>
-              <weight>50</weight>
               <bold>false</bold>
              </font>
             </property>
@@ -684,7 +654,6 @@
             </property>
             <property name="font">
              <font>
-              <weight>50</weight>
               <bold>false</bold>
              </font>
             </property>
@@ -712,7 +681,6 @@
             </property>
             <property name="font">
              <font>
-              <weight>50</weight>
               <bold>false</bold>
              </font>
             </property>
@@ -740,7 +708,6 @@
             </property>
             <property name="font">
              <font>
-              <weight>50</weight>
               <bold>false</bold>
              </font>
             </property>
@@ -768,7 +735,6 @@
             </property>
             <property name="font">
              <font>
-              <weight>50</weight>
               <bold>false</bold>
              </font>
             </property>
@@ -790,7 +756,6 @@
            <widget class="QLabel" name="label_51">
             <property name="font">
              <font>
-              <weight>50</weight>
               <bold>false</bold>
              </font>
             </property>
@@ -878,7 +843,6 @@
             <widget class="QGroupBox" name="groupBox_3">
              <property name="font">
               <font>
-               <weight>75</weight>
                <bold>true</bold>
               </font>
              </property>
@@ -893,7 +857,6 @@
                <widget class="QLabel" name="label_3">
                 <property name="font">
                  <font>
-                  <weight>50</weight>
                   <bold>false</bold>
                  </font>
                 </property>
@@ -912,7 +875,6 @@
                 </property>
                 <property name="font">
                  <font>
-                  <weight>50</weight>
                   <bold>false</bold>
                  </font>
                 </property>
@@ -947,7 +909,6 @@
                <widget class="QLabel" name="label_4">
                 <property name="font">
                  <font>
-                  <weight>50</weight>
                   <bold>false</bold>
                  </font>
                 </property>
@@ -966,7 +927,6 @@
                 </property>
                 <property name="font">
                  <font>
-                  <weight>50</weight>
                   <bold>false</bold>
                  </font>
                 </property>
@@ -1001,7 +961,6 @@
                <widget class="QLabel" name="label_5">
                 <property name="font">
                  <font>
-                  <weight>50</weight>
                   <bold>false</bold>
                  </font>
                 </property>
@@ -1020,7 +979,6 @@
                 </property>
                 <property name="font">
                  <font>
-                  <weight>50</weight>
                   <bold>false</bold>
                  </font>
                 </property>
@@ -1058,7 +1016,6 @@
             <widget class="QGroupBox" name="groupBox_16">
              <property name="font">
               <font>
-               <weight>75</weight>
                <bold>true</bold>
               </font>
              </property>
@@ -1070,7 +1027,6 @@
                <widget class="QLabel" name="lblTreeIconSize">
                 <property name="font">
                  <font>
-                  <weight>50</weight>
                   <bold>false</bold>
                  </font>
                 </property>
@@ -1083,7 +1039,6 @@
                <widget class="QSlider" name="sldTreeIconSize">
                 <property name="font">
                  <font>
-                  <weight>50</weight>
                   <bold>false</bold>
                  </font>
                 </property>
@@ -1105,7 +1060,6 @@
             <widget class="QGroupBox" name="horizontalGroupBox">
              <property name="font">
               <font>
-               <weight>75</weight>
                <bold>true</bold>
               </font>
              </property>
@@ -1129,7 +1083,6 @@
                <widget class="QCheckBox" name="chkCountSpaces">
                 <property name="font">
                  <font>
-                  <weight>50</weight>
                   <bold>false</bold>
                  </font>
                 </property>
@@ -1160,7 +1113,6 @@
               <widget class="QGroupBox" name="groupBox_8">
                <property name="font">
                 <font>
-                 <weight>75</weight>
                  <bold>true</bold>
                 </font>
                </property>
@@ -1172,7 +1124,6 @@
                  <widget class="QRadioButton" name="rdoTreeItemCount">
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -1185,7 +1136,6 @@
                  <widget class="QRadioButton" name="rdoTreeWC">
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -1198,7 +1148,6 @@
                  <widget class="QRadioButton" name="rdoTreeCC">
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -1211,7 +1160,6 @@
                  <widget class="QRadioButton" name="rdoTreeProgress">
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -1224,7 +1172,6 @@
                  <widget class="QRadioButton" name="rdoTreeSummary">
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -1237,7 +1184,6 @@
                  <widget class="QRadioButton" name="rdoTreeNothing">
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -1256,7 +1202,6 @@
               <widget class="QGroupBox" name="groupBox_9">
                <property name="font">
                 <font>
-                 <weight>75</weight>
                  <bold>true</bold>
                 </font>
                </property>
@@ -1268,7 +1213,6 @@
                  <widget class="QRadioButton" name="rdoTreeTextWC">
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -1281,7 +1225,6 @@
                  <widget class="QRadioButton" name="rdoTreeTextCC">
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -1294,7 +1237,6 @@
                  <widget class="QRadioButton" name="rdoTreeTextProgress">
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -1307,7 +1249,6 @@
                  <widget class="QRadioButton" name="rdoTreeTextSummary">
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -1320,7 +1261,6 @@
                  <widget class="QRadioButton" name="rdoTreeTextNothing">
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -1333,7 +1273,6 @@
                  <spacer name="verticalSpacer_6">
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -1386,7 +1325,6 @@
             <widget class="QGroupBox" name="groupBox_4">
              <property name="font">
               <font>
-               <weight>75</weight>
                <bold>true</bold>
               </font>
              </property>
@@ -1401,7 +1339,6 @@
                <widget class="QLabel" name="label_6">
                 <property name="font">
                  <font>
-                  <weight>50</weight>
                   <bold>false</bold>
                  </font>
                 </property>
@@ -1420,7 +1357,6 @@
                 </property>
                 <property name="font">
                  <font>
-                  <weight>50</weight>
                   <bold>false</bold>
                  </font>
                 </property>
@@ -1455,7 +1391,6 @@
                <widget class="QLabel" name="label_7">
                 <property name="font">
                  <font>
-                  <weight>50</weight>
                   <bold>false</bold>
                  </font>
                 </property>
@@ -1474,7 +1409,6 @@
                 </property>
                 <property name="font">
                  <font>
-                  <weight>50</weight>
                   <bold>false</bold>
                  </font>
                 </property>
@@ -1515,7 +1449,6 @@
                 </property>
                 <property name="font">
                  <font>
-                  <weight>50</weight>
                   <bold>false</bold>
                  </font>
                 </property>
@@ -1550,7 +1483,6 @@
                <widget class="QLabel" name="label_8">
                 <property name="font">
                  <font>
-                  <weight>50</weight>
                   <bold>false</bold>
                  </font>
                 </property>
@@ -1566,7 +1498,6 @@
             <widget class="QGroupBox" name="groupBox_6">
              <property name="font">
               <font>
-               <weight>75</weight>
                <bold>true</bold>
               </font>
              </property>
@@ -1578,7 +1509,6 @@
                <widget class="QCheckBox" name="chkOutlineGoal">
                 <property name="font">
                  <font>
-                  <weight>50</weight>
                   <bold>false</bold>
                  </font>
                 </property>
@@ -1594,7 +1524,6 @@
                <widget class="QCheckBox" name="chkOutlineWordCount">
                 <property name="font">
                  <font>
-                  <weight>50</weight>
                   <bold>false</bold>
                  </font>
                 </property>
@@ -1610,7 +1539,6 @@
                <widget class="QCheckBox" name="chkOutlinePercentage">
                 <property name="font">
                  <font>
-                  <weight>50</weight>
                   <bold>false</bold>
                  </font>
                 </property>
@@ -1626,7 +1554,6 @@
                <widget class="QCheckBox" name="chkOutlineCompile">
                 <property name="font">
                  <font>
-                  <weight>50</weight>
                   <bold>false</bold>
                  </font>
                 </property>
@@ -1642,7 +1569,6 @@
                <widget class="QCheckBox" name="chkOutlineStatus">
                 <property name="font">
                  <font>
-                  <weight>50</weight>
                   <bold>false</bold>
                  </font>
                 </property>
@@ -1658,7 +1584,6 @@
                <widget class="QCheckBox" name="chkOutlineLabel">
                 <property name="font">
                  <font>
-                  <weight>50</weight>
                   <bold>false</bold>
                  </font>
                 </property>
@@ -1674,7 +1599,6 @@
                <widget class="QCheckBox" name="chkOutlinePOV">
                 <property name="font">
                  <font>
-                  <weight>50</weight>
                   <bold>false</bold>
                  </font>
                 </property>
@@ -1690,7 +1614,6 @@
                <widget class="QCheckBox" name="chkOutlineTitle">
                 <property name="font">
                  <font>
-                  <weight>50</weight>
                   <bold>false</bold>
                  </font>
                 </property>
@@ -1733,7 +1656,6 @@
             <widget class="QGroupBox" name="groupBox_7">
              <property name="font">
               <font>
-               <weight>75</weight>
                <bold>true</bold>
               </font>
              </property>
@@ -1745,7 +1667,6 @@
                <widget class="QLabel" name="label_15">
                 <property name="font">
                  <font>
-                  <weight>50</weight>
                   <bold>false</bold>
                  </font>
                 </property>
@@ -1764,7 +1685,6 @@
                 </property>
                 <property name="font">
                  <font>
-                  <weight>50</weight>
                   <bold>false</bold>
                  </font>
                 </property>
@@ -1778,7 +1698,7 @@
                  </size>
                 </property>
                 <property name="shortcut">
-                 <string>Ctrl+S</string>
+                 <string notr="true">Ctrl+S</string>
                 </property>
                </widget>
               </item>
@@ -1786,7 +1706,6 @@
                <widget class="QLabel" name="label_16">
                 <property name="font">
                  <font>
-                  <weight>50</weight>
                   <bold>false</bold>
                  </font>
                 </property>
@@ -1799,7 +1718,6 @@
                <widget class="QComboBox" name="cmbCorkImage">
                 <property name="font">
                  <font>
-                  <weight>50</weight>
                   <bold>false</bold>
                  </font>
                 </property>
@@ -1825,7 +1743,6 @@
             <widget class="QGroupBox" name="groupBox_11">
              <property name="font">
               <font>
-               <weight>75</weight>
                <bold>true</bold>
               </font>
              </property>
@@ -1837,7 +1754,6 @@
                <widget class="QRadioButton" name="rdoCorkOldStyle">
                 <property name="font">
                  <font>
-                  <weight>50</weight>
                   <bold>false</bold>
                  </font>
                 </property>
@@ -1850,7 +1766,6 @@
                <widget class="QRadioButton" name="rdoCorkNewStyle">
                 <property name="font">
                  <font>
-                  <weight>50</weight>
                   <bold>false</bold>
                  </font>
                 </property>
@@ -1866,7 +1781,6 @@
             <widget class="QGroupBox" name="groupBox_5">
              <property name="font">
               <font>
-               <weight>75</weight>
                <bold>true</bold>
               </font>
              </property>
@@ -1881,7 +1795,6 @@
                <widget class="QLabel" name="label_9">
                 <property name="font">
                  <font>
-                  <weight>50</weight>
                   <bold>false</bold>
                  </font>
                 </property>
@@ -1894,7 +1807,6 @@
                <widget class="QComboBox" name="cmbCorkIcon">
                 <property name="font">
                  <font>
-                  <weight>50</weight>
                   <bold>false</bold>
                  </font>
                 </property>
@@ -1929,7 +1841,6 @@
                <widget class="QLabel" name="label_10">
                 <property name="font">
                  <font>
-                  <weight>50</weight>
                   <bold>false</bold>
                  </font>
                 </property>
@@ -1942,7 +1853,6 @@
                <widget class="QComboBox" name="cmbCorkText">
                 <property name="font">
                  <font>
-                  <weight>50</weight>
                   <bold>false</bold>
                  </font>
                 </property>
@@ -1977,7 +1887,6 @@
                <widget class="QLabel" name="label_11">
                 <property name="font">
                  <font>
-                  <weight>50</weight>
                   <bold>false</bold>
                  </font>
                 </property>
@@ -1990,7 +1899,6 @@
                <widget class="QComboBox" name="cmbCorkBackground">
                 <property name="font">
                  <font>
-                  <weight>50</weight>
                   <bold>false</bold>
                  </font>
                 </property>
@@ -2025,7 +1933,6 @@
                <widget class="QLabel" name="label_12">
                 <property name="font">
                  <font>
-                  <weight>50</weight>
                   <bold>false</bold>
                  </font>
                 </property>
@@ -2038,7 +1945,6 @@
                <widget class="QComboBox" name="cmbCorkBorder">
                 <property name="font">
                  <font>
-                  <weight>50</weight>
                   <bold>false</bold>
                  </font>
                 </property>
@@ -2073,7 +1979,6 @@
                <widget class="QLabel" name="label_13">
                 <property name="font">
                  <font>
-                  <weight>50</weight>
                   <bold>false</bold>
                  </font>
                 </property>
@@ -2086,7 +1991,6 @@
                <widget class="QComboBox" name="cmbCorkCorner">
                 <property name="font">
                  <font>
-                  <weight>50</weight>
                   <bold>false</bold>
                  </font>
                 </property>
@@ -2137,7 +2041,6 @@
               <widget class="QGroupBox" name="groupBox_17">
                <property name="font">
                 <font>
-                 <weight>75</weight>
                  <bold>true</bold>
                 </font>
                </property>
@@ -2149,7 +2052,6 @@
                  <widget class="QLabel" name="label_43">
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -2168,7 +2070,6 @@
                   </property>
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -2181,7 +2082,6 @@
                  <widget class="QCheckBox" name="chkEditorBackgroundTransparent">
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -2194,7 +2094,6 @@
                  <widget class="QLabel" name="label_37">
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -2213,7 +2112,6 @@
                   </property>
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -2226,7 +2124,6 @@
                  <widget class="QPushButton" name="btnEditorColorDefault">
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -2242,7 +2139,6 @@
               <widget class="QGroupBox" name="groupBox_12">
                <property name="font">
                 <font>
-                 <weight>75</weight>
                  <bold>true</bold>
                 </font>
                </property>
@@ -2254,7 +2150,6 @@
                  <widget class="QLabel" name="label_39">
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -2279,7 +2174,6 @@
                   </property>
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -2289,7 +2183,6 @@
                  <widget class="QLabel" name="label_38">
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -2302,7 +2195,6 @@
                  <widget class="QLabel" name="label_36">
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -2321,7 +2213,6 @@
                   </property>
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -2334,7 +2225,6 @@
                  <widget class="QSpinBox" name="spnEditorFontSize">
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -2356,7 +2246,6 @@
               <widget class="QGroupBox" name="groupBox_16">
                <property name="font">
                 <font>
-                 <weight>75</weight>
                  <bold>true</bold>
                 </font>
                </property>
@@ -2368,7 +2257,6 @@
                  <widget class="QCheckBox" name="chkEditorMaxWidth">
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -2381,7 +2269,6 @@
                  <widget class="QSpinBox" name="spnEditorMaxWidth">
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -2400,7 +2287,6 @@
                  <widget class="QLabel" name="label_54">
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -2413,7 +2299,6 @@
                  <widget class="QSpinBox" name="spnEditorMarginsLR">
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -2429,7 +2314,6 @@
                  <widget class="QLabel" name="label_55">
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -2442,7 +2326,6 @@
                  <widget class="QSpinBox" name="spnEditorMarginsTB">
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -2465,7 +2348,6 @@
               <widget class="QGroupBox" name="groupBox_13">
                <property name="font">
                 <font>
-                 <weight>75</weight>
                  <bold>true</bold>
                 </font>
                </property>
@@ -2477,7 +2359,6 @@
                  <widget class="QLabel" name="label_35">
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -2490,7 +2371,6 @@
                  <widget class="QComboBox" name="cmbEditorAlignment">
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -2536,7 +2416,6 @@
                  <widget class="QLabel" name="label_40">
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -2549,7 +2428,6 @@
                  <widget class="QComboBox" name="cmbEditorLineSpacing">
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -2588,7 +2466,6 @@
                   </property>
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -2610,7 +2487,6 @@
                  <widget class="QLabel" name="label_42">
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -2629,7 +2505,6 @@
                   </property>
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -2657,7 +2532,6 @@
                   </property>
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -2670,7 +2544,6 @@
                  <widget class="QLabel" name="label_41">
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -2689,7 +2562,6 @@
                   </property>
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -2717,7 +2589,6 @@
                   </property>
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -2742,7 +2613,6 @@
               <widget class="QGroupBox" name="groupBox_15">
                <property name="font">
                 <font>
-                 <weight>75</weight>
                  <bold>true</bold>
                 </font>
                </property>
@@ -2754,7 +2624,6 @@
                  <widget class="QCheckBox" name="chkEditorCursorWidth">
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -2767,7 +2636,6 @@
                  <widget class="QSpinBox" name="spnEditorCursorWidth">
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -2789,7 +2657,6 @@
                  <widget class="QCheckBox" name="chkEditorNoBlinking">
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -2802,7 +2669,6 @@
                  <widget class="QCheckBox" name="chkEditorTypeWriterMode">
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -2815,7 +2681,6 @@
                  <widget class="QLabel" name="label_52">
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -2828,7 +2693,6 @@
                  <widget class="QComboBox" name="cmbEditorFocusMode">
                   <property name="font">
                    <font>
-                    <weight>50</weight>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -2935,7 +2799,7 @@
               </size>
              </property>
              <property name="shortcut">
-              <string>Ctrl+S</string>
+              <string notr="true">Ctrl+S</string>
              </property>
             </widget>
            </item>

@@ -92,10 +92,10 @@ class Ui_mainEditor(object):
         _translate = QtCore.QCoreApplication.translate
         mainEditor.setWindowTitle(_translate("mainEditor", "Form"))
         self.btnGoUp.setToolTip(_translate("mainEditor", "Go to parent item"))
-        self.btnGoUp.setShortcut(_translate("mainEditor", "Alt+Up"))
+        self.btnGoUp.setShortcut("Alt+Up")
         self.btnRedacFolderText.setText(_translate("mainEditor", "Text"))
         self.btnRedacFolderCork.setText(_translate("mainEditor", "Index cards"))
         self.btnRedacFolderOutline.setText(_translate("mainEditor", "Outline"))
-        self.btnRedacFullscreen.setShortcut(_translate("mainEditor", "F11"))
+        self.btnRedacFullscreen.setShortcut("F11")
 
 from manuskript.ui.editors.tabSplitter import tabSplitter

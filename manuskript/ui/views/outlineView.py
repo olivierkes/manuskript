@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
+from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QTreeView, QHeaderView
 
 from manuskript import settings
@@ -82,6 +83,12 @@ class outlineView(QTreeView, dndView, outlineBasics):
     def dragMoveEvent(self, event):
         dndView.dragMoveEvent(self, event)
         QTreeView.dragMoveEvent(self, event)
+
+    def mousePressEvent(self, event):
+        # Prevent selecting item while right-clicking for popup menu!
+        if event.button() != Qt.RightButton:
+            QTreeView.mousePressEvent(self, event)
+            outlineBasics.mousePressEvent(self, event)
 
     def mouseReleaseEvent(self, event):
         QTreeView.mouseReleaseEvent(self, event)

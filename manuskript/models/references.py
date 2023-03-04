@@ -301,9 +301,12 @@ def infos(ref):
         if item:
             for r in range(item.rowCount()):
                 ID = item.child(r, 0).text()
-                characters += "<li><a href='{link}'>{text}</a>".format(
-                        link=characterReference(ID),
-                        text=pM.getCharacterByID(ID).name())
+                character = pM.getCharacterByID(ID)
+
+                if character is not None:
+                    characters += "<li><a href='{link}'>{text}</a>".format(
+                            link=characterReference(ID),
+                            text=character.name())
 
         # Resolution steps
         steps = ""
@@ -410,12 +413,11 @@ def shortInfos(ref):
     _type = match.group(1)
     _ref = match.group(2)
 
-    infos = {}
-    infos["ID"] = _ref
+    _infos = dict()
+    _infos["ID"] = _ref
 
     if _type == TextLetter:
-
-        infos["type"] = TextLetter
+        _infos["type"] = TextLetter
 
         m = mainWindow().mdlOutline
         idx = m.getIndexByID(_ref)
@@ -426,48 +428,42 @@ def shortInfos(ref):
         item = idx.internalPointer()
 
         if item.isFolder():
-            infos["text_type"] = "folder"
+            _infos["text_type"] = "folder"
         else:
-            infos["text_type"] = "text"
+            _infos["text_type"] = "text"
 
-        infos["title"] = item.title()
-        infos["path"] = item.path()
-        return infos
-
+        _infos["title"] = item.title()
+        _infos["path"] = item.path()
+        return _infos
     elif _type == CharacterLetter:
-
-        infos["type"] = CharacterLetter
+        _infos["type"] = CharacterLetter
 
         m = mainWindow().mdlCharacter
         c = m.getCharacterByID(_ref)
 
         if c:
-            infos["title"] = c.name()
-            infos["name"] = c.name()
-            return infos
-
+            _infos["title"] = c.name()
+            _infos["name"] = c.name()
+            return _infos
     elif _type == PlotLetter:
-
-        infos["type"] = PlotLetter
+        _infos["type"] = PlotLetter
 
         m = mainWindow().mdlPlots
         name = m.getPlotNameByID(_ref)
         if name:
-            infos["title"] = name
-            return infos
-
+            _infos["title"] = name
+            return _infos
     elif _type == WorldLetter:
-
-        infos["type"] = WorldLetter
+        _infos["type"] = WorldLetter
 
         m = mainWindow().mdlWorld
         item = m.itemByID(_ref)
         if item:
             name = item.text()
             path = m.path(item)
-            infos["title"] = name
-            infos["path"] = path
-            return infos
+            _infos["title"] = name
+            _infos["path"] = path
+            return _infos
 
     return None
 
@@ -499,7 +495,6 @@ def tooltip(ref):
 
     if infos == -1:
         return safeTranslate(qApp, "references", "Not a reference: {}.").format(ref)
-
 
     if infos["type"] == TextLetter:
         if infos["text_type"] == "folder":

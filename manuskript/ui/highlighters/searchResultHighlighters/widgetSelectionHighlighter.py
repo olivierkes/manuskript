@@ -14,7 +14,7 @@ class widgetSelectionHighlighter():
 
     def highlight_widget_selection(self, widget, startPos, endPos, clearOnFocusOut=True):
         if isinstance(widget, QTextEdit) or isinstance(widget, QPlainTextEdit):
-            self._highlightTextEditSearchResult(widget, startPos, endPos, clearOnFocusOut)
+            self._highlightTextEditSearchResult(widget, startPos, endPos)
         elif isinstance(widget, QLineEdit):
             self._highlightLineEditSearchResult(widget, startPos, endPos, clearOnFocusOut)
         elif isinstance(widget, QTableView):
@@ -43,12 +43,7 @@ class widgetSelectionHighlighter():
 
         widget.focusOutEvent = lambda e: clearHandler(widget, widget.focusOutEvent)
 
-    def _highlightTextEditSearchResult(self, textEdit, startPos, endPos, clearOnFocusOut):
-        # On focus out, clear text edit selection.
-        oldTextCursor = textEdit.textCursor()
-        if clearOnFocusOut:
-            self.generateClearHandler(textEdit, lambda widget: widget.setTextCursor(oldTextCursor))
-
+    def _highlightTextEditSearchResult(self, textEdit, startPos, endPos):
         # Highlight search result on the text edit.
         c = textEdit.textCursor()
         c.setPosition(startPos)

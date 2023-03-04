@@ -355,7 +355,7 @@ class abstractModel(QAbstractItemModel):
             return None
         encodedData = bytes(data.data("application/xml")).decode()
         root = ET.XML(encodedData)
-        if not root:
+        if root is None:
             return None
 
         if root.tag != "outlineItems":
@@ -589,7 +589,8 @@ class abstractModel(QAbstractItemModel):
             return str()
 
         "If xml (filename) is given, saves the items to xml. Otherwise returns as string."
-        root = ET.XML(self.rootItem.toXML())
+        parser = ET.XMLParser(encoding="UTF-8", huge_tree=True)
+        root = ET.XML(self.rootItem.toXML(), parser)
 
         if xml:
             ET.ElementTree(root).write(xml, encoding="UTF-8", xml_declaration=True, pretty_print=True)
@@ -599,10 +600,11 @@ class abstractModel(QAbstractItemModel):
 
     def loadFromXML(self, xml, fromString=False):
         "Load from xml. Assume that xml is a filename. If fromString=True, xml is the content."
+        parser = ET.XMLParser(encoding="UTF-8", huge_tree=True)
         if not fromString:
-            root = ET.parse(xml)
+            root = ET.parse(xml, parser)
         else:
-            root = ET.fromstring(xml)
+            root = ET.fromstring(xml, parser)
 
         self.rootItem = outlineItem(model=self, xml=ET.tostring(root), ID="0")
         self.rootItem.checkIDs()

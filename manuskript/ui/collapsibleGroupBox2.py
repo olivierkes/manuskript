@@ -9,8 +9,9 @@ from manuskript.ui import style
 class collapsibleGroupBox2(QWidget):
     def __init__(self, parent=None, title=None):
         QWidget.__init__(self, parent)
+        self.title = "Toggle" if title is None else title
         self.frame = QFrame(self)
-        self.button = QPushButton("Toggle", self)
+        self.button = QPushButton(self.title, self)
         self.button.setCheckable(True)
         self.button.setChecked(True)
         self.switched = False
@@ -51,7 +52,12 @@ class collapsibleGroupBox2(QWidget):
         pass
 
     def setTitle(self, title):
-        self.button.setText(title)
+        self.title = title
+
+        if self.button.isChecked():
+            self.button.setText("▼ {}".format(self.title))
+        else:
+            self.button.setText("► {}".format(self.title))
 
     def setExpanded(self, val):
         self.frame.setVisible(val)
@@ -59,6 +65,8 @@ class collapsibleGroupBox2(QWidget):
             self.setSizePolicy(QSizePolicy.Preferred, self.vPolicy)
         else:
             self.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Maximum)
+
+        self.setTitle(self.title)
 
     def saveState(self):
         return self.button.isChecked()

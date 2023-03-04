@@ -136,7 +136,7 @@
            <enum>QTabWidget::Rounded</enum>
           </property>
           <property name="currentIndex">
-           <number>2</number>
+           <number>0</number>
           </property>
           <property name="documentMode">
            <bool>true</bool>
@@ -764,8 +764,8 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>453</width>
-                      <height>699</height>
+                      <width>229</width>
+                      <height>558</height>
                      </rect>
                     </property>
                     <layout class="QFormLayout" name="formLayout_8">
@@ -1440,7 +1440,7 @@
                    <number>15</number>
                   </property>
                   <property name="rootIsDecorated">
-                   <bool>false</bool>
+                   <bool>true</bool>
                   </property>
                   <attribute name="headerVisible">
                    <bool>false</bool>
@@ -2238,7 +2238,7 @@
     <string>&amp;Open</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+O</string>
+    <string notr="true">Ctrl+O</string>
    </property>
   </action>
   <action name="actSave">
@@ -2250,7 +2250,7 @@
     <string>&amp;Save</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+S</string>
+    <string notr="true">Ctrl+S</string>
    </property>
   </action>
   <action name="actSaveAs">
@@ -2262,7 +2262,7 @@
     <string>Sa&amp;ve as...</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+Shift+S</string>
+    <string notr="true">Ctrl+Shift+S</string>
    </property>
   </action>
   <action name="actQuit">
@@ -2274,7 +2274,7 @@
     <string>&amp;Quit</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+Q</string>
+    <string notr="true">Ctrl+Q</string>
    </property>
   </action>
   <action name="actShowHelp">
@@ -2292,7 +2292,7 @@
     <string>&amp;Show help texts</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+Shift+B</string>
+    <string notr="true">Ctrl+Shift+B</string>
    </property>
   </action>
   <action name="actSpellcheck">
@@ -2310,7 +2310,7 @@
     <string>&amp;Spellcheck</string>
    </property>
    <property name="shortcut">
-    <string>F9</string>
+    <string notr="true">F9</string>
    </property>
   </action>
   <action name="actLabels">
@@ -2321,6 +2321,9 @@
    <property name="text">
     <string>&amp;Labels...</string>
    </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
   </action>
   <action name="actStatus">
    <property name="icon">
@@ -2329,6 +2332,9 @@
    </property>
    <property name="text">
     <string>&amp;Status...</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
   </action>
   <action name="actViewTree">
@@ -2346,6 +2352,9 @@
    <property name="text">
     <string>&amp;Simple</string>
    </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
   </action>
   <action name="actModeFiction">
    <property name="checkable">
@@ -2353,6 +2362,9 @@
    </property>
    <property name="text">
     <string>&amp;Fiction</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
   </action>
   <action name="actViewCork">
@@ -2374,7 +2386,7 @@
     <string>S&amp;ettings</string>
    </property>
    <property name="shortcut">
-    <string>F8</string>
+    <string notr="true">F8</string>
    </property>
   </action>
   <action name="actCloseProject">
@@ -2384,6 +2396,9 @@
    </property>
    <property name="text">
     <string>&amp;Close project</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
   </action>
   <action name="actCompile">
@@ -2395,12 +2410,15 @@
     <string>Co&amp;mpile</string>
    </property>
    <property name="shortcut">
-    <string>F6</string>
+    <string notr="true">F6</string>
    </property>
   </action>
   <action name="actToolFrequency">
    <property name="text">
     <string>&amp;Frequency Analyzer</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
   </action>
   <action name="actAbout">
@@ -2414,6 +2432,9 @@
    <property name="toolTip">
     <string>About Manuskript</string>
    </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
   </action>
   <action name="actImport">
    <property name="icon">
@@ -2424,7 +2445,7 @@
     <string>&amp;Import…</string>
    </property>
    <property name="shortcut">
-    <string>F7</string>
+    <string notr="true">F7</string>
    </property>
   </action>
   <action name="actCopy">
@@ -2436,7 +2457,7 @@
     <string>&amp;Copy</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+C</string>
+    <string notr="true">Ctrl+C</string>
    </property>
   </action>
   <action name="actCut">
@@ -2448,7 +2469,7 @@
     <string>C&amp;ut</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+X</string>
+    <string notr="true">Ctrl+X</string>
    </property>
   </action>
   <action name="actPaste">
@@ -2460,7 +2481,7 @@
     <string>&amp;Paste</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+V</string>
+    <string notr="true">Ctrl+V</string>
    </property>
   </action>
   <action name="actSplitDialog">
@@ -2472,7 +2493,7 @@
     <string>&amp;Split…</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+Shift+K</string>
+    <string notr="true">Ctrl+Shift+K</string>
    </property>
   </action>
   <action name="actSplitCursor">
@@ -2484,7 +2505,7 @@
     <string>Sp&amp;lit at cursor</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+K</string>
+    <string notr="true">Ctrl+K</string>
    </property>
   </action>
   <action name="actMerge">
@@ -2496,7 +2517,7 @@
     <string>M&amp;erge</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+M</string>
+    <string notr="true">Ctrl+M</string>
    </property>
   </action>
   <action name="actDuplicate">
@@ -2517,7 +2538,7 @@
     <string>&amp;Delete</string>
    </property>
    <property name="shortcut">
-    <string>Del</string>
+    <string notr="true">Del</string>
    </property>
   </action>
   <action name="actMoveUp">
@@ -2529,7 +2550,7 @@
     <string>&amp;Move Up</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+Shift+Up</string>
+    <string notr="true">Ctrl+Shift+Up</string>
    </property>
   </action>
   <action name="actMoveDown">
@@ -2541,7 +2562,7 @@
     <string>M&amp;ove Down</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+Shift+Down</string>
+    <string notr="true">Ctrl+Shift+Down</string>
    </property>
   </action>
   <action name="actRename">
@@ -2553,7 +2574,7 @@
     <string>&amp;Rename</string>
    </property>
    <property name="shortcut">
-    <string>F2</string>
+    <string notr="true">F2</string>
    </property>
   </action>
   <action name="actHeaderSetextL1">
@@ -2561,7 +2582,7 @@
     <string>&amp;Level 1 (setext)</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+Alt+1</string>
+    <string notr="true">Ctrl+Alt+1</string>
    </property>
   </action>
   <action name="actHeaderSetextL2">
@@ -2569,7 +2590,7 @@
     <string>Level &amp;2</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+Alt+2</string>
+    <string notr="true">Ctrl+Alt+2</string>
    </property>
   </action>
   <action name="actHeaderAtxL1">
@@ -2577,7 +2598,7 @@
     <string>Level &amp;1 (atx)</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+1</string>
+    <string notr="true">Ctrl+1</string>
    </property>
   </action>
   <action name="actHeaderAtxL2">
@@ -2585,7 +2606,7 @@
     <string>L&amp;evel 2</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+2</string>
+    <string notr="true">Ctrl+2</string>
    </property>
   </action>
   <action name="actHeaderAtxL3">
@@ -2593,7 +2614,7 @@
     <string>Level &amp;3</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+3</string>
+    <string notr="true">Ctrl+3</string>
    </property>
   </action>
   <action name="actHeaderAtxL4">
@@ -2601,7 +2622,7 @@
     <string>Level &amp;4</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+4</string>
+    <string notr="true">Ctrl+4</string>
    </property>
   </action>
   <action name="actHeaderAtxL5">
@@ -2609,7 +2630,7 @@
     <string>Level &amp;5</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+5</string>
+    <string notr="true">Ctrl+5</string>
    </property>
   </action>
   <action name="actHeaderAtxL6">
@@ -2617,7 +2638,7 @@
     <string>Level &amp;6</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+6</string>
+    <string notr="true">Ctrl+6</string>
    </property>
   </action>
   <action name="actFormatBold">
@@ -2629,7 +2650,7 @@
     <string>&amp;Bold</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+B</string>
+    <string notr="true">Ctrl+B</string>
    </property>
   </action>
   <action name="actFormatItalic">
@@ -2641,7 +2662,7 @@
     <string>&amp;Italic</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+I</string>
+    <string notr="true">Ctrl+I</string>
    </property>
   </action>
   <action name="actFormatStrike">
@@ -2652,10 +2673,16 @@
    <property name="text">
     <string>&amp;Strike</string>
    </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
   </action>
   <action name="actFormatVerbatim">
    <property name="text">
     <string>&amp;Verbatim</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
   </action>
   <action name="actFormatSuperscript">
@@ -2663,7 +2690,7 @@
     <string>Su&amp;perscript</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl++</string>
+    <string notr="true">Ctrl++</string>
    </property>
   </action>
   <action name="actFormatSubscript">
@@ -2671,7 +2698,7 @@
     <string>Subsc&amp;ript</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+-</string>
+    <string notr="true">Ctrl+-</string>
    </property>
   </action>
   <action name="actFormatCommentBlock">
@@ -2679,7 +2706,7 @@
     <string>Co&amp;mment block</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+Shift+C</string>
+    <string notr="true">Ctrl+Shift+C</string>
    </property>
   </action>
   <action name="actFormatClear">
@@ -2691,7 +2718,7 @@
     <string>Clear &amp;formats</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+0</string>
+    <string notr="true">Ctrl+0</string>
    </property>
   </action>
   <action name="actFormatCommentLines">
@@ -2699,12 +2726,15 @@
     <string>&amp;Comment line(s)</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+D</string>
+    <string notr="true">Ctrl+D</string>
    </property>
   </action>
   <action name="actFormatOrderedList">
    <property name="text">
     <string>&amp;Ordered list</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
   </action>
   <action name="actFormatList">
@@ -2715,10 +2745,16 @@
    <property name="text">
     <string>&amp;Unordered list</string>
    </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
   </action>
   <action name="actFormatBlockquote">
    <property name="text">
     <string>B&amp;lockquote</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
   </action>
   <action name="actToolTargets">
@@ -2729,7 +2765,7 @@
     <string>Draft and session word count targets</string>
    </property>
    <property name="shortcut">
-	<string>Ctrl+,</string>
+    <string notr="true">Ctrl+,</string>
    </property>
   </action>
   <action name="actSearch">
@@ -2741,7 +2777,7 @@
     <string>Search</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+F</string>
+    <string notr="true">Ctrl+F</string>
    </property>
   </action>
   <action name="actSupport">
@@ -2752,7 +2788,7 @@
     <string>How to obtain technical support for Manuskript.</string>
    </property>
    <property name="shortcut">
-    <string>F1</string>
+    <string notr="true">F1</string>
    </property>
   </action>
   <action name="actLocateLog">
@@ -2766,7 +2802,7 @@
     <string>Locate the diagnostic log file used for this session.</string>
    </property>
    <property name="shortcut">
-    <string>Shift+F1</string>
+    <string notr="true">Shift+F1</string>
    </property>
   </action>
  </widget>
