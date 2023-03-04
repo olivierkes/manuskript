@@ -574,7 +574,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1538"/>
         <source>&amp;Frequency Analyzer</source>
-        <translation>Analizador de &amp;Frequencia</translation>
+        <translation>Analisador de &amp;Frequência</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1422"/>
