@@ -439,7 +439,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1508"/>
         <source>&amp;View</source>
-        <translation>&amp;Vizualizar</translation>
+        <translation>&amp;Visualizar</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1509"/>
