@@ -59,12 +59,12 @@
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="103"/>
         <source>Frequency Analyzer</source>
-        <translation>Analisador de Freqüência</translation>
+        <translation>Analisador de Frequência</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="108"/>
         <source>Word frequency</source>
-        <translation>Freqüência de palavras</translation>
+        <translation>Frequência de palavras</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="104"/>
