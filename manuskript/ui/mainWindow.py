@@ -313,6 +313,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_8 = QtWidgets.QVBoxLayout(self.groupBox)
         self.verticalLayout_8.setObjectName("verticalLayout_8")
         self.lstCharacters = characterTreeView(self.groupBox)
+        self.lstCharacters.setSelectionMode(QtWidgets.QAbstractItemView.ExtendedSelection)
         self.lstCharacters.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.lstCharacters.setDragEnabled(True)
         self.lstCharacters.setObjectName("lstCharacters")

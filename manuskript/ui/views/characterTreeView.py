@@ -2,11 +2,12 @@
 # --!-- coding: utf8 --!--
 from PyQt5.QtCore import QSize, QModelIndex, Qt
 from PyQt5.QtGui import QPixmap, QColor, QIcon, QBrush
-from PyQt5.QtWidgets import QTreeWidget, QTreeWidgetItem, QColorDialog
+from PyQt5.QtWidgets import QTreeWidget, QTreeWidgetItem, QColorDialog, QDialog
 
 from manuskript.enums import Character
 from manuskript.functions import iconColor, mainWindow
 from manuskript.ui import style as S
+from manuskript.ui import characterInfoDialog
 
 
 class characterTreeView(QTreeWidget):
@@ -170,7 +171,22 @@ class characterTreeView(QTreeWidget):
         mainWindow().updateCharacterPOVState(ID)
 
     def addCharacterInfo(self):
-        self._model.addCharacterInfo(self.currentCharacterID())
+        #Setting up dialog
+        charInfoDialog = QDialog()
+        charInfoUi = characterInfoDialog.Ui_characterInfoDialog()
+        charInfoUi.setupUi(charInfoDialog)
+
+        if charInfoDialog.exec_() == QDialog.Accepted:
+            # User clicked OK, get the input values
+            description = charInfoUi.descriptionLineEdit.text()
+            value = charInfoUi.valueLineEdit.text()
+
+            # Add the character info with the input values
+            IDs = self.currentCharacterIDs()
+            for ID in IDs:
+                self._model.addCharacterInfo(ID, description, value)
+
+
 
     def removeCharacterInfo(self):
         self._model.removeCharacterInfo(self.currentCharacterID())
@@ -181,6 +197,14 @@ class characterTreeView(QTreeWidget):
             ID = self.currentItem().data(0, Qt.UserRole)
 
         return ID
+
+    def currentCharacterIDs(self): #Exactly like currentCharacterID(), except for multiselection
+        IDs = []
+        for item in self.selectedItems():
+            ID = item.data(0, Qt.UserRole)
+            if ID is not None:
+                IDs.append(ID)
+        return IDs
 
     def currentCharacter(self):
         """
