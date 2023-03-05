@@ -107,12 +107,12 @@
     <message>
         <location filename="../manuskript/ui/listDialog_ui.py" line="43"/>
         <source>Title</source>
-        <translation type="unfinished">Titolo</translation>
+        <translation>Titolo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/listDialog_ui.py" line="44"/>
         <source>Text</source>
-        <translation type="unfinished">Testo</translation>
+        <translation>Testo</translation>
     </message>
 </context>
 <context>
@@ -120,12 +120,12 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="619"/>
         <source>The image path or URL is incomplete or malformed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Il percorso o l&apos;URL dell&apos;immagine è incompleto o non corretto.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="631"/>
         <source>The protocol &quot;{}&quot; is not supported.</source>
-        <translation type="unfinished"></translation>
+        <translation>Il protocollo &quot;{}&quot; non è supportato.</translation>
     </message>
 </context>
 <context>
@@ -141,7 +141,7 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="543"/>
         <source>{} (CTRL+Click to open)</source>
-        <translation type="unfinished"></translation>
+        <translation>{} (CTRL+clic per aprire)</translation>
     </message>
 </context>
 <context>
@@ -384,7 +384,7 @@
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="23"/>
         <source>Outline</source>
-        <translation>Quadro d'insieme</translation>
+        <translation>Quadro d&apos;insieme</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1493"/>
@@ -449,7 +449,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1511"/>
         <source>Cheat Sheet</source>
-        <translation type="unfinished">&amp;Promemoria</translation>
+        <translation>Foglio di trucchi</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1513"/>
@@ -728,7 +728,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1549"/>
         <source>Icon color</source>
-        <translation>Colore dell'icona</translation>
+        <translation>Colore dell&apos;icona</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1550"/>
@@ -1128,7 +1128,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1656"/>
         <source>Proceed with import at your own risk</source>
-        <translation>Procedere con l'importazione a proprio rischio</translation>
+        <translation>Procedere con l&apos;importazione a proprio rischio</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1452"/>
@@ -1238,17 +1238,17 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1599"/>
         <source>&amp;Targets</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Obiettivi</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1600"/>
         <source>Draft and session word count targets</source>
-        <translation type="unfinished"></translation>
+        <translation>Obiettivi di conteggio parole per bozze e sessioni</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2732"/>
         <source>Ctrl+,</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+,</translation>
     </message>
 </context>
 <context>
@@ -1304,7 +1304,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1914"/>
         <source>Application settings</source>
-        <translation>Impostazioni dell'applicazione</translation>
+        <translation>Impostazioni dell&apos;applicazione</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1921"/>
@@ -1314,7 +1314,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1922"/>
         <source>Automatically load last project on startup</source>
-        <translation>Carica automaticamente l'ultimo progetto all'avvio</translation>
+        <translation>Carica automaticamente l&apos;ultimo progetto all&apos;avvio</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1923"/>
@@ -1344,12 +1344,12 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1928"/>
         <source>Save on project close</source>
-        <translation>Salva all'uscita</translation>
+        <translation>Salva all&apos;uscita</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1929"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If you check this option, your project will be saved as one single file. Easier to copy or backup, but does not allow collaborative editing, or versioning.&lt;br/&gt;If this is unchecked, your project will be saved as a folder containing many small files.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Se spunti questa opzione, il progetto sarà salvato come singolo file. Sarà più facile la copia o il backup, ma non consentirà l' editing collaborativo, o il versionning.&lt;br/&gt;Se non la spunti, il progetto sarà salvato come una cartella contenente molti piccoli files.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Se spunti questa opzione, il progetto sarà salvato come singolo file. Sarà più facile la copia o il backup, ma non consentirà l&apos; editing collaborativo, o il versionning.&lt;br/&gt;Se non la spunti, il progetto sarà salvato come una cartella contenente molti piccoli files.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1930"/>
@@ -1384,7 +1384,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1937"/>
         <source>revisions per day for the last month</source>
-        <translation>revisioni al giorno per l'ultimo mese</translation>
+        <translation>revisioni al giorno per l&apos;ultimo mese</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1938"/>
@@ -1394,12 +1394,12 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1939"/>
         <source>revisions per hour for the last day</source>
-        <translation>revisioni all'ora per l'ultimo giorno</translation>
+        <translation>revisioni all&apos;ora per l&apos;ultimo giorno</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1940"/>
         <source>revisions per 10 minutes for the last hour</source>
-        <translation>revisioni ogni 10 minuti per l'ultima ora</translation>
+        <translation>revisioni ogni 10 minuti per l&apos;ultima ora</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1941"/>
@@ -1424,7 +1424,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2018"/>
         <source>Icon color:</source>
-        <translation>Colore dell'icona:</translation>
+        <translation>Colore dell&apos;icona:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2043"/>
@@ -1489,7 +1489,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2009"/>
         <source>Outline</source>
-        <translation>Quadro d'insieme</translation>
+        <translation>Quadro d&apos;insieme</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2000"/>
@@ -1534,7 +1534,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2042"/>
         <source>Corner color:</source>
-        <translation>Colore dell'angolo:</translation>
+        <translation>Colore dell&apos;angolo:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2010"/>
@@ -1759,7 +1759,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2128"/>
         <source>Corner radius:</source>
-        <translation>Raggio dell'angolo:</translation>
+        <translation>Raggio dell&apos;angolo:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2129"/>
@@ -1789,7 +1789,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2084"/>
         <source>Use block insertion of</source>
-        <translation>Usa un blocco d'inserzione di</translation>
+        <translation>Usa un blocco d&apos;inserzione di</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2066"/>
@@ -1809,7 +1809,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1963"/>
         <source>Icon Size</source>
-        <translation>Dimensione dell'icona</translation>
+        <translation>Dimensione dell&apos;icona</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1964"/>
@@ -1939,7 +1939,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1942"/>
         <source>&lt;p&gt;&lt;b&gt;The Revisions feature has been at the source of many reported issues. In this version of Manuskript it has been turned off by default for new projects in order to provide the best experience.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Why aren&apos;t these issues fixed already? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;We need your help to make Manuskript better!&lt;/a&gt;&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt; La funzione Revisioni è all'origine di molti problemi segnalati. In questa versione di Manuskript è stata disattivata per impostazione predefinita per i nuovi progetti al fine di fornire la migliore esperienza.&lt;/b&gt;&lt;/p&gt;&lt;p&gt; Perché questi problemi non sono già stati risolti? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt; Abbiamo bisogno del tuo aiuto per migliorare Manuskript!&lt;/a&gt;&lt;/p&gt;</translation>
+        <translation>&lt;p&gt;&lt;b&gt; La funzione Revisioni è all&apos;origine di molti problemi segnalati. In questa versione di Manuskript è stata disattivata per impostazione predefinita per i nuovi progetti al fine di fornire la migliore esperienza.&lt;/b&gt;&lt;/p&gt;&lt;p&gt; Perché questi problemi non sono già stati risolti? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt; Abbiamo bisogno del tuo aiuto per migliorare Manuskript!&lt;/a&gt;&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1919"/>
@@ -2124,12 +2124,12 @@
     <message>
         <location filename="../manuskript/models/characterModel.py" line="179"/>
         <source>New character</source>
-        <translation type="unfinished"></translation>
+        <translation>Nuovo carattere</translation>
     </message>
     <message>
         <location filename="../manuskript/models/characterModel.py" line="215"/>
         <source>Description</source>
-        <translation type="unfinished">Descrizione</translation>
+        <translation>Descrizione</translation>
     </message>
 </context>
 <context>
@@ -2276,22 +2276,22 @@
     <message>
         <location filename="../manuskript/load_save/version_1.py" line="435"/>
         <source>Files not saved</source>
-        <translation type="unfinished"></translation>
+        <translation>File non salvati</translation>
     </message>
     <message>
         <location filename="../manuskript/load_save/version_1.py" line="436"/>
         <source>The following files were not saved and appear to be open in another program</source>
-        <translation type="unfinished"></translation>
+        <translation>I seguenti file non sono stati salvati e sembrano essere aperti in un altro programma</translation>
     </message>
     <message>
         <location filename="../manuskript/load_save/version_1.py" line="925"/>
         <source>Files not loaded</source>
-        <translation type="unfinished"></translation>
+        <translation>File non caricati</translation>
     </message>
     <message>
         <location filename="../manuskript/load_save/version_1.py" line="926"/>
         <source>The following files were not loaded and appear to be open in another program</source>
-        <translation type="unfinished"></translation>
+        <translation>I seguenti file non sono stati caricati e sembrano essere aperti in un altro programma</translation>
     </message>
 </context>
 <context>
@@ -2353,7 +2353,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="513"/>
         <source>Decide here what will be included in the final export.</source>
-        <translation>Decidi qui cosa verrà incluso nell'esportazione finale.</translation>
+        <translation>Decidi qui cosa verrà incluso nell&apos;esportazione finale.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="515"/>
@@ -2383,12 +2383,12 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="522"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Filters what items will be included in the final export.&lt;br/&gt;&lt;span style=&quot; color:#773333;&quot;&gt;(Not fully implemented yet.)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Filtra gli elementi da includere nell'esportazione finale.&lt;br/&gt;&lt;span style=&quot; color:#773333;&quot;&gt;(Non ancora implementato completamente.)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Filtra gli elementi da includere nell&apos;esportazione finale.&lt;br/&gt;&lt;span style=&quot; color:#773333;&quot;&gt;(Non ancora implementato completamente.)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="523"/>
         <source>Ignore compile status (include all items)</source>
-        <translation>Ignora la spunta su 'compilato' (includi tutti gli elementi)</translation>
+        <translation>Ignora la spunta su &apos;compilato&apos; (includi tutti gli elementi)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="524"/>
@@ -2458,7 +2458,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>Sostituisci le singole virgolette (') con:</translation>
+        <translation>Sostituisci le singole virgolette (&apos;) con:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>
@@ -2493,7 +2493,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="556"/>
         <source>If checked, uses regular expression for replacement. If unchecked, replaced as plain text.</source>
-        <translation>Se selezionato, usa l'espressione regolare per la sostituzione. Se deselezionato, sostituito come testo piano.</translation>
+        <translation>Se selezionato, usa l&apos;espressione regolare per la sostituzione. Se deselezionato, sostituito come testo piano.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="561"/>
@@ -2576,7 +2576,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="133"/>
         <source>Set {} executable path.</source>
-        <translation>Imposta {} il percorso dell'eseguibile.</translation>
+        <translation>Imposta {} il percorso dell&apos;eseguibile.</translation>
     </message>
 </context>
 <context>
@@ -2840,7 +2840,7 @@
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.py" line="98"/>
         <source>Outline</source>
-        <translation>Quadro d'insieme</translation>
+        <translation>Quadro d&apos;insieme</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.ui" line="198"/>
@@ -2850,7 +2850,7 @@
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.py" line="94"/>
         <source>Go to parent item</source>
-        <translation>Vai all'elemento padre</translation>
+        <translation>Vai all&apos;elemento padre</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.ui" line="57"/>
@@ -3061,12 +3061,12 @@
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Climax</source>
-        <translation>Culmine dell'azione</translation>
+        <translation>Culmine dell&apos;azione</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Falling action</source>
-        <translation>Caduta dell'azione</translation>
+        <translation>Caduta dell&apos;azione</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3121,7 +3121,7 @@
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Hero&apos;s journey</source>
-        <translation>Il viaggio dell'eroe</translation>
+        <translation>Il viaggio dell&apos;eroe</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3131,7 +3131,7 @@
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Call to adventure</source>
-        <translation>Chiamata all'avventura</translation>
+        <translation>Chiamata all&apos;avventura</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3214,7 +3214,7 @@
     <message>
         <location filename="../manuskript/models/plotModel.py" line="110"/>
         <source>New plot</source>
-        <translation type="unfinished"></translation>
+        <translation>Nuova trama</translation>
     </message>
 </context>
 <context>
@@ -3402,27 +3402,27 @@
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="31"/>
         <source>Case sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>Maiuscole e minuscole</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="32"/>
         <source>Match words</source>
-        <translation type="unfinished"></translation>
+        <translation>Abbina parole</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="33"/>
         <source>Regex</source>
-        <translation type="unfinished"></translation>
+        <translation>Espressione regolare</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="39"/>
         <source>Search in:</source>
-        <translation type="unfinished"></translation>
+        <translation>Cerca in:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="51"/>
         <source>Options:</source>
-        <translation type="unfinished"></translation>
+        <translation>Opzioni:</translation>
     </message>
 </context>
 <context>
@@ -3476,7 +3476,7 @@
         <location filename="../manuskript/settingsWindow.py" line="550"/>
         <source>Unable to add selected image:
 {}</source>
-        <translation>Impossibile aggiungere l'immagine selezionata:
+        <translation>Impossibile aggiungere l&apos;immagine selezionata:
 {}</translation>
     </message>
 </context>
@@ -3528,7 +3528,7 @@
             &lt;p&gt;&lt;b&gt;Mark:&lt;/b&gt;&lt;/p&gt;
             </source>
         <translation>
-            &lt;p&gt;Dividi l'elemento(i) selezionato nel punto indicato.&lt;/p&gt;
+            &lt;p&gt;Dividi l&apos;elemento(i) selezionato nel punto indicato.&lt;/p&gt;
 
             &lt;p&gt;Se uno degli oggetti selezionati è una cartella, sarà applicato
             ricorsivamente a &lt;i&gt;tutti&lt;/i&gt; gli elementi figli.&lt;/p&gt;
@@ -3546,7 +3546,7 @@
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="47"/>
         <source>Split &apos;{}&apos;</source>
-        <translation>Dividi '{}'</translation>
+        <translation>Dividi &apos;{}&apos;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="51"/>
@@ -3600,47 +3600,47 @@
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="128"/>
         <source>Project Targets</source>
-        <translation type="unfinished"></translation>
+        <translation>Obiettivi del progetto</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="129"/>
         <source>Draft Target</source>
-        <translation type="unfinished"></translation>
+        <translation>Bozza obiettivo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="136"/>
         <source>0</source>
-        <translation type="unfinished"></translation>
+        <translation>0</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="137"/>
         <source>of</source>
-        <translation type="unfinished">di</translation>
+        <translation>di</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="132"/>
         <source>10,000</source>
-        <translation type="unfinished"></translation>
+        <translation>10,000</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="133"/>
         <source>Words</source>
-        <translation type="unfinished"></translation>
+        <translation>Parole</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="134"/>
         <source>Session Target</source>
-        <translation type="unfinished"></translation>
+        <translation>Obiettivo della sessione</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="135"/>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Ripristina</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="138"/>
         <source>words</source>
-        <translation type="unfinished"></translation>
+        <translation>parole</translation>
     </message>
 </context>
 <context>
@@ -3782,7 +3782,7 @@
     <message>
         <location filename="../manuskript/ui/welcome_ui.py" line="138"/>
         <source>Next time, automatically open last project</source>
-        <translation>La prossima volta, apri automaticamente l'ultimo progetto</translation>
+        <translation>La prossima volta, apri automaticamente l&apos;ultimo progetto</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome_ui.py" line="139"/>
