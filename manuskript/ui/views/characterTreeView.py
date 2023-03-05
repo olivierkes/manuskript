@@ -213,6 +213,16 @@ class characterTreeView(QTreeWidget):
         """
         ID = self.currentCharacterID()
         return self._model.getCharacterByID(ID)
+    def currentCharacters(self):
+        """
+        Returns the selected characters (when multiple are selected)
+        @return: List of Characters
+        """
+        IDs = self.currentCharacterIDs()
+        characters = []
+        for ID in IDs:
+            characters.append(self._model.getCharacterByID(ID))
+        return characters
 
     def getItemByID(self, ID):
         for t in range(self.topLevelItemCount()):

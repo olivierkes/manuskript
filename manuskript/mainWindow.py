@@ -297,17 +297,26 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     # CHARACTERS
     ###############################################################################
 
-    def changeCurrentCharacter(self, trash=None):
-        """
+    def handleCharacterSelectionChanged(self):
+        selectedCharacters = self.lstCharacters.currentCharacters()
+        characterSelectionIsEmpty = True
+        for c in selectedCharacters:
+            if c is not None:
+                characterSelectionIsEmpty = False
 
-        @return:
-        """
-        c = self.lstCharacters.currentCharacter()
-        if not c:
+        if characterSelectionIsEmpty:
             self.tabPersos.setEnabled(False)
+        elif len(selectedCharacters)>1:
+            self.tabPersos.setEnabled(False)
+        else:
+            self.tabPersos.setEnabled(True)
+            self.changeCurrentCharacter()
+
+    def changeCurrentCharacter(self, trash=None):
+        c = self.lstCharacters.currentCharacter()
+        if c is None:
             return
 
-        self.tabPersos.setEnabled(True)
         index = c.index()
 
         for w in [
@@ -903,7 +912,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def makeUIConnections(self):
         "Connections that have to be made once only, even when a new project is loaded."
-        self.lstCharacters.currentItemChanged.connect(self.changeCurrentCharacter, F.AUC)
+        self.lstCharacters.itemSelectionChanged.connect(self.handleCharacterSelectionChanged, F.AUC)
 
         self.txtPlotFilter.textChanged.connect(self.lstPlots.setFilter, F.AUC)
         self.lstPlots.currentItemChanged.connect(self.changeCurrentPlot, F.AUC)
