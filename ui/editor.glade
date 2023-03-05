@@ -25,6 +25,28 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
   <!-- interface-name Manuskript -->
   <!-- interface-description Manuskript is an open-source tool for writers. -->
   <!-- interface-copyright 2015-2021 Olivier Keshavjee et al. -->
+  <object class="GtkListStore" id="editor_outline_store">
+    <columns>
+      <!-- column-name ID -->
+      <column type="gint"/>
+      <!-- column-name title -->
+      <column type="gchararray"/>
+      <!-- column-name label -->
+      <column type="gchararray"/>
+      <!-- column-name status -->
+      <column type="gchararray"/>
+      <!-- column-name compile -->
+      <column type="gboolean"/>
+      <!-- column-name count -->
+      <column type="gulong"/>
+      <!-- column-name goal -->
+      <column type="gulong"/>
+      <!-- column-name progress -->
+      <column type="gint"/>
+      <!-- column-name icon -->
+      <column type="gchararray"/>
+    </columns>
+  </object>
   <object class="GtkAdjustment" id="editor_scale_adjustment">
     <property name="upper">100</property>
     <property name="step-increment">1</property>
@@ -41,11 +63,6 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
         <property name="pixels-above-lines">4</property>
         <property name="pixels-below-lines">4</property>
         <property name="editable">False</property>
-      </object>
-    </child>
-    <child type="tag">
-      <object class="GtkTextTag">
-        <property name="font">Normal</property>
       </object>
     </child>
     <child type="tag">
@@ -152,6 +169,13 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
         <property name="editable">False</property>
       </object>
     </child>
+    <child type="tag">
+      <object class="GtkTextTag" id="p_tag">
+        <property name="name">p</property>
+        <property name="font">Normal</property>
+        <property name="indent">20</property>
+      </object>
+    </child>
   </object>
   <object class="GtkTextBuffer" id="editor_text">
     <property name="tag-table">editor_tag_table</property>
@@ -221,7 +245,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <child>
-                          <object class="GtkTreeView">
+                          <object class="GtkTreeView" id="outline_view">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <property name="model">outline_store</property>
@@ -398,6 +422,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                   <object class="GtkFlowBox" id="editor_flowbox">
                                     <property name="visible">True</property>
                                     <property name="can-focus">False</property>
+                                    <property name="valign">start</property>
                                     <property name="homogeneous">True</property>
                                     <property name="activate-on-single-click">False</property>
                                   </object>
@@ -421,13 +446,13 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                                 <child>
-                                  <object class="GtkTreeView">
+                                  <object class="GtkTreeView" id="editor_outline_view">
                                     <property name="visible">True</property>
                                     <property name="can-focus">True</property>
-                                    <property name="model">outline_store</property>
+                                    <property name="model">editor_outline_store</property>
                                     <property name="enable-tree-lines">True</property>
                                     <child internal-child="selection">
-                                      <object class="GtkTreeSelection"/>
+                                      <object class="GtkTreeSelection" id="editor_outline_selection"/>
                                     </child>
                                     <child>
                                       <object class="GtkTreeViewColumn">

@@ -97,21 +97,24 @@ class MainWindow:
     def getProject(self):
         return self.project
 
-    def _openAction(self, menuItem: Gtk.MenuItem):
+    def openProject(self):
         pass
+
+    def closeProject(self):
+        self.hide()
+        self.startupWindow.show()
+
+    def _openAction(self, menuItem: Gtk.MenuItem):
+        self.openProject()
 
     def _saveAction(self, menuItem: Gtk.MenuItem):
         self.getProject().save()
 
     def _closeAction(self, menuItem: Gtk.MenuItem):
-        self.hide()
-        self.startupWindow.show()
+        self.closeProject()
 
     def _quitAction(self, menuItem: Gtk.MenuItem):
-        for window in self.windows:
-            window.hide()
-
-        self.exit()
+        self.exit(True)
 
     def getSettings(self):
         return self.getProject().settings
@@ -141,7 +144,11 @@ class MainWindow:
         self.show()
         Gtk.main()
 
-    def exit(self):
+    def exit(self, force=False):
+        if force:
+            for window in self.windows:
+                window.hide()
+
         for window in self.windows:
             if window.isVisible():
                 self.hide()
