@@ -107,12 +107,12 @@
     <message>
         <location filename="../manuskript/ui/listDialog_ui.py" line="43"/>
         <source>Title</source>
-        <translation type="unfinished">Título</translation>
+        <translation>Título</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/listDialog_ui.py" line="44"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation>Texto</translation>
     </message>
 </context>
 <context>
@@ -120,12 +120,12 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="619"/>
         <source>The image path or URL is incomplete or malformed.</source>
-        <translation type="unfinished"></translation>
+        <translation>O caminho da imagem ou URL está incompleto ou malformado.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="631"/>
         <source>The protocol &quot;{}&quot; is not supported.</source>
-        <translation type="unfinished"></translation>
+        <translation>O protocolo &quot;{}&quot; não é suportado.</translation>
     </message>
 </context>
 <context>
@@ -141,7 +141,7 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="543"/>
         <source>{} (CTRL+Click to open)</source>
-        <translation type="unfinished"></translation>
+        <translation>{} (CTRL+Click para abrir)</translation>
     </message>
 </context>
 <context>
@@ -439,7 +439,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1508"/>
         <source>&amp;View</source>
-        <translation>&amp;Vizualizar</translation>
+        <translation>&amp;Visualizar</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1509"/>
@@ -449,7 +449,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1511"/>
         <source>Cheat Sheet</source>
-        <translation type="unfinished">&amp;Folha de notas</translation>
+        <translation>Folha de Consulta</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1513"/>
@@ -574,7 +574,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1538"/>
         <source>&amp;Frequency Analyzer</source>
-        <translation>Analizador de &amp;Frequencia</translation>
+        <translation>Analisador de &amp;Frequência</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1422"/>
@@ -655,8 +655,8 @@
         <location filename="../manuskript/mainWindow.py" line="1335"/>
         <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous
                      evil wizard wasn&apos;t able to kill a baby?&apos; (Harry Potter)</source>
-        <translation>A situação básica, na forma de um questionamento tipo 'e se ...'. Ex: 
-'E se o mais perigoso malvado feiticeiro não foi capaz de matar um bebê?' (Harry Potter)</translation>
+        <translation>A situação básica, na forma de um questionamento tipo &apos;e se ...&apos;. Ex: 
+&apos;E se o mais perigoso malvado feiticeiro não foi capaz de matar um bebê?&apos; (Harry Potter)</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1340"/>
@@ -1163,17 +1163,17 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1607"/>
         <source>&amp;Locate log file...</source>
-        <translation>&amp;Encontrar arquivo de log...</translation>
+        <translation>&amp;Localizar arquivo de log...</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1608"/>
         <source>Locate log file</source>
-        <translation>Encontrar arquivo de log</translation>
+        <translation>Localizar arquivo de log</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1609"/>
         <source>Locate the diagnostic log file used for this session.</source>
-        <translation>Encontre o arquivo de log de diagnóstico dessa sessão.</translation>
+        <translation>Localizar o arquivo de log diagnóstico utilizado nesta sessão.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2769"/>
@@ -1188,12 +1188,12 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/mainWindow.py" line="1188"/>
         <source>This session is not being logged.</source>
-        <translation>Essa sessão não está sendo logada.</translation>
+        <translation>Esta sessão não está sendo observada em log.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1197"/>
         <source>A log file is a Work in Progress!</source>
-        <translation>O arquivo de log está em desenvolvimento!</translation>
+        <translation>Um arquivo de log é um A Fazer!</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1197"/>
@@ -1238,17 +1238,17 @@ Então expanda isso para um parágrafo, depois para uma página e, em seguida, p
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1599"/>
         <source>&amp;Targets</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Alvos</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1600"/>
         <source>Draft and session word count targets</source>
-        <translation type="unfinished"></translation>
+        <translation>Metas de contagem de palavras de rascunho e sessão</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2732"/>
         <source>Ctrl+,</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+,</translation>
     </message>
 </context>
 <context>
@@ -1951,7 +1951,7 @@ próx. às palavras</translation>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1965"/>
         <source>Char/Word Counter</source>
-        <translation>Contagem de carac./palav.</translation>
+        <translation>Contagem de carac./palav</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1966"/>
@@ -1966,7 +1966,7 @@ próx. às palavras</translation>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1976"/>
         <source>Sho&amp;w char count</source>
-        <translation>Exibir contagem de caracteres</translation>
+        <translation>Mostrar total de caracteres</translation>
     </message>
 </context>
 <context>
@@ -1999,17 +1999,17 @@ próx. às palavras</translation>
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="552"/>
         <source>&amp;New World Item</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Item do Novo Mundo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="653"/>
         <source>&amp;Correction Suggestions</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Sugestões de Correção</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="662"/>
         <source>&amp;Correction Suggestion</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Sugestão de Correção</translation>
     </message>
 </context>
 <context>
@@ -2124,12 +2124,12 @@ próx. às palavras</translation>
     <message>
         <location filename="../manuskript/models/characterModel.py" line="179"/>
         <source>New character</source>
-        <translation type="unfinished"></translation>
+        <translation>Novo personagem</translation>
     </message>
     <message>
         <location filename="../manuskript/models/characterModel.py" line="215"/>
         <source>Description</source>
-        <translation type="unfinished">Descrição</translation>
+        <translation>Descrição</translation>
     </message>
 </context>
 <context>
@@ -2276,22 +2276,22 @@ próx. às palavras</translation>
     <message>
         <location filename="../manuskript/load_save/version_1.py" line="435"/>
         <source>Files not saved</source>
-        <translation type="unfinished"></translation>
+        <translation>Arquivos não salvos</translation>
     </message>
     <message>
         <location filename="../manuskript/load_save/version_1.py" line="436"/>
         <source>The following files were not saved and appear to be open in another program</source>
-        <translation type="unfinished"></translation>
+        <translation>Os seguintes arquivos não foram salvos e parecem estar abertos em outro programa</translation>
     </message>
     <message>
         <location filename="../manuskript/load_save/version_1.py" line="925"/>
         <source>Files not loaded</source>
-        <translation type="unfinished"></translation>
+        <translation>Arquivos não carregados</translation>
     </message>
     <message>
         <location filename="../manuskript/load_save/version_1.py" line="926"/>
         <source>The following files were not loaded and appear to be open in another program</source>
-        <translation type="unfinished"></translation>
+        <translation>Os seguintes arquivos não foram carregados e parecem estar abertos em outro programa</translation>
     </message>
 </context>
 <context>
@@ -2458,7 +2458,7 @@ próx. às palavras</translation>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>Substitua as aspas simples(') por:</translation>
+        <translation>Substitua as aspas simples(&apos;) por:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>
@@ -2870,22 +2870,22 @@ próx. às palavras</translation>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="347"/>
         <source>({} chars) {}  words / {} </source>
-        <translation type="unfinished"></translation>
+        <translation>({} caracteres) {}  palavras/ {} </translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="353"/>
         <source>{}  words / {} </source>
-        <translation type="unfinished"></translation>
+        <translation>{}  palavras/ {} </translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="368"/>
         <source>{} chars</source>
-        <translation type="unfinished"></translation>
+        <translation>{} caracteres</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="362"/>
         <source>{} chars </source>
-        <translation type="unfinished"></translation>
+        <translation>{} caracteres </translation>
     </message>
 </context>
 <context>
@@ -3214,7 +3214,7 @@ próx. às palavras</translation>
     <message>
         <location filename="../manuskript/models/plotModel.py" line="110"/>
         <source>New plot</source>
-        <translation type="unfinished"></translation>
+        <translation>Novo enredo</translation>
     </message>
 </context>
 <context>
@@ -3402,27 +3402,27 @@ próx. às palavras</translation>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="31"/>
         <source>Case sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>Maiúsculas e minúsculas</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="32"/>
         <source>Match words</source>
-        <translation type="unfinished"></translation>
+        <translation>Combinar palavras</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="33"/>
         <source>Regex</source>
-        <translation type="unfinished"></translation>
+        <translation>Expressão regular</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="39"/>
         <source>Search in:</source>
-        <translation type="unfinished"></translation>
+        <translation>Procurar em:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="51"/>
         <source>Options:</source>
-        <translation type="unfinished"></translation>
+        <translation>Opções:</translation>
     </message>
 </context>
 <context>
@@ -3530,7 +3530,8 @@ próx. às palavras</translation>
         <translation>
             &lt;p&gt;Dividir o(s) item(ns) selecionado(s) na marca indicada.&lt;/p&gt;
 
-            &lt;p&gt;Se um dos itens selecionados for uma pasta, ele será aplicado recursivamente para &lt;i&gt;todos&lt;/i&gt; seus itens filhos.&lt;/p&gt;
+            &lt;p&gt;Se um dos itens selecionados for uma pasta, ele será aplicado 
+            recursivamente para &lt;i&gt;todos&lt;/i&gt; seus itens filhos.&lt;/p&gt;
 
             &lt;p&gt;A marca de divisão pode conter as seguintes sequências de escape:
                 &lt;ul&gt;
@@ -3545,7 +3546,7 @@ próx. às palavras</translation>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="47"/>
         <source>Split &apos;{}&apos;</source>
-        <translation>Separar '{}'</translation>
+        <translation>Separar &apos;{}&apos;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="51"/>
@@ -3599,47 +3600,47 @@ próx. às palavras</translation>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="128"/>
         <source>Project Targets</source>
-        <translation type="unfinished"></translation>
+        <translation>Alvos do Projeto</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="129"/>
         <source>Draft Target</source>
-        <translation type="unfinished"></translation>
+        <translation>Alvo do Esboço</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="136"/>
         <source>0</source>
-        <translation type="unfinished"></translation>
+        <translation>0</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="137"/>
         <source>of</source>
-        <translation type="unfinished"></translation>
+        <translation>de</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="132"/>
         <source>10,000</source>
-        <translation type="unfinished"></translation>
+        <translation>10,000</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="133"/>
         <source>Words</source>
-        <translation type="unfinished"></translation>
+        <translation>Palavras</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="134"/>
         <source>Session Target</source>
-        <translation type="unfinished"></translation>
+        <translation>Alvo da Sessão</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="135"/>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Resetar</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="138"/>
         <source>words</source>
-        <translation type="unfinished"></translation>
+        <translation>palavras</translation>
     </message>
 </context>
 <context>
