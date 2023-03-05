@@ -9,7 +9,7 @@ from PyQt5.QtCore import (pyqtSignal, QSignalMapper, QTimer, QSettings, Qt, QPoi
                           QRegExp, QUrl, QSize, QModelIndex)
 from PyQt5.QtGui import QStandardItemModel, QIcon, QColor
 from PyQt5.QtWidgets import QMainWindow, QHeaderView, qApp, QMenu, QActionGroup, QAction, QStyle, QListWidgetItem, \
-    QLabel, QDockWidget, QWidget, QMessageBox, QLineEdit
+    QLabel, QDockWidget, QWidget, QMessageBox, QLineEdit, QTextEdit
 
 from manuskript import settings
 from manuskript.enums import Character, PlotStep, Plot, World, Outline
@@ -299,25 +299,27 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def handleCharacterSelectionChanged(self):
         selectedCharacters = self.lstCharacters.currentCharacters()
-        characterSelectionIsEmpty = True
-        for c in selectedCharacters:
-            if c is not None:
-                characterSelectionIsEmpty = False
-
+        characterSelectionIsEmpty = not any(selectedCharacters)
         if characterSelectionIsEmpty:
             self.tabPersos.setEnabled(False)
-        elif len(selectedCharacters)>1:
-            self.tabPersos.setEnabled(False)
-        else:
-            self.tabPersos.setEnabled(True)
-            self.changeCurrentCharacter()
+            return
+        cList = list(filter(None, self.lstCharacters.currentCharacters()))
+        character = cList[0]
+        self.changeCurrentCharacter(character)
 
-    def changeCurrentCharacter(self, trash=None):
-        c = self.lstCharacters.currentCharacter()
-        if c is None:
+        # TODO: Transform this check to still enable tabPersos,
+        #  but only the parts that should be editable with multi-selection
+        if len(selectedCharacters) > 1:
+            self.tabPersos.setEnabled(False)
+            return
+        self.tabPersos.setEnabled(True)
+
+    def changeCurrentCharacter(self, character, trash=None):
+
+        if character is None:
             return
 
-        index = c.index()
+        index = character.index()
 
         for w in [
             self.txtPersoName,
@@ -334,19 +336,20 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             w.setCurrentModelIndex(index)
 
         # Button color
-        self.updateCharacterColor(c.ID())
+        self.updateCharacterColor(character.ID())
 
         # Slider importance
-        self.updateCharacterImportance(c.ID())
+        self.updateCharacterImportance(character.ID())
 
         # POV state
-        self.updateCharacterPOVState(c.ID())
+        self.updateCharacterPOVState(character.ID())
 
         # Character Infos
         self.tblPersoInfos.setRootIndex(index)
 
         if self.mdlCharacter.rowCount(index):
             self.updatePersoInfoView()
+
 
     def updatePersoInfoView(self):
         self.tblPersoInfos.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeToContents)
