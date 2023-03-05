@@ -723,7 +723,7 @@
               </widget>
               <widget class="QTabWidget" name="tabPersos">
                <property name="currentIndex">
-                <number>3</number>
+                <number>0</number>
                </property>
                <widget class="QWidget" name="info">
                 <attribute name="title">
@@ -764,8 +764,8 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>229</width>
-                      <height>558</height>
+                      <width>453</width>
+                      <height>699</height>
                      </rect>
                     </property>
                     <layout class="QFormLayout" name="formLayout_8">

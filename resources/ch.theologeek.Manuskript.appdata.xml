@@ -56,6 +56,7 @@
 
 	<launchable type="desktop-id">ch.theologeek.Manuskript.desktop</launchable>
 	<releases>
+		<release version="0.15.0" date="2023-03-04" />
 		<release version="0.14.0" date="2022-06-08" />
 		<release version="0.13.1" date="2021-12-13" />
 		<release version="0.12.0" date="2021-04-30" />
