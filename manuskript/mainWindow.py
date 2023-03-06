@@ -7,9 +7,9 @@ import re
 from PyQt5.Qt import qVersion, PYQT_VERSION_STR
 from PyQt5.QtCore import (pyqtSignal, QSignalMapper, QTimer, QSettings, Qt, QPoint,
                           QRegExp, QUrl, QSize, QModelIndex)
-from PyQt5.QtGui import QStandardItemModel, QIcon, QColor
+from PyQt5.QtGui import QStandardItemModel, QIcon, QColor, QStandardItem
 from PyQt5.QtWidgets import QMainWindow, QHeaderView, qApp, QMenu, QActionGroup, QAction, QStyle, QListWidgetItem, \
-    QLabel, QDockWidget, QWidget, QMessageBox, QLineEdit, QTextEdit
+    QLabel, QDockWidget, QWidget, QMessageBox, QLineEdit, QTextEdit, QTreeView, QDialog
 
 from manuskript import settings
 from manuskript.enums import Character, PlotStep, Plot, World, Outline
@@ -23,6 +23,7 @@ from manuskript.models.plotModel import plotModel
 from manuskript.models.worldModel import worldModel
 from manuskript.settingsWindow import settingsWindow
 from manuskript.ui import style
+from manuskript.ui import characterInfoDialog
 from manuskript.ui.about import aboutDialog
 from manuskript.ui.collapsibleDockWidgets import collapsibleDockWidgets
 from manuskript.ui.importers.importer import importerDialog
@@ -35,6 +36,7 @@ from manuskript.ui.views.outlineDelegates import outlineCharacterDelegate
 from manuskript.ui.views.plotDelegate import plotDelegate
 from manuskript.ui.views.MDEditView import MDEditView
 from manuskript.ui.statusLabel import statusLabel
+from manuskript.ui.bulkInfoManager import Ui_BulkInfoManager
 
 # Spellcheck support
 from manuskript.ui.views.textEditView import textEditView
@@ -179,6 +181,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # self.loadProject(os.path.join(appPath(), "test_project.zip"))
 
+        # Bulk Character Info Management
+        self.tabsData = self.saveCharacterTabs() # Used for restoring tabsData with loadCharacterTabs() methods.
+        self.isPersoBulkModeEnabled = False # Used in setPersoBulkMode()
+        self.bulkAffectedCharacters = []
+
     def updateDockVisibility(self, restore=False):
         """
         Saves the state of the docks visibility. Or if `restore` is True,
@@ -297,22 +304,90 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     # CHARACTERS
     ###############################################################################
 
+    def setPersoBulkMode(self, enabled: bool):
+        if enabled and not self.isPersoBulkModeEnabled: # Delete all tabs and create the manager one
+            bulkPersoInfoManager = QWidget()
+            bulkPersoInfoManagerUi = Ui_BulkInfoManager()
+            bulkPersoInfoManagerUi.setupUi(bulkPersoInfoManager)
+            bulkPersoInfoManagerUi.tableView.setModel(QStandardItemModel())
+
+            self.tabPersos.clear()
+            self.tabPersos.addTab(bulkPersoInfoManager, "Bulk Info Manager")
+            self.isPersoBulkModeEnabled = True
+            self.refreshAffectedCharacters()
+
+            # Showing the character names on the label
+            labelText = ""
+            for characterName in self.bulkAffectedCharacters:
+                labelText += characterName + ", "
+            bulkPersoInfoManagerUi.lblCharactersDynamic.setText(labelText)
+
+            # Making the connections
+            self.setBulkInfoConnections(bulkPersoInfoManagerUi)
+
+        else:   # Delete manager tab and restore the others
+            if not enabled and self.isPersoBulkModeEnabled:
+                self.tabPersos.clear()
+                self.loadCharacterTabs()
+            self.isPersoBulkModeEnabled = False
+            self.bulkAffectedCharacters.clear()
+
+    def setBulkInfoConnections(self, bulkUi):
+        bulkUi.btnPersoBulkAddInfo.clicked.connect(lambda: self.addBulkInfo(bulkUi))
+
+    def addBulkInfo(self, bulkUi): # Adds an item to the list
+        charInfoDialog = QDialog()
+        charInfoUi = characterInfoDialog.Ui_characterInfoDialog()
+        charInfoUi.setupUi(charInfoDialog)
+
+        if charInfoDialog.exec_() == QDialog.Accepted:
+            # User clicked OK, get the input values
+            description = charInfoUi.descriptionLineEdit.text()
+            value = charInfoUi.valueLineEdit.text()
+
+            # Add a new row to the model with the description and value
+            row = [QStandardItem(description), QStandardItem(value)]
+
+            bulkUi.tableView.model().appendRow(row)
+
+            bulkUi.tableView.update()
+
+    def saveCharacterTabs(self):
+        tabsData = []
+        for i in range(self.tabPersos.count()):
+            tabData = {}
+            widget = self.tabPersos.widget(i)
+            tabData['widget'] = widget
+            tabData['title'] = self.tabPersos.tabText(i)
+            tabsData.append(tabData)
+        return tabsData
+
+    def loadCharacterTabs(self):
+        for tabData in self.tabsData:
+            widget = tabData['widget']
+            title = tabData['title']
+            self.tabPersos.addTab(widget, title)
     def handleCharacterSelectionChanged(self):
         selectedCharacters = self.lstCharacters.currentCharacters()
         characterSelectionIsEmpty = not any(selectedCharacters)
         if characterSelectionIsEmpty:
             self.tabPersos.setEnabled(False)
             return
-        cList = list(filter(None, self.lstCharacters.currentCharacters()))
+        cList = list(filter(None, self.lstCharacters.currentCharacters())) #cList contains all valid characters
         character = cList[0]
         self.changeCurrentCharacter(character)
 
-        # TODO: Transform this check to still enable tabPersos,
-        #  but only the parts that should be editable with multi-selection
         if len(selectedCharacters) > 1:
-            self.tabPersos.setEnabled(False)
-            return
+            self.setPersoBulkMode(True)
+        else:
+            self.setPersoBulkMode(False)
+
         self.tabPersos.setEnabled(True)
+
+    def refreshAffectedCharacters(self): #Characters affected by a potential bulk-info modification
+        for character in self.lstCharacters.currentCharacters():
+            self.bulkAffectedCharacters.append(character.name())
+
 
     def changeCurrentCharacter(self, character, trash=None):
 
