@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'D:\OpensourceWork\manuskript\manuskript\ui\bulkInfoManager.ui'
+# Form implementation generated from reading ui file 'manuskript\ui\bulkInfoManager.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
