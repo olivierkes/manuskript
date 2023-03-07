@@ -2,7 +2,7 @@
 # --!-- coding: utf8 --!--
 from PyQt5.QtCore import QSize, QModelIndex, Qt
 from PyQt5.QtGui import QPixmap, QColor, QIcon, QBrush
-from PyQt5.QtWidgets import QTreeWidget, QTreeWidgetItem, QColorDialog, QDialog
+from PyQt5.QtWidgets import QTreeWidget, QTreeWidgetItem, QColorDialog, QDialog, QMessageBox
 
 from manuskript.enums import Character
 from manuskript.functions import iconColor, mainWindow
@@ -138,15 +138,29 @@ class characterTreeView(QTreeWidget):
 
         self._model.addCharacter(importance=curr_importance)
 
-    def removeCharacter(self):
+    def removeCharacters(self):
         """
-        Removes selected character.
+        Removes selected characters.
         """
-        ID = self.currentCharacterID()
-        if ID is None:
+        IDs = self.currentCharacterIDs()
+
+        # If none of the IDs are valid, do nothing.
+        if not any(IDs):
             return None
-        self._model.removeCharacter(ID)
-        return ID
+
+        #Get confirmation from user
+        confirm = QMessageBox.warning(
+            self, "Delete selected character(s)?",
+            "Are you sure you want to delete the selected character(s)?",
+            QMessageBox.Yes | QMessageBox.No
+        )
+        if confirm != QMessageBox.Yes:
+            return None
+
+        #Delete all selected characters
+        for ID in IDs:
+            self._model.removeCharacter(ID)
+        return IDs
 
     def choseCharacterColor(self):
         ID = self.currentCharacterID()

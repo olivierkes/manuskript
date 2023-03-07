@@ -514,7 +514,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             pass
 
     def deleteCharacter(self):
-        ID = self.lstCharacters.removeCharacter()
+        ID = self.lstCharacters.removeCharacters()
         if ID is None:
             return
         for itemID in self.mdlOutline.findItemsByPOV(ID):
