@@ -367,7 +367,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Get the data from the tableview
         model = bulkUi.tableView.model()
         if model.rowCount() == 0:
-            QMessageBox.warning(self, "No Entries!", "Please information to apply to the selected characters.")
+            QMessageBox.warning(self, "No Entries!", "Please add entries to apply to the selected characters.")
             return
 
         # Loop through each selected character and add the bulk info to them
