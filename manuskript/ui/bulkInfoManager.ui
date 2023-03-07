@@ -2,11 +2,14 @@
 <ui version="4.0">
  <class>BulkInfoManager</class>
  <widget class="QWidget" name="BulkInfoManager">
+  <property name="windowModality">
+   <enum>Qt::WindowModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>533</width>
+    <width>548</width>
     <height>556</height>
    </rect>
   </property>
@@ -30,6 +33,15 @@
    </item>
    <item>
     <widget class="QTableView" name="tableView">
+     <property name="locale">
+      <locale language="English" country="UnitedKingdom"/>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="sizeAdjustPolicy">
+      <enum>QAbstractScrollArea::AdjustToContents</enum>
+     </property>
      <property name="alternatingRowColors">
       <bool>true</bool>
      </property>
@@ -40,8 +52,11 @@
       <enum>Qt::ElideNone</enum>
      </property>
      <property name="cornerButtonEnabled">
-      <bool>true</bool>
+      <bool>false</bool>
      </property>
+     <attribute name="verticalHeaderVisible">
+      <bool>false</bool>
+     </attribute>
     </widget>
    </item>
    <item>
@@ -62,6 +77,9 @@
      </item>
      <item>
       <widget class="QPushButton" name="btnPersoBulkApply">
+       <property name="locale">
+        <locale language="English" country="UnitedKingdom"/>
+       </property>
        <property name="text">
         <string>Apply Changes</string>
        </property>

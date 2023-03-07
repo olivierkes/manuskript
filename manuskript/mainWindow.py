@@ -9,7 +9,7 @@ from PyQt5.QtCore import (pyqtSignal, QSignalMapper, QTimer, QSettings, Qt, QPoi
                           QRegExp, QUrl, QSize, QModelIndex)
 from PyQt5.QtGui import QStandardItemModel, QIcon, QColor, QStandardItem
 from PyQt5.QtWidgets import QMainWindow, QHeaderView, qApp, QMenu, QActionGroup, QAction, QStyle, QListWidgetItem, \
-    QLabel, QDockWidget, QWidget, QMessageBox, QLineEdit, QTextEdit, QTreeView, QDialog
+    QLabel, QDockWidget, QWidget, QMessageBox, QLineEdit, QTextEdit, QTreeView, QDialog, QTableView
 
 from manuskript import settings
 from manuskript.enums import Character, PlotStep, Plot, World, Outline
@@ -182,8 +182,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # self.loadProject(os.path.join(appPath(), "test_project.zip"))
 
         # Bulk Character Info Management
-        self.tabsData = self.saveCharacterTabs() # Used for restoring tabsData with loadCharacterTabs() methods.
-        self.isPersoBulkModeEnabled = False # Used in setPersoBulkMode()
+        self.tabsData = self.saveCharacterTabs()  # Used for restoring tabsData with loadCharacterTabs() methods.
+        self.BulkManageUi = None
         self.bulkAffectedCharacters = []
 
     def updateDockVisibility(self, restore=False):
@@ -305,35 +305,60 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     ###############################################################################
 
     def setPersoBulkMode(self, enabled: bool):
-        if enabled and not self.isPersoBulkModeEnabled: # Delete all tabs and create the manager one
+        if enabled and self.BulkManageUi is None: # Delete all tabs and create the manager one
+            # Create the widget
             bulkPersoInfoManager = QWidget()
             bulkPersoInfoManagerUi = Ui_BulkInfoManager()
             bulkPersoInfoManagerUi.setupUi(bulkPersoInfoManager)
-            bulkPersoInfoManagerUi.tableView.setModel(QStandardItemModel())
+
+            self.BulkManageUi = bulkPersoInfoManagerUi  # for global use
+
+            model = QStandardItemModel()
+
+            # Set the column headers
+            model.setColumnCount(2)
+            model.setHorizontalHeaderLabels(["Name", "Value"])
+
+            # Set the width
+            bulkPersoInfoManagerUi.tableView.horizontalHeader().setStretchLastSection(True)
+            bulkPersoInfoManagerUi.tableView.horizontalHeader().setMinimumSectionSize(20)
+            bulkPersoInfoManagerUi.tableView.horizontalHeader().setMaximumSectionSize(500)
+
+            bulkPersoInfoManagerUi.tableView.setModel(model)  # Set the model of tableView
+
 
             self.tabPersos.clear()
             self.tabPersos.addTab(bulkPersoInfoManager, "Bulk Info Manager")
             self.isPersoBulkModeEnabled = True
-            self.refreshAffectedCharacters()
+            self.refreshBulkAffectedCharacters()
 
             # Showing the character names on the label
             labelText = ""
             for characterName in self.bulkAffectedCharacters:
-                labelText += characterName + ", "
+                labelText += characterName + " ; "
             bulkPersoInfoManagerUi.lblCharactersDynamic.setText(labelText)
 
             # Making the connections
             self.setBulkInfoConnections(bulkPersoInfoManagerUi)
 
-        else:   # Delete manager tab and restore the others
-            if not enabled and self.isPersoBulkModeEnabled:
+        elif enabled and self.BulkManageUi is not None:  # If yet another character is selected, refresh the label
+            labelText = ""
+            self.refreshBulkAffectedCharacters()
+            for characterName in self.bulkAffectedCharacters:
+                labelText += characterName + " ; "
+            self.BulkManageUi.lblCharactersDynamic.setText(labelText)
+
+        else:  # Delete manager tab and restore the others
+            if self.BulkManageUi is not None:
                 self.tabPersos.clear()
                 self.loadCharacterTabs()
-            self.isPersoBulkModeEnabled = False
+            self.BulkManageUi = None
             self.bulkAffectedCharacters.clear()
 
     def setBulkInfoConnections(self, bulkUi):
+        # A lambda has to be used to pass in the argument
         bulkUi.btnPersoBulkAddInfo.clicked.connect(lambda: self.addBulkInfo(bulkUi))
+        bulkUi.btnPersoBulkRmInfo.clicked.connect(lambda: self.removeBulkInfo(bulkUi))
 
     def addBulkInfo(self, bulkUi): # Adds an item to the list
         charInfoDialog = QDialog()
@@ -351,6 +376,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             bulkUi.tableView.model().appendRow(row)
 
             bulkUi.tableView.update()
+    def removeBulkInfo(self, bulkUi):
+        # Get the selected rows
+        selection = bulkUi.tableView.selectionModel().selectedRows()
+
+        # Iterate over the rows and remove them
+        for index in reversed(selection):
+            bulkUi.tableView.model().removeRow(index.row())
 
     def saveCharacterTabs(self):
         tabsData = []
@@ -384,7 +416,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.tabPersos.setEnabled(True)
 
-    def refreshAffectedCharacters(self): #Characters affected by a potential bulk-info modification
+    def refreshBulkAffectedCharacters(self): #Characters affected by a potential bulk-info modification
+        self.bulkAffectedCharacters = []
         for character in self.lstCharacters.currentCharacters():
             self.bulkAffectedCharacters.append(character.name())
 
