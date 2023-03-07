@@ -339,7 +339,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             bulkPersoInfoManagerUi.lblCharactersDynamic.setText(labelText)
 
             # Making the connections
-            self.setBulkInfoConnections(bulkPersoInfoManagerUi)
+            self.makeBulkInfoConnections(bulkPersoInfoManagerUi)
 
         elif enabled and self.BulkManageUi is not None:  # If yet another character is selected, refresh the label
             labelText = ""
@@ -355,10 +355,32 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.BulkManageUi = None
             self.bulkAffectedCharacters.clear()
 
-    def setBulkInfoConnections(self, bulkUi):
+    def makeBulkInfoConnections(self, bulkUi):
         # A lambda has to be used to pass in the argument
         bulkUi.btnPersoBulkAddInfo.clicked.connect(lambda: self.addBulkInfo(bulkUi))
         bulkUi.btnPersoBulkRmInfo.clicked.connect(lambda: self.removeBulkInfo(bulkUi))
+        bulkUi.btnPersoBulkApply.clicked.connect(lambda: self.applyBulkInfo(bulkUi))
+
+    def applyBulkInfo(self, bulkUi):
+        selectedItems = self.lstCharacters.currentCharacterIDs()
+
+        # Get the data from the tableview
+        model = bulkUi.tableView.model()
+        if model.rowCount() == 0:
+            QMessageBox.warning(self, "No Entries!", "Please information to apply to the selected characters.")
+            return
+
+        # Loop through each selected character and add the bulk info to them
+        for ID in selectedItems:
+            for row in range(model.rowCount()):
+                description = model.item(row, 0).text()
+                value = model.item(row, 1).text()
+                self.lstCharacters._model.addCharacterInfo(ID, description, value)
+
+        QMessageBox.information(self, "Bulk Info Applied", "The bulk info has been applied to the selected characters.")
+
+        #Remove all rows from the table
+        model.removeRows(0, model.rowCount())
 
     def addBulkInfo(self, bulkUi): # Adds an item to the list
         charInfoDialog = QDialog()
@@ -380,9 +402,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Get the selected rows
         selection = bulkUi.tableView.selectionModel().selectedRows()
 
-        # Iterate over the rows and remove them
+        # Iterate over the rows and remove them (reversed, so the iteration is not affected)
         for index in reversed(selection):
             bulkUi.tableView.model().removeRow(index.row())
+
+
 
     def saveCharacterTabs(self):
         tabsData = []

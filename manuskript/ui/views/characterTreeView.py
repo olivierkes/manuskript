@@ -182,9 +182,8 @@ class characterTreeView(QTreeWidget):
             value = charInfoUi.valueLineEdit.text()
 
             # Add the character info with the input values
-            IDs = self.currentCharacterIDs()
-            for ID in IDs:
-                self._model.addCharacterInfo(ID, description, value)
+            ID = self.currentCharacterID()
+            self._model.addCharacterInfo(ID, description, value)
 
 
 
