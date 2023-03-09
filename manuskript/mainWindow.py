@@ -333,19 +333,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.refreshBulkAffectedCharacters()
 
             # Showing the character names on the label
-            labelText = ""
-            for characterName in self.bulkAffectedCharacters:
-                labelText += characterName + " ; "
+            labelText = self.createCharacterSelectionString()
             bulkPersoInfoManagerUi.lblCharactersDynamic.setText(labelText)
 
             # Making the connections
             self.makeBulkInfoConnections(bulkPersoInfoManagerUi)
 
         elif enabled and self.BulkManageUi is not None:  # If yet another character is selected, refresh the label
-            labelText = ""
-            self.refreshBulkAffectedCharacters()
-            for characterName in self.bulkAffectedCharacters:
-                labelText += characterName + " ; "
+            labelText = self.createCharacterSelectionString()
             self.BulkManageUi.lblCharactersDynamic.setText(labelText)
 
         else:  # Delete manager tab and restore the others
@@ -354,6 +349,17 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 self.loadCharacterTabs()
             self.BulkManageUi = None
             self.bulkAffectedCharacters.clear()
+
+    def createCharacterSelectionString(self):
+        self.refreshBulkAffectedCharacters()
+        labelText = ""
+        length = len(self.bulkAffectedCharacters)
+        for i in range(length-1):
+            labelText += '"' + self.bulkAffectedCharacters[i] + '"' + ", "
+
+        labelText += '"' + self.bulkAffectedCharacters[length-1] + '"'
+
+        return labelText
 
     def makeBulkInfoConnections(self, bulkUi):
         # A lambda has to be used to pass in the argument
@@ -436,8 +442,22 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if len(selectedCharacters) > 1:
             self.setPersoBulkMode(True)
         else:
-            self.setPersoBulkMode(False)
+            if self.BulkManageUi is not None:
+                self.refreshBulkAffectedCharacters()
+                self.BulkManageUi.lblCharactersDynamic.setText( self.createCharacterSelectionString() )
 
+                tableview_model = self.BulkManageUi.tableView.model()
+                if tableview_model.rowCount() > 0:
+                    confirm = QMessageBox.warning(
+                        self, "Un-applied data!",
+                        "There are un-applied entries in this tab. Discard them?",
+                        QMessageBox.Yes | QMessageBox.No,
+                        defaultButton = QMessageBox.No
+                    )
+                    if confirm != QMessageBox.Yes:
+                        return
+
+            self.setPersoBulkMode(False)
         self.tabPersos.setEnabled(True)
 
     def refreshBulkAffectedCharacters(self): #Characters affected by a potential bulk-info modification
