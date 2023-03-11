@@ -479,7 +479,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1511"/>
         <source>Cheat Sheet</source>
-        <translation>&amp;Cábula</translation>
+        <translation>Cábula</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1513"/>
