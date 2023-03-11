@@ -112,7 +112,7 @@
     <message>
         <location filename="../manuskript/ui/listDialog_ui.py" line="44"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekst</translation>
     </message>
 </context>
 <context>
@@ -120,12 +120,12 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="619"/>
         <source>The image path or URL is incomplete or malformed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Het afbeeldingspad of URL is incompleet of verkeerd.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="631"/>
         <source>The protocol &quot;{}&quot; is not supported.</source>
-        <translation type="unfinished"></translation>
+        <translation>Het protocol &quot;{}&quot; wordt niet ondersteund.</translation>
     </message>
 </context>
 <context>
@@ -141,7 +141,7 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="543"/>
         <source>{} (CTRL+Click to open)</source>
-        <translation type="unfinished"></translation>
+        <translation>{} (CTRL+Klik om te openen)</translation>
     </message>
 </context>
 <context>
@@ -449,7 +449,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1511"/>
         <source>Cheat Sheet</source>
-        <translation type="unfinished">&amp;Spiekblad</translation>
+        <translation>Spiekblad</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1513"/>
@@ -619,7 +619,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1253"/>
         <source> (~{} pages)</source>
-        <translation> (~{} pagina's)</translation>
+        <translation> (~{} pagina&apos;s)</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1256"/>
@@ -655,8 +655,8 @@
         <location filename="../manuskript/mainWindow.py" line="1335"/>
         <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous
                      evil wizard wasn&apos;t able to kill a baby?&apos; (Harry Potter)</source>
-        <translation>De basissituatie, in de vorm van een 'Wat als...?' vraag. B.v.: 'Wat als de gevaarlijkste, slechtste tovenaar
-                     niet in staat zou zijn een baby te doden?' (Harry Potter)</translation>
+        <translation>De basissituatie, in de vorm van een &apos;Wat als...?&apos; vraag. B.v.: &apos;Wat als de gevaarlijkste, slechtste tovenaar
+                     niet in staat zou zijn een baby te doden?&apos; (Harry Potter)</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1340"/>
@@ -1238,17 +1238,17 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1599"/>
         <source>&amp;Targets</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Doelen</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1600"/>
         <source>Draft and session word count targets</source>
-        <translation type="unfinished"></translation>
+        <translation>Concept- en sessie woordentellingsdoelen</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.ui" line="2732"/>
         <source>Ctrl+,</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+,</translation>
     </message>
 </context>
 <context>
@@ -1589,7 +1589,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2065"/>
         <source>Paragraphs</source>
-        <translation>Alinea's</translation>
+        <translation>Alinea&apos;s</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2137"/>
@@ -1939,7 +1939,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1942"/>
         <source>&lt;p&gt;&lt;b&gt;The Revisions feature has been at the source of many reported issues. In this version of Manuskript it has been turned off by default for new projects in order to provide the best experience.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Why aren&apos;t these issues fixed already? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;We need your help to make Manuskript better!&lt;/a&gt;&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;De optie 'Revisies' heeft tot veel meldingen van problemen geleid. In deze versie van Manuskript is deze optie standaard uitgeschakeld voor nieuwe projecten, om de beste ervaring te leveren.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Waarom zijn deze problemen nog niet opgelost?&lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;We hebben jouw hulp nodig om Manuskript te maken!&lt;/a&gt;&lt;/p&gt;</translation>
+        <translation>&lt;p&gt;&lt;b&gt;De optie &apos;Revisies&apos; heeft tot veel meldingen van problemen geleid. In deze versie van Manuskript is deze optie standaard uitgeschakeld voor nieuwe projecten, om de beste ervaring te leveren.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Waarom zijn deze problemen nog niet opgelost?&lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;We hebben jouw hulp nodig om Manuskript te maken!&lt;/a&gt;&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1919"/>
@@ -2276,22 +2276,22 @@
     <message>
         <location filename="../manuskript/load_save/version_1.py" line="435"/>
         <source>Files not saved</source>
-        <translation type="unfinished"></translation>
+        <translation>Bestanden niet opgeslagen</translation>
     </message>
     <message>
         <location filename="../manuskript/load_save/version_1.py" line="436"/>
         <source>The following files were not saved and appear to be open in another program</source>
-        <translation type="unfinished"></translation>
+        <translation>De volgende bestanden zijn niet opgeslagen en lijken geopend te zijn door een ander programma</translation>
     </message>
     <message>
         <location filename="../manuskript/load_save/version_1.py" line="925"/>
         <source>Files not loaded</source>
-        <translation type="unfinished"></translation>
+        <translation>Bestanden niet geladen</translation>
     </message>
     <message>
         <location filename="../manuskript/load_save/version_1.py" line="926"/>
         <source>The following files were not loaded and appear to be open in another program</source>
-        <translation type="unfinished"></translation>
+        <translation>De volgende bestanden zijn niet geladen en lijken geopend te zijn door een ander programma</translation>
     </message>
 </context>
 <context>
@@ -2458,7 +2458,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>Vervang enkele aanhalingstekens (') met:</translation>
+        <translation>Vervang enkele aanhalingstekens (&apos;) met:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>
@@ -3402,27 +3402,27 @@
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="31"/>
         <source>Case sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>Hoofdlettergevoelig</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="32"/>
         <source>Match words</source>
-        <translation type="unfinished"></translation>
+        <translation>Match woorden</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="33"/>
         <source>Regex</source>
-        <translation type="unfinished"></translation>
+        <translation>Regex</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="39"/>
         <source>Search in:</source>
-        <translation type="unfinished"></translation>
+        <translation>Zoeken in:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="51"/>
         <source>Options:</source>
-        <translation type="unfinished"></translation>
+        <translation>Opties:</translation>
     </message>
 </context>
 <context>
@@ -3546,7 +3546,7 @@
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="47"/>
         <source>Split &apos;{}&apos;</source>
-        <translation>Splits '{}'</translation>
+        <translation>Splits &apos;{}&apos;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="51"/>
@@ -3600,47 +3600,47 @@
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="128"/>
         <source>Project Targets</source>
-        <translation type="unfinished"></translation>
+        <translation>Project Doelen</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="129"/>
         <source>Draft Target</source>
-        <translation type="unfinished"></translation>
+        <translation>Concept Doel</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="136"/>
         <source>0</source>
-        <translation type="unfinished"></translation>
+        <translation>0</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="137"/>
         <source>of</source>
-        <translation type="unfinished"></translation>
+        <translation>van</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="132"/>
         <source>10,000</source>
-        <translation type="unfinished"></translation>
+        <translation>10.000</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="133"/>
         <source>Words</source>
-        <translation type="unfinished"></translation>
+        <translation>Woorden</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="134"/>
         <source>Session Target</source>
-        <translation type="unfinished"></translation>
+        <translation>Sessie Doel</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="135"/>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Reset</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="138"/>
         <source>words</source>
-        <translation type="unfinished"></translation>
+        <translation>woorden</translation>
     </message>
 </context>
 <context>
@@ -3897,7 +3897,7 @@
     <message>
         <location filename="../manuskript/ui/welcome.py" line="384"/>
         <source>&lt;b&gt;Total:&lt;/b&gt; {} words (~ {} pages)</source>
-        <translation>&lt;b&gt;Totaal:&lt;/b&gt; {} woorden (~ {} pagina's)</translation>
+        <translation>&lt;b&gt;Totaal:&lt;/b&gt; {} woorden (~ {} pagina&apos;s)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="405"/>
