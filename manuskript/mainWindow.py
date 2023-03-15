@@ -185,6 +185,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.tabsData = self.saveCharacterTabs()  # Used for restoring tabsData with loadCharacterTabs() methods.
         self.BulkManageUi = None
         self.bulkAffectedCharacters = []
+        self.isPersoBulkModeEnabled = False
 
     def updateDockVisibility(self, restore=False):
         """
@@ -317,18 +318,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
             # Set the column headers
             model.setColumnCount(2)
-            model.setHorizontalHeaderLabels(["Name", "Value"])
+            model.setHorizontalHeaderLabels([self.tr("Name"), self.tr("Value")])
 
             # Set the width
-            bulkPersoInfoManagerUi.tableView.horizontalHeader().setStretchLastSection(True)
-            bulkPersoInfoManagerUi.tableView.horizontalHeader().setMinimumSectionSize(20)
-            bulkPersoInfoManagerUi.tableView.horizontalHeader().setMaximumSectionSize(500)
+            self.updatePersoInfoView(bulkPersoInfoManagerUi.tableView)
 
             bulkPersoInfoManagerUi.tableView.setModel(model)  # Set the model of tableView
 
-
             self.tabPersos.clear()
-            self.tabPersos.addTab(bulkPersoInfoManager, "Bulk Info Manager")
+            self.tabPersos.addTab(bulkPersoInfoManager, self.tr("Bulk Info Manager"))
             self.isPersoBulkModeEnabled = True
             self.refreshBulkAffectedCharacters()
 
@@ -373,7 +371,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Get the data from the tableview
         model = bulkUi.tableView.model()
         if model.rowCount() == 0:
-            QMessageBox.warning(self, "No Entries!", "Please add entries to apply to the selected characters.")
+            QMessageBox.warning(self, self.tr("No Entries!"),
+                                self.tr("Please add entries to apply to the selected characters."))
             return
 
         # Loop through each selected character and add the bulk info to them
@@ -383,9 +382,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 value = model.item(row, 1).text()
                 self.lstCharacters._model.addCharacterInfo(ID, description, value)
 
-        QMessageBox.information(self, "Bulk Info Applied", "The bulk info has been applied to the selected characters.")
+        QMessageBox.information(self, self.tr("Bulk Info Applied"),
+                                self.tr("The bulk info has been applied to the selected characters."))
 
-        #Remove all rows from the table
+        # Remove all rows from the table
         model.removeRows(0, model.rowCount())
 
     def addBulkInfo(self, bulkUi): # Adds an item to the list
@@ -404,6 +404,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             bulkUi.tableView.model().appendRow(row)
 
             bulkUi.tableView.update()
+
     def removeBulkInfo(self, bulkUi):
         # Get the selected rows
         selection = bulkUi.tableView.selectionModel().selectedRows()
@@ -411,8 +412,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Iterate over the rows and remove them (reversed, so the iteration is not affected)
         for index in reversed(selection):
             bulkUi.tableView.model().removeRow(index.row())
-
-
 
     def saveCharacterTabs(self):
         tabsData = []
@@ -465,9 +464,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         for character in self.lstCharacters.currentCharacters():
             self.bulkAffectedCharacters.append(character.name())
 
-
     def changeCurrentCharacter(self, character, trash=None):
-
         if character is None:
             return
 
@@ -500,13 +497,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.tblPersoInfos.setRootIndex(index)
 
         if self.mdlCharacter.rowCount(index):
-            self.updatePersoInfoView()
+            self.updatePersoInfoView(self.tblPersoInfos)
 
-
-    def updatePersoInfoView(self):
-        self.tblPersoInfos.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeToContents)
-        self.tblPersoInfos.horizontalHeader().setSectionResizeMode(1, QHeaderView.Stretch)
-        self.tblPersoInfos.verticalHeader().hide()
+    def updatePersoInfoView(self, infoView):
+        infoView.horizontalHeader().setStretchLastSection(True)
+        infoView.horizontalHeader().setMinimumSectionSize(20)
+        infoView.horizontalHeader().setMaximumSectionSize(500)
+        infoView.verticalHeader().hide()
 
     def updateCharacterColor(self, ID):
         c = self.mdlCharacter.getCharacterByID(ID)
@@ -1120,6 +1117,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             widget.setCurrentModelIndex(self.mdlFlatData.index(0, col))
 
         # Characters
+        self.updatePersoInfoView(self.tblPersoInfos)
         self.lstCharacters.setCharactersModel(self.mdlCharacter)
         self.tblPersoInfos.setModel(self.mdlCharacter)
         try:
