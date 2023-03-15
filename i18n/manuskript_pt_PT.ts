@@ -249,7 +249,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1495"/>
         <source>Expand each sentence of your one paragraph summary to a paragraph</source>
-        <translation>Expanda cada frase da sua sinopse num parágrafo para um parágrafo</translation>
+        <translation>Expanda cada frase do parágrafo para um parágrafo completo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1496"/>
@@ -479,7 +479,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1562"/>
         <source>Cheat Sheet</source>
-        <translation>&amp;Cábula</translation>
+        <translation>Cábula</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1564"/>
@@ -2303,7 +2303,7 @@ junto a palavras</translation>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>Substituir aspas simples (') por:</translation>
+        <translation>Substituir aspas simples (&apos;) por:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>
