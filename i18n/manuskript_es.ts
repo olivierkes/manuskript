@@ -1063,32 +1063,32 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="321"/>
         <source>Value</source>
-        <translation type="unfinished">Valor</translation>
+        <translation>Valor</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="329"/>
         <source>Bulk Info Manager</source>
-        <translation type="unfinished"></translation>
+        <translation>Gestor de información masiva</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="374"/>
         <source>No Entries!</source>
-        <translation type="unfinished"></translation>
+        <translation>¡No hay entradas!</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="374"/>
         <source>Please add entries to apply to the selected characters.</source>
-        <translation type="unfinished"></translation>
+        <translation>Por favor, añada entradas para aplicar a los personajes seleccionados.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="385"/>
         <source>Bulk Info Applied</source>
-        <translation type="unfinished"></translation>
+        <translation>Información masiva aplicada</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="385"/>
         <source>The bulk info has been applied to the selected characters.</source>
-        <translation type="unfinished"></translation>
+        <translation>La información masiva se ha aplicado a los caracteres seleccionados.</translation>
     </message>
 </context>
 <context>
@@ -2293,7 +2293,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>Reemplazar comillas simples (') con:</translation>
+        <translation>Reemplazar comillas simples (&apos;) con:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>
@@ -3381,7 +3381,7 @@
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="47"/>
         <source>Split &apos;{}&apos;</source>
-        <translation>Dividir '{}'</translation>
+        <translation>Dividir &apos;{}&apos;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="51"/>
