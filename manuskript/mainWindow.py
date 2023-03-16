@@ -459,7 +459,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.setPersoBulkMode(False)
         self.tabPersos.setEnabled(True)
 
-    def refreshBulkAffectedCharacters(self): #Characters affected by a potential bulk-info modification
+    def refreshBulkAffectedCharacters(self): # Characters affected by a potential bulk-info modification
         self.bulkAffectedCharacters = []
         for character in self.lstCharacters.currentCharacters():
             self.bulkAffectedCharacters.append(character.name())

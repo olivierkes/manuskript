@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'manuskript\ui\bulkInfoManager.ui'
+# Form implementation generated from reading ui file 'manuskript\manuskript\ui\bulkInfoManager.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
@@ -15,7 +15,7 @@ class Ui_BulkInfoManager(object):
     def setupUi(self, BulkInfoManager):
         BulkInfoManager.setObjectName("BulkInfoManager")
         BulkInfoManager.setWindowModality(QtCore.Qt.WindowModal)
-        BulkInfoManager.resize(548, 556)
+        BulkInfoManager.resize(644, 556)
         self.verticalLayout = QtWidgets.QVBoxLayout(BulkInfoManager)
         self.verticalLayout.setObjectName("verticalLayout")
         self.lblStaticMessage = QtWidgets.QLabel(BulkInfoManager)
@@ -38,15 +38,27 @@ class Ui_BulkInfoManager(object):
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.btnPersoBulkAddInfo = QtWidgets.QPushButton(BulkInfoManager)
+        self.btnPersoBulkAddInfo.setText("")
+        icon = QtGui.QIcon.fromTheme("list-add")
+        self.btnPersoBulkAddInfo.setIcon(icon)
         self.btnPersoBulkAddInfo.setObjectName("btnPersoBulkAddInfo")
         self.horizontalLayout.addWidget(self.btnPersoBulkAddInfo)
         self.btnPersoBulkRmInfo = QtWidgets.QPushButton(BulkInfoManager)
+        self.btnPersoBulkRmInfo.setText("")
+        icon = QtGui.QIcon.fromTheme("list-remove")
+        self.btnPersoBulkRmInfo.setIcon(icon)
         self.btnPersoBulkRmInfo.setObjectName("btnPersoBulkRmInfo")
         self.horizontalLayout.addWidget(self.btnPersoBulkRmInfo)
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem)
         self.btnPersoBulkApply = QtWidgets.QPushButton(BulkInfoManager)
         self.btnPersoBulkApply.setLocale(QtCore.QLocale(QtCore.QLocale.English, QtCore.QLocale.UnitedKingdom))
         self.btnPersoBulkApply.setObjectName("btnPersoBulkApply")
         self.horizontalLayout.addWidget(self.btnPersoBulkApply)
+        self.horizontalLayout.setStretch(0, 1)
+        self.horizontalLayout.setStretch(1, 1)
+        self.horizontalLayout.setStretch(2, 5)
+        self.horizontalLayout.setStretch(3, 1)
         self.verticalLayout.addLayout(self.horizontalLayout)
 
         self.retranslateUi(BulkInfoManager)
@@ -57,8 +69,9 @@ class Ui_BulkInfoManager(object):
         BulkInfoManager.setWindowTitle(_translate("BulkInfoManager", "Form"))
         self.lblStaticMessage.setText(_translate("BulkInfoManager", "Affected Characters:"))
         self.lblCharactersDynamic.setText(_translate("BulkInfoManager", "NONE"))
-        self.btnPersoBulkAddInfo.setText(_translate("BulkInfoManager", "Add Entry"))
-        self.btnPersoBulkRmInfo.setText(_translate("BulkInfoManager", "Remove Entry"))
+        self.btnPersoBulkAddInfo.setToolTip(_translate("BulkInfoManager", "Add entry to the list."))
+        self.btnPersoBulkRmInfo.setToolTip(_translate("BulkInfoManager", "Remove entry from the list."))
+        self.btnPersoBulkApply.setToolTip(_translate("BulkInfoManager", "Adds all items to the selected characters."))
         self.btnPersoBulkApply.setText(_translate("BulkInfoManager", "Apply Changes"))
 
 
