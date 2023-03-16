@@ -448,8 +448,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 tableview_model = self.BulkManageUi.tableView.model()
                 if tableview_model.rowCount() > 0:
                     confirm = QMessageBox.warning(
-                        self, "Un-applied data!",
-                        "There are un-applied entries in this tab. Discard them?",
+                        self, self.tr("Un-applied data!"),
+                        self.tr("There are un-applied entries in this tab. Discard them?"),
                         QMessageBox.Yes | QMessageBox.No,
                         defaultButton = QMessageBox.No
                     )
