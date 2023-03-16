@@ -84,6 +84,7 @@ class CharactersView:
         self.newTemplateEntryBuffer = builder.get_object("new_template_entry_buffer")
         self.charecterDetailsMenuAppendBox = builder.get_object("template_select_box")
         self.charecterDetailsMenuTemplateBox = builder.get_object("template_select_box2")
+        self.characterDetaisMenuDeleteBox = builder.get_object("delete_select_box")
         self.detailsNameRenderer = builder.get_object("details_name")
         self.detailsValueRenderer = builder.get_object("details_value")
 
@@ -339,6 +340,7 @@ class CharactersView:
                 container.remove(d)
         clear_container( self.charecterDetailsMenuAppendBox)
         clear_container(self.charecterDetailsMenuTemplateBox)
+        clear_container(self.characterDetaisMenuDeleteBox)
         for x in self.characterTemplates.templates:
             button = Gtk.Button(label=x,) # TODO: turn into ModelButton
             button.connect("clicked", self._appendTemplateClicked, x)
@@ -347,10 +349,19 @@ class CharactersView:
             button2 = Gtk.Button(label=x,) # TODO: turn into ModelButton
             button2.connect("clicked", self._updateTemplateClicked, x)
             self.charecterDetailsMenuTemplateBox.add(button2)
+            # now we do delete templates
+            box = Gtk.Box()
+            label = Gtk.Label(label=x)
+            box.pack_start(label, False, False, 0)
+            button3 = Gtk.Button(label='delete') # TODO: Make this red
+            button3.connect("clicked", self._deleteTemplateClicked, x)
+            box.pack_start(button3, False, False, 0)
+            self.characterDetaisMenuDeleteBox.add(box)
 
         self.charecterDetailsMenuAppendBox.show_all()
         self.charecterDetailsMenuTemplateBox.show_all()
-
+        self.characterDetaisMenuDeleteBox.show_all()
+        
     def _onCharecterDetailsMenuClicked(self, button: Gtk.MenuButton):
         self._updateCharecterDetailsMenu()
         
@@ -358,6 +369,10 @@ class CharactersView:
         if self.character is None:
             return
         self.characterTemplates.templates[template] = self.character.details  # TODO: Add A warning? Or should there be undo/ redo when revisions are written.
+
+    def _deleteTemplateClicked(self, button: Gtk.ModelButton, template):
+        del self.characterTemplates.templates[template]
+        self._updateCharecterDetailsMenu()
 
     def _appendTemplateClicked(self, button: Gtk.ModelButton, template):
         if self.character is None:
