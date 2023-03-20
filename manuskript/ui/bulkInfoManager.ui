@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>548</width>
+    <width>644</width>
     <height>556</height>
    </rect>
   </property>
@@ -60,23 +60,53 @@
     </widget>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout">
+    <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,1,5,1">
      <item>
       <widget class="QPushButton" name="btnPersoBulkAddInfo">
+       <property name="toolTip">
+        <string>Add entry to the list.</string>
+       </property>
        <property name="text">
-        <string>Add Entry</string>
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset theme="list-add">
+         <normaloff>.</normaloff>.</iconset>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="btnPersoBulkRmInfo">
+       <property name="toolTip">
+        <string>Remove entry from the list.</string>
+       </property>
        <property name="text">
-        <string>Remove Entry</string>
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset theme="list-remove">
+         <normaloff>.</normaloff>.</iconset>
        </property>
       </widget>
      </item>
      <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
       <widget class="QPushButton" name="btnPersoBulkApply">
+       <property name="toolTip">
+        <string>Adds all items to the selected characters.</string>
+       </property>
        <property name="locale">
         <locale language="English" country="UnitedKingdom"/>
        </property>

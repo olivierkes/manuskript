@@ -448,8 +448,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 tableview_model = self.BulkManageUi.tableView.model()
                 if tableview_model.rowCount() > 0:
                     confirm = QMessageBox.warning(
-                        self, "Un-applied data!",
-                        "There are un-applied entries in this tab. Discard them?",
+                        self, self.tr("Un-applied data!"),
+                        self.tr("There are un-applied entries in this tab. Discard them?"),
                         QMessageBox.Yes | QMessageBox.No,
                         defaultButton = QMessageBox.No
                     )
@@ -459,7 +459,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.setPersoBulkMode(False)
         self.tabPersos.setEnabled(True)
 
-    def refreshBulkAffectedCharacters(self): #Characters affected by a potential bulk-info modification
+    def refreshBulkAffectedCharacters(self): # Characters affected by a potential bulk-info modification
         self.bulkAffectedCharacters = []
         for character in self.lstCharacters.currentCharacters():
             self.bulkAffectedCharacters.append(character.name())
