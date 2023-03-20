@@ -1090,6 +1090,16 @@
         <source>The bulk info has been applied to the selected characters.</source>
         <translation>La información masiva se ha aplicado a los caracteres seleccionados.</translation>
     </message>
+    <message>
+        <location filename="../manuskript/mainWindow.py" line="450"/>
+        <source>Un-applied data!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/mainWindow.py" line="450"/>
+        <source>There are un-applied entries in this tab. Discard them?</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Search</name>
@@ -2293,7 +2303,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>Reemplazar comillas simples (&apos;) con:</translation>
+        <translation>Reemplazar comillas simples (') con:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>
@@ -3381,7 +3391,7 @@
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="47"/>
         <source>Split &apos;{}&apos;</source>
-        <translation>Dividir &apos;{}&apos;</translation>
+        <translation>Dividir '{}'</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="51"/>

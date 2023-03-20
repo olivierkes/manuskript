@@ -1090,6 +1090,16 @@
         <source>The bulk info has been applied to the selected characters.</source>
         <translation>A informação em lote foi aplicada aos personagens seleccionados.</translation>
     </message>
+    <message>
+        <location filename="../manuskript/mainWindow.py" line="450"/>
+        <source>Un-applied data!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/mainWindow.py" line="450"/>
+        <source>There are un-applied entries in this tab. Discard them?</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Search</name>
@@ -2303,7 +2313,7 @@ junto a palavras</translation>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>Substituir aspas simples (&apos;) por:</translation>
+        <translation>Substituir aspas simples (') por:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>
