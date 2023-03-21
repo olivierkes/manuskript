@@ -188,6 +188,7 @@ class StartupWindow(AbstractDialog):
             return
 
         project = Project(path)
+        # TODO: apply project template!
         project.save()
 
         self.mainWindow.openProject(path)

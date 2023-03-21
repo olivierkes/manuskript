@@ -94,8 +94,8 @@ class OutlineItem(AbstractData):
         metadata["summaryFull"] = item.summaryFull
         metadata["POV"] = item.POV
         metadata["notes"] = item.notes
-        metadata["label"] = None if item is None else item.label.ID
-        metadata["status"] = None if item is None else item.status.ID
+        metadata["label"] = None if item.label is None else item.label.ID
+        metadata["status"] = None if item.status is None else item.status.ID
         metadata["compile"] = item.compile
         metadata["setGoal"] = item.goal
 
