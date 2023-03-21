@@ -10,13 +10,13 @@ from gi.repository import GObject, Gtk
 
 class FileFilter:
 
-    def __init__(self, name: str, pattern: str):
+    def __init__(self, name: str, extension: str = ""):
         self.name = name
-        self.pattern = pattern
+        self.extension = extension
 
     def addToChooser(self, chooser: Gtk.FileChooser):
         fileFilter = Gtk.FileFilter()
         fileFilter.set_name(self.name)
-        fileFilter.add_pattern(self.pattern)
+        fileFilter.add_pattern("*.{}".format(self.extension) if len(self.extension) > 0 else "*")
 
         chooser.add_filter(fileFilter)

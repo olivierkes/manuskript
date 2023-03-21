@@ -126,7 +126,7 @@ class MainWindow:
         self.startupWindow.show()
 
     def _openAction(self, menuItem: Gtk.MenuItem):
-        path = openFileDialog(self.window, FileFilter("Manuskript project", "*.msk"))
+        path = openFileDialog(self.window, FileFilter("Manuskript project", "msk"))
         if path is None:
             return
 

@@ -317,6 +317,10 @@ class Outline(AbstractData):
 
         AbstractData.load(self)
 
+        if not os.path.isdir(self.dataPath):
+            self.complete(False)
+            return
+
         names = os.listdir(self.dataPath)
         names.sort()
 

@@ -17,7 +17,7 @@ class MskFile(TextFile, ZipFile):
         try:
             _ZipFile(path)
             directoryPath = None
-        except BadZipFile:
+        except (BadZipFile, FileNotFoundError):
             directoryPath = os.path.splitext(path)[0]
 
             if not os.path.isdir(directoryPath):
@@ -47,7 +47,8 @@ class MskFile(TextFile, ZipFile):
             if not os.path.isdir(self.directoryPath):
                 os.mkdir(self.directoryPath)
 
-            ZipFile.load(self)
+            if os.path.exists(self.path):
+                ZipFile.load(self)
 
         self.zipFile = zipFile
 

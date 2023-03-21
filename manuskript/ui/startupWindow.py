@@ -6,11 +6,11 @@ import gi
 gi.require_version("Gtk", "3.0")
 from gi.repository import GObject, Gtk, Handy
 
-from manuskript.data import Template, TemplateKind
+from manuskript.data import Project, Template, TemplateKind
 from manuskript.util import validInt, validString, parseFilenameFromURL
 
 from manuskript.ui.abstractDialog import AbstractDialog
-from manuskript.ui.chooser import openFileDialog, FileFilter
+from manuskript.ui.chooser import openFileDialog, saveFileDialog, FileFilter
 from manuskript.ui.startup import TemplateEntry
 from manuskript.ui.util import bindMenuItem
 
@@ -116,6 +116,7 @@ class StartupWindow(AbstractDialog):
         self.createButton = builder.get_object("create_button")
 
         self.openButton.connect("clicked", self._openClicked)
+        self.createButton.connect("clicked", self._createClicked)
 
     def loadTemplate(self, template: Template):
         self.template = template
@@ -172,7 +173,7 @@ class StartupWindow(AbstractDialog):
         self.loadTemplate(self.template)
 
     def openProject(self):
-        path = openFileDialog(self.window, FileFilter("Manuskript project", "*.msk"))
+        path = openFileDialog(self.window, FileFilter("Manuskript project", "msk"))
         if path is None:
             return
 
@@ -180,6 +181,16 @@ class StartupWindow(AbstractDialog):
 
     def _openClicked(self, button: Gtk.Button):
         self.openProject()
+
+    def _createClicked(self, button: Gtk.Button):
+        path = saveFileDialog(self.window, FileFilter("Manuskript project", "msk"), appendAllFilter=False)
+        if path is None:
+            return
+
+        project = Project(path)
+        project.save()
+
+        self.mainWindow.openProject(path)
 
     def _openAction(self, menuItem: Gtk.MenuItem):
         self.openProject()
