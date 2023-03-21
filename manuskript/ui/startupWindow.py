@@ -6,8 +6,8 @@ import gi
 gi.require_version("Gtk", "3.0")
 from gi.repository import GObject, Gtk, Handy
 
-from manuskript.data import Template, TemplateLevel, TemplateKind
-from manuskript.util import validInt, validString
+from manuskript.data import Template, TemplateKind
+from manuskript.util import validInt, validString, parseFilenameFromURL
 
 from manuskript.ui.abstractDialog import AbstractDialog
 from manuskript.ui.startup import TemplateEntry
@@ -24,6 +24,8 @@ class StartupWindow(AbstractDialog):
 
         self.headerBar = None
         self.templatesLeaflet = None
+
+        self.recentChooserMenu = None
 
         self.templatesStore = None
         self.fictionTemplatesStore = None
@@ -44,6 +46,9 @@ class StartupWindow(AbstractDialog):
         self.templatesLeaflet.bind_property("folded", self.headerBar, "show-close-button",
                                             GObject.BindingFlags.SYNC_CREATE |
                                             GObject.BindingFlags.INVERT_BOOLEAN)
+
+        self.recentChooserMenu = builder.get_object("recent_chooser_menu")
+        self.recentChooserMenu.connect("item-activated", self._recentAction)
 
         bindMenuItem(builder, "open_menu_item", self._openAction)
         bindMenuItem(builder, "quit_menu_item", self._quitAction)
@@ -153,6 +158,17 @@ class StartupWindow(AbstractDialog):
 
     def _openAction(self, menuItem: Gtk.MenuItem):
         self.mainWindow.openProject()
+
+    def _recentAction(self, recentChooser: Gtk.RecentChooser):
+        uri = recentChooser.get_current_uri()
+        if uri is None:
+            return
+
+        path = parseFilenameFromURL(uri)
+        if path is None:
+            return
+
+        self.mainWindow.openProject(path)
 
     def _quitAction(self, menuItem: Gtk.MenuItem):
         self.mainWindow.exit(True)
