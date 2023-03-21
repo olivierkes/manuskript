@@ -45,6 +45,10 @@ class World(AbstractData):
         self.items = dict()
         self.top = list()
 
+    def changePath(self, path: str):
+        AbstractData.changePath(self, os.path.join(path, "world.opml"))
+        self.file = OpmlFile(self.dataPath)
+
     def addItem(self, name: str = None, parent: WorldItem = None) -> WorldItem:
         item = WorldItem(self, self.host.newID(), name)
 

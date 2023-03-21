@@ -13,7 +13,7 @@ Handy.init()
 from manuskript.data import Project
 from manuskript.ui.views import *
 
-from manuskript.ui.chooser import openFileDialog, FileFilter
+from manuskript.ui.chooser import openFileDialog, saveFileDialog, FileFilter
 from manuskript.ui.tools import *
 from manuskript.ui.aboutDialog import AboutDialog
 from manuskript.ui.settingsWindow import SettingsWindow
@@ -74,6 +74,7 @@ class MainWindow:
 
         bindMenuItem(builder, "open_menu_item", self._openAction)
         bindMenuItem(builder, "save_menu_item", self._saveAction)
+        bindMenuItem(builder, "saveas_menu_item", self._saveAsAction)
         bindMenuItem(builder, "close_menu_item", self._closeAction)
         bindMenuItem(builder, "quit_menu_item", self._quitAction)
 
@@ -144,7 +145,15 @@ class MainWindow:
         self.openProject(path)
 
     def _saveAction(self, menuItem: Gtk.MenuItem):
-        self.getProject().save()
+        self.project.save()
+
+    def _saveAsAction(self, menuItem: Gtk.MenuItem):
+        path = saveFileDialog(self.window, FileFilter("Manuskript project", "msk"))
+        if path is None:
+            return
+
+        self.project.changePath(path)
+        self.project.save()
 
     def _closeAction(self, menuItem: Gtk.MenuItem):
         self.closeProject()
@@ -153,7 +162,7 @@ class MainWindow:
         self.exit(True)
 
     def getSettings(self):
-        return self.getProject().settings
+        return self.project.settings
 
     def _settingsAction(self, menuItem: Gtk.MenuItem):
         self.settingsWindow.show()

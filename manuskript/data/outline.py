@@ -13,7 +13,7 @@ from manuskript.data.plots import Plots
 from manuskript.data.status import StatusHost
 from manuskript.data.unique_id import UniqueIDHost
 from manuskript.io.mmdFile import MmdFile
-from manuskript.util import CounterKind, countText, safeInt
+from manuskript.util import CounterKind, countText, safeInt, safeFilename
 
 
 @unique
@@ -42,6 +42,10 @@ class OutlineItem(AbstractData):
         self.status = None
         self.compile = True
         self.goal = None
+
+    def changePath(self, path: str):
+        AbstractData.changePath(self, path)
+        self.file = MmdFile(self.dataPath)
 
     def parentItem(self):
         for item in self.outline.all():
@@ -177,6 +181,19 @@ class OutlineFolder(OutlineItem):
         self.folderPath = path
         self.items = list()
 
+    def changePath(self, path: str):
+        OutlineItem.changePath(self, os.path.join(path, "folder.txt"))
+
+        self.folderPath = path
+
+        index = 0
+        for item in self.items:
+            filename = safeFilename("%s-%s" % (str(index), item.title), None if type(item) is OutlineFolder else "md")
+            path_ = os.path.join(self.folderPath, filename)
+
+            item.changePath(path_)
+            index += 1
+
     def __iter__(self):
         return self.items.__iter__()
 
@@ -250,6 +267,7 @@ class OutlineFolder(OutlineItem):
         self.type = "folder"
 
         OutlineItem.save(self)
+        os.makedirs(self.folderPath, exist_ok=True)
 
         metadata = OutlineItem.saveMetadata(self)
         self.file.save((metadata, "\n"))
@@ -266,6 +284,17 @@ class Outline(AbstractData):
         self.statuses = statuses
         self.items = list()
         self.cache = dict()
+
+    def changePath(self, path: str):
+        AbstractData.changePath(self, os.path.join(path, "outline"))
+
+        index = 0
+        for item in self.items:
+            filename = safeFilename("%s-%s" % (str(index), item.title), None if type(item) is OutlineFolder else "md")
+            path_ = os.path.join(self.dataPath, filename)
+
+            item.changePath(path_)
+            index += 1
 
     def __iter__(self):
         return self.items.__iter__()

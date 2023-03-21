@@ -23,7 +23,7 @@ from manuskript.util import profileTime
 
 class Project(AbstractData):
 
-    def __init__(self, path):
+    def __init__(self, path: str):
         AbstractData.__init__(self, path)
         self.file = MskFile(self.dataPath)
 
@@ -59,6 +59,25 @@ class Project(AbstractData):
 
     def upgradeVersion(self):
         self.version.value = CURRENT_MSK_VERSION
+
+    def changePath(self, path: str):
+        AbstractData.changePath(self, path)
+        saveToZip = self.settings.isEnabled("saveToZip")
+
+        self.file = MskFile(self.dataPath, ignorePath=True, forceZip=saveToZip)
+        os.makedirs(self.file.directoryPath, exist_ok=True)
+
+        self.version.changePath(self.file.directoryPath)
+        self.info.changePath(self.file.directoryPath)
+        self.summary.changePath(self.file.directoryPath)
+        self.labels.changePath(self.file.directoryPath)
+        self.statuses.changePath(self.file.directoryPath)
+        self.settings.changePath(self.file.directoryPath)
+        self.characters.changePath(self.file.directoryPath)
+        self.plots.changePath(self.file.directoryPath)
+        self.world.changePath(self.file.directoryPath)
+        self.outline.changePath(self.file.directoryPath)
+        self.revisions.changePath(self.file.directoryPath)
 
     def load(self):
         AbstractData.load(self)

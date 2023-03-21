@@ -22,6 +22,10 @@ class Info(AbstractData):
         self.author = None
         self.email = None
 
+    def changePath(self, path: str):
+        AbstractData.changePath(self, os.path.join(path, "infos.txt"))
+        self.file = MmdFile(self.dataPath, 16)
+
     def load(self):
         AbstractData.load(self)
 

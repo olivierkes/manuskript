@@ -17,6 +17,10 @@ class Settings(AbstractData):
         if initDefault:
             Settings.loadDefaultSettings(self)
 
+    def changePath(self, path: str):
+        AbstractData.changePath(self, os.path.join(path, "settings.txt"))
+        self.file = JsonFile(self.dataPath)
+
     def get(self, key: str):
         props = self.properties
         path = key.split(".")
