@@ -13,6 +13,7 @@ Handy.init()
 from manuskript.data import Project
 from manuskript.ui.views import *
 
+from manuskript.ui.chooser import openFileDialog, FileFilter
 from manuskript.ui.tools import *
 from manuskript.ui.aboutDialog import AboutDialog
 from manuskript.ui.settingsWindow import SettingsWindow
@@ -85,12 +86,9 @@ class MainWindow:
     def getProject(self):
         return self.project
 
-    def openProject(self, path=None, dialog=False):
+    def openProject(self, path=None):
         if self.project is not None:
             self.closeProject()
-
-        if dialog:
-            return
 
         if path is None:
             return
@@ -128,7 +126,11 @@ class MainWindow:
         self.startupWindow.show()
 
     def _openAction(self, menuItem: Gtk.MenuItem):
-        self.openProject(dialog=True)
+        path = openFileDialog(self.window, FileFilter("Manuskript project", "*.msk"))
+        if path is None:
+            return
+
+        self.openProject(path)
 
     def _recentAction(self, recentChooser: Gtk.RecentChooser):
         uri = recentChooser.get_current_uri()
