@@ -1175,7 +1175,6 @@ summary</property>
                             <property name="position">2</property>
                           </packing>
                         </child>
-
                         <child>
                           <object class="GtkButton">
                             <property name="label" translatable="yes">Next</property>
@@ -1211,7 +1210,6 @@ summary</property>
                             <property name="position">4</property>
                           </packing>
                         </child>
-
                       </object>
                       <packing>
                         <property name="expand">False</property>

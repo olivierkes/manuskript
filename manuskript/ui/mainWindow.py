@@ -13,19 +13,40 @@ Handy.init()
 from manuskript.data import Project
 from manuskript.ui.views import *
 
-from manuskript.ui.chooser import openFileDialog, saveFileDialog, FileFilter
 from manuskript.ui.tools import *
 from manuskript.ui.aboutDialog import AboutDialog
 from manuskript.ui.settingsWindow import SettingsWindow
 from manuskript.ui.startupWindow import StartupWindow
-from manuskript.ui.util import bindMenuItem, packViewIntoSlot, unpackFromSlot
-from manuskript.util import parseFilenameFromURL
+from manuskript.ui.util import bindMenuItem
+from manuskript.util import profileTime
 
 
 class MainWindow:
 
-    def __init__(self):
-        self.project = None
+    @classmethod
+    def packViewIntoSlot(cls, builder, id, view_cls, data=None):
+        slot = builder.get_object(id)
+
+        if slot is None:
+            return None
+
+        try:
+            if data is None:
+                view = profileTime(view_cls)
+            else:
+                view = profileTime(view_cls, data)
+        except Exception:
+            return None
+
+        if view.widget is None:
+            return None
+
+        slot.pack_start(view.widget, True, True, 0)
+        return view
+
+    def __init__(self, path):
+        self.project = Project(path)
+        self.project.load()
 
         builder = Gtk.Builder()
         builder.add_from_file("ui/main.glade")
@@ -37,25 +58,19 @@ class MainWindow:
         self.leaflet = builder.get_object("leaflet")
         self.viewSwitcherBar = builder.get_object("view_switcher_bar")
 
+        self.headerBar.set_subtitle(self.project.info.title)
+
         self.leaflet.bind_property("folded", self.viewSwitcherBar, "reveal", GObject.BindingFlags.SYNC_CREATE)
         self.leaflet.bind_property("folded", self.headerBar, "show-close-button", GObject.BindingFlags.SYNC_CREATE |
                                    GObject.BindingFlags.INVERT_BOOLEAN)
 
-        self.generalSlot = builder.get_object("general_slot")
-        self.summarySlot = builder.get_object("summary_slot")
-        self.charactersSlot = builder.get_object("characters_slot")
-        self.plotSlot = builder.get_object("plot_slot")
-        self.worldSlot = builder.get_object("world_slot")
-        self.outlineSlot = builder.get_object("outline_slot")
-        self.editorSlot = builder.get_object("editor_slot")
-
-        self.generalView = None
-        self.summaryView = None
-        self.charactersView = None
-        self.plotView = None
-        self.worldView = None
-        self.outlineView = None
-        self.editorView = None
+        self.generalView = MainWindow.packViewIntoSlot(builder, "general_slot", GeneralView, self.project.info)
+        self.summaryView = MainWindow.packViewIntoSlot(builder, "summary_slot", SummaryView, self.project.summary)
+        self.charactersView = MainWindow.packViewIntoSlot(builder, "characters_slot", CharactersView, self.project)
+        self.plotView = MainWindow.packViewIntoSlot(builder, "plot_slot", PlotView, self.project.plots)
+        self.worldView = MainWindow.packViewIntoSlot(builder, "world_slot", WorldView, self.project.world)
+        self.outlineView = MainWindow.packViewIntoSlot(builder, "outline_slot", OutlineView, self.project.outline)
+        self.editorView = MainWindow.packViewIntoSlot(builder, "editor_slot", EditorView, self.project)
 
         self.startupWindow = StartupWindow(self)
         self.aboutDialog = AboutDialog(self)
@@ -69,12 +84,8 @@ class MainWindow:
             self.settingsWindow
         ]
 
-        self.recentChooserMenu = builder.get_object("recent_chooser_menu")
-        self.recentChooserMenu.connect("item-activated", self._recentAction)
-
         bindMenuItem(builder, "open_menu_item", self._openAction)
         bindMenuItem(builder, "save_menu_item", self._saveAction)
-        bindMenuItem(builder, "saveas_menu_item", self._saveAsAction)
         bindMenuItem(builder, "close_menu_item", self._closeAction)
         bindMenuItem(builder, "quit_menu_item", self._quitAction)
 
@@ -83,78 +94,21 @@ class MainWindow:
         bindMenuItem(builder, "character_details_template_editor", self._characterDetailsTemplateEditorAction)
         bindMenuItem(builder, "about_menu_item", self._aboutAction)
 
-        self.hide()
-
     def getProject(self):
         return self.project
 
-    def openProject(self, path=None):
-        if self.project is not None:
-            self.closeProject()
-
-        if path is None:
-            return
-
-        self.project = Project(path)
-        self.project.load()
-
-        self.headerBar.set_subtitle(self.project.info.title)
-
-        self.generalView = packViewIntoSlot(self.generalSlot, GeneralView, self.project.info)
-        self.summaryView = packViewIntoSlot(self.summarySlot, SummaryView, self.project.summary)
-        self.charactersView = packViewIntoSlot(self.charactersSlot, CharactersView, self.project.characters)
-        self.plotView = packViewIntoSlot(self.plotSlot, PlotView, self.project.plots)
-        self.worldView = packViewIntoSlot(self.worldSlot, WorldView, self.project.world)
-        self.outlineView = packViewIntoSlot(self.outlineSlot, OutlineView, self.project.outline)
-        self.editorView = packViewIntoSlot(self.editorSlot, EditorView, self.project)
-
-        self.startupWindow.hide()
-        self.show()
+    def openProject(self):
+        pass
 
     def closeProject(self):
-        if self.project is not None:
-            self.generalView = unpackFromSlot(self.generalSlot, self.generalView)
-            self.summaryView = unpackFromSlot(self.summarySlot, self.summaryView)
-            self.charactersView = unpackFromSlot(self.charactersSlot, self.charactersView)
-            self.plotView = unpackFromSlot(self.plotSlot, self.plotView)
-            self.worldView = unpackFromSlot(self.worldSlot, self.worldView)
-            self.outlineView = unpackFromSlot(self.outlineSlot, self.outlineView)
-            self.editorView = unpackFromSlot(self.editorSlot, self.editorView)
-
-            del self.project
-            self.project = None
-
         self.hide()
         self.startupWindow.show()
 
     def _openAction(self, menuItem: Gtk.MenuItem):
-        path = openFileDialog(self.window, FileFilter("Manuskript project", "msk"))
-        if path is None:
-            return
-
-        self.openProject(path)
-
-    def _recentAction(self, recentChooser: Gtk.RecentChooser):
-        uri = recentChooser.get_current_uri()
-        if uri is None:
-            return
-
-        path = parseFilenameFromURL(uri)
-        if path is None:
-            return
-
-        self.openProject(path)
+        self.openProject()
 
     def _saveAction(self, menuItem: Gtk.MenuItem):
-        self.project.save()
-
-    def _saveAsAction(self, menuItem: Gtk.MenuItem):
-        path = saveFileDialog(self.window, FileFilter("Manuskript project", "msk"))
-        if path is None:
-            return
-
-        self.project.changePath(path)
-        self.project.save()
+        self.getProject().save()
 
     def _closeAction(self, menuItem: Gtk.MenuItem):
         self.closeProject()
@@ -163,7 +117,7 @@ class MainWindow:
         self.exit(True)
 
     def getSettings(self):
-        return self.project.settings
+        return self.getProject().settings
 
     def _settingsAction(self, menuItem: Gtk.MenuItem):
         self.settingsWindow.show()

@@ -14,6 +14,5 @@ from manuskript.ui import MainWindow
 
 path = os.path.join(os.getcwd(), "sample-projects/book-of-acts")
 
-window = MainWindow()
-window.openProject(path + ".msk")
+window = MainWindow(path + ".msk")
 window.run()

@@ -13,16 +13,14 @@ from manuskript.data.version import LEGACY_MSK_VERSION
 
 class MskFile(TextFile, ZipFile):
 
-    def __init__(self, path, ignorePath: bool = False, forceZip: bool = False):
+    def __init__(self, path):
         try:
-            if not forceZip:
-                _ZipFile(path)
-
+            _ZipFile(path)
             directoryPath = None
-        except (BadZipFile, FileNotFoundError):
+        except BadZipFile:
             directoryPath = os.path.splitext(path)[0]
 
-            if (not ignorePath) and (not os.path.isdir(directoryPath)):
+            if not os.path.isdir(directoryPath):
                 directoryPath = None
 
         self.zipFile = directoryPath is None
@@ -49,8 +47,7 @@ class MskFile(TextFile, ZipFile):
             if not os.path.isdir(self.directoryPath):
                 os.mkdir(self.directoryPath)
 
-            if os.path.exists(self.path):
-                ZipFile.load(self)
+            ZipFile.load(self)
 
         self.zipFile = zipFile
 

@@ -33,10 +33,6 @@ class StatusHost(AbstractData):
         self.file = TextFile(self.dataPath)
         self.statuses = collections.OrderedDict()
 
-    def changePath(self, path: str):
-        AbstractData.changePath(self, os.path.join(path, "status.txt"))
-        self.file = TextFile(self.dataPath)
-
     def addStatus(self, name: str = None) -> Status:
         if name is None:
             name = "New Status"

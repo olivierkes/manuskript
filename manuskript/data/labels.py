@@ -35,10 +35,6 @@ class LabelHost(AbstractData):
         self.file = MmdFile(self.dataPath, 21)
         self.labels = collections.OrderedDict()
 
-    def changePath(self, path: str):
-        AbstractData.changePath(self, os.path.join(path, "labels.txt"))
-        self.file = MmdFile(self.dataPath, 21)
-
     def addLabel(self, name: str = None, color: Color = None) -> Label:
         if name is None:
             name = "New Label"

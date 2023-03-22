@@ -6,11 +6,10 @@ import gi
 gi.require_version("Gtk", "3.0")
 from gi.repository import GObject, Gtk, Handy
 
-from manuskript.data import Project, Template, TemplateKind
-from manuskript.util import validInt, validString, parseFilenameFromURL
+from manuskript.data import Template, TemplateLevel, TemplateKind
+from manuskript.util import validInt, validString
 
 from manuskript.ui.abstractDialog import AbstractDialog
-from manuskript.ui.chooser import openFileDialog, saveFileDialog, FileFilter
 from manuskript.ui.startup import TemplateEntry
 from manuskript.ui.util import bindMenuItem
 
@@ -26,9 +25,6 @@ class StartupWindow(AbstractDialog):
         self.headerBar = None
         self.templatesLeaflet = None
 
-        self.recentChooserMenu = None
-        self.recentChooserMenuBtn = None
-
         self.templatesStore = None
         self.fictionTemplatesStore = None
         self.nonfictionTemplatesStore = None
@@ -41,10 +37,6 @@ class StartupWindow(AbstractDialog):
         self.addLevelButton = None
         self.addGoalButton = None
 
-        self.openButton = None
-        self.recentButton = None
-        self.createButton = None
-
     def initWindow(self, builder, window):
         self.headerBar = builder.get_object("header_bar")
         self.templatesLeaflet = builder.get_object("templates_leaflet")
@@ -53,11 +45,6 @@ class StartupWindow(AbstractDialog):
                                             GObject.BindingFlags.SYNC_CREATE |
                                             GObject.BindingFlags.INVERT_BOOLEAN)
 
-        self.recentChooserMenu = builder.get_object("recent_chooser_menu")
-        self.recentChooserMenuBtn = builder.get_object("recent_chooser_menu_btn")
-
-        self.recentChooserMenu.connect("item-activated", self._recentAction)
-        self.recentChooserMenuBtn.connect("item-activated", self._recentAction)
 
         bindMenuItem(builder, "open_menu_item", self._openAction)
         bindMenuItem(builder, "quit_menu_item", self._quitAction)
@@ -110,13 +97,6 @@ class StartupWindow(AbstractDialog):
 
         self.addLevelButton.connect("clicked", self._addLevelClicked)
         self.addGoalButton.connect("clicked", self._addGoalClicked)
-
-        self.openButton = builder.get_object("open_button")
-        self.recentButton = builder.get_object("recent_button")
-        self.createButton = builder.get_object("create_button")
-
-        self.openButton.connect("clicked", self._openClicked)
-        self.createButton.connect("clicked", self._createClicked)
 
     def loadTemplate(self, template: Template):
         self.template = template
@@ -172,40 +152,8 @@ class StartupWindow(AbstractDialog):
         self.template.addGoal()
         self.loadTemplate(self.template)
 
-    def openProject(self):
-        path = openFileDialog(self.window, FileFilter("Manuskript project", "msk"))
-        if path is None:
-            return
-
-        self.mainWindow.openProject(path)
-
-    def _openClicked(self, button: Gtk.Button):
-        self.openProject()
-
-    def _createClicked(self, button: Gtk.Button):
-        path = saveFileDialog(self.window, FileFilter("Manuskript project", "msk"), appendAllFilter=False)
-        if path is None:
-            return
-
-        project = Project(path)
-        # TODO: apply project template!
-        project.save()
-
-        self.mainWindow.openProject(path)
-
     def _openAction(self, menuItem: Gtk.MenuItem):
-        self.openProject()
-
-    def _recentAction(self, recentChooser: Gtk.RecentChooser):
-        uri = recentChooser.get_current_uri()
-        if uri is None:
-            return
-
-        path = parseFilenameFromURL(uri)
-        if path is None:
-            return
-
-        self.mainWindow.openProject(path)
+        self.mainWindow.openProject()
 
     def _quitAction(self, menuItem: Gtk.MenuItem):
         self.mainWindow.exit(True)
