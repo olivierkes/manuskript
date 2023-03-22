@@ -8,7 +8,7 @@
       <pattern>*.msk</pattern>
     </patterns>
   </object>
-  <object class="GtkRecentChooserMenu" id="recent_chooser_menu">
+  <object class="GtkRecentChooserMenu" id="recent_chooser_menu_btn">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
     <property name="filter">recent_filter</property>
@@ -91,9 +91,10 @@
                         <property name="label" translatable="yes">_Recent</property>
                         <property name="use-underline">True</property>
                         <child type="submenu">
-                          <object class="GtkRecentChooserMenu" id="recent_chooser_menu1">
+                          <object class="GtkRecentChooserMenu" id="recent_chooser_menu">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
+                            <property name="filter">recent_filter</property>
                             <property name="limit">10</property>
                             <property name="sort-type">mru</property>
                           </object>
@@ -457,7 +458,7 @@
                 <property name="halign">end</property>
                 <property name="spacing">9</property>
                 <child>
-                  <object class="GtkButton">
+                  <object class="GtkButton" id="open_button">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="receives-default">True</property>
@@ -500,12 +501,12 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkMenuButton">
+                  <object class="GtkMenuButton" id="recent_button">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="focus-on-click">False</property>
                     <property name="receives-default">True</property>
-                    <property name="popup">recent_chooser_menu</property>
+                    <property name="popup">recent_chooser_menu_btn</property>
                     <property name="use-popover">False</property>
                     <child>
                       <object class="GtkBox">
@@ -546,7 +547,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton">
+                  <object class="GtkButton" id="create_button">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="receives-default">True</property>

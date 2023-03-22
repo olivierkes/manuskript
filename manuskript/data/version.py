@@ -19,6 +19,11 @@ class Version(AbstractData):
 
         self.value = LEGACY_MSK_VERSION
 
+    def changePath(self, path: str):
+        AbstractData.changePath(self, os.path.join(path, "MANUSKRIPT"))
+        self.file = TextFile(self.dataPath)
+        self.legacy_file = TextFile(os.path.join(path, "VERSION"))
+
     def loadLegacy(self):
         try:
             return int(self.legacy_file.load())
