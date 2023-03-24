@@ -1063,7 +1063,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="321"/>
         <source>Value</source>
-        <translation type="unfinished">Vrijednost</translation>
+        <translation>Vrijednost</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="329"/>
@@ -1073,12 +1073,12 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="374"/>
         <source>No Entries!</source>
-        <translation type="unfinished"></translation>
+        <translation>Nema unosa!</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="374"/>
         <source>Please add entries to apply to the selected characters.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dodaj unose koji će se primijeniti na odabrane znakove.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="385"/>
@@ -1093,12 +1093,12 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="450"/>
         <source>Un-applied data!</source>
-        <translation type="unfinished"></translation>
+        <translation>Neprimijenjeni podaci!</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="450"/>
         <source>There are un-applied entries in this tab. Discard them?</source>
-        <translation type="unfinished"></translation>
+        <translation>U ovoj kartici postoje neprimijenjeni unosi. Želiš li ih odbaciti?</translation>
     </message>
 </context>
 <context>
@@ -2303,7 +2303,7 @@ pored broja riječi</translation>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>Zamijeni jednostruke navodnike (') sa:</translation>
+        <translation>Zamijeni jednostruke navodnike (&apos;) sa:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>
