@@ -1068,7 +1068,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="329"/>
         <source>Bulk Info Manager</source>
-        <translation type="unfinished"></translation>
+        <translation>Upravljač grupnih informacija</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="374"/>
@@ -1083,12 +1083,12 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="385"/>
         <source>Bulk Info Applied</source>
-        <translation type="unfinished"></translation>
+        <translation>Grupne informacije primijenjene</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="385"/>
         <source>The bulk info has been applied to the selected characters.</source>
-        <translation type="unfinished"></translation>
+        <translation>Grupne informacije su primijenjene na odabrane znakove.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="450"/>
