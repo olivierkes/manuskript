@@ -8,7 +8,7 @@ from gi.repository import Gtk
 
 from manuskript.data import Info
 from manuskript.util import validString, invalidString
-
+from manuskript.quoteOfTheDay import get_quote
 
 class GeneralView:
 
@@ -28,6 +28,8 @@ class GeneralView:
         self.licenseBuffer = builder.get_object("license")
         self.nameBuffer = builder.get_object("name")
         self.emailBuffer = builder.get_object("email")
+        
+        self.quoteLabel = builder.get_object("quote-label")
 
         self.titleBuffer.set_text(validString(self.info.title), -1)
         self.subtitleBuffer.set_text(validString(self.info.subtitle), -1)
@@ -54,6 +56,9 @@ class GeneralView:
         self.nameBuffer.connect("inserted-text", self._nameInsertedText)
         self.emailBuffer.connect("deleted-text", self._emailDeletedText)
         self.emailBuffer.connect("inserted-text", self._emailInsertedText)
+        
+        self.quoteLabel.set_markup(get_quote())
+
 
     def __titleChanged(self, buffer: Gtk.EntryBuffer):
         self.info.title = invalidString(buffer.get_text())
