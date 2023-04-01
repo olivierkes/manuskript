@@ -84,7 +84,6 @@ class CharactersView:
         self.newTemplateEntryBuffer = builder.get_object("new_template_entry_buffer")
         self.charecterDetailsMenuAppendBox = builder.get_object("template_select_box")
         self.charecterDetailsMenuTemplateBox = builder.get_object("template_select_box2")
-        self.characterDetaisMenuDeleteBox = builder.get_object("delete_select_box")
         self.detailsNameRenderer = builder.get_object("details_name")
         self.detailsValueRenderer = builder.get_object("details_value")
 
@@ -340,27 +339,28 @@ class CharactersView:
                 container.remove(d)
         clear_container( self.charecterDetailsMenuAppendBox)
         clear_container(self.charecterDetailsMenuTemplateBox)
-        clear_container(self.characterDetaisMenuDeleteBox)
         for x in self.characterTemplates.templates:
             button = Gtk.Button(label=x,) # TODO: turn into ModelButton
             button.connect("clicked", self._appendTemplateClicked, x)
             self.charecterDetailsMenuAppendBox.add(button)
             # Now we do the buttons for charecterDetailsMenuTemplateBox
-            button2 = Gtk.Button(label=x,) # TODO: turn into ModelButton
-            button2.connect("clicked", self._updateTemplateClicked, x)
-            self.charecterDetailsMenuTemplateBox.add(button2)
-            # now we do delete templates
             box = Gtk.Box()
             label = Gtk.Label(label=x)
             box.pack_start(label, False, False, 0)
-            button3 = Gtk.Button(label='delete') # TODO: Make this red
-            button3.connect("clicked", self._deleteTemplateClicked, x)
-            box.pack_start(button3, False, False, 0)
-            self.characterDetaisMenuDeleteBox.add(box)
+            overwrite_button = Gtk.Button()
+            overwrite_button.add(Gtk.Image(icon_name='emblem-insync-syncing'))
+            overwrite_button.connect("clicked", self._updateTemplateClicked, x)
+            overwrite_button.set_tooltip_markup ('Overwrite template with text of current file') # TODO: This might be an issue when it comes to translating
+            delete_button = Gtk.Button() 
+            delete_button.add(Gtk.Image(icon_name='app-remove-symbolic'))
+            delete_button.set_tooltip_markup ('Delete') # TODO: This might be an issue when it comes to translating
+            delete_button.connect("clicked", self._deleteTemplateClicked, x)
+            box.pack_start(overwrite_button, False, False, 0)            
+            box.pack_start(delete_button, False, False, 0)
+            self.charecterDetailsMenuTemplateBox.add(box)
 
         self.charecterDetailsMenuAppendBox.show_all()
         self.charecterDetailsMenuTemplateBox.show_all()
-        self.characterDetaisMenuDeleteBox.show_all()
         
     def _onCharecterDetailsMenuClicked(self, button: Gtk.MenuButton):
         self._updateCharecterDetailsMenu()
