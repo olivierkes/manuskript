@@ -90,58 +90,6 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
     <property name="height-request">200</property>
     <property name="can-focus">False</property>
     <child>
-      <object class="GtkBox" id="append_template_box">
-        <property name="visible">True</property>
-        <property name="can-focus">False</property>
-        <property name="orientation">vertical</property>
-        <child>
-          <object class="GtkModelButton">
-            <property name="visible">True</property>
-            <property name="can-focus">True</property>
-            <property name="receives-default">True</property>
-            <property name="text" translatable="yes">Append Template</property>
-            <property name="menu-name">main</property>
-            <property name="inverted">True</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkScrolledWindow">
-            <property name="visible">True</property>
-            <property name="can-focus">True</property>
-            <property name="vexpand">True</property>
-            <property name="shadow-type">in</property>
-            <child>
-              <object class="GtkViewport">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <child>
-                  <object class="GtkListBox" id="template_select_box">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="selection-mode">none</property>
-                    <property name="activate-on-single-click">False</property>
-                  </object>
-                </child>
-              </object>
-            </child>
-          </object>
-          <packing>
-            <property name="expand">True</property>
-            <property name="fill">True</property>
-            <property name="position">1</property>
-          </packing>
-        </child>
-      </object>
-      <packing>
-        <property name="submenu">append_template</property>
-      </packing>
-    </child>
-    <child>
       <object class="GtkBox" id="edit_template_box">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
@@ -257,7 +205,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="receives-default">True</property>
-            <property name="text" translatable="yes">Set info to template</property>
+            <property name="text" translatable="yes">Mange Templates</property>
             <property name="menu-name">edit_template</property>
           </object>
           <packing>
@@ -267,18 +215,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
           </packing>
         </child>
         <child>
-          <object class="GtkModelButton">
-            <property name="visible">True</property>
-            <property name="can-focus">True</property>
-            <property name="receives-default">True</property>
-            <property name="text" translatable="yes">Delete Template</property>
-            <property name="menu-name">delete_template</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">2</property>
-          </packing>
+          <placeholder/>
         </child>
       </object>
       <packing>
@@ -287,7 +224,10 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
       </packing>
     </child>
     <child>
-      <object class="GtkBox" id="delete_template_box">
+      <placeholder/>
+    </child>
+    <child>
+      <object class="GtkBox" id="append_template_box">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
         <property name="orientation">vertical</property>
@@ -296,7 +236,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="receives-default">True</property>
-            <property name="text" translatable="yes">Delete Template</property>
+            <property name="text" translatable="yes">Append Template</property>
             <property name="menu-name">main</property>
             <property name="inverted">True</property>
           </object>
@@ -317,7 +257,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <child>
-                  <object class="GtkListBox" id="delete_select_box">
+                  <object class="GtkListBox" id="template_select_box">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="selection-mode">none</property>
@@ -335,8 +275,8 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
         </child>
       </object>
       <packing>
-        <property name="submenu">delete_template</property>
-        <property name="position">3</property>
+        <property name="submenu">append_template</property>
+        <property name="position">4</property>
       </packing>
     </child>
   </object>
