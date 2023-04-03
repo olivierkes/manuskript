@@ -3,6 +3,7 @@
 [Manuskript](https://www.theologeek.ch/manuskript) is an open-source
 tool for writers.
 
+[![pytest](https://github.com/olivierkes/manuskript/workflows/Pytest%20Run%20%28Linux%29/badge.svg)](https://github.com/olivierkes/manuskript/actions/workflows/pytest.yml)
 [![manuskript](https://snapcraft.io/manuskript/badge.svg)](https://snapcraft.io/manuskript)
 [![translations](https://hosted.weblate.org/widgets/manuskript/-/translations/svg-badge.svg)](https://hosted.weblate.org/projects/manuskript/translations)
 

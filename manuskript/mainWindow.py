@@ -7,9 +7,9 @@ import re
 from PyQt5.Qt import qVersion, PYQT_VERSION_STR
 from PyQt5.QtCore import (pyqtSignal, QSignalMapper, QTimer, QSettings, Qt, QPoint,
                           QRegExp, QUrl, QSize, QModelIndex)
-from PyQt5.QtGui import QStandardItemModel, QIcon, QColor
+from PyQt5.QtGui import QStandardItemModel, QIcon, QColor, QStandardItem
 from PyQt5.QtWidgets import QMainWindow, QHeaderView, qApp, QMenu, QActionGroup, QAction, QStyle, QListWidgetItem, \
-    QLabel, QDockWidget, QWidget, QMessageBox, QLineEdit
+    QLabel, QDockWidget, QWidget, QMessageBox, QLineEdit, QTextEdit, QTreeView, QDialog, QTableView
 
 from manuskript import settings
 from manuskript.enums import Character, PlotStep, Plot, World, Outline
@@ -23,6 +23,7 @@ from manuskript.models.plotModel import plotModel
 from manuskript.models.worldModel import worldModel
 from manuskript.settingsWindow import settingsWindow
 from manuskript.ui import style
+from manuskript.ui import characterInfoDialog
 from manuskript.ui.about import aboutDialog
 from manuskript.ui.collapsibleDockWidgets import collapsibleDockWidgets
 from manuskript.ui.importers.importer import importerDialog
@@ -35,6 +36,7 @@ from manuskript.ui.views.outlineDelegates import outlineCharacterDelegate
 from manuskript.ui.views.plotDelegate import plotDelegate
 from manuskript.ui.views.MDEditView import MDEditView
 from manuskript.ui.statusLabel import statusLabel
+from manuskript.ui.bulkInfoManager import Ui_BulkInfoManager
 
 # Spellcheck support
 from manuskript.ui.views.textEditView import textEditView
@@ -179,6 +181,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # self.loadProject(os.path.join(appPath(), "test_project.zip"))
 
+        # Bulk Character Info Management
+        self.tabsData = self.saveCharacterTabs()  # Used for restoring tabsData with loadCharacterTabs() methods.
+        self.BulkManageUi = None
+        self.bulkAffectedCharacters = []
+        self.isPersoBulkModeEnabled = False
+
     def updateDockVisibility(self, restore=False):
         """
         Saves the state of the docks visibility. Or if `restore` is True,
@@ -297,18 +305,170 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     # CHARACTERS
     ###############################################################################
 
-    def changeCurrentCharacter(self, trash=None):
-        """
+    def setPersoBulkMode(self, enabled: bool):
+        if enabled and self.BulkManageUi is None: # Delete all tabs and create the manager one
+            # Create the widget
+            bulkPersoInfoManager = QWidget()
+            bulkPersoInfoManagerUi = Ui_BulkInfoManager()
+            bulkPersoInfoManagerUi.setupUi(bulkPersoInfoManager)
 
-        @return:
-        """
-        c = self.lstCharacters.currentCharacter()
-        if not c:
-            self.tabPersos.setEnabled(False)
+            self.BulkManageUi = bulkPersoInfoManagerUi  # for global use
+
+            model = QStandardItemModel()
+
+            # Set the column headers
+            model.setColumnCount(2)
+            model.setHorizontalHeaderLabels([self.tr("Name"), self.tr("Value")])
+
+            # Set the width
+            self.updatePersoInfoView(bulkPersoInfoManagerUi.tableView)
+
+            bulkPersoInfoManagerUi.tableView.setModel(model)  # Set the model of tableView
+
+            self.tabPersos.clear()
+            self.tabPersos.addTab(bulkPersoInfoManager, self.tr("Bulk Info Manager"))
+            self.isPersoBulkModeEnabled = True
+            self.refreshBulkAffectedCharacters()
+
+            # Showing the character names on the label
+            labelText = self.createCharacterSelectionString()
+            bulkPersoInfoManagerUi.lblCharactersDynamic.setText(labelText)
+
+            # Making the connections
+            self.makeBulkInfoConnections(bulkPersoInfoManagerUi)
+
+        elif enabled and self.BulkManageUi is not None:  # If yet another character is selected, refresh the label
+            labelText = self.createCharacterSelectionString()
+            self.BulkManageUi.lblCharactersDynamic.setText(labelText)
+
+        else:  # Delete manager tab and restore the others
+            if self.BulkManageUi is not None:
+                self.tabPersos.clear()
+                self.loadCharacterTabs()
+            self.BulkManageUi = None
+            self.bulkAffectedCharacters.clear()
+
+    def createCharacterSelectionString(self):
+        self.refreshBulkAffectedCharacters()
+        labelText = ""
+        length = len(self.bulkAffectedCharacters)
+        for i in range(length-1):
+            labelText += '"' + self.bulkAffectedCharacters[i] + '"' + ", "
+
+        labelText += '"' + self.bulkAffectedCharacters[length-1] + '"'
+
+        return labelText
+
+    def makeBulkInfoConnections(self, bulkUi):
+        # A lambda has to be used to pass in the argument
+        bulkUi.btnPersoBulkAddInfo.clicked.connect(lambda: self.addBulkInfo(bulkUi))
+        bulkUi.btnPersoBulkRmInfo.clicked.connect(lambda: self.removeBulkInfo(bulkUi))
+        bulkUi.btnPersoBulkApply.clicked.connect(lambda: self.applyBulkInfo(bulkUi))
+
+    def applyBulkInfo(self, bulkUi):
+        selectedItems = self.lstCharacters.currentCharacterIDs()
+
+        # Get the data from the tableview
+        model = bulkUi.tableView.model()
+        if model.rowCount() == 0:
+            QMessageBox.warning(self, self.tr("No Entries!"),
+                                self.tr("Please add entries to apply to the selected characters."))
             return
 
+        # Loop through each selected character and add the bulk info to them
+        for ID in selectedItems:
+            for row in range(model.rowCount()):
+                description = model.item(row, 0).text()
+                value = model.item(row, 1).text()
+                self.lstCharacters._model.addCharacterInfo(ID, description, value)
+
+        QMessageBox.information(self, self.tr("Bulk Info Applied"),
+                                self.tr("The bulk info has been applied to the selected characters."))
+
+        # Remove all rows from the table
+        model.removeRows(0, model.rowCount())
+
+    def addBulkInfo(self, bulkUi): # Adds an item to the list
+        charInfoDialog = QDialog()
+        charInfoUi = characterInfoDialog.Ui_characterInfoDialog()
+        charInfoUi.setupUi(charInfoDialog)
+
+        if charInfoDialog.exec_() == QDialog.Accepted:
+            # User clicked OK, get the input values
+            description = charInfoUi.descriptionLineEdit.text()
+            value = charInfoUi.valueLineEdit.text()
+
+            # Add a new row to the model with the description and value
+            row = [QStandardItem(description), QStandardItem(value)]
+
+            bulkUi.tableView.model().appendRow(row)
+
+            bulkUi.tableView.update()
+
+    def removeBulkInfo(self, bulkUi):
+        # Get the selected rows
+        selection = bulkUi.tableView.selectionModel().selectedRows()
+
+        # Iterate over the rows and remove them (reversed, so the iteration is not affected)
+        for index in reversed(selection):
+            bulkUi.tableView.model().removeRow(index.row())
+
+    def saveCharacterTabs(self):
+        tabsData = []
+        for i in range(self.tabPersos.count()):
+            tabData = {}
+            widget = self.tabPersos.widget(i)
+            tabData['widget'] = widget
+            tabData['title'] = self.tabPersos.tabText(i)
+            tabsData.append(tabData)
+        return tabsData
+
+    def loadCharacterTabs(self):
+        for tabData in self.tabsData:
+            widget = tabData['widget']
+            title = tabData['title']
+            self.tabPersos.addTab(widget, title)
+    def handleCharacterSelectionChanged(self):
+        selectedCharacters = self.lstCharacters.currentCharacters()
+        characterSelectionIsEmpty = not any(selectedCharacters)
+        if characterSelectionIsEmpty:
+            self.tabPersos.setEnabled(False)
+            return
+        cList = list(filter(None, self.lstCharacters.currentCharacters())) #cList contains all valid characters
+        character = cList[0]
+        self.changeCurrentCharacter(character)
+
+        if len(selectedCharacters) > 1:
+            self.setPersoBulkMode(True)
+        else:
+            if self.BulkManageUi is not None:
+                self.refreshBulkAffectedCharacters()
+                self.BulkManageUi.lblCharactersDynamic.setText( self.createCharacterSelectionString() )
+
+                tableview_model = self.BulkManageUi.tableView.model()
+                if tableview_model.rowCount() > 0:
+                    confirm = QMessageBox.warning(
+                        self, self.tr("Un-applied data!"),
+                        self.tr("There are un-applied entries in this tab. Discard them?"),
+                        QMessageBox.Yes | QMessageBox.No,
+                        defaultButton = QMessageBox.No
+                    )
+                    if confirm != QMessageBox.Yes:
+                        return
+
+            self.setPersoBulkMode(False)
         self.tabPersos.setEnabled(True)
-        index = c.index()
+
+    def refreshBulkAffectedCharacters(self): # Characters affected by a potential bulk-info modification
+        self.bulkAffectedCharacters = []
+        for character in self.lstCharacters.currentCharacters():
+            self.bulkAffectedCharacters.append(character.name())
+
+    def changeCurrentCharacter(self, character, trash=None):
+        if character is None:
+            return
+
+        index = character.index()
 
         for w in [
             self.txtPersoName,
@@ -325,24 +485,25 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             w.setCurrentModelIndex(index)
 
         # Button color
-        self.updateCharacterColor(c.ID())
+        self.updateCharacterColor(character.ID())
 
         # Slider importance
-        self.updateCharacterImportance(c.ID())
+        self.updateCharacterImportance(character.ID())
 
         # POV state
-        self.updateCharacterPOVState(c.ID())
+        self.updateCharacterPOVState(character.ID())
 
         # Character Infos
         self.tblPersoInfos.setRootIndex(index)
 
         if self.mdlCharacter.rowCount(index):
-            self.updatePersoInfoView()
+            self.updatePersoInfoView(self.tblPersoInfos)
 
-    def updatePersoInfoView(self):
-        self.tblPersoInfos.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeToContents)
-        self.tblPersoInfos.horizontalHeader().setSectionResizeMode(1, QHeaderView.Stretch)
-        self.tblPersoInfos.verticalHeader().hide()
+    def updatePersoInfoView(self, infoView):
+        infoView.horizontalHeader().setStretchLastSection(True)
+        infoView.horizontalHeader().setMinimumSectionSize(20)
+        infoView.horizontalHeader().setMaximumSectionSize(500)
+        infoView.verticalHeader().hide()
 
     def updateCharacterColor(self, ID):
         c = self.mdlCharacter.getCharacterByID(ID)
@@ -370,7 +531,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             pass
 
     def deleteCharacter(self):
-        ID = self.lstCharacters.removeCharacter()
+        ID = self.lstCharacters.removeCharacters()
         if ID is None:
             return
         for itemID in self.mdlOutline.findItemsByPOV(ID):
@@ -903,7 +1064,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def makeUIConnections(self):
         "Connections that have to be made once only, even when a new project is loaded."
-        self.lstCharacters.currentItemChanged.connect(self.changeCurrentCharacter, F.AUC)
+        self.lstCharacters.itemSelectionChanged.connect(self.handleCharacterSelectionChanged, F.AUC)
 
         self.txtPlotFilter.textChanged.connect(self.lstPlots.setFilter, F.AUC)
         self.lstPlots.currentItemChanged.connect(self.changeCurrentPlot, F.AUC)
@@ -956,6 +1117,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             widget.setCurrentModelIndex(self.mdlFlatData.index(0, col))
 
         # Characters
+        self.updatePersoInfoView(self.tblPersoInfos)
         self.lstCharacters.setCharactersModel(self.mdlCharacter)
         self.tblPersoInfos.setModel(self.mdlCharacter)
         try:

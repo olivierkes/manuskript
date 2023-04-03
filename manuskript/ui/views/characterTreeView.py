@@ -2,11 +2,12 @@
 # --!-- coding: utf8 --!--
 from PyQt5.QtCore import QSize, QModelIndex, Qt
 from PyQt5.QtGui import QPixmap, QColor, QIcon, QBrush
-from PyQt5.QtWidgets import QTreeWidget, QTreeWidgetItem, QColorDialog
+from PyQt5.QtWidgets import QTreeWidget, QTreeWidgetItem, QColorDialog, QDialog, QMessageBox
 
 from manuskript.enums import Character
 from manuskript.functions import iconColor, mainWindow
 from manuskript.ui import style as S
+from manuskript.ui import characterInfoDialog
 
 
 class characterTreeView(QTreeWidget):
@@ -137,15 +138,29 @@ class characterTreeView(QTreeWidget):
 
         self._model.addCharacter(importance=curr_importance)
 
-    def removeCharacter(self):
+    def removeCharacters(self):
         """
-        Removes selected character.
+        Removes selected characters.
         """
-        ID = self.currentCharacterID()
-        if ID is None:
+        IDs = self.currentCharacterIDs()
+
+        # If none of the IDs are valid, do nothing.
+        if not any(IDs):
             return None
-        self._model.removeCharacter(ID)
-        return ID
+
+        #Get confirmation from user
+        confirm = QMessageBox.warning(
+            self, "Delete selected character(s)?",
+            "Are you sure you want to delete the selected character(s)?",
+            QMessageBox.Yes | QMessageBox.No
+        )
+        if confirm != QMessageBox.Yes:
+            return None
+
+        #Delete all selected characters
+        for ID in IDs:
+            self._model.removeCharacter(ID)
+        return IDs
 
     def choseCharacterColor(self):
         ID = self.currentCharacterID()
@@ -170,7 +185,21 @@ class characterTreeView(QTreeWidget):
         mainWindow().updateCharacterPOVState(ID)
 
     def addCharacterInfo(self):
-        self._model.addCharacterInfo(self.currentCharacterID())
+        #Setting up dialog
+        charInfoDialog = QDialog()
+        charInfoUi = characterInfoDialog.Ui_characterInfoDialog()
+        charInfoUi.setupUi(charInfoDialog)
+
+        if charInfoDialog.exec_() == QDialog.Accepted:
+            # User clicked OK, get the input values
+            description = charInfoUi.descriptionLineEdit.text()
+            value = charInfoUi.valueLineEdit.text()
+
+            # Add the character info with the input values
+            ID = self.currentCharacterID()
+            self._model.addCharacterInfo(ID, description, value)
+
+
 
     def removeCharacterInfo(self):
         self._model.removeCharacterInfo(self.currentCharacterID())
@@ -182,6 +211,14 @@ class characterTreeView(QTreeWidget):
 
         return ID
 
+    def currentCharacterIDs(self): #Exactly like currentCharacterID(), except for multiselection
+        IDs = []
+        for item in self.selectedItems():
+            ID = item.data(0, Qt.UserRole)
+            if ID is not None:
+                IDs.append(ID)
+        return IDs
+
     def currentCharacter(self):
         """
         Returns the selected character
@@ -189,6 +226,16 @@ class characterTreeView(QTreeWidget):
         """
         ID = self.currentCharacterID()
         return self._model.getCharacterByID(ID)
+    def currentCharacters(self):
+        """
+        Returns the selected characters (when multiple are selected)
+        @return: List of Characters
+        """
+        IDs = self.currentCharacterIDs()
+        characters = []
+        for ID in IDs:
+            characters.append(self._model.getCharacterByID(ID))
+        return characters
 
     def getItemByID(self, ID):
         for t in range(self.topLevelItemCount()):
