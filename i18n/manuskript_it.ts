@@ -1063,7 +1063,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="321"/>
         <source>Value</source>
-        <translation type="unfinished">Valore</translation>
+        <translation>Valore</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="329"/>
