@@ -107,12 +107,12 @@
     <message>
         <location filename="../manuskript/ui/listDialog_ui.py" line="43"/>
         <source>Title</source>
-        <translation type="unfinished">Titolo</translation>
+        <translation>Titolo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/listDialog_ui.py" line="44"/>
         <source>Text</source>
-        <translation type="unfinished">Teksto</translation>
+        <translation>Teksto</translation>
     </message>
 </context>
 <context>
@@ -2302,7 +2302,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>Anstataŭigi Askiajn unuoblajn citilojn (') per:</translation>
+        <translation>Anstataŭigi Askiajn unuoblajn citilojn (&apos;) per:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>
