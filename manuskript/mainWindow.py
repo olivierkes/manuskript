@@ -16,6 +16,7 @@ from manuskript.enums import Character, PlotStep, Plot, World, Outline
 from manuskript.functions import wordCount, appPath, findWidgetsOfClass, openURL, showInFolder
 import manuskript.functions as F
 from manuskript import loadSave
+from manuskript.functions.history.History import History
 from manuskript.logging import getLogFilePath
 from manuskript.models.characterModel import characterModel
 from manuskript.models import outlineModel
@@ -73,6 +74,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                                             # value. In manuskript.main.
         self._autoLoadProject = None  # Used to load a command line project
         self.sessionStartWordCount = 0  # Used to track session targets
+        self.history = History()
+        self._previousSelectionEmpty = True
 
         self.readSettings()
 
@@ -104,7 +107,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Main Menu
         for i in [self.actSave, self.actSaveAs, self.actCloseProject,
                   self.menuEdit, self.menuView, self.menuOrganize,
-                  self.menuTools, self.menuHelp, self.actImport,
+                  self.menuNavigate, self.menuTools, self.menuHelp, self.actImport,
                   self.actCompile, self.actSettings]:
             i.setEnabled(False)
 
@@ -157,6 +160,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.actSplitDialog.triggered.connect(self.documentsSplitDialog)
         self.actSplitCursor.triggered.connect(self.documentsSplitCursor)
         self.actMerge.triggered.connect(self.documentsMerge)
+
+        # Main menu:: Navigate
+        self.actBack.triggered.connect(self.navigateBack)
+        self.actForward.triggered.connect(self.navigateForward)
 
         # Main Menu:: view
         self.generateViewMenu()
@@ -256,6 +263,58 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                   self.actDelete,
                   self.actRename]:
             i.setEnabled(tabIsEditor)
+        match self.tabMain.currentIndex():
+            case self.TabPersos:
+                selectedCharacters = self.lstCharacters.currentCharacters()
+                characterSelectionIsEmpty = not any(selectedCharacters)
+
+                if characterSelectionIsEmpty:
+                    self.pushHistory(("character", None))
+                    self._previousSelectionEmpty = True
+                else:
+                    character = selectedCharacters[0]
+                    self.pushHistory(("character", character.ID()))
+                    self._previousSelectionEmpty = False
+
+            case self.TabPlots:
+                id = self.lstPlots.currentPlotID()
+                self.pushHistory(("plot", id))
+                self._previousSelectionEmpty = id is None
+
+            case self.TabWorld:
+                index = self.mdlWorld.selectedIndex()
+
+                if index.isValid():
+                    id = self.mdlWorld.ID(index)
+                    self.pushHistory(("world", id))
+                    self._previousSelectionEmpty = id is not None
+                else:
+                    self.pushHistory(("world", None))
+                    self._previousSelectionEmpty = True
+
+            case self.TabOutline:
+                index = self.treeOutlineOutline.selectionModel().currentIndex()
+                if index.isValid():
+                    id = self.mdlOutline.ID(index)
+                    self.pushHistory(("outline", id))
+                    self._previousSelectionEmpty = id is not None
+                else:
+                    self.pushHistory(("outline", None))
+                    self._previousSelectionEmpty = False
+
+            case self.TabRedac:
+                index = self.treeRedacOutline.selectionModel().currentIndex()
+                if index.isValid():
+                    id = self.mdlOutline.ID(index)
+                    self.pushHistory(("redac", id))
+                    self._previousSelectionEmpty = id is not None
+                else:
+                    self.pushHistory(("redac", None))
+                    self._previousSelectionEmpty = False
+
+            case _:
+                self.pushHistory(("main", self.tabMain.currentIndex()))
+                self._previousSelectionEmpty = False
 
     def focusChanged(self, old, new):
         """
@@ -294,6 +353,17 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     ###############################################################################
     # OUTLINE
     ###############################################################################
+
+    def outlineChanged(self, selected, deselected):
+        index = self.treeOutlineOutline.selectionModel().currentIndex()
+        if not index.isValid():
+            self.pushHistory(("outline", None))
+            self._previousSelectionEmpty = True
+            return
+        
+        self.pushHistory(("outline", self.mdlOutline.ID(index)))
+        self._previousSelectionEmpty = False
+
 
     def outlineRemoveItemsRedac(self):
         self.treeRedacOutline.delete()
@@ -428,15 +498,22 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             widget = tabData['widget']
             title = tabData['title']
             self.tabPersos.addTab(widget, title)
+
     def handleCharacterSelectionChanged(self):
         selectedCharacters = self.lstCharacters.currentCharacters()
         characterSelectionIsEmpty = not any(selectedCharacters)
         if characterSelectionIsEmpty:
+            self.pushHistory(("character", None))
             self.tabPersos.setEnabled(False)
+            self._previousSelectionEmpty = True
             return
+
         cList = list(filter(None, self.lstCharacters.currentCharacters())) #cList contains all valid characters
         character = cList[0]
         self.changeCurrentCharacter(character)
+
+        self.pushHistory(("character", character.ID()))
+        self._previousSelectionEmpty = False
 
         if len(selectedCharacters) > 1:
             self.setPersoBulkMode(True)
@@ -464,7 +541,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         for character in self.lstCharacters.currentCharacters():
             self.bulkAffectedCharacters.append(character.name())
 
-    def changeCurrentCharacter(self, character, trash=None):
+    def changeCurrentCharacter(self, character):
         if character is None:
             return
 
@@ -545,10 +622,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def changeCurrentPlot(self):
         index = self.lstPlots.currentPlotIndex()
+        id = self.lstPlots.currentPlotID()
 
         if not index.isValid():
             self.tabPlot.setEnabled(False)
+            self.pushHistory(("plot", None))
+            self._previousSelectionEmpty = True
             return
+
+        self.pushHistory(("plot", id))
+        self._previousSelectionEmpty = False
 
         self.tabPlot.setEnabled(True)
         self.txtPlotName.setCurrentModelIndex(index)
@@ -618,7 +701,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         if not index.isValid():
             self.tabWorld.setEnabled(False)
+            self.pushHistory(("world", None))
+            self._previousSelectionEmpty = True
             return
+
+        self.pushHistory(("world", self.mdlWorld.ID(index)))
+        self._previousSelectionEmpty = False
 
         self.tabWorld.setEnabled(True)
         self.txtWorldName.setCurrentModelIndex(index)
@@ -629,6 +717,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     ###############################################################################
     # EDITOR
     ###############################################################################
+
+    def redacOutlineChanged(self):
+        index = self.treeRedacOutline.selectionModel().currentIndex()
+        if not index.isValid():
+            self.pushHistory(("redac", None))
+            self._previousSelectionEmpty = True
+            return
+        
+        self.pushHistory(("redac", self.mdlOutline.ID(index)))
+        self._previousSelectionEmpty = False
 
     def openIndex(self, index):
         self.treeRedacOutline.setCurrentIndex(index)
@@ -727,6 +825,94 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         "Merges selected item(s)."
         if self._lastFocus: self._lastFocus.merge()
 
+    # Navigate
+    
+    def navigateBack(self):
+        self.history.back()
+
+    def navigateForward(self):
+        self.history.forward()
+
+    def pushHistory(self, entry):
+        if self._previousSelectionEmpty:
+            self.history.replace(entry)
+        else:
+            self.history.next(entry)
+
+    def navigated(self, event):
+        if event.entry:
+            match event.entry[0]:
+                case "character":
+                    if self.tabMain.currentIndex() != self.TabPersos:
+                        self.tabMain.setCurrentIndex(self.TabPersos)
+
+                    if event.entry[1] is None:
+                        self.lstCharacters.setCurrentItem(None)
+                        self.lstCharacters.clearSelection()
+                    else:
+                        if self.lstCharacters.currentCharacterID() != event.entry[1]:
+                            char = self.lstCharacters.getItemByID(event.entry[1])
+                            if char != None:
+                                self.lstCharacters.clearSelection()
+                                self.lstCharacters.setCurrentItem(char)
+                case "plot":
+                    if self.tabMain.currentIndex() != self.TabPlots:
+                        self.tabMain.setCurrentIndex(self.TabPlots)
+
+                    if event.entry[1] is None:
+                        self.lstPlots.setCurrentItem(None)
+                    else:
+                        index = self.lstPlots.currentPlotIndex()
+                        if index and index.row() != event.entry[1]:
+                            plot = self.lstPlots.getItemByID(event.entry[1])
+                            if plot != None:
+                                self.lstPlots.setCurrentItem(plot)
+                case "world":
+                    if self.tabMain.currentIndex() != self.TabWorld:
+                        self.tabMain.setCurrentIndex(self.TabWorld)
+
+                    if event.entry[1] is None:
+                        self.treeWorld.selectionModel().clear()
+                    else:
+                        index = self.mdlWorld.selectedIndex()
+                        if index and self.mdlWorld.ID(index) != event.entry[1]:
+                            world = self.mdlWorld.indexByID(event.entry[1])
+                            if world != None:
+                                self.treeWorld.setCurrentIndex(world)
+
+                case "outline":
+                    if self.tabMain.currentIndex() != self.TabOutline:
+                        self.tabMain.setCurrentIndex(self.TabOutline)
+
+                    if event.entry[1] is None:
+                        self.treeOutlineOutline.selectionModel().clear()
+                    else:
+                        index = self.treeOutlineOutline.selectionModel().currentIndex()
+                        if index and self.mdlOutline.ID(index) != event.entry[1]:
+                            outline = self.mdlOutline.getIndexByID(event.entry[1])
+                            if outline is not None:
+                                self.treeOutlineOutline.setCurrentIndex(outline)
+
+                case "redac":
+                    if self.tabMain.currentIndex() != self.TabRedac:
+                        self.tabMain.setCurrentIndex(self.TabRedac)
+
+                    if event.entry[1] is None:
+                        self.treeRedacOutline.selectionModel().clear()
+                    else:
+                        index = self.treeRedacOutline.selectionModel().currentIndex()
+                        if index and self.mdlOutline.ID(index) != event.entry[1]:
+                            outline = self.mdlOutline.getIndexByID(event.entry[1])
+                            if outline is not None:
+                                self.treeRedacOutline.setCurrentIndex(outline)
+
+                case "main":
+                    if self.tabMain.currentIndex() != event.entry[1]:
+                        self.lstTabs.setCurrentRow(event.entry[1])
+
+        self.actBack.setEnabled(event.position > 0)
+        self.actForward.setEnabled(event.position < event.count - 1)
+
     ###############################################################################
     # LOAD AND SAVE
     ###############################################################################
@@ -803,6 +989,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             i.setEnabled(False)
         for i in [self.actSave, self.actSaveAs, self.actCloseProject,
                   self.menuEdit, self.menuView, self.menuOrganize,
+                  self.menuNavigate,
                   self.menuTools, self.menuHelp, self.actImport,
                   self.actCompile, self.actSettings]:
             i.setEnabled(True)
@@ -819,6 +1006,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.sessionStartWordCount = int(wc) if wc != "" else 0
         # Add project name to Window's name
         self.setWindowTitle(self.projectName() + " - " + self.tr("Manuskript"))
+
+        # Reset history
+        self.history.reset()
 
         # Show main Window
         self.switchToProject()
@@ -1080,6 +1270,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.tabMain.currentChanged.connect(self.toolbar.setCurrentGroup)
         self.tabMain.currentChanged.connect(self.tabMainChanged)
 
+        self.history.navigated.connect(self.navigated)
+
         qApp.focusChanged.connect(self.focusChanged)
 
     def makeConnections(self):
@@ -1218,10 +1410,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # self.redacEditor.setModel(self.mdlOutline)
         self.storylineView.setModels(self.mdlOutline, self.mdlCharacter, self.mdlPlots)
 
+        self.treeOutlineOutline.selectionModel().selectionChanged.connect(self.outlineChanged, F.AUC)
         self.treeOutlineOutline.selectionModel().selectionChanged.connect(self.outlineItemEditor.selectionChanged, F.AUC)
         self.treeOutlineOutline.clicked.connect(self.outlineItemEditor.selectionChanged, F.AUC)
 
         # Sync selection
+        self.treeRedacOutline.selectionModel().selectionChanged.connect(self.redacOutlineChanged, F.AUC)
         self.treeRedacOutline.selectionModel().selectionChanged.connect(self.redacMetadata.selectionChanged, F.AUC)
         self.treeRedacOutline.clicked.connect(self.redacMetadata.selectionChanged, F.AUC)
 
@@ -1329,6 +1523,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 lambda: self.tblDebugSubPlots.setRootIndex(self.mdlPlots.index(
                         self.tblDebugPlots.selectionModel().currentIndex().row(),
                         Plot.steps)))
+        
+        self.disconnectAll(self.history.navigated)
 
     ###############################################################################
     # HELP

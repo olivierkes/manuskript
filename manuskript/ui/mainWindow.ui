@@ -2124,9 +2124,17 @@
     <addaction name="actSplitDialog"/>
     <addaction name="actSplitCursor"/>
    </widget>
+   <widget class="QMenu" name="menuNavigate">
+    <property name="title">
+     <string>&amp;Navigate</string>
+    </property>
+    <addaction name="actBack"/>
+    <addaction name="actForward"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
    <addaction name="menuOrganize"/>
+   <addaction name="menuNavigate"/>
    <addaction name="menuView"/>
    <addaction name="menuTools"/>
    <addaction name="menuHelp"/>
@@ -2566,6 +2574,30 @@
    </property>
    <property name="shortcut">
     <string notr="true">Ctrl+Shift+Down</string>
+   </property>
+  </action>
+  <action name="actBack">
+   <property name="icon">
+    <iconset theme="arrow-left">
+     <normaloff>.</normaloff>.</iconset>
+   </property>
+   <property name="text">
+    <string>Go &amp;back</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true">Ctrl+&lt;</string>
+   </property>
+  </action>
+  <action name="actForward">
+   <property name="icon">
+    <iconset theme="arrow-right">
+     <normaloff>.</normaloff>.</iconset>
+   </property>
+   <property name="text">
+    <string>Go &amp;forward</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true">Ctrl+&gt;</string>
    </property>
   </action>
   <action name="actRename">
