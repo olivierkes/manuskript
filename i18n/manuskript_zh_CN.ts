@@ -125,7 +125,7 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="631"/>
         <source>The protocol &quot;{}&quot; is not supported.</source>
-        <translation type="unfinished"></translation>
+        <translation>不支持该 &quot;{}&quot;接口。</translation>
     </message>
 </context>
 <context>
@@ -141,7 +141,7 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="543"/>
         <source>{} (CTRL+Click to open)</source>
-        <translation type="unfinished"></translation>
+        <translation>{} （按住CTRL并点击以打开)</translation>
     </message>
 </context>
 <context>
@@ -449,7 +449,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1562"/>
         <source>Cheat Sheet</source>
-        <translation type="unfinished">备忘录</translation>
+        <translation>小抄</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1564"/>
@@ -559,7 +559,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1028"/>
         <source>Project {} saved.</source>
-        <translation type="unfinished">* {} 没有在项目文件中找到。</translation>
+        <translation>已经保存{} 项目。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1032"/>
@@ -952,7 +952,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1503"/>
         <source>Allow POV</source>
-        <translation type="unfinished"></translation>
+        <translation>允许视角</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1618"/>
@@ -992,7 +992,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1350"/>
         <source>This session is not being logged.</source>
-        <translation type="unfinished"></translation>
+        <translation>日志没有记录当前活动。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1359"/>
@@ -1027,12 +1027,12 @@
     <message>
         <location filename="../manuskript/ui/search.py" line="52"/>
         <source>Shift+F3</source>
-        <translation type="unfinished"></translation>
+        <translation>Shift+F3</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="56"/>
         <source>Situation</source>
-        <translation type="unfinished"></translation>
+        <translation>情形</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="57"/>
@@ -1042,17 +1042,17 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1584"/>
         <source>&amp;Import…</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;导入…</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1588"/>
         <source>&amp;Split…</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;分隔…</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1616"/>
         <source>&amp;Targets</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;目标</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1617"/>
@@ -1067,22 +1067,22 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="329"/>
         <source>Bulk Info Manager</source>
-        <translation type="unfinished"></translation>
+        <translation>信息批量管理</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="374"/>
         <source>No Entries!</source>
-        <translation type="unfinished"></translation>
+        <translation>没有条目！</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="374"/>
         <source>Please add entries to apply to the selected characters.</source>
-        <translation type="unfinished"></translation>
+        <translation>请加入条目以作用于所选人物。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="385"/>
         <source>Bulk Info Applied</source>
-        <translation type="unfinished"></translation>
+        <translation>信息批量应用</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="385"/>
