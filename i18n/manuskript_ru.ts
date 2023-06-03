@@ -112,7 +112,7 @@
     <message>
         <location filename="../manuskript/ui/listDialog_ui.py" line="44"/>
         <source>Text</source>
-        <translation type="unfinished">Текст</translation>
+        <translation>Текст</translation>
     </message>
 </context>
 <context>
@@ -449,7 +449,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1562"/>
         <source>Cheat Sheet</source>
-        <translation type="unfinished">Пам&amp;ятка</translation>
+        <translation>Пам&amp;ятка</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1564"/>
@@ -1053,52 +1053,52 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1616"/>
         <source>&amp;Targets</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Цели</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1617"/>
         <source>Draft and session word count targets</source>
-        <translation type="unfinished"></translation>
+        <translation>Цели для черновика и сессии</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="321"/>
         <source>Value</source>
-        <translation type="unfinished">Значение</translation>
+        <translation>Значение</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="329"/>
         <source>Bulk Info Manager</source>
-        <translation type="unfinished"></translation>
+        <translation>Менеджер значений</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="374"/>
         <source>No Entries!</source>
-        <translation type="unfinished"></translation>
+        <translation>Нет значений!</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="374"/>
         <source>Please add entries to apply to the selected characters.</source>
-        <translation type="unfinished"></translation>
+        <translation>Пожалуйста введите значения, которые нужно применить к выбранным персонажам.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="385"/>
         <source>Bulk Info Applied</source>
-        <translation type="unfinished"></translation>
+        <translation>Значения добавлены</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="385"/>
         <source>The bulk info has been applied to the selected characters.</source>
-        <translation type="unfinished"></translation>
+        <translation>Значения добавлены к выбранным персонажам.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="450"/>
         <source>Un-applied data!</source>
-        <translation type="unfinished"></translation>
+        <translation>Изменения не применены!</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="450"/>
         <source>There are un-applied entries in this tab. Discard them?</source>
-        <translation type="unfinished"></translation>
+        <translation>В этой вкладке есть не примененные значения. Удалить их?</translation>
     </message>
 </context>
 <context>
@@ -3252,12 +3252,12 @@
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="32"/>
         <source>Match words</source>
-        <translation type="unfinished"></translation>
+        <translation>Включая слова</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="33"/>
         <source>Regex</source>
-        <translation type="unfinished"></translation>
+        <translation>Шаблон</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="39"/>
@@ -3450,42 +3450,42 @@
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="129"/>
         <source>Draft Target</source>
-        <translation type="unfinished"></translation>
+        <translation>Цель для черновика</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="136"/>
         <source>0</source>
-        <translation type="unfinished"></translation>
+        <translation>0</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="137"/>
         <source>of</source>
-        <translation type="unfinished">из</translation>
+        <translation>из</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="132"/>
         <source>10,000</source>
-        <translation type="unfinished"></translation>
+        <translation>10 000</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="133"/>
         <source>Words</source>
-        <translation type="unfinished"></translation>
+        <translation>Слов</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="134"/>
         <source>Session Target</source>
-        <translation type="unfinished"></translation>
+        <translation>Цель для сеанса</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="135"/>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Сброс</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="138"/>
         <source>words</source>
-        <translation type="unfinished"></translation>
+        <translation>слов</translation>
     </message>
 </context>
 <context>
