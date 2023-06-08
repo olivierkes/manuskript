@@ -70,6 +70,9 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
       <column type="guint"/>
     </columns>
   </object>
+  <object class="GtkTreeModelFilter" id="filtered_frequency_store">
+    <property name="child-model">words_frequency_store</property>
+  </object>
   <object class="HdyWindow" id="frequency_window">
     <property name="can-focus">False</property>
     <child>
@@ -364,7 +367,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                           <object class="GtkTreeView">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
-                            <property name="model">words_frequency_store</property>
+                            <property name="model">filtered_frequency_store</property>
                             <property name="search-column">0</property>
                             <property name="show-expanders">False</property>
                             <property name="tooltip-column">0</property>

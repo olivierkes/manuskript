@@ -69,6 +69,11 @@ class FrequencyWindow(AbstractDialog):
         self.wordsFrequencyStore = builder.get_object("words_frequency_store")
         self.phrasesFrequencyStore = builder.get_object("phrases_frequency_store")
 
+        self.filteredFrequencyStore = builder.get_object("filtered_frequency_store")
+
+        self.filteredFrequencyStore.set_visible_func(self._filterFrequencies)
+        self.filteredFrequencyStore.refilter()
+
         self.phraseMinimum = builder.get_object("phrase_minimum")
         self.phraseMaximum = builder.get_object("phrase_maximum")
         self.wordSize = builder.get_object("word_size")
@@ -82,12 +87,34 @@ class FrequencyWindow(AbstractDialog):
         self.back.connect("clicked", self._backClicked)
         self.analyzeWords.connect("clicked", self._analyzeWordsClicked)
         self.analyzePhrases.connect("clicked", self._analyzePhrasesClicked)
+        self.wordSize.connect("value-changed", self._wordSizeChanged)
         self.excludeWordSelection.connect("changed", self._excludeWordSelectionChanged)
         self.removeWord.connect("clicked", self._removeWordClicked)
         self.addWord.connect("clicked", self._addWordClicked)
     
     def getProject(self) -> Project:
         return self.mainWindow.getProject()
+    
+    def _filterFrequencies(self, model, iterator, userdata):
+        word = model[iterator][0]
+
+        if word is None:
+            return False
+        
+        word_size = validInt(self.wordSize.get_value())
+
+        if len(word) < word_size:
+            return False
+
+        iter = self.excludeWordsStore.get_iter_first()
+        while iter is not None:
+            excluded = self.excludeWordsStore.get_value(iter, 0)
+            if word == excluded:
+                return False
+
+            iter = self.excludeWordsStore.iter_next(iter)
+
+        return True
 
     def _backClicked(self, button: Gtk.Button):
         if self.wordLeaflet.get_visible_child_name() == "wordlist_view":
@@ -113,6 +140,9 @@ class FrequencyWindow(AbstractDialog):
         
         for pattern in patterns:
             for match in pattern.findall(outlineText.text):
+                if match is None:
+                    continue
+
                 if match in self.frequencies:
                     self.frequencies[match] = self.frequencies[match] + 1
                 else:
@@ -203,6 +233,9 @@ class FrequencyWindow(AbstractDialog):
     def _analyzePhrasesClicked(self, button: Gtk.Button):
         self.analyze(AnalyzeStatus.PHRASES)
     
+    def _wordSizeChanged(self, adjustment: Gtk.Adjustment):
+        self.filteredFrequencyStore.refilter()
+    
     def _excludeWordSelectionChanged(self, selection: Gtk.TreeSelection):
         model, tree_iter = selection.get_selected()
 
@@ -215,6 +248,7 @@ class FrequencyWindow(AbstractDialog):
             return
         
         self.excludeWordsStore.remove(tree_iter)
+        self.filteredFrequencyStore.refilter()
     
     def _addWordClicked(self, button: Gtk.Button):
         tree_iter = self.excludeWordsStore.append()
@@ -224,3 +258,4 @@ class FrequencyWindow(AbstractDialog):
         
         word = self.wordEntry.get_buffer().get_text()
         self.excludeWordsStore.set_value(tree_iter, 0, word)
+        self.filteredFrequencyStore.refilter()
