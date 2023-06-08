@@ -121,13 +121,13 @@ class FrequencyWindow(AbstractDialog):
     def __completeOutlineItem(self):
         outline_item = self.outlineCompletion.pop(0)
 
-        if outline_item.state != OutlineState.COMPLETE:
-            outline_item.load(False)
-
         if isinstance(outline_item, OutlineFolder):
             for item in outline_item:
                 self.outlineCompletion.append(item)
         elif isinstance(outline_item, OutlineText):
+            if outline_item.state != OutlineState.COMPLETE:
+                outline_item.load(False)
+
             self.__analyzeOutlineText(outline_item)
         
         self.analyzeCompleted = self.analyzeCompleted + 1

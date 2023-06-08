@@ -367,6 +367,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                             <property name="model">words_frequency_store</property>
                             <property name="search-column">0</property>
                             <property name="show-expanders">False</property>
+                            <property name="tooltip-column">0</property>
                             <child internal-child="selection">
                               <object class="GtkTreeSelection"/>
                             </child>
@@ -374,7 +375,6 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               <object class="GtkTreeViewColumn">
                                 <property name="title" translatable="yes">Word</property>
                                 <property name="expand">True</property>
-                                <property name="sort-indicator">True</property>
                                 <property name="sort-column-id">0</property>
                                 <child>
                                   <object class="GtkCellRendererText"/>
@@ -567,6 +567,9 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <property name="model">phrases_frequency_store</property>
+                            <property name="search-column">0</property>
+                            <property name="show-expanders">False</property>
+                            <property name="tooltip-column">0</property>
                             <child internal-child="selection">
                               <object class="GtkTreeSelection"/>
                             </child>
@@ -574,7 +577,6 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               <object class="GtkTreeViewColumn">
                                 <property name="title" translatable="yes">Phrase</property>
                                 <property name="expand">True</property>
-                                <property name="sort-indicator">True</property>
                                 <property name="sort-column-id">0</property>
                                 <child>
                                   <object class="GtkCellRendererText"/>
