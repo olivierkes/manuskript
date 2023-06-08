@@ -28,7 +28,7 @@ class FrequencyWindow(AbstractDialog):
         AbstractDialog.__init__(self, mainWindow, "ui/frequency.glade", "frequency_window")
 
         self.analyzeStatus = AnalyzeStatus.NONE
-        self.frequencies = dict()
+        self.analyzeTexts = list()
         self.outlineCompletion = list()
         self.analyzeCompleted = 0
 
@@ -70,7 +70,7 @@ class FrequencyWindow(AbstractDialog):
         self.phrasesFrequencyStore = builder.get_object("phrases_frequency_store")
 
         self.filteredFrequencyStore = builder.get_object("filtered_frequency_store")
-
+        
         self.filteredFrequencyStore.set_visible_func(self._filterFrequencies)
         self.filteredFrequencyStore.refilter()
 
@@ -122,32 +122,6 @@ class FrequencyWindow(AbstractDialog):
         else:
             self.hide()
     
-    def __analyzeOutlineText(self, outlineText: OutlineText):
-        if self.analyzeStatus == AnalyzeStatus.WORDS:
-            word_size = validInt(self.wordSize.get_value())
-
-            patterns = [re.compile(r"\w{" + str(word_size) + r",}")]
-        elif self.analyzeStatus == AnalyzeStatus.PHRASES:
-            patterns = []
-
-            phrase_minimum = validInt(self.phraseMinimum.get_value())
-            phrase_maximum = validInt(self.phraseMaximum.get_value())
-
-            for n in range(phrase_minimum, phrase_maximum + 1):
-                patterns.append(re.compile(r"\w+" + r"\s+\w+" * (n - 1)))
-        else:
-            return
-        
-        for pattern in patterns:
-            for match in pattern.findall(outlineText.text):
-                if match is None:
-                    continue
-
-                if match in self.frequencies:
-                    self.frequencies[match] = self.frequencies[match] + 1
-                else:
-                    self.frequencies[match] = 1
-    
     def __completeOutlineItem(self):
         outline_item = self.outlineCompletion.pop(0)
 
@@ -157,8 +131,8 @@ class FrequencyWindow(AbstractDialog):
         elif isinstance(outline_item, OutlineText):
             if outline_item.state != OutlineState.COMPLETE:
                 outline_item.load(False)
-
-            self.__analyzeOutlineText(outline_item)
+            
+            self.analyzeTexts.append(outline_item.text)
         
         self.analyzeCompleted = self.analyzeCompleted + 1
 
@@ -174,10 +148,36 @@ class FrequencyWindow(AbstractDialog):
         if incomplete > 0:
             return True
         
+        patterns = list()
+
+        if self.analyzeStatus == AnalyzeStatus.WORDS:
+            word_size = validInt(self.wordSize.get_value())
+
+            patterns.append(re.compile(r"\w{" + str(word_size) + r",}"))
+        elif self.analyzeStatus == AnalyzeStatus.PHRASES:
+            phrase_minimum = validInt(self.phraseMinimum.get_value())
+            phrase_maximum = validInt(self.phraseMaximum.get_value())
+
+            for n in range(phrase_minimum, phrase_maximum + 1):
+                patterns.append(re.compile(r"\w+" + r"\s+\w+" * (n - 1)))
+        
+        frequencies = dict()
+        text = "\n".join(self.analyzeTexts)
+        
+        for pattern in patterns:
+            for match in pattern.findall(text):
+                if match is None:
+                    continue
+
+                if match in frequencies:
+                    frequencies[match] = frequencies[match] + 1
+                else:
+                    frequencies[match] = 1
+        
         if self.analyzeStatus == AnalyzeStatus.WORDS:
             self.wordsFrequencyStore.clear()
 
-            for word, frequency in self.frequencies.items():
+            for word, frequency in frequencies.items():
                 tree_iter = self.wordsFrequencyStore.append()
 
                 if tree_iter is None:
@@ -190,7 +190,7 @@ class FrequencyWindow(AbstractDialog):
         elif self.analyzeStatus == AnalyzeStatus.PHRASES:
             self.phrasesFrequencyStore.clear()
 
-            for phrase, frequency in self.frequencies.items():
+            for phrase, frequency in frequencies.items():
                 tree_iter = self.phrasesFrequencyStore.append()
 
                 if tree_iter is None:
@@ -200,7 +200,10 @@ class FrequencyWindow(AbstractDialog):
                 self.phrasesFrequencyStore.set_value(tree_iter, 1, validInt(frequency))
         
         self.analyzeStatus = AnalyzeStatus.NONE
-        self.frequencies = dict()
+        self.analyzeTexts = list()
+
+        self.analyzeWords.set_sensitive(True)
+        self.analyzePhrases.set_sensitive(True)
         return False
     
     def analyze(self, status: AnalyzeStatus):
@@ -212,10 +215,13 @@ class FrequencyWindow(AbstractDialog):
         if project is None:
             return
         
+        self.analyzeWords.set_sensitive(False)
+        self.analyzePhrases.set_sensitive(False)
+        
         self.analyzeStatus = status
 
         if len(self.outlineCompletion) == 0:
-            self.frequencies = dict()
+            self.analyzeTexts = list()
             self.analyzeCompleted = 0
 
             if self.analyzeStatus == AnalyzeStatus.WORDS:
