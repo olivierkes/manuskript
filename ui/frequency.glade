@@ -27,6 +27,12 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
   <!-- interface-name Manuskript -->
   <!-- interface-description Manuskript is an open-source tool for writers. -->
   <!-- interface-copyright 2015-2021 Olivier Keshavjee et al. -->
+  <object class="GtkListStore" id="exclude_words_store">
+    <columns>
+      <!-- column-name word -->
+      <column type="gchararray"/>
+    </columns>
+  </object>
   <object class="GtkAdjustment" id="phrase_maximum">
     <property name="lower">2</property>
     <property name="upper">99</property>
@@ -41,12 +47,28 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
     <property name="step-increment">1</property>
     <property name="page-increment">10</property>
   </object>
+  <object class="GtkListStore" id="phrases_frequency_store">
+    <columns>
+      <!-- column-name phrase -->
+      <column type="gchararray"/>
+      <!-- column-name frequency -->
+      <column type="guint"/>
+    </columns>
+  </object>
   <object class="GtkAdjustment" id="word_size">
     <property name="lower">1</property>
     <property name="upper">99</property>
     <property name="value">1</property>
     <property name="step-increment">1</property>
     <property name="page-increment">10</property>
+  </object>
+  <object class="GtkListStore" id="words_frequency_store">
+    <columns>
+      <!-- column-name word -->
+      <column type="gchararray"/>
+      <!-- column-name frequency -->
+      <column type="guint"/>
+    </columns>
   </object>
   <object class="HdyWindow" id="frequency_window">
     <property name="can-focus">False</property>
@@ -184,9 +206,26 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                     <property name="visible">True</property>
                                     <property name="can-focus">False</property>
                                     <child>
-                                      <object class="GtkListBox">
+                                      <object class="GtkTreeView">
                                         <property name="visible">True</property>
-                                        <property name="can-focus">False</property>
+                                        <property name="can-focus">True</property>
+                                        <property name="model">exclude_words_store</property>
+                                        <property name="headers-visible">False</property>
+                                        <property name="headers-clickable">False</property>
+                                        <child internal-child="selection">
+                                          <object class="GtkTreeSelection" id="exclude_word_selection"/>
+                                        </child>
+                                        <child>
+                                          <object class="GtkTreeViewColumn">
+                                            <property name="title" translatable="yes">Word</property>
+                                            <child>
+                                              <object class="GtkCellRendererText"/>
+                                              <attributes>
+                                                <attribute name="text">0</attribute>
+                                              </attributes>
+                                            </child>
+                                          </object>
+                                        </child>
                                       </object>
                                     </child>
                                   </object>
@@ -204,8 +243,9 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                 <property name="can-focus">False</property>
                                 <property name="spacing">8</property>
                                 <child>
-                                  <object class="GtkButton">
+                                  <object class="GtkButton" id="remove_word">
                                     <property name="visible">True</property>
+                                    <property name="sensitive">False</property>
                                     <property name="can-focus">True</property>
                                     <property name="receives-default">True</property>
                                     <child>
@@ -223,7 +263,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkEntry">
+                                  <object class="GtkEntry" id="word_entry">
                                     <property name="visible">True</property>
                                     <property name="can-focus">True</property>
                                   </object>
@@ -234,7 +274,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkButton">
+                                  <object class="GtkButton" id="add_word">
                                     <property name="visible">True</property>
                                     <property name="can-focus">True</property>
                                     <property name="receives-default">True</property>
@@ -277,10 +317,9 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLevelBar">
+                      <object class="GtkProgressBar" id="words_progress">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <property name="margin-top">12</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -322,9 +361,39 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <child>
-                          <object class="GtkListBox">
+                          <object class="GtkTreeView">
                             <property name="visible">True</property>
-                            <property name="can-focus">False</property>
+                            <property name="can-focus">True</property>
+                            <property name="model">words_frequency_store</property>
+                            <child internal-child="selection">
+                              <object class="GtkTreeSelection"/>
+                            </child>
+                            <child>
+                              <object class="GtkTreeViewColumn">
+                                <property name="title" translatable="yes">Word</property>
+                                <property name="expand">True</property>
+                                <property name="sort-indicator">True</property>
+                                <child>
+                                  <object class="GtkCellRendererText"/>
+                                  <attributes>
+                                    <attribute name="text">0</attribute>
+                                  </attributes>
+                                </child>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkTreeViewColumn">
+                                <property name="title" translatable="yes">Frequency</property>
+                                <property name="expand">True</property>
+                                <property name="sort-indicator">True</property>
+                                <child>
+                                  <object class="GtkCellRendererText"/>
+                                  <attributes>
+                                    <attribute name="text">1</attribute>
+                                  </attributes>
+                                </child>
+                              </object>
+                            </child>
                           </object>
                         </child>
                       </object>
@@ -490,9 +559,39 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <child>
-                          <object class="GtkListBox">
+                          <object class="GtkTreeView">
                             <property name="visible">True</property>
-                            <property name="can-focus">False</property>
+                            <property name="can-focus">True</property>
+                            <property name="model">phrases_frequency_store</property>
+                            <child internal-child="selection">
+                              <object class="GtkTreeSelection"/>
+                            </child>
+                            <child>
+                              <object class="GtkTreeViewColumn">
+                                <property name="title" translatable="yes">Phrase</property>
+                                <property name="expand">True</property>
+                                <property name="sort-indicator">True</property>
+                                <child>
+                                  <object class="GtkCellRendererText"/>
+                                  <attributes>
+                                    <attribute name="text">0</attribute>
+                                  </attributes>
+                                </child>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkTreeViewColumn">
+                                <property name="title" translatable="yes">Frequency</property>
+                                <property name="expand">True</property>
+                                <property name="sort-indicator">True</property>
+                                <child>
+                                  <object class="GtkCellRendererText"/>
+                                  <attributes>
+                                    <attribute name="text">1</attribute>
+                                  </attributes>
+                                </child>
+                              </object>
+                            </child>
                           </object>
                         </child>
                       </object>
@@ -506,7 +605,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkProgressBar">
+                  <object class="GtkProgressBar" id="phrases_progress">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                   </object>
