@@ -1088,17 +1088,17 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="385"/>
         <source>The bulk info has been applied to the selected characters.</source>
-        <translation type="unfinished"></translation>
+        <translation>Значення додано до обраних персонажів.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="450"/>
         <source>Un-applied data!</source>
-        <translation type="unfinished"></translation>
+        <translation>Незастосовані дані!</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="450"/>
         <source>There are un-applied entries in this tab. Discard them?</source>
-        <translation type="unfinished"></translation>
+        <translation>На цій вкладці є незастосовані записи. Видалити їх?</translation>
     </message>
 </context>
 <context>
@@ -3455,12 +3455,12 @@
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="136"/>
         <source>0</source>
-        <translation type="unfinished">0</translation>
+        <translation>0</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="137"/>
         <source>of</source>
-        <translation type="unfinished">з</translation>
+        <translation>з</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="132"/>
