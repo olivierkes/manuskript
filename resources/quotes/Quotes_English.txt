@@ -3,5 +3,3 @@
 	“I’m not in a mood for writing; I must write on until I am.” -- Jane Austen
 	"Show Don't Tell" -- Pretty much everyone
 	"In descriptions of Nature one must seize on small details, grouping them so that when the reader closes his eyes he gets a picture. For instance, you’ll have a moonlit night if you write that on the mill dam a piece of glass from a broken bottle glittered like a bright little star, and that the black shadow of a dog or a wolf rolled past like a ball." -- Anton Pavlovich Chekhov
-
-
