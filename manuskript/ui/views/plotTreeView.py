@@ -65,13 +65,17 @@ class plotTreeView(QTreeWidget):
         return find(self.invisibleRootItem(), ID)
 
     def currentPlotIndex(self):
-        "Returns index of the current item in plot model."
+        "Returns index of the current item in plot model."        
+        return self._model.getIndexFromID(self.currentPlotID())
+    
+    def currentPlotID(self):
+        "Returns ID of the current item in plot model."
         ID = None
         if self.currentItem():
             ID = self.currentItem().data(0, Qt.UserRole)
 
-        return self._model.getIndexFromID(ID)
-
+        return ID
+    
     ###############################################################################
     # UPDATES
     ###############################################################################
