@@ -147,117 +147,117 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1538"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1553"/>
         <source>General</source>
         <translation>Generale</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1474"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1489"/>
         <source>Title</source>
         <translation>Titolo</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1475"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1490"/>
         <source>Subtitle</source>
         <translation>Sottotitolo</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1476"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1491"/>
         <source>Series</source>
         <translation>Serie</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1477"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1492"/>
         <source>Volume</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1478"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1493"/>
         <source>Genre</source>
         <translation>Genere</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1479"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1494"/>
         <source>License</source>
         <translation>Licenza</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1480"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1495"/>
         <source>Author</source>
         <translation>Autore</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1536"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1551"/>
         <source>Name</source>
         <translation>Nome</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1482"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1497"/>
         <source>Email</source>
         <translation>E-mail</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1528"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1543"/>
         <source>Summary</source>
         <translation>Riassunto</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1484"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1499"/>
         <source>Situation:</source>
         <translation>Situazione:</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1524"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1539"/>
         <source>Summary:</source>
         <translation>Riassunto:</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1487"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1502"/>
         <source>One sentence</source>
         <translation>Una frase</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1529"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1544"/>
         <source>One paragraph</source>
         <translation>Un paragrafo</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1530"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1545"/>
         <source>One page</source>
         <translation>Una pagina</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1531"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1546"/>
         <source>Full</source>
         <translation>Completo</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1492"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1507"/>
         <source>One sentence summary</source>
         <translation>Riassunto in una frase</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1494"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1509"/>
         <source>One paragraph summary</source>
         <translation>Riassunto in un paragrafo</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1495"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1510"/>
         <source>Expand each sentence of your one paragraph summary to a paragraph</source>
         <translation>Espandi ogni frase del riassunto in un paragrafo in un nuovo paragrafo</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1496"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1511"/>
         <source>One page summary</source>
         <translation>Riassunto in una pagina</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1497"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1512"/>
         <source>Full summary</source>
         <translation>Riassunto completo</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1485"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1500"/>
         <source>What if...?</source>
         <translation>Cosa succede se...?</translation>
     </message>
@@ -267,67 +267,67 @@
         <translation>Personaggi</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1499"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1514"/>
         <source>Names</source>
         <translation>Nomi</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1533"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1548"/>
         <source>Filter</source>
         <translation>Filtro</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1523"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1538"/>
         <source>Basic info</source>
         <translation>Informazioni di base</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1519"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1534"/>
         <source>Importance</source>
         <translation>Importanza</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1504"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1519"/>
         <source>Motivation</source>
         <translation>Motivazione</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1505"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1520"/>
         <source>Goal</source>
         <translation>Obiettivo</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1506"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1521"/>
         <source>Conflict</source>
         <translation>Conflitto</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1507"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1522"/>
         <source>Epiphany</source>
         <translation>Epifania</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1508"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1523"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One sentence&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Una frase&lt;br/&gt;riassunto&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1509"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1524"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One paragraph&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Un paragrafo&lt;br/&gt;riassunto&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1512"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1527"/>
         <source>Notes</source>
         <translation>Note</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1514"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1529"/>
         <source>Detailed info</source>
         <translation>Informazioni dettagliate</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1547"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1562"/>
         <source>Plots</source>
         <translation>Trame</translation>
     </message>
@@ -337,22 +337,22 @@
         <translation>Trama</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1520"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1535"/>
         <source>Character(s)</source>
         <translation>Personaggio(i)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1537"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1552"/>
         <source>Description</source>
         <translation>Descrizione</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1522"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1537"/>
         <source>Result</source>
         <translation>Esito</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1527"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1542"/>
         <source>Resolution steps</source>
         <translation>Passaggi risolutivi</translation>
     </message>
@@ -362,22 +362,22 @@
         <translation>Ambientazione</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1535"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1550"/>
         <source>Populates with empty data</source>
         <translation>Popola con nuovi dati</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1541"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1556"/>
         <source>More</source>
         <translation>Di più</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1539"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1554"/>
         <source>Source of passion</source>
         <translation>Fonte di passione</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1540"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1555"/>
         <source>Source of conflict</source>
         <translation>Fonte di conflitto</translation>
     </message>
@@ -387,12 +387,12 @@
         <translation>Quadro d'insieme</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1544"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1559"/>
         <source>Editor</source>
         <translation>Editor di testo</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1551"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1566"/>
         <source>Debug</source>
         <translation>Messa a punto</translation>
     </message>
@@ -402,631 +402,631 @@
         <translation>Dati grezzi</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1546"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1561"/>
         <source>Persos</source>
         <translation>Personaggi</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1550"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1565"/>
         <source>Labels</source>
         <translation>Etichette</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1552"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1567"/>
         <source>&amp;File</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1553"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1568"/>
         <source>&amp;Recent</source>
         <translation>&amp;Recente</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1554"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1569"/>
         <source>&amp;Help</source>
         <translation>&amp;Guida</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1555"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1570"/>
         <source>&amp;Tools</source>
         <translation>&amp;Strumenti</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1556"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1571"/>
         <source>&amp;Edit</source>
         <translation>&amp;Modifica</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1559"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1574"/>
         <source>&amp;View</source>
         <translation>&amp;Visualizza</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1560"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1575"/>
         <source>&amp;Mode</source>
         <translation>&amp;Modalità</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1562"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1578"/>
         <source>Cheat Sheet</source>
         <translation>Foglio di trucchi</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1564"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1580"/>
         <source>&amp;Navigation</source>
         <translation>&amp;Navigazione</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1565"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1581"/>
         <source>&amp;Open</source>
         <translation>&amp;Apri</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1566"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1582"/>
         <source>&amp;Save</source>
         <translation>&amp;Salva</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1567"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1583"/>
         <source>Sa&amp;ve as...</source>
         <translation>Sal&amp;va come...</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1568"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1584"/>
         <source>&amp;Quit</source>
         <translation>&amp;Esci</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1569"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1585"/>
         <source>&amp;Show help texts</source>
         <translation>&amp;Mostra la guida</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1570"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1586"/>
         <source>&amp;Spellcheck</source>
         <translation>&amp;Controllo ortografico</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1571"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1587"/>
         <source>&amp;Labels...</source>
         <translation>&amp;Etichette...</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1572"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1588"/>
         <source>&amp;Status...</source>
         <translation>&amp;Stato...</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1573"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1589"/>
         <source>Tree</source>
         <translation>Albero</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1574"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1590"/>
         <source>&amp;Simple</source>
         <translation>&amp;Semplice</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1575"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1591"/>
         <source>&amp;Fiction</source>
         <translation>&amp;Narrativa</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1576"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1592"/>
         <source>Index cards</source>
         <translation>Schede</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1578"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1594"/>
         <source>S&amp;ettings</source>
         <translation>I&amp;mpostazioni</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1579"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1595"/>
         <source>&amp;Close project</source>
         <translation>&amp;Chiudi progetto</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1580"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1596"/>
         <source>Co&amp;mpile</source>
         <translation>Co&amp;mpila per esportazione</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1581"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1597"/>
         <source>&amp;Frequency Analyzer</source>
         <translation>&amp;Analizzatore di frequenza</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1473"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1488"/>
         <source>Book information</source>
         <translation>Ragguagli sul libro</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1582"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1598"/>
         <source>&amp;About</source>
         <translation>&amp;A proposito</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1583"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1599"/>
         <source>About Manuskript</source>
         <translation>A proposito di Manuskript</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="896"/>
+        <location filename="../manuskript/mainWindow.py" line="1086"/>
         <source>Manuskript</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1028"/>
+        <location filename="../manuskript/mainWindow.py" line="1218"/>
         <source>Project {} saved.</source>
         <translation>Progetto {} salvato.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1032"/>
+        <location filename="../manuskript/mainWindow.py" line="1222"/>
         <source>WARNING: Project {} not saved.</source>
         <translation>ATTENZIONE: Progetto {} non salvato.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1052"/>
+        <location filename="../manuskript/mainWindow.py" line="1242"/>
         <source>Project {} loaded.</source>
         <translation>Progetto {} caricato.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1058"/>
+        <location filename="../manuskript/mainWindow.py" line="1248"/>
         <source>Project {} loaded with some errors.</source>
         <translation>Progetto {} caricato con alcuni errori.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1415"/>
+        <location filename="../manuskript/mainWindow.py" line="1611"/>
         <source> (~{} pages)</source>
         <translation> (~{} pagine)</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1418"/>
+        <location filename="../manuskript/mainWindow.py" line="1614"/>
         <source>Words: {}{}</source>
         <translation>Parole: {}{}</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1426"/>
+        <location filename="../manuskript/mainWindow.py" line="1622"/>
         <source>Book summary</source>
         <translation>Riassunto del libro</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1427"/>
+        <location filename="../manuskript/mainWindow.py" line="1623"/>
         <source>Project tree</source>
         <translation>Schema ad albero del progetto</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1428"/>
+        <location filename="../manuskript/mainWindow.py" line="1624"/>
         <source>Metadata</source>
         <translation>Metadati</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1429"/>
+        <location filename="../manuskript/mainWindow.py" line="1625"/>
         <source>Story line</source>
         <translation>Sviluppo della storia</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1494"/>
+        <location filename="../manuskript/mainWindow.py" line="1690"/>
         <source>Enter information about your book, and yourself.</source>
         <translation>Inserisci informazioni sul tuo libro, e su di te.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1497"/>
+        <location filename="../manuskript/mainWindow.py" line="1693"/>
         <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous
                      evil wizard wasn&apos;t able to kill a baby?&apos; (Harry Potter)</source>
         <translation>La situazione iniziale, in forma di domanda tipo «Cosa succede se...?». Es: «Cosa succede se il pericoloso
                      mago cattivo non riesce ad uccidere un bambino?» (Harry Potter)</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1502"/>
+        <location filename="../manuskript/mainWindow.py" line="1698"/>
         <source>Take time to think about a one sentence (~50 words) summary of your book. Then expand it to
                      a paragraph, then to a page, then to a full summary.</source>
         <translation>Prenditi il tempo per pensare ad una frase riassuntiva (~50 parole) del tuo libro. Poi espandila ad
                      un paragrafo, poi ad una pagina, poi ad un riassunto completo.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1507"/>
+        <location filename="../manuskript/mainWindow.py" line="1703"/>
         <source>Create your characters.</source>
         <translation>Crea i tuoi personaggi.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1510"/>
+        <location filename="../manuskript/mainWindow.py" line="1706"/>
         <source>Develop plots.</source>
         <translation>Sviluppa le trame.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1513"/>
+        <location filename="../manuskript/mainWindow.py" line="1709"/>
         <source>Build worlds.  Create hierarchy of broad categories down to specific details.</source>
         <translation>Costruisci i mondi. Crea una gerarchia di ampie categorie fino ad arrivare ai dettagli specifici.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1516"/>
+        <location filename="../manuskript/mainWindow.py" line="1712"/>
         <source>Create the outline of your masterpiece.</source>
         <translation>Crea il contorno del tuo capolavoro.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1519"/>
+        <location filename="../manuskript/mainWindow.py" line="1715"/>
         <source>Write.</source>
         <translation>Scrivi.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1522"/>
+        <location filename="../manuskript/mainWindow.py" line="1718"/>
         <source>Debug info. Sometimes useful.</source>
         <translation>Informazioni di debug. A volte possono essere utili.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1536"/>
+        <location filename="../manuskript/mainWindow.py" line="1732"/>
         <source>Dictionary</source>
         <translation>Dizionario</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1684"/>
+        <location filename="../manuskript/mainWindow.py" line="1880"/>
         <source>Nothing</source>
         <translation>Niente</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1685"/>
+        <location filename="../manuskript/mainWindow.py" line="1881"/>
         <source>POV</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1686"/>
+        <location filename="../manuskript/mainWindow.py" line="1882"/>
         <source>Label</source>
         <translation>Etichetta</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1687"/>
+        <location filename="../manuskript/mainWindow.py" line="1883"/>
         <source>Progress</source>
         <translation>Avanzamento</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1688"/>
+        <location filename="../manuskript/mainWindow.py" line="1884"/>
         <source>Compile</source>
         <translation>Compilato</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1711"/>
+        <location filename="../manuskript/mainWindow.py" line="1907"/>
         <source>Icon color</source>
         <translation>Colore dell'icona</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1712"/>
+        <location filename="../manuskript/mainWindow.py" line="1908"/>
         <source>Text color</source>
         <translation>Colore del testo</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1713"/>
+        <location filename="../manuskript/mainWindow.py" line="1909"/>
         <source>Background color</source>
         <translation>Colore dello sfondo</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1704"/>
+        <location filename="../manuskript/mainWindow.py" line="1900"/>
         <source>Icon</source>
         <translation>Icona</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1705"/>
+        <location filename="../manuskript/mainWindow.py" line="1901"/>
         <source>Text</source>
         <translation>Testo</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1706"/>
+        <location filename="../manuskript/mainWindow.py" line="1902"/>
         <source>Background</source>
         <translation>Sfondo</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1707"/>
+        <location filename="../manuskript/mainWindow.py" line="1903"/>
         <source>Border</source>
         <translation>Bordo</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1708"/>
+        <location filename="../manuskript/mainWindow.py" line="1904"/>
         <source>Corner</source>
         <translation>Angolo</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1525"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1540"/>
         <source>Add plot step</source>
         <translation>Aggiungi un passaggio alla trama</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1584"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1600"/>
         <source>&amp;Import…</source>
         <translation>&amp;Importa…</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1585"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1601"/>
         <source>&amp;Copy</source>
         <translation>&amp;Copia</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1586"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1602"/>
         <source>C&amp;ut</source>
         <translation>T&amp;aglia</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1587"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1603"/>
         <source>&amp;Paste</source>
         <translation>&amp;Incolla</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1588"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1604"/>
         <source>&amp;Split…</source>
         <translation>&amp;Dividi…</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1589"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1605"/>
         <source>Sp&amp;lit at cursor</source>
         <translation>Di&amp;vidi al cursore</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1593"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1609"/>
         <source>&amp;Move Up</source>
         <translation>&amp;Sposta in alto</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1594"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1610"/>
         <source>M&amp;ove Down</source>
         <translation>Sp&amp;osta in basso</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1591"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1607"/>
         <source>Dupl&amp;icate</source>
         <translation>Dupl&amp;ica</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1592"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1608"/>
         <source>&amp;Delete</source>
         <translation>&amp;Cancella</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1595"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1613"/>
         <source>&amp;Rename</source>
         <translation>&amp;Rinomina</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1561"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1576"/>
         <source>Organi&amp;ze</source>
         <translation>Organi&amp;zza</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1590"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1606"/>
         <source>M&amp;erge</source>
         <translation>U&amp;nisci</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1526"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1541"/>
         <source>Remove selected plot step(s)</source>
         <translation>Rimuovi il passaggio(i) di trama selezionato(i)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1557"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1572"/>
         <source>&amp;Format</source>
         <translation>&amp;Formato</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1558"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1573"/>
         <source>&amp;Header</source>
         <translation>&amp;Intestazione</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1596"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1614"/>
         <source>&amp;Level 1 (setext)</source>
         <translation>&amp;Livello 1 (setext)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1597"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1615"/>
         <source>Level &amp;2</source>
         <translation>Livello &amp;2</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1598"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1616"/>
         <source>Level &amp;1 (atx)</source>
         <translation>Livello &amp;1 (atx)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1599"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1617"/>
         <source>L&amp;evel 2</source>
         <translation>L&amp;ivello 2</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1600"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1618"/>
         <source>Level &amp;3</source>
         <translation>Livello &amp;3</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1601"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1619"/>
         <source>Level &amp;4</source>
         <translation>Livello &amp;4</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1602"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1620"/>
         <source>Level &amp;5</source>
         <translation>Livello &amp;5</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1603"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1621"/>
         <source>Level &amp;6</source>
         <translation>Livello &amp;6</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1604"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1622"/>
         <source>&amp;Bold</source>
         <translation>&amp;Grassetto</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1605"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1623"/>
         <source>&amp;Italic</source>
         <translation>&amp;Corsivo</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1606"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1624"/>
         <source>&amp;Strike</source>
         <translation>&amp;Barrato</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1607"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1625"/>
         <source>&amp;Verbatim</source>
         <translation>&amp;Parola per parola</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1608"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1626"/>
         <source>Su&amp;perscript</source>
         <translation>A&amp;pice</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1609"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1627"/>
         <source>Subsc&amp;ript</source>
         <translation>P&amp;edice</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1610"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1628"/>
         <source>Co&amp;mment block</source>
         <translation>Blocco di co&amp;mmenti</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1611"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1629"/>
         <source>Clear &amp;formats</source>
         <translation>Cancella i &amp;formati</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1612"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1630"/>
         <source>&amp;Comment line(s)</source>
         <translation>Linea(e) di &amp;commento</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1613"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1631"/>
         <source>&amp;Ordered list</source>
         <translation>&amp;Elenco numerato</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1614"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1632"/>
         <source>&amp;Unordered list</source>
         <translation>&amp;Elenco puntato</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1615"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1633"/>
         <source>B&amp;lockquote</source>
         <translation>Citazione (b&amp;locco)</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="741"/>
+        <location filename="../manuskript/mainWindow.py" line="927"/>
         <source>The file {} does not exist. Has it been moved or deleted?</source>
         <translation>Il file {} non esiste. È stato spostato o cancellato?</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1550"/>
+        <location filename="../manuskript/mainWindow.py" line="1746"/>
         <source>Install {}{} to use spellcheck</source>
         <translation>Installa {}{} per usare il correttore ortografico</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1592"/>
+        <location filename="../manuskript/mainWindow.py" line="1788"/>
         <source>{} has no installed dictionaries</source>
         <translation>{} non vi sono dizionari installati</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1613"/>
+        <location filename="../manuskript/mainWindow.py" line="1809"/>
         <source>{}{} is not installed</source>
         <translation>{}{} non è installato</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="839"/>
+        <location filename="../manuskript/mainWindow.py" line="1029"/>
         <source>Save project?</source>
         <translation>Salvare il progetto?</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="839"/>
+        <location filename="../manuskript/mainWindow.py" line="1029"/>
         <source>Save changes to project &quot;{}&quot; before closing?</source>
         <translation>Salvare i cambiamenti del progetto «{}» prima di chiuderlo?</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="839"/>
+        <location filename="../manuskript/mainWindow.py" line="1029"/>
         <source>Your changes will be lost if you don&apos;t save them.</source>
         <translation>I cambiamenti apportati andranno persi se non li salvi.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1811"/>
+        <location filename="../manuskript/mainWindow.py" line="2007"/>
         <source>PyQt / Qt versions 5.11 and 5.12 are known to cause a crash which might result in a loss of data.</source>
         <translation>PyQt / Qt versione 5.11 e 5.12 sono conosciuti per provocare crash che potrebbero portare a perdita dei dati.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1812"/>
+        <location filename="../manuskript/mainWindow.py" line="2008"/>
         <source>PyQt {} and Qt {} are in use.</source>
         <translation>PyQt{} e Qt {} sono in uso.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1818"/>
+        <location filename="../manuskript/mainWindow.py" line="2014"/>
         <source>Proceed with import at your own risk</source>
         <translation>Procedere con l'importazione a proprio rischio</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1503"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1518"/>
         <source>Allow POV</source>
         <translation>Consenti POV (Punto di Vista)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1618"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1636"/>
         <source>Search</source>
         <translation>Cerca</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1619"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1637"/>
         <source>&amp;Technical Support</source>
         <translation>&amp;Supporto Tecnico</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1620"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1638"/>
         <source>How to obtain technical support for Manuskript.</source>
         <translation>Come ottenere il support tecnico per Manuskript.</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1621"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1639"/>
         <source>&amp;Locate log file...</source>
         <translation>&amp;Localizza il file log...</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1622"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1640"/>
         <source>Locate log file</source>
         <translation>Localizza il file log</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1623"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1641"/>
         <source>Locate the diagnostic log file used for this session.</source>
         <translation>Ricerca il file log della diagnostica usato per questa sessione.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1350"/>
+        <location filename="../manuskript/mainWindow.py" line="1546"/>
         <source>Sorry!</source>
         <translation>Spiacente!</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1350"/>
+        <location filename="../manuskript/mainWindow.py" line="1546"/>
         <source>This session is not being logged.</source>
         <translation>Questa sessione non è stata registrata.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1359"/>
+        <location filename="../manuskript/mainWindow.py" line="1555"/>
         <source>A log file is a Work in Progress!</source>
         <translation>Un file di registro è un lavoro in corso!</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1359"/>
+        <location filename="../manuskript/mainWindow.py" line="1555"/>
         <source>The log file &quot;{}&quot; will continue to be written to until Manuskript is closed.</source>
         <translation>Il file di log &quot;{}&quot; continuerà ad essere scritto finché Manuskript non sarà chiuso.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1359"/>
+        <location filename="../manuskript/mainWindow.py" line="1555"/>
         <source>It will now be displayed in your file manager, but is of limited use until you close Manuskript.</source>
         <translation>Ora sarà visualizzato nel vostro file manager, ma è di uso limitato finché non chiudete Manuskript.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1375"/>
+        <location filename="../manuskript/mainWindow.py" line="1571"/>
         <source>Error!</source>
         <translation>Errore!</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1375"/>
+        <location filename="../manuskript/mainWindow.py" line="1571"/>
         <source>An error was encountered while trying to show the log file below in your file manager.</source>
         <translation>Si è verificato un errore durante il tentativo di mostrare il file di log sottostante nel tuo gestore di file.</translation>
     </message>
@@ -1051,53 +1051,68 @@
         <translation>Stato</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1616"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1634"/>
         <source>&amp;Targets</source>
         <translation>&amp;Obiettivi</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/mainWindow.py" line="1617"/>
+        <location filename="../manuskript/ui/mainWindow.py" line="1635"/>
         <source>Draft and session word count targets</source>
         <translation>Obiettivi di conteggio parole per bozze e sessioni</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="321"/>
+        <location filename="../manuskript/mainWindow.py" line="391"/>
         <source>Value</source>
         <translation type="unfinished">Valore</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="329"/>
+        <location filename="../manuskript/mainWindow.py" line="399"/>
         <source>Bulk Info Manager</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="374"/>
+        <location filename="../manuskript/mainWindow.py" line="444"/>
         <source>No Entries!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="374"/>
+        <location filename="../manuskript/mainWindow.py" line="444"/>
         <source>Please add entries to apply to the selected characters.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="385"/>
+        <location filename="../manuskript/mainWindow.py" line="455"/>
         <source>Bulk Info Applied</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="385"/>
+        <location filename="../manuskript/mainWindow.py" line="455"/>
         <source>The bulk info has been applied to the selected characters.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="450"/>
+        <location filename="../manuskript/mainWindow.py" line="527"/>
         <source>Un-applied data!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="450"/>
+        <location filename="../manuskript/mainWindow.py" line="527"/>
         <source>There are un-applied entries in this tab. Discard them?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/mainWindow.py" line="1577"/>
+        <source>&amp;Navigate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/mainWindow.py" line="1611"/>
+        <source>Go &amp;back</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/mainWindow.py" line="1612"/>
+        <source>Go &amp;forward</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3065,22 +3080,22 @@
 <context>
     <name>plotTreeView</name>
     <message>
-        <location filename="../manuskript/ui/views/plotTreeView.py" line="127"/>
+        <location filename="../manuskript/ui/views/plotTreeView.py" line="131"/>
         <source>Main</source>
         <translation>Principale</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/plotTreeView.py" line="127"/>
+        <location filename="../manuskript/ui/views/plotTreeView.py" line="131"/>
         <source>Secondary</source>
         <translation>Secondario</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/plotTreeView.py" line="127"/>
+        <location filename="../manuskript/ui/views/plotTreeView.py" line="131"/>
         <source>Minor</source>
         <translation>Minore</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/plotTreeView.py" line="187"/>
+        <location filename="../manuskript/ui/views/plotTreeView.py" line="191"/>
         <source>**Plot:** {}</source>
         <translation>**Trama:** {}</translation>
     </message>
