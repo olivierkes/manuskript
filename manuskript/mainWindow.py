@@ -263,58 +263,54 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                   self.actDelete,
                   self.actRename]:
             i.setEnabled(tabIsEditor)
-        match self.tabMain.currentIndex():
-            case self.TabPersos:
-                selectedCharacters = self.lstCharacters.currentCharacters()
-                characterSelectionIsEmpty = not any(selectedCharacters)
+        tabIndex = self.tabMain.currentIndex()
 
-                if characterSelectionIsEmpty:
-                    self.pushHistory(("character", None))
-                    self._previousSelectionEmpty = True
-                else:
-                    character = selectedCharacters[0]
-                    self.pushHistory(("character", character.ID()))
-                    self._previousSelectionEmpty = False
+        if tabIndex == self.TabPersos:
+            selectedCharacters = self.lstCharacters.currentCharacters()
+            characterSelectionIsEmpty = not any(selectedCharacters)
 
-            case self.TabPlots:
-                id = self.lstPlots.currentPlotID()
-                self.pushHistory(("plot", id))
-                self._previousSelectionEmpty = id is None
-
-            case self.TabWorld:
-                index = self.mdlWorld.selectedIndex()
-
-                if index.isValid():
-                    id = self.mdlWorld.ID(index)
-                    self.pushHistory(("world", id))
-                    self._previousSelectionEmpty = id is not None
-                else:
-                    self.pushHistory(("world", None))
-                    self._previousSelectionEmpty = True
-
-            case self.TabOutline:
-                index = self.treeOutlineOutline.selectionModel().currentIndex()
-                if index.isValid():
-                    id = self.mdlOutline.ID(index)
-                    self.pushHistory(("outline", id))
-                    self._previousSelectionEmpty = id is not None
-                else:
-                    self.pushHistory(("outline", None))
-                    self._previousSelectionEmpty = False
-
-            case self.TabRedac:
-                index = self.treeRedacOutline.selectionModel().currentIndex()
-                if index.isValid():
-                    id = self.mdlOutline.ID(index)
-                    self.pushHistory(("redac", id))
-                    self._previousSelectionEmpty = id is not None
-                else:
-                    self.pushHistory(("redac", None))
-                    self._previousSelectionEmpty = False
-
-            case _:
-                self.pushHistory(("main", self.tabMain.currentIndex()))
+            if characterSelectionIsEmpty:
+                self.pushHistory(("character", None))
+                self._previousSelectionEmpty = True
+            else:
+                character = selectedCharacters[0]
+                self.pushHistory(("character", character.ID()))
                 self._previousSelectionEmpty = False
+        elif tabIndex == self.TabPlots:
+            id = self.lstPlots.currentPlotID()
+            self.pushHistory(("plot", id))
+            self._previousSelectionEmpty = id is None
+        elif tabIndex == self.TabWorld:
+            index = self.mdlWorld.selectedIndex()
+
+            if index.isValid():
+                id = self.mdlWorld.ID(index)
+                self.pushHistory(("world", id))
+                self._previousSelectionEmpty = id is not None
+            else:
+                self.pushHistory(("world", None))
+                self._previousSelectionEmpty = True
+        elif tabIndex == self.TabOutline:
+            index = self.treeOutlineOutline.selectionModel().currentIndex()
+            if index.isValid():
+                id = self.mdlOutline.ID(index)
+                self.pushHistory(("outline", id))
+                self._previousSelectionEmpty = id is not None
+            else:
+                self.pushHistory(("outline", None))
+                self._previousSelectionEmpty = False
+        elif tabIndex == self.TabRedac:
+            index = self.treeRedacOutline.selectionModel().currentIndex()
+            if index.isValid():
+                id = self.mdlOutline.ID(index)
+                self.pushHistory(("redac", id))
+                self._previousSelectionEmpty = id is not None
+            else:
+                self.pushHistory(("redac", None))
+                self._previousSelectionEmpty = False
+        else:
+            self.pushHistory(("main", self.tabMain.currentIndex()))
+            self._previousSelectionEmpty = False
 
     def focusChanged(self, old, new):
         """
@@ -841,74 +837,72 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def navigated(self, event):
         if event.entry:
-            match event.entry[0]:
-                case "character":
-                    if self.tabMain.currentIndex() != self.TabPersos:
-                        self.tabMain.setCurrentIndex(self.TabPersos)
+            first_entry = event.entry[0]
 
-                    if event.entry[1] is None:
-                        self.lstCharacters.setCurrentItem(None)
-                        self.lstCharacters.clearSelection()
-                    else:
-                        if self.lstCharacters.currentCharacterID() != event.entry[1]:
-                            char = self.lstCharacters.getItemByID(event.entry[1])
-                            if char != None:
-                                self.lstCharacters.clearSelection()
-                                self.lstCharacters.setCurrentItem(char)
-                case "plot":
-                    if self.tabMain.currentIndex() != self.TabPlots:
-                        self.tabMain.setCurrentIndex(self.TabPlots)
+            if first_entry == "character":
+                if self.tabMain.currentIndex() != self.TabPersos:
+                    self.tabMain.setCurrentIndex(self.TabPersos)
 
-                    if event.entry[1] is None:
-                        self.lstPlots.setCurrentItem(None)
-                    else:
-                        index = self.lstPlots.currentPlotIndex()
-                        if index and index.row() != event.entry[1]:
-                            plot = self.lstPlots.getItemByID(event.entry[1])
-                            if plot != None:
-                                self.lstPlots.setCurrentItem(plot)
-                case "world":
-                    if self.tabMain.currentIndex() != self.TabWorld:
-                        self.tabMain.setCurrentIndex(self.TabWorld)
+                if event.entry[1] is None:
+                    self.lstCharacters.setCurrentItem(None)
+                    self.lstCharacters.clearSelection()
+                else:
+                    if self.lstCharacters.currentCharacterID() != event.entry[1]:
+                        char = self.lstCharacters.getItemByID(event.entry[1])
+                        if char != None:
+                            self.lstCharacters.clearSelection()
+                            self.lstCharacters.setCurrentItem(char)
+            elif first_entry == "plot":
+                if self.tabMain.currentIndex() != self.TabPlots:
+                    self.tabMain.setCurrentIndex(self.TabPlots)
 
-                    if event.entry[1] is None:
-                        self.treeWorld.selectionModel().clear()
-                    else:
-                        index = self.mdlWorld.selectedIndex()
-                        if index and self.mdlWorld.ID(index) != event.entry[1]:
-                            world = self.mdlWorld.indexByID(event.entry[1])
-                            if world != None:
-                                self.treeWorld.setCurrentIndex(world)
+                if event.entry[1] is None:
+                    self.lstPlots.setCurrentItem(None)
+                else:
+                    index = self.lstPlots.currentPlotIndex()
+                    if index and index.row() != event.entry[1]:
+                        plot = self.lstPlots.getItemByID(event.entry[1])
+                        if plot != None:
+                            self.lstPlots.setCurrentItem(plot)
+            elif first_entry == "world":
+                if self.tabMain.currentIndex() != self.TabWorld:
+                    self.tabMain.setCurrentIndex(self.TabWorld)
 
-                case "outline":
-                    if self.tabMain.currentIndex() != self.TabOutline:
-                        self.tabMain.setCurrentIndex(self.TabOutline)
+                if event.entry[1] is None:
+                    self.treeWorld.selectionModel().clear()
+                else:
+                    index = self.mdlWorld.selectedIndex()
+                    if index and self.mdlWorld.ID(index) != event.entry[1]:
+                        world = self.mdlWorld.indexByID(event.entry[1])
+                        if world != None:
+                            self.treeWorld.setCurrentIndex(world)
+            elif first_entry == "outline":
+                if self.tabMain.currentIndex() != self.TabOutline:
+                    self.tabMain.setCurrentIndex(self.TabOutline)
 
-                    if event.entry[1] is None:
-                        self.treeOutlineOutline.selectionModel().clear()
-                    else:
-                        index = self.treeOutlineOutline.selectionModel().currentIndex()
-                        if index and self.mdlOutline.ID(index) != event.entry[1]:
-                            outline = self.mdlOutline.getIndexByID(event.entry[1])
-                            if outline is not None:
-                                self.treeOutlineOutline.setCurrentIndex(outline)
+                if event.entry[1] is None:
+                    self.treeOutlineOutline.selectionModel().clear()
+                else:
+                    index = self.treeOutlineOutline.selectionModel().currentIndex()
+                    if index and self.mdlOutline.ID(index) != event.entry[1]:
+                        outline = self.mdlOutline.getIndexByID(event.entry[1])
+                        if outline is not None:
+                            self.treeOutlineOutline.setCurrentIndex(outline)
+            elif first_entry == "redac":
+                if self.tabMain.currentIndex() != self.TabRedac:
+                    self.tabMain.setCurrentIndex(self.TabRedac)
 
-                case "redac":
-                    if self.tabMain.currentIndex() != self.TabRedac:
-                        self.tabMain.setCurrentIndex(self.TabRedac)
-
-                    if event.entry[1] is None:
-                        self.treeRedacOutline.selectionModel().clear()
-                    else:
-                        index = self.treeRedacOutline.selectionModel().currentIndex()
-                        if index and self.mdlOutline.ID(index) != event.entry[1]:
-                            outline = self.mdlOutline.getIndexByID(event.entry[1])
-                            if outline is not None:
-                                self.treeRedacOutline.setCurrentIndex(outline)
-
-                case "main":
-                    if self.tabMain.currentIndex() != event.entry[1]:
-                        self.lstTabs.setCurrentRow(event.entry[1])
+                if event.entry[1] is None:
+                    self.treeRedacOutline.selectionModel().clear()
+                else:
+                    index = self.treeRedacOutline.selectionModel().currentIndex()
+                    if index and self.mdlOutline.ID(index) != event.entry[1]:
+                        outline = self.mdlOutline.getIndexByID(event.entry[1])
+                        if outline is not None:
+                            self.treeRedacOutline.setCurrentIndex(outline)
+            elif first_entry == "main":
+                if self.tabMain.currentIndex() != event.entry[1]:
+                    self.lstTabs.setCurrentRow(event.entry[1])
 
         self.actBack.setEnabled(event.position > 0)
         self.actForward.setEnabled(event.position < event.count - 1)
