@@ -13,7 +13,7 @@ quote_file = "./resources/quotes/Quotes_English.txt" # TODO translations
 def load_quotes():
     file = open(quote_file, "r")
     text = file.read()
-    quotes = text.split("\n")
+    quotes = text.split("\END")
     return quotes
 
 quotes = load_quotes()

@@ -57,7 +57,7 @@ class GeneralView:
         self.emailBuffer.connect("deleted-text", self._emailDeletedText)
         self.emailBuffer.connect("inserted-text", self._emailInsertedText)
         
-        self.quoteLabel.set_markup(get_quote())
+        self.quoteLabel.set_text(get_quote())
 
 
     def __titleChanged(self, buffer: Gtk.EntryBuffer):

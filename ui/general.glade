@@ -455,6 +455,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="wrap">True</property>
+                    <property name="selectable">True</property>
                     <attributes>
                       <attribute name="style" value="normal"/>
                       <attribute name="scale" value="2"/>
