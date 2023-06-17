@@ -15,6 +15,8 @@ from manuskript.ui.views import *
 
 from manuskript.ui.tools import *
 from manuskript.ui.aboutDialog import AboutDialog
+from manuskript.ui.compileWindow import CompileWindow
+from manuskript.ui.importWindow import ImportWindow
 from manuskript.ui.settingsWindow import SettingsWindow
 from manuskript.ui.startupWindow import StartupWindow
 from manuskript.ui.util import bindMenuItem
@@ -76,6 +78,8 @@ class MainWindow:
         self.aboutDialog = AboutDialog(self)
         self.frequencyWindow = FrequencyWindow(self)
         self.settingsWindow = SettingsWindow(self)
+        self.importWindow = ImportWindow(self)
+        self.compileWindow = CompileWindow(self)
 
         self.windows = [
             self.startupWindow,
@@ -87,6 +91,8 @@ class MainWindow:
         bindMenuItem(builder, "open_menu_item", self._openAction)
         bindMenuItem(builder, "save_menu_item", self._saveAction)
         bindMenuItem(builder, "close_menu_item", self._closeAction)
+        bindMenuItem(builder, "import_menu_item", self._importAction)
+        bindMenuItem(builder, "compile_menu_item", self._compileAction)
         bindMenuItem(builder, "quit_menu_item", self._quitAction)
 
         bindMenuItem(builder, "settings_menu_item", self._settingsAction)
@@ -112,6 +118,12 @@ class MainWindow:
 
     def _closeAction(self, menuItem: Gtk.MenuItem):
         self.closeProject()
+    
+    def _importAction(self, menuItem: Gtk.MenuItem):
+        self.importWindow.show()
+    
+    def _compileAction(self, menuItem: Gtk.MenuItem):
+        self.compileWindow.show()
 
     def _quitAction(self, menuItem: Gtk.MenuItem):
         self.exit(True)
