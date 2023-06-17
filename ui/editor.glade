@@ -66,16 +66,6 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
       </object>
     </child>
     <child type="tag">
-      <object class="GtkTextTag">
-        <property name="font">Normal</property>
-      </object>
-    </child>
-    <child type="tag">
-      <object class="GtkTextTag">
-        <property name="font">Normal</property>
-      </object>
-    </child>
-    <child type="tag">
       <object class="GtkTextTag" id="h2_tag">
         <property name="name">h2</property>
         <property name="font">Normal</property>
@@ -173,7 +163,21 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
       <object class="GtkTextTag" id="p_tag">
         <property name="name">p</property>
         <property name="font">Normal</property>
+        <property name="pixels-above-lines">4</property>
+        <property name="pixels-below-lines">4</property>
+        <property name="left-margin">8</property>
         <property name="indent">20</property>
+        <property name="right-margin">8</property>
+      </object>
+    </child>
+    <child type="tag">
+      <object class="GtkTextTag" id="line_tag">
+        <property name="name">line</property>
+        <property name="font">Normal</property>
+        <property name="editable">False</property>
+        <property name="left-margin">4</property>
+        <property name="strikethrough">True</property>
+        <property name="right-margin">4</property>
       </object>
     </child>
   </object>
@@ -397,6 +401,11 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                     <property name="visible">True</property>
                                     <property name="can-focus">True</property>
                                     <property name="wrap-mode">word-char</property>
+                                    <property name="left-margin">8</property>
+                                    <property name="right-margin">8</property>
+                                    <property name="top-margin">4</property>
+                                    <property name="bottom-margin">4</property>
+                                    <property name="indent">4</property>
                                     <property name="buffer">editor_text</property>
                                     <property name="input-hints">GTK_INPUT_HINT_SPELLCHECK | GTK_INPUT_HINT_WORD_COMPLETION | GTK_INPUT_HINT_NONE</property>
                                   </object>
