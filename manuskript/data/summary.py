@@ -19,6 +19,10 @@ class Summary(AbstractData):
         self.page = None
         self.full = None
 
+    def changePath(self, path: str):
+        AbstractData.changePath(self, os.path.join(path, "summary.txt"))
+        self.file = MmdFile(self.dataPath, 13)
+
     def load(self):
         AbstractData.load(self)
 

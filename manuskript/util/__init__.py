@@ -4,6 +4,7 @@
 import re
 import time
 import traceback
+import urllib.parse
 
 from manuskript.util.counter import CounterKind, CharCounter, WordCounter, PageCounter
 
@@ -49,6 +50,18 @@ def safeFilename(filename: str, extension: str = None) -> str:
         name = "_" + name
 
     return re.sub(r"[^a-zA-Z0-9._\-+()]", "_", name)
+
+
+def parseFilenameFromURL(url: str) -> str | None:
+    result = urllib.parse.urlparse(url)
+
+    if result is None:
+        return None
+
+    if result.scheme != "file":
+        return None
+
+    return result.path
 
 
 def countText(text: str, kind: CounterKind = CounterKind.WORDS):
