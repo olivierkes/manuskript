@@ -346,9 +346,8 @@ class CharactersView:
             # Now we do the buttons for charecterDetailsMenuTemplateBox
             box = Gtk.Box()
             label = Gtk.Label(label=x)
-            box.pack_start(label, False, False, 0)
             overwrite_button = Gtk.Button()
-            overwrite_button.add(Gtk.Image(icon_name='emblem-insync-syncing'))
+            overwrite_button.add(Gtk.Image(icon_name='system-restart-symbolic'))
             overwrite_button.connect("clicked", self._updateTemplateClicked, x)
             overwrite_button.set_tooltip_markup ('Overwrite template with text of current file') # TODO: This might be an issue when it comes to translating
             delete_button = Gtk.Button() 
@@ -357,6 +356,7 @@ class CharactersView:
             delete_button.connect("clicked", self._deleteTemplateClicked, x)
             box.pack_start(overwrite_button, False, False, 0)            
             box.pack_start(delete_button, False, False, 0)
+            box.pack_start(label, False, False, 0)
             self.charecterDetailsMenuTemplateBox.add(box)
 
         self.charecterDetailsMenuAppendBox.show_all()
