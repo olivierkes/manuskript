@@ -59,12 +59,12 @@
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="103"/>
         <source>Frequency Analyzer</source>
-        <translation>Analisador de Freqüência</translation>
+        <translation>Analisador de Frequência</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="108"/>
         <source>Word frequency</source>
-        <translation>Freqüência de palavras</translation>
+        <translation>Frequência de palavras</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="104"/>
@@ -120,7 +120,7 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="619"/>
         <source>The image path or URL is incomplete or malformed.</source>
-        <translation>O caminho da imagem ou URL está incompleto ou malformado.</translation>
+        <translation>O caminho da imagem ou URL está incompleto ou incorreto.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="631"/>
@@ -164,7 +164,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1476"/>
         <source>Series</source>
-        <translation></translation>
+        <translation>Série</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1477"/>
@@ -194,7 +194,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1482"/>
         <source>Email</source>
-        <translation>E-mail</translation>
+        <translation>Email</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1528"/>
@@ -615,8 +615,8 @@
         <location filename="../manuskript/mainWindow.py" line="1497"/>
         <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous
                      evil wizard wasn&apos;t able to kill a baby?&apos; (Harry Potter)</source>
-        <translation>A situação básica, na forma de um questionamento tipo 'e se ...'. Ex: 
-'E se o mais perigoso malvado feiticeiro não foi capaz de matar um bebê?' (Harry Potter)</translation>
+        <translation>A situação básica, na forma de um questionamento tipo &apos;e se ...&apos;. Ex: 
+&apos;E se o mais perigoso malvado feiticeiro não foi capaz de matar um bebê?&apos; (Harry Potter)</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1502"/>
@@ -2303,7 +2303,7 @@ próx. às palavras</translation>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>Substitua as aspas simples(') por:</translation>
+        <translation>Substitua as aspas simples(&apos;) por:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>
@@ -3391,7 +3391,7 @@ próx. às palavras</translation>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="47"/>
         <source>Split &apos;{}&apos;</source>
-        <translation>Separar '{}'</translation>
+        <translation>Separar &apos;{}&apos;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="51"/>
