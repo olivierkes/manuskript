@@ -43,6 +43,10 @@ class Revisions(AbstractData):
         self.file = XmlFile(self.dataPath)
         self.outline = dict()
 
+    def changePath(self, path: str):
+        AbstractData.changePath(self, os.path.join(path, "revisions.xml"))
+        self.file = XmlFile(self.dataPath)
+
     def __iter__(self):
         return self.outline.values().__iter__()
 

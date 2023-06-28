@@ -37,6 +37,10 @@ class Character(AbstractData):
         self.color = None
         self.details = dict()
 
+    def changePath(self, path: str):
+        AbstractData.changePath(self, path)
+        self.file = MmdFile(self.dataPath, 21)
+
     def allowPOV(self) -> bool:
         return True if self.POV is None else self.POV
 
@@ -118,6 +122,15 @@ class Characters(AbstractData):
         AbstractData.__init__(self, os.path.join(path, "characters"))
         self.host = UniqueIDHost()
         self.data = dict()
+
+    def changePath(self, path: str):
+        AbstractData.changePath(self, os.path.join(path, "characters"))
+
+        for character in self.data.values():
+            filename = safeFilename("%s-%s" % (str(character.UID), character.name), "txt")
+            path_ = os.path.join(self.dataPath, filename)
+
+            character.changePath(path_)
 
     def __iter__(self):
         return self.data.values().__iter__()

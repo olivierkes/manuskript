@@ -270,8 +270,6 @@ class EditorView:
             self.editorItems = self.project.outline.items
         elif type(outlineItem) is OutlineFolder:
             self.editorItems = outlineItem.items
-        elif type(outlineItem) is OutlineText:
-            self.__appendOutlineItemText(outlineItem)
 
         if outlineItem is None:
             for item in self.editorItems:

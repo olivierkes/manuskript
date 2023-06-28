@@ -113,6 +113,10 @@ class Plots(AbstractData):
         self.characters = characters
         self.lines = dict()
 
+    def changePath(self, path: str):
+        AbstractData.changePath(self, os.path.join(path, "plots.xml"))
+        self.file = XmlFile(self.dataPath)
+
     def addLine(self, name: str = None, importance: Importance = Importance.MINOR):
         line = PlotLine(self, self.host.newID(), name, importance)
         self.lines[line.UID.value] = line
