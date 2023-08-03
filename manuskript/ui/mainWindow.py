@@ -86,6 +86,7 @@ class MainWindow:
 
         bindMenuItem(builder, "settings_menu_item", self._settingsAction)
         bindMenuItem(builder, "frequency_menu_item", self._frequencyAction)
+        bindMenuItem(builder, "character_details_template_editor", self._characterDetailsTemplateEditorAction)
         bindMenuItem(builder, "about_menu_item", self._aboutAction)
 
         self.hide()
@@ -107,7 +108,7 @@ class MainWindow:
 
         self.generalView = packViewIntoSlot(self.generalSlot, GeneralView, self.project.info)
         self.summaryView = packViewIntoSlot(self.summarySlot, SummaryView, self.project.summary)
-        self.charactersView = packViewIntoSlot(self.charactersSlot, CharactersView, self.project.characters)
+        self.charactersView = packViewIntoSlot(self.charactersSlot, CharactersView, self.project)
         self.plotView = packViewIntoSlot(self.plotSlot, PlotView, self.project.plots)
         self.worldView = packViewIntoSlot(self.worldSlot, WorldView, self.project.world)
         self.outlineView = packViewIntoSlot(self.outlineSlot, OutlineView, self.project.outline)
@@ -181,6 +182,9 @@ class MainWindow:
 
     def _frequencyAction(self, menuItem: Gtk.MenuItem):
         self.frequencyWindow.show()
+        
+    def _characterDetailsTemplateEditorAction(self, menuItem: Gtk.MenuItem):
+        self.characterTemplateWindow.show()
 
     def _aboutAction(self, menuItem: Gtk.MenuItem):
         self.aboutDialog.show()
