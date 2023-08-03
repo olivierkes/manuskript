@@ -430,7 +430,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
               </packing>
             </child>
             <child>
-              <object class="GtkBox">
+              <object class="GtkBox" id="tip_of_the_day_grid">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="orientation">vertical</property>
@@ -439,7 +439,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="halign">start</property>
-                    <property name="label" translatable="yes">Quote of  The Day</property>
+                    <property name="label" translatable="yes">Quote of The Day</property>
                     <attributes>
                       <attribute name="weight" value="bold"/>
                     </attributes>
