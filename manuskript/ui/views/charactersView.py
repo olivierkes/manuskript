@@ -339,24 +339,24 @@ class CharactersView:
                 container.remove(d)
         clear_container( self.charecterDetailsMenuAppendBox)
         clear_container(self.charecterDetailsMenuTemplateBox)
-        for x in self.characterTemplates.templates:
-            button = Gtk.Button(label=x,) # TODO: turn into ModelButton
-            button.connect("clicked", self._appendTemplateClicked, x)
+        for template_name in self.characterTemplates.templates:
+            button = Gtk.Button(label=template_name) # TODO: turn into ModelButton
+            button.connect("clicked", self._appendTemplateClicked, template_name)
             self.charecterDetailsMenuAppendBox.add(button)
             # Now we do the buttons for charecterDetailsMenuTemplateBox
             box = Gtk.Box()
-            label = Gtk.Label(label=x)
+            label = Gtk.Label(label=template_name)
             overwrite_button = Gtk.Button()
-            overwrite_button.add(Gtk.Image(icon_name='system-restart-symbolic'))
-            overwrite_button.connect("clicked", self._updateTemplateClicked, x)
+            overwrite_button.add(Gtk.Image(icon_name='emblem-synchronizing-symbolic'))
+            overwrite_button.connect("clicked", self._updateTemplateClicked, template_name)
             overwrite_button.set_tooltip_markup ('Overwrite template with text of current file') # TODO: This might be an issue when it comes to translating
             delete_button = Gtk.Button() 
-            delete_button.add(Gtk.Image(icon_name='app-remove-symbolic'))
+            delete_button.add(Gtk.Image(icon_name='list-remove-symbolic'))
             delete_button.set_tooltip_markup ('Delete') # TODO: This might be an issue when it comes to translating
-            delete_button.connect("clicked", self._deleteTemplateClicked, x)
-            box.pack_start(overwrite_button, False, False, 0)            
-            box.pack_start(delete_button, False, False, 0)
-            box.pack_start(label, False, False, 0)
+            delete_button.connect("clicked", self._deleteTemplateClicked, template_name)
+            box.pack_end(delete_button, False, False, 0)
+            box.pack_end(overwrite_button, False, False, 0)
+            box.pack_start(label, True, False, 0)
             self.charecterDetailsMenuTemplateBox.add(box)
 
         self.charecterDetailsMenuAppendBox.show_all()
@@ -365,19 +365,19 @@ class CharactersView:
     def _onCharecterDetailsMenuClicked(self, button: Gtk.MenuButton):
         self._updateCharecterDetailsMenu()
         
-    def _updateTemplateClicked(self, button: Gtk.ModelButton, template):
+    def _updateTemplateClicked(self, button: Gtk.ModelButton, template_name):
         if self.character is None:
             return
-        self.characterTemplates.templates[template] = self.character.details  # TODO: Add A warning? Or should there be undo/ redo when revisions are written.
+        self.characterTemplates.templates[template_name] = self.character.details  # TODO: Add A warning? Or should there be undo/ redo when revisions are written.
 
-    def _deleteTemplateClicked(self, button: Gtk.ModelButton, template):
-        del self.characterTemplates.templates[template]
+    def _deleteTemplateClicked(self, button: Gtk.ModelButton, template_name):
+        del self.characterTemplates.templates[template_name]
         self._updateCharecterDetailsMenu()
 
-    def _appendTemplateClicked(self, button: Gtk.ModelButton, template):
+    def _appendTemplateClicked(self, button: Gtk.ModelButton, template_name):
         if self.character is None:
             return
-        self.character.details.update(self.characterTemplates.templates[template])
+        self.character.details.update(self.characterTemplates.templates[template_name])
 
        # We have to reload the character
         self.loadCharacterData(self.character)
