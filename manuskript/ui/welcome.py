@@ -277,6 +277,7 @@ class welcome(QWidget, Ui_welcome):
                 i = l.takeAt(0)
                 if i.widget():
                     i.widget().deleteLater()
+                    i.widget().setProperty("templateIndex", None)
                 if i.layout():
                     clearLayout(i.layout())
 
@@ -361,13 +362,13 @@ class welcome(QWidget, Ui_welcome):
         # their values to get the number of words.
         for s in self.findChildren(QSpinBox, QRegExp(".*"),
                                    Qt.FindChildrenRecursively):
-            total = total * s.value()
-
             # Update self.template to reflect the changed count values
             templateIndex = s.property("templateIndex")
-            self.template[1][templateIndex] = (
-                s.value(),
-                self.template[1][templateIndex][1])
+            if templateIndex != None:
+              total = total * s.value()
+              self.template[1][templateIndex] = (
+                  s.value(),
+                  self.template[1][templateIndex][1])
 
         for t in self.findChildren(QLineEdit, QRegExp(".*"),
                                    Qt.FindChildrenRecursively):
