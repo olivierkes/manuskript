@@ -16,7 +16,7 @@ from manuskript.version import getVersion
 
 try:
     faulthandler.enable()
-except AttributeError:
+except (AttributeError, RuntimeError):
     print("Faulthandler failed")
 
 import logging
