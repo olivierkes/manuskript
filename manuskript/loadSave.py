@@ -56,7 +56,7 @@ def loadProject(project):
 
     # Not a zip
     else:
-        with open(project, "r", encoding="utf-8") as f:
+        with open(project, "r", encoding="utf-8", newline="\n") as f:
             version = int(f.read())
 
     LOGGER.info("Loading: %s", project)

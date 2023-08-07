@@ -96,7 +96,7 @@ class plainText(basicFormat):
                 LOGGER.error("No content. Nothing saved.")
                 return
 
-            with open(filename, "w", encoding='utf8') as f:
+            with open(filename, "w", encoding="utf8", newline="\n") as f:
                 f.write(content)
 
     def preview(self, settingsWidget, previewWidget):
@@ -217,4 +217,3 @@ class plainText(basicFormat):
         content += "\n"
 
         return content
-

@@ -388,7 +388,7 @@ def saveProject(zip=None):
                         filesWithPermissionErrors.append(filename)
                 else:
                     try:
-                        with open(filename, "w", encoding='utf8') as f:
+                        with open(filename, "w", encoding="utf8", newline="\n") as f:
                             f.write(content)
                     except PermissionError as e:
                         LOGGER.error("Cannot open file " + filename + " for writing: " + e.strerror)
@@ -423,7 +423,7 @@ def saveProject(zip=None):
 
         # Write the project file's content
         try:
-            with open(project, "w", encoding='utf8') as f:
+            with open(project, "w", encoding="utf8", newline="\n") as f:
                 f.write("1")  # Format number
         except PermissionError as e:
             LOGGER.error("Cannot open file " + project + " for writing: " + e.strerror)
@@ -689,7 +689,7 @@ def loadProject(project, zip=None):
                 else:
                     try:
                         filename = os.path.join(dirpath, f)
-                        with open(filename, "r", encoding="utf8") as fo:
+                        with open(filename, "r", encoding="utf8", newline="\n") as fo:
                             files[os.path.join(p, f)] = fo.read()
                     except PermissionError as e:
                         LOGGER.error("Cannot open file " + filename + ": " + e.strerror)
@@ -1127,5 +1127,3 @@ def parseMMDFile(text, asDict=False):
         return md, body
     else:
         return mdd, body
-
-
