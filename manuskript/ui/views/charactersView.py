@@ -8,13 +8,14 @@ from gi.repository import Gtk
 
 from manuskript.data import Characters, Character, Importance, Color
 from manuskript.ui.util import rgbaFromColor, pixbufFromColor
-from manuskript.util import validString, invalidString, validInt, invalidInt
+from manuskript.util import validString, invalidString, validInt, invalidInt, unique_name_checker
 
 
 class CharactersView:
 
-    def __init__(self, characters: Characters):
-        self.characters = characters
+    def __init__(self, project):
+        self.characterTemplates = project.character_templates # The template for detailed info
+        self.characters = project.characters
         self.character = None
 
         builder = Gtk.Builder()
@@ -77,11 +78,19 @@ class CharactersView:
         self.detailsSelection = builder.get_object("details_selection")
         self.addDetailsButton = builder.get_object("add_details")
         self.removeDetailsButton = builder.get_object("remove_details")
+        self.charecterDetailsMenuButton = builder.get_object("characters_details_menu_button")
+        self.newTemplateButton = builder.get_object("new_template_button")
+        self.newTemplateEntry = builder.get_object("new_template_entry")
+        self.newTemplateEntryBuffer = builder.get_object("new_template_entry_buffer")
+        self.charecterDetailsMenuAppendBox = builder.get_object("template_select_box")
+        self.charecterDetailsMenuTemplateBox = builder.get_object("template_select_box2")
         self.detailsNameRenderer = builder.get_object("details_name")
         self.detailsValueRenderer = builder.get_object("details_value")
 
         self.addDetailsButton.connect("clicked", self._addDetailsClicked)
         self.removeDetailsButton.connect("clicked", self._removeDetailsClicked)
+        self.charecterDetailsMenuButton.connect("clicked", self._onCharecterDetailsMenuClicked)
+        self.newTemplateButton.connect("clicked", self._onNewTemplateButtonClicked)
         self.detailsNameRenderer.connect("edited", self._detailsNameEdited)
         self.detailsValueRenderer.connect("edited", self._detailsValueEdited)
 
@@ -108,6 +117,7 @@ class CharactersView:
         self.notesBuffer.connect("changed", self._notesChanged)
 
         self.unloadCharacterData()
+        
 
     def refreshCharacterStore(self):
         self.charactersStore.clear()
@@ -300,7 +310,7 @@ class CharactersView:
         if tree_iter is None:
             return
 
-        name = "Description"
+        name = unique_name_checker.get_unique_name_for_dictionary(self.character.details, "Description")
         value = "Value"
 
         self.detailsStore.set_value(tree_iter, 0, name)
@@ -321,6 +331,68 @@ class CharactersView:
         model.remove(tree_iter)
 
         self.character.details.pop(name)
+        
+    def _updateCharecterDetailsMenu(self):
+        def clear_container(container):
+            data = container.get_children()
+            for d in data:
+                container.remove(d)
+        clear_container( self.charecterDetailsMenuAppendBox)
+        clear_container(self.charecterDetailsMenuTemplateBox)
+        for template_name in self.characterTemplates.templates:
+            button = Gtk.Button(label=template_name) # TODO: turn into ModelButton
+            button.connect("clicked", self._appendTemplateClicked, template_name)
+            self.charecterDetailsMenuAppendBox.add(button)
+            # Now we do the buttons for charecterDetailsMenuTemplateBox
+            box = Gtk.Box()
+            label = Gtk.Label(label=template_name)
+            overwrite_button = Gtk.Button()
+            overwrite_button.add(Gtk.Image(icon_name='emblem-synchronizing-symbolic'))
+            overwrite_button.connect("clicked", self._updateTemplateClicked, template_name)
+            overwrite_button.set_tooltip_markup ('Overwrite template with text of current file') # TODO: This might be an issue when it comes to translating
+            delete_button = Gtk.Button() 
+            delete_button.add(Gtk.Image(icon_name='list-remove-symbolic'))
+            delete_button.set_tooltip_markup ('Delete') # TODO: This might be an issue when it comes to translating
+            delete_button.connect("clicked", self._deleteTemplateClicked, template_name)
+            box.pack_end(delete_button, False, False, 0)
+            box.pack_end(overwrite_button, False, False, 0)
+            box.pack_start(label, True, False, 0)
+            self.charecterDetailsMenuTemplateBox.add(box)
+
+        self.charecterDetailsMenuAppendBox.show_all()
+        self.charecterDetailsMenuTemplateBox.show_all()
+        
+    def _onCharecterDetailsMenuClicked(self, button: Gtk.MenuButton):
+        self._updateCharecterDetailsMenu()
+        
+    def _updateTemplateClicked(self, button: Gtk.ModelButton, template_name):
+        if self.character is None:
+            return
+        self.characterTemplates.templates[template_name] = self.character.details  # TODO: Add A warning? Or should there be undo/ redo when revisions are written.
+
+    def _deleteTemplateClicked(self, button: Gtk.ModelButton, template_name):
+        del self.characterTemplates.templates[template_name]
+        self._updateCharecterDetailsMenu()
+
+    def _appendTemplateClicked(self, button: Gtk.ModelButton, template_name):
+        if self.character is None:
+            return
+        self.character.details.update(self.characterTemplates.templates[template_name])
+
+       # We have to reload the character
+        self.loadCharacterData(self.character)
+
+    def _onNewTemplateButtonClicked(self, button: Gtk.Button):
+        text = self.newTemplateEntryBuffer.get_text()
+        if text == "":
+            return
+        if text in self.characterTemplates.templates:
+            new_text = unique_name_checker.get_unique_name_for_dictionary(self.characterTemplates.templates, text)
+            self.newTemplateEntryBuffer.set_text(new_text, -1)  # TODO: Add a warning
+            return
+        else:
+            self.characterTemplates.templates[text] = self.character.details
+            self._updateCharecterDetailsMenu()
 
     def _detailsNameEdited(self, renderer: Gtk.CellRendererText, path: str, text: str):
         if self.character is None:
@@ -330,11 +402,12 @@ class CharactersView:
 
         if (model is None) or (tree_iter is None):
             return
-
+        
+        text_to_set = unique_name_checker.get_unique_name_for_dictionary(self.character.details, text)
         name = model.get_value(tree_iter, 0)
-        model.set_value(tree_iter, 0, text)
+        model.set_value(tree_iter, 0, text_to_set)
 
-        self.character.details[text] = self.character.details.pop(name)
+        self.character.details[text_to_set] = self.character.details.pop(name)
 
     def _detailsValueEdited(self, renderer: Gtk.CellRendererText, path: str, text: str):
         if self.character is None:
@@ -462,3 +535,4 @@ class CharactersView:
 
     def show(self):
         self.widget.show_all()
+

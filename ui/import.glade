@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.38.2 
+<!-- Generated with glade 3.40.0 
 
 Copyright (C) 2015-2021 Olivier Keshavjee et al.
 
@@ -27,7 +27,55 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
   <!-- interface-name Manuskript -->
   <!-- interface-description Manuskript is an open-source tool for writers. -->
   <!-- interface-copyright 2015-2021 Olivier Keshavjee et al. -->
-  <object class="HdyWindow">
+  <object class="GtkListStore" id="file_format_store">
+    <columns>
+      <!-- column-name name -->
+      <column type="gchararray"/>
+      <!-- column-name mimeType -->
+      <column type="gchararray"/>
+      <!-- column-name icon -->
+      <column type="gchararray"/>
+    </columns>
+    <data>
+      <row>
+        <col id="0" translatable="yes">Markdown</col>
+        <col id="1" translatable="yes">text/markdown</col>
+        <col id="2" translatable="yes">text-x-generic</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">Folder</col>
+        <col id="1" translatable="yes">directory</col>
+        <col id="2" translatable="yes">folder</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">OPML</col>
+        <col id="1" translatable="yes">text/opml</col>
+        <col id="2" translatable="yes">text-x-generic-template</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">Mind Map</col>
+        <col id="1" translatable="yes">text/mind-map</col>
+        <col id="2" translatable="yes">text-x-generic-template</col>
+      </row>
+    </data>
+  </object>
+  <object class="GtkTreeStore" id="file_store">
+    <columns>
+      <!-- column-name name -->
+      <column type="gchararray"/>
+      <!-- column-name icon -->
+      <column type="gchararray"/>
+    </columns>
+  </object>
+  <object class="GtkTreeStore" id="under_store">
+    <columns>
+      <!-- column-name name -->
+      <column type="gchararray"/>
+      <!-- column-name icon -->
+      <column type="gchararray"/>
+    </columns>
+  </object>
+  <object class="HdyWindow" id="import_window">
     <property name="can-focus">False</property>
     <child>
       <object class="GtkBox">
@@ -39,12 +87,12 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <child>
-              <object class="HdyHeaderBar">
+              <object class="HdyHeaderBar" id="header_bar">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="title" translatable="yes">Import</property>
                 <child>
-                  <object class="GtkButton">
+                  <object class="GtkButton" id="back">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="receives-default">True</property>
@@ -58,7 +106,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                   </object>
                 </child>
                 <child>
-                  <object class="GtkButton">
+                  <object class="GtkButton" id="forward">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="receives-default">True</property>
@@ -85,7 +133,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
           </packing>
         </child>
         <child>
-          <object class="HdyLeaflet">
+          <object class="HdyLeaflet" id="preview_leaflet">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <child>
@@ -366,6 +414,9 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                   </packing>
                 </child>
               </object>
+              <packing>
+                <property name="name">settings_box</property>
+              </packing>
             </child>
             <child>
               <object class="GtkBox">
@@ -609,6 +660,9 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                   </packing>
                 </child>
               </object>
+              <packing>
+                <property name="name">preview_box</property>
+              </packing>
             </child>
           </object>
           <packing>
@@ -619,53 +673,5 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
         </child>
       </object>
     </child>
-  </object>
-  <object class="GtkListStore" id="file_format_store">
-    <columns>
-      <!-- column-name name -->
-      <column type="gchararray"/>
-      <!-- column-name mimeType -->
-      <column type="gchararray"/>
-      <!-- column-name icon -->
-      <column type="gchararray"/>
-    </columns>
-    <data>
-      <row>
-        <col id="0" translatable="yes">Markdown</col>
-        <col id="1" translatable="yes">text/markdown</col>
-        <col id="2" translatable="yes">text-x-generic</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">Folder</col>
-        <col id="1" translatable="yes">directory</col>
-        <col id="2" translatable="yes">folder</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">OPML</col>
-        <col id="1" translatable="yes">text/opml</col>
-        <col id="2" translatable="yes">text-x-generic-template</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">Mind Map</col>
-        <col id="1" translatable="yes">text/mind-map</col>
-        <col id="2" translatable="yes">text-x-generic-template</col>
-      </row>
-    </data>
-  </object>
-  <object class="GtkTreeStore" id="file_store">
-    <columns>
-      <!-- column-name name -->
-      <column type="gchararray"/>
-      <!-- column-name icon -->
-      <column type="gchararray"/>
-    </columns>
-  </object>
-  <object class="GtkTreeStore" id="under_store">
-    <columns>
-      <!-- column-name name -->
-      <column type="gchararray"/>
-      <!-- column-name icon -->
-      <column type="gchararray"/>
-    </columns>
   </object>
 </interface>

@@ -24,7 +24,8 @@ class MmdFile(AbstractFile):
         metaValue = None
 
         with open(self.path, 'rt', encoding='utf-8') as file:
-            for line in file:
+            line = file.readline()
+            while line:
                 m = metaPattern.match(line)
 
                 if not (m is None):
@@ -33,14 +34,15 @@ class MmdFile(AbstractFile):
 
                     metaKey = m.group(1)
                     metaValue = m.group(2)
-                    continue
+                else:
+                    m = metaValuePattern.match(line)
 
-                m = metaValuePattern.match(line)
+                    if not (m is None):
+                        metaValue += "\n" + m.group(2)
+                    elif line == "\n":
+                        break
 
-                if not (m is None):
-                    metaValue += "\n" + m.group(2)
-                elif line == "\n":
-                    break
+                line = file.readline()
 
             if not (metaKey is None):
                 metadata[metaKey] = metaValue
@@ -50,6 +52,14 @@ class MmdFile(AbstractFile):
 
                 if (len(body) > 0) and (body[0] == "\n"):
                     body = body[1:]
+            elif file.seekable():
+                currentPosition = file.tell()
+
+                file.seek(0, 2)
+                endPosition = file.tell()
+
+                if endPosition - currentPosition == 1:
+                    body = ""
 
         return metadata, body
 
