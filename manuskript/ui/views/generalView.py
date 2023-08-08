@@ -29,7 +29,7 @@ class GeneralView:
         self.nameBuffer = builder.get_object("name")
         self.emailBuffer = builder.get_object("email")
         
-        self.quoteLabel = builder.get_object("quote-label")
+        self.quoteLabel = builder.get_object("quote_label")
 
         self.titleBuffer.set_text(validString(self.info.title), -1)
         self.subtitleBuffer.set_text(validString(self.info.subtitle), -1)
