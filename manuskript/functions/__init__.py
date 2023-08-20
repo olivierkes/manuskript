@@ -34,10 +34,9 @@ def wordCount(text):
     count = 0
     in_comment = False
     for word in words:
-        if in_comment:
-            if word == '-->':
-                in_comment = False
-        else:
+        if in_comment and word == '-->':
+            in_comment = False
+        if not in_comment:
             if word == '<!--':
                 in_comment = True
             else:
