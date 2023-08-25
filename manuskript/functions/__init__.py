@@ -30,7 +30,7 @@ def safeTranslate(qApp, group, text):
         return text
 
 def wordCount(text):
-    return len(re.findall(r"\S+", text))
+    return len(re.findall(r"\S+", re.sub(r"(<!--).+?(-->)", "", text)))
 
 
 def charCount(text, use_spaces = True):
