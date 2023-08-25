@@ -30,18 +30,7 @@ def safeTranslate(qApp, group, text):
         return text
 
 def wordCount(text):
-    words = re.findall(r"\S+", text)
-    count = 0
-    in_comment = False
-    for word in words:
-        if in_comment and word == '-->':
-            in_comment = False
-        if not in_comment:
-            if word == '<!--':
-                in_comment = True
-            else:
-                count += 1
-    return count
+    return len(re.findall(r"\S+", re.sub(r"(<!--).+?(-->)", "", text)))
 
 
 def charCount(text, use_spaces = True):
