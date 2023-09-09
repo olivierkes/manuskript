@@ -3,13 +3,14 @@ import datetime
 
 
 
-quote_file = "./resources/quotes/Quotes_English.txt" # TODO translations
-def load_quotes():
+
+def load_quotes(language):
+    quote_file = "./resources/quotes/Quotes_"+language+".txt" # TODO translations
     with open(quote_file, "r") as file:
         quotes = file.readlines() 
         return quotes
 
-quotes = load_quotes()
+quotes = load_quotes('English')
 def get_quote():
     # Get seed
     today = datetime.date.today()
