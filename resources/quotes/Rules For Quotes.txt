@@ -1,0 +1,8 @@
+We'd be glad to get more quotes! However there are a few rules.
+
+Rules for quotes:
+1. They must be clean. If you have to edit them so they're clean that's fine. 
+2. They must pertain to writing. That doesn't just mean they are from authors but that they are useful/funny/insightful in a way that would encourage or at least make a writer think.
+3. Follow the format please. Tab first than an opening quote and closing quote followed by the source.
+
+If you have a question just open an issue.
