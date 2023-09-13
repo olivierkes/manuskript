@@ -187,6 +187,7 @@ class BasicDictionary:
     def checkText(self, text):
         # Based on http://john.nachtimwald.com/2009/08/22/qplaintextedit-with-in-line-spell-check/
         WORDS = r'(?iu)((?:[^_\W]|\')+)[^A-Za-z0-9\']'
+        
         #         (?iu) means case insensitive and Unicode
         #              ((?:[^_\W]|\')+) means words exclude underscores but include apostrophes
         #                              [^A-Za-z0-9\'] used with above hack to prevent spellcheck while typing word
@@ -197,8 +198,27 @@ class BasicDictionary:
 
         for word_object in re.finditer(WORDS, text):
             word = word_object.group(1)
+            mispelled = self.isMisspelled(word)
+            if mispelled == False:
+                continue
+            #inorder to prevent apostrophes causing false positives and keep the same functionality otherwise,
+            #check that the word doesn't have any additional punctuation on it.
+            if re.match("^[^\w]|([\p{P}'])$", word):
 
-            if (self.isMisspelled(word) and not self.isCustomWord(word)):
+                # ^[^\w] checks that it doesn't start with a word character
+                # ([\p{P}'])$ checks it doesn't end with punctuation characters
+
+                apostrophe_WORDS = r'(?iu)\b(?<=[\s\'"(])((?:[a-zA-Z]|\')+)(?=\b)'
+
+                # \b(?<=[\s\'"(]) looks for nonword characters and starts grouping after
+                # (?=\b) looks for the word boundary
+                # ((?:[a-zA-Z]|\')+) greedily matches for letters and apostrophes
+                
+                temp = re.match(apostrophe_WORDS, word)
+                mispelled = self.isMisspelled(temp.group(1))
+
+            if (mispelled and not self.isCustomWord(word)):
+
                 matches.append(BasicMatch(
                     word_object.start(1), word_object.end(1)
                 ))
