@@ -46,7 +46,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.py" line="174"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.py" line="175"/>
@@ -107,12 +107,12 @@
     <message>
         <location filename="../manuskript/ui/listDialog_ui.py" line="43"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>Titel</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/listDialog_ui.py" line="44"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekst</translation>
     </message>
 </context>
 <context>
@@ -120,12 +120,12 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="619"/>
         <source>The image path or URL is incomplete or malformed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Stien til billedet eller URL&apos;en, er enten ufuldendt eller forkert.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="631"/>
         <source>The protocol &quot;{}&quot; is not supported.</source>
-        <translation type="unfinished"></translation>
+        <translation>Protokollen &quot;{}&quot; er ikke understøttet.</translation>
     </message>
 </context>
 <context>
@@ -133,7 +133,7 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditCompleter.py" line="73"/>
         <source>Insert reference</source>
-        <translation type="unfinished"></translation>
+        <translation>Indsæt reference</translation>
     </message>
 </context>
 <context>
@@ -141,7 +141,7 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="543"/>
         <source>{} (CTRL+Click to open)</source>
-        <translation type="unfinished"></translation>
+        <translation>{} (CTRL+klik for at åbne)</translation>
     </message>
 </context>
 <context>
@@ -149,162 +149,162 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1538"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>Generelt</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1474"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>Titel</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1475"/>
         <source>Subtitle</source>
-        <translation type="unfinished"></translation>
+        <translation>Under titel</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1476"/>
         <source>Series</source>
-        <translation type="unfinished"></translation>
+        <translation>Serie</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1477"/>
         <source>Volume</source>
-        <translation type="unfinished"></translation>
+        <translation>Volumen</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1478"/>
         <source>Genre</source>
-        <translation type="unfinished"></translation>
+        <translation>Genren</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1479"/>
         <source>License</source>
-        <translation type="unfinished"></translation>
+        <translation>Licensen</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1480"/>
         <source>Author</source>
-        <translation type="unfinished"></translation>
+        <translation>Forfatter</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1536"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Navn</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1482"/>
         <source>Email</source>
-        <translation type="unfinished"></translation>
+        <translation>Email</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1528"/>
         <source>Summary</source>
-        <translation type="unfinished"></translation>
+        <translation>Opsummering</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1484"/>
         <source>Situation:</source>
-        <translation type="unfinished"></translation>
+        <translation>Situation:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1524"/>
         <source>Summary:</source>
-        <translation type="unfinished"></translation>
+        <translation>Opsummering:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1487"/>
         <source>One sentence</source>
-        <translation type="unfinished"></translation>
+        <translation>En sætning</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1529"/>
         <source>One paragraph</source>
-        <translation type="unfinished"></translation>
+        <translation>En paragraf</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1530"/>
         <source>One page</source>
-        <translation type="unfinished"></translation>
+        <translation>En side</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1531"/>
         <source>Full</source>
-        <translation type="unfinished"></translation>
+        <translation>Hel</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1492"/>
         <source>One sentence summary</source>
-        <translation type="unfinished"></translation>
+        <translation>En sætning opsummering</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1494"/>
         <source>One paragraph summary</source>
-        <translation type="unfinished"></translation>
+        <translation>En paragraf opsummering</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1495"/>
         <source>Expand each sentence of your one paragraph summary to a paragraph</source>
-        <translation type="unfinished"></translation>
+        <translation>Udvid hver sætning af din en paragraf opsummering til en paragraf</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1496"/>
         <source>One page summary</source>
-        <translation type="unfinished"></translation>
+        <translation>En side opsummering</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1497"/>
         <source>Full summary</source>
-        <translation type="unfinished"></translation>
+        <translation>Hel opsummering</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1485"/>
         <source>What if...?</source>
-        <translation type="unfinished"></translation>
+        <translation>Hvad nu hvis...?</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="24"/>
         <source>Characters</source>
-        <translation type="unfinished"></translation>
+        <translation>Karakterer</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1499"/>
         <source>Names</source>
-        <translation type="unfinished"></translation>
+        <translation>Navne</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1533"/>
         <source>Filter</source>
-        <translation type="unfinished"></translation>
+        <translation>Filtre</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1523"/>
         <source>Basic info</source>
-        <translation type="unfinished"></translation>
+        <translation>Basisk information</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1519"/>
         <source>Importance</source>
-        <translation type="unfinished"></translation>
+        <translation>Vigtighed</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1504"/>
         <source>Motivation</source>
-        <translation type="unfinished"></translation>
+        <translation>Motivation</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1505"/>
         <source>Goal</source>
-        <translation type="unfinished"></translation>
+        <translation>Mål</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1506"/>
         <source>Conflict</source>
-        <translation type="unfinished"></translation>
+        <translation>Konflikt</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1507"/>
         <source>Epiphany</source>
-        <translation type="unfinished"></translation>
+        <translation>Åbenbaring</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1508"/>
@@ -319,12 +319,12 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1512"/>
         <source>Notes</source>
-        <translation type="unfinished"></translation>
+        <translation>Noter</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1514"/>
         <source>Detailed info</source>
-        <translation type="unfinished"></translation>
+        <translation>Detaljeret information</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1547"/>
@@ -339,17 +339,17 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1520"/>
         <source>Character(s)</source>
-        <translation type="unfinished"></translation>
+        <translation>Karakterer(ere)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1537"/>
         <source>Description</source>
-        <translation type="unfinished">Beskrivelse</translation>
+        <translation>Beskrivelse</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1522"/>
         <source>Result</source>
-        <translation type="unfinished"></translation>
+        <translation>Resultat</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1527"/>
@@ -359,27 +359,27 @@
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="26"/>
         <source>World</source>
-        <translation type="unfinished"></translation>
+        <translation>Verden</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1535"/>
         <source>Populates with empty data</source>
-        <translation type="unfinished"></translation>
+        <translation>Opfyld med tom data</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1541"/>
         <source>More</source>
-        <translation type="unfinished"></translation>
+        <translation>Mere</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1539"/>
         <source>Source of passion</source>
-        <translation type="unfinished"></translation>
+        <translation>Kilde af inspiration</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1540"/>
         <source>Source of conflict</source>
-        <translation type="unfinished"></translation>
+        <translation>Kilde af konflikt</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="23"/>
@@ -389,17 +389,17 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1544"/>
         <source>Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Redaktør</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1551"/>
         <source>Debug</source>
-        <translation type="unfinished"></translation>
+        <translation>Fejlfind</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="25"/>
         <source>FlatData</source>
-        <translation type="unfinished"></translation>
+        <translation>FladData</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1546"/>
@@ -409,42 +409,42 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1550"/>
         <source>Labels</source>
-        <translation type="unfinished"></translation>
+        <translation>Mærker</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1552"/>
         <source>&amp;File</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Fil</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1553"/>
         <source>&amp;Recent</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Seneste</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1554"/>
         <source>&amp;Help</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Hjælp</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1555"/>
         <source>&amp;Tools</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Værktøjer</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1556"/>
         <source>&amp;Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Rediger</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1559"/>
         <source>&amp;View</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Vis</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1560"/>
         <source>&amp;Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Indstilling</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1564"/>
@@ -454,27 +454,27 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1565"/>
         <source>&amp;Open</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Åben</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1566"/>
         <source>&amp;Save</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Gem</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1567"/>
         <source>Sa&amp;ve as...</source>
-        <translation type="unfinished"></translation>
+        <translation>G&amp;em som...</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1568"/>
         <source>&amp;Quit</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Afslut</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1569"/>
         <source>&amp;Show help texts</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Vis hjælp tekst</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1570"/>
