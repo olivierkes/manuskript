@@ -384,6 +384,11 @@ class corkDelegate(QStyledItemDelegate):
 
                 # Draw Summary
                 # One line
+        #checking that textColor is actually defined before we use it
+        try:
+            textColor
+        except:
+            textColor = None
         if lineSummary and textColor:
             p.save()
             f = QFont(option.font)
