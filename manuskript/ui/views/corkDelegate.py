@@ -384,7 +384,7 @@ class corkDelegate(QStyledItemDelegate):
 
                 # Draw Summary
                 # One line
-        if lineSummary:
+        if lineSummary and textColor:
             p.save()
             f = QFont(option.font)
             f.setBold(True)
@@ -396,7 +396,7 @@ class corkDelegate(QStyledItemDelegate):
             p.restore()
 
             # Full summary
-        if fullSummary:
+        if fullSummary and textColor:
             p.save()
             p.setFont(option.font)
             p.setPen(textColor)
