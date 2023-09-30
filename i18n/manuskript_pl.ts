@@ -107,12 +107,12 @@
     <message>
         <location filename="../manuskript/ui/listDialog_ui.py" line="43"/>
         <source>Title</source>
-        <translation type="unfinished">Tytuł</translation>
+        <translation>Tytuł</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/listDialog_ui.py" line="44"/>
         <source>Text</source>
-        <translation type="unfinished">Tekst</translation>
+        <translation>Tekst</translation>
     </message>
 </context>
 <context>
@@ -120,12 +120,12 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="619"/>
         <source>The image path or URL is incomplete or malformed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ścieżka lub adres URL do obrazu jest niekompletny lub źle wpisany.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="631"/>
         <source>The protocol &quot;{}&quot; is not supported.</source>
-        <translation type="unfinished"></translation>
+        <translation>Protokół „{}” nie jest wspierany.</translation>
     </message>
 </context>
 <context>
@@ -474,7 +474,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1562"/>
         <source>Cheat Sheet</source>
-        <translation type="unfinished">Ś&amp;ciągawka</translation>
+        <translation>Ściągawka</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1564"/>
@@ -785,7 +785,8 @@
         <location filename="../manuskript/mainWindow.py" line="1497"/>
         <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous
                      evil wizard wasn&apos;t able to kill a baby?&apos; (Harry Potter)</source>
-        <translation>Podstawowa sytuacja, sformułowana jako pytanie &quot;Co jeśli...?&quot;. Na przykład: &quot;Co jeśli najniebezpieczniejszy zły czarownik nie mógł zabić dziecka?&quot; (Harry Potter)</translation>
+        <translation>Prosta sytuacja, sformułowana jako pytanie &quot;Co jeśli...?&quot;. Na przykład: &quot;Co jeśli najniebezpieczniejszy
+zły czarownik nie mógł zabić dziecka?&quot; (Harry Potter)</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1502"/>
@@ -1052,17 +1053,17 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1616"/>
         <source>&amp;Targets</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Cele</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1617"/>
         <source>Draft and session word count targets</source>
-        <translation type="unfinished"></translation>
+        <translation>Docelowa liczba słów w szkicu i sesji</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="321"/>
         <source>Value</source>
-        <translation type="unfinished">Wartość</translation>
+        <translation>Wartość</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="329"/>
@@ -1072,7 +1073,7 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message>
         <location filename="../manuskript/mainWindow.py" line="374"/>
         <source>No Entries!</source>
-        <translation type="unfinished"></translation>
+        <translation>Brak wpisów!</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="374"/>
@@ -1968,12 +1969,12 @@ słów</translation>
     <message>
         <location filename="../manuskript/models/characterModel.py" line="179"/>
         <source>New character</source>
-        <translation type="unfinished"></translation>
+        <translation>Nowa postać</translation>
     </message>
     <message>
         <location filename="../manuskript/models/characterModel.py" line="215"/>
         <source>Description</source>
-        <translation type="unfinished">Opis</translation>
+        <translation>Opis</translation>
     </message>
 </context>
 <context>
@@ -2120,7 +2121,7 @@ słów</translation>
     <message>
         <location filename="../manuskript/load_save/version_1.py" line="435"/>
         <source>Files not saved</source>
-        <translation type="unfinished"></translation>
+        <translation>Nie zapisano plików</translation>
     </message>
     <message>
         <location filename="../manuskript/load_save/version_1.py" line="436"/>
@@ -2130,7 +2131,7 @@ słów</translation>
     <message>
         <location filename="../manuskript/load_save/version_1.py" line="925"/>
         <source>Files not loaded</source>
-        <translation type="unfinished"></translation>
+        <translation>Nie wczytano plików</translation>
     </message>
     <message>
         <location filename="../manuskript/load_save/version_1.py" line="926"/>
@@ -2302,7 +2303,7 @@ słów</translation>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>Zastąp pojedyncze cudzysłowy (') znakiem:</translation>
+        <translation>Zastąp pojedyncze cudzysłowy (&apos;) znakiem:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>
@@ -2377,12 +2378,12 @@ słów</translation>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="542"/>
         <source>Replace ... with …</source>
-        <translation type="unfinished"></translation>
+        <translation>Zamień ... na …</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="543"/>
         <source>Replace --- with —</source>
-        <translation type="unfinished"></translation>
+        <translation>Zamień --- z —</translation>
     </message>
 </context>
 <context>
@@ -3058,7 +3059,7 @@ słów</translation>
     <message>
         <location filename="../manuskript/models/plotModel.py" line="110"/>
         <source>New plot</source>
-        <translation type="unfinished"></translation>
+        <translation>Nowy wątek</translation>
     </message>
 </context>
 <context>
@@ -3246,12 +3247,12 @@ słów</translation>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="31"/>
         <source>Case sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>Uwzględnij wielkość liter</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="32"/>
         <source>Match words</source>
-        <translation type="unfinished"></translation>
+        <translation>Dopasuj wyrazy</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="33"/>
@@ -3261,12 +3262,12 @@ słów</translation>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="39"/>
         <source>Search in:</source>
-        <translation type="unfinished"></translation>
+        <translation>Szukaj w:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="51"/>
         <source>Options:</source>
-        <translation type="unfinished"></translation>
+        <translation>Opcje:</translation>
     </message>
 </context>
 <context>
@@ -3390,7 +3391,7 @@ słów</translation>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="47"/>
         <source>Split &apos;{}&apos;</source>
-        <translation>Rozdziel '{}'</translation>
+        <translation>Rozdziel &apos;{}&apos;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="51"/>
@@ -3444,47 +3445,47 @@ słów</translation>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="128"/>
         <source>Project Targets</source>
-        <translation type="unfinished"></translation>
+        <translation>Cele projektu</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="129"/>
         <source>Draft Target</source>
-        <translation type="unfinished"></translation>
+        <translation>Cele szkicu</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="136"/>
         <source>0</source>
-        <translation type="unfinished">0</translation>
+        <translation>0</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="137"/>
         <source>of</source>
-        <translation type="unfinished">z</translation>
+        <translation>z</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="132"/>
         <source>10,000</source>
-        <translation type="unfinished"></translation>
+        <translation>10,000</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="133"/>
         <source>Words</source>
-        <translation type="unfinished"></translation>
+        <translation>Słowa</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="134"/>
         <source>Session Target</source>
-        <translation type="unfinished"></translation>
+        <translation>Cele sesji</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="135"/>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Resetuj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="138"/>
         <source>words</source>
-        <translation type="unfinished"></translation>
+        <translation>słowa</translation>
     </message>
 </context>
 <context>
