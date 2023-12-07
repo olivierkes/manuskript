@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
 
-import os, gzip, json, glob, re
+import os, gzip, json, glob, re, string
 from PyQt5.QtCore import QLocale
 from collections import OrderedDict
 from manuskript.functions import writablePath
@@ -201,10 +201,13 @@ class BasicDictionary:
             mispelled = self.isMisspelled(word)
             if mispelled == False:
                 continue
+            punctuation = string.punctuation.replace('-', '')
+
+            FALSE_POSITIVE = r'^[^\w]|([^{}])$'.format(punctuation)
+
             #inorder to prevent apostrophes causing false positives and keep the same functionality otherwise,
             #check that the word doesn't have any additional punctuation on it.
-            if re.match("^[^\w]|([\p{P}'])$", word):
-
+            if re.match(FALSE_POSITIVE, word):
                 # ^[^\w] checks that it doesn't start with a word character
                 # ([\p{P}'])$ checks it doesn't end with punctuation characters
 
@@ -215,7 +218,7 @@ class BasicDictionary:
                 # ((?:[a-zA-Z]|\')+) greedily matches for letters and apostrophes
                 
                 temp = re.match(apostrophe_WORDS, word)
-                mispelled = self.isMisspelled(temp.group(1))
+                mispelled = self.isMisspelled(temp.group(1)) if temp else False
 
             if (mispelled and not self.isCustomWord(word)):
 
