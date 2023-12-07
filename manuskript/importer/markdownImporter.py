@@ -65,7 +65,7 @@ class markdownImporter(abstractImporter):
 
         if not fromString:
             # Read file
-            with open(filePath, "r", encoding="utf-8") as f:
+            with open(filePath, "r", encoding="utf-8", newline="\n") as f:
                 txt = f.read()
         else:
             txt = fromString

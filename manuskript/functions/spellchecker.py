@@ -23,7 +23,7 @@ try:
 
     if distutils.version.LooseVersion(symspellpy.__version__) < SYMSPELLPY_MIN_VERSION:
         symspellpy = None
-    
+
 except ImportError:
     symspellpy = None
 
@@ -148,7 +148,7 @@ class BasicDictionary:
         self._customDict = set()
         customPath = self.getCustomDictionaryPath()
         try:
-            with gzip.open(customPath, "rt", encoding='utf-8') as f:
+            with gzip.open(customPath, "rt", encoding='utf-8', newline="\n") as f:
                 self._customDict = set(json.loads(f.read()))
                 for word in self._customDict:
                     self._dict.create_dictionary_entry(word, self.CUSTOM_COUNT)
@@ -250,7 +250,7 @@ class BasicDictionary:
 
     def _saveCustomDict(self):
         customPath = self.getCustomDictionaryPath()
-        with gzip.open(customPath, "wt") as f:
+        with gzip.open(customPath, "wt", newline="\n") as f:
             f.write(json.dumps(list(self._customDict)))
 
 
@@ -393,7 +393,7 @@ class SymSpellDictionary(BasicDictionary):
             if pyspellchecker:
                 path = os.path.join(pyspellchecker.__path__[0], "resources", "{}.json.gz".format(self.name))
                 if os.path.exists(path):
-                    with gzip.open(path, "rt", encoding='utf-8') as f:
+                    with gzip.open(path, "rt", encoding='utf-8', newline="\n") as f:
                         data = json.loads(f.read())
                         for key in data:
                             self._dict.create_dictionary_entry(key, data[key])
