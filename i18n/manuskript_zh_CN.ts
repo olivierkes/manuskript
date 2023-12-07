@@ -2316,7 +2316,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>将单引号（&apos;）替换为：</translation>
+        <translation>将单引号（'）替换为：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>

@@ -120,7 +120,7 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="619"/>
         <source>The image path or URL is incomplete or malformed.</source>
-        <translation>Stien til billedet eller URL&apos;en, er enten ufuldendt eller forkert.</translation>
+        <translation>Stien til billedet eller URL'en, er enten ufuldendt eller forkert.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="631"/>
@@ -701,7 +701,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1895"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Tekst</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1896"/>
@@ -1132,7 +1132,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1770"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Generelt</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1800"/>
@@ -1147,7 +1147,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1962"/>
         <source>Labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Mærker</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1963"/>
@@ -1347,7 +1347,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1843"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Tekst</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1878"/>
@@ -1362,7 +1362,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1870"/>
         <source>Goal</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Mål</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1871"/>
@@ -1377,7 +1377,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1877"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Titel</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1916"/>
@@ -1900,7 +1900,7 @@
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="215"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Titel</translation>
     </message>
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="217"/>
@@ -1930,7 +1930,7 @@
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="227"/>
         <source>Goal</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Mål</translation>
     </message>
 </context>
 <context>
@@ -1971,7 +1971,7 @@
     <message>
         <location filename="../manuskript/models/characterModel.py" line="206"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Navn</translation>
     </message>
     <message>
         <location filename="../manuskript/models/characterModel.py" line="215"/>
@@ -2037,7 +2037,7 @@
     <message>
         <location filename="../manuskript/ui/cheatSheet.py" line="91"/>
         <source>Characters</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Karakterer</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/cheatSheet.py" line="104"/>
@@ -2052,7 +2052,7 @@
     <message>
         <location filename="../manuskript/ui/cheatSheet.py" line="120"/>
         <source>World</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Verden</translation>
     </message>
 </context>
 <context>
@@ -2125,7 +2125,7 @@
     <message>
         <location filename="../manuskript/ui/views/corkDelegate.py" line="100"/>
         <source>Full summary</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Hel opsummering</translation>
     </message>
 </context>
 <context>
@@ -2220,12 +2220,12 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="517"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Titel</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="519"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Tekst</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="520"/>
@@ -2255,7 +2255,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="525"/>
         <source>Labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Mærker</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="526"/>
@@ -2489,7 +2489,7 @@
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="156"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Titel</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="157"/>
@@ -2532,7 +2532,7 @@
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.py" line="67"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Generelt</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.py" line="62"/>
@@ -2687,7 +2687,7 @@
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.py" line="96"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Tekst</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.py" line="97"/>
@@ -2768,7 +2768,7 @@
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.py" line="96"/>
         <source>Summary</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Opsummering</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.py" line="97"/>
@@ -2778,7 +2778,7 @@
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.py" line="98"/>
         <source>Full summary</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Hel opsummering</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.py" line="100"/>
@@ -2827,7 +2827,7 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="254"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Generelt</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="256"/>
@@ -2863,7 +2863,7 @@
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Generelt</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3041,7 +3041,7 @@
     <message>
         <location filename="../manuskript/models/plotModel.py" line="145"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Navn</translation>
     </message>
     <message>
         <location filename="../manuskript/models/plotModel.py" line="147"/>
@@ -3145,7 +3145,7 @@
     <message>
         <location filename="../manuskript/ui/views/propertiesView_ui.py" line="184"/>
         <source>Goal</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Mål</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/propertiesView_ui.py" line="185"/>
@@ -3729,7 +3729,7 @@
     <message>
         <location filename="../manuskript/ui/welcome.py" line="336"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Tekst</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="339"/>

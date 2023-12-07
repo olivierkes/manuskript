@@ -2318,7 +2318,7 @@ pored broja riječi</translation>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>Zamijeni jednostruke navodnike (&apos;) sa:</translation>
+        <translation>Zamijeni jednostruke navodnike (') sa:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>

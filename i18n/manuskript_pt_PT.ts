@@ -2328,7 +2328,7 @@ junto a palavras</translation>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>Substituir aspas simples (&apos;) por:</translation>
+        <translation>Substituir aspas simples (') por:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>

@@ -2318,7 +2318,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>一重引用符 (&apos;) を、次に置き換える：</translation>
+        <translation>一重引用符 (') を、次に置き換える：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>
@@ -3392,7 +3392,7 @@
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="47"/>
         <source>Split &apos;{}&apos;</source>
-        <translation>分割 &apos;{}&apos;</translation>
+        <translation>分割 '{}'</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="51"/>

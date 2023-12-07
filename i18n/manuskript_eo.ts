@@ -2317,7 +2317,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>Anstataŭigi Askiajn unuoblajn citilojn (&apos;) per:</translation>
+        <translation>Anstataŭigi Askiajn unuoblajn citilojn (') per:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>
