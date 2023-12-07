@@ -355,31 +355,41 @@ class welcome(QWidget, Ui_welcome):
         Also, updates self.template, which is used to create the items when
         calling self.createFile.
         """
-        total = 1
-
         # Searching for every spinboxes on the widget, and multiplying
         # their values to get the number of words.
         for s in self.findChildren(QSpinBox, QRegExp(".*"),
                                    Qt.FindChildrenRecursively):
-            total = total * s.value()
+            templateIndex = s.property("templateIndex")
+            if (not templateIndex) or (templateIndex >= len(self.template[1])):
+                continue
 
             # Update self.template to reflect the changed count values
-            templateIndex = s.property("templateIndex")
             self.template[1][templateIndex] = (
                 s.value(),
                 self.template[1][templateIndex][1])
 
         for t in self.findChildren(QLineEdit, QRegExp(".*"),
                                    Qt.FindChildrenRecursively):
-            # Update self.template to reflect the changed name values
             templateIndex = t.property("templateIndex")
-            if templateIndex != None :
-                self.template[1][templateIndex] = (
+            if (not templateIndex) or (templateIndex >= len(self.template[1])):
+                continue
+
+            # Update self.template to reflect the changed name values
+            self.template[1][templateIndex] = (
                 self.template[1][templateIndex][0],
                 t.text())
+        
+        total = 0
+        for row in self.template[1]:
+            try:
+                val = int(row[0])
+            except ValueError:
+                continue
 
-        if total == 1:
-            total = 0
+            if total == 0:
+                total = val
+            else:
+                total *= val
 
         self.lblTotal.setText(self.tr("<b>Total:</b> {} words (~ {} pages)").format(
                 locale.format_string("%d", total, grouping=True),
