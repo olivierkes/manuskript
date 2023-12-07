@@ -678,6 +678,9 @@ def loadProject(project, zip=None):
             # Skip directories that begin with a period
             if p[:1] == ".":
                 continue
+            #skip if the basedir of the file starts with an .
+            if os.path.basename(p)[:1] == ".":
+                continue
             for f in filenames:
                 # Skip filenames that begin with a period
                 if f[:1] == ".":
