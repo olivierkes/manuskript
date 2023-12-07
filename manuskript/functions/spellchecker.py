@@ -363,7 +363,7 @@ class PySpellcheckerDictionary(BasicDictionary):
 
     def getSuggestions(self, word):
         candidates = self._dict.candidates(word)
-        if word in candidates:
+        if candidates and word in candidates:
             candidates.remove(word)
         return candidates
 

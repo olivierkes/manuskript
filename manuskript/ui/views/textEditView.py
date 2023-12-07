@@ -620,10 +620,11 @@ class textEditView(QTextEdit):
 
                         selectedWord = cursor.selectedText()
 
-                    for word in match.replacements:
-                        action = self.SpellAction(word, spell_menu)
-                        action.correct.connect(self.correctWord)
-                        spell_menu.addAction(action)
+                    if match.replacements:
+                        for word in match.replacements:
+                            action = self.SpellAction(word, spell_menu)
+                            action.correct.connect(self.correctWord)
+                            spell_menu.addAction(action)
 
                     # Adds: add to dictionary
                     addAction = QAction(self.tr("&Add to dictionary"), popup_menu)
@@ -635,7 +636,7 @@ class textEditView(QTextEdit):
 
                     # Only add the spelling suggests to the menu if there are
                     # suggestions.
-                    if len(match.replacements) > 0:
+                    if match.replacements and len(match.replacements) > 0:
                         # Adds: suggestions
                         popup_menu.insertMenu(popup_menu.actions()[0], spell_menu)
                 else:
