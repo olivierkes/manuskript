@@ -552,176 +552,176 @@
         <translation>Manuskriptについて</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1086"/>
+        <location filename="../manuskript/mainWindow.py" line="1080"/>
         <source>Manuskript</source>
         <translation>Manuskript</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1218"/>
+        <location filename="../manuskript/mainWindow.py" line="1212"/>
         <source>Project {} saved.</source>
         <translation>プロジェクト {} が保存されました。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1222"/>
+        <location filename="../manuskript/mainWindow.py" line="1216"/>
         <source>WARNING: Project {} not saved.</source>
         <translation>警告：プロジェクト {} は保存されていません。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1242"/>
+        <location filename="../manuskript/mainWindow.py" line="1236"/>
         <source>Project {} loaded.</source>
         <translation>プロジェクト {} が読み込まれました。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1248"/>
+        <location filename="../manuskript/mainWindow.py" line="1242"/>
         <source>Project {} loaded with some errors.</source>
         <translation>プロジェクト {} にいくつかのエラーが読み込まれました。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1611"/>
+        <location filename="../manuskript/mainWindow.py" line="1605"/>
         <source> (~{} pages)</source>
         <translation> (~{} ページ)</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1614"/>
+        <location filename="../manuskript/mainWindow.py" line="1608"/>
         <source>Words: {}{}</source>
         <translation>単語数：{}{}</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1622"/>
+        <location filename="../manuskript/mainWindow.py" line="1616"/>
         <source>Book summary</source>
         <translation>本の要約</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1623"/>
+        <location filename="../manuskript/mainWindow.py" line="1617"/>
         <source>Project tree</source>
         <translation>プロジェクトツリー</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1624"/>
+        <location filename="../manuskript/mainWindow.py" line="1618"/>
         <source>Metadata</source>
         <translation>メタデータ</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1625"/>
+        <location filename="../manuskript/mainWindow.py" line="1619"/>
         <source>Story line</source>
         <translation>ストーリーライン</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1690"/>
+        <location filename="../manuskript/mainWindow.py" line="1684"/>
         <source>Enter information about your book, and yourself.</source>
         <translation>あなたの本とあなた自身に関する情報を入力してください。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1693"/>
+        <location filename="../manuskript/mainWindow.py" line="1687"/>
         <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous
                      evil wizard wasn&apos;t able to kill a baby?&apos; (Harry Potter)</source>
         <translation>基本的な状況、「もしも・・・？」形式の質問です。 例：「最も危険で邪悪な
                      魔法使いが、赤ん坊を殺せなかったら？」 (ハリー・ポッター)</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1698"/>
+        <location filename="../manuskript/mainWindow.py" line="1692"/>
         <source>Take time to think about a one sentence (~50 words) summary of your book. Then expand it to
                      a paragraph, then to a page, then to a full summary.</source>
         <translation>あなたの本の要約を50単語ほどで考えてください。この作業は時間をかけるべきでしょう。
                      それを段落、ページに落とし込み、最後に完全な要約を書きます。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1703"/>
+        <location filename="../manuskript/mainWindow.py" line="1697"/>
         <source>Create your characters.</source>
         <translation>あなたの登場人物を作りましょう。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1706"/>
+        <location filename="../manuskript/mainWindow.py" line="1700"/>
         <source>Develop plots.</source>
         <translation>プロットを作成します。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1709"/>
+        <location filename="../manuskript/mainWindow.py" line="1703"/>
         <source>Build worlds.  Create hierarchy of broad categories down to specific details.</source>
         <translation>世界を創造しましょう。Manuskriptは、一般的なものから詳細なものまで、様々な設定を作成します。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1712"/>
+        <location filename="../manuskript/mainWindow.py" line="1706"/>
         <source>Create the outline of your masterpiece.</source>
         <translation>あなたの傑作の輪郭を作ります。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1715"/>
+        <location filename="../manuskript/mainWindow.py" line="1709"/>
         <source>Write.</source>
         <translation>書く。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1718"/>
+        <location filename="../manuskript/mainWindow.py" line="1712"/>
         <source>Debug info. Sometimes useful.</source>
         <translation>デバッグ情報。時に便利なものです。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1732"/>
+        <location filename="../manuskript/mainWindow.py" line="1726"/>
         <source>Dictionary</source>
         <translation>辞書</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1880"/>
+        <location filename="../manuskript/mainWindow.py" line="1874"/>
         <source>Nothing</source>
         <translation>無し</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1881"/>
+        <location filename="../manuskript/mainWindow.py" line="1875"/>
         <source>POV</source>
         <translation>POV</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1882"/>
+        <location filename="../manuskript/mainWindow.py" line="1876"/>
         <source>Label</source>
         <translation>ラベル</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1883"/>
+        <location filename="../manuskript/mainWindow.py" line="1877"/>
         <source>Progress</source>
         <translation>進捗</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1884"/>
+        <location filename="../manuskript/mainWindow.py" line="1878"/>
         <source>Compile</source>
         <translation>編纂</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1907"/>
+        <location filename="../manuskript/mainWindow.py" line="1901"/>
         <source>Icon color</source>
         <translation>アイコンの色</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1908"/>
+        <location filename="../manuskript/mainWindow.py" line="1902"/>
         <source>Text color</source>
         <translation>文字色</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1909"/>
+        <location filename="../manuskript/mainWindow.py" line="1903"/>
         <source>Background color</source>
         <translation>背景色</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1900"/>
+        <location filename="../manuskript/mainWindow.py" line="1894"/>
         <source>Icon</source>
         <translation>アイコン</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1901"/>
+        <location filename="../manuskript/mainWindow.py" line="1895"/>
         <source>Text</source>
         <translation>文字</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1902"/>
+        <location filename="../manuskript/mainWindow.py" line="1896"/>
         <source>Background</source>
         <translation>背景</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1903"/>
+        <location filename="../manuskript/mainWindow.py" line="1897"/>
         <source>Border</source>
         <translation>境界線</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1904"/>
+        <location filename="../manuskript/mainWindow.py" line="1898"/>
         <source>Corner</source>
         <translation>角</translation>
     </message>
@@ -911,52 +911,52 @@
         <translation>選択したプロットを削除する</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="927"/>
+        <location filename="../manuskript/mainWindow.py" line="921"/>
         <source>The file {} does not exist. Has it been moved or deleted?</source>
         <translation>ファイル {} は存在しません。移動または削除しましたか？</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1746"/>
+        <location filename="../manuskript/mainWindow.py" line="1740"/>
         <source>Install {}{} to use spellcheck</source>
         <translation>スペルチェックを使用するには {}{} をインストールします</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1788"/>
+        <location filename="../manuskript/mainWindow.py" line="1782"/>
         <source>{} has no installed dictionaries</source>
         <translation>{} には辞書がインストールされていません</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1809"/>
+        <location filename="../manuskript/mainWindow.py" line="1803"/>
         <source>{}{} is not installed</source>
         <translation>{}{} がインストールされていません</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1029"/>
+        <location filename="../manuskript/mainWindow.py" line="1023"/>
         <source>Save project?</source>
         <translation>プロジェクトを保存しますか？</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1029"/>
+        <location filename="../manuskript/mainWindow.py" line="1023"/>
         <source>Save changes to project &quot;{}&quot; before closing?</source>
         <translation>閉じる前にプロジェクト &quot;{}&quot; への変更を保存しますか？</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1029"/>
+        <location filename="../manuskript/mainWindow.py" line="1023"/>
         <source>Your changes will be lost if you don&apos;t save them.</source>
         <translation>保存しないと、変更内容は失われます。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="2007"/>
+        <location filename="../manuskript/mainWindow.py" line="2001"/>
         <source>PyQt / Qt versions 5.11 and 5.12 are known to cause a crash which might result in a loss of data.</source>
         <translation>PyQt / Qtバージョン5.11および5.12は、データの損失につながる可能性のあるクラッシュを引き起こすことがわかっています。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="2008"/>
+        <location filename="../manuskript/mainWindow.py" line="2002"/>
         <source>PyQt {} and Qt {} are in use.</source>
         <translation>PyQt {} と Qt {} が使用されています。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="2014"/>
+        <location filename="../manuskript/mainWindow.py" line="2008"/>
         <source>Proceed with import at your own risk</source>
         <translation>自己責任でインポートを続行</translation>
     </message>
@@ -996,37 +996,37 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1546"/>
+        <location filename="../manuskript/mainWindow.py" line="1540"/>
         <source>Sorry!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1546"/>
+        <location filename="../manuskript/mainWindow.py" line="1540"/>
         <source>This session is not being logged.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1555"/>
+        <location filename="../manuskript/mainWindow.py" line="1549"/>
         <source>A log file is a Work in Progress!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1555"/>
+        <location filename="../manuskript/mainWindow.py" line="1549"/>
         <source>The log file &quot;{}&quot; will continue to be written to until Manuskript is closed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1555"/>
+        <location filename="../manuskript/mainWindow.py" line="1549"/>
         <source>It will now be displayed in your file manager, but is of limited use until you close Manuskript.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1571"/>
+        <location filename="../manuskript/mainWindow.py" line="1565"/>
         <source>Error!</source>
         <translation>エラー！</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1571"/>
+        <location filename="../manuskript/mainWindow.py" line="1565"/>
         <source>An error was encountered while trying to show the log file below in your file manager.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1061,42 +1061,42 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="391"/>
+        <location filename="../manuskript/mainWindow.py" line="387"/>
         <source>Value</source>
         <translation type="unfinished">値</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="399"/>
+        <location filename="../manuskript/mainWindow.py" line="395"/>
         <source>Bulk Info Manager</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="444"/>
+        <location filename="../manuskript/mainWindow.py" line="440"/>
         <source>No Entries!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="444"/>
+        <location filename="../manuskript/mainWindow.py" line="440"/>
         <source>Please add entries to apply to the selected characters.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="455"/>
+        <location filename="../manuskript/mainWindow.py" line="451"/>
         <source>Bulk Info Applied</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="455"/>
+        <location filename="../manuskript/mainWindow.py" line="451"/>
         <source>The bulk info has been applied to the selected characters.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="527"/>
+        <location filename="../manuskript/mainWindow.py" line="523"/>
         <source>Un-applied data!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="527"/>
+        <location filename="../manuskript/mainWindow.py" line="523"/>
         <source>There are un-applied entries in this tab. Discard them?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1836,12 +1836,12 @@
         <translation>綴りの候補</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="629"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="630"/>
         <source>&amp;Add to dictionary</source>
         <translation>辞書を追加 (&amp;A)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="682"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="683"/>
         <source>&amp;Remove from custom dictionary</source>
         <translation>カスタム辞書から削除 (&amp;R)</translation>
     </message>
@@ -1861,12 +1861,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="653"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="654"/>
         <source>&amp;Correction Suggestions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/views/textEditView.py" line="662"/>
+        <location filename="../manuskript/ui/views/textEditView.py" line="663"/>
         <source>&amp;Correction Suggestion</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2143,12 +2143,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/load_save/version_1.py" line="925"/>
+        <location filename="../manuskript/load_save/version_1.py" line="928"/>
         <source>Files not loaded</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/load_save/version_1.py" line="926"/>
+        <location filename="../manuskript/load_save/version_1.py" line="929"/>
         <source>The following files were not loaded and appear to be open in another program</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3610,7 +3610,7 @@
         <translation>研究論文</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="418"/>
+        <location filename="../manuskript/ui/welcome.py" line="429"/>
         <source>Demo projects</source>
         <translation>デモプロジェクト</translation>
     </message>
@@ -3690,12 +3690,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="448"/>
+        <location filename="../manuskript/ui/welcome.py" line="459"/>
         <source>Chapter</source>
         <translation>チャプター</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="449"/>
+        <location filename="../manuskript/ui/welcome.py" line="460"/>
         <source>Scene</source>
         <translation>シーン</translation>
     </message>
@@ -3720,72 +3720,72 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="308"/>
+        <location filename="../manuskript/ui/welcome.py" line="309"/>
         <source>words each.</source>
         <translation>単語 (各項目)。</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="311"/>
+        <location filename="../manuskript/ui/welcome.py" line="312"/>
         <source>of</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="335"/>
+        <location filename="../manuskript/ui/welcome.py" line="336"/>
         <source>Text</source>
         <translation>テキスト</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="338"/>
+        <location filename="../manuskript/ui/welcome.py" line="339"/>
         <source>Something</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="384"/>
+        <location filename="../manuskript/ui/welcome.py" line="395"/>
         <source>&lt;b&gt;Total:&lt;/b&gt; {} words (~ {} pages)</source>
         <translation>&lt;b&gt;合計：&lt;/b&gt; {} 単語 (約 {} ページ)</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="405"/>
+        <location filename="../manuskript/ui/welcome.py" line="416"/>
         <source>Fiction</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="411"/>
+        <location filename="../manuskript/ui/welcome.py" line="422"/>
         <source>Non-fiction</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="446"/>
+        <location filename="../manuskript/ui/welcome.py" line="457"/>
         <source>Idea</source>
         <translation>アイディア</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="447"/>
+        <location filename="../manuskript/ui/welcome.py" line="458"/>
         <source>Note</source>
         <translation>ノート</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="450"/>
+        <location filename="../manuskript/ui/welcome.py" line="461"/>
         <source>Research</source>
         <translation>研究</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="457"/>
+        <location filename="../manuskript/ui/welcome.py" line="468"/>
         <source>TODO</source>
         <translation>TODO</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="458"/>
+        <location filename="../manuskript/ui/welcome.py" line="469"/>
         <source>First draft</source>
         <translation>初稿</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="459"/>
+        <location filename="../manuskript/ui/welcome.py" line="470"/>
         <source>Second draft</source>
         <translation>第二稿</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/welcome.py" line="460"/>
+        <location filename="../manuskript/ui/welcome.py" line="471"/>
         <source>Final</source>
         <translation>決定稿</translation>
     </message>

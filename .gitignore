@@ -6,6 +6,7 @@
 *.msk
 *.nja
 *.pyc
+*.glade~
 .cache
 .directory
 .idea
