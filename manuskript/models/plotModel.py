@@ -351,7 +351,8 @@ class plotItemSearchWrapper(searchableItem):
         return [self.translate("Plot")] + _path(self.getItem(self.rowIndex, Plot.name)) + [self.translate(self.searchColumnLabel(column))]
 
     def searchData(self, column):
-        return self.getItem(self.rowIndex, column).text()
+        item = self.getItem(self.rowIndex, column)
+        return item.text() if item else None
 
     def plotStepPath(self, plotName, plotStepName, column):
         return [self.translate("Plot"), plotName, plotStepName, self.translate(self.searchColumnLabel(column))]
