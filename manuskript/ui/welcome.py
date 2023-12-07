@@ -277,6 +277,7 @@ class welcome(QWidget, Ui_welcome):
                 i = l.takeAt(0)
                 if i.widget():
                     i.widget().deleteLater()
+                    i.widget().setProperty("templateIndex", None)
                 if i.layout():
                     clearLayout(i.layout())
 
