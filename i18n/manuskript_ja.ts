@@ -94,12 +94,12 @@
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="109"/>
         <source>Number of words: from</source>
-        <translation>字数：from</translation>
+        <translation>字数：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="110"/>
         <source>to</source>
-        <translation>へ</translation>
+        <translation>から</translation>
     </message>
 </context>
 <context>
@@ -199,7 +199,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1543"/>
         <source>Summary</source>
-        <translation>要約：</translation>
+        <translation>要約</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1499"/>
@@ -469,7 +469,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1583"/>
         <source>Sa&amp;ve as...</source>
-        <translation>名前を付けて保存... (&amp;V)</translation>
+        <translation>名前を付けて保存(&amp;V)...</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1584"/>
@@ -489,12 +489,12 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1587"/>
         <source>&amp;Labels...</source>
-        <translation>ラベル... (&amp;L)</translation>
+        <translation>ラベル(&amp;L)...</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1588"/>
         <source>&amp;Status...</source>
-        <translation>状態... (&amp;S)</translation>
+        <translation>状態(&amp;S)...</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1589"/>
@@ -544,7 +544,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1598"/>
         <source>&amp;About</source>
-        <translation>About (&amp;A)</translation>
+        <translation>Manuskriptについて (&amp;A)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1599"/>
@@ -728,7 +728,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1540"/>
         <source>Add plot step</source>
-        <translation>プロットステップを追加</translation>
+        <translation>手順を追加</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1600"/>
@@ -1033,7 +1033,7 @@
     <message>
         <location filename="../manuskript/ui/search.py" line="51"/>
         <source>F3</source>
-        <translation type="unfinished">F3</translation>
+        <translation>F3</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="52"/>
@@ -1805,7 +1805,8 @@
         <location filename="../manuskript/ui/settings_ui.py" line="1788"/>
         <source>Show progress in chars next
  to words</source>
-        <translation type="unfinished"></translation>
+        <translation>進捗状況を単語数の代わりに
+ 文字数で表示</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1834"/>
@@ -1988,7 +1989,7 @@
     <message>
         <location filename="../manuskript/models/characterModel.py" line="215"/>
         <source>Description</source>
-        <translation type="unfinished">説明</translation>
+        <translation>説明</translation>
     </message>
 </context>
 <context>
@@ -2317,7 +2318,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>一重引用符 (') を、次に置き換える：</translation>
+        <translation>一重引用符 (&apos;) を、次に置き換える：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>
@@ -2729,22 +2730,22 @@
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="347"/>
         <source>({} chars) {}  words / {} </source>
-        <translation type="unfinished"></translation>
+        <translation>({} 文字) {}  単語 / {} </translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="353"/>
         <source>{}  words / {} </source>
-        <translation type="unfinished"></translation>
+        <translation>{}  単語 / {} </translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="368"/>
         <source>{} chars</source>
-        <translation type="unfinished"></translation>
+        <translation>{} 文字</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="362"/>
         <source>{} chars </source>
-        <translation type="unfinished"></translation>
+        <translation>{} 文字 </translation>
     </message>
 </context>
 <context>
@@ -2765,7 +2766,7 @@
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.py" line="95"/>
         <source>Properties</source>
-        <translation>属性</translation>
+        <translation>プロパティ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.py" line="96"/>
@@ -3035,7 +3036,7 @@
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Return</source>
-        <translation type="unfinished"></translation>
+        <translation>帰還</translation>
     </message>
 </context>
 <context>
@@ -3048,7 +3049,7 @@
     <message>
         <location filename="../manuskript/models/plotModel.py" line="147"/>
         <source>Meta</source>
-        <translation type="unfinished"></translation>
+        <translation>メタ</translation>
     </message>
     <message>
         <location filename="../manuskript/models/plotModel.py" line="180"/>
@@ -3261,27 +3262,27 @@
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="31"/>
         <source>Case sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>大文字と小文字を区別</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="32"/>
         <source>Match words</source>
-        <translation type="unfinished"></translation>
+        <translation>一致する単語</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="33"/>
         <source>Regex</source>
-        <translation type="unfinished"></translation>
+        <translation>正規表現</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="39"/>
         <source>Search in:</source>
-        <translation type="unfinished"></translation>
+        <translation>検索範囲：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="51"/>
         <source>Options:</source>
-        <translation type="unfinished"></translation>
+        <translation>オプション：</translation>
     </message>
 </context>
 <context>
@@ -3391,7 +3392,7 @@
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="47"/>
         <source>Split &apos;{}&apos;</source>
-        <translation>分割 '{}'</translation>
+        <translation>分割 &apos;{}&apos;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="51"/>
@@ -3493,7 +3494,7 @@
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="324"/>
         <source>Various</source>
-        <translation type="unfinished">雑多</translation>
+        <translation>雑多</translation>
     </message>
 </context>
 <context>
@@ -3687,7 +3688,7 @@
     <message>
         <location filename="../manuskript/ui/welcome.py" line="224"/>
         <source>Empty fiction</source>
-        <translation type="unfinished"></translation>
+        <translation>空のフィクション</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="459"/>
@@ -3717,7 +3718,7 @@
     <message>
         <location filename="../manuskript/ui/welcome.py" line="246"/>
         <source>Empty non-fiction</source>
-        <translation type="unfinished"></translation>
+        <translation>空のノンフィクション</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="309"/>
@@ -3747,12 +3748,12 @@
     <message>
         <location filename="../manuskript/ui/welcome.py" line="416"/>
         <source>Fiction</source>
-        <translation type="unfinished"></translation>
+        <translation>フィクション</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="422"/>
         <source>Non-fiction</source>
-        <translation type="unfinished"></translation>
+        <translation>ノンフィクション</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="457"/>
