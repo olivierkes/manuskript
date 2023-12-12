@@ -388,7 +388,7 @@ def saveProject(zip=None):
                         filesWithPermissionErrors.append(filename)
                 else:
                     try:
-                        with open(filename, "w", encoding="utf8", newline="\n") as f:
+                        with open(filename, "wt", encoding="utf8", newline="\n") as f:
                             f.write(content)
                     except PermissionError as e:
                         LOGGER.error("Cannot open file " + filename + " for writing: " + e.strerror)
@@ -423,7 +423,7 @@ def saveProject(zip=None):
 
         # Write the project file's content
         try:
-            with open(project, "w", encoding="utf8", newline="\n") as f:
+            with open(project, "wt", encoding="utf8", newline="\n") as f:
                 f.write("1")  # Format number
         except PermissionError as e:
             LOGGER.error("Cannot open file " + project + " for writing: " + e.strerror)
