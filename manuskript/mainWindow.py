@@ -916,6 +916,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         If ``loadFromFile`` is False, then it does not load datas from file.
         It assumes that the datas have been populated in a different way."""
+
+        # Convert project path to OS norm
+        project = os.path.normpath(project)
+
         if loadFromFile and not os.path.exists(project):
             LOGGER.warning("The file {} does not exist. Has it been moved or deleted?".format(project))
             F.statusMessage(
