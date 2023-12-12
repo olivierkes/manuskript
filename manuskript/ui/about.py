@@ -10,6 +10,9 @@ from manuskript.functions import appPath
 from manuskript.ui.about_ui import Ui_about
 from manuskript.version import getVersion
 
+import os
+
+
 class aboutDialog(QWidget, Ui_about):
     def __init__(self, parent=None, mw=None):
         QWidget.__init__(self, parent)
@@ -19,10 +22,10 @@ class aboutDialog(QWidget, Ui_about):
 
     def populateFields(self):
         # Fill in all the fields in the About dialog
-        iconPic = appPath("icons/Manuskript/icon-64px.png")
+        iconPic = appPath(os.path.join("icons", "Manuskript", "icon-64px.png"))
         self.setWindowIcon(QIcon(iconPic))
 
-        logoPic = QPixmap(appPath("icons/Manuskript/logo-400x104.png"))
+        logoPic = QPixmap(appPath(os.path.join("icons", "Manuskript", "logo-400x104.png")))
         self.labelLogo.setPixmap(logoPic)
 
         self.labelManuskriptVersion.setText(

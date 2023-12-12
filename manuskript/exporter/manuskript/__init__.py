@@ -8,6 +8,8 @@ from manuskript.exporter.manuskript.markdown import markdown
 from manuskript.exporter.manuskript.plainText import plainText
 from manuskript.functions import appPath, safeTranslate
 
+import os
+
 
 class manuskriptExporter(basicExporter):
 
@@ -19,7 +21,7 @@ class manuskriptExporter(basicExporter):
         HTML(),
         basicFormat("OPML", icon="text-x-opml+xml")
     ]
-    icon = appPath("icons/Manuskript/icon-256px.png")
+    icon = appPath(os.path.join("icons", "Manuskript", "icon-256px.png"))
 
     @classmethod
     def isValid(cls):

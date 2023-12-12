@@ -116,7 +116,7 @@ class fullScreenEditor(QWidget):
         self.bottomPanel.layout().addSpacing(24)
         self.lstThemes = QComboBox(self)
         self.lstThemes.setAttribute(Qt.WA_TranslucentBackground)
-        paths = allPaths("resources/themes")
+        paths = allPaths(os.path.join("resources", "themes"))
         for p in paths:
             lst = [i for i in os.listdir(p) if os.path.splitext(i)[1] == ".theme"]
             for t in lst:

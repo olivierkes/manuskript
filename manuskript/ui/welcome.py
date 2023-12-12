@@ -268,7 +268,7 @@ class welcome(QWidget, Ui_welcome):
             # Change button text
             self.btnCreate.setText("Open {}".format(name))
             # Load project
-            self.mw.loadProject(appPath("sample-projects/{}".format(name)))
+            self.mw.loadProject(appPath(os.path.join("sample-projects", name)))
 
     def updateTemplate(self):
         # Clear layout

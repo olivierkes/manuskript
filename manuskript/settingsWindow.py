@@ -513,7 +513,7 @@ class settingsWindow(QWidget, Ui_Settings):
         # self.cmbDelegate = cmbPixmapDelegate()
         # self.cmbCorkImage.setItemDelegate(self.cmbDelegate)
 
-        paths = allPaths("resources/backgrounds")
+        paths = allPaths(os.path.join("resources", "backgrounds"))
         cmb.clear()
         cmb.addItem(QIcon.fromTheme("list-remove"), "", "")
         for p in paths:
@@ -541,7 +541,7 @@ class settingsWindow(QWidget, Ui_Settings):
                 valid = px.load(filename)
                 del px
                 if valid:
-                    shutil.copy(filename, writablePath("resources/backgrounds"))
+                    shutil.copy(filename, writablePath(os.path.join("resources", "backgrounds")))
                     return os.path.basename(filename)
                 else:
                     QMessageBox.warning(self, self.tr("Error"),
@@ -727,7 +727,7 @@ class settingsWindow(QWidget, Ui_Settings):
             self.btnThemeRemove.setEnabled(False)
 
     def newTheme(self):
-        path = writablePath("resources/themes")
+        path = writablePath(os.path.join("resources", "themes"))
         name = self.tr("newtheme")
         if os.path.exists(os.path.join(path, "{}.theme".format(name))):
             i = 1
@@ -756,7 +756,7 @@ class settingsWindow(QWidget, Ui_Settings):
         self.populatesThemesList()
 
     def populatesThemesList(self):
-        paths = allPaths("resources/themes")
+        paths = allPaths(os.path.join("resources", "themes"))
         current = settings.fullScreenTheme
         self.lstThemes.clear()
 

@@ -45,7 +45,7 @@ def prepare(arguments, tests=False):
 
     icon = QIcon()
     for i in [16, 32, 64, 128, 256, 512]:
-        icon.addFile(appPath("icons/Manuskript/icon-{}px.png".format(i)))
+        icon.addFile(appPath(os.path.join("icons", "Manuskript", "icon-{}px.png".format(i))))
     qApp.setWindowIcon(icon)
 
     app.setStyle("Fusion")

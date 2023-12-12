@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-import locale
+import locale, os
 
 from PyQt5.QtCore import QModelIndex, QRect, QPoint
 from PyQt5.QtCore import Qt
@@ -95,11 +95,11 @@ class mainEditor(QWidget, Ui_mainEditor):
         # Cf. https://github.com/qtproject/qtbase/commit/a8621a3f85e64f1252a80ae81a6e22554f7b3f44
         # Since those are important, we provide fallback.
         self.btnRedacFolderCork.setIcon(QIcon.fromTheme("view-cards",
-                                        QIcon(appPath("icons/NumixMsk/256x256/actions/view-cards.svg"))))
+                                        QIcon(appPath(os.path.join("icons", "NumixMsk", "256x256", "actions", "view-cards.svg")))))
         self.btnRedacFolderOutline.setIcon(QIcon.fromTheme("view-outline",
-                                           QIcon(appPath("icons/NumixMsk/256x256/actions/view-outline.svg"))))
+                                           QIcon(appPath(os.path.join("icons", "NumixMsk", "256x256", "actions", "view-outline.svg")))))
         self.btnRedacFolderText.setIcon(QIcon.fromTheme("view-text",
-                                        QIcon(appPath("icons/NumixMsk/256x256/actions/view-text.svg"))))
+                                        QIcon(appPath(os.path.join("icons", "NumixMsk", "256x256", "actions", "view-text.svg")))))
 
         for btn in [self.btnRedacFolderCork, self.btnRedacFolderText, self.btnRedacFolderOutline]:
             btn.setToolTip(btn.text())
