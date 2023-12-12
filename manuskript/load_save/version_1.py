@@ -692,7 +692,7 @@ def loadProject(project, zip=None):
                 else:
                     try:
                         filename = os.path.join(dirpath, f)
-                        with open(filename, "r", encoding="utf8", newline="\n") as fo:
+                        with open(filename, 'rt', encoding="utf8") as fo:
                             files[os.path.join(p, f)] = fo.read()
                     except PermissionError as e:
                         LOGGER.error("Cannot open file " + filename + ": " + e.strerror)

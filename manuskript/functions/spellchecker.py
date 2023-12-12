@@ -148,7 +148,7 @@ class BasicDictionary:
         self._customDict = set()
         customPath = self.getCustomDictionaryPath()
         try:
-            with gzip.open(customPath, "rt", encoding='utf-8', newline="\n") as f:
+            with gzip.open(customPath, 'rt', encoding='utf-8') as f:
                 self._customDict = set(json.loads(f.read()))
                 for word in self._customDict:
                     self._dict.create_dictionary_entry(word, self.CUSTOM_COUNT)
@@ -416,7 +416,7 @@ class SymSpellDictionary(BasicDictionary):
             if pyspellchecker:
                 path = os.path.join(pyspellchecker.__path__[0], "resources", "{}.json.gz".format(self.name))
                 if os.path.exists(path):
-                    with gzip.open(path, "rt", encoding='utf-8', newline="\n") as f:
+                    with gzip.open(path, 'rt', encoding='utf-8') as f:
                         data = json.loads(f.read())
                         for key in data:
                             self._dict.create_dictionary_entry(key, data[key])
