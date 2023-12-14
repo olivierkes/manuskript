@@ -1,24 +1,30 @@
 # Changelog
 
+## [0.16.1](https://github.com/olivierkes/manuskript/tree/0.16.1) (2023-12-14)
+
+[Full Changelog](https://github.com/olivierkes/manuskript/compare/0.16.0...0.16.1)
+
+**Fixed bugs:**
+
+- Characters, Plots and Worlds are greyed out [\#1249](https://github.com/olivierkes/manuskript/issues/1249)
+- Missing Pages with Version 0.16.0 [\#1248](https://github.com/olivierkes/manuskript/issues/1248)
+- Software crashing every time I open [\#1247](https://github.com/olivierkes/manuskript/issues/1247)
+
 ## [0.16.0](https://github.com/olivierkes/manuskript/tree/0.16.0) (2023-12-07)
 
 [Full Changelog](https://github.com/olivierkes/manuskript/compare/0.15.0...0.16.0)
 
-**Implemented enhancements:**
-
-- More Character Categories [\#1156](https://github.com/olivierkes/manuskript/issues/1156)
-
 **Fixed bugs:**
 
+- my manuskript is not launching i don't know why [\#1207](https://github.com/olivierkes/manuskript/issues/1207)
+- cannot download to ubuntu [\#1199](https://github.com/olivierkes/manuskript/issues/1199)
+- LanguageTool crashes app [\#1143](https://github.com/olivierkes/manuskript/issues/1143)
+- can't load LanguageTool [\#1142](https://github.com/olivierkes/manuskript/issues/1142)
 - Crash on spellcheck context menu [\#1224](https://github.com/olivierkes/manuskript/issues/1224)
 - Trouble launching 0.15 in Windows 10 Home [\#1222](https://github.com/olivierkes/manuskript/issues/1222)
 - Crash on Search [\#1218](https://github.com/olivierkes/manuskript/issues/1218)
-- my manuskript is not launching i don't know why [\#1207](https://github.com/olivierkes/manuskript/issues/1207)
-- cannot download to ubuntu [\#1199](https://github.com/olivierkes/manuskript/issues/1199)
 - Crash on Mac not on windows with same project [\#1169](https://github.com/olivierkes/manuskript/issues/1169)
 - Fedora 38 application crashes when cycling through the home options  at first launch  [\#1163](https://github.com/olivierkes/manuskript/issues/1163)
-- LanguageTool crashes app [\#1143](https://github.com/olivierkes/manuskript/issues/1143)
-- can't load LanguageTool [\#1142](https://github.com/olivierkes/manuskript/issues/1142)
 - RuntimeError with manuskriptw.exe \(sys.stderr is None\) [\#1138](https://github.com/olivierkes/manuskript/issues/1138)
 
 **Closed issues:**
@@ -28,6 +34,8 @@
 
 **Merged pull requests:**
 
+- Bulk Info Manager bug fix and style changes. [\#1144](https://github.com/olivierkes/manuskript/pull/1144) ([tntscreed](https://github.com/tntscreed))
+- I added a feature to add "detailed info" entries to multiple characters simultaneously via a dialog box. [\#1137](https://github.com/olivierkes/manuskript/pull/1137) ([tntscreed](https://github.com/tntscreed))
 - Crash on spellcheck context menu \#1224 [\#1226](https://github.com/olivierkes/manuskript/pull/1226) ([drmousse](https://github.com/drmousse))
 - Update spellchecker.py And Fixed crashing [\#1214](https://github.com/olivierkes/manuskript/pull/1214) ([TheShadowblast123](https://github.com/TheShadowblast123))
 - Fix regex for ignoring multi-line comments. [\#1212](https://github.com/olivierkes/manuskript/pull/1212) ([sagev9000](https://github.com/sagev9000))
@@ -36,8 +44,6 @@
 - Fix inconsistent newline handling across operating systems [\#1196](https://github.com/olivierkes/manuskript/pull/1196) ([Dreaded-Gnu](https://github.com/Dreaded-Gnu))
 - Fix manuskriptw startup error [\#1195](https://github.com/olivierkes/manuskript/pull/1195) ([Dreaded-Gnu](https://github.com/Dreaded-Gnu))
 - Simple history back/forward navigation [\#1165](https://github.com/olivierkes/manuskript/pull/1165) ([alfar](https://github.com/alfar))
-- Bulk Info Manager bug fix and style changes. [\#1144](https://github.com/olivierkes/manuskript/pull/1144) ([tntscreed](https://github.com/tntscreed))
-- I added a feature to add "detailed info" entries to multiple characters simultaneously via a dialog box. [\#1137](https://github.com/olivierkes/manuskript/pull/1137) ([tntscreed](https://github.com/tntscreed))
 
 ## [0.15.0](https://github.com/olivierkes/manuskript/tree/0.15.0) (2023-03-04)
 
