@@ -1252,12 +1252,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def makeUIConnections(self):
         "Connections that have to be made once only, even when a new project is loaded."
+        # Characters
+        self.txtPersosFilter.textChanged.connect(self.lstCharacters.setFilter, F.AUC)
         self.lstCharacters.itemSelectionChanged.connect(self.handleCharacterSelectionChanged, F.AUC)
 
+        # Plots
         self.txtPlotFilter.textChanged.connect(self.lstPlots.setFilter, F.AUC)
         self.lstPlots.currentItemChanged.connect(self.changeCurrentPlot, F.AUC)
         self.lstSubPlots.clicked.connect(self.changeCurrentSubPlot, F.AUC)
 
+        # Outline
         self.btnRedacAddFolder.clicked.connect(self.treeRedacOutline.addFolder, F.AUC)
         self.btnOutlineAddFolder.clicked.connect(self.treeOutlineOutline.addFolder, F.AUC)
         self.btnRedacAddText.clicked.connect(self.treeRedacOutline.addText, F.AUC)
