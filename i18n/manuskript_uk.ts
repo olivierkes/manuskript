@@ -199,7 +199,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1543"/>
         <source>Summary</source>
-        <translation>Опис</translation>
+        <translation>Підсумок</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1499"/>
@@ -1108,12 +1108,12 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1611"/>
         <source>Go &amp;back</source>
-        <translation type="unfinished"></translation>
+        <translation>Перейти &amp;назад</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1612"/>
         <source>Go &amp;forward</source>
-        <translation type="unfinished"></translation>
+        <translation>Перейти &amp;вперед</translation>
     </message>
 </context>
 <context>
@@ -2771,7 +2771,7 @@
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.py" line="96"/>
         <source>Summary</source>
-        <translation>Опис</translation>
+        <translation>Підсумок</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.py" line="97"/>
