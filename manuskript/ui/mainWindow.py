@@ -11,6 +11,7 @@ from gi.repository import GObject, Gtk, Handy
 Handy.init()
 
 from manuskript.data import Project
+from manuskript.plugin import loadPlugins
 from manuskript.ui.views import *
 
 from manuskript.ui.chooser import openFileDialog, saveFileDialog, FileFilter
@@ -27,6 +28,7 @@ from manuskript.util import parseFilenameFromURL
 class MainWindow:
 
     def __init__(self):
+        self.plugins = loadPlugins()
         self.project = None
 
         builder = Gtk.Builder()
