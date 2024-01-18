@@ -37,12 +37,14 @@ def loadPlugins():
 
         try:
             module = SourceFileLoader(name, path).load_module()
-        except Exception:
+        except Exception as e:
+            print("MODULE ERROR: ( " + name + ", " + path + " )" + str(e))
             continue
 
         try:
             plugin_cls = module.Plugin
-        except AttributeError:
+        except AttributeError as e:
+            print("MODULE ERROR: ( " + name + ", " + path + " )" + str(e))
             continue
 
         try:
@@ -50,7 +52,8 @@ def loadPlugins():
                 continue
 
             plugin = plugin_cls()
-        except TypeError:
+        except TypeError as e:
+            print("MODULE ERROR: ( " + name + ", " + path + " )" + str(e))
             continue
 
         if not plugin:
