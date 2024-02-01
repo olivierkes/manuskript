@@ -120,12 +120,12 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="619"/>
         <source>The image path or URL is incomplete or malformed.</source>
-        <translation type="unfinished"></translation>
+        <translation>이미지 경로 또는 URL이 불완전하거나 형식이 잘못되었습니다.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="631"/>
         <source>The protocol &quot;{}&quot; is not supported.</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;{}&quot; 프로토콜이 지원되지 않습니다.</translation>
     </message>
 </context>
 <context>
@@ -141,7 +141,7 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="543"/>
         <source>{} (CTRL+Click to open)</source>
-        <translation type="unfinished"></translation>
+        <translation>{} (CTRL+클릭으로 열기)</translation>
     </message>
 </context>
 <context>
@@ -963,72 +963,72 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1518"/>
         <source>Allow POV</source>
-        <translation type="unfinished"></translation>
+        <translation>시점 허용</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1636"/>
         <source>Search</source>
-        <translation type="unfinished"></translation>
+        <translation>검색</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1637"/>
         <source>&amp;Technical Support</source>
-        <translation type="unfinished"></translation>
+        <translation>기술 지원(&amp;T)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1638"/>
         <source>How to obtain technical support for Manuskript.</source>
-        <translation type="unfinished"></translation>
+        <translation>Manuskript의 기술 지원을 받는 방법.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1639"/>
         <source>&amp;Locate log file...</source>
-        <translation type="unfinished"></translation>
+        <translation>로그 파일 위치 보기... (&amp;L)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1640"/>
         <source>Locate log file</source>
-        <translation type="unfinished"></translation>
+        <translation>로그 파일 위치 보기</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1641"/>
         <source>Locate the diagnostic log file used for this session.</source>
-        <translation type="unfinished"></translation>
+        <translation>현재 세션의 진단 로그 파일 위치를 확인합니다.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1540"/>
         <source>Sorry!</source>
-        <translation type="unfinished"></translation>
+        <translation>죄송합니다.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1540"/>
         <source>This session is not being logged.</source>
-        <translation type="unfinished"></translation>
+        <translation>현재 세션은 로그가 작성되지 않고 있습니다.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1549"/>
         <source>A log file is a Work in Progress!</source>
-        <translation type="unfinished"></translation>
+        <translation>로그 파일은 미완성 기능입니다.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1549"/>
         <source>The log file &quot;{}&quot; will continue to be written to until Manuskript is closed.</source>
-        <translation type="unfinished"></translation>
+        <translation>로그 파일 &quot;{}&quot;에는 Manuskript가 종료될 때까지 작성이 계속됩니다.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1549"/>
         <source>It will now be displayed in your file manager, but is of limited use until you close Manuskript.</source>
-        <translation type="unfinished"></translation>
+        <translation>이제 파일 관리자에 표시되오나, Manuskript를 종료하기 전까지는 사용이 제한됩니다.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1565"/>
         <source>Error!</source>
-        <translation type="unfinished"></translation>
+        <translation>오류!</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1565"/>
         <source>An error was encountered while trying to show the log file below in your file manager.</source>
-        <translation type="unfinished"></translation>
+        <translation>파일 관리자에 로그 파일을 표시하는 과정에서 오류가 발생했습니다.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="51"/>
@@ -1038,12 +1038,12 @@
     <message>
         <location filename="../manuskript/ui/search.py" line="52"/>
         <source>Shift+F3</source>
-        <translation type="unfinished"></translation>
+        <translation>Shift+F3</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="56"/>
         <source>Situation</source>
-        <translation type="unfinished"></translation>
+        <translation>상황</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="57"/>
@@ -1053,12 +1053,12 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1634"/>
         <source>&amp;Targets</source>
-        <translation type="unfinished"></translation>
+        <translation>달성 목표(&amp;T)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1635"/>
         <source>Draft and session word count targets</source>
-        <translation type="unfinished"></translation>
+        <translation>원고 및 세션 어절 수 달성 목표</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="387"/>
@@ -1073,12 +1073,12 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="440"/>
         <source>No Entries!</source>
-        <translation type="unfinished"></translation>
+        <translation>항목이 없습니다!</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="440"/>
         <source>Please add entries to apply to the selected characters.</source>
-        <translation type="unfinished"></translation>
+        <translation>선택한 등장인물에 적용할 항목을 추가해주세요.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="451"/>
@@ -1093,27 +1093,27 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="523"/>
         <source>Un-applied data!</source>
-        <translation type="unfinished"></translation>
+        <translation>적용하지 않은 데이터!</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="523"/>
         <source>There are un-applied entries in this tab. Discard them?</source>
-        <translation type="unfinished"></translation>
+        <translation>이 탭에 적용하지 않은 항목이 있습니다. 버릴까요?</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1577"/>
         <source>&amp;Navigate</source>
-        <translation type="unfinished"></translation>
+        <translation>이동(&amp;N)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1611"/>
         <source>Go &amp;back</source>
-        <translation type="unfinished"></translation>
+        <translation>뒤로 가기(&amp;B)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1612"/>
         <source>Go &amp;forward</source>
-        <translation type="unfinished"></translation>
+        <translation>앞으로 가기(&amp;F)</translation>
     </message>
 </context>
 <context>
@@ -1121,7 +1121,7 @@
     <message>
         <location filename="../manuskript/ui/search.py" line="46"/>
         <source>No results found</source>
-        <translation type="unfinished"></translation>
+        <translation>검색 결과가 없습니다</translation>
     </message>
 </context>
 <context>
@@ -1805,27 +1805,28 @@
         <location filename="../manuskript/ui/settings_ui.py" line="1788"/>
         <source>Show progress in chars next
  to words</source>
-        <translation type="unfinished"></translation>
+        <translation>진척도를 어절 수 옆에
+ 글자 수로 표시</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1834"/>
         <source>Char/Word Counter</source>
-        <translation type="unfinished"></translation>
+        <translation>글자/어절 수</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1835"/>
         <source>Count spaces as chars</source>
-        <translation type="unfinished"></translation>
+        <translation>글자 수에 공백 포함</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1839"/>
         <source>Show char c&amp;ount</source>
-        <translation type="unfinished"></translation>
+        <translation>글자 수 표시(&amp;O)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1845"/>
         <source>Sho&amp;w char count</source>
-        <translation type="unfinished"></translation>
+        <translation>글자 수 표시(&amp;W)</translation>
     </message>
 </context>
 <context>
@@ -1848,27 +1849,27 @@
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="538"/>
         <source>&amp;New Character</source>
-        <translation type="unfinished"></translation>
+        <translation>새 등장인물(&amp;N)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="545"/>
         <source>&amp;New Plot Item</source>
-        <translation type="unfinished"></translation>
+        <translation>새 플롯(&amp;N)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="552"/>
         <source>&amp;New World Item</source>
-        <translation type="unfinished"></translation>
+        <translation>새 세계관(&amp;N)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="654"/>
         <source>&amp;Correction Suggestions</source>
-        <translation type="unfinished"></translation>
+        <translation>수정 제안(&amp;C)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="663"/>
         <source>&amp;Correction Suggestion</source>
-        <translation type="unfinished"></translation>
+        <translation>수정 제안(&amp;C)</translation>
     </message>
 </context>
 <context>
@@ -1983,7 +1984,7 @@
     <message>
         <location filename="../manuskript/models/characterModel.py" line="179"/>
         <source>New character</source>
-        <translation type="unfinished"></translation>
+        <translation>새 등장인물</translation>
     </message>
     <message>
         <location filename="../manuskript/models/characterModel.py" line="215"/>
@@ -2135,22 +2136,22 @@
     <message>
         <location filename="../manuskript/load_save/version_1.py" line="435"/>
         <source>Files not saved</source>
-        <translation type="unfinished"></translation>
+        <translation>파일이 저장되지 않음</translation>
     </message>
     <message>
         <location filename="../manuskript/load_save/version_1.py" line="436"/>
         <source>The following files were not saved and appear to be open in another program</source>
-        <translation type="unfinished"></translation>
+        <translation>다음 파일을 저장하지 못하였으며 다른 프로그램에 열려 있는 것 같습니다</translation>
     </message>
     <message>
         <location filename="../manuskript/load_save/version_1.py" line="928"/>
         <source>Files not loaded</source>
-        <translation type="unfinished"></translation>
+        <translation>파일을 불러오지 못함</translation>
     </message>
     <message>
         <location filename="../manuskript/load_save/version_1.py" line="929"/>
         <source>The following files were not loaded and appear to be open in another program</source>
-        <translation type="unfinished"></translation>
+        <translation>다음 파일을 불러오지 못하였으며 다른 프로그램에 열려 있는 것 같습니다</translation>
     </message>
 </context>
 <context>
@@ -2317,7 +2318,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>작은따옴표(')를 대신할 것:</translation>
+        <translation>작은따옴표(&apos;)를 대신할 것:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>
@@ -2382,12 +2383,12 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings.py" line="343"/>
         <source>{}Level {} folder</source>
-        <translation type="unfinished"></translation>
+        <translation>{}수준 {} 폴더</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings.py" line="346"/>
         <source>{}Level {} text</source>
-        <translation type="unfinished"></translation>
+        <translation>{}수준 {} 텍스트</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="542"/>
@@ -2496,12 +2497,12 @@
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="157"/>
         <source>Title: Show Full Path</source>
-        <translation type="unfinished"></translation>
+        <translation>제목: 전체 경로 표시</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="159"/>
         <source>Theme selector</source>
-        <translation type="unfinished"></translation>
+        <translation>테마 선택</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="160"/>
@@ -2516,17 +2517,17 @@
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="162"/>
         <source>Progress: Auto Show/Hide</source>
-        <translation type="unfinished"></translation>
+        <translation>진척: 자동 표시/숨기기</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="163"/>
         <source>Clock</source>
-        <translation type="unfinished"></translation>
+        <translation>시계</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="164"/>
         <source>Clock: Show Seconds</source>
-        <translation type="unfinished"></translation>
+        <translation>시계: 초 단위 표시</translation>
     </message>
 </context>
 <context>
@@ -2539,27 +2540,27 @@
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.py" line="62"/>
         <source>Split scenes at:</source>
-        <translation type="unfinished"></translation>
+        <translation>장면 분할 위치:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.py" line="63"/>
         <source>\n---\n</source>
-        <translation type="unfinished"></translation>
+        <translation>\n---\n</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.py" line="64"/>
         <source>Trim long titles (&gt; 32 chars)</source>
-        <translation type="unfinished"></translation>
+        <translation>긴 제목 잘림 (32자까지)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.py" line="65"/>
         <source>Import under:</source>
-        <translation type="unfinished"></translation>
+        <translation>가져오기 장소:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.py" line="66"/>
         <source>Import in a top-level folder</source>
-        <translation type="unfinished"></translation>
+        <translation>최상위 폴더로 가져오기</translation>
     </message>
 </context>
 <context>
@@ -2567,7 +2568,7 @@
     <message>
         <location filename="../manuskript/ui/helpLabel.py" line="12"/>
         <source>If you don&apos;t wanna see me, you can hide me in Help menu.</source>
-        <translation type="unfinished"></translation>
+        <translation>이것을 보고 싶지 않으시면, 도움말 메뉴에서 숨길 수 있습니다.</translation>
     </message>
 </context>
 <context>
@@ -2590,7 +2591,7 @@
     <message>
         <location filename="../manuskript/ui/importers/importer_ui.py" line="101"/>
         <source>Clear file</source>
-        <translation type="unfinished"></translation>
+        <translation>파일 지우기</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/importers/importer_ui.py" line="105"/>
@@ -2626,12 +2627,12 @@
     <message>
         <location filename="../manuskript/ui/editors/locker_ui.py" line="54"/>
         <source>Word target</source>
-        <translation type="unfinished"></translation>
+        <translation>어절 수 달성 목표</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker_ui.py" line="55"/>
         <source>Time target</source>
-        <translation type="unfinished"></translation>
+        <translation>시간 달성 목표</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker_ui.py" line="56"/>
@@ -2709,7 +2710,7 @@
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.py" line="94"/>
         <source>Go to parent item</source>
-        <translation type="unfinished"></translation>
+        <translation>부모 항목으로 이동</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.ui" line="57"/>
@@ -2719,7 +2720,7 @@
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="259"/>
         <source>Root</source>
-        <translation type="unfinished"></translation>
+        <translation>루트</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="366"/>
@@ -2729,22 +2730,22 @@
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="347"/>
         <source>({} chars) {}  words / {} </source>
-        <translation type="unfinished"></translation>
+        <translation>({} 글자) {}  어절 / {} </translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="353"/>
         <source>{}  words / {} </source>
-        <translation type="unfinished"></translation>
+        <translation>{}  어절 / {} </translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="368"/>
         <source>{} chars</source>
-        <translation type="unfinished"></translation>
+        <translation>{} 글자</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="362"/>
         <source>{} chars </source>
-        <translation type="unfinished"></translation>
+        <translation>{} 글자 </translation>
     </message>
 </context>
 <context>
@@ -2785,7 +2786,7 @@
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.py" line="100"/>
         <source>Notes / References</source>
-        <translation type="unfinished"></translation>
+        <translation>비고/참조</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.py" line="101"/>
@@ -2798,7 +2799,7 @@
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="599"/>
         <source>Auto-hide</source>
-        <translation type="unfinished"></translation>
+        <translation>자동 숨기기</translation>
     </message>
 </context>
 <context>
@@ -2839,7 +2840,7 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="255"/>
         <source>Custom settings for {}</source>
-        <translation type="unfinished"></translation>
+        <translation>{} 임의 설정</translation>
     </message>
 </context>
 <context>
@@ -2857,7 +2858,7 @@
     <message>
         <location filename="../manuskript/models/persosProxyModel.py" line="18"/>
         <source>Minors</source>
-        <translation type="unfinished"></translation>
+        <translation>단역</translation>
     </message>
 </context>
 <context>
@@ -2870,12 +2871,12 @@
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Promise</source>
-        <translation type="unfinished"></translation>
+        <translation>약속</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Problem</source>
-        <translation type="unfinished"></translation>
+        <translation>문제</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -2885,157 +2886,157 @@
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Resolution</source>
-        <translation type="unfinished"></translation>
+        <translation>해결</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Try / Fail</source>
-        <translation type="unfinished"></translation>
+        <translation>시도/실패</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>No and</source>
-        <translation type="unfinished"></translation>
+        <translation>아니오, 그리고</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Yes but</source>
-        <translation type="unfinished"></translation>
+        <translation>네, 하지만</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Freytag&apos;s pyramid</source>
-        <translation type="unfinished"></translation>
+        <translation>프라이타크 삼각형</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Exposition</source>
-        <translation type="unfinished"></translation>
+        <translation>발단</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Rising action</source>
-        <translation type="unfinished"></translation>
+        <translation>상승</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Climax</source>
-        <translation type="unfinished"></translation>
+        <translation>절정</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Falling action</source>
-        <translation type="unfinished"></translation>
+        <translation>하강</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Three acts</source>
-        <translation type="unfinished"></translation>
+        <translation>3막 구조</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>1. Setup</source>
-        <translation type="unfinished"></translation>
+        <translation>1. 설정</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>1. Inciting event</source>
-        <translation type="unfinished"></translation>
+        <translation>1. 자극적인 사건</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>1. Turning point</source>
-        <translation type="unfinished"></translation>
+        <translation>1. 전환점</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>2. Choice</source>
-        <translation type="unfinished"></translation>
+        <translation>2. 선택</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>2. Reversal</source>
-        <translation type="unfinished"></translation>
+        <translation>2. 역전</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>2. Disaster</source>
-        <translation type="unfinished"></translation>
+        <translation>2. 재난</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>3. Stand up</source>
-        <translation type="unfinished"></translation>
+        <translation>3. 일어섬</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>3. Climax</source>
-        <translation type="unfinished"></translation>
+        <translation>3. 절정</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>3. Ending</source>
-        <translation type="unfinished"></translation>
+        <translation>3. 결말</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Hero&apos;s journey</source>
-        <translation type="unfinished"></translation>
+        <translation>영웅의 여정</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Ordinary world</source>
-        <translation type="unfinished"></translation>
+        <translation>일상 세계</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Call to adventure</source>
-        <translation type="unfinished"></translation>
+        <translation>모험으로의 소명</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Refusal of the call</source>
-        <translation type="unfinished"></translation>
+        <translation>소명의 거부</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Meeting with mentor</source>
-        <translation type="unfinished"></translation>
+        <translation>조언자와의 만남</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Tests</source>
-        <translation type="unfinished"></translation>
+        <translation>시험</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Approach</source>
-        <translation type="unfinished"></translation>
+        <translation>진입</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Abyss</source>
-        <translation type="unfinished"></translation>
+        <translation>시련</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Reward / Revelation</source>
-        <translation type="unfinished"></translation>
+        <translation>보상/깨달음</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Transformation</source>
-        <translation type="unfinished"></translation>
+        <translation>변화</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Atonement</source>
-        <translation type="unfinished"></translation>
+        <translation>속죄</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Return</source>
-        <translation type="unfinished"></translation>
+        <translation>귀환</translation>
     </message>
 </context>
 <context>
@@ -3048,12 +3049,12 @@
     <message>
         <location filename="../manuskript/models/plotModel.py" line="147"/>
         <source>Meta</source>
-        <translation type="unfinished"></translation>
+        <translation>메타</translation>
     </message>
     <message>
         <location filename="../manuskript/models/plotModel.py" line="180"/>
         <source>New step</source>
-        <translation type="unfinished"></translation>
+        <translation>새 단계</translation>
     </message>
     <message>
         <location filename="../manuskript/models/plotModel.py" line="250"/>
@@ -3073,7 +3074,7 @@
     <message>
         <location filename="../manuskript/models/plotModel.py" line="110"/>
         <source>New plot</source>
-        <translation type="unfinished"></translation>
+        <translation>새 플롯</translation>
     </message>
 </context>
 <context>
@@ -3096,7 +3097,7 @@
     <message>
         <location filename="../manuskript/ui/views/plotTreeView.py" line="191"/>
         <source>**Plot:** {}</source>
-        <translation type="unfinished"></translation>
+        <translation>**플롯:** {}</translation>
     </message>
 </context>
 <context>
@@ -3114,7 +3115,7 @@
     <message>
         <location filename="../manuskript/models/plotsProxyModel.py" line="24"/>
         <source>Minors</source>
-        <translation type="unfinished"></translation>
+        <translation>단역</translation>
     </message>
 </context>
 <context>
@@ -3165,12 +3166,12 @@
     <message>
         <location filename="../manuskript/ui/revisions_ui.py" line="87"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation>옵션</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="257"/>
         <source>Restore</source>
-        <translation type="unfinished"></translation>
+        <translation>복원</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="258"/>
@@ -3180,22 +3181,22 @@
     <message>
         <location filename="../manuskript/ui/revisions.py" line="45"/>
         <source>Show modifications</source>
-        <translation type="unfinished"></translation>
+        <translation>변경 사항 표시</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="52"/>
         <source>Show ancient version</source>
-        <translation type="unfinished"></translation>
+        <translation>오래된 버전 표시</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="60"/>
         <source>Show spaces</source>
-        <translation type="unfinished"></translation>
+        <translation>공백 표시</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="66"/>
         <source>Show modifications only</source>
-        <translation type="unfinished"></translation>
+        <translation>변경 사항만 표시</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="110"/>
@@ -3235,12 +3236,12 @@
     <message>
         <location filename="../manuskript/ui/revisions.py" line="182"/>
         <source>Line {}:</source>
-        <translation type="unfinished"></translation>
+        <translation>{}번 줄:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="261"/>
         <source>Clear all</source>
-        <translation type="unfinished"></translation>
+        <translation>모두 지우기</translation>
     </message>
 </context>
 <context>
@@ -3253,7 +3254,7 @@
     <message>
         <location filename="../manuskript/ui/search_ui.py" line="48"/>
         <source>Search for...</source>
-        <translation type="unfinished"></translation>
+        <translation>검색...</translation>
     </message>
 </context>
 <context>
@@ -3261,27 +3262,27 @@
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="31"/>
         <source>Case sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>대/소문자 구분</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="32"/>
         <source>Match words</source>
-        <translation type="unfinished"></translation>
+        <translation>어절 단위로</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="33"/>
         <source>Regex</source>
-        <translation type="unfinished"></translation>
+        <translation>정규식</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="39"/>
         <source>Search in:</source>
-        <translation type="unfinished"></translation>
+        <translation>검색 범위:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="51"/>
         <source>Options:</source>
-        <translation type="unfinished"></translation>
+        <translation>옵션:</translation>
     </message>
 </context>
 <context>
@@ -3289,7 +3290,7 @@
     <message>
         <location filename="../manuskript/settingsWindow.py" line="674"/>
         <source>New status</source>
-        <translation type="unfinished"></translation>
+        <translation>새 상태</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="695"/>
@@ -3386,17 +3387,31 @@
 
             &lt;p&gt;&lt;b&gt;Mark:&lt;/b&gt;&lt;/p&gt;
             </source>
-        <translation type="unfinished"></translation>
+        <translation>
+            &lt;p&gt;선택한 항목을 표시된 곳에서 쪼갭니다.&lt;/p&gt;
+
+            &lt;p&gt;폴더를 선택한 경우, &lt;i&gt;모든&lt;/i&gt; 하위 항목에 재귀적으로
+            적용됩니다.&lt;/p&gt;
+
+            &lt;p&gt;쪼개기 표시에는 다음 이스케이프 형식을 포함할 수 있습니다.
+                &lt;ul&gt;
+                    &lt;li&gt;&lt;b&gt;&lt;code&gt;\n&lt;/code&gt;&lt;/b&gt;: 줄바꿈&lt;/li&gt;
+                    &lt;li&gt;&lt;b&gt;&lt;code&gt;\t&lt;/code&gt;&lt;/b&gt;: 탭&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/p&gt;
+
+            &lt;p&gt;&lt;b&gt;쪼개기 표시:&lt;/b&gt;&lt;/p&gt;
+            </translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="47"/>
         <source>Split &apos;{}&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>&apos;{}&apos; 쪼개기</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="51"/>
         <source>Split items</source>
-        <translation type="unfinished"></translation>
+        <translation>선택 항목 쪼개기</translation>
     </message>
 </context>
 <context>
@@ -3409,12 +3424,12 @@
     <message>
         <location filename="../manuskript/ui/views/storylineView.py" line="36"/>
         <source>Show Plots</source>
-        <translation type="unfinished"></translation>
+        <translation>플롯 표시</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/storylineView.py" line="43"/>
         <source>Show Characters</source>
-        <translation type="unfinished"></translation>
+        <translation>등장인물 표시</translation>
     </message>
 </context>
 <context>
@@ -3422,22 +3437,22 @@
     <message>
         <location filename="../manuskript/ui/editors/tabSplitter.py" line="68"/>
         <source>Open selected items in that view.</source>
-        <translation type="unfinished"></translation>
+        <translation>선택한 항목을 이 화면에서 엽니다.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/tabSplitter.py" line="172"/>
         <source>Split horizontally</source>
-        <translation type="unfinished"></translation>
+        <translation>가로 방향으로 분할</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/tabSplitter.py" line="182"/>
         <source>Close split</source>
-        <translation type="unfinished"></translation>
+        <translation>분할 화면 닫기</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/tabSplitter.py" line="218"/>
         <source>Split vertically</source>
-        <translation type="unfinished"></translation>
+        <translation>세로 방향으로 분할</translation>
     </message>
 </context>
 <context>
@@ -3445,12 +3460,12 @@
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="128"/>
         <source>Project Targets</source>
-        <translation type="unfinished"></translation>
+        <translation>프로젝트 달성 목표</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="129"/>
         <source>Draft Target</source>
-        <translation type="unfinished"></translation>
+        <translation>원고 달성 목표</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="136"/>
@@ -3460,32 +3475,32 @@
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="137"/>
         <source>of</source>
-        <translation type="unfinished"></translation>
+        <translation>/</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="132"/>
         <source>10,000</source>
-        <translation type="unfinished"></translation>
+        <translation>10,000</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="133"/>
         <source>Words</source>
-        <translation type="unfinished"></translation>
+        <translation>어절</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="134"/>
         <source>Session Target</source>
-        <translation type="unfinished"></translation>
+        <translation>세션 달성 목표</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="135"/>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>초기화</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="138"/>
         <source>words</source>
-        <translation type="unfinished"></translation>
+        <translation>어절</translation>
     </message>
 </context>
 <context>
@@ -3549,22 +3564,22 @@
     <message>
         <location filename="../manuskript/ui/views/treeView.py" line="48"/>
         <source>Expand {}</source>
-        <translation type="unfinished"></translation>
+        <translation>{} 펼치기</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/treeView.py" line="52"/>
         <source>Collapse {}</source>
-        <translation type="unfinished"></translation>
+        <translation>{} 접기</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/treeView.py" line="59"/>
         <source>Expand All</source>
-        <translation type="unfinished"></translation>
+        <translation>모두 펼치기</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/treeView.py" line="63"/>
         <source>Collapse All</source>
-        <translation type="unfinished"></translation>
+        <translation>모두 접기</translation>
     </message>
 </context>
 <context>
@@ -3582,7 +3597,7 @@
     <message>
         <location filename="../manuskript/ui/welcome_ui.py" line="128"/>
         <source>Templates</source>
-        <translation type="unfinished"></translation>
+        <translation>템플릿</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome_ui.py" line="129"/>
@@ -3592,42 +3607,42 @@
     <message>
         <location filename="../manuskript/ui/welcome.py" line="225"/>
         <source>Novel</source>
-        <translation type="unfinished"></translation>
+        <translation>장편 소설</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="230"/>
         <source>Novella</source>
-        <translation type="unfinished"></translation>
+        <translation>중편 소설</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="235"/>
         <source>Short Story</source>
-        <translation type="unfinished"></translation>
+        <translation>단편 소설</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="247"/>
         <source>Research paper</source>
-        <translation type="unfinished"></translation>
+        <translation>연구 논문</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="429"/>
         <source>Demo projects</source>
-        <translation type="unfinished"></translation>
+        <translation>예제 프로젝트</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome_ui.py" line="136"/>
         <source>Add level</source>
-        <translation type="unfinished"></translation>
+        <translation>수준 추가</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome_ui.py" line="137"/>
         <source>Add word count</source>
-        <translation type="unfinished"></translation>
+        <translation>어절 수 추가</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome_ui.py" line="138"/>
         <source>Next time, automatically open last project</source>
-        <translation type="unfinished"></translation>
+        <translation>다음부터는 마지막으로 작업한 프로젝트 자동으로 열기</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome_ui.py" line="139"/>
@@ -3637,7 +3652,7 @@
     <message>
         <location filename="../manuskript/ui/welcome_ui.py" line="140"/>
         <source>Recent</source>
-        <translation type="unfinished"></translation>
+        <translation>최근 사용</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome_ui.py" line="141"/>
@@ -3687,47 +3702,47 @@
     <message>
         <location filename="../manuskript/ui/welcome.py" line="224"/>
         <source>Empty fiction</source>
-        <translation type="unfinished"></translation>
+        <translation>빈 픽션</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="459"/>
         <source>Chapter</source>
-        <translation type="unfinished"></translation>
+        <translation>장</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="460"/>
         <source>Scene</source>
-        <translation type="unfinished"></translation>
+        <translation>장면</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="239"/>
         <source>Trilogy</source>
-        <translation type="unfinished"></translation>
+        <translation>3부작</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="239"/>
         <source>Book</source>
-        <translation type="unfinished"></translation>
+        <translation>책</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="247"/>
         <source>Section</source>
-        <translation type="unfinished"></translation>
+        <translation>섹션</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="246"/>
         <source>Empty non-fiction</source>
-        <translation type="unfinished"></translation>
+        <translation>빈 논픽션</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="309"/>
         <source>words each.</source>
-        <translation type="unfinished"></translation>
+        <translation>어절.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="312"/>
         <source>of</source>
-        <translation type="unfinished"></translation>
+        <translation>안에 각각</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="336"/>
@@ -3737,57 +3752,57 @@
     <message>
         <location filename="../manuskript/ui/welcome.py" line="339"/>
         <source>Something</source>
-        <translation type="unfinished"></translation>
+        <translation>무엇</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="395"/>
         <source>&lt;b&gt;Total:&lt;/b&gt; {} words (~ {} pages)</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;합계:&lt;/b&gt; {} 어절 (약 {}쪽)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="416"/>
         <source>Fiction</source>
-        <translation type="unfinished"></translation>
+        <translation>픽션</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="422"/>
         <source>Non-fiction</source>
-        <translation type="unfinished"></translation>
+        <translation>논픽션</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="457"/>
         <source>Idea</source>
-        <translation type="unfinished"></translation>
+        <translation>아이디어</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="458"/>
         <source>Note</source>
-        <translation type="unfinished"></translation>
+        <translation>비고</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="461"/>
         <source>Research</source>
-        <translation type="unfinished"></translation>
+        <translation>연구</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="468"/>
         <source>TODO</source>
-        <translation type="unfinished"></translation>
+        <translation>할일</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="469"/>
         <source>First draft</source>
-        <translation type="unfinished"></translation>
+        <translation>초고</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="470"/>
         <source>Second draft</source>
-        <translation type="unfinished"></translation>
+        <translation>2번째 원고</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="471"/>
         <source>Final</source>
-        <translation type="unfinished"></translation>
+        <translation>마지막 원고</translation>
     </message>
 </context>
 <context>
@@ -3795,207 +3810,207 @@
     <message>
         <location filename="../manuskript/models/worldModel.py" line="136"/>
         <source>New item</source>
-        <translation type="unfinished"></translation>
+        <translation>새 항목</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="251"/>
         <source>Fantasy world building</source>
-        <translation type="unfinished"></translation>
+        <translation>공상 세계 구상</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="251"/>
         <source>Physical</source>
-        <translation type="unfinished"></translation>
+        <translation>자연</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="251"/>
         <source>Climate</source>
-        <translation type="unfinished"></translation>
+        <translation>기후</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="251"/>
         <source>Topography</source>
-        <translation type="unfinished"></translation>
+        <translation>지형</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="251"/>
         <source>Astronomy</source>
-        <translation type="unfinished"></translation>
+        <translation>천문</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="251"/>
         <source>Wild life</source>
-        <translation type="unfinished"></translation>
+        <translation>야생 동물</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="251"/>
         <source>Flora</source>
-        <translation type="unfinished"></translation>
+        <translation>식생</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="251"/>
         <source>History</source>
-        <translation type="unfinished"></translation>
+        <translation>역사</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="251"/>
         <source>Races</source>
-        <translation type="unfinished"></translation>
+        <translation>종족</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="251"/>
         <source>Diseases</source>
-        <translation type="unfinished"></translation>
+        <translation>질병</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Cultural</source>
-        <translation type="unfinished"></translation>
+        <translation>문화</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Customs</source>
-        <translation type="unfinished"></translation>
+        <translation>관습</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Food</source>
-        <translation type="unfinished"></translation>
+        <translation>음식</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Languages</source>
-        <translation type="unfinished"></translation>
+        <translation>언어</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Education</source>
-        <translation type="unfinished"></translation>
+        <translation>교육</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Dresses</source>
-        <translation type="unfinished"></translation>
+        <translation>의복</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Science</source>
-        <translation type="unfinished"></translation>
+        <translation>과학</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Calendar</source>
-        <translation type="unfinished"></translation>
+        <translation>역법</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Bodily language</source>
-        <translation type="unfinished"></translation>
+        <translation>신체 언어</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Ethics</source>
-        <translation type="unfinished"></translation>
+        <translation>윤리</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Religion</source>
-        <translation type="unfinished"></translation>
+        <translation>종교</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Government</source>
-        <translation type="unfinished"></translation>
+        <translation>정부</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Politics</source>
-        <translation type="unfinished"></translation>
+        <translation>정치</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Gender roles</source>
-        <translation type="unfinished"></translation>
+        <translation>성 역할</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Music and arts</source>
-        <translation type="unfinished"></translation>
+        <translation>예술</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Architecture</source>
-        <translation type="unfinished"></translation>
+        <translation>건축</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Military</source>
-        <translation type="unfinished"></translation>
+        <translation>군사</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Technology</source>
-        <translation type="unfinished"></translation>
+        <translation>기술</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Courtship</source>
-        <translation type="unfinished"></translation>
+        <translation>사랑과 결혼</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Demography</source>
-        <translation type="unfinished"></translation>
+        <translation>인구 통계</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Transportation</source>
-        <translation type="unfinished"></translation>
+        <translation>교통</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Medicine</source>
-        <translation type="unfinished"></translation>
+        <translation>의약</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="285"/>
         <source>Magic system</source>
-        <translation type="unfinished"></translation>
+        <translation>마법 체계</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="285"/>
         <source>Rules</source>
-        <translation type="unfinished"></translation>
+        <translation>규범</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="285"/>
         <source>Organization</source>
-        <translation type="unfinished"></translation>
+        <translation>단체</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="285"/>
         <source>Magical objects</source>
-        <translation type="unfinished"></translation>
+        <translation>마법적 물품</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="285"/>
         <source>Magical places</source>
-        <translation type="unfinished"></translation>
+        <translation>마법적 장소</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="285"/>
         <source>Magical races</source>
-        <translation type="unfinished"></translation>
+        <translation>마법적 종족</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="292"/>
         <source>Important places</source>
-        <translation type="unfinished"></translation>
+        <translation>중요 장소</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="293"/>
         <source>Important objects</source>
-        <translation type="unfinished"></translation>
+        <translation>중요 물품</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="251"/>
