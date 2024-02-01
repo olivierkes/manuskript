@@ -107,12 +107,12 @@
     <message>
         <location filename="../manuskript/ui/listDialog_ui.py" line="43"/>
         <source>Title</source>
-        <translation type="unfinished">Judul</translation>
+        <translation>Judul</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/listDialog_ui.py" line="44"/>
         <source>Text</source>
-        <translation type="unfinished">Teks</translation>
+        <translation>Teks</translation>
     </message>
 </context>
 <context>
@@ -120,12 +120,12 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="619"/>
         <source>The image path or URL is incomplete or malformed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Lokasi gambar atau URL tidak lengkap atau salah.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="631"/>
         <source>The protocol &quot;{}&quot; is not supported.</source>
-        <translation type="unfinished"></translation>
+        <translation>Protokol &quot;{}&quot; tidak didukung.</translation>
     </message>
 </context>
 <context>
@@ -141,7 +141,7 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="543"/>
         <source>{} (CTRL+Click to open)</source>
-        <translation type="unfinished"></translation>
+        <translation>{} (CTRL+Klik untuk membuka)</translation>
     </message>
 </context>
 <context>
@@ -404,7 +404,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1561"/>
         <source>Persos</source>
-        <translation type="unfinished"></translation>
+        <translation>Persos</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1565"/>
@@ -439,17 +439,17 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1574"/>
         <source>&amp;View</source>
-        <translation type="unfinished">&amp;Gambaran</translation>
+        <translation>&amp;Gambaran</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1575"/>
         <source>&amp;Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Mode</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1578"/>
         <source>Cheat Sheet</source>
-        <translation type="unfinished"></translation>
+        <translation>Contekan</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1580"/>
@@ -469,7 +469,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1583"/>
         <source>Sa&amp;ve as...</source>
-        <translation type="unfinished"></translation>
+        <translation>Si&amp;mpan sebagai...</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1584"/>
@@ -484,7 +484,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1586"/>
         <source>&amp;Spellcheck</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Pemeriksa Ejaan</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1587"/>
@@ -615,8 +615,8 @@
         <location filename="../manuskript/mainWindow.py" line="1687"/>
         <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous
                      evil wizard wasn&apos;t able to kill a baby?&apos; (Harry Potter)</source>
-        <translation>Situasi dasar, dalam bentuk pertanyaan 'Bagaiaman jika...?'. Cth: 'Bagaimana jika 
-                     penyihir jahat paling berbahaya tidak mampu membunuh seorang bayi?' (Harry Potter)</translation>
+        <translation>Situasi dasar, dalam bentuk pertanyaan &apos;Bagaiaman jika...?&apos;. Cth: &apos;Bagaimana jika 
+                     penyihir jahat paling berbahaya tidak mampu membunuh seorang bayi?&apos; (Harry Potter)</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1692"/>
