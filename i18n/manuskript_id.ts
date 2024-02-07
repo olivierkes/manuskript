@@ -519,7 +519,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1594"/>
         <source>S&amp;ettings</source>
-        <translation type="unfinished"></translation>
+        <translation>P&amp;engaturan</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1595"/>
@@ -574,7 +574,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1242"/>
         <source>Project {} loaded with some errors.</source>
-        <translation type="unfinished"></translation>
+        <translation>Proyek {} dimuat dengan beberapa kesalahan.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1605"/>
@@ -599,7 +599,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1618"/>
         <source>Metadata</source>
-        <translation type="unfinished"></translation>
+        <translation>Metadata</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1619"/>
@@ -663,7 +663,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1874"/>
         <source>Nothing</source>
-        <translation type="unfinished"></translation>
+        <translation>Tidak ada</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1875"/>
@@ -738,12 +738,12 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1601"/>
         <source>&amp;Copy</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Salin</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1602"/>
         <source>C&amp;ut</source>
-        <translation type="unfinished"></translation>
+        <translation>P&amp;otong</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1603"/>
@@ -753,12 +753,12 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1604"/>
         <source>&amp;Split…</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Pisah…</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1605"/>
         <source>Sp&amp;lit at cursor</source>
-        <translation type="unfinished"></translation>
+        <translation>Pi&amp;sah di kursor</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1609"/>
@@ -768,12 +768,12 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1610"/>
         <source>M&amp;ove Down</source>
-        <translation type="unfinished"></translation>
+        <translation>Pin&amp;dah Ke bawah</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1607"/>
         <source>Dupl&amp;icate</source>
-        <translation type="unfinished"></translation>
+        <translation>Dupl&amp;ikat</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1608"/>
@@ -783,7 +783,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1613"/>
         <source>&amp;Rename</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Ganti nama</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1576"/>
