@@ -6,42 +6,42 @@
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.py" line="162"/>
         <source>Manage Exporters</source>
-        <translation type="unfinished"></translation>
+        <translation>കയറ്റുമതി കൈകാര്യം</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.py" line="166"/>
         <source>Manuskript</source>
-        <translation type="unfinished"></translation>
+        <translation>മനുസ്ക്രിപ്റ്റ്</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.py" line="168"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>വിവരണം</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.py" line="169"/>
         <source>Offers export to</source>
-        <translation type="unfinished"></translation>
+        <translation>കയറ്റുമതി ശ്രമങ്ങൾ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.py" line="170"/>
         <source>Status</source>
-        <translation type="unfinished"></translation>
+        <translation>സ്ഥിതി</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.py" line="171"/>
         <source>Status:</source>
-        <translation type="unfinished"></translation>
+        <translation>സ്ഥിതി:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.py" line="172"/>
         <source>Version:</source>
-        <translation type="unfinished"></translation>
+        <translation>പതിപ്പ്:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.py" line="173"/>
         <source>Path:</source>
-        <translation type="unfinished"></translation>
+        <translation>പഥം:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.py" line="174"/>
@@ -51,7 +51,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.py" line="175"/>
         <source>{HelpText}</source>
-        <translation type="unfinished"></translation>
+        <translation>{സഹായം}</translation>
     </message>
 </context>
 <context>
@@ -59,47 +59,47 @@
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="103"/>
         <source>Frequency Analyzer</source>
-        <translation type="unfinished"></translation>
+        <translation>ആവൃതി അളക്കൽ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="108"/>
         <source>Word frequency</source>
-        <translation type="unfinished"></translation>
+        <translation>വാക്കുകളുടെ ആവൃതി</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="104"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>സജ്ജീകരണങ്ങൾ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="105"/>
         <source>Minimum size:</source>
-        <translation type="unfinished"></translation>
+        <translation>കുറഞ്ഞ വലിപ്പം:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="106"/>
         <source>Exclude words (comma separated):</source>
-        <translation type="unfinished"></translation>
+        <translation>വാക്കുകൾ ഒഴിവാക്കുക (കോമ ഉപയോഗിച്ച് വേർതിരിക്കുക):</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="111"/>
         <source>Analyze</source>
-        <translation type="unfinished"></translation>
+        <translation>അപഗ്രഥിക്കുക</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="112"/>
         <source>Phrase frequency</source>
-        <translation type="unfinished"></translation>
+        <translation>വാക്യ ആവൃതി</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="109"/>
         <source>Number of words: from</source>
-        <translation type="unfinished"></translation>
+        <translation>വാക്കുകളുടെ എണ്ണം: മുതൽ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="110"/>
         <source>to</source>
-        <translation type="unfinished"></translation>
+        <translation>വരെ</translation>
     </message>
 </context>
 <context>
@@ -107,12 +107,12 @@
     <message>
         <location filename="../manuskript/ui/listDialog_ui.py" line="43"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>തലക്കെട്ട്</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/listDialog_ui.py" line="44"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation>എഴുത്ത്</translation>
     </message>
 </context>
 <context>
@@ -120,12 +120,12 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="619"/>
         <source>The image path or URL is incomplete or malformed.</source>
-        <translation type="unfinished"></translation>
+        <translation>ചിത്രത്തിന്റെ പഥം അല്ലെങ്കിൽ യു.ആർ.എൽ. അപൂർണ്ണമാണ് അല്ലെങ്കിൽ പിഴവുള്ളതാണ്.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="631"/>
         <source>The protocol &quot;{}&quot; is not supported.</source>
-        <translation type="unfinished"></translation>
+        <translation>നിബന്ധന &quot;{}&quot; പിന്തുണയ്ക്കുന്നില്ല.</translation>
     </message>
 </context>
 <context>
@@ -133,7 +133,7 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditCompleter.py" line="73"/>
         <source>Insert reference</source>
-        <translation type="unfinished"></translation>
+        <translation>അവലംബം ഉൾപ്പെടുത്തുക</translation>
     </message>
 </context>
 <context>
@@ -141,7 +141,7 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="543"/>
         <source>{} (CTRL+Click to open)</source>
-        <translation type="unfinished"></translation>
+        <translation>{} (തുറക്കാൻ കണ്ട്രോൾ+ക്ലിക്ക്)</translation>
     </message>
 </context>
 <context>
@@ -149,252 +149,252 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1553"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>സാർവ്വജനീനം</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1489"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>തലക്കെട്ട്</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1490"/>
         <source>Subtitle</source>
-        <translation type="unfinished"></translation>
+        <translation>ഉപതലക്കെട്ട്</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1491"/>
         <source>Series</source>
-        <translation type="unfinished"></translation>
+        <translation>പരമ്പര</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1492"/>
         <source>Volume</source>
-        <translation type="unfinished"></translation>
+        <translation>വാല്യം</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1493"/>
         <source>Genre</source>
-        <translation type="unfinished"></translation>
+        <translation>സാഹിത്യരൂപം</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1494"/>
         <source>License</source>
-        <translation type="unfinished"></translation>
+        <translation>ഉപയോഗാനുമതി</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1495"/>
         <source>Author</source>
-        <translation type="unfinished"></translation>
+        <translation>കർത്താവ്</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1551"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>പേര്</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1497"/>
         <source>Email</source>
-        <translation type="unfinished"></translation>
+        <translation>ഇമെയിൽ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1543"/>
         <source>Summary</source>
-        <translation type="unfinished"></translation>
+        <translation>ചുരുക്കം</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1499"/>
         <source>Situation:</source>
-        <translation type="unfinished"></translation>
+        <translation>സന്ദർഭം:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1539"/>
         <source>Summary:</source>
-        <translation type="unfinished"></translation>
+        <translation>ചുരുക്കം:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1502"/>
         <source>One sentence</source>
-        <translation type="unfinished"></translation>
+        <translation>ഒറ്റ വാക്യത്തിൽ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1544"/>
         <source>One paragraph</source>
-        <translation type="unfinished"></translation>
+        <translation>ഒരു ഖണ്ഡികയിൽ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1545"/>
         <source>One page</source>
-        <translation type="unfinished"></translation>
+        <translation>ഒരു താളിൽ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1546"/>
         <source>Full</source>
-        <translation type="unfinished"></translation>
+        <translation>പൂർണ്ണം</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1507"/>
         <source>One sentence summary</source>
-        <translation type="unfinished"></translation>
+        <translation>ഒറ്റ വാക്യത്തിലുള്ള ചുരുക്കം</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1509"/>
         <source>One paragraph summary</source>
-        <translation type="unfinished"></translation>
+        <translation>ഒരു ഖണ്ഡികയിലുള്ള ചുരുക്കം</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1510"/>
         <source>Expand each sentence of your one paragraph summary to a paragraph</source>
-        <translation type="unfinished"></translation>
+        <translation>താങ്കളുടെ ഒരു ഖണ്ഡികയിലുള്ള ചുരുക്കത്തിലെ ഓരോ വാക്യവും ഖണ്ഡികയായി വികസിപ്പിക്കുക</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1511"/>
         <source>One page summary</source>
-        <translation type="unfinished"></translation>
+        <translation>ഒറ്റ താളിലുള്ള ചുരുക്കം</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1512"/>
         <source>Full summary</source>
-        <translation type="unfinished"></translation>
+        <translation>ചുരുക്കത്തിന്റെ പൂർണ്ണരൂപം</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1500"/>
         <source>What if...?</source>
-        <translation type="unfinished"></translation>
+        <translation>അങ്ങനെയെങ്കിൽ..?</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="24"/>
         <source>Characters</source>
-        <translation type="unfinished"></translation>
+        <translation>കഥാപാത്രങ്ങൾ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1514"/>
         <source>Names</source>
-        <translation type="unfinished"></translation>
+        <translation>പേരുകൾ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1548"/>
         <source>Filter</source>
-        <translation type="unfinished"></translation>
+        <translation>അരിപ്പ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1538"/>
         <source>Basic info</source>
-        <translation type="unfinished"></translation>
+        <translation>അടിസ്ഥാന വിവരങ്ങൾ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1534"/>
         <source>Importance</source>
-        <translation type="unfinished"></translation>
+        <translation>പ്രാധാന്യം</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1519"/>
         <source>Motivation</source>
-        <translation type="unfinished"></translation>
+        <translation>പ്രചോദനം</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1520"/>
         <source>Goal</source>
-        <translation type="unfinished"></translation>
+        <translation>ലക്ഷ്യം</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1521"/>
         <source>Conflict</source>
-        <translation type="unfinished"></translation>
+        <translation>സംഘർഷം</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1522"/>
         <source>Epiphany</source>
-        <translation type="unfinished"></translation>
+        <translation>തിരിച്ചറിവ്</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1523"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One sentence&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;ഒറ്റ വാക്യത്തിലുള്ള&lt;br/&gt;ചുരുക്കം&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1524"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One paragraph&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;ഒരു ഖണ്ഡികയിലുള്ള&lt;br/&gt;ചുരുക്കം&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1527"/>
         <source>Notes</source>
-        <translation type="unfinished"></translation>
+        <translation>കുറിപ്പുകൾ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1529"/>
         <source>Detailed info</source>
-        <translation type="unfinished"></translation>
+        <translation>വിശദവിവരം</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1562"/>
         <source>Plots</source>
-        <translation type="unfinished"></translation>
+        <translation>കഥാഗതികൾ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="27"/>
         <source>Plot</source>
-        <translation type="unfinished"></translation>
+        <translation>കഥാഗതി</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1535"/>
         <source>Character(s)</source>
-        <translation type="unfinished"></translation>
+        <translation>കഥാപാത്രം(കഥാപാത്രങ്ങൾ)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1552"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>വിവരണം</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1537"/>
         <source>Result</source>
-        <translation type="unfinished"></translation>
+        <translation>ഫലം</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1542"/>
         <source>Resolution steps</source>
-        <translation type="unfinished"></translation>
+        <translation>തീർപ്പിലേക്കുള്ള ചുവടുകൾ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="26"/>
         <source>World</source>
-        <translation type="unfinished"></translation>
+        <translation>ലോകം</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1550"/>
         <source>Populates with empty data</source>
-        <translation type="unfinished"></translation>
+        <translation>നിശ്ശൂന്യവിവരത്താൽ നിറയ്ക്കുക</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1556"/>
         <source>More</source>
-        <translation type="unfinished"></translation>
+        <translation>കൂടുതൽ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1554"/>
         <source>Source of passion</source>
-        <translation type="unfinished"></translation>
+        <translation>താത്പര്യത്തിന്റെ കാര്യം</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1555"/>
         <source>Source of conflict</source>
-        <translation type="unfinished"></translation>
+        <translation>സംഘർഷത്തിന്റെ കാര്യം</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="23"/>
         <source>Outline</source>
-        <translation type="unfinished"></translation>
+        <translation>രൂപരേഖ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1559"/>
         <source>Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>എഡിറ്റർ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1566"/>
         <source>Debug</source>
-        <translation type="unfinished"></translation>
+        <translation>ഡീബഗ്</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="25"/>
@@ -414,32 +414,32 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1567"/>
         <source>&amp;File</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;ഫയൽ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1568"/>
         <source>&amp;Recent</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;അടുത്തുപയോഗിച്ചവ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1569"/>
         <source>&amp;Help</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;സഹായം</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1570"/>
         <source>&amp;Tools</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;ഉപകരണങ്ങൾ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1571"/>
         <source>&amp;Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;തിരുത്ത്</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1574"/>
         <source>&amp;View</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;കാണുക</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1575"/>
