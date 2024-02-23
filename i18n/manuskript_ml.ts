@@ -409,7 +409,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1565"/>
         <source>Labels</source>
-        <translation type="unfinished"></translation>
+        <translation>അടിക്കുറിപ്പുകൾ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1567"/>
@@ -449,22 +449,22 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1578"/>
         <source>Cheat Sheet</source>
-        <translation type="unfinished"></translation>
+        <translation>എളുപ്പവഴി</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1580"/>
         <source>&amp;Navigation</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;ഗമനം</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1581"/>
         <source>&amp;Open</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;തുറക്കുക</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1582"/>
         <source>&amp;Save</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;സേവ് ചെയ്യുക</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1583"/>
@@ -474,12 +474,12 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1584"/>
         <source>&amp;Quit</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;പുറത്തുകടക്കുക</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1585"/>
         <source>&amp;Show help texts</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;സഹായക എഴുത്തുകൾ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1586"/>
@@ -494,17 +494,17 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1588"/>
         <source>&amp;Status...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;സ്ഥിതി...</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1589"/>
         <source>Tree</source>
-        <translation type="unfinished"></translation>
+        <translation>വൃക്ഷം</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1590"/>
         <source>&amp;Simple</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;ലളിതം</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1591"/>
@@ -514,7 +514,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1592"/>
         <source>Index cards</source>
-        <translation type="unfinished"></translation>
+        <translation>സൂചിക ചീട്ടുകൾ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1594"/>
@@ -539,22 +539,22 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1488"/>
         <source>Book information</source>
-        <translation type="unfinished"></translation>
+        <translation>പുസ്തക വിവരങ്ങൾ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1598"/>
         <source>&amp;About</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;വിവരണം</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1599"/>
         <source>About Manuskript</source>
-        <translation type="unfinished"></translation>
+        <translation>മനുസ്ക്രിപ്റ്റ് വിവരണം</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1080"/>
         <source>Manuskript</source>
-        <translation type="unfinished"></translation>
+        <translation>മനുസ്ക്രിപ്റ്റ്</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1212"/>
@@ -579,17 +579,17 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1605"/>
         <source> (~{} pages)</source>
-        <translation type="unfinished"></translation>
+        <translation> (~{} താളുകൾ)</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1608"/>
         <source>Words: {}{}</source>
-        <translation type="unfinished"></translation>
+        <translation>വാക്കുകൾ: {}{}</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1616"/>
         <source>Book summary</source>
-        <translation type="unfinished"></translation>
+        <translation>പുസ്തകത്തിന്റെ ചുരുക്കം</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1617"/>
