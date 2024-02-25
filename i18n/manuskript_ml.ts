@@ -559,22 +559,22 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1212"/>
         <source>Project {} saved.</source>
-        <translation type="unfinished"></translation>
+        <translation>പദ്ധതി {} സേവ് ചെയ്തു.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1216"/>
         <source>WARNING: Project {} not saved.</source>
-        <translation type="unfinished"></translation>
+        <translation>മുന്നറിയിപ്പ്: പദ്ധതി {} സേവ് ചെയ്തില്ല.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1236"/>
         <source>Project {} loaded.</source>
-        <translation type="unfinished"></translation>
+        <translation>പദ്ധതി {} ലോഡ് ചെയ്തു.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1242"/>
         <source>Project {} loaded with some errors.</source>
-        <translation type="unfinished"></translation>
+        <translation>പദ്ധതി {} പിഴവുകളോടെ ലോഡ് ചെയ്തു.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1605"/>
@@ -609,7 +609,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1684"/>
         <source>Enter information about your book, and yourself.</source>
-        <translation type="unfinished"></translation>
+        <translation>താങ്കഉടെ പുസ്തകത്തെക്കുറിച്ചും താങ്കളെക്കുറിച്ചും ഉള്ള വിവരങ്ങൾ നൽകുക.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1687"/>
@@ -646,7 +646,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1709"/>
         <source>Write.</source>
-        <translation type="unfinished"></translation>
+        <translation>എഴുതുക.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1712"/>
@@ -656,17 +656,17 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1726"/>
         <source>Dictionary</source>
-        <translation type="unfinished"></translation>
+        <translation>നിഘണ്ടു</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1874"/>
         <source>Nothing</source>
-        <translation type="unfinished"></translation>
+        <translation>ഒന്നുമില്ല</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1875"/>
         <source>POV</source>
-        <translation type="unfinished"></translation>
+        <translation>വീക്ഷണകോൺ</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1876"/>
@@ -676,62 +676,62 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1877"/>
         <source>Progress</source>
-        <translation type="unfinished"></translation>
+        <translation>പുരോഗതി</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1878"/>
         <source>Compile</source>
-        <translation type="unfinished"></translation>
+        <translation>കമ്പൈൽ</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1901"/>
         <source>Icon color</source>
-        <translation type="unfinished"></translation>
+        <translation>ഐകോണിന്റെ നിറം</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1902"/>
         <source>Text color</source>
-        <translation type="unfinished"></translation>
+        <translation>എഴുത്തിന്റെ നിറം</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1903"/>
         <source>Background color</source>
-        <translation type="unfinished"></translation>
+        <translation>പശ്ചാത്തല നിറം</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1894"/>
         <source>Icon</source>
-        <translation type="unfinished"></translation>
+        <translation>ഐകോൺ</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1895"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation>എഴുത്ത്</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1896"/>
         <source>Background</source>
-        <translation type="unfinished"></translation>
+        <translation>പശ്ചാത്തലം</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1897"/>
         <source>Border</source>
-        <translation type="unfinished"></translation>
+        <translation>അതിര്</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1898"/>
         <source>Corner</source>
-        <translation type="unfinished"></translation>
+        <translation>മൂല</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1540"/>
         <source>Add plot step</source>
-        <translation type="unfinished"></translation>
+        <translation>കഥാഗതിയിൽ അടുത്ത പടി ചേർക്കുക</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1601"/>
         <source>&amp;Copy</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;പകർത്തുക</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1602"/>
@@ -946,22 +946,22 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="2008"/>
         <source>Proceed with import at your own risk</source>
-        <translation type="unfinished"></translation>
+        <translation>താങ്കളുടെ സ്വന്തം ചേതത്തിൽ ഇറക്കുമതി ചെയ്യുക</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1518"/>
         <source>Allow POV</source>
-        <translation type="unfinished"></translation>
+        <translation>വീക്ഷണകോൺ അനുവദിക്കുക</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1636"/>
         <source>Search</source>
-        <translation type="unfinished"></translation>
+        <translation>തിരയുക</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1637"/>
         <source>&amp;Technical Support</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;സാങ്കേതിക സഹായം</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1638"/>
