@@ -976,22 +976,22 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1640"/>
         <source>Locate log file</source>
-        <translation type="unfinished"></translation>
+        <translation>ലോഗ് ഫയൽ കണ്ടെത്തുക</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1641"/>
         <source>Locate the diagnostic log file used for this session.</source>
-        <translation type="unfinished"></translation>
+        <translation>ഈ തവണത്തെ കുഴപ്പം കണ്ടെത്താനുള്ള ലോഗ് ഫയൽ എവിടെയെന്നറിയുക.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1540"/>
         <source>Sorry!</source>
-        <translation type="unfinished"></translation>
+        <translation>ക്ഷമിക്കണം!</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1540"/>
         <source>This session is not being logged.</source>
-        <translation type="unfinished"></translation>
+        <translation>ഈ സെഷൻ ലോഗ് ചെയ്തിട്ടില്ല.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1549"/>
@@ -1031,12 +1031,12 @@
     <message>
         <location filename="../manuskript/ui/search.py" line="56"/>
         <source>Situation</source>
-        <translation type="unfinished"></translation>
+        <translation>സന്ദർഭം</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="57"/>
         <source>Status</source>
-        <translation type="unfinished"></translation>
+        <translation>സ്ഥിതി</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1600"/>
@@ -1056,27 +1056,27 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1635"/>
         <source>Draft and session word count targets</source>
-        <translation type="unfinished"></translation>
+        <translation>കരടിലും സെഷനിലും ലക്ഷ്യമിടുന്ന വാക്കുകളുടെ എണ്ണം</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="387"/>
         <source>Value</source>
-        <translation type="unfinished"></translation>
+        <translation>മൂല്യം</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="395"/>
         <source>Bulk Info Manager</source>
-        <translation type="unfinished"></translation>
+        <translation>മഹാ വിവര കൈകാര്യം</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="440"/>
         <source>No Entries!</source>
-        <translation type="unfinished"></translation>
+        <translation>ഉൾപ്പെടുത്തലുകൾ ഇല്ല!</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="440"/>
         <source>Please add entries to apply to the selected characters.</source>
-        <translation type="unfinished"></translation>
+        <translation>ദയവായി തിരഞ്ഞെടുത്ത കഥാപാത്രങ്ങൾക്ക് ഉൾപ്പെടുത്തലുകൾ ബാധകമാക്കുക.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="451"/>
@@ -1119,7 +1119,7 @@
     <message>
         <location filename="../manuskript/ui/search.py" line="46"/>
         <source>No results found</source>
-        <translation type="unfinished"></translation>
+        <translation>ഫലങ്ങൾ കണ്ടെത്താനായില്ല</translation>
     </message>
 </context>
 <context>
@@ -1127,22 +1127,22 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1766"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>സജ്ജീകരണങ്ങൾ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1770"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>സാർവ്വജനീനം</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1800"/>
         <source>Revisions</source>
-        <translation type="unfinished"></translation>
+        <translation>പതിപ്പുകൾ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1774"/>
         <source>Views</source>
-        <translation type="unfinished"></translation>
+        <translation>കാഴ്ചകൾ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1962"/>
@@ -1152,47 +1152,47 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1963"/>
         <source>Status</source>
-        <translation type="unfinished"></translation>
+        <translation>സ്ഥിതി</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1964"/>
         <source>Fullscreen</source>
-        <translation type="unfinished"></translation>
+        <translation>മുഴുവൻ സ്ക്രീൻ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1782"/>
         <source>General settings</source>
-        <translation type="unfinished"></translation>
+        <translation>പൊതു സജ്ജീകരണങ്ങൾ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1783"/>
         <source>Application settings</source>
-        <translation type="unfinished"></translation>
+        <translation>ആപ്ലിക്കേഷൻ സജ്ജീകരണങ്ങൾ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1790"/>
         <source>Loading</source>
-        <translation type="unfinished"></translation>
+        <translation>എടുക്കുന്നു</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1791"/>
         <source>Automatically load last project on startup</source>
-        <translation type="unfinished"></translation>
+        <translation>തുടങ്ങുമ്പോൾ അവസാനത്തെ പദ്ധതി സ്വതേ എടുക്കുക</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1792"/>
         <source>Saving</source>
-        <translation type="unfinished"></translation>
+        <translation>സേവ് ചെയ്യുന്നു</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1793"/>
         <source>Automatically save every</source>
-        <translation type="unfinished"></translation>
+        <translation>സ്വതേ ഓരോ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1794"/>
         <source>minutes.</source>
-        <translation type="unfinished"></translation>
+        <translation>മിനിറ്റിലും സേവ് ചെയ്യുക.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1795"/>
@@ -1217,7 +1217,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1799"/>
         <source>Save to one single file</source>
-        <translation type="unfinished"></translation>
+        <translation>ഒരൊറ്റ ഫയലായി സേവ് ചെയ്യുക</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1801"/>
@@ -3867,77 +3867,77 @@
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Education</source>
-        <translation type="unfinished"></translation>
+        <translation>വിദ്യാഭ്യാസം</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Dresses</source>
-        <translation type="unfinished"></translation>
+        <translation>വസ്ത്രങ്ങൾ</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Science</source>
-        <translation type="unfinished"></translation>
+        <translation>ശാസ്ത്രം</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Calendar</source>
-        <translation type="unfinished"></translation>
+        <translation>കാലഗണനാരീതി</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Bodily language</source>
-        <translation type="unfinished"></translation>
+        <translation>ശരീരഭാഷ</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Ethics</source>
-        <translation type="unfinished"></translation>
+        <translation>നൈതികത</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Religion</source>
-        <translation type="unfinished"></translation>
+        <translation>മതം</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Government</source>
-        <translation type="unfinished"></translation>
+        <translation>ഭരണകൂടം</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Politics</source>
-        <translation type="unfinished"></translation>
+        <translation>രാഷ്ട്രീയം</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Gender roles</source>
-        <translation type="unfinished"></translation>
+        <translation>ലിംഗ ധർമ്മങ്ങൾ</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Music and arts</source>
-        <translation type="unfinished"></translation>
+        <translation>സംഗീതവും കലകളും</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Architecture</source>
-        <translation type="unfinished"></translation>
+        <translation>വാസ്തുവിദ്യ</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Military</source>
-        <translation type="unfinished"></translation>
+        <translation>സൈനികം</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Technology</source>
-        <translation type="unfinished"></translation>
+        <translation>സാങ്കേതികവിദ്യ</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Courtship</source>
-        <translation type="unfinished"></translation>
+        <translation>അടുപ്പകാലം</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
@@ -3947,12 +3947,12 @@
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Transportation</source>
-        <translation type="unfinished"></translation>
+        <translation>ഗതാഗതം</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Medicine</source>
-        <translation type="unfinished"></translation>
+        <translation>വൈദ്യം</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="285"/>
