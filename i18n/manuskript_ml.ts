@@ -1227,7 +1227,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1802"/>
         <source>Keep revisions</source>
-        <translation type="unfinished"></translation>
+        <translation>നാൾപ്പതിപ്പുകൾ സൂക്ഷിക്കുക</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1803"/>
@@ -1282,22 +1282,22 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1917"/>
         <source>Colors</source>
-        <translation type="unfinished"></translation>
+        <translation>നിറങ്ങൾ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1886"/>
         <source>Icon color:</source>
-        <translation type="unfinished"></translation>
+        <translation>ഐകോൺ നിറം:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1911"/>
         <source>Nothing</source>
-        <translation type="unfinished"></translation>
+        <translation>ഒന്നുമില്ല</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1912"/>
         <source>POV</source>
-        <translation type="unfinished"></translation>
+        <translation>വീക്ഷണകോൺ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1913"/>
@@ -1307,7 +1307,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1914"/>
         <source>Progress</source>
-        <translation type="unfinished"></translation>
+        <translation>പുരോഗതി</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1915"/>
@@ -1317,12 +1317,12 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1892"/>
         <source>Text color:</source>
-        <translation type="unfinished"></translation>
+        <translation>എഴുത്തിന്റെ നിറം:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1898"/>
         <source>Background color:</source>
-        <translation type="unfinished"></translation>
+        <translation>പശ്ചാത്തല നിറം:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1836"/>
@@ -1367,17 +1367,17 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1871"/>
         <source>Word count</source>
-        <translation type="unfinished"></translation>
+        <translation>വാക്കെണ്ണം</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1872"/>
         <source>Percentage</source>
-        <translation type="unfinished"></translation>
+        <translation>ശതമാനം</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1877"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>തലക്കെട്ട്</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1916"/>
@@ -1402,17 +1402,17 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1879"/>
         <source>Background</source>
-        <translation type="unfinished"></translation>
+        <translation>പശ്ചാത്തലം</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2000"/>
         <source>Color:</source>
-        <translation type="unfinished"></translation>
+        <translation>നിറം:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1976"/>
         <source>Image:</source>
-        <translation type="unfinished"></translation>
+        <translation>ചിത്രം:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1961"/>
