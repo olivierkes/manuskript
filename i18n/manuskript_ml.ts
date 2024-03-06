@@ -1452,42 +1452,42 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2004"/>
         <source>Line spacing:</source>
-        <translation type="unfinished"></translation>
+        <translation>വരികൾക്കിടയിലെ അകലം:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2005"/>
         <source>Single</source>
-        <translation type="unfinished"></translation>
+        <translation>ഒറ്റ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2006"/>
         <source>1.5 lines</source>
-        <translation type="unfinished"></translation>
+        <translation>1.5 വരി</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2007"/>
         <source>Double</source>
-        <translation type="unfinished"></translation>
+        <translation>ഇരട്ട</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2008"/>
         <source>Proportional</source>
-        <translation type="unfinished"></translation>
+        <translation>ആനുപാതികം</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2009"/>
         <source>%</source>
-        <translation type="unfinished"></translation>
+        <translation>%</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2010"/>
         <source>Tab width:</source>
-        <translation type="unfinished"></translation>
+        <translation>ടാബിന്റെ വീതി:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2014"/>
         <source> px</source>
-        <translation type="unfinished"></translation>
+        <translation> ബിന്ദു</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2015"/>
@@ -1497,37 +1497,37 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2012"/>
         <source>Spacing:</source>
-        <translation type="unfinished"></translation>
+        <translation>ഇട:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1965"/>
         <source>New</source>
-        <translation type="unfinished"></translation>
+        <translation>പുതിയത്</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1966"/>
         <source>Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>തിരുത്തുക</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1967"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>മായ്ക്കുക</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1968"/>
         <source>Theme name:</source>
-        <translation type="unfinished"></translation>
+        <translation>തീമിന്റെ പേര്:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1969"/>
         <source>Apply</source>
-        <translation type="unfinished"></translation>
+        <translation>ബാധകമാക്കുക</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1970"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>റദ്ദാക്കുക</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1971"/>
@@ -1537,17 +1537,17 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1972"/>
         <source>Text Background</source>
-        <translation type="unfinished"></translation>
+        <translation>എഴുത്തിന്റെ പശ്ചാത്തലം</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1973"/>
         <source>Text Options</source>
-        <translation type="unfinished"></translation>
+        <translation>എഴുത്തിന്റെ ഐച്ഛികങ്ങൾ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1974"/>
         <source>Paragraph Options</source>
-        <translation type="unfinished"></translation>
+        <translation>ഖണ്ഡികയുടെ ഐച്ഛികങ്ങൾ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1977"/>
@@ -1557,7 +1557,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1978"/>
         <source>No Image</source>
-        <translation type="unfinished"></translation>
+        <translation>ചിത്രം ഇല്ല</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1979"/>
@@ -1567,12 +1567,12 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1980"/>
         <source>Centered</source>
-        <translation type="unfinished"></translation>
+        <translation>മദ്ധ്യത്തിലാക്കിയത്</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1991"/>
         <source>Stretched</source>
-        <translation type="unfinished"></translation>
+        <translation>വലിച്ചുനീട്ടിയത്</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1982"/>
@@ -1582,47 +1582,47 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1983"/>
         <source>Zoomed</source>
-        <translation type="unfinished"></translation>
+        <translation>വലുതാക്കിയത്</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1985"/>
         <source>Opacity:</source>
-        <translation type="unfinished"></translation>
+        <translation>അതാര്യത:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1987"/>
         <source>Position:</source>
-        <translation type="unfinished"></translation>
+        <translation>സ്ഥാനം:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2016"/>
         <source>Left</source>
-        <translation type="unfinished"></translation>
+        <translation>ഇടത്</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2017"/>
         <source>Center</source>
-        <translation type="unfinished"></translation>
+        <translation>മദ്ധ്യം</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2018"/>
         <source>Right</source>
-        <translation type="unfinished"></translation>
+        <translation>വലത്</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1992"/>
         <source>Width:</source>
-        <translation type="unfinished"></translation>
+        <translation>വീതി:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1995"/>
         <source>Corner radius:</source>
-        <translation type="unfinished"></translation>
+        <translation>കോണിന്റെ ആരം:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1996"/>
         <source>Margins:</source>
-        <translation type="unfinished"></translation>
+        <translation>മാർജിൻ:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1998"/>
@@ -1632,7 +1632,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2001"/>
         <source>Font:</source>
-        <translation type="unfinished"></translation>
+        <translation>ഫോണ്ട്:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1882"/>
@@ -1667,7 +1667,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1832"/>
         <source>Icon Size</source>
-        <translation type="unfinished"></translation>
+        <translation>ഐകോണിന്റെ വലിപ്പം</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1833"/>
