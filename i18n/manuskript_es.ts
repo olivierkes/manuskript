@@ -125,7 +125,7 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="631"/>
         <source>The protocol &quot;{}&quot; is not supported.</source>
-        <translation>El protocolo &quot;{}&quot; no es compatible.</translation>
+        <translation>No se admite el protocolo «{}».</translation>
     </message>
 </context>
 <context>
@@ -399,7 +399,7 @@
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="25"/>
         <source>FlatData</source>
-        <translation>Datos Planos</translation>
+        <translation>Datos simples</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1561"/>
@@ -429,7 +429,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1569"/>
         <source>&amp;Help</source>
-        <translation>A&amp;yuda</translation>
+        <translation>Ay&amp;uda</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1570"/>
@@ -585,8 +585,8 @@
         <location filename="../manuskript/mainWindow.py" line="1687"/>
         <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous
                      evil wizard wasn&apos;t able to kill a baby?&apos; (Harry Potter)</source>
-        <translation>La situación básica en la forma de una pregunta tipo &quot;¿Que pasaría sí...?&quot;. Ej:&quot;¿Que pasaría si el más peligroso
-                     hechicero malvado no pudiera ser capaz de matar un bebé?&quot; (Harry Potter)</translation>
+        <translation>La situación básica en forma de una pregunta tipo «¿Qué pasaría si…?». Ej.: «¿Que pasaría si el más peligroso
+                     hechicero malvado no pudiera ser capaz de matar un bebé?» (Harry Potter)</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1692"/>
@@ -978,7 +978,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1638"/>
         <source>How to obtain technical support for Manuskript.</source>
-        <translation>Cómo obtener soporte técnico para Manuskript.</translation>
+        <translation>Cómo obtener asistencia técnica para Manuskript.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1639"/>
@@ -1013,7 +1013,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1549"/>
         <source>The log file &quot;{}&quot; will continue to be written to until Manuskript is closed.</source>
-        <translation>El archivo de registro &quot;{}&quot; continuará siendo escrito hasta que Manuskript se cierre.</translation>
+        <translation>El archivo de registro «{}» continuará escribiéndose hasta que Manuskript se cierre.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1549"/>
