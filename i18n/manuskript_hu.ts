@@ -79,7 +79,7 @@
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="106"/>
         <source>Exclude words (comma separated):</source>
-        <translation type="unfinished">Szavak kizárása (vesszővel elválasztva):</translation>
+        <translation>Szavak kizárása (vesszővel elválasztva):</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="111"/>
@@ -107,12 +107,12 @@
     <message>
         <location filename="../manuskript/ui/listDialog_ui.py" line="43"/>
         <source>Title</source>
-        <translation type="unfinished">Cím</translation>
+        <translation>Cím</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/listDialog_ui.py" line="44"/>
         <source>Text</source>
-        <translation type="unfinished">Szöveg</translation>
+        <translation>Szöveg</translation>
     </message>
 </context>
 <context>
@@ -120,12 +120,12 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="619"/>
         <source>The image path or URL is incomplete or malformed.</source>
-        <translation type="unfinished"></translation>
+        <translation>A kép elérési útja vagy a webcím befejezetlen vagy hibás.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="631"/>
         <source>The protocol &quot;{}&quot; is not supported.</source>
-        <translation type="unfinished"></translation>
+        <translation>A &quot;{}&quot; szabvány nem támogatott.</translation>
     </message>
 </context>
 <context>
@@ -141,7 +141,7 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="543"/>
         <source>{} (CTRL+Click to open)</source>
-        <translation type="unfinished"></translation>
+        <translation>{} (CTRL+kattintás a megnyitáshoz)</translation>
     </message>
 </context>
 <context>
@@ -449,7 +449,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1578"/>
         <source>Cheat Sheet</source>
-        <translation type="unfinished">&amp;Puska</translation>
+        <translation>Puska</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1580"/>
@@ -615,8 +615,8 @@
         <location filename="../manuskript/mainWindow.py" line="1687"/>
         <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous
                      evil wizard wasn&apos;t able to kill a baby?&apos; (Harry Potter)</source>
-        <translation>Az alapszituáció 'Mi lenne ha...?' kérdésként feltéve. Pl.. 'Mi lenne ha a legveszélyesebb
-'                     gonosz varázsló ne lenne képes megölni egy csecsemőt?' (Harry Potter)</translation>
+        <translation>Az alapszituáció &apos;Mi lenne ha...?&apos; kérdésként feltéve. Pl.. &apos;Mi lenne ha a legveszélyesebb
+&apos;                     gonosz varázsló ne lenne képes megölni egy csecsemőt?&apos; (Harry Potter)</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1692"/>
@@ -728,7 +728,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1540"/>
         <source>Add plot step</source>
-        <translation type="unfinished">Cselekmény lépés hozzáadása (CTRL+Enter)</translation>
+        <translation>Cselekmény lépés hozzáadása (CTRL+Enter)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1600"/>
@@ -798,112 +798,112 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1541"/>
         <source>Remove selected plot step(s)</source>
-        <translation type="unfinished"></translation>
+        <translation>Kijelölt cselekmény lépés(ek) eltávolítása</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1572"/>
         <source>&amp;Format</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Formátum</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1573"/>
         <source>&amp;Header</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Fejléc</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1614"/>
         <source>&amp;Level 1 (setext)</source>
-        <translation type="unfinished"></translation>
+        <translation>Méret &amp;1 (setext jelölőnyelven)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1615"/>
         <source>Level &amp;2</source>
-        <translation type="unfinished"></translation>
+        <translation>Méret &amp;2</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1616"/>
         <source>Level &amp;1 (atx)</source>
-        <translation type="unfinished"></translation>
+        <translation>Méret &amp;1 (atx szabvány)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1617"/>
         <source>L&amp;evel 2</source>
-        <translation type="unfinished"></translation>
+        <translation>M&amp;éret 2</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1618"/>
         <source>Level &amp;3</source>
-        <translation type="unfinished"></translation>
+        <translation>Méret &amp;3</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1619"/>
         <source>Level &amp;4</source>
-        <translation type="unfinished"></translation>
+        <translation>Méret &amp;4</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1620"/>
         <source>Level &amp;5</source>
-        <translation type="unfinished"></translation>
+        <translation>Méret &amp;5</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1621"/>
         <source>Level &amp;6</source>
-        <translation type="unfinished"></translation>
+        <translation>Méret &amp;6</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1622"/>
         <source>&amp;Bold</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Félkövér</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1623"/>
         <source>&amp;Italic</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Dőlt</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1624"/>
         <source>&amp;Strike</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Áthúzott</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1625"/>
         <source>&amp;Verbatim</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Szó szerint</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1626"/>
         <source>Su&amp;perscript</source>
-        <translation type="unfinished"></translation>
+        <translation>In&amp;dexszám</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1627"/>
         <source>Subsc&amp;ript</source>
-        <translation type="unfinished"></translation>
+        <translation>Indexsz&amp;ám</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1628"/>
         <source>Co&amp;mment block</source>
-        <translation type="unfinished"></translation>
+        <translation>Ko&amp;mment blokk</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1629"/>
         <source>Clear &amp;formats</source>
-        <translation type="unfinished"></translation>
+        <translation>Formátumok &amp;tisztítása</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1630"/>
         <source>&amp;Comment line(s)</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Sor(ok) kommentelése</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1631"/>
         <source>&amp;Ordered list</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Rendezett lista</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1632"/>
         <source>&amp;Unordered list</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Rendezetlen lista</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1633"/>
@@ -913,117 +913,117 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="921"/>
         <source>The file {} does not exist. Has it been moved or deleted?</source>
-        <translation type="unfinished"></translation>
+        <translation>A {} fálj nem létezik. Esetleg át lett helyezve, vagy törlődött?</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1740"/>
         <source>Install {}{} to use spellcheck</source>
-        <translation type="unfinished"></translation>
+        <translation>Helyezzen be {]{}-t a nyelvtani helyesíró használatához</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1782"/>
         <source>{} has no installed dictionaries</source>
-        <translation type="unfinished"></translation>
+        <translation>{}-nek nincsen telepített szótára</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1803"/>
         <source>{}{} is not installed</source>
-        <translation type="unfinished"></translation>
+        <translation>A {}{} nincs telepítve</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1023"/>
         <source>Save project?</source>
-        <translation type="unfinished"></translation>
+        <translation>Elmenti a munkát?</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1023"/>
         <source>Save changes to project &quot;{}&quot; before closing?</source>
-        <translation type="unfinished"></translation>
+        <translation>Elmenti a változtatásokat a &quot;{}&quot; munkához, mielőtt bezárja?</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1023"/>
         <source>Your changes will be lost if you don&apos;t save them.</source>
-        <translation type="unfinished"></translation>
+        <translation>A változtatásai elvesznek, ha nem menti azokat.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="2001"/>
         <source>PyQt / Qt versions 5.11 and 5.12 are known to cause a crash which might result in a loss of data.</source>
-        <translation type="unfinished"></translation>
+        <translation>A PyQt/Qt 5.11-es és 5.12-es verziói összeomlást okozhatnak, amely az adatok elvesztéséhez vezethet.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="2002"/>
         <source>PyQt {} and Qt {} are in use.</source>
-        <translation type="unfinished"></translation>
+        <translation>A PyQt {} és a Qt {} használatban vannak.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="2008"/>
         <source>Proceed with import at your own risk</source>
-        <translation type="unfinished"></translation>
+        <translation>Saját kockázatra folytassa az importálást</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1518"/>
         <source>Allow POV</source>
-        <translation type="unfinished"></translation>
+        <translation>Engedélyezze a POV-t (nézőpontot)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1636"/>
         <source>Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Keresés</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="51"/>
         <source>F3</source>
-        <translation type="unfinished">F3</translation>
+        <translation>F3</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="52"/>
         <source>Shift+F3</source>
-        <translation type="unfinished"></translation>
+        <translation>Shift+F3</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="56"/>
         <source>Situation</source>
-        <translation type="unfinished"></translation>
+        <translation>Szituáció</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="57"/>
         <source>Status</source>
-        <translation type="unfinished">Státusz</translation>
+        <translation>Státusz</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1637"/>
         <source>&amp;Technical Support</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Technikai támogatás</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1638"/>
         <source>How to obtain technical support for Manuskript.</source>
-        <translation type="unfinished"></translation>
+        <translation>Hogyan részesüljön technikai támogatásban a Manuskripthez.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1639"/>
         <source>&amp;Locate log file...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Naplófájl meghatározása...</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1640"/>
         <source>Locate log file</source>
-        <translation type="unfinished"></translation>
+        <translation>Naplófájl meghatározása</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1641"/>
         <source>Locate the diagnostic log file used for this session.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ehhez a munkamenethez haszbált diagnosztikai naplófájl meghatározása.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1540"/>
         <source>Sorry!</source>
-        <translation type="unfinished"></translation>
+        <translation>Elnézést!</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1540"/>
         <source>This session is not being logged.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ez a munkamenet nem töltődik be.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1549"/>
@@ -2317,7 +2317,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>Egyszeri idézőjelek (') cseréje ezzel:</translation>
+        <translation>Egyszeri idézőjelek (&apos;) cseréje ezzel:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>
@@ -3404,7 +3404,7 @@
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="47"/>
         <source>Split &apos;{}&apos;</source>
-        <translation>Vágás '{}'</translation>
+        <translation>Vágás &apos;{}&apos;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="51"/>
