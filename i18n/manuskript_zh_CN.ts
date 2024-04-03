@@ -74,7 +74,7 @@
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="105"/>
         <source>Minimum size:</source>
-        <translation>最小大小:</translation>
+        <translation>最小尺寸:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="106"/>
@@ -107,12 +107,12 @@
     <message>
         <location filename="../manuskript/ui/listDialog_ui.py" line="43"/>
         <source>Title</source>
-        <translation type="unfinished">标题</translation>
+        <translation>标题</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/listDialog_ui.py" line="44"/>
         <source>Text</source>
-        <translation type="unfinished">文本</translation>
+        <translation>文本</translation>
     </message>
 </context>
 <context>
@@ -179,7 +179,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1494"/>
         <source>License</source>
-        <translation>证书</translation>
+        <translation>许可证</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1495"/>
@@ -1022,7 +1022,7 @@
     <message>
         <location filename="../manuskript/ui/search.py" line="51"/>
         <source>F3</source>
-        <translation type="unfinished">F3</translation>
+        <translation>F3</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="52"/>
@@ -1037,7 +1037,7 @@
     <message>
         <location filename="../manuskript/ui/search.py" line="57"/>
         <source>Status</source>
-        <translation type="unfinished">状态</translation>
+        <translation>状态</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1600"/>
@@ -1062,7 +1062,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="387"/>
         <source>Value</source>
-        <translation type="unfinished">值</translation>
+        <translation>值</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="395"/>
@@ -1982,12 +1982,12 @@
     <message>
         <location filename="../manuskript/models/characterModel.py" line="179"/>
         <source>New character</source>
-        <translation type="unfinished"></translation>
+        <translation>新角色</translation>
     </message>
     <message>
         <location filename="../manuskript/models/characterModel.py" line="215"/>
         <source>Description</source>
-        <translation type="unfinished">描述</translation>
+        <translation>描述</translation>
     </message>
 </context>
 <context>
@@ -2134,22 +2134,22 @@
     <message>
         <location filename="../manuskript/load_save/version_1.py" line="435"/>
         <source>Files not saved</source>
-        <translation type="unfinished"></translation>
+        <translation>文件未保存</translation>
     </message>
     <message>
         <location filename="../manuskript/load_save/version_1.py" line="436"/>
         <source>The following files were not saved and appear to be open in another program</source>
-        <translation type="unfinished"></translation>
+        <translation>以下文件未保存且似乎已在另一个程序中打开</translation>
     </message>
     <message>
         <location filename="../manuskript/load_save/version_1.py" line="928"/>
         <source>Files not loaded</source>
-        <translation type="unfinished"></translation>
+        <translation>文件未加载</translation>
     </message>
     <message>
         <location filename="../manuskript/load_save/version_1.py" line="929"/>
         <source>The following files were not loaded and appear to be open in another program</source>
-        <translation type="unfinished"></translation>
+        <translation>以下文件未加载且似乎已在另一个程序中打开</translation>
     </message>
 </context>
 <context>
@@ -2316,7 +2316,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>将单引号（'）替换为：</translation>
+        <translation>将单引号（&apos;）替换为：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>
@@ -2386,17 +2386,17 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings.py" line="346"/>
         <source>{}Level {} text</source>
-        <translation type="unfinished"></translation>
+        <translation>{}级别 {} 文本</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="542"/>
         <source>Replace ... with …</source>
-        <translation type="unfinished"></translation>
+        <translation>用……替换...…</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="543"/>
         <source>Replace --- with —</source>
-        <translation type="unfinished"></translation>
+        <translation>用——替换----</translation>
     </message>
 </context>
 <context>
@@ -2480,7 +2480,7 @@
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="154"/>
         <source>Navigation</source>
-        <translation type="unfinished">导航</translation>
+        <translation>导航</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="155"/>
@@ -2490,7 +2490,7 @@
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="156"/>
         <source>Title</source>
-        <translation type="unfinished">标题</translation>
+        <translation>标题</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="157"/>
@@ -2505,12 +2505,12 @@
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="160"/>
         <source>Word count</source>
-        <translation type="unfinished">字数统计</translation>
+        <translation>字数统计</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="161"/>
         <source>Progress</source>
-        <translation type="unfinished">进度</translation>
+        <translation>进度</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="162"/>
@@ -2520,12 +2520,12 @@
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="163"/>
         <source>Clock</source>
-        <translation type="unfinished">时钟</translation>
+        <translation>时钟</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="164"/>
         <source>Clock: Show Seconds</source>
-        <translation type="unfinished">时钟：显示秒数</translation>
+        <translation>时钟：显示秒数</translation>
     </message>
 </context>
 <context>
@@ -2548,7 +2548,7 @@
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.py" line="64"/>
         <source>Trim long titles (&gt; 32 chars)</source>
-        <translation type="unfinished">修短长标题（超过 32 个字符的部分）</translation>
+        <translation>缩减长标题（超过 32 个字符的部分）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.py" line="65"/>
@@ -2584,7 +2584,7 @@
     <message>
         <location filename="../manuskript/ui/importers/importer_ui.py" line="100"/>
         <source>Choose file</source>
-        <translation type="unfinished">选择文件</translation>
+        <translation>选择文件</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/importers/importer_ui.py" line="101"/>
@@ -2728,7 +2728,7 @@
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="347"/>
         <source>({} chars) {}  words / {} </source>
-        <translation type="unfinished"></translation>
+        <translation>({} 文字) {}  词汇 / {} </translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="353"/>
@@ -2738,12 +2738,12 @@
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="368"/>
         <source>{} chars</source>
-        <translation type="unfinished"></translation>
+        <translation>{} 文字</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="362"/>
         <source>{} chars </source>
-        <translation type="unfinished"></translation>
+        <translation>{} 文字 </translation>
     </message>
 </context>
 <context>
@@ -3072,7 +3072,7 @@
     <message>
         <location filename="../manuskript/models/plotModel.py" line="110"/>
         <source>New plot</source>
-        <translation type="unfinished"></translation>
+        <translation>新剧情</translation>
     </message>
 </context>
 <context>
@@ -3159,7 +3159,7 @@
     <message>
         <location filename="../manuskript/ui/revisions_ui.py" line="86"/>
         <source>Form</source>
-        <translation type="unfinished">表格</translation>
+        <translation>表格</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions_ui.py" line="87"/>
@@ -3174,7 +3174,7 @@
     <message>
         <location filename="../manuskript/ui/revisions.py" line="258"/>
         <source>Delete</source>
-        <translation type="unfinished">删除</translation>
+        <translation>删除</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="45"/>
@@ -3247,7 +3247,7 @@
     <message>
         <location filename="../manuskript/ui/search_ui.py" line="47"/>
         <source>Form</source>
-        <translation type="unfinished">表格</translation>
+        <translation>表格</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search_ui.py" line="48"/>
@@ -3260,27 +3260,27 @@
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="31"/>
         <source>Case sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>大小写敏感</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="32"/>
         <source>Match words</source>
-        <translation type="unfinished"></translation>
+        <translation>匹配词汇</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="33"/>
         <source>Regex</source>
-        <translation type="unfinished"></translation>
+        <translation>正则表达式</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="39"/>
         <source>Search in:</source>
-        <translation type="unfinished"></translation>
+        <translation>搜索范围：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="51"/>
         <source>Options:</source>
-        <translation type="unfinished"></translation>
+        <translation>选项：</translation>
     </message>
 </context>
 <context>
@@ -3323,7 +3323,7 @@
     <message>
         <location filename="../manuskript/settingsWindow.py" line="550"/>
         <source>Error</source>
-        <translation type="unfinished">错误</translation>
+        <translation>错误</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="547"/>
@@ -3343,27 +3343,27 @@
     <message>
         <location filename="../manuskript/ui/views/sldImportance_ui.py" line="37"/>
         <source>Form</source>
-        <translation type="unfinished">表格</translation>
+        <translation>表格</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/sldImportance_ui.py" line="38"/>
         <source>TextLabel</source>
-        <translation type="unfinished">文本标签</translation>
+        <translation>文本标签</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/sldImportance.py" line="29"/>
         <source>Minor</source>
-        <translation type="unfinished">不重要</translation>
+        <translation>不重要的</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/sldImportance.py" line="30"/>
         <source>Secondary</source>
-        <translation type="unfinished">次要的</translation>
+        <translation>次要的</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/sldImportance.py" line="31"/>
         <source>Main</source>
-        <translation type="unfinished">主要的</translation>
+        <translation>主要的</translation>
     </message>
 </context>
 <context>
@@ -3403,7 +3403,7 @@
     <message>
         <location filename="../manuskript/ui/views/storylineView_ui.py" line="56"/>
         <source>Form</source>
-        <translation type="unfinished">表格</translation>
+        <translation>表格</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/storylineView.py" line="36"/>
@@ -3421,7 +3421,7 @@
     <message>
         <location filename="../manuskript/ui/editors/tabSplitter.py" line="68"/>
         <source>Open selected items in that view.</source>
-        <translation type="unfinished">在该视图中打开所选项目。</translation>
+        <translation>在该视图中打开所选项目。</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/tabSplitter.py" line="172"/>
@@ -3444,17 +3444,17 @@
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="128"/>
         <source>Project Targets</source>
-        <translation type="unfinished"></translation>
+        <translation>项目目标</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="129"/>
         <source>Draft Target</source>
-        <translation type="unfinished"></translation>
+        <translation>草稿目标</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="136"/>
         <source>0</source>
-        <translation type="unfinished">0</translation>
+        <translation>0</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="137"/>
@@ -3464,12 +3464,12 @@
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="132"/>
         <source>10,000</source>
-        <translation type="unfinished"></translation>
+        <translation>10,000</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="133"/>
         <source>Words</source>
-        <translation type="unfinished"></translation>
+        <translation>词汇</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="134"/>
@@ -3479,12 +3479,12 @@
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="135"/>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>重置</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="138"/>
         <source>words</source>
-        <translation type="unfinished"></translation>
+        <translation>词汇</translation>
     </message>
 </context>
 <context>
@@ -3799,7 +3799,7 @@
     <message>
         <location filename="../manuskript/models/worldModel.py" line="251"/>
         <source>Fantasy world building</source>
-        <translation type="unfinished">幻想世界的建立</translation>
+        <translation>构建架空世界</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="251"/>
