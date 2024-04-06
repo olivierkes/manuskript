@@ -3436,7 +3436,7 @@
     <message>
         <location filename="../manuskript/ui/editors/tabSplitter.py" line="218"/>
         <source>Split vertically</source>
-        <translation type="unfinished">纵向分割</translation>
+        <translation>纵向分割</translation>
     </message>
 </context>
 <context>
@@ -3721,7 +3721,7 @@
     <message>
         <location filename="../manuskript/ui/welcome.py" line="309"/>
         <source>words each.</source>
-        <translation type="unfinished">字（每项）。</translation>
+        <translation>字（每项）。</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="312"/>
@@ -3741,7 +3741,7 @@
     <message>
         <location filename="../manuskript/ui/welcome.py" line="395"/>
         <source>&lt;b&gt;Total:&lt;/b&gt; {} words (~ {} pages)</source>
-        <translation type="unfinished">&lt;b&gt;总计：&lt;/b&gt; {} 字 (约 {} 页)</translation>
+        <translation>&lt;b&gt;总计：&lt;/b&gt; {} 字 (约 {} 页)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="416"/>
