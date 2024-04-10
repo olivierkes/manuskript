@@ -3054,7 +3054,7 @@
     <message>
         <location filename="../manuskript/models/plotModel.py" line="180"/>
         <source>New step</source>
-        <translation type="unfinished"></translation>
+        <translation>新しい段階</translation>
     </message>
     <message>
         <location filename="../manuskript/models/plotModel.py" line="250"/>
