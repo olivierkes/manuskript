@@ -1093,27 +1093,27 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="523"/>
         <source>Un-applied data!</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Données non appliquées&#x202f;!</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="523"/>
         <source>There are un-applied entries in this tab. Discard them?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Il y a des entrées non appliquées dans cet onglet. Les supprimer&#x202f;?</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1577"/>
         <source>&amp;Navigate</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Naviguer</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1611"/>
         <source>Go &amp;back</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Retour</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1612"/>
         <source>Go &amp;forward</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Reculer</translation>
     </message>
 </context>
 <context>
@@ -2136,22 +2136,22 @@
     <message>
         <location filename="../manuskript/load_save/version_1.py" line="435"/>
         <source>Files not saved</source>
-        <translation type="unfinished"></translation>
+        <translation>Fichier non sauvegardé</translation>
     </message>
     <message>
         <location filename="../manuskript/load_save/version_1.py" line="436"/>
         <source>The following files were not saved and appear to be open in another program</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Les fichiers suivants ne sont pas sauvegardés et sont ouverts dans un autre programme</translation>
     </message>
     <message>
         <location filename="../manuskript/load_save/version_1.py" line="928"/>
         <source>Files not loaded</source>
-        <translation type="unfinished"></translation>
+        <translation>Fichiers non chargés</translation>
     </message>
     <message>
         <location filename="../manuskript/load_save/version_1.py" line="929"/>
         <source>The following files were not loaded and appear to be open in another program</source>
-        <translation type="unfinished"></translation>
+        <translation>Les fichiers suivants n&apos;ont pas été chargés et semblent ouverts dans un autre programme</translation>
     </message>
 </context>
 <context>
@@ -2393,7 +2393,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="542"/>
         <source>Replace ... with …</source>
-        <translation type="unfinished"></translation>
+        <translation>Remplacer... par …</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="543"/>
