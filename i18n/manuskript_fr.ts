@@ -107,12 +107,12 @@
     <message>
         <location filename="../manuskript/ui/listDialog_ui.py" line="43"/>
         <source>Title</source>
-        <translation type="unfinished">Titre</translation>
+        <translation>Titre</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/listDialog_ui.py" line="44"/>
         <source>Text</source>
-        <translation type="unfinished">Texte</translation>
+        <translation>Texte</translation>
     </message>
 </context>
 <context>
@@ -594,7 +594,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1578"/>
         <source>Cheat Sheet</source>
-        <translation type="unfinished">&amp;Feuille de triche</translation>
+        <translation>&amp;Feuille Aide-mémoire</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1580"/>
@@ -1063,7 +1063,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="387"/>
         <source>Value</source>
-        <translation type="unfinished">Valeur</translation>
+        <translation>Valeur</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="395"/>
@@ -1093,12 +1093,12 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="523"/>
         <source>Un-applied data!</source>
-        <translation type="unfinished">Données non appliquées&#x202f;!</translation>
+        <translation>Donnée non appliquée&#x202f;!</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="523"/>
         <source>There are un-applied entries in this tab. Discard them?</source>
-        <translation type="unfinished">Il y a des entrées non appliquées dans cet onglet. Les supprimer&#x202f;?</translation>
+        <translation>Des informations n&apos;ont pas été appliquées dans cet onglet. Les perdre&#x202f;?</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1577"/>
@@ -2398,7 +2398,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="543"/>
         <source>Replace --- with —</source>
-        <translation type="unfinished"></translation>
+        <translation>Remplacer --- par —</translation>
     </message>
 </context>
 <context>
@@ -3262,7 +3262,7 @@
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="31"/>
         <source>Case sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>Sensible à la casse</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="32"/>
