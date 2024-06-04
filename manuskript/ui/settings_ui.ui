@@ -562,7 +562,7 @@
              </font>
             </property>
             <property name="text">
-             <string>Smart remove allows you to keep only a certain number of revisions. It is strongly recommended to use it, lest you file will becomes full of thousands of insignificant changes.</string>
+             <string>Smart remove allows you to keep only a certain number of revisions. It is strongly recommended to use it, lest your files would be bloated with thousands of insignificant changes.</string>
             </property>
             <property name="wordWrap">
              <bool>true</bool>

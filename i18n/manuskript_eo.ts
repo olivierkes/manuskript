@@ -1243,7 +1243,7 @@
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1805"/>
-        <source>Smart remove allows you to keep only a certain number of revisions. It is strongly recommended to use it, lest you file will becomes full of thousands of insignificant changes.</source>
+        <source>Smart remove allows you to keep only a certain number of revisions. It is strongly recommended to use it, lest your files would be bloated with thousands of insignificant changes.</source>
         <translation>Saĝa forigado permesas konservi nur kelke da revizioj. Estas rekomendegite uzi ĝin, por ke vi ne konservadu milojn da sensignifaj ŝanĝoj.</translation>
     </message>
     <message>

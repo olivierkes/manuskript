@@ -1263,7 +1263,7 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1805"/>
-        <source>Smart remove allows you to keep only a certain number of revisions. It is strongly recommended to use it, lest you file will becomes full of thousands of insignificant changes.</source>
+        <source>Smart remove allows you to keep only a certain number of revisions. It is strongly recommended to use it, lest your files would be bloated with thousands of insignificant changes.</source>
         <translation>Inteligentne czyszczenie pozwala na zachowanie pewnej liczby korekt. Zdecydowanie zaleca się jego użycie, żeby pliki nie były pełne tysiąca nieistotnych zmian.</translation>
     </message>
     <message>
