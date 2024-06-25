@@ -6,52 +6,52 @@
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.py" line="162"/>
         <source>Manage Exporters</source>
-        <translation type="unfinished"></translation>
+        <translation>管理匯出器</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.py" line="166"/>
         <source>Manuskript</source>
-        <translation type="unfinished"></translation>
+        <translation>Manuskript</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.py" line="168"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>描述</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.py" line="169"/>
         <source>Offers export to</source>
-        <translation type="unfinished"></translation>
+        <translation>提供匯出至</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.py" line="170"/>
         <source>Status</source>
-        <translation type="unfinished"></translation>
+        <translation>狀態</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.py" line="171"/>
         <source>Status:</source>
-        <translation type="unfinished"></translation>
+        <translation>狀態：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.py" line="172"/>
         <source>Version:</source>
-        <translation type="unfinished"></translation>
+        <translation>版本：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.py" line="173"/>
         <source>Path:</source>
-        <translation type="unfinished"></translation>
+        <translation>路徑：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.py" line="174"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation>…</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.py" line="175"/>
         <source>{HelpText}</source>
-        <translation type="unfinished"></translation>
+        <translation>{HelpText}</translation>
     </message>
 </context>
 <context>
@@ -59,47 +59,47 @@
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="103"/>
         <source>Frequency Analyzer</source>
-        <translation type="unfinished"></translation>
+        <translation>頻率分析器</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="108"/>
         <source>Word frequency</source>
-        <translation type="unfinished"></translation>
+        <translation>字詞頻率</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="104"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>設定</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="105"/>
         <source>Minimum size:</source>
-        <translation type="unfinished"></translation>
+        <translation>最小大小：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="106"/>
         <source>Exclude words (comma separated):</source>
-        <translation type="unfinished"></translation>
+        <translation>排除字詞（以逗號分隔）：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="111"/>
         <source>Analyze</source>
-        <translation type="unfinished"></translation>
+        <translation>分析</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="112"/>
         <source>Phrase frequency</source>
-        <translation type="unfinished"></translation>
+        <translation>片語頻率</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="109"/>
         <source>Number of words: from</source>
-        <translation type="unfinished"></translation>
+        <translation>字數：從</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="110"/>
         <source>to</source>
-        <translation type="unfinished"></translation>
+        <translation>至</translation>
     </message>
 </context>
 <context>
@@ -107,12 +107,12 @@
     <message>
         <location filename="../manuskript/ui/listDialog_ui.py" line="43"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>標題</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/listDialog_ui.py" line="44"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation>文字</translation>
     </message>
 </context>
 <context>
@@ -120,12 +120,12 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="619"/>
         <source>The image path or URL is incomplete or malformed.</source>
-        <translation type="unfinished"></translation>
+        <translation>圖片路徑或網址不完整或異常。</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="631"/>
         <source>The protocol &quot;{}&quot; is not supported.</source>
-        <translation type="unfinished"></translation>
+        <translation>不支援協定「{}」。</translation>
     </message>
 </context>
 <context>
@@ -133,7 +133,7 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditCompleter.py" line="73"/>
         <source>Insert reference</source>
-        <translation type="unfinished"></translation>
+        <translation>插入參考</translation>
     </message>
 </context>
 <context>
@@ -141,7 +141,7 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="543"/>
         <source>{} (CTRL+Click to open)</source>
-        <translation type="unfinished"></translation>
+        <translation>{}（CTRL + 點擊以開啟）</translation>
     </message>
 </context>
 <context>
@@ -149,117 +149,117 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1553"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>一般</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1489"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>標題</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1490"/>
         <source>Subtitle</source>
-        <translation type="unfinished"></translation>
+        <translation>副標題</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1491"/>
         <source>Series</source>
-        <translation type="unfinished"></translation>
+        <translation>系列</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1492"/>
         <source>Volume</source>
-        <translation type="unfinished"></translation>
+        <translation>卷</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1493"/>
         <source>Genre</source>
-        <translation type="unfinished"></translation>
+        <translation>類型</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1494"/>
         <source>License</source>
-        <translation type="unfinished"></translation>
+        <translation>許可證</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1495"/>
         <source>Author</source>
-        <translation type="unfinished"></translation>
+        <translation>作者</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1551"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>名稱</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1497"/>
         <source>Email</source>
-        <translation type="unfinished"></translation>
+        <translation>電子郵件</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1543"/>
         <source>Summary</source>
-        <translation type="unfinished"></translation>
+        <translation>概要</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1499"/>
         <source>Situation:</source>
-        <translation type="unfinished"></translation>
+        <translation>情境：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1539"/>
         <source>Summary:</source>
-        <translation type="unfinished"></translation>
+        <translation>概要：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1502"/>
         <source>One sentence</source>
-        <translation type="unfinished"></translation>
+        <translation>一句</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1544"/>
         <source>One paragraph</source>
-        <translation type="unfinished"></translation>
+        <translation>一段</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1545"/>
         <source>One page</source>
-        <translation type="unfinished"></translation>
+        <translation>一頁</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1546"/>
         <source>Full</source>
-        <translation type="unfinished"></translation>
+        <translation>完整</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1507"/>
         <source>One sentence summary</source>
-        <translation type="unfinished"></translation>
+        <translation>一句概要</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1509"/>
         <source>One paragraph summary</source>
-        <translation type="unfinished"></translation>
+        <translation>一段概要</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1510"/>
         <source>Expand each sentence of your one paragraph summary to a paragraph</source>
-        <translation type="unfinished"></translation>
+        <translation>擴展你的一段概要中的每句為一個段落</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1511"/>
         <source>One page summary</source>
-        <translation type="unfinished"></translation>
+        <translation>一頁概要</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1512"/>
         <source>Full summary</source>
-        <translation type="unfinished"></translation>
+        <translation>完整概要</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1500"/>
         <source>What if...?</source>
-        <translation type="unfinished"></translation>
+        <translation>如果…？</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="24"/>
@@ -269,42 +269,42 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1514"/>
         <source>Names</source>
-        <translation type="unfinished"></translation>
+        <translation>名稱</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1548"/>
         <source>Filter</source>
-        <translation type="unfinished"></translation>
+        <translation>過濾器</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1538"/>
         <source>Basic info</source>
-        <translation type="unfinished"></translation>
+        <translation>基本資訊</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1534"/>
         <source>Importance</source>
-        <translation type="unfinished"></translation>
+        <translation>重要性</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1519"/>
         <source>Motivation</source>
-        <translation type="unfinished"></translation>
+        <translation>動機</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1520"/>
         <source>Goal</source>
-        <translation type="unfinished"></translation>
+        <translation>目標</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1521"/>
         <source>Conflict</source>
-        <translation type="unfinished"></translation>
+        <translation>衝突</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1522"/>
         <source>Epiphany</source>
-        <translation type="unfinished"></translation>
+        <translation>頓悟</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1523"/>
@@ -319,12 +319,12 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1527"/>
         <source>Notes</source>
-        <translation type="unfinished"></translation>
+        <translation>筆記</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1529"/>
         <source>Detailed info</source>
-        <translation type="unfinished"></translation>
+        <translation>詳細資訊</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1562"/>
@@ -344,32 +344,32 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1552"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>描述</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1537"/>
         <source>Result</source>
-        <translation type="unfinished"></translation>
+        <translation>結果</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1542"/>
         <source>Resolution steps</source>
-        <translation type="unfinished"></translation>
+        <translation>解決步驟</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="26"/>
         <source>World</source>
-        <translation type="unfinished"></translation>
+        <translation>世界</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1550"/>
         <source>Populates with empty data</source>
-        <translation type="unfinished"></translation>
+        <translation>使用空數據填充</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1556"/>
         <source>More</source>
-        <translation type="unfinished"></translation>
+        <translation>更多</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1554"/>
@@ -379,72 +379,72 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1555"/>
         <source>Source of conflict</source>
-        <translation type="unfinished"></translation>
+        <translation>衝突來源</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="23"/>
         <source>Outline</source>
-        <translation type="unfinished"></translation>
+        <translation>大綱</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1559"/>
         <source>Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>編輯器</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1566"/>
         <source>Debug</source>
-        <translation type="unfinished"></translation>
+        <translation>偵錯</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="25"/>
         <source>FlatData</source>
-        <translation type="unfinished"></translation>
+        <translation>FlatData</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1561"/>
         <source>Persos</source>
-        <translation type="unfinished"></translation>
+        <translation>Persos</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1565"/>
         <source>Labels</source>
-        <translation type="unfinished"></translation>
+        <translation>標籤</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1567"/>
         <source>&amp;File</source>
-        <translation type="unfinished"></translation>
+        <translation>檔案 (&amp;F)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1568"/>
         <source>&amp;Recent</source>
-        <translation type="unfinished"></translation>
+        <translation>最近 (&amp;R)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1569"/>
         <source>&amp;Help</source>
-        <translation type="unfinished"></translation>
+        <translation>幫助 (&amp;H)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1570"/>
         <source>&amp;Tools</source>
-        <translation type="unfinished"></translation>
+        <translation>工具 (&amp;T)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1571"/>
         <source>&amp;Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>編輯 (&amp;E)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1574"/>
         <source>&amp;View</source>
-        <translation type="unfinished"></translation>
+        <translation>檢視 (&amp;V)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1575"/>
         <source>&amp;Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>模式 (&amp;M)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1578"/>
@@ -454,162 +454,162 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1580"/>
         <source>&amp;Navigation</source>
-        <translation type="unfinished"></translation>
+        <translation>導航 (&amp;N)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1581"/>
         <source>&amp;Open</source>
-        <translation type="unfinished"></translation>
+        <translation>開啟 (&amp;O)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1582"/>
         <source>&amp;Save</source>
-        <translation type="unfinished"></translation>
+        <translation>儲存 (&amp;S)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1583"/>
         <source>Sa&amp;ve as...</source>
-        <translation type="unfinished"></translation>
+        <translation>儲存為… (&amp;V)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1584"/>
         <source>&amp;Quit</source>
-        <translation type="unfinished"></translation>
+        <translation>退出 (&amp;Q)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1585"/>
         <source>&amp;Show help texts</source>
-        <translation type="unfinished"></translation>
+        <translation>顯示幫助文字 (&amp;S)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1586"/>
         <source>&amp;Spellcheck</source>
-        <translation type="unfinished"></translation>
+        <translation>拼寫檢查 (&amp;S)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1587"/>
         <source>&amp;Labels...</source>
-        <translation type="unfinished"></translation>
+        <translation>標籤… (&amp;L)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1588"/>
         <source>&amp;Status...</source>
-        <translation type="unfinished"></translation>
+        <translation>狀態… (&amp;S)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1589"/>
         <source>Tree</source>
-        <translation type="unfinished"></translation>
+        <translation>樹</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1590"/>
         <source>&amp;Simple</source>
-        <translation type="unfinished"></translation>
+        <translation>簡單 (&amp;S)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1591"/>
         <source>&amp;Fiction</source>
-        <translation type="unfinished"></translation>
+        <translation>虛構作品 (&amp;F)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1592"/>
         <source>Index cards</source>
-        <translation type="unfinished"></translation>
+        <translation>索引卡</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1594"/>
         <source>S&amp;ettings</source>
-        <translation type="unfinished"></translation>
+        <translation>設定 (&amp;E)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1595"/>
         <source>&amp;Close project</source>
-        <translation type="unfinished"></translation>
+        <translation>關閉專案 (&amp;C)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1596"/>
         <source>Co&amp;mpile</source>
-        <translation type="unfinished"></translation>
+        <translation>編譯 (&amp;M)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1597"/>
         <source>&amp;Frequency Analyzer</source>
-        <translation type="unfinished"></translation>
+        <translation>頻率分析器 (&amp;F)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1488"/>
         <source>Book information</source>
-        <translation type="unfinished"></translation>
+        <translation>書本資訊</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1598"/>
         <source>&amp;About</source>
-        <translation type="unfinished"></translation>
+        <translation>關於 (&amp;A)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1599"/>
         <source>About Manuskript</source>
-        <translation type="unfinished"></translation>
+        <translation>關於 Manuskript</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1080"/>
         <source>Manuskript</source>
-        <translation type="unfinished"></translation>
+        <translation>Manuskript</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1212"/>
         <source>Project {} saved.</source>
-        <translation type="unfinished"></translation>
+        <translation>專案 {} 已儲存。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1216"/>
         <source>WARNING: Project {} not saved.</source>
-        <translation type="unfinished"></translation>
+        <translation>警告：專案 {} 未儲存。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1236"/>
         <source>Project {} loaded.</source>
-        <translation type="unfinished"></translation>
+        <translation>專案 {} 已載入。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1242"/>
         <source>Project {} loaded with some errors.</source>
-        <translation type="unfinished"></translation>
+        <translation>專案 {} 載入時出現一些錯誤。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1605"/>
         <source> (~{} pages)</source>
-        <translation type="unfinished"></translation>
+        <translation> （~{} 頁）</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1608"/>
         <source>Words: {}{}</source>
-        <translation type="unfinished"></translation>
+        <translation>字數：{}{}</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1616"/>
         <source>Book summary</source>
-        <translation type="unfinished"></translation>
+        <translation>書本概要</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1617"/>
         <source>Project tree</source>
-        <translation type="unfinished"></translation>
+        <translation>專案樹</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1618"/>
         <source>Metadata</source>
-        <translation type="unfinished"></translation>
+        <translation>元資料</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1619"/>
         <source>Story line</source>
-        <translation type="unfinished"></translation>
+        <translation>故事線</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1684"/>
         <source>Enter information about your book, and yourself.</source>
-        <translation type="unfinished"></translation>
+        <translation>輸入有關你的書本和你自己的資訊。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1687"/>
@@ -646,7 +646,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1709"/>
         <source>Write.</source>
-        <translation type="unfinished"></translation>
+        <translation>寫。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1712"/>
@@ -656,12 +656,12 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1726"/>
         <source>Dictionary</source>
-        <translation type="unfinished"></translation>
+        <translation>辭典</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1874"/>
         <source>Nothing</source>
-        <translation type="unfinished"></translation>
+        <translation>無</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1875"/>
@@ -671,57 +671,57 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1876"/>
         <source>Label</source>
-        <translation type="unfinished"></translation>
+        <translation>標籤</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1877"/>
         <source>Progress</source>
-        <translation type="unfinished"></translation>
+        <translation>進度</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1878"/>
         <source>Compile</source>
-        <translation type="unfinished"></translation>
+        <translation>編譯</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1901"/>
         <source>Icon color</source>
-        <translation type="unfinished"></translation>
+        <translation>圖示顏色</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1902"/>
         <source>Text color</source>
-        <translation type="unfinished"></translation>
+        <translation>文字顏色</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1903"/>
         <source>Background color</source>
-        <translation type="unfinished"></translation>
+        <translation>背景顏色</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1894"/>
         <source>Icon</source>
-        <translation type="unfinished"></translation>
+        <translation>圖示</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1895"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation>文字</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1896"/>
         <source>Background</source>
-        <translation type="unfinished"></translation>
+        <translation>背景</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1897"/>
         <source>Border</source>
-        <translation type="unfinished"></translation>
+        <translation>邊界</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1898"/>
         <source>Corner</source>
-        <translation type="unfinished"></translation>
+        <translation>角落</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1540"/>
@@ -731,77 +731,77 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1600"/>
         <source>&amp;Import…</source>
-        <translation type="unfinished"></translation>
+        <translation>匯入… (&amp;I)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1601"/>
         <source>&amp;Copy</source>
-        <translation type="unfinished"></translation>
+        <translation>複製 (&amp;C)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1602"/>
         <source>C&amp;ut</source>
-        <translation type="unfinished"></translation>
+        <translation>剪下 (&amp;U)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1603"/>
         <source>&amp;Paste</source>
-        <translation type="unfinished"></translation>
+        <translation>貼上 (&amp;P)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1604"/>
         <source>&amp;Split…</source>
-        <translation type="unfinished"></translation>
+        <translation>分割… (&amp;S)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1605"/>
         <source>Sp&amp;lit at cursor</source>
-        <translation type="unfinished"></translation>
+        <translation>於游標處分割 (&amp;L)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1609"/>
         <source>&amp;Move Up</source>
-        <translation type="unfinished"></translation>
+        <translation>向上移動 (&amp;M)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1610"/>
         <source>M&amp;ove Down</source>
-        <translation type="unfinished"></translation>
+        <translation>向下移動 (&amp;O)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1607"/>
         <source>Dupl&amp;icate</source>
-        <translation type="unfinished"></translation>
+        <translation>重複 (&amp;I)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1608"/>
         <source>&amp;Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>刪除 (&amp;D)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1613"/>
         <source>&amp;Rename</source>
-        <translation type="unfinished"></translation>
+        <translation>重新命名 (&amp;R)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1576"/>
         <source>Organi&amp;ze</source>
-        <translation type="unfinished"></translation>
+        <translation>管理 (&amp;Z)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1606"/>
         <source>M&amp;erge</source>
-        <translation type="unfinished"></translation>
+        <translation>合併 (&amp;E)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1572"/>
         <source>&amp;Format</source>
-        <translation type="unfinished"></translation>
+        <translation>格式 (&amp;F)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1573"/>
         <source>&amp;Header</source>
-        <translation type="unfinished"></translation>
+        <translation>標題 (&amp;H)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1614"/>
@@ -846,32 +846,32 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1622"/>
         <source>&amp;Bold</source>
-        <translation type="unfinished"></translation>
+        <translation>粗體 (&amp;B)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1623"/>
         <source>&amp;Italic</source>
-        <translation type="unfinished"></translation>
+        <translation>斜體 (&amp;I)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1624"/>
         <source>&amp;Strike</source>
-        <translation type="unfinished"></translation>
+        <translation>刪除線 (&amp;S)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1625"/>
         <source>&amp;Verbatim</source>
-        <translation type="unfinished"></translation>
+        <translation>逐字 (&amp;V)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1626"/>
         <source>Su&amp;perscript</source>
-        <translation type="unfinished"></translation>
+        <translation>上標 (&amp;P)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1627"/>
         <source>Subsc&amp;ript</source>
-        <translation type="unfinished"></translation>
+        <translation>下標 (&amp;R)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1628"/>
@@ -901,7 +901,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1633"/>
         <source>B&amp;lockquote</source>
-        <translation type="unfinished"></translation>
+        <translation>引用塊 (&amp;L)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1541"/>
@@ -1127,37 +1127,37 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1766"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>設定</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1770"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>一般</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1800"/>
         <source>Revisions</source>
-        <translation type="unfinished"></translation>
+        <translation>修訂</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1774"/>
         <source>Views</source>
-        <translation type="unfinished"></translation>
+        <translation>檢視</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1962"/>
         <source>Labels</source>
-        <translation type="unfinished"></translation>
+        <translation>標籤</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1963"/>
         <source>Status</source>
-        <translation type="unfinished"></translation>
+        <translation>狀態</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1964"/>
         <source>Fullscreen</source>
-        <translation type="unfinished"></translation>
+        <translation>全螢幕</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1782"/>
@@ -1172,7 +1172,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1790"/>
         <source>Loading</source>
-        <translation type="unfinished"></translation>
+        <translation>正在載入</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1791"/>
@@ -1182,7 +1182,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1792"/>
         <source>Saving</source>
-        <translation type="unfinished"></translation>
+        <translation>正在儲存</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1793"/>
@@ -1192,7 +1192,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1794"/>
         <source>minutes.</source>
-        <translation type="unfinished"></translation>
+        <translation>分鐘。</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1795"/>
@@ -1202,7 +1202,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1796"/>
         <source>seconds.</source>
-        <translation type="unfinished"></translation>
+        <translation>秒。</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1797"/>
@@ -1237,7 +1237,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1804"/>
         <source>Keep:</source>
-        <translation type="unfinished"></translation>
+        <translation>保留：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1805"/>
@@ -1277,12 +1277,12 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1849"/>
         <source>Tree</source>
-        <translation type="unfinished"></translation>
+        <translation>樹</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1917"/>
         <source>Colors</source>
-        <translation type="unfinished"></translation>
+        <translation>顏色</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1886"/>
@@ -1292,7 +1292,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1911"/>
         <source>Nothing</source>
-        <translation type="unfinished"></translation>
+        <translation>無</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1912"/>
@@ -1302,17 +1302,17 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1913"/>
         <source>Label</source>
-        <translation type="unfinished"></translation>
+        <translation>標籤</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1914"/>
         <source>Progress</source>
-        <translation type="unfinished"></translation>
+        <translation>進度</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1915"/>
         <source>Compile</source>
-        <translation type="unfinished"></translation>
+        <translation>編譯</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1892"/>
@@ -1327,7 +1327,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1836"/>
         <source>Folders</source>
-        <translation type="unfinished"></translation>
+        <translation>資料夾</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1837"/>
@@ -1342,17 +1342,17 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1842"/>
         <source>&amp;Nothing</source>
-        <translation type="unfinished"></translation>
+        <translation>無 (&amp;N)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1843"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation>文字</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1878"/>
         <source>Outline</source>
-        <translation type="unfinished"></translation>
+        <translation>大綱</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1869"/>
@@ -1362,7 +1362,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1870"/>
         <source>Goal</source>
-        <translation type="unfinished"></translation>
+        <translation>目標</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1871"/>
@@ -1372,12 +1372,12 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1872"/>
         <source>Percentage</source>
-        <translation type="unfinished"></translation>
+        <translation>百分比</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1877"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>標題</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1916"/>
@@ -1402,17 +1402,17 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1879"/>
         <source>Background</source>
-        <translation type="unfinished"></translation>
+        <translation>背景</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2000"/>
         <source>Color:</source>
-        <translation type="unfinished"></translation>
+        <translation>顏色：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1976"/>
         <source>Image:</source>
-        <translation type="unfinished"></translation>
+        <translation>圖片：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1961"/>
@@ -1422,32 +1422,32 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1922"/>
         <source>Font</source>
-        <translation type="unfinished"></translation>
+        <translation>字型</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1923"/>
         <source>Family:</source>
-        <translation type="unfinished"></translation>
+        <translation>家庭：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2002"/>
         <source>Size:</source>
-        <translation type="unfinished"></translation>
+        <translation>大小：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2003"/>
         <source>Misspelled:</source>
-        <translation type="unfinished"></translation>
+        <translation>拼寫錯誤：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1918"/>
         <source>Background:</source>
-        <translation type="unfinished"></translation>
+        <translation>背景：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1933"/>
         <source>Paragraphs</source>
-        <translation type="unfinished"></translation>
+        <translation>段落</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2004"/>
@@ -1457,7 +1457,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2005"/>
         <source>Single</source>
-        <translation type="unfinished"></translation>
+        <translation>單一</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2006"/>
@@ -1477,7 +1477,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2009"/>
         <source>%</source>
-        <translation type="unfinished"></translation>
+        <translation>%</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2010"/>
@@ -1487,7 +1487,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2014"/>
         <source> px</source>
-        <translation type="unfinished"></translation>
+        <translation> 像素</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2015"/>
@@ -1497,22 +1497,22 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2012"/>
         <source>Spacing:</source>
-        <translation type="unfinished"></translation>
+        <translation>間距：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1965"/>
         <source>New</source>
-        <translation type="unfinished"></translation>
+        <translation>新</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1966"/>
         <source>Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>編輯</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1967"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>刪除</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1968"/>
@@ -1522,12 +1522,12 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1969"/>
         <source>Apply</source>
-        <translation type="unfinished"></translation>
+        <translation>套用</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1970"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>取消</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1971"/>
@@ -1552,7 +1552,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1977"/>
         <source>Type:</source>
-        <translation type="unfinished"></translation>
+        <translation>類型：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1978"/>
@@ -1562,57 +1562,57 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1979"/>
         <source>Tiled</source>
-        <translation type="unfinished"></translation>
+        <translation>平鋪</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1980"/>
         <source>Centered</source>
-        <translation type="unfinished"></translation>
+        <translation>居中</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1991"/>
         <source>Stretched</source>
-        <translation type="unfinished"></translation>
+        <translation>伸展</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1982"/>
         <source>Scaled</source>
-        <translation type="unfinished"></translation>
+        <translation>縮放</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1983"/>
         <source>Zoomed</source>
-        <translation type="unfinished"></translation>
+        <translation>縮放</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1985"/>
         <source>Opacity:</source>
-        <translation type="unfinished"></translation>
+        <translation>不透明度：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1987"/>
         <source>Position:</source>
-        <translation type="unfinished"></translation>
+        <translation>位置：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2016"/>
         <source>Left</source>
-        <translation type="unfinished"></translation>
+        <translation>左</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2017"/>
         <source>Center</source>
-        <translation type="unfinished"></translation>
+        <translation>中心</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2018"/>
         <source>Right</source>
-        <translation type="unfinished"></translation>
+        <translation>右</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1992"/>
         <source>Width:</source>
-        <translation type="unfinished"></translation>
+        <translation>寬度：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1995"/>
@@ -1622,27 +1622,27 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1996"/>
         <source>Margins:</source>
-        <translation type="unfinished"></translation>
+        <translation>邊界：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1998"/>
         <source>Padding:</source>
-        <translation type="unfinished"></translation>
+        <translation>內距：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2001"/>
         <source>Font:</source>
-        <translation type="unfinished"></translation>
+        <translation>字型：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1882"/>
         <source>Style</source>
-        <translation type="unfinished"></translation>
+        <translation>樣式</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1951"/>
         <source>Cursor</source>
-        <translation type="unfinished"></translation>
+        <translation>游標</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1952"/>
@@ -1652,17 +1652,17 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1934"/>
         <source>Alignment:</source>
-        <translation type="unfinished"></translation>
+        <translation>對齊：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2019"/>
         <source>Justify</source>
-        <translation type="unfinished"></translation>
+        <translation>左右對齊</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2020"/>
         <source>Alignment</source>
-        <translation type="unfinished"></translation>
+        <translation>對齊</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1832"/>
@@ -1900,7 +1900,7 @@
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="215"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>標題</translation>
     </message>
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="217"/>
@@ -1930,7 +1930,7 @@
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="227"/>
         <source>Goal</source>
-        <translation type="unfinished"></translation>
+        <translation>目標</translation>
     </message>
 </context>
 <context>
@@ -2184,7 +2184,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/exporter_ui.py" line="71"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>設定</translation>
     </message>
 </context>
 <context>
@@ -2220,12 +2220,12 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="517"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>標題</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="519"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation>文字</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="520"/>
@@ -2489,7 +2489,7 @@
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="156"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>標題</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="157"/>
@@ -2532,7 +2532,7 @@
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.py" line="67"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>一般</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.py" line="62"/>
@@ -2598,7 +2598,7 @@
     <message>
         <location filename="../manuskript/ui/importers/importer_ui.py" line="104"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>設定</translation>
     </message>
 </context>
 <context>
@@ -2687,7 +2687,7 @@
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.py" line="96"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation>文字</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.py" line="97"/>
@@ -2697,7 +2697,7 @@
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.py" line="98"/>
         <source>Outline</source>
-        <translation type="unfinished"></translation>
+        <translation>大綱</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.ui" line="198"/>
@@ -2827,7 +2827,7 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="254"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>一般</translation>
     </message>
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="256"/>
@@ -2863,7 +2863,7 @@
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>一般</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3145,7 +3145,7 @@
     <message>
         <location filename="../manuskript/ui/views/propertiesView_ui.py" line="184"/>
         <source>Goal</source>
-        <translation type="unfinished"></translation>
+        <translation>目標</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/propertiesView_ui.py" line="185"/>
@@ -3729,7 +3729,7 @@
     <message>
         <location filename="../manuskript/ui/welcome.py" line="336"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation>文字</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="339"/>
@@ -3857,17 +3857,17 @@
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Food</source>
-        <translation type="unfinished"></translation>
+        <translation>食物</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Languages</source>
-        <translation type="unfinished"></translation>
+        <translation>語言</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Education</source>
-        <translation type="unfinished"></translation>
+        <translation>教育</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
@@ -3877,17 +3877,17 @@
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Science</source>
-        <translation type="unfinished"></translation>
+        <translation>科學</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Calendar</source>
-        <translation type="unfinished"></translation>
+        <translation>日曆</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Bodily language</source>
-        <translation type="unfinished"></translation>
+        <translation>肢體語言</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
@@ -3942,42 +3942,42 @@
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Demography</source>
-        <translation type="unfinished"></translation>
+        <translation>人口統計</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Transportation</source>
-        <translation type="unfinished"></translation>
+        <translation>運輸</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Medicine</source>
-        <translation type="unfinished"></translation>
+        <translation>藥物</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="285"/>
         <source>Magic system</source>
-        <translation type="unfinished"></translation>
+        <translation>魔術系統</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="285"/>
         <source>Rules</source>
-        <translation type="unfinished"></translation>
+        <translation>規則</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="285"/>
         <source>Organization</source>
-        <translation type="unfinished"></translation>
+        <translation>組織</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="285"/>
         <source>Magical objects</source>
-        <translation type="unfinished"></translation>
+        <translation>神奇的物件</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="285"/>
         <source>Magical places</source>
-        <translation type="unfinished"></translation>
+        <translation>神奇的地方</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="285"/>
@@ -3987,17 +3987,17 @@
     <message>
         <location filename="../manuskript/models/worldModel.py" line="292"/>
         <source>Important places</source>
-        <translation type="unfinished"></translation>
+        <translation>重要的地方</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="293"/>
         <source>Important objects</source>
-        <translation type="unfinished"></translation>
+        <translation>重要的物件</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="251"/>
         <source>Natural resources</source>
-        <translation type="unfinished"></translation>
+        <translation>自然資源</translation>
     </message>
 </context>
 </TS>
