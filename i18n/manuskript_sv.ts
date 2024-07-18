@@ -125,7 +125,7 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="631"/>
         <source>The protocol &quot;{}&quot; is not supported.</source>
-        <translation type="unfinished"></translation>
+        <translation>Protokollet &quot;{}&quot; stöds inte.</translation>
     </message>
 </context>
 <context>
@@ -615,8 +615,8 @@
         <location filename="../manuskript/mainWindow.py" line="1687"/>
         <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous
                      evil wizard wasn&apos;t able to kill a baby?&apos; (Harry Potter)</source>
-        <translation>Den grundläggande situationen i form av en &quot;Tänk om...?&quot;-mening. Exempel: 'Tänk om världens farligaste
-                     onda trollkarl misslyckades med att döda en baby?' (Harry Potter)</translation>
+        <translation>Den grundläggande situationen i form av en &quot;Tänk om...?&quot;-mening. Exempel: &apos;Tänk om världens farligaste
+                     onda trollkarl misslyckades med att döda en baby?&apos; (Harry Potter)</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1692"/>
@@ -2317,7 +2317,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>Ersätt enkla citattecken (') med:</translation>
+        <translation>Ersätt enkla citattecken (&apos;) med:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>
@@ -3404,7 +3404,7 @@
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="47"/>
         <source>Split &apos;{}&apos;</source>
-        <translation>Dela '{}'</translation>
+        <translation>Dela &apos;{}&apos;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="51"/>
