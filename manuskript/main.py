@@ -201,8 +201,8 @@ def launch(arguments, app, MW = None):
     # Support for IPython Jupyter QT Console as a debugging aid.
     # Last argument must be --console to enable it
     # Code reference :
-    # https://github.com/ipython/ipykernel/blob/master/examples/embedding/ipkernel_qtapp.py
-    # https://github.com/ipython/ipykernel/blob/master/examples/embedding/internal_ipkernel.py
+    # https://github.com/ipython/ipykernel/blob/main/examples/embedding/ipkernel_qtapp.py
+    # https://github.com/ipython/ipykernel/blob/main/examples/embedding/internal_ipkernel.py
     if arguments.console:
         try:
             try:
