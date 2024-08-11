@@ -205,7 +205,10 @@ def launch(arguments, app, MW = None):
     # https://github.com/ipython/ipykernel/blob/master/examples/embedding/internal_ipkernel.py
     if arguments.console:
         try:
-            from IPython.lib.kernel import connect_qtconsole
+            try:
+                from IPython.lib.kernel import connect_qtconsole
+            except ImportError:
+                from ipykernel import connect_qtconsole
             from ipykernel.kernelapp import IPKernelApp
             # Only to ensure matplotlib QT mainloop integration is available
             import matplotlib
