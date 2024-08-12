@@ -220,7 +220,7 @@ def launch(arguments, app, MW = None):
             kernel.initialize(['python', '--matplotlib=qt'])
 
             # Create the console in a new process and connect
-            console = connect_qtconsole(kernel.abs_connection_file, profile=kernel.profile)
+            console = connect_qtconsole(kernel.abs_connection_file)
 
             # Export MW and app variable to the console's namespace
             kernel.shell.user_ns['MW'] = MW
