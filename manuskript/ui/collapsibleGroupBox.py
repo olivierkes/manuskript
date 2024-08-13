@@ -51,12 +51,12 @@ class collapsibleGroupBox(QGroupBox):
         groupBox = opt
 
         # // Draw frame
-        textRect = style.subControlRect(style.CC_GroupBox, opt, style.SC_GroupBoxLabel)
-        checkBoxRect = style.subControlRect(style.CC_GroupBox, opt, style.SC_GroupBoxCheckBox)
+        textRect = style.subControlRect(style.CC_GroupBox, opt, style.SC_GroupBoxLabel, None)
+        checkBoxRect = style.subControlRect(style.CC_GroupBox, opt, style.SC_GroupBoxCheckBox, None)
 
         p.save()
-        titleRect = style.subControlRect(style.CC_GroupBox, opt, style.SC_GroupBoxFrame)
-        # r.setBottom(style.subControlRect(style.CC_GroupBox, opt, style.SC_GroupBoxContents).top())
+        titleRect = style.subControlRect(style.CC_GroupBox, opt, style.SC_GroupBoxFrame, None)
+        # r.setBottom(style.subControlRect(style.CC_GroupBox, opt, style.SC_GroupBoxContents).top(), None)
         titleRect.setHeight(textRect.height())
         titleRect.moveTop(textRect.top())
 
@@ -72,7 +72,7 @@ class collapsibleGroupBox(QGroupBox):
             frame.features = groupBox.features
             frame.lineWidth = groupBox.lineWidth
             frame.midLineWidth = groupBox.midLineWidth
-            frame.rect = style.subControlRect(style.CC_GroupBox, opt, style.SC_GroupBoxFrame)
+            frame.rect = style.subControlRect(style.CC_GroupBox, opt, style.SC_GroupBoxFrame, None)
             p.save()
             region = QRegion(groupBox.rect)
             if groupBox.text:
