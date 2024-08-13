@@ -183,7 +183,7 @@ class outlineCharacterDelegate(QStyledItemDelegate):
         if itemIndex.isValid() and self.mdlCharacter.data(itemIndex) not in ["", None]:
             opt = QStyleOptionComboBox()
             opt.rect = option.rect
-            r = qApp.style().subControlRect(QStyle.CC_ComboBox, opt, QStyle.SC_ComboBoxArrow)
+            r = qApp.style().subControlRect(QStyle.CC_ComboBox, opt, QStyle.SC_ComboBoxArrow, None)
             option.rect = r
             qApp.style().drawPrimitive(QStyle.PE_IndicatorArrowDown, option, painter)
 
@@ -295,7 +295,7 @@ class outlineStatusDelegate(QStyledItemDelegate):
         if index.isValid() and index.internalPointer().data(Outline.status) not in ["", None, "0", 0]:
             opt = QStyleOptionComboBox()
             opt.rect = option.rect
-            r = qApp.style().subControlRect(QStyle.CC_ComboBox, opt, QStyle.SC_ComboBoxArrow)
+            r = qApp.style().subControlRect(QStyle.CC_ComboBox, opt, QStyle.SC_ComboBoxArrow, None)
             option.rect = r
             qApp.style().drawPrimitive(QStyle.PE_IndicatorArrowDown, option, painter)
 
@@ -361,6 +361,6 @@ class outlineLabelDelegate(QStyledItemDelegate):
         if index.isValid() and index.internalPointer().data(Outline.label) not in ["", None, "0", 0]:
             opt = QStyleOptionComboBox()
             opt.rect = option.rect
-            r = qApp.style().subControlRect(QStyle.CC_ComboBox, opt, QStyle.SC_ComboBoxArrow)
+            r = qApp.style().subControlRect(QStyle.CC_ComboBox, opt, QStyle.SC_ComboBoxArrow, None)
             option.rect = r
             qApp.style().drawPrimitive(QStyle.PE_IndicatorArrowDown, option, painter)
