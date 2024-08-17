@@ -6,7 +6,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.py" line="162"/>
         <source>Manage Exporters</source>
-        <translation>Kelola Exportir</translation>
+        <translation>Mengatur Pengekporan</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.py" line="166"/>
@@ -529,7 +529,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1596"/>
         <source>Co&amp;mpile</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Menyusun</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1597"/>
@@ -683,7 +683,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1878"/>
         <source>Compile</source>
-        <translation type="unfinished"></translation>
+        <translation>Menyusun</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1901"/>
@@ -788,17 +788,17 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1576"/>
         <source>Organi&amp;ze</source>
-        <translation type="unfinished"></translation>
+        <translation>Organi&amp;sir</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1606"/>
         <source>M&amp;erge</source>
-        <translation type="unfinished"></translation>
+        <translation>Gabung&amp;kan</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1541"/>
         <source>Remove selected plot step(s)</source>
-        <translation>Hapus langkah alur yang dipilih</translation>
+        <translation>Hapus alur cerita yang dipilih</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1572"/>
@@ -853,17 +853,17 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1622"/>
         <source>&amp;Bold</source>
-        <translation type="unfinished"></translation>
+        <translation>Te&amp;bal</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1623"/>
         <source>&amp;Italic</source>
-        <translation type="unfinished"></translation>
+        <translation>M&amp;iring</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1624"/>
         <source>&amp;Strike</source>
-        <translation type="unfinished"></translation>
+        <translation>C&amp;oret</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1625"/>
@@ -888,7 +888,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1629"/>
         <source>Clear &amp;formats</source>
-        <translation type="unfinished"></translation>
+        <translation>Hapus &amp;format</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1630"/>
@@ -913,47 +913,47 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="921"/>
         <source>The file {} does not exist. Has it been moved or deleted?</source>
-        <translation type="unfinished"></translation>
+        <translation>File {} tidak ada. Apakah sudah dipindahkan atau dihapus?</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1740"/>
         <source>Install {}{} to use spellcheck</source>
-        <translation type="unfinished"></translation>
+        <translation>Install {}{} untuk menggunakan pemeriksa ejaan</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1782"/>
         <source>{} has no installed dictionaries</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">{} tidak terpasang dikamus</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1803"/>
         <source>{}{} is not installed</source>
-        <translation type="unfinished"></translation>
+        <translation>{}{} tidak diinstal</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1023"/>
         <source>Save project?</source>
-        <translation type="unfinished"></translation>
+        <translation>Simpan proyek?</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1023"/>
         <source>Save changes to project &quot;{}&quot; before closing?</source>
-        <translation type="unfinished"></translation>
+        <translation>Simpan perubahan ke proyek &quot;{}&quot; sebelum ditutup?</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1023"/>
         <source>Your changes will be lost if you don&apos;t save them.</source>
-        <translation type="unfinished"></translation>
+        <translation>Perubahan akan hilang jika Anda tidak menyimpannya.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="2001"/>
         <source>PyQt / Qt versions 5.11 and 5.12 are known to cause a crash which might result in a loss of data.</source>
-        <translation type="unfinished"></translation>
+        <translation>PyQt / Qt versi 5.11 dan 5.12 diketahui menyebabkan masalah yang dapat mengakibatkan hilangnya data.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="2002"/>
         <source>PyQt {} and Qt {} are in use.</source>
-        <translation type="unfinished"></translation>
+        <translation>PyQt {} dan Qt {} sedang digunakan.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="2008"/>
@@ -973,17 +973,17 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1637"/>
         <source>&amp;Technical Support</source>
-        <translation type="unfinished"></translation>
+        <translation>Dukungan &amp;Teknis</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1638"/>
         <source>How to obtain technical support for Manuskript.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bagaimana mendapatkan dukungan teknis untuk Naskah.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1639"/>
         <source>&amp;Locate log file...</source>
-        <translation type="unfinished"></translation>
+        <translation>Temukan file &amp;log ...</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1640"/>
@@ -993,7 +993,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1641"/>
         <source>Locate the diagnostic log file used for this session.</source>
-        <translation type="unfinished"></translation>
+        <translation>Temukan file log diagnostik yang digunakan untuk sesi ini.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1540"/>
@@ -1013,12 +1013,12 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1549"/>
         <source>The log file &quot;{}&quot; will continue to be written to until Manuskript is closed.</source>
-        <translation type="unfinished"></translation>
+        <translation>File log &quot;{}&quot; akan terus ditulis hingga Manuskrip ditutup.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1549"/>
         <source>It will now be displayed in your file manager, but is of limited use until you close Manuskript.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sekarang akan ditampilkan di pengelola file Anda, namun penggunaannya terbatas sampai Anda menutup Manuskrip.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1565"/>
