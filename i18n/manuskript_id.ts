@@ -21,7 +21,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.py" line="169"/>
         <source>Offers export to</source>
-        <translation>Tawaran ekspor ke</translation>
+        <translation>Saran ekspor ke</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.py" line="170"/>
@@ -41,7 +41,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.py" line="173"/>
         <source>Path:</source>
-        <translation>Jalan:</translation>
+        <translation>Jalur:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.py" line="174"/>
@@ -59,12 +59,12 @@
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="103"/>
         <source>Frequency Analyzer</source>
-        <translation>Penganalisis Frekuensi</translation>
+        <translation>Analisa Kata</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="108"/>
         <source>Word frequency</source>
-        <translation>Frekuensi Kata</translation>
+        <translation>Kata terulang</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="104"/>
@@ -89,7 +89,7 @@
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="112"/>
         <source>Phrase frequency</source>
-        <translation>Frekuensi frasa</translation>
+        <translation>frasa terulang</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="109"/>
@@ -99,7 +99,7 @@
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="110"/>
         <source>to</source>
-        <translation>ke</translation>
+        <translation>sampai</translation>
     </message>
 </context>
 <context>
@@ -120,7 +120,7 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="619"/>
         <source>The image path or URL is incomplete or malformed.</source>
-        <translation>Lokasi gambar atau URL tidak lengkap atau salah.</translation>
+        <translation>Lokasi gambar atau URL tidak lengkap atau salah format.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="631"/>
@@ -429,7 +429,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1570"/>
         <source>&amp;Tools</source>
-        <translation>&amp;Alat</translation>
+        <translation>Ala&amp;t</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1571"/>
@@ -808,47 +808,47 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1573"/>
         <source>&amp;Header</source>
-        <translation>&amp;Header</translation>
+        <translation>&amp;Judul</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1614"/>
         <source>&amp;Level 1 (setext)</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Tingkat 1 (setext)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1615"/>
         <source>Level &amp;2</source>
-        <translation type="unfinished"></translation>
+        <translation>Tingkat &amp;2</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1616"/>
         <source>Level &amp;1 (atx)</source>
-        <translation type="unfinished"></translation>
+        <translation>Tingkat &amp;1 (atx)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1617"/>
         <source>L&amp;evel 2</source>
-        <translation type="unfinished"></translation>
+        <translation>T&amp;ingkat 2</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1618"/>
         <source>Level &amp;3</source>
-        <translation type="unfinished"></translation>
+        <translation>Tingkat &amp;3</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1619"/>
         <source>Level &amp;4</source>
-        <translation type="unfinished"></translation>
+        <translation>Tingkat &amp;4</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1620"/>
         <source>Level &amp;5</source>
-        <translation type="unfinished"></translation>
+        <translation>Tingkat &amp;5</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1621"/>
         <source>Level &amp;6</source>
-        <translation type="unfinished"></translation>
+        <translation>Tingkat &amp;6</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1622"/>
@@ -923,7 +923,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1782"/>
         <source>{} has no installed dictionaries</source>
-        <translation type="unfinished">{} tidak terpasang dikamus</translation>
+        <translation>{} tidak terpasang dikamus</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1803"/>
@@ -1028,12 +1028,12 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1565"/>
         <source>An error was encountered while trying to show the log file below in your file manager.</source>
-        <translation type="unfinished"></translation>
+        <translation>Terjadi kesalahan saat mencoba menampilkan file log di bawah ini di pengelola Anda.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="51"/>
         <source>F3</source>
-        <translation type="unfinished">F3</translation>
+        <translation>F3</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="52"/>
@@ -1048,7 +1048,7 @@
     <message>
         <location filename="../manuskript/ui/search.py" line="57"/>
         <source>Status</source>
-        <translation type="unfinished">Status</translation>
+        <translation>Status</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1634"/>
@@ -1129,42 +1129,42 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1766"/>
         <source>Settings</source>
-        <translation type="unfinished">Pengaturan</translation>
+        <translation>Pengaturan</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1770"/>
         <source>General</source>
-        <translation type="unfinished">Umum</translation>
+        <translation>Umum</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1800"/>
         <source>Revisions</source>
-        <translation type="unfinished"></translation>
+        <translation>Revisi</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1774"/>
         <source>Views</source>
-        <translation type="unfinished"></translation>
+        <translation>Tampilan</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1962"/>
         <source>Labels</source>
-        <translation type="unfinished">Label</translation>
+        <translation>Label</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1963"/>
         <source>Status</source>
-        <translation type="unfinished">Status</translation>
+        <translation>Status</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1964"/>
         <source>Fullscreen</source>
-        <translation type="unfinished"></translation>
+        <translation>Layar penuh</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1782"/>
         <source>General settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Setelan umum</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1783"/>
@@ -1179,32 +1179,32 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1791"/>
         <source>Automatically load last project on startup</source>
-        <translation type="unfinished"></translation>
+        <translation>Memuat proyek terakhir secara otomatis saat startup</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1792"/>
         <source>Saving</source>
-        <translation type="unfinished"></translation>
+        <translation>Menyimpan</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1793"/>
         <source>Automatically save every</source>
-        <translation type="unfinished"></translation>
+        <translation>Simpan secara otomatis setiap</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1794"/>
         <source>minutes.</source>
-        <translation type="unfinished"></translation>
+        <translation>menit.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1795"/>
         <source>If no changes during</source>
-        <translation type="unfinished"></translation>
+        <translation>Jika tidak ada penulisan selama</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1796"/>
         <source>seconds.</source>
-        <translation type="unfinished"></translation>
+        <translation>detik.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1797"/>
@@ -1214,57 +1214,57 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1798"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If you check this option, your project will be saved as one single file. Easier to copy or backup, but does not allow collaborative editing, or versioning.&lt;br/&gt;If this is unchecked, your project will be saved as a folder containing many small files.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Jika Anda mencentang opsi ini, proyek Anda akan disimpan sebagai satu berkas tunggal. Lebih mudah untuk disalin atau dicadangkan, tetapi tidak memungkinkan penyuntingan kolaboratif, atau pembuatan versi.&lt;br/&gt;Jika ini tidak dicentang, proyek Anda akan disimpan sebagai folder yang berisi banyak berkas kecil.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1799"/>
         <source>Save to one single file</source>
-        <translation type="unfinished"></translation>
+        <translation>Simpan ke satu file</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1801"/>
         <source>Revisions are a way to keep track of modifications. For each text item, it stores any changes you make to the main text, allowing you to see and restoring previous versions.</source>
-        <translation type="unfinished"></translation>
+        <translation>Revisi adalah cara untuk melacak perubahan. Untuk setiap item teks, ini menyimpan perubahan apa pun yang Anda buat pada teks utama, memungkinkan Anda melihat dan memulihkan versi sebelumnya.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1802"/>
         <source>Keep revisions</source>
-        <translation type="unfinished"></translation>
+        <translation>Pertahankan revisi</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1803"/>
         <source>S&amp;mart remove</source>
-        <translation type="unfinished"></translation>
+        <translation>Hapus &amp;cerdas</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1804"/>
         <source>Keep:</source>
-        <translation type="unfinished"></translation>
+        <translation>Pertahankan:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1805"/>
         <source>Smart remove allows you to keep only a certain number of revisions. It is strongly recommended to use it, lest you file will becomes full of thousands of insignificant changes.</source>
-        <translation type="unfinished"></translation>
+        <translation>Hapus cerdas memungkinkan Anda untuk menyimpan hanya sejumlah revisi tertentu. Sangat disarankan untuk menggunakannya, jangan sampai file Anda menjadi penuh dengan ribuan perubahan yang tidak penting.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1806"/>
         <source>revisions per day for the last month</source>
-        <translation type="unfinished"></translation>
+        <translation>revisi per hari selama bulan terakhir</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1807"/>
         <source>revisions per minute for the last 10 minutes</source>
-        <translation type="unfinished"></translation>
+        <translation>revisi per menit selama 10 menit terakhir</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1808"/>
         <source>revisions per hour for the last day</source>
-        <translation type="unfinished"></translation>
+        <translation>revisi per jam untuk hari terakhir</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1809"/>
         <source>revisions per 10 minutes for the last hour</source>
-        <translation type="unfinished"></translation>
+        <translation>revisi per 10 menit untuk satu jam terakhir</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1810"/>
@@ -1299,17 +1299,17 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1912"/>
         <source>POV</source>
-        <translation type="unfinished">Sudut Pandang</translation>
+        <translation>Sudut Pandang</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1913"/>
         <source>Label</source>
-        <translation type="unfinished">Label</translation>
+        <translation>Label</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1914"/>
         <source>Progress</source>
-        <translation type="unfinished">Kemajuan</translation>
+        <translation>Kemajuan</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1915"/>
@@ -1349,12 +1349,12 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1843"/>
         <source>Text</source>
-        <translation type="unfinished">Teks</translation>
+        <translation>Teks</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1878"/>
         <source>Outline</source>
-        <translation type="unfinished">Garis besar</translation>
+        <translation>Garis besar</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1869"/>
@@ -1364,7 +1364,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1870"/>
         <source>Goal</source>
-        <translation type="unfinished">Tujuan</translation>
+        <translation>Tujuan</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1871"/>
@@ -1379,12 +1379,12 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1877"/>
         <source>Title</source>
-        <translation type="unfinished">Judul</translation>
+        <translation>Judul</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1916"/>
         <source>Index cards</source>
-        <translation type="unfinished">Kartu indeks</translation>
+        <translation>Kartu indeks</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1885"/>
@@ -1404,7 +1404,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1879"/>
         <source>Background</source>
-        <translation type="unfinished">Latar belakang</translation>
+        <translation>Latar belakang</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2000"/>
@@ -1454,7 +1454,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2004"/>
         <source>Line spacing:</source>
-        <translation type="unfinished">Jarak spasi:</translation>
+        <translation>Jarak spasi:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2005"/>
@@ -1744,7 +1744,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1787"/>
         <source>Font size:</source>
-        <translation type="unfinished">Ukuran font:</translation>
+        <translation>Ukuran font:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1784"/>
@@ -1799,7 +1799,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1811"/>
         <source>&lt;p&gt;&lt;b&gt;The Revisions feature has been at the source of many reported issues. In this version of Manuskript it has been turned off by default for new projects in order to provide the best experience.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Why aren&apos;t these issues fixed already? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;We need your help to make Manuskript better!&lt;/a&gt;&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;&lt;b&gt;Fitur Revisi telah menjadi sumber dari banyak masalah yang dilaporkan. Dalam versi Manuskript ini, fitur tersebut telah dinonaktifkan secara default untuk proyek-proyek baru guna memberikan pengalaman terbaik.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Mengapa masalah-masalah ini belum diperbaiki? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;Kami membutuhkan bantuan Anda untuk membuat Naskah menjadi lebih baik!&lt;/a&gt;&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1788"/>
@@ -1876,12 +1876,12 @@
     <message>
         <location filename="../manuskript/ui/about_ui.py" line="54"/>
         <source>About Manuskript</source>
-        <translation type="unfinished">Tentang Manuskript</translation>
+        <translation>Tentang Manuskript</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/about_ui.py" line="55"/>
         <source>Manuskript</source>
-        <translation type="unfinished">Manuskript</translation>
+        <translation>Manuskript</translation>
     </message>
 </context>
 <context>
@@ -1902,22 +1902,22 @@
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="215"/>
         <source>Title</source>
-        <translation type="unfinished">Judul</translation>
+        <translation>Judul</translation>
     </message>
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="217"/>
         <source>POV</source>
-        <translation type="unfinished">Sudut Pandang</translation>
+        <translation>Sudut Pandang</translation>
     </message>
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="219"/>
         <source>Label</source>
-        <translation type="unfinished">Label</translation>
+        <translation>Label</translation>
     </message>
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="221"/>
         <source>Status</source>
-        <translation type="unfinished">Status</translation>
+        <translation>Status</translation>
     </message>
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="223"/>
@@ -1932,7 +1932,7 @@
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="227"/>
         <source>Goal</source>
-        <translation type="unfinished">Tujuan</translation>
+        <translation>Target</translation>
     </message>
 </context>
 <context>
@@ -1973,7 +1973,7 @@
     <message>
         <location filename="../manuskript/models/characterModel.py" line="206"/>
         <source>Name</source>
-        <translation type="unfinished">Nama</translation>
+        <translation>Nama</translation>
     </message>
     <message>
         <location filename="../manuskript/models/characterModel.py" line="215"/>
@@ -1988,7 +1988,7 @@
     <message>
         <location filename="../manuskript/models/characterModel.py" line="215"/>
         <source>Description</source>
-        <translation type="unfinished">Deskripsi</translation>
+        <translation>Deskripsi</translation>
     </message>
 </context>
 <context>
@@ -2039,7 +2039,7 @@
     <message>
         <location filename="../manuskript/ui/cheatSheet.py" line="91"/>
         <source>Characters</source>
-        <translation type="unfinished">Karakter</translation>
+        <translation>Karakter</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/cheatSheet.py" line="104"/>
@@ -2049,12 +2049,12 @@
     <message>
         <location filename="../manuskript/ui/cheatSheet.py" line="116"/>
         <source>Plots</source>
-        <translation type="unfinished">Alur</translation>
+        <translation>Alur</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/cheatSheet.py" line="120"/>
         <source>World</source>
-        <translation type="unfinished">Dunia</translation>
+        <translation>Dunia</translation>
     </message>
 </context>
 <context>
@@ -2127,7 +2127,7 @@
     <message>
         <location filename="../manuskript/ui/views/corkDelegate.py" line="100"/>
         <source>Full summary</source>
-        <translation type="unfinished">Ringkasan penuh</translation>
+        <translation>Ringkasan penuh</translation>
     </message>
 </context>
 <context>
@@ -2186,7 +2186,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/exporter_ui.py" line="71"/>
         <source>Settings</source>
-        <translation type="unfinished">Pengaturan</translation>
+        <translation>Pengaturan</translation>
     </message>
 </context>
 <context>
@@ -2222,12 +2222,12 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="517"/>
         <source>Title</source>
-        <translation type="unfinished">Judul</translation>
+        <translation>Judul</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="519"/>
         <source>Text</source>
-        <translation type="unfinished">Teks</translation>
+        <translation>Teks</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="520"/>
@@ -2257,12 +2257,12 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="525"/>
         <source>Labels</source>
-        <translation type="unfinished">Label</translation>
+        <translation>Label</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="526"/>
         <source>Status</source>
-        <translation type="unfinished">Status</translation>
+        <translation>Status</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="540"/>
@@ -2372,7 +2372,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="560"/>
         <source>Font size:</source>
-        <translation type="unfinished">Ukuran font:</translation>
+        <translation>Ukuran font:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings.py" line="320"/>
@@ -2491,7 +2491,7 @@
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="156"/>
         <source>Title</source>
-        <translation type="unfinished">Judul</translation>
+        <translation>Judul</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="157"/>
@@ -2511,7 +2511,7 @@
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="161"/>
         <source>Progress</source>
-        <translation type="unfinished">Kemajuan</translation>
+        <translation>Hasil</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="162"/>
@@ -2534,7 +2534,7 @@
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.py" line="67"/>
         <source>General</source>
-        <translation type="unfinished">Umum</translation>
+        <translation>Umum</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.py" line="62"/>
@@ -2600,7 +2600,7 @@
     <message>
         <location filename="../manuskript/ui/importers/importer_ui.py" line="104"/>
         <source>Settings</source>
-        <translation type="unfinished">Pengaturan</translation>
+        <translation>Pengaturan</translation>
     </message>
 </context>
 <context>
@@ -2689,7 +2689,7 @@
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.py" line="96"/>
         <source>Text</source>
-        <translation type="unfinished">Teks</translation>
+        <translation>Teks</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.py" line="97"/>
@@ -2775,22 +2775,22 @@
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.py" line="97"/>
         <source>One line summary</source>
-        <translation type="unfinished"></translation>
+        <translation>Ringkasan satu baris</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.py" line="98"/>
         <source>Full summary</source>
-        <translation type="unfinished">Ringkasan penuh</translation>
+        <translation>Ringkasan penuh</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.py" line="100"/>
         <source>Notes / References</source>
-        <translation type="unfinished"></translation>
+        <translation>Catatan / Referensi</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.py" line="101"/>
         <source>Revisions</source>
-        <translation type="unfinished"></translation>
+        <translation>Revisi</translation>
     </message>
 </context>
 <context>
@@ -2806,17 +2806,17 @@
     <message>
         <location filename="../manuskript/ui/views/outlineDelegates.py" line="141"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Kosong</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineDelegates.py" line="143"/>
         <source>Main</source>
-        <translation type="unfinished"></translation>
+        <translation>Utama</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineDelegates.py" line="143"/>
         <source>Secondary</source>
-        <translation type="unfinished"></translation>
+        <translation>Menengah</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/outlineDelegates.py" line="143"/>
@@ -2847,12 +2847,12 @@
     <message>
         <location filename="../manuskript/models/persosProxyModel.py" line="16"/>
         <source>Main</source>
-        <translation type="unfinished"></translation>
+        <translation>Utama</translation>
     </message>
     <message>
         <location filename="../manuskript/models/persosProxyModel.py" line="17"/>
         <source>Secondary</source>
-        <translation type="unfinished"></translation>
+        <translation>Menengah</translation>
     </message>
     <message>
         <location filename="../manuskript/models/persosProxyModel.py" line="18"/>
@@ -2910,27 +2910,27 @@
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Exposition</source>
-        <translation type="unfinished"></translation>
+        <translation>Eksposisi</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Rising action</source>
-        <translation type="unfinished"></translation>
+        <translation>Aksi meningkat</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Climax</source>
-        <translation type="unfinished"></translation>
+        <translation>Puncak</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Falling action</source>
-        <translation type="unfinished"></translation>
+        <translation>Aksi menurun</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Three acts</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiga babak</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -2940,42 +2940,42 @@
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>1. Inciting event</source>
-        <translation type="unfinished"></translation>
+        <translation>1. Peristiwa pemicu</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>1. Turning point</source>
-        <translation type="unfinished"></translation>
+        <translation>1. Titik balik</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>2. Choice</source>
-        <translation type="unfinished"></translation>
+        <translation>2. Pilihan</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>2. Reversal</source>
-        <translation type="unfinished"></translation>
+        <translation>2. Perubahan arah</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>2. Disaster</source>
-        <translation type="unfinished"></translation>
+        <translation>2. Tragedi</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>3. Stand up</source>
-        <translation type="unfinished"></translation>
+        <translation>3. Berjuang</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>3. Climax</source>
-        <translation type="unfinished"></translation>
+        <translation>3. Puncak</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>3. Ending</source>
-        <translation type="unfinished"></translation>
+        <translation>3. Berakhir</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
