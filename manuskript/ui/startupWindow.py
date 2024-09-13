@@ -41,6 +41,7 @@ class StartupWindow(AbstractDialog):
         self.addLevelButton = None
         self.addGoalButton = None
 
+        self.backButton = None
         self.openButton = None
         self.recentButton = None
         self.createButton = None
@@ -65,10 +66,10 @@ class StartupWindow(AbstractDialog):
         bindMenuItem(builder, "about_menu_item", self._aboutAction)
 
         self.templatesStore = builder.get_object("templates_store")
-
+        
         for index in range(len(self.templates)):
             tree_iter = self.templatesStore.append()
-
+            
             if tree_iter is None:
                 continue
 
@@ -111,10 +112,12 @@ class StartupWindow(AbstractDialog):
         self.addLevelButton.connect("clicked", self._addLevelClicked)
         self.addGoalButton.connect("clicked", self._addGoalClicked)
 
+        self.backButton = builder.get_object("back_button")
         self.openButton = builder.get_object("open_button")
         self.recentButton = builder.get_object("recent_button")
         self.createButton = builder.get_object("create_button")
 
+        self.backButton.connect("clicked", self._backClicked)
         self.openButton.connect("clicked", self._openClicked)
         self.createButton.connect("clicked", self._createClicked)
 
@@ -124,6 +127,9 @@ class StartupWindow(AbstractDialog):
 
         self.addLevelButton.set_sensitive(self.template is not None)
         self.addGoalButton.set_sensitive((self.template is not None) and (self.template.goal is None))
+
+        self.templatesLeaflet.set_visible_child_name("template_details" if template is not None else "templates_list")
+        self.backButton.set_visible(template is not None)
 
         if self.template is None:
             return
@@ -148,6 +154,7 @@ class StartupWindow(AbstractDialog):
         model, tree_iter = selection.get_selected()
 
         if tree_iter is None:
+            self.loadTemplate(None)
             return
 
         for other in self.templateSelections:
@@ -171,6 +178,10 @@ class StartupWindow(AbstractDialog):
 
         self.template.addGoal()
         self.loadTemplate(self.template)
+    
+    def _backClicked(self, button: Gtk.Button):
+        for selection in self.templateSelections:
+            selection.unselect_all()
 
     def openProject(self):
         path = openFileDialog(self.window, FileFilter("Manuskript project", "msk"))
