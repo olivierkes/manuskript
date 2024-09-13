@@ -56,6 +56,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
             <property name="wide-handle">True</property>
             <child>
               <object class="GtkBox">
+                <property name="width-request">200</property>
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="orientation">vertical</property>
@@ -182,6 +183,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
               <object class="GtkNotebook" id="world_notebook">
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
+                <property name="hexpand">True</property>
                 <child>
                   <object class="GtkScrolledWindow">
                     <property name="visible">True</property>

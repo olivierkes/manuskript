@@ -378,6 +378,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
               <object class="GtkStack" id="view_stack">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
+                <property name="hexpand">True</property>
                 <child>
                   <object class="GtkBox">
                     <property name="visible">True</property>

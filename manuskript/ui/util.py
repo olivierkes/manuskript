@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+import sys
 import gi
 
 gi.require_version('Gdk', '3.0')
@@ -47,7 +48,8 @@ def packViewIntoSlot(slot, view_cls, data=None):
             view = profileTime(view_cls)
         else:
             view = profileTime(view_cls, data)
-    except Exception:
+    except Exception as e:
+        print(str(e), file=sys.stderr)
         return None
 
     if view.widget is None:
