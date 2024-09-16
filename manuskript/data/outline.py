@@ -11,6 +11,7 @@ from manuskript.data.goal import Goal
 from manuskript.data.labels import LabelHost, Label
 from manuskript.data.plots import Plots
 from manuskript.data.status import StatusHost
+from manuskript.data.template import Template, TemplateLevel
 from manuskript.data.unique_id import UniqueIDHost
 from manuskript.io.mmdFile import MmdFile
 from manuskript.util import CounterKind, countText, safeInt, safeFilename
@@ -137,6 +138,8 @@ class OutlineText(OutlineItem):
         self.text = ""
         self.cache = dict()
 
+        self.type = "md"
+
     def textCount(self, counterKind: CounterKind = None) -> int:
         if counterKind is None:
             counterKind = self.goalKind()
@@ -182,6 +185,8 @@ class OutlineFolder(OutlineItem):
         self.folderPath = path
         self.items = list()
 
+        self.type = "folder"
+
     def changePath(self, path: str):
         OutlineItem.changePath(self, os.path.join(path, "folder.txt"))
 
@@ -194,6 +199,40 @@ class OutlineFolder(OutlineItem):
 
             item.changePath(path_)
             index += 1
+    
+    def addFolder(self, name: str):
+        filename = safeFilename("%d-%s" % (len(self.items), name))
+
+        item = OutlineFolder(os.path.join(self.folderPath, filename), self.outline)
+        item.UID = self.outline.host.newID()
+        item.title = name
+
+        self.items.append(item)
+        return item
+    
+    def addText(self, name: str):
+        filename = safeFilename("%d-%s.md" % (len(self.items), name))
+
+        item = OutlineText(os.path.join(self.folderPath, filename), self.outline)
+        item.UID = self.outline.host.newID()
+        item.title = name
+
+        self.items.append(item)
+        return item
+    
+    def initTemplate(self, levels: list, goal: Goal):
+        level = levels[0]
+
+        for i in range(level.size):
+            name = "%s %d" % (level.name, i + 1)
+
+            if len(levels) > 1:
+                item = self.addFolder(name)
+                item.initTemplate(levels[1:], goal)
+                item.goal = Goal(item.goalCount())
+            else:
+                item = self.addText(name)
+                item.goal = goal
 
     def __iter__(self):
         return self.items.__iter__()
@@ -296,6 +335,43 @@ class Outline(AbstractData):
 
             item.changePath(path_)
             index += 1
+    
+    def addFolder(self, name: str):
+        filename = safeFilename("%d-%s" % (len(self.items), name))
+
+        item = OutlineFolder(os.path.join(self.dataPath, filename), self)
+        item.UID = self.host.newID()
+        item.title = name
+
+        self.items.append(item)
+        return item
+    
+    def addText(self, name: str):
+        filename = safeFilename("%d-%s.md" % (len(self.items), name))
+
+        item = OutlineText(os.path.join(self.dataPath, filename), self)
+        item.UID = self.host.newID()
+        item.title = name
+
+        self.items.append(item)
+        return item
+    
+    def initTemplate(self, template: Template):
+        if len(template.levels) == 0:
+            return
+        
+        level = template.levels[0]
+
+        for i in range(level.size):
+            name = "%s %d" % (level.name, i + 1)
+
+            if len(template.levels) > 1:
+                item = self.addFolder(name)
+                item.initTemplate(template.levels[1:], template.goal)
+                item.goal = Goal(item.goalCount())
+            else:
+                item = self.addText(name)
+                item.goal = template.goal
 
     def __iter__(self):
         return self.items.__iter__()

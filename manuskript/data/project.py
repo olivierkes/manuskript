@@ -39,6 +39,9 @@ class Project(AbstractData):
         self.outline = Outline(self.file.directoryPath, self.plots, self.labels, self.statuses)
         self.revisions = Revisions(self.file.directoryPath)
 
+        self.version.value = self.file.getVersion()
+        self.settings.set("saveToZip", self.file.isZipFile())
+
     def __del__(self):
         del self.file
 
