@@ -76,6 +76,16 @@ class plotDelegate(QStyledItemDelegate):
                 self.tr("Atonement"),
                 self.tr("Return"),
             ],
+
+            self.tr("Dan Wells 7-point plot format"): [
+                self.tr("Hook"),
+                self.tr("Plot Turn 1"),
+                self.tr("Pinch 1"),
+                self.tr("Midpoint"),
+                self.tr("Pinch 2"),
+                self.tr("Plot Turn 2"),
+                self.tr("Resolution"),
+            ],
         })
 
         for name in plotsTypes:
