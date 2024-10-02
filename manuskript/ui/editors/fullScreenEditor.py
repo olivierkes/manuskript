@@ -525,7 +525,7 @@ class myScrollBar(QScrollBar):
         # painter.restore()
 
         # slider
-        r = style.subControlRect(style.CC_ScrollBar, opt, style.SC_ScrollBarSlider)
+        r = style.subControlRect(style.CC_ScrollBar, opt, style.SC_ScrollBarSlider, None)
         painter.fillRect(r, self._color)
         painter.end()
 
