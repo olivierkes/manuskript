@@ -3038,6 +3038,41 @@
         <source>Return</source>
         <translation>Regreso</translation>
     </message>
+    <message>
+        <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
+        <source>Hook</source>
+        <translation>Gancho</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
+        <source>Plot Turn 1</source>
+        <translation>Giro 1</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
+        <source>Pinch 1</source>
+        <translation>Problema 1</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
+        <source>Midpoint</source>
+        <translation>Punto central</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
+        <source>Pinch 2</source>
+        <translation>Problema 2</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
+        <source>Plot Turn 2</source>
+        <translation>Giro 2</translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
+        <source>Resolution</source>
+        <translation>Resolución</translation>
+    </message>
 </context>
 <context>
     <name>plotModel</name>

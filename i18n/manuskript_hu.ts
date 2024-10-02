@@ -3037,6 +3037,41 @@
         <source>Return</source>
         <translation>Visszatérés</translation>
     </message>
+    <message>
+        <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
+        <source>Hook</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
+        <source>Plot Turn 1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
+        <source>Pinch 1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
+        <source>Midpoint</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
+        <source>Pinch 2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
+        <source>Plot Turn 2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
+        <source>Resolution</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>plotModel</name>
