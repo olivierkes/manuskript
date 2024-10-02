@@ -1233,7 +1233,7 @@
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1805"/>
-        <source>Smart remove allows you to keep only a certain number of revisions. It is strongly recommended to use it, lest you file will becomes full of thousands of insignificant changes.</source>
+        <source>Smart remove allows you to keep only a certain number of revisions. It is strongly recommended to use it, lest your files would be bloated with thousands of insignificant changes.</source>
         <translation>El borrado inteligente le permite almacenar solo un cierto número de revisiones. Se recomienda encarecidamente que lo use para que su archivo no se llene de miles de cambios insignificantes.</translation>
     </message>
     <message>

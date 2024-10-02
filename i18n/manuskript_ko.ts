@@ -1243,7 +1243,7 @@
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1805"/>
-        <source>Smart remove allows you to keep only a certain number of revisions. It is strongly recommended to use it, lest you file will becomes full of thousands of insignificant changes.</source>
+        <source>Smart remove allows you to keep only a certain number of revisions. It is strongly recommended to use it, lest your files would be bloated with thousands of insignificant changes.</source>
         <translation>스마트 삭제 기능은 일정한 개수의 수정본만 남깁니다. 사소한 변경 사항을 정리하여 파일 용량을 줄이기 위하여 강력히 추천합니다.</translation>
     </message>
     <message>
