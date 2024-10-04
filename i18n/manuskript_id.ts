@@ -552,176 +552,176 @@
         <translation>Tentang Manuskript</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1080"/>
+        <location filename="../manuskript/mainWindow.py" line="1084"/>
         <source>Manuskript</source>
         <translation>Manuskript</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1212"/>
+        <location filename="../manuskript/mainWindow.py" line="1216"/>
         <source>Project {} saved.</source>
         <translation>Pekerjaan {} disimpan.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1216"/>
+        <location filename="../manuskript/mainWindow.py" line="1220"/>
         <source>WARNING: Project {} not saved.</source>
         <translation>PERHATIAN: Pekerjaan {} belum tersimpan.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1236"/>
+        <location filename="../manuskript/mainWindow.py" line="1240"/>
         <source>Project {} loaded.</source>
         <translation>Pekerjaan {} diproses.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1242"/>
+        <location filename="../manuskript/mainWindow.py" line="1246"/>
         <source>Project {} loaded with some errors.</source>
         <translation>Proyek {} dimuat dengan beberapa kesalahan.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1605"/>
+        <location filename="../manuskript/mainWindow.py" line="1613"/>
         <source> (~{} pages)</source>
         <translation> (~{} halaman)</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1608"/>
+        <location filename="../manuskript/mainWindow.py" line="1616"/>
         <source>Words: {}{}</source>
         <translation>Kata: {}{}</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1616"/>
+        <location filename="../manuskript/mainWindow.py" line="1624"/>
         <source>Book summary</source>
         <translation>Ringkasan buku</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1617"/>
+        <location filename="../manuskript/mainWindow.py" line="1625"/>
         <source>Project tree</source>
         <translation>Pohon proyek</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1618"/>
+        <location filename="../manuskript/mainWindow.py" line="1626"/>
         <source>Metadata</source>
         <translation>Metadata</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1619"/>
+        <location filename="../manuskript/mainWindow.py" line="1627"/>
         <source>Story line</source>
         <translation>Jalan cerita</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1684"/>
+        <location filename="../manuskript/mainWindow.py" line="1692"/>
         <source>Enter information about your book, and yourself.</source>
         <translation>Masukan informasi tentang buku anda, dan tentang diri anda.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1687"/>
+        <location filename="../manuskript/mainWindow.py" line="1695"/>
         <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous
                      evil wizard wasn&apos;t able to kill a baby?&apos; (Harry Potter)</source>
-        <translation>Situasi dasar, dalam bentuk pertanyaan &apos;Bagaiaman jika...?&apos;. Cth: &apos;Bagaimana jika 
-                     penyihir jahat paling berbahaya tidak mampu membunuh seorang bayi?&apos; (Harry Potter)</translation>
+        <translation>Situasi dasar, dalam bentuk pertanyaan 'Bagaiaman jika...?'. Cth: 'Bagaimana jika 
+                     penyihir jahat paling berbahaya tidak mampu membunuh seorang bayi?' (Harry Potter)</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1692"/>
+        <location filename="../manuskript/mainWindow.py" line="1700"/>
         <source>Take time to think about a one sentence (~50 words) summary of your book. Then expand it to
                      a paragraph, then to a page, then to a full summary.</source>
         <translation>Ambil waktu untuk memikirkan sebuah kalimat (~50 kata) ringkasan untuk buku anda. Kemudian kembangkan
                      menjadi sebuah paragraf, kemudian menjadi halaman, kemudian menjadi ringkasan penuh.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1697"/>
+        <location filename="../manuskript/mainWindow.py" line="1705"/>
         <source>Create your characters.</source>
         <translation>Buat karakter anda.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1700"/>
+        <location filename="../manuskript/mainWindow.py" line="1708"/>
         <source>Develop plots.</source>
         <translation>Kembangkan alur.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1703"/>
+        <location filename="../manuskript/mainWindow.py" line="1711"/>
         <source>Build worlds.  Create hierarchy of broad categories down to specific details.</source>
         <translation>Bangun dunia.  Buat hirarki dari kategori yang luas menjadi detail spesifik.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1706"/>
+        <location filename="../manuskript/mainWindow.py" line="1714"/>
         <source>Create the outline of your masterpiece.</source>
         <translation>Buat garis besar karya besar anda.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1709"/>
+        <location filename="../manuskript/mainWindow.py" line="1717"/>
         <source>Write.</source>
         <translation>Tulis.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1712"/>
+        <location filename="../manuskript/mainWindow.py" line="1720"/>
         <source>Debug info. Sometimes useful.</source>
         <translation>Info debug. Sesuatu yang berguna.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1726"/>
+        <location filename="../manuskript/mainWindow.py" line="1734"/>
         <source>Dictionary</source>
         <translation>Diksi</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1874"/>
+        <location filename="../manuskript/mainWindow.py" line="1882"/>
         <source>Nothing</source>
         <translation>Tidak ada</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1875"/>
+        <location filename="../manuskript/mainWindow.py" line="1883"/>
         <source>POV</source>
         <translation>Sudut Pandang</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1876"/>
+        <location filename="../manuskript/mainWindow.py" line="1884"/>
         <source>Label</source>
         <translation>Label</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1877"/>
+        <location filename="../manuskript/mainWindow.py" line="1885"/>
         <source>Progress</source>
         <translation>Kemajuan</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1878"/>
+        <location filename="../manuskript/mainWindow.py" line="1886"/>
         <source>Compile</source>
         <translation>Menyusun</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1901"/>
+        <location filename="../manuskript/mainWindow.py" line="1909"/>
         <source>Icon color</source>
         <translation>Warna ikon</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1902"/>
+        <location filename="../manuskript/mainWindow.py" line="1910"/>
         <source>Text color</source>
         <translation>Warna teks</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1903"/>
+        <location filename="../manuskript/mainWindow.py" line="1911"/>
         <source>Background color</source>
         <translation>Warna latar belakang</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1894"/>
+        <location filename="../manuskript/mainWindow.py" line="1902"/>
         <source>Icon</source>
         <translation>Ikon</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1895"/>
+        <location filename="../manuskript/mainWindow.py" line="1903"/>
         <source>Text</source>
         <translation>Teks</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1896"/>
+        <location filename="../manuskript/mainWindow.py" line="1904"/>
         <source>Background</source>
         <translation>Latar belakang</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1897"/>
+        <location filename="../manuskript/mainWindow.py" line="1905"/>
         <source>Border</source>
         <translation>Garis tepi</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1898"/>
+        <location filename="../manuskript/mainWindow.py" line="1906"/>
         <source>Corner</source>
         <translation>Ujung</translation>
     </message>
@@ -911,52 +911,52 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="921"/>
+        <location filename="../manuskript/mainWindow.py" line="925"/>
         <source>The file {} does not exist. Has it been moved or deleted?</source>
         <translation>File {} tidak ada. Apakah sudah dipindahkan atau dihapus?</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1740"/>
+        <location filename="../manuskript/mainWindow.py" line="1748"/>
         <source>Install {}{} to use spellcheck</source>
         <translation>Install {}{} untuk menggunakan pemeriksa ejaan</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1782"/>
+        <location filename="../manuskript/mainWindow.py" line="1790"/>
         <source>{} has no installed dictionaries</source>
         <translation>{} tidak terpasang dikamus</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1803"/>
+        <location filename="../manuskript/mainWindow.py" line="1811"/>
         <source>{}{} is not installed</source>
         <translation>{}{} tidak diinstal</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1023"/>
+        <location filename="../manuskript/mainWindow.py" line="1027"/>
         <source>Save project?</source>
         <translation>Simpan proyek?</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1023"/>
+        <location filename="../manuskript/mainWindow.py" line="1027"/>
         <source>Save changes to project &quot;{}&quot; before closing?</source>
         <translation>Simpan perubahan ke proyek &quot;{}&quot; sebelum ditutup?</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1023"/>
+        <location filename="../manuskript/mainWindow.py" line="1027"/>
         <source>Your changes will be lost if you don&apos;t save them.</source>
         <translation>Perubahan akan hilang jika Anda tidak menyimpannya.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="2001"/>
+        <location filename="../manuskript/mainWindow.py" line="2009"/>
         <source>PyQt / Qt versions 5.11 and 5.12 are known to cause a crash which might result in a loss of data.</source>
         <translation>PyQt / Qt versi 5.11 dan 5.12 diketahui menyebabkan masalah yang dapat mengakibatkan hilangnya data.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="2002"/>
+        <location filename="../manuskript/mainWindow.py" line="2010"/>
         <source>PyQt {} and Qt {} are in use.</source>
         <translation>PyQt {} dan Qt {} sedang digunakan.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="2008"/>
+        <location filename="../manuskript/mainWindow.py" line="2016"/>
         <source>Proceed with import at your own risk</source>
         <translation type="unfinished"></translation>
     </message>
@@ -996,37 +996,37 @@
         <translation>Temukan file log diagnostik yang digunakan untuk sesi ini.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1540"/>
+        <location filename="../manuskript/mainWindow.py" line="1548"/>
         <source>Sorry!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1540"/>
+        <location filename="../manuskript/mainWindow.py" line="1548"/>
         <source>This session is not being logged.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1549"/>
+        <location filename="../manuskript/mainWindow.py" line="1557"/>
         <source>A log file is a Work in Progress!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1549"/>
+        <location filename="../manuskript/mainWindow.py" line="1557"/>
         <source>The log file &quot;{}&quot; will continue to be written to until Manuskript is closed.</source>
         <translation>File log &quot;{}&quot; akan terus ditulis hingga Manuskrip ditutup.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1549"/>
+        <location filename="../manuskript/mainWindow.py" line="1557"/>
         <source>It will now be displayed in your file manager, but is of limited use until you close Manuskript.</source>
         <translation>Sekarang akan ditampilkan di pengelola file Anda, namun penggunaannya terbatas sampai Anda menutup Manuskrip.</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1565"/>
+        <location filename="../manuskript/mainWindow.py" line="1573"/>
         <source>Error!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1565"/>
+        <location filename="../manuskript/mainWindow.py" line="1573"/>
         <source>An error was encountered while trying to show the log file below in your file manager.</source>
         <translation>Terjadi kesalahan saat mencoba menampilkan file log di bawah ini di pengelola Anda.</translation>
     </message>
@@ -1294,7 +1294,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1911"/>
         <source>Nothing</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Tidak ada</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1912"/>
@@ -1314,7 +1314,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1915"/>
         <source>Compile</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Menyusun</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1892"/>
@@ -1779,7 +1779,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1957"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Kosong</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1958"/>
@@ -1887,12 +1887,12 @@
 <context>
     <name>aboutDialog</name>
     <message>
-        <location filename="../manuskript/ui/about.py" line="28"/>
+        <location filename="../manuskript/ui/about.py" line="31"/>
         <source>Version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/about.py" line="41"/>
+        <location filename="../manuskript/ui/about.py" line="44"/>
         <source>Software Versions in Use:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1922,7 +1922,7 @@
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="223"/>
         <source>Compile</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Menyusun</translation>
     </message>
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="225"/>
@@ -1960,7 +1960,7 @@
     <message>
         <location filename="../manuskript/ui/views/basicItemView_ui.py" line="69"/>
         <source>One line summary</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ringkasan satu baris</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/basicItemView_ui.py" line="70"/>
@@ -1996,12 +1996,12 @@
     <message>
         <location filename="../manuskript/ui/views/characterTreeView.py" line="33"/>
         <source>Main</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Utama</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/characterTreeView.py" line="33"/>
         <source>Secondary</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Menengah</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/characterTreeView.py" line="33"/>
@@ -2029,12 +2029,12 @@
     <message>
         <location filename="../manuskript/ui/cheatSheet.py" line="113"/>
         <source>Secondary</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Menengah</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/cheatSheet.py" line="113"/>
         <source>Main</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Utama</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/cheatSheet.py" line="91"/>
@@ -2062,17 +2062,17 @@
     <message>
         <location filename="../manuskript/ui/views/cmbOutlineCharacterChoser.py" line="34"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Kosong</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/cmbOutlineCharacterChoser.py" line="36"/>
         <source>Main</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Utama</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/cmbOutlineCharacterChoser.py" line="36"/>
         <source>Secondary</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Menengah</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/cmbOutlineCharacterChoser.py" line="36"/>
@@ -2122,7 +2122,7 @@
     <message>
         <location filename="../manuskript/ui/views/corkDelegate.py" line="70"/>
         <source>One line summary</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ringkasan satu baris</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/corkDelegate.py" line="100"/>
@@ -3069,7 +3069,7 @@
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
-        <source>Resolution</source>
+        <source>Dan Wells 7-point plot format</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3093,12 +3093,12 @@
     <message>
         <location filename="../manuskript/models/plotModel.py" line="250"/>
         <source>Main</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Utama</translation>
     </message>
     <message>
         <location filename="../manuskript/models/plotModel.py" line="250"/>
         <source>Secondary</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Menengah</translation>
     </message>
     <message>
         <location filename="../manuskript/models/plotModel.py" line="250"/>
@@ -3116,12 +3116,12 @@
     <message>
         <location filename="../manuskript/ui/views/plotTreeView.py" line="131"/>
         <source>Main</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Utama</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotTreeView.py" line="131"/>
         <source>Secondary</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Menengah</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotTreeView.py" line="131"/>
@@ -3139,12 +3139,12 @@
     <message>
         <location filename="../manuskript/models/plotsProxyModel.py" line="22"/>
         <source>Main</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Utama</translation>
     </message>
     <message>
         <location filename="../manuskript/models/plotsProxyModel.py" line="23"/>
         <source>Secondary</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Menengah</translation>
     </message>
     <message>
         <location filename="../manuskript/models/plotsProxyModel.py" line="24"/>
@@ -3177,7 +3177,7 @@
     <message>
         <location filename="../manuskript/ui/views/propertiesView_ui.py" line="183"/>
         <source>Compile</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Menyusun</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/propertiesView_ui.py" line="184"/>
@@ -3393,12 +3393,12 @@
     <message>
         <location filename="../manuskript/ui/views/sldImportance.py" line="30"/>
         <source>Secondary</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Menengah</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/sldImportance.py" line="31"/>
         <source>Main</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Utama</translation>
     </message>
 </context>
 <context>

@@ -552,175 +552,175 @@
         <translation>关于 Manuskript</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1080"/>
+        <location filename="../manuskript/mainWindow.py" line="1084"/>
         <source>Manuskript</source>
         <translation>ManuSkript</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1212"/>
+        <location filename="../manuskript/mainWindow.py" line="1216"/>
         <source>Project {} saved.</source>
         <translation>已经保存{} 项目。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1216"/>
+        <location filename="../manuskript/mainWindow.py" line="1220"/>
         <source>WARNING: Project {} not saved.</source>
         <translation>警告：项目 {} 未保存。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1236"/>
+        <location filename="../manuskript/mainWindow.py" line="1240"/>
         <source>Project {} loaded.</source>
         <translation>项目 {} 已载入。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1242"/>
+        <location filename="../manuskript/mainWindow.py" line="1246"/>
         <source>Project {} loaded with some errors.</source>
         <translation>载入项目 {} 时遇到错误。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1605"/>
+        <location filename="../manuskript/mainWindow.py" line="1613"/>
         <source> (~{} pages)</source>
         <translation>（约 {} 页）</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1608"/>
+        <location filename="../manuskript/mainWindow.py" line="1616"/>
         <source>Words: {}{}</source>
         <translation>字数： {}{}</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1616"/>
+        <location filename="../manuskript/mainWindow.py" line="1624"/>
         <source>Book summary</source>
         <translation>书籍摘要</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1617"/>
+        <location filename="../manuskript/mainWindow.py" line="1625"/>
         <source>Project tree</source>
         <translation>项目树</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1618"/>
+        <location filename="../manuskript/mainWindow.py" line="1626"/>
         <source>Metadata</source>
         <translation>元信息</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1619"/>
+        <location filename="../manuskript/mainWindow.py" line="1627"/>
         <source>Story line</source>
         <translation>故事线</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1684"/>
+        <location filename="../manuskript/mainWindow.py" line="1692"/>
         <source>Enter information about your book, and yourself.</source>
         <translation>输入有关你的书和你自己的信息。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1687"/>
+        <location filename="../manuskript/mainWindow.py" line="1695"/>
         <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous
                      evil wizard wasn&apos;t able to kill a baby?&apos; (Harry Potter)</source>
         <translation>基本情况是形如“如果……？”的问题。
 例如：“如果一个最危险的巫师没能成功杀死一个婴儿？”（哈利·波特）</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1692"/>
+        <location filename="../manuskript/mainWindow.py" line="1700"/>
         <source>Take time to think about a one sentence (~50 words) summary of your book. Then expand it to
                      a paragraph, then to a page, then to a full summary.</source>
         <translation>花一些时间想一个 50 字左右的一句话摘要来描述你的书。然后将它扩展成一段，一页，最后写成一个完整的摘要。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1697"/>
+        <location filename="../manuskript/mainWindow.py" line="1705"/>
         <source>Create your characters.</source>
         <translation>建立你的角色。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1700"/>
+        <location filename="../manuskript/mainWindow.py" line="1708"/>
         <source>Develop plots.</source>
         <translation>构造情节。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1703"/>
+        <location filename="../manuskript/mainWindow.py" line="1711"/>
         <source>Build worlds.  Create hierarchy of broad categories down to specific details.</source>
         <translation>构建世界。创造层次丰富包含方方面面的结构，直至具体细节。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1706"/>
+        <location filename="../manuskript/mainWindow.py" line="1714"/>
         <source>Create the outline of your masterpiece.</source>
         <translation>建立你的作品的大纲。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1709"/>
+        <location filename="../manuskript/mainWindow.py" line="1717"/>
         <source>Write.</source>
         <translation>写作。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1712"/>
+        <location filename="../manuskript/mainWindow.py" line="1720"/>
         <source>Debug info. Sometimes useful.</source>
         <translation>Debug 信息。有时候是有用的。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1726"/>
+        <location filename="../manuskript/mainWindow.py" line="1734"/>
         <source>Dictionary</source>
         <translation>字典</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1874"/>
+        <location filename="../manuskript/mainWindow.py" line="1882"/>
         <source>Nothing</source>
         <translation>无</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1875"/>
+        <location filename="../manuskript/mainWindow.py" line="1883"/>
         <source>POV</source>
         <translation>POV</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1876"/>
+        <location filename="../manuskript/mainWindow.py" line="1884"/>
         <source>Label</source>
         <translation>标签</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1877"/>
+        <location filename="../manuskript/mainWindow.py" line="1885"/>
         <source>Progress</source>
         <translation>进度</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1878"/>
+        <location filename="../manuskript/mainWindow.py" line="1886"/>
         <source>Compile</source>
         <translation>导出</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1901"/>
+        <location filename="../manuskript/mainWindow.py" line="1909"/>
         <source>Icon color</source>
         <translation>图标颜色</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1902"/>
+        <location filename="../manuskript/mainWindow.py" line="1910"/>
         <source>Text color</source>
         <translation>文本颜色</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1903"/>
+        <location filename="../manuskript/mainWindow.py" line="1911"/>
         <source>Background color</source>
         <translation>背景色</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1894"/>
+        <location filename="../manuskript/mainWindow.py" line="1902"/>
         <source>Icon</source>
         <translation>图标</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1895"/>
+        <location filename="../manuskript/mainWindow.py" line="1903"/>
         <source>Text</source>
         <translation>文本</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1896"/>
+        <location filename="../manuskript/mainWindow.py" line="1904"/>
         <source>Background</source>
         <translation>背景</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1897"/>
+        <location filename="../manuskript/mainWindow.py" line="1905"/>
         <source>Border</source>
         <translation>边缘</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1898"/>
+        <location filename="../manuskript/mainWindow.py" line="1906"/>
         <source>Corner</source>
         <translation>角落</translation>
     </message>
@@ -900,52 +900,52 @@
         <translation>删除选择的情节段</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="921"/>
+        <location filename="../manuskript/mainWindow.py" line="925"/>
         <source>The file {} does not exist. Has it been moved or deleted?</source>
         <translation>文件 {} 不存在。是否被移动或删除？</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1740"/>
+        <location filename="../manuskript/mainWindow.py" line="1748"/>
         <source>Install {}{} to use spellcheck</source>
         <translation>安装 {}{} 为拼写检查</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1782"/>
+        <location filename="../manuskript/mainWindow.py" line="1790"/>
         <source>{} has no installed dictionaries</source>
         <translation>{} 未安装词典</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1803"/>
+        <location filename="../manuskript/mainWindow.py" line="1811"/>
         <source>{}{} is not installed</source>
         <translation>{}{} 未安装</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1023"/>
+        <location filename="../manuskript/mainWindow.py" line="1027"/>
         <source>Save project?</source>
         <translation>保存项目？</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1023"/>
+        <location filename="../manuskript/mainWindow.py" line="1027"/>
         <source>Save changes to project &quot;{}&quot; before closing?</source>
         <translation>在关闭前保存对项目“{}”的更改？</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1023"/>
+        <location filename="../manuskript/mainWindow.py" line="1027"/>
         <source>Your changes will be lost if you don&apos;t save them.</source>
         <translation>如果不保存，项目改动会丢失。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="2001"/>
+        <location filename="../manuskript/mainWindow.py" line="2009"/>
         <source>PyQt / Qt versions 5.11 and 5.12 are known to cause a crash which might result in a loss of data.</source>
         <translation>已知 PyQt / Qt 5.11 和 5.12 版本会引起崩溃，导致数据丢失。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="2002"/>
+        <location filename="../manuskript/mainWindow.py" line="2010"/>
         <source>PyQt {} and Qt {} are in use.</source>
         <translation>正在使用 PyQt {} 和Qt {} 。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="2008"/>
+        <location filename="../manuskript/mainWindow.py" line="2016"/>
         <source>Proceed with import at your own risk</source>
         <translation>继续导入，后果自负</translation>
     </message>
@@ -985,37 +985,37 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1540"/>
+        <location filename="../manuskript/mainWindow.py" line="1548"/>
         <source>Sorry!</source>
         <translation>对不起！</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1540"/>
+        <location filename="../manuskript/mainWindow.py" line="1548"/>
         <source>This session is not being logged.</source>
         <translation>日志没有记录当前活动。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1549"/>
+        <location filename="../manuskript/mainWindow.py" line="1557"/>
         <source>A log file is a Work in Progress!</source>
         <translation>日志文件是没完成的作品！</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1549"/>
+        <location filename="../manuskript/mainWindow.py" line="1557"/>
         <source>The log file &quot;{}&quot; will continue to be written to until Manuskript is closed.</source>
         <translation>直到 Manuskript 关闭以前，将继续写入日志文件“{}”。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1549"/>
+        <location filename="../manuskript/mainWindow.py" line="1557"/>
         <source>It will now be displayed in your file manager, but is of limited use until you close Manuskript.</source>
         <translation>现在，它将显示在您的文件管理器中，但在您关闭 Manuskript 之前，您对此文件能进行的操作将受限。</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1565"/>
+        <location filename="../manuskript/mainWindow.py" line="1573"/>
         <source>Error!</source>
         <translation>出错！</translation>
     </message>
     <message>
-        <location filename="../manuskript/mainWindow.py" line="1565"/>
+        <location filename="../manuskript/mainWindow.py" line="1573"/>
         <source>An error was encountered while trying to show the log file below in your file manager.</source>
         <translation>尝试在文件管理器中显示以下日志文件时出错了。</translation>
     </message>
@@ -1886,12 +1886,12 @@
 <context>
     <name>aboutDialog</name>
     <message>
-        <location filename="../manuskript/ui/about.py" line="28"/>
+        <location filename="../manuskript/ui/about.py" line="31"/>
         <source>Version</source>
         <translation>版本</translation>
     </message>
     <message>
-        <location filename="../manuskript/ui/about.py" line="41"/>
+        <location filename="../manuskript/ui/about.py" line="44"/>
         <source>Software Versions in Use:</source>
         <translation>使用的软件版本：</translation>
     </message>
@@ -2316,7 +2316,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>将单引号（&apos;）替换为：</translation>
+        <translation>将单引号（'）替换为：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>
@@ -2884,7 +2884,7 @@
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Resolution</source>
-        <translation>决心</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3068,7 +3068,7 @@
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
-        <source>Resolution</source>
+        <source>Dan Wells 7-point plot format</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
