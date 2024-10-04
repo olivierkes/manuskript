@@ -128,7 +128,7 @@ class exporterSettings(QWidget, Ui_exporterSettings):
     def loadSettings(self):
         filename = self.getSettingsPath()
         if os.path.exists(filename):
-            with open(filename, "r", encoding="utf-8", newline="\n") as f:
+            with open(filename, 'r', encoding="utf-8") as f:
                 self.settings = json.load(f)
             self.updateFromSettings()
 

@@ -135,9 +135,9 @@ def createThemePreview(theme, screenRect, size=QSize(200, 120)):
 
 
 def findThemePath(themeName):
-    p = findFirstFile(re.escape("{}.theme".format(themeName)), "resources/themes")
+    p = findFirstFile(re.escape("{}.theme".format(themeName)), os.path.join("resources", "themes"))
     if not p:
-        return findFirstFile(r".*\.theme", "resources/themes")
+        return findFirstFile(r".*\.theme", os.path.join("resources", "themes"))
     else:
         return p
 
@@ -276,7 +276,7 @@ def addThemePreviewText(pixmap, themeDatas, screenRect):
     previewText.setFrameStyle(QFrame.NoFrame)
     previewText.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
     previewText.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
-    f = QFile(appPath("resources/themes/preview.txt"))
+    f = QFile(appPath(os.path.join("resources", "themes", "preview.txt")))
     f.open(QIODevice.ReadOnly)
     previewText.setPlainText(QTextStream(f).readAll())
 

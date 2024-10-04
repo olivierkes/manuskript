@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-import locale
+import locale, os
 
 from PyQt5.QtCore import QModelIndex, QRect, QPoint, Qt, QObject, QSize
 from PyQt5.QtGui import QIcon, QPalette
@@ -150,7 +150,7 @@ class tabSplitter(QWidget, Ui_tabSplitter):
         self.updateTargetIcon(self.isTarget)
 
     def updateTargetIcon(self, val):
-        icon = QIcon.fromTheme("set-target", QIcon(appPath("icons/NumixMsk/256x256/actions/set-target.svg")))
+        icon = QIcon.fromTheme("set-target", QIcon(appPath(os.path.join("icons", "NumixMsk", "256x256", "actions", "set-target.svg"))))
         if not val:
             icon = QIcon(icon.pixmap(128, 128, icon.Disabled))
         self.btnTarget.setIcon(icon)

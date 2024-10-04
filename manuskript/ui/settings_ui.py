@@ -1802,7 +1802,7 @@ class Ui_Settings(object):
         self.chkRevisionsKeep.setText(_translate("Settings", "Keep revisions"))
         self.chkRevisionRemove.setTitle(_translate("Settings", "S&mart remove"))
         self.label_46.setText(_translate("Settings", "Keep:"))
-        self.label_45.setText(_translate("Settings", "Smart remove allows you to keep only a certain number of revisions. It is strongly recommended to use it, lest you file will becomes full of thousands of insignificant changes."))
+        self.label_45.setText(_translate("Settings", "Smart remove allows you to keep only a certain number of revisions. It is strongly recommended to use it, lest your files would be bloated with thousands of insignificant changes."))
         self.label_50.setText(_translate("Settings", "revisions per day for the last month"))
         self.label_47.setText(_translate("Settings", "revisions per minute for the last 10 minutes"))
         self.label_49.setText(_translate("Settings", "revisions per hour for the last day"))

@@ -45,7 +45,7 @@ def prepare(arguments, tests=False):
 
     icon = QIcon()
     for i in [16, 32, 64, 128, 256, 512]:
-        icon.addFile(appPath("icons/Manuskript/icon-{}px.png".format(i)))
+        icon.addFile(appPath(os.path.join("icons", "Manuskript", "icon-{}px.png".format(i))))
     qApp.setWindowIcon(icon)
 
     app.setStyle("Fusion")
@@ -201,11 +201,14 @@ def launch(arguments, app, MW = None):
     # Support for IPython Jupyter QT Console as a debugging aid.
     # Last argument must be --console to enable it
     # Code reference :
-    # https://github.com/ipython/ipykernel/blob/master/examples/embedding/ipkernel_qtapp.py
-    # https://github.com/ipython/ipykernel/blob/master/examples/embedding/internal_ipkernel.py
+    # https://github.com/ipython/ipykernel/blob/main/examples/embedding/ipkernel_qtapp.py
+    # https://github.com/ipython/ipykernel/blob/main/examples/embedding/internal_ipkernel.py
     if arguments.console:
         try:
-            from IPython.lib.kernel import connect_qtconsole
+            try:
+                from IPython.lib.kernel import connect_qtconsole
+            except ImportError:
+                from ipykernel import connect_qtconsole
             from ipykernel.kernelapp import IPKernelApp
             # Only to ensure matplotlib QT mainloop integration is available
             import matplotlib
@@ -217,7 +220,7 @@ def launch(arguments, app, MW = None):
             kernel.initialize(['python', '--matplotlib=qt'])
 
             # Create the console in a new process and connect
-            console = connect_qtconsole(kernel.abs_connection_file, profile=kernel.profile)
+            console = connect_qtconsole(kernel.abs_connection_file)
 
             # Export MW and app variable to the console's namespace
             kernel.shell.user_ns['MW'] = MW

@@ -3,7 +3,7 @@
 
 """Tests for functions"""
 
-import re
+import re, os
 from manuskript import functions as F
 
 def test_wordCount():
@@ -81,7 +81,7 @@ def test_paths():
     assert len(F.allPaths("suffix")) == 2
     assert F.tempFile("yop") != None
     f = F.findBackground("spacedreams.jpg")
-    assert "resources/backgrounds/spacedreams.jpg" in f
+    assert os.path.join("resources", "backgrounds", "spacedreams.jpg") in f
     assert len(F.customIcons()) > 1
 
 def test_mainWindow():

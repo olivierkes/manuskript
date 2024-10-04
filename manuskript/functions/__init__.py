@@ -252,7 +252,7 @@ def colorifyPixmap(pixmap, color):
 
 
 def appPath(suffix=None):
-    p = os.path.realpath(os.path.join(os.path.split(__file__)[0], "../.."))
+    p = os.path.realpath(os.path.join(os.path.split(__file__)[0], os.path.join("..", "..")))
     if suffix:
         p = os.path.join(p, suffix)
     return p
@@ -305,7 +305,7 @@ def findBackground(filename):
     """
     Returns the full path to a background file of name filename within resources folders.
     """
-    return findFirstFile(re.escape(filename), "resources/backgrounds")
+    return findFirstFile(re.escape(filename), os.path.join("resources", "backgrounds"))
 
 
 def findFirstFile(regex, path="resources"):
@@ -511,7 +511,7 @@ def getManuskriptPath(follow_symlinks=True):
         path = os.path.abspath(sys.executable)
     else:
         import inspect
-        path = inspect.getabsfile(getManuskriptPath) + "/../.."
+        path = os.path.join(inspect.getabsfile(getManuskriptPath), "..", "..")
     if follow_symlinks:
         path = os.path.realpath(path)
     return os.path.dirname(path)

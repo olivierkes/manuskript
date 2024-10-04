@@ -7,7 +7,7 @@
 	<content_rating type="oars-1.1" />
 
 	<name>Manuskript</name>
-	<summary>An open-source tool for writers</summary>
+	<summary>Unleash the creator within you</summary>
 	<description>
 		<p>Manuskript provides a rich environment to help writers create their first draft and then further refine and edit their masterpiece.</p>
 		<p>With Manuskript you can:</p>
@@ -56,9 +56,16 @@
 
 	<launchable type="desktop-id">ch.theologeek.Manuskript.desktop</launchable>
 	<releases>
+		<release version="0.16.1" date="2023-12-14" />
+		<release version="0.16.0" date="2023-12-07" />
 		<release version="0.15.0" date="2023-03-04" />
 		<release version="0.14.0" date="2022-06-08" />
 		<release version="0.13.1" date="2021-12-13" />
 		<release version="0.12.0" date="2021-04-30" />
 	</releases>
+
+	<branding>
+		<color type="primary" scheme_preference="light">#f2ede7</color>
+		<color type="primary" scheme_preference="dark">#413828</color>
+	</branding>
 </component>
