@@ -694,6 +694,10 @@ def loadProject(project, zip=None):
                         filename = os.path.join(dirpath, f)
                         with open(filename, 'rt', encoding="utf8") as fo:
                             files[os.path.join(p, f)] = fo.read()
+
+                    except (UnicodeDecodeError, FileNotFoundError, IsADirectoryError) as e:
+                         LOGGER.error("Ignore file: "+ filename + "because of the error " + e.reason)
+                         
                     except PermissionError as e:
                         LOGGER.error("Cannot open file " + filename + ": " + e.strerror)
                         errors.append(fo)
