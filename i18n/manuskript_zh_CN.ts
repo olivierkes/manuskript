@@ -439,7 +439,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1574"/>
         <source>&amp;View</source>
-        <translation>查看&amp;（V）</translation>
+        <translation>查看（&amp;V）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1575"/>
