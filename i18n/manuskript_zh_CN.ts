@@ -983,7 +983,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1641"/>
         <source>Locate the diagnostic log file used for this session.</source>
-        <translation>定位到此会话对应的诊断日志文件。</translation>
+        <translation>显示此工作阶段的软件诊断日志文件。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1548"/>
