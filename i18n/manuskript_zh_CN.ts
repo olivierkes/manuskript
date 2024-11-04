@@ -509,7 +509,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1591"/>
         <source>&amp;Fiction</source>
-        <translation>小说模式</translation>
+        <translation>虚构作品(&amp;F)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1592"/>
@@ -653,7 +653,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1720"/>
         <source>Debug info. Sometimes useful.</source>
-        <translation>Debug 信息。有时候是有用的。</translation>
+        <translation>Debug 信息。用有其时。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1734"/>
@@ -683,7 +683,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1886"/>
         <source>Compile</source>
-        <translation>导出</translation>
+        <translation>编纂</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1909"/>
@@ -733,7 +733,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1601"/>
         <source>&amp;Copy</source>
-        <translation>复制(&amp;C)</translation>
+        <translation>拷贝(&amp;C)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1602"/>
@@ -763,7 +763,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1607"/>
         <source>Dupl&amp;icate</source>
-        <translation>复制副本(&amp;I)</translation>
+        <translation>复制一份(&amp;I)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1608"/>
@@ -948,7 +948,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="2016"/>
         <source>Proceed with import at your own risk</source>
-        <translation>继续导入，后果自负</translation>
+        <translation>继续导入，您自己承担风险</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1518"/>
@@ -998,17 +998,17 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1557"/>
         <source>A log file is a Work in Progress!</source>
-        <translation>日志文件是没完成的作品！</translation>
+        <translation>日志文件正在写入！</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1557"/>
         <source>The log file &quot;{}&quot; will continue to be written to until Manuskript is closed.</source>
-        <translation>直到 Manuskript 关闭以前，将继续写入日志文件“{}”。</translation>
+        <translation>将继续写入日志文件“{}”，直到 Manuskript 关闭。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1557"/>
         <source>It will now be displayed in your file manager, but is of limited use until you close Manuskript.</source>
-        <translation>现在，它将显示在您的文件管理器中，但在您关闭 Manuskript 之前，您对此文件能进行的操作将受限。</translation>
+        <translation>它将显示在您的文件管理器中，但在您关闭 Manuskript 之前，您对该文件的操作将受限。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1573"/>
@@ -1314,7 +1314,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1915"/>
         <source>Compile</source>
-        <translation>导出</translation>
+        <translation>编纂</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1892"/>
@@ -1923,7 +1923,7 @@
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="223"/>
         <source>Compile</source>
-        <translation>导出</translation>
+        <translation>编纂</translation>
     </message>
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="225"/>
@@ -2248,7 +2248,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="523"/>
         <source>Ignore compile status (include all items)</source>
-        <translation>忽略导出状态（对于所有条目）</translation>
+        <translation>忽略编纂状态（对于所有条目）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="524"/>
@@ -3178,7 +3178,7 @@
     <message>
         <location filename="../manuskript/ui/views/propertiesView_ui.py" line="183"/>
         <source>Compile</source>
-        <translation>导出</translation>
+        <translation>编纂</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/propertiesView_ui.py" line="184"/>
