@@ -79,7 +79,7 @@
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="106"/>
         <source>Exclude words (comma separated):</source>
-        <translation>排除单词（以逗号分隔）：</translation>
+        <translation>排除词（以逗号分隔）：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="111"/>
@@ -374,12 +374,12 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1554"/>
         <source>Source of passion</source>
-        <translation>激情的来源</translation>
+        <translation>激情来源</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1555"/>
         <source>Source of conflict</source>
-        <translation>冲突的来源</translation>
+        <translation>冲突来源</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="23"/>
@@ -394,17 +394,17 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1566"/>
         <source>Debug</source>
-        <translation>Debug</translation>
+        <translation>调试</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="25"/>
         <source>FlatData</source>
-        <translation>FlatData</translation>
+        <translation>平面数据</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1561"/>
         <source>Persos</source>
-        <translation>Persos</translation>
+        <translation>人</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1565"/>
@@ -653,7 +653,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1720"/>
         <source>Debug info. Sometimes useful.</source>
-        <translation>Debug 信息。用有其时。</translation>
+        <translation>调试信息。用有其时。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1734"/>
@@ -688,12 +688,12 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1909"/>
         <source>Icon color</source>
-        <translation>图标颜色</translation>
+        <translation>图标色</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1910"/>
         <source>Text color</source>
-        <translation>文本颜色</translation>
+        <translation>文本色</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1911"/>
@@ -993,7 +993,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1548"/>
         <source>This session is not being logged.</source>
-        <translation>这个工作阶段不会被日志记录下来。</translation>
+        <translation>此工作阶段不会被日志记录。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1557"/>
@@ -1289,7 +1289,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1886"/>
         <source>Icon color:</source>
-        <translation>图标颜色：</translation>
+        <translation>图标色：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1911"/>
@@ -1319,7 +1319,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1892"/>
         <source>Text color:</source>
-        <translation>文本颜色：</translation>
+        <translation>文本色：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1898"/>
@@ -1389,12 +1389,12 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1885"/>
         <source>Item colors</source>
-        <translation>项目颜色</translation>
+        <translation>项目色</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1904"/>
         <source>Border color:</source>
-        <translation>边缘颜色：</translation>
+        <translation>边缘色：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1910"/>
@@ -1469,7 +1469,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2007"/>
         <source>Double</source>
-        <translation>2行</translation>
+        <translation>2 行</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2008"/>
@@ -1941,7 +1941,7 @@
     <message>
         <location filename="../manuskript/ui/views/basicItemView_ui.py" line="65"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation>表格</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/basicItemView_ui.py" line="66"/>
@@ -2015,7 +2015,7 @@
     <message>
         <location filename="../manuskript/ui/cheatSheet_ui.py" line="89"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation>表格</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/cheatSheet_ui.py" line="90"/>
@@ -2107,7 +2107,7 @@
     <message>
         <location filename="../manuskript/ui/collapsibleDockWidgets.py" line="26"/>
         <source>Dock Widgets Toolbar</source>
-        <translation>Dock Widgets 工具栏</translation>
+        <translation>停靠组件工具栏</translation>
     </message>
 </context>
 <context>
@@ -2115,7 +2115,7 @@
     <message>
         <location filename="../manuskript/ui/editors/completer_ui.py" line="34"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation>表格</translation>
     </message>
 </context>
 <context>
@@ -2159,7 +2159,7 @@
     <message>
         <location filename="../manuskript/ui/editors/editorWidget_ui.py" line="75"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation>表格</translation>
     </message>
 </context>
 <context>
@@ -2203,7 +2203,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="512"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation>表格</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="527"/>
@@ -2617,7 +2617,7 @@
     <message>
         <location filename="../manuskript/ui/editors/locker_ui.py" line="52"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation>表格</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker_ui.py" line="53"/>
@@ -2685,7 +2685,7 @@
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.py" line="93"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation>表格</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.py" line="96"/>
@@ -2761,7 +2761,7 @@
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.py" line="94"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation>表格</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.py" line="95"/>
@@ -3158,7 +3158,7 @@
     <message>
         <location filename="../manuskript/ui/views/propertiesView_ui.py" line="173"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation>表格</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/propertiesView_ui.py" line="180"/>
@@ -3196,7 +3196,7 @@
     <message>
         <location filename="../manuskript/ui/revisions_ui.py" line="86"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation>表格</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions_ui.py" line="87"/>
@@ -3284,7 +3284,7 @@
     <message>
         <location filename="../manuskript/ui/search_ui.py" line="47"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation>表格</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search_ui.py" line="48"/>
@@ -3380,7 +3380,7 @@
     <message>
         <location filename="../manuskript/ui/views/sldImportance_ui.py" line="37"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation>表格</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/sldImportance_ui.py" line="38"/>
@@ -3454,7 +3454,7 @@
     <message>
         <location filename="../manuskript/ui/views/storylineView_ui.py" line="56"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation>表格</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/storylineView.py" line="36"/>
@@ -3510,7 +3510,7 @@
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="137"/>
         <source>of</source>
-        <translation>of</translation>
+        <translation>于</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="132"/>
@@ -3551,7 +3551,7 @@
     <message>
         <location filename="../manuskript/ui/editors/textFormat_ui.py" line="88"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation>表格</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/textFormat.py" line="18"/>
@@ -3622,7 +3622,7 @@
     <message>
         <location filename="../manuskript/ui/welcome_ui.py" line="124"/>
         <source>Form</source>
-        <translation></translation>
+        <translation>表格</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome_ui.py" line="125"/>
@@ -3777,7 +3777,7 @@
     <message>
         <location filename="../manuskript/ui/welcome.py" line="312"/>
         <source>of</source>
-        <translation>of</translation>
+        <translation>于</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="336"/>
@@ -3787,7 +3787,7 @@
     <message>
         <location filename="../manuskript/ui/welcome.py" line="339"/>
         <source>Something</source>
-        <translation>Something</translation>
+        <translation>某物</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="395"/>
