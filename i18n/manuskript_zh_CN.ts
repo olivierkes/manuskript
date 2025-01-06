@@ -993,7 +993,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1548"/>
         <source>This session is not being logged.</source>
-        <translation>本次工作不会进行日志记录。</translation>
+        <translation>这个工作阶段不会被日志记录下来。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1557"/>
