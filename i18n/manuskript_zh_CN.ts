@@ -389,7 +389,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1559"/>
         <source>Editor</source>
-        <translation>编辑器</translation>
+        <translation>编辑</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1566"/>
@@ -1344,7 +1344,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1842"/>
         <source>&amp;Nothing</source>
-        <translation>不显示(&amp;N)</translation>
+        <translation>无(&amp;N)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1843"/>
@@ -1369,12 +1369,12 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1871"/>
         <source>Word count</source>
-        <translation>词数统计</translation>
+        <translation>词数</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1872"/>
         <source>Percentage</source>
-        <translation>百分比</translation>
+        <translation>百分</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1877"/>
@@ -1419,7 +1419,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1961"/>
         <source>Text editor</source>
-        <translation>文本编辑器</translation>
+        <translation>文本编辑</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1922"/>
@@ -1928,7 +1928,7 @@
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="225"/>
         <source>Word count</source>
-        <translation>词数统计</translation>
+        <translation>词数</translation>
     </message>
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="227"/>
@@ -1956,7 +1956,7 @@
     <message>
         <location filename="../manuskript/ui/views/basicItemView_ui.py" line="68"/>
         <source>Word count</source>
-        <translation>词数统计</translation>
+        <translation>词数</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/basicItemView_ui.py" line="69"/>
@@ -2177,7 +2177,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/exporter_ui.py" line="68"/>
         <source>Manage exporters</source>
-        <translation>管理导出工具</translation>
+        <translation>管理导出器</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exporter_ui.py" line="72"/>
@@ -2416,7 +2416,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="93"/>
         <source>Not found</source>
-        <translation>没有找到</translation>
+        <translation>未找到</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="96"/>
@@ -2507,7 +2507,7 @@
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="160"/>
         <source>Word count</source>
-        <translation>词数统计</translation>
+        <translation>词数</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="161"/>
@@ -3188,7 +3188,7 @@
     <message>
         <location filename="../manuskript/ui/views/propertiesView_ui.py" line="185"/>
         <source>Word count</source>
-        <translation>词数统计</translation>
+        <translation>词数</translation>
     </message>
 </context>
 <context>
