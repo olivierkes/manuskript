@@ -159,7 +159,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1490"/>
         <source>Subtitle</source>
-        <translation>副标题</translation>
+        <translation>副标</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1491"/>
@@ -194,7 +194,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1497"/>
         <source>Email</source>
-        <translation>电子邮件</translation>
+        <translation>邮箱</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1543"/>
@@ -279,12 +279,12 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1538"/>
         <source>Basic info</source>
-        <translation>基本信息</translation>
+        <translation>简况</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1534"/>
         <source>Importance</source>
-        <translation>重要性</translation>
+        <translation>分量</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1519"/>
@@ -324,7 +324,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1529"/>
         <source>Detailed info</source>
-        <translation>详细信息</translation>
+        <translation>详情</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1562"/>
@@ -763,7 +763,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1607"/>
         <source>Dupl&amp;icate</source>
-        <translation>副本(&amp;I)</translation>
+        <translation>副本</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1608"/>
@@ -1189,7 +1189,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1793"/>
         <source>Automatically save every</source>
-        <translation>自动保存间隔</translation>
+        <translation>自动保存每</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1794"/>
@@ -1204,7 +1204,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1796"/>
         <source>seconds.</source>
-        <translation>秒。</translation>
+        <translation>秒钟。</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1797"/>
@@ -1224,17 +1224,17 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1801"/>
         <source>Revisions are a way to keep track of modifications. For each text item, it stores any changes you make to the main text, allowing you to see and restoring previous versions.</source>
-        <translation>使用修订副本是一种跟踪您编辑的内容的方法。 对于每个文本项，它会存储您对主文本所做的任何更改，以便您查看和恢复以前的版本。</translation>
+        <translation>修订是种跟踪编辑内容的方法。 对于每个文本项，它会存储您对主文本所做的任何更改，以便您查看和恢复旧版。</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1802"/>
         <source>Keep revisions</source>
-        <translation>保留修订副本</translation>
+        <translation>保留修订</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1803"/>
         <source>S&amp;mart remove</source>
-        <translation>智能删除(&amp;M)</translation>
+        <translation>智能删除</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1804"/>
@@ -1244,32 +1244,32 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1805"/>
         <source>Smart remove allows you to keep only a certain number of revisions. It is strongly recommended to use it, lest your files would be bloated with thousands of insignificant changes.</source>
-        <translation>智能删除允许你保存一定量的修订副本。推荐开启以避免产生大量只有微小改动的修订副本。</translation>
+        <translation>智能删除允许你保存限量修订。推荐开启以免产生过量只有微小改动的修订。</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1806"/>
         <source>revisions per day for the last month</source>
-        <translation>份修订副本(每天)——在过去的一个月内</translation>
+        <translation>份修订/天，近一月</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1807"/>
         <source>revisions per minute for the last 10 minutes</source>
-        <translation>份修订副本(每分钟)——在过去的 10 分钟内</translation>
+        <translation>份修订/分，近十分</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1808"/>
         <source>revisions per hour for the last day</source>
-        <translation>份修订副本(每小时)——在过去的一天内</translation>
+        <translation>份修订/时，近一日</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1809"/>
         <source>revisions per 10 minutes for the last hour</source>
-        <translation>份修订副本(每 10 分钟)——在过去的一小时内</translation>
+        <translation>份修订/十分，近一小时</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1810"/>
         <source>revisions per week till the end of time</source>
-        <translation>份修订副本(每星期)</translation>
+        <translation>份修订/周，创建以来</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1812"/>
@@ -1744,7 +1744,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1787"/>
         <source>Font size:</source>
-        <translation>字体尺寸：</translation>
+        <translation>字号：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1784"/>
@@ -1799,7 +1799,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1811"/>
         <source>&lt;p&gt;&lt;b&gt;The Revisions feature has been at the source of many reported issues. In this version of Manuskript it has been turned off by default for new projects in order to provide the best experience.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Why aren&apos;t these issues fixed already? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;We need your help to make Manuskript better!&lt;/a&gt;&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;副本功能被报告存在许多问题。在此版 Manuskript 中，当创建新项目时，默认关闭它以提供最佳体验。&lt;/b&gt;&lt;/p&gt;&lt;p&gt;为何这些问题还没修复？&lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;我们需要你帮助改善 Manuskript ！&lt;/a&gt;&lt;/p&gt;</translation>
+        <translation>&lt;p&gt;&lt;b&gt;修订功能被报告存在许多问题。在此版 Manuskript 中，当创建新项目时，默认关闭它以提供最佳体验。&lt;/b&gt;&lt;/p&gt;&lt;p&gt;为何这些问题还没修复？&lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;我们需要你帮助改善 Manuskript ！&lt;/a&gt;&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1788"/>
@@ -2373,7 +2373,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="560"/>
         <source>Font size:</source>
-        <translation>字体尺寸：</translation>
+        <translation>字号：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings.py" line="320"/>
@@ -3472,7 +3472,7 @@
     <message>
         <location filename="../manuskript/ui/editors/tabSplitter.py" line="68"/>
         <source>Open selected items in that view.</source>
-        <translation>在该视图中打开所选项目。</translation>
+        <translation>在该视图打开所选项。</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/tabSplitter.py" line="172"/>
