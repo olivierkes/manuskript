@@ -46,7 +46,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.py" line="174"/>
         <source>...</source>
-        <translation>...</translation>
+        <translation>…</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.py" line="175"/>
@@ -133,7 +133,7 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditCompleter.py" line="73"/>
         <source>Insert reference</source>
-        <translation>插入参考</translation>
+        <translation>插入引用</translation>
     </message>
 </context>
 <context>
@@ -449,7 +449,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1578"/>
         <source>Cheat Sheet</source>
-        <translation>小抄</translation>
+        <translation>速查</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1580"/>
@@ -469,7 +469,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1583"/>
         <source>Sa&amp;ve as...</source>
-        <translation>另存为...</translation>
+        <translation>另存…</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1584"/>
@@ -489,12 +489,12 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1587"/>
         <source>&amp;Labels...</source>
-        <translation>标签(&amp;L)...</translation>
+        <translation>标签(&amp;L)…</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1588"/>
         <source>&amp;Status...</source>
-        <translation>状态(&amp;S)...</translation>
+        <translation>状态(&amp;S)…</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1589"/>
@@ -524,7 +524,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1595"/>
         <source>&amp;Close project</source>
-        <translation>关闭项目(&amp;C)</translation>
+        <translation>关闭(&amp;C)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1596"/>
@@ -748,7 +748,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1605"/>
         <source>Sp&amp;lit at cursor</source>
-        <translation>在光标处分割</translation>
+        <translation>分割于光标</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1609"/>
@@ -773,7 +773,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1613"/>
         <source>&amp;Rename</source>
-        <translation>重命名</translation>
+        <translation>改名</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1576"/>
@@ -913,12 +913,12 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1790"/>
         <source>{} has no installed dictionaries</source>
-        <translation>{} 未安装词典</translation>
+        <translation>{} 未装词典</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1811"/>
         <source>{}{} is not installed</source>
-        <translation>{}{} 未安装</translation>
+        <translation>{}{} 未装</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1027"/>
@@ -973,17 +973,17 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1639"/>
         <source>&amp;Locate log file...</source>
-        <translation>定位日志文件...</translation>
+        <translation>定位日志…</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1640"/>
         <source>Locate log file</source>
-        <translation>定位日志文件</translation>
+        <translation>定位日志</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1641"/>
         <source>Locate the diagnostic log file used for this session.</source>
-        <translation>定位本节软件诊断日志文件。</translation>
+        <translation>定位本节软件诊断日志。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1548"/>
@@ -998,12 +998,12 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1557"/>
         <source>A log file is a Work in Progress!</source>
-        <translation>日志文件正在写入！</translation>
+        <translation>日志正在写入！</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1557"/>
         <source>The log file &quot;{}&quot; will continue to be written to until Manuskript is closed.</source>
-        <translation>将继续写入日志文件“{}”，直到 Manuskript 关闭。</translation>
+        <translation>Manuskript 关闭前将继续写入日志“{}”。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1557"/>
@@ -1018,7 +1018,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1573"/>
         <source>An error was encountered while trying to show the log file below in your file manager.</source>
-        <translation>尝试在文件管理器中显示以下日志文件时出错。</translation>
+        <translation>尝试在文件管理器中显示以下日志时出错。</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="51"/>
@@ -1108,12 +1108,12 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1611"/>
         <source>Go &amp;back</source>
-        <translation>向后</translation>
+        <translation>后退</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1612"/>
         <source>Go &amp;forward</source>
-        <translation>向前</translation>
+        <translation>前进</translation>
     </message>
 </context>
 <context>
@@ -1219,7 +1219,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1799"/>
         <source>Save to one single file</source>
-        <translation>保存到单个文件</translation>
+        <translation>保存到单文件</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1801"/>
@@ -1334,7 +1334,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1837"/>
         <source>Show ite&amp;m count</source>
-        <translation>显示项目数量 (&amp;M)</translation>
+        <translation>显示项数</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1847"/>
@@ -1409,7 +1409,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2000"/>
         <source>Color:</source>
-        <translation>颜色：</translation>
+        <translation>字色：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1976"/>
@@ -1439,7 +1439,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2003"/>
         <source>Misspelled:</source>
-        <translation>拼写错误：</translation>
+        <translation>拼错：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1918"/>
@@ -1449,7 +1449,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1933"/>
         <source>Paragraphs</source>
-        <translation>段落</translation>
+        <translation>段</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2004"/>
@@ -1469,12 +1469,12 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2007"/>
         <source>Double</source>
-        <translation>2 行</translation>
+        <translation>双行</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2008"/>
         <source>Proportional</source>
-        <translation>成比例</translation>
+        <translation>比例</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2009"/>
@@ -1484,7 +1484,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2010"/>
         <source>Tab width:</source>
-        <translation>制表符宽：</translation>
+        <translation>制表宽：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2014"/>
@@ -1549,7 +1549,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1974"/>
         <source>Paragraph Options</source>
-        <translation>段落选项</translation>
+        <translation>段选项</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1977"/>
@@ -1649,7 +1649,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1952"/>
         <source>Use block insertion of</source>
-        <translation>使用块插入</translation>
+        <translation>用块插入</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1934"/>
@@ -1704,17 +1704,17 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1840"/>
         <source>S&amp;how progress</source>
-        <translation>显示进度(&amp;H)</translation>
+        <translation>显示进度</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1841"/>
         <source>Show summar&amp;y</source>
-        <translation>显示概要(&amp;Y)</translation>
+        <translation>显示概要</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1846"/>
         <source>Show p&amp;rogress</source>
-        <translation>显示进度(&amp;R)</translation>
+        <translation>显示进度</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1883"/>
@@ -1754,12 +1754,12 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1838"/>
         <source>Show &amp;word count</source>
-        <translation>显示词数(&amp;W)</translation>
+        <translation>显示词数</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1844"/>
         <source>&amp;Show word count</source>
-        <translation>显示词数(&amp;S)</translation>
+        <translation>显示词数</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1884"/>
@@ -1769,7 +1769,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1955"/>
         <source>Typewriter mode</source>
-        <translation>打字机模式</translation>
+        <translation>打字机式</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1956"/>
@@ -1794,12 +1794,12 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1960"/>
         <source>Paragraph</source>
-        <translation>段落</translation>
+        <translation>段</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1811"/>
         <source>&lt;p&gt;&lt;b&gt;The Revisions feature has been at the source of many reported issues. In this version of Manuskript it has been turned off by default for new projects in order to provide the best experience.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Why aren&apos;t these issues fixed already? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;We need your help to make Manuskript better!&lt;/a&gt;&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;历史版本功能被报告存在许多问题。在这个版本的 Manuskript 中，当创建新项目时，它被默认关闭以提供最佳体验。&lt;/b&gt;&lt;/p&gt;&lt;p&gt;为什么这些问题还没有被修复？&lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;我们需要你的帮助来改善 Manuskript ！&lt;/a&gt;&lt;/p&gt;</translation>
+        <translation>&lt;p&gt;&lt;b&gt;副本功能被报告存在许多问题。在此版 Manuskript 中，当创建新项目时，默认关闭它以提供最佳体验。&lt;/b&gt;&lt;/p&gt;&lt;p&gt;为何这些问题还没修复？&lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;我们需要你帮助改善 Manuskript ！&lt;/a&gt;&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1788"/>
@@ -1821,12 +1821,12 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1839"/>
         <source>Show char c&amp;ount</source>
-        <translation>显示字数(&amp;O)</translation>
+        <translation>显示字数</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1845"/>
         <source>Sho&amp;w char count</source>
-        <translation>显示字数(&amp;W)</translation>
+        <translation>显示字数</translation>
     </message>
 </context>
 <context>
@@ -2248,7 +2248,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="523"/>
         <source>Ignore compile status (include all items)</source>
-        <translation>忽略编译状态（含所有条目）</translation>
+        <translation>忽略编译状态（含所有项）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="524"/>
@@ -2406,7 +2406,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="81"/>
         <source>Installed</source>
-        <translation>已安装</translation>
+        <translation>已装</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="87"/>
@@ -2426,7 +2426,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="124"/>
         <source>&lt;b&gt;Status:&lt;/b&gt; uninstalled.</source>
-        <translation>&lt;b&gt;状态：&lt;/b&gt; 未安装。</translation>
+        <translation>&lt;b&gt;状态：&lt;/b&gt; 未装。</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="126"/>
@@ -2550,7 +2550,7 @@
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.py" line="64"/>
         <source>Trim long titles (&gt; 32 chars)</source>
-        <translation>缩减长标题（&gt; 32 字）</translation>
+        <translation>缩短标题（&gt; 32 字）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.py" line="65"/>
@@ -2710,7 +2710,7 @@
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.py" line="94"/>
         <source>Go to parent item</source>
-        <translation>到父条目</translation>
+        <translation>到父项</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.ui" line="57"/>
@@ -2730,7 +2730,7 @@
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="347"/>
         <source>({} chars) {}  words / {} </source>
-        <translation>({} 文字) {}  词/ {} </translation>
+        <translation>({} 字) {}  词/ {} </translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="353"/>
@@ -2740,12 +2740,12 @@
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="368"/>
         <source>{} chars</source>
-        <translation>{} 字符</translation>
+        <translation>{} 字</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="362"/>
         <source>{} chars </source>
-        <translation>{} 字符 </translation>
+        <translation>{} 字 </translation>
     </message>
 </context>
 <context>
@@ -2786,7 +2786,7 @@
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.py" line="100"/>
         <source>Notes / References</source>
-        <translation>笔记/参考</translation>
+        <translation>笔记/引用</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.py" line="101"/>
@@ -3289,7 +3289,7 @@
     <message>
         <location filename="../manuskript/ui/search_ui.py" line="48"/>
         <source>Search for...</source>
-        <translation>查找……</translation>
+        <translation>查找…</translation>
     </message>
 </context>
 <context>
@@ -3682,7 +3682,7 @@
     <message>
         <location filename="../manuskript/ui/welcome_ui.py" line="139"/>
         <source>Open...</source>
-        <translation>打开...</translation>
+        <translation>打开…</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome_ui.py" line="140"/>
@@ -3707,7 +3707,7 @@
     <message>
         <location filename="../manuskript/ui/welcome.py" line="172"/>
         <source>Save project as...</source>
-        <translation>另存项目为...</translation>
+        <translation>另存项目为…</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="196"/>
