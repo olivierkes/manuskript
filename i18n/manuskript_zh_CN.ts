@@ -454,37 +454,37 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1580"/>
         <source>&amp;Navigation</source>
-        <translation>导航(&amp;N)</translation>
+        <translation>导航</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1581"/>
         <source>&amp;Open</source>
-        <translation>打开(&amp;O)</translation>
+        <translation>打开</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1582"/>
         <source>&amp;Save</source>
-        <translation>保存(&amp;S)</translation>
+        <translation>保存</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1583"/>
         <source>Sa&amp;ve as...</source>
-        <translation>另存为(&amp;V)...</translation>
+        <translation>另存为...</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1584"/>
         <source>&amp;Quit</source>
-        <translation>退出(&amp;Q)</translation>
+        <translation>退出</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1585"/>
         <source>&amp;Show help texts</source>
-        <translation>显示帮助(&amp;S)</translation>
+        <translation>显示帮助</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1586"/>
         <source>&amp;Spellcheck</source>
-        <translation>拼写检查(&amp;S)</translation>
+        <translation>拼写检查</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1587"/>
@@ -519,7 +519,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1594"/>
         <source>S&amp;ettings</source>
-        <translation>设置(&amp;E)</translation>
+        <translation>设置</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1595"/>
@@ -529,7 +529,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1596"/>
         <source>Co&amp;mpile</source>
-        <translation>编译(&amp;M)</translation>
+        <translation>编译</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1597"/>
@@ -658,7 +658,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1734"/>
         <source>Dictionary</source>
-        <translation>词典</translation>
+        <translation>词典（&amp;D）</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1882"/>
@@ -733,32 +733,32 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1601"/>
         <source>&amp;Copy</source>
-        <translation>复制(&amp;C)</translation>
+        <translation>复制</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1602"/>
         <source>C&amp;ut</source>
-        <translation>剪切(&amp;U)</translation>
+        <translation>剪切</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1603"/>
         <source>&amp;Paste</source>
-        <translation>粘贴(&amp;P)</translation>
+        <translation>粘贴</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1605"/>
         <source>Sp&amp;lit at cursor</source>
-        <translation>在光标处分割(&amp;L)</translation>
+        <translation>在光标处分割</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1609"/>
         <source>&amp;Move Up</source>
-        <translation>上移(&amp;M)</translation>
+        <translation>上移</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1610"/>
         <source>M&amp;ove Down</source>
-        <translation>下移(&amp;O)</translation>
+        <translation>下移</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1607"/>
@@ -768,12 +768,12 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1608"/>
         <source>&amp;Delete</source>
-        <translation>删除(&amp;D)</translation>
+        <translation>删除</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1613"/>
         <source>&amp;Rename</source>
-        <translation>重命名(&amp;R)</translation>
+        <translation>重命名</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1576"/>
@@ -798,17 +798,17 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1614"/>
         <source>&amp;Level 1 (setext)</source>
-        <translation>一级标题 (setext)</translation>
+        <translation>一级标题 （===）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1615"/>
         <source>Level &amp;2</source>
-        <translation>二级标题</translation>
+        <translation>二级标题（---）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1616"/>
         <source>Level &amp;1 (atx)</source>
-        <translation>一级标题 (atx)</translation>
+        <translation>一级标题</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1617"/>
@@ -838,12 +838,12 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1622"/>
         <source>&amp;Bold</source>
-        <translation>粗体(&amp;B)</translation>
+        <translation>粗体</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1623"/>
         <source>&amp;Italic</source>
-        <translation>斜体(&amp;I)</translation>
+        <translation>斜体</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1624"/>
@@ -858,27 +858,27 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1626"/>
         <source>Su&amp;perscript</source>
-        <translation>上标(&amp;P)</translation>
+        <translation>上标</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1627"/>
         <source>Subsc&amp;ript</source>
-        <translation>下标(&amp;R)</translation>
+        <translation>下标</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1628"/>
         <source>Co&amp;mment block</source>
-        <translation>块注释(&amp;M)</translation>
+        <translation>块注释</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1629"/>
         <source>Clear &amp;formats</source>
-        <translation>清除格式(&amp;F)</translation>
+        <translation>清除格式</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1630"/>
         <source>&amp;Comment line(s)</source>
-        <translation>行注释(&amp;C)</translation>
+        <translation>行注释</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1631"/>
@@ -963,7 +963,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1637"/>
         <source>&amp;Technical Support</source>
-        <translation>&amp;技术支持</translation>
+        <translation>技术支持</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1638"/>
@@ -973,7 +973,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1639"/>
         <source>&amp;Locate log file...</source>
-        <translation>&amp;定位日志文件...</translation>
+        <translation>定位日志文件...</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1640"/>
@@ -1043,17 +1043,17 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1600"/>
         <source>&amp;Import…</source>
-        <translation>&amp;导入…</translation>
+        <translation>导入…</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1604"/>
         <source>&amp;Split…</source>
-        <translation>&amp;分割…</translation>
+        <translation>分割…</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1634"/>
         <source>&amp;Targets</source>
-        <translation>&amp;目标</translation>
+        <translation>目标</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1635"/>
@@ -1108,12 +1108,12 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1611"/>
         <source>Go &amp;back</source>
-        <translation>向后(&amp;B)</translation>
+        <translation>向后</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1612"/>
         <source>Go &amp;forward</source>
-        <translation>向前(&amp;F)</translation>
+        <translation>向前</translation>
     </message>
 </context>
 <context>
@@ -2517,7 +2517,7 @@
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="162"/>
         <source>Progress: Auto Show/Hide</source>
-        <translation>进度：自动显示 / 隐藏</translation>
+        <translation>进度：自动显示/隐藏</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="163"/>
@@ -2730,12 +2730,12 @@
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="347"/>
         <source>({} chars) {}  words / {} </source>
-        <translation>({} 文字) {}  词 / {} </translation>
+        <translation>({} 文字) {}  词/ {} </translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="353"/>
         <source>{}  words / {} </source>
-        <translation>{}  词 / {} </translation>
+        <translation>{}  词/ {} </translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="368"/>
