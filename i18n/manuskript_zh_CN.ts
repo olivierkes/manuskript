@@ -214,7 +214,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1502"/>
         <source>One sentence</source>
-        <translation>一句话</translation>
+        <translation>一句</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1544"/>
@@ -454,7 +454,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1580"/>
         <source>&amp;Navigation</source>
-        <translation>导航(&amp;N)</translation>
+        <translation>导航（&amp;N）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1581"/>
@@ -1103,7 +1103,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1577"/>
         <source>&amp;Navigate</source>
-        <translation>导航(&amp;N)</translation>
+        <translation>导航（&amp;N）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1611"/>
