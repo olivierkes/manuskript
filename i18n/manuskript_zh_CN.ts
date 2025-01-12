@@ -89,7 +89,7 @@
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="112"/>
         <source>Phrase frequency</source>
-        <translation>短语频率</translation>
+        <translation>词组频</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="109"/>
@@ -125,7 +125,7 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="631"/>
         <source>The protocol &quot;{}&quot; is not supported.</source>
-        <translation>不支持该 &quot;{}&quot;接口。</translation>
+        <translation>不支持该“{}”接口。</translation>
     </message>
 </context>
 <context>
@@ -141,7 +141,7 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="543"/>
         <source>{} (CTRL+Click to open)</source>
-        <translation>{} （按住CTRL并点击以打开)</translation>
+        <translation>{}（按住CTRL并点击以打开）</translation>
     </message>
 </context>
 <context>
@@ -559,32 +559,32 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1216"/>
         <source>Project {} saved.</source>
-        <translation>已保存 {} 项目。</translation>
+        <translation>已保存{}项目。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1220"/>
         <source>WARNING: Project {} not saved.</source>
-        <translation>警告：项目 {} 未保存。</translation>
+        <translation>警告：项目{}未保存。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1240"/>
         <source>Project {} loaded.</source>
-        <translation>项目 {} 已载入。</translation>
+        <translation>项目{}已载入。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1246"/>
         <source>Project {} loaded with some errors.</source>
-        <translation>载入项目 {} 时遇到错误。</translation>
+        <translation>载入项目{}时遇到错误。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1613"/>
         <source> (~{} pages)</source>
-        <translation> （~{} 页）</translation>
+        <translation> （～{}页）</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1616"/>
         <source>Words: {}{}</source>
-        <translation>词数： {}{}</translation>
+        <translation>词数：{}{}</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1624"/>
@@ -903,22 +903,22 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="925"/>
         <source>The file {} does not exist. Has it been moved or deleted?</source>
-        <translation>文件 {} 不存在。是否被移除？</translation>
+        <translation>文件{}不存在。是否被移除？</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1748"/>
         <source>Install {}{} to use spellcheck</source>
-        <translation>安装 {}{} 以使用拼写检查</translation>
+        <translation>安装{}{}以使用拼写检查</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1790"/>
         <source>{} has no installed dictionaries</source>
-        <translation>{} 未装词典</translation>
+        <translation>{}未装词典</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1811"/>
         <source>{}{} is not installed</source>
-        <translation>{}{} 未装</translation>
+        <translation>{}{}未装</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1027"/>
@@ -943,7 +943,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="2010"/>
         <source>PyQt {} and Qt {} are in use.</source>
-        <translation>正在使用 PyQt {} 和Qt {} 。</translation>
+        <translation>正在使用 PyQt {}和 Qt {} 。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="2016"/>
@@ -1559,7 +1559,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1978"/>
         <source>No Image</source>
-        <translation>无图像</translation>
+        <translation>无图</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1979"/>
@@ -1619,12 +1619,12 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1995"/>
         <source>Corner radius:</source>
-        <translation>角半径：</translation>
+        <translation>角径：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1996"/>
         <source>Margins:</source>
-        <translation>外距：</translation>
+        <translation>边距：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1998"/>
@@ -1694,12 +1694,12 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1929"/>
         <source>Left/Right margins:</source>
-        <translation>左右外距：</translation>
+        <translation>左右边距：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1931"/>
         <source>Top/Bottom margins:</source>
-        <translation>上下外距：</translation>
+        <translation>上下边距：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1840"/>
@@ -1806,7 +1806,7 @@
         <source>Show progress in chars next
  to words</source>
         <translation>在词数进度旁
-显示字符数进度</translation>
+显示字数进度</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1834"/>
@@ -2383,12 +2383,12 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings.py" line="343"/>
         <source>{}Level {} folder</source>
-        <translation>{}级别 {} 文件夹</translation>
+        <translation>{}级别{}文件夹</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings.py" line="346"/>
         <source>{}Level {} text</source>
-        <translation>{}级别 {} 文本</translation>
+        <translation>{}级别{}文本</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="542"/>
@@ -2421,7 +2421,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="96"/>
         <source>{} not found. Install it, or set path manually.</source>
-        <translation>未找到 {}，安装或手动指定路径。</translation>
+        <translation>未找到{}，安装或手动指定路径。</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="124"/>
@@ -2436,7 +2436,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="133"/>
         <source>Set {} executable path.</source>
-        <translation>设置 {} 可执行文件的路径。</translation>
+        <translation>设置{}可执行文件的路径。</translation>
     </message>
 </context>
 <context>
@@ -2444,7 +2444,7 @@
     <message>
         <location filename="../manuskript/ui/tools/frequencyAnalyzer.py" line="70"/>
         <source>Phrases</source>
-        <translation>短语</translation>
+        <translation>词组</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequencyAnalyzer.py" line="108"/>
@@ -2467,7 +2467,7 @@
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="364"/>
         <source>{} words / {}</source>
-        <translation>{} 词/ {}</translation>
+        <translation>{}词/{}</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="368"/>
@@ -2652,12 +2652,12 @@
     <message>
         <location filename="../manuskript/ui/editors/locker.py" line="94"/>
         <source>~{} h.</source>
-        <translation>~{} 小时。</translation>
+        <translation>～{} 小时。</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker.py" line="96"/>
         <source>~{} mn.</source>
-        <translation>~{} 分钟。</translation>
+        <translation>～{} 分钟。</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker.py" line="100"/>
@@ -2672,12 +2672,12 @@
     <message>
         <location filename="../manuskript/ui/editors/locker.py" line="104"/>
         <source>{} remaining</source>
-        <translation>剩余 {}</translation>
+        <translation>余{}</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker.py" line="109"/>
         <source>{} words remaining</source>
-        <translation>剩余 {} 词</translation>
+        <translation>余词{}</translation>
     </message>
 </context>
 <context>
@@ -2730,12 +2730,12 @@
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="347"/>
         <source>({} chars) {}  words / {} </source>
-        <translation>({} 字) {}  词/ {} </translation>
+        <translation>（{}字）{}词/{} </translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="353"/>
         <source>{}  words / {} </source>
-        <translation>{}  词/ {} </translation>
+        <translation>{}词/{} </translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="368"/>
@@ -3132,7 +3132,7 @@
     <message>
         <location filename="../manuskript/ui/views/plotTreeView.py" line="191"/>
         <source>**Plot:** {}</source>
-        <translation>**情节：** {}</translation>
+        <translation>**情节：**{}</translation>
     </message>
 </context>
 <context>
@@ -3216,7 +3216,7 @@
     <message>
         <location filename="../manuskript/ui/revisions.py" line="45"/>
         <source>Show modifications</source>
-        <translation>显示修改项</translation>
+        <translation>显示修改</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="52"/>
@@ -3231,7 +3231,7 @@
     <message>
         <location filename="../manuskript/ui/revisions.py" line="66"/>
         <source>Show modifications only</source>
-        <translation>仅显示修改项</translation>
+        <translation>仅示修改</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="110"/>
@@ -3271,7 +3271,7 @@
     <message>
         <location filename="../manuskript/ui/revisions.py" line="182"/>
         <source>Line {}:</source>
-        <translation>第 {} 行：</translation>
+        <translation>第{}行：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="261"/>
@@ -3510,7 +3510,7 @@
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="137"/>
         <source>of</source>
-        <translation>于</translation>
+        <translation>含</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="132"/>
@@ -3599,12 +3599,12 @@
     <message>
         <location filename="../manuskript/ui/views/treeView.py" line="48"/>
         <source>Expand {}</source>
-        <translation>展开 {}</translation>
+        <translation>展开{}</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/treeView.py" line="52"/>
         <source>Collapse {}</source>
-        <translation>折叠 {}</translation>
+        <translation>折叠{}</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/treeView.py" line="59"/>
@@ -3657,7 +3657,7 @@
     <message>
         <location filename="../manuskript/ui/welcome.py" line="247"/>
         <source>Research paper</source>
-        <translation>研究资料</translation>
+        <translation>研究论文</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="429"/>
@@ -3752,7 +3752,7 @@
     <message>
         <location filename="../manuskript/ui/welcome.py" line="239"/>
         <source>Trilogy</source>
-        <translation>三部曲</translation>
+        <translation>分部小说</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="239"/>
@@ -3777,7 +3777,7 @@
     <message>
         <location filename="../manuskript/ui/welcome.py" line="312"/>
         <source>of</source>
-        <translation>于</translation>
+        <translation>含</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="336"/>
@@ -3792,7 +3792,7 @@
     <message>
         <location filename="../manuskript/ui/welcome.py" line="395"/>
         <source>&lt;b&gt;Total:&lt;/b&gt; {} words (~ {} pages)</source>
-        <translation>&lt;b&gt;总计：&lt;/b&gt; {} 词 (~ {} 页)</translation>
+        <translation>&lt;b&gt;总计：&lt;/b&gt;{}词 (～{}页)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="416"/>
