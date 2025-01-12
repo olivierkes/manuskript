@@ -79,7 +79,7 @@
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="106"/>
         <source>Exclude words (comma separated):</source>
-        <translation>排除词（以逗号分隔）：</translation>
+        <translation>排除词（逗号分隔）：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="111"/>
@@ -549,7 +549,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1599"/>
         <source>About Manuskript</source>
-        <translation>关于 Manuskript</translation>
+        <translation>关于Manuskript</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1084"/>
@@ -658,7 +658,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1734"/>
         <source>Dictionary</source>
-        <translation>词典（&amp;D）</translation>
+        <translation>词典(&amp;D)</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1882"/>
@@ -798,7 +798,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1614"/>
         <source>&amp;Level 1 (setext)</source>
-        <translation>一级标题 （===）</translation>
+        <translation>一级标题（===）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1615"/>
@@ -943,7 +943,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="2010"/>
         <source>PyQt {} and Qt {} are in use.</source>
-        <translation>正在使用 PyQt {}和 Qt {} 。</translation>
+        <translation>正在使用 PyQt {}和 Qt {}。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="2016"/>
@@ -1003,12 +1003,12 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1557"/>
         <source>The log file &quot;{}&quot; will continue to be written to until Manuskript is closed.</source>
-        <translation>Manuskript 关闭前将继续写入日志“{}”。</translation>
+        <translation>Manuskript关闭前将继续写入日志“{}”。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1557"/>
         <source>It will now be displayed in your file manager, but is of limited use until you close Manuskript.</source>
-        <translation>它将显示在文件管理器中，但关闭 Manuskript 前，您对该文件操作受限。</translation>
+        <translation>它将显示在文件管理器中，但关闭Manuskript前，您对该文件操作受限。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1573"/>
@@ -1224,7 +1224,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1801"/>
         <source>Revisions are a way to keep track of modifications. For each text item, it stores any changes you make to the main text, allowing you to see and restoring previous versions.</source>
-        <translation>修订是种跟踪编辑内容的方法。 对于每个文本项，它会存储您对主文本所做的任何更改，以便您查看和恢复旧版。</translation>
+        <translation>修订是种跟踪编辑内容的方法。对于各文本项，它会存储您对主文本所做任何更改，以便查看和恢复旧版。</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1802"/>
@@ -1464,7 +1464,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2006"/>
         <source>1.5 lines</source>
-        <translation>1.5 行</translation>
+        <translation>1.5行</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2007"/>
@@ -1749,7 +1749,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1784"/>
         <source>Restarting Manuskript ensures all settings take effect.</source>
-        <translation>重启 Manuskript 以生效设置。</translation>
+        <translation>重启Manuskript以生效设置。</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1838"/>
@@ -1799,7 +1799,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1811"/>
         <source>&lt;p&gt;&lt;b&gt;The Revisions feature has been at the source of many reported issues. In this version of Manuskript it has been turned off by default for new projects in order to provide the best experience.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Why aren&apos;t these issues fixed already? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;We need your help to make Manuskript better!&lt;/a&gt;&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;修订功能被报告存在许多问题。在此版 Manuskript 中，当创建新项目时，默认关闭它以提供最佳体验。&lt;/b&gt;&lt;/p&gt;&lt;p&gt;为何这些问题还没修复？&lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;我们需要你帮助改善 Manuskript ！&lt;/a&gt;&lt;/p&gt;</translation>
+        <translation>&lt;p&gt;&lt;b&gt;修订功能被报有许多问题。此版Manuskript创建新项目时，默认关闭以使体验最佳。&lt;/b&gt;&lt;/p&gt;&lt;p&gt;为何这些问题还没修复？&lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;我们需要你帮助改善Manuskript！&lt;/a&gt;&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1788"/>
@@ -1869,7 +1869,7 @@
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="663"/>
         <source>&amp;Correction Suggestion</source>
-        <translation>更正建议 (&amp;C)</translation>
+        <translation>更正建议(&amp;C)</translation>
     </message>
 </context>
 <context>
@@ -1877,7 +1877,7 @@
     <message>
         <location filename="../manuskript/ui/about_ui.py" line="54"/>
         <source>About Manuskript</source>
-        <translation>关于 Manuskript</translation>
+        <translation>关于Manuskript</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/about_ui.py" line="55"/>
@@ -2195,7 +2195,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/exporter.py" line="64"/>
         <source>{} (not implemented yet)</source>
-        <translation>{} （未竟）</translation>
+        <translation>{}（未竟）</translation>
     </message>
 </context>
 <context>
@@ -2243,7 +2243,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="522"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Filters what items will be included in the final export.&lt;br/&gt;&lt;span style=&quot; color:#773333;&quot;&gt;(Not fully implemented yet.)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;项目过滤器会被包括在最终导出中&lt;br/&gt;&lt;span style=&quot; color:#773333;&quot;&gt;(尚未完全应用。)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;项目过滤器会被包括在最终导出中&lt;br/&gt;&lt;span style=&quot; color:#773333;&quot;&gt;（尚未完全应用。）&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="523"/>
@@ -2353,7 +2353,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="556"/>
         <source>If checked, uses regular expression for replacement. If unchecked, replaced as plain text.</source>
-        <translation>选中则用正则表达式替换。 否则替换为纯文本。</translation>
+        <translation>选中则以正则表达式替换。否则以纯文本。</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="561"/>
@@ -2426,7 +2426,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="124"/>
         <source>&lt;b&gt;Status:&lt;/b&gt; uninstalled.</source>
-        <translation>&lt;b&gt;状态：&lt;/b&gt; 未装。</translation>
+        <translation>&lt;b&gt;状态：&lt;/b&gt;未装。</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="126"/>
@@ -2472,7 +2472,7 @@
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="368"/>
         <source>{} words</source>
-        <translation>{} 词</translation>
+        <translation>{}词</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="153"/>
@@ -2550,7 +2550,7 @@
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.py" line="64"/>
         <source>Trim long titles (&gt; 32 chars)</source>
-        <translation>缩短标题（&gt; 32 字）</translation>
+        <translation>缩短标题（&gt;32字）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.py" line="65"/>
@@ -2652,12 +2652,12 @@
     <message>
         <location filename="../manuskript/ui/editors/locker.py" line="94"/>
         <source>~{} h.</source>
-        <translation>～{} 小时。</translation>
+        <translation>～{}小时。</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker.py" line="96"/>
         <source>~{} mn.</source>
-        <translation>～{} 分钟。</translation>
+        <translation>～{}分钟。</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker.py" line="100"/>
@@ -2667,7 +2667,7 @@
     <message>
         <location filename="../manuskript/ui/editors/locker.py" line="102"/>
         <source>{} s.</source>
-        <translation>{} 秒。</translation>
+        <translation>{}秒。</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker.py" line="104"/>
@@ -2725,7 +2725,7 @@
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="366"/>
         <source>{} words </source>
-        <translation>{} 词 </translation>
+        <translation>{}词 </translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="347"/>
@@ -2740,12 +2740,12 @@
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="368"/>
         <source>{} chars</source>
-        <translation>{} 字</translation>
+        <translation>{}字</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="362"/>
         <source>{} chars </source>
-        <translation>{} 字 </translation>
+        <translation>{}字 </translation>
     </message>
 </context>
 <context>
@@ -2840,7 +2840,7 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="255"/>
         <source>Custom settings for {}</source>
-        <translation>{} 自定义设置</translation>
+        <translation>{}自定义设置</translation>
     </message>
 </context>
 <context>
@@ -2936,47 +2936,47 @@
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>1. Setup</source>
-        <translation>1. 建立</translation>
+        <translation>1.建立</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>1. Inciting event</source>
-        <translation>1. 刺激事件</translation>
+        <translation>1.刺激事件</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>1. Turning point</source>
-        <translation>1. 转折点</translation>
+        <translation>1.转折点</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>2. Choice</source>
-        <translation>2. 选择</translation>
+        <translation>2.选择</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>2. Reversal</source>
-        <translation>2. 反转</translation>
+        <translation>2.反转</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>2. Disaster</source>
-        <translation>2. 灾难</translation>
+        <translation>2.灾难</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>3. Stand up</source>
-        <translation>3. 振作</translation>
+        <translation>3.振作</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>3. Climax</source>
-        <translation>3. 高潮</translation>
+        <translation>3.高潮</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>3. Ending</source>
-        <translation>3. 结束</translation>
+        <translation>3.结束</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3046,12 +3046,12 @@
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Plot Turn 1</source>
-        <translation>情节转折 1</translation>
+        <translation>情节转折1</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Pinch 1</source>
-        <translation>危急 1</translation>
+        <translation>危急1</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3061,12 +3061,12 @@
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Pinch 2</source>
-        <translation>危急 2</translation>
+        <translation>危急2</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Plot Turn 2</source>
-        <translation>情节转折 2</translation>
+        <translation>情节转折2</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3236,37 +3236,37 @@
     <message>
         <location filename="../manuskript/ui/revisions.py" line="110"/>
         <source>{} years ago</source>
-        <translation>{} 年前</translation>
+        <translation>{}年前</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="112"/>
         <source>{} months ago</source>
-        <translation>{} 月前</translation>
+        <translation>{}月前</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="114"/>
         <source>{} days ago</source>
-        <translation>{} 天前</translation>
+        <translation>{}天前</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="116"/>
         <source>1 day ago</source>
-        <translation>1 天前</translation>
+        <translation>1天前</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="118"/>
         <source>{} hours ago</source>
-        <translation>{} 小时前</translation>
+        <translation>{}小时前</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="120"/>
         <source>{} minutes ago</source>
-        <translation>{} 分钟前</translation>
+        <translation>{}分钟前</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="122"/>
         <source>{} seconds ago</source>
-        <translation>{} 秒钟前</translation>
+        <translation>{}秒前</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/revisions.py" line="182"/>
@@ -3355,7 +3355,7 @@
     <message>
         <location filename="../manuskript/settingsWindow.py" line="534"/>
         <source>Image files (*.jpg; *.jpeg; *.png)</source>
-        <translation>图像文件（*.jpg、*.jpeg、*.png）</translation>
+        <translation>图像文件(*.jpg; *.jpeg; *.png)</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="550"/>
@@ -3441,7 +3441,7 @@
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="47"/>
         <source>Split &apos;{}&apos;</source>
-        <translation>分割 &apos;{}&apos;</translation>
+        <translation>分割“{}”</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="51"/>
@@ -3702,7 +3702,7 @@
     <message>
         <location filename="../manuskript/ui/welcome.py" line="158"/>
         <source>Manuskript project (*.msk);;All files (*)</source>
-        <translation>Manuskript 项目 (*.msk);;所有文件 (*)</translation>
+        <translation>Manuskript项目(*.msk);;所有文件(*)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="172"/>
@@ -3712,7 +3712,7 @@
     <message>
         <location filename="../manuskript/ui/welcome.py" line="196"/>
         <source>Manuskript project (*.msk)</source>
-        <translation>Manuskript 项目 (*.msk)</translation>
+        <translation>Manuskript项目(*.msk)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="188"/>
@@ -3732,7 +3732,7 @@
     <message>
         <location filename="../manuskript/ui/welcome.py" line="208"/>
         <source>Overwrite existing project {} ?</source>
-        <translation>覆盖已有项目：{} ？</translation>
+        <translation>覆盖已有项目：{}？</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="224"/>
@@ -3792,7 +3792,7 @@
     <message>
         <location filename="../manuskript/ui/welcome.py" line="395"/>
         <source>&lt;b&gt;Total:&lt;/b&gt; {} words (~ {} pages)</source>
-        <translation>&lt;b&gt;总计：&lt;/b&gt;{}词 (～{}页)</translation>
+        <translation>&lt;b&gt;总计：&lt;/b&gt;{}词（～{}页）</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="416"/>
