@@ -59,7 +59,7 @@
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="103"/>
         <source>Frequency Analyzer</source>
-        <translation>频率分析</translation>
+        <translation>频谱</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="108"/>
@@ -484,7 +484,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1586"/>
         <source>&amp;Spellcheck</source>
-        <translation>拼写检查</translation>
+        <translation>校订</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1587"/>
@@ -534,7 +534,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1597"/>
         <source>&amp;Frequency Analyzer</source>
-        <translation>频率分析(&amp;F)</translation>
+        <translation>频谱(&amp;F)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1488"/>
@@ -748,7 +748,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1605"/>
         <source>Sp&amp;lit at cursor</source>
-        <translation>分割于光标</translation>
+        <translation>分于光标</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1609"/>
@@ -848,7 +848,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1624"/>
         <source>&amp;Strike</source>
-        <translation>删除线(&amp;S)</translation>
+        <translation>删线(&amp;S)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1625"/>
@@ -908,7 +908,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1748"/>
         <source>Install {}{} to use spellcheck</source>
-        <translation>安装{}{}以使用拼写检查</translation>
+        <translation>安装{}{}以使用校订</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1790"/>
@@ -2283,7 +2283,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="539"/>
         <source>Custom</source>
-        <translation>自定义</translation>
+        <translation>自设</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="531"/>
@@ -2313,12 +2313,12 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="544"/>
         <source>Replace double quotes (&quot;) with:</source>
-        <translation>直双引号（&quot;）替换为：</translation>
+        <translation>替换直双引号（&quot;）为：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>直单引号（&apos;）替换为：</translation>
+        <translation>替换直单引号（&apos;）为：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>
@@ -2328,7 +2328,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="547"/>
         <source>Custom replacements:</source>
-        <translation>自定义替换：</translation>
+        <translation>自设替换：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="549"/>
@@ -2393,12 +2393,12 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="542"/>
         <source>Replace ... with …</source>
-        <translation>替换…以…</translation>
+        <translation>替换...为…</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="543"/>
         <source>Replace --- with —</source>
-        <translation>替换---以—</translation>
+        <translation>替换---为—</translation>
     </message>
 </context>
 <context>
@@ -2411,7 +2411,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="87"/>
         <source>Custom</source>
-        <translation>自定义</translation>
+        <translation>自设</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="93"/>
@@ -2477,7 +2477,7 @@
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="153"/>
         <source>Spellcheck</source>
-        <translation>拼写检查</translation>
+        <translation>校订</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="154"/>
@@ -2840,7 +2840,7 @@
     <message>
         <location filename="../manuskript/exporter/pandoc/abstractPlainText.py" line="255"/>
         <source>Custom settings for {}</source>
-        <translation>{}自定义设置</translation>
+        <translation>{}自设</translation>
     </message>
 </context>
 <context>
