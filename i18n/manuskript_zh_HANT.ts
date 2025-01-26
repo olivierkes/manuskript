@@ -1078,7 +1078,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="440"/>
         <source>Please add entries to apply to the selected characters.</source>
-        <translation>請加入條目以作用於所選人物。</translation>
+        <translation>請加入條目以作用於所選角色。</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="451"/>
@@ -1849,7 +1849,7 @@
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="538"/>
         <source>&amp;New Character</source>
-        <translation>新角色項(&amp;N)</translation>
+        <translation>新角色(&amp;N)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="545"/>
