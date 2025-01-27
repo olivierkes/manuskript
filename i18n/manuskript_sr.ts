@@ -11,12 +11,12 @@
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.py" line="166"/>
         <source>Manuskript</source>
-        <translation type="unfinished"></translation>
+        <translation>Рукопис</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.py" line="168"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Опис</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.py" line="169"/>
@@ -26,27 +26,27 @@
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.py" line="170"/>
         <source>Status</source>
-        <translation type="unfinished"></translation>
+        <translation>Статус</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.py" line="171"/>
         <source>Status:</source>
-        <translation type="unfinished"></translation>
+        <translation>Статус:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.py" line="172"/>
         <source>Version:</source>
-        <translation type="unfinished"></translation>
+        <translation>Верзија:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.py" line="173"/>
         <source>Path:</source>
-        <translation type="unfinished"></translation>
+        <translation>Путања:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.py" line="174"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.py" line="175"/>
@@ -69,12 +69,12 @@
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="104"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Подешавања</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="105"/>
         <source>Minimum size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Минимална величина:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="106"/>
@@ -84,7 +84,7 @@
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="111"/>
         <source>Analyze</source>
-        <translation type="unfinished"></translation>
+        <translation>Анализирај</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="112"/>
@@ -107,12 +107,12 @@
     <message>
         <location filename="../manuskript/ui/listDialog_ui.py" line="43"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>Наслов</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/listDialog_ui.py" line="44"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation>Текст</translation>
     </message>
 </context>
 <context>
@@ -120,7 +120,7 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="619"/>
         <source>The image path or URL is incomplete or malformed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Путања или веб адреса слике су непотпуни или у погрешном формату.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="631"/>
@@ -133,7 +133,7 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditCompleter.py" line="73"/>
         <source>Insert reference</source>
-        <translation type="unfinished"></translation>
+        <translation>Убаци референцу</translation>
     </message>
 </context>
 <context>
@@ -141,7 +141,7 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="543"/>
         <source>{} (CTRL+Click to open)</source>
-        <translation type="unfinished"></translation>
+        <translation>{} (CTRL+ Клик миша да би се отворило)</translation>
     </message>
 </context>
 <context>
@@ -154,12 +154,12 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1489"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>Наслов</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1490"/>
         <source>Subtitle</source>
-        <translation type="unfinished"></translation>
+        <translation>Поднаслов</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1491"/>
@@ -179,17 +179,17 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1494"/>
         <source>License</source>
-        <translation type="unfinished"></translation>
+        <translation>Лиценца</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1495"/>
         <source>Author</source>
-        <translation type="unfinished"></translation>
+        <translation>Аутор</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1551"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Име</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1497"/>
@@ -199,7 +199,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1543"/>
         <source>Summary</source>
-        <translation type="unfinished"></translation>
+        <translation>Резиме</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1499"/>
@@ -209,22 +209,22 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1539"/>
         <source>Summary:</source>
-        <translation type="unfinished"></translation>
+        <translation>Резиме:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1502"/>
         <source>One sentence</source>
-        <translation type="unfinished"></translation>
+        <translation>Једна реченица</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1544"/>
         <source>One paragraph</source>
-        <translation type="unfinished"></translation>
+        <translation>Један параграф</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1545"/>
         <source>One page</source>
-        <translation type="unfinished"></translation>
+        <translation>Једна страница</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1546"/>
@@ -259,7 +259,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1500"/>
         <source>What if...?</source>
-        <translation type="unfinished"></translation>
+        <translation>Шта ако...?</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="24"/>
@@ -274,17 +274,17 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1548"/>
         <source>Filter</source>
-        <translation type="unfinished"></translation>
+        <translation>Филтер</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1538"/>
         <source>Basic info</source>
-        <translation type="unfinished"></translation>
+        <translation>Основне информације</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1534"/>
         <source>Importance</source>
-        <translation type="unfinished"></translation>
+        <translation>Важност</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1519"/>
@@ -294,7 +294,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1520"/>
         <source>Goal</source>
-        <translation type="unfinished"></translation>
+        <translation>Циљ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1521"/>
@@ -324,7 +324,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1529"/>
         <source>Detailed info</source>
-        <translation type="unfinished"></translation>
+        <translation>Детаљне информације</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1562"/>
@@ -334,7 +334,7 @@
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="27"/>
         <source>Plot</source>
-        <translation type="unfinished"></translation>
+        <translation>Заплет</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1535"/>
@@ -359,7 +359,7 @@
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="26"/>
         <source>World</source>
-        <translation type="unfinished"></translation>
+        <translation>Свет</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1550"/>
@@ -369,7 +369,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1556"/>
         <source>More</source>
-        <translation type="unfinished"></translation>
+        <translation>Више</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1554"/>
@@ -3347,7 +3347,7 @@
     <message>
         <location filename="../manuskript/settingsWindow.py" line="534"/>
         <source>Open Image</source>
-        <translation type="unfinished"></translation>
+        <translation>Отвори слику</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="534"/>
@@ -3357,12 +3357,12 @@
     <message>
         <location filename="../manuskript/settingsWindow.py" line="550"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Грешка</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="547"/>
         <source>Unable to load selected file</source>
-        <translation type="unfinished"></translation>
+        <translation>Није могуће учитати изабрани документ</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="550"/>
@@ -3396,7 +3396,7 @@
     <message>
         <location filename="../manuskript/ui/views/sldImportance.py" line="31"/>
         <source>Main</source>
-        <translation type="unfinished"></translation>
+        <translation>Главно</translation>
     </message>
 </context>
 <context>
@@ -3441,7 +3441,7 @@
     <message>
         <location filename="../manuskript/ui/views/storylineView.py" line="36"/>
         <source>Show Plots</source>
-        <translation type="unfinished"></translation>
+        <translation>Прикажи заплете</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/storylineView.py" line="43"/>
@@ -3487,7 +3487,7 @@
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="136"/>
         <source>0</source>
-        <translation type="unfinished"></translation>
+        <translation>0</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="137"/>
@@ -3497,12 +3497,12 @@
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="132"/>
         <source>10,000</source>
-        <translation type="unfinished"></translation>
+        <translation>10,000</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="133"/>
         <source>Words</source>
-        <translation type="unfinished"></translation>
+        <translation>Речи</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="134"/>
@@ -3512,12 +3512,12 @@
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="135"/>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Из почетка</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="138"/>
         <source>words</source>
-        <translation type="unfinished"></translation>
+        <translation>речи</translation>
     </message>
 </context>
 <context>
@@ -3609,7 +3609,7 @@
     <message>
         <location filename="../manuskript/ui/welcome_ui.py" line="125"/>
         <source>1</source>
-        <translation type="unfinished"></translation>
+        <translation>1</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome_ui.py" line="128"/>
@@ -3664,7 +3664,7 @@
     <message>
         <location filename="../manuskript/ui/welcome_ui.py" line="139"/>
         <source>Open...</source>
-        <translation type="unfinished"></translation>
+        <translation>Отвори...</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome_ui.py" line="140"/>
@@ -3709,7 +3709,7 @@
     <message>
         <location filename="../manuskript/ui/welcome.py" line="208"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>Упозорење</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="208"/>
@@ -3764,7 +3764,7 @@
     <message>
         <location filename="../manuskript/ui/welcome.py" line="336"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation>Текст</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="339"/>
@@ -3892,7 +3892,7 @@
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Food</source>
-        <translation type="unfinished"></translation>
+        <translation>Храна</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
@@ -3962,7 +3962,7 @@
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Military</source>
-        <translation type="unfinished"></translation>
+        <translation>Војска</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
