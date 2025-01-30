@@ -3604,7 +3604,7 @@
     <message>
         <location filename="../manuskript/ui/welcome_ui.py" line="124"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Од</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome_ui.py" line="125"/>
@@ -3614,32 +3614,32 @@
     <message>
         <location filename="../manuskript/ui/welcome_ui.py" line="128"/>
         <source>Templates</source>
-        <translation type="unfinished"></translation>
+        <translation>Шаблони</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome_ui.py" line="129"/>
         <source>Empty</source>
-        <translation type="unfinished"></translation>
+        <translation>Празно</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="225"/>
         <source>Novel</source>
-        <translation type="unfinished"></translation>
+        <translation>Роман</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="230"/>
         <source>Novella</source>
-        <translation type="unfinished"></translation>
+        <translation>Новела</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="235"/>
         <source>Short Story</source>
-        <translation type="unfinished"></translation>
+        <translation>Кратка прича</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="247"/>
         <source>Research paper</source>
-        <translation type="unfinished"></translation>
+        <translation>Истраживачки рад</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="429"/>
@@ -3669,17 +3669,17 @@
     <message>
         <location filename="../manuskript/ui/welcome_ui.py" line="140"/>
         <source>Recent</source>
-        <translation type="unfinished"></translation>
+        <translation>Недавно</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome_ui.py" line="141"/>
         <source>Create</source>
-        <translation type="unfinished"></translation>
+        <translation>Направи</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="158"/>
         <source>Open project</source>
-        <translation type="unfinished"></translation>
+        <translation>Отвори пројекат</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="158"/>
@@ -3689,7 +3689,7 @@
     <message>
         <location filename="../manuskript/ui/welcome.py" line="172"/>
         <source>Save project as...</source>
-        <translation type="unfinished"></translation>
+        <translation>Сачувај пројекат као...</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="196"/>
@@ -3739,7 +3739,7 @@
     <message>
         <location filename="../manuskript/ui/welcome.py" line="239"/>
         <source>Book</source>
-        <translation type="unfinished"></translation>
+        <translation>Књига</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="247"/>
@@ -3789,7 +3789,7 @@
     <message>
         <location filename="../manuskript/ui/welcome.py" line="457"/>
         <source>Idea</source>
-        <translation type="unfinished"></translation>
+        <translation>Идеја</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="458"/>
@@ -3842,7 +3842,7 @@
     <message>
         <location filename="../manuskript/models/worldModel.py" line="251"/>
         <source>Climate</source>
-        <translation type="unfinished"></translation>
+        <translation>Клима</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="251"/>
@@ -3897,12 +3897,12 @@
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Languages</source>
-        <translation type="unfinished"></translation>
+        <translation>Језици</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Education</source>
-        <translation type="unfinished"></translation>
+        <translation>Образовање</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
