@@ -94,12 +94,12 @@
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="109"/>
         <source>Number of words: from</source>
-        <translation type="unfinished"></translation>
+        <translation>Број речи: од</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="110"/>
         <source>to</source>
-        <translation type="unfinished"></translation>
+        <translation>до</translation>
     </message>
 </context>
 <context>
@@ -269,7 +269,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1514"/>
         <source>Names</source>
-        <translation type="unfinished"></translation>
+        <translation>Имена</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1548"/>
@@ -319,7 +319,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1527"/>
         <source>Notes</source>
-        <translation type="unfinished"></translation>
+        <translation>Белешке</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1529"/>
@@ -329,7 +329,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1562"/>
         <source>Plots</source>
-        <translation type="unfinished"></translation>
+        <translation>Заплети</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="27"/>
@@ -344,12 +344,12 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1552"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Опис</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1537"/>
         <source>Result</source>
-        <translation type="unfinished"></translation>
+        <translation>Резултат</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1542"/>
