@@ -683,7 +683,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1886"/>
         <source>Compile</source>
-        <translation>Экспорт</translation>
+        <translation>Компиляция</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1909"/>
@@ -1314,7 +1314,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1915"/>
         <source>Compile</source>
-        <translation>Экспорт</translation>
+        <translation>Компиляция</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1892"/>
@@ -1923,7 +1923,7 @@
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="223"/>
         <source>Compile</source>
-        <translation>Экспорт</translation>
+        <translation>Компиляция</translation>
     </message>
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="225"/>
@@ -3178,7 +3178,7 @@
     <message>
         <location filename="../manuskript/ui/views/propertiesView_ui.py" line="183"/>
         <source>Compile</source>
-        <translation>Экспорт</translation>
+        <translation>Компиляция</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/propertiesView_ui.py" line="184"/>
