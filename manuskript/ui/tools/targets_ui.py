@@ -112,7 +112,7 @@ class Ui_targets(object):
         self.session_target.setDecimals(0)
         self.session_target.setMaximum(99999999999999.0)
         self.session_target.setSingleStep(50.0)
-        self.session_target.setProperty("value", 500.0)
+        self.session_target.setProperty("value", 1667.0)
         self.session_target.setObjectName("session_target")
         self.horizontalLayout_3.addWidget(self.session_target)
         self.label_5 = QtWidgets.QLabel(targets)

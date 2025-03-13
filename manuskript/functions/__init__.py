@@ -100,11 +100,16 @@ def drawProgress(painter, rect, progress, radius=0):
 
 
 def colorFromProgress(progress):
-    progress = toFloat(progress)
+    from manuskript.ui import style as S
     c1 = QColor(Qt.red)
     c2 = QColor(Qt.blue)
     c3 = QColor(Qt.darkGreen)
     c4 = QColor("#FFA500")
+    c5 = QColor(S.base)
+    if progress == "c5":
+        return c5
+    else:
+        progress = toFloat(progress)
 
     if progress < 0.3:
         return c1
@@ -231,8 +236,11 @@ def outlineItemColors(item):
     colors["Label"] = col
 
     # Progress
-    pg = item.data(Outline.goalPercentage)
-    colors["Progress"] = colorFromProgress(pg)
+    if item.data(Outline.setGoal):
+        pg = item.data(Outline.goalPercentage)
+        colors["Progress"] = colorFromProgress(pg)
+    else:
+        colors["Progress"] = colorFromProgress("c5")
 
     # Compile
     if item.compile() in [0, "0"]:
