@@ -361,7 +361,7 @@ class welcome(QWidget, Ui_welcome):
         for s in self.findChildren(QSpinBox, QRegExp(".*"),
                                    Qt.FindChildrenRecursively):
             templateIndex = s.property("templateIndex")
-            if (not templateIndex) or (templateIndex >= len(self.template[1])):
+            if (templateIndex is None) or (templateIndex >= len(self.template[1])):
                 continue
 
             # Update self.template to reflect the changed count values
@@ -372,7 +372,7 @@ class welcome(QWidget, Ui_welcome):
         for t in self.findChildren(QLineEdit, QRegExp(".*"),
                                    Qt.FindChildrenRecursively):
             templateIndex = t.property("templateIndex")
-            if (not templateIndex) or (templateIndex >= len(self.template[1])):
+            if (templateIndex is None) or (templateIndex >= len(self.template[1])):
                 continue
 
             # Update self.template to reflect the changed name values
