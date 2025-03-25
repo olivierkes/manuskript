@@ -266,17 +266,49 @@ class mainEditor(QWidget, Ui_mainEditor):
     # FUNCTIONS FOR MENU ACCESS
     ###############################################################################
 
-    def copy(self): self.currentEditor().copy()
-    def cut(self): self.currentEditor().cut()
-    def paste(self): self.currentEditor().paste()
-    def rename(self): self.currentEditor().rename()
-    def duplicate(self): self.currentEditor().duplicate()
-    def delete(self): self.currentEditor().delete()
-    def moveUp(self): self.currentEditor().moveUp()
-    def moveDown(self): self.currentEditor().moveDown()
-    def splitDialog(self): self.currentEditor().splitDialog()
-    def splitCursor(self): self.currentEditor().splitCursor()
-    def merge(self): self.currentEditor().merge()
+    def copy(self):
+        if self.currentEditor():
+            self.currentEditor().copy()
+    
+    def cut(self):
+        if self.currentEditor():
+            self.currentEditor().cut()
+    
+    def paste(self):
+        if self.currentEditor():
+            self.currentEditor().paste()
+    
+    def rename(self):
+        if self.currentEditor():
+            self.currentEditor().rename()
+    
+    def duplicate(self):
+        if self.currentEditor():
+            self.currentEditor().duplicate()
+    
+    def delete(self):
+        if self.currentEditor():
+            self.currentEditor().delete()
+    
+    def moveUp(self):
+        if self.currentEditor():
+            self.currentEditor().moveUp()
+    
+    def moveDown(self):
+        if self.currentEditor():
+            self.currentEditor().moveDown()
+    
+    def splitDialog(self):
+        if self.currentEditor():
+            self.currentEditor().splitDialog()
+    
+    def splitCursor(self):
+        if self.currentEditor():
+            self.currentEditor().splitCursor()
+    
+    def merge(self):
+        if self.currentEditor():
+            self.currentEditor().merge()
 
     ###############################################################################
     # UI
