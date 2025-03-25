@@ -60,12 +60,13 @@ class textEditView(QTextEdit):
 
         # Submit text changed only after 500ms without modifications
         self.updateTimer = QTimer()
+        self.updateTimer.destroyed.connect(self.cleanupTimer)
         self.updateTimer.setInterval(500)
         self.updateTimer.setSingleShot(True)
         self.updateTimer.timeout.connect(self.submit)
 
         self.updateTimer.stop()
-        self.document().contentsChanged.connect(self.updateTimer.start, F.AUC)
+        self.updateTimerConnection = self.document().contentsChanged.connect(self.updateTimer.start, F.AUC)
 
         self.setEnabled(False)
 
@@ -87,19 +88,13 @@ class textEditView(QTextEdit):
             self.highlighter = self._highlighterClass(self)
             self.highlighter.setDefaultBlockFormat(self._defaultBlockFormat)
     
-    def disableTimer(self):
+    def cleanupTimer(self):
         if self.updateTimer:
-            self.updateTimer.stop()
             self.disconnectDocument()
-
             self.updateTimer = None
     
-    def hideEvent(self, event):
-        self.disableTimer()
-        QTextEdit.hideEvent(self, event)
-    
     def __del__(self):
-        self.disableTimer()
+        self.cleanupTimer()
 
     def setModel(self, model):
         self._model = model
@@ -282,19 +277,20 @@ class textEditView(QTextEdit):
             self.updateText()
 
     def disconnectDocument(self):
-        if not self.updateTimer:
+        if not self.updateTimerConnection:
             return
 
         try:
-            self.document().contentsChanged.disconnect(self.updateTimer.start)
+            self.document().contentsChanged.disconnect(self.updateTimerConnection)
+            self.updateTimerConnection = None
         except:
             pass
 
     def reconnectDocument(self):
-        if not self.updateTimer:
+        if not self.updateTimer or self.updateTimerConnection:
             return
 
-        self.document().contentsChanged.connect(self.updateTimer.start, F.AUC)
+        self.updateTimerConnection = self.document().contentsChanged.connect(self.updateTimer.start, F.AUC)
 
     def toIdealText(self):
         """QTextDocument::toPlainText() replaces NBSP with spaces, which we don't want.
