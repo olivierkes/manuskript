@@ -58,20 +58,14 @@ class textEditView(QTextEdit):
         self._dict = None
         self._tooltip = { 'depth' : 0, 'active' : 0 }
 
-        # self.document().contentsChanged.connect(self.submit, F.AUC)
-
         # Submit text changed only after 500ms without modifications
         self.updateTimer = QTimer()
         self.updateTimer.setInterval(500)
         self.updateTimer.setSingleShot(True)
         self.updateTimer.timeout.connect(self.submit)
-        # self.updateTimer.timeout.connect(lambda: LOGGER.debug("Timeout."))
 
         self.updateTimer.stop()
         self.document().contentsChanged.connect(self.updateTimer.start, F.AUC)
-        # self.document().contentsChanged.connect(lambda: LOGGER.debug("Document changed."))
-
-        # self.document().contentsChanged.connect(lambda: LOGGER.debug("Contents changed: %s", self.objectName()))
 
         self.setEnabled(False)
 
@@ -92,6 +86,20 @@ class textEditView(QTextEdit):
         if self._highlighting and not self.highlighter:
             self.highlighter = self._highlighterClass(self)
             self.highlighter.setDefaultBlockFormat(self._defaultBlockFormat)
+    
+    def disableTimer(self):
+        if self.updateTimer:
+            self.updateTimer.stop()
+            self.disconnectDocument()
+
+            self.updateTimer = None
+    
+    def hideEvent(self, event):
+        self.disableTimer()
+        QTextEdit.hideEvent(self, event)
+    
+    def __del__(self):
+        self.disableTimer()
 
     def setModel(self, model):
         self._model = model
@@ -274,12 +282,18 @@ class textEditView(QTextEdit):
             self.updateText()
 
     def disconnectDocument(self):
+        if not self.updateTimer:
+            return
+
         try:
             self.document().contentsChanged.disconnect(self.updateTimer.start)
         except:
             pass
 
     def reconnectDocument(self):
+        if not self.updateTimer:
+            return
+
         self.document().contentsChanged.connect(self.updateTimer.start, F.AUC)
 
     def toIdealText(self):
@@ -327,7 +341,8 @@ class textEditView(QTextEdit):
         self._updating.unlock()
 
     def submit(self):
-        self.updateTimer.stop()
+        if self.updateTimer:
+            self.updateTimer.stop()
 
         self._updating.lock()
         text = self.toIdealText()
