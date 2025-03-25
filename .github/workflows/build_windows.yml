@@ -29,7 +29,7 @@ jobs:
         os: [windows-latest]
     steps:
     # We use the version from this commit and not just the current branch.  This is for R&D builds too.
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v4
       with:
@@ -53,7 +53,7 @@ jobs:
 
     # https://docs.github.com/en/actions/using-workflows/storing-workflow-data-as-artifacts
     - name: Upload Artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: manuskript_windows
         path: ./dist/manuskript/
