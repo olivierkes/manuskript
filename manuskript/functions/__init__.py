@@ -109,11 +109,6 @@ def colorFromProgress(progress):
     c2 = QColor(Qt.blue)
     c3 = QColor(Qt.darkGreen)
     c4 = QColor("#FFA500")
-    c5 = QColor(S.base)
-    if progress == "c5":
-        return c5
-    else:
-        progress = toFloat(progress)
 
     if progress < 0.3:
         return c1
