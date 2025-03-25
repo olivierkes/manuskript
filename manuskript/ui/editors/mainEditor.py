@@ -127,7 +127,6 @@ class mainEditor(QWidget, Ui_mainEditor):
         if tabWidget == None:
             tabWidget = self.currentTabWidget()
         return tabWidget.currentWidget()
-        # return self.tab.currentWidget()
 
     def tabChanged(self, index=QModelIndex()):
         if self.currentEditor():
