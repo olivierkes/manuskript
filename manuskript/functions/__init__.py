@@ -101,7 +101,7 @@ def drawProgress(painter, rect, progress, radius=0):
 def colorFromProgress(progress):
     c0 = QColor("#00000000")
 
-    if not progress:
+    if progress is None:
         return c0
 
     progress = toFloat(progress)
