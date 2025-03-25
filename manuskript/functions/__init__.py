@@ -86,12 +86,11 @@ def toString(text):
 
 
 def drawProgress(painter, rect, progress, radius=0):
-    from manuskript.ui import style as S
-    progress = toFloat(progress)  # handle invalid input (issue #561)
     painter.setPen(Qt.NoPen)
-    painter.setBrush(QColor(S.base)) # "#dddddd"
+    painter.setBrush(QBrush(colorFromProgress(None)))
     painter.drawRoundedRect(rect, radius, radius)
 
+    progress = toFloat(progress)
     painter.setBrush(QBrush(colorFromProgress(progress)))
 
     r2 = QRect(rect)
@@ -100,6 +99,11 @@ def drawProgress(painter, rect, progress, radius=0):
 
 
 def colorFromProgress(progress):
+    c0 = QColor("#00000000")
+
+    if not progress:
+        return c0
+
     progress = toFloat(progress)
     c1 = QColor(Qt.red)
     c2 = QColor(Qt.blue)
@@ -202,7 +206,6 @@ def mixColors(col1, col2, f=0.5):
 
 
 def outlineItemColors(item):
-
     from manuskript.ui import style as S
 
     """Takes an OutlineItem and returns a dict of colors."""
@@ -231,7 +234,7 @@ def outlineItemColors(item):
     colors["Label"] = col
 
     # Progress
-    pg = item.data(Outline.goalPercentage)
+    pg = item.data(Outline.goalPercentage) if item.data(Outline.setGoal) else None
     colors["Progress"] = colorFromProgress(pg)
 
     # Compile
