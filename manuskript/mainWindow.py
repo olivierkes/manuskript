@@ -186,8 +186,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.td = None  # Targets Dialog
         self.fw = None  # Frequency Window
 
-        # self.loadProject(os.path.join(appPath(), "test_project.zip"))
-
         # Bulk Character Info Management
         self.tabsData = self.saveCharacterTabs()  # Used for restoring tabsData with loadCharacterTabs() methods.
         self.BulkManageUi = None
@@ -933,7 +931,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
             # Load data
             self.loadEmptyDatas()
-            self.loadDatas(project)
+            
+            if not self.loadDatas(project):
+                self.closeProject()
+                return
 
         self.makeConnections()
 
@@ -1231,7 +1232,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.mdlWorld = worldModel(self)
 
     def loadDatas(self, project):
-
         errors = loadSave.loadProject(project)
 
         # Giving some feedback
@@ -1245,6 +1245,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 LOGGER.error(" * {} wasn't found in project file.".format(e))
             F.statusMessage(
                     self.tr("Project {} loaded with some errors.").format(project), 5000, importance = 3)
+        
+        if project in errors:
+            LOGGER.error("Loading project {} failed.".format(project))
+            F.statusMessage(
+                    self.tr("Loading project {} failed.").format(project), 5000, importance = 3)
+
+            return False
+        
+        return True
 
     ###############################################################################
     # MAIN CONNECTIONS

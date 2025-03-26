@@ -32,6 +32,7 @@ def loadProject(project):
     # Detect version
     isZip = False
     version = 0
+    errors = []
 
     # Is it a zip?
     try:
@@ -44,11 +45,23 @@ def loadProject(project):
     # Was used in transition between 0.2.0 and 0.3.0
     # So VERSION part can be deleted for manuskript 0.4.0
     if isZip and "VERSION" in zf.namelist():
-        version = int(zf.read("VERSION"))
+        s = zf.read("VERSION")
+
+        if s.isdigit():
+            version = int(s)
+        else:
+            errors.append(project)
+            errors.append("VERSION")
 
     # Does it have a MANUSKRIPT in zip root?
     elif isZip and "MANUSKRIPT" in zf.namelist():
-        version = int(zf.read("MANUSKRIPT"))
+        s = zf.read("MANUSKRIPT")
+        
+        if s.isdigit():
+            version = int(s)
+        else:
+            errors.append(project)
+            errors.append("MANUSKRIPT")
 
     # Zip but no VERSION/MANUSKRIPT: oldest file format
     elif isZip:
@@ -57,10 +70,18 @@ def loadProject(project):
     # Not a zip
     else:
         with open(project, 'rt', encoding="utf-8") as f:
-            version = int(f.read())
+            s = f.read()
+
+            if s.isdigit():
+                version = int(s)
+            else:
+                errors.append(project)
 
     LOGGER.info("Loading: %s", project)
     LOGGER.info("Detected file format version: {}. Zip: {}.".format(version, isZip))
+
+    if len(errors) > 0:
+        return errors
 
     if version == 0:
         return v0.loadProject(project)
