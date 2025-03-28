@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2021-2022 Tobias Frisch -->
+<!-- Copyright 2021-2025 Tobias Frisch -->
 <component type="desktop">
 	<id>ch.theologeek.Manuskript</id>
 	<metadata_license>CC0-1.0</metadata_license>
 	<project_license>GPL-3.0</project_license>
 	<content_rating type="oars-1.1" />
+
+	<developer id="de.thejackimonster">
+		<name>Tobias Frisch</name>
+	</developer>
 
 	<name>Manuskript</name>
 	<summary>An open-source tool for writers</summary>
@@ -28,18 +32,23 @@
 
 	<screenshots>
 		<screenshot type="default">
+			<caption>Editor tab</caption>
 			<image>https://www.theologeek.ch/manuskript/wp-content/uploads/2022/08/screenshot01.png</image>
 		</screenshot>
 		<screenshot>
+			<caption>Characters tab</caption>
 			<image>https://www.theologeek.ch/manuskript/wp-content/uploads/2022/08/screenshot02.png</image>
 		</screenshot>
 		<screenshot>
+			<caption>Outline tab</caption>
 			<image>https://www.theologeek.ch/manuskript/wp-content/uploads/2022/08/screenshot03.png</image>
 		</screenshot>
 		<screenshot>
+			<caption>General tab</caption>
 			<image>https://www.theologeek.ch/manuskript/wp-content/uploads/2022/08/screenshot04.png</image>
 		</screenshot>
 		<screenshot>
+			<caption>Welcome dialog</caption>
 			<image>https://www.theologeek.ch/manuskript/wp-content/uploads/2022/08/screenshot05.png</image>
 		</screenshot>
 	</screenshots>
@@ -52,7 +61,7 @@
 	<url type="vcs-browser">https://github.com/olivierkes/manuskript</url>
 	<url type="contribute">https://github.com/olivierkes/manuskript/wiki#contributing</url>
 
-	<update_contact>thejackimonster_at_gmail.com</update_contact>
+	<update_contact>jacki_at_thejackimonster.de</update_contact>
 
 	<launchable type="desktop-id">ch.theologeek.Manuskript.desktop</launchable>
 	<releases>
