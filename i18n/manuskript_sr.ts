@@ -51,7 +51,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.py" line="175"/>
         <source>{HelpText}</source>
-        <translation type="unfinished"></translation>
+        <translation>{ПомоћниТекст}</translation>
     </message>
 </context>
 <context>
@@ -59,12 +59,12 @@
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="103"/>
         <source>Frequency Analyzer</source>
-        <translation type="unfinished"></translation>
+        <translation>Анализатор Фреквенције</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="108"/>
         <source>Word frequency</source>
-        <translation type="unfinished"></translation>
+        <translation>Фреквенција речи</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="104"/>
@@ -79,7 +79,7 @@
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="106"/>
         <source>Exclude words (comma separated):</source>
-        <translation type="unfinished"></translation>
+        <translation>Изузми речи (раздвојене запетом):</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="111"/>
@@ -89,7 +89,7 @@
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="112"/>
         <source>Phrase frequency</source>
-        <translation type="unfinished"></translation>
+        <translation>Фреквенција фраза</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="109"/>
@@ -125,7 +125,7 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="631"/>
         <source>The protocol &quot;{}&quot; is not supported.</source>
-        <translation type="unfinished"></translation>
+        <translation>Протокол &quot;{}&quot; није подржан.</translation>
     </message>
 </context>
 <context>
@@ -149,7 +149,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1553"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>Опште</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1489"/>
@@ -169,12 +169,12 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1492"/>
         <source>Volume</source>
-        <translation type="unfinished"></translation>
+        <translation>Том</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1493"/>
         <source>Genre</source>
-        <translation type="unfinished"></translation>
+        <translation>Жанр</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1494"/>
@@ -194,7 +194,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1497"/>
         <source>Email</source>
-        <translation type="unfinished"></translation>
+        <translation>Емаил</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1543"/>
@@ -204,7 +204,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1499"/>
         <source>Situation:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ситуација:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1539"/>
