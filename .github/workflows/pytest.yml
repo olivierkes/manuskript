@@ -37,7 +37,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install pyqt5==5.15.7 lxml pytest pytest-faulthandler
         sudo apt-get -qq update
-        sudo apt-get -qq install python3-pip python3-dev build-essential qt5-default libxml2-dev libxslt1-dev mesa-utils libgl1-mesa-glx libgl1-mesa-dev libxcb-xinerama0-dev
+        sudo apt-get -qq install python3-pip python3-dev build-essential qtbase5-dev qt5-qmake libxml2-dev libxslt1-dev mesa-utils libgl1 libgl1-mesa0 libgl1-mesa-dev libxcb-xinerama0-dev
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Test with pytest
       run: |
