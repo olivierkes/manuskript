@@ -749,3 +749,4 @@ class textEditView(QTextEdit):
     def duplicate(self): self.callMainTreeView("duplicate")
     def moveUp(self): self.callMainTreeView("moveUp")
     def moveDown(self): self.callMainTreeView("moveDown")
+    def delete(self): self.callMainTreeView("delete")
