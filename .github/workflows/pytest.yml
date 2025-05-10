@@ -23,7 +23,7 @@ jobs:
       matrix:
         # https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs
         python-version: [3.9]
-        os: [ubuntu-20.04]
+        os: [ubuntu-24.04]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
