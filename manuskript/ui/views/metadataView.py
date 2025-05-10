@@ -35,6 +35,9 @@ class metadataView(QWidget, Ui_metadataView):
         """Returns a list of indexes from list of QItemSelectionRange"""
         indexes = []
 
+        if ((sourceView is None) or (not hasattr(sourceView, 'selection'))):
+            return indexes
+
         for i in sourceView.selection().indexes():
             if i.column() != 0:
                 continue
