@@ -56,7 +56,7 @@ class outlineView(QTreeView, dndView, outlineBasics):
         # Hiding columns
         self.hideColumns()
 
-        self.header().setSectionResizeMode(Outline.title, QHeaderView.Stretch)
+        self.header().setSectionResizeMode(Outline.title, QHeaderView.ResizeToContents)
         self.header().setSectionResizeMode(Outline.POV, QHeaderView.ResizeToContents)
         self.header().setSectionResizeMode(Outline.status, QHeaderView.ResizeToContents)
         self.header().setSectionResizeMode(Outline.label, QHeaderView.ResizeToContents)
