@@ -963,17 +963,17 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1600"/>
         <source>&amp;Import…</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Enporti…</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1604"/>
         <source>&amp;Split…</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Fendi…</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1634"/>
         <source>&amp;Targets</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Celoj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1635"/>
@@ -983,7 +983,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1637"/>
         <source>&amp;Technical Support</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Teknika asisto</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1638"/>
@@ -1048,7 +1048,7 @@
     <message>
         <location filename="../manuskript/ui/search.py" line="52"/>
         <source>Shift+F3</source>
-        <translation type="unfinished"></translation>
+        <translation>Maj+F3</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="56"/>
@@ -1103,17 +1103,17 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1577"/>
         <source>&amp;Navigate</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Navigi</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1611"/>
         <source>Go &amp;back</source>
-        <translation type="unfinished"></translation>
+        <translation>Iri &amp;reen</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1612"/>
         <source>Go &amp;forward</source>
-        <translation type="unfinished"></translation>
+        <translation>Iri &amp;antaŭen</translation>
     </message>
 </context>
 <context>
@@ -1121,7 +1121,7 @@
     <message>
         <location filename="../manuskript/ui/search.py" line="46"/>
         <source>No results found</source>
-        <translation type="unfinished"></translation>
+        <translation>Neniu rezulto troviĝis</translation>
     </message>
 </context>
 <context>
@@ -1810,7 +1810,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1834"/>
         <source>Char/Word Counter</source>
-        <translation type="unfinished"></translation>
+        <translation>Kalkulilo de skribsignoj/vortoj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1835"/>
@@ -1820,12 +1820,12 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1839"/>
         <source>Show char c&amp;ount</source>
-        <translation type="unfinished"></translation>
+        <translation>M&amp;ontri numbron de skribsignoj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1845"/>
         <source>Sho&amp;w char count</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Montri nombron de skribsignoj</translation>
     </message>
 </context>
 <context>
@@ -1848,7 +1848,7 @@
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="538"/>
         <source>&amp;New Character</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Nova rolulo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="545"/>
@@ -2317,7 +2317,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>Anstataŭigi Askiajn unuoblajn citilojn (') per:</translation>
+        <translation>Anstataŭigi Askiajn unuoblajn citilojn (&apos;) per:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>
@@ -3055,7 +3055,7 @@
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Midpoint</source>
-        <translation type="unfinished"></translation>
+        <translation>Mezpunkto</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>

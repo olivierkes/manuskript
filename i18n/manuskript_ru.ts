@@ -615,15 +615,15 @@
         <location filename="../manuskript/mainWindow.py" line="1695"/>
         <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous
                      evil wizard wasn&apos;t able to kill a baby?&apos; (Harry Potter)</source>
-        <translation>Основная ситуация, в виде вопроса 'Что, если?..'. Например: «Что, если самый опасный
-                      злой волшебник не смог бы убить ребенка? (Гарри Поттер)</translation>
+        <translation>Основная ситуация, в виде вопроса &apos;Что, если?..&apos;. Например: «Что, если самый опасный
+&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; злой волшебник не смог бы убить ребенка? (Гарри Поттер)</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1700"/>
         <source>Take time to think about a one sentence (~50 words) summary of your book. Then expand it to
                      a paragraph, then to a page, then to a full summary.</source>
         <translation>Потратьте время, чтобы придумать одно предложение (~50 слов) о вашей книге. Затем дополните его до
-                      абзаца, затем до страницы, а затем — до полного описания.</translation>
+&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; абзаца, затем до страницы, а затем — до полного описания.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1705"/>
@@ -683,7 +683,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1886"/>
         <source>Compile</source>
-        <translation>Экспорт</translation>
+        <translation>Компиляция</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1909"/>
@@ -1314,7 +1314,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1915"/>
         <source>Compile</source>
-        <translation>Экспорт</translation>
+        <translation>Компиляция</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1892"/>
@@ -1923,7 +1923,7 @@
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="223"/>
         <source>Compile</source>
-        <translation>Экспорт</translation>
+        <translation>Компиляция</translation>
     </message>
     <message>
         <location filename="../manuskript/models/abstractModel.py" line="225"/>
@@ -2318,7 +2318,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>Заменить одинарные кавычки (') на:</translation>
+        <translation>Заменить одинарные кавычки (&apos;) на:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>
@@ -2886,7 +2886,7 @@
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Resolution</source>
-        <translation type="unfinished"></translation>
+        <translation>Разрешение</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3041,37 +3041,37 @@
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Hook</source>
-        <translation type="unfinished"></translation>
+        <translation>Завязка</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Plot Turn 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Поворот 1</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Pinch 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Разворот 1</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Midpoint</source>
-        <translation type="unfinished"></translation>
+        <translation>Центральный момент</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Pinch 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Разворот 2</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Plot Turn 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Поворот 2</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Dan Wells 7-point plot format</source>
-        <translation type="unfinished"></translation>
+        <translation>Семиактная структура Дэна Уэллса</translation>
     </message>
 </context>
 <context>
@@ -3178,7 +3178,7 @@
     <message>
         <location filename="../manuskript/ui/views/propertiesView_ui.py" line="183"/>
         <source>Compile</source>
-        <translation>Экспорт</translation>
+        <translation>Компиляция</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/propertiesView_ui.py" line="184"/>
@@ -3441,7 +3441,7 @@
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="47"/>
         <source>Split &apos;{}&apos;</source>
-        <translation>Разделить '{}'</translation>
+        <translation>Разделить &apos;{}&apos;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="51"/>

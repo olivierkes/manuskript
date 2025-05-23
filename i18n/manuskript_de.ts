@@ -1068,7 +1068,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="395"/>
         <source>Bulk Info Manager</source>
-        <translation type="unfinished"></translation>
+        <translation>Details (Mehrfachauswahl)</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="440"/>
@@ -1078,42 +1078,42 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="440"/>
         <source>Please add entries to apply to the selected characters.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bitte fügen sie Einträge hinzu, um diese auf die ausgewählten Charaktere anzuwenden.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="451"/>
         <source>Bulk Info Applied</source>
-        <translation type="unfinished"></translation>
+        <translation>Einträge wurden angewandt</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="451"/>
         <source>The bulk info has been applied to the selected characters.</source>
-        <translation type="unfinished"></translation>
+        <translation>Die Einträge sind auf alle ausgewählten Charaktere der Mehrfachauswahl angewandt worden.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="523"/>
         <source>Un-applied data!</source>
-        <translation type="unfinished"></translation>
+        <translation>Nicht angewandte Einträge!</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="523"/>
         <source>There are un-applied entries in this tab. Discard them?</source>
-        <translation type="unfinished"></translation>
+        <translation>Es sind noch Einträge für die Mehrfachauswahl vorhanden, welche nicht auf die ausgewählten Charaktere angewandt worden sind. Sollen die Einträge verworfen werden?</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1577"/>
         <source>&amp;Navigate</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Navigieren</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1611"/>
         <source>Go &amp;back</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Zurück</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1612"/>
         <source>Go &amp;forward</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Vorwärts</translation>
     </message>
 </context>
 <context>
@@ -2318,7 +2318,7 @@ Wörtern an</translation>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>Einfache Anführungszeichen (') ersetzen durch:</translation>
+        <translation>Einfache Anführungszeichen (&apos;) ersetzen durch:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>
@@ -2886,7 +2886,7 @@ Wörtern an</translation>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Resolution</source>
-        <translation type="unfinished"></translation>
+        <translation>Auflösung</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3041,37 +3041,37 @@ Wörtern an</translation>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Hook</source>
-        <translation type="unfinished"></translation>
+        <translation>Haken</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Plot Turn 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Handlungswende 1</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Pinch 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Streitpunkt 1</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Midpoint</source>
-        <translation type="unfinished"></translation>
+        <translation>Mittelpunkt</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Pinch 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Streitpunkt 2</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Plot Turn 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Handlungswende 2</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Dan Wells 7-point plot format</source>
-        <translation type="unfinished"></translation>
+        <translation>Dan Wells 7-Punkte Plot-Format</translation>
     </message>
 </context>
 <context>
