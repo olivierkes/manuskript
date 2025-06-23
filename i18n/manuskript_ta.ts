@@ -1214,7 +1214,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1798"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If you check this option, your project will be saved as one single file. Easier to copy or backup, but does not allow collaborative editing, or versioning.&lt;br/&gt;If this is unchecked, your project will be saved as a folder containing many small files.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt; &lt;head/&gt; &lt;body&gt; &lt;p&gt; இந்த விருப்பத்தை நீங்கள் சரிபார்த்தால், உங்கள் திட்டம் ஒரு ஒற்றை கோப்பாக சேமிக்கப்படும். நகலெடுக்க அல்லது காப்புப்பிரதி எடுக்க எளிதானது, ஆனால் கூட்டு திருத்துதல் அல்லது பதிப்பை அனுமதிக்காது. &lt;br/&gt; இது தேர்வு செய்யப்படாவிட்டால், உங்கள் திட்டம் பல சிறிய கோப்புகளைக் கொண்ட கோப்புறையாக சேமிக்கப்படும்.</translation>
+        <translation>&lt;html&gt; &lt;head/&gt; &lt;body&gt; &lt;p&gt; இந்த விருப்பத்தை நீங்கள் சரிபார்த்தால், உங்கள் திட்டம் ஒரு ஒற்றை கோப்பாகச் சேமிக்கப்படும். நகலெடுக்க அல்லது காப்புப்பிரதி எடுக்க எளிதானது, ஆனால் கூட்டு திருத்துதல் அல்லது பதிப்பை அனுமதிக்காது. &lt;br/&gt; இது தேர்வு செய்யப்படாவிட்டால், உங்கள் திட்டம் பல சிறிய கோப்புகளைக் கொண்ட கோப்புறையாகச் சேமிக்கப்படும்.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1799"/>
@@ -1799,7 +1799,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1811"/>
         <source>&lt;p&gt;&lt;b&gt;The Revisions feature has been at the source of many reported issues. In this version of Manuskript it has been turned off by default for new projects in order to provide the best experience.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Why aren&apos;t these issues fixed already? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;We need your help to make Manuskript better!&lt;/a&gt;&lt;/p&gt;</source>
-        <translation>&lt;p&gt; &lt;b&gt; திருத்தங்கள் நற்பொருத்தம் பல அறிக்கையிடப்பட்ட சிக்கல்களின் மூலத்தில் உள்ளது. மனுச்கிரிப்டின் இந்த பதிப்பில், சிறந்த அனுபவத்தை வழங்குவதற்காக புதிய திட்டங்களுக்கு இயல்புநிலையாக இது அணைக்கப்பட்டுள்ளது. &lt;/B&gt; &lt;/p&gt; &lt;p&gt; இந்த சிக்கல்கள் ஏற்கனவே ஏன் சரி செய்யப்படவில்லை? &lt;a href = &quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt; மனுச்கிரிப்டை சிறப்பாகச் செய்ய எங்களுக்கு உங்கள் உதவி தேவை! &lt;/a&gt; &lt;/p&gt;</translation>
+        <translation>&lt;p&gt; &lt;b&gt; திருத்தங்கள் நற்பொருத்தம் பல அறிக்கையிடப்பட்ட சிக்கல்களின் மூலத்தில் உள்ளது. மனுச்கிரிப்டின் இந்தப் பதிப்பில், சிறந்த அனுபவத்தை வழங்குவதற்காகப் புதிய திட்டங்களுக்கு இயல்புநிலையாக இது அணைக்கப்பட்டுள்ளது. &lt;/b&gt;&lt;/p&gt;&lt;p&gt; இந்தச் சிக்கல்கள் ஏற்கனவே ஏன் சரி செய்யப்படவில்லை? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt; மனுச்கிரிப்டை சிறப்பாகச் செய்ய எங்களுக்கு உங்கள் உதவி தேவை! &lt;/a&gt; &lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1788"/>
@@ -2177,7 +2177,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/exporter_ui.py" line="68"/>
         <source>Manage exporters</source>
-        <translation>ஏற்றுமதியாளர்களை நிர்வகிக்கவும்</translation>
+        <translation>ஏற்றுமதியாளர்களை நிர்வகி</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exporter_ui.py" line="72"/>
@@ -2243,7 +2243,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="522"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Filters what items will be included in the final export.&lt;br/&gt;&lt;span style=&quot; color:#773333;&quot;&gt;(Not fully implemented yet.)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt; &lt;head/&gt; &lt;body&gt; &lt;p&gt; இறுதி ஏற்றுமதியில் என்ன உருப்படிகள் சேர்க்கப்படும் என்பதை வடிகட்டுகிறது. &gt; &lt;/p&gt; &lt;/body&gt; &lt;/html&gt;</translation>
+        <translation>&lt;html&gt; &lt;head/&gt; &lt;body&gt; &lt;p&gt; இறுதி ஏற்றுமதியில் என்ன உருப்படிகள் சேர்க்கப்படும் என்பதை வடிகட்டுகிறது. &lt;br/&gt;&lt;span style=&quot; color:#773333;&quot;&gt;(இன்னும் முழுமையாக செயல்படுத்தப்படவில்லை.) &lt;/p&gt; &lt;/body&gt; &lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="523"/>
@@ -2545,7 +2545,7 @@
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.py" line="63"/>
         <source>\n---\n</source>
-        <translation>\ n --- \ n</translation>
+        <translation>\n --- \n</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.py" line="64"/>
