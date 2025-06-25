@@ -19,11 +19,13 @@ description: |
 adopt-info: manuskript
 grade: stable
 confinement: strict
-base: core18
+base: core24
 icon: icons/Manuskript/manuskript.svg
 layout:
   /usr/share/pandoc/data/templates:
     bind: $SNAP/usr/share/pandoc/data/templates
+  /usr/share/X11/xkb:
+    bind: $SNAP/usr/share/X11/xkb
 
 apps:
   manuskript:
@@ -31,6 +33,8 @@ apps:
     environment:
       # Fallback to XWayland if running in a Wayland session.
       DISABLE_WAYLAND: 1
+      PYTHONPATH: $SNAP/usr/lib/python3/dist-packages${PYTHONPATH:+:$PYTHONPATH}
+      LD_LIBRARY_PATH: $LD_LIBRARY_PATH:$SNAP/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libproxy
     plugs:
     - desktop
     - desktop-legacy
@@ -39,6 +43,8 @@ apps:
     - x11
     - opengl
     - home
+    - network
+    - network-bind
     - network-manager # (Seems to be necessary on older Ubuntu to open the window)
 
 parts:
@@ -54,33 +60,28 @@ parts:
     source-subdir: qt
     stage-packages:
     - libxkbcommon0
-    - ttf-ubuntu-font-family
     - dmz-cursor-theme
     - light-themes
     - adwaita-icon-theme
-    - gnome-themes-standard
     - shared-mime-info
     - libqt5gui5
     - libgdk-pixbuf2.0-0
     - libqt5svg5
-    - try:
-      - appmenu-qt5
     - locales-all
     - xdg-user-dirs
     - fcitx-frontend-qt5
     - libxcursor1
     - libgtk2.0-0
+    - qtwayland5
 
   pip-fix:
     plugin: nil
     stage-packages:
-      - python3-distutils
       - python3-setuptools
 
   pyspellchecker:
     after: [pip-fix]
     plugin: python
-    python-version: python3
     source: https://github.com/barrust/pyspellchecker.git
 
   manuskript:
