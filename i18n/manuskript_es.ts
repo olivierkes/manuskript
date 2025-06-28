@@ -6,7 +6,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.py" line="162"/>
         <source>Manage Exporters</source>
-        <translation>Configura módulos de exportación</translation>
+        <translation>Gestionar exportadores</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.py" line="166"/>
@@ -69,7 +69,7 @@
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="104"/>
         <source>Settings</source>
-        <translation>Preferencias</translation>
+        <translation>Configuración</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="105"/>
@@ -569,7 +569,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1626"/>
         <source>Metadata</source>
-        <translation>Metadata</translation>
+        <translation>Metadatos</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1627"/>
@@ -718,7 +718,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1220"/>
         <source>WARNING: Project {} not saved.</source>
-        <translation>ADVERTENCIA: Proyecto {} no guardado.</translation>
+        <translation>ATENCIÓN: no se guardó el proyecto {}.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1711"/>
@@ -728,7 +728,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1540"/>
         <source>Add plot step</source>
-        <translation>Añadir un paso a la trama (CTRL+Intro)</translation>
+        <translation>Añadir un paso a la trama</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1600"/>
@@ -958,7 +958,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="2016"/>
         <source>Proceed with import at your own risk</source>
-        <translation>Proceda con la importación bajo su propio riesgo</translation>
+        <translation>Proceda con la importación bajo su cuenta y riesgo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1518"/>
@@ -3752,7 +3752,7 @@
     <message>
         <location filename="../manuskript/ui/welcome.py" line="246"/>
         <source>Empty non-fiction</source>
-        <translation>No-Ficción vacía</translation>
+        <translation>No ficción vacía</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="309"/>
@@ -3787,7 +3787,7 @@
     <message>
         <location filename="../manuskript/ui/welcome.py" line="422"/>
         <source>Non-fiction</source>
-        <translation>No-ficción</translation>
+        <translation>No ficción</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="457"/>
@@ -3905,7 +3905,7 @@
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
         <source>Customs</source>
-        <translation>Aduanas</translation>
+        <translation>Costumbres</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="262"/>
