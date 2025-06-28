@@ -414,52 +414,52 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1567"/>
         <source>&amp;File</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Fitxer</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1568"/>
         <source>&amp;Recent</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Recents</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1569"/>
         <source>&amp;Help</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Ajuda</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1570"/>
         <source>&amp;Tools</source>
-        <translation type="unfinished"></translation>
+        <translation>Ei&amp;nes</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1571"/>
         <source>&amp;Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Edita</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1574"/>
         <source>&amp;View</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Visualitza</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1575"/>
         <source>&amp;Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Mode</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1580"/>
         <source>&amp;Navigation</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Navegació</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1581"/>
         <source>&amp;Open</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Obre</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1582"/>
         <source>&amp;Save</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Desa</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1583"/>
@@ -469,7 +469,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1584"/>
         <source>&amp;Quit</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Surt</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1585"/>
@@ -514,12 +514,12 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1594"/>
         <source>S&amp;ettings</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Paràmetres</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1595"/>
         <source>&amp;Close project</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Tanca el projecte</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1596"/>
@@ -2285,7 +2285,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="531"/>
         <source>Between texts:</source>
-        <translation>Entre texts:</translation>
+        <translation>Entre textos:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="534"/>
@@ -4022,17 +4022,17 @@
     <message>
         <location filename="../manuskript/models/worldModel.py" line="292"/>
         <source>Important places</source>
-        <translation type="unfinished"></translation>
+        <translation>Llocs importants</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="293"/>
         <source>Important objects</source>
-        <translation type="unfinished"></translation>
+        <translation>Objectes importants</translation>
     </message>
     <message>
         <location filename="../manuskript/models/worldModel.py" line="251"/>
         <source>Natural resources</source>
-        <translation type="unfinished"></translation>
+        <translation>Recursos naturals</translation>
     </message>
 </context>
 </TS>
