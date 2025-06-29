@@ -651,12 +651,12 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1734"/>
         <source>Dictionary</source>
-        <translation type="unfinished"></translation>
+        <translation>Diccionari</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1882"/>
         <source>Nothing</source>
-        <translation type="unfinished"></translation>
+        <translation>Res</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1883"/>
@@ -666,7 +666,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1884"/>
         <source>Label</source>
-        <translation type="unfinished"></translation>
+        <translation>Etiqueta</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1885"/>
@@ -711,7 +711,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1905"/>
         <source>Border</source>
-        <translation type="unfinished">Vora</translation>
+        <translation>Vora</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1906"/>
@@ -726,7 +726,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1601"/>
         <source>&amp;Copy</source>
-        <translation type="unfinished">&amp;Copia</translation>
+        <translation>&amp;Copia</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1602"/>
@@ -761,7 +761,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1608"/>
         <source>&amp;Delete</source>
-        <translation>&amp;Suprimir</translation>
+        <translation>&amp;Suprimeix</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1613"/>
