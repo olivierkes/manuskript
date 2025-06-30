@@ -1,5 +1,67 @@
 # Changelog
 
+## [0.17.0](https://github.com/olivierkes/manuskript/tree/0.17.0)
+
+[Full Changelog](https://github.com/olivierkes/manuskript/compare/0.16.1...HEAD)
+
+**Implemented enhancements:**
+
+- Confirmation popup for deleting items [\#1258](https://github.com/olivierkes/manuskript/issues/1258)
+- Feature creep [\#1236](https://github.com/olivierkes/manuskript/issues/1236)
+- Fullscreen mode [\#1161](https://github.com/olivierkes/manuskript/issues/1161)
+- \[Feature request\] Shortcut for Grouping Text into a Folder [\#453](https://github.com/olivierkes/manuskript/issues/453)
+
+**Fixed bugs:**
+
+- Unhandled exception in metadataView [\#1367](https://github.com/olivierkes/manuskript/issues/1367)
+- Unhandled exception in delete\(\) [\#1366](https://github.com/olivierkes/manuskript/issues/1366)
+- MDEditView object has no attribute 'delete' [\#1364](https://github.com/olivierkes/manuskript/issues/1364)
+- Manuskript crashed and isn't reopening via control panel [\#1362](https://github.com/olivierkes/manuskript/issues/1362)
+- Setting Background Color of Tree to "Progress" shows texts/folders without goals as red [\#1353](https://github.com/olivierkes/manuskript/issues/1353)
+- Crash when opening file, possibly due to platform incompatibility  [\#1348](https://github.com/olivierkes/manuskript/issues/1348)
+- Cant change the number on the Top level [\#1340](https://github.com/olivierkes/manuskript/issues/1340)
+- Crash when adding a character to a main plot in the Plots section [\#1329](https://github.com/olivierkes/manuskript/issues/1329)
+- Crash when opening one specific .msk [\#1323](https://github.com/olivierkes/manuskript/issues/1323)
+- Crash when pressing delete in edit box after cutting text out [\#1321](https://github.com/olivierkes/manuskript/issues/1321)
+- Manuskript crashes when attempting search [\#1313](https://github.com/olivierkes/manuskript/issues/1313)
+- never mind this because not reproducible for the time being [\#1309](https://github.com/olivierkes/manuskript/issues/1309)
+- Program crashes if project contains a PDF file [\#1308](https://github.com/olivierkes/manuskript/issues/1308)
+- Chapter Count ignored [\#1305](https://github.com/olivierkes/manuskript/issues/1305)
+- Manuskript 0.16.1 crashes after a while of being opened [\#1302](https://github.com/olivierkes/manuskript/issues/1302)
+- Crash By Clicking Outline [\#1299](https://github.com/olivierkes/manuskript/issues/1299)
+- Crash on character detailed info [\#1289](https://github.com/olivierkes/manuskript/issues/1289)
+- Crash on Silverblue [\#1277](https://github.com/olivierkes/manuskript/issues/1277)
+- I have too many Characters for selection! [\#1255](https://github.com/olivierkes/manuskript/issues/1255)
+- Filter in Character and World doesn't work [\#1253](https://github.com/olivierkes/manuskript/issues/1253)
+- Cannot start Manuskript on Ubuntu 22.04.3 [\#1203](https://github.com/olivierkes/manuskript/issues/1203)
+- Crashing when opening Manuskript + broken .msk file  [\#1180](https://github.com/olivierkes/manuskript/issues/1180)
+- Version 0.15.0 crashes on Windows 11, Version 0.14.0 is fine [\#1152](https://github.com/olivierkes/manuskript/issues/1152)
+- Broken .msk file / crash possibly related to loading process? [\#1147](https://github.com/olivierkes/manuskript/issues/1147)
+- Error while loading version of the msk format [\#1030](https://github.com/olivierkes/manuskript/issues/1030)
+- Seg fault after upgrading to KDE Plasma 5.24.0 \(Qt 5.13.3\) [\#1011](https://github.com/olivierkes/manuskript/issues/1011)
+- On Chromebook using the Linux shell, I hit the outline button on the left and it crashes- not the only button that does it.   [\#926](https://github.com/olivierkes/manuskript/issues/926)
+
+**Closed issues:**
+
+- Serbia [\#1350](https://github.com/olivierkes/manuskript/issues/1350)
+- A Humble Request for an 32bit version [\#1344](https://github.com/olivierkes/manuskript/issues/1344)
+- possible Trojan? [\#1342](https://github.com/olivierkes/manuskript/issues/1342)
+- Wrong Accelerator Key [\#1334](https://github.com/olivierkes/manuskript/issues/1334)
+- Windows 11 Defender flags manuskript-0.16.1-windows.zip as PUA:Win32/Vigua.A [\#1325](https://github.com/olivierkes/manuskript/issues/1325)
+- Manuskript closing unexpectedly [\#1271](https://github.com/olivierkes/manuskript/issues/1271)
+
+**Merged pull requests:**
+
+- Create requirements.txt [\#1371](https://github.com/olivierkes/manuskript/pull/1371) ([gabriel96x1](https://github.com/gabriel96x1))
+- Remove Color from Outline Items without Goal [\#1359](https://github.com/olivierkes/manuskript/pull/1359) ([SpeedyDoggo](https://github.com/SpeedyDoggo))
+- Update manuskript\_zh\_CN.ts [\#1339](https://github.com/olivierkes/manuskript/pull/1339) ([fattybamboo](https://github.com/fattybamboo))
+- fix: when loading ignores files that are not text files. [\#1332](https://github.com/olivierkes/manuskript/pull/1332) ([AlexBCa](https://github.com/AlexBCa))
+- Feature/add dan wells 7 point plot [\#1327](https://github.com/olivierkes/manuskript/pull/1327) ([ignogueiras](https://github.com/ignogueiras))
+- Fix crash when clicking outline [\#1315](https://github.com/olivierkes/manuskript/pull/1315) ([ByteOfBrie](https://github.com/ByteOfBrie))
+- Fix ipython import [\#1310](https://github.com/olivierkes/manuskript/pull/1310) ([ByteOfBrie](https://github.com/ByteOfBrie))
+- Fixed grammar error in "Revision Smart Remove" description [\#1298](https://github.com/olivierkes/manuskript/pull/1298) ([samarlyka](https://github.com/samarlyka))
+- Fixing outlineView.py to enable the outline to show full Title [\#557](https://github.com/olivierkes/manuskript/pull/557) ([BlackXanthus](https://github.com/BlackXanthus))
+
 ## [0.16.1](https://github.com/olivierkes/manuskript/tree/0.16.1) (2023-12-14)
 
 [Full Changelog](https://github.com/olivierkes/manuskript/compare/0.16.0...0.16.1)
@@ -7,6 +69,7 @@
 **Fixed bugs:**
 
 - Characters, Plots and Worlds are greyed out [\#1249](https://github.com/olivierkes/manuskript/issues/1249)
+- Crash when opening old projects [\#1250](https://github.com/olivierkes/manuskript/issues/1250)
 - Missing Pages with Version 0.16.0 [\#1248](https://github.com/olivierkes/manuskript/issues/1248)
 - Software crashing every time I open [\#1247](https://github.com/olivierkes/manuskript/issues/1247)
 
@@ -131,13 +194,13 @@
 
 **Merged pull requests:**
 
-- catch AttributeError in plotTreeView double click event \(fixes \#1014\) [\#1015](https://github.com/olivierkes/manuskript/pull/1015) ([amconners](https://github.com/amconners))
+- catch AttributeError in plotTreeView double click event \(fixes \#1014\) [\#1015](https://github.com/olivierkes/manuskript/pull/1015) ([PunningLinguist](https://github.com/PunningLinguist))
 - Change welcome page spacer size policy to allow welcome to expand to fill most of screen \(fixes olivierkes\#996\) [\#1007](https://github.com/olivierkes/manuskript/pull/1007) ([jdanielp](https://github.com/jdanielp))
 - Fix crash when files are locked for writing \(Fixes olivierkes\#950\) [\#1004](https://github.com/olivierkes/manuskript/pull/1004) ([jdanielp](https://github.com/jdanielp))
 - Fix crash when regex is not valid \(Fixes olivierkes\#989\) [\#1003](https://github.com/olivierkes/manuskript/pull/1003) ([jdanielp](https://github.com/jdanielp))
 - Potential fix for \#719, \#1001: data loss when reordering items in upward direction [\#1002](https://github.com/olivierkes/manuskript/pull/1002) ([olivierkes](https://github.com/olivierkes))
 - hard\_line\_breaks support [\#1000](https://github.com/olivierkes/manuskript/pull/1000) ([Mte90](https://github.com/Mte90))
-- Fix for \#992 and \#998 [\#999](https://github.com/olivierkes/manuskript/pull/999) ([amconners](https://github.com/amconners))
+- Fix for \#992 and \#998 [\#999](https://github.com/olivierkes/manuskript/pull/999) ([PunningLinguist](https://github.com/PunningLinguist))
 - Write a test for ParseMMDFile function. [\#831](https://github.com/olivierkes/manuskript/pull/831) ([zeth](https://github.com/zeth))
 
 ## [0.13.1](https://github.com/olivierkes/manuskript/tree/0.13.1) (2021-12-13)
