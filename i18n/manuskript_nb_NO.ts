@@ -64,7 +64,7 @@
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="108"/>
         <source>Word frequency</source>
-        <translation></translation>
+        <translation>Ordforekomst</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="104"/>
@@ -74,7 +74,7 @@
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="105"/>
         <source>Minimum size:</source>
-        <translation>Minimumsstørrelse:</translation>
+        <translation>Minimumstørrelse:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="106"/>
@@ -99,7 +99,7 @@
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="110"/>
         <source>to</source>
-        <translation></translation>
+        <translation>til</translation>
     </message>
 </context>
 <context>
@@ -112,7 +112,7 @@
     <message>
         <location filename="../manuskript/ui/listDialog_ui.py" line="44"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekst</translation>
     </message>
 </context>
 <context>
@@ -120,12 +120,12 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="619"/>
         <source>The image path or URL is incomplete or malformed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bildets bane eller URL er ufullstendig eller feil.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="631"/>
         <source>The protocol &quot;{}&quot; is not supported.</source>
-        <translation type="unfinished"></translation>
+        <translation>Protokollen &quot;{}&quot; støttes ikke.</translation>
     </message>
 </context>
 <context>
@@ -141,7 +141,7 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="543"/>
         <source>{} (CTRL+Click to open)</source>
-        <translation type="unfinished"></translation>
+        <translation>{} (CTRL+klikk for å åpne)</translation>
     </message>
 </context>
 <context>
@@ -149,7 +149,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1553"/>
         <source>General</source>
-        <translation></translation>
+        <translation>Generell</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1489"/>
@@ -164,7 +164,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1491"/>
         <source>Series</source>
-        <translation></translation>
+        <translation>Serie</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1492"/>
@@ -184,12 +184,12 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1495"/>
         <source>Author</source>
-        <translation></translation>
+        <translation>Forfatter</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1551"/>
         <source>Name</source>
-        <translation></translation>
+        <translation>Navn</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1497"/>
@@ -214,7 +214,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1502"/>
         <source>One sentence</source>
-        <translation>Ei setning</translation>
+        <translation>En setning</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1544"/>
@@ -224,7 +224,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1545"/>
         <source>One page</source>
-        <translation>Ei side</translation>
+        <translation>En side</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1546"/>
@@ -234,7 +234,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1507"/>
         <source>One sentence summary</source>
-        <translation>Sammendrag i ei setning</translation>
+        <translation>Sammendrag i en setning</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1509"/>
@@ -264,7 +264,7 @@
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="24"/>
         <source>Characters</source>
-        <translation></translation>
+        <translation>Karakterer</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1514"/>
@@ -304,7 +304,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1522"/>
         <source>Epiphany</source>
-        <translation>Åpenbarelse</translation>
+        <translation>Åpenbaring</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1523"/>
@@ -319,7 +319,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1527"/>
         <source>Notes</source>
-        <translation></translation>
+        <translation>Noter</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1529"/>
@@ -344,7 +344,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1552"/>
         <source>Description</source>
-        <translation></translation>
+        <translation>Beskrivelse</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1537"/>
@@ -364,7 +364,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1550"/>
         <source>Populates with empty data</source>
-        <translation></translation>
+        <translation>Fylles ut med tomme data</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1556"/>
@@ -374,7 +374,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1554"/>
         <source>Source of passion</source>
-        <translation></translation>
+        <translation>Kilde til lidenskap</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1555"/>
@@ -389,12 +389,12 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1559"/>
         <source>Editor</source>
-        <translation></translation>
+        <translation>Redaktør</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1566"/>
         <source>Debug</source>
-        <translation></translation>
+        <translation>Feilsøk</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="25"/>
@@ -409,12 +409,12 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1565"/>
         <source>Labels</source>
-        <translation></translation>
+        <translation>Etiketter</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1567"/>
         <source>&amp;File</source>
-        <translation></translation>
+        <translation>&amp;Fil</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1568"/>
@@ -424,7 +424,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1569"/>
         <source>&amp;Help</source>
-        <translation></translation>
+        <translation>&amp;Hjelp</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1570"/>
@@ -439,12 +439,12 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1574"/>
         <source>&amp;View</source>
-        <translation></translation>
+        <translation>&amp;Vis</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1575"/>
         <source>&amp;Mode</source>
-        <translation></translation>
+        <translation>&amp;Kategori</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1578"/>
@@ -459,7 +459,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1581"/>
         <source>&amp;Open</source>
-        <translation></translation>
+        <translation>&amp;Åpne</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1582"/>
@@ -469,7 +469,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1583"/>
         <source>Sa&amp;ve as...</source>
-        <translation></translation>
+        <translation>&amp;Lagre som...</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1584"/>
@@ -489,7 +489,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1587"/>
         <source>&amp;Labels...</source>
-        <translation></translation>
+        <translation>&amp;Etiketter...</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1588"/>
@@ -514,7 +514,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1592"/>
         <source>Index cards</source>
-        <translation></translation>
+        <translation>Indekskort</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1594"/>
@@ -559,7 +559,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1216"/>
         <source>Project {} saved.</source>
-        <translation type="unfinished"> * {} ble ikke funnet i prosjektfila.</translation>
+        <translation>Prosjekt {} lagret.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1220"/>
@@ -604,12 +604,12 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1627"/>
         <source>Story line</source>
-        <translation></translation>
+        <translation>Handling</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1692"/>
         <source>Enter information about your book, and yourself.</source>
-        <translation></translation>
+        <translation>Skriv om boken din og deg selv.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1695"/>
@@ -3438,7 +3438,7 @@
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="47"/>
         <source>Split &apos;{}&apos;</source>
-        <translation>Del '{}'</translation>
+        <translation>Del &apos;{}&apos;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="51"/>
