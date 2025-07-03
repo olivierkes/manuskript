@@ -931,7 +931,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1028"/>
         <source>Your changes will be lost if you don&apos;t save them.</source>
-        <translation>Your changes will be lost if you don't save them.</translation>
+        <translation>Your changes will be lost if you don&apos;t save them.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="2018"/>
@@ -1116,7 +1116,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1251"/>
         <source>Loading project {} failed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Loading project {} failed.</translation>
     </message>
 </context>
 <context>
@@ -1802,7 +1802,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1811"/>
         <source>&lt;p&gt;&lt;b&gt;The Revisions feature has been at the source of many reported issues. In this version of Manuskript it has been turned off by default for new projects in order to provide the best experience.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Why aren&apos;t these issues fixed already? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;We need your help to make Manuskript better!&lt;/a&gt;&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;The Revisions feature has been at the source of many reported issues. In this version of Manuskript it has been turned off by default for new projects in order to provide the best experience.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Why aren't these issues fixed already? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;We need your help to make Manuskript better!&lt;/a&gt;&lt;/p&gt;</translation>
+        <translation>&lt;p&gt;&lt;b&gt;The Revisions feature has been at the source of many reported issues. In this version of Manuskript it has been turned off by default for new projects in order to provide the best experience.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Why aren&apos;t these issues fixed already? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;We need your help to make Manuskript better!&lt;/a&gt;&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1788"/>
