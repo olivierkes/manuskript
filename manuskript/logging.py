@@ -16,7 +16,7 @@ from pprint import pformat
 
 LOGGER = logging.getLogger(__name__)
 
-LOGFORMAT_CONSOLE = "%(levelname)s> %(message)s"
+LOGFORMAT_CONSOLE = "%(asctime)s: %(levelname)s> %(message)s"
 LOGFORMAT_FILE = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 
 def setUp(console_level=logging.WARN):
