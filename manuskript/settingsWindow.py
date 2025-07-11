@@ -23,8 +23,7 @@ from manuskript.ui.editors.themes import loadThemeDatas
 from manuskript.ui.settings_ui import Ui_Settings
 from manuskript.ui.views.outlineView import outlineView
 from manuskript.ui.views.textEditView import textEditView
-from manuskript.ui.welcome import welcome
-from manuskript.ui import style as S
+from manuskript.ui import style as S, themes as T
 
 
 class settingsWindow(QWidget, Ui_Settings):
@@ -60,16 +59,31 @@ class settingsWindow(QWidget, Ui_Settings):
         self.lstMenu.setMinimumWidth(140)
 
         lowerKeys = [i.lower() for i in list(QStyleFactory.keys())]
+        palettes = [T.light, T.dark]
+        paletteNames = [qApp.translate("Palette", "Light Theme"), qApp.translate("Palette", "Dark Theme")]
 
         # General
         self.cmbStyle.addItems(list(QStyleFactory.keys()))
+        self.cmbPalette.addItems(paletteNames)
 
         try:
             self.cmbStyle.setCurrentIndex(lowerKeys.index(qApp.style().objectName()))
         except ValueError:
             self.cmbStyle.setCurrentIndex(0)
 
+        try:
+            self.cmbPalette.setCurrentIndex(palettes.index(qApp.palette()))
+        except ValueError:
+            self.cmbPalette.setCurrentIndex(0)
+
+        def _setPaletteByName(paletteName: str):
+            try:
+                qApp.setPalette(palettes[paletteNames.index(paletteName)])
+            except ValueError:
+                return
+
         self.cmbStyle.currentIndexChanged[str].connect(self.setStyle)
+        self.cmbPalette.currentIndexChanged[str].connect(_setPaletteByName)
 
         self.cmbTranslation.clear()
         tr = OrderedDict()

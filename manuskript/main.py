@@ -13,6 +13,7 @@ from PyQt5.QtWidgets import QApplication, qApp, QStyleFactory
 
 from manuskript.functions import appPath, writablePath
 from manuskript.version import getVersion
+from manuskript.ui import themes
 
 try:
     faulthandler.enable()
@@ -55,6 +56,14 @@ def prepare(arguments, tests=False):
     if settings.contains("applicationStyle"):
         style = settings.value("applicationStyle")
         app.setStyle(style)
+
+    # Set palette from QSettings
+    app.setPalette(themes.light)  # Start off with light theme
+    if settings.contains("applicationPalette"):
+        palette = settings.value("applicationPalette")
+        if hasattr(themes, palette):
+            # If settings has valid theme name, use requested
+            app.setPalette(getattr(themes, palette))
 
     # Translation process
     appTranslator = QTranslator(app)
