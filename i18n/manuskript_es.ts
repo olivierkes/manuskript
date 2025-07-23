@@ -21,7 +21,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.py" line="172"/>
         <source>Offers export to</source>
-        <translation>Ofrece exportar a</translation>
+        <translation>Permite exportar a</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.py" line="173"/>
@@ -59,7 +59,7 @@
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="107"/>
         <source>Frequency Analyzer</source>
-        <translation>Analizador de frecuencias</translation>
+        <translation>Analizador de frecuencia</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="112"/>
@@ -234,12 +234,12 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1507"/>
         <source>One sentence summary</source>
-        <translation>Resumen de una frase</translation>
+        <translation>Resumen en una frase</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1509"/>
         <source>One paragraph summary</source>
-        <translation>Resumen de un párrafo</translation>
+        <translation>Resumen en un párrafo</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1510"/>
@@ -309,12 +309,12 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1523"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One sentence&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Resumen de&lt;br/&gt;una frase&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Resumen en&lt;br/&gt;una frase&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1524"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;One paragraph&lt;br/&gt;summary&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Resumen de&lt;br/&gt;un párrafo&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Resumen en&lt;br/&gt;un párrafo&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1527"/>
@@ -469,7 +469,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1584"/>
         <source>&amp;Quit</source>
-        <translation>&amp;Cerrar</translation>
+        <translation>&amp;Salir</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1585"/>
@@ -524,7 +524,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1597"/>
         <source>&amp;Frequency Analyzer</source>
-        <translation>A&amp;nalizador de frecuencias</translation>
+        <translation>A&amp;nalizador de frecuencia</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1591"/>
@@ -1118,7 +1118,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1251"/>
         <source>Loading project {} failed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Error al cargar el proyecto {}.</translation>
     </message>
 </context>
 <context>
@@ -2323,7 +2323,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>Reemplazar comillas simples (') con:</translation>
+        <translation>Reemplazar comillas simples (&apos;) con:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>
@@ -2492,7 +2492,7 @@
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="155"/>
         <source>New Text</source>
-        <translation>Texto nuevo</translation>
+        <translation>Nuevo texto</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="156"/>
@@ -3446,7 +3446,7 @@
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="47"/>
         <source>Split &apos;{}&apos;</source>
-        <translation>Dividir '{}'</translation>
+        <translation>Dividir &apos;{}&apos;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="51"/>
