@@ -610,8 +610,8 @@
         <location filename="../manuskript/mainWindow.py" line="1704"/>
         <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous
                      evil wizard wasn&apos;t able to kill a baby?&apos; (Harry Potter)</source>
-        <translation>அடிப்படை நிலைமை, 'என்ன என்றால் ...?' கேள்வி. எ.கா: 'மிகவும் ஆபத்தானது என்றால் என்ன
- தீய வழிகாட்டி ஒரு குழந்தையை கொல்ல முடியவில்லையா? ' (ஆரி பாட்டர்)</translation>
+        <translation>அடிப்படை நிலைமை, &apos;என்ன என்றால் ...?&apos; கேள்வி. எ.கா: &apos;மிகவும் ஆபத்தானது என்றால் என்ன
+ தீய வழிகாட்டி ஒரு குழந்தையை கொல்ல முடியவில்லையா? &apos; (ஆரி பாட்டர்)</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1709"/>
@@ -1118,7 +1118,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1251"/>
         <source>Loading project {} failed.</source>
-        <translation type="unfinished"></translation>
+        <translation>{} திட்டத்தை ஏற்றுவதில் தோல்வி.</translation>
     </message>
 </context>
 <context>
@@ -2248,7 +2248,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="522"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Filters what items will be included in the final export.&lt;br/&gt;&lt;span style=&quot; color:#773333;&quot;&gt;(Not fully implemented yet.)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt; &lt;head/&gt; &lt;body&gt; &lt;p&gt; இறுதி ஏற்றுமதியில் என்ன உருப்படிகள் சேர்க்கப்படும் என்பதை வடிகட்டுகிறது. &lt;br/&gt;&lt;span style=&quot; color:#773333;&quot;&gt;(இன்னும் முழுமையாக செயல்படுத்தப்படவில்லை.) &lt;/p&gt; &lt;/body&gt; &lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;இறுதி ஏற்றுமதியில் என்னென்ன பொருட்கள் சேர்க்கப்படும் என்பதை வடிகட்டுகிறது.&lt;br/&gt;&lt;span style=&quot;color:#773333;&quot;&gt;(இன்னும் முழுமையாகச் செயல்படுத்தப்படவில்லை.)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="523"/>
@@ -2323,7 +2323,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>ஒற்றை மேற்கோள்களை (') மாற்றவும்:</translation>
+        <translation>ஒற்றை மேற்கோள்களை (&apos;) மாற்றவும்:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>
@@ -3433,7 +3433,7 @@
  &lt;p&gt; தேர்ந்தெடுக்கப்பட்ட உருப்படியில் ஒன்று கோப்புறையாக இருந்தால், அது பயன்படுத்தப்படும்
  &lt;i&gt; அனைவருக்கும் &lt;/i&gt; அதன் குழந்தைகள் பொருட்களுக்கு மீண்டும் மீண்டும். &lt;/p&gt;
 
- &lt;p&gt; பிளவு குறி பின்வரும் தப்பிக்கும் காட்சிகளைக் கொண்டிருக்கலாம்:
+ &lt;p&gt; பிளவுக் குறி பின்வரும் தப்பிக்கும் காட்சிகளைக் கொண்டிருக்கலாம்:
  &lt;ul&gt;
  &lt;li&gt; &lt;b&gt; &lt;code&gt; \ n &lt;/code&gt; &lt;/b&gt;: வரி முறிவு &lt;/li&gt;
  &lt;li&gt; &lt;b&gt; &lt;code&gt; \ t &lt;/code&gt; &lt;/b&gt;: தாவல் &lt;/li&gt;
@@ -3446,7 +3446,7 @@
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="47"/>
         <source>Split &apos;{}&apos;</source>
-        <translation>'{}'</translation>
+        <translation>&apos;{}&apos;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="51"/>
@@ -3576,7 +3576,7 @@
     <message>
         <location filename="../manuskript/ui/editors/textFormat.py" line="21"/>
         <source>CTRL+P</source>
-        <translation>Ctrl+P.</translation>
+        <translation>கட்டு+P</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/textFormat.py" line="22"/>
