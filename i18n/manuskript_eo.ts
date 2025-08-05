@@ -120,12 +120,12 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="619"/>
         <source>The image path or URL is incomplete or malformed.</source>
-        <translation type="unfinished"></translation>
+        <translation>La bildindiko aŭ URL estas nekompleta aŭ misformita.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="631"/>
         <source>The protocol &quot;{}&quot; is not supported.</source>
-        <translation type="unfinished"></translation>
+        <translation>La protokolo &quot;{}&quot; ne estas subtenata.</translation>
     </message>
 </context>
 <context>
@@ -141,7 +141,7 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="543"/>
         <source>{} (CTRL+Click to open)</source>
-        <translation type="unfinished"></translation>
+        <translation>{} (CTRL+Alklako por malfermi)</translation>
     </message>
 </context>
 <context>
@@ -948,12 +948,12 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1518"/>
         <source>Allow POV</source>
-        <translation type="unfinished"></translation>
+        <translation>Permesu POV (Vidpunkto)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1578"/>
         <source>Cheat Sheet</source>
-        <translation type="unfinished"></translation>
+        <translation>Gvidfolio</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1636"/>
@@ -2322,7 +2322,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>Anstataŭigi Askiajn unuoblajn citilojn (') per:</translation>
+        <translation>Anstataŭigi Askiajn unuoblajn citilojn (&apos;) per:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>
