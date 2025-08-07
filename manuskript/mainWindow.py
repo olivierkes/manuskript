@@ -3,6 +3,8 @@
 import importlib
 import os
 import re
+import traceback
+from contextlib import contextmanager
 
 from PyQt5.Qt import qVersion, PYQT_VERSION_STR
 from PyQt5.QtCore import (pyqtSignal, QSignalMapper, QTimer, QSettings, Qt, QPoint,
@@ -47,6 +49,26 @@ import logging
 LOGGER = logging.getLogger(__name__)
 
 class MainWindow(QMainWindow, Ui_MainWindow):
+    @contextmanager
+    def safe_save_context(self):
+        """Context manager for safe saving with proper cleanup"""
+        # Store spellcheck state
+        spellcheck_enabled = False
+        if hasattr(self, 'isSpellCheckEnabled'):
+            spellcheck_enabled = self.isSpellCheckEnabled()
+            if spellcheck_enabled:
+                self.toggleSpellCheck(False)
+        
+        try:
+            yield
+        except Exception as e:
+            LOGGER.error(f"Save failed: {str(e)}\n{traceback.format_exc()}")
+            raise
+        finally:
+            # Restore spellcheck state
+            if spellcheck_enabled:
+                self.toggleSpellCheck(True)
+
     # dictChanged = pyqtSignal(str)
 
     # Tab indexes
@@ -1185,42 +1207,20 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if settings.autoSaveNoChanges:
             self.saveTimerNoChanges.start()
 
-    def saveDatas(self, projectName=None):
-        """Saves the current project (in self.currentProject).
-
-        If ``projectName`` is given, currentProject becomes projectName.
-        In other words, it "saves as...".
-        """
-
-        if projectName:
-            self.currentProject = projectName
-            QSettings().setValue("lastProject", projectName)
-
-        # Stop the timer before saving: if auto-saving fails (bugs out?) we don't want it
-        # to keep trying and continuously hitting the failure condition. Nor do we want to
-        # risk a scenario where the timer somehow triggers a new save while saving.
-        self.saveTimerNoChanges.stop()
-
-        if self.currentProject is None:
-            # No UI feedback here as this code path indicates a race condition that happens
-            # after the user has already closed the project through some way. But in that
-            # scenario, this code should not be reachable to begin with.
-            LOGGER.error("There is no current project to save.")
+    def saveDatas(self, projectName=""):
+        """Save project with error handling"""
+        if not projectName and not self.currentProject:
             return
 
-        r = loadSave.saveProject()  # version=0
-
-        projectName = os.path.basename(self.currentProject)
-        if r:
-            self.projectDirty = False  # successful save, clear dirty flag
-
-            feedback = self.tr("Project {} saved.").format(projectName)
-            F.statusMessage(feedback, importance=0)
-            LOGGER.info("Project {} saved.".format(projectName))
-        else:
-            feedback = self.tr("WARNING: Project {} not saved.").format(projectName)
-            F.statusMessage(feedback, importance=3)
-            LOGGER.warning("Project {} not saved.".format(projectName))
+        with self.safe_save_context():
+            try:
+                r = loadSave.saveProject(self.currentProject, projectName)
+                if r:
+                    self.projectDirty = False
+                return r
+            except Exception as e:
+                LOGGER.error(f"Save failed: {str(e)}\n{traceback.format_exc()}")
+                raise
 
     def loadEmptyDatas(self):
         self.mdlFlatData = QStandardItemModel(self)
