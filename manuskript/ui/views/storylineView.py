@@ -83,7 +83,7 @@ class storylineView(QWidget, Ui_storylineView):
         if not self._mdlCharacter:
             pass
 
-        chars = self._mdlCharacter.getCharactersByImportance()
+        chars = self._mdlCharacter.getPovCharactersByImportance()
         r = []
         for importance in chars:
             for c in importance:
