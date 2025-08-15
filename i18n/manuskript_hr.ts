@@ -3312,7 +3312,7 @@ pored broja riječi</translation>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="33"></location>
         <source>Regex</source>
-        <translation>Regularni izraz</translation>
+        <translation>Reg izraz</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="39"></location>
