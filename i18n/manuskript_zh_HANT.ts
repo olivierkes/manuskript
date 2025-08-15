@@ -74,7 +74,7 @@
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="109"></location>
         <source>Minimum size:</source>
-        <translation>最小尺寸:</translation>
+        <translation>最短：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="110"></location>
@@ -169,7 +169,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1492"></location>
         <source>Volume</source>
-        <translation>卷</translation>
+        <translation>卷冊</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1493"></location>
@@ -179,7 +179,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1494"></location>
         <source>License</source>
-        <translation>許可證</translation>
+        <translation>許可</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1495"></location>
@@ -514,7 +514,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1592"></location>
         <source>Index cards</source>
-        <translation>索引卡</translation>
+        <translation>簡卡</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1594"></location>
@@ -793,7 +793,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1606"></location>
         <source>M&amp;erge</source>
-        <translation>合並(&amp;E)</translation>
+        <translation>合並</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1572"></location>
@@ -1204,7 +1204,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1795"></location>
         <source>If no changes during</source>
-        <translation>若無變動</translation>
+        <translation>若不變動已</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1796"></location>
@@ -1229,7 +1229,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1801"></location>
         <source>Revisions are a way to keep track of modifications. For each text item, it stores any changes you make to the main text, allowing you to see and restoring previous versions.</source>
-        <translation>修訂是種跟蹤編輯內容的方法。對於各文本項，它會存儲您對主文本所做任何更改，以便查看和恢復舊版。</translation>
+        <translation>修訂用於跟蹤內容編輯。存儲各文本項正文的任何更改，以便查看和回溯。</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1802"></location>
@@ -1249,7 +1249,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1805"></location>
         <source>Smart remove allows you to keep only a certain number of revisions. It is strongly recommended to use it, lest your files would be bloated with thousands of insignificant changes.</source>
-        <translation>智能刪除允許妳保存限量修訂。推薦開啟以免產生過量只有微小改動的修訂。</translation>
+        <translation>智能刪除可限制修訂數量，宜開啓以免保留過多微修訂。</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1806"></location>
@@ -1269,12 +1269,12 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1809"></location>
         <source>revisions per 10 minutes for the last hour</source>
-        <translation>份修訂/十分，近壹小時</translation>
+        <translation>份修訂/十分，近壹時</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1810"></location>
         <source>revisions per week till the end of time</source>
-        <translation>份修訂/周，創建以來</translation>
+        <translation>份修訂/周，一直</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1812"></location>
@@ -1349,7 +1349,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1842"></location>
         <source>&amp;Nothing</source>
-        <translation>無(&amp;N)</translation>
+        <translation>無</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1843"></location>
@@ -1389,7 +1389,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1916"></location>
         <source>Index cards</source>
-        <translation>索引卡</translation>
+        <translation>簡卡</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1885"></location>
@@ -1434,7 +1434,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1923"></location>
         <source>Family:</source>
-        <translation>字體族：</translation>
+        <translation>字體：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2002"></location>
@@ -1654,7 +1654,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1952"></location>
         <source>Use block insertion of</source>
-        <translation>用塊插入</translation>
+        <translation>塊狀插標</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1934"></location>
@@ -1699,12 +1699,12 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1929"></location>
         <source>Left/Right margins:</source>
-        <translation>左右邊距：</translation>
+        <translation>橫邊距：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1931"></location>
         <source>Top/Bottom margins:</source>
-        <translation>上下邊距：</translation>
+        <translation>纵邊距：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1840"></location>
@@ -1804,7 +1804,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1811"></location>
         <source>&lt;p&gt;&lt;b&gt;The Revisions feature has been at the source of many reported issues. In this version of Manuskript it has been turned off by default for new projects in order to provide the best experience.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Why aren&apos;t these issues fixed already? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;We need your help to make Manuskript better!&lt;/a&gt;&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;修訂功能被報有許多問題。此版Manuskript創建新項目時，默認關閉以使體驗最佳。&lt;/b&gt;&lt;/p&gt;&lt;p&gt;為何這些問題還沒修復？&lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;我們需要妳幫助改善Manuskript！&lt;/a&gt;&lt;/p&gt;</translation>
+        <translation>&lt;p&gt;&lt;b&gt;修訂功能被報有障。此版Manuskript新建項目時，默認關閉以使體驗最佳。&lt;/b&gt;&lt;/p&gt;&lt;p&gt;為何故障尚未修復？&lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;我們需要妳幫助改善Manuskript！&lt;/a&gt;&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1788"></location>
@@ -1821,7 +1821,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1835"></location>
         <source>Count spaces as chars</source>
-        <translation>空格算作字符</translation>
+        <translation>空格歸字符</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1839"></location>
@@ -2248,7 +2248,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="522"></location>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Filters what items will be included in the final export.&lt;br/&gt;&lt;span style=&quot; color:#773333;&quot;&gt;(Not fully implemented yet.)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;項目過濾器會被包括在最終導出中&lt;br/&gt;&lt;span style=&quot; color:#773333;&quot;&gt;（尚未完全應用。）&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;項目過濾器會含在最終導出中&lt;br/&gt;&lt;span style=&quot; color:#773333;&quot;&gt;（尚未完全應用。）&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="523"></location>
@@ -2700,7 +2700,7 @@
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.py" line="97"></location>
         <source>Index cards</source>
-        <translation>索引卡</translation>
+        <translation>簡卡</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor_ui.py" line="98"></location>
@@ -3440,7 +3440,7 @@
                 &lt;/ul&gt;
             &lt;/p&gt;
 
-            &lt;p&gt;&lt;b&gt;分割標記:&lt;/b&gt;&lt;/p&gt;
+            &lt;p&gt;&lt;b&gt;分割標記：&lt;/b&gt;&lt;/p&gt;
             </translation>
     </message>
     <message>
