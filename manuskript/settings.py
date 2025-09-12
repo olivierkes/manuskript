@@ -134,22 +134,38 @@ ai_hooks = {
     "plot_changed": []
 }
 
-def register_hook(event: str, callback):
+def register_hook(event: str, callback, feature_key=None, priority=10):
     """
     Register a callback function for a specific AI hook event.
     
     Args:
         event: The hook event name (e.g., 'before_save', 'after_save', etc.)
         callback: The function to call when the event occurs
+        feature_key: Optional AI feature key - callback only runs if this feature is enabled
+        priority: Execution priority (lower numbers run first, default 10)
     
     Raises:
         ValueError: If event is invalid or callback is not callable
     """
-    if event in ai_hooks and callable(callback):
-        ai_hooks[event].append(callback)
-        LOGGER.info(f"Registered hook for event: {event}")
-    else:
-        raise ValueError(f"Invalid event or callback: {event}")
+    if event not in ai_hooks:
+        raise ValueError(f"Invalid event: {event}")
+    
+    if not callable(callback):
+        raise ValueError(f"Callback must be callable: {callback}")
+    
+    hook_entry = {
+        "callback": callback,
+        "feature_key": feature_key,
+        "priority": priority
+    }
+    
+    ai_hooks[event].append(hook_entry)
+    
+    # Sort by priority after adding
+    ai_hooks[event].sort(key=lambda x: x["priority"])
+    
+    feature_msg = f" (requires '{feature_key}')" if feature_key else ""
+    LOGGER.info(f"Registered hook for event: {event}{feature_msg}")
 
 def unregister_hook(event: str, callback):
     """
@@ -159,17 +175,20 @@ def unregister_hook(event: str, callback):
         event: The hook event name
         callback: The function to remove
     """
-    if event in ai_hooks and callback in ai_hooks[event]:
-        ai_hooks[event].remove(callback)
+    if event in ai_hooks:
+        # Find and remove the hook entry with matching callback
+        ai_hooks[event] = [h for h in ai_hooks[event] if h["callback"] != callback]
         LOGGER.info(f"Unregistered hook for event: {event}")
 
-def trigger_hook(event: str, *args, **kwargs):
+def trigger_hook(event: str, *args, async_mode=False, **kwargs):
     """
     Trigger all callbacks registered to the given event.
+    Only runs callbacks whose AI feature is enabled (if feature_key is set).
     
     Args:
         event: The hook event name
         *args: Positional arguments to pass to callbacks
+        async_mode: If True, run CPU-heavy hooks in background threads
         **kwargs: Keyword arguments to pass to callbacks
     
     Returns:
@@ -179,14 +198,31 @@ def trigger_hook(event: str, *args, **kwargs):
         LOGGER.warning(f"Unknown hook event: {event}")
         return False
     
+    # Use async execution if requested
+    if async_mode:
+        from manuskript.ai.async_worker import trigger_hook_async
+        trigger_hook_async(event, *args, **kwargs)
+        return True
+    
     success = True
-    for callback in ai_hooks[event]:
+    for hook in ai_hooks[event]:
+        callback = hook["callback"]
+        feature_key = hook.get("feature_key")
+        
         try:
-            # Check if the AI feature is enabled before running the hook
-            # This allows hooks to be registered but conditionally executed
-            callback(*args, **kwargs)
+            # Only run if no feature_key is set, or if the feature is enabled
+            if feature_key is None or aiFeatures.get(feature_key, False):
+                # Check if callback is marked as CPU-heavy
+                if getattr(callback, '_cpu_heavy', False):
+                    # Run in background thread
+                    from manuskript.ai.async_worker import run_async
+                    run_async(callback, *args, **kwargs)
+                else:
+                    # Run synchronously
+                    callback(*args, **kwargs)
         except Exception as e:
-            LOGGER.error(f"[AI Hook Error] {event} callback {callback.__name__} failed: {e}")
+            callback_name = getattr(callback, "__name__", str(callback))
+            LOGGER.error(f"[AI Hook Error] {event} callback {callback_name} failed: {e}")
             success = False
     
     return success

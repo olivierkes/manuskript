@@ -30,11 +30,11 @@ def initialize():
     """
     Initialize the Narrative Graph Memory module and register hooks.
     """
-    # Register hooks for various events
-    settings.register_hook("after_load", on_project_loaded)
-    settings.register_hook("before_save", on_project_save)
-    settings.register_hook("text_changed", on_text_changed)
-    settings.register_hook("character_changed", on_character_changed)
+    # Register hooks for various events with feature_key
+    settings.register_hook("after_load", on_project_loaded, feature_key="narrativeGraphMemory", priority=5)
+    settings.register_hook("before_save", on_project_save, feature_key="narrativeGraphMemory", priority=5)
+    settings.register_hook("text_changed", on_text_changed, feature_key="narrativeGraphMemory", priority=10)
+    settings.register_hook("character_changed", on_character_changed, feature_key="narrativeGraphMemory", priority=10)
     
     LOGGER.info("Narrative Graph Memory module initialized")
 
@@ -42,8 +42,7 @@ def on_project_loaded(project_path, main_window):
     """
     Load the narrative graph when a project is opened.
     """
-    if not settings.aiFeatures.get("narrativeGraphMemory", False):
-        return
+    # No need to check feature flag - handled by hook system
     
     try:
         # Try to load existing narrative graph
@@ -60,8 +59,7 @@ def on_project_save(project_path, main_window):
     """
     Save the narrative graph when the project is saved.
     """
-    if not settings.aiFeatures.get("narrativeGraphMemory", False):
-        return
+    # No need to check feature flag - handled by hook system
     
     try:
         # Save narrative graph alongside project
@@ -76,8 +74,7 @@ def on_text_changed(text, index, editor):
     """
     Analyze text changes and update the narrative graph.
     """
-    if not settings.aiFeatures.get("narrativeGraphMemory", False):
-        return
+    # No need to check feature flag - handled by hook system
     
     try:
         # This is where you would implement the actual AI analysis
@@ -104,8 +101,7 @@ def on_character_changed(character, index, model):
     """
     Update the narrative graph when character information changes.
     """
-    if not settings.aiFeatures.get("narrativeGraphMemory", False):
-        return
+    # No need to check feature flag - handled by hook system
     
     try:
         # Update character information in the graph

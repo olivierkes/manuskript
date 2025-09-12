@@ -351,8 +351,8 @@ class textEditView(QTextEdit):
                 # LOGGER.debug("    Submitting plain text")
                 self._model.setData(QModelIndex(self._index), text)
                 
-                # Trigger text_changed hook
-                settings.trigger_hook("text_changed", text, self._index, self)
+                # Trigger text_changed hook asynchronously to avoid blocking UI
+                settings.trigger_hook("text_changed", text, self._index, self, async_mode=True)
 
         elif self._indexes:
             for i in self._indexes:

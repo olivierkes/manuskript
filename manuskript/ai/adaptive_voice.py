@@ -30,10 +30,10 @@ def initialize():
     """
     Initialize the Adaptive Voice Style module and register hooks.
     """
-    # Register hooks for text analysis
-    settings.register_hook("text_changed", analyze_writing_style)
-    settings.register_hook("after_load", load_style_profile)
-    settings.register_hook("before_save", save_style_profile)
+    # Register hooks for text analysis with feature_key
+    settings.register_hook("text_changed", analyze_writing_style, feature_key="adaptiveVoiceStyle", priority=15)
+    settings.register_hook("after_load", load_style_profile, feature_key="adaptiveVoiceStyle", priority=10)
+    settings.register_hook("before_save", save_style_profile, feature_key="adaptiveVoiceStyle", priority=10)
     
     LOGGER.info("Adaptive Voice Style module initialized")
 
@@ -41,8 +41,7 @@ def analyze_writing_style(text, index, editor):
     """
     Analyze the writing style of the provided text.
     """
-    if not settings.aiFeatures.get("adaptiveVoiceStyle", False):
-        return
+    # No need to check feature flag - handled by hook system
     
     try:
         # Analyze sentence structure
@@ -79,8 +78,7 @@ def load_style_profile(project_path, main_window):
     """
     Load the style profile when a project is opened.
     """
-    if not settings.aiFeatures.get("adaptiveVoiceStyle", False):
-        return
+    # No need to check feature flag - handled by hook system
     
     try:
         import json
@@ -108,8 +106,7 @@ def save_style_profile(project_path, main_window):
     """
     Save the style profile when the project is saved.
     """
-    if not settings.aiFeatures.get("adaptiveVoiceStyle", False):
-        return
+    # No need to check feature flag - handled by hook system
     
     try:
         import json
