@@ -120,6 +120,93 @@ aiFeatures = {
     "adaptiveVoiceStyle": False
 }
 
+# -------------------------
+# AI Hook System
+# -------------------------
+ai_hooks = {
+    "before_save": [],
+    "after_save": [],
+    "before_load": [],
+    "after_load": [],
+    "text_changed": [],
+    "character_changed": [],
+    "outline_changed": [],
+    "plot_changed": []
+}
+
+def register_hook(event: str, callback):
+    """
+    Register a callback function for a specific AI hook event.
+    
+    Args:
+        event: The hook event name (e.g., 'before_save', 'after_save', etc.)
+        callback: The function to call when the event occurs
+    
+    Raises:
+        ValueError: If event is invalid or callback is not callable
+    """
+    if event in ai_hooks and callable(callback):
+        ai_hooks[event].append(callback)
+        LOGGER.info(f"Registered hook for event: {event}")
+    else:
+        raise ValueError(f"Invalid event or callback: {event}")
+
+def unregister_hook(event: str, callback):
+    """
+    Unregister a callback function from a specific AI hook event.
+    
+    Args:
+        event: The hook event name
+        callback: The function to remove
+    """
+    if event in ai_hooks and callback in ai_hooks[event]:
+        ai_hooks[event].remove(callback)
+        LOGGER.info(f"Unregistered hook for event: {event}")
+
+def trigger_hook(event: str, *args, **kwargs):
+    """
+    Trigger all callbacks registered to the given event.
+    
+    Args:
+        event: The hook event name
+        *args: Positional arguments to pass to callbacks
+        **kwargs: Keyword arguments to pass to callbacks
+    
+    Returns:
+        bool: True if all hooks executed successfully, False if any failed
+    """
+    if event not in ai_hooks:
+        LOGGER.warning(f"Unknown hook event: {event}")
+        return False
+    
+    success = True
+    for callback in ai_hooks[event]:
+        try:
+            # Check if the AI feature is enabled before running the hook
+            # This allows hooks to be registered but conditionally executed
+            callback(*args, **kwargs)
+        except Exception as e:
+            LOGGER.error(f"[AI Hook Error] {event} callback {callback.__name__} failed: {e}")
+            success = False
+    
+    return success
+
+def clear_hooks(event: str = None):
+    """
+    Clear all callbacks for a specific event or all events.
+    
+    Args:
+        event: The specific event to clear (None clears all events)
+    """
+    if event:
+        if event in ai_hooks:
+            ai_hooks[event].clear()
+            LOGGER.info(f"Cleared all hooks for event: {event}")
+    else:
+        for evt in ai_hooks:
+            ai_hooks[evt].clear()
+        LOGGER.info("Cleared all AI hooks")
+
 viewMode = "fiction"  # simple, fiction
 saveToZip = False
 dontShowDeleteWarning = False

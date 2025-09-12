@@ -67,6 +67,11 @@ class characterModel(QAbstractItemModel, searchableModel):
                 if index.column() not in c._data or c._data[index.column()] != value:
                     c._data[index.column()] = value
                     self.dataChanged.emit(index, index)
+                    
+                    # Trigger character_changed hook
+                    from manuskript import settings
+                    settings.trigger_hook("character_changed", c, index, self)
+                    
                     return True
 
         elif type(c) == CharacterInfo:
@@ -76,6 +81,11 @@ class characterModel(QAbstractItemModel, searchableModel):
                 elif index.column() == 1:
                     c.value = value
                 self.dataChanged.emit(index, index)
+                
+                # Trigger character_changed hook for info changes
+                from manuskript import settings
+                settings.trigger_hook("character_changed", c, index, self)
+                
                 return True
 
         return False

@@ -929,12 +929,18 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             importlib.reload(settings)
             settings.initDefaultValues()
 
+            # Trigger before_load hooks
+            settings.trigger_hook("before_load", project, self)
+
             # Load data
             self.loadEmptyDatas()
             
             if not self.loadDatas(project):
                 self.closeProject()
                 return
+            
+            # Trigger after_load hooks
+            settings.trigger_hook("after_load", project, self)
 
         self.makeConnections()
 
@@ -1208,11 +1214,17 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             LOGGER.error("There is no current project to save.")
             return
 
+        # Trigger before_save hooks
+        settings.trigger_hook("before_save", self.currentProject, self)
+
         r = loadSave.saveProject()  # version=0
 
         projectName = os.path.basename(self.currentProject)
         if r:
             self.projectDirty = False  # successful save, clear dirty flag
+
+            # Trigger after_save hooks on successful save
+            settings.trigger_hook("after_save", self.currentProject, self)
 
             feedback = self.tr("Project {} saved.").format(projectName)
             F.statusMessage(feedback, importance=0)
