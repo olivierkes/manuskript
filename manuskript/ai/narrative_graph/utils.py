@@ -127,6 +127,69 @@ def unload_nlp_model():
         _nlp_model = None
         _model_load_failed = False  # Reset failure state
 
+def process_doc_entities(doc, entities):
+    """Helper function to process entities from a spaCy doc."""
+    # First, try standard NER
+    for ent in doc.ents:
+        if ent.label_ == "PERSON":
+            entities["characters"].append(ent.text)
+        elif ent.label_ in ["GPE", "LOC", "FAC"]:
+            entities["locations"].append(ent.text)
+        elif ent.label_ == "DATE":
+            entities["dates"].append(ent.text)
+        elif ent.label_ == "TIME":
+            entities["times"].append(ent.text)
+        elif ent.label_ == "ORG":
+            entities["organizations"].append(ent.text)
+        else:
+            entities["other"].append(ent.text)
+    
+    # Also use syntactic analysis for proper nouns not caught by NER
+    # This helps with fictional names and test data like "Character_0"
+    for token in doc:
+        # Proper nouns that are subjects are likely characters
+        if token.pos_ == "PROPN" and token.dep_ in ["nsubj", "nsubjpass"]:
+            if token.text not in entities["characters"]:
+                entities["characters"].append(token.text)
+        # Proper nouns that are direct objects with motion verbs might be locations
+        elif token.pos_ == "PROPN" and token.dep_ == "dobj":
+            # Check if the verb implies location (visit, enter, leave, etc.)
+            if token.head.lemma_ in ["visit", "enter", "leave", "reach", "approach"]:
+                if token.text not in entities["locations"]:
+                    entities["locations"].append(token.text)
+            # Otherwise it's likely a character being acted upon
+            elif token.text not in entities["characters"]:
+                entities["characters"].append(token.text)
+        # Proper nouns after prepositions are likely places
+        elif token.pos_ == "PROPN" and token.dep_ == "pobj":
+            if token.text not in entities["locations"]:
+                entities["locations"].append(token.text)
+        # Other proper nouns in agent positions are likely characters
+        elif token.pos_ == "PROPN" and token.dep_ in ["agent", "iobj"]:
+            if token.text not in entities["characters"]:
+                entities["characters"].append(token.text)
+        
+        # Also check for common nouns that are objects of location prepositions
+        # This helps with lowercase locations like "castle", "forest", etc.
+        elif token.pos_ == "NOUN" and token.dep_ == "pobj":
+            # Check if preceded by location preposition
+            if token.head.text.lower() in ["to", "at", "in", "from", "near", "by", "into", "through", "across"]:
+                # Common location words in narratives
+                if token.lemma_ in ["castle", "village", "forest", "mountain", "palace", "town", 
+                                    "city", "house", "room", "garden", "tower", "dungeon", "cave",
+                                    "river", "lake", "ocean", "street", "road", "path", "bridge",
+                                    "valley", "hill", "field", "meadow", "desert", "island", "shore"]:
+                    if token.text not in entities["locations"]:
+                        entities["locations"].append(token.text)
+    
+    # Resolve coreferences if available
+    if COREF_AVAILABLE and hasattr(doc, 'coref_chains'):
+        for chain in doc.coref_chains:
+            # Add coreference mentions to characters
+            main_mention = chain.main
+            if main_mention.text not in entities["characters"]:
+                entities["characters"].append(main_mention.text)
+
 def extract_entities(text: str) -> Dict[str, List[str]]:
     """
     Extract named entities from text.
@@ -141,30 +204,28 @@ def extract_entities(text: str) -> Dict[str, List[str]]:
     
     nlp = get_nlp_model()
     if nlp:
-        # Use spaCy for entity extraction
-        doc = nlp(text)
-        
-        for ent in doc.ents:
-            if ent.label_ == "PERSON":
-                entities["characters"].append(ent.text)
-            elif ent.label_ in ["GPE", "LOC", "FAC"]:
-                entities["locations"].append(ent.text)
-            elif ent.label_ == "DATE":
-                entities["dates"].append(ent.text)
-            elif ent.label_ == "TIME":
-                entities["times"].append(ent.text)
-            elif ent.label_ == "ORG":
-                entities["organizations"].append(ent.text)
-            else:
-                entities["other"].append(ent.text)
-        
-        # Resolve coreferences if available
-        if COREF_AVAILABLE and hasattr(doc, 'coref_chains'):
-            for chain in doc.coref_chains:
-                # Add coreference mentions to characters
-                main_mention = chain.main
-                if main_mention.text not in entities["characters"]:
-                    entities["characters"].append(main_mention.text)
+        # Check text length and process in chunks if needed
+        max_length = nlp.max_length
+        if len(text) > max_length:
+            # Process text in chunks
+            chunk_size = max_length - 1000  # Leave some buffer
+            chunks = [text[i:i+chunk_size] for i in range(0, len(text), chunk_size)]
+            for chunk in chunks:
+                try:
+                    doc = nlp(chunk)
+                    process_doc_entities(doc, entities)
+                except Exception as e:
+                    LOGGER.warning(f"Failed to process chunk: {e}")
+                    continue
+        else:
+            # Use spaCy for entity extraction
+            try:
+                doc = nlp(text)
+                process_doc_entities(doc, entities)
+            except Exception as e:
+                LOGGER.warning(f"Failed to process text with spaCy: {e}")
+                # Fall back to simple extraction
+                entities = extract_entities_fallback(text)
     else:
         # Fallback: Simple regex-based extraction
         entities = extract_entities_fallback(text)
@@ -173,11 +234,17 @@ def extract_entities(text: str) -> Dict[str, List[str]]:
     for key in entities:
         entities[key] = list(dict.fromkeys(entities[key]))
     
-    return dict(entities)
+    # Ensure required keys exist
+    result = dict(entities)
+    for key in ['characters', 'locations', 'relationships']:
+        if key not in result:
+            result[key] = []
+    
+    return result
 
 def extract_entities_fallback(text: str) -> Dict[str, List[str]]:
     """
-    Fallback entity extraction using regex patterns.
+    Fallback entity extraction using NLTK when spaCy is unavailable.
     
     Args:
         text: Input text
@@ -187,30 +254,72 @@ def extract_entities_fallback(text: str) -> Dict[str, List[str]]:
     """
     entities = defaultdict(list)
     
-    # Extract capitalized words (potential names)
-    name_pattern = r'\b[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*\b'
-    potential_names = re.findall(name_pattern, text)
+    try:
+        import nltk
+        # Download required data if not present (runs once)
+        try:
+            nltk.data.find('tokenizers/punkt')
+        except LookupError:
+            nltk.download('punkt', quiet=True)
+        try:
+            nltk.data.find('taggers/averaged_perceptron_tagger')
+        except LookupError:
+            nltk.download('averaged_perceptron_tagger', quiet=True)
+        
+        # Tokenize and POS tag
+        tokens = nltk.word_tokenize(text)
+        pos_tags = nltk.pos_tag(tokens)
+        
+        # Extract proper nouns (NNP, NNPS) and contextual nouns as entities
+        for i, (word, pos) in enumerate(pos_tags):
+            if pos in ['NNP', 'NNPS']:  # Proper nouns
+                # Look at context to classify
+                # If preceded by location preposition, it's likely a location
+                if i > 0 and pos_tags[i-1][0].lower() in ['to', 'at', 'in', 'from', 'near', 'by', 'the']:
+                    entities["locations"].append(word)
+                # If preceded by verbs like 'visited', 'entered', 'left', it's likely a location
+                elif i > 0 and pos_tags[i-1][0].lower() in ['visited', 'entered', 'left', 'reached', 'approached']:
+                    entities["locations"].append(word)
+                # If it's followed by a verb, it's likely a character (subject)
+                elif i < len(pos_tags) - 1 and pos_tags[i+1][1].startswith('VB'):
+                    entities["characters"].append(word)
+                else:
+                    # Default to character for narrative text
+                    entities["characters"].append(word)
+            elif pos in ['NN', 'NNS'] and i > 1:  # Common nouns with context
+                # Check if preceded by "the" and a location preposition
+                if (pos_tags[i-1][0].lower() == 'the' and 
+                    pos_tags[i-2][0].lower() in ['to', 'at', 'in', 'from', 'near', 'by', 'into']):
+                    # Common location words
+                    if word.lower() in ['castle', 'village', 'forest', 'mountain', 'palace', 'town', 
+                                       'city', 'house', 'room', 'garden', 'tower', 'dungeon', 'cave',
+                                       'river', 'lake', 'ocean', 'street', 'road', 'path', 'bridge']:
+                        entities["locations"].append(word)
+                    
+    except ImportError:
+        # If NLTK is also not available, use a very simple approach
+        # Just split on spaces and take capitalized words
+        words = text.split()
+        for i, word in enumerate(words):
+            # Remove punctuation
+            clean_word = word.strip('.,!?;:"')
+            if clean_word and clean_word[0].isupper():
+                # Check if preceded by location indicators
+                if i > 0:
+                    prev_word = words[i-1].lower().strip('.,!?;:"')
+                    if prev_word in ['to', 'at', 'in', 'from', 'near', 'by', 'the', 'visited', 'entered', 'left', 'reached', 'approached']:
+                        entities["locations"].append(clean_word)
+                        continue
+                # Default to character since that's most common in narratives
+                entities["characters"].append(clean_word)
     
-    # Common name indicators
-    name_indicators = ['said', 'asked', 'replied', 'thought', 'walked', 'ran', 'looked']
+    # Ensure required keys exist
+    result = dict(entities)
+    for key in ['characters', 'locations', 'relationships']:
+        if key not in result:
+            result[key] = []
     
-    for name in potential_names:
-        # Check if it appears before common verbs (likely a character)
-        for indicator in name_indicators:
-            if f"{name} {indicator}" in text or f"{name}'s" in text:
-                entities["characters"].append(name)
-                break
-        else:
-            # Could be a location
-            if any(prep in text for prep in [f"in {name}", f"at {name}", f"to {name}", f"from {name}"]):
-                entities["locations"].append(name)
-    
-    # Extract quoted dialogue speakers
-    dialogue_pattern = r'"[^"]+"\s+(?:said|asked|replied)\s+([A-Z][a-z]+)'
-    speakers = re.findall(dialogue_pattern, text)
-    entities["characters"].extend(speakers)
-    
-    return dict(entities)
+    return result
 
 def analyze_relationships(text: str, entities: Dict[str, List[str]]) -> List[Tuple[str, str, str]]:
     """

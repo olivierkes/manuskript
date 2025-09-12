@@ -210,8 +210,15 @@ def trigger_hook(event: str, *args, async_mode=False, **kwargs):
         try:
             # Only run if no feature_key is set, or if the feature is enabled
             if feature_key is None or aiFeatures.get(feature_key, False):
-                # Check if callback is marked as CPU-heavy
-                if getattr(callback, '_cpu_heavy', False):
+                # Check if callback is marked as CPU-heavy (avoid Mock issues)
+                is_cpu_heavy = False
+                if hasattr(callback, '_cpu_heavy'):
+                    # Only consider it cpu_heavy if it's explicitly set to True
+                    # This avoids Mock objects which return Mock for any attribute
+                    cpu_heavy_attr = getattr(callback, '_cpu_heavy')
+                    is_cpu_heavy = cpu_heavy_attr is True or cpu_heavy_attr == True
+                
+                if is_cpu_heavy:
                     # Run in background thread
                     success &= _run_callback_async(callback, *args, **kwargs)
                 else:

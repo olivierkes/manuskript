@@ -10,6 +10,7 @@ import json
 import os
 import pickle
 import logging
+import threading
 from typing import Dict, Any, Optional
 from datetime import datetime
 
@@ -40,14 +41,10 @@ class GraphStorage:
             project_path: Path to the project directory
         """
         self.project_path = project_path
-        self.graph_file = os.path.join(
-            os.path.dirname(project_path), 
-            ".narrative_graph.pkl"
-        )
-        self.json_backup = os.path.join(
-            os.path.dirname(project_path), 
-            ".narrative_graph.json"
-        )
+        # Use project name as basis for graph files
+        base_name = os.path.splitext(project_path)[0]
+        self.graph_file = base_name + ".narrative_graph.pkl"
+        self.json_backup = base_name + ".narrative_graph.json"
         
         if nx:
             self.graph = nx.MultiDiGraph()
@@ -74,6 +71,13 @@ class GraphStorage:
         # Auto-save configuration
         self.changes_since_save = 0
         self.auto_save_threshold = 10  # Auto-save after 10 changes
+        self.last_save_time = None  # Track last save time
+        
+        # Thread safety
+        self._graph_lock = threading.RLock()
+        
+        # Try to load existing graph
+        self.load()
     
     def _track_node_access(self, node_name: str):
         """Track node access for LRU pruning."""
@@ -142,14 +146,35 @@ class GraphStorage:
                                 if d.get('node_type') != 'character']
                 non_char_nodes.sort(key=lambda x: x[1])  # Sort by degree (ascending)
                 
-                nodes_to_remove = non_char_nodes[:len(non_char_nodes) // 4]  # Remove 25%
+                if non_char_nodes:
+                    nodes_to_remove = non_char_nodes[:len(non_char_nodes) // 4]  # Remove 25%
+                    
+                    for node_name, _ in nodes_to_remove:
+                        self.graph.remove_node(node_name)
+                        self.node_access_count.pop(node_name, None)
+                        self.last_access_time.pop(node_name, None)
+                    
+                    LOGGER.info(f"Removed {len(nodes_to_remove)} low-connectivity nodes")
                 
-                for node_name, _ in nodes_to_remove:
-                    self.graph.remove_node(node_name)
-                    self.node_access_count.pop(node_name, None)
-                    self.last_access_time.pop(node_name, None)
-                
-                LOGGER.info(f"Removed {len(nodes_to_remove)} low-connectivity nodes")
+                # If STILL too many nodes and we're way over limit, remove least accessed characters
+                if self.graph.number_of_nodes() >= self.MAX_NODES:
+                    # Sort characters by access count
+                    char_nodes = [(n, self.node_access_count.get(n, 0)) 
+                                 for n, d in self.graph.nodes(data=True) 
+                                 if d.get('node_type') == 'character']
+                    char_nodes.sort(key=lambda x: x[1])  # Sort by access count (ascending)
+                    
+                    # Calculate how many to remove to get well under limit
+                    target = int(self.MAX_NODES * 0.7)  # Target 70% capacity
+                    excess = self.graph.number_of_nodes() - target
+                    nodes_to_remove = char_nodes[:min(excess, len(char_nodes) // 3)]  # Remove up to 1/3 of characters
+                    
+                    for node_name, _ in nodes_to_remove:
+                        self.graph.remove_node(node_name)
+                        self.node_access_count.pop(node_name, None)
+                        self.last_access_time.pop(node_name, None)
+                    
+                    LOGGER.info(f"Removed {len(nodes_to_remove)} least accessed characters")
             
             # Update metadata
             self.metadata["last_pruned"] = datetime.now().isoformat()
@@ -168,37 +193,38 @@ class GraphStorage:
             name: Character name
             attributes: Character attributes (traits, descriptions, etc.)
         """
-        self._track_node_access(name)
-        
-        if nx and hasattr(self.graph, 'nodes'):
-            # NetworkX graph available and initialized
-            if self.graph.has_node(name):
-                # Update existing node attributes
-                existing_attrs = self.graph.nodes[name].get('attributes', {})
-                existing_attrs.update(attributes or {})
-                self.graph.nodes[name]['attributes'] = existing_attrs
+        with self._graph_lock:
+            self._track_node_access(name)
+            
+            if nx and hasattr(self.graph, 'nodes'):
+                # NetworkX graph available and initialized
+                if self.graph.has_node(name):
+                    # Update existing node attributes
+                    existing_attrs = self.graph.nodes[name].get('attributes', {})
+                    existing_attrs.update(attributes or {})
+                    self.graph.nodes[name]['attributes'] = existing_attrs
+                else:
+                    self.graph.add_node(
+                        name,
+                        node_type="character",
+                        attributes=attributes or {},
+                        first_seen=datetime.now().isoformat()
+                    )
+                LOGGER.debug(f"Added/updated character node: {name}")
             else:
-                self.graph.add_node(
-                    name,
-                    node_type="character",
-                    attributes=attributes or {},
-                    first_seen=datetime.now().isoformat()
-                )
-            LOGGER.debug(f"Added/updated character node: {name}")
-        else:
-            # Fallback to dict-based storage
-            if not isinstance(self.graph, dict):
-                self.graph = {"nodes": {}, "edges": []}
-            if "nodes" not in self.graph:
-                self.graph["nodes"] = {}
-            self.graph["nodes"][name] = {
-                "node_type": "character",
-                "attributes": attributes or {}
-            }
-        
-        # Mark as changed and check if pruning is needed
-        self._mark_changed()
-        self._check_memory_limits()
+                # Fallback to dict-based storage
+                if not isinstance(self.graph, dict):
+                    self.graph = {"nodes": {}, "edges": []}
+                if "nodes" not in self.graph:
+                    self.graph["nodes"] = {}
+                self.graph["nodes"][name] = {
+                    "node_type": "character",
+                    "attributes": attributes or {}
+                }
+            
+            # Mark as changed and check if pruning is needed
+            self._mark_changed()
+            self._check_memory_limits()
     
     def add_location(self, name: str, description: str = ""):
         """
@@ -208,24 +234,25 @@ class GraphStorage:
             name: Location name
             description: Location description
         """
-        if nx and hasattr(self.graph, 'nodes'):
-            self.graph.add_node(
-                name,
-                node_type="location",
-                description=description,
-                first_seen=datetime.now().isoformat()
-            )
-            LOGGER.debug(f"Added location node: {name}")
-        else:
-            # Fallback to dict-based storage
-            if not isinstance(self.graph, dict):
-                self.graph = {"nodes": {}, "edges": []}
-            if "nodes" not in self.graph:
-                self.graph["nodes"] = {}
-            self.graph["nodes"][name] = {
-                "node_type": "location",
-                "description": description
-            }
+        with self._graph_lock:
+            if nx and hasattr(self.graph, 'nodes'):
+                self.graph.add_node(
+                    name,
+                    node_type="location",
+                    description=description,
+                    first_seen=datetime.now().isoformat()
+                )
+                LOGGER.debug(f"Added location node: {name}")
+            else:
+                # Fallback to dict-based storage
+                if not isinstance(self.graph, dict):
+                    self.graph = {"nodes": {}, "edges": []}
+                if "nodes" not in self.graph:
+                    self.graph["nodes"] = {}
+                self.graph["nodes"][name] = {
+                    "node_type": "location",
+                    "description": description
+                }
     
     def add_relationship(self, source: str, target: str, 
                         rel_type: str, attributes: Dict[str, Any] = None):
@@ -238,27 +265,28 @@ class GraphStorage:
             rel_type: Type of relationship (e.g., "knows", "loves", "visited")
             attributes: Additional relationship attributes
         """
-        if nx and hasattr(self.graph, 'nodes'):
-            self.graph.add_edge(
-                source,
-                target,
-                relationship=rel_type,
-                timestamp=datetime.now().isoformat(),
-                **(attributes or {})
-            )
-            LOGGER.debug(f"Added relationship: {source} --[{rel_type}]--> {target}")
-        else:
-            # Fallback to dict-based storage
-            if not isinstance(self.graph, dict):
-                self.graph = {"nodes": {}, "edges": []}
-            if "edges" not in self.graph:
-                self.graph["edges"] = []
-            self.graph["edges"].append({
-                "source": source,
-                "target": target,
-                "type": rel_type,
-                "attributes": attributes or {}
-            })
+        with self._graph_lock:
+            if nx and hasattr(self.graph, 'nodes'):
+                self.graph.add_edge(
+                    source,
+                    target,
+                    relationship=rel_type,
+                    timestamp=datetime.now().isoformat(),
+                    **(attributes or {})
+                )
+                LOGGER.debug(f"Added relationship: {source} --[{rel_type}]--> {target}")
+            else:
+                # Fallback to dict-based storage
+                if not isinstance(self.graph, dict):
+                    self.graph = {"nodes": {}, "edges": []}
+                if "edges" not in self.graph:
+                    self.graph["edges"] = []
+                self.graph["edges"].append({
+                    "source": source,
+                    "target": target,
+                    "type": rel_type,
+                    "attributes": attributes or {}
+                })
     
     def add_event(self, event_id: str, participants: list, 
                   event_type: str, description: str = ""):
@@ -271,25 +299,26 @@ class GraphStorage:
             event_type: Type of event
             description: Event description
         """
-        if nx and hasattr(self.graph, 'nodes'):
-            # Add event node
-            self.graph.add_node(
-                event_id,
-                node_type="event",
-                event_type=event_type,
-                description=description,
-                timestamp=datetime.now().isoformat()
-            )
-            
-            # Connect participants to event
-            for participant in participants:
-                self.graph.add_edge(
-                    participant,
+        with self._graph_lock:
+            if nx and hasattr(self.graph, 'nodes'):
+                # Add event node
+                self.graph.add_node(
                     event_id,
-                    relationship="participated_in"
+                    node_type="event",
+                    event_type=event_type,
+                    description=description,
+                    timestamp=datetime.now().isoformat()
                 )
-            
-            LOGGER.debug(f"Added event: {event_id} with {len(participants)} participants")
+                
+                # Connect participants to event
+                for participant in participants:
+                    self.graph.add_edge(
+                        participant,
+                        event_id,
+                        relationship="participated_in"
+                    )
+                
+                LOGGER.debug(f"Added event: {event_id} with {len(participants)} participants")
     
     def get_character_connections(self, character: str, depth: int = 1):
         """
@@ -408,8 +437,9 @@ class GraphStorage:
             except Exception as e2:
                 LOGGER.error(f"Emergency JSON save also failed: {e2}")
         
-        # Reset change counter on successful save
+        # Reset change counter and update last save time on successful save
         self._reset_change_counter()
+        self.last_save_time = datetime.now().isoformat()
     
     def save_json_backup(self):
         """
@@ -562,9 +592,17 @@ class GraphStorage:
         else:
             # Dictionary fallback
             if isinstance(self.graph, dict):
+                nodes = self.graph.get("nodes", {})
                 stats = {
-                    "total_nodes": len(self.graph.get("nodes", {})),
-                    "total_edges": len(self.graph.get("edges", []))
+                    "total_nodes": len(nodes),
+                    "total_edges": len(self.graph.get("edges", [])),
+                    "characters": len([n for n, data in nodes.items() 
+                                     if data.get('node_type') == 'character']),
+                    "locations": len([n for n, data in nodes.items() 
+                                    if data.get('node_type') == 'location']),
+                    "events": len([n for n, data in nodes.items() 
+                                 if data.get('node_type') == 'event']),
+                    "density": 0  # Can't easily calculate for dict
                 }
         
         self.metadata["stats"] = stats
@@ -627,6 +665,7 @@ class GraphStorage:
             "auto_save_threshold": self.auto_save_threshold,
             "tracked_nodes": len(self.node_access_count),
             "last_access_entries": len(self.last_access_time),
+            "last_save_time": self.last_save_time,
             "metadata": self.metadata,
             "graph_files": {
                 "pickle_exists": os.path.exists(self.graph_file),

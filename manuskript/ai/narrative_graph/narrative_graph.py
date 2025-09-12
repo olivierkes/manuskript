@@ -33,10 +33,21 @@ current_graph_storage = None
 # Thread lock for graph operations
 _graph_lock = threading.RLock()  # Reentrant lock for nested calls
 
-def initialize():
+def initialize(project_path=None):
     """
     Initialize the Narrative Graph Memory module and register hooks.
+    
+    Args:
+        project_path: Optional project path for direct initialization (used in testing)
     """
+    global current_graph_storage
+    
+    # If project_path provided, initialize directly (for testing)
+    if project_path:
+        from .graph_storage import GraphStorage
+        current_graph_storage = GraphStorage(project_path)
+        LOGGER.info(f"Narrative Graph initialized directly with project: {project_path}")
+    
     # Register hooks for various events with feature_key
     settings.register_hook("after_load", on_project_loaded, feature_key="narrativeGraphMemory", priority=5)
     settings.register_hook("before_save", on_project_save, feature_key="narrativeGraphMemory", priority=5)
@@ -314,8 +325,64 @@ def suggest_consistency_check(text: str) -> List[Dict[str, str]]:
                         'message': f"New character '{char}' is similar to existing '{similar[0]}'. Possible typo?"
                     })
         
-        # Check for character relationship consistency
-        # This would be expanded with more sophisticated logic
+        # Check for numeric inconsistencies (ages, numbers, etc.)
+        import re
+        
+        # Find all numbers associated with characters
+        char_numbers = {}
+        for char in new_chars:
+            # Find numbers near character mentions
+            pattern = rf"{char}.*?(\d+)|(\d+).*?{char}"
+            matches = re.findall(pattern, text, re.IGNORECASE)
+            for match in matches:
+                num = match[0] if match[0] else match[1]
+                if num:
+                    if char not in char_numbers:
+                        char_numbers[char] = []
+                    char_numbers[char].append(int(num))
+        
+        # Check for inconsistent numbers for the same character
+        for char, numbers in char_numbers.items():
+            if len(numbers) > 1 and len(set(numbers)) > 1:
+                # Check if numbers could be ages (reasonable range)
+                if all(10 <= n <= 100 for n in numbers):
+                    suggestions.append({
+                        'type': 'warning',
+                        'message': f"Character '{char}' has inconsistent ages: {sorted(set(numbers))}. Please verify timeline consistency."
+                    })
+                else:
+                    suggestions.append({
+                        'type': 'info',
+                        'message': f"Character '{char}' is associated with different numbers: {sorted(set(numbers))}. Verify if this is intentional."
+                    })
+        
+        # Check for timeline inconsistencies
+        age_pattern = r"(\d+)[\s-]*year[s]?[\s-]*old"
+        ages_mentioned = re.findall(age_pattern, text, re.IGNORECASE)
+        if len(set(ages_mentioned)) > 2:  # Multiple different ages mentioned
+            suggestions.append({
+                'type': 'info',
+                'message': f"Multiple ages mentioned ({', '.join(set(ages_mentioned))} years). Ensure timeline consistency."
+            })
+        
+        # Check for duplicate phrases or repetitive content
+        sentences = text.split('.')
+        if len(sentences) > 1:
+            # Look for very similar sentences
+            for i, sent1 in enumerate(sentences[:-1]):
+                for sent2 in sentences[i+1:]:
+                    if len(sent1) > 10 and len(sent2) > 10:
+                        # Simple similarity check
+                        words1 = set(sent1.lower().split())
+                        words2 = set(sent2.lower().split())
+                        if words1 and words2:
+                            overlap = len(words1 & words2) / min(len(words1), len(words2))
+                            if overlap > 0.8:
+                                suggestions.append({
+                                    'type': 'info',
+                                    'message': 'Detected potentially repetitive content. Consider varying your descriptions.'
+                                })
+                                break
         
         return suggestions
         

@@ -7,6 +7,9 @@ networkx>=3.0
 # Natural Language Processing
 spacy>=3.7.0
 
+# Lightweight NLP fallback
+nltk>=3.8
+
 # Coreference resolution (optional)
 fastcoref>=2.1.6
 

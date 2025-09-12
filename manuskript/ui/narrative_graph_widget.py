@@ -33,6 +33,7 @@ class NarrativeGraphWidget(QWidget):
         super().__init__(parent)
         self.graph_storage = None
         self._last_stats = {}
+        self._last_text = ""  # Store last processed text for consistency checking
         
         self.setupUI()
         self.setupTimer()
@@ -306,6 +307,10 @@ class NarrativeGraphWidget(QWidget):
         self.graph_storage = storage
         self.refresh_data()
     
+    def set_last_text(self, text):
+        """Store the last processed text for consistency checking."""
+        self._last_text = text
+    
     def refresh_data(self):
         """Refresh all displayed data."""
         if not self.graph_storage:
@@ -559,8 +564,9 @@ class NarrativeGraphWidget(QWidget):
             # Call the actual consistency checker
             if self.graph_storage:
                 from manuskript.ai.narrative_graph.narrative_graph import suggest_consistency_check
-                # Run check on sample text - in real use this would be current document text
-                issues = suggest_consistency_check("Sample text with characters Alice and Bob.")
+                # Use the last processed text or a default
+                text_to_check = self._last_text if self._last_text else "Sample text with characters Alice and Bob."
+                issues = suggest_consistency_check(text_to_check)
                 
                 # Convert to expected format
                 formatted_issues = []
