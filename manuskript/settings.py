@@ -114,6 +114,12 @@ tooltipStyle = {
     "borderColor": "#767676"
 }
 
+aiFeatures = {
+    "claudeAPIKey": "",
+    "narrativeGraphMemory": False,
+    "adaptiveVoiceStyle": False
+}
+
 viewMode = "fiction"  # simple, fiction
 saveToZip = False
 dontShowDeleteWarning = False
@@ -144,7 +150,7 @@ def save(filename=None, protocol=None):
     global spellcheck, dict, corkSliderFactor, viewSettings, corkSizeFactor, folderView, lastTab, openIndexes, \
            progressChars, autoSave, autoSaveDelay, saveOnQuit, autoSaveNoChanges, autoSaveNoChangesDelay, outlineViewColumns, \
            corkBackground, corkStyle, fullScreenTheme, defaultTextType, textEditor, revisions, frequencyAnalyzer, viewMode, \
-           saveToZip, dontShowDeleteWarning, fullscreenSettings, tooltipStyle
+           saveToZip, dontShowDeleteWarning, fullscreenSettings, tooltipStyle, aiFeatures
 
     allSettings = {
         "viewSettings": viewSettings,
@@ -175,6 +181,7 @@ def save(filename=None, protocol=None):
         "saveToZip": saveToZip,
         "dontShowDeleteWarning": dontShowDeleteWarning,
         "tooltipStyle": tooltipStyle,
+        "aiFeatures": aiFeatures,
     }
 
     #pp=pprint.PrettyPrinter(indent=4, compact=False)
@@ -355,3 +362,15 @@ def load(string, fromString=False, protocol=None):
         if "useSystemDefaultsForTooltips" not in loaded_tooltip_style:
             loaded_tooltip_style["useSystemDefaultsForTooltips"] = True
         tooltipStyle = loaded_tooltip_style
+    
+    if "aiFeatures" in allSettings:
+        global aiFeatures
+        loaded_ai_features = allSettings["aiFeatures"]
+        # Add missing keys with defaults
+        if "claudeAPIKey" not in loaded_ai_features:
+            loaded_ai_features["claudeAPIKey"] = ""
+        if "narrativeGraphMemory" not in loaded_ai_features:
+            loaded_ai_features["narrativeGraphMemory"] = False
+        if "adaptiveVoiceStyle" not in loaded_ai_features:
+            loaded_ai_features["adaptiveVoiceStyle"] = False
+        aiFeatures = loaded_ai_features
