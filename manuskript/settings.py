@@ -200,9 +200,7 @@ def trigger_hook(event: str, *args, async_mode=False, **kwargs):
     
     # Use async execution if requested
     if async_mode:
-        from manuskript.ai.async_worker import trigger_hook_async
-        trigger_hook_async(event, *args, **kwargs)
-        return True
+        return _trigger_hook_async(event, *args, **kwargs)
     
     success = True
     for hook in ai_hooks[event]:
@@ -215,8 +213,7 @@ def trigger_hook(event: str, *args, async_mode=False, **kwargs):
                 # Check if callback is marked as CPU-heavy
                 if getattr(callback, '_cpu_heavy', False):
                     # Run in background thread
-                    from manuskript.ai.async_worker import run_async
-                    run_async(callback, *args, **kwargs)
+                    success &= _run_callback_async(callback, *args, **kwargs)
                 else:
                     # Run synchronously
                     callback(*args, **kwargs)
@@ -226,6 +223,40 @@ def trigger_hook(event: str, *args, async_mode=False, **kwargs):
             success = False
     
     return success
+
+def _trigger_hook_async(event: str, *args, **kwargs):
+    """
+    Internal function to handle async hook triggering.
+    Uses late import to avoid circular dependencies.
+    """
+    try:
+        from manuskript.ai.async_worker import trigger_hook_async
+        trigger_hook_async(event, *args, **kwargs)
+        return True
+    except ImportError as e:
+        LOGGER.warning(f"Async worker not available, running hooks synchronously: {e}")
+        # Fall back to synchronous execution
+        return trigger_hook(event, *args, async_mode=False, **kwargs)
+
+def _run_callback_async(callback, *args, **kwargs):
+    """
+    Internal function to run a single callback asynchronously.
+    Uses late import to avoid circular dependencies.
+    """
+    try:
+        from manuskript.ai.async_worker import run_async
+        run_async(callback, *args, **kwargs)
+        return True
+    except ImportError as e:
+        LOGGER.warning(f"Async worker not available, running callback synchronously: {e}")
+        # Fall back to synchronous execution
+        try:
+            callback(*args, **kwargs)
+            return True
+        except Exception as ex:
+            callback_name = getattr(callback, "__name__", str(callback))
+            LOGGER.error(f"[AI Hook Error] Callback {callback_name} failed: {ex}")
+            return False
 
 def clear_hooks(event: str = None):
     """

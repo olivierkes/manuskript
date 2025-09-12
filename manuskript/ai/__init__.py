@@ -21,7 +21,7 @@ def initialize_ai_features():
     This should be called when the application starts.
     """
     # Import individual AI modules
-    from . import narrative_graph
+    from .narrative_graph import narrative_graph
     from . import adaptive_voice
     from . import text_analyzer
     from . import async_worker
@@ -34,7 +34,26 @@ def initialize_ai_features():
     adaptive_voice.initialize()
     text_analyzer.initialize()
     
+    # Preload heavy models if any AI features are enabled
+    if any(settings.aiFeatures.values()):
+        preload_models()
+    
     LOGGER.info("AI features initialized with async support")
+
+def preload_models():
+    """
+    Preload heavy ML models in background for better responsiveness.
+    """
+    try:
+        from .narrative_graph.utils import preload_nlp_model
+        
+        # Check if narrative graph is enabled
+        if settings.aiFeatures.get("narrativeGraphMemory", False):
+            LOGGER.info("Preloading NLP models for narrative graph...")
+            preload_nlp_model()
+        
+    except Exception as e:
+        LOGGER.error(f"Failed to preload models: {e}")
 
 def cleanup_ai_features():
     """
@@ -42,6 +61,13 @@ def cleanup_ai_features():
     This should be called when the application exits.
     """
     from . import async_worker
+    
+    # Unload heavy models to free memory
+    try:
+        from .narrative_graph.utils import unload_nlp_model
+        unload_nlp_model()
+    except Exception as e:
+        LOGGER.error(f"Failed to unload models: {e}")
     
     # Clean up thread pool
     async_worker.cleanup_thread_pool()

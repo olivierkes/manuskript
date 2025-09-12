@@ -1,0 +1,15 @@
+# AI Features Dependencies
+# These are installed automatically when user enables AI features
+
+# Network graph analysis
+networkx>=3.0
+
+# Natural Language Processing
+spacy>=3.7.0
+
+# Coreference resolution (optional)
+fastcoref>=2.1.6
+
+# Alternative NLP libraries (future use)
+# transformers>=4.30.0  # For BERT/GPT models
+# torch>=2.0.0          # For deep learning models

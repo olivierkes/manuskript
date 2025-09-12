@@ -43,6 +43,9 @@ from manuskript.ui.bulkInfoManager import Ui_BulkInfoManager
 from manuskript.ui.views.textEditView import textEditView
 from manuskript.functions import Spellchecker
 
+# AI features
+from manuskript.ui.narrative_graph_widget import NarrativeGraphWidget
+
 import logging
 LOGGER = logging.getLogger(__name__)
 
@@ -943,6 +946,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             settings.trigger_hook("after_load", project, self)
 
         self.makeConnections()
+        
+        # Reconnect narrative graph after project load
+        if hasattr(self, 'connectNarrativeGraphStorage'):
+            self.connectNarrativeGraphStorage()
 
         # Load settings
         if settings.openIndexes and settings.openIndexes != [""]:
@@ -1646,6 +1653,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.toolbar.addCustomWidget(self.tr("Project tree"), self.treeRedacWidget, self.TabRedac, True)
         self.toolbar.addCustomWidget(self.tr("Metadata"), self.redacMetadata, self.TabRedac, False)
         self.toolbar.addCustomWidget(self.tr("Story line"), self.storylineView, self.TabRedac, False)
+        
+        # Add narrative graph widget (AI feature)
+        self.setupNarrativeGraphWidget()
         if self._toolbarState:
             self.toolbar.restoreState(self._toolbarState)
 
@@ -1774,6 +1784,49 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 a.triggered.connect(gen_slot_cb(lib), F.AUC)
                 self.menuTools.addAction(a)
 
+    def setupNarrativeGraphWidget(self):
+        """Set up the narrative graph widget for AI features."""
+        try:
+            # Only create if AI features are available
+            if settings.aiFeatures.get("narrativeGraphMemory", False):
+                self.dckNarrativeGraph = QDockWidget(self.tr("Narrative Graph"), self)
+                self.dckNarrativeGraph.setObjectName("dckNarrativeGraph")
+                
+                # Create the narrative graph widget
+                self.narrativeGraphWidget = NarrativeGraphWidget()
+                self.dckNarrativeGraph.setWidget(self.narrativeGraphWidget)
+                
+                # Add to dock area (left side by default)
+                self.addDockWidget(Qt.LeftDockWidgetArea, self.dckNarrativeGraph)
+                
+                # Add to collapsible toolbar for visibility control
+                self.toolbar.addCustomWidget(self.tr("Narrative Graph"), self.narrativeGraphWidget, None, False)
+                
+                # Connect to graph storage when available
+                self.connectNarrativeGraphStorage()
+                
+                LOGGER.info("Narrative graph widget created successfully")
+            else:
+                self.dckNarrativeGraph = None
+                self.narrativeGraphWidget = None
+                
+        except Exception as e:
+            LOGGER.error(f"Failed to setup narrative graph widget: {e}")
+            self.dckNarrativeGraph = None
+            self.narrativeGraphWidget = None
+
+    def connectNarrativeGraphStorage(self):
+        """Connect the narrative graph widget to the current graph storage."""
+        try:
+            # Import the narrative graph module to get current storage
+            from manuskript.ai.narrative_graph.narrative_graph import current_graph_storage
+            
+            if current_graph_storage and hasattr(self, 'narrativeGraphWidget') and self.narrativeGraphWidget:
+                self.narrativeGraphWidget.set_graph_storage(current_graph_storage)
+                LOGGER.debug("Connected narrative graph widget to storage")
+                
+        except Exception as e:
+            LOGGER.error(f"Failed to connect narrative graph storage: {e}")
 
     ###############################################################################
     # SPELLCHECK
