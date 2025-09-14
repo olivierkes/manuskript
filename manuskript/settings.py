@@ -114,6 +114,179 @@ tooltipStyle = {
     "borderColor": "#767676"
 }
 
+aiFeatures = {
+    "claudeAPIKey": "",
+    "narrativeGraphMemory": False,
+    "adaptiveVoiceStyle": False
+}
+
+# -------------------------
+# AI Hook System
+# -------------------------
+ai_hooks = {
+    "before_save": [],
+    "after_save": [],
+    "before_load": [],
+    "after_load": [],
+    "text_changed": [],
+    "character_changed": [],
+    "outline_changed": [],
+    "plot_changed": []
+}
+
+def register_hook(event: str, callback, feature_key=None, priority=10):
+    """
+    Register a callback function for a specific AI hook event.
+    
+    Args:
+        event: The hook event name (e.g., 'before_save', 'after_save', etc.)
+        callback: The function to call when the event occurs
+        feature_key: Optional AI feature key - callback only runs if this feature is enabled
+        priority: Execution priority (lower numbers run first, default 10)
+    
+    Raises:
+        ValueError: If event is invalid or callback is not callable
+    """
+    if event not in ai_hooks:
+        raise ValueError(f"Invalid event: {event}")
+    
+    if not callable(callback):
+        raise ValueError(f"Callback must be callable: {callback}")
+    
+    hook_entry = {
+        "callback": callback,
+        "feature_key": feature_key,
+        "priority": priority
+    }
+    
+    ai_hooks[event].append(hook_entry)
+    
+    # Sort by priority after adding
+    ai_hooks[event].sort(key=lambda x: x["priority"])
+    
+    feature_msg = f" (requires '{feature_key}')" if feature_key else ""
+    LOGGER.info(f"Registered hook for event: {event}{feature_msg}")
+
+def unregister_hook(event: str, callback):
+    """
+    Unregister a callback function from a specific AI hook event.
+    
+    Args:
+        event: The hook event name
+        callback: The function to remove
+    """
+    if event in ai_hooks:
+        # Find and remove the hook entry with matching callback
+        ai_hooks[event] = [h for h in ai_hooks[event] if h["callback"] != callback]
+        LOGGER.info(f"Unregistered hook for event: {event}")
+
+def trigger_hook(event: str, *args, async_mode=False, **kwargs):
+    """
+    Trigger all callbacks registered to the given event.
+    Only runs callbacks whose AI feature is enabled (if feature_key is set).
+    
+    Args:
+        event: The hook event name
+        *args: Positional arguments to pass to callbacks
+        async_mode: If True, run CPU-heavy hooks in background threads
+        **kwargs: Keyword arguments to pass to callbacks
+    
+    Returns:
+        bool: True if all hooks executed successfully, False if any failed
+    """
+    LOGGER.info(f"trigger_hook called for event: {event}, async_mode: {async_mode}")
+    
+    if event not in ai_hooks:
+        LOGGER.warning(f"Unknown hook event: {event}")
+        return False
+    
+    # Use async execution if requested
+    if async_mode:
+        return _trigger_hook_async(event, *args, **kwargs)
+    
+    success = True
+    LOGGER.debug(f"Processing {len(ai_hooks[event])} hooks for event: {event}")
+    LOGGER.debug(f"Current aiFeatures: {aiFeatures}")
+    for hook in ai_hooks[event]:
+        callback = hook["callback"]
+        feature_key = hook.get("feature_key")
+        
+        try:
+            # Only run if no feature_key is set, or if the feature is enabled
+            feature_enabled = aiFeatures.get(feature_key, False) if feature_key else True
+            LOGGER.debug(f"Hook {callback.__name__} for event {event}: feature_key={feature_key}, enabled={feature_enabled}")
+            if feature_key is None or feature_enabled:
+                # Check if callback is marked as CPU-heavy (avoid Mock issues)
+                is_cpu_heavy = False
+                if hasattr(callback, '_cpu_heavy'):
+                    # Only consider it cpu_heavy if it's explicitly set to True
+                    # This avoids Mock objects which return Mock for any attribute
+                    cpu_heavy_attr = getattr(callback, '_cpu_heavy')
+                    is_cpu_heavy = cpu_heavy_attr is True or cpu_heavy_attr == True
+                
+                if is_cpu_heavy:
+                    # Run in background thread
+                    success &= _run_callback_async(callback, *args, **kwargs)
+                else:
+                    # Run synchronously
+                    callback(*args, **kwargs)
+        except Exception as e:
+            callback_name = getattr(callback, "__name__", str(callback))
+            LOGGER.error(f"[AI Hook Error] {event} callback {callback_name} failed: {e}")
+            success = False
+    
+    return success
+
+def _trigger_hook_async(event: str, *args, **kwargs):
+    """
+    Internal function to handle async hook triggering.
+    Uses late import to avoid circular dependencies.
+    """
+    try:
+        from manuskript.ai.async_worker import trigger_hook_async
+        trigger_hook_async(event, *args, **kwargs)
+        return True
+    except ImportError as e:
+        LOGGER.warning(f"Async worker not available, running hooks synchronously: {e}")
+        # Fall back to synchronous execution
+        return trigger_hook(event, *args, async_mode=False, **kwargs)
+
+def _run_callback_async(callback, *args, **kwargs):
+    """
+    Internal function to run a single callback asynchronously.
+    Uses late import to avoid circular dependencies.
+    """
+    try:
+        from manuskript.ai.async_worker import run_async
+        run_async(callback, *args, **kwargs)
+        return True
+    except ImportError as e:
+        LOGGER.warning(f"Async worker not available, running callback synchronously: {e}")
+        # Fall back to synchronous execution
+        try:
+            callback(*args, **kwargs)
+            return True
+        except Exception as ex:
+            callback_name = getattr(callback, "__name__", str(callback))
+            LOGGER.error(f"[AI Hook Error] Callback {callback_name} failed: {ex}")
+            return False
+
+def clear_hooks(event: str = None):
+    """
+    Clear all callbacks for a specific event or all events.
+    
+    Args:
+        event: The specific event to clear (None clears all events)
+    """
+    if event:
+        if event in ai_hooks:
+            ai_hooks[event].clear()
+            LOGGER.info(f"Cleared all hooks for event: {event}")
+    else:
+        for evt in ai_hooks:
+            ai_hooks[evt].clear()
+        LOGGER.info("Cleared all AI hooks")
+
 viewMode = "fiction"  # simple, fiction
 saveToZip = False
 dontShowDeleteWarning = False
@@ -144,7 +317,7 @@ def save(filename=None, protocol=None):
     global spellcheck, dict, corkSliderFactor, viewSettings, corkSizeFactor, folderView, lastTab, openIndexes, \
            progressChars, autoSave, autoSaveDelay, saveOnQuit, autoSaveNoChanges, autoSaveNoChangesDelay, outlineViewColumns, \
            corkBackground, corkStyle, fullScreenTheme, defaultTextType, textEditor, revisions, frequencyAnalyzer, viewMode, \
-           saveToZip, dontShowDeleteWarning, fullscreenSettings, tooltipStyle
+           saveToZip, dontShowDeleteWarning, fullscreenSettings, tooltipStyle, aiFeatures
 
     allSettings = {
         "viewSettings": viewSettings,
@@ -175,6 +348,7 @@ def save(filename=None, protocol=None):
         "saveToZip": saveToZip,
         "dontShowDeleteWarning": dontShowDeleteWarning,
         "tooltipStyle": tooltipStyle,
+        "aiFeatures": aiFeatures,
     }
 
     #pp=pprint.PrettyPrinter(indent=4, compact=False)
@@ -355,3 +529,15 @@ def load(string, fromString=False, protocol=None):
         if "useSystemDefaultsForTooltips" not in loaded_tooltip_style:
             loaded_tooltip_style["useSystemDefaultsForTooltips"] = True
         tooltipStyle = loaded_tooltip_style
+    
+    if "aiFeatures" in allSettings:
+        global aiFeatures
+        loaded_ai_features = allSettings["aiFeatures"]
+        # Add missing keys with defaults
+        if "claudeAPIKey" not in loaded_ai_features:
+            loaded_ai_features["claudeAPIKey"] = ""
+        if "narrativeGraphMemory" not in loaded_ai_features:
+            loaded_ai_features["narrativeGraphMemory"] = False
+        if "adaptiveVoiceStyle" not in loaded_ai_features:
+            loaded_ai_features["adaptiveVoiceStyle"] = False
+        aiFeatures = loaded_ai_features

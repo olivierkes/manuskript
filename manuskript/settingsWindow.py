@@ -41,6 +41,7 @@ class settingsWindow(QWidget, Ui_Settings):
                   self.lblTitleStatus,
                   self.lblTitleFullscreen,
                   self.lblTitleStyle,
+                  self.lblTitleAIFeatures,
                   ]:
             l.setStyleSheet(S.titleLabelSS())
 
@@ -50,13 +51,14 @@ class settingsWindow(QWidget, Ui_Settings):
                  themeIcon("label"),
                  themeIcon("status"),
                  QIcon.fromTheme("preferences-desktop-theme"),
-                 QIcon.fromTheme("color-picker")
+                 QIcon.fromTheme("color-picker"),
+                 QIcon.fromTheme("applications-artificial-intelligence")
                 ]
         for i in range(self.lstMenu.count()):
             item = self.lstMenu.item(i)
             item.setSizeHint(QSize(item.sizeHint().width(), 42))
             item.setTextAlignment(Qt.AlignCenter)
-            if icons[i]:
+            if i < len(icons) and icons[i]:
                 item.setIcon(icons[i])
         self.lstMenu.setMaximumWidth(140)
         self.lstMenu.setMinimumWidth(140)
@@ -320,6 +322,14 @@ class settingsWindow(QWidget, Ui_Settings):
         self.setButtonColor(self.btnTooltipBorderColor, settings.tooltipStyle["borderColor"])
         self.btnTooltipBorderColor.clicked.connect(self.chooseTooltipBorderColor)
         self.updateTooltipControlsState()
+        
+        # AI Features
+        self.txtClaudeAPIKey.setText(settings.aiFeatures["claudeAPIKey"])
+        self.txtClaudeAPIKey.textChanged.connect(self.aiSettingsChanged)
+        self.chkNarrativeGraph.setChecked(settings.aiFeatures["narrativeGraphMemory"])
+        self.chkNarrativeGraph.stateChanged.connect(self.aiSettingsChanged)
+        self.chkAdaptiveVoice.setChecked(settings.aiFeatures["adaptiveVoiceStyle"])
+        self.chkAdaptiveVoice.stateChanged.connect(self.aiSettingsChanged)
 
     def setTab(self, tab):
 
@@ -330,6 +340,7 @@ class settingsWindow(QWidget, Ui_Settings):
             "Status": 3,
             "Fullscreen": 4,
             "Style": 5,
+            "AIFeatures": 6,
         }
 
         if tab in tabs:
@@ -1073,3 +1084,19 @@ class settingsWindow(QWidget, Ui_Settings):
             qApp.setStyleSheet("")
         else:
             qApp.setStyleSheet(f"QToolTip {{ color: {settings.tooltipStyle['textColor']}; background-color: {settings.tooltipStyle['backgroundColor']}; border: 1px solid {settings.tooltipStyle['borderColor']}; }}")
+    
+    ####################################################################################################
+    #                                       AI FEATURES                                                #
+    ####################################################################################################
+    
+    def aiSettingsChanged(self):
+        """
+        Save AI Features settings when changed.
+        """
+        settings.aiFeatures["claudeAPIKey"] = self.txtClaudeAPIKey.text()
+        settings.aiFeatures["narrativeGraphMemory"] = self.chkNarrativeGraph.isChecked()
+        settings.aiFeatures["adaptiveVoiceStyle"] = self.chkAdaptiveVoice.isChecked()
+        
+        # Refresh the narrative graph widget if the main window exists
+        if self.mw and hasattr(self.mw, 'refreshNarrativeGraphWidget'):
+            self.mw.refreshNarrativeGraphWidget()
