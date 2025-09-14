@@ -11,6 +11,7 @@ Advanced story tracking using NetworkX graphs and spaCy NLP.
 """
 
 from manuskript import settings
+from manuskript.enums import Outline
 from manuskript.ai.async_worker import async_hook
 import logging
 import os
@@ -19,17 +20,25 @@ from typing import Dict, Any, List, Optional
 
 LOGGER = logging.getLogger(__name__)
 
-# Import NetworkX conditionally
+# Import the new high-performance graph engine
 try:
-    import networkx as nx
-    NETWORKX_AVAILABLE = True
+    from .graph_engine import NarrativeGraphEngine, EntityType, RelationType
+    ENGINE_AVAILABLE = True
 except ImportError:
-    nx = None
-    NETWORKX_AVAILABLE = False
-    LOGGER.info("NetworkX not available. Using basic dictionary storage.")
+    ENGINE_AVAILABLE = False
+    LOGGER.warning("NarrativeGraphEngine not available, falling back to NetworkX")
+    # Import NetworkX conditionally as fallback
+    try:
+        import networkx as nx
+        NETWORKX_AVAILABLE = True
+    except ImportError:
+        nx = None
+        NETWORKX_AVAILABLE = False
+        LOGGER.info("NetworkX not available. Using basic dictionary storage.")
 
 # Global storage for the current project's graph
 current_graph_storage = None
+current_graph_engine = None  # New high-performance engine
 # Thread lock for graph operations
 _graph_lock = threading.RLock()  # Reentrant lock for nested calls
 
@@ -62,40 +71,260 @@ def initialize(project_path=None):
 
 def on_project_loaded(project_path, main_window):
     """
-    Load the narrative graph when a project is opened.
+    Load the narrative graph when a project is opened and scan existing content.
     """
-    global current_graph_storage
+    global current_graph_storage, current_graph_engine
+    
+    LOGGER.info(f"on_project_loaded called with project_path: {project_path}")
     
     with _graph_lock:
         try:
-            # Check if dependencies need to be installed
-            if not NETWORKX_AVAILABLE:
-                LOGGER.info("NetworkX not available. Install with: pip install networkx")
-            
-            # Import storage module
-            from .graph_storage import load_graph
-            
-            # Load or create graph storage
-            current_graph_storage = load_graph(project_path)
-            
-            stats = current_graph_storage.get_stats()
-            LOGGER.info(f"Loaded narrative graph: {stats}")
+            # Try to use new engine first
+            if ENGINE_AVAILABLE:
+                current_graph_engine = NarrativeGraphEngine(project_path)
+                # Try to load existing data
+                if current_graph_engine.load():
+                    stats = current_graph_engine.get_statistics()
+                    LOGGER.info(f"Loaded narrative graph engine: {stats}")
+                else:
+                    LOGGER.info("No existing graph data, will scan content")
+                
+                # If graph is empty, scan existing project content
+                if len(current_graph_engine.entities) == 0:
+                    LOGGER.info("Empty graph detected, scanning existing content...")
+                    _scan_project_content(main_window)
+            else:
+                # Fall back to old storage
+                # Check if dependencies need to be installed
+                if not NETWORKX_AVAILABLE:
+                    LOGGER.info("NetworkX not available. Install with: pip install networkx")
+                
+                # Import storage module
+                from .graph_storage import load_graph
+                
+                # Load or create graph storage
+                current_graph_storage = load_graph(project_path)
+                
+                stats = current_graph_storage.get_stats()
+                LOGGER.info(f"Loaded narrative graph: {stats}")
+                
+                # If graph is empty, scan existing project content
+                if current_graph_storage.graph.number_of_nodes() == 0:
+                    LOGGER.info("Empty graph detected, scanning existing content...")
+                    _scan_project_content(main_window)
             
         except Exception as e:
             LOGGER.error(f"Failed to load narrative graph: {e}")
-            # Create empty storage as fallback
-            from .graph_storage import GraphStorage
-            current_graph_storage = GraphStorage(project_path)
+            # Create empty engine/storage as fallback
+            if ENGINE_AVAILABLE:
+                current_graph_engine = NarrativeGraphEngine(project_path)
+            else:
+                from .graph_storage import GraphStorage
+                current_graph_storage = GraphStorage(project_path)
+            # Try to scan content even with new storage
+            try:
+                _scan_project_content(main_window)
+            except Exception as scan_error:
+                LOGGER.error(f"Failed to scan project content: {scan_error}")
+
+def _scan_project_content(main_window):
+    """
+    Scan all existing content in the project using smart extraction.
+    """
+    global current_graph_storage, current_graph_engine
+    
+    LOGGER.info("Starting smart project content scan...")
+    
+    if not current_graph_storage and not current_graph_engine:
+        LOGGER.warning("No graph storage/engine available for content scan")
+        return
+    
+    try:
+        # Try to use smart extraction first
+        try:
+            from .smart_extraction import SmartEntityExtractor
+            use_smart = True
+            extractor = SmartEntityExtractor(main_window)
+            LOGGER.info("Using smart entity extraction")
+        except ImportError:
+            LOGGER.info("Smart extraction not available, falling back to basic extraction")
+            use_smart = False
+            from .utils import extract_entities, analyze_relationships
+        
+        # Clear existing graph data first
+        if current_graph_engine:
+            current_graph_engine.clear()
+        elif current_graph_storage:
+            current_graph_storage.clear()
+        
+        if use_smart:
+            # First, add all existing characters and locations from models
+            existing_chars = extractor.get_existing_characters()
+            existing_locs = extractor.get_existing_locations()
+            
+            # Add existing entities to graph
+            for char_id, char_data in existing_chars.items():
+                if current_graph_engine:
+                    current_graph_engine.add_entity(
+                        char_data['name'],
+                        EntityType.CHARACTER,
+                        motivation=char_data.get('motivation', '')
+                    )
+                elif current_graph_storage:
+                    current_graph_storage.add_character(
+                        char_data['name'],
+                        description=char_data.get('motivation', '')
+                    )
+                LOGGER.debug(f"Added existing character: {char_data['name']}")
+            
+            for loc_id, loc_data in existing_locs.items():
+                if current_graph_engine:
+                    current_graph_engine.add_entity(
+                        loc_data['name'],
+                        EntityType.LOCATION,
+                        description=loc_data.get('description', '')
+                    )
+                elif current_graph_storage:
+                    current_graph_storage.add_location(
+                        loc_data['name'],
+                        description=loc_data.get('description', '')
+                    )
+                LOGGER.debug(f"Added existing location: {loc_data['name']}")
+        
+        # Get the outline model from main window
+        if hasattr(main_window, 'mdlOutline') and main_window.mdlOutline:
+            from manuskript.enums import Outline
+            
+            items_processed = 0
+            entities_found = 0
+            relationships_found = 0
+            
+            # Recursively scan all text items in the outline
+            def scan_item(item):
+                nonlocal items_processed, entities_found, relationships_found
+                
+                # Get text content
+                text = item.data(Outline.text.value)
+                title = item.data(Outline.title.value) or ""
+                item_id = item.data(Outline.ID.value) or ""
+                
+                if text:
+                    items_processed += 1
+                    try:
+                        if use_smart:
+                            # Use smart extraction
+                            entities = extractor.extract_from_text(text)
+                            
+                            # Add new characters not in existing models
+                            for character in entities.get("characters", []):
+                                if character not in [c['name'] for c in existing_chars.values()]:
+                                    if current_graph_engine:
+                                        current_graph_engine.add_entity(character, EntityType.CHARACTER)
+                                    elif current_graph_storage:
+                                        current_graph_storage.add_character(character)
+                                    entities_found += 1
+                                    LOGGER.debug(f"Found new character: {character}")
+                            
+                            # Add new locations not in existing models
+                            for location in entities.get("locations", []):
+                                if location not in [l['name'] for l in existing_locs.values()]:
+                                    if current_graph_engine:
+                                        current_graph_engine.add_entity(location, EntityType.LOCATION)
+                                    elif current_graph_storage:
+                                        current_graph_storage.add_location(location)
+                                    entities_found += 1
+                                    LOGGER.debug(f"Found new location: {location}")
+                            
+                            # Analyze character interactions
+                            interactions = extractor.analyze_character_interactions(
+                                text,
+                                entities.get('characters', [])
+                            )
+                            
+                            for interaction in interactions:
+                                if current_graph_engine:
+                                    # Map interaction type to RelationType
+                                    rel_type = RelationType.INTERACTS  # Default
+                                    interaction_type = interaction['type'].lower()
+                                    if 'love' in interaction_type:
+                                        rel_type = RelationType.LOVES
+                                    elif 'hate' in interaction_type:
+                                        rel_type = RelationType.ENEMY
+                                    elif 'friend' in interaction_type or 'help' in interaction_type:
+                                        rel_type = RelationType.FRIEND
+                                    elif 'know' in interaction_type or 'met' in interaction_type:
+                                        rel_type = RelationType.KNOWS
+                                    
+                                    # Get entity IDs
+                                    char1_id = f"character_{interaction['character1'].lower().replace(' ', '_')}"
+                                    char2_id = f"character_{interaction['character2'].lower().replace(' ', '_')}"
+                                    current_graph_engine.add_relationship(char1_id, char2_id, rel_type)
+                                elif current_graph_storage:
+                                    current_graph_storage.add_relationship(
+                                        interaction['character1'],
+                                        interaction['character2'],
+                                        interaction['type']
+                                    )
+                                relationships_found += 1
+                                LOGGER.debug(f"Found interaction: {interaction['character1']} -> {interaction['character2']} ({interaction['type']})")
+                        else:
+                            # Fall back to basic extraction
+                            entities = extract_entities(text)
+                            
+                            # Add to graph
+                            for character in entities.get("characters", []):
+                                current_graph_storage.add_character(character)
+                                entities_found += 1
+                                LOGGER.debug(f"Found character: {character}")
+                            for location in entities.get("locations", []):
+                                current_graph_storage.add_location(location)
+                                entities_found += 1
+                                LOGGER.debug(f"Found location: {location}")
+                            
+                            # Extract and add relationships
+                            relationships = analyze_relationships(text, entities)
+                            for source, rel_type, target in relationships:
+                                current_graph_storage.add_relationship(
+                                    source, target, rel_type
+                                )
+                                relationships_found += 1
+                                LOGGER.debug(f"Found relationship: {source} -> {target} ({rel_type})")
+                            
+                    except Exception as e:
+                        LOGGER.debug(f"Failed to process item text: {e}")
+                
+                # Recursively process children
+                for i in range(item.childCount()):
+                    scan_item(item.child(i))
+            
+            # Start scanning from root
+            root = main_window.mdlOutline.rootItem
+            scan_item(root)
+            
+            if current_graph_engine:
+                stats = current_graph_engine.get_statistics()
+            elif current_graph_storage:
+                stats = current_graph_storage.get_stats()
+            else:
+                stats = {}
+            LOGGER.info(f"Content scan complete. Processed {items_processed} items, found {entities_found} new entities, {relationships_found} relationships. Graph stats: {stats}")
+            
+    except Exception as e:
+        LOGGER.error(f"Failed to scan project content: {e}", exc_info=True)
 
 def on_project_save(project_path, main_window):
     """
     Save the narrative graph when the project is saved.
     """
-    global current_graph_storage
+    global current_graph_storage, current_graph_engine
     
     with _graph_lock:
         try:
-            if current_graph_storage:
+            if current_graph_engine:
+                current_graph_engine.save()
+                stats = current_graph_engine.get_statistics()
+                LOGGER.info(f"Saved narrative graph engine: {stats}")
+            elif current_graph_storage:
                 current_graph_storage.save()
                 stats = current_graph_storage.get_stats()
                 LOGGER.info(f"Saved narrative graph: {stats}")

@@ -1096,3 +1096,7 @@ class settingsWindow(QWidget, Ui_Settings):
         settings.aiFeatures["claudeAPIKey"] = self.txtClaudeAPIKey.text()
         settings.aiFeatures["narrativeGraphMemory"] = self.chkNarrativeGraph.isChecked()
         settings.aiFeatures["adaptiveVoiceStyle"] = self.chkAdaptiveVoice.isChecked()
+        
+        # Refresh the narrative graph widget if the main window exists
+        if self.mw and hasattr(self.mw, 'refreshNarrativeGraphWidget'):
+            self.mw.refreshNarrativeGraphWidget()

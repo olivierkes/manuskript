@@ -44,6 +44,11 @@ from manuskript.ui.views.textEditView import textEditView
 from manuskript.functions import Spellchecker
 
 # AI features
+try:
+    from manuskript.ui.narrative_graph_pro import NarrativeGraphPro
+    PRO_WIDGET_AVAILABLE = True
+except ImportError:
+    PRO_WIDGET_AVAILABLE = False
 from manuskript.ui.narrative_graph_widget import NarrativeGraphWidget
 
 import logging
@@ -169,7 +174,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.actForward.triggered.connect(self.navigateForward)
 
         # Main Menu:: view
-        self.generateViewMenu()
+        # Note: generateViewMenu() will be called after setupMoreUi() to ensure widgets exist
         self.actModeGroup = QActionGroup(self)
         self.actModeSimple.setActionGroup(self.actModeGroup)
         self.actModeFiction.setActionGroup(self.actModeGroup)
@@ -950,6 +955,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Reconnect narrative graph after project load
         if hasattr(self, 'connectNarrativeGraphStorage'):
             self.connectNarrativeGraphStorage()
+        
+        # Refresh narrative graph widget in case settings changed
+        if hasattr(self, 'refreshNarrativeGraphWidget'):
+            self.refreshNarrativeGraphWidget()
 
         # Load settings
         if settings.openIndexes and settings.openIndexes != [""]:
@@ -1656,6 +1665,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
         # Add narrative graph widget (AI feature)
         self.setupNarrativeGraphWidget()
+        
+        # Generate the View menu after widgets are created
+        self.generateViewMenu()
+        
         if self._toolbarState:
             self.toolbar.restoreState(self._toolbarState)
 
@@ -1789,41 +1802,113 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         try:
             # Only create if AI features are available
             if settings.aiFeatures.get("narrativeGraphMemory", False):
+                # Create a QDockWidget like CheatSheet but much larger
                 self.dckNarrativeGraph = QDockWidget(self.tr("Narrative Graph"), self)
                 self.dckNarrativeGraph.setObjectName("dckNarrativeGraph")
                 
-                # Create the narrative graph widget
-                self.narrativeGraphWidget = NarrativeGraphWidget()
+                # Create the narrative graph widget (prefer Pro version if available)
+                if PRO_WIDGET_AVAILABLE:
+                    self.narrativeGraphWidget = NarrativeGraphPro(self)
+                    LOGGER.info("Using NarrativeGraphPro widget")
+                else:
+                    self.narrativeGraphWidget = NarrativeGraphWidget(self.dckNarrativeGraph)
+                    LOGGER.info("Using standard NarrativeGraphWidget")
+                
+                # Set the widget as the dock's content
                 self.dckNarrativeGraph.setWidget(self.narrativeGraphWidget)
                 
-                # Add to dock area (left side by default)
-                self.addDockWidget(Qt.LeftDockWidgetArea, self.dckNarrativeGraph)
+                # Add to the right side of the main window
+                self.addDockWidget(Qt.RightDockWidgetArea, self.dckNarrativeGraph)
                 
-                # Add to collapsible toolbar for visibility control
-                self.toolbar.addCustomWidget(self.tr("Narrative Graph"), self.narrativeGraphWidget, None, False)
+                # Set a reasonable default width (not minimum)
+                self.dckNarrativeGraph.resize(600, self.height())
+                
+                # Allow it to be closed and floated
+                self.dckNarrativeGraph.setFeatures(QDockWidget.DockWidgetClosable | 
+                                                  QDockWidget.DockWidgetMovable | 
+                                                  QDockWidget.DockWidgetFloatable)
+                
+                # Initially hide it
+                self.dckNarrativeGraph.setVisible(False)
+                
+                # Add to the dock widgets list for View menu management
+                if hasattr(self, '_dckVisibility'):
+                    self._dckVisibility[self.dckNarrativeGraph.objectName()] = False
+                
+                # Create action to View menu to toggle the dock
+                self.actShowNarrativeGraph = QAction(self.tr("&Narrative Graph"), self)
+                self.actShowNarrativeGraph.setCheckable(True)
+                self.actShowNarrativeGraph.setChecked(False)
+                self.actShowNarrativeGraph.triggered.connect(self.toggleNarrativeGraph)
+                
+                # Regenerate View menu to include the new action
+                self.generateViewMenu()
                 
                 # Connect to graph storage when available
                 self.connectNarrativeGraphStorage()
                 
-                LOGGER.info("Narrative graph widget created successfully")
+                LOGGER.info("Narrative graph dock widget created successfully")
             else:
-                self.dckNarrativeGraph = None
                 self.narrativeGraphWidget = None
+                self.dckNarrativeGraph = None
                 
         except Exception as e:
             LOGGER.error(f"Failed to setup narrative graph widget: {e}")
-            self.dckNarrativeGraph = None
             self.narrativeGraphWidget = None
+            self.dckNarrativeGraph = None
+    
+    def refreshNarrativeGraphWidget(self):
+        """Refresh the narrative graph widget based on current settings."""
+        should_have_widget = settings.aiFeatures.get("narrativeGraphMemory", False)
+        has_widget = hasattr(self, 'narrativeGraphWidget') and self.narrativeGraphWidget
+        
+        if should_have_widget and not has_widget:
+            # Create the widget
+            self.setupNarrativeGraphWidget()
+        elif not should_have_widget and has_widget:
+            # Remove the dock widget
+            if hasattr(self, 'dckNarrativeGraph') and self.dckNarrativeGraph:
+                self.removeDockWidget(self.dckNarrativeGraph)
+                self.dckNarrativeGraph.deleteLater()
+                self.dckNarrativeGraph = None
+            self.narrativeGraphWidget = None
+            LOGGER.info("Narrative graph widget removed")
 
-    def connectNarrativeGraphStorage(self):
-        """Connect the narrative graph widget to the current graph storage."""
-        try:
-            # Import the narrative graph module to get current storage
-            from manuskript.ai.narrative_graph.narrative_graph import current_graph_storage
+    def toggleNarrativeGraph(self):
+        """Toggle the Narrative Graph dock widget visibility."""
+        if hasattr(self, 'dckNarrativeGraph') and self.dckNarrativeGraph:
+            is_visible = not self.dckNarrativeGraph.isVisible()
+            self.dckNarrativeGraph.setVisible(is_visible)
             
-            if current_graph_storage and hasattr(self, 'narrativeGraphWidget') and self.narrativeGraphWidget:
-                self.narrativeGraphWidget.set_graph_storage(current_graph_storage)
-                LOGGER.debug("Connected narrative graph widget to storage")
+            # Update the action check state
+            if hasattr(self, 'actShowNarrativeGraph'):
+                self.actShowNarrativeGraph.setChecked(is_visible)
+            
+            # If showing for the first time, trigger a refresh
+            if is_visible and hasattr(self, 'narrativeGraphWidget') and self.narrativeGraphWidget:
+                self.narrativeGraphWidget.refresh_data()
+                
+            LOGGER.debug(f"Narrative Graph visibility toggled to: {is_visible}")
+    
+    def connectNarrativeGraphStorage(self):
+        """Connect the narrative graph widget to the current graph storage/engine."""
+        try:
+            # Import the narrative graph module to get current storage/engine
+            from manuskript.ai.narrative_graph.narrative_graph import current_graph_storage, current_graph_engine
+            
+            if hasattr(self, 'narrativeGraphWidget') and self.narrativeGraphWidget:
+                # Prefer engine over storage
+                if current_graph_engine:
+                    if hasattr(self.narrativeGraphWidget, 'set_graph_engine'):
+                        self.narrativeGraphWidget.set_graph_engine(current_graph_engine)
+                        LOGGER.debug("Connected narrative graph widget to engine")
+                    elif hasattr(self.narrativeGraphWidget, 'set_graph_storage'):
+                        # Fall back to storage method if widget doesn't support engine
+                        self.narrativeGraphWidget.set_graph_storage(current_graph_storage)
+                        LOGGER.debug("Connected narrative graph widget to storage (fallback)")
+                elif current_graph_storage:
+                    self.narrativeGraphWidget.set_graph_storage(current_graph_storage)
+                    LOGGER.debug("Connected narrative graph widget to storage")
                 
         except Exception as e:
             LOGGER.error(f"Failed to connect narrative graph storage: {e}")
@@ -2010,6 +2095,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                     m2.addAction(a)
                 m.addMenu(m2)
             self.menuView.addMenu(m)
+        
+        # Add Narrative Graph to View menu if it exists
+        if hasattr(self, 'actShowNarrativeGraph'):
+            self.menuView.addSeparator()
+            self.menuView.addAction(self.actShowNarrativeGraph)
 
     def setViewSettingsAction(self):
         action = self.sender()

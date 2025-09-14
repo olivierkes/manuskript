@@ -182,6 +182,14 @@ def prepare(arguments, tests=False):
     from manuskript.mainWindow import MainWindow
 
     MW = MainWindow()
+    
+    # Initialize AI features after main window is created
+    try:
+        from manuskript.ai import initialize_ai_features
+        initialize_ai_features()
+    except ImportError:
+        # AI features not available, continue without them
+        pass
     # We store the system default cursor flash time to be able to restore it
     # later if necessary
     MW._defaultCursorFlashTime = qApp.cursorFlashTime()

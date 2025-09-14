@@ -194,6 +194,8 @@ def trigger_hook(event: str, *args, async_mode=False, **kwargs):
     Returns:
         bool: True if all hooks executed successfully, False if any failed
     """
+    LOGGER.info(f"trigger_hook called for event: {event}, async_mode: {async_mode}")
+    
     if event not in ai_hooks:
         LOGGER.warning(f"Unknown hook event: {event}")
         return False
@@ -203,13 +205,17 @@ def trigger_hook(event: str, *args, async_mode=False, **kwargs):
         return _trigger_hook_async(event, *args, **kwargs)
     
     success = True
+    LOGGER.debug(f"Processing {len(ai_hooks[event])} hooks for event: {event}")
+    LOGGER.debug(f"Current aiFeatures: {aiFeatures}")
     for hook in ai_hooks[event]:
         callback = hook["callback"]
         feature_key = hook.get("feature_key")
         
         try:
             # Only run if no feature_key is set, or if the feature is enabled
-            if feature_key is None or aiFeatures.get(feature_key, False):
+            feature_enabled = aiFeatures.get(feature_key, False) if feature_key else True
+            LOGGER.debug(f"Hook {callback.__name__} for event {event}: feature_key={feature_key}, enabled={feature_enabled}")
+            if feature_key is None or feature_enabled:
                 # Check if callback is marked as CPU-heavy (avoid Mock issues)
                 is_cpu_heavy = False
                 if hasattr(callback, '_cpu_heavy'):

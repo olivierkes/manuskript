@@ -235,14 +235,23 @@ class GraphStorage:
             description: Location description
         """
         with self._graph_lock:
+            self._track_node_access(name)
+            
             if nx and hasattr(self.graph, 'nodes'):
-                self.graph.add_node(
-                    name,
-                    node_type="location",
-                    description=description,
-                    first_seen=datetime.now().isoformat()
-                )
-                LOGGER.debug(f"Added location node: {name}")
+                if self.graph.has_node(name):
+                    # Update existing node if it's a location
+                    if self.graph.nodes[name].get('node_type') == 'location':
+                        existing_desc = self.graph.nodes[name].get('description', '')
+                        if description and not existing_desc:
+                            self.graph.nodes[name]['description'] = description
+                else:
+                    self.graph.add_node(
+                        name,
+                        node_type="location",
+                        description=description,
+                        first_seen=datetime.now().isoformat()
+                    )
+                    LOGGER.debug(f"Added location node: {name}")
             else:
                 # Fallback to dict-based storage
                 if not isinstance(self.graph, dict):
@@ -253,6 +262,10 @@ class GraphStorage:
                     "node_type": "location",
                     "description": description
                 }
+            
+            # Mark as changed and check if pruning is needed
+            self._mark_changed()
+            self._check_memory_limits()
     
     def add_relationship(self, source: str, target: str, 
                         rel_type: str, attributes: Dict[str, Any] = None):

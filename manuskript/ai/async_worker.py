@@ -139,8 +139,16 @@ def trigger_hook_async(event: str, *args, **kwargs):
         LOGGER.warning(f"Unknown hook event: {event}")
         return
     
-    def run_hooks():
+    def run_hooks(**worker_kwargs):
         """Inner function to run in thread."""
+        # Extract worker signals if present
+        worker_signals = worker_kwargs.pop('_worker_signals', None)
+        
+        # Merge original kwargs with worker signals if present
+        call_kwargs = {**kwargs}
+        if worker_signals:
+            call_kwargs['_worker_signals'] = worker_signals
+            
         for hook in settings.ai_hooks[event]:
             callback = hook["callback"]
             feature_key = hook.get("feature_key")
@@ -148,12 +156,7 @@ def trigger_hook_async(event: str, *args, **kwargs):
             try:
                 # Only run if no feature_key is set, or if the feature is enabled
                 if feature_key is None or settings.aiFeatures.get(feature_key, False):
-                    # Check if callback has _worker_signals for progress reporting
-                    if '_worker_signals' in kwargs:
-                        # Pass signals to callback for progress updates
-                        callback(*args, **kwargs)
-                    else:
-                        callback(*args, **kwargs)
+                    callback(*args, **call_kwargs)
                         
             except Exception as e:
                 callback_name = getattr(callback, "__name__", str(callback))
