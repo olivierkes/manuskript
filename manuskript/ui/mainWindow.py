@@ -1,14 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import gi
-
-gi.require_version("Gtk", "3.0")
-gi.require_version("Handy", "1")
-
-from gi.repository import GObject, Gtk, Handy
-
-Handy.init()
+from gi.repository import GObject, Gtk
 
 from manuskript.data import Project
 from manuskript.plugin import loadPlugins

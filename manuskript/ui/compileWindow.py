@@ -1,12 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import gi
-
-gi.require_version("Gtk", "3.0")
 from gi.repository import GObject, Gtk, Handy
-
-Handy.init()
 
 from manuskript.ui.abstractDialog import AbstractDialog
 
