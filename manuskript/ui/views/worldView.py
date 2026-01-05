@@ -153,6 +153,15 @@ class WorldView:
     def _filterWorldInsertedText(self, buffer: Gtk.EntryBuffer, position: int, chars: str, n_chars: int):
         self.__filterWorldChanged(buffer)
 
+    def __updateWorldItemName(self, model, path, treeiter, userdata):
+        id = model[treeiter][0]
+
+        if userdata["world_item_id"] == id:
+            model[treeiter][1] = userdata["name"]
+            return True
+        
+        return False
+
     def __nameChanged(self, buffer: Gtk.EntryBuffer):
         if self.worldItem is None:
             return
@@ -162,12 +171,14 @@ class WorldView:
 
         self.worldItem.name = name
 
-        world_id = self.worldItem.UID.value
+        world_item_id = self.worldItem.UID.value
 
-        for row in self.worldStore:
-            if row[0] == world_id:
-                row[1] = validString(name)
-                break
+        userdata = {
+            "world_item_id": world_item_id,
+            "name": validString(name)
+        }
+
+        self.worldStore.foreach(self.__updateWorldItemName, userdata)
 
     def _nameDeletedText(self, buffer: Gtk.EntryBuffer, position: int, n_chars: int):
         self.__nameChanged(buffer)
