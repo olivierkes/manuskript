@@ -32,7 +32,7 @@ def bindMenuItem(builder, id, action):
     menuItem.connect("activate", action)
 
 
-def packViewIntoSlot(slot, view_cls, data=None):
+def packViewIntoSlot(slot, view_cls, data=None, secondaryData=None):
     if slot is None:
         return None
 
@@ -40,10 +40,14 @@ def packViewIntoSlot(slot, view_cls, data=None):
         slot.remove(child)
 
     try:
-        if data is None:
-            view = profileTime(view_cls)
-        else:
-            view = profileTime(view_cls, data)
+        args = []
+        if data is not None:
+            args.append(data)
+        if secondaryData is not None:
+            args.append(secondaryData)        
+
+        view = profileTime(view_cls, *args)
+
     except Exception as e:
         print(str(e), file=sys.stderr)
         return None

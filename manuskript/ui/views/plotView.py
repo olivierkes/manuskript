@@ -3,14 +3,14 @@
 
 from gi.repository import Gtk
 
-from manuskript.data import Plots, PlotLine, PlotStep, Importance, LinkAction
+from manuskript.data import Plots, PlotLine, PlotStep, Importance, LinkAction, Characters
 from manuskript.ui.util import rgbaFromColor, pixbufFromColor
 from manuskript.util import validString, invalidString, validInt, invalidInt
-
+from manuskript.ui.picker.characterPicker import CharacterPicker
 
 class PlotView:
 
-    def __init__(self, plots: Plots):
+    def __init__(self, plots: Plots, characters: Characters):
         self.plots = plots
         self.plotLine = None
         self.plotStep = None
@@ -90,6 +90,17 @@ class PlotView:
 
         self.nameBuffer.connect("deleted-text", self._nameDeletedText)
         self.nameBuffer.connect("inserted-text", self._nameInsertedText)
+
+        self.removeCharacterButton = builder.get_object("remove_character")
+        self.removeCharacterButton.connect("clicked", self._RemoveCharacterClicked)
+
+        self.plotCharactersView = builder.get_object("characters_view")
+
+        self.addCharacterButton = builder.get_object("add_character")
+        self.addCharacterButton.connect("clicked", self._addCharacterClicked)
+
+        self.characterPicker = CharacterPicker(self.addCharacterButton, characters)
+        self.characterPicker.connect("character-selected", self._onAddingCharacter)
 
         self.plotCharactersStore = builder.get_object("plot_characters_store")
 
@@ -370,6 +381,23 @@ class PlotView:
 
     def _nameInsertedText(self, buffer: Gtk.EntryBuffer, position: int, chars: str, n_chars: int):
         self.__nameChanged(buffer)
+
+    def _RemoveCharacterClicked(self, Button: Gtk.Button):
+        selection = self.plotCharactersView.get_selection()
+        model, treeiter = selection.get_selected()
+
+        if treeiter is not None:
+            self.plotLine.characters.remove(model[treeiter][0])
+            self.refreshCharactersStore()
+            self.plotCharactersStore.refilter()
+
+    def _addCharacterClicked(self, button: Gtk.Button):
+        self.characterPicker.show(self.plotLine.characters)
+
+    def _onAddingCharacter(self, characterPicker, userdata):
+        self.plotLine.characters.append(userdata.UID.value)
+        self.refreshCharactersStore()
+        self.plotCharactersStore.refilter()
 
     def _filterPlotCharacters(self, model, iterator, userdata):
         ID = validInt(model[iterator][0])

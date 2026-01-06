@@ -103,7 +103,7 @@ class MainWindow:
         self.generalView = packViewIntoSlot(self.generalSlot, GeneralView, self.project.info)
         self.summaryView = packViewIntoSlot(self.summarySlot, SummaryView, self.project.summary)
         self.charactersView = packViewIntoSlot(self.charactersSlot, CharactersView, self.project.characters)
-        self.plotView = packViewIntoSlot(self.plotSlot, PlotView, self.project.plots)
+        self.plotView = packViewIntoSlot(self.plotSlot, PlotView, self.project.plots, self.project.characters)
         self.worldView = packViewIntoSlot(self.worldSlot, WorldView, self.project.world)
         self.outlineView = packViewIntoSlot(self.outlineSlot, OutlineView, self.project.outline)
         self.editorView = packViewIntoSlot(self.editorSlot, EditorView, self.project)
