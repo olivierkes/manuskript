@@ -38,6 +38,66 @@ class WorldItem:
 
 class World(AbstractData):
 
+    templates = [
+        {
+            "name": "Fantasy world building",
+            "children": [
+                {
+                    "name": "Physical",
+                    "children": [
+                        "Climate",
+                        "Topography",
+                        "Astronomy",
+                        "Natural resources",
+                        "Wild life",
+                        "Flora",
+                        "History",
+                        "Races",
+                        "Diseases",
+                    ]
+                },
+                {
+                    "name": "Cultural",
+                    "children": [
+                        "Customs",
+                        "Food",
+                        "Languages",
+                        "Education",
+                        "Dresses",
+                        "Science",
+                        "Calendar",
+                        "Bodily language",
+                        "Ethics",
+                        "Religion",
+                        "Government",
+                        "Politics",
+                        "Gender roles",
+                        "Music and arts",
+                        "Architecture",
+                        "Military",
+                        "Technology",
+                        "Courtship",
+                        "Demography",
+                        "Transportation",
+                        "Medicine",
+                    ]
+                },
+                {
+                    "name": "Magic system",
+                    "children": [
+                        "Rules",
+                        "Organization",
+                        "Magical objects",
+                        "Magical places",
+                        "Magical races",
+                    ]
+                },
+                "Important places",
+                "Important objects",
+            ]
+        }
+    ]
+
     def __init__(self, path):
         AbstractData.__init__(self, os.path.join(path, "world.opml"))
         self.file = OpmlFile(self.dataPath)
@@ -150,3 +210,25 @@ class World(AbstractData):
 
         self.file.save(outlines)
         self.complete()
+
+    def fetchTemplateList(self):
+        return [node["name"] if isinstance(node, dict) else node for node in self.templates]
+    
+    def _insertTemplate(self, node, parent=None):
+        if isinstance(node, str):
+            self.addItem(name=node, parent=parent)
+        elif isinstance(node, dict):
+            worldItem = self.addItem(name=node["name"])
+
+            for child in node.get("children", []):
+                self._insertTemplate(child, parent=worldItem)
+    
+    def insertTemplate(self, templateName):
+        root = next(
+            (node for node in self.templates if isinstance(node, dict) and node["name"] == templateName),
+            None
+        )
+
+        if root is not None:
+            for node in root["children"]:
+                self._insertTemplate(node)

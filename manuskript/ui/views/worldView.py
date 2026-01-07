@@ -39,9 +39,13 @@ class WorldView:
 
         self.addToWorldButton = builder.get_object("add_to_world")
         self.removeFromWorldButton = builder.get_object("remove_from_world")
+        self.populateButton = builder.get_object("populate")
 
         self.addToWorldButton.connect("clicked", self._addToWorldClicked)
         self.removeFromWorldButton.connect("clicked", self._removeFromWorldClicked)
+        self.populateButton.connect("clicked", self._populateClicked)
+
+        self.popover = self.createPopulatePopover(self.populateButton)
 
         self.nameBuffer = builder.get_object("name")
         self.descriptionBuffer = builder.get_object("description")
@@ -56,6 +60,24 @@ class WorldView:
         self.sourceOfConflictBuffer.connect("changed", self._sourceOfConflictChanged)
 
         self.unloadWorldData()
+
+    def createPopulatePopover(self, button):
+        popover = Gtk.Popover.new(button)
+        popover.set_position(Gtk.PositionType.BOTTOM)
+
+        box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
+        popover.add(box)
+
+        for templateName in self.world.fetchTemplateList():
+            insertTemplateButton = Gtk.ModelButton(label=templateName)
+            insertTemplateButton.connect("clicked", self._onInsertTemplateClicked, templateName)
+            box.pack_start(insertTemplateButton, True, True, 0)
+
+        return popover
+    
+    def _onInsertTemplateClicked(self, button: Gtk.Button, userdata):
+        self.world.insertTemplate(userdata)
+        self.refreshWorldStore()
 
     def __appendWorldItem(self, worldItem: WorldItem, parent_iter=None):
         tree_iter = self.worldStore.append(parent_iter)
@@ -126,6 +148,10 @@ class WorldView:
 
         self.worldItem.remove()
         self.refreshWorldStore()
+
+    def _populateClicked(self, button: Gtk.Button):
+        self.popover.show_all()
+        self.popover.popup()
 
     def __matchWorldItemByText(self, worldItem: WorldItem, text: str):
         for item in worldItem:
