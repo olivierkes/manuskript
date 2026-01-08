@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from gi.repository import Gtk
+from gi.repository import Gtk, Gdk
 
-from manuskript.data import World, WorldItem
+from manuskript.data import World, WorldItem, DropPosition
 from manuskript.util import validString, invalidString, validInt, invalidInt
 
+from rich import inspect
 
 class WorldView:
 
@@ -20,6 +21,22 @@ class WorldView:
         self.notebook = builder.get_object("world_notebook")
 
         self.worldTreeView = builder.get_object("world_tree_view")
+
+        targets = Gtk.TargetEntry.new("STRING", Gtk.TargetFlags.SAME_APP, 0)
+        self.worldTreeView.enable_model_drag_source(
+            Gdk.ModifierType.BUTTON1_MASK,
+            [targets],
+            Gdk.DragAction.MOVE
+        )
+
+        self.worldTreeView.enable_model_drag_dest(
+            [targets],
+            Gdk.DragAction.MOVE
+        )
+
+        self.worldTreeView.connect("drag-data-get", self._onDragDataGet)
+        self.worldTreeView.connect("drag-data-received", self._onDragDataReceived)
+        self.worldTreeView.connect("drag-drop", self._onDragDrop)
 
         self.worldStore = builder.get_object("world_store")
         self.refreshWorldStore()
@@ -74,7 +91,53 @@ class WorldView:
             box.pack_start(insertTemplateButton, True, True, 0)
 
         return popover
+        
+    def _onDragDataGet(self, treeview, drag_context, selection, target_id, etime):
+        model, iter_ = treeview.get_selection().get_selected()
+        if iter_ is not None:
+            path = model.get_path(iter_)
+            selection.set_text(str(path.to_string()), -1)
+
+        return True
+
+    def _onDragDataReceived(self, treeview, drag_context, x, y, selection, info, etime):
+        treeview.stop_emission("drag-data-received")
+
+        model = treeview.get_model()
+        
+        store = model.get_model()
+
+        data = selection.get_text()
+        dragged_path = Gtk.TreePath.new_from_string(data)
+        
+        filtered_iter = model.get_iter(dragged_path)
+        original_iter = model.convert_iter_to_child_iter(filtered_iter)
+
+        dragged_item_uid = store.get_value(original_iter, 0) 
+
+        drop_info = treeview.get_dest_row_at_pos(x, y)
+        
+        if drop_info is None:
+            parent_iter = None
+            position = -1
+            target_item_uid = None
+        else:
+            path, pos = drop_info
+            parent_iter = store.get_iter(path)
+            position = pos 
+            target_item_uid = store.get_value(parent_iter, 0)
+
+        self.world.moveItem(dragged_item_uid, target_item_uid, DropPosition.fromGtkEnum(position))
+
+        self.refreshWorldStore()
+
+        return True
     
+    def _onDragDrop(self, treeview, drag_context, x, y, etime):
+        treeview.stop_emission("drag-drop")
+        treeview.drag_get_data(drag_context, drag_context.list_targets()[-1], etime)
+        return True
+
     def _onInsertTemplateClicked(self, button: Gtk.Button, userdata):
         self.world.insertTemplate(userdata)
         self.refreshWorldStore()

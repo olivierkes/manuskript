@@ -3,6 +3,7 @@
 
 import os
 
+from manuskript.data.dropPosition import DropPosition
 from manuskript.data.abstractData import AbstractData
 from manuskript.data.unique_id import UniqueIDHost, UniqueID
 from manuskript.io.opmlFile import OpmlFile, OpmlOutlineItem
@@ -22,6 +23,27 @@ class WorldItem:
         self.passion = None
         self.conflict = None
         self.children = list()
+        self.parent = None
+
+    def removeChild(self, item):
+        item.parent = None
+        self.children.remove(item)
+
+    def addChild(self, item, index=None):
+        item.parent = self
+
+        if not index:
+            self.children.append(item)
+        else:
+            self.children.insert(index, item)
+
+    def contains(self, item):
+        if self == item:
+            return True
+        for child in self.children:
+            if child.contains(item):
+                return True
+        return False
 
     def remove(self):
         for child in self.children:
@@ -113,9 +135,10 @@ class World(AbstractData):
         item = WorldItem(self, self.host.newID(), name)
 
         if parent is None:
+            item.parent = None
             self.top.append(item)
         else:
-            parent.children.append(item)
+            parent.addChild(item)
 
         self.items[item.UID.value] = item
         return item
@@ -161,7 +184,7 @@ class World(AbstractData):
             if childItem is None:
                 continue
 
-            item.children.append(childItem)
+            item.addChild(childItem)
 
         return item
 
@@ -213,7 +236,7 @@ class World(AbstractData):
 
     def fetchTemplateList(self):
         return [node["name"] if isinstance(node, dict) else node for node in self.templates]
-    
+
     def _insertTemplate(self, node, parent=None):
         if isinstance(node, str):
             self.addItem(name=node, parent=parent)
@@ -222,7 +245,7 @@ class World(AbstractData):
 
             for child in node.get("children", []):
                 self._insertTemplate(child, parent=worldItem)
-    
+
     def insertTemplate(self, templateName):
         root = next(
             (node for node in self.templates if isinstance(node, dict) and node["name"] == templateName),
@@ -232,3 +255,46 @@ class World(AbstractData):
         if root is not None:
             for node in root["children"]:
                 self._insertTemplate(node)
+
+
+    def moveItem(self, source_uid, target_id, position: DropPosition):
+
+        sourceItem=self.getItemByID(source_uid)
+        if not sourceItem:
+            return False
+
+        targetItem = self.getItemByID(target_id) if target_id else None
+
+        if sourceItem.contains(targetItem):
+            return True
+        if sourceItem in self.top:
+            self.top.remove(sourceItem)
+        elif sourceItem in targetItem.children if targetItem else []:
+            self._printTree()
+
+            return True
+        else:
+            parentItem=sourceItem.parent
+            parentItem.removeChild(sourceItem)
+
+        if targetItem is None:
+            self.top.append(sourceItem)
+        else:
+            if position == DropPosition.INTO_OR_AFTER or position == DropPosition.INTO_OR_BEFORE:
+                targetItem.addChild(sourceItem)
+            elif position == DropPosition.BEFORE or position == DropPosition.AFTER:
+                parentItem = targetItem.parent
+                if parentItem:
+                    index = parentItem.children.index(targetItem)
+                    if position == DropPosition.BEFORE:
+                        parentItem.addChild(sourceItem, index)
+                    else:
+                        parentItem.addChild(sourceItem, index+1)
+                else:
+                    index = self.top.index(targetItem)
+                    if position == DropPosition.BEFORE:
+                        self.top.insert(index, sourceItem)
+                    else:
+                        self.top.insert(index+1, sourceItem)
+
+        return True

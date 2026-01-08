@@ -20,3 +20,4 @@ from manuskript.data.template import Template, TemplateLevel, TemplateKind
 from manuskript.data.unique_id import UniqueIDHost, UniqueID
 from manuskript.data.version import Version
 from manuskript.data.world import World, WorldItem
+from manuskript.data.dropPosition import DropPosition
