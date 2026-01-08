@@ -6,8 +6,6 @@ from gi.repository import Gtk, Gdk
 from manuskript.data import World, WorldItem, DropPosition
 from manuskript.util import validString, invalidString, validInt, invalidInt
 
-from rich import inspect
-
 class WorldView:
 
     def __init__(self, world: World):
