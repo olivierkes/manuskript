@@ -365,7 +365,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                     <property name="min-width">50</property>
                                     <property name="title" translatable="yes">Status</property>
                                     <child>
-                                      <object class="GtkCellRendererCombo">
+                                      <object class="GtkCellRendererCombo" id="outline_status">
                                         <property name="editable">True</property>
                                         <property name="model">status_store</property>
                                         <property name="text-column">0</property>

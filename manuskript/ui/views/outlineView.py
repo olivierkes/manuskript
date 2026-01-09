@@ -95,6 +95,9 @@ class OutlineView:
         self.povCombo = builder.get_object("pov_combo")
         self.povCombo.connect("changed", self.onPovComboChanged)
 
+        self.statusCombo = builder.get_object("outline_status")
+        self.statusCombo.connect("changed", self.onStatusChanged)
+
         self.oneLineSummaryBuffer.connect("deleted-text", self._oneLineSummaryDeletedText)
         self.oneLineSummaryBuffer.connect("inserted-text", self._oneLineSummaryInsertedText)
 
@@ -506,6 +509,18 @@ class OutlineView:
     def onEditOutlineTitle(self, renderer, path, new_text):
         self.outlineStore[path][1] = new_text
         self.outlineItem.title = new_text
+
+    def onStatusChanged(self, cell, path, new_iter):
+        combo_model = cell.get_property("model")
+        new_status = combo_model[new_iter][0]
+
+        for status in self.outline.statuses:
+            if status.name == new_status:
+                self.outlineItem.status = status
+                
+        self.__updateOutlineItemInStore(self.outlineItem)
+        
+        return True
 
     def show(self):
         self.widget.show_all()
