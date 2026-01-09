@@ -8,8 +8,6 @@ from manuskript.ui.util import rgbaFromColor, pixbufFromColor
 from manuskript.util import validString, invalidString, validInt, invalidInt, CounterKind, countText
 from manuskript.ui.picker import LabelPicker, CharacterPicker
 
-from rich import inspect
-
 class OutlineView:
 
     def __init__(self, outline: Outline):
@@ -77,6 +75,9 @@ class OutlineView:
 
         self.outlineTreeview = builder.get_object("outline_treeview")
         self.outlineTreeview.connect("button-press-event", self.onOutlineTreeviewClicked)
+
+        self.outlineTitle = builder.get_object("outline_title")
+        self.outlineTitle.connect("edited", self.onEditOutlineTitle)
 
         self.labelPopover = LabelPicker(self.outline.labels)
         self.labelPopover.connect("label-selected", self.onLabelItemSelected)
@@ -501,6 +502,10 @@ class OutlineView:
         item = self.outline.getItemByID(model.get_value(iter_, 0))
         item.POV = str(character.UID)
         self.loadOutlineData(item)
+
+    def onEditOutlineTitle(self, renderer, path, new_text):
+        self.outlineStore[path][1] = new_text
+        self.outlineItem.title = new_text
 
     def show(self):
         self.widget.show_all()
