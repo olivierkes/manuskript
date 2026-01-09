@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from gi.repository import GObject, Gtk
+from gi.repository import GObject, Gtk, Gdk
 
 from manuskript.data import Outline, OutlineFolder, OutlineText, OutlineItem, OutlineState, Plots, PlotLine, Characters, Character, Importance, Goal
 from manuskript.ui.util import rgbaFromColor, pixbufFromColor
 from manuskript.util import validString, invalidString, validInt, invalidInt, CounterKind, countText
+from manuskript.ui.picker.labelPicker import LabelPicker
 
+from rich import inspect
 
 class OutlineView:
 
@@ -73,6 +75,12 @@ class OutlineView:
 
         self.outlineSelection.connect("changed", self._outlineSelectionChanged)
 
+        self.outlineTreeview = builder.get_object("outline_treeview")
+        self.outlineTreeview.connect("button-press-event", self.onOutlineTreeviewClicked)
+
+        self.labelPopover = LabelPicker(self.outline.labels)
+        self.labelPopover.connect("label-selected", self.onLabelItemSelected)
+
         self.goalBuffer = builder.get_object("goal")
         self.oneLineSummaryBuffer = builder.get_object("one_line_summary")
         self.fewSentencesSummaryBuffer = builder.get_object("few_sentences_summary")
@@ -86,6 +94,25 @@ class OutlineView:
         self.fewSentencesSummaryBuffer.connect("changed", self._fewSentencesSummaryChanged)
 
         self.unloadOutlineData()
+
+    def populateLabelList(self):
+        for pixbuf, text in self.labelStore:
+            row = Gtk.ListBoxRow()
+            box = Gtk.Box(spacing=6)
+
+            image = Gtk.Image.new_from_pixbuf(pixbuf)
+            label = Gtk.Label(label=text, xalign=0)
+
+            box.pack_start(image, False, False, 0)
+            box.pack_start(label, True, True, 0)
+
+            row.add(box)
+            row.pixbuf = pixbuf
+            row.text = text
+
+            self.labelListbox.add(row)
+
+        self.labelListbox.show_all()
 
     def refreshLabelStore(self):
         self.labelStore.clear()
@@ -162,8 +189,20 @@ class OutlineView:
         self.outlineStore.set_value(tree_iter, 6, goal)
         self.outlineStore.set_value(tree_iter, 7, progress)
         self.outlineStore.set_value(tree_iter, 8, icon)
+        self.outlineStore.set_value(tree_iter, 9, self._getLabelPixbuf(validString(outlineItem.label)))
+
+    def _getLabelPixbuf(self, labelName):
+        if labelName=="":
+            return None
+
+        for row in self.labelStore:
+            if row[0] == labelName:
+                return row[1]
+            
+        return None
 
     def __completeOutlineItem(self):
+        outlineItem: OutlineItem
         (tree_iter, outlineItem) = self.outlineCompletion.pop(0)
 
         if outlineItem.state != OutlineState.COMPLETE:
@@ -320,6 +359,55 @@ class OutlineView:
         text = buffer.get_text(start_iter, end_iter, False)
 
         self.outlineItem.summaryFull = invalidString(text)
+
+    def onOutlineTreeviewClicked(self, treeview, event):
+        if event.button != 1 or event.type != Gdk.EventType._2BUTTON_PRESS:
+            return False
+                
+        result = treeview.get_path_at_pos(int(event.x), int(event.y))
+        if not result:
+            return False
+        
+        path, column, cell_x, cell_y = result
+
+        if column.get_title() == "Label":
+            self.showLabelPopover(treeview, path, event, column)
+            return True
+
+        return False
+    
+    def showLabelPopover(self, treeview, path, event, column):
+        self.current_path = path
+
+        self.labelPopover.set_relative_to(treeview)
+
+        cellRect = treeview.get_cell_area(path, column)
+
+        x, y = treeview.convert_bin_window_to_widget_coords(
+            cellRect.x,
+            cellRect.y
+        )
+
+        cellRect.x = x
+        cellRect.y = y
+
+        self.labelPopover.set_pointing_to(cellRect)
+        self.labelPopover.set_position(Gtk.PositionType.BOTTOM)
+
+        self.labelPopover.show()
+
+    def onLabelItemSelected(self, labelPicker, label):
+        labelText=validString(label)
+
+        model = self.outlineTreeview.get_model()
+        iter_ = model.get_iter(self.current_path)
+        model.set_value(iter_, 2, labelText)
+        model.set_value(iter_, 9, self._getLabelPixbuf(labelText))
+        
+        item = self.outline.getItemByID(model.get_value(iter_, 0))
+
+        labelObject = self.outline.labels.getLabel(labelText)
+        item.label = labelObject
 
     def show(self):
         self.widget.show_all()

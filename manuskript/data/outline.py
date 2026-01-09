@@ -157,7 +157,9 @@ class OutlineText(OutlineItem):
         OutlineItem.load(self)
 
         metadata, body = self.file.loadMMD(optimized)
-        OutlineItem.loadMetadata(self, metadata)
+
+        if optimized:
+            OutlineItem.loadMetadata(self, metadata)
 
         if body is not None:
             self.text = body

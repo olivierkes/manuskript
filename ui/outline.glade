@@ -67,6 +67,8 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
       <column type="gint"/>
       <!-- column-name icon -->
       <column type="gchararray"/>
+      <!-- column-name label_icon -->
+      <column type="GdkPixbuf"/>
     </columns>
   </object>
   <object class="GtkTreeModelFilter" id="filtered_outline_store">
@@ -271,7 +273,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <child>
-                              <object class="GtkTreeView">
+                              <object class="GtkTreeView" id="outline_treeview">
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
                                 <property name="model">filtered_outline_store</property>
@@ -303,16 +305,18 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkTreeViewColumn">
+                                  <object class="GtkTreeViewColumn" id="label_column">
                                     <property name="resizable">True</property>
                                     <property name="min-width">50</property>
                                     <property name="title" translatable="yes">Label</property>
                                     <child>
-                                      <object class="GtkCellRendererCombo">
-                                        <property name="editable">True</property>
-                                        <property name="model">label_store</property>
-                                        <property name="text-column">0</property>
-                                      </object>
+                                      <object class="GtkCellRendererPixbuf"/>
+                                      <attributes>
+                                        <attribute name="gicon">9</attribute>
+                                      </attributes>
+                                    </child>
+                                    <child>
+                                      <object class="GtkCellRendererText"/>
                                       <attributes>
                                         <attribute name="text">2</attribute>
                                       </attributes>
