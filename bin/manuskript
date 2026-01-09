@@ -12,6 +12,7 @@ from gi.repository import GObject, Gtk, Handy
 Handy.init()
 
 import os
+import argparse
 import sys
 
 realpath = os.path.realpath(__file__)
@@ -22,8 +23,19 @@ os.chdir(app_path)
 
 from manuskript.ui import MainWindow
 
-path = os.path.join(os.getcwd(), "sample-projects/book-of-acts")
+defaultProjectPath = os.path.join(os.getcwd(), "sample-projects/book-of-acts.msk")
+
+parser = argparse.ArgumentParser(description="Open a Manuskript project")
+parser.add_argument(
+    "msk_path",
+    nargs="?",
+    help="Path to the .msk file to open"
+)
+
+args = parser.parse_args()
+
+project_path = os.path.abspath(args.msk_path) if args.msk_path else defaultProjectPath
 
 window = MainWindow()
-window.openProject(path + ".msk")
+window.openProject(project_path)
 window.run()
