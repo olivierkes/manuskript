@@ -6,7 +6,7 @@ from gi.repository import GObject, Gtk, Gdk
 from manuskript.data import Outline, OutlineFolder, OutlineText, OutlineItem, OutlineState, Plots, PlotLine, Characters, Character, Importance, Goal, Color
 from manuskript.ui.util import rgbaFromColor, pixbufFromColor
 from manuskript.util import validString, invalidString, validInt, invalidInt, CounterKind, countText
-from manuskript.ui.picker.labelPicker import LabelPicker
+from manuskript.ui.picker import LabelPicker, CharacterPicker
 
 from rich import inspect
 
@@ -80,6 +80,9 @@ class OutlineView:
 
         self.labelPopover = LabelPicker(self.outline.labels)
         self.labelPopover.connect("label-selected", self.onLabelItemSelected)
+
+        self.povPopover = CharacterPicker(self.outline.plots.characters)
+        self.povPopover.connect("character-selected", self.onPovItemSelected)
 
         self.goalBuffer = builder.get_object("goal")
         self.oneLineSummaryBuffer = builder.get_object("one_line_summary")
@@ -174,6 +177,22 @@ class OutlineView:
             self.charactersStore.set_value(tree_iter, 1, validString(character.name))
             self.charactersStore.set_value(tree_iter, 2, pixbufFromColor(character.color))
 
+    def _findOutlineIterById(self, store, uid, parent=None):
+        it = store.iter_children(parent)
+        while it:
+            if store[it][0] == uid.value:
+                return it
+            child = self._findOutlineIterById(store, uid, it)
+            if child:
+                return child
+            it = store.iter_next(it)
+        return None
+
+    def __updateOutlineItemInStore(self, outlineItem: OutlineItem):
+        iter = self._findOutlineIterById(self.outlineStore, outlineItem.UID)
+        if iter:
+            self.__updateOutlineItem(iter, outlineItem)
+
     def __updateOutlineItem(self, tree_iter, outlineItem: OutlineItem):
         if type(outlineItem) is OutlineFolder:
             icon = "folder-symbolic"
@@ -202,6 +221,16 @@ class OutlineView:
         self.outlineStore.set_value(tree_iter, 8, icon)
         self.outlineStore.set_value(tree_iter, 9, self._getLabelPixbuf(validString(outlineItem.label)))
 
+        self.outlineStore.set_value(tree_iter, 10, "")
+        self.outlineStore.set_value(tree_iter, 11, None)
+
+        povId=validInt(outlineItem.POV, -1)
+        if povId!=-1:
+            povName, povPixbuf = self._getPovData(validInt(outlineItem.POV, -1))
+            if povName!=None:
+                self.outlineStore.set_value(tree_iter, 10, povName)
+                self.outlineStore.set_value(tree_iter, 11, povPixbuf)
+
     def _getLabelPixbuf(self, labelName):
         if labelName=="":
             return None
@@ -211,6 +240,13 @@ class OutlineView:
                 return row[1]
             
         return None
+
+    def _getPovData(self, povId):
+        for row in self.charactersStore:
+            if row[0] == povId:
+                return row[1], row[2]
+            
+        return None, None
 
     def __completeOutlineItem(self):
         outlineItem: OutlineItem
@@ -285,6 +321,8 @@ class OutlineView:
             self.outlineItem.POV = validString(povId)
         else:
             self.outlineItem.POV = None
+
+        self.__updateOutlineItemInStore(self.outlineItem)
 
 
     def loadOutlineData(self, outlineItem: OutlineItem):
@@ -413,15 +451,18 @@ class OutlineView:
         path, column, cell_x, cell_y = result
 
         if column.get_title() == "Label":
-            self.showLabelPopover(treeview, path, event, column)
+            self.showPopoverOverTreeview(treeview, path, event, column, self.labelPopover)
             return True
+        
+        if column.get_title() == "POV":
+            self.showPopoverOverTreeview(treeview, path, event, column, self.povPopover)
 
         return False
     
-    def showLabelPopover(self, treeview, path, event, column):
+    def showPopoverOverTreeview(self, treeview, path, event, column, popover):
         self.current_path = path
 
-        self.labelPopover.set_relative_to(treeview)
+        popover.set_relative_to(treeview)
 
         cellRect = treeview.get_cell_area(path, column)
 
@@ -433,10 +474,10 @@ class OutlineView:
         cellRect.x = x
         cellRect.y = y
 
-        self.labelPopover.set_pointing_to(cellRect)
-        self.labelPopover.set_position(Gtk.PositionType.BOTTOM)
+        popover.set_pointing_to(cellRect)
+        popover.set_position(Gtk.PositionType.BOTTOM)
 
-        self.labelPopover.show()
+        popover.show()
 
     def onLabelItemSelected(self, labelPicker, label):
         labelText=validString(label)
@@ -450,6 +491,16 @@ class OutlineView:
 
         labelObject = self.outline.labels.getLabel(labelText)
         item.label = labelObject
+
+    def onPovItemSelected(self, povPicker, character: Character):
+        model = self.outlineTreeview.get_model()
+        iter_ = model.get_iter(self.current_path)
+        model.set_value(iter_, 10, character.name)
+        model.set_value(iter_, 11, pixbufFromColor(character.color))
+        
+        item = self.outline.getItemByID(model.get_value(iter_, 0))
+        item.POV = str(character.UID)
+        self.loadOutlineData(item)
 
     def show(self):
         self.widget.show_all()

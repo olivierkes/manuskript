@@ -8,7 +8,7 @@ class CharacterPicker(AbstractGridPicker):
         "character-selected": (GObject.SignalFlags.RUN_FIRST, None, (object,))
     }
 
-    def __init__(self, button, characters):
+    def __init__(self, characters, *, button=None):
         self.characters = characters
         self.excludedCharactersUIDs = set()
 
@@ -16,8 +16,10 @@ class CharacterPicker(AbstractGridPicker):
 
         self.connect("item-selected", self._onCharacterSelected)
 
-    def show(self, excludedCharacterUids):
-        self.excludedCharactersUIDs = set(excludedCharacterUids)
+    def show(self, excludedCharacterUids=None):
+        if excludedCharacterUids:
+            self.excludedCharactersUIDs = set(excludedCharacterUids)
+        
         super().show()
 
     def shouldIncludeItem(self, character):

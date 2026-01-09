@@ -99,7 +99,7 @@ class PlotView:
         self.addCharacterButton = builder.get_object("add_character")
         self.addCharacterButton.connect("clicked", self._addCharacterClicked)
 
-        self.characterPicker = CharacterPicker(self.addCharacterButton, characters)
+        self.characterPicker = CharacterPicker(characters, button=self.addCharacterButton)
         self.characterPicker.connect("character-selected", self._onAddingCharacter)
 
         self.plotCharactersStore = builder.get_object("plot_characters_store")
