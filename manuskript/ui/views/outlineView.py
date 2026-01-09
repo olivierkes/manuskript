@@ -3,7 +3,7 @@
 
 from gi.repository import GObject, Gtk, Gdk
 
-from manuskript.data import Outline, OutlineFolder, OutlineText, OutlineItem, OutlineState, Plots, PlotLine, Characters, Character, Importance, Goal
+from manuskript.data import Outline, OutlineFolder, OutlineText, OutlineItem, OutlineState, Plots, PlotLine, Characters, Character, Importance, Goal, Color
 from manuskript.ui.util import rgbaFromColor, pixbufFromColor
 from manuskript.util import validString, invalidString, validInt, invalidInt, CounterKind, countText
 from manuskript.ui.picker.labelPicker import LabelPicker
@@ -88,6 +88,9 @@ class OutlineView:
         self.goalBuffer.connect("deleted-text", self._goalDeletedText)
         self.goalBuffer.connect("inserted-text", self._goalInsertedText)
 
+        self.povCombo = builder.get_object("pov_combo")
+        self.povCombo.connect("changed", self.onPovComboChanged)
+
         self.oneLineSummaryBuffer.connect("deleted-text", self._oneLineSummaryDeletedText)
         self.oneLineSummaryBuffer.connect("inserted-text", self._oneLineSummaryInsertedText)
 
@@ -152,6 +155,14 @@ class OutlineView:
 
     def refreshCharactersStore(self):
         self.charactersStore.clear()
+
+        tree_iter = self.charactersStore.append()
+        self.charactersStore.set_value(tree_iter, 0, -1)
+        self.charactersStore.set_value(tree_iter, 1, validString("None"))
+
+        theme = Gtk.IconTheme.get_default()
+        pixbuf = theme.load_icon("dialog-error", 20, 0)
+        self.charactersStore.set_value(tree_iter, 2, pixbuf)
 
         for character in self.outline.plots.characters:
             tree_iter = self.charactersStore.append()
@@ -246,12 +257,43 @@ class OutlineView:
             if other != selection:
                 other.unselect_all()
 
+    def setPovComboById(self, character_id):
+        store = self.charactersStore
+
+        it = store.get_iter_first()
+        while it:
+            if store[it][0] == character_id:
+                self.povCombo.set_active_iter(it)
+                return
+            it = store.iter_next(it)
+
+        self.povCombo.set_active(-1)
+
+    def onPovComboChanged(self, combo):
+        if not self.outlineItem:
+            return
+        
+        model = combo.get_model()
+        tree_iter = combo.get_active_iter()
+        
+        if tree_iter is None:
+            self.current_character = None
+            return
+        
+        povId = model[tree_iter][0] 
+        if povId!=-1:
+            self.outlineItem.POV = validString(povId)
+        else:
+            self.outlineItem.POV = None
+
+
     def loadOutlineData(self, outlineItem: OutlineItem):
         self.outlineItem = None
 
         self.goalBuffer.set_text(validString(outlineItem.goal), -1)
         self.oneLineSummaryBuffer.set_text(validString(outlineItem.summarySentence), -1)
         self.fewSentencesSummaryBuffer.set_text(validString(outlineItem.summaryFull), -1)
+        self.setPovComboById(validInt(outlineItem.POV, -1))
 
         self.outlineItem = outlineItem
 
