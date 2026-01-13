@@ -8,3 +8,17 @@ from manuskript.io.opmlFile import OpmlFile
 from manuskript.io.mmdFile import MmdFile
 from manuskript.io.zipFile import ZipFile
 from manuskript.io.mskFile import MskFile
+
+
+def formatByExtension(extension: str) -> str:
+    formats = {
+        "md": "markdown",
+        "txt": "plain",
+        "bbl": "bibtex",
+        "tex": "latex"
+    }
+
+    if extension in formats:
+        return formats[extension]
+    else:
+        return extension

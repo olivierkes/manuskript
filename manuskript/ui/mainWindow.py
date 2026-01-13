@@ -79,6 +79,17 @@ class MainWindow:
         bindMenuItem(builder, "compile_menu_item", self._compileAction)
         bindMenuItem(builder, "quit_menu_item", self._quitAction)
 
+        bindMenuItem(builder, "header1_atx_menu_item", self._h1EditorAction)
+        bindMenuItem(builder, "header2_atx_menu_item", self._h2EditorAction)
+        bindMenuItem(builder, "header3_atx_menu_item", self._h3EditorAction)
+        bindMenuItem(builder, "header4_atx_menu_item", self._h4EditorAction)
+        bindMenuItem(builder, "header5_atx_menu_item", self._h5EditorAction)
+        bindMenuItem(builder, "header6_atx_menu_item", self._h6EditorAction)
+
+        bindMenuItem(builder, "bold_menu_item", self._boldEditorAction)
+        bindMenuItem(builder, "italic_menu_item", self._italicEditorAction)
+        bindMenuItem(builder, "strike_menu_item", self._strikeEditorAction)
+
         bindMenuItem(builder, "settings_menu_item", self._settingsAction)
         bindMenuItem(builder, "frequency_menu_item", self._frequencyAction)
         bindMenuItem(builder, "about_menu_item", self._aboutAction)
@@ -167,6 +178,33 @@ class MainWindow:
 
     def _quitAction(self, menuItem: Gtk.MenuItem):
         self.exit(True)
+    
+    def _h1EditorAction(self, menuItem: Gtk.MenuItem):
+        self.editorView.applyFormatToSelection("h1")
+    
+    def _h2EditorAction(self, menuItem: Gtk.MenuItem):
+        self.editorView.applyFormatToSelection("h2")
+    
+    def _h3EditorAction(self, menuItem: Gtk.MenuItem):
+        self.editorView.applyFormatToSelection("h3")
+    
+    def _h4EditorAction(self, menuItem: Gtk.MenuItem):
+        self.editorView.applyFormatToSelection("h4")
+    
+    def _h5EditorAction(self, menuItem: Gtk.MenuItem):
+        self.editorView.applyFormatToSelection("h5")
+    
+    def _h6EditorAction(self, menuItem: Gtk.MenuItem):
+        self.editorView.applyFormatToSelection("h6")
+    
+    def _boldEditorAction(self, menuItem: Gtk.MenuItem):
+        self.editorView.applyFormatToSelection("b")
+    
+    def _italicEditorAction(self, menuItem: Gtk.MenuItem):
+        self.editorView.applyFormatToSelection("i")
+    
+    def _strikeEditorAction(self, menuItem: Gtk.MenuItem):
+        self.editorView.applyFormatToSelection("s")
 
     def getSettings(self):
         return self.project.settings

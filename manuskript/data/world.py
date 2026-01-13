@@ -159,6 +159,19 @@ class World(AbstractData):
         self.host.removeID(item.UID)
         self.items.pop(item.UID.value)
 
+    def moveItem(self, item: WorldItem, parent: WorldItem = None):
+        for __item in self.items.values():
+            if item in __item.children:
+                __item.children.remove(item)
+
+        if item in self.top:
+            self.top.remove(item)
+
+        if parent is None:
+            self.top.append(item)
+        else:
+            parent.children.append(item)
+
     def getItemByID(self, ID: int) -> WorldItem:
         return self.items.get(ID, None)
 

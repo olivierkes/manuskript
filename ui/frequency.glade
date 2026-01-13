@@ -73,6 +73,9 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
   <object class="GtkTreeModelFilter" id="filtered_frequency_store">
     <property name="child-model">words_frequency_store</property>
   </object>
+  <object class="GtkTreeModelSort" id="sorted_frequency_store">
+    <property name="model">filtered_frequency_store</property>
+  </object>
   <object class="HdyWindow" id="frequency_window">
     <property name="can-focus">False</property>
     <child>
@@ -367,7 +370,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                           <object class="GtkTreeView">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
-                            <property name="model">filtered_frequency_store</property>
+                            <property name="model">sorted_frequency_store</property>
                             <property name="search-column">0</property>
                             <property name="show-expanders">False</property>
                             <property name="tooltip-column">0</property>
@@ -392,6 +395,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                 <property name="title" translatable="yes">Frequency</property>
                                 <property name="expand">True</property>
                                 <property name="sort-indicator">True</property>
+                                <property name="sort-order">descending</property>
                                 <property name="sort-column-id">1</property>
                                 <child>
                                   <object class="GtkCellRendererText"/>
@@ -594,6 +598,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                 <property name="title" translatable="yes">Frequency</property>
                                 <property name="expand">True</property>
                                 <property name="sort-indicator">True</property>
+                                <property name="sort-order">descending</property>
                                 <property name="sort-column-id">1</property>
                                 <child>
                                   <object class="GtkCellRendererText"/>

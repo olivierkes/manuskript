@@ -707,7 +707,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkBox">
+                      <object class="GtkBox" id="preview_box">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="orientation">vertical</property>
@@ -742,7 +742,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                         <property name="margin-end">4</property>
                         <property name="spacing">8</property>
                         <child>
-                          <object class="GtkButton">
+                          <object class="GtkButton" id="preview_button">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <property name="receives-default">True</property>
