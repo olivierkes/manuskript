@@ -70,9 +70,13 @@ class FrequencyWindow(AbstractDialog):
         self.phrasesFrequencyStore = builder.get_object("phrases_frequency_store")
 
         self.filteredFrequencyStore = builder.get_object("filtered_frequency_store")
+        self.sortedFrequencyStore = builder.get_object("sorted_frequency_store")
         
         self.filteredFrequencyStore.set_visible_func(self._filterFrequencies)
         self.filteredFrequencyStore.refilter()
+
+        self.sortedFrequencyStore.set_sort_column_id(1, Gtk.SortType.DESCENDING)
+        self.phrasesFrequencyStore.set_sort_column_id(1, Gtk.SortType.DESCENDING)
 
         self.phraseMinimum = builder.get_object("phrase_minimum")
         self.phraseMaximum = builder.get_object("phrase_maximum")
