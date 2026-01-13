@@ -36,7 +36,7 @@ class Project(AbstractData):
         self.characters = Characters(self.file.directoryPath)
         self.plots = Plots(self.file.directoryPath, self.characters)
         self.world = World(self.file.directoryPath)
-        self.outline = Outline(self.file.directoryPath, self.plots, self.labels, self.statuses)
+        self.outline = Outline(self.file.directoryPath, self.characters, self.plots, self.labels, self.statuses)
         self.revisions = Revisions(self.file.directoryPath)
 
         self.version.value = self.file.getVersion()

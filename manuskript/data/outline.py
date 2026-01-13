@@ -68,6 +68,9 @@ class OutlineItem(AbstractData):
         if (item.UID is None) or (item.UID.value != int(ID)):
             item.UID = item.outline.host.loadID(int(ID))
 
+        def loadCharacterByID(outline, characterID: str) -> Character:
+            return outline.characters.getPOVByID(safeInt(characterID, -1))
+
         def loadLabelByID(outline, labelID: str) -> Label:
             return outline.labels.getLabelByID(safeInt(labelID, 0))
 
@@ -78,7 +81,7 @@ class OutlineItem(AbstractData):
         item.type = metadata.get("type", "md")
         item.summarySentence = metadata.get("summarySentence", None)
         item.summaryFull = metadata.get("summaryFull", None)
-        item.POV = metadata.get("POV", None)
+        item.POV = loadCharacterByID(item.outline, metadata.get("POV", None))
         item.notes = metadata.get("notes", None)
         item.label = loadLabelByID(item.outline, metadata.get("label", None))
         item.status = loadStatusByID(item.outline, metadata.get("status", None))
@@ -97,7 +100,7 @@ class OutlineItem(AbstractData):
         metadata["type"] = item.type
         metadata["summarySentence"] = item.summarySentence
         metadata["summaryFull"] = item.summaryFull
-        metadata["POV"] = item.POV
+        metadata["POV"] = None if item.POV is None else str(item.POV.UID.value)
         metadata["notes"] = item.notes
         metadata["label"] = None if item.label is None else item.label.ID
         metadata["status"] = None if item.status is None else item.status.ID
@@ -316,9 +319,10 @@ class OutlineFolder(OutlineItem):
 
 class Outline(AbstractData):
 
-    def __init__(self, path, plots: Plots, labels: LabelHost, statuses: StatusHost):
+    def __init__(self, path, characters: Characters, plots: Plots, labels: LabelHost, statuses: StatusHost):
         AbstractData.__init__(self, os.path.join(path, "outline"))
         self.host = UniqueIDHost()
+        self.characters = characters
         self.plots = plots
         self.labels = labels
         self.statuses = statuses

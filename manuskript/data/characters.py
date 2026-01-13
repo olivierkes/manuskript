@@ -155,8 +155,16 @@ class Characters(AbstractData):
 
         return character
 
-    def getByID(self, ID: int) -> Character:
+    def getByID(self, ID: int) -> Character | None:
         return self.data.get(ID, None)
+
+    def getPOVByID(self, ID: int) -> Character | None:
+        character = self.getByID(ID)
+
+        if character is None:
+            return None
+        else:
+            return character if character.POV else None
 
     def remove(self, character: Character):
         self.host.removeID(character.UID)
