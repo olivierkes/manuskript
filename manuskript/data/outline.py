@@ -216,7 +216,7 @@ class OutlineFolder(OutlineItem):
         return item
     
     def addText(self, name: str):
-        filename = safeFilename("%d-%s.md" % (len(self.items), name))
+        filename = safeFilename("%d-%s" % (len(self.items), name), "md")
 
         item = OutlineText(os.path.join(self.folderPath, filename), self.outline)
         item.UID = self.outline.host.newID()
@@ -353,7 +353,7 @@ class Outline(AbstractData):
         return item
     
     def addText(self, name: str):
-        filename = safeFilename("%d-%s.md" % (len(self.items), name))
+        filename = safeFilename("%d-%s" % (len(self.items), name), "md")
 
         item = OutlineText(os.path.join(self.dataPath, filename), self)
         item.UID = self.host.newID()

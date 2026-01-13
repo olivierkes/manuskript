@@ -42,6 +42,34 @@ class EditorView:
         self.outlineSelection = builder.get_object("outline_selection")
         self.editorOutlineSelection = builder.get_object("editor_outline_selection")
 
+        self.h1Tag = builder.get_object("h1_tag")
+        self.h2Tag = builder.get_object("h2_tag")
+        self.h3Tag = builder.get_object("h3_tag")
+        self.h4Tag = builder.get_object("h4_tag")
+        self.h5Tag = builder.get_object("h5_tag")
+        self.h6Tag = builder.get_object("h6_tag")
+        self.bTag = builder.get_object("b_tag")
+        self.iTag = builder.get_object("i_tag")
+        self.sTag = builder.get_object("s_tag")
+        self.uTag = builder.get_object("u_tag")
+        self.noneTag = builder.get_object("none_tag")
+        self.pTag = builder.get_object("p_tag")
+        self.lineTag = builder.get_object("line_tag")
+
+        self.noneTag.set_priority(0)
+        self.pTag.set_priority(1)
+        self.h1Tag.set_priority(2)
+        self.h2Tag.set_priority(3)
+        self.h3Tag.set_priority(4)
+        self.h4Tag.set_priority(5)
+        self.h5Tag.set_priority(6)
+        self.h6Tag.set_priority(7)
+        self.lineTag.set_priority(8)
+        self.bTag.set_priority(9)
+        self.iTag.set_priority(10)
+        self.sTag.set_priority(11)
+        self.uTag.set_priority(12)
+
         self.outlineSelection.connect("changed", self._outlineSelectionChanged)
         self.editorOutlineSelection.connect("changed", self._editorOutlineSelectionChanged)
 
@@ -392,3 +420,10 @@ class EditorView:
 
     def show(self):
         self.widget.show_all()
+    
+    def applyFormatToSelection(self, tag_name: str):
+        if not self.editorTextBuffer.get_has_selection():
+            return
+        
+        start_iter, end_iter = self.editorTextBuffer.get_selection_bounds()
+        self.editorTextBuffer.apply_tag_by_name(tag_name, start_iter, end_iter)
