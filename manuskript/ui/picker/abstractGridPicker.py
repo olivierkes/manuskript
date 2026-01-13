@@ -23,7 +23,7 @@ class AbstractGridPicker(Gtk.Box):
 
         if enableSearch:
             self.search_entry = Gtk.SearchEntry()
-            self.search_entry.connect("search-changed", self._onSearchChanged)
+            self.search_entry.connect("search-changed", self._searchEntryChanged)
             box.pack_start(self.search_entry, False, False, 0)
 
         if filters:
@@ -77,9 +77,9 @@ class AbstractGridPicker(Gtk.Box):
 
         return True
 
-    def _onSearchChanged(self, entry):
+    def _searchEntryChanged(self, entry):
         self.searchText = entry.get_text()
-        self._refresh()
+        self.refresh()
 
     def _buildFilterButtons(self):
         box = Gtk.Box(spacing=6)
@@ -100,30 +100,30 @@ class AbstractGridPicker(Gtk.Box):
             btn = Gtk.Button(label=label)
 
             if value is None:
-                self._highlight(btn)
+                self.highlight(btn)
 
-            btn.connect("clicked", self._onFilterSelected, value)
+            btn.connect("clicked", self._filterButtonClicked, value)
             box.pack_start(btn, False, False, 0)
 
         return box
 
-    def _onFilterSelected(self, button, value):
-        self._highlight(button)
+    def _filterButtonClicked(self, button, value):
+        self.highlight(button)
         self.currentFilter = value
-        self._refresh()
+        self.refresh()
 
-    def _highlight(self, button):
+    def highlight(self, button):
         if self.lastClickedButton:
             self.lastClickedButton.get_style_context().remove_class("highlighted-button")
 
         button.get_style_context().add_class("highlighted-button")
         self.lastClickedButton = button
 
-    def _refresh(self):
+    def refresh(self):
         self.filterModel.refilter()
-        self._rebuildGrid()
+        self.rebuildGrid()
 
-    def _rebuildGrid(self):
+    def rebuildGrid(self):
         for child in self.grid.get_children():
             self.grid.remove(child)
 
@@ -133,7 +133,7 @@ class AbstractGridPicker(Gtk.Box):
         while iter_:
             item = self.filterModel[iter_][1]
 
-            btn = self._buildItemButton(item)
+            btn = self.buildItemButton(item)
             self.grid.attach(btn, col, row, 1, 1)
 
             col += 1
@@ -145,7 +145,7 @@ class AbstractGridPicker(Gtk.Box):
 
         self.grid.show_all()
 
-    def _buildItemButton(self, item):
+    def buildItemButton(self, item):
         btn = Gtk.Button()
         box = Gtk.Box(spacing=6)
 
@@ -156,11 +156,11 @@ class AbstractGridPicker(Gtk.Box):
         box.pack_start(label, True, True, 0)
 
         btn.add(box)
-        btn.connect("clicked", self._onItemClicked, item)
+        btn.connect("clicked", self._itemButtonClicked, item)
 
         return btn
 
-    def _onItemClicked(self, button, item):
+    def _itemButtonClicked(self, button, item):
         self.emit("item-selected", item)
         self.popover.hide()
 
@@ -189,6 +189,6 @@ class AbstractGridPicker(Gtk.Box):
             )
 
         self.currentFilter = None
-        self._refresh()
+        self.refresh()
         self.popover.show_all()
         self.popover.popup()

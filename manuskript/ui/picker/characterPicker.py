@@ -14,7 +14,7 @@ class CharacterPicker(AbstractGridPicker):
 
         super().__init__(button=button, filters=Importance, enableSearch=True, columns=3)
 
-        self.connect("item-selected", self._onCharacterSelected)
+        self.connect("item-selected", self._characterItemSelected)
 
     def show(self, excludedCharacterUids=None):
         if excludedCharacterUids:
@@ -37,5 +37,5 @@ class CharacterPicker(AbstractGridPicker):
     def getItemFilterKey(self, character):
         return character.importance
 
-    def _onCharacterSelected(self, picker, character):
+    def _characterItemSelected(self, picker, character):
         picker.emit("character-selected", character)

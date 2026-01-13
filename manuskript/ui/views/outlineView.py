@@ -74,16 +74,16 @@ class OutlineView:
         self.outlineSelection.connect("changed", self._outlineSelectionChanged)
 
         self.outlineTreeview = builder.get_object("outline_treeview")
-        self.outlineTreeview.connect("button-press-event", self.onOutlineTreeviewClicked)
+        self.outlineTreeview.connect("button-press-event", self._outlineTreeviewClicked)
 
         self.outlineTitle = builder.get_object("outline_title")
-        self.outlineTitle.connect("edited", self.onEditOutlineTitle)
+        self.outlineTitle.connect("edited", self._outlineTitleEdited)
 
         self.labelPopover = LabelPicker(self.outline.labels)
-        self.labelPopover.connect("label-selected", self.onLabelItemSelected)
+        self.labelPopover.connect("label-selected", self._labelPopoverItemSelected)
 
         self.povPopover = CharacterPicker(self.outline.plots.characters)
-        self.povPopover.connect("character-selected", self.onPovItemSelected)
+        self.povPopover.connect("character-selected", self._povPopoverItemSelected)
 
         self.goalBuffer = builder.get_object("goal")
         self.oneLineSummaryBuffer = builder.get_object("one_line_summary")
@@ -93,10 +93,10 @@ class OutlineView:
         self.goalBuffer.connect("inserted-text", self._goalInsertedText)
 
         self.povCombo = builder.get_object("pov_combo")
-        self.povCombo.connect("changed", self.onPovComboChanged)
+        self.povCombo.connect("changed", self._povChanged)
 
         self.statusCombo = builder.get_object("outline_status")
-        self.statusCombo.connect("changed", self.onStatusChanged)
+        self.statusCombo.connect("changed", self._statusChanged)
 
         self.oneLineSummaryBuffer.connect("deleted-text", self._oneLineSummaryDeletedText)
         self.oneLineSummaryBuffer.connect("inserted-text", self._oneLineSummaryInsertedText)
@@ -309,7 +309,7 @@ class OutlineView:
 
         self.povCombo.set_active(-1)
 
-    def onPovComboChanged(self, combo):
+    def _povChanged(self, combo):
         if not self.outlineItem:
             return
         
@@ -444,7 +444,7 @@ class OutlineView:
 
         self.outlineItem.summaryFull = invalidString(text)
 
-    def onOutlineTreeviewClicked(self, treeview, event):
+    def _outlineTreeviewClicked(self, treeview, event):
         if event.button != 1 or event.type != Gdk.EventType._2BUTTON_PRESS:
             return False
                 
@@ -483,7 +483,7 @@ class OutlineView:
 
         popover.show()
 
-    def onLabelItemSelected(self, labelPicker, label):
+    def _labelPopoverItemSelected(self, labelPicker, label):
         labelText=validString(label)
 
         model = self.outlineTreeview.get_model()
@@ -496,7 +496,7 @@ class OutlineView:
         labelObject = self.outline.labels.getLabel(labelText)
         item.label = labelObject
 
-    def onPovItemSelected(self, povPicker, character: Character):
+    def _povPopoverItemSelected(self, povPicker, character: Character):
         model = self.outlineTreeview.get_model()
         iter_ = model.get_iter(self.current_path)
         model.set_value(iter_, 10, character.name)
@@ -506,11 +506,11 @@ class OutlineView:
         item.POV = str(character.UID)
         self.loadOutlineData(item)
 
-    def onEditOutlineTitle(self, renderer, path, new_text):
+    def _outlineTitleEdited(self, renderer, path, new_text):
         self.outlineStore[path][1] = new_text
         self.outlineItem.title = new_text
 
-    def onStatusChanged(self, cell, path, new_iter):
+    def _statusChanged(self, cell, path, new_iter):
         combo_model = cell.get_property("model")
         new_status = combo_model[new_iter][0]
 

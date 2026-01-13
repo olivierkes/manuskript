@@ -11,8 +11,8 @@ class AboutDialog(AbstractDialog):
 
     def initWindow(self, builder, window):
         super().initWindow(builder, window)
-        self.window.connect("response", self.on_response)
+        self.window.connect("response", self._windowResponse)
 
-    def on_response(self, dialog, response_id):
+    def _windowResponse(self, dialog, response_id):
         if response_id == Gtk.ResponseType.DELETE_EVENT:
             dialog.hide()

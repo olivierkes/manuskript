@@ -92,7 +92,7 @@ class PlotView:
         self.nameBuffer.connect("inserted-text", self._nameInsertedText)
 
         self.removeCharacterButton = builder.get_object("remove_character")
-        self.removeCharacterButton.connect("clicked", self._RemoveCharacterClicked)
+        self.removeCharacterButton.connect("clicked", self._removeCharacterClicked)
 
         self.plotCharactersView = builder.get_object("characters_view")
 
@@ -100,7 +100,7 @@ class PlotView:
         self.addCharacterButton.connect("clicked", self._addCharacterClicked)
 
         self.characterPicker = CharacterPicker(characters, button=self.addCharacterButton)
-        self.characterPicker.connect("character-selected", self._onAddingCharacter)
+        self.characterPicker.connect("character-selected", self._characterPickerCharacterPicked)
 
         self.plotCharactersStore = builder.get_object("plot_characters_store")
 
@@ -382,7 +382,7 @@ class PlotView:
     def _nameInsertedText(self, buffer: Gtk.EntryBuffer, position: int, chars: str, n_chars: int):
         self.__nameChanged(buffer)
 
-    def _RemoveCharacterClicked(self, Button: Gtk.Button):
+    def _removeCharacterClicked(self, Button: Gtk.Button):
         selection = self.plotCharactersView.get_selection()
         model, treeiter = selection.get_selected()
 
@@ -394,7 +394,7 @@ class PlotView:
     def _addCharacterClicked(self, button: Gtk.Button):
         self.characterPicker.show(self.plotLine.characters)
 
-    def _onAddingCharacter(self, characterPicker, userdata):
+    def _characterPickerCharacterPicked(self, characterPicker, userdata):
         self.plotLine.characters.append(userdata.UID.value)
         self.refreshCharactersStore()
         self.plotCharactersStore.refilter()

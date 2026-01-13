@@ -13,7 +13,7 @@ class LabelPicker(AbstractGridPicker):
 
         super().__init__(enableSearch=True, columns=3)
 
-        self.connect("item-selected", self._onLabelSelected)
+        self.connect("item-selected", self._labelItemSelected)
 
     def show(self):
         super().show()
@@ -33,5 +33,5 @@ class LabelPicker(AbstractGridPicker):
     def getItemFilterKey(self, label: Label):
         return None
 
-    def _onLabelSelected(self, picker, character):
+    def _labelItemSelected(self, picker, character):
         picker.emit("label-selected", character)
