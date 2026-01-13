@@ -34,8 +34,12 @@ parser.add_argument(
 
 args = parser.parse_args()
 
-project_path = os.path.abspath(args.msk_path) if args.msk_path else defaultProjectPath
+projectPath = os.path.abspath(args.msk_path) if args.msk_path else defaultProjectPath
+
+if not os.path.exists(projectPath):
+    print(f"Error: project path does not exist: {projectPath}")
+    sys.exit(1)
 
 window = MainWindow()
-window.openProject(project_path)
+window.openProject(projectPath)
 window.run()
