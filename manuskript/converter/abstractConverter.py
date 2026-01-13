@@ -8,11 +8,20 @@ class AbstractConverter:
         self.inputFormats = []
         self.outputFormats = []
 
-    def supportsInput(self, format: str) -> bool:
-        return format in self.inputFormats
+    def isValid(self) -> bool:
+        return False
 
-    def supportsOutput(self, format: str) -> bool:
-        return format in self.outputFormats
+    def supportsInput(self, inputFormat: str) -> bool:
+        if inputFormat == "*":
+            return True
+
+        return inputFormat in self.inputFormats
+
+    def supportsOutput(self, outputFormat: str) -> bool:
+        if outputFormat == "*":
+            return True
+
+        return outputFormat in self.outputFormats
 
     def convert(self, text: str, inputFormat: str, outputFormat: str) -> str | None:
         if inputFormat == outputFormat:

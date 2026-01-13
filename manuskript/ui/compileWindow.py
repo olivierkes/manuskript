@@ -12,7 +12,7 @@ Handy.init()
 
 from manuskript.ui.abstractDialog import AbstractDialog
 
-from manuskript.converter import MarkdownConverter, PandocConverter
+from manuskript.exporter import getExporterByFormat
 from manuskript.data import Project, OutlineItem, OutlineFolder, OutlineText
 
 
@@ -71,20 +71,10 @@ class CompileWindow(AbstractDialog):
     def _previewButtonClicked(self, button: Gtk.Button):
         self.preview()
 
-    def __previewOutlineItem(self, outlineItem: OutlineItem, level: int = 1) -> str:
-        if type(outlineItem) is OutlineFolder:
-            text = ("#" * level) + " " + str(outlineItem.title) + "\n\n"
-            text += "\n\n".join([self.__previewOutlineItem(item, level + 1) for item in outlineItem])
-            return text
-        elif type(outlineItem) is OutlineText:
-            return str(outlineItem.text)
-        else:
-            return ""
-
     def preview(self):
-        converter = MarkdownConverter()
+        exporter = getExporterByFormat("html")
         project = self.getProject()
 
-        text = "\n\n".join([self.__previewOutlineItem(item) for item in project.outline])
+        html = "" if exporter is None else exporter.export(project)
 
-        self.previewWebView.load_html(converter.convert(text, "markdown", "html"), None)
+        self.previewWebView.load_html(html, None)

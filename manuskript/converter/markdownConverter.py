@@ -1,7 +1,10 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
 
-import markdown
+try:
+    import markdown
+except ModuleNotFoundError:
+    markdown = None
 
 from manuskript.converter.abstractConverter import AbstractConverter
 
@@ -17,6 +20,9 @@ class MarkdownConverter(AbstractConverter):
         self.outputFormats.append("markdown")
         self.outputFormats.append("xhtml")
         self.outputFormats.append("html")
+
+    def isValid(self) -> bool:
+        return False if markdown is None else True
 
     def convert(self, text: str, inputFormat: str, outputFormat: str) -> str | None:
         if (inputFormat == "plain") and (output_format == "markdown"):
