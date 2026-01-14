@@ -3772,7 +3772,7 @@ pored broja riječi</translation>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="246"/>
         <source>Empty non-fiction</source>
-        <translation>Prazna stvarnost</translation>
+        <translation>Prazna publicistika</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="309"/>
