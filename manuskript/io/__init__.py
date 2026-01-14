@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
 
+from manuskript.io.binaryFile import BinaryFile
 from manuskript.io.textFile import TextFile
 from manuskript.io.jsonFile import JsonFile
 from manuskript.io.xmlFile import XmlFile
@@ -12,6 +13,7 @@ from manuskript.io.mskFile import MskFile
 
 def formatByExtension(extension: str) -> str:
     formats = {
+        "bin": "binary",
         "md": "markdown",
         "txt": "plain",
         "bbl": "bibtex",

@@ -2,18 +2,21 @@
 # -*- coding: utf-8 -*-
 
 import gi
+import tempfile
 
 gi.require_version("Gtk", "3.0")
 gi.require_version("Handy", "1")
 gi.require_version("WebKit2", "4.0")
-from gi.repository import GObject, Gtk, Handy, WebKit2
+from gi.repository import GLib, GObject, Gtk, Handy, WebKit2
 
 Handy.init()
 
 from manuskript.ui.abstractDialog import AbstractDialog
 
+from manuskript.converter import getConverter
 from manuskript.exporter import getExporterByFormat
 from manuskript.data import Project, OutlineItem, OutlineFolder, OutlineText
+from manuskript.io import BinaryFile
 
 
 class CompileWindow(AbstractDialog):
@@ -72,9 +75,18 @@ class CompileWindow(AbstractDialog):
         self.preview()
 
     def preview(self):
-        exporter = getExporterByFormat("html")
+        exporter = getExporterByFormat("pdf")
         project = self.getProject()
 
-        html = "" if exporter is None else exporter.export(project)
+        if exporter.exportFormat == "pdf":
+            pdf = b"" if exporter is None else exporter.export(project)
 
-        self.previewWebView.load_html(html, None)
+            self.previewWebView.load_bytes(GLib.Bytes(pdf), "application/pdf", None, None)
+        elif exporter.exportFormat == "html":
+            html = "" if exporter is None else exporter.export(project)
+
+            self.previewWebView.load_html(html, None)
+        else:
+            text = "" if exporter is None else exporter.export(project)
+
+            self.previewWebView.load_plain_text(text)

@@ -4,11 +4,13 @@
 from manuskript.exporter.abstractExporter import AbstractExporter
 from manuskript.exporter.htmlExporter import HTMLExporter
 from manuskript.exporter.markdownExporter import MarkdownExporter
+from manuskript.exporter.pdfExporter import PDFExporter
 
 
 __exporters__ = list(filter(lambda exporter: exporter.isValid(), [
     HTMLExporter(),
-    MarkdownExporter()
+    MarkdownExporter(),
+    PDFExporter(),
 ]))
 
 

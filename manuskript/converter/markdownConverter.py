@@ -31,4 +31,4 @@ class MarkdownConverter(AbstractConverter):
               ((outputFormat == "xhtml") or (outputFormat == "html"))):
             return markdown.markdown(text, output_format=outputFormat)
         else:
-            return AbstractConverter.convert(text, inputFormat, outputFormat)
+            return AbstractConverter.convert(self, text, inputFormat, outputFormat)

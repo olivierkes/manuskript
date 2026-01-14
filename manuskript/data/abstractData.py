@@ -16,7 +16,7 @@ class DataStatus(Enum):
 
 class AbstractData:
 
-    def __init__(self, path):
+    def __init__(self, path: str):
         self.dataPath = path
         self.dataStatus = DataStatus.UNDEFINED
 

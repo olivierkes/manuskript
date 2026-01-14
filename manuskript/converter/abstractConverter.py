@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
 
+from manuskript.io import BinaryFile, TextFile
+
 
 class AbstractConverter:
 
@@ -28,3 +30,17 @@ class AbstractConverter:
             return text
         else:
             return None
+
+    def convertFile(self, path: str, outputPath: str, inputFormat: str, outputFormat: str) -> bool:
+        text = TextFile(path).load()
+
+        if text is None:
+            return False
+        
+        text = self.convert(text, inputFormat, outputFormat)
+
+        if text is None:
+            return False
+        
+        BinaryFile(outputPath).save(text.encode('utf-8'))
+        return True
