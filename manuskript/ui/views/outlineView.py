@@ -228,9 +228,9 @@ class OutlineView:
         self.outlineStore.set_value(tree_iter, 10, "")
         self.outlineStore.set_value(tree_iter, 11, None)
 
-        povId=validInt(outlineItem.POV, -1)
-        if povId!=-1:
-            povName, povPixbuf = self._getPovData(validInt(outlineItem.POV, -1))
+        if outlineItem.POV:
+            povName = outlineItem.POV.name
+            povPixbuf = pixbufFromColor(outlineItem.POV.color)
             if povName!=None:
                 self.outlineStore.set_value(tree_iter, 10, povName)
                 self.outlineStore.set_value(tree_iter, 11, povPixbuf)
@@ -244,13 +244,6 @@ class OutlineView:
                 return row[1]
             
         return None
-
-    def _getPovData(self, povId):
-        for row in self.charactersStore:
-            if row[0] == povId:
-                return row[1], row[2]
-            
-        return None, None
 
     def __completeOutlineItem(self):
         outlineItem: OutlineItem
@@ -322,7 +315,7 @@ class OutlineView:
         
         povId = model[tree_iter][0] 
         if povId!=-1:
-            self.outlineItem.POV = validString(povId)
+            self.outlineItem.POV = self.outline.characters.getPOVByID(validInt(povId))
         else:
             self.outlineItem.POV = None
 
@@ -335,7 +328,8 @@ class OutlineView:
         self.goalBuffer.set_text(validString(outlineItem.goal), -1)
         self.oneLineSummaryBuffer.set_text(validString(outlineItem.summarySentence), -1)
         self.fewSentencesSummaryBuffer.set_text(validString(outlineItem.summaryFull), -1)
-        self.setPovComboById(validInt(outlineItem.POV, -1))
+        if outlineItem.POV:
+            self.setPovComboById(validInt(outlineItem.POV.UID.value))
 
         self.outlineItem = outlineItem
 
@@ -503,7 +497,7 @@ class OutlineView:
         model.set_value(iter_, 11, pixbufFromColor(character.color))
         
         item = self.outline.getItemByID(model.get_value(iter_, 0))
-        item.POV = str(character.UID)
+        item.POV = character
         self.loadOutlineData(item)
 
     def _outlineTitleEdited(self, renderer, path, new_text):

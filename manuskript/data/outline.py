@@ -15,6 +15,7 @@ from manuskript.data.template import Template, TemplateLevel
 from manuskript.data.unique_id import UniqueIDHost
 from manuskript.io.mmdFile import MmdFile
 from manuskript.util import CounterKind, countText, safeInt, safeFilename
+from manuskript.data import Characters, Character
 
 
 @unique
@@ -25,6 +26,7 @@ class OutlineState(Enum):
 
 
 class OutlineItem(AbstractData):
+    POV: Character
 
     def __init__(self, path, outline):
         AbstractData.__init__(self, path)

@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-gi.require_version("WebKit2", "4.0")
 from gi.repository import GObject, Gtk, Handy, WebKit2
 
 from manuskript.ui.abstractDialog import AbstractDialog
