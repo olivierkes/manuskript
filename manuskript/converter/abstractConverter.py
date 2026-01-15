@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
 
-from manuskript.io import BinaryFile, TextFile
+from manuskript.io import TextFile
 
 
 class AbstractConverter:
@@ -42,5 +42,5 @@ class AbstractConverter:
         if text is None:
             return False
         
-        BinaryFile(outputPath).save(text.encode('utf-8'))
+        TextFile(outputPath).save(text)
         return True
