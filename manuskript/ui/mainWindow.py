@@ -86,6 +86,12 @@ class MainWindow:
         bindMenuItem(builder, "compile_menu_item", self._compileAction)
         bindMenuItem(builder, "quit_menu_item", self._quitAction)
 
+        bindMenuItem(builder, "cut_menu_item", self._cutAction)
+        bindMenuItem(builder, "copy_menu_item", self._copyAction)
+        bindMenuItem(builder, "paste_menu_item", self._pasteAction)
+        bindMenuItem(builder, "delete_menu_item", self._deleteAction)
+        bindMenuItem(builder, "rename_menu_item", self._renameAction)
+
         bindMenuItem(builder, "header1_atx_menu_item", self._h1EditorAction)
         bindMenuItem(builder, "header2_atx_menu_item", self._h2EditorAction)
         bindMenuItem(builder, "header3_atx_menu_item", self._h3EditorAction)
@@ -185,6 +191,21 @@ class MainWindow:
 
     def _quitAction(self, menuItem: Gtk.MenuItem):
         self.exit(True)
+
+    def _cutAction(self, menuItem: Gtk.MenuItem):
+        pass
+
+    def _copyAction(self, menuItem: Gtk.MenuItem):
+        pass
+
+    def _pasteAction(self, menuItem: Gtk.MenuItem):
+        pass
+
+    def _deleteAction(self, menuItem: Gtk.MenuItem):
+        pass
+
+    def _renameAction(self, menuItem: Gtk.MenuItem):
+        pass
     
     def _h1EditorAction(self, menuItem: Gtk.MenuItem):
         self.editorView.applyFormatToSelection("h1")
