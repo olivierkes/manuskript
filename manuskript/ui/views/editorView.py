@@ -4,7 +4,7 @@
 import gi
 
 gi.require_version("Gtk", "3.0")
-from gi.repository import GObject, Gtk, Pango
+from gi.repository import GObject, Gtk, Pango, Gdk
 
 from manuskript.data import Project, OutlineFolder, OutlineText, OutlineItem, OutlineState, Goal
 from manuskript.ui.editor import GridItem
@@ -420,10 +420,58 @@ class EditorView:
 
     def show(self):
         self.widget.show_all()
-    
-    def applyFormatToSelection(self, tag_name: str):
+
+    def cutSelection(self):
         if not self.editorTextBuffer.get_has_selection():
             return
         
+        clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD)
+
+        if clipboard is None:
+            return
+        
+        self.editorTextBuffer.cut_clipboard(clipboard, True)
+
+    def copySelection(self):
+        if not self.editorTextBuffer.get_has_selection():
+            return
+        
+        clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD)
+
+        if clipboard is None:
+            return
+        
+        self.editorTextBuffer.copy_clipboard(clipboard)
+
+    def pasteClipboard(self):
+        clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD)
+
+        if clipboard is None:
+            return
+        
+        self.editorTextBuffer.paste_clipboard(clipboard, None, True)
+
+    def deleteSelection(self):
+        if not self.editorTextBuffer.get_has_selection():
+            return
+        
+        self.editorTextBuffer.delete_selection(True, True)
+
+    def renameItem(self, name: str|None = None):
+        pass
+
+    def toggleTagFromSelection(self, tag_name: str):
+        if not self.editorTextBuffer.get_has_selection():
+            return
+        
+        tag = self.editorTextBuffer.get_tag_table().lookup(tag_name)
+
+        if tag is None:
+            return
+        
         start_iter, end_iter = self.editorTextBuffer.get_selection_bounds()
-        self.editorTextBuffer.apply_tag_by_name(tag_name, start_iter, end_iter)
+
+        if start_iter.has_tag(tag):
+            self.editorTextBuffer.remove_tag(tag, start_iter, end_iter)
+        else:
+            self.editorTextBuffer.apply_tag(tag, start_iter, end_iter)

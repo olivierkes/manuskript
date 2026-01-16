@@ -182,10 +182,10 @@ class MainWindow:
 
     def _closeAction(self, menuItem: Gtk.MenuItem):
         self.closeProject()
-    
+
     def _importAction(self, menuItem: Gtk.MenuItem):
         self.importWindow.show()
-    
+
     def _compileAction(self, menuItem: Gtk.MenuItem):
         self.compileWindow.show()
 
@@ -193,46 +193,46 @@ class MainWindow:
         self.exit(True)
 
     def _cutAction(self, menuItem: Gtk.MenuItem):
-        pass
+        self.editorView.cutSelection()
 
     def _copyAction(self, menuItem: Gtk.MenuItem):
-        pass
+        self.editorView.copySelection()
 
     def _pasteAction(self, menuItem: Gtk.MenuItem):
-        pass
+        self.editorView.pasteClipboard()
 
     def _deleteAction(self, menuItem: Gtk.MenuItem):
-        pass
+        self.editorView.deleteSelection()
 
     def _renameAction(self, menuItem: Gtk.MenuItem):
-        pass
-    
+        self.editorView.renameItem()
+
     def _h1EditorAction(self, menuItem: Gtk.MenuItem):
-        self.editorView.applyFormatToSelection("h1")
-    
+        self.editorView.toggleTagFromSelection("h1")
+
     def _h2EditorAction(self, menuItem: Gtk.MenuItem):
-        self.editorView.applyFormatToSelection("h2")
-    
+        self.editorView.toggleTagFromSelection("h2")
+
     def _h3EditorAction(self, menuItem: Gtk.MenuItem):
-        self.editorView.applyFormatToSelection("h3")
-    
+        self.editorView.toggleTagFromSelection("h3")
+
     def _h4EditorAction(self, menuItem: Gtk.MenuItem):
-        self.editorView.applyFormatToSelection("h4")
-    
+        self.editorView.toggleTagFromSelection("h4")
+
     def _h5EditorAction(self, menuItem: Gtk.MenuItem):
-        self.editorView.applyFormatToSelection("h5")
-    
+        self.editorView.toggleTagFromSelection("h5")
+
     def _h6EditorAction(self, menuItem: Gtk.MenuItem):
-        self.editorView.applyFormatToSelection("h6")
-    
+        self.editorView.toggleTagFromSelection("h6")
+
     def _boldEditorAction(self, menuItem: Gtk.MenuItem):
-        self.editorView.applyFormatToSelection("b")
-    
+        self.editorView.toggleTagFromSelection("b")
+
     def _italicEditorAction(self, menuItem: Gtk.MenuItem):
-        self.editorView.applyFormatToSelection("i")
-    
+        self.editorView.toggleTagFromSelection("i")
+
     def _strikeEditorAction(self, menuItem: Gtk.MenuItem):
-        self.editorView.applyFormatToSelection("s")
+        self.editorView.toggleTagFromSelection("s")
 
     def getSettings(self):
         return self.project.settings
