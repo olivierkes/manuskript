@@ -3,7 +3,7 @@
 
 from gi.repository import Gtk
 
-from manuskript.data import Plots, PlotLine, PlotStep, Importance, LinkAction, Characters
+from manuskript.data import Plots, PlotLine, PlotStep, Importance, LinkAction, Characters, Character, UniqueID
 from manuskript.ui.util import rgbaFromColor, pixbufFromColor
 from manuskript.util import validString, invalidString, validInt, invalidInt
 from manuskript.ui.picker.characterPicker import CharacterPicker
@@ -11,9 +11,9 @@ from manuskript.ui.picker.characterPicker import CharacterPicker
 class PlotView:
 
     def __init__(self, plots: Plots, characters: Characters):
-        self.plots = plots
-        self.plotLine = None
-        self.plotStep = None
+        self.plots: Plots = plots
+        self.plotLine: PlotLine = None
+        self.plotStep: PlotStep = None
 
         builder = Gtk.Builder()
         builder.add_from_file("ui/plot.glade")
@@ -99,7 +99,7 @@ class PlotView:
         self.addCharacterButton = builder.get_object("add_character")
         self.addCharacterButton.connect("clicked", self._addCharacterClicked)
 
-        self.characterPicker = CharacterPicker(characters, button=self.addCharacterButton)
+        self.characterPicker: CharacterPicker = CharacterPicker(characters, button=self.addCharacterButton)
         self.characterPicker.connect("character-selected", self._characterPickerCharacterPicked)
 
         self.plotCharactersStore = builder.get_object("plot_characters_store")
@@ -139,7 +139,7 @@ class PlotView:
             self.charactersStore.set_value(tree_iter, 1, validString(character.name))
             self.charactersStore.set_value(tree_iter, 2, pixbufFromColor(character.color))
 
-    def __linkActionPlotLine(self, action, UID, plotLine):
+    def __linkActionPlotLine(self, action: LinkAction, UID: UniqueID, plotLine: PlotLine):
         if action == LinkAction.DELETE:
             return
 
@@ -394,7 +394,7 @@ class PlotView:
     def _addCharacterClicked(self, button: Gtk.Button):
         self.characterPicker.show(self.plotLine.characters)
 
-    def _characterPickerCharacterPicked(self, characterPicker, userdata):
+    def _characterPickerCharacterPicked(self, characterPicker: CharacterPicker, userdata:Character):
         self.plotLine.characters.append(userdata.UID.value)
         self.refreshCharactersStore()
         self.plotCharactersStore.refilter()

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-
+from __future__ import annotations
 import os
 
 from manuskript.data.dropPosition import DropPosition
@@ -8,28 +8,29 @@ from manuskript.data.abstractData import AbstractData
 from manuskript.data.unique_id import UniqueIDHost, UniqueID
 from manuskript.io.opmlFile import OpmlFile, OpmlOutlineItem
 
+from typing import Iterator
 
 class WorldItem:
 
-    def __init__(self, world, UID: UniqueID, name: str = None):
-        self.world = world
+    def __init__(self, world: World, UID: UniqueID, name: str = None):
+        self.world: World = world
 
         if name is None:
             name = "New item"
 
-        self.UID = UID
-        self.name = name
-        self.description = None
-        self.passion = None
-        self.conflict = None
-        self.children = list()
-        self.parent = None
+        self.UID: UniqueID = UID
+        self.name: str = name
+        self.description: str = None
+        self.passion: str = None
+        self.conflict: str = None
+        self.children: list[WorldItem] = list()
+        self.parent: WorldItem = None
 
-    def removeChild(self, item):
+    def removeChild(self, item: WorldItem):
         item.parent = None
         self.children.remove(item)
 
-    def addChild(self, item, index=None):
+    def addChild(self, item: WorldItem, index: int=None):
         item.parent = self
 
         if not index:
@@ -37,7 +38,7 @@ class WorldItem:
         else:
             self.children.insert(index, item)
 
-    def contains(self, item):
+    def contains(self, item: WorldItem):
         if self == item:
             return True
         for child in self.children:
@@ -120,12 +121,17 @@ class World(AbstractData):
         }
     ]
 
-    def __init__(self, path):
+    def __init__(self, path: str):
         AbstractData.__init__(self, os.path.join(path, "world.opml"))
-        self.file = OpmlFile(self.dataPath)
+
+        host: UniqueIDHost
+        items: dict[int, WorldItem]
+        top = list[WorldItem]
+
+        self.file: OpmlFile = OpmlFile(self.dataPath)
         self.host = UniqueIDHost()
-        self.items = dict()
-        self.top = list()
+        self.items: dict[int, WorldItem] = dict()
+        self.top: list[WorldItem] = list()
 
     def changePath(self, path: str):
         AbstractData.changePath(self, os.path.join(path, "world.opml"))
@@ -175,11 +181,11 @@ class World(AbstractData):
     def getItemByID(self, ID: int) -> WorldItem:
         return self.items.get(ID, None)
 
-    def __iter__(self):
+    def __iter__(self) -> Iterator[WorldItem]:
         return self.items.values().__iter__()
 
     @classmethod
-    def loadWorldItem(cls, world, outline: OpmlOutlineItem):
+    def loadWorldItem(cls, world: World, outline: OpmlOutlineItem) -> WorldItem:
         ID = outline.attributes.get("ID", None)
 
         if ID is None:
@@ -250,7 +256,7 @@ class World(AbstractData):
     def fetchTemplateList(self):
         return [node["name"] if isinstance(node, dict) else node for node in self.templates]
 
-    def _insertTemplate(self, node, parent=None):
+    def _insertTemplate(self, node: str | dict, parent:WorldItem=None):
         if isinstance(node, str):
             self.addItem(name=node, parent=parent)
         elif isinstance(node, dict):
@@ -259,7 +265,7 @@ class World(AbstractData):
             for child in node.get("children", []):
                 self._insertTemplate(child, parent=worldItem)
 
-    def insertTemplate(self, templateName):
+    def insertTemplate(self, templateName: str):
         root = next(
             (node for node in self.templates if isinstance(node, dict) and node["name"] == templateName),
             None
@@ -269,14 +275,13 @@ class World(AbstractData):
             for node in root["children"]:
                 self._insertTemplate(node)
 
+    def moveItem(self, sourceID: int, targetId: int, position: DropPosition) -> bool:
 
-    def moveItem(self, source_uid, target_id, position: DropPosition):
-
-        sourceItem=self.getItemByID(source_uid)
+        sourceItem=self.getItemByID(sourceID)
         if not sourceItem:
             return False
 
-        targetItem = self.getItemByID(target_id) if target_id else None
+        targetItem = self.getItemByID(targetId) if targetId else None
 
         if sourceItem.contains(targetItem):
             return True

@@ -9,8 +9,8 @@ from manuskript.util import validString, invalidString, validInt, invalidInt
 class WorldView:
 
     def __init__(self, world: World):
-        self.world = world
-        self.worldItem = None
+        self.world: World = world
+        self.worldItem: WorldItem = None
 
         builder = Gtk.Builder()
         builder.add_from_file("ui/world.glade")
@@ -60,7 +60,7 @@ class WorldView:
         self.removeFromWorldButton.connect("clicked", self._removeFromWorldClicked)
         self.populateButton.connect("clicked", self._populateClicked)
 
-        self.popover = self.createPopulatePopover(self.populateButton)
+        self.popover: Gtk.Popover = self.createPopulatePopover(self.populateButton)
 
         self.nameBuffer = builder.get_object("name")
         self.descriptionBuffer = builder.get_object("description")
@@ -76,7 +76,7 @@ class WorldView:
 
         self.unloadWorldData()
 
-    def createPopulatePopover(self, button):
+    def createPopulatePopover(self, button: Gtk.Button):
         popover = Gtk.Popover.new(button)
         popover.set_position(Gtk.PositionType.BOTTOM)
 
@@ -90,7 +90,7 @@ class WorldView:
 
         return popover
         
-    def _worldTreeViewDragDataGet(self, treeview, drag_context, selection, target_id, etime):
+    def _worldTreeViewDragDataGet(self, treeview: Gtk.TreeView, drag_context: Gdk.DragContext, selection: Gtk.SelectionData, target_id: int, etime: int):
         model, iter_ = treeview.get_selection().get_selected()
         if iter_ is not None:
             path = model.get_path(iter_)
@@ -98,7 +98,7 @@ class WorldView:
 
         return True
 
-    def _worldTreeViewDragDataReceived(self, treeview, drag_context, x, y, selection, info, etime):
+    def _worldTreeViewDragDataReceived(self, treeview: Gtk.TreeView, drag_context: Gdk.DragContext, x: int, y: int, selection: Gtk.SelectionData, info: int, etime: int):
         treeview.stop_emission("drag-data-received")
 
         model = treeview.get_model()
@@ -131,12 +131,12 @@ class WorldView:
 
         return True
     
-    def _worldTreeViewDragDrop(self, treeview, drag_context, x, y, etime):
+    def _worldTreeViewDragDrop(self, treeview: Gtk.TreeView, drag_context: Gdk.DragContext, x: int, y: int, etime: int):
         treeview.stop_emission("drag-drop")
         treeview.drag_get_data(drag_context, drag_context.list_targets()[-1], etime)
         return True
 
-    def _insertTemplateClicked(self, button: Gtk.Button, userdata):
+    def _insertTemplateClicked(self, button: Gtk.Button, userdata: str):
         self.world.insertTemplate(userdata)
         self.refreshWorldStore()
 

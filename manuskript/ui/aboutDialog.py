@@ -6,13 +6,13 @@ from gi.repository import Gtk
 
 class AboutDialog(AbstractDialog):
 
-    def __init__(self, mainWindow):
+    def __init__(self, mainWindow: Gtk.Window):
         AbstractDialog.__init__(self, mainWindow, "ui/about.glade", "about_dialog")
 
-    def initWindow(self, builder, window):
+    def initWindow(self, builder: Gtk.Builder, window: Gtk.Dialog):
         super().initWindow(builder, window)
         self.window.connect("response", self._windowResponse)
 
-    def _windowResponse(self, dialog, response_id):
-        if response_id == Gtk.ResponseType.DELETE_EVENT:
+    def _windowResponse(self, dialog: Gtk.Dialog, responseId: Gtk.ResponseType):
+        if responseId == Gtk.ResponseType.DELETE_EVENT:
             dialog.hide()

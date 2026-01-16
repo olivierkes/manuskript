@@ -1,4 +1,5 @@
-from manuskript.data.labels import Label
+from __future__ import annotations
+from manuskript.data.labels import Label, LabelHost
 from manuskript.ui.util import pixbufFromColor
 from manuskript.ui.picker.abstractGridPicker import AbstractGridPicker
 from gi.repository import GObject
@@ -8,8 +9,8 @@ class LabelPicker(AbstractGridPicker):
         "label-selected": (GObject.SignalFlags.RUN_FIRST, None, (object,))
     }
 
-    def __init__(self, labels):
-        self.labels = labels
+    def __init__(self, labels: LabelHost):
+        self.labels: LabelHost = labels
 
         super().__init__(enableSearch=True, columns=3)
 
@@ -18,7 +19,7 @@ class LabelPicker(AbstractGridPicker):
     def show(self):
         super().show()
 
-    def shouldIncludeItem(self, character):
+    def shouldIncludeItem(self, label: Label):
         return True
 
     def getItems(self):
@@ -33,5 +34,5 @@ class LabelPicker(AbstractGridPicker):
     def getItemFilterKey(self, label: Label):
         return None
 
-    def _labelItemSelected(self, picker, character):
-        picker.emit("label-selected", character)
+    def _labelItemSelected(self, picker: LabelPicker, label: Label):
+        picker.emit("label-selected", label)

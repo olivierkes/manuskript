@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
+from __future__ import annotations
 
 import os
 
@@ -10,9 +11,9 @@ from manuskript.data.abstractData import AbstractData, DataStatus
 from manuskript.data.goal import Goal
 from manuskript.data.labels import LabelHost, Label
 from manuskript.data.plots import Plots
-from manuskript.data.status import StatusHost
+from manuskript.data.status import StatusHost, Status
 from manuskript.data.template import Template, TemplateLevel
-from manuskript.data.unique_id import UniqueIDHost
+from manuskript.data.unique_id import UniqueIDHost, UniqueID
 from manuskript.io.mmdFile import MmdFile
 from manuskript.util import CounterKind, countText, safeInt, safeFilename
 from manuskript.data import Characters, Character
@@ -26,25 +27,23 @@ class OutlineState(Enum):
 
 
 class OutlineItem(AbstractData):
-    POV: Character
-
-    def __init__(self, path, outline):
+    def __init__(self, path, outline: Outline):
         AbstractData.__init__(self, path)
-        self.file = MmdFile(self.dataPath)
-        self.outline = outline
-        self.state = OutlineState.UNDEFINED
+        self.file: MmdFile = MmdFile(self.dataPath)
+        self.outline: Outline = outline
+        self.state: OutlineState = OutlineState.UNDEFINED
 
-        self.UID = None
-        self.title = ""
-        self.type = ""
-        self.summarySentence = None
-        self.summaryFull = None
-        self.POV = None
-        self.notes = None
-        self.label = None
-        self.status = None
-        self.compile = True
-        self.goal = None
+        self.UID: UniqueID = None
+        self.title: str = ""
+        self.type: str = ""
+        self.summarySentence: str = None
+        self.summaryFull: str = None
+        self.POV: Character = None
+        self.notes: str = None
+        self.label: str = None
+        self.status: Status = None
+        self.compile: bool = True
+        self.goal: int = None
 
     def changePath(self, path: str):
         AbstractData.changePath(self, path)
@@ -57,11 +56,11 @@ class OutlineItem(AbstractData):
 
         return None
 
-    def contains(self, item):
+    def contains(self, item: OutlineItem):
         return False
 
     @classmethod
-    def loadMetadata(cls, item, metadata: dict):
+    def loadMetadata(cls, item: OutlineItem, metadata: dict):
         ID = metadata.get("ID")
 
         if ID is None:
@@ -70,13 +69,13 @@ class OutlineItem(AbstractData):
         if (item.UID is None) or (item.UID.value != int(ID)):
             item.UID = item.outline.host.loadID(int(ID))
 
-        def loadCharacterByID(outline, characterID: str) -> Character:
+        def loadCharacterByID(outline: Outline, characterID: str) -> Character:
             return outline.characters.getPOVByID(safeInt(characterID, -1))
 
-        def loadLabelByID(outline, labelID: str) -> Label:
+        def loadLabelByID(outline: Outline, labelID: str) -> Label:
             return outline.labels.getLabelByID(safeInt(labelID, 0))
 
-        def loadStatusByID(outline, statusID: str) -> Label:
+        def loadStatusByID(outline: Outline, statusID: str) -> Status:
             return outline.statuses.getStatusByID(safeInt(statusID, 0))
 
         item.title = metadata.get("title", None)
@@ -91,7 +90,7 @@ class OutlineItem(AbstractData):
         item.goal = Goal.parse(metadata.get("setGoal", None))
 
     @classmethod
-    def saveMetadata(cls, item):
+    def saveMetadata(cls, item: OutlineItem):
         metadata = OrderedDict()
 
         if item.UID is None:
@@ -136,8 +135,10 @@ class OutlineItem(AbstractData):
 
 
 class OutlineText(OutlineItem):
+    text: str
+    cache: dict
 
-    def __init__(self, path, outline):
+    def __init__(self, path: str, outline: Outline):
         OutlineItem.__init__(self, path, outline)
 
         self.text = ""
@@ -185,8 +186,9 @@ class OutlineText(OutlineItem):
 
 
 class OutlineFolder(OutlineItem):
+    items: list[OutlineItem]
 
-    def __init__(self, path, outline):
+    def __init__(self, path: str, outline: Outline):
         OutlineItem.__init__(self, os.path.join(path, "folder.txt"), outline)
 
         self.folderPath = path
@@ -244,11 +246,11 @@ class OutlineFolder(OutlineItem):
     def __iter__(self):
         return self.items.__iter__()
 
-    def contains(self, item):
+    def contains(self, item: OutlineItem):
         return item in self.items
 
     @classmethod
-    def loadItems(cls, outline, folder, recursive: bool = True):
+    def loadItems(cls, outline: Outline, folder: OutlineFolder, recursive: bool = True):
         folder.items.clear()
 
         names = os.listdir(folder.folderPath)
@@ -325,11 +327,11 @@ class Outline(AbstractData):
 
     def __init__(self, path, characters: Characters, plots: Plots, labels: LabelHost, statuses: StatusHost):
         AbstractData.__init__(self, os.path.join(path, "outline"))
-        self.host = UniqueIDHost()
-        self.characters = characters
-        self.plots = plots
-        self.labels = labels
-        self.statuses = statuses
+        self.host: UniqueIDHost = UniqueIDHost()
+        self.characters: Characters = characters
+        self.plots: Plots = plots
+        self.labels: LabelHost = labels
+        self.statuses: StatusHost = statuses
         self.items = list()
         self.cache = dict()
 
