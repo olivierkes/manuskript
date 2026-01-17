@@ -34,3 +34,13 @@ class PandocConverter(AbstractConverter):
             return pypandoc.convert_text(text, outputFormat, format=inputFormat)
         else:
             return AbstractConverter.convert(text, inputFormat, outputFormat)
+
+    def convertFile(self, path: str, outputPath: str, inputFormat: str, outputFormat: str) -> bool:
+        if (self.supportsInput(inputFormat)) and (self.supportsOutput(outputFormat)):
+            try:
+                pypandoc.convert_file(path, outputFormat, format=inputFormat, outputfile=outputPath)
+                return True
+            except RuntimeError:
+                return False
+        else:
+            return AbstractConverter.convert(text, inputFormat, outputFormat)

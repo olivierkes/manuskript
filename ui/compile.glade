@@ -36,28 +36,6 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
       <!-- column-name icon -->
       <column type="gchararray"/>
     </columns>
-    <data>
-      <row>
-        <col id="0" translatable="yes">Markdown</col>
-        <col id="1" translatable="yes">text/markdown</col>
-        <col id="2" translatable="yes">text-x-generic</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">Folder</col>
-        <col id="1" translatable="yes">directory</col>
-        <col id="2" translatable="yes">folder</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">OPML</col>
-        <col id="1" translatable="yes">text/opml</col>
-        <col id="2" translatable="yes">text-x-generic-template</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">Mind Map</col>
-        <col id="1" translatable="yes">text/mind-map</col>
-        <col id="2" translatable="yes">text-x-generic-template</col>
-      </row>
-    </data>
   </object>
   <object class="HdyWindow" id="compile_window">
     <property name="can-focus">False</property>
@@ -153,7 +131,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkComboBox">
+                          <object class="GtkComboBox" id="file_format_combobox">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="model">file_format_store</property>
@@ -263,6 +241,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       <object class="GtkExpander">
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
+                        <property name="expanded">True</property>
                         <child>
                           <object class="GtkBox">
                             <property name="visible">True</property>
@@ -331,6 +310,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                     <property name="visible">True</property>
                                     <property name="can-focus">True</property>
                                     <property name="receives-default">False</property>
+                                    <property name="active">True</property>
                                     <property name="draw-indicator">True</property>
                                   </object>
                                   <packing>
@@ -344,6 +324,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                     <property name="visible">True</property>
                                     <property name="can-focus">True</property>
                                     <property name="receives-default">False</property>
+                                    <property name="active">True</property>
                                     <property name="draw-indicator">True</property>
                                   </object>
                                   <packing>
@@ -785,7 +766,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkButton">
+                          <object class="GtkButton" id="export_button">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <property name="receives-default">True</property>

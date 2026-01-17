@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
 
+import datetime
 from io import StringIO
+import tempfile
 
 from manuskript.converter import getConverter
 from manuskript.data import Project, OutlineItem, OutlineFolder, OutlineText
@@ -10,29 +12,36 @@ from manuskript.io import formatByExtension
 from manuskript.util import validString
 
 
-class HTMLExporter(AbstractExporter):
+class LaTeXExporter(AbstractExporter):
 
     def __init__(self):
-        AbstractExporter.__init__(self, "html")
+        AbstractExporter.__init__(self, "latex")
 
     def getName(self) -> str:
-        return "HTML"
+        return "LaTeX"
 
-    def getMimeType(self) -> str:
-        return "text/html"
+    def __commandFromLevel(self, level: int) -> str | None:
+        commands = [
+            "part",
+            "chapter",
+            "section",
+            "subsection",
+            "subsubsection",
+            "paragraph",
+            "subparagraph"
+        ]
 
-    def getIcon(self) -> str:
-        return "text-html"
+        if (level >= 0) and (level < len(commands)):
+            return commands[level]
+        else:
+            return None
 
     def __exportItem(self, outlineItem: OutlineItem, output: StringIO, level: int = 1):
         if type(outlineItem) is OutlineFolder:
-            output.write("<h")
-            output.write(str(level))
-            output.write(">")
-            output.write(validString(outlineItem.title))
-            output.write("</h")
-            output.write(str(level))
-            output.write(">\n")
+            sectionCommand = self.__commandFromLevel(level)
+
+            if sectionCommand:
+                output.write("\\" + sectionCommand + "{" + validString(outlineItem.title) + "}\n")
 
             for item in outlineItem:
                 self.__exportItem(item, output, level + 1)
@@ -51,25 +60,22 @@ class HTMLExporter(AbstractExporter):
 
     def export(self, project: Project) -> str | None:
         output = StringIO()
-        output.write("<!DOCTYPE html>\n")
-        output.write("<html>\n")
-        output.write("<head>\n")
 
-        output.write("<title>{0}</title>\n".format(validString(project.info.title)))
+        output.write("\\documentclass{book}\n\n")
+        output.write("\\title{" + validString(project.info.title) + "}\n")
+        output.write("\\date{" + datetime.datetime.now().strftime("%Y-%m-%d") + "}\n")
+        output.write("\\author{" + validString(project.info.author) + "}\n")
 
-        output.write("<meta charset=\"UTF-8\" />\n")
-        output.write("<meta name=\"description\" content=\"{0}\" />\n".format(validString(project.summary.sentence)))
-        output.write("<meta name=\"keywords\" content=\"{0}\" />\n".format(validString(project.info.genre)))
-        output.write("<meta name=\"author\" content=\"{0}\" />\n".format(validString(project.info.author)))
+        output.write("\n\\providecommand{\\tightlist}{}\n")
+        output.write("\n\\begin{document}\n\n")
 
-        output.write("</head>\n")
-        output.write("<body>\n")
+        output.write("\\maketitle\n")
+        output.write("\\tableofcontents\n\n")
 
         for outlineItem in project.outline:
             self.__exportItem(outlineItem, output, 1)
 
-        output.write("</body>\n")
-        output.write("</html>\n")
+        output.write("\n\\end{document}\n")
 
         text = output.getvalue()
         output.close()

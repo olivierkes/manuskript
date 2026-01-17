@@ -667,7 +667,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
             <property name="visible-child">paned</property>
             <child>
               <object class="GtkStackSidebar">
-                <property name="width-request">200</property>
+                <property name="width-request">150</property>
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="stack">main_stack</property>
