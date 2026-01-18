@@ -458,7 +458,22 @@ class EditorView:
         self.editorTextBuffer.delete_selection(True, True)
 
     def renameItem(self, name: str|None = None):
-        pass
+        model, tree_iter = self.outlineSelection.get_selected()
+
+        if tree_iter is None:
+            return
+
+        outlineItem = self.project.outline.getItemByID(model[tree_iter][0])
+
+        if outlineItem is None:
+            return
+
+        outlineItem.title = validString(name)
+
+        if tree_iter:
+            self.__updateOutlineItem(tree_iter, outlineItem)
+
+        self.loadOutlineData(outlineItem)
 
     def toggleTagFromSelection(self, tag_name: str):
         if not self.editorTextBuffer.get_has_selection():

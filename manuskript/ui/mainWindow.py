@@ -12,6 +12,7 @@ Handy.init()
 
 from manuskript.data import Project
 from manuskript.plugin import loadPlugins
+from manuskript.ui.dialog import RenameDialog
 from manuskript.ui.views import *
 
 from manuskript.ui.chooser import openFileDialog, saveFileDialog, FileFilter
@@ -205,7 +206,11 @@ class MainWindow:
         self.editorView.deleteSelection()
 
     def _renameAction(self, menuItem: Gtk.MenuItem):
-        self.editorView.renameItem()
+        def __renameEditorItem(name: str, editorView: EditorView):
+            editorView.renameItem(name)
+
+        dialog = RenameDialog(self, __renameEditorItem, self.editorView)
+        dialog.show()
 
     def _h1EditorAction(self, menuItem: Gtk.MenuItem):
         self.editorView.toggleTagFromSelection("h1")
