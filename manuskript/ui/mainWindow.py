@@ -23,7 +23,7 @@ from manuskript.ui.importWindow import ImportWindow
 from manuskript.ui.settingsWindow import SettingsWindow
 from manuskript.ui.startupWindow import StartupWindow
 from manuskript.ui.util import bindMenuItem, packViewIntoSlot, unpackFromSlot
-from manuskript.util import parseFilenameFromURL
+from manuskript.util import parseFilenameFromURL, validString
 
 
 class MainWindow:
@@ -41,6 +41,7 @@ class MainWindow:
         self.headerBar = builder.get_object("header_bar")
         self.leaflet = builder.get_object("leaflet")
         self.viewSwitcherBar = builder.get_object("view_switcher_bar")
+        self.mainStack = builder.get_object("main_stack")
 
         self.leaflet.bind_property("folded", self.viewSwitcherBar, "reveal", GObject.BindingFlags.SYNC_CREATE)
         self.leaflet.bind_property("folded", self.headerBar, "show-close-button", GObject.BindingFlags.SYNC_CREATE |
@@ -206,11 +207,30 @@ class MainWindow:
         self.editorView.deleteSelection()
 
     def _renameAction(self, menuItem: Gtk.MenuItem):
-        def __renameEditorItem(name: str, editorView: EditorView):
-            editorView.renameItem(name)
+        currentSlot = self.mainStack.get_visible_child()
 
-        dialog = RenameDialog(self, __renameEditorItem, self.editorView)
-        dialog.show()
+        if currentSlot == self.outlineSlot:
+            currentView = self.outlineView
+        elif currentSlot == self.editorSlot:
+            currentView = self.editorView
+        else:
+            currentView = None
+
+        if (currentView is None) or (currentView.outlineItem is None):
+            return
+
+        def __renameEditorItem(name: str, mainWindow: MainWindow):
+            currentSlot = mainWindow.mainStack.get_visible_child()
+
+            if currentSlot == mainWindow.editorSlot:
+                mainWindow.editorView.renameItem(name)
+                mainWindow.outlineView.refreshOutlineStore()
+            elif currentSlot == mainWindow.outlineSlot:
+                mainWindow.outlineView.renameItem(name)
+                mainWindow.editorView.refreshOutlineStore()
+
+        dialog = RenameDialog(self, callback=__renameEditorItem, closure=self)
+        dialog.show(text=currentView.outlineItem.title)
 
     def _h1EditorAction(self, menuItem: Gtk.MenuItem):
         self.editorView.toggleTagFromSelection("h1")

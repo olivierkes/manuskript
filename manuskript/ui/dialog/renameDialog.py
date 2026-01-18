@@ -41,3 +41,13 @@ class RenameDialog(AbstractDialog):
             return
 
         self.window.response(Gtk.ResponseType.OK)
+
+    def show(self, text: str|None = None):
+        AbstractDialog.show(self)
+
+        if (self.nameEntry is None) or (text is None):
+            return
+
+        self.nameEntry.set_placeholder_text(text)
+        self.nameEntry.set_text(text)
+        self.nameEntry.select_region(0, len(text))

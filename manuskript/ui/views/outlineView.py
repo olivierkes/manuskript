@@ -326,3 +326,22 @@ class OutlineView:
 
     def show(self):
         self.widget.show_all()
+
+    def renameItem(self, name: str|None = None):
+        model, tree_iter = self.outlineSelection.get_selected()
+
+        if tree_iter is None:
+            return
+
+        outlineItem = self.outline.getItemByID(model[tree_iter][0])
+
+        if outlineItem is None:
+            return
+
+        outlineItem.title = validString(name)
+        tree_iter = model.convert_iter_to_child_iter(tree_iter)
+
+        if tree_iter:
+            self.__updateOutlineItem(tree_iter, outlineItem)
+
+        self.loadOutlineData(outlineItem)
