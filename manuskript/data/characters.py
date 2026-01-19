@@ -70,7 +70,7 @@ class Character(AbstractData):
         self.UID = self.characters.host.loadID(int(ID))
         self.name = Character.loadAttribute(metadata, "Name", None)
         self.importance = Importance.fromRawString(importance)
-        self.POV = Character.loadAttribute(metadata, "POV", None)
+        self.POV: bool = Character.loadAttribute(metadata, "POV", None) == "True"
         self.motivation = Character.loadAttribute(metadata, "Motivation", None)
         self.goal = Character.loadAttribute(metadata, "Goal", None)
         self.conflict = Character.loadAttribute(metadata, "Conflict", None)

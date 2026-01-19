@@ -81,7 +81,7 @@ class OutlineView:
         self.labelPopover:LabelPicker = LabelPicker(self.outline.labels)
         self.labelPopover.connect("label-selected", self._labelPopoverItemSelected)
 
-        self.povPopover:CharacterPicker = CharacterPicker(self.outline.plots.characters)
+        self.povPopover:CharacterPicker = CharacterPicker(self.outline.plots.characters, pickPovOnly=True)
         self.povPopover.connect("character-selected", self._povPopoverItemSelected)
 
         self.goalBuffer = builder.get_object("goal")
@@ -171,6 +171,9 @@ class OutlineView:
         self.charactersStore.set_value(tree_iter, 2, pixbuf)
 
         for character in self.outline.plots.characters:
+            if not character.POV:
+                continue
+
             tree_iter = self.charactersStore.append()
 
             if tree_iter is None:
@@ -380,6 +383,16 @@ class OutlineView:
     def _filterOutlineInsertedText(self, buffer: Gtk.EntryBuffer, position: int, chars: str, n_chars: int):
         self.__filterOutlineChanged(buffer)
 
+    def __updateGoalValue(self, model, path, treeiter, userdata):
+        id = model[treeiter][0]
+
+        if userdata["outline_id"] == id:
+            model[treeiter][6] = userdata["goal"]
+            model[treeiter][7] = userdata["progress"]
+            return True
+        
+        return False
+
     def __goalChanged(self, buffer: Gtk.EntryBuffer):
         if self.outlineItem is None:
             return
@@ -399,11 +412,13 @@ class OutlineView:
         elif goal > 0:
             progress = 100
 
-        for row in self.outlineStore:
-            if row[0] == outline_id:
-                row[6] = goal
-                row[7] = progress
-                break
+        userdata = {
+            "outline_id": outline_id,
+            "goal": goal,
+            "progress": progress
+        }
+
+        self.outlineStore.foreach(self.__updateGoalValue, userdata)
 
     def _goalDeletedText(self, buffer: Gtk.EntryBuffer, position: int, n_chars: int):
         self.__goalChanged(buffer)

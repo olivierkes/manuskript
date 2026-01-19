@@ -8,7 +8,7 @@ from gi.repository import GLib, GObject, Gtk, Handy, WebKit2
 from manuskript.ui.abstractDialog import AbstractDialog
 
 from manuskript.converter import getConverter
-from manuskript.exporter import getExporters, getExporterByName
+from manuskript.exporter import getExporters, getExporterByName, AbstractExporter
 from manuskript.data import Project, OutlineItem, OutlineFolder, OutlineText
 from manuskript.io import BinaryFile
 from manuskript.util import validString

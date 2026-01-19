@@ -10,8 +10,9 @@ class CharacterPicker(AbstractGridPicker):
         "character-selected": (GObject.SignalFlags.RUN_FIRST, None, (object,))
     }
 
-    def __init__(self, characters: Characters, *, button=None):
+    def __init__(self, characters: Characters, pickPovOnly: bool, *, button=None):
         self.characters: Characters = characters
+        self.pickPovOnly: bool = pickPovOnly
         self.excludedCharactersUIDs: set = set()
 
         super().__init__(button=button, filters=Importance, enableSearch=True, columns=3)
@@ -25,7 +26,7 @@ class CharacterPicker(AbstractGridPicker):
         super().show()
 
     def shouldIncludeItem(self, character: Character) -> bool:
-        return character.UID.value not in self.excludedCharactersUIDs
+        return (not self.pickPovOnly or character.POV) and character.UID.value not in self.excludedCharactersUIDs
 
     def getItems(self) -> Characters:
         return self.characters
