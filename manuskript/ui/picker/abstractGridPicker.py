@@ -1,69 +1,54 @@
 from gi.repository import Gtk, GObject
-
+from typing import Iterable, Optional, Any
 
 class AbstractGridPicker(Gtk.Box):
     __gsignals__ = {
         "item-selected": (GObject.SignalFlags.RUN_FIRST, None, (object,))
     }
 
-    def __init__(self, *, button=None, enableSearch=True, filters=None, columns=3):
+    def __init__(self, *, button: Gtk.Button=None, enableSearch: bool=True, filters: Optional[Iterable]=None, columns: int=3):
         super().__init__()
 
-        self.columns = columns
-        self.filters = filters
+        self.columns: int = columns
+        self.filters: Optional[Iterable] = filters
         self.currentFilter = None
-        self.searchText = ""
+        self.searchText: str = ""
 
-        self.store = Gtk.TreeStore(GObject.TYPE_PYOBJECT, GObject.TYPE_PYOBJECT)
-        self.filterModel = self.store.filter_new()
+        self.store: Gtk.TreeStore = Gtk.TreeStore(GObject.TYPE_PYOBJECT, GObject.TYPE_PYOBJECT)
+        self.filterModel: Gtk.TreeModelFilter = self.store.filter_new()
         self.filterModel.set_visible_func(self._filterFunc)
 
-        box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
-        box.set_border_width(6)
+        builder: Gtk.Builder = Gtk.Builder()
+        builder.add_from_file("ui/gridpicker/picker.glade")
 
-        if enableSearch:
-            self.search_entry = Gtk.SearchEntry()
-            self.search_entry.connect("search-changed", self._searchEntryChanged)
-            box.pack_start(self.search_entry, False, False, 0)
-
-        if filters:
-            self.cssProvider = Gtk.CssProvider()
-            self.cssProvider.load_from_data(b"""
-                .highlighted-button {
-                    border: 2px solid #000000;
-                }
-            """)
-
-            Gtk.StyleContext.add_provider_for_screen(
-                self.get_screen(), self.cssProvider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
-            )
-            box.pack_start(self._buildFilterButtons(), False, False, 0)            
-
-        scroller = Gtk.ScrolledWindow()
-        scroller.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
-        scroller.set_min_content_height(300)
-
-        self.grid = Gtk.Grid(column_spacing=12, row_spacing=6)
-        scroller.add(self.grid)
-
-        box.pack_start(scroller, True, True, 0)
+        self.popover = builder.get_object("popover")
+        self.grid = builder.get_object("grid")
+        self.search_entry = builder.get_object("search_entry")
+        self.filter_box = builder.get_object("filter_box")
 
         if button:
-            self.popover = Gtk.Popover.new(button)
+            self.popover.set_relative_to(button)
+
+        if enableSearch:
+            self.search_entry.connect("search-changed", self._searchEntryChanged)
         else:
-            self.popover = Gtk.Popover()
-        self.popover.add(box)
+            self.serach_entry.hide()
+
+        if filters:
+            self.setupFilters()
+        else:
+            self.filter_box.hide()
 
     def getItems(self):
         raise NotImplementedError
 
-    def getItemLabel(self, item) -> str:
+    def getItemLabel(self, item: Any) -> str:
         raise NotImplementedError
 
-    def getItemPixbuf(self, item):
+    def getItemPixbuf(self, item: Any):
         raise NotImplementedError
 
-    def getItemFilterKey(self, item):
+    def getItemFilterKey(self, item: Any):
         return None
 
     def _filterFunc(self, model, iter_, data=None):
@@ -77,12 +62,17 @@ class AbstractGridPicker(Gtk.Box):
 
         return True
 
-    def _searchEntryChanged(self, entry):
+    def _searchEntryChanged(self, entry: Gtk.Entry):
         self.searchText = entry.get_text()
         self.refresh()
 
-    def _buildFilterButtons(self):
-        box = Gtk.Box(spacing=6)
+    def setupFilters(self):
+        self.cssProvider = Gtk.CssProvider()
+        self.cssProvider.load_from_data(b"""
+            .highlighted-button {
+                border: 2px solid #000000;
+            }
+        """)
 
         self.lastClickedButton = None
 
@@ -96,6 +86,12 @@ class AbstractGridPicker(Gtk.Box):
             else:
                 buttons += self.filters
 
+        Gtk.StyleContext.add_provider_for_screen(
+            self.get_screen(),
+            self.cssProvider,
+            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+        )
+
         for label, value in buttons:
             btn = Gtk.Button(label=label)
 
@@ -103,16 +99,14 @@ class AbstractGridPicker(Gtk.Box):
                 self.highlight(btn)
 
             btn.connect("clicked", self._filterButtonClicked, value)
-            box.pack_start(btn, False, False, 0)
+            self.filter_box.pack_start(btn, False, False, 0)
 
-        return box
-
-    def _filterButtonClicked(self, button, value):
+    def _filterButtonClicked(self, button: Gtk.Button, value: Any):
         self.highlight(button)
         self.currentFilter = value
         self.refresh()
 
-    def highlight(self, button):
+    def highlight(self, button: Gtk.Button):
         if self.lastClickedButton:
             self.lastClickedButton.get_style_context().remove_class("highlighted-button")
 
@@ -145,7 +139,7 @@ class AbstractGridPicker(Gtk.Box):
 
         self.grid.show_all()
 
-    def buildItemButton(self, item):
+    def buildItemButton(self, item: Any):
         btn = Gtk.Button()
         box = Gtk.Box(spacing=6)
 
@@ -160,17 +154,17 @@ class AbstractGridPicker(Gtk.Box):
 
         return btn
 
-    def _itemButtonClicked(self, button, item):
+    def _itemButtonClicked(self, button: Gtk.Button, item: Any):
         self.emit("item-selected", item)
         self.popover.hide()
 
-    def shouldIncludeItem(self, item):
+    def shouldIncludeItem(self, item: Any):
         return True
     
-    def set_relative_to(self, widget):
+    def set_relative_to(self, widget: Gtk.Widget):
         self.popover.set_relative_to(widget)
 
-    def set_pointing_to(self, widget):
+    def set_pointing_to(self, widget: Gtk.Widget):
         self.popover.set_pointing_to(widget)
 
     def set_position(self, position: Gtk.PositionType):
