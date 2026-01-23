@@ -3,7 +3,7 @@
 
 from gi.repository import Gtk, Gdk
 
-from manuskript.data import World, WorldItem, DropPosition
+from manuskript.data import World, WorldItem
 from manuskript.util import validString, invalidString, validInt, invalidInt
 
 class WorldView:
@@ -102,35 +102,54 @@ class WorldView:
         treeview.stop_emission("drag-data-received")
 
         model = treeview.get_model()
-        
         store = model.get_model()
 
-        data = selection.get_text()
-        dragged_path = Gtk.TreePath.new_from_string(data)
-        
+        dragged_path = Gtk.TreePath.new_from_string(selection.get_text())
         filtered_iter = model.get_iter(dragged_path)
         original_iter = model.convert_iter_to_child_iter(filtered_iter)
 
         dragged_item_uid = store.get_value(original_iter, 0) 
+        dragged_item = self.world.getItemByID(dragged_item_uid)
 
         drop_info = treeview.get_dest_row_at_pos(x, y)
-        
-        if drop_info is None:
-            parent_iter = None
-            position = -1
-            target_item_uid = None
-        else:
-            path, pos = drop_info
-            parent_iter = store.get_iter(path)
-            position = pos 
-            target_item_uid = store.get_value(parent_iter, 0)
 
-        self.world.moveItem(dragged_item_uid, target_item_uid, DropPosition.fromGtkEnum(position))
+        parent_item = None
+        index = None
 
+        if drop_info:
+            path, position = drop_info
+            target_iter = store.get_iter(path)
+            target_uid = store.get_value(target_iter, 0)
+            target_item = self.world.getItemByID(target_uid)
+
+            parent_item, index = self._computeDropTarget(target_item, position)
+
+        self.world.moveItem(dragged_item, parent_item, index)
         self.refreshWorldStore()
-
         return True
     
+    def _computeDropTarget(self, target_item: WorldItem, position: Gtk.TreeViewDropPosition):
+        if position in (
+            Gtk.TreeViewDropPosition.INTO_OR_AFTER,
+            Gtk.TreeViewDropPosition.INTO_OR_BEFORE
+        ):
+            parent = target_item
+            index = None
+            return parent, index
+
+        parent = self.world.findParent(target_item)
+
+        if parent:
+            index = parent.children.index(target_item)
+            if position == Gtk.TreeViewDropPosition.AFTER:
+                index += 1
+            return parent, index
+
+        index = self.world.top.index(target_item)
+        if position == Gtk.TreeViewDropPosition.AFTER:
+            index += 1
+        return None, index
+
     def _worldTreeViewDragDrop(self, treeview: Gtk.TreeView, drag_context: Gdk.DragContext, x: int, y: int, etime: int):
         treeview.stop_emission("drag-drop")
         treeview.drag_get_data(drag_context, drag_context.list_targets()[-1], etime)

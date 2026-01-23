@@ -3,7 +3,6 @@
 from __future__ import annotations
 import os
 
-from manuskript.data.dropPosition import DropPosition
 from manuskript.data.abstractData import AbstractData
 from manuskript.data.unique_id import UniqueIDHost, UniqueID
 from manuskript.io.opmlFile import OpmlFile, OpmlOutlineItem
@@ -24,27 +23,6 @@ class WorldItem:
         self.passion: str = None
         self.conflict: str = None
         self.children: list[WorldItem] = list()
-        self.parent: WorldItem = None
-
-    def removeChild(self, item: WorldItem):
-        item.parent = None
-        self.children.remove(item)
-
-    def addChild(self, item: WorldItem, index: int=None):
-        item.parent = self
-
-        if not index:
-            self.children.append(item)
-        else:
-            self.children.insert(index, item)
-
-    def contains(self, item: WorldItem):
-        if self == item:
-            return True
-        for child in self.children:
-            if child.contains(item):
-                return True
-        return False
 
     def remove(self):
         for child in self.children:
@@ -141,10 +119,9 @@ class World(AbstractData):
         item = WorldItem(self, self.host.newID(), name)
 
         if parent is None:
-            item.parent = None
             self.top.append(item)
         else:
-            parent.addChild(item)
+            parent.children.append(item)
 
         self.items[item.UID.value] = item
         return item
@@ -165,18 +142,27 @@ class World(AbstractData):
         self.host.removeID(item.UID)
         self.items.pop(item.UID.value)
 
-    def moveItem(self, item: WorldItem, parent: WorldItem = None):
-        for __item in self.items.values():
-            if item in __item.children:
-                __item.children.remove(item)
+    def moveItem(self, item: WorldItem, parent: WorldItem = None, index: int | None = None):
+        if parent and self.contains(item, parent):
+            return
+                
+        __parent = self.findParent(item)
 
-        if item in self.top:
+        if __parent:
+            __parent.children.remove(item)
+        else:
             self.top.remove(item)
 
         if parent is None:
-            self.top.append(item)
+            if index is None:
+                self.top.append(item)
+            else:
+                self.top.insert(index, item)
         else:
-            parent.children.append(item)
+            if index is None:
+                parent.children.append(item)
+            else:
+                parent.children.insert(index, item)
 
     def getItemByID(self, ID: int) -> WorldItem:
         return self.items.get(ID, None)
@@ -203,7 +189,7 @@ class World(AbstractData):
             if childItem is None:
                 continue
 
-            item.addChild(childItem)
+            item.children.append(childItem)
 
         return item
 
@@ -275,44 +261,28 @@ class World(AbstractData):
             for node in root["children"]:
                 self._insertTemplate(node)
 
-    def moveItem(self, sourceID: int, targetId: int, position: DropPosition) -> bool:
-
-        sourceItem=self.getItemByID(sourceID)
-        if not sourceItem:
+    def contains(self, source: WorldItem, target: WorldItem | None) -> bool:
+        if target is None:
             return False
 
-        targetItem = self.getItemByID(targetId) if targetId else None
+        stack = list(source.children)
+        while stack:
+            node = stack.pop()
+            if node is target:
+                return True
+            
+            stack.extend(node.children)
+        return False
+    
+    def findParent(self, item: WorldItem) -> WorldItem | None:
+        stack = list(self.top)
 
-        if sourceItem.contains(targetItem):
-            return True
-        if sourceItem in self.top:
-            self.top.remove(sourceItem)
-        elif sourceItem in targetItem.children if targetItem else []:
-            self._printTree()
+        while stack:
+            current = stack.pop()
+            if item in current.children:
+                return current
 
-            return True
-        else:
-            parentItem=sourceItem.parent
-            parentItem.removeChild(sourceItem)
-
-        if targetItem is None:
-            self.top.append(sourceItem)
-        else:
-            if position == DropPosition.INTO_OR_AFTER or position == DropPosition.INTO_OR_BEFORE:
-                targetItem.addChild(sourceItem)
-            elif position == DropPosition.BEFORE or position == DropPosition.AFTER:
-                parentItem = targetItem.parent
-                if parentItem:
-                    index = parentItem.children.index(targetItem)
-                    if position == DropPosition.BEFORE:
-                        parentItem.addChild(sourceItem, index)
-                    else:
-                        parentItem.addChild(sourceItem, index+1)
-                else:
-                    index = self.top.index(targetItem)
-                    if position == DropPosition.BEFORE:
-                        self.top.insert(index, sourceItem)
-                    else:
-                        self.top.insert(index+1, sourceItem)
-
-        return True
+            stack.extend(current.children)
+        return None
+    
+    
