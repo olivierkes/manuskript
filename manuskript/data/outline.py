@@ -6,6 +6,7 @@ import os
 
 from collections import OrderedDict
 from enum import Enum, unique
+from typing import Optional
 
 from manuskript.data.abstractData import AbstractData, DataStatus
 from manuskript.data.goal import Goal
@@ -36,14 +37,14 @@ class OutlineItem(AbstractData):
         self.UID: UniqueID = None
         self.title: str = ""
         self.type: str = ""
-        self.summarySentence: str = None
-        self.summaryFull: str = None
-        self.POV: Character = None
-        self.notes: str = None
-        self.label: str = None
-        self.status: Status = None
+        self.summarySentence: Optional[str] = None
+        self.summaryFull: Optional[str] = None
+        self.POV: Optional[Character] = None
+        self.notes: Optional[str] = None
+        self.label: Optional[str] = None
+        self.status: Optional[Status] = None
         self.compile: bool = True
-        self.goal: int = None
+        self.goal: Optional[int] = None
 
     def changePath(self, path: str):
         AbstractData.changePath(self, path)
@@ -141,10 +142,9 @@ class OutlineText(OutlineItem):
     def __init__(self, path: str, outline: Outline):
         OutlineItem.__init__(self, path, outline)
 
-        self.text = ""
-        self.cache = dict()
-
-        self.type = "md"
+        self.text: str = ""
+        self.cache: dict = dict()
+        self.type: str = "md"
 
     def textCount(self, counterKind: CounterKind = None) -> int:
         if counterKind is None:
@@ -191,10 +191,9 @@ class OutlineFolder(OutlineItem):
     def __init__(self, path: str, outline: Outline):
         OutlineItem.__init__(self, os.path.join(path, "folder.txt"), outline)
 
-        self.folderPath = path
-        self.items = list()
-
-        self.type = "folder"
+        self.folderPath: str = path
+        self.items: list = list()
+        self.type: str = "folder"
 
     def changePath(self, path: str):
         OutlineItem.changePath(self, os.path.join(path, "folder.txt"))
@@ -332,8 +331,8 @@ class Outline(AbstractData):
         self.plots: Plots = plots
         self.labels: LabelHost = labels
         self.statuses: StatusHost = statuses
-        self.items = list()
-        self.cache = dict()
+        self.items: list = list()
+        self.cache: dict = dict()
 
     def changePath(self, path: str):
         AbstractData.changePath(self, os.path.join(path, "outline"))

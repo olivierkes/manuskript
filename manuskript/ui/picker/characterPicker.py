@@ -1,9 +1,15 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+from gi.repository import GObject, GdkPixbuf
+
 from manuskript.data.importance import Importance
 from manuskript.ui.util import pixbufFromColor
 from manuskript.ui.picker.abstractGridPicker import AbstractGridPicker
 from manuskript.data import Character, Characters
-from gi.repository import GObject, GdkPixbuf
+
 from typing import Iterable, Optional
+
 
 class CharacterPicker(AbstractGridPicker):
     __gsignals__ = {

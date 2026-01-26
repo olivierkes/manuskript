@@ -7,7 +7,7 @@ from manuskript.data.abstractData import AbstractData
 from manuskript.data.unique_id import UniqueIDHost, UniqueID
 from manuskript.io.opmlFile import OpmlFile, OpmlOutlineItem
 
-from typing import Iterator
+from typing import Iterator, Optional
 
 class WorldItem:
 
@@ -19,9 +19,9 @@ class WorldItem:
 
         self.UID: UniqueID = UID
         self.name: str = name
-        self.description: str = None
-        self.passion: str = None
-        self.conflict: str = None
+        self.description: Optional[str] = None
+        self.passion: Optional[str] = None
+        self.conflict: Optional[str] = None
         self.children: list[WorldItem] = list()
 
     def remove(self):
@@ -101,11 +101,6 @@ class World(AbstractData):
 
     def __init__(self, path: str):
         AbstractData.__init__(self, os.path.join(path, "world.opml"))
-
-        host: UniqueIDHost
-        items: dict[int, WorldItem]
-        top = list[WorldItem]
-
         self.file: OpmlFile = OpmlFile(self.dataPath)
         self.host = UniqueIDHost()
         self.items: dict[int, WorldItem] = dict()

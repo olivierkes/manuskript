@@ -35,6 +35,10 @@ def invalidInt(valid: int) -> int:
     return None if valid == 0 else valid
 
 
+def validBool(invalid) -> bool:
+    return True if str(invalid) != str(False) else False
+
+
 def safeFilename(filename: str, extension: str = None) -> str:
     if extension is not None:
         filename = "%s.%s" % (filename, extension)

@@ -1,8 +1,14 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 from __future__ import annotations
+
+from gi.repository import GObject
+
 from manuskript.data.labels import Label, LabelHost
 from manuskript.ui.util import pixbufFromColor
 from manuskript.ui.picker.abstractGridPicker import AbstractGridPicker
-from gi.repository import GObject
+
 
 class LabelPicker(AbstractGridPicker):
     __gsignals__ = {

@@ -1,5 +1,10 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 from gi.repository import Gtk, GObject
+
 from typing import Iterable, Optional, Any
+
 
 class AbstractGridPicker(Gtk.Box):
     __gsignals__ = {
@@ -23,21 +28,21 @@ class AbstractGridPicker(Gtk.Box):
 
         self.popover = builder.get_object("popover")
         self.grid = builder.get_object("grid")
-        self.search_entry = builder.get_object("search_entry")
-        self.filter_box = builder.get_object("filter_box")
+        self.searchEntry = builder.get_object("search_entry")
+        self.filterBox = builder.get_object("filter_box")
 
         if button:
             self.popover.set_relative_to(button)
 
         if enableSearch:
-            self.search_entry.connect("search-changed", self._searchEntryChanged)
+            self.searchEntry.connect("search-changed", self._searchEntryChanged)
         else:
-            self.serach_entry.hide()
+            self.searchEntry.hide()
 
         if filters:
             self.setupFilters()
         else:
-            self.filter_box.hide()
+            self.filterBox.hide()
 
     def getItems(self):
         raise NotImplementedError
@@ -99,7 +104,7 @@ class AbstractGridPicker(Gtk.Box):
                 self.highlight(btn)
 
             btn.connect("clicked", self._filterButtonClicked, value)
-            self.filter_box.pack_start(btn, False, False, 0)
+            self.filterBox.pack_start(btn, False, False, 0)
 
     def _filterButtonClicked(self, button: Gtk.Button, value: Any):
         self.highlight(button)
