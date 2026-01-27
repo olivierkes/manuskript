@@ -1,22 +1,18 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import gi
+from gi.repository import GObject, Gtk, Gdk
 
-gi.require_version("Gtk", "3.0")
-from gi.repository import GObject, Gtk
-
-from manuskript.data import Outline, OutlineFolder, OutlineText, OutlineItem, OutlineState, Plots, PlotLine, Characters, Character, Importance, Goal
+from manuskript.data import Outline, OutlineFolder, OutlineText, OutlineItem, OutlineState, Plots, PlotLine, Characters, Character, Importance, Goal, Color
 from manuskript.ui.util import rgbaFromColor, pixbufFromColor
 from manuskript.util import validString, invalidString, validInt, invalidInt, CounterKind, countText
-
+from manuskript.ui.picker import LabelPicker, CharacterPicker, AbstractGridPicker
 
 class OutlineView:
-
     def __init__(self, outline: Outline):
-        self.outline = outline
-        self.outlineItem = None
-        self.outlineCompletion = []
+        self.outline: Outline = outline
+        self.outlineItem: OutlineItem = None
+        self.outlineCompletion: list = []
 
         builder = Gtk.Builder()
         builder.add_from_file("ui/outline.glade")
@@ -76,6 +72,18 @@ class OutlineView:
 
         self.outlineSelection.connect("changed", self._outlineSelectionChanged)
 
+        self.outlineTreeview = builder.get_object("outline_treeview")
+        self.outlineTreeview.connect("button-press-event", self._outlineTreeviewClicked)
+
+        self.outlineTitle = builder.get_object("outline_title")
+        self.outlineTitle.connect("edited", self._outlineTitleEdited)
+
+        self.labelPopover:LabelPicker = LabelPicker(self.outline.labels)
+        self.labelPopover.connect("label-selected", self._labelPopoverItemSelected)
+
+        self.povPopover:CharacterPicker = CharacterPicker(self.outline.plots.characters, pickPovOnly=True)
+        self.povPopover.connect("character-selected", self._povPopoverItemSelected)
+
         self.goalBuffer = builder.get_object("goal")
         self.oneLineSummaryBuffer = builder.get_object("one_line_summary")
         self.fewSentencesSummaryBuffer = builder.get_object("few_sentences_summary")
@@ -83,12 +91,37 @@ class OutlineView:
         self.goalBuffer.connect("deleted-text", self._goalDeletedText)
         self.goalBuffer.connect("inserted-text", self._goalInsertedText)
 
+        self.povCombo = builder.get_object("pov_combo")
+        self.povCombo.connect("changed", self._povChanged)
+
+        self.statusCombo = builder.get_object("outline_status")
+        self.statusCombo.connect("changed", self._statusChanged)
+
         self.oneLineSummaryBuffer.connect("deleted-text", self._oneLineSummaryDeletedText)
         self.oneLineSummaryBuffer.connect("inserted-text", self._oneLineSummaryInsertedText)
 
         self.fewSentencesSummaryBuffer.connect("changed", self._fewSentencesSummaryChanged)
 
         self.unloadOutlineData()
+
+    def populateLabelList(self):
+        for pixbuf, text in self.labelStore:
+            row = Gtk.ListBoxRow()
+            box = Gtk.Box(spacing=6)
+
+            image = Gtk.Image.new_from_pixbuf(pixbuf)
+            label = Gtk.Label(label=text, xalign=0)
+
+            box.pack_start(image, False, False, 0)
+            box.pack_start(label, True, True, 0)
+
+            row.add(box)
+            row.pixbuf = pixbuf
+            row.text = text
+
+            self.labelListbox.add(row)
+
+        self.labelListbox.show_all()
 
     def refreshLabelStore(self):
         self.labelStore.clear()
@@ -129,7 +162,18 @@ class OutlineView:
     def refreshCharactersStore(self):
         self.charactersStore.clear()
 
+        tree_iter = self.charactersStore.append()
+        self.charactersStore.set_value(tree_iter, 0, -1)
+        self.charactersStore.set_value(tree_iter, 1, validString("None"))
+
+        theme = Gtk.IconTheme.get_default()
+        pixbuf = theme.load_icon("dialog-error", 20, 0)
+        self.charactersStore.set_value(tree_iter, 2, pixbuf)
+
         for character in self.outline.plots.characters:
+            if not character.POV:
+                continue
+
             tree_iter = self.charactersStore.append()
 
             if tree_iter is None:
@@ -138,6 +182,22 @@ class OutlineView:
             self.charactersStore.set_value(tree_iter, 0, character.UID.value)
             self.charactersStore.set_value(tree_iter, 1, validString(character.name))
             self.charactersStore.set_value(tree_iter, 2, pixbufFromColor(character.color))
+
+    def _findOutlineIterById(self, store, uid, parent=None):
+        it = store.iter_children(parent)
+        while it:
+            if store[it][0] == uid.value:
+                return it
+            child = self._findOutlineIterById(store, uid, it)
+            if child:
+                return child
+            it = store.iter_next(it)
+        return None
+
+    def __updateOutlineItemInStore(self, outlineItem: OutlineItem):
+        iter = self._findOutlineIterById(self.outlineStore, outlineItem.UID)
+        if iter:
+            self.__updateOutlineItem(iter, outlineItem)
 
     def __updateOutlineItem(self, tree_iter, outlineItem: OutlineItem):
         if type(outlineItem) is OutlineFolder:
@@ -165,8 +225,30 @@ class OutlineView:
         self.outlineStore.set_value(tree_iter, 6, goal)
         self.outlineStore.set_value(tree_iter, 7, progress)
         self.outlineStore.set_value(tree_iter, 8, icon)
+        self.outlineStore.set_value(tree_iter, 9, self._getLabelPixbuf(validString(outlineItem.label)))
+
+        self.outlineStore.set_value(tree_iter, 10, "")
+        self.outlineStore.set_value(tree_iter, 11, None)
+
+        if outlineItem.POV:
+            povName = outlineItem.POV.name
+            povPixbuf = pixbufFromColor(outlineItem.POV.color)
+            if povName!=None:
+                self.outlineStore.set_value(tree_iter, 10, povName)
+                self.outlineStore.set_value(tree_iter, 11, povPixbuf)
+
+    def _getLabelPixbuf(self, labelName: str):
+        if labelName=="":
+            return None
+
+        for row in self.labelStore:
+            if row[0] == labelName:
+                return row[1]
+            
+        return None
 
     def __completeOutlineItem(self):
+        outlineItem: OutlineItem
         (tree_iter, outlineItem) = self.outlineCompletion.pop(0)
 
         if outlineItem.state != OutlineState.COMPLETE:
@@ -210,12 +292,46 @@ class OutlineView:
             if other != selection:
                 other.unselect_all()
 
+    def setPovComboById(self, character_id: int):
+        store = self.charactersStore
+
+        it = store.get_iter_first()
+        while it:
+            if store[it][0] == character_id:
+                self.povCombo.set_active_iter(it)
+                return
+            it = store.iter_next(it)
+
+        self.povCombo.set_active(-1)
+
+    def _povChanged(self, combo):
+        if not self.outlineItem:
+            return
+        
+        model = combo.get_model()
+        tree_iter = combo.get_active_iter()
+        
+        if tree_iter is None:
+            self.current_character = None
+            return
+        
+        povId = model[tree_iter][0] 
+        if povId!=-1:
+            self.outlineItem.POV = self.outline.characters.getPOVByID(validInt(povId))
+        else:
+            self.outlineItem.POV = None
+
+        self.__updateOutlineItemInStore(self.outlineItem)
+
+
     def loadOutlineData(self, outlineItem: OutlineItem):
         self.outlineItem = None
 
         self.goalBuffer.set_text(validString(outlineItem.goal), -1)
         self.oneLineSummaryBuffer.set_text(validString(outlineItem.summarySentence), -1)
         self.fewSentencesSummaryBuffer.set_text(validString(outlineItem.summaryFull), -1)
+        if outlineItem.POV:
+            self.setPovComboById(validInt(outlineItem.POV.UID.value))
 
         self.outlineItem = outlineItem
 
@@ -267,6 +383,16 @@ class OutlineView:
     def _filterOutlineInsertedText(self, buffer: Gtk.EntryBuffer, position: int, chars: str, n_chars: int):
         self.__filterOutlineChanged(buffer)
 
+    def __updateGoalValue(self, model, path, treeiter, userdata):
+        id = model[treeiter][0]
+
+        if userdata["outline_id"] == id:
+            model[treeiter][6] = userdata["goal"]
+            model[treeiter][7] = userdata["progress"]
+            return True
+        
+        return False
+
     def __goalChanged(self, buffer: Gtk.EntryBuffer):
         if self.outlineItem is None:
             return
@@ -286,11 +412,13 @@ class OutlineView:
         elif goal > 0:
             progress = 100
 
-        for row in self.outlineStore:
-            if row[0] == outline_id:
-                row[6] = goal
-                row[7] = progress
-                break
+        userdata = {
+            "outline_id": outline_id,
+            "goal": goal,
+            "progress": progress
+        }
+
+        self.outlineStore.foreach(self.__updateGoalValue, userdata)
 
     def _goalDeletedText(self, buffer: Gtk.EntryBuffer, position: int, n_chars: int):
         self.__goalChanged(buffer)
@@ -323,6 +451,84 @@ class OutlineView:
         text = buffer.get_text(start_iter, end_iter, False)
 
         self.outlineItem.summaryFull = invalidString(text)
+
+    def _outlineTreeviewClicked(self, treeview: Gtk.TreeView, event):
+        if event.button != 1 or event.type != Gdk.EventType._2BUTTON_PRESS:
+            return False
+                
+        result = treeview.get_path_at_pos(int(event.x), int(event.y))
+        if not result:
+            return False
+        
+        path, column, cell_x, cell_y = result
+
+        if column.get_title() == "Label":
+            self.showPopoverOverTreeview(treeview, path, event, column, self.labelPopover)
+            return True
+        
+        if column.get_title() == "POV":
+            self.showPopoverOverTreeview(treeview, path, event, column, self.povPopover)
+
+        return False
+    
+    def showPopoverOverTreeview(self, treeview: Gtk.TreeView, path: Gtk.TreePath, event: Gdk.Event, column: Gtk.TreeViewColumn, popover: AbstractGridPicker):
+        self.current_path = path
+
+        popover.set_relative_to(treeview)
+
+        cellRect = treeview.get_cell_area(path, column)
+
+        x, y = treeview.convert_bin_window_to_widget_coords(
+            cellRect.x,
+            cellRect.y
+        )
+
+        cellRect.x = x
+        cellRect.y = y
+
+        popover.set_pointing_to(cellRect)
+        popover.set_position(Gtk.PositionType.BOTTOM)
+
+        popover.show()
+
+    def _labelPopoverItemSelected(self, labelPicker: LabelPicker, label: str):
+        labelText=validString(label)
+
+        model = self.outlineTreeview.get_model()
+        iter_ = model.get_iter(self.current_path)
+        model.set_value(iter_, 2, labelText)
+        model.set_value(iter_, 9, self._getLabelPixbuf(labelText))
+        
+        item = self.outline.getItemByID(model.get_value(iter_, 0))
+
+        labelObject = self.outline.labels.getLabel(labelText)
+        item.label = labelObject
+
+    def _povPopoverItemSelected(self, povPicker: CharacterPicker, character: Character):
+        model = self.outlineTreeview.get_model()
+        iter_ = model.get_iter(self.current_path)
+        model.set_value(iter_, 10, character.name)
+        model.set_value(iter_, 11, pixbufFromColor(character.color))
+        
+        item = self.outline.getItemByID(model.get_value(iter_, 0))
+        item.POV = character
+        self.loadOutlineData(item)
+
+    def _outlineTitleEdited(self, renderer: Gtk.CellRenderer, path: Gtk.TreePath, newText: str):
+        self.outlineStore[path][1] = newText
+        self.outlineItem.title = newText
+
+    def _statusChanged(self, cell, path, new_iter):
+        comboModel = cell.get_property("model")
+        newStatus = comboModel[new_iter][0]
+
+        for status in self.outline.statuses:
+            if status.name == newStatus:
+                self.outlineItem.status = status
+                
+        self.__updateOutlineItemInStore(self.outlineItem)
+        
+        return True
 
     def show(self):
         self.widget.show_all()

@@ -1,22 +1,19 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import gi
-
-gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
 
-from manuskript.data import Plots, PlotLine, PlotStep, Importance, LinkAction
+from manuskript.data import Plots, PlotLine, PlotStep, Importance, LinkAction, Characters, Character, UniqueID
 from manuskript.ui.util import rgbaFromColor, pixbufFromColor
 from manuskript.util import validString, invalidString, validInt, invalidInt
-
+from manuskript.ui.picker.characterPicker import CharacterPicker
 
 class PlotView:
 
-    def __init__(self, plots: Plots):
-        self.plots = plots
-        self.plotLine = None
-        self.plotStep = None
+    def __init__(self, plots: Plots, characters: Characters):
+        self.plots: Plots = plots
+        self.plotLine: PlotLine = None
+        self.plotStep: PlotStep = None
 
         builder = Gtk.Builder()
         builder.add_from_file("ui/plot.glade")
@@ -94,6 +91,17 @@ class PlotView:
         self.nameBuffer.connect("deleted-text", self._nameDeletedText)
         self.nameBuffer.connect("inserted-text", self._nameInsertedText)
 
+        self.removeCharacterButton = builder.get_object("remove_character")
+        self.removeCharacterButton.connect("clicked", self._removeCharacterClicked)
+
+        self.plotCharactersView = builder.get_object("characters_view")
+
+        self.addCharacterButton = builder.get_object("add_character")
+        self.addCharacterButton.connect("clicked", self._addCharacterClicked)
+
+        self.characterPicker: CharacterPicker = CharacterPicker(characters, pickPovOnly=False, button=self.addCharacterButton)
+        self.characterPicker.connect("character-selected", self._characterPickerCharacterPicked)
+
         self.plotCharactersStore = builder.get_object("plot_characters_store")
 
         self.plotCharactersStore.set_visible_func(self._filterPlotCharacters)
@@ -131,7 +139,7 @@ class PlotView:
             self.charactersStore.set_value(tree_iter, 1, validString(character.name))
             self.charactersStore.set_value(tree_iter, 2, pixbufFromColor(character.color))
 
-    def __linkActionPlotLine(self, action, UID, plotLine):
+    def __linkActionPlotLine(self, action: LinkAction, UID: UniqueID, plotLine: PlotLine):
         if action == LinkAction.DELETE:
             return
 
@@ -373,6 +381,23 @@ class PlotView:
 
     def _nameInsertedText(self, buffer: Gtk.EntryBuffer, position: int, chars: str, n_chars: int):
         self.__nameChanged(buffer)
+
+    def _removeCharacterClicked(self, Button: Gtk.Button):
+        selection = self.plotCharactersView.get_selection()
+        model, treeiter = selection.get_selected()
+
+        if treeiter is not None:
+            self.plotLine.characters.remove(model[treeiter][0])
+            self.refreshCharactersStore()
+            self.plotCharactersStore.refilter()
+
+    def _addCharacterClicked(self, button: Gtk.Button):
+        self.characterPicker.show(self.plotLine.characters)
+
+    def _characterPickerCharacterPicked(self, characterPicker: CharacterPicker, userdata:Character):
+        self.plotLine.characters.append(userdata.UID.value)
+        self.refreshCharactersStore()
+        self.plotCharactersStore.refilter()
 
     def _filterPlotCharacters(self, model, iterator, userdata):
         ID = validInt(model[iterator][0])

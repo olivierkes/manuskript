@@ -1,14 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import gi
-
-gi.require_version("Gtk", "3.0")
-gi.require_version("Handy", "1")
-
-from gi.repository import GObject, Gtk, Handy
-
-Handy.init()
+from gi.repository import GObject, Gtk
 
 from manuskript.data import Project
 from manuskript.plugin import loadPlugins
@@ -129,7 +122,7 @@ class MainWindow:
         self.generalView = packViewIntoSlot(self.generalSlot, GeneralView, self.project.info)
         self.summaryView = packViewIntoSlot(self.summarySlot, SummaryView, self.project.summary)
         self.charactersView = packViewIntoSlot(self.charactersSlot, CharactersView, self.project.characters)
-        self.plotView = packViewIntoSlot(self.plotSlot, PlotView, self.project.plots)
+        self.plotView = packViewIntoSlot(self.plotSlot, PlotView, self.project.plots, self.project.characters)
         self.worldView = packViewIntoSlot(self.worldSlot, WorldView, self.project.world)
         self.outlineView = packViewIntoSlot(self.outlineSlot, OutlineView, self.project.outline)
         self.editorView = packViewIntoSlot(self.editorSlot, EditorView, self.project)

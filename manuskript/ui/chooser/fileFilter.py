@@ -1,12 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import gi
-
-gi.require_version('Gdk', '3.0')
-
-from gi.repository import GObject, Gtk
-
+from gi.repository import Gtk
 
 class FileFilter:
 

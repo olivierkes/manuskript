@@ -27,12 +27,16 @@ def invalidString(valid: str) -> str:
     return None if len(valid) == 0 else valid
 
 
-def validInt(invalid) -> int:
-    return 0 if invalid is None else int(invalid)
+def validInt(invalid, defaultValue=0) -> int:
+    return defaultValue if invalid is None else int(invalid)
 
 
 def invalidInt(valid: int) -> int:
     return None if valid == 0 else valid
+
+
+def validBool(invalid) -> bool:
+    return True if str(invalid) != str(False) else False
 
 
 def safeFilename(filename: str, extension: str = None) -> str:

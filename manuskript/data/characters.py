@@ -4,14 +4,15 @@
 import os
 
 from collections import OrderedDict
+from typing import Optional
 
 from manuskript.data.abstractData import AbstractData
 from manuskript.data.color import Color
 from manuskript.data.importance import Importance
 from manuskript.data.links import LinkAction, Links
-from manuskript.data.unique_id import UniqueIDHost
+from manuskript.data.unique_id import UniqueIDHost, UniqueID
 from manuskript.io.mmdFile import MmdFile
-from manuskript.util import safeFilename
+from manuskript.util import safeFilename, validBool
 
 
 class Character(AbstractData):
@@ -22,19 +23,19 @@ class Character(AbstractData):
         self.characters = characters
         self.links = Links()
 
-        self.UID = None
-        self.name = None
-        self.importance = None
-        self.POV = None
-        self.motivation = None
-        self.goal = None
-        self.conflict = None
-        self.epiphany = None
-        self.summarySentence = None
-        self.summaryParagraph = None
-        self.summaryFull = None
-        self.notes = None
-        self.color = None
+        self.UID: Optional[UniqueID] = None
+        self.name: Optional[str] = None
+        self.importance: Optional[Importance] = None
+        self.POV: Optional[bool] = None
+        self.motivation: Optional[str] = None
+        self.goal: Optional[str] = None
+        self.conflict: Optional[str] = None
+        self.epiphany: Optional[str] = None
+        self.summarySentence: Optional[str] = None
+        self.summaryParagraph: Optional[str] = None
+        self.summaryFull: Optional[str] = None
+        self.notes: Optional[str] = None
+        self.color: Optional[Color] = None
         self.details = dict()
 
     def changePath(self, path: str):
@@ -70,7 +71,7 @@ class Character(AbstractData):
         self.UID = self.characters.host.loadID(int(ID))
         self.name = Character.loadAttribute(metadata, "Name", None)
         self.importance = Importance.fromRawString(importance)
-        self.POV = Character.loadAttribute(metadata, "POV", None)
+        self.POV = validBool(Character.loadAttribute(metadata, "POV", None))
         self.motivation = Character.loadAttribute(metadata, "Motivation", None)
         self.goal = Character.loadAttribute(metadata, "Goal", None)
         self.conflict = Character.loadAttribute(metadata, "Conflict", None)

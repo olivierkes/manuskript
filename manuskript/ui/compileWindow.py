@@ -1,20 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import gi
 import tempfile
 
-gi.require_version("Gtk", "3.0")
-gi.require_version("Handy", "1")
-gi.require_version("WebKit2", "4.0")
 from gi.repository import GLib, GObject, Gtk, Handy, WebKit2
-
-Handy.init()
 
 from manuskript.ui.abstractDialog import AbstractDialog
 
 from manuskript.converter import getConverter
-from manuskript.exporter import getExporters, getExporterByName
+from manuskript.exporter import getExporters, getExporterByName, AbstractExporter
 from manuskript.data import Project, OutlineItem, OutlineFolder, OutlineText
 from manuskript.io import BinaryFile
 from manuskript.util import validString

@@ -67,6 +67,12 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
       <column type="gint"/>
       <!-- column-name icon -->
       <column type="gchararray"/>
+      <!-- column-name label_icon -->
+      <column type="GdkPixbuf"/>
+      <!-- column-name pov_name -->
+      <column type="gchararray"/>
+      <!-- column-name pov_icon -->
+      <column type="GdkPixbuf"/>
     </columns>
   </object>
   <object class="GtkTreeModelFilter" id="filtered_outline_store">
@@ -111,134 +117,149 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
             <property name="can-focus">True</property>
             <property name="wide-handle">True</property>
             <child>
-              <object class="GtkBox">
-                <property name="width-request">200</property>
+              <object class="GtkScrolledWindow">
                 <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="orientation">vertical</property>
-                <property name="spacing">2</property>
+                <property name="can-focus">True</property>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkViewport">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
-                    <property name="label" translatable="yes">Main</property>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkTreeView">
-                    <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <property name="model">main_plots_store</property>
-                    <property name="headers-visible">False</property>
-                    <property name="search-column">0</property>
-                    <child internal-child="selection">
-                      <object class="GtkTreeSelection" id="main_plot_selection"/>
-                    </child>
                     <child>
-                      <object class="GtkTreeViewColumn">
+                      <object class="GtkBox">
+                        <property name="width-request">200</property>
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">2</property>
                         <child>
-                          <object class="GtkCellRendererText">
-                            <property name="ellipsize">end</property>
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="label" translatable="yes">Main</property>
                           </object>
-                          <attributes>
-                            <attribute name="text">1</attribute>
-                          </attributes>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkTreeView">
+                            <property name="visible">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="model">main_plots_store</property>
+                            <property name="headers-visible">False</property>
+                            <property name="search-column">0</property>
+                            <child internal-child="selection">
+                              <object class="GtkTreeSelection" id="main_plot_selection"/>
+                            </child>
+                            <child>
+                              <object class="GtkTreeViewColumn">
+                                <child>
+                                  <object class="GtkCellRendererText">
+                                    <property name="ellipsize">end</property>
+                                  </object>
+                                  <attributes>
+                                    <attribute name="text">1</attribute>
+                                  </attributes>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="label" translatable="yes">Secondary</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">2</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkTreeView">
+                            <property name="visible">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="model">secondary_plots_store</property>
+                            <property name="headers-visible">False</property>
+                            <property name="search-column">0</property>
+                            <child internal-child="selection">
+                              <object class="GtkTreeSelection" id="secondary_plot_selection"/>
+                            </child>
+                            <child>
+                              <object class="GtkTreeViewColumn">
+                                <child>
+                                  <object class="GtkCellRendererText">
+                                    <property name="ellipsize">end</property>
+                                  </object>
+                                  <attributes>
+                                    <attribute name="text">1</attribute>
+                                  </attributes>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">3</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="label" translatable="yes">Minor</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">4</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkTreeView">
+                            <property name="visible">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="model">minor_plots_store</property>
+                            <property name="headers-visible">False</property>
+                            <property name="search-column">0</property>
+                            <child internal-child="selection">
+                              <object class="GtkTreeSelection" id="minor_plot_selection"/>
+                            </child>
+                            <child>
+                              <object class="GtkTreeViewColumn">
+                                <child>
+                                  <object class="GtkCellRendererText">
+                                    <property name="ellipsize">end</property>
+                                  </object>
+                                  <attributes>
+                                    <attribute name="text">1</attribute>
+                                  </attributes>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">True</property>
+                            <property name="fill">True</property>
+                            <property name="position">5</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <placeholder/>
                         </child>
                       </object>
                     </child>
                   </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="label" translatable="yes">Secondary</property>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">2</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkTreeView">
-                    <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <property name="model">secondary_plots_store</property>
-                    <property name="headers-visible">False</property>
-                    <property name="search-column">0</property>
-                    <child internal-child="selection">
-                      <object class="GtkTreeSelection" id="secondary_plot_selection"/>
-                    </child>
-                    <child>
-                      <object class="GtkTreeViewColumn">
-                        <child>
-                          <object class="GtkCellRendererText">
-                            <property name="ellipsize">end</property>
-                          </object>
-                          <attributes>
-                            <attribute name="text">1</attribute>
-                          </attributes>
-                        </child>
-                      </object>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">3</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="label" translatable="yes">Minor</property>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">4</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkTreeView">
-                    <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <property name="model">minor_plots_store</property>
-                    <property name="headers-visible">False</property>
-                    <property name="search-column">0</property>
-                    <child internal-child="selection">
-                      <object class="GtkTreeSelection" id="minor_plot_selection"/>
-                    </child>
-                    <child>
-                      <object class="GtkTreeViewColumn">
-                        <child>
-                          <object class="GtkCellRendererText">
-                            <property name="ellipsize">end</property>
-                          </object>
-                          <attributes>
-                            <attribute name="text">1</attribute>
-                          </attributes>
-                        </child>
-                      </object>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="expand">True</property>
-                    <property name="fill">True</property>
-                    <property name="position">5</property>
-                  </packing>
                 </child>
               </object>
               <packing>
@@ -271,7 +292,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <child>
-                              <object class="GtkTreeView">
+                              <object class="GtkTreeView" id="outline_treeview">
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
                                 <property name="model">filtered_outline_store</property>
@@ -293,7 +314,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                       </attributes>
                                     </child>
                                     <child>
-                                      <object class="GtkCellRendererText">
+                                      <object class="GtkCellRendererText" id="outline_title">
                                         <property name="editable">True</property>
                                       </object>
                                       <attributes>
@@ -303,16 +324,35 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkTreeViewColumn">
+                                  <object class="GtkTreeViewColumn" id="pov_column">
+                                    <property name="title" translatable="yes">POV</property>
+                                    <child>
+                                      <object class="GtkCellRendererPixbuf"/>
+                                      <attributes>
+                                        <attribute name="gicon">11</attribute>
+                                      </attributes>
+                                    </child>
+                                    <child>
+                                      <object class="GtkCellRendererText"/>
+                                      <attributes>
+                                        <attribute name="text">10</attribute>
+                                      </attributes>
+                                    </child>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="GtkTreeViewColumn" id="label_column">
                                     <property name="resizable">True</property>
                                     <property name="min-width">50</property>
                                     <property name="title" translatable="yes">Label</property>
                                     <child>
-                                      <object class="GtkCellRendererCombo">
-                                        <property name="editable">True</property>
-                                        <property name="model">label_store</property>
-                                        <property name="text-column">0</property>
-                                      </object>
+                                      <object class="GtkCellRendererPixbuf"/>
+                                      <attributes>
+                                        <attribute name="gicon">9</attribute>
+                                      </attributes>
+                                    </child>
+                                    <child>
+                                      <object class="GtkCellRendererText"/>
                                       <attributes>
                                         <attribute name="text">2</attribute>
                                       </attributes>
@@ -325,7 +365,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                     <property name="min-width">50</property>
                                     <property name="title" translatable="yes">Status</property>
                                     <child>
-                                      <object class="GtkCellRendererCombo">
+                                      <object class="GtkCellRendererCombo" id="outline_status">
                                         <property name="editable">True</property>
                                         <property name="model">status_store</property>
                                         <property name="text-column">0</property>
@@ -535,7 +575,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkComboBox">
+                              <object class="GtkComboBox" id="pov_combo">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                                 <property name="model">characters_store</property>

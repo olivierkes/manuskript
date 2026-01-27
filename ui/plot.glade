@@ -512,7 +512,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                             <property name="label-xalign">0</property>
                             <property name="label-yalign">0</property>
                             <child>
-                              <object class="GtkTreeView">
+                              <object class="GtkTreeView" id="characters_view">
                                 <property name="height-request">200</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
@@ -557,7 +557,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                             <property name="margin-end">4</property>
                             <property name="spacing">4</property>
                             <child>
-                              <object class="GtkButton">
+                              <object class="GtkButton" id="remove_character">
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
                                 <property name="receives-default">True</property>
@@ -577,7 +577,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkButton">
+                              <object class="GtkButton" id="add_character">
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
                                 <property name="receives-default">True</property>

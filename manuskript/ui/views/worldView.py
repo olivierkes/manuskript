@@ -1,20 +1,16 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import gi
-
-gi.require_version("Gtk", "3.0")
-from gi.repository import Gtk
+from gi.repository import Gtk, Gdk
 
 from manuskript.data import World, WorldItem
 from manuskript.util import validString, invalidString, validInt, invalidInt
 
-
 class WorldView:
 
     def __init__(self, world: World):
-        self.world = world
-        self.worldItem = None
+        self.world: World = world
+        self.worldItem: WorldItem = None
 
         builder = Gtk.Builder()
         builder.add_from_file("ui/world.glade")
@@ -23,6 +19,22 @@ class WorldView:
         self.notebook = builder.get_object("world_notebook")
 
         self.worldTreeView = builder.get_object("world_tree_view")
+
+        targets = Gtk.TargetEntry.new("STRING", Gtk.TargetFlags.SAME_APP, 0)
+        self.worldTreeView.enable_model_drag_source(
+            Gdk.ModifierType.BUTTON1_MASK,
+            [targets],
+            Gdk.DragAction.MOVE
+        )
+
+        self.worldTreeView.enable_model_drag_dest(
+            [targets],
+            Gdk.DragAction.MOVE
+        )
+
+        self.worldTreeView.connect("drag-data-get", self._worldTreeViewDragDataGet)
+        self.worldTreeView.connect("drag-data-received", self._worldTreeViewDragDataReceived)
+        self.worldTreeView.connect("drag-drop", self._worldTreeViewDragDrop)
 
         self.worldStore = builder.get_object("world_store")
         self.refreshWorldStore()
@@ -42,9 +54,13 @@ class WorldView:
 
         self.addToWorldButton = builder.get_object("add_to_world")
         self.removeFromWorldButton = builder.get_object("remove_from_world")
+        self.populateButton = builder.get_object("populate")
 
         self.addToWorldButton.connect("clicked", self._addToWorldClicked)
         self.removeFromWorldButton.connect("clicked", self._removeFromWorldClicked)
+        self.populateButton.connect("clicked", self._populateClicked)
+
+        self.popover: Gtk.Popover = self.createPopulatePopover(self.populateButton)
 
         self.nameBuffer = builder.get_object("name")
         self.descriptionBuffer = builder.get_object("description")
@@ -59,6 +75,89 @@ class WorldView:
         self.sourceOfConflictBuffer.connect("changed", self._sourceOfConflictChanged)
 
         self.unloadWorldData()
+
+    def createPopulatePopover(self, button: Gtk.Button):
+        popover = Gtk.Popover.new(button)
+        popover.set_position(Gtk.PositionType.BOTTOM)
+
+        box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
+        popover.add(box)
+
+        for templateName in self.world.fetchTemplateList():
+            insertTemplateButton = Gtk.ModelButton(label=templateName)
+            insertTemplateButton.connect("clicked", self._insertTemplateClicked, templateName)
+            box.pack_start(insertTemplateButton, True, True, 0)
+
+        return popover
+        
+    def _worldTreeViewDragDataGet(self, treeview: Gtk.TreeView, drag_context: Gdk.DragContext, selection: Gtk.SelectionData, target_id: int, etime: int):
+        model, iter_ = treeview.get_selection().get_selected()
+        if iter_ is not None:
+            path = model.get_path(iter_)
+            selection.set_text(str(path.to_string()), -1)
+
+        return True
+
+    def _worldTreeViewDragDataReceived(self, treeview: Gtk.TreeView, drag_context: Gdk.DragContext, x: int, y: int, selection: Gtk.SelectionData, info: int, etime: int):
+        treeview.stop_emission("drag-data-received")
+
+        model = treeview.get_model()
+        store = model.get_model()
+
+        dragged_path = Gtk.TreePath.new_from_string(selection.get_text())
+        filtered_iter = model.get_iter(dragged_path)
+        original_iter = model.convert_iter_to_child_iter(filtered_iter)
+
+        dragged_item_uid = store.get_value(original_iter, 0) 
+        dragged_item = self.world.getItemByID(dragged_item_uid)
+
+        drop_info = treeview.get_dest_row_at_pos(x, y)
+
+        parent_item = None
+        index = None
+
+        if drop_info:
+            path, position = drop_info
+            target_iter = store.get_iter(path)
+            target_uid = store.get_value(target_iter, 0)
+            target_item = self.world.getItemByID(target_uid)
+
+            parent_item, index = self._computeDropTarget(target_item, position)
+
+        self.world.moveItem(dragged_item, parent_item, index)
+        self.refreshWorldStore()
+        return True
+    
+    def _computeDropTarget(self, target_item: WorldItem, position: Gtk.TreeViewDropPosition):
+        if position in (
+            Gtk.TreeViewDropPosition.INTO_OR_AFTER,
+            Gtk.TreeViewDropPosition.INTO_OR_BEFORE
+        ):
+            parent = target_item
+            index = None
+            return parent, index
+
+        parent = self.world.findParent(target_item)
+
+        if parent:
+            index = parent.children.index(target_item)
+            if position == Gtk.TreeViewDropPosition.AFTER:
+                index += 1
+            return parent, index
+
+        index = self.world.top.index(target_item)
+        if position == Gtk.TreeViewDropPosition.AFTER:
+            index += 1
+        return None, index
+
+    def _worldTreeViewDragDrop(self, treeview: Gtk.TreeView, drag_context: Gdk.DragContext, x: int, y: int, etime: int):
+        treeview.stop_emission("drag-drop")
+        treeview.drag_get_data(drag_context, drag_context.list_targets()[-1], etime)
+        return True
+
+    def _insertTemplateClicked(self, button: Gtk.Button, userdata: str):
+        self.world.insertTemplate(userdata)
+        self.refreshWorldStore()
 
     def __appendWorldItem(self, worldItem: WorldItem, parent_iter=None):
         tree_iter = self.worldStore.append(parent_iter)
@@ -130,6 +229,10 @@ class WorldView:
         self.worldItem.remove()
         self.refreshWorldStore()
 
+    def _populateClicked(self, button: Gtk.Button):
+        self.popover.show_all()
+        self.popover.popup()
+
     def __matchWorldItemByText(self, worldItem: WorldItem, text: str):
         for item in worldItem:
             if self.__matchWorldItemByText(item, text):
@@ -156,6 +259,15 @@ class WorldView:
     def _filterWorldInsertedText(self, buffer: Gtk.EntryBuffer, position: int, chars: str, n_chars: int):
         self.__filterWorldChanged(buffer)
 
+    def __updateWorldItemName(self, model, path, treeiter, userdata):
+        id = model[treeiter][0]
+
+        if userdata["world_item_id"] == id:
+            model[treeiter][1] = userdata["name"]
+            return True
+        
+        return False
+
     def __nameChanged(self, buffer: Gtk.EntryBuffer):
         if self.worldItem is None:
             return
@@ -165,12 +277,14 @@ class WorldView:
 
         self.worldItem.name = name
 
-        world_id = self.worldItem.UID.value
+        world_item_id = self.worldItem.UID.value
 
-        for row in self.worldStore:
-            if row[0] == world_id:
-                row[1] = validString(name)
-                break
+        userdata = {
+            "world_item_id": world_item_id,
+            "name": validString(name)
+        }
+
+        self.worldStore.foreach(self.__updateWorldItemName, userdata)
 
     def _nameDeletedText(self, buffer: Gtk.EntryBuffer, position: int, n_chars: int):
         self.__nameChanged(buffer)

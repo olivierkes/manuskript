@@ -1,7 +1,23 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+import gi
+
+gi.require_version("Gtk", "3.0")
+gi.require_version("Handy", "1")
+gi.require_version('GdkPixbuf', '2.0')
+# TODO : I don't have access to WebKit2 4.0
+try:
+    gi.require_version("WebKit2", "4.1")
+except ValueError:
+    gi.require_version("WebKit2", "4.0")
+
+from gi.repository import GObject, Gtk, Handy
+
+Handy.init()
+
 import os
+import argparse
 import sys
 
 realpath = os.path.realpath(__file__)
@@ -12,8 +28,23 @@ os.chdir(app_path)
 
 from manuskript.ui import MainWindow
 
-path = os.path.join(os.getcwd(), "sample-projects/book-of-acts")
+defaultProjectPath = os.path.join(os.getcwd(), "sample-projects/book-of-acts.msk")
+
+parser = argparse.ArgumentParser(description="Open a Manuskript project")
+parser.add_argument(
+    "msk_path",
+    nargs="?",
+    help="Path to the .msk file to open"
+)
+
+args = parser.parse_args()
+
+projectPath = os.path.abspath(args.msk_path) if args.msk_path else defaultProjectPath
+
+if not os.path.exists(projectPath):
+    print(f"Error: project path does not exist: {projectPath}")
+    sys.exit(1)
 
 window = MainWindow()
-window.openProject(path + ".msk")
+window.openProject(projectPath)
 window.run()
