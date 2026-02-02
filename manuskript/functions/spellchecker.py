@@ -505,13 +505,13 @@ def get_languagetool_match_errorLength(match):
     if use_language_check:
         return match.errorlength
     else:
-        return match.errorLength
+        return match.error_length
 
 def get_languagetool_match_ruleIssueType(match):
     if use_language_check:
         return match.locqualityissuetype
     else:
-        return match.ruleIssueType
+        return match.rule_issue_type
 
 def get_languagetool_match_message(match):
     if use_language_check:
