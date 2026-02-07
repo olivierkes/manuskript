@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="da">
+<TS version="2.1" language="da_DK">
 <context>
     <name>ExportersManager</name>
     <message>
@@ -120,7 +120,7 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="619"/>
         <source>The image path or URL is incomplete or malformed.</source>
-        <translation>Stien til billedet eller URL'en, er enten ufuldendt eller forkert.</translation>
+        <translation>Stien til billedet eller URL&apos;en, er enten ufuldendt eller forkert.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="631"/>
@@ -610,8 +610,8 @@
         <location filename="../manuskript/mainWindow.py" line="1704"/>
         <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous
                      evil wizard wasn&apos;t able to kill a baby?&apos; (Harry Potter)</source>
-        <translation>Den grundlæggende situation, i form af  et 'Hvad nu hvis...?' spørgsmål. Eks: 'Hvad nu hvis selv den farligste af 
-                     onde troldmænd ikke ville være i stand til at dræbe et barn?' (Harry Potter)</translation>
+        <translation>Den grundlæggende situation, i form af  et &apos;Hvad nu hvis...?&apos; spørgsmål. Eks: &apos;Hvad nu hvis selv den farligste af 
+                     onde troldmænd ikke ville være i stand til at dræbe et barn?&apos; (Harry Potter)</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1709"/>
@@ -1804,7 +1804,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1811"/>
         <source>&lt;p&gt;&lt;b&gt;The Revisions feature has been at the source of many reported issues. In this version of Manuskript it has been turned off by default for new projects in order to provide the best experience.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Why aren&apos;t these issues fixed already? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;We need your help to make Manuskript better!&lt;/a&gt;&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;The Revisions feature has been at the source of many reported issues. In this version of Manuskript it has been turned off by default for new projects in order to provide the best experience.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Why aren't these issues fixed already? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;We need your help to make Manuskript better!&lt;/a&gt;&lt;/p&gt;</translation>
+        <translation>&lt;p&gt;&lt;b&gt;The Revisions feature has been at the source of many reported issues. In this version of Manuskript it has been turned off by default for new projects in order to provide the best experience.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Why aren&apos;t these issues fixed already? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;We need your help to make Manuskript better!&lt;/a&gt;&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1788"/>
@@ -2323,7 +2323,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>Erstat enkelt apostrof (') med:</translation>
+        <translation>Erstat enkelt apostrof (&apos;) med:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>
@@ -2986,7 +2986,7 @@
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Hero&apos;s journey</source>
-        <translation>Hero's journey</translation>
+        <translation>Hero&apos;s journey</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3359,8 +3359,8 @@
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="534"/>
-        <source>Image files (*.jpg; *.jpeg; *.png)</source>
-        <translation>Billedfiler (*.jpg; *.jpeg; *.png)</translation>
+        <source>Image files</source>
+        <translation>Billedfiler</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="550"/>
@@ -3431,7 +3431,7 @@
             &lt;p&gt;Split selected item(s) at the given mark.&lt;/p&gt;
 
             &lt;p&gt;If one of the selected item is a folder, it will be applied
-            recursively to &lt;i&gt;all&lt;/i&gt; of it's children items.&lt;/p&gt;
+            recursively to &lt;i&gt;all&lt;/i&gt; of it&apos;s children items.&lt;/p&gt;
 
             &lt;p&gt;The split mark can contain following escape sequences:
                 &lt;ul&gt;
@@ -3446,7 +3446,7 @@
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="47"/>
         <source>Split &apos;{}&apos;</source>
-        <translation>Opsplit '{}'</translation>
+        <translation>Opsplit &apos;{}&apos;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="51"/>

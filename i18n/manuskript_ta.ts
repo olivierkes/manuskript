@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="ta">
+<TS version="2.1" language="ta_IN">
 <context>
     <name>ExportersManager</name>
     <message>
@@ -610,8 +610,8 @@
         <location filename="../manuskript/mainWindow.py" line="1704"/>
         <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous
                      evil wizard wasn&apos;t able to kill a baby?&apos; (Harry Potter)</source>
-        <translation>அடிப்படை நிலைமை, 'என்ன என்றால் ...?' கேள்வி. எ.கா: 'மிகவும் ஆபத்தானது என்றால் என்ன
- தீய வழிகாட்டி ஒரு குழந்தையை கொல்ல முடியவில்லையா? ' (ஆரி பாட்டர்)</translation>
+        <translation>அடிப்படை நிலைமை, &apos;என்ன என்றால் ...?&apos; கேள்வி. எ.கா: &apos;மிகவும் ஆபத்தானது என்றால் என்ன
+ தீய வழிகாட்டி ஒரு குழந்தையை கொல்ல முடியவில்லையா? &apos; (ஆரி பாட்டர்)</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1709"/>
@@ -2323,7 +2323,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>ஒற்றை மேற்கோள்களை (') மாற்றவும்:</translation>
+        <translation>ஒற்றை மேற்கோள்களை (&apos;) மாற்றவும்:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>
@@ -3359,8 +3359,8 @@
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="534"/>
-        <source>Image files (*.jpg; *.jpeg; *.png)</source>
-        <translation>படக் கோப்புகள் ( *.jpg; *.jpeg; *.png)</translation>
+        <source>Image files</source>
+        <translation type="unfinished">படக் கோப்புகள் </translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="550"/>
@@ -3446,7 +3446,7 @@
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="47"/>
         <source>Split &apos;{}&apos;</source>
-        <translation>'{}'</translation>
+        <translation>&apos;{}&apos;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="51"/>

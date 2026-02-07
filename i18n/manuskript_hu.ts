@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="hu">
+<TS version="2.1" language="hu_HU">
 <context>
     <name>ExportersManager</name>
     <message>
@@ -615,8 +615,8 @@
         <location filename="../manuskript/mainWindow.py" line="1704"/>
         <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous
                      evil wizard wasn&apos;t able to kill a baby?&apos; (Harry Potter)</source>
-        <translation>Az alapszituáció 'Mi lenne ha...?' kérdésként feltéve. Pl.. 'Mi lenne ha a legveszélyesebb
-'                     gonosz varázsló ne lenne képes megölni egy csecsemőt?' (Harry Potter)</translation>
+        <translation>Az alapszituáció &apos;Mi lenne ha...?&apos; kérdésként feltéve. Pl.. &apos;Mi lenne ha a legveszélyesebb
+&apos;                     gonosz varázsló ne lenne képes megölni egy csecsemőt?&apos; (Harry Potter)</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1709"/>
@@ -2322,7 +2322,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>Egyszeri idézőjelek (') cseréje ezzel:</translation>
+        <translation>Egyszeri idézőjelek (&apos;) cseréje ezzel:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>
@@ -3358,7 +3358,7 @@
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="534"/>
-        <source>Image files (*.jpg; *.jpeg; *.png)</source>
+        <source>Image files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3444,7 +3444,7 @@
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="47"/>
         <source>Split &apos;{}&apos;</source>
-        <translation>Vágás '{}'</translation>
+        <translation>Vágás &apos;{}&apos;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="51"/>

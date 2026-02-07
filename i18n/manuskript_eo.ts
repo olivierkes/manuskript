@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="eo">
+<TS version="2.1" language="eo_001">
 <context>
     <name>ExportersManager</name>
     <message>
@@ -2322,7 +2322,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>Anstataŭigi Askiajn unuoblajn citilojn (') per:</translation>
+        <translation>Anstataŭigi Askiajn unuoblajn citilojn (&apos;) per:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>
@@ -3358,8 +3358,8 @@
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="534"/>
-        <source>Image files (*.jpg; *.jpeg; *.png)</source>
-        <translation>Bildodosieroj (*.jpg; *.jpeg; *.png)</translation>
+        <source>Image files</source>
+        <translation>Bildodosieroj</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="550"/>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="pl_PL" sourcelanguage="en">
+<TS version="2.1" language="pl_PL" sourcelanguage="en_US">
 <context>
     <name>ExportersManager</name>
     <message>
@@ -2323,7 +2323,7 @@ słów</translation>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>Zastąp pojedyncze cudzysłowy (') znakiem:</translation>
+        <translation>Zastąp pojedyncze cudzysłowy (&apos;) znakiem:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>
@@ -3359,8 +3359,8 @@ słów</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="534"/>
-        <source>Image files (*.jpg; *.jpeg; *.png)</source>
-        <translation>Pliki obrazu (*.jpg; *.jpeg; *.png)</translation>
+        <source>Image files</source>
+        <translation>Pliki obrazu</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="550"/>
@@ -3446,7 +3446,7 @@ słów</translation>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="47"/>
         <source>Split &apos;{}&apos;</source>
-        <translation>Rozdziel '{}'</translation>
+        <translation>Rozdziel &apos;{}&apos;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="51"/>

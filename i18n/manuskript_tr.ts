@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="tr">
+<TS version="2.1" language="tr_TR">
 <context>
     <name>ExportersManager</name>
     <message>
@@ -94,12 +94,12 @@
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="113"/>
         <source>Number of words: from</source>
-        <translation>Kelime sayısı: 'den</translation>
+        <translation>Kelime sayısı: &apos;den</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/frequency_ui.py" line="114"/>
         <source>to</source>
-        <translation>'e</translation>
+        <translation>&apos;e</translation>
     </message>
 </context>
 <context>
@@ -3356,7 +3356,7 @@
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="534"/>
-        <source>Image files (*.jpg; *.jpeg; *.png)</source>
+        <source>Image files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

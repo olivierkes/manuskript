@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="hr">
+<TS version="2.1" language="hr_HR">
 <context>
     <name>ExportersManager</name>
     <message>
@@ -2323,7 +2323,7 @@ pored broja riječi</translation>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>Zamijeni jednostruke navodnike (') sa:</translation>
+        <translation>Zamijeni jednostruke navodnike (&apos;) sa:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>
@@ -3359,8 +3359,8 @@ pored broja riječi</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="534"/>
-        <source>Image files (*.jpg; *.jpeg; *.png)</source>
-        <translation>Formati slika (*.jpg; *.jpeg; *.png)</translation>
+        <source>Image files</source>
+        <translation>Formati slika</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="550"/>

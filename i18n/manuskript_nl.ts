@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="nl">
+<TS version="2.1" language="nl_NL">
 <context>
     <name>ExportersManager</name>
     <message>
@@ -579,7 +579,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1622"/>
         <source> (~{} pages)</source>
-        <translation> (~{} pagina's)</translation>
+        <translation> (~{} pagina&apos;s)</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1625"/>
@@ -615,8 +615,8 @@
         <location filename="../manuskript/mainWindow.py" line="1704"/>
         <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous
                      evil wizard wasn&apos;t able to kill a baby?&apos; (Harry Potter)</source>
-        <translation>De basissituatie, in de vorm van een 'Wat als...?' vraag. B.v.: 'Wat als de gevaarlijkste, slechtste tovenaar
-                     niet in staat zou zijn een baby te doden?' (Harry Potter)</translation>
+        <translation>De basissituatie, in de vorm van een &apos;Wat als...?&apos; vraag. B.v.: &apos;Wat als de gevaarlijkste, slechtste tovenaar
+                     niet in staat zou zijn een baby te doden?&apos; (Harry Potter)</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1709"/>
@@ -1454,7 +1454,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1933"/>
         <source>Paragraphs</source>
-        <translation>Alinea's</translation>
+        <translation>Alinea&apos;s</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2004"/>
@@ -1804,7 +1804,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1811"/>
         <source>&lt;p&gt;&lt;b&gt;The Revisions feature has been at the source of many reported issues. In this version of Manuskript it has been turned off by default for new projects in order to provide the best experience.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Why aren&apos;t these issues fixed already? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;We need your help to make Manuskript better!&lt;/a&gt;&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;De optie 'Revisies' heeft tot veel meldingen van problemen geleid. In deze versie van Manuskript is deze optie standaard uitgeschakeld voor nieuwe projecten, om de beste ervaring te leveren.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Waarom zijn deze problemen nog niet opgelost?&lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;We hebben jouw hulp nodig om Manuskript te maken!&lt;/a&gt;&lt;/p&gt;</translation>
+        <translation>&lt;p&gt;&lt;b&gt;De optie &apos;Revisies&apos; heeft tot veel meldingen van problemen geleid. In deze versie van Manuskript is deze optie standaard uitgeschakeld voor nieuwe projecten, om de beste ervaring te leveren.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Waarom zijn deze problemen nog niet opgelost?&lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;We hebben jouw hulp nodig om Manuskript te maken!&lt;/a&gt;&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1788"/>
@@ -2323,7 +2323,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>Vervang enkele aanhalingstekens (') met:</translation>
+        <translation>Vervang enkele aanhalingstekens (&apos;) met:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>
@@ -3359,7 +3359,7 @@
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="534"/>
-        <source>Image files (*.jpg; *.jpeg; *.png)</source>
+        <source>Image files</source>
         <translation>Afbeeldingsbestanden</translation>
     </message>
     <message>
@@ -3446,7 +3446,7 @@
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="47"/>
         <source>Split &apos;{}&apos;</source>
-        <translation>Splits '{}'</translation>
+        <translation>Splits &apos;{}&apos;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="51"/>
@@ -3797,7 +3797,7 @@
     <message>
         <location filename="../manuskript/ui/welcome.py" line="395"/>
         <source>&lt;b&gt;Total:&lt;/b&gt; {} words (~ {} pages)</source>
-        <translation>&lt;b&gt;Totaal:&lt;/b&gt; {} woorden (~ {} pagina's)</translation>
+        <translation>&lt;b&gt;Totaal:&lt;/b&gt; {} woorden (~ {} pagina&apos;s)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="416"/>
