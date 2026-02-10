@@ -442,7 +442,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                     </child>
                   </object>
                   <packing>
-                    <property name="expand">True</property>
+                    <property name="expand">False</property>
                     <property name="fill">True</property>
                     <property name="position">0</property>
                   </packing>
@@ -653,12 +653,21 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                             <property name="label-xalign">0</property>
                             <property name="label-yalign">0</property>
                             <child>
-                              <object class="GtkTextView">
-                                <property name="height-request">200</property>
+                              <object class="GtkScrolledWindow">
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
-                                <property name="wrap-mode">word-char</property>
-                                <property name="buffer">few_sentences_summary</property>
+                                <property name="shadow-type">in</property>
+                                <child>
+                                  <object class="GtkTextView">
+                                    <property name="height-request">200</property>
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">True</property>
+                                    <property name="hscroll-policy">natural</property>
+                                    <property name="vscroll-policy">natural</property>
+                                    <property name="wrap-mode">word-char</property>
+                                    <property name="buffer">few_sentences_summary</property>
+                                  </object>
+                                </child>
                               </object>
                             </child>
                             <child type="label_item">
@@ -666,7 +675,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                             </child>
                           </object>
                           <packing>
-                            <property name="expand">False</property>
+                            <property name="expand">True</property>
                             <property name="fill">True</property>
                             <property name="position">4</property>
                           </packing>
@@ -675,7 +684,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                     </child>
                   </object>
                   <packing>
-                    <property name="expand">False</property>
+                    <property name="expand">True</property>
                     <property name="fill">True</property>
                     <property name="pack-type">end</property>
                     <property name="position">2</property>

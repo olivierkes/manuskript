@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.38.2 
+<!-- Generated with glade 3.40.0 
 
 Copyright (C) 2015-2021 Olivier Keshavjee et al.
 
@@ -164,12 +164,20 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkTextView">
-                            <property name="height-request">120</property>
+                          <object class="GtkScrolledWindow">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
-                            <property name="wrap-mode">word-char</property>
-                            <property name="buffer">summary_one_sentence</property>
+                            <property name="shadow-type">in</property>
+                            <child>
+                              <object class="GtkTextView">
+                                <property name="height-request">120</property>
+                                <property name="visible">True</property>
+                                <property name="can-focus">True</property>
+                                <property name="vscroll-policy">natural</property>
+                                <property name="wrap-mode">word-char</property>
+                                <property name="buffer">summary_one_sentence</property>
+                              </object>
+                            </child>
                           </object>
                           <packing>
                             <property name="expand">True</property>
@@ -227,14 +235,23 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkTextView">
-                                <property name="height-request">60</property>
+                              <object class="GtkScrolledWindow">
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
-                                <property name="margin-bottom">60</property>
-                                <property name="editable">False</property>
-                                <property name="wrap-mode">word-char</property>
-                                <property name="buffer">summary_one_sentence</property>
+                                <property name="shadow-type">in</property>
+                                <child>
+                                  <object class="GtkTextView">
+                                    <property name="height-request">60</property>
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">True</property>
+                                    <property name="margin-bottom">60</property>
+                                    <property name="hscroll-policy">natural</property>
+                                    <property name="vscroll-policy">natural</property>
+                                    <property name="editable">False</property>
+                                    <property name="wrap-mode">word-char</property>
+                                    <property name="buffer">summary_one_sentence</property>
+                                  </object>
+                                </child>
                               </object>
                               <packing>
                                 <property name="expand">True</property>
@@ -286,12 +303,21 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkTextView">
-                                <property name="height-request">120</property>
+                              <object class="GtkScrolledWindow">
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
-                                <property name="wrap-mode">word-char</property>
-                                <property name="buffer">summary_one_paragraph</property>
+                                <property name="shadow-type">in</property>
+                                <child>
+                                  <object class="GtkTextView">
+                                    <property name="height-request">120</property>
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">True</property>
+                                    <property name="hscroll-policy">natural</property>
+                                    <property name="vscroll-policy">natural</property>
+                                    <property name="wrap-mode">word-char</property>
+                                    <property name="buffer">summary_one_paragraph</property>
+                                  </object>
+                                </child>
                               </object>
                               <packing>
                                 <property name="expand">True</property>
@@ -358,14 +384,23 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkTextView">
-                                <property name="height-request">80</property>
+                              <object class="GtkScrolledWindow">
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
-                                <property name="margin-bottom">40</property>
-                                <property name="editable">False</property>
-                                <property name="wrap-mode">word-char</property>
-                                <property name="buffer">summary_one_paragraph</property>
+                                <property name="shadow-type">in</property>
+                                <child>
+                                  <object class="GtkTextView">
+                                    <property name="height-request">80</property>
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">True</property>
+                                    <property name="margin-bottom">40</property>
+                                    <property name="hscroll-policy">natural</property>
+                                    <property name="vscroll-policy">natural</property>
+                                    <property name="editable">False</property>
+                                    <property name="wrap-mode">word-char</property>
+                                    <property name="buffer">summary_one_paragraph</property>
+                                  </object>
+                                </child>
                               </object>
                               <packing>
                                 <property name="expand">True</property>
@@ -417,12 +452,21 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkTextView">
-                                <property name="height-request">120</property>
+                              <object class="GtkScrolledWindow">
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
-                                <property name="wrap-mode">word-char</property>
-                                <property name="buffer">summary_one_page</property>
+                                <property name="shadow-type">in</property>
+                                <child>
+                                  <object class="GtkTextView">
+                                    <property name="height-request">120</property>
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">True</property>
+                                    <property name="hscroll-policy">natural</property>
+                                    <property name="vscroll-policy">natural</property>
+                                    <property name="wrap-mode">word-char</property>
+                                    <property name="buffer">summary_one_page</property>
+                                  </object>
+                                </child>
                               </object>
                               <packing>
                                 <property name="expand">True</property>
@@ -489,12 +533,21 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkTextView">
+                              <object class="GtkScrolledWindow">
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
-                                <property name="editable">False</property>
-                                <property name="wrap-mode">word-char</property>
-                                <property name="buffer">summary_one_page</property>
+                                <property name="shadow-type">in</property>
+                                <child>
+                                  <object class="GtkTextView">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">True</property>
+                                    <property name="hscroll-policy">natural</property>
+                                    <property name="vscroll-policy">natural</property>
+                                    <property name="editable">False</property>
+                                    <property name="wrap-mode">word-char</property>
+                                    <property name="buffer">summary_one_page</property>
+                                  </object>
+                                </child>
                               </object>
                               <packing>
                                 <property name="expand">True</property>
@@ -534,12 +587,21 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkTextView">
-                                <property name="height-request">120</property>
+                              <object class="GtkScrolledWindow">
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
-                                <property name="wrap-mode">word-char</property>
-                                <property name="buffer">summary_full</property>
+                                <property name="shadow-type">in</property>
+                                <child>
+                                  <object class="GtkTextView">
+                                    <property name="height-request">120</property>
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">True</property>
+                                    <property name="hscroll-policy">natural</property>
+                                    <property name="vscroll-policy">natural</property>
+                                    <property name="wrap-mode">word-char</property>
+                                    <property name="buffer">summary_full</property>
+                                  </object>
+                                </child>
                               </object>
                               <packing>
                                 <property name="expand">True</property>

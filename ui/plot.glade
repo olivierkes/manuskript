@@ -393,12 +393,19 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                         <property name="label-xalign">0</property>
                         <property name="label-yalign">0</property>
                         <child>
-                          <object class="GtkTextView">
-                            <property name="height-request">200</property>
+                          <object class="GtkScrolledWindow">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
-                            <property name="wrap-mode">word-char</property>
-                            <property name="buffer">result</property>
+                            <property name="shadow-type">in</property>
+                            <child>
+                              <object class="GtkTextView">
+                                <property name="height-request">200</property>
+                                <property name="visible">True</property>
+                                <property name="can-focus">True</property>
+                                <property name="wrap-mode">word-char</property>
+                                <property name="buffer">result</property>
+                              </object>
+                            </child>
                           </object>
                         </child>
                         <child type="label_item">
@@ -419,12 +426,19 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                         <property name="label-xalign">0</property>
                         <property name="label-yalign">0</property>
                         <child>
-                          <object class="GtkTextView">
-                            <property name="height-request">200</property>
+                          <object class="GtkScrolledWindow">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
-                            <property name="wrap-mode">word-char</property>
-                            <property name="buffer">description</property>
+                            <property name="shadow-type">in</property>
+                            <child>
+                              <object class="GtkTextView">
+                                <property name="height-request">200</property>
+                                <property name="visible">True</property>
+                                <property name="can-focus">True</property>
+                                <property name="wrap-mode">word-char</property>
+                                <property name="buffer">description</property>
+                              </object>
+                            </child>
                           </object>
                         </child>
                         <child type="label_item">
@@ -512,28 +526,35 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                             <property name="label-xalign">0</property>
                             <property name="label-yalign">0</property>
                             <child>
-                              <object class="GtkTreeView" id="characters_view">
-                                <property name="height-request">200</property>
+                              <object class="GtkScrolledWindow">
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
-                                <property name="model">plot_characters_store</property>
-                                <property name="headers-visible">False</property>
-                                <child internal-child="selection">
-                                  <object class="GtkTreeSelection"/>
-                                </child>
+                                <property name="shadow-type">in</property>
                                 <child>
-                                  <object class="GtkTreeViewColumn">
-                                    <child>
-                                      <object class="GtkCellRendererPixbuf"/>
-                                      <attributes>
-                                        <attribute name="pixbuf">2</attribute>
-                                      </attributes>
+                                  <object class="GtkTreeView" id="characters_view">
+                                    <property name="height-request">200</property>
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">True</property>
+                                    <property name="model">plot_characters_store</property>
+                                    <property name="headers-visible">False</property>
+                                    <child internal-child="selection">
+                                      <object class="GtkTreeSelection"/>
                                     </child>
                                     <child>
-                                      <object class="GtkCellRendererText"/>
-                                      <attributes>
-                                        <attribute name="text">1</attribute>
-                                      </attributes>
+                                      <object class="GtkTreeViewColumn">
+                                        <child>
+                                          <object class="GtkCellRendererPixbuf"/>
+                                          <attributes>
+                                            <attribute name="pixbuf">2</attribute>
+                                          </attributes>
+                                        </child>
+                                        <child>
+                                          <object class="GtkCellRendererText"/>
+                                          <attributes>
+                                            <attribute name="text">1</attribute>
+                                          </attributes>
+                                        </child>
+                                      </object>
                                     </child>
                                   </object>
                                 </child>
@@ -665,6 +686,8 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               <object class="GtkViewport">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
+                                <property name="hscroll-policy">natural</property>
+                                <property name="vscroll-policy">natural</property>
                                 <child>
                                   <object class="GtkTreeView">
                                     <property name="visible">True</property>
@@ -811,12 +834,20 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                 <property name="label-xalign">0</property>
                                 <property name="label-yalign">0</property>
                                 <child>
-                                  <object class="GtkTextView">
-                                    <property name="height-request">300</property>
+                                  <object class="GtkScrolledWindow">
                                     <property name="visible">True</property>
                                     <property name="can-focus">True</property>
-                                    <property name="wrap-mode">word-char</property>
-                                    <property name="buffer">step_summary</property>
+                                    <property name="shadow-type">in</property>
+                                    <child>
+                                      <object class="GtkTextView">
+                                        <property name="visible">True</property>
+                                        <property name="can-focus">True</property>
+                                        <property name="hscroll-policy">natural</property>
+                                        <property name="vscroll-policy">natural</property>
+                                        <property name="wrap-mode">word-char</property>
+                                        <property name="buffer">step_summary</property>
+                                      </object>
+                                    </child>
                                   </object>
                                 </child>
                                 <child type="label_item">
@@ -824,7 +855,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                                 </child>
                               </object>
                               <packing>
-                                <property name="expand">False</property>
+                                <property name="expand">True</property>
                                 <property name="fill">True</property>
                                 <property name="position">1</property>
                               </packing>
@@ -833,7 +864,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                         </child>
                       </object>
                       <packing>
-                        <property name="expand">False</property>
+                        <property name="expand">True</property>
                         <property name="fill">True</property>
                         <property name="pack-type">end</property>
                         <property name="position">2</property>
