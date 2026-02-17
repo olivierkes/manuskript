@@ -447,12 +447,19 @@ summary</property>
                         <property name="label-xalign">0</property>
                         <property name="label-yalign">0</property>
                         <child>
-                          <object class="GtkTextView">
-                            <property name="height-request">100</property>
+                          <object class="GtkScrolledWindow">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
-                            <property name="wrap-mode">word-char</property>
-                            <property name="buffer">one_paragraph_summary</property>
+                            <property name="shadow-type">in</property>
+                            <child>
+                              <object class="GtkTextView">
+                                <property name="height-request">100</property>
+                                <property name="visible">True</property>
+                                <property name="can-focus">True</property>
+                                <property name="wrap-mode">word-char</property>
+                                <property name="buffer">one_paragraph_summary</property>
+                              </object>
+                            </child>
                           </object>
                         </child>
                         <child type="label_item">
@@ -473,12 +480,19 @@ summary</property>
                         <property name="label-xalign">0</property>
                         <property name="label-yalign">0</property>
                         <child>
-                          <object class="GtkTextView">
-                            <property name="height-request">100</property>
+                          <object class="GtkScrolledWindow">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
-                            <property name="wrap-mode">word-char</property>
-                            <property name="buffer">one_sentence_summary</property>
+                            <property name="shadow-type">in</property>
+                            <child>
+                              <object class="GtkTextView">
+                                <property name="height-request">100</property>
+                                <property name="visible">True</property>
+                                <property name="can-focus">True</property>
+                                <property name="wrap-mode">word-char</property>
+                                <property name="buffer">one_sentence_summary</property>
+                              </object>
+                            </child>
                           </object>
                         </child>
                         <child type="label_item">
@@ -499,12 +513,19 @@ summary</property>
                         <property name="label-xalign">0</property>
                         <property name="label-yalign">0</property>
                         <child>
-                          <object class="GtkTextView">
-                            <property name="height-request">100</property>
+                          <object class="GtkScrolledWindow">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
-                            <property name="wrap-mode">word-char</property>
-                            <property name="buffer">epiphany</property>
+                            <property name="shadow-type">in</property>
+                            <child>
+                              <object class="GtkTextView">
+                                <property name="height-request">100</property>
+                                <property name="visible">True</property>
+                                <property name="can-focus">True</property>
+                                <property name="wrap-mode">word-char</property>
+                                <property name="buffer">epiphany</property>
+                              </object>
+                            </child>
                           </object>
                         </child>
                         <child type="label_item">
@@ -525,12 +546,19 @@ summary</property>
                         <property name="label-xalign">0</property>
                         <property name="label-yalign">0</property>
                         <child>
-                          <object class="GtkTextView">
-                            <property name="height-request">100</property>
+                          <object class="GtkScrolledWindow">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
-                            <property name="wrap-mode">word-char</property>
-                            <property name="buffer">conflict</property>
+                            <property name="shadow-type">in</property>
+                            <child>
+                              <object class="GtkTextView">
+                                <property name="height-request">100</property>
+                                <property name="visible">True</property>
+                                <property name="can-focus">True</property>
+                                <property name="wrap-mode">word-char</property>
+                                <property name="buffer">conflict</property>
+                              </object>
+                            </child>
                           </object>
                         </child>
                         <child type="label_item">
@@ -551,12 +579,19 @@ summary</property>
                         <property name="label-xalign">0</property>
                         <property name="label-yalign">0</property>
                         <child>
-                          <object class="GtkTextView">
-                            <property name="height-request">100</property>
+                          <object class="GtkScrolledWindow">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
-                            <property name="wrap-mode">word-char</property>
-                            <property name="buffer">goal</property>
+                            <property name="shadow-type">in</property>
+                            <child>
+                              <object class="GtkTextView">
+                                <property name="height-request">100</property>
+                                <property name="visible">True</property>
+                                <property name="can-focus">True</property>
+                                <property name="wrap-mode">word-char</property>
+                                <property name="buffer">goal</property>
+                              </object>
+                            </child>
                           </object>
                         </child>
                         <child type="label_item">
@@ -577,12 +612,19 @@ summary</property>
                         <property name="label-xalign">0</property>
                         <property name="label-yalign">0</property>
                         <child>
-                          <object class="GtkTextView">
-                            <property name="height-request">100</property>
+                          <object class="GtkScrolledWindow">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
-                            <property name="wrap-mode">word-char</property>
-                            <property name="buffer">motivation</property>
+                            <property name="shadow-type">in</property>
+                            <child>
+                              <object class="GtkTextView">
+                                <property name="height-request">100</property>
+                                <property name="visible">True</property>
+                                <property name="can-focus">True</property>
+                                <property name="wrap-mode">word-char</property>
+                                <property name="buffer">motivation</property>
+                              </object>
+                            </child>
                           </object>
                         </child>
                         <child type="label_item">
@@ -736,11 +778,18 @@ summary</property>
                     <property name="label-xalign">0</property>
                     <property name="label-yalign">0</property>
                     <child>
-                      <object class="GtkTextView">
+                      <object class="GtkScrolledWindow">
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
-                        <property name="wrap-mode">word-char</property>
-                        <property name="buffer">summary</property>
+                        <property name="shadow-type">in</property>
+                        <child>
+                          <object class="GtkTextView">
+                            <property name="visible">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="wrap-mode">word-char</property>
+                            <property name="buffer">summary</property>
+                          </object>
+                        </child>
                       </object>
                     </child>
                     <child type="label_item">
@@ -773,11 +822,18 @@ summary</property>
                     <property name="label-xalign">0</property>
                     <property name="label-yalign">0</property>
                     <child>
-                      <object class="GtkTextView">
+                      <object class="GtkScrolledWindow">
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
-                        <property name="wrap-mode">word-char</property>
-                        <property name="buffer">notes</property>
+                        <property name="shadow-type">in</property>
+                        <child>
+                          <object class="GtkTextView">
+                            <property name="visible">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="wrap-mode">word-char</property>
+                            <property name="buffer">notes</property>
+                          </object>
+                        </child>
                       </object>
                     </child>
                     <child type="label_item">
