@@ -2323,7 +2323,7 @@ Wörtern an</translation>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>Einfache Anführungszeichen (') ersetzen durch:</translation>
+        <translation>Einfache Anführungszeichen (&apos;) ersetzen durch:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>
@@ -3359,7 +3359,7 @@ Wörtern an</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="534"/>
-        <source>Image files (*.jpg; *.jpeg; *.png)</source>
+        <source>Image files</source>
         <translation>Bilddateien</translation>
     </message>
     <message>

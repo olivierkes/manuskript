@@ -615,8 +615,8 @@
         <location filename="../manuskript/mainWindow.py" line="1704"/>
         <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous
                      evil wizard wasn&apos;t able to kill a baby?&apos; (Harry Potter)</source>
-        <translation>A situação básica, na forma de um questionamento tipo 'e se ...'. Ex: 
-'E se o mais perigoso malvado feiticeiro não foi capaz de matar um bebê?' (Harry Potter)</translation>
+        <translation>A situação básica, na forma de um questionamento tipo &apos;e se ...&apos;. Ex: 
+&apos;E se o mais perigoso malvado feiticeiro não foi capaz de matar um bebê?&apos; (Harry Potter)</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1709"/>
@@ -2323,7 +2323,7 @@ próx. às palavras</translation>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>Substitua as aspas simples(') por:</translation>
+        <translation>Substitua as aspas simples(&apos;) por:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>
@@ -3359,8 +3359,8 @@ próx. às palavras</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="534"/>
-        <source>Image files (*.jpg; *.jpeg; *.png)</source>
-        <translation>Arquivos de imagem (*.jpg; *.jpeg; *.png)</translation>
+        <source>Image files</source>
+        <translation>Arquivos de imagem</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="550"/>
@@ -3446,7 +3446,7 @@ próx. às palavras</translation>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="47"/>
         <source>Split &apos;{}&apos;</source>
-        <translation>Separar '{}'</translation>
+        <translation>Separar &apos;{}&apos;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="51"/>

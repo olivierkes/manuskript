@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="id">
+<TS version="2.1" language="id_ID">
 <context>
     <name>ExportersManager</name>
     <message>
@@ -615,8 +615,8 @@
         <location filename="../manuskript/mainWindow.py" line="1704"/>
         <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous
                      evil wizard wasn&apos;t able to kill a baby?&apos; (Harry Potter)</source>
-        <translation>Situasi dasar, dalam bentuk pertanyaan 'Bagaiaman jika...?'. Cth: 'Bagaimana jika 
-                     penyihir jahat paling berbahaya tidak mampu membunuh seorang bayi?' (Harry Potter)</translation>
+        <translation>Situasi dasar, dalam bentuk pertanyaan &apos;Bagaiaman jika...?&apos;. Cth: &apos;Bagaimana jika 
+                     penyihir jahat paling berbahaya tidak mampu membunuh seorang bayi?&apos; (Harry Potter)</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1709"/>
@@ -3358,7 +3358,7 @@
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="534"/>
-        <source>Image files (*.jpg; *.jpeg; *.png)</source>
+        <source>Image files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

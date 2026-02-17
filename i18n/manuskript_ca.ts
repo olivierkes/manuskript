@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="ca">
+<TS version="2.1" language="ca_ES">
 <context>
     <name>ExportersManager</name>
     <message>
@@ -51,7 +51,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager_ui.py" line="178"/>
         <source>{HelpText}</source>
-        <translation>{Textd'Ajuda}</translation>
+        <translation>{Textd&apos;Ajuda}</translation>
     </message>
 </context>
 <context>
@@ -125,7 +125,7 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="631"/>
         <source>The protocol &quot;{}&quot; is not supported.</source>
-        <translation>No s'admet el protocol «{}».</translation>
+        <translation>No s&apos;admet el protocol «{}».</translation>
     </message>
 </context>
 <context>
@@ -554,17 +554,17 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1217"/>
         <source>Project {} saved.</source>
-        <translation>S'ha desat el projecte {}.</translation>
+        <translation>S&apos;ha desat el projecte {}.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1221"/>
         <source>WARNING: Project {} not saved.</source>
-        <translation>AVÍS: no s'ha desat el projecte {}.</translation>
+        <translation>AVÍS: no s&apos;ha desat el projecte {}.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1240"/>
         <source>Project {} loaded.</source>
-        <translation>S'ha carregat el projecte {}.</translation>
+        <translation>S&apos;ha carregat el projecte {}.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1246"/>
@@ -1021,7 +1021,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1566"/>
         <source>The log file &quot;{}&quot; will continue to be written to until Manuskript is closed.</source>
-        <translation>S'escriurà al fitxer de registre «{}» fins al tancament del Manuskript.</translation>
+        <translation>S&apos;escriurà al fitxer de registre «{}» fins al tancament del Manuskript.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1566"/>
@@ -1124,7 +1124,7 @@
     <message>
         <location filename="../manuskript/ui/search.py" line="46"/>
         <source>No results found</source>
-        <translation>No s'ha trobat cap resultat</translation>
+        <translation>No s&apos;ha trobat cap resultat</translation>
     </message>
 </context>
 <context>
@@ -1172,7 +1172,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1783"/>
         <source>Application settings</source>
-        <translation>Paràmetres de l'aplicació</translation>
+        <translation>Paràmetres de l&apos;aplicació</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1790"/>
@@ -3356,7 +3356,7 @@
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="534"/>
-        <source>Image files (*.jpg; *.jpeg; *.png)</source>
+        <source>Image files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

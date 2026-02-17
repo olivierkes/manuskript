@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="ko">
+<TS version="2.1" language="ko_KR">
 <context>
     <name>ExportersManager</name>
     <message>
@@ -2323,7 +2323,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>작은따옴표(')를 대신할 것:</translation>
+        <translation>작은따옴표(&apos;)를 대신할 것:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>
@@ -3359,8 +3359,8 @@
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="534"/>
-        <source>Image files (*.jpg; *.jpeg; *.png)</source>
-        <translation>그림 파일 (*.jpg; *.jpeg; *.png)</translation>
+        <source>Image files</source>
+        <translation>그림 파일</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="550"/>
@@ -3446,7 +3446,7 @@
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="47"/>
         <source>Split &apos;{}&apos;</source>
-        <translation>'{}' 쪼개기</translation>
+        <translation>&apos;{}&apos; 쪼개기</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="51"/>

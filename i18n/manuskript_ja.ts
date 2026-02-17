@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="ja">
+<TS version="2.1" language="ja_JP">
 <context>
     <name>ExportersManager</name>
     <message>
@@ -2323,7 +2323,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>一重引用符 (') を、次に置き換える：</translation>
+        <translation>一重引用符 (&apos;) を、次に置き換える：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>
@@ -3359,8 +3359,8 @@
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="534"/>
-        <source>Image files (*.jpg; *.jpeg; *.png)</source>
-        <translation>画像 (*.jpg; *.jpeg; *.png)</translation>
+        <source>Image files</source>
+        <translation>画像</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="550"/>
@@ -3432,7 +3432,7 @@
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="47"/>
         <source>Split &apos;{}&apos;</source>
-        <translation>分割 '{}'</translation>
+        <translation>分割 &apos;{}&apos;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="51"/>

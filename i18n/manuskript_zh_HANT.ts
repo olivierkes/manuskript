@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="zh_Hant">
+<TS version="2.1" language="zh_CN">
 <context>
     <name>ExportersManager</name>
     <message>
@@ -2323,7 +2323,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>替換直單引號（'）為：</translation>
+        <translation>替換直單引號（&apos;）為：</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>
@@ -3359,8 +3359,8 @@
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="534"/>
-        <source>Image files (*.jpg; *.jpeg; *.png)</source>
-        <translation>圖像文件(*.jpg; *.jpeg; *.png)</translation>
+        <source>Image files</source>
+        <translation type="unfinished">圖像文件</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="550"/>

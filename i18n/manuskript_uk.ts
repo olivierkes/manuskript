@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="uk">
+<TS version="2.1" language="uk_UA">
 <context>
     <name>ExportersManager</name>
     <message>
@@ -2323,7 +2323,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>Замінювати одинарні лапки (') на:</translation>
+        <translation>Замінювати одинарні лапки (&apos;) на:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>
@@ -3359,8 +3359,8 @@
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="534"/>
-        <source>Image files (*.jpg; *.jpeg; *.png)</source>
-        <translation>Файли зображень (*.jpg; *.jpeg; *.png)</translation>
+        <source>Image files</source>
+        <translation>Файли зображень</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="550"/>
@@ -3520,7 +3520,7 @@
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="135"/>
         <source>10,000</source>
-        <translation>10 000</translation>
+        <translation>10&#xa0;000</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="136"/>

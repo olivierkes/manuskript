@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="pt">
+<TS version="2.1" language="pt_BR">
 <context>
     <name>ExportersManager</name>
     <message>
@@ -2323,7 +2323,7 @@ junto a palavras</translation>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>Substituir aspas simples (') por:</translation>
+        <translation>Substituir aspas simples (&apos;) por:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>
@@ -3359,8 +3359,8 @@ junto a palavras</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="534"/>
-        <source>Image files (*.jpg; *.jpeg; *.png)</source>
-        <translation>Ficheiros de imagem (*.jpg; *.jpeg; *.png)</translation>
+        <source>Image files</source>
+        <translation type="unfinished">Ficheiros de imagem</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="550"/>

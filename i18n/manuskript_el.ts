@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="el">
+<TS version="2.1" language="el_GR">
 <context>
     <name>ExportersManager</name>
     <message>
@@ -3356,7 +3356,7 @@
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="534"/>
-        <source>Image files (*.jpg; *.jpeg; *.png)</source>
+        <source>Image files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

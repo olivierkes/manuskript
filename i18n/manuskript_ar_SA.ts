@@ -615,8 +615,8 @@
         <location filename="../manuskript/mainWindow.py" line="1704"/>
         <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous
                      evil wizard wasn&apos;t able to kill a baby?&apos; (Harry Potter)</source>
-        <translation>الموقف بشكل مبسط، بصيغة 'ماذا لو ...؟'. مثلاً: 'مذا لو كان أخطر وأشر 
-                     السحرة غير قادر على قتل طفل؟' (من رواية هاري بورتر)</translation>
+        <translation>الموقف بشكل مبسط، بصيغة &apos;ماذا لو ...؟&apos;. مثلاً: &apos;مذا لو كان أخطر وأشر 
+                     السحرة غير قادر على قتل طفل؟&apos; (من رواية هاري بورتر)</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1709"/>
@@ -3358,7 +3358,7 @@
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="534"/>
-        <source>Image files (*.jpg; *.jpeg; *.png)</source>
+        <source>Image files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

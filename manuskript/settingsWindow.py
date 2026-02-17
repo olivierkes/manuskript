@@ -548,7 +548,7 @@ class settingsWindow(QWidget, Ui_Settings):
         filename = QFileDialog.getOpenFileName(self,
                                                self.tr("Open Image"),
                                                lastDirectory,
-                                               self.tr("Image files (*.jpg; *.jpeg; *.png)"))[0]
+                                               self.tr("Image files") + " (*.png *.jpg *.jpeg);;*.* (*.*)")[0]
         if filename:
             try:
                 px = QPixmap()
