@@ -16,6 +16,16 @@ def rgbaFromColor(color: Color) -> Gdk.RGBA:
     rgba.alpha = 1.
     return rgba
 
+def rgbaFromHex(hexString: str) -> Gdk.RGBA:
+    rgba = Gdk.RGBA()
+    if rgba.parse(hexString):
+        return rgba
+
+def rgbaToHex(rgba: Gdk.RGBA):
+    r = int(rgba.red * 255)
+    g = int(rgba.green * 255)
+    b = int(rgba.blue * 255)
+    return "#{:02x}{:02x}{:02x}".format(r, g, b)
 
 def pixbufFromColor(color: Color) -> GdkPixbuf:
     pixbuf = GdkPixbuf.Pixbuf.new(GdkPixbuf.Colorspace.RGB, False, 8, 16, 16)

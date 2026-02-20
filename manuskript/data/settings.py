@@ -6,6 +6,89 @@ import os
 from manuskript.data.abstractData import AbstractData
 from manuskript.io.jsonFile import JsonFile
 
+class SettingsKeys:
+
+    AUTO_SAVE = "autoSave"
+    AUTO_SAVE_DELAY = "autoSaveDelay"
+    AUTO_SAVE_NO_CHANGES = "autoSaveNoChanges"
+    AUTO_SAVE_NO_CHANGES_DELAY = "autoSaveNoChangesDelay"
+    CORK_SIZE_FACTOR = "corkSizeFactor"
+    CORK_STYLE = "corkStyle"
+    COUNT_SPACES = "countSpaces"
+    DEFAULT_TEXT_TYPE = "defaultTextType"
+    DICT = "dict"
+    DONT_SHOW_DELETE_WARNING = "dontShowDeleteWarning"
+    FOLDER_VIEW = "folderView"
+    FULL_SCREEN_THEME = "fullScreenTheme"
+    LAST_TAB = "lastTab"
+    OPEN_INDEXES = "openIndexes"
+    OUTLINE_VIEW_COLUMNS = "outlineViewColumns"
+    SAVE_ON_QUIT = "saveOnQuit"
+    SAVE_TO_ZIP = "saveToZip"
+    SPELLCHECK = "spellcheck"
+    VIEW_MODE = "viewMode"
+
+    class CorkBackground:
+        COLOR = "corkBackground.color"
+        IMAGE = "corkBackground.image"
+
+    class FrequencyAnalyzer:
+        PHRASE_MAX = "frequencyAnalyzer.phraseMax"
+        PHRASE_MIN = "frequencyAnalyzer.phraseMin"
+        WORD_EXCLUDE = "frequencyAnalyzer.wordExclude"
+        WORD_MIN = "frequencyAnalyzer.wordMin"
+
+    class Revisions:
+        KEEP = "revisions.keep"
+        SMARTREMOVE = "revisions.smartremove"
+
+        class Rules:
+            DELAY_PER_MINUTE = "revisions.rules.600"
+            DELAY_PER_10_MINUTES = "revisions.rules.3600"
+            DELAY_PER_HOUR = "revisions.rules.86400"
+            DELAY_PER_DAY = "revisions.rules.2592000"
+            DELAY_PER_WEEK = "revisions.rules.null"
+    class TextEditor:
+        ALWAYS_CENTER = "textEditor.alwaysCenter"
+        BACKGROUND = "textEditor.background"
+        BACKGROUND_TRANSPARENT = "textEditor.backgroundTransparent"
+        CURSOR_NOT_BLINKING = "textEditor.cursorNotBlinking"
+        CURSOR_WIDTH = "textEditor.cursorWidth"
+        FOCUS_MODE = "textEditor.focusMode"
+        FONT = "textEditor.font"
+        FONT_COLOR = "textEditor.fontColor"
+        INDENT = "textEditor.indent"
+        LINE_SPACING = "textEditor.lineSpacing"
+        MARGINS_LR = "textEditor.marginsLR"
+        MARGINS_TB = "textEditor.marginsTB"
+        MAX_WIDTH = "textEditor.maxWidth"
+        MISSPELLED = "textEditor.misspelled"
+        SPACING_ABOVE = "textEditor.spacingAbove"
+        SPACING_BELOW = "textEditor.spacingBelow"
+        TAB_WIDTH = "textEditor.tabWidth"
+        TEXT_ALIGNMENT = "textEditor.textAlignment"
+
+    class ViewSettings:
+        class Cork:
+            BACKGROUND = "viewSettings.Cork.Background"
+            BORDER = "viewSettings.Cork.Border"
+            CORNER = "viewSettings.Cork.Corner"
+            ICON = "viewSettings.Cork.Icon"
+            TEXT = "viewSettings.Cork.Text"
+
+        class Outline:
+            BACKGROUND = "viewSettings.Outline.Background"
+            ICON = "viewSettings.Outline.Icon"
+            TEXT = "viewSettings.Outline.Text"
+
+        class Tree:
+            BACKGROUND = "viewSettings.Tree.Background"
+            ICON = "viewSettings.Tree.Icon"
+            INFO_FOLDER = "viewSettings.Tree.InfoFolder"
+            INFO_TEXT = "viewSettings.Tree.InfoText"
+            TEXT = "viewSettings.Tree.Text"
+            ICON_SIZE = "viewSettings.Tree.iconSize"
+
 
 class Settings(AbstractData):
 
@@ -23,7 +106,7 @@ class Settings(AbstractData):
 
     def get(self, key: str):
         props = self.properties
-        path = key.split(".")
+        path = key.split(".")        
 
         for part in path[:-1]:
             props = props.get(part)

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.38.2 
+<!-- Generated with glade 3.40.0 
 
 Copyright (C) 2015-2021 Olivier Keshavjee et al.
 
@@ -27,8 +27,187 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
   <!-- interface-name Manuskript -->
   <!-- interface-description Manuskript is an open-source tool for writers. -->
   <!-- interface-copyright 2015-2021 Olivier Keshavjee et al. -->
+  <object class="GtkAdjustment" id="adjustment_text_editor_area_left_right_margins">
+    <property name="upper">2048</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="adjustment_text_editor_area_max_width">
+    <property name="upper">4096</property>
+    <property name="value">500</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="adjustment_text_editor_area_top_bottom_margins">
+    <property name="upper">2048</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="adjustment_text_editor_cursor_block">
+    <property name="upper">99</property>
+    <property name="value">9</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="adjustment_text_editor_font_size">
+    <property name="lower">4</property>
+    <property name="upper">99</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="adjustment_text_editor_horizonzal_spacing">
+    <property name="upper">200</property>
+    <property name="value">5</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="adjustment_text_editor_line_spacing">
+    <property name="upper">999</property>
+    <property name="value">100</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="adjustment_text_editor_tab_width">
+    <property name="upper">200</property>
+    <property name="value">20</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="adjustment_text_editor_vertical_spacing">
+    <property name="upper">200</property>
+    <property name="value">5</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="adjustment_tree_icon_size">
+    <property name="lower">16</property>
+    <property name="upper">128</property>
+    <property name="value">16</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">10</property>
+  </object>
+  <object class="GtkListStore" id="color_type_store">
+    <columns>
+      <!-- column-name title -->
+      <column type="gchararray"/>
+    </columns>
+    <data>
+      <row>
+        <col id="0" translatable="yes">Nothing</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">POV</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">Label</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">Progress</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">Compile</col>
+      </row>
+    </data>
+  </object>
+  <object class="GtkListStore" id="focus_modes">
+    <columns>
+      <!-- column-name name -->
+      <column type="gchararray"/>
+      <!-- column-name internalid -->
+      <column type="gchararray"/>
+    </columns>
+    <data>
+      <row>
+        <col id="0" translatable="yes">None</col>
+        <col id="1" translatable="yes">none</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">Sentence</col>
+        <col id="1" translatable="yes">sentence</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">Line</col>
+        <col id="1" translatable="yes">line</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">Paragraph</col>
+        <col id="1" translatable="yes">paragraph</col>
+      </row>
+    </data>
+  </object>
+  <object class="GtkFileFilter" id="image_file_filter">
+    <mime-types>
+      <mime-type>image/jpeg</mime-type>
+      <mime-type>image/jpg</mime-type>
+      <mime-type>image/png</mime-type>
+    </mime-types>
+  </object>
+  <object class="GtkListStore" id="line_spacing">
+    <columns>
+      <!-- column-name name -->
+      <column type="gchararray"/>
+      <!-- column-name spacing_id -->
+      <column type="gint"/>
+    </columns>
+    <data>
+      <row>
+        <col id="0" translatable="yes">Single</col>
+        <col id="1">100</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">1.5 lines</col>
+        <col id="1">150</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">Double</col>
+        <col id="1">200</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">Proportional</col>
+        <col id="1">0</col>
+      </row>
+    </data>
+  </object>
+  <object class="GtkListStore" id="text_alignment">
+    <columns>
+      <!-- column-name name -->
+      <column type="gchararray"/>
+      <!-- column-name justification -->
+      <column type="GtkJustification"/>
+      <!-- column-name stock_id -->
+      <column type="gchararray"/>
+      <!-- column-name justification_id -->
+      <column type="gint"/>
+    </columns>
+    <data>
+      <row>
+        <col id="0" translatable="yes">Left</col>
+        <col id="1">left</col>
+        <col id="2" translatable="yes">format-justify-left</col>
+        <col id="3">0</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">Center</col>
+        <col id="1">center</col>
+        <col id="2" translatable="yes">format-justify-center</col>
+        <col id="3">1</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">Right</col>
+        <col id="1">right</col>
+        <col id="2" translatable="yes">format-justify-right</col>
+        <col id="3">2</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">Justify</col>
+        <col id="1">fill</col>
+        <col id="2" translatable="yes">format-justify-fill</col>
+        <col id="3">3</col>
+      </row>
+    </data>
+  </object>
   <object class="HdyPreferencesPage" id="views_page">
-	<property name="visible">True</property>
+    <property name="visible">True</property>
     <property name="can-focus">False</property>
     <property name="icon-name">applications-graphics-symbolic</property>
     <property name="title" translatable="yes">Views</property>
@@ -80,7 +259,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkComboBox">
+                          <object class="GtkComboBox" id="tree_icon_color">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="model">color_type_store</property>
@@ -126,7 +305,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkComboBox">
+                          <object class="GtkComboBox" id="tree_text_color">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="model">color_type_store</property>
@@ -171,7 +350,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkComboBox">
+                          <object class="GtkComboBox" id="tree_background_color">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="model">color_type_store</property>
@@ -229,12 +408,12 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                 <property name="label-xalign">0</property>
                 <property name="shadow-type">none</property>
                 <child>
-                  <object class="GtkScale">
+                  <object class="GtkScale" id="tree_icon_size">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="margin-start">12</property>
                     <property name="margin-top">8</property>
-                    <property name="adjustment">tree_icon_size</property>
+                    <property name="adjustment">adjustment_tree_icon_size</property>
                     <property name="show-fill-level">True</property>
                     <property name="fill-level">128</property>
                     <property name="round-digits">1</property>
@@ -272,7 +451,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                 <property name="label-xalign">0</property>
                 <property name="shadow-type">none</property>
                 <child>
-                  <object class="GtkCheckButton">
+                  <object class="GtkCheckButton" id="tree_char_word_counter">
                     <property name="label" translatable="yes">Count spaces as chars</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
@@ -330,13 +509,12 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                             <property name="orientation">vertical</property>
                             <property name="spacing">4</property>
                             <child>
-                              <object class="GtkRadioButton" id="radiobutton1">
+                              <object class="GtkRadioButton" id="tree_folders_item_count">
                                 <property name="label" translatable="yes">Show item count</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
                                 <property name="receives-default">False</property>
                                 <property name="draw-indicator">True</property>
-                                <property name="group">radiobutton2</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -345,13 +523,13 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkRadioButton" id="radiobutton2">
+                              <object class="GtkRadioButton" id="tree_folders_word_count">
                                 <property name="label" translatable="yes">Show word count</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
                                 <property name="receives-default">False</property>
                                 <property name="draw-indicator">True</property>
-                                <property name="group">radiobutton1</property>
+                                <property name="group">tree_folders_item_count</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -360,13 +538,13 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkRadioButton">
+                              <object class="GtkRadioButton" id="tree_folders_char_count">
                                 <property name="label" translatable="yes">Show char count</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
                                 <property name="receives-default">False</property>
                                 <property name="draw-indicator">True</property>
-                                <property name="group">radiobutton1</property>
+                                <property name="group">tree_folders_item_count</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -375,13 +553,13 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkRadioButton">
+                              <object class="GtkRadioButton" id="tree_folders_progress">
                                 <property name="label" translatable="yes">Show progress</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
                                 <property name="receives-default">False</property>
                                 <property name="draw-indicator">True</property>
-                                <property name="group">radiobutton1</property>
+                                <property name="group">tree_folders_item_count</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -390,13 +568,13 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkRadioButton">
+                              <object class="GtkRadioButton" id="tree_folders_summary">
                                 <property name="label" translatable="yes">Show summary</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
                                 <property name="receives-default">False</property>
                                 <property name="draw-indicator">True</property>
-                                <property name="group">radiobutton1</property>
+                                <property name="group">tree_folders_item_count</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -405,13 +583,13 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkRadioButton">
+                              <object class="GtkRadioButton" id="tree_folders_nothing">
                                 <property name="label" translatable="yes">Show nothing</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
                                 <property name="receives-default">False</property>
                                 <property name="draw-indicator">True</property>
-                                <property name="group">radiobutton1</property>
+                                <property name="group">tree_folders_item_count</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -453,13 +631,12 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                             <property name="orientation">vertical</property>
                             <property name="spacing">4</property>
                             <child>
-                              <object class="GtkRadioButton" id="radiobutton4">
+                              <object class="GtkRadioButton" id="tree_text_word_count">
                                 <property name="label" translatable="yes">Show word count</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
                                 <property name="receives-default">False</property>
                                 <property name="draw-indicator">True</property>
-                                <property name="group">radiobutton3</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -468,13 +645,13 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkRadioButton" id="radiobutton3">
+                              <object class="GtkRadioButton" id="tree_text_char_count">
                                 <property name="label" translatable="yes">Show char count</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
                                 <property name="receives-default">False</property>
                                 <property name="draw-indicator">True</property>
-                                <property name="group">radiobutton4</property>
+                                <property name="group">tree_text_word_count</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -483,13 +660,13 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkRadioButton">
+                              <object class="GtkRadioButton" id="tree_text_progress">
                                 <property name="label" translatable="yes">Show progress</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
                                 <property name="receives-default">False</property>
                                 <property name="draw-indicator">True</property>
-                                <property name="group">radiobutton4</property>
+                                <property name="group">tree_text_word_count</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -498,13 +675,13 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkRadioButton">
+                              <object class="GtkRadioButton" id="tree_text_summary">
                                 <property name="label" translatable="yes">Show summary</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
                                 <property name="receives-default">False</property>
                                 <property name="draw-indicator">True</property>
-                                <property name="group">radiobutton4</property>
+                                <property name="group">tree_text_word_count</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -513,13 +690,13 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkRadioButton">
+                              <object class="GtkRadioButton" id="tree_text_nothing">
                                 <property name="label" translatable="yes">Show nothing</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
                                 <property name="receives-default">False</property>
                                 <property name="draw-indicator">True</property>
-                                <property name="group">radiobutton4</property>
+                                <property name="group">tree_text_word_count</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -600,7 +777,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkComboBox">
+                          <object class="GtkComboBox" id="outline_icon_color">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="model">color_type_store</property>
@@ -646,7 +823,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkComboBox">
+                          <object class="GtkComboBox" id="outline_text_color">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="model">color_type_store</property>
@@ -691,7 +868,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkComboBox">
+                          <object class="GtkComboBox" id="outline_background_color">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="model">color_type_store</property>
@@ -761,7 +938,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <child>
-                          <object class="GtkCheckButton">
+                          <object class="GtkCheckButton" id="outline_visible_title">
                             <property name="label" translatable="yes">Title</property>
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
@@ -776,7 +953,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <child>
-                          <object class="GtkCheckButton">
+                          <object class="GtkCheckButton" id="outline_visible_pov">
                             <property name="label" translatable="yes">POV</property>
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
@@ -791,7 +968,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <child>
-                          <object class="GtkCheckButton">
+                          <object class="GtkCheckButton" id="outline_visible_label">
                             <property name="label" translatable="yes">Label</property>
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
@@ -806,7 +983,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <child>
-                          <object class="GtkCheckButton">
+                          <object class="GtkCheckButton" id="outline_visible_status">
                             <property name="label" translatable="yes">Status</property>
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
@@ -821,7 +998,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <child>
-                          <object class="GtkCheckButton">
+                          <object class="GtkCheckButton" id="outline_visible_compile">
                             <property name="label" translatable="yes">Compile</property>
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
@@ -836,7 +1013,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <child>
-                          <object class="GtkCheckButton">
+                          <object class="GtkCheckButton" id="outline_visible_word_count">
                             <property name="label" translatable="yes">Word count</property>
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
@@ -851,7 +1028,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <child>
-                          <object class="GtkCheckButton">
+                          <object class="GtkCheckButton" id="outline_visible_goal">
                             <property name="label" translatable="yes">Goal</property>
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
@@ -866,7 +1043,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <child>
-                          <object class="GtkCheckButton">
+                          <object class="GtkCheckButton" id="outline_visible_percentage">
                             <property name="label" translatable="yes">Percentage</property>
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
@@ -945,7 +1122,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkComboBox">
+                          <object class="GtkComboBox" id="index_cards_colors_icon_color">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="model">color_type_store</property>
@@ -991,7 +1168,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkComboBox">
+                          <object class="GtkComboBox" id="index_cards_colors_text_color">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="model">color_type_store</property>
@@ -1036,7 +1213,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkComboBox">
+                          <object class="GtkComboBox" id="index_cards_colors_background_color">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="model">color_type_store</property>
@@ -1081,7 +1258,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkComboBox">
+                          <object class="GtkComboBox" id="index_cards_colors_border_color">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="model">color_type_store</property>
@@ -1126,7 +1303,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkComboBox">
+                          <object class="GtkComboBox" id="index_cards_colors_corner_color">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="model">color_type_store</property>
@@ -1192,13 +1369,12 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                     <property name="orientation">vertical</property>
                     <property name="spacing">4</property>
                     <child>
-                      <object class="GtkRadioButton" id="radiobutton5">
+                      <object class="GtkRadioButton" id="index_card_old_style">
                         <property name="label" translatable="yes">Old style</property>
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <property name="receives-default">False</property>
                         <property name="draw-indicator">True</property>
-                        <property name="group">radiobutton6</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -1207,13 +1383,13 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkRadioButton" id="radiobutton6">
+                      <object class="GtkRadioButton" id="index_card_new_style">
                         <property name="label" translatable="yes">New style</property>
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <property name="receives-default">False</property>
                         <property name="draw-indicator">True</property>
-                        <property name="group">radiobutton5</property>
+                        <property name="group">index_card_old_style</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -1280,7 +1456,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkColorButton">
+                          <object class="GtkColorButton" id="index_cards_background_color">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <property name="receives-default">True</property>
@@ -1320,7 +1496,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkFileChooserButton">
+                          <object class="GtkFileChooserButton" id="index_cards_background_image">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="create-folders">False</property>
@@ -1410,7 +1586,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkColorButton">
+                          <object class="GtkColorButton" id="text_editor_colors_background">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <property name="receives-default">True</property>
@@ -1451,7 +1627,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkColorButton">
+                          <object class="GtkColorButton" id="text_editor_colors_foreground">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <property name="receives-default">True</property>
@@ -1472,7 +1648,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton">
+                      <object class="GtkButton" id="text_editor_colors_restore_defaults">
                         <property name="label" translatable="yes">Restore defaults</property>
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
@@ -1543,11 +1719,12 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkFontButton">
+                          <object class="GtkFontButton" id="text_editor_font_family">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="receives-default">False</property>
                             <property name="font">Sans 12</property>
+                            <property name="level">GTK_FONT_CHOOSER_LEVEL_FAMILY</property>
                           </object>
                           <packing>
                             <property name="expand">True</property>
@@ -1583,11 +1760,11 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkSpinButton">
+                          <object class="GtkSpinButton" id="text_editor_font_size">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <property name="input-purpose">number</property>
-                            <property name="adjustment">text_editor_font_size</property>
+                            <property name="adjustment">adjustment_text_editor_font_size</property>
                             <property name="numeric">True</property>
                             <property name="value">4</property>
                           </object>
@@ -1625,7 +1802,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkColorButton">
+                          <object class="GtkColorButton" id="text_editor_misspelled">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <property name="receives-default">True</property>
@@ -1690,7 +1867,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                         <property name="can-focus">False</property>
                         <property name="spacing">12</property>
                         <child>
-                          <object class="GtkCheckButton" id="checkbutton1">
+                          <object class="GtkCheckButton" id="text_editor_text_area_max_width">
                             <property name="label" translatable="yes">Max width:</property>
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
@@ -1706,12 +1883,12 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkSpinButton">
+                          <object class="GtkSpinButton" id="text_editor_text_area_width">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <property name="text" translatable="yes">0</property>
                             <property name="input-purpose">number</property>
-                            <property name="adjustment">text_editor_area_max_width</property>
+                            <property name="adjustment">adjustment_text_editor_area_max_width</property>
                             <property name="numeric">True</property>
                           </object>
                           <packing>
@@ -1748,12 +1925,12 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkSpinButton">
+                          <object class="GtkSpinButton" id="text_editor_text_area_top_bottom_margins">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <property name="text" translatable="yes">0</property>
                             <property name="input-purpose">number</property>
-                            <property name="adjustment">text_editor_area_top_bottom_margins</property>
+                            <property name="adjustment">adjustment_text_editor_area_top_bottom_margins</property>
                             <property name="numeric">True</property>
                           </object>
                           <packing>
@@ -1790,12 +1967,12 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkSpinButton">
+                          <object class="GtkSpinButton" id="text_editor_text_area_left_right_margins">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <property name="text" translatable="yes">0</property>
                             <property name="input-purpose">number</property>
-                            <property name="adjustment">text_editor_area_left_right_margins</property>
+                            <property name="adjustment">adjustment_text_editor_area_left_right_margins</property>
                             <property name="numeric">True</property>
                           </object>
                           <packing>
@@ -1871,7 +2048,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkComboBox">
+                          <object class="GtkComboBox" id="text_editor_paragraphs_alignment">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="model">text_alignment</property>
@@ -1923,7 +2100,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkComboBox">
+                          <object class="GtkComboBox" id="text_editor_paragraphs_line_spacing">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="model">line_spacing</property>
@@ -1955,11 +2132,11 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                         <property name="can-focus">False</property>
                         <property name="spacing">12</property>
                         <child>
-                          <object class="GtkSpinButton">
+                          <object class="GtkSpinButton" id="text_editor_paragraphs_line_spacing_proportional">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <property name="input-purpose">number</property>
-                            <property name="adjustment">text_editor_line_spacing</property>
+                            <property name="adjustment">adjustment_text_editor_line_spacing</property>
                             <property name="numeric">True</property>
                           </object>
                           <packing>
@@ -2007,11 +2184,11 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkSpinButton">
+                          <object class="GtkSpinButton" id="text_editor_paragraphs_tab_width">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <property name="input-purpose">number</property>
-                            <property name="adjustment">text_editor_tab_width</property>
+                            <property name="adjustment">adjustment_text_editor_tab_width</property>
                             <property name="numeric">True</property>
                             <property name="value">20</property>
                           </object>
@@ -2035,7 +2212,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                         <property name="can-focus">False</property>
                         <property name="spacing">12</property>
                         <child>
-                          <object class="GtkCheckButton">
+                          <object class="GtkCheckButton" id="text_editor_paragraphs_indent_first_line">
                             <property name="label" translatable="yes">Indent first line</property>
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
@@ -2087,11 +2264,11 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkSpinButton">
+                          <object class="GtkSpinButton" id="text_editor_paragraphs_spacing_above">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <property name="input-purpose">number</property>
-                            <property name="adjustment">text_editor_horizonzal_spacing</property>
+                            <property name="adjustment">adjustment_text_editor_horizonzal_spacing</property>
                             <property name="numeric">True</property>
                           </object>
                           <packing>
@@ -2114,11 +2291,11 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                         <property name="can-focus">False</property>
                         <property name="spacing">12</property>
                         <child>
-                          <object class="GtkSpinButton">
+                          <object class="GtkSpinButton" id="text_editor_paragraphs_spacing_below">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <property name="input-purpose">number</property>
-                            <property name="adjustment">text_editor_vertical_spacing</property>
+                            <property name="adjustment">adjustment_text_editor_vertical_spacing</property>
                             <property name="numeric">True</property>
                           </object>
                           <packing>
@@ -2192,7 +2369,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                         <property name="can-focus">False</property>
                         <property name="spacing">12</property>
                         <child>
-                          <object class="GtkCheckButton" id="checkbutton2">
+                          <object class="GtkCheckButton" id="text_editor_cursor_block_insertion">
                             <property name="label" translatable="yes">Use block insertion of</property>
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
@@ -2206,11 +2383,11 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkSpinButton">
+                          <object class="GtkSpinButton" id="text_editor_cursor_block_insertion_size">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <property name="input-purpose">number</property>
-                            <property name="adjustment">text_editor_cursor_block</property>
+                            <property name="adjustment">adjustment_text_editor_cursor_block</property>
                             <property name="numeric">True</property>
                           </object>
                           <packing>
@@ -2228,7 +2405,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkCheckButton" id="checkbutton3">
+                      <object class="GtkCheckButton" id="text_editor_cursor_disable_blinking">
                         <property name="label" translatable="yes">Disable blinking</property>
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
@@ -2243,7 +2420,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkCheckButton" id="checkbutton4">
+                      <object class="GtkCheckButton" id="text_editor_cursor_typewriter_mode">
                         <property name="label" translatable="yes">Typewriter mode</property>
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
@@ -2277,7 +2454,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkComboBox">
+                          <object class="GtkComboBox" id="text_editor_cursor_focus_mode">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="model">focus_modes</property>
@@ -2369,16 +2546,16 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
   </object>
   <object class="GtkSizeGroup">
     <widgets>
-      <widget name="checkbutton1"/>
+      <widget name="text_editor_text_area_max_width"/>
       <widget name="label21"/>
       <widget name="label20"/>
     </widgets>
   </object>
   <object class="GtkSizeGroup">
     <widgets>
-      <widget name="checkbutton2"/>
-      <widget name="checkbutton3"/>
-      <widget name="checkbutton4"/>
+      <widget name="text_editor_cursor_block_insertion"/>
+      <widget name="text_editor_cursor_disable_blinking"/>
+      <widget name="text_editor_cursor_typewriter_mode"/>
       <widget name="label33"/>
     </widgets>
   </object>
@@ -2392,166 +2569,5 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
       <widget name="label30"/>
       <widget name="label27"/>
     </widgets>
-  </object>
-  <object class="GtkListStore" id="color_type_store">
-    <columns>
-      <!-- column-name title -->
-      <column type="gchararray"/>
-    </columns>
-    <data>
-      <row>
-        <col id="0" translatable="yes">Nothing</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">POV</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">Label</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">Progress</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">Compile</col>
-      </row>
-    </data>
-  </object>
-  <object class="GtkListStore" id="focus_modes">
-    <columns>
-      <!-- column-name name -->
-      <column type="gchararray"/>
-    </columns>
-    <data>
-      <row>
-        <col id="0" translatable="yes">None</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">Sentence</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">Line</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">Paragraph</col>
-      </row>
-    </data>
-  </object>
-  <object class="GtkFileFilter" id="image_file_filter">
-    <mime-types>
-      <mime-type>image/jpeg</mime-type>
-      <mime-type>image/jpg</mime-type>
-      <mime-type>image/png</mime-type>
-    </mime-types>
-  </object>
-  <object class="GtkListStore" id="line_spacing">
-    <columns>
-      <!-- column-name name -->
-      <column type="gchararray"/>
-    </columns>
-    <data>
-      <row>
-        <col id="0" translatable="yes">Single</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">1.5 lines</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">Double</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">Proportional</col>
-      </row>
-    </data>
-  </object>
-  <object class="GtkListStore" id="text_alignment">
-    <columns>
-      <!-- column-name name -->
-      <column type="gchararray"/>
-      <!-- column-name justification -->
-      <column type="GtkJustification"/>
-      <!-- column-name stock_id -->
-      <column type="gchararray"/>
-    </columns>
-    <data>
-      <row>
-        <col id="0" translatable="yes">Left</col>
-        <col id="1">left</col>
-        <col id="2" translatable="yes">format-justify-left</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">Center</col>
-        <col id="1">center</col>
-        <col id="2" translatable="yes">format-justify-center</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">Right</col>
-        <col id="1">right</col>
-        <col id="2" translatable="yes">format-justify-right</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">Justify</col>
-        <col id="1">fill</col>
-        <col id="2" translatable="yes">format-justify-fill</col>
-      </row>
-    </data>
-  </object>
-  <object class="GtkAdjustment" id="text_editor_area_left_right_margins">
-    <property name="upper">2048</property>
-    <property name="step-increment">1</property>
-    <property name="page-increment">10</property>
-  </object>
-  <object class="GtkAdjustment" id="text_editor_area_max_width">
-    <property name="upper">4096</property>
-    <property name="value">500</property>
-    <property name="step-increment">1</property>
-    <property name="page-increment">10</property>
-  </object>
-  <object class="GtkAdjustment" id="text_editor_area_top_bottom_margins">
-    <property name="upper">2048</property>
-    <property name="step-increment">1</property>
-    <property name="page-increment">10</property>
-  </object>
-  <object class="GtkAdjustment" id="text_editor_cursor_block">
-    <property name="upper">99</property>
-    <property name="value">9</property>
-    <property name="step-increment">1</property>
-    <property name="page-increment">10</property>
-  </object>
-  <object class="GtkAdjustment" id="text_editor_font_size">
-    <property name="lower">4</property>
-    <property name="upper">99</property>
-    <property name="step-increment">1</property>
-    <property name="page-increment">10</property>
-  </object>
-  <object class="GtkAdjustment" id="text_editor_horizonzal_spacing">
-    <property name="upper">200</property>
-    <property name="value">5</property>
-    <property name="step-increment">1</property>
-    <property name="page-increment">10</property>
-  </object>
-  <object class="GtkAdjustment" id="text_editor_line_spacing">
-    <property name="upper">100</property>
-    <property name="value">100</property>
-    <property name="step-increment">1</property>
-    <property name="page-increment">10</property>
-  </object>
-  <object class="GtkAdjustment" id="text_editor_tab_width">
-    <property name="upper">200</property>
-    <property name="value">20</property>
-    <property name="step-increment">1</property>
-    <property name="page-increment">10</property>
-  </object>
-  <object class="GtkAdjustment" id="text_editor_vertical_spacing">
-    <property name="upper">200</property>
-    <property name="value">5</property>
-    <property name="step-increment">1</property>
-    <property name="page-increment">10</property>
-  </object>
-  <object class="GtkAdjustment" id="tree_icon_size">
-    <property name="lower">16</property>
-    <property name="upper">128</property>
-    <property name="value">16</property>
-    <property name="step-increment">1</property>
-    <property name="page-increment">10</property>
   </object>
 </interface>
