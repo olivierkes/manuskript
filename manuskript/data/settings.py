@@ -5,6 +5,7 @@ import os
 
 from manuskript.data.abstractData import AbstractData
 from manuskript.io.jsonFile import JsonFile
+from manuskript.data.links import LinkAction, Links
 
 class SettingsKeys:
 
@@ -95,6 +96,7 @@ class Settings(AbstractData):
     def __init__(self, path, initDefault: bool = True):
         AbstractData.__init__(self, os.path.join(path, "settings.txt"))
         self.file = JsonFile(self.dataPath)
+        self.links = Links()
         self.properties = dict()
 
         if initDefault:
@@ -116,7 +118,7 @@ class Settings(AbstractData):
     def isEnabled(self, key: str) -> bool:
         return self.properties.get(key, False) is True
 
-    def set(self, key: str, value):
+    def set(self, key: str, value, save: bool = True):
         props = self.properties
         path = key.split(".")
 
@@ -124,6 +126,9 @@ class Settings(AbstractData):
             props = props.get(part)
 
         props[path[-1:][0]] = value
+
+        if save:
+            self.links.call(LinkAction.UPDATE, None, self)
 
     def __iter__(self):
         return self.properties.__iter__()

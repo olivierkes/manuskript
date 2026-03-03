@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from gi.repository import Gtk, Gdk
+from gi.repository import Gtk, Gdk, GLib
 
 from manuskript.data import Settings, SettingsKeys
 from manuskript.ui.util import rgbaFromHex
@@ -16,6 +16,7 @@ class ViewsPage(AbstractPage):
 
         builder = Gtk.Builder()
         builder.add_from_file("ui/settings/views.glade")
+        self.treeIconSizeUpdateTimeoutId = None
         
         self.widget = builder.get_object("views_page")
 
@@ -199,7 +200,17 @@ class ViewsPage(AbstractPage):
         self.textEditorCursorFocusMode.connect("changed", self._textEditorCurosFocusModeChanged)
 
     def _treeIconSizeChanged(self, scale: Gtk.Scale):
-        self.settings.set(SettingsKeys.ViewSettings.Tree.ICON_SIZE, scale.get_value())
+        if self.treeIconSizeUpdateTimeoutId is not None:
+            GLib.source_remove(self.treeIconSizeUpdateTimeoutId)
+            self.treeIconSizeUpdateTimeoutId = None
+
+        self.treeIconSizeUpdateTimeoutId = GLib.timeout_add(300, self._applyTreeIconSize, scale.get_value())
+
+    def _applyTreeIconSize(self, value: float):
+        self.settings.set(SettingsKeys.ViewSettings.Tree.ICON_SIZE, int(value))
+
+        self.treeIconSizeUpdateTimeoutId = None
+        return False 
 
     def _outlineBackgroundColorChanged(self, combo: Gtk.ComboBox):
         value = self.getComboSelectedValue(combo, 0)

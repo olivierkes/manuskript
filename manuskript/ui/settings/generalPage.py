@@ -12,7 +12,7 @@ class GeneralPage(AbstractPage):
 
     def __init__(self, settings: Settings):
         self.settings = settings
-        self.appSettings = AppSettings()
+        self.appSettings = AppSettings.getCommonInstance()
 
         builder = Gtk.Builder()
         builder.add_from_file("ui/settings/general.glade")

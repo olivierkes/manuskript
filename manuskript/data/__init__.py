@@ -9,6 +9,7 @@ from manuskript.data.importance import Importance
 from manuskript.data.info import Info
 from manuskript.data.labels import LabelHost, Label
 from manuskript.data.links import LinkAction, Links
+from manuskript.data.signals import Signals
 from manuskript.data.outline import Outline, OutlineFolder, OutlineText, OutlineItem, OutlineState
 from manuskript.data.plots import Plots, PlotLine, PlotStep
 from manuskript.data.project import Project

@@ -3,7 +3,7 @@
 
 from gi.repository import GObject, Gtk
 
-from manuskript.data import Project
+from manuskript.data import Project, Signals
 from manuskript.plugin import loadPlugins
 from manuskript.ui.dialog import RenameDialog
 from manuskript.ui.views import *
@@ -25,7 +25,9 @@ class MainWindow:
         self.plugins = loadPlugins()
         self.project = None
 
-        self.appSettings = AppSettings()
+        self.appSettings = AppSettings.getCommonInstance()
+
+        self.signals = Signals.getCommonInstance()
 
         builder = Gtk.Builder()
         builder.add_from_file("ui/main.glade")
@@ -141,6 +143,8 @@ class MainWindow:
             self.worldView = unpackFromSlot(self.worldSlot, self.worldView)
             self.outlineView = unpackFromSlot(self.outlineSlot, self.outlineView)
             self.editorView = unpackFromSlot(self.editorSlot, self.editorView)
+
+            self.signals.clear()
 
             del self.project
             self.project = None

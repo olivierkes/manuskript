@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+from __future__ import annotations
 from enum import Enum
 from gi.repository import GLib
 import os
@@ -18,6 +19,7 @@ class AppSettingsKeys(Enum):
 class AppSettings:
     _instance = None
     _initialized = False
+    _initAllowed = False
 
     automaticLoad: bool
     generalLanguage: str
@@ -37,6 +39,22 @@ class AppSettings:
         bool: "set_boolean",
         float: "set_double"
     }
+
+    def __init__(self) -> None:
+        if not AppSettings._initAllowed:
+            raise Exception("Please use getUniqueInstance")
+        
+        self.callbacks: dict[str, list[Callable[[Any], None]]] = defaultdict(list)
+        AppSettings._initialized = True
+
+    @classmethod
+    def getCommonInstance(cls) -> AppSettings:
+        if cls._instance is None:
+            cls._initAllowed = True
+            cls._instance = cls()
+            cls._initAllowed = False
+
+        return cls._instance
 
     def __new__(cls):
         if cls._instance is None:

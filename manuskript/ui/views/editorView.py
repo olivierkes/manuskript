@@ -7,6 +7,7 @@ from manuskript.data import Project, OutlineFolder, OutlineText, OutlineItem, Ou
 from manuskript.ui.editor import GridItem
 from manuskript.ui.util import pixbufFromColor, iconByOutlineItemType
 from manuskript.util import validString, validInt, safeFraction
+import datetime
 
 
 class EditorView:
@@ -142,7 +143,7 @@ class EditorView:
         completedItem = outlineItem
         while completedItem is not None:
             if completedItem in self.editorItems:
-                self.loadOutlineData(self.outlineItem)
+                self.loadOutlineData(completedItem)
                 break
 
             completedItem = completedItem.parentItem()

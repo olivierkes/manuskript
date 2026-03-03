@@ -3,16 +3,18 @@
 
 from gi.repository import GObject, Gtk, Gdk
 
-from manuskript.data import Outline, OutlineFolder, OutlineText, OutlineItem, OutlineState, Plots, PlotLine, Characters, Character, Importance, Goal, Color
+from manuskript.data import Outline, OutlineFolder, OutlineText, OutlineItem, OutlineState, Plots, PlotLine, Characters, Character, Importance, Goal, Color, Signals
 from manuskript.ui.util import rgbaFromColor, pixbufFromColor
 from manuskript.util import validString, invalidString, validInt, invalidInt, CounterKind, countText
 from manuskript.ui.picker import LabelPicker, CharacterPicker, AbstractGridPicker
+import datetime
 
 class OutlineView:
     def __init__(self, outline: Outline):
         self.outline: Outline = outline
         self.outlineItem: OutlineItem = None
         self.outlineCompletion: list = []
+        self.signals: Signals = Signals.getCommonInstance()
 
         builder = Gtk.Builder()
         builder.add_from_file("ui/outline.glade")
@@ -104,6 +106,9 @@ class OutlineView:
 
         self.unloadOutlineData()
 
+        self.signals.connect("labels-changed", self._labelsChanged)
+        self.signals.connect("statuses-changed", self._statusesChanged)
+
     def populateLabelList(self):
         for pixbuf, text in self.labelStore:
             row = Gtk.ListBoxRow()
@@ -122,6 +127,24 @@ class OutlineView:
             self.labelListbox.add(row)
 
         self.labelListbox.show_all()
+
+    def __updateAllOutlineItems(self, items: list[OutlineItem]):
+        for item in items:
+            self.__updateOutlineItemInStore(item)
+            if isinstance(item, OutlineFolder):
+                self.__updateAllOutlineItems(item.items)
+
+    def _labelsChanged(self):
+        self.refreshLabelStore()
+        self.outlineStore.freeze_notify()
+        self.__updateAllOutlineItems(self.outline.items)
+        self.outlineStore.thaw_notify()
+
+    def _statusesChanged(self):
+        self.refreshStatusStore()
+        self.outlineStore.freeze_notify()
+        self.__updateAllOutlineItems(self.outline.items)
+        self.outlineStore.thaw_notify()
 
     def refreshLabelStore(self):
         self.labelStore.clear()
@@ -220,6 +243,11 @@ class OutlineView:
         self.outlineStore.set_value(tree_iter, 1, validString(outlineItem.title))
         self.outlineStore.set_value(tree_iter, 2, validString(outlineItem.label))
         self.outlineStore.set_value(tree_iter, 3, validString(outlineItem.status))
+        # status = validString(outlineItem.status)
+        # if self.outline.statuses.getStatus(status):
+        #     self.outlineStore.set_value(tree_iter, 3, validString(outlineItem.status))
+        # else:
+        #     self.outlineStore.set_value(tree_iter, 3, "")
         self.outlineStore.set_value(tree_iter, 4, outlineItem.compile)
         self.outlineStore.set_value(tree_iter, 5, wordCount)
         self.outlineStore.set_value(tree_iter, 6, goal)
