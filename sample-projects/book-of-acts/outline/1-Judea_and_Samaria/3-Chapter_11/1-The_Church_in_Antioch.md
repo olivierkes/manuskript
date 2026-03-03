@@ -4,6 +4,7 @@ type:           md
 notes:          {P:2:Paul and Barnabas fight}
                 {C:5:Barnabas}
 compile:        2
+charCount:      1489
 
 
  19 They therefore who were scattered abroad by the oppression that arose about Stephen traveled as far as Phoenicia, Cyprus, and Antioch, speaking the word to no one except to Jews only. 20 But there were some of them, men of Cyprus and Cyrene, who, when they had come to Antioch, spoke to the Hellenists,† preaching the Lord Jesus. 21 The hand of the Lord was with them, and a great number believed and turned to the Lord. 22 The report concerning them came to the ears of the assembly which was in Jerusalem. They sent out Barnabas to go as far as Antioch, 23 who, when he had come, and had seen the grace of God, was glad. He exhorted them all, that with purpose of heart they should remain near to the Lord. 24 For he was a good man, and full of the Holy Spirit and of faith, and many people were added to the Lord.

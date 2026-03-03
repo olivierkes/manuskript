@@ -2,6 +2,7 @@ title:          The persecutions
 ID:             21
 type:           md
 compile:        2
+charCount:      3331
 
 
  17 But the high priest rose up, and all those who were with him (which is the sect of the Sadducees), and they were filled with jealousy 18 and laid hands on the apostles, then put them in public custody. 19 But an angel of the Lord opened the prison doors by night, and brought them out and said, 20 “Go stand and speak in the temple to the people all the words of this life.”

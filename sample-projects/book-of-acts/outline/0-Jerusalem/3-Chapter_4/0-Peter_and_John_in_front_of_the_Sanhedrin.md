@@ -3,6 +3,7 @@ ID:             16
 type:           md
 POV:            0
 compile:        2
+charCount:      2652
 
 
  1 As they spoke to the people, the priests and the captain of the temple and the Sadducees came to them, 2 being upset because they taught the people and proclaimed in Jesus the resurrection from the dead. 3 They laid hands on them, and put them in custody until the next day, for it was now evening. 4 But many of those who heard the word believed, and the number of the men came to be about five thousand.

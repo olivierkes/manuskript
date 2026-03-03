@@ -3,6 +3,7 @@ ID:             17
 type:           md
 notes:          Mention: {C:4:Herod}
 compile:        2
+charCount:      1170
 
 
  23 Being let go, they came to their own company and reported all that the chief priests and the elders had said to them. 24 When they heard it, they lifted up their voice to God with one accord, and said, “O Lord, you are God, who made the heaven, the earth, the sea, and all that is in them; 25 who by the mouth of your servant, David, said,

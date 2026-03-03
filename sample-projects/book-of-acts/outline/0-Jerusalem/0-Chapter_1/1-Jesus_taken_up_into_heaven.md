@@ -3,6 +3,7 @@ ID:             2
 type:           md
 notes:          {P:0:The good news spreads from Jerusalem to Rome}
 compile:        2
+charCount:      1089
 
 
 4 Being assembled together with them, he commanded them, “Don’t depart from Jerusalem, but wait for the promise of the Father, which you heard from me. 5  For John indeed baptized in water, but you will be baptized in the Holy Spirit not many days from now.”

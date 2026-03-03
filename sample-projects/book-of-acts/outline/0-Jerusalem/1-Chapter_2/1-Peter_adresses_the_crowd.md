@@ -4,6 +4,7 @@ type:           md
 POV:            0
 notes:          {P:0:The good news spreads from Jerusalem to Rome}
 compile:        2
+charCount:      3475
 
 
 14 But Peter, standing up with the eleven, lifted up his voice, and spoke out to them, “You men of Judea, and all you who dwell at Jerusalem, let this be known to you, and listen to my words. 15 For these aren’t drunken, as you suppose, seeing it is only the third hour of the day. 16 But this is what has been spoken through the prophet Joel:

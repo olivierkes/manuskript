@@ -5,6 +5,7 @@ POV:            1
 notes:          {P:2:Paul and Barnabas fight}
                 {C:5:Barnabas}
 compile:        2
+charCount:      1576
 
 
 Saul stayed several days with the disciples who were at Damascus. 20 Immediately in the synagogues he proclaimed the Christ, that he is the Son of God. 21 All who heard him were amazed, and said, “Isn’t this he who in Jerusalem made havoc of those who called on this name? And he had come here intending to bring them bound before the chief priests!”

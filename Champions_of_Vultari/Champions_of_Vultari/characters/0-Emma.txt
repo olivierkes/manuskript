@@ -1,0 +1,5 @@
+Name:                Emma
+ID:                  0
+Importance:          2
+POV:                 True
+Color:               #aa8c92

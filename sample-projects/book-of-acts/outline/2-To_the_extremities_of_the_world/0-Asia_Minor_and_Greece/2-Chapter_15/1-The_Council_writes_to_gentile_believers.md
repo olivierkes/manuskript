@@ -3,6 +3,7 @@ ID:             58
 type:           md
 notes:          {C:5:Barnabas}
 compile:        2
+charCount:      1737
 
 
  22 Then it seemed good to the apostles and the elders, with the whole assembly, to choose men out of their company, and send them to Antioch with Paul and Barnabas: Judas called Barsabbas, and Silas, chief men among the brothers. ‡ 23 They wrote these things by their hand:

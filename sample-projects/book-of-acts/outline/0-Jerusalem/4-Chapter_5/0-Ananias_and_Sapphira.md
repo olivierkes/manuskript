@@ -2,6 +2,7 @@ title:          Ananias and Sapphira
 ID:             19
 type:           md
 compile:        2
+charCount:      1316
 
 
  1 But a certain man named Ananias, with Sapphira, his wife, sold a possession, 2 and kept back part of the price, his wife also being aware of it, then brought a certain part and laid it at the apostles’ feet. 3 But Peter said, “Ananias, why has Satan filled your heart to lie to the Holy Spirit and to keep back part of the price of the land? 4 While you kept it, didn’t it remain your own? After it was sold, wasn’t it in your power? How is it that you have conceived this thing in your heart? You haven’t lied to men, but to God.”

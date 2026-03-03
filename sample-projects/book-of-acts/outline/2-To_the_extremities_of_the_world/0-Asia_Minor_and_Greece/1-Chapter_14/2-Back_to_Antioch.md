@@ -2,6 +2,7 @@ title:          Back to Antioch
 ID:             56
 type:           md
 compile:        2
+charCount:      927
 
 
 21 When they had preached the Good News to that city, and had made many disciples, they returned to Lystra, Iconium, and Antioch, 22 strengthening the souls of the disciples, exhorting them to continue in the faith, and that through many afflictions we must enter into God’s Kingdom. 23 When they had appointed elders for them in every assembly, and had prayed with fasting, they commended them to the Lord, on whom they had believed.

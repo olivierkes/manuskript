@@ -4,6 +4,7 @@ type:           md
 POV:            0
 notes:          {P:1}
 compile:        2
+charCount:      920
 
 
  1 Now there was a certain man in Caesarea, Cornelius by name, a centurion of what was called the Italian Regiment, 2 a devout man, and one who feared God with all his house, who gave gifts for the needy generously to the people, and always prayed to God. 3 At about the ninth hour of the day,* he clearly saw in a vision an angel of God coming to him, and saying to him, “Cornelius!”

@@ -4,6 +4,7 @@ type:           md
 POV:            0
 notes:          Mention: {C:4:Herod}
 compile:        2
+charCount:      2469
 
 
  1 Now about that time, King Herod stretched out his hands to oppress some of the assembly. 2 He killed James, the brother of John, with the sword. 3 When he saw that it pleased the Jews, he proceeded to seize Peter also. This was during the days of unleavened bread. 4 When he had arrested him, he put him in prison, and delivered him to four squads of four soldiers each to guard him, intending to bring him out to the people after the Passover. 5 Peter therefore was kept in the prison, but constant prayer was made by the assembly to God for him. 6 The same night when Herod was about to bring him out, Peter was sleeping between two soldiers, bound with two chains. Guards in front of the door kept the prison.

@@ -3,6 +3,7 @@ ID:             53
 type:           md
 notes:          {C:5:Barnabas}
 compile:        2
+charCount:      4914
 
 
  13 Now Paul and his company set sail from Paphos, and came to Perga in Pamphylia. John departed from them and returned to Jerusalem. 14 But they, passing on from Perga, came to Antioch of Pisidia. They went into the synagogue on the Sabbath day, and sat down. 15 After the reading of the law and the prophets, the rulers of the synagogue sent to them, saying, “Brothers, if you have any word of exhortation for the people, speak.”

@@ -4,6 +4,7 @@ type:           md
 notes:          {P:1:Peter needs to broaden his understanding of the Gospel}
                 {C:5:Barnabas}
 compile:        2
+charCount:      2634
 
 
  1 Some men came down from Judea and taught the brothers,* “Unless you are circumcised after the custom of Moses, you can’t be saved.” 2 Therefore when Paul and Barnabas had no small discord and discussion with them, they appointed Paul and Barnabas, and some others of them, to go up to Jerusalem to the apostles and elders about this question. 3 They, being sent on their way by the assembly, passed through both Phoenicia and Samaria, declaring the conversion of the Gentiles. They caused great joy to all the brothers. 4 When they had come to Jerusalem, they were received by the assembly and the apostles and the elders, and they reported everything that God had done with them.

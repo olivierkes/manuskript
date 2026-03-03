@@ -3,6 +3,7 @@ ID:             39
 type:           md
 POV:            0
 compile:        2
+charCount:      1404
 
 
  32 As Peter went throughout all those parts, he came down also to the saints who lived at Lydda. 33 There he found a certain man named Aeneas, who had been bedridden for eight years, because he was paralyzed. 34 Peter said to him, “Aeneas, Jesus Christ heals you. Get up and make your bed!” Immediately he arose. 35 All who lived at Lydda and in Sharon saw him, and they turned to the Lord.

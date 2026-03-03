@@ -4,5 +4,6 @@ type:           folder
 notes:          {P:1:Peter needs to broaden his understanding of the Gospel}
 compile:        2
 setGoal:        1000
+charCount:      5749
 
 
