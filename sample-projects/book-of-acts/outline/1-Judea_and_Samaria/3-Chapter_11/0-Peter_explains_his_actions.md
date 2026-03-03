@@ -4,6 +4,7 @@ type:           md
 POV:            0
 notes:          {P:1:Peter needs to broaden his understanding of the Gospel}
 compile:        2
+charCount:      1963
 
 
  1 Now the apostles and the brothers* who were in Judea heard that the Gentiles had also received the word of God. 2 When Peter had come up to Jerusalem, those who were of the circumcision contended with him, 3 saying, “You went in to uncircumcised men, and ate with them!”

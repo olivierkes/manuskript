@@ -3,6 +3,7 @@ ID:             25
 type:           md
 POV:            3
 compile:        2
+charCount:      794
 
 
  54 Now when they heard these things, they were cut to the heart, and they gnashed at him with their teeth. 55 But he, being full of the Holy Spirit, looked up steadfastly into heaven and saw the glory of God, and Jesus standing on the right hand of God, 56 and said, “Behold, I see the heavens opened, and the Son of Man standing at the right hand of God!”

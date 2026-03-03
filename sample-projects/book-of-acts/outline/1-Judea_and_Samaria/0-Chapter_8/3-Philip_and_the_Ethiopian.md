@@ -3,6 +3,7 @@ ID:             36
 type:           md
 POV:            2
 compile:        2
+charCount:      1778
 
 
 6 But an angel of the Lord spoke to Philip, saying, “Arise, and go toward the south to the way that goes down from Jerusalem to Gaza. This is a desert.”

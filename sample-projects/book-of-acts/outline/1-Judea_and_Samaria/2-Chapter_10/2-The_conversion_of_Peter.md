@@ -3,6 +3,7 @@ ID:             42
 type:           md
 POV:            0
 compile:        2
+charCount:      3212
 
 
 On the next day Peter arose and went out with them, and some of the brothers from Joppa accompanied him. 24 On the next day they entered into Caesarea. Cornelius was waiting for them, having called together his relatives and his near friends. 25 When Peter entered, Cornelius met him, fell down at his feet, and worshiped him. 26 But Peter raised him up, saying, “Stand up! I myself am also a man.” 27 As he talked with him, he went in and found many gathered together. 28 He said to them, “You yourselves know how it is an unlawful thing for a man who is a Jew to join himself or come to one of another nation, but God has shown me that I shouldn’t call any man unholy or unclean. 29 Therefore I also came without complaint when I was sent for. I ask therefore, why did you send for me?”

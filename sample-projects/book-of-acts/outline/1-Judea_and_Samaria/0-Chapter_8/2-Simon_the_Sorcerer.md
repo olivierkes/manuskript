@@ -3,6 +3,7 @@ ID:             33
 type:           md
 POV:            2
 compile:        2
+charCount:      1938
 
 
  9 But there was a certain man, Simon by name, who used to practice sorcery in the city and amazed the people of Samaria, making himself out to be some great one, 10 to whom they all listened, from the least to the greatest, saying, “This man is that great power of God.” 11 They listened to him, because for a long time he had amazed them with his sorceries. 12 But when they believed Philip preaching good news concerning God’s Kingdom and the name of Jesus Christ, they were baptized, both men and women. 13 Simon himself also believed. Being baptized, he continued with Philip. Seeing signs and great miracles occurring, he was amazed.

@@ -3,6 +3,7 @@ ID:             3
 type:           md
 notes:          {C:2:Philip}
 compile:        2
+charCount:      2000
 
 
 12 Then they returned to Jerusalem from the mountain called Olivet, which is near Jerusalem, a Sabbath day’s journey away. 13 When they had come in, they went up into the upper room where they were staying; that is Peter, John, James, Andrew, Philip, Thomas, Bartholomew, Matthew, James the son of Alphaeus, Simon the Zealot, and Judas the son of James. 14 All these with one accord continued steadfastly in prayer and supplication, along with the women, and Mary the mother of Jesus, and with his brothers.

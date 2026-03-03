@@ -3,6 +3,7 @@ ID:             41
 type:           md
 POV:            0
 compile:        2
+charCount:      1617
 
 
 9 Now on the next day as they were on their journey, and got close to the city, Peter went up on the housetop to pray at about noon. 10 He became hungry and desired to eat, but while they were preparing, he fell into a trance. 11 He saw heaven opened and a certain container descending to him, like a great sheet let down by four corners on the earth, 12 in which were all kinds of four-footed animals of the earth, wild animals, reptiles, and birds of the sky. 13 A voice came to him, “Rise, Peter, kill and eat!”

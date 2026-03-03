@@ -3,6 +3,7 @@ ID:             37
 type:           md
 POV:            1
 compile:        2
+charCount:      2175
 
 
  1 But Saul, still breathing threats and slaughter against the disciples of the Lord, went to the high priest 2 and asked for letters from him to the synagogues of Damascus, that if he found any who were of the Way, whether men or women, he might bring them bound to Jerusalem. 3 As he traveled, he got close to Damascus, and suddenly a light from the sky shone around him. 4 He fell on the earth, and heard a voice saying to him, “Saul, Saul, why do you persecute me?”

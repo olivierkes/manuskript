@@ -9,8 +9,9 @@
     },
     "corkSizeFactor": 84,
     "corkStyle": "new",
+    "countSpaces": true,
     "defaultTextType": "md",
-    "dict": "en_US",
+    "dict": "PyEnchant:en_US",
     "dontShowDeleteWarning": false,
     "folderView": "cork",
     "frequencyAnalyzer": {
@@ -20,8 +21,17 @@
         "wordMin": 1
     },
     "fullScreenTheme": "gentleblues",
+    "fullscreenSettings": {
+        "autohide-bottom": true,
+        "autohide-left": true,
+        "autohide-top": true
+    },
     "lastTab": 6,
     "openIndexes": [
+        0,
+        [
+            null
+        ],
         null
     ],
     "outlineViewColumns": [
@@ -33,6 +43,7 @@
         13,
         7
     ],
+    "progressChars": false,
     "revisions": {
         "keep": true,
         "rules": {
@@ -48,10 +59,12 @@
     "saveToZip": false,
     "spellcheck": false,
     "textEditor": {
+        "alwaysCenter": false,
         "background": "#fff",
         "backgroundTransparent": false,
         "cursorNotBlinking": false,
         "cursorWidth": 1,
+        "focusMode": false,
         "font": "DejaVu Sans,10,-1,5,50,0,0,0,0,0",
         "fontColor": "#000",
         "indent": true,
