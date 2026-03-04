@@ -124,7 +124,6 @@ class FrequencyWindow(AbstractDialog):
             self.hide()
     
     def __completeOutlineItem(self):
-        print("[FREQUENCYWINDOW] : start")
         outline_item = self.outlineCompletion.pop(0)
 
         if isinstance(outline_item, OutlineFolder):
@@ -148,7 +147,6 @@ class FrequencyWindow(AbstractDialog):
             self.phrasesProgress.set_fraction(fraction)
 
         if incomplete > 0:
-            print("[FREQUENCYWINDOW] : end")
             return True
         
         patterns = list()
@@ -207,7 +205,6 @@ class FrequencyWindow(AbstractDialog):
 
         self.analyzeWords.set_sensitive(True)
         self.analyzePhrases.set_sensitive(True)
-        print("[FREQUENCYWINDOW] : end")
         return False
     
     def analyze(self, status: AnalyzeStatus):
@@ -232,8 +229,6 @@ class FrequencyWindow(AbstractDialog):
                 self.wordsProgress.set_fraction(0.0)
             elif self.analyzeStatus == AnalyzeStatus.PHRASES:
                 self.phrasesProgress.set_fraction(0.0)
-
-            print("[FREQUENCYWINDOW] : idle_add")
 
             GObject.idle_add(self.__completeOutlineItem)
         for outline_item in project.outline:
