@@ -148,8 +148,8 @@ class EditorView:
 
             completedItem = completedItem.parentItem()
 
-        if len(self.outlineCompletion) == 0 and not self.outlineItem:
-            self.unloadOutlineData()
+        if len(self.outlineCompletion) == 0:
+            self.loadOutlineData(self.outlineItem)
 
         return len(self.outlineCompletion) > 0
 
