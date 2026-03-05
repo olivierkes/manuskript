@@ -148,6 +148,9 @@ class EditorView:
 
             completedItem = completedItem.parentItem()
 
+        if len(self.outlineCompletion) == 0 and not self.outlineItem:
+            self.unloadOutlineData()
+
         return len(self.outlineCompletion) > 0
 
     def __appendOutlineItem(self, outlineItem: OutlineItem, parent_iter=None):
