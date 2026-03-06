@@ -3,14 +3,18 @@
 
 from gi.repository import Gtk
 
+from manuskript.ui.views.abstractView import AbstractView
+
 from manuskript.data import Plots, PlotLine, PlotStep, Importance, LinkAction, Characters, Character, UniqueID
 from manuskript.ui.util import rgbaFromColor, pixbufFromColor
 from manuskript.util import validString, invalidString, validInt, invalidInt
 from manuskript.ui.picker.characterPicker import CharacterPicker
 
-class PlotView:
+class PlotView(AbstractView):
 
     def __init__(self, plots: Plots, characters: Characters):
+        AbstractView.__init__(self)
+        
         self.plots: Plots = plots
         self.plotLine: PlotLine = None
         self.plotStep: PlotStep = None
@@ -439,6 +443,3 @@ class PlotView:
         text = buffer.get_text(start_iter, end_iter, False)
 
         self.plotStep.summary = invalidString(text)
-
-    def show(self):
-        self.widget.show_all()

@@ -3,13 +3,17 @@
 
 from gi.repository import Gtk
 
+from manuskript.ui.views.abstractView import AbstractView
+
 from manuskript.data import Summary
 from manuskript.util import WordCounter, PageCounter, validString, invalidString
 
 
-class SummaryView:
+class SummaryView(AbstractView):
 
     def __init__(self, summary: Summary):
+        AbstractView.__init__(self)
+        
         self.summary = summary
 
         builder = Gtk.Builder()
@@ -48,9 +52,6 @@ class SummaryView:
 
         self.nextButton = builder.get_object("next_button")
         self.nextButton.connect("clicked", self._nextClicked)
-
-    def show(self):
-        self.widget.show_all()
 
     def _summaryStackChanged(self, combo: Gtk.ComboBox):
         tree_iter = combo.get_active_iter()

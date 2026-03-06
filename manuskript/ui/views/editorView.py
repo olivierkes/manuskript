@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from gi.repository import GObject, Gtk, Pango, Gdk
+from gi.repository import GLib, Gtk, Pango, Gdk
+
+from manuskript.ui.views.abstractView import AbstractView
 
 from manuskript.data import Project, OutlineFolder, OutlineText, OutlineItem, OutlineState, Goal
 from manuskript.ui.editor import GridItem
@@ -9,13 +11,17 @@ from manuskript.ui.util import pixbufFromColor, iconByOutlineItemType
 from manuskript.util import validString, validInt, safeFraction
 
 
-class EditorView:
+class EditorView(AbstractView):
 
     def __init__(self, project: Project):
+        AbstractView.__init__(self)
+        
         self.project = project
         self.outlineItem = None
         self.outlineCompletion = []
+        self.idleCompletion = 0
         self.editorItems = list()
+        self.forceReload = False
 
         builder = Gtk.Builder()
         builder.add_from_file("ui/editor.glade")
@@ -90,6 +96,12 @@ class EditorView:
         self.counterProgressBar = builder.get_object("counter_progress")
 
         self.unloadOutlineData()
+    
+    def activate(self):
+        AbstractView.activate(self)
+
+        if self.forceReload:
+            self.reloadOutlineData()
 
     def refreshLabelStore(self):
         self.labelStore.clear()
@@ -142,7 +154,7 @@ class EditorView:
         completedItem = outlineItem
         while completedItem is not None:
             if completedItem in self.editorItems:
-                self.loadOutlineData(self.outlineItem)
+                self.reloadOutlineData()
                 break
 
             completedItem = completedItem.parentItem()
@@ -161,8 +173,8 @@ class EditorView:
 
         if outlineItem.state != OutlineState.COMPLETE:
             if len(self.outlineCompletion) == 0:
-                GObject.idle_add(self.__completeOutlineItem)
-
+                self.idleCompletion = GLib.idle_add(self.__completeOutlineItem)
+            
             self.outlineCompletion.append((tree_iter, outlineItem))
 
         self.__updateOutlineItem(tree_iter, outlineItem)
@@ -201,6 +213,12 @@ class EditorView:
                 continue
 
             self.__updateEditorOutlineItem(list_iter, outlineItem)
+    
+    def reloadOutlineData(self):
+        if self.active:
+            self.loadOutlineData(self.outlineItem)
+        else:
+            self.forceReload = True
 
     def loadOutlineData(self, outlineItem: OutlineItem):
         if outlineItem is None:
@@ -224,6 +242,7 @@ class EditorView:
         self.counterProgressBar.set_fraction(safeFraction(textCount, 0, goalCount))
 
         self.outlineItem = outlineItem
+        self.forceReload = False
 
     def unloadOutlineData(self):
         self.outlineItem = None
@@ -236,6 +255,8 @@ class EditorView:
         self.counterLabel.set_text("{0} {1}".format(textCount, goalKind.name.lower()))
         self.counterProgressBar.set_text("{0} / {1} {2}".format(textCount, goalCount, goalKind.name.lower()))
         self.counterProgressBar.set_fraction(safeFraction(textCount, 0, goalCount))
+
+        self.forceReload = False
 
     def __appendOutlineItemText(self, outlineItem: OutlineItem, level: int = 1):
         end_iter = self.editorTextBuffer.get_end_iter()
@@ -414,9 +435,6 @@ class EditorView:
             return
 
         self.__openOutlineItem(self.outlineItem.parentItem())
-
-    def show(self):
-        self.widget.show_all()
 
     def cutSelection(self):
         if not self.editorTextBuffer.get_has_selection():

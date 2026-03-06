@@ -3,14 +3,18 @@
 
 from gi.repository import Gtk
 
+from manuskript.ui.views.abstractView import AbstractView
+
 from manuskript.data import Characters, Character, Importance, Color
 from manuskript.ui.util import rgbaFromColor, pixbufFromColor
 from manuskript.util import validString, invalidString, validInt, invalidInt
 
 
-class CharactersView:
+class CharactersView(AbstractView):
 
     def __init__(self, characters: Characters):
+        AbstractView.__init__(self)
+
         self.characters = characters
         self.character = None
 
@@ -456,6 +460,3 @@ class CharactersView:
         text = buffer.get_text(start_iter, end_iter, False)
 
         self.character.notes = invalidString(text)
-
-    def show(self):
-        self.widget.show_all()
