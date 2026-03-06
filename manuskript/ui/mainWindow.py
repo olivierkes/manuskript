@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from gi.repository import GObject, Gtk
+from gi.repository import GLib, GObject, Gtk
 
 from manuskript.data import Project, Signals
 from manuskript.plugin import loadPlugins
@@ -60,6 +60,8 @@ class MainWindow:
         self.outlineView = None
         self.editorView = None
 
+        self.idleStackSelection = 0
+
         self.startupWindow = StartupWindow(self)
         self.aboutDialog = AboutDialog(self)
         self.frequencyWindow = FrequencyWindow(self)
@@ -110,6 +112,46 @@ class MainWindow:
 
     def getProject(self):
         return self.project
+    
+    def __checkStackSelection(self, selected=None):
+        slot = self.mainStack.get_visible_child()
+
+        self.idleStackSelection = GLib.timeout_add(100, self.__checkStackSelection, slot, priority=GLib.PRIORITY_HIGH_IDLE)
+        
+        if selected == slot:
+            return False
+        
+        if self.generalSlot == selected:
+            self.generalView.deactivate()
+        elif self.summarySlot == selected:
+            self.summaryView.deactivate()
+        elif self.charactersSlot == selected:
+            self.charactersView.deactivate()
+        elif self.plotSlot == selected:
+            self.plotView.deactivate()
+        elif self.worldSlot == selected:
+            self.worldView.deactivate()
+        elif self.outlineSlot == selected:
+            self.outlineView.deactivate()
+        elif self.editorSlot == selected:
+            self.editorView.deactivate()
+        
+        if self.generalSlot == slot:
+            self.generalView.activate()
+        elif self.summarySlot == slot:
+            self.summaryView.activate()
+        elif self.charactersSlot == slot:
+            self.charactersView.activate()
+        elif self.plotSlot == slot:
+            self.plotView.activate()
+        elif self.worldSlot == slot:
+            self.worldView.activate()
+        elif self.outlineSlot == slot:
+            self.outlineView.activate()
+        elif self.editorSlot == slot:
+            self.editorView.activate()
+        
+        return False
 
     def openProject(self, path=None):
         if self.project is not None:
@@ -131,10 +173,19 @@ class MainWindow:
         self.outlineView = packViewIntoSlot(self.outlineSlot, OutlineView, self.project.outline)
         self.editorView = packViewIntoSlot(self.editorSlot, EditorView, self.project)
 
+        if 0 != self.idleStackSelection:
+            GLib.source_remove(self.idleStackSelection)
+
+        self.idleStackSelection = GLib.idle_add(self.__checkStackSelection, priority=GLib.PRIORITY_HIGH_IDLE)
+
         self.startupWindow.hide()
         self.show()
 
     def closeProject(self):
+        if 0 != self.idleStackSelection:
+            GLib.source_remove(self.idleStackSelection)
+            self.idleStackSelection = 0
+
         if self.project is not None:
             self.generalView = unpackFromSlot(self.generalSlot, self.generalView)
             self.summaryView = unpackFromSlot(self.summarySlot, self.summaryView)

@@ -3,12 +3,16 @@
 
 from gi.repository import Gtk, Gdk
 
+from manuskript.ui.views.abstractView import AbstractView
+
 from manuskript.data import World, WorldItem
 from manuskript.util import validString, invalidString, validInt, invalidInt
 
-class WorldView:
+class WorldView(AbstractView):
 
     def __init__(self, world: World):
+        AbstractView.__init__(self)
+        
         self.world: World = world
         self.worldItem: WorldItem = None
 
@@ -324,6 +328,3 @@ class WorldView:
         text = buffer.get_text(start_iter, end_iter, False)
 
         self.worldItem.conflict = invalidString(text)
-
-    def show(self):
-        self.widget.show_all()

@@ -3,13 +3,17 @@
 
 from gi.repository import Gtk
 
+from manuskript.ui.views.abstractView import AbstractView
+
 from manuskript.data import Info
 from manuskript.util import validString, invalidString
 
 
-class GeneralView:
+class GeneralView(AbstractView):
 
     def __init__(self, info: Info):
+        AbstractView.__init__(self)
+        
         self.info = info
 
         builder = Gtk.Builder()
@@ -123,6 +127,3 @@ class GeneralView:
 
     def _emailInsertedText(self, buffer: Gtk.EntryBuffer, position, value, count):
         self.__emailChanged(buffer)
-
-    def show(self):
-        self.widget.show_all()

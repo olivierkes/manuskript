@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from gi.repository import GObject, Gtk, Gdk
+from gi.repository import GLib, Gtk, Gdk
+
+from manuskript.ui.views.abstractView import AbstractView
 
 from manuskript.data import Outline, OutlineFolder, OutlineText, OutlineItem, OutlineState, Plots, PlotLine, Characters, Character, Importance, Goal, Color, Signals
 from manuskript.ui.util import rgbaFromColor, pixbufFromColor
@@ -9,11 +11,15 @@ from manuskript.util import validString, invalidString, validInt, invalidInt, Co
 from manuskript.ui.picker import LabelPicker, CharacterPicker, AbstractGridPicker
 import datetime
 
-class OutlineView:
+class OutlineView(AbstractView):
+
     def __init__(self, outline: Outline):
+        AbstractView.__init__(self)
+        
         self.outline: Outline = outline
         self.outlineItem: OutlineItem = None
         self.outlineCompletion: list = []
+        self.idleCompletion = 0
         self.signals: Signals = Signals.getCommonInstance()
 
         builder = Gtk.Builder()
@@ -298,7 +304,7 @@ class OutlineView:
 
         if outlineItem.state != OutlineState.COMPLETE:
             if len(self.outlineCompletion) == 0:
-                GObject.idle_add(self.__completeOutlineItem)
+                self.idleCompletion = GLib.idle_add(self.__completeOutlineItem)
 
             self.outlineCompletion.append((tree_iter, outlineItem))
 
@@ -557,9 +563,6 @@ class OutlineView:
         self.__updateOutlineItemInStore(self.outlineItem)
         
         return True
-
-    def show(self):
-        self.widget.show_all()
 
     def renameItem(self, name: str|None = None):
         model, tree_iter = self.outlineSelection.get_selected()
