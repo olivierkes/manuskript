@@ -105,6 +105,9 @@ class AbstractPlugin:
     
     def unloadComponent(self, component: PluginComponent) -> bool:
         if component == PluginComponent.REQUIREMENTS:
+            self.spellcheckers.clear()
+            self.exporters.clear()
+            self.converters.clear()
             return True
         elif component == PluginComponent.CONVERTERS:
             status: bool = True
