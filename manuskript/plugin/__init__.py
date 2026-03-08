@@ -2,6 +2,7 @@
 # --!-- coding: utf8 --!--
 
 from manuskript.plugin.abstractPlugin import AbstractPlugin
+from manuskript.plugin.component import PluginComponent as Component
 
 import importlib
 import os
@@ -18,7 +19,7 @@ else:
 from importlib.machinery import FileFinder, SourceFileLoader
 
 
-def loadPlugins():
+def findPlugins():
     plugins = []
     paths = []
     
@@ -62,3 +63,40 @@ def loadPlugins():
         plugins.append(plugin)
     
     return plugins
+
+
+def loadPlugins(plugins: list[AbstractPlugin]) -> bool:
+    components = [e for e in Component]
+    status: bool = True
+
+    plugin_list: list[AbstractPlugin] = list(plugin for plugin in plugins)
+
+    for component in components:
+        for plugin in plugin_list:
+            result = plugin.loadComponent(component)
+
+            if not result:
+                plugin_list.remove(plugin)
+            else:
+                plugin.loaded[component.value] = True
+
+            status = status and result
+    
+    return status
+
+
+def unloadPlugins(plugins: list[AbstractPlugin]) -> bool:
+    components = [e for e in Component]
+    components.reverse()
+    status: bool = True
+
+    for component in components:
+        for plugin in plugins:
+            result = plugin.unloadComponent(component)
+
+            if result:
+                plugin.loaded[component.value] = False
+
+            status = status and result
+    
+    return status

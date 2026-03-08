@@ -1,8 +1,104 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
 
+from functools import reduce
+
+from manuskript.converter import AbstractConverter, registerConverter, unregisterConverter
+from manuskript.exporter import AbstractExporter, registerExporter, unregisterExporter
+from manuskript.plugin.component import PluginComponent
+
 
 class AbstractPlugin:
 
     def __init__(self):
-        print(" -> " + str(type(self)))
+        self.converters: list[AbstractConverter] = []
+        self.exporters: list[AbstractExporter] = []
+        self.loaded: list = [False for c in PluginComponent]
+    
+    def getName(self) -> str:
+        return self.__class__.__name__
+    
+    def getDescription(self) -> str|None:
+        return None
+    
+    def isValid(self) -> bool:
+        return reduce(lambda x, y: x and y, self.loaded)
+    
+    def registerConverter(self, converter_cls) -> bool:
+        try:
+            if not issubclass(converter_cls, AbstractConverter):
+                return False
+
+            converter = converter_cls()
+        except TypeError as e:
+            print("PLUGIN ERROR: ( " + self.getName() + " )" + str(e))
+            return False
+        
+        self.converters.append(converter)
+        return True
+    
+    def registerExporter(self, exporter_cls) -> bool:
+        try:
+            if not issubclass(exporter_cls, AbstractExporter):
+                return False
+
+            exporter = exporter_cls()
+        except TypeError as e:
+            print("PLUGIN ERROR: ( " + self.getName() + " )" + str(e))
+            return False
+        
+        self.exporters.append(exporter)
+        return True
+    
+    def preload(self) -> bool:
+        return True
+    
+    def load(self) -> bool:
+        return True
+    
+    def loadComponent(self, component: PluginComponent) -> bool:
+        if component == PluginComponent.REQUIREMENTS:
+            return self.preload()
+        elif component == PluginComponent.CONVERTERS:
+            status: bool = True
+
+            for converter in self.converters:
+                status = status and registerConverter(converter)
+            
+            return status
+        elif component == PluginComponent.EXPORTERS:
+            status: bool = True
+
+            for exporter in self.exporters:
+                status = status and registerExporter(exporter)
+            
+            return status
+        elif component == PluginComponent.PLUGIN:
+            return self.load()
+        else:
+            return False
+    
+    def unload(self) -> bool:
+        return True
+    
+    def unloadComponent(self, component: PluginComponent) -> bool:
+        if component == PluginComponent.REQUIREMENTS:
+            return True
+        elif component == PluginComponent.CONVERTERS:
+            status: bool = True
+
+            for converter in self.converters:
+                status = status and registerConverter(converter)
+            
+            return status
+        elif component == PluginComponent.EXPORTERS:
+            status: bool = True
+
+            for exporter in self.exporters:
+                status = status and registerExporter(exporter)
+            
+            return status
+        elif component == PluginComponent.PLUGIN:
+            return self.unload()
+        else:
+            return False

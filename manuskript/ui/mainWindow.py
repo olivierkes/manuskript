@@ -4,7 +4,7 @@
 from gi.repository import GLib, GObject, Gtk
 
 from manuskript.data import Project
-from manuskript.plugin import loadPlugins
+from manuskript.plugin import findPlugins, loadPlugins
 from manuskript.ui.dialog import RenameDialog
 from manuskript.ui.views import *
 
@@ -22,7 +22,7 @@ from manuskript.util import parseFilenameFromURL, validString
 class MainWindow:
 
     def __init__(self):
-        self.plugins = loadPlugins()
+        self.plugins = findPlugins()
         self.project = None
 
         builder = Gtk.Builder()
@@ -103,6 +103,8 @@ class MainWindow:
         bindMenuItem(builder, "settings_menu_item", self._settingsAction)
         bindMenuItem(builder, "frequency_menu_item", self._frequencyAction)
         bindMenuItem(builder, "about_menu_item", self._aboutAction)
+
+        loadPlugins(self.plugins)
 
         self.hide()
 
