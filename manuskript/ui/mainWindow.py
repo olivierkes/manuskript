@@ -5,6 +5,7 @@ from gi.repository import GLib, GObject, Gtk
 
 from manuskript.data import Project
 from manuskript.plugin import findPlugins, loadPlugins
+from manuskript.spellchecker import getSpellcheckers
 from manuskript.ui.dialog import RenameDialog
 from manuskript.ui.views import *
 
@@ -47,6 +48,10 @@ class MainWindow:
         self.worldSlot = builder.get_object("world_slot")
         self.outlineSlot = builder.get_object("outline_slot")
         self.editorSlot = builder.get_object("editor_slot")
+
+        self.dictionaryMenuItem = builder.get_object("dictionary_menu_item")
+        self.dictionaryMenu = builder.get_object("dictionary_menu")
+        self.dictionaryMenuGroup = []
 
         self.generalView = None
         self.summaryView = None
@@ -106,10 +111,24 @@ class MainWindow:
 
         loadPlugins(self.plugins)
 
+        self.reloadDictionaries()
         self.hide()
 
     def getProject(self):
         return self.project
+    
+    def reloadDictionaries(self):
+        self.dictionaryMenu.foreach(lambda item: self.dictionaryMenu.remove(item))
+        self.dictionaryMenuGroup = []
+
+        for spellchecker in getSpellcheckers():
+            menuItem = Gtk.RadioMenuItem.new_with_label(self.dictionaryMenuGroup, spellchecker.getTitle())
+            menuItem.set_active(len(self.dictionaryMenuGroup) == 0)
+
+            self.dictionaryMenuGroup = menuItem.get_group()
+            self.dictionaryMenu.append(menuItem)
+
+        self.dictionaryMenuItem.set_sensitive(len(self.dictionaryMenuGroup) > 0)
     
     def __checkStackSelection(self, selected=None):
         slot = self.mainStack.get_visible_child()

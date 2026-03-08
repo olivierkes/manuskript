@@ -6,6 +6,7 @@ from functools import reduce
 from manuskript.converter import AbstractConverter, registerConverter, unregisterConverter
 from manuskript.exporter import AbstractExporter, registerExporter, unregisterExporter
 from manuskript.plugin.component import PluginComponent
+from manuskript.spellchecker import AbstractSpellchecker, registerSpellchecker, unregisterSpellchecker
 
 
 class AbstractPlugin:
@@ -13,6 +14,7 @@ class AbstractPlugin:
     def __init__(self):
         self.converters: list[AbstractConverter] = []
         self.exporters: list[AbstractExporter] = []
+        self.spellcheckers: list[AbstractSpellchecker] = []
         self.loaded: list = [False for c in PluginComponent]
     
     def getName(self) -> str:
@@ -50,6 +52,19 @@ class AbstractPlugin:
         self.exporters.append(exporter)
         return True
     
+    def registerSpellchecker(self, spellchecker_cls, language: str) -> bool:
+        try:
+            if not issubclass(spellchecker_cls, AbstractSpellchecker):
+                return False
+
+            spellchecker = spellchecker_cls(language)
+        except TypeError as e:
+            print("PLUGIN ERROR: ( " + self.getName() + " )" + str(e))
+            return False
+        
+        self.spellcheckers.append(spellchecker)
+        return True
+    
     def preload(self) -> bool:
         return True
     
@@ -73,6 +88,13 @@ class AbstractPlugin:
                 status = status and registerExporter(exporter)
             
             return status
+        elif component == PluginComponent.SPELLCHECKERS:
+            status: bool = True
+
+            for spellchecker in self.spellcheckers:
+                status = status and registerSpellchecker(spellchecker)
+            
+            return status
         elif component == PluginComponent.PLUGIN:
             return self.load()
         else:
@@ -88,14 +110,21 @@ class AbstractPlugin:
             status: bool = True
 
             for converter in self.converters:
-                status = status and registerConverter(converter)
+                status = status and unregisterConverter(converter)
             
             return status
         elif component == PluginComponent.EXPORTERS:
             status: bool = True
 
             for exporter in self.exporters:
-                status = status and registerExporter(exporter)
+                status = status and unregisterExporter(exporter)
+            
+            return status
+        elif component == PluginComponent.SPELLCHECKERS:
+            status: bool = True
+
+            for spellchecker in self.spellcheckers:
+                status = status and unregisterSpellchecker(spellchecker)
             
             return status
         elif component == PluginComponent.PLUGIN:
