@@ -114,7 +114,7 @@ class MainWindow:
         self.reloadDictionaries()
         self.hide()
 
-    def getProject(self):
+    def getProject(self) -> Project:
         return self.project
     
     def reloadDictionaries(self):
