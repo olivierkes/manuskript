@@ -65,38 +65,40 @@ def findPlugins():
     return plugins
 
 
-def loadPlugins(plugins: list[AbstractPlugin]) -> bool:
+def loadPlugins(plugins: list[AbstractPlugin]) -> int:
     components = [e for e in Component]
-    status: bool = True
 
     plugin_list: list[AbstractPlugin] = list(plugin for plugin in plugins)
 
     for component in components:
         for plugin in plugin_list:
-            result = plugin.loadComponent(component)
-
-            if not result:
-                plugin_list.remove(plugin)
-            else:
+            if plugin.loadComponent(component):
                 plugin.loaded[component.value] = True
-
-            status = status and result
+        
+        plugin_list = list(filter(lambda plugin: plugin.loaded[component.value], plugin_list))
     
-    return status
+    if len(plugin_list) < len(plugins):
+        unloadPlugins(list(filter(lambda plugin: not plugin.isValid(), plugins)))
+
+    return len(plugin_list)
 
 
-def unloadPlugins(plugins: list[AbstractPlugin]) -> bool:
+def unloadPlugins(plugins: list[AbstractPlugin]) -> int:
     components = [e for e in Component]
     components.reverse()
-    status: bool = True
 
     for component in components:
         for plugin in plugins:
-            result = plugin.unloadComponent(component)
+            if not plugin.loaded[component.value]:
+                continue
 
-            if result:
+            if plugin.unloadComponent(component):
                 plugin.loaded[component.value] = False
-
-            status = status and result
     
-    return status
+    failed: int = 0
+
+    for plugin in plugins:
+        if True in plugin.loaded:
+            failed += 1
+    
+    return len(plugins) - failed

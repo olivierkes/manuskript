@@ -7,6 +7,7 @@ from manuskript.converter import AbstractConverter, registerConverter, unregiste
 from manuskript.exporter import AbstractExporter, registerExporter, unregisterExporter
 from manuskript.plugin.component import PluginComponent
 from manuskript.spellchecker import AbstractSpellchecker, registerSpellchecker, unregisterSpellchecker
+from manuskript.util import profileTime
 
 
 class AbstractPlugin:
@@ -73,7 +74,7 @@ class AbstractPlugin:
     
     def loadComponent(self, component: PluginComponent) -> bool:
         if component == PluginComponent.REQUIREMENTS:
-            return self.preload()
+            return profileTime(self.preload)
         elif component == PluginComponent.CONVERTERS:
             status: bool = True
 
@@ -96,7 +97,7 @@ class AbstractPlugin:
             
             return status
         elif component == PluginComponent.PLUGIN:
-            return self.load()
+            return profileTime(self.load)
         else:
             return False
     
