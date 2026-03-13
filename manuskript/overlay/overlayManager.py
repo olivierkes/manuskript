@@ -8,35 +8,30 @@ class OverlayManager:
         self.overlay = overlay
         self.layers: list[Gtk.Widget] = []
 
-    def add_layer(self, layer_widget: Gtk.Widget):
-        """Add a new overlay layer."""
+    def addLayer(self, layer_widget: Gtk.Widget):
         self.overlay.add_overlay(layer_widget)
         self.layers.append(layer_widget)
         layer_widget.show_all()
 
-    def remove_layer(self, layer_widget: Gtk.Widget):
-        """Remove a layer."""
-        if layer_widget in self.layers:
-            self.overlay.remove(layer_widget)
-            self.layers.remove(layer_widget)
+    def removeLayer(self, layerWidget: Gtk.Widget):
+        if layerWidget in self.layers:
+            self.overlay.remove(layerWidget)
+            self.layers.remove(layerWidget)
 
-    def hide_layers(self):
+    def hideLayers(self):
         for layer in self.layers:
             layer.hide()
 
-    def show_layers(self):
+    def showLayers(self):
         for layer in self.layers:
             layer.show()
 
-
-    def clear_layers(self):
-        """Remove all overlay layers."""
+    def clearLayers(self):
         for layer in list(self.layers):
             self.overlay.remove(layer)
         self.layers.clear()
 
-    def reorder_layer(self, layer_widget: Gtk.Widget, index: int):
-        """Change layer order."""
+    def reorderLayer(self, layer_widget: Gtk.Widget, index: int):
         if layer_widget not in self.layers:
             return
 

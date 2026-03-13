@@ -12,9 +12,8 @@ class WaitingOverlay:
         self.label: Gtk.Label = self.builder.get_object("overlay_label")
 
         ctx = self.spinnerAndLabel.get_style_context()
-        color = ctx.lookup_color("theme_bg_color")[1]  # returns Gdk.RGBA
-        color.alpha = 0.5  # set your alpha
-        print(color)
+        color = ctx.lookup_color("theme_bg_color")[1]
+        color.alpha = 0.5 
 
         css = f"""
         .loading-overlay {{
@@ -41,5 +40,5 @@ class WaitingOverlay:
 
         self.label.set_text("Please wait while data is loading...")
 
-    def get_widget(self):
+    def getWidget(self):
         return self.widget

@@ -50,7 +50,7 @@ class EditorView(AbstractView):
         self.overlay = builder.get_object("editor_overlay")
         self.overlayManager = OverlayManager(self.overlay)
         self.waitOverlay = WaitingOverlay()
-        self.overlayManager.add_layer(self.waitOverlay.get_widget())
+        self.overlayManager.addLayer(self.waitOverlay.getWidget())
 
         self.h1Tag = builder.get_object("h1_tag")
         self.h2Tag = builder.get_object("h2_tag")
@@ -168,7 +168,7 @@ class EditorView(AbstractView):
 
         if len(self.outlineCompletion) == 0:
             self.loadOutlineData(self.outlineItem)
-            self.overlayManager.hide_layers()
+            self.overlayManager.hideLayers()
 
         return len(self.outlineCompletion) > 0
 

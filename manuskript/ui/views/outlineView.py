@@ -67,7 +67,7 @@ class OutlineView(AbstractView):
         self.overlay = builder.get_object("outline_overlay")
         self.overlayManager = OverlayManager(self.overlay)
         self.waitOverlay = WaitingOverlay()
-        self.overlayManager.add_layer(self.waitOverlay.get_widget())
+        self.overlayManager.addLayer(self.waitOverlay.getWidget())
 
         for selection in self.plotSelections:
             selection.connect("changed", self._plotSelectionChanged)
@@ -297,7 +297,7 @@ class OutlineView(AbstractView):
         self.__updateOutlineItem(tree_iter, outlineItem)
 
         if len(self.outlineCompletion) == 0:
-            self.overlayManager.hide_layers()
+            self.overlayManager.hideLayers()
 
         return len(self.outlineCompletion) > 0
 
