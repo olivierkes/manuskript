@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from gi.repository import GObject, Gtk
+from gi.repository import GLib, GObject, Gtk
 
 import re
 
@@ -10,6 +10,9 @@ from enum import Enum, unique
 from manuskript.data import OutlineFolder, OutlineText, OutlineState, Project
 from manuskript.ui.abstractDialog import AbstractDialog
 from manuskript.util import validString, validInt
+
+
+MAX_FILTERED_ENTRIES = 1000
 
 
 @unique
@@ -28,6 +31,7 @@ class FrequencyWindow(AbstractDialog):
         self.analyzeTexts = list()
         self.outlineCompletion = list()
         self.analyzeCompleted = 0
+        self.filteredAmount = 0
 
         self.headerBar = None
         self.back = None
@@ -70,7 +74,8 @@ class FrequencyWindow(AbstractDialog):
         self.sortedFrequencyStore = builder.get_object("sorted_frequency_store")
         
         self.filteredFrequencyStore.set_visible_func(self._filterFrequencies)
-        self.filteredFrequencyStore.refilter()
+
+        self.refilter()
 
         self.sortedFrequencyStore.set_sort_column_id(1, Gtk.SortType.DESCENDING)
         self.phrasesFrequencyStore.set_sort_column_id(1, Gtk.SortType.DESCENDING)
@@ -106,6 +111,9 @@ class FrequencyWindow(AbstractDialog):
 
         if len(word) < word_size:
             return False
+        
+        if self.filteredAmount >= MAX_FILTERED_ENTRIES:
+            return False
 
         iter = self.excludeWordsStore.get_iter_first()
         while iter is not None:
@@ -114,7 +122,8 @@ class FrequencyWindow(AbstractDialog):
                 return False
 
             iter = self.excludeWordsStore.iter_next(iter)
-
+        
+        self.filteredAmount += 1
         return True
 
     def _backClicked(self, button: Gtk.Button):
@@ -163,6 +172,8 @@ class FrequencyWindow(AbstractDialog):
                 patterns.append(re.compile(r"\w+" + r"\s+\w+" * (n - 1)))
         
         frequencies = dict()
+        multiples = dict()
+
         text = "\n".join(self.analyzeTexts)
         
         for pattern in patterns:
@@ -172,8 +183,11 @@ class FrequencyWindow(AbstractDialog):
 
                 if match in frequencies:
                     frequencies[match] = frequencies[match] + 1
+                    multiples[match] = frequencies[match]
                 else:
                     frequencies[match] = 1
+        
+        frequencies = multiples
         
         if self.analyzeStatus == AnalyzeStatus.WORDS:
             self.wordsFrequencyStore.clear()
@@ -191,7 +205,12 @@ class FrequencyWindow(AbstractDialog):
         elif self.analyzeStatus == AnalyzeStatus.PHRASES:
             self.phrasesFrequencyStore.clear()
 
+            entries = 0
+
             for phrase, frequency in frequencies.items():
+                if entries >= MAX_FILTERED_ENTRIES:
+                    break
+
                 tree_iter = self.phrasesFrequencyStore.append()
 
                 if tree_iter is None:
@@ -199,6 +218,10 @@ class FrequencyWindow(AbstractDialog):
 
                 self.phrasesFrequencyStore.set_value(tree_iter, 0, validString(phrase))
                 self.phrasesFrequencyStore.set_value(tree_iter, 1, validInt(frequency))
+
+                entries += 1
+        
+        self.refilter()
         
         self.analyzeStatus = AnalyzeStatus.NONE
         self.analyzeTexts = list()
@@ -230,9 +253,13 @@ class FrequencyWindow(AbstractDialog):
             elif self.analyzeStatus == AnalyzeStatus.PHRASES:
                 self.phrasesProgress.set_fraction(0.0)
 
-            GObject.idle_add(self.__completeOutlineItem)
+            GLib.idle_add(self.__completeOutlineItem)
         for outline_item in project.outline:
             self.outlineCompletion.append(outline_item)
+    
+    def refilter(self):
+        self.filteredAmount = 0
+        self.filteredFrequencyStore.refilter()
 
     def _analyzeWordsClicked(self, button: Gtk.Button):
         self.analyze(AnalyzeStatus.WORDS)
@@ -241,7 +268,7 @@ class FrequencyWindow(AbstractDialog):
         self.analyze(AnalyzeStatus.PHRASES)
     
     def _wordSizeChanged(self, adjustment: Gtk.Adjustment):
-        self.filteredFrequencyStore.refilter()
+        self.refilter()
     
     def _excludeWordSelectionChanged(self, selection: Gtk.TreeSelection):
         model, tree_iter = selection.get_selected()
@@ -255,7 +282,7 @@ class FrequencyWindow(AbstractDialog):
             return
         
         self.excludeWordsStore.remove(tree_iter)
-        self.filteredFrequencyStore.refilter()
+        self.refilter()
     
     def _addWordClicked(self, button: Gtk.Button):
         tree_iter = self.excludeWordsStore.append()
@@ -265,4 +292,4 @@ class FrequencyWindow(AbstractDialog):
         
         word = self.wordEntry.get_buffer().get_text()
         self.excludeWordsStore.set_value(tree_iter, 0, word)
-        self.filteredFrequencyStore.refilter()
+        self.refilter()

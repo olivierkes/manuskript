@@ -2,19 +2,14 @@
 # --!-- coding: utf8 --!--
 
 from manuskript.converter.abstractConverter import AbstractConverter
-from manuskript.converter.markdownConverter import MarkdownConverter
-from manuskript.converter.pandocConverter import PandocConverter
 
 
-__converters__ = list(filter(lambda converter: converter.isValid(), [
-    MarkdownConverter(),
-    PandocConverter()
-]))
+__converters__ = []
 
 
 def getConverters() -> list:
     global __converters__
-    return __converters__
+    return filter(lambda converter: converter.isValid(), __converters__)
 
 
 def getConverter(inputFormat: str, outputFormat: str) -> AbstractConverter | None:
@@ -23,3 +18,26 @@ def getConverter(inputFormat: str, outputFormat: str) -> AbstractConverter | Non
             return converter
     
     return None
+
+
+def registerConverter(converter: AbstractConverter) -> bool:
+    global __converters__
+
+    if not converter.isValid():
+        return False
+    
+    if converter in __converters__:
+        return False
+    
+    __converters__.append(converter)
+    return True
+
+
+def unregisterConverter(converter: AbstractConverter) -> bool:
+    global __converters__
+
+    if not converter in __converters__:
+        return False
+    
+    __converters__.remove(converter)
+    return True

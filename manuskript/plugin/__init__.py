@@ -2,6 +2,7 @@
 # --!-- coding: utf8 --!--
 
 from manuskript.plugin.abstractPlugin import AbstractPlugin
+from manuskript.plugin.component import PluginComponent as Component
 
 import importlib
 import os
@@ -18,7 +19,7 @@ else:
 from importlib.machinery import FileFinder, SourceFileLoader
 
 
-def loadPlugins():
+def findPlugins():
     plugins = []
     paths = []
     
@@ -62,3 +63,42 @@ def loadPlugins():
         plugins.append(plugin)
     
     return plugins
+
+
+def loadPlugins(plugins: list[AbstractPlugin]) -> int:
+    components = [e for e in Component]
+
+    plugin_list: list[AbstractPlugin] = list(plugin for plugin in plugins)
+
+    for component in components:
+        for plugin in plugin_list:
+            if plugin.loadComponent(component):
+                plugin.loaded[component.value] = True
+        
+        plugin_list = list(filter(lambda plugin: plugin.loaded[component.value], plugin_list))
+    
+    if len(plugin_list) < len(plugins):
+        unloadPlugins(list(filter(lambda plugin: not plugin.isValid(), plugins)))
+
+    return len(plugin_list)
+
+
+def unloadPlugins(plugins: list[AbstractPlugin]) -> int:
+    components = [e for e in Component]
+    components.reverse()
+
+    for component in components:
+        for plugin in plugins:
+            if not plugin.loaded[component.value]:
+                continue
+
+            if plugin.unloadComponent(component):
+                plugin.loaded[component.value] = False
+    
+    failed: int = 0
+
+    for plugin in plugins:
+        if True in plugin.loaded:
+            failed += 1
+    
+    return len(plugins) - failed

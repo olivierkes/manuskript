@@ -8,17 +8,17 @@ from manuskript.exporter.markdownExporter import MarkdownExporter
 from manuskript.exporter.pdfExporter import PDFExporter
 
 
-__exporters__ = list(filter(lambda exporter: exporter.isValid(), [
+__exporters__ = [
     HTMLExporter(),
     LaTeXExporter(),
     MarkdownExporter(),
     PDFExporter(),
-]))
+]
 
 
 def getExporters() -> list:
     global __exporters__
-    return __exporters__
+    return filter(lambda exporter: exporter.isValid(), __exporters__)
 
 
 def getExporterByFormat(outputFormat: str) -> AbstractExporter | None:
@@ -35,3 +35,26 @@ def getExporterByName(name: str) -> AbstractExporter | None:
             return exporter
 
     return None
+
+
+def registerExporter(exporter: AbstractExporter) -> bool:
+    global __exporters__
+
+    if not exporter.isValid():
+        return False
+    
+    if exporter in __exporters__:
+        return False
+    
+    __exporters__.append(exporter)
+    return True
+
+
+def unregisterExporter(exporter: AbstractExporter) -> bool:
+    global __exporters__
+
+    if not exporter in __exporters__:
+        return False
+    
+    __exporters__.remove(exporter)
+    return True
