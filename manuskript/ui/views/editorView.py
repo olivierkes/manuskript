@@ -9,6 +9,8 @@ from manuskript.data import Project, OutlineFolder, OutlineText, OutlineItem, Ou
 from manuskript.ui.editor import GridItem
 from manuskript.ui.util import pixbufFromColor, iconByOutlineItemType
 from manuskript.util import validString, validInt, safeFraction
+from manuskript.overlay.overlayManager import OverlayManager
+from manuskript.overlay.waitingOverlay import WaitingOverlay
 
 
 class EditorView(AbstractView):
@@ -44,6 +46,11 @@ class EditorView(AbstractView):
 
         self.outlineSelection = builder.get_object("outline_selection")
         self.editorOutlineSelection = builder.get_object("editor_outline_selection")
+
+        self.overlay = builder.get_object("editor_overlay")
+        self.overlayManager = OverlayManager(self.overlay)
+        self.waitOverlay = WaitingOverlay()
+        self.overlayManager.add_layer(self.waitOverlay.get_widget())
 
         self.h1Tag = builder.get_object("h1_tag")
         self.h2Tag = builder.get_object("h2_tag")
@@ -161,6 +168,7 @@ class EditorView(AbstractView):
 
         if len(self.outlineCompletion) == 0:
             self.loadOutlineData(self.outlineItem)
+            self.overlayManager.hide_layers()
 
         return len(self.outlineCompletion) > 0
 

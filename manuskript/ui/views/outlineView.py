@@ -9,7 +9,8 @@ from manuskript.data import Outline, OutlineFolder, OutlineText, OutlineItem, Ou
 from manuskript.ui.util import rgbaFromColor, pixbufFromColor
 from manuskript.util import validString, invalidString, validInt, invalidInt, CounterKind, countText
 from manuskript.ui.picker import LabelPicker, CharacterPicker, AbstractGridPicker
-import datetime
+from manuskript.overlay.overlayManager import OverlayManager
+from manuskript.overlay.waitingOverlay import WaitingOverlay
 
 class OutlineView(AbstractView):
 
@@ -62,6 +63,11 @@ class OutlineView(AbstractView):
             builder.get_object("secondary_plot_selection"),
             builder.get_object("main_plot_selection")
         ]
+
+        self.overlay = builder.get_object("outline_overlay")
+        self.overlayManager = OverlayManager(self.overlay)
+        self.waitOverlay = WaitingOverlay()
+        self.overlayManager.add_layer(self.waitOverlay.get_widget())
 
         for selection in self.plotSelections:
             selection.connect("changed", self._plotSelectionChanged)
@@ -289,6 +295,9 @@ class OutlineView(AbstractView):
             outlineItem.load(False)
 
         self.__updateOutlineItem(tree_iter, outlineItem)
+
+        if len(self.outlineCompletion) == 0:
+            self.overlayManager.hide_layers()
 
         return len(self.outlineCompletion) > 0
 
