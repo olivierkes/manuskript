@@ -3,7 +3,7 @@
 
 from gi.repository import GLib, GObject, Gtk
 
-from manuskript.data import Project
+from manuskript.data import Project, Signals
 from manuskript.plugin import findPlugins, loadPlugins
 from manuskript.spellchecker import getSpellcheckers
 from manuskript.ui.dialog import RenameDialog
