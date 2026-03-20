@@ -8,6 +8,7 @@ from manuskript.ui.views.abstractView import AbstractView
 from manuskript.data import Project, OutlineFolder, OutlineText, OutlineItem, OutlineState, Goal
 from manuskript.ui.editor import GridItem
 from manuskript.ui.util import pixbufFromColor, iconByOutlineItemType
+from manuskript.ui.helpers import TextBufferBuilder
 from manuskript.util import validString, validInt, safeFraction
 from manuskript.overlay.overlayManager import OverlayManager
 from manuskript.overlay.waitingOverlay import WaitingOverlay
@@ -151,6 +152,11 @@ class EditorView(AbstractView):
         self.outlineStore.set_value(tree_iter, 8, icon)
 
     def __completeOutlineItem(self):
+        if len(self.outlineCompletion) == 0:
+            self.loadOutlineData(self.outlineItem)
+            self.overlayManager.hideLayers()
+            return False
+
         (tree_iter, outlineItem) = self.outlineCompletion.pop(0)
 
         if outlineItem.state != OutlineState.COMPLETE:
@@ -161,16 +167,13 @@ class EditorView(AbstractView):
         completedItem = outlineItem
         while completedItem is not None:
             if completedItem in self.editorItems:
-                self.reloadOutlineData()
+                if self.outlineItem:
+                    self.reloadOutlineData()
                 break
 
             completedItem = completedItem.parentItem()
 
-        if len(self.outlineCompletion) == 0:
-            self.loadOutlineData(self.outlineItem)
-            self.overlayManager.hideLayers()
-
-        return len(self.outlineCompletion) > 0
+        return True
 
     def __appendOutlineItem(self, outlineItem: OutlineItem, parent_iter=None):
         tree_iter = self.outlineStore.append(parent_iter)
@@ -269,28 +272,23 @@ class EditorView(AbstractView):
 
         self.forceReload = False
 
-    def __appendOutlineItemText(self, outlineItem: OutlineItem, level: int = 1):
-        end_iter = self.editorTextBuffer.get_end_iter()
-
+    def __appendOutlineItemText(self, outlineItem: OutlineItem, bufferBuilder: TextBufferBuilder, level: int = 1):
         if type(outlineItem) is OutlineFolder:
-            if self.editorTextBuffer.get_line_count() > 1:
-                self.editorTextBuffer.insert_with_tags_by_name(end_iter, "\n", "none")
+
+            if bufferBuilder.getLineCount() > 1:
+                bufferBuilder.append("\n", "none")
 
             headerTag = "h{0}".format(min(level, 6))
-            end_iter = self.editorTextBuffer.get_end_iter()
-
-            self.editorTextBuffer.insert_with_tags_by_name(end_iter, outlineItem.title + "\n", headerTag)
+            bufferBuilder.append(outlineItem.title + "\n", headerTag)
 
             firstItem = True
-
             for item in outlineItem:
                 if firstItem:
                     firstItem = False
                 else:
-                    end_iter = self.editorTextBuffer.get_end_iter()
-                    self.editorTextBuffer.insert_with_tags_by_name(end_iter, "\n", "none")
+                    bufferBuilder.append("\n", "none")
 
-                self.__appendOutlineItemText(item, level + 1)
+                self.__appendOutlineItemText(item, bufferBuilder, level + 1)
 
             return True
         elif type(outlineItem) is OutlineText:
@@ -306,11 +304,8 @@ class EditorView(AbstractView):
                 if firstParagraph:
                     firstParagraph = False
                 else:
-                    self.editorTextBuffer.insert_with_tags_by_name(end_iter, "\n", "none")
-                    end_iter = self.editorTextBuffer.get_end_iter()
-
-                self.editorTextBuffer.insert_with_tags_by_name(end_iter, paragraph, "p")
-                end_iter = self.editorTextBuffer.get_end_iter()
+                    bufferBuilder.append("\n", "none")
+                bufferBuilder.append(paragraph, "p")
 
             return True
         else:
@@ -318,21 +313,21 @@ class EditorView(AbstractView):
 
     def loadEditorData(self, outlineItem: OutlineItem | None = None):
         self.editorItems = list()
-        self.outlineItem = None
-
-        start_iter, end_iter = self.editorTextBuffer.get_bounds()
-        self.editorTextBuffer.delete(start_iter, end_iter)
 
         if outlineItem is None:
             self.editorItems = self.project.outline.items
         elif type(outlineItem) is OutlineFolder:
-            self.editorItems = outlineItem.items
+            self.editorItems = outlineItem.items  
+
+        bufferBuilder = TextBufferBuilder()
 
         if outlineItem is None:
             for item in self.editorItems:
-                self.__appendOutlineItemText(item)
+                self.__appendOutlineItemText(item, bufferBuilder)
         else:
-            self.__appendOutlineItemText(outlineItem)
+            self.__appendOutlineItemText(outlineItem, bufferBuilder)
+
+        bufferBuilder.render(self.editorTextBuffer)
 
         self.editorFlowbox.foreach(self.editorFlowbox.remove)
         if len(self.editorItems) <= 0:
