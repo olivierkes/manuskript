@@ -151,6 +151,11 @@ class EditorView(AbstractView):
         self.outlineStore.set_value(tree_iter, 8, icon)
 
     def __completeOutlineItem(self):
+        if len(self.outlineCompletion) == 0:
+            self.loadOutlineData(self.outlineItem)
+            self.overlayManager.hideLayers()
+            return False
+
         (tree_iter, outlineItem) = self.outlineCompletion.pop(0)
 
         if outlineItem.state != OutlineState.COMPLETE:
@@ -161,16 +166,13 @@ class EditorView(AbstractView):
         completedItem = outlineItem
         while completedItem is not None:
             if completedItem in self.editorItems:
-                self.reloadOutlineData()
+                if self.outlineItem:
+                    self.reloadOutlineData()
                 break
 
             completedItem = completedItem.parentItem()
 
-        if len(self.outlineCompletion) == 0:
-            self.loadOutlineData(self.outlineItem)
-            self.overlayManager.hideLayers()
-
-        return len(self.outlineCompletion) > 0
+        return True
 
     def __appendOutlineItem(self, outlineItem: OutlineItem, parent_iter=None):
         tree_iter = self.outlineStore.append(parent_iter)

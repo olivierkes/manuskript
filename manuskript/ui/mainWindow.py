@@ -194,6 +194,8 @@ class MainWindow:
         self.outlineView = packViewIntoSlot(self.outlineSlot, OutlineView, self.project.outline)
         self.editorView = packViewIntoSlot(self.editorSlot, EditorView, self.project)
 
+        self.mainStack.set_visible_child_name("page_editor")
+
         if 0 != self.idleStackSelection:
             GLib.source_remove(self.idleStackSelection)
 
