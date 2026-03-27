@@ -708,7 +708,7 @@ def loadProject(project, zip=None):
         global cache
         cache = files
 
-        # FIXME: watch directory for changes
+        # File watching is handled by MainWindow._startFileWatcher()
 
     # Sort files by keys
     files = OrderedDict(sorted(files.items()))

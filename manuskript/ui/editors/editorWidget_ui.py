@@ -19,13 +19,44 @@ class Ui_editorWidget_ui(object):
         self.stack.setObjectName("stack")
         self.text = QtWidgets.QWidget()
         self.text.setObjectName("text")
-        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.text)
-        self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.textLayout = QtWidgets.QVBoxLayout(self.text)
+        self.textLayout.setContentsMargins(0, 0, 0, 0)
+        self.textLayout.setSpacing(0)
+        self.textLayout.setObjectName("textLayout")
+        # Reload banner (hidden by default)
+        self.reloadBanner = QtWidgets.QFrame(self.text)
+        self.reloadBanner.setObjectName("reloadBanner")
+        self.reloadBanner.setStyleSheet(
+            "QFrame#reloadBanner {"
+            "  background: #e65100; border-bottom: 2px solid #bf360c;"
+            "  color: white; font-weight: bold; font-size: 13px;"
+            "}"
+            "QFrame#reloadBanner QPushButton {"
+            "  background: white; color: black; border: none;"
+            "  border-radius: 3px; padding: 4px 12px;"
+            "}"
+            "QFrame#reloadBanner QPushButton:hover { background: #fff3e0; }"
+        )
+        self.reloadBanner.setFixedHeight(44)
+        self.reloadBanner.hide()
+        self.reloadBannerLayout = QtWidgets.QHBoxLayout(self.reloadBanner)
+        self.reloadBannerLayout.setContentsMargins(16, 6, 16, 6)
+        self.reloadBannerLabel = QtWidgets.QLabel(self.reloadBanner)
+        self.reloadBannerLabel.setText("")
+        self.reloadBannerLayout.addWidget(self.reloadBannerLabel)
+        self.reloadBannerLayout.addStretch()
+        self.reloadBannerBtn = QtWidgets.QPushButton("", self.reloadBanner)
+        self.reloadBannerBtn.setFixedWidth(110)
+        self.reloadBannerLayout.addWidget(self.reloadBannerBtn)
+        self.reloadBannerDismiss = QtWidgets.QPushButton("", self.reloadBanner)
+        self.reloadBannerDismiss.setFixedWidth(80)
+        self.reloadBannerLayout.addWidget(self.reloadBannerDismiss)
+        self.textLayout.addWidget(self.reloadBanner)
+        # Editor
         self.txtRedacText = MDEditView(self.text)
         self.txtRedacText.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.txtRedacText.setObjectName("txtRedacText")
-        self.horizontalLayout_2.addWidget(self.txtRedacText)
+        self.textLayout.addWidget(self.txtRedacText)
         self.stack.addWidget(self.text)
         self.folder = QtWidgets.QWidget()
         self.folder.setObjectName("folder")
@@ -73,6 +104,9 @@ class Ui_editorWidget_ui(object):
     def retranslateUi(self, editorWidget_ui):
         _translate = QtCore.QCoreApplication.translate
         editorWidget_ui.setWindowTitle(_translate("editorWidget_ui", "Form"))
+        self.reloadBannerLabel.setText(_translate("editorWidget_ui", "This file has been modified outside Manuskript."))
+        self.reloadBannerBtn.setText(_translate("editorWidget_ui", "Reload"))
+        self.reloadBannerDismiss.setText(_translate("editorWidget_ui", "Dismiss"))
 
 from manuskript.ui.views.MDEditView import MDEditView
 from manuskript.ui.views.corkView import corkView

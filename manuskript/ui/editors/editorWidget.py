@@ -1,15 +1,21 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
+import logging
+import os
+
 from PyQt5.QtCore import pyqtSignal, QModelIndex
 from PyQt5.QtGui import QPalette
 from PyQt5.QtWidgets import QWidget, QFrame, QSpacerItem, QSizePolicy
-from PyQt5.QtWidgets import QVBoxLayout, qApp, QStyle
+from PyQt5.QtWidgets import QVBoxLayout, QGraphicsOpacityEffect, qApp, QStyle
 
 from manuskript import settings
 from manuskript.functions import AUC, mainWindow
+from manuskript.load_save.version_1 import outlineItemPath
 from manuskript.ui.editors.editorWidget_ui import Ui_editorWidget_ui
 from manuskript.ui.views.MDEditView import MDEditView
 from manuskript.ui.tools.splitDialog import splitDialog
+
+LOGGER = logging.getLogger(__name__)
 
 
 class editorWidget(QWidget, Ui_editorWidget_ui):
@@ -58,6 +64,11 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
         self.folderView = "cork"
         self.mw = mainWindow()
         self._tabWidget = None  # set by mainEditor on creation
+
+        # External file change tracking
+        self._changedFiles = set()
+        self.reloadBannerBtn.clicked.connect(self._onReloadBannerClicked)
+        self.reloadBannerDismiss.clicked.connect(self._onDismissBanner)
 
         self._model = None
 
@@ -311,6 +322,13 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
         if self._model:
             self.setView()
 
+        # Lock/unlock based on whether this file was externally modified
+        fp = self.getItemFilePath()
+        if fp and os.path.normpath(fp) in self._changedFiles:
+            self._lockEditor()
+        else:
+            self._unlockEditor()
+
     def updateIndexFromID(self, fallback=None, ignore=None):
         """
         Index might have changed (through drag an drop), so we keep current
@@ -387,6 +405,75 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
             return
 
         mw.mainEditor.tabChanged()
+
+    def getItemFilePath(self):
+        """Returns the on-disk path for the current outline item, or None."""
+        if not self.currentIndex.isValid():
+            return None
+        item = self.currentIndex.internalPointer()
+        if not item or item.type() == "folder":
+            return None
+        mw = mainWindow()
+        if not mw or not mw.currentProject:
+            return None
+        folder = os.path.splitext(mw.currentProject)[0]
+        return os.path.join(folder, *outlineItemPath(item))
+
+    def notifyExternalChange(self, path):
+        """Show reload banner if `path` matches the currently displayed file."""
+        self._changedFiles.add(os.path.normpath(path))
+        fp = self.getItemFilePath()
+        if fp and os.path.normpath(fp) in self._changedFiles:
+            self._lockEditor()
+
+    def _lockEditor(self):
+        """Show banner, dim text with opacity, block editing."""
+        if self.txtRedacText.isReadOnly():
+            return  # already locked
+        self.reloadBanner.show()
+        self.txtRedacText.setReadOnly(True)
+        effect = QGraphicsOpacityEffect(self.txtRedacText)
+        effect.setOpacity(0.35)
+        self.txtRedacText.setGraphicsEffect(effect)
+
+    def _unlockEditor(self):
+        """Hide banner, restore editing."""
+        self.reloadBanner.hide()
+        if not self.txtRedacText.isReadOnly():
+            return  # already unlocked
+        self.txtRedacText.setReadOnly(False)
+        self.txtRedacText.setGraphicsEffect(None)
+
+    def _onReloadBannerClicked(self):
+        """Reload this single file's content from disk."""
+        fp = self.getItemFilePath()
+        if fp and os.path.exists(fp):
+            with open(fp, 'rt', encoding='utf-8') as f:
+                content = f.read()
+            body = self._parseMMDBody(content)
+            self.txtRedacText.setPlainText(body)
+            LOGGER.info("Reloaded file: %s", fp)
+        self._clearChangedFile()
+
+    def _onDismissBanner(self):
+        self._clearChangedFile()
+
+    def _clearChangedFile(self):
+        fp = self.getItemFilePath()
+        if fp:
+            self._changedFiles.discard(os.path.normpath(fp))
+        self._unlockEditor()
+
+    @staticmethod
+    def _parseMMDBody(content):
+        """Strip optional MMD metadata header (key: value lines at the top)."""
+        lines = content.split('\n')
+        i = 0
+        while i < len(lines) and ':' in lines[i] and lines[i].strip():
+            i += 1
+        if i > 0 and i < len(lines) and lines[i].strip() == '':
+            i += 1  # skip blank line after metadata
+        return '\n'.join(lines[i:])
 
     def toggleSpellcheck(self, v):
         self.spellcheck = v
