@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-from PyQt5.QtCore import QSize, QModelIndex, Qt
-from PyQt5.QtGui import QPixmap, QColor, QIcon, QBrush
-from PyQt5.QtWidgets import QTreeWidget, QTreeWidgetItem, QColorDialog, QDialog, QMessageBox
+from PyQt6.QtCore import QSize, QModelIndex, Qt
+from PyQt6.QtGui import QPixmap, QColor, QIcon, QBrush
+from PyQt6.QtWidgets import QTreeWidget, QTreeWidgetItem, QColorDialog, QDialog, QMessageBox
 
 from manuskript.enums import Character
 from manuskript.functions import iconColor, mainWindow
@@ -190,7 +190,7 @@ class characterTreeView(QTreeWidget):
         charInfoUi = characterInfoDialog.Ui_characterInfoDialog()
         charInfoUi.setupUi(charInfoDialog)
 
-        if charInfoDialog.exec_() == QDialog.Accepted:
+        if charInfoDialog.exec() == QDialog.Accepted:
             # User clicked OK, get the input values
             description = charInfoUi.descriptionLineEdit.text()
             value = charInfoUi.valueLineEdit.text()

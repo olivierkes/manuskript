@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-from PyQt5.QtWidgets import QWidget, QAbstractItemView
+from PyQt6.QtWidgets import QWidget, QAbstractItemView
 
 from manuskript.enums import Outline
 from manuskript.ui.views.basicItemView_ui import Ui_basicItemView

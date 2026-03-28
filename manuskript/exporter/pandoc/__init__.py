@@ -2,9 +2,10 @@
 # --!-- coding: utf8 --!--
 import subprocess
 
-from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QCursor
-from PyQt5.QtWidgets import qApp, QMessageBox
+from PyQt6.QtCore import Qt
+from PyQt6.QtGui import QCursor
+from PyQt6.QtWidgets import QMessageBox
+from manuskript.qt_compat import qApp
 
 from manuskript.exporter.basic import basicExporter, basicFormat
 from manuskript.exporter.pandoc.HTML import HTML
@@ -82,7 +83,7 @@ class pandocExporter(basicExporter):
             title = mainWindow().mdlFlatData.item(0, 0).text().strip()
         args.append("--metadata=title:{}".format(title))
 
-        qApp.setOverrideCursor(QCursor(Qt.WaitCursor))
+        qApp().setOverrideCursor(QCursor(Qt.WaitCursor))
 
         p = subprocess.Popen(
             args,
@@ -96,7 +97,7 @@ class pandocExporter(basicExporter):
 
         stdout, stderr = p.communicate(src)
 
-        qApp.restoreOverrideCursor()
+        qApp().restoreOverrideCursor()
 
         if stderr or p.returncode != 0:
             err_type = "ERROR" if p.returncode != 0 else "WARNING"

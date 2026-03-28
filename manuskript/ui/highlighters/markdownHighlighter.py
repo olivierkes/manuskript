@@ -7,10 +7,11 @@ regexp, but not yet perfect.
 """
 
 import re
-from PyQt5.QtCore import Qt, pyqtSignal, qWarning, QRegExp
-from PyQt5.QtGui import (QSyntaxHighlighter, QTextBlock, QColor, QFont,
+from PyQt6.QtCore import Qt, pyqtSignal, qWarning
+from PyQt6.QtGui import (QSyntaxHighlighter, QTextBlock, QColor, QFont,
                          QTextCharFormat, QBrush, QPalette)
-from PyQt5.QtWidgets import qApp, QStyle
+from PyQt6.QtWidgets import QStyle
+from manuskript.qt_compat import qApp, QRegExp
 
 from manuskript.ui.highlighters import BasicHighlighter
 from manuskript.ui.highlighters import MarkdownTokenizer
@@ -675,8 +676,12 @@ class MarkdownHighlighter(BasicHighlighter):
             if self.typingPaused or cursorPosInBlock != startIndex + length:
                 spellingErrorFormat = self.format(startIndex)
                 spellingErrorFormat.setUnderlineColor(self.spellingErrorColor)
-                spellingErrorFormat.setUnderlineStyle(
-                    qApp.style().styleHint(QStyle.SH_SpellCheckUnderlineStyle))
+                if hasattr(QStyle, 'SH_SpellCheckUnderlineStyle'):
+                    spellingErrorFormat.setUnderlineStyle(
+                        qApp().style().styleHint(QStyle.SH_SpellCheckUnderlineStyle))
+                else:
+                    spellingErrorFormat.setUnderlineStyle(
+                        QTextCharFormat.WaveUnderline)
 
                 self.setFormat(startIndex, length, spellingErrorFormat)
 

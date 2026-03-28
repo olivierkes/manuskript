@@ -4,12 +4,12 @@ import importlib
 import os
 import re
 
-from PyQt5.Qt import qVersion, PYQT_VERSION_STR
-from PyQt5.QtCore import (pyqtSignal, QSignalMapper, QTimer, QSettings, Qt, QPoint,
-                          QRegExp, QUrl, QSize, QModelIndex)
-from PyQt5.QtGui import QStandardItemModel, QIcon, QColor, QStandardItem
-from PyQt5.QtWidgets import QMainWindow, QHeaderView, qApp, QMenu, QActionGroup, QAction, QStyle, QListWidgetItem, \
+from PyQt6.QtCore import (pyqtSignal, QSignalMapper, QTimer, QSettings, Qt, QPoint,
+                          QUrl, QSize, QModelIndex, qVersion, PYQT_VERSION_STR)
+from PyQt6.QtGui import QStandardItemModel, QIcon, QColor, QStandardItem, QAction, QActionGroup
+from PyQt6.QtWidgets import QMainWindow, QHeaderView, QMenu, QStyle, QListWidgetItem, \
     QLabel, QDockWidget, QWidget, QMessageBox, QLineEdit, QTextEdit, QTreeView, QDialog, QTableView
+from manuskript.qt_compat import qApp, QRegExp
 
 from manuskript import settings
 from manuskript.enums import Character, PlotStep, Plot, World, Outline
@@ -99,7 +99,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         ]:
             t.textChanged.connect(self.mprWordCount.map)
             self.mprWordCount.setMapping(t, i)
-        self.mprWordCount.mapped.connect(self.wordCount)
+        # Qt6 renamed mapped → mappedInt/mappedString
+        signal = getattr(self.mprWordCount, 'mappedInt', None) or self.mprWordCount.mapped
+        signal.connect(self.wordCount)
 
         self.cmbSummary.setCurrentIndex(0)
         self.cmbSummary.currentIndexChanged.emit(0)
@@ -457,7 +459,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         charInfoUi = characterInfoDialog.Ui_characterInfoDialog()
         charInfoUi.setupUi(charInfoDialog)
 
-        if charInfoDialog.exec_() == QDialog.Accepted:
+        if charInfoDialog.exec() == QDialog.Accepted:
             # User clicked OK, get the input values
             description = charInfoUi.descriptionLineEdit.text()
             value = charInfoUi.valueLineEdit.text()
@@ -1092,7 +1094,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def readSettings(self):
         # Load State and geometry
-        sttgns = QSettings(qApp.organizationName(), qApp.applicationName())
+        sttgns = QSettings(qApp().organizationName(), qApp().applicationName())
         if sttgns.contains("geometry"):
             self.restoreGeometry(sttgns.value("geometry"))
         if sttgns.contains("windowState"):
@@ -1159,7 +1161,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # This is necessary because self.updateDockVisibility() hides UI elements.
         if event.isAccepted():
             # Save State and geometry and other things
-            appSettings = QSettings(qApp.organizationName(), qApp.applicationName())
+            appSettings = QSettings(qApp().organizationName(), qApp().applicationName())
             appSettings.setValue("geometry", self.saveGeometry())
             appSettings.setValue("windowState", self.saveState())
             appSettings.setValue("metadataState", self.redacMetadata.saveState())
@@ -1283,7 +1285,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.history.navigated.connect(self.navigated)
 
-        qApp.focusChanged.connect(self.focusChanged)
+        qApp().focusChanged.connect(self.focusChanged)
 
     def makeConnections(self):
 
@@ -1832,7 +1834,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 settings.dict = Spellchecker.normalizeDictName(i.data, i.text().replace("&", ""))
 
                 # Find all textEditView from self, and toggle spellcheck
-                for w in self.findChildren(textEditView, QRegExp(".*"),
+                for w in self.findChildren(textEditView, "",
                                            Qt.FindChildrenRecursively):
                     w.setDict(settings.dict)
 
@@ -1843,7 +1845,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         settings.spellcheck = val
 
         # Find all textEditView from self, and toggle spellcheck
-        for w in self.findChildren(textEditView, QRegExp(".*"),
+        for w in self.findChildren(textEditView, "",
                                    Qt.FindChildrenRecursively):
             w.toggleSpellcheck(val)
 

@@ -5,9 +5,9 @@ import datetime
 import difflib
 import re
 
-from PyQt5.QtCore import Qt, QTimer, QRect
-from PyQt5.QtGui import QPalette, QFontMetrics
-from PyQt5.QtWidgets import QWidget, QMenu, QActionGroup, QAction, QListWidgetItem, QStyledItemDelegate, QStyle
+from PyQt6.QtCore import Qt, QTimer, QRect
+from PyQt6.QtGui import QPalette, QFontMetrics, QAction, QActionGroup
+from PyQt6.QtWidgets import QWidget, QMenu, QListWidgetItem, QStyledItemDelegate, QStyle
 
 from manuskript.enums import Outline
 from manuskript.ui.revisions_ui import Ui_revisions

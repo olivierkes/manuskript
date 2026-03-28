@@ -4,8 +4,8 @@ import os
 import shutil
 import subprocess
 
-from PyQt5.QtCore import QSettings
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QCheckBox, QHBoxLayout, \
+from PyQt6.QtCore import QSettings
+from PyQt6.QtWidgets import QWidget, QVBoxLayout, QCheckBox, QHBoxLayout, \
                             QLabel, QSpinBox, QComboBox, QLineEdit
 from manuskript.ui.collapsibleGroupBox2 import collapsibleGroupBox2
 from manuskript.ui import style

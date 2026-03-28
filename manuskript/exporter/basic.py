@@ -4,8 +4,8 @@ import os
 import shutil
 import subprocess
 
-from PyQt5.QtCore import QSettings
-from PyQt5.QtWidgets import QWidget
+from PyQt6.QtCore import QSettings
+from PyQt6.QtWidgets import QWidget
 
 from manuskript.models import outlineItem
 from manuskript.functions import mainWindow

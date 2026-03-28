@@ -3,10 +3,10 @@
 import os
 from collections import OrderedDict
 
-from PyQt5.QtCore import QSize
-from PyQt5.QtCore import Qt, pyqtSignal
-from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QWidget, QListWidgetItem, QFileDialog
+from PyQt6.QtCore import QSize
+from PyQt6.QtCore import Qt, pyqtSignal
+from PyQt6.QtGui import QIcon
+from PyQt6.QtWidgets import QWidget, QListWidgetItem, QFileDialog
 
 from manuskript import exporter
 from manuskript.ui.exporters.exportersManager_ui import Ui_ExportersManager

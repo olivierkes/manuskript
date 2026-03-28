@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-from PyQt5.QtCore import Qt, QSignalMapper, QSize
-from PyQt5.QtGui import QIcon, QCursor
-from PyQt5.QtWidgets import QAbstractItemView, qApp, QMenu, QAction, \
+from PyQt6.QtCore import Qt, QSignalMapper, QSize
+from PyQt6.QtGui import QIcon, QCursor, QAction
+from PyQt6.QtWidgets import QAbstractItemView, QMenu, \
                             QListWidget, QWidgetAction, QListWidgetItem, \
                             QLineEdit, QInputDialog, QMessageBox, QCheckBox
+from manuskript.qt_compat import qApp
 
 from manuskript import settings
 from manuskript.enums import Outline
@@ -30,23 +31,24 @@ class outlineBasics(QAbstractItemView):
 
     def mouseReleaseEvent(self, event):
         if event.button() == Qt.RightButton:
-            self.menu = self.makePopupMenu()
+            self.menu = self.makePopupMenu(self.viewport().mapFromGlobal(event.globalPos()))
             self.menu.popup(event.globalPos())
         # We don't call QAbstractItemView.mouseReleaseEvent because
         # outlineBasics is never subclassed alone. So the others views
         # (outlineView, corkView, treeView) that subclass outlineBasics
         # call their respective mother class.
 
-    def makePopupMenu(self):
+    def makePopupMenu(self, cursorViewportPos=None):
         index = self.currentIndex()
         sel = self.getSelection()
-        clipboard = qApp.clipboard()
+        clipboard = qApp().clipboard()
 
         menu = QMenu(self)
 
         # Get index under cursor
-        pos = self.viewport().mapFromGlobal(QCursor.pos())
-        mouseIndex = self.indexAt(pos)
+        if cursorViewportPos is None:
+            cursorViewportPos = self.viewport().mapFromGlobal(QCursor.pos())
+        mouseIndex = self.indexAt(cursorViewportPos)
 
         # Get index's title
         if mouseIndex.isValid():
@@ -285,7 +287,7 @@ class outlineBasics(QAbstractItemView):
 
     def copy(self):
         mimeData = self.model().mimeData(self.selectionModel().selectedIndexes())
-        qApp.clipboard().setMimeData(mimeData)
+        qApp().clipboard().setMimeData(mimeData)
 
     def paste(self, mimeData=None):
         """
@@ -297,7 +299,7 @@ class outlineBasics(QAbstractItemView):
             index = self.rootIndex()
 
         if not mimeData:
-            mimeData = qApp.clipboard().mimeData()
+            mimeData = qApp().clipboard().mimeData()
 
         self.model().dropMimeData(mimeData, Qt.CopyAction, -1, 0, index)
 

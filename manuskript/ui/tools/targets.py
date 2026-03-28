@@ -1,8 +1,8 @@
 import locale
 
-from PyQt5.QtGui import QIcon, QPixmap
-from PyQt5.QtWidgets import QWidget
-from PyQt5.QtCore import QTimer
+from PyQt6.QtGui import QIcon, QPixmap
+from PyQt6.QtWidgets import QWidget
+from PyQt6.QtCore import QTimer
 
 from manuskript.enums import Outline
 from manuskript.functions import appPath

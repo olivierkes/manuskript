@@ -4,9 +4,10 @@ import os
 import shutil
 import subprocess
 
-from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import qApp, QMessageBox
-from PyQt5.QtGui import QCursor
+from PyQt6.QtCore import Qt
+from PyQt6.QtWidgets import QMessageBox
+from PyQt6.QtGui import QCursor
+from manuskript.qt_compat import qApp
 
 from manuskript.converters import abstractConverter
 from manuskript.functions import mainWindow, safeTranslate
@@ -54,7 +55,7 @@ class pandocConverter(abstractConverter):
         if outputfile:
             cmd.append("--output={}".format(outputfile))
 
-        qApp.setOverrideCursor(QCursor(Qt.WaitCursor))
+        qApp().setOverrideCursor(QCursor(Qt.WaitCursor))
 
         p = subprocess.Popen(
             cmd,
@@ -68,7 +69,7 @@ class pandocConverter(abstractConverter):
 
         stdout, stderr = p.communicate(src)
 
-        qApp.restoreOverrideCursor()
+        qApp().restoreOverrideCursor()
 
         if stderr:
             err = stderr.decode("utf-8")

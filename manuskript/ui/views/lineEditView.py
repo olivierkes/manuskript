@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-from PyQt5.QtCore import QMutex
-from PyQt5.QtWidgets import QLineEdit
+from PyQt6.QtCore import QMutex
+from PyQt6.QtWidgets import QLineEdit
 
 from manuskript.enums import Outline
 from manuskript.functions import toString

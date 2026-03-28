@@ -3,13 +3,14 @@
 
 import locale
 
-from PyQt5.QtCore import QAbstractItemModel, QMimeData
-from PyQt5.QtCore import QModelIndex
-from PyQt5.QtCore import QSize
-from PyQt5.QtCore import QVariant
-from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QIcon, QFont
-from PyQt5.QtWidgets import QTextEdit, qApp
+from PyQt6.QtCore import QAbstractItemModel, QMimeData
+from PyQt6.QtCore import QModelIndex
+from PyQt6.QtCore import QSize
+from PyQt6.QtCore import QVariant
+from PyQt6.QtCore import Qt
+from PyQt6.QtGui import QIcon, QFont
+from PyQt6.QtWidgets import QTextEdit
+from manuskript.qt_compat import qApp
 
 from manuskript import settings
 from lxml import etree as ET

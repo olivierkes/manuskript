@@ -1,9 +1,9 @@
 # --!-- coding: utf8 --!--
 
-from PyQt5.Qt import PYQT_VERSION_STR
-from PyQt5.QtCore import QT_VERSION_STR
-from PyQt5.QtGui import QIcon, QPixmap
-from PyQt5.QtWidgets import QWidget
+from PyQt6.QtCore import PYQT_VERSION_STR
+from PyQt6.QtCore import QT_VERSION_STR
+from PyQt6.QtGui import QIcon, QPixmap
+from PyQt6.QtWidgets import QWidget
 from platform import python_version
 
 from manuskript.functions import appPath

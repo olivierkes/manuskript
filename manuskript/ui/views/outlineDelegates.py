@@ -1,14 +1,15 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-from PyQt5.QtCore import Qt, QSize, QModelIndex
-from PyQt5.QtGui import QColor, QPalette, QIcon, QFont, QFontMetrics, QBrush
-from PyQt5.QtWidgets import QStyledItemDelegate, QStyleOptionViewItem, QStyle, QComboBox, QStyleOptionComboBox
-from PyQt5.QtWidgets import qApp
+from PyQt6.QtCore import Qt, QSize, QModelIndex
+from PyQt6.QtGui import QColor, QPalette, QIcon, QFont, QFontMetrics, QBrush
+from PyQt6.QtWidgets import QStyledItemDelegate, QStyleOptionViewItem, QStyle, QComboBox, QStyleOptionComboBox
 
 from manuskript import settings
 from manuskript.enums import Character, Outline
+from manuskript.qt_compat import qApp
 from manuskript.functions import outlineItemColors, mixColors, colorifyPixmap, toInt, toFloat, drawProgress
 from manuskript.ui import style as S
+from manuskript.qt_compat import qApp
 
 
 class outlineTitleDelegate(QStyledItemDelegate):
@@ -24,7 +25,7 @@ class outlineTitleDelegate(QStyledItemDelegate):
         item = index.internalPointer()
         colors = outlineItemColors(item)
 
-        style = qApp.style()
+        style = qApp().style()
 
         opt = QStyleOptionViewItem(option)
         self.initStyleOption(opt, index)
@@ -177,15 +178,15 @@ class outlineCharacterDelegate(QStyledItemDelegate):
         opt = QStyleOptionViewItem(option)
         self.initStyleOption(opt, itemIndex)
 
-        qApp.style().drawControl(QStyle.CE_ItemViewItem, opt, painter)
+        qApp().style().drawControl(QStyle.CE_ItemViewItem, opt, painter)
 
         # if index.isValid() and index.internalPointer().data(Outline.POV) not in ["", None]:
         if itemIndex.isValid() and self.mdlCharacter.data(itemIndex) not in ["", None]:
             opt = QStyleOptionComboBox()
             opt.rect = option.rect
-            r = qApp.style().subControlRect(QStyle.CC_ComboBox, opt, QStyle.SC_ComboBoxArrow, None)
+            r = qApp().style().subControlRect(QStyle.CC_ComboBox, opt, QStyle.SC_ComboBoxArrow, None)
             option.rect = r
-            qApp.style().drawPrimitive(QStyle.PE_IndicatorArrowDown, option, painter)
+            qApp().style().drawPrimitive(QStyle.PE_IndicatorArrowDown, option, painter)
 
 
 class outlineCompileDelegate(QStyledItemDelegate):
@@ -295,9 +296,9 @@ class outlineStatusDelegate(QStyledItemDelegate):
         if index.isValid() and index.internalPointer().data(Outline.status) not in ["", None, "0", 0]:
             opt = QStyleOptionComboBox()
             opt.rect = option.rect
-            r = qApp.style().subControlRect(QStyle.CC_ComboBox, opt, QStyle.SC_ComboBoxArrow, None)
+            r = qApp().style().subControlRect(QStyle.CC_ComboBox, opt, QStyle.SC_ComboBoxArrow, None)
             option.rect = r
-            qApp.style().drawPrimitive(QStyle.PE_IndicatorArrowDown, option, painter)
+            qApp().style().drawPrimitive(QStyle.PE_IndicatorArrowDown, option, painter)
 
 
 class outlineLabelDelegate(QStyledItemDelegate):
@@ -313,7 +314,7 @@ class outlineLabelDelegate(QStyledItemDelegate):
         idx = self.mdlLabels.indexFromItem(item)
         opt = QStyleOptionViewItem(option)
         self.initStyleOption(opt, idx)
-        s = qApp.style().sizeFromContents(QStyle.CT_ItemViewItem, opt, QSize(), None)
+        s = qApp().style().sizeFromContents(QStyle.CT_ItemViewItem, opt, QSize(), None)
         if s.width() > 150:
             s.setWidth(150)
         elif s.width() < 50:
@@ -355,12 +356,12 @@ class outlineLabelDelegate(QStyledItemDelegate):
         opt = QStyleOptionViewItem(option)
         self.initStyleOption(opt, self.mdlLabels.indexFromItem(lbl))
 
-        qApp.style().drawControl(QStyle.CE_ItemViewItem, opt, painter)
+        qApp().style().drawControl(QStyle.CE_ItemViewItem, opt, painter)
 
         # Drop down indicator
         if index.isValid() and index.internalPointer().data(Outline.label) not in ["", None, "0", 0]:
             opt = QStyleOptionComboBox()
             opt.rect = option.rect
-            r = qApp.style().subControlRect(QStyle.CC_ComboBox, opt, QStyle.SC_ComboBoxArrow, None)
+            r = qApp().style().subControlRect(QStyle.CC_ComboBox, opt, QStyle.SC_ComboBoxArrow, None)
             option.rect = r
-            qApp.style().drawPrimitive(QStyle.PE_IndicatorArrowDown, option, painter)
+            qApp().style().drawPrimitive(QStyle.PE_IndicatorArrowDown, option, painter)

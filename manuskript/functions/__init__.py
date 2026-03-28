@@ -7,11 +7,12 @@ import sys
 import pathlib
 from random import *
 
-from PyQt5.QtCore import Qt, QRect, QStandardPaths, QObject, QProcess, QRegExp
-from PyQt5.QtCore import QDir, QUrl, QTimer
-from PyQt5.QtGui import QBrush, QIcon, QPainter, QColor, QImage, QPixmap
-from PyQt5.QtGui import QDesktopServices
-from PyQt5.QtWidgets import qApp, QFileDialog
+from PyQt6.QtCore import Qt, QRect, QStandardPaths, QObject, QProcess
+from PyQt6.QtCore import QDir, QUrl, QTimer
+from PyQt6.QtGui import QBrush, QIcon, QPainter, QColor, QImage, QPixmap
+from PyQt6.QtGui import QDesktopServices
+from PyQt6.QtWidgets import QFileDialog
+from manuskript.qt_compat import qApp, QRegExp
 
 from manuskript.enums import Outline
 
@@ -19,7 +20,11 @@ import logging
 LOGGER = logging.getLogger(__name__)
 
 # Used to detect multiple connections
-AUC = Qt.AutoConnection | Qt.UniqueConnection
+try:
+    AUC = Qt.AutoConnection | Qt.UniqueConnection
+except TypeError:
+    # PyQt6: scoped enums require .value for bitwise ops
+    AUC = Qt.ConnectionType(Qt.AutoConnection.value | Qt.UniqueConnection.value)
 MW = None
 
 
@@ -33,7 +38,7 @@ def safeTranslate(qApp, group, text):
         return translationCache[text]
 
     try:
-        _text = qApp.translate(group, text)
+        _text = qApp().translate(group, text)
         translationCache[text] = _text
         return _text
     except:
@@ -134,7 +139,7 @@ def colorFromProgress(progress):
 def mainWindow():
     global MW
     if not MW:
-        for i in qApp.topLevelWidgets():
+        for i in qApp().topLevelWidgets():
             if i.objectName() == "MainWindow":
                 MW = i
                 return MW
@@ -312,7 +317,7 @@ def findWidgetsOfClass(cls):
     @param cls: a class
     @return: list of QWidgets
     """
-    return mainWindow().findChildren(cls, QRegExp())
+    return mainWindow().findChildren(cls, "")
 
 
 def findBackground(filename):

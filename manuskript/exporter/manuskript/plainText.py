@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
 import re
-from PyQt5.QtGui import QFont, QTextCharFormat
-from PyQt5.QtWidgets import QPlainTextEdit, qApp, QFrame, QFileDialog, QMessageBox
+from PyQt6.QtGui import QFont, QTextCharFormat
+from PyQt6.QtWidgets import QPlainTextEdit, QFrame, QFileDialog, QMessageBox
+from manuskript.qt_compat import qApp
 
 from manuskript.exporter.basic import basicFormat
 from manuskript.functions import mainWindow, getSaveFileNameWithSuffix, safeTranslate

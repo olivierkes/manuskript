@@ -2,10 +2,11 @@
 # --!-- coding: utf8 --!--
 import locale, os
 
-from PyQt5.QtCore import QModelIndex, QRect, QPoint, Qt, QObject, QSize
-from PyQt5.QtGui import QIcon, QPalette
-from PyQt5.QtGui import QDropEvent, QDragEnterEvent
-from PyQt5.QtWidgets import QWidget, QPushButton, qApp
+from PyQt6.QtCore import QModelIndex, QRect, QPoint, Qt, QObject, QSize
+from PyQt6.QtGui import QIcon, QPalette
+from PyQt6.QtGui import QDropEvent, QDragEnterEvent
+from PyQt6.QtWidgets import QWidget, QPushButton
+from manuskript.qt_compat import qApp
 
 from manuskript.functions import mainWindow, appPath
 from manuskript.ui import style
@@ -79,7 +80,7 @@ class tabSplitter(QWidget, Ui_tabSplitter):
 
         self.tab.tabCloseRequested.connect(self.closeTab)
         self.tab.currentChanged.connect(self.mainEditor.tabChanged)
-        qApp.focusChanged.connect(self.focusChanged)
+        qApp().focusChanged.connect(self.focusChanged)
 
         self.setAcceptDrops(True)
 
@@ -207,7 +208,7 @@ class tabSplitter(QWidget, Ui_tabSplitter):
 
         for st in reversed(l):
             st.setParent(None)
-            qApp.focusChanged.disconnect(st.focusChanged)
+            qApp().focusChanged.disconnect(st.focusChanged)
             st.deleteLater()
 
         self.focusTab = 1

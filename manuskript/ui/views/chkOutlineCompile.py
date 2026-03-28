@@ -4,8 +4,8 @@
 
 
 # Because I have trouble with QDataWidgetMapper and the checkbox, I don't know why.
-from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QCheckBox
+from PyQt6.QtCore import Qt
+from PyQt6.QtWidgets import QCheckBox
 
 from manuskript.enums import Outline
 

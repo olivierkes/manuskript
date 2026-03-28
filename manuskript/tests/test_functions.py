@@ -28,8 +28,8 @@ def test_convert():
 
 def test_several():
 
-    from PyQt5.QtGui import QPainter, QPixmap, QIcon, QColor
-    from PyQt5.QtCore import QRect
+    from PyQt6.QtGui import QPainter, QPixmap, QIcon, QColor
+    from PyQt6.QtCore import QRect
 
     # drawProgress
     px = QPixmap(10, 10)
@@ -71,7 +71,7 @@ def test_outlineItemColors():
     r = F.outlineItemColors(item)
     for i in ["POV", "Label", "Progress", "Compile"]:
         assert i in r
-    from PyQt5.QtGui import QColor
+    from PyQt6.QtGui import QColor
     assert r["Compile"].name(QColor.HexArgb) == "#00000000"
 
 def test_paths():
@@ -86,7 +86,7 @@ def test_paths():
 
 def test_mainWindow():
 
-    from PyQt5.QtWidgets import QWidget, QLCDNumber
+    from PyQt6.QtWidgets import QWidget, QLCDNumber
 
     assert F.mainWindow() != None
     assert F.MW != None

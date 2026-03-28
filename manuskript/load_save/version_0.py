@@ -5,11 +5,11 @@
 # Was used at the beginning and up until version XXX when
 # it was superseded by Version 1, which is more open and flexible
 import os
+from manuskript.qt_compat import qApp
 import zipfile
 
-from PyQt5.QtCore import QModelIndex, Qt
-from PyQt5.QtGui import QColor, QStandardItem
-from PyQt5.QtWidgets import qApp
+from PyQt6.QtCore import QModelIndex, Qt
+from PyQt6.QtGui import QColor, QStandardItem
 from lxml import etree as ET
 
 from manuskript import settings
@@ -19,9 +19,10 @@ from manuskript.models.characterModel import Character, CharacterInfo
 import logging
 LOGGER = logging.getLogger(__name__)
 
+from manuskript.qt_compat import qApp
+
 try:
     import zlib  # Used with zipfile for compression
-
     compression = zipfile.ZIP_DEFLATED
 except:
     compression = zipfile.ZIP_STORED
@@ -74,7 +75,7 @@ def saveStandardItemModelXML(mdl, xml=None):
     If xml (filename) is given, saves to xml. Otherwise returns as string."""
 
     root = ET.Element("model")
-    root.attrib["version"] = qApp.applicationVersion()
+    root.attrib["version"] = qApp().applicationVersion()
 
     # Header
     header = ET.SubElement(root, "header")

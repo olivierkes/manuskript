@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QDialog
+from PyQt6.QtWidgets import QDialog
 from manuskript.ui.listDialog_ui import Ui_GenericListDialog
 
 

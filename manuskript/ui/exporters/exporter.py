@@ -3,9 +3,9 @@
 import json
 import os
 
-from PyQt5.QtCore import Qt, QPoint
-from PyQt5.QtGui import QBrush, QColor, QIcon
-from PyQt5.QtWidgets import QWidget, QStyle
+from PyQt6.QtCore import Qt, QPoint
+from PyQt6.QtGui import QBrush, QColor, QIcon
+from PyQt6.QtWidgets import QWidget, QStyle
 
 from manuskript import exporter
 from manuskript.functions import writablePath, openURL

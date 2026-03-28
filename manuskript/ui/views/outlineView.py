@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QTreeView, QHeaderView
+from PyQt6.QtCore import Qt
+from PyQt6.QtWidgets import QTreeView, QHeaderView
 
 from manuskript import settings
 from manuskript.enums import Outline

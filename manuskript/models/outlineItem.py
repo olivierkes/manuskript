@@ -3,9 +3,8 @@
 
 import time
 import locale
-from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QFont, QIcon
-from PyQt5.QtWidgets import qApp
+from PyQt6.QtCore import Qt
+from PyQt6.QtGui import QFont, QIcon
 from lxml import etree as ET
 from manuskript.models.abstractItem import abstractItem
 from manuskript.models.searchableItem import searchableItem
@@ -24,6 +23,7 @@ except:
     pass
 
 import logging
+from manuskript.qt_compat import qApp
 LOGGER = logging.getLogger(__name__)
 
 class outlineItem(abstractItem, searchableItem):

@@ -3,9 +3,10 @@
 
 import re
 
-from PyQt5.QtCore import QRegExp, Qt, QTimer, QRect, QPoint
-from PyQt5.QtGui import QTextCursor
-from PyQt5.QtWidgets import qApp, QToolTip
+from PyQt6.QtCore import Qt, QTimer, QRect, QPoint
+from PyQt6.QtGui import QTextCursor
+from PyQt6.QtWidgets import QToolTip
+from manuskript.qt_compat import QRegExp
 
 from manuskript.ui.views.textEditView import textEditView
 from manuskript.ui.highlighters import MarkdownHighlighter
@@ -518,13 +519,13 @@ class MDEditView(textEditView):
         onRect = [r for r in self.clickRects if r.rect.contains(event.pos())]
 
         if not onRect:
-            qApp.restoreOverrideCursor()
+            qApp().restoreOverrideCursor()
             self.hideTooltip()
             return
 
         ct = onRect[0]
-        if not qApp.overrideCursor():
-            qApp.setOverrideCursor(Qt.PointingHandCursor)
+        if not qApp().overrideCursor():
+            qApp().setOverrideCursor(Qt.PointingHandCursor)
 
         if ct.regex == self.automaticLinkRegex:
             tooltip = ct.texts[2] or ct.texts[4]
@@ -557,7 +558,7 @@ class MDEditView(textEditView):
                 url = ct.texts[2]
 
             F.openURL(url)
-            qApp.restoreOverrideCursor()
+            qApp().restoreOverrideCursor()
 
     # def paintEvent(self, event):
     #     """
@@ -585,9 +586,10 @@ class ClickThing:
         self.regex = regex
         self.texts = texts
 
-from PyQt5.QtNetwork import QNetworkRequest, QNetworkAccessManager, QNetworkReply
-from PyQt5.QtCore import QIODevice, QUrl, QBuffer
-from PyQt5.QtGui import QPixmap
+from PyQt6.QtNetwork import QNetworkRequest, QNetworkAccessManager, QNetworkReply
+from PyQt6.QtCore import QIODevice, QUrl, QBuffer
+from PyQt6.QtGui import QPixmap
+from manuskript.qt_compat import qApp
 
 class ImageTooltip:
     """

@@ -23,7 +23,7 @@ def test_outlineItemsProperties(outlineItemFolder, outlineItemText):
     Tests with simple items, without parent or models.
     """
 
-    from PyQt5.QtCore import Qt
+    from PyQt6.QtCore import Qt
 
     # Simplification
     folder = outlineItemFolder

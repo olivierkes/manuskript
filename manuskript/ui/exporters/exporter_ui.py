@@ -3,11 +3,11 @@
 # Form implementation generated from reading ui file 'manuskript/ui/exporters/exporter_ui.ui'
 #
 # Created: Fri Apr  8 12:22:37 2016
-#      by: PyQt5 UI code generator 5.2.1
+#      by: PyQt5/6 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
 
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt6 import QtCore, QtGui, QtWidgets
 
 class Ui_exporter(object):
     def setupUi(self, exporter):

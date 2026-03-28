@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-from PyQt5.QtCore import QSize, Qt, QRect, QPoint, QPointF
-from PyQt5.QtGui import QMouseEvent, QFont, QPalette, QRegion, QFontMetrics, QColor, QIcon, QPolygonF
-from PyQt5.QtWidgets import QStyledItemDelegate, QLineEdit, QPlainTextEdit, QFrame, qApp, QStyle
+from PyQt6.QtCore import QSize, Qt, QRect, QPoint, QPointF
+from PyQt6.QtGui import QMouseEvent, QFont, QPalette, QRegion, QFontMetrics, QColor, QIcon, QPolygonF
+from PyQt6.QtWidgets import QStyledItemDelegate, QLineEdit, QPlainTextEdit, QFrame, QStyle
+from manuskript.qt_compat import qApp
 
 from manuskript import settings
 from manuskript.enums import Outline
@@ -222,7 +223,7 @@ class corkDelegate(QStyledItemDelegate):
         self.updateRects(option, index)
         colors = outlineItemColors(item)
 
-        style = qApp.style()
+        style = qApp().style()
 
         def _rotate(angle, rect=self.mainRect):
             p.translate(rect.center())
@@ -413,7 +414,7 @@ class corkDelegate(QStyledItemDelegate):
         self.updateRects(option, index)
         colors = outlineItemColors(item)
 
-        style = qApp.style()
+        style = qApp().style()
 
         def _rotate(angle):
             p.translate(self.mainRect.center())

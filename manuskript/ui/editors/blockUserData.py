@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf8 -*-
-from PyQt5.QtGui import QTextBlockUserData
+from PyQt6.QtGui import QTextBlockUserData
 
 
 class blockUserData(QTextBlockUserData):

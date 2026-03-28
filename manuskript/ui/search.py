@@ -2,9 +2,10 @@
 # --!-- coding: utf8 --!--
 import re
 
-from PyQt5.QtCore import Qt, QRect, QEvent, QCoreApplication
-from PyQt5.QtGui import QPalette, QFontMetrics, QKeySequence
-from PyQt5.QtWidgets import QWidget, qApp, QListWidgetItem, QStyledItemDelegate, QStyle, QLabel, QToolTip, QShortcut
+from PyQt6.QtCore import Qt, QRect, QEvent, QCoreApplication
+from PyQt6.QtGui import QPalette, QFontMetrics, QKeySequence, QShortcut
+from PyQt6.QtWidgets import QWidget, QListWidgetItem, QStyledItemDelegate, QStyle, QLabel, QToolTip
+from manuskript.qt_compat import qApp
 
 
 from manuskript.functions import mainWindow
@@ -126,7 +127,7 @@ class search(QWidget, Ui_search):
             searchRegex = self.prepareRegex(searchText)
             if searchRegex is not None:
                 # Set override cursor
-                qApp.setOverrideCursor(Qt.WaitCursor)
+                qApp().setOverrideCursor(Qt.WaitCursor)
 
                 for model, modelName in [
                     (mainWindow().mdlOutline, Model.Outline),
@@ -145,7 +146,7 @@ class search(QWidget, Ui_search):
                 self.generateResultsLists(results)
 
                 # Remove override cursor
-                qApp.restoreOverrideCursor()
+                qApp().restoreOverrideCursor()
             else:
                 # No results to generate if there is a problem with the regex
                 self.generateResultsLists(list())

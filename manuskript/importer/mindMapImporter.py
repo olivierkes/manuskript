@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
 
-from PyQt5.QtWidgets import qApp, QMessageBox
+from PyQt6.QtWidgets import QMessageBox
+from manuskript.qt_compat import qApp
 from manuskript.models import outlineItem
 from manuskript.enums import Outline
 from lxml import etree as ET

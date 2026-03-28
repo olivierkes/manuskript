@@ -2,8 +2,8 @@
 # -*- coding: utf8 -*-
 import re
 
-from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QTextCharFormat, QFont, QTextCursor, QFontMetrics
+from PyQt6.QtCore import Qt
+from PyQt6.QtGui import QTextCharFormat, QFont, QTextCursor, QFontMetrics
 
 from manuskript.ui.highlighters import BasicHighlighter
 

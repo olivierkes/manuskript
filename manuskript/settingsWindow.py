@@ -4,12 +4,13 @@ import os
 import shutil
 from collections import OrderedDict
 
-from PyQt5.QtCore import QSize, QSettings, QRegExp, QTranslator, QObject
-from PyQt5.QtCore import Qt, QTimer
-from PyQt5.QtGui import QIntValidator, QIcon, QFont, QColor, QPixmap, QStandardItem, QPainter
-from PyQt5.QtGui import QStyleHints
-from PyQt5.QtWidgets import QStyleFactory, QWidget, QStyle, QColorDialog, QListWidgetItem, QMessageBox
-from PyQt5.QtWidgets import qApp, QFileDialog
+from PyQt6.QtCore import QSize, QSettings, QTranslator, QObject
+from PyQt6.QtCore import Qt, QTimer
+from PyQt6.QtGui import QIntValidator, QIcon, QFont, QColor, QPixmap, QStandardItem, QPainter
+from PyQt6.QtGui import QStyleHints
+from PyQt6.QtWidgets import QStyleFactory, QWidget, QStyle, QColorDialog, QListWidgetItem, QMessageBox
+from PyQt6.QtWidgets import QFileDialog
+from manuskript.qt_compat import qApp, QRegExp, screenNumber, screenGeometry
 
 # Spell checker support
 from manuskript import settings
@@ -67,11 +68,11 @@ class settingsWindow(QWidget, Ui_Settings):
         self.cmbStyle.addItems(list(QStyleFactory.keys()))
 
         try:
-            self.cmbStyle.setCurrentIndex(lowerKeys.index(qApp.style().objectName()))
+            self.cmbStyle.setCurrentIndex(lowerKeys.index(qApp().style().objectName()))
         except ValueError:
             self.cmbStyle.setCurrentIndex(0)
 
-        self.cmbStyle.currentIndexChanged[str].connect(self.setStyle)
+        self.cmbStyle.currentTextChanged.connect(self.setStyle)
 
         self.cmbTranslation.clear()
         tr = OrderedDict()
@@ -104,7 +105,7 @@ class settingsWindow(QWidget, Ui_Settings):
         for name in tr:
             self.cmbTranslation.addItem(name, tr[name])
 
-        sttgs = QSettings(qApp.organizationName(), qApp.applicationName())
+        sttgs = QSettings(qApp().organizationName(), qApp().applicationName())
         if (sttgs.contains("applicationTranslation")
             and sttgs.value("applicationTranslation") in tr.values()):
             # Sets the correct translation
@@ -114,7 +115,7 @@ class settingsWindow(QWidget, Ui_Settings):
 
         self.cmbTranslation.currentIndexChanged.connect(self.setTranslation)
 
-        f = qApp.font()
+        f = qApp().font()
         self.spnGeneralFontSize.setValue(f.pointSize())
         self.spnGeneralFontSize.valueChanged.connect(self.setAppFontSize)
 
@@ -292,9 +293,9 @@ class settingsWindow(QWidget, Ui_Settings):
 
         # Fullscreen
         self._editingTheme = None
-        self.btnThemeEditOK.setIcon(qApp.style().standardIcon(QStyle.SP_DialogApplyButton))
+        self.btnThemeEditOK.setIcon(qApp().style().standardIcon(QStyle.SP_DialogApplyButton))
         self.btnThemeEditOK.clicked.connect(self.saveTheme)
-        self.btnThemeEditCancel.setIcon(qApp.style().standardIcon(QStyle.SP_DialogCancelButton))
+        self.btnThemeEditCancel.setIcon(qApp().style().standardIcon(QStyle.SP_DialogCancelButton))
         self.btnThemeEditCancel.clicked.connect(self.cancelEdit)
         self.cmbThemeEdit.currentIndexChanged.connect(self.themeEditStack.setCurrentIndex)
         self.cmbThemeEdit.setCurrentIndex(0)
@@ -342,14 +343,14 @@ class settingsWindow(QWidget, Ui_Settings):
 
     def setStyle(self, style):
         # Save style to Qt Settings
-        sttgs = QSettings(qApp.organizationName(), qApp.applicationName())
+        sttgs = QSettings(qApp().organizationName(), qApp().applicationName())
         sttgs.setValue("applicationStyle", style)
-        qApp.setStyle(style)
+        qApp().setStyle(style)
 
     def setTranslation(self, index):
         path = self.cmbTranslation.currentData()
         # Save settings
-        sttgs = QSettings(qApp.organizationName(), qApp.applicationName())
+        sttgs = QSettings(qApp().organizationName(), qApp().applicationName())
         sttgs.setValue("applicationTranslation", path)
 
         # QMessageBox.information(self, "Warning", "You'll have to restart manuskript.")
@@ -358,15 +359,15 @@ class settingsWindow(QWidget, Ui_Settings):
         """
         Set application default font point size.
         """
-        f = qApp.font()
+        f = qApp().font()
         f.setPointSize(val)
-        qApp.setFont(f)
+        qApp().setFont(f)
         mainWindow().setFont(f)
-        sttgs = QSettings(qApp.organizationName(), qApp.applicationName())
+        sttgs = QSettings(qApp().organizationName(), qApp().applicationName())
         sttgs.setValue("appFontSize", val)
 
     def charSettingsChanged(self):
-        settings.progressChars = True if self.chkProgressChars.checkState() else False
+        settings.progressChars = self.chkProgressChars.isChecked()
 
         self.mw.mainEditor.updateStats()
 
@@ -377,13 +378,13 @@ class settingsWindow(QWidget, Ui_Settings):
             self.txtAutoSaveNoChanges.setText("1")
 
         sttgs = QSettings()
-        sttgs.setValue("autoLoad", True if self.chkAutoLoad.checkState() else False)
+        sttgs.setValue("autoLoad", self.chkAutoLoad.isChecked())
         sttgs.sync()
 
-        settings.autoSave = True if self.chkAutoSave.checkState() else False
-        settings.autoSaveNoChanges = True if self.chkAutoSaveNoChanges.checkState() else False
-        settings.saveOnQuit = True if self.chkSaveOnQuit.checkState() else False
-        settings.saveToZip = True if self.chkSaveToZip.checkState() else False
+        settings.autoSave = self.chkAutoSave.isChecked()
+        settings.autoSaveNoChanges = self.chkAutoSaveNoChanges.isChecked()
+        settings.saveOnQuit = self.chkSaveOnQuit.isChecked()
+        settings.saveToZip = self.chkSaveToZip.isChecked()
         settings.autoSaveDelay = int(self.txtAutoSave.text())
         settings.autoSaveNoChangesDelay = int(self.txtAutoSaveNoChanges.text())
         self.mw.saveTimer.setInterval(settings.autoSaveDelay * 60 * 1000)
@@ -395,7 +396,7 @@ class settingsWindow(QWidget, Ui_Settings):
 
     def revisionsSettingsChanged(self):
         opt = settings.revisions
-        opt["keep"] = True if self.chkRevisionsKeep.checkState() else False
+        opt["keep"] = self.chkRevisionsKeep.isChecked()
         opt["smartremove"] = self.chkRevisionRemove.isChecked()
         opt["rules"][10 * 60] = 60 / self.spnRevisions10Mn.value()
         opt["rules"][60 * 60] = 60 * 10 / self.spnRevisionsHour.value()
@@ -444,7 +445,7 @@ class settingsWindow(QWidget, Ui_Settings):
 
     def outlineColumnsChanged(self):
         chk = self.sender()
-        val = True if chk.checkState() else False
+        val = chk.isChecked()
         col = self.outlineColumnsData()[chk]
         if val and not col in settings.outlineViewColumns:
             settings.outlineViewColumns.append(col)
@@ -480,7 +481,7 @@ class settingsWindow(QWidget, Ui_Settings):
         self.mw.treeRedacOutline.viewport().update()
 
     def countSpacesChanged(self):
-        settings.countSpaces = True if self.chkCountSpaces.checkState() else False
+        settings.countSpaces = self.chkCountSpaces.isChecked()
 
         self.mw.mainEditor.updateStats()
 
@@ -582,7 +583,7 @@ class settingsWindow(QWidget, Ui_Settings):
         """
 
         # Background
-        settings.textEditor["backgroundTransparent"] = True if self.chkEditorBackgroundTransparent.checkState() else False
+        settings.textEditor["backgroundTransparent"] = self.chkEditorBackgroundTransparent.isChecked()
 
         # Font
         f = self.cmbEditorFontFamily.currentFont()
@@ -618,7 +619,7 @@ class settingsWindow(QWidget, Ui_Settings):
             self.spnEditorLineSpacing.value()
         self.spnEditorLineSpacing.setEnabled(self.cmbEditorLineSpacing.currentIndex() == 3)
         settings.textEditor["tabWidth"] = self.spnEditorTabWidth.value()
-        settings.textEditor["indent"] = True if self.chkEditorIndent.checkState() else False
+        settings.textEditor["indent"] = self.chkEditorIndent.isChecked()
         settings.textEditor["spacingAbove"] = self.spnEditorParaAbove.value()
         settings.textEditor["spacingBelow"] = self.spnEditorParaBelow.value()
 
@@ -627,24 +628,24 @@ class settingsWindow(QWidget, Ui_Settings):
     def updateAllWidgets(self):
 
         # Update font and defaultBlockFormat to all textEditView. Drastically.
-        for w in mainWindow().findChildren(textEditView, QRegExp(".*")):
+        for w in mainWindow().findChildren(textEditView, ""):
             w.loadFontSettings()
 
         # Update background color in all tabSplitter (tabs)
-        for w in mainWindow().findChildren(tabSplitter, QRegExp(".*")):
+        for w in mainWindow().findChildren(tabSplitter, ""):
             w.updateStyleSheet()
 
         # Update background color in all folder text view:
-        for w in mainWindow().findChildren(QWidget, QRegExp("editorWidgetFolderText")):
+        for w in mainWindow().findChildren(QWidget, "editorWidgetFolderText"):
             w.setStyleSheet("background: {};".format(settings.textEditor["background"]))
 
     def setApplicationCursorBlinking(self):
         settings.textEditor["cursorNotBlinking"] = self.chkEditorNoBlinking.isChecked()
         if settings.textEditor["cursorNotBlinking"]:
-            qApp.setCursorFlashTime(0)
+            qApp().setCursorFlashTime(0)
         else:
             # Load default system value, that we cached at startup
-            qApp.setCursorFlashTime(self.mw._defaultCursorFlashTime)
+            qApp().setCursorFlashTime(self.mw._defaultCursorFlashTime)
 
     def choseEditorFontColor(self):
         color = settings.textEditor["fontColor"]
@@ -792,8 +793,8 @@ class settingsWindow(QWidget, Ui_Settings):
                 px = QPixmap(200, 120)
                 px.fill(Qt.white)
                 if not os.path.exists(thumb):
-                    currentScreen = qApp.desktop().screenNumber(self)
-                    screenRect = qApp.desktop().screenGeometry(currentScreen)
+                    currentScreen = screenNumber(self)
+                    screenRect = screenGeometry(currentScreen)
                     thumb = createThemePreview(theme, screenRect)
 
                 icon = QPixmap(thumb).scaled(200, 120, Qt.KeepAspectRatio)
@@ -985,8 +986,8 @@ class settingsWindow(QWidget, Ui_Settings):
         if self._loadingTheme:
             return
 
-        currentScreen = qApp.desktop().screenNumber(self)
-        screen = qApp.desktop().screenGeometry(currentScreen)
+        currentScreen = screenNumber(self)
+        screen = screenGeometry(currentScreen)
 
         px = createThemePreview(self._themeData, screen, self.lblPreview.size())
         self.lblPreview.setPixmap(px)
@@ -1070,6 +1071,6 @@ class settingsWindow(QWidget, Ui_Settings):
         # Apply the new tooltip style immediately
         if settings.tooltipStyle["useSystemDefaultsForTooltips"]:
             # Clear any custom tooltip styling to use system defaults
-            qApp.setStyleSheet("")
+            qApp().setStyleSheet("")
         else:
-            qApp.setStyleSheet(f"QToolTip {{ color: {settings.tooltipStyle['textColor']}; background-color: {settings.tooltipStyle['backgroundColor']}; border: 1px solid {settings.tooltipStyle['borderColor']}; }}")
+            qApp().setStyleSheet(f"QToolTip {{ color: {settings.tooltipStyle['textColor']}; background-color: {settings.tooltipStyle['backgroundColor']}; border: 1px solid {settings.tooltipStyle['borderColor']}; }}")

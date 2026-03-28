@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QWidget, QFrame, QPushButton, QVBoxLayout, QSizePolicy, qApp
+from PyQt6.QtCore import Qt
+from PyQt6.QtWidgets import QWidget, QFrame, QPushButton, QVBoxLayout, QSizePolicy
+from manuskript.qt_compat import qApp
 
 from manuskript.ui import style
 

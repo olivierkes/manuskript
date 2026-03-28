@@ -3,11 +3,11 @@
 # Form implementation generated from reading ui file 'manuskript/ui/editors/locker_ui.ui'
 #
 # Created: Tue Jul  7 17:57:16 2015
-#      by: PyQt5 UI code generator 5.2.1
+#      by: PyQt5/6 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
 
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt6 import QtCore, QtGui, QtWidgets
 
 class Ui_locker(object):
     def setupUi(self, locker):

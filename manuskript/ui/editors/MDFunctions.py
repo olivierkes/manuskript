@@ -3,8 +3,8 @@
 
 import re
 
-from PyQt5.QtCore import QRegExp
-from PyQt5.QtGui import QTextCursor
+from manuskript.qt_compat import QRegExp
+from PyQt6.QtGui import QTextCursor
 
 import logging
 LOGGER = logging.getLogger(__name__)

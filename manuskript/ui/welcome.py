@@ -5,10 +5,11 @@ import locale
 import importlib
 import os
 
-from PyQt5.QtCore import QSettings, QRegExp, Qt, QDir
-from PyQt5.QtGui import QIcon, QBrush, QColor, QStandardItemModel, QStandardItem
-from PyQt5.QtWidgets import QWidget, QAction, QFileDialog, QSpinBox, QLineEdit, QLabel, QPushButton, QTreeWidgetItem, \
-    qApp, QMessageBox
+from PyQt6.QtCore import QSettings, Qt, QDir
+from PyQt6.QtGui import QIcon, QBrush, QColor, QStandardItemModel, QStandardItem, QAction
+from PyQt6.QtWidgets import QWidget, QFileDialog, QSpinBox, QLineEdit, QLabel, QPushButton, QTreeWidgetItem, \
+    QMessageBox
+from manuskript.qt_compat import qApp, QRegExp
 
 from manuskript import loadSave
 from manuskript import settings
@@ -358,7 +359,7 @@ class welcome(QWidget, Ui_welcome):
         """
         # Searching for every spinboxes on the widget, and multiplying
         # their values to get the number of words.
-        for s in self.findChildren(QSpinBox, QRegExp(".*"),
+        for s in self.findChildren(QSpinBox, "",
                                    Qt.FindChildrenRecursively):
             templateIndex = s.property("templateIndex")
             if (templateIndex is None) or (templateIndex >= len(self.template[1])):
@@ -369,7 +370,7 @@ class welcome(QWidget, Ui_welcome):
                 s.value(),
                 self.template[1][templateIndex][1])
 
-        for t in self.findChildren(QLineEdit, QRegExp(".*"),
+        for t in self.findChildren(QLineEdit, "",
                                    Qt.FindChildrenRecursively):
             templateIndex = t.property("templateIndex")
             if (templateIndex is None) or (templateIndex >= len(self.template[1])):

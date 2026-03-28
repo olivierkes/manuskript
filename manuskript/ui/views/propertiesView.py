@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-from PyQt5.QtWidgets import QWidget
-from PyQt5.QtGui import QIntValidator
+from PyQt6.QtWidgets import QWidget
+from PyQt6.QtGui import QIntValidator
 
 from manuskript.enums import Outline
 from manuskript.ui.views.propertiesView_ui import Ui_propertiesView

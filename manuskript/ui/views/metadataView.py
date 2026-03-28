@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-from PyQt5.QtWidgets import QWidget, QAbstractItemView
-from PyQt5.QtCore import QModelIndex
+from PyQt6.QtWidgets import QWidget, QAbstractItemView
+from PyQt6.QtCore import QModelIndex
 
 from manuskript.enums import Outline
 from manuskript.ui.views.metadataView_ui import Ui_metadataView

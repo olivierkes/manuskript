@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-from PyQt5.QtCore import pyqtSignal, Qt, QTimer, QRect
-from PyQt5.QtGui import QBrush, QCursor, QPalette, QFontMetrics, QColor
-from PyQt5.QtWidgets import QWidget, QListWidgetItem, QToolTip, QStyledItemDelegate, QStyle
+from PyQt6.QtCore import pyqtSignal, Qt, QTimer, QRect
+from PyQt6.QtGui import QBrush, QCursor, QPalette, QFontMetrics, QColor
+from PyQt6.QtWidgets import QWidget, QListWidgetItem, QToolTip, QStyledItemDelegate, QStyle
 
 from manuskript.enums import Character
 from manuskript.enums import Plot

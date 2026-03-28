@@ -2,10 +2,12 @@
 # --!-- coding: utf8 --!--
 import locale, os
 
-from PyQt5.QtCore import QModelIndex, QRect, QPoint
-from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QPixmap, QPainter, QIcon
-from PyQt5.QtWidgets import QWidget, qApp, QDesktopWidget
+from PyQt6.QtCore import QModelIndex, QRect, QPoint
+from PyQt6.QtCore import Qt
+from PyQt6.QtGui import QPixmap, QPainter, QIcon
+from PyQt6.QtWidgets import QWidget
+from manuskript.qt_compat import qApp
+from manuskript.qt_compat import screenAt, screenNumber, screenGeometry
 
 from manuskript import settings
 from manuskript.enums import Outline
@@ -229,7 +231,7 @@ class mainEditor(QWidget, Ui_mainEditor):
                 tabWidget.setCurrentWidget(w)
                 return
 
-        if qApp.keyboardModifiers() & Qt.ControlModifier:
+        if qApp().keyboardModifiers() & Qt.ControlModifier:
             newTab = True
 
         if newTab or not tabWidget.count():
@@ -426,7 +428,7 @@ class mainEditor(QWidget, Ui_mainEditor):
 
     def showFullScreen(self):
         if self.currentEditor():
-            currentScreenNumber = QDesktopWidget().screenNumber(widget=self)
+            currentScreenNumber = screenNumber(self)
             self._fullScreen = fullScreenEditor(
                 self.currentEditor().currentIndex,
                 screenNumber=currentScreenNumber)

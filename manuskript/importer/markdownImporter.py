@@ -6,8 +6,8 @@ from manuskript.models import outlineItem
 from manuskript.enums import Outline
 from manuskript.functions import safeTranslate
 
-from PyQt5.QtWidgets import qApp
 import re, os
+from manuskript.qt_compat import qApp
 
 
 class markdownImporter(abstractImporter):

@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-from PyQt5.QtCore import Qt, QRect, QRectF
-from PyQt5.QtGui import QColor, QBrush, QRegion, QTextOption, QFont
-from PyQt5.QtWidgets import QSizePolicy, QGroupBox, QWidget, QStylePainter, QStyleOptionGroupBox, qApp, QVBoxLayout, \
+from PyQt6.QtCore import Qt, QRect, QRectF
+from PyQt6.QtGui import QColor, QBrush, QRegion, QTextOption, QFont
+from PyQt6.QtWidgets import QSizePolicy, QGroupBox, QWidget, QStylePainter, QStyleOptionGroupBox, QVBoxLayout, \
     QStyle, QStyleOptionFrame, QStyleOptionFocusRect
+from manuskript.qt_compat import qApp
 from manuskript.ui import style as S
 
 import logging
@@ -47,7 +48,7 @@ class collapsibleGroupBox(QGroupBox):
         opt = QStyleOptionGroupBox()
         self.initStyleOption(opt)
 
-        style = qApp.style()
+        style = qApp().style()
         groupBox = opt
 
         # // Draw frame

@@ -3,12 +3,12 @@
 import random
 import shutil
 
-from PyQt5.QtCore import QUrl
-from PyQt5.QtWidgets import qApp
+from PyQt6.QtCore import QUrl
 
 from manuskript.exporter.pandoc.abstractOutput import abstractOutput
 from manuskript.functions import tempFile, safeTranslate
 from manuskript.ui.views.PDFViewer import PDFViewer
+from manuskript.qt_compat import qApp
 
 
 class PDF(abstractOutput):

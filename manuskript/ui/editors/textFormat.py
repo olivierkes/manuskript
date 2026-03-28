@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QWidget, QAction
+from PyQt6.QtGui import QIcon, QAction
+from PyQt6.QtWidgets import QWidget
 
 from manuskript.enums import Outline
 from manuskript.models import outlineModel

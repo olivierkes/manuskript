@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-from PyQt5.QtCore import QVariant, Qt
-from PyQt5.QtGui import QStandardItemModel, QStandardItem
-from PyQt5.QtWidgets import QWidget, QTextEdit, QTableWidgetItem, QHeaderView
+from PyQt6.QtCore import QVariant, Qt
+from PyQt6.QtGui import QStandardItemModel, QStandardItem
+from PyQt6.QtWidgets import QWidget, QTextEdit, QTableWidgetItem, QHeaderView
 
 from manuskript import settings
 from manuskript.enums import Outline

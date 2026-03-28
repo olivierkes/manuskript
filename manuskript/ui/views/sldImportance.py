@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-from PyQt5.QtCore import pyqtSignal, pyqtProperty
-from PyQt5.QtWidgets import QWidget
+from PyQt6.QtCore import pyqtSignal, pyqtProperty
+from PyQt6.QtWidgets import QWidget
 from manuskript.ui.views.sldImportance_ui import Ui_sldImportance
 
 from manuskript.functions import toInt

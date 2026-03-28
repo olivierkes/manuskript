@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-from PyQt5.QtCore import QModelIndex
-from PyQt5.QtCore import QSortFilterProxyModel
-from PyQt5.QtCore import Qt
-from PyQt5.QtCore import pyqtSignal
-from PyQt5.QtGui import QBrush, QFont
-from PyQt5.QtGui import QColor
-from PyQt5.QtGui import QStandardItem
+from PyQt6.QtCore import QModelIndex
+from PyQt6.QtCore import QSortFilterProxyModel
+from PyQt6.QtCore import Qt
+from PyQt6.QtCore import pyqtSignal
+from PyQt6.QtGui import QBrush, QFont
+from PyQt6.QtGui import QColor
+from PyQt6.QtGui import QStandardItem
 
 from manuskript.enums import Plot
 from manuskript.ui import style as S

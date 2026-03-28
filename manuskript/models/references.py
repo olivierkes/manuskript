@@ -11,9 +11,8 @@ LOGGER = logging.getLogger(__name__)
 ###############################################################################
 
 # A regex used to match references
-from PyQt5.QtWidgets import qApp
-from PyQt5.QtGui import QColor
-from PyQt5.QtCore import Qt
+from PyQt6.QtGui import QColor
+from PyQt6.QtCore import Qt
 
 from manuskript.enums import Outline
 from manuskript.enums import Character
@@ -21,6 +20,7 @@ from manuskript.enums import Plot
 from manuskript.enums import PlotStep
 from manuskript.functions import mainWindow, mixColors, safeTranslate
 from manuskript.ui import style as S
+from manuskript.qt_compat import qApp
 
 
 RegEx = r"{(\w):(\d+):?.*?}"

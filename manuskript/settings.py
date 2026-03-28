@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 import collections
+from manuskript.qt_compat import qApp
 import json
 
-from PyQt5.QtWidgets import qApp
 
 from manuskript.enums import Outline
 
@@ -70,7 +70,7 @@ fullScreenTheme = "spacedreams"
 textEditor = {
     "background": "",
     "fontColor": "",
-    "font": qApp.font().toString(),
+    "font": qApp().font().toString(),
     "misspelled": "#F00",
     "lineSpacing": 100,
     "tabWidth": 20,
@@ -136,8 +136,7 @@ def applyTooltipStyle():
     Apply tooltip styling to the application if system defaults are disabled.
     """
     if not tooltipStyle["useSystemDefaultsForTooltips"]:
-        from PyQt5.QtWidgets import qApp
-        qApp.setStyleSheet(f"QToolTip {{ color: {tooltipStyle['textColor']}; background-color: {tooltipStyle['backgroundColor']}; border: 1px solid {tooltipStyle['borderColor']}; }}")
+        qApp().setStyleSheet(f"QToolTip {{ color: {tooltipStyle['textColor']}; background-color: {tooltipStyle['backgroundColor']}; border: 1px solid {tooltipStyle['borderColor']}; }}")
 
 def save(filename=None, protocol=None):
 
@@ -309,10 +308,10 @@ def load(string, fromString=False, protocol=None):
             if not k in textEditor: textEditor[k] = added[k]
 
         if textEditor["cursorNotBlinking"]:
-            qApp.setCursorFlashTime(0)
+            qApp().setCursorFlashTime(0)
         else:
             from manuskript.functions import mainWindow
-            qApp.setCursorFlashTime(mainWindow()._defaultCursorFlashTime)
+            qApp().setCursorFlashTime(mainWindow()._defaultCursorFlashTime)
 
     if "revisions" in allSettings:
         global revisions

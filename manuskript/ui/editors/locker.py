@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-from PyQt5.QtCore import pyqtSignal, QTimer
-from PyQt5.QtWidgets import QWidget, qApp
+from PyQt6.QtCore import pyqtSignal, QTimer
+from PyQt6.QtWidgets import QWidget
+from manuskript.qt_compat import qApp, screenNumber, screenGeometry
 
 from manuskript.ui.editors.locker_ui import Ui_locker
 
@@ -36,14 +37,19 @@ class locker(QWidget, Ui_locker):
 
     def lock(self):
         # Block others screens
-        desktop = qApp.desktop()
+        screens = qApp().screens()
         self._blackout.clear()
-        if desktop.screenCount() > 1:
-            for d in range(desktop.screenCount()):
-                if desktop.screenNumber(self) != d:
+        if len(screens) > 1:
+            myScreen = screenNumber(self)
+            for d in range(len(screens)):
+                if myScreen != d:
                     w = QWidget()
                     w.setStyleSheet("background: black;")
-                    w.move(desktop.screenGeometry(d).topLeft())
+                    w.show()  # Must be shown to get windowHandle
+                    if w.windowHandle():
+                        w.windowHandle().setScreen(screens[d])
+                    else:
+                        w.move(screenGeometry(d).topLeft())
                     w.showFullScreen()
                     self._blackout.append(w)
 

@@ -5,9 +5,10 @@
 import os
 import re
 
-from PyQt5.QtCore import QSettings, QRect, QSize, Qt, QPoint, QFile, QIODevice, QTextStream
-from PyQt5.QtGui import QPixmap, QPainter, QColor, QBrush, QImage, QTextBlockFormat, QTextCharFormat, QFont, qGray
-from PyQt5.QtWidgets import qApp, QFrame
+from PyQt6.QtCore import QSettings, QRect, QSize, Qt, QPoint, QFile, QIODevice, QTextStream
+from PyQt6.QtGui import QPixmap, QPainter, QColor, QBrush, QImage, QTextBlockFormat, QTextCharFormat, QFont, qGray
+from PyQt6.QtWidgets import QFrame
+from manuskript.qt_compat import qApp
 
 from manuskript.functions import allPaths, appPath, findBackground, findFirstFile
 from manuskript.ui.views.MDEditView import MDEditView
@@ -37,7 +38,7 @@ def loadThemeDatas(themeFile):
 
     # Text Options
     loadThemeSetting(_themeData, settings, "Text/Color", "#ffffff")
-    loadThemeSetting(_themeData, settings, "Text/Font", qApp.font().toString())
+    loadThemeSetting(_themeData, settings, "Text/Font", qApp().font().toString())
     loadThemeSetting(_themeData, settings, "Text/Misspelled", "#ff0000")
 
     # Paragraph Options
@@ -198,7 +199,8 @@ def getThemeBlockFormat(themeDatas):
                     Qt.AlignCenter if themeDatas["Spacings/Alignment"] == 1 else
                     Qt.AlignRight if themeDatas["Spacings/Alignment"] == 2 else
                     Qt.AlignJustify)
-    bf.setLineHeight(themeDatas["Spacings/LineSpacing"], QTextBlockFormat.ProportionalHeight)
+    bf.setLineHeight(themeDatas["Spacings/LineSpacing"],
+                      QTextBlockFormat.LineHeightTypes.ProportionalHeight.value)
     bf.setTextIndent(themeDatas["Spacings/TabWidth"] * 1 if themeDatas["Spacings/IndentFirstLine"] else 0)
     bf.setTopMargin(themeDatas["Spacings/ParagraphAbove"])
     bf.setBottomMargin(themeDatas["Spacings/ParagraphBelow"])
@@ -234,7 +236,7 @@ def setThemeEditorDatas(editor, themeDatas, pixmap, screenRect):
     # cursor.setBlockFormat(bf2)
     # b = b.next()
 
-    editor.setTabStopWidth(themeDatas["Spacings/TabWidth"])
+    editor.setTabStopDistance(themeDatas["Spacings/TabWidth"])
     editor.document().setIndentWidth(themeDatas["Spacings/TabWidth"])
 
     editor.highlighter.setMisspelledColor(QColor(themeDatas["Text/Misspelled"]))

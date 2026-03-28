@@ -2,8 +2,9 @@
 # --!-- coding: utf8 --!--
 import re
 
-from PyQt5.QtGui import QTextCharFormat, QFont
-from PyQt5.QtWidgets import qApp, QVBoxLayout, QCheckBox, QWidget, QHBoxLayout, QLabel, QSpinBox, QComboBox
+from PyQt6.QtGui import QTextCharFormat, QFont
+from PyQt6.QtWidgets import QVBoxLayout, QCheckBox, QWidget, QHBoxLayout, QLabel, QSpinBox, QComboBox
+from manuskript.qt_compat import qApp
 
 from manuskript.exporter.manuskript.markdown import markdown, markdownSettings
 from manuskript.ui.collapsibleGroupBox2 import collapsibleGroupBox2

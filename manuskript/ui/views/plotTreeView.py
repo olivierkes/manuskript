@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-from PyQt5.QtCore import Qt, QModelIndex, QMimeData
-from PyQt5.QtGui import QBrush, QColor
-from PyQt5.QtWidgets import QTreeWidget, QTreeWidgetItem
+from PyQt6.QtCore import Qt, QModelIndex, QMimeData
+from PyQt6.QtGui import QBrush, QColor
+from PyQt6.QtWidgets import QTreeWidget, QTreeWidgetItem
 from lxml import etree as ET
 
 from manuskript import settings

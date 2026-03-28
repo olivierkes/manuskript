@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QAbstractItemView
+from PyQt6.QtCore import Qt
+from PyQt6.QtWidgets import QAbstractItemView
 
 
 class dndView(QAbstractItemView):

@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-from PyQt5.QtWidgets import QMenu, QAction
-from PyQt5.QtCore import QCoreApplication
-from PyQt5 import QtCore
+from PyQt6.QtWidgets import QMenu
+from PyQt6.QtCore import QCoreApplication
+from PyQt6 import QtCore
+from PyQt6.QtGui import QAction
 
 from manuskript.searchLabels import OutlineSearchLabels, CharacterSearchLabels, FlatDataSearchLabels, WorldSearchLabels, PlotSearchLabels
 from manuskript.models.searchFilter import searchFilter

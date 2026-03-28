@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-from PyQt5.QtWidgets import qApp, QTextEdit
-from PyQt5.QtCore import QUrl
+from PyQt6.QtWidgets import QTextEdit
+from PyQt6.QtCore import QUrl
+from manuskript.qt_compat import qApp
 
 from manuskript.exporter.manuskript import HTML as MskHTML
 from manuskript.exporter.pandoc.abstractPlainText import abstractPlainText

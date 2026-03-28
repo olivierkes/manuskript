@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-from PyQt5.QtGui import QTextCharFormat, QFont
-from PyQt5.QtWidgets import QPlainTextEdit, QGroupBox, qApp, QVBoxLayout, QCheckBox
+from PyQt6.QtGui import QTextCharFormat, QFont
+from PyQt6.QtWidgets import QPlainTextEdit, QGroupBox, QVBoxLayout, QCheckBox
+from manuskript.qt_compat import qApp
 
 from manuskript.exporter.manuskript.plainText import plainText
 from manuskript.functions import mainWindow, safeTranslate

@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-from PyQt5.QtCore import Qt, QTimer, QRectF
-from PyQt5.QtGui import QBrush, QPen, QFontMetrics, QFontMetricsF, QColor
-from PyQt5.QtWidgets import QWidget, QGraphicsScene, QGraphicsSimpleTextItem, QMenu, QAction, QGraphicsRectItem, \
+from PyQt6.QtCore import Qt, QTimer, QRectF
+from PyQt6.QtGui import QBrush, QPen, QFontMetrics, QFontMetricsF, QColor, QAction
+from PyQt6.QtWidgets import QWidget, QGraphicsScene, QGraphicsSimpleTextItem, QMenu, QGraphicsRectItem, \
     QGraphicsLineItem, QGraphicsEllipseItem
 
 from manuskript.enums import Outline

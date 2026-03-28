@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-from PyQt5.QtCore import QModelIndex, QSize
-from PyQt5.QtCore import Qt, QMimeData, QByteArray
-from PyQt5.QtGui import QStandardItem, QBrush, QFontMetrics
-from PyQt5.QtGui import QStandardItemModel, QColor
-from PyQt5.QtWidgets import QMenu, QAction, qApp
+from PyQt6.QtCore import QModelIndex, QSize
+from PyQt6.QtCore import Qt, QMimeData, QByteArray
+from PyQt6.QtGui import QStandardItem, QBrush, QFontMetrics
+from PyQt6.QtGui import QStandardItemModel, QColor, QAction
+from PyQt6.QtWidgets import QMenu
+from manuskript.qt_compat import qApp
 
 from manuskript.enums import World, Model
 from manuskript.functions import mainWindow
@@ -341,7 +342,7 @@ class worldModel(QStandardItemModel, searchableModel):
 
         if role == Qt.FontRole:
             if level in [0, 1]:
-                f = qApp.font()
+                f = qApp().font()
                 f.setBold(True)
                 return f
 
@@ -350,7 +351,7 @@ class worldModel(QStandardItemModel, searchableModel):
                 return QBrush(QColor(S.highlightedTextDark))
 
         if role == Qt.SizeHintRole:
-            fm = QFontMetrics(qApp.font())
+            fm = QFontMetrics(qApp().font())
             h = fm.height()
             if level == 0:
                 return QSize(0, h + 12)

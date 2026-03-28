@@ -5,7 +5,7 @@
 from manuskript.models import references as Ref
 from manuskript.functions import mainWindow
 from manuskript.enums import Character
-from PyQt5.QtWidgets import QTextEdit, QTableView, QLineEdit
+from PyQt6.QtWidgets import QTextEdit, QTableView, QLineEdit
 from manuskript.ui.highlighters.searchResultHighlighters.abstractSpecificSearchResultHighlighter import abstractSearchResultHighlighter
 
 

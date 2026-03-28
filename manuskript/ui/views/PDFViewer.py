@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-from PyQt5.QtCore import QUrl
-from PyQt5.QtWidgets import QLabel
+from PyQt6.QtCore import QUrl
+from PyQt6.QtWidgets import QLabel
 from manuskript.ui.views.webView import webView, webEngine
 
 from manuskript.functions import appPath
@@ -9,8 +9,8 @@ from manuskript.functions import appPath
 
 if webEngine == "QtWebKit":
 
-    from PyQt5.QtWebKit import QWebSettings
-    from PyQt5.QtWebKitWidgets import QWebView
+    from PyQt6.QtWebKit import QWebSettings
+    from PyQt6.QtWebKitWidgets import QWebView
 
 
     class PDFViewer(QWebView):
@@ -29,7 +29,11 @@ if webEngine == "QtWebKit":
 
 elif webEngine == "QtWebEngine":
 
-    from PyQt5.QtWebEngineWidgets import QWebEngineView, QWebEnginePage, QWebEngineSettings
+    try:
+        from PyQt6.QtWebEngineWidgets import QWebEngineView
+        from PyQt6.QtWebEngineCore import QWebEnginePage, QWebEngineSettings
+    except ImportError:
+        from PyQt6.QtWebEngineWidgets import QWebEngineView, QWebEnginePage, QWebEngineSettings
 
 
     class PDFViewer(QWebEngineView):

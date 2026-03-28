@@ -8,7 +8,7 @@ def test_autoLoad(MWNoProject):
     Tests for the welcome widget using MainWindow with no open project.
     """
     MW = MWNoProject
-    from PyQt5.QtCore import QSettings
+    from PyQt6.QtCore import QSettings
 
     # Testing when no autoLoad
     QSettings().remove("autoLoad")

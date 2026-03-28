@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-from PyQt5.QtWidgets import QListView
+from PyQt6.QtWidgets import QListView
 
 from manuskript import settings
 from manuskript.functions import findBackground

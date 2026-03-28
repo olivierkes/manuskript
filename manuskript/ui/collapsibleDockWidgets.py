@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QToolBar, QDockWidget, QAction, QToolButton, QSizePolicy, QStylePainter, \
+from PyQt6.QtCore import Qt
+from PyQt6.QtWidgets import QToolBar, QDockWidget, QToolButton, QSizePolicy, QStylePainter, \
     QStyleOptionButton, QStyle
+from PyQt6.QtGui import QAction
 
 from manuskript.ui import style
 

@@ -23,9 +23,10 @@ def test_general(MWSampleProject):
     SW = MW.sw
 
     # Imports
-    from PyQt5.QtWidgets import qApp, QStyleFactory
-    from PyQt5.QtCore import QSettings, Qt
-    qS = QSettings(qApp.organizationName(), qApp.applicationName())
+    from PyQt6.QtWidgets import QStyleFactory
+    from PyQt6.QtCore import QSettings, Qt
+    from manuskript.qt_compat import qApp
+    qS = QSettings(qApp().organizationName(), qApp().applicationName())
     from manuskript import settings as S
 
     # Style
@@ -82,9 +83,9 @@ def test_general(MWSampleProject):
     SW.cmbTreeIcon.currentIndexChanged.emit(0)
     SW.cmbOutlineIcon.currentIndexChanged.emit(0)
     SW.cmbCorkIcon.currentIndexChanged.emit(0)
-    SW.chkOutlineTitle.setChecked(Qt.Checked)  #outlineColumnsChanged
-    SW.chkOutlineTitle.setChecked(Qt.Unchecked)
-    SW.chkOutlineTitle.setChecked(Qt.Checked)
+    SW.chkOutlineTitle.setChecked(True)  #outlineColumnsChanged
+    SW.chkOutlineTitle.setChecked(False)
+    SW.chkOutlineTitle.setChecked(True)
     # Can't test because of the dialog
     # assert SW.setCorkColor() == None
     SW.sldTreeIconSize.setValue(SW.sldTreeIconSize.value() + 1)

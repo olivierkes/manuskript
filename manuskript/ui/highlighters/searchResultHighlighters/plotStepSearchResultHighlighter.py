@@ -5,7 +5,7 @@
 from manuskript.models import references as Ref
 from manuskript.functions import mainWindow
 from manuskript.enums import  PlotStep
-from PyQt5.QtWidgets import QTableView, QTextEdit
+from PyQt6.QtWidgets import QTableView, QTextEdit
 from manuskript.ui.highlighters.searchResultHighlighters.abstractSpecificSearchResultHighlighter import abstractSearchResultHighlighter
 
 

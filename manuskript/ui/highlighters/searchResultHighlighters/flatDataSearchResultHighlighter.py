@@ -3,7 +3,7 @@
 
 from manuskript.functions import mainWindow
 from manuskript.enums import  FlatData
-from PyQt5.QtWidgets import QTextEdit, QLineEdit
+from PyQt6.QtWidgets import QTextEdit, QLineEdit
 from manuskript.ui.highlighters.searchResultHighlighters.abstractSpecificSearchResultHighlighter import abstractSearchResultHighlighter
 
 

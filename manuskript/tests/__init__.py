@@ -8,7 +8,7 @@
 # Don't know why, this causes seg fault on SemaphoreCI
 # Seg fault in app = QApplication(...)
 # Workaround: create and discard an app first...
-from PyQt5.QtWidgets import QApplication
+from PyQt6.QtWidgets import QApplication
 QApplication([])
 
 # Create app and mainWindow
@@ -26,7 +26,8 @@ app, MW = main.prepare(arguments, tests=True)
 #        At that moment, we will need to catch the exception in the MainWindow,
 #        or better: understand why it happens at all, and only on some signals.
 from manuskript import functions as F
-from PyQt5.QtCore import Qt
+from PyQt6.QtCore import Qt
+from manuskript.qt_compat import qApp
 F.AUC = Qt.AutoConnection
 
 # METHOD 2

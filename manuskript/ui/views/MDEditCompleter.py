@@ -2,9 +2,10 @@
 # --!-- coding: utf8 --!--
 import re
 
-from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QTextCursor, QFont, QFontMetrics
-from PyQt5.QtWidgets import QAction, qApp, QToolTip, QTextEdit
+from PyQt6.QtCore import Qt
+from PyQt6.QtGui import QTextCursor, QFont, QFontMetrics, QAction
+from PyQt6.QtWidgets import QToolTip, QTextEdit
+from manuskript.qt_compat import qApp
 
 from manuskript.ui.editors.completer import completer
 from manuskript.ui.views.MDEditView import MDEditView
@@ -116,15 +117,15 @@ class MDEditCompleter(MDEditView):
         onRef = [r for r in self.refRects if r.contains(event.pos())]
 
         if not onRef:
-            qApp.restoreOverrideCursor()
+            qApp().restoreOverrideCursor()
             self.hideTooltip()
             return
 
         cursor = self.cursorForPosition(event.pos())
         ref = self.refUnderCursor(cursor)
         if ref:
-            if not qApp.overrideCursor():
-                qApp.setOverrideCursor(Qt.PointingHandCursor)
+            if not qApp().overrideCursor():
+                qApp().setOverrideCursor(Qt.PointingHandCursor)
 
             self.showTooltip(self.mapToGlobal(event.pos()), Ref.tooltip(ref))
 
@@ -136,7 +137,7 @@ class MDEditCompleter(MDEditView):
             ref = self.refUnderCursor(cursor)
             if ref:
                 Ref.open(ref)
-                qApp.restoreOverrideCursor()
+                qApp().restoreOverrideCursor()
 
     def resizeEvent(self, event):
         MDEditView.resizeEvent(self, event)

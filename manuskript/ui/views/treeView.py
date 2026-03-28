@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QCursor
-from PyQt5.QtWidgets import QTreeView, QAction
+from PyQt6.QtCore import Qt
+from PyQt6.QtGui import QCursor, QAction
+from PyQt6.QtWidgets import QTreeView
 
 from manuskript.enums import Outline
 from manuskript.functions import mainWindow
@@ -31,14 +31,15 @@ class treeView(QTreeView, dndView, outlineBasics):
         self.titleDelegate = treeTitleDelegate()
         self.setItemDelegateForColumn(Outline.title, self.titleDelegate)
 
-    def makePopupMenu(self):
-        menu = outlineBasics.makePopupMenu(self)
+    def makePopupMenu(self, cursorViewportPos=None):
+        menu = outlineBasics.makePopupMenu(self, cursorViewportPos)
         first = menu.actions()[3]
 
         # Open item in new tab
         #sel = self.selectedIndexes()
-        pos = self.viewport().mapFromGlobal(QCursor.pos())
-        mouseIndex = self.indexAt(pos)
+        if cursorViewportPos is None:
+            cursorViewportPos = self.viewport().mapFromGlobal(QCursor.pos())
+        mouseIndex = self.indexAt(cursorViewportPos)
 
         # Expand /collapse item
         if mouseIndex.isValid():

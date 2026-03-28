@@ -3,9 +3,9 @@
 import json
 import os
 
-from PyQt5.QtCore import Qt, QTimer
-from PyQt5.QtGui import QBrush, QColor, QIcon
-from PyQt5.QtWidgets import QWidget, QFileDialog, QMessageBox, QStyle
+from PyQt6.QtCore import Qt, QTimer
+from PyQt6.QtGui import QBrush, QColor, QIcon
+from PyQt6.QtWidgets import QWidget, QFileDialog, QMessageBox, QStyle
 
 from manuskript.functions import writablePath, appPath, openURL, statusMessage
 from manuskript.ui.importers.importer_ui import Ui_importer
@@ -121,7 +121,7 @@ class importerDialog(QWidget, Ui_importer):
         # We find the current selected format
         F = self._format
 
-        options = QFileDialog.Options()
+        options = QFileDialog.Option(0)
         if F.fileFormat == "<<folder>>":
             options = QFileDialog.ShowDirsOnly
             fileName = QFileDialog.getExistingDirectory(self, "Select import folder",

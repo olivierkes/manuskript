@@ -2,7 +2,7 @@
 # --!-- coding: utf8 --!--
 
 import os, gzip, json, glob, re, string
-from PyQt5.QtCore import QLocale
+from PyQt6.QtCore import QLocale
 from collections import OrderedDict
 from manuskript.functions import writablePath
 

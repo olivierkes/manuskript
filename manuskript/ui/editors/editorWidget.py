@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-from PyQt5.QtCore import pyqtSignal, QModelIndex
-from PyQt5.QtGui import QPalette
-from PyQt5.QtWidgets import QWidget, QFrame, QSpacerItem, QSizePolicy
-from PyQt5.QtWidgets import QVBoxLayout, qApp, QStyle
+from PyQt6.QtCore import pyqtSignal, QModelIndex
+from PyQt6.QtGui import QPalette
+from PyQt6.QtWidgets import QWidget, QFrame, QSpacerItem, QSizePolicy
+from PyQt6.QtWidgets import QVBoxLayout, QStyle
+from manuskript.qt_compat import qApp
 
 from manuskript import settings
 from manuskript.functions import AUC, mainWindow

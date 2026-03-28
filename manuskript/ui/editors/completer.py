@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-from PyQt5.QtCore import pyqtSignal, Qt, QRect
-from PyQt5.QtGui import QBrush, QFontMetrics, QPalette, QColor
-from PyQt5.QtWidgets import QWidget, QListWidgetItem, QStyledItemDelegate, QStyle
+from PyQt6.QtCore import pyqtSignal, Qt, QRect
+from PyQt6.QtGui import QBrush, QFontMetrics, QPalette, QColor
+from PyQt6.QtWidgets import QWidget, QListWidgetItem, QStyledItemDelegate, QStyle
 
 from manuskript.functions import mainWindow
 from manuskript.ui.editors.completer_ui import Ui_completer

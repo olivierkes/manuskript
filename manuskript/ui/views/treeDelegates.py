@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-from PyQt5.QtCore import Qt, QRect
-from PyQt5.QtGui import QColor, QPalette, QIcon, QFont, QFontMetrics
-from PyQt5.QtWidgets import QStyledItemDelegate, qApp, QStyleOptionViewItem, QStyle
+from PyQt6.QtCore import Qt, QRect
+from PyQt6.QtGui import QColor, QPalette, QIcon, QFont, QFontMetrics
+from PyQt6.QtWidgets import QStyledItemDelegate, QStyleOptionViewItem, QStyle
+from manuskript.qt_compat import qApp
 
 from manuskript import settings
 from manuskript.enums import Outline
@@ -29,7 +30,7 @@ class treeTitleDelegate(QStyledItemDelegate):
         item = index.internalPointer()
         colors = outlineItemColors(item)
 
-        style = qApp.style()
+        style = qApp().style()
 
         opt = QStyleOptionViewItem(option)
         self.initStyleOption(opt, index)

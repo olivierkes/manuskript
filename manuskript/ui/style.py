@@ -3,16 +3,16 @@
 
 
 # default window color (linux):
-from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QColor, QPalette
-from PyQt5.QtWidgets import qApp
+from PyQt6.QtCore import Qt
+from PyQt6.QtGui import QColor, QPalette
 
 from manuskript import settings
 from manuskript import functions as F
+from manuskript.qt_compat import qApp
 
 # Loading palette colors.
 # Manuskript as to restart to reload
-p = qApp.palette()
+p = qApp().palette()
 # window = "#d6d2d0" #"#eee" / #eff0f1
 window = p.color(QPalette.Window).name()            # General background
 windowText = p.color(QPalette.WindowText).name()    # General foreground
@@ -100,7 +100,7 @@ def styleMainWindow(mw):
 
 
 def appPalette():
-    p = qApp.palette()
+    p = qApp().palette()
     c = p.color(p.Window)
     # p.setColor(p.Window, QColor(window))
     # p.setColor(p.Base, c.lighter(115))

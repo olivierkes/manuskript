@@ -13,9 +13,9 @@ import string
 import zipfile
 from collections import OrderedDict
 
-from PyQt5.QtCore import Qt, QModelIndex
-from PyQt5.QtGui import QColor, QStandardItem
-from PyQt5.QtWidgets import QListWidgetItem
+from PyQt6.QtCore import Qt, QModelIndex
+from PyQt6.QtGui import QColor, QStandardItem
+from PyQt6.QtWidgets import QListWidgetItem
 
 from manuskript import settings
 from manuskript.enums import Character, World, Plot, PlotStep, Outline

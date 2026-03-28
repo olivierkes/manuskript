@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-from PyQt5.QtCore import Qt, QUrl
-from PyQt5.QtWidgets import QPlainTextEdit, qApp, QTabWidget, QFrame, QTextEdit
+from PyQt6.QtCore import Qt, QUrl
+from PyQt6.QtWidgets import QPlainTextEdit, QTabWidget, QFrame, QTextEdit
+from manuskript.qt_compat import qApp
 
 from manuskript.exporter.manuskript.markdown import markdown, markdownSettings
 from manuskript.ui.views.webView import webView

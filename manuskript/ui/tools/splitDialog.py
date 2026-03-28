@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-from PyQt5.QtWidgets import QInputDialog
+from PyQt6.QtWidgets import QInputDialog
 from manuskript.functions import mainWindow
 
 

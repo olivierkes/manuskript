@@ -212,13 +212,12 @@ def logFutureExceptions():
 # Qt has its own logging facility that we would like to integrate into our own.
 # See: http://thispageintentionally.blogspot.com/2014/03/trapping-qt-log-messages.html
 
-from PyQt5.QtCore import qInstallMessageHandler, QLibraryInfo, QMessageLogContext
-from PyQt5.Qt import QtMsgType
+from PyQt6.QtCore import qInstallMessageHandler, QLibraryInfo, QMessageLogContext, QtMsgType
 
 def qtMessageHandler(msg_type, msg_log_context, msg_string):
     """Forwards Qt messages to Python logging system."""
     # Convert Qt msg type to logging level
-    msg_type_index = int(msg_type)
+    msg_type_index = msg_type.value if hasattr(msg_type, 'value') else int(msg_type)
     log_levels = [logging.DEBUG, logging.INFO, logging.WARNING, logging.ERROR, logging.FATAL]
     if (msg_type_index >= 0) and (msg_type_index < len(log_levels)):
         log_level = log_levels[msg_type_index]
@@ -345,8 +344,7 @@ def logRuntimeInformation(logger=None):
     # Installed Python packages.
 
     # PyQt + Qt
-    from PyQt5.Qt import PYQT_VERSION_STR, qVersion
-    from PyQt5.QtCore import QT_VERSION_STR
+    from PyQt6.QtCore import PYQT_VERSION_STR, qVersion, QT_VERSION_STR
     logger.info("* PyQt %s (compiled against Qt %s)", PYQT_VERSION_STR, QT_VERSION_STR)
     logger.info("  * Qt %s (runtime)", qVersion())
 

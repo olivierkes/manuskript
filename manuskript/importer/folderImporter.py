@@ -6,8 +6,8 @@ from manuskript.importer.abstractImporter import abstractImporter
 from manuskript.models import outlineItem
 from manuskript.enums import Outline
 from manuskript.functions import safeTranslate
+from manuskript.qt_compat import qApp
 
-from PyQt5.QtWidgets import qApp
 
 
 class folderImporter(abstractImporter):

@@ -2,11 +2,13 @@
 # --!-- coding: utf8 --!--
 import os
 
-from PyQt5.QtCore import Qt, QSize, QPoint, QRect, QEvent, QTime, QTimer, pyqtSignal
-from PyQt5.QtGui import QFontMetrics, QColor, QBrush, QPalette, QPainter, QPixmap, QCursor
-from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QFrame, QWidget, QPushButton, qApp, QStyle, QComboBox, QLabel, QScrollBar, \
-    QStyleOptionSlider, QHBoxLayout, QVBoxLayout, QMenu, QAction, QDesktopWidget
+from PyQt6.QtCore import Qt, QSize, QPoint, QRect, QEvent, QTime, QTimer, pyqtSignal
+from PyQt6.QtGui import QFontMetrics, QColor, QBrush, QPalette, QPainter, QPixmap, QCursor
+from PyQt6.QtGui import QIcon
+from PyQt6.QtWidgets import QFrame, QWidget, QPushButton, QStyle, QComboBox, QLabel, QScrollBar, \
+    QStyleOptionSlider, QHBoxLayout, QVBoxLayout, QMenu
+from PyQt6.QtGui import QAction
+from manuskript.qt_compat import qApp, screenGeometry
 
 # Spell checker support
 from manuskript import settings
@@ -84,7 +86,7 @@ class fullScreenEditor(QWidget):
 
         # Close
         self.btnClose = QPushButton(self)
-        self.btnClose.setIcon(qApp.style().standardIcon(QStyle.SP_DialogCloseButton))
+        self.btnClose.setIcon(qApp().style().standardIcon(QStyle.SP_DialogCloseButton))
         self.btnClose.clicked.connect(self.leaveFullscreen)
         self.btnClose.setFlat(True)
 
@@ -129,7 +131,7 @@ class fullScreenEditor(QWidget):
         self.lstThemes.setCurrentIndex(self.lstThemes.findData(settings.fullScreenTheme))
         # self.lstThemes.setCurrentText(settings.fullScreenTheme)
         self.lstThemes.currentTextChanged.connect(self.setTheme)
-        self.lstThemes.setMaximumSize(QSize(300, QFontMetrics(qApp.font()).height()))
+        self.lstThemes.setMaximumSize(QSize(300, QFontMetrics(qApp().font()).height()))
         themeLabel = QLabel(self.tr("Theme:"), self)
         self.bottomPanel.layout().addWidget(themeLabel)
         self.bottomPanel.layout().addWidget(self.lstThemes)
@@ -168,9 +170,14 @@ class fullScreenEditor(QWidget):
 
         # Set the screen to the same screen as the main window
         if screenNumber is not None:
-            screenres = QDesktopWidget().screenGeometry(screenNumber);
-            self.move(QPoint(screenres.x(), screenres.y()));
-            self.resize(screenres.width(), screenres.height());
+            screens = qApp().screens()
+            if 0 <= screenNumber < len(screens):
+                # Use QWindow.setScreen for proper Wayland support
+                self.show()  # Must be shown to have a windowHandle
+                if self.windowHandle():
+                    self.windowHandle().setScreen(screens[screenNumber])
+                else:
+                    self.setGeometry(screenGeometry(screenNumber))
 
         # Connection
         self._index.model().dataChanged.connect(self.dataChanged)
@@ -222,7 +229,7 @@ class fullScreenEditor(QWidget):
 
         # ScrollBar
         r = self.editor.geometry()
-        w = qApp.style().pixelMetric(QStyle.PM_ScrollBarExtent)
+        w = qApp().style().pixelMetric(QStyle.PM_ScrollBarExtent)
         r.setWidth(w)
         r.moveRight(rect.right() - rect.left())
         self.scrollBar.setGeometry(r)
@@ -514,7 +521,7 @@ class myScrollBar(QScrollBar):
     def paintEvent(self, event):
         opt = QStyleOptionSlider()
         self.initStyleOption(opt)
-        style = qApp.style()
+        style = qApp().style()
         painter = QPainter(self)
 
         # Background (Necessary with Qt 5.2 it seems, not with 5.4)
@@ -664,7 +671,11 @@ class myPath(QWidget):
             else:
                 a.triggered.connect(gen_cb(i))
             m.addAction(a)
-        m.popup(QCursor.pos())
+        btn = self.sender()
+        if btn:
+            m.popup(btn.mapToGlobal(btn.rect().bottomLeft()))
+        else:
+            m.popup(QCursor.pos())
         self._m = m
 
     def getItemPath(self, item):

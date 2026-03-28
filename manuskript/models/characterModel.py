@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-from PyQt5.QtCore import QModelIndex, Qt, QAbstractItemModel, QVariant
-from PyQt5.QtGui import QIcon, QPixmap, QColor
+from PyQt6.QtCore import QModelIndex, Qt, QAbstractItemModel, QVariant
+from PyQt6.QtGui import QIcon, QPixmap, QColor
 
 from manuskript.functions import randomColor, iconColor, mainWindow, search
 from manuskript.enums import Character as C, Model

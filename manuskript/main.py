@@ -7,9 +7,10 @@ import sys
 import signal
 
 import manuskript.logging
-from PyQt5.QtCore import QLocale, QTranslator, QSettings, Qt
-from PyQt5.QtGui import QIcon, QColor, QPalette
-from PyQt5.QtWidgets import QApplication, qApp, QStyleFactory
+from PyQt6.QtCore import QLocale, QTranslator, QSettings, Qt
+from PyQt6.QtGui import QIcon, QColor, QPalette
+from PyQt6.QtWidgets import QApplication, QStyleFactory
+from manuskript.qt_compat import qApp, applyWaylandDefaults
 
 from manuskript.functions import appPath, writablePath, resetTranslation
 from manuskript.version import getVersion
@@ -23,8 +24,8 @@ import logging
 LOGGER = logging.getLogger(__name__)
 
 def prepare(arguments, tests=False):
-    # Qt WebEngine demands this attribute be set _before_ we create our QApplication object.
-    QApplication.setAttribute(Qt.AA_ShareOpenGLContexts, True)
+    # Apply Wayland/platform defaults BEFORE creating QApplication.
+    applyWaylandDefaults()
 
     # Create the foundation that provides our Qt application with its event loop.
     app = QApplication(sys.argv)
@@ -46,7 +47,7 @@ def prepare(arguments, tests=False):
     icon = QIcon()
     for i in [16, 32, 64, 128, 256, 512]:
         icon.addFile(appPath(os.path.join("icons", "Manuskript", "icon-{}px.png".format(i))))
-    qApp.setWindowIcon(icon)
+    qApp().setWindowIcon(icon)
 
     app.setStyle("Fusion")
 
@@ -174,7 +175,7 @@ def prepare(arguments, tests=False):
 
     # Font size
     if settings.contains("appFontSize"):
-        f = qApp.font()
+        f = qApp().font()
         f.setPointSize(settings.value("appFontSize", type=int))
         app.setFont(f)
 
@@ -184,7 +185,7 @@ def prepare(arguments, tests=False):
     MW = MainWindow()
     # We store the system default cursor flash time to be able to restore it
     # later if necessary
-    MW._defaultCursorFlashTime = qApp.cursorFlashTime()
+    MW._defaultCursorFlashTime = qApp().cursorFlashTime()
 
     # Command line project
     if arguments.filename is not None and arguments.filename[-4:] == ".msk":
@@ -249,10 +250,10 @@ def launch(arguments, app, MW = None):
             print("Console mode requested but error initializing IPython : %s" % str(e))
             print("To make use of the Interactive IPython QT Console, make sure you install : ")
             print("$ pip3 install ipython qtconsole matplotlib")
-            qApp.exec_()
+            qApp().exec()
     else:
-        qApp.exec_()
-    qApp.deleteLater()
+        qApp().exec()
+    qApp().deleteLater()
 
 
 def sigint_handler(sig, MW):

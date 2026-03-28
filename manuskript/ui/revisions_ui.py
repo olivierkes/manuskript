@@ -3,11 +3,11 @@
 # Form implementation generated from reading ui file 'manuskript/ui/revisions_ui.ui'
 #
 # Created: Mon Oct 16 10:36:02 2017
-#      by: PyQt5 UI code generator 5.2.1
+#      by: PyQt5/6 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
 
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt6 import QtCore, QtGui, QtWidgets
 
 class Ui_revisions(object):
     def setupUi(self, revisions):

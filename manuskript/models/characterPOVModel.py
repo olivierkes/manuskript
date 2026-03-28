@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-from PyQt5.QtCore import QModelIndex, QSortFilterProxyModel
+from PyQt6.QtCore import QModelIndex, QSortFilterProxyModel
 from manuskript.enums import Character as C
 
 class characterPOVModel(QSortFilterProxyModel):

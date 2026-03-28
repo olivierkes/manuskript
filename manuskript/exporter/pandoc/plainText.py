@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-from PyQt5.QtWidgets import qApp
 
 from manuskript.exporter.pandoc.abstractPlainText import abstractPlainText
 from manuskript.functions import safeTranslate
+from manuskript.qt_compat import qApp
 
 
 class markdown(abstractPlainText):

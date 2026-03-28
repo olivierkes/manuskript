@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
 
-from PyQt5.QtGui import QTextCursor
-from PyQt5.QtWidgets import QTextEdit, QTableView, QListView, QLineEdit, QPlainTextEdit, QLabel
+from PyQt6.QtGui import QTextCursor
+from PyQt6.QtWidgets import QTextEdit, QTableView, QListView, QLineEdit, QPlainTextEdit, QLabel
 
 
 class widgetSelectionHighlighter():

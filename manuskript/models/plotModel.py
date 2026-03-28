@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-from PyQt5.QtCore import QModelIndex
-from PyQt5.QtCore import QSignalMapper
-from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QBrush
-from PyQt5.QtGui import QStandardItem
-from PyQt5.QtGui import QStandardItemModel
-from PyQt5.QtWidgets import QAction, QMenu
+from PyQt6.QtCore import QModelIndex
+from PyQt6.QtCore import QSignalMapper
+from PyQt6.QtCore import Qt
+from PyQt6.QtGui import QBrush
+from PyQt6.QtGui import QStandardItem
+from PyQt6.QtGui import QStandardItemModel, QAction
+from PyQt6.QtWidgets import QMenu
 
 from manuskript.enums import Plot, PlotStep, Model
 from manuskript.functions import toInt, mainWindow
@@ -124,7 +124,10 @@ class plotModel(QStandardItemModel, searchableModel):
             index = self.index(i, Plot.ID, parent)
             # item = self.item(i, Plot.ID)
             if index.isValid() and index.data():
-                vals.append(int(index.data()))
+                try:
+                    vals.append(int(index.data()))
+                except (ValueError, TypeError):
+                    pass
 
         k = 0
         while k in vals:

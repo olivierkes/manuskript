@@ -3,9 +3,9 @@
 
 import re
 
-from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QBrush, QTextCursor, QColor, QFont, QSyntaxHighlighter
-from PyQt5.QtGui import QTextBlockFormat, QTextCharFormat
+from PyQt6.QtCore import Qt
+from PyQt6.QtGui import QBrush, QTextCursor, QColor, QFont, QSyntaxHighlighter
+from PyQt6.QtGui import QTextBlockFormat, QTextCharFormat
 
 import manuskript.models.references as Ref
 import manuskript.ui.style as S

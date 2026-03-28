@@ -3,9 +3,9 @@
 import json
 import os
 
-from PyQt5.QtCore import Qt, QSize
-from PyQt5.QtGui import QIcon, QFontMetrics, QFont
-from PyQt5.QtWidgets import QWidget, QTableWidgetItem, QListWidgetItem, QTreeView
+from PyQt6.QtCore import Qt, QSize
+from PyQt6.QtGui import QIcon, QFontMetrics, QFont
+from PyQt6.QtWidgets import QWidget, QTableWidgetItem, QListWidgetItem, QTreeView
 
 from manuskript.functions import mainWindow, writablePath
 from manuskript.ui.exporters.manuskript.plainTextSettings_ui import Ui_exporterSettings

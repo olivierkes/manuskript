@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # --!-- coding: utf8 --!--
-from PyQt5.QtWidgets import QTextEdit, qApp
+from PyQt6.QtWidgets import QTextEdit
+from manuskript.qt_compat import qApp
 
 from manuskript.exporter.basic import basicExporter, basicFormat
 from manuskript.exporter.manuskript.HTML import HTML

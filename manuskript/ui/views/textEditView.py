@@ -2,10 +2,11 @@
 # --!-- coding: utf8 --!--
 import re, textwrap
 
-from PyQt5.Qt import QApplication
-from PyQt5.QtCore import QTimer, QModelIndex, Qt, QEvent, pyqtSignal, QRegExp, QLocale, QPersistentModelIndex, QMutex
-from PyQt5.QtGui import QTextBlockFormat, QTextCharFormat, QFont, QColor, QIcon, QMouseEvent, QTextCursor
-from PyQt5.QtWidgets import QWidget, QTextEdit, qApp, QAction, QMenu, QToolTip
+from PyQt6.QtWidgets import QApplication
+from PyQt6.QtCore import QTimer, QModelIndex, Qt, QEvent, pyqtSignal, QLocale, QPersistentModelIndex, QMutex
+from PyQt6.QtGui import QTextBlockFormat, QTextCharFormat, QFont, QColor, QIcon, QMouseEvent, QTextCursor, QAction
+from PyQt6.QtWidgets import QWidget, QTextEdit, QMenu, QToolTip
+from manuskript.qt_compat import qApp, QRegExp
 
 from manuskript import settings
 from manuskript.enums import Outline, World, Character, Plot
@@ -48,7 +49,7 @@ class textEditView(QTextEdit):
 
         self.spellcheck = spellcheck
         self.currentDict = dict if dict else settings.dict
-        self._defaultFontSize = qApp.font().pointSize()
+        self._defaultFontSize = qApp().font().pointSize()
         self.highlighter = None
         self.setAutoResize(autoResize)
         self._defaultBlockFormat = QTextBlockFormat()
@@ -233,7 +234,8 @@ class textEditView(QTextEdit):
         self.setCursorWidth(opt["cursorWidth"])
 
         bf = QTextBlockFormat()
-        bf.setLineHeight(opt["lineSpacing"], bf.ProportionalHeight)
+        bf.setLineHeight(opt["lineSpacing"],
+                         bf.ProportionalHeight.value if hasattr(bf.ProportionalHeight, 'value') else bf.ProportionalHeight)
         bf.setTextIndent(opt["tabWidth"] * 1 if opt["indent"] else 0)
         bf.setTopMargin(opt["spacingAbove"])
         bf.setBottomMargin(opt["spacingBelow"])
@@ -482,7 +484,7 @@ class textEditView(QTextEdit):
             settings.textEditor["font"] = f.toString()
 
             # Update font to all textEditView. Drastically.
-            for w in F.mainWindow().findChildren(textEditView, QRegExp(".*")):
+            for w in F.mainWindow().findChildren(textEditView, ""):
                 w.loadFontSettings()
 
             # We tell the world that we accepted this event
@@ -505,7 +507,7 @@ class textEditView(QTextEdit):
     def contextMenuEvent(self, event):
         # Based on http://john.nachtimwald.com/2009/08/22/qplaintextedit-with-in-line-spell-check/
         popup_menu = self.createStandardContextMenu()
-        popup_menu.exec_(event.globalPos())
+        popup_menu.exec(event.globalPos())
 
     def newCharacter(self):
         text = self.sender().data()
