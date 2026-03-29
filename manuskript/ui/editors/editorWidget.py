@@ -420,11 +420,25 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
         return os.path.join(folder, *outlineItemPath(item))
 
     def notifyExternalChange(self, path):
-        """Show reload banner if `path` matches the currently displayed file."""
-        self._changedFiles.add(os.path.normpath(path))
+        """Show reload banner only if file on disk truly differs from editor."""
         fp = self.getItemFilePath()
-        if fp and os.path.normpath(fp) in self._changedFiles:
-            self._lockEditor()
+        if not fp:
+            return
+        normPath = os.path.normpath(path)
+        normFp = os.path.normpath(fp)
+        if normPath != normFp:
+            return
+        # Compare disk content with current editor text
+        try:
+            with open(fp, 'rt', encoding='utf-8') as f:
+                diskBody = self._parseMMDBody(f.read())
+        except (OSError, UnicodeDecodeError):
+            return
+        if diskBody == self.txtRedacText.toPlainText():
+            self._changedFiles.discard(normFp)
+            return
+        self._changedFiles.add(normFp)
+        self._lockEditor()
 
     def _lockEditor(self):
         """Show banner, dim text with opacity, block editing."""
@@ -471,8 +485,9 @@ class editorWidget(QWidget, Ui_editorWidget_ui):
         i = 0
         while i < len(lines) and ':' in lines[i] and lines[i].strip():
             i += 1
-        if i > 0 and i < len(lines) and lines[i].strip() == '':
-            i += 1  # skip blank line after metadata
+        # skip all blank lines between metadata and body
+        while i < len(lines) and lines[i].strip() == '':
+            i += 1
         return '\n'.join(lines[i:])
 
     def toggleSpellcheck(self, v):

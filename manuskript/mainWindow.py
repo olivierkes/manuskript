@@ -77,7 +77,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.history = History()
         self._previousSelectionEmpty = True
         self._fileWatcher = None
-        self._fileWatcherBlocked = False
         self._changedPaths = set()
 
         self.readSettings()
@@ -1114,15 +1113,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def _onExternalFileChanged(self, path):
         """Slot for QFileSystemWatcher. Debounces via timer."""
-        if self._fileWatcherBlocked:
-            return
         self._changedPaths.add(path)
         self._fileWatcherTimer.start()
         LOGGER.debug("External change detected: %s", path)
 
     def _onFileWatcherTimeout(self):
         """Debounce expired. Notify open editors about changed files."""
-        if self._fileWatcherBlocked or not self.currentProject:
+        if not self.currentProject:
             return
 
         paths = self._changedPaths
