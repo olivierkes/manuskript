@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.38.2 
+<!-- Generated with glade 3.40.0 
 
 Copyright (C) 2015-2021 Olivier Keshavjee et al.
 
@@ -27,8 +27,43 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
   <!-- interface-name Manuskript -->
   <!-- interface-description Manuskript is an open-source tool for writers. -->
   <!-- interface-copyright 2015-2021 Olivier Keshavjee et al. -->
+  <object class="GtkAdjustment" id="adjustment_revisions_per_10_minutes">
+    <property name="lower">1</property>
+    <property name="upper">999</property>
+    <property name="value">1</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="adjustment_revisions_per_day">
+    <property name="lower">1</property>
+    <property name="upper">999</property>
+    <property name="value">1</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="adjustment_revisions_per_hour">
+    <property name="lower">1</property>
+    <property name="upper">999</property>
+    <property name="value">1</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="adjustment_revisions_per_minute">
+    <property name="lower">1</property>
+    <property name="upper">999</property>
+    <property name="value">1</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="adjustment_revisions_per_week">
+    <property name="lower">1</property>
+    <property name="upper">999</property>
+    <property name="value">1</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">10</property>
+  </object>
   <object class="HdyPreferencesPage" id="revisions_page">
-  	<property name="visible">True</property>
+    <property name="visible">True</property>
     <property name="can-focus">False</property>
     <property name="icon-name">emoji-recent-symbolic</property>
     <property name="title" translatable="yes">Revisions</property>
@@ -129,11 +164,11 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                             <property name="halign">start</property>
                             <property name="spacing">8</property>
                             <child>
-                              <object class="GtkSpinButton">
+                              <object class="GtkSpinButton" id="revisions_per_minute">
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
                                 <property name="input-purpose">number</property>
-                                <property name="adjustment">revision_delay1</property>
+                                <property name="adjustment">adjustment_revisions_per_minute</property>
                                 <property name="numeric">True</property>
                                 <property name="value">1</property>
                               </object>
@@ -170,12 +205,12 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                             <property name="halign">start</property>
                             <property name="spacing">8</property>
                             <child>
-                              <object class="GtkSpinButton">
+                              <object class="GtkSpinButton" id="revisions_per_10_minutes">
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
                                 <property name="text" translatable="yes">1</property>
                                 <property name="input-purpose">number</property>
-                                <property name="adjustment">revision_delay2</property>
+                                <property name="adjustment">adjustment_revisions_per_10_minutes</property>
                                 <property name="numeric">True</property>
                                 <property name="value">1</property>
                               </object>
@@ -212,12 +247,12 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                             <property name="halign">start</property>
                             <property name="spacing">8</property>
                             <child>
-                              <object class="GtkSpinButton">
+                              <object class="GtkSpinButton" id="revisions_per_hour">
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
                                 <property name="text" translatable="yes">1</property>
                                 <property name="input-purpose">number</property>
-                                <property name="adjustment">revision_delay3</property>
+                                <property name="adjustment">adjustment_revisions_per_hour</property>
                                 <property name="numeric">True</property>
                                 <property name="value">1</property>
                               </object>
@@ -254,12 +289,12 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                             <property name="halign">start</property>
                             <property name="spacing">8</property>
                             <child>
-                              <object class="GtkSpinButton">
+                              <object class="GtkSpinButton" id="revisions_per_day">
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
                                 <property name="text" translatable="yes">1</property>
                                 <property name="input-purpose">number</property>
-                                <property name="adjustment">revision_delay4</property>
+                                <property name="adjustment">adjustment_revisions_per_day</property>
                                 <property name="numeric">True</property>
                                 <property name="value">1</property>
                               </object>
@@ -296,12 +331,12 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                             <property name="halign">start</property>
                             <property name="spacing">8</property>
                             <child>
-                              <object class="GtkSpinButton">
+                              <object class="GtkSpinButton" id="revisions_per_week">
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
                                 <property name="text" translatable="yes">1</property>
                                 <property name="input-purpose">number</property>
-                                <property name="adjustment">revision_delay5</property>
+                                <property name="adjustment">adjustment_revisions_per_week</property>
                                 <property name="numeric">True</property>
                                 <property name="value">1</property>
                               </object>
@@ -440,40 +475,5 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
         </child>
       </object>
     </child>
-  </object>
-  <object class="GtkAdjustment" id="revision_delay1">
-    <property name="lower">1</property>
-    <property name="upper">999</property>
-    <property name="value">1</property>
-    <property name="step-increment">1</property>
-    <property name="page-increment">10</property>
-  </object>
-  <object class="GtkAdjustment" id="revision_delay2">
-    <property name="lower">1</property>
-    <property name="upper">999</property>
-    <property name="value">1</property>
-    <property name="step-increment">1</property>
-    <property name="page-increment">10</property>
-  </object>
-  <object class="GtkAdjustment" id="revision_delay3">
-    <property name="lower">1</property>
-    <property name="upper">999</property>
-    <property name="value">1</property>
-    <property name="step-increment">1</property>
-    <property name="page-increment">10</property>
-  </object>
-  <object class="GtkAdjustment" id="revision_delay4">
-    <property name="lower">1</property>
-    <property name="upper">999</property>
-    <property name="value">1</property>
-    <property name="step-increment">1</property>
-    <property name="page-increment">10</property>
-  </object>
-  <object class="GtkAdjustment" id="revision_delay5">
-    <property name="lower">1</property>
-    <property name="upper">999</property>
-    <property name="value">1</property>
-    <property name="step-increment">1</property>
-    <property name="page-increment">10</property>
   </object>
 </interface>

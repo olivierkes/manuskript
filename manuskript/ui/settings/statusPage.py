@@ -3,7 +3,7 @@
 
 from gi.repository import Gtk, Handy
 
-from manuskript.data import Settings, StatusHost, Status
+from manuskript.data import Settings, StatusHost, Status, Signals
 
 
 class StatusPage:
@@ -12,6 +12,7 @@ class StatusPage:
         self.settings = settings
         self.statuses = statuses
         self.status = None
+        self.signals = Signals.getCommonInstance()
 
         builder = Gtk.Builder()
         builder.add_from_file("ui/settings/status.glade")
@@ -78,6 +79,7 @@ class StatusPage:
             return
 
         self.statusStore.set_value(tree_iter, 0, status.name)
+        self.signals.emit("statuses-changed")
 
     def _removeClicked(self, button: Gtk.Button):
         if self.status is None:
@@ -92,6 +94,9 @@ class StatusPage:
         model.remove(tree_iter)
 
         self.statuses.removeStatus(name)
+        
+        self.signals.emit("status-removed")
+        self.signals.emit("statuses-changed")
 
     def _statusNameEdited(self, renderer: Gtk.CellRendererText, path: str, text: str):
         if self.status is None:
@@ -106,4 +111,5 @@ class StatusPage:
         model.set_value(tree_iter, 0, text)
 
         self.statuses.renameStatus(name, text)
+        self.signals.emit("statuses-changed")
 

@@ -19,7 +19,8 @@ from manuskript.data.outline import Outline
 from manuskript.data.revisions import Revisions
 from manuskript.io.mskFile import MskFile
 from manuskript.util import profileTime
-
+from manuskript.data.links import LinkAction, Links
+from manuskript.data.unique_id import UniqueIDHost, UniqueID
 
 class Project(AbstractData):
 
@@ -40,7 +41,9 @@ class Project(AbstractData):
         self.revisions = Revisions(self.file.directoryPath)
 
         self.version.value = self.file.getVersion()
-        self.settings.set("saveToZip", self.file.isZipFile())
+        self.settings.set("saveToZip", self.file.isZipFile(), False)
+
+        self.settings.links.add(self._saveSettings)
 
     def __del__(self):
         del self.file
@@ -127,3 +130,6 @@ class Project(AbstractData):
 
         self.file.save(saveToZip)
         self.complete()
+
+    def _saveSettings(self, action: LinkAction, UID: UniqueID, settings: Settings):
+        profileTime(self.save)

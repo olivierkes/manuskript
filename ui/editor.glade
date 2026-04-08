@@ -181,9 +181,6 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
       </object>
     </child>
   </object>
-  <object class="GtkTextBuffer" id="editor_text">
-    <property name="tag-table">editor_tag_table</property>
-  </object>
   <object class="GtkListStore" id="label_store">
     <columns>
       <!-- column-name name -->
@@ -385,292 +382,317 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                     <property name="can-focus">False</property>
                     <property name="orientation">vertical</property>
                     <child>
-                      <object class="GtkStack" id="editor_stack">
+                      <object class="GtkOverlay" id="editor_overlay">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <child>
-                          <object class="GtkScrolledWindow">
+                          <object class="GtkBox">
                             <property name="visible">True</property>
-                            <property name="can-focus">True</property>
-                            <property name="shadow-type">in</property>
+                            <property name="can-focus">False</property>
+                            <property name="orientation">vertical</property>
+                            <property name="baseline-position">bottom</property>
                             <child>
-                              <object class="GtkViewport">
+                              <object class="GtkStack" id="editor_stack">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                                 <child>
-                                  <object class="GtkTextView">
+                                  <object class="GtkScrolledWindow" id="editor_text_scroll_window">
                                     <property name="visible">True</property>
                                     <property name="can-focus">True</property>
-                                    <property name="wrap-mode">word-char</property>
-                                    <property name="left-margin">8</property>
-                                    <property name="right-margin">8</property>
-                                    <property name="top-margin">4</property>
-                                    <property name="bottom-margin">4</property>
-                                    <property name="indent">4</property>
-                                    <property name="buffer">editor_text</property>
-                                    <property name="input-hints">GTK_INPUT_HINT_SPELLCHECK | GTK_INPUT_HINT_WORD_COMPLETION | GTK_INPUT_HINT_NONE</property>
+                                    <property name="shadow-type">in</property>
+                                    <child>
+                                      <object class="GtkViewport">
+                                        <property name="visible">True</property>
+                                        <property name="can-focus">False</property>
+                                        <child>
+                                          <object class="GtkBox" id="editor_text_box">
+                                            <property name="visible">True</property>
+                                            <property name="can-focus">False</property>
+                                            <property name="orientation">vertical</property>
+                                            <child>
+                                              <placeholder/>
+                                            </child>
+                                            <child>
+                                              <placeholder/>
+                                            </child>
+                                            <child>
+                                              <placeholder/>
+                                            </child>
+                                          </object>
+                                        </child>
+                                      </object>
+                                    </child>
                                   </object>
+                                  <packing>
+                                    <property name="name">page_text</property>
+                                    <property name="icon-name">view-continuous-symbolic</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkScrolledWindow">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">True</property>
+                                    <property name="shadow-type">in</property>
+                                    <child>
+                                      <object class="GtkViewport">
+                                        <property name="visible">True</property>
+                                        <property name="can-focus">False</property>
+                                        <child>
+                                          <object class="GtkFlowBox" id="editor_flowbox">
+                                            <property name="visible">True</property>
+                                            <property name="can-focus">False</property>
+                                            <property name="valign">start</property>
+                                            <property name="homogeneous">True</property>
+                                            <property name="activate-on-single-click">False</property>
+                                          </object>
+                                        </child>
+                                      </object>
+                                    </child>
+                                  </object>
+                                  <packing>
+                                    <property name="name">page_grid</property>
+                                    <property name="icon-name">view-grid-symbolic</property>
+                                    <property name="position">1</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkScrolledWindow">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">True</property>
+                                    <property name="shadow-type">in</property>
+                                    <child>
+                                      <object class="GtkViewport">
+                                        <property name="visible">True</property>
+                                        <property name="can-focus">False</property>
+                                        <child>
+                                          <object class="GtkTreeView" id="editor_outline_view">
+                                            <property name="visible">True</property>
+                                            <property name="can-focus">True</property>
+                                            <property name="model">editor_outline_store</property>
+                                            <property name="search-column">0</property>
+                                            <property name="enable-tree-lines">True</property>
+                                            <child internal-child="selection">
+                                              <object class="GtkTreeSelection" id="editor_outline_selection"/>
+                                            </child>
+                                            <child>
+                                              <object class="GtkTreeViewColumn">
+                                                <property name="resizable">True</property>
+                                                <property name="min-width">50</property>
+                                                <property name="title" translatable="yes">Title</property>
+                                                <property name="expand">True</property>
+                                                <child>
+                                                  <object class="GtkCellRendererPixbuf"/>
+                                                  <attributes>
+                                                    <attribute name="icon-name">8</attribute>
+                                                  </attributes>
+                                                </child>
+                                                <child>
+                                                  <object class="GtkCellRendererText">
+                                                    <property name="editable">True</property>
+                                                  </object>
+                                                  <attributes>
+                                                    <attribute name="text">1</attribute>
+                                                  </attributes>
+                                                </child>
+                                              </object>
+                                            </child>
+                                            <child>
+                                              <object class="GtkTreeViewColumn">
+                                                <property name="resizable">True</property>
+                                                <property name="min-width">50</property>
+                                                <property name="title" translatable="yes">Label</property>
+                                                <child>
+                                                  <object class="GtkCellRendererCombo">
+                                                    <property name="editable">True</property>
+                                                    <property name="model">label_store</property>
+                                                    <property name="text-column">0</property>
+                                                  </object>
+                                                  <attributes>
+                                                    <attribute name="text">2</attribute>
+                                                  </attributes>
+                                                </child>
+                                              </object>
+                                            </child>
+                                            <child>
+                                              <object class="GtkTreeViewColumn">
+                                                <property name="resizable">True</property>
+                                                <property name="min-width">50</property>
+                                                <property name="title" translatable="yes">Status</property>
+                                                <child>
+                                                  <object class="GtkCellRendererCombo">
+                                                    <property name="editable">True</property>
+                                                    <property name="model">status_store</property>
+                                                    <property name="text-column">0</property>
+                                                  </object>
+                                                  <attributes>
+                                                    <attribute name="text">3</attribute>
+                                                  </attributes>
+                                                </child>
+                                              </object>
+                                            </child>
+                                            <child>
+                                              <object class="GtkTreeViewColumn">
+                                                <property name="resizable">True</property>
+                                                <property name="min-width">50</property>
+                                                <property name="title" translatable="yes">Compile</property>
+                                                <child>
+                                                  <object class="GtkCellRendererToggle"/>
+                                                  <attributes>
+                                                    <attribute name="active">4</attribute>
+                                                  </attributes>
+                                                </child>
+                                              </object>
+                                            </child>
+                                            <child>
+                                              <object class="GtkTreeViewColumn">
+                                                <property name="resizable">True</property>
+                                                <property name="min-width">50</property>
+                                                <property name="title" translatable="yes">Word count</property>
+                                                <child>
+                                                  <object class="GtkCellRendererSpin">
+                                                    <property name="editable">True</property>
+                                                  </object>
+                                                  <attributes>
+                                                    <attribute name="text">5</attribute>
+                                                  </attributes>
+                                                </child>
+                                              </object>
+                                            </child>
+                                            <child>
+                                              <object class="GtkTreeViewColumn">
+                                                <property name="resizable">True</property>
+                                                <property name="min-width">50</property>
+                                                <property name="title" translatable="yes">Goal</property>
+                                                <child>
+                                                  <object class="GtkCellRendererSpin">
+                                                    <property name="editable">True</property>
+                                                  </object>
+                                                  <attributes>
+                                                    <attribute name="text">6</attribute>
+                                                  </attributes>
+                                                </child>
+                                              </object>
+                                            </child>
+                                            <child>
+                                              <object class="GtkTreeViewColumn">
+                                                <property name="min-width">50</property>
+                                                <property name="title" translatable="yes">%</property>
+                                                <child>
+                                                  <object class="GtkCellRendererProgress"/>
+                                                  <attributes>
+                                                    <attribute name="value">7</attribute>
+                                                  </attributes>
+                                                </child>
+                                              </object>
+                                            </child>
+                                          </object>
+                                        </child>
+                                      </object>
+                                    </child>
+                                  </object>
+                                  <packing>
+                                    <property name="name">page_tree</property>
+                                    <property name="icon-name">view-list-symbolic</property>
+                                    <property name="position">2</property>
+                                  </packing>
                                 </child>
                               </object>
+                              <packing>
+                                <property name="expand">True</property>
+                                <property name="fill">True</property>
+                                <property name="position">0</property>
+                              </packing>
                             </child>
-                          </object>
-                          <packing>
-                            <property name="name">page_text</property>
-                            <property name="icon-name">view-continuous-symbolic</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkScrolledWindow">
-                            <property name="visible">True</property>
-                            <property name="can-focus">True</property>
-                            <property name="shadow-type">in</property>
                             <child>
-                              <object class="GtkViewport">
+                              <object class="GtkBox">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
+                                <property name="margin-start">2</property>
+                                <property name="margin-end">2</property>
+                                <property name="margin-top">2</property>
+                                <property name="margin-bottom">2</property>
+                                <property name="spacing">4</property>
                                 <child>
-                                  <object class="GtkFlowBox" id="editor_flowbox">
+                                  <object class="GtkButton" id="up">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">True</property>
+                                    <property name="receives-default">True</property>
+                                    <child>
+                                      <object class="GtkImage">
+                                        <property name="visible">True</property>
+                                        <property name="can-focus">False</property>
+                                        <property name="icon-name">go-up-symbolic</property>
+                                      </object>
+                                    </child>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">0</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkStackSwitcher">
                                     <property name="visible">True</property>
                                     <property name="can-focus">False</property>
-                                    <property name="valign">start</property>
-                                    <property name="homogeneous">True</property>
-                                    <property name="activate-on-single-click">False</property>
+                                    <property name="stack">editor_stack</property>
                                   </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">1</property>
+                                  </packing>
                                 </child>
-                              </object>
-                            </child>
-                          </object>
-                          <packing>
-                            <property name="name">page_grid</property>
-                            <property name="icon-name">view-grid-symbolic</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkScrolledWindow">
-                            <property name="visible">True</property>
-                            <property name="can-focus">True</property>
-                            <property name="shadow-type">in</property>
-                            <child>
-                              <object class="GtkViewport">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
                                 <child>
-                                  <object class="GtkTreeView" id="editor_outline_view">
+                                  <object class="GtkProgressBar" id="counter_progress">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="valign">center</property>
+                                    <property name="margin-start">2</property>
+                                    <property name="margin-end">2</property>
+                                    <property name="text" translatable="yes">0 words / 0</property>
+                                    <property name="show-text">True</property>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="pack-type">end</property>
+                                    <property name="position">2</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkScale">
+                                    <property name="width-request">300</property>
                                     <property name="visible">True</property>
                                     <property name="can-focus">True</property>
-                                    <property name="model">editor_outline_store</property>
-                                    <property name="enable-tree-lines">True</property>
-                                    <child internal-child="selection">
-                                      <object class="GtkTreeSelection" id="editor_outline_selection"/>
-                                    </child>
-                                    <child>
-                                      <object class="GtkTreeViewColumn">
-                                        <property name="resizable">True</property>
-                                        <property name="min-width">50</property>
-                                        <property name="title" translatable="yes">Title</property>
-                                        <property name="expand">True</property>
-                                        <child>
-                                          <object class="GtkCellRendererPixbuf"/>
-                                          <attributes>
-                                            <attribute name="icon-name">8</attribute>
-                                          </attributes>
-                                        </child>
-                                        <child>
-                                          <object class="GtkCellRendererText">
-                                            <property name="editable">True</property>
-                                          </object>
-                                          <attributes>
-                                            <attribute name="text">1</attribute>
-                                          </attributes>
-                                        </child>
-                                      </object>
-                                    </child>
-                                    <child>
-                                      <object class="GtkTreeViewColumn">
-                                        <property name="resizable">True</property>
-                                        <property name="min-width">50</property>
-                                        <property name="title" translatable="yes">Label</property>
-                                        <child>
-                                          <object class="GtkCellRendererCombo">
-                                            <property name="editable">True</property>
-                                            <property name="model">label_store</property>
-                                            <property name="text-column">0</property>
-                                          </object>
-                                          <attributes>
-                                            <attribute name="text">2</attribute>
-                                          </attributes>
-                                        </child>
-                                      </object>
-                                    </child>
-                                    <child>
-                                      <object class="GtkTreeViewColumn">
-                                        <property name="resizable">True</property>
-                                        <property name="min-width">50</property>
-                                        <property name="title" translatable="yes">Status</property>
-                                        <child>
-                                          <object class="GtkCellRendererCombo">
-                                            <property name="editable">True</property>
-                                            <property name="model">status_store</property>
-                                            <property name="text-column">0</property>
-                                          </object>
-                                          <attributes>
-                                            <attribute name="text">3</attribute>
-                                          </attributes>
-                                        </child>
-                                      </object>
-                                    </child>
-                                    <child>
-                                      <object class="GtkTreeViewColumn">
-                                        <property name="resizable">True</property>
-                                        <property name="min-width">50</property>
-                                        <property name="title" translatable="yes">Compile</property>
-                                        <child>
-                                          <object class="GtkCellRendererToggle"/>
-                                          <attributes>
-                                            <attribute name="active">4</attribute>
-                                          </attributes>
-                                        </child>
-                                      </object>
-                                    </child>
-                                    <child>
-                                      <object class="GtkTreeViewColumn">
-                                        <property name="resizable">True</property>
-                                        <property name="min-width">50</property>
-                                        <property name="title" translatable="yes">Word count</property>
-                                        <child>
-                                          <object class="GtkCellRendererSpin">
-                                            <property name="editable">True</property>
-                                          </object>
-                                          <attributes>
-                                            <attribute name="text">5</attribute>
-                                          </attributes>
-                                        </child>
-                                      </object>
-                                    </child>
-                                    <child>
-                                      <object class="GtkTreeViewColumn">
-                                        <property name="resizable">True</property>
-                                        <property name="min-width">50</property>
-                                        <property name="title" translatable="yes">Goal</property>
-                                        <child>
-                                          <object class="GtkCellRendererSpin">
-                                            <property name="editable">True</property>
-                                          </object>
-                                          <attributes>
-                                            <attribute name="text">6</attribute>
-                                          </attributes>
-                                        </child>
-                                      </object>
-                                    </child>
-                                    <child>
-                                      <object class="GtkTreeViewColumn">
-                                        <property name="min-width">50</property>
-                                        <property name="title" translatable="yes">%</property>
-                                        <child>
-                                          <object class="GtkCellRendererProgress"/>
-                                          <attributes>
-                                            <attribute name="value">7</attribute>
-                                          </attributes>
-                                        </child>
-                                      </object>
-                                    </child>
+                                    <property name="adjustment">editor_scale_adjustment</property>
+                                    <property name="fill-level">100</property>
+                                    <property name="draw-value">False</property>
                                   </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">3</property>
+                                  </packing>
                                 </child>
                               </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="pack-type">end</property>
+                                <property name="position">1</property>
+                              </packing>
                             </child>
                           </object>
                           <packing>
-                            <property name="name">page_tree</property>
-                            <property name="icon-name">view-list-symbolic</property>
-                            <property name="position">2</property>
+                            <property name="index">-1</property>
                           </packing>
                         </child>
                       </object>
                       <packing>
                         <property name="expand">True</property>
                         <property name="fill">True</property>
-                        <property name="position">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkBox">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="margin-start">2</property>
-                        <property name="margin-end">2</property>
-                        <property name="margin-top">2</property>
-                        <property name="margin-bottom">2</property>
-                        <property name="spacing">4</property>
-                        <child>
-                          <object class="GtkButton" id="up">
-                            <property name="visible">True</property>
-                            <property name="can-focus">True</property>
-                            <property name="receives-default">True</property>
-                            <child>
-                              <object class="GtkImage">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="icon-name">go-up-symbolic</property>
-                              </object>
-                            </child>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkStackSwitcher">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="stack">editor_stack</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkProgressBar" id="counter_progress">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="valign">center</property>
-                            <property name="margin-start">2</property>
-                            <property name="margin-end">2</property>
-                            <property name="text" translatable="yes">0 words / 0</property>
-                            <property name="show-text">True</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="pack-type">end</property>
-                            <property name="position">2</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkScale">
-                            <property name="width-request">300</property>
-                            <property name="visible">True</property>
-                            <property name="can-focus">True</property>
-                            <property name="adjustment">editor_scale_adjustment</property>
-                            <property name="fill-level">100</property>
-                            <property name="draw-value">False</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">3</property>
-                          </packing>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="pack-type">end</property>
-                        <property name="position">1</property>
+                        <property name="position">2</property>
                       </packing>
                     </child>
                   </object>
@@ -689,18 +711,13 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                         <property name="can-focus">True</property>
                         <property name="shadow-type">in</property>
                         <child>
-                          <object class="GtkViewport">
+                          <object class="GtkTextView" id="editor_text_view">
                             <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <child>
-                              <object class="GtkTextView">
-                                <property name="visible">True</property>
-                                <property name="can-focus">True</property>
-                                <property name="wrap-mode">word-char</property>
-                                <property name="buffer">editor_text</property>
-                                <property name="input-hints">GTK_INPUT_HINT_SPELLCHECK | GTK_INPUT_HINT_WORD_COMPLETION | GTK_INPUT_HINT_NONE</property>
-                              </object>
-                            </child>
+                            <property name="can-focus">True</property>
+                            <property name="wrap-mode">word-char</property>
+                            <property name="left-margin">5</property>
+                            <property name="right-margin">5</property>
+                            <property name="input-hints">GTK_INPUT_HINT_SPELLCHECK | GTK_INPUT_HINT_WORD_COMPLETION | GTK_INPUT_HINT_NONE</property>
                           </object>
                         </child>
                       </object>

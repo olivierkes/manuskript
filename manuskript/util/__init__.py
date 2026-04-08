@@ -7,6 +7,7 @@ import traceback
 import urllib.parse
 
 from manuskript.util.counter import CounterKind, CharCounter, WordCounter, PageCounter
+from manuskript.util.appSettings import AppSettings, AppSettingsKeys
 
 
 def safeInt(s: str, d: int) -> int:

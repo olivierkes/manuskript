@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.38.2 
+<!-- Generated with glade 3.40.0 
 
 Copyright (C) 2015-2021 Olivier Keshavjee et al.
 
@@ -27,6 +27,37 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
   <!-- interface-name Manuskript -->
   <!-- interface-description Manuskript is an open-source tool for writers. -->
   <!-- interface-copyright 2015-2021 Olivier Keshavjee et al. -->
+  <object class="GtkAdjustment" id="adjustment_autosave_interval_seconds">
+    <property name="upper">300</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="adjustment_autosave_minutes">
+    <property name="upper">120</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="adjustment_font_size">
+    <property name="lower">4</property>
+    <property name="upper">99</property>
+    <property name="value">4</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">10</property>
+  </object>
+  <object class="GtkListStore" id="languages_store">
+    <columns>
+      <!-- column-name name -->
+      <column type="gchararray"/>
+    </columns>
+    <data>
+      <row>
+        <col id="0" translatable="yes">English</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">German</col>
+      </row>
+    </data>
+  </object>
   <object class="HdyPreferencesPage" id="general_page">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
@@ -122,7 +153,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="input-purpose">number</property>
-                    <property name="adjustment">font_size</property>
+                    <property name="adjustment">adjustment_font_size</property>
                     <property name="numeric">True</property>
                     <property name="value">4</property>
                   </object>
@@ -212,7 +243,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                     <property name="can-focus">True</property>
                     <property name="text" translatable="yes">0</property>
                     <property name="input-purpose">number</property>
-                    <property name="adjustment">autosave_minutes</property>
+                    <property name="adjustment">adjustment_autosave_minutes</property>
                     <property name="numeric">True</property>
                   </object>
                   <packing>
@@ -272,7 +303,7 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
                     <property name="can-focus">True</property>
                     <property name="text" translatable="yes">0</property>
                     <property name="input-purpose">number</property>
-                    <property name="adjustment">autosave_interval_seconds</property>
+                    <property name="adjustment">adjustment_autosave_interval_seconds</property>
                     <property name="numeric">True</property>
                   </object>
                   <packing>
@@ -348,36 +379,5 @@ along with Manuskript.  If not, see <http://www.gnu.org/licenses/>.
       <widget name="label4"/>
       <widget name="label5"/>
     </widgets>
-  </object>
-  <object class="GtkAdjustment" id="autosave_interval_seconds">
-    <property name="upper">300</property>
-    <property name="step-increment">1</property>
-    <property name="page-increment">10</property>
-  </object>
-  <object class="GtkAdjustment" id="autosave_minutes">
-    <property name="upper">120</property>
-    <property name="step-increment">1</property>
-    <property name="page-increment">10</property>
-  </object>
-  <object class="GtkListStore" id="languages_store">
-    <columns>
-      <!-- column-name name -->
-      <column type="gchararray"/>
-    </columns>
-    <data>
-      <row>
-        <col id="0" translatable="yes">English</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">German</col>
-      </row>
-    </data>
-  </object>
-  <object class="GtkAdjustment" id="font_size">
-    <property name="lower">4</property>
-    <property name="upper">99</property>
-    <property name="value">4</property>
-    <property name="step-increment">1</property>
-    <property name="page-increment">10</property>
   </object>
 </interface>

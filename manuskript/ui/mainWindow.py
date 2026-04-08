@@ -3,7 +3,7 @@
 
 from gi.repository import GLib, GObject, Gtk
 
-from manuskript.data import Project
+from manuskript.data import Project, Signals
 from manuskript.plugin import findPlugins, loadPlugins
 from manuskript.spellchecker import getSpellcheckers
 from manuskript.ui.dialog import RenameDialog
@@ -17,7 +17,7 @@ from manuskript.ui.importWindow import ImportWindow
 from manuskript.ui.settingsWindow import SettingsWindow
 from manuskript.ui.startupWindow import StartupWindow
 from manuskript.ui.util import bindMenuItem, packViewIntoSlot, unpackFromSlot
-from manuskript.util import parseFilenameFromURL, validString
+from manuskript.util import parseFilenameFromURL, validString, AppSettings
 
 
 class MainWindow:
@@ -25,6 +25,10 @@ class MainWindow:
     def __init__(self):
         self.plugins = findPlugins()
         self.project = None
+
+        self.appSettings = AppSettings.getCommonInstance()
+
+        self.signals = Signals.getCommonInstance()
 
         builder = Gtk.Builder()
         builder.add_from_file("ui/main.glade")
@@ -212,6 +216,8 @@ class MainWindow:
             self.outlineView = unpackFromSlot(self.outlineSlot, self.outlineView)
             self.editorView = unpackFromSlot(self.editorSlot, self.editorView)
 
+            self.signals.clear()
+
             del self.project
             self.project = None
 
@@ -359,7 +365,9 @@ class MainWindow:
                 self.hide()
                 return
 
+        # TODO : check if we can intercept a kill through window managers
         self.window.destroy()
+        self.appSettings.save()
 
     def _notify(self, obj: GObject.Object, pspec: GObject.ParamSpec):
         print(pspec.name + " = " + str(obj.get_property(pspec.name)))

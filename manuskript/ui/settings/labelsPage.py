@@ -3,7 +3,7 @@
 
 from gi.repository import Gtk, Handy
 
-from manuskript.data import Settings, LabelHost, Label, Color
+from manuskript.data import Settings, LabelHost, Label, Color, Signals
 from manuskript.ui.util import rgbaFromColor, pixbufFromColor
 
 
@@ -13,6 +13,7 @@ class LabelsPage:
         self.settings = settings
         self.labels = labels
         self.label = None
+        self.signals = Signals.getCommonInstance()
 
         builder = Gtk.Builder()
         builder.add_from_file("ui/settings/labels.glade")
@@ -93,6 +94,8 @@ class LabelsPage:
         self.labelStore.set_value(tree_iter, 0, label.name)
         self.labelStore.set_value(tree_iter, 1, pixbufFromColor(label.color))
 
+        self.signals.emit("labels-changed")
+
     def _removeClicked(self, button: Gtk.Button):
         if self.label is None:
             return
@@ -106,6 +109,8 @@ class LabelsPage:
         model.remove(tree_iter)
 
         self.labels.removeLabel(name)
+        self.signals.emit("labels-removed")
+        self.signals.emit("labels-changed")
 
     def _colorSet(self, button: Gtk.ColorButton):
         if self.label is None:
@@ -128,6 +133,8 @@ class LabelsPage:
                 row[1] = pixbufFromColor(color)
                 break
 
+        self.signals.emit("labels-changed")
+
     def _labelNameEdited(self, renderer: Gtk.CellRendererText, path: str, text: str):
         if self.label is None:
             return
@@ -141,3 +148,5 @@ class LabelsPage:
         model.set_value(tree_iter, 0, text)
 
         self.labels.renameLabel(name, text)
+
+        self.signals.emit("labels-changed")

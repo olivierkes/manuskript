@@ -72,7 +72,8 @@ class LabelHost(AbstractData):
             self.labels[label.name] = label
 
     def getLabel(self, name: str) -> Label:
-        return self.labels.get(name)
+        result = self.labels.get(name)
+        return result
 
     def getLabelByID(self, ID: int | None) -> Label | None:
         if ID is None:

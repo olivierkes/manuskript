@@ -15,6 +15,7 @@ from manuskript.data.plots import Plots
 from manuskript.data.status import StatusHost, Status
 from manuskript.data.template import Template, TemplateLevel
 from manuskript.data.unique_id import UniqueIDHost, UniqueID
+from manuskript.data import Signals
 from manuskript.io.mmdFile import MmdFile
 from manuskript.util import CounterKind, countText, safeInt, safeFilename
 from manuskript.data import Characters, Character
@@ -41,7 +42,7 @@ class OutlineItem(AbstractData):
         self.summaryFull: Optional[str] = None
         self.POV: Optional[Character] = None
         self.notes: Optional[str] = None
-        self.label: Optional[str] = None
+        self.label: Optional[Label] = None
         self.status: Optional[Status] = None
         self.compile: bool = True
         self.goal: Optional[int] = None
@@ -333,6 +334,9 @@ class Outline(AbstractData):
         self.statuses: StatusHost = statuses
         self.items: list = list()
         self.cache: dict = dict()
+        self.signals: Signals = Signals.getCommonInstance()
+        self.signals.connect("labels-removed", self._checkForLabelConsistency)
+        self.signals.connect("status-removed", self._checkForStatusConsistency)
 
     def changePath(self, path: str):
         AbstractData.changePath(self, os.path.join(path, "outline"))
@@ -474,3 +478,27 @@ class Outline(AbstractData):
             OutlineFolder.saveItems(item, True)
 
         self.complete()
+
+    def __checkForLabelConsistency(self, outlineItem: OutlineItem):
+        if not outlineItem.label in self.labels:
+            outlineItem.label = None
+
+        if isinstance(outlineItem, OutlineFolder):
+            for item in outlineItem.items:
+                self.__checkForLabelConsistency(item)
+
+    def _checkForLabelConsistency(self):
+        for item in self.items:
+            self.__checkForLabelConsistency(item)
+
+    def __checkForStatusConsistency(self, outlineItem: OutlineItem):
+        if not outlineItem.status in self.statuses:
+            outlineItem.status = None
+
+        if isinstance(outlineItem, OutlineFolder):
+            for item in outlineItem.items:
+                self.__checkForStatusConsistency(item)
+
+    def _checkForStatusConsistency(self):
+        for item in self.items:
+            self.__checkForStatusConsistency(item)
