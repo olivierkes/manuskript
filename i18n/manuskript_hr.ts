@@ -169,7 +169,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1492"/>
         <source>Volume</source>
-        <translation>Broj</translation>
+        <translation>Svezak</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1493"/>
@@ -229,7 +229,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1546"/>
         <source>Full</source>
-        <translation>Cjelovit</translation>
+        <translation>Cjelovito</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1507"/>
@@ -299,7 +299,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1521"/>
         <source>Conflict</source>
-        <translation>Sukob</translation>
+        <translation>Konflikt</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1522"/>
@@ -379,7 +379,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1555"/>
         <source>Source of conflict</source>
-        <translation>Izvor sukoba</translation>
+        <translation>Izvor konflikta</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="23"/>
@@ -554,7 +554,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1217"/>
         <source>Project {} saved.</source>
-        <translation>Projekt {} spremljen.</translation>
+        <translation>Projekt {} je spremljen.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1221"/>
@@ -564,7 +564,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1240"/>
         <source>Project {} loaded.</source>
-        <translation>Projekt {} učitan.</translation>
+        <translation>Projekt {} je učitan.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1246"/>
@@ -574,7 +574,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1622"/>
         <source> (~{} pages)</source>
-        <translation> (otprilike {} stranica)</translation>
+        <translation> (~{} stranica)</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1625"/>
@@ -589,7 +589,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1634"/>
         <source>Project tree</source>
-        <translation>Razvoj projekta</translation>
+        <translation>Stablo projekta</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1635"/>
@@ -617,7 +617,7 @@
         <location filename="../manuskript/mainWindow.py" line="1709"/>
         <source>Take time to think about a one sentence (~50 words) summary of your book. Then expand it to
                      a paragraph, then to a page, then to a full summary.</source>
-        <translation>Napiši sažetak u jednoj rečenici (otprilike 50 riječi) za tvoju knjigu. Proširi tu rečenicu
+        <translation>Napiši sažetak u jednoj rečenici (~50 riječi) za tvoju knjigu. Proširi tu rečenicu
                      u odlomak, zatim u jednu stranicu i na kraju u jedan cjelovit sažetak.</translation>
     </message>
     <message>
@@ -743,7 +743,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1605"/>
         <source>Sp&amp;lit at cursor</source>
-        <translation>Ras&amp;tavi na mjestu pokazivača</translation>
+        <translation>Ras&amp;tavi na mjestu kursora</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1609"/>
@@ -778,7 +778,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1606"/>
         <source>M&amp;erge</source>
-        <translation>S&amp;jedini</translation>
+        <translation>S&amp;poji</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1572"/>
@@ -933,12 +933,12 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="2018"/>
         <source>PyQt / Qt versions 5.11 and 5.12 are known to cause a crash which might result in a loss of data.</source>
-        <translation>PyQt / Qt verzije 5.11 i 5.12 mogu uzrokovati pad programa što može uzrokovati gubitak podataka.</translation>
+        <translation>PyQt / Qt verzije 5.11 i 5.12 mogu prouzročiti nagli prekid rada programa što može dovesti do gubitak podataka.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="2019"/>
         <source>PyQt {} and Qt {} are in use.</source>
-        <translation>PyQt {} i Qt {} se trenutačno koriste.</translation>
+        <translation>PyQt {} i Qt {} se koriste.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="2025"/>
@@ -1048,7 +1048,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1604"/>
         <source>&amp;Split…</source>
-        <translation>&amp;Podijeli …</translation>
+        <translation>&amp;Rastavi …</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1634"/>
@@ -1058,7 +1058,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1635"/>
         <source>Draft and session word count targets</source>
-        <translation>Ciljani broj riječi skica i sesija</translation>
+        <translation>Ciljani broj riječi za skicu i sesiju</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="385"/>
@@ -1078,17 +1078,17 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="438"/>
         <source>Please add entries to apply to the selected characters.</source>
-        <translation>Dodaj unose koji će se primijeniti na odabrane znakove.</translation>
+        <translation>Dodaj unose koji će se primijeniti na odabrane likove.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="449"/>
         <source>Bulk Info Applied</source>
-        <translation>Grupne informacije primijenjene</translation>
+        <translation>Grupne informacije su primijenjene</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="449"/>
         <source>The bulk info has been applied to the selected characters.</source>
-        <translation>Grupne informacije su primijenjene na odabrane znakove.</translation>
+        <translation>Grupne informacije su primijenjene na odabrane likove.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="521"/>
@@ -1118,7 +1118,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1251"/>
         <source>Loading project {} failed.</source>
-        <translation>Projekt učitavanja {} nije uspio.</translation>
+        <translation>Učitavanje projekta {} nije uspjelo.</translation>
     </message>
 </context>
 <context>
@@ -1149,7 +1149,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1774"/>
         <source>Views</source>
-        <translation>Pregledi</translation>
+        <translation>Prikazi</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1962"/>
@@ -1174,7 +1174,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1783"/>
         <source>Application settings</source>
-        <translation>Postavke aplikacije</translation>
+        <translation>Postavke programa</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1790"/>
@@ -1294,7 +1294,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1886"/>
         <source>Icon color:</source>
-        <translation>Boja ikona:</translation>
+        <translation>Boja ikone:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1911"/>
@@ -1399,7 +1399,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1904"/>
         <source>Border color:</source>
-        <translation>Boja rubova:</translation>
+        <translation>Boja ruba:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1910"/>
@@ -1459,7 +1459,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2004"/>
         <source>Line spacing:</source>
-        <translation>Prored:</translation>
+        <translation>Razmak između redaka:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2005"/>
@@ -1534,7 +1534,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1970"/>
         <source>Cancel</source>
-        <translation>Otkaži</translation>
+        <translation>Odustani</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1971"/>
@@ -1589,7 +1589,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1983"/>
         <source>Zoomed</source>
-        <translation>Uvećano</translation>
+        <translation>Zumirano</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1985"/>
@@ -1609,7 +1609,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2017"/>
         <source>Center</source>
-        <translation>Centriraj</translation>
+        <translation>Sredina</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2018"/>
@@ -1634,7 +1634,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1998"/>
         <source>Padding:</source>
-        <translation>Postava:</translation>
+        <translation>Unutarnji rub:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2001"/>
@@ -1649,7 +1649,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1951"/>
         <source>Cursor</source>
-        <translation>Pokazivač</translation>
+        <translation>Kursor</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1952"/>
@@ -1684,7 +1684,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1954"/>
         <source>Disable blinking</source>
-        <translation>Onemogući treptanje</translation>
+        <translation>Deaktiviraj treperenje</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1926"/>
@@ -1810,7 +1810,7 @@
         <location filename="../manuskript/ui/settings_ui.py" line="1788"/>
         <source>Show progress in chars next
  to words</source>
-        <translation>Prikaži napredak u znakovima
+        <translation>Prikaži napredak brojem znakova
 pored broja riječi</translation>
     </message>
     <message>
@@ -1900,7 +1900,7 @@ pored broja riječi</translation>
     <message>
         <location filename="../manuskript/ui/about.py" line="44"/>
         <source>Software Versions in Use:</source>
-        <translation>Verzije korištnog softvera:</translation>
+        <translation>Korištene verzije softvera:</translation>
     </message>
 </context>
 <context>
@@ -1989,7 +1989,7 @@ pored broja riječi</translation>
     <message>
         <location filename="../manuskript/models/characterModel.py" line="179"/>
         <source>New character</source>
-        <translation>Novi znak</translation>
+        <translation>Novi lik</translation>
     </message>
     <message>
         <location filename="../manuskript/models/characterModel.py" line="215"/>
@@ -2025,7 +2025,7 @@ pored broja riječi</translation>
     <message>
         <location filename="../manuskript/ui/cheatSheet_ui.py" line="90"/>
         <source>Filter (type the name of anything in your project)</source>
-        <translation>Filtriraj (upiši ime bilo koje stavke u svom projektu)</translation>
+        <translation>Filtriraj (upiši ime bilo čega u svom projektu)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/cheatSheet.py" line="113"/>
@@ -2112,7 +2112,7 @@ pored broja riječi</translation>
     <message>
         <location filename="../manuskript/ui/collapsibleDockWidgets.py" line="26"/>
         <source>Dock Widgets Toolbar</source>
-        <translation>Fiksiraj alatnu traku widgeta</translation>
+        <translation>Alatna traka widgeta</translation>
     </message>
 </context>
 <context>
@@ -2133,7 +2133,7 @@ pored broja riječi</translation>
     <message>
         <location filename="../manuskript/ui/views/corkDelegate.py" line="100"/>
         <source>Full summary</source>
-        <translation>Cjelovit sažetak</translation>
+        <translation>Cjeloviti sažetak</translation>
     </message>
 </context>
 <context>
@@ -2258,7 +2258,7 @@ pored broja riječi</translation>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="524"/>
         <source>Subitems of:</source>
-        <translation>Podstavka od:</translation>
+        <translation>Podstavke od:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="525"/>
@@ -2313,7 +2313,7 @@ pored broja riječi</translation>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="541"/>
         <source>Typographic replacements:</source>
-        <translation>Tipografska zamjene:</translation>
+        <translation>Tipografske zamjene:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="544"/>
@@ -2338,7 +2338,7 @@ pored broja riječi</translation>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="549"/>
         <source>Enabled</source>
-        <translation>Omogućeno</translation>
+        <translation>Aktivirano</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="551"/>
@@ -2388,12 +2388,12 @@ pored broja riječi</translation>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings.py" line="343"/>
         <source>{}Level {} folder</source>
-        <translation>{}Razina {} mapa</translation>
+        <translation>{}razina {} mapa</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings.py" line="346"/>
         <source>{}Level {} text</source>
-        <translation>{}Razina {} tekst</translation>
+        <translation>{}razina {} tekst</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="542"/>
@@ -2403,7 +2403,7 @@ pored broja riječi</translation>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="543"/>
         <source>Replace --- with —</source>
-        <translation>Zamijeni --- s —</translation>
+        <translation>Zamijeni --- s –</translation>
     </message>
 </context>
 <context>
@@ -2431,7 +2431,7 @@ pored broja riječi</translation>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="124"/>
         <source>&lt;b&gt;Status:&lt;/b&gt; uninstalled.</source>
-        <translation>&lt;b&gt;Stanje:&lt;/b&gt; neinstalirano.</translation>
+        <translation>&lt;b&gt;Stanje:&lt;/b&gt; neinstaliran.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exportersManager.py" line="126"/>
@@ -2492,7 +2492,7 @@ pored broja riječi</translation>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="155"/>
         <source>New Text</source>
-        <translation>Novi Tekst</translation>
+        <translation>Novi tekst</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="156"/>
@@ -2507,7 +2507,7 @@ pored broja riječi</translation>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="159"/>
         <source>Theme selector</source>
-        <translation>Odabir teme</translation>
+        <translation>Birač teme</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="160"/>
@@ -2555,7 +2555,7 @@ pored broja riječi</translation>
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.py" line="64"/>
         <source>Trim long titles (&gt; 32 chars)</source>
-        <translation>Skrati dugačke naslove (&gt; 32 znaka)</translation>
+        <translation>Skrati dugačke naslove (više od 32 znakova)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/importers/generalSettings_ui.py" line="65"/>
@@ -2647,7 +2647,7 @@ pored broja riječi</translation>
     <message>
         <location filename="../manuskript/ui/editors/locker_ui.py" line="57"/>
         <source> minutes</source>
-        <translation> minuta</translation>
+        <translation> min</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker_ui.py" line="58"/>
@@ -2657,12 +2657,12 @@ pored broja riječi</translation>
     <message>
         <location filename="../manuskript/ui/editors/locker.py" line="94"/>
         <source>~{} h.</source>
-        <translation>otprilike {} h.</translation>
+        <translation>~{} h</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker.py" line="96"/>
         <source>~{} mn.</source>
-        <translation>otprilike {} min.</translation>
+        <translation>~{} min</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker.py" line="100"/>
@@ -2672,17 +2672,17 @@ pored broja riječi</translation>
     <message>
         <location filename="../manuskript/ui/editors/locker.py" line="102"/>
         <source>{} s.</source>
-        <translation>{} s.</translation>
+        <translation>{} s</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker.py" line="104"/>
         <source>{} remaining</source>
-        <translation>{} preostalo</translation>
+        <translation>preostalo: {}</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/locker.py" line="109"/>
         <source>{} words remaining</source>
-        <translation>{} riječi preostalo</translation>
+        <translation>preostalo riječi: {}</translation>
     </message>
 </context>
 <context>
@@ -2786,7 +2786,7 @@ pored broja riječi</translation>
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.py" line="98"/>
         <source>Full summary</source>
-        <translation>Cjelovit sažetak</translation>
+        <translation>Cjeloviti sažetak</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/metadataView_ui.py" line="100"/>
@@ -2916,7 +2916,7 @@ pored broja riječi</translation>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Exposition</source>
-        <translation>Izlaganje</translation>
+        <translation>Uvodni dio priče</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3051,32 +3051,32 @@ pored broja riječi</translation>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Plot Turn 1</source>
-        <translation>Zaplet okrenite 1</translation>
+        <translation>Zaokret u zapletu 1</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Pinch 1</source>
-        <translation>Škrt 1</translation>
+        <translation>Točka spora 1</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Midpoint</source>
-        <translation>Srednji točki</translation>
+        <translation>Centar</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Pinch 2</source>
-        <translation>Škrt 2</translation>
+        <translation>Točka spora 2</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Plot Turn 2</source>
-        <translation>Zaplet okrenite 2</translation>
+        <translation>Zaokret u zapletu 2</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Dan Wells 7-point plot format</source>
-        <translation>Dan Wells 7-točki format zavjere</translation>
+        <translation>Dan Wellsov format zapleta od 7 točaka</translation>
     </message>
 </context>
 <context>
@@ -3312,7 +3312,7 @@ pored broja riječi</translation>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="33"/>
         <source>Regex</source>
-        <translation>Reg izraz</translation>
+        <translation>Regularni izraz</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="39"/>
@@ -3505,7 +3505,7 @@ pored broja riječi</translation>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="132"/>
         <source>Draft Target</source>
-        <translation>Ciljevi skica</translation>
+        <translation>Ciljevi skice</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="139"/>
@@ -3535,7 +3535,7 @@ pored broja riječi</translation>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="138"/>
         <source>Reset</source>
-        <translation>Obnovi</translation>
+        <translation>Resetiraj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="141"/>
@@ -3692,7 +3692,7 @@ pored broja riječi</translation>
     <message>
         <location filename="../manuskript/ui/welcome_ui.py" line="142"/>
         <source>Recent</source>
-        <translation>Nedavno</translation>
+        <translation>Nedavni</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome_ui.py" line="143"/>
@@ -3777,7 +3777,7 @@ pored broja riječi</translation>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="309"/>
         <source>words each.</source>
-        <translation>riječi.</translation>
+        <translation>riječi svaki.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="312"/>
@@ -3797,7 +3797,7 @@ pored broja riječi</translation>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="395"/>
         <source>&lt;b&gt;Total:&lt;/b&gt; {} words (~ {} pages)</source>
-        <translation>&lt;b&gt;Ukupno:&lt;/b&gt; {} riječi (otprilike {} stranica)</translation>
+        <translation>&lt;b&gt;Ukupno:&lt;/b&gt; {} riječi (~ {} stranica)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="416"/>
