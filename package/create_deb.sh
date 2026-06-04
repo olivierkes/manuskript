@@ -6,7 +6,7 @@
 
 # Program vars
 ScriptPath="$( cd "$(dirname "$0")" ; pwd -P )"
-Root="$ScriptPath/../"
+Root="$ScriptPath/.."
 
 # Manuskript Vars
 AppName=manuskript

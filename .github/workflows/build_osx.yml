@@ -1,0 +1,63 @@
+# This workflow is used to run pytest and produce a macOS build (Zip and DMG) as artifacts.
+
+name: Build and Test for macOS
+
+on:
+  push:
+    branches: [ develop ]
+  pull_request:
+    branches: [ develop ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  macos_build:
+    name: Building for macOS 3.9 on macos-15
+    runs-on: macos-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+
+    - name: Install macOS dependencies
+      run: |
+        export HOMEBREW_NO_AUTO_UPDATE=1
+        brew install enchant hunspell qt@5
+        echo "/usr/local/opt/qt@5/bin" >> $GITHUB_PATH
+        # Fooling PyEnchant as described in the wiki:
+        #   https://github.com/olivierkes/manuskript/wiki/Package-manuskript-for-OS-X
+        sudo mkdir -p /usr/local/share
+        sudo touch /usr/local/share/aspell
+
+    - name: Install Python dependencies
+      run: |
+        python -m pip install --upgrade pip setuptools wheel
+        pip install pyinstaller PyQt5 lxml pyenchant pytest pytest-faulthandler pillow dmgbuild
+
+    - name: Run Pytest
+      run: |
+        python3 -B -m pytest -vs
+
+    - name: Build macOS App Bundle and DMG
+      env:
+        GIT_SHA: ${{ github.sha }}
+      run: |
+        GIT_SHA_SHORT="${GIT_SHA:0:7}" package/build_osx.sh
+
+    - name: Upload Zip Artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: manuskript_macos_zip
+        path: ./dist/manuskript-*.zip
+
+    - name: Upload DMG Artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: manuskript_macos_dmg
+        path: ./dist/manuskript-*.dmg
