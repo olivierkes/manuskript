@@ -1,0 +1,89 @@
+# This workflow is used to run pytest and produce Linux builds (PyInstaller standalone, Debian deb, and Fedora rpm) as artifacts.
+
+name: Build and Test for Linux
+
+on:
+  push:
+    branches: [ develop ]
+  pull_request:
+    branches: [ develop ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  linux_build:
+    name: Building for Linux 3.9 on ubuntu-22.04
+    runs-on: ubuntu-22.04
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0 # Fetch all history so git rev-parse works for versioning
+
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+
+    - name: Install system dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y --no-install-recommends \
+          qtbase5-dev \
+          qt5-qmake \
+          libxml2-dev \
+          libxslt1-dev \
+          mesa-utils \
+          libgl1 \
+          libgl1-mesa-dev \
+          libxcb-xinerama0-dev \
+          xvfb \
+          rsync \
+          dpkg-dev \
+          rpm \
+          enchant-2 \
+          libenchant-2-dev \
+          hunspell
+
+    - name: Install Python dependencies
+      run: |
+        python -m pip install --upgrade pip setuptools wheel
+        pip install pyinstaller PyQt5 lxml pyenchant pytest pytest-faulthandler markdown language_tool_python symspellpy pyspellchecker
+
+    - name: Run Pytest
+      env:
+        QT_QPA_PLATFORM: offscreen
+      run: |
+        pytest -vs -o cache_dir=/tmp/pytest_cache --ignore=rpmbuild --ignore=dist
+
+    - name: Build standalone Linux binary
+      run: |
+        pyinstaller manuskript.spec --clean --noconfirm
+
+    - name: Build Debian (.deb) package
+      run: |
+        package/create_deb.sh
+
+    - name: Build RPM (.rpm) package
+      run: |
+        package/create_rpm.sh
+
+    - name: Upload Standalone Binary
+      uses: actions/upload-artifact@v4
+      with:
+        name: manuskript_linux_standalone
+        path: ./dist/manuskript/
+
+    - name: Upload Debian Package
+      uses: actions/upload-artifact@v4
+      with:
+        name: manuskript_linux_deb
+        path: ./dist/*.deb
+
+    - name: Upload RPM Package
+      uses: actions/upload-artifact@v4
+      with:
+        name: manuskript_linux_rpm
+        path: ./rpmbuild/RPMS/noarch/*.rpm

@@ -19,7 +19,7 @@ function echo_do() {
 
 # Program vars
 ScriptPath="$( cd "$(dirname "$0")" ; pwd -P )"
-Root="$ScriptPath/../"
+Root="$ScriptPath/.."
 
 # Manuskript Vars
 AppName=manuskript
@@ -27,7 +27,8 @@ Version=$(grep -E  "__version__.*\".*\"" "$Root/manuskript/version.py" \
           | cut -d\" -f2)  # Look for version in manuskript/version
 AppVersion=${1:-$Version}
 PkgNumber=${2:-1}
-PkgVersion=$AppVersion-$PkgNumber
+AppVersion=${AppVersion/-/.}  # RPM cannot handle dashes in version
+PkgVersion=$AppVersion.$PkgNumber
 Dest="$Root/rpmbuild"
 
 echo "### Using package directory: $Dest"

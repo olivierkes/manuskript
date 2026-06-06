@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  manuskript-builder:
+    build: .
+    image: manuskript-builder:latest
+    volumes:
+      - .:/workspace
+    environment:
+      - QT_QPA_PLATFORM=offscreen
