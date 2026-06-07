@@ -21,4 +21,4 @@ python3 package/osx/fix_app_qt_folder_names_for_codesign.py dist/manuskript.app
 codesign -s - --force --all-architectures --timestamp --deep dist/manuskript.app
 # Create the installer
 dmgbuild -s package/osx/dmg-settings.py "manuskript" dist/${PkgName}.dmg
-cd dist && zip ${PkgName}.zip manuskript && cd ..
+cd dist && zip ${PkgName}.zip -r manuskript && cd ..
