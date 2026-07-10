@@ -120,7 +120,7 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="619"/>
         <source>The image path or URL is incomplete or malformed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bildens sökväg eller URL är inte komplett eller felaktig.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="631"/>
@@ -141,7 +141,7 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="543"/>
         <source>{} (CTRL+Click to open)</source>
-        <translation type="unfinished"></translation>
+        <translation>{} (CTRL+musklick för att öppna)</translation>
     </message>
 </context>
 <context>
@@ -878,12 +878,12 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1628"/>
         <source>Co&amp;mment block</source>
-        <translation type="unfinished"></translation>
+        <translation>Ko&amp;mmentarblock</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1629"/>
         <source>Clear &amp;formats</source>
-        <translation type="unfinished"></translation>
+        <translation>Rensa &amp;formatering</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1630"/>
@@ -893,22 +893,22 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1631"/>
         <source>&amp;Ordered list</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Ordnad lista</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1632"/>
         <source>&amp;Unordered list</source>
-        <translation type="unfinished"></translation>
+        <translation>Oordnand &amp;lista</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1633"/>
         <source>B&amp;lockquote</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Citatblock</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1541"/>
         <source>Remove selected plot step(s)</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort de valda stegen från handlingen</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="923"/>
@@ -948,7 +948,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="2018"/>
         <source>PyQt / Qt versions 5.11 and 5.12 are known to cause a crash which might result in a loss of data.</source>
-        <translation type="unfinished"></translation>
+        <translation>PyQt / Qt versionerna 5.11 och 5.12 gör att programmet kan krascha och du kan förlora dina ändringar.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="2019"/>
@@ -958,77 +958,77 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="2025"/>
         <source>Proceed with import at your own risk</source>
-        <translation type="unfinished"></translation>
+        <translation>Fortsätt importen på egen risk</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1518"/>
         <source>Allow POV</source>
-        <translation type="unfinished"></translation>
+        <translation>Tillåt synvinkel</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1636"/>
         <source>Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Sök</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1637"/>
         <source>&amp;Technical Support</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Teknisk hjälp</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1638"/>
         <source>How to obtain technical support for Manuskript.</source>
-        <translation type="unfinished"></translation>
+        <translation>Så får du teknisk support för Manuskript.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1639"/>
         <source>&amp;Locate log file...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Hitta loggfil...</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1640"/>
         <source>Locate log file</source>
-        <translation type="unfinished"></translation>
+        <translation>Hitta loggfil</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1641"/>
         <source>Locate the diagnostic log file used for this session.</source>
-        <translation type="unfinished"></translation>
+        <translation>Hitta loggfilen för denna session.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1557"/>
         <source>Sorry!</source>
-        <translation type="unfinished"></translation>
+        <translation>Ursäkta!</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1557"/>
         <source>This session is not being logged.</source>
-        <translation type="unfinished"></translation>
+        <translation>Denna session loggas inte.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1566"/>
         <source>A log file is a Work in Progress!</source>
-        <translation type="unfinished"></translation>
+        <translation>En loggfil är aldrig färdig!</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1566"/>
         <source>The log file &quot;{}&quot; will continue to be written to until Manuskript is closed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Loggfilen &quot;{}&quot; kommer att fortsätta skrivas till Manuskript stängs.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1566"/>
         <source>It will now be displayed in your file manager, but is of limited use until you close Manuskript.</source>
-        <translation type="unfinished"></translation>
+        <translation>Den kommer nu att synas i din filhanterare, men är av begränsad nytta tills du avslutar Manuskript.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1582"/>
         <source>Error!</source>
-        <translation type="unfinished"></translation>
+        <translation>Fel!</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1582"/>
         <source>An error was encountered while trying to show the log file below in your file manager.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ett fel inträffade under försöket att visa loggfilen i din filhanterare.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="51"/>
@@ -1038,12 +1038,12 @@
     <message>
         <location filename="../manuskript/ui/search.py" line="52"/>
         <source>Shift+F3</source>
-        <translation type="unfinished"></translation>
+        <translation>Shift+F3</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="56"/>
         <source>Situation</source>
-        <translation type="unfinished"></translation>
+        <translation>Situation</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="57"/>
@@ -1053,12 +1053,12 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1634"/>
         <source>&amp;Targets</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Mål</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1635"/>
         <source>Draft and session word count targets</source>
-        <translation type="unfinished"></translation>
+        <translation>Sessions- och utkastmål för antal ord</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="385"/>
@@ -1068,57 +1068,57 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="393"/>
         <source>Bulk Info Manager</source>
-        <translation type="unfinished"></translation>
+        <translation>Massändring</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="438"/>
         <source>No Entries!</source>
-        <translation type="unfinished"></translation>
+        <translation>Inga ändringar!</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="438"/>
         <source>Please add entries to apply to the selected characters.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ange informationen som skall läggas till personerna.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="449"/>
         <source>Bulk Info Applied</source>
-        <translation type="unfinished"></translation>
+        <translation>Ändringarna genomförda</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="449"/>
         <source>The bulk info has been applied to the selected characters.</source>
-        <translation type="unfinished"></translation>
+        <translation>Informationen har lagts till de utvalda personerna.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="521"/>
         <source>Un-applied data!</source>
-        <translation type="unfinished"></translation>
+        <translation>Osparade ändringar!</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="521"/>
         <source>There are un-applied entries in this tab. Discard them?</source>
-        <translation type="unfinished"></translation>
+        <translation>Det finns osparade ändringar. Vill du radera dem?</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1577"/>
         <source>&amp;Navigate</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Navigera</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1611"/>
         <source>Go &amp;back</source>
-        <translation type="unfinished"></translation>
+        <translation>Gå &amp;tillbaka</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1612"/>
         <source>Go &amp;forward</source>
-        <translation type="unfinished"></translation>
+        <translation>Gå &amp;framåt</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1251"/>
         <source>Loading project {} failed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Laddning av projektet {} misslyckades.</translation>
     </message>
 </context>
 <context>
@@ -1126,7 +1126,7 @@
     <message>
         <location filename="../manuskript/ui/search.py" line="46"/>
         <source>No results found</source>
-        <translation type="unfinished"></translation>
+        <translation>Hittade inga resultat</translation>
     </message>
 </context>
 <context>
@@ -1754,17 +1754,17 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1784"/>
         <source>Restarting Manuskript ensures all settings take effect.</source>
-        <translation type="unfinished"></translation>
+        <translation>Starta om Manuskript för att alla ändringar skall aktiveras.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1838"/>
         <source>Show &amp;word count</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa antal &amp;ord</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1844"/>
         <source>&amp;Show word count</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa antal &amp;ord</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1884"/>
@@ -1804,33 +1804,33 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1811"/>
         <source>&lt;p&gt;&lt;b&gt;The Revisions feature has been at the source of many reported issues. In this version of Manuskript it has been turned off by default for new projects in order to provide the best experience.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Why aren&apos;t these issues fixed already? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;We need your help to make Manuskript better!&lt;/a&gt;&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;&lt;b&gt;Historik funktionaliteten har skapat många felrapporter. I den här versionen av Manuskript är den därför avstängd som standard för att ge den bästa upplevelsen.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Varför är inte problemen redan lösta? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;Vi behöver din hjälp för att göra Manuskript bättre!&lt;/a&gt;&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1788"/>
         <source>Show progress in chars next
  to words</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa framsteg i tecken bredvid ord</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1834"/>
         <source>Char/Word Counter</source>
-        <translation type="unfinished"></translation>
+        <translation>Tecken/ord räknare</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1835"/>
         <source>Count spaces as chars</source>
-        <translation type="unfinished"></translation>
+        <translation>Räkna mellanslag som tecken</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1839"/>
         <source>Show char c&amp;ount</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa antal &amp;tecken</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1845"/>
         <source>Sho&amp;w char count</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa antal &amp;tecken</translation>
     </message>
 </context>
 <context>
@@ -1853,27 +1853,27 @@
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="549"/>
         <source>&amp;New Character</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Ny person</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="556"/>
         <source>&amp;New Plot Item</source>
-        <translation type="unfinished"></translation>
+        <translation>Ny &amp;handling</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="563"/>
         <source>&amp;New World Item</source>
-        <translation type="unfinished"></translation>
+        <translation>Nytt &amp;världselement</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="665"/>
         <source>&amp;Correction Suggestions</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Rättningsförslag</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/textEditView.py" line="674"/>
         <source>&amp;Correction Suggestion</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Rättningsförslag</translation>
     </message>
 </context>
 <context>
@@ -1988,7 +1988,7 @@
     <message>
         <location filename="../manuskript/models/characterModel.py" line="179"/>
         <source>New character</source>
-        <translation type="unfinished"></translation>
+        <translation>Ny person</translation>
     </message>
     <message>
         <location filename="../manuskript/models/characterModel.py" line="215"/>
@@ -2140,22 +2140,22 @@
     <message>
         <location filename="../manuskript/load_save/version_1.py" line="435"/>
         <source>Files not saved</source>
-        <translation type="unfinished"></translation>
+        <translation>Filen är inte sparad</translation>
     </message>
     <message>
         <location filename="../manuskript/load_save/version_1.py" line="436"/>
         <source>The following files were not saved and appear to be open in another program</source>
-        <translation type="unfinished"></translation>
+        <translation>Följande filer sparades inte och verkar vara öppna i ett annat program</translation>
     </message>
     <message>
         <location filename="../manuskript/load_save/version_1.py" line="932"/>
         <source>Files not loaded</source>
-        <translation type="unfinished"></translation>
+        <translation>Filen är inte laddad</translation>
     </message>
     <message>
         <location filename="../manuskript/load_save/version_1.py" line="933"/>
         <source>The following files were not loaded and appear to be open in another program</source>
-        <translation type="unfinished"></translation>
+        <translation>Följande filer laddades inte och verkar vara öppna i ett annat program</translation>
     </message>
 </context>
 <context>
@@ -2397,12 +2397,12 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="542"/>
         <source>Replace ... with …</source>
-        <translation type="unfinished"></translation>
+        <translation>Ersätt ... med …</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="543"/>
         <source>Replace --- with —</source>
-        <translation type="unfinished"></translation>
+        <translation>Ersätt --- med —</translation>
     </message>
 </context>
 <context>
@@ -2501,12 +2501,12 @@
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="157"/>
         <source>Title: Show Full Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Titel: Visa full sökväg</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="159"/>
         <source>Theme selector</source>
-        <translation type="unfinished"></translation>
+        <translation>Temaväljare</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="160"/>
@@ -2521,7 +2521,7 @@
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="162"/>
         <source>Progress: Auto Show/Hide</source>
-        <translation type="unfinished"></translation>
+        <translation>Framsteg: Visa/dölj automatiskt</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/fullScreenEditor.py" line="163"/>
@@ -2734,22 +2734,22 @@
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="378"/>
         <source>({} chars) {}  words / {} </source>
-        <translation type="unfinished"></translation>
+        <translation>({} tecken) {}  ord/ {} </translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="384"/>
         <source>{}  words / {} </source>
-        <translation type="unfinished"></translation>
+        <translation>{}  ord/ {} </translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="399"/>
         <source>{} chars</source>
-        <translation type="unfinished"></translation>
+        <translation>{} tecken</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/editors/mainEditor.py" line="393"/>
         <source>{} chars </source>
-        <translation type="unfinished"></translation>
+        <translation>{} tecken </translation>
     </message>
 </context>
 <context>
@@ -2890,7 +2890,7 @@
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Resolution</source>
-        <translation type="unfinished"></translation>
+        <translation>Upplösning</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3045,37 +3045,37 @@
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Hook</source>
-        <translation type="unfinished"></translation>
+        <translation>Anslag</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Plot Turn 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Vändpunkt 1</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Pinch 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Konfliktpunkt 1</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Midpoint</source>
-        <translation type="unfinished"></translation>
+        <translation>Mittpunkt</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Pinch 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Konfliktpunkt 2</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Plot Turn 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Vändpunkt 2</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Dan Wells 7-point plot format</source>
-        <translation type="unfinished"></translation>
+        <translation>Dan Wells 7-punkters handlingsstruktur</translation>
     </message>
 </context>
 <context>
@@ -3113,7 +3113,7 @@
     <message>
         <location filename="../manuskript/models/plotModel.py" line="110"/>
         <source>New plot</source>
-        <translation type="unfinished"></translation>
+        <translation>Ny handling</translation>
     </message>
 </context>
 <context>
@@ -3301,27 +3301,27 @@
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="31"/>
         <source>Case sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>Skiftlägeskänslig</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="32"/>
         <source>Match words</source>
-        <translation type="unfinished"></translation>
+        <translation>Matcha ord</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="33"/>
         <source>Regex</source>
-        <translation type="unfinished"></translation>
+        <translation>Reguljära uttryck</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="39"/>
         <source>Search in:</source>
-        <translation type="unfinished"></translation>
+        <translation>Sök i:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="51"/>
         <source>Options:</source>
-        <translation type="unfinished"></translation>
+        <translation>Alternativ:</translation>
     </message>
 </context>
 <context>
@@ -3499,12 +3499,12 @@
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="131"/>
         <source>Project Targets</source>
-        <translation type="unfinished"></translation>
+        <translation>Projektmål</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="132"/>
         <source>Draft Target</source>
-        <translation type="unfinished"></translation>
+        <translation>Utkastsmål</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="139"/>
@@ -3519,27 +3519,27 @@
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="135"/>
         <source>10,000</source>
-        <translation type="unfinished"></translation>
+        <translation>10 000</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="136"/>
         <source>Words</source>
-        <translation type="unfinished"></translation>
+        <translation>Ord</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="137"/>
         <source>Session Target</source>
-        <translation type="unfinished"></translation>
+        <translation>Sessionsmål</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="138"/>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Återställ</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/targets_ui.py" line="141"/>
         <source>words</source>
-        <translation type="unfinished"></translation>
+        <translation>ord</translation>
     </message>
 </context>
 <context>
