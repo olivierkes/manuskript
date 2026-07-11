@@ -2389,7 +2389,7 @@ słów</translation>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>Zastąp pojedyncze cudzysłowy (&apos;) znakiem:</translation>
+        <translation>Zastąp pojedyncze cudzysłowy (') znakiem:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>
@@ -3512,7 +3512,7 @@ słów</translation>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="47"/>
         <source>Split &apos;{}&apos;</source>
-        <translation>Rozdziel &apos;{}&apos;</translation>
+        <translation>Rozdziel '{}'</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="51"/>

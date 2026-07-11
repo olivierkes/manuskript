@@ -158,7 +158,7 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="619"/>
         <source>The image path or URL is incomplete or malformed.</source>
-        <translation>Stien til billedet eller URL&apos;en, er enten ufuldendt eller forkert.</translation>
+        <translation>Stien til billedet eller URL'en, er enten ufuldendt eller forkert.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="631"/>
@@ -648,8 +648,8 @@
         <location filename="../manuskript/mainWindow.py" line="1704"/>
         <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous
                      evil wizard wasn&apos;t able to kill a baby?&apos; (Harry Potter)</source>
-        <translation>Den grundlæggende situation, i form af  et &apos;Hvad nu hvis...?&apos; spørgsmål. Eks: &apos;Hvad nu hvis selv den farligste af 
-                     onde troldmænd ikke ville være i stand til at dræbe et barn?&apos; (Harry Potter)</translation>
+        <translation>Den grundlæggende situation, i form af  et 'Hvad nu hvis...?' spørgsmål. Eks: 'Hvad nu hvis selv den farligste af 
+                     onde troldmænd ikke ville være i stand til at dræbe et barn?' (Harry Potter)</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1709"/>
@@ -2389,7 +2389,7 @@ siden af ord</translation>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>Erstat enkelt apostrof (&apos;) med:</translation>
+        <translation>Erstat enkelt apostrof (') med:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>
@@ -3512,7 +3512,7 @@ siden af ord</translation>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="47"/>
         <source>Split &apos;{}&apos;</source>
-        <translation>Opsplit &apos;{}&apos;</translation>
+        <translation>Opsplit '{}'</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="51"/>

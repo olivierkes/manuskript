@@ -653,8 +653,8 @@
         <location filename="../manuskript/mainWindow.py" line="1704"/>
         <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous
                      evil wizard wasn&apos;t able to kill a baby?&apos; (Harry Potter)</source>
-        <translation>Den grundläggande situationen i form av en &quot;Tänk om...?&quot;-mening. Exempel: &apos;Tänk om världens farligaste
-                     onda trollkarl misslyckades med att döda en baby?&apos; (Harry Potter)</translation>
+        <translation>Den grundläggande situationen i form av en &quot;Tänk om...?&quot;-mening. Exempel: 'Tänk om världens farligaste
+                     onda trollkarl misslyckades med att döda en baby?' (Harry Potter)</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1709"/>
@@ -2388,7 +2388,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>Ersätt enkla citattecken (&apos;) med:</translation>
+        <translation>Ersätt enkla citattecken (') med:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>
@@ -3423,11 +3423,6 @@
         <translation>Öppna bild</translation>
     </message>
     <message>
-        <location filename="../manuskript/settingsWindow.py" line="534"/>
-        <source>Image files (*.jpg; *.jpeg; *.png)</source>
-        <translation>Bildfiler (*.jpg; *.jpeg; *.png)</translation>
-    </message>
-    <message>
         <location filename="../manuskript/settingsWindow.py" line="564"/>
         <source>Error</source>
         <translation>Fel</translation>
@@ -3511,7 +3506,7 @@
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="47"/>
         <source>Split &apos;{}&apos;</source>
-        <translation>Dela &apos;{}&apos;</translation>
+        <translation>Dela '{}'</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="51"/>
