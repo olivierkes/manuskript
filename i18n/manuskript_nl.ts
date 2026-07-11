@@ -617,7 +617,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1622"/>
         <source> (~{} pages)</source>
-        <translation> (~{} pagina's)</translation>
+        <translation> (~{} pagina&apos;s)</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1625"/>
@@ -653,8 +653,8 @@
         <location filename="../manuskript/mainWindow.py" line="1704"/>
         <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous
                      evil wizard wasn&apos;t able to kill a baby?&apos; (Harry Potter)</source>
-        <translation>De basissituatie, in de vorm van een 'Wat als...?' vraag. B.v.: 'Wat als de gevaarlijkste, slechtste tovenaar
-                     niet in staat zou zijn een baby te doden?' (Harry Potter)</translation>
+        <translation>De basissituatie, in de vorm van een &apos;Wat als...?&apos; vraag. B.v.: &apos;Wat als de gevaarlijkste, slechtste tovenaar
+                     niet in staat zou zijn een baby te doden?&apos; (Harry Potter)</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1709"/>
@@ -1116,47 +1116,47 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="438"/>
         <source>Please add entries to apply to the selected characters.</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg vermeldingen toe om toe te passen op de geselecteerde tekens.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="449"/>
         <source>Bulk Info Applied</source>
-        <translation type="unfinished"></translation>
+        <translation>Bulk Info Toegepast</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="449"/>
         <source>The bulk info has been applied to the selected characters.</source>
-        <translation type="unfinished"></translation>
+        <translation>De bulkinfo is toegepast op de geselecteerde tekens.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="521"/>
         <source>Un-applied data!</source>
-        <translation type="unfinished"></translation>
+        <translation>Niet toegepaste gegevens!</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="521"/>
         <source>There are un-applied entries in this tab. Discard them?</source>
-        <translation type="unfinished"></translation>
+        <translation>Er zijn niet-toegepaste vermeldingen in dit tabblad. Hen negeren?</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1577"/>
         <source>&amp;Navigate</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Ga Naar</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1611"/>
         <source>Go &amp;back</source>
-        <translation type="unfinished"></translation>
+        <translation>Ga &amp;terug</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1612"/>
         <source>Go &amp;forward</source>
-        <translation type="unfinished"></translation>
+        <translation>Ga &amp;verder</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1251"/>
         <source>Loading project {} failed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Laden van project {} mislukt.</translation>
     </message>
 </context>
 <context>
@@ -1492,7 +1492,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2006"/>
         <source>Paragraphs</source>
-        <translation>Alinea's</translation>
+        <translation>Alinea&apos;s</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2077"/>
@@ -1842,7 +1842,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1884"/>
         <source>&lt;p&gt;&lt;b&gt;The Revisions feature has been at the source of many reported issues. In this version of Manuskript it has been turned off by default for new projects in order to provide the best experience.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Why aren&apos;t these issues fixed already? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;We need your help to make Manuskript better!&lt;/a&gt;&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;De optie 'Revisies' heeft tot veel meldingen van problemen geleid. In deze versie van Manuskript is deze optie standaard uitgeschakeld voor nieuwe projecten, om de beste ervaring te leveren.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Waarom zijn deze problemen nog niet opgelost?&lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;We hebben jouw hulp nodig om Manuskript te maken!&lt;/a&gt;&lt;/p&gt;</translation>
+        <translation>&lt;p&gt;&lt;b&gt;De optie &apos;Revisies&apos; heeft tot veel meldingen van problemen geleid. In deze versie van Manuskript is deze optie standaard uitgeschakeld voor nieuwe projecten, om de beste ervaring te leveren.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Waarom zijn deze problemen nog niet opgelost?&lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;We hebben jouw hulp nodig om Manuskript te maken!&lt;/a&gt;&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1861"/>
@@ -2389,7 +2389,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>Vervang enkele aanhalingstekens (') met:</translation>
+        <translation>Vervang enkele aanhalingstekens (&apos;) met:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>
@@ -2957,7 +2957,7 @@
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Resolution</source>
-        <translation type="unfinished"></translation>
+        <translation>Ontknoping</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3512,7 +3512,7 @@
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="47"/>
         <source>Split &apos;{}&apos;</source>
-        <translation>Splits '{}'</translation>
+        <translation>Splits &apos;{}&apos;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="51"/>
@@ -3863,7 +3863,7 @@
     <message>
         <location filename="../manuskript/ui/welcome.py" line="395"/>
         <source>&lt;b&gt;Total:&lt;/b&gt; {} words (~ {} pages)</source>
-        <translation>&lt;b&gt;Totaal:&lt;/b&gt; {} woorden (~ {} pagina's)</translation>
+        <translation>&lt;b&gt;Totaal:&lt;/b&gt; {} woorden (~ {} pagina&apos;s)</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="416"/>

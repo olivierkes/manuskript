@@ -158,7 +158,7 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="619"/>
         <source>The image path or URL is incomplete or malformed.</source>
-        <translation>Stien til billedet eller URL'en, er enten ufuldendt eller forkert.</translation>
+        <translation>Stien til billedet eller URL&apos;en, er enten ufuldendt eller forkert.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="631"/>
@@ -367,7 +367,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1562"/>
         <source>Plots</source>
-        <translation>Plots</translation>
+        <translation>Plotter</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="27"/>
@@ -422,7 +422,7 @@
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="23"/>
         <source>Outline</source>
-        <translation>Outline</translation>
+        <translation>Disposition</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1559"/>
@@ -442,7 +442,7 @@
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1561"/>
         <source>Persos</source>
-        <translation>Persos</translation>
+        <translation>Personer</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1565"/>
@@ -648,8 +648,8 @@
         <location filename="../manuskript/mainWindow.py" line="1704"/>
         <source>The basic situation, in the form of a &apos;What if...?&apos; question. Ex: &apos;What if the most dangerous
                      evil wizard wasn&apos;t able to kill a baby?&apos; (Harry Potter)</source>
-        <translation>Den grundlæggende situation, i form af  et 'Hvad nu hvis...?' spørgsmål. Eks: 'Hvad nu hvis selv den farligste af 
-                     onde troldmænd ikke ville være i stand til at dræbe et barn?' (Harry Potter)</translation>
+        <translation>Den grundlæggende situation, i form af  et &apos;Hvad nu hvis...?&apos; spørgsmål. Eks: &apos;Hvad nu hvis selv den farligste af 
+                     onde troldmænd ikke ville være i stand til at dræbe et barn?&apos; (Harry Potter)</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1709"/>
@@ -1041,7 +1041,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1566"/>
         <source>It will now be displayed in your file manager, but is of limited use until you close Manuskript.</source>
-        <translation>It will now be displayed in your file manager, but is of limited use until you close Manuskript.</translation>
+        <translation>Den vil nu blive vist i din filhåndtering, men er af begrænset brug, indtil du lukker Manuskript.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1582"/>
@@ -1051,7 +1051,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1582"/>
         <source>An error was encountered while trying to show the log file below in your file manager.</source>
-        <translation>An error was encountered while trying to show the log file below in your file manager.</translation>
+        <translation>Der opstod en fejl under forsøget på at vise logfilen nedenfor i din filhåndtering.</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/search.py" line="51"/>
@@ -1106,7 +1106,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="393"/>
         <source>Bulk Info Manager</source>
-        <translation>Bulk Info Manager</translation>
+        <translation>Masseinformationsbestyrer</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="438"/>
@@ -1136,7 +1136,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="521"/>
         <source>There are un-applied entries in this tab. Discard them?</source>
-        <translation>There are un-applied entries in this tab. Discard them?</translation>
+        <translation>Der er ikke-anvendte poster i denne fane. Vil du kassere dem?</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1577"/>
@@ -1156,7 +1156,7 @@
     <message>
         <location filename="../manuskript/mainWindow.py" line="1251"/>
         <source>Loading project {} failed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Indlæsning af projkt {} mislykkedes.</translation>
     </message>
 </context>
 <context>
@@ -1517,7 +1517,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2081"/>
         <source>Proportional</source>
-        <translation>Proportional</translation>
+        <translation>Proportionel</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2082"/>
@@ -1542,7 +1542,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2085"/>
         <source>Spacing:</source>
-        <translation>Spacing:</translation>
+        <translation>Mellemrum:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2038"/>
@@ -1627,7 +1627,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2056"/>
         <source>Zoomed</source>
-        <translation>Zoomed</translation>
+        <translation>Zoomet</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2058"/>
@@ -1647,7 +1647,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2090"/>
         <source>Center</source>
-        <translation>Center</translation>
+        <translation>Centrer</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2091"/>
@@ -1672,7 +1672,7 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2071"/>
         <source>Padding:</source>
-        <translation>Padding:</translation>
+        <translation>Marginering:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2074"/>
@@ -1842,14 +1842,14 @@
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1884"/>
         <source>&lt;p&gt;&lt;b&gt;The Revisions feature has been at the source of many reported issues. In this version of Manuskript it has been turned off by default for new projects in order to provide the best experience.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Why aren&apos;t these issues fixed already? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;We need your help to make Manuskript better!&lt;/a&gt;&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;The Revisions feature has been at the source of many reported issues. In this version of Manuskript it has been turned off by default for new projects in order to provide the best experience.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Why aren't these issues fixed already? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;We need your help to make Manuskript better!&lt;/a&gt;&lt;/p&gt;</translation>
+        <translation>&lt;p&gt;&lt;b&gt;Revisionsfunktionen har været kilden til mange rapporterede problemer. I denne version af Manuskript er den som standard slået fra for nye projekter for at give den bedste oplevelse.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Hvorfor er disse problemer ikke løst endnu? &lt;a href=&quot;https://www.theologeek.ch/manuskript/contribute/&quot;&gt;Vi har brug for din hjælp til at gøre Manuskript bedre!&lt;/a&gt;&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1861"/>
         <source>Show progress in chars next
  to words</source>
-        <translation>Show progress in chars next
- to words</translation>
+        <translation>Vis fremskridt med tegn ved
+siden af ord</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1907"/>
@@ -2121,7 +2121,7 @@
     <message>
         <location filename="../manuskript/ui/cheatSheet.py" line="116"/>
         <source>Plots</source>
-        <translation>Plots</translation>
+        <translation>Plotter</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/cheatSheet.py" line="120"/>
@@ -2253,7 +2253,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/exporter_ui.py" line="72"/>
         <source>Preview</source>
-        <translation>Preview</translation>
+        <translation>Forhåndsvisning</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/exporter_ui.py" line="71"/>
@@ -2314,7 +2314,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="522"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Filters what items will be included in the final export.&lt;br/&gt;&lt;span style=&quot; color:#773333;&quot;&gt;(Not fully implemented yet.)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Filters what items will be included in the final export.&lt;br/&gt;&lt;span style=&quot; color:#773333;&quot;&gt;(Not fully implemented yet.)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Filtrerer hvilke elementer der skal inkluderes i den endelige eksport&lt;br/&gt;&lt;span style=&quot; color:#773333;&quot;&gt;(Endnu ikke færdigimplementeret.)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="523"/>
@@ -2389,7 +2389,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>Erstat enkelt apostrof (') med:</translation>
+        <translation>Erstat enkelt apostrof (&apos;) med:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>
@@ -2429,7 +2429,7 @@
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="561"/>
         <source>Preview</source>
-        <translation>Preview</translation>
+        <translation>Forhåndsvisning</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="558"/>
@@ -2667,7 +2667,7 @@
     <message>
         <location filename="../manuskript/ui/importers/importer_ui.py" line="105"/>
         <source>Preview</source>
-        <translation>Preview</translation>
+        <translation>Forhåndsvisning</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/importers/importer_ui.py" line="104"/>
@@ -3037,7 +3037,7 @@
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>3. Stand up</source>
-        <translation>3. Stand up</translation>
+        <translation>3. Stå op</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3052,7 +3052,7 @@
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Hero&apos;s journey</source>
-        <translation>Hero's journey</translation>
+        <translation>Heltens rejse</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3062,12 +3062,12 @@
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Call to adventure</source>
-        <translation>Call to adventure</translation>
+        <translation>Eventyrets kald</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Refusal of the call</source>
-        <translation>Refusal of the call</translation>
+        <translation>Afslag på kaldet</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3117,7 +3117,7 @@
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Plot Turn 1</source>
-        <translation>Plot Turn 1</translation>
+        <translation>Plotvending 1</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3137,7 +3137,7 @@
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Plot Turn 2</source>
-        <translation>Plot Turn 2</translation>
+        <translation>Plotvending 2</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3368,7 +3368,7 @@
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="31"/>
         <source>Case sensitive</source>
-        <translation>Case sensitive</translation>
+        <translation>Forskel på store/små bogstaver</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="32"/>
@@ -3416,7 +3416,7 @@
     <message>
         <location filename="../manuskript/settingsWindow.py" line="787"/>
         <source> (read-only)</source>
-        <translation> (read-only)</translation>
+        <translation> (skrivebeskyttet)</translation>
     </message>
     <message>
         <location filename="../manuskript/settingsWindow.py" line="548"/>
@@ -3493,15 +3493,15 @@
 
             &lt;p&gt;&lt;b&gt;Mark:&lt;/b&gt;&lt;/p&gt;
             </source>
-        <translation>
-            &lt;p&gt;Split selected item(s) at the given mark.&lt;/p&gt;
+        <translation type="unfinished">
+            &lt;p&gt;Opdel det/de valgte element(er) ved det givne mærke.&lt;/p&gt;
 
-            &lt;p&gt;If one of the selected item is a folder, it will be applied
-            recursively to &lt;i&gt;all&lt;/i&gt; of it's children items.&lt;/p&gt;
+            &lt;p&gt;Hvis et af de valgte elementer er en mappe, vil den blive anvendt
+            rekursivt på &lt;i&gt;alle&lt;/i&gt; dens underelementer.&lt;/p&gt;
 
-            &lt;p&gt;The split mark can contain following escape sequences:
+            &lt;p&gt;Opdelingsmærket kan indeholde følgende escape-sekvenser:
                 &lt;ul&gt;
-                    &lt;li&gt;&lt;b&gt;&lt;code&gt;\n&lt;/code&gt;&lt;/b&gt;: line break&lt;/li&gt;
+                    &lt;li&gt;&lt;b&gt;&lt;code&gt;\n&lt;/code&gt;&lt;/b&gt;: linjeskift&lt;/li&gt;
                     &lt;li&gt;&lt;b&gt;&lt;code&gt;\t&lt;/code&gt;&lt;/b&gt;: tab&lt;/li&gt;
                 &lt;/ul&gt;
             &lt;/p&gt;
@@ -3512,7 +3512,7 @@
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="47"/>
         <source>Split &apos;{}&apos;</source>
-        <translation>Opsplit '{}'</translation>
+        <translation>Opsplit &apos;{}&apos;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="51"/>
@@ -3888,7 +3888,7 @@
     <message>
         <location filename="../manuskript/ui/welcome.py" line="461"/>
         <source>Research</source>
-        <translation>Research</translation>
+        <translation>Undersøgelse</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/welcome.py" line="468"/>

@@ -179,7 +179,7 @@
     <message>
         <location filename="../manuskript/ui/views/MDEditView.py" line="543"/>
         <source>{} (CTRL+Click to open)</source>
-        <translation type="unfinished"></translation>
+        <translation>{}(CTRL+kliknij, aby otworzyć)</translation>
     </message>
 </context>
 <context>
@@ -447,7 +447,7 @@
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="25"/>
         <source>FlatData</source>
-        <translation>FlatData</translation>
+        <translation>Dane jednopoziomowe</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1561"/>
@@ -1106,7 +1106,7 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message>
         <location filename="../manuskript/mainWindow.py" line="393"/>
         <source>Bulk Info Manager</source>
-        <translation type="unfinished"></translation>
+        <translation>Narzędzie Do Masowego Zarządzania Informacjami</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="438"/>
@@ -1116,47 +1116,47 @@ akapitu, następnie do strony, a następnie do pełnego podsumowania.</translati
     <message>
         <location filename="../manuskript/mainWindow.py" line="438"/>
         <source>Please add entries to apply to the selected characters.</source>
-        <translation type="unfinished"></translation>
+        <translation>Proszę dodać wpisy do zastosowania do wybranej postaci.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="449"/>
         <source>Bulk Info Applied</source>
-        <translation type="unfinished"></translation>
+        <translation>Zastosowano Informacje Zbiorcze</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="449"/>
         <source>The bulk info has been applied to the selected characters.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zastosowano informacje zbiorcze do wybranej postaci.</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="521"/>
         <source>Un-applied data!</source>
-        <translation type="unfinished"></translation>
+        <translation>Niezastosowane dane!</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="521"/>
         <source>There are un-applied entries in this tab. Discard them?</source>
-        <translation type="unfinished"></translation>
+        <translation>Są obecne niezastosowane wpisy w tej zakładce. Odrzucić je?</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1577"/>
         <source>&amp;Navigate</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Nawiguj</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1611"/>
         <source>Go &amp;back</source>
-        <translation type="unfinished"></translation>
+        <translation>Idź &amp;wstecz</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/mainWindow.py" line="1612"/>
         <source>Go &amp;forward</source>
-        <translation type="unfinished"></translation>
+        <translation>Idź do &amp;przodu</translation>
     </message>
     <message>
         <location filename="../manuskript/mainWindow.py" line="1251"/>
         <source>Loading project {} failed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Wczytywanie projektu {} nie powiodło się.</translation>
     </message>
 </context>
 <context>
@@ -1864,12 +1864,12 @@ słów</translation>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1912"/>
         <source>Show char c&amp;ount</source>
-        <translation>Pokaż liczbę znaków</translation>
+        <translation>Pokaż &amp;liczbę znaków</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="1918"/>
         <source>Sho&amp;w char count</source>
-        <translation>Pokaż liczbę znaków</translation>
+        <translation>&amp;Pokaż liczbę znaków</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/settings_ui.py" line="2095"/>
@@ -2212,7 +2212,7 @@ słów</translation>
     <message>
         <location filename="../manuskript/load_save/version_1.py" line="437"/>
         <source>The following files were not saved and appear to be open in another program</source>
-        <translation type="unfinished"></translation>
+        <translation>Następujące pliki nie zostały zapisane gdyż mogą być otwarte przez inną aplikację</translation>
     </message>
     <message>
         <location filename="../manuskript/load_save/version_1.py" line="933"/>
@@ -2222,7 +2222,7 @@ słów</translation>
     <message>
         <location filename="../manuskript/load_save/version_1.py" line="934"/>
         <source>The following files were not loaded and appear to be open in another program</source>
-        <translation type="unfinished"></translation>
+        <translation>Następujące pliki nie zostały wczytane gdyż mogą być otwarte przez inną aplikację</translation>
     </message>
 </context>
 <context>
@@ -2389,7 +2389,7 @@ słów</translation>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="545"/>
         <source>Replace single quotes (&apos;) with:</source>
-        <translation>Zastąp pojedyncze cudzysłowy (') znakiem:</translation>
+        <translation>Zastąp pojedyncze cudzysłowy (&apos;) znakiem:</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/exporters/manuskript/plainTextSettings_ui.py" line="546"/>
@@ -2929,7 +2929,7 @@ słów</translation>
     <message>
         <location filename="../manuskript/models/persosProxyModel.py" line="18"/>
         <source>Minors</source>
-        <translation>Epizodyczny</translation>
+        <translation>Epizodyczne</translation>
     </message>
 </context>
 <context>
@@ -2957,7 +2957,7 @@ słów</translation>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Resolution</source>
-        <translation type="unfinished"></translation>
+        <translation>Rozwiązanie</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
@@ -3112,37 +3112,37 @@ słów</translation>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Hook</source>
-        <translation type="unfinished"></translation>
+        <translation>Punkt wyjścia</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Plot Turn 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Pierwszy zwrot akcji</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Pinch 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Pierwszy punkt presji</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Midpoint</source>
-        <translation type="unfinished"></translation>
+        <translation>Punkt środkowy</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Pinch 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Drugi punkt presji</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Plot Turn 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Drugi zwrot akcji</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/views/plotDelegate.py" line="33"/>
         <source>Dan Wells 7-point plot format</source>
-        <translation type="unfinished"></translation>
+        <translation>7-punktowa struktura fabuły Dana Wellsa</translation>
     </message>
 </context>
 <context>
@@ -3378,7 +3378,7 @@ słów</translation>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="33"/>
         <source>Regex</source>
-        <translation type="unfinished"></translation>
+        <translation>Wyrażenie regularne</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/searchMenu.py" line="39"/>
@@ -3512,7 +3512,7 @@ słów</translation>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="47"/>
         <source>Split &apos;{}&apos;</source>
-        <translation>Rozdziel '{}'</translation>
+        <translation>Rozdziel &apos;{}&apos;</translation>
     </message>
     <message>
         <location filename="../manuskript/ui/tools/splitDialog.py" line="51"/>
