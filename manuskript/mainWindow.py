@@ -22,6 +22,7 @@ from manuskript.models.characterModel import characterModel
 from manuskript.models import outlineModel
 from manuskript.models.plotModel import plotModel
 from manuskript.models.worldModel import worldModel
+from manuskript.projectManager import ProjectManager
 from manuskript.settingsWindow import settingsWindow
 from manuskript.ui import style
 from manuskript.ui import characterInfoDialog
@@ -76,6 +77,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.sessionStartWordCount = 0  # Used to track session targets
         self.history = History()
         self._previousSelectionEmpty = True
+        self.projectManager = ProjectManager(self)
 
         self.readSettings()
 
@@ -113,11 +115,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # Main Menu:: File
         self.actOpen.triggered.connect(self.welcome.openFile)
-        self.actSave.triggered.connect(self.saveDatas)
+        self.actSave.triggered.connect(self.projectManager.saveDatas)
         self.actSaveAs.triggered.connect(self.welcome.saveAsFile)
         self.actImport.triggered.connect(self.doImport)
         self.actCompile.triggered.connect(self.doCompile)
-        self.actCloseProject.triggered.connect(self.closeProject)
+        self.actCloseProject.triggered.connect(self.projectManager.closeProject)
         self.actQuit.triggered.connect(self.close)
 
         # Main menu:: Edit
@@ -905,191 +907,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.actBack.setEnabled(event.position > 0)
         self.actForward.setEnabled(event.position < event.count - 1)
 
-    ###############################################################################
-    # LOAD AND SAVE
-    ###############################################################################
-
-    def loadProject(self, project, loadFromFile=True):
-        """Loads the project ``project``.
-
-        If ``loadFromFile`` is False, then it does not load datas from file.
-        It assumes that the datas have been populated in a different way."""
-
-        # Convert project path to OS norm
-        project = os.path.normpath(project)
-
-        if loadFromFile and not os.path.exists(project):
-            LOGGER.warning("The file {} does not exist. Has it been moved or deleted?".format(project))
-            F.statusMessage(
-                    self.tr("The file {} does not exist. Has it been moved or deleted?").format(project), importance=3)
-            return
-
-        if loadFromFile:
-            # Load empty settings
-            importlib.reload(settings)
-            settings.initDefaultValues()
-
-            # Load data
-            self.loadEmptyDatas()
-            
-            if not self.loadDatas(project):
-                self.closeProject()
-                return
-
-        self.makeConnections()
-
-        # Load settings
-        if settings.openIndexes and settings.openIndexes != [""]:
-            self.mainEditor.tabSplitter.restoreOpenIndexes(settings.openIndexes)
-        self.generateViewMenu()
-        self.mainEditor.sldCorkSizeFactor.setValue(settings.corkSizeFactor)
-        self.actSpellcheck.setChecked(settings.spellcheck)
-        self.toggleSpellcheck(settings.spellcheck)
-        self.updateMenuDict()
-        self.setDictionary()
-
-        iconSize = settings.viewSettings["Tree"]["iconSize"]
-        self.treeRedacOutline.setIconSize(QSize(iconSize, iconSize))
-        self.mainEditor.setFolderView(settings.folderView)
-        self.mainEditor.updateFolderViewButtons(settings.folderView)
-        self.mainEditor.tabSplitter.updateStyleSheet()
-        self.tabMain.setCurrentIndex(settings.lastTab)
-        self.mainEditor.updateCorkBackground()
-        if settings.viewMode == "simple":
-            self.setViewModeSimple()
-        else:
-            self.setViewModeFiction()
-
-        # Set autosave
-        self.saveTimer = QTimer()
-        self.saveTimer.setInterval(settings.autoSaveDelay * 60 * 1000)
-        self.saveTimer.setSingleShot(False)
-        self.saveTimer.timeout.connect(self.saveDatas)
-        if settings.autoSave:
-            self.saveTimer.start()
-
-        # Set autosave if no changes
-        self.saveTimerNoChanges = QTimer()
-        self.saveTimerNoChanges.setInterval(settings.autoSaveNoChangesDelay * 1000)
-        self.saveTimerNoChanges.setSingleShot(True)
-        self.mdlFlatData.dataChanged.connect(self.startTimerNoChanges)
-        self.mdlOutline.dataChanged.connect(self.startTimerNoChanges)
-        self.mdlCharacter.dataChanged.connect(self.startTimerNoChanges)
-        self.mdlPlots.dataChanged.connect(self.startTimerNoChanges)
-        self.mdlWorld.dataChanged.connect(self.startTimerNoChanges)
-        self.mdlStatus.dataChanged.connect(self.startTimerNoChanges)
-        self.mdlLabels.dataChanged.connect(self.startTimerNoChanges)
-
-        self.saveTimerNoChanges.timeout.connect(self.saveDatas)
-        self.saveTimerNoChanges.stop()
-
-        # UI
-        for i in [self.actOpen, self.menuRecents]:
-            i.setEnabled(False)
-        for i in [self.actSave, self.actSaveAs, self.actCloseProject,
-                  self.menuEdit, self.menuView, self.menuOrganize,
-                  self.menuNavigate,
-                  self.menuTools, self.menuHelp, self.actImport,
-                  self.actCompile, self.actSettings]:
-            i.setEnabled(True)
-        # We force to emit even if it opens on the current tab
-        self.tabMain.currentChanged.emit(settings.lastTab)
-
-        # Make sure we can update the window title later.
-        self.currentProject = project
-        self.projectDirty = False
-        QSettings().setValue("lastProject", project)
-
-        item = self.mdlOutline.rootItem
-        wc = item.data(Outline.wordCount)
-        self.sessionStartWordCount = int(wc) if wc != "" else 0
-        # Add project name to Window's name
-        self.setWindowTitle(self.projectName() + " - " + self.tr("Manuskript"))
-
-        # Reset history
-        self.history.reset()
-
-        # Show main Window
-        self.switchToProject()
-
-    def handleUnsavedChanges(self):
-        """
-        There may be some currently unsaved changes, but the action the user triggered
-        will result in the project or application being closed. To save, or not to save?
-
-        Or just bail out entirely?
-
-        Sometimes it is best to just ask.
-        """
-
-        if not self.projectDirty:
-            return True  # no unsaved changes, all is good
-
-        msg = QMessageBox(QMessageBox.Question,
-            self.tr("Save project?"),
-            "<p><b>" +
-                self.tr("Save changes to project \"{}\" before closing?").format(self.projectName()) +
-            "</b></p>" +
-            "<p>" +
-                self.tr("Your changes will be lost if you don't save them.") +
-            "</p>",
-            QMessageBox.Save | QMessageBox.Discard | QMessageBox.Cancel)
-
-        ret = msg.exec()
-
-        if ret == QMessageBox.Cancel:
-            return False  # the situation has not been handled, cancel action
-
-        if ret == QMessageBox.Save:
-            self.saveDatas()
-
-        return True  # the situation has been handled
-
-
-    def closeProject(self):
-
-        if not self.currentProject:
-            return
-
-        # Make sure data is saved.
-        if (self.projectDirty and settings.saveOnQuit == True):
-             self.saveDatas()
-        elif not self.handleUnsavedChanges():
-             return  # user cancelled action
-
-        # Close open tabs in editor
-        self.mainEditor.closeAllTabs()
-
-        self.currentProject = None
-        self.projectDirty = None
-        QSettings().setValue("lastProject", "")
-
-        # Clear datas
-        self.loadEmptyDatas()
-        self.saveTimer.stop()
-        self.saveTimerNoChanges.stop()
-        loadSave.clearSaveCache()
-
-        self.breakConnections()
-
-        # UI
-        for i in [self.actOpen, self.menuRecents]:
-            i.setEnabled(True)
-        for i in [self.actSave, self.actSaveAs, self.actCloseProject,
-                  self.menuEdit, self.menuView, self.menuOrganize,
-                  self.menuTools, self.menuHelp, self.actImport,
-                  self.actCompile, self.actSettings]:
-            i.setEnabled(False)
-
-        # Set Window's name - no project loaded
-        self.setWindowTitle(self.tr("Manuskript"))
-
-        # Reload recent files
-        self.welcome.updateValues()
-
-        # Show welcome dialog
-        self.switchToWelcome()
-
     def readSettings(self):
         # Load State and geometry
         sttgns = QSettings(qApp.organizationName(), qApp.applicationName())
@@ -1127,133 +944,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self._toolbarState = sttgns.value("toolbar")
         else:
             self._toolbarState = ""
-
-    def closeEvent(self, event):
-        # Specific settings to save before quitting
-        settings.lastTab = self.tabMain.currentIndex()
-
-        if self.currentProject:
-            # Remembering the current items (stores outlineItem's ID)
-            settings.openIndexes = self.mainEditor.tabSplitter.openIndexes()
-
-            # Call close on the main window to clean children widgets
-            if self.mainEditor:
-                self.mainEditor.close()
-
-            # Save data from models
-            if settings.saveOnQuit:
-                self.saveDatas()
-            elif not self.handleUnsavedChanges():
-                event.ignore() # user opted to cancel the close action
-
-            # closeEvent
-            # QMainWindow.closeEvent(self, event)  # Causing segfaults?
-
-        # Close non-modal windows if they are open.
-        if self.td:
-            self.td.close()
-        if self.fw:
-            self.fw.close()
-
-        # User may have canceled close event, so make sure we indeed want to close.
-        # This is necessary because self.updateDockVisibility() hides UI elements.
-        if event.isAccepted():
-            # Save State and geometry and other things
-            appSettings = QSettings(qApp.organizationName(), qApp.applicationName())
-            appSettings.setValue("geometry", self.saveGeometry())
-            appSettings.setValue("windowState", self.saveState())
-            appSettings.setValue("metadataState", self.redacMetadata.saveState())
-            appSettings.setValue("revisionsState", self.redacMetadata.revisions.saveState())
-            appSettings.setValue("splitterRedacH", self.splitterRedacH.saveState())
-            appSettings.setValue("splitterRedacV", self.splitterRedacV.saveState())
-            appSettings.setValue("toolbar", self.toolbar.saveState())
-
-            # If we are not in the welcome window, we update the visibility
-            # of the docks widgets
-            if self.stack.currentIndex() == 1:
-                self.updateDockVisibility()
-
-            # Storing the visibility of docks to restore it on restart
-            appSettings.setValue("docks", self._dckVisibility)
-
-    def startTimerNoChanges(self):
-        """
-        Something changed in the project that requires auto-saving.
-        """
-        self.projectDirty = True
-
-        if settings.autoSaveNoChanges:
-            self.saveTimerNoChanges.start()
-
-    def saveDatas(self, projectName=None):
-        """Saves the current project (in self.currentProject).
-
-        If ``projectName`` is given, currentProject becomes projectName.
-        In other words, it "saves as...".
-        """
-
-        if projectName:
-            self.currentProject = projectName
-            QSettings().setValue("lastProject", projectName)
-
-        # Stop the timer before saving: if auto-saving fails (bugs out?) we don't want it
-        # to keep trying and continuously hitting the failure condition. Nor do we want to
-        # risk a scenario where the timer somehow triggers a new save while saving.
-        self.saveTimerNoChanges.stop()
-
-        if self.currentProject is None:
-            # No UI feedback here as this code path indicates a race condition that happens
-            # after the user has already closed the project through some way. But in that
-            # scenario, this code should not be reachable to begin with.
-            LOGGER.error("There is no current project to save.")
-            return
-
-        r = loadSave.saveProject()  # version=0
-
-        projectName = os.path.basename(self.currentProject)
-        if r:
-            self.projectDirty = False  # successful save, clear dirty flag
-
-            feedback = self.tr("Project {} saved.").format(projectName)
-            F.statusMessage(feedback, importance=0)
-            LOGGER.info("Project {} saved.".format(projectName))
-        else:
-            feedback = self.tr("WARNING: Project {} not saved.").format(projectName)
-            F.statusMessage(feedback, importance=3)
-            LOGGER.warning("Project {} not saved.".format(projectName))
-
-    def loadEmptyDatas(self):
-        self.mdlFlatData = QStandardItemModel(self)
-        self.mdlCharacter = characterModel(self)
-        self.mdlLabels = QStandardItemModel(self)
-        self.mdlStatus = QStandardItemModel(self)
-        self.mdlPlots = plotModel(self)
-        self.mdlOutline = outlineModel(self)
-        self.mdlWorld = worldModel(self)
-
-    def loadDatas(self, project):
-        errors = loadSave.loadProject(project)
-
-        # Giving some feedback
-        if not errors:
-            LOGGER.info("Project {} loaded.".format(project))
-            F.statusMessage(
-                    self.tr("Project {} loaded.").format(project), 2000)
-        else:
-            LOGGER.error("Project {} loaded with some errors:".format(project))
-            for e in errors:
-                LOGGER.error(" * {} wasn't found in project file.".format(e))
-            F.statusMessage(
-                    self.tr("Project {} loaded with some errors.").format(project), 5000, importance = 3)
-        
-        if project in errors:
-            LOGGER.error("Loading project {} failed.".format(project))
-            F.statusMessage(
-                    self.tr("Loading project {} failed.").format(project), 5000, importance = 3)
-
-            return False
-        
-        return True
 
     ###############################################################################
     # MAIN CONNECTIONS
