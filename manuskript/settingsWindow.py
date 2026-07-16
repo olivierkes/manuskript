@@ -121,6 +121,9 @@ class settingsWindow(QWidget, Ui_Settings):
         self.chkProgressChars.setChecked(settings.progressChars);
         self.chkProgressChars.stateChanged.connect(self.charSettingsChanged)
 
+        self.chkshow_sidebar_labels.setChecked(settings.show_sidebar_labels)
+        self.chkshow_sidebar_labels.stateChanged.connect(self.sidebarSettingsChanged)
+
         self.txtAutoSave.setValidator(QIntValidator(0, 999, self))
         self.txtAutoSaveNoChanges.setValidator(QIntValidator(0, 999, self))
         self.chkAutoSave.setChecked(settings.autoSave)
@@ -369,6 +372,11 @@ class settingsWindow(QWidget, Ui_Settings):
         settings.progressChars = True if self.chkProgressChars.checkState() else False
 
         self.mw.mainEditor.updateStats()
+
+    def sidebarSettingsChanged(self):
+        checkbox_state = self.chkshow_sidebar_labels.checkState()
+        settings.show_sidebar_labels = True if checkbox_state else False
+        self.mw.set_sidebar_labels_visible(settings.show_sidebar_labels)
 
     def saveSettingsChanged(self):
         if self.txtAutoSave.text() in ["", "0"]:
