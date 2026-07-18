@@ -20,7 +20,7 @@ class TextSplitResult:
 
 class TextSplitter:
 
-    def __init__(self, expression: str = "\\w+"):
+    def __init__(self, expression: str = "(\\w|(['’]\\w))+"):
         self.reg = re.compile(expression)
 
     def split(self, text: str) -> TextSplitResult:
