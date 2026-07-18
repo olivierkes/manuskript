@@ -4,8 +4,9 @@
 from gi.repository import GLib, GObject, Gtk
 
 from manuskript.data import Project
-from manuskript.plugin import findPlugins, loadPlugins
-from manuskript.spellchecker import getSpellcheckers
+from manuskript.editor import TextSplitter
+from manuskript.plugin import AbstractPlugin, findPlugins, loadPlugins
+from manuskript.spellchecker import AbstractSpellchecker, getSpellcheckers
 from manuskript.ui.dialog import RenameDialog
 from manuskript.ui.views import *
 
@@ -23,8 +24,9 @@ from manuskript.util import parseFilenameFromURL, validString
 class MainWindow:
 
     def __init__(self):
-        self.plugins = findPlugins()
-        self.project = None
+        self.plugins: list[AbstractPlugin] = findPlugins()
+        self.project: Project = None
+        self.spellchecker: AbstractSpellchecker = None
 
         builder = Gtk.Builder()
         builder.add_from_file("ui/main.glade")
@@ -118,17 +120,56 @@ class MainWindow:
         return self.project
     
     def reloadDictionaries(self):
+        def clearMenuItem(item: Gtk.RadioMenuItem):
+            item.disconnect("toggled", self._toggledSpellcheckerItem)
+            self.dictionaryMenu.remove(item)
+
         self.dictionaryMenu.foreach(lambda item: self.dictionaryMenu.remove(item))
         self.dictionaryMenuGroup = []
 
+        selectedRadioMenuItem: Gtk.RadioMenuItem = None
+
         for spellchecker in getSpellcheckers():
             menuItem = Gtk.RadioMenuItem.new_with_label(self.dictionaryMenuGroup, spellchecker.getTitle())
+            menuItem.connect("toggled", self._toggledSpellcheckerItem)
             menuItem.set_active(len(self.dictionaryMenuGroup) == 0)
+            menuItem.spellchecker = spellchecker
+
+            if menuItem.get_active():
+                selectedRadioMenuItem = menuItem
 
             self.dictionaryMenuGroup = menuItem.get_group()
             self.dictionaryMenu.append(menuItem)
 
         self.dictionaryMenuItem.set_sensitive(len(self.dictionaryMenuGroup) > 0)
+
+        if selectedRadioMenuItem:
+            self._toggledSpellcheckerItem(selectedRadioMenuItem)
+
+    def _toggledSpellcheckerItem(self, item: Gtk.CheckMenuItem):
+        if not hasattr(item, "spellchecker"):
+            return
+
+        self.spellchecker = item.spellchecker
+
+        if self.spellchecker is None:
+            return
+        
+        splitter = TextSplitter()
+
+        if self.project is None:
+            return
+        if self.project.outline is None:
+            return
+
+        for outlineItem in self.project.outline.all():
+            if not hasattr(outlineItem, "text"):
+                continue
+
+            text = outlineItem.text
+            for t in splitter.split(text).tuples:
+                if self.spellchecker.isMisspelled(text[t.begin:t.end]):
+                    print(text[t.begin:t.end])
     
     def __checkStackSelection(self, selected=None):
         slot = self.mainStack.get_visible_child()
