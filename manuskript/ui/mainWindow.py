@@ -4,7 +4,7 @@
 from gi.repository import GLib, GObject, Gtk
 
 from manuskript.data import Project
-from manuskript.editor import TextSplitter, ICUSplitter
+from manuskript.editor import AbstractSplitter, getSplitters
 from manuskript.plugin import AbstractPlugin, findPlugins, loadPlugins
 from manuskript.spellchecker import AbstractSpellchecker, getSpellcheckers
 from manuskript.ui.dialog import RenameDialog
@@ -155,7 +155,10 @@ class MainWindow:
         if self.spellchecker is None:
             return
 
-        splitter = ICUSplitter()
+        splitter: AbstractSplitter = None
+
+        for s in getSplitters():
+            splitter = s
 
         if self.project is None:
             return
@@ -168,7 +171,7 @@ class MainWindow:
 
             text = outlineItem.text
 
-            for t in splitter.split(text).tuples:
+            for t in splitter.splitText(text).tuples:
                 if self.spellchecker.isMisspelled(text[t.begin:t.end]):
                     print(text[t.begin:t.end])
 

@@ -9,5 +9,7 @@ class PluginComponent(Enum):
     REQUIREMENTS = 0
     CONVERTERS = 1
     EXPORTERS = 2
-    SPELLCHECKERS = 3
-    PLUGIN = 4
+    REGIONERS = 3
+    SPLITTERS = 4
+    SPELLCHECKERS = 5
+    PLUGIN = 6
